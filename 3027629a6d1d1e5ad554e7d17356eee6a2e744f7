@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c961d61_b098b484",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-31T21:01:05Z",
+      "side": 1,
+      "message": "LGTM with nits",
+      "revId": "3027629a6d1d1e5ad554e7d17356eee6a2e744f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb1214e4_35041f8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-31T21:01:05Z",
+      "side": 1,
+      "message": "chromeos-perf?  Performance team isn\u0027t wmp anymore strictly.",
+      "range": {
+        "startLine": 25,
+        "startChar": 74,
+        "endLine": 25,
+        "endChar": 86
+      },
+      "revId": "3027629a6d1d1e5ad554e7d17356eee6a2e744f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b2bcfdc_eb75cbab",
@@ -31,6 +71,41 @@
       "writtenOn": "2021-03-31T17:01:47Z",
       "side": 1,
       "message": "does this still have to be informational?",
+      "revId": "3027629a6d1d1e5ad554e7d17356eee6a2e744f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74d5c17c_53e20df1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-31T21:01:05Z",
+      "side": 1,
+      "message": "Yes, new tests should always start from informational and be promoted to critical after it\u0027s confirmed to be stable.\nSee: https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/master/doc/tast_add_test.md for the details.  The general policy for stable tests is 20 consecutive passes, as is written there.",
+      "parentUuid": "7b2bcfdc_eb75cbab",
+      "revId": "3027629a6d1d1e5ad554e7d17356eee6a2e744f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0757bf5f_26471f77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-31T21:01:05Z",
+      "side": 1,
+      "message": "Maybe\n  if bucket.Count \u003d\u003d 0 {\n    continue\n  }\n\n?",
       "revId": "3027629a6d1d1e5ad554e7d17356eee6a2e744f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
