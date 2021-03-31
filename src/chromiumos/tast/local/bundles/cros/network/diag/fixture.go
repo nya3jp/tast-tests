@@ -30,6 +30,22 @@ func init() {
 		TearDownTimeout: 10 * time.Second,
 		Impl:            &networkDiagnosticsFixture{},
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "networkDiagnosticsShillReset",
+		Desc: "A network diagnostics mojo API is ready and available to use. This fixture also sets shill in a default state and resets any modifications",
+		Contacts: []string{
+			"tbegin@chromium.org",            // test author
+			"khegde@chromium.org",            // network diagnostics author
+			"stevenjb@chromium.org",          // network-health tech lead
+			"cros-network-health@google.com", // network-health team
+		},
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    5 * time.Second,
+		TearDownTimeout: 10 * time.Second,
+		Impl:            &networkDiagnosticsFixture{},
+		Parent:          "shillReset",
+	})
 }
 
 // networkDiagnosticsFixture implements testing.FixtureImpl.
