@@ -36,7 +36,7 @@ func init() {
 		Params: []testing.Param{{
 			Name: "h264_192p_i420",
 			Val: video.EncodeTestOptions{
-				Profile:     videotype.H264Prof,
+				Profile:     videotype.H264MainProf,
 				Params:      video.Bear192P,
 				PixelFormat: videotype.I420,
 			},
@@ -45,7 +45,7 @@ func init() {
 		}, {
 			Name: "h264_192p_i420_vm",
 			Val: video.EncodeTestOptions{
-				Profile:     videotype.H264Prof,
+				Profile:     videotype.H264MainProf,
 				Params:      video.Bear192P,
 				PixelFormat: videotype.I420,
 			},
@@ -54,7 +54,7 @@ func init() {
 		}, {
 			Name: "h264_360p_i420",
 			Val: video.EncodeTestOptions{
-				Profile:     videotype.H264Prof,
+				Profile:     videotype.H264MainProf,
 				Params:      video.Tulip360P,
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Tulip360P.Name},
@@ -62,7 +62,7 @@ func init() {
 		}, {
 			Name: "h264_360p_i420_vm",
 			Val: video.EncodeTestOptions{
-				Profile:     videotype.H264Prof,
+				Profile:     videotype.H264MainProf,
 				Params:      video.Tulip360P,
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Tulip360P.Name},
@@ -70,7 +70,7 @@ func init() {
 		}, {
 			Name: "h264_720p_i420",
 			Val: video.EncodeTestOptions{
-				Profile:     videotype.H264Prof,
+				Profile:     videotype.H264MainProf,
 				Params:      video.Tulip720P,
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Tulip720P.Name},
@@ -78,7 +78,7 @@ func init() {
 		}, {
 			Name: "h264_720p_i420_vm",
 			Val: video.EncodeTestOptions{
-				Profile:     videotype.H264Prof,
+				Profile:     videotype.H264MainProf,
 				Params:      video.Tulip720P,
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Tulip720P.Name},
@@ -86,7 +86,7 @@ func init() {
 		}, {
 			Name: "h264_1080p_i420",
 			Val: video.EncodeTestOptions{
-				Profile:     videotype.H264Prof,
+				Profile:     videotype.H264MainProf,
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Crowd1080P.Name},
@@ -94,7 +94,7 @@ func init() {
 		}, {
 			Name: "h264_1080p_i420_vm",
 			Val: video.EncodeTestOptions{
-				Profile:     videotype.H264Prof,
+				Profile:     videotype.H264MainProf,
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Crowd1080P.Name},

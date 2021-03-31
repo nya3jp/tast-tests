@@ -68,7 +68,7 @@ func TestPowerVideoEncodePerfParamsAreGenerated(t *testing.T) {
 				HardwareDeps: []string{batteryMode.hwdep},
 				Pre:          arcType.pre,
 				Val: append([]valMember{
-					{"Profile", "videotype.H264Prof"},
+					{"Profile", "videotype.H264MainProf"},
 					{"Params", "video.Crowd1080P"},
 					{"PixelFormat", "videotype.I420"},
 				}, batteryMode.val...),
