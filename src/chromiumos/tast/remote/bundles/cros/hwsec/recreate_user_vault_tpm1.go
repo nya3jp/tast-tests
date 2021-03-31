@@ -27,8 +27,8 @@ func init() {
 			"cros-hwsec@chromium.org",
 			"zuan@chromium.org",
 		},
-		SoftwareDeps: []string{"tpm1"},
-		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"reboot", "tpm1"},
+		Attr:         []string{"group:hwsec_destructive_func"},
 		Timeout:      5 * time.Minute,
 	})
 }
