@@ -16,6 +16,47 @@
       "message": "BTW, I believe the dependent CL (where I was testing by `cros deploy ... udev`) reminded me of one reason we have this test:\n\nhttps://source.chromium.org/search?q\u003dSYSTEMD_INSTALL_MASK\n\nhttps://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/#idontlikethishowdoidisablethis\n\nAnd unfortunately, the install mask which is normally handled at \"build_image\" time doesn\u0027t actually apply to `cros deploy`, so my devices started getting renamed...",
       "revId": "b38c545c945476c13e113f988b78e05b7eb9cda7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d20513_b8ab4886",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-31T01:59:00Z",
+      "side": 1,
+      "message": "Thanks for sharing. I didn\u0027t notice that udev has this + we exclude it in build scripts (but not in `cros deploy`).",
+      "parentUuid": "fffa4034_efe56a44",
+      "revId": "b38c545c945476c13e113f988b78e05b7eb9cda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a2a5d6d_a125fec0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-31T01:59:00Z",
+      "side": 1,
+      "message": "I guess you mean `udevadm control --ping` here? (and probably still worth to do `udevadm settle` after successful ping.)",
+      "range": {
+        "startLine": 126,
+        "startChar": 41,
+        "endLine": 126,
+        "endChar": 60
+      },
+      "revId": "b38c545c945476c13e113f988b78e05b7eb9cda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
