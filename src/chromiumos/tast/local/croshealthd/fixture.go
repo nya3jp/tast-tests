@@ -23,8 +23,8 @@ func init() {
 		Contacts:        []string{"tbegin@google.com", "pmoy@google.com"},
 		SetUpTimeout:    30 * time.Second,
 		ResetTimeout:    5 * time.Second,
-		PreTestTimeout:  1 * time.Second,
-		PostTestTimeout: 1 * time.Second,
+		PreTestTimeout:  5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
 		TearDownTimeout: 5 * time.Second,
 		Impl:            newCrosHealthdFixture(true),
 	})
