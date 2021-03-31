@@ -39,6 +39,30 @@
       },
       "revId": "1639150079b377c739854483af1c61495b1b1408",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2edde984_cdaf29e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-31T01:45:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3e7499a2_2731e089",
+      "range": {
+        "startLine": 132,
+        "startChar": 3,
+        "endLine": 132,
+        "endChar": 9
+      },
+      "revId": "1639150079b377c739854483af1c61495b1b1408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
