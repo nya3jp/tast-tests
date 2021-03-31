@@ -176,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9161009_a4253e98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolution.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-31T21:03:31Z",
+      "side": 1,
+      "message": "Apologies, I missed that we are in a Poll. While the if err:\u003d ...; err !\u003d nil ... patterhn is handy, it does tend to obscure that sort of thing. Looks good!",
+      "parentUuid": "3a5a0df7_7d39cd13",
+      "revId": "09cf7d7663299eb8b8193d68365434efb364aeee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "847f1884_7c55d92c",
