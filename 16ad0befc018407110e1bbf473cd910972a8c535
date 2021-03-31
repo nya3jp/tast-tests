@@ -16,6 +16,24 @@
       "message": "This looks good to me.\n\nPerhaps the review should go to someone with expertise testing Chrome UI using Go.\n",
       "revId": "16ad0befc018407110e1bbf473cd910972a8c535",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ff03e24_e6a95d25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-31T22:13:57Z",
+      "side": 1,
+      "message": "I\u0027m actually a tast owner so wanted to ensure you have visibility of the test as domain expert and the changes as I\u0027m working towards getting this onto the CQ\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md#i-am-a-tast-reviewer_do-i-need-approvals-from-other-tast-reviewers-for-my-own-changes",
+      "parentUuid": "a55dbcad_e5a9e8a7",
+      "revId": "16ad0befc018407110e1bbf473cd910972a8c535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
