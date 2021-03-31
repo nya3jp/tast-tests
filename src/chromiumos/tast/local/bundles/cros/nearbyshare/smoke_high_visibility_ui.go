@@ -31,7 +31,6 @@ func init() {
 func SmokeHighVisibilityUI(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
-		chrome.EnableFeatures("IntentHandlingSharing", "NearbySharing", "Sharesheet"),
 		chrome.ExtraArgs("--nearby-share-verbose-logging"),
 	)
 	if err != nil {

@@ -53,7 +53,7 @@ func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyservice.C
 		return nil, errors.New("Chrome already available")
 	}
 	nearbyOpts := []chrome.Option{
-		chrome.EnableFeatures("IntentHandlingSharing", "NearbySharing", "Sharesheet"),
+		chrome.DisableFeatures("SplitSettingsSync"),
 		chrome.ExtraArgs("--nearby-share-verbose-logging", "--enable-logging", "--v=1"),
 	}
 	if req.Username != "" {
