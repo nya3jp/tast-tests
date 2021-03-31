@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a55dbcad_e5a9e8a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003011
+      },
+      "writtenOn": "2021-03-31T11:08:45Z",
+      "side": 1,
+      "message": "This looks good to me.\n\nPerhaps the review should go to someone with expertise testing Chrome UI using Go.\n",
+      "revId": "16ad0befc018407110e1bbf473cd910972a8c535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
