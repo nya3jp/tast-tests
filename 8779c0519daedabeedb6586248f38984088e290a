@@ -91,6 +91,23 @@
       },
       "revId": "8779c0519daedabeedb6586248f38984088e290a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3768e16c_b1f1fb6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2021-03-31T11:37:28Z",
+      "side": 1,
+      "message": "I think adding a log in the else block might be helpful for future debugging.",
+      "revId": "8779c0519daedabeedb6586248f38984088e290a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
