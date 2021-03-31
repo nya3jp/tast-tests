@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f7a436f_3dad8a51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-31T20:01:07Z",
+      "side": 1,
+      "message": "Hi Jun, we are moving the ui_action_handler.go from tabswitch/ to cuj/ now so other CUJs which require tablet support can also use it. So a new CL might be better.",
+      "parentUuid": "ddc0cfcf_a5d2d3a7",
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78766e88_b95c4b1b",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-30T22:17:33Z",
       "side": 1,
       "message": "Please use a specific name, e.g. defaultPollOptions.",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 9
+      },
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d185381_277399b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/ui_action_handler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-31T20:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78766e88_b95c4b1b",
       "range": {
         "startLine": 27,
         "startChar": 4,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad948b3e_b2dcd52c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/ui_action_handler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-31T20:01:07Z",
+      "side": 1,
+      "message": "Thanks for the tip. This methods (along with other methods) are now exported methods after moving to cuj package.",
+      "parentUuid": "27d94837_4a2f5335",
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "963d6f71_533fb958",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-03-30T22:17:33Z",
       "side": 1,
       "message": "I feel it\u0027s a bit awkward to see the name \u0027uiautoCtx\u0027, as \u0027uiauto\u0027 is a package name and Ctx is typically used for context.Context.\n\nPossibly simply name \u0027ui\u0027 or \u0027uiauto\u0027 may make sense. Alternatively, since it\u0027s a very simple one, I guess you really don\u0027t have to define this method. You could keep it internally within tabletActionHandler, created in its constructor.",
+      "range": {
+        "startLine": 71,
+        "startChar": 30,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3037b59_41e4591b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/ui_action_handler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-31T20:01:07Z",
+      "side": 1,
+      "message": "Thanks. Now change to an internal member and created during construction.",
+      "parentUuid": "963d6f71_533fb958",
       "range": {
         "startLine": 71,
         "startChar": 30,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb7bcbb_6691d5f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/ui_action_handler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-31T20:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51170aac_2e82f61f",
+      "range": {
+        "startLine": 86,
+        "startChar": 20,
+        "endLine": 86,
+        "endChar": 29
+      },
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d18da237_b187665e",
@@ -117,6 +225,30 @@
       "writtenOn": "2021-03-30T22:17:33Z",
       "side": 1,
       "message": "This code means that swipe-up action may happen multiple times. Is that really what you want?  What would be the reason to conduct the action multiple time?",
+      "range": {
+        "startLine": 128,
+        "startChar": 11,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8be7c7c8_3f43a520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/ui_action_handler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-31T20:01:07Z",
+      "side": 1,
+      "message": "SwipeUpHotseatAndWaitForCompletion() is reliable now with your fix on Y coordinate. Poll is no longer needed and removed.",
+      "parentUuid": "d18da237_b187665e",
       "range": {
         "startLine": 128,
         "startChar": 11,
@@ -150,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fa6c003_f0051795",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/ui_action_handler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-31T20:01:07Z",
+      "side": 1,
+      "message": "Thanks for sharing the link. Fixed.",
+      "parentUuid": "70de2dfc_f6d52eec",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 2
+      },
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dda319f_53bfb1b8",
@@ -173,6 +329,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34f1b052_d74432c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/ui_action_handler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-31T20:01:07Z",
+      "side": 1,
+      "message": "Thanks. Removed all ui.WaitForLocation() where ui.Location() can be used.",
+      "parentUuid": "9dda319f_53bfb1b8",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 2
+      },
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e19ce6b4_f2261c3d",
@@ -186,6 +366,30 @@
       "writtenOn": "2021-03-30T22:17:33Z",
       "side": 1,
       "message": "WaitForLocation is not necessary, as Location will wait for the location stability and then return the stable location.",
+      "range": {
+        "startLine": 516,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 2
+      },
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b324c92_b5a7c17a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/ui_action_handler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-31T20:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e19ce6b4_f2261c3d",
       "range": {
         "startLine": 516,
         "startChar": 0,

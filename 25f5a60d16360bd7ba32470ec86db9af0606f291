@@ -104,6 +104,30 @@
       },
       "revId": "25f5a60d16360bd7ba32470ec86db9af0606f291",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06cc5061_fcc69dce",
+        "filename": "src/chromiumos/tast/local/chrome/ui/pointer/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-31T20:01:07Z",
+      "side": 1,
+      "message": "Ok, thanks for the update. We will further change this CL to use uiauto/pointer when it is done.",
+      "parentUuid": "252e4550_5a445b46",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "25f5a60d16360bd7ba32470ec86db9af0606f291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
