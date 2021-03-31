@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66cc547a_6fa92e67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-03-31T10:26:16Z",
+      "side": 1,
+      "message": "I\u0027m not sure if the log file is ready after this function returns. I tried this solution several days ago and I remember that the log was still incompeleted. It may be because here is still a race or just I had the wrong implementation...\nAnyway it looks good now so maybe we can just go ahead and check the results in the lab...",
+      "range": {
+        "startLine": 198,
+        "startChar": 11,
+        "endLine": 198,
+        "endChar": 25
+      },
+      "revId": "b8c99a1304f9be11c225fc6d38e763cfa8404dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
