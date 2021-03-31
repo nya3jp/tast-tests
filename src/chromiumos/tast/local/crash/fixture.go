@@ -158,11 +158,23 @@ func moveAllCrashesTo(source, target string) error {
 		return errors.Wrapf(err, "couldn't make stash crash dir %s", target)
 	}
 	for _, f := range files {
-		// Don't move directories (like the "attachments" directory that crashpad creates).
-		if !f.IsDir() {
-			if err := os.Rename(filepath.Join(source, f.Name()), filepath.Join(target, f.Name())); err != nil {
-				return errors.Wrapf(err, "couldn't move file: %v", f.Name())
+		if f.IsDir() {
+			// Don't move directories (like the "attachments" directory that crashpad creates).
+			continue
+		}
+
+		err := os.Rename(filepath.Join(source, f.Name()), filepath.Join(target, f.Name()))
+		// Ignore error if the source was removed.
+		// This could happen, for example, if moveAllCrashesTo races with early-failure-cleanup.
+		// NOTE: We need to check both the os.Rename() return value as well as Stat()'ing the source
+		// file because our destination is of form "target/foo", and "target" may not exist.
+		if errors.Is(err, os.ErrNotExist) {
+			if _, err := os.Stat(filepath.Join(source, f.Name())); err != nil && errors.Is(err, os.ErrNotExist) {
+				continue
 			}
+		}
+		if err != nil {
+			return errors.Wrapf(err, "couldn't move file: %v", f.Name())
 		}
 	}
 	return nil
