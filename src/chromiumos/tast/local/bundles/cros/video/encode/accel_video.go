@@ -44,6 +44,9 @@ type TestOptions struct {
 	// TODO(hiroh): Remove this and run both I420 and NV12 test cases in the regular video.EncodeAccel tests
 	// once the dashboard is green.
 	VerifyNV12Input bool
+
+	// Encode bitrate.
+	bitrate int
 }
 
 // MakeTestOptions creates TestOptions from webMName and profile.
@@ -54,6 +57,19 @@ func MakeTestOptions(webMName string, profile videotype.CodecProfile) TestOption
 		Profile:         profile,
 		TemporalLayers:  1,
 		VerifyNV12Input: false,
+	}
+}
+
+// MakeBitrateTestOptions creates TestOptions from webMName and codec.
+// TemporalLayers is set to 1 and VerifyNV12Input is set to false.
+// Sets bitrate for testing quality changes.
+func MakeBitrateTestOptions(webMName string, profile videotype.CodecProfile, bitrate int) TestOptions {
+	return TestOptions{
+		WebMName:        webMName,
+		Profile:         profile,
+		TemporalLayers:  1,
+		VerifyNV12Input: false,
+		bitrate:         bitrate,
 	}
 }
 
@@ -97,8 +113,12 @@ func YUVJSONFileNameFor(webMFileName string) string {
 
 func codecProfileToEncodeCodecOption(profile videotype.CodecProfile) (string, error) {
 	switch profile {
-	case videotype.H264Prof:
+	case videotype.H264BaselineProf:
 		return "h264baseline", nil
+	case videotype.H264MainProf:
+		return "h264main", nil
+	case videotype.H264HighProf:
+		return "h264high", nil
 	case videotype.VP8Prof:
 		return "vp8", nil
 	case videotype.VP9Prof:
@@ -238,6 +258,11 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 		yuvPath,
 		yuvJSONPath,
 	}
+
+	if opts.bitrate > 0 {
+		testArgs = append(testArgs, fmt.Sprintf("--bitrate=%d", opts.bitrate))
+	}
+
 	if report, err := gtest.New(
 		filepath.Join(chrome.BinTestDir, exec),
 		gtest.Logfile(filepath.Join(s.OutDir(), exec+".uncap_and_quality.log")),
