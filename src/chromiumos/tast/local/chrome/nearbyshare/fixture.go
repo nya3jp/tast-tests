@@ -29,7 +29,7 @@ const resetTimeout = 30 * time.Second
 // NewNearbyShareFixtureWithAndroid creates a new implementation of the Nearby Share fixture with an Android device.
 func NewNearbyShareFixtureWithAndroid(crosDataUsage nearbysetup.DataUsage, crosVisibility nearbysetup.Visibility, androidDataUsage nearbysnippet.DataUsage, androidVisibility nearbysnippet.Visibility, gaiaLogin, crosSelectAndroidAsContact bool, opts ...chrome.Option) testing.FixtureImpl {
 	defaultNearbyOpts := []chrome.Option{
-		chrome.EnableFeatures("IntentHandlingSharing", "NearbySharing", "Sharesheet"),
+		chrome.DisableFeatures("SplitSettingsSync"),
 		chrome.ExtraArgs("--nearby-share-verbose-logging", "--enable-logging", "--v=1"),
 	}
 	return &nearbyShareFixture{
