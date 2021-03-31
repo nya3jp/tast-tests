@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "3ac87897_e679a739",
         "filename": "/COMMIT_MSG",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "did you check the license? we may need to put it under third_party",
       "revId": "69033a06638c3475d2ddfcabec2adb8d1a6628af",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "d6603eaa_dd5c5e6a",
         "filename": "/COMMIT_MSG",
@@ -32,10 +33,10 @@
       "message": "copyright belongs to Google. See here:\nhttps://github.com/WebGLSamples/WebGLSamples.github.io/blob/master/blob/blob.html",
       "parentUuid": "3ac87897_e679a739",
       "revId": "69033a06638c3475d2ddfcabec2adb8d1a6628af",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "878275ec_3ab8f0b8",
         "filename": "/COMMIT_MSG",
@@ -50,8 +51,25 @@
       "message": "Chromium treats Google as a third party. It may be fine, but we probably should double check it with the person who owns/manages chromiumos-test-assets-public.",
       "parentUuid": "d6603eaa_dd5c5e6a",
       "revId": "69033a06638c3475d2ddfcabec2adb8d1a6628af",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca11024f_070a4959",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2021-03-31T17:25:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "878275ec_3ab8f0b8",
+      "revId": "69033a06638c3475d2ddfcabec2adb8d1a6628af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

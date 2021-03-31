@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "d74fa0c0_dcd8ac85",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
@@ -14,10 +15,28 @@
       "side": 1,
       "message": "This does not sound like the comment to init(), and we usually do not comment init(). Maybe moving at the definition of Data: declaration?",
       "revId": "21b2568e58d6a92c65c1b89a0fc7e4ae2e230362",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66bcf1d4_107f34cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2021-03-31T17:25:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d74fa0c0_dcd8ac85",
+      "revId": "21b2568e58d6a92c65c1b89a0fc7e4ae2e230362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "100ff641_cfd54499",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
@@ -37,8 +56,31 @@
         "endChar": 38
       },
       "revId": "21b2568e58d6a92c65c1b89a0fc7e4ae2e230362",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5907552_dfb9711b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2021-03-31T17:25:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "100ff641_cfd54499",
+      "range": {
+        "startLine": 97,
+        "startChar": 32,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "21b2568e58d6a92c65c1b89a0fc7e4ae2e230362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
