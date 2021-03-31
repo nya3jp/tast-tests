@@ -34,7 +34,7 @@ func init() {
 		Desc:     "Verifies functions of Perfetto traced and traced_probes",
 		Contacts: []string{"chinglinyu@chromium.org", "chromeos-performance-eng@google.com"},
 		Data:     []string{traceConfigFile},
-		Attr:     []string{"group:mainline", "informational"}, // TODO(chinglinyu) remove informational once perfetto is landed
+		Attr:     []string{"group:mainline"},
 	})
 }
 
