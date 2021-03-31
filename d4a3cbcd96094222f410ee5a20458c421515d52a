@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42eada3c_f87474b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-03-31T10:07:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb691b6a_a3b685cf",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "d4a3cbcd96094222f410ee5a20458c421515d52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a81b10d3_b53c3485",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-31T06:55:20Z",
       "side": 1,
       "message": "Can the return value be a map[string]struct{} (i.e. set) to reduce the complexity in GetComponentCount?",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 23
+      },
+      "revId": "d4a3cbcd96094222f410ee5a20458c421515d52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e852be4_d78c0055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-03-31T10:07:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a81b10d3_b53c3485",
       "range": {
         "startLine": 68,
         "startChar": 5,
