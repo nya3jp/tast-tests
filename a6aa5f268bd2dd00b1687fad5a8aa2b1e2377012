@@ -16,6 +16,23 @@
       "message": "ping",
       "revId": "a6aa5f268bd2dd00b1687fad5a8aa2b1e2377012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48dac0df_587d7d37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-31T07:54:32Z",
+      "side": 1,
+      "message": "Sorry for delay, I was ooo yesterday.\n",
+      "revId": "a6aa5f268bd2dd00b1687fad5a8aa2b1e2377012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
