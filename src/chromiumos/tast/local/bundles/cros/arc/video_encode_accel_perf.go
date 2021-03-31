@@ -32,7 +32,7 @@ func init() {
 		Params: []testing.Param{{
 			Name: "h264_1080p_i420",
 			Val: video.EncodeTestOptions{
-				Profile:     videotype.H264Prof,
+				Profile:     videotype.H264MainProf,
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420,
 			},
@@ -41,7 +41,7 @@ func init() {
 		}, {
 			Name: "h264_1080p_i420_vm",
 			Val: video.EncodeTestOptions{
-				Profile:     videotype.H264Prof,
+				Profile:     videotype.H264MainProf,
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420,
 			},
