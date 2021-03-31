@@ -55,7 +55,7 @@ func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 	defer func() { // Clean up Downloads directory.
 		files, err := ioutil.ReadDir(filesapp.DownloadPath)
 		if err != nil {
-			s.Fatal("Failed to get files from Downloads directory")
+			s.Fatal("Failed to get files from Downloads directory: ", err)
 		}
 		for _, file := range files {
 			if err = os.RemoveAll(filepath.Join(filesapp.DownloadPath, file.Name())); err != nil {
