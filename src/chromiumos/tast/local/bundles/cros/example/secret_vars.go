@@ -20,7 +20,7 @@ func init() {
 		Attr: []string{"group:mainline", "informational"},
 		// example.SecretVars.password is defined in tast-tests-private/vars/example.SecretVars.yaml
 		// example.commonVar is defined in tast-tests-private/vars/example.yaml
-		Vars: []string{"example.SecretVars.password", "example.commonVar"},
+		VarDeps: []string{"example.SecretVars.password", "example.commonVar"},
 	})
 }
 
