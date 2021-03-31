@@ -161,6 +161,13 @@ func moveAllCrashesTo(source, target string) error {
 		// Don't move directories (like the "attachments" directory that crashpad creates).
 		if !f.IsDir() {
 			if err := os.Rename(filepath.Join(source, f.Name()), filepath.Join(target, f.Name())); err != nil {
+				if os.IsNotExist(err) {
+					if _, err := os.Stat(filepath.Join(source, f.Name())); err != nil && os.IsNotExist(err) {
+						// Ignore error if the source was removed.
+						// This could happen, for example, if moveAllCrashesTo races with early-failure-cleanup.
+						continue
+					}
+				}
 				return errors.Wrapf(err, "couldn't move file: %v", f.Name())
 			}
 		}
