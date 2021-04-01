@@ -22,6 +22,30 @@
       },
       "revId": "752418b736c8524334ef7b7f827d59a32a52ec29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c25c849a_fdb43826",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-01T21:57:20Z",
+      "side": 1,
+      "message": "Personally, I\u0027d be fine with chucking all the non-film grain tests here to start :) (that is, https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go;l\u003d16;drc\u003d81a77c245e99cbe0acd87353a0aa8ecac7183f65)\n\nIt\u0027s seeming like there\u0027s a decent chance (?) that the dud DUTs just needed updates or are not being used generally to run tests. If that\u0027s indeed the case, we might as well see how they do.\n\nAndres, thoughts?",
+      "parentUuid": "5ea4102d_ba902486",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "752418b736c8524334ef7b7f827d59a32a52ec29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
