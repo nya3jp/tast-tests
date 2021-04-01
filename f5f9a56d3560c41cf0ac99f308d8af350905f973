@@ -16,6 +16,91 @@
       "message": "I had to rework the fixture a little bit, since Reset isn\u0027t called after the last test. I created a new function resetShill that is called PreTest and on TearDown. It probably warrants another look. Thanks!",
       "revId": "f5f9a56d3560c41cf0ac99f308d8af350905f973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a6fbf4_41c135ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T18:18:41Z",
+      "side": 1,
+      "message": "not: to the shill profile (or \u0027to the shill configuration\u0027)",
+      "revId": "f5f9a56d3560c41cf0ac99f308d8af350905f973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c22e138a_856707fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T18:18:41Z",
+      "side": 1,
+      "message": "default",
+      "revId": "f5f9a56d3560c41cf0ac99f308d8af350905f973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f275339_61838a98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T18:18:41Z",
+      "side": 1,
+      "message": "If this fails, so will the rest, we should return here.",
+      "revId": "f5f9a56d3560c41cf0ac99f308d8af350905f973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bba04537_3e9ce074",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T18:18:41Z",
+      "side": 1,
+      "message": "While convenient, this is actually a bit heavyweight. Instead we can just do:\n\nmanager, err :\u003d NewDBusObject(ctx, dbusService, dbusManagerInterface, dbusManagerPath)",
+      "revId": "f5f9a56d3560c41cf0ac99f308d8af350905f973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f34e4be_36478ef5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T18:18:41Z",
+      "side": 1,
+      "message": "Return here",
+      "revId": "f5f9a56d3560c41cf0ac99f308d8af350905f973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
