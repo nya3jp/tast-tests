@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3fbf8bd_15052f24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-01T22:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6a6fbf4_41c135ce",
+      "revId": "f5f9a56d3560c41cf0ac99f308d8af350905f973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c22e138a_856707fc",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f282148_2e16355c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-01T22:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c22e138a_856707fc",
+      "revId": "f5f9a56d3560c41cf0ac99f308d8af350905f973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f275339_61838a98",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-04-01T18:18:41Z",
       "side": 1,
       "message": "If this fails, so will the rest, we should return here.",
+      "revId": "f5f9a56d3560c41cf0ac99f308d8af350905f973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c51baac9_436df6cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-01T22:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f275339_61838a98",
       "revId": "f5f9a56d3560c41cf0ac99f308d8af350905f973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fcb868f_4c1f0bda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-01T22:00:24Z",
+      "side": 1,
+      "message": "If I do this, I don\u0027t think I can directly call the PopAllUserProfiles on L55. In my opinion, keeping dbus details abstracted away is worth whatever would be saved by not creating this object. WDYT?",
+      "parentUuid": "bba04537_3e9ce074",
+      "revId": "f5f9a56d3560c41cf0ac99f308d8af350905f973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f34e4be_36478ef5",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
         "patchSetId": 4
@@ -99,6 +171,24 @@
       "writtenOn": "2021-04-01T18:18:41Z",
       "side": 1,
       "message": "Return here",
+      "revId": "f5f9a56d3560c41cf0ac99f308d8af350905f973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51feea90_b2339ef8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-01T22:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f34e4be_36478ef5",
       "revId": "f5f9a56d3560c41cf0ac99f308d8af350905f973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
