@@ -458,7 +458,8 @@ var chromeUseHWCodecsForSmallResolutions = []string{
 	// VA-API HW decoder and encoder might reject small resolutions for
 	// performance (see crbug.com/1008491 and b/171041334).
 	// Disable that for testing.
-	"--disable-features=VaapiEnforceVideoMinMaxResolution"}
+	"--disable-features=VaapiEnforceVideoMinMaxResolution",
+	"--disable-features=VaapiVideoMinResolutionForPerformance"}
 
 var chromeFakeWebcamArgs = []string{
 	// Use a fake media capture device instead of live webcam(s)/microphone(s).
