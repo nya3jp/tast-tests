@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc80540d_54ff21bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 29
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-01T12:55:20Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "6bfe47f8886d933ffa6a792c8ba06946d680f77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b189e59c_cb2da0e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 29
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-01T12:55:20Z",
+      "side": 1,
+      "message": "nit: \"Use\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "6bfe47f8886d933ffa6a792c8ba06946d680f77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1a36c24a_5effb519",
@@ -14,6 +60,23 @@
       "writtenOn": "2021-04-01T10:00:04Z",
       "side": 1,
       "message": "Hello, please help me review this change. Thank you.",
+      "revId": "6bfe47f8886d933ffa6a792c8ba06946d680f77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce776f7_d0ae1bb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-01T12:55:20Z",
+      "side": 1,
+      "message": "LGTM % nits",
       "revId": "6bfe47f8886d933ffa6a792c8ba06946d680f77f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
