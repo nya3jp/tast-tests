@@ -151,6 +151,30 @@
       },
       "revId": "2e07cb110f73ea134a87e5b18826f8eb769d0e22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad9d621_505d4b3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-04-01T23:49:16Z",
+      "side": 1,
+      "message": "I see. Given we have those bugs, it makes sense to test more strictly like this. That said, I\u0027m not very sure those conditions must be held on all types of devices. But let\u0027s adjust the conditions if we see some failures :)",
+      "parentUuid": "4d38cc9e_6747ce5d",
+      "range": {
+        "startLine": 535,
+        "startChar": 0,
+        "endLine": 549,
+        "endChar": 2
+      },
+      "revId": "2e07cb110f73ea134a87e5b18826f8eb769d0e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
