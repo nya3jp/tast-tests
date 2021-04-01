@@ -160,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "adb890b8_aa79c15f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T22:46:13Z",
+      "side": 1,
+      "message": "That just wraps DBusObject.Call(ctx, \"PopAllUserProfiles\").Err, so i don\u0027t think the abstraction is really all that helpful in this particular case. That said, i don\u0027t feel too strongly.",
+      "parentUuid": "8fcb868f_4c1f0bda",
+      "revId": "f5f9a56d3560c41cf0ac99f308d8af350905f973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f34e4be_36478ef5",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
         "patchSetId": 4
