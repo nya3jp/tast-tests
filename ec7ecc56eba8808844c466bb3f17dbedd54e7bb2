@@ -16,6 +16,57 @@
       "message": "Thanks. Could you take a look again? Thanks.",
       "revId": "ec7ecc56eba8808844c466bb3f17dbedd54e7bb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cddd8b7_14c1bb71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355869
+      },
+      "writtenOn": "2021-04-01T06:37:42Z",
+      "side": 1,
+      "message": "Looks good to me! I left two minor comments.",
+      "revId": "ec7ecc56eba8808844c466bb3f17dbedd54e7bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e95a24d5_d519871d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1355869
+      },
+      "writtenOn": "2021-04-01T06:37:42Z",
+      "side": 1,
+      "message": "I tried time.Now().Format(...) on https://play.golang.org/ and over there it always returns 2009-11-10 23:00:00.00.000000000. Also, if the clock does not have enough resolution and the program is fast enough, the files could end up being identical (and the test would be meaningless). I think a better way to get unique contents would be to use the \"THIS...\" + path.\n\nI would verify that this test catches regression by replacing /usr/sbin/log_rotator with /bin/echo and making sure that the test fails. This is also something that you can put in \"TEST\u003d\" line in the cl description.",
+      "revId": "ec7ecc56eba8808844c466bb3f17dbedd54e7bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8beebfcd_3c40c840",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1355869
+      },
+      "writtenOn": "2021-04-01T06:37:42Z",
+      "side": 1,
+      "message": "You can make it a godoc comment on the function.",
+      "revId": "ec7ecc56eba8808844c466bb3f17dbedd54e7bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
