@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fb1439f_da85d99b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-04-01T09:24:28Z",
+      "side": 1,
+      "message": "Hi Hidehiko,\n\nSorry the conversation has dragged out a bit longer than anticipated.\nZSL reviews have taken a bit of time.\n\nWe\u0027ve decided to go with this CL as it is now.\nCould you help with the review now?\n\nThanks!",
+      "revId": "0265357b262f0e0ad2951bc6de5a91de3611426c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
