@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec3600b8_ea1328ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-01T16:02:43Z",
+      "side": 1,
+      "message": "I am acutely aware that this CL effectively undoes https://crrev.com/c/2639523. But, I am currently convinced that this is the right move.",
+      "revId": "ebc9ed3092270ae30bc4c46cdcb75178e13aa767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
