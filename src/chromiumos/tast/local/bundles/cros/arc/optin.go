@@ -32,11 +32,10 @@ func init() {
 		},
 		Params: []testing.Param{{
 			Val:               3,
-			ExtraAttr:         []string{"informational"}, // TODO(b/177341225): remove after stabilized.
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "unstable",
-			Val:               1,
+			Val:               2,
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -45,7 +44,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
 			Name:              "vm_unstable",
-			Val:               1,
+			Val:               2,
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
