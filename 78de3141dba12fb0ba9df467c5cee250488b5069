@@ -16,6 +16,63 @@
       "message": "PTAL",
       "revId": "78de3141dba12fb0ba9df467c5cee250488b5069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "746ce464_fd5340d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-01T07:17:40Z",
+      "side": 1,
+      "message": "nit: Put this first.",
+      "revId": "78de3141dba12fb0ba9df467c5cee250488b5069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7040cc1b_e33d23c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-01T07:17:40Z",
+      "side": 1,
+      "message": "group:mainline now 😊",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 42
+      },
+      "revId": "78de3141dba12fb0ba9df467c5cee250488b5069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d746fca3_6871dd5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-01T07:17:40Z",
+      "side": 1,
+      "message": "Are Chrome restarts for each iteration required?",
+      "revId": "78de3141dba12fb0ba9df467c5cee250488b5069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
