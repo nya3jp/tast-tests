@@ -42,6 +42,14 @@ const (
 	VolumeUpDownHold IntControl = "volume_up_down_hold" // Integer represents a number of milliseconds.
 )
 
+// A FloatControl contains the name of a gettable/settable Control which takes a floating-point value.
+type FloatControl string
+
+// These are the Servo controls with floating-point values.
+const (
+	VBusVoltage FloatControl = "vbus_voltage"
+)
+
 // A OnOffControl accepts either "on" or "off" as a value.
 type OnOffControl string
 
@@ -210,6 +218,15 @@ func (s *Servo) SetInt(ctx context.Context, control IntControl, value int) error
 		return errors.Wrapf(err, "setting servo control %q to %d", control, value)
 	}
 	return nil
+}
+
+// GetFloat returns the floating-point value of a specified control.
+func (s *Servo) GetFloat(ctx context.Context, control FloatControl) (float64, error) {
+	var value float64
+	if err := s.run(ctx, newCall("get", string(control)), &value); err != nil {
+		return 0, errors.Wrapf(err, "getting value for servo control %q", control)
+	}
+	return value, nil
 }
 
 // SetStringAndCheck sets a control to a specified value, and then verifies that it was set correctly.
