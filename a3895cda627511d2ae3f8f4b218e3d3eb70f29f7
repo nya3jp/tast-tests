@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8245929_1c101380",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T21:12:25Z",
+      "side": 1,
+      "message": "+deanliao@. I hate to pile on the reviewers, but I feel like this could be generally useful for WiFi tests and I want to make sure we do this in a way that will be consistent with existing / future WiFi tests.\n",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b4d4847_a470959a",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T21:12:25Z",
+      "side": 1,
+      "message": "We should be consistent with WifiInterface and make this WifiManager.",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8744f35_e4c8cbda",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T21:12:25Z",
+      "side": 1,
+      "message": "nit: Since the interface is never used, I would omit this. (Future cleanup could save the interface in WifiManager and use that, but that can be done separately).",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79acc407_dce3f175",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T21:12:25Z",
+      "side": 1,
+      "message": "Combine lines (\u0027else if err:\u003d ...\u0027)",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a77856df_96ec8666",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T21:12:25Z",
+      "side": 1,
+      "message": "I\u0027m still getting to know go, is an empty for like this a common pattern? Do we need it?",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
