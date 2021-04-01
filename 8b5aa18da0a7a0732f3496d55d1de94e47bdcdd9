@@ -144,6 +144,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1522b94d_04cef66f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-01T13:04:00Z",
+      "side": 1,
+      "message": "Maybe we can just reuse existing bug? IIUC behaviour of new policy should be the same, so not much extra work is needed to cover new policy as well.",
+      "parentUuid": "178cbbf5_2193b23d",
+      "range": {
+        "startLine": 13,
+        "startChar": 16,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "8b5aa18da0a7a0732f3496d55d1de94e47bdcdd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f191b52c_61dd32a2",
