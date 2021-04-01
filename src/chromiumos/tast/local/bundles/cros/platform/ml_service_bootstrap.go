@@ -38,6 +38,11 @@ func MLServiceBootstrap(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to stop %s: %v", job, err)
 	}
 
+	s.Log("Waiting for ML Service daemon to fully stop")
+	if err := upstart.WaitForJobStatus(ctx, job, upstart.StopGoal, upstart.WaitingState, upstart.RejectWrongGoal, 15*time.Second); err != nil {
+		s.Fatalf("Failed waiting for %v to stop: %v", job, err)
+	}
+
 	s.Log("Waiting for Chrome to complete a basic call to ML Service")
 	if err = tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.bootstrapMachineLearningService)`); err != nil {
 		s.Fatal("Running autotestPrivate.bootstrapMachineLearningService failed: ", err)
