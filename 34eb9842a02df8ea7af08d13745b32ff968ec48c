@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59f599f0_cf3007ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-01T22:05:09Z",
+      "side": 1,
+      "message": "No golang doesn\u0027t have an explicit line limit (contentious choice 😄). I agree it\u0027s long, but the pattern I\u0027ve seen in other tests is that that line is not wrapped. I think it\u0027s mostly used programatically to display the purpose of the test.",
+      "parentUuid": "06ad61f3_6c9f69d9",
+      "revId": "34eb9842a02df8ea7af08d13745b32ff968ec48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe4dbe9e_e4c8ec96",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-03-31T23:49:36Z",
       "side": 1,
       "message": "nit: For my understanding, were the polling arguments (specifically the Timeout) decided based on your experimentation or is there a know that the property should certainly be applied in a max of 5 seconds?",
+      "revId": "34eb9842a02df8ea7af08d13745b32ff968ec48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0c4260c_1533c94a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolution.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-01T22:05:09Z",
+      "side": 1,
+      "message": "Based on experimentation, it took a little less than 1 second to propagate to Chrome, so I added a buffer to that. In the past I\u0027ve been burned by timeouts that I thought should have been long enough, but there are weird edge cases.",
+      "parentUuid": "fe4dbe9e_e4c8ec96",
       "revId": "34eb9842a02df8ea7af08d13745b32ff968ec48c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
