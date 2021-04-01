@@ -9,13 +9,18 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -47,18 +52,40 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 	}
 
 	const (
-		username   = "testuser@gmail.com"
-		password   = "good"
+		username   = fixtures.Username
+		password   = fixtures.Password
 		PIN        = "123456"
 		autosubmit = true
 	)
 
-	// Enable device event log in Chrome logs for validation.
-	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: username, Pass: password}), chrome.ExtraArgs("--vmodule=device_event_log*=1"))
+	fdms, err := fakedms.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start FakeDMS: ", err)
+	}
+	defer fdms.Stop(ctx)
+
+	if err := fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
+		s.Fatal("Failed to write policies to FakeDMS: ", err)
+	}
+
+	opts := []chrome.Option{
+		chrome.FakeLogin(chrome.Creds{User: username, Pass: password}),
+		// Enable device event log in Chrome logs for validation.
+		chrome.ExtraArgs("--vmodule=device_event_log*=1"),
+		chrome.DMSPolicy(fdms.URL)}
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Failed to log in by Chrome: ", err)
 	}
 	defer cr.Close(ctx)
+
+	pinPolicies := []policy.Policy{
+		&policy.QuickUnlockModeAllowlist{Val: []string{"PIN"}},
+		&policy.PinUnlockAutosubmitEnabled{Val: true}}
+
+	if err := policyutil.ServeAndVerify(ctx, fdms, cr, pinPolicies); err != nil {
+		s.Fatal("Failed to update policies: ", err)
+	}
 
 	tconn, err := setUpUserPIN(ctx, cr, PIN, password, autosubmit)
 	if err != nil {
@@ -106,7 +133,7 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 	}
 
 	// Choose platform authenticator
-	buttonParams := ui.FindParams{Role: ui.RoleTypeButton, Name: "Built-in sensor"}
+	buttonParams := ui.FindParams{Role: ui.RoleTypeButton, Name: "This device"}
 	platformAuthenticatorButton, err := ui.FindWithTimeout(ctx, tconn, buttonParams, 2*time.Second)
 	if err != nil {
 		s.Fatal("Failed to select platform authenticator from transport selection sheet: ", err)
@@ -178,7 +205,38 @@ func setUpUserPIN(ctx context.Context, cr *chrome.Chrome, PIN, password string, 
 		return nil, errors.Wrap(err, "failed to enable PIN unlock")
 	}
 
+	if err := verifyPINUnlock(ctx, tconn, PIN, autosubmit); err != nil {
+		return nil, errors.Wrap(err, "PIN unlock doesn't work so IsUvpaa will be false")
+	}
+
 	return tconn, nil
+}
+
+func verifyPINUnlock(ctx context.Context, tconn *chrome.TestConn, PIN string, autosubmit bool) error {
+	// Lock the screen.
+	if err := lockscreen.Lock(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to lock the screen")
+	}
+
+	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, 30*time.Second); err != nil {
+		return errors.Wrapf(err, "waiting for screen to be locked failed (last status %+v)", st)
+	}
+
+	// Enter and submit the PIN to unlock the DUT.
+	if err := lockscreen.EnterPIN(ctx, tconn, PIN); err != nil {
+		return errors.Wrap(err, "failed to enter in PIN")
+	}
+
+	if !autosubmit {
+		if err := lockscreen.SubmitPIN(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to submit PIN")
+		}
+	}
+
+	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return !st.Locked }, 30*time.Second); err != nil {
+		return errors.Wrapf(err, "waiting for screen to be unlocked failed (last status %+v)", st)
+	}
+	return nil
 }
 
 // assertMakeCredentialSuccess asserts MakeCredential succeeded by looking at Chrome log.
