@@ -129,6 +129,7 @@ type V4RoleValue string
 const (
 	V4RoleSnk V4RoleValue = "snk"
 	V4RoleSrc V4RoleValue = "src"
+	V4RoleNA  V4RoleValue = "n/a"
 )
 
 // A WatchdogValue is a string that would be accepted by WatchdogAdd & WatchdogRemove control.
@@ -172,6 +173,15 @@ func (s *Servo) GetServoVersion(ctx context.Context) (string, error) {
 	var version string
 	err := s.run(ctx, newCall("get_version"), &version)
 	return version, err
+}
+
+// IsServoV4 determines whether the Servo being used is v4.
+func (s *Servo) IsServoV4(ctx context.Context) (bool, error) {
+	version, err := s.GetServoVersion(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "determining servo version")
+	}
+	return strings.HasPrefix(version, "servo_v4"), nil
 }
 
 // GetString returns the value of a specified control.
@@ -302,29 +312,51 @@ func (s *Servo) SetFWWPState(ctx context.Context, value FWWPStateValue) error {
 	return s.SetString(shortCtx, FWWPState, string(value))
 }
 
+// GetV4Role returns the servo's current V4Role (SNK or SRC), or V4RoleNA if Servo is not V4.
+func (s *Servo) GetV4Role(ctx context.Context) (V4RoleValue, error) {
+	isV4, err := s.IsServoV4(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "determining whether servo is v4")
+	}
+	if !isV4 {
+		return V4RoleNA, nil
+	}
+	role, err := s.GetString(ctx, V4Role)
+	if err != nil {
+		return "", err
+	}
+	return V4RoleValue(role), nil
+}
+
 // SetV4Role sets the V4Role control for a servo v4.
 // On a Servo version other than v4, this does nothing.
-func (s *Servo) SetV4Role(ctx context.Context, value V4RoleValue) error {
-	version, err := s.GetServoVersion(ctx)
+func (s *Servo) SetV4Role(ctx context.Context, newRole V4RoleValue) error {
+	// Determine the current V4 Role
+	currentRole, err := s.GetV4Role(ctx)
 	if err != nil {
-		return errors.Wrap(err, "getting servo version")
+		return errors.Wrap(err, "getting current V4 role")
 	}
-	if !strings.HasPrefix(version, "servo_v4") {
-		testing.ContextLogf(ctx, "Skipping setting %q to %q on servo with version %q", V4Role, value, version)
-		return nil
-	}
-	curr, err := s.GetString(ctx, V4Role)
-	if err != nil {
-		return err
-	}
+
+	// Save the initial V4 Role so we can restore it during servo.Close()
 	if s.initialV4Role == "" {
-		s.initialV4Role = V4RoleValue(curr)
+		testing.ContextLogf(ctx, "Saving initial V4Role %q for later", currentRole)
+		s.initialV4Role = currentRole
 	}
-	if curr == string(value) {
-		testing.ContextLogf(ctx, "Skipping setting %q to %q, because that is the current value", V4Role, value)
+
+	// If not using a servo V4, then we can't set the V4 Role
+	if currentRole == V4RoleNA {
+		testing.ContextLogf(ctx, "Skipping setting %q to %q on non-v4 servo", V4Role, newRole)
 		return nil
 	}
-	return s.SetString(ctx, V4Role, string(value))
+
+	// If the current value is already the intended value,
+	// then don't bother resetting.
+	if currentRole == newRole {
+		testing.ContextLogf(ctx, "Skipping setting %q to %q, because that is the current value", V4Role, newRole)
+		return nil
+	}
+
+	return s.SetString(ctx, V4Role, string(newRole))
 }
 
 // RunECCommand runs the given command on the EC on the device.

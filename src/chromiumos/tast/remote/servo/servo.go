@@ -99,7 +99,7 @@ func parseConnSpec(c string) (host string, port int, err error) {
 
 // Close performs Servo cleanup.
 func (s *Servo) Close(ctx context.Context) error {
-	if s.initialV4Role != "" {
+	if s.initialV4Role != "" && s.initialV4Role != V4RoleNA {
 		testing.ContextLogf(ctx, "Restoring %q to %q", V4Role, s.initialV4Role)
 		if err := s.SetV4Role(ctx, s.initialV4Role); err != nil {
 			return errors.Wrapf(err, "restoring servo control %q to %q", V4Role, s.initialV4Role)
