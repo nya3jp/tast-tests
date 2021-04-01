@@ -22,6 +22,30 @@
       },
       "revId": "0e8f90283cc87a7aab35dca2b30cb6ce9338e0cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2003827_36e240cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-04-01T20:20:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8328ca0e_329cd7a8",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 10
+      },
+      "revId": "0e8f90283cc87a7aab35dca2b30cb6ce9338e0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
