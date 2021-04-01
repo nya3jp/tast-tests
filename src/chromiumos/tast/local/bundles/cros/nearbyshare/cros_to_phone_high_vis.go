@@ -99,9 +99,9 @@ func CrosToPhoneHighVis(ctx context.Context, s *testing.State) {
 	defer sender.Close(ctx)
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Log("Starting receiving on the Android device")
+	s.Log("Starting high-visibility receiving on the Android device")
 	testTimeout := testData.TestTimeout
-	if err := androidDevice.ReceiveFile(ctx, crosDisplayName, androidDisplayName, testTimeout); err != nil {
+	if err := androidDevice.ReceiveFile(ctx, crosDisplayName, androidDisplayName, true, testTimeout); err != nil {
 		s.Fatal("Failed to start receiving on Android: ", err)
 	}
 	// Defer cancelling receiving if something goes wrong.
