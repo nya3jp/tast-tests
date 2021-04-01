@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4216af_47aab9ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-01T16:30:46Z",
+      "side": 1,
+      "message": "I had to rework the fixture a little bit, since Reset isn\u0027t called after the last test. I created a new function resetShill that is called PreTest and on TearDown. It probably warrants another look. Thanks!",
+      "revId": "f5f9a56d3560c41cf0ac99f308d8af350905f973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
