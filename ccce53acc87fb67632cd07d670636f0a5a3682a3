@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fb6a238_f6cc9da2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-04-01T19:25:39Z",
+      "side": 1,
+      "message": "I feel like we should move to the stable suite only after verifying that the tests are stable in the lab. +Harpreet, did we come up with guidelines for that?",
+      "revId": "ccce53acc87fb67632cd07d670636f0a5a3682a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17434434_86524237",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-04-01T19:25:39Z",
+      "side": 1,
+      "message": "I assume we can remove these comments after the shill change lands since that should hopefully fix this bug",
+      "revId": "ccce53acc87fb67632cd07d670636f0a5a3682a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a96cdce_49745cda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-04-01T19:25:39Z",
+      "side": 1,
+      "message": "Just remove this line",
+      "revId": "ccce53acc87fb67632cd07d670636f0a5a3682a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff375f9b_fadc188a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-04-01T19:25:39Z",
+      "side": 1,
+      "message": "where do we use this?",
+      "revId": "ccce53acc87fb67632cd07d670636f0a5a3682a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
