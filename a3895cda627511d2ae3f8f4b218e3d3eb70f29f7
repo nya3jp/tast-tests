@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b96045c_202278bb",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T21:48:08Z",
+      "side": 1,
+      "message": "Enable below will fail if WiFi is not available.\nWe could also test m.IsAvailable(ctx, TechnologyWifi) for a less expensive test of wifi availability.",
+      "parentUuid": "b263dc6f_a553c7bd",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79acc407_dce3f175",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 7
@@ -118,6 +136,24 @@
       "side": 1,
       "message": "I think the for loop is needed because the watcher might return when the monitored property is changed but it\u0027s value is not what we expected. Then we can do next round of watching. As long as we makes sure the for loop will exist we will be ok to use the empty for loop pattern. In our case, the for loop will exist either when the state has changed, or the wCtx times out.",
       "parentUuid": "a77856df_96ec8666",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77c020d4_906ee32e",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T21:48:08Z",
+      "side": 1,
+      "message": "I see, this is golang\u0027s while (1). So if the watcher succeeds, but enabled did not actually change, we repeat until wCtx times out.\n\nIn cellular_helper.go, I just use testing.Poll to wait for the state to change, which is a bit simpler, but maybe slightly less optimal in the success case, since the watcher would succeed as soon as the change event was fired?\n\nI don\u0027t feel strongly either way, but eventually we should converge on a single pattern, and we should probably put the logic in manager.go. I\u0027ll try to put together a cleanup CL for that, but we don\u0027t need to block this on that.",
+      "parentUuid": "6d96f4e3_d00648b6",
       "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
