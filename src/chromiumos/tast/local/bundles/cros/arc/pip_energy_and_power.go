@@ -36,7 +36,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PIPEnergyAndPower,
 		Desc:         "Measures energy and power usage of ARC++ PIP",
-		Contacts:     []string{"amusbach@chromium.org", "chromeos-wmp@google.com"},
+		Contacts:     []string{"amusbach@chromium.org", "chromeos-perf@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Fixture:      "arcBooted",
