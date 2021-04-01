@@ -16,6 +16,24 @@
       "message": "Not sure how I can test it. Please review and let me know how to test it. Thanks.",
       "revId": "0bd631bae903f9c9faaa256106d8646a60526bdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0c689f4_81d6bcc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-01T23:50:31Z",
+      "side": 1,
+      "message": "I believe this is a safe change, let\u0027s just go ahead with submitting.",
+      "parentUuid": "e2da1cae_45b9873b",
+      "revId": "0bd631bae903f9c9faaa256106d8646a60526bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
