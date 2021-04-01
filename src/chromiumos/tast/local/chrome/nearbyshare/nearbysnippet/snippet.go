@@ -535,10 +535,10 @@ func (a *AndroidNearbyDevice) eventWaitAndGet(ctx context.Context, callbackID st
 
 // ReceiveFile starts receiving with a timeout.
 // Sets the AndroidNearbyDevice's transferCallback, which is needed when awaiting follow-up SnippetEvents when calling eventWaitAndGet.
-func (a *AndroidNearbyDevice) ReceiveFile(ctx context.Context, senderName, receiverName string, turnaroundTime time.Duration) error {
+func (a *AndroidNearbyDevice) ReceiveFile(ctx context.Context, senderName, receiverName string, isHighVisibility bool, turnaroundTime time.Duration) error {
 	// Reset the transferCallback between shares.
 	a.transferCallback = ""
-	id, err := a.clientRPCRequest(ctx, "receiveFile", senderName, receiverName, int(turnaroundTime.Seconds()))
+	id, err := a.clientRPCRequest(ctx, "receiveFile", senderName, receiverName, isHighVisibility, int(turnaroundTime.Seconds()))
 	if err != nil {
 		return err
 	}
