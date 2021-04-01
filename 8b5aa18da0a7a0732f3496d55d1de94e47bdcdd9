@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "61c8bcb2_58be4a87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-01T09:13:22Z",
+      "side": 1,
+      "message": "if this policy is deprecated, maybe it makes sense to test new policy QuickUnlockModeAllowlist, but add deprecated policy values until that policy will be removed ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 16,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "8b5aa18da0a7a0732f3496d55d1de94e47bdcdd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f191b52c_61dd32a2",
@@ -31,6 +54,23 @@
       "writtenOn": "2021-03-30T14:20:19Z",
       "side": 1,
       "message": "Hi, Kamil! Since Oleh is currently OOO, would you mind taking a look at this CL? :) ",
+      "revId": "8b5aa18da0a7a0732f3496d55d1de94e47bdcdd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0a543c3_1a6d853a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-01T09:13:22Z",
+      "side": 1,
+      "message": "LGTM % comment\n\nThanks!",
       "revId": "8b5aa18da0a7a0732f3496d55d1de94e47bdcdd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
