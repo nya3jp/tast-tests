@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf2f26c2_71d1bc42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T19:05:40Z",
+      "side": 1,
+      "message": "Note: This CL is not strictly dependent on the shill change, https://chromium-review.googlesource.com/c/chromiumos/platform2/+/2798758, however the tests are more stable with that change.\n",
+      "revId": "d8a11ef532978ca0310daca108635a2ac839041a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
