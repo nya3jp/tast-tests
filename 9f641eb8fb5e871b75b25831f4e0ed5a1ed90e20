@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1348a893_649ae498",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-01T08:54:35Z",
+      "side": 1,
+      "message": "nit: remove \".\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "9f641eb8fb5e871b75b25831f4e0ed5a1ed90e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b38f4dfa_ea46193b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-01T08:54:35Z",
+      "side": 1,
+      "message": "LGTM % comments",
+      "revId": "9f641eb8fb5e871b75b25831f4e0ed5a1ed90e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63673b48_239a0644",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-01T08:54:35Z",
+      "side": 1,
+      "message": "Please use errors.Is(err, os.ErrNotExist) instead:\n\nhttps://golang.org/src/os/error.go?s\u003d3221:3252#L82",
+      "range": {
+        "startLine": 164,
+        "startChar": 7,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "9f641eb8fb5e871b75b25831f4e0ed5a1ed90e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "652fc415_73c28e6e",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-01T08:54:35Z",
+      "side": 1,
+      "message": "It looks like we don\u0027t need to double check that source does not exist. IIUC, if target does not exist, it will be created and if we fail to create target, we should get different error.\n\nhttps://golang.org/pkg/os/#Rename",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 92
+      },
+      "revId": "9f641eb8fb5e871b75b25831f4e0ed5a1ed90e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50336c54_382c9cc3",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-01T08:54:35Z",
+      "side": 1,
+      "message": "i\u0027d rewrite it to smth like:\n\n```\nfor _, f :\u003d range files {\n    if f.IsDir() {\n        continue\n    }\n\n    err :\u003d os.Rename(filepath.Join(source, f.Name()), filepath.Join(target, f.Name())); \n    if errors.Is(err, os.ErrNotExist) {\n        continue\n    }\n    if err !\u003d nil {\n        return errors.Wrapf(err, \"couldn\u0027t move file: %v\", f.Name())\n    }\n```",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 2
+      },
+      "revId": "9f641eb8fb5e871b75b25831f4e0ed5a1ed90e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
