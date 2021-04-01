@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b263dc6f_a553c7bd",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T21:34:53Z",
+      "side": 1,
+      "message": "Hi Steven, this check makes sure the DUT has WiFi interface so the WiFiManager can be used for other wifi operations. Or do you think we have another property to check to see if WiFi is supported on this DUT model?",
+      "parentUuid": "e8744f35_e4c8cbda",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79acc407_dce3f175",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 7
@@ -82,6 +100,24 @@
       "writtenOn": "2021-04-01T21:12:25Z",
       "side": 1,
       "message": "I\u0027m still getting to know go, is an empty for like this a common pattern? Do we need it?",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d96f4e3_d00648b6",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T21:34:53Z",
+      "side": 1,
+      "message": "I think the for loop is needed because the watcher might return when the monitored property is changed but it\u0027s value is not what we expected. Then we can do next round of watching. As long as we makes sure the for loop will exist we will be ok to use the empty for loop pattern. In our case, the for loop will exist either when the state has changed, or the wCtx times out.",
+      "parentUuid": "a77856df_96ec8666",
       "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
