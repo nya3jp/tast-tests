@@ -16,6 +16,23 @@
       "message": "Hi Alexander,\n\nCould you please review this CL? \n\nThank you!",
       "revId": "ab47d8bc53625c4c3c2626057ac118979ce20ae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "273e6f43_0dfd39d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-01T09:25:04Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "ab47d8bc53625c4c3c2626057ac118979ce20ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
