@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d14787e_28a408d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2021-04-01T05:05:33Z",
+      "side": 1,
+      "message": "Good catch. I didn\u0027t know it got deprecated. Done",
+      "parentUuid": "bb13b6ca_578f4407",
+      "revId": "4220446610732f4c1e27f62644c4838292cd8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c7ebd6d_0819d21a",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ac4290b_9e2f9972",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2021-04-01T05:05:33Z",
+      "side": 1,
+      "message": "Ah, I missed this. Done.",
+      "parentUuid": "8c7ebd6d_0819d21a",
+      "revId": "4220446610732f4c1e27f62644c4838292cd8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a6396e4_83f8459d",
@@ -65,6 +101,30 @@
       "writtenOn": "2021-03-30T03:26:46Z",
       "side": 1,
       "message": "logRotatorExecutable?\n\nI think you don\u0027t need parentheses if you have just one constant, but you\u0027ll probably need one more constant for \"7\".",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "4220446610732f4c1e27f62644c4838292cd8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2694e25_6ef1bd53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2021-04-01T05:05:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a6396e4_83f8459d",
       "range": {
         "startLine": 34,
         "startChar": 2,
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d5e6ac3_aea66e30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2021-04-01T05:05:33Z",
+      "side": 1,
+      "message": "Done. Also I added comments.",
+      "parentUuid": "e953a337_a89ee8d4",
+      "range": {
+        "startLine": 44,
+        "startChar": 13,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "4220446610732f4c1e27f62644c4838292cd8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdfc5514_d9a141af",
@@ -111,6 +195,24 @@
       "writtenOn": "2021-03-30T03:26:46Z",
       "side": 1,
       "message": "calculateHashOfFile returns an error, but not a single call site makes use of it. How about saving the error here and adding it to the message below (\"Rotation failed\")? In this way, whoever is debugging this test in the future will know why exactly calculateHashOfFile returned nil.",
+      "revId": "4220446610732f4c1e27f62644c4838292cd8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25bc80a2_21a2023a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2021-04-01T05:05:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdfc5514_d9a141af",
       "revId": "4220446610732f4c1e27f62644c4838292cd8491",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +234,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3b6e255_5703fb53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2021-04-01T05:05:33Z",
+      "side": 1,
+      "message": "Good suggestion. Done.",
+      "parentUuid": "98462906_6abffbca",
+      "revId": "4220446610732f4c1e27f62644c4838292cd8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8a7dab6_842c850a",
@@ -149,6 +269,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb34da64_afa1ce13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2021-04-01T05:05:33Z",
+      "side": 1,
+      "message": "It should be useful. Done",
+      "parentUuid": "d8a7dab6_842c850a",
+      "revId": "4220446610732f4c1e27f62644c4838292cd8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9862a1ca_0c55fe85",
@@ -162,6 +300,24 @@
       "writtenOn": "2021-03-30T03:26:46Z",
       "side": 1,
       "message": "I don\u0027t think an extra variable is needed. Can you just \"return fmt.Sprintf(..)\"?",
+      "revId": "4220446610732f4c1e27f62644c4838292cd8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a261ec_c647d6d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2021-04-01T05:05:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9862a1ca_0c55fe85",
       "revId": "4220446610732f4c1e27f62644c4838292cd8491",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
