@@ -46,12 +46,12 @@ func init() {
 			"niwa@chromium.org",  // Tast port author.
 			"arc-performance@google.com",
 		},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		// This test steps through opt-in flow 10 times and each iteration takes 20~40 seconds.
 		Timeout: 20 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "unmanaged",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
 				username:          "arc.AuthPerf.unmanaged_username",
@@ -61,7 +61,6 @@ func init() {
 			},
 		}, {
 			Name:              "unmanaged_highmem",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
 				username:          "arc.AuthPerf.unmanaged_username",
@@ -72,7 +71,6 @@ func init() {
 			},
 		}, {
 			Name:              "unmanaged_vm",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
 				username:          "arc.AuthPerf.unmanaged_username",
@@ -82,7 +80,6 @@ func init() {
 			},
 		}, {
 			Name:              "unmanaged_highmem_vm",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
 				username:          "arc.AuthPerf.unmanaged_username",
@@ -92,9 +89,7 @@ func init() {
 				chromeArgs:        []string{"--enable-features=ArcUseHighMemoryDalvikProfile"},
 			},
 		}, {
-			Name: "managed",
-			// TODO(b/179312883): Reenable when the test is fixed
-			// ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			Name:              "managed",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
 				username:          "arc.AuthPerf.managed_username",
@@ -103,9 +98,7 @@ func init() {
 				resultSuffix:      "_managed",
 			},
 		}, {
-			Name: "managed_vm",
-			// TODO(b/179312883): Reenable when the test is fixed
-			// ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			Name:              "managed_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
 				username:          "arc.AuthPerf.managed_username",
