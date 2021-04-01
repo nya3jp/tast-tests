@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "786aa810_ab74ad96",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-01T16:51:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63673b48_239a0644",
+      "range": {
+        "startLine": 164,
+        "startChar": 7,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "9f641eb8fb5e871b75b25831f4e0ed5a1ed90e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "652fc415_73c28e6e",
@@ -87,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9248453d_2d593330",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-01T16:51:56Z",
+      "side": 1,
+      "message": "We do need the redundant check: consider the case where we\u0027re moving to /foo/bar/baz.meta and \"bar\" doesn\u0027t exist. Then we\u0027d get an ErrNotExist, but due to *bar* not existing rather than the source file.\n\nAdded clarifying comments.",
+      "parentUuid": "652fc415_73c28e6e",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 92
+      },
+      "revId": "9f641eb8fb5e871b75b25831f4e0ed5a1ed90e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50336c54_382c9cc3",
@@ -100,6 +148,30 @@
       "writtenOn": "2021-04-01T08:54:35Z",
       "side": 1,
       "message": "i\u0027d rewrite it to smth like:\n\n```\nfor _, f :\u003d range files {\n    if f.IsDir() {\n        continue\n    }\n\n    err :\u003d os.Rename(filepath.Join(source, f.Name()), filepath.Join(target, f.Name())); \n    if errors.Is(err, os.ErrNotExist) {\n        continue\n    }\n    if err !\u003d nil {\n        return errors.Wrapf(err, \"couldn\u0027t move file: %v\", f.Name())\n    }\n```",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 2
+      },
+      "revId": "9f641eb8fb5e871b75b25831f4e0ed5a1ed90e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "151e03a3_12bc8283",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-01T16:51:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50336c54_382c9cc3",
       "range": {
         "startLine": 160,
         "startChar": 0,
