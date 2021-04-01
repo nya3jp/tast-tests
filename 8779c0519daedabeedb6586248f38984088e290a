@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef68484f_f6ac2a81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-04-01T11:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "958452d6_0bf62524",
+      "range": {
+        "startLine": 116,
+        "startChar": 47,
+        "endLine": 116,
+        "endChar": 64
+      },
+      "revId": "8779c0519daedabeedb6586248f38984088e290a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9950a78b_6735444d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-31T11:36:05Z",
       "side": 1,
       "message": "Need to handle the case that video/camera are aliasing to each other.",
+      "range": {
+        "startLine": 118,
+        "startChar": 26,
+        "endLine": 118,
+        "endChar": 44
+      },
+      "revId": "8779c0519daedabeedb6586248f38984088e290a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "919d7040_3e44b21c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-04-01T11:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9950a78b_6735444d",
       "range": {
         "startLine": 118,
         "startChar": 26,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb523ce2_61033366",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-04-01T11:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf9964b2_59420079",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 13
+      },
+      "revId": "8779c0519daedabeedb6586248f38984088e290a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f633b1b_bf7752dc",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c2694d8_2fa709e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-04-01T11:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f633b1b_bf7752dc",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 9
+      },
+      "revId": "8779c0519daedabeedb6586248f38984088e290a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3768e16c_b1f1fb6e",
@@ -106,6 +202,24 @@
       "writtenOn": "2021-03-31T11:37:28Z",
       "side": 1,
       "message": "I think adding a log in the else block might be helpful for future debugging.",
+      "revId": "8779c0519daedabeedb6586248f38984088e290a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a254fd_5aba6aa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-04-01T11:03:33Z",
+      "side": 1,
+      "message": "It is not convenient to do logging in these functions because they will need the argument testing.State from callers.",
+      "parentUuid": "3768e16c_b1f1fb6e",
       "revId": "8779c0519daedabeedb6586248f38984088e290a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
