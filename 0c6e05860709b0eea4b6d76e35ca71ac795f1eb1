@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b01e39_d3d33899",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T17:14:33Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like the next CL in this chain, \u0027cuj: add quick check cuj tests\u0027 depends on this change, could you note the change that requires these for better context?\n",
+      "revId": "0c6e05860709b0eea4b6d76e35ca71ac795f1eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e63e209d_16912d63",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-04-01T09:13:59Z",
       "side": 1,
       "message": "NewManager is not a trivial operation but it\u0027s called at the beginning of these functions. Can we avoid duplicated calls?",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 21
+      },
+      "revId": "0c6e05860709b0eea4b6d76e35ca71ac795f1eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de18465_8598414b",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T17:14:33Z",
+      "side": 1,
+      "message": "For cellular tests, I introduce a \u0027helper\u0027 module in the bundles/cros/network/cellular directory. It holds a Manager and Device instance and provides helpers like this. It seems like a similar approach might work well here, WDYT?",
+      "parentUuid": "e63e209d_16912d63",
       "range": {
         "startLine": 67,
         "startChar": 11,
