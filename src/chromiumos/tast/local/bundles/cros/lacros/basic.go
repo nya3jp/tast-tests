@@ -24,6 +24,12 @@ func init() {
 		Fixture:      "lacrosStartedByData",
 		Timeout:      7 * time.Minute,
 		Data:         []string{launcher.DataArtifact},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"lacros_stable"},
+		}, {
+			Name:              "unstable",
+			ExtraSoftwareDeps: []string{"lacros_unstable"},
+		}},
 	})
 }
 
