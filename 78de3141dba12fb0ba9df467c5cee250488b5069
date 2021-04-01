@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33505271_36ebd9fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-01T10:02:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "746ce464_fd5340d0",
+      "revId": "78de3141dba12fb0ba9df467c5cee250488b5069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7040cc1b_e33d23c4",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc624343_cbdd33e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-01T10:02:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7040cc1b_e33d23c4",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 42
+      },
+      "revId": "78de3141dba12fb0ba9df467c5cee250488b5069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d746fca3_6871dd5f",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-04-01T07:17:40Z",
       "side": 1,
       "message": "Are Chrome restarts for each iteration required?",
+      "revId": "78de3141dba12fb0ba9df467c5cee250488b5069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0393c50d_43d8613a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-01T10:02:47Z",
+      "side": 1,
+      "message": "It\u0027s needed as otherwise the certificate won\u0027t be provisioned.",
+      "parentUuid": "d746fca3_6871dd5f",
       "revId": "78de3141dba12fb0ba9df467c5cee250488b5069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
