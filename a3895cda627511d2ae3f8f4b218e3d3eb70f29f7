@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e58c963_b2c6e74b",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:51:32Z",
+      "side": 1,
+      "message": "I added the Interface() method to WiFiManager for new code to use, but didn\u0027t change the the code where WiFiInterface() is called because shill manager is created by the caller and may be used to call other shill functions.",
+      "parentUuid": "8b4d4847_a470959a",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8744f35_e4c8cbda",
@@ -88,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa728e13_f90f1a11",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:51:32Z",
+      "side": 1,
+      "message": "Thanks! I used m.IsAvailable(ctx, TechnologyWifi) and returns error is wifi is not available.",
+      "parentUuid": "0b96045c_202278bb",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79acc407_dce3f175",
@@ -101,6 +137,24 @@
       "writtenOn": "2021-04-01T21:12:25Z",
       "side": 1,
       "message": "Combine lines (\u0027else if err:\u003d ...\u0027)",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c73a0a8c_eac1600b",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:51:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79acc407_dce3f175",
       "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +208,24 @@
       "side": 1,
       "message": "I see, this is golang\u0027s while (1). So if the watcher succeeds, but enabled did not actually change, we repeat until wCtx times out.\n\nIn cellular_helper.go, I just use testing.Poll to wait for the state to change, which is a bit simpler, but maybe slightly less optimal in the success case, since the watcher would succeed as soon as the change event was fired?\n\nI don\u0027t feel strongly either way, but eventually we should converge on a single pattern, and we should probably put the logic in manager.go. I\u0027ll try to put together a cleanup CL for that, but we don\u0027t need to block this on that.",
       "parentUuid": "6d96f4e3_d00648b6",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01663921_d1a297ea",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:51:32Z",
+      "side": 1,
+      "message": "I originally used testing.Poll but changed to use watcher feeling watcher is more efficient by avoiding active polling. I checked the cellular one - it uses 100 * time.Millisecond interval which could introduce a lot of unnecessary queries if the enabling operations takes time.",
+      "parentUuid": "77c020d4_906ee32e",
       "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
