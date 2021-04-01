@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f734fd26_1c69e196",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-01T12:49:50Z",
+      "side": 1,
+      "message": "nit: this line is too long. Please use multiple lines.",
+      "revId": "1b28fde810f2df1ee6d8f92023326fdf589103cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15f92f0f_ba441c0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-01T12:49:50Z",
+      "side": 1,
+      "message": "Please add some comments on the steps that take more time. E.g.:\n\u003e  // 3 minutes to do ....\n\u003e  // 4 minutes checking ...\nIt is enough to add steps that require more than a few minutes. This way if a step is deleted from these, the timeout can be shortened.",
+      "revId": "1b28fde810f2df1ee6d8f92023326fdf589103cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb725dd4_27880b5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-01T12:49:50Z",
+      "side": 1,
+      "message": "\"r\" is a really short variable name, and this variable is used far from here. Please use a little longer name, like \"runner\".",
+      "revId": "1b28fde810f2df1ee6d8f92023326fdf589103cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba87e88e_354121dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-01T12:49:50Z",
+      "side": 1,
+      "message": "What happens if this is negative?",
+      "range": {
+        "startLine": 196,
+        "startChar": 52,
+        "endLine": 196,
+        "endChar": 97
+      },
+      "revId": "1b28fde810f2df1ee6d8f92023326fdf589103cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
