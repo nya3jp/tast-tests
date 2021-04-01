@@ -131,6 +131,30 @@
       },
       "revId": "48dfedaeb47adf68612ce402a19822a00562db9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42f903c4_3559be4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_libyuv_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1459753
+      },
+      "writtenOn": "2021-04-01T16:56:07Z",
+      "side": 1,
+      "message": "I believe the returned values are in \"value\" and \"err\". I\u0027m going to change this line to \"return value, err\" so it is more clear. thanks!",
+      "parentUuid": "6d178303_0378207b",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 7
+      },
+      "revId": "48dfedaeb47adf68612ce402a19822a00562db9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
