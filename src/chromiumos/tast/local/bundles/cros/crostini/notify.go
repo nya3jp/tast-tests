@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -114,22 +115,29 @@ func Notify(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run notify-send: ", err)
 	}
 
-	var notifications []notification
-	if err := tconn.Call(ctx,
-		&notifications,
-		`tast.promisify(chrome.autotestPrivate.getVisibleNotifications)`,
-	); err != nil {
-		s.Fatal("Failed to get visible notifications: ", err)
-	}
-
-	found := false
-	for _, n := range notifications {
-		if n.Title == notificationTitle && n.Message == notificationBody {
-			found = true
-			break
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var notifications []notification
+		if err := tconn.Call(ctx,
+			&notifications,
+			`tast.promisify(chrome.autotestPrivate.getVisibleNotifications)`,
+		); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get visible notifications"))
 		}
-	}
-	if !found {
-		s.Fatalf("Did not find expected notification %q %q in %q", notificationTitle, notificationBody, notifications)
+
+		found := false
+		for _, n := range notifications {
+			if n.Title == notificationTitle && n.Message == notificationBody {
+				found = true
+				break
+			}
+		}
+		if !found {
+			errors.Errorf("%q %q in %q", notificationTitle, notificationBody, notifications)
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout: 10 * time.Second,
+	}); err != nil {
+		s.Fatal("Did not find expected notification: ", err)
 	}
 }
