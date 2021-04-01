@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/hwsec"
 	hwsecremote "chromiumos/tast/remote/hwsec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -26,6 +27,8 @@ func init() {
 		},
 		Attr:         []string{"informational", "group:mainline"},
 		SoftwareDeps: []string{"gsc", "reboot"},
+		// Skip "bob"&"bob64" due to the weird cr50 behavior. Please see b/184020314.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("bob", "bob64")),
 	})
 }
 
