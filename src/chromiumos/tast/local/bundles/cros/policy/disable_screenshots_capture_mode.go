@@ -35,12 +35,6 @@ func init() {
 }
 
 func DisableScreenshotsCaptureMode(ctx context.Context, s *testing.State) {
-	defer func() {
-		if err := screenshot.RemoveScreenshots(); err != nil {
-			s.Error("Failed to remove screenshots after all tests: ", err)
-		}
-	}()
-
 	fdms, err := fakedms.New(ctx, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start FakeDMS: ", err)
@@ -64,6 +58,12 @@ func DisableScreenshotsCaptureMode(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get test API connection: ", err)
 	}
+
+	defer func() {
+		if err := screenshot.RemoveScreenshots(); err != nil {
+			s.Error("Failed to remove screenshots after all tests: ", err)
+		}
+	}()
 
 	for _, tc := range []struct {
 		name             string
