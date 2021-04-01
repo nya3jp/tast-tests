@@ -39,7 +39,7 @@ func DoSystemProxyAuthentication(ctx context.Context, tconn *chrome.TestConn, us
 	}
 
 	// Introduce Credentials in the system-proxy dialog.
-	dialog, err := ui.StableFind(ctx, tconn, ui.FindParams{ClassName: "DialogDelegateView"}, &pollOpts)
+	dialog, err := ui.StableFind(ctx, tconn, ui.FindParams{ClassName: "RequestSystemProxyCredentialsView"}, &pollOpts)
 	if err != nil {
 		return errors.Wrap(err, "failed to find system-proxy dialog")
 	}
