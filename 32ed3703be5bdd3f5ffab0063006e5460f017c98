@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b222690_88428503",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-01T23:07:50Z",
+      "side": 1,
+      "message": "CrosToPhoneHighVis is failing 100% even without this, but ReceiveFile worked with the new snippet so I think it\u0027s fine.",
+      "revId": "32ed3703be5bdd3f5ffab0063006e5460f017c98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
