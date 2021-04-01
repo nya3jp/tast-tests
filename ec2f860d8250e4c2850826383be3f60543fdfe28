@@ -56,6 +56,30 @@
       },
       "revId": "ec2f860d8250e4c2850826383be3f60543fdfe28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e35d448b_02162ef7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-04-01T13:12:14Z",
+      "side": 1,
+      "message": "The current failures seem not related to it, but I think it can cause the failures. Done.",
+      "parentUuid": "f794ee0a_24edb599",
+      "range": {
+        "startLine": 271,
+        "startChar": 19,
+        "endLine": 271,
+        "endChar": 28
+      },
+      "revId": "ec2f860d8250e4c2850826383be3f60543fdfe28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
