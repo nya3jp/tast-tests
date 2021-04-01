@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e1f64274_12408ed5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-01T05:26:10Z",
+      "side": 1,
+      "message": "LGTM with minor comments.",
+      "revId": "b8c99a1304f9be11c225fc6d38e763cfa8404dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "66cc547a_6fa92e67",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
         "patchSetId": 1
@@ -37,6 +54,40 @@
         "endLine": 198,
         "endChar": 25
       },
+      "revId": "b8c99a1304f9be11c225fc6d38e763cfa8404dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "612d9916_bf779cd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-01T05:26:10Z",
+      "side": 1,
+      "message": "Could you update the document along with your change, too?",
+      "revId": "b8c99a1304f9be11c225fc6d38e763cfa8404dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ec9e3c_cd0e49e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-01T05:26:10Z",
+      "side": 1,
+      "message": "Since the order is matter, could you add a brief comment the background?\n\noptional: in case of StopSever failing, you may still want to record (maybe partial) logs for debugging?",
       "revId": "b8c99a1304f9be11c225fc6d38e763cfa8404dc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
