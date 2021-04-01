@@ -27,7 +27,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OverviewPerf,
 		Desc:         "Measures animation smoothness of entering/exiting the overview mode",
-		Contacts:     []string{"mukai@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
+		Contacts:     []string{"mukai@chromium.org", "oshima@chromium.org", "chromeos-perf@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
