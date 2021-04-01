@@ -178,6 +178,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5998c38e_89d21b3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-01T02:14:48Z",
+      "side": 1,
+      "message": "As the fixture doesn\u0027t have FixtValue for tests to use and thus the package is never imported, I think it is good to add it here for the registration in init.\n\n(mark resolved)",
+      "parentUuid": "9a2ffe38_e799f703",
+      "revId": "0202b52b46cdd1fe109afbc96f809ff8dba0859f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32ce6828_c1e528b6",
