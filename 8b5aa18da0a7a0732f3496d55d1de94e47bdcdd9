@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fc2089a_bbe54ea0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-04-01T09:25:44Z",
+      "side": 1,
+      "message": "There are already other tests that rely on QuickUnlockModeAllowlist policy (PinUnlockMaximumLength, PinUnlockMinimumLength and PinUnlockWeakPinsAllowed). This test is only to ensure that the deprecate one also works before it is removed.",
+      "parentUuid": "61c8bcb2_58be4a87",
+      "range": {
+        "startLine": 13,
+        "startChar": 16,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "8b5aa18da0a7a0732f3496d55d1de94e47bdcdd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f191b52c_61dd32a2",
