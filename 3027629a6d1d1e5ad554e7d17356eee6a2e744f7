@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da7b5cde_265202e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-01T18:56:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb1214e4_35041f8a",
+      "range": {
+        "startLine": 25,
+        "startChar": 74,
+        "endLine": 25,
+        "endChar": 86
+      },
+      "revId": "3027629a6d1d1e5ad554e7d17356eee6a2e744f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b2bcfdc_eb75cbab",
@@ -124,6 +148,24 @@
       "writtenOn": "2021-03-31T21:01:05Z",
       "side": 1,
       "message": "Maybe\n  if bucket.Count \u003d\u003d 0 {\n    continue\n  }\n\n?",
+      "revId": "3027629a6d1d1e5ad554e7d17356eee6a2e744f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6b652b2_328879dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-01T18:56:25Z",
+      "side": 1,
+      "message": "I have already written several tests that assume bucket.Count cannot be 0, or at least not for Viz.DisplayCompositor.OverlayStrategy. Please let me know if there is really something wrong with that assumption.",
+      "parentUuid": "0757bf5f_26471f77",
       "revId": "3027629a6d1d1e5ad554e7d17356eee6a2e744f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
