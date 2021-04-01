@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e63e209d_16912d63",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-01T09:13:59Z",
+      "side": 1,
+      "message": "NewManager is not a trivial operation but it\u0027s called at the beginning of these functions. Can we avoid duplicated calls?",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 21
+      },
+      "revId": "0c6e05860709b0eea4b6d76e35ca71ac795f1eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e570547c_cc1574d0",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 4
