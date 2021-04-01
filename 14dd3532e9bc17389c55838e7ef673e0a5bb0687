@@ -68,6 +68,24 @@
       "parentUuid": "a685ad54_fab40c91",
       "revId": "14dd3532e9bc17389c55838e7ef673e0a5bb0687",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fbb06f8_c98e0fca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T18:18:41Z",
+      "side": 1,
+      "message": "Since that timeout is not obvious, we should note that in a comment somewhere.",
+      "parentUuid": "23718307_ad8f35ef",
+      "revId": "14dd3532e9bc17389c55838e7ef673e0a5bb0687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
