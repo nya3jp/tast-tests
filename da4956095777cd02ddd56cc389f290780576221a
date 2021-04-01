@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c8e6778_bdb557b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj_recorder2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:01:48Z",
+      "side": 1,
+      "message": "Hi shuhei, I changed the WPR precondition with this CL. Because the change is small, no CL is created.\nAlso, changed ui.cujMute to ui.cuj_mute to align with other CUJ variables.\nAlso checked all CUJs and normalized other variables to be ui.cuj_xxxx (or similar names)",
+      "parentUuid": "62a603af_fa2be138",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ea80982_ae308878",

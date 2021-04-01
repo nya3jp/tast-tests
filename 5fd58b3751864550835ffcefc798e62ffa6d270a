@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96270099_4deab142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6426123c_3d48d145",
+      "range": {
+        "startLine": 23,
+        "startChar": 48,
+        "endLine": 23,
+        "endChar": 68
+      },
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "241e6515_b1f6c361",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-30T22:53:00Z",
       "side": 1,
       "message": "probably better to name as ui.TabSwitchCUJ2.mode?",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 8
+      },
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "344b7770_3db96f42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:01:48Z",
+      "side": 1,
+      "message": "changed to ui.cuj_mode (and shared with all CUJs that need the mode control)",
+      "parentUuid": "241e6515_b1f6c361",
       "range": {
         "startLine": 28,
         "startChar": 4,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55f538f8_5ecfe523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj_recorder2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45c2b066_275092b2",
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e8555ab_bfcada0e",
@@ -78,6 +144,30 @@
       "side": 1,
       "message": "\u003e \"informations\" is a possible misspelling of \"information\".\n\nPlease fix.",
       "parentUuid": "603f54be_b628c716",
+      "range": {
+        "startLine": 70,
+        "startChar": 39,
+        "endLine": 70,
+        "endChar": 51
+      },
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38682352_2c3fea84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e8555ab_bfcada0e",
       "range": {
         "startLine": 70,
         "startChar": 39,
@@ -134,6 +224,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fe1f0db_29747ad8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07261cc8_6f3f7413",
+      "range": {
+        "startLine": 83,
+        "startChar": 60,
+        "endLine": 83,
+        "endChar": 77
+      },
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a4d30be_fb83e62e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f75ff15f_ee3c4441",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 21
+      },
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9a9b5fc_09b8d9f2",
@@ -147,6 +285,30 @@
       "writtenOn": "2021-03-30T22:53:00Z",
       "side": 1,
       "message": "This looks strange to me.  Theoretically, there\u0027s a chance that it finds the anchor and conducts the click but returns an error during the following steps, and then in that case it will try to find the anchor and click again.\n\nI think it\u0027s better to use testing.Poll only for the waiting for the anchor to be visible/ready.  Then conduct the click.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 2
+      },
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba4fb18c_239fac9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:01:48Z",
+      "side": 1,
+      "message": "Thanks, Poll is moved up to wait for anchor to be found and clicked.",
+      "parentUuid": "f9a9b5fc_09b8d9f2",
       "range": {
         "startLine": 167,
         "startChar": 0,
@@ -194,6 +356,30 @@
       "side": 1,
       "message": "I agree we should temporarily remove Google News until we figure out how the repaint can be measured.  We can, either now or in a later CL, swap with Yahoo news as suggested by Xibin",
       "parentUuid": "690b4ae0_67c5cf10",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 5
+      },
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa1ea0bc_9bf28a9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:01:48Z",
+      "side": 1,
+      "message": "Thanks Jun and Aings. Replaced with Yahoo news.",
+      "parentUuid": "9c489440_3061b74a",
       "range": {
         "startLine": 514,
         "startChar": 0,

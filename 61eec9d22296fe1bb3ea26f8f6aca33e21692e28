@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad429ac8_2daa902f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:01:48Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "56dabd60_8eb7ea98",
+      "range": {
+        "startLine": 35,
+        "startChar": 66,
+        "endLine": 35,
+        "endChar": 121
+      },
+      "revId": "61eec9d22296fe1bb3ea26f8f6aca33e21692e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7076c05_ab0822e8",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-03-31T10:52:20Z",
       "side": 1,
       "message": "In general it\u0027s nice to design a struct as immutable when possible.\n\nCurrently webPageInfo has two mutable fields, url and currentPattern. What do you think about moving them to chromeTab? Then the distinction between webPageInfo and chromeTab is clear --- webPageInfo contains static navigation scenarios (immutable), while chromeTab maintains state about a Chrome tab.",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 14
+      },
+      "revId": "61eec9d22296fe1bb3ea26f8f6aca33e21692e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d3b761d_0db065cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:01:48Z",
+      "side": 1,
+      "message": "Thanks for suggesting the design pattern. Those fields are moved to chromeTab as suggested.",
+      "parentUuid": "d7076c05_ab0822e8",
       "range": {
         "startLine": 70,
         "startChar": 3,
