@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d44b6c_df455fd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T20:37:25Z",
+      "side": 1,
+      "message": "I don\u0027t feel strongly either way, I\u0027ve been paying attention to both, but since the default is \u0027stable\u0027 (unstable is an extra attr), it seems that the opposite is the general approach.",
+      "parentUuid": "4fb6a238_f6cc9da2",
+      "revId": "ccce53acc87fb67632cd07d670636f0a5a3682a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17434434_86524237",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-01T19:25:39Z",
       "side": 1,
       "message": "I assume we can remove these comments after the shill change lands since that should hopefully fix this bug",
+      "revId": "ccce53acc87fb67632cd07d670636f0a5a3682a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d5c9ab2_68dec70f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T20:37:25Z",
+      "side": 1,
+      "message": "Oops, done",
+      "parentUuid": "17434434_86524237",
       "revId": "ccce53acc87fb67632cd07d670636f0a5a3682a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "327b2699_3a23de1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T20:37:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a96cdce_49745cda",
+      "revId": "ccce53acc87fb67632cd07d670636f0a5a3682a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff375f9b_fadc188a",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-04-01T19:25:39Z",
       "side": 1,
       "message": "where do we use this?",
+      "revId": "ccce53acc87fb67632cd07d670636f0a5a3682a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b38c8591_1813e26a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-01T20:37:25Z",
+      "side": 1,
+      "message": "I\u0027m surprised go didn\u0027t catch that. Meant to use it in line 209.",
+      "parentUuid": "ff375f9b_fadc188a",
       "revId": "ccce53acc87fb67632cd07d670636f0a5a3682a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
