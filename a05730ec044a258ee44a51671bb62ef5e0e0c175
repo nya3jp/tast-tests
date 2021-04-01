@@ -16,6 +16,24 @@
       "message": "could you add lacros_unstable, too, to avoid running the same test twice in release builders?",
       "revId": "a05730ec044a258ee44a51671bb62ef5e0e0c175",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a132e00_f78527c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-04-01T07:18:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a135c925_64b3df36",
+      "revId": "a05730ec044a258ee44a51671bb62ef5e0e0c175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
