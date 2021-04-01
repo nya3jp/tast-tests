@@ -676,6 +676,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5f34f29_496e10f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:01:48Z",
+      "side": 1,
+      "message": "Jun, we will continue working on the tab-switch performance with touch. We will discuss how to modify this case if we have further conclusion on that.",
+      "parentUuid": "dd93f24b_d58eaaeb",
+      "range": {
+        "startLine": 373,
+        "startChar": 14,
+        "endLine": 373,
+        "endChar": 32
+      },
+      "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10ee2640_786dad84",
@@ -1382,6 +1406,24 @@
       "side": 1,
       "message": "I believe that keyboard is better as it\u0027s simpler, faster, and less error-prone, but it\u0027s up to your choice.",
       "parentUuid": "701de2ee_61575017",
+      "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86a44ba7_37a58b6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T22:01:48Z",
+      "side": 1,
+      "message": "I\u0027ll keep it now but we will further enhance the tabletActionHandler with new CL so that it can also use keyboard for certain actions not under performance measurement.",
+      "parentUuid": "f698dcfb_a044ca5d",
       "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
