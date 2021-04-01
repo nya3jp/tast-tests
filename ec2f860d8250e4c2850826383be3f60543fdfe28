@@ -16,6 +16,46 @@
       "message": "PTAL. Thanks!",
       "revId": "ec2f860d8250e4c2850826383be3f60543fdfe28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a6b3275_fc084330",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-04-01T00:58:51Z",
+      "side": 1,
+      "message": "sorry for the delay.",
+      "revId": "ec2f860d8250e4c2850826383be3f60543fdfe28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f794ee0a_24edb599",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-04-01T00:58:51Z",
+      "side": 1,
+      "message": "I believe this ID changes depending on whether you\u0027re on chromium or official branded chrome, and that\u0027s the reason why it\u0027s failing on some builders. Could you check?",
+      "range": {
+        "startLine": 271,
+        "startChar": 19,
+        "endLine": 271,
+        "endChar": 28
+      },
+      "revId": "ec2f860d8250e4c2850826383be3f60543fdfe28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
