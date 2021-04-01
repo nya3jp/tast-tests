@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b10e6f6_f26f2eda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-01T15:24:47Z",
+      "side": 1,
+      "message": "Hi Gabor,\n\nCan you please take a look?\n\nThanks!",
+      "revId": "61d14ffb6419200104515a09a5a520ee5d5f1206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
