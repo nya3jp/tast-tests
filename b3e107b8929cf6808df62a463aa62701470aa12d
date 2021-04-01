@@ -16,6 +16,132 @@
       "message": "Thanks for the comments.",
       "revId": "b3e107b8929cf6808df62a463aa62701470aa12d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0c70543_4107136a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-01T10:28:21Z",
+      "side": 1,
+      "message": "Please resolve the conflict as well.",
+      "revId": "b3e107b8929cf6808df62a463aa62701470aa12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "412f108d_476570b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-01T10:28:21Z",
+      "side": 1,
+      "message": "nit: RequiredClientCertificateFor seems incomplete, maybe just use RequiredClientCertificate",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "b3e107b8929cf6808df62a463aa62701470aa12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70c1b963_a6a6a7d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-01T10:28:21Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this would make more sense as a parameterised test. If it\u0027s possible to move all the Chrome handling inside the subtest, keeping it as a table driven test will make more sense. If not, I\u0027ll leave it up to you.",
+      "revId": "b3e107b8929cf6808df62a463aa62701470aa12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a126ea8f_0f669f3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-01T10:28:21Z",
+      "side": 1,
+      "message": "d",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 11
+      },
+      "revId": "b3e107b8929cf6808df62a463aa62701470aa12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3c326f3_46634485",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-01T10:28:21Z",
+      "side": 1,
+      "message": "u",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 11
+      },
+      "revId": "b3e107b8929cf6808df62a463aa62701470aa12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c92394_10af33e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-01T10:28:21Z",
+      "side": 1,
+      "message": "Is this required?",
+      "range": {
+        "startLine": 125,
+        "startChar": 110,
+        "endLine": 125,
+        "endChar": 113
+      },
+      "revId": "b3e107b8929cf6808df62a463aa62701470aa12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

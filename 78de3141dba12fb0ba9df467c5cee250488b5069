@@ -133,6 +133,24 @@
       "parentUuid": "d746fca3_6871dd5f",
       "revId": "78de3141dba12fb0ba9df467c5cee250488b5069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aedd55f1_9029ddc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-01T10:28:21Z",
+      "side": 1,
+      "message": "Do you need to reset Chrome after setting the policy? If not the code could be simpler by managing Chrome inside the subtests.",
+      "parentUuid": "0393c50d_43d8613a",
+      "revId": "78de3141dba12fb0ba9df467c5cee250488b5069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
