@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "439e8849_9a99a490",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T20:48:50Z",
+      "side": 1,
+      "message": "I added more information in the commit message for the background of this CL. It is actually used by quick check cuj (next CL).",
+      "parentUuid": "c6b01e39_d3d33899",
+      "revId": "0c6e05860709b0eea4b6d76e35ca71ac795f1eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e63e209d_16912d63",
@@ -82,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "302a42d7_1f2b372c",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T20:48:50Z",
+      "side": 1,
+      "message": "Thanks for pointing out the NewManager() operation cost. I checked Steven\u0027s Cellular implementation and made a WiFiManager struct to hold the shill manager.",
+      "parentUuid": "8de18465_8598414b",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 21
+      },
+      "revId": "0c6e05860709b0eea4b6d76e35ca71ac795f1eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e570547c_cc1574d0",
@@ -99,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f46b7edc_ebcfef59",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T20:48:50Z",
+      "side": 1,
+      "message": "Done. Sorry for this bug.",
+      "parentUuid": "e570547c_cc1574d0",
+      "revId": "0c6e05860709b0eea4b6d76e35ca71ac795f1eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ca06670_8b6def95",
@@ -112,6 +172,24 @@
       "writtenOn": "2021-03-31T22:14:15Z",
       "side": 1,
       "message": "ditto",
+      "revId": "0c6e05860709b0eea4b6d76e35ca71ac795f1eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a52df8ce_a0799a80",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T20:48:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ca06670_8b6def95",
       "revId": "0c6e05860709b0eea4b6d76e35ca71ac795f1eb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -139,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49a4a051_962a18da",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T20:48:50Z",
+      "side": 1,
+      "message": "I replaced testing.poll with watcher for Enable and ConnectAP. And Watcher is created before doing actual operations.",
+      "parentUuid": "92137cbc_ded59334",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 19
+      },
+      "revId": "0c6e05860709b0eea4b6d76e35ca71ac795f1eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cd8013f_3ad092f9",
@@ -152,6 +254,24 @@
       "writtenOn": "2021-03-31T22:14:15Z",
       "side": 1,
       "message": "I guess this is exceptional.  If so let\u0027s return with PollBreak so that the polling finishes quickly, i.e.\n  return testing.PollBreak(errors.Wrap(err, \"...\"))",
+      "revId": "0c6e05860709b0eea4b6d76e35ca71ac795f1eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9591813_3ba9fafa",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-01T20:48:50Z",
+      "side": 1,
+      "message": "Thanks. Poll is replaced with watcher. But as long as IsConnected() returns error, the function will return.",
+      "parentUuid": "7cd8013f_3ad092f9",
       "revId": "0c6e05860709b0eea4b6d76e35ca71ac795f1eb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
