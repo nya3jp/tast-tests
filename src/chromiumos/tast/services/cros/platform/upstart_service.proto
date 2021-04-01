@@ -14,8 +14,35 @@ option go_package = "chromiumos/tast/services/cros/platform";
 service UpstartService {
   // Check that the given upstart job is running.
   rpc CheckJob(CheckJobRequest) returns (google.protobuf.Empty) {}
+  // JobStatus returns the current status of job.
+  rpc JobStatus(JobStatusRequest) returns (JobStatusResponse) {}
+  // StartJob starts job. If it is already running, this returns an error.
+  rpc StartJob(StartJobRequest) returns (google.protobuf.Empty) {}
+  // StopJob stops job. If it is not currently running, this is a no-op.
+  rpc StopJob(StopJobRequest) returns (google.protobuf.Empty) {}
 }
 
 message CheckJobRequest {
+  string job_name = 1;
+}
+
+message JobStatusRequest {
+  string job_name = 1;
+}
+
+// Definitions of "goal" and "state" described in
+// https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/upstart/upstart.go
+message JobStatusResponse {
+  string goal = 1;
+  string state = 2;
+  int32 pid = 3;
+}
+
+message StartJobRequest {
+  string job_name = 1;
+  repeated string args = 2;
+}
+
+message StopJobRequest {
   string job_name = 1;
 }

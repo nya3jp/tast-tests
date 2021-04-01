@@ -32,3 +32,25 @@ type UpstartService struct {
 func (*UpstartService) CheckJob(ctx context.Context, request *platform.CheckJobRequest) (*empty.Empty, error) {
 	return &empty.Empty{}, upstart.CheckJob(ctx, request.JobName)
 }
+
+// JobStatus returns the current status of job.
+// If the PID is unavailable (i.e. the process is not running), 0 will be returned.
+// An error will be returned if the job is unknown (i.e. it has no config in /etc/init).
+func (*UpstartService) JobStatus(ctx context.Context, request *platform.JobStatusRequest) (*platform.JobStatusResponse, error) {
+	goal, state, pid, err := upstart.JobStatus(ctx, request.JobName)
+	return &platform.JobStatusResponse{
+		Goal:  string(goal),
+		State: string(state),
+		Pid:   int32(pid),
+	}, err
+}
+
+// StartJob starts job. If it is already running, this returns an error.
+func (*UpstartService) StartJob(ctx context.Context, request *platform.StartJobRequest) (*empty.Empty, error) {
+	return &empty.Empty{}, upstart.StartJob(ctx, request.JobName, request.Args...)
+}
+
+// StopJob stops job. If it is not currently running, this is a no-op.
+func (*UpstartService) StopJob(ctx context.Context, request *platform.StopJobRequest) (*empty.Empty, error) {
+	return &empty.Empty{}, upstart.StopJob(ctx, request.JobName)
+}

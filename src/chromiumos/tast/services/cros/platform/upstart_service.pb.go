@@ -64,27 +64,220 @@ func (m *CheckJobRequest) GetJobName() string {
 	return ""
 }
 
+type JobStatusRequest struct {
+	JobName              string   `protobuf:"bytes,1,opt,name=job_name,json=jobName,proto3" json:"job_name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *JobStatusRequest) Reset()         { *m = JobStatusRequest{} }
+func (m *JobStatusRequest) String() string { return proto.CompactTextString(m) }
+func (*JobStatusRequest) ProtoMessage()    {}
+func (*JobStatusRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_1f9a7bba326af3c8, []int{1}
+}
+
+func (m *JobStatusRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_JobStatusRequest.Unmarshal(m, b)
+}
+func (m *JobStatusRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_JobStatusRequest.Marshal(b, m, deterministic)
+}
+func (m *JobStatusRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_JobStatusRequest.Merge(m, src)
+}
+func (m *JobStatusRequest) XXX_Size() int {
+	return xxx_messageInfo_JobStatusRequest.Size(m)
+}
+func (m *JobStatusRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_JobStatusRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_JobStatusRequest proto.InternalMessageInfo
+
+func (m *JobStatusRequest) GetJobName() string {
+	if m != nil {
+		return m.JobName
+	}
+	return ""
+}
+
+type JobStatusResponse struct {
+	Goal                 string   `protobuf:"bytes,1,opt,name=goal,proto3" json:"goal,omitempty"`
+	State                string   `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
+	Pid                  int32    `protobuf:"varint,3,opt,name=pid,proto3" json:"pid,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *JobStatusResponse) Reset()         { *m = JobStatusResponse{} }
+func (m *JobStatusResponse) String() string { return proto.CompactTextString(m) }
+func (*JobStatusResponse) ProtoMessage()    {}
+func (*JobStatusResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_1f9a7bba326af3c8, []int{2}
+}
+
+func (m *JobStatusResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_JobStatusResponse.Unmarshal(m, b)
+}
+func (m *JobStatusResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_JobStatusResponse.Marshal(b, m, deterministic)
+}
+func (m *JobStatusResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_JobStatusResponse.Merge(m, src)
+}
+func (m *JobStatusResponse) XXX_Size() int {
+	return xxx_messageInfo_JobStatusResponse.Size(m)
+}
+func (m *JobStatusResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_JobStatusResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_JobStatusResponse proto.InternalMessageInfo
+
+func (m *JobStatusResponse) GetGoal() string {
+	if m != nil {
+		return m.Goal
+	}
+	return ""
+}
+
+func (m *JobStatusResponse) GetState() string {
+	if m != nil {
+		return m.State
+	}
+	return ""
+}
+
+func (m *JobStatusResponse) GetPid() int32 {
+	if m != nil {
+		return m.Pid
+	}
+	return 0
+}
+
+type StartJobRequest struct {
+	JobName              string   `protobuf:"bytes,1,opt,name=job_name,json=jobName,proto3" json:"job_name,omitempty"`
+	Args                 []string `protobuf:"bytes,2,rep,name=args,proto3" json:"args,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *StartJobRequest) Reset()         { *m = StartJobRequest{} }
+func (m *StartJobRequest) String() string { return proto.CompactTextString(m) }
+func (*StartJobRequest) ProtoMessage()    {}
+func (*StartJobRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_1f9a7bba326af3c8, []int{3}
+}
+
+func (m *StartJobRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StartJobRequest.Unmarshal(m, b)
+}
+func (m *StartJobRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StartJobRequest.Marshal(b, m, deterministic)
+}
+func (m *StartJobRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StartJobRequest.Merge(m, src)
+}
+func (m *StartJobRequest) XXX_Size() int {
+	return xxx_messageInfo_StartJobRequest.Size(m)
+}
+func (m *StartJobRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_StartJobRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StartJobRequest proto.InternalMessageInfo
+
+func (m *StartJobRequest) GetJobName() string {
+	if m != nil {
+		return m.JobName
+	}
+	return ""
+}
+
+func (m *StartJobRequest) GetArgs() []string {
+	if m != nil {
+		return m.Args
+	}
+	return nil
+}
+
+type StopJobRequest struct {
+	JobName              string   `protobuf:"bytes,1,opt,name=job_name,json=jobName,proto3" json:"job_name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *StopJobRequest) Reset()         { *m = StopJobRequest{} }
+func (m *StopJobRequest) String() string { return proto.CompactTextString(m) }
+func (*StopJobRequest) ProtoMessage()    {}
+func (*StopJobRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_1f9a7bba326af3c8, []int{4}
+}
+
+func (m *StopJobRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StopJobRequest.Unmarshal(m, b)
+}
+func (m *StopJobRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StopJobRequest.Marshal(b, m, deterministic)
+}
+func (m *StopJobRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StopJobRequest.Merge(m, src)
+}
+func (m *StopJobRequest) XXX_Size() int {
+	return xxx_messageInfo_StopJobRequest.Size(m)
+}
+func (m *StopJobRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_StopJobRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StopJobRequest proto.InternalMessageInfo
+
+func (m *StopJobRequest) GetJobName() string {
+	if m != nil {
+		return m.JobName
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*CheckJobRequest)(nil), "tast.cros.platform.CheckJobRequest")
+	proto.RegisterType((*JobStatusRequest)(nil), "tast.cros.platform.JobStatusRequest")
+	proto.RegisterType((*JobStatusResponse)(nil), "tast.cros.platform.JobStatusResponse")
+	proto.RegisterType((*StartJobRequest)(nil), "tast.cros.platform.StartJobRequest")
+	proto.RegisterType((*StopJobRequest)(nil), "tast.cros.platform.StopJobRequest")
 }
 
 func init() { proto.RegisterFile("upstart_service.proto", fileDescriptor_1f9a7bba326af3c8) }
 
 var fileDescriptor_1f9a7bba326af3c8 = []byte{
-	// 206 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x64, 0x8f, 0x3f, 0x4b, 0xc6, 0x30,
-	0x10, 0x87, 0x7d, 0x17, 0x7d, 0xcd, 0xa0, 0x10, 0x50, 0xb4, 0x2e, 0x52, 0x41, 0x3a, 0xc8, 0x05,
-	0xf4, 0x1b, 0x28, 0x0e, 0x3a, 0x38, 0x54, 0x5c, 0x74, 0x28, 0x49, 0xb8, 0xfe, 0xb3, 0xf1, 0x62,
-	0x72, 0x11, 0xfc, 0xf6, 0xd2, 0xc6, 0x2e, 0xba, 0xdf, 0xef, 0x79, 0x9e, 0x13, 0x47, 0xc9, 0x47,
-	0xd6, 0x81, 0x9b, 0x88, 0xe1, 0x6b, 0xb0, 0x08, 0x3e, 0x10, 0x93, 0x94, 0xac, 0x23, 0x83, 0x0d,
-	0x14, 0xc1, 0x4f, 0x9a, 0x5b, 0x0a, 0xae, 0x38, 0xeb, 0x88, 0xba, 0x09, 0xd5, 0x72, 0x61, 0x52,
-	0xab, 0xd0, 0x79, 0xfe, 0xce, 0x83, 0xf2, 0x4a, 0x1c, 0xde, 0xf5, 0x68, 0xdf, 0x1f, 0xc9, 0xd4,
-	0xf8, 0x99, 0x30, 0xb2, 0x3c, 0x15, 0xdb, 0x91, 0x4c, 0xf3, 0xa1, 0x1d, 0x9e, 0x6c, 0xce, 0x37,
-	0xd5, 0x7e, 0xbd, 0x37, 0x92, 0x79, 0xd2, 0x0e, 0xaf, 0xdf, 0xc4, 0xc1, 0x4b, 0xf6, 0x3e, 0x67,
-	0xad, 0x7c, 0x10, 0xdb, 0x75, 0x2f, 0x2f, 0xe0, 0xbf, 0x1d, 0xfe, 0xd0, 0x8b, 0x63, 0xc8, 0x39,
-	0xb0, 0xe6, 0xc0, 0xfd, 0x9c, 0x53, 0xee, 0xdc, 0x56, 0xaf, 0x97, 0xb6, 0x0f, 0xe4, 0x86, 0xe4,
-	0x28, 0xaa, 0x19, 0xa5, 0x7e, 0x9f, 0x8b, 0x6a, 0x66, 0xaa, 0x95, 0x69, 0x76, 0x97, 0xed, 0xcd,
-	0x4f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xdf, 0xa5, 0x67, 0x07, 0x05, 0x01, 0x00, 0x00,
+	// 344 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0xd2, 0xcd, 0x4e, 0xc2, 0x40,
+	0x10, 0x07, 0x70, 0x3e, 0x44, 0x60, 0x0e, 0x80, 0x1b, 0x35, 0x15, 0x2f, 0xa4, 0x7e, 0x84, 0x44,
+	0xdd, 0x26, 0xfa, 0x02, 0x46, 0x63, 0x8c, 0x1c, 0x34, 0xa1, 0xf1, 0xc2, 0x85, 0x6c, 0xeb, 0x52,
+	0x40, 0xca, 0xac, 0xbb, 0x53, 0x13, 0x9f, 0xd1, 0x97, 0x32, 0xdb, 0x52, 0x43, 0x10, 0x95, 0xdb,
+	0xb4, 0xf9, 0xef, 0x7f, 0xa7, 0xbf, 0x14, 0xf6, 0x12, 0x65, 0x48, 0x68, 0x1a, 0x1a, 0xa9, 0xdf,
+	0x27, 0xa1, 0xe4, 0x4a, 0x23, 0x21, 0x63, 0x24, 0x0c, 0xf1, 0x50, 0xa3, 0xe1, 0x6a, 0x26, 0x68,
+	0x84, 0x3a, 0x6e, 0x1f, 0x46, 0x88, 0xd1, 0x4c, 0x7a, 0x69, 0x22, 0x48, 0x46, 0x9e, 0x8c, 0x15,
+	0x7d, 0x64, 0x07, 0xdc, 0x73, 0x68, 0xde, 0x8e, 0x65, 0xf8, 0xda, 0xc3, 0xa0, 0x2f, 0xdf, 0x12,
+	0x69, 0x88, 0x1d, 0x40, 0x6d, 0x8a, 0xc1, 0x70, 0x2e, 0x62, 0xe9, 0x14, 0x3b, 0xc5, 0x6e, 0xbd,
+	0x5f, 0x9d, 0x62, 0xf0, 0x28, 0x62, 0xe9, 0x5e, 0x40, 0xab, 0x87, 0x81, 0x4f, 0x82, 0x12, 0xb3,
+	0x41, 0xfc, 0x09, 0x76, 0x96, 0xe2, 0x46, 0xe1, 0xdc, 0x48, 0xc6, 0x60, 0x2b, 0x42, 0x31, 0x5b,
+	0x64, 0xd3, 0x99, 0xed, 0x42, 0xc5, 0x90, 0x20, 0xe9, 0x94, 0xd2, 0x97, 0xd9, 0x03, 0x6b, 0x41,
+	0x59, 0x4d, 0x5e, 0x9c, 0x72, 0xa7, 0xd8, 0xad, 0xf4, 0xed, 0xe8, 0x5e, 0x43, 0xd3, 0xb7, 0x5f,
+	0xbd, 0xd1, 0xb6, 0xf6, 0x26, 0xa1, 0x23, 0xe3, 0x94, 0x3a, 0x65, 0x7b, 0x93, 0x9d, 0xdd, 0x33,
+	0x68, 0xf8, 0x84, 0x6a, 0xa3, 0x82, 0xcb, 0xcf, 0x12, 0x34, 0x9e, 0x33, 0x67, 0x3f, 0x63, 0x66,
+	0x0f, 0x50, 0xcb, 0xbd, 0xd8, 0x11, 0xff, 0xa9, 0xcd, 0x57, 0x34, 0xdb, 0xfb, 0x3c, 0xe3, 0xe7,
+	0x39, 0x3f, 0xbf, 0xb3, 0xfc, 0x6e, 0x81, 0x0d, 0xa0, 0xfe, 0xad, 0xc3, 0x8e, 0xd7, 0x75, 0xad,
+	0x5a, 0xb7, 0x4f, 0xfe, 0x49, 0x65, 0xc4, 0x6e, 0xc1, 0xae, 0x99, 0x43, 0xad, 0x5f, 0x73, 0x85,
+	0xf1, 0x8f, 0x35, 0xef, 0xa1, 0xba, 0x10, 0x63, 0xee, 0xfa, 0xa6, 0x65, 0xce, 0xdf, 0x8b, 0x6e,
+	0xba, 0x83, 0xd3, 0x70, 0xac, 0x31, 0x9e, 0x24, 0x31, 0x1a, 0xcf, 0x36, 0x79, 0x8b, 0x9f, 0xd7,
+	0x78, 0xb6, 0xd2, 0xcb, 0x2b, 0x83, 0xed, 0xf4, 0xec, 0xd5, 0x57, 0x00, 0x00, 0x00, 0xff, 0xff,
+	0xc7, 0xaa, 0xc3, 0xc4, 0xe5, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -101,6 +294,9 @@ const _ = grpc.SupportPackageIsVersion4
 type UpstartServiceClient interface {
 	// Check that the given upstart job is running.
 	CheckJob(ctx context.Context, in *CheckJobRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	JobStatus(ctx context.Context, in *JobStatusRequest, opts ...grpc.CallOption) (*JobStatusResponse, error)
+	StartJob(ctx context.Context, in *StartJobRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	StopJob(ctx context.Context, in *StopJobRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
 type upstartServiceClient struct {
@@ -120,10 +316,40 @@ func (c *upstartServiceClient) CheckJob(ctx context.Context, in *CheckJobRequest
 	return out, nil
 }
 
+func (c *upstartServiceClient) JobStatus(ctx context.Context, in *JobStatusRequest, opts ...grpc.CallOption) (*JobStatusResponse, error) {
+	out := new(JobStatusResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.platform.UpstartService/JobStatus", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *upstartServiceClient) StartJob(ctx context.Context, in *StartJobRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.platform.UpstartService/StartJob", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *upstartServiceClient) StopJob(ctx context.Context, in *StopJobRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.platform.UpstartService/StopJob", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UpstartServiceServer is the server API for UpstartService service.
 type UpstartServiceServer interface {
 	// Check that the given upstart job is running.
 	CheckJob(context.Context, *CheckJobRequest) (*empty.Empty, error)
+	JobStatus(context.Context, *JobStatusRequest) (*JobStatusResponse, error)
+	StartJob(context.Context, *StartJobRequest) (*empty.Empty, error)
+	StopJob(context.Context, *StopJobRequest) (*empty.Empty, error)
 }
 
 // UnimplementedUpstartServiceServer can be embedded to have forward compatible implementations.
@@ -132,6 +358,15 @@ type UnimplementedUpstartServiceServer struct {
 
 func (*UnimplementedUpstartServiceServer) CheckJob(ctx context.Context, req *CheckJobRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckJob not implemented")
+}
+func (*UnimplementedUpstartServiceServer) JobStatus(ctx context.Context, req *JobStatusRequest) (*JobStatusResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method JobStatus not implemented")
+}
+func (*UnimplementedUpstartServiceServer) StartJob(ctx context.Context, req *StartJobRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartJob not implemented")
+}
+func (*UnimplementedUpstartServiceServer) StopJob(ctx context.Context, req *StopJobRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StopJob not implemented")
 }
 
 func RegisterUpstartServiceServer(s *grpc.Server, srv UpstartServiceServer) {
@@ -156,6 +391,60 @@ func _UpstartService_CheckJob_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UpstartService_JobStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(JobStatusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UpstartServiceServer).JobStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.platform.UpstartService/JobStatus",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UpstartServiceServer).JobStatus(ctx, req.(*JobStatusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UpstartService_StartJob_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartJobRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UpstartServiceServer).StartJob(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.platform.UpstartService/StartJob",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UpstartServiceServer).StartJob(ctx, req.(*StartJobRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UpstartService_StopJob_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StopJobRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UpstartServiceServer).StopJob(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.platform.UpstartService/StopJob",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UpstartServiceServer).StopJob(ctx, req.(*StopJobRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _UpstartService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.platform.UpstartService",
 	HandlerType: (*UpstartServiceServer)(nil),
@@ -163,6 +452,18 @@ var _UpstartService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CheckJob",
 			Handler:    _UpstartService_CheckJob_Handler,
+		},
+		{
+			MethodName: "JobStatus",
+			Handler:    _UpstartService_JobStatus_Handler,
+		},
+		{
+			MethodName: "StartJob",
+			Handler:    _UpstartService_StartJob_Handler,
+		},
+		{
+			MethodName: "StopJob",
+			Handler:    _UpstartService_StopJob_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
