@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11fedb20_76ac4a77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-02T14:49:51Z",
+      "side": 1,
+      "message": "Yes, many kinds of errors were applied (wrong arguments, wrong server configurations, wrong lpadmin command, etc.) - the server was properly spawned without delay in all cases as soon as as the parent context of the main routine ends.",
+      "parentUuid": "b2bb18fd_331151ee",
+      "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "099e1e17_d1c60877",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-22T22:35:43Z",
       "side": 1,
       "message": "Please add cros-printing-dev@chromium.org as backup.  You can also add me skau@chromium.org",
+      "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "713482a7_b0299803",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-02T14:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "099e1e17_d1c60877",
       "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47bc3fdd_fa586ae9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-02T14:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18cadd4c_6abdf841",
+      "range": {
+        "startLine": 38,
+        "startChar": 26,
+        "endLine": 38,
+        "endChar": 39
+      },
+      "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f307e50e_3387fdca",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-03-22T22:35:43Z",
       "side": 1,
       "message": "extra newline?",
+      "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10565e72_7a7604a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-02T14:49:51Z",
+      "side": 1,
+      "message": "Routines corrected not to use an extra new line.",
+      "parentUuid": "f307e50e_3387fdca",
       "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "366490c5_7178af1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-02T14:49:51Z",
+      "side": 1,
+      "message": "Example line from the server output:\n`2021-03-13T13:49:02.635Z  Using default listeners for localhost:8000.`\nLeaving the second argument blank won\u0027t work in this case. We need to strip the last sign, otherwise the address passed to lpadmin would be `localhost:8000.` and cause a failure.",
+      "parentUuid": "13e6cf0a_28aa7355",
+      "range": {
+        "startLine": 75,
+        "startChar": 41,
+        "endLine": 75,
+        "endChar": 52
+      },
+      "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e96457d0_e24c2404",
@@ -111,6 +213,30 @@
       "writtenOn": "2021-03-22T22:35:43Z",
       "side": 1,
       "message": "I don\u0027t see a timeout to kill the server when we\u0027re done with it.",
+      "range": {
+        "startLine": 119,
+        "startChar": 18,
+        "endLine": 119,
+        "endChar": 29
+      },
+      "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3691e67_d2c42b05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-02T14:49:51Z",
+      "side": 1,
+      "message": "Although the server should be properly spawned without delay in of the failures (as soon as as the parent context of the main routine ends), but I added an extra timeout for safety..",
+      "parentUuid": "e96457d0_e24c2404",
       "range": {
         "startLine": 119,
         "startChar": 18,
