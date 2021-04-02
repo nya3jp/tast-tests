@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "732c38da_9094fa13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1485298
+      },
+      "writtenOn": "2021-04-02T00:37:05Z",
+      "side": 1,
+      "message": "Turns out no, all the previous failing DUTs I found are now passing for that case. Updated.",
+      "parentUuid": "45c82957_d1a3065c",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "3c2f82f4543f8b625ea86af92632e36f078577de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e677d5ab_8a3fba8a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8c13f3e_1acf43eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1485298
+      },
+      "writtenOn": "2021-04-02T00:37:05Z",
+      "side": 1,
+      "message": "Did I copy and paste and not notice this was VP9 specific? Yes, yes I did. Thank you.",
+      "parentUuid": "5f79de90_faf54250",
+      "range": {
+        "startLine": 378,
+        "startChar": 5,
+        "endLine": 378,
+        "endChar": 11
+      },
+      "revId": "3c2f82f4543f8b625ea86af92632e36f078577de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98ff4120_4faedd8f",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-04-01T21:57:20Z",
       "side": 1,
       "message": "Why do we require this dependency again?",
+      "range": {
+        "startLine": 333,
+        "startChar": 42,
+        "endLine": 333,
+        "endChar": 49
+      },
+      "revId": "3c2f82f4543f8b625ea86af92632e36f078577de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c73931f0_150555ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1485298
+      },
+      "writtenOn": "2021-04-02T00:37:05Z",
+      "side": 1,
+      "message": "Oh, I guess it\u0027s redundant with the HWDecodeAV1. Right now only Volteer boards have AV1 hardware decoding, but the software dep should cover that. Removed.",
+      "parentUuid": "98ff4120_4faedd8f",
       "range": {
         "startLine": 333,
         "startChar": 42,

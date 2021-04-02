@@ -70,6 +70,30 @@
       },
       "revId": "752418b736c8524334ef7b7f827d59a32a52ec29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd4f3e3d_be2c1565",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1485298
+      },
+      "writtenOn": "2021-04-02T00:37:05Z",
+      "side": 1,
+      "message": "Done. I split them into groups to make it easier to disable some failures without disabling the entire test. It looks like number of frames mismatched is a common failure -- it\u0027s not just the one video hitting that issue. Toggling --visible doesn\u0027t fix it; the number of frames becomes too high if you turn off --visible.",
+      "parentUuid": "813038bb_a7a9034b",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "752418b736c8524334ef7b7f827d59a32a52ec29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
