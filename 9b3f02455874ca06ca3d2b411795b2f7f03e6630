@@ -33,6 +33,24 @@
       "message": "We still need to defer this immediately after switching slots, otherwise it will not get called if s.Fatal gets triggered (e.g. in line 71).\n\nWhat we want to do is wrap the above in a helper and call:\ndefar setPrimarySimSlot(cleanupCtx, primary);",
       "revId": "9b3f02455874ca06ca3d2b411795b2f7f03e6630",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8116e691_8bee78ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-04-02T23:05:16Z",
+      "side": 1,
+      "message": "calling defer might not be possible if no modem up after slotswitch. can happen with line 71 - timeout due to no modem object in ModemPollTime.\nline 52 s.Fatal results if call to SetPrimarySimSlot fails, here not required to do defer.\nThis seems should be this way.",
+      "parentUuid": "0d7b5f66_79e649bb",
+      "revId": "9b3f02455874ca06ca3d2b411795b2f7f03e6630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
