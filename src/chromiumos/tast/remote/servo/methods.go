@@ -178,9 +178,11 @@ func (s *Servo) DUTVoltageMV(ctx context.Context) (string, error) {
 
 // GetServoVersion gets the version of Servo being used.
 func (s *Servo) GetServoVersion(ctx context.Context) (string, error) {
-	var version string
-	err := s.run(ctx, newCall("get_version"), &version)
-	return version, err
+	if s.version != "" {
+		return s.version, nil
+	}
+	err := s.run(ctx, newCall("get_version"), &s.version)
+	return s.version, err
 }
 
 // IsServoV4 determines whether the Servo being used is v4.
