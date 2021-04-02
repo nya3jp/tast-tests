@@ -68,6 +68,8 @@ const (
 	userCrashDirs = "/home/chronos/u-*/crash"
 	// FilterInPath is the path to the filter-in file.
 	FilterInPath = "/run/crash_reporter/filter-in"
+	// FilterInBlockPath is the path to the filter-in-block file.
+	FilterInBlockPath = "/run/crash_reporter/filter-in-block"
 	// testInProgressPath is the path to a file containing the name of the
 	// currently-running test, if any.
 	testInProgressPath = "/run/crash_reporter/test-in-prog"
