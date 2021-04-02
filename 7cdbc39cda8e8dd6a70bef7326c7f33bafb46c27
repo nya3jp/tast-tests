@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c77f629_728a5722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f21fc8e7_1f1b7f26",
+      "range": {
+        "startLine": 6,
+        "startChar": 64,
+        "endLine": 6,
+        "endChar": 66
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "415173a6_89e667e0",
@@ -88,6 +112,30 @@
       "writtenOn": "2021-04-01T20:21:11Z",
       "side": 1,
       "message": "Remove \u0027that\u0027",
+      "range": {
+        "startLine": 7,
+        "startChar": 47,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6669e4f2_60619740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "415173a6_89e667e0",
       "range": {
         "startLine": 7,
         "startChar": 47,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb63f38c_71f68b7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dd451e0_a5027f52",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 12
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52188871_1674a370",
@@ -134,6 +206,30 @@
       "writtenOn": "2021-04-01T20:21:11Z",
       "side": 1,
       "message": "nit: Same, it would seem more intuitive to initialize to false and -1 (and then get rid of the \u0027default:\u0027 cases).",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 18
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e92e3d21_d3361ecd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52188871_1674a370",
       "range": {
         "startLine": 97,
         "startChar": 1,
@@ -190,6 +286,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f4553d5_7250d097",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7edf5f30_1daa9f19",
+      "range": {
+        "startLine": 144,
+        "startChar": 77,
+        "endLine": 144,
+        "endChar": 79
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcd4bf0f_4488c179",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e44f634a_af4a17b0",
+      "range": {
+        "startLine": 144,
+        "startChar": 17,
+        "endLine": 144,
+        "endChar": 29
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "205e99ff_a764929b",
@@ -203,6 +347,30 @@
       "writtenOn": "2021-04-01T20:21:11Z",
       "side": 1,
       "message": "or no\n\n(assuming that it\u0027s possible not to get any video streams)",
+      "range": {
+        "startLine": 163,
+        "startChar": 71,
+        "endLine": 163,
+        "endChar": 72
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "451c0dda_f92b0a85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "205e99ff_a764929b",
       "range": {
         "startLine": 163,
         "startChar": 71,
@@ -236,6 +404,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a677b63_8ef84e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85422f0a_5f67e4b1",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 2
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9e2c935_3acbc59e",
@@ -249,6 +441,30 @@
       "writtenOn": "2021-04-01T20:21:11Z",
       "side": 1,
       "message": "Same: assert the expected number of elements.",
+      "range": {
+        "startLine": 201,
+        "startChar": 49,
+        "endLine": 201,
+        "endChar": 52
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "466d8ddb_45a1b900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9e2c935_3acbc59e",
       "range": {
         "startLine": 201,
         "startChar": 49,
@@ -282,6 +498,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31386691_fe2c80b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f04b863f_80b36a63",
+      "range": {
+        "startLine": 202,
+        "startChar": 22,
+        "endLine": 202,
+        "endChar": 25
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90ec3abb_57a31a22",
@@ -295,6 +535,30 @@
       "writtenOn": "2021-04-01T20:21:11Z",
       "side": 1,
       "message": "Is there a way to put this in an autogenerated tmp folder so that: a) it doesn\u0027t possibly overwrite user\u0027s files that happen to have the same name; and b) they can be deleted after getting the MD5s.",
+      "range": {
+        "startLine": 208,
+        "startChar": 26,
+        "endLine": 208,
+        "endChar": 44
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "122651b7_31d5276b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "These files are not generated, but required to specify libvpx to compute md5 value of each frame.\nsingle_file is false if the argument given with -o contains %(num). [1]\nIf single_file is false, md5 is computed to each frame, but the file is not created. [2]\n[1] https://github.com/webmproject/libvpx/blob/806faf17f63ca996389a62c1c793f5609ca5361e/vpxdec.c#L730\n[2] https://github.com/webmproject/libvpx/blob/806faf17f63ca996389a62c1c793f5609ca5361e/vpxdec.c#L1036",
+      "parentUuid": "90ec3abb_57a31a22",
       "range": {
         "startLine": 208,
         "startChar": 26,
@@ -328,6 +592,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e0ede1f_6a8999c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42b8bced_f7013b5a",
+      "range": {
+        "startLine": 221,
+        "startChar": 2,
+        "endLine": 222,
+        "endChar": 26
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ddfdc42_b7607ec4",
@@ -341,6 +629,30 @@
       "writtenOn": "2021-04-01T20:21:11Z",
       "side": 1,
       "message": "nit: Instead of panic() just return an error to be consistent with other error handling you\u0027re doing.",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 237,
+        "endChar": 6
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9069c832_8e2abd6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ddfdc42_b7607ec4",
       "range": {
         "startLine": 237,
         "startChar": 1,
@@ -374,6 +686,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfdd73c9_161de1c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0159fa14_0854d4d0",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 24
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56ab983f_421fa38b",
@@ -387,6 +723,30 @@
       "writtenOn": "2021-04-01T20:21:11Z",
       "side": 1,
       "message": "You may want to document this at the top of the file so that users don\u0027t panic if the generated .json doesn\u0027t make the test pass for H264 files.",
+      "range": {
+        "startLine": 262,
+        "startChar": 25,
+        "endLine": 263,
+        "endChar": 35
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c07d1e51_5d279694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56ab983f_421fa38b",
       "range": {
         "startLine": 262,
         "startChar": 25,
@@ -420,6 +780,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec722945_29eb29f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e603e15c_fc4983b1",
+      "range": {
+        "startLine": 283,
+        "startChar": 3,
+        "endLine": 283,
+        "endChar": 14
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e89fb477_84a018ae",
@@ -443,6 +827,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66203bec_8f05b968",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e89fb477_84a018ae",
+      "range": {
+        "startLine": 289,
+        "startChar": 3,
+        "endLine": 289,
+        "endChar": 13
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "546ec850_bbab38cd",
@@ -456,6 +864,30 @@
       "writtenOn": "2021-04-01T20:21:11Z",
       "side": 1,
       "message": "Same.",
+      "range": {
+        "startLine": 295,
+        "startChar": 3,
+        "endLine": 295,
+        "endChar": 13
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b289059_796a9981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-02T07:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "546ec850_bbab38cd",
       "range": {
         "startLine": 295,
         "startChar": 3,
