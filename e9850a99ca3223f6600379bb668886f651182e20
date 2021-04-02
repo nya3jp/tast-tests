@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45a456ba_77fee7b3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/pointer/pointer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-02T18:28:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f5cbc50_1262b34c",
+      "revId": "e9850a99ca3223f6600379bb668886f651182e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1541de16_78795aa1",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-03-30T23:58:42Z",
       "side": 1,
       "message": "Can be a little more explicit here,\n\nNew returns a Context for creating pointer events.  If the device is in Tablet mode it will return a TouchContext, otherwise it will return a MouseContext.",
+      "range": {
+        "startLine": 53,
+        "startChar": 56,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "e9850a99ca3223f6600379bb668886f651182e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d8d1125_c0de7586",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/pointer/pointer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-02T18:28:43Z",
+      "side": 1,
+      "message": "With combining Shuhei\u0027s comment, I removed New and NewWithTouch functions, and rather exposes NewMouse and NewTouch.",
+      "parentUuid": "1541de16_78795aa1",
       "range": {
         "startLine": 53,
         "startChar": 56,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e84cd771_5461374c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/pointer/pointer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-02T18:28:43Z",
+      "side": 1,
+      "message": "Okay... I rather removed the New or NewWithTouch which returns an interface.  Instead added NewMouse and NewTouch, which returns a concrete struct; both implements the common interface.",
+      "parentUuid": "4a36faf7_71f1025b",
+      "revId": "e9850a99ca3223f6600379bb668886f651182e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28742e97_073545bd",
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6de34980_966fd950",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/pointer/pointer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-02T18:28:43Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "28742e97_073545bd",
+      "range": {
+        "startLine": 64,
+        "startChar": 59,
+        "endLine": 64,
+        "endChar": 73
+      },
+      "revId": "e9850a99ca3223f6600379bb668886f651182e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6572113_d18b4cdb",
@@ -111,6 +195,30 @@
       "writtenOn": "2021-03-30T23:58:42Z",
       "side": 1,
       "message": "I feel like there should be NewTouch and NewMouse rather than a function that takes a bool.\n\nMouseContext and TouchContext probably should be exported as well?",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "e9850a99ca3223f6600379bb668886f651182e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcdfc3cd_d7987cab",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/pointer/pointer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-02T18:28:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6572113_d18b4cdb",
       "range": {
         "startLine": 65,
         "startChar": 5,
