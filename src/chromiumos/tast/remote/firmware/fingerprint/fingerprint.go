@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/remote/servo"
+	"chromiumos/tast/rpc"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -84,6 +85,8 @@ const (
 	fingerprintFirmwarePathBase = "/opt/google/biod/fw/"
 	// WaitForBiodToStartTimeout is the time to wait for biod to start.
 	WaitForBiodToStartTimeout = 30 * time.Second
+	// TimeForCleanup is the amount of time to reserve for cleaning up firmware tests.
+	TimeForCleanup = 2 * time.Minute
 )
 
 // Map from signing key ID to type of signing key.
@@ -150,6 +153,52 @@ var firmwareVersionMap = map[FPBoardName]map[string]firmwareMetadata{
 			keyID:     "257a0aa3ac9e81aa4bc3aabdb6d3d079117c5799",
 		},
 	},
+}
+
+// FirmwareTest provides a common framework for fingerprint firmware tests.
+type FirmwareTest struct {
+	d     *dut.DUT
+	servo *servo.Proxy
+	cl    *rpc.Client
+}
+
+// NewFirmwareTest creates and initializes a new fingerprint firmware test.
+func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *testing.RPCHint) (*FirmwareTest, error) {
+	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to servo")
+	}
+
+	cl, err := rpc.Dial(ctx, d, hint, "cros")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
+	}
+
+	return &FirmwareTest{d: d, servo: pxy, cl: cl}, nil
+}
+
+// Close cleans up the fingerprint test and restore the FPMCU firmware to the
+// original image and state.
+func (t *FirmwareTest) Close(ctx context.Context) {
+	testing.ContextLog(ctx, "Tearing down")
+	_ = ReimageFPMCU(ctx, t.d, t.servo)
+	_ = t.cl.Close(ctx)
+	t.servo.Close(ctx)
+}
+
+// DUT gets the DUT.
+func (t *FirmwareTest) DUT() *dut.DUT {
+	return t.d
+}
+
+// Servo gets the servo proxy.
+func (t *FirmwareTest) Servo() *servo.Proxy {
+	return t.servo
+}
+
+// RPCClient gets the RPC client.
+func (t *FirmwareTest) RPCClient() *rpc.Client {
+	return t.cl
 }
 
 // getExpectedFwInfo returns expected firmware info for a given firmware file name.
