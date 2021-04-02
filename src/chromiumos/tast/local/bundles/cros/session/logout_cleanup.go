@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
@@ -81,6 +82,10 @@ func LogoutCleanup(ctx context.Context, s *testing.State) {
 			cmd.Kill()
 		}
 	}()
+
+	// Tell crash_reporter to ignore the intentional crashes we create in bash
+	crash.EnableCrashBlocking(ctx, "bash")
+	defer crash.DisableCrashBlocking()
 
 	func() {
 		cr, err := chrome.New(ctx)
