@@ -37,15 +37,11 @@ func ShillCellularSimSlots(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Modem: ", err)
 	}
-	modemProps, err := modem.GetDBusProperties(ctx)
+	simProperties, _, err := modem.GetSimSlots(ctx)
 	if err != nil {
-		s.Fatal("Failed to call Modem.GetProperties: ", err)
+		s.Fatal("Failed to get SimSlots: ", err)
 	}
-	simSlots, err := modemProps.GetObjectPaths(mmconst.ModemPropertySimSlots)
-	if err != nil {
-		s.Fatal("Missing Modem.SimSlots property: ", err)
-	}
-	numSlots := len(simSlots)
+	numSlots := len(simProperties)
 	if numSlots < 2 {
 		s.Fatalf("Expected at least 2 SIM slots, found: %d", numSlots)
 	}
@@ -55,24 +51,14 @@ func ShillCellularSimSlots(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create cellular.Helper")
 	}
 
-	// Gather Properties for each Modem.SimSlots entry.
-	var simProperties []*dbusutil.Properties
-	for i := 0; i < 2; i++ {
-		simPath := simSlots[i]
-		p, err := modem.GetSimProperties(ctx, simPath)
-		if err != nil {
-			s.Fatal("Failed to call Sim.GetProperties: ", err)
-		}
-		simProperties = append(simProperties, p)
-	}
-
 	// Ensure that a Cellular Service is created for each SIM.
 	for i := 0; i < 2; i++ {
 		simProps := simProperties[i]
-		if err != nil {
-			s.Fatal("Failed to call Sim.GetProperties: ", err)
+		if simProps == nil {
+			s.Errorf("No SIM properties in slot: %d", i)
+			continue
 		}
-		iccid, err := simProps.GetString("SimIdentifier")
+		iccid, err := simProps.GetString(mmconst.SimPropertySimIdentifier)
 		if err != nil {
 			s.Fatal("Missing Sim.SimIdentifier property: ", err)
 		}
