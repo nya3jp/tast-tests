@@ -202,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98e3abca_f8ccf8c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-04-02T18:17:18Z",
+      "side": 1,
+      "message": "I think you can just use -1 in that case.  That should give you the slice that you want.",
+      "parentUuid": "366490c5_7178af1d",
+      "range": {
+        "startLine": 75,
+        "startChar": 41,
+        "endLine": 75,
+        "endChar": 52
+      },
+      "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e96457d0_e24c2404",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
         "patchSetId": 4
