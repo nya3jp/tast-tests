@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fa6987a_e8aa91f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-02T16:22:59Z",
+      "side": 1,
+      "message": "That says \"20 builds\", which is 4 weeks. That sounds like a pretty high bar. (On the other hand, a 5% failure rate sounds like a pretty low bar for me, I am aiming for better, known issues such as the T-mobile one notwithstanding).\n\nAnyway, I\u0027ll change these both th unstable, we can decide when to remove that separately.",
+      "parentUuid": "8f39e614_59ac4bb3",
+      "revId": "ccce53acc87fb67632cd07d670636f0a5a3682a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17434434_86524237",
