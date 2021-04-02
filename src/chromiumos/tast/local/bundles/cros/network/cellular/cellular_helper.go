@@ -177,13 +177,18 @@ func (h *Helper) SetServiceAutoConnect(ctx context.Context, autoConnect bool) (b
 }
 
 // ConnectToDefault connects to the default Cellular Service.
-// It ensures that the connect attempt succeeds, repating attempts if necessary.
-// Otherwise an error is returned.
 func (h *Helper) ConnectToDefault(ctx context.Context) error {
 	service, err := h.FindServiceForDevice(ctx)
 	if err != nil {
 		return err
 	}
+	return h.ConnectToService(ctx, service)
+}
+
+// ConnectToService connects to a Cellular Service.
+// It ensures that the connect attempt succeeds, repeating attempts if necessary.
+// Otherwise an error is returned.
+func (h *Helper) ConnectToService(ctx context.Context, service *shill.Service) error {
 	props, err := service.GetProperties(ctx)
 	if err != nil {
 		return err
