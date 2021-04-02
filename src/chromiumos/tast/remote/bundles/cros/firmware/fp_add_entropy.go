@@ -8,10 +8,7 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/firmware/fingerprint"
-	"chromiumos/tast/remote/servo"
-	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/platform"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -36,7 +33,14 @@ func init() {
 }
 
 func FpAddEntropy(ctx context.Context, s *testing.State) {
-	d := s.DUT()
+	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), s.RPCHint())
+	if err != nil {
+		s.Fatal("Failed to create new firmware test: ", err)
+	}
+	defer t.Close(ctx)
+
+	d := t.DUT()
+	pxy := t.Servo()
 
 	fpBoard, err := fingerprint.Board(ctx, d)
 	if err != nil {
@@ -50,19 +54,6 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to validate build firmware file: ", err)
 	}
 
-	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), d.KeyFile(), d.KeyDir())
-	if err != nil {
-		s.Fatal("Failed to connect to servo: ", err)
-	}
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Minute)
-	defer cancel()
-	defer func(ctx context.Context) {
-		testing.ContextLog(ctx, "Tearing down")
-		defer pxy.Close(ctx)
-		fingerprint.ReimageFPMCU(ctx, d, pxy)
-	}(cleanupCtx)
-
 	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy); err != nil {
 		s.Fatal("Initialization failed: ", err)
 	}
@@ -73,11 +64,7 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 		s.Fatal("Initialization failed: ", err)
 	}
 
-	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
-	}
-	defer cl.Close(ctx)
+	cl := t.RPCClient()
 
 	upstartService := platform.NewUpstartServiceClient(cl.Conn)
 
