@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b7b79e_07b246aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 40
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-02T01:58:44Z",
+      "side": 1,
+      "message": "LGTM from my side, I\u0027ll defer to Jun.\n",
+      "revId": "6cc887a3b420f2baa7124b490effb1235f1df0be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18cc8d2c_a9f4765b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-02T01:58:44Z",
+      "side": 1,
+      "message": "error is not checked here, is it intentional? If so please add a comment.",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 7
+      },
+      "revId": "6cc887a3b420f2baa7124b490effb1235f1df0be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
