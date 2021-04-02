@@ -119,15 +119,15 @@ func (h *Helper) FindServiceForDeviceWithTimeout(ctx context.Context, timeout ti
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get Cellular Device properties")
 	}
-	deviceIccid, err := deviceProperties.GetString(shillconst.DevicePropertyCellularICCID)
+	deviceICCID, err := deviceProperties.GetString(shillconst.DevicePropertyCellularICCID)
 	if err != nil {
 		return nil, errors.Wrap(err, "device missing ICCID")
 	}
-	if deviceIccid == "" {
+	if deviceICCID == "" {
 		return nil, errors.Wrap(err, "device has empty ICCID")
 	}
 	props := map[string]interface{}{
-		shillconst.ServicePropertyCellularICCID: deviceIccid,
+		shillconst.ServicePropertyCellularICCID: deviceICCID,
 		shillconst.ServicePropertyConnectable:   true,
 		shillconst.ServicePropertyType:          shillconst.TypeCellular,
 	}
@@ -177,13 +177,18 @@ func (h *Helper) SetServiceAutoConnect(ctx context.Context, autoConnect bool) (b
 }
 
 // ConnectToDefault connects to the default Cellular Service.
-// It ensures that the connect attempt succeeds, repating attempts if necessary.
-// Otherwise an error is returned.
 func (h *Helper) ConnectToDefault(ctx context.Context) error {
 	service, err := h.FindServiceForDevice(ctx)
 	if err != nil {
 		return err
 	}
+	return h.ConnectToService(ctx, service)
+}
+
+// ConnectToService connects to a Cellular Service.
+// It ensures that the connect attempt succeeds, repeating attempts if necessary.
+// Otherwise an error is returned.
+func (h *Helper) ConnectToService(ctx context.Context, service *shill.Service) error {
 	props, err := service.GetProperties(ctx)
 	if err != nil {
 		return err
