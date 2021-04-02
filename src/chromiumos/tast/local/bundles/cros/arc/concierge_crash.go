@@ -9,11 +9,11 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -23,7 +23,7 @@ func init() {
 		Func:         ConciergeCrash,
 		Desc:         "Test concierge crash handling",
 		Contacts:     []string{"hashimoto@chromium.org", "arcvm-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Timeout:      10 * time.Minute,
 	})
