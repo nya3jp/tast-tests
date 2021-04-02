@@ -26,12 +26,6 @@ func NewPropertyHolder(ctx context.Context, service, iface string, path dbus.Obj
 	return &PropertyHolder{dbusObject}, nil
 }
 
-// GetDBusProperties calls NewDBusProperties with the PropertyHolder object and returns the result.
-// Deprecated: use GetProperties instead.
-func (h *PropertyHolder) GetDBusProperties(ctx context.Context) (*Properties, error) {
-	return h.GetProperties(ctx)
-}
-
 // GetProperties calls NewDBusProperties with the PropertyHolder object and returns the result.
 func (h *PropertyHolder) GetProperties(ctx context.Context) (*Properties, error) {
 	return NewDBusProperties(ctx, h.DBusObject)

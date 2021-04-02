@@ -10,6 +10,7 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
@@ -64,4 +65,40 @@ func (m *Modem) GetSimProperties(ctx context.Context, simPath dbus.ObjectPath) (
 		return nil, err
 	}
 	return ph.GetProperties(ctx)
+}
+
+// GetSimSlots uses the Modem.SimSlots property to fetch SimProperties for each slot.
+// Returns the array of SimProperties and the array index of the primary slot on success.
+// If a slot path is empty, the entry for that slot will be nil.
+func (m *Modem) GetSimSlots(ctx context.Context) (simProps []*dbusutil.Properties, primary uint32, err error) {
+	modemProps, err := m.GetProperties(ctx)
+	if err != nil {
+		return nil, 0, errors.Wrap(err, "failed to call Modem.GetProperties")
+	}
+	simSlots, err := modemProps.GetObjectPaths(mmconst.ModemPropertySimSlots)
+	if err != nil {
+		return nil, 0, errors.Wrap(err, "missing Modem.SimSlots property")
+	}
+	primarySlot, err := modemProps.GetUint32(mmconst.ModemPropertyPrimarySimSlot)
+	if err != nil {
+		return nil, 0, errors.Wrap(err, "missing Modem.PrimarySimSlot property")
+	}
+	if primarySlot < 1 {
+		return nil, 0, errors.Wrap(err, "Modem.PrimarySimSlot < 1")
+	}
+	primary = primarySlot - 1
+
+	// Gather Properties for each Modem.SimSlots entry.
+	for _, simPath := range simSlots {
+		var props *dbusutil.Properties
+		if simPath != "/" {
+			props, err = m.GetSimProperties(ctx, simPath)
+			if err != nil {
+				return nil, 0, errors.Wrap(err, "failed to call Sim.GetProperties")
+			}
+		}
+		simProps = append(simProps, props)
+	}
+
+	return simProps, primary, nil
 }
