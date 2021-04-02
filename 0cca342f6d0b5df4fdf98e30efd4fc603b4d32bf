@@ -16,6 +16,230 @@
       "message": "lgtm",
       "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0755cef_fccc0d9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-02T21:20:55Z",
+      "side": 1,
+      "message": "nit (and possible others): constants that are used only in one function, move them inside that function.\n\ne.g: move this one close to L70",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 50
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfa477bb_506bbbf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-02T21:20:55Z",
+      "side": 1,
+      "message": "nit: here and in the rest of the comments.\n\ncomments should be a sentence, and should end with a period (.).\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences\n\ne.g:\n\n// waitForTag waits for tag ..XXX  .",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 58
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0068364b_0d66bba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-02T21:20:55Z",
+      "side": 1,
+      "message": "nit: error strings should not be capitalized\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 59,
+        "startChar": 26,
+        "endLine": 59,
+        "endChar": 27
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3914e4cb_02475a9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-02T21:20:55Z",
+      "side": 1,
+      "message": "nit: use errors.Errorf() instead of errors.New() when passing an argument",
+      "range": {
+        "startLine": 59,
+        "startChar": 14,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "040779b7_d9ab3aba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-02T21:20:55Z",
+      "side": 1,
+      "message": "nit: don\u0027t leave empty line after `func` (L70)",
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3597ac84_02ff7148",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-02T21:20:55Z",
+      "side": 1,
+      "message": "add a comment that describes the returned string... otherwise it is not clear  with the (len(line)-1) is needed.",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 14
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39b419b3_ada1e11e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-02T21:20:55Z",
+      "side": 1,
+      "message": "(ditto): comments should end with a period (.)",
+      "range": {
+        "startLine": 82,
+        "startChar": 19,
+        "endLine": 82,
+        "endChar": 20
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2379c97_dc643161",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-02T21:20:55Z",
+      "side": 1,
+      "message": "should this pipe be closed after use?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 7
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "624e56d7_13a17dce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-02T21:20:55Z",
+      "side": 1,
+      "message": "nit: optional: remove the main-func docstring if it doesn\u0027t add additional value. The \"description\" already describes what it does",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 25
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb7f200c_c6f5ceb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-02T21:20:55Z",
+      "side": 1,
+      "message": "nit: these lines inside the `if err !\u003d nil` guard ?",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
