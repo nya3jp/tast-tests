@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/remote/firmware/reporters"
-	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -38,8 +37,17 @@ func init() {
 }
 
 func FpRDP0(ctx context.Context, s *testing.State) {
-	// TODO(b/183151135): Move common preparation logic to a Precondition.
-	d := s.DUT()
+	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), s.RequiredVar("servo"), s.RPCHint())
+	if err != nil {
+		s.Fatal("Failed to create new firmware test: ", err)
+	}
+	ctxForCleanup := ctx
+	defer t.Close(ctxForCleanup)
+	ctx, cancel := ctxutil.Shorten(ctx, fingerprint.TimeForCleanup)
+	defer cancel()
+
+	d := t.DUT()
+	pxy := t.Servo()
 
 	fpBoard, err := fingerprint.Board(ctx, d)
 	if err != nil {
@@ -52,19 +60,6 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	if err := fingerprint.ValidateBuildFwFile(ctx, d, fpBoard, buildFwFile); err != nil {
 		s.Fatal("Failed to validate build firmware file: ", err)
 	}
-
-	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), d.KeyFile(), d.KeyDir())
-	if err != nil {
-		s.Fatal("Failed to connect to servo: ", err)
-	}
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Minute)
-	defer cancel()
-	defer func(ctx context.Context) {
-		testing.ContextLog(ctx, "Tearing down")
-		defer pxy.Close(ctx)
-		fingerprint.ReimageFPMCU(ctx, d, pxy)
-	}(cleanupCtx)
 
 	// TODO(b/182596510): Check the FPMCU is running expected firmware version.
 
