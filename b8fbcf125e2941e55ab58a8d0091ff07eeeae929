@@ -16,6 +16,126 @@
       "message": "Hi Andres. Thanks for reviewing!\nAddressed your comments. PTAL.",
       "revId": "b8fbcf125e2941e55ab58a8d0091ff07eeeae929",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a41637fc_d5dc56af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-02T08:32:49Z",
+      "side": 1,
+      "message": "No real comments, just wanted to say thank you very much for putting this together!! It\u0027s much nicer than the Python script I slapped together, and that only worked for VP9 too :)",
+      "revId": "b8fbcf125e2941e55ab58a8d0091ff07eeeae929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfca543d_86d844b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-02T08:32:49Z",
+      "side": 1,
+      "message": "In generating the metadata files for the WebM VP9 test streams, Ilja mentioned it might be helpful to have the video filename and checksum directly in the JSON as well --- would it be easy maybe to add fields\n File         string `json:\"file\"`\n FileChecksum string `json:\"file_checksum\"`\n?\n\n(Like in https://storage.googleapis.com/chromiumos-test-assets-public/tast/cros/video/test_vectors/vp9/Profile_0_8bit/buf/crowd_run_1080X512_fr30_bd8_8buf_l3_20210312.ivf.json)\n\nThe JSON files /are/ named based off of the video files, so I guess it\u0027s just to help be extra sure they match (e.g. if running outside of tast).",
+      "revId": "b8fbcf125e2941e55ab58a8d0091ff07eeeae929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b570f41_f9de66cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-02T08:32:49Z",
+      "side": 1,
+      "message": "Optional: since there are multiple int return values, name these parameters as per http://go/go-style/decisions.md?cl\u003dhead#named-result-parameters ?",
+      "range": {
+        "startLine": 140,
+        "startChar": 31,
+        "endLine": 140,
+        "endChar": 60
+      },
+      "revId": "b8fbcf125e2941e55ab58a8d0091ff07eeeae929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2348faa_f676c22b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-02T08:32:49Z",
+      "side": 1,
+      "message": "Should this be 6?",
+      "range": {
+        "startLine": 205,
+        "startChar": 17,
+        "endLine": 205,
+        "endChar": 18
+      },
+      "revId": "b8fbcf125e2941e55ab58a8d0091ff07eeeae929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e1a3844_52c0419c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-02T08:32:49Z",
+      "side": 1,
+      "message": "Optional: https://golang.org/pkg/strings/#Fields should also work",
+      "range": {
+        "startLine": 237,
+        "startChar": 17,
+        "endLine": 237,
+        "endChar": 22
+      },
+      "revId": "b8fbcf125e2941e55ab58a8d0091ff07eeeae929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df4dd230_8376c0ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-02T08:32:49Z",
+      "side": 1,
+      "message": "Just to confirm, currently, ffprobe is not returning a frame rate? So info.FrameRate will always be 30?\n\nI got frame rate by running ffprobe with `-show_entries stream\u003dr_frame_rate` and rounding (since the number can be 30000/1001 or 60000/1001). Would something like that work here and be easy to add?",
+      "revId": "b8fbcf125e2941e55ab58a8d0091ff07eeeae929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
