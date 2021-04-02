@@ -23,18 +23,21 @@ func init() {
 		Func:         ChromeCrash,
 		Desc:         "Test chrome crash handling on login screen",
 		Contacts:     []string{"hashimoto@chromium.org", "arc-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Val:               false,
+			ExtrAttr:          []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
 			Val:               false,
+			ExtrAttr:          []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
 			Name:              "logged_in",
 			Val:               true,
+			ExtrAttr:          []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm_logged_in",
