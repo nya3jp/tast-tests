@@ -245,6 +245,55 @@ func (ac *Context) WaitForLocation(finder *nodewith.Finder) Action {
 	}
 }
 
+// WaitForEvent returns a function that conducts the specified action, and
+// then waits for the specified event appears on the specified node. It takes
+// an action as an argument rather than it is a part of a chain of action
+// because it needs to set up a watcher in prior to the action, and also
+// it needs to clean up the allocated resources for the watcher afterwards.
+func (ac *Context) WaitForEvent(finder *nodewith.Finder, ev event.Event, act Action) Action {
+	return func(ctx context.Context) error {
+		q, err := finder.GenerateQuery()
+		if err != nil {
+			return err
+		}
+		expr := fmt.Sprintf(`async function(eventType) {
+			%s
+			let watcher = {
+				"events": [],
+				"callback": (ev) => {
+					watcher.events.push(ev);
+				},
+				"release": () => {
+					node.removeEventListener(eventType, watcher.callback);
+				}
+			};
+			node.addEventListener(eventType, watcher.callback);
+			return watcher;
+		}`, q)
+
+		obj := &chrome.JSObject{}
+		if err := ac.tconn.Call(ctx, obj, expr, ev); err != nil {
+			return errors.Wrap(err, "failed to execute the registration")
+		}
+		defer obj.Release(ctx)
+		defer obj.Call(ctx, nil, `function() { this.release(); }`)
+
+		if err := act(ctx); err != nil {
+			return errors.Wrap(err, "failed to run the main action")
+		}
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			var events []map[string]interface{}
+			if err := obj.Call(ctx, &events, `function() { return this.events; }`); err != nil {
+				return testing.PollBreak(err)
+			}
+			if len(events) == 0 {
+				return errors.New("events haven't occurred yet")
+			}
+			return nil
+		}, &ac.pollOpts)
+	}
+}
+
 // Exists returns a function that returns nil if a node exists.
 // If any node in the chain is not found, it will return an error.
 func (ac *Context) Exists(finder *nodewith.Finder) Action {
@@ -496,13 +545,7 @@ func (ac *Context) RightClickUntil(finder *nodewith.Finder, condition func(conte
 // The focus event is not instant, so an EventWatcher (watcher.go) is used to check its status.
 // The EventWatcher waits the duration of timeout for the event to occur.
 func (ac *Context) FocusAndWait(finder *nodewith.Finder) Action {
-	return func(ctx context.Context) error {
-		ew, err := NewRootWatcher(ctx, ac.tconn, event.Focus)
-		if err != nil {
-			return errors.Wrap(err, "failed to create focus event watcher")
-		}
-		defer ew.Release(ctx)
-
+	return ac.WaitForEvent(finder, event.Focus, func(ctx context.Context) error {
 		q, err := finder.GenerateQuery()
 		if err != nil {
 			return err
@@ -513,18 +556,8 @@ func (ac *Context) FocusAndWait(finder *nodewith.Finder) Action {
 			node.focus();
 		})()
 	`, q)
-
-		return testing.Poll(ctx, func(ctx context.Context) error {
-			if err := ac.tconn.Eval(ctx, query, nil); err != nil {
-				return errors.Wrap(err, "failed to call focus() on the node")
-			}
-
-			if _, err := ew.WaitForEvent(ctx, ac.pollOpts.Timeout); err != nil {
-				return errors.Wrap(err, "failed to wait for the focus event on the specified node")
-			}
-			return nil
-		}, &ac.pollOpts)
-	}
+		return ac.tconn.Eval(ctx, query, nil)
+	})
 }
 
 // MouseMoveTo returns a function moving the mouse to hover on the center point of located node.
