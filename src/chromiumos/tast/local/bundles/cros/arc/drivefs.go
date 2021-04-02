@@ -27,8 +27,9 @@ func init() {
 		Contacts: []string{
 			"cherieccy@google.com",
 			"arc-storage@google.com",
+			"cros-arc-te@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome", "chrome_internal", "drivefs"},
 		Timeout:      4 * time.Minute,
 		Vars:         []string{"arc.Drivefs.user", "arc.Drivefs.password"},
