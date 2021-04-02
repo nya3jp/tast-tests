@@ -33,6 +33,24 @@
       "message": "Can the file be \"bloonchipper_v2.0.bin.external\"?\nSo that the history can be easily tracked via \"git log\".\nDitto for others.",
       "revId": "5fd4d016e74eb422211424315ea60994c6291337",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e216c97_f16978d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-04-02T16:14:56Z",
+      "side": 1,
+      "message": "I think we do want the version string in the data file name, as it tells us relevant information immediately when we look at the test code",
+      "parentUuid": "04c5a0d3_603a455c",
+      "revId": "5fd4d016e74eb422211424315ea60994c6291337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
