@@ -20,15 +20,18 @@ async function start(profile, isSimulcast, width = 1280, height = 720) {
     };
   });
 
+  // |targetBitrate| uses a conservative 0.05 bits per pixel (bpp) estimate.
+  const targetBitrate = width * height * 30 /*fps*/ * 0.05;
+
   if (isSimulcast) {
-    await runLoopbackPeerConnectionWithSimulcast(constraints);
+    await runLoopbackPeerConnectionWithSimulcast(constraints, targetBitrate);
   } else {
-    await runLoopbackPeerConnection(constraints, profile);
+    await runLoopbackPeerConnection(constraints, profile, targetBitrate);
   }
   await onTrack;
 }
 
-async function runLoopbackPeerConnection(constraints, profile) {
+async function runLoopbackPeerConnection(constraints, profile, targetBitrate) {
   const stream = await navigator.mediaDevices.getUserMedia(constraints);
   localPeerConnection.addTransceiver(stream.getVideoTracks()[0], {
     // Prefer resolution even at the cost of visual quality to avoid falling
@@ -46,12 +49,14 @@ async function runLoopbackPeerConnection(constraints, profile) {
       localPeerConnection.localDescription);
 
   const answer = await remotePeerConnection.createAnswer();
+  answer.sdp = appendStartBitrateToSDP(answer.sdp, profile, targetBitrate);
   await remotePeerConnection.setLocalDescription(answer);
   await localPeerConnection.setRemoteDescription(
       remotePeerConnection.localDescription);
 }
 
-async function runLoopbackPeerConnectionWithSimulcast(constraints) {
+async function runLoopbackPeerConnectionWithSimulcast(constraints,
+                                                      targetBitrate) {
   const rids = [ 0, 1, 2 ];
   const stream = await navigator.mediaDevices.getUserMedia(constraints);
   localPeerConnection.addTransceiver(stream.getVideoTracks()[0], {
@@ -70,6 +75,7 @@ async function runLoopbackPeerConnectionWithSimulcast(constraints) {
   });
 
   const answer = await remotePeerConnection.createAnswer();
+  answer.sdp = appendStartBitrateToSDP(answer.sdp, profile, targetBitrate);
   await remotePeerConnection.setLocalDescription(answer);
   await localPeerConnection.setRemoteDescription({
     type : 'answer',
@@ -141,4 +147,18 @@ function makeVideoGrid(dimension, videoURL) {
     div.appendChild(video);
     container.appendChild(div);
   }
+}
+
+// Appends a 'a=fmtp:bla x-google-start-bitrate=foo' statement to |sdp|, where
+// 'bla' is the SDP id for |profile| and 'foo' is the |startBitrate| in Kbps;
+// this statement is needed to prevent RTCPeerConnections from dropping
+// resolution to keep a by-default low start bitrate.
+function appendStartBitrateToSDP(sdp, profile, startBitrate) {
+  const codec_id = findRtpmapId(splitSdpLines(sdp), profile);
+  if (codec_id) {
+    const targetBitrateKbpsAsInt = Math.trunc(startBitrate / 1000);
+    sdp += `a=fmtp:${codec_id} ` +
+        `x-google-start-bitrate=${targetBitrateKbpsAsInt}\r\n`;
+  }
+  return sdp;
 }
