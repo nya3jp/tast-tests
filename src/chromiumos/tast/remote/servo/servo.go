@@ -25,6 +25,7 @@ type Servo struct {
 
 	// Cache queried attributes that won't change.
 	version string
+	v4Type  V4TypeValue
 
 	// If initialV4Role is set, then upon Servo.Close(), the V4Role control will be set to initialV4Role.
 	initialV4Role V4RoleValue
