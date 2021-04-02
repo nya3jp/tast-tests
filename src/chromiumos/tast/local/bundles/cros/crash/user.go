@@ -123,6 +123,13 @@ func init() {
 				consentType: localcrash.MockConsent,
 			},
 		}, {
+			Name: "crash_blocking",
+			Val: userCrashParams{
+				testFunc:    testCrashBlocking,
+				consentType: localcrash.MockConsent,
+			},
+			ExtraAttr: []string{"informational"},
+		}, {
 			Name: "max_enqueued_crash",
 			Val: userCrashParams{
 				testFunc:    testMaxEnqueuedCrash,
@@ -454,6 +461,27 @@ func testCrashFiltering(ctx context.Context, cr *chrome.Chrome, s *testing.State
 	localcrash.DisableCrashFiltering()
 	if err := checkFilterCrasher(ctx, true); err != nil {
 		s.Error("testCrashFiltering failed for no-filter: ", err)
+	}
+}
+
+func testCrashBlocking(ctx context.Context, c *chrome.Chrome, s *testing.State) {
+	// First, disable filter-in.
+	if err := localcrash.DisableCrashFiltering(); err != nil {
+		s.Fatal("Failed to disable crash filter: ", err)
+	}
+
+	if err := localcrash.EnableCrashBlocking(ctx, filepath.Base(crash.CrasherPath)); err != nil {
+		s.Fatal("Failed to enable crash blocking: ", err)
+	}
+	if err := checkFilterCrasher(ctx, false); err != nil {
+		s.Errorf("testCrashBlocking failed for filter=%q: %v", filepath.Base(crash.CrasherPath), err)
+	}
+
+	if err := localcrash.DisableCrashBlocking(); err != nil {
+		s.Fatal("Failed to disable crash blocking: ", err)
+	}
+	if err := checkFilterCrasher(ctx, true); err != nil {
+		s.Error("testCrashBlocking failed for no-filter: ", err)
 	}
 }
 

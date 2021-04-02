@@ -43,7 +43,7 @@ func enableCrashFiltering(ctx context.Context, filterFile, filter string) error 
 }
 
 // EnableCrashFiltering enables crash filtering with the specified command-line
-// filter..
+// filter.
 func EnableCrashFiltering(ctx context.Context, filter string) error {
 	return enableCrashFiltering(ctx, FilterInPath, filter)
 }
@@ -60,4 +60,16 @@ func disableCrashFiltering(filterFile string) error {
 // Next time the crash reporter is invoked, it will not filter crashes.
 func DisableCrashFiltering() error {
 	return disableCrashFiltering(FilterInPath)
+}
+
+// EnableCrashBlocking enables *negative* crash filtering -- crash_reporter will
+// ignore all crashes matching the specified command-line filter.
+func EnableCrashBlocking(ctx context.Context, filter string) error {
+	return enableCrashFiltering(ctx, FilterOutPath, filter)
+}
+
+// DisableCrashBlocking removes the filter-in-block file using the default path.
+// Next time crash_reporter is invoked, it will not block crashes.
+func DisableCrashBlocking() error {
+	return disableCrashFiltering(FilterOutPath)
 }
