@@ -25,6 +25,7 @@ const (
 	ImageUSBKeyPwr       StringControl = "image_usbkey_pwr"
 	PowerState           StringControl = "power_state"
 	V4Role               StringControl = "servo_v4_role"
+	V4Type               StringControl = "servo_v4_type"
 	ECBoard              StringControl = "ec_board"
 	ECUARTCmd            StringControl = "ec_uart_cmd"
 	UARTCmd              StringControl = "servo_v4_uart_cmd"
@@ -137,7 +138,21 @@ type V4RoleValue string
 const (
 	V4RoleSnk V4RoleValue = "snk"
 	V4RoleSrc V4RoleValue = "src"
-	V4RoleNA  V4RoleValue = "n/a"
+
+	// V4RoleNA indicates a non-v4 servo.
+	V4RoleNA V4RoleValue = "n/a"
+)
+
+// A V4TypeValue is a string that would be returned by the V4Type control.
+type V4TypeValue string
+
+// These are the string values that can be returned by V4Type.
+const (
+	V4TypeA V4TypeValue = "type-a"
+	V4TypeC V4TypeValue = "type-c"
+
+	// V4TypeNA indicates a non-v4 servo.
+	V4TypeNA V4TypeValue = "n/a"
 )
 
 // A WatchdogValue is a string that would be accepted by WatchdogAdd & WatchdogRemove control.
@@ -192,6 +207,25 @@ func (s *Servo) IsServoV4(ctx context.Context) (bool, error) {
 		return false, errors.Wrap(err, "determining servo version")
 	}
 	return strings.HasPrefix(version, "servo_v4"), nil
+}
+
+// GetServoV4Type gets the version of Servo v4 being used, or V4TypeNA if Servo is not v4.
+func (s *Servo) GetServoV4Type(ctx context.Context) (V4TypeValue, error) {
+	if s.v4Type != "" {
+		return s.v4Type, nil
+	}
+	if isV4, err := s.IsServoV4(ctx); err != nil {
+		return "", errors.Wrap(err, "determining whether servo is v4")
+	} else if !isV4 {
+		s.v4Type = V4TypeNA
+		return s.v4Type, nil
+	}
+	v4t, err := s.GetString(ctx, V4Type)
+	if err != nil {
+		return "", err
+	}
+	s.v4Type = V4TypeValue(v4t)
+	return s.v4Type, nil
 }
 
 // GetString returns the value of a specified control.
