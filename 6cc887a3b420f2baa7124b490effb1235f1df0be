@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "729f0ba4_36d0ee1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 40
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-02T22:55:45Z",
+      "side": 1,
+      "message": "LGTM with nits. CR+2 in advance.",
+      "revId": "6cc887a3b420f2baa7124b490effb1235f1df0be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18cc8d2c_a9f4765b",
