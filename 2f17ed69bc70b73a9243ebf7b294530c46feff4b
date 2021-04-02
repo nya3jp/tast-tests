@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bfdc5ef_b1388c50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1485298
+      },
+      "writtenOn": "2021-04-02T01:02:44Z",
+      "side": 1,
+      "message": "Well, we\u0027ve got our \"things that pass\", our \"things that fail\" and our \"things that also fail but this time they\u0027re funky tile col/row numbers.\" So nope :P. Pulled back into one set of files.",
+      "parentUuid": "3c9ef32f_4ad37510",
+      "revId": "2f17ed69bc70b73a9243ebf7b294530c46feff4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "635b0353_c394b561",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-04-02T00:49:08Z",
       "side": 1,
       "message": "Actually, if you\u0027d like to you can slip the comment in here too, something like\n\n These files come from the WebM test streams and are grouped according to (rounded down) level, i.e. \"group1\" consists of level 1 and 1.1 streams, \"group2\" of level 2 and 2.1, etc. This helps to keep together tests with similar amounts of intended behavior/expected stress on devices.",
+      "revId": "2f17ed69bc70b73a9243ebf7b294530c46feff4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f091160d_a29a67d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1485298
+      },
+      "writtenOn": "2021-04-02T01:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "635b0353_c394b561",
       "revId": "2f17ed69bc70b73a9243ebf7b294530c46feff4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
