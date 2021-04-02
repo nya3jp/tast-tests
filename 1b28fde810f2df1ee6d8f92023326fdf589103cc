@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58ba4b51_084a2fcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-02T19:37:21Z",
+      "side": 1,
+      "message": "Now I have shortened it.",
+      "parentUuid": "f734fd26_1c69e196",
+      "revId": "1b28fde810f2df1ee6d8f92023326fdf589103cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15f92f0f_ba441c0f",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-01T12:49:50Z",
       "side": 1,
       "message": "Please add some comments on the steps that take more time. E.g.:\n\u003e  // 3 minutes to do ....\n\u003e  // 4 minutes checking ...\nIt is enough to add steps that require more than a few minutes. This way if a step is deleted from these, the timeout can be shortened.",
+      "revId": "1b28fde810f2df1ee6d8f92023326fdf589103cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe93be03_80a9c59b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-02T19:37:21Z",
+      "side": 1,
+      "message": "See [1] for time measurements on my primary DUT, but I think the important thing is the lab which I imagine has devices representing a wide range of performance. Jun Mukai, how do we handle this?\n\n[1] https://docs.google.com/spreadsheets/d/1f0hrma2IHV3ZolpG7U_tHTATUeZ2Kx2aSc-WITUfZPA/edit?usp\u003dsharing",
+      "parentUuid": "15f92f0f_ba441c0f",
       "revId": "1b28fde810f2df1ee6d8f92023326fdf589103cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "822162eb_d6da9b8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-02T19:37:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb725dd4_27880b5a",
+      "revId": "1b28fde810f2df1ee6d8f92023326fdf589103cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba87e88e_354121dd",
@@ -65,6 +119,30 @@
       "writtenOn": "2021-04-01T12:49:50Z",
       "side": 1,
       "message": "What happens if this is negative?",
+      "range": {
+        "startLine": 196,
+        "startChar": 52,
+        "endLine": 196,
+        "endChar": 97
+      },
+      "revId": "1b28fde810f2df1ee6d8f92023326fdf589103cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8037b766_6621096b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-02T19:37:21Z",
+      "side": 1,
+      "message": "Now I have added a code comment about that.",
+      "parentUuid": "ba87e88e_354121dd",
       "range": {
         "startLine": 196,
         "startChar": 52,
