@@ -95,3 +95,10 @@ func IfSuccessThen(preFunc, action Action) Action {
 		return nil
 	}
 }
+
+// Sleep returns a function that sleeps for the specified duration.
+func Sleep(duration time.Duration) Action {
+	return func(ctx context.Context) error {
+		return testing.Sleep(ctx, duration)
+	}
+}
