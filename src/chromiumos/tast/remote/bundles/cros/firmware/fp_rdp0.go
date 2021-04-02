@@ -37,7 +37,8 @@ func init() {
 }
 
 func FpRDP0(ctx context.Context, s *testing.State) {
-	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), s.RequiredVar("servo"), s.RPCHint())
+	// Set both HW and SW write protect to false to get RDP0 state.
+	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), s.RequiredVar("servo"), s.RPCHint(), s.OutDir(), false, false)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
@@ -47,26 +48,6 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	d := t.DUT()
-	pxy := t.Servo()
-
-	fpBoard, err := fingerprint.Board(ctx, d)
-	if err != nil {
-		s.Fatal("Failed to get fingerprint board: ", err)
-	}
-	buildFwFile, err := fingerprint.FirmwarePath(ctx, d, fpBoard)
-	if err != nil {
-		s.Fatal("Failed to get build firmware file path: ", err)
-	}
-	if err := fingerprint.ValidateBuildFwFile(ctx, d, fpBoard, buildFwFile); err != nil {
-		s.Fatal("Failed to validate build firmware file: ", err)
-	}
-
-	// TODO(b/182596510): Check the FPMCU is running expected firmware version.
-
-	// Set both HW and SW write protect to false to get RDP0 state.
-	if err := fingerprint.InitializeHWAndSWWriteProtect(ctx, d, pxy, false, false); err != nil {
-		s.Fatal("Initialization failed: ", err)
-	}
 
 	// This test requires a forced flash without entropy
 	// initialization to ensure that we get an exact match between
@@ -117,7 +98,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	//   entire firmware out of flash and it should exactly match the
 	//   firmware that we flashed for testing.
 	testing.ContextLog(ctx, "Reading firmware without modifying RDP level")
-	if err := testRDP0(ctx, d, buildFwFile, tempdirPath, false); err != nil {
+	if err := testRDP0(ctx, d, t.BuildFwFile(), tempdirPath, false); err != nil {
 		s.Fatal("Failed to validate RDP0 without changing RDP level: ", err)
 	}
 
@@ -132,7 +113,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	//   entire firmware out of flash and it should exactly match the
 	//   firmware that we flashed for testing.
 	testing.ContextLog(ctx, "Reading firmware while setting RDP to level 0")
-	if err := testRDP0(ctx, d, buildFwFile, tempdirPath, true); err != nil {
+	if err := testRDP0(ctx, d, t.BuildFwFile(), tempdirPath, true); err != nil {
 		s.Fatal("Failed to validate RDP0 while setting RDP to level 0: ", err)
 	}
 }

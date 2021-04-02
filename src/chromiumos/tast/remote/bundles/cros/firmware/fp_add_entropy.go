@@ -34,7 +34,7 @@ func init() {
 }
 
 func FpAddEntropy(ctx context.Context, s *testing.State) {
-	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), s.RequiredVar("servo"), s.RPCHint())
+	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), s.RequiredVar("servo"), s.RPCHint(), s.OutDir(), true, true)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
@@ -44,30 +44,6 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	d := t.DUT()
-	pxy := t.Servo()
-
-	fpBoard, err := fingerprint.Board(ctx, d)
-	if err != nil {
-		s.Fatal("Failed to get fingerprint board: ", err)
-	}
-	buildFwFile, err := fingerprint.FirmwarePath(ctx, d, fpBoard)
-	if err != nil {
-		s.Fatal("Failed to get build firmware file path: ", err)
-	}
-	if err := fingerprint.ValidateBuildFwFile(ctx, d, fpBoard, buildFwFile); err != nil {
-		s.Fatal("Failed to validate build firmware file: ", err)
-	}
-
-	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy); err != nil {
-		s.Fatal("Initialization failed: ", err)
-	}
-
-	// TODO(b/182596510): Check the FPMCU is running expected firmware version.
-
-	if err := fingerprint.InitializeHWAndSWWriteProtect(ctx, d, pxy, true, true); err != nil {
-		s.Fatal("Initialization failed: ", err)
-	}
-
 	cl := t.RPCClient()
 
 	upstartService := platform.NewUpstartServiceClient(cl.Conn)
