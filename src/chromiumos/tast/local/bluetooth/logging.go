@@ -39,3 +39,9 @@ func SetDebugLogLevels(ctx context.Context, levels LogVerbosity) error {
 	}
 	return nil
 }
+
+// StartBTSnoopLogging starts capturing Bluetooth HCI "btsnoop" logs in a file at the specified path.
+// Call Start on the returned command to start log collection, and call Kill when finished to end btmon.
+func StartBTSnoopLogging(ctx context.Context, path string) *testexec.Cmd {
+	return testexec.CommandContext(ctx, "/usr/bin/btmon", "-w", path)
+}

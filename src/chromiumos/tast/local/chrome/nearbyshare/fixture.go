@@ -16,7 +16,9 @@ import (
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
 	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/syslog"
@@ -228,6 +230,9 @@ type nearbyShareFixture struct {
 	androidAttributes          *nearbysnippet.AndroidAttributes
 	// ChromeReader is the line reader for collecting Chrome logs.
 	ChromeReader *syslog.LineReader
+	// createBtsnoopCmd returns the command for btsnoop log capture. The command is started in PreTest and must be killed in PostTest before saving the logs.
+	createBtsnoopCmd func(string) *testexec.Cmd
+	btsnoopCmd       *testexec.Cmd
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -397,6 +402,13 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		}
 	}
 
+	// TODO(crbug/1189962): To save the btsnoop logs for the duration of each test, we need to start this command in PreTest and kill it in PostTest.
+	// The only way to do that at the moment is to initialize it with the fixture's context, since PreTest's context is cancelled when it returns and the command won't run.
+	// Move creating the command to PreTest once test-scoped context is accessible within PreTest.
+	f.createBtsnoopCmd = func(outDir string) *testexec.Cmd {
+		return bluetooth.StartBTSnoopLogging(s.FixtContext(), filepath.Join(outDir, nearbycommon.BtsnoopLog))
+	}
+
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
 	chrome.Lock()
 	return fixData
@@ -437,6 +449,10 @@ func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 	if err := saveDeviceAttributes(f.crosAttributes, f.androidAttributes, filepath.Join(s.OutDir(), "device_attributes.json")); err != nil {
 		s.Error("Failed to save device attributes: ", err)
 	}
+	f.btsnoopCmd = f.createBtsnoopCmd(s.OutDir())
+	if err := f.btsnoopCmd.Start(); err != nil {
+		s.Fatal("Failed to start btsnoop log: ", err)
+	}
 }
 
 func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
@@ -449,6 +465,10 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 	if f.androidSetup {
 		f.androidDevice.DumpLogs(ctx, s.OutDir(), "nearby_logcat.txt")
 	}
+	if err := f.btsnoopCmd.Kill(); err != nil {
+		s.Error("Failed to stop btsnoop log capture: ", err)
+	}
+	f.btsnoopCmd = nil
 }
 
 // saveDeviceAttributes saves the CrOS and Android device attributes as a formatted JSON at the specified filepath.
