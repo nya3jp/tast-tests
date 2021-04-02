@@ -32,6 +32,7 @@ func init() {
 		Timeout:      6 * time.Minute,
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
+		ServiceDeps:  []string{"tast.cros.platform.UpstartService"},
 		Vars:         []string{"servo"},
 	})
 }
@@ -43,7 +44,11 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
 	ctxForCleanup := ctx
-	defer t.Close(ctxForCleanup)
+	defer func() {
+		if err := t.Close(ctxForCleanup); err != nil {
+			s.Fatal("Failed to clean up")
+		}
+	}()
 	ctx, cancel := ctxutil.Shorten(ctx, fingerprint.TimeForCleanup)
 	defer cancel()
 
