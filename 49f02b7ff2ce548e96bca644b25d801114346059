@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c02c36d9_d5e9bcc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-02T22:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d65a0eb3_8ec07cc0",
+      "range": {
+        "startLine": 152,
+        "startChar": 14,
+        "endLine": 152,
+        "endChar": 15
+      },
+      "revId": "49f02b7ff2ce548e96bca644b25d801114346059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a139bc5a_69ac3a7e",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94291dda_b836ade2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-02T22:18:33Z",
+      "side": 1,
+      "message": "Renamed s/targetBitrate/startBitrate/. The actual bitrate might\nvary for a number of reasons including the network status, the\nencode time, and an app command; for testing purposes the start\nbitrate is enough.",
+      "parentUuid": "a139bc5a_69ac3a7e",
+      "range": {
+        "startLine": 156,
+        "startChar": 47,
+        "endLine": 156,
+        "endChar": 60
+      },
+      "revId": "49f02b7ff2ce548e96bca644b25d801114346059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74438259_ab19516b",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-04-02T19:04:20Z",
       "side": 1,
       "message": "Is the semi-colon needed? I\u0027m looking at the example in http://www.rtcbits.com/2016/11/controlling-bandwidth-usage-in-webrtc.html.",
+      "range": {
+        "startLine": 161,
+        "startChar": 57,
+        "endLine": 161,
+        "endChar": 58
+      },
+      "revId": "49f02b7ff2ce548e96bca644b25d801114346059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "010f195f_b937ea90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-02T22:18:33Z",
+      "side": 1,
+      "message": "Not needed with the line break, it\u0027s a remnant from my experiments of\ntrying to set start + min + max bitrates, those need to be separated \nby semicolons.",
+      "parentUuid": "74438259_ab19516b",
       "range": {
         "startLine": 161,
         "startChar": 57,
