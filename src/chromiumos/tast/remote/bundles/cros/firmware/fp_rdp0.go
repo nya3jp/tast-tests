@@ -32,6 +32,7 @@ func init() {
 		Timeout:      6 * time.Minute,
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
+		ServiceDeps:  []string{"tast.cros.platform.UpstartService"},
 		Vars:         []string{"servo"},
 	})
 }

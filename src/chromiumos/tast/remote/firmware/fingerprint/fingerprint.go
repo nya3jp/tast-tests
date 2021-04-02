@@ -15,11 +15,13 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/upstart"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
+	"chromiumos/tast/services/cros/platform"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -86,7 +88,9 @@ const (
 	// WaitForBiodToStartTimeout is the time to wait for biod to start.
 	WaitForBiodToStartTimeout = 30 * time.Second
 	// TimeForCleanup is the amount of time to reserve for cleaning up firmware tests.
-	TimeForCleanup = 2 * time.Minute
+	TimeForCleanup       = 2 * time.Minute
+	biodUpstartJobName   = "biod"
+	powerdUpstartJobName = "powerd"
 )
 
 // Map from signing key ID to type of signing key.
@@ -155,13 +159,21 @@ var firmwareVersionMap = map[FPBoardName]map[string]firmwareMetadata{
 	},
 }
 
+type daemonState struct {
+	name       string
+	wasRunning bool
+}
+
 // FirmwareTest provides a common framework for fingerprint firmware tests.
 type FirmwareTest struct {
-	d           *dut.DUT
-	servo       *servo.Proxy
-	cl          *rpc.Client
-	fpBoard     FPBoardName
-	buildFwFile string
+	d              *dut.DUT
+	servo          *servo.Proxy
+	cl             *rpc.Client
+	rpcHint        *testing.RPCHint
+	fpBoard        FPBoardName
+	buildFwFile    string
+	upstartService platform.UpstartServiceClient
+	daemonState    []daemonState
 }
 
 // NewFirmwareTest creates and initializes a new fingerprint firmware test.
@@ -174,6 +186,19 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 	cl, err := rpc.Dial(ctx, d, hint, "cros")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
+	}
+
+	upstartService := platform.NewUpstartServiceClient(cl.Conn)
+
+	daemonState, err := stopDaemons(ctx, upstartService, []string{
+		biodUpstartJobName,
+		// TODO(b/183123775): Remove when bug is fixed.
+		//  Disabling powerd to prevent the display from turning off, which kills
+		//  USB on some platforms.
+		powerdUpstartJobName,
+	})
+	if err != nil {
+		return nil, err
 	}
 
 	fpBoard, err := Board(ctx, d)
@@ -200,7 +225,16 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 		return nil, errors.Wrap(err, "initializing write protect failed")
 	}
 
-	return &FirmwareTest{d: d, servo: pxy, cl: cl, fpBoard: fpBoard, buildFwFile: buildFwFile}, nil
+	return &FirmwareTest{
+			d:              d,
+			servo:          pxy,
+			cl:             cl,
+			rpcHint:        hint,
+			fpBoard:        fpBoard,
+			buildFwFile:    buildFwFile,
+			upstartService: upstartService,
+			daemonState:    daemonState},
+		nil
 }
 
 // Close cleans up the fingerprint test and restore the FPMCU firmware to the
@@ -208,6 +242,16 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 func (t *FirmwareTest) Close(ctx context.Context) {
 	testing.ContextLog(ctx, "Tearing down")
 	_ = ReimageFPMCU(ctx, t.d, t.servo)
+
+	// ReimageFPMCU reboots, which causes gRPC to lose its connection
+	cl, err := rpc.Dial(ctx, t.d, t.rpcHint, "cros")
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to establish RPC connection")
+	}
+	t.cl = cl
+	t.upstartService = platform.NewUpstartServiceClient(cl.Conn)
+
+	restoreDaemons(ctx, t.upstartService, t.daemonState)
 	_ = t.cl.Close(ctx)
 	t.servo.Close(ctx)
 }
@@ -230,6 +274,70 @@ func (t *FirmwareTest) RPCClient() *rpc.Client {
 // BuildFwFile gets the firmware file.
 func (t *FirmwareTest) BuildFwFile() string {
 	return t.buildFwFile
+}
+
+func stopDaemons(ctx context.Context, upstartService platform.UpstartServiceClient, daemons []string) ([]daemonState, error) {
+	var ret []daemonState
+	for _, name := range daemons {
+		status, err := upstartService.JobStatus(ctx, &platform.JobStatusRequest{JobName: name})
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get status for"+name)
+		}
+
+		daemonWasRunning := upstart.State(status.GetState()) == upstart.RunningState
+
+		if daemonWasRunning {
+			testing.ContextLog(ctx, "Stopping ", name)
+			_, err := upstartService.StopJob(ctx, &platform.StopJobRequest{
+				JobName: name,
+			})
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to stop "+name)
+			}
+		}
+
+		ret = append(ret, daemonState{
+			name:       name,
+			wasRunning: daemonWasRunning,
+		})
+	}
+
+	return ret, nil
+}
+
+func restoreDaemons(ctx context.Context, upstartService platform.UpstartServiceClient, daemons []daemonState) {
+	for i := len(daemons) - 1; i >= 0; i-- {
+		daemon := daemons[i]
+
+		testing.ContextLog(ctx, "Checking state for ", daemon.name)
+		status, err := upstartService.JobStatus(ctx, &platform.JobStatusRequest{JobName: daemon.name})
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to get state for "+daemon.name)
+			continue
+		}
+
+		running := upstart.State(status.GetState()) == upstart.RunningState
+
+		if running != daemon.wasRunning {
+			if running {
+				testing.ContextLog(ctx, "Stopping ", daemon.name)
+				_, err := upstartService.StopJob(ctx, &platform.StopJobRequest{
+					JobName: daemon.name,
+				})
+				if err != nil {
+					testing.ContextLog(ctx, "Failed to stop "+daemon.name)
+				}
+			} else {
+				testing.ContextLog(ctx, "Starting ", daemon.name)
+				_, err := upstartService.StartJob(ctx, &platform.StartJobRequest{
+					JobName: daemon.name,
+				})
+				if err != nil {
+					testing.ContextLog(ctx, "Failed to start "+daemon.name)
+				}
+			}
+		}
+	}
 }
 
 // getExpectedFwInfo returns expected firmware info for a given firmware file name.
