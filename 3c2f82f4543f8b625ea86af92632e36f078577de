@@ -174,6 +174,30 @@
       },
       "revId": "3c2f82f4543f8b625ea86af92632e36f078577de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f24371c4_592e6378",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-02T00:44:53Z",
+      "side": 1,
+      "message": "Great, thanks for confirming!",
+      "parentUuid": "c73931f0_150555ad",
+      "range": {
+        "startLine": 333,
+        "startChar": 42,
+        "endLine": 333,
+        "endChar": 49
+      },
+      "revId": "3c2f82f4543f8b625ea86af92632e36f078577de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
