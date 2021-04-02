@@ -51,6 +51,24 @@
       "parentUuid": "0d7b5f66_79e649bb",
       "revId": "9b3f02455874ca06ca3d2b411795b2f7f03e6630",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35939d67_d9b81453",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-02T23:51:37Z",
+      "side": 1,
+      "message": "Acknowledged, but it would still generally be better to make a best effort I think.\n\nThat said, I\u0027ve learned that in Tast there is a policy of avoiding extra cleanup work that might not be needed. Instead we ensure an expected state in setup instead. That being the case, I don\u0027t think we should actually try to switch the slot back at the end of the test, although it would be a good idea to test that switching back also succeeds.",
+      "parentUuid": "8116e691_8bee78ce",
+      "revId": "9b3f02455874ca06ca3d2b411795b2f7f03e6630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
