@@ -85,19 +85,19 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 
 	// overviewAnimationType specifies the type of the animation of entering to or
 	// exiting from the overview mode.
-	type overviewAnimationType int
+	type overviewAnimationType string
 	const (
 		// animationTypeMaximized is the animation when there are maximized windows
 		// in the clamshell mode.
-		animationTypeMaximized overviewAnimationType = iota
+		animationTypeMaximized overviewAnimationType = "maximized"
 		// animationTypeNormalWindow is the animation for normal windows in the
 		// clamshell mode.
-		animationTypeNormalWindow
+		animationTypeNormalWindow overviewAnimationType = "normal"
 		// animationTypeTabletMode is the animation for windows in the tablet mode.
-		animationTypeTabletMode
+		animationTypeTabletMode overviewAnimationType = "tablet"
 		// animationTypeTabletMode is the animation for windows in the tablet mode
 		// when they are all minimized
-		animationTypeMinimizedTabletMode
+		animationTypeMinimizedTabletMode overviewAnimationType = "minimized-tablet"
 	)
 
 	// Run an http server to serve the test contents for accessing from the chrome browsers.
@@ -129,7 +129,8 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 		for _, state := range []overviewAnimationType{animationTypeMaximized, animationTypeNormalWindow, animationTypeTabletMode, animationTypeMinimizedTabletMode} {
 			inTabletMode := (state == animationTypeTabletMode || state == animationTypeMinimizedTabletMode)
 			if err = ash.SetTabletModeEnabled(ctx, tconn, inTabletMode); err != nil {
-				s.Fatalf("Failed to set tablet mode %v: %v", inTabletMode, err)
+				s.Logf("Skipping the case of %v as it failed to set tablet mode %v: %v", state, inTabletMode, err)
+				continue
 			}
 
 			windowState := ash.WindowStateNormal
