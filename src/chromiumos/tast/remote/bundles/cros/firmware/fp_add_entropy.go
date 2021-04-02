@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/firmware/fingerprint"
-	"chromiumos/tast/services/cros/platform"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -39,24 +38,15 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
 	ctxForCleanup := ctx
-	defer t.Close(ctxForCleanup)
+	defer func() {
+		if err := t.Close(ctxForCleanup); err != nil {
+			s.Fatal("Failed to clean up: ", err)
+		}
+	}()
 	ctx, cancel := ctxutil.Shorten(ctx, fingerprint.TimeForCleanup)
 	defer cancel()
 
 	d := t.DUT()
-	cl := t.RPCClient()
-
-	upstartService := platform.NewUpstartServiceClient(cl.Conn)
-
-	// Waiting for biod to be running in case biod wants to set entropy.
-	err = testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := upstartService.CheckJob(ctx, &platform.CheckJobRequest{JobName: "biod"})
-		return err
-	}, &testing.PollOptions{Timeout: fingerprint.WaitForBiodToStartTimeout})
-
-	if err != nil {
-		s.Fatal("Timed out waiting for biod to start: ", err)
-	}
 
 	firmwareCopy, err := fingerprint.RunningFirmwareCopy(ctx, d)
 	if err != nil {
