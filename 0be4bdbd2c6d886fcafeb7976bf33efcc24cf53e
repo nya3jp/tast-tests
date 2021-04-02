@@ -33,6 +33,24 @@
       "message": "IIRC Ash.Overview.AnimationSmoothness.*.SplitView is already measured in ui.SplitViewResizePerf.\nWhat is the major difference from that?\nhttps://crosbolt.googleplex.com/time_series/tast.ui.SplitViewResizePerf?sku_filter\u003dkefka_intel_celeron_n3060_2GB%7Ckefka_intel_celeron_n3060_2GB.kernelnext\u0026suite\u003dcrosbolt",
       "revId": "0be4bdbd2c6d886fcafeb7976bf33efcc24cf53e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5110ebd1_78955aeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-02T23:30:01Z",
+      "side": 1,
+      "message": "The point of https://crbug.com/1124599 is to compare data for Ash.Overview.AnimationSmoothness.*.SplitView and Ash.Overview.AnimationSmoothness.*.TabletMode. To compare apples to apples, we need to get data for them in scenarios as similar as possible. Here we have a number of overview windows all displaying animation.html which entails heavy rendering. As Ash.Overview.AnimationSmoothness.*.TabletMode is already measured in that scenario, my idea is to also measure Ash.Overview.AnimationSmoothness.*.SplitView in that scenario.",
+      "parentUuid": "73aa07a3_7d72fdc4",
+      "revId": "0be4bdbd2c6d886fcafeb7976bf33efcc24cf53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
