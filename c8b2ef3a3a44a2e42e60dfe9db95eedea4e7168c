@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35cf8bdd_646bb507",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-02T21:24:57Z",
+      "side": 1,
+      "message": "Mattias - i assigned you based on the test contact information; feel free to reassign if you\u0027re the wrong person.",
+      "revId": "c8b2ef3a3a44a2e42e60dfe9db95eedea4e7168c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
