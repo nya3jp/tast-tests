@@ -157,13 +157,17 @@ var firmwareVersionMap = map[FPBoardName]map[string]firmwareMetadata{
 
 // FirmwareTest provides a common framework for fingerprint firmware tests.
 type FirmwareTest struct {
-	d     *dut.DUT
-	servo *servo.Proxy
-	cl    *rpc.Client
+	d           *dut.DUT
+	servo       *servo.Proxy
+	cl          *rpc.Client
+	fpBoard     FPBoardName
+	buildFwFile string
 }
 
 // NewFirmwareTest creates and initializes a new fingerprint firmware test.
-func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *testing.RPCHint) (*FirmwareTest, error) {
+// enableHWWP indicates whether the test should enable hardware write protect.
+// enableSWWP indicates whether the test should enable software write protect.
+func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *testing.RPCHint, outDir string, enableHWWP, enableSWWP bool) (*FirmwareTest, error) {
 	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to servo")
@@ -174,7 +178,31 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
 
-	return &FirmwareTest{d: d, servo: pxy, cl: cl}, nil
+	fpBoard, err := Board(ctx, d)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get fingerprint board")
+	}
+
+	buildFwFile, err := FirmwarePath(ctx, d, fpBoard)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get build firmware file path")
+	}
+
+	if err := ValidateBuildFwFile(ctx, d, fpBoard, buildFwFile); err != nil {
+		return nil, errors.Wrap(err, "failed to validate build firmware file")
+	}
+
+	if err := InitializeKnownState(ctx, d, outDir, pxy); err != nil {
+		return nil, errors.Wrap(err, "initializing known state failed")
+	}
+
+	// TODO(b/182596510): Check the FPMCU is running expected firmware version.
+
+	if err := InitializeHWAndSWWriteProtect(ctx, d, pxy, enableHWWP, enableSWWP); err != nil {
+		return nil, errors.Wrap(err, "initializing write protect failed")
+	}
+
+	return &FirmwareTest{d: d, servo: pxy, cl: cl, fpBoard: fpBoard, buildFwFile: buildFwFile}, nil
 }
 
 // Close cleans up the fingerprint test and restore the FPMCU firmware to the
@@ -199,6 +227,11 @@ func (t *FirmwareTest) Servo() *servo.Proxy {
 // RPCClient gets the RPC client.
 func (t *FirmwareTest) RPCClient() *rpc.Client {
 	return t.cl
+}
+
+// BuildFwFile gets the firmware file.
+func (t *FirmwareTest) BuildFwFile() string {
+	return t.buildFwFile
 }
 
 // getExpectedFwInfo returns expected firmware info for a given firmware file name.
