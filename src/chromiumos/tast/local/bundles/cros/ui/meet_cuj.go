@@ -17,16 +17,17 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/graphics"
@@ -339,7 +340,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to detect it is in tablet-mode or not: ", err)
 	}
-	var pc pointer.Controller
+	var pc pointer.Context
 	if inTabletMode {
 		// If it is in tablet mode, ensure it it in landscape orientation.
 		// TODO(crbug/1135239): test portrait orientation as well.
@@ -358,7 +359,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 			defer display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate0)
 		}
-		pc, err = pointer.NewTouchController(ctx, tconn)
+		pc, err = pointer.NewTouch(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to create a touch controller: ", err)
 		}
@@ -369,30 +370,33 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}); err != nil {
 			s.Fatal("Failed to turn all windows into maximized state: ", err)
 		}
-		pc = pointer.NewMouseController(tconn)
+		pc = pointer.NewMouse(tconn)
 	}
 	defer pc.Close()
 
 	ui := uiauto.New(tconn)
 
-	// Find the web view of Meet window.
-	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
-	// Assume that the meeting code is the only textfield in the webpage.
-	if err := ui.LeftClick(nodewith.Role(role.TextField).Ancestor(webview))(ctx); err != nil {
-		s.Fatal("Failed to click the input form: ", err)
-	}
 	kw, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to create a keyboard: ", err)
 	}
 	defer kw.Close()
-	if err := kw.Type(ctx, meetingCode); err != nil {
-		s.Fatal("Failed to type the meeting code: ", err)
-	}
-	if err := kw.Accel(ctx, "Enter"); err != nil {
-		s.Fatal("Failed to hit the enter key: ", err)
+
+	// Find the web view of Meet window.
+	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
+	if err := action.Combine(
+		"click and type meeting code",
+		// Assume that the meeting code is the only textfield in the webpage.
+		pc.Click(nodewith.Role(role.TextField).Ancestor(webview)),
+		kw.TypeAction(meetingCode),
+		kw.AccelAction("Enter"),
+	)(ctx); err != nil {
+		s.Fatal("Failed to input the meeting code: ", err)
 	}
 
+	container := nodewith.ClassName("Desk_Container_A")
+	bubble := nodewith.ClassName("PermissionPromptBubbleView").Ancestor(container).First()
+	allow := nodewith.Name("Allow").Ancestor(container).Role(role.Button).Ancestor(bubble)
 	// Check and grant permissions.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		needPermission, err := needToGrantPermission(ctx, meetConn)
@@ -402,9 +406,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if !needPermission {
 			return nil
 		}
-		bubble := nodewith.ClassName("PermissionPromptBubbleView").First()
-		allow := nodewith.Name("Allow").Role(role.Button).Ancestor(bubble)
-		if err := ui.LeftClick(allow)(ctx); err != nil {
+		if err := pc.Click(allow)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click the allow button")
 		}
 		return errors.New("granting permissions")
@@ -476,39 +478,29 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		snapRightPoint := coords.NewPoint(info.WorkArea.Right()-1, info.WorkArea.CenterY())
 		if inTabletMode {
 			if docsWindow != nil {
-				// In tablet mode, dragging windows from overview needs a long press before dragging.
-				if err := pc.Press(ctx, docsWindow.OverviewInfo.Bounds.CenterPoint()); err != nil {
-					s.Fatal("Failed to start drag the Google Docs window to snap to the left: ", err)
-				}
-				if err := testing.Sleep(ctx, time.Second); err != nil {
-					s.Fatal("Failed to wait for touch to become long press: ", err)
-				}
-				if err := pc.Move(ctx, docsWindow.OverviewInfo.Bounds.CenterPoint(), snapLeftPoint, time.Second); err != nil {
-					s.Fatal("Failed to drag the Google Docs window: ", err)
-				}
-				if err := pc.Release(closeCtx); err != nil {
-					s.Fatal("Failed to end dragging the Google Docs window: ", err)
+				if err := pc.Drag(
+					docsWindow.OverviewInfo.Bounds.CenterPoint(),
+					// Sleep is needed in tablet mode
+					action.Sleep(time.Second),
+					pc.DragTo(snapLeftPoint, time.Second),
+				)(ctx); err != nil {
+					s.Fatal("Failed to drag the Google Docs window to the left: ", err)
 				}
 			}
-			if err := pc.Press(ctx, meetWindow.OverviewInfo.Bounds.CenterPoint()); err != nil {
-				s.Fatal("Failed to start drag the Meet window to snap to the right: ", err)
-			}
-			if err := testing.Sleep(ctx, time.Second); err != nil {
-				s.Fatal("Failed to wait for touch to become long press: ", err)
-			}
-			if err := pc.Move(ctx, meetWindow.OverviewInfo.Bounds.CenterPoint(), snapRightPoint, time.Second); err != nil {
-				s.Fatal("Failed to drag the Meet window: ", err)
-			}
-			if err := pc.Release(closeCtx); err != nil {
-				s.Fatal("Failed to end dragging the Meet window: ", err)
+			if err := pc.Drag(
+				meetWindow.OverviewInfo.Bounds.CenterPoint(),
+				action.Sleep(time.Second),
+				pc.DragTo(snapRightPoint, time.Second),
+			)(ctx); err != nil {
+				s.Fatal("Failed to drag the Meet window to the right: ", err)
 			}
 		} else {
 			if docsWindow != nil {
-				if err := pointer.Drag(ctx, pc, docsWindow.OverviewInfo.Bounds.CenterPoint(), snapLeftPoint, time.Second); err != nil {
+				if err := pc.Drag(docsWindow.OverviewInfo.Bounds.CenterPoint(), pc.DragTo(snapLeftPoint, time.Second))(ctx); err != nil {
 					s.Fatal("Failed to drag the Docs window to snap to the left: ", err)
 				}
 			}
-			if err := pointer.Drag(ctx, pc, meetWindow.OverviewInfo.Bounds.CenterPoint(), snapRightPoint, time.Second); err != nil {
+			if err := pc.Drag(meetWindow.OverviewInfo.Bounds.CenterPoint(), pc.DragTo(snapRightPoint, time.Second))(ctx); err != nil {
 				s.Fatal("Failed to drag the Meet window to snap to the right: ", err)
 			}
 		}
@@ -581,18 +573,16 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to start presentation")
 			}
 
-			if err := ui.LeftClick(nodewith.Name("Chrome Tab").Role(role.ListGrid))(ctx); err != nil {
-				return errors.Wrap(err, "failed to click the tab list")
-			}
-
 			// Select the second tab (Google Docs tab) to present.
-			for i := 0; i < 2; i++ {
-				if err := kw.Accel(ctx, "Down"); err != nil {
-					return errors.Wrap(err, "failed to hit the down key")
-				}
-			}
-			if err := kw.Accel(ctx, "Enter"); err != nil {
-				return errors.Wrap(err, "failed to hit the enter key")
+			if err := action.Combine(
+				"select Google Docs tab",
+				pc.Click(nodewith.Name("Chrome Tab").Role(role.ListGrid)),
+				// Press down twice to select the second tab, which is GOogle Docs.
+				kw.AccelAction("Down"),
+				kw.AccelAction("Down"),
+				kw.AccelAction("Enter"),
+			)(ctx); err != nil {
+				return errors.Wrap(err, "failed to select the Google Docs tab")
 			}
 		}
 
@@ -623,29 +613,26 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}()
 
 		if meet.docs {
-			// Simulate notes input.
-			if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
-				return errors.Wrap(err, "failed to hit alt-tab and focus on Docs tab")
-			}
-			if err := ui.LeftClick(nodewith.Name("Document content").Role(role.TextField))(ctx); err != nil {
-				return errors.Wrap(err, "failed to click on the docs text field")
-			}
-			if err := kw.Accel(ctx, "Ctrl+Alt+["); err != nil {
-				return errors.Wrap(err, "failed to hit ctrl-alt-[ to zoom to fit")
-			}
-			if err := kw.Accel(ctx, "Ctrl+A"); err != nil {
-				return errors.Wrap(err, "failed to hit ctrl-a and select all text")
+			if err := action.Combine(
+				"select Google Docs",
+				kw.AccelAction("Alt+Tab"),
+				pc.Click(nodewith.Name("Document content").Role(role.TextField)),
+				kw.AccelAction("Ctrl+Alt+["),
+				kw.AccelAction("Ctrl+A"),
+			)(ctx); err != nil {
+				return errors.Wrap(err, "failed to select Google Docs")
 			}
 			end := time.Now().Add(meetTimeout)
 			// Wait for 5 seconds, type notes for 12.4 seconds then until the time is
 			// elapsed (3 times by default). Wait before the first typing to reduce
 			// the overlap between typing and joining the meeting.
 			for end.Sub(time.Now()).Seconds() > 18 {
-				if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-					return errors.Wrap(err, "failed to wait")
-				}
-				if err := kw.Type(ctx, notes); err != nil {
-					return errors.Wrap(err, "failed to type the notes")
+				if err := uiauto.Combine(
+					"sleep and type",
+					action.Sleep(5*time.Second),
+					kw.TypeAction(notes),
+				)(ctx); err != nil {
+					return err
 				}
 			}
 			if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
