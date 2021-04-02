@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c60af867_37b1ac97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-04-02T20:53:30Z",
+      "side": 1,
+      "message": "I noticed that \"informational\" still applies to both the stable and unstable versions of the test, how would this CL help marking the stable test as critical?\n\nIs there another file that controls which Lacros tests are run on ChromeOS CQ?",
+      "range": {
+        "startLine": 22,
+        "startChar": 43,
+        "endLine": 22,
+        "endChar": 58
+      },
+      "revId": "563df49864a5841843ff19ca023b7e4d3de15521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
