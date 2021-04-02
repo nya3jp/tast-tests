@@ -340,20 +340,20 @@ func GatherFirmwareBootTime(results *platform.GetBootPerfMetricsResponse) error 
 	return nil
 }
 
-// calculateTimeval estimates the absolute time of a time since boot. Input
-// values |event| and |tUptime| are times measured as seconds since boot (for
-// the same boot event, as from /proc/uptime). The input values |t0| and |t1|
+// calculateSystemTime estimates the system time of a time since boot. Input
+// values |eventUptime| and |tUptime| are times measured as seconds since boot (for
+// the same boot event, as from /proc/uptime). The input values |systemTime0| and |systemTime1|
 // are two values measured as seconds since the epoch. The three "t" values
-// were sampled in the order |t0|, |tUptime|, |t1|.
+// were sampled in the order |systemTime0|, |tUptime|, |systemTime1|.
 // This function estimates the time of |event| measured as seconds since the
 // epoch and also estimates the worst-case error based on the time elapsed
-// between `t0` and `t1`.
+// between `systemTime0` and `systemTime1`.
 // All values are floats.  The precision of |event| and `tUptime` is expected to
 // be kernel jiffies (i.e. one centisecond).
-func calculateTimeval(event, t0, t1, tUptime float64) (float64, float64) {
-	bootTimeval := (t0+t1)/2 - tUptime
-	error := (t1 - t0) / 2
-	return bootTimeval + event, error
+func calculateSystemTime(eventUptime, systemTime0, systemTime1, tUptime float64) (float64, float64) {
+	bootSystemTime := (systemTime0+systemTime1)/2 - tUptime
+	error := (systemTime1 - systemTime0) / 2
+	return bootSystemTime + eventUptime, error
 }
 
 // findMostRecentBootstatArchivePath returns the path of the bootstat archive
@@ -423,13 +423,15 @@ func GatherRebootMetrics(results *platform.GetBootPerfMetricsResponse) error {
 		return errors.Wrap(err, "failed in getting the information of bootperf_ran")
 	}
 
+	// Time values can come from 2 different sources. To reduce confusion, we suffix the variables as follows:
+	//  - *Uptime: uptime in seconds (a.k.a. clock_gettime with CLOCK_BOOTTIME)
+	//  - *SystemTime: seconds since epoch, system/wall clock time (a.k.a. clock_gettime with CLOCK_REALTIME, time.Now().Unix())
 	timestampPath := filepath.Join(bootstatDir, "timestamp")
-
 	b, err := ioutil.ReadFile(timestampPath)
 	if err != nil {
 		return errors.Wrap(err, "failed to read timestamp")
 	}
-	archiveTs := strings.Split(string(b), "\n")
+	archiveSystemTimeStr := strings.Split(string(b), "\n")
 	archiveUptime, err := parseUptime("archive", bootstatDir, 0)
 	if err != nil {
 		return errors.Wrap(err, "failed in parsing uptime of event archive")
@@ -438,30 +440,30 @@ func GatherRebootMetrics(results *platform.GetBootPerfMetricsResponse) error {
 	if err != nil {
 		return errors.Wrap(err, "failed in parsing uptime of event ui-post-stop")
 	}
-	archiveT0, err := strconv.ParseFloat(archiveTs[0], 64)
+	archiveSystemTime0, err := strconv.ParseFloat(archiveSystemTimeStr[0], 64)
 	if err != nil {
-		return errors.Wrapf(err, "error in parsing timestamp value %s", archiveTs[0])
+		return errors.Wrapf(err, "error in parsing timestamp value %s", archiveSystemTimeStr[0])
 	}
-	archiveT1, err := strconv.ParseFloat(archiveTs[1], 64)
+	archiveSystemTime1, err := strconv.ParseFloat(archiveSystemTimeStr[1], 64)
 	if err != nil {
-		return errors.Wrapf(err, "error in parsing timestamp value %s", archiveTs[1])
+		return errors.Wrapf(err, "error in parsing timestamp value %s", archiveSystemTimeStr[1])
 	}
 
-	shutdownTimeval, shutdownError := calculateTimeval(shutdownUptime, archiveT0, archiveT1, archiveUptime)
+	shutdownSystemTime, shutdownError := calculateSystemTime(shutdownUptime, archiveSystemTime0, archiveSystemTime1, archiveUptime)
 
-	bootT0 := time.Now().Unix()
-	uptime, err := ioutil.ReadFile("/proc/uptime")
+	nowSystemTime0 := time.Now().Unix()
+	nowUptimeStr, err := ioutil.ReadFile("/proc/uptime")
 	if err != nil {
 		return errors.Wrap(err, "failed to read system uptime")
 	}
-	bootT1 := time.Now().Unix()
-	uptimeF, err := strconv.ParseFloat(strings.Fields(string(uptime))[0], 64)
+	nowSystemTime1 := time.Now().Unix()
+	nowUptime, err := strconv.ParseFloat(strings.Fields(string(nowUptimeStr))[0], 64)
 	if err != nil {
-		return errors.Wrapf(err, "failed to parse system uptime %s", string(uptime))
+		return errors.Wrapf(err, "failed to parse system uptime %s", string(nowUptimeStr))
 	}
-	bootTimeval, bootError := calculateTimeval(results.Metrics["seconds_kernel_to_login"], float64(bootT0), float64(bootT1), uptimeF)
+	bootSystemTime, bootError := calculateSystemTime(results.Metrics["seconds_kernel_to_login"], float64(nowSystemTime0), float64(nowSystemTime1), nowUptime)
 
-	rebootTime := bootTimeval - shutdownTimeval
+	rebootTime := bootSystemTime - shutdownSystemTime
 	poweronTime := results.Metrics["seconds_power_on_to_login"]
 	shutdownTime := rebootTime - poweronTime
 
