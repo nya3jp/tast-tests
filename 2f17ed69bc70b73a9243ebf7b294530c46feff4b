@@ -33,6 +33,23 @@
       "message": "Ah, \"group \u003cN\u003e\" actually refers to something specific for VP9, which doesn\u0027t hold for AV1. (I\u0027ll add a comment for that --- has to do with official groupings of parameter settings and their limits.)\n\nDo we have a way to describe these groups that have to do with what they intend to test? (As opposed to, for example, how they seem to behave under test currently.) If not, I\u0027d be more in favor of just keeping them all in the same \"group\", i.e. removing that level of the hierarchy.",
       "revId": "2f17ed69bc70b73a9243ebf7b294530c46feff4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "635b0353_c394b561",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-02T00:49:08Z",
+      "side": 1,
+      "message": "Actually, if you\u0027d like to you can slip the comment in here too, something like\n\n These files come from the WebM test streams and are grouped according to (rounded down) level, i.e. \"group1\" consists of level 1 and 1.1 streams, \"group2\" of level 2 and 2.1, etc. This helps to keep together tests with similar amounts of intended behavior/expected stress on devices.",
+      "revId": "2f17ed69bc70b73a9243ebf7b294530c46feff4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
