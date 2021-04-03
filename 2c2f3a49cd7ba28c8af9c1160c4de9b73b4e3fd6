@@ -1,0 +1,336 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3850fa9a_adbe9f23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:47:25Z",
+      "side": 1,
+      "message": "Please use TouchContext of new uiauto/pointer which is going to be added by https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2793148.\n\nOr, you could simply use uiauto/touch.Context.  pointer is a thin wrapper on top of that, and since TabletActionHandler only uses touch, it may not need to use pointer package at all.",
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7995d9b7_13ff9eef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:47:25Z",
+      "side": 1,
+      "message": "t.tc.Click(nodewith.NameContaining(...))\n\nor\n\nt.tc.Tap(nodewith.NameContaining(...)) (in case of uiauto/touch)",
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d585b00b_2ff9f942",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:47:25Z",
+      "side": 1,
+      "message": "similarly; t.tc.Tap(btn)(ctx)",
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be3bd1c6_66203511",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:47:25Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 53
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92247f88_aa7631fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:47:25Z",
+      "side": 1,
+      "message": "Let\u0027s not use input.TouchCoord but use int here.  The conversion can be done within uiauto/touch or uiauto/pointer.",
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f2dce4a_3a57e537",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:47:25Z",
+      "side": 1,
+      "message": "Use uiauto:\n  actions :\u003d []action.Action{}\n  swipeStart \u003d tcLocation.CenterPoint()\n  swipeEnd \u003d coords.NewPoint(swipeStart.X + swipeDistance*swipeDirection, \n  swipeStart.Y)\n  for i :\u003d 0; i \u003c swipeTimes; i++ {\n    actions \u003d append(actions, tc.Swipe(swipeStart, tc.SwipeTo(swipeEnd, \n  500*time.Millisecond)))\n  }\n  if err :\u003d action.Combine(\"swipe multiple\", actions...)(ctx); err !\u003d nil {\n    return errors.Wrap(\"failed to swipe\")\n  }",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 3
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8ecc68b_59563e51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:47:25Z",
+      "side": 1,
+      "message": "This should be unnecessary. Remove.",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 3
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bd47013_ebb0b6d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:47:25Z",
+      "side": 1,
+      "message": "t.tc.Tap(tbFinder.Nth(tabIdxDest))(ctx)",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 26
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ff60c21_b17add92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:47:25Z",
+      "side": 1,
+      "message": "t.tc.Tap(nodewith.Name(\"Reload\")...)",
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "937f68f3_9019e8de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:47:25Z",
+      "side": 1,
+      "message": "Instead of using touchscreen, use coords.Point or Rect to conduct the swipe.  One possibility is to use display bounds.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 2
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a49aaec_2b466dab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:47:25Z",
+      "side": 1,
+      "message": "t.tc.Swipe(start, t.tc.SwipeTo(end, 500*time.Millisecond))(ctx)",
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a0ab371_d6495816",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:47:25Z",
+      "side": 1,
+      "message": "similarly.",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 12
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3283e52f_1663a0de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:47:25Z",
+      "side": 1,
+      "message": "I believe this is not necessary anymore.",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 0
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0adfbe1_d9bef564",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:47:25Z",
+      "side": 1,
+      "message": "You don\u0027t need mc. See my comment below.",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 34
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "438ed6b7_1bd2021d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:47:25Z",
+      "side": 1,
+      "message": "You could write as:\n  actions :\u003d []action.Action{cl.kb.AccelPressAction(\"Alt\")\n  for i :\u003d 1; i \u003c numWindows; i++ {\n    actions \u003d append(actions,\n      func(ctx context.Context) error { return testing.Sleep(ctx, 200*time.Millisecond) },\n      cl.kb.AccelPressAction(ctx, \"Tab\"),\n      func(ctx context.Context) error { return testing.Sleep(ctx, 200*time.Millisecond) },\n      cl.kb.AccelPressRelease(ctx, \"Tab\"),\n    )\n  }\n  actions \u003d append(actions, cl.kb.AccelReleaseAction(\"Alt\"))\n  return action.Combine(\"Alt-tab\", actions...)(ctx)",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 38
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbe6c5eb_67af59cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:47:25Z",
+      "side": 1,
+      "message": "return cl.ui.MouseMoveTo(nodewith.Name(title).Role(role.Window).First(), 0)(ctx)",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 60
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
