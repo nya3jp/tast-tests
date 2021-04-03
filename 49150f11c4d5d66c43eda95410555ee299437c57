@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "228eb117_103f6053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T01:01:23Z",
+      "side": 1,
+      "message": "nit: QuickCheckCUJ2?",
+      "range": {
+        "startLine": 53,
+        "startChar": 16,
+        "endLine": 53,
+        "endChar": 29
+      },
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c865c1c1_b5cfab24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T01:01:23Z",
+      "side": 1,
+      "message": "Could you put the reason why it needs to be reconnected?",
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa4719fb_4d997c48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T01:01:23Z",
+      "side": 1,
+      "message": "When an error happens and it reaches here, it won\u0027t put any data into ch and wait indefinitely.  That\u0027s not great.  Please handle the errors correctly.  Maybe close(ch) would be good enough as d, ok \u003c- ch where ok should be false when the channel is closed.",
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
