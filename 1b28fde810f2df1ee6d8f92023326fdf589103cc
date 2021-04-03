@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59735bd6_2ab0f209",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-03T00:26:03Z",
+      "side": 1,
+      "message": "I think the timeout should have enough buffer for the safety. But by seeing the sheet, can we separate the timeout, like 15 mins for lacros and 10 mins for the other?\n\nAlso, why does lacros scenario take that long?  Each of 8 windows scenario is clearly much slower.",
+      "parentUuid": "fe93be03_80a9c59b",
+      "revId": "1b28fde810f2df1ee6d8f92023326fdf589103cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb725dd4_27880b5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
         "patchSetId": 3
