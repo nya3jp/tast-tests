@@ -255,7 +255,7 @@ func AdbSetup(ctx context.Context) (*adb.Device, error) {
 	return adbDevice, nil
 }
 
-// ConfigureNearbyLogging enables verbose logging for Nearby modules on Android.
+// ConfigureNearbyLogging enables verbose logging for Nearby modules, bluetooth, and wifi on Android.
 func ConfigureNearbyLogging(ctx context.Context, d *adb.Device) error {
 	tags := []string{
 		"Nearby",
@@ -265,11 +265,21 @@ func ConfigureNearbyLogging(ctx context.Context, d *adb.Device) error {
 		"NearbyMediums",
 		"NearbySetup",
 		"NearbySharing",
+		"NearbyDirect",
+		"Backup",
+		"SmartDevice",
+		"audioModem",
 	}
 	for _, tag := range tags {
 		if err := d.EnableVerboseLoggingForTag(ctx, tag); err != nil {
 			return errors.Wrapf(err, "failed to enable verbose logging for tag %v", tag)
 		}
+	}
+	if err := d.EnableBluetoothHciLogging(ctx); err != nil {
+		return errors.Wrap(err, "failed to enable bluetooth hci logging")
+	}
+	if err := d.EnableVerboseWifiLogging(ctx); err != nil {
+		return errors.Wrap(err, "failed to enable verbose wifi logging")
 	}
 	return nil
 }

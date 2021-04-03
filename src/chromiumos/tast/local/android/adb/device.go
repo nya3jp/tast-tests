@@ -450,3 +450,34 @@ func (d *Device) EnableBluetooth(ctx context.Context) error {
 	}
 	return d.ShellCommand(ctx, "svc", "bluetooth", "enable").Run(testexec.DumpLogOnError)
 }
+
+// DisableBluetooth disables bluetooth on the Android device. This function requires adb root access.
+func (d *Device) DisableBluetooth(ctx context.Context) error {
+	if err := d.Root(ctx); err != nil {
+		return err
+	}
+	return d.ShellCommand(ctx, "svc", "bluetooth", "disable").Run(testexec.DumpLogOnError)
+}
+
+// EnableBluetoothHciLogging enables verbose bluetooth HCI logging. This function requires adb root access.
+func (d *Device) EnableBluetoothHciLogging(ctx context.Context) error {
+	if err := d.Root(ctx); err != nil {
+		return err
+	}
+	if err := d.ShellCommand(ctx, "setprop", "persist.bluetooth.btsnooplogmode", "full").Run(testexec.DumpLogOnError); err != nil {
+		return err
+	}
+	// Restart bluetooth for the command to take effect.
+	if err := d.DisableBluetooth(ctx); err != nil {
+		return err
+	}
+	return d.EnableBluetooth(ctx)
+}
+
+// EnableVerboseWifiLogging enables verbose WiFi logging on the device. This function requires adb root access.
+func (d *Device) EnableVerboseWifiLogging(ctx context.Context) error {
+	if err := d.Root(ctx); err != nil {
+		return err
+	}
+	return d.ShellCommand(ctx, "cmd", "wifi", "set-verbose-logging", "enabled").Run(testexec.DumpLogOnError)
+}
