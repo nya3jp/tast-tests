@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f16a256a_e5bfd03d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-03T00:09:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0755cef_fccc0d9d",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 50
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfa477bb_506bbbf2",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-02T21:20:55Z",
       "side": 1,
       "message": "nit: here and in the rest of the comments.\n\ncomments should be a sentence, and should end with a period (.).\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences\n\ne.g:\n\n// waitForTag waits for tag ..XXX  .",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 58
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccb0364e_40def4f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-03T00:09:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfa477bb_506bbbf2",
       "range": {
         "startLine": 51,
         "startChar": 0,
@@ -110,6 +158,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "366ae8f4_0628879d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-03T00:09:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3914e4cb_02475a9f",
+      "range": {
+        "startLine": 59,
+        "startChar": 14,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d20c257_547a83a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-03T00:09:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0068364b_0d66bba4",
+      "range": {
+        "startLine": 59,
+        "startChar": 26,
+        "endLine": 59,
+        "endChar": 27
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "040779b7_d9ab3aba",
@@ -123,6 +219,24 @@
       "writtenOn": "2021-04-02T21:20:55Z",
       "side": 1,
       "message": "nit: don\u0027t leave empty line after `func` (L70)",
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9b11b68_14a44835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-03T00:09:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "040779b7_d9ab3aba",
       "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c081fcd6_08c84a06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-03T00:09:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3597ac84_02ff7148",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 14
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39b419b3_ada1e11e",
@@ -163,6 +301,30 @@
       "writtenOn": "2021-04-02T21:20:55Z",
       "side": 1,
       "message": "(ditto): comments should end with a period (.)",
+      "range": {
+        "startLine": 82,
+        "startChar": 19,
+        "endLine": 82,
+        "endChar": 20
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e1fb207_b55e8212",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-03T00:09:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39b419b3_ada1e11e",
       "range": {
         "startLine": 82,
         "startChar": 19,
@@ -198,6 +360,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88e1bcca_0927257b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-03T00:09:45Z",
+      "side": 1,
+      "message": "Is it required? I.e. won\u0027t the pipe be closed automatically along with spawning the server (https://golang.org/pkg/os/exec/#Cmd.StderrPipe)?\n\nAnyway, I did an easy experiment:\n```\n--- a/src/chromiumos/tast/local/bundles/cros/printer/gnutls.go\n+++ b/src/chromiumos/tast/local/bundles/cros/printer/gnutls.go\n@@ -104,6 +104,10 @@ func startServer(ctx context.Context, s *testing.State) (address string) {\n                s.Fatal(\"Could not get server address: \", err)\n        }\n \n+       if err :\u003d cmdIppserver.Wait(); err !\u003d nil {\n+               s.Fatal(\"ippserver command failed: \", err)\n+       }\n+\n        return address\n }\n```\nwhich results in hitting the timeout for the serverCtx.\n\nWe need to exit this subroutine, i.e. the server must be running until the client attempts to connect to it.",
+      "parentUuid": "e2379c97_dc643161",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 7
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "624e56d7_13a17dce",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
         "patchSetId": 5
@@ -209,6 +395,30 @@
       "writtenOn": "2021-04-02T21:20:55Z",
       "side": 1,
       "message": "nit: optional: remove the main-func docstring if it doesn\u0027t add additional value. The \"description\" already describes what it does",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 25
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "808645f0_9b46ea32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-03T00:09:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "624e56d7_13a17dce",
       "range": {
         "startLine": 116,
         "startChar": 0,
@@ -232,6 +442,30 @@
       "writtenOn": "2021-04-02T21:20:55Z",
       "side": 1,
       "message": "nit: these lines inside the `if err !\u003d nil` guard ?",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "0cca342f6d0b5df4fdf98e30efd4fc603b4d32bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69219cc6_c95a1cef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-03T00:09:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb7f200c_c6f5ceb8",
       "range": {
         "startLine": 128,
         "startChar": 0,
