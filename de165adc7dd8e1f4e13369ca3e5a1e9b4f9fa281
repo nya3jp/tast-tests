@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fe1d85d_148c78d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-04-04T17:45:35Z",
+      "side": 1,
+      "message": "Thanks! LGTM % minor comments.",
+      "revId": "de165adc7dd8e1f4e13369ca3e5a1e9b4f9fa281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6adcd704_2bff9b8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-04-04T17:45:35Z",
+      "side": 1,
+      "message": "probably not",
+      "range": {
+        "startLine": 14,
+        "startChar": 49,
+        "endLine": 14,
+        "endChar": 61
+      },
+      "revId": "de165adc7dd8e1f4e13369ca3e5a1e9b4f9fa281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0eff543_27d2e53f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-04-04T17:45:35Z",
+      "side": 1,
+      "message": "obtained",
+      "range": {
+        "startLine": 15,
+        "startChar": 34,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "de165adc7dd8e1f4e13369ca3e5a1e9b4f9fa281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e575139_2ded7e11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-04-04T17:45:35Z",
+      "side": 1,
+      "message": "nit: Also need bitDepth \u003d -1",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 15
+      },
+      "revId": "de165adc7dd8e1f4e13369ca3e5a1e9b4f9fa281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b004ef7_d645dea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-04-04T17:45:35Z",
+      "side": 1,
+      "message": "It looks like you\u0027re missing bitDepth \u003d 8",
+      "revId": "de165adc7dd8e1f4e13369ca3e5a1e9b4f9fa281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9255b36_3dd9e154",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-04-04T17:45:35Z",
+      "side": 1,
+      "message": "failed computing md5",
+      "range": {
+        "startLine": 305,
+        "startChar": 31,
+        "endLine": 305,
+        "endChar": 44
+      },
+      "revId": "de165adc7dd8e1f4e13369ca3e5a1e9b4f9fa281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c4b0a0_b603567f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-04-04T17:45:35Z",
+      "side": 1,
+      "message": "nit: Is there a reason this is not:\n\n  if info.FileChecksum, err \u003d computeFileCheckSum(file); err !\u003d nil {\n    ...\n  }",
+      "range": {
+        "startLine": 316,
+        "startChar": 1,
+        "endLine": 317,
+        "endChar": 16
+      },
+      "revId": "de165adc7dd8e1f4e13369ca3e5a1e9b4f9fa281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e3c2563_83f8785c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-04-04T17:45:35Z",
+      "side": 1,
+      "message": "obtained",
+      "range": {
+        "startLine": 335,
+        "startChar": 47,
+        "endLine": 335,
+        "endChar": 52
+      },
+      "revId": "de165adc7dd8e1f4e13369ca3e5a1e9b4f9fa281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06b37437_a16cd293",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-04-04T17:45:35Z",
+      "side": 1,
+      "message": ": %s\\n",
+      "range": {
+        "startLine": 356,
+        "startChar": 67,
+        "endLine": 356,
+        "endChar": 68
+      },
+      "revId": "de165adc7dd8e1f4e13369ca3e5a1e9b4f9fa281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

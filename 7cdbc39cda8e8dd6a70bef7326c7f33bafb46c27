@@ -571,6 +571,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1955b579_f7106db1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-04-04T17:45:35Z",
+      "side": 1,
+      "message": "Thanks for clarifying. Can you add a comment to document this?",
+      "parentUuid": "122651b7_31d5276b",
+      "range": {
+        "startLine": 208,
+        "startChar": 26,
+        "endLine": 208,
+        "endChar": 44
+      },
+      "revId": "7cdbc39cda8e8dd6a70bef7326c7f33bafb46c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42b8bced_f7013b5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
         "patchSetId": 1
