@@ -128,7 +128,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 
 		for _, state := range []overviewAnimationType{animationTypeMaximized, animationTypeNormalWindow, animationTypeTabletMode, animationTypeMinimizedTabletMode} {
 			inTabletMode := (state == animationTypeTabletMode || state == animationTypeMinimizedTabletMode)
-			if err = ash.SetTabletModeEnabled(ctx, tconn, inTabletMode); err != nil {
+			if err := ash.SetTabletModeEnabled(ctx, tconn, inTabletMode); err != nil {
 				s.Logf("Skipping the case of %v as it failed to set tablet mode %v: %v", state, inTabletMode, err)
 				continue
 			}
