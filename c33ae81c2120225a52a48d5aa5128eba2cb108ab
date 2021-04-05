@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c771df_a4c44d92",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-04-05T16:18:46Z",
+      "side": 1,
+      "message": "nit, might want to handle all the abnormal conditions together near the top, for example:\nif ... s.IsServoV4 ... {\n} else if ... s.GetString(ctx, V4Type) ...\n}\ns.v4Type \u003d ...\nreturn s.v4Type, nil",
+      "revId": "c33ae81c2120225a52a48d5aa5128eba2cb108ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
