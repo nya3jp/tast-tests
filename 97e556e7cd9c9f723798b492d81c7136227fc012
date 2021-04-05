@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5d6af52_771e3ff3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-04-05T01:02:57Z",
+      "side": 1,
+      "message": "Please add someone from your team to review this CL as well.",
+      "revId": "97e556e7cd9c9f723798b492d81c7136227fc012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcc18b27_d8225d0a",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-04-05T01:02:57Z",
+      "side": 1,
+      "message": "This will end up using the shorted context for cleanup, which isn\u0027t what we want. See the docs here:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 15
+      },
+      "revId": "97e556e7cd9c9f723798b492d81c7136227fc012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
