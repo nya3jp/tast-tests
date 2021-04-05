@@ -34,7 +34,6 @@ func init() {
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
 			Pre:               crash.ChromePreWithVerboseConsent(),
 			Val:               crash.RealConsent,
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:    "mock_consent",
 			Fixture: "chromeLoggedIn",
