@@ -17,6 +17,7 @@ import (
 	"strings"
 	"time"
 
+	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/services/cros/platform"
@@ -138,7 +139,7 @@ func WaitUntilBootComplete(ctx context.Context) error {
 		if err != nil {
 			return errors.Wrapf(err, "failed to get status of job %q", job)
 		}
-		if state != upstart.WaitingState {
+		if state != upstartcommon.WaitingState {
 			return errors.Errorf("waiting for %q to stop (current state: %q)", job, state)
 		}
 
@@ -148,7 +149,7 @@ func WaitUntilBootComplete(ctx context.Context) error {
 		if err != nil {
 			return errors.Wrapf(err, "failed to get status of job %q", job)
 		}
-		if state != upstart.RunningState {
+		if state != upstartcommon.RunningState {
 			return errors.Errorf("waiting for %q to start (current state: %q)", job, state)
 		}
 

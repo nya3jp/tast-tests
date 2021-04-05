@@ -21,6 +21,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/common/testexec"
+	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/dbusutil"
@@ -60,7 +61,7 @@ func Wait(ctx context.Context) error {
 
 	// If system-services doesn't enter "start/running", everything's probably broken, so give up.
 	const systemServicesJob = "system-services"
-	if err := upstart.WaitForJobStatus(ctx, systemServicesJob, upstart.StartGoal, upstart.RunningState,
+	if err := upstart.WaitForJobStatus(ctx, systemServicesJob, upstartcommon.StartGoal, upstartcommon.RunningState,
 		upstart.TolerateWrongGoal, 2*time.Minute); err != nil {
 		return errors.Wrapf(err, "failed waiting for %v job", systemServicesJob)
 	}
@@ -92,7 +93,7 @@ func Wait(ctx context.Context) error {
 			// Some Chrome-OS-derived systems may not have all of these jobs.
 			if !upstart.JobExists(ctx, job) {
 				ch <- nil
-			} else if err := upstart.WaitForJobStatus(ctx, job, upstart.StartGoal, upstart.RunningState,
+			} else if err := upstart.WaitForJobStatus(ctx, job, upstartcommon.StartGoal, upstartcommon.RunningState,
 				upstart.TolerateWrongGoal, time.Minute); err == nil {
 				ch <- nil
 			} else {

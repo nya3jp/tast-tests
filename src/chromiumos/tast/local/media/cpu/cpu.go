@@ -19,6 +19,7 @@ import (
 	"github.com/shirou/gopsutil/cpu"
 
 	"chromiumos/tast/common/testexec"
+	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/gtest"
@@ -449,7 +450,7 @@ func disableThermalThrottling(ctx context.Context) (func(context.Context) error,
 	_, state, _, err := upstart.JobStatus(ctx, job)
 	if err != nil {
 		return nil, err
-	} else if state != upstart.RunningState {
+	} else if state != upstartcommon.RunningState {
 		return func(ctx context.Context) error { return nil }, nil
 	}
 
