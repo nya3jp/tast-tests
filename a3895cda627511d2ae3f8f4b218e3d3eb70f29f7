@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86779a07_e33a587f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-05T16:41:47Z",
+      "side": 1,
+      "message": "No problem. I\u0027ll review it later in a day. It should have some code duplicate with existing WiFi code. Let me comment later.",
+      "parentUuid": "f8245929_1c101380",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b4d4847_a470959a",
