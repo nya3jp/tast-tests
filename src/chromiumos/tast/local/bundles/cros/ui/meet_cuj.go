@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
@@ -48,13 +49,14 @@ const (
 
 // meetTest specifies the setting of a Hangouts Meet journey. More info at go/cros-meet-tests.
 type meetTest struct {
-	num     int            // Number of the participants in the meeting.
-	layout  meetLayoutType // Type of the layout in the meeting.
-	present bool           // Whether it is presenting the Google Docs or not. It can not be true if docs is false.
-	docs    bool           // Whether it is running with a Google Docs window.
-	split   bool           // Whether it is in split screen mode. It can not be true if docs is false.
-	cam     bool           // Whether the camera is on or not.
-	power   bool           // Whether to collect power metrics.
+	num      int            // Number of the participants in the meeting.
+	layout   meetLayoutType // Type of the layout in the meeting.
+	present  bool           // Whether it is presenting the Google Docs or not. It can not be true if docs is false.
+	docs     bool           // Whether it is running with a Google Docs window.
+	jamboard bool           // Whether it is running with a Jamboard window.
+	split    bool           // Whether it is in split screen mode. It can not be true if docs is false.
+	cam      bool           // Whether the camera is on or not.
+	power    bool           // Whether to collect power metrics.
 }
 
 func init() {
@@ -76,75 +78,94 @@ func init() {
 			// Base case.
 			Name: "4p",
 			Val: meetTest{
-				num:     4,
-				layout:  meetLayoutTiled,
-				present: false,
-				docs:    false,
-				split:   false,
-				cam:     true,
-				power:   false,
+				num:      4,
+				layout:   meetLayoutTiled,
+				present:  false,
+				docs:     false,
+				jamboard: false,
+				split:    false,
+				cam:      true,
+				power:    false,
 			},
 		}, {
 			// Small meeting.
 			Name: "4p_present_notes_split",
 			Val: meetTest{
-				num:     4,
-				layout:  meetLayoutTiled,
-				present: true,
-				docs:    true,
-				split:   true,
-				cam:     true,
-				power:   false,
+				num:      4,
+				layout:   meetLayoutTiled,
+				present:  true,
+				docs:     true,
+				jamboard: false,
+				split:    true,
+				cam:      true,
+				power:    false,
 			},
 		}, {
 			// Big meeting.
 			Name: "16p",
 			Val: meetTest{
-				num:     16,
-				layout:  meetLayoutTiled,
-				present: false,
-				docs:    false,
-				split:   false,
-				cam:     true,
-				power:   false,
+				num:      16,
+				layout:   meetLayoutTiled,
+				present:  false,
+				docs:     false,
+				jamboard: false,
+				split:    false,
+				cam:      true,
+				power:    false,
 			},
 		}, {
 			// Big meeting with notes.
 			Name: "16p_notes",
 			Val: meetTest{
-				num:     16,
-				layout:  meetLayoutTiled,
-				present: false,
-				docs:    true,
-				split:   true,
-				cam:     true,
-				power:   false,
+				num:      16,
+				layout:   meetLayoutTiled,
+				present:  false,
+				docs:     true,
+				jamboard: false,
+				split:    true,
+				cam:      true,
+				power:    false,
 			},
 		}, {
 			// 4p power test.
 			Name:              "power_4p",
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: meetTest{
-				num:     4,
-				layout:  meetLayoutTiled,
-				present: false,
-				docs:    false,
-				split:   false,
-				cam:     true,
-				power:   true,
+				num:      4,
+				layout:   meetLayoutTiled,
+				present:  false,
+				docs:     false,
+				jamboard: false,
+				split:    false,
+				cam:      true,
+				power:    true,
 			},
 		}, {
 			// 16p power test.
 			Name:              "power_16p",
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: meetTest{
-				num:     16,
-				layout:  meetLayoutTiled,
-				present: false,
-				docs:    false,
-				split:   false,
-				cam:     true,
-				power:   true,
+				num:      16,
+				layout:   meetLayoutTiled,
+				present:  false,
+				docs:     false,
+				jamboard: false,
+				split:    false,
+				cam:      true,
+				power:    true,
+			},
+		}, {
+			// 16p with jamboard test.
+			Name:              "16p_jamboard",
+			Val: meetTest{
+				num:      16,
+				layout:   meetLayoutTiled,
+				present:  false,
+				docs:     false,
+				jamboard: true,
+				split:    true,
+				cam:      true,
+				power:    false,
 			},
 		}},
 	})
@@ -173,6 +194,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	const (
 		timeout        = 10 * time.Second
 		defaultDocsURL = "https://docs.new/"
+		jamboardURL    = "https://jamboard.google.com"
 		notes          = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	)
 
@@ -185,8 +207,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	meet := s.Param().(meetTest)
 	meetTimeout := 30 * time.Second
-	if meet.docs {
+	if meet.docs || meet.jamboard {
 		meetTimeout = 60 * time.Second
+	}
+	if meet.docs && meet.jamboard {
+		s.Fatal("Tried to open both Google Docs and Jamboard at the same time")
 	}
 
 	// Shorten context to allow for cleanup. Reserve one minute in case of power
@@ -301,6 +326,10 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if meet.docs {
 		configs = append(configs, cuj.NewCustomMetricConfig(
 			"Event.Latency.EndToEnd.KeyPress", "microsecond", perf.SmallerIsBetter,
+			[]int64{80000, 400000}))
+	} else if meet.jamboard {
+		configs = append(configs, cuj.NewCustomMetricConfig(
+			"Event.Latency.EndToEnd.Mouse", "microsecond", perf.SmallerIsBetter,
 			[]int64{80000, 400000}))
 	}
 
@@ -420,6 +449,17 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 		defer docsConn.Close()
 		s.Log("Creating a Google Docs window")
+	} else if meet.jamboard {
+		// Create another browser window and open a new Jamboard file.
+		jamboardConn, err := cr.NewConn(ctx, jamboardURL, cdputil.WithNewWindow())
+		if err != nil {
+			s.Fatal("Failed to open the jamboard website: ", err)
+		}
+		defer jamboardConn.Close()
+		s.Log("Creating a Jamboard window")
+		if err := ui.LeftClick(nodewith.Name("New Jam").Role(role.Button))(ctx); err != nil {
+			s.Fatal("Failed to click the new jam button: ", err)
+		}
 	}
 
 	if meet.split {
@@ -540,34 +580,35 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		if meet.present {
-			if meet.docs == false {
-				return errors.New("need a Google Docs tab to present")
-			}
-			// Start presenting the Google Docs tab.
-			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				if err := ui.Exists(nodewith.Name("Chrome Tab").Role(role.ListGrid))(ctx); err == nil {
-					return nil
+			if meet.docs || meet.jamboard {
+				// Start presenting the tab.
+				if err := testing.Poll(ctx, func(ctx context.Context) error {
+					if err := ui.Exists(nodewith.Name("Chrome Tab").Role(role.ListGrid))(ctx); err == nil {
+						return nil
+					}
+					if err := meetConn.Eval(ctx, "hrTelemetryApi.presentation.presentTab()", nil); err != nil {
+						return errors.Wrap(err, "failed to start to present a tab")
+					}
+					return errors.New("presentation hasn't started yet")
+				}, &pollOpts); err != nil {
+					return errors.Wrap(err, "failed to start presentation")
 				}
-				if err := meetConn.Eval(ctx, "hrTelemetryApi.presentation.presentTab()", nil); err != nil {
-					return errors.Wrap(err, "failed to start to present a tab")
-				}
-				return errors.New("presentation hasn't started yet")
-			}, &pollOpts); err != nil {
-				return errors.Wrap(err, "failed to start presentation")
-			}
 
-			if err := ui.LeftClick(nodewith.Name("Chrome Tab").Role(role.ListGrid))(ctx); err != nil {
-				return errors.Wrap(err, "failed to click the tab list")
-			}
-
-			// Select the second tab (Google Docs tab) to present.
-			for i := 0; i < 2; i++ {
-				if err := kw.Accel(ctx, "Down"); err != nil {
-					return errors.Wrap(err, "failed to hit the down key")
+				if err := ui.LeftClick(nodewith.Name("Chrome Tab").Role(role.ListGrid))(ctx); err != nil {
+					return errors.Wrap(err, "failed to click the tab list")
 				}
-			}
-			if err := kw.Accel(ctx, "Enter"); err != nil {
-				return errors.Wrap(err, "failed to hit the enter key")
+
+				// Select the second tab (Google Docs tab) to present.
+				for i := 0; i < 2; i++ {
+					if err := kw.Accel(ctx, "Down"); err != nil {
+						return errors.Wrap(err, "failed to hit the down key")
+					}
+				}
+				if err := kw.Accel(ctx, "Enter"); err != nil {
+					return errors.Wrap(err, "failed to hit the enter key")
+				}
+			} else {
+				return errors.New("need a Google Docs or Jamboard tab to present")
 			}
 		}
 
@@ -597,8 +638,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			errc <- graphics.MeasureGPUCounters(ctx, meetTimeout, pv)
 		}()
 
-		// Simulate notes input.
 		if meet.docs {
+			// Simulate notes input.
 			if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
 				return errors.Wrap(err, "failed to hit alt-tab and focus on Docs tab")
 			}
@@ -627,6 +668,30 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to hit alt-tab and focus back to Meet tab")
 			}
 			meetTimeout = end.Sub(time.Now())
+		} else if meet.jamboard {
+			// Simulate mouse input.
+			if err := ui.LeftClick(nodewith.Name("Pen").Role(role.ToggleButton))(ctx); err != nil {
+				s.Fatal("Failed to click the pen toggle button: ", err)
+			}
+			contentArea, err := ui.Location(ctx, nodewith.ClassName("jam-content-area").Role(role.GenericContainer))
+			if err != nil {
+				s.Fatal("Failed to find the location of jamboard content area: ", err)
+			}
+			centerX, centerY, offsetX, offsetY := contentArea.CenterPoint().X, contentArea.CenterPoint().Y, 20, 20
+			for i := 1; i <= 5; i++ {
+				if err := uiauto.Combine(
+					"simulate mouse movement",
+					mouse.Move(tconn, coords.NewPoint(centerX-i*offsetX, centerY-i*offsetY), 0),
+					mouse.Press(tconn, mouse.LeftButton),
+					mouse.Move(tconn, coords.NewPoint(centerX-i*offsetX, centerY+i*offsetY), time.Second),
+					mouse.Move(tconn, coords.NewPoint(centerX+i*offsetX, centerY+i*offsetY), time.Second),
+					mouse.Move(tconn, coords.NewPoint(centerX+i*offsetX, centerY-i*offsetY), time.Second),
+					mouse.Move(tconn, coords.NewPoint(centerX-i*offsetX, centerY-i*offsetY), time.Second),
+					mouse.Release(tconn, mouse.LeftButton),
+				)(ctx); err != nil {
+					s.Fatal("Failed to simulate mouse movement on jamboard: ", err)
+				}
+			}
 		}
 
 		// Ensures that meet session is long enough. graphics.MeasureGPUCounters
