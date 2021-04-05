@@ -16,6 +16,24 @@
       "message": "nit, might want to handle all the abnormal conditions together near the top, for example:\nif ... s.IsServoV4 ... {\n} else if ... s.GetString(ctx, V4Type) ...\n}\ns.v4Type \u003d ...\nreturn s.v4Type, nil",
       "revId": "c33ae81c2120225a52a48d5aa5128eba2cb108ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d94d331d_12d4e5b7",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-05T21:55:38Z",
+      "side": 1,
+      "message": "Ack. Maintaining the current ordering for the following reasons:\n\n1. By starting with returning the cached value, we may avoid unnecessary work.\n\n2. Then we handle the case where servo is not V4, which is the only abnormal condition (other than errors).\n\n3. Then we call s.GetString(ctx, V4Type). I don\u0027t do this in an if-block as in your snippet, because we need to use the returned value (v4t). Theoretically we could use the returned value in an else-block, but I opted to minimize the normal code indentation (http://go/go-code-review-comments#indent-error-flow). Additionally, your snippet has GetString in an \"else if\" block, which I opted not to do in order to semantically differentiate between these two blocks.",
+      "parentUuid": "b5c771df_a4c44d92",
+      "revId": "c33ae81c2120225a52a48d5aa5128eba2cb108ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
