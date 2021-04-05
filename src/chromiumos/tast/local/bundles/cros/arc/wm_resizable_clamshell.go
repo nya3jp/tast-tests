@@ -969,7 +969,7 @@ func rcDisplaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn,
 }
 
 // immerseViaAPIHelper used to run immerse via API from maximized by activity name.
-func immerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, actName string) error {
+func immerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, actName string) (retErr error) {
 	// Start a new activity.
 	act, err := arc.NewActivity(a, wm.Pkg24, actName)
 	if err != nil {
@@ -994,6 +994,16 @@ func immerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 	if err := leftClickCaptionButton(ctx, tconn, "Maximize"); err != nil {
 		return err
 	}
+	defer func() {
+		if err := act.SetWindowState(ctx, tconn, arc.WindowStateNormal); err != nil {
+			if retErr == nil {
+				retErr = errors.Wrap(err, "failed to set window state back to normal")
+			} else {
+				testing.ContextLog(ctx, "Failed to set window state back to normal")
+			}
+		}
+	}()
+
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateMaximized); err != nil {
 		return err
 	}
@@ -1050,12 +1060,12 @@ func immerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 		if err != nil {
 			return testing.PollBreak(err)
 		}
+
 		if windowInfoBefore.BoundsInRoot != windowInfoAfter.BoundsInRoot {
 			return errors.Errorf("invalid window bounds after click on the immersive button, got: %q, want: %q", windowInfoAfter.BoundsInRoot, windowInfoBefore.BoundsInRoot)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second})
-
 }
 
 // checkRestoreActivityToFullscreen creates a new activity, lunches it and toggles to fullscreen and checks for validity of window info.
