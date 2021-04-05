@@ -103,6 +103,23 @@
       "parentUuid": "f5da3221_4f05dc7d",
       "revId": "e5a2942abd2759d387ee5539f5daed0ae238fd56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63b9d092_86e730a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-05T21:27:21Z",
+      "side": 1,
+      "message": "BTW, trogdor does not appear to be the only board affected, dedede and (to a lesser extent) a few others are also failing:\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard\u0026col\u003dqueued_date\u0026first_date\u003d2021-03-30\u0026last_date\u003d2021-04-05\u0026suite\u003dbvt-tast-cq\u0026test\u003dtast.network.BasicProfileProperties\u0026build\u003d%5ER%5Cd%2B-%5Cd%2B%5C.0%5C.0-%5Cd%2B-%5Cd%2B%24\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dtrue\u0026exclude_non_production\u003dfalse",
+      "revId": "e5a2942abd2759d387ee5539f5daed0ae238fd56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
