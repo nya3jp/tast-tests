@@ -17,13 +17,14 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/testexec"
+	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/sysutil"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -369,8 +370,8 @@ func RunTest(ctx context.Context, cfg TestConfig) (retErr error) {
 				}
 			}
 		}()
-		if err := upstart.WaitForJobStatus(ctx, "cros-camera", upstart.StopGoal,
-			upstart.WaitingState, upstart.RejectWrongGoal, ctxutil.MaxTimeout); err != nil {
+		if err := upstart.WaitForJobStatus(ctx, "cros-camera", upstartcommon.StopGoal,
+			upstartcommon.WaitingState, upstart.RejectWrongGoal, ctxutil.MaxTimeout); err != nil {
 			return errors.Wrap(err, "the cros-camera service did not stop before calling runCrosCameraTest")
 		}
 	}
