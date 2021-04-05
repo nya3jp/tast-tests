@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d4e903a_70c9db75",
+        "filename": "src/chromiumos/tast/services/cros/platform/upstart_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-05T16:00:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d08f1464_91edb6a7",
+      "revId": "e2ba0c57724e1b987f30148a7f28b2e6a0c4445f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20180707_6acab917",
@@ -66,6 +84,30 @@
       "writtenOn": "2021-04-05T03:48:53Z",
       "side": 1,
       "message": "Could you document relation with upstart package?",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "e2ba0c57724e1b987f30148a7f28b2e6a0c4445f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bffd6f1_707a7b70",
+        "filename": "src/chromiumos/tast/services/cros/platform/upstart_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-05T16:00:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20180707_6acab917",
       "range": {
         "startLine": 31,
         "startChar": 9,
