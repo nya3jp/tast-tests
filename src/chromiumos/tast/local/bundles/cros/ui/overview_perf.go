@@ -128,7 +128,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 
 		for _, state := range []overviewAnimationType{animationTypeMaximized, animationTypeNormalWindow, animationTypeTabletMode, animationTypeMinimizedTabletMode} {
 			inTabletMode := (state == animationTypeTabletMode || state == animationTypeMinimizedTabletMode)
-			if err = ash.SetTabletModeEnabled(ctx, tconn, inTabletMode); err != nil {
+			if err := ash.SetTabletModeEnabled(ctx, tconn, inTabletMode); err != nil {
 				s.Logf("Skipping the case of %v as it failed to set tablet mode %v: %v", state, inTabletMode, err)
 				continue
 			}
@@ -149,7 +149,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 			// have to be cpu.WaitUntilIdle(). It may wait too much.
 			// TODO(mukai): find the way to wait more properly on the idleness of Ash.
 			// https://crbug.com/1001314.
-			if err = testing.Sleep(ctx, 3*time.Second); err != nil {
+			if err := testing.Sleep(ctx, 3*time.Second); err != nil {
 				s.Fatal("Failed to wait: ", err)
 			}
 
@@ -166,10 +166,10 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 			}
 
 			r.RunMultiple(ctx, s, fmt.Sprintf("%s-%dwindows", suffix, currentWindows), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-				if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+				if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 					return errors.Wrap(err, "failed to enter into the overview mode")
 				}
-				if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+				if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
 					return errors.Wrap(err, "failed to exit from the overview mode")
 				}
 				return nil
