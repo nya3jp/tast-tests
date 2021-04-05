@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d65275fb_7e17bed6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-05T23:28:24Z",
+      "side": 1,
+      "message": "PTAL, thank you! I\u0027m happy to refine the deps to skip on a more precise granularity; this is just to stop the failure from spilling over for now.",
+      "revId": "ca491f8cdc4a69f09baaeb4c24ac0593f766f246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
