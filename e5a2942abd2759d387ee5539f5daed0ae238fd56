@@ -50,6 +50,24 @@
       "message": "would be kinda nice if it was easy to move this platform to an \u0027informational\u0027 (and not disabled entirely) state, approximately similar to: https://crrev.com/c/2740062. That way we can more easily monitor when the underlying bug is truly fixed.\n\nI\u0027d note that, especially for non-Tast-savvy sheriffs, this isn\u0027t a very easy job. It\u0027s also not the first priority, when fixing b0rken stuff like this.",
       "revId": "e5a2942abd2759d387ee5539f5daed0ae238fd56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b6dd202_c83e8d4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-05T21:10:27Z",
+      "side": 1,
+      "message": "Yeah, I messed this up badly the first time.\n\nIdeally sheriffs would like something that could maybe be configured in the infra/config repo, since that\u0027s where informational bits are already handled for builds.",
+      "parentUuid": "4649d34c_7ff30ab5",
+      "revId": "e5a2942abd2759d387ee5539f5daed0ae238fd56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
