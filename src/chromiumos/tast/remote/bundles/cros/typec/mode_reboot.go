@@ -7,17 +7,17 @@ package typec
 import (
 	"bytes"
 	"context"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/rpc"
-	"chromiumos/tast/services/cros/security"
+	"chromiumos/tast/services/cros/typec"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -31,7 +31,8 @@ func init() {
 		Desc:         "Demonstrates USB Type C mode selection after reboot",
 		Contacts:     []string{"pmalani@chromium.org", "chromeos-power@google.com"},
 		SoftwareDeps: []string{"tpm2", "reboot", "chrome"},
-		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
+		ServiceDeps:  []string{"tast.cros.typec.Service"},
+		Data:         []string{"testcert.p12"},
 		Params: []testing.Param{
 			// For running manually.
 			{
@@ -88,9 +89,20 @@ func ModeReboot(ctx context.Context, s *testing.State) {
 		s.Fatal("No TBT device connected to DUT")
 	}
 
+	// Send key file to DUT.
+	keyPath := filepath.Join("/tmp", "testcert.p12")
+	defer d.Conn().Command("rm", "-r", keyPath).Output(ctx)
+	if _, err := linuxssh.PutFiles(
+		ctx, d.Conn(), map[string]string{
+			s.DataPath("testcert.p12"): keyPath,
+		},
+		linuxssh.DereferenceSymlinks); err != nil {
+		s.Fatalf("Failed to send data to remote data path %v: %v", keyPath, err)
+	}
+
 	// Login to Chrome.
-	client := security.NewBootLockboxServiceClient(cl.Conn)
-	_, err = client.NewChromeLogin(ctx, &empty.Empty{})
+	client := typec.NewServiceClient(cl.Conn)
+	_, err = client.NewChromeLoginWithPeripheralDataAccess(ctx, &typec.KeyPath{Path: keyPath})
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

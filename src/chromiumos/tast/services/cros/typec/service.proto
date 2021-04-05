@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package tast.cros.typec;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/typec";
+
+// Service provides a function to configure device settings to enable peripheral data access and
+// then log in to a Chrome session as a fake user.
+service Service {
+    rpc NewChromeLoginWithPeripheralDataAccess(KeyPath) returns (google.protobuf.Empty) {}
+}
+
+message KeyPath {
+    string path = 1;
+}
