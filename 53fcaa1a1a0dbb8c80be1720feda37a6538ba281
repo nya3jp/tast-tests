@@ -16,6 +16,23 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "53fcaa1a1a0dbb8c80be1720feda37a6538ba281",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcbf9765_a1ae7623",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-05T04:25:48Z",
+      "side": 1,
+      "message": "Sorry for the delay.\nLGTM as a Tast owner.\nPlease have a review by cylai@ for the test logic details.",
+      "revId": "53fcaa1a1a0dbb8c80be1720feda37a6538ba281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
