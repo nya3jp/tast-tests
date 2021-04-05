@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/network/wiredhostapd"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type testParameters struct {
@@ -34,9 +33,6 @@ func init() {
 		Contacts:     []string{"briannorris@chromium.org", "cros-networking@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wired_8021x"},
-
-		// crbug.com/1195793: Disabled by sheriff due to CQ HW test failures
-		ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("Trogdor")),
 
 		Params: []testing.Param{
 			{
