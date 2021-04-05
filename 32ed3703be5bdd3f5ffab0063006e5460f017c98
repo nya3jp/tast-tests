@@ -39,6 +39,30 @@
       },
       "revId": "32ed3703be5bdd3f5ffab0063006e5460f017c98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0728ea5_861283fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-05T22:37:43Z",
+      "side": 1,
+      "message": "Yes it should be haha, I got mixed up somewhere I guess. Let me fix that and see if it passes locally.",
+      "parentUuid": "dd98dd8f_d1af896d",
+      "range": {
+        "startLine": 104,
+        "startChar": 79,
+        "endLine": 104,
+        "endChar": 84
+      },
+      "revId": "32ed3703be5bdd3f5ffab0063006e5460f017c98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
