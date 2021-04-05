@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb6335dc_9ec94dd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-05T18:26:24Z",
+      "side": 1,
+      "message": "It looks like the only uses for `errors`, here, are for Wrap, Wrapf, and Errorf. If you like, you can avoid using chromiumos/tast/errors altogether by using fmt.Errorf instead. That would simplify the requirements to run this script, and potentially prevent future issues.\n\nExample from https://blog.golang.org/go1.13-errors:\n\n    if err !\u003d nil {\n        return fmt.Errorf(\"decompress %v: %v\", name, err)\n    }",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a610db70_df8c5af7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
         "patchSetId": 4
@@ -36,6 +53,239 @@
         "startChar": 48,
         "endLine": 11,
         "endChar": 78
+      },
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8163954_60e22c6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-05T18:26:24Z",
+      "side": 1,
+      "message": "You can simplify this function, removing `match` and `p`, with early returns:\n\n\tfunc ffprobeCodecToProfile(codec, profile string) (Profile, error) {\n\t\tswitch codec {\n\t\tcase \"h264\":\n\t\t\tswitch profile {\n\t\t\tcase \"Baseline\":\n\t\t\t\treturn h264Baseline, nil\n\t\t\tcase \"Main\":\n\t\t\t\treturn h264Main, nil\n\t\t\tcase \"High\":\n\t\t\t\treturn h264High, nil\n\t\t\t}\n\t\tcase \"vp8\":\n\t\t\treturn vp8Any, nil\n\t\tcase \"vp9\":\n\t\t\tswitch profile {\n\t\t\tcase \"Profile 0\":\n\t\t\t\treturn vp90, nil\n\t\t\tcase \"Profile 2\":\n\t\t\t\treturn vp92, nil\n\t\t\t}\n\t\tcase \"av1\":\n\t\t\tswitch profile {\n\t\t\tcase \"Main\":\n\t\t\t\treturn av1Main, nil\n\t\t\t}\n\t\t}\n\t\treturn 0, errors.Errorf(\"unsupported codec\u003d%s and profile\u003d%s\", codec, profile)\n\t}",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb2cf638_94453c54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-05T18:26:24Z",
+      "side": 1,
+      "message": "nit: It is idiomatic to return the zero value in the case of error. For numeric types like Profile, the zero value is 0. I know 0 is also meaningful in the Profile enum, but nobody will consume the Profile return value if err !\u003d nil.",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331d1270_c6597f9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-05T18:26:24Z",
+      "side": 1,
+      "message": "typo: ffprobe",
+      "range": {
+        "startLine": 148,
+        "startChar": 7,
+        "endLine": 148,
+        "endChar": 16
+      },
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "515893db_59980095",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-05T18:26:24Z",
+      "side": 1,
+      "message": "As above, it is idiomatic to return the zero value in the case of error. Additionally, because these are named result parameters, they are automatically initialized to the zero values, so you can eliminate L150—154 altogether.",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f12a947_e23ffc6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-05T18:26:24Z",
+      "side": 1,
+      "message": "Optional: You might want to include the actual value of jsonData.Streams here.\n\n    err \u003d errors.Errorf(\"ffprobe detects multiple or no video streams: %+v\", jsonData.Streams)\n\nOr, include the number of streams found:\n\n    err \u003d errors.Errorf(\"ffprobe detects %d video streams; want 1\", len(jsonData.Streams))",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d1b8488_dbc1ae41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-05T18:26:24Z",
+      "side": 1,
+      "message": "nit: L191-199 would be more concise with a switch-case.\n\n    var bitDepth int\n    switch stream.Pixfmt {\n    case \"yuv420p\":\n        bitDepth \u003d 8\n    case \"yuv420p10le\":\n        bitDepth \u003d 10\n    default:\n        err \u003d errors.Errorf(\"unknown pix_fmt: \", stream.PixFmt)\n        return\n    }",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "703c3df9_55e7a2c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-05T18:26:24Z",
+      "side": 1,
+      "message": "Since you\u0027ll be casting to a float64 anyway, you can by using ParseFloat instead.\n\n    fpsNum, err :\u003d strconv.ParseInt(fpsFrac[0], 64)\n    if err !\u003d nil {\n        return\n    }\n    \n    fpsDenom, err :\u003d strConv.ParseFloat(fpsFrac[1], 64)\n    if err !\u003d nil {\n        return\n    }\n    \n    frameRate \u003d int(math.Round(fpsNum / fpsDenom))",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75d428c2_252f6559",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-05T18:26:24Z",
+      "side": 1,
+      "message": "You can remove this line. Err was automatically initialized to nil at the start of the function. If err became !\u003dnil at any point, we would have returned.",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91895a76_44ad9ddf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-05T18:26:24Z",
+      "side": 1,
+      "message": "Optional: For concision and simplicity, consider constructing the command on one line:\n\n    func genMD6H264(file string) ([]string, error) {\n        out, err :\u003d exec.Command(\"ffmpeg\", \"-f\", \"framemd5\", \"-i\", file). Output()",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6d562cc_b9f031cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-05T18:26:24Z",
+      "side": 1,
+      "message": "Optional: For concision and simplicity, consider constructing the command on one line:\n\n    func genMD5VPX(file, bin string) ([]string, error) {\n        // -o option is necessary for libvpx to output each frame, and with --md5\n        // the md5 of each frame is output but a frame file is not created.\n        out, err :\u003d exec.Command(bin, \"-o\", \"output%w_%h_%r.yuv\", \"--i420\", \"--md5\", file).Output()",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36abe4b2_2786b807",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-05T18:26:24Z",
+      "side": 1,
+      "message": "Remove duplicate line",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "506970eb_7bb7c919",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-05T18:26:24Z",
+      "side": 1,
+      "message": "I recommend exiting the script with a meaningful exit code, so that the calling script can determine whether there were any errors.\n\n    func main() {\n        var exitCode int\n        \n        for _, file :\u003d range os.Args[1:] {\n            ext :\u003d filepath.Ext(file)\n            if ext !\u003d \".ivf\" \u0026\u0026 ext !\u003d \".h264\" {\n                fmt.Fprintf(os.Stderr, \"The file\u0027s extension must be ivf or h264: %s\\n\", file)\n                exitCode \u003d 1\n                continue\n            }\n            ...\n        }\n        os.Exit(exitCode)\n    }",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "014fd602_fe08b763",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-05T18:26:24Z",
+      "side": 1,
+      "message": "nit: should add a space after Created to format correctly.\n\n    fmt.Println(\"Created \", jsonFile)",
+      "range": {
+        "startLine": 376,
+        "startChar": 15,
+        "endLine": 376,
+        "endChar": 22
       },
       "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
