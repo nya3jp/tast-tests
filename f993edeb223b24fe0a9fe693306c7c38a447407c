@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fd151d5_5b2ce464",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-05T20:14:59Z",
+      "side": 1,
+      "message": "A fix for tablet mode tab switch action. And set attention to Shuhei for review.",
+      "revId": "f993edeb223b24fe0a9fe693306c7c38a447407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
