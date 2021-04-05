@@ -12,6 +12,7 @@ import (
 	"syscall"
 	"time"
 
+	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/security/seccomp"
 	"chromiumos/tast/local/chrome"
@@ -72,11 +73,11 @@ func USBGuard(ctx context.Context, s *testing.State) {
 	}
 
 	expectUsbguardRunning := func(running, onLockScreen bool) error {
-		goal := upstart.StopGoal
-		state := upstart.WaitingState
+		goal := upstartcommon.StopGoal
+		state := upstartcommon.WaitingState
 		if running {
-			goal = upstart.StartGoal
-			state = upstart.RunningState
+			goal = upstartcommon.StartGoal
+			state = upstartcommon.RunningState
 		}
 		err := upstart.WaitForJobStatus(ctx, usbguardJob, goal, state, upstart.TolerateWrongGoal, jobTimeout)
 		if err != nil {

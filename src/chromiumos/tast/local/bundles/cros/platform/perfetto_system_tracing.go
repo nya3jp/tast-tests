@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -49,7 +50,7 @@ func ensureJobsStopped(ctx context.Context) error {
 	}
 
 	// Check that traced_probes is also stopped with traced.
-	if err := upstart.WaitForJobStatus(wctx, tracedProbesJob, upstart.StopGoal, upstart.WaitingState, upstart.RejectWrongGoal, waitDuration); err != nil {
+	if err := upstart.WaitForJobStatus(wctx, tracedProbesJob, upstartcommon.StopGoal, upstartcommon.WaitingState, upstart.RejectWrongGoal, waitDuration); err != nil {
 		return errors.Wrap(err, "the traced_probes job isn't stopped")
 	}
 

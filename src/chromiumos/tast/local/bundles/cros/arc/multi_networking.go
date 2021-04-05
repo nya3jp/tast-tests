@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -114,7 +115,7 @@ func MultiNetworking(ctx context.Context, s *testing.State) {
 
 	// Log out to ensure the container is down.
 	upstart.RestartJob(ctx, "ui")
-	if err := upstart.WaitForJobStatus(ctx, "patchpanel", upstart.StartGoal, upstart.RunningState, upstart.RejectWrongGoal, 30*time.Second); err != nil {
+	if err := upstart.WaitForJobStatus(ctx, "patchpanel", upstartcommon.StartGoal, upstartcommon.RunningState, upstart.RejectWrongGoal, 30*time.Second); err != nil {
 		s.Fatal("patchpanel job failed to start: ", err)
 	}
 	// Restart ARC.

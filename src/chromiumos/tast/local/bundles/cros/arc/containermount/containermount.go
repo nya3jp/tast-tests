@@ -16,6 +16,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/common/testexec"
+	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/sysutil"
@@ -52,7 +53,7 @@ func adbdMounts(ctx context.Context) ([]sysutil.MountInfo, error) {
 	if err != nil {
 		return nil, err
 	}
-	if goal == upstart.StopGoal && state == upstart.WaitingState {
+	if goal == upstartcommon.StopGoal && state == upstartcommon.WaitingState {
 		// On the current platform arc-adbd is not used.
 		return nil, nil
 	}
