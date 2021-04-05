@@ -34,7 +34,8 @@ func init() {
 			"oshima@google.com",
 			"chromeos-wmp@google.com",
 		},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		// TODO(crbug.com/1195703): Test is disabled until it can be fixed
+		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Vars: []string{
 			"ui.signinProfileTestExtensionManifestKey",
