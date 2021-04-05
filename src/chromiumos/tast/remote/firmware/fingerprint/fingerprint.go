@@ -679,16 +679,10 @@ func RebootFpmcu(ctx context.Context, d *dut.DUT, bootTo FWImageType) error {
 			return errors.Wrap(err, "failed to abort rwsig")
 		}
 	}
-	err := testing.Poll(ctx, func(ctx context.Context) error {
-		firmwareCopy, err := RunningFirmwareCopy(ctx, d)
-		if err != nil {
-			return err
-		}
-		if firmwareCopy != bootTo {
-			return errors.Errorf("FPMCU booted to %q, expected %q", firmwareCopy, bootTo)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond})
+
+	if err := WaitForRunningFirmwareImage(ctx, d, bootTo); err != nil {
+		return errors.Wrapf(err, "failed to boot to %q image", bootTo)
+	}
 
 	// Double check we are still in the expected image.
 	firmwareCopy, err := RunningFirmwareCopy(ctx, d)
@@ -699,6 +693,20 @@ func RebootFpmcu(ctx context.Context, d *dut.DUT, bootTo FWImageType) error {
 		return errors.Errorf("FPMCU booted to %q, expected %q", firmwareCopy, bootTo)
 	}
 	return nil
+}
+
+// WaitForRunningFirmwareImage waits for the requested image to boot.
+func WaitForRunningFirmwareImage(ctx context.Context, d *dut.DUT, image FWImageType) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		firmwareCopy, err := RunningFirmwareCopy(ctx, d)
+		if err != nil {
+			return err
+		}
+		if firmwareCopy != image {
+			return errors.Errorf("FPMCU booted to %q, expected %q", firmwareCopy, image)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond})
 }
 
 // RunningFirmwareCopy returns the firmware copy on FPMCU (RO or RW).
