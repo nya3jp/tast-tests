@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b7449e8_29bd8ad8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-04-05T21:19:45Z",
+      "side": 1,
+      "message": "alternative to crrev.com/c/2806270",
+      "revId": "c897620c9310b1dfa9fb7639c92c55a657bc4dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
