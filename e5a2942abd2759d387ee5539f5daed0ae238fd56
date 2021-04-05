@@ -85,6 +85,24 @@
       "message": "You might have better luck marking these all informational, given that it\u0027ll probably be error-prone to find all the cellular-running models and blocklist them specifically:\n\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1195793#c12\n\nThat would require adding the \"informational\" string to the Attr list.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md",
       "revId": "e5a2942abd2759d387ee5539f5daed0ae238fd56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7674a311_419d2685",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-04-05T21:19:59Z",
+      "side": 1,
+      "message": "I tried that for you, if you\u0027d rather: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2806275",
+      "parentUuid": "f5da3221_4f05dc7d",
+      "revId": "e5a2942abd2759d387ee5539f5daed0ae238fd56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
