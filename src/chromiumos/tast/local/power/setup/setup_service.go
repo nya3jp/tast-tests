@@ -7,6 +7,7 @@ package setup
 import (
 	"context"
 
+	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -21,7 +22,7 @@ func DisableService(ctx context.Context, name string) (CleanupCallback, error) {
 	if err != nil {
 		return nil, errors.Wrapf(err, "unable to get service status %q", name)
 	}
-	if goal == upstart.StopGoal {
+	if goal == upstartcommon.StopGoal {
 		testing.ContextLogf(ctx, "Not stopping service %q, not running", name)
 		return nil, nil
 	}

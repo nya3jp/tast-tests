@@ -15,6 +15,7 @@ import (
 	"regexp"
 	"time"
 
+	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -35,7 +36,7 @@ func SELinuxAuditBasic(ctx context.Context, s *testing.State) {
 	const markerDirName = "cros_selinux_audit_basic_test"
 
 	s.Log("Waiting for auditd job to be running")
-	if err := upstart.WaitForJobStatus(ctx, "auditd", upstart.StartGoal, upstart.RunningState, upstart.RejectWrongGoal, 30*time.Second); err != nil {
+	if err := upstart.WaitForJobStatus(ctx, "auditd", upstartcommon.StartGoal, upstartcommon.RunningState, upstart.RejectWrongGoal, 30*time.Second); err != nil {
 		s.Fatal("Failed waiting for auditd to start: ", err)
 	}
 

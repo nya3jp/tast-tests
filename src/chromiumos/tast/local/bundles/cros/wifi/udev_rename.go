@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/wifi/stringset"
 	"chromiumos/tast/local/shill"
@@ -114,7 +115,7 @@ func restartUdev(ctx context.Context) error {
 	const service = "udev"
 	if _, state, _, err := upstart.JobStatus(ctx, service); err != nil {
 		return errors.Wrapf(err, "could not query status of service %s", service)
-	} else if state != upstart.RunningState {
+	} else if state != upstartcommon.RunningState {
 		return errors.Errorf("%s not running", service)
 	}
 
