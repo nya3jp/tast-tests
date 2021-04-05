@@ -50,6 +50,24 @@
       "message": "Should be inside the Params:\n\nExample\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
       "revId": "4e11f8fdb9104fca67066254abbffe493e254c69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fb98957_67727dfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-05T20:45:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a766ce56_4b3cbb47",
+      "revId": "4e11f8fdb9104fca67066254abbffe493e254c69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
