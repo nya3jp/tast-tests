@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,11 +26,7 @@ func init() {
 			"briannorris@chromium.org",
 			"chromeos-platform-connectivity@google.com",
 		},
-		Attr: []string{"group:mainline"},
-
-		// crbug.com/1195793: Disabled by sheriff due to CQ HW test failures
-		ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("Trogdor")),
-
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "shill-wifi"},
 
 		Params: []testing.Param{
