@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcb5fa2d_7af4b5a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-04-05T21:42:14Z",
+      "side": 1,
+      "message": "Presubmit: \n\nDoesn\u0027t look like my error, mostly stuff like\nethernet_8021x.go:39:3: unknown field \u0027ExtraHardwareDeps\u0027 in struct literal\n\nTrying again...",
+      "revId": "c39dad8e7711f02fb635c8b503347d2ac2038965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
