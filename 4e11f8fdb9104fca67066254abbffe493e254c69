@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eed07233_dc86fab7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-04-05T20:35:57Z",
+      "side": 1,
+      "message": "Please try\n./fast_build.sh -T\n\nin the directory:~/trunk/src/platform/tast\n\nThen you can see if the compiled before you submit.\n",
+      "revId": "4e11f8fdb9104fca67066254abbffe493e254c69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
