@@ -63,6 +63,30 @@
       },
       "revId": "32ed3703be5bdd3f5ffab0063006e5460f017c98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db4e5261_c81edd2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-05T23:32:34Z",
+      "side": 1,
+      "message": "Thanks for catching this, the test actually passes now so it seems like the issue in b/183667646 was caused by a mismatch between the snippet version and the GMS Core version on the phones.",
+      "parentUuid": "d0728ea5_861283fb",
+      "range": {
+        "startLine": 104,
+        "startChar": 79,
+        "endLine": 104,
+        "endChar": 84
+      },
+      "revId": "32ed3703be5bdd3f5ffab0063006e5460f017c98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
