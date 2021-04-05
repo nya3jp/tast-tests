@@ -7,18 +7,20 @@ package upstart
 import (
 	"fmt"
 	"testing"
+
+	"chromiumos/tast/common/upstart"
 )
 
 func TestParseStatus(t *testing.T) {
 	for _, tc := range []struct {
 		job, line string
-		goal      Goal
-		state     State
+		goal      upstart.Goal
+		state     upstart.State
 		pid       int
 	}{
-		{"powerd", "powerd start/running, process 9398\n", StartGoal, RunningState, 9398},
-		{"boot-splash", "boot-splash stop/waiting\n", StopGoal, WaitingState, 0},
-		{"ureadahead", "ureadahead stop/pre-stop, process 227\npre-stop process 5579\n", StopGoal, PreStopState, 227},
+		{"powerd", "powerd start/running, process 9398\n", upstart.StartGoal, upstart.RunningState, 9398},
+		{"boot-splash", "boot-splash stop/waiting\n", upstart.StopGoal, upstart.WaitingState, 0},
+		{"ureadahead", "ureadahead stop/pre-stop, process 227\npre-stop process 5579\n", upstart.StopGoal, upstart.PreStopState, 227},
 	} {
 		goal, state, pid, err := parseStatus(tc.job, tc.line)
 		sig := fmt.Sprintf("parseStatus(%q, %q)", tc.job, tc.line)

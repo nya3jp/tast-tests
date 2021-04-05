@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -299,11 +300,11 @@ func expectDaemonRunning(ctx context.Context, name string) error {
 	if err != nil {
 		return errors.Wrapf(err, "failed to get status of job %q", name)
 	}
-	if goal != upstart.StartGoal {
-		return errors.Errorf("job %q has goal %q, want %q", name, goal, upstart.StartGoal)
+	if goal != upstartcommon.StartGoal {
+		return errors.Errorf("job %q has goal %q, want %q", name, goal, upstartcommon.StartGoal)
 	}
-	if state != upstart.RunningState {
-		return errors.Errorf("job %q has state %q, want %q", name, state, upstart.RunningState)
+	if state != upstartcommon.RunningState {
+		return errors.Errorf("job %q has state %q, want %q", name, state, upstartcommon.RunningState)
 	}
 	return nil
 }

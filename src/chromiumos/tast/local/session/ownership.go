@@ -19,6 +19,7 @@ import (
 
 	"chromiumos/policy/enterprise_management"
 	lm "chromiumos/system_api/login_manager_proto"
+	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -76,7 +77,7 @@ func ClearDeviceOwnership(ctx context.Context) error {
 	// write the policy and key files out again.
 	if goal, state, _, err := upstart.JobStatus(ctx, "ui"); err != nil {
 		return err
-	} else if goal != upstart.StopGoal || state != upstart.WaitingState {
+	} else if goal != upstartcommon.StopGoal || state != upstartcommon.WaitingState {
 		return errors.Errorf("device ownership is being cleared while ui is not stopped: %v/%v", goal, state)
 	}
 
