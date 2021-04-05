@@ -22,6 +22,30 @@
       },
       "revId": "563df49864a5841843ff19ca023b7e4d3de15521",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "933a2931_234c140d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-04-05T06:28:10Z",
+      "side": 1,
+      "message": "Just laying the groundwork with this CL. I wanted to keep the actual promotion CL separate so it\u0027s easy to revert and revert the revert.",
+      "parentUuid": "c60af867_37b1ac97",
+      "range": {
+        "startLine": 22,
+        "startChar": 43,
+        "endLine": 22,
+        "endChar": 58
+      },
+      "revId": "563df49864a5841843ff19ca023b7e4d3de15521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
