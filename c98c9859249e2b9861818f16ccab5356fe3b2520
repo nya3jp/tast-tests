@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ce7c57b_de00add4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2021-04-05T21:55:25Z",
+      "side": 1,
+      "message": "Tatsuhisa, could you approve this as an tast reviewer? Thanks.",
+      "revId": "c98c9859249e2b9861818f16ccab5356fe3b2520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
