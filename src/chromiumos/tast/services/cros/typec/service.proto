@@ -1,0 +1,24 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.typec;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/typec";
+
+// Service provides a function to configure device settings to enable peripheral data access and
+// then log in to a Chrome session as a fake user.
+service Service {
+    rpc NewChromeLoginWithPeripheralDataAccess(KeyPath) returns (google.protobuf.Empty) {}
+}
+
+// The service modifies the device policy while logging in to enable peripheral data access. In order to do
+// this, we need to send the file path of a dummy test service private key which is required by session_manager
+// to store the modified policy (and which should be copied over to the target device by the test code).
+message KeyPath {
+    string path = 1;
+}
