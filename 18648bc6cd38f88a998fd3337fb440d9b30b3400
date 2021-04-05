@@ -16,6 +16,24 @@
       "message": "First, does it make sense to poll for app in task manager, rather than always wait 30 seconds?\n\nSecond, what is meant by \"in first page\" here? If the app needs to appear in the first N entries of the task manager (which defaults to sorting by CPU usage), this test will potentially fail if the other processes are consuming lots of CPU. Would be better to devise a strategy that scans the entire task list IMO\n\nIt also might be worthwhile (if other tast tests look for things in task manager) to have a more general utility for querying task manager status - is this test the only one that does such a thing?",
       "revId": "18648bc6cd38f88a998fd3337fb440d9b30b3400",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d4909bc_5a67db88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-05T19:48:57Z",
+      "side": 1,
+      "message": "Although polls is preferred over sleep, couldn\u0027t use in this case. The app doesn\u0027t always appear in the first page of the task manager list if it is launched immediately post app launch. Hence polls waiting for ARC entry times-out.\n\nWhen Task Manager is opened once the device is stabilized after app launch then the test is consistently stable.\n\nNot sure if there is any way to scan the entire list when some items invisible in 2nd page. Added a TODO to investigate this. As of now there is not much task manager tests except task manager crostini test which appears to have this flaky issue.",
+      "parentUuid": "3b7f8c43_8dab2720",
+      "revId": "18648bc6cd38f88a998fd3337fb440d9b30b3400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
