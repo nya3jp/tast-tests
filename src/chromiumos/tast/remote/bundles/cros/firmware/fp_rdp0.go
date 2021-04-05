@@ -62,12 +62,9 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to flash original FP firmware: ", err)
 	}
 
-	firmwareCopy, err := fingerprint.RunningFirmwareCopy(ctx, d)
-	if err != nil {
-		s.Fatal("Failed to query running firmware copy: ", err)
-	}
-	if firmwareCopy != fingerprint.ImageTypeRW {
-		s.Fatal("Want RW firmware; actual: ", firmwareCopy)
+	// Wait for FPMCU to boot to RW. Fail if it does not.
+	if err := fingerprint.WaitForRunningFirmwareImage(ctx, d, fingerprint.ImageTypeRW); err != nil {
+		s.Fatal("Failed to boot to RW image")
 	}
 
 	// Rollback should be unset for this test.
