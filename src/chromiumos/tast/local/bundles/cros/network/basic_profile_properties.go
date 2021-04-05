@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/network/pre"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -19,7 +20,9 @@ func init() {
 		Desc:     "Test that shill's DBus properties for profiles work",
 		Contacts: []string{"arowa@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:     []string{"group:mainline"},
-		Pre:      pre.SetLoggingWiFi(),
+		// crbug.com/1195793: Disabled by sheriff due to CQ HW test failures
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("trogdor")),
+		Pre:          pre.SetLoggingWiFi(),
 	})
 }
 
