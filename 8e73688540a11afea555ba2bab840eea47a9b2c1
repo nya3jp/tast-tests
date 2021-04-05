@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0af32f2_4d8c3fe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-05T08:18:14Z",
+      "side": 1,
+      "message": "\u003e \"Conversly\" is a possible misspelling of \"Conversely\".\n\nPlease fix.",
+      "parentUuid": "cd799ff6_5c4dea9e",
+      "range": {
+        "startLine": 353,
+        "startChar": 3,
+        "endLine": 353,
+        "endChar": 12
+      },
+      "revId": "8e73688540a11afea555ba2bab840eea47a9b2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b562c8d0_b80bfe09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-05T08:18:14Z",
+      "side": 1,
+      "message": "\u003e \"optained\" is a possible misspelling of \"obtained\".\n\nPlease fix.",
+      "parentUuid": "2144415e_5d3d80af",
+      "range": {
+        "startLine": 462,
+        "startChar": 42,
+        "endLine": 462,
+        "endChar": 50
+      },
+      "revId": "8e73688540a11afea555ba2bab840eea47a9b2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

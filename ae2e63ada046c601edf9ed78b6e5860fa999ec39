@@ -86,6 +86,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76ec4e18_06101c1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-05T08:18:14Z",
+      "side": 1,
+      "message": "Done, hopefully ,-) (it\u0027s tricky to understand, tricker to explain ,-P)",
+      "parentUuid": "4067af59_0eb62d8c",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3779365_2eba3843",
@@ -133,6 +151,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cbc8b70_8f0d07cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-05T08:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f05cc10_56a10b6e",
+      "range": {
+        "startLine": 365,
+        "startChar": 52,
+        "endLine": 365,
+        "endChar": 60
+      },
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cde6e06b_0be19e8c",
@@ -146,6 +188,24 @@
       "writtenOn": "2021-03-10T11:09:13Z",
       "side": 1,
       "message": "nit: rename |stopTime| since it\u0027s not used only for parsing the rtc-sync of tlsdated stop.",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd8ee30a_2244a9e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-05T08:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cde6e06b_0be19e8c",
       "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -167,6 +227,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a9a232_c32a6be9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-05T08:18:14Z",
+      "side": 1,
+      "message": "Makes sense, first added a CL below this to rename variables, PTAL.",
+      "parentUuid": "4f24720f_341a6c27",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "308b01bd_cb3f0aec",
@@ -180,6 +258,24 @@
       "writtenOn": "2021-03-10T11:09:13Z",
       "side": 1,
       "message": "archiveT0 needs to be suffixed to show that it\u0027s seconds since epoch: e.g. archiveTimeval0, archiveTs0, or archiveEpoch0.",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96ba5072_0571be40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-05T08:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "308b01bd_cb3f0aec",
       "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -201,6 +297,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01514e72_a1eba0e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-05T08:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8997bff7_57231f82",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17d40699_4bfa2eff",
@@ -214,6 +328,24 @@
       "writtenOn": "2021-03-10T11:09:13Z",
       "side": 1,
       "message": "Same for bootT0.",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a7e4d5e_b154aaa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-05T08:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17d40699_4bfa2eff",
       "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -235,6 +367,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2efa5933_b141e41e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-05T08:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0f0b982_c0ce9c25",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1deeffff_6958e11a",
@@ -252,6 +402,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca895fc6_411aa483",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-05T08:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1deeffff_6958e11a",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3aa368d8_21f14eb2",
@@ -265,6 +433,24 @@
       "writtenOn": "2021-03-10T11:09:13Z",
       "side": 1,
       "message": "Same for these 3 variables.",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4bc399c_a7ecf92d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-05T08:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa368d8_21f14eb2",
       "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

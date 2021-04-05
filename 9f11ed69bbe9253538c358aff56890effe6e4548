@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a77798c_3cf1ad75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-05T08:18:14Z",
+      "side": 1,
+      "message": "Will use proper \"uptime0\" name in next revision.",
+      "range": {
+        "startLine": 375,
+        "startChar": 1,
+        "endLine": 375,
+        "endChar": 3
+      },
+      "revId": "9f11ed69bbe9253538c358aff56890effe6e4548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
