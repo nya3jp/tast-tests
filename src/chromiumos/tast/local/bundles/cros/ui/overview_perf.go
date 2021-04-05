@@ -109,8 +109,9 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	currentWindows := 0
 	// Run the overview mode enter/exit flow for various situations.
 	// - change the number of browser windows, 2 or 8
-	// - the window system status; clamshell mode with maximized windows or
-	//   tablet mode.
+	// - the window system status; clamshell mode with maximized windows,
+	//   clamshell mode with normal windows, tablet mode with maximized
+	//   windows, or tablet mode with minimized windows (the home screen).
 	// If these window number values are changed, make sure to check lacros about:blank pages are closed correctly.
 	for i, windows := range []int{2, 8} {
 		if err := ash.CreateWindows(ctx, tconn, cs, url, windows-currentWindows); err != nil {
