@@ -20,9 +20,9 @@ func init() {
 		Func: ProbeCPUInfo,
 		Desc: "Check that we can probe cros_healthd for CPU info",
 		Contacts: []string{
-			"jschettler@google.com",
 			"khegde@google.com",
 			"pmoy@google.com",
+			"cros-tdm@google.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
