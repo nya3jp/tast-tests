@@ -8,6 +8,7 @@ import (
 	"context"
 	"net/http"
 	"net/http/httptest"
+	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -113,6 +114,10 @@ func AudioCaptureAllowed(ctx context.Context, s *testing.State) {
 				if !param.wantAsk {
 					s.Error("Unexpected dialog to ask for microphone permission found")
 				}
+
+				// Wait for a second before clicking the allow button as the click
+				// won't be registered otherwise.
+				testing.Sleep(ctx, time.Second)
 
 				if err := ui.LeftClickUntil(allowButton, ui.Gone(allowButton))(ctx); err != nil {
 					s.Fatal("Failed to click the Allow button: ", err)
