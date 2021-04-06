@@ -16,6 +16,154 @@
       "message": "Note: there is no one available on my team for reviews, so we have to rely on Tast owner reviews for now. Thanks.",
       "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb6439c7_d59b9e37",
+        "filename": "src/chromiumos/tast/remote/sysutil/rootfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-06T15:40:33Z",
+      "side": 1,
+      "message": "nit: this package already does more than getting information. How about \"Package sysutil provides system-related utilities\"?",
+      "range": {
+        "startLine": 5,
+        "startChar": 42,
+        "endLine": 5,
+        "endChar": 49
+      },
+      "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0813265b_c096970e",
+        "filename": "src/chromiumos/tast/remote/sysutil/rootfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-06T15:40:33Z",
+      "side": 1,
+      "message": "Here and elsewhere, you might consider adding the ssh.DumpLogOnError option, which will print stdout and stderr if there\u0027s an error. That would remove the need to include `output` in your error message below.",
+      "range": {
+        "startLine": 20,
+        "startChar": 131,
+        "endLine": 20,
+        "endChar": 134
+      },
+      "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8244d56c_bd836c4d",
+        "filename": "src/chromiumos/tast/remote/sysutil/rootfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-06T15:40:33Z",
+      "side": 1,
+      "message": "nit/style: combine L44-45:\n\n    if err \u003d makeRootfsWritable(ctx, d); err !\u003d nil {\n        return errors.Wrap(err, \"failed to make rootfs writable\")\n    }",
+      "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f968fbdc_46985908",
+        "filename": "src/chromiumos/tast/remote/sysutil/rootfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-06T15:40:33Z",
+      "side": 1,
+      "message": "nit/style: Combine L69-70:\n\n    if err :\u003d removeRootfsVerification(ctx, d); err !\u003d nil {\n        return err\n    }",
+      "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f42f7ef4_4888f6c6",
+        "filename": "src/chromiumos/tast/remote/sysutil/rootfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-06T15:40:33Z",
+      "side": 1,
+      "message": "nit/style: Combine L74-75:\n\n    if err :\u003d d.Reboot(ctx); err !\u003d nil {\n        return errors.Wrap(err, \"failed to reboot\"),\n    }",
+      "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "478808e5_f9517c26",
+        "filename": "src/chromiumos/tast/remote/sysutil/rootfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-06T15:40:33Z",
+      "side": 1,
+      "message": "This function has the same name as IsRootfsWritable, so the difference in meaning is not clear. I recommend either giving it a semantically meaningful name or at least a docstring.",
+      "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63af363f_792afeb8",
+        "filename": "src/chromiumos/tast/remote/sysutil/rootfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-06T15:40:33Z",
+      "side": 1,
+      "message": "Include rootLine in the error msg, for debugging.",
+      "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd50ef51_6216cae0",
+        "filename": "src/chromiumos/tast/remote/sysutil/rootfs_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-06T15:40:33Z",
+      "side": 1,
+      "message": "If it\u0027s realistic, I think it would help for one of these to have rootLine (/dev/root) somewhere other than beginning-of-file.",
+      "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
