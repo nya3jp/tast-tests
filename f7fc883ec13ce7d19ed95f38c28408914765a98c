@@ -514,6 +514,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90b23537_2526ddd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-06T05:52:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "506970eb_7bb7c919",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "014fd602_fe08b763",
@@ -527,6 +545,30 @@
       "writtenOn": "2021-04-05T18:26:24Z",
       "side": 1,
       "message": "nit: should add a space after Created to format correctly.\n\n    fmt.Println(\"Created \", jsonFile)",
+      "range": {
+        "startLine": 376,
+        "startChar": 15,
+        "endLine": 376,
+        "endChar": 22
+      },
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "988e1ab9_21217c6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-06T05:52:19Z",
+      "side": 1,
+      "message": "Println automatically inserts a space between them.",
+      "parentUuid": "014fd602_fe08b763",
       "range": {
         "startLine": 376,
         "startChar": 15,
