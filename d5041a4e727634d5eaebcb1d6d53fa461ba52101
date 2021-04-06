@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c63c59fe_c9edf43f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-06T01:27:20Z",
+      "side": 1,
+      "message": "Relax the test to pass the case that the DUT eventually reconnects to the AP even if the DUT once disconnects after receiving CSA frame. The reason the DUT disconnects is that the Gale AP takes too long to send beacons in the new channel so the DUT thinks the connection is lost.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "d5041a4e727634d5eaebcb1d6d53fa461ba52101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81b64bea_e3577c04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-06T01:27:20Z",
+      "side": 1,
+      "message": "How about\n\ns.Log(\"Connection verified\")\n\nOr even add a timing info:\n// Before ap.StartChannelSwitch()\ncsaStart :\u003d time.Now()\n\n// here\ns.Log(\"Connection verified after CSA; elapsed time: \", time.Since(csaStart))",
+      "revId": "d5041a4e727634d5eaebcb1d6d53fa461ba52101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
