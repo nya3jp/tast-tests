@@ -45,12 +45,6 @@ func NotificationsAllowedForUrls(ctx context.Context, s *testing.State) {
 		"https://www.irs.gov/",
 		"https://www.yahoo.com"}
 
-	// Connect to Test API to use it with the UI library.
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
-
 	for _, param := range []struct {
 		name                string
 		notificationAllowed bool            // notification_allowed determines whether notifications are allowed in the test case or not.
@@ -82,7 +76,7 @@ func NotificationsAllowedForUrls(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name+".txt")
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
