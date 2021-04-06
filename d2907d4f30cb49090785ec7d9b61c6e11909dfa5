@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b4566e2_7a723e80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-06T11:23:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15aa16cd_b9240135",
+      "revId": "d2907d4f30cb49090785ec7d9b61c6e11909dfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcd5c123_d11175bc",
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "Make sense.",
       "parentUuid": "dcd5c123_d11175bc",
+      "revId": "d2907d4f30cb49090785ec7d9b61c6e11909dfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2740456_558cae56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-06T11:23:09Z",
+      "side": 1,
+      "message": "I changed the timeout to 4 minutes, because we preserve 2 minutes to restart the daemons and cleanup.",
+      "parentUuid": "7bc6cd35_12648957",
       "revId": "d2907d4f30cb49090785ec7d9b61c6e11909dfa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
