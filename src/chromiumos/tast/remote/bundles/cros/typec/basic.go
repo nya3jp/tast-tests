@@ -39,7 +39,7 @@ func init() {
 		Attr:     []string{"group:mainline", "informational"},
 		// TODO(b/179339305): Switch this to rely on SoftwareDeps (for TCPMv2 and kernel >= v5.4) rather
 		// than relying on platform HardwareDeps.
-		HardwareDeps: hwdep.D(hwdep.Platform("dedede")),
+		HardwareDeps: hwdep.D(hwdep.Platform("dedede", "trogdor")),
 		Vars:         []string{"servo"},
 	})
 }
