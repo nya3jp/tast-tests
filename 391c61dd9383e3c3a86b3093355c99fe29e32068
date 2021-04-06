@@ -16,6 +16,167 @@
       "message": "Note: there is no one available on my team for reviews, so we have to rely on Tast owner reviews for now. Thanks.",
       "revId": "391c61dd9383e3c3a86b3093355c99fe29e32068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52678719_e1311084",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-04-06T13:16:45Z",
+      "side": 1,
+      "message": "Could you document it?",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 11
+      },
+      "revId": "391c61dd9383e3c3a86b3093355c99fe29e32068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "365837bb_5d84a372",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-04-06T13:16:45Z",
+      "side": 1,
+      "message": "nit: I\u0027d move the } to the next line.\n\n ... daemonState,\n}, nil\n\ncf. https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#literal-matching-braces",
+      "range": {
+        "startLine": 236,
+        "startChar": 31,
+        "endLine": 236,
+        "endChar": 32
+      },
+      "revId": "391c61dd9383e3c3a86b3093355c99fe29e32068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f039f760_01960193",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-04-06T13:16:45Z",
+      "side": 1,
+      "message": "I think we want to make tests fail when it fails to clean up so that issues are detected early. Could you make Close return an error, and tests using it check the error?",
+      "range": {
+        "startLine": 248,
+        "startChar": 4,
+        "endLine": 248,
+        "endChar": 7
+      },
+      "revId": "391c61dd9383e3c3a86b3093355c99fe29e32068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f4c507a_f26f888b",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-04-06T13:16:45Z",
+      "side": 1,
+      "message": "Why do we assign t.cl and t.upstartService?\nIs t used after it\u0027s Closed?",
+      "range": {
+        "startLine": 251,
+        "startChar": 3,
+        "endLine": 251,
+        "endChar": 5
+      },
+      "revId": "391c61dd9383e3c3a86b3093355c99fe29e32068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82e88d23_057b702d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-04-06T13:16:45Z",
+      "side": 1,
+      "message": "Could you document it?",
+      "range": {
+        "startLine": 279,
+        "startChar": 5,
+        "endLine": 279,
+        "endChar": 16
+      },
+      "revId": "391c61dd9383e3c3a86b3093355c99fe29e32068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51ca9050_3fcdddc5",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-04-06T13:16:45Z",
+      "side": 1,
+      "message": "How about storing the state instead?\nI think this code assumes the deamon is running or stopped, but it looks it can have more than these two states. e.g. StartingState. I\u0027d defer the decision of what to do according to the previous state to restoreDaemons.",
+      "range": {
+        "startLine": 287,
+        "startChar": 66,
+        "endLine": 287,
+        "endChar": 78
+      },
+      "revId": "391c61dd9383e3c3a86b3093355c99fe29e32068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91faa740_30930c5b",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-04-06T13:16:45Z",
+      "side": 1,
+      "message": "Could you make the function return error and the caller check it?",
+      "range": {
+        "startLine": 308,
+        "startChar": 5,
+        "endLine": 308,
+        "endChar": 19
+      },
+      "revId": "391c61dd9383e3c3a86b3093355c99fe29e32068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
