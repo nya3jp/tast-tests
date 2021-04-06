@@ -72,7 +72,7 @@ var tests = []struct {
 		Scanner:  scanning.ScannerName,
 		Source:   scanapp.SourceADFOneSided,
 		FileType: scanapp.FileTypeJPG,
-		// TODO(jschettler): Change this to black and white when the virtual
+		// TODO(b/181773386): Change this to black and white when the virtual
 		// USB printer correctly reports the color mode.
 		ColorMode:  scanapp.ColorModeGrayscale,
 		PageSize:   scanapp.PageSizeA4,
