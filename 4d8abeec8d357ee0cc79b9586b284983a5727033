@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bc9c11a_beae28c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-06T00:12:32Z",
+      "side": 1,
+      "message": "The old uprev request was reverted in https://crrev.com/c/2800227. It mentioned that it might cause some VM test failures. \n\nThis is another try with the same code change, besides it split the tests to stable boards and unstable boards like most inputs tests and only promote stable board tests into CQ to avoid VM test failures.",
+      "revId": "4d8abeec8d357ee0cc79b9586b284983a5727033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
