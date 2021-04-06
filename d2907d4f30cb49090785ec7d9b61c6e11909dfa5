@@ -33,6 +33,41 @@
       "message": "Wait, I am not really sure if we should promote a stress test to CQ. I will wait for more inputs from Victor.",
       "revId": "d2907d4f30cb49090785ec7d9b61c6e11909dfa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "026dcd93_7835bfc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-06T06:14:41Z",
+      "side": 1,
+      "message": "It\u0027s running pretty quick on some boards (\u003c10 seconds). Maybe limit running it in the Cq to those (not sure what the slow/fast ones have in common).",
+      "parentUuid": "4ca608b2_a60f6d60",
+      "revId": "d2907d4f30cb49090785ec7d9b61c6e11909dfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcd5c123_d11175bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-06T06:14:41Z",
+      "side": 1,
+      "message": "From tastboard this test takes less than one minute on all boards. Maybe use 2 minutes here?",
+      "revId": "d2907d4f30cb49090785ec7d9b61c6e11909dfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
