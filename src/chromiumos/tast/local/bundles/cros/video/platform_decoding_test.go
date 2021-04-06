@@ -321,8 +321,6 @@ func TestPlatformDecodingParams(t *testing.T) {
 		for _, levelGroup := range []string{"group1", "group2", "group3"} {
 			for _, cat := range []string{
 				"buf", "gf_dist", "odd_size", "sub8x8",
-				// TODO(jchinlee): Reenable everwhere. Currently failing on zork.
-				// "frm_resize", "sub8x8_sf",
 			} {
 				files := vaapiVp9Files[profile][levelGroup][cat]
 				params = append(params, paramData{
@@ -331,6 +329,22 @@ func TestPlatformDecodingParams(t *testing.T) {
 					CmdBuilder:   "vp9decodeVAAPIargs",
 					Files:        files,
 					SoftwareDeps: []string{"vaapi", caps.HWDecodeVP9},
+					Metadata:     genExtraData(files),
+				})
+			}
+
+			// TODO(jchinlee): Reenable everwhere.
+			for _, cat := range []string{
+				"frm_resize", "sub8x8_sf",
+			} {
+				files := vaapiVp9Files[profile][levelGroup][cat]
+				params = append(params, paramData{
+					Name:         fmt.Sprintf("vaapi_vp9_%d_%s_%s", i, levelGroup, cat),
+					Decoder:      filepath.Join(chrome.BinTestDir, "decode_test"),
+					CmdBuilder:   "vp9decodeVAAPIargs",
+					Files:        files,
+					SoftwareDeps: []string{"vaapi", caps.HWDecodeVP9},
+					HardwareDeps: "hwdep.D(hwdep.SkipOnPlatform(\"grunt\", \"zork\"))",
 					Metadata:     genExtraData(files),
 				})
 			}
