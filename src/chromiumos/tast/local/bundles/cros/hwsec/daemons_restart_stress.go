@@ -23,8 +23,8 @@ func init() {
 			"yich@chromium.org",
 		},
 		SoftwareDeps: []string{"tpm"},
-		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      10 * time.Minute,
+		Attr:         []string{"group:mainline"},
+		Timeout:      2 * time.Minute,
 	})
 }
 
