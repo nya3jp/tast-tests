@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f08dbc39_7c266244",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-06T03:38:17Z",
+      "side": 1,
+      "message": "Please explain the reason for record.",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "de172aeeb3691d360ab5a5450e59c1659019a4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b33428_be723648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ocr/generate_searchable_pdf_from_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-06T03:38:17Z",
+      "side": 0,
+      "message": "This one is also moved, please explain in the comment.",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "ef0f188d9a03024b04624d137c81fc07569c93bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
