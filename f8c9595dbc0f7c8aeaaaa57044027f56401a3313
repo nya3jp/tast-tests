@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08559127_57e9b776",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-06T01:43:12Z",
+      "side": 1,
+      "message": "In general, \"skipping\" by returning a success should be avoided because it can result in silent faults. If this is meant to execute on devices with the tablet mode allowed, can you consider using software deps?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md#software-dependencies",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "037d3f15_1b252c33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-06T01:43:12Z",
+      "side": 1,
+      "message": "Is it possible to write these logs only when an error happened?\nIn general, we try to minimize log output of normal path in Tast, and leave verbose log for debugging when failure happened.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log\n\u003e On the other hand, avoid logging unnecessary information that would clutter the logs. If you want to log a verbose piece of information to help determine the cause of an error, only do it after the error has occurred.",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a98e061f_78191b87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-06T01:43:12Z",
+      "side": 1,
+      "message": "I think these flags are used for identifying the first found line.\nIf so, I suggest something more descriptive like \"arcpFound\" and declare right before the loop.\ngo/go-style/decisions#variable-names",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d405b85_8b890ea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-06T01:43:12Z",
+      "side": 1,
+      "message": "just curious, is it usual or unusual to have multiple windows match this?",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc47f901_1db6a7ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-06T01:43:12Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be in the else block, because the above if block has break at the end.",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a57d4d00_592b1424",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-06T01:43:12Z",
+      "side": 1,
+      "message": "seems not needed because this is at the end of the loop block.",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
