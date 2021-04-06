@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8d5e9c1_6cc2dc6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-06T22:36:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b781e1e_7e6b6b3c",
+      "revId": "eb23084ee93ac4cf6ffef16bf99e9cea646613df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "754e13d7_379b09fa",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-02T22:55:45Z",
       "side": 1,
       "message": "Could be testing.PollBreak?",
+      "revId": "eb23084ee93ac4cf6ffef16bf99e9cea646613df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c315f9f_8699f314",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-06T22:36:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "754e13d7_379b09fa",
       "revId": "eb23084ee93ac4cf6ffef16bf99e9cea646613df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
