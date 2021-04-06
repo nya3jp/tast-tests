@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa57795c_8aa2719f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-06T01:11:21Z",
+      "side": 1,
+      "message": "Could you check error?",
+      "revId": "3b9a840d4680dd631c168a2de2edbf9f63f65493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fe4c4ad_187308d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-06T01:11:21Z",
+      "side": 1,
+      "message": "same?",
+      "revId": "3b9a840d4680dd631c168a2de2edbf9f63f65493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
