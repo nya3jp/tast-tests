@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e09c8994_e76d21e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj2.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-06T09:16:35Z",
+      "side": 1,
+      "message": "Did you mean tier?",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 5
+      },
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe9adef_a4d49a60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-06T09:16:35Z",
+      "side": 1,
+      "message": "Why is this field exported?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "228eb117_103f6053",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
         "patchSetId": 47
@@ -60,6 +106,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ba0572c_2ac6749e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-06T09:16:35Z",
+      "side": 1,
+      "message": "As you see here, accessing []T without copying the value is annoying. I recommend changing tabs from []tabDetail to []*tabDetail.",
+      "range": {
+        "startLine": 222,
+        "startChar": 3,
+        "endLine": 222,
+        "endChar": 20
+      },
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d5be7f_c2f8da3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-06T09:16:35Z",
+      "side": 1,
+      "message": "In this case tab.conn is leaked.",
+      "range": {
+        "startLine": 227,
+        "startChar": 26,
+        "endLine": 227,
+        "endChar": 58
+      },
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b17f9b1f_3cd115cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-06T09:16:35Z",
+      "side": 1,
+      "message": "We have to call cmd.Wait() to release resources associated with cmd. In this case I believe the goroutine should own cmd, so maybe:\n\n go func() {\n   defer func() {\n     close(ch)\n     cmd.Kill()\n     cmd.Wait()\n   }()\n   ...\n }()",
+      "range": {
+        "startLine": 374,
+        "startChar": 1,
+        "endLine": 374,
+        "endChar": 2
+      },
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53caddae_1c2eb953",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-06T09:16:35Z",
+      "side": 1,
+      "message": "This regexp matches both \"28 secs\" and \"28 msecs\", but we always parse a number in milliseconds below.",
+      "range": {
+        "startLine": 381,
+        "startChar": 67,
+        "endLine": 381,
+        "endChar": 79
+      },
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa4719fb_4d997c48",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
         "patchSetId": 47
@@ -71,6 +209,47 @@
       "writtenOn": "2021-04-03T01:01:23Z",
       "side": 1,
       "message": "When an error happens and it reaches here, it won\u0027t put any data into ch and wait indefinitely.  That\u0027s not great.  Please handle the errors correctly.  Maybe close(ch) would be good enough as d, ok \u003c- ch where ok should be false when the channel is closed.",
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dd4d30c_a18f2cf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-06T09:16:35Z",
+      "side": 1,
+      "message": "Actually ch is closed in a deferred statement above.",
+      "parentUuid": "aa4719fb_4d997c48",
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "587f301f_608d1614",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-06T09:16:35Z",
+      "side": 1,
+      "message": "When kw can be nil?",
+      "range": {
+        "startLine": 458,
+        "startChar": 1,
+        "endLine": 458,
+        "endChar": 15
+      },
       "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
