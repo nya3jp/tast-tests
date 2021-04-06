@@ -16,6 +16,46 @@
       "message": "A fix for tablet mode tab switch action. And set attention to Shuhei for review.",
       "revId": "f993edeb223b24fe0a9fe693306c7c38a447407c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67386013_c1267ae1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-06T09:25:19Z",
+      "side": 1,
+      "message": "LGTM with one question. I defer to Alex.\n",
+      "revId": "f993edeb223b24fe0a9fe693306c7c38a447407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da72632_6cf9036c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-06T09:25:19Z",
+      "side": 1,
+      "message": "Why do we return nil while background blurring is not supported? It\u0027s like pretending that we successfully enabled it, so I feel like we should return some errors.",
+      "range": {
+        "startLine": 263,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 11
+      },
+      "revId": "f993edeb223b24fe0a9fe693306c7c38a447407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
