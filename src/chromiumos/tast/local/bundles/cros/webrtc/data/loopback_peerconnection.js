@@ -75,7 +75,7 @@ async function runLoopbackPeerConnectionWithSimulcast(constraints,
   });
 
   const answer = await remotePeerConnection.createAnswer();
-  answer.sdp = appendStartBitrateToSDP(answer.sdp, profile, targetBitrate);
+  answer.sdp = appendStartBitrateToSDP(answer.sdp, 'VP8', targetBitrate);
   await remotePeerConnection.setLocalDescription(answer);
   await localPeerConnection.setRemoteDescription({
     type : 'answer',
