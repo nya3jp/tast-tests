@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8a6123e_f8eb4d7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/user.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-06T16:42:44Z",
+      "side": 1,
+      "message": "Oh, good point.",
+      "parentUuid": "53b63ae4_a88204dc",
+      "range": {
+        "startLine": 472,
+        "startChar": 4,
+        "endLine": 472,
+        "endChar": 9
+      },
+      "revId": "db84908ef18fa9a8ddcea78f9ac31c3c26630e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f13232c6_ce1a2f8a",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27773d89_f193eb38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/user.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-06T16:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f13232c6_ce1a2f8a",
+      "range": {
+        "startLine": 476,
+        "startChar": 4,
+        "endLine": 476,
+        "endChar": 9
+      },
+      "revId": "db84908ef18fa9a8ddcea78f9ac31c3c26630e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4781c299_d4aa2251",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-04-06T16:39:33Z",
       "side": 1,
       "message": "same here.",
+      "revId": "db84908ef18fa9a8ddcea78f9ac31c3c26630e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5de58c4f_0df645ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/user.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-06T16:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4781c299_d4aa2251",
       "revId": "db84908ef18fa9a8ddcea78f9ac31c3c26630e1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
