@@ -50,6 +50,24 @@
       "message": "Move the timeout into the \"tpm1\" test to use the default one for the Cq.",
       "revId": "2ca66015cf3570da3537865df1088f27cbe0e4d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4410f7ca_529f0a57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-06T15:39:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e72e54be_9f857c4b",
+      "revId": "2ca66015cf3570da3537865df1088f27cbe0e4d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
