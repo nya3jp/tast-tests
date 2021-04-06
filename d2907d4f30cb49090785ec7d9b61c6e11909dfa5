@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15aa16cd_b9240135",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-06T07:29:11Z",
+      "side": 1,
+      "message": "Yes we do:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests\n\nThere are also software dependencies for tmp1 and tpm2:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/test_dependencies.md",
+      "parentUuid": "a45a656c_4223b3e9",
+      "revId": "d2907d4f30cb49090785ec7d9b61c6e11909dfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcd5c123_d11175bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
         "patchSetId": 2
