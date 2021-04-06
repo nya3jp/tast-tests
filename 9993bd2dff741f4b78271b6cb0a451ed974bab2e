@@ -16,6 +16,23 @@
       "message": "Eric, would you mind taking a look at the log in the commit message and let me know if it seems OK? I\u0027m not 100% sure what to look for in the logs to make sure everything is enabled.",
       "revId": "9993bd2dff741f4b78271b6cb0a451ed974bab2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ffbd263_50c0be99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-06T02:09:29Z",
+      "side": 1,
+      "message": "IIUC the change changes DUT status to do verbose logging, and keeps it after the test is done, affecting other tests that runs after this test. Is there a concensus about android logging about this?\n\nI think it is OK for now, because it is doing the same as existing code, but I thought it is better to restore the logging mode at the end to avoid unintended increase of logs.",
+      "revId": "9993bd2dff741f4b78271b6cb0a451ed974bab2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
