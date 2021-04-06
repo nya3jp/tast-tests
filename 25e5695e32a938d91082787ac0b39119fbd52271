@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96b51620_b105ee6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-06T03:48:52Z",
+      "side": 1,
+      "message": "It seems like this pattern is following on all throughout. Line 169 and line 172 do the same and they all look to only be used in the immediate scope, did you want to go through and ensure consistency?",
+      "range": {
+        "startLine": 152,
+        "startChar": 6,
+        "endLine": 152,
+        "endChar": 9
+      },
+      "revId": "25e5695e32a938d91082787ac0b39119fbd52271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
