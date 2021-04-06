@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d8b1c9_9f55d357",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-06T15:19:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ee6421a6_7669c75d",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a610db70_df8c5af7",
