@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e55dc8fb_33c0ddba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-06T14:31:45Z",
+      "side": 1,
+      "message": "LGTM % nit, but please wait for a review from Leo",
+      "revId": "2ca66015cf3570da3537865df1088f27cbe0e4d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e72e54be_9f857c4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-06T14:31:45Z",
+      "side": 1,
+      "message": "Move the timeout into the \"tpm1\" test to use the default one for the Cq.",
+      "revId": "2ca66015cf3570da3537865df1088f27cbe0e4d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
