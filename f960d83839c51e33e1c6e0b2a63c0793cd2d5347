@@ -67,6 +67,24 @@
       "message": "You could simplify the code a lot with\n\nuiauto.New(tconn).WithTimeout(10*time.Second).WaitUntilExists(nodewith.Name(notificationBody))(ctx)\n\nThe meaning is slightly different though, so up to you.",
       "revId": "f960d83839c51e33e1c6e0b2a63c0793cd2d5347",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c88ebb_b36f8b63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/notify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-04-06T07:54:41Z",
+      "side": 1,
+      "message": "I feel safer relying on the autotest API rather then the UI tree",
+      "parentUuid": "89b8d613_238340b9",
+      "revId": "f960d83839c51e33e1c6e0b2a63c0793cd2d5347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
