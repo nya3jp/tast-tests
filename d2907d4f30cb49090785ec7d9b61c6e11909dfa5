@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a45a656c_4223b3e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-06T07:25:17Z",
+      "side": 1,
+      "message": "Seems it would spend about one minute on TPM1.2 boards. And 10 seconds on TPM2.0 boards.\nBut do we have a good method to run it in the CQ for TPM2.0 without separate the tast to two tasts?",
+      "parentUuid": "026dcd93_7835bfc6",
+      "revId": "d2907d4f30cb49090785ec7d9b61c6e11909dfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcd5c123_d11175bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
         "patchSetId": 2
@@ -66,6 +84,24 @@
       "writtenOn": "2021-04-06T06:14:41Z",
       "side": 1,
       "message": "From tastboard this test takes less than one minute on all boards. Maybe use 2 minutes here?",
+      "revId": "d2907d4f30cb49090785ec7d9b61c6e11909dfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bc6cd35_12648957",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-06T07:25:17Z",
+      "side": 1,
+      "message": "Make sense.",
+      "parentUuid": "dcd5c123_d11175bc",
       "revId": "d2907d4f30cb49090785ec7d9b61c6e11909dfa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
