@@ -101,7 +101,7 @@ func loadPage(ctx context.Context, cs ash.ConnSource, url string) (*chrome.Conn,
 // playVideo invokes loadVideo(), plays a normal video in video.html, and checks if it has progress.
 // videoFile is the file name which is played there.
 // url is the URL of the video playback testing webpage.
-func playVideo(ctx context.Context, cs ash.ConnSource, videoFile, url string) (bool, error) {
+func playVideo(ctx context.Context, cs ash.ConnSource, videoFile, url string, unmutePlayer bool) (bool, error) {
 	ctx, st := timing.Start(ctx, "play_video")
 	defer st.End()
 
@@ -117,7 +117,7 @@ func playVideo(ctx context.Context, cs ash.ConnSource, videoFile, url string) (b
 		return false, errors.Wrap(err, "failed to retrieve a media DevTools observer")
 	}
 
-	if err := conn.Call(ctx, nil, "playUntilEnd", videoFile); err != nil {
+	if err := conn.Call(ctx, nil, "playUntilEnd", videoFile, unmutePlayer); err != nil {
 		return false, err
 	}
 
@@ -314,7 +314,7 @@ func isVideoPadding(c color.Color) bool {
 // of MPD file.
 // If mode is VerifyHWAcceleratorUsed, this function also checks if hardware accelerator was used.
 func TestPlay(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrome.Chrome,
-	filename string, videotype VideoType, mode VerifyHWAcceleratorMode) error {
+	filename string, videotype VideoType, mode VerifyHWAcceleratorMode, unmutePlayer bool) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		return err
@@ -335,11 +335,19 @@ func TestPlay(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chro
 	switch videotype {
 	case NormalVideo:
 		url = server.URL + "/video.html"
-		usesPlatformVideoDecoder, playErr = playVideo(ctx, cs, filename, url)
+		usesPlatformVideoDecoder, playErr = playVideo(ctx, cs, filename, url, unmutePlayer)
 	case MSEVideo:
+		if unmutePlayer {
+			return errors.New("got videoType = MSEVideo and unmutePlayer = true, expected " +
+				"unmutePlayer = false; unmutePlayer is not implemented for MSEVideo")
+		}
 		url = server.URL + "/shaka.html"
 		usesPlatformVideoDecoder, playErr = playMSEVideo(ctx, cs, filename, url)
 	case DRMVideo:
+		if unmutePlayer {
+			return errors.New("got videoType = DRMVideo  and unmutePlayer = true, expected " +
+				"unmutePlayer = false; unmutePlayer is not implemented for DRMVideo")
+		}
 		url = server.URL + "/shaka_drm.html"
 		isHwDrmPipeline, playErr = playDRMVideo(ctx, s, cs, cr, filename, url)
 	}
