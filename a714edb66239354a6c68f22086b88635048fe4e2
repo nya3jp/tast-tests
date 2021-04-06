@@ -16,6 +16,24 @@
       "message": "LGTM, but please also get a review from a team member.",
       "revId": "a714edb66239354a6c68f22086b88635048fe4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "837aa673_94f6cb87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-06T08:46:58Z",
+      "side": 1,
+      "message": "Thank you 😊 will do",
+      "parentUuid": "277b5a11_8530ddea",
+      "revId": "a714edb66239354a6c68f22086b88635048fe4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
