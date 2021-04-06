@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "487269bf_db7d475f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-06T16:05:02Z",
+      "side": 1,
+      "message": "\u003e \"Conencting\" is a possible misspelling of \"Connecting\".\n\nPlease fix.",
+      "parentUuid": "259089a3_9e125155",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 14
+      },
+      "revId": "f797a54ecbd76ce90dd7828b86b7e19894bd56d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
