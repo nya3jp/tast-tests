@@ -23,7 +23,7 @@ func init() {
 			"yich@google.com",
 		},
 		SoftwareDeps: []string{"tpm"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
