@@ -105,9 +105,10 @@ func init() {
 func MemCheck(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(memCheckParams)
 	cr := s.FixtValue().(*chrome.Chrome)
+	const unmutePlayer = false
 
 	testPlay := func() error {
-		return play.TestPlay(ctx, s, cr, cr, testOpt.fileName, testOpt.videoType, play.VerifyHWAcceleratorUsed)
+		return play.TestPlay(ctx, s, cr, cr, testOpt.fileName, testOpt.videoType, play.VerifyHWAcceleratorUsed, unmutePlayer)
 	}
 
 	backend, err := graphics.GetBackend()

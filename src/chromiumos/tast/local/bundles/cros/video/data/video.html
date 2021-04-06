@@ -7,11 +7,14 @@
 
 <script type="text/javascript">
 
-function playUntilEnd(videoSourcePath) {
+function playUntilEnd(videoSourcePath, unmutePlayer) {
   return new Promise(async(resolve, reject) => {
     let video = document.getElementById('video');
     video.onended = resolve;
     video.src = videoSourcePath;
+    if (unmutePlayer) {
+      video.muted = false;
+    }
     try {
       await video.play();
     } catch(e) {
