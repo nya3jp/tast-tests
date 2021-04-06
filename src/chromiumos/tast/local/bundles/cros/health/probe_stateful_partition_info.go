@@ -19,8 +19,8 @@ func init() {
 		Func: ProbeStatefulPartitionInfo,
 		Desc: "Checks that cros_healthd can fetch stateful partition info",
 		Contacts: []string{
-			"jschettler@google.com",
 			"pmoy@google.com",
+			"cros-tdm@google.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},

@@ -22,8 +22,8 @@ func init() {
 		Func: ProbeFanInfo,
 		Desc: "Checks that cros_healthd can fetch fan info",
 		Contacts: []string{
-			"jschettler@google.com",
 			"pmoy@google.com",
+			"cros-tdm@google.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
