@@ -22,6 +22,30 @@
       },
       "revId": "72367b93c9a0cea82f8fccb3e0904c1388442692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1cb82e9_18f2e74c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-06T18:50:40Z",
+      "side": 1,
+      "message": "Good catch! Done",
+      "parentUuid": "ac8b43ad_a0926702",
+      "range": {
+        "startLine": 78,
+        "startChar": 36,
+        "endLine": 78,
+        "endChar": 43
+      },
+      "revId": "72367b93c9a0cea82f8fccb3e0904c1388442692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
