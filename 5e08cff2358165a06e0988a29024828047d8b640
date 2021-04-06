@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b94b195_b8826f8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-06T00:53:55Z",
+      "side": 1,
+      "message": "Any local test done?",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "5e08cff2358165a06e0988a29024828047d8b640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9bacfde0_2c92efbe",
@@ -14,6 +37,52 @@
       "writtenOn": "2021-04-06T00:15:11Z",
       "side": 1,
       "message": "Note: there is no one available on my team for reviews, so we have to rely on Tast owner reviews for now. Thanks.",
+      "revId": "5e08cff2358165a06e0988a29024828047d8b640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26414085_6a91375b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-06T00:53:55Z",
+      "side": 1,
+      "message": "Suggest to include the image in the error message.",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 9
+      },
+      "revId": "5e08cff2358165a06e0988a29024828047d8b640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ffd8484_4dc329a5",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-06T00:53:55Z",
+      "side": 1,
+      "message": "Suggest to include bootTo in the error.",
+      "range": {
+        "startLine": 649,
+        "startChar": 16,
+        "endLine": 649,
+        "endChar": 20
+      },
       "revId": "5e08cff2358165a06e0988a29024828047d8b640",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
