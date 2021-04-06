@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "870e0dd7_d2446e5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-04-06T00:37:10Z",
+      "side": 1,
+      "message": "Who reviews the non-tast code for the project? Can they review this? Or is this a project where you just self +2 all the non-test code?",
+      "parentUuid": "a9f1725b_6c9cff29",
+      "revId": "97e556e7cd9c9f723798b492d81c7136227fc012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcc18b27_d8225d0a",
