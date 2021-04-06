@@ -16,6 +16,23 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "d2907d4f30cb49090785ec7d9b61c6e11909dfa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ca608b2_a60f6d60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-04-06T03:48:16Z",
+      "side": 1,
+      "message": "Wait, I am not really sure if we should promote a stress test to CQ. I will wait for more inputs from Victor.",
+      "revId": "d2907d4f30cb49090785ec7d9b61c6e11909dfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
