@@ -27,7 +27,7 @@ func init() {
 			"zuan@chromium.org",
 		},
 		SoftwareDeps: []string{"tpm2"},
-		Attr:         []string{"informational", "group:mainline"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
