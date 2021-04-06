@@ -81,8 +81,9 @@ func init() {
 // Widevine DRM protected MPD video via MSE/EME.
 func PlayDRM(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
+	unmutePlayer := false
 
-	if err := play.TestPlay(ctx, s, cr, cr, s.Param().(string), play.DRMVideo, play.VerifyHWDRMUsed); err != nil {
+	if err := play.TestPlay(ctx, s, cr, cr, s.Param().(string), play.DRMVideo, play.VerifyHWDRMUsed, unmutePlayer); err != nil {
 		s.Fatal("TestPlay failed: ", err)
 	}
 }

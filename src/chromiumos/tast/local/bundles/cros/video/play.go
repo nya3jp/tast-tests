@@ -17,10 +17,11 @@ import (
 )
 
 type playParams struct {
-	fileName   string
-	videoType  play.VideoType
-	verifyMode play.VerifyHWAcceleratorMode
-	chromeType lacros.ChromeType
+	fileName     string
+	videoType    play.VideoType
+	verifyMode   play.VerifyHWAcceleratorMode
+	chromeType   lacros.ChromeType
+	unmutePlayer bool
 }
 
 func init() {
@@ -372,6 +373,55 @@ func init() {
 			ExtraData: []string{"video.html", "bear-320x240.vp9.webm"},
 			Fixture:   "chromeVideoWithGuestLogin",
 		}, {
+			Name: "av1_unmuted",
+			Val: playParams{
+				fileName:     "bear-320x240.av1.mp4",
+				videoType:    play.NormalVideo,
+				verifyMode:   play.NoVerifyHWAcceleratorUsed,
+				chromeType:   lacros.ChromeTypeChromeOS,
+				unmutePlayer: true,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData: []string{"video.html", "bear-320x240.av1.mp4"},
+			Fixture:   "chromeVideoWithHWAV1Decoding",
+		}, {
+			Name: "h264_unmuted",
+			Val: playParams{
+				fileName:     "bear-320x240.h264.mp4",
+				videoType:    play.NormalVideo,
+				verifyMode:   play.NoVerifyHWAcceleratorUsed,
+				chromeType:   lacros.ChromeTypeChromeOS,
+				unmutePlayer: true,
+			},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
+			ExtraSoftwareDeps: []string{"proprietary_codecs"},
+			Fixture:           "chromeVideo",
+		}, {
+			Name: "vp8_unmuted",
+			Val: playParams{
+				fileName:     "bear-320x240.vp8.webm",
+				videoType:    play.NormalVideo,
+				verifyMode:   play.NoVerifyHWAcceleratorUsed,
+				chromeType:   lacros.ChromeTypeChromeOS,
+				unmutePlayer: true,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData: []string{"video.html", "bear-320x240.vp8.webm"},
+			Fixture:   "chromeVideo",
+		}, {
+			Name: "vp9_unmuted",
+			Val: playParams{
+				fileName:     "bear-320x240.vp9.webm",
+				videoType:    play.NormalVideo,
+				verifyMode:   play.NoVerifyHWAcceleratorUsed,
+				chromeType:   lacros.ChromeTypeChromeOS,
+				unmutePlayer: true,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData: []string{"video.html", "bear-320x240.vp9.webm"},
+			Fixture:   "chromeVideo",
+		}, {
 			Name: "h264_hw_alt",
 			Val: playParams{
 				fileName:   "bear-320x240.h264.mp4",
@@ -456,7 +506,7 @@ func Play(ctx context.Context, s *testing.State) {
 	}
 	defer tconn.Close()
 
-	if err := play.TestPlay(ctx, s, cs, cr, testOpt.fileName, testOpt.videoType, testOpt.verifyMode); err != nil {
+	if err := play.TestPlay(ctx, s, cs, cr, testOpt.fileName, testOpt.videoType, testOpt.verifyMode, testOpt.unmutePlayer); err != nil {
 		s.Fatal("TestPlay failed: ", err)
 	}
 }
