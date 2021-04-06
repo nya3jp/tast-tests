@@ -23,8 +23,17 @@ func init() {
 			"yich@chromium.org",
 		},
 		SoftwareDeps: []string{"tpm"},
-		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      10 * time.Minute,
+		Attr:         []string{"group:mainline"},
+		Timeout:      4 * time.Minute,
+		Params: []testing.Param{{
+			Name:              "tpm1",
+			ExtraSoftwareDeps: []string{"tpm1"},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "tpm2",
+			ExtraSoftwareDeps: []string{"tpm2"},
+			// No ExtraAttr; this test is critical.
+		}},
 	})
 }
 
