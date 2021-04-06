@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5068ed6c_2a2eb9a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-06T07:50:37Z",
+      "side": 1,
+      "message": "I didn\u0027t mean exact measurements, just a short list with the important and long steps, that can show the expectations.",
+      "parentUuid": "59735bd6_2ab0f209",
+      "revId": "1b28fde810f2df1ee6d8f92023326fdf589103cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb725dd4_27880b5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
         "patchSetId": 3
