@@ -33,6 +33,24 @@
       "message": "IIUC the change changes DUT status to do verbose logging, and keeps it after the test is done, affecting other tests that runs after this test. Is there a concensus about android logging about this?\n\nI think it is OK for now, because it is doing the same as existing code, but I thought it is better to restore the logging mode at the end to avoid unintended increase of logs.",
       "revId": "9993bd2dff741f4b78271b6cb0a451ed974bab2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a60854c0_32fd9e4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-06T18:09:02Z",
+      "side": 1,
+      "message": "I think it\u0027s OK for now since these Android phones are being used exclusively for Nearby testing, but I filed crbug/1196350 to come back to this if we end up sharing the phones with other tests.",
+      "parentUuid": "5ffbd263_50c0be99",
+      "revId": "9993bd2dff741f4b78271b6cb0a451ed974bab2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
