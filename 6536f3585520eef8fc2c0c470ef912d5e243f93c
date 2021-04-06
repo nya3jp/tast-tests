@@ -50,6 +50,23 @@
       "message": "Are you still confident in merging this?",
       "revId": "6536f3585520eef8fc2c0c470ef912d5e243f93c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67649721_eb74a63d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-06T08:51:52Z",
+      "side": 1,
+      "message": "Yes, the test itself seems quite stable. There was only one failure in the last 2828 runs and that one was related to the login.",
+      "revId": "6536f3585520eef8fc2c0c470ef912d5e243f93c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
