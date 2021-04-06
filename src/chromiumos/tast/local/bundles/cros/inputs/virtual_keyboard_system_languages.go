@@ -28,7 +28,7 @@ func init() {
 		Contacts: []string{
 			"essential-inputs-team@google.com",
 		},
-		Attr:         []string{"group:mainline", "group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
@@ -42,7 +42,6 @@ func init() {
 			}, {
 				Name:              "es_unstable",
 				ExtraHardwareDeps: pre.InputsUnstableModels,
-				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					regionCode:           "es",
 					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
@@ -58,7 +57,6 @@ func init() {
 			}, {
 				Name:              "fr_unstable",
 				ExtraHardwareDeps: pre.InputsUnstableModels,
-				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					regionCode:           "fr",
 					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
@@ -74,7 +72,6 @@ func init() {
 			}, {
 				Name:              "jp_unstable",
 				ExtraHardwareDeps: pre.InputsUnstableModels,
-				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					regionCode:           "jp",
 					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_JP_JPN),

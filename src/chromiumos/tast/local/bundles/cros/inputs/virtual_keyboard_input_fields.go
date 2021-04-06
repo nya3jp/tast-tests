@@ -31,7 +31,7 @@ func init() {
 				Name:              "us_en_stable",
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
-				ExtraAttr:         []string{"group:mainline", "group:input-tools-upstream"},
+				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
 				ExtraHardwareDeps: pre.InputsStableModels,
 			}, {
 				Name:              "us_en_stable_guest",
@@ -49,7 +49,7 @@ func init() {
 				Name:              "jp_us_stable",
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
-				ExtraAttr:         []string{"group:mainline", "group:input-tools-upstream"},
+				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
 				ExtraHardwareDeps: pre.InputsStableModels,
 			}, {
 				Name:              "jp_us_stable_guest",

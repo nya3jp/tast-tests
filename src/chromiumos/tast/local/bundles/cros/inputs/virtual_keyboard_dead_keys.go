@@ -37,7 +37,7 @@ func init() {
 		Func:         VirtualKeyboardDeadKeys,
 		Desc:         "Checks that dead keys on the virtual keyboard work",
 		Contacts:     []string{"tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
@@ -64,7 +64,6 @@ func init() {
 			}, {
 				Name:              "french_unstable",
 				ExtraHardwareDeps: pre.InputsUnstableModels,
-				ExtraAttr:         []string{"informational"},
 				Pre:               pre.VKEnabledClamshell,
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:fr::fra",
@@ -94,7 +93,6 @@ func init() {
 			}, {
 				Name:              "catalan_unstable",
 				ExtraHardwareDeps: pre.InputsUnstableModels,
-				ExtraAttr:         []string{"informational"},
 				Pre:               pre.VKEnabledTablet,
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:es:cat:cat",
