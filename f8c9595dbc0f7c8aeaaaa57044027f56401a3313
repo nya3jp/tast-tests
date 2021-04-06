@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd52255_da27f21b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-04-06T20:10:28Z",
+      "side": 1,
+      "message": "tabletModeEnabled(ctx, tconn) function is used due to this bug, b/178429568. I have observed that devices like dru, bob and so on are tablet devices. To avoid flaky failures, the Clamshell: Orientation test case will be skipped on those devices. From my understanding Software dependency could be applied only if it is required for all test cases. Please correct me if I am wrong. In my case, it is needed for \"Clamshell: Orientation test case\", so I think software deps is not required here.",
+      "parentUuid": "08559127_57e9b776",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "037d3f15_1b252c33",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-06T01:43:12Z",
       "side": 1,
       "message": "Is it possible to write these logs only when an error happened?\nIn general, we try to minimize log output of normal path in Tast, and leave verbose log for debugging when failure happened.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log\n\u003e On the other hand, avoid logging unnecessary information that would clutter the logs. If you want to log a verbose piece of information to help determine the cause of an error, only do it after the error has occurred.",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78c4dfc7_972d74d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-04-06T20:10:28Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. yes, I would like to get the information of appwidth, appheight for debugging. So it is needed here.",
+      "parentUuid": "037d3f15_1b252c33",
       "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e52a1946_ca0a6b24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-04-06T20:10:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a98e061f_78191b87",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d405b85_8b890ea8",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-04-06T01:43:12Z",
       "side": 1,
       "message": "just curious, is it usual or unusual to have multiple windows match this?",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cbd2d33_a575872a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-04-06T20:10:28Z",
+      "side": 1,
+      "message": "yes, I have observed that multiple windows matching the condition.",
+      "parentUuid": "4d405b85_8b890ea8",
       "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaae206c_b70c3bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-04-06T20:10:28Z",
+      "side": 1,
+      "message": "flagForWindowInfoCheckARCR condition needs to be checked, so else if is needed here.",
+      "parentUuid": "bc47f901_1db6a7ab",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a57d4d00_592b1424",
@@ -99,6 +189,24 @@
       "writtenOn": "2021-04-06T01:43:12Z",
       "side": 1,
       "message": "seems not needed because this is at the end of the loop block.",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecee46f2_08ab84f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-04-06T20:10:28Z",
+      "side": 1,
+      "message": "I have observed that multiple windows matching the condition. So break is needed here.",
+      "parentUuid": "a57d4d00_592b1424",
       "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
