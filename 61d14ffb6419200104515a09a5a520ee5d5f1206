@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9467f54d_a8bb53db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-06T07:41:23Z",
+      "side": 1,
+      "message": "minor nit: Promote",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "61d14ffb6419200104515a09a5a520ee5d5f1206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6b10e6f6_f26f2eda",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-04-01T15:24:47Z",
       "side": 1,
       "message": "Hi Gabor,\n\nCan you please take a look?\n\nThanks!",
+      "revId": "61d14ffb6419200104515a09a5a520ee5d5f1206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62387f97_88134201",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-06T07:41:23Z",
+      "side": 1,
+      "message": "LGTM",
       "revId": "61d14ffb6419200104515a09a5a520ee5d5f1206",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
