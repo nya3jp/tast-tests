@@ -33,7 +33,6 @@ func init() {
 			"joonbug@chromium.org",
 			"cros-peripherals@google.com",
 			"michaelcheco@google.com",
-			"jschettler@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

@@ -26,7 +26,6 @@ func init() {
 		Func: Scan,
 		Desc: "Tests that the Scan app can be used to perform scans",
 		Contacts: []string{
-			"jschettler@chromium.org",
 			"cros-peripherals@google.com",
 			"project-bolton@google.com",
 		},

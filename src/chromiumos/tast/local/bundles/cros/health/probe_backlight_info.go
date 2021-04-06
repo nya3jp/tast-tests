@@ -20,8 +20,8 @@ func init() {
 		Func: ProbeBacklightInfo,
 		Desc: "Checks that cros_healthd can fetch backlight info",
 		Contacts: []string{
-			"jschettler@google.com",
 			"pmoy@google.com",
+			"cros-tdm@google.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},

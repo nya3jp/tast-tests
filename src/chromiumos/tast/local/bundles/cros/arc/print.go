@@ -32,7 +32,7 @@ func init() {
 		Desc: "Check that ARC++ printing is working properly",
 		Contacts: []string{
 			"bmgordon@google.com",
-			"jschettler@google.com",
+			"project-bolton@google.com",
 		},
 		Attr: []string{
 			"group:mainline",

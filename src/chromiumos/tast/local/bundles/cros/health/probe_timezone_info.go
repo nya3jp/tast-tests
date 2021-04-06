@@ -17,8 +17,8 @@ func init() {
 		Func: ProbeTimezoneInfo,
 		Desc: "Check that we can probe cros_healthd for timezone info",
 		Contacts: []string{
-			"jschettler@google.com",
 			"pmoy@google.com",
+			"cros-tdm@google.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},

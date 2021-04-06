@@ -26,7 +26,6 @@ func init() {
 		Func: OpenScanInFilesApp,
 		Desc: "Tests that a scan can be opened in the Files app",
 		Contacts: []string{
-			"jschettler@chromium.org",
 			"cros-peripherals@google.com",
 			"project-bolton@google.com",
 		},

@@ -18,13 +18,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: GenerateSearchablePDFFromImage,
-		Desc: "Check that we can generate searchable PDF files from images",
-		Contacts: []string{
-			"emavroudi@google.com",
-			"jschettler@google.com",
-			"project-bolton@google.com ",
-		},
+		Func:         GenerateSearchablePDFFromImage,
+		Desc:         "Check that we can generate searchable PDF files from images",
+		Contacts:     []string{"project-bolton@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{sourceImage, goldenPDF},
 		SoftwareDeps: []string{"ocr"},

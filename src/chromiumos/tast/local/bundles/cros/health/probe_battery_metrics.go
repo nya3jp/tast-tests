@@ -20,7 +20,7 @@ func init() {
 		Contacts: []string{
 			"pmoy@google.com",
 			"khegde@google.com",
-			"jschettler@google.com",
+			"cros-tdm@google.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
