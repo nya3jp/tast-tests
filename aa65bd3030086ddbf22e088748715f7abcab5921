@@ -16,6 +16,92 @@
       "message": "Tablet fix.",
       "revId": "aa65bd3030086ddbf22e088748715f7abcab5921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc3997e8_a1b91cad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-06T09:32:24Z",
+      "side": 1,
+      "message": "Looks mostly nice.\n",
+      "revId": "aa65bd3030086ddbf22e088748715f7abcab5921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83c75d5b_59a87167",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-06T09:32:24Z",
+      "side": 1,
+      "message": "Please take context.Context as an argument.",
+      "range": {
+        "startLine": 137,
+        "startChar": 25,
+        "endLine": 137,
+        "endChar": 33
+      },
+      "revId": "aa65bd3030086ddbf22e088748715f7abcab5921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ff3c216_628a1048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-06T09:32:24Z",
+      "side": 1,
+      "message": "Please use context-aware API to honor context timeouts.\nhttps://golang.org/pkg/net/http/#NewRequestWithContext",
+      "range": {
+        "startLine": 140,
+        "startChar": 15,
+        "endLine": 140,
+        "endChar": 37
+      },
+      "revId": "aa65bd3030086ddbf22e088748715f7abcab5921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b50b7cfb_a63a7a7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-06T09:32:24Z",
+      "side": 1,
+      "message": "Let us apply strings.TrimSpace to body consistently.",
+      "range": {
+        "startLine": 159,
+        "startChar": 9,
+        "endLine": 159,
+        "endChar": 20
+      },
+      "revId": "aa65bd3030086ddbf22e088748715f7abcab5921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
