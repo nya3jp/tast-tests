@@ -16,6 +16,40 @@
       "message": "Thanks for reviewing! ",
       "revId": "acde262be936592ac46ab01f494195645370a9da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e7d92be_41925898",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-06T15:19:47Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "acde262be936592ac46ab01f494195645370a9da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a37ca5fc_ff498dce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-06T15:19:47Z",
+      "side": 1,
+      "message": "From the documentation for os.Exit: \"For portability, the status code should be in the range [0, 125].\" http://go/godoc/os/#Exit",
+      "revId": "acde262be936592ac46ab01f494195645370a9da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
