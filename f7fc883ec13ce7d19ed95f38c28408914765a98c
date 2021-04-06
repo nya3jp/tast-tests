@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee6421a6_7669c75d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-06T05:43:16Z",
+      "side": 1,
+      "message": "Yeah, I would like to do it but tast-lint doesn\u0027t allow me to do it. 😞",
+      "parentUuid": "eb6335dc_9ec94dd5",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a610db70_df8c5af7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
         "patchSetId": 4
@@ -48,6 +66,30 @@
       "writtenOn": "2021-04-05T17:59:20Z",
       "side": 1,
       "message": "Should this be matching the name generate_json_for_decodertest.go.",
+      "range": {
+        "startLine": 11,
+        "startChar": 48,
+        "endLine": 11,
+        "endChar": 78
+      },
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81cdfe9e_52e8d301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-06T05:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a610db70_df8c5af7",
       "range": {
         "startLine": 11,
         "startChar": 48,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6b9daef_b08b02f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-06T05:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8163954_60e22c6c",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb2cf638_94453c54",
@@ -88,6 +148,24 @@
       "writtenOn": "2021-04-05T18:26:24Z",
       "side": 1,
       "message": "nit: It is idiomatic to return the zero value in the case of error. For numeric types like Profile, the zero value is 0. I know 0 is also meaningful in the Profile enum, but nobody will consume the Profile return value if err !\u003d nil.",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a8661a_183acec0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-06T05:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb2cf638_94453c54",
       "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +193,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7b96117_a268bce8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-06T05:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "331d1270_c6597f9a",
+      "range": {
+        "startLine": 148,
+        "startChar": 7,
+        "endLine": 148,
+        "endChar": 16
+      },
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "515893db_59980095",
@@ -128,6 +230,24 @@
       "writtenOn": "2021-04-05T18:26:24Z",
       "side": 1,
       "message": "As above, it is idiomatic to return the zero value in the case of error. Additionally, because these are named result parameters, they are automatically initialized to the zero values, so you can eliminate L150—154 altogether.",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c56fde5_93acee30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-06T05:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "515893db_59980095",
       "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +269,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc5b9207_91f3336d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-06T05:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f12a947_e23ffc6b",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d1b8488_dbc1ae41",
@@ -162,6 +300,24 @@
       "writtenOn": "2021-04-05T18:26:24Z",
       "side": 1,
       "message": "nit: L191-199 would be more concise with a switch-case.\n\n    var bitDepth int\n    switch stream.Pixfmt {\n    case \"yuv420p\":\n        bitDepth \u003d 8\n    case \"yuv420p10le\":\n        bitDepth \u003d 10\n    default:\n        err \u003d errors.Errorf(\"unknown pix_fmt: \", stream.PixFmt)\n        return\n    }",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "308adcdc_4f03f1cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-06T05:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d1b8488_dbc1ae41",
       "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -183,6 +339,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "187dfdfb_f622c0dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-06T05:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "703c3df9_55e7a2c3",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75d428c2_252f6559",
@@ -196,6 +370,24 @@
       "writtenOn": "2021-04-05T18:26:24Z",
       "side": 1,
       "message": "You can remove this line. Err was automatically initialized to nil at the start of the function. If err became !\u003dnil at any point, we would have returned.",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dda5379_e3acab7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-06T05:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75d428c2_252f6559",
       "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -217,6 +409,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c07e6b94_3fbf53ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-06T05:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91895a76_44ad9ddf",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6d562cc_b9f031cb",
@@ -234,6 +444,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09f4b010_db4bfe69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-06T05:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6d562cc_b9f031cb",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36abe4b2_2786b807",
@@ -247,6 +475,24 @@
       "writtenOn": "2021-04-05T18:26:24Z",
       "side": 1,
       "message": "Remove duplicate line",
+      "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fe0c20b_caa66e54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tools/generate_json_for_decodertest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-06T05:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36abe4b2_2786b807",
       "revId": "f7fc883ec13ce7d19ed95f38c28408914765a98c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
