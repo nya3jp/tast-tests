@@ -214,6 +214,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd57bea4_85acc203",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-04-07T00:46:47Z",
+      "side": 1,
+      "message": "That makes sense - the reason I say this is because we actually don\u0027t add any user profiles in the ConfigureServiceForProfile test, so PopAllUserProfiles is essentially a no-op in that case (and it may be in many other shill tests as well). The nice thing about doing the cleanup within the test was that we did exactly what we needed to and no more. Not sure where else you plan to use this, but just something to keep in mind.\n\nAlso don\u0027t feel strongly re Steven\u0027s comment above.",
+      "parentUuid": "52d5e4f3_991762b8",
+      "revId": "f5f9a56d3560c41cf0ac99f308d8af350905f973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f34e4be_36478ef5",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
         "patchSetId": 4
