@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3732e6de_dbdf3bfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-04-07T03:54:05Z",
+      "side": 1,
+      "message": "PS#6 looks good. Thanks for the fix.",
+      "revId": "adbd69f5a65d721f561b507057f21cfd9bbbc7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
