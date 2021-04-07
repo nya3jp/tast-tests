@@ -19,14 +19,8 @@ import (
 
 // WLAN device names
 const (
-	Marvell88w8797SDIO         = "Marvell 88W8797 SDIO"
-	Marvell88w8887SDIO         = "Marvell 88W8887 SDIO"
 	Marvell88w8897SDIO         = "Marvell 88W8897 SDIO"
-	Marvell88w8897PCIE         = "Marvell 88W8897 PCIE"
 	Marvell88w8997PCIE         = "Marvell 88W8997 PCIE"
-	AtherosAR9280              = "Atheros AR9280"
-	AtherosAR9382              = "Atheros AR9382"
-	AtherosAR9462              = "Atheros AR9462"
 	QualcommAtherosQCA6174     = "Qualcomm Atheros QCA6174"
 	QualcommAtherosQCA6174SDIO = "Qualcomm Atheros QCA6174 SDIO"
 	QualcommWCN3990            = "Qualcomm WCN3990"
@@ -47,14 +41,8 @@ const (
 )
 
 var lookupWLANDev = map[DevInfo]string{
-	{vendor: "0x02df", device: "0x9129"}: Marvell88w8797SDIO,
 	{vendor: "0x02df", device: "0x912d"}: Marvell88w8897SDIO,
-	{vendor: "0x02df", device: "0x9135"}: Marvell88w8887SDIO,
-	{vendor: "0x11ab", device: "0x2b38"}: Marvell88w8897PCIE,
 	{vendor: "0x1b4b", device: "0x2b42"}: Marvell88w8997PCIE,
-	{vendor: "0x168c", device: "0x002a"}: AtherosAR9280,
-	{vendor: "0x168c", device: "0x0030"}: AtherosAR9382,
-	{vendor: "0x168c", device: "0x0034"}: AtherosAR9462,
 	{vendor: "0x168c", device: "0x003e"}: QualcommAtherosQCA6174,
 	{vendor: "0x105b", device: "0xe09d"}: QualcommAtherosQCA6174,
 	{vendor: "0x0271", device: "0x050a"}: QualcommAtherosQCA6174SDIO,
@@ -105,12 +93,7 @@ type DevInfo struct {
 
 // List of WLAN devices that don't support MU-MIMO.
 var denyListMUMIMO = []string{
-	Marvell88w8797SDIO,  // Not supported on 802.11n devices.
 	Marvell88w8897SDIO,  // Tested a DUT.
-	Marvell88w8897PCIE,  // Tested a DUT.
-	AtherosAR9280,       // Not supported on 802.11n devices.
-	AtherosAR9382,       // Not supported on 802.11n devices.
-	AtherosAR9462,       // Not supported on 802.11n devices.
 	Intel7260,           // (WP2) according to datasheet.
 	Intel7265,           // (StP2) tested a DUT.
 	BroadcomBCM4354SDIO, // Tested a DUT.

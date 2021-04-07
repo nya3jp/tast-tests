@@ -31,18 +31,6 @@ func init() {
 }
 
 var expectedWLANDriver = map[string]map[string]string{
-	wlan.AtherosAR9280: {
-		"3.4":  "wireless/ath/ath9k/ath9k.ko",
-		"3.8":  "wireless-3.4/ath/ath9k/ath9k.ko",
-		"4.14": "wireless/ath/ath9k/ath9k.ko",
-		"4.19": "wireless/ath/ath9k/ath9k.ko",
-	},
-	wlan.AtherosAR9382: {
-		"3.4":  "wireless/ath/ath9k/ath9k.ko",
-		"3.8":  "wireless-3.4/ath/ath9k/ath9k.ko",
-		"4.14": "wireless/ath/ath9k/ath9k.ko",
-		"4.19": "wireless/ath/ath9k/ath9k.ko",
-	},
 	wlan.Intel7260: {
 		"3.8":  "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 		"3.14": "wireless-3.8/iwl7000/iwlwifi/iwlwifi.ko",
@@ -78,12 +66,6 @@ var expectedWLANDriver = map[string]map[string]string{
 		"4.19": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 		"5.4":  "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 	},
-	wlan.AtherosAR9462: {
-		"3.4":  "wireless/ath/ath9k_btcoex/ath9k_btcoex.ko",
-		"3.8":  "wireless-3.4/ath/ath9k_btcoex/ath9k_btcoex.ko",
-		"4.14": "wireless/ath/ath9k/ath9k.ko",
-		"4.19": "wireless/ath/ath9k/ath9k.ko",
-	},
 	wlan.QualcommAtherosQCA6174: {
 		"4.4":  "wireless/ar10k/ath/ath10k/ath10k_pci.ko",
 		"4.14": "wireless/ath/ath10k/ath10k_pci.ko",
@@ -98,23 +80,6 @@ var expectedWLANDriver = map[string]map[string]string{
 		"4.14": "wireless/ath/ath10k/ath10k_snoc.ko",
 		"4.19": "wireless/ath/ath10k/ath10k_snoc.ko",
 		"5.4":  "wireless/ath/ath10k/ath10k_snoc.ko",
-	},
-	wlan.Marvell88w8797SDIO: {
-		"3.4":  "wireless/mwifiex/mwifiex_sdio.ko",
-		"3.8":  "wireless-3.4/mwifiex/mwifiex_sdio.ko",
-		"4.14": "wireless/marvell/mwifiex/mwifiex_sdio.ko",
-		"4.19": "wireless/marvell/mwifiex/mwifiex_sdio.ko",
-	},
-	wlan.Marvell88w8887SDIO: {
-		"3.14": "wireless-3.8/mwifiex/mwifiex_sdio.ko",
-		"4.14": "wireless/marvell/mwifiex/mwifiex_sdio.ko",
-		"4.19": "wireless/marvell/mwifiex/mwifiex_sdio.ko",
-	},
-	wlan.Marvell88w8897PCIE: {
-		"3.8":  "wireless/mwifiex/mwifiex_pcie.ko",
-		"3.10": "wireless-3.8/mwifiex/mwifiex_pcie.ko",
-		"4.14": "wireless/marvell/mwifiex/mwifiex_pcie.ko",
-		"4.19": "wireless/marvell/mwifiex/mwifiex_pcie.ko",
 	},
 	wlan.Marvell88w8897SDIO: {
 		"3.8":  "wireless/mwifiex/mwifiex_sdio.ko",
