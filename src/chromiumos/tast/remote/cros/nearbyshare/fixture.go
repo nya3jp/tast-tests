@@ -7,6 +7,8 @@ package nearbyshare
 
 import (
 	"context"
+	"encoding/json"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -161,6 +163,9 @@ type nearbyShareFixture struct {
 
 	// Path on the sender where the test files are stored.
 	remoteFilePath string
+
+	// Aattributes for both chromebooks.
+	attributes []byte
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -259,6 +264,32 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		s.Fatal("Failed to enable Nearby Share on DUT2 (Receiver): ", err)
 	}
 	f.receiver = receiver
+	// Get DUT attributes for both DUTs.
+	senderAttrsRes, err := f.sender.CrOSAttributes(ctx, &empty.Empty{})
+	if err != nil {
+		s.Error("Failed to save device attributes on the sender: ", err)
+	}
+	receiverAttrsRes, err := f.receiver.CrOSAttributes(ctx, &empty.Empty{})
+	if err != nil {
+		s.Error("Failed to save device attributes on the receiver: ", err)
+	}
+	var senderAttributes *nearbysetup.CrosAttributes
+	var receiverAttributes *nearbysetup.CrosAttributes
+	if err := json.Unmarshal([]byte(senderAttrsRes.Attributes), &senderAttributes); err != nil {
+		s.Error("Failed to unmarshal sender's attributes: ", err)
+	}
+	if err := json.Unmarshal([]byte(receiverAttrsRes.Attributes), &receiverAttributes); err != nil {
+		s.Error("Failed to unmarshal receiver's: ", err)
+	}
+	attributes := struct {
+		Sender   *nearbysetup.CrosAttributes
+		Receiver *nearbysetup.CrosAttributes
+	}{Sender: senderAttributes, Receiver: receiverAttributes}
+	crosLog, err := json.MarshalIndent(attributes, "", "\t")
+	if err != nil {
+		s.Fatal("Failed to format device metadata for logging: ", err)
+	}
+	f.attributes = crosLog
 
 	return &FixtData{
 		RemoteFilePath:      f.remoteFilePath,
@@ -305,8 +336,12 @@ func (f *nearbyShareFixture) TearDown(ctx context.Context, s *testing.FixtState)
 
 func (f *nearbyShareFixture) Reset(ctx context.Context) error { return nil }
 
-// PreTest will start logging on each DUT.
+// PreTest is run before each test in the fixture..
 func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "device_attributes.json"), f.attributes, 0644); err != nil {
+		s.Fatal("Failed to write CrOS attributes to output file: ", err)
+	}
+
 	// Start  logging on each DUT.
 	if _, err := f.sender.StartLogging(ctx, &empty.Empty{}); err != nil {
 		s.Error("Failed to save nearby share logs on the sender: ", err)
