@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e49e3473_2b7b906a",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-07T15:58:37Z",
+      "side": 1,
+      "message": "nit: model, err :\u003d testexec.CommandContext(...).Output()",
+      "range": {
+        "startLine": 345,
+        "startChar": 1,
+        "endLine": 346,
+        "endChar": 25
+      },
+      "revId": "dedc2829e07dae527d7cb4d14b2d5fca345da9ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
