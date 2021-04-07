@@ -48,6 +48,8 @@ const SendDir = DownloadPath + "nearby_test_files"
 const (
 	HatchHostname   = "chromeos15-row6a-rack12-host2a"
 	OctopusHostname = "chromeos15-row6a-rack12-host2b"
+	SarienHostname  = "chromeos15-row16-metro1-host1a"
+	CoralHostname   = "chromeos15-row16-metro1-host1b"
 )
 
 // ChooseSecondaryDUT figures out which DUT is primary and which is secondary in a Nearby Share CB->CB test.
@@ -59,6 +61,10 @@ func ChooseSecondaryDUT(hostname, secondaryTarget string) (string, error) {
 		secondaryDUT = OctopusHostname
 	} else if strings.Contains(hostname, OctopusHostname) {
 		secondaryDUT = HatchHostname
+	} else if strings.Contains(hostname, SarienHostname) {
+		secondaryDUT = CoralHostname
+	} else if strings.Contains(hostname, CoralHostname) {
+		secondaryDUT = SarienHostname
 	} else {
 		if secondaryTarget == "" {
 			return "", errors.New("Test is running on an unknown hostname and no secondaryTarget arg was supplied")
