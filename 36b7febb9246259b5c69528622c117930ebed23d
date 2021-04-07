@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6ec5c60_01dff610",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T19:18:53Z",
+      "side": 1,
+      "message": "Hi Shuo-Peng, there are a bunch of CUJs being implemented under ui package (ui.VideoCUJ, ui.TabSwitchCUJ, etc). Do you still need a new bug for CUJ feature? I can forward you some background information if you need more details.",
+      "parentUuid": "f3b719eb_726121a4",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "36b7febb9246259b5c69528622c117930ebed23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d89dacd5_43efdc24",
