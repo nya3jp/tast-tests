@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f463a5c7_bb69f273",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-07T12:27:34Z",
+      "side": 1,
+      "message": "What is the exact precondition required by this test case? Should it ideally run on a device whose form factor is a clamshell laptop, or need to enter desktop mode before the test starts?\n\nIf former, the recommended way is to split test cases into different Tast tests (like NoteShelf.tablet_mode and NoteShelf.clamshell), so that hardware/software dependency by Tast can do the job.\n\n\nHaving said that, I got that the problem is that we don\u0027t have the exact way to denote \"test on clamshell device\" right now. crbug.com/1192825 is currently discussing it.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md\n\nSo I think it is reasonable to continue current way, but with these:\n1. Reorganize tests based on different hardware/software dependencies, or leave TODO comment and crbug in the comment.\n2. Declare what property/capability of device is needed in the comment\n3. Join discussion in crbug.com/1192825 to make sure it covers your use case after deprecating tablet_mode USE flag\nWDYT?",
+      "parentUuid": "8dd52255_da27f21b",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "037d3f15_1b252c33",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 10
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Thanks for the suggestion. yes, I would like to get the information of appwidth, appheight for debugging. So it is needed here.",
       "parentUuid": "037d3f15_1b252c33",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2abaf149_c6e664c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-07T12:27:34Z",
+      "side": 1,
+      "message": "What do you mean by \"for debugging\"? If it means \"for viewing log when the test failed but not needed when the test passed\", then the recommended way is to include the needed variable values to the error message  in the related Errorf|Fatalf.",
+      "parentUuid": "78c4dfc7_972d74d7",
       "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -172,6 +208,24 @@
       "side": 1,
       "message": "flagForWindowInfoCheckARCR condition needs to be checked, so else if is needed here.",
       "parentUuid": "bc47f901_1db6a7ab",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a2809b_7e3f9313",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-07T12:27:34Z",
+      "side": 1,
+      "message": "Sorry not being very clear, I mean like this:\nif !arcpFound \u0026\u0026 ... {\n  ...\n  arcpFound\u003dtrue\n  break\n}\nif !arcrFound \u0026\u0026 ... {\n  ...\n  break\n}",
+      "parentUuid": "eaae206c_b70c3bab",
       "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
