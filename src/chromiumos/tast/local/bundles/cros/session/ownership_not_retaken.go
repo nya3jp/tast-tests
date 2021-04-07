@@ -26,7 +26,7 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		// This test performs 2 logins.
 		Timeout: 2*chrome.LoginTimeout + time.Minute,
 	})
