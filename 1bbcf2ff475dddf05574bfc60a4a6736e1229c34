@@ -152,6 +152,24 @@
       "message": "This can use modem.GetSimSlots() once this CL lands:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2807520",
       "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "179d0b51_3aca54b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-07T23:34:28Z",
+      "side": 1,
+      "message": "(You can copy that modem.go change to this CL and if this lands first I\u0027ll rebase my CL off of this, or you can wait for that to land).",
+      "parentUuid": "1c859ae5_3efbaee6",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
