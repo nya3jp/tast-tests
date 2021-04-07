@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/shillconst"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/diag"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
@@ -63,26 +62,12 @@ func DiagFailDNSResolution(ctx context.Context, s *testing.State) {
 	// After the property change is emitted, Chrome still needs to process it.
 	// Since Chrome does not emit a change, poll to test whether the expected
 	// problem occurs.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		result, err := mojo.RunRoutine(ctx, diag.RoutineDNSResolution)
-		if err != nil {
-			s.Fatal("Failed to run routine: ", err)
-		}
-
-		if result.Verdict != diag.VerdictProblem {
-			return errors.Errorf("expected routine problem verdict; got: %v, want: %v", result.Verdict, diag.VerdictProblem)
-		}
-
-		if len(result.Problems) != 1 {
-			s.Fatalf("Unexpected problems length, got: %d, want: %d", result.Problems, 1)
-		}
-
-		if result.Problems[0] != int(problemFailedToResolveHost) {
-			s.Fatalf("Routine reported unexpected problem; got %v, want %v", result.Problems[0], problemFailedToResolveHost)
-		}
-
-		return nil
-	}, &testing.PollOptions{Interval: 250 * time.Millisecond, Timeout: 5 * time.Second}); err != nil {
-		s.Fatal("Timout waiting for routine to fail: ", err)
+	pollParams := diag.PollRoutineParams{
+		Routine:  diag.RoutineDNSResolution,
+		Verdict:  diag.VerdictProblem,
+		Problems: []int{int(problemFailedToResolveHost)},
+	}
+	if err := mojo.PollRoutine(ctx, pollParams); err != nil {
+		s.Fatal("Failed to poll routine: ", err)
 	}
 }

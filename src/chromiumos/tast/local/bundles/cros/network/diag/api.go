@@ -9,9 +9,11 @@ package diag
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 // TODO(crbug/1127165): convert this to a data file when supported by fixtures.
@@ -164,6 +166,54 @@ func (m *MojoAPI) RunRoutine(ctx context.Context, routine string) (*RoutineResul
 		return &result, nil
 	}
 	return nil, errors.Errorf("unknown routine verdict; got: %v", result.Verdict)
+}
+
+// PollRoutineParams is a collection of configuration options for polling a
+// network diagnostic routine.
+type PollRoutineParams struct {
+	Routine  string
+	Verdict  RoutineVerdict
+	Problems []int
+}
+
+// PollRoutine will continuously run the specified routine until the provided
+// verdict and list of problems are matched.
+func (m *MojoAPI) PollRoutine(ctx context.Context, params PollRoutineParams) error {
+	inSlice := func(slice []int, v int) bool {
+		for _, s := range slice {
+			if s == v {
+				return true
+			}
+		}
+		return false
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		result, err := m.RunRoutine(ctx, params.Routine)
+		if err != nil {
+			testing.PollBreak(errors.Wrap(err, "failed to run routine"))
+		}
+
+		if result.Verdict != params.Verdict {
+			return errors.Errorf("expected routine problem verdict; got: %v, want: %v", result.Verdict, params.Verdict)
+		}
+
+		if len(result.Problems) != len(params.Problems) {
+			return errors.Errorf("unexpected problems length; got: %d, want: %d", result.Problems, len(params.Problems))
+		}
+
+		for _, r := range result.Problems {
+			if !inSlice(params.Problems, r) {
+				return errors.Errorf("unexpected routine problems; got %v, want %v", result.Problems, params.Problems)
+			}
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "timout waiting for routine to have expected results")
+	}
+
+	return nil
 }
 
 // Release frees the resources help by the internal MojoAPI components.
