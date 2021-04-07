@@ -25,7 +25,7 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedInForInputs",
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
@@ -37,7 +37,7 @@ func init() {
 }
 
 func PhysicalKeyboardInputFields(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
