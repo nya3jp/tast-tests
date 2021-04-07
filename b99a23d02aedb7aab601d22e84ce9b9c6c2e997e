@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc00872b_29df8440",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-07T06:53:55Z",
+      "side": 1,
+      "message": "Katherine: Will need help with OWNERS review, thanks!",
+      "revId": "b99a23d02aedb7aab601d22e84ce9b9c6c2e997e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d24c2afe_0b2c7b17",
