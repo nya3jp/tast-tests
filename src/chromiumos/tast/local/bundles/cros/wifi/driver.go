@@ -46,6 +46,7 @@ var expectedWLANDriver = map[string]map[string]string{
 		"4.14": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 		"4.19": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 		"5.4":  "wireless/iwl7000/iwlwifi/iwlwifi.ko",
+		"5.10": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 	},
 	wlan.Intel9000: {
 		"4.14": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
@@ -61,10 +62,12 @@ var expectedWLANDriver = map[string]map[string]string{
 		"4.14": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 		"4.19": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 		"5.4":  "wireless/iwl7000/iwlwifi/iwlwifi.ko",
+		"5.10": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 	},
 	wlan.Intel22560: {
 		"4.19": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 		"5.4":  "wireless/iwl7000/iwlwifi/iwlwifi.ko",
+		"5.10": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 	},
 	wlan.QualcommAtherosQCA6174: {
 		"4.4":  "wireless/ar10k/ath/ath10k/ath10k_pci.ko",
@@ -80,6 +83,7 @@ var expectedWLANDriver = map[string]map[string]string{
 		"4.14": "wireless/ath/ath10k/ath10k_snoc.ko",
 		"4.19": "wireless/ath/ath10k/ath10k_snoc.ko",
 		"5.4":  "wireless/ath/ath10k/ath10k_snoc.ko",
+		"5.10": "wireless/ath/ath10k/ath10k_snoc.ko",
 	},
 	wlan.Marvell88w8897SDIO: {
 		"3.8":  "wireless/mwifiex/mwifiex_sdio.ko",
@@ -88,6 +92,8 @@ var expectedWLANDriver = map[string]map[string]string{
 		"3.18": "wireless/mwifiex/mwifiex_sdio.ko",
 		"4.14": "wireless/marvell/mwifiex/mwifiex_sdio.ko",
 		"4.19": "wireless/marvell/mwifiex/mwifiex_sdio.ko",
+		"5.4":  "wireless/marvell/mwifiex/mwifiex_sdio.ko",
+		"5.10": "wireless/marvell/mwifiex/mwifiex_sdio.ko",
 	},
 	wlan.BroadcomBCM4354SDIO: {
 		"3.8":  "wireless/brcm80211/brcmfmac/brcmfmac.ko",
@@ -104,10 +110,13 @@ var expectedWLANDriver = map[string]map[string]string{
 		"4.4":  "wireless/marvell/mwifiex/mwifiex_pcie.ko",
 		"4.14": "wireless/marvell/mwifiex/mwifiex_pcie.ko",
 		"4.19": "wireless/marvell/mwifiex/mwifiex_pcie.ko",
+		"5.4":  "wireless/marvell/mwifiex/mwifiex_pcie.ko",
+		"5.10": "wireless/marvell/mwifiex/mwifiex_pcie.ko",
 	},
 	wlan.Realtek8822CPCIE: {
 		"4.14": "wireless/realtek/rtw88/rtw88_8822ce.ko",
 		"5.4":  "wireless/realtek/rtw88/rtw88_8822ce.ko",
+		"5.10": "wireless/realtek/rtw88/rtw88_8822ce.ko",
 	},
 }
 
