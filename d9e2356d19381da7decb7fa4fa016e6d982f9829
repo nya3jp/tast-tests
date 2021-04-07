@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36b79a4b_7171140c",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-04-07T03:32:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9e7bef9f_6618ac86",
+      "range": {
+        "startLine": 472,
+        "startChar": 1,
+        "endLine": 475,
+        "endChar": 27
+      },
+      "revId": "d9e2356d19381da7decb7fa4fa016e6d982f9829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3070b43_0c038cbd",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
         "patchSetId": 1
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I just double-checked and it looks like `btmon -w` will overwrite the file if it still exists. Want me to just get rid of this?",
       "parentUuid": "d3070b43_0c038cbd",
+      "range": {
+        "startLine": 480,
+        "startChar": 4,
+        "endLine": 480,
+        "endChar": 9
+      },
+      "revId": "d9e2356d19381da7decb7fa4fa016e6d982f9829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7969f175_2c6a2a4c",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-04-07T03:32:56Z",
+      "side": 1,
+      "message": "Sure",
+      "parentUuid": "5577fc22_ad195ba5",
       "range": {
         "startLine": 480,
         "startChar": 4,
