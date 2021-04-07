@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beef3998_0b0cc98c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-07T23:17:40Z",
+      "side": 1,
+      "message": "lgtm from the tast perspective. I suggest get +2 first from someone familiar with the content. ",
+      "revId": "d15497c7c9bcbee7c9c0c1b83ca086cef7778573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
