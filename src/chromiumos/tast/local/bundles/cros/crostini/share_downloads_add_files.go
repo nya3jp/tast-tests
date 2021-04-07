@@ -125,6 +125,29 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to remove all files in %s: %v", filesapp.DownloadPath, err)
 	}
 
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	defer func() {
+		if screenRecorder != nil {
+			if err := screenRecorder.Stop(ctx); err != nil {
+				s.Log("Failed to stop recording: ", err)
+			} else {
+				testing.ContextLogf(ctx, "Saving screen record to %s", s.OutDir())
+				if err := screenRecorder.SaveInBytes(ctx, filepath.Join(s.OutDir(), "shareDownloadsAddFilesSR.webm")); err != nil {
+					s.Log("Failed to save screen record in bytes: ", err)
+				}
+			}
+			screenRecorder.Release(ctx)
+		}
+	}()
+
+	if screenRecorder != nil {
+		screenRecorder.Start(ctx, tconn)
+	}
+
 	// Open the Files app.
 	filesApp, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
