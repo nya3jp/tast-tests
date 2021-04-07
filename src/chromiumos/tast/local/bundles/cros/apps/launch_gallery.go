@@ -15,9 +15,11 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -98,18 +100,13 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
-	defer files.Release(ctx)
 
-	// Open the Downloads folder and check for the test file.
-	if err := files.OpenDownloads(ctx); err != nil {
-		s.Fatal("Opening Downloads folder failed: ", err)
-	}
-	if err := files.WaitForFile(ctx, testFile, 30*time.Second); err != nil {
-		s.Fatal("Waiting for test file failed: ", err)
-	}
-
-	if err := files.OpenFile(ctx, testFile); err != nil {
-		s.Fatal("Waiting to select test file failed: ", err)
+	if err := uiauto.Combine("open Downloads folder and double click file to launch Gallery",
+		files.OpenDownloads(),
+		files.WaitForFile(testFile),
+		files.OpenFile(testFile),
+	)(ctx); err != nil {
+		s.Fatal("Failed to open file in Downloads: ", err)
 	}
 
 	s.Log("Wait for Gallery shown in shelf")
@@ -119,11 +116,9 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 
 	s.Log("Wait for Gallery app rendering")
 	// Use image section to verify Gallery App rendering.
-	params := ui.FindParams{
-		Role: ui.RoleTypeImage,
-		Name: testFile,
-	}
-	if _, err = ui.FindWithTimeout(ctx, tconn, params, 60*time.Second); err != nil {
-		s.Fatal("Failed to render Gallery or open image: ", err)
+	ui := uiauto.New(tconn).WithTimeout(60 * time.Second)
+	imageElementFinder := nodewith.Role(role.Image).Name(testFile)
+	if err := ui.WaitUntilExists(imageElementFinder)(ctx); err != nil {
+		s.Fatal("Failed to render Gallery: ", err)
 	}
 }
