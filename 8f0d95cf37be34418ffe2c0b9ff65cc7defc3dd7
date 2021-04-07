@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92638f93_ab7d4a9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-07T06:55:51Z",
+      "side": 1,
+      "message": "Finally! Thanks for the cleanup.\n",
+      "revId": "8f0d95cf37be34418ffe2c0b9ff65cc7defc3dd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
