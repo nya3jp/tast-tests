@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aed9c26_a4daf771",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-07T04:40:55Z",
+      "side": 1,
+      "message": "LGTM with nits.",
+      "revId": "6ebf841e69b05d4c9a9137ad47af738612ba75f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f48d40dd_f31b85a3",
@@ -42,6 +59,69 @@
         "startChar": 67,
         "endLine": 26,
         "endChar": 74
+      },
+      "revId": "6ebf841e69b05d4c9a9137ad47af738612ba75f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc162bc5_edcfefd6",
+        "filename": "src/chromiumos/tast/services/cros/typec/service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-07T04:40:55Z",
+      "side": 1,
+      "message": "Can you add the copyright information. Sample refer - src/platform/tast-tests/src/chromiumos/tast/services/cros/example/chrome_service.proto",
+      "revId": "6ebf841e69b05d4c9a9137ad47af738612ba75f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f2aac28_b7e82680",
+        "filename": "src/chromiumos/tast/services/cros/typec/service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-07T04:40:55Z",
+      "side": 1,
+      "message": "nit: Can the name of service be expressive instead of name Service.Hence other places as well.",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "6ebf841e69b05d4c9a9137ad47af738612ba75f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3303d6cd_18643423",
+        "filename": "src/chromiumos/tast/services/cros/typec/service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-07T04:40:55Z",
+      "side": 1,
+      "message": "nit: Would be nice to add a comment about this.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 20
       },
       "revId": "6ebf841e69b05d4c9a9137ad47af738612ba75f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
