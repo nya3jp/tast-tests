@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73cb08de_a1dc68c4",
+        "filename": "src/chromiumos/tast/remote/sysutil/rootfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-07T20:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb6439c7_d59b9e37",
+      "range": {
+        "startLine": 5,
+        "startChar": 42,
+        "endLine": 5,
+        "endChar": 49
+      },
+      "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0813265b_c096970e",
@@ -81,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b16b166_0fee9954",
+        "filename": "src/chromiumos/tast/remote/sysutil/rootfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-07T20:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8244d56c_bd836c4d",
+      "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f968fbdc_46985908",
@@ -94,6 +136,24 @@
       "writtenOn": "2021-04-06T15:40:33Z",
       "side": 1,
       "message": "nit/style: Combine L69-70:\n\n    if err :\u003d removeRootfsVerification(ctx, d); err !\u003d nil {\n        return err\n    }",
+      "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2354cfb_fcb51fb5",
+        "filename": "src/chromiumos/tast/remote/sysutil/rootfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-07T20:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f968fbdc_46985908",
       "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e5ca1aa_360ee4e5",
+        "filename": "src/chromiumos/tast/remote/sysutil/rootfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-07T20:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f42f7ef4_4888f6c6",
+      "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "478808e5_f9517c26",
@@ -128,6 +206,24 @@
       "writtenOn": "2021-04-06T15:40:33Z",
       "side": 1,
       "message": "This function has the same name as IsRootfsWritable, so the difference in meaning is not clear. I recommend either giving it a semantically meaningful name or at least a docstring.",
+      "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23a76add_4f06f8c4",
+        "filename": "src/chromiumos/tast/remote/sysutil/rootfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-07T20:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "478808e5_f9517c26",
       "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +245,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f17b5b3_1690b299",
+        "filename": "src/chromiumos/tast/remote/sysutil/rootfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-07T20:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63af363f_792afeb8",
+      "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd50ef51_6216cae0",
@@ -162,6 +276,24 @@
       "writtenOn": "2021-04-06T15:40:33Z",
       "side": 1,
       "message": "If it\u0027s realistic, I think it would help for one of these to have rootLine (/dev/root) somewhere other than beginning-of-file.",
+      "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75e14c6d_f210d357",
+        "filename": "src/chromiumos/tast/remote/sysutil/rootfs_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-07T20:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd50ef51_6216cae0",
       "revId": "a021cdcd80be22f9c941d9a96a0601db7b848110",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
