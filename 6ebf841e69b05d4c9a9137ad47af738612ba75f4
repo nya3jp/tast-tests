@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f48d40dd_f31b85a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-07T04:34:45Z",
+      "side": 1,
+      "message": "It seems that it is always return \u0026empty.Empty{}?",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "6ebf841e69b05d4c9a9137ad47af738612ba75f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d45b9ded_a2f7694c",
+        "filename": "src/chromiumos/tast/services/cros/typec/service.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-07T04:34:45Z",
+      "side": 1,
+      "message": "Please end the comment with a \u0027.\u0027",
+      "range": {
+        "startLine": 26,
+        "startChar": 67,
+        "endLine": 26,
+        "endChar": 74
+      },
+      "revId": "6ebf841e69b05d4c9a9137ad47af738612ba75f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
