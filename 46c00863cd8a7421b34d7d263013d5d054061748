@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2e550cc_0bc9bb44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-07T23:39:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8194445d_dcccde10",
+      "range": {
+        "startLine": 120,
+        "startChar": 30,
+        "endLine": 120,
+        "endChar": 70
+      },
+      "revId": "46c00863cd8a7421b34d7d263013d5d054061748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "484edc31_a416981f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-07T23:22:04Z",
       "side": 1,
       "message": "Suggest to define the node in advance to keep code style consistent.",
+      "range": {
+        "startLine": 121,
+        "startChar": 30,
+        "endLine": 121,
+        "endChar": 79
+      },
+      "revId": "46c00863cd8a7421b34d7d263013d5d054061748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c90f46f_27f8d629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_notifications.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-07T23:39:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "484edc31_a416981f",
       "range": {
         "startLine": 121,
         "startChar": 30,
