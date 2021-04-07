@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c1dcf97_105a9588",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-07T17:19:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52678719_e1311084",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 11
+      },
+      "revId": "391c61dd9383e3c3a86b3093355c99fe29e32068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "365837bb_5d84a372",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-06T13:16:45Z",
       "side": 1,
       "message": "nit: I\u0027d move the } to the next line.\n\n ... daemonState,\n}, nil\n\ncf. https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#literal-matching-braces",
+      "range": {
+        "startLine": 236,
+        "startChar": 31,
+        "endLine": 236,
+        "endChar": 32
+      },
+      "revId": "391c61dd9383e3c3a86b3093355c99fe29e32068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48dac823_78658d2a",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-07T17:19:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "365837bb_5d84a372",
       "range": {
         "startLine": 236,
         "startChar": 31,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67d6b616_bfc37cd5",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-07T17:19:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f039f760_01960193",
+      "range": {
+        "startLine": 248,
+        "startChar": 4,
+        "endLine": 248,
+        "endChar": 7
+      },
+      "revId": "391c61dd9383e3c3a86b3093355c99fe29e32068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f4c507a_f26f888b",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-04-06T13:16:45Z",
       "side": 1,
       "message": "Why do we assign t.cl and t.upstartService?\nIs t used after it\u0027s Closed?",
+      "range": {
+        "startLine": 251,
+        "startChar": 3,
+        "endLine": 251,
+        "endChar": 5
+      },
+      "revId": "391c61dd9383e3c3a86b3093355c99fe29e32068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b64a2596_e12a1c53",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-07T17:19:53Z",
+      "side": 1,
+      "message": "It\u0027s used in the lines below. We don\u0027t have to reassign it, but generally we expect t.cl and t.upstartService to be valid. Once https://crbug.com/1195936 is fixed they will always be valid and we won\u0027t have to do this (this is just a workaround).",
+      "parentUuid": "4f4c507a_f26f888b",
       "range": {
         "startLine": 251,
         "startChar": 3,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cdb3c30_05d6a43a",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-07T17:19:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82e88d23_057b702d",
+      "range": {
+        "startLine": 279,
+        "startChar": 5,
+        "endLine": 279,
+        "endChar": 16
+      },
+      "revId": "391c61dd9383e3c3a86b3093355c99fe29e32068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51ca9050_3fcdddc5",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8624007_ce32b044",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-07T17:19:53Z",
+      "side": 1,
+      "message": "The only valid state for these daemons is \"running\" or \"stopped\". The other states are intermediate states that are transitioned through in order to reach \"running\" or \"stopped\", so we will only want to restore them to a \"stopped\" or \"running\" state.",
+      "parentUuid": "51ca9050_3fcdddc5",
+      "range": {
+        "startLine": 287,
+        "startChar": 66,
+        "endLine": 287,
+        "endChar": 78
+      },
+      "revId": "391c61dd9383e3c3a86b3093355c99fe29e32068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91faa740_30930c5b",
@@ -169,6 +313,30 @@
       "writtenOn": "2021-04-06T13:16:45Z",
       "side": 1,
       "message": "Could you make the function return error and the caller check it?",
+      "range": {
+        "startLine": 308,
+        "startChar": 5,
+        "endLine": 308,
+        "endChar": 19
+      },
+      "revId": "391c61dd9383e3c3a86b3093355c99fe29e32068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9d16d11_34a7cf6f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-07T17:19:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91faa740_30930c5b",
       "range": {
         "startLine": 308,
         "startChar": 5,
