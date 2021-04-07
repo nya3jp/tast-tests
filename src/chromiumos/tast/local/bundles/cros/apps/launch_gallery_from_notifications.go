@@ -17,9 +17,11 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -67,7 +69,6 @@ func LaunchGalleryFromNotifications(ctx context.Context, s *testing.State) {
 		uiTimeout            = 20 * time.Second
 		downloadCompleteText = "Download complete"
 	)
-	pollOpts := testing.PollOptions{Interval: 2 * time.Second, Timeout: uiTimeout}
 	testImageFileLocation := filepath.Join(filesapp.DownloadPath, testImageFileName)
 	defer os.Remove(testImageFileLocation)
 
@@ -103,11 +104,10 @@ func LaunchGalleryFromNotifications(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed waiting %v for download notification", uiTimeout)
 	}
 
-	params := ui.FindParams{
-		Name: downloadCompleteText,
-		Role: ui.RoleTypeStaticText,
-	}
-	if err := ui.StableFindAndClick(ctx, tconn, params, &pollOpts); err != nil {
+	ui := uiauto.New(tconn).WithTimeout(60 * time.Second)
+	notificationFinder := nodewith.Role(role.StaticText).Name(downloadCompleteText)
+
+	if err := ui.LeftClick(notificationFinder)(ctx); err != nil {
 		s.Fatal("Failed finding notification and clicking it: ", err)
 	}
 
@@ -118,11 +118,7 @@ func LaunchGalleryFromNotifications(ctx context.Context, s *testing.State) {
 
 	s.Log("Wait for Gallery app rendering")
 	// Use image section to verify Gallery App rendering.
-	params = ui.FindParams{
-		Role: ui.RoleTypeImage,
-		Name: testImageFileName,
-	}
-	if _, err = ui.FindWithTimeout(ctx, tconn, params, 60*time.Second); err != nil {
-		s.Fatal("Failed to render Gallery or open image: ", err)
+	if err := ui.WaitUntilExists(nodewith.Role(role.Image).Name(testImageFileName))(ctx); err != nil {
+		s.Fatal("Failed to render Gallery: ", err)
 	}
 }
