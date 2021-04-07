@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3606c11c_8eab0c36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-07T00:09:06Z",
+      "side": 1,
+      "message": "Should this fail the test?",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 9
+      },
+      "revId": "49956e18e1e9d0c35c51025860e0d0c1169e5b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "701400e2_f179b8d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-07T00:09:06Z",
+      "side": 1,
+      "message": "open",
+      "range": {
+        "startLine": 137,
+        "startChar": 27,
+        "endLine": 137,
+        "endChar": 31
+      },
+      "revId": "49956e18e1e9d0c35c51025860e0d0c1169e5b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
