@@ -13,32 +13,22 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/testing"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 )
 
 // App represents an instance of the Connectivity Diagnostics App.
 type App struct {
 	tconn *chrome.TestConn
-	Root  *ui.Node
+	ui    *uiauto.Context
 }
 
 const appURL = "chrome://connectivity-diagnostics/"
 
-var pollOpts = testing.PollOptions{
-	Interval: 100 * time.Millisecond,
-	Timeout:  5 * time.Second,
-}
+var windowFinder *nodewith.Finder = nodewith.Name("Connectivity Diagnostics").Role(role.Window)
 
-var appRootParams = ui.FindParams{
-	Name: "Connectivity Diagnostics",
-	Role: ui.RoleTypeWindow,
-}
-
-var appTitleParams = ui.FindParams{
-	Name: "Connectivity Diagnostics",
-	Role: ui.RoleTypeInlineTextBox,
-}
+var titleFinder *nodewith.Finder = nodewith.Name("Connectivity Diagnostics").Role(role.InlineTextBox)
 
 // Launch launches the Connectivity Diagnostics app and returns the instance of
 // it. An error is returned if the app fails to launch.
@@ -47,18 +37,19 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*App, error) {
 		return nil, errors.Wrap(err, "failed to launch connectivity diagnostics app")
 	}
 
-	// Get the Connectivity Diagnostics app root node.
-	appRoot, err := ui.FindWithTimeout(ctx, tconn, appRootParams, time.Minute)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to find app root")
+	ui := uiauto.New(tconn)
+
+	// Get the Connectivity Diagnostics app window.
+	if err := ui.WithTimeout(time.Minute).WaitUntilExists(windowFinder)(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to find app window")
 	}
 
-	app := App{tconn: tconn, Root: appRoot}
-
-	if err := app.waitForTitle(ctx); err != nil {
-		return nil, err
+	// Ensure the title of the app is visible
+	if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(titleFinder)(ctx); err != nil {
+		return nil, errors.Wrap(err, "unable to get app title")
 	}
 
+	app := App{tconn: tconn, ui: ui}
 	return &app, nil
 }
 
@@ -70,17 +61,4 @@ func ChromeConn(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
 		return nil, err
 	}
 	return conn, nil
-}
-
-func (a *App) waitForTitle(ctx context.Context) error {
-	// Poll the root node for the title node.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if _, err := a.Root.DescendantWithTimeout(ctx, appTitleParams, time.Minute); err != nil {
-			return errors.Wrap(err, "failed to find app title")
-		}
-		return nil
-	}, &pollOpts); err != nil {
-		return errors.Wrap(err, "timed out waiting for app title")
-	}
-	return nil
 }
