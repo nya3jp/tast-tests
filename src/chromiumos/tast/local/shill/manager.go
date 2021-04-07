@@ -238,6 +238,23 @@ func (m *Manager) DisableTechnology(ctx context.Context, technology Technology) 
 	return m.Call(ctx, "DisableTechnology", string(technology)).Err
 }
 
+// GetEnabledTechnologies returns a list of all enabled shill networking technologies.
+func (m *Manager) GetEnabledTechnologies(ctx context.Context) ([]Technology, error) {
+	var enabledTechnologies []Technology
+	prop, err := m.GetProperties(ctx)
+	if err != nil {
+		return enabledTechnologies, errors.Wrap(err, "failed to get properties")
+	}
+	technologies, err := prop.GetStrings(shillconst.ManagerPropertyEnabledTechnologies)
+	if err != nil {
+		return enabledTechnologies, errors.Wrapf(err, "failed to get property: %s", shillconst.ManagerPropertyEnabledTechnologies)
+	}
+	for _, t := range technologies {
+		enabledTechnologies = append(enabledTechnologies, Technology(t))
+	}
+	return enabledTechnologies, nil
+}
+
 func (m *Manager) hasTechnology(ctx context.Context, technologyProperty string, technology Technology) (bool, error) {
 	prop, err := m.GetProperties(ctx)
 	if err != nil {
