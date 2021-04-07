@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "098f5275_e0105efe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-07T16:50:10Z",
+      "side": 1,
+      "message": "Review first half.",
+      "revId": "a0a568350d02de1232f0290b32e3b5f2aac57b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21976b17_df4e38b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-07T16:50:10Z",
+      "side": 1,
+      "message": "According to https://docs.google.com/document/d/1pJjdbL63KbOSdTEM031Oj69FQljt_ze63IWGaDgDGU4/edit#heading\u003dh.xgjl2srtytjt\nno suite will run the test. You may set up a sub-attribute \"wificell_mtbf\" for the test to run in a MTBF specific suite.",
+      "range": {
+        "startLine": 35,
+        "startChar": 23,
+        "endLine": 35,
+        "endChar": 62
+      },
+      "revId": "a0a568350d02de1232f0290b32e3b5f2aac57b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
