@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -30,6 +31,7 @@ func init() {
 			"chrome",
 			"chrome_internal",
 		},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("novato")),
 		Params: []testing.Param{{
 			Val:               3,
 			ExtraAttr:         []string{"informational"}, // TODO(b/177341225): remove after stabilized.
