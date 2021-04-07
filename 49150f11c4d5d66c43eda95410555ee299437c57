@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43a73fae_5a0427ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj2.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:42:22Z",
+      "side": 1,
+      "message": "You are right. All fixed",
+      "parentUuid": "e09c8994_e76d21e2",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 5
+      },
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afe9adef_a4d49a60",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-06T09:16:35Z",
       "side": 1,
       "message": "Why is this field exported?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fb47bde_8881310d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:42:22Z",
+      "side": 1,
+      "message": "Renamed to tabInfo and URL not exported.",
+      "parentUuid": "afe9adef_a4d49a60",
       "range": {
         "startLine": 37,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d104d0dc_b764576a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "228eb117_103f6053",
+      "range": {
+        "startLine": 53,
+        "startChar": 16,
+        "endLine": 53,
+        "endChar": 29
+      },
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c865c1c1_b5cfab24",
@@ -104,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30afee2b_b969a79c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c1c1_b5cfab24",
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ba0572c_2ac6749e",
@@ -117,6 +207,30 @@
       "writtenOn": "2021-04-06T09:16:35Z",
       "side": 1,
       "message": "As you see here, accessing []T without copying the value is annoying. I recommend changing tabs from []tabDetail to []*tabDetail.",
+      "range": {
+        "startLine": 222,
+        "startChar": 3,
+        "endLine": 222,
+        "endChar": 20
+      },
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e5ad443_71191345",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:42:22Z",
+      "side": 1,
+      "message": "Thanks. Changed to []*tabInfo",
+      "parentUuid": "3ba0572c_2ac6749e",
       "range": {
         "startLine": 222,
         "startChar": 3,
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1e38586_f5d5eaba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:42:22Z",
+      "side": 1,
+      "message": "Good catch! Fixed by putting the deferred function in front.",
+      "parentUuid": "44d5be7f_c2f8da3b",
+      "range": {
+        "startLine": 227,
+        "startChar": 26,
+        "endLine": 227,
+        "endChar": 58
+      },
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b17f9b1f_3cd115cd",
@@ -173,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6ae8ec6_eda949b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:42:22Z",
+      "side": 1,
+      "message": "Thanks for the sample code. Fixed.",
+      "parentUuid": "b17f9b1f_3cd115cd",
+      "range": {
+        "startLine": 374,
+        "startChar": 1,
+        "endLine": 374,
+        "endChar": 2
+      },
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53caddae_1c2eb953",
@@ -186,6 +348,30 @@
       "writtenOn": "2021-04-06T09:16:35Z",
       "side": 1,
       "message": "This regexp matches both \"28 secs\" and \"28 msecs\", but we always parse a number in milliseconds below.",
+      "range": {
+        "startLine": 381,
+        "startChar": 67,
+        "endLine": 381,
+        "endChar": 79
+      },
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "690ffbec_64559f43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:42:22Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "53caddae_1c2eb953",
       "range": {
         "startLine": 381,
         "startChar": 67,
@@ -231,6 +417,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d670cff_1cf5c7b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:42:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9dd4d30c_a18f2cf7",
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "587f301f_608d1614",
@@ -244,6 +448,30 @@
       "writtenOn": "2021-04-06T09:16:35Z",
       "side": 1,
       "message": "When kw can be nil?",
+      "range": {
+        "startLine": 458,
+        "startChar": 1,
+        "endLine": 458,
+        "endChar": 15
+      },
+      "revId": "49150f11c4d5d66c43eda95410555ee299437c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90bb4bcf_8478c878",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:42:22Z",
+      "side": 1,
+      "message": "switchWindow is removed and use uiActionHandler to handle it differently for clamshell and tablet.",
+      "parentUuid": "587f301f_608d1614",
       "range": {
         "startLine": 458,
         "startChar": 1,
