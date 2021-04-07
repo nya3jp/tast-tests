@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5ca4028_086108db",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-07T17:58:22Z",
+      "side": 1,
+      "message": "tast-owners, WDYT about using os/exec so we can avoid this sort of workaround? Once crbug/1189962 is available this will all be much cleaner.",
+      "parentUuid": "36b79a4b_7171140c",
+      "range": {
+        "startLine": 472,
+        "startChar": 1,
+        "endLine": 475,
+        "endChar": 27
+      },
+      "revId": "d9e2356d19381da7decb7fa4fa016e6d982f9829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3070b43_0c038cbd",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
         "patchSetId": 1
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "Sure",
       "parentUuid": "5577fc22_ad195ba5",
+      "range": {
+        "startLine": 480,
+        "startChar": 4,
+        "endLine": 480,
+        "endChar": 9
+      },
+      "revId": "d9e2356d19381da7decb7fa4fa016e6d982f9829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9414bc4_542c7c9a",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-07T17:58:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7969f175_2c6a2a4c",
       "range": {
         "startLine": 480,
         "startChar": 4,
