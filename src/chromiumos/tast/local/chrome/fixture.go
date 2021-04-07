@@ -39,6 +39,18 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInForInputs",
+		Desc:     "Logged into a user session for essential inputs",
+		Contacts: []string{"shengjun@chromium.org"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return nil, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInGuest",
 		Desc:     "Logged into a guest user session",
 		Contacts: []string{"benreich@chromium.org"},
@@ -56,6 +68,18 @@ func init() {
 		Contacts: []string{"shengjun@chromium.org"},
 		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
 			return []Option{GuestLogin(), EnableWebAppInstall()}, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInGuestForInputs",
+		Desc:     "Logged into a guest user session for essential inputs",
+		Contacts: []string{"shengjun@chromium.org"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{GuestLogin()}, nil
 		}),
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
