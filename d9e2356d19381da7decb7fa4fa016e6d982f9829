@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fcc4b29_fd9c09d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-07T00:13:02Z",
+      "side": 1,
+      "message": "Only got this working for local tests. For CB-\u003eCB, it\u0027s trickier since the ssh.Cmd does not associate the context with the command. Instead it is passed like cmd.Start(ctx), and we can\u0027t get the fixture context in PreTest.",
+      "revId": "d9e2356d19381da7decb7fa4fa016e6d982f9829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
