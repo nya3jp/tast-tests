@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41d1c69e_e10954ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-07T07:43:06Z",
+      "side": 1,
+      "message": "Done\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_4.md#grpc-services suggests the first arg can be `nil` in the event of an error, so I\u0027ve updated it to that.",
+      "parentUuid": "f48d40dd_f31b85a3",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "6ebf841e69b05d4c9a9137ad47af738612ba75f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d45b9ded_a2f7694c",
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a279e57_847a361a",
+        "filename": "src/chromiumos/tast/services/cros/typec/service.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-07T07:43:06Z",
+      "side": 1,
+      "message": "This is auto-generated code (see Line 1). I\u0027d rather not edit it.",
+      "parentUuid": "d45b9ded_a2f7694c",
+      "range": {
+        "startLine": 26,
+        "startChar": 67,
+        "endLine": 26,
+        "endChar": 74
+      },
+      "revId": "6ebf841e69b05d4c9a9137ad47af738612ba75f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc162bc5_edcfefd6",
         "filename": "src/chromiumos/tast/services/cros/typec/service.proto",
         "patchSetId": 1
@@ -77,6 +125,24 @@
       "writtenOn": "2021-04-07T04:40:55Z",
       "side": 1,
       "message": "Can you add the copyright information. Sample refer - src/platform/tast-tests/src/chromiumos/tast/services/cros/example/chrome_service.proto",
+      "revId": "6ebf841e69b05d4c9a9137ad47af738612ba75f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ada5b278_51e10451",
+        "filename": "src/chromiumos/tast/services/cros/typec/service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-07T07:43:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc162bc5_edcfefd6",
       "revId": "6ebf841e69b05d4c9a9137ad47af738612ba75f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a806f82d_3690768d",
+        "filename": "src/chromiumos/tast/services/cros/typec/service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-07T07:43:06Z",
+      "side": 1,
+      "message": "I was going to use TypeCService, but golint/gofmt complained that that constituted stuttering (because of cros.typec.service v/s cros.typec.TypeCService). At this point we don\u0027t have any other user for this than this 1 typec Test, so I\u0027m inclined to leave it as is for brevity (if we introduce other methods for another test, we can rename it then) and because I can\u0027t think of a name which is succinct and encapsulates the intention better. Currently it\u0027s just what is says: a gRPC service used for a Type C test.",
+      "parentUuid": "3f2aac28_b7e82680",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "6ebf841e69b05d4c9a9137ad47af738612ba75f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3303d6cd_18643423",
         "filename": "src/chromiumos/tast/services/cros/typec/service.proto",
         "patchSetId": 1
@@ -117,6 +207,30 @@
       "writtenOn": "2021-04-07T04:40:55Z",
       "side": 1,
       "message": "nit: Would be nice to add a comment about this.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "6ebf841e69b05d4c9a9137ad47af738612ba75f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ca553b_3d9e27ac",
+        "filename": "src/chromiumos/tast/services/cros/typec/service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-07T07:43:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3303d6cd_18643423",
       "range": {
         "startLine": 16,
         "startChar": 0,
