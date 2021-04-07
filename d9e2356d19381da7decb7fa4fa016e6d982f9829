@@ -16,6 +16,52 @@
       "message": "Only got this working for local tests. For CB-\u003eCB, it\u0027s trickier since the ssh.Cmd does not associate the context with the command. Instead it is passed like cmd.Start(ctx), and we can\u0027t get the fixture context in PreTest.",
       "revId": "d9e2356d19381da7decb7fa4fa016e6d982f9829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1dcb379_f4518ed4",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-04-07T01:17:41Z",
+      "side": 1,
+      "message": "Do you need the context part at all? Could you just start the command in PreTest with something like exec.Command() and then kill it in PostTest?\n\nNot sure on the tast guidelines on it but there are multiple examples in the code base",
+      "range": {
+        "startLine": 472,
+        "startChar": 1,
+        "endLine": 475,
+        "endChar": 27
+      },
+      "revId": "d9e2356d19381da7decb7fa4fa016e6d982f9829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3070b43_0c038cbd",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-04-07T01:17:41Z",
+      "side": 1,
+      "message": "Does this need to be fatal?",
+      "range": {
+        "startLine": 480,
+        "startChar": 4,
+        "endLine": 480,
+        "endChar": 9
+      },
+      "revId": "d9e2356d19381da7decb7fa4fa016e6d982f9829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
