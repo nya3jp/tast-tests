@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76ed9e0a_9e948b16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-07T02:39:07Z",
+      "side": 1,
+      "message": "Disabled the vm variant again, tried to run on the arc-r device and it still fails. Will look into that next once this has merged.",
+      "revId": "36c6c284251fbde52ed53acd55a2abb1f33418f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
