@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3758e0b3_9930c6c2",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-07T08:55:35Z",
+      "side": 1,
+      "message": "Please describe what do enableHWWP and enableSWWP mean here.",
+      "revId": "b643c4a614e540502316741314fe7dfa6ca2dd85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "370c46a6_2d09f392",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-07T08:55:35Z",
+      "side": 1,
+      "message": "This is not found in fp_rdp0.go. Is that okay?",
+      "revId": "b643c4a614e540502316741314fe7dfa6ca2dd85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
