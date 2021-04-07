@@ -7,6 +7,8 @@ package nearbyshare
 
 import (
 	"context"
+	"encoding/json"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -305,8 +307,41 @@ func (f *nearbyShareFixture) TearDown(ctx context.Context, s *testing.FixtState)
 
 func (f *nearbyShareFixture) Reset(ctx context.Context) error { return nil }
 
-// PreTest will start logging on each DUT.
+// PreTest is run before each test in the fixture..
 func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	// Get DUT attributes for both DUTs.
+	senderAttrsRes, err := f.sender.CrOSAttributes(ctx, &empty.Empty{})
+	if err != nil {
+		s.Error("Failed to save device attributes on the sender: ", err)
+	}
+	receiverAttrsRes, err := f.receiver.CrOSAttributes(ctx, &empty.Empty{})
+	if err != nil {
+		s.Error("Failed to save device attributes on the receiver: ", err)
+	}
+
+	// Write the data to a log file.
+	var senderAttributes *nearbysetup.CrosAttributes
+	var receiverAttributes *nearbysetup.CrosAttributes
+	err = json.Unmarshal([]byte(senderAttrsRes.Attributes), &senderAttributes)
+	if err != nil {
+		s.Error("Failed to unmarshal sender's attributes: ", err)
+	}
+	err = json.Unmarshal([]byte(receiverAttrsRes.Attributes), &receiverAttributes)
+	if err != nil {
+		s.Error("Failed to unmarshal receiver's: ", err)
+	}
+	attributes := struct {
+		Sender   *nearbysetup.CrosAttributes
+		Receiver *nearbysetup.CrosAttributes
+	}{Sender: senderAttributes, Receiver: receiverAttributes}
+	crosLog, err := json.MarshalIndent(attributes, "", "\t")
+	if err != nil {
+		s.Fatal("Failed to format device metadata for logging: ", err)
+	}
+	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "device_attributes.json"), crosLog, 0644); err != nil {
+		s.Fatal("Failed to write CrOS attributes to output file: ", err)
+	}
+
 	// Start  logging on each DUT.
 	if _, err := f.sender.StartLogging(ctx, &empty.Empty{}); err != nil {
 		s.Error("Failed to save nearby share logs on the sender: ", err)
