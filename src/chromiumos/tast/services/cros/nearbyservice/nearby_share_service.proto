@@ -58,6 +58,9 @@ service NearbyShareService {
 
   // ClearTransferredFiles clears the transferred files in the receiver's Downloads folder.
   rpc ClearTransferredFiles (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // CrOSAttributes gets device info for a chromebook used in remote tests.
+  rpc CrOSAttributes (google.protobuf.Empty) returns (CrOSAttributesResponse) {}
 }
 
 // CrOSLoginRequest to login to Chrome with configurable GAIA credentials.
@@ -118,4 +121,9 @@ message CrOSReceiveFilesRequest {
 // CrOSShareTokenResponse contains the share token from the receiver.
 message CrOSShareTokenResponse {
   string share_token = 1;
+}
+
+// CrOSAttributesResponse contains the attributes for a chromeos DUT.
+message CrOSAttributesResponse {
+  string attributes = 1;
 }
