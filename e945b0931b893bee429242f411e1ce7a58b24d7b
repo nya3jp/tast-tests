@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a74d1057_28e50eae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-07T12:01:03Z",
+      "side": 1,
+      "message": "IIUC the function calls the autotestprivate API implemented here:\nhttps://source.chromium.org/chromium/chromium/src/+/master:ash/app_list/app_list_color_provider_impl.cc;l\u003d20;drc\u003d3baacec873f13344da44ac516d532fd87f5d35a3\nit is also affected by whether the device is currently in the tablet mode, not only whether the build supports entering the tablet UI mode. Is it intended?",
+      "range": {
+        "startLine": 250,
+        "startChar": 27,
+        "endLine": 250,
+        "endChar": 48
+      },
+      "revId": "e945b0931b893bee429242f411e1ce7a58b24d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
