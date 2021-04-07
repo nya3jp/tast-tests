@@ -29,6 +29,7 @@ func init() {
 		SoftwareDeps: []string{
 			"chrome",
 			"chrome_internal",
+			"play_store",
 		},
 		Params: []testing.Param{{
 			Val:               3,
