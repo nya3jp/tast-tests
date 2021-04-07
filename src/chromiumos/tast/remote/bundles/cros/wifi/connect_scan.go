@@ -99,7 +99,7 @@ func ConnectScan(ctx context.Context, s *testing.State) {
 	}
 
 	apOps := s.Param().([]hostapd.Option)
-	pcapPath, apConf, err := wifiutil.ConnectAndCollectPcap(ctx, tf, "pcap", apOps)
+	pcapPath, apConf, err := wifiutil.ConnectAndCollectPcap(ctx, tf, apOps)
 	if err != nil {
 		s.Fatal("Failed to collect packet: ", err)
 	}
