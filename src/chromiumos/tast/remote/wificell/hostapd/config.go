@@ -272,6 +272,20 @@ func R1KHs(r1KHs ...string) Option {
 	}
 }
 
+// MBO returns an Option which enables MBO in hostapd config.
+func MBO() Option {
+	return func(c *Config) {
+		c.MBO = true
+	}
+}
+
+// RRMBeaconReport returns an Option which enables RRM Beacon Report in hostapd config.
+func RRMBeaconReport() Option {
+	return func(c *Config) {
+		c.RRMBeaconReport = true
+	}
+}
+
 // AdditionalBSSs returns an Option which sets AdditionalBSSs in hostapd config.
 // Each AdditionalBSS should have a unique interface name and SSID. The number of
 // AdditionalBSSs is limited by the phy. See the 'valid interface combinations'
@@ -344,6 +358,8 @@ type Config struct {
 	R1KeyHolder        string
 	R0KHs              []string
 	R1KHs              []string
+	MBO                bool
+	RRMBeaconReport    bool
 	AdditionalBSSs     []AdditionalBSS
 }
 
@@ -455,6 +471,14 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 		for _, r := range c.R1KHs {
 			configure("r1kh", r)
 		}
+	}
+
+	if c.MBO {
+		configure("mbo", "1")
+	}
+
+	if c.RRMBeaconReport {
+		configure("rrm_beacon_report", "1")
 	}
 
 	for _, bssid := range c.AdditionalBSSs {

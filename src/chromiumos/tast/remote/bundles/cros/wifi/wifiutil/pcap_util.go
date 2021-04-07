@@ -18,7 +18,7 @@ import (
 // ConnectAndCollectPcap sets up a WiFi AP and then asks DUT to connect.
 // The path to the packet file and the config of the AP is returned.
 // Note: This function assumes that TestFixture spawns Capturer for us.
-func ConnectAndCollectPcap(ctx context.Context, tf *wificell.TestFixture, name string, apOps []hostapd.Option) (pcapPath string, apConf *hostapd.Config, err error) {
+func ConnectAndCollectPcap(ctx context.Context, tf *wificell.TestFixture, apOps []hostapd.Option) (pcapPath string, apConf *hostapd.Config, err error) {
 	// As we'll collect pcap file after APIface and Capturer closed, run it
 	// in an inner function so that we can clean up easier with defer.
 	capturer, conf, err := func(ctx context.Context) (ret *pcap.Capturer, retConf *hostapd.Config, retErr error) {
