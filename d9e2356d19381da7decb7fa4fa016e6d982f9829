@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e7bef9f_6618ac86",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-07T01:58:51Z",
+      "side": 1,
+      "message": "The documentation in testexec does say that tast tests should always use it over os/exec. Let\u0027s see if tast-owners have any feedback here, since it would be simpler to use os/exec rather than abusing testexec and the fixture context here.",
+      "parentUuid": "b1dcb379_f4518ed4",
+      "range": {
+        "startLine": 472,
+        "startChar": 1,
+        "endLine": 475,
+        "endChar": 27
+      },
+      "revId": "d9e2356d19381da7decb7fa4fa016e6d982f9829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3070b43_0c038cbd",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-07T01:17:41Z",
       "side": 1,
       "message": "Does this need to be fatal?",
+      "range": {
+        "startLine": 480,
+        "startChar": 4,
+        "endLine": 480,
+        "endChar": 9
+      },
+      "revId": "d9e2356d19381da7decb7fa4fa016e6d982f9829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5577fc22_ad195ba5",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-07T01:58:51Z",
+      "side": 1,
+      "message": "I just double-checked and it looks like `btmon -w` will overwrite the file if it still exists. Want me to just get rid of this?",
+      "parentUuid": "d3070b43_0c038cbd",
       "range": {
         "startLine": 480,
         "startChar": 4,
