@@ -3,6 +3,92 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "54eeeda0_22bbc27a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-07T01:08:43Z",
+      "side": 1,
+      "message": "LGTM % comments.",
+      "revId": "f797a54ecbd76ce90dd7828b86b7e19894bd56d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07215a11_c1856899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-07T01:08:43Z",
+      "side": 1,
+      "message": "repeating?",
+      "range": {
+        "startLine": 189,
+        "startChar": 49,
+        "endLine": 189,
+        "endChar": 57
+      },
+      "revId": "f797a54ecbd76ce90dd7828b86b7e19894bd56d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfba8334_ae4806b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-07T01:08:43Z",
+      "side": 1,
+      "message": "nit: secondaryICCID might be preferred in golang, according to https://github.com/golang/go/wiki/CodeReviewComments#initialisms.\n\nsimilar for primaryICCID.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 15
+      },
+      "revId": "f797a54ecbd76ce90dd7828b86b7e19894bd56d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e509e06_ba59129c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-07T01:08:43Z",
+      "side": 1,
+      "message": "According to the code in GetSimSlots, this might be nil when slot path is empty? If so, it would be nice to check non-nil before function call to avoid panic.\n\nsimilar case for primary below.",
+      "range": {
+        "startLine": 48,
+        "startChar": 24,
+        "endLine": 48,
+        "endChar": 43
+      },
+      "revId": "f797a54ecbd76ce90dd7828b86b7e19894bd56d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "487269bf_db7d475f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim_connect.go",
         "patchSetId": 1
@@ -21,6 +107,23 @@
         "endLine": 75,
         "endChar": 14
       },
+      "revId": "f797a54ecbd76ce90dd7828b86b7e19894bd56d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5371d2b8_de38b0df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim_slots.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-07T01:08:43Z",
+      "side": 1,
+      "message": "as simProperties[i] is now from GetSimSlots and might be nil, would be nice to check non-nil first to avoid panic.",
       "revId": "f797a54ecbd76ce90dd7828b86b7e19894bd56d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
