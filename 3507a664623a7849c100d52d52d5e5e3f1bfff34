@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ac76f80_bc7c5dff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-07T01:10:09Z",
+      "side": 1,
+      "message": "I believe that availability of Google Play Services is a software feature, not a hardware feature. Is there any USE flags that we can use to detect availability?\n",
+      "revId": "3507a664623a7849c100d52d52d5e5e3f1bfff34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
