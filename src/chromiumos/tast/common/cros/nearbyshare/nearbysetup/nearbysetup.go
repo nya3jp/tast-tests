@@ -17,6 +17,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android"
 	"chromiumos/tast/local/android/adb"
@@ -25,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome/systemlogs"
+	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
 
@@ -287,11 +289,14 @@ func ConfigureNearbyLogging(ctx context.Context, d *adb.Device) error {
 // CrosAttributes contains information about the CrOS device that are relevant to Nearby Share.
 // "Cros" is redundantly prepended to the field names to make them easy to distinguish from Android attributes in test logs.
 type CrosAttributes struct {
-	DisplayName   string
-	User          string
-	DataUsage     string
-	Visibility    string
-	ChromeVersion string
+	DisplayName     string
+	User            string
+	DataUsage       string
+	Visibility      string
+	ChromeVersion   string
+	ChromeOSVersion string
+	Board           string
+	Model           string
 }
 
 // GetCrosAttributes gets the Chrome version and combines it into a CrosAttributes strct with the provided values for easy logging with json.MarshalIndent.
@@ -330,6 +335,28 @@ func GetCrosAttributes(ctx context.Context, tconn *chrome.TestConn, displayName,
 		return nil, errors.New("failed to find valid Chrome version")
 	}
 	attrs.ChromeVersion = versionMatch[1]
+
+	lsb, err := lsbrelease.Load()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read lsb-release")
+	}
+	osVersion, ok := lsb[lsbrelease.Version]
+	if !ok {
+		return nil, errors.Wrap(err, "failed to read ChromeOS version from lsb-release")
+	}
+	attrs.ChromeOSVersion = osVersion
+
+	board, ok := lsb[lsbrelease.Board]
+	if !ok {
+		return nil, errors.Wrap(err, "failed to read board from lsb-release")
+	}
+	attrs.Board = board
+
+	model, err := testexec.CommandContext(ctx, "cros_config", "/", "name").Output()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read model from cros_config")
+	}
+	attrs.Model = string(model)
 
 	return &attrs, nil
 }
