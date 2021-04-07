@@ -318,6 +318,24 @@
       "parentUuid": "4ae7737b_8b3f3ce9",
       "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61e956f7_6d7ca863",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-07T19:45:01Z",
+      "side": 1,
+      "message": "So, if e.g. wifi.m.IsEnabled times out, it will return an error and trigger a return? That\u0027s the part I wasn\u0027t sure about.\n\nI\u0027ll do some experiments when I have a chance, but this seems fine for now.",
+      "parentUuid": "82a62e6e_e90bb7fd",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
