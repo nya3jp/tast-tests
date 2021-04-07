@@ -16,6 +16,24 @@
       "message": "It seems that it has just failed:\nhttps://tastboard.corp.google.com/test/typec.Basic\n\ncould you provide more context about this fail? is it related to the test?",
       "revId": "025412f83037a32d80b418646df53488defdd8fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67afc87e_e5944c55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-07T01:10:01Z",
+      "side": 1,
+      "message": "Yeah just saw this one. Seems like a flake on servo (servod side). The attempt to switch off the ccd_keepalive on the servo failed. It is unrelated to any changes on the board.\n\nI would guess it\u0027s a one-off; would be happy to see a few more runs to confirm.",
+      "parentUuid": "af4524b9_32075b30",
+      "revId": "025412f83037a32d80b418646df53488defdd8fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
