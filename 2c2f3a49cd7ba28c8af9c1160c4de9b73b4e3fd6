@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee13b79e_70b81d67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "use touch.Context instead, package ui/pointer is replaced with uiauto/pointer",
+      "parentUuid": "3850fa9a_adbe9f23",
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7995d9b7_13ff9eef",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c6792ec_f85b52c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "replaced with t.tc.Tap",
+      "parentUuid": "7995d9b7_13ff9eef",
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d585b00b_2ff9f942",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-04-03T00:47:25Z",
       "side": 1,
       "message": "similarly; t.tc.Tap(btn)(ctx)",
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e7b02c8_ccbdd4da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d585b00b_2ff9f942",
       "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e2c8750_06945048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be3bd1c6_66203511",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 53
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92247f88_aa7631fe",
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb780ac_4936b0fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "Changed.",
+      "parentUuid": "92247f88_aa7631fe",
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f2dce4a_3a57e537",
@@ -105,6 +201,30 @@
       "writtenOn": "2021-04-03T00:47:25Z",
       "side": 1,
       "message": "Use uiauto:\n  actions :\u003d []action.Action{}\n  swipeStart \u003d tcLocation.CenterPoint()\n  swipeEnd \u003d coords.NewPoint(swipeStart.X + swipeDistance*swipeDirection, \n  swipeStart.Y)\n  for i :\u003d 0; i \u003c swipeTimes; i++ {\n    actions \u003d append(actions, tc.Swipe(swipeStart, tc.SwipeTo(swipeEnd, \n  500*time.Millisecond)))\n  }\n  if err :\u003d action.Combine(\"swipe multiple\", actions...)(ctx); err !\u003d nil {\n    return errors.Wrap(\"failed to swipe\")\n  }",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 3
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30c9987e_a4b4bfbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "Thanks. Use Combine() function is much easier. Fixed.",
+      "parentUuid": "5f2dce4a_3a57e537",
       "range": {
         "startLine": 206,
         "startChar": 0,
@@ -138,6 +258,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f91a8e_78f9d6fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8ecc68b_59563e51",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 3
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bd47013_ebb0b6d7",
@@ -151,6 +295,30 @@
       "writtenOn": "2021-04-03T00:47:25Z",
       "side": 1,
       "message": "t.tc.Tap(tbFinder.Nth(tabIdxDest))(ctx)",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 26
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c7139c9_c45c3abc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bd47013_ebb0b6d7",
       "range": {
         "startLine": 240,
         "startChar": 0,
@@ -178,6 +346,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91b096f6_06abf06b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ff60c21_b17add92",
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "937f68f3_9019e8de",
@@ -191,6 +377,30 @@
       "writtenOn": "2021-04-03T00:47:25Z",
       "side": 1,
       "message": "Instead of using touchscreen, use coords.Point or Rect to conduct the swipe.  One possibility is to use display bounds.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 2
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d61af35d_7ea18978",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "Display bounds is used to calculate the scroll points.",
+      "parentUuid": "937f68f3_9019e8de",
       "range": {
         "startLine": 253,
         "startChar": 0,
@@ -218,6 +428,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e5ad628_a5510b62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "Thanks, Fixed.",
+      "parentUuid": "2a49aaec_2b466dab",
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a0ab371_d6495816",
@@ -231,6 +459,30 @@
       "writtenOn": "2021-04-03T00:47:25Z",
       "side": 1,
       "message": "similarly.",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 12
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78aed39c_4e27a89c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a0ab371_d6495816",
       "range": {
         "startLine": 274,
         "startChar": 0,
@@ -264,6 +516,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ac674e2_422d0ec8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "3283e52f_1663a0de",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 0
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0adfbe1_d9bef564",
@@ -277,6 +553,30 @@
       "writtenOn": "2021-04-03T00:47:25Z",
       "side": 1,
       "message": "You don\u0027t need mc. See my comment below.",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 34
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20fe0e3f_3a6a9939",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "d0adfbe1_d9bef564",
       "range": {
         "startLine": 315,
         "startChar": 0,
@@ -310,6 +610,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6bd8c45_6f9bae78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "Thanks. This is fixed.",
+      "parentUuid": "438ed6b7_1bd2021d",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 38
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbe6c5eb_67af59cc",
@@ -323,6 +647,30 @@
       "writtenOn": "2021-04-03T00:47:25Z",
       "side": 1,
       "message": "return cl.ui.MouseMoveTo(nodewith.Name(title).Role(role.Window).First(), 0)(ctx)",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 60
+      },
+      "revId": "2c2f3a49cd7ba28c8af9c1160c4de9b73b4e3fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "353c3eb3_00ef2f52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbe6c5eb_67af59cc",
       "range": {
         "startLine": 480,
         "startChar": 0,

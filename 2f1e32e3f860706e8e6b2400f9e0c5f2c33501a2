@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85d91de5_790ec773",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:32:16Z",
+      "side": 1,
+      "message": "Thanks Jun for the review. The new implementation is now based on your new CL for uiauto/touch.",
+      "revId": "2f1e32e3f860706e8e6b2400f9e0c5f2c33501a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
