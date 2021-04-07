@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3934e94_0badc633",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-04-07T19:11:44Z",
+      "side": 1,
+      "message": "Adding oka@ as he was also assigned to the dependent CL",
+      "revId": "3fac2bb1657be76fa106874015f4244da9ca2835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
