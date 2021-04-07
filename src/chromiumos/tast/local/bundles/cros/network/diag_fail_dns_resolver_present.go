@@ -14,16 +14,25 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type dnsResolutionProblem int
+type dnsResolverPresentProblem int
 
 // problemFailedToResolveHost means that the DNS server was unable to
 // resolve the specified host.
-const problemFailedToResolveHost dnsResolutionProblem = 0
+const (
+	problemNoNameServersFound   dnsResolverPresentProblem = 0
+	problemMalformedNameServers                           = 1
+	problemEmptyNameServers                               = 2
+)
+
+type dnsResolverPresentParams struct {
+	NameServers     []string
+	ExpectedProblem dnsResolverPresentProblem
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DiagFailDNSResolution,
-		Desc: "Tests that the DNS resolution network diagnostic test fails when the DNS cannot resolve requests",
+		Func: DiagFailDNSResolverPresent,
+		Desc: "Tests that the DNS resolver present network diagnostic test fails as expected with malformed DNS names",
 		Contacts: []string{
 			"tbegin@chromium.org",            // test author
 			"khegde@chromium.org",            // network diagnostics author
@@ -33,23 +42,47 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      "networkDiagnosticsShillReset",
+		Params: []testing.Param{{
+			Name: "no_name_servers",
+			Val: &dnsResolverPresentParams{
+				NameServers:     []string{},
+				ExpectedProblem: problemNoNameServersFound,
+			},
+			ExtraAttr: []string{"informational"},
+		}, {
+			Name: "malformed_name_servers",
+			Val: &dnsResolverPresentParams{
+				NameServers:     []string{"0.0.0.0"},
+				ExpectedProblem: problemMalformedNameServers,
+			},
+			ExtraAttr: []string{"informational"},
+		}, {
+			Name: "empty_name_servers",
+			Val: &dnsResolverPresentParams{
+				NameServers:     []string{""},
+				ExpectedProblem: problemEmptyNameServers,
+			},
+			ExtraAttr: []string{"informational"},
+		}},
 	})
 }
 
-// DiagFailDNSResolution tests that when the domain name server (DNS) cannot
-// resolve requests the network diagnostic routine can detect this condition.
-func DiagFailDNSResolution(ctx context.Context, s *testing.State) {
+// DiagFailDNSResolverPresent tests that when the domain name server (DNS) are
+// misconfigured that the network routine reports the correct errors.
+func DiagFailDNSResolverPresent(ctx context.Context, s *testing.State) {
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		s.Fatal("Failed creating shill manager proxy: ", err)
 	}
 
+	params := s.Param().(*dnsResolverPresentParams)
 	serviceProps := map[string]interface{}{
 		shillconst.ServicePropertyType: "ethernet",
 		shillconst.ServicePropertyStaticIPConfig: map[string]interface{}{
-			shillconst.IPConfigPropertyNameServers: []string{"0.0.0.0"},
+			shillconst.IPConfigPropertyNameServers: params.NameServers,
 		},
 	}
+
 	if _, err := manager.ConfigureServiceForProfile(ctx, shillconst.DefaultProfileObjectPath, serviceProps); err != nil {
 		s.Fatal("Unable to configure shill service: ", err)
 	}
@@ -63,9 +96,9 @@ func DiagFailDNSResolution(ctx context.Context, s *testing.State) {
 	// Since Chrome does not emit a change, poll to test whether the expected
 	// problem occurs.
 	pollParams := diag.PollRoutineParams{
-		Routine:  diag.RoutineDNSResolution,
+		Routine:  diag.RoutineDNSResolverPresent,
 		Verdict:  diag.VerdictProblem,
-		Problems: []int{int(problemFailedToResolveHost)},
+		Problems: []int{int(params.ExpectedProblem)},
 	}
 	if err := mojo.PollRoutine(ctx, pollParams); err != nil {
 		s.Fatal("Failed to poll routine: ", err)
