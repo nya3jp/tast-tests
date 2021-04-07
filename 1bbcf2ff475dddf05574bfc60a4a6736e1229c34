@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4160c99_3bf4c9fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-04-07T22:58:45Z",
+      "side": 1,
+      "message": "Updated with changes. Did called setprimaryslot twice, removed defer as not required in this scenario.",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
