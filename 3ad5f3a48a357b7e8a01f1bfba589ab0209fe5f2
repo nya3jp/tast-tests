@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e5539d7_45ca0f1e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-07T16:31:07Z",
+      "side": 1,
+      "message": "append \"wificell_func\", \"wificell_unstable\"",
+      "revId": "3ad5f3a48a357b7e8a01f1bfba589ab0209fe5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b709688f_16e07c68",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
         "patchSetId": 1
@@ -14,6 +31,30 @@
       "writtenOn": "2021-04-07T04:22:59Z",
       "side": 1,
       "message": "I had a bit of trouble testing this - I cros_workon-ed and emerged tast-cmd and tast-use-flags, but it kept telling me I had missing software deps on hatch (which has MBO enabled). Any tips here?",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "3ad5f3a48a357b7e8a01f1bfba589ab0209fe5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f3ae048_5ca188b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-07T16:31:07Z",
+      "side": 1,
+      "message": "According to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md#new-features, we may miss the step adding \"mbo\" to IUSE in tast-use-flags package:\nhttps://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/main/chromeos-base/tast-use-flags/tast-use-flags-9999.ebuild",
+      "parentUuid": "b709688f_16e07c68",
       "range": {
         "startLine": 34,
         "startChar": 25,
