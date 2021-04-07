@@ -18,7 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CUPSD,
+		Func: CupsdSocketActivation,
 		Desc: "Validity test for cupsd and the upstart-socket-bridge socket-activation",
 		Contacts: []string{
 			"briannorris@chromium.org", // Original autotest author
@@ -33,7 +33,7 @@ func init() {
 	})
 }
 
-func CUPSD(ctx context.Context, s *testing.State) {
+func CupsdSocketActivation(ctx context.Context, s *testing.State) {
 	const sockPath = "/run/cups/cups.sock"
 
 	// At the end of testing, restore the default upstart job state.
