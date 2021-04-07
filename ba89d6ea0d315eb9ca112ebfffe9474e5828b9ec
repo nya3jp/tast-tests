@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06238208_4796b129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-04-07T17:29:57Z",
+      "side": 1,
+      "message": "It is needed as it provides the reason for failures and also helpful for debugging.",
+      "parentUuid": "18deb727_279433ad",
+      "range": {
+        "startLine": 512,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 2
+      },
+      "revId": "ba89d6ea0d315eb9ca112ebfffe9474e5828b9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c75273d_dc9ac2b3",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1579c2b1_84e13b54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-04-07T17:29:57Z",
+      "side": 1,
+      "message": "ok. I need the values for debugging the failures. So moved it to error log.",
+      "parentUuid": "4c75273d_dc9ac2b3",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 50
+      },
+      "revId": "ba89d6ea0d315eb9ca112ebfffe9474e5828b9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3b7016e_7dd7e58f",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-04-07T05:15:47Z",
       "side": 1,
       "message": "Is this test expected to fail for ARC-P?",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 549,
+        "endChar": 52
+      },
+      "revId": "ba89d6ea0d315eb9ca112ebfffe9474e5828b9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3541cb4a_77c339a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-04-07T17:29:57Z",
+      "side": 1,
+      "message": "Failure is not arc-p specific. It happens on arc-r also.",
+      "parentUuid": "c3b7016e_7dd7e58f",
       "range": {
         "startLine": 549,
         "startChar": 0,

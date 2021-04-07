@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a5a1466_3e36eb8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-04-07T17:29:57Z",
+      "side": 1,
+      "message": "Hi Renuga, Added BitLife, as app displays black bar on both arc-p and arc-r devices. Thanks.",
+      "revId": "10ed30611f34917b552a8f21985a159225b8ce01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
