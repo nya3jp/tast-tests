@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9417ebe_df956138",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-04-07T17:10:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e5539d7_45ca0f1e",
+      "revId": "3ad5f3a48a357b7e8a01f1bfba589ab0209fe5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b709688f_16e07c68",
@@ -79,6 +97,30 @@
       "side": 1,
       "message": "Sorry I saw your CLs adding mbo. I don\u0027t have clue yet.\nDid you run:\n cros deploy --root\u003d/usr/local $HOST chromeos-base/tast-use-flags",
       "parentUuid": "0f3ae048_5ca188b8",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "3ad5f3a48a357b7e8a01f1bfba589ab0209fe5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1430fc_e98170d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-04-07T17:10:58Z",
+      "side": 1,
+      "message": "Ah, I should have read the doc - thanks, it worked.",
+      "parentUuid": "12ef4f0d_4cbebe7a",
       "range": {
         "startLine": 34,
         "startChar": 25,
