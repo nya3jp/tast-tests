@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4b6aa91c_12793608",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T22:30:05Z",
+      "side": 1,
+      "message": "Sure. Created bug for this CL and other CUJ CLs.",
+      "parentUuid": "2e39e96a_f130cdb6",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "36b7febb9246259b5c69528622c117930ebed23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d89dacd5_43efdc24",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 8
