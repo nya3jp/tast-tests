@@ -16,6 +16,142 @@
       "message": "Updated with changes. Did called setprimaryslot twice, removed defer as not required in this scenario.",
       "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a7fcf2e_871b6ce7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-07T23:33:23Z",
+      "side": 1,
+      "message": "Looks great, just some nits.\n",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb510b4c_9cf83eb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-07T23:33:23Z",
+      "side": 1,
+      "message": "nit: Probably not needed at this point.",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a97c56be_2661e57e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-07T23:33:23Z",
+      "side": 1,
+      "message": "nit: for most of these we can use the pattern:\n\nif err \u003d ... ; err !\u003d nil {\n}",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f1caeb_6675d2c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-07T23:33:23Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need this now?",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c1d34f0_5fe4dbc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-07T23:33:23Z",
+      "side": 1,
+      "message": "nit: These should probably be separate failures.",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eda1d44b_85388897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-07T23:33:23Z",
+      "side": 1,
+      "message": "Smae here",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c832be52_66171fc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-07T23:33:23Z",
+      "side": 1,
+      "message": "s/modem/oldModem/\n\nAlso, since oldModem is no longer a valid dbus object, we should maybe just pass modem.String() here for better clarity.",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c859ae5_3efbaee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-07T23:33:23Z",
+      "side": 1,
+      "message": "This can use modem.GetSimSlots() once this CL lands:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2807520",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
