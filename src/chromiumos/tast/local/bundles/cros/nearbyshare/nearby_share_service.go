@@ -5,6 +5,7 @@
 package nearbyshare
 
 import (
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"time"
@@ -45,6 +46,9 @@ type NearbyService struct {
 	chromeReader    *syslog.LineReader
 	messageReader   *syslog.LineReader
 	fileNames       []string
+	username        string
+	dataUsage       nearbysetup.DataUsage
+	visibility      nearbysetup.Visibility
 }
 
 // NewChromeLogin logs into Chrome with Nearby Share flags enabled.
@@ -56,7 +60,9 @@ func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyservice.C
 		chrome.DisableFeatures("SplitSettingsSync"),
 		chrome.ExtraArgs("--nearby-share-verbose-logging"),
 	}
+	n.username = chrome.DefaultUser
 	if req.Username != "" {
+		n.username = req.Username
 		nearbyOpts = append(nearbyOpts, chrome.GAIALogin(chrome.Creds{User: req.Username, Pass: req.Password}))
 	}
 	cr, err := chrome.New(ctx, nearbyOpts...)
@@ -142,10 +148,12 @@ func (n *NearbyService) CrOSSetup(ctx context.Context, req *nearbyservice.CrOSSe
 		return nil, errors.New("Chrome not available")
 	}
 	n.deviceName = req.DeviceName
-	if err := nearbysetup.CrOSSetup(ctx, n.tconn, n.cr, nearbysetup.DataUsage(req.DataUsage), nearbysetup.Visibility(req.Visibility), req.DeviceName); err != nil {
+	n.dataUsage = nearbysetup.DataUsage(req.DataUsage)
+	n.visibility = nearbysetup.Visibility(req.Visibility)
+	if err := nearbysetup.CrOSSetup(ctx, n.tconn, n.cr, n.dataUsage, n.visibility, n.deviceName); err != nil {
 		return nil, errors.Wrap(err, "failed to perform CrOS setup")
 	}
-	if nearbysetup.Visibility(req.Visibility) == nearbysetup.VisibilitySelectedContacts && req.SenderUsername != "" {
+	if n.visibility == nearbysetup.VisibilitySelectedContacts && req.SenderUsername != "" {
 		nearbySettings, err := nearbyshare.LaunchNearbySettings(ctx, n.tconn, n.cr)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to launch OS settings")
@@ -302,4 +310,19 @@ func (n *NearbyService) ClearTransferredFiles(ctx context.Context, req *empty.Em
 		}
 	}
 	return &empty.Empty{}, nil
+}
+
+// CrOSAttributes retrieves useful information about the DUT to aid debugging.
+func (n *NearbyService) CrOSAttributes(ctx context.Context, req *empty.Empty) (*nearbyservice.CrOSAttributesResponse, error) {
+	crosAttributes, err := nearbysetup.GetCrosAttributes(ctx, n.tconn, n.deviceName, n.username, n.dataUsage, n.visibility)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get CrOS attributes for reporting")
+	}
+	var res nearbyservice.CrOSAttributesResponse
+	jsonData, err := json.Marshal(crosAttributes)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to marshal CrOS attributes")
+	}
+	res.Attributes = string(jsonData)
+	return &res, nil
 }
