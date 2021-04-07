@@ -184,7 +184,8 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 				err, logcatFilePath)
 
 			if errorCount > maxErrorBootCount {
-				s.Fatalf("Too many(%d) ARC boot errors", errorCount)
+				s.Logf("Too many(%d) ARC boot errors", errorCount)
+				s.Fatalf("Last failure: %q", err)
 			}
 			continue
 		}
