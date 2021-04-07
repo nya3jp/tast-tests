@@ -248,6 +248,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "994719ba_811c2f5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-04-07T16:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59ceadc0_7ef3361c",
+      "range": {
+        "startLine": 75,
+        "startChar": 41,
+        "endLine": 75,
+        "endChar": 52
+      },
+      "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e96457d0_e24c2404",
