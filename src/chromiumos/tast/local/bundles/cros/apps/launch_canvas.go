@@ -13,8 +13,10 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -64,11 +66,10 @@ func LaunchCanvas(ctx context.Context, s *testing.State) {
 	}
 
 	// Use welcome page to verify page rendering
-	params := ui.FindParams{
-		Name: "Welcome to Canvas!",
-		Role: ui.RoleTypeHeading,
-	}
-	if _, err = ui.FindWithTimeout(ctx, tconn, params, 60*time.Second); err != nil {
+	ui := uiauto.New(tconn).WithTimeout(60 * time.Second)
+	canvasFinder := nodewith.Role(role.Heading).Name("Welcome to Canvas!")
+
+	if err := ui.WaitUntilExists(canvasFinder)(ctx); err != nil {
 		s.Fatal("Failed to render Canvas: ", err)
 	}
 }
