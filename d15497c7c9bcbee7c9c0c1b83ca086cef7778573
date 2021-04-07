@@ -16,6 +16,24 @@
       "message": "lgtm from the tast perspective. I suggest get +2 first from someone familiar with the content. ",
       "revId": "d15497c7c9bcbee7c9c0c1b83ca086cef7778573",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b262c8d_16588d78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-07T23:20:24Z",
+      "side": 1,
+      "message": "SG. Thanks for the view.\n\nI\u0027ve added Benson who would be able to comment from the Type C perspective.",
+      "parentUuid": "beef3998_0b0cc98c",
+      "revId": "d15497c7c9bcbee7c9c0c1b83ca086cef7778573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
