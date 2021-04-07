@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e87229_09747664",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-07T23:58:28Z",
+      "side": 1,
+      "message": "I have decided to separate refactoring out from [1]. I think that this refactoring is reasonable by itself. After I land this refactoring in the code base, [1] will be a simpler CL.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2785646",
+      "revId": "fdf75225624c6890ed049afd958faad26939434d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
