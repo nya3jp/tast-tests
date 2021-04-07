@@ -105,17 +105,6 @@ var expectedWLANDriver = map[string]map[string]string{
 		"4.14": "wireless/marvell/mwifiex/mwifiex_sdio.ko",
 		"4.19": "wireless/marvell/mwifiex/mwifiex_sdio.ko",
 	},
-	wlan.Marvell88w8887SDIO: {
-		"3.14": "wireless-3.8/mwifiex/mwifiex_sdio.ko",
-		"4.14": "wireless/marvell/mwifiex/mwifiex_sdio.ko",
-		"4.19": "wireless/marvell/mwifiex/mwifiex_sdio.ko",
-	},
-	wlan.Marvell88w8897PCIE: {
-		"3.8":  "wireless/mwifiex/mwifiex_pcie.ko",
-		"3.10": "wireless-3.8/mwifiex/mwifiex_pcie.ko",
-		"4.14": "wireless/marvell/mwifiex/mwifiex_pcie.ko",
-		"4.19": "wireless/marvell/mwifiex/mwifiex_pcie.ko",
-	},
 	wlan.Marvell88w8897SDIO: {
 		"3.8":  "wireless/mwifiex/mwifiex_sdio.ko",
 		"3.10": "wireless-3.8/mwifiex/mwifiex_sdio.ko",
