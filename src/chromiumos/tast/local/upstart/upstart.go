@@ -8,6 +8,7 @@ package upstart
 import (
 	"context"
 	"os"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -18,11 +19,14 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/testing"
 )
 
 const (
-	uiJob = "ui" // special-cased in StopJob due to its respawning behavior
+	statefulPartitionDir = "/mnt/stateful_partition"
+	upstartJobDir        = "/etc/init"
+	uiJob                = "ui" // special-cased in StopJob due to its respawning behavior
 )
 
 var statusRegexp *regexp.Regexp
@@ -272,4 +276,36 @@ func WaitForJobStatus(ctx context.Context, job string, goal upstart.Goal, state 
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout})
+}
+
+// DisableJob disables the given upstart job, which takes effect on the next
+// reboot. The rootfs must be writable when this function is called.
+func DisableJob(job string) error {
+	jobFile := job + ".conf"
+	currentJobPath := filepath.Join(upstartJobDir, jobFile)
+	newJobPath := filepath.Join(statefulPartitionDir, jobFile)
+	return fsutil.MoveFile(currentJobPath, newJobPath)
+}
+
+// IsJobEnabled returns true if the given upstart job is enabled.
+func IsJobEnabled(job string) (bool, error) {
+	jobFile := job + ".conf"
+	jobPath := filepath.Join(upstartJobDir, jobFile)
+	if _, err := os.Stat(jobPath); err != nil {
+		if os.IsNotExist(err) {
+			return false, nil
+		}
+		return false, err
+	}
+	return true, nil
+}
+
+// EnableJob enables the given upstart job. The job must have already been
+// disabled with DisableJob before this function is called. The rootfs must be
+// writable when this function is called.
+func EnableJob(job string) error {
+	jobFile := job + ".conf"
+	currentJobPath := filepath.Join(statefulPartitionDir, jobFile)
+	newJobPath := filepath.Join(upstartJobDir, jobFile)
+	return fsutil.MoveFile(currentJobPath, newJobPath)
 }
