@@ -46,12 +46,12 @@ func init() {
 			"niwa@chromium.org",  // Tast port author.
 			"arc-performance@google.com",
 		},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		// This test steps through opt-in flow 10 times and each iteration takes 20~40 seconds.
 		Timeout: 20 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "unmanaged",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
 				username:          "arc.AuthPerf.unmanaged_username",
@@ -61,6 +61,7 @@ func init() {
 			},
 		}, {
 			Name:              "unmanaged_vm",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
 				username:          "arc.AuthPerf.unmanaged_username",
@@ -70,6 +71,7 @@ func init() {
 			},
 		}, {
 			Name:              "unmanaged_rt_vcpu_vm",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
 				username:          "arc.AuthPerf.unmanaged_username",
@@ -79,7 +81,9 @@ func init() {
 				chromeArgs:        []string{"--enable-arcvm-rt-vcpu"},
 			},
 		}, {
-			Name:              "managed",
+			Name: "managed",
+			// TODO(b/179312883): Reenable when the test is fixed
+			// ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
 				username:          "arc.AuthPerf.managed_username",
@@ -88,7 +92,9 @@ func init() {
 				resultSuffix:      "_managed",
 			},
 		}, {
-			Name:              "managed_vm",
+			Name: "managed_vm",
+			// TODO(b/179312883): Reenable when the test is fixed
+			// ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
 				username:          "arc.AuthPerf.managed_username",
@@ -184,7 +190,8 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 				err, logcatFilePath)
 
 			if errorCount > maxErrorBootCount {
-				s.Fatalf("Too many(%d) ARC boot errors", errorCount)
+				s.Logf("Too many(%d) ARC boot errors", errorCount)
+				s.Fatalf("Last failure: %q", err)
 			}
 			continue
 		}
