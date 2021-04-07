@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "228611e3_e141b462",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T19:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83c75d5b_59a87167",
+      "range": {
+        "startLine": 137,
+        "startChar": 25,
+        "endLine": 137,
+        "endChar": 33
+      },
+      "revId": "aa65bd3030086ddbf22e088748715f7abcab5921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ff3c216_628a1048",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37e850a2_1adc782e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T19:05:32Z",
+      "side": 1,
+      "message": "Thanks for the link. API changed.",
+      "parentUuid": "4ff3c216_628a1048",
+      "range": {
+        "startLine": 140,
+        "startChar": 15,
+        "endLine": 140,
+        "endChar": 37
+      },
+      "revId": "aa65bd3030086ddbf22e088748715f7abcab5921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b50b7cfb_a63a7a7d",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-04-06T09:32:24Z",
       "side": 1,
       "message": "Let us apply strings.TrimSpace to body consistently.",
+      "range": {
+        "startLine": 159,
+        "startChar": 9,
+        "endLine": 159,
+        "endChar": 20
+      },
+      "revId": "aa65bd3030086ddbf22e088748715f7abcab5921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aef3931d_95955e5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T19:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b50b7cfb_a63a7a7d",
       "range": {
         "startLine": 159,
         "startChar": 9,
