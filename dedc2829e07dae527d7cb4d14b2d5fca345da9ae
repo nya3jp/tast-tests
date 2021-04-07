@@ -22,6 +22,30 @@
       },
       "revId": "dedc2829e07dae527d7cb4d14b2d5fca345da9ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45205561_968b72bd",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-04-07T19:11:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e49e3473_2b7b906a",
+      "range": {
+        "startLine": 345,
+        "startChar": 1,
+        "endLine": 346,
+        "endChar": 25
+      },
+      "revId": "dedc2829e07dae527d7cb4d14b2d5fca345da9ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
