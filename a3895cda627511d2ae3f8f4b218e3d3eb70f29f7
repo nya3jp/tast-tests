@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02991bf2_71097a5a",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T19:18:53Z",
+      "side": 1,
+      "message": "I changed all WiFi to Wifi to be consistent with the WifiInterface() method.",
+      "parentUuid": "0fdf4248_883caf2b",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8744f35_e4c8cbda",
@@ -280,6 +298,24 @@
       "side": 1,
       "message": "Agreed that the success case here is better, but IIUC the failure case will wait for the entire test timeout, which may be much longer than wifiDefaultTimeout.",
       "parentUuid": "01663921_d1a297ea",
+      "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a62e6e_e90bb7fd",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-07T19:18:53Z",
+      "side": 1,
+      "message": "In the failure case, because we use the wCtx (which set wifiDefaultTimeout as timeout value) in all methods in the for loop, it will wait the wifiDefaultTimeout time at most.",
+      "parentUuid": "4ae7737b_8b3f3ce9",
       "revId": "a3895cda627511d2ae3f8f4b218e3d3eb70f29f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
