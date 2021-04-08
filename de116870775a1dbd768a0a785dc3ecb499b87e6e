@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5da875d_fbbda86e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-04-08T09:38:49Z",
+      "side": 1,
+      "message": "Hi, I found arc.MultiNetwork passes on ARCVM (at least on hatch-arc-r and kukui-arc-r)\n\nHere is the test output : https://paste.googleplex.com/5424949075378176?raw",
+      "revId": "de116870775a1dbd768a0a785dc3ecb499b87e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
