@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c5ff201_73d48667",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-08T07:54:44Z",
+      "side": 1,
+      "message": "LGTM with recommendation.",
+      "revId": "ae29ac7a92584e6e9cf90afd3c9d0e2000e4f116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf219b3b_991430fe",
@@ -67,6 +84,29 @@
       "side": 1,
       "message": "Ah ok! the re-use of var name confused me.",
       "parentUuid": "36299f6a_68771ac1",
+      "revId": "ae29ac7a92584e6e9cf90afd3c9d0e2000e4f116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b13a427_68ef97e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-08T07:54:44Z",
+      "side": 1,
+      "message": "nit: With this, you\u0027ll see \"Last failure: ...\" in the dashboard, which look a bit less informative IMHO.\nMaybe\n\nif errorCount \u003e ... {\n  s.Fatal(\"Too many ARC boot errors (%d time(s)), last error: %q\", errorCount, err)\n}",
+      "range": {
+        "startLine": 188,
+        "startChar": 19,
+        "endLine": 188,
+        "endChar": 26
+      },
       "revId": "ae29ac7a92584e6e9cf90afd3c9d0e2000e4f116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
