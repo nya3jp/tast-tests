@@ -51,6 +51,23 @@
       "message": "Benson, could you kindly review?\n\nThanks!",
       "revId": "d15497c7c9bcbee7c9c0c1b83ca086cef7778573",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20c67591_1a0f90c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-08T23:02:26Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "d15497c7c9bcbee7c9c0c1b83ca086cef7778573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
