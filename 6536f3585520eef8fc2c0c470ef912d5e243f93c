@@ -67,6 +67,23 @@
       "message": "Yes, the test itself seems quite stable. There was only one failure in the last 2828 runs and that one was related to the login.",
       "revId": "6536f3585520eef8fc2c0c470ef912d5e243f93c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "967c62e0_172da708",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-08T11:42:23Z",
+      "side": 1,
+      "message": "The test is failing in the Cq for some reason.",
+      "revId": "6536f3585520eef8fc2c0c470ef912d5e243f93c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
