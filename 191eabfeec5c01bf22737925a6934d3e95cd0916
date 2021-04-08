@@ -56,6 +56,30 @@
       },
       "revId": "191eabfeec5c01bf22737925a6934d3e95cd0916",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebac3343_ee96ec0c",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-08T00:17:02Z",
+      "side": 1,
+      "message": "Actually TIL they\u0027re printed out in the order of the command line, e.g.:\n\nlocalhost ~ # perf stat -e i915/rcs0-busy/,i915/vcs0-busy/,i915/vecs0-busy/,i915/rc6-residency/ -- sleep 2\n\n Performance counter stats for \u0027system wide\u0027:\n\n                 0 ns   i915/rcs0-busy/                                             \n                 0 ns   i915/vcs0-busy/                                             \n                 0 ns   i915/vecs0-busy/                                            \n        2001274143 ns   i915/rc6-residency/                                         \n\n       2.001356335 seconds time elapsed\n\nlocalhost ~ # perf stat -e i915/rc6-residency/,i915/rcs0-busy/,i915/vcs0-busy/,i915/vecs0-busy/ -- sleep 2\n\n Performance counter stats for \u0027system wide\u0027:\n\n        2001178391 ns   i915/rc6-residency/                                         \n                 0 ns   i915/rcs0-busy/                                             \n                 0 ns   i915/vcs0-busy/                                             \n                 0 ns   i915/vecs0-busy/                                            \n\n       2.001212643 seconds time elapsed\n\n\n\n\nlet me know if you want me to sort alphabetically.",
+      "parentUuid": "d3628e1d_08f39512",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 45
+      },
+      "revId": "191eabfeec5c01bf22737925a6934d3e95cd0916",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
