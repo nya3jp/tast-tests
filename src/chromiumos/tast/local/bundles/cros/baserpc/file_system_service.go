@@ -83,6 +83,17 @@ func (fs *FileSystemService) ReadFile(ctx context.Context, req *baserpc.ReadFile
 	return &res, nil
 }
 
+func (fs *FileSystemService) WriteFile(ctx context.Context, req *baserpc.WriteFileRequest) (*baserpc.WriteFileResponse, error) {
+	var res baserpc.WriteFileResponse
+	res.Error = encodeErr(func() error {
+		if err := ioutil.WriteFile(req.Name, req.Content, os.FileMode(req.Mode)); err != nil {
+			return err
+		}
+		return nil
+	}())
+	return &res, nil
+}
+
 func toFileInfoProto(fi os.FileInfo) (*baserpc.FileInfo, error) {
 	ts, err := ptypes.TimestampProto(fi.ModTime())
 	if err != nil {
