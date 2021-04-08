@@ -95,6 +95,17 @@ func (fs *FileSystemService) WriteFile(ctx context.Context, req *baserpc.WriteFi
 	return &res, nil
 }
 
+func (fs *FileSystemService) Remove(ctx context.Context, req *baserpc.RemoveRequest) (*baserpc.RemoveResponse, error) {
+	var res baserpc.RemoveResponse
+	res.Error = encodeErr(func() error {
+		if err := os.Remove(req.Name); err != nil {
+			return err
+		}
+		return nil
+	}())
+	return &res, nil
+}
+
 func toFileInfoProto(fi os.FileInfo) (*baserpc.FileInfo, error) {
 	ts, err := ptypes.TimestampProto(fi.ModTime())
 	if err != nil {
