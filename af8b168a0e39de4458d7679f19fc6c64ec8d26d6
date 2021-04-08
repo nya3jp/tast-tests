@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f51117ee_64527eb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-04-08T00:11:38Z",
+      "side": 1,
+      "message": "I guess this can be test sometimes in future once have the devices?",
+      "revId": "af8b168a0e39de4458d7679f19fc6c64ec8d26d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0c038dc8_84babc47",
@@ -14,6 +31,46 @@
       "writtenOn": "2021-04-07T23:16:35Z",
       "side": 1,
       "message": "+ a few who have touched a few of these drivers/chips",
+      "revId": "af8b168a0e39de4458d7679f19fc6c64ec8d26d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ad864fa_6061c2ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-04-08T00:11:38Z",
+      "side": 1,
+      "message": "LGTM!, one minor query on the commit msg.",
+      "revId": "af8b168a0e39de4458d7679f19fc6c64ec8d26d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "474222ed_3a1f4223",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/driver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-04-08T00:11:38Z",
+      "side": 1,
+      "message": "Not for this CL, Herobrine, I guess is based of 3991 and probably will need a new entry.",
+      "range": {
+        "startLine": 100,
+        "startChar": 6,
+        "endLine": 100,
+        "endChar": 21
+      },
       "revId": "af8b168a0e39de4458d7679f19fc6c64ec8d26d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
