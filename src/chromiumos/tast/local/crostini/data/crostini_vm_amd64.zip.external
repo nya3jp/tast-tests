@@ -1,5 +1,5 @@
 {
-    "sha256sum": "5fd423da8090af8b1a37f4a19bc116013c64f5a3c6d2ddb4219fae3d7242d96d",
-    "size": 90610296,
-    "url": "gs://termina-component-testing/89/13729.29.0/chromeos_intel64-archive/files.zip"
+    "sha256sum": "5b4b79ce48f531fb5ea2fad4be875764d853bd64904b08e814145a798e1af430",
+    "size": 91026620,
+    "url": "gs://termina-component-testing/89/13729.82.0/chromeos_intel64-archive/files.zip"
 }
