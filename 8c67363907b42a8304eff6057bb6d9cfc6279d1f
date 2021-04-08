@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3faff12b_15093c52",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-04-08T01:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58e9e869_de595b09",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 279,
+        "endChar": 16
+      },
+      "revId": "8c67363907b42a8304eff6057bb6d9cfc6279d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "954aa072_3f6e70b8",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-07T21:45:54Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 16
+      },
+      "revId": "8c67363907b42a8304eff6057bb6d9cfc6279d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecde546c_4fad8ebe",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-04-08T01:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "954aa072_3f6e70b8",
       "range": {
         "startLine": 282,
         "startChar": 1,
