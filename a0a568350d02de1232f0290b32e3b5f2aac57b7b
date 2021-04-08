@@ -39,6 +39,30 @@
       },
       "revId": "a0a568350d02de1232f0290b32e3b5f2aac57b7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c29e95c_76aced98",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-04-08T02:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21976b17_df4e38b4",
+      "range": {
+        "startLine": 35,
+        "startChar": 23,
+        "endLine": 35,
+        "endChar": 62
+      },
+      "revId": "a0a568350d02de1232f0290b32e3b5f2aac57b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
