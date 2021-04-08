@@ -94,6 +94,30 @@
       },
       "revId": "4fdfcba094d0b66281e8395ecd3000b89f0768f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d69a643_3c3a3438",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-04-08T23:30:18Z",
+      "side": 1,
+      "message": "Fair point. I\u0027ve done that now.",
+      "parentUuid": "c1a17b43_db559ad3",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 76
+      },
+      "revId": "4fdfcba094d0b66281e8395ecd3000b89f0768f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
