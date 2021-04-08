@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89e3ff6a_a9304f6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/wps_office.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-08T08:30:28Z",
+      "side": 1,
+      "message": "What was the reason we needed to skip this test on elm?\nI am investigating usage of SkipOnModel, and need to know if this is specific to the hardware, form factor, app not compatible with the device, or anything else.",
+      "revId": "cd54077d48af81b2359f09de12f35163af40f1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
