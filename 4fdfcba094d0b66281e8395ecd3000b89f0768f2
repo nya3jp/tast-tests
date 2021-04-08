@@ -46,6 +46,30 @@
       },
       "revId": "4fdfcba094d0b66281e8395ecd3000b89f0768f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4bd0adb_43b5dbd2",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-04-08T10:00:33Z",
+      "side": 1,
+      "message": "I should say, only one of the client views will have a location node that is non-empty. (The location node has the window size in it).\n\nWhen I say that apps can create extra windows, those extra windows are often degenerate and have no client area. Regardless of what\u0027s happening, our tests are assuming that there\u0027s only one window that matters per app, and it\u0027s the one with the non-trivial client area.",
+      "parentUuid": "daeea55a_5fe0b9b4",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 76
+      },
+      "revId": "4fdfcba094d0b66281e8395ecd3000b89f0768f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
