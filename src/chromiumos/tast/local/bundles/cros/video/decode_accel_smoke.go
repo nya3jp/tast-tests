@@ -10,7 +10,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -39,13 +38,6 @@ func init() {
 			// soon, as device crashes affect all subsequent test runs. Currently RK3399 devices
 			// may crash so they are excluded. See crbug.com/971032 for details.
 			ExtraSoftwareDeps: []string{"vp9_smoke"},
-			// With the legacy video decoder, vp9 profile2 puts the GPU into a bad
-			// state where subsequent GPU use fails, causing any tests that launch
-			// Chrome to fail. Disable on zork until this is resolved (either with a
-			// fix or when this test switches to the new video decoder).
-			// TODO(b/161878038): Remove once this test runs without causing GPU
-			// problems.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("zork")),
 		}, {
 			Name:              "vp9_3",
 			Val:               "vda_smoke-bear_profile3.vp9",
