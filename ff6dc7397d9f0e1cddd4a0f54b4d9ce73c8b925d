@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c450837_33a2adf0",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-08T00:10:32Z",
+      "side": 1,
+      "message": "More broader question, is the introduction of this fixture purely for separation of this test? This is exactly the same fixture as chromeLoggedIn (and similarly chromeLoggedInGuestForInputs is the same as chromeLoggedInGuest) why are we not identifying why the Shift key is stuck vs. just moving the test execution?",
+      "range": {
+        "startLine": 42,
+        "startChar": 13,
+        "endLine": 42,
+        "endChar": 36
+      },
+      "revId": "ff6dc7397d9f0e1cddd4a0f54b4d9ce73c8b925d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
