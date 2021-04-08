@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6d393c4_bee5074f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 43
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-08T18:10:30Z",
+      "side": 1,
+      "message": "Add support for non-proxy mode as requested, so the test can run without WPR proxy.",
+      "revId": "e8aa37af64ee8718faddcfb4a9ba2e4ff0cc8a3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
