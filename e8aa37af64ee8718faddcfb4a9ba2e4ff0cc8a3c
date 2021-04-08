@@ -33,6 +33,24 @@
       "message": "Can we merge the original reviewed CL and make this change in another CL?",
       "revId": "e8aa37af64ee8718faddcfb4a9ba2e4ff0cc8a3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc8b6bd8_d7b59d8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 43
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-08T18:37:50Z",
+      "side": 1,
+      "message": "The original reviewed CL has dependency on the https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2779315 and cannot be merged at this time. After the dependent CL is approved (already got CR+1, waiting for approval), we can merge all of these changes together, given non-proxy change is small. (Of course after a quick review from reviewers)",
+      "parentUuid": "4ec683b4_72aff02a",
+      "revId": "e8aa37af64ee8718faddcfb4a9ba2e4ff0cc8a3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
