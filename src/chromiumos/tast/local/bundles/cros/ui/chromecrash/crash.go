@@ -12,6 +12,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strconv"
 	"strings"
 	"syscall"
@@ -59,6 +60,12 @@ const (
 	// string that, when concatenated with an extension, matches Chrome crashes
 	// from that PID.
 	chromeCrashFilePatternWithPid = `chrome\.\d{8}\.\d{6}\.\d+\.%d\.`
+
+	// breakpadDmpFileRegexp is the regexp we use to find a BreakpadDmp file.
+	// Unlike normal .meta files, the native breakpad .dmp files do not include
+	// the PID in the filename. Note: we use [0-9a-f] instead of \x because \x
+	// treats {8} specially.
+	breakpadDmpFileRegexp = `[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{8}-[0-9a-f]{8}\.dmp`
 )
 
 // CrashHandler indicates which crash handler the test wants Chrome to use:
@@ -310,6 +317,24 @@ func FindCrashFilesIn(dirPattern string, files []string) error {
 	return errors.Errorf("did not find the dmp file %s corresponding to the crash meta file", dump)
 }
 
+// FindBreakpadDmpFilesIn looks through the list of files returned from KillAndGetCrashFiles,
+// expecting to find .dmp output files written by breakpad if it writes the dump
+// directly (without invoking crash_reporter).
+func FindBreakpadDmpFilesIn(dirPattern string, files []string) error {
+	filePatternStr := "^" + filepath.Join(dirPattern, breakpadDmpFileRegexp) + "$"
+	filePattern, err := regexp.Compile(filePatternStr)
+	if err != nil {
+		return errors.Wrapf(err, "invalid file pattern %s", filePatternStr)
+	}
+	for _, file := range files {
+		if filePattern.MatchString(file) {
+			return nil
+		}
+	}
+
+	return errors.Errorf("could not find breakpad's .dmp file in %s (possible files: %v)", dirPattern, files)
+}
+
 // getChromePIDs gets the process IDs of all Chrome processes running in the
 // system. This will wait for Chrome to be up before returning.
 func getChromePIDs(ctx context.Context) ([]int, error) {
@@ -386,9 +411,8 @@ func waitForMetaFile(ctx context.Context, pid int, dirs []string) error {
 // to appear in one of the directories.
 // Return nil if the file is found.
 func waitForBreakpadDmpFile(ctx context.Context, pid int, dirs []string) error {
-	const fileName = `chromium-.*-minidump-.*\.dmp`
 	err := testing.Poll(ctx, func(c context.Context) error {
-		files, err := crash.WaitForCrashFiles(ctx, dirs, []string{fileName})
+		files, err := crash.WaitForCrashFiles(ctx, dirs, []string{breakpadDmpFileRegexp})
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "error waiting for .dmp file"))
 		}
@@ -401,7 +425,7 @@ func waitForBreakpadDmpFile(ctx context.Context, pid int, dirs []string) error {
 		// errors for later debugging, but don't stop looking and, above all,
 		// don't testing.PollBreak.
 		errorList := make([]error, 0)
-		for _, fileName := range files[fileName] {
+		for _, fileName := range files[breakpadDmpFileRegexp] {
 			if found, err := crash.IsBreakpadDmpFileForPID(fileName, pid); err != nil {
 				errorList = append(errorList, errors.Wrap(err, "error scanning "+fileName))
 			} else if found {
@@ -601,7 +625,7 @@ func (ct *CrashTester) KillAndGetCrashFiles(ctx context.Context) ([]string, erro
 		// Filename doesn't include the PID, so just accept any dmp file as the
 		// expected one. (The problems we've seen have always been the entire
 		// directory not being present, so this should be OK)
-		regexes = []string{`chromium-.*-minidump-.*\.dmp`}
+		regexes = []string{breakpadDmpFileRegexp}
 	case MetaFile:
 		meta := fmt.Sprintf(chromeCrashFilePatternWithPid+"meta", ct.killedPID)
 		dmp := fmt.Sprintf(chromeCrashFilePatternWithPid+"dmp", ct.killedPID)

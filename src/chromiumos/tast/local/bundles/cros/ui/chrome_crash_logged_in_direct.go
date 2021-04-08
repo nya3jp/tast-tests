@@ -13,6 +13,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type chromeCrashLoggedInDirectParams struct {
+	fileType chromecrash.CrashFileType
+	handler  chromecrash.CrashHandler
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeCrashLoggedInDirect,
@@ -21,33 +26,47 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
-			Name:              "breakpad",
-			Val:               chromecrash.Breakpad,
+			Name: "breakpad",
+			Val: chromeCrashLoggedInDirectParams{
+				handler:  chromecrash.Breakpad,
+				fileType: chromecrash.BreakpadDmp,
+			},
 			ExtraSoftwareDeps: []string{"breakpad"},
 		}, {
-			Name:              "crashpad",
-			Val:               chromecrash.Crashpad,
+			Name: "crashpad",
+			Val: chromeCrashLoggedInDirectParams{
+				handler:  chromecrash.Crashpad,
+				fileType: chromecrash.MetaFile,
+			},
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"crashpad"},
 		}},
 	})
 }
 
+// ChromeCrashLoggedInDirect tests that Chrome crashes that happen during tast
+// tests are properly captured (that is, during tast tests which are testing
+// something other than the crash system).
+//
+// The other Chrome crash tests cover cases that we expect to occur on end-user
+// machines, by simulating user consent. This test covers the tast case, where
+// we bypass consent by telling the crash system that we are in a test
+// environment. In particular, breakpad goes through a very different code path
+// which doesn't involve crash_reporter at all, and we want that to keep working.
+//
+// Note: The name is a misnomer; the 'Direct' refers to the old days when both
+// breakpad and crashpad bypassed crash_reporter and wrote the crashes directly
+// onto disk during this test. Crashpad no longer does that; the test should be
+// named "TastMode". TODO: Rename to ChromeCrashLoggedInTastMode
 func ChromeCrashLoggedInDirect(ctx context.Context, s *testing.State) {
-	// This is the old test, left here so that we don't lose test coverage while
-	// waiting for ChromeCrashLoggedIn to be stable enough to promote to a
-	// critical (non-informational) test.
-	// TODO(crbug.com/984807): Once ChromeCrashLoggedIn is no longer "informational",
-	// remove this test.
-
-	ct, err := chromecrash.NewCrashTester(ctx, chromecrash.Browser, chromecrash.BreakpadDmp)
+	params := s.Param().(chromeCrashLoggedInDirectParams)
+	ct, err := chromecrash.NewCrashTester(ctx, chromecrash.Browser, params.fileType)
 	if err != nil {
 		s.Fatal("NewCrashTester failed: ", err)
 	}
 	defer ct.Close()
 
-	handler := s.Param().(chromecrash.CrashHandler)
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromecrash.GetExtraArgs(handler, crash.MockConsent)...))
+	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromecrash.GetExtraArgs(params.handler, crash.MockConsent)...))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
@@ -62,9 +81,22 @@ func ChromeCrashLoggedInDirect(ctx context.Context, s *testing.State) {
 	}
 	defer crash.TearDownCrashTest(ctx)
 
-	if dumps, err := ct.KillAndGetCrashFiles(ctx); err != nil {
+	var files []string
+	if files, err = ct.KillAndGetCrashFiles(ctx); err != nil {
 		s.Fatal("Couldn't kill Chrome or get dumps: ", err)
-	} else if len(dumps) == 0 {
-		s.Error("No minidumps written after logged-in Chrome crash")
 	}
+
+	// Check we got the expected files. Tast tests always write to
+	// /home/chronos/crash, not to cryptohome, so that the framework can retrieve
+	// the crashes afterwards.
+	if params.fileType == chromecrash.MetaFile {
+		if err := chromecrash.FindCrashFilesIn(crash.LocalCrashDir, files); err != nil {
+			s.Error("Crash files weren't written to /home/chronos/crash after crashing process: ", err)
+		}
+	} else {
+		if err := chromecrash.FindBreakpadDmpFilesIn(crash.LocalCrashDir, files); err != nil {
+			s.Error(".dmp files weren't written to /home/chronos/crash after crashing process: ", err)
+		}
+	}
+
 }
