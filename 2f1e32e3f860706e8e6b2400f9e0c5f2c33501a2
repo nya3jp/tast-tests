@@ -71,6 +71,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d56bdc99_36f85001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-08T18:32:09Z",
+      "side": 1,
+      "message": "Thanks Jun. Given they are all used once, removed tew, stew, tcc from the struct fields and create them before using them.",
+      "parentUuid": "1781ffbc_6b5e7622",
+      "revId": "2f1e32e3f860706e8e6b2400f9e0c5f2c33501a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "77971d63_e1716f86",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
         "patchSetId": 13
@@ -82,6 +100,24 @@
       "writtenOn": "2021-04-08T16:49:21Z",
       "side": 1,
       "message": "Similarly, creating uiauto.Context only in the method which uses it may make sense.",
+      "revId": "2f1e32e3f860706e8e6b2400f9e0c5f2c33501a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72d04231_713245d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-08T18:32:09Z",
+      "side": 1,
+      "message": "Removed from field and create before using it.",
+      "parentUuid": "77971d63_e1716f86",
       "revId": "2f1e32e3f860706e8e6b2400f9e0c5f2c33501a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
