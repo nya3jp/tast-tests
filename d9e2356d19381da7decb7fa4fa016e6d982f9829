@@ -137,6 +137,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b08d6b7b_875c402d",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-08T23:43:08Z",
+      "side": 1,
+      "message": "Nice, thanks for the neat suggestion! Went ahead and did it that way and it\u0027s much cleaner now.",
+      "parentUuid": "49d803b4_1729e677",
+      "range": {
+        "startLine": 472,
+        "startChar": 1,
+        "endLine": 475,
+        "endChar": 27
+      },
+      "revId": "d9e2356d19381da7decb7fa4fa016e6d982f9829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3070b43_0c038cbd",
