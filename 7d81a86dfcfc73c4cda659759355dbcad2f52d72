@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5f541bf5_9a6e56bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1312210
+      },
+      "writtenOn": "2021-04-08T00:22:00Z",
+      "side": 1,
+      "message": "Yes I\u0027m going to move all the directory permissions into tmpfiles.d after branch, and I\u0027ll ensure consistent owners then.",
+      "parentUuid": "94965619_5c25c7ee",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 65
+      },
+      "revId": "7d81a86dfcfc73c4cda659759355dbcad2f52d72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f422e488_7cf0588d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -37,6 +61,23 @@
       "writtenOn": "2021-04-01T06:22:09Z",
       "side": 1,
       "message": "Hi Jorge, could you review this stateful files tast change?",
+      "revId": "7d81a86dfcfc73c4cda659759355dbcad2f52d72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f54d051_e1c68f30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1312210
+      },
+      "writtenOn": "2021-04-08T00:22:00Z",
+      "side": 1,
+      "message": "Thanks all!",
       "revId": "7d81a86dfcfc73c4cda659759355dbcad2f52d72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
