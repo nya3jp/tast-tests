@@ -14,9 +14,11 @@ import (
 
 	"github.com/shirou/gopsutil/process"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/cpuset"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -31,11 +33,17 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author.
 		},
 		SoftwareDeps: []string{
-			"android_p",
 			"chrome",
 		},
 		Attr:    []string{"group:mainline"},
 		Fixture: "arcBooted",
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
@@ -142,25 +150,39 @@ func isHeterogeneousCores(ctx context.Context) (bool, error) {
 	return false, nil
 }
 
-func CPUSet(ctx context.Context, s *testing.State) {
-	s.Log("Running testCPUSet")
+func readCPUSetInfo(ctx context.Context, t string) (string, []byte, error) {
+	isVMEnabled, err := arc.VMEnabled()
+	if err != nil {
+		return "", nil, err
+	}
+	if isVMEnabled {
+		path := fmt.Sprintf("/proc/1/root/dev/cpuset/%s/effective_cpus", t)
+		out, err := testexec.CommandContext(ctx, "android-sh", "-c", fmt.Sprintf("cat %s", shutil.Escape(path))).Output(testexec.DumpLogOnError)
+		return path, out, err
+	}
 
 	initPID, err := getRootPID()
 	if err != nil {
-		s.Fatal("Failed to get root init process: ", err)
-		return
+		return "", nil, err
 	}
+	path := fmt.Sprintf("/proc/%d/root/dev/cpuset/%s/effective_cpus", initPID, t)
+	// cgroup pseudo file cannot be "adb pull"ed. Additionally, it is not
+	// accessible via adb shell user in P. Access by procfs instead.
+	out, err := ioutil.ReadFile(path)
+	return path, out, err
+}
+
+func CPUSet(ctx context.Context, s *testing.State) {
+	s.Log("Running testCPUSet")
 
 	// Verify that /dev/cpuset is properly set up.
 	types := []string{"foreground", "background", "system-background", "top-app", "restricted"}
 	numOtherCores := 0
 
 	for _, t := range types {
-		path := fmt.Sprintf("/proc/%d/root/dev/cpuset/%s/effective_cpus", initPID, t)
-
 		// cgroup pseudo file cannot be "adb pull"ed. Additionally, it is not
 		// accessible via adb shell user in P. Access by procfs instead.
-		out, err := ioutil.ReadFile(path)
+		path, out, err := readCPUSetInfo(ctx, t)
 
 		if err != nil {
 			s.Errorf("Failed to read %s: %v", path, err)
