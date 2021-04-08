@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92c17237_54215897",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-08T23:48:52Z",
+      "side": 1,
+      "message": "+2 for Tast Owners % nit",
+      "revId": "7a1951947eb5b9bcb82885129680d3ebc1dffa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdb33524_d2517a99",
@@ -37,6 +54,23 @@
         "endLine": 17,
         "endChar": 5
       },
+      "revId": "7a1951947eb5b9bcb82885129680d3ebc1dffa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca95dc33_034da555",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mem_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-08T23:48:52Z",
+      "side": 1,
+      "message": "nit: const?",
       "revId": "7a1951947eb5b9bcb82885129680d3ebc1dffa9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
