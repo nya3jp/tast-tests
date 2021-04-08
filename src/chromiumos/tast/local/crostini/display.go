@@ -89,16 +89,20 @@ func windowSize(ctx context.Context, tconn *chrome.TestConn, name string) (sz co
 		return coords.Size{}, errors.Wrap(err, "failed to locate the app window")
 	}
 
-	view := nodewith.ClassName("ClientView")
-	loc, err := ui.WithTimeout(15*time.Second).Location(ctx, view)
-	if err != nil {
-		return coords.Size{}, errors.Wrap(err, "failed to find client view")
-	}
-	if loc.Empty() {
-		return coords.Size{}, errors.New("client view does not have a location")
+	// Apps can open extra "degenerate" windows. We look for the first window with
+	// a client view that has a non-empty location node.
+	for i := 0; i < 4; i++ {
+		view := nodewith.ClassName("ClientView").Nth(i)
+		loc, err := ui.WithTimeout(15*time.Second).Location(ctx, view)
+		if err == nil {
+			if loc.Empty() {
+				continue
+			}
+			return loc.Size(), nil
+		}
 	}
 
-	return loc.Size(), nil
+	return coords.Size{}, errors.Wrap(err, "failed to find client view location node")
 }
 
 // PrimaryDisplayScaleFactor returns the primary display's scale factor.
