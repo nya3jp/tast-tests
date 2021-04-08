@@ -38,21 +38,33 @@ func init() {
 		Desc:         "Measures energy and power usage of ARC++ PIP",
 		Contacts:     []string{"amusbach@chromium.org", "chromeos-perf@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
-			Name: "small",
-			Val:  arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false},
+			Name:              "small",
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false},
+			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name: "big",
-			Val:  arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: true},
+			Name:              "big",
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: true},
+			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name: "small_blend",
-			Val:  arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false},
+			Name:              "small_blend",
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false},
+			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name: "big_blend",
-			Val:  arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: true},
+			Name:              "big_blend",
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: true},
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "small_vm",
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false},
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}, {
+			Name:              "small_blend_vm",
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false},
+			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
 }
