@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "11bd596a_e062ef95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-04-08T01:00:57Z",
+      "side": 1,
+      "message": "There are some -kernelnext devices failing today. I\u0027ll be watching those at least.",
+      "parentUuid": "f51117ee_64527eb7",
+      "revId": "af8b168a0e39de4458d7679f19fc6c64ec8d26d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0c038dc8_84babc47",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -65,6 +83,30 @@
       "writtenOn": "2021-04-08T00:11:38Z",
       "side": 1,
       "message": "Not for this CL, Herobrine, I guess is based of 3991 and probably will need a new entry.",
+      "range": {
+        "startLine": 100,
+        "startChar": 6,
+        "endLine": 100,
+        "endChar": 21
+      },
+      "revId": "af8b168a0e39de4458d7679f19fc6c64ec8d26d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1025b7f1_ea67859f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/driver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-04-08T01:00:57Z",
+      "side": 1,
+      "message": "That\u0027ll be the job of the Herobrine bringup eng, when tests inevitably fail for them.",
+      "parentUuid": "474222ed_3a1f4223",
       "range": {
         "startLine": 100,
         "startChar": 6,
