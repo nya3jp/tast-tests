@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9f14efc_974a0ae9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-04-08T20:36:51Z",
+      "side": 1,
+      "message": "This test case parameter `unmutePlayer` is \"negative\", so tests that don\u0027t specify `unmutePlayer` default to muted playback (thanks to golang\u0027s zero-value initialization). This is how all tests behaved before this CL.\n\nAlternatively, I could rename the setting `mutePlayer`, and add the attribute to the existing test definitions and initialize them to true. If this seems more desirable, let me know!",
+      "revId": "7a1951947eb5b9bcb82885129680d3ebc1dffa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0b8c056_0ed95bba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-04-08T20:36:51Z",
+      "side": 1,
+      "message": "I did not implement `unmutePlayer` in shaka.html or shaka_drm.html. If we want \"unmuted\" test coverage of audio for these players, let me know.\n\nThis error is intended to only be hit by people who are writing tests to avoid confusion about setting `unmutePlayer \u003d true` for these unsupported video types. Adding this check as a new precondition seemed less effective since a misconfigured test case could be added without the precondition function specified.\n\nI didn\u0027t add any comments about this limitation to the test definition files like https://crrev.com/c/2809890/2/src/chromiumos/tast/local/bundles/cros/video/play.go since comments have a tendency to not get read or become obsolete. If we aren\u0027t adding `unmutePlayer` functionality for these fixtures, then this seemed liked a reasonable place to check for configurations that haven\u0027t been implemented.",
+      "revId": "7a1951947eb5b9bcb82885129680d3ebc1dffa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
