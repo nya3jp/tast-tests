@@ -56,6 +56,30 @@
       },
       "revId": "ebebff091a0b39148bb82874d97be533ffab6353",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37626b2b_3162a41a",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-08T00:42:35Z",
+      "side": 1,
+      "message": "Done, and I\u0027m going to go ahead and get rid of GetDBusProperties so we don\u0027t run into this again :-)",
+      "parentUuid": "7f6476a7_840069cd",
+      "range": {
+        "startLine": 74,
+        "startChar": 22,
+        "endLine": 74,
+        "endChar": 39
+      },
+      "revId": "ebebff091a0b39148bb82874d97be533ffab6353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
