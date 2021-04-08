@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b78b69be_cddd1037",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-08T00:00:07Z",
+      "side": 1,
+      "message": "Screen capture of the journey: https://drive.google.com/file/d/19Ppcjhysv5_8LTN-Nd9P0h1TGEmDdTUq/view?usp\u003dsharing\u0026resourcekey\u003d0-MUN3yN_2lY3T4jZlUAjoTA\n\nSweyn, could you confirm this journey is what we want? Thanks!\n\n\n",
+      "revId": "1942da1fca8a4dd2a58c9fbacf78e7626cb65cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
