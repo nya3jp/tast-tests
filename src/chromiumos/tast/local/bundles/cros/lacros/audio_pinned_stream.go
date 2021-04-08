@@ -60,10 +60,15 @@ func AudioPinnedStream(ctx context.Context, s *testing.State) {
 
 	deviceID := func(devName string) string {
 		var devID string
-		if err := conn.Call(ctx, &devID, `async function(deviceName) {
-			let devices = await navigator.mediaDevices.enumerateDevices();
-			return devices.find((dev) => dev.label == deviceName).deviceId;
-		}`, devName); err != nil {
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if err := conn.Call(ctx, &devID, `async function(deviceName) {
+				let devices = await navigator.mediaDevices.enumerateDevices();
+				return devices.find((dev) => dev.label == deviceName).deviceId;
+			}`, devName); err != nil {
+				return err
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 			s.Fatal("Failed to find loopback device: ", err)
 		}
 		return devID
@@ -92,7 +97,7 @@ func AudioPinnedStream(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	streams, err := crastestclient.WaitForStreams(ctx, time.Second)
+	streams, err := crastestclient.WaitForStreams(ctx, 5*time.Second)
 	if err != nil {
 		s.Fatal("Failed to wait for streams: ", err)
 	}
