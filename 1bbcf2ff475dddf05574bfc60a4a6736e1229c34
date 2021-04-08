@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2d98d17_0efd92a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-04-08T01:28:58Z",
+      "side": 1,
+      "message": "You mean check or comment? as check is needed to make sure to limit test for multisim duts",
+      "parentUuid": "eb510b4c_9cf83eb8",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a97c56be_2661e57e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
         "patchSetId": 12
@@ -65,6 +83,24 @@
       "writtenOn": "2021-04-07T23:33:23Z",
       "side": 1,
       "message": "nit: for most of these we can use the pattern:\n\nif err \u003d ... ; err !\u003d nil {\n}",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55590769_ad9d531f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-04-08T01:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a97c56be_2661e57e",
       "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8528e2b9_e571979e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-04-08T01:28:58Z",
+      "side": 1,
+      "message": "Thought same, removing.",
+      "parentUuid": "79f1caeb_6675d2c0",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c1d34f0_5fe4dbc8",
@@ -99,6 +153,24 @@
       "writtenOn": "2021-04-07T23:33:23Z",
       "side": 1,
       "message": "nit: These should probably be separate failures.",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64685dea_217b4ccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-04-08T01:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c1d34f0_5fe4dbc8",
       "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +192,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf8bcc75_211fbce4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-04-08T01:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eda1d44b_85388897",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c832be52_66171fc2",
@@ -133,6 +223,24 @@
       "writtenOn": "2021-04-07T23:33:23Z",
       "side": 1,
       "message": "s/modem/oldModem/\n\nAlso, since oldModem is no longer a valid dbus object, we should maybe just pass modem.String() here for better clarity.",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c125c02_16a31ea2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-04-08T01:28:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c832be52_66171fc2",
       "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -168,6 +276,24 @@
       "side": 1,
       "message": "(You can copy that modem.go change to this CL and if this lands first I\u0027ll rebase my CL off of this, or you can wait for that to land).",
       "parentUuid": "1c859ae5_3efbaee6",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00ad092b_4d0e3913",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-04-08T01:28:58Z",
+      "side": 1,
+      "message": "Checked this CL, Might be not required in this case as not using any of the SIM properties. Using only modem properties.",
+      "parentUuid": "179d0b51_3aca54b5",
       "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
