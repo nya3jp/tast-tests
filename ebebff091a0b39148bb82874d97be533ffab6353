@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "ebebff091a0b39148bb82874d97be533ffab6353",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2cc8c7b_58095a07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-08T00:31:06Z",
+      "side": 1,
+      "message": "Still LGTM.",
+      "revId": "ebebff091a0b39148bb82874d97be533ffab6353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f6476a7_840069cd",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-08T00:31:06Z",
+      "side": 1,
+      "message": "(oops, missed this in previous round)\nnit: maybe use GetProperties? as CL:2784311 is merged.",
+      "range": {
+        "startLine": 74,
+        "startChar": 22,
+        "endLine": 74,
+        "endChar": 39
+      },
+      "revId": "ebebff091a0b39148bb82874d97be533ffab6353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
