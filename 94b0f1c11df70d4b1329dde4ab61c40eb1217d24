@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "927d2de4_1b1e2bc8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-08T16:06:17Z",
+      "side": 1,
+      "message": "This should also mention arc.PIPEnergyAndPower.small_blend_vm",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "94b0f1c11df70d4b1329dde4ab61c40eb1217d24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b20c79ad_b33a313a",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-04-08T10:17:11Z",
       "side": 1,
       "message": "LGTM",
+      "revId": "94b0f1c11df70d4b1329dde4ab61c40eb1217d24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eeca90e_6a6b9da2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-08T16:06:17Z",
+      "side": 1,
+      "message": "LGTM with revision to commit message",
       "revId": "94b0f1c11df70d4b1329dde4ab61c40eb1217d24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
