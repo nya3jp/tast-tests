@@ -33,6 +33,57 @@
       "message": "Hi Shuhei, could you help review the changes for CL? Thanks!",
       "revId": "2f1e32e3f860706e8e6b2400f9e0c5f2c33501a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16dfa7ae_22fc23de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-08T16:49:21Z",
+      "side": 1,
+      "message": "LGTM. I\u0027ll defer to nya for the final approval.",
+      "revId": "2f1e32e3f860706e8e6b2400f9e0c5f2c33501a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1781ffbc_6b5e7622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-08T16:49:21Z",
+      "side": 1,
+      "message": "stew is used only once.  Maybe rather than keeping it as a field, it would be better to create in the method which uses it.",
+      "revId": "2f1e32e3f860706e8e6b2400f9e0c5f2c33501a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77971d63_e1716f86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-04-08T16:49:21Z",
+      "side": 1,
+      "message": "Similarly, creating uiauto.Context only in the method which uses it may make sense.",
+      "revId": "2f1e32e3f860706e8e6b2400f9e0c5f2c33501a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
