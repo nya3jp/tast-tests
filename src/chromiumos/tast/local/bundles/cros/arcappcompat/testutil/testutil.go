@@ -550,6 +550,47 @@ func EscKey(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *ar
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
+// StylusClick func verifies if stylus click works properly in the app without crash or ANR.
+func StylusClick(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	var (
+		xCoordinate int
+		yCoordinate int
+	)
+	info, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the internal display info: ", err)
+	}
+	if !info.HasTouchSupport {
+		s.Log("Device does not have touch support. Skipping the test")
+		return
+	}
+	checkUIElement := d.Object(ui.Clickable(true), ui.Focusable(true), ui.Enabled(true))
+	if err := checkUIElement.WaitForExists(ctx, DefaultUITimeout); err != nil {
+		s.Log("checkUIElement doesn't exist and skipped stylus click: ", err)
+		return
+	}
+	s.Log("checkUIElement does exists")
+	if uiElementBounds, err := checkUIElement.GetBounds(ctx); err != nil {
+		s.Log("Failed to get uiElementBounds and skipped stylus click : ", err)
+	} else {
+		s.Log("uiElementBounds: ", uiElementBounds)
+		xCoordinate = uiElementBounds.Left
+		s.Log("Xcoordinate: ", xCoordinate)
+		yCoordinate = uiElementBounds.Top
+		s.Log("Ycoordinate: ", yCoordinate)
+
+		// TODO (b/188840879): Remove a.Command(ctx, "input", "stylus", "tap", XCoordinate, YCoordinate) if proper solution is found for it.
+		// To perform stylus click.
+		out, err := a.Command(ctx, "input", "stylus", "tap", strconv.Itoa(xCoordinate), strconv.Itoa(yCoordinate)).Output(testexec.DumpLogOnError)
+		if err != nil {
+			s.Fatal("Failed to perform stylus click: ", err)
+		} else {
+			s.Log("Performed stylus click: ", string(out))
+		}
+		DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+	}
+}
+
 // DetectAndHandleCloseCrashOrAppNotResponding func to handle Crash or ANR.
 func DetectAndHandleCloseCrashOrAppNotResponding(ctx context.Context, s *testing.State, d *ui.Device) {
 	const (
