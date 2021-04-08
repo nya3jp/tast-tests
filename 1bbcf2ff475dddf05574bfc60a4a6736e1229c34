@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d956d7e_d60cc65b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-08T17:07:01Z",
+      "side": 1,
+      "message": "I meant the Log. We try to keep that to a minimum in Tast tests.",
+      "parentUuid": "d2d98d17_0efd92a9",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a97c56be_2661e57e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
         "patchSetId": 12
@@ -294,6 +312,24 @@
       "side": 1,
       "message": "Checked this CL, Might be not required in this case as not using any of the SIM properties. Using only modem properties.",
       "parentUuid": "179d0b51_3aca54b5",
+      "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b784ea6d_6f96b96f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-08T17:07:01Z",
+      "side": 1,
+      "message": "Right, but I figured we could split modem.GetSimSlots up, since lines 74-88 are practically identical. But I can do that also.",
+      "parentUuid": "00ad092b_4d0e3913",
       "revId": "1bbcf2ff475dddf05574bfc60a4a6736e1229c34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
