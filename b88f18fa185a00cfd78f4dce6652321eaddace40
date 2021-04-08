@@ -34,6 +34,24 @@
       "parentUuid": "09ec6905_b779eab5",
       "revId": "b88f18fa185a00cfd78f4dce6652321eaddace40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e0efecf_d0e2e097",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/driver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-08T06:05:34Z",
+      "side": 0,
+      "message": "Thanks for pointing this out. I believe monroe is the last of those, which also got AUE last year, so LGTM.",
+      "parentUuid": "a8e97d54_cc7614cf",
+      "revId": "b88f18fa185a00cfd78f4dce6652321eaddace40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
