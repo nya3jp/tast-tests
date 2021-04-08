@@ -16,6 +16,23 @@
       "message": "No problem, thanks!",
       "revId": "a17a2a37b520f24ac653ba2dc0ca9ca9a0fa1d32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63cf9dd8_8e66b961",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-04-08T00:26:51Z",
+      "side": 1,
+      "message": "resourced-0.0.1-r12 failure on dedede is unrelated.",
+      "revId": "a17a2a37b520f24ac653ba2dc0ca9ca9a0fa1d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
