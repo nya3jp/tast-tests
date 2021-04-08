@@ -80,6 +80,22 @@ func (c *Client) ReadFile(ctx context.Context, name string) ([]byte, error) {
 	return res.Content, nil
 }
 
+// WriteFile writes the file specified by name with the provided content and mode.
+func (c *Client) WriteFile(ctx context.Context, name string, content []byte, mode os.FileMode) error {
+	res, err := c.fs.WriteFile(ctx, &baserpc.WriteFileRequest{
+		Name:    name,
+		Content: content,
+		Mode:    uint32(mode),
+	})
+	if err != nil {
+		return err
+	}
+	if res.Error != nil {
+		return decodeErr(res.Error)
+	}
+	return nil
+}
+
 // fileInfo wraps baserpc.FileInfo to implement os.FileInfo interface.
 type fileInfo struct {
 	pb *baserpc.FileInfo
