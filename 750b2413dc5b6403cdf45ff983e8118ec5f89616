@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c733af39_2bd0bd30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-08T20:18:26Z",
+      "side": 1,
+      "message": "Adding nya@ explicitly for chrome fixture expertise\n\nThe test in the dependent CL requires that there is not a logged in user to run correctly. Based on the conversations in https://groups.google.com/a/chromium.org/g/tast-users/c/4uVick5DE_E/m/11jkXBadBAAJ, I think it makes sense to just stop the ui to ensure that Chrome does not have a logged in user. WDYT of this approach?",
+      "revId": "750b2413dc5b6403cdf45ff983e8118ec5f89616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
