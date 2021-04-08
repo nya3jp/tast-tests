@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99769fd3_3c804592",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-08T22:03:20Z",
+      "side": 1,
+      "message": "Oh sorry, I missed that comment. But still, it would be nice to have someone share the context.",
+      "revId": "5104f002990ef4653ccdd5fbaf0bdb55799f5e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3794b95a_d46bf0bf",
