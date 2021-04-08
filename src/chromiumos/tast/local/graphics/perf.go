@@ -22,7 +22,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// collectPerformanceCounters gathers the use time for each of a given set of
+// collectGPUPerformanceCounters gathers the use time for each of a given set of
 // Performance Monitoring Units (PMUs), if available, providing them in a map
 // indexed by the name of the associated Command Streamer (CS): RCS for Renderer/3D,
 // VCS for the Fixed-Function Video (decoding and encoding), and VECS for Video
@@ -30,7 +30,7 @@ import (
 // time counter, and the amount of time the GPU spent in sleep mode (RC6 mode).
 // If the hardware/kernel doesn't provide PMU event monitoring, the returned
 // counters will be nil.
-func collectPerformanceCounters(ctx context.Context, interval time.Duration) (counters map[string]time.Duration, megaPeriods int64, err error) {
+func collectGPUPerformanceCounters(ctx context.Context, interval time.Duration) (counters map[string]time.Duration, megaPeriods int64, err error) {
 	var perfCounters = []struct {
 		filePath   string
 		eventName  string
@@ -48,8 +48,6 @@ func collectPerformanceCounters(ctx context.Context, interval time.Duration) (co
 	for _, perfCounter := range perfCounters {
 		if _, err := os.Stat(perfCounter.filePath); err == nil {
 			eventsToCollect = append(eventsToCollect, perfCounter.eventName)
-		} else {
-			testing.ContextLogf(ctx, "Could not find %s perf event file (error: %v)", perfCounter.filePath, err)
 		}
 	}
 
@@ -127,6 +125,93 @@ func collectPerformanceCounters(ctx context.Context, interval time.Duration) (co
 	return counters, megaPeriods, nil
 }
 
+// collectPackagePerformanceCounters gathers the amount of cycles the Package
+// was in each of a given C-States, providing also the total amount of cycles
+// elapsed. If the hardware/kernel doesn't provide this type of event monitoring
+// or if the reference TSC (Time Stamp Counter) is not available, the returned
+// counter map will be nil, but this is not considered an error.
+func collectPackagePerformanceCounters(ctx context.Context, interval time.Duration) (counters map[string]int64, err error) {
+	var perfCounters = []struct {
+		filePath   string
+		eventName  string
+		outputName string
+		necessary  bool
+	}{
+		{"/sys/devices/cstate_pkg/events/c1-residency", "cstate_pkg/c1-residency/", "c1", false},
+		{"/sys/devices/cstate_pkg/events/c2-residency", "cstate_pkg/c2-residency/", "c2", false},
+		{"/sys/devices/cstate_pkg/events/c3-residency", "cstate_pkg/c3-residency/", "c3", false},
+		{"/sys/devices/cstate_pkg/events/c4-residency", "cstate_pkg/c4-residency/", "c4", false},
+		{"/sys/devices/cstate_pkg/events/c5-residency", "cstate_pkg/c5-residency/", "c5", false},
+		{"/sys/devices/cstate_pkg/events/c6-residency", "cstate_pkg/c6-residency/", "c6", false},
+		{"/sys/devices/cstate_pkg/events/c7-residency", "cstate_pkg/c7-residency/", "c7", false},
+		{"/sys/devices/cstate_pkg/events/c8-residency", "cstate_pkg/c8-residency/", "c8", false},
+		{"/sys/devices/cstate_pkg/events/c9-residency", "cstate_pkg/c9-residency/", "c9", false},
+		{"/sys/devices/cstate_pkg/events/c10-residency", "cstate_pkg/c10-residency/", "c10", false},
+		// TSC (Time StampCounter) is necessary to give dimension to all others.
+		{"/sys/devices/msr/events/tsc", "msr/tsc/", "tsc", true},
+	}
+
+	var eventsToCollect []string
+	for _, perfCounter := range perfCounters {
+		if _, err := os.Stat(perfCounter.filePath); err == nil {
+			eventsToCollect = append(eventsToCollect, perfCounter.eventName)
+		} else if perfCounter.necessary {
+			return nil, nil
+		}
+	}
+	// The TSC event will be present.
+	if len(eventsToCollect) <= 1 {
+		return nil, nil
+	}
+
+	// Run the command e.g. `perf stat -C 1 -e msr/tsc/,cstate_pkg/c2-residency/ -- sleep 2`
+	// Limit the collection to the first core ("-C 0") otherwise the results would
+	// add the TSC counters in each CPU.
+	cmd := testexec.CommandContext(ctx,
+		"/usr/bin/perf", "stat", "-C", "0", "-e", strings.Join(eventsToCollect, ","), "--", "sleep",
+		strconv.FormatInt(int64(interval/time.Second), 10))
+	_, stderr, err := cmd.SeparatedOutput()
+	if err != nil {
+		return nil, errors.Wrap(err, "error while measuring perf counters")
+	}
+	perfOutput := string(stderr)
+
+	// A sample multiple counter output perfOutput could be e.g.:
+	// Performance counter stats for 'CPU(s) 0':
+	//
+	//        1017226860      cstate_pkg/c2-residency/
+	//         596249316      cstate_pkg/c3-residency/
+	//           7153458      cstate_pkg/c6-residency/
+	//         870845664      cstate_pkg/c7-residency/
+	//        3182648118      cstate_pkg/c8-residency/
+	//                 0      cstate_pkg/c9-residency/
+	//                 0      cstate_pkg/c10-residency/
+	//        5994345394      msr/tsc/
+	//
+	//       2.001372100 seconds time elapsed
+	counters = make(map[string]int64)
+
+	regexps := make(map[string]*regexp.Regexp)
+	for _, perfCounter := range perfCounters {
+		regexps[perfCounter.outputName] = regexp.MustCompile(`([0-9]+)\s*` + regexp.QuoteMeta(perfCounter.eventName))
+	}
+
+	perfLines := strings.Split(perfOutput, "\n")
+	for _, line := range perfLines {
+		for name, r := range regexps {
+			submatch := r.FindStringSubmatch(line)
+			if submatch == nil {
+				continue
+			}
+			counters[name], err = strconv.ParseInt(submatch[1], 10, 64)
+			if err != nil {
+				return nil, errors.Wrap(err, "error parsing perf output")
+			}
+		}
+	}
+	return counters, nil
+}
+
 func reportMetric(name, unit string, value float64, direction perf.Direction, p *perf.Values) {
 	p.Set(perf.Metric{
 		Name:      name,
@@ -146,7 +231,7 @@ func parseAndReportCounter(ctx context.Context, counters map[string]time.Duratio
 // MeasureGPUCounters measures GPU usage for a period of time t into p.
 func MeasureGPUCounters(ctx context.Context, t time.Duration, p *perf.Values) error {
 	testing.ContextLog(ctx, "Measuring GPU usage for ", t)
-	counters, megaPeriods, err := collectPerformanceCounters(ctx, t)
+	counters, megaPeriods, err := collectGPUPerformanceCounters(ctx, t)
 	if err != nil {
 		return errors.Wrap(err, "error collecting graphics performance counters")
 	}
@@ -166,6 +251,43 @@ func MeasureGPUCounters(ctx context.Context, t time.Duration, p *perf.Values) er
 	parseAndReportCounter(ctx, counters, "vcs", p)
 	parseAndReportCounter(ctx, counters, "vecs", p)
 	parseAndReportCounter(ctx, counters, "rc6", p)
+
+	return nil
+}
+
+// MeasurePackageCStateCounters measures the Package C-State residencies for a
+// period of time t into p. Package C-States counters report how many cycles the
+// package was in a given state, with a larger index corresponding to deeper
+// sleep states. The total elapsed cycles is available under the first CPU's TSC
+// (Time Stamp Counter) register. The "active " state, which would be c0, is the
+// remaining cycles. See e.g. https://en.wikichip.org/wiki/acpi/c-states.
+func MeasurePackageCStateCounters(ctx context.Context, t time.Duration, p *perf.Values) error {
+	testing.ContextLog(ctx, "Measuring Package C-State residency for ", t)
+	counters, err := collectPackagePerformanceCounters(ctx, t)
+	if err != nil {
+		return errors.Wrap(err, "error collecting C-State performance counters")
+	}
+	if counters == nil {
+		return nil
+	}
+	// "tsc" (Time Stamp Counter register) is a special entry because is the
+	// amount of cycles elapsed and gives a reference for all the C-States
+	// counters. We don't report it.
+	var accu int64
+	for name, value := range counters {
+		if name == "tsc" {
+			continue
+		}
+		accu += value
+
+		cStatePercent := 100 * float64(value) / float64(counters["tsc"])
+		testing.ContextLogf(ctx, "%s: %f%%", name, cStatePercent)
+		reportMetric(name, "percent", cStatePercent, perf.BiggerIsBetter, p)
+	}
+	// The amount of cycles not in any sleep state is the active state, "c0".
+	c0Percent := 100 * float64(counters["tsc"]-accu) / float64(counters["tsc"])
+	testing.ContextLogf(ctx, "c0: %f%%", c0Percent)
+	reportMetric("c0", "percent", c0Percent, perf.SmallerIsBetter, p)
 
 	return nil
 }

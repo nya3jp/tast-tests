@@ -129,12 +129,16 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, fileSystem http.
 
 	p := perf.NewValues()
 
-	var gpuErr, cpuErr error
+	var gpuErr, cStateErr, cpuErr error
 	var wg sync.WaitGroup
-	wg.Add(2)
+	wg.Add(3)
 	go func() {
 		defer wg.Done()
 		gpuErr = graphics.MeasureGPUCounters(ctx, measurementDuration, p)
+	}()
+	go func() {
+		defer wg.Done()
+		cStateErr = graphics.MeasurePackageCStateCounters(ctx, measurementDuration, p)
 	}()
 	go func() {
 		defer wg.Done()
@@ -143,6 +147,9 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, fileSystem http.
 	wg.Wait()
 	if gpuErr != nil {
 		return errors.Wrap(gpuErr, "failed to measure GPU counters")
+	}
+	if cStateErr != nil {
+		return errors.Wrap(cStateErr, "failed to measure Package C-State residency")
 	}
 	if cpuErr != nil {
 		return errors.Wrap(cpuErr, "failed to measure CPU/Package power")
