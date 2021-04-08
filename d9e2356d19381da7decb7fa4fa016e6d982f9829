@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49d803b4_1729e677",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-08T07:35:34Z",
+      "side": 1,
+      "message": "Don\u0027t use os/exec as it does not care about context and it can leave processes hanging in the background.\n\nIn this case IMO you can create a callback createbtsnoopCmd in SetUp that creates instances of btsnoopCmd on demand and it will have a reference to s.FixtContext(). It should take the test output dir as a parameter so it can write data there directly, no more need for a tempfile.\n\nThis works around the need to keep a reference to a context in a struct (which is discouraged), but gives you the flexibility you need.",
+      "parentUuid": "c5ca4028_086108db",
+      "range": {
+        "startLine": 472,
+        "startChar": 1,
+        "endLine": 475,
+        "endChar": 27
+      },
+      "revId": "d9e2356d19381da7decb7fa4fa016e6d982f9829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3070b43_0c038cbd",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
         "patchSetId": 1
