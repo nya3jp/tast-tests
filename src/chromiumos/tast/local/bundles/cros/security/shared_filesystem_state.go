@@ -25,7 +25,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: HardeningStatus,
+		Func: SharedFilesystemState,
 		Desc: "Report on status of Chrome OS hardening efforts",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
@@ -36,7 +36,7 @@ func init() {
 	})
 }
 
-func HardeningStatus(ctx context.Context, s *testing.State) {
+func SharedFilesystemState(ctx context.Context, s *testing.State) {
 	// Names of processes whose children should be ignored. These processes themselves are also ignored.
 	ignoredAncestorNames := make(map[string]struct{})
 	for _, ancestorName := range sandboxing.IgnoredAncestors {
