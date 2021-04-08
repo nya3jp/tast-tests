@@ -131,10 +131,14 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, fileSystem http.
 
 	var gpuErr, cpuErr error
 	var wg sync.WaitGroup
-	wg.Add(2)
+	wg.Add(3)
 	go func() {
 		defer wg.Done()
 		gpuErr = graphics.MeasureGPUCounters(ctx, measurementDuration, p)
+	}()
+	go func() {
+		defer wg.Done()
+		gpuErr = graphics.MeasurePackageCStateCounters(ctx, measurementDuration, p)
 	}()
 	go func() {
 		defer wg.Done()
