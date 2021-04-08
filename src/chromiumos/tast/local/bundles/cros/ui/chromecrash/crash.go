@@ -310,6 +310,20 @@ func FindCrashFilesIn(dirPattern string, files []string) error {
 	return errors.Errorf("did not find the dmp file %s corresponding to the crash meta file", dump)
 }
 
+// FindBreakpadDmpFilesIn looks through the list of files returned from KillAndGetCrashFiles,
+// expecting to find .dmp output files written by breakpad if it writes the dump
+// directly (without invoking crash_reporter).
+func FindBreakpadDmpFilesIn(dirPattern string, files []string) error {
+	filePattern := filepath.Join(dirPattern, `chromium-.*-minidump-.*\.dmp`)
+	for _, file := range files {
+		if match, _ := filepath.Match(filePattern, file); match {
+			return nil
+		}
+	}
+
+	return errors.Errorf("could not find breakpad's .dmp file in %s (possible files: %v)", dirPattern, files)
+}
+
 // getChromePIDs gets the process IDs of all Chrome processes running in the
 // system. This will wait for Chrome to be up before returning.
 func getChromePIDs(ctx context.Context) ([]int, error) {
