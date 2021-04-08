@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c700b4c1_f9417ac5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-08T00:36:44Z",
+      "side": 1,
+      "message": "not for this cl, but I wonder if we could simplify this to:\nscreenRecorder, err :\u003d uiauto.NewScreenRecorder(ctx, tconn)\nif err !\u003d nil {\n}\ndefer screenRecorder.StopSaveRelease(ctx, filename)",
+      "revId": "15c377a501c9f8ff2b1ad058dd0ff0184f09ab5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
