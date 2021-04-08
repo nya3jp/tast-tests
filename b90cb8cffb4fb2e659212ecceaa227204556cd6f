@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ff762d0_1a7cc8ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-08T00:04:57Z",
+      "side": 1,
+      "message": "Unfortunately no. See earlier comment: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2806648/6#message-66ce1e789d671bb86cf8f0a6d95d5ec318e4c598",
+      "parentUuid": "a30748c1_5e92c540",
+      "revId": "b90cb8cffb4fb2e659212ecceaa227204556cd6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8505ebf_13dc3555",
