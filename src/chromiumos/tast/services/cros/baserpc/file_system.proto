@@ -19,6 +19,9 @@ service FileSystem {
 
   // ReadFile reads the content of a file.
   rpc ReadFile (ReadFileRequest) returns (ReadFileResponse) {}
+
+  // WriteFile writes the content of a file.
+  rpc WriteFile (WriteFileRequest) returns (WriteFileResponse) {}
 }
 
 message ReadDirRequest {
@@ -50,6 +53,16 @@ message ReadFileRequest {
 message ReadFileResponse {
   Error error = 1;
   bytes content = 2;
+}
+
+message WriteFileRequest {
+  string name = 1;  // File path to the file to be written.
+  bytes content = 2;
+  uint32 mode = 3;
+}
+
+message WriteFileResponse {
+  Error error = 1;
 }
 
 // FileInfo contains attributes of a file.
