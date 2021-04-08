@@ -17,20 +17,35 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "ensureUI",
 		Desc:            "Ensure the ui service is running.",
-		Impl:            &ensureUIFixture{},
+		Impl:            &ensureUIFixture{running: true},
 		SetUpTimeout:    10 * time.Second,
 		TearDownTimeout: 10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:         "ensureNoUI",
+		Desc:         "Ensure the ui service is not running.",
+		Impl:         &ensureUIFixture{running: false},
+		SetUpTimeout: 30 * time.Second,
+	})
 }
 
 type ensureUIFixture struct {
+	running bool
 }
 
 func (f *ensureUIFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	if err := EnsureJobRunning(ctx, "ui"); err != nil {
-		s.Fatal("Failed to start ui: ", err)
+	if f.running {
+		if err := EnsureJobRunning(ctx, "ui"); err != nil {
+			s.Fatal("Failed to start ui: ", err)
+		}
+	} else {
+		if err := StopJob(ctx, "ui"); err != nil {
+			s.Fatal("Failed to start ui: ", err)
+		}
 	}
+
 	return nil
 }
 
