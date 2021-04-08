@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d840d00_775dada5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-04-08T03:51:56Z",
+      "side": 1,
+      "message": "Just want to confirm that landing this doesn\u0027t cause test flake on some new platforms in the same way that b:182942536 does. I believe that new platform still uses the same driver that you specified.\n\nLGTM.",
+      "revId": "bed3fa4dcee7557ac9d2b535804531791d173cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
