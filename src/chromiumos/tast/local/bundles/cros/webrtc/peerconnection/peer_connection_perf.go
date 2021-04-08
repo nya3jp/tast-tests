@@ -273,10 +273,14 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 
 	var gpuErr, cpuErr error
 	var wg sync.WaitGroup
-	wg.Add(2)
+	wg.Add(3)
 	go func() {
 		defer wg.Done()
 		gpuErr = graphics.MeasureGPUCounters(ctx, gpuMeasuring, p)
+	}()
+	go func() {
+		defer wg.Done()
+		gpuErr = graphics.MeasurePackageCStateCounters(ctx, gpuMeasuring, p)
 	}()
 	go func() {
 		defer wg.Done()
