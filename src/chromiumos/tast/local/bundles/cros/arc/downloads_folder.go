@@ -28,10 +28,15 @@ func init() {
 			"cros-arc-te@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
-		SoftwareDeps: []string{"android_p", "chrome"},
-		Timeout:      4 * time.Minute,
-		Fixture:      "arcBooted",
-		// TODO(b/147620213): Add similar test for ARCVM.
+		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
+		Timeout: 4 * time.Minute,
+		Fixture: "arcBooted",
 	})
 }
 
