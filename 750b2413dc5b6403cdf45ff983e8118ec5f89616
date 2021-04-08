@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b98f79d5_e668217e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-04-08T23:29:25Z",
+      "side": 1,
+      "message": "FYI, we do have graphicsNoChrome fixture which ensures the UI is stopped. (It does a little more to check if there\u0027re any graphics hang though)",
+      "revId": "750b2413dc5b6403cdf45ff983e8118ec5f89616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00260a85_681c5470",
@@ -65,6 +82,23 @@
       "writtenOn": "2021-04-08T22:17:02Z",
       "side": 1,
       "message": "s/start/stop/",
+      "revId": "750b2413dc5b6403cdf45ff983e8118ec5f89616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae69273_451a014d",
+        "filename": "src/chromiumos/tast/local/upstart/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-04-08T23:29:25Z",
+      "side": 1,
+      "message": "I think it is best to restart the UI in ensureNoUI. Most of the tests are expecting UI service running.",
       "revId": "750b2413dc5b6403cdf45ff983e8118ec5f89616",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
