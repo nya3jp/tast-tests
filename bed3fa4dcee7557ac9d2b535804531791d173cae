@@ -16,6 +16,41 @@
       "message": "Just want to confirm that landing this doesn\u0027t cause test flake on some new platforms in the same way that b:182942536 does. I believe that new platform still uses the same driver that you specified.\n\nLGTM.",
       "revId": "bed3fa4dcee7557ac9d2b535804531791d173cae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "217ccb6f_f19b8c0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-04-08T18:36:11Z",
+      "side": 1,
+      "message": "This is only adding permissible kernel versions, so it can\u0027t introduce flake. But yes, I think we\u0027re in the clear anyway. That overlay has just pinned which version of the Chrome OS kernel 5.10 it\u0027s using -- it\u0027s not actually using a different tree (e.g., an upstream kernel with a different driver path).",
+      "parentUuid": "8d840d00_775dada5",
+      "revId": "bed3fa4dcee7557ac9d2b535804531791d173cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d62323f_650426c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-04-08T18:36:11Z",
+      "side": 1,
+      "message": "thanks for looking!",
+      "revId": "bed3fa4dcee7557ac9d2b535804531791d173cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
