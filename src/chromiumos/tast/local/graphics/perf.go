@@ -41,6 +41,7 @@ func collectPerformanceCounters(ctx context.Context, interval time.Duration) (co
 		{"/sys/devices/i915/events/rcs0-busy", "i915/rcs0-busy/", "rcs"},
 		{"/sys/devices/i915/events/vcs0-busy", "i915/vcs0-busy/", "vcs"},
 		{"/sys/devices/i915/events/vecs0-busy", "i915/vecs0-busy/", "vecs"},
+		{"/sys/devices/i915/events/rc6-residency", "i915/rc6-residency/", "rc6"},
 	}
 
 	var eventsToCollect []string
@@ -70,6 +71,7 @@ func collectPerformanceCounters(ctx context.Context, interval time.Duration) (co
 	// Performance counter stats for 'system wide':
 	//
 	//             8215 M    i915/actual-frequency/
+	//       2001181274 ns   i915/rc6-residency/
 	//      17188646693 ns   i915/rcs0-busy/
 	//      11937916640 ns   i915/vcs0-busy/
 	//      12894570939 ns   i915/vecs0-busy/
@@ -163,6 +165,7 @@ func MeasureGPUCounters(ctx context.Context, t time.Duration, p *perf.Values) er
 	parseAndReportCounter(ctx, counters, "rcs", p)
 	parseAndReportCounter(ctx, counters, "vcs", p)
 	parseAndReportCounter(ctx, counters, "vecs", p)
+	parseAndReportCounter(ctx, counters, "rc6", p)
 
 	return nil
 }
