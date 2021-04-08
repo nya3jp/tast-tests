@@ -16,6 +16,23 @@
       "message": "I have decided to separate refactoring out from [1]. I think that this refactoring is reasonable by itself. After I land this refactoring in the code base, [1] will be a simpler CL.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2785646",
       "revId": "fdf75225624c6890ed049afd958faad26939434d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10f4b33a_e1f39fa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-04-08T07:28:53Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "fdf75225624c6890ed049afd958faad26939434d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
