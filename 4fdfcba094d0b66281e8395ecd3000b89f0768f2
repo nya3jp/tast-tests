@@ -22,6 +22,30 @@
       },
       "revId": "4fdfcba094d0b66281e8395ecd3000b89f0768f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daeea55a_5fe0b9b4",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-04-08T09:55:04Z",
+      "side": 1,
+      "message": "It\u0027s no worse than what we had before. In practice, only one window has a client view. The limit 4 is probably overkill.",
+      "parentUuid": "1d369992_2fbbcaba",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 76
+      },
+      "revId": "4fdfcba094d0b66281e8395ecd3000b89f0768f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
