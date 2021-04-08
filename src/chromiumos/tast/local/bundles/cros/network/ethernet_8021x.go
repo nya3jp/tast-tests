@@ -34,6 +34,7 @@ func init() {
 		// TODO(https://crbug.com/1195793, b/184564123): re-enable once shill crashes are fixed.
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wired_8021x"},
+		Fixture:      "ensureNoUI",
 
 		Params: []testing.Param{
 			{
