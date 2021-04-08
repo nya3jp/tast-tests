@@ -51,6 +51,24 @@
       "parentUuid": "bf219b3b_991430fe",
       "revId": "ae29ac7a92584e6e9cf90afd3c9d0e2000e4f116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1caeba89_f5fa1821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-04-08T03:50:56Z",
+      "side": 1,
+      "message": "Ah ok! the re-use of var name confused me.",
+      "parentUuid": "36299f6a_68771ac1",
+      "revId": "ae29ac7a92584e6e9cf90afd3c9d0e2000e4f116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
