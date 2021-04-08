@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32d9073a_25188518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-08T02:47:31Z",
+      "side": 1,
+      "message": "Guess the strings \"App utilizes the device display screen\" and \"Failed to utilize the device display screen\" already has the information for debugging. Hence this can be removed.",
+      "parentUuid": "06238208_4796b129",
+      "range": {
+        "startLine": 512,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 2
+      },
+      "revId": "ba89d6ea0d315eb9ca112ebfffe9474e5828b9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c75273d_dc9ac2b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 5

@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "633d7e4b_5f1e235c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-08T02:47:31Z",
+      "side": 1,
+      "message": "As the test fails now because of known bug. Please record this in CL description for future reference.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "10ed30611f34917b552a8f21985a159225b8ce01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3a5a1466_3e36eb8e",
@@ -14,6 +37,52 @@
       "writtenOn": "2021-04-07T17:29:57Z",
       "side": 1,
       "message": "Hi Renuga, Added BitLife, as app displays black bar on both arc-p and arc-r devices. Thanks.",
+      "revId": "10ed30611f34917b552a8f21985a159225b8ce01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c99a6552_1dca051c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-08T02:47:31Z",
+      "side": 1,
+      "message": "Avoid this and use info.DisplayWidth and info.DisplayHeight directly.",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 540,
+        "endChar": 42
+      },
+      "revId": "10ed30611f34917b552a8f21985a159225b8ce01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55793847_dde57c36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-08T02:47:31Z",
+      "side": 1,
+      "message": "As the intention is to verify if app is full screen when maximized, I think this should be just as below as there won\u0027t be a case where app is wider than display width.\n\nif appWidth \u003d\u003d info.DisplayWidth {\n    Just Log\n} else {\n    Fail and Log\n}",
+      "range": {
+        "startLine": 544,
+        "startChar": 3,
+        "endLine": 544,
+        "endChar": 74
+      },
       "revId": "10ed30611f34917b552a8f21985a159225b8ce01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
