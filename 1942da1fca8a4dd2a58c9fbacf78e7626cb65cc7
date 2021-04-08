@@ -50,6 +50,24 @@
       "message": "Get rid of this since it is only needed for power tests so that we skip on models that does not have battery or support battery discharging.",
       "revId": "1942da1fca8a4dd2a58c9fbacf78e7626cb65cc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "395375a5_a7bdc2e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-08T16:03:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8ae595f_a183a98a",
+      "revId": "1942da1fca8a4dd2a58c9fbacf78e7626cb65cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
