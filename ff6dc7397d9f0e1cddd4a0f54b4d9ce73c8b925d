@@ -22,6 +22,30 @@
       },
       "revId": "ff6dc7397d9f0e1cddd4a0f54b4d9ce73c8b925d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1696e7e5_ca035884",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-08T00:47:13Z",
+      "side": 1,
+      "message": "These fixtures will be created for separating input tests. Considering the scale of input tests, it is reasonable to use a isolate environment. Honestly I am not 100% sure if this fix can solve the problem, I am not familar how keyboard is simulated and if keeps state across user session. If not, I need to work to enhance the reset function of the fixture.\n\nAccording to the log https://00f74ba44b51242bb58bf86bab8829c890dccaaf9c-apidata.googleusercontent.com/download/storage/v1/b/chromeos-autotest-results/o/swarming-52bbe3ae3b4b3510%2Fautoserv_test%2Ftast%2Fresults%2Ffull.txt?jk\u003dAFshE3WArlF8QmWeZIkvsYpoSDfqO558ntPlzoYJajioaq9KLG4_YQmXd0EIJx-xnb4HiMhlfQsWjP-vEe10rBm3cRcO9XaBkxgu6oBbyXAnTpMwoeZJF5BgSwMWrRKvzcEA4D7i3MpuRo4r1TlAmXecWNiFIvaq4TisinoqWsNtt_6VdfzJ_HYrTNHE0un1cCsWKC4jp5uNgQWjiE2k7_KOvx8s_N345yuxQqur53nijnjkceHrISYfZqdHaIsFKS1bTyt7aRauEG4PwLDC9cvdbmmWPk4TyyzCdht9u2_KGI9FjOuknNVqjSGpP9f4PCJOyr9-DwqzSjXAI9IbKpcmWJDGmbjKKCob2ZMfukVPR5vSe4Gj7ygoxv_miVMBL2NLGGmub512TFRxArWRSD7j1iPuD5Vvp_n7gCazgbUprmO-ZTzYaqak6BpTIzD6x3kx7cScNQnlp0vIKvH2me-bkgDC18vzutobkgg_CBtAGN_MKaX3MPjvGZzzBsxxpITXnWZw9RXfFZGeiT0eyZPpImAf1OdrNavVp3mQVYwQEHhu01wr4O7Z5KKJeChAnGOq8xfRm1aWhM8qrAjfVEJFfwcYmoejCrl6qSWDRvPwcO6UODE23mIdaRuQdHGp51rAe8DAgwgiuWm74lr0IQ0mIeJ60Lp0fiLJ0dK8YG6SzlcI9gRGmZ2UlNQCJvT1bhpR5EodqTbTavKauVJqk9JuJLFuuAAlPHcHs3JOnPDOzYU2B5-mlPIkLImFDxekit3bZWqh0VzUc6nTOeYX9AZ2boc1NVyPGdG7hyR2qdwOBIPtiHGflo4rsHPNepJ1Z39MR-14TvWLuIq8GpCwxXGaJS_cxElFLUysCbiCC7slXwnt39AmpXMA-Jg896ulV3HK3WRkjl0s0YyXRud8PEpWnF1PrIRiwwKRL-t9CwauCvCG9RbbIGLc3A4WIG2GSssAJ9kowFhXK6Un2zwybc3xiVoCRREtzQfHoIL_oLrB0H5OgTsjYUup8J-VOumNI2wCSNgoeMTHcb2U4Jut0yFF4fx52oX59Q\u0026isca\u003d1, I am afraid the DUT keyboard is ruined by policy.KeyboardDefaultToFunctionKeys.",
+      "parentUuid": "0c450837_33a2adf0",
+      "range": {
+        "startLine": 42,
+        "startChar": 13,
+        "endLine": 42,
+        "endChar": 36
+      },
+      "revId": "ff6dc7397d9f0e1cddd4a0f54b4d9ce73c8b925d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
