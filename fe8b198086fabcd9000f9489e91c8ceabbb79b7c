@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f615dae9_d24107d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-08T03:44:15Z",
+      "side": 1,
+      "message": "likely need to \"Cq-Depend: chromium:2812638\". Otherwise, IIRC, unknown attributes will cause errors in build or test runs.",
+      "revId": "fe8b198086fabcd9000f9489e91c8ceabbb79b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f0d64ea_e4b652e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-08T03:44:15Z",
+      "side": 1,
+      "message": "nit: comment for the units i.e. seconds?",
+      "range": {
+        "startLine": 55,
+        "startChar": 17,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "fe8b198086fabcd9000f9489e91c8ceabbb79b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1a26f6e_f1c05217",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-08T03:44:15Z",
+      "side": 1,
+      "message": "This one looks dangerous, as the channel is closed in main thread. For example, if you get error and Fatal in configureAP, you can reach close(suspendErr) before the suspend ends. As suspendDuration is quite long, this can cause a potential panic in an unknown timing (might be after we exit from the test.)\n\nUsually, golang suggests to have the writer to close channels and you can unblock the channel write by allocating enough buffer in make.\n\nIn the case here, I\u0027ll suggest:\n1. not to reuse the channel for two suspends, so that the bg routine can close it.\n2. still wait for the suspend to end even we get error (e.g. in defer)\n\nI guess maybe the pattern used in DiscoverBSSID in local/bundles/cros/network/wifi_service.go can be applied here?",
+      "revId": "fe8b198086fabcd9000f9489e91c8ceabbb79b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ca5c53e_576a7531",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-08T03:44:15Z",
+      "side": 1,
+      "message": "Perhaps you can use s.DUT().WaitUnreachable(ctx)? SSH unreachable doesn\u0027t fully equal to suspended, but possibly a good enough event?",
+      "revId": "fe8b198086fabcd9000f9489e91c8ceabbb79b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
