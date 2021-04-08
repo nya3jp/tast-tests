@@ -22,6 +22,9 @@ service FileSystem {
 
   // WriteFile writes the content of a file.
   rpc WriteFile (WriteFileRequest) returns (WriteFileResponse) {}
+
+  // Remove removes the named file or (empty) directory.
+  rpc Remove (RemoveRequest) returns (RemoveResponse) {}
 }
 
 message ReadDirRequest {
@@ -62,6 +65,14 @@ message WriteFileRequest {
 }
 
 message WriteFileResponse {
+  Error error = 1;
+}
+
+message RemoveRequest {
+  string name = 1;  // Path to be removed.
+}
+
+message RemoveResponse {
   Error error = 1;
 }
 

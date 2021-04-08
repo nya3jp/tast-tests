@@ -107,6 +107,18 @@ func (c *Client) WriteFile(ctx context.Context, name string, content []byte, mod
 	return nil
 }
 
+// Remove removes the named file or (empty) directory.
+func (c *Client) Remove(ctx context.Context, name string) error {
+	res, err := c.fs.Remove(ctx, &baserpc.RemoveRequest{Name: name})
+	if err != nil {
+		return err
+	}
+	if res.Error != nil {
+		return decodeErr(res.Error)
+	}
+	return nil
+}
+
 // fileInfo wraps baserpc.FileInfo to implement os.FileInfo interface.
 type fileInfo struct {
 	pb *baserpc.FileInfo
