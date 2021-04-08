@@ -16,6 +16,46 @@
       "message": "Thanks Shuhei for reviewing. Please check the fixes.",
       "revId": "a14f0155596f472aa44f30879cb568752966ef3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3115588_51d22f3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-08T08:09:15Z",
+      "side": 1,
+      "message": "LGTM with one comment as a Tast reviewer. Alex, can you also take a look?\n",
+      "revId": "a14f0155596f472aa44f30879cb568752966ef3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c62016ad_a50776f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-08T08:09:15Z",
+      "side": 1,
+      "message": "\"defer resp.Body.Close()\" is still needed.\nhttps://golang.org/pkg/net/http/#Response",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 3
+      },
+      "revId": "a14f0155596f472aa44f30879cb568752966ef3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
