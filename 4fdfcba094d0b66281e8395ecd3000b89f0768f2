@@ -70,6 +70,30 @@
       },
       "revId": "4fdfcba094d0b66281e8395ecd3000b89f0768f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1a17b43_db559ad3",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-04-08T11:04:36Z",
+      "side": 1,
+      "message": "So why not continue the loop until you find a non-degenerate window, instead of returning an error the first time?",
+      "parentUuid": "f4bd0adb_43b5dbd2",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 76
+      },
+      "revId": "4fdfcba094d0b66281e8395ecd3000b89f0768f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
