@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f19f4a0_ab96508f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-04-09T13:12:13Z",
+      "side": 1,
+      "message": "The renaming is due to the fact that the test has been always using the physical keyboard, right?",
+      "revId": "e68eb1ca99a64d7168cf3aa9793b3492f003a9bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
