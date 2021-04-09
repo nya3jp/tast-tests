@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5778003b_d66e3a71",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-09T04:40:44Z",
+      "side": 1,
+      "message": "Maybe add an example code here?",
+      "revId": "1e6975d35a6450407b30da89c04d8ce145e1933a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "158882e5_9b6efaed",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-09T04:40:44Z",
+      "side": 1,
+      "message": "Probably need to put ScreenRecorder in the function name since it is not a method:\n\nScreenRecorderStopSaveRelease",
+      "range": {
+        "startLine": 176,
+        "startChar": 5,
+        "endLine": 176,
+        "endChar": 20
+      },
+      "revId": "1e6975d35a6450407b30da89c04d8ce145e1933a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
