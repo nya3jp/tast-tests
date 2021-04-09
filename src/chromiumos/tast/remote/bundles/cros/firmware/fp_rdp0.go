@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/remote/firmware/reporters"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -79,7 +80,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 
 	// TODO(chromium:1189908): Use library function once it's there.
 	// Prepare a temporary working directory on DUT.
-	tempdir, err := d.Command("mktemp", "-d", "/tmp/fingerprint_rdp0_XXXXXX").Output(ctx)
+	tempdir, err := d.Conn().Command("mktemp", "-d", "/tmp/fingerprint_rdp0_XXXXXX").Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to create remote temp directory: ", err)
 	}
@@ -87,7 +88,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	removeTempdirCtx := ctx
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-	defer d.Command("rm", "-r", tempdirPath).Run(removeTempdirCtx)
+	defer d.Conn().Command("rm", "-r", tempdirPath).Run(removeTempdirCtx, ssh.DumpLogOnError)
 
 	// Given:
 	// * Hardware write protect is disabled
@@ -132,13 +133,13 @@ func testRDP0(ctx context.Context, d *dut.DUT, buildFwFile, tempdirPath string, 
 		fileReadFromFlash = filepath.Join(tempdirPath, "test_rdp0_noremove.bin")
 		args = []string{"--read", "--noremove_flash_read_protect", fileReadFromFlash}
 	}
-	cmd := d.Command("flash_fp_mcu", args...)
-	if err := cmd.Run(ctx); err != nil {
+	cmd := d.Conn().Command("flash_fp_mcu", args...)
+	if err := cmd.Run(ctx, ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to read from flash")
 	}
 
 	testing.ContextLog(ctx, "Checking that value read matches the flashed version")
-	cmd = d.Command("cmp", buildFwFile, fileReadFromFlash)
+	cmd = d.Conn().Command("cmp", buildFwFile, fileReadFromFlash)
 	if err := cmd.Run(ctx); err != nil {
 		return errors.Wrap(err, "file read from flash does not match original fw file")
 	}
