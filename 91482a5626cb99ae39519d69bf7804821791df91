@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ea4aef3_5a17a832",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-09T07:25:22Z",
+      "side": 1,
+      "message": "nit: also set f.btsnoopCmd to nil",
+      "revId": "91482a5626cb99ae39519d69bf7804821791df91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e2d3710_13848435",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-09T07:25:22Z",
+      "side": 1,
+      "message": "Error, it should not prevent any further cleanup (if ever added).",
+      "range": {
+        "startLine": 469,
+        "startChar": 4,
+        "endLine": 469,
+        "endChar": 9
+      },
+      "revId": "91482a5626cb99ae39519d69bf7804821791df91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
