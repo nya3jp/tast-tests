@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -29,9 +30,19 @@ type ScreenRecorder struct {
 	result        string
 }
 
-// NewScreenRecorder creates a ScreenRecorder. It only needs to create one
-// ScreenRecorder during one test. It chooses the entire desktop as the media
-// stream.
+// NewScreenRecorder creates a ScreenRecorder.
+// It only needs to create one ScreenRecorder during one test.
+// It chooses the entire desktop as the media stream.
+// Example:
+//
+//   screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+//   if err != nil {
+//		s.Log("Failed to create ScreenRecorder: ", err)
+//   }
+//
+// To stop, save, and release the recorder:
+//    defer uiauto.ScreenRecorderStopSaveRelease(...)
+//
 func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenRecorder, error) {
 	expr := `({
 			chunks: [],
@@ -169,4 +180,19 @@ func (r *ScreenRecorder) Release(ctx context.Context) {
 		r.Stop(ctx)
 	}
 	r.videoRecorder.Release(ctx)
+}
+
+// ScreenRecorderStopSaveRelease stops, saves and releases the screen recorder.
+func ScreenRecorderStopSaveRelease(ctx context.Context, r *ScreenRecorder, fileName string) {
+	if r != nil {
+		if err := r.Stop(ctx); err != nil {
+			testing.ContextLogf(ctx, "Failed to stop recording: %s", err)
+		} else {
+			testing.ContextLogf(ctx, "Saving screen record to %s", fileName)
+			if err := r.SaveInBytes(ctx, fileName); err != nil {
+				testing.ContextLogf(ctx, "Failed to save screen record in bytes: %s", err)
+			}
+		}
+		r.Release(ctx)
+	}
 }
