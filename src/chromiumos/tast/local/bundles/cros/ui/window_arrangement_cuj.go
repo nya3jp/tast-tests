@@ -126,7 +126,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	var configs []cuj.MetricConfig
 	if !tabletMode {
 		configs = []cuj.MetricConfig{
-			cuj.NewLatencyMetricConfig("Ash.WorkspaceWindowResizer.TabDragging.PresentationTime.ClamshellMode"),
+			cuj.NewLatencyMetricConfig("Ash.TabDrag.PresentationTime.ClamshellMode"),
 			cuj.NewLatencyMetricConfig("Ash.InteractiveWindowResize.TimeToPresent"),
 			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.SingleWindow"),
 			cuj.NewCustomMetricConfig(
