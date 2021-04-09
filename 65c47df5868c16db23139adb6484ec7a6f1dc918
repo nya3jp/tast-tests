@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba1521b7_a729551a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-09T06:24:08Z",
+      "side": 1,
+      "message": "Thanks for the patch. Please submit after chrome contains your \"--bitrate\" CL.",
+      "revId": "65c47df5868c16db23139adb6484ec7a6f1dc918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
