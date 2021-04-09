@@ -119,6 +119,21 @@ func (c *Client) Remove(ctx context.Context, name string) error {
 	return nil
 }
 
+// TempDir creates a temporary directory. If pattern includes a "*", the
+// random string replaces the last "*". If dir is the empty string, TempDir uses
+// the default directory for temporary files. TempDir returns the name of the
+// new directory.
+func (c *Client) TempDir(ctx context.Context, dir, pattern string) (string, error) {
+	res, err := c.fs.TempDir(ctx, &baserpc.TempDirRequest{Dir: dir, Pattern: pattern})
+	if err != nil {
+		return "", err
+	}
+	if res.Error != nil {
+		return "", decodeErr(res.Error)
+	}
+	return res.Name, nil
+}
+
 // fileInfo wraps baserpc.FileInfo to implement os.FileInfo interface.
 type fileInfo struct {
 	pb *baserpc.FileInfo
