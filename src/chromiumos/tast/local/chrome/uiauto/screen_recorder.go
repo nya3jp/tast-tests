@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -169,4 +170,19 @@ func (r *ScreenRecorder) Release(ctx context.Context) {
 		r.Stop(ctx)
 	}
 	r.videoRecorder.Release(ctx)
+}
+
+// StopSaveRelease stops, saves and releases the screen recorder.
+func StopSaveRelease(ctx context.Context, r *ScreenRecorder, fileName string) {
+	if r != nil {
+		if err := r.Stop(ctx); err != nil {
+			testing.ContextLogf(ctx, "Failed to stop recording: %s", err)
+		} else {
+			testing.ContextLogf(ctx, "Saving screen record to %s", fileName)
+			if err := r.SaveInBytes(ctx, fileName); err != nil {
+				testing.ContextLogf(ctx, "Failed to save screen record in bytes: %s", err)
+			}
+		}
+		r.Release(ctx)
+	}
 }

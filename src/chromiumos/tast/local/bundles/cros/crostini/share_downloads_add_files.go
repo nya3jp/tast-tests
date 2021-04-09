@@ -130,19 +130,7 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 		s.Log("Failed to create ScreenRecorder: ", err)
 	}
 
-	defer func() {
-		if screenRecorder != nil {
-			if err := screenRecorder.Stop(ctx); err != nil {
-				s.Log("Failed to stop recording: ", err)
-			} else {
-				testing.ContextLogf(ctx, "Saving screen record to %s", s.OutDir())
-				if err := screenRecorder.SaveInBytes(ctx, filepath.Join(s.OutDir(), "shareDownloadsAddFilesSR.webm")); err != nil {
-					s.Log("Failed to save screen record in bytes: ", err)
-				}
-			}
-			screenRecorder.Release(ctx)
-		}
-	}()
+	defer uiauto.StopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "shareDownloadsAddFilesSR.webm"))
 
 	if screenRecorder != nil {
 		screenRecorder.Start(ctx, tconn)
