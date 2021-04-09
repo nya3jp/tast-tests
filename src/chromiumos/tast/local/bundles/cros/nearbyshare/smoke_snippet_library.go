@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"time"
 
-	"chromiumos/tast/local/android/adb"
+	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/testing"
 )
