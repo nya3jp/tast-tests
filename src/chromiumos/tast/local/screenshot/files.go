@@ -15,6 +15,11 @@ import (
 
 // screenshotPaths returns list of screenshot paths in Download folder.
 func screenshotPaths() ([]string, error) {
+	if _, err := os.Stat(filesapp.DownloadPath); errors.Is(err, os.ErrNotExist) {
+		// If Download folder does not exist, then there are no screenshots.
+		return nil, nil
+	}
+
 	re := regexp.MustCompile(`Screenshot.*png`)
 	var paths []string
 
