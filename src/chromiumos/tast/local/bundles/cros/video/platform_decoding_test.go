@@ -10,8 +10,8 @@ import (
 	"testing"
 
 	"chromiumos/tast/common/genparams"
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/media/caps"
 )
 
 // NB: If modifying any of the files or test specifications, be sure to
