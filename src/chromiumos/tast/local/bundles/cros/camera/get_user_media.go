@@ -48,10 +48,10 @@ func init() {
 				Val:  lacros.ChromeTypeChromeOS,
 			},
 			{
-				Name:      "lacros",
-				Fixture:   "chromeVideoLacros",
-				ExtraAttr: []string{"informational"},
-				ExtraData: []string{launcher.DataArtifact},
+				Name:              "lacros",
+				Fixture:           "chromeVideoLacros",
+				ExtraAttr:         []string{"informational"},
+				ExtraData:         []string{launcher.DataArtifact},
 				ExtraSoftwareDeps: []string{caps.BuiltinOrVividCamera, "camera_720p", "lacros"},
 				Timeout:           7 * time.Minute, // A lenient limit for launching Lacros Chrome.
 				Val:               lacros.ChromeTypeLacros,
