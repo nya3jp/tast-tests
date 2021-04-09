@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b227fe9d_f2e606c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-09T20:13:50Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "65c47df5868c16db23139adb6484ec7a6f1dc918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ce3bd28_66ae94ea",
@@ -48,6 +65,30 @@
       "writtenOn": "2021-04-09T20:02:04Z",
       "side": 1,
       "message": "nit: This can be caps like the rest.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 8
+      },
+      "revId": "65c47df5868c16db23139adb6484ec7a6f1dc918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfadc7af_ebc7053f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-09T20:13:50Z",
+      "side": 1,
+      "message": "good point. Are the other members (WebMName, Profile, etc...) public?\n\ncan they be private? If so, I\u0027d convert all of them to lowercase. \nIn any case, I\u0027d leave \"bitrate\" as it is (private, lowercase)... assuming there is no need to make it public.",
+      "parentUuid": "6ce3bd28_66ae94ea",
       "range": {
         "startLine": 49,
         "startChar": 1,
