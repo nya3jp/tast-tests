@@ -36,7 +36,8 @@ func init() {
 		Func:         WindowArrangementCUJ,
 		Desc:         "Measures the performance of critical user journey for window arrangements",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		// TODO(http://crbug/1032766): Test is disabled until cl/2813300 is landed.
+		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc", "chrome_internal"},
 		Vars:         []string{"record"},
 		Timeout:      10 * time.Minute,
