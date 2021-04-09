@@ -167,14 +167,15 @@ type daemonState struct {
 
 // FirmwareTest provides a common framework for fingerprint firmware tests.
 type FirmwareTest struct {
-	d              *dut.DUT
-	servo          *servo.Proxy
-	cl             *rpc.Client
-	rpcHint        *testing.RPCHint
-	fpBoard        FPBoardName
-	buildFwFile    string
-	upstartService platform.UpstartServiceClient
-	daemonState    []daemonState
+	d                        *dut.DUT
+	servo                    *servo.Proxy
+	cl                       *rpc.Client
+	rpcHint                  *testing.RPCHint
+	fpBoard                  FPBoardName
+	buildFwFile              string
+	upstartService           platform.UpstartServiceClient
+	daemonState              []daemonState
+	needsRebootAfterFlashing bool
 }
 
 // NewFirmwareTest creates and initializes a new fingerprint firmware test.
@@ -218,6 +219,11 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 		return nil, errors.Wrap(err, "failed to validate build firmware file")
 	}
 
+	needsReboot, err := NeedsRebootAfterFlashing(ctx, d)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to determine if reboot is needed")
+	}
+
 	if err := InitializeKnownState(ctx, d, outDir, pxy); err != nil {
 		return nil, errors.Wrap(err, "initializing known state failed")
 	}
@@ -229,14 +235,15 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 	}
 
 	return &FirmwareTest{
-			d:              d,
-			servo:          pxy,
-			cl:             cl,
-			rpcHint:        hint,
-			fpBoard:        fpBoard,
-			buildFwFile:    buildFwFile,
-			upstartService: upstartService,
-			daemonState:    daemonState,
+			d:                        d,
+			servo:                    pxy,
+			cl:                       cl,
+			rpcHint:                  hint,
+			fpBoard:                  fpBoard,
+			buildFwFile:              buildFwFile,
+			upstartService:           upstartService,
+			daemonState:              daemonState,
+			needsRebootAfterFlashing: needsReboot,
 		},
 		nil
 }
@@ -294,6 +301,22 @@ func (t *FirmwareTest) RPCClient() *rpc.Client {
 // BuildFwFile gets the firmware file.
 func (t *FirmwareTest) BuildFwFile() string {
 	return t.buildFwFile
+}
+
+// NeedsRebootAfterFlashing describes whether DUT needs to be rebooted after flashing.
+func (t *FirmwareTest) NeedsRebootAfterFlashing() bool {
+	return t.needsRebootAfterFlashing
+}
+
+// NeedsRebootAfterFlashing returns true if device needs to be rebooted after flashing.
+// Zork cannot rebind cros-ec-uart after flashing, so an AP reboot is
+// needed to talk to FPMCU. See b/170213489.
+func NeedsRebootAfterFlashing(ctx context.Context, d *dut.DUT) (bool, error) {
+	hostBoard, err := reporters.New(d).Board(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to query host board")
+	}
+	return hostBoard == "zork", nil
 }
 
 // stopDaemons stops the specified daemons and returns their original state.
