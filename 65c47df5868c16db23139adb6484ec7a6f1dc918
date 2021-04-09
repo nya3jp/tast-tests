@@ -16,6 +16,23 @@
       "message": "Thanks for the patch. Please submit after chrome contains your \"--bitrate\" CL.",
       "revId": "65c47df5868c16db23139adb6484ec7a6f1dc918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aea2606f_f53c6d83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-09T06:57:58Z",
+      "side": 1,
+      "message": "Submit it for the responding chrome CL is already included in 13901.0.0/91.0.4469.0.",
+      "revId": "65c47df5868c16db23139adb6484ec7a6f1dc918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
