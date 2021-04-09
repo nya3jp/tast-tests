@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7ba1be0_b127d41a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-09T20:09:02Z",
+      "side": 1,
+      "message": "I have updated the present CL to remove the overview enter/exit animation smoothness measurement from SplitViewResizePerf. I think the present CL is better than updating SplitViewResizePerf to use animation.html, because then the performance data would show a regression across all boards.",
+      "parentUuid": "e8a98b65_86090968",
+      "revId": "0be4bdbd2c6d886fcafeb7976bf33efcc24cf53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e5c6b15_93bebb5a",
@@ -102,6 +120,30 @@
       "writtenOn": "2021-04-03T00:26:03Z",
       "side": 1,
       "message": "This looks error-prone as lacros window title may change eventually.  Why not:\n  isBlank :\u003d func(w *ash.Window) bool { return strings.Contain(w.Title, \"about:blank\") }",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 75
+      },
+      "revId": "0be4bdbd2c6d886fcafeb7976bf33efcc24cf53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "055af726_8e04b64f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-09T20:09:02Z",
+      "side": 1,
+      "message": "I have removed this.",
+      "parentUuid": "4e5c6b15_93bebb5a",
       "range": {
         "startLine": 92,
         "startChar": 0,
@@ -129,6 +171,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d2588c6_ec9d4fac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-09T20:09:02Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go;drc\u003dc4d7c4b2d407ef25f3cf73535c4241aa82a8fd81;l\u003d120",
+      "parentUuid": "6ccadfb6_0dd16d90",
+      "revId": "0be4bdbd2c6d886fcafeb7976bf33efcc24cf53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41922b27_16a4f3f5",
@@ -146,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a39cfba_f226b0b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-09T20:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41922b27_16a4f3f5",
+      "revId": "0be4bdbd2c6d886fcafeb7976bf33efcc24cf53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dbbeb48_b7e6a7be",
@@ -159,6 +237,30 @@
       "writtenOn": "2021-04-03T00:26:03Z",
       "side": 1,
       "message": "This is a bit tricky.  I hope we really don\u0027t need to have that part, as I commented above.\n\nI have a few questions:\n* in split-view mode wo/ blank, one window will be placed as left-snapped. So for \"2 windows\" case, there are actually just 1 window animating in the overview window.  I think the number of windows within overview mode should be aligned.\n* since it is looping over, after all of 2-windows cases finish, there would become 3 windows. Then 8 windows scenarios will start; which ends up with animating with 9 windows. I don\u0027t think that\u0027s wanted.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 4
+      },
+      "revId": "0be4bdbd2c6d886fcafeb7976bf33efcc24cf53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "833e2879_1dde3c1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-09T20:09:02Z",
+      "side": 1,
+      "message": "Now I have modified the logic so that in all test cases, the total number of windows is the value of the outer loop variable.",
+      "parentUuid": "5dbbeb48_b7e6a7be",
       "range": {
         "startLine": 231,
         "startChar": 0,

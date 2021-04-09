@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2318eba_37b8c21c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-09T20:09:02Z",
+      "side": 1,
+      "message": "\u003e I think the timeout should have enough buffer for the safety. But by seeing the sheet, can we separate the timeout, like 15 mins for lacros and 10 mins for the other?\n\nDone\n\n\u003e Also, why does lacros scenario take that long?  Each of 8 windows scenario is clearly much slower.\n\nI think that is to be expected because ui.OverviewPerf.lacros reports relatively poor performance as you can see on Crosbolt.\n\n\u003e I didn\u0027t mean exact measurements, just a short list with the important and long steps, that can show the expectations.\n\nWhen someone modifies the tests, they will be expected to run the tests for verification, whereupon Tast will report how long each test took, which is more helpful than anything I can write in code comments.\nhttps://docs.google.com/spreadsheets/d/1FCT0OKano--0bgc87V4RokSKK-N7WiPUK6TQA1L7nmY/edit?usp\u003dsharing\u0026resourcekey\u003d0-Q4j8DczVa_ncAwKzSWuAqQ",
+      "parentUuid": "5068ed6c_2a2eb9a7",
+      "revId": "1b28fde810f2df1ee6d8f92023326fdf589103cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb725dd4_27880b5a",
