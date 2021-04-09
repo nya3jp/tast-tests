@@ -106,6 +106,18 @@ func (fs *FileSystemService) Remove(ctx context.Context, req *baserpc.RemoveRequ
 	return &res, nil
 }
 
+// RemoveAll removes the path and any children it contains.
+func (fs *FileSystemService) RemoveAll(ctx context.Context, req *baserpc.RemoveRequest) (*baserpc.RemoveResponse, error) {
+	var res baserpc.RemoveResponse
+	res.Error = encodeErr(func() error {
+		if err := os.RemoveAll(req.Name); err != nil {
+			return err
+		}
+		return nil
+	}())
+	return &res, nil
+}
+
 // TempDir creates a temporary directory.
 func (fs *FileSystemService) TempDir(ctx context.Context, req *baserpc.TempDirRequest) (*baserpc.TempDirResponse, error) {
 	var res baserpc.TempDirResponse

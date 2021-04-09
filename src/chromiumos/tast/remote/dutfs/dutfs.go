@@ -119,6 +119,18 @@ func (c *Client) Remove(ctx context.Context, name string) error {
 	return nil
 }
 
+// RemoveAll removes the path and any children it contains.
+func (c *Client) RemoveAll(ctx context.Context, name string) error {
+	res, err := c.fs.RemoveAll(ctx, &baserpc.RemoveRequest{Name: name})
+	if err != nil {
+		return err
+	}
+	if res.Error != nil {
+		return decodeErr(res.Error)
+	}
+	return nil
+}
+
 // TempDir creates a temporary directory. If pattern includes a "*", the
 // random string replaces the last "*". If dir is the empty string, TempDir uses
 // the default directory for temporary files. TempDir returns the name of the
