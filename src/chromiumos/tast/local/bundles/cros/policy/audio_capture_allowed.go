@@ -115,6 +115,7 @@ func AudioCaptureAllowed(ctx context.Context, s *testing.State) {
 					s.Error("Unexpected dialog to ask for microphone permission found")
 				}
 
+				// TODO(crbug.com/1197511): investigate why this is needed.
 				// Wait for a second before clicking the allow button as the click
 				// won't be registered otherwise.
 				testing.Sleep(ctx, time.Second)
