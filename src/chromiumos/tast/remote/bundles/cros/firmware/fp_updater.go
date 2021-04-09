@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/shutil"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -88,7 +89,7 @@ func flashOldRWFirmware(ctx context.Context, s *testing.State, d *dut.DUT) error
 	}
 	flashCmd := []string{"flashrom", "--fast-verify", "-w", oldFirmwarePathOnDut, "-i", "EC_RW", "-p", "ec:type=fp"}
 	testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(flashCmd))
-	if err := d.Command(flashCmd[0], flashCmd[1:]...).Run(ctx); err != nil {
+	if err := d.Conn().Command(flashCmd[0], flashCmd[1:]...).Run(ctx, ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "flashrom failed")
 	}
 	return nil
@@ -122,7 +123,7 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 
 	testing.ContextLog(ctx, "Invoking fp updater")
 	// The updater issues a reboot after update so don't expect response.
-	if err := d.Command("bio_fw_updater").Start(ctx); err != nil {
+	if err := d.Conn().Command("bio_fw_updater").Start(ctx); err != nil {
 		s.Fatal("Failed to execute bio_fw_updater: ", err)
 	}
 	s.Log("Waiting for update and reboot")

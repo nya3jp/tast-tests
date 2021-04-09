@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/platform"
 	"chromiumos/tast/shutil"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -477,19 +478,19 @@ func readFmapSection(ctx context.Context, d *dut.DUT, buildFwFile, section strin
 	// Prepare a temporary file because dump_map only writes the
 	// value read from a section to a file (will not just print it to
 	// stdout).
-	tempdir, err := d.Command("mktemp", "-d", "/tmp/fingerprint_dump_fmap_XXXXXX").Output(ctx)
+	tempdir, err := d.Conn().Command("mktemp", "-d", "/tmp/fingerprint_dump_fmap_XXXXXX").Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to create remote temp directory")
 	}
 	tempdirPath := strings.TrimSpace(string(tempdir))
-	defer d.Command("rm", "-r", tempdirPath).Run(ctx)
+	defer d.Conn().Command("rm", "-r", tempdirPath).Run(ctx, ssh.DumpLogOnError)
 
 	outputPath := filepath.Join(tempdirPath, section)
-	if err := d.Command("dump_fmap", "-x", buildFwFile, fmt.Sprintf("%s:%s", section, outputPath)).Run(ctx); err != nil {
+	if err := d.Conn().Command("dump_fmap", "-x", buildFwFile, fmt.Sprintf("%s:%s", section, outputPath)).Run(ctx, ssh.DumpLogOnError); err != nil {
 		return "", errors.Wrap(err, "failed to run dump_fmap")
 	}
 
-	out, err := d.Command("cat", outputPath).Output(ctx)
+	out, err := d.Conn().Command("cat", outputPath).Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to read dump_fmap output")
 	}
@@ -499,7 +500,7 @@ func readFmapSection(ctx context.Context, d *dut.DUT, buildFwFile, section strin
 
 // readFirmwareKeyID reads the key id of a firmware file on device.
 func readFirmwareKeyID(ctx context.Context, d *dut.DUT, buildFwFile string) (string, error) {
-	out, err := d.Command("futility", "show", buildFwFile).Output(ctx)
+	out, err := d.Conn().Command("futility", "show", buildFwFile).Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to run futility on device")
 	}
@@ -513,7 +514,7 @@ func readFirmwareKeyID(ctx context.Context, d *dut.DUT, buildFwFile string) (str
 
 // calculateSha256sum calculates the sha256sum of a file on device.
 func calculateSha256sum(ctx context.Context, d *dut.DUT, buildFwFile string) (string, error) {
-	out, err := d.Command("sha256sum", buildFwFile).Output(ctx)
+	out, err := d.Conn().Command("sha256sum", buildFwFile).Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to calculate sha256sum on device")
 	}
@@ -522,7 +523,7 @@ func calculateSha256sum(ctx context.Context, d *dut.DUT, buildFwFile string) (st
 
 // boardFromCrosConfig returns the fingerprint board name from cros_config.
 func boardFromCrosConfig(ctx context.Context, d *dut.DUT) (FPBoardName, error) {
-	out, err := d.Command("cros_config", "/fingerprint", "board").Output(ctx)
+	out, err := d.Conn().Command("cros_config", "/fingerprint", "board").Output(ctx, ssh.DumpLogOnError)
 	return FPBoardName(out), err
 }
 
@@ -547,7 +548,7 @@ func Board(ctx context.Context, d *dut.DUT) (FPBoardName, error) {
 // FirmwarePath returns the path to the fingerprint firmware file on device.
 func FirmwarePath(ctx context.Context, d *dut.DUT, fpBoard FPBoardName) (string, error) {
 	cmd := fmt.Sprintf("ls %s%s*.bin", fingerprintFirmwarePathBase, fpBoard)
-	out, err := d.Command("bash", "-c", cmd).Output(ctx)
+	out, err := d.Conn().Command("bash", "-c", cmd).Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
 		return "", err
 	}
@@ -572,7 +573,7 @@ func FlashFirmware(ctx context.Context, d *dut.DUT) error {
 	}
 	flashCmd := []string{"flash_fp_mcu", fpFirmwarePath}
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(flashCmd))
-	if err := d.Command(flashCmd[0], flashCmd[1:]...).Run(ctx); err != nil {
+	if err := d.Conn().Command(flashCmd[0], flashCmd[1:]...).Run(ctx, ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "flash_fp_mcu failed")
 	}
 	return nil
@@ -580,7 +581,7 @@ func FlashFirmware(ctx context.Context, d *dut.DUT) error {
 
 // InitializeEntropy initializes the anti-rollback block in RO firmware.
 func InitializeEntropy(ctx context.Context, d *dut.DUT) error {
-	if err := d.Command("bio_wash", "--factory_init").Run(ctx); err != nil {
+	if err := d.Conn().Command("bio_wash", "--factory_init").Run(ctx, ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to initialize entropy")
 	}
 	return nil
@@ -591,7 +592,7 @@ func CheckFirmwareIsFunctional(ctx context.Context, d *dut.DUT) ([]byte, error) 
 	testing.ContextLog(ctx, "Checking firmware is functional")
 	versionCmd := []string{"ectool", "--name=cros_fp", "version"}
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(versionCmd))
-	return d.Command(versionCmd[0], versionCmd[1:]...).Output(ctx)
+	return d.Conn().Command(versionCmd[0], versionCmd[1:]...).Output(ctx, ssh.DumpLogOnError)
 }
 
 // ReimageFPMCU flashes the FPMCU completely and initializes entropy.
@@ -649,7 +650,7 @@ func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.P
 	}
 	// TODO(b/116396469): Add error checking once it's fixed.
 	// This command can return error even on success, so ignore error for now.
-	_ = d.Command("ectool", "--name=cros_fp", "flashprotect", swWPArg).Run(ctx)
+	_ = d.Conn().Command("ectool", "--name=cros_fp", "flashprotect", swWPArg).Run(ctx)
 	// TODO(b/116396469): "flashprotect enable" command is slow, so wait for
 	// it to complete before attempting to reboot.
 	testing.Sleep(ctx, 2*time.Second)
@@ -671,10 +672,10 @@ func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.P
 func RebootFpmcu(ctx context.Context, d *dut.DUT, bootTo FWImageType) error {
 	testing.ContextLog(ctx, "Rebooting FPMCU")
 	// This command returns error even on success, so ignore error. b/116396469
-	_ = d.Command("ectool", "--name=cros_fp", "reboot_ec").Run(ctx)
+	_ = d.Conn().Command("ectool", "--name=cros_fp", "reboot_ec").Run(ctx)
 	if bootTo == ImageTypeRO {
 		testing.Sleep(ctx, 500*time.Millisecond)
-		err := d.Command("ectool", "--name=cros_fp", "rwsigaction", "abort").Run(ctx)
+		err := d.Conn().Command("ectool", "--name=cros_fp", "rwsigaction", "abort").Run(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to abort rwsig")
 		}
@@ -713,7 +714,7 @@ func WaitForRunningFirmwareImage(ctx context.Context, d *dut.DUT, image FWImageT
 func RunningFirmwareCopy(ctx context.Context, d *dut.DUT) (FWImageType, error) {
 	versionCmd := []string{"ectool", "--name=cros_fp", "version"}
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(versionCmd))
-	out, err := d.Command(versionCmd[0], versionCmd[1:]...).Output(ctx)
+	out, err := d.Conn().Command(versionCmd[0], versionCmd[1:]...).Output(ctx)
 	if err != nil {
 		return FWImageType(""), errors.Wrap(err, "failed to query FPMCU version")
 	}
@@ -729,7 +730,7 @@ func RunningFirmwareCopy(ctx context.Context, d *dut.DUT) (FWImageType, error) {
 func RunningRWVersion(ctx context.Context, d *dut.DUT) (string, error) {
 	versionCmd := []string{"ectool", "--name=cros_fp", "version"}
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(versionCmd))
-	out, err := d.Command(versionCmd[0], versionCmd[1:]...).Output(ctx)
+	out, err := d.Conn().Command(versionCmd[0], versionCmd[1:]...).Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to query FPMCU version")
 	}
@@ -741,7 +742,7 @@ func RunningRWVersion(ctx context.Context, d *dut.DUT) (string, error) {
 func RollbackInfo(ctx context.Context, d *dut.DUT) ([]byte, error) {
 	cmd := []string{"ectool", "--name=cros_fp", "rollbackinfo"}
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd))
-	out, err := d.Command(cmd[0], cmd[1:]...).Output(ctx)
+	out, err := d.Conn().Command(cmd[0], cmd[1:]...).Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
 		return []byte{}, errors.Wrap(err, "failed to query FPMCU rollbackinfo")
 	}
@@ -780,7 +781,7 @@ func AddEntropy(ctx context.Context, d *dut.DUT, reset bool) error {
 		cmd = append(cmd, "reset")
 	}
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd))
-	return d.Command(cmd[0], cmd[1:]...).Run(ctx)
+	return d.Conn().Command(cmd[0], cmd[1:]...).Run(ctx)
 }
 
 // parseColonDelimitedOutput parses colon delimited information to a map.

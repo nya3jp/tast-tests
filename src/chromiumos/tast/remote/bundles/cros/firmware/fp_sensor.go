@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/platform"
 	"chromiumos/tast/shutil"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -67,7 +68,7 @@ func FpSensor(ctx context.Context, s *testing.State) {
 
 	fpencstatusCmd := []string{"ectool", "--name=cros_fp", "fpencstatus"}
 	testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(fpencstatusCmd))
-	out, err := d.Command(fpencstatusCmd[0], fpencstatusCmd[1:]...).Output(ctx)
+	out, err := d.Conn().Command(fpencstatusCmd[0], fpencstatusCmd[1:]...).Output(ctx, ssh.DumpLogOnError)
 
 	if err != nil {
 		s.Fatalf("%q failed: %v", shutil.EscapeSlice(fpencstatusCmd), err)
