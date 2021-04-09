@@ -22,8 +22,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: QuickUnlockModeWhitelist,
-		Desc: "Checks that the deprecated policy still works",
+		Func: QuickUnlockModeAllowlist,
+		Desc: "Checks that quick unlock options are enabled or disabled based on the policy value",
 		Contacts: []string{
 			"janagrill@google.com", // Test author
 			"chromeos-commercial-stability@google.com",
@@ -34,7 +34,7 @@ func init() {
 	})
 }
 
-func QuickUnlockModeWhitelist(ctx context.Context, s *testing.State) {
+func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*fixtures.FixtData).Chrome
 	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
@@ -58,42 +58,41 @@ func QuickUnlockModeWhitelist(ctx context.Context, s *testing.State) {
 			name:            "unset",
 			wantRestriction: restriction.Disabled,
 			policies: []policy.Policy{
-				&policy.QuickUnlockModeWhitelist{Stat: policy.StatusUnset},
+				&policy.QuickUnlockModeAllowlist{Stat: policy.StatusUnset},
 			},
 		},
 		{
 			name:            "empty",
 			wantRestriction: restriction.Disabled,
 			policies: []policy.Policy{
-				&policy.QuickUnlockModeWhitelist{Val: []string{}},
+				&policy.QuickUnlockModeAllowlist{Val: []string{}},
 			},
 		},
 		{
 			name:            "all",
 			wantRestriction: restriction.None,
 			policies: []policy.Policy{
-				&policy.QuickUnlockModeWhitelist{Val: []string{"all"}},
+				&policy.QuickUnlockModeAllowlist{Val: []string{"all"}},
 			},
 		},
 		{
 			name:            "pin",
 			wantRestriction: restriction.None,
 			policies: []policy.Policy{
-				&policy.QuickUnlockModeWhitelist{Val: []string{"PIN"}},
+				&policy.QuickUnlockModeAllowlist{Val: []string{"PIN"}},
 			},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name+".txt")
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
 			}
 
-			// Update policies. Use |ServeAndRefresh| instead of |ServeAndVerify| to
-			// avoid the error due to the policy being deprecated.
-			if err := policyutil.ServeAndRefresh(ctx, fdms, cr, param.policies); err != nil {
+			// Update policies.
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, param.policies); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
