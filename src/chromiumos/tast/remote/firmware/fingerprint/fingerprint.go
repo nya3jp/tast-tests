@@ -765,12 +765,30 @@ func CheckRollbackState(ctx context.Context, d *dut.DUT, expected RollbackState)
 		return err
 	}
 	rollbackInfoMap := parseColonDelimitedOutput(string(rollbackInfo))
-	if rollbackInfoMap["Rollback block id"] != strconv.Itoa(expected.BlockID) ||
-		rollbackInfoMap["Rollback min version"] != strconv.Itoa(expected.MinVersion) ||
-		rollbackInfoMap["RW rollback version"] != strconv.Itoa(expected.RWVersion) {
-		testing.ContextLogf(ctx, "Rollback info: %q", string(rollbackInfo))
-		return errors.New("Rollback not set to initial value")
+
+	var actual RollbackState
+	blockID, err := strconv.Atoi(rollbackInfoMap["Rollback block id"])
+	if err != nil {
+		return errors.Wrap(err, "failed to convert rollback block id")
 	}
+	actual.BlockID = blockID
+
+	minVersion, err := strconv.Atoi(rollbackInfoMap["Rollback min version"])
+	if err != nil {
+		return errors.Wrap(err, "failed to convert rollback min version")
+	}
+	actual.MinVersion = minVersion
+
+	rwVersion, err := strconv.Atoi(rollbackInfoMap["RW rollback version"])
+	if err != nil {
+		return errors.Wrap(err, "failed to convert RW rollback version")
+	}
+	actual.RWVersion = rwVersion
+
+	if actual != expected {
+		return errors.Errorf("Rollback not set correctly, expected: %q, actual: %q", expected, actual)
+	}
+
 	return nil
 }
 
