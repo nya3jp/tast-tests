@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "828c1393_2049d8a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-09T02:54:02Z",
+      "side": 1,
+      "message": "+yenlin as he is the author of WifiService.\n\nXibin, in the past, most of WiFi tests are remote so we implemented most of the DUT manipulation in WifiService, which is a gRPC service that allows Tast remote test to control DUT from remote test host.\n\nNow you have local tests that need to manipulate WiFi, we shall think code duplication, i.e., move the common part from WifiService to tast/local/shill.",
+      "revId": "5e5633658173aec331542c20efe63a9af147a0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1600b0d_ee23b8a9",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-09T02:54:02Z",
+      "side": 1,
+      "message": "Dedupe: you can use WifiInterface() instead.",
+      "revId": "5e5633658173aec331542c20efe63a9af147a0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "261b228b_1982c9d1",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-09T02:54:02Z",
+      "side": 1,
+      "message": "The function looks like SetWifiEnabled() in http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/wifi_service.go\n\nIf local test wants to use it as well, we shall deduplicate code. Perhaps change WifiService.SetWifiEnabled() to use the implementation here.\n\nSteven and Yenlin, WDYT?",
+      "revId": "5e5633658173aec331542c20efe63a9af147a0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f792dc2d_b43d3d33",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-09T02:54:02Z",
+      "side": 1,
+      "message": "You can see \nfunc (s *WifiService) Connect(...)\nin /chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+      "range": {
+        "startLine": 205,
+        "startChar": 25,
+        "endLine": 205,
+        "endChar": 34
+      },
+      "revId": "5e5633658173aec331542c20efe63a9af147a0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4710fdc9_50e9c11f",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-09T02:54:02Z",
+      "side": 1,
+      "message": "The chunk is quite similar to discoverService() in \n/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 2
+      },
+      "revId": "5e5633658173aec331542c20efe63a9af147a0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
