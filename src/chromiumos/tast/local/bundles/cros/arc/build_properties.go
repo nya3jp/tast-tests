@@ -217,7 +217,7 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 // First API level is expected to be the same as current SDK version if the
 // device name doesn't exist in this map.
 var expectedFirstAPILevelMap = map[string]int{
-	// N boards (sorted alphabetically.)
+	// Boards initially shipped with ARC N (sorted alphabetically.)
 	"asuka":    arc.SDKN,
 	"banon":    arc.SDKN,
 	"betty":    arc.SDKN,
@@ -263,7 +263,7 @@ var expectedFirstAPILevelMap = map[string]int{
 	"ultima":   arc.SDKN,
 	"wizpig":   arc.SDKN,
 	"yuna":     arc.SDKN,
-	// P boards (sorted alphabetically.)
+	// Boards initially shipped with ARC P (sorted alphabetically.)
 	"asurada":   arc.SDKP,
 	"atlas":     arc.SDKP,
 	"dedede":    arc.SDKP,
@@ -282,4 +282,6 @@ var expectedFirstAPILevelMap = map[string]int{
 	"trogdor":   arc.SDKP,
 	"volteer":   arc.SDKP,
 	"zork":      arc.SDKP,
+	// Note: This test is public. Do not add new boards unless the board's
+	// overlay already exists in src/overlay/overlay-<board>/.
 }
