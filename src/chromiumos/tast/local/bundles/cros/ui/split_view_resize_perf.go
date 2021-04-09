@@ -44,22 +44,24 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name:    "clamshell_mode",
 				Val:     splitViewResizeClamshell,
 				Fixture: "chromeLoggedIn",
+				Timeout: 4 * time.Minute,
 			},
 			{
 				ExtraSoftwareDeps: []string{"tablet_mode"},
 				Val:               splitViewResizeTablet,
 				Fixture:           "chromeLoggedIn",
+				Timeout:           5 * time.Minute,
 			},
 			{
 				Name:              "webui",
 				ExtraSoftwareDeps: []string{"tablet_mode"},
 				Val:               splitViewResizeWebUI,
+				Timeout:           5 * time.Minute,
 			},
 		},
 	})
