@@ -198,6 +198,30 @@
       },
       "revId": "04bbb7970469f1d6a8156e00bce23a077fdcde95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9d05577_fc475eb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1216364
+      },
+      "writtenOn": "2021-04-09T12:20:58Z",
+      "side": 1,
+      "message": "Thanks! It\u0027s easy to miss a small true/false diff, especially when adding new tests by copying existing ones (speaking from personal experience here :D)",
+      "parentUuid": "34204dc8_a506a884",
+      "range": {
+        "startLine": 323,
+        "startChar": 1,
+        "endLine": 327,
+        "endChar": 26
+      },
+      "revId": "04bbb7970469f1d6a8156e00bce23a077fdcde95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
