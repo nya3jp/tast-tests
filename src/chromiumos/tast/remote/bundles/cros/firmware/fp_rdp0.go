@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware/fingerprint"
-	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -105,7 +104,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	//   entire firmware out of flash and it should exactly match the
 	//   firmware that we flashed for testing.
 	testing.ContextLog(ctx, "Reading firmware without modifying RDP level")
-	if err := testRDP0(ctx, d, t.BuildFwFile(), tempdirPath, false); err != nil {
+	if err := testRDP0(ctx, d, t.BuildFwFile(), tempdirPath, false, t.NeedsRebootAfterFlashing()); err != nil {
 		s.Fatal("Failed to validate RDP0 without changing RDP level: ", err)
 	}
 
@@ -120,13 +119,13 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	//   entire firmware out of flash and it should exactly match the
 	//   firmware that we flashed for testing.
 	testing.ContextLog(ctx, "Reading firmware while setting RDP to level 0")
-	if err := testRDP0(ctx, d, t.BuildFwFile(), tempdirPath, true); err != nil {
+	if err := testRDP0(ctx, d, t.BuildFwFile(), tempdirPath, true, t.NeedsRebootAfterFlashing()); err != nil {
 		s.Fatal("Failed to validate RDP0 while setting RDP to level 0: ", err)
 	}
 }
 
 // testRDP0 tests RDP0 functionality by trying to read from flash.
-func testRDP0(ctx context.Context, d *dut.DUT, buildFwFile, tempdirPath string, removeFlashReadProtect bool) error {
+func testRDP0(ctx context.Context, d *dut.DUT, buildFwFile, tempdirPath string, removeFlashReadProtect, needsReboot bool) error {
 	var fileReadFromFlash string
 	var args []string
 	if removeFlashReadProtect {
@@ -148,17 +147,13 @@ func testRDP0(ctx context.Context, d *dut.DUT, buildFwFile, tempdirPath string, 
 		return errors.Wrap(err, "file read from flash does not match original fw file")
 	}
 
-	hostBoard, err := reporters.New(d).Board(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to query host board")
-	}
-	// On zork, an AP reboot is needed after using flash_fp_mcu.
-	if hostBoard == "zork" {
+	if needsReboot {
 		testing.ContextLog(ctx, "Rebooting")
 		if err := d.Reboot(ctx); err != nil {
 			return errors.Wrap(err, "failed to reboot DUT")
 		}
 	}
+
 	if _, err := fingerprint.CheckFirmwareIsFunctional(ctx, d); err != nil {
 		return errors.Wrap(err, "firmware is not functional after reading flash")
 	}
