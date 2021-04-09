@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "554629a9_e8110558",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-04-09T03:47:06Z",
+      "side": 1,
+      "message": "The CL is submitting, so mark as resolved for now. Will add it if needed.",
+      "parentUuid": "f615dae9_d24107d6",
+      "revId": "fe8b198086fabcd9000f9489e91c8ceabbb79b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f0d64ea_e4b652e5",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-08T03:44:15Z",
       "side": 1,
       "message": "nit: comment for the units i.e. seconds?",
+      "range": {
+        "startLine": 55,
+        "startChar": 17,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "fe8b198086fabcd9000f9489e91c8ceabbb79b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c025ae7_5df35950",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-04-09T03:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f0d64ea_e4b652e5",
       "range": {
         "startLine": 55,
         "startChar": 17,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72b0bea2_575e66fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-04-09T03:47:06Z",
+      "side": 1,
+      "message": "Good point. Wrap the logics into bgSuspend function.",
+      "parentUuid": "f1a26f6e_f1c05217",
+      "revId": "fe8b198086fabcd9000f9489e91c8ceabbb79b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ca5c53e_576a7531",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-04-08T03:44:15Z",
       "side": 1,
       "message": "Perhaps you can use s.DUT().WaitUnreachable(ctx)? SSH unreachable doesn\u0027t fully equal to suspended, but possibly a good enough event?",
+      "revId": "fe8b198086fabcd9000f9489e91c8ceabbb79b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c403fc81_6e33b864",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-04-09T03:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ca5c53e_576a7531",
       "revId": "fe8b198086fabcd9000f9489e91c8ceabbb79b7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
