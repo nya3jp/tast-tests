@@ -8,11 +8,11 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/lacros/launcher"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/media/vm"
 	"chromiumos/tast/local/webrtc"
@@ -48,10 +48,10 @@ func init() {
 				Val:  lacros.ChromeTypeChromeOS,
 			},
 			{
-				Name:      "lacros",
-				Fixture:   "chromeVideoLacros",
-				ExtraAttr: []string{"informational"},
-				ExtraData: []string{launcher.DataArtifact},
+				Name:              "lacros",
+				Fixture:           "chromeVideoLacros",
+				ExtraAttr:         []string{"informational"},
+				ExtraData:         []string{launcher.DataArtifact},
 				ExtraSoftwareDeps: []string{caps.BuiltinOrVividCamera, "camera_720p", "lacros"},
 				Timeout:           7 * time.Minute, // A lenient limit for launching Lacros Chrome.
 				Val:               lacros.ChromeTypeLacros,

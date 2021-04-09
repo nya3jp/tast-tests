@@ -8,12 +8,12 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/lacros/launcher"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"

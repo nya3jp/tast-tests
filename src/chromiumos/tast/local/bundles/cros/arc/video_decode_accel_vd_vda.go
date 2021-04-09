@@ -8,7 +8,7 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/media/decoding"
 	"chromiumos/tast/testing"
 )

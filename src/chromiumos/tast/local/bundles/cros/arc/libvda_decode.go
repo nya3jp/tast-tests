@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/arc/libvda"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
 

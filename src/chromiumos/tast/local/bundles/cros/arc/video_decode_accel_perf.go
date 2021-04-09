@@ -7,9 +7,9 @@ package arc
 import (
 	"context"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/arc/c2e2etest"
 	"chromiumos/tast/local/bundles/cros/arc/video"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
 

@@ -18,12 +18,12 @@ import (
 	"github.com/pixelbender/go-matroska/matroska"
 	"github.com/rwcarlsen/goexif/exif"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
 

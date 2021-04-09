@@ -10,10 +10,10 @@ import (
 
 	"golang.org/x/sync/errgroup"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/webrtc/mediarecorder"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/constants"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
