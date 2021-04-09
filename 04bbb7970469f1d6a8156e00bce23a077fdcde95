@@ -127,6 +127,30 @@
       },
       "revId": "04bbb7970469f1d6a8156e00bce23a077fdcde95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f92d28de_0c5afa8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1216364
+      },
+      "writtenOn": "2021-04-09T08:45:34Z",
+      "side": 1,
+      "message": "lgtm for my end, but might be worth double checking w/ sweyn or jesse/opal since I don\u0027t see us having any power tests that include presentation and/or a another app running side-by-side\n\nDoes collecting power metrics add much overhead/noise? Or is it something we could always collect (and get rid of the param from the test infra)?\n\nSomething to resolve later though, just adding here as a note",
+      "parentUuid": "4d5776e8_75e3f370",
+      "range": {
+        "startLine": 168,
+        "startChar": 14,
+        "endLine": 168,
+        "endChar": 19
+      },
+      "revId": "04bbb7970469f1d6a8156e00bce23a077fdcde95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
