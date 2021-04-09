@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -16,6 +17,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/conference"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 )
@@ -36,9 +38,20 @@ func init() {
 			"ui.meet_password",
 			// Static Google meet room url.
 			"ui.meet_url",
+			"ui.meet_url_two",
+			"ui.meet_url_small",
+			"ui.meet_url_large",
+			"ui.meet_url_class",
 		},
 	})
 }
+
+const (
+	twoRoomSize   = 2
+	smallRoomSize = 5
+	largeRoomSize = 17
+	classRoomSize = 38
+)
 
 type ConferenceService struct {
 	s *testing.ServiceState
@@ -57,10 +70,6 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 	if !ok {
 		return nil, errors.New("failed to get variable ui.cuj_password")
 	}
-	meetURL, ok := s.s.Var("ui.meet_url")
-	if !ok {
-		return nil, errors.New("failed to get variable ui.meet_url")
-	}
 	meetAccount, ok := s.s.Var("ui.meet_account")
 	if !ok {
 		return nil, errors.New("failed to get variable ui.meet_account")
@@ -68,6 +77,25 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 	meetPassword, ok := s.s.Var("ui.meet_password")
 	if !ok {
 		return nil, errors.New("failed to get variable ui.meet_password")
+	}
+
+	var urlVar string
+	switch req.RoomSize {
+	case twoRoomSize:
+		urlVar = "ui.meet_url_two"
+	case smallRoomSize:
+		urlVar = "ui.meet_url_small"
+	case largeRoomSize:
+		urlVar = "ui.meet_url_large"
+	case classRoomSize:
+		urlVar = "ui.meet_url_class"
+	}
+	meetURL, ok := s.s.Var(urlVar)
+	if !ok {
+		// if specific meeting url is not found, try the general meet url var.
+		if meetURL, ok = s.s.Var("ui.meet_url"); !ok {
+			return nil, errors.Errorf("failed to get variable ui.meet_url or %s", urlVar)
+		}
 	}
 
 	testing.ContextLog(ctx, "Start google meet scenario")
@@ -119,7 +147,11 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 	// Shorten context a bit to allow for cleanup if Run fails.
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
+
 	if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, tabletMode, req.ExtendedDisplay); err != nil {
+		// Dump the UI tree to the service/faillog subdirectory. Don't dump directly into outDir because it might be overridden
+		// by the test faillog after pulled back to remote server.
+		faillog.DumpUITreeWithScreenshotOnError(ctx, filepath.Join(outDir, "service"), func() bool { return true }, cr, "ui_dump")
 		return nil, errors.Wrap(err, "failed to run MeetConference")
 	}
 
