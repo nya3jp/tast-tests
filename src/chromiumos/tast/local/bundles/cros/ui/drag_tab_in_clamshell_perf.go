@@ -28,7 +28,8 @@ func init() {
 		Func:         DragTabInClamshellPerf,
 		Desc:         "Measures the presentation time of dragging a tab in clamshell mode",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		// TODO(http://crbug/1032766): Test is disabled until cl/2813300 is landed.
+		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
