@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cef5804_eab2e77c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-09T15:33:57Z",
+      "side": 1,
+      "message": "Thanks for the link. I think keeping the fixture as simple as possible would be best for other teams trying to debug issues.",
+      "parentUuid": "b98f79d5_e668217e",
+      "revId": "750b2413dc5b6403cdf45ff983e8118ec5f89616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00260a85_681c5470",
@@ -82,6 +100,24 @@
       "writtenOn": "2021-04-08T20:20:41Z",
       "side": 1,
       "message": "Does this timeout make sense? In my experimentation with stopping and starting chrome in tests previously is that sometimes when chrome is hung, it can take quite a bit of time for the process to finally be killed. It might also make sense to modify the timeouts for ensureUI as well.",
+      "revId": "750b2413dc5b6403cdf45ff983e8118ec5f89616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de575a18_6e9224ab",
+        "filename": "src/chromiumos/tast/local/upstart/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-09T15:33:57Z",
+      "side": 1,
+      "message": "I\u0027ll leave it at 10 modify it if anything doesn\u0027t work.",
+      "parentUuid": "00260a85_681c5470",
       "revId": "750b2413dc5b6403cdf45ff983e8118ec5f89616",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +139,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a89f4bfd_9a57e53a",
+        "filename": "src/chromiumos/tast/local/upstart/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-09T15:33:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0710639f_959460ee",
+      "revId": "750b2413dc5b6403cdf45ff983e8118ec5f89616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aae69273_451a014d",
@@ -116,6 +170,24 @@
       "writtenOn": "2021-04-08T23:29:25Z",
       "side": 1,
       "message": "I think it is best to restart the UI in ensureNoUI. Most of the tests are expecting UI service running.",
+      "revId": "750b2413dc5b6403cdf45ff983e8118ec5f89616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f5a0696_4d2ba5f5",
+        "filename": "src/chromiumos/tast/local/upstart/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-09T15:33:57Z",
+      "side": 1,
+      "message": "I think that makes sense. I was trying to follow https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Startup-and-shutdown, but not having the ui running might break some fundamental unstated assumptions.",
+      "parentUuid": "aae69273_451a014d",
       "revId": "750b2413dc5b6403cdf45ff983e8118ec5f89616",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
