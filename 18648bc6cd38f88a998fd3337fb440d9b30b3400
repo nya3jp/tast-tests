@@ -34,6 +34,24 @@
       "parentUuid": "3b7f8c43_8dab2720",
       "revId": "18648bc6cd38f88a998fd3337fb440d9b30b3400",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e495db_67db4fc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2021-04-09T22:07:05Z",
+      "side": 1,
+      "message": "I\u0027m still somewhat confused here. In cases where the test fails without the 30 second Sleep, is the app running but happens to be in a later page of the task manager? I\u0027d think ui.WaitUntilExists would wait long enough though.   Or does the Sleep help by avoiding some weird race condition where the app ends up over the task maanger and that causes the test code that tries to scan the task manager to fail incorrectly? Or something else?\n\nI looked at crostini/task_manager.go and it seems to get by without the Sleep.\n\nIf we can\u0027t sort this out, is there a shorter sleep value that works instead?",
+      "parentUuid": "6d4909bc_5a67db88",
+      "revId": "18648bc6cd38f88a998fd3337fb440d9b30b3400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
