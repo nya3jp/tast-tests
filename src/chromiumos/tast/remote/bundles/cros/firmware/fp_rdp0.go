@@ -59,21 +59,25 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	// initialization to ensure that we get an exact match between
 	// the original firmware that was flashed and the value that is
 	// read.
+	testing.ContextLog(ctx, "Force flashing original FP firmware")
 	if err := fingerprint.FlashFirmware(ctx, d); err != nil {
 		s.Fatal("Failed to flash original FP firmware: ", err)
 	}
 
 	// Wait for FPMCU to boot to RW. Fail if it does not.
+	testing.ContextLog(ctx, "Waiting for FPMCU to reboot to RW")
 	if err := fingerprint.WaitForRunningFirmwareImage(ctx, d, fingerprint.ImageTypeRW); err != nil {
 		s.Fatal("Failed to boot to RW image")
 	}
 
 	// Rollback should be unset for this test.
+	testing.ContextLog(ctx, "Validating initial rollback state")
 	if err := fingerprint.CheckRollbackState(ctx, d, fingerprint.RollbackState{
 		BlockID: 0, MinVersion: 0, RWVersion: 0}); err != nil {
 		s.Fatal("Failed to validate rollback state: ", err)
 	}
 
+	testing.ContextLog(ctx, "Checking that firmware is functional")
 	if _, err := fingerprint.CheckFirmwareIsFunctional(ctx, d); err != nil {
 		s.Fatal("Firmware is not functional after initialization: ", err)
 	}
@@ -150,6 +154,7 @@ func testRDP0(ctx context.Context, d *dut.DUT, buildFwFile, tempdirPath string, 
 	}
 	// On zork, an AP reboot is needed after using flash_fp_mcu.
 	if hostBoard == "zork" {
+		testing.ContextLog(ctx, "Rebooting")
 		if err := d.Reboot(ctx); err != nil {
 			return errors.Wrap(err, "failed to reboot DUT")
 		}
