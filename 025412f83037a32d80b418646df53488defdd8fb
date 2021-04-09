@@ -34,6 +34,24 @@
       "parentUuid": "af4524b9_32075b30",
       "revId": "025412f83037a32d80b418646df53488defdd8fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddfa7de5_315fc1c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-09T00:47:25Z",
+      "side": 1,
+      "message": "Just an update: it does look like that failure was a one-off. There is also a known issue with servo functioning which I\u0027m told is being tracked here: b:184784576",
+      "parentUuid": "67afc87e_e5944c55",
+      "revId": "025412f83037a32d80b418646df53488defdd8fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
