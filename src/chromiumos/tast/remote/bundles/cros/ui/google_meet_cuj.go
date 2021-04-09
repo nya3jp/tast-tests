@@ -53,11 +53,11 @@ func init() {
 					Size: conference.ClassRoomSize,
 				},
 			}, {
-				Name:    "plus_small",
+				Name:    "plus_large",
 				Timeout: time.Minute * 10,
 				Val: conference.TestParameters{
 					Tier: "plus",
-					Size: conference.SmallRoomSize,
+					Size: conference.LargeRoomSize,
 				},
 			}, {
 				Name:    "plus_class",
