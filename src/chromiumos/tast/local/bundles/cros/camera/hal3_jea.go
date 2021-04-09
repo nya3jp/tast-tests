@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -18,14 +19,31 @@ func init() {
 		Func:         HAL3JEA,
 		Desc:         "Verifies JPEG encode accelerator works in USB HALv3",
 		Contacts:     []string{"hywu@chromium.org", "shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational", "group:camera-postsubmit", "group:camera-libcamera"},
-		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.HWEncodeJPEG, caps.BuiltinUSBCamera},
+		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.HWEncodeJPEG},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{{
+			Val:               "usb",
+			ExtraSoftwareDeps: []string{caps.BuiltinUSBCamera},
+			ExtraAttr:         []string{"group:camera-postsubmit"},
+		}, {
+			Name:              "mipi",
+			Val:               "mipi",
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("gru")),
+			ExtraSoftwareDeps: []string{caps.BuiltinMIPICamera},
+		}},
 	})
 }
 
 func HAL3JEA(ctx context.Context, s *testing.State) {
-	if err := hal3.RunTest(ctx, hal3.JEATestConfig(s.OutDir())); err != nil {
-		s.Error("Test failed: ", err)
+	usbOnly := s.Param().(string) == "usb"
+	if usbOnly {
+		if err := hal3.RunTest(ctx, hal3.JEAUSBTestConfig(s.OutDir())); err != nil {
+			s.Error("Test failed: ", err)
+		}
+	} else {
+		if err := hal3.RunTest(ctx, hal3.JEATestConfig(s.OutDir())); err != nil {
+			s.Error("Test failed: ", err)
+		}
 	}
 }
