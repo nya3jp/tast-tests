@@ -33,6 +33,23 @@
       "message": "I wait for review by rnanjappan per the shadow reviewer process.",
       "revId": "74cc958bb54f757ddb90f3b41f1fb6cf80c3c634",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "805e379c_b91beec7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-04-09T08:00:57Z",
+      "side": 1,
+      "message": "It is used in tast-tests-private\n\nhttps://source.corp.google.com/chromeos_internal/src/platform/tast-tests-private/src/chromiumos/tast/local/bundles/crosint/graphics/patrace.go;l\u003d339?q\u003dRunTrace%20p:chromeos_.*\n\nThe idea is to allow traces in both the public and the private repo.",
+      "revId": "74cc958bb54f757ddb90f3b41f1fb6cf80c3c634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
