@@ -84,6 +84,23 @@
       "message": "The test is failing in the Cq for some reason.",
       "revId": "6536f3585520eef8fc2c0c470ef912d5e243f93c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f681e39_37d195cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-09T09:17:32Z",
+      "side": 1,
+      "message": "It\u0027s failing when trying to click the allow button, so my assumption would be it has the same problem as the AudioCaptureAllowed policy and needs to sleep for a second before clicking the button.",
+      "revId": "6536f3585520eef8fc2c0c470ef912d5e243f93c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
