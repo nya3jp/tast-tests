@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ec3df78_e80f3f7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-09T09:17:32Z",
+      "side": 0,
+      "message": "// Wait for a second before clicking the allow button as the click\n// won\u0027t be registered otherwise.\ntesting.Sleep(ctx, time.Second)",
+      "revId": "81f852a179a38c81207eb39cbae128c7af30179d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
