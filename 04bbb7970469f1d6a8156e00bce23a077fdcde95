@@ -33,6 +33,29 @@
       "message": "lgtm\n\nOnce we think the CL is ready, add tast-owners@google.com to seek for a +2 since Mukai-san is OOO.",
       "revId": "04bbb7970469f1d6a8156e00bce23a077fdcde95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c0f3654_c362c6eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1216364
+      },
+      "writtenOn": "2021-04-09T07:14:15Z",
+      "side": 1,
+      "message": "intentionally false?",
+      "range": {
+        "startLine": 168,
+        "startChar": 14,
+        "endLine": 168,
+        "endChar": 19
+      },
+      "revId": "04bbb7970469f1d6a8156e00bce23a077fdcde95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
