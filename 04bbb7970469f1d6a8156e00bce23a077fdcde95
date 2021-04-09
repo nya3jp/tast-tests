@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a56c6bc0_e9db0d6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-09T08:35:49Z",
+      "side": 1,
+      "message": "It says false in the doc go/cros-meet-tests. We can change it later if we want.",
+      "parentUuid": "58838262_2c11e20d",
+      "range": {
+        "startLine": 163,
+        "startChar": 14,
+        "endLine": 163,
+        "endChar": 19
+      },
+      "revId": "04bbb7970469f1d6a8156e00bce23a077fdcde95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c0f3654_c362c6eb",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-04-09T07:14:15Z",
       "side": 1,
       "message": "intentionally false?",
+      "range": {
+        "startLine": 168,
+        "startChar": 14,
+        "endLine": 168,
+        "endChar": 19
+      },
+      "revId": "04bbb7970469f1d6a8156e00bce23a077fdcde95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5776e8_75e3f370",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-09T08:35:49Z",
+      "side": 1,
+      "message": "True for only power tests. I don\u0027t think we need to collect power metrics for this test?",
+      "parentUuid": "2c0f3654_c362c6eb",
       "range": {
         "startLine": 168,
         "startChar": 14,
