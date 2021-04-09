@@ -15,9 +15,9 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/android/adb"
 	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"

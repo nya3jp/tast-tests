@@ -17,10 +17,10 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android"
-	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"

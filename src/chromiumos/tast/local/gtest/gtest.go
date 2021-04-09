@@ -16,9 +16,9 @@ import (
 	"strconv"
 	"strings"
 
+	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
