@@ -1,6 +1,98 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5cabe70_dcbb86c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-09T14:33:46Z",
+      "side": 1,
+      "message": "nit: you actually rename virtual keyboard",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "e68eb1ca99a64d7168cf3aa9793b3492f003a9bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40851184_edc783d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-09T14:33:46Z",
+      "side": 1,
+      "message": "nit: what about having another subject:\n\ninputs: rename VirtualKeyboardQuickEmoji",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "e68eb1ca99a64d7168cf3aa9793b3492f003a9bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c22cfa5d_85afebce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-09T14:33:46Z",
+      "side": 1,
+      "message": "nit: can you please describe why do you rename it?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "e68eb1ca99a64d7168cf3aa9793b3492f003a9bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd25fc3_2ef61464",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-09T14:33:46Z",
+      "side": 1,
+      "message": "nit: please insert command you used for testing, e.g. tast run ...",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "e68eb1ca99a64d7168cf3aa9793b3492f003a9bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6f19f4a0_ab96508f",
@@ -14,6 +106,23 @@
       "writtenOn": "2021-04-09T13:12:13Z",
       "side": 1,
       "message": "The renaming is due to the fact that the test has been always using the physical keyboard, right?",
+      "revId": "e68eb1ca99a64d7168cf3aa9793b3492f003a9bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d91cd71a_961bed68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-09T14:33:46Z",
+      "side": 1,
+      "message": "LGTM % nits",
       "revId": "e68eb1ca99a64d7168cf3aa9793b3492f003a9bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
