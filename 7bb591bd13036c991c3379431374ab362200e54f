@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8f770da_41f3cf69",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-09T06:36:51Z",
+      "side": 1,
+      "message": "Just put this as code:\ndefer uiauto.ScreenRecorderStopSaveRelease(...)",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 79
+      },
+      "revId": "7bb591bd13036c991c3379431374ab362200e54f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
