@@ -270,9 +270,7 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 	t.servo.Close(ctx)
 
 	if err := t.cl.Close(ctx); err != nil && firstErr == nil {
-		// TODO(https://crbug.com/1196734): this always fails with "context canceled",
-		//  so disabling for now
-		// firstErr = err
+		firstErr = err
 	}
 
 	return firstErr
