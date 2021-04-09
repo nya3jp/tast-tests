@@ -14,12 +14,12 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"

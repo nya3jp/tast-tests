@@ -7,8 +7,8 @@ package video
 import (
 	"context"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/video/decode"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
 

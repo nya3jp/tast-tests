@@ -10,9 +10,9 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/remote/bundles/cros/camera/pre"
 	"chromiumos/tast/rpc"
 	pb "chromiumos/tast/services/cros/camerabox"

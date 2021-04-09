@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
@@ -15,7 +16,6 @@ import (
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
 

@@ -11,10 +11,10 @@ import (
 	"syscall"
 	"time"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"

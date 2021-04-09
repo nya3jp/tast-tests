@@ -10,11 +10,11 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/vm"
 	"chromiumos/tast/local/sysutil"

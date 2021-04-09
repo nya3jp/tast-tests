@@ -15,11 +15,11 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/power"

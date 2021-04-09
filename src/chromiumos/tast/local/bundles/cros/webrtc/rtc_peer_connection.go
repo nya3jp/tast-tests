@@ -7,9 +7,9 @@ package webrtc
 import (
 	"context"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/webrtc/peerconnection"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
 
