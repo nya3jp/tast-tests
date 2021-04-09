@@ -62,10 +62,19 @@ func JDATestConfig(outDir string) TestConfig {
 	}
 }
 
+// JEAUSBTestConfig returns test config for running HAL3JEA test on USB HAL.
+func JEAUSBTestConfig(outDir string) TestConfig {
+	return TestConfig{
+		CameraHALs:     []string{"usb"},
+		GtestFilter:    "*/Camera3SimpleStillCaptureTest.TakePictureTest/0",
+		ForceJPEGHWEnc: true,
+		OutDir:         outDir,
+	}
+}
+
 // JEATestConfig returns test config for running HAL3JEA test.
 func JEATestConfig(outDir string) TestConfig {
 	return TestConfig{
-		CameraHALs:     []string{"usb"},
 		GtestFilter:    "*/Camera3SimpleStillCaptureTest.TakePictureTest/0",
 		ForceJPEGHWEnc: true,
 		OutDir:         outDir,
