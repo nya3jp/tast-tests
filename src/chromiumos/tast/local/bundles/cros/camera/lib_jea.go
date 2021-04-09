@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"path/filepath"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/gtest"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"

@@ -7,12 +7,12 @@ package camera
 import (
 	"context"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
 
