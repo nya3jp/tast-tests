@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a684fb_ff83401e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-04-09T19:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46e872c0_4007da30",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 95
+      },
+      "revId": "3ad5f3a48a357b7e8a01f1bfba589ab0209fe5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e5539d7_45ca0f1e",
@@ -194,6 +218,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b6926ba_db1049c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-04-09T19:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "051f1788_909c0a90",
+      "range": {
+        "startLine": 74,
+        "startChar": 23,
+        "endLine": 74,
+        "endChar": 37
+      },
+      "revId": "3ad5f3a48a357b7e8a01f1bfba589ab0209fe5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69a5ae9a_0d221544",
@@ -235,6 +283,30 @@
         "startChar": 30,
         "endLine": 77,
         "endChar": 51
+      },
+      "revId": "3ad5f3a48a357b7e8a01f1bfba589ab0209fe5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a8b2c5c_fa9924e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-04-09T19:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69a5ae9a_0d221544",
+      "range": {
+        "startLine": 77,
+        "startChar": 61,
+        "endLine": 77,
+        "endChar": 69
       },
       "revId": "3ad5f3a48a357b7e8a01f1bfba589ab0209fe5f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
