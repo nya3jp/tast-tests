@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46bf8d37_f2bcff99",
+        "filename": "src/chromiumos/tast/local/upstart/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-09T21:43:09Z",
+      "side": 1,
+      "message": "I added this check to ensure that we don\u0027t start chrome between tests unless specified.",
+      "revId": "4b04e579e971b6235ad7503e2e9f1f30b3cb0110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
