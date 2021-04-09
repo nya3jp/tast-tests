@@ -19,8 +19,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VirtualKeyboardQuickEmoji,
-		Desc:         "Checks that right click input field and select emoji will trigger virtual keyboard",
+		Func:         PhysicalKeyboardEmoji,
+		Desc:         "Checks that right click input field and select emoji with physical keyboard",
 		Contacts:     []string{"jopalmer@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome"},
@@ -35,7 +35,7 @@ func init() {
 		}}})
 }
 
-func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
+func PhysicalKeyboardEmoji(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
