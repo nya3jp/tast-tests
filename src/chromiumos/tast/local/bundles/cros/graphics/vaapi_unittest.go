@@ -10,10 +10,10 @@ import (
 	"os"
 	"path/filepath"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/binsetup"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
