@@ -68,6 +68,17 @@ func (c *Client) Stat(ctx context.Context, name string) (os.FileInfo, error) {
 	return fileInfo{res.Info}, nil
 }
 
+// Exists returns true if the path (file or dir) specified by name exists.
+func (c *Client) Exists(ctx context.Context, name string) (bool, error) {
+	if _, err := c.Stat(ctx, name); err != nil {
+		if os.IsNotExist(err) {
+			return false, nil
+		}
+		return false, err
+	}
+	return true, nil
+}
+
 // ReadFile reads the file specified by name and returns its contents.
 func (c *Client) ReadFile(ctx context.Context, name string) ([]byte, error) {
 	res, err := c.fs.ReadFile(ctx, &baserpc.ReadFileRequest{Name: name})
