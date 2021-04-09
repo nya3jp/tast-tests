@@ -40,21 +40,29 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 	ui := uiauto.New(tconn)
 	meetAccount := conf.account
 
-	// The Chrome browser would ask for camera and microphone permissions
-	// before joining Google Meet conference. allowPerm allows both of camera
-	// and audio permissions.
+	//  allowPerm allows camera, microphone and notification if browser asks for the permissions.
 	allowPerm := func(ctx context.Context) error {
-		dismissButton := nodewith.Name("Dismiss").Role(role.Button)
 		allowButton := nodewith.Name("Allow").Role(role.Button)
-		notification := nodewith.Name("Show notifications").First()
-		if err := ui.WaitUntilExists(dismissButton)(ctx); err == nil {
-			if err := ui.LeftClickUntil(allowButton, ui.Gone(dismissButton))(ctx); err != nil {
-				return errors.Wrap(err, "failed to allow permissions")
-			}
-			if err := ui.WaitUntilExists(notification)(ctx); err == nil {
-				if err := ui.LeftClick(allowButton)(ctx); err != nil {
-					return errors.Wrap(err, "failed to allow permissions")
+		dismissButton := nodewith.Name("Dismiss").Role(role.Button)
+		avPerm := nodewith.NameRegex(regexp.MustCompile(".*Use your (microphone|camera).*")).ClassName("RootView").Role(role.AlertDialog).First()
+		notiPerm := nodewith.NameContaining("Show notifications").ClassName("RootView").Role(role.AlertDialog)
+
+		for _, step := range []struct {
+			name   string
+			finder *nodewith.Finder
+			button *nodewith.Finder
+		}{
+			{"dismiss permission prompt", dismissButton, dismissButton},
+			{"allow microphone and camera", avPerm, allowButton.Ancestor(avPerm)},
+			{"allow notifications", notiPerm, allowButton.Ancestor(notiPerm)},
+		} {
+			if err := ui.WithTimeout(4 * time.Second).WaitUntilExists(step.finder)(ctx); err == nil {
+				// Immediatly clicking the allow button sometimes doesn't work. Sleep 2 seconds.
+				if err := uiauto.Combine(step.name, ui.Sleep(2*time.Second), ui.LeftClick(step.button), ui.WaitUntilGone(step.finder))(ctx); err != nil {
+					return err
 				}
+			} else {
+				testing.ContextLog(ctx, "No action is required to ", step.name)
 			}
 		}
 		return nil
@@ -71,28 +79,59 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		return nil
 	}
 
-	// Using existed conference-test account for Google Meet testing,
-	// and add the test account if it doesn't add in the DUT before.
-	addMeetAccount := func(ctx context.Context) error {
+	// Entern account email and password.
+	enterAccount := func(ctx context.Context) error {
 		kb, err := input.Keyboard(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to initialize keyboard input")
 		}
 		defer kb.Close()
 
+		emailContent := nodewith.NameContaining(meetAccount).Editable()
+		emailField := nodewith.Name("Email or phone").Role(role.TextField)
+		emailFieldFocused := nodewith.Name("Email or phone").Role(role.TextField).Focused()
+		nextButton := nodewith.Name("Next").Role(role.Button)
+		passwordField := nodewith.Name("Enter your password").Role(role.TextField)
+		passwordFieldFocused := nodewith.Name("Enter your password").Role(role.TextField).Focused()
+		iAgree := nodewith.Name("I agree").Role(role.Button)
+
+		var actions []uiauto.Action
+		if err := ui.WaitUntilExists(emailContent)(ctx); err != nil {
+			// Email has not been entered into the text box yet.
+			actions = append(actions,
+				// Make sure text area is focused before typing. This is especially necessary on low-end DUTs.
+				ui.LeftClickUntil(emailField, ui.Exists(emailFieldFocused)),
+				kb.TypeAction(meetAccount),
+			)
+		}
+		actions = append(actions,
+			ui.LeftClick(nextButton),
+			// Make sure text area is focused before typing. This is especially necessary on low-end DUTs.
+			ui.LeftClickUntil(passwordField, ui.Exists(passwordFieldFocused)),
+			kb.TypeAction(conf.password),
+			ui.LeftClick(nextButton),
+			ui.LeftClick(iAgree),
+		)
+		if err := uiauto.Combine("enter email and password",
+			actions...,
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to enter account info")
+		}
+		return nil
+	}
+
+	// Using existed conference-test account for Google Meet testing,
+	// and add the test account if it doesn't add in the DUT before.
+	addMeetAccount := func(ctx context.Context) error {
 		useAnotherAccount := nodewith.Name("Use another account").First()
 		myAccounts := nodewith.Name("My accounts").First()
 		viewAccounts := nodewith.Name("View accounts").Role(role.Button)
 
-		if err := uiauto.Combine("Use Another Account",
-			ui.WaitUntilExists(useAnotherAccount),
-			ui.Sleep(3*time.Second),
-			ui.LeftClick(useAnotherAccount),
-		)(ctx); err != nil {
+		if err := ui.LeftClick(useAnotherAccount)(ctx); err != nil {
 			return err
 		}
 
-		if err := ui.WaitUntilExists(viewAccounts)(ctx); err == nil {
+		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(viewAccounts)(ctx); err == nil {
 			if err := ui.LeftClick(viewAccounts)(ctx); err != nil {
 				return err
 			}
@@ -103,23 +142,12 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		}
 
 		addAccountButton := nodewith.Name("Add account").Role(role.Button)
-		emailField := nodewith.Name("Email or phone").Role(role.TextField)
-		nextButton := nodewith.Name("Next").Role(role.Button)
-		passwordField := nodewith.Name("Enter your password").Role(role.TextField)
-		iAgree := nodewith.Name("I agree").Role(role.Button)
-		if err := uiauto.Combine("Add account",
-			ui.LeftClick(addAccountButton),
-			ui.LeftClick(emailField),
-			kb.TypeAction(meetAccount),
-			ui.LeftClick(nextButton),
-			ui.WaitUntilExists(passwordField),
-			ui.Sleep(2*time.Second),
-			ui.LeftClick(passwordField),
-			kb.TypeAction(conf.password),
-			ui.LeftClick(nextButton),
-			ui.LeftClick(iAgree),
-		)(ctx); err != nil {
-			return errors.Wrap(err, "failed to add account")
+		if err := ui.LeftClick(addAccountButton)(ctx); err != nil {
+			return err
+		}
+
+		if err := enterAccount(ctx); err != nil {
+			return err
 		}
 
 		if err := apps.Close(ctx, tconn, apps.Settings.ID); err != nil {
@@ -137,30 +165,53 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 	// when running the case. And also add the test account if the DUT doesn't
 	// be added before.
 	switchUserJoin := func(ctx context.Context) error {
+		const showJoinNowTimeout = time.Minute
+
+		joinNowButton := nodewith.Name("Join now").Role(role.Button)
+		if err := ui.WithTimeout(3 * time.Second).Exists(joinNowButton); err == nil {
+			testing.ContextLog(ctx, "Join the meeting without switching account")
+			return nil
+		}
 		testing.ContextLog(ctx, "Switch account")
 		switchAccount := nodewith.Name("Switch account").Role(role.Link)
 		meetAccountText := nodewith.Name(meetAccount).First()
 		chooseAnAccount := nodewith.Name("Choose an account").First()
-		if err := uiauto.Combine("Switch account",
+		if err := uiauto.Combine("switch account",
 			ui.LeftClickUntil(switchAccount, ui.Gone(switchAccount)),
 			ui.WaitUntilExists(chooseAnAccount),
 		)(ctx); err != nil {
 			return errors.Wrap(err, "failed to switch account")
 		}
 
-		if err := ui.WaitUntilExists(meetAccountText)(ctx); err != nil {
+		// If meet account doesn't exist, add the account first.
+		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(meetAccountText)(ctx); err != nil {
+			testing.ContextLogf(ctx, "Add additional account %s to existing account", meetAccount)
 			if err := addMeetAccount(ctx); err != nil {
 				return errors.Wrapf(err, "failed to add account %s", meetAccount)
 			}
 		}
-		testing.ContextLogf(ctx, "Select meet account: %s", meetAccount)
+		testing.ContextLog(ctx, "Select meet account ", meetAccount)
 
-		joinNowButton := nodewith.Name("Join now").Role(role.Button)
-		if err := uiauto.Combine("Switch account",
+		nextUI := nodewith.NameRegex(regexp.MustCompile("(Join now|Email or phone)")).First()
+		if err := uiauto.Combine("select account",
 			ui.WaitUntilExists(meetAccountText),
-			ui.WithTimeout(time.Minute).LeftClickUntil(meetAccountText, ui.WaitUntilExists(joinNowButton)),
+			ui.WithTimeout(showJoinNowTimeout).LeftClickUntil(meetAccountText, ui.WaitUntilExists(nextUI)),
 		)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to switch account to %s", meetAccount)
+		}
+
+		// Check if signing into the meet account is required.
+		emailField := nodewith.Name("Email or phone").Role(role.TextField)
+		if err := ui.Exists(emailField)(ctx); err == nil {
+			testing.ContextLog(ctx, "Signin is required when switching account")
+			if err := enterAccount(ctx); err != nil {
+				return errors.Wrapf(err, "failed to enter account %s", meetAccount)
+			}
+		}
+
+		// Wait for the "Join now" button.
+		if err := ui.WithTimeout(showJoinNowTimeout).WaitUntilExists(joinNowButton)(ctx); err != nil {
+			return errors.Wrapf(err, "Join now button didn't show for account %s", meetAccount)
 		}
 		return nil
 	}
@@ -190,11 +241,8 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		if err != nil {
 			return errors.Wrap(err, "cannot parse number of participants")
 		}
-		if int(num) < conf.roomSize {
-			return errors.Wrap(err, "the number of participants is not as expected")
-		}
-		if int(num) > conf.roomSize {
-			testing.ContextLogf(ctx, "There are %d participants, more than expectation", num)
+		if int(num) != conf.roomSize {
+			return errors.Wrapf(err, "meeting participant number is %d but %d is expected", num, conf.roomSize)
 		}
 		return nil
 	}
@@ -224,97 +272,53 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 
 // VideoAudioControl controls the video and audio during conference.
 func (conf *GoogleMeetConference) VideoAudioControl(ctx context.Context) error {
-	toggleVideo := func(ctx context.Context) error {
-		const (
-			stopVideo  = "Turn off camera (ctrl + e)"
-			startVideo = "Turn on camera (ctrl + e)"
-		)
-		ui := uiauto.New(conf.tconn)
-		stopVideoButton := nodewith.Name(stopVideo).Role(role.Button)
-		startVideoButton := nodewith.Name(startVideo).Role(role.Button)
+	// It may take some time to detect the microphone or camera button from the meet UI.
+	const detectButtonTime = 30 * time.Second
+	ui := uiauto.New(conf.tconn)
 
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			err := ui.LeftClick(stopVideoButton)(ctx)
-			if err == nil {
-				testing.ContextLog(ctx, "Close Video")
-				return nil
-			}
-			err = ui.LeftClick(startVideoButton)(ctx)
-			if err == nil {
-				testing.ContextLog(ctx, "Open Video")
-				return nil
-			}
-			return err
-		}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: 100 * time.Millisecond}); err != nil {
-			return err
+	toggleVideo := func(ctx context.Context) error {
+		cameraButton := nodewith.NameRegex(regexp.MustCompile("Turn (on|off) camera.*")).Role(role.Button)
+
+		info, err := ui.WithTimeout(detectButtonTime).Info(ctx, cameraButton)
+		if err != nil {
+			return errors.Wrap(err, "failed to wait for the meet camera switch button to show")
+		}
+		if strings.HasPrefix(info.Name, "Turn on") {
+			testing.ContextLog(ctx, "Turn camera from off to on")
+		} else {
+			testing.ContextLog(ctx, "Turn camera from on to off")
+		}
+		if err := ui.LeftClick(cameraButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to switch camera")
 		}
 		return nil
 	}
 
 	toggleAudio := func(ctx context.Context) error {
-		const (
-			muteAudio   = "Turn off microphone (ctrl + d)"
-			unmuteAudio = "Turn on microphone (ctrl + d)"
-		)
-		ui := uiauto.New(conf.tconn)
-		muteAudioButton := nodewith.Name(muteAudio).Role(role.Button)
-		unmuteAudioButton := nodewith.Name(unmuteAudio).Role(role.Button)
+		microphoneButton := nodewith.NameRegex(regexp.MustCompile("Turn (on|off) microphone.*")).Role(role.Button)
 
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			err := ui.LeftClick(muteAudioButton)(ctx)
-			if err == nil {
-				testing.ContextLog(ctx, "Mute Audio")
-				return nil
-			}
-			err = ui.LeftClick(unmuteAudioButton)(ctx)
-			if err == nil {
-				testing.ContextLog(ctx, "Open Audio")
-				return nil
-			}
-			return err
-		}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: 100 * time.Millisecond}); err != nil {
-			return err
+		info, err := ui.WithTimeout(detectButtonTime).Info(ctx, microphoneButton)
+		if err != nil {
+			return errors.Wrap(err, "failed to wait for the meet microphone switch button to show")
+		}
+		if strings.HasPrefix(info.Name, "Turn on") {
+			testing.ContextLog(ctx, "Turn microphone from off to on")
+		} else {
+			testing.ContextLog(ctx, "Turn microphone from on to off")
+		}
+		if err := ui.LeftClick(microphoneButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to switch microphone")
 		}
 		return nil
 	}
 
-	testing.ContextLog(ctx, "Turn off camera")
-	if err := toggleVideo(ctx); err != nil {
-		return errors.Wrap(err, "failed to toggle video")
-	}
-
-	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-		return errors.Wrap(err, "failed to wait")
-	}
-
-	testing.ContextLog(ctx, "Turn on camera")
-	if err := toggleVideo(ctx); err != nil {
-		return errors.Wrap(err, "failed to toggle video")
-	}
-
-	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-		return errors.Wrap(err, "failed to wait")
-	}
-
-	testing.ContextLog(ctx, "Toggle Audio")
-	if err := toggleAudio(ctx); err != nil {
-		return errors.Wrap(err, "failed to toggle audio")
-	}
-
-	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-		return errors.Wrap(err, "failed to wait")
-	}
-
-	testing.ContextLog(ctx, "Toggle Audio")
-	if err := toggleAudio(ctx); err != nil {
-		return errors.Wrap(err, "failed to toggle audio")
-	}
-
-	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-		return errors.Wrap(err, "failed to wait")
-	}
-
-	return nil
+	return uiauto.Combine("toggle video and audio",
+		//Remain in the state for 5 seconds after each action.
+		toggleVideo, ui.Sleep(5*time.Second),
+		toggleVideo, ui.Sleep(5*time.Second),
+		toggleAudio, ui.Sleep(5*time.Second),
+		toggleAudio, ui.Sleep(5*time.Second),
+	)(ctx)
 }
 
 // SwitchTabs switches the chrome tabs.
@@ -345,18 +349,31 @@ func (conf *GoogleMeetConference) SwitchTabs(ctx context.Context) error {
 func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 	tconn := conf.tconn
 	ui := uiauto.New(tconn)
-	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to close notifications")
+
+	ns, err := ash.Notifications(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get notifications")
+	}
+	if len(ns) > 0 {
+		testing.ContextLog(ctx, "Hide visible notifications")
+		// Hide notifications which could cover the "More options" button.
+		if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to hide notifications")
+		}
+		quickSetting := nodewith.Role(role.Window).ClassName("TrayBubbleView")
+		if err := ui.WaitUntilGone(quickSetting)(ctx); err != nil {
+			return errors.Wrap(err, "quick setting window is still open")
+		}
 	}
 
 	moreOptions := nodewith.Name("More options").First()
 	changeLayout := nodewith.Name("Change layout").Role(role.MenuItem)
 	for _, mode := range []string{"Tiled", "Spotlight"} {
 		modeNode := nodewith.Name(mode).Role(role.RadioButton)
-		if err := uiauto.Combine("ChangeLayout",
-			ui.WaitUntilExists(moreOptions),
-			ui.WithTimeout(40*time.Second).LeftClickUntil(moreOptions, ui.WaitUntilExists(changeLayout)),
-			ui.WithTimeout(40*time.Second).LeftClickUntil(changeLayout, ui.WaitUntilExists(modeNode)),
+		testing.ContextLog(ctx, "Change layout to ", mode)
+		if err := uiauto.Combine("change layout",
+			ui.WithTimeout(40*time.Second).LeftClick(moreOptions),
+			ui.WithTimeout(40*time.Second).LeftClick(changeLayout),
 			ui.LeftClick(modeNode),
 			ui.LeftClick(moreOptions),
 			ui.Sleep(10*time.Second), //After applying new layout, give it 10 seconds for viewing before applying next one.
