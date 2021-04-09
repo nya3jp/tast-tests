@@ -26,6 +26,9 @@ service FileSystem {
   // Remove removes the named file or (empty) directory.
   rpc Remove (RemoveRequest) returns (RemoveResponse) {}
 
+  // RemoveAll removes the path and any children it contains.
+  rpc RemoveAll (RemoveRequest) returns (RemoveResponse) {}
+
   // TempDir creates a temporary directory.
   rpc TempDir (TempDirRequest) returns (TempDirResponse) {}
 }
