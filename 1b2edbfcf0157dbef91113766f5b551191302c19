@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8463487d_ffb137f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-04-09T15:04:42Z",
+      "side": 1,
+      "message": "nit: Usually we use https://crrev.com/c/2813300\n\nThis will be removed soon. So we don\u0027t have to change.",
+      "range": {
+        "startLine": 31,
+        "startChar": 56,
+        "endLine": 31,
+        "endChar": 96
+      },
+      "revId": "1b2edbfcf0157dbef91113766f5b551191302c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
