@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/common/upstart"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
@@ -176,6 +177,7 @@ type FirmwareTest struct {
 	upstartService           platform.UpstartServiceClient
 	daemonState              []daemonState
 	needsRebootAfterFlashing bool
+	dutfsClient              *dutfs.Client
 }
 
 // NewFirmwareTest creates and initializes a new fingerprint firmware test.
@@ -215,7 +217,9 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 		return nil, errors.Wrap(err, "failed to get build firmware file path")
 	}
 
-	if err := ValidateBuildFwFile(ctx, d, fpBoard, buildFwFile); err != nil {
+	dutfsClient := dutfs.NewClient(cl.Conn)
+
+	if err := ValidateBuildFwFile(ctx, d, dutfsClient, fpBoard, buildFwFile); err != nil {
 		return nil, errors.Wrap(err, "failed to validate build firmware file")
 	}
 
@@ -244,6 +248,7 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 			upstartService:           upstartService,
 			daemonState:              daemonState,
 			needsRebootAfterFlashing: needsReboot,
+			dutfsClient:              dutfsClient,
 		},
 		nil
 }
@@ -268,6 +273,7 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 	if cl != nil {
 		t.cl = cl
 		t.upstartService = platform.NewUpstartServiceClient(cl.Conn)
+		t.dutfsClient = dutfs.NewClient(cl.Conn)
 
 		if err := restoreDaemons(ctx, t.upstartService, t.daemonState); err != nil && firstErr == nil {
 			firstErr = err
@@ -306,6 +312,11 @@ func (t *FirmwareTest) BuildFwFile() string {
 // NeedsRebootAfterFlashing describes whether DUT needs to be rebooted after flashing.
 func (t *FirmwareTest) NeedsRebootAfterFlashing() bool {
 	return t.needsRebootAfterFlashing
+}
+
+// DutfsClient gets the dutfs client.
+func (t *FirmwareTest) DutfsClient() *dutfs.Client {
+	return t.dutfsClient
 }
 
 // NeedsRebootAfterFlashing returns true if device needs to be rebooted after flashing.
@@ -422,7 +433,7 @@ func getExpectedFwInfo(fpBoard FPBoardName, buildFwFile string, infoType fwInfoT
 }
 
 // ValidateBuildFwFile checks that all attributes in the given firmware file match their expected values.
-func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fpBoard FPBoardName, buildFwFile string) error {
+func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fs *dutfs.Client, fpBoard FPBoardName, buildFwFile string) error {
 	// Check hash on device.
 	actualHash, err := calculateSha256sum(ctx, d, buildFwFile)
 	if err != nil {
@@ -459,7 +470,7 @@ func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fpBoard FPBoardName, b
 	}
 
 	// Check RO version.
-	actualRoVersion, err := readFmapSection(ctx, d, buildFwFile, "RO_FRID")
+	actualRoVersion, err := readFmapSection(ctx, d, fs, buildFwFile, "RO_FRID")
 	if err != nil {
 		return err
 	}
@@ -472,7 +483,7 @@ func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fpBoard FPBoardName, b
 	}
 
 	// Check RW version.
-	actualRwVersion, err := GetBuildRWFirmwareVersion(ctx, d, buildFwFile)
+	actualRwVersion, err := GetBuildRWFirmwareVersion(ctx, d, fs, buildFwFile)
 	if err != nil {
 		return err
 	}
@@ -489,22 +500,24 @@ func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fpBoard FPBoardName, b
 }
 
 // GetBuildRWFirmwareVersion returns the RW version of a given build firmware file on DUT.
-func GetBuildRWFirmwareVersion(ctx context.Context, d *dut.DUT, buildFWFile string) (string, error) {
-	return readFmapSection(ctx, d, buildFWFile, "RW_FWID")
+func GetBuildRWFirmwareVersion(ctx context.Context, d *dut.DUT, fs *dutfs.Client, buildFWFile string) (string, error) {
+	return readFmapSection(ctx, d, fs, buildFWFile, "RW_FWID")
 }
 
 // readFmapSection reads a section (e.g. RO_FRID) from a firmware file on device.
-func readFmapSection(ctx context.Context, d *dut.DUT, buildFwFile, section string) (string, error) {
-	// TODO(crbug:1189908): Call library once it's available.
+func readFmapSection(ctx context.Context, d *dut.DUT, fs *dutfs.Client, buildFwFile, section string) (s string, e error) {
 	// Prepare a temporary file because dump_map only writes the
 	// value read from a section to a file (will not just print it to
 	// stdout).
-	tempdir, err := d.Conn().Command("mktemp", "-d", "/tmp/fingerprint_dump_fmap_XXXXXX").Output(ctx, ssh.DumpLogOnError)
+	tempdirPath, err := fs.TempDir(ctx, "", "fingerprint_dump_fmap_*")
 	if err != nil {
 		return "", errors.Wrap(err, "failed to create remote temp directory")
 	}
-	tempdirPath := strings.TrimSpace(string(tempdir))
-	defer d.Conn().Command("rm", "-r", tempdirPath).Run(ctx, ssh.DumpLogOnError)
+	defer func() {
+		if err := fs.RemoveAll(ctx, tempdirPath); err != nil {
+			e = errors.Wrapf(err, "failed to remove temp directory: %q", tempdirPath)
+		}
+	}()
 
 	outputPath := filepath.Join(tempdirPath, section)
 	if err := d.Conn().Command("dump_fmap", "-x", buildFwFile, fmt.Sprintf("%s:%s", section, outputPath)).Run(ctx, ssh.DumpLogOnError); err != nil {
