@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3691bdac_5a1b8f6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-04-09T20:21:34Z",
+      "side": 1,
+      "message": "👍  Done.",
+      "parentUuid": "cdb33524_d2517a99",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 5
+      },
+      "revId": "7a1951947eb5b9bcb82885129680d3ebc1dffa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca95dc33_034da555",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-04-08T23:48:52Z",
       "side": 1,
       "message": "nit: const?",
+      "revId": "7a1951947eb5b9bcb82885129680d3ebc1dffa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3f7d555_f53b1a4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mem_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-04-09T20:21:34Z",
+      "side": 1,
+      "message": "👍 Done.",
+      "parentUuid": "ca95dc33_034da555",
       "revId": "7a1951947eb5b9bcb82885129680d3ebc1dffa9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -145,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "975bbf06_006f1dac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-04-09T20:21:34Z",
+      "side": 1,
+      "message": "\u003e close to the beginning of the function (because, if not supported,\nthen why initialize the http server etc)\n\nAgreed. Moved up.",
+      "parentUuid": "6d8b3aa7_bbb528f5",
+      "revId": "7a1951947eb5b9bcb82885129680d3ebc1dffa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd0728a6_24a05181",
@@ -158,6 +218,30 @@
       "writtenOn": "2021-04-08T23:09:32Z",
       "side": 1,
       "message": "nit: const?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 1
+      },
+      "revId": "7a1951947eb5b9bcb82885129680d3ebc1dffa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8adc2524_92681348",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_drm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-04-09T20:21:34Z",
+      "side": 1,
+      "message": "👍  Done.",
+      "parentUuid": "cd0728a6_24a05181",
       "range": {
         "startLine": 84,
         "startChar": 0,
