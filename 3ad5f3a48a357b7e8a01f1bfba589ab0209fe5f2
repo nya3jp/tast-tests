@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01f06aa7_19ede1f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-04-09T00:17:46Z",
+      "side": 1,
+      "message": "note: you didn\u0027t upload version 2\n\nI think I don\u0027t have any issues other than some relative nits.\n\nI\u0027ll also admit: I didn\u0027t try to read the spec to double check the bits you\u0027re checking. This looks approximately right, but I\u0027m no expert.",
+      "revId": "3ad5f3a48a357b7e8a01f1bfba589ab0209fe5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46e872c0_4007da30",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-04-09T00:17:46Z",
+      "side": 1,
+      "message": "please add yourself as a contact, while it\u0027s still being stabilized. Champs aren\u0027t (primarily) responsible for unstable tests yet. We can make it \"only champs\" once it\u0027s stable.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 95
+      },
+      "revId": "3ad5f3a48a357b7e8a01f1bfba589ab0209fe5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e5539d7_45ca0f1e",
@@ -126,6 +166,75 @@
         "startChar": 25,
         "endLine": 34,
         "endChar": 30
+      },
+      "revId": "3ad5f3a48a357b7e8a01f1bfba589ab0209fe5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051f1788_909c0a90",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-04-09T00:17:46Z",
+      "side": 1,
+      "message": "is there a good reason for pure? I don\u0027t think \"pure\" is actually common in the wild -- most APs I\u0027m familiar with don\u0027t set the \"require HT\" bit.\n\n(OTOH, if we\u0027re really trying to be representative, I\u0027d throw in VHT too.)",
+      "range": {
+        "startLine": 74,
+        "startChar": 23,
+        "endLine": 74,
+        "endChar": 37
+      },
+      "revId": "3ad5f3a48a357b7e8a01f1bfba589ab0209fe5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69a5ae9a_0d221544",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-04-09T00:17:46Z",
+      "side": 1,
+      "message": "Not your fault but: it\u0027s not clear what this param does, and looking at the implementation, apparently it does nothing. Might be nice to kill it while you\u0027re at it.",
+      "range": {
+        "startLine": 77,
+        "startChar": 61,
+        "endLine": 77,
+        "endChar": 69
+      },
+      "revId": "3ad5f3a48a357b7e8a01f1bfba589ab0209fe5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "646a9fce_573a8652",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-04-09T00:17:46Z",
+      "side": 1,
+      "message": "Idle musing: this is kind of a weird function. It performs a mini test action and capture all in one? I guess that\u0027s cool?",
+      "range": {
+        "startLine": 77,
+        "startChar": 30,
+        "endLine": 77,
+        "endChar": 51
       },
       "revId": "3ad5f3a48a357b7e8a01f1bfba589ab0209fe5f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
