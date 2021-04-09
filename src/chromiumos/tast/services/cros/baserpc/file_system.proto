@@ -25,6 +25,9 @@ service FileSystem {
 
   // Remove removes the named file or (empty) directory.
   rpc Remove (RemoveRequest) returns (RemoveResponse) {}
+
+  // TempDir creates a temporary directory.
+  rpc TempDir (TempDirRequest) returns (TempDirResponse) {}
 }
 
 message ReadDirRequest {
@@ -74,6 +77,19 @@ message RemoveRequest {
 
 message RemoveResponse {
   Error error = 1;
+}
+
+message TempDirRequest {
+  // If dir is the empty string, the default directory for temporary files is used.
+  string dir = 1;
+  // If pattern includes a "*", the random string replaces the last "*".
+  string pattern = 2;
+}
+
+message TempDirResponse {
+  // The name of the new directory.
+  string name = 1;
+  Error error = 2;
 }
 
 // FileInfo contains attributes of a file.

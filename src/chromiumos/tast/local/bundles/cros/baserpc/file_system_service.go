@@ -106,6 +106,20 @@ func (fs *FileSystemService) Remove(ctx context.Context, req *baserpc.RemoveRequ
 	return &res, nil
 }
 
+// TempDir creates a temporary directory.
+func (fs *FileSystemService) TempDir(ctx context.Context, req *baserpc.TempDirRequest) (*baserpc.TempDirResponse, error) {
+	var res baserpc.TempDirResponse
+	res.Error = encodeErr(func() error {
+		dirName, err := ioutil.TempDir(req.Dir, req.Pattern)
+		if err != nil {
+			return err
+		}
+		res.Name = dirName
+		return nil
+	}())
+	return &res, nil
+}
+
 func toFileInfoProto(fi os.FileInfo) (*baserpc.FileInfo, error) {
 	ts, err := ptypes.TimestampProto(fi.ModTime())
 	if err != nil {
