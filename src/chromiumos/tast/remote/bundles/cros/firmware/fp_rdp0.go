@@ -7,12 +7,12 @@ package firmware
 import (
 	"context"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
@@ -32,7 +32,7 @@ func init() {
 		Timeout:      6 * time.Minute,
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
-		ServiceDeps:  []string{"tast.cros.platform.UpstartService"},
+		ServiceDeps:  []string{"tast.cros.platform.UpstartService", dutfs.ServiceName},
 		Vars:         []string{"servo"},
 	})
 }
@@ -81,18 +81,6 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 		s.Fatal("Firmware is not functional after initialization: ", err)
 	}
 
-	// TODO(chromium:1189908): Use library function once it's there.
-	// Prepare a temporary working directory on DUT.
-	tempdir, err := d.Conn().Command("mktemp", "-d", "/tmp/fingerprint_rdp0_XXXXXX").Output(ctx, ssh.DumpLogOnError)
-	if err != nil {
-		s.Fatal("Failed to create remote temp directory: ", err)
-	}
-	tempdirPath := strings.TrimSpace(string(tempdir))
-	removeTempdirCtx := ctx
-	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-	defer d.Conn().Command("rm", "-r", tempdirPath).Run(removeTempdirCtx, ssh.DumpLogOnError)
-
 	// Given:
 	// * Hardware write protect is disabled
 	// * Software write protect is disabled
@@ -104,7 +92,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	//   entire firmware out of flash and it should exactly match the
 	//   firmware that we flashed for testing.
 	testing.ContextLog(ctx, "Reading firmware without modifying RDP level")
-	if err := testRDP0(ctx, d, t.BuildFwFile(), tempdirPath, false, t.NeedsRebootAfterFlashing()); err != nil {
+	if err := testRDP0(ctx, d, t.BuildFwFile(), t.DutfsClient(), false, t.NeedsRebootAfterFlashing()); err != nil {
 		s.Fatal("Failed to validate RDP0 without changing RDP level: ", err)
 	}
 
@@ -119,15 +107,26 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	//   entire firmware out of flash and it should exactly match the
 	//   firmware that we flashed for testing.
 	testing.ContextLog(ctx, "Reading firmware while setting RDP to level 0")
-	if err := testRDP0(ctx, d, t.BuildFwFile(), tempdirPath, true, t.NeedsRebootAfterFlashing()); err != nil {
+	if err := testRDP0(ctx, d, t.BuildFwFile(), t.DutfsClient(), true, t.NeedsRebootAfterFlashing()); err != nil {
 		s.Fatal("Failed to validate RDP0 while setting RDP to level 0: ", err)
 	}
 }
 
 // testRDP0 tests RDP0 functionality by trying to read from flash.
-func testRDP0(ctx context.Context, d *dut.DUT, buildFwFile, tempdirPath string, removeFlashReadProtect, needsReboot bool) error {
+func testRDP0(ctx context.Context, d *dut.DUT, buildFwFile string, fs *dutfs.Client, removeFlashReadProtect, needsReboot bool) (e error) {
 	var fileReadFromFlash string
 	var args []string
+
+	tempdirPath, err := fs.TempDir(ctx, "", "fingerprint_rdp0_*")
+	if err != nil {
+		return errors.Wrap(err, "failed to create remote temp directory")
+	}
+	defer func() {
+		if err := fs.RemoveAll(ctx, tempdirPath); err != nil {
+			e = errors.Wrapf(err, "failed to remove temp directory: %q", tempdirPath)
+		}
+	}()
+
 	if removeFlashReadProtect {
 		// Use different file name to avoid errors in removing file.
 		fileReadFromFlash = filepath.Join(tempdirPath, "test_rdp0.bin")
