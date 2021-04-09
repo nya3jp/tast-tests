@@ -151,6 +151,29 @@
       },
       "revId": "04bbb7970469f1d6a8156e00bce23a077fdcde95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01a7bfb0_f6beb31e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1216364
+      },
+      "writtenOn": "2021-04-09T08:47:37Z",
+      "side": 1,
+      "message": "suggestion: add an assert to prevent having both vars set to true (i.e. test error - if we set both to true by mistake in the code the we test always w/ docs)\n\ncould/should be done at the begging of the function to fail fast",
+      "range": {
+        "startLine": 323,
+        "startChar": 1,
+        "endLine": 327,
+        "endChar": 26
+      },
+      "revId": "04bbb7970469f1d6a8156e00bce23a077fdcde95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
