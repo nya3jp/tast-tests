@@ -52,6 +52,24 @@
       "parentUuid": "6d4909bc_5a67db88",
       "revId": "18648bc6cd38f88a998fd3337fb440d9b30b3400",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03a11196_5e71e1eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-09T22:57:14Z",
+      "side": 1,
+      "message": "In cases where test fails without sleep, the app is running and it is always in later page of task manager list and ui.WaitUntilExists timeout and fails (I verified this by increasing the timeout value from 300ms to 30secs) . I am not sure why task manager doesn\u0027t refresh bringing the app to front page even after waiting 30 seconds.(Might be a bug in task manager).\n\nThe crostini/task_manager also has this failure (https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2021-04-03\u0026last_date\u003d2021-04-09\u0026test\u003d%5Etast%5C.crostini%5C.TaskManager*.*\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dABORT\u0026reason\u003dFailed+to+test+Crostini+in+Task+Manager%3A+failed+to+open+Task+Manager+and+look+for+Crostini\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse)\n\nI am sure a 30secs sleep between App Launch and Task Manager Launch is fixing this issue and Task Manager has this application listed in first page. \n\nI will try with lower sleep and check.",
+      "parentUuid": "39e495db_67db4fc3",
+      "revId": "18648bc6cd38f88a998fd3337fb440d9b30b3400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
