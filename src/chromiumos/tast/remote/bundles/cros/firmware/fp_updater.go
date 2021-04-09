@@ -16,6 +16,7 @@ import (
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
@@ -45,7 +46,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
-		ServiceDeps:  []string{"tast.cros.firmware.FpUpdaterService"},
+		ServiceDeps:  []string{"tast.cros.firmware.FpUpdaterService", dutfs.ServiceName},
 		Vars:         []string{"servo"},
 		Data: []string{"nocturne_fp_v2.0.3266-99b5e2c98_20201214.bin",
 			"nami_fp_v2.0.3266-99b5e2c98_20201214.bin",
@@ -179,7 +180,7 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to query build firmware path: ", err)
 	}
 
-	buildRWVersion, err := fingerprint.GetBuildRWFirmwareVersion(ctx, d, buildFWFile)
+	buildRWVersion, err := fingerprint.GetBuildRWFirmwareVersion(ctx, d, dutfs.NewClient(cl.Conn), buildFWFile)
 	if err != nil {
 		s.Fatal("Failed to query build RW version: ", err)
 	}
