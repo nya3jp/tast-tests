@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1437a7cb_8d5ddc4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-09T07:46:42Z",
+      "side": 1,
+      "message": "I don\u0027t have any comments to add to others. LGTM after their comments.\n",
+      "revId": "750b2413dc5b6403cdf45ff983e8118ec5f89616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00260a85_681c5470",
