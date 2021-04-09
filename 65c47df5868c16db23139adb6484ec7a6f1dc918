@@ -33,6 +33,29 @@
       "message": "Submit it for the responding chrome CL is already included in 13901.0.0/91.0.4469.0.",
       "revId": "65c47df5868c16db23139adb6484ec7a6f1dc918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ce3bd28_66ae94ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-09T20:02:04Z",
+      "side": 1,
+      "message": "nit: This can be caps like the rest.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 8
+      },
+      "revId": "65c47df5868c16db23139adb6484ec7a6f1dc918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
