@@ -250,9 +250,9 @@ func getGuestPack(ctx context.Context) (string, error) {
 
 		arcvmPackName = "arcvm.var.lib.ureadahead.pack"
 
-		ureadaheadStopTimeout     = 30 * time.Second
-		ureadaheadStopInterval    = 1 * time.Second
-		ureadaheadFileStatTimeout = 10 * time.Second
+		ureadaheadStopTimeout     = 50 * time.Second
+		ureadaheadStopInterval    = 3 * time.Second
+		ureadaheadFileStatTimeout = 30 * time.Second
 	)
 
 	packPath := filepath.Join(ureadaheadDataDir, arcvmPackName)
