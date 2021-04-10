@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9678e41d_9a3357a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-10T17:06:41Z",
+      "side": 1,
+      "message": "Thanks Shuo-Peng for the comments. To make the Wifi shill methods reused, I guess we should change the wifi_service.go and extract more common functions into shill package in a new CL? Can we move forward with this CL? Thanks! ",
+      "revId": "526f556952492e91ae3684e3d5cb3fc3f7566584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

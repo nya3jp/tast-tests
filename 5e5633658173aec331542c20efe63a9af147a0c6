@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b61036a7_ed6a96af",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-10T17:06:41Z",
+      "side": 1,
+      "message": "Maybe it makes more sense to move all Wifi methods under WifiManager?",
+      "parentUuid": "c1600b0d_ee23b8a9",
+      "revId": "5e5633658173aec331542c20efe63a9af147a0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "261b228b_1982c9d1",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 10
@@ -48,6 +66,24 @@
       "writtenOn": "2021-04-09T02:54:02Z",
       "side": 1,
       "message": "The function looks like SetWifiEnabled() in http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/wifi_service.go\n\nIf local test wants to use it as well, we shall deduplicate code. Perhaps change WifiService.SetWifiEnabled() to use the implementation here.\n\nSteven and Yenlin, WDYT?",
+      "revId": "5e5633658173aec331542c20efe63a9af147a0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8aba0aa_68abdc05",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-10T17:06:41Z",
+      "side": 1,
+      "message": "To make re-use easy, I added to the NewWifiManger() a *shill.Manager parameter, so if the caller has a shill.Manager already, it can be passed in and reused.",
+      "parentUuid": "261b228b_1982c9d1",
       "revId": "5e5633658173aec331542c20efe63a9af147a0c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be70e029_5a072794",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-10T17:06:41Z",
+      "side": 1,
+      "message": "This ConnectAP method add the passphrase. I didn\u0027t see passphrase is needed in wifi_service - is there any pre-configuration required in your test with wifi_service?",
+      "parentUuid": "f792dc2d_b43d3d33",
+      "range": {
+        "startLine": 205,
+        "startChar": 25,
+        "endLine": 205,
+        "endChar": 34
+      },
+      "revId": "5e5633658173aec331542c20efe63a9af147a0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4710fdc9_50e9c11f",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 10
@@ -88,6 +148,30 @@
       "writtenOn": "2021-04-09T02:54:02Z",
       "side": 1,
       "message": "The chunk is quite similar to discoverService() in \n/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 2
+      },
+      "revId": "5e5633658173aec331542c20efe63a9af147a0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3214d574_0f8337c6",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-10T17:06:41Z",
+      "side": 1,
+      "message": "Yes, this snippet is re-used from wifi_service - I cannot think of of the re-scanning part without referring to the wifi_service.",
+      "parentUuid": "4710fdc9_50e9c11f",
       "range": {
         "startLine": 206,
         "startChar": 0,
