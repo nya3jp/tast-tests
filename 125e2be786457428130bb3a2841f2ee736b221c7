@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df87baf4_c2210972",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 50
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-10T17:07:40Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "7f14405b_c2ad8fb0",
+      "range": {
+        "startLine": 250,
+        "startChar": 62,
+        "endLine": 250,
+        "endChar": 64
+      },
+      "revId": "125e2be786457428130bb3a2841f2ee736b221c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3278842d_f99fd475",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-08T08:16:57Z",
       "side": 1,
       "message": "This comparison looks indirect... could you compare it with \"m\" and \"\"?",
+      "range": {
+        "startLine": 354,
+        "startChar": 3,
+        "endLine": 355,
+        "endChar": 14
+      },
+      "revId": "125e2be786457428130bb3a2841f2ee736b221c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a009484d_1eb91006",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 50
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-10T17:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3278842d_f99fd475",
       "range": {
         "startLine": 354,
         "startChar": 3,
