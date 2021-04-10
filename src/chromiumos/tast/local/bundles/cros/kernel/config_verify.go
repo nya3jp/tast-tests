@@ -311,8 +311,8 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		builtin = append(builtin, "SLAB_FREELIST_HARDENED")
 		// Security; initialize uninitialized local variables, variable fields, and padding.
 		// (Clang only).
-		if ver.IsOrLater(5, 9) {
-			builtin = append(builtin, "INIT_STACK_ALL_PATTERN")
+		if ver.IsOrLater(5, 4) {
+			builtin = append(builtin, "INIT_STACK_ALL_ZERO")
 		} else {
 			builtin = append(builtin, "INIT_STACK_ALL")
 		}
