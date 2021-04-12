@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
+	"chromiumos/tast/rpc"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -29,7 +30,7 @@ func init() {
 			"chromeos-fingerprint@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      6 * time.Minute,
+		Timeout:      15 * time.Minute,
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
 		ServiceDeps:  []string{"tast.cros.platform.UpstartService", dutfs.ServiceName},
@@ -49,7 +50,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to clean up")
 		}
 	}()
-	ctx, cancel := ctxutil.Shorten(ctx, fingerprint.TimeForCleanup)
+	ctx, cancel := ctxutil.Shorten(ctx, t.CleanupTime())
 	defer cancel()
 
 	d := t.DUT()
@@ -59,7 +60,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	// the original firmware that was flashed and the value that is
 	// read.
 	testing.ContextLog(ctx, "Force flashing original FP firmware")
-	if err := fingerprint.FlashFirmware(ctx, d); err != nil {
+	if err := fingerprint.FlashFirmware(ctx, d, t.NeedsRebootAfterFlashing()); err != nil {
 		s.Fatal("Failed to flash original FP firmware: ", err)
 	}
 
@@ -92,7 +93,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	//   entire firmware out of flash and it should exactly match the
 	//   firmware that we flashed for testing.
 	testing.ContextLog(ctx, "Reading firmware without modifying RDP level")
-	if err := testRDP0(ctx, d, t.BuildFwFile(), t.DutfsClient(), false, t.NeedsRebootAfterFlashing()); err != nil {
+	if err := testRDP0(ctx, d, t.BuildFwFile(), s.RPCHint(), t.DutfsClient(), false, t.NeedsRebootAfterFlashing()); err != nil {
 		s.Fatal("Failed to validate RDP0 without changing RDP level: ", err)
 	}
 
@@ -107,21 +108,40 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	//   entire firmware out of flash and it should exactly match the
 	//   firmware that we flashed for testing.
 	testing.ContextLog(ctx, "Reading firmware while setting RDP to level 0")
-	if err := testRDP0(ctx, d, t.BuildFwFile(), t.DutfsClient(), true, t.NeedsRebootAfterFlashing()); err != nil {
+	if err := testRDP0(ctx, d, t.BuildFwFile(), s.RPCHint(), t.DutfsClient(), true, t.NeedsRebootAfterFlashing()); err != nil {
 		s.Fatal("Failed to validate RDP0 while setting RDP to level 0: ", err)
 	}
 }
 
 // testRDP0 tests RDP0 functionality by trying to read from flash.
-func testRDP0(ctx context.Context, d *dut.DUT, buildFwFile string, fs *dutfs.Client, removeFlashReadProtect, needsReboot bool) (e error) {
+func testRDP0(ctx context.Context, d *dut.DUT, buildFwFile string, rpcHint *testing.RPCHint, fs *dutfs.Client, removeFlashReadProtect, needsReboot bool) (e error) {
 	var fileReadFromFlash string
 	var args []string
+
+	// TODO(https://crbug.com/1195936): ReimageFPMCU reboots, which causes gRPC
+	//  to lose its connection.
+	cl, err := rpc.Dial(ctx, d, rpcHint, "cros")
+	if err != nil {
+		return err
+	}
+	fs = dutfs.NewClient(cl.Conn)
 
 	tempdirPath, err := fs.TempDir(ctx, "", "fingerprint_rdp0_*")
 	if err != nil {
 		return errors.Wrap(err, "failed to create remote temp directory")
 	}
 	defer func() {
+		tempDirExists, err := fs.Exists(ctx, tempdirPath)
+		if err != nil {
+			e = errors.Wrapf(err, "failed to check existence of temp directory: %q", tempdirPath)
+			return
+		}
+
+		if !tempDirExists {
+			// If we rebooted, the directory may no longer exist.
+			return
+		}
+
 		if err := fs.RemoveAll(ctx, tempdirPath); err != nil {
 			e = errors.Wrapf(err, "failed to remove temp directory: %q", tempdirPath)
 		}
@@ -151,6 +171,14 @@ func testRDP0(ctx context.Context, d *dut.DUT, buildFwFile string, fs *dutfs.Cli
 		if err := d.Reboot(ctx); err != nil {
 			return errors.Wrap(err, "failed to reboot DUT")
 		}
+
+		// TODO(https://crbug.com/1195936): Rebooting causes gRPC
+		//  to lose its connection.
+		cl, err := rpc.Dial(ctx, d, rpcHint, "cros")
+		if err != nil {
+			return err
+		}
+		fs = dutfs.NewClient(cl.Conn)
 	}
 
 	if _, err := fingerprint.CheckFirmwareIsFunctional(ctx, d); err != nil {
