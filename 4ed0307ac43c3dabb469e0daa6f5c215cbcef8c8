@@ -345,6 +345,30 @@
       },
       "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "854c1a6a_eff88379",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-12T08:17:14Z",
+      "side": 1,
+      "message": "Replaced with patches for patching py2 script to py3.",
+      "parentUuid": "4d32bddf_644db304",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 2
+      },
+      "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
