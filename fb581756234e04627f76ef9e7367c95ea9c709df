@@ -33,6 +33,24 @@
       "message": "Do you really want to raise an error here, stopping the functions that call readFmapSection(), or logging would be enough?",
       "revId": "fb581756234e04627f76ef9e7367c95ea9c709df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0797708e_d62faace",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-12T18:06:16Z",
+      "side": 1,
+      "message": "I\u0027d like to make the failure cause the test to fail, since it shouldn\u0027t happen. If it\u0027s just a log message it will most likely not be noticed.",
+      "parentUuid": "41ded913_6d1231e1",
+      "revId": "fb581756234e04627f76ef9e7367c95ea9c709df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
