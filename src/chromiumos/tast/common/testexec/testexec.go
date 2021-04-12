@@ -34,7 +34,10 @@ import (
 	"bytes"
 	"context"
 	"os/exec"
+	"sync"
+	"sync/atomic"
 	"syscall"
+	"unsafe"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/shutil"
@@ -57,6 +60,15 @@ type Cmd struct {
 	timedOut bool
 	// watchdogStop is notified in Wait to ask the watchdog goroutine to stop.
 	watchdogStop chan bool
+
+	// doneFlg is set to 1, when the process is terminated but before collecting
+	// the process. This can be accessed from various goroutines concurrently,
+	// so it should be read/written through done() and setDone().
+	doneFlg uint32
+
+	// sigMu is the mutex lock to guard from sending signals to processes
+	// which is already collected.
+	sigMu sync.RWMutex
 }
 
 // RunOption is enum of options which can be passed to Run, Output,
@@ -201,8 +213,6 @@ func (c *Cmd) Start() error {
 
 	// Watchdog goroutine to terminate the process on timeout.
 	go func() {
-		// TODO(nya): Avoid the race condition between reaping the child process
-		// and sending a signal.
 		select {
 		case <-c.ctx.Done():
 			c.Kill()
@@ -224,10 +234,26 @@ func (c *Cmd) Wait(opts ...RunOption) error {
 		return errAlreadyWaited
 	}
 
+	// Wait for the process to be terminated, without collecting the
+	// process itself.
+	if err := c.blockUntilWaitable(); err != nil {
+		return err
+	}
+
+	// Marking done atomically. At anytime after this point, sending
+	// a signal will be guarded.
+	c.setDone()
+	// Stop the timeout watchdog here, because the process is terminated.
+	c.watchdogStop <- true
+
+	// Take and release the sigMu in order to wait for the completion
+	// of signal sending which is already in process.
+	c.sigMu.Lock()
+	c.sigMu.Unlock()
+
+	// Actual wait to collect the subprocess.
 	werr := c.Cmd.Wait()
 	cerr := c.ctx.Err()
-
-	c.watchdogStop <- true
 
 	if (werr != nil || cerr != nil) && hasOpt(DumpLogOnError, opts) {
 		// Ignore the DumpLog intentionally, because the primary error
@@ -245,6 +271,35 @@ func (c *Cmd) Wait(opts ...RunOption) error {
 	return werr
 }
 
+// blockUntilWaitable waits for the process to be ready to be collected.
+func (c *Cmd) blockUntilWaitable() error {
+	for {
+		// Use the same strategy with os/wait_waitid.go.
+		var siginfo [16]uint64
+		const P_PID = 1 // Taken from syscall. NOLINT
+		_, _, err := syscall.Syscall6(syscall.SYS_WAITID, P_PID, uintptr(c.Process.Pid), uintptr(unsafe.Pointer(&siginfo)), syscall.WEXITED|syscall.WNOWAIT, 0, 0)
+		if err == 0 {
+			return nil
+		}
+		if err != syscall.EINTR {
+			return err
+		}
+	}
+}
+
+// setDone marks this command is already terminated.
+// This and done below can be called from various goroutines concurrently.
+func (c *Cmd) setDone() {
+	atomic.StoreUint32(&c.doneFlg, 1)
+}
+
+// done returns true if this command is marked as terminated already.
+// It is done in Wait(). This can be called from various goroutines
+// concurrently.
+func (c *Cmd) done() bool {
+	return atomic.LoadUint32(&c.doneFlg) > 0
+}
+
 // Signal sends the input signal to the process tree.
 //
 // This is a new method that does not exist in os/exec.
@@ -256,6 +311,14 @@ func (c *Cmd) Signal(signal syscall.Signal) error {
 		return errNotStarted
 	}
 	if c.ProcessState != nil {
+		return errAlreadyWaited
+	}
+
+	// Guard by a lock so that the signal won't be sent to the process
+	// which is already terminated.
+	c.sigMu.RLock()
+	defer c.sigMu.RUnlock()
+	if c.done() {
 		return errAlreadyWaited
 	}
 
