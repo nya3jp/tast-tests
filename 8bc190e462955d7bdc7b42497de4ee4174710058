@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f940d112_9a24d8bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_whitelist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-12T09:05:42Z",
+      "side": 0,
+      "message": "nit: please create a separate 1 line CL for this change. It will be easier to use blame tool.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 56
+      },
+      "revId": "8bc190e462955d7bdc7b42497de4ee4174710058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

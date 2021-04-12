@@ -16,6 +16,23 @@
       "message": "Hi Oleh, could you PTAL at this change? Thanks!",
       "revId": "b08a9193807cd4760bfaeb6218f876313117a0ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bde17e6_59d2f920",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-12T09:05:42Z",
+      "side": 1,
+      "message": "LGTM % nit, thanks!",
+      "revId": "b08a9193807cd4760bfaeb6218f876313117a0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
