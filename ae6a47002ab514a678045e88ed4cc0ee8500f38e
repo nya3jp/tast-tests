@@ -16,6 +16,46 @@
       "message": "Adding Jun and Judy since Alex is OOO",
       "revId": "ae6a47002ab514a678045e88ed4cc0ee8500f38e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "355e4d26_856a168b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-12T18:31:17Z",
+      "side": 1,
+      "message": "Thanks Aings for inviting Jun and Judy. I don\u0027t have the CQ+2 permission, if this CL looks good, can Jun or Judy help CQ+2 of this change? Also a question for you in the comments.",
+      "revId": "ae6a47002ab514a678045e88ed4cc0ee8500f38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89b35e37_4306df5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-12T18:31:17Z",
+      "side": 1,
+      "message": "@aings@google.com If multiple DUTs are joining the same room without coordinating the test time between them, we will see more participants than expected in the chat room and test will fail. Do we want to be looser here and fail only when actual participant is less than expected participant number?",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 32
+      },
+      "revId": "ae6a47002ab514a678045e88ed4cc0ee8500f38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
