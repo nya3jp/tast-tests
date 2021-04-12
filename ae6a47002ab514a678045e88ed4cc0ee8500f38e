@@ -56,6 +56,30 @@
       },
       "revId": "ae6a47002ab514a678045e88ed4cc0ee8500f38e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edd1ea78_6a6b7d7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1483212
+      },
+      "writtenOn": "2021-04-12T18:35:36Z",
+      "side": 1,
+      "message": "Let\u0027s keep the current strict criteria until someone complains.",
+      "parentUuid": "89b35e37_4306df5d",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 32
+      },
+      "revId": "ae6a47002ab514a678045e88ed4cc0ee8500f38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
