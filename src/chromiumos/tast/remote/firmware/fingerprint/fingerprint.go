@@ -93,6 +93,7 @@ const (
 	TimeForCleanup       = 2 * time.Minute
 	biodUpstartJobName   = "biod"
 	powerdUpstartJobName = "powerd"
+	disableFpUpdaterFile = ".disable_fp_updater"
 )
 
 // Map from signing key ID to type of signing key.
@@ -328,6 +329,23 @@ func NeedsRebootAfterFlashing(ctx context.Context, d *dut.DUT) (bool, error) {
 		return false, errors.Wrap(err, "failed to query host board")
 	}
 	return hostBoard == "zork", nil
+}
+
+// isFPUpdaterEnabled returns true if the fingerprint updater is enabled.
+func isFPUpdaterEnabled(ctx context.Context, fs *dutfs.Client) (bool, error) {
+	return fs.Exists(ctx, filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile))
+}
+
+// enableFPUpdater enables the fingerprint updater if it is disabled.
+func enableFPUpdater(ctx context.Context, fs *dutfs.Client) error {
+	testing.ContextLog(ctx, "Enabling the fingerprint updater")
+	return fs.Remove(ctx, filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile))
+}
+
+// disableFPUpdater disables the fingerprint updater if it is enabled.
+func disableFPUpdater(ctx context.Context, fs *dutfs.Client) error {
+	testing.ContextLog(ctx, "Disabling the fingerprint updater")
+	return fs.WriteFile(ctx, filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile), nil, 0)
 }
 
 // stopDaemons stops the specified daemons and returns their original state.
