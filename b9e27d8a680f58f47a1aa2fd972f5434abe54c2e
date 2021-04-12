@@ -16,6 +16,24 @@
       "message": "If this fails, we don\u0027t switch the sim slot back, right? (as that happens on L65?)",
       "revId": "b9e27d8a680f58f47a1aa2fd972f5434abe54c2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bd00f87_d2171192",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-04-12T20:36:10Z",
+      "side": 1,
+      "message": "Yes we don\u0027t switch sim slot back, also we can not switch slot with modem not up.",
+      "parentUuid": "48b34667_738b0d0e",
+      "revId": "b9e27d8a680f58f47a1aa2fd972f5434abe54c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
