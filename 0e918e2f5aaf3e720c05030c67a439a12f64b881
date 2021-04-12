@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eab029b0_c9ac177b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-12T16:39:27Z",
+      "side": 1,
+      "message": "That makes sense, thanks for the doc links. Done.",
+      "parentUuid": "8826e823_e402ba3b",
+      "range": {
+        "startLine": 196,
+        "startChar": 18,
+        "endLine": 196,
+        "endChar": 36
+      },
+      "revId": "0e918e2f5aaf3e720c05030c67a439a12f64b881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b54f841d_f97343ad",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccabb4bd_f4ec9500",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-12T16:39:27Z",
+      "side": 1,
+      "message": "No I think the default should be fine. Done.",
+      "parentUuid": "b54f841d_f97343ad",
+      "range": {
+        "startLine": 211,
+        "startChar": 35,
+        "endLine": 211,
+        "endChar": 57
+      },
+      "revId": "0e918e2f5aaf3e720c05030c67a439a12f64b881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c6ece38_7d1d51c0",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-12T02:26:31Z",
       "side": 1,
       "message": "This comment doesn\u0027t seem to represent the content. Old comment? Maybe comment each of the const values instead.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "0e918e2f5aaf3e720c05030c67a439a12f64b881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b86060f_fc431896",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolver_present.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-12T16:39:27Z",
+      "side": 1,
+      "message": "Yep this was a copy paste error, good catch.",
+      "parentUuid": "9c6ece38_7d1d51c0",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9e3390d_c7be0b73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolver_present.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-12T16:39:27Z",
+      "side": 1,
+      "message": "Yeah I don\u0027t love this either, but I don\u0027t think it can be moved into the testing scope because it is required in the init() function for the parameters (and vice versa). All the variables here are scoped to the test name, expect the problems. I think prefixing the test name on the problems would make them unwieldy e.g. dnsResolverPresentProblemNoNameServersFound.",
+      "parentUuid": "244e2e96_5f399a83",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "0e918e2f5aaf3e720c05030c67a439a12f64b881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bbcf42d_8389e75d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolver_present.go",
         "patchSetId": 1
@@ -106,6 +202,30 @@
       "writtenOn": "2021-04-12T02:26:31Z",
       "side": 1,
       "message": "Don\u0027t need this and the rest because the test has the attr (if you promote these variants individually you can add it back then)",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 40
+      },
+      "revId": "0e918e2f5aaf3e720c05030c67a439a12f64b881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "912a9ac2_c6488751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolver_present.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-12T16:39:27Z",
+      "side": 1,
+      "message": "Ok I will remove the general test Attr and keep each test one. I think this makes CLs to mark critical and reverts much easier.",
+      "parentUuid": "4bbcf42d_8389e75d",
       "range": {
         "startLine": 51,
         "startChar": 3,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fe49422_070ef6cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolver_present.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-12T16:39:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c785ea43_b3c4d1a8",
+      "range": {
+        "startLine": 87,
+        "startChar": 11,
+        "endLine": 87,
+        "endChar": 44
+      },
+      "revId": "0e918e2f5aaf3e720c05030c67a439a12f64b881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4059146c_8dac0d59",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-04-12T02:26:31Z",
       "side": 1,
       "message": "Quick peruse of the WaitForServiceProperties and noticed quite a variation in this value, there\u0027s a few tests that rely on shillconst.DefaultTimeout (30s) just wanted to draw attention to it in case this has been overlooked, feel free to ignore if value is correct",
+      "range": {
+        "startLine": 90,
+        "startChar": 66,
+        "endLine": 90,
+        "endChar": 79
+      },
+      "revId": "0e918e2f5aaf3e720c05030c67a439a12f64b881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a5b114e_ac833a02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolver_present.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-12T16:39:27Z",
+      "side": 1,
+      "message": "I took this value from a different test that was doing something similar. In this case we are just setting a property and waiting for that property change broadcast. Looking at other examples, I think tests are waiting on more complicated actions (Add a networking technology and wait for it to be fully configured).",
+      "parentUuid": "4059146c_8dac0d59",
       "range": {
         "startLine": 90,
         "startChar": 66,
