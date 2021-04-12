@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -141,6 +142,22 @@ func FastInk(ctx context.Context, s *testing.State) {
 						}
 						if bounds != desiredBounds {
 							s.Fatalf("Window bounds are %v; tried to set them to %v", bounds, desiredBounds)
+						}
+					}
+
+					if !tabletMode {
+						w, err := ash.GetWindow(ctx, tconn, wID)
+						if err != nil {
+							s.Fatal("Failed to get window info: ", err)
+						}
+
+						// Move the mouse to the center of the window, where it will not
+						// bring extraneous UI stuff. Particularly, in full screen, a
+						// mouse near the bottom could make the shelf visible there, or
+						// a mouse near the top could make the browser frame visible
+						// there. Either of those scenarios could make this test fail.
+						if err := mouse.Move(ctx, tconn, w.TargetBounds.CenterPoint(), time.Second); err != nil {
+							s.Fatal("Failed to move mouse: ", err)
 						}
 					}
 
