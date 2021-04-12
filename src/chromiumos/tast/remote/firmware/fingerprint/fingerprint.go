@@ -270,7 +270,7 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 
 	// TODO(b/182596510): Check the FPMCU is running expected firmware version.
 
-	if err := InitializeHWAndSWWriteProtect(ctx, d, pxy, enableHWWP, enableSWWP); err != nil {
+	if err := InitializeHWAndSWWriteProtect(ctx, d, pxy, fpBoard, enableHWWP, enableSWWP); err != nil {
 		return nil, errors.Wrap(err, "initializing write protect failed")
 	}
 
@@ -755,7 +755,7 @@ func InitializeKnownState(ctx context.Context, d *dut.DUT, outdir string, pxy *s
 }
 
 // InitializeHWAndSWWriteProtect ensures hardware and software write protect are initialized as requested.
-func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, enableHWWP, enableSWWP bool) error {
+func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, fpBoard FPBoardName, enableHWWP, enableSWWP bool) error {
 	testing.ContextLogf(ctx, "Initializing HW WP to %t, SW WP to %t", enableHWWP, enableSWWP)
 	// HW write protect must be disabled to disable SW write protect.
 	hwWPArg := servo.FWWPStateOff
@@ -785,7 +785,11 @@ func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.P
 	if err := pxy.Servo().SetFWWPState(ctx, hwWPArg); err != nil {
 		return errors.Wrapf(err, "failed to set HW write protect to %q", hwWPArg)
 	}
-	// TODO(b/182597335): Check the correct flags, which is different for different chips.
+
+	if err := CheckWriteProtectStateCorrect(ctx, d, fpBoard, ImageTypeRW, enableSWWP, enableHWWP); err != nil {
+		return errors.Wrap(err, "failed to validate write protect settings")
+	}
+
 	return nil
 }
 
