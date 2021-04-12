@@ -199,7 +199,7 @@ func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out i
 //   }
 //   if err := tconn.Call(ctx, &ret, "tast.promisify(chrome.autotestPrivate.getArcState)"); err != nil {
 //     ...
-func (c *Conn) Call(ctx context.Context, out interface{}, fn string, args ...interface{}) (retErr error) {
+func (c *Conn) Call(ctx context.Context, out interface{}, fn string, args ...interface{}) error {
 	// Either objectId or executionContextId should be specified to invoke Runtime.callFunctionOn.
 	// Thus, take the "this" first, then call the method on the object.
 	// cf) https://chromedevtools.github.io/devtools-protocol/tot/Runtime#method-callFunctionOn
@@ -209,11 +209,10 @@ func (c *Conn) Call(ctx context.Context, out interface{}, fn string, args ...int
 	}
 	defer func() {
 		if err := this.Release(ctx); err != nil {
-			if retErr == nil {
-				retErr = err
-			} else {
-				testing.ContextLog(ctx, "Failed to release 'this': ", err)
-			}
+			// If an evaluated expression causes navigation or browser restart,
+			// ReleaseObject may fail. Thus always report ReleaseObject errors
+			// as informational. See also crbug.com/1193417.
+			testing.ContextLog(ctx, "Ignored: failed to release 'this' object: ", err)
 		}
 	}()
 	return this.Call(ctx, out, fn, args...)
