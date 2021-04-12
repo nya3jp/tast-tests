@@ -16,6 +16,24 @@
       "message": "If I read this right this revert has left the VM-test builders broken. Reland or fix?\n\n1 vm test failed\nsecurity.StatefulFiles: /mnt/stateful_partition/encrypted/var/lib/metrics/\n\nhttps://ci.chromium.org/p/chromeos/builders/vmtest/amd64-generic-direct-tast-vm?cursor\u003did%3E8850314543115041344\u0026limit\u003d200",
       "revId": "4e1f33effbb022edc01d082150d06c98dfd73475",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eb6a128_9da9c627",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-04-12T22:11:02Z",
+      "side": 1,
+      "message": "For the record, the error is tracked in crbug/1197973 and tby@ has a temp fix CL:2820569 landed this morning.",
+      "parentUuid": "f113ac66_e844d526",
+      "revId": "4e1f33effbb022edc01d082150d06c98dfd73475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
