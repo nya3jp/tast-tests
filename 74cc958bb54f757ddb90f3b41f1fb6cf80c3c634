@@ -85,6 +85,24 @@
       "message": "Hi Woody,\n\nI checked the RunTrace() have only one usage in internal repo. \nCan we try move these functions there with the CL:\nhttp://crrev.com/i/3751203 ?",
       "revId": "74cc958bb54f757ddb90f3b41f1fb6cf80c3c634",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aefcb1fe_6ff26910",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-04-12T04:32:40Z",
+      "side": 1,
+      "message": "The idea was to allow public and private traces. If you move everything to private, we won\u0027t be able to have any public traces.\n\nAnd my test predates the warning.",
+      "parentUuid": "76ffd0e1_7db5129d",
+      "revId": "74cc958bb54f757ddb90f3b41f1fb6cf80c3c634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
