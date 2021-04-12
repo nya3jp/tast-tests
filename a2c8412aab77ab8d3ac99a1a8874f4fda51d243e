@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f2be16_886bbf53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/screen_diff.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-12T01:09:19Z",
+      "side": 0,
+      "message": "any particular reason to remove au?",
+      "revId": "a2c8412aab77ab8d3ac99a1a8874f4fda51d243e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

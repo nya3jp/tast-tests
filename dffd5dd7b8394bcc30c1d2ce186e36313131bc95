@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5738811_6505f345",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-12T01:09:19Z",
+      "side": 1,
+      "message": "Mostly minor comments, looks pretty good\n",
+      "revId": "dffd5dd7b8394bcc30c1d2ce186e36313131bc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e449206_185ab7bb",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-12T01:09:19Z",
+      "side": 1,
+      "message": "Have you tested this code?  We don\u0027t want to promote it to CQ with code that is untested in the CQ case and break CQ for everyone.",
+      "revId": "dffd5dd7b8394bcc30c1d2ce186e36313131bc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faae563a_39a5e87e",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-12T01:09:19Z",
+      "side": 1,
+      "message": "This is the only place this is set, it is a very misleading name.",
+      "revId": "dffd5dd7b8394bcc30c1d2ce186e36313131bc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6e82dfe_e7f6fc7c",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-12T01:09:19Z",
+      "side": 1,
+      "message": "nit: format these args like the ones above",
+      "revId": "dffd5dd7b8394bcc30c1d2ce186e36313131bc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5abbe6bd_582ebdf2",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-12T01:09:19Z",
+      "side": 1,
+      "message": "Why turn this into a list of functions if you only ever add one?",
+      "revId": "dffd5dd7b8394bcc30c1d2ce186e36313131bc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edab76ab_3ec5a7de",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-12T01:09:19Z",
+      "side": 1,
+      "message": "This is a little confusing, basename usually goes before something (the file extension), here it is at the end.  Also Diff just calls it name.\n\nMaybe fullName :\u003d d.state.TestName() + \".\" + name?\n\nIs there something that fits the domain better?",
+      "range": {
+        "startLine": 265,
+        "startChar": 37,
+        "endLine": 265,
+        "endChar": 45
+      },
+      "revId": "dffd5dd7b8394bcc30c1d2ce186e36313131bc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
