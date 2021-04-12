@@ -29,12 +29,20 @@ import (
 
 // RunTrace replays a PATrace (GLES) (https://github.com/ARM-software/patrace)
 // in Android. APK and trace data are specified by apkFile and traceFile.
-func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string, offscreen bool) {
+func RunTrace(ctx context.Context, preData arc.PreData, apkFile, traceFile, outDir string, offscreen bool) (retErr error) {
 	const (
 		pkgName                = "com.arm.pa.paretrace"
 		activityName           = ".Activities.RetraceActivity"
 		tPowerSnapshotInterval = 5 * time.Second
 	)
+
+	handleDeferError := func(err error) {
+		if retErr != nil {
+			testing.ContextLog(ctx, "Failed in RunTrace() defer: ", err)
+		} else {
+			retErr = err
+		}
+	}
 
 	// Shorten the test context so that even if the test times out
 	// there will be time to clean up.
@@ -43,20 +51,20 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string, 
 	defer cancel()
 
 	// Reuse existing ARC and Chrome session.
-	a := s.PreValue().(arc.PreData).ARC
-	cr := s.PreValue().(arc.PreData).Chrome
+	a := preData.ARC
+	cr := preData.Chrome
 
 	// Create Test API connection.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
+		return errors.Wrap(err, "failed to create Test API connection")
 	}
 
 	// setup.Setup configures a DUT for a test, and cleans up after.
 	sup, cleanup := setup.New("paretrace")
 	defer func() {
 		if err := cleanup(cleanupCtx); err != nil {
-			s.Fatal("Cleanup failed: ", err)
+			handleDeferError(errors.Wrap(err, "cleanup failed"))
 		}
 	}()
 
@@ -64,74 +72,75 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string, 
 	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
 		Wifi: setup.DisableWifiInterfaces, Battery: setup.ForceBatteryDischarge, NightLight: setup.DisableNightLight}))
 	if err := sup.Check(ctx); err != nil {
-		s.Fatal("Setup failed: ", err)
+		return errors.Wrap(err, "setup failed")
 	}
 
 	tabletCleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 	if err != nil {
-		s.Fatal("Failed to ensure tablet mode: ", err)
+		return errors.Wrap(err, "failed to ensure tablet mode")
 	}
 	defer tabletCleanup(ctx)
 
-	s.Log("Pushing trace file")
+	testing.ContextLog(ctx, "Pushing trace file")
 
 	out, err := a.Command(ctx, "mktemp", "-d", "-p", "/sdcard/Download").Output(testexec.DumpLogOnError)
 	if err != nil {
-		s.Fatal("Failed to create temp dir: ", err)
+		return errors.Wrap(err, "failed to create temp dir")
 	}
 	tmpDir := strings.TrimSpace(string(out))
 	defer a.RemoveAll(ctx, tmpDir)
 
-	s.Log("Temp dir: ", tmpDir)
+	testing.ContextLog(ctx, "Temp dir: ", tmpDir)
 
-	tracePath := filepath.Join(tmpDir, traceFile)
-	resultPath := filepath.Join(tmpDir, traceFile+".result.json")
+	traceName := filepath.Base(traceFile)
+	tracePath := filepath.Join(tmpDir, traceName)
+	resultPath := filepath.Join(tmpDir, traceName+".result.json")
 
-	if err := a.PushFile(ctx, s.DataPath(traceFile), tracePath); err != nil {
-		s.Fatal("Failed to push the trace file: ", err)
+	if err := a.PushFile(ctx, traceFile, tracePath); err != nil {
+		return errors.Wrap(err, "failed to push the trace file")
 	}
 
-	if err := a.Install(ctx, s.DataPath(apkFile), adb.InstallOptionGrantPermissions); err != nil {
-		s.Fatalf("Failed to install %s: %v", s.DataPath(apkFile), err)
+	if err := a.Install(ctx, apkFile, adb.InstallOptionGrantPermissions); err != nil {
+		return errors.Wrapf(err, "failed to install %s", apkFile)
 	}
 
 	act, err := arc.NewActivity(a, pkgName, activityName)
 	if err != nil {
-		s.Fatal("Failed to create new activity: ", err)
+		return errors.Wrap(err, "failed to create new activity")
 	}
 	defer act.Close()
 
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
+		return errors.Wrap(err, "failed initializing UI Automator")
 	}
 	defer d.Close(ctx)
 
 	metrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(tPowerSnapshotInterval))
 	if err != nil {
-		s.Fatal("Failed to build metrics: ", err)
+		return errors.Wrap(err, "failed to build metrics")
 	}
 
-	s.Log("Starting activity")
+	testing.ContextLog(ctx, "Starting activity")
 
 	options := []string{"--es", "fileName", tracePath, "--es", "resultFile", resultPath, "--ez", "force_single_window", "true"}
 	if offscreen {
 		options = append(options, "--ez", "forceOffscreen", "true")
 	}
 	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-S", "-n"}, options); err != nil {
-		s.Fatal("Cannot start retrace: ", err)
+		return errors.Wrap(err, "cannot start retrace")
 	}
 
 	sdkVer, err := arc.SDKVersion()
 	if err != nil {
-		s.Fatal("Failed to get SDK version: ", err)
+		return errors.Wrap(err, "failed to get SDK version")
 	}
 	if sdkVer >= arc.SDKQ {
 		// "This app was built for an older version of Android and may not work properly"
 		// This button confirms it.
 		versionOkButton := d.Object(ui.Text("OK"), ui.PackageName("android"))
 		if err := versionOkButton.WaitForExists(ctx, 5*time.Second); err != nil {
-			s.Fatal("Failed to find \"This app was built for an older version of Android and may not work properly\" dialog: ", err)
+			return errors.Wrap(err, "failed to find \"This app was built for an older version of Android and may not work properly\" dialog")
 		}
 		versionOkButton.Click(ctx)
 	}
@@ -152,47 +161,49 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string, 
 
 	exp := regexp.MustCompile(`paretrace(32|64)\s*:.*=+\sStart\stimer.*=+`)
 	if err := a.WaitForLogcat(ctx, arc.RegexpPred(exp), quitFunc); err != nil {
-		s.Fatal("WaitForLogcat failed: ", err)
+		return errors.Wrap(err, "failed to find paretrace \"Start timer\"")
 	}
 	if crashOrOOM {
-		s.Fatal("There was either a crash or an OOM")
+		return errors.New("there was either a crash or an OOM")
 	}
 
 	if err := metrics.Start(ctx); err != nil {
-		s.Fatal("Failed to start metrics: ", err)
+		return errors.Wrap(err, "failed to start metrics")
 	}
 
 	if err := metrics.StartRecording(ctx); err != nil {
-		s.Fatal("Failed to start recording: ", err)
+		return errors.Wrap(err, "failed to start recording")
 	}
 
 	exp = regexp.MustCompile(`paretrace(32|64)\s*:.*=+\sEnd\stimer.*=+`)
 	if err := a.WaitForLogcat(ctx, arc.RegexpPred(exp), quitFunc); err != nil {
-		s.Fatal("WaitForLogcat failed: ", err)
+		return errors.Wrap(err, "failed to find paretrace \"End timer\"")
 	}
 	if crashOrOOM {
-		s.Fatal("There was either a crash or an OOM")
+		return errors.New("there was either a crash or an OOM")
 	}
 
 	perfValues, err := metrics.StopRecording(ctx)
 	if err != nil {
-		s.Fatal("Error while recording power metrics: ", err)
+		return errors.Wrap(err, "error while recording power metrics")
 	}
 
 	defer func() {
-		if err := perfValues.Save(s.OutDir()); err != nil {
-			s.Error("Cannot save perf data: ", err)
+		if err := perfValues.Save(outDir); err != nil {
+			handleDeferError(errors.Wrap(err, "cannot save perf data"))
 		}
 	}()
 
 	// Wait for app cleanup
 	if err := act.WaitForFinished(ctx, ctxutil.MaxTimeout); err != nil {
-		s.Fatal("waitForFinished failed: ", err)
+		return errors.Wrap(err, "failed to wait for activity finishing")
 	}
 
 	if err := setPerf(ctx, a, perfValues, resultPath); err != nil {
-		s.Fatal("Failed to set perf values: ", err)
+		return errors.Wrap(err, "failed to set perf values")
 	}
+
+	return nil
 }
 
 // setPerf reads the performance numbers from the result file of paretrace, and
