@@ -30,8 +30,13 @@ func init() {
 			ExtraAttr:         []string{"informational"},
 			Timeout:           4 * time.Minute,
 		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"tpm2", "qemu"},
+			ExtraAttr:         []string{"informational"},
+			Timeout:           4 * time.Minute,
+		}, {
 			Name:              "tpm2",
-			ExtraSoftwareDeps: []string{"tpm2"},
+			ExtraSoftwareDeps: []string{"tpm2", "no_qemu"},
 			// No ExtraAttr; this test is critical.
 		}},
 	})
