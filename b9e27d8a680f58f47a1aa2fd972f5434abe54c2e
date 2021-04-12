@@ -52,6 +52,24 @@
       "parentUuid": "1bd00f87_d2171192",
       "revId": "b9e27d8a680f58f47a1aa2fd972f5434abe54c2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35e46770_9b50a8ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-04-12T21:09:25Z",
+      "side": 1,
+      "message": "OK, that\u0027s fair.",
+      "parentUuid": "88708a8e_36361d36",
+      "revId": "b9e27d8a680f58f47a1aa2fd972f5434abe54c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
