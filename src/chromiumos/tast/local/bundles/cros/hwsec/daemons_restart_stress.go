@@ -23,17 +23,8 @@ func init() {
 			"yich@chromium.org",
 		},
 		SoftwareDeps: []string{"tpm"},
-		Attr:         []string{"group:mainline"},
-		Params: []testing.Param{{
-			Name:              "tpm1",
-			ExtraSoftwareDeps: []string{"tpm1"},
-			ExtraAttr:         []string{"informational"},
-			Timeout:           4 * time.Minute,
-		}, {
-			Name:              "tpm2",
-			ExtraSoftwareDeps: []string{"tpm2"},
-			// No ExtraAttr; this test is critical.
-		}},
+		Attr:         []string{"group:mainline", "informational"},
+		Timeout:      10 * time.Minute,
 	})
 }
 
@@ -57,7 +48,7 @@ func DaemonsRestartStress(ctx context.Context, s *testing.State) {
 	}
 
 	ctxForResumeDaemons := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Minute)
 	defer cancel()
 
 	// Drop the DA reset permission.
