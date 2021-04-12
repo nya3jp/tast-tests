@@ -224,6 +224,18 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*
 		"-s", mojoSocketPath, filepath.Join(f.LacrosPath, "chrome")}, args...)...)
 	l.cmd.Cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
 
+	if out, ok := testing.ContextOutDir(ctx); !ok {
+		testing.ContextLog(ctx, "OutDir not found: ", err)
+	} else if logFile, err := os.Create(filepath.Join(out, "lacros.log")); err != nil {
+		testing.ContextLog(ctx, "Failed to create lacros.log file: ", err)
+	} else {
+		defer logFile.Close()
+		// Redirect both Stdout/Stderr to the same file.
+		// Log lines may be mixed, but it should be ok, because it is for investigation.
+		l.cmd.Stdout = logFile
+		l.cmd.Stderr = logFile
+	}
+
 	testing.ContextLog(ctx, "Starting chrome: ", strings.Join(args, " "))
 	if err := l.cmd.Cmd.Start(); err != nil {
 		return nil, errors.Wrap(err, "failed to launch lacros-chrome")
