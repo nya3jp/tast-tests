@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5f6448b8_89f2cdb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-12T10:24:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "42191845_ca043be6",
+      "revId": "5fcc6c06535836bf003ebe8f6eb6c2867169147d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "827e45c8_a6058c0d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -143,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4fd3bb83_fedd4559",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-12T10:24:53Z",
+      "side": 1,
+      "message": "Either add no_flashrom (preferred) or use no_qemu for consistency and future proofing. The way the dependencies are determined might change in future versions.",
+      "parentUuid": "85bd94d5_d1a816df",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 38
+      },
+      "revId": "5fcc6c06535836bf003ebe8f6eb6c2867169147d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7302617d_15e055b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
         "patchSetId": 2
@@ -178,6 +220,30 @@
       "side": 1,
       "message": "Actually \"flashrom\" is equal to \"no_qemu\".\nI used \"flashrom\" here is because the timeout is caused by \"flashrom\", and we  don\u0027t have \"no_flashrom\" now...",
       "parentUuid": "7302617d_15e055b0",
+      "range": {
+        "startLine": 39,
+        "startChar": 40,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "5fcc6c06535836bf003ebe8f6eb6c2867169147d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17dedcb9_8414bd66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-12T10:24:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "631d6670_71290c4b",
       "range": {
         "startLine": 39,
         "startChar": 40,
