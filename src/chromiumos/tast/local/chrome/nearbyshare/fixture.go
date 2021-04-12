@@ -32,7 +32,7 @@ const resetTimeout = 30 * time.Second
 func NewNearbyShareFixtureWithAndroid(crosDataUsage nearbysetup.DataUsage, crosVisibility nearbysetup.Visibility, androidDataUsage nearbysnippet.DataUsage, androidVisibility nearbysnippet.Visibility, gaiaLogin, crosSelectAndroidAsContact bool, opts ...chrome.Option) testing.FixtureImpl {
 	defaultNearbyOpts := []chrome.Option{
 		chrome.DisableFeatures("SplitSettingsSync"),
-		chrome.ExtraArgs("--nearby-share-verbose-logging", "--enable-logging", "--v=1"),
+		chrome.ExtraArgs("--nearby-share-verbose-logging"),
 	}
 	return &nearbyShareFixture{
 		opts:                       append(defaultNearbyOpts, opts...),
