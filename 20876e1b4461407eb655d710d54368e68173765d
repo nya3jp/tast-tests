@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3891f27b_63869b36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-04-12T16:20:15Z",
+      "side": 1,
+      "message": "lgtm \n\nThanks. You might want to set \"Verified+1\". Otherwise CQ+2 does not kick in.\n\nLet me add tast-owners to get their blessings.",
+      "revId": "20876e1b4461407eb655d710d54368e68173765d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
