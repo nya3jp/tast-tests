@@ -16,6 +16,24 @@
       "message": "Thanks Shuo-Peng for the comments. To make the Wifi shill methods reused, I guess we should change the wifi_service.go and extract more common functions into shill package in a new CL? Can we move forward with this CL? Thanks! ",
       "revId": "526f556952492e91ae3684e3d5cb3fc3f7566584",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2299bc56_d50825b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-12T01:50:23Z",
+      "side": 1,
+      "message": "Discussed with Yenlin, it is okay to merge the CL first then deal with the deduplicate between WiFiManager and WifiService later. The deduplicate shall be careful as all WiFi remote tests are depend on the base service.\n\nPlease deduplicate the WifiInterface() method in this file then it is okay to go.",
+      "parentUuid": "9678e41d_9a3357a6",
+      "revId": "526f556952492e91ae3684e3d5cb3fc3f7566584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
