@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f113ac66_e844d526",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-04-12T21:57:57Z",
+      "side": 1,
+      "message": "If I read this right this revert has left the VM-test builders broken. Reland or fix?\n\n1 vm test failed\nsecurity.StatefulFiles: /mnt/stateful_partition/encrypted/var/lib/metrics/\n\nhttps://ci.chromium.org/p/chromeos/builders/vmtest/amd64-generic-direct-tast-vm?cursor\u003did%3E8850314543115041344\u0026limit\u003d200",
+      "revId": "4e1f33effbb022edc01d082150d06c98dfd73475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
