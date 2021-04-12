@@ -34,6 +34,24 @@
       "parentUuid": "1ec3df78_e80f3f7b",
       "revId": "81f852a179a38c81207eb39cbae128c7af30179d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b29cf63c_51523613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-12T16:28:59Z",
+      "side": 0,
+      "message": "I thought you could just add it to this CL. Or should I create a new one?",
+      "parentUuid": "7024fd0e_29711f68",
+      "revId": "81f852a179a38c81207eb39cbae128c7af30179d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
