@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48b34667_738b0d0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-04-12T19:52:32Z",
+      "side": 1,
+      "message": "If this fails, we don\u0027t switch the sim slot back, right? (as that happens on L65?)",
+      "revId": "b9e27d8a680f58f47a1aa2fd972f5434abe54c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
