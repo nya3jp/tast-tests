@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c991de8a_31251dd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-04-12T15:44:20Z",
+      "side": 1,
+      "message": "lgtm % one nit",
+      "revId": "0e33e454fff4cbf88ad0be769f24399352c1b082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8801b9e6_e29f3538",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-04-12T15:44:20Z",
+      "side": 1,
+      "message": "nit: Define `pv` outside \"if inTabletMode\" and share this code with \"clamshell_mode\" at the end of test.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 3
+      },
+      "revId": "0e33e454fff4cbf88ad0be769f24399352c1b082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
