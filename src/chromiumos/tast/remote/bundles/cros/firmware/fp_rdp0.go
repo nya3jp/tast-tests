@@ -47,7 +47,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	ctxForCleanup := ctx
 	defer func() {
 		if err := t.Close(ctxForCleanup); err != nil {
-			s.Fatal("Failed to clean up")
+			s.Fatal("Failed to clean up: ", err)
 		}
 	}()
 	ctx, cancel := ctxutil.Shorten(ctx, t.CleanupTime())
@@ -67,7 +67,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	// Wait for FPMCU to boot to RW. Fail if it does not.
 	testing.ContextLog(ctx, "Waiting for FPMCU to reboot to RW")
 	if err := fingerprint.WaitForRunningFirmwareImage(ctx, d, fingerprint.ImageTypeRW); err != nil {
-		s.Fatal("Failed to boot to RW image")
+		s.Fatal("Failed to boot to RW image: ", err)
 	}
 
 	// Rollback should be unset for this test.
