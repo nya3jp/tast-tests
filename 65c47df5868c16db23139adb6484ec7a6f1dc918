@@ -97,6 +97,30 @@
       },
       "revId": "65c47df5868c16db23139adb6484ec7a6f1dc918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eecdef7f_80b0fbcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-12T02:15:53Z",
+      "side": 1,
+      "message": "Done by making all members to private. Checked that they are only used in this package.",
+      "parentUuid": "cfadc7af_ebc7053f",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 8
+      },
+      "revId": "65c47df5868c16db23139adb6484ec7a6f1dc918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
