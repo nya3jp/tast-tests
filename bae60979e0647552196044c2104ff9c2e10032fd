@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73e56fd_ad59f75d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-12T06:45:26Z",
+      "side": 1,
+      "message": "Hi nya,\nSorry that I miss a small CL for changing the usage in internal repo.\nPlease also help review crrev.com/i/3754529.\n\nThanks.",
+      "revId": "bae60979e0647552196044c2104ff9c2e10032fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
