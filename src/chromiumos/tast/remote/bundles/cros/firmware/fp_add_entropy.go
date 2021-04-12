@@ -44,7 +44,7 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to clean up: ", err)
 		}
 	}()
-	ctx, cancel := ctxutil.Shorten(ctx, fingerprint.TimeForCleanup)
+	ctx, cancel := ctxutil.Shorten(ctx, t.CleanupTime())
 	defer cancel()
 
 	d := t.DUT()
