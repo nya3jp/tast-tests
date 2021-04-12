@@ -18,7 +18,7 @@ func init() {
 		Contacts: []string{"hidehiko@chromium.org", "tast-owners@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("eve")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("caroline")),
 		}, {
 			Name:              "fingerprint",
 			ExtraHardwareDeps: hwdep.D(hwdep.Fingerprint()),
