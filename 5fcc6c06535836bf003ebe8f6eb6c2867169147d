@@ -101,6 +101,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85bd94d5_d1a816df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-12T09:48:00Z",
+      "side": 1,
+      "message": "IIUC, \"qemu\" and \"flashrom\" don\u0027t overlap now.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/cmd/local_test_runner/main.go;drc\u003dae4f1e129cdeb3773d64cc1b5c6ec7d04581821b;l\u003d119",
+      "parentUuid": "4e014492_a2d104ab",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 38
+      },
+      "revId": "5fcc6c06535836bf003ebe8f6eb6c2867169147d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7302617d_15e055b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
         "patchSetId": 2
@@ -112,6 +136,30 @@
       "writtenOn": "2021-04-12T07:41:12Z",
       "side": 1,
       "message": "Isn\u0027t it better to use no_qemu here?",
+      "range": {
+        "startLine": 39,
+        "startChar": 40,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "5fcc6c06535836bf003ebe8f6eb6c2867169147d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "631d6670_71290c4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-12T09:48:00Z",
+      "side": 1,
+      "message": "Actually \"flashrom\" is equal to \"no_qemu\".\nI used \"flashrom\" here is because the timeout is caused by \"flashrom\", and we  don\u0027t have \"no_flashrom\" now...",
+      "parentUuid": "7302617d_15e055b0",
       "range": {
         "startLine": 39,
         "startChar": 40,
