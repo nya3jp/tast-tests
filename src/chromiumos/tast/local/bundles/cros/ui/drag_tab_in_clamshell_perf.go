@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -9,12 +9,13 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/power"
@@ -28,12 +29,11 @@ func init() {
 		Func:         DragTabInClamshellPerf,
 		Desc:         "Measures the presentation time of dragging a tab in clamshell mode",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
-		// TODO(http://crbug/1032766): Test is disabled until chromium-review.googlesource.com/2813300 is landed.
-		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Timeout:      3 * time.Minute,
 		Fixture:      "chromeLoggedIn",
+		Timeout:      5 * time.Minute,
 	})
 }
 
@@ -44,6 +44,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	}
 
 	cr := s.FixtValue().(*chrome.Chrome)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
@@ -67,6 +68,8 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
+	ac := uiauto.New(tconn)
+
 	ws, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to obtain the window list: ", err)
@@ -89,7 +92,6 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	end := bounds.CenterPoint()
 
 	// Find tabs.
-	ac := uiauto.New(tconn)
 	tabParam := nodewith.Role(role.Tab).ClassName("Tab")
 	tabs, err := ac.NodesInfo(ctx, tabParam)
 	if err != nil {
@@ -105,49 +107,32 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	start := tabRect.CenterPoint()
 
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-		if err := mouse.Drag(ctx, tconn, start, end, time.Second); err != nil {
-			return errors.Wrap(err, "failed to drag the end of point")
-		}
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			// Expecting 2 windows.
-			return checkWindowsNum(ctx, tconn, 2)
-		}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
-			return errors.Wrap(err, "failed to get expected windows")
-		}
-
-		// Sleep to ensure post drag finishes so that the window is ready for the next drag.
-		if err := testing.Sleep(ctx, time.Second); err != nil {
-			return errors.Wrap(err, "failed to sleep")
-		}
-
-		if err := mouse.Drag(ctx, tconn, end, start, time.Second); err != nil {
-			return errors.Wrap(err, "failed to drag back to the start point")
-		}
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			// Expecting 1 window.
-			return checkWindowsNum(ctx, tconn, 1)
-		}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
-			return errors.Wrap(err, "failed to get expected windows")
-		}
-		// Sleep to ensure that the next run performs correctly.
-		return testing.Sleep(ctx, time.Second)
+		return uiauto.Combine("drag and move a tab",
+			mouse.Drag(tconn, start, end, time.Second),
+			ac.Retry(10, checkWindowsNum(ctx, tconn, 2)),
+			ac.Sleep(time.Second),
+			mouse.Drag(tconn, end, start, time.Second),
+			ac.Retry(10, checkWindowsNum(ctx, tconn, 1)),
+			ac.Sleep(time.Second),
+		)(ctx)
 	},
-		"Ash.WorkspaceWindowResizer.TabDragging.PresentationTime.ClamshellMode",
-		"Ash.WorkspaceWindowResizer.TabDragging.PresentationTime.MaxLatency.ClamshellMode"),
+		"Ash.TabDrag.PresentationTime.ClamshellMode",
+		"Ash.TabDrag.PresentationTime.MaxLatency.ClamshellMode"),
 		perfutil.StoreLatency)
-
 	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Error("Failed saving perf data: ", err)
+		s.Error("Failed to save perf data: ", err)
 	}
 }
 
-func checkWindowsNum(ctx context.Context, tconn *chrome.TestConn, num int) error {
-	ws, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to obtain the window list")
+func checkWindowsNum(ctx context.Context, tconn *chrome.TestConn, num int) action.Action {
+	return func(ctx context.Context) error {
+		ws, err := ash.GetAllWindows(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to obtain the window list")
+		}
+		if num != len(ws) {
+			return errors.Wrapf(err, "failed to verify the number of windows, got %v, want %v", num, len(ws))
+		}
+		return nil
 	}
-	if num != len(ws) {
-		return errors.Wrapf(err, "expected %v windows, got %v windows", num, len(ws))
-	}
-	return nil
 }
