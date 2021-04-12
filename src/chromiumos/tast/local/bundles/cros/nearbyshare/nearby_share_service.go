@@ -54,7 +54,7 @@ func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyservice.C
 	}
 	nearbyOpts := []chrome.Option{
 		chrome.DisableFeatures("SplitSettingsSync"),
-		chrome.ExtraArgs("--nearby-share-verbose-logging", "--enable-logging", "--v=1"),
+		chrome.ExtraArgs("--nearby-share-verbose-logging"),
 	}
 	if req.Username != "" {
 		nearbyOpts = append(nearbyOpts, chrome.GAIALogin(chrome.Creds{User: req.Username, Pass: req.Password}))
