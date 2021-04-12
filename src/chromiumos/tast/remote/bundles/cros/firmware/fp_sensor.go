@@ -43,7 +43,12 @@ func FpSensor(ctx context.Context, s *testing.State) {
 	}
 	defer pxy.Close(ctx)
 
-	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy); err != nil {
+	needsReboot, err := fingerprint.NeedsRebootAfterFlashing(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to determine whether reboot is needed: ", err)
+	}
+
+	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy, needsReboot); err != nil {
 		s.Fatal("Initialization failed: ", err)
 	}
 
