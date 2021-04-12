@@ -33,6 +33,23 @@
       "message": "CC gardener",
       "revId": "1f5bfa9db725579a2c662d03ff1fd5c00a17b630",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db5c028_3c5fcaec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-04-12T17:18:58Z",
+      "side": 1,
+      "message": "We might want to chump this.\n\nHwtest failure looks infra and unrelated to this CL:\ne.g.\n04/12 09:34:49.312 INFO |            repair:0433| Verifying servo_dut_connected:Ensure the Servo connected to the DUT.\n04/12 09:34:49.320 ERROR|            repair:0442| Failed: Ensure the Servo connected to the DUT.\nTraceback (most recent call last):\n  File \"/usr/local/autotest/autotest_lib/client/common_lib/hosts/repair.py\", line 436, in _verify_host\n    self.verify(host)\n  File \"/usr/local/autotest/autotest_lib/server/hosts/servo_repair.py\", line 49, in wrapper\n    func(self, host)\n  File \"/usr/local/autotest/autotest_lib/utils/frozen_chromite/lib/timeout_util.py\", line 191, in TimeoutWrapper\n    return func(*args, **kwargs)\n  File \"/usr/local/autotest/autotest_lib/server/hosts/servo_repair.py\", line 641, in verify\n    if self._is_servo_v4_type_a(host):\n  File \"/usr/local/autotest/autotest_lib/server/hosts/servo_repair.py\", line 618, in _is_servo_v4_type_a\n    return host.is_labstation() and host.get_servo().is_servo_v4_type_a()\n  File \"/usr/local/autotest/autotest_lib/server/cros/servo/servo.py\", line 1343, in is_servo_v4_type_a\n    return self.get_servo_v4_type() \u003d\u003d \u0027type-a\u0027\n  File \"/usr/local/autotest/autotest_lib/server/cros/servo/servo.py\", line 1336, in get_servo_v4_type\n    self._servo_v4_type \u003d self.get(\u0027root.dut_connection_type\u0027)\n  File \"/usr/local/autotest/autotest_lib/server/cros/servo/servo.py\", line 1067, in get\n    return self._server.get(ctrl_name)\n  File \"/usr/local/autotest/autotest_lib/server/cros/servo/servo.py\", line 218, in __exit__\n    six.reraise(err.__class__, err, exc_tb)\n  File \"/usr/local/autotest/autotest_lib/server/cros/servo/servo.py\", line 1067, in get\n    return self._server.get(ctrl_name)\n  File \"/usr/lib/python2.7/xmlrpclib.py\", line 1233, in __call__\n    return self.__send(self.__name, args)\n  File \"/usr/lib/python2.7/xmlrpclib.py\", line 1587, in __request\n    verbose\u003dself.__verbose\n  File \"/usr/lib/python2.7/xmlrpclib.py\", line 1273, in request\n    return self.single_request(host, handler, request_body, verbose)\n  File \"/usr/lib/python2.7/xmlrpclib.py\", line 1306, in single_request\n    return self.parse_response(response)\n  File \"/usr/lib/python2.7/xmlrpclib.py\", line 1482, in parse_response\n    return u.close()\n  File \"/usr/lib/python2.7/xmlrpclib.py\", line 794, in close\n    raise Fault(**self._stack[0])\nTestFail: Getting root.dut_connection_type :: list index out of range",
+      "revId": "1f5bfa9db725579a2c662d03ff1fd5c00a17b630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
