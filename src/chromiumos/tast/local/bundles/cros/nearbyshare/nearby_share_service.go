@@ -58,7 +58,7 @@ func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyservice.C
 	}
 	nearbyOpts := []chrome.Option{
 		chrome.DisableFeatures("SplitSettingsSync"),
-		chrome.ExtraArgs("--nearby-share-verbose-logging", "--enable-logging", "--v=1"),
+		chrome.ExtraArgs("--nearby-share-verbose-logging"),
 	}
 	n.username = chrome.DefaultUser
 	if req.Username != "" {
