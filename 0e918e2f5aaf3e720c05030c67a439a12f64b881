@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8826e823_e402ba3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-12T02:26:31Z",
+      "side": 1,
+      "message": "The idiomatic go way for this would be to switch these two params around, i.e. slice []int, v int.\n\ne.g. https://golang.org/pkg/builtin/#append and https://golang.org/pkg/builtin/#delete",
+      "range": {
+        "startLine": 196,
+        "startChar": 18,
+        "endLine": 196,
+        "endChar": 36
+      },
+      "revId": "0e918e2f5aaf3e720c05030c67a439a12f64b881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b54f841d_f97343ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-12T02:26:31Z",
+      "side": 1,
+      "message": "Any reason you don\u0027t use the default interval of 100ms?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testingutil/poll.go;l\u003d15;drc\u003db42229c09a98a582a327ff3f05ef085bab737c27",
+      "range": {
+        "startLine": 211,
+        "startChar": 35,
+        "endLine": 211,
+        "endChar": 57
+      },
+      "revId": "0e918e2f5aaf3e720c05030c67a439a12f64b881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6ece38_7d1d51c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolver_present.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-12T02:26:31Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t seem to represent the content. Old comment? Maybe comment each of the const values instead.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "0e918e2f5aaf3e720c05030c67a439a12f64b881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "244e2e96_5f399a83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolver_present.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-12T02:26:31Z",
+      "side": 1,
+      "message": "All these are now visible to anything under the network.* package (but not usable), consider either moving into the test scope or prefixing them with test specific stuff.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "0e918e2f5aaf3e720c05030c67a439a12f64b881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bbcf42d_8389e75d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolver_present.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-12T02:26:31Z",
+      "side": 1,
+      "message": "Don\u0027t need this and the rest because the test has the attr (if you promote these variants individually you can add it back then)",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 40
+      },
+      "revId": "0e918e2f5aaf3e720c05030c67a439a12f64b881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c785ea43_b3c4d1a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolver_present.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-12T02:26:31Z",
+      "side": 1,
+      "message": "nit: keep your error messages consistent (line 91 as well), \"Failed to configure shill service: ...\"",
+      "range": {
+        "startLine": 87,
+        "startChar": 11,
+        "endLine": 87,
+        "endChar": 44
+      },
+      "revId": "0e918e2f5aaf3e720c05030c67a439a12f64b881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4059146c_8dac0d59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolver_present.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-12T02:26:31Z",
+      "side": 1,
+      "message": "Quick peruse of the WaitForServiceProperties and noticed quite a variation in this value, there\u0027s a few tests that rely on shillconst.DefaultTimeout (30s) just wanted to draw attention to it in case this has been overlooked, feel free to ignore if value is correct",
+      "range": {
+        "startLine": 90,
+        "startChar": 66,
+        "endLine": 90,
+        "endChar": 79
+      },
+      "revId": "0e918e2f5aaf3e720c05030c67a439a12f64b881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
