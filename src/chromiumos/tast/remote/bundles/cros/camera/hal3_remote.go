@@ -26,7 +26,7 @@ func init() {
 		Desc:         "Verifies camera HAL3 interface function on remote DUT",
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:camerabox"},
-		SoftwareDeps: []string{"android_p", "arc_camera3", caps.BuiltinCamera},
+		SoftwareDeps: []string{"arc", "arc_camera3", caps.BuiltinCamera},
 		ServiceDeps:  []string{"tast.cros.camerabox.HAL3Service"},
 		Data:         []string{pre.DataChartScene().DataPath()},
 		Vars:         []string{"chart"},
