@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/remote/servo"
+	"chromiumos/tast/remote/sysutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/platform"
 	"chromiumos/tast/shutil"
@@ -89,8 +90,8 @@ const (
 	fingerprintFirmwarePathBase = "/opt/google/biod/fw/"
 	// WaitForBiodToStartTimeout is the time to wait for biod to start.
 	WaitForBiodToStartTimeout = 30 * time.Second
-	// TimeForCleanup is the amount of time to reserve for cleaning up firmware tests.
-	TimeForCleanup       = 2 * time.Minute
+	// timeForCleanup is the amount of time to reserve for cleaning up firmware tests.
+	timeForCleanup       = 2 * time.Minute
 	biodUpstartJobName   = "biod"
 	powerdUpstartJobName = "powerd"
 	disableFpUpdaterFile = ".disable_fp_updater"
@@ -179,6 +180,7 @@ type FirmwareTest struct {
 	daemonState              []daemonState
 	needsRebootAfterFlashing bool
 	dutfsClient              *dutfs.Client
+	cleanupTime              time.Duration
 }
 
 // NewFirmwareTest creates and initializes a new fingerprint firmware test.
@@ -229,7 +231,40 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 		return nil, errors.Wrap(err, "failed to determine if reboot is needed")
 	}
 
-	if err := InitializeKnownState(ctx, d, outDir, pxy); err != nil {
+	cleanupTime := timeForCleanup
+
+	if needsReboot {
+		// Rootfs must be writable in order to disable the upstart job
+		if err := sysutil.MakeRootfsWritable(ctx, d, hint); err != nil {
+			return nil, errors.Wrap(err, "failed to make rootfs writable")
+		}
+
+		// disable biod upstart job so that it doesn't interfere with the test when
+		// we reboot.
+		if _, err := upstartService.DisableJob(ctx, &platform.DisableJobRequest{JobName: biodUpstartJobName}); err != nil {
+			return nil, errors.Wrap(err, "failed to disable biod upstart job")
+		}
+
+		// disable FP updater so that it doesn't interfere with the test when we reboot.
+		if err := disableFPUpdater(ctx, dutfsClient); err != nil {
+			return nil, errors.Wrap(err, "failed to disable updater")
+		}
+
+		// Account for the additional time that rebooting adds.
+		cleanupTime += 3 * time.Minute
+	} else {
+		// If we're not on a device that needs to be rebooted, the rootfs should not
+		// be writable.
+		rootfsIsWritable, err := sysutil.IsRootfsWritable(ctx, cl)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to check if rootfs is writable")
+		}
+		if rootfsIsWritable {
+			return nil, errors.New("rootfs should not be writable")
+		}
+	}
+
+	if err := InitializeKnownState(ctx, d, outDir, pxy, needsReboot); err != nil {
 		return nil, errors.Wrap(err, "initializing known state failed")
 	}
 
@@ -250,6 +285,7 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 			daemonState:              daemonState,
 			needsRebootAfterFlashing: needsReboot,
 			dutfsClient:              dutfsClient,
+			cleanupTime:              cleanupTime,
 		},
 		nil
 }
@@ -260,7 +296,7 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 	testing.ContextLog(ctx, "Tearing down")
 	var firstErr error
 
-	if err := ReimageFPMCU(ctx, t.d, t.servo); err != nil {
+	if err := ReimageFPMCU(ctx, t.d, t.servo, t.needsRebootAfterFlashing); err != nil {
 		firstErr = err
 	}
 
@@ -275,6 +311,28 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 		t.cl = cl
 		t.upstartService = platform.NewUpstartServiceClient(cl.Conn)
 		t.dutfsClient = dutfs.NewClient(cl.Conn)
+
+		if t.needsRebootAfterFlashing {
+			// If biod upstart job disabled, re-enable it
+			resp, err := t.upstartService.IsJobEnabled(ctx, &platform.IsJobEnabledRequest{JobName: biodUpstartJobName})
+			if err == nil && !resp.Enabled {
+				if _, err := t.upstartService.EnableJob(ctx, &platform.EnableJobRequest{JobName: biodUpstartJobName}); err != nil && firstErr == nil {
+					firstErr = err
+				}
+			} else if err != nil && firstErr == nil {
+				firstErr = err
+			}
+
+			// If FP updater disabled, re-enable it
+			fpUpdaterEnabled, err := isFPUpdaterEnabled(ctx, t.dutfsClient)
+			if err == nil && !fpUpdaterEnabled {
+				if err := enableFPUpdater(ctx, t.dutfsClient); err != nil && firstErr == nil {
+					firstErr = err
+				}
+			} else if err != nil && firstErr == nil {
+				firstErr = err
+			}
+		}
 
 		if err := restoreDaemons(ctx, t.upstartService, t.daemonState); err != nil && firstErr == nil {
 			firstErr = err
@@ -318,6 +376,11 @@ func (t *FirmwareTest) NeedsRebootAfterFlashing() bool {
 // DutfsClient gets the dutfs client.
 func (t *FirmwareTest) DutfsClient() *dutfs.Client {
 	return t.dutfsClient
+}
+
+// CleanupTime gets the amount of time needed for cleanup.
+func (t *FirmwareTest) CleanupTime() time.Duration {
+	return t.cleanupTime
 }
 
 // NeedsRebootAfterFlashing returns true if device needs to be rebooted after flashing.
@@ -612,7 +675,7 @@ func FirmwarePath(ctx context.Context, d *dut.DUT, fpBoard FPBoardName) (string,
 }
 
 // FlashFirmware flashes the original fingerprint firmware in rootfs.
-func FlashFirmware(ctx context.Context, d *dut.DUT) error {
+func FlashFirmware(ctx context.Context, d *dut.DUT, needsRebootAfterFlashing bool) error {
 	fpBoard, err := Board(ctx, d)
 	if err != nil {
 		return errors.Wrap(err, "failed to get fp board")
@@ -628,6 +691,14 @@ func FlashFirmware(ctx context.Context, d *dut.DUT) error {
 	if err := d.Conn().Command(flashCmd[0], flashCmd[1:]...).Run(ctx, ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "flash_fp_mcu failed")
 	}
+
+	if needsRebootAfterFlashing {
+		testing.ContextLog(ctx, "Rebooting")
+		if err := d.Reboot(ctx); err != nil {
+			return errors.Wrap(err, "rebooting failed")
+		}
+	}
+
 	return nil
 }
 
@@ -648,11 +719,11 @@ func CheckFirmwareIsFunctional(ctx context.Context, d *dut.DUT) ([]byte, error) 
 }
 
 // ReimageFPMCU flashes the FPMCU completely and initializes entropy.
-func ReimageFPMCU(ctx context.Context, d *dut.DUT, pxy *servo.Proxy) error {
+func ReimageFPMCU(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, needsRebootAfterFlashing bool) error {
 	if err := pxy.Servo().SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
 		return errors.Wrap(err, "failed to disable HW write protect")
 	}
-	if err := FlashFirmware(ctx, d); err != nil {
+	if err := FlashFirmware(ctx, d, needsRebootAfterFlashing); err != nil {
 		return errors.Wrap(err, "failed to flash FP firmware")
 	}
 	testing.ContextLog(ctx, "Flashed FP firmware, now initializing the entropy")
@@ -670,7 +741,7 @@ func ReimageFPMCU(ctx context.Context, d *dut.DUT, pxy *servo.Proxy) error {
 }
 
 // InitializeKnownState checks that the AP can talk to FPMCU. If not, it flashes the FPMCU.
-func InitializeKnownState(ctx context.Context, d *dut.DUT, outdir string, pxy *servo.Proxy) error {
+func InitializeKnownState(ctx context.Context, d *dut.DUT, outdir string, pxy *servo.Proxy, needsRebootAfterFlashing bool) error {
 	if out, err := CheckFirmwareIsFunctional(ctx, d); err == nil {
 		versionOutputFile := "cros_fp_version.txt"
 		testing.ContextLogf(ctx, "Writing FP firmware version to %s", versionOutputFile)
@@ -680,7 +751,7 @@ func InitializeKnownState(ctx context.Context, d *dut.DUT, outdir string, pxy *s
 		}
 	} else {
 		testing.ContextLogf(ctx, "FPMCU firmware is not functional (error: %v). Trying re-flashing FP firmware", err)
-		return ReimageFPMCU(ctx, d, pxy)
+		return ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing)
 	}
 	return nil
 }

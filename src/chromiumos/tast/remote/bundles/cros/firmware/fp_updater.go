@@ -105,15 +105,20 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 	}
 	defer pxy.Close(ctx)
 
+	needsReboot, err := fingerprint.NeedsRebootAfterFlashing(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to determine whether reboot is needed: ", err)
+	}
+
 	defer func() {
-		if err := fingerprint.ReimageFPMCU(ctx, d, pxy); err != nil {
+		if err := fingerprint.ReimageFPMCU(ctx, d, pxy, needsReboot); err != nil {
 			s.Error("Failed to flash original firmware: ", err)
 		}
 	}()
 
 	// InitializeKnownState enables HW write protect so that we are testing
 	// the same configuration as the end user.
-	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy); err != nil {
+	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy, needsReboot); err != nil {
 		s.Fatal("Initialization failed: ", err)
 	}
 

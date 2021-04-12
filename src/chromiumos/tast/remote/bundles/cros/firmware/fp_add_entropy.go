@@ -25,7 +25,7 @@ func init() {
 			"chromeos-fingerprint@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      4 * time.Minute,
+		Timeout:      7 * time.Minute,
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
 		ServiceDeps:  []string{"tast.cros.platform.UpstartService", dutfs.ServiceName},
@@ -44,7 +44,7 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to clean up: ", err)
 		}
 	}()
-	ctx, cancel := ctxutil.Shorten(ctx, fingerprint.TimeForCleanup)
+	ctx, cancel := ctxutil.Shorten(ctx, t.CleanupTime())
 	defer cancel()
 
 	d := t.DUT()
