@@ -16,6 +16,23 @@
       "message": "Hi tast-owner,\n\nPlease also help review the small CL in Cq-Depend.\n\nThanks.",
       "revId": "ef2a9f58df5e98e49efcf5756a25fe969e8307ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e959ce4_a7efe6ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-04-12T06:31:28Z",
+      "side": 1,
+      "message": "Thanks very much. LGTM",
+      "revId": "ef2a9f58df5e98e49efcf5756a25fe969e8307ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
