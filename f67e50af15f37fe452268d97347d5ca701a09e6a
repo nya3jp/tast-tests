@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e09c0679_4ab491b5",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-12T18:43:13Z",
+      "side": 1,
+      "message": "Per offline chat, added comments.",
+      "parentUuid": "6e235b9b_521e6aea",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 17
+      },
+      "revId": "f67e50af15f37fe452268d97347d5ca701a09e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af14d799_fa899ee6",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-03-03T05:25:39Z",
       "side": 1,
       "message": "Should we remove this check? IIUC c.ProcessState is set by Wait, so it would be a kind of data race to refer it concurrently. It might not be a problem since we don\u0027t read its content though.",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 2
+      },
+      "revId": "f67e50af15f37fe452268d97347d5ca701a09e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c15fab22_0e05636b",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-12T18:43:13Z",
+      "side": 1,
+      "message": "Added comments, too.",
+      "parentUuid": "af14d799_fa899ee6",
       "range": {
         "startLine": 313,
         "startChar": 0,
