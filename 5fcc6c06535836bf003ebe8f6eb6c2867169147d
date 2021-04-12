@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "42191845_ca043be6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-12T09:49:47Z",
+      "side": 1,
+      "message": "flashrom is present on the VM image, but it would failed to execute after 3~5 sec timeout...\nAnd it\u0027s hard to check the state before we executed it...",
+      "parentUuid": "e81d1086_f7135cc4",
+      "revId": "5fcc6c06535836bf003ebe8f6eb6c2867169147d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "827e45c8_a6058c0d",
