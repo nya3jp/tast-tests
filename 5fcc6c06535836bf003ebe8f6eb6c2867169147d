@@ -16,6 +16,46 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "5fcc6c06535836bf003ebe8f6eb6c2867169147d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6835320_c8216b65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-04-12T04:59:21Z",
+      "side": 1,
+      "message": "hwsec-wise LGTM though i left an open question.",
+      "revId": "5fcc6c06535836bf003ebe8f6eb6c2867169147d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfd42a5f_ab11e792",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-04-12T04:59:21Z",
+      "side": 1,
+      "message": "So, should we just run all tests in informational suite?\npros: compare all the result in 1 test item as a whole.\ncons: for tpm2 physical devices the test runs twice (critical \u0026 informational).",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 38
+      },
+      "revId": "5fcc6c06535836bf003ebe8f6eb6c2867169147d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
