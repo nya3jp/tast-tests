@@ -17,11 +17,13 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
@@ -36,17 +38,16 @@ func init() {
 		Func:         WindowArrangementCUJ,
 		Desc:         "Measures the performance of critical user journey for window arrangements",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
-		// TODO(http://crbug/1032766): Test is disabled until chromium-review.googlesource.com/2813300 is landed.
-		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc", "chrome_internal"},
 		Vars:         []string{"record"},
 		Timeout:      10 * time.Minute,
 		Data:         []string{"bear-320x240.vp8.webm", "pip.html"},
-		Fixture:      "loggedInToCUJUser",
 		Params: []testing.Param{
 			{
-				Name: "clamshell_mode",
-				Val:  false,
+				Name:    "clamshell_mode",
+				Val:     false,
+				Fixture: "chromeLoggedIn",
 			},
 			{
 				Name:              "tablet_mode",
@@ -75,7 +76,16 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 
 	tabletMode := s.Param().(bool)
 
-	cr := s.FixtValue().(cuj.FixtureData).Chrome
+	var cr *chrome.Chrome
+	if tabletMode {
+		var err error
+		if cr, err = chrome.New(ctx, chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration")); err != nil {
+			s.Fatal("Failed to init: ", err)
+		}
+		defer cr.Close(ctx)
+	} else {
+		cr = s.FixtValue().(*chrome.Chrome)
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -122,12 +132,12 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	// Set up the cuj.Recorder: In clamshell mode, this test will measure the combinations of
 	// input latency of tab dragging and of window resizing and of split view resizing, and
 	// also the percent of dropped frames of video; In tablet mode, this test will measure
-	// the combinations of input latency of split view resizing and the percent of dropped frames
-	// of video.
+	// the combinations of input latency of tab dragging and of input latency of split view
+	// resizing and the percent of dropped frames of video.
 	var configs []cuj.MetricConfig
 	if !tabletMode {
 		configs = []cuj.MetricConfig{
-			cuj.NewLatencyMetricConfig("Ash.WorkspaceWindowResizer.TabDragging.PresentationTime.ClamshellMode"),
+			cuj.NewLatencyMetricConfig("Ash.TabDrag.PresentationTime.ClamshellMode"),
 			cuj.NewLatencyMetricConfig("Ash.InteractiveWindowResize.TimeToPresent"),
 			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.SingleWindow"),
 			cuj.NewCustomMetricConfig(
@@ -136,6 +146,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		}
 	} else {
 		configs = []cuj.MetricConfig{
+			cuj.NewLatencyMetricConfig("Ash.TabDrag.PresentationTime.TabletMode"),
 			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.MultiWindow"),
 			cuj.NewCustomMetricConfig(
 				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
@@ -180,9 +191,10 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 
 	// The second tab enters the system PiP mode.
-	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
+	webviewFinder := nodewith.ClassName("ContentsWebView").Role(role.WebView)
+	pipButtonFinder := nodewith.Name("Enter Picture-in-Picture").Role(role.Button).Ancestor(webviewFinder)
 	// Assume that the meeting code is the only textfield in the webpage.
-	if err := ui.LeftClick(nodewith.Name("Enter Picture-in-Picture").Role(role.Button).Ancestor(webview))(ctx); err != nil {
+	if err := ui.LeftClick(pipButtonFinder)(ctx); err != nil {
 		s.Fatal("Failed to click the pip button: ", err)
 	}
 	if err := webutil.WaitForQuiescence(ctx, connPiP, timeout); err != nil {
@@ -245,8 +257,8 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			}
 
 			// Drag window.
-			newTabButton := nodewith.Name("New Tab")
-			newTabButtonRect, err := ui.Location(ctx, newTabButton)
+			newTabButtonFinder := nodewith.Name("New Tab")
+			newTabButtonRect, err := ui.Location(ctx, newTabButtonFinder)
 			if err != nil {
 				return errors.Wrap(err, "failed to get the location of the new tab button")
 			}
@@ -260,8 +272,8 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			}
 
 			// Maximize window.
-			maximizeButton := nodewith.Name("Maximize").ClassName("FrameCaptionButton").Role(role.Button)
-			if err := ui.LeftClick(maximizeButton)(ctx); err != nil {
+			maximizeButtonFinder := nodewith.Name("Maximize").ClassName("FrameCaptionButton").Role(role.Button)
+			if err := ui.LeftClick(maximizeButtonFinder)(ctx); err != nil {
 				return errors.Wrap(err, "failed to maximize the window")
 			}
 			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
@@ -271,8 +283,8 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			}
 
 			// Minimize window.
-			minimizeButton := nodewith.Name("Minimize").ClassName("FrameCaptionButton").Role(role.Button)
-			if err := ui.LeftClick(minimizeButton)(ctx); err != nil {
+			minimizeButtonFinder := nodewith.Name("Minimize").ClassName("FrameCaptionButton").Role(role.Button)
+			if err := ui.LeftClick(minimizeButtonFinder)(ctx); err != nil {
 				return errors.Wrap(err, "failed to minimize the window")
 			}
 			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
@@ -300,7 +312,8 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to wait for window to be left snapped")
 			}
 			testing.ContextLog(ctx, "Snapping the second tab to the right")
-			firstTabRect, err := ui.Location(ctx, nodewith.Role(role.Tab).ClassName("Tab").First())
+			firstTabFinder := nodewith.Role(role.Tab).ClassName("Tab").First()
+			firstTabRect, err := ui.Location(ctx, firstTabFinder)
 			if err != nil {
 				return errors.Wrap(err, "failed to get the location of the first tab")
 			}
@@ -400,28 +413,23 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		// In tablet mode, since windows are always maximized, we only test performance for
 		// tab dragging and split view resizing.
 		f = func(ctx context.Context) error {
-			// Drag the second tab to snap to the right.
-			tabs, err := ui.NodesInfo(ctx, nodewith.Role(role.Tab))
-			if err != nil {
-				return errors.Wrap(err, "failed to find children nodes of the tabs")
+			tabStripButtonFinder := nodewith.Role(role.Button).ClassName("WebUITabCounterButton").First()
+			firstTabFinder := nodewith.Role(role.Tab).First()
+			if err := uiauto.Combine("drag a tab to snap to the right",
+				// Click the tab strip button.
+				ui.LeftClick(tabStripButtonFinder),
+				// Drag the first tab in the tab strip.
+				ui.MouseMoveTo(firstTabFinder, 0),
+				// Drag in tablet mode starts with a long press.
+				mouse.Press(tconn, mouse.LeftButton),
+				ui.Sleep(time.Second),
+				// Snap the tab to the right.
+				mouse.Move(tconn, snapRightPoint, 3*time.Second),
+				mouse.Release(tconn, mouse.LeftButton),
+			)(ctx); err != nil {
+				return errors.Wrap(err, "failed to drag a tab to snap to the right")
 			}
-			if len(tabs) != 2 {
-				return errors.Errorf("failed to get the second tab, expected 2 tabs, got %v", len(tabs))
-			}
-			tab2 := tabs[1]
-			testing.ContextLog(ctx, "Snapping the second tab to the right")
-			if err := pc.Press(ctx, tab2.Location.CenterPoint()); err != nil {
-				return errors.Wrap(err, "failed to start drag the second tab to snap to the right")
-			}
-			if err := testing.Sleep(ctx, time.Second); err != nil {
-				return errors.Wrap(err, "failed to wait for touch to become long press, for dragging the second tab from the window to snap")
-			}
-			if err := pc.Move(ctx, tab2.Location.CenterPoint(), snapRightPoint, duration); err != nil {
-				return errors.Wrap(err, "failed to drag the second tab to snap")
-			}
-			if err := pc.Release(ctx); err != nil {
-				return errors.Wrap(err, "failed to end tab drag to snap to the right")
-			}
+
 			ws, err := ash.GetAllWindows(ctx, tconn)
 			if err != nil {
 				return errors.Wrap(err, "failed to obtain the window list")
