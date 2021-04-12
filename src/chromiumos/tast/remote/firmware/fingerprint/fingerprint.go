@@ -713,9 +713,7 @@ func InitializeEntropy(ctx context.Context, d *dut.DUT) error {
 // CheckFirmwareIsFunctional checks that the AP can talk to the FPMCU and get the version.
 func CheckFirmwareIsFunctional(ctx context.Context, d *dut.DUT) ([]byte, error) {
 	testing.ContextLog(ctx, "Checking firmware is functional")
-	versionCmd := []string{"ectool", "--name=cros_fp", "version"}
-	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(versionCmd))
-	return d.Conn().Command(versionCmd[0], versionCmd[1:]...).Output(ctx, ssh.DumpLogOnError)
+	return EctoolCommand(ctx, d, "version").Output(ctx, ssh.DumpLogOnError)
 }
 
 // ReimageFPMCU flashes the FPMCU completely and initializes entropy.
@@ -773,7 +771,7 @@ func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.P
 	}
 	// TODO(b/116396469): Add error checking once it's fixed.
 	// This command can return error even on success, so ignore error for now.
-	_ = d.Conn().Command("ectool", "--name=cros_fp", "flashprotect", swWPArg).Run(ctx)
+	_ = EctoolCommand(ctx, d, "flashprotect", swWPArg).Run(ctx)
 	// TODO(b/116396469): "flashprotect enable" command is slow, so wait for
 	// it to complete before attempting to reboot.
 	testing.Sleep(ctx, 2*time.Second)
@@ -795,10 +793,10 @@ func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.P
 func RebootFpmcu(ctx context.Context, d *dut.DUT, bootTo FWImageType) error {
 	testing.ContextLog(ctx, "Rebooting FPMCU")
 	// This command returns error even on success, so ignore error. b/116396469
-	_ = d.Conn().Command("ectool", "--name=cros_fp", "reboot_ec").Run(ctx)
+	_ = EctoolCommand(ctx, d, "reboot_ec").Run(ctx)
 	if bootTo == ImageTypeRO {
 		testing.Sleep(ctx, 500*time.Millisecond)
-		err := d.Conn().Command("ectool", "--name=cros_fp", "rwsigaction", "abort").Run(ctx)
+		err := EctoolCommand(ctx, d, "rwsigaction", "abort").Run(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to abort rwsig")
 		}
@@ -835,9 +833,7 @@ func WaitForRunningFirmwareImage(ctx context.Context, d *dut.DUT, image FWImageT
 
 // RunningFirmwareCopy returns the firmware copy on FPMCU (RO or RW).
 func RunningFirmwareCopy(ctx context.Context, d *dut.DUT) (FWImageType, error) {
-	versionCmd := []string{"ectool", "--name=cros_fp", "version"}
-	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(versionCmd))
-	out, err := d.Conn().Command(versionCmd[0], versionCmd[1:]...).Output(ctx)
+	out, err := EctoolCommand(ctx, d, "version").Output(ctx)
 	if err != nil {
 		return FWImageType(""), errors.Wrap(err, "failed to query FPMCU version")
 	}
@@ -851,9 +847,7 @@ func RunningFirmwareCopy(ctx context.Context, d *dut.DUT) (FWImageType, error) {
 
 // RunningRWVersion returns the RW version running on FPMCU.
 func RunningRWVersion(ctx context.Context, d *dut.DUT) (string, error) {
-	versionCmd := []string{"ectool", "--name=cros_fp", "version"}
-	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(versionCmd))
-	out, err := d.Conn().Command(versionCmd[0], versionCmd[1:]...).Output(ctx, ssh.DumpLogOnError)
+	out, err := EctoolCommand(ctx, d, "version").Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to query FPMCU version")
 	}
@@ -917,12 +911,11 @@ func CheckRollbackState(ctx context.Context, d *dut.DUT, expected RollbackState)
 
 // AddEntropy adds entropy to the fingerprint MCU.
 func AddEntropy(ctx context.Context, d *dut.DUT, reset bool) error {
-	cmd := []string{"ectool", "--name=cros_fp", "addentropy"}
+	args := []string{"addentropy"}
 	if reset {
-		cmd = append(cmd, "reset")
+		args = append(args, "reset")
 	}
-	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd))
-	return d.Conn().Command(cmd[0], cmd[1:]...).Run(ctx)
+	return EctoolCommand(ctx, d, args[0:]...).Run(ctx)
 }
 
 // parseColonDelimitedOutput parses colon delimited information to a map.
@@ -936,4 +929,12 @@ func parseColonDelimitedOutput(output string) map[string]string {
 		ret[strings.TrimSpace(splits[0])] = strings.TrimSpace(splits[1])
 	}
 	return ret
+}
+
+// EctoolCommand constructs an "ectool" command for the FPMCU.
+func EctoolCommand(ctx context.Context, d *dut.DUT, args ...string) *ssh.Cmd {
+	cmd := []string{"ectool", "--name=cros_fp"}
+	cmd = append(cmd, args...)
+	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd))
+	return d.Conn().Command(cmd[0], cmd[1:]...)
 }
