@@ -28,18 +28,6 @@ func init() {
 	})
 }
 
-func getInputDeviceByType(result *rppb.ProbeResult, inputDeviceType string) ([]*rppb.InputDevice, error) {
-	switch inputDeviceType {
-	case "stylus":
-		return result.GetStylus(), nil
-	case "touchpad":
-		return result.GetTouchpad(), nil
-	case "touchscreen":
-		return result.GetTouchscreen(), nil
-	}
-	return nil, errors.Errorf("unknown device_type %s", inputDeviceType)
-}
-
 // CrosRuntimeProbeInputDevice checks if the input_device names in cros-label
 // are consistent with probed names from runtime_probe.
 func CrosRuntimeProbeInputDevice(ctx context.Context, s *testing.State) {
@@ -64,6 +52,18 @@ func CrosRuntimeProbeInputDevice(ctx context.Context, s *testing.State) {
 	result, err := runtimeprobe.Probe(ctx, request)
 	if err != nil {
 		s.Fatal("Cannot get input_device components: ", err)
+	}
+
+	getInputDeviceByType := func(result *rppb.ProbeResult, inputDeviceType string) ([]*rppb.InputDevice, error) {
+		switch inputDeviceType {
+		case "stylus":
+			return result.GetStylus(), nil
+		case "touchpad":
+			return result.GetTouchpad(), nil
+		case "touchscreen":
+			return result.GetTouchscreen(), nil
+		}
+		return nil, errors.Errorf("unknown device_type %s", inputDeviceType)
 	}
 
 	for _, inputDeviceType := range inputDeviceTypes {
