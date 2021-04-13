@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e681554_35129438",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-04-13T10:01:24Z",
+      "side": 1,
+      "message": "Changes according to the comments in crrev/c/2820581 .",
+      "revId": "c3b0e62ade3e17f7d72b1899bdc797dd32e76a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
