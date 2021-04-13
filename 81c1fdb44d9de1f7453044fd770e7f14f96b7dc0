@@ -34,6 +34,24 @@
       "parentUuid": "b43e7565_c890aabc",
       "revId": "81c1fdb44d9de1f7453044fd770e7f14f96b7dc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f84ecb5_865d7227",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-13T14:06:29Z",
+      "side": 1,
+      "message": "I think that follows the guideline. It is because \"we\u0027d like to see the good trajectory in informational to confirm this test is not flaky\", before promoting to critical.",
+      "parentUuid": "f815154f_b5e12a10",
+      "revId": "81c1fdb44d9de1f7453044fd770e7f14f96b7dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
