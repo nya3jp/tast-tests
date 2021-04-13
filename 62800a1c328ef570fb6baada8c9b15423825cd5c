@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48d4c922_8f06ab69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_network.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-13T00:55:47Z",
+      "side": 1,
+      "message": "This ends up being visible across the platform package (but not usable except by this file). Wondering if it\u0027s worth hoisting into a helper package or moving it into the test scope, WYDT?",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "62800a1c328ef570fb6baada8c9b15423825cd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
