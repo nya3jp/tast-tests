@@ -50,6 +50,23 @@
       "message": "By the way, I am no longer the owner of this test. CCing Tao.",
       "revId": "ef2a9f58df5e98e49efcf5756a25fe969e8307ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ba9ee25_08fcefda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-13T12:30:16Z",
+      "side": 1,
+      "message": "deanliao@, can you also help review the Cq-Depend CL? Thanks.",
+      "revId": "ef2a9f58df5e98e49efcf5756a25fe969e8307ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
