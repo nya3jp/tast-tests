@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd6e03ac_1eaf12f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-13T07:07:35Z",
+      "side": 1,
+      "message": "Ah, sorry. I didn\u0027t notice that this config is used multiple times.",
+      "parentUuid": "f1076d56_ac9cbae4",
+      "range": {
+        "startLine": 78,
+        "startChar": 23,
+        "endLine": 78,
+        "endChar": 49
+      },
+      "revId": "4ea5007145ce65ef268d55896612a190638d09d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7db85ab5_9fdb1f41",
