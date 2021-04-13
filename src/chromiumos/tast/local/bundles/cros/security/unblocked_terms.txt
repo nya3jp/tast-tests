@@ -1,0 +1,2 @@
+# Needed for working with mount propagation
+master
