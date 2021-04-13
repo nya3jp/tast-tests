@@ -281,13 +281,10 @@ func (h *Helper) SyncTastFilesToDUT(ctx context.Context) error {
 	testing.ContextLog(ctx, "Syncing Tast files from test server onto DUT")
 	dutHost := strings.Split(h.DUT.HostName(), ":")[0] // HostName == host::port
 
-	// Ensure that SSH KeyFile has appropriate permissions
-	if fi, err := os.Stat(h.DUT.KeyFile()); err != nil {
-		return errors.Wrap(err, "getting file info for SSH key file")
-	} else if fi.Mode() != 0600 {
-		if err := os.Chmod(h.DUT.KeyFile(), 0600); err != nil {
-			return errors.Wrap(err, "setting permission for SSH key file: ")
-		}
+	// Find a key file to authenticate SSH for rsync.
+	kf, err := h.findSSHKeyFile()
+	if err != nil {
+		return errors.Wrap(err, "finding SSH key file")
 	}
 
 	for relSrc, dst := range map[string]string{
@@ -305,7 +302,7 @@ func (h *Helper) SyncTastFilesToDUT(ctx context.Context) error {
 		// Call rsync.
 		// -a = archive mode. Includes recursion, maintaining links, file permissions/executability, modified times, owners, groups, device/special files.
 		// --rsh = specify remote command. This allows us to use SSH with -i, to pass in the key file for authentication.
-		if err := testexec.CommandContext(ctx, "rsync", "-a", "--rsh", fmt.Sprintf("ssh -i %s", h.DUT.KeyFile()), absSrc, remoteDst).Run(testexec.DumpLogOnError); err != nil {
+		if err := testexec.CommandContext(ctx, "rsync", "-a", "--rsh", fmt.Sprintf("ssh -i %s", kf), absSrc, remoteDst).Run(testexec.DumpLogOnError); err != nil {
 			return errors.Wrapf(err, "syncing %s to %s", absSrc, remoteDst)
 		}
 	}
@@ -320,4 +317,43 @@ func (h *Helper) SyncTastFilesToDUT(ctx context.Context) error {
 		return errors.Wrap(err, "changing file permissions on DUT")
 	}
 	return nil
+}
+
+// findSSHKeyFile searches for an SSH keyfile that can be used to connect to the DUT.
+// If multiple files are present, the first one found will be returned.
+func (h *Helper) findSSHKeyFile() (string, error) {
+	// Build a list of possible key files, based on tast/src/chromiumos/tast/ssh/conn.go.
+	possibleKeyFiles := []string{h.DUT.KeyFile()}
+	for _, fp := range []string{
+		// testing_rsa is used by Autotest's SSH config, so look for the same key here.
+		// See https://www.chromium.org/chromium-os/testing/autotest-developer-faq/ssh-test-keys-setup.
+		"testing_rsa",
+		// mobbase_id_rsa is stored in /home/moblab/.ssh on Moblab devices.
+		"mobbase_id_rsa",
+		"id_dsa",
+		"id_ecdsa",
+		"id_ed25519",
+		"id_rsa",
+	} {
+		possibleKeyFiles = append(possibleKeyFiles, filepath.Join(h.DUT.KeyDir(), fp))
+	}
+
+	// Find and return the first keyfile that exists.
+	for _, fp := range possibleKeyFiles {
+		info, err := os.Stat(fp)
+		if errors.Is(err, os.ErrNotExist) {
+			// If the file doesn't exist, that's fine; try the next option.
+			continue
+		} else if err != nil {
+			return "", errors.Wrapf(err, "getting file info for potential SSH key file %s", fp)
+		}
+		// Ensure that the keyfile has sufficient permissions.
+		if info.Mode() != 0600 {
+			if err := os.Chmod(fp, 0600); err != nil {
+				return "", errors.Wrapf(err, "setting permission for SSH key file %s", fp)
+			}
+		}
+		return fp, nil
+	}
+	return "", errors.Errorf("couldn't find an SSH key file with dut.KeyFile=%s, dut.KeyDir=%s", h.DUT.KeyFile(), h.DUT.KeyDir())
 }
