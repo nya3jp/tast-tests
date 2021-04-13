@@ -10,10 +10,12 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"github.com/shirou/gopsutil/process"
 
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/security/sandboxing"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
@@ -26,7 +28,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: SharedFilesystemState,
-		Desc: "Report on the state of the Chrome OS shared filesystem",
+		Desc: "Reports on the state of the Chrome OS shared filesystem and fails if an unexpected mount is found when not logged in",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
 			"nvaa@google.com",      // Security team
@@ -90,9 +92,93 @@ func SharedFilesystemState(ctx context.Context, s *testing.State) {
 
 	testType = "arc-user"
 	testBody(s, testType, ignoredAncestorNames, exclusionsMap)
+
 }
 
 func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusionsMap map[string]struct{}) {
+	// Additional info about all mounts and reasoning behind them can be found here:
+	// https://docs.google.com/document/d/1cAgG931pUB2dOKrYRfkHAl0Nyern9ZqD-0NO3zPWPu4/edit#
+	// TODO(crbug/1205034): Change to markdown when it is successfully uploaded
+
+	// ARCExpectedSharedMountsCommon contains the paths of all mountpoints that
+	// are expected to be shared both when logged in as a guest and as a user on
+	// an ARC++ device.
+	ARCExpectedSharedMountsCommon := map[string]bool{
+		// This is where USB drives get mounted.
+		"^/media$": true,
+		// This is used to mount downloaded disk images.
+		"^/run/imageloader$": true,
+		// We need /run/netns for giving a name to the
+		// container network namespace so that we can facilitate the creation
+		// of veth pair directly across the host and the container.
+		"^/run/netns$": true,
+		// Contains the unix domain socket for Android Debugging
+		// connection into the container.
+		"^/run/arc/adb$": true,
+	}
+
+	// ARCExpectedSharedMountsUser contains the names of all mountpoints that are
+	// expected to be shared when logged in as a user on an ARC++ device.
+	ARCExpectedSharedMountsUser := map[string]bool{
+		// Temporarily mounted to share cryptohome data with ARC++
+		"^/run/arc/shared_mounts$": true,
+		// Used to share Android's sdcard partition to ChromeOS
+		"^/run/arc/sdcard$": true,
+		// ARC OBB mounter uses /run/arc/obb to support Android OBB mount API.
+		"^/run/arc/obb$": true,
+		// This sets up the shadow user directory as a shared subtree.
+		"^/home/\\.shadow/\\w+?/mount/user$": true,
+		// /run/arc/media is used to share MyFiles and removable media with Android.
+		// Many subdir mounts are created under /run/arc/media, and we want to include all of those as well.
+		"^/run/arc/media(/|$)": true,
+		// Used for Android Debugging over USB.
+		"^/run/arc/adbd$": true,
+		// These mount points are to ensure that the root
+		// namespace's /home/root/<hash> is propagated into the mnt_concierge
+		// namespace even when the latter namespace is created before login.
+		"^/run/arcvm$": true,
+		// See shared_mounts above.
+		"^/run/arc/shared_mounts/data$": true,
+		// See netns above.
+		"^/run/netns/arc_netns$": true,
+	}
+
+	for k, v := range ARCExpectedSharedMountsCommon {
+		ARCExpectedSharedMountsUser[k] = v
+	}
+
+	// ARCVMExpectedSharedMountsCommon contains the names of all mountpoints that
+	// are expected to be shared both when logged in as a guest and also as a
+	// user on an ARCVM device.
+	ARCVMExpectedSharedMountsCommon := map[string]bool{
+		// This is where USB drives get mounted.
+		"^/media$": true,
+		// This is used to mount downloaded disk images.
+		"^/run/imageloader$": true,
+		// Used to share Android's sdcard partition to ChromeOS
+		// TODO(crbug/1205038): Is sdcard found often?
+		"^/run/arc/sdcard$": true,
+	}
+
+	// ARCVMExpectedSharedMountsUser contains the names of all mountpoints that are
+	// expected to be shared when logged in as a user on an ARCVM device.
+	ARCVMExpectedSharedMountsUser := map[string]bool{
+		// This sets up the shadow user directory as a shared subtree.
+		"^/home/\\.shadow/\\w+?/mount/user$": true,
+		// These mount points are to ensure that the root
+		// namespace's /home/root/<hash> is propagated into the mnt_concierge
+		// namespace even when the latter namespace is created before login.
+		"^/run/arcvm$": true,
+		// See arcvm above.
+		"^/run/arcvm/userhome$": true,
+		// See sdcard above.
+		"^/run/arc/sdcard/write/emulated$": true,
+	}
+
+	for k, v := range ARCVMExpectedSharedMountsCommon {
+		ARCVMExpectedSharedMountsUser[k] = v
+	}
+
 	procs, err := process.Processes()
 	if err != nil {
 		s.Fatal("Failed to list running processes: ", err)
@@ -138,6 +224,33 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 		}
 	}
 
+	// To determine which processes we expect, we need to know whether the
+	// test device is running ARC++ or ARCVM and whether we are running as
+	// guest or user.
+	var expectedSharedMounts map[string]bool
+	if arc.Supported() {
+		if t, ok := arc.Type(); ok {
+			switch t {
+			case arc.Container:
+				if testType == "guest" {
+					expectedSharedMounts = ARCExpectedSharedMountsCommon
+				} else {
+					expectedSharedMounts = ARCExpectedSharedMountsUser
+				}
+			case arc.VM:
+				if testType == "guest" {
+					expectedSharedMounts = ARCVMExpectedSharedMountsCommon
+				} else {
+					expectedSharedMounts = ARCVMExpectedSharedMountsUser
+				}
+			default:
+				s.Errorf("Unsupported ARC type %d", t)
+			}
+		} else {
+			s.Error("Failed to detect ARC type")
+		}
+	}
+
 	// We use the init process's info later to determine if other
 	// processes have their own capabilities/namespaces or not.
 	const initPID = 1
@@ -146,11 +259,12 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 		s.Fatal("Didn't find init process")
 	}
 
-	// We want to see how many and which mounts in the init namespace are
-	// shared. Daemonstore mounts are expected, so we ignore these.
+	// We want to check to make sure that the only shared mounts in the
+	// init mountns are the ones that we expect.
 	const ignoreDaemonstore = "daemon-store"
 	numInitChecked := 0
 	var initSharedMounts []string
+	var unexpectedInitSharedMounts []string
 	for _, mountInfo := range initInfo.MountInfos {
 		// Filter out mounts that we expect and would like to ignore.
 		if strings.Contains(mountInfo.MountPoint, ignoreDaemonstore) {
@@ -158,8 +272,28 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 		}
 
 		for _, optField := range mountInfo.OptFields {
+			// If it is a shared mount then we need to figure out
+			// if it is expected or not
 			if strings.Contains(optField, "shared") {
 				initSharedMounts = append(initSharedMounts, mountInfo.MountPoint)
+				isExpectedMount := false
+				for mountName := range expectedSharedMounts {
+					match, _ := regexp.MatchString(mountName, mountInfo.MountPoint)
+					if match {
+						isExpectedMount = true
+						// Only delete from the map of mounts if it
+						// is a full match. If it is a prefix match
+						// (does not end with "$", leave it in the
+						// map to be matched again.
+						if mountName[len(mountName)-1:] == "$" {
+							delete(expectedSharedMounts, mountName)
+						}
+						break
+					}
+				}
+				if !isExpectedMount {
+					unexpectedInitSharedMounts = append(unexpectedInitSharedMounts, mountInfo.MountPoint)
+				}
 			}
 		}
 		numInitChecked++
@@ -198,6 +332,7 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 		hasSharedMount := false
 		for _, mountInfo := range info.MountInfos {
 			for _, optField := range mountInfo.OptFields {
+				// TODO(crbug/1207940): Remove blocked term here.
 				if strings.Contains(optField, "master") {
 					hasMountFlowingIn = true
 					break
@@ -232,6 +367,14 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 	for _, mount := range initSharedMounts {
 		s.Log(mount)
 	}
+	s.Logf("%d are unexpected shared mounts", len(unexpectedInitSharedMounts))
+	for _, mount := range unexpectedInitSharedMounts {
+		s.Log(mount)
+	}
+	s.Logf("%d expected shared mounts were not found", len(expectedSharedMounts))
+	for mount := range expectedSharedMounts {
+		s.Log(mount)
+	}
 
 	s.Logf("%d privileged processes are running in the init mount NS:", len(privProcsInInitMountNS))
 	for _, proc := range privProcsInInitMountNS {
@@ -250,7 +393,12 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 	}
 	defer sharedMounts.Close()
 
-	for _, l := range initSharedMounts {
+	var expectedSharedMountsList []string
+	for mount := range expectedSharedMounts {
+		expectedSharedMountsList = append(expectedSharedMountsList, mount)
+	}
+
+	for _, l := range [][]string{initSharedMounts, expectedSharedMountsList, unexpectedInitSharedMounts} {
 		b, err := json.Marshal(l)
 		if err != nil {
 			s.Error("Failed to marshal process list: ", err)
@@ -276,6 +424,10 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 		}
 		relevantProcesses.Write(b)
 		relevantProcesses.WriteString("\n")
+	}
+
+	if len(unexpectedInitSharedMounts) > 0 && testType == "guest" {
+		s.Error("Found unexpected shared mounts on the system when not logged in")
 	}
 }
 
