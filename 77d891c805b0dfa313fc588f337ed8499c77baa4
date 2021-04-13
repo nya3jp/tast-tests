@@ -16,6 +16,98 @@
       "message": "Reviewers PTAL",
       "revId": "77d891c805b0dfa313fc588f337ed8499c77baa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cded560_9368390f",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-04-13T20:58:38Z",
+      "side": 1,
+      "message": "(1017226860+596249316+7153458+870845664+3182648118)/5994345394 \u003d 0.947\n\nWhere is the other 5.3% spent on? Ah, I see c0. Mhh.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 35
+      },
+      "revId": "77d891c805b0dfa313fc588f337ed8499c77baa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae8a193_2ef03545",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-04-13T20:58:38Z",
+      "side": 1,
+      "message": "Ah, fishy. ;-)",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 73
+      },
+      "revId": "77d891c805b0dfa313fc588f337ed8499c77baa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "171e13fb_917ff588",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-04-13T20:58:38Z",
+      "side": 1,
+      "message": "I don\u0027t know, I think it might be nice to report as a sanity check?",
+      "range": {
+        "startLine": 271,
+        "startChar": 14,
+        "endLine": 271,
+        "endChar": 33
+      },
+      "revId": "77d891c805b0dfa313fc588f337ed8499c77baa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8dcfb50_16dcaf8a",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-04-13T20:58:38Z",
+      "side": 1,
+      "message": "Stupid question, what happened to c1?",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 286,
+        "endChar": 18
+      },
+      "revId": "77d891c805b0dfa313fc588f337ed8499c77baa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
