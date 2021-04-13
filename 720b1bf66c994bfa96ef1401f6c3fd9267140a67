@@ -33,6 +33,24 @@
       "message": "I\u0027m happy to +2 this but IIUC this won\u0027t redirect logs for lacros launched from the shelf?\n\nDo the logs for lacros launched from shelf already go somewhere? Is it the same location?",
       "revId": "720b1bf66c994bfa96ef1401f6c3fd9267140a67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "068451e9_f8d5a6b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-04-13T02:41:16Z",
+      "side": 1,
+      "message": "Discussed offline, in a future CL we will copy the logs from shelf lacros.",
+      "parentUuid": "e97303aa_1e0b439e",
+      "revId": "720b1bf66c994bfa96ef1401f6c3fd9267140a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
