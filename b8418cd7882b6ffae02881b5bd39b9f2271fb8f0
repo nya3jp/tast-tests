@@ -16,6 +16,80 @@
       "message": "PS7 adds timeout for WaitUnreachable.",
       "revId": "b8418cd7882b6ffae02881b5bd39b9f2271fb8f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74bf515e_340da5da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-13T03:49:31Z",
+      "side": 1,
+      "message": "Generally looks good to me. A few more minor comments.",
+      "revId": "b8418cd7882b6ffae02881b5bd39b9f2271fb8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "386eff17_3cf217f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-13T03:49:31Z",
+      "side": 1,
+      "message": "not sure if it worths to do: Perhaps we can have the waiting in Reinit, as other tests would expect idle state before starting as well. Maybe a simple polling for SelectedService \u003d\u003d \"/\" in Reinit is enough?",
+      "revId": "b8418cd7882b6ffae02881b5bd39b9f2271fb8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84887e71_453c1514",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-13T03:49:31Z",
+      "side": 1,
+      "message": "nit: perhaps suspendErrCh? so it is clearer that it is \"chan error\" instead of \"error\".",
+      "range": {
+        "startLine": 219,
+        "startChar": 2,
+        "endLine": 219,
+        "endChar": 12
+      },
+      "revId": "b8418cd7882b6ffae02881b5bd39b9f2271fb8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a36cf07_426f8010",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-13T03:49:31Z",
+      "side": 1,
+      "message": "random thought: looks like we\u0027ll always want this after bgSuspend, so perhaps can be moved into bgSuspend. Then, when bgSuspend returns, DUT is guaranteed to be in unreachable state. However, bgSuspend will have to return (chan error, func(), error), which is a bit more complex.\n\nWDYT?",
+      "revId": "b8418cd7882b6ffae02881b5bd39b9f2271fb8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a204405d_20165e1c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-13T03:49:31Z",
+      "side": 1,
+      "message": "nit: perhaps can omit this? I think the default behavior will generate random SSID. (similar for ap2Config)",
+      "range": {
+        "startLine": 78,
+        "startChar": 23,
+        "endLine": 78,
+        "endChar": 49
+      },
+      "revId": "4ea5007145ce65ef268d55896612a190638d09d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7db85ab5_9fdb1f41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-13T03:49:31Z",
+      "side": 1,
+      "message": "hmm... when ok is false, behavior of d is undefined (likely zero value or garbage). It would be nice to still check it, perhaps fail the case with another reason?\n\nOne alternative is maintain a deadline by ourselves:\n\n  // might define global \"const mtbfTotalTime \u003d 5 * time.Hour\" to share\n  // this with init().\n  deadline :\u003d time.Now().Add(5 * time.Hour)\n  if d, ok :\u003d ctx.Deadline(); ok \u0026\u0026 d.Before(deadline) {\n    deadline \u003d d\n  }\n\nWDYT?",
+      "range": {
+        "startLine": 302,
+        "startChar": 8,
+        "endLine": 302,
+        "endChar": 9
+      },
+      "revId": "4ea5007145ce65ef268d55896612a190638d09d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
