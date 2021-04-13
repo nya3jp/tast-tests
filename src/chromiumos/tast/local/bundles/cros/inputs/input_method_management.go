@@ -23,7 +23,7 @@ func init() {
 		Func:         InputMethodManagement,
 		Desc:         "Verifies that user can manage input methods in OS settings",
 		Contacts:     []string{"shengjun@chromium.org", "myy@google.com", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
@@ -33,6 +33,7 @@ func init() {
 		}, {
 			Name:              "unstable",
 			ExtraHardwareDeps: pre.InputsUnstableModels,
+			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
