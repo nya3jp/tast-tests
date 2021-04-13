@@ -296,7 +296,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 
 		return loadScripts(ctx, conn, scriptPaths)
 	}(); err != nil {
-		if closeErr := conn.CloseTarget(ctx); closeErr != nil {
+		if closeErr := testutil.CloseApp(ctx, cr, conn); closeErr != nil {
 			testing.ContextLog(ctx, "Failed to close app: ", closeErr)
 		}
 		if closeErr := conn.Close(); closeErr != nil {
@@ -428,8 +428,8 @@ func (a *App) Close(ctx context.Context) (retErr error) {
 			}
 		}
 
-		if err := a.conn.CloseTarget(ctx); err != nil {
-			reportOrLogError(errors.Wrap(err, "failed to CloseTarget()"))
+		if err := testutil.CloseApp(ctx, a.cr, a.conn); err != nil {
+			reportOrLogError(errors.Wrap(err, "failed to close app"))
 		}
 		if err := a.conn.Close(); err != nil {
 			reportOrLogError(errors.Wrap(err, "failed to Conn.Close()"))
