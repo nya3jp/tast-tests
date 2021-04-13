@@ -14,10 +14,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strconv"
-	"strings"
 	"time"
-
-	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
@@ -283,7 +280,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 
 		return loadScripts(ctx, conn, scriptPaths)
 	}(); err != nil {
-		if closeErr := conn.CloseTarget(ctx); closeErr != nil {
+		if closeErr := testutil.CloseApp(ctx, cr, conn); closeErr != nil {
 			testing.ContextLog(ctx, "Failed to close app: ", closeErr)
 		}
 		if closeErr := conn.Close(); closeErr != nil {
@@ -331,15 +328,6 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir st
 	return Init(ctx, cr, scriptPaths, outDir, func(ctx context.Context, tconn *chrome.TestConn) error {
 		return apps.LaunchSystemWebApp(ctx, tconn, "Camera", "chrome://camera-app/views/main.html")
 	}, tb)
-}
-
-// InstanceExists checks if there is any running CCA instance.
-func InstanceExists(ctx context.Context, cr *chrome.Chrome) (bool, error) {
-	checkPrefix := func(t *target.Info) bool {
-		url := "chrome://camera-app/views/main.html"
-		return strings.HasPrefix(t.URL, url)
-	}
-	return cr.IsTargetAvailable(ctx, checkPrefix)
 }
 
 // ClosingItself checks if CCA intends to close itself.
@@ -415,8 +403,8 @@ func (a *App) Close(ctx context.Context) (retErr error) {
 			}
 		}
 
-		if err := a.conn.CloseTarget(ctx); err != nil {
-			reportOrLogError(errors.Wrap(err, "failed to CloseTarget()"))
+		if err := testutil.CloseApp(ctx, a.cr, a.conn); err != nil {
+			reportOrLogError(errors.Wrap(err, "failed to close app"))
 		}
 		if err := a.conn.Close(); err != nil {
 			reportOrLogError(errors.Wrap(err, "failed to Conn.Close()"))

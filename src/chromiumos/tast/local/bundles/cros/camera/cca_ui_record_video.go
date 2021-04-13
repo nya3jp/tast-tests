@@ -464,7 +464,7 @@ func testConfirmDialog(ctx context.Context, cr *chrome.Chrome, scriptPaths []str
 	// It is expected that the camera app is not closed.
 	errTimeout := errors.New("CCA exists after timeout")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		appExist, err := cca.InstanceExists(ctx, cr)
+		appExist, err := testutil.CCAInstanceExists(ctx, cr)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
@@ -494,7 +494,7 @@ func testConfirmDialog(ctx context.Context, cr *chrome.Chrome, scriptPaths []str
 
 	// Now the camera app is closable.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		appExist, err := cca.InstanceExists(ctx, cr)
+		appExist, err := testutil.CCAInstanceExists(ctx, cr)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
