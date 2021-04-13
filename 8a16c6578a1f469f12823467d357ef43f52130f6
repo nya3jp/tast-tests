@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70804434_12d4970f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-13T14:21:39Z",
+      "side": 1,
+      "message": "style: we often avoid \"get/is/has/can\" prefixes in go.\nSuggestion \"stringVar\". For consistency, I\u0027d recommend to update getIntVar to intVar, too.",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 17
+      },
+      "revId": "8a16c6578a1f469f12823467d357ef43f52130f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11ade65e_30d9838c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-13T14:21:39Z",
+      "side": 1,
+      "message": "could you handle errors, instead, because there\u0027s no guarantee the valid regexp is passed to the var always.\nSo, that wouldn\u0027t need to crash even if unexpected regexp is passed from outside of tast, accidentally.",
+      "revId": "8a16c6578a1f469f12823467d357ef43f52130f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
