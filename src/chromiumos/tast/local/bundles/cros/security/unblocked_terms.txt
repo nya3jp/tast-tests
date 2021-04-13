@@ -1,0 +1,3 @@
+# Needed for working with mount propagation
+# TODO(crbug/1207940): Remove this eventually
+master
