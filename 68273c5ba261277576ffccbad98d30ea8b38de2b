@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df7e16e7_9fc047ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-04-13T19:08:53Z",
+      "side": 1,
+      "message": "Hi, everthing important is put down in the commit message.\nPlease review.",
+      "revId": "68273c5ba261277576ffccbad98d30ea8b38de2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
