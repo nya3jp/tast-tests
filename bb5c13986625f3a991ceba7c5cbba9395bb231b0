@@ -34,6 +34,23 @@
       "parentUuid": "2f905362_466686c7",
       "revId": "bb5c13986625f3a991ceba7c5cbba9395bb231b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8575dd3b_105023ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-13T21:27:15Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective",
+      "revId": "bb5c13986625f3a991ceba7c5cbba9395bb231b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
