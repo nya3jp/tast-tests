@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "956bcbb1_4fff1557",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-04-13T02:33:01Z",
+      "side": 1,
+      "message": "as a temporary measure you can check for VM so that we can land the R/S/master changes and this tast test change first.\n\n\tisVMEnabled, err :\u003d VMEnabled()",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 0
+      },
+      "revId": "2d4a4d7d5a97b2338b3487ce4306e14f02884c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
