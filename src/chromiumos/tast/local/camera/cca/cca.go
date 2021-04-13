@@ -215,6 +215,7 @@ type App struct {
 	appLauncher testutil.AppLauncher
 	appWindow   *testutil.AppWindow
 	cameraType  testutil.UseCameraType
+	appCloser   testutil.AppCloser
 }
 
 // ErrJS represents an error occurs when executing JavaScript.
@@ -248,7 +249,7 @@ func (r *Resolution) AspectRatio() float64 {
 // until its AppWindow interactable. The scriptPath should be the data path to
 // the helper script cca_ui.js. The returned App instance must be closed when
 // the test is finished.
-func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, appLauncher testutil.AppLauncher, tb *testutil.TestBridge) (*App, error) {
+func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, appLauncher testutil.AppLauncher, appCloser testutil.AppCloser, tb *testutil.TestBridge) (*App, error) {
 	// Since we don't use "cros-camera" service for fake camera, there is no need
 	// to ensure it is running.
 	if tb.CameraType != testutil.UseFakeCamera {
@@ -283,7 +284,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 
 		return loadScripts(ctx, conn, scriptPaths)
 	}(); err != nil {
-		if closeErr := conn.CloseTarget(ctx); closeErr != nil {
+		if closeErr := testutil.CloseApp(ctx, cr); closeErr != nil {
 			testing.ContextLog(ctx, "Failed to close app: ", closeErr)
 		}
 		if closeErr := conn.Close(); closeErr != nil {
@@ -296,7 +297,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	}
 
 	testing.ContextLog(ctx, "CCA launched")
-	app := &App{conn, cr, scriptPaths, outDir, appLauncher, appWindow, tb.CameraType}
+	app := &App{conn, cr, scriptPaths, outDir, appLauncher, appWindow, tb.CameraType, appCloser}
 	waitForWindowReady := func() error {
 		if err := app.WaitForVideoActive(ctx); err != nil {
 			return errors.Wrap(err, ErrVideoNotActive)
@@ -330,6 +331,8 @@ func loadScripts(ctx context.Context, conn *chrome.Conn, scriptPaths []string) e
 func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, tb *testutil.TestBridge) (*App, error) {
 	return Init(ctx, cr, scriptPaths, outDir, func(ctx context.Context, tconn *chrome.TestConn) error {
 		return apps.LaunchSystemWebApp(ctx, tconn, "Camera", "chrome://camera-app/views/main.html")
+	}, func(ctx context.Context, appConn *chrome.Conn) error {
+		return testutil.CloseApp(ctx, cr)
 	}, tb)
 }
 
@@ -415,8 +418,8 @@ func (a *App) Close(ctx context.Context) (retErr error) {
 			}
 		}
 
-		if err := a.conn.CloseTarget(ctx); err != nil {
-			reportOrLogError(errors.Wrap(err, "failed to CloseTarget()"))
+		if err := a.appCloser(ctx, a.conn); err != nil {
+			reportOrLogError(errors.Wrap(err, "failed to close app"))
 		}
 		if err := a.conn.Close(); err != nil {
 			reportOrLogError(errors.Wrap(err, "failed to Conn.Close()"))
@@ -454,7 +457,7 @@ func (a *App) Restart(ctx context.Context, tb *testutil.TestBridge) error {
 	if err := a.Close(ctx); err != nil {
 		return err
 	}
-	newApp, err := Init(ctx, a.cr, a.scriptPaths, a.outDir, a.appLauncher, tb)
+	newApp, err := Init(ctx, a.cr, a.scriptPaths, a.outDir, a.appLauncher, a.appCloser, tb)
 	if err != nil {
 		return err
 	}
