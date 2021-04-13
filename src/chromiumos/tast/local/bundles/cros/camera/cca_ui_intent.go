@@ -264,7 +264,12 @@ func launchIntent(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options in
 		testing.ContextLog(ctx, string(output))
 		return nil
 	}
-	return cca.Init(ctx, cr, scripts, outDir, launchByIntent, tb)
+	return cca.Init(ctx, cr, scripts, outDir, launchByIntent, func(ctx context.Context, appConn *chrome.Conn) error {
+		// Since we launch CCA for intents in a dialog window instead of a
+		// browser window, we close the dialog window using conn.CloseTarget()
+		// rather than calling testutil.CloseApp().
+		return appConn.CloseTarget(ctx)
+	}, tb)
 }
 
 func closeCCAAndTestApp(ctx context.Context, a *arc.ARC, app *cca.App, outDir string) error {

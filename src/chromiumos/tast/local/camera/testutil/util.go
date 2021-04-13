@@ -9,9 +9,11 @@ package testutil
 import (
 	"context"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -36,6 +38,9 @@ func ChromeBypassCameraPermissions() testing.Precondition { return chromeBypassC
 // AppLauncher is used during the launch process of CCA. We could launch CCA
 // by launchApp event, camera intent or any other ways.
 type AppLauncher func(ctx context.Context, tconn *chrome.TestConn) error
+
+// AppCloser will be called when the tests want to close CCA.
+type AppCloser func(ctx context.Context, appConn *chrome.Conn) error
 
 // LaunchApp launches the camera app and handles the communication flow between tests and app.
 func LaunchApp(ctx context.Context, cr *chrome.Chrome, tb *TestBridge, appLauncher AppLauncher) (*chrome.Conn, *AppWindow, error) {
@@ -113,6 +118,27 @@ func RefreshApp(ctx context.Context, conn *chrome.Conn, tb *TestBridge) (*AppWin
 		return nil, err
 	}
 	return appWindow, nil
+}
+
+// CloseApp closes the camera app via autotest private API to ensure that the window is properly closed.
+func CloseApp(ctx context.Context, cr *chrome.Chrome) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.closeApp)`, apps.Camera.ID); err != nil {
+		return err
+	}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		var isOpen bool
+		if err := tconn.Call(ctx, &isOpen, `tast.promisify(chrome.autotestPrivate.isSystemWebAppOpen)`, apps.Camera.ID); err != nil {
+			return testing.PollBreak(err)
+		}
+		if isOpen {
+			return errors.New("failed to close app within time")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // GetUSBCamerasFromV4L2Test returns a list of usb camera paths.
