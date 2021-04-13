@@ -6,6 +6,7 @@ package crash
 
 import (
 	"context"
+	"io/ioutil"
 	"strings"
 
 	"chromiumos/tast/common/testexec"
@@ -29,16 +30,20 @@ func init() {
 func SuspendFailure(ctx context.Context, s *testing.State) {
 	const suspendFailureName = "suspend-failure"
 
-	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
+	// Set up the crash test, ignoring non-suspend-failure crashes.
+	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent(), crash.FilterCrashes("suspend_failure")); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest(ctx)
 
-	// Restart anomaly detector to clear its cache of recently seen suspend
+	// Restart anomaly detector to clear its cache of recently seen service
 	// failures and ensure this one is logged.
-	if err := crash.RestartAnomalyDetector(ctx); err != nil {
+	if err := crash.RestartAnomalyDetectorWithSendAll(ctx, true); err != nil {
 		s.Fatal("Failed to restart anomaly detector: ", err)
 	}
+
+	// Restart anomaly detector to clear its --testonly-send-all flag at the end of execution.
+	defer crash.RestartAnomalyDetector(ctx)
 
 	s.Log("Inducing artificial suspend permission failure")
 	perm, err := testexec.CommandContext(ctx, "stat", "--format=%a", "/sys/power/state").Output(testexec.DumpLogOnError)
@@ -77,14 +82,32 @@ func SuspendFailure(ctx context.Context, s *testing.State) {
 		testexec.CommandContext(ctx, "reboot").Run()
 	}
 
-	expectedRegexes := []string{`suspend_failure\.\d{8}\.\d{6}\.\d+\.0\.log`,
-		`suspend_failure\.\d{8}\.\d{6}\.\d+\.0\.meta`}
+	const (
+		logFileRegex  = `suspend_failure\.\d{8}\.\d{6}\.\d+\.0\.log`
+		metaFileRegex = `suspend_failure\.\d{8}\.\d{6}\.\d+\.0\.meta`
+	)
+	expectedRegexes := []string{logFileRegex, metaFileRegex}
 
 	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedRegexes)
 	if err != nil {
 		s.Fatal("Couldn't find expected files: ", err)
 	}
-	if err := crash.RemoveAllFiles(ctx, files); err != nil {
-		s.Log("Couldn't clean up files: ", err)
+	defer func() {
+		if err := crash.RemoveAllFiles(ctx, files); err != nil {
+			s.Log("Couldn't clean up files: ", err)
+		}
+	}()
+
+	for _, meta := range files[metaFileRegex] {
+		contents, err := ioutil.ReadFile(meta)
+		if err != nil {
+			s.Fatalf("Couldn't read log file %s: %v", meta, err)
+		}
+		if !strings.Contains(string(contents), "upload_var_weight=50\n") {
+			s.Error("Meta file didn't contain weight=50. Saving file")
+			if err := crash.MoveFilesToOut(ctx, s.OutDir(), meta); err != nil {
+				s.Error("Could not move meta file to out dir: ", err)
+			}
+		}
 	}
 }
