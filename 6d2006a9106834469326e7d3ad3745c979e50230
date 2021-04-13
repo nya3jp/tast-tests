@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae298c07_a5b54f7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-13T01:00:30Z",
+      "side": 1,
+      "message": "LGTM (from tast perspective) % nits. Make sure to wait for Steven\u0027s review as well ",
+      "revId": "6d2006a9106834469326e7d3ad3745c979e50230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6c35f83_ed9595ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-13T01:00:30Z",
+      "side": 1,
+      "message": "nit: might be worth moving this outside the testing.Poll scope into the enclosing function scope?",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 3
+      },
+      "revId": "6d2006a9106834469326e7d3ad3745c979e50230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

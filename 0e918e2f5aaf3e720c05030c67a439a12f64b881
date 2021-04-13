@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f584ca2_ed29bc9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolver_present.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-13T01:00:30Z",
+      "side": 1,
+      "message": "Yeah fair enough. Thanks for clarification!",
+      "parentUuid": "a9e3390d_c7be0b73",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "0e918e2f5aaf3e720c05030c67a439a12f64b881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bbcf42d_8389e75d",
