@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c1d8670_e0328ed7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_lan_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-13T02:08:41Z",
+      "side": 1,
+      "message": "Do we need to disable WiFi also in case the DUT has a WiFi connection? (I\u0027ve no idea what if any guarantees there are for that). Maybe add a pseudo-enum value shill.TechnologyAll and iterate through enabled technologies?",
+      "revId": "21cd05d1b7cfacb79b4caf041cfb0bdd4f9c9412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
