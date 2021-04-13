@@ -99,7 +99,7 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 	const defaultIterations = 20
 	const defaultSkipIterations = 0
 	const defaultSeed = 1
-	const perIterationTimeout = 10 * time.Second
+	const actionTimeout = 30 * time.Second
 	const cleanupTimeout = 20 * time.Second
 
 	iterations := intVar(s, "iterations", defaultIterations)
@@ -201,7 +201,7 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 			continue
 		}
 		s.Logf("Iteration %d/%d: Performing action %s", i, iterations, action.name)
-		actionCtx, actionCancel := context.WithTimeout(ctx, perIterationTimeout)
+		actionCtx, actionCancel := context.WithTimeout(ctx, actionTimeout)
 		if err := action.perform(actionCtx); err != nil {
 			s.Fatalf("Failed to perform action %v: %v", action.name, err)
 		}
