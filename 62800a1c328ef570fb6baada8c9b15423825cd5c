@@ -46,6 +46,30 @@
       },
       "revId": "62800a1c328ef570fb6baada8c9b15423825cd5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "768aa569_e3277996",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_network.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-13T08:04:51Z",
+      "side": 1,
+      "message": "Make it a function inside CrosRuntimeProbeNetwork. Seems it\u0027s only being used at line 74 and only in this test, perfect to just isolate it in the functions scope.",
+      "parentUuid": "f5fd4624_7aebce5d",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "62800a1c328ef570fb6baada8c9b15423825cd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
