@@ -40,6 +40,27 @@ func TestDumpsysPhysicalDisplayR(t *testing.T) {
 	}
 }
 
+func TestDumpsysOverrideDensityDPI(t *testing.T) {
+	gotDefaultDisp, err := scrapeOverrideDensityDPI([]byte(dumpsysDisplayR()), 0)
+	if err != nil {
+		t.Fatal("scrapeOverrideDensityDPI failed: ", err)
+	}
+	gotExternalDisp, err := scrapeOverrideDensityDPI([]byte(dumpsysDisplayR()), 2)
+	if err != nil {
+		t.Fatal("scrapeOverrideDensityDPI failed: ", err)
+	}
+	const (
+		wantDefaultDisp  = 400
+		wantExternalDisp = 213
+	)
+	if gotDefaultDisp != wantDefaultDisp {
+		t.Fatalf("scrapeOverrideDensityDPI(defaultDisp) = %v; want %v", gotDefaultDisp, wantDefaultDisp)
+	}
+	if gotExternalDisp != wantExternalDisp {
+		t.Fatalf("scrapeOverrideDensityDPI(externalDisp) = %v; want %v", gotExternalDisp, wantExternalDisp)
+	}
+}
+
 func TestDumpsysDisplaySizeR(t *testing.T) {
 	got, err := scrapeDisplaySize([]byte(dumpsysDisplayR()), false, 0, SDKR)
 	if err != nil {
