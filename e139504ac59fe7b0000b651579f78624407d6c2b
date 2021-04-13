@@ -16,6 +16,138 @@
       "message": "@Dean, do you want to take another look? I see you already reviewed half of this.",
       "revId": "e139504ac59fe7b0000b651579f78624407d6c2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dbe8641_eb151865",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-13T11:21:40Z",
+      "side": 1,
+      "message": "Please remember to document AP1 and AP2 confiig in the MTBF proposal.",
+      "revId": "e139504ac59fe7b0000b651579f78624407d6c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd6beeb_eb85aba8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-13T11:21:40Z",
+      "side": 1,
+      "message": "Can use named result param, e.g. \"ch\"?",
+      "range": {
+        "startLine": 130,
+        "startChar": 65,
+        "endLine": 130,
+        "endChar": 66
+      },
+      "revId": "e139504ac59fe7b0000b651579f78624407d6c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24a33ea4_5a871e90",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-13T11:21:40Z",
+      "side": 1,
+      "message": "timeForReinit",
+      "range": {
+        "startLine": 155,
+        "startChar": 38,
+        "endLine": 155,
+        "endChar": 52
+      },
+      "revId": "e139504ac59fe7b0000b651579f78624407d6c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a24147f_e430e4f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-13T11:21:40Z",
+      "side": 1,
+      "message": "How about using a func to log step with increment count.\nstep :\u003d 1\nfunc LogStep(desc string) {\n  s.Log(\"Step %d: %v\", step, desc)\n  step++\n}\n\nMoreover, it would be nice to time each step:\n\nfunc RunStep(ctx context.Context, desc string, f func(ctx context.Context)) {\n  s.Log(\"Step %d: %v\", step, desc)\n  step++\n  ctx, st :\u003d timing.Start(ctx, desc)\n  defer st.End()\n  f(ctx)\n}\n\nThen we can put the step logic in it:\nRunStep(ctx, \"Simple connect to AP1\", func(ctx context.Context) {\n  ....\n})",
+      "range": {
+        "startLine": 158,
+        "startChar": 9,
+        "endLine": 158,
+        "endChar": 13
+      },
+      "revId": "e139504ac59fe7b0000b651579f78624407d6c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0404e73_a25b63f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-13T11:21:40Z",
+      "side": 1,
+      "message": "Connect to AP1 and perform ping test",
+      "range": {
+        "startLine": 158,
+        "startChar": 15,
+        "endLine": 158,
+        "endChar": 36
+      },
+      "revId": "e139504ac59fe7b0000b651579f78624407d6c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596d8412_7b31ebfc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-13T11:21:40Z",
+      "side": 1,
+      "message": "Suspend for %v and ...",
+      "range": {
+        "startLine": 173,
+        "startChar": 15,
+        "endLine": 173,
+        "endChar": 22
+      },
+      "revId": "e139504ac59fe7b0000b651579f78624407d6c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
