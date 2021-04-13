@@ -106,7 +106,7 @@ type chromeTab struct {
 
 func (tab *chromeTab) searchElementWithPatternAndClick(ctx context.Context, pattern string) error {
 	if err := tab.conn.Eval(ctx, "window.location.href", &tab.url); err != nil {
-		return errors.Wrap(err, "failed to get URL before click on a element")
+		return errors.Wrap(err, "failed to get URL before clicking on an element")
 	}
 	testing.ContextLogf(ctx, "Current URL: %q", tab.url)
 
@@ -118,13 +118,13 @@ func (tab *chromeTab) searchElementWithPatternAndClick(ctx context.Context, patt
 	// Click on a link will trigger navigation immediately. If the page is navigated before the CDP returns,
 	// the JSObject won't be able to release, and an error will be returned. Therefore timeout is used to
 	// allow CDP return and object release before clicking the link.
-
+	//
+	// Use 3000 milliseconds timeout value before clicking anchor (bug: https://issuetracker.google.com/185467835).
 	script := `(pattern) => {
 			const name = "a[href*='" + pattern + "']";
 			const els = document.querySelectorAll(name);
 			if (els.length === 0) return false;
-			const ele = els[0];
-			setTimeout(() => { ele.click(); }, 500);
+			setTimeout(() => { els[0].click(); }, 3000);
 			return true;
 		}`
 
@@ -132,7 +132,7 @@ func (tab *chromeTab) searchElementWithPatternAndClick(ctx context.Context, patt
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var done bool
 		if err := tab.conn.Call(ctx, &done, script, pattern); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to search and click on a element"))
+			return testing.PollBreak(errors.Wrap(err, "failed to search and click on an element"))
 		}
 		if !done {
 			return errors.New("element not found")
@@ -146,7 +146,7 @@ func (tab *chromeTab) searchElementWithPatternAndClick(ctx context.Context, patt
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var urlAfter string
 		if err := tab.conn.Eval(ctx, "window.location.href", &urlAfter); err != nil {
-			return errors.Wrap(err, "failed to get URL after click on a element")
+			return testing.PollBreak(errors.Wrap(err, "failed to get URL after clicking on an element"))
 		}
 		if urlAfter == tab.url {
 			return errors.New("page has not navigated")
@@ -170,15 +170,15 @@ func (tab *chromeTab) clickAnchor(ctx context.Context, timeout time.Duration) er
 		pn = 0
 	}
 
+	if err := webutil.WaitForQuiescence(ctx, tab.conn, timeout); err != nil {
+		return errors.Wrap(err, "failed to wait for tab quiescence before clicking anchor")
+	}
 	pattern := tab.pageInfo.contentPatterns[pn]
-
 	testing.ContextLogf(ctx, "Click link and navigate from %q to %q", tab.pageInfo.contentPatterns[p], pattern)
 	if err := tab.searchElementWithPatternAndClick(ctx, pattern); err != nil {
-		return errors.Wrapf(err, "failed to click anchor, current page: %s", tab.url)
+		return errors.Wrapf(err, "failed to click anchor on page %s", tab.url)
 	}
-
 	tab.currentPattern = pn
-
 	return nil
 }
 
@@ -186,7 +186,6 @@ func (tab *chromeTab) close(ctx context.Context, s *testing.State) {
 	if tab.conn == nil {
 		return
 	}
-
 	if err := tab.conn.CloseTarget(ctx); err != nil {
 		s.Error("Failed to close target, error: ", err)
 	}
@@ -225,11 +224,11 @@ var allTargets = []struct {
 	{"https://medium.com/topic/software-engineering", newPageInfo(Premium, medium, `/software-engineering`, `/topic/programming`)},
 	{"https://medium.com/topic/artificial-intelligence", newPageInfo(Premium, medium, `/artificial-intelligence`, `/topic/technology`)},
 
-	{"https://news.yahoo.com/coronavirus", newPageInfo(Basic, yahooNews, `/coronavirus`, `/johnson-johnson-subcontractor-ruins-15-171933358.html`)},
 	{"https://news.yahoo.com/us/", newPageInfo(Basic, yahooNews, `/us/`, `/politics/`)},
-	{"https://news.yahoo.com/world/", newPageInfo(Plus, yahooNews, `/world/`, `/health/`)},
-	{"https://news.yahoo.com/science/", newPageInfo(Premium, yahooNews, `/science/`, `/tagged/skullduggery/`)},
+	{"https://news.yahoo.com/world/", newPageInfo(Basic, yahooNews, `/world/`, `/health/`)},
+	{"https://news.yahoo.com/science/", newPageInfo(Plus, yahooNews, `/science/`, `/tagged/skullduggery/`)},
 	{"https://news.yahoo.com/originals/", newPageInfo(Premium, yahooNews, `/originals/`, `/videos`)},
+	{"https://news.yahoo.com/videos/in-depth/", newPageInfo(Premium, yahooNews, `/videos/in-depth/`, `/videos/ideas-election/`)},
 
 	{"https://edition.cnn.com/world", newPageInfo(Plus, cnn, `/world`, `/africa`)},
 	{"https://edition.cnn.com/americas", newPageInfo(Plus, cnn, `/americas`, `/asia`)},
@@ -247,9 +246,9 @@ var allTargets = []struct {
 
 	{"https://www.pinterest.com/ideas/", newPageInfo(Plus, pinterest, `/ideas/`, `/ideas/holidays/910319220330/`)},
 
-	{"https://www.youtube.com", newPageInfo(Premium, youtube, `/`, `/feed/trending`)},
+	{"https://help.netflix.com/en/", newPageInfo(Premium, netflix, `/en`, `/en/legal/termsofuse`)},
 
-	{"https://www.netflix.com", newPageInfo(Premium, netflix, `netflix.com`, `help.netflix.com/legal/termsofuse`)},
+	{"https://www.youtube.com", newPageInfo(Premium, youtube, `/`, `/feed/explore`)},
 }
 
 // generateTabSwitchTargets sets all web targets according to the input Level.
@@ -415,19 +414,19 @@ func openAllWindowsAndTabs(ctx context.Context, cr *chrome.Chrome, targets *[]*c
 				//Chrome app has already been started and there is a blank chrome tab. Just reuse it.
 				if tab.conn, err = cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/")); err != nil {
 					// If failed to match the very first tab here, no way to close the tab either.
-					return errors.Wrap(err, "failed to find new tab: ")
+					return errors.Wrap(err, "failed to find new tab")
 				}
 				if err = tab.conn.Navigate(ctx, tab.url); err != nil {
-					return errors.Wrapf(err, "failed to navigate to %s, error: ", tab.url)
+					return errors.Wrapf(err, "failed to navigate to %s", tab.url)
 				}
 			} else {
 				if tab.conn, err = tsAction.NewChromeTab(ctx, cr, tab.url, idxTab == 0); err != nil {
-					return errors.Wrap(err, "failed to create new Chrome tab: ")
+					return errors.Wrap(err, "failed to create new Chrome tab")
 				}
 			}
 
 			if err := webutil.WaitForRender(ctx, tab.conn, plTimeout); err != nil {
-				return errors.Wrap(err, "failed to wait for finish render: ")
+				return errors.Wrap(err, "failed to wait for render to finish")
 			}
 
 			// In replay mode, user won't be able to know whether the page is quiescence or not,
@@ -435,7 +434,7 @@ func openAllWindowsAndTabs(ctx context.Context, cr *chrome.Chrome, targets *[]*c
 			// In record mode, needs to wait for quiescence to properly record web content.
 			if caseLevel == Record {
 				if err := webutil.WaitForQuiescence(ctx, tab.conn, plTimeout); err != nil {
-					return errors.Wrap(err, "failed to wait for tab quiescence: ")
+					return errors.Wrap(err, "failed to wait for tab to achieve quiescence")
 				}
 			}
 		}
@@ -464,21 +463,21 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, targets *[]*chromeW
 			testing.ContextLogf(ctx, "Switching tab to window %d, tab %d", idx+1, tabIdx+1)
 
 			if err := tsAction.SwitchChromeTab(ctx, tabIdxPre, tabIdx, tabTotalNum); err != nil {
-				return errors.Wrap(err, "failed to switch tab: ")
+				return errors.Wrap(err, "failed to switch tab")
 			}
 			tabIdxPre = tabIdx
 			tab := window.tabs[tabIdx]
 
 			timeStart := time.Now()
 			if err := webutil.WaitForRender(ctx, tab.conn, tabSwitchTimeout); err != nil {
-				return errors.Wrap(err, "failed to wait for the tab to be visible: ")
+				return errors.Wrap(err, "failed to wait for the tab to be visible")
 			}
 			renderTime := time.Since(timeStart)
 			// Debugging purpose message, to observe which tab takes unusual long time to render.
 			testing.ContextLog(ctx, "Tab rendering time after switching: ", renderTime)
 			if caseLevel == Record {
 				if err := webutil.WaitForQuiescence(ctx, tab.conn, plTimeout); err != nil {
-					return errors.Wrap(err, "failed to wait for tab quiescence: ")
+					return errors.Wrap(err, "failed to wait for tab to achieve quiescence")
 				}
 				quiescenceTime := time.Now().Sub(timeStart)
 				// Debugging purpose message, to observe which tab takes unusual long time to quiescence
@@ -490,15 +489,15 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, targets *[]*chromeW
 			if tab.pageInfo.webName == wikipedia || tab.pageInfo.webName == hulu || tab.pageInfo.webName == youtube {
 				for _, act := range scrollActions {
 					if err := act(ctx, tab.conn); err != nil {
-						return errors.Wrap(err, "failed to execute action: ")
+						return errors.Wrap(err, "failed to execute action")
 					}
 					// Make sure the whole web content is recorded only under Recording.
 					if caseLevel == Record {
 						if err := webutil.WaitForRender(ctx, tab.conn, tabSwitchTimeout); err != nil {
-							return errors.Wrap(err, "failed to wait for finish render after link clicking: ")
+							return errors.Wrap(err, "failed to wait for render to finish after scroll")
 						}
 						if err := webutil.WaitForQuiescence(ctx, tab.conn, plTimeout); err != nil {
-							return errors.Wrap(err, "failed to wait for tab quiescence after link clicking: ")
+							return errors.Wrap(err, "failed to wait for tab to achieve quiescence after scroll")
 						}
 					}
 				}
@@ -508,15 +507,15 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, targets *[]*chromeW
 			// accessible under any other levels.
 			if tabIdx%2 == 0 || caseLevel == Record {
 				if err := tab.clickAnchor(ctx, plTimeout); err != nil {
-					return errors.Wrap(err, "failed to click anchor: ")
+					return errors.Wrap(err, "failed to click anchor")
 				}
 				if caseLevel == Record {
 					// Ensure contents are renderred in recording mode.
 					if err := webutil.WaitForRender(ctx, tab.conn, plTimeout); err != nil {
-						return errors.Wrap(err, "failed to wait for finish render: ")
+						return errors.Wrap(err, "failed to wait for render to finish")
 					}
 					if err := webutil.WaitForQuiescence(ctx, tab.conn, plTimeout); err != nil {
-						return errors.Wrap(err, "failed to wait for tab quiescence: ")
+						return errors.Wrap(err, "failed to wait for tab to achieve quiescence")
 					}
 				} else {
 					// It is normal that tabs might remain loading, hence no handle error here.
