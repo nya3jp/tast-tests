@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d3cac48_326b7399",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/font_sharing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-04-13T11:40:53Z",
+      "side": 1,
+      "message": "Moved it.",
+      "parentUuid": "22be4786_d06a92ce",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 30
+      },
+      "revId": "406e20a8ee06273e7a939c77d726bb4e7c0565a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fdacb93e_ac1b8b70",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/font_sharing.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-13T08:54:41Z",
       "side": 1,
       "message": "Also verify that there are at least 1 (or 3) font files that have cros_usr_dirs context?",
+      "range": {
+        "startLine": 63,
+        "startChar": 39,
+        "endLine": 63,
+        "endChar": 56
+      },
+      "revId": "406e20a8ee06273e7a939c77d726bb4e7c0565a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4abeb782_e8c8e381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/font_sharing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-04-13T11:40:53Z",
+      "side": 1,
+      "message": "I think it\u0027s not necessary.\nIf large font files have the proper context, that should be fine.",
+      "parentUuid": "fdacb93e_ac1b8b70",
       "range": {
         "startLine": 63,
         "startChar": 39,
