@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97fdd6ef_2cbf92cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-13T00:52:17Z",
+      "side": 1,
+      "message": "Sorry for the late response!",
+      "revId": "24f1000b79a76704fc0fa25d54fcbacce055af26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c5a819f_4defe7df",
+        "filename": "src/chromiumos/tast/remote/dutfs/dutfs.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-13T00:52:17Z",
+      "side": 1,
+      "message": "Again probably don\u0027t need this as res.Error seems to be where the errors are stored.",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "24f1000b79a76704fc0fa25d54fcbacce055af26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c70c019_f51134f3",
+        "filename": "src/chromiumos/tast/services/cros/baserpc/file_system.pb.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-13T00:52:17Z",
+      "side": 1,
+      "message": "nit: you can collapse these into one line.",
+      "range": {
+        "startLine": 952,
+        "startChar": 1,
+        "endLine": 953,
+        "endChar": 16
+      },
+      "revId": "24f1000b79a76704fc0fa25d54fcbacce055af26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
