@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d211675_09391cb2",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-13T03:56:28Z",
+      "side": 1,
+      "message": "Calling wifi.Interface() from WifiInterface(). I added a timeout field for WifiManager struct and allow caller to change the default timeout value.",
+      "parentUuid": "a3eab84e_2bd66b46",
+      "revId": "5e5633658173aec331542c20efe63a9af147a0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "261b228b_1982c9d1",
