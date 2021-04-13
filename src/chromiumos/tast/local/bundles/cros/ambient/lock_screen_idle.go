@@ -56,7 +56,9 @@ func LockScreenIdle(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := prepareAmbientMode(ctx, tconn); err != nil {
+	if err := retry(2, func() error {
+		return prepareAmbientMode(ctx, tconn)
+	}); err != nil {
 		s.Fatal("Failed to prepare ambient mode: ", err)
 	}
 	defer func() {
@@ -96,18 +98,30 @@ func setup(
 	return cr, tconn, nil
 }
 
+func retry(times int, f func() error) (err error) {
+	for i := 0; i < times; i++ {
+		err = f()
+		if err == nil {
+			return
+		}
+	}
+	return err
+}
+
 func prepareAmbientMode(ctx context.Context, tconn *chrome.TestConn) error {
 	if err := ambient.SetEnabled(ctx, tconn, false); err != nil {
 		return errors.Wrap(err, "failed to set ambient mode pref to false")
 	}
 
-	if _, err := ossettings.LaunchAtPage(
+	settingsPage, err := ossettings.LaunchAtPage(
 		ctx,
 		tconn,
 		nodewith.Name("Personalization").Role(role.Link),
-	); err != nil {
+	)
+	if err != nil {
 		return errors.Wrap(err, "opening settings page failed")
 	}
+	defer settingsPage.Close(ctx)
 
 	if err := ui.StableFindAndClick(
 		ctx,
