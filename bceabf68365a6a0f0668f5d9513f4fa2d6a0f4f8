@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5fe526c_7a6afc9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-04-13T23:16:40Z",
+      "side": 1,
+      "message": "Jun Mukai is out of office until May 17. Gabor Zsolt Magda and Kamil Szarek please review my CL and do not wait for input from Jun Mukai. Thank you.",
+      "revId": "bceabf68365a6a0f0668f5d9513f4fa2d6a0f4f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
