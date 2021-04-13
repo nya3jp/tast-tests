@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f9000ad_50191667",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-13T00:38:04Z",
+      "side": 1,
+      "message": "Sorry that I not familiar with why we need that \"android\" software deps. From my understanding the HAL3 test only need chrome and arc_camera3 as dependency.\nFound a related CL here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1516896/\n\nnya@ can you check if this change allow listed the correct board/models as the original intention of that reference CL? I only want the HAL3 test to run on the preexisting boards + arcvm platform.\n\n\n",
+      "revId": "2582c6e7ebf8c54e65ffb8c444b9443578af39b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
