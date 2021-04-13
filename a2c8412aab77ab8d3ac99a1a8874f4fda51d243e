@@ -16,6 +16,24 @@
       "message": "any particular reason to remove au?",
       "revId": "a2c8412aab77ab8d3ac99a1a8874f4fda51d243e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e67629bd_738720e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/screen_diff.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-04-13T07:46:18Z",
+      "side": 0,
+      "message": "the AU config wasnt doing anything useful - it used to be used to compare the hashes returned by gold to make sure that au \u003d\u003d us \u0026\u0026 us !\u003d jp, but that only worked for failing diffs.",
+      "parentUuid": "a2f2be16_886bbf53",
+      "revId": "a2c8412aab77ab8d3ac99a1a8874f4fda51d243e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
