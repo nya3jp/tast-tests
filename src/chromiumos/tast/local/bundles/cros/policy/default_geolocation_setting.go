@@ -130,6 +130,11 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 					return
 				}
 
+				// TODO(crbug.com/1197511): investigate why this is needed.
+				// Wait for a second before clicking the allow button as the click
+				// won't be registered otherwise.
+				testing.Sleep(ctx, time.Second)
+
 				// Get the allow button.
 				node, err := ui.Find(ctx, tconn, params)
 				if err != nil {
