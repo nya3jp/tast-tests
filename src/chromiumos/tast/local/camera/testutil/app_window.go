@@ -37,6 +37,7 @@ type ErrorInfo struct {
 	Level     ErrorLevel `json:"level"`
 	Stack     string     `json:"stack"`
 	Time      int64      `json:"time"`
+	ErrorName string     `json:"name"`
 }
 
 // AppWindow is used to comminicate with CCA foreground window.
