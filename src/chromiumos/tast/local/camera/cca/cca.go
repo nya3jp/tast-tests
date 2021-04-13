@@ -396,8 +396,8 @@ func (a *App) checkJSError(ctx context.Context) error {
 		return err
 	}
 	if len(jsErrors) > 0 {
-		return &ErrJS{fmt.Sprintf("there are %d JS errors, first error: %v: %v",
-			len(jsErrors), jsErrors[0].Level, jsErrors[0].ErrorType)}
+		return &ErrJS{fmt.Sprintf("there are %d JS errors, first error: [%v] Type: %v. Name: %v",
+			len(jsErrors), jsErrors[0].Level, jsErrors[0].ErrorType, jsErrors[0].ErrorName)}
 	}
 	return nil
 }
