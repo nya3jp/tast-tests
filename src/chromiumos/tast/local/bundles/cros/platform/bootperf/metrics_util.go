@@ -12,6 +12,7 @@ import (
 	"math"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -416,6 +417,45 @@ func findMostRecentBootstatArchivePath() (string, error) {
 	return "", errors.New("failed to find the bootstat archive for the latest shutdown")
 }
 
+// getRamoopsRebootTime returns the timestamp of the last message in ramoops, indicating
+// when the kernel hands off execution to FW for reboot.
+func getRamoopsRebootTime(ctx context.Context) (float64, error) {
+	ramoops := make(map[string][]byte)
+	GatherConsoleRamoops(ramoops)
+
+	if len(ramoops) < 1 {
+		return 0, errors.New("failed to fetch ramoops")
+	}
+	if len(ramoops) > 1 {
+		return 0, errors.New("there should be only one ramoops file")
+	}
+
+	// Try to match the last line of ramoops, usually something like:
+	// [   63.012853] reboot: Restarting system
+	// We allow any string past the timestamp, but warn the developer if it's not `rebootStr` as this might indicate that something else is wrong with the DUT.
+	const rebootStr = "reboot: Restarting system"
+	lineRegexp := regexp.MustCompile(`^\[ *([0-9]+\.[0-9]+)\] (.*)$`)
+	for _, v := range ramoops {
+		l := strings.Split(string(v), "\n")
+		// Try to find last line of ramoops with a timestamp.
+		for i := len(l) - 1; i >= 0 && i >= len(l)-3; i-- {
+			if m := lineRegexp.FindStringSubmatch(l[i]); m != nil {
+				timeStr := m[1]
+				time, err := strconv.ParseFloat(timeStr, 64)
+				if err != nil {
+					return 0, errors.Errorf("error in parsing ramoops time %s", timeStr)
+				}
+				if m[2] != rebootStr {
+					testing.ContextLog(ctx, "Warning: last line does not match expected reboot string: ", l[i])
+				}
+				return time, nil
+			}
+		}
+	}
+
+	return 0, errors.New("cannot find timestamp in ramoops")
+}
+
 // GatherRebootMetrics reads and reports shutdown and reboot times. The shutdown
 // process saves all bootstat files in /var/log, plus it saves a timestamp file
 // that can be used to convert "time since boot" into times in UTC.  Read the
@@ -426,7 +466,7 @@ func findMostRecentBootstatArchivePath() (string, error) {
 //   * seconds_shutdown_time
 //   * seconds_reboot_time
 //   * seconds_reboot_error
-func GatherRebootMetrics(results *platform.GetBootPerfMetricsResponse) error {
+func GatherRebootMetrics(ctx context.Context, results *platform.GetBootPerfMetricsResponse) error {
 	bootstatDir, err := findMostRecentBootstatArchivePath()
 	if err != nil {
 		return err
@@ -457,12 +497,13 @@ func GatherRebootMetrics(results *platform.GetBootPerfMetricsResponse) error {
 		return errors.Wrap(err, "failed in getting the information of bootperf_ran")
 	}
 
-	// Time values can come from 3 different sources. To reduce confusion, we suffix the variables as follows:
+	// Time values can come from 4 different sources. To reduce confusion, we suffix the variables as follows:
 	//  - *Uptime: uptime in seconds (a.k.a. clock_gettime with CLOCK_BOOTTIME)
 	//  - *SystemTime: seconds since epoch, system/wall clock time (a.k.a. clock_gettime with CLOCK_REALTIME, time.Now().Unix())
 	//  - *RtcTime: seconds since epoch, but obtained from an RTC source
+	//  - *KmsgTime: kernel message time. Should be almost the same clock source as *Uptime.
 
-	shutdownUptime, err := parseUptime("ui-post-stop", bootstatDir, -1)
+	osShutdownUptime, err := parseUptime("ui-post-stop", bootstatDir, -1)
 	if err != nil {
 		return errors.Wrap(err, "failed in parsing uptime of event ui-post-stop")
 	}
@@ -489,7 +530,7 @@ func GatherRebootMetrics(results *platform.GetBootPerfMetricsResponse) error {
 	}
 
 	archiveSystemTimeOffset, archiveError := calculateTimeOffset(archiveSystemTime0, archiveSystemTime1, archiveUptime)
-	shutdownSystemTime := shutdownUptime + archiveSystemTimeOffset
+	shutdownSystemTime := osShutdownUptime + archiveSystemTimeOffset
 
 	nowSystemTime0 := time.Now().Unix()
 	nowUptimeStr, err := ioutil.ReadFile("/proc/uptime")
@@ -526,7 +567,7 @@ func GatherRebootMetrics(results *platform.GetBootPerfMetricsResponse) error {
 	}
 
 	stopRtcTimeOffset, stopError := calculateTimeOffset(stopUptime0, stopUptime1, float64(stopRtcTime))
-	shutdownTimeRtc := shutdownUptime - stopRtcTimeOffset
+	shutdownTimeRtc := osShutdownUptime - stopRtcTimeOffset
 	startRtcTimeOffset, startError := calculateTimeOffset(startUptime0, startUptime1, float64(startRtcTime))
 	bootTimeRtc := results.Metrics["seconds_kernel_to_login"] - startRtcTimeOffset
 
@@ -535,6 +576,16 @@ func GatherRebootMetrics(results *platform.GetBootPerfMetricsResponse) error {
 	// TODO(b:181084548): Drop the "_rtc" suffix once we remove the system time metrics above.
 	results.Metrics["seconds_reboot_time_rtc"] = rebootTimeRtc
 	results.Metrics["seconds_reboot_error_rtc"] = stopError + startError
+
+	kernelShutdownKmsgTime, err := getRamoopsRebootTime(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to read reboot time from ramoops")
+	}
+	// TODO(b:181084548): Here, we assume that kmsg time and uptime are the same, which
+	// is not 100% true (there is sometimes a small offset/drift between kernel's
+	// local_clock and CLOCK_MONOTONIC -- which itself is equivalent to CLOCK_BOOTTIME
+	// if there has been no suspend/resume cycles).
+	results.Metrics["seconds_shutdown_time_kmsg"] = kernelShutdownKmsgTime - osShutdownUptime
 
 	return nil
 }

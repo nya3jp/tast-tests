@@ -103,7 +103,7 @@ func (*BootPerfService) GetBootPerfMetrics(ctx context.Context, _ *empty.Empty) 
 	}
 
 	testing.ContextLog(ctx, "Gather reboot metrics")
-	err = bootperf.GatherRebootMetrics(out)
+	err = bootperf.GatherRebootMetrics(ctx, out)
 	if err != nil {
 		return nil, err
 	}
