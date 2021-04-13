@@ -24,6 +24,9 @@ const (
 	// CaptionHeightR represents the caption height in ChromeDP which is defined in ArcSystemUIConstants.
 	// TODO: Replace hard code caption height by getting from ash.
 	CaptionHeightR = 32
+	// DefaultDensityDpi is equal to DisplayMetrics#DENSITY_DEFAULT, and corresponds to a density of 1.0.
+	// See: https://developer.android.com/reference/android/util/DisplayMetrics#DENSITY_DEFAULT
+	DefaultDensityDpi = 160
 )
 
 // Display holds resources related to an ARC display.
@@ -228,6 +231,47 @@ func scrapeDensity(output []byte, displayID, sdkVersion int) (density float64, e
 		return -1, errors.Wrap(err, "failed to parse Physical Display Info density value")
 	}
 	return f, nil
+}
+
+func scrapeOverrideDensityDpi(output []byte, displayID, sdkVersion int) (densityDpi int, err error) {
+	var re *regexp.Regexp
+	uniqueID, err := scrapeUniqueID(output, displayID)
+	switch sdkVersion {
+	case SDKR:
+		uniqueID, err := scrapeUniqueID(output, displayID)
+		if err != nil {
+			return -1, err
+		}
+		// In Android R, we are looking for:
+		// mOverrideDisplayInfo=DisplayInfo{..., uniqueId "local:1886094531531010", ... density 400 ...}
+		s := fmt.Sprintf(`\s+mOverrideDisplayInfo=DisplayInfo{.+, uniqueId "%s",.* density (\d+) .+}`, uniqueID)
+		re = regexp.MustCompile(s)
+	default:
+		return -1, errors.Errorf("unsupported Android version %d", sdkVersion)
+	}
+
+	groups := re.FindStringSubmatch(string(output))
+	if len(groups) != 2 {
+		return -1, errors.Errorf("failed to parse 'dumpsys display', uid: %s", uniqueID)
+	}
+	dpi, err := strconv.ParseInt(groups[1], 10, 32)
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to parse override density value")
+	}
+	return int(dpi), nil
+}
+
+// OverrideDensityDpi returns the density DPI used by the Android framework for the display.
+func (d *Display) OverrideDensityDpi(ctx context.Context) (dpi int, err error) {
+	output, err := d.a.Command(ctx, "dumpsys", "display").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to execute 'dumpsys display'")
+	}
+	n, err := SDKVersion()
+	if err != nil {
+		return -1, err
+	}
+	return scrapeOverrideDensityDpi(output, d.DisplayID, n)
 }
 
 // PhysicalDensity returns the density value in PhysicalDisplayInfo.
