@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26da9801_f2a85554",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-04-13T06:47:25Z",
+      "side": 1,
+      "message": "Good point. The test body looks much clearer now :D",
+      "parentUuid": "386eff17_3cf217f3",
+      "revId": "b8418cd7882b6ffae02881b5bd39b9f2271fb8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84887e71_453c1514",
@@ -75,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a595842_75585e65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-04-13T06:47:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84887e71_453c1514",
+      "range": {
+        "startLine": 219,
+        "startChar": 2,
+        "endLine": 219,
+        "endChar": 12
+      },
+      "revId": "b8418cd7882b6ffae02881b5bd39b9f2271fb8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a36cf07_426f8010",
@@ -88,6 +130,24 @@
       "writtenOn": "2021-04-13T03:49:31Z",
       "side": 1,
       "message": "random thought: looks like we\u0027ll always want this after bgSuspend, so perhaps can be moved into bgSuspend. Then, when bgSuspend returns, DUT is guaranteed to be in unreachable state. However, bgSuspend will have to return (chan error, func(), error), which is a bit more complex.\n\nWDYT?",
+      "revId": "b8418cd7882b6ffae02881b5bd39b9f2271fb8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50669f86_96171d94",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-04-13T06:47:25Z",
+      "side": 1,
+      "message": "I think bgSuspend would become too complex and less readable. As it\u0027s only called twice so far, I would like to keep it as is for now.",
+      "parentUuid": "6a36cf07_426f8010",
       "revId": "b8418cd7882b6ffae02881b5bd39b9f2271fb8f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
