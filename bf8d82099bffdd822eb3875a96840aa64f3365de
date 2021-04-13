@@ -16,6 +16,29 @@
       "message": "Friendly ping.",
       "revId": "bf8d82099bffdd822eb3875a96840aa64f3365de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aa7b6ab_a38aef0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/baserpc/file_system_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-13T00:52:17Z",
+      "side": 1,
+      "message": "This appears to never be returned? Is it needed? Seems the encodeErr scope returns an error but this is just assigned to res.Error and the function scope returns with nil error everytime?",
+      "range": {
+        "startLine": 98,
+        "startChar": 111,
+        "endLine": 98,
+        "endChar": 116
+      },
+      "revId": "bf8d82099bffdd822eb3875a96840aa64f3365de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
