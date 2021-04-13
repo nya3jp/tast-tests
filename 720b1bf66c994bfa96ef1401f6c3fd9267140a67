@@ -16,6 +16,23 @@
       "message": "PTAL.",
       "revId": "720b1bf66c994bfa96ef1401f6c3fd9267140a67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e97303aa_1e0b439e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-04-13T02:30:01Z",
+      "side": 1,
+      "message": "I\u0027m happy to +2 this but IIUC this won\u0027t redirect logs for lacros launched from the shelf?\n\nDo the logs for lacros launched from shelf already go somewhere? Is it the same location?",
+      "revId": "720b1bf66c994bfa96ef1401f6c3fd9267140a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
