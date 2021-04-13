@@ -22,6 +22,30 @@
       },
       "revId": "62800a1c328ef570fb6baada8c9b15423825cd5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5fd4624_7aebce5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_network.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-04-13T07:50:06Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll move it to our helper package on ToT.\n\nJust curious, what do you mean by \"moving it into the test scope\"?",
+      "parentUuid": "48d4c922_8f06ab69",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "62800a1c328ef570fb6baada8c9b15423825cd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
