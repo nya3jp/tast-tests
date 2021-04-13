@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ddc9f57_3bed1c5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-13T09:43:19Z",
+      "side": 1,
+      "message": "nit: either use \"tast-tests\" or \"arc\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "1d248dbe5bbc7a4e46c88c05f8db48d8b34dfe40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e962a2_5cb9ea25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-13T09:43:19Z",
+      "side": 1,
+      "message": "nit: tast run \u003cIP\u003e arc.RemovableMedia.vm",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "1d248dbe5bbc7a4e46c88c05f8db48d8b34dfe40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e9e795b_f9479bd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-13T09:43:19Z",
+      "side": 1,
+      "message": "LGTM % nits, thanks!",
+      "revId": "1d248dbe5bbc7a4e46c88c05f8db48d8b34dfe40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
