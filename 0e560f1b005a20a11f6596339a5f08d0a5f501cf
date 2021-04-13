@@ -16,6 +16,207 @@
       "message": "Note: there is no one available on my team for reviews, so we have to rely on Tast owner reviews for now. Thanks.",
       "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc1f865b_17d04416",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-13T00:59:17Z",
+      "side": 1,
+      "message": "+2 for Tast Owners % comments",
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de715a38_2872c5b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-13T00:59:17Z",
+      "side": 1,
+      "message": "optional: most folks seem to prefer just \"crbug/1195936\"",
+      "range": {
+        "startLine": 121,
+        "startChar": 9,
+        "endLine": 121,
+        "endChar": 34
+      },
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b39b1ab_c9b366d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-13T00:59:17Z",
+      "side": 1,
+      "message": "nit: Comments should end in a full stop (see https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences).",
+      "range": {
+        "startLine": 141,
+        "startChar": 54,
+        "endLine": 141,
+        "endChar": 55
+      },
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c19aec88_4d37d7c9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-13T00:59:17Z",
+      "side": 1,
+      "message": "uber nit: extra space.",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 5
+      },
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e19a35e_ab445c78",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-13T00:59:17Z",
+      "side": 1,
+      "message": "optional: this constant could be extracted and named, potentially obviating the need for a comment",
+      "range": {
+        "startLine": 254,
+        "startChar": 17,
+        "endLine": 254,
+        "endChar": 32
+      },
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe5c723_d2789eed",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-13T00:59:17Z",
+      "side": 1,
+      "message": "it seems incorrect to check this value if IsJobEnabled returned an error. Perhaps some bits of this close logic could be refactored into separate methods (e.g. enableBIODUpstartJob(), ensureFPUpdaterEnabled() etc.) to simplify the error handling here.",
+      "range": {
+        "startLine": 322,
+        "startChar": 6,
+        "endLine": 322,
+        "endChar": 19
+      },
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6d7a5f1_4794c3b3",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-13T00:59:17Z",
+      "side": 1,
+      "message": "nit: prefer isFPUpdaterEnabled (see https://github.com/golang/go/wiki/CodeReviewComments#initialisms)",
+      "range": {
+        "startLine": 329,
+        "startChar": 28,
+        "endLine": 329,
+        "endChar": 46
+      },
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f9255c_4be824ef",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-13T00:59:17Z",
+      "side": 1,
+      "message": "as above, it seems incorrect to check this if isFPUpdaterEnabled returned an error.",
+      "range": {
+        "startLine": 333,
+        "startChar": 7,
+        "endLine": 333,
+        "endChar": 23
+      },
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b760ec0b_1b0ef456",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-13T00:59:17Z",
+      "side": 1,
+      "message": "nit: prefer enableFPUpdater\u0027 (see https://github.com/golang/go/wiki/CodeReviewComments#initialisms)",
+      "range": {
+        "startLine": 334,
+        "startChar": 14,
+        "endLine": 334,
+        "endChar": 29
+      },
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
