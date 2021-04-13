@@ -150,6 +150,24 @@
       "parentUuid": "6a36cf07_426f8010",
       "revId": "b8418cd7882b6ffae02881b5bd39b9f2271fb8f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a9e67c1_accc7114",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-13T07:07:35Z",
+      "side": 1,
+      "message": "Ack. Perhaps we can do this when other tests also want bgSuspend and we\u0027ll have it as tf.BgSuspend.",
+      "parentUuid": "50669f86_96171d94",
+      "revId": "b8418cd7882b6ffae02881b5bd39b9f2271fb8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
