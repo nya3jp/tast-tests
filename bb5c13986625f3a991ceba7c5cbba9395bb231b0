@@ -16,6 +16,24 @@
       "message": "The network errors I saw were logged here:\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:ash/ambient/backdrop/ambient_backend_controller_impl.cc;l\u003d332?q\u003dOnUrlDownloaded\u0026ss\u003dchromium\n\nThe test performs these steps before seeing the network error:\n\n1. Navigate to settings -\u003e personalization\n2. Navigate into the \"screen saver\" sub-section\n3. Hit the toggle switch to turn Screen Saver on\n\nThis starts fetching screen saver settings and albums, which sometimes errors (or takes over the timeout of 10 seconds). Closing the settings UI and doing steps 1-3 over again seems to fix the problem (or cause it to be so rare that it doesn\u0027t happen twice in a row).\n\nAre there known issues with network connectivity on tast devices? Is retrying the operation a good idea?",
       "revId": "bb5c13986625f3a991ceba7c5cbba9395bb231b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c9f2339_d49dffa5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2021-04-13T20:17:13Z",
+      "side": 1,
+      "message": "1. IIRC, we fetch settings no matter the toggle switch is on/off.\n\n2. It takes 6 seconds on my device for the first time to open the settings page. So it is possible it is timeout on some tast devices.\n\n3. If tast test can have longer timeout time, Could you double check the retry logic in ambient_mode_handler actually works? Thanks.\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/ui/webui/settings/chromeos/ambient_mode_handler.cc;l\u003d483",
+      "parentUuid": "2f905362_466686c7",
+      "revId": "bb5c13986625f3a991ceba7c5cbba9395bb231b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
