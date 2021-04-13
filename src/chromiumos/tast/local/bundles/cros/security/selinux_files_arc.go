@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/security/selinux"
 	"chromiumos/tast/local/chrome"
@@ -22,10 +23,19 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SELinuxFilesARC,
 		Desc:         "Checks SELinux labels on ARC-specific files on devices that support ARC",
-		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
-		SoftwareDeps: []string{"android_p", "selinux", "chrome"},
+		Contacts:     []string{"niwa@chromium.org", "fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
+		SoftwareDeps: []string{"selinux", "chrome"},
 		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{
+			{
+				ExtraSoftwareDeps: []string{"android_p"},
+			}, {
+				Name:              "vm",
+				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraAttr:         []string{"informational"},
+			},
+		},
 	})
 }
 
@@ -52,93 +62,99 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close(ctx)
 
-	containerPIDFiles, err := filepath.Glob("/run/containers/android*/container.pid")
+	vmEnabled, err := arc.VMEnabled()
 	if err != nil {
-		s.Fatal("Failed to find container.pid file: ", err)
+		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
 	}
-	if len(containerPIDFiles) != 1 {
-		s.Fatal("Expected to find one container.pid file; got ", containerPIDFiles)
+	var androidContainerRoot string
+	if !vmEnabled {
+		androidContainerRoot, err = androidContainerRootPath()
+		if err != nil {
+			s.Fatal("Failed to get Android container root path: ", err)
+		}
 	}
-	containerPIDFileName := containerPIDFiles[0]
-
-	b, err := ioutil.ReadFile(containerPIDFileName)
-	if err != nil {
-		s.Fatal("Failed to read container.pid: ", err)
-	}
-	androidRoot := fmt.Sprintf("/proc/%s/root", strings.TrimSpace(string(b)))
 
 	var testArgs []arcFileTestCase
 
-	gpuDevices, err := selinux.GpuDevices()
-	if err != nil {
-		// Error instead of Fatal to continue test other testcases .
-		// We don't want to "hide" other failures since SELinuxFiles tests are mostly independent test cases.
-		s.Error("Failed to enumerate gpu devices: ", err)
-	}
-	for _, gpuDevice := range gpuDevices {
-		testArgs = append(testArgs,
-			[]arcFileTestCase{
-				{path: filepath.Join(gpuDevice, "config"), context: "gpu_device", ignoreErrors: true},
-				{path: filepath.Join(gpuDevice, "device"), context: "gpu_device", ignoreErrors: true},
-				{path: filepath.Join(gpuDevice, "drm"), context: "gpu_device", ignoreErrors: true},
-				{path: filepath.Join(gpuDevice, "subsystem_device"), context: "gpu_device", ignoreErrors: true},
-				{path: filepath.Join(gpuDevice, "subsystem_vendor"), context: "gpu_device", ignoreErrors: true},
-				{path: filepath.Join(gpuDevice, "uevent"), context: "gpu_device"},
-				{path: filepath.Join(gpuDevice, "vendor"), context: "gpu_device", ignoreErrors: true},
-				{path: gpuDevice, context: "sysfs", recursive: true, filter: selinux.IgnorePaths([]string{
-					filepath.Join(gpuDevice, "config"),
-					filepath.Join(gpuDevice, "device"),
-					filepath.Join(gpuDevice, "drm"),
-					filepath.Join(gpuDevice, "subsystem_device"),
-					filepath.Join(gpuDevice, "subsystem_vendor"),
-					filepath.Join(gpuDevice, "uevent"),
-					filepath.Join(gpuDevice, "vendor"),
-				})},
-			}...,
-		)
+	// Append Container-only test cases.
+	if !vmEnabled {
+		gpuDevices, err := selinux.GpuDevices()
+		if err != nil {
+			// Error instead of Fatal to continue test other testcases .
+			// We don't want to "hide" other failures since SELinuxFiles tests are mostly independent test cases.
+			s.Error("Failed to enumerate gpu devices: ", err)
+		}
+		for _, gpuDevice := range gpuDevices {
+			testing.ContextLogf(ctx, "niwaniwa ---- gpuDevice=%s", gpuDevice)
+			testArgs = append(testArgs,
+				[]arcFileTestCase{
+					{path: filepath.Join(gpuDevice, "config"), context: "gpu_device", ignoreErrors: true},
+					{path: filepath.Join(gpuDevice, "device"), context: "gpu_device", ignoreErrors: true},
+					{path: filepath.Join(gpuDevice, "drm"), context: "gpu_device", ignoreErrors: true},
+					{path: filepath.Join(gpuDevice, "subsystem_device"), context: "gpu_device", ignoreErrors: true},
+					{path: filepath.Join(gpuDevice, "subsystem_vendor"), context: "gpu_device", ignoreErrors: true},
+					{path: filepath.Join(gpuDevice, "uevent"), context: "gpu_device"},
+					{path: filepath.Join(gpuDevice, "vendor"), context: "gpu_device", ignoreErrors: true},
+					{path: gpuDevice, context: "sysfs", recursive: true, filter: selinux.IgnorePaths([]string{
+						filepath.Join(gpuDevice, "config"),
+						filepath.Join(gpuDevice, "device"),
+						filepath.Join(gpuDevice, "drm"),
+						filepath.Join(gpuDevice, "subsystem_device"),
+						filepath.Join(gpuDevice, "subsystem_vendor"),
+						filepath.Join(gpuDevice, "uevent"),
+						filepath.Join(gpuDevice, "vendor"),
+					})},
+				}...,
+			)
+		}
+
+		iioDevices, err := selinux.IIOSensorDevices()
+		if err != nil {
+			s.Error("Failed to enumerate iio devices: ", err)
+		}
+		for _, iioDevice := range iioDevices {
+			testing.ContextLogf(ctx, "niwaniwa ---- iioDevice=%s", iioDevice)
+			testArgs = append(
+				testArgs,
+				[]arcFileTestCase{
+					{path: iioDevice, context: "cros_sensor_hal_sysfs", recursive: true, filter: selinux.IIOSensorFilter},
+					{path: iioDevice, context: "sysfs", recursive: true, filter: selinux.InvertFilterSkipFile(selinux.IIOSensorFilter)},
+				}...)
+		}
+
+		testArgs = append(testArgs, []arcFileTestCase{
+			{path: "/run/arc/adbd", context: "(tmpfs|device)"},
+			{path: "/run/arc/cmdline.android", context: "(proc_cmdline|proc)"}, // N or below is proc
+			{path: "/run/arc/debugfs", context: "(debugfs|tmpfs)"},
+			{path: "/run/arc/fake_kptr_restrict", context: "proc_security"},
+			{path: "/run/arc/fake_mmap_rnd_bits", context: "proc_security"},
+			{path: "/run/arc/fake_mmap_rnd_compat_bits", context: "proc_security"},
+			{path: "/run/arc/media", context: "tmpfs"},
+			{path: "/run/arc/obb", context: "tmpfs"},
+			{path: "/run/arc/oem/etc", context: "(tmpfs|oemfs)", recursive: true},
+			{path: "/run/arc/host_generated/build.prop", context: "system_file"},                  // Android labels, bind-mount into ARC
+			{path: "/run/arc/host_generated/default.prop", context: "rootfs", ignoreErrors: true}, // Android labels, bind-mount into ARC.
+			{path: "/run/arc/sdcard", context: "(tmpfs|storage_file)"},
+			{path: "/run/arc/shared_mounts", context: "tmpfs"},
+			{path: "/run/chrome/arc_bridge.sock", context: "arc_bridge_socket"},
+			{path: "/usr/sbin/arc-setup", context: "cros_arc_setup_exec"},
+		}...)
 	}
 
-	iioDevices, err := selinux.IIOSensorDevices()
-	if err != nil {
-		s.Error("Failed to enumerate iio devices: ", err)
-	}
-	for _, iioDevice := range iioDevices {
-		testArgs = append(
-			testArgs,
-			[]arcFileTestCase{
-				{path: iioDevice, context: "cros_sensor_hal_sysfs", recursive: true, filter: selinux.IIOSensorFilter},
-				{path: iioDevice, context: "sysfs", recursive: true, filter: selinux.InvertFilterSkipFile(selinux.IIOSensorFilter)},
-			}...)
-	}
-
+	// Append common test cases.
 	testArgs = append(testArgs, []arcFileTestCase{
 		{path: "/mnt/stateful_partition/unencrypted/apkcache", context: "apkcache_file"},
 		{path: "/mnt/stateful_partition/unencrypted/art-data/dalvik-cache/", context: "dalvikcache_data_file", recursive: true},
 		{path: "/opt/google/chrome/chrome", context: "chrome_browser_exec"},
-		{path: "/run/arc/adbd", context: "(tmpfs|device)"},
-		{path: "/run/arc/cmdline.android", context: "(proc_cmdline|proc)"}, // N or below is proc
-		{path: "/run/arc/debugfs", context: "(debugfs|tmpfs)"},
-		{path: "/run/arc/fake_kptr_restrict", context: "proc_security"},
-		{path: "/run/arc/fake_mmap_rnd_bits", context: "proc_security"},
-		{path: "/run/arc/fake_mmap_rnd_compat_bits", context: "proc_security"},
-		{path: "/run/arc/media", context: "tmpfs"},
-		{path: "/run/arc/obb", context: "tmpfs"},
-		{path: "/run/arc/oem/etc", context: "(tmpfs|oemfs)", recursive: true},
-		{path: "/run/arc/host_generated/build.prop", context: "system_file"},                  // Android labels, bind-mount into ARC
-		{path: "/run/arc/host_generated/default.prop", context: "rootfs", ignoreErrors: true}, // Android labels, bind-mount into ARC. TODO: Remove. Should not be present post Android R.
-		{path: "/run/arc/sdcard", context: "(tmpfs|storage_file)"},
-		{path: "/run/arc/shared_mounts", context: "tmpfs"},
 		{path: "/run/arcvm", context: "cros_run_arcvm", ignoreErrors: true},
 		{path: "/run/arcvm/android-data", context: "system_data_root_file", ignoreErrors: true}, // Android label
 		{path: "/run/camera", context: "(camera_dir|camera_socket)", ignoreErrors: true},        // N or below is camera_socket
 		{path: "/run/camera/camera.sock", context: "camera_socket", ignoreErrors: true},
 		{path: "/run/camera/camera3.sock", context: "camera_socket", ignoreErrors: true},
-		{path: "/run/chrome/arc_bridge.sock", context: "arc_bridge_socket"},
 		{path: "/run/chrome/wayland-0", context: "wayland_socket"},
 		{path: "/run/cras", context: "cras_socket", recursive: true},
 		{path: "/run/session_manager", context: "cros_run_session_manager", recursive: true},
 		{path: "/sys/kernel/debug/sync/sw_sync", context: "debugfs_sw_sync", ignoreErrors: true},
-		{path: "/usr/sbin/arc-setup", context: "cros_arc_setup_exec"},
 		{path: "/var/log/chrome", context: "cros_var_log_chrome", recursive: true},
 		{path: "dev/ptmx", isAndroidPath: true, context: "ptmx_device"},
 		{path: "dev/random", isAndroidPath: true, context: "random_device"},
@@ -154,7 +170,11 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		}
 		path := testArg.path
 		if testArg.isAndroidPath {
-			path = filepath.Join(androidRoot, path)
+			if len(androidContainerRoot) > 0 {
+				path = filepath.Join(androidContainerRoot, path)
+			} else {
+				continue
+			}
 		}
 		expected, err := selinux.FileContextRegexp(testArg.context)
 		if err != nil {
@@ -171,4 +191,23 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		})
 	}
 	selinux.CheckHomeDirectory(ctx, s)
+}
+
+// androidContainerRootPath returns /proc/<android-container-pid>/root.
+func androidContainerRootPath() (string, error) {
+	containerPIDFiles, err := filepath.Glob("/run/containers/android*/container.pid")
+	if err != nil {
+		return "", errors.Wrap(err, "failed to find container.pid file: ")
+	}
+	if len(containerPIDFiles) != 1 {
+		return "", errors.Errorf("expected to find one container.pid file; got %d", containerPIDFiles)
+	}
+	containerPIDFileName := containerPIDFiles[0]
+
+	b, err := ioutil.ReadFile(containerPIDFileName)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read container.pid: ")
+	}
+	androidContainerRoot := fmt.Sprintf("/proc/%s/root", strings.TrimSpace(string(b)))
+	return androidContainerRoot, nil
 }
