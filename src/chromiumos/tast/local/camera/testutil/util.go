@@ -9,9 +9,11 @@ package testutil
 import (
 	"context"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -113,6 +115,27 @@ func RefreshApp(ctx context.Context, conn *chrome.Conn, tb *TestBridge) (*AppWin
 		return nil, err
 	}
 	return appWindow, nil
+}
+
+// CloseApp closes the camera app and ensure the window is closed via autotest private API.
+func CloseApp(ctx context.Context, cr *chrome.Chrome, appConn *chrome.Conn) error {
+	if err := appConn.CloseTarget(ctx); err != nil {
+		return errors.Wrap(err, "failed to close target")
+	}
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get test API connection")
+	}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		var isOpen bool
+		if err := tconn.Call(ctx, &isOpen, `tast.promisify(chrome.autotestPrivate.isSystemWebAppOpen)`, apps.Camera.ID); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to check if camera app is open via autotestPrivate.isSystemWebAppOpen API"))
+		}
+		if isOpen {
+			return errors.New("unexpected result returned by autotestPrivate.isSystemWebAppOpen API: got true; want false")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // GetUSBCamerasFromV4L2Test returns a list of usb camera paths.
