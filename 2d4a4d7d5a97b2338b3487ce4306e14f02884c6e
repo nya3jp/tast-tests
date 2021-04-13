@@ -22,6 +22,30 @@
       },
       "revId": "2d4a4d7d5a97b2338b3487ce4306e14f02884c6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "498647a3_bfc4195d",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1501397
+      },
+      "writtenOn": "2021-04-13T07:11:59Z",
+      "side": 1,
+      "message": "Sounds good. I modified the change so test chooses to check the property based on if it is vm.",
+      "parentUuid": "956bcbb1_4fff1557",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 0
+      },
+      "revId": "2d4a4d7d5a97b2338b3487ce4306e14f02884c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
