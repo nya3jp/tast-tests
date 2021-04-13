@@ -28,18 +28,6 @@ func init() {
 	})
 }
 
-func getNetworkByType(result *rppb.ProbeResult, networkType string) ([]*rppb.Network, error) {
-	switch networkType {
-	case "cellular":
-		return result.GetCellular(), nil
-	case "ethernet":
-		return result.GetEthernet(), nil
-	case "wireless":
-		return result.GetWireless(), nil
-	}
-	return nil, errors.Errorf("unknown device_type %s", networkType)
-}
-
 // CrosRuntimeProbeNetwork checks if the network names in cros-label are
 // consistent with probed names from runtime_probe.
 func CrosRuntimeProbeNetwork(ctx context.Context, s *testing.State) {
@@ -68,6 +56,18 @@ func CrosRuntimeProbeNetwork(ctx context.Context, s *testing.State) {
 	result, err := runtimeprobe.Probe(ctx, request)
 	if err != nil {
 		s.Fatal("Cannot get network components: ", err)
+	}
+
+	getNetworkByType := func(result *rppb.ProbeResult, networkType string) ([]*rppb.Network, error) {
+		switch networkType {
+		case "cellular":
+			return result.GetCellular(), nil
+		case "ethernet":
+			return result.GetEthernet(), nil
+		case "wireless":
+			return result.GetWireless(), nil
+		}
+		return nil, errors.Errorf("unknown device_type %s", networkType)
 	}
 
 	for _, networkType := range networkTypes {
