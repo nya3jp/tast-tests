@@ -9,9 +9,13 @@ package testutil
 import (
 	"context"
 	"strings"
+	"time"
+
+	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -36,6 +40,9 @@ func ChromeBypassCameraPermissions() testing.Precondition { return chromeBypassC
 // AppLauncher is used during the launch process of CCA. We could launch CCA
 // by launchApp event, camera intent or any other ways.
 type AppLauncher func(ctx context.Context, tconn *chrome.TestConn) error
+
+// AppCloser will be called when the tests want to close CCA.
+type AppCloser func(ctx context.Context, appConn *chrome.Conn) error
 
 // LaunchApp launches the camera app and handles the communication flow between tests and app.
 func LaunchApp(ctx context.Context, cr *chrome.Chrome, tb *TestBridge, appLauncher AppLauncher) (*chrome.Conn, *AppWindow, error) {
@@ -115,6 +122,34 @@ func RefreshApp(ctx context.Context, conn *chrome.Conn, tb *TestBridge) (*AppWin
 	return appWindow, nil
 }
 
+// CloseApp closes the camera app and ensure the window is closed via autotest private API.
+func CloseApp(ctx context.Context, cr *chrome.Chrome, appConn *chrome.Conn) error {
+	if err := appConn.CloseTarget(ctx); err != nil {
+		return err
+	}
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		var isOpen bool
+		if err := tconn.Call(ctx, &isOpen, `tast.promisify(chrome.autotestPrivate.isSystemWebAppOpen)`, apps.Camera.ID); err != nil {
+			return testing.PollBreak(err)
+		}
+		if isOpen {
+			return errors.New("failed to close app within time")
+		}
+		appExist, err := CCAInstanceExists(ctx, cr)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if appExist {
+			return errors.New("failed to close app within time")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+}
+
 // GetUSBCamerasFromV4L2Test returns a list of usb camera paths.
 func GetUSBCamerasFromV4L2Test(ctx context.Context) ([]string, error) {
 	cmd := testexec.CommandContext(ctx, "media_v4l2_test", "--list_usbcam")
@@ -123,4 +158,13 @@ func GetUSBCamerasFromV4L2Test(ctx context.Context) ([]string, error) {
 		return nil, err
 	}
 	return strings.Fields(string(out)), nil
+}
+
+// CCAInstanceExists checks if there is any running CCA instance.
+func CCAInstanceExists(ctx context.Context, cr *chrome.Chrome) (bool, error) {
+	checkPrefix := func(t *target.Info) bool {
+		url := "chrome://camera-app/views/main.html"
+		return strings.HasPrefix(t.URL, url)
+	}
+	return cr.IsTargetAvailable(ctx, checkPrefix)
 }
