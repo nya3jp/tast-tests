@@ -16,6 +16,24 @@
       "message": "I cannot find recent runs.\nDoes this test run on ToT?",
       "revId": "81c1fdb44d9de1f7453044fd770e7f14f96b7dc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f815154f_b5e12a10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-04-13T02:25:00Z",
+      "side": 1,
+      "message": "Since we haven\u0027t enabled iioservice on any board, and with \"SoftwareDeps: []string{\"iioservice\"}\", this test is not run on ToT yet.\nIn this case, should we enable iioservice on a board before making this test blocking?",
+      "parentUuid": "b43e7565_c890aabc",
+      "revId": "81c1fdb44d9de1f7453044fd770e7f14f96b7dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
