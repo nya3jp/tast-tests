@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18c1b212_dda8c875",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-13T07:26:16Z",
+      "side": 1,
+      "message": "Modify params generate code for resolving CQ error.",
+      "revId": "002b2437218f0104b60a0eebc8103dac1601d58f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
