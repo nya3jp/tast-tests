@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a06758ca_2cf3b069",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-04-13T07:46:18Z",
+      "side": 1,
+      "message": "I have - I changed my lsb-release on my test machine so it thought I was on CQ and ran the test locally. Also running a dryrun before submitting to ensure I\u0027m not missing anything",
+      "parentUuid": "5e449206_185ab7bb",
+      "revId": "dffd5dd7b8394bcc30c1d2ce186e36313131bc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faae563a_39a5e87e",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-04-12T01:09:19Z",
       "side": 1,
       "message": "This is the only place this is set, it is a very misleading name.",
+      "revId": "dffd5dd7b8394bcc30c1d2ce186e36313131bc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecb8af68_e43f9d9e",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-04-13T07:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faae563a_39a5e87e",
       "revId": "dffd5dd7b8394bcc30c1d2ce186e36313131bc95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddde6096_223f039c",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-04-13T07:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6e82dfe_e7f6fc7c",
+      "revId": "dffd5dd7b8394bcc30c1d2ce186e36313131bc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5abbe6bd_582ebdf2",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "066da0ed_1a1e6cf2",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-04-13T07:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5abbe6bd_582ebdf2",
+      "revId": "dffd5dd7b8394bcc30c1d2ce186e36313131bc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edab76ab_3ec5a7de",
@@ -99,6 +171,30 @@
       "writtenOn": "2021-04-12T01:09:19Z",
       "side": 1,
       "message": "This is a little confusing, basename usually goes before something (the file extension), here it is at the end.  Also Diff just calls it name.\n\nMaybe fullName :\u003d d.state.TestName() + \".\" + name?\n\nIs there something that fits the domain better?",
+      "range": {
+        "startLine": 265,
+        "startChar": 37,
+        "endLine": 265,
+        "endChar": 45
+      },
+      "revId": "dffd5dd7b8394bcc30c1d2ce186e36313131bc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0995d46e_fe680a66",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-04-13T07:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edab76ab_3ec5a7de",
       "range": {
         "startLine": 265,
         "startChar": 37,
