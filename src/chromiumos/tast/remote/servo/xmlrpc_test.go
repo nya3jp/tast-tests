@@ -5,6 +5,7 @@
 package servo
 
 import (
+	"encoding/xml"
 	"math"
 	"strconv"
 	"testing"
@@ -250,5 +251,140 @@ func TestUnpack(t *testing.T) {
 	}
 	if floatOut != -3.14 {
 		t.Errorf("unpacking %q: got %f; want %f", "-3.14", floatOut, -3.14)
+	}
+}
+
+func TestCheckFault(t *testing.T) {
+	hasFault := []byte(`<?xml version='1.0'?>
+	<methodResponse>
+		<fault>
+			<value>
+				<struct>
+					<member>
+						<name>faultCode</name>
+						<value>
+							<int>1</int>
+						</value>
+					</member>
+					<member>
+						<name>faultString</name>
+						<value>
+							<string>Bad XML request!</string>
+						</value>
+					</member>
+				</struct>
+			</value>
+		</fault>
+	</methodResponse>`)
+	noFault := []byte(`<?xml version='1.0'?>
+	<methodResponse>
+		<params>
+			<param>
+				<value>
+					<string>Hello, world!</string>
+				</value>
+			</param>
+		</params>
+	</methodResponse>`)
+	faultWithCode0 := []byte(`<?xml version='1.0'?>
+	<methodResponse>
+		<fault>
+			<value>
+				<struct>
+					<member>
+						<name>faultCode</name>
+						<value>
+							<int>0</int>
+						</value>
+					</member>
+					<member>
+						<name>faultString</name>
+						<value>
+							<string>Bad XML request!</string>
+						</value>
+					</member>
+				</struct>
+			</value>
+		</fault>
+	</methodResponse>`)
+	faultWithUnexpectedMember := []byte(`<?xml version='1.0'?>
+	<methodResponse>
+		<fault>
+			<value>
+				<struct>
+					<member>
+						<name>faultCode</name>
+						<value>
+							<int>1</int>
+						</value>
+					</member>
+					<member>
+						<name>faultString</name>
+						<value>
+							<string>Bad XML request!</string>
+						</value>
+					</member>
+					<member>
+						<name>unexpectedMember</name>
+						<value>
+							<string>Foo</string>
+						</value>
+					</member>
+				</struct>
+			</value>
+		</fault>
+	</methodResponse>`)
+	type testCase struct {
+		b                   []byte
+		expectErr           bool
+		expectFault         bool
+		expectedFaultCode   int
+		expectedFaultString string
+	}
+	for i, tc := range []testCase{
+		testCase{hasFault, true, true, 1, "Bad XML request!"},
+		testCase{noFault, false, false, 0, ""},
+		testCase{faultWithCode0, true, false, 0, ""},
+		testCase{faultWithUnexpectedMember, true, false, 0, ""},
+	} {
+		// Check the XML bytes for fault.
+		r := response{}
+		if err := xml.Unmarshal(tc.b, &r); err != nil {
+			t.Errorf("tc #%d: failed to unmarshal bytes: %v", i, err)
+			continue
+		}
+		e := r.checkFault()
+
+		// Check whether we got an error if expected.
+		// If no error is expected, then continue early, since the rest of the test operates on the error.
+		if !tc.expectErr {
+			if e != nil {
+				t.Errorf("tc #%d: unexpected checkFault error response: got %v; want nil", i, e)
+			}
+			continue
+		} else if e == nil {
+			t.Errorf("tc #%d: unexpected checkFault error response: got nil; want error", i)
+			continue
+		}
+
+		// Check whether we got a fault if expected.
+		// If no fault is expected, then continue early, since the rest of the test operates on the error.
+		fe, isFault := e.(FaultError)
+		if !tc.expectFault {
+			if isFault {
+				t.Errorf("tc #%d: unexpected checkFault error: got '%v'; want non-Fault error", i, e)
+			}
+			continue
+		} else if !isFault {
+			t.Errorf("tc #%d: unexpected checkFault error: got '%v'; want FaultError", i, e)
+		}
+
+		// Check the Fault's attributes
+		if fe.Code != tc.expectedFaultCode {
+			t.Errorf("tc #%d: checkFault returned unexpected code: got %d; want %d", i, fe.Code, tc.expectedFaultCode)
+		}
+		if fe.Reason != tc.expectedFaultString {
+			t.Errorf("tc #%d: checkFault returned unexpected reason: got %s; want %s", i, fe.Reason, tc.expectedFaultString)
+		}
 	}
 }
