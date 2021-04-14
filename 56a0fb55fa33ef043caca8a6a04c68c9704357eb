@@ -16,6 +16,29 @@
       "message": "Hi, I\u0027m adding a new test to verify that the correct density value is being used in Android R+.\n\nPTAL, thanks!",
       "revId": "56a0fb55fa33ef043caca8a6a04c68c9704357eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69c5b32a_e30c9368",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_display_density.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-04-14T00:24:43Z",
+      "side": 1,
+      "message": "nit: I think const should be placed at the top of this function.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "56a0fb55fa33ef043caca8a6a04c68c9704357eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
