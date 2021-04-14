@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"path/filepath"
 	"testing"
+	"time"
 
 	"chromiumos/tast/common/genparams"
 	"chromiumos/tast/local/chrome"
@@ -189,16 +190,14 @@ var vaapiVp9Files = map[string]map[string]map[string][]string{
 				"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf",
 			},
 		},
-		// TODO(jchinlee): enable levels 4 and above when we have a better
-		// understanding of runtime on slower devices.
-		/*"group4": {
+		"group4": {
 			"buf": {
-				"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr30_bd8_8buf_l4-l41.ivf",
-				"test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr30_bd8_8buf_l4-l41.ivf",
-				"test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr30_bd8_8buf_l4-l41.ivf",
-				"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr60_bd8_6buf_l4-l411.ivf",
-				"test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr60_bd8_6buf_l4-l411.ivf",
-				"test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr60_bd8_6buf_l4-l411.ivf",
+				"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr30_bd8_8buf_l4.ivf",
+				"test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr30_bd8_8buf_l4.ivf",
+				"test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr30_bd8_8buf_l4.ivf",
+				"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr60_bd8_6buf_l41.ivf",
+				"test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr60_bd8_6buf_l41.ivf",
+				"test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr60_bd8_6buf_l41.ivf",
 			},
 			"frm_resize": {
 				"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_2048X1088_fr30_bd8_frm_resize_l4.ivf",
@@ -209,28 +208,28 @@ var vaapiVp9Files = map[string]map[string]map[string][]string{
 				"test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_2048X1088_fr60_bd8_frm_resize_l41.ivf",
 			},
 			"gf_dist": {
-				"test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_2048X1088_fr30_bd8_gf_dist_4_l4-l41.ivf",
-				"test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_2048X1088_fr30_bd8_gf_dist_4_l4-l41.ivf",
-				"test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_2048X1088_fr30_bd8_gf_dist_4_l4-l41.ivf",
-				"test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_2048X1088_fr60_bd8_gf_dist_5_l4-l411.ivf",
-				"test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_2048X1088_fr60_bd8_gf_dist_5_l4-l411.ivf",
-				"test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_2048X1088_fr60_bd8_gf_dist_5_l4-l411.ivf",
+				"test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_2048X1088_fr30_bd8_gf_dist_4_l4.ivf",
+				"test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_2048X1088_fr30_bd8_gf_dist_4_l4.ivf",
+				"test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_2048X1088_fr30_bd8_gf_dist_4_l4.ivf",
+				"test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_2048X1088_fr60_bd8_gf_dist_5_l41.ivf",
+				"test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_2048X1088_fr60_bd8_gf_dist_5_l41.ivf",
+				"test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_2048X1088_fr60_bd8_gf_dist_5_l41.ivf",
 			},
 			"odd_size": {
-				"test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_2040X1080_fr30_bd8_odd_size_l4-l41.ivf",
-				"test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_2040X1080_fr30_bd8_odd_size_l4-l41.ivf",
-				"test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_2040X1080_fr30_bd8_odd_size_l4-l41.ivf",
-				"test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_2040X1080_fr60_bd8_odd_size_l4-l411.ivf",
-				"test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_2040X1080_fr60_bd8_odd_size_l4-l411.ivf",
-				"test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_2040X1080_fr60_bd8_odd_size_l4-l411.ivf",
+				"test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_2040X1080_fr30_bd8_odd_size_l4.ivf",
+				"test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_2040X1080_fr30_bd8_odd_size_l4.ivf",
+				"test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_2040X1080_fr30_bd8_odd_size_l4.ivf",
+				"test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_2040X1080_fr60_bd8_odd_size_l41.ivf",
+				"test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_2040X1080_fr60_bd8_odd_size_l41.ivf",
+				"test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_2040X1080_fr60_bd8_odd_size_l41.ivf",
 			},
 			"sub8x8": {
-				"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr30_bd8_sub8X8_l4-l41.ivf",
-				"test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr30_bd8_sub8X8_l4-l41.ivf",
-				"test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr30_bd8_sub8X8_l4-l41.ivf",
-				"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr60_bd8_sub8X8_l4-l411.ivf",
-				"test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr60_bd8_sub8X8_l4-l411.ivf",
-				"test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr60_bd8_sub8X8_l4-l411.ivf",
+				"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr30_bd8_sub8X8_l4.ivf",
+				"test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr30_bd8_sub8X8_l4.ivf",
+				"test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr30_bd8_sub8X8_l4.ivf",
+				"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr60_bd8_sub8X8_l41.ivf",
+				"test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr60_bd8_sub8X8_l41.ivf",
+				"test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr60_bd8_sub8X8_l41.ivf",
 			},
 			"sub8x8_sf": {
 				"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf",
@@ -290,7 +289,7 @@ var vaapiVp9Files = map[string]map[string]map[string][]string{
 				"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_4096X2176_fr60_bd8_sub8x8_sf_l51.ivf",
 				"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_4096X2176_fr60_bd8_sub8x8_sf_l51.ivf",
 			},
-		},*/
+		},
 	},
 }
 
@@ -309,6 +308,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 		Decoder      string
 		CmdBuilder   string
 		Files        []string
+		Timeout      time.Duration
 		HardwareDeps string
 		SoftwareDeps []string
 		Metadata     []string
@@ -316,37 +316,40 @@ func TestPlatformDecodingParams(t *testing.T) {
 
 	var params []paramData
 
+	// Define timeouts, with extensions for specific groups.
+	const defaultTimeout = 10 * time.Minute
+	vp9GroupExtensions := map[string]time.Duration{
+		"group4": 24 * time.Hour,
+	}
+
 	// Generate VAAPI VP9 tests.
 	for i, profile := range []string{"profile_0"} {
-		for _, levelGroup := range []string{"group1", "group2", "group3"} {
+		// TODO(jchinlee): enable level 5 when we have a better understanding of
+		// runtime on slower devices.
+		for _, levelGroup := range []string{"group1", "group2", "group3", "group4"} {
 			for _, cat := range []string{
-				"buf", "gf_dist", "odd_size", "sub8x8",
+				"buf", "frm_resize", "gf_dist", "odd_size", "sub8x8", "sub8x8_sf",
 			} {
 				files := vaapiVp9Files[profile][levelGroup][cat]
-				params = append(params, paramData{
+				param := paramData{
 					Name:         fmt.Sprintf("vaapi_vp9_%d_%s_%s", i, levelGroup, cat),
 					Decoder:      filepath.Join(chrome.BinTestDir, "decode_test"),
 					CmdBuilder:   "vp9decodeVAAPIargs",
 					Files:        files,
+					Timeout:      defaultTimeout,
 					SoftwareDeps: []string{"vaapi", caps.HWDecodeVP9},
 					Metadata:     genExtraData(files),
-				})
-			}
+				}
+				if extension, ok := vp9GroupExtensions[levelGroup]; ok {
+					param.Timeout = extension
+				}
 
-			// TODO(jchinlee): Reenable everywhere.
-			for _, cat := range []string{
-				"frm_resize", "sub8x8_sf",
-			} {
-				files := vaapiVp9Files[profile][levelGroup][cat]
-				params = append(params, paramData{
-					Name:         fmt.Sprintf("vaapi_vp9_%d_%s_%s", i, levelGroup, cat),
-					Decoder:      filepath.Join(chrome.BinTestDir, "decode_test"),
-					CmdBuilder:   "vp9decodeVAAPIargs",
-					Files:        files,
-					SoftwareDeps: []string{"vaapi", caps.HWDecodeVP9},
-					HardwareDeps: "hwdep.D(hwdep.SkipOnPlatform(\"grunt\", \"zork\"))",
-					Metadata:     genExtraData(files),
-				})
+				// TODO(b/184683272): Reenable everywhere.
+				if cat == "frm_resize" || cat == "sub8x8_sf" {
+					param.HardwareDeps = "hwdep.D(hwdep.SkipOnPlatform(\"grunt\", \"zork\"))"
+				}
+
+				params = append(params, param)
 			}
 		}
 	}
@@ -357,6 +360,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 		Decoder:    filepath.Join(chrome.BinTestDir, "decode_test"),
 		CmdBuilder: "av1decodeVAAPIargs",
 		Files:      vaapiAv1Files,
+		Timeout:    defaultTimeout,
 		// These SoftwareDeps do not include the 10 bit version of AV1.
 		SoftwareDeps: []string{"vaapi", caps.HWDecodeAV1},
 		Metadata:     genExtraData(vaapiAv1Files),
@@ -368,6 +372,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 		Decoder:      "v4l2_stateful_decoder",
 		CmdBuilder:   "vp9decodeV4L2args",
 		Files:        v4l2Vp9Files,
+		Timeout:      defaultTimeout,
 		HardwareDeps: "hwdep.D(hwdep.Platform(\"trogdor\"))",
 		SoftwareDeps: []string{"v4l2_codec", caps.HWDecodeVP9},
 		Metadata:     genExtraData(v4l2Vp9Files),
@@ -377,9 +382,10 @@ func TestPlatformDecodingParams(t *testing.T) {
 		Name: {{ .Name | fmt }},
 		Val:  platformDecodingParams{
 			filenames: {{ .Files | fmt }},
-			decoder: {{ .Decoder |fmt }},
+			decoder: {{ .Decoder | fmt }},
 			commandBuilder: {{ .CmdBuilder }},
 		},
+		Timeout: {{ .Timeout | fmt }},
 		{{ if .HardwareDeps }}
 		ExtraHardwareDeps: {{ .HardwareDeps }},
 		{{ end }}
