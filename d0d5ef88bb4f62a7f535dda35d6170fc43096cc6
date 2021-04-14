@@ -33,6 +33,24 @@
       "message": "From what I can see, there are failures that are unrelated to this change from CQ.\n\n\n\u003e Failed: Ensure the Servo connected to the DUT.\n\nleads to\n\n\u003e TestFail: Getting root.dut_connection_type :: list index out of range\n\nI don\u0027t have CQ+2 privileges yet. I\u0027ll ping people who can help if reviewers aren\u0027t available to submit to CQ.",
       "revId": "d0d5ef88bb4f62a7f535dda35d6170fc43096cc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74abadcb_6f1d2015",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-14T00:35:36Z",
+      "side": 1,
+      "message": "Indeed, this is crbug.com/1198033.",
+      "parentUuid": "b343be79_1b7e566e",
+      "revId": "d0d5ef88bb4f62a7f535dda35d6170fc43096cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
