@@ -39,6 +39,30 @@
       },
       "revId": "7a4721c86e45570639f6672f6a1cd3ab116ec1c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda932b1_0d354edb",
+        "filename": "src/chromiumos/tast/remote/dutfs/dutfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-14T22:16:15Z",
+      "side": 1,
+      "message": "\u003e  What happens when there are multiple \"*\"s in the pattern?\n\nThe existing comment describe this: \"If pattern includes a \"*\", the random string replaces the last \"*\"\".\n\n\u003e Do you already have the service that creates the directory name form the pattern? If yes, can you link it in the answer?\n\nI\u0027m not sure what you\u0027re asking here.",
+      "parentUuid": "39857f75_2368d317",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 17
+      },
+      "revId": "7a4721c86e45570639f6672f6a1cd3ab116ec1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
