@@ -273,6 +273,7 @@ ID      Size     Value  Description
 		Name:              "145138402365",
 		Device:            SSD,
 		Status:            Healthy,
+		PercentageUsed:    2,
 		TotalBytesWritten: 1084308464640,
 	}
 
