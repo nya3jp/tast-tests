@@ -320,13 +320,12 @@ func TestPlatformDecodingParams(t *testing.T) {
 	const defaultTimeout = 10 * time.Minute
 	vp9GroupExtensions := map[string]time.Duration{
 		"group4": 24 * time.Hour,
+		"group5": 24 * time.Hour,
 	}
 
 	// Generate VAAPI VP9 tests.
 	for i, profile := range []string{"profile_0"} {
-		// TODO(jchinlee): enable level 5 when we have a better understanding of
-		// runtime on slower devices.
-		for _, levelGroup := range []string{"group1", "group2", "group3", "group4"} {
+		for _, levelGroup := range []string{"group1", "group2", "group3", "group4", "group5"} {
 			for _, cat := range []string{
 				"buf", "frm_resize", "gf_dist", "odd_size", "sub8x8", "sub8x8_sf",
 			} {
@@ -337,7 +336,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 					CmdBuilder:   "vp9decodeVAAPIargs",
 					Files:        files,
 					Timeout:      defaultTimeout,
-					SoftwareDeps: []string{"vaapi", caps.HWDecodeVP9},
+					SoftwareDeps: []string{"vaapi"},
 					Metadata:     genExtraData(files),
 				}
 				if extension, ok := vp9GroupExtensions[levelGroup]; ok {
@@ -347,6 +346,12 @@ func TestPlatformDecodingParams(t *testing.T) {
 				// TODO(b/184683272): Reenable everywhere.
 				if cat == "frm_resize" || cat == "sub8x8_sf" {
 					param.HardwareDeps = "hwdep.D(hwdep.SkipOnPlatform(\"grunt\", \"zork\"))"
+				}
+
+				if levelGroup == "group5" {
+					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K)
+				} else {
+					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9)
 				}
 
 				params = append(params, param)
