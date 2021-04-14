@@ -110,6 +110,30 @@
       },
       "revId": "24f1000b79a76704fc0fa25d54fcbacce055af26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e24f65a2_b74c29b1",
+        "filename": "src/chromiumos/tast/services/cros/baserpc/file_system.pb.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-14T23:23:31Z",
+      "side": 1,
+      "message": "Ah. Thanks for the clarification!",
+      "parentUuid": "17d87fe1_c9f080b6",
+      "range": {
+        "startLine": 952,
+        "startChar": 1,
+        "endLine": 953,
+        "endChar": 16
+      },
+      "revId": "24f1000b79a76704fc0fa25d54fcbacce055af26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
