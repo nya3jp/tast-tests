@@ -26,7 +26,7 @@ func init() {
 		},
 		Timeout:      3 * time.Minute,
 		SoftwareDeps: []string{"chrome", "ondevice_handwriting"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"}, // TODO(qjw): Remove "informational" once crbug.com/1199053 is fixed.
 		Data: []string{
 			"web_handwriting_recognition_drawing_abc.html",
 			"web_handwriting_recognition_drawing_abc.json",
