@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef0b74d7_636f6f6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-14T21:43:06Z",
+      "side": 1,
+      "message": "I could not get these tests to work, even with https://crrev.com/c/2826381. When the device would attempt to login, it would get stuck on the phone number verification screen.",
+      "range": {
+        "startLine": 14,
+        "startChar": 54,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "06061408f1ca0108deb09528a543d7bea4f87330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
