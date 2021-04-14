@@ -70,6 +70,24 @@
       "parentUuid": "39e495db_67db4fc3",
       "revId": "18648bc6cd38f88a998fd3337fb440d9b30b3400",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22253b77_45b89b72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-14T19:52:38Z",
+      "side": 1,
+      "message": "Added a scroll until it finds the ARC entry.",
+      "parentUuid": "03a11196_5e71e1eb",
+      "revId": "18648bc6cd38f88a998fd3337fb440d9b30b3400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
