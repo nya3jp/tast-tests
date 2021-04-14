@@ -23,7 +23,7 @@ func init() {
 		Desc:         "Opens CCA and measures the UI performance including CPU and power usage",
 		Contacts:     []string{"wtlee@chromium.org", "inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
+		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Timeout:      5 * time.Minute,
 		Pre:          chrome.LoggedIn(),

@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Checks QR code detection in CCA",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
-		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		SoftwareDeps: []string{"camera_app", "chrome", "chrome_internal"},
 		Data:         []string{"cca_ui.js", "qrcode_1280x960.y4m", "qrcode_text_1280x960.y4m"},
 	})
 }
