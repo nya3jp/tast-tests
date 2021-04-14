@@ -10,6 +10,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -51,14 +52,16 @@ func KernelAth10kError(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(cleanupCtx, 3*time.Second)
 	defer cancel()
-	if err := crash.SetUpCrashTest(ctx, opt); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.FilterCrashes("kernel_ath10k_error"), opt); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest(cleanupCtx)
 
-	if err := crash.RestartAnomalyDetector(ctx); err != nil {
+	if err := crash.RestartAnomalyDetectorWithSendAll(ctx, true); err != nil {
 		s.Fatal("Failed to restart anomaly detector: ", err)
 	}
+	// Restart anomaly detector to clear its --testonly-send-all flag at the end of execution.
+	defer crash.RestartAnomalyDetector(ctx)
 
 	m, err := shill.NewManager(ctx)
 	if err != nil {
@@ -114,6 +117,13 @@ func KernelAth10kError(ctx context.Context, s *testing.State) {
 				}
 			} else if !res {
 				s.Error("Failed to find the expected Ath10k signature")
+				if err := crash.MoveFilesToOut(ctx, s.OutDir(), metaFile); err != nil {
+					s.Error("Failed to save the meta file: ", err)
+				}
+			}
+
+			if !strings.Contains(string(contents), "upload_var_weight=50") {
+				s.Error(".meta file did not contain expected weight")
 				if err := crash.MoveFilesToOut(ctx, s.OutDir(), metaFile); err != nil {
 					s.Error("Failed to save the meta file: ", err)
 				}
