@@ -81,6 +81,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c5ccdda_bbf63bc2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-14T22:39:21Z",
+      "side": 1,
+      "message": "Does that apply to all comments or only declarations?\n\n Comments documenting declarations should be full sentences, even if that seems a little redundant.",
+      "parentUuid": "7b39b1ab_c9b366d6",
+      "range": {
+        "startLine": 141,
+        "startChar": 54,
+        "endLine": 141,
+        "endChar": 55
+      },
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c19aec88_4d37d7c9",
@@ -94,6 +118,30 @@
       "writtenOn": "2021-04-13T00:59:17Z",
       "side": 1,
       "message": "uber nit: extra space.",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 5
+      },
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12ebeaca_61d21ac7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-14T22:39:21Z",
+      "side": 1,
+      "message": "This was actually intentional when using IntelliJ/GoLand: https://www.jetbrains.com/help/idea/using-todo.html",
+      "parentUuid": "c19aec88_4d37d7c9",
       "range": {
         "startLine": 176,
         "startChar": 4,
@@ -150,6 +198,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3995ba3b_7a6b0de1",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-14T22:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfe5c723_d2789eed",
+      "range": {
+        "startLine": 322,
+        "startChar": 6,
+        "endLine": 322,
+        "endChar": 19
+      },
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6d7a5f1_4794c3b3",
@@ -163,6 +235,30 @@
       "writtenOn": "2021-04-13T00:59:17Z",
       "side": 1,
       "message": "nit: prefer isFPUpdaterEnabled (see https://github.com/golang/go/wiki/CodeReviewComments#initialisms)",
+      "range": {
+        "startLine": 329,
+        "startChar": 28,
+        "endLine": 329,
+        "endChar": 46
+      },
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7058eeaa_c1bc63a3",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-14T22:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6d7a5f1_4794c3b3",
       "range": {
         "startLine": 329,
         "startChar": 28,
@@ -196,6 +292,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed501b34_b72444be",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-14T22:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07f9255c_4be824ef",
+      "range": {
+        "startLine": 333,
+        "startChar": 7,
+        "endLine": 333,
+        "endChar": 23
+      },
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b760ec0b_1b0ef456",
@@ -209,6 +329,30 @@
       "writtenOn": "2021-04-13T00:59:17Z",
       "side": 1,
       "message": "nit: prefer enableFPUpdater\u0027 (see https://github.com/golang/go/wiki/CodeReviewComments#initialisms)",
+      "range": {
+        "startLine": 334,
+        "startChar": 14,
+        "endLine": 334,
+        "endChar": 29
+      },
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2c3e3c5_db04ce39",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-14T22:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b760ec0b_1b0ef456",
       "range": {
         "startLine": 334,
         "startChar": 14,
