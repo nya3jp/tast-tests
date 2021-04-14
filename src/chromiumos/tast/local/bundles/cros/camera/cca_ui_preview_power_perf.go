@@ -28,7 +28,7 @@ func init() {
 		Contacts:     []string{"springerm@google.com", "arcvm-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Data:         []string{"cca_ui.js"},
-		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
+		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		HardwareDeps: hwdep.D(hwdep.Battery()),
 		Params: []testing.Param{{
 			Name:              "noarc",
