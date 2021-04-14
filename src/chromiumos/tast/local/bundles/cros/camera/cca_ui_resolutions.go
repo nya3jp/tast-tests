@@ -81,13 +81,25 @@ func CCAUIResolutions(ctx context.Context, s *testing.State) {
 		s.Fatal("Resolution settings menu is not available on device")
 	}
 
-	if err := testPhotoResolution(ctx, app); err != nil {
-		s.Error("Failed in testPhotoResolution(): ", err)
-		restartApp()
-	}
-	if err := testVideoResolution(ctx, app); err != nil {
-		s.Error("Failed in testVideoResolution(): ", err)
-		restartApp()
+	subTestTimeout := 2 * time.Minute
+	for _, tst := range []struct {
+		name     string
+		testFunc func(context.Context, *cca.App) error
+	}{{
+		"testPhotoResolution",
+		testPhotoResolution,
+	}, {
+		"testVideoResolution",
+		testVideoResolution,
+	}} {
+		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
+		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
+			restartApp()
+			if err := tst.testFunc(ctx, app); err != nil {
+				s.Fatalf("Failed to run subtest: %v: %v", tst.name, err)
+			}
+		})
+		cancel()
 	}
 }
 

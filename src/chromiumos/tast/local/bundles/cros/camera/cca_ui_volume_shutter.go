@@ -170,6 +170,7 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	subTestTimeout := 20 * time.Second
 	for _, tst := range []struct {
 		name     string
 		testFunc func(context.Context, *chrome.Chrome, *cca.App, *input.KeyboardEventWriter, *volumeHelper) error
@@ -180,7 +181,10 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 		{"testRecordVideo", testRecordVideo, true},
 		{"testAppInBackground", testAppInBackground, true},
 	} {
-		s.Run(ctx, tst.name, func(ctx context.Context, s *testing.State) {
+		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
+		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
+			restartApp(ctx)
+
 			cleanup, err := app.EnsureTabletModeEnabled(ctx, tst.tablet)
 			if err != nil {
 				modeName := "clamshell"
@@ -193,9 +197,9 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 
 			if err := tst.testFunc(ctx, cr, app, kb, vh); err != nil {
 				s.Error("Test failed: ", err)
-				restartApp(ctx)
 			}
 		})
+		cancel()
 	}
 }
 

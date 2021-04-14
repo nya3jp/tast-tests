@@ -66,7 +66,7 @@ func CCAUIExpert(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to perform action %v of test %v: %v", action.Name, i, err)
 		}
 		if err := verifyExpertMode(ctx, app, action.Enabled); err != nil {
-			s.Errorf("Failed in test %v %v(): %v", i, action.Name, err)
+			s.Fatalf("Failed in test %v %v(): %v", i, action.Name, err)
 		}
 	}
 }
