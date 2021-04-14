@@ -5,6 +5,7 @@
 package storage
 
 import (
+	"context"
 	"reflect"
 	"testing"
 )
@@ -81,7 +82,7 @@ Error Information (NVMe Log 0x01, max 64 entries)
 No Errors Logged
 `
 
-	info, err := parseGetStorageInfoOutput([]byte(out))
+	info, err := parseGetStorageInfoOutput(context.Background(), []byte(out))
 	if err != nil {
 		t.Fatal("parseGetStorageInfoOutput() failed: ", err)
 	}
@@ -90,6 +91,7 @@ No Errors Logged
 		Name:              "S3VBNY0J708174",
 		Device:            NVMe,
 		Status:            Healthy,
+		PercentageUsed:    3,
 		TotalBytesWritten: 17657146880000,
 	}
 
