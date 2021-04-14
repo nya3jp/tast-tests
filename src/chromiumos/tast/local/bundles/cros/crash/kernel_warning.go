@@ -40,14 +40,16 @@ func KernelWarning(ctx context.Context, s *testing.State) {
 	if useConsent == crash.RealConsent {
 		opt = crash.WithConsent(s.PreValue().(*chrome.Chrome))
 	}
-	if err := crash.SetUpCrashTest(ctx, opt); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.FilterCrashes("kernel_warning"), opt); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest(ctx)
 
-	if err := crash.RestartAnomalyDetector(ctx); err != nil {
+	if err := crash.RestartAnomalyDetectorWithSendAll(ctx, true); err != nil {
 		s.Fatal("Failed to restart anomaly detector: ", err)
 	}
+	// Restart anomaly detector to clear its --testonly-send-all flag at the end of execution.
+	defer crash.RestartAnomalyDetector(ctx)
 
 	s.Log("Inducing artificial warning")
 	lkdtm := "/sys/kernel/debug/provoke-crash/DIRECT"
@@ -80,12 +82,21 @@ func KernelWarning(ctx context.Context, s *testing.State) {
 		if contents, err := ioutil.ReadFile(metaFile); err != nil {
 			s.Errorf("Couldn't read meta file %s contents: %v", metaFile, err)
 		} else if !strings.Contains(string(contents), "upload_var_in_progress_integration_test=crash.KernelWarning") {
-			s.Error(".meta file did not contain expected contents")
-			crash.MoveFilesToOut(ctx, s.OutDir(), metaFile)
+			s.Error(".meta file did not contain expected in_progress_integration_test")
+			if err := crash.MoveFilesToOut(ctx, s.OutDir(), metaFile); err != nil {
+				s.Error("Failed to save the meta file: ", err)
+			}
+		} else if !strings.Contains(string(contents), "upload_var_weight=10") {
+			s.Error(".meta file did not contain expected weight")
+			if err := crash.MoveFilesToOut(ctx, s.OutDir(), metaFile); err != nil {
+				s.Error("Failed to save the meta file: ", err)
+			}
 		}
 	} else {
 		s.Errorf("Unexpectedly found multiple meta files: %q", files[metaName])
-		crash.MoveFilesToOut(ctx, s.OutDir(), files[metaName]...)
+		if err := crash.MoveFilesToOut(ctx, s.OutDir(), files[metaName]...); err != nil {
+			s.Error("Failed to save additional meta files: ", err)
+		}
 	}
 
 	if err := crash.RemoveAllFiles(ctx, files); err != nil {
