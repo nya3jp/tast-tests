@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // Type stands for various Chromebook storage devices.
@@ -63,11 +64,11 @@ func Get(ctx context.Context) (*Info, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to run storage info command")
 	}
-	return parseGetStorageInfoOutput(out)
+	return parseGetStorageInfoOutput(ctx, out)
 }
 
 // parseGetStorageInfoOutput parses the storage information to find the device type and life status.
-func parseGetStorageInfoOutput(out []byte) (*Info, error) {
+func parseGetStorageInfoOutput(ctx context.Context, out []byte) (*Info, error) {
 	out = bytes.TrimSpace(out)
 	if len(out) == 0 {
 		return nil, errors.New("get storage info did not produce output")
@@ -81,7 +82,7 @@ func parseGetStorageInfoOutput(out []byte) (*Info, error) {
 	}
 
 	var lifeStatus LifeStatus
-	var bytesWritten int64
+	var percentageUsed, bytesWritten int64
 	var name string
 	switch deviceType {
 	case EMMC:
@@ -95,8 +96,15 @@ func parseGetStorageInfoOutput(out []byte) (*Info, error) {
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to parse NVMe health")
 		}
-		bytesWritten, err = parseTotalBytesWrittenNVMe(lines)
 		name = parseDeviceNameNVMe(lines)
+		bytesWritten, err = parseTotalBytesWrittenNVMe(lines)
+		if err != nil {
+			testing.ContextLog(ctx, "Error acquiring TBW of NVMe device: ", name, err)
+		}
+		percentageUsed, err = parsePercentageUsed(lines, nvmeUsed)
+		if err != nil {
+			testing.ContextLog(ctx, "Error acquiring usage of NVMe device: ", name, err)
+		}
 	case SSD:
 		lifeStatus, err = parseDeviceHealthSSD(lines)
 		if err != nil {
@@ -104,12 +112,19 @@ func parseGetStorageInfoOutput(out []byte) (*Info, error) {
 		}
 		name = parseDeviceNameSATA(lines)
 		bytesWritten, err = parseTotalBytesWrittenSATA(lines)
+		if err != nil {
+			testing.ContextLog(ctx, "Error acquiring TBW of SSD device: ", name, err)
+		}
+		percentageUsed, err = parsePercentageUsed(lines, ssdUsed)
+		if err != nil {
+			testing.ContextLog(ctx, "Error acquiring usage of SSD device: ", name, err)
+		}
 	default:
 		return nil, errors.Errorf("parsing device health for type %v is not supported", deviceType)
 	}
 
 	return &Info{Name: name, Device: deviceType, Status: lifeStatus,
-		TotalBytesWritten: bytesWritten}, nil
+		PercentageUsed: percentageUsed, TotalBytesWritten: bytesWritten}, nil
 }
 
 var (
@@ -137,6 +152,9 @@ var (
 	// We want to detect 0x03 for the Urgent case.
 	// That indicates that the eMMC is near the end of life.
 	emmcFailing = regexp.MustCompile(`.*(?P<param>PRE_EOL_INFO]?: 0x03)`)
+	// nvmeUsed detects the usage (in percents) of the NVMe drive.
+	// Example NVMe usage text: "	Percentage Used:                        0%"
+	nvmeUsed = regexp.MustCompile(`\s*Percentage Used:\s*(?P<percentage>\d*)`)
 	// nvmeSpare and nvmeThreshold are used to detect if nvme is failing using regex.
 	// If Available Spare is less than Available Spare Threshold, the device
 	// is likely close to failing and we should remove the DUT.
@@ -144,6 +162,9 @@ var (
 	// "Available Spare Threshold:         10%"
 	nvmeSpare     = regexp.MustCompile(`\s*Available Spare:\s+(?P<spare>\d+)%`)
 	nvmeThreshold = regexp.MustCompile(`\s*Available Spare Threshold:\s+(?P<thresh>\d+)%`)
+	// ssdUsed detects the usage of ssd device.
+	// Example SSD usage text: "0x07  0x008  1              91  ---  Percentage Used Endurance Indicator"
+	ssdUsed = regexp.MustCompile(`.*\s{3,}(?P<percentage>\d*).*Percentage Used Endurance Indicator`)
 	// ssdFailingLegacy detects if ssd device is failing using a regex.
 	// The indicator used here is not reported for all SATA devices.
 	ssdFailingLegacy = regexp.MustCompile(`\s*(?P<param>\S+\s\S+)` + // ID and attribute name
@@ -306,6 +327,18 @@ func parseDeviceHealthSSD(outLines []string) (LifeStatus, error) {
 	}
 
 	return Healthy, nil
+}
+
+// parsePercentageUsed is a helper function that analyzes the percentage used
+// value for extracting disk usage.
+func parsePercentageUsed(outLines []string, pattern *regexp.Regexp) (int64, error) {
+	for _, line := range outLines {
+		if match := pattern.FindStringSubmatch(line); match != nil {
+			return strconv.ParseInt(match[1], 10, 32)
+		}
+	}
+
+	return -1, nil
 }
 
 // parseTotalBytesWrittenNVMe parses NVMe SMART attribute value to extract
