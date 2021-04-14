@@ -56,6 +56,15 @@ func resetShill(ctx context.Context) []error {
 	if err = manager.PopAllUserProfiles(ctx); err != nil {
 		errs = append(errs, err)
 	}
+
+	// Wait until a service is visible
+	expectProps := map[string]interface{}{
+		shillconst.ServicePropertyVisible: true,
+	}
+	if _, err := manager.WaitForServiceProperties(ctx, expectProps, 5*time.Second); err != nil {
+		errs = append(errs, err)
+	}
+
 	return errs
 }
 
