@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14c9e338_7f1c6ccb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1170419
+      },
+      "writtenOn": "2021-04-14T18:28:55Z",
+      "side": 1,
+      "message": "nit: add a TODO comment for this that links to crbug.com/1199053 ?",
+      "range": {
+        "startLine": 29,
+        "startChar": 44,
+        "endLine": 29,
+        "endChar": 57
+      },
+      "revId": "5342bb88fea3e255ae3fc78de79fcd889c3cd102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
