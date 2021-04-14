@@ -16,6 +16,24 @@
       "message": "LGTM. Thank you for clean up.",
       "revId": "5123707107b0587b316954d65c16aa5bbc758e5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "052a9df2_d1d83eee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-04-14T13:27:41Z",
+      "side": 1,
+      "message": "Thanks for the nice suggestion :D",
+      "parentUuid": "114092ba_530dff1b",
+      "revId": "5123707107b0587b316954d65c16aa5bbc758e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
