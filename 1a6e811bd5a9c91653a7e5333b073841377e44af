@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70dc389a_7d4bfa69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-04-14T21:40:30Z",
+      "side": 1,
+      "message": "LG after addressing comments.",
+      "revId": "1a6e811bd5a9c91653a7e5333b073841377e44af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "400ba6b5_bd30e510",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-04-14T21:40:30Z",
+      "side": 1,
+      "message": "Maybe refactor this if else if block into findSSHKeyFile as well?",
+      "revId": "1a6e811bd5a9c91653a7e5333b073841377e44af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7caccfbd_e5b61762",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-04-14T21:40:30Z",
+      "side": 1,
+      "message": "Refactor the file names to a constant list.",
+      "revId": "1a6e811bd5a9c91653a7e5333b073841377e44af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f50ba2cb_5d05c417",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-04-14T21:40:30Z",
+      "side": 1,
+      "message": "Might be more straight forward to avoid the use of continue:\n\n\nif _, err :\u003d ; err \u003d\u003d nil {\n  return fp, nil\n} else if (!errors.Is(err, os.ErrNotExist) { //os.IsNotExist is deprecated\n  return \"\", errors.Wrap ...\n}\n\nunless you did it this way because the linter complained somehow ...",
+      "revId": "1a6e811bd5a9c91653a7e5333b073841377e44af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
