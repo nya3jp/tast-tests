@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fdd3e9a_7819b2bb",
+        "filename": "src/chromiumos/tast/common/storage/storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-14T07:36:00Z",
+      "side": 1,
+      "message": "nit: you can join these two into a single line, i.e.\n```\nvar percentageUsed, bytesWritten int64\n```",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 23
+      },
+      "revId": "55347da8e8b131b3b11c6f67007d8a9263ec5bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e8de4c2_6514c4a1",
+        "filename": "src/chromiumos/tast/common/storage/storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-14T07:36:00Z",
+      "side": 1,
+      "message": "Probably best to check if this is an error and fail appropriately, might silently not report usage if pattern changes.",
+      "range": {
+        "startLine": 101,
+        "startChar": 18,
+        "endLine": 101,
+        "endChar": 21
+      },
+      "revId": "55347da8e8b131b3b11c6f67007d8a9263ec5bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
