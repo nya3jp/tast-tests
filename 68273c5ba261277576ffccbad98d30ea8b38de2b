@@ -16,6 +16,46 @@
       "message": "Hi, everthing important is put down in the commit message.\nPlease review.",
       "revId": "68273c5ba261277576ffccbad98d30ea8b38de2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ad7620_d1e21a04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-04-14T21:28:18Z",
+      "side": 1,
+      "message": "Is the goal to extend this, to make into a full \"continuity\" test (including connectivity checks, etc.)? Or just to make this repeatable for local testing, and then to copy relevant bits into a new test for continuity checks later? Or do you want this N-cycle variant running in the lab?\n\nIt seems like if we\u0027re going for full continuity testing, it should probably be a new test file. (Yes, that might suggest some duplication. But that\u0027s usually OK, to some extent.)\n\nIf we want to make a longer (multi-roam) variant of the existing test, without continuity checks, then maybe a parameterized test would make sense?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests\nThen we could run both \"wifi.RoamDbus\" and \"wifi.RoamDbus.10cycles\" (or whatever you want to call it) in the lab for comparison.\n\nOr if you just think it\u0027s valuable for local testing with \u0027var\u0027, then the current CL might make sense.",
+      "revId": "68273c5ba261277576ffccbad98d30ea8b38de2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a930390_8eacaa17",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-04-14T21:28:18Z",
+      "side": 1,
+      "message": "(if we\u0027re sticking with Vars:)\nI think the naming expectations here would be \u0027wifi.RoamDbus.rounds\u0027:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Runtime-variables\n\n?",
+      "range": {
+        "startLine": 30,
+        "startChar": 43,
+        "endLine": 30,
+        "endChar": 49
+      },
+      "revId": "68273c5ba261277576ffccbad98d30ea8b38de2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
