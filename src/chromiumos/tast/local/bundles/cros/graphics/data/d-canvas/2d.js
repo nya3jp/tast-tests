@@ -7,21 +7,21 @@ let pixel_width;
 let pixel_height;
 
 function init2D() {
-  let canvas = document.querySelector('canvas');
-  let container = document.querySelector('#container');
+  const canvas = document.querySelector('canvas');
+  const container = document.querySelector('#container');
 
   const setSizeAndRotation = () => {
-    let angle = screen.orientation.angle % 360;
-    let dpr = devicePixelRatio;
-    let dp_width = container.clientWidth;
-    let dp_height = container.clientHeight;
+    const angle = screen.orientation.angle % 360;
+    const dpr = devicePixelRatio;
+    const dp_width = container.clientWidth;
+    const dp_height = container.clientHeight;
     pixel_width = Math.round(dp_width * dpr);
     pixel_height = Math.round(dp_height * dpr);
 
     if (angle % 180 == 90) {
       canvas.style.width = `${dp_height}px`;
       canvas.style.height = `${dp_width}px`;
-      let tmp = pixel_height;
+      const tmp = pixel_height;
       pixel_height = pixel_width;
       pixel_width = tmp;
     } else {
@@ -63,14 +63,14 @@ function init2D() {
 let deg = 0;
 
 function draw() {
-  let angle = screen.orientation.angle % 360;
-  let dpr = devicePixelRatio;
-  let container = document.querySelector('#container');
-  let dp_width = container.clientWidth;
-  let dp_height = container.clientHeight;
+  const angle = screen.orientation.angle % 360;
+  const dpr = devicePixelRatio;
+  const container = document.querySelector('#container');
+  const dp_width = container.clientWidth;
+  const dp_height = container.clientHeight;
 
-  let canvas = document.querySelector('canvas');
-  let c2 = canvas.getContext('2d', {desynchronized: true, alpha: false});
+  const canvas = document.querySelector('canvas');
+  const c2 = canvas.getContext('2d', {desynchronized: true, alpha: false});
 
   c2.fillStyle = 'rgb(255,255,0)';
   c2.fillRect(0, 0, pixel_width, pixel_height);
@@ -80,7 +80,7 @@ function draw() {
   // Text
   c2.fillStyle = 'rgb(255,255,255)';
   c2.font = "40px Arial";
-  let text = `Pixel size=${pixel_width}x${pixel_height} \
+  const text = `Pixel size=${pixel_width}x${pixel_height} \
 dp size=${dp_width}x${dp_height} dpr=${dpr} angle=${angle}`;
   c2.fillText(text, 10, 50);
   c2.strokeStyle = 'rgb(0,0,0)';
