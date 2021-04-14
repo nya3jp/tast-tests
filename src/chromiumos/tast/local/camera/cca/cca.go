@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -411,7 +412,7 @@ func (a *App) checkJSError(ctx context.Context) error {
 	return nil
 }
 
-// Close closes the App and the associated connection.gi
+// Close closes the App and the associated connection.
 func (a *App) Close(ctx context.Context) (retErr error) {
 	if a.conn == nil {
 		// It's already closed. Do nothing.
@@ -1550,4 +1551,11 @@ func (a *App) Refresh(ctx context.Context, tb *testutil.TestBridge) error {
 		return errors.Wrap(err, "failed to load scripts")
 	}
 	return nil
+}
+
+// SaveScreenshot saves a screenshot in the outDir.
+func (a *App) SaveScreenshot(ctx context.Context) error {
+	filename := fmt.Sprintf("screenshot_%d.png", time.Now().UnixNano())
+	path := filepath.Join(a.outDir, filename)
+	return screenshot.CaptureChrome(ctx, a.cr, path)
 }

@@ -132,6 +132,11 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open CCA: ", err)
 	}
 	defer func(ctx context.Context) {
+		if s.HasError() {
+			if err := app.SaveScreenshot(ctx); err != nil {
+				s.Error("Failed to save a screenshot: ", err)
+			}
+		}
 		if err := app.Close(ctx); err != nil {
 			s.Error("Failed to close app: ", err)
 		}
