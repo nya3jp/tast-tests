@@ -62,6 +62,7 @@ func CCAUITakePicture(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	subTestTimeout := 20 * time.Second
 	for _, tst := range []struct {
 		name     string
 		testFunc func(context.Context, *cca.App) error
@@ -70,10 +71,14 @@ func CCAUITakePicture(ctx context.Context, s *testing.State) {
 		{"testTakeSinglePhotoWithTimer", testTakeSinglePhotoWithTimer},
 		{"testCancelTimer", testCancelTimer},
 	} {
-		if err := tst.testFunc(ctx, app); err != nil {
-			s.Errorf("Failed in %v(): %v", tst.name, err)
+		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
+		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
 			restartApp()
-		}
+			if err := tst.testFunc(ctx, app); err != nil {
+				s.Fatalf("Failed in %v(): %v", tst.name, err)
+			}
+		})
+		cancel()
 	}
 }
 

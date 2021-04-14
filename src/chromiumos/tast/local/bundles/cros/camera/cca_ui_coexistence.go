@@ -65,6 +65,7 @@ func CCAUICoexistence(ctx context.Context, s *testing.State) {
 		return &cameraWebPage{pageURL: server.URL + "/cca_ui_coexistence.html"}
 	}
 
+	subTestTimeout := 20 * time.Second
 	for _, tst := range []struct {
 		name     string
 		testFunc func(context.Context, context.Context, *chrome.Chrome, func() (*cca.App, error), func() *cameraWebPage) error
@@ -74,11 +75,13 @@ func CCAUICoexistence(ctx context.Context, s *testing.State) {
 		{"testOpenWebPageFirstAndCloseCCAFirst", testOpenWebPageFirstAndCloseCCAFirst},
 		{"testOpenWebPageFirstAndCloseWebPageFirst", testOpenWebPageFirstAndCloseWebPageFirst},
 	} {
-		s.Run(ctx, tst.name, func(ctx context.Context, s *testing.State) {
+		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
+		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
 			if err := tst.testFunc(cleanupCtx, ctx, cr, openCCA, newCameraWebPage); err != nil {
 				s.Errorf("Failed to run subtest %v: %v", tst.name, err)
 			}
 		})
+		cancel()
 	}
 }
 

@@ -63,8 +63,8 @@ func CCAUIPreview(ctx context.Context, s *testing.State) {
 
 	if err := testResize(ctx, app); err != nil {
 		s.Error("Failed in testResize(): ", err)
-		restartApp()
 	}
+	restartApp()
 
 	// TODO(shik): Add the missing preview tests in go/cca-test:
 	// * Preview active after going back from gallery

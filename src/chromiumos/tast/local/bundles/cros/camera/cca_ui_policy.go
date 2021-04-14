@@ -62,6 +62,7 @@ func CCAUIPolicy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
+	subTestTimeout := 20 * time.Second
 	for _, tst := range []struct {
 		name     string
 		testFunc func(context.Context, *chrome.Chrome, []string, string) error
@@ -79,7 +80,8 @@ func CCAUIPolicy(ctx context.Context, s *testing.State) {
 		testBlockVideoCapture,
 		[]policy.Policy{&policy.VideoCaptureAllowed{Val: false}},
 	}} {
-		s.Run(ctx, tst.name, func(ctx context.Context, s *testing.State) {
+		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
+		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
 			if err := servePolicy(ctx, fdms, cr, tst.policy); err != nil {
 				s.Fatal("Failed to serve policy: ", err)
 			}
@@ -88,6 +90,7 @@ func CCAUIPolicy(ctx context.Context, s *testing.State) {
 				s.Fatalf("Failed to run subtest %v: %v", tst.name, err)
 			}
 		})
+		cancel()
 	}
 }
 
