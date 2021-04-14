@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e792faa3_1bbff79a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383114
+      },
+      "writtenOn": "2021-04-14T12:07:09Z",
+      "side": 1,
+      "message": "RSLTGM for unblocking crbug/1192623",
+      "revId": "0aa1a2042b0ad5004567a3c8cf8d920e83d8770e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
