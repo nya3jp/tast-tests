@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f46a8c8f_6efc14fb",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-14T23:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3694d98f_467da435",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "56a0fb55fa33ef043caca8a6a04c68c9704357eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e556efcb_19be3918",
@@ -87,6 +111,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a8ef489_6911a202",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-14T23:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "587fb2e9_47f04a69",
+      "range": {
+        "startLine": 236,
+        "startChar": 80,
+        "endLine": 236,
+        "endChar": 83
+      },
+      "revId": "56a0fb55fa33ef043caca8a6a04c68c9704357eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "611acf1d_d650bf54",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-14T23:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e556efcb_19be3918",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 4
+      },
+      "revId": "56a0fb55fa33ef043caca8a6a04c68c9704357eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ad56d52_ce651642",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-04-14T16:35:46Z",
       "side": 1,
       "message": "remove?",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 51
+      },
+      "revId": "56a0fb55fa33ef043caca8a6a04c68c9704357eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69a1a343_0dd10d70",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-14T23:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ad56d52_ce651642",
       "range": {
         "startLine": 238,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9972a328_3fbedfa8",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-14T23:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8363012_a3ff45f1",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 11
+      },
+      "revId": "56a0fb55fa33ef043caca8a6a04c68c9704357eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb27fdd9_63f3517c",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-04-14T16:35:46Z",
       "side": 1,
       "message": "obsolete?  perhaps just \"failed to parse output... \"",
+      "range": {
+        "startLine": 255,
+        "startChar": 44,
+        "endLine": 255,
+        "endChar": 60
+      },
+      "revId": "56a0fb55fa33ef043caca8a6a04c68c9704357eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f9c7068_197fefee",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-14T23:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb27fdd9_63f3517c",
       "range": {
         "startLine": 255,
         "startChar": 44,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94e4cc26_d4df945a",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-14T23:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "085be072_8203937e",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 23
+      },
+      "revId": "56a0fb55fa33ef043caca8a6a04c68c9704357eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cecdb91_188d3a8f",
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8a8852a_8acfcda4",
+        "filename": "src/chromiumos/tast/local/arc/display_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-14T23:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cecdb91_188d3a8f",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 8
+      },
+      "revId": "56a0fb55fa33ef043caca8a6a04c68c9704357eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69c5b32a_e30c9368",
@@ -215,6 +407,30 @@
       "writtenOn": "2021-04-14T00:24:43Z",
       "side": 1,
       "message": "nit: I think const should be placed at the top of this function.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "56a0fb55fa33ef043caca8a6a04c68c9704357eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd63e5cb_be7479fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_display_density.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-14T23:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69c5b32a_e30c9368",
       "range": {
         "startLine": 55,
         "startChar": 1,
@@ -261,6 +477,54 @@
       "writtenOn": "2021-04-14T16:35:46Z",
       "side": 1,
       "message": "nit: Cts -\u003e CTS\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 83,
+        "startChar": 15,
+        "endLine": 83,
+        "endChar": 18
+      },
+      "revId": "56a0fb55fa33ef043caca8a6a04c68c9704357eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2725405e_dbae908a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_display_density.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-14T23:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4c07bdd_7d3f58c7",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 8
+      },
+      "revId": "56a0fb55fa33ef043caca8a6a04c68c9704357eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1b3b742_a43d1f09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_display_density.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-14T23:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac32e3c1_226a6082",
       "range": {
         "startLine": 83,
         "startChar": 15,
