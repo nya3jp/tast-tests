@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "646b73f7_2cfc92ef",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-04-14T13:33:39Z",
+      "side": 1,
+      "message": "nit: Would this always be ErrorLevelError? If so, let\u0027s remove this.",
+      "range": {
+        "startLine": 400,
+        "startChar": 18,
+        "endLine": 400,
+        "endChar": 35
+      },
+      "revId": "7c001d14d02e6a8bf0504804f69f55638c3c5c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
