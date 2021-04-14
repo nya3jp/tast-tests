@@ -39,6 +39,30 @@
       },
       "revId": "bf8d82099bffdd822eb3875a96840aa64f3365de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae531e7_309e786a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/baserpc/file_system_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-14T22:12:53Z",
+      "side": 1,
+      "message": "This is the auto-generated signature for the gRPC code, so there\u0027s no way to remove the \"error\" return value. See the other functions in this file (Stat/ReadDir), etc which do the same thing.",
+      "parentUuid": "9aa7b6ab_a38aef0a",
+      "range": {
+        "startLine": 98,
+        "startChar": 111,
+        "endLine": 98,
+        "endChar": 116
+      },
+      "revId": "bf8d82099bffdd822eb3875a96840aa64f3365de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
