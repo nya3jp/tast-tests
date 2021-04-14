@@ -93,7 +93,7 @@ func FastInk(ctx context.Context, s *testing.State) {
 
 	var wStates []ash.WindowStateType
 	if tabletMode {
-		wStates = []ash.WindowStateType{ash.WindowStateFullscreen}
+		wStates = []ash.WindowStateType{ash.WindowStateMaximized, ash.WindowStateFullscreen}
 	} else {
 		wStates = []ash.WindowStateType{ash.WindowStateNormal, ash.WindowStateMaximized, ash.WindowStateFullscreen}
 	}
