@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c6f7921_e4f37672",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-04-14T14:33:36Z",
+      "side": 1,
+      "message": "CCAUISettings",
+      "range": {
+        "startLine": 15,
+        "startChar": 43,
+        "endLine": 15,
+        "endChar": 56
+      },
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "100de70a_8d41b210",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-04-14T14:33:36Z",
+      "side": 1,
+      "message": "Could you help test it on an old/slow device like winky in lab to ensure subtest timeout is long enough? Thanks.",
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a05dca50_3161cf7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-04-14T14:33:36Z",
+      "side": 1,
+      "message": "Hmm why moving this out? I guess the original intention is to restart app only if there is an error to reset state for next (TODO) subtest.",
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb2af0fd_c8ce0ae2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-04-14T14:33:36Z",
+      "side": 1,
+      "message": "This looks a little bit short as it starts a Chrome in every subtest. How about 60s here?",
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6ef40ac_4e770dc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-04-14T14:33:36Z",
+      "side": 1,
+      "message": "Should we move this to the end of each round? Otherwise the previous JS error would be reported in wrong subtest.",
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c101f4f_b286d84d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-04-14T14:33:36Z",
+      "side": 1,
+      "message": "nit: Should we put all of these into cca.go UIComponent list? Not required for this CL, but since you are refactoring it :P",
+      "range": {
+        "startLine": 84,
+        "startChar": 41,
+        "endLine": 84,
+        "endChar": 55
+      },
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
