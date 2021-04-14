@@ -7,9 +7,12 @@ package firewall
 
 import (
 	"context"
+	"fmt"
+	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -24,6 +27,7 @@ type CreateFirewallParams struct {
 	AllowProtocols  []string
 	BlockPorts      []string
 	BlockProtocols  []string
+	Timeout         time.Duration
 }
 
 // CreateFirewall modifies the iptables to allow traffic on specified ports and
@@ -31,11 +35,14 @@ type CreateFirewallParams struct {
 func CreateFirewall(ctx context.Context, params CreateFirewallParams) error {
 	cmds := []string{iptablesCmd, ip6tablesCmd}
 
+	timeout := fmt.Sprintf("%.0f", params.Timeout.Seconds())
+	testing.ContextLog(ctx, "timeout: ", timeout)
+
 	// Allow each port and interface on all allowed protocols.
 	for _, pr := range params.AllowProtocols {
 		// Allow traffic from the specified ports through the firewall.
 		for _, po := range params.AllowPorts {
-			args := []string{"-I", "OUTPUT", "-p", pr, "-m", "tcp", "--sport", po, "-j", "ACCEPT"}
+			args := []string{"-I", "OUTPUT", "-p", pr, "-m", "tcp", "--sport", po, "-j", "ACCEPT", "-w", timeout}
 			if err := executeIptables(ctx, cmds, args); err != nil {
 				return err
 			}
@@ -43,7 +50,7 @@ func CreateFirewall(ctx context.Context, params CreateFirewallParams) error {
 
 		// Allow connections from the allowed interfaces.
 		for _, i := range params.AllowInterfaces {
-			args := []string{"-I", "FORWARD", "-p", pr, "-i", i, "-j", "ACCEPT"}
+			args := []string{"-I", "FORWARD", "-p", pr, "-i", i, "-j", "ACCEPT", "-w", timeout}
 			if err := executeIptables(ctx, cmds, args); err != nil {
 				return err
 			}
@@ -54,12 +61,12 @@ func CreateFirewall(ctx context.Context, params CreateFirewallParams) error {
 	for _, pr := range params.BlockProtocols {
 		for _, po := range params.BlockPorts {
 			// Add this rule with rule-number 2 so that the first rule above, which allows proxy traffic for the OUTPUT chain, has priority.
-			args := []string{"-I", "OUTPUT", "2", "-p", pr, "--dport", po, "-j", "REJECT"}
+			args := []string{"-I", "OUTPUT", "2", "-p", pr, "--dport", po, "-j", "REJECT", "-w", timeout}
 			if err := executeIptables(ctx, cmds, args); err != nil {
 				return err
 			}
 			// Add this rule with rule-number 2 so that the second rule above, which allows proxy traffic for the FORWARD chain, has priority.
-			args = []string{"-I", "FORWARD", "2", "-p", pr, "--dport", po, "-j", "REJECT"}
+			args = []string{"-I", "FORWARD", "2", "-p", pr, "--dport", po, "-j", "REJECT", "-w", timeout}
 			if err := executeIptables(ctx, []string{iptablesCmd}, args); err != nil {
 				return err
 			}
