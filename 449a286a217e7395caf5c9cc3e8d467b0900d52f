@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c47ff913_1e63c46a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-04-14T16:09:14Z",
+      "side": 1,
+      "message": "This test stopped working on fwupd uprev to 1.5.7 (two uprevs back). See https://dashboards.corp.google.com/_86acf8a8_50a5_48e0_829e_fbf1033d3ac6?f\u003dtest_name:in:tast.firmware.FwupdInstallPS175",
+      "revId": "449a286a217e7395caf5c9cc3e8d467b0900d52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
