@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "219b3ef6_baad5311",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/suspend_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-14T04:27:11Z",
+      "side": 1,
+      "message": "It might be worth introducing a context to ensure this gets ran. Something like\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\n```\nThen where you defer something, you pass the cleanupCtx to ensure the function is ran even if the test times out (line 37 and 46 for example)",
+      "range": {
+        "startLine": 96,
+        "startChar": 33,
+        "endLine": 96,
+        "endChar": 36
+      },
+      "revId": "8ab7135be7d3f4120052ed6149affe09d40db414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12d3b6b0_dd44f7cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/suspend_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-14T04:27:11Z",
+      "side": 1,
+      "message": "nit: is it beneficial to continue reading all the logs files and report or bailing out on the first one is sufficient? If the former, consider changing this to s.Error",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 11
+      },
+      "revId": "8ab7135be7d3f4120052ed6149affe09d40db414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
