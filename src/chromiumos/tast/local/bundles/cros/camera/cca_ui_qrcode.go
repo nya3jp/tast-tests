@@ -27,6 +27,7 @@ func init() {
 }
 
 func CCAUIQRCode(ctx context.Context, s *testing.State) {
+	subTestTimeout := 60 * time.Second
 	for _, tc := range []struct {
 		format     string
 		video      string
@@ -52,7 +53,8 @@ func CCAUIQRCode(ctx context.Context, s *testing.State) {
 			canOpen:    false,
 		},
 	} {
-		s.Run(ctx, tc.format, func(ctx context.Context, s *testing.State) {
+		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
+		s.Run(subTestCtx, tc.format, func(ctx context.Context, s *testing.State) {
 			cr, err := chrome.New(ctx,
 				chrome.ExtraArgs(
 					"--use-fake-device-for-media-stream",
@@ -139,6 +141,7 @@ func CCAUIQRCode(ctx context.Context, s *testing.State) {
 				}
 			}
 		})
+		cancel()
 	}
 	// TODO(b/172879638): Test invalid binary content.
 }
