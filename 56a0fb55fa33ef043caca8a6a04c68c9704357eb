@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ae36d5e_d8de701f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-14T00:02:58Z",
+      "side": 1,
+      "message": "Hi, I\u0027m adding a new test to verify that the correct density value is being used in Android R+.\n\nPTAL, thanks!",
+      "revId": "56a0fb55fa33ef043caca8a6a04c68c9704357eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
