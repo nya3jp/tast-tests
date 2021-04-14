@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "345fed6a_bbcc2df9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_lan_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-14T17:00:44Z",
+      "side": 1,
+      "message": "I think we can assume devices will only have Ethernet in the lab, but I\u0027ll add the code to disable all enabled technologies to be sure.\n\nEven if we add this, I think this test can still only run on devices connected to ethernet since any previous network configuration is lost when the fixture resets shill.",
+      "parentUuid": "7c1d8670_e0328ed7",
+      "revId": "21cd05d1b7cfacb79b4caf041cfb0bdd4f9c9412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d1cacad_c66b439a",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-04-13T02:17:26Z",
       "side": 1,
       "message": "super nit. tast doesn\u0027t enforce line width limit. You don\u0027t need to split the line as in other language.",
+      "revId": "21cd05d1b7cfacb79b4caf041cfb0bdd4f9c9412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4e62ae1_23102557",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_lan_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-14T17:00:44Z",
+      "side": 1,
+      "message": "Personally I think the wrapped comments are more readable. I would leave it as is, but let me know if you disagree.",
+      "parentUuid": "6d1cacad_c66b439a",
       "revId": "21cd05d1b7cfacb79b4caf041cfb0bdd4f9c9412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
