@@ -69,6 +69,24 @@
       "parentUuid": "9c9f2339_d49dffa5",
       "revId": "bb5c13986625f3a991ceba7c5cbba9395bb231b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "062b33b0_cf9c316a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-04-14T19:08:02Z",
+      "side": 1,
+      "message": "Some more logs from a failed tast test run I just did:\n\n```\n2021-04-14T18:57:28.184321Z WARNING chrome[18849:18982]: [syncer_proto_util.cc(365)] Error posting from syncer: Response Code (bogus on error): -1 Content-Length (bogus on error): -1 Server Status: CONNECTION_UNAVAILABLE\n2021-04-14T18:57:28.184425Z ERROR chrome[18849:18982]: [get_updates_processor.cc(255)] PostClientToServerMessage() failed during GetUpdates with error 2\n2021-04-14T18:57:28.268985Z ERROR chrome[18849:18849]: [ambient_backend_controller_impl.cc(333)] Downloading Backdrop proto failed with \n2021-04-14T18:57:28.270197Z ERROR chrome[18849:18849]: [ambient_backend_controller_impl.cc(333)] Downloading Backdrop proto failed with error code: -1 with network error -100\n2021-04-14T18:57:28.270573Z VERBOSE1 chrome[18849:18849]: [gaia_auth_fetcher.cc(986)] Got authentication error\n2021-04-14T18:57:28.270600Z VERBOSE1 chrome[18849:18849]: [gaia_auth_fetcher.cc(987)] net_error: net::ERR_CONNECTION_CLOSED\n2021-04-14T18:57:28.270641Z VERBOSE1 chrome[18849:18849]: [gaia_auth_fetcher.cc(988)] response body:\n2021-04-14T18:57:28.271891Z ERROR chrome[18849:18849]: [search_and_assistant_enabled_checker.cc(64)] Network error. Failed to get response.\n```\n\nThen a few seconds later, the third GetSettings attempt succeeds, but after the 10 second timeout is over waiting for the settings to show up.\n\nThis seems to not be specific to just settings: lots of network stuff fails simultaneously while this tast test is running.",
+      "parentUuid": "54bd0712_992141b9",
+      "revId": "bb5c13986625f3a991ceba7c5cbba9395bb231b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
