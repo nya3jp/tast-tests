@@ -33,7 +33,7 @@ func init() {
 			"benreich@chromium.org",
 			"chromeos-apps-foundation-team@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Data:         []string{"sharesheet_manifest.json", "sharesheet_service.js", "sharesheet_index.html", "sharesheet_icon.png"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
