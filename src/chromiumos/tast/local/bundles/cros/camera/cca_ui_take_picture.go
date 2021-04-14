@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/camera/testutil"
@@ -50,18 +51,7 @@ func CCAUITakePicture(ctx context.Context, s *testing.State) {
 		}
 	}(ctx)
 
-	restartApp := func() {
-		s.Log("Restarts CCA")
-		if err := app.Restart(ctx, tb); err != nil {
-			var errJS *cca.ErrJS
-			if errors.As(err, &errJS) {
-				s.Error("There are JS errors when running CCA: ", err)
-			} else {
-				s.Fatal("Failed to restart CCA: ", err)
-			}
-		}
-	}
-
+	subTestTimeout := 30 * time.Second
 	for _, tst := range []struct {
 		name     string
 		testFunc func(context.Context, *cca.App) error
@@ -70,10 +60,21 @@ func CCAUITakePicture(ctx context.Context, s *testing.State) {
 		{"testTakeSinglePhotoWithTimer", testTakeSinglePhotoWithTimer},
 		{"testCancelTimer", testCancelTimer},
 	} {
-		if err := tst.testFunc(ctx, app); err != nil {
-			s.Errorf("Failed in %v(): %v", tst.name, err)
-			restartApp()
-		}
+		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
+		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
+			shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			if err := tst.testFunc(shortCtx, app); err != nil {
+				s.Fatalf("Failed in %v(): %v", tst.name, err)
+			}
+
+			// Restart app using non-shorten context.
+			if err := app.Restart(ctx, tb); err != nil {
+				s.Fatal("Failed to restart CCA: ", err)
+			}
+		})
+		cancel()
 	}
 }
 

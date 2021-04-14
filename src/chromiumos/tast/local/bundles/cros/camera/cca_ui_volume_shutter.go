@@ -158,18 +158,7 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 		}
 	}(ctx)
 
-	restartApp := func(ctx context.Context) {
-		s.Log("Restarts CCA")
-		if err := app.Restart(ctx, tb); err != nil {
-			var errJS *cca.ErrJS
-			if errors.As(err, &errJS) {
-				s.Error("There are JS errors when running CCA: ", err)
-			} else {
-				s.Fatal("Failed to restart CCA: ", err)
-			}
-		}
-	}
-
+	subTestTimeout := 30 * time.Second
 	for _, tst := range []struct {
 		name     string
 		testFunc func(context.Context, *chrome.Chrome, *cca.App, *input.KeyboardEventWriter, *volumeHelper) error
@@ -180,8 +169,12 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 		{"testRecordVideo", testRecordVideo, true},
 		{"testAppInBackground", testAppInBackground, true},
 	} {
-		s.Run(ctx, tst.name, func(ctx context.Context, s *testing.State) {
-			cleanup, err := app.EnsureTabletModeEnabled(ctx, tst.tablet)
+		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
+		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
+			shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			cleanup, err := app.EnsureTabletModeEnabled(shortCtx, tst.tablet)
 			if err != nil {
 				modeName := "clamshell"
 				if tst.tablet {
@@ -189,13 +182,18 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 				}
 				s.Fatalf("Failed to switch to %v mode: %v", modeName, err)
 			}
-			defer cleanup(cleanupCtx)
+			defer cleanup(ctx)
 
-			if err := tst.testFunc(ctx, cr, app, kb, vh); err != nil {
+			if err := tst.testFunc(shortCtx, cr, app, kb, vh); err != nil {
 				s.Error("Test failed: ", err)
-				restartApp(ctx)
+			}
+
+			// Restart app using non-shorten context.
+			if err := app.Restart(ctx, tb); err != nil {
+				s.Fatal("Failed to restart CCA: ", err)
 			}
 		})
+		cancel()
 	}
 }
 

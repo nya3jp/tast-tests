@@ -172,6 +172,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
+	subTestTimeout := 40 * time.Second
 	for _, tc := range []struct {
 		name  string
 		run   func(context.Context, *cca.App) error
@@ -184,7 +185,8 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		{"testStopInPause", testStopInPause, cca.TimerOff},
 		{"testPauseResume", testPauseResume, cca.TimerOff},
 	} {
-		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
+		s.Run(subTestCtx, tc.name, func(ctx context.Context, s *testing.State) {
 			cleanupCtx := ctx
 			ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
 			defer cancel()
@@ -219,10 +221,11 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to run tests through all cameras: ", err)
 			}
 		})
+		cancel()
 	}
 
 	if err := testConfirmDialog(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb); err != nil {
-		s.Error("Failed for confirm dialog test: ", err)
+		s.Fatal("Failed for confirm dialog test: ", err)
 	}
 }
 

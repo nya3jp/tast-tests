@@ -49,21 +49,16 @@ func CCAUIPreview(ctx context.Context, s *testing.State) {
 		}
 	}(ctx)
 
-	restartApp := func() {
-		s.Log("Restarts CCA")
-		if err := app.Restart(ctx, tb); err != nil {
-			var errJS *cca.ErrJS
-			if errors.As(err, &errJS) {
-				s.Error("There are JS errors when running CCA: ", err)
-			} else {
-				s.Fatal("Failed to restart CCA: ", err)
-			}
-		}
-	}
-
 	if err := testResize(ctx, app); err != nil {
 		s.Error("Failed in testResize(): ", err)
-		restartApp()
+
+		// TODO(b/184131041): Guard the restart using a longer context so that
+		// we can still restart app if the sub test reaches the timeout once we
+		// have other sub tests.
+		// Restart app using non-shorten context.
+		if err := app.Restart(ctx, tb); err != nil {
+			s.Fatal("Failed to restart CCA: ", err)
+		}
 	}
 
 	// TODO(shik): Add the missing preview tests in go/cca-test:

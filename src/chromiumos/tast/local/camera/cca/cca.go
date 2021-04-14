@@ -153,12 +153,6 @@ var (
 	// SettingsBackButton is back button for closing primary setting menu.
 	SettingsBackButton = UIComponent{"settings back button", []string{
 		"#view-settings .menu-header button"}}
-	// GridSettingBackButton is back button for closing grid setting menu.
-	GridSettingBackButton = UIComponent{"grid setting back button", []string{
-		"#view-grid-settings .menu-header button"}}
-	// TimerSettingBackButton is back button for closing timer setting menu.
-	TimerSettingBackButton = UIComponent{"timer setting back button", []string{
-		"#view-timer-settings .menu-header button"}}
 	// ResolutionSettingButton is button for opening resolution setting menu.
 	ResolutionSettingButton = UIComponent{"resolution setting button", []string{"#settings-resolution"}}
 	// ResolutionSettingBackButton is back button for closing resolution setting menu.
@@ -178,6 +172,24 @@ var (
 	// VideoResolutionOption is option for each available video capture resolution.
 	VideoResolutionOption = UIComponent{"video resolution option", []string{
 		"#view-video-resolution-settings input"}}
+	// FeedbackButton is the feedback button showing in the settings menu.
+	FeedbackButton = UIComponent{"feedback button", []string{"#settings-feedback"}}
+	// HelpButton is the help button showing in the settings menu.
+	HelpButton = UIComponent{"help button", []string{"#settings-help"}}
+	// GridSettingBackButton is back button for closing grid setting menu.
+	GridSettingBackButton = UIComponent{"grid setting back button", []string{
+		"#view-grid-settings .menu-header button"}}
+	// GridTypeSettingsButton is the button showing in the settings menu which is used for entering the grid type settings menu.
+	GridTypeSettingsButton = UIComponent{"grid type settings button", []string{"#settings-gridtype"}}
+	// GoldenGridButton is the button to enable golden grid type.
+	GoldenGridButton = UIComponent{"golden grid type button", []string{"#grid-golden"}}
+	// TimerSettingBackButton is back button for closing timer setting menu.
+	TimerSettingBackButton = UIComponent{"timer setting back button", []string{
+		"#view-timer-settings .menu-header button"}}
+	// TimerSettingsButton is the button showing in the settings menu which is used for entering the timer settings menu.
+	TimerSettingsButton = UIComponent{"timer settings button", []string{"#settings-timerdur"}}
+	// Timer10sButton is the button to enable 10s timer.
+	Timer10sButton = UIComponent{"timer 10s button", []string{"#timer-10s"}}
 
 	// BarcodeChipURL is chip for url detected from barcode.
 	BarcodeChipURL = UIComponent{"barcode chip url", []string{".barcode-chip-url a"}}

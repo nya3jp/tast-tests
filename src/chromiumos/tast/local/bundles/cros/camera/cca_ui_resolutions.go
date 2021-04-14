@@ -18,6 +18,7 @@ import (
 	"github.com/pixelbender/go-matroska/matroska"
 	"github.com/rwcarlsen/goexif/exif"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/camera/testutil"
@@ -63,31 +64,38 @@ func CCAUIResolutions(ctx context.Context, s *testing.State) {
 		}
 	}(ctx)
 
-	restartApp := func() {
-		s.Log("Restarts CCA")
-		if err := app.Restart(ctx, tb); err != nil {
-			var errJS *cca.ErrJS
-			if errors.As(err, &errJS) {
-				s.Error("There are JS errors when running CCA: ", err)
-			} else {
-				s.Fatal("Failed to restart CCA: ", err)
-			}
-		}
-	}
-
 	if noMenu, err := app.GetState(ctx, "no-resolution-settings"); err != nil {
 		s.Fatal(`Failed to get "no-resolution-settings" state: `, err)
 	} else if noMenu {
 		s.Fatal("Resolution settings menu is not available on device")
 	}
 
-	if err := testPhotoResolution(ctx, app); err != nil {
-		s.Error("Failed in testPhotoResolution(): ", err)
-		restartApp()
-	}
-	if err := testVideoResolution(ctx, app); err != nil {
-		s.Error("Failed in testVideoResolution(): ", err)
-		restartApp()
+	subTestTimeout := 2 * time.Minute
+	for _, tst := range []struct {
+		name     string
+		testFunc func(context.Context, *cca.App) error
+	}{{
+		"testPhotoResolution",
+		testPhotoResolution,
+	}, {
+		"testVideoResolution",
+		testVideoResolution,
+	}} {
+		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
+		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
+			shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			if err := tst.testFunc(shortCtx, app); err != nil {
+				s.Fatalf("Failed to run subtest: %v: %v", tst.name, err)
+			}
+
+			// Restart app using non-shorten context.
+			if err := app.Restart(ctx, tb); err != nil {
+				s.Fatal("Failed to restart CCA: ", err)
+			}
+		})
+		cancel()
 	}
 }
 

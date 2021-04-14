@@ -145,6 +145,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	}
 	arcCameraFolderPathOnChromeOS := filepath.Join(androidDataDir, arcCameraFolderPath)
 
+	subTestTimeout := 20 * time.Second
 	for _, tc := range []struct {
 		Name          string
 		IntentOptions intentOptions
@@ -231,26 +232,27 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 			},
 		},
 	} {
-		s.Run(ctx, tc.Name, func(ctx context.Context, s *testing.State) {
+		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
+		s.Run(subTestCtx, tc.Name, func(ctx context.Context, s *testing.State) {
 			if err := checkIntentBehavior(ctx, cr, a, uiDevice, tc.IntentOptions, scripts, outDir, tb); err != nil {
 				s.Error("Failed when checking intent behavior: ", err)
 			}
 		})
+		cancel()
 	}
 
-	s.Run(ctx, "instances coexistanece test", func(ctx context.Context, s *testing.State) {
+	subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
+	s.Run(subTestCtx, "instances coexistanece test", func(ctx context.Context, s *testing.State) {
 		if err := checkInstancesCoexistence(ctx, cr, a, scripts, outDir, tb); err != nil {
 			s.Error("Failed for instances coexistence test: ", err)
 		}
 	})
+	cancel()
 }
 
 // launchIntent launches CCA intent with different options.
 func launchIntent(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options intentOptions, scripts []string, outDir string, tb *testutil.TestBridge) (*cca.App, error) {
 	launchByIntent := func(ctx context.Context, tconn *chrome.TestConn) error {
-		ctx, cancel := context.WithTimeout(ctx, 60*time.Second)
-		defer cancel()
-
 		args := []string{"start", "-n", fmt.Sprintf("%s/%s", testAppPkg, testAppActivity), "-e", "action", options.Action}
 		if options.URI != "" {
 			args = append(args, "--eu", "uri", options.URI)
