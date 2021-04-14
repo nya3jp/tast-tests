@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d284a678_1288e400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/suspend_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-14T16:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "219b3ef6_baad5311",
+      "range": {
+        "startLine": 96,
+        "startChar": 33,
+        "endLine": 96,
+        "endChar": 36
+      },
+      "revId": "8ab7135be7d3f4120052ed6149affe09d40db414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12d3b6b0_dd44f7cc",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-14T04:27:11Z",
       "side": 1,
       "message": "nit: is it beneficial to continue reading all the logs files and report or bailing out on the first one is sufficient? If the former, consider changing this to s.Error",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 11
+      },
+      "revId": "8ab7135be7d3f4120052ed6149affe09d40db414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f4c8d08_798b18ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/suspend_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-14T16:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12d3b6b0_dd44f7cc",
       "range": {
         "startLine": 104,
         "startChar": 5,
