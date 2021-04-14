@@ -320,13 +320,12 @@ func TestPlatformDecodingParams(t *testing.T) {
 	const defaultTimeout = 10 * time.Minute
 	vp9Extensions := map[string]time.Duration{
 		"group4": 24 * time.Hour,
+		"group5": 24 * time.Hour,
 	}
 
 	// Generate VAAPI VP9 tests.
 	for i, profile := range []string{"profile_0"} {
-		// TODO(jchinlee): enable level 5 when we have a better understanding of
-		// runtime on slower devices.
-		for _, levelGroup := range []string{"group1", "group2", "group3", "group4"} {
+		for _, levelGroup := range []string{"group1", "group2", "group3", "group4", "group5"} {
 			for cat, files := range vaapiVp9Files[profile][levelGroup] {
 				param := paramData{
 					Name:         fmt.Sprintf("vaapi_vp9_%d_%s_%s", i, levelGroup, cat),
