@@ -63,7 +63,7 @@ func (vkbCtx *VirtualKeyboardContext) UIConn(ctx context.Context) (*chrome.Conn,
 // BackgroundConn returns a connection to the virtual keyboard background page,
 // where JavaScript can be executed to simulate interactions with IME.
 func (vkbCtx *VirtualKeyboardContext) BackgroundConn(ctx context.Context) (*chrome.Conn, error) {
-	const bgPageURLPrefix = "chrome-extension://jkghodnilhceideoidjikpgommlajknk/background"
+	const bgPageURLPrefix = "chrome-extension://jkghodnilhceideoidjikpgommlajknk/background_mojo"
 	bgTargetFilter := func(t *driver.Target) bool {
 		return strings.HasPrefix(t.URL, bgPageURLPrefix)
 	}
