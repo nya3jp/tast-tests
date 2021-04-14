@@ -32,7 +32,7 @@ func init() {
 		Desc:         "Verifies CCA can coexist with web page with camera open",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
-		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
+		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui_coexistence.html", "cca_ui_coexistence.js", "cca_ui.js"},
 		Pre:          testutil.ChromeBypassCameraPermissions(),
 	})

@@ -27,7 +27,7 @@ func init() {
 		Desc:         "Opens CCA and verifies video recording related use cases",
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
-		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
+		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Timeout:      5 * time.Minute,
 		Pre:          chrome.LoggedIn(),

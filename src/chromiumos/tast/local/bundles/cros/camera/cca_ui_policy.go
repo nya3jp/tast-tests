@@ -30,7 +30,7 @@ func init() {
 		Desc:         "Verifies if CCA is unusable when the camera app is disabled by the Adenterprise policy",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
-		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
+		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 	})
 }

@@ -20,7 +20,7 @@ func init() {
 		Desc:         "Test for checking Chrome Camera App still works after refreshing",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
-		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
+		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Pre:          chrome.LoggedIn(),
 	})

@@ -24,7 +24,7 @@ func init() {
 		Func:         CCAUIStress,
 		Desc:         "Opens CCA and stress testing common functions randomly",
 		Contacts:     []string{"shik@chromium.org", "inker@chromium.org", "chromeos-camera-eng@google.com"},
-		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
+		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Vars: []string{
 			// Number of iterations to test.

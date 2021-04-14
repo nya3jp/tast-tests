@@ -28,7 +28,7 @@ func init() {
 		Desc:         "Record video with different video option on CCA, measure UI performance including CPU usage",
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
+		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Timeout:      20 * time.Minute,
 		Pre:          chrome.LoggedIn(),
