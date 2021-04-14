@@ -213,13 +213,15 @@ type RegexesNotFound struct {
 	// PartialMatches gives all the regexes that were matched and the files that
 	// matched them.
 	PartialMatches map[string][]string
+	// Dirs lists all directories where files are searched.
+	Dirs []string
 }
 
 // Error returns a string describing the error. The classic Error function for
 // the error interface.
 func (e RegexesNotFound) Error() string {
-	return fmt.Sprintf("timed out while waiting for crash files: no file matched %s (found %s)",
-		strings.Join(e.Missing, ", "), strings.Join(e.Files, ", "))
+	return fmt.Sprintf("timed out while waiting for crash files: no file matched %s (dirs %s) (found %s)",
+		strings.Join(e.Missing, ", "), strings.Join(e.Dirs, ", "), strings.Join(e.Files, ", "))
 }
 
 // waitForCrashFilesOptions is a list of options for the WaitForCrashFiles
@@ -329,7 +331,7 @@ func WaitForCrashFiles(ctx context.Context, dirs, regexes []string, opts ...Wait
 			}
 		}
 		if len(missing) != 0 {
-			return &RegexesNotFound{Missing: missing, Files: newFiles, PartialMatches: files}
+			return &RegexesNotFound{Missing: missing, Files: newFiles, PartialMatches: files, Dirs: dirs}
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: w.timeout})
