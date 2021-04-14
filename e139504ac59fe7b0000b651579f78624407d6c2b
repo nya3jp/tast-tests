@@ -234,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77383136_dfec88e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-04-14T06:33:45Z",
+      "side": 1,
+      "message": "Since wrapping each step into a closure, we can add timeouts for them.",
+      "parentUuid": "0a24147f_e430e4f2",
+      "range": {
+        "startLine": 158,
+        "startChar": 9,
+        "endLine": 158,
+        "endChar": 13
+      },
+      "revId": "e139504ac59fe7b0000b651579f78624407d6c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "596d8412_7b31ebfc",
