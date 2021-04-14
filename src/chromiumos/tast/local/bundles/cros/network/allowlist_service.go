@@ -12,19 +12,14 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/network/firewall"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
-)
-
-const (
-	iptablesCmd  = "/sbin/iptables"
-	ip6tablesCmd = "/sbin/ip6tables"
 )
 
 func init() {
@@ -43,34 +38,16 @@ type AllowlistService struct {
 }
 
 func (a *AllowlistService) SetupFirewall(ctx context.Context, req *network.SetupFirewallRequest) (*empty.Empty, error) {
-	// Allow traffic from the proxy through the firewall.
-	cmds := []string{iptablesCmd, ip6tablesCmd}
-	args := []string{"-I", "OUTPUT", "-p", "tcp", "-m", "tcp", "--sport", fmt.Sprint(req.AllowedPort), "-j", "ACCEPT"}
-	if err := executeIptables(ctx, cmds, args); err != nil {
-		return nil, err
+	params := firewall.CreateFirewallParams{
+		AllowPorts:      []string{fmt.Sprint(req.AllowedPort)},
+		AllowInterfaces: []string{"arc_ns+"},
+		AllowProtocols:  []string{"tcp"},
+		// Drop http and https traffic.
+		BlockPorts:     []string{"80", "443"},
+		BlockProtocols: []string{"tcp", "udp"},
 	}
-	// Allow connection from the proxy.
-	args = []string{"-I", "FORWARD", "-p", "tcp", "-i", "arc_ns+", "-j", "ACCEPT"}
-	if err := executeIptables(ctx, cmds, args); err != nil {
+	if err := firewall.CreateFirewall(ctx, params); err != nil {
 		return nil, err
-	}
-	// Drop http and https traffic.
-	protocols := []string{"tcp", "udp"}
-	ports := []string{"80", "443"}
-
-	for _, pr := range protocols {
-		for _, po := range ports {
-			// Add this rule with rule-number 2 so that the first rule above, which allows proxy traffic for the OUTPUT chain, has priority.
-			args := []string{"-I", "OUTPUT", "2", "-p", pr, "--dport", po, "-j", "REJECT"}
-			if err := executeIptables(ctx, cmds, args); err != nil {
-				return nil, err
-			}
-			// Add this rule with rule-number 2 so that the second rule above, which allows proxy traffic for the FORWARD chain, has priority.
-			args = []string{"-I", "FORWARD", "2", "-p", pr, "--dport", po, "-j", "REJECT"}
-			if err := executeIptables(ctx, []string{iptablesCmd}, args); err != nil {
-				return nil, err
-			}
-		}
 	}
 	return &empty.Empty{}, nil
 }
@@ -151,13 +128,4 @@ func (a *AllowlistService) CheckExtensionInstalled(ctx context.Context, req *net
 	}
 	defer node.Release(ctx)
 	return &empty.Empty{}, nil
-}
-
-func executeIptables(ctx context.Context, cmds, args []string) error {
-	for _, cmd := range cmds {
-		if err := testexec.CommandContext(ctx, cmd, args...).Run(testexec.DumpLogOnError); err != nil {
-			return errors.Wrapf(err, "failed to add iptables rule: %s %v", cmd, args)
-		}
-	}
-	return nil
 }
