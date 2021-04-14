@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c40703_2239ba38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-04-14T20:22:08Z",
+      "side": 1,
+      "message": "nit: this name is bit ambiguous, maybe maxScroll[Events]?\nAlso is any support for 35? if possible plz comment how this one is choosen.\nAlso alternative could be some logic doScroll until anythingToScroll",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "1953790afa33f6ce244df6ddeedb64ce917a3bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71b25d53_1a7b40fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-04-14T20:22:08Z",
+      "side": 1,
+      "message": "could we use pkg instead as it is defined at L42?",
+      "range": {
+        "startLine": 77,
+        "startChar": 33,
+        "endLine": 77,
+        "endChar": 73
+      },
+      "revId": "1953790afa33f6ce244df6ddeedb64ce917a3bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b1afe8f_d3038f67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-04-14T20:22:08Z",
+      "side": 1,
+      "message": "How we actually confirm that task manager is actually launched? Maybe wait for window appears?",
+      "range": {
+        "startLine": 81,
+        "startChar": 11,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "revId": "1953790afa33f6ce244df6ddeedb64ce917a3bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf6dddcb_bf45e3e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-04-14T20:22:08Z",
+      "side": 1,
+      "message": "nit: maybe arcEntryFound tp be more explicit?",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 7
+      },
+      "revId": "1953790afa33f6ce244df6ddeedb64ce917a3bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abebae6d_5c0aefb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-04-14T20:22:08Z",
+      "side": 1,
+      "message": "nit: maybe if !found {",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 19
+      },
+      "revId": "1953790afa33f6ce244df6ddeedb64ce917a3bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ace740_8b68f1ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-04-14T20:22:08Z",
+      "side": 1,
+      "message": "Maybe s.Error?",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 9
+      },
+      "revId": "1953790afa33f6ce244df6ddeedb64ce917a3bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3a63aca_25e4057d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-04-14T20:22:08Z",
+      "side": 1,
+      "message": "The same here, s.Error?",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 9
+      },
+      "revId": "1953790afa33f6ce244df6ddeedb64ce917a3bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
