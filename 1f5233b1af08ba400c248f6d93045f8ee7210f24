@@ -33,6 +33,661 @@
       "message": "Provided resolution to the review comments.",
       "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d52e22a5_b17ce01a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 22,
+        "startChar": 74,
+        "endLine": 22,
+        "endChar": 75
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e3f66be_f666420b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "nit: remove space",
+      "range": {
+        "startLine": 22,
+        "startChar": 29,
+        "endLine": 22,
+        "endChar": 31
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2261485b_dff04e6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "nit: no need to put this on 2 lines. there\u0027s no character limit and this will probably look more natural on one.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 49
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a85737dc_fc830a22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "Comment probably not necessary, it\u0027s pretty clear without it.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f3fe563_cfe933d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "Still don\u0027t quite get this comment, since the next step is locking the screen. Maybe you can remove this.",
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87898974_8a9e531e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "This comment is probably unnecessary throughout this test, I think it\u0027s clear enough from the function name and the error message that we\u0027re locking the screen here",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c37c4ec_5513214d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "This log isn\u0027t very informative. If the next steps are not particularly time-consuming, I\u0027d remove this. Otherwise it would be good to add more detail. This makes it sound like the user needs to check the password field themselves (i.e. something has gone wrong).",
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "643c5e57_9915ff55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "Generally the state should not be passed to functions like this.",
+      "range": {
+        "startLine": 63,
+        "startChar": 56,
+        "endLine": 63,
+        "endChar": 57
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4ff9d77_13b0063e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "Why are we submitting the PIN here? Aren\u0027t we using a password? Maybe rename lockscreen.SubmitPIN to just lockscreen.Submit if you need to use it for the password here as well and you are sure it works for both cases.",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 31
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a58cfb78_303b45d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "submit password, since we\u0027re not submitting a PIN here.",
+      "range": {
+        "startLine": 68,
+        "startChar": 21,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12ea8dce_9ec882c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "Explain why we are setting up a PIN here. It\u0027s not very clear, especially since there\u0027s a separate PIN test.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19634835_1f14f51b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "we\u0027re also verifying this same field in the PIN test, maybe we can skip checking it here?",
+      "range": {
+        "startLine": 86,
+        "startChar": 15,
+        "endLine": 86,
+        "endChar": 32
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bacd73e6_f4e5c916",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "password",
+      "range": {
+        "startLine": 92,
+        "startChar": 28,
+        "endLine": 92,
+        "endChar": 31
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8aadb13_2411e4c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "Go to",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 8
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e4885a4_cb1feb43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "I don\u0027t think you need a helper function for this. Just launch OS settings once in the test when you need it, and replace instances of setupPIN with settings.EnablePINUnlock",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 1
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd849eab_2200dbe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "PIN to be consistent with other tests",
+      "range": {
+        "startLine": 31,
+        "startChar": 19,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efe21ad9_42255454",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "comment not needed",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f4ce8e_4a5c26fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "this comment is basically saying the same thing as the line above it",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 82
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3d3bb57_16cad8a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "comment not needed, it\u0027s already explained above",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eb4511c_f389deb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "comment not necessary",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c14e6847_b7ee4b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "PIN here and elsewhere to be consistent",
+      "range": {
+        "startLine": 71,
+        "startChar": 54,
+        "endLine": 71,
+        "endChar": 57
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab5ff6b1_3c9f2763",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "PIN here and elsewhere to be consistent",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6bd2f89_e9021c4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "Generally we shouldn\u0027t pass testing.State to helper functions like this. If you need to log something you can use testing.ContextLog, and you can just return an error when something goes wrong instead of s.Error/s.Fatal: https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/code_review_comments.md#state",
+      "range": {
+        "startLine": 20,
+        "startChar": 70,
+        "endLine": 20,
+        "endChar": 86
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c87a4cb1_355e4327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "This seems a bit fragile, since its assuming a fixed length that comes from a different location. I\u0027d recommend using len(pwdValue) to generate this instead.",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50322083_d1a58cf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "one line is fine",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac610f16_e864a691",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 47
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd507f9f_4467e851",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "don\u0027t pass the state if it\u0027s not necessary: https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/code_review_comments.md#state",
+      "range": {
+        "startLine": 89,
+        "startChar": 63,
+        "endLine": 89,
+        "endChar": 79
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e6b80db_29466f15",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "comments should end in periods, here and below",
+      "range": {
+        "startLine": 168,
+        "startChar": 41,
+        "endLine": 168,
+        "endChar": 47
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb0dc126_b1b9f807",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-14T17:44:04Z",
+      "side": 1,
+      "message": "This should return (bool, error). The errors below aren\u0027t being handled and won\u0027t propagate up the stack when this fails, so we won\u0027t receive any information about what kind of error occurred. It is generally good golang style to handle errors so callers receive more details about what went wrong: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 216,
+        "startChar": 72,
+        "endLine": 216,
+        "endChar": 76
+      },
+      "revId": "1f5233b1af08ba400c248f6d93045f8ee7210f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
