@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88d8f01e_07e606fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-14T02:33:43Z",
+      "side": 1,
+      "message": "As the offline discussion, the latency maybe affected by unusual camera scene in lab environment.\nlgtm to increase the timeout.",
+      "revId": "6742256364b70a7aae4f0acc634fbc8a815e1489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
