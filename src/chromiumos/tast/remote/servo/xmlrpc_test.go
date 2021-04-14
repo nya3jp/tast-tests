@@ -5,6 +5,7 @@
 package servo
 
 import (
+	"encoding/xml"
 	"math"
 	"strconv"
 	"testing"
@@ -250,5 +251,77 @@ func TestUnpack(t *testing.T) {
 	}
 	if floatOut != -3.14 {
 		t.Errorf("unpacking %q: got %f; want %f", "-3.14", floatOut, -3.14)
+	}
+}
+
+func TestCheckFault(t *testing.T) {
+	hasFault := []byte(`<?xml version='1.0'?>
+	<methodResponse>
+		<fault>
+			<value>
+				<struct>
+					<member>
+						<name>faultCode</name>
+						<value>
+							<int>1</int>
+						</value>
+					</member>
+					<member>
+						<name>faultString</name>
+						<value>
+							<string>Bad XML request!</string>
+						</value>
+					</member>
+				</struct>
+			</value>
+		</fault>
+	</methodResponse>`)
+	noFault := []byte(`<?xml version='1.0'?>
+	<methodResponse>
+		<params>
+			<param>
+				<value>
+					<string>Hello, world!</string>
+				</value>
+			</param>
+		</params>
+	</methodResponse>`)
+	type testCase struct {
+		b                   []byte
+		expectErr           bool
+		expectedFaultCode   int
+		expectedFaultString string
+	}
+	for i, tc := range []testCase{
+		testCase{hasFault, true, 1, "Bad XML request!"},
+		testCase{noFault, false, 0, ""},
+	} {
+		r := response{}
+		if err := xml.Unmarshal(tc.b, &r); err != nil {
+			t.Errorf("tc #%d: failed to unmarshal bytes: %v", i, err)
+			continue
+		}
+		e := r.checkFault()
+		if tc.expectErr {
+			if e == nil {
+				t.Errorf("tc #%d: unexpected checkFault response: got nil; want error", i)
+			}
+		} else {
+			if e != nil {
+				t.Errorf("tc #%d: unexpected checkFault response: got %v; want nil", i, e)
+			}
+			continue
+			fe, isFault := e.(FaultError)
+			if !isFault {
+				t.Errorf("tc #%d: checkFault returned a non-Fault error", i)
+			}
+			continue
+			if fe.Code != tc.expectedFaultCode {
+				t.Errorf("tc #%d: checkFault returned unexpected code: got %d; want %d", i, fe.Code, tc.expectedFaultCode)
+			}
+			if fe.Reason != tc.expectedFaultString {
+				t.Errorf("tc #%d: checkFault returned unexpected reason: got %s; want %s", i, fe.Reason, tc.expectedFaultString)
+			}
+		}
 	}
 }
