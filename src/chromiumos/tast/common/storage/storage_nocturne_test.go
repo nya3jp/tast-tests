@@ -5,6 +5,7 @@
 package storage
 
 import (
+	"context"
 	"reflect"
 	"testing"
 )
@@ -314,7 +315,7 @@ Command Queue Depth [CMDQ_DEPTH]: 32
 Command Enabled [CMDQ_MODE_EN]: 0x00
 `
 
-	info, err := parseGetStorageInfoOutput([]byte(out))
+	info, err := parseGetStorageInfoOutput(context.Background(), []byte(out))
 	if err != nil {
 		t.Fatal("parseGetStorageInfoOutput() failed: ", err)
 	}
