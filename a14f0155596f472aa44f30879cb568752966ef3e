@@ -56,6 +56,30 @@
       },
       "revId": "a14f0155596f472aa44f30879cb568752966ef3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef4eb24_ddc8c7e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-14T04:05:53Z",
+      "side": 1,
+      "message": "Fixed. Also add returned logic to check returned body is a valid url.",
+      "parentUuid": "c62016ad_a50776f3",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 3
+      },
+      "revId": "a14f0155596f472aa44f30879cb568752966ef3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
