@@ -319,13 +319,12 @@ func TestPlatformDecodingParams(t *testing.T) {
 	// Define timeout extensions for specific groups.
 	vp9Extensions := map[string]time.Duration{
 		"group4": 24 * time.Hour,
+		"group5": 24 * time.Hour,
 	}
 
 	// Generate VAAPI VP9 tests.
 	for i, profile := range []string{"profile_0"} {
-		// TODO(jchinlee): enable level 5 when we have a better understanding of
-		// runtime on slower devices.
-		for _, levelGroup := range []string{"group1", "group2", "group3", "group4"} {
+		for _, levelGroup := range []string{"group1", "group2", "group3", "group4", "group5"} {
 			for _, cat := range []string{
 				"buf", "gf_dist", "odd_size", "sub8x8",
 			} {
