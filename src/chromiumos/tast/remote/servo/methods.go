@@ -167,6 +167,21 @@ const (
 // It is the minimum time interval between 'press' and 'release' keyboard events.
 const ServoKeypressDelay = 100 * time.Millisecond
 
+// HasControl determines whether the Servo being used supports the given control.
+func (s *Servo) HasControl(ctx context.Context, ctrl string) (bool, error) {
+	err := s.run(ctx, newCall("doc", ctrl))
+	// If the control exists, doc() should return with no issue.
+	if err == nil {
+		return true, nil
+	}
+	// If the control doesn't exist, then doc() should return a fault.
+	if _, isFault := err.(FaultError); isFault {
+		return false, nil
+	}
+	// A non-fault error indicates that something went wrong.
+	return false, err
+}
+
 // Echo calls the Servo echo method.
 func (s *Servo) Echo(ctx context.Context, message string) (string, error) {
 	var val string

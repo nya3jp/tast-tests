@@ -40,6 +40,7 @@ type request struct {
 type response struct {
 	Name   xml.Name `xml:"methodResponse"`
 	Params []param  `xml:"params>param"`
+	Fault  fault    `xml:"fault>value>struct"`
 }
 
 // param is an XML-RPC param.
@@ -53,6 +54,36 @@ type value struct {
 	Double  string `xml:"double,omitempty"`
 	Int     string `xml:"int,omitempty"`
 	String  string `xml:"string,omitempty"`
+}
+
+// fault is an XML-RPC fault.
+// If present, it usually contains two members: faultCode (an int) and faultString (a string).
+type fault struct {
+	Members []member `xml:"member"`
+}
+
+// member is an XML-RPC object containing a name and a value.
+type member struct {
+	Name  string `xml:"name"`
+	Value value  `xml:"value"`
+}
+
+// FaultError is a type of error representing an XML-RPC fault.
+type FaultError struct {
+	Code   int
+	Reason string
+
+	// Including *errors.E allows FaultError to work with the Tast errors library.
+	*errors.E
+}
+
+// NewFaultError creates a FaultError.
+func NewFaultError(code int, reason string) FaultError {
+	return FaultError{
+		Code:   code,
+		Reason: reason,
+		E:      errors.Errorf("xml-rpc fault with code %d: %s", code, reason),
+	}
 }
 
 // xmlBooleanToBool converts the strings '1' or '0' into boolean.
@@ -206,6 +237,33 @@ func (r *response) unpack(out []interface{}) error {
 	return nil
 }
 
+// checkFault returns a FaultError if the response contains a fault with a non-zero faultCode.
+func (r *response) checkFault() error {
+	if len(r.Fault.Members) == 0 {
+		return nil
+	}
+	var rawFaultCode string
+	var faultString string
+	for _, m := range r.Fault.Members {
+		switch m.Name {
+		case "faultCode":
+			rawFaultCode = m.Value.Int
+		case "faultString":
+			faultString = m.Value.String
+		default:
+			return errors.Errorf("unexpected fault member name: %s", m.Name)
+		}
+	}
+	faultCode, err := xmlIntegerToInt(rawFaultCode)
+	if err != nil {
+		return errors.Wrap(err, "interpreting fault code")
+	}
+	if faultCode == 0 {
+		return errors.Errorf("response contained a fault with unexpected code 0; want non-0: faultString=%s", faultString)
+	}
+	return NewFaultError(faultCode, faultString)
+}
+
 // run makes an XML-RPC call to servod.
 func (s *Servo) run(ctx context.Context, cl call, out ...interface{}) error {
 	body, err := serializeMethodCall(cl)
@@ -227,8 +285,10 @@ func (s *Servo) run(ctx context.Context, cl call, out ...interface{}) error {
 	// Read body and unmarshal XML.
 	bodyBytes, err := ioutil.ReadAll(resp.Body)
 	res := response{}
-	err = xml.Unmarshal(bodyBytes, &res)
-	if err != nil {
+	if err = xml.Unmarshal(bodyBytes, &res); err != nil {
+		return err
+	}
+	if err = res.checkFault(); err != nil {
 		return err
 	}
 
