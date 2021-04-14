@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17f1ef94_059e5fe7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-04-14T19:13:14Z",
+      "side": 1,
+      "message": "moving to west coast reviewer.",
+      "revId": "5342bb88fea3e255ae3fc78de79fcd889c3cd102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14c9e338_7f1c6ccb",
