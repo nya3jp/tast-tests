@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "886ffb69_52153df4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-04-15T15:55:31Z",
+      "side": 1,
+      "message": "Did we change from {80000, 400000} to {14000, 60000}? Is it intentional?\n\nThink the intention of using a variable is to make it easier for future readers to understand the meaning of the numbers. `jankCriteria` does not really help in this regard. Let\u0027s add a comment.\n\nSomething like:\n\n  // Jank criteria for input event latencies. The 1st number is the\n  // threshold to be marked as jank and the 2nd one is to be marked\n  // very jank.",
+      "range": {
+        "startLine": 326,
+        "startChar": 25,
+        "endLine": 326,
+        "endChar": 37
+      },
+      "revId": "86e0c6f07b8499a64d8ace729c73609ea80b3c60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
