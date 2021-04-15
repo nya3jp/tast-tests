@@ -95,6 +95,7 @@ const (
 	biodUpstartJobName   = "biod"
 	powerdUpstartJobName = "powerd"
 	disableFpUpdaterFile = ".disable_fp_updater"
+	dutTempPathPattern   = "fp_test_*"
 )
 
 // Map from signing key ID to type of signing key.
@@ -181,6 +182,7 @@ type FirmwareTest struct {
 	needsRebootAfterFlashing bool
 	dutfsClient              *dutfs.Client
 	cleanupTime              time.Duration
+	dutTempDir               string
 }
 
 // NewFirmwareTest creates and initializes a new fingerprint firmware test.
@@ -264,6 +266,11 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 		}
 	}
 
+	dutTempDir, err := dutfsClient.TempDir(ctx, "", dutTempPathPattern)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create remote working directory")
+	}
+
 	if err := InitializeKnownState(ctx, d, outDir, pxy, needsReboot); err != nil {
 		return nil, errors.Wrap(err, "initializing known state failed")
 	}
@@ -286,6 +293,7 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 			needsRebootAfterFlashing: needsReboot,
 			dutfsClient:              dutfsClient,
 			cleanupTime:              cleanupTime,
+			dutTempDir:               dutTempDir,
 		},
 		nil
 }
@@ -331,6 +339,17 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 				}
 			} else if err != nil && firstErr == nil {
 				firstErr = err
+			}
+
+			// Delete temporary working directory and contents
+			tempDirExists, err := t.dutfsClient.Exists(ctx, t.dutTempDir)
+			if err == nil && tempDirExists {
+				// If we rebooted, the directory may no longer exist.
+				if err := t.dutfsClient.RemoveAll(ctx, t.dutTempDir); err != nil && firstErr == nil {
+					firstErr = errors.Wrapf(err, "failed to remove temp directory: %q", t.dutTempDir)
+				}
+			} else if err != nil && firstErr == nil {
+				firstErr = errors.Wrapf(err, "failed to check existence of temp directory: %q", t.dutTempDir)
 			}
 		}
 
@@ -381,6 +400,11 @@ func (t *FirmwareTest) DutfsClient() *dutfs.Client {
 // CleanupTime gets the amount of time needed for cleanup.
 func (t *FirmwareTest) CleanupTime() time.Duration {
 	return t.cleanupTime
+}
+
+// DUTTempDir gets the temporary directory created on the DUT.
+func (t *FirmwareTest) DUTTempDir() string {
+	return t.dutTempDir
 }
 
 // NeedsRebootAfterFlashing returns true if device needs to be rebooted after flashing.
