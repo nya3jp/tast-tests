@@ -16,6 +16,46 @@
       "message": "+2 for Tast Owners",
       "revId": "53ad08d1d99c75fcf19a6023a9c7ddf580cbf6a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa43be1a_f8972173",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-15T03:48:11Z",
+      "side": 1,
+      "message": "Sorry for the late comment, was going through my inbox and came back to this CL. By the looks of things, the CQ will probably reject your CL anyway (dedede-cq) so addressing this shouldn\u0027t delay your CL landing.",
+      "revId": "53ad08d1d99c75fcf19a6023a9c7ddf580cbf6a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c94cc1_83d8fe0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3_test_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-15T03:48:11Z",
+      "side": 1,
+      "message": "This should be \u0027USB\u0027. See https://github.com/golang/go/wiki/CodeReviewComments#initialisms.",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 11
+      },
+      "revId": "53ad08d1d99c75fcf19a6023a9c7ddf580cbf6a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
