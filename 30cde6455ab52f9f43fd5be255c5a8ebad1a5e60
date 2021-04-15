@@ -16,6 +16,69 @@
       "message": "Note: there is no one available on my team for reviews, so we have to rely on Tast owner reviews for now. Thanks.",
       "revId": "30cde6455ab52f9f43fd5be255c5a8ebad1a5e60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b85be2c5_5b87a00f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-15T08:07:32Z",
+      "side": 1,
+      "message": "Move getting the expected output to a function and move all consts inside that function.",
+      "revId": "30cde6455ab52f9f43fd5be255c5a8ebad1a5e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7a63968_0d4ee152",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-15T08:07:32Z",
+      "side": 1,
+      "message": "minor nit: else if",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "30cde6455ab52f9f43fd5be255c5a8ebad1a5e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e95efb_ce14b632",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-15T08:07:32Z",
+      "side": 1,
+      "message": "minor nit: else if",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 3
+      },
+      "revId": "30cde6455ab52f9f43fd5be255c5a8ebad1a5e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
