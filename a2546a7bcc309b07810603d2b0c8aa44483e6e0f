@@ -22,6 +22,30 @@
       },
       "revId": "a2546a7bcc309b07810603d2b0c8aa44483e6e0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab4a15dd_328ddd08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-04-15T16:08:44Z",
+      "side": 1,
+      "message": "I saw other tests have their retry implementations:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/hwsec/attestation_common.go;l\u003d254?q\u003dattestation_common.go\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go;l\u003d102?q\u003droam_diagnostics.go\n\nDoesn\u0027t look like there\u0027s common functionality to accomplish this",
+      "parentUuid": "4f52f986_51d7f18d",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "a2546a7bcc309b07810603d2b0c8aa44483e6e0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
