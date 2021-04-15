@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1d1a0fa_3f90dbb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-04-15T15:50:07Z",
+      "side": 1,
+      "message": "All other printer tests require \"cross_internal\" dependency and apparently this is required by CI:\n```\ntast-local-tests-cros-0.0.1-r5853: --- FAIL: TestSoftwareDeps (0.00s)\ntast-local-tests-cros-0.0.1-r5853:     testcheck.go:70: printer.GnuTLS: missing software dependency \"cros_internal\"\ntast-local-tests-cros-0.0.1-r5853: FAIL\ntast-local-tests-cros-0.0.1-r5853: FAIL\tchromiumos/tast/local/bundles/cros/printer\t0.266s\n```\nI\u0027ll reapply it.",
+      "parentUuid": "47bc3fdd_fa586ae9",
+      "range": {
+        "startLine": 38,
+        "startChar": 26,
+        "endLine": 38,
+        "endChar": 39
+      },
+      "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f307e50e_3387fdca",
