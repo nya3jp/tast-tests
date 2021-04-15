@@ -16,6 +16,29 @@
       "message": "Uekawa@ Shuhei@ Does the last change look good to you? If it looks good to you, I will merge the change. Thanks. ",
       "revId": "ad2aaefd8c2a0cd1f381d5a2d285becafa693f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e24971_a53f82dd",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-04-15T05:15:24Z",
+      "side": 1,
+      "message": "I went eek reading this code, but now I hate golang doesn\u0027t have ?: operator.",
+      "range": {
+        "startLine": 477,
+        "startChar": 20,
+        "endLine": 491,
+        "endChar": 2
+      },
+      "revId": "ad2aaefd8c2a0cd1f381d5a2d285becafa693f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
