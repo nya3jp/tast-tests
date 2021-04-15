@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d71aa039_c812d377",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-15T02:40:46Z",
+      "side": 1,
+      "message": "The syntax needs that space to run (just tried and it breaks\nthe parser to not have the blank).",
+      "parentUuid": "6c196783_d5c36409",
+      "range": {
+        "startLine": 168,
+        "startChar": 77,
+        "endLine": 168,
+        "endChar": 78
+      },
+      "revId": "77d891c805b0dfa313fc588f337ed8499c77baa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cded560_9368390f",
