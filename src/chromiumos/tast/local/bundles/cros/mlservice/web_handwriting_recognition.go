@@ -44,8 +44,10 @@ func WebHandwritingRecognition(ctx context.Context, s *testing.State) {
 	defer server.Close()
 
 	// Launch chrome.
-	// TODO(qjw): Change to EnableFeature after we add a flag (or feature) in Chrome browser.
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-experimental-web-platform-features"))
+	cr, err := chrome.New(ctx,
+		// TODO(https://crbug.com/1177374): Remove the below feature when no longer needed.
+		chrome.EnableFeatures("HandwritingRecognitionWebPlatformApi"),
+		chrome.ExtraArgs("--enable-experimental-web-platform-features"))
 	if err != nil {
 		s.Fatal("Failed to start chrome: ", err)
 	}
