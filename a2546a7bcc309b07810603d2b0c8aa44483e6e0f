@@ -46,6 +46,30 @@
       },
       "revId": "a2546a7bcc309b07810603d2b0c8aa44483e6e0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8347d0b7_cff52ddc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2021-04-15T16:54:56Z",
+      "side": 1,
+      "message": "Thanks. Please wait for Meilin about how does the assistant tests retry. My impression is that not every assistant test retries.",
+      "parentUuid": "ab4a15dd_328ddd08",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "a2546a7bcc309b07810603d2b0c8aa44483e6e0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
