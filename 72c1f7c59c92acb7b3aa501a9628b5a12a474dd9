@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0c8208e_b567fd79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_lan_connectivity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-15T23:20:00Z",
+      "side": 1,
+      "message": "No need to add me specifically here, we have the team email below.",
+      "revId": "72c1f7c59c92acb7b3aa501a9628b5a12a474dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
