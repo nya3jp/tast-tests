@@ -105,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d77c63d2_3fd7a372",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-15T04:06:16Z",
+      "side": 1,
+      "message": "Probably the best way to answer this is: I review to the internal go/go-style (i.e. go/go-style/decisions#comment-sentences), which is usually more specific than the public style guide. Where the same point is raised in the external style guide, the practice has been to link to the externally visible style guide wherever possible.\n\nIn this case, you\u0027re right, the external guide does not address this point. So just ignore the link but please still add the full stop :)",
+      "parentUuid": "7c5ccdda_bbf63bc2",
+      "range": {
+        "startLine": 141,
+        "startChar": 54,
+        "endLine": 141,
+        "endChar": 55
+      },
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c19aec88_4d37d7c9",
@@ -142,6 +166,30 @@
       "side": 1,
       "message": "This was actually intentional when using IntelliJ/GoLand: https://www.jetbrains.com/help/idea/using-todo.html",
       "parentUuid": "c19aec88_4d37d7c9",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 5
+      },
+      "revId": "0e560f1b005a20a11f6596339a5f08d0a5f501cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e3e9deb_e801ec93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-15T04:06:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "12ebeaca_61d21ac7",
       "range": {
         "startLine": 176,
         "startChar": 4,
