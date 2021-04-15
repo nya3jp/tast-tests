@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1b67fc9_31367454",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-15T19:29:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "400ba6b5_bd30e510",
+      "revId": "1a6e811bd5a9c91653a7e5333b073841377e44af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7caccfbd_e5b61762",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "428fc52f_7c5f755e",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-15T19:29:33Z",
+      "side": 1,
+      "message": "Golang doesn\u0027t permit arrays/slices to be constants, so best I can do is refactor into a var list. Done.",
+      "parentUuid": "7caccfbd_e5b61762",
+      "revId": "1a6e811bd5a9c91653a7e5333b073841377e44af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f50ba2cb_5d05c417",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-04-14T21:40:30Z",
       "side": 1,
       "message": "Might be more straight forward to avoid the use of continue:\n\n\nif _, err :\u003d ; err \u003d\u003d nil {\n  return fp, nil\n} else if (!errors.Is(err, os.ErrNotExist) { //os.IsNotExist is deprecated\n  return \"\", errors.Wrap ...\n}\n\nunless you did it this way because the linter complained somehow ...",
+      "revId": "1a6e811bd5a9c91653a7e5333b073841377e44af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8be81cc3_a9703178",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-15T19:29:33Z",
+      "side": 1,
+      "message": "Ack. I\u0027ve switched to use errors.Is in the latest PS, but I did not remove the use of continue for two reasons.\n\n1. The \"err \u003d\u003d nil\" construction is less common, so should be annotated per go/go-style/guide#Concision. Thus, given two comparably clear options, I think it would be preferable to stick with the one that doesn\u0027t require annotations.\n\n2. Per your other comment, I\u0027ve moved the os.Chmod() logic into this function. Thus, the err \u003d\u003d nil case becomes more complicated than the current logic.\n\nAs a result, switching around the order to avoid continue turned out to make the code more complicated. \"continue\" is common enough that I don\u0027t think we need to avoid it in general. As a compromise, I\u0027ve added a comment to the block:\n\n    if errors.Is(err, os.ErrNotExist) {\n        // If the file doesn\u0027t exist, that\u0027s fine; try the next option.\n        continue\n    } else ...",
+      "parentUuid": "f50ba2cb_5d05c417",
       "revId": "1a6e811bd5a9c91653a7e5333b073841377e44af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
