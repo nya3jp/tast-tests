@@ -202,6 +202,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c99c4320_5321c7f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-04-15T05:38:07Z",
+      "side": 1,
+      "message": "It sounds like what we want is a fixture like helper for subtest, that will\n\n1. SetUp() \u003d\u003e Open CCA\n2. DoTest() with a slightly shorter timeout\n3. TearDown() \u003d\u003e Check JS error and Close CCA using the subtest cleanup context timeout.\n\ninstead of the current way:\n\n1. open CCA at the beginning of the whole test\n2. run each subtest with a Restart()\n3. close the app after finished all subtest.\n\nWDYT? Not meant to block this CL, it deserves a separate cleanup CL.\n\nIf we do want to save some more time, I think ideally we should do\n\n1. open CCA\n2-1. Run each subtest\n2-2. Fast refresh CCA (thanks to SWA) at the end of each subtest\n3. close app\n\nBut that\u0027s totally optional :P",
+      "parentUuid": "613f5345_821684aa",
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb2af0fd_c8ce0ae2",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
         "patchSetId": 3
