@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd643a4_e83b0f73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-15T02:16:14Z",
+      "side": 1,
+      "message": "This is maximum estimated scroll count. Added a ToDo to investigate this as I couldn\u0027t figure a better way to find the end of list in task manager.",
+      "parentUuid": "b0c40703_2239ba38",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "1953790afa33f6ce244df6ddeedb64ce917a3bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71b25d53_1a7b40fc",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-14T20:22:08Z",
       "side": 1,
       "message": "could we use pkg instead as it is defined at L42?",
+      "range": {
+        "startLine": 77,
+        "startChar": 33,
+        "endLine": 77,
+        "endChar": 73
+      },
+      "revId": "1953790afa33f6ce244df6ddeedb64ce917a3bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec8265d7_a983e6cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-15T02:16:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71b25d53_1a7b40fc",
       "range": {
         "startLine": 77,
         "startChar": 33,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb2ea50_65333948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-15T02:16:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b1afe8f_d3038f67",
+      "range": {
+        "startLine": 81,
+        "startChar": 11,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "revId": "1953790afa33f6ce244df6ddeedb64ce917a3bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf6dddcb_bf45e3e7",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-14T20:22:08Z",
       "side": 1,
       "message": "nit: maybe arcEntryFound tp be more explicit?",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 7
+      },
+      "revId": "1953790afa33f6ce244df6ddeedb64ce917a3bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dedb7a7d_c80f943c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-15T02:16:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf6dddcb_bf45e3e7",
       "range": {
         "startLine": 86,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f4437e_8f0081d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-15T02:16:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abebae6d_5c0aefb6",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 19
+      },
+      "revId": "1953790afa33f6ce244df6ddeedb64ce917a3bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28ace740_8b68f1ee",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "838382f3_0948bff8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-15T02:16:14Z",
+      "side": 1,
+      "message": "Making this error doesn\u0027t get the right screenshot captured. Hence leaving it as Fatal to help easy triage when test fails.",
+      "parentUuid": "28ace740_8b68f1ee",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 9
+      },
+      "revId": "1953790afa33f6ce244df6ddeedb64ce917a3bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3a63aca_25e4057d",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-04-14T20:22:08Z",
       "side": 1,
       "message": "The same here, s.Error?",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 9
+      },
+      "revId": "1953790afa33f6ce244df6ddeedb64ce917a3bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f636e0d6_bb8de310",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-15T02:16:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c3a63aca_25e4057d",
       "range": {
         "startLine": 104,
         "startChar": 4,
