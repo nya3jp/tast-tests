@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "affadb1f_f1e06692",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-04-15T22:21:44Z",
+      "side": 1,
+      "message": "Re-enabling as Ryo has fixed \"ui\" stuck problem.",
+      "revId": "15df00e55d69949e34e8bcf423f14e89bbf331a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
