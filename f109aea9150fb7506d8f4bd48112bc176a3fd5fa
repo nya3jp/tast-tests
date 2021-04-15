@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecdd8597_7e3254ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-15T01:56:46Z",
+      "side": 1,
+      "message": "+2 for Tast Owners % nits",
+      "revId": "f109aea9150fb7506d8f4bd48112bc176a3fd5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "961a838e_fffcda0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/firewall/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-15T01:56:46Z",
+      "side": 1,
+      "message": "nit: https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences (missing full stop).",
+      "range": {
+        "startLine": 20,
+        "startChar": 80,
+        "endLine": 20,
+        "endChar": 81
+      },
+      "revId": "f109aea9150fb7506d8f4bd48112bc176a3fd5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b527cb0_133a20ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/firewall/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-15T01:56:46Z",
+      "side": 1,
+      "message": "nit: https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences (should have only one full stop).",
+      "range": {
+        "startLine": 49,
+        "startChar": 46,
+        "endLine": 49,
+        "endChar": 47
+      },
+      "revId": "f109aea9150fb7506d8f4bd48112bc176a3fd5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
