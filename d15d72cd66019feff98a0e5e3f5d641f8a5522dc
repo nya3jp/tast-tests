@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ccd718c8_4c50cd2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-15T03:04:47Z",
+      "side": 1,
+      "message": "FYI, I\u0027d prefer split the CL into two as they are for different purposes. We can keep the CL as is but it is always better to have a single goal for each CL.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "100de70a_8d41b210",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -37,6 +60,23 @@
       "writtenOn": "2021-04-14T14:33:36Z",
       "side": 1,
       "message": "Could you help test it on an old/slow device like winky in lab to ensure subtest timeout is long enough? Thanks.",
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64d28ebc_281817b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-15T03:04:47Z",
+      "side": 1,
+      "message": "The two chunks can connect together as subTestCtx is created for s.Run().\n\nAt least the blank line shall be placed before subTestCtx definition.",
       "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +117,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b07827a_5d14126d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-15T03:04:47Z",
+      "side": 1,
+      "message": "The sequence of testFunc() and restartApp() is swapped. Is that intentional?",
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6ef40ac_4e770dc7",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_settings.go",
         "patchSetId": 3
@@ -111,6 +168,23 @@
         "endLine": 84,
         "endChar": 55
       },
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74d743c1_142305bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-15T03:04:47Z",
+      "side": 1,
+      "message": "Same here: the order of testFnc() and restartApp() swapped.",
       "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
