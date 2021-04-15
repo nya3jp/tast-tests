@@ -16,6 +16,63 @@
       "message": "Hi reviewers, PS10 includes many changes (though most of them are indention changes) PTAL.",
       "revId": "0ad50b1576c2a0d87dcf82e27d19c52333d88580",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8516263_9f53b076",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-15T02:26:59Z",
+      "side": 1,
+      "message": "Two nits. ",
+      "revId": "0ad50b1576c2a0d87dcf82e27d19c52333d88580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa568894_20337ddc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-15T02:26:59Z",
+      "side": 1,
+      "message": "Nice! Shall we also record n-th run here?",
+      "revId": "0ad50b1576c2a0d87dcf82e27d19c52333d88580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212e4014_5560682c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-15T02:26:59Z",
+      "side": 1,
+      "message": "errors.Wrap() will insert \": \" for you. Please remove it.\n\nSee \nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/9ff3807a8ffd/src/chromiumos/tast/errors/errors.go#130\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/9ff3807a8ffd/src/chromiumos/tast/errors/errors.go#63",
+      "range": {
+        "startLine": 197,
+        "startChar": 53,
+        "endLine": 197,
+        "endChar": 55
+      },
+      "revId": "0ad50b1576c2a0d87dcf82e27d19c52333d88580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
