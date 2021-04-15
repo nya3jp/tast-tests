@@ -29,6 +29,7 @@ func MetricConfigs() []MetricConfig {
 		NewCustomMetricConfig("EventLatency.TotalLatency", "ms", perf.SmallerIsBetter, []int64{800, 1600}),
 		NewCustomMetricConfig("Cras.StreamTimeoutMilliseconds", "ms", perf.SmallerIsBetter, []int64{0, 20}),
 		NewCustomMetricConfig("Cras.UnderrunsPerDevice", "count", perf.SmallerIsBetter, []int64{0, 10}),
+		NewCustomMetricConfig("Graphics.Smoothness.PercentDroppedFrames.AllSequences", "percent", perf.SmallerIsBetter, []int64{20, 50}),
 		NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
 		NewLatencyMetricConfig("Ash.HotseatTransition.Drag.PresentationTime"),
 		NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
@@ -36,7 +37,6 @@ func MetricConfigs() []MetricConfig {
 		NewSmoothnessMetricConfig("Ash.Rotation.AnimationSmoothness"),
 		NewSmoothnessMetricConfig("Ash.Homescreen.AnimationSmoothness"),
 		NewSmoothnessMetricConfig("Ash.SwipeHomeToOverviewGesture"),
-		NewSmoothnessMetricConfig("Graphics.Smoothness.PercentDroppedFrames.AllSequences"),
 	}
 
 	for _, suffix := range []string{"HideLauncherForWindow", "EnterFullscreenAllApps", "EnterFullscreenSearch", "FadeInOverview", "FadeOutOverview"} {

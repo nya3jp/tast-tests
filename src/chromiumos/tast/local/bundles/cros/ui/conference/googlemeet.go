@@ -72,7 +72,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 	joinConf := func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Join Conference")
 		joinNowButton := nodewith.Name("Join now").Role(role.Button)
-		if err := uiauto.Combine("Join conference",
+		if err := uiauto.Combine("join conference",
 			ui.WithTimeout(40*time.Second).LeftClickUntil(joinNowButton, ui.WaitUntilGone(nodewith.Name("Return to home screen"))),
 		)(ctx); err != nil {
 			return errors.Wrap(err, "failed to join conference")
@@ -125,26 +125,45 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 	// and add the test account if it doesn't add in the DUT before.
 	addMeetAccount := func(ctx context.Context) error {
 		useAnotherAccount := nodewith.Name("Use another account").First()
-		myAccounts := nodewith.Name("My accounts").First()
+		myAccounts := nodewith.NameRegex(regexp.MustCompile("(My accounts|Additional accounts)")).Role(role.Heading)
 		viewAccounts := nodewith.Name("View accounts").Role(role.Button)
 
 		if err := ui.LeftClick(useAnotherAccount)(ctx); err != nil {
-			return err
+			return errors.Wrap(err, `failed to click "Use another account"`)
 		}
 
 		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(viewAccounts)(ctx); err == nil {
 			if err := ui.LeftClick(viewAccounts)(ctx); err != nil {
-				return err
+				return errors.Wrap(err, `failed to click "View accounts"`)
 			}
 		}
 
 		if err := ui.WaitUntilExists(myAccounts)(ctx); err != nil {
-			return err
+			return errors.Wrap(err, `failed to wait for "My accounts" or "Additional accounts"`)
 		}
 
-		addAccountButton := nodewith.Name("Add account").Role(role.Button)
+		addAccountButton := nodewith.Role(role.Button).NameRegex(regexp.MustCompile("(Add account|Add Google Account)"))
 		if err := ui.LeftClick(addAccountButton)(ctx); err != nil {
-			return err
+			return errors.Wrap(err, `failed to click "Add account" button`)
+		}
+
+		addAccPrompt := nodewith.NameStartingWith("Add another Google Account for").Role(role.Heading)
+		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(addAccPrompt)(ctx); err == nil {
+			// Hide all notifications to prevent them from covering the ok button.
+			if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
+				return errors.Wrap(err, "failed to hide visible notifications")
+			}
+
+			dontReminder := nodewith.Name("Don't remind me next time").Role(role.CheckBox)
+			if err := ui.LeftClick(dontReminder)(ctx); err != nil {
+				return errors.Wrap(err, `failed to click "Don't remind me next time"`)
+			}
+
+			signInWebArea := nodewith.Name("Sign in to add a Google account").Role(role.RootWebArea)
+			okBtn := nodewith.Name("OK").Role(role.Button).Ancestor(signInWebArea)
+			if err := ui.LeftClick(okBtn)(ctx); err != nil {
+				return errors.Wrap(err, `failed to click "OK" for new account prompt`)
+			}
 		}
 
 		if err := enterAccount(ctx); err != nil {
@@ -157,7 +176,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 
 		chooseAnAccount := nodewith.Name("Choose an account").First()
 		if err := ui.WaitUntilExists(chooseAnAccount)(ctx); err != nil {
-			return errors.Wrap(err, "failed to find 'Choose an account'")
+			return errors.Wrap(err, `failed to find "Choose an account"`)
 		}
 		return nil
 	}
@@ -218,14 +237,14 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 	}
 
 	// Checks the number of participants in the conference that
-	// for different tiers testing would ask for different size
+	// for different tiers testing would ask for different size.
 	checkParticipantsNum := func(ctx context.Context) error {
 		showEveryone := nodewith.Name("Show everyone").Role(role.Button)
 		people := nodewith.Name("People").First()
 		// Some DUT models have poor performance. When joining
 		// a large conference (over 15 participants), it would take much time
 		// to render DOM elements. Set a longer timer here.
-		if err := uiauto.Combine("Click 'Show everyone'",
+		if err := uiauto.Combine(`open "Meeting Detail" panel`,
 			ui.WithTimeout(2*time.Minute).WaitUntilExists(showEveryone),
 			ui.LeftClick(showEveryone),
 			ui.WithTimeout(30*time.Second).WaitUntilExists(people),
@@ -242,9 +261,20 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		if err != nil {
 			return errors.Wrap(err, "cannot parse number of participants")
 		}
-		if int(num) != conf.roomSize {
+		// Allow class room over 38 participants only.
+		// For other rooms (_two, _small, _large) should exactly match.
+		if (conf.roomSize == ClassRoomSize && int(num) < conf.roomSize) ||
+			(conf.roomSize != ClassRoomSize && int(num) != conf.roomSize) {
 			return errors.Wrapf(err, "meeting participant number is %d but %d is expected", num, conf.roomSize)
 		}
+
+		webArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
+		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(webArea)
+		// Close "Meeting Detail" panel.
+		if err := ui.LeftClick(closeButton)(ctx); err != nil {
+			return err
+		}
+
 		return nil
 	}
 
@@ -319,7 +349,7 @@ func (conf *GoogleMeetConference) VideoAudioControl(ctx context.Context) error {
 	}
 
 	return uiauto.Combine("toggle video and audio",
-		//Remain in the state for 5 seconds after each action.
+		// Remain in the state for 5 seconds after each action.
 		toggleVideo, ui.Sleep(5*time.Second),
 		toggleVideo, ui.Sleep(5*time.Second),
 		toggleAudio, ui.Sleep(5*time.Second),
@@ -343,7 +373,7 @@ func (conf *GoogleMeetConference) SwitchTabs(ctx context.Context) error {
 	}
 	defer wikiConn.Close()
 
-	// switch tab
+	// Switch tab.
 	if err := kb.Accel(ctx, "Ctrl+Tab"); err != nil {
 		return errors.Wrap(err, "failed to switch tab")
 	}
@@ -356,20 +386,9 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 	tconn := conf.tconn
 	ui := uiauto.New(tconn)
 
-	ns, err := ash.Notifications(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get notifications")
-	}
-	if len(ns) > 0 {
-		testing.ContextLog(ctx, "Hide visible notifications")
-		// Hide notifications which could cover the "More options" button.
-		if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to hide notifications")
-		}
-		quickSetting := nodewith.Role(role.Window).ClassName("TrayBubbleView")
-		if err := ui.WaitUntilGone(quickSetting)(ctx); err != nil {
-			return errors.Wrap(err, "quick setting window is still open")
-		}
+	// Hide all notifications to prevent them from covering the "More options" button.
+	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to hide visible notifications")
 	}
 
 	moreOptions := nodewith.Name("More options").First()
@@ -382,7 +401,7 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 			ui.WithTimeout(40*time.Second).LeftClick(changeLayout),
 			ui.LeftClick(modeNode),
 			ui.LeftClick(moreOptions),
-			ui.Sleep(10*time.Second), //After applying new layout, give it 10 seconds for viewing before applying next one.
+			ui.Sleep(10*time.Second), // After applying new layout, give it 10 seconds for viewing before applying next one.
 		)(ctx); err != nil {
 			return err
 		}
@@ -403,30 +422,25 @@ func (conf *GoogleMeetConference) BackgroundBlurring(ctx context.Context) error 
 		moreOptions := nodewith.Name("More options").First()
 		changeBackground := nodewith.Name("Change background").Role(role.MenuItem)
 		backgroundButton := nodewith.Name(background).First()
-		video := nodewith.Role(role.Video).First()
-		return uiauto.Combine("Change background",
+		webArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
+		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(webArea)
+		testing.ContextLog(ctx, "Change background to ", background)
+		return uiauto.Combine("change background",
 			ui.LeftClick(moreOptions),
-			ui.LeftClick(changeBackground),
+			ui.LeftClick(changeBackground), // Open "Background" panel.
 			ui.WithTimeout(30*time.Second).LeftClick(backgroundButton),
-			ui.LeftClick(video), // close background menu.
-			ui.Sleep(5*time.Second),
+			ui.LeftClick(closeButton), // Close "Background" panel.
+			ui.Sleep(5*time.Second),   // After applying new background, give it 5 seconds for viewing before applying next one.
 		)(ctx)
 	}
-
-	if err := changeBackground(blurBackground); err != nil {
-		return errors.Wrap(err, "failed to change background to blur background")
-	}
-
 	if err := ui.LeftClick(nodewith.Name("Pin yourself to your main screen."))(ctx); err != nil {
 		return errors.Wrap(err, "failed to switch to your main screen")
 	}
 
-	if err := changeBackground(skyBackground); err != nil {
-		return errors.Wrap(err, "failed to change background to sky background")
-	}
-
-	if err := changeBackground(turnOffBackground); err != nil {
-		return errors.Wrap(err, "failed to turn off background effects")
+	for _, background := range []string{blurBackground, skyBackground, turnOffBackground} {
+		if err := changeBackground(background); err != nil {
+			return err
+		}
 	}
 
 	return nil
@@ -450,7 +464,7 @@ func (conf *GoogleMeetConference) PresentSlide(ctx context.Context) error {
 		presentWindow := nodewith.ClassName("DesktopMediaSourceView").First()
 		shareButton := nodewith.Name("Share").Role(role.Button)
 		stopPresenting := nodewith.Name("Stop presenting").Role(role.Button)
-		return uiauto.Combine("Share screen",
+		return uiauto.Combine("share screen",
 			ui.LeftClick(presentNowButton),
 			ui.WithTimeout(time.Minute).LeftClickUntil(aWindow, ui.WaitUntilExists(presentWindow)),
 			ui.LeftClick(presentWindow),
@@ -469,7 +483,7 @@ func (conf *GoogleMeetConference) PresentSlide(ctx context.Context) error {
 		return errors.Wrap(err, "failed to switch tab to conference page")
 	}
 
-	testing.ContextLog(ctx, "Click present now button")
+	testing.ContextLog(ctx, "Start to share screen")
 	if err := shareScreen(ctx, tconn); err != nil {
 		return err
 	}
@@ -502,7 +516,6 @@ func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context)
 	const slideTitle = "Untitled presentation - Google Slides"
 	tconn := conf.tconn
 	ui := uiauto.New(tconn)
-	// Make Google Meet to show the bottom bar
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to initialize keyboard input")
@@ -534,7 +547,7 @@ func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context)
 	}
 
 	moveConferenceTab := func(ctx context.Context) error {
-		return uiauto.Combine("Move conference to exteneded display",
+		return uiauto.Combine("move conference to exteneded display",
 			kb.AccelAction("Alt+Tab"),
 			ui.Sleep(400*time.Millisecond),
 			kb.AccelAction("Search+Alt+M"),
@@ -542,21 +555,15 @@ func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context)
 		)(ctx)
 	}
 
-	enterPresentingMode := func(ctx context.Context) error {
+	shareScreen := func(ctx context.Context) error {
 		presentNowButton := nodewith.Name("Present now").First()
 		aWindow := nodewith.Name("A window").First()
-		return uiauto.Combine("Share Screen",
-			kb.AccelAction("Alt+Tab"),
-			ui.LeftClick(presentNowButton),
-			ui.LeftClick(aWindow),
-		)(ctx)
-	}
-
-	selectSharedWindow := func(ctx context.Context) error {
-		presentWindow := nodewith.ClassName("DesktopMediaSourceView").NameRegex(regexp.MustCompile("My Drive"))
+		presentWindow := nodewith.ClassName("DesktopMediaSourceView").NameRegex(regexp.MustCompile("My Drive|" + slideTitle))
 		shareButton := nodewith.Name("Share").Role(role.Button)
 		stopPresentation := nodewith.Name("Stop presenting").Role(role.Button)
-		return uiauto.Combine("Select Shared Tab",
+		return uiauto.Combine("share screen",
+			ui.LeftClick(presentNowButton),
+			ui.WithTimeout(time.Minute).LeftClickUntil(aWindow, ui.WaitUntilExists(presentWindow)),
 			ui.LeftClick(presentWindow),
 			ui.LeftClickUntil(shareButton, ui.Gone(shareButton)),
 			ui.WaitUntilGone(stopPresentation),
@@ -575,17 +582,12 @@ func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context)
 	}
 
 	testing.ContextLog(ctx, "Switch to conference page")
-	if err := conf.switchToChromeTab(ctx, "Meet"); err != nil {
-		return errors.Wrap(err, "failed to switch tab to conference page")
+	if err := kb.Accel(ctx, "Alt+Tab"); err != nil {
+		return errors.Wrap(err, "failed to press Alt+Tab to switch to conference page")
 	}
 
-	testing.ContextLog(ctx, "Enter Presenting Mode")
-	if err := enterPresentingMode(ctx); err != nil {
-		return err
-	}
-
-	testing.ContextLog(ctx, "Select Window for Sharing")
-	if err := selectSharedWindow(ctx); err != nil {
+	testing.ContextLog(ctx, "Start to share screen")
+	if err := shareScreen(ctx); err != nil {
 		return err
 	}
 
@@ -595,8 +597,8 @@ func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context)
 	}
 
 	testing.ContextLog(ctx, "Switch to the slide")
-	if err := conf.switchToChromeTab(ctx, slideTitle); err != nil {
-		return errors.Wrap(err, "failed to switch tab to slide page")
+	if err := kb.Accel(ctx, "Alt+Tab"); err != nil {
+		return errors.Wrap(err, "failed to press Alt+Tab to switch to slide page")
 	}
 
 	testing.ContextLog(ctx, "Start present slide")
@@ -610,8 +612,8 @@ func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context)
 	}
 
 	testing.ContextLog(ctx, "Switch to conference page")
-	if err := conf.switchToChromeTab(ctx, "Meet"); err != nil {
-		return errors.Wrap(err, "failed to switch tab to conference page")
+	if err := kb.Accel(ctx, "Alt+Tab"); err != nil {
+		return errors.Wrap(err, "failed to press Alt+Tab to switch to conference page")
 	}
 	return nil
 }
@@ -626,8 +628,7 @@ func (conf *GoogleMeetConference) StopPresenting(ctx context.Context) error {
 
 // End ends the conference.
 func (conf *GoogleMeetConference) End(ctx context.Context) error {
-	cuj.CloseAllWindows(ctx, conf.tconn)
-	return nil
+	return cuj.CloseAllWindows(ctx, conf.tconn)
 }
 
 var _ Conference = (*GoogleMeetConference)(nil)
@@ -640,18 +641,11 @@ func (conf *GoogleMeetConference) switchToChromeTab(ctx context.Context, tabName
 	ui := uiauto.New(conf.tconn)
 	if conf.tabletMode {
 		// If in tablet mode, it should toggle tab strip to show tab list.
-		toggle := nodewith.NameRegex(regexp.MustCompile("toggle tab strip")).Role(role.Button).First()
-		if err := ui.Exists(toggle)(ctx); err == nil {
-			if err := ui.LeftClick(toggle)(ctx); err != nil {
-				return err
-			}
+		if err := ui.LeftClick(nodewith.NameContaining("toggle tab strip").Role(role.Button).First())(ctx); err != nil {
+			return err
 		}
 	}
-	tab := nodewith.NameRegex(regexp.MustCompile(tabName)).Role(role.Tab)
-	return uiauto.Combine("Click tab",
-		ui.WaitUntilExists(tab),
-		ui.LeftClick(tab),
-	)(ctx)
+	return ui.LeftClick(nodewith.NameContaining(tabName).Role(role.Tab))(ctx)
 }
 
 // NewGoogleMeetConference creates Google Meet conference room instance which implements Conference interface.
