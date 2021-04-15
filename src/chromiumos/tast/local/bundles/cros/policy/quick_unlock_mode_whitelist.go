@@ -115,7 +115,7 @@ func QuickUnlockModeWhitelist(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to type password: ", err)
 			}
 
-			// // Find node info for the radio button group node.
+			// Find node info for the radio button group node.
 			rgNode, err := ui.Info(ctx, nodewith.Role(role.RadioGroup))
 			if err != nil {
 				s.Fatal("Finding radio group failed: ", err)
