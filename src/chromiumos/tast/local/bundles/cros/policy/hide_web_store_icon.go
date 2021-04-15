@@ -44,25 +44,27 @@ func HideWebStoreIcon(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
+	pinWebStoreApp := &policy.PinnedLauncherApps{Val: []string{apps.WebStore.ID}}
+
 	for _, param := range []struct {
 		name     string
-		wantIcon bool                     // wantIcon is the expected existence of the "Web Store" icon.
-		policy   *policy.HideWebStoreIcon // policy is the policy we test.
+		wantIcon bool            // wantIcon is the expected existence of the "Web Store" icon.
+		policies []policy.Policy // policies is the policies that will be set.
 	}{
 		{
 			name:     "hide",
 			wantIcon: false,
-			policy:   &policy.HideWebStoreIcon{Val: true},
+			policies: []policy.Policy{pinWebStoreApp, &policy.HideWebStoreIcon{Val: true}},
 		},
 		{
 			name:     "show",
 			wantIcon: true,
-			policy:   &policy.HideWebStoreIcon{Val: false},
+			policies: []policy.Policy{pinWebStoreApp, &policy.HideWebStoreIcon{Val: false}},
 		},
 		{
 			name:     "unset",
 			wantIcon: true,
-			policy:   &policy.HideWebStoreIcon{Stat: policy.StatusUnset},
+			policies: []policy.Policy{pinWebStoreApp, &policy.HideWebStoreIcon{Stat: policy.StatusUnset}},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -74,7 +76,7 @@ func HideWebStoreIcon(ctx context.Context, s *testing.State) {
 			}
 
 			// Update policies.
-			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.policy}); err != nil {
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, param.policies); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
@@ -93,14 +95,22 @@ func HideWebStoreIcon(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to open Expanded Apps list view: ", err)
 			}
 
-			// Confirm the status of the Web Store icon.
-			app := apps.WebStore
+			appName := apps.WebStore.Name
 
+			// Confirm the status of the Web Store icon in the application launcher
 			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
-				Name:      app.Name,
-				ClassName: "ui/app_list/AppListItemView",
+				Name:      appName,
+				ClassName: "AppListItemView",
 			}, param.wantIcon, 15*time.Second); err != nil {
-				s.Error("Could not confirm the desired status of the Web Store Icon: ", err)
+				s.Error("Could not confirm the desired status of the Web Store Icon in the application launcher: ", err)
+			}
+
+			// Confirm the status of the Web Store icon on the shelf
+			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
+				Name:      appName,
+				ClassName: "ash/ShelfAppButton",
+			}, param.wantIcon, 15*time.Second); err != nil {
+				s.Error("Could not confirm the desired status of the Web Store Icon on the system shelf: ", err)
 			}
 		})
 	}
