@@ -124,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a036f9d4_4d620afe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-15T23:50:59Z",
+      "side": 1,
+      "message": "Ah I see...I misunderstood. Thank you for the explanation.",
+      "parentUuid": "bf2fdef9_172613eb",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 20
+      },
+      "revId": "1120dd3484b5639e29832fc591eed1acef662eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dafa33f_0df91538",
