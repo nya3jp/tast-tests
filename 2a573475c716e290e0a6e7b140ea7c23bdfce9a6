@@ -33,6 +33,138 @@
       "message": "+2.",
       "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36f7d7f3_bf375696",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-04-15T01:13:50Z",
+      "side": 1,
+      "message": "FYI, I implemented something very similar for the ARC++ power tests - crrev/c/2543572. It was copied from the power team\u0027s autotasts. The metrics portion is different, but perhaps it would be useful to sure the measurement portion of things.",
+      "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75f14950_e2d7d874",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-04-15T01:13:50Z",
+      "side": 1,
+      "message": "This isn\u0027t consistent with the function. When that happens, it returns an error.",
+      "range": {
+        "startLine": 133,
+        "startChar": 15,
+        "endLine": 133,
+        "endChar": 74
+      },
+      "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb245c2a_7d6d7258",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-04-15T01:13:50Z",
+      "side": 1,
+      "message": "These are all intel specific. Have you tested this function to ensure it works as expected on ARM/AMD devices?",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 17
+      },
+      "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dad702ad_4c9bcd34",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-04-15T01:13:50Z",
+      "side": 1,
+      "message": "I don\u0027t think this log line is necessary. Depending on the board, some number of these are expected to be missing.",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 103
+      },
+      "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "281bc658_9a78aedd",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-04-15T01:13:50Z",
+      "side": 1,
+      "message": "We\u0027re guaranteed that at least tsc is present if we\u0027re here, since it\u0027s marked necessary, so this will never be true.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a6a222c_9de5eabf",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-04-15T01:13:50Z",
+      "side": 1,
+      "message": "Any reason this is CPU 1 instead of CPU 0? Also, this doesn\u0027t handle boards with multiple packages, although I guess that\u0027s maybe fine for CrOS.",
+      "range": {
+        "startLine": 173,
+        "startChar": 27,
+        "endLine": 173,
+        "endChar": 36
+      },
+      "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
