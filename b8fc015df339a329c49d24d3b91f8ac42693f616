@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4485b1f_ff931a24",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-04-15T14:19:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23d3c814_43dcc7ea",
+      "revId": "b8fc015df339a329c49d24d3b91f8ac42693f616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cc1352e_1430cbee",
@@ -75,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3a52ad5_8a22e033",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-04-15T14:19:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cc1352e_1430cbee",
+      "range": {
+        "startLine": 123,
+        "startChar": 111,
+        "endLine": 123,
+        "endChar": 114
+      },
+      "revId": "b8fc015df339a329c49d24d3b91f8ac42693f616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e4eb76e_680ac5a8",
@@ -88,6 +130,24 @@
       "writtenOn": "2021-04-15T13:00:28Z",
       "side": 1,
       "message": "nit: either make this fit 80 characters or split by sentence.",
+      "revId": "b8fc015df339a329c49d24d3b91f8ac42693f616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29d437b6_accbc06a",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-04-15T14:19:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e4eb76e_680ac5a8",
       "revId": "b8fc015df339a329c49d24d3b91f8ac42693f616",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
