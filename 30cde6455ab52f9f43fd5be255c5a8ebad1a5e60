@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb890324_dc8f0830",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-15T18:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b85be2c5_5b87a00f",
+      "revId": "30cde6455ab52f9f43fd5be255c5a8ebad1a5e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7a63968_0d4ee152",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "927d4e77_01daea2a",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-15T18:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7a63968_0d4ee152",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "30cde6455ab52f9f43fd5be255c5a8ebad1a5e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93e95efb_ce14b632",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-04-15T08:07:32Z",
       "side": 1,
       "message": "minor nit: else if",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 3
+      },
+      "revId": "30cde6455ab52f9f43fd5be255c5a8ebad1a5e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c61d40f6_ad61c759",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-15T18:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93e95efb_ce14b632",
       "range": {
         "startLine": 88,
         "startChar": 1,
