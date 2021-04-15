@@ -39,6 +39,30 @@
       },
       "revId": "5c0749968697f22fa23302c206833c65aeeafeaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bec39f6_0ee1b60e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_get_devices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-04-15T18:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59083f55_a6159c7e",
+      "range": {
+        "startLine": 30,
+        "startChar": 47,
+        "endLine": 30,
+        "endChar": 56
+      },
+      "revId": "5c0749968697f22fa23302c206833c65aeeafeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
