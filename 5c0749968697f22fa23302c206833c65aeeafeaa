@@ -16,6 +16,29 @@
       "message": "I am salvaging this CL to create a simple test to run unrestricted of platform to make sure basic functionality doesn\u0027t break specially during uprevs.",
       "revId": "5c0749968697f22fa23302c206833c65aeeafeaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59083f55_a6159c7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_get_devices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-04-15T17:49:44Z",
+      "side": 1,
+      "message": "doesn\u0027t this have to be software dependency?",
+      "range": {
+        "startLine": 30,
+        "startChar": 47,
+        "endLine": 30,
+        "endChar": 56
+      },
+      "revId": "5c0749968697f22fa23302c206833c65aeeafeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
