@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7ac2a26_d8033397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-04-15T19:03:14Z",
+      "side": 1,
+      "message": "TODO with ldap is the norm. And in this case the comment is trivial.\nhttps://google.github.io/styleguide/cppguide.html#TODO_Comments",
+      "parentUuid": "dbfdbcd5_48cbb921",
+      "range": {
+        "startLine": 326,
+        "startChar": 10,
+        "endLine": 326,
+        "endChar": 18
+      },
+      "revId": "3ac88e1f1ab2c3bf6afb9b68c70d6e0f6a1a4904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b76c6487_8fd70db4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d2c93b8_c225ad18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-04-15T19:03:14Z",
+      "side": 1,
+      "message": "Because we don\u0027t want to run group5 just yet.",
+      "parentUuid": "b76c6487_8fd70db4",
+      "range": {
+        "startLine": 328,
+        "startChar": 39,
+        "endLine": 328,
+        "endChar": 75
+      },
+      "revId": "3ac88e1f1ab2c3bf6afb9b68c70d6e0f6a1a4904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69e996ed_03f0891d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
         "patchSetId": 2
@@ -83,6 +131,30 @@
       "writtenOn": "2021-04-15T11:11:21Z",
       "side": 1,
       "message": "This is a code duplication that you should avoid.\n\nHow you can simplify:\n\n\n```\nfor cat, files :\u003d range vaapiVp9Files[profile][levelGroup] {\n\tparam :\u003d paramData{\n\t\tName:         fmt.Sprintf(\"vaapi_vp9_%d_%s_%s\", i, levelGroup, cat),\n\t\tDecoder:      filepath.Join(chrome.BinTestDir, \"decode_test\"),\n\t\tCmdBuilder:   \"vp9decodeVAAPIargs\",\n\t\tFiles:        files,\n\t\tTimeout:      10 * time.Minute,\n\t\tSoftwareDeps: []string{\"vaapi\", caps.HWDecodeVP9},\n\t\tMetadata:     genExtraData(files),\n\t}\n\n\t// Modifying \"default\" param data\n\tif levelGroup \u003d\u003d \"group4\" {\n\t\tparam.Timeout \u003d 24 * time.Hour\n\t}\n\tif cat \u003d\u003d \"frm_resize\" || cat \u003d\u003d \"sub8x8_sf\" {\n\t\tparam.HardwareDeps \u003d `hwdep.D(hwdep.SkipOnPlatform(\"grunt\", \"zork\"))`,\n\t}\n\n\tparams \u003d append(params, param)\n}\n\n```",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 0
+      },
+      "revId": "3ac88e1f1ab2c3bf6afb9b68c70d6e0f6a1a4904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb2f4c1e_e2a55cf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-04-15T19:03:14Z",
+      "side": 1,
+      "message": "This has already been reviewed before.",
+      "parentUuid": "69e996ed_03f0891d",
       "range": {
         "startLine": 329,
         "startChar": 0,
