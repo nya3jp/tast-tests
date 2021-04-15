@@ -109,10 +109,11 @@ const (
 )
 
 // AdditionalBSS is the type for specifying parameters of additional BSSs to be advertised on the same phy.
-// Both fields are required, and must be distinct from the corresponding fields of the primary network.
+// All fields are required, and must be distinct from the corresponding fields of the primary network.
 type AdditionalBSS struct {
 	IfaceName string
 	SSID      string
+	BSSID     string
 }
 
 // Option is the function signature used to specify options of Config.
@@ -287,9 +288,9 @@ func RRMBeaconReport() Option {
 }
 
 // AdditionalBSSs returns an Option which sets AdditionalBSSs in hostapd config.
-// Each AdditionalBSS should have a unique interface name and SSID. The number of
-// AdditionalBSSs is limited by the phy. See the 'valid interface combinations'
-// section of `iw phy` for more.
+// Each AdditionalBSS should have a unique interface name, SSID, and BSSID. The
+// number of AdditionalBSSs is limited by the phy. See the 'valid interface
+// combinations' section of `iw phy` for more.
 func AdditionalBSSs(bssids ...AdditionalBSS) Option {
 	return func(c *Config) {
 		c.AdditionalBSSs = append([]AdditionalBSS(nil), bssids...)
@@ -317,15 +318,6 @@ func NewConfig(ops ...Option) (*Config, error) {
 			return nil, err
 		}
 		conf.BSSID = randBSSID.String()
-	}
-	// hostapd specifies that if secondary BSSIDs are configured,
-	// it requires the primary BSSID be chosen such that it can
-	// generate a valid bitmask where dev_addr & mask == dev_addr.
-	// Clear the last byte to allow this. Note that this will allow
-	// for up to 255 additional BSSIDs, but in reality, APs usually
-	// support much fewer.
-	if len(conf.AdditionalBSSs) != 0 {
-		conf.BSSID = conf.BSSID[:len(conf.BSSID)-2] + "00"
 	}
 
 	if err := conf.validate(); err != nil {
@@ -487,6 +479,7 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 		}
 		configure("bss", bssid.IfaceName)
 		configure("ssid", bssid.SSID)
+		configure("bssid", bssid.BSSID)
 	}
 
 	return builder.String(), nil
@@ -640,6 +633,7 @@ func (c *Config) validate() error {
 
 	ifaces := map[string]struct{}{}
 	ssids := map[string]struct{}{c.SSID: {}}
+	bssids := map[string]struct{}{c.BSSID: {}}
 	for _, bssid := range c.AdditionalBSSs {
 		if _, ok := ifaces[bssid.IfaceName]; ok {
 			return errors.Errorf("duplicate interface name %s in additional BSSIDs", bssid.IfaceName)
@@ -649,6 +643,10 @@ func (c *Config) validate() error {
 			return errors.Errorf("duplicate SSID %s in additional BSSIDs", bssid.SSID)
 		}
 		ssids[bssid.SSID] = struct{}{}
+		if _, ok := bssids[bssid.BSSID]; ok {
+			return errors.Errorf("duplicate BSSID %s in additional BSSIDs", bssid.BSSID)
+		}
+		bssids[bssid.BSSID] = struct{}{}
 	}
 
 	return nil
