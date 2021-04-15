@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a630a51_edb743a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-15T00:56:31Z",
+      "side": 1,
+      "message": "Some DUTs need more time to load the meet URL page. Added a 45-second timer to wait for the meet page to achieve quiescence.",
+      "revId": "c03f4fd01f170fb26b50052237a958fa16359899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
