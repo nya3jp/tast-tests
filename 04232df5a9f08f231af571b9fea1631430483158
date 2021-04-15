@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "766cf809_582d599d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-15T21:09:41Z",
+      "side": 1,
+      "message": "Changes in the latest PS:\n\n1. The tests I had added to xmlrpc_test.go had some unreachable code-points, because I had placed some `continue`s in the wrong spot. This is why the previous PS failed to build (they ensure that all code points are reachable). Those continue\u0027s are now in the right spot.\n\n2. Added an extra parameter to the xmlrpc_test.go test cases: whether the returned error is a Fault, or a non-Fault error. Non-Faults can occur due to bad parsing.\n\n3. Added two new test cases to xmlrpc_test.go for non-Fault errors: one for a fault with faultCode\u003d0, and one for a fault with an unexpected member.\n\n4. Changed faultCode parsing from using the string field to using the int field. This was a genuine bug, which was revealed by the test after making change #2. Yay for tests!",
+      "revId": "04232df5a9f08f231af571b9fea1631430483158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
