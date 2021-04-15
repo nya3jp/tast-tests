@@ -16,6 +16,41 @@
       "message": "Should this data folder be in the network directory? None of the tests that require allowlist_ssl_inspection.json would work locally, and they seem to be failing in the CQ as well: https://cros-health-prod.googleplex.com/test?contact\u003d\u0026testname\u003dnetwork.*Connectivity\u0026dep\u003d",
       "revId": "914e375a14325a835c99c92b88c1e57e600ca60a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec38ad10_c59cade9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-04-15T07:39:14Z",
+      "side": 1,
+      "message": "Yes, thanks a lot for this CL!\n\nThe tests broke with CL:2781073, which moved only the .go files in the network dir.",
+      "parentUuid": "fc9d1e5a_1441274d",
+      "revId": "914e375a14325a835c99c92b88c1e57e600ca60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8d6523f_9c31408c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-04-15T07:39:14Z",
+      "side": 1,
+      "message": "Thanks, Trent!",
+      "revId": "914e375a14325a835c99c92b88c1e57e600ca60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
