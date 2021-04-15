@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa950f4_2207d45f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-15T10:11:43Z",
+      "side": 1,
+      "message": "Still LGTM with some style suggestions.\n",
+      "revId": "ad2aaefd8c2a0cd1f381d5a2d285becafa693f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67e24971_a53f82dd",
@@ -51,6 +68,29 @@
       "range": {
         "startLine": 477,
         "startChar": 20,
+        "endLine": 491,
+        "endChar": 2
+      },
+      "revId": "ad2aaefd8c2a0cd1f381d5a2d285becafa693f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "365bbe3c_1af8d192",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-15T10:11:43Z",
+      "side": 1,
+      "message": "- vmPropValue is defined but containerPropValue is not, which looks a bit assymmetry.\n- Since these constants appear only once, I think we can just inline them.\n- We should not ignore errors from VMEnabled.\n\nSo how about something like:\n\n vm, err :\u003d VMEnabled()\n if err !\u003d nil {\n   return err\n }\n\n // Wait for a property to be set by Android init very early. The property differs by Android version.\n prop :\u003d \"ro.arc.on_boot\"\n value :\u003d \"1\"\n if !vm {\n   prop \u003d \"net.tcp.default_init_rwnd\"\n   value \u003d \"60\"\n }\n ...",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
         "endLine": 491,
         "endChar": 2
       },
