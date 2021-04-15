@@ -33,6 +33,24 @@
       "message": "Friendly ping on Tast review. This is a trivial CL that would help greatly reduce test flakiness :)",
       "revId": "6742256364b70a7aae4f0acc634fbc8a815e1489",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2d7ada1_0620fc63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-15T15:58:43Z",
+      "side": 1,
+      "message": "Apologies for delay. I was waiting 24h for shadow review per go/tast-shadow-review. LGTM",
+      "parentUuid": "83860894_6bbdef8b",
+      "revId": "6742256364b70a7aae4f0acc634fbc8a815e1489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
