@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f52f986_51d7f18d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2021-04-15T03:51:17Z",
+      "side": 1,
+      "message": "Is there some retry logic in the tast test framework we can use? The Assistant test e.g. BluetoothQueries, will retry on timeout. But I cannot find where it is.",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "a2546a7bcc309b07810603d2b0c8aa44483e6e0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
