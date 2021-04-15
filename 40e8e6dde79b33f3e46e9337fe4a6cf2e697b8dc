@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05f71249_05a39cf5",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-15T23:26:31Z",
+      "side": 1,
+      "message": "tiny nit: For symmetry here, I would probably not combine the else/if.",
+      "revId": "40e8e6dde79b33f3e46e9337fe4a6cf2e697b8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
