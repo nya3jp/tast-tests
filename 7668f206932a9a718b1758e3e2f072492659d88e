@@ -60,6 +60,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6455395_d1f40acb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_ps175.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-04-15T18:47:15Z",
+      "side": 1,
+      "message": "Add fwupd SoftwareDeps: crrev.com/c/2829173",
+      "range": {
+        "startLine": 38,
+        "startChar": 47,
+        "endLine": 38,
+        "endChar": 48
+      },
+      "revId": "7668f206932a9a718b1758e3e2f072492659d88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9cfa265b_2702be27",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_ps175.go",
         "patchSetId": 2
