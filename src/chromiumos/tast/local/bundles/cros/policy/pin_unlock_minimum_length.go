@@ -27,7 +27,8 @@ func init() {
 			"gabormagda@google.com",
 			"chromeos-commercial-stability@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		// TODO(crbug.com/1191935) Re-enable the test after it is fixed.
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromePolicyLoggedIn",
 	})
