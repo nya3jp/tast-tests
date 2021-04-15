@@ -74,7 +74,10 @@ func HideWebStoreIcon(ctx context.Context, s *testing.State) {
 			}
 
 			// Update policies.
-			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.policy}); err != nil {
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{
+				&policy.PinnedLauncherApps{Val: []string{apps.WebStore.ID}},
+				param.policy,
+			}); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
@@ -94,13 +97,20 @@ func HideWebStoreIcon(ctx context.Context, s *testing.State) {
 			}
 
 			// Confirm the status of the Web Store icon.
-			app := apps.WebStore
+			webStoreApp := apps.WebStore
 
 			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
-				Name:      app.Name,
-				ClassName: "ui/app_list/AppListItemView",
+				Name:      webStoreApp.Name,
+				ClassName: "AppListItemView",
 			}, param.wantIcon, 15*time.Second); err != nil {
-				s.Error("Could not confirm the desired status of the Web Store Icon: ", err)
+				s.Error("Could not confirm the desired status of the Web Store Icon in the application launcher: ", err)
+			}
+
+			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
+				Name:      webStoreApp.Name,
+				ClassName: "ash/ShelfAppButton",
+			}, param.wantIcon, 15*time.Second); err != nil {
+				s.Error("Could not confirm the desired status of the Web Store Icon on the system shelf: ", err)
 			}
 		})
 	}
