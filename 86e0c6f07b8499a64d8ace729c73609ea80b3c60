@@ -22,6 +22,30 @@
       },
       "revId": "86e0c6f07b8499a64d8ace729c73609ea80b3c60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b677388b_6fcb57d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-15T23:50:59Z",
+      "side": 1,
+      "message": "Yes because I saw the jank criteria for these two metrics is []int64{14000, 60000} in ui/cuj/common_metrics so I changed it..",
+      "parentUuid": "886ffb69_52153df4",
+      "range": {
+        "startLine": 326,
+        "startChar": 25,
+        "endLine": 326,
+        "endChar": 37
+      },
+      "revId": "86e0c6f07b8499a64d8ace729c73609ea80b3c60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
