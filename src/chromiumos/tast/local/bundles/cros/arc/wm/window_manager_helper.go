@@ -723,3 +723,13 @@ func CheckHorizontalTabletSplit(ctx context.Context, tconn *chrome.TestConn, dis
 
 	return nil
 }
+
+// GetBoardName returns board name of the dut.
+// TODO(b/185422479): after the bug is fixed, delete this function
+func GetBoardName(ctx context.Context, a *arc.ARC) (string, error) {
+	out, err := a.Command(ctx, "getprop", "ro.product.board").Output()
+	if err != nil {
+		return "", err
+	}
+	return strings.TrimSpace(string(out)), nil
+}

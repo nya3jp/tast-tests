@@ -8,6 +8,7 @@ package wm
 import (
 	"context"
 	"math"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -80,11 +81,22 @@ func TabletDefaultLaunchHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 			if err != nil {
 				return err
 			}
+			// TODO(b/185422479): after the bug is fixed, uncomment the following section
+			// // Compare display orientation after activity is ready, it should be equal to activity's desired orientation.
+			// if tc.DesiredDO != newDO.Type {
+			// 	return errors.Errorf("invalid display orientation: got %q; want %q", newDO.Type, tc.DesiredDO)
+			// }
 
-			// Compare display orientation after activity is ready, it should be equal to activity's desired orientation.
-			if tc.DesiredDO != newDO.Type {
-				return errors.Errorf("invalid display orientation: got %q; want %q", newDO.Type, tc.DesiredDO)
+			// TODO(b/185422479): after the bug is fixed, delete this section:
+			// Delete section Start.
+			boardName, _ := GetBoardName(ctx, a)
+			if !strings.Contains(strings.ToLower(boardName), "kukui-arc-r") {
+				// Compare display orientation after activity is ready, it should be equal to activity's desired orientation.
+				if tc.DesiredDO != newDO.Type {
+					return errors.Errorf("invalid display orientation: got %q; want %q", newDO.Type, tc.DesiredDO)
+				}
 			}
+			// Delete section end.
 
 			return nil
 		}(); err != nil {

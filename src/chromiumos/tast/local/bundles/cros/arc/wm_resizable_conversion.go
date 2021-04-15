@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -213,9 +214,20 @@ func wmRV20(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	if err != nil {
 		return err
 	}
-	if tDO.Type != display.OrientationPortraitPrimary {
-		return errors.Errorf("invalid display orientation in tablet mode, got: %q, want: %q", tDO.Type, display.OrientationPortraitPrimary)
+	// TODO(b/185422479): after the bug is fixed, uncomment the following section
+	// if tDO.Type != display.OrientationPortraitPrimary {
+	// 	return errors.Errorf("invalid display orientation in tablet mode, got: %q, want: %q", tDO.Type, display.OrientationPortraitPrimary)
+	// }
+
+	// TODO(b/185422479): after the bug is fixed, delete this section:
+	// Delete section Start.
+	boardName, _ := wm.GetBoardName(ctx, a)
+	if !strings.Contains(strings.ToLower(boardName), "kukui-arc-r") {
+		if tabletModeDO.Type != desiredOrientationInTabletMode {
+			return errors.Errorf("invalid display orientation in tablet mode, got: %q, want: %q", tabletModeDO.Type, desiredOrientationInTabletMode)
+		}
 	}
+	// Delete section end.
 
 	// Disable tablet mode.
 	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
