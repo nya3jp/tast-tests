@@ -16,6 +16,23 @@
       "message": "PS11 also moves stepCtx into the runStep-s.",
       "revId": "52a8c87bdad3a40836fe6e29e80eb73fc4bcf195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b66e3bb_35e6531f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mtbf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-15T06:57:38Z",
+      "side": 1,
+      "message": "Yeah, you are right. defer cancel() outside the function will be called too late. If so, we can add timeout parameter to runStep() and for each runStep we can have the context.WithTimeout() before calling the function passing in.",
+      "revId": "52a8c87bdad3a40836fe6e29e80eb73fc4bcf195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
