@@ -87,6 +87,30 @@
       },
       "revId": "7a4721c86e45570639f6672f6a1cd3ab116ec1c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "020fa248_dfcd8516",
+        "filename": "src/chromiumos/tast/remote/dutfs/dutfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-15T18:12:18Z",
+      "side": 1,
+      "message": "This service just exists to plumb through a call to \"ioutil.Tempdir\", so it\u0027s subject to the constraints of that function: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2818833/3/src/chromiumos/tast/local/bundles/cros/baserpc/file_system_service.go\n\nI\u0027ll add a note in the comment about that.",
+      "parentUuid": "b5740b6c_012670e5",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 17
+      },
+      "revId": "7a4721c86e45570639f6672f6a1cd3ab116ec1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
