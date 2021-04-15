@@ -11,7 +11,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
@@ -267,28 +266,6 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 			sess = newSess
 		} else if err != nil {
 			return nil, errors.Wrap(err, "login failed")
-		}
-	}
-
-	// VK uses different extension instance in login profile and user profile.
-	// BackgroundConn will wait until the background connection is unique.
-	if cfg.VKEnabled() {
-		// Background target from login persists for a few seconds, causing 2 background targets.
-		// Polling until connected to the unique target.
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			const bgPageURLPrefix = "chrome-extension://jkghodnilhceideoidjikpgommlajknk/background"
-			bgTargetFilter := func(t *driver.Target) bool {
-				return strings.HasPrefix(t.URL, bgPageURLPrefix)
-			}
-
-			bconn, err := sess.NewConnForTarget(ctx, bgTargetFilter)
-			if err != nil {
-				return err
-			}
-			bconn.Close()
-			return nil
-		}, &testing.PollOptions{Timeout: 60 * time.Second, Interval: 1 * time.Second}); err != nil {
-			return nil, errors.Wrap(err, "failed to wait for unique virtual keyboard background target")
 		}
 	}
 
