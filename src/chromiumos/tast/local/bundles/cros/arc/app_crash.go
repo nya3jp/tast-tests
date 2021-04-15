@@ -6,13 +6,11 @@ package arc
 
 import (
 	"context"
-	"path/filepath"
 	"strings"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/arccrash"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -70,19 +68,11 @@ func AppCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to crash: ", err)
 	}
 
-	s.Log("Getting crash dir path")
-	user := cr.NormalizedUser()
-	path, err := cryptohome.UserPath(ctx, user)
-	if err != nil {
-		s.Fatal("Couldn't get user path: ", err)
-	}
-	crashDir := filepath.Join(path, "/crash")
-
 	s.Log("Waiting for crash files to become present")
-	// Wait files like com_android_settings_foo_bar.20200420.204845.12345.664107.log in crashDir
+	// Wait files like com_android_settings_foo_bar.20200420.204845.12345.664107.log in crash.UserCrashDir
 	base := strings.ReplaceAll(exampleApp, ".", "_") + `(?:_[[:alnum:]]+)*.\d{8}\.\d{6}\.\d+\.\d+`
 	metaFileName := base + crash.MetadataExt
-	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, []string{
+	files, err := crash.WaitForCrashFiles(ctx, []string{crash.UserCrashDir}, []string{
 		base + crash.LogExt, metaFileName, base + crash.InfoExt,
 	})
 	if err != nil {
