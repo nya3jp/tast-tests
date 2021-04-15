@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae16c54e_2ddd44ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_ps175.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-04-15T12:58:28Z",
+      "side": 1,
+      "message": "I probably would remove this from the regex since it might change quite a bit between releases and would make the test purpose unstable",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "7668f206932a9a718b1758e3e2f072492659d88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9cfa265b_2702be27",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_ps175.go",
         "patchSetId": 2
