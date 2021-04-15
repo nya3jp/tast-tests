@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/remote/bundles/cros/ui/conference"
 	"chromiumos/tast/rpc"
 	pb "chromiumos/tast/services/cros/ui"
@@ -19,7 +20,7 @@ func init() {
 		Func:         GoogleMeetCUJ,
 		Desc:         "Host a Google Meet video conference and do presentation to participants",
 		Contacts:     []string{"jane.yang@cienet.com", "xliu@cienet.com"},
-		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		ServiceDeps: []string{
 			"tast.cros.ui.ConferenceService",
 		},
