@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b760b38_cf1f7eb6",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-15T04:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf970c04_f320c4e3",
+      "range": {
+        "startLine": 133,
+        "startChar": 6,
+        "endLine": 133,
+        "endChar": 17
+      },
+      "revId": "add6254f7f0f6e74aeaddf2012700169515c56b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33ea0459_63a03226",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-14T14:37:01Z",
       "side": 1,
       "message": "nit: 3s is quite short. I would prefer 5s or even 10s unless there is a strong reason.",
+      "range": {
+        "startLine": 141,
+        "startChar": 34,
+        "endLine": 141,
+        "endChar": 35
+      },
+      "revId": "add6254f7f0f6e74aeaddf2012700169515c56b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50242baa_d00b49af",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-15T04:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33ea0459_63a03226",
       "range": {
         "startLine": 141,
         "startChar": 34,
