@@ -27,8 +27,9 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "chromePolicyLoggedIn",
+		// TODO(crbug.com/1156041) Re-enable the test after it is fixed.
+		// Attr:         []string{"group:mainline", "informational"},
+		Fixture: "chromePolicyLoggedIn",
 	})
 }
 
