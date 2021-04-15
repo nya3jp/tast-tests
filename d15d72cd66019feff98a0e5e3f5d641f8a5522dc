@@ -218,6 +218,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8380a5f_e7a9ec6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-15T05:58:38Z",
+      "side": 1,
+      "message": "Per discussion, our decision is to keep it as is and refactor this part once we introduce the Fixture in Tast (tracking bug: b/177800595).",
+      "parentUuid": "c99c4320_5321c7f3",
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb2af0fd_c8ce0ae2",
