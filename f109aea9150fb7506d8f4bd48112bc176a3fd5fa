@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f2e11e_49736758",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-04-15T07:58:04Z",
+      "side": 1,
+      "message": "Thanks a lot for this change, Trent!",
+      "revId": "f109aea9150fb7506d8f4bd48112bc176a3fd5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "961a838e_fffcda0f",
@@ -36,6 +53,29 @@
         "startChar": 80,
         "endLine": 20,
         "endChar": 81
+      },
+      "revId": "f109aea9150fb7506d8f4bd48112bc176a3fd5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e316584_4cd61cfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/firewall/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-04-15T07:58:04Z",
+      "side": 1,
+      "message": "super nit: WDYT about adding AllowProtocols for symmetry? Or adding a comment to AllowPorts which says it only opens ports for tcp traffic and on BlockPorts to specify it will block the ports for all the protocols specified in BlockProtocols?\n\nAlternatively, this firewall utility could be implemented in a similar way like the existing firewall.go utility[1] in remote tests, where rules are specified one-by-one.\n\n[1]http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/network/firewall/firewall.go?l\u003d61\u0026rcl\u003d2d9a949e89bdfff64c68381e49146edc4c0092ec",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 15
       },
       "revId": "f109aea9150fb7506d8f4bd48112bc176a3fd5fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
