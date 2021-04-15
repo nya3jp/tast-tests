@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf2fdef9_172613eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-04-15T15:55:31Z",
+      "side": 1,
+      "message": "I think the masters of go are getting used to the default init value of struct. Setting a struct bool field to false when declaring a struct var feel unnecessary.\n\nBasically, think owner wants to get rid of all \"false\" lines so that it is easier to see what the struct actually carries.\n\n  Val: meetTest{\n  \tnum:      4,\n  \tlayout:   meetLayoutTiled,\n  \tpresent:  false,\n  \tdocs:     false,\n  \tjamboard: false,\n  \tsplit:    false,\n  \tcam:      true,\n  \tpower:    false,\n  }\n\n\u003d\u003e\n\n  Val: meetTest{\n  \tnum:      4,\n  \tlayout:   meetLayoutTiled,\n  \tcam:      true,\n  }\n\nWhich would be easier to know that this test variation would do 4 party meeting, using tiled layout, and has camera enabled.\n\nDoes that make sense?",
+      "parentUuid": "779bc826_11faae2b",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 20
+      },
+      "revId": "1120dd3484b5639e29832fc591eed1acef662eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dafa33f_0df91538",
