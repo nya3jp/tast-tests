@@ -75,13 +75,28 @@ func ConnectAndCollectPcap(ctx context.Context, tf *wificell.TestFixture, apOps 
 // ScanAndCollectPcap requests active scans and collect pcap file on channel ch.
 // Path to the pcap file is returned.
 func ScanAndCollectPcap(fullCtx context.Context, tf *wificell.TestFixture, name string, scanCount, ch int) (string, error) {
+	action := func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Request active scans")
+		req := &network.RequestScansRequest{Count: int32(scanCount)}
+		if _, err := tf.WifiClient().RequestScans(ctx, req); err != nil {
+			return errors.Wrap(err, "failed to trigger active scans")
+		}
+		return nil
+	}
+	return CollectPcapForAction(fullCtx, tf.Pcap(), name, ch, action)
+}
+
+// CollectPcapForAction starts a capture on the specified channel, performs a
+// custom action, and then stops the capture. The path to the pcap file is
+// returned.
+func CollectPcapForAction(fullCtx context.Context, router *wificell.Router, name string, ch int, action func(context.Context) error) (string, error) {
 	capturer, err := func() (ret *pcap.Capturer, retErr error) {
-		capturer, err := tf.Pcap().StartCapture(fullCtx, name, ch, nil)
+		capturer, err := router.StartCapture(fullCtx, name, ch, nil)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to start capturer")
 		}
 		defer func() {
-			if err := tf.Pcap().StopCapture(fullCtx, capturer); err != nil {
+			if err := router.StopCapture(fullCtx, capturer); err != nil {
 				if retErr == nil {
 					ret = nil
 					retErr = errors.Wrap(err, "failed to stop capturer")
@@ -91,14 +106,13 @@ func ScanAndCollectPcap(fullCtx context.Context, tf *wificell.TestFixture, name 
 			}
 		}()
 
-		ctx, cancel := tf.Pcap().ReserveForStopCapture(fullCtx, capturer)
+		ctx, cancel := router.ReserveForStopCapture(fullCtx, capturer)
 		defer cancel()
 
-		testing.ContextLog(ctx, "Request active scans")
-		req := &network.RequestScansRequest{Count: int32(scanCount)}
-		if _, err := tf.WifiClient().RequestScans(ctx, req); err != nil {
-			return nil, errors.Wrap(err, "failed to trigger active scans")
+		if err := action(ctx); err != nil {
+			return nil, err
 		}
+
 		return capturer, nil
 	}()
 	if err != nil {
