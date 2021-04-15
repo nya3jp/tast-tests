@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73472776_581aac28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-15T01:51:13Z",
+      "side": 1,
+      "message": "+2 for Tast Owners % nit",
+      "revId": "7c001d14d02e6a8bf0504804f69f55638c3c5c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d606d77_729d3819",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-15T01:51:13Z",
+      "side": 1,
+      "message": "nit: there is all sorts of punctuation and capitalization being used here, perhaps this could be cleaned up a little? For example:\n\n\"there are %d JS errors, first error: level\u003d%v, type\u003d%v, name\u003d%v\"",
+      "range": {
+        "startLine": 399,
+        "startChar": 65,
+        "endLine": 399,
+        "endChar": 89
+      },
+      "revId": "7c001d14d02e6a8bf0504804f69f55638c3c5c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "646b73f7_2cfc92ef",
