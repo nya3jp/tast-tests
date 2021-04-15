@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5f9263_0db34cb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-15T04:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c6f7921_e4f37672",
+      "range": {
+        "startLine": 15,
+        "startChar": 43,
+        "endLine": 15,
+        "endChar": 56
+      },
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e60972f_17a3e665",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-15T04:56:52Z",
+      "side": 1,
+      "message": "I got it. I\u0027ll try to split them in the future. Thanks for reminding!",
+      "parentUuid": "ccd718c8_4c50cd2d",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "100de70a_8d41b210",
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a31d3a60_88efbc6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-15T04:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "100de70a_8d41b210",
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64d28ebc_281817b6",
@@ -77,6 +143,24 @@
       "writtenOn": "2021-04-15T03:04:47Z",
       "side": 1,
       "message": "The two chunks can connect together as subTestCtx is created for s.Run().\n\nAt least the blank line shall be placed before subTestCtx definition.",
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1df20c9c_e649cd21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-15T04:56:52Z",
+      "side": 1,
+      "message": "I am not sure I understand it correctly. Moved the blank line. PTAL, thanks!",
+      "parentUuid": "64d28ebc_281817b6",
       "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -100,6 +184,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "613f5345_821684aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-15T04:56:52Z",
+      "side": 1,
+      "message": "My concern is that if the subtest fails due to timeout, the restart will not be called properly and might affect the following sub tests (Although we don\u0027t have any other sub tests in CCAUIPreview now but some other tests do have).\n\nIs there any concern that we don\u0027t want to restart app between sub tests? (e.g. Take too long when restart (?))\n\nIdeally, I think we should check for any JS error in the end of every sub tests so that we can understand the timing when en error happens.\nAlso, we might want to restart app even when the sub test pass so that one sub test will less likely interfered by the others.\n\nWDYT?",
+      "parentUuid": "a05dca50_3161cf7c",
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb2af0fd_c8ce0ae2",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
         "patchSetId": 3
@@ -111,6 +213,24 @@
       "writtenOn": "2021-04-14T14:33:36Z",
       "side": 1,
       "message": "This looks a little bit short as it starts a Chrome in every subtest. How about 60s here?",
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fba4049_f2d5eeb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-15T04:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb2af0fd_c8ce0ae2",
       "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +252,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cb31f8f_d53f5c9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-15T04:56:52Z",
+      "side": 1,
+      "message": "Yes, but as Shik mentioned in his comments, doing so might make the JS errors reported to the incorrect sub test. Therefore, I think |restartApp()| should better happen after running |testFunc()|. Modified it.",
+      "parentUuid": "3b07827a_5d14126d",
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6ef40ac_4e770dc7",
@@ -145,6 +283,24 @@
       "writtenOn": "2021-04-14T14:33:36Z",
       "side": 1,
       "message": "Should we move this to the end of each round? Otherwise the previous JS error would be reported in wrong subtest.",
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3249d58_1e01ac60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-15T04:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6ef40ac_4e770dc7",
       "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -172,6 +328,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "247db5c2_7bccade9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-15T04:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c101f4f_b286d84d",
+      "range": {
+        "startLine": 84,
+        "startChar": 41,
+        "endLine": 84,
+        "endChar": 55
+      },
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74d743c1_142305bf",
@@ -185,6 +365,24 @@
       "writtenOn": "2021-04-15T03:04:47Z",
       "side": 1,
       "message": "Same here: the order of testFnc() and restartApp() swapped.",
+      "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fd396b6_6a630d7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-15T04:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74d743c1_142305bf",
       "revId": "d15d72cd66019feff98a0e5e3f5d641f8a5522dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
