@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9857cec5_4623cf0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_firewall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-15T08:52:08Z",
+      "side": 1,
+      "message": "nit: maybe: \"are a lot of activities\"",
+      "range": {
+        "startLine": 57,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "e28fba88c3ab46b08677f99609c982671fc82b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b1b4635_48ef6df9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_firewall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-15T08:52:08Z",
+      "side": 1,
+      "message": "clarification: why? can we wait for the situation gets stable? At least, there\u0027s no guarantee 5 seconds is enough. Or, if 5 seconds is too long, it just consumes time unnecessarily, that\u0027s cost of maintenance.",
+      "range": {
+        "startLine": 58,
+        "startChar": 70,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "e28fba88c3ab46b08677f99609c982671fc82b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
