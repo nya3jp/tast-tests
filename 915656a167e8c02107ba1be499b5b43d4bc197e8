@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c47e6164_2ac385d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-04-15T13:24:16Z",
+      "side": 1,
+      "message": "Faliure on wifi.HeCaps is KI b/185276286\narc.DragDrop is unrelated.\n\nChumping",
+      "revId": "915656a167e8c02107ba1be499b5b43d4bc197e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
