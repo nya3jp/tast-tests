@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32cd5f52_b0ff8662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-04-15T10:12:36Z",
+      "side": 1,
+      "message": "There might still be racy here. Per offline discussion, we need to do two things actually:\n\n1. We need to poll until isSystemWebAppOpen() is false to ensure that CCA is treated as \"closed\" by SWA subsystem in Chrome.\n2. We need to poll until IsTargetAvailable() is false to ensure that CCA is treated as \"closed\" by CDP subsystem in Chrome.\n\nPoll only one thing might work if we are lucky that the polled one always come later than the another one. But IMO that\u0027s implementation detail of SWA/CDP that we should avoid to rely on.",
+      "revId": "4c0b4cc2370ba3088a995e60674df8bcf7497ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
