@@ -148,6 +148,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0cfe376a_dafbcecd",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-04-15T03:15:05Z",
+      "side": 1,
+      "message": "Won\u0027t ARM return an error when it fails to find /sys/devices/msr/events/tsc? It looks like that error would get propagated and cause a test failure.",
+      "parentUuid": "c1998033_d48bb250",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 17
+      },
+      "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dad702ad_4c9bcd34",
         "filename": "src/chromiumos/tast/local/graphics/perf.go",
         "patchSetId": 5
@@ -183,6 +207,30 @@
       "side": 1,
       "message": "Removed from here and l.51-53.",
       "parentUuid": "dad702ad_4c9bcd34",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 103
+      },
+      "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8ad8695_29917883",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-04-15T03:15:05Z",
+      "side": 1,
+      "message": "This line is still here.",
+      "parentUuid": "6217bde2_0c83b419",
       "range": {
         "startLine": 163,
         "startChar": 0,
@@ -277,6 +325,30 @@
       "side": 1,
       "message": "If we didn\u0027t limit the counters to the first CPU, the result\nwould add the TSCs of each CPU, falsifying the numbers. There\nare no multiple package CPUs in ChromeOS (those would be Xeons).\nLeaving a comment.",
       "parentUuid": "2a6a222c_9de5eabf",
+      "range": {
+        "startLine": 173,
+        "startChar": 27,
+        "endLine": 173,
+        "endChar": 36
+      },
+      "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f4e1954_f21cae12",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-04-15T03:15:05Z",
+      "side": 1,
+      "message": "I meant is there a reason why it\u0027s \u0027-C 1\u0027 instead of \u0027-C 0\u0027. I don\u0027t think we have any unicore devices, so I guess it won\u0027t cause any problems. But it\u0027s still a little strange to be using the second CPU (cpu1) instead of the first CPU (cpu0).",
+      "parentUuid": "23b3b9f3_a6d40fa7",
       "range": {
         "startLine": 173,
         "startChar": 27,
