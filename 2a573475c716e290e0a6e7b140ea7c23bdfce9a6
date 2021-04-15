@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fbd621d_b9325276",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-15T02:40:46Z",
+      "side": 1,
+      "message": "Rewritten.",
+      "parentUuid": "75f14950_e2d7d874",
+      "range": {
+        "startLine": 133,
+        "startChar": 15,
+        "endLine": 133,
+        "endChar": 74
+      },
+      "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb245c2a_7d6d7258",
@@ -88,6 +112,30 @@
       "writtenOn": "2021-04-15T01:13:50Z",
       "side": 1,
       "message": "These are all intel specific. Have you tested this function to ensure it works as expected on ARM/AMD devices?",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 17
+      },
+      "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1998033_d48bb250",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-15T02:40:46Z",
+      "side": 1,
+      "message": "On those devices there aren\u0027t any /sys/devices/cstate_pkg/events/,\nso this whole function returns nothing. This is by design, but \nwe\u0027d like e.g. AMD to implement similar counters (C-States are not\nIntel specific).",
+      "parentUuid": "cb245c2a_7d6d7258",
       "range": {
         "startLine": 136,
         "startChar": 5,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6217bde2_0c83b419",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-15T02:40:46Z",
+      "side": 1,
+      "message": "Removed from here and l.51-53.",
+      "parentUuid": "dad702ad_4c9bcd34",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 103
+      },
+      "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "281bc658_9a78aedd",
@@ -144,6 +216,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dde84dce_67f22b2a",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-15T02:40:46Z",
+      "side": 1,
+      "message": "Ah yes, this was a leftover from previous patches, removing.",
+      "parentUuid": "281bc658_9a78aedd",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a6a222c_9de5eabf",
@@ -157,6 +253,30 @@
       "writtenOn": "2021-04-15T01:13:50Z",
       "side": 1,
       "message": "Any reason this is CPU 1 instead of CPU 0? Also, this doesn\u0027t handle boards with multiple packages, although I guess that\u0027s maybe fine for CrOS.",
+      "range": {
+        "startLine": 173,
+        "startChar": 27,
+        "endLine": 173,
+        "endChar": 36
+      },
+      "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23b3b9f3_a6d40fa7",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-15T02:40:46Z",
+      "side": 1,
+      "message": "If we didn\u0027t limit the counters to the first CPU, the result\nwould add the TSCs of each CPU, falsifying the numbers. There\nare no multiple package CPUs in ChromeOS (those would be Xeons).\nLeaving a comment.",
+      "parentUuid": "2a6a222c_9de5eabf",
       "range": {
         "startLine": 173,
         "startChar": 27,
