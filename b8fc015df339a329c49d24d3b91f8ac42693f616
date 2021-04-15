@@ -16,6 +16,80 @@
       "message": "Thanks for the reviews!",
       "revId": "b8fc015df339a329c49d24d3b91f8ac42693f616",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e133245f_4514d753",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-15T13:00:28Z",
+      "side": 1,
+      "message": "LGTM % some comment nits",
+      "revId": "b8fc015df339a329c49d24d3b91f8ac42693f616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23d3c814_43dcc7ea",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-15T13:00:28Z",
+      "side": 1,
+      "message": "nit: add comment on why this is using BlobUserPolicies",
+      "revId": "b8fc015df339a329c49d24d3b91f8ac42693f616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cc1352e_1430cbee",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-15T13:00:28Z",
+      "side": 1,
+      "message": "Move to the next line.",
+      "range": {
+        "startLine": 123,
+        "startChar": 111,
+        "endLine": 123,
+        "endChar": 114
+      },
+      "revId": "b8fc015df339a329c49d24d3b91f8ac42693f616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e4eb76e_680ac5a8",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-15T13:00:28Z",
+      "side": 1,
+      "message": "nit: either make this fit 80 characters or split by sentence.",
+      "revId": "b8fc015df339a329c49d24d3b91f8ac42693f616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
