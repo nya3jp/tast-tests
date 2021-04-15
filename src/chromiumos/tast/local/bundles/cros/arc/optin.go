@@ -36,7 +36,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "unstable",
-			Val:               2,
+			Val:               1,
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -45,7 +45,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
 			Name:              "vm_unstable",
-			Val:               2,
+			Val:               1,
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
