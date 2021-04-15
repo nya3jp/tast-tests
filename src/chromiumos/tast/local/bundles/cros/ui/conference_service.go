@@ -48,13 +48,6 @@ func init() {
 	})
 }
 
-const (
-	twoRoomSize   = 2
-	smallRoomSize = 5
-	largeRoomSize = 17
-	classRoomSize = 38
-)
-
 type ConferenceService struct {
 	s *testing.ServiceState
 }
@@ -83,11 +76,11 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 
 	var urlVar string
 	switch req.RoomSize {
-	case smallRoomSize:
+	case conference.SmallRoomSize:
 		urlVar = "ui.meet_url_small"
-	case largeRoomSize:
+	case conference.LargeRoomSize:
 		urlVar = "ui.meet_url_large"
-	case classRoomSize:
+	case conference.ClassRoomSize:
 		urlVar = "ui.meet_url_class"
 	default:
 		urlVar = "ui.meet_url_two"
@@ -105,7 +98,6 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		// Make sure we are running new chrome UI when tablet mode is enabled by CUJ test.
 		// Remove this when new UI becomes default.
 		chrome.EnableFeatures("WebUITabStrip"),
-		chrome.KeepState(),
 		chrome.ARCSupported(),
 		chrome.GAIALogin(chrome.Creds{User: account, Pass: password}))
 	if err != nil {
@@ -146,6 +138,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 	// Creates a Google Meet conference instance which implements conference.Conference methods
 	// which provides conference operations.
 	gmcli := conference.NewGoogleMeetConference(cr, tconn, tabletMode, int(req.RoomSize), meetAccount, meetPassword)
+	defer gmcli.End(ctx)
 	// Shorten context a bit to allow for cleanup if Run fails.
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()

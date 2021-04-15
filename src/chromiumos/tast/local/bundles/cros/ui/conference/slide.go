@@ -60,14 +60,26 @@ func newGoogleSlides(ctx context.Context, cr *chrome.Chrome, newWindow bool) err
 		titleNode := nodewith.Name("title").First()
 		subtitleNode := nodewith.Name("subtitle").First()
 
+		checkOKButton := func(ctx context.Context) error {
+			okButton := nodewith.Name("OK").Role(role.Button)
+			if err := ui.Exists(okButton); err != nil {
+				// OK button doesn't exist. Just return.
+				return nil
+			}
+			if err := ui.ImmediateLeftClick(okButton)(ctx); err != nil {
+				return errors.Wrap(err, "failed to immediately click OK button")
+			}
+			testing.ContextLog(ctx, "Clicked ok in the first time")
+			return nil
+		}
+
 		if err := uiauto.Combine("create new slide",
 			ui.WaitUntilExists(newButton),
-			// The `Google Slides` element with longer animation and
-			// it would take more time on some of DUTs which with poor performance.
-			// If with shorter interval, the menu would disappear because of `LeftClickUntil` retry mechanism.
-			ui.WithTimeout(30*time.Second).LeftClickUntil(newButton, ui.WaitUntilExists(googleSlides)),
+			checkOKButton,
+			// Use LeftClickUntil to make sure Google Slides menu is launched.
+			ui.LeftClickUntil(newButton, ui.WithTimeout(3*time.Second).WaitUntilExists(googleSlides)),
 			ui.LeftClick(googleSlides),
-			// Some of DUT models with poor performance need to wait a long time.
+			// Some DUT models with poor performance need to wait a long time.
 			ui.WithTimeout(2*time.Minute).WaitUntilExists(filmstripView),
 		)(ctx); err != nil {
 			return err
@@ -88,6 +100,7 @@ func newGoogleSlides(ctx context.Context, cr *chrome.Chrome, newWindow bool) err
 	}
 
 	newSlide := func(title, content, pageNumber string) error {
+		testing.ContextLog(ctx, "Create new slide and edit content, page number is ", pageNumber)
 		newSlide := nodewith.Name("New slide (Ctrl+M)").Role(role.Button)
 		titleNode := nodewith.Name("title").First()
 		pageNumberNode := nodewith.Name(pageNumber).First()
