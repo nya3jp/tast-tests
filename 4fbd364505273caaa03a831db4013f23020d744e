@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb49060_167ce6a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-15T18:06:54Z",
+      "side": 1,
+      "message": "This seems as robust a way as any to ensure that Shill is \"ready\".\n",
+      "revId": "4fbd364505273caaa03a831db4013f23020d744e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
