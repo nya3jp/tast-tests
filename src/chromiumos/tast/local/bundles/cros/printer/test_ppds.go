@@ -15,6 +15,7 @@ import (
 	"runtime"
 	"sort"
 	"sync"
+	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -35,6 +36,8 @@ func init() {
 			"group:paper-io",
 			"paper-io_printing",
 		},
+		// This may take a while on zork boards.
+		Timeout:      time.Minute * 10,
 		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data:         []string{ppdsAll},
 	})
