@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d138c8b2_54ea20a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-15T18:28:05Z",
+      "side": 1,
+      "message": "nit: crash.UserCrashDir",
+      "range": {
+        "startLine": 72,
+        "startChar": 85,
+        "endLine": 72,
+        "endChar": 109
+      },
+      "revId": "e6159137be412deeafd661e16e1e0278c20126be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17cf3d62_cd7128c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cxx_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-15T18:28:05Z",
+      "side": 1,
+      "message": "Same",
+      "range": {
+        "startLine": 71,
+        "startChar": 59,
+        "endLine": 71,
+        "endChar": 83
+      },
+      "revId": "e6159137be412deeafd661e16e1e0278c20126be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c8e1e07_f1389318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cxx_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-15T18:28:05Z",
+      "side": 1,
+      "message": "Could the race you mention in the commit message affect this logic?",
+      "range": {
+        "startLine": 109,
+        "startChar": 46,
+        "endLine": 109,
+        "endChar": 60
+      },
+      "revId": "e6159137be412deeafd661e16e1e0278c20126be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b7e2547_4a47fff2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-15T18:28:05Z",
+      "side": 1,
+      "message": "crash.UserCrashDIr",
+      "range": {
+        "startLine": 113,
+        "startChar": 63,
+        "endLine": 113,
+        "endChar": 88
+      },
+      "revId": "e6159137be412deeafd661e16e1e0278c20126be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
