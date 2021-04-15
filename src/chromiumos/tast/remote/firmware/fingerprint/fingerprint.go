@@ -407,6 +407,11 @@ func (t *FirmwareTest) DUTTempDir() string {
 	return t.dutTempDir
 }
 
+// FPBoard gets the fingerprint board name.
+func (t *FirmwareTest) FPBoard() FPBoardName {
+	return t.fpBoard
+}
+
 // NeedsRebootAfterFlashing returns true if device needs to be rebooted after flashing.
 // Zork cannot rebind cros-ec-uart after flashing, so an AP reboot is
 // needed to talk to FPMCU. See b/170213489.
