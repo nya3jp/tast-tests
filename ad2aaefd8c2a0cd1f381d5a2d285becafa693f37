@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54b285c9_d5c3ec89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-04-15T05:30:27Z",
+      "side": 1,
+      "message": "R PFQ seems red, please wait until uprev to include your Android R change (I guess CQ will fail.)\n\nS is at ab/7281914 but that\u0027s Apr 14 and already includes your change.\n",
+      "revId": "ad2aaefd8c2a0cd1f381d5a2d285becafa693f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67e24971_a53f82dd",
