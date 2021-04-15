@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AutoplayAllowed</title>
+</head>
+<body>
+  <audio id="auto_play_audio" controls autoplay>
+    <source src="media_tetris.mp3" type="audio/mp3">
+    Your browser does not support the video tag.
+  </video>
+  <script>
+    function isVideoPlaying(){
+      var audio = document.getElementById("auto_play_audio");
+      if(audio.paused) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  </script>
+</body>
+</html>
