@@ -39,6 +39,30 @@
       },
       "revId": "d62d5ca49cffdd3e6cdec0b7abefb39e64fc1bb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7406bca_4caee942",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_ps175.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-04-15T03:00:57Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "a40ff452_644a5e85",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 60
+      },
+      "revId": "d62d5ca49cffdd3e6cdec0b7abefb39e64fc1bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
