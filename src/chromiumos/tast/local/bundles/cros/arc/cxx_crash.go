@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/arccrash"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -68,19 +67,11 @@ func CxxCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to crash: the process has successfully finished without crashing")
 	}
 
-	s.Log("Getting crash dir path")
-	user := cr.NormalizedUser()
-	path, err := cryptohome.UserPath(ctx, user)
-	if err != nil {
-		s.Fatal("Couldn't get user path: ", err)
-	}
-	crashDir := filepath.Join(path, "/crash")
-
 	s.Log("Waiting for crash files to become present")
-	// Wait files like sh.20200420.204845.12345.664107.dmp in crashDir
+	// Wait files like sh.20200420.204845.12345.664107.dmp in /home/chronos/user/crash
 	const stem = `sh\.\d{8}\.\d{6}\.\d+\.\d+`
 	metaFileName := stem + crash.MetadataExt
-	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, []string{
+	files, err := crash.WaitForCrashFiles(ctx, []string{crash.UserCrashDir}, []string{
 		stem + crash.MinidumpExt, metaFileName,
 	})
 	if err != nil {
@@ -115,7 +106,7 @@ func CxxCrash(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Getting the dir path for temporary dump files")
-	androidDataDir, err := arc.AndroidDataDir(user)
+	androidDataDir, err := arc.AndroidDataDir(cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get android-data dir: ", err)
 	}

@@ -109,17 +109,11 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	}
 	// `defer a.Close(ctx)` is not needed here because it's already declared.
 
-	s.Log("Getting crash dir path")
-	crashDir, err := crash.GetCrashDir("chronos")
-	if err != nil {
-		s.Fatal("Failed to get crashDir: ", err)
-	}
-
 	s.Log("Waiting for crash files to become present")
-	// Wait files like arcvm_kernel.20200420.204845.12345.0.log in crashDir
+	// Wait files like arcvm_kernel.20200420.204845.12345.0.log in /home/chronos/user/crash
 	const stem = `arcvm_kernel\.\d{8}\.\d{6}\.\d+\.\d+`
 	metaFileName := stem + crash.MetadataExt
-	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, []string{
+	files, err := crash.WaitForCrashFiles(ctx, []string{crash.UserCrashDir}, []string{
 		stem + crash.LogExt, metaFileName,
 	})
 	if err != nil {
