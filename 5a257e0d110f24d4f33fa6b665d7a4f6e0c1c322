@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36cfc480_d58f59a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-15T11:48:48Z",
+      "side": 1,
+      "message": "Thanks for working so hard on this. The structure looks good now.",
+      "revId": "5a257e0d110f24d4f33fa6b665d7a4f6e0c1c322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17124e0b_49f50d0b",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-15T11:48:48Z",
+      "side": 1,
+      "message": "Why is this used? I\u0027m not against it, but the comment can just be added in the PolicyBlob struct.",
+      "revId": "5a257e0d110f24d4f33fa6b665d7a4f6e0c1c322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "363d8d9b_98a32ce2",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-15T11:48:48Z",
+      "side": 1,
+      "message": "nit: add an example accountID (like tast-user@managedchrome.com).",
+      "revId": "5a257e0d110f24d4f33fa6b665d7a4f6e0c1c322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ea07ec5_4f3b1437",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-15T11:48:48Z",
+      "side": 1,
+      "message": "nit: move this to the function documentation so it shows up in docs.",
+      "revId": "5a257e0d110f24d4f33fa6b665d7a4f6e0c1c322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a212338_fa486725",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-15T11:48:48Z",
+      "side": 1,
+      "message": "nit: skip the double marshal if pb.PublicAccountPs is empty. Most tests don\u0027t need it.",
+      "revId": "5a257e0d110f24d4f33fa6b665d7a4f6e0c1c322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "783e4398_0998aa99",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-15T11:48:48Z",
+      "side": 1,
+      "message": "minor nit: add a test to make sure this works as expected.\n\nCan also be done in a later CL.",
+      "revId": "5a257e0d110f24d4f33fa6b665d7a4f6e0c1c322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
