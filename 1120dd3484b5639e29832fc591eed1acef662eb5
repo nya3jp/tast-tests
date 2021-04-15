@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "779bc826_11faae2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-15T10:16:48Z",
+      "side": 1,
+      "message": "Those fields might not be set with the default value after we add more tests in the future.",
+      "parentUuid": "8fc1f29b_f539749f",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 20
+      },
+      "revId": "1120dd3484b5639e29832fc591eed1acef662eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dafa33f_0df91538",
@@ -89,6 +113,30 @@
       "writtenOn": "2021-04-15T01:46:44Z",
       "side": 1,
       "message": "This function seems very long. Perhaps you could break it up and refactoring parts of it out into different functions (in a follow-up)?",
+      "range": {
+        "startLine": 193,
+        "startChar": 5,
+        "endLine": 193,
+        "endChar": 12
+      },
+      "revId": "1120dd3484b5639e29832fc591eed1acef662eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ee6281d_1506b9a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-15T10:16:48Z",
+      "side": 1,
+      "message": "Sure, will do it in a followup cl.",
+      "parentUuid": "1dafa33f_0df91538",
       "range": {
         "startLine": 193,
         "startChar": 5,
@@ -122,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4d3b035_bf3be1c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-15T10:16:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19c3cf26_71f7b817",
+      "range": {
+        "startLine": 333,
+        "startChar": 11,
+        "endLine": 333,
+        "endChar": 24
+      },
+      "revId": "1120dd3484b5639e29832fc591eed1acef662eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3936866e_0d7bd6b4",
@@ -135,6 +207,30 @@
       "writtenOn": "2021-04-15T01:46:44Z",
       "side": 1,
       "message": "https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\nif !meet.docs \u0026\u0026 !meet.jamboard {\n     return errors.New(\"need a Google Docs or Jamboard tab to present\")\n}\n// Start presenting the tab.",
+      "range": {
+        "startLine": 583,
+        "startChar": 3,
+        "endLine": 583,
+        "endChar": 34
+      },
+      "revId": "1120dd3484b5639e29832fc591eed1acef662eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea9e4bf_cb8ff193",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-15T10:16:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3936866e_0d7bd6b4",
       "range": {
         "startLine": 583,
         "startChar": 3,
