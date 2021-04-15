@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AutoplayAllowed</title>
+</head>
+<body>
+  <audio id="auto_play_media" controls autoplay loop>
+    <source src="audio.mp3" type="audio/mp3">
+    Your browser does not support the audio tag.
+  </audio>
+  <script>
+    function isMediaPlaying(){
+      var media = document.getElementById("auto_play_media");
+      if(media.paused) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  </script>
+</body>
+</html>
