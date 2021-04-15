@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ae98ab4_5b17907c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-15T11:48:32Z",
+      "side": 1,
+      "message": "nit: let\u0027s maybe be a bit more specific. For example\n\n\"Fix typo in QuickUnlockModeWhitelist test comment\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "ab8536301f7631199a37dc131d0548f76e38de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5c811975_5da828a1",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-04-15T11:26:44Z",
       "side": 1,
       "message": "Hi Oleh, PTAL.",
+      "revId": "ab8536301f7631199a37dc131d0548f76e38de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47b45ec0_5a580ddd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-15T11:48:32Z",
+      "side": 1,
+      "message": "LGTM % nit, thanks!",
       "revId": "ab8536301f7631199a37dc131d0548f76e38de14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
