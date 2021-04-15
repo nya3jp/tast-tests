@@ -8,6 +8,7 @@ import (
 	"context"
 	"regexp"
 
+	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
@@ -29,7 +30,7 @@ func init() {
 		Attr:         []string{"group:mainline", "group:fingerprint-cq"},
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
-		ServiceDeps:  []string{"tast.cros.platform.UpstartService"},
+		ServiceDeps:  []string{"tast.cros.platform.UpstartService", dutfs.ServiceName},
 		Vars:         []string{"servo"},
 	})
 }
@@ -42,16 +43,33 @@ func FpSensor(ctx context.Context, s *testing.State) {
 	}
 	defer pxy.Close(ctx)
 
+	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	}
+
+	dutfsClient := dutfs.NewClient(cl.Conn)
+
+	fpBoard, err := fingerprint.Board(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to get fingerprint board: ", err)
+	}
+
+	buildFWFile, err := fingerprint.FirmwarePath(ctx, d, fpBoard)
+	if err != nil {
+		s.Fatal("Failed to get build firmware file path: ", err)
+	}
+
 	needsReboot, err := fingerprint.NeedsRebootAfterFlashing(ctx, d)
 	if err != nil {
 		s.Fatal("Failed to determine whether reboot is needed: ", err)
 	}
 
-	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy, needsReboot); err != nil {
+	if err := fingerprint.InitializeKnownState(ctx, d, dutfsClient, s.OutDir(), pxy, fpBoard, buildFWFile, needsReboot); err != nil {
 		s.Fatal("Initialization failed: ", err)
 	}
 
-	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	cl, err = rpc.Dial(ctx, d, s.RPCHint(), "cros")
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
