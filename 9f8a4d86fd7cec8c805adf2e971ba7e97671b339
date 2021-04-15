@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e885de5_d9495076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-04-15T17:50:05Z",
+      "side": 1,
+      "message": "Made me think - it is anticipated on that board to take long or known :)",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 13
+      },
+      "revId": "9f8a4d86fd7cec8c805adf2e971ba7e97671b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
