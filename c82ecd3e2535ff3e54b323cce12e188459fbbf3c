@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d600942_d4aff99d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-04-15T11:22:26Z",
+      "side": 1,
+      "message": "A short update here: There seems to be a new issue affecting this and some other tests, see https://crbug.com/1191935. I\u0027ll leave this open until I can fix that issue. ",
+      "revId": "c82ecd3e2535ff3e54b323cce12e188459fbbf3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
