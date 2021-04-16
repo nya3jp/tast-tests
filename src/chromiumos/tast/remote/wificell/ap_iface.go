@@ -228,3 +228,8 @@ func (h *APIface) StartChannelSwitch(ctx context.Context, count, channel int, op
 func (h *APIface) SendBSSTMRequest(ctx context.Context, clientMAC string, neighbors ...string) error {
 	return h.hostapd.SendBSSTMRequest(ctx, clientMAC, neighbors)
 }
+
+// SendBeaconRequest sends a Beacon Request to the specified client.
+func (h *APIface) SendBeaconRequest(ctx context.Context, clientMAC string, params hostapd.BeaconReqParams) error {
+	return h.hostapd.SendBeaconRequest(ctx, clientMAC, params)
+}
