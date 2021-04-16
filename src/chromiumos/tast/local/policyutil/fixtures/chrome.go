@@ -18,17 +18,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// setUpTimeout allows more time for a managed user login.
-// TODO(crbug.com/1199705): Find a better value or go back to chrome.LoginTimeout.
-const setUpTimeout = chrome.LoginTimeout + 30*time.Second
-
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "chromePolicyLoggedIn",
 		Desc:            "Logged into a user session",
 		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-stability@google.com"},
 		Impl:            &policyChromeFixture{},
-		SetUpTimeout:    setUpTimeout,
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		PostTestTimeout: 15 * time.Second,
@@ -42,7 +38,7 @@ func init() {
 		Impl: &policyChromeFixture{
 			extraOpts: []chrome.Option{chrome.KeepEnrollment()},
 		},
-		SetUpTimeout:    setUpTimeout,
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		PostTestTimeout: 15 * time.Second,
@@ -88,6 +84,7 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 	opts := []chrome.Option{
 		chrome.FakeLogin(chrome.Creds{User: Username, Pass: Password}),
 		chrome.DMSPolicy(fdms.URL),
+		chrome.CustomLoginTimeout(chrome.ManagedUserLoginTimeout),
 	}
 	opts = append(opts, p.extraOpts...)
 
