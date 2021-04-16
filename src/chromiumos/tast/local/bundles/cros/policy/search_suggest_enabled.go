@@ -96,6 +96,10 @@ func SearchSuggestEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to click address bar: ", err)
 			}
 
+			// Wait for a second before typing to make sure the module for
+			// suggestions is loaded.
+			testing.Sleep(ctx, time.Second)
+
 			// Type something so suggestions pop up.
 			if err := keyboard.Type(ctx, "google"); err != nil {
 				s.Fatal("Failed to write events: ", err)
