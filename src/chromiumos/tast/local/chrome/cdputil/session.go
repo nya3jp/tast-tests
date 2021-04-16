@@ -200,6 +200,22 @@ func (s *Session) CloseTarget(ctx context.Context, id target.ID) error {
 	} else if !reply.Success {
 		return errors.New("unknown failure")
 	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		matches, err := s.FindTargets(ctx, func(t *target.Info) bool {
+			return t.TargetID == id
+		})
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to find targets"))
+		}
+		if len(matches) > 0 {
+			return errors.New("failed to wait for target closed within time")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return err
+	}
+
 	return nil
 }
 
