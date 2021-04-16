@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "726d6fe3_7269e9bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-16T14:21:11Z",
+      "side": 1,
+      "message": "LGTM % nit\nPlease wait for Jun\u0027s feedback as well.",
+      "revId": "b3f4a7234fee7efdc345e5910d3c9efa683f2c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b404f19_2d430379",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-16T14:21:11Z",
+      "side": 1,
+      "message": "Some comments would be nice for these 3 main \"if\"s here.",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 21
+      },
+      "revId": "b3f4a7234fee7efdc345e5910d3c9efa683f2c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "353c7c0d_6aa09b1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-16T14:21:11Z",
+      "side": 1,
+      "message": "The } shouldn\u0027t be on this indentation level. Can you give a better form to this part as well, please?",
+      "revId": "b3f4a7234fee7efdc345e5910d3c9efa683f2c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
