@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b7a4992_0497fe84",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-04-16T09:13:20Z",
+      "side": 1,
+      "message": "Hmm what if there are 2 CCA like intent+normal instances? Could we poll for the to be closed one with some unique identifier like target id?\n\nIf it\u0027s too complicated to fit this CL and we want to land this sooner, I am ok to land it as is with a TODO.",
+      "revId": "3adcedbf035b22fadb940593f2ba1692205792dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
