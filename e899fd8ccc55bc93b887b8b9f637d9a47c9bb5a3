@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28c9d0c7_822fa146",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-16T16:30:25Z",
+      "side": 1,
+      "message": "LGTM from my side, but we need to confirm that the removal of the flag doesn\u0027t break anything.",
+      "revId": "e899fd8ccc55bc93b887b8b9f637d9a47c9bb5a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
