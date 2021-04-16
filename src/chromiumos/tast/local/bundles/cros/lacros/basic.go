@@ -19,7 +19,7 @@ func init() {
 		Func:         Basic,
 		Desc:         "Tests basic lacros startup",
 		Contacts:     []string{"erikchen@chromium.org", "hidehiko@chromium.org", "edcourtney@chromium.org", "lacros-team@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "lacrosStartedByData",
 		Timeout:      7 * time.Minute,
@@ -29,7 +29,6 @@ func init() {
 		}, {
 			Name:              "unstable",
 			ExtraSoftwareDeps: []string{"lacros_unstable"},
-			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
