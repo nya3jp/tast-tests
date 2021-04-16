@@ -88,6 +88,7 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 	opts := []chrome.Option{
 		chrome.FakeLogin(chrome.Creds{User: Username, Pass: Password}),
 		chrome.DMSPolicy(fdms.URL),
+		chrome.CustomLoginTimeout(setUpTimeout),
 	}
 	opts = append(opts, p.extraOpts...)
 
