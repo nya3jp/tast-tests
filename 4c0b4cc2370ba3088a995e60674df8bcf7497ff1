@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccf5e08b_fff763db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-16T08:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ed3758b_26d046ab",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "4c0b4cc2370ba3088a995e60674df8bcf7497ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32cd5f52_b0ff8662",
@@ -54,6 +78,48 @@
       "writtenOn": "2021-04-15T10:26:47Z",
       "side": 1,
       "message": "Can\u0027t we use only one method for closing app?",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 0
+      },
+      "revId": "4c0b4cc2370ba3088a995e60674df8bcf7497ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecf8700a_6dcca011",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-16T08:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32cd5f52_b0ff8662",
+      "revId": "4c0b4cc2370ba3088a995e60674df8bcf7497ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ee02e7f_8f3be178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-16T08:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0b98543_b6e9116f",
       "range": {
         "startLine": 268,
         "startChar": 0,
