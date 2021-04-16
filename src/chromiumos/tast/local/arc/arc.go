@@ -32,7 +32,8 @@ import (
 const (
 	// BootTimeout is the maximum amount of time that ARC is expected to take to boot.
 	// Tests that call New should declare a timeout that's at least this long.
-	BootTimeout = 120 * time.Second
+	// TODO(b/187659256): Revert to 120s once slowness on grunt is fixed.
+	BootTimeout = 180 * time.Second
 
 	// Time Android init process takes to start. It should be smaller than BootTimeout.
 	androidInitTimeout = 60 * time.Second
