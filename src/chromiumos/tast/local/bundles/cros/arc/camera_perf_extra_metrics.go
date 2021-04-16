@@ -25,7 +25,7 @@ func init() {
 		Func: CameraPerfExtraMetrics,
 		Desc: "Measures extra camera metrics such as open/close time and snapshot time",
 		Contacts: []string{
-			"springerm@chromium.org",
+			"lnishan@chromium.org",
 			"arcvm-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
