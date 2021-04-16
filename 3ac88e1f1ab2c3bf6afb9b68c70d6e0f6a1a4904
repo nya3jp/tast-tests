@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e6999b8_492feb03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-16T04:51:33Z",
+      "side": 1,
+      "message": "These vectors will be used pretty imminently in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2826387 --- if you prefer, I can comment them out for now, though!",
+      "parentUuid": "d9f83e04_6e019183",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 13
+      },
+      "revId": "3ac88e1f1ab2c3bf6afb9b68c70d6e0f6a1a4904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbfdbcd5_48cbb921",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
         "patchSetId": 2
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "TODO with ldap is the norm. And in this case the comment is trivial.\nhttps://google.github.io/styleguide/cppguide.html#TODO_Comments",
       "parentUuid": "dbfdbcd5_48cbb921",
+      "range": {
+        "startLine": 326,
+        "startChar": 10,
+        "endLine": 326,
+        "endChar": 18
+      },
+      "revId": "3ac88e1f1ab2c3bf6afb9b68c70d6e0f6a1a4904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a4a26cf_576f0ab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-16T04:51:33Z",
+      "side": 1,
+      "message": "The followup for level 5 follows pretty soon in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2826387",
+      "parentUuid": "b7ac2a26_d8033397",
       "range": {
         "startLine": 326,
         "startChar": 10,
@@ -167,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36617b7c_73984492",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-16T04:51:33Z",
+      "side": 1,
+      "message": "Done, but the map traversal is not guaranteed to be in the same order every time, potentially making reviewing the difference in generated tests difficult. An alternative is to get the keys and sort every time before traversing. Thoughts?",
+      "parentUuid": "cb2f4c1e_e2a55cf5",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 0
+      },
+      "revId": "3ac88e1f1ab2c3bf6afb9b68c70d6e0f6a1a4904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c04d1b07_eb0ba0ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
         "patchSetId": 2
@@ -178,6 +250,30 @@
       "writtenOn": "2021-04-15T11:11:21Z",
       "side": 1,
       "message": "It\u0027s better to set default timeout before instead of make template more complicated by adding if/else conditions",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 21
+      },
+      "revId": "3ac88e1f1ab2c3bf6afb9b68c70d6e0f6a1a4904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f33a8dd4_c6af3c48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-16T04:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c04d1b07_eb0ba0ba",
       "range": {
         "startLine": 392,
         "startChar": 0,
@@ -201,6 +297,30 @@
       "writtenOn": "2021-04-15T11:11:21Z",
       "side": 1,
       "message": "nit: use \\t for formatting",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 13
+      },
+      "revId": "3ac88e1f1ab2c3bf6afb9b68c70d6e0f6a1a4904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "622c92d3_465a6fb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-16T04:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d6a2fec_12690e69",
       "range": {
         "startLine": 392,
         "startChar": 0,
