@@ -16,6 +16,69 @@
       "message": "Hi Renuga,\n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "2760085de07c7d065654d541a3e166417ebe09c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9d04ba1_1010a8e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-16T21:32:30Z",
+      "side": 1,
+      "message": "LGTM. Adding yhanada@ to review for context.\n",
+      "revId": "2760085de07c7d065654d541a3e166417ebe09c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "086cfd67_aa6dc65f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-16T21:32:30Z",
+      "side": 1,
+      "message": "Any type of devices where we need to skip such tests?.",
+      "range": {
+        "startLine": 540,
+        "startChar": 5,
+        "endLine": 540,
+        "endChar": 16
+      },
+      "revId": "2760085de07c7d065654d541a3e166417ebe09c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6388db1e_0829db41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-16T21:32:30Z",
+      "side": 1,
+      "message": "When does this happen?.",
+      "range": {
+        "startLine": 552,
+        "startChar": 59,
+        "endLine": 554,
+        "endChar": 3
+      },
+      "revId": "2760085de07c7d065654d541a3e166417ebe09c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
