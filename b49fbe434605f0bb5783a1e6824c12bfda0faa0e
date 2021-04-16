@@ -16,6 +16,41 @@
       "message": "Kalvin, do we need any similar changes in the printing tests?  I didn\u0027t see anything explicitly dependent on ippusb_manager, but I\u0027m not as familiar with them.",
       "revId": "b49fbe434605f0bb5783a1e6824c12bfda0faa0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1ed6ae9_bb7f6c86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-04-16T20:33:25Z",
+      "side": 1,
+      "message": "I did a brute-force search for things that make even passing mentions to \"ippusb\" and didn\u0027t see anything noteworthy. I reckon this is actually the most prominent mention of ippusb_manager at this point.",
+      "parentUuid": "c198f77e_33eef338",
+      "revId": "b49fbe434605f0bb5783a1e6824c12bfda0faa0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff9beb4b_e9e10e8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-04-16T20:33:25Z",
+      "side": 1,
+      "message": "Bonne chance!",
+      "revId": "b49fbe434605f0bb5783a1e6824c12bfda0faa0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
