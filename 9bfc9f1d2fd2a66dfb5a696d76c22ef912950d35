@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d633fbe_f560dfb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-04-16T00:05:59Z",
+      "side": 1,
+      "message": "You need to add a Cq-Depend on the SoftwareDeps CL",
+      "revId": "9bfc9f1d2fd2a66dfb5a696d76c22ef912950d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
