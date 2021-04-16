@@ -44,6 +44,16 @@ const (
 	// 40*3=120 seconds for the safety.
 	GAIALoginTimeout = 120 * time.Second
 
+	// ManagedUserLoginTimeout is the maximum amount of time that Chrome is expected to take to perform login for a managed user.
+	// Tests that call New with the default fake login mode and a managed user should declare a timeout that's at least this long.
+	// TODO(crbug.com/1199705): Find a better value or go back to LoginTimeout.
+	ManagedUserLoginTimeout = LoginTimeout + 30*time.Second
+
+	// EnrollmentAndLoginTimeout is the maximum amount of time that Chrome is expected to take to perform both enrollment and login.
+	// Tests that call New with both enrollment and the default fake login mode should declare a timeout that's at least this long.
+	// TODO(crbug.com/1199705): Find a better value.
+	EnrollmentAndLoginTimeout = LoginTimeout + 1*time.Minute
+
 	// tryReuseSessionTimeout is the maximum amount of time that Chrome is expected to take to perform
 	// session reuse checking. Chrome will connect to the exsting Chrome instance, obtained the
 	// existing configuration, and compare with the new session config. This procedure doesn't
@@ -176,6 +186,10 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	timeout := LoginTimeout
 	if cfg.LoginMode() == config.GAIALogin {
 		timeout = GAIALoginTimeout
+	}
+	// Allow a custom timeout to be set.
+	if cfg.CustomLoginTimeout() != 0 {
+		timeout = cfg.CustomLoginTimeout()
 	}
 	origCtx := ctx
 	ctx, cancel := context.WithTimeout(origCtx, timeout)
