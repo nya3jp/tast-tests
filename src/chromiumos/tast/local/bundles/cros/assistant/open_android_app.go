@@ -23,9 +23,15 @@ func init() {
 		Desc:         "Tests Assistant open Android app feature",
 		Contacts:     []string{"updowndota@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "chrome_internal", "android_p"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Vars:         []string{"assistant.username", "assistant.password"},
 		Timeout:      chrome.GAIALoginTimeout + time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
