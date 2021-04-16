@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d490a24a_4658ac77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-04-16T07:57:03Z",
+      "side": 1,
+      "message": "Yes. I fixed.",
+      "parentUuid": "3f13cb1c_85b12197",
+      "range": {
+        "startLine": 11,
+        "startChar": 49,
+        "endLine": 11,
+        "endChar": 55
+      },
+      "revId": "e6159137be412deeafd661e16e1e0278c20126be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "461844ff_c32198ec",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a356ff66_e61cef81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-04-16T07:57:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d138c8b2_54ea20a1",
+      "range": {
+        "startLine": 72,
+        "startChar": 85,
+        "endLine": 72,
+        "endChar": 109
+      },
+      "revId": "e6159137be412deeafd661e16e1e0278c20126be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17cf3d62_cd7128c3",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-04-15T18:28:05Z",
       "side": 1,
       "message": "Same",
+      "range": {
+        "startLine": 71,
+        "startChar": 59,
+        "endLine": 71,
+        "endChar": 83
+      },
+      "revId": "e6159137be412deeafd661e16e1e0278c20126be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b60c701d_f676cc44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cxx_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-04-16T07:57:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17cf3d62_cd7128c3",
       "range": {
         "startLine": 71,
         "startChar": 59,
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "def25bed_1a5fbf6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cxx_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-04-16T07:57:03Z",
+      "side": 1,
+      "message": "No, the race doens\u0027t affect here. \nThe race in GetCrashDir happens between calling filepath.Glob(userCrashDirs) and existence of userCrashDirs. So cr.NormalizedUser() is safe.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/crash/crash.go;l\u003d172-183;rcl\u003d4eb92a909f455c457407116daa88cda5f936fa43",
+      "parentUuid": "7c8e1e07_f1389318",
+      "range": {
+        "startLine": 109,
+        "startChar": 46,
+        "endLine": 109,
+        "endChar": 60
+      },
+      "revId": "e6159137be412deeafd661e16e1e0278c20126be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b7e2547_4a47fff2",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-04-15T18:28:05Z",
       "side": 1,
       "message": "crash.UserCrashDIr",
+      "range": {
+        "startLine": 113,
+        "startChar": 63,
+        "endLine": 113,
+        "endChar": 88
+      },
+      "revId": "e6159137be412deeafd661e16e1e0278c20126be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a426893_70655522",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-04-16T07:57:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b7e2547_4a47fff2",
       "range": {
         "startLine": 113,
         "startChar": 63,
