@@ -153,6 +153,11 @@ func init() {
 			Timeout:           30 * time.Second,
 			ExtraSoftwareDeps: []string{"display_backlight"},
 		}, {
+			Name:              "mapped_access_perf_test",
+			Val:               []string{"mapped_access_perf_test"},
+			Timeout:           15 * time.Minute,
+			ExtraSoftwareDeps: []string{"display_backlight"},
+		}, {
 			Name:              "mmap_test",
 			Val:               []string{"mmap_test"},
 			Timeout:           15 * time.Minute,
