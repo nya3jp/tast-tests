@@ -65,7 +65,7 @@ var mountFailureLogMap = logCommandMap{
 var mountFailures = []mountFailureCrash{
 	{"mount_failure_stateful", []string{"--mount_failure", "--mount_device=stateful"}, []string{"console-ramoops", "kernel-warning", "dumpe2fs_stateful"}},
 	{"mount_failure_encstateful", []string{"--mount_failure", "--mount_device=encstateful"}, []string{"console-ramoops", "kernel-warning", "dumpe2fs_encstateful", "mount-encrypted"}},
-	{"umount_failure_stateful", []string{"--umount_failure", "--mount_device=stateful"}, []string{"shutdown_umount_failure_state", "umount-encrypted"}},
+	{"umount_failure_stateful", []string{"--testonly_send_all", "--umount_failure", "--mount_device=stateful"}, []string{"shutdown_umount_failure_state", "umount-encrypted"}},
 }
 
 func saveMountFailureLogs() error {
