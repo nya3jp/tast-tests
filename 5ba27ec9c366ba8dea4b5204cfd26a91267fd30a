@@ -33,6 +33,24 @@
       "message": "For better typing, could you use time.Duration as an interface, and format it in the function?",
       "revId": "5ba27ec9c366ba8dea4b5204cfd26a91267fd30a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a844d86_dd691680",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/firewall/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-16T17:38:30Z",
+      "side": 1,
+      "message": "Good idea! done.",
+      "parentUuid": "3bd59075_b704eab1",
+      "revId": "5ba27ec9c366ba8dea4b5204cfd26a91267fd30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
