@@ -58,6 +58,47 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f04a8ce_5a569956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_ps175.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-04-16T00:00:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae16c54e_2ddd44ba",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "7668f206932a9a718b1758e3e2f072492659d88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df3b7876_600c5991",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_ps175.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-04-16T00:00:10Z",
+      "side": 1,
+      "message": "Changed to chromeos-fwupd since this tests fwupd rather than firmware.",
+      "revId": "7668f206932a9a718b1758e3e2f072492659d88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6455395_d1f40acb",
@@ -105,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f200b731_49ceadae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_ps175.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-04-16T00:00:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eac0e64_34595054",
+      "range": {
+        "startLine": 38,
+        "startChar": 47,
+        "endLine": 38,
+        "endChar": 48
+      },
+      "revId": "7668f206932a9a718b1758e3e2f072492659d88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cfa265b_2702be27",
@@ -118,6 +183,30 @@
       "writtenOn": "2021-04-15T10:34:47Z",
       "side": 1,
       "message": "nit: missing . at the end of the comment",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 79
+      },
+      "revId": "7668f206932a9a718b1758e3e2f072492659d88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6a0344f_3a7967b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_ps175.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-04-16T00:00:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cfa265b_2702be27",
       "range": {
         "startLine": 42,
         "startChar": 0,
