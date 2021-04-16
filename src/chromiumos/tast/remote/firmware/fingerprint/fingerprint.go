@@ -1035,6 +1035,15 @@ func AddEntropy(ctx context.Context, d *dut.DUT, reset bool) error {
 	return EctoolCommand(ctx, d, args[0:]...).Run(ctx)
 }
 
+// BioWash calls bio_wash to reset the SBP.
+func BioWash(ctx context.Context, d *dut.DUT, reset bool) error {
+	cmd := []string{"bio_wash"}
+	if reset {
+		cmd = append(cmd, "--factory_init")
+	}
+	return d.Conn().Command(cmd[0], cmd[1:]...).Run(ctx)
+}
+
 // parseColonDelimitedOutput parses colon delimited information to a map.
 func parseColonDelimitedOutput(output string) map[string]string {
 	ret := map[string]string{}
