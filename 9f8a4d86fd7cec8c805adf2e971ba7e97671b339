@@ -22,6 +22,29 @@
       },
       "revId": "9f8a4d86fd7cec8c805adf2e971ba7e97671b339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "429cb64c_6e8066ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-16T01:17:41Z",
+      "side": 1,
+      "message": "10min is too long for mainline tests... please remember that all mainline tests are supposed to be promoted to critical eventually, so a test running for 10min can increase CQ wait time significantly.\n\nLooking at timing stats on Tastboard, I guess that 3-4 minutes is enough for most boards.\nhttps://tastboard.corp.google.com/test/printer.TestPPDs\n\nIf you want to be on a safe side, you can go ahead with 10min timeout, but please remember to decrease it before promoting the test to critical.",
+      "range": {
+        "startLine": 40,
+        "startChar": 15,
+        "endLine": 40,
+        "endChar": 33
+      },
+      "revId": "9f8a4d86fd7cec8c805adf2e971ba7e97671b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
