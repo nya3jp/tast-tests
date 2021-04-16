@@ -16,9 +16,9 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DecodeAccelVDPerf,
 		Desc:         "Measures hardware video decode performance of media::VideoDecoders by running the video_decode_accelerator_perf_tests binary (see go/vd-migration)",
-		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts:     []string{"mcasas@chromium.org", "chromeos-gfx-video@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", "video_decoder_direct"},
+		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:              "av1_1080p_30fps",
 			Val:               "1080p_30fps_300frames.av1.ivf",
