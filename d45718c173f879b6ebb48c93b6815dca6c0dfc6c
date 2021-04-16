@@ -16,6 +16,115 @@
       "message": "Thanks for the review, PTAL again!",
       "revId": "d45718c173f879b6ebb48c93b6815dca6c0dfc6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91cb8356_1378fb1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-16T00:42:15Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "d45718c173f879b6ebb48c93b6815dca6c0dfc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eb9c9f1_3558d201",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-16T00:42:15Z",
+      "side": 1,
+      "message": "nit:  DPI -\u003e dpi\n\nhere \"dpi\" (all lowercase) is correct. this is a local variable that starts with \"dpi\"... since it starts with \"dpi\", it should be all lower case.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 4
+      },
+      "revId": "d45718c173f879b6ebb48c93b6815dca6c0dfc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f8fa8e_73f7d3a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_display_density.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-16T00:42:15Z",
+      "side": 1,
+      "message": "nit: Dpi -\u003e DPI\n\nbut here it should be all uppercase.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 83,
+        "startChar": 30,
+        "endLine": 83,
+        "endChar": 33
+      },
+      "revId": "d45718c173f879b6ebb48c93b6815dca6c0dfc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "688a4d4a_2fd2e624",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_display_density.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-16T00:42:15Z",
+      "side": 1,
+      "message": "nit: add docstring all functions (except trivial ones)",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 33
+      },
+      "revId": "d45718c173f879b6ebb48c93b6815dca6c0dfc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bae23a42_675d98a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_display_density.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-04-16T00:42:15Z",
+      "side": 1,
+      "message": "ditto: Dpi -\u003e DPI",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 15
+      },
+      "revId": "d45718c173f879b6ebb48c93b6815dca6c0dfc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
