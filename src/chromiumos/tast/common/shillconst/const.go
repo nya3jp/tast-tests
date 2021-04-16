@@ -212,7 +212,6 @@ const (
 	ProfilePropertyUserHash                  = "UserHash"
 	ProfilePropertyProhibitedTechnologies    = "ProhibitedTechnologies"
 	ProfilePropertyArpGateway                = "ArpGateway"
-	ProfilePropertyLinkMonitorTechnologies   = "LinkMonitorTechnologies"
 	ProfilePropertyNoAutoConnectTechnologies = "NoAutoConnectTechnologies"
 )
 
