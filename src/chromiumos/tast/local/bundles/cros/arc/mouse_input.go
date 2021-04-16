@@ -15,7 +15,13 @@ import (
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
+
+// mouseInputParams holds a collection of tests to run in the given test setup.
+type mouseInputParams struct {
+	tests []motioninput.WMTestParams
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -23,14 +29,44 @@ func init() {
 		Desc:         "Verifies mouse input in various window states on Android",
 		Contacts:     []string{"prabirmsp@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "android_vm"},
 		Fixture:      "arcBooted",
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android_p"},
+			Name:              "tablet",
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay(), hwdep.TouchScreen()),
+			Val: mouseInputParams{[]motioninput.WMTestParams{
+				{
+					Name:          "Tablet",
+					TabletMode:    true,
+					WmEventToSend: nil,
+				}, {
+					Name:          "Tablet Snapped Left",
+					TabletMode:    true,
+					WmEventToSend: ash.WMEventSnapLeft,
+				}, {
+					Name:          "Tablet Snapped Right",
+					TabletMode:    true,
+					WmEventToSend: ash.WMEventSnapRight,
+				},
+			}},
 		}, {
-			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
+			Name: "clamshell",
+			Val: mouseInputParams{[]motioninput.WMTestParams{
+				{
+					Name:          "Clamshell Normal",
+					TabletMode:    false,
+					WmEventToSend: ash.WMEventNormal,
+				}, {
+					Name:          "Clamshell Fullscreen",
+					TabletMode:    false,
+					WmEventToSend: ash.WMEventFullscreen,
+				}, {
+					Name:          "Clamshell Maximized",
+					TabletMode:    false,
+					WmEventToSend: ash.WMEventMaximize,
+				},
+			}},
 		}},
 	})
 }
@@ -44,6 +80,7 @@ func MouseInput(ctx context.Context, s *testing.State) {
 	p := s.FixtValue().(*arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
+	testParams := s.Param().(mouseInputParams)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -61,33 +98,7 @@ func MouseInput(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing ", motioninput.APK, ": ", err)
 	}
 
-	for _, params := range []motioninput.WMTestParams{
-		{
-			Name:          "Clamshell Normal",
-			TabletMode:    false,
-			WmEventToSend: ash.WMEventNormal,
-		}, {
-			Name:          "Clamshell Fullscreen",
-			TabletMode:    false,
-			WmEventToSend: ash.WMEventFullscreen,
-		}, {
-			Name:          "Clamshell Maximized",
-			TabletMode:    false,
-			WmEventToSend: ash.WMEventMaximize,
-		}, {
-			Name:          "Tablet",
-			TabletMode:    true,
-			WmEventToSend: nil,
-		}, {
-			Name:          "Tablet Snapped Left",
-			TabletMode:    true,
-			WmEventToSend: ash.WMEventSnapLeft,
-		}, {
-			Name:          "Tablet Snapped Right",
-			TabletMode:    true,
-			WmEventToSend: ash.WMEventSnapRight,
-		},
-	} {
+	for _, params := range testParams.tests {
 		s.Run(ctx, params.Name+": Verify Mouse", func(ctx context.Context, s *testing.State) {
 			motioninput.RunTestWithWMParams(ctx, s, tconn, d, a, &params, verifyMouse)
 		})
