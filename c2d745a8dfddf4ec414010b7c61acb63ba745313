@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c760d19_bd335a4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-04-16T17:43:44Z",
+      "side": 1,
+      "message": "nit: Make subject line shorter.\n\nHow about\n\n  tast-tests: Customize MeetCUJ account and meet code via vars",
+      "revId": "c2d745a8dfddf4ec414010b7c61acb63ba745313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "098be3a9_6b258c7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-04-16T17:43:44Z",
+      "side": 1,
+      "message": "nit: Could we either strip \"test_\" prefix, or use \"cuj_\" ?",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 9
+      },
+      "revId": "c2d745a8dfddf4ec414010b7c61acb63ba745313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
