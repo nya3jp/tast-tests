@@ -11,6 +11,9 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/google/go-cmp/cmp"
+	"github.com/google/go-cmp/cmp/cmpopts"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -121,21 +124,19 @@ type RoutineResult struct {
 	Problems []int
 }
 
-// CheckRoutineVerdict returns nil if the routine ran without problem, or
-// returns an error.
-func CheckRoutineVerdict(verdict RoutineVerdict) error {
-	switch verdict {
-	case VerdictProblem:
-		return errors.New("routine detected a problem")
-	case VerdictNotRun:
-		return errors.New("routine did not run")
-	case VerdictUnknown:
-		return errors.New("unknown routine verdict")
-	case VerdictNoProblem:
-		return nil
+// CheckRoutineResult compares the routine result to the expected result. If
+// they are not the same an error is returned.
+func CheckRoutineResult(result, expectedResult *RoutineResult) error {
+	if result.Verdict != expectedResult.Verdict {
+		return errors.Errorf("expected routine verdict; got: %v, want: %v", result.Verdict, expectedResult.Verdict)
 	}
 
-	return errors.Errorf("unexpected routine verdict: %v", verdict)
+	sortInts := cmpopts.SortSlices(func(a, b int) bool { return a < b })
+	if !cmp.Equal(result.Problems, expectedResult.Problems, sortInts, cmpopts.EquateEmpty()) {
+		return errors.Errorf("unexpected routine problems: got %v, want %v", result.Problems, expectedResult.Problems)
+	}
+
+	return nil
 }
 
 // List of network diagnostic routines
@@ -168,44 +169,17 @@ func (m *MojoAPI) RunRoutine(ctx context.Context, routine string) (*RoutineResul
 	return nil, errors.Errorf("unknown routine verdict; got: %v", result.Verdict)
 }
 
-// PollRoutineParams is a collection of configuration options for polling a
-// network diagnostic routine.
-type PollRoutineParams struct {
-	Routine  string
-	Verdict  RoutineVerdict
-	Problems []int
-}
-
 // PollRoutine will continuously run the specified routine until the provided
-// verdict and list of problems are matched.
-func (m *MojoAPI) PollRoutine(ctx context.Context, params PollRoutineParams) error {
-	inSlice := func(slice []int, v int) bool {
-		for _, s := range slice {
-			if s == v {
-				return true
-			}
-		}
-		return false
-	}
-
+// RoutineResult is matched.
+func (m *MojoAPI) PollRoutine(ctx context.Context, routine string, expectedResult *RoutineResult) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		result, err := m.RunRoutine(ctx, params.Routine)
+		result, err := m.RunRoutine(ctx, routine)
 		if err != nil {
-			testing.PollBreak(errors.Wrap(err, "failed to run routine"))
+			return testing.PollBreak(errors.Wrap(err, "failed to run routine"))
 		}
 
-		if result.Verdict != params.Verdict {
-			return errors.Errorf("expected routine problem verdict; got: %v, want: %v", result.Verdict, params.Verdict)
-		}
-
-		if len(result.Problems) != len(params.Problems) {
-			return errors.Errorf("unexpected problems length; got: %d, want: %d", result.Problems, len(params.Problems))
-		}
-
-		for _, r := range result.Problems {
-			if !inSlice(params.Problems, r) {
-				return errors.Errorf("unexpected routine problems; got %v, want %v", result.Problems, params.Problems)
-			}
+		if err := CheckRoutineResult(result, expectedResult); err != nil {
+			return err
 		}
 
 		return nil
