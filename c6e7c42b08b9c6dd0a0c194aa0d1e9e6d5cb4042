@@ -159,6 +159,24 @@
       "parentUuid": "7507f0d0_beb90035",
       "revId": "c6e7c42b08b9c6dd0a0c194aa0d1e9e6d5cb4042",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7abd4bd6_8e94616a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-16T03:15:45Z",
+      "side": 1,
+      "message": "Thanks a lot for letting me know.\nI\u0027ll abandon this CL.",
+      "parentUuid": "df86c76a_6f073e57",
+      "revId": "c6e7c42b08b9c6dd0a0c194aa0d1e9e6d5cb4042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
