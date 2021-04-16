@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66d2e99c_df64be2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-16T08:57:06Z",
+      "side": 1,
+      "message": "This part is really busy, and hard to see what happens.\nCan you add some like breaks? For example:\n\u003e  runner.RunMultiple(ctx, s, testCase.name,\n\u003e    perfutil.RunAndWaitAll(tconn,\n\u003e      uiauto.Combine(\"drag resizing the splitview\",\n\u003e        pc.Drag(dragPoints[0], gestures...),\n\u003e        func(ctx context.Context) error {\n\u003e          return ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {\n\u003e            return w.ID \u003d\u003d id0 \u0026\u0026 !w.IsAnimating \u0026\u0026 w.State \u003d\u003d ash.WindowStateLeftSnapped\n\u003e          }, \u0026testing.PollOptions{Timeout: 2 * time.Second})\n\u003e        }\n\u003e      ),\n\u003e      histogramNames...\n\u003e    ),",
+      "range": {
+        "startLine": 354,
+        "startChar": 3,
+        "endLine": 359,
+        "endChar": 27
+      },
+      "revId": "50a4eb992080d36c064b99a23f3362cae7bb881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
