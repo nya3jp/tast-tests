@@ -31,7 +31,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		Vars:            []string{"ui.cuj_username", "ui.cuj_password"},
+		Vars:            []string{"ui.cuj_username", "ui.cuj_password", "cuj_username", "cuj_password"},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name:            "loggedInAndKeepState",
@@ -82,9 +82,17 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 	func() {
 		ctx, cancel := context.WithTimeout(ctx, chrome.LoginTimeout)
 		defer cancel()
-		var err error
-		username := s.RequiredVar("ui.cuj_username")
-		password := s.RequiredVar("ui.cuj_password")
+		var username string
+		var password string
+		cujUser, userOk := s.Var("cuj_username")
+		cujPass, passOk := s.Var("cuj_password")
+		if userOk && passOk {
+			username = cujUser
+			password = cujPass
+		} else {
+			username = s.RequiredVar("ui.cuj_username")
+			password = s.RequiredVar("ui.cuj_password")
+		}
 		opts := []chrome.Option{
 			chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
 			chrome.ARCSupported(),
@@ -96,6 +104,7 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 		if f.webUITabStrip {
 			opts = append(opts, chrome.EnableFeatures("WebUITabStrip"))
 		}
+		var err error
 		cr, err = chrome.New(ctx, opts...)
 
 		if err != nil {

@@ -71,6 +71,7 @@ func init() {
 		Vars: []string{
 			"mute",
 			"record",
+			"meeting_code",
 			"ui.MeetCUJ.bond_credentials",
 			"ui.MeetCUJ.doc",
 		},
@@ -202,15 +203,20 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	defer bc.Close()
 
 	var meetingCode string
-	func() {
-		sctx, cancel := context.WithTimeout(ctx, timeout)
-		defer cancel()
-		meetingCode, err = bc.CreateConference(sctx)
-		if err != nil {
-			s.Fatal("Failed to create a conference room: ", err)
-		}
-	}()
-	s.Log("Created a room with the code ", meetingCode)
+	customCode, codeOk := s.Var("meeting_code")
+	if codeOk {
+		meetingCode = customCode
+	} else {
+		func() {
+			sctx, cancel := context.WithTimeout(ctx, timeout)
+			defer cancel()
+			meetingCode, err = bc.CreateConference(sctx)
+			if err != nil {
+				s.Fatal("Failed to create a conference room: ", err)
+			}
+		}()
+		s.Log("Created a room with the code ", meetingCode)
+	}
 
 	cr := s.FixtValue().(cuj.FixtureData).Chrome
 
@@ -536,8 +542,10 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		defer cancel()
 		// Add 30 seconds to the bot duration to make sure that bots do not leave
 		// slightly earlier than the test scenario.
-		if _, err := bc.AddBots(sctx, meetingCode, meet.num, meetTimeout+30*time.Second); err != nil {
-			return errors.Wrap(err, "failed to create bots")
+		if !codeOk {
+			if _, err := bc.AddBots(sctx, meetingCode, meet.num, meetTimeout+30*time.Second); err != nil {
+				return errors.Wrap(err, "failed to create bots")
+			}
 		}
 		if err := meetConn.WaitForExpr(ctx, "hrTelemetryApi.isInMeeting() === true"); err != nil {
 			return errors.Wrap(err, "failed to wait for entering meeting")
