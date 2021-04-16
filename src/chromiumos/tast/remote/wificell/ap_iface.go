@@ -240,3 +240,8 @@ func (h *APIface) SendBSSTMRequest(ctx context.Context, clientMAC string, params
 func (h *APIface) Set(ctx context.Context, prop hostapd.Property, val string) error {
 	return h.hostapd.Set(ctx, prop, val)
 }
+
+// SendBeaconRequest sends a Beacon Request to the specified client.
+func (h *APIface) SendBeaconRequest(ctx context.Context, clientMAC string, params hostapd.BeaconReqParams) error {
+	return h.hostapd.SendBeaconRequest(ctx, clientMAC, params)
+}
