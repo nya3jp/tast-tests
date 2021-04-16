@@ -16,6 +16,24 @@
       "message": "You might want to make a not of this change on the commit message. Something like:\n  Also, this includes an error logging improvement for wrapper.",
       "revId": "1d7dad7748dee53db89b6d649fb18f9e68608810",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97853d3e_c4b62fff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-04-16T22:02:04Z",
+      "side": 1,
+      "message": "Fixed thanks",
+      "parentUuid": "fe5d099c_b642861e",
+      "revId": "1d7dad7748dee53db89b6d649fb18f9e68608810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
