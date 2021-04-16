@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36471b41_31c65d40",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-16T12:26:58Z",
+      "side": 1,
+      "message": "nit: maybe add specific method you call, e.g. autotestPrivate.isSystemWebAppOpen ?",
+      "range": {
+        "startLine": 132,
+        "startChar": 88,
+        "endLine": 132,
+        "endChar": 103
+      },
+      "revId": "166fc82bc9566bfa91322ccfe5f6118f6715b6c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3ca883a_34a11563",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-16T12:26:58Z",
+      "side": 1,
+      "message": "nit: what about next error message:\n\nunexpected result returned by autotestPrivate.isSystemWebAppOpen API: got true; want false\n\n?\n\nFew comment about existing message:\n1. usually Go errors don\u0027t contain sentences\n2. \"within time\" we can add it to the error returned by testing.Poll, but probably it does not fit here",
+      "range": {
+        "startLine": 135,
+        "startChar": 22,
+        "endLine": 135,
+        "endChar": 106
+      },
+      "revId": "166fc82bc9566bfa91322ccfe5f6118f6715b6c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
