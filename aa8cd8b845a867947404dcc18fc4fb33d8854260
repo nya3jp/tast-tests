@@ -16,6 +16,24 @@
       "message": "Can you please add a smaller file? (Short length, lowest bitrate)\n+ document where you obtained the file from.",
       "revId": "aa8cd8b845a867947404dcc18fc4fb33d8854260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae6276b_4eb81a04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/audio.mp3",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-16T16:08:16Z",
+      "side": 0,
+      "message": "Done.\nI just generated a mp3 file with ffmpeg: ffmpeg -f lavfi -i anullsrc\u003dr\u003d1:cl\u003dmono -t 5 -b:a 1k -acodec libmp3lame out.mp3\n\nWhere should I document that?",
+      "parentUuid": "27a9c11d_3058d8fa",
+      "revId": "aa8cd8b845a867947404dcc18fc4fb33d8854260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

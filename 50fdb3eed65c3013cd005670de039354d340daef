@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08b67ef3_c56164cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autoplay_allowed.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-16T16:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "698d2a1e_4ad858fe",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 40
+      },
+      "revId": "50fdb3eed65c3013cd005670de039354d340daef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb6adadd_65257ed0",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4656db4_4e27f2ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autoplay_allowed.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-16T16:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb6adadd_65257ed0",
+      "revId": "50fdb3eed65c3013cd005670de039354d340daef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c2c8ad8_d36bf43c",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-04-16T10:57:18Z",
       "side": 1,
       "message": "Add loop to make sure we don\u0027t hit a race condition with the audio file end.",
+      "range": {
+        "startLine": 8,
+        "startChar": 3,
+        "endLine": 8,
+        "endChar": 8
+      },
+      "revId": "50fdb3eed65c3013cd005670de039354d340daef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84237304_47865bd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/autoplay_allowed.html",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-16T16:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c2c8ad8_d36bf43c",
       "range": {
         "startLine": 8,
         "startChar": 3,
