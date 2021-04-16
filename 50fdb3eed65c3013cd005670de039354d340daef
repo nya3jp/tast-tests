@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "698d2a1e_4ad858fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autoplay_allowed.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-16T10:57:18Z",
+      "side": 1,
+      "message": "DumpUITreeWithScreenshotOnError",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 40
+      },
+      "revId": "50fdb3eed65c3013cd005670de039354d340daef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb6adadd_65257ed0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autoplay_allowed.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-16T10:57:18Z",
+      "side": 1,
+      "message": "Poll for media playback for 1 second. It might be faster.",
+      "revId": "50fdb3eed65c3013cd005670de039354d340daef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c2c8ad8_d36bf43c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/autoplay_allowed.html",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-16T10:57:18Z",
+      "side": 1,
+      "message": "Add loop to make sure we don\u0027t hit a race condition with the audio file end.",
+      "range": {
+        "startLine": 8,
+        "startChar": 3,
+        "endLine": 8,
+        "endChar": 8
+      },
+      "revId": "50fdb3eed65c3013cd005670de039354d340daef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
