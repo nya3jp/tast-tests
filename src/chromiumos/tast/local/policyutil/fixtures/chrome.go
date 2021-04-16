@@ -18,13 +18,16 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// SetUpTimeout allows more time for a managed user login.
+const SetUpTimeout = chrome.LoginTimeout + 30*time.Second
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "chromePolicyLoggedIn",
 		Desc:            "Logged into a user session",
 		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-stability@google.com"},
 		Impl:            &policyChromeFixture{},
-		SetUpTimeout:    chrome.LoginTimeout,
+		SetUpTimeout:    SetUpTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		PostTestTimeout: 15 * time.Second,
@@ -38,7 +41,7 @@ func init() {
 		Impl: &policyChromeFixture{
 			extraOpts: []chrome.Option{chrome.KeepEnrollment()},
 		},
-		SetUpTimeout:    chrome.LoginTimeout,
+		SetUpTimeout:    SetUpTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		PostTestTimeout: 15 * time.Second,
