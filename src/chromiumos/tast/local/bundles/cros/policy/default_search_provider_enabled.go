@@ -90,7 +90,8 @@ func DefaultSearchProviderEnabled(ctx context.Context, s *testing.State) {
 			}
 
 			// Open an empty page.
-			conn, err := cr.NewConn(ctx, "")
+			// Use chrome://newtab to open new tab page (see https://crbug.com/1188362#c19).
+			conn, err := cr.NewConn(ctx, "chrome://newtab/")
 			if err != nil {
 				s.Fatal("Failed to connect to chrome: ", err)
 			}
