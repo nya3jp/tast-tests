@@ -25,6 +25,7 @@ import (
 	_ "chromiumos/tast/remote/bundles/cros/nearbyshare"
 	_ "chromiumos/tast/remote/bundles/cros/network"
 	_ "chromiumos/tast/remote/bundles/cros/network/allowlist"
+	_ "chromiumos/tast/remote/bundles/cros/omaha"
 	_ "chromiumos/tast/remote/bundles/cros/platform"
 	_ "chromiumos/tast/remote/bundles/cros/policy"
 	_ "chromiumos/tast/remote/bundles/cros/power"
