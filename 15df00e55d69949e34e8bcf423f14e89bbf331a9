@@ -16,6 +16,23 @@
       "message": "Re-enabling as Ryo has fixed \"ui\" stuck problem.",
       "revId": "15df00e55d69949e34e8bcf423f14e89bbf331a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1938423_63ae355c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-16T16:01:42Z",
+      "side": 1,
+      "message": "Bypassing shadow review for trivial CL",
+      "revId": "15df00e55d69949e34e8bcf423f14e89bbf331a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
