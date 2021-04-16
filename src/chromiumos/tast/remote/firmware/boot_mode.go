@@ -193,7 +193,13 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 
 	fromMode, err := h.Reporter.CurrentBootMode(ctx)
 	if err != nil {
-		return errors.Wrap(err, "determining boot mode at the start of RebootToMode")
+		return errors.Wrap(err, "determining boot mode at the start of ModeAwareReboot")
+	}
+
+	// Memorize the boot ID, so that we can compare later.
+	origBootID, err := h.Reporter.BootID(ctx)
+	if err != nil {
+		return errors.Wrap(err, "determining boot ID before reboot")
 	}
 
 	// Perform blocking sync prior to reboot, then close the RPC connection.
@@ -213,10 +219,26 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 	if err := h.Servo.SetPowerState(ctx, powerState); err != nil {
 		return err
 	}
-	offCtx, cancel := context.WithTimeout(ctx, offTimeout)
-	defer cancel()
-	if err := h.DUT.WaitUnreachable(offCtx); err != nil {
-		return errors.Wrapf(err, "waiting for DUT to be unreachable after setting power_state to %q", powerState)
+
+	// Wait for DUT's BootID to change.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Set a short timeout to the iteration in case of any SSH operations
+		// blocking for a long time. For example, the DUT's network interface
+		// might go down in the middle of readBootID, which might block for a
+		// long time.
+		ctx, cancel := context.WithTimeout(ctx, 3*time.Second)
+		defer cancel()
+		if err := h.DUT.WaitConnect(ctx); err != nil {
+			return errors.Wrap(err, "failed to connect to DUT")
+		}
+		if bootID, err := h.Reporter.BootID(ctx); err != nil {
+			return errors.Wrap(err, "reporting boot ID")
+		} else if bootID == origBootID {
+			return errors.Errorf("new boot ID == old boot ID: %s", bootID)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: offTimeout, Interval: 5 * time.Second}); err != nil {
+		return errors.Wrapf(err, "waiting for DUT to reboot after setting power_state to %q", powerState)
 	}
 
 	// If in dev mode, bypass the TO_DEV screen.
@@ -248,7 +270,6 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 		return errors.Errorf("incorrect boot mode after resetting DUT: got %s; want %s", curr, expectMode)
 	}
 	return nil
-
 }
 
 // fwScreenToNormalMode moves the DUT from the firmware bootup screen to Normal mode.
@@ -407,7 +428,7 @@ func (ms *ModeSwitcher) enableRecMode(ctx context.Context, usbMux servo.USBMuxSt
 		return errors.Wrap(err, "powering off DUT")
 	}
 	if err := h.Servo.SetUSBMuxState(ctx, usbMux); err != nil {
-		return errors.Wrap(err, "setting usb mux state to DUT while DUT is off")
+		return errors.Wrapf(err, "setting usb mux state to %s while DUT is off", usbMux)
 	}
 	if err := h.Servo.SetPowerState(ctx, servo.PowerStateRec); err != nil {
 		return errors.Wrapf(err, "setting power state to %s", servo.PowerStateRec)
