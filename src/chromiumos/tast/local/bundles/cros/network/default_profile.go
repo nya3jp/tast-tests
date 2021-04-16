@@ -38,7 +38,6 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 	expectedSettings := []string{
 		"CheckPortalList=ethernet,wifi,cellular",
 		"IgnoredDNSSearchPaths=gateway.2wire.net",
-		"LinkMonitorTechnologies=wifi",
 	}
 
 	// We lose connectivity briefly. Tell recover_duts not to worry.
