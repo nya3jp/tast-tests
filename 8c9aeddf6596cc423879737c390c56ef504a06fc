@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6526ed69_8a99fbaa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-16T11:29:04Z",
+      "side": 1,
+      "message": "nit:\ntast-tests: Add firmware.FwupdGetDevices\nor\nfirmware: Add FwupdGetDevices",
+      "revId": "8c9aeddf6596cc423879737c390c56ef504a06fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33aee751_19438336",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-16T11:29:04Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "8c9aeddf6596cc423879737c390c56ef504a06fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
