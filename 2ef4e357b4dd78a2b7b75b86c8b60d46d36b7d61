@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b961811e_08e10faa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-04-16T11:40:41Z",
+      "side": 1,
+      "message": "The previous issue has been fixed by ag/14194577.\nWe can enable this test now.",
+      "revId": "2ef4e357b4dd78a2b7b75b86c8b60d46d36b7d61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
