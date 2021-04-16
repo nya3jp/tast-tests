@@ -245,7 +245,7 @@ func findSyzkallerArch(ctx context.Context, d *dut.DUT) (string, error) {
 		return "", errors.Wrap(err, "unable to find board")
 	}
 	if _, ok := boardArchMapping[board]; !ok {
-		return "", errors.Wrap(err, "unexpected board")
+		return "", errors.Wrapf(err, "unexpected board: %v", board)
 	}
 	return boardArchMapping[board], nil
 }
