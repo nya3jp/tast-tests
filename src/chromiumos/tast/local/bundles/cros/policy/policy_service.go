@@ -139,6 +139,9 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 	if req.SkipLogin {
 		opts = append(opts, chrome.NoLogin())
 	} else {
+		// Allow more time for enrollment to complete as well.
+		opts = append(opts, chrome.CustomLoginTimeout(chrome.LoginTimeout+60*time.Second))
+
 		opts = append(opts, chrome.FakeLogin(chrome.Creds{User: user, Pass: "test0000", GAIAID: "gaiaid"}))
 	}
 
