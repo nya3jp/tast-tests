@@ -192,19 +192,15 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 	type iterator struct {
 		debianVersion vm.ContainerDebianVersion
 		stable        bool
-		vmMode        string
 	}
 	var it = []iterator{}
 
 	for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianStretch, vm.DebianBuster} {
 		for _, stable := range []bool{true, false} {
-			for _, vmMode := range []string{"component", "dlc"} {
-				it = append(it, iterator{
-					debianVersion: debianVersion,
-					stable:        stable,
-					vmMode:        vmMode,
-				})
-			}
+			it = append(it, iterator{
+				debianVersion: debianVersion,
+				stable:        stable,
+			})
 		}
 	}
 
@@ -232,19 +228,17 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				continue
 			}
 
-			if testCase.MinimalSet && (i.debianVersion != vm.DebianBuster || i.vmMode != "dlc") {
-				// The minimal set is currently buster/dlc
+			if testCase.MinimalSet && i.debianVersion != vm.DebianBuster {
+				// The minimal set is currently buster
 				continue
 			}
 
 			name := testCase.Name
 			if !testCase.MinimalSet {
 				// If we're generating a minimal set
-				// then the debian version and use of
-				// component/dlc is always the same
-				// and we don't need to include it in
-				// the test name.
-				name = combineName(name, i.vmMode)
+				// then the debian version is always
+				// the same and we don't need to
+				// include it in the test name.
 				name = combineName(name, string(i.debianVersion))
 			}
 			if !testCase.IsNotMainline && !testCase.OnlyStableBoards {
@@ -261,14 +255,11 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			// _unstable tests can never be CQ critical.
 			// component tests are informational while they are phased out.
 			var extraAttr []string
-			if (!i.stable || i.vmMode == "component") && canBeCritical {
+			if !i.stable && canBeCritical {
 				extraAttr = append(extraAttr, "informational")
 			}
 
 			var extraData []string
-			if i.vmMode == "component" {
-				extraData = []string{"vm.ArtifactData()"}
-			}
 			extraData = append(extraData,
 				fmt.Sprintf("crostini.GetContainerMetadataArtifact(%q, %t)", i.debianVersion, testCase.UseLargeContainer),
 				fmt.Sprintf("crostini.GetContainerRootfsArtifact(%q, %t)", i.debianVersion, testCase.UseLargeContainer),
@@ -285,9 +276,7 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 
 			var extraSoftwareDeps []string
-			if i.vmMode == "dlc" {
-				extraSoftwareDeps = append(extraSoftwareDeps, "dlc")
-			}
+			extraSoftwareDeps = append(extraSoftwareDeps, "dlc")
 
 			var hardwareDeps string
 			if !testCase.IsNotMainline {
@@ -312,11 +301,11 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			if testCase.SelfManagedInstall {
 				precondition = ""
 			} else if testCase.UseLargeContainer {
-				precondition = fmt.Sprintf("crostini.StartedBy%s%sLargeContainer()", strings.Title(i.vmMode), strings.Title(string(i.debianVersion)))
+				precondition = fmt.Sprintf("crostini.StartedBy%s%sLargeContainer()", "Dlc", strings.Title(string(i.debianVersion)))
 			} else if testCase.UseGaiaLogin {
-				precondition = fmt.Sprintf("crostini.StartedBy%s%sGaia()", strings.Title(i.vmMode), strings.Title(string(i.debianVersion)))
+				precondition = fmt.Sprintf("crostini.StartedBy%s%sGaia()", "Dlc", strings.Title(string(i.debianVersion)))
 			} else {
-				precondition = fmt.Sprintf("crostini.StartedBy%s%s()", strings.Title(i.vmMode), strings.Title(string(i.debianVersion)))
+				precondition = fmt.Sprintf("crostini.StartedBy%s%s()", "Dlc", strings.Title(string(i.debianVersion)))
 			}
 
 			var timeout time.Duration
