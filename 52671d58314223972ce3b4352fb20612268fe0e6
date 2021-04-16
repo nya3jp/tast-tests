@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53f666ce_fb8ee17a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/hide_web_store_icon.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-16T08:59:11Z",
+      "side": 1,
+      "message": "Yes. This way you can see what policies were set at a glance.",
+      "parentUuid": "7b0e21f7_a928f7c9",
+      "revId": "52671d58314223972ce3b4352fb20612268fe0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56a79014_5527a2b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/hide_web_store_icon.go",
         "patchSetId": 4
