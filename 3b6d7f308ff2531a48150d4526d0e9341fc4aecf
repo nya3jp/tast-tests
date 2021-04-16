@@ -87,6 +87,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f8d92ba_253f93dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-04-16T06:09:30Z",
+      "side": 1,
+      "message": "i\u0027d keep it so it\u0027s picked up as a link :)",
+      "parentUuid": "22fadbe7_7a432eac",
+      "range": {
+        "startLine": 48,
+        "startChar": 10,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "3b6d7f308ff2531a48150d4526d0e9341fc4aecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31c494be_0bae12eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-04-16T06:09:30Z",
+      "side": 1,
+      "message": "go style is more libral than c++.\nsince gofmt isn\u0027t complaining, i\u0027ll keep it like this and let tast-owners to decide what format tweak is needed.",
+      "parentUuid": "6c165860_dfc49ce4",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 3
+      },
+      "revId": "3b6d7f308ff2531a48150d4526d0e9341fc4aecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c682288d_f860c1ce",
@@ -100,6 +148,30 @@
       "writtenOn": "2021-04-16T05:46:30Z",
       "side": 1,
       "message": "Change to HandwritingRecognitionWebPlatformApi",
+      "range": {
+        "startLine": 49,
+        "startChar": 25,
+        "endLine": 49,
+        "endChar": 54
+      },
+      "revId": "3b6d7f308ff2531a48150d4526d0e9341fc4aecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "654bf8ca_f1e984a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-04-16T06:09:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c682288d_f860c1ce",
       "range": {
         "startLine": 49,
         "startChar": 25,
