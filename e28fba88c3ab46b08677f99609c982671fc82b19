@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "542d65c0_e5ae58d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_firewall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-16T01:06:42Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "9857cec5_4623cf0e",
+      "range": {
+        "startLine": 57,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "e28fba88c3ab46b08677f99609c982671fc82b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b1b4635_48ef6df9",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-15T08:52:08Z",
       "side": 1,
       "message": "clarification: why? can we wait for the situation gets stable? At least, there\u0027s no guarantee 5 seconds is enough. Or, if 5 seconds is too long, it just consumes time unnecessarily, that\u0027s cost of maintenance.",
+      "range": {
+        "startLine": 58,
+        "startChar": 70,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "e28fba88c3ab46b08677f99609c982671fc82b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "672ae270_7db7d0c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_firewall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-16T01:06:42Z",
+      "side": 1,
+      "message": "I tested some more, and I think we can not use the sleep and instead pass a timeout to the underlying system command called by CreateFirewall. \n\nPreviously, a file lock would prevent the iptables command from running, and repeatedly calling this in the polling loop would cause the RESOURCE_PROBLEM.",
+      "parentUuid": "1b1b4635_48ef6df9",
       "range": {
         "startLine": 58,
         "startChar": 70,
