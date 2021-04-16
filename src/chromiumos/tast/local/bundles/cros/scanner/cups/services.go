@@ -8,7 +8,6 @@ package cups
 import (
 	"context"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/local/printing/usbprinter"
@@ -33,18 +32,8 @@ func EnsurePrinterIdle(ctx context.Context, devInfo usbprinter.DevInfo) error {
 // RestartPrintingSystem restarts all of the printing-related processes, leaving the
 // system in an idle state.
 func RestartPrintingSystem(ctx context.Context, devInfo usbprinter.DevInfo) error {
-	if err := upstart.StopJob(ctx, "ippusb"); err != nil {
-		return errors.Wrap(err, "failed to stop ippusb service")
-	}
 	if err := printer.ResetCups(ctx); err != nil {
 		return errors.Wrap(err, "failed to reset CUPS")
-	}
-	// Sometimes upstart loses track of the ippusb_manager process and leaves an unreaped
-	// minijail child around.  If this happens, it will still have the main socket open.
-	// Kill everything with that socket open just to make sure it's all the way gone.
-	cmd := testexec.CommandContext(ctx, "fuser", "-sk", "/run/ippusb/ippusb_manager.sock")
-	if err := cmd.Run(); err != nil {
-		return errors.Wrap(err, "failed to kill processes with ippusb_manager.sock open")
 	}
 
 	if err := upstart.RestartJob(ctx, "upstart-socket-bridge"); err != nil {
