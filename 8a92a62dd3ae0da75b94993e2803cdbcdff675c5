@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7fc3acd_9b103366",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-16T12:11:55Z",
+      "side": 1,
+      "message": "nit: Enable",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "8a92a62dd3ae0da75b94993e2803cdbcdff675c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2442f741_350bc228",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-16T12:11:55Z",
+      "side": 1,
+      "message": "typo: double space",
+      "range": {
+        "startLine": 7,
+        "startChar": 32,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "8a92a62dd3ae0da75b94993e2803cdbcdff675c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fdf21730_01e62cb4",
@@ -14,6 +60,23 @@
       "writtenOn": "2021-04-16T01:25:41Z",
       "side": 1,
       "message": "andrescj@ PTAL\n\nOthers FYI",
+      "revId": "8a92a62dd3ae0da75b94993e2803cdbcdff675c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b25ec13_1ec69a9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-16T12:11:55Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "8a92a62dd3ae0da75b94993e2803cdbcdff675c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
