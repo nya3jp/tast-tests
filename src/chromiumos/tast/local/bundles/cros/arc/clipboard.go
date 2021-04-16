@@ -22,14 +22,15 @@ func init() {
 		Func:         Clipboard,
 		Desc:         "Tests copying and pasting from Chrome to Android and vice versa",
 		Contacts:     []string{"ruanc@chromium.org", "yhanada@chromium.org", "arc-framework+tast@google.com"},
-		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
+			ExtraAttr:         []string{"group:mainline"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 		}},
 	})
 }
