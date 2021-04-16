@@ -29,7 +29,7 @@ func init() {
 		Func: PowerCameraPreviewPerf,
 		Desc: "Measures the battery drain and camera statistics (e.g., dropped frames) during camera preview at 30/60 FPS",
 		Contacts: []string{
-			"springerm@chromium.org",
+			"lnishan@chromium.org",
 			"arcvm-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},

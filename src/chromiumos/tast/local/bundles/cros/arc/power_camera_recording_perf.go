@@ -25,7 +25,7 @@ func init() {
 		Func: PowerCameraRecordingPerf,
 		Desc: "Measures the battery drain during camera recording at 30 FPS",
 		Contacts: []string{
-			"springerm@chromium.org",
+			"lnishan@chromium.org",
 			"arcvm-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
