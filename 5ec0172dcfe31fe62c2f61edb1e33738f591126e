@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea1ee406_bb2266d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-16T21:22:00Z",
+      "side": 1,
+      "message": "This is the way Tast\u0027s DUT.Reboot() works, and it is also accounted for by the TAuto mode-switcher\u0027s wait_for_client_offline().",
+      "revId": "5ec0172dcfe31fe62c2f61edb1e33738f591126e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
