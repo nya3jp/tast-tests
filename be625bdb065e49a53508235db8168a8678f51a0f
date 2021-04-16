@@ -16,6 +16,46 @@
       "message": "tast-owners@ PTAL",
       "revId": "be625bdb065e49a53508235db8168a8678f51a0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b00ed33_8fc5ef87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-16T07:35:05Z",
+      "side": 1,
+      "message": "LGTM % question",
+      "revId": "be625bdb065e49a53508235db8168a8678f51a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5259a2c2_51b91582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-16T07:35:05Z",
+      "side": 1,
+      "message": "Is this intended?",
+      "range": {
+        "startLine": 24,
+        "startChar": 43,
+        "endLine": 24,
+        "endChar": 46
+      },
+      "revId": "be625bdb065e49a53508235db8168a8678f51a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
