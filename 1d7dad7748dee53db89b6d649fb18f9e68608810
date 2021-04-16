@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe5d099c_b642861e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-04-16T21:55:40Z",
+      "side": 1,
+      "message": "You might want to make a not of this change on the commit message. Something like:\n  Also, this includes an error logging improvement for wrapper.",
+      "revId": "1d7dad7748dee53db89b6d649fb18f9e68608810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
