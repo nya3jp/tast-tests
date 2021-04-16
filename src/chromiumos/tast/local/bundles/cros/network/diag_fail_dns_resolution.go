@@ -62,12 +62,11 @@ func DiagFailDNSResolution(ctx context.Context, s *testing.State) {
 	// After the property change is emitted, Chrome still needs to process it.
 	// Since Chrome does not emit a change, poll to test whether the expected
 	// problem occurs.
-	pollParams := diag.PollRoutineParams{
-		Routine:  diag.RoutineDNSResolution,
+	expectedResult := &diag.RoutineResult{
 		Verdict:  diag.VerdictProblem,
 		Problems: []int{int(problemFailedToResolveHost)},
 	}
-	if err := mojo.PollRoutine(ctx, pollParams); err != nil {
+	if err := mojo.PollRoutine(ctx, diag.RoutineDNSResolution, expectedResult); err != nil {
 		s.Fatal("Failed to poll routine: ", err)
 	}
 }

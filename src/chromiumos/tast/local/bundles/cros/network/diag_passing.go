@@ -88,11 +88,11 @@ func DiagPassing(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to run routine: ", err)
 	}
 
-	if err := diag.CheckRoutineVerdict(result.Verdict); err != nil {
-		s.Fatal("Unexpected routine verdict: ", err)
+	expectedResult := &diag.RoutineResult{
+		Verdict:  diag.VerdictNoProblem,
+		Problems: []int{},
 	}
-
-	if len(result.Problems) != 0 {
-		s.Fatal("Routine reported problems: ", result.Problems)
+	if err := diag.CheckRoutineResult(result, expectedResult); err != nil {
+		s.Fatal("Routine result did not match: ", err)
 	}
 }
