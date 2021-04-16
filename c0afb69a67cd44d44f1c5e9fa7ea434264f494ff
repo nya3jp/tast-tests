@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14eda057_3eb99e93",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-16T13:09:08Z",
+      "side": 1,
+      "message": "Created crbug.com/1199705",
+      "parentUuid": "e31cdfd2_52d9f363",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "c0afb69a67cd44d44f1c5e9fa7ea434264f494ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e04c9813_0aea3abe",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-04-16T12:53:41Z",
       "side": 1,
       "message": "nit: setUpTimeout",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "c0afb69a67cd44d44f1c5e9fa7ea434264f494ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7994e89_6e21a0e3",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-16T13:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e04c9813_0aea3abe",
       "range": {
         "startLine": 22,
         "startChar": 6,
