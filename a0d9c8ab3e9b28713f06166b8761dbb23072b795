@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faf25907_609c8efb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-16T01:08:04Z",
+      "side": 1,
+      "message": "meiring@ I see you wrote +2 in a comment, but didn\u0027t update the vote. Was this intentional?",
+      "revId": "a0d9c8ab3e9b28713f06166b8761dbb23072b795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
