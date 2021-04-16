@@ -39,6 +39,30 @@
       },
       "revId": "bf94eaf5cb92c5183473471af7b03ee7961c3f97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1aecc38_f6463573",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-16T19:33:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5b11bac_e6077ee7",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "bf94eaf5cb92c5183473471af7b03ee7961c3f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
