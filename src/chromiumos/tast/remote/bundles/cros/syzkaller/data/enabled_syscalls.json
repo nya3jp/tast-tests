@@ -604,5 +604,21 @@
 			"ioctl$DRM_IOCTL_PVR_SRVKM_CMD_PVRSRV_BRIDGE_SYNCTRACKING_SYNCRECORDADD",
 			"ioctl$DRM_IOCTL_PVR_SRVKM_CMD_PVRSRV_BRIDGE_SYNCTRACKING_SYNCRECORDREMOVEBYHANDLE"
 		]
+	},
+	{
+		"driver": "qrtr-modem",
+		"archs": ["arm"],
+		"syscalls": [
+			"socket$qrtr",
+			"bind$qrtr",
+			"connect$qrtr",
+			"getsockname$qrtr",
+			"getpeername$qrtr",
+			"ioctl$sock_qrtr_TIOCOUTQ",
+			"ioctl$sock_qrtr_TIOCINQ",
+			"ioctl$sock_qrtr_SIOCGIFADDR",
+			"sendmsg$qrtr",
+			"recvmsg$qrtr"
+		]
 	}
 ]
