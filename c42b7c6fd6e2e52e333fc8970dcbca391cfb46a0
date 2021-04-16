@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f51a6dfc_8bbeac17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-04-16T01:52:41Z",
+      "side": 1,
+      "message": "There\u0027s some code cleanup that should be done at some point, but this is the important bit",
+      "revId": "c42b7c6fd6e2e52e333fc8970dcbca391cfb46a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
