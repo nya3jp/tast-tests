@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0615a69d_bc344935",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-16T09:00:25Z",
+      "side": 1,
+      "message": "LGTM % nits, thanks!",
+      "revId": "9faf4c078973919dca99713b88e504e0add6fb53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e6f28b6_0e13954f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-16T09:00:25Z",
+      "side": 1,
+      "message": "nit: maybe rename to smth like groupTimeouts?\n\nHard to understand that \"vp9Extensions\" contains timeout for some groups",
+      "range": {
+        "startLine": 321,
+        "startChar": 1,
+        "endLine": 321,
+        "endChar": 14
+      },
+      "revId": "9faf4c078973919dca99713b88e504e0add6fb53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448c9a11_fd93d84d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-16T09:00:25Z",
+      "side": 1,
+      "message": "nit: looks like we don\u0027t need this condition anymore and time is always specified. Same as ExtraData",
+      "range": {
+        "startLine": 385,
+        "startChar": 1,
+        "endLine": 385,
+        "endChar": 19
+      },
+      "revId": "9faf4c078973919dca99713b88e504e0add6fb53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
