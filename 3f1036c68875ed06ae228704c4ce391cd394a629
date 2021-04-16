@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b4b1078_a14a17fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-16T09:22:21Z",
+      "side": 1,
+      "message": "This test required the removal of the \"--autoplay-policy\u003dno-user-gesture-required\" argument when starting chrome as it overrides the policy setting.\nIt seems this argument shouldn\u0027t be set unconditionally anyway and the CL passed the dry run. Is there any reason we need to keep it, and if so can we make it optional?",
+      "revId": "3f1036c68875ed06ae228704c4ce391cd394a629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
