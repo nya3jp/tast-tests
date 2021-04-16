@@ -67,10 +67,12 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc", caps.BuiltinOrVividCamera},
 		Timeout:      7 * time.Minute,
-		Fixture:      "loggedInToCUJUser",
 		Vars: []string{
 			"mute",
 			"record",
+			"test_username",
+			"test_password",
+			"meeting_code",
 			"ui.MeetCUJ.bond_credentials",
 			"ui.MeetCUJ.doc",
 		},
@@ -202,17 +204,39 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	defer bc.Close()
 
 	var meetingCode string
-	func() {
-		sctx, cancel := context.WithTimeout(ctx, timeout)
-		defer cancel()
-		meetingCode, err = bc.CreateConference(sctx)
-		if err != nil {
-			s.Fatal("Failed to create a conference room: ", err)
-		}
-	}()
-	s.Log("Created a room with the code ", meetingCode)
+	customCode, codeOk := s.Var("meeting_code")
+	if codeOk {
+		meetingCode = customCode
+	} else {
+		func() {
+			sctx, cancel := context.WithTimeout(ctx, timeout)
+			defer cancel()
+			meetingCode, err = bc.CreateConference(sctx)
+			if err != nil {
+				s.Fatal("Failed to create a conference room: ", err)
+			}
+		}()
+		s.Log("Created a room with the code ", meetingCode)
+	}
 
-	cr := s.FixtValue().(cuj.FixtureData).Chrome
+	var username string
+	var password string
+	testUser, userOk := s.Var("test_username")
+	testPass, passOk := s.Var("test_password")
+	if userOk && passOk {
+		username = testUser
+		password = testPass
+	} else {
+		username = s.RequiredVar("ui.cuj_username")
+		password = s.RequiredVar("ui.cuj_password")
+	}
+	cr, err := chrome.New(ctx,
+		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		chrome.ARCSupported())
+	if err != nil {
+		s.Fatal("Failed to init: ", err)
+	}
+	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -536,8 +560,10 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		defer cancel()
 		// Add 30 seconds to the bot duration to make sure that bots do not leave
 		// slightly earlier than the test scenario.
-		if _, err := bc.AddBots(sctx, meetingCode, meet.num, meetTimeout+30*time.Second); err != nil {
-			return errors.Wrap(err, "failed to create bots")
+		if !codeOk {
+			if _, err := bc.AddBots(sctx, meetingCode, meet.num, meetTimeout+30*time.Second); err != nil {
+				return errors.Wrap(err, "failed to create bots")
+			}
 		}
 		if err := meetConn.WaitForExpr(ctx, "hrTelemetryApi.isInMeeting() === true"); err != nil {
 			return errors.Wrap(err, "failed to wait for entering meeting")
