@@ -245,3 +245,8 @@ func (h *APIface) Set(ctx context.Context, prop hostapd.Property, val string) er
 func (h *APIface) ListSTA(ctx context.Context) ([]string, error) {
 	return h.hostapd.ListSTA(ctx)
 }
+
+// SendBeaconRequest sends a Beacon Request to the specified client.
+func (h *APIface) SendBeaconRequest(ctx context.Context, clientMAC string, params hostapd.BeaconReqParams) error {
+	return h.hostapd.SendBeaconRequest(ctx, clientMAC, params)
+}

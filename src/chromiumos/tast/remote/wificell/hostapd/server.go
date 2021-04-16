@@ -7,14 +7,19 @@ package hostapd
 import (
 	"bytes"
 	"context"
+	"encoding/binary"
+	"encoding/hex"
 	"fmt"
 	"io"
+	"net"
 	"os"
 	"path"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/google/gopacket/layers"
 
 	"chromiumos/tast/common/network/daemonutil"
 	"chromiumos/tast/ctxutil"
@@ -298,6 +303,120 @@ func (s *Server) SendBSSTMRequest(ctx context.Context, clientMAC string, params 
 	// Run the command
 	if _, err := s.hostapdCLI(ctx, args...); err != nil {
 		return errors.Wrapf(err, "failed to send BSS TM request to client %s", clientMAC)
+	}
+	return nil
+}
+
+// MeasurementMode is the beacon request measurement mode to be used
+type MeasurementMode uint8
+
+const (
+	// ModePassive scan on selected channels
+	ModePassive MeasurementMode = 0
+	// ModeActive scan on selected channels
+	ModeActive MeasurementMode = 1
+	// ModeTable uses the cached scan results
+	ModeTable MeasurementMode = 2
+)
+
+// Detail specifies which IEs to include in the report
+type Detail uint8
+
+const (
+	// DetailNone omits all IEs from report
+	DetailNone Detail = 0
+	// DetailRequestedOnly includes only the IEs specified in the request subelement in the report
+	DetailRequestedOnly Detail = 1
+	// DetailAllFields includes all IEs
+	DetailAllFields Detail = 2
+)
+
+// SubelemID are the element IDs in beacon reports
+type SubelemID uint8
+
+// Some commonly used sub-elements in beacon reports
+const (
+	SubelemSSID           SubelemID = 0
+	SubelemInfo           SubelemID = 1
+	SubelemDetail         SubelemID = 2
+	SubelemRequest        SubelemID = 10
+	SubelemChannelReport  SubelemID = 51
+	SubelemLastIndication SubelemID = 164
+)
+
+// BeaconReqParams defines the parameters for a beacon request
+type BeaconReqParams struct {
+	// OpClass is the operating class
+	OpClass uint8
+	// Channel specifies the channel to scan on
+	Channel uint8
+	// Duration is the measurement time limit
+	Duration uint16
+	// Mode is the measurement mode to be used
+	Mode MeasurementMode
+	// BSSID is the BSSID to scan for
+	BSSID net.HardwareAddr
+	// SSID is the SSID to scan for
+	SSID string
+	// ReportingDetail specifies which IEs to include in the report
+	ReportingDetail Detail
+	// ReportChannels specifies which channels to report on
+	ReportChannels []uint8
+	// Request lists IEs expected in the report
+	Request []layers.Dot11InformationElementID
+	// LastFrame indicates whether or not we should indicate that the last report frame is the last frame
+	LastFrame bool
+}
+
+// Serialize serializes the beacon request parameters into a hex string recognizable by hostapd
+func (b BeaconReqParams) Serialize() (string, error) {
+	var req []byte
+	req = append(req, b.OpClass)
+	req = append(req, b.Channel)
+	req = append(req, 0, 0) // Two bytes for randomization interval
+	durationBytes := make([]byte, 2)
+	binary.LittleEndian.PutUint16(durationBytes, b.Duration)
+	req = append(req, durationBytes...)
+	if b.Mode > 2 {
+		return "", errors.Errorf("invalid measurement mode: %v. Expected 0, 1 or 2", b.Mode)
+	}
+	req = append(req, byte(b.Mode))
+	req = append(req, b.BSSID...)
+	if len(b.SSID) > 0 {
+		req = append(req, byte(SubelemSSID), byte(len(b.SSID)))
+		req = append(req, b.SSID...)
+	}
+	if b.ReportingDetail > 2 {
+		return "", errors.Errorf("invalid reporting detail: %v. Expected 0, 1, or 2", b.ReportingDetail)
+	}
+	req = append(req, byte(SubelemDetail), 1, byte(b.ReportingDetail))
+	if len(b.ReportChannels) > 0 {
+		req = append(req, byte(SubelemChannelReport), byte(len(b.ReportChannels)+1), b.OpClass)
+		req = append(req, b.ReportChannels...)
+	}
+	if len(b.Request) > 0 {
+		req = append(req, byte(SubelemRequest), byte(len(b.Request)))
+		dst := make([]byte, len(b.Request))
+		for i, elem := range b.Request {
+			dst[i] = byte(elem)
+		}
+		req = append(req, dst...)
+	}
+	if b.LastFrame {
+		req = append(req, byte(SubelemLastIndication), 1, 1)
+	}
+	return hex.EncodeToString(req), nil
+}
+
+// SendBeaconRequest sends a Beacon Request to the specified client.
+func (s *Server) SendBeaconRequest(ctx context.Context, clientMAC string, param BeaconReqParams) error {
+	beaconReqStr, err := param.Serialize()
+	if err != nil {
+		return errors.Wrap(err, "failed to serialize beacon request")
+	}
+	args := []string{"-p" + s.ctrlPath(), "REQ_BEACON", clientMAC, beaconReqStr}
+	if err := s.host.Command(hostapdCLI, args...).Run(ctx); err != nil {
+		return errors.Wrapf(err, "failed to send Beacon Request to client %s", clientMAC)
 	}
 	return nil
 }
