@@ -45,6 +45,30 @@
       },
       "revId": "9f8a4d86fd7cec8c805adf2e971ba7e97671b339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c27daf36_64326d4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-04-16T19:53:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "429cb64c_6e8066ca",
+      "range": {
+        "startLine": 40,
+        "startChar": 15,
+        "endLine": 40,
+        "endChar": 33
+      },
+      "revId": "9f8a4d86fd7cec8c805adf2e971ba7e97671b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
