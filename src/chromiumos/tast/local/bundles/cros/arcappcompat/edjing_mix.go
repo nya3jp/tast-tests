@@ -138,13 +138,7 @@ func launchAppForEdjingMix(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Fatal("Failed to click on skip button: ", err)
 	}
 
-	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
-	// Check for launch verifier.
-	launchVerifier := d.Object(ui.PackageName(appPkgName))
-	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
-		s.Fatal("launchVerifier doesn't exists: ", err)
-	}
+	testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
 // pressAllowKeysEdjingMix runs the same set of keys twice to close the pop-up windows and land on home page
