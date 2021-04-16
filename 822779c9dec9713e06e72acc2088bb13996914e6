@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "186abea8_d0f72937",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in_direct.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-16T17:30:05Z",
+      "side": 1,
+      "message": "nit: maybe add a TODO to fix the name?",
+      "range": {
+        "startLine": 59,
+        "startChar": 31,
+        "endLine": 60,
+        "endChar": 33
+      },
+      "revId": "822779c9dec9713e06e72acc2088bb13996914e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed619fe_6bc984cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in_direct.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-16T17:30:05Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like this will remove the files?",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 40
+      },
+      "revId": "822779c9dec9713e06e72acc2088bb13996914e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b95eadb_077636ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-16T17:30:05Z",
+      "side": 1,
+      "message": "o_O what... does it ... do?",
+      "range": {
+        "startLine": 66,
+        "startChar": 73,
+        "endLine": 67,
+        "endChar": 25
+      },
+      "revId": "822779c9dec9713e06e72acc2088bb13996914e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
