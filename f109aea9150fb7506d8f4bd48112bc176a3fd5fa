@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d7503c_c5b86402",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/firewall/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-16T01:08:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "961a838e_fffcda0f",
+      "range": {
+        "startLine": 20,
+        "startChar": 80,
+        "endLine": 20,
+        "endChar": 81
+      },
+      "revId": "f109aea9150fb7506d8f4bd48112bc176a3fd5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e316584_4cd61cfb",
@@ -98,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c95d355_b0b5e4c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/firewall/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-16T01:08:04Z",
+      "side": 1,
+      "message": "Good idea, I think it makes sense to add an AllowProtocols field. I prefer  the more abstracted interface instead of worrying about iptables details. But it would probably make sense to eventually combine these two libraries.",
+      "parentUuid": "2e316584_4cd61cfb",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "f109aea9150fb7506d8f4bd48112bc176a3fd5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b527cb0_133a20ae",
@@ -111,6 +159,30 @@
       "writtenOn": "2021-04-15T01:56:46Z",
       "side": 1,
       "message": "nit: https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences (should have only one full stop).",
+      "range": {
+        "startLine": 49,
+        "startChar": 46,
+        "endLine": 49,
+        "endChar": 47
+      },
+      "revId": "f109aea9150fb7506d8f4bd48112bc176a3fd5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "462b838a_cfd5e746",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/firewall/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-16T01:08:04Z",
+      "side": 1,
+      "message": "I guess the other one migrated down there 😊. Done.",
+      "parentUuid": "6b527cb0_133a20ae",
       "range": {
         "startLine": 49,
         "startChar": 46,
