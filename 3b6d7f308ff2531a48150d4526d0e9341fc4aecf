@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "da06e3fc_bfc21e02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-04-16T06:25:26Z",
+      "side": 1,
+      "message": "Verified this works with the above CL",
+      "parentUuid": "02a2909b_c257fccf",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "3b6d7f308ff2531a48150d4526d0e9341fc4aecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "79219ce7_b8329dcd",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
