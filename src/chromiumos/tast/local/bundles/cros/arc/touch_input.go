@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -22,6 +23,7 @@ func init() {
 		Desc:         "Verifies touch input in various window states on Android",
 		Contacts:     []string{"prabirmsp@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
+		HardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Fixture:      "arcBooted",
 	})
