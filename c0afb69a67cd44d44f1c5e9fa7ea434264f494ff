@@ -16,6 +16,69 @@
       "message": "PTAL",
       "revId": "c0afb69a67cd44d44f1c5e9fa7ea434264f494ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa876c3c_9554f0ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-16T12:53:41Z",
+      "side": 1,
+      "message": "LGTM % comments, thanks!",
+      "revId": "c0afb69a67cd44d44f1c5e9fa7ea434264f494ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e31cdfd2_52d9f363",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-16T12:53:41Z",
+      "side": 1,
+      "message": "Let\u0027s maybe add a TODO in order to potentially remove it in the future it it won\u0027t help or when we will have a better understanding what was wrong.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "c0afb69a67cd44d44f1c5e9fa7ea434264f494ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e04c9813_0aea3abe",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-16T12:53:41Z",
+      "side": 1,
+      "message": "nit: setUpTimeout",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "c0afb69a67cd44d44f1c5e9fa7ea434264f494ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
