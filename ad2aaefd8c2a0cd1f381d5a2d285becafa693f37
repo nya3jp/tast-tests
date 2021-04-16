@@ -96,6 +96,54 @@
       },
       "revId": "ad2aaefd8c2a0cd1f381d5a2d285becafa693f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6f34731_0c94e080",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1501397
+      },
+      "writtenOn": "2021-04-16T00:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "365bbe3c_1af8d192",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 2
+      },
+      "revId": "ad2aaefd8c2a0cd1f381d5a2d285becafa693f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7abf91c2_a356f0c7",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1501397
+      },
+      "writtenOn": "2021-04-16T00:24:21Z",
+      "side": 1,
+      "message": "Agree, ternary operator can help this to be cleaner.",
+      "parentUuid": "67e24971_a53f82dd",
+      "range": {
+        "startLine": 477,
+        "startChar": 20,
+        "endLine": 491,
+        "endChar": 2
+      },
+      "revId": "ad2aaefd8c2a0cd1f381d5a2d285becafa693f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
