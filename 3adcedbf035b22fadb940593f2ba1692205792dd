@@ -1,6 +1,138 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29ab9aa7_9a8fae19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-16T09:25:29Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "3adcedbf035b22fadb940593f2ba1692205792dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "664af362_86b9e1ac",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-16T09:25:29Z",
+      "side": 1,
+      "message": "Looks like this isn\u0027t used anymore",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "3adcedbf035b22fadb940593f2ba1692205792dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c577a0b_19031144",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-16T09:25:29Z",
+      "side": 1,
+      "message": "nit: please wrap error. Check guideline:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction\n\n```\nIt is recommended to wrap when you cross package boundary, which represents some kind of barrier beneath which everything is an implementation detail. Otherwise it is fine to return an error without wrapping, if you can\u0027t really add much context to make debugging easier. Use your best judgement to decide wrap or not.\n```",
+      "range": {
+        "startLine": 128,
+        "startChar": 9,
+        "endLine": 128,
+        "endChar": 12
+      },
+      "revId": "3adcedbf035b22fadb940593f2ba1692205792dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d804c011_2d0b78a2",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-16T09:25:29Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 132,
+        "startChar": 9,
+        "endLine": 132,
+        "endChar": 12
+      },
+      "revId": "3adcedbf035b22fadb940593f2ba1692205792dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b28ab63_3cf90031",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-16T09:25:29Z",
+      "side": 1,
+      "message": "nit: please wrap error",
+      "range": {
+        "startLine": 137,
+        "startChar": 28,
+        "endLine": 137,
+        "endChar": 31
+      },
+      "revId": "3adcedbf035b22fadb940593f2ba1692205792dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db869ae9_046dd978",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-16T09:25:29Z",
+      "side": 1,
+      "message": "Please use different message here and in line 147. There is no way to understand what exactly caused error.",
+      "range": {
+        "startLine": 140,
+        "startChar": 22,
+        "endLine": 140,
+        "endChar": 53
+      },
+      "revId": "3adcedbf035b22fadb940593f2ba1692205792dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b7a4992_0497fe84",
@@ -14,6 +146,52 @@
       "writtenOn": "2021-04-16T09:13:20Z",
       "side": 1,
       "message": "Hmm what if there are 2 CCA like intent+normal instances? Could we poll for the to be closed one with some unique identifier like target id?\n\nIf it\u0027s too complicated to fit this CL and we want to land this sooner, I am ok to land it as is with a TODO.",
+      "revId": "3adcedbf035b22fadb940593f2ba1692205792dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "320c28a1_46a9dbcb",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-16T09:25:29Z",
+      "side": 1,
+      "message": "nit: same",
+      "range": {
+        "startLine": 144,
+        "startChar": 28,
+        "endLine": 144,
+        "endChar": 31
+      },
+      "revId": "3adcedbf035b22fadb940593f2ba1692205792dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8712e1e2_436f425e",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-16T09:25:29Z",
+      "side": 1,
+      "message": "nit: I think it also makes sense to wrap this error\n\nThe only information you will get from error is \"failed to get targets\":\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d586?q\u003dIsTargetAvailable",
+      "range": {
+        "startLine": 169,
+        "startChar": 8,
+        "endLine": 169,
+        "endChar": 46
+      },
       "revId": "3adcedbf035b22fadb940593f2ba1692205792dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
