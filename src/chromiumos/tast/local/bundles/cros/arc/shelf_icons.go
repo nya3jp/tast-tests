@@ -33,9 +33,8 @@ func init() {
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name: "vm",
-			// TODO(b/179510458): Reenable when the test passes.
-			// ExtraAttr:         []string{"group:mainline", "informational"},
+			Name:              "vm",
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
