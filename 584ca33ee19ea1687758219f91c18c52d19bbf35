@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44c1b81f_af3eb062",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359736
+      },
+      "writtenOn": "2021-04-16T06:17:28Z",
+      "side": 1,
+      "message": "LGTM for the flags used, but I am not familiar with Tast/Go.",
+      "revId": "584ca33ee19ea1687758219f91c18c52d19bbf35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
