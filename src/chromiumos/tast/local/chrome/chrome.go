@@ -177,6 +177,10 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	if cfg.LoginMode() == config.GAIALogin {
 		timeout = GAIALoginTimeout
 	}
+	// Allow a custom timeout to be set.
+	if cfg.CustomLoginTimeout() != 0 {
+		timeout = cfg.CustomLoginTimeout()
+	}
 	origCtx := ctx
 	ctx, cancel := context.WithTimeout(origCtx, timeout)
 	defer cancel()

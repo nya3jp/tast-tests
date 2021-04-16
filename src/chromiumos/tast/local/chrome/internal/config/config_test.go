@@ -8,6 +8,7 @@ import (
 	"reflect"
 	"strings"
 	gotesting "testing"
+	"time"
 )
 
 func TestReuseTag(t *gotesting.T) {
@@ -112,5 +113,14 @@ func TestVerifySessionReuse(t *gotesting.T) {
 		t.Error("Reuse should not be allowed when EnableFeatures are different")
 	} else {
 		checkErrorContains(err, "EnableFeatures")
+	}
+}
+
+func TestLoginTimeoutParsing(t *gotesting.T) {
+	const testDuration = 15*time.Second + 421*time.Millisecond
+
+	cfg, _ := NewConfig([]Option{func(cfg *MutableConfig) error { cfg.CustomLoginTimeout = int64(testDuration.Nanoseconds()); return nil }})
+	if cfg.CustomLoginTimeout() != testDuration {
+		t.Errorf("Parsing of timeout failed: want %v; got %v", testDuration, cfg.CustomLoginTimeout())
 	}
 }

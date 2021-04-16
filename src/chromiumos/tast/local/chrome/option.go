@@ -162,6 +162,14 @@ func DontSkipOOBEAfterLogin() Option {
 	}
 }
 
+// CustomLoginTimeout allows setting a custom timeout for login.
+func CustomLoginTimeout(timeout time.Duration) Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.CustomLoginTimeout = int64(timeout.Nanoseconds())
+		return nil
+	}
+}
+
 // Region returns an Option that can be passed to New to set the region deciding
 // the locale used in the OOBE screen and the user sessions. region is a
 // two-letter code such as "us", "fr", or "ja".
