@@ -193,12 +193,5 @@ func launchAppForTiktok(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	} else if err := startWatchingButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on startWatchingButton: ", err)
 	}
-
-	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
-	// Check for launch verifier.
-	launchVerifier := d.Object(ui.PackageName(appPkgName))
-	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
-		s.Fatal("launchVerifier doesn't exists: ", err)
-	}
+	testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
