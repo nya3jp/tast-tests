@@ -149,7 +149,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			// It is also ok if the package is currently equal the play service package.
 			// It is also ok if the package is currently equal the android permission controller package
 			// This happens when you need to accept permissions.
-			if currentAppPkg, err := currentAppPackage(ctx, d); err != nil {
+			if currentAppPkg, err := CurrentAppPackage(ctx, d); err != nil {
 				s.Fatal("Failed to get current app package: ", err)
 			} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" && currentAppPkg != "com.google.android.gms" && currentAppPkg != "com.google.android.permissioncontroller" {
 				s.Fatalf("Failed to launch app: incorrect package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
@@ -643,8 +643,8 @@ func isNApp(ctx context.Context, d *ui.Device) bool {
 	return info.SDKInt >= 24
 }
 
-// currentAppPackage func to get info on current package name
-func currentAppPackage(ctx context.Context, d *ui.Device) (string, error) {
+// CurrentAppPackage func to get info on current package name
+func CurrentAppPackage(ctx context.Context, d *ui.Device) (string, error) {
 	// Wait for app to launch.
 	d.WaitForIdle(ctx, ShortUITimeout)
 	info, err := d.GetInfo(ctx)
