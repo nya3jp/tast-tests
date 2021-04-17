@@ -325,7 +325,7 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 						for _, v := range heuristicsHistograms {
 							heuristicsHistogramsMap[v] = true
 						}
-						storeHeuristicsHistograms := perfutil.StoreAllWithHeuristics(fmt.Sprintf("%dwindows", currentWindows))
+						storeHeuristicsHistograms := perfutil.StoreAllWithHeuristics(fmt.Sprintf("%s.%dwindows", arcMode, currentWindows))
 
 						for _, hist := range hists {
 							if heuristicsHistogramsMap[hist.Name] {
@@ -335,7 +335,7 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 								if err != nil {
 									return errors.Wrap(err, "failed to get GPU.EnsureWorkVisibleDuration data")
 								}
-								name := hist.Name + "." + suffix
+								name := fmt.Sprintf("%s%s.%s.%dwindows", hist.Name, suffix, arcMode, currentWindows)
 								testing.ContextLog(ctx, name, " = ", value)
 								pv.Append(perf.Metric{
 									Name:      name,
