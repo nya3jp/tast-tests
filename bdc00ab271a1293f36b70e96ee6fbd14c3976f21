@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "904b9f84_b5acc894",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-04-17T00:15:34Z",
+      "side": 1,
+      "message": "Miguel, PTAL",
+      "revId": "bdc00ab271a1293f36b70e96ee6fbd14c3976f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa806850_1d4cf795",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-04-17T00:15:34Z",
+      "side": 1,
+      "message": "Interestingly, while making the video go to an overlay helps a bit, I have remove this to get similar performance numbers as before https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2770281. I don\u0027t know why muting the video would make us drop more frames.",
+      "range": {
+        "startLine": 27,
+        "startChar": 51,
+        "endLine": 27,
+        "endChar": 56
+      },
+      "revId": "bdc00ab271a1293f36b70e96ee6fbd14c3976f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
