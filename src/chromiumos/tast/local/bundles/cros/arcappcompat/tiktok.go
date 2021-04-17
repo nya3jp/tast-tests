@@ -9,7 +9,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
@@ -91,60 +90,15 @@ func launchAppForTiktok(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		signUpButtonID                 = "com.zhiliaoapp.musically:id/ak"
 	)
 	var (
-		loginWithGoogleIndex       = 4
-		loginWithGoogleButtonIndex = 3
-		emailAddressIndex          = 0
+		loginWithGoogleIndex = 4
+		emailAddressIndex    = 0
 	)
-	// Press until KEYCODE_TAB until signup button is focused.
-	signUpButton := d.Object(ui.ID(signUpButtonID))
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if signUpBtnFocused, err := signUpButton.IsFocused(ctx); err != nil {
-			return errors.New("signUpButton not focused yet")
-		} else if !signUpBtnFocused {
-			d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0)
-			return errors.New("signUp button not focused yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
-		s.Log("Failed to focus signup button: ", err)
-	}
-
-	// Check for signup button.
-	signUpButton = d.Object(ui.ID(signUpButtonID))
-	if err := signUpButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("signUpButton doesn't exist: ", err)
-	} else if err := signUpButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on signUpButton: ", err)
-	}
-
-	// Press until KEYCODE_TAB until login button is focused.
-	loginButton := d.Object(ui.TextMatches("(?i)" + loginText))
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if loginBtnFocused, err := loginButton.IsFocused(ctx); err != nil {
-			return errors.New("login button not focused yet")
-		} else if !loginBtnFocused {
-			d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0)
-			return errors.New("login button not focused yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
-		s.Log("Failed to focus login button: ", err)
-	}
-
-	// Check for login button.
-	loginButton = d.Object(ui.TextMatches("(?i)" + loginText))
-	if err := loginButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Log("LoginButton doesn't exist: ", err)
-	} else if err := loginButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on loginButton: ", err)
-	}
-
 	// check for log in with previous device.
 	checkForLoginWithPreviousDevice := d.Object(ui.ClassName(textviewClassName), ui.TextMatches("(?i)"+loginWithPreviousDeviceText))
 	emailAddress := d.Object(ui.ID(emailAddressID), ui.Index(emailAddressIndex))
 	if err := checkForLoginWithPreviousDevice.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("checkForLoginWithPreviousDevice doesn't exist: ", err)
-		continueWithGoogle := d.Object(ui.ClassName(loginWithGoogleButtonClassName), ui.Index(loginWithGoogleButtonIndex))
+		continueWithGoogle := d.Object(ui.TextMatches("(?i)" + "Continue with Google"))
 		// Click on continue with Google button until EmailAddress exist.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			if err := emailAddress.Exists(ctx); err != nil {
@@ -194,11 +148,10 @@ func launchAppForTiktok(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Fatal("Failed to click on startWatchingButton: ", err)
 	}
 
-	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
-	// Check for launch verifier.
-	launchVerifier := d.Object(ui.PackageName(appPkgName))
-	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
-		s.Fatal("launchVerifier doesn't exists: ", err)
+	if currentAppPkg, err := testutil.CurrentAppPackage(ctx, d); err != nil {
+		s.Fatal("Failed to get current app package: ", err)
+	} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" && currentAppPkg != "com.google.android.gms" && currentAppPkg != "com.google.android.permissioncontroller" {
+		s.Fatalf("Failed to launch after login: incorrect package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
 	}
+	testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
