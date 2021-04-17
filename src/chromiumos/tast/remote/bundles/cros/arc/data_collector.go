@@ -170,6 +170,9 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		// Name of the pack in case of initial boot.
 		initialPack = "initial_pack"
 
+		// Name of the log for pack in case of initial boot.
+		initialPackLog = "initial_pack.log"
+
 		// Name of the pack in case of initial boot inside VM.
 		// TODO(b/183648019): Once VM ureadahead flow is stable, remove this and
 		// change vm_initial_pack -> initial_pack.
@@ -300,15 +303,19 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to create %q: %v", targetDir, err)
 		}
 
-		targetPackPath := filepath.Join(targetDir, initialPack)
+		var filesToGet = map[string]string{}
+		filesToGet[response.PackPath] = initialPack
+		filesToGet[response.LogPath] = initialPackLog
+
 		if param.vmEnabled {
-			vmTargetPackPath := filepath.Join(targetDir, vmInitialPack)
-			if err = linuxssh.GetFile(shortCtx, d.Conn(), response.VmPackPath, vmTargetPackPath); err != nil {
-				s.Fatalf("Failed to get %q from the device: %v", response.VmPackPath, err)
-			}
+			filesToGet[response.VmPackPath] = vmInitialPack
 		}
-		if err = linuxssh.GetFile(shortCtx, d.Conn(), response.PackPath, targetPackPath); err != nil {
-			s.Fatalf("Failed to get %q from the device: %v", response.PackPath, err)
+
+		for source, targetShort := range filesToGet {
+			target := filepath.Join(targetDir, targetShort)
+			if err = linuxssh.GetFile(shortCtx, d.Conn(), source, target); err != nil {
+				s.Fatalf("Failed to get %q from the device: %v", source, err)
+			}
 		}
 
 		targetTar := filepath.Join(targetDir, v+".tar")

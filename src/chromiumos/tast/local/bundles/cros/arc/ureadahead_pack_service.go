@@ -53,11 +53,14 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 
 		sysOpenTrace = "/sys/kernel/debug/tracing/events/fs/do_sys_open"
 
+		logName = "ureadahead.log"
+
 		ureadaheadTimeout = 10 * time.Second
 	)
 
 	// Create arguments for running ureadahead.
 	args := []string{
+		"--verbose",
 		"--force-trace",
 	}
 
@@ -120,7 +123,17 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		}
 	}
 
+	logPath := filepath.Join(ureadaheadDataDir, logName)
+	log, err := os.Create(logPath)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create log file")
+	}
+	defer log.Close()
+
 	cmd := testexec.CommandContext(ctx, "ureadahead", args...)
+	cmd.Stdout = log
+	cmd.Stderr = log
+
 	if err := cmd.Start(); err != nil {
 		return nil, errors.Wrap(err, "failed to start ureadahead tracing")
 	}
@@ -219,6 +232,7 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 	response := arcpb.UreadaheadPackResponse{
 		PackPath:   packPath,
 		VmPackPath: vmPackPath,
+		LogPath:    logPath,
 	}
 	return &response, nil
 }
