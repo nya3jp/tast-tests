@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b71afb4a_0ff106dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-17T00:27:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b0ffb86_d9f25439",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 8
+      },
+      "revId": "22da3987ff65334f1a21a2c361e87f6349912326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec723173_010d408e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-15T03:15:05Z",
       "side": 1,
       "message": "This will hide any errors from MeasureGPUCounters. This should probably have its own packageErr variable.",
+      "range": {
+        "startLine": 283,
+        "startChar": 2,
+        "endLine": 283,
+        "endChar": 8
+      },
+      "revId": "22da3987ff65334f1a21a2c361e87f6349912326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac7ec777_81980f23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-17T00:27:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec723173_010d408e",
       "range": {
         "startLine": 283,
         "startChar": 2,

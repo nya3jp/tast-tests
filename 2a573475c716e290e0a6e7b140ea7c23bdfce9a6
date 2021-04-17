@@ -170,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24fb346f_f2e689dd",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-17T00:27:09Z",
+      "side": 1,
+      "message": "Ah, it didn\u0027t fail because I forgot to handle the error in the \ntest Go files. Once I added it, the test did fail indeed for \ne.g. trogdor. Let me refactor the error conditions here: not\nhaving TSC or not supporting any other cx-residency should not\nbe considered an error, the same way as the GPU counters method\nalso doesn\u0027t error out.",
+      "parentUuid": "0cfe376a_dafbcecd",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 17
+      },
+      "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dad702ad_4c9bcd34",
@@ -231,6 +255,30 @@
       "side": 1,
       "message": "This line is still here.",
       "parentUuid": "6217bde2_0c83b419",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 103
+      },
+      "revId": "2a573475c716e290e0a6e7b140ea7c23bdfce9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efb3da36_8f8baddc",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-17T00:27:09Z",
+      "side": 1,
+      "message": "Rats! Hopefully gone now (and l.51-53 as well).",
+      "parentUuid": "f8ad8695_29917883",
       "range": {
         "startLine": 163,
         "startChar": 0,
