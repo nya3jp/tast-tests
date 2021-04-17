@@ -16,6 +16,24 @@
       "message": "I realize this is a really big change with some background knowledge required. Please let me know if you don\u0027t understand what\u0027s going on/if you\u0027d like me to elaborate more in certain (or all) areas.",
       "revId": "94c318422720b8b1dc5e938498430e28f755f432",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfab62a1_bf28d890",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-04-17T00:32:12Z",
+      "side": 1,
+      "message": "Yes, I think a lot more context is needed.\n\nI *think* you\u0027re setting up 2 different APs with the same SSID and in the same mobility domain, plus some extra BSS. Then, IIUC, you make one of the APs send a few different beacon requests to the DUT, and you compare the response depending on which of the various BSSIDs should be present in the report. Correct?\n\n\nI think the test should explain that, it needs a few paragraphs probably. Also every single test case should be explained: what is expected in the response, and why. For example, IIUC, the first test case specifies the SSID, so it expects a report containing only 2 BSSIDs, not the ones that have a different SSID. It would be good to explain that, otherwise readers can\u0027t verify the logic of the test.\n\n\nIt would also be good to document the parsing section. Magic offsets and values make it hard to follow the logic without explanation.",
+      "parentUuid": "c07c45ab_abbb3ac4",
+      "revId": "94c318422720b8b1dc5e938498430e28f755f432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
