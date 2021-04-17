@@ -787,32 +787,18 @@ func InitializeKnownState(ctx context.Context, d *dut.DUT, outdir string, pxy *s
 func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, fpBoard FPBoardName, enableHWWP, enableSWWP bool) error {
 	testing.ContextLogf(ctx, "Initializing HW WP to %t, SW WP to %t", enableHWWP, enableSWWP)
 	// HW write protect must be disabled to disable SW write protect.
-	hwWPArg := servo.FWWPStateOff
 	if !enableSWWP {
-		if err := pxy.Servo().SetFWWPState(ctx, hwWPArg); err != nil {
-			return errors.Wrap(err, "failed to disable HW write protect")
+		if err := SetHardwareWriteProtect(ctx, pxy, false); err != nil {
+			return err
 		}
 	}
 
-	swWPArg := "disable"
-	if enableSWWP {
-		swWPArg = "enable"
-	}
-	// TODO(b/116396469): Add error checking once it's fixed.
-	// This command can return error even on success, so ignore error for now.
-	_ = EctoolCommand(ctx, d, "flashprotect", swWPArg).Run(ctx)
-	// TODO(b/116396469): "flashprotect enable" command is slow, so wait for
-	// it to complete before attempting to reboot.
-	testing.Sleep(ctx, 2*time.Second)
-	if err := RebootFpmcu(ctx, d, "RW"); err != nil {
+	if err := SetSoftwareWriteProtect(ctx, d, enableSWWP); err != nil {
 		return err
 	}
 
-	if enableHWWP {
-		hwWPArg = servo.FWWPStateOn
-	}
-	if err := pxy.Servo().SetFWWPState(ctx, hwWPArg); err != nil {
-		return errors.Wrapf(err, "failed to set HW write protect to %q", hwWPArg)
+	if err := SetHardwareWriteProtect(ctx, pxy, enableHWWP); err != nil {
+		return err
 	}
 
 	if err := CheckWriteProtectStateCorrect(ctx, d, fpBoard, ImageTypeRW, enableSWWP, enableHWWP); err != nil {
