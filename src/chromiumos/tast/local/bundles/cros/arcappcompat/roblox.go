@@ -71,7 +71,7 @@ func init() {
 func Roblox(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.roblox.client"
-		appActivity = ".ActivityNativeMain"
+		appActivity = ".startup.ActivitySplash"
 	)
 	testCases := s.Param().([]testutil.TestCase)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
@@ -82,17 +82,26 @@ func Roblox(ctx context.Context, s *testing.State) {
 func launchAppForRoblox(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 
 	const (
-		enterUserNameID   = "com.roblox.client:id/view_login_username_field"
-		enterPasswordText = "Password"
-		loginButtonText   = "Log In"
-		loginText         = "Login"
-		passwordID        = "com.roblox.client:id/view_login_password_field"
+		loginPageClassName = "android.widget.FrameLayout"
+		enterUserNameID    = "com.roblox.client:id/view_login_username_field"
+		enterPasswordText  = "Password"
+		loginButtonText    = "Log In"
+		loginText          = "Login"
+		passwordID         = "com.roblox.client:id/view_login_password_field"
 	)
-
+	// Check if login page is in web view.
+	// If login page is in web view, the test will skip the login part.
+	checkForloginPage := d.Object(ui.ClassName(loginPageClassName))
+	if err := checkForloginPage.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("checkForloginButtonPage in web view does not exist: ", err)
+	} else {
+		s.Log("checkForloginButtonPage in web view does exist")
+		return
+	}
 	// Click on login button.
 	loginButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(loginText))
 	if err := loginButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("Login Button doesn't exists: ", err)
+		s.Error("Login Button doesn't exists: ", err)
 	} else if err := loginButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on loginButton: ", err)
 	}
