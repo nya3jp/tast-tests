@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/platform"
-	"chromiumos/tast/shutil"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -71,13 +70,11 @@ func FpSensor(ctx context.Context, s *testing.State) {
 		s.Fatal("Timed out waiting for biod to start: ", err)
 	}
 
-	fpencstatusCmd := []string{"ectool", "--name=cros_fp", "fpencstatus"}
-	testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(fpencstatusCmd))
-	out, err := d.Conn().Command(fpencstatusCmd[0], fpencstatusCmd[1:]...).Output(ctx, ssh.DumpLogOnError)
-
+	out, err := fingerprint.EctoolCommand(ctx, d, "fpencstatus").Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
-		s.Fatalf("%q failed: %v", shutil.EscapeSlice(fpencstatusCmd), err)
+		s.Fatal("Failed to get encryption status: ", err)
 	}
+
 	re := regexp.MustCompile("FPMCU encryption status: 0x[a-f0-9]{7}1(.+)FPTPM_seed_set")
 	if !re.MatchString(string(out)) {
 		s.Errorf("FPTPM seed is not set; output %q doesn't match regex %q", string(out), re)
