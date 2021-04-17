@@ -26,4 +26,6 @@ message UreadaheadPackResponse {
   string pack_path = 1;
   // Path to vm generated ureadahead pack.
   string vm_pack_path = 2;
+  // Path to log for ureadahead pack generation.
+  string log_path = 3;
 }
