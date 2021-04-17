@@ -39,6 +39,30 @@
       },
       "revId": "ba56fdb57dbc547782443b2e0af098101d501eb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa9b6635_0b0d07bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-04-17T01:29:20Z",
+      "side": 1,
+      "message": "Good point, done.",
+      "parentUuid": "33513f01_7a9abf12",
+      "range": {
+        "startLine": 92,
+        "startChar": 138,
+        "endLine": 92,
+        "endChar": 147
+      },
+      "revId": "ba56fdb57dbc547782443b2e0af098101d501eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
