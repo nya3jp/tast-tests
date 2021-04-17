@@ -71,7 +71,7 @@ func init() {
 func Pandora(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.pandora.android"
-		appActivity = ".Main"
+		appActivity = ".LauncherActivity"
 	)
 	testCases := s.Param().([]testutil.TestCase)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
@@ -81,19 +81,27 @@ func Pandora(ctx context.Context, s *testing.State) {
 // verify Pandora reached main activity page of the app.
 func launchAppForPandora(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		signInID     = "com.pandora.android:id/welcome_log_in_button"
-		emailText    = "Email"
-		passwordText = "Password"
-		logInText    = "Log In"
-		logInID      = "com.pandora.android:id/button_sign_in_submit"
+		signInID           = "com.pandora.android:id/welcome_log_in_button"
+		emailText          = "Email"
+		passwordText       = "Password"
+		logInText          = "Log In"
+		noneOfTheAboveText = "NONE OF THE ABOVE"
 	)
 
 	// Click on sign in button.
 	signInButton := d.Object(ui.ID(signInID))
-	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := signInButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Error("Sign in button doesn't exist: ", err)
 	} else if err := signInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on Sign in button: ", err)
+	}
+
+	// Click on none of the above button to skip login using gmail account.
+	noneOfTheButton := d.Object(ui.TextMatches("(?i)" + noneOfTheAboveText))
+	if err := noneOfTheButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("NoneOfTheButton doesn't exist: ", err)
+	} else if err := noneOfTheButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on noneOfTheButton: ", err)
 	}
 
 	// Check and click email address.
@@ -103,6 +111,16 @@ func launchAppForPandora(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Error("EnterEmailAddress doesn't exist: ", err)
 	} else if err := enterEmailAddress.Click(ctx); err != nil {
 		s.Fatal("Failed to click on enterEmailAddress: ", err)
+	}
+
+	if err := noneOfTheButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("NoneOfTheButton doesn't exist: ", err)
+	} else if err := noneOfTheButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on noneOfTheButton: ", err)
+	}
+
+	if err := enterEmailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Error("EnterEmailAddress doesn't exist: ", err)
 	} else if err := enterEmailAddress.SetText(ctx, pandoraEmailID); err != nil {
 		s.Fatal("Failed to enterEmailAddress: ", err)
 	}
@@ -119,7 +137,7 @@ func launchAppForPandora(ctx context.Context, s *testing.State, tconn *chrome.Te
 	}
 
 	// Click on log in button
-	logInButton := d.Object(ui.ID(logInID), ui.Text(logInText))
+	logInButton := d.Object(ui.Text(logInText))
 	if err := logInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("LogIn button doesn't exist: ", err)
 	} else if err := logInButton.Click(ctx); err != nil {
