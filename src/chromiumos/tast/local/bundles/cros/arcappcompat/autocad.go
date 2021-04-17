@@ -92,7 +92,7 @@ func launchAppForAutocad(ctx context.Context, s *testing.State, tconn *chrome.Te
 		notNowAutodeskID = "com.autodesk.autocadws:id/notNowButton"
 		okID             = "android:id/button1"
 		notNowID         = "com.autodesk.autocadws:id/tpf_not_now"
-		titleText        = "ree"
+		plusID           = "com.autodesk.autocadws:id/fabButton"
 	)
 
 	// Skip later dialog.
@@ -196,7 +196,7 @@ func launchAppForAutocad(ctx context.Context, s *testing.State, tconn *chrome.Te
 	}
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for homePageVerifier.
-	homePageVerifier := d.Object(ui.TextContains(titleText))
+	homePageVerifier := d.Object(ui.ID(plusID))
 	if err := homePageVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Fatal("homePageVerifier doesn't exist: ", err)
 	}
