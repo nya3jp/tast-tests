@@ -6,9 +6,12 @@ package fingerprint
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/servo"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -80,6 +83,41 @@ func expectedFlashProtectOutput(fpBoard FPBoardName, curImage FWImageType, softw
 	}
 
 	return expectedOutput
+}
+
+// SetHardwareWriteProtect sets the FPMCU's hardware write protection to the
+// state specified by enable.
+func SetHardwareWriteProtect(ctx context.Context, pxy *servo.Proxy, enable bool) error {
+	hardwareWriteProtectState := servo.FWWPStateOff
+
+	if enable {
+		hardwareWriteProtectState = servo.FWWPStateOn
+	}
+
+	if err := pxy.Servo().SetFWWPState(ctx, hardwareWriteProtectState); err != nil {
+		return errors.Wrapf(err, "failed to set hardware write protect to %t", enable)
+	}
+
+	return nil
+}
+
+// SetSoftwareWriteProtect sets the FPMCU's software write protection to the
+// state specified by enable.
+func SetSoftwareWriteProtect(ctx context.Context, d *dut.DUT, enable bool) error {
+	softwareWriteProtect := "disable"
+	if enable {
+		softwareWriteProtect = "enable"
+	}
+	// TODO(b/116396469): Add error checking once it's fixed.
+	// This command can return error even on success, so ignore error for now.
+	_ = EctoolCommand(ctx, d, "flashprotect", softwareWriteProtect).Run(ctx)
+	// TODO(b/116396469): "flashprotect enable" command is slow, so wait for
+	// it to complete before attempting to reboot.
+	testing.Sleep(ctx, 2*time.Second)
+	if err := RebootFpmcu(ctx, d, ImageTypeRW); err != nil {
+		return errors.Wrapf(err, "failed to set software write protect to %t", enable)
+	}
+	return nil
 }
 
 // CheckWriteProtectStateCorrect correct returns an error if the FPMCU's current write
