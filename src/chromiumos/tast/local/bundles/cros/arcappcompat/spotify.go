@@ -200,6 +200,7 @@ func launchAppForSpotify(ctx context.Context, s *testing.State, tconn *chrome.Te
 // signOutOfSpotify verifies app is signed out.
 func signOutOfSpotify(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
+		closeID               = "com.spotify.music:id/btn_close"
 		settingsIconClassName = "android.widget.ImageButton"
 		settingsIconDes       = "Settings"
 		scrollLayoutID        = "android:id/list"
@@ -212,6 +213,13 @@ func signOutOfSpotify(ctx context.Context, s *testing.State, tconn *chrome.TestC
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Log("homeIcon doesn't exist and skipped logout: ", err)
 		return
+	}
+	// Click on close icon to close pop up.
+	closeIcon := d.Object(ui.ID(closeID))
+	if err := closeIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("closeIcon doesn't exist: ", err)
+	} else if err := closeIcon.Click(ctx); err != nil {
+		s.Fatal("Failed to click on closeIcon: ", err)
 	}
 
 	// Click on settings icon.
