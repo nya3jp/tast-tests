@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1fc0dc3_a6bea6a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2021-04-17T00:30:02Z",
+      "side": 1,
+      "message": "Seems reasonable to me but I\u0027m pretty sure it still needs owners approval.",
+      "revId": "ba56fdb57dbc547782443b2e0af098101d501eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33513f01_7a9abf12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2021-04-17T00:30:02Z",
+      "side": 1,
+      "message": "I\u0027m generally suspicious of cryptic boolean arguments, and it looks like the `tf` argument is only used to turn the boolean into an actual value.\n\nPerhaps replace both of them with a single `router *wificell.Router` argument so the caller provides `tf.Pcap()` (or `tf.Router()`) as an argument instead of separate `tf` and `false` arguments?",
+      "range": {
+        "startLine": 92,
+        "startChar": 138,
+        "endLine": 92,
+        "endChar": 147
+      },
+      "revId": "ba56fdb57dbc547782443b2e0af098101d501eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
