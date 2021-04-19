@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3cf6ae8_d76fef88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-04-19T17:19:03Z",
+      "side": 1,
+      "message": "we will do this in separate CL, after stabilization of it.\nWDYT?",
+      "parentUuid": "bb0db111_58025880",
+      "revId": "efcaa8dc95ffe4c80603b5c983bfffd06351938f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a560e49f_15ee75af",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2021-04-19T08:39:58Z",
       "side": 1,
       "message": "don\u0027t you want to log the buf (result of executing command) when test fails here? It may speed up the failure investigation.",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "efcaa8dc95ffe4c80603b5c983bfffd06351938f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cccd7c4_02207d07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-04-19T17:19:03Z",
+      "side": 1,
+      "message": "log file is pretty big. I dumped it to file and then read the file. If anything wrong we could always refer it.\nWDYT?",
+      "parentUuid": "a560e49f_15ee75af",
       "range": {
         "startLine": 57,
         "startChar": 2,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16dffe83_1db2ec9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-04-19T17:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c16f92b_7164696f",
+      "range": {
+        "startLine": 62,
+        "startChar": 12,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "efcaa8dc95ffe4c80603b5c983bfffd06351938f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce1631ca_c89929d8",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-04-19T08:39:58Z",
       "side": 1,
       "message": "magic number. Please assign to variable and giver it a name.",
+      "range": {
+        "startLine": 65,
+        "startChar": 13,
+        "endLine": 65,
+        "endChar": 21
+      },
+      "revId": "efcaa8dc95ffe4c80603b5c983bfffd06351938f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c78e542d_be7311e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-04-19T17:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce1631ca_c89929d8",
       "range": {
         "startLine": 65,
         "startChar": 13,
