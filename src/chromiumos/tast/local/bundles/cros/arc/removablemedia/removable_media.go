@@ -188,16 +188,6 @@ func RunTest(ctx context.Context, s *testing.State, a *arc.ARC, testFile string)
 		return nil
 	}
 
-	// Temporarily accept legacy content URIs until the new URIs are fully supported.
-	// TODO(youkichihosoi): Remove this check for legacy URIs once new URIs get supported.
-	legacyURI := contentURIPrefix + path.Join("removable", diskName, testFile)
-	if err := verify(legacyURI, filepath.Join(s.OutDir(), testFile+"_legacy")); err != nil {
-		s.Logf("Failed to read the file via VolumeProvider using legacy content URI %s: %v", legacyURI, err)
-	} else {
-		// Target device still uses legacy content URIs and has passed the test.
-		return
-	}
-
 	uri := contentURIPrefix + path.Join(fakeUUID, testFile)
 	if err := verify(uri, filepath.Join(s.OutDir(), testFile)); err != nil {
 		s.Fatalf("Failed to read the file via VolumeProvider using content URI %s: %v", uri, err)
