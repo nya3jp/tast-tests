@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb0db111_58025880",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-04-19T17:08:22Z",
+      "side": 1,
+      "message": "For VM, we should also connect to ARC and validate the guest pack under /system/etc/ureadahead.pack.",
+      "revId": "efcaa8dc95ffe4c80603b5c983bfffd06351938f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a560e49f_15ee75af",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
         "patchSetId": 1
