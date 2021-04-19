@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12ebc5f7_2fe23cd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-19T00:07:37Z",
+      "side": 1,
+      "message": "There are a few log changes which is good. But not much related to this cl. It is recommended to split the change to separate cls to simplify the review.\n",
+      "revId": "24811b0e6d6f20217301d1f63e55d00ccccfab4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9675ba4_631be376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-19T00:07:37Z",
+      "side": 1,
+      "message": "I do not see any relationship between crbug.com/1193417 and setTimeout.\n\nCan you please explain more in the bug or in the comment why it is needed to increase timeout.\n\nAs long as the link is visible to the user, it should be clickable. Wait for 3s is not ideal and might hide issues.\n\nbtw, instead of sleep. Does document.readyState help here?",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 0
+      },
+      "revId": "24811b0e6d6f20217301d1f63e55d00ccccfab4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
