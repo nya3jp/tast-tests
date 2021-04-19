@@ -16,6 +16,24 @@
       "message": "These constants can get out of sync easily, do you want to define a common constant?\n",
       "revId": "1af0f1f1bc9db45fcbd13e367b13e638a0b25ca0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee10da10_d1b8aee6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-19T06:49:34Z",
+      "side": 1,
+      "message": "I\u0027ll try to find a package that will not cause a cyclic dependency.",
+      "parentUuid": "815699ac_f36893ec",
+      "revId": "1af0f1f1bc9db45fcbd13e367b13e638a0b25ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
