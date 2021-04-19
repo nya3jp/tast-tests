@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd7aa512_8305fd4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-19T01:17:05Z",
+      "side": 1,
+      "message": "I just have",
+      "revId": "41754624bd9e9e27a54c88f3a64b5bde7c55cbfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4c736ae_811722be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-19T01:17:05Z",
+      "side": 1,
+      "message": "Will there be anything that is planned to be verified in this test after this error path? If not, similar to the above case, reducing the else clause by an early-return or Fatal() looks simpler to me.",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 7
+      },
+      "revId": "41754624bd9e9e27a54c88f3a64b5bde7c55cbfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
