@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "238ae39b_14c16721",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-04-19T14:12:57Z",
+      "side": 1,
+      "message": "Thanks for the info!\nChecked with `~/trunk/src/platform/tast/fast_build.sh -T`\nWill CQ+1 to see if this breaks anything",
+      "parentUuid": "a2b305b7_2919ad8f",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "f3e36bb771d592a1938b7e303bc4373896bb1e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c5256b36_3f3dafb8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
