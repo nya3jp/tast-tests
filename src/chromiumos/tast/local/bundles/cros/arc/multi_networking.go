@@ -25,14 +25,8 @@ func init() {
 		Desc:         "Verifies guest network setup upon physical interface change",
 		Contacts:     []string{"taoyl@google.com", "cros-networking@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
-		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
-			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-		}},
 	})
 }
 
