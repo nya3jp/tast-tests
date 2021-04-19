@@ -536,6 +536,20 @@ func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
 	}
 }
 
+// EscKey Test verifies if app doesn't quit on pressing esc key and without crash or ANR.
+func EscKey(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ESCAPE, 0); err != nil {
+		s.Fatal("Failed to press KEYCODE_ESCAPE: ", err)
+	} else {
+		s.Log("Entered KEYCODE_ESCAPE")
+	}
+	if currentAppPkg, err := currentAppPackage(ctx, d); err != nil {
+		s.Fatal("Failed to get current app package: ", err)
+	} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" && currentAppPkg != "com.google.android.gms" && currentAppPkg != "com.google.android.permissioncontroller" {
+		s.Fatalf("App quits on pressing esc key: package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
+	}
+}
+
 // DetectAndHandleCloseCrashOrAppNotResponding func to handle Crash or ANR.
 func DetectAndHandleCloseCrashOrAppNotResponding(ctx context.Context, s *testing.State, d *ui.Device) {
 	const (
