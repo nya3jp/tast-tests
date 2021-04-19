@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7350ac22_daed2879",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_firewall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-19T19:23:24Z",
+      "side": 1,
+      "message": "s/fireware/firewall/",
+      "revId": "d78fc58ff79c3ca43de3cb4f7e08e7ddad2b4061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
