@@ -474,6 +474,15 @@ func (d *Device) EnableBluetoothHciLogging(ctx context.Context) error {
 	return d.EnableBluetooth(ctx)
 }
 
+// BluetoothMACAddress returns the Bluetooth MAC address.
+func (d *Device) BluetoothMACAddress(ctx context.Context) (string, error) {
+	mac, err := d.ShellCommand(ctx, "settings", "get", "secure", "bluetooth_address").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", err
+	}
+	return strings.TrimSuffix(string(mac), "\n"), nil
+}
+
 // EnableVerboseWifiLogging enables verbose WiFi logging on the device. This function requires adb root access.
 func (d *Device) EnableVerboseWifiLogging(ctx context.Context) error {
 	if err := d.Root(ctx); err != nil {
