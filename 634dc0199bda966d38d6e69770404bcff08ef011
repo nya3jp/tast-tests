@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd927f8_0189191f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-04-19T18:30:50Z",
+      "side": 1,
+      "message": "lgtm\n\nTast owners, please bless the CL. Thanks.",
+      "revId": "634dc0199bda966d38d6e69770404bcff08ef011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
