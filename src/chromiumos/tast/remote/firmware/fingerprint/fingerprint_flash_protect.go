@@ -113,7 +113,11 @@ func SetSoftwareWriteProtect(ctx context.Context, d *dut.DUT, enable bool) error
 	_ = EctoolCommand(ctx, d, "flashprotect", softwareWriteProtect).Run(ctx)
 	// TODO(b/116396469): "flashprotect enable" command is slow, so wait for
 	// it to complete before attempting to reboot.
-	testing.Sleep(ctx, 2*time.Second)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return EctoolCommand(ctx, d, "version").Run(ctx)
+	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}); err != nil {
+		return errors.Wrap(err, "failed to poll after running flashprotect")
+	}
 	if err := RebootFpmcu(ctx, d, ImageTypeRW); err != nil {
 		return errors.Wrapf(err, "failed to set software write protect to %t", enable)
 	}
