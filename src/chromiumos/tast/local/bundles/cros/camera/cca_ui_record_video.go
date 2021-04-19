@@ -178,6 +178,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		timer cca.TimerState
 	}{
 		{"testRecordVideoWithWindowChanged", testRecordVideoWithWindowChanged, cca.TimerOff},
+		{"testVideoProfile", testVideoProfile, cca.TimerOff},
 		{"testRecordVideoWithTimer", testRecordVideoWithTimer, cca.TimerOn},
 		{"testRecordCancelTimer", testRecordCancelTimer, cca.TimerOn},
 		{"testVideoSnapshot", testVideoSnapshot, cca.TimerOff},
@@ -264,6 +265,17 @@ func testRecordVideoWithWindowChanged(ctx context.Context, app *cca.App) error {
 		return errors.Wrap(err, "cannot find result video")
 	}
 	return nil
+}
+
+func testVideoProfile(ctx context.Context, app *cca.App) error {
+	file, err := app.RecordVideo(ctx, cca.TimerOn, time.Second)
+
+	path, err := app.FilePathInSavedDirs(ctx, file.Name())
+	if err != nil {
+		return err
+	}
+
+	return cca.CheckVideoProfile(path, cca.ProfileH264High)
 }
 
 func testRecordVideoWithTimer(ctx context.Context, app *cca.App) error {
