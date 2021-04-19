@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "70309d5f_7d1c6761",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-19T07:16:14Z",
+      "side": 1,
+      "message": "nit: this line is too long.",
+      "revId": "3b1527ac0def06d3f3b02e92663959ae34aa8598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b806077_6044fb40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-19T07:16:14Z",
+      "side": 1,
+      "message": "nit: add quotation here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "3b1527ac0def06d3f3b02e92663959ae34aa8598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e1b08c3d_5892655b",
@@ -14,6 +54,23 @@
       "writtenOn": "2021-04-17T02:12:10Z",
       "side": 1,
       "message": "Hi Renuga, \n\nPlease review it. Thanks.\n\nRegards,\nMeena",
+      "revId": "3b1527ac0def06d3f3b02e92663959ae34aa8598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b584686c_a7a58ff3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-19T07:16:14Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "3b1527ac0def06d3f3b02e92663959ae34aa8598",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
