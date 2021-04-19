@@ -34,6 +34,24 @@
       "parentUuid": "c16120ce_cda2e5ae",
       "revId": "b00840f8d13735e431d753be8b112cc26ab59260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63037da2_39668880",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-19T04:37:04Z",
+      "side": 1,
+      "message": "Thanks for confirmation. I think it makes sense to remove the flag from the default flag list since its behavior is different from the default behavior users see, but then we have to enable the flag for those video tests. Do you know which tests will be affected?",
+      "parentUuid": "9fc3a3f0_92060f98",
+      "revId": "b00840f8d13735e431d753be8b112cc26ab59260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
