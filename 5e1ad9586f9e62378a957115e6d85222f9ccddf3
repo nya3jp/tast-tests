@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "409bd7a7_05059d0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-19T17:05:08Z",
+      "side": 1,
+      "message": "That\u0027s much better! Thanks for the suggestion.",
+      "parentUuid": "5d43d534_c6e82b9d",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "5e1ad9586f9e62378a957115e6d85222f9ccddf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54d71657_afaed85e",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-19T02:59:27Z",
       "side": 1,
       "message": "Not related to this CL, but calling testing.PollBreak has no side effect; we need \"return\" here.",
+      "range": {
+        "startLine": 190,
+        "startChar": 3,
+        "endLine": 190,
+        "endChar": 20
+      },
+      "revId": "5e1ad9586f9e62378a957115e6d85222f9ccddf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b76d6e6_7461a73d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-19T17:05:08Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "54d71657_afaed85e",
       "range": {
         "startLine": 190,
         "startChar": 3,
