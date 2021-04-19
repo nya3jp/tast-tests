@@ -16,6 +16,75 @@
       "message": "PTAL,\nThanks!",
       "revId": "efcaa8dc95ffe4c80603b5c983bfffd06351938f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a560e49f_15ee75af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-04-19T08:39:58Z",
+      "side": 1,
+      "message": "don\u0027t you want to log the buf (result of executing command) when test fails here? It may speed up the failure investigation.",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "efcaa8dc95ffe4c80603b5c983bfffd06351938f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c16f92b_7164696f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-04-19T08:39:58Z",
+      "side": 1,
+      "message": "IMHO, I would add to what type the parsing was attempted. We reading the code see it. Someone looking at the Tastboard won\u0027t.",
+      "range": {
+        "startLine": 62,
+        "startChar": 12,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "efcaa8dc95ffe4c80603b5c983bfffd06351938f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce1631ca_c89929d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-04-19T08:39:58Z",
+      "side": 1,
+      "message": "magic number. Please assign to variable and giver it a name.",
+      "range": {
+        "startLine": 65,
+        "startChar": 13,
+        "endLine": 65,
+        "endChar": 21
+      },
+      "revId": "efcaa8dc95ffe4c80603b5c983bfffd06351938f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
