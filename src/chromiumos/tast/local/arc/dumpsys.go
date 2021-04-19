@@ -44,6 +44,8 @@ type TaskInfo struct {
 	resumed bool
 	// resizable represents whether the activity is user-resizable or not.
 	resizable bool
+	// focused represents whether the activity's window has focus or not.
+	focused bool
 }
 
 // ActivityInfo contains the information found in ActivityRecord
@@ -221,6 +223,9 @@ func (a *ARC) dumpsysActivityActivitiesR(ctx context.Context) (tasks []TaskInfo,
 	// (Note that TaskProto can be nested, but each ActivityRecord is only associated to its immediate parent.)
 	// TODO(b/152576355): Task stack info are not provided by TaskProto, we need to use other sources for the information.
 
+	// Holds the focused activity while traversing the windowing hierarchy.
+	var focusedActivity string
+
 	// Helper to represent all window container types.
 	type windowContainer interface {
 		GetWindowContainer() *server.WindowContainerProto
@@ -230,18 +235,27 @@ func (a *ARC) dumpsysActivityActivitiesR(ctx context.Context) (tasks []TaskInfo,
 	var traverse func(windowContainer)
 
 	traverse = func(wc windowContainer) {
+		if d, ok := wc.(*server.DisplayContentProto); ok && d != nil {
+			focusedActivity = d.GetFocusedApp()
+		}
+
 		if t, ok := wc.(*server.TaskProto); ok && t != nil {
 			b := t.GetBounds()
+			var title string
+			if t.GetResumedActivity() != nil {
+				title = t.GetResumedActivity().GetTitle()
+			}
 			ti := TaskInfo{
 				ID:      int(t.GetId()),
 				Bounds:  coords.NewRectLTRB(int(b.GetLeft()), int(b.GetTop()), int(b.GetRight()), int(b.GetBottom())),
 				resumed: t.GetResumedActivity() != nil,
 				// android.content.pm.ActivityInfo.RESIZE_MODE_UNRESIZEABLE == 0
 				resizable: t.GetResizeMode() != 0,
+				focused:   title == focusedActivity,
 				// TODO(b/152576355): StackID, StackSize, windowState
 			}
 
-			// Add all immdiate ActivityRecord children.
+			// Add all immediate ActivityRecord children.
 			for _, c := range t.GetWindowContainer().GetChildren() {
 				a := c.GetActivity()
 				if a == nil {
