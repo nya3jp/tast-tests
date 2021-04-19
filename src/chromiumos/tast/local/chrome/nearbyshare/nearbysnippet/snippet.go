@@ -693,17 +693,18 @@ func (a *AndroidNearbyDevice) AcceptUI(ctx context.Context, timeout time.Duratio
 // AndroidAttributes contains information about the Android device and its settings that are relevant to Nearby Share.
 // "Android" is redundantly prepended to the field names to make them easy to distinguish from CrOS attributes in test logs.
 type AndroidAttributes struct {
-	DisplayName        string
-	User               string
-	DataUsage          string
-	Visibility         string
-	NearbyShareVersion string
-	GMSCoreVersion     int
-	AndroidVersion     int
-	SDKVersion         int
-	ProductName        string
-	ModelName          string
-	DeviceName         string
+	DisplayName         string
+	User                string
+	DataUsage           string
+	Visibility          string
+	NearbyShareVersion  string
+	GMSCoreVersion      int
+	AndroidVersion      int
+	SDKVersion          int
+	ProductName         string
+	ModelName           string
+	DeviceName          string
+	BluetoothMACAddress string
 }
 
 // GetAndroidAttributes returns the AndroidAttributes for the device.
@@ -768,6 +769,12 @@ func (a *AndroidNearbyDevice) GetAndroidAttributes(ctx context.Context) (*Androi
 	metadata.ProductName = a.device.Product
 	metadata.ModelName = a.device.Model
 	metadata.DeviceName = a.device.Device
+
+	mac, err := a.device.BluetoothMACAddress(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the Bluetooth MAC address")
+	}
+	metadata.BluetoothMACAddress = mac
 
 	return &metadata, nil
 }
