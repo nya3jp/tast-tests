@@ -69,6 +69,24 @@
       "parentUuid": "000af697_504964d3",
       "revId": "c19f6ff165e1b4a4eec0f3f477b2e00f4d62dcb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d23ca98a_9cb01a44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-19T07:24:51Z",
+      "side": 1,
+      "message": "What about enrollment? That takes longer than a managed user login. Would it make sense to add an ExtraLoginTime option for flexibility?\n\nI prefer giving fixtures/tests more control, but the timeouts can be calculated in the support library.",
+      "parentUuid": "ec5419ac_1212128e",
+      "revId": "c19f6ff165e1b4a4eec0f3f477b2e00f4d62dcb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
