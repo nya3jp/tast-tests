@@ -85,6 +85,29 @@
       },
       "revId": "efcaa8dc95ffe4c80603b5c983bfffd06351938f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "366968e3_0f123f6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-04-19T12:15:03Z",
+      "side": 1,
+      "message": "once expectation 300*1024 is in variable add to the failure message.",
+      "range": {
+        "startLine": 66,
+        "startChar": 12,
+        "endLine": 66,
+        "endChar": 40
+      },
+      "revId": "efcaa8dc95ffe4c80603b5c983bfffd06351938f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
