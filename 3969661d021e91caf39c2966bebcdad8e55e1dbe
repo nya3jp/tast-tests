@@ -16,6 +16,40 @@
       "message": "Note: there is no one available on my team for reviews, so we have to rely on Tast owner reviews for now. Thanks.",
       "revId": "3969661d021e91caf39c2966bebcdad8e55e1dbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a981a040_8d3c926d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-04-19T14:57:12Z",
+      "side": 1,
+      "message": "Didn\u0027t we just check if it exists...?",
+      "revId": "3969661d021e91caf39c2966bebcdad8e55e1dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a287ba4b_450298c3",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-04-19T14:57:12Z",
+      "side": 1,
+      "message": "If the directory no longer exists, is this actually an error? I guess that Wrapf will return nil if there\u0027s no error already, but it seems like we may just want to log this and move on.\n\n(Or maybe log if it\u0027s ENOENT and return an error otherwise?)",
+      "revId": "3969661d021e91caf39c2966bebcdad8e55e1dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
