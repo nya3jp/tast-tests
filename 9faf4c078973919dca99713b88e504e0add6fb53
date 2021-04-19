@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55ed4d91_b4ac9aba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-19T22:49:09Z",
+      "side": 1,
+      "message": "Done\n\n(kept \"vp9\" since AV1 doesn\u0027t use groups)",
+      "parentUuid": "3e6f28b6_0e13954f",
+      "range": {
+        "startLine": 321,
+        "startChar": 1,
+        "endLine": 321,
+        "endChar": 14
+      },
+      "revId": "9faf4c078973919dca99713b88e504e0add6fb53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "448c9a11_fd93d84d",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-16T09:00:25Z",
       "side": 1,
       "message": "nit: looks like we don\u0027t need this condition anymore and time is always specified. Same as ExtraData",
+      "range": {
+        "startLine": 385,
+        "startChar": 1,
+        "endLine": 385,
+        "endChar": 19
+      },
+      "revId": "9faf4c078973919dca99713b88e504e0add6fb53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56e1a796_25e2be29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-19T22:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "448c9a11_fd93d84d",
       "range": {
         "startLine": 385,
         "startChar": 1,
