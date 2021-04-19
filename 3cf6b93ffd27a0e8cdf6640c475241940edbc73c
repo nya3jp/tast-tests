@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02aaa960_611ebe97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_video_option_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-04-19T04:04:36Z",
+      "side": 1,
+      "message": "To me I prefer keeping \"CheckVideoFile\", because \"profile\" is a very specific term in video encoding and the function tests more than just that.",
+      "range": {
+        "startLine": 134,
+        "startChar": 18,
+        "endLine": 134,
+        "endChar": 35
+      },
+      "revId": "3cf6b93ffd27a0e8cdf6640c475241940edbc73c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
