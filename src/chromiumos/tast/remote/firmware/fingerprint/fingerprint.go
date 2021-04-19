@@ -7,6 +7,7 @@
 package fingerprint
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io/ioutil"
@@ -1044,4 +1045,31 @@ func EctoolCommand(ctx context.Context, d *dut.DUT, args ...string) *ssh.Cmd {
 	cmd = append(cmd, args...)
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd))
 	return d.Conn().Command(cmd[0], cmd[1:]...)
+}
+
+func rawFPFrameCommand(ctx context.Context, d *dut.DUT) *ssh.Cmd {
+	return EctoolCommand(ctx, d, "fpframe", "raw")
+}
+
+// CheckRawFPFrameFails validates that a raw frame cannot be read from the FPMCU
+// and returns an error if a raw frame can be read.
+func CheckRawFPFrameFails(ctx context.Context, d *dut.DUT) error {
+	const fpFrameRawAccessDeniedError = `EC result 4 (ACCESS_DENIED)
+Failed to get FP sensor frame
+`
+	var stderrBuf bytes.Buffer
+
+	cmd := rawFPFrameCommand(ctx, d)
+	cmd.Stderr = &stderrBuf
+
+	if err := cmd.Run(ctx); err == nil {
+		return errors.New("command to read raw frame succeeded")
+	}
+
+	stderr := string(stderrBuf.Bytes())
+	if stderr != fpFrameRawAccessDeniedError {
+		return errors.Errorf("raw fpframe command returned unexpected value, expected: %q, actual: %q", fpFrameRawAccessDeniedError, stderr)
+	}
+
+	return nil
 }
