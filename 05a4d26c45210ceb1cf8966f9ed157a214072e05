@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "38cf2396_1717746f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-19T08:04:08Z",
+      "side": 1,
+      "message": "nit: delete the white spaces from the end of these lines.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 62
+      },
+      "revId": "05a4d26c45210ceb1cf8966f9ed157a214072e05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "afc850e1_bc2e49e5",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-04-16T16:12:38Z",
       "side": 1,
       "message": "andrescj@, gabormagda@ PTAL\n\nTrivial follow-up to crrev.com/c/2830136 to enable the ...Perf tests.",
+      "revId": "05a4d26c45210ceb1cf8966f9ed157a214072e05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b14c90f_2cddddcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-19T08:04:08Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "05a4d26c45210ceb1cf8966f9ed157a214072e05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
