@@ -33,6 +33,40 @@
       "message": "LGTM",
       "revId": "fcbd5d7d3c6c6d944266cd0ff7d1482114edf50e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bef9f1ca_5efe12ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-19T17:32:57Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective",
+      "revId": "fcbd5d7d3c6c6d944266cd0ff7d1482114edf50e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c3b4b95_12ecb3d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-19T17:32:57Z",
+      "side": 1,
+      "message": "You could optionally define the map as a literal:\n\n    filesToGet :\u003d map[string]string{\n        response.PackPath: initialPack,\n        response.LogPath:  initialPackLog,\n    }\n    \n    if param.vmEnabled {\n        filesToGet[response.VmPackPath] \u003d vmInitialPack\n    }\n\nBut, current implementation is fine too.",
+      "revId": "fcbd5d7d3c6c6d944266cd0ff7d1482114edf50e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
