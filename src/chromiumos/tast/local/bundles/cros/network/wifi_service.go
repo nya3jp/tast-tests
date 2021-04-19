@@ -641,21 +641,16 @@ func (s *WifiService) QueryService(ctx context.Context, req *network.QueryServic
 	if err != nil {
 		return nil, err
 	}
-	connectionID, err := props.GetInt32(shillconst.ServicePropertyConnectionID)
-	if err != nil {
-		return nil, err
-	}
 
 	return &network.QueryServiceResponse{
-		Name:         name,
-		Device:       string(device),
-		Type:         serviceType,
-		Mode:         mode,
-		State:        state,
-		Visible:      visible,
-		IsConnected:  isConnected,
-		Guid:         guid,
-		ConnectionId: connectionID,
+		Name:        name,
+		Device:      string(device),
+		Type:        serviceType,
+		Mode:        mode,
+		State:       state,
+		Visible:     visible,
+		IsConnected: isConnected,
+		Guid:        guid,
 		Wifi: &network.QueryServiceResponse_Wifi{
 			Bssid:         bssid,
 			Frequency:     uint32(frequency),

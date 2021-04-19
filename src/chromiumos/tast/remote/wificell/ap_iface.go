@@ -219,23 +219,6 @@ func (h *APIface) ChangeSubnetIdx(ctx context.Context) (retErr error) {
 	return nil
 }
 
-// ChangeSSID changes the SSID without changing other settings, such as IP address and interface.
-// On failure, a call of stop is still needed to deconfigure the dhcp server and the WiFi interface.
-func (h *APIface) ChangeSSID(ctx context.Context, ssid string) error {
-	if h.stopped || h.hostapd == nil {
-		return errors.New("hostapd is not running")
-	}
-
-	config := *h.Config()
-	config.SSID = ssid
-	var err error
-	h.hostapd, err = h.router.ReconfigureHostapd(ctx, h.hostapd, &config)
-	if err != nil {
-		return errors.Wrap(err, "failed to reconfigure the hostapd server")
-	}
-	return nil
-}
-
 // StartChannelSwitch initiates a channel switch in the AP.
 func (h *APIface) StartChannelSwitch(ctx context.Context, count, channel int, opts ...hostapd.CSOption) error {
 	return h.hostapd.StartChannelSwitch(ctx, count, channel, opts...)
