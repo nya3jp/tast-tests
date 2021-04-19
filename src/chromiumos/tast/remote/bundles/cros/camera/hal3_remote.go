@@ -35,17 +35,6 @@ func init() {
 		// src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/hal3_*.go
 		Params: []testing.Param{
 			testing.Param{
-				Name:      "device_back",
-				ExtraAttr: []string{"camerabox_facing_back"},
-				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_DEVICE, Facing: pb.Facing_FACING_BACK},
-			},
-			testing.Param{
-				Name:      "device_front",
-				ExtraAttr: []string{"camerabox_facing_front"},
-				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_DEVICE, Facing: pb.Facing_FACING_FRONT},
-			},
-
-			testing.Param{
 				Name:      "frame_back",
 				ExtraAttr: []string{"camerabox_facing_back"},
 				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_FRAME, Facing: pb.Facing_FACING_BACK},
@@ -56,17 +45,6 @@ func init() {
 				ExtraAttr: []string{"camerabox_facing_front"},
 				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_FRAME, Facing: pb.Facing_FACING_FRONT},
 				Timeout:   15 * time.Minute,
-			},
-
-			testing.Param{
-				Name:      "module_back",
-				ExtraAttr: []string{"camerabox_facing_back"},
-				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_MODULE, Facing: pb.Facing_FACING_BACK},
-			},
-			testing.Param{
-				Name:      "module_front",
-				ExtraAttr: []string{"camerabox_facing_front"},
-				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_MODULE, Facing: pb.Facing_FACING_FRONT},
 			},
 
 			testing.Param{
@@ -113,17 +91,6 @@ func init() {
 				ExtraAttr: []string{"camerabox_facing_front"},
 				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_STILL_CAPTURE, Facing: pb.Facing_FACING_FRONT},
 				Timeout:   6 * time.Minute,
-			},
-
-			testing.Param{
-				Name:      "stream_back",
-				ExtraAttr: []string{"camerabox_facing_back"},
-				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_STREAM, Facing: pb.Facing_FACING_BACK},
-			},
-			testing.Param{
-				Name:      "stream_front",
-				ExtraAttr: []string{"camerabox_facing_front"},
-				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_STREAM, Facing: pb.Facing_FACING_FRONT},
 			},
 		},
 	})
