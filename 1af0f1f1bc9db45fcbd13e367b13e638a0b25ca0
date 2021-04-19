@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "815699ac_f36893ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-19T02:36:10Z",
+      "side": 1,
+      "message": "These constants can get out of sync easily, do you want to define a common constant?\n",
+      "revId": "1af0f1f1bc9db45fcbd13e367b13e638a0b25ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
