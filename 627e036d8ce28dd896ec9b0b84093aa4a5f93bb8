@@ -16,6 +16,24 @@
       "message": "Fixtures save the login overhead of the tests using the same fixture. Maybe we should modify \"loggedInToCUJUser\" to take \"test_username/password\" vars if provided ?\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
       "revId": "627e036d8ce28dd896ec9b0b84093aa4a5f93bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c5e49d8_73a634f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-19T13:11:22Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "846ff65d_138e3c64",
+      "revId": "627e036d8ce28dd896ec9b0b84093aa4a5f93bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

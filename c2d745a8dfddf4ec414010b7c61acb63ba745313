@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e11d7b0b_35e8e140",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-19T13:11:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c760d19_bd335a4f",
+      "revId": "c2d745a8dfddf4ec414010b7c61acb63ba745313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "098be3a9_6b258c7a",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-16T17:43:44Z",
       "side": 1,
       "message": "nit: Could we either strip \"test_\" prefix, or use \"cuj_\" ?",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 9
+      },
+      "revId": "c2d745a8dfddf4ec414010b7c61acb63ba745313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9445ca1_a3b8b9b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-19T13:11:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "098be3a9_6b258c7a",
       "range": {
         "startLine": 73,
         "startChar": 4,
