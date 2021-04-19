@@ -36,6 +36,7 @@ func init() {
 		SoftwareDeps: []string{"crossystem"},
 		Attr:         []string{"group:firmware"},
 		Pre:          pre.NormalMode(),
+		Timeout:      8 * time.Minute,
 		Params: []testing.Param{{
 			Name: "normal",
 			Val: bootModeTestParams{
