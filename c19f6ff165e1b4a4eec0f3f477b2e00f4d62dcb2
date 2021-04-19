@@ -109,6 +109,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf8483af_64870183",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-19T08:19:51Z",
+      "side": 1,
+      "message": "nit: Can you name it \"CustomLoginTimeout\"? It might make it easier to notice that this value can be zero.",
+      "range": {
+        "startLine": 162,
+        "startChar": 17,
+        "endLine": 162,
+        "endChar": 29
+      },
+      "revId": "c19f6ff165e1b4a4eec0f3f477b2e00f4d62dcb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b090a055_173a146d",
         "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
         "patchSetId": 3
@@ -144,6 +167,30 @@
       "side": 1,
       "message": "It can\u0027t be serialized to JSON.",
       "parentUuid": "b090a055_173a146d",
+      "range": {
+        "startLine": 244,
+        "startChar": 33,
+        "endLine": 244,
+        "endChar": 36
+      },
+      "revId": "c19f6ff165e1b4a4eec0f3f477b2e00f4d62dcb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "440005bc_fc37d127",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-19T08:19:51Z",
+      "side": 1,
+      "message": "OK, that\u0027s unfortunate...\n\nCan you store nanoseconds in int64? It\u0027s finest granularity in time.Duration.",
+      "parentUuid": "6c0ba76f_42a48cec",
       "range": {
         "startLine": 244,
         "startChar": 33,
