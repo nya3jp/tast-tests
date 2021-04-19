@@ -6,11 +6,13 @@ package fingerprint
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/servo"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -140,6 +142,31 @@ func CheckWriteProtectStateCorrect(ctx context.Context, d *dut.DUT, fpBoard FPBo
 
 	if expectedOutput != output {
 		return errors.Errorf("incorrect write protect state, expected: %q, actual: %q", expectedOutput, output)
+	}
+
+	return nil
+}
+
+func sysInfoFlagsCommand(ctx context.Context, d *dut.DUT) *ssh.Cmd {
+	return EctoolCommand(ctx, d, "sysinfo", "flags")
+}
+
+// CheckSystemIsLocked validates that the FPMCU is locked and returns an error if it is not.
+func CheckSystemIsLocked(ctx context.Context, d *dut.DUT) error {
+	// SYSTEM_IS_LOCKED
+	// SYSTEM_JUMP_ENABLED
+	// SYSTEM_JUMPED_TO_CURRENT_IMAGE
+	// See https://chromium.googlesource.com/chromiumos/platform/ec/+/10fe09bf9aaf59213d141fc1d479ed259f786049/include/ec_commands.h#1865
+	const sysInfoSystemIsLockedFlags = "0x0000000d"
+
+	flagsBytes, err := sysInfoFlagsCommand(ctx, d).Output(ctx, ssh.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed to get sysinfo flags")
+	}
+
+	flags := strings.TrimSpace(string(flagsBytes))
+	if flags != sysInfoSystemIsLockedFlags {
+		return errors.Errorf("sys info flags do not match. expected: %q, actual %q", sysInfoSystemIsLockedFlags, flags)
 	}
 
 	return nil
