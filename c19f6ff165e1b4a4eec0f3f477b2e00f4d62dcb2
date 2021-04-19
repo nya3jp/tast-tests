@@ -33,6 +33,24 @@
       "message": "Hmm. Ideally the chrome support library should know the correct timeout without making individual tests responsible for setting correct timeout. Can we detect managed user login automatically?",
       "revId": "c19f6ff165e1b4a4eec0f3f477b2e00f4d62dcb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "000af697_504964d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-19T06:45:54Z",
+      "side": 1,
+      "message": "The determination if a user is managed depends on the configuration of FakeDMS. Theoretically it could be done by tast, but it would require duplicating the logic present in Chrome.",
+      "parentUuid": "f7db01f6_fc486e5e",
+      "revId": "c19f6ff165e1b4a4eec0f3f477b2e00f4d62dcb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
