@@ -354,6 +354,7 @@ func init() {
 				},
 			}, {
 				Name:              "paste_x11_dlc_stretch_stable",
+				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("stretch", false), crostini.GetContainerRootfsArtifact("stretch", false), "secure_paste.py"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
