@@ -105,6 +105,29 @@
       "parentUuid": "d23ca98a_9cb01a44",
       "revId": "c19f6ff165e1b4a4eec0f3f477b2e00f4d62dcb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b090a055_173a146d",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-19T07:32:14Z",
+      "side": 1,
+      "message": "Can\u0027t we use time.Duration here?",
+      "range": {
+        "startLine": 244,
+        "startChar": 33,
+        "endLine": 244,
+        "endChar": 36
+      },
+      "revId": "c19f6ff165e1b4a4eec0f3f477b2e00f4d62dcb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
