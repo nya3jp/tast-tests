@@ -264,6 +264,20 @@ func SinglePointerMatcher(a Action, s Source, p coords.Point, pressure float64) 
 	}
 }
 
+// WaitForTestAppFocused polls the test app until its window reaches the wanted focused state.
+func (t *Tester) WaitForTestAppFocused(ctx context.Context, wantFocused bool) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		focused, err := t.act.Focused(ctx)
+		if err != nil {
+			return err
+		}
+		if focused != wantFocused {
+			return errors.Errorf("the focused state did not match: want: %d got: %d", wantFocused, focused)
+		}
+		return nil
+	}, defaultPollOptions)
+}
+
 // MatcherOr produces a Matcher that matches any of the provided matchers.
 func MatcherOr(matchers ...Matcher) Matcher {
 	return func(event *MotionEvent) error {
