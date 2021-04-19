@@ -16,6 +16,46 @@
       "message": "lgtm\n\nAdding tast owners for approval.",
       "revId": "10c001ce921388e5039726a4fe273af443e843c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "563da683_5661fd03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-19T08:40:37Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "10c001ce921388e5039726a4fe273af443e843c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28f87356_32baf03f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-19T08:40:37Z",
+      "side": 1,
+      "message": "nit: please put hist.Name and suffix into fmt.Sprintf:\n\n```\nname :\u003d fmt.Sprintf(\"%s%s.%s.%dwindows\", hist.Name, suffix, arcMode, currentWindows)\n```",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 95
+      },
+      "revId": "10c001ce921388e5039726a4fe273af443e843c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
