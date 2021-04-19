@@ -24,6 +24,7 @@ var clamshellTestsForAppleMusic = []testutil.TestCase{
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
+	{Name: "Clamshell: Special keys: ESC key", Fn: testutil.EscKey},
 }
 
 // TouchviewTests are placed here.
