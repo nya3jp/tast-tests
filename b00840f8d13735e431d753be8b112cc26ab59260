@@ -16,6 +16,24 @@
       "message": "According to the history, the flag is originated from crrev.com/c/1524612.\n\nhiroh@, do you know the background?",
       "revId": "b00840f8d13735e431d753be8b112cc26ab59260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fc3a3f0_92060f98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-04-19T03:26:56Z",
+      "side": 1,
+      "message": "The commit message described the reason. \nThe flag is required to play a video on a page automatically in opening the page.\nWithout the flag, since a play button is needed to push, no video plays in a tests.",
+      "parentUuid": "c16120ce_cda2e5ae",
+      "revId": "b00840f8d13735e431d753be8b112cc26ab59260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
