@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3f31bc8_81167213",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-19T09:45:44Z",
+      "side": 1,
+      "message": "Thanks for update! LGTM with a nit.\n",
+      "revId": "a956080d87da3618ff1b671b1c328b8bfe4d88b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4706bc60_9f33126f",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-19T09:45:44Z",
+      "side": 1,
+      "message": "Cast is not necessary; Nanoseconds returns int64.\nhttps://pkg.go.dev/time#Duration.Nanoseconds",
+      "range": {
+        "startLine": 168,
+        "startChar": 27,
+        "endLine": 168,
+        "endChar": 32
+      },
+      "revId": "a956080d87da3618ff1b671b1c328b8bfe4d88b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
