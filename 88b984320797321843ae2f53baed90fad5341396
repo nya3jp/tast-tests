@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71af7d71_4a8c94be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-19T02:47:25Z",
+      "side": 1,
+      "message": "qq: IIUC when ARC is enabled there are a lot of process running in the background. Is 50 enough?",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "88b984320797321843ae2f53baed90fad5341396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b7ebd43_81b4ca59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-19T02:47:25Z",
+      "side": 1,
+      "message": "style: Let us try to reduce nesting.\n\n if err :\u003d ui.Exists(arcEntry)(ctx); err \u003d\u003d nil {\n   arcEntryFound \u003d true\n   break\n }\n if err :\u003d kb.Accel(ctx, \"Down\"); err !\u003d nil {\n   s.Fatal(\"Failed to press Down: \", err)\n }\n\nc.f. https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 21
+      },
+      "revId": "88b984320797321843ae2f53baed90fad5341396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5587941e_2dd99915",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-19T02:47:25Z",
+      "side": 1,
+      "message": "This can print up to maxScroll lines to logs, which makes logs harder to read.\n\nWhat do you think about simply removing this log?",
+      "range": {
+        "startLine": 95,
+        "startChar": 3,
+        "endLine": 95,
+        "endChar": 36
+      },
+      "revId": "88b984320797321843ae2f53baed90fad5341396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b0fb0bc_c58d6368",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-19T02:47:25Z",
+      "side": 1,
+      "message": "What happens if we keep the task manager open?",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 48
+      },
+      "revId": "88b984320797321843ae2f53baed90fad5341396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
