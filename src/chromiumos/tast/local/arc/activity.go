@@ -750,6 +750,23 @@ func (ac *Activity) getPackageTaskInfo(ctx context.Context) (TaskInfo, error) {
 	return TaskInfo{}, errors.Wrapf(errNoTaskInfo, "could not find task info for %s", ac.pkgName)
 }
 
+// Focused returns whether the app's window has focus or not.
+// Only works on ARC++ R and later.
+func (ac *Activity) Focused(ctx context.Context) (bool, error) {
+	n, err := SDKVersion()
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get the SDK version")
+	}
+	if n < SDKR {
+		return false, errors.Errorf("getting the focused state is not implemented for SDK %d", n)
+	}
+	task, err := ac.getTaskInfo(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "could not get task info")
+	}
+	return task.focused, nil
+}
+
 // Focus focuses the activity.
 func (ac *Activity) Focus(ctx context.Context, tconn *chrome.TestConn) error {
 	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setArcAppWindowFocus)", ac.pkgName); err != nil {
