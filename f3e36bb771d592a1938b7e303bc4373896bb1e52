@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d7e10c_77fee007",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-04-19T09:11:24Z",
+      "side": 1,
+      "message": "I suppose wifi tests need some additional device -- it there any test I can run locally for this patch?",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "f3e36bb771d592a1938b7e303bc4373896bb1e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5256b36_3f3dafb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-04-19T09:11:24Z",
+      "side": 1,
+      "message": "Found that this test is validating connection_id in https://crrev.com/c/2814180 (I should check this earlier before working on that patch).\n\nIt still seems that this property is not used elsewhere -- only here and in autotests. Is there any concern to remove this?\n\nThanks!",
+      "revId": "f3e36bb771d592a1938b7e303bc4373896bb1e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
