@@ -33,6 +33,29 @@
       "message": "LGTM",
       "revId": "5ef3de657680a3c4ba5a95ece6ae838ea490b5c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a961ac1a_71aeae51",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-19T03:02:40Z",
+      "side": 1,
+      "message": "Sleeping for a fixed amount time does not resolve race conditions, so it\u0027s nice to avoid.\n\nWhat do we want to wait for here? Can we use testing.Poll to wait for the condition to be met instead?",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 34
+      },
+      "revId": "5ef3de657680a3c4ba5a95ece6ae838ea490b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
