@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2b305b7_2919ad8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-19T10:09:16Z",
+      "side": 1,
+      "message": "Perhaps can run unit tests with:\n\n  ~/trunk/src/platform/tast/fast_build.sh -T\n\nand in addition, you might also run go-vet:\n\n  ~/trunk/src/platform/tast/tools/go.sh vet \\ \n    ~/trunk/src/platform/tast-tests/src/chromiumos/tast/...\n\nOr just let CQ check build + unit tests.",
+      "parentUuid": "a5d7e10c_77fee007",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "f3e36bb771d592a1938b7e303bc4373896bb1e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c5256b36_3f3dafb8",
@@ -55,6 +79,23 @@
       "side": 1,
       "message": "It seems no concern on my side. +yenlinlai for confirming",
       "parentUuid": "c5256b36_3f3dafb8",
+      "revId": "f3e36bb771d592a1938b7e303bc4373896bb1e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6750ccbe_4a534ebf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-19T10:09:16Z",
+      "side": 1,
+      "message": "The removed functions/fields don\u0027t seem to be used in other places so LGTM. Also, if ConnectionId is no longer needed, I think it is good to remove this test. (according to crbug.com/363713, it looks like the test is just checking the specific hash behavior but not for other bugs)",
       "revId": "f3e36bb771d592a1938b7e303bc4373896bb1e52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
