@@ -36,6 +36,7 @@ const (
 	Intel9260                  = "Intel 9260"
 	Intel22260                 = "Intel 22260"
 	Intel22560                 = "Intel 22560"
+	IntelAX211                 = "Intel AX 211"
 	BroadcomBCM4354SDIO        = "Broadcom BCM4354 SDIO"
 	BroadcomBCM4356PCIE        = "Broadcom BCM4356 PCIE"
 	BroadcomBCM4371PCIE        = "Broadcom BCM4371 PCIE"
@@ -80,6 +81,7 @@ var lookupWLANDev = map[DevInfo]string{
 	{vendor: "0x8086", device: "0xa0f0", subsystem: "0x4070"}: Intel22560,
 	{vendor: "0x8086", device: "0xa0f0", subsystem: "0x0074"}: Intel22560,
 	{vendor: "0x8086", device: "0xa0f0", subsystem: "0x6074"}: Intel22560,
+	{vendor: "0x8086", device: "0x51f0", subsystem: "0x0090"}: IntelAX211,
 	{vendor: "0x02d0", device: "0x4354"}:                      BroadcomBCM4354SDIO,
 	{vendor: "0x14e4", device: "0x43ec"}:                      BroadcomBCM4356PCIE,
 	{vendor: "0x14e4", device: "0x440d"}:                      BroadcomBCM4371PCIE,
