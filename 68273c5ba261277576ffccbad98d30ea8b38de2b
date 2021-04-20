@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e95faf72_e5f02409",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-04-20T21:22:29Z",
+      "side": 1,
+      "message": "+1 here, I think the continuity test deserves a separate test",
+      "parentUuid": "64ad7620_d1e21a04",
+      "revId": "68273c5ba261277576ffccbad98d30ea8b38de2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a930390_8eacaa17",
