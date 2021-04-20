@@ -24,7 +24,7 @@ func init() {
 			"mhasank@chromium.org",
 			"khmel@chromium.org", // author.
 		},
-		Attr: []string{"group:mainline", "group:arc-functional"},
+		Attr: []string{"group:mainline", "group:arc-functional", "informational"},
 		Vars: []string{"ui.gaiaPoolDefault"}, // TODO(crbug.com/1183238): add VarDeps when supported.
 		SoftwareDeps: []string{
 			"chrome",
