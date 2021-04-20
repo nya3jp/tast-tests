@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec05b8e4_f06d905c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_tester.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-20T20:58:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5c833bc_7b9aa7ac",
+      "revId": "6872a5ac7601bc16b6861838224ac0fc5a81412c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df6e77a4_7805b8b5",
