@@ -22,6 +22,30 @@
       },
       "revId": "65bc09e6ee2b4db60fd1994d9b094ea396fb6af5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e909ac69_44a33205",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T23:47:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb1dc008_17f174e4",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 84
+      },
+      "revId": "65bc09e6ee2b4db60fd1994d9b094ea396fb6af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
