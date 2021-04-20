@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb1dc008_17f174e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T23:11:55Z",
+      "side": 1,
+      "message": "nit: Per http://go/go-code-review-comments#initialisms, initialisms should be kept in a consistent case: so apBootFinished or APBootFinished, but not ApBootFinished.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 84
+      },
+      "revId": "65bc09e6ee2b4db60fd1994d9b094ea396fb6af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
