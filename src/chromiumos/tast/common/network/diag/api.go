@@ -69,6 +69,10 @@ function() {
       return await this.getNetworkDiagnostics().hasSecureWiFiConnection();
     },
 
+    async signalStrength() {
+      return await this.getNetworkDiagnostics().signalStrength();
+    },
+
     async gatewayCanBePinged() {
       return await this.getNetworkDiagnostics().gatewayCanBePinged();
     },
@@ -131,6 +135,7 @@ const (
 	RoutineHTTPSFirewall        = "httpsFirewall"
 	RoutineHTTPSLatency         = "httpsLatency"
 	RoutineSecureWiFiConnection = "hasSecureWiFiConnection"
+	RoutineSignalStrength       = "signalStrength"
 	RoutineGatewayCanBePing     = "gatewayCanBePinged"
 	RoutineCaptivePortal        = "captivePortal"
 	RoutineVideoConferencing    = "videoConferencing"
