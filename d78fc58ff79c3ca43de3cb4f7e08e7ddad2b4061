@@ -16,6 +16,24 @@
       "message": "s/fireware/firewall/",
       "revId": "d78fc58ff79c3ca43de3cb4f7e08e7ddad2b4061",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59bbcb19_951ce82a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_firewall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-20T18:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7350ac22_daed2879",
+      "revId": "d78fc58ff79c3ca43de3cb4f7e08e7ddad2b4061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
