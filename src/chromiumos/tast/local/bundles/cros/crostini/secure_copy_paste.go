@@ -480,7 +480,7 @@ func SecureCopyPaste(ctx context.Context, s *testing.State) {
 	if err := cont.PushFile(ctx, s.DataPath(conf.app), conf.app); err != nil {
 		s.Fatalf("Failed to push %v to container: %v", conf.app, err)
 	}
-	appID, exitCallback, err := crostini.LaunchGUIApp(ctx, tconn, cont.Command(ctx, "env", "GDK_BACKEND="+conf.backend, "python3", conf.app))
+	appID, exitCallback, err := crostini.LaunchGUIApp(ctx, tconn, cont.Command(ctx, "env", "WAYLAND_DEBUG=1", "GDK_BACKEND="+conf.backend, "python3", conf.app))
 	if err != nil {
 		s.Fatal("Failed to launch crostini app: ", err)
 	}

@@ -487,7 +487,7 @@ func Toolkit(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Running the demo")
-	cmd := cont.Command(ctx, conf.command...)
+	cmd := cont.Command(ctx, append([]string{"env", "WAYLAND_DEBUG=1"}, conf.command...)...)
 	if err := cmd.Start(); err != nil {
 		s.Fatalf("Failed to start %q: %v", shutil.EscapeSlice(cmd.Args), err)
 	}
