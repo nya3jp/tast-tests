@@ -293,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cbddb51_50227845",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T23:11:55Z",
+      "side": 1,
+      "message": "I guess that makes sense, but I\u0027m not happy about it.",
+      "parentUuid": "216757a4_78e67adc",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 35
+      },
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d599df2_7fabf5af",
