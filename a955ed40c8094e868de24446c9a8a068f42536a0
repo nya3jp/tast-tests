@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a17ec50_100af996",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-20T09:14:31Z",
+      "side": 1,
+      "message": "Checked that the permission of temp dir \"/usr/local/tmp/tast_out#####/camera.HAL3Perf\" used in local test is also 0777 while the remote test \"/tmp/rpc-outdir.####\" is 0700.\n\nnya@ would you suggest to chmod remote testing.ContextOutDir() around code here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/rpc/server.go;rcl\u003d17ab6ffe7b1ff47fcf322c34c9e83300e34e2e40;l\u003d112\n\nOr do it in per test manner like this CL.",
+      "revId": "a955ed40c8094e868de24446c9a8a068f42536a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
