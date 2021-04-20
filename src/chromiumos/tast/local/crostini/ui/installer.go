@@ -284,6 +284,10 @@ func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chr
 		return 0, errors.Wrap(err, "failed to stop garcon from auto-updating packages")
 	}
 
+	if err := enableWaylandDebug(ctx, cont); err != nil {
+		return 0, errors.Wrap(err, "failed to turn on WAYLAND_DEBUG")
+	}
+
 	// If the wayland backend is used, the fonctconfig cache will be
 	// generated the first time the app starts. On a low-end device, this
 	// can take a long time and timeout the app executions below.
@@ -363,4 +367,36 @@ func disableGarconPackageUpdates(ctx context.Context, cont *vm.Container) error 
 	}
 	defer os.Remove(localPath)
 	return cont.PushFile(ctx, localPath, configPath)
+}
+
+func enableWaylandDebug(ctx context.Context, cont *vm.Container) error {
+	const (
+		dropin = `[Service]
+Environment="WAYLAND_DEBUG=client"`
+		configPath  = ".config/systemd/user/sommelier-x@%d.service.d/"
+		configFile  = "override.conf"
+		serviceName = "sommelier-x@%d.service"
+		localPath   = "/tmp/sommelier-override.conf"
+	)
+	testing.ContextLog(ctx, "Setting WAYLAND_DEBUG")
+	if err := ioutil.WriteFile(localPath, []byte(dropin), 0666); err != nil {
+		return err
+	}
+	defer os.Remove(localPath)
+	for i := 0; i <= 1; i++ {
+		if err := cont.Command(ctx, "mkdir", "-p", fmt.Sprintf(configPath, i)).Run(testexec.DumpLogOnError); err != nil {
+			return err
+		}
+		if err := cont.PushFile(ctx, localPath, fmt.Sprintf(configPath, i)+configFile); err != nil {
+			return err
+		}
+		if err := cont.Command(ctx, "systemctl", "--user", "daemon-reload").Run(testexec.DumpLogOnError); err != nil {
+			return err
+		}
+		if err := cont.Command(ctx, "systemctl", "--user", "restart", fmt.Sprintf(serviceName, i)).Run(testexec.DumpLogOnError); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
