@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a64df2_cd9fc591",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "713c7d9d_4f9c2946",
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5da260ce_ff56a1a7",
@@ -64,6 +82,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a286d1e3_098fa393",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a79d145f_89fcdf86",
+      "range": {
+        "startLine": 244,
+        "startChar": 29,
+        "endLine": 244,
+        "endChar": 58
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b317a98c_f97b803e",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5da260ce_ff56a1a7",
+      "range": {
+        "startLine": 244,
+        "startChar": 91,
+        "endLine": 244,
+        "endChar": 97
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09564e43_d475d9c2",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-04-20T20:26:57Z",
       "side": 1,
       "message": "Does the \"Internal\" aspect of ParseQuotedStringInternal and ParseStringListInternal refer to the fact that these are helper functions, not meant to be used outside of this package? If so, the Go construct you want is non-exported (i.e., non-capitalized) functions. If that is the case, then please rename ParseQuotedStringInternal to parseQuotedString, and ParseStringListInternal to parseStringList.",
+      "range": {
+        "startLine": 245,
+        "startChar": 5,
+        "endLine": 245,
+        "endChar": 30
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d72954e2_073b5060",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09564e43_d475d9c2",
       "range": {
         "startLine": 245,
         "startChar": 5,
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22f62273_726983a3",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6201f5ef_3728a4bc",
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fde5780_6284f059",
@@ -117,6 +225,30 @@
       "writtenOn": "2021-04-20T20:26:57Z",
       "side": 1,
       "message": "typo: \"possibly\"",
+      "range": {
+        "startLine": 279,
+        "startChar": 47,
+        "endLine": 279,
+        "endChar": 55
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4039eb69_fab1ce75",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fde5780_6284f059",
       "range": {
         "startLine": 279,
         "startChar": 47,
@@ -144,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5282fb8d_a288f9b1",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77a05891_b47c7980",
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ffa760d_7f343bcf",
@@ -157,6 +307,24 @@
       "writtenOn": "2021-04-20T20:26:57Z",
       "side": 1,
       "message": "This would be clearer as a switch-case, as you have done in L262-269.",
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45ed73a1_958f5aaa",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ffa760d_7f343bcf",
       "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -184,6 +352,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8633b7fd_1c15d34b",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4963e920_c923695c",
+      "range": {
+        "startLine": 327,
+        "startChar": 53,
+        "endLine": 327,
+        "endChar": 60
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2688c909_b4376545",
@@ -201,6 +393,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a23e94c9_18c2a7cb",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2688c909_b4376545",
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2befce9e_27ea38f4",
@@ -214,6 +424,24 @@
       "writtenOn": "2021-04-20T20:26:57Z",
       "side": 1,
       "message": "Call GetString to avoid repeated code:\n\n    func (s *Servo) GetQuotedString(ctx context.Context, control StringControl) (string, error) {\n        v, err :\u003d s.GetString(ctx, err)\n        if err !\u003d nil {\n            return \"\", err\n        }\n        return ParseQuotedString(v)\n    }",
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5b12a7_643a4db3",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2befce9e_27ea38f4",
       "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -264,6 +492,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f382e62_7ecca0bd",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56a567e0_98fbe3ac",
+      "range": {
+        "startLine": 366,
+        "startChar": 31,
+        "endLine": 366,
+        "endChar": 35
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0688040d_43a58d29",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b413307_1b6119a0",
+      "range": {
+        "startLine": 366,
+        "startChar": 17,
+        "endLine": 366,
+        "endChar": 24
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2e629a8_f0f246c2",
@@ -281,6 +557,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0583d4f_17665a26",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2e629a8_f0f246c2",
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c921b32b_53073cde",
@@ -294,6 +588,24 @@
       "writtenOn": "2021-04-20T20:26:57Z",
       "side": 1,
       "message": "To avoid repeated code, you can replace L373-376 with:\n\n    return s.SetString(ctx, control, value)",
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc3a836e_0c46d5a7",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c921b32b_53073cde",
       "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -321,6 +633,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "023c3d0a_a9aa1df5",
+        "filename": "src/chromiumos/tast/remote/servo/servo_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "A design choice yes, but it was the wrong choice.  There is a reason every testing framework on the planet besides go uses assert macros or functions. We should import the stretchr/testify/assert library into third_party or where ever it goes.\n\nYou cannot compare two []interface{} values with !\u003d. That is why I made the helper function, which has to be a function because it is recursive.",
+      "parentUuid": "71d12895_1857642e",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "304bda79_c3704aaa",
@@ -334,6 +670,30 @@
       "writtenOn": "2021-04-20T20:26:57Z",
       "side": 1,
       "message": "Please move to method_test.go. You might need to create that file.",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "498ce0fb_8ae1988b",
+        "filename": "src/chromiumos/tast/remote/servo/servo_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T21:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "304bda79_c3704aaa",
       "range": {
         "startLine": 59,
         "startChar": 5,
