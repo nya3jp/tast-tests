@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f32b80c8_3cc3fc4d",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-20T18:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4645ab8b_6856907e",
+      "revId": "6872a5ac7601bc16b6861838224ac0fc5a81412c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b42486f2_ddf130e2",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5af75e10_ce25959f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_tester.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-20T18:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b42486f2_ddf130e2",
+      "revId": "6872a5ac7601bc16b6861838224ac0fc5a81412c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df6e77a4_7805b8b5",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-04-20T16:05:45Z",
       "side": 1,
       "message": "It is recommended to use different error messages in the same function which will help to debug easier. This line has the same message as line number 264.",
+      "revId": "6872a5ac7601bc16b6861838224ac0fc5a81412c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b9b16a9_7519c2b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-20T18:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df6e77a4_7805b8b5",
       "revId": "6872a5ac7601bc16b6861838224ac0fc5a81412c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
