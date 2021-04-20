@@ -88,7 +88,7 @@ func ShowAccessibilityOptionsInSystemTrayMenu(ctx context.Context, s *testing.St
 			}
 
 			// Open settings page where the affected toggle button can be found.
-			if err := policyutil.VerifySettingsState(ctx, cr, "chrome://os-settings/osAccessibility",
+			if err := policyutil.VerifyOSSettingsState(ctx, cr, "chrome://os-settings/osAccessibility",
 				ui.FindParams{
 					Role: ui.RoleTypeToggleButton,
 					Name: "Always show accessibility options in the system menu",
