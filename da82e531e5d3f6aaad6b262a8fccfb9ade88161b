@@ -16,6 +16,23 @@
       "message": "Thanks for the review!\n(Rebased and regenerated wifi_service.pb.go)",
       "revId": "da82e531e5d3f6aaad6b262a8fccfb9ade88161b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86d57d6_aa055647",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-04-20T00:22:19Z",
+      "side": 1,
+      "message": "Thanks",
+      "revId": "da82e531e5d3f6aaad6b262a8fccfb9ade88161b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
