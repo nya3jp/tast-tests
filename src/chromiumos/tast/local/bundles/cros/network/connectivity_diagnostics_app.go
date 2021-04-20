@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/conndiag"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -38,21 +37,14 @@ func ConnectivityDiagnosticsApp(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	// Create a Chrome instance with the Connectivity Diagnostics WebUI app
-	// enabled.
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("ConnectivityDiagnosticsWebUi"))
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Chrome instance: ", err)
 	}
 	defer cr.Close(cleanupCtx)
 
-	tconn, err := cr.TestAPIConn(ctx)
+	_, err = conndiag.Launch(ctx, cr)
 	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
-	if _, err := conndiag.Launch(ctx, tconn); err != nil {
 		s.Fatal("Error launching Connectivity Diagnostics App: ", err)
 	}
 }
