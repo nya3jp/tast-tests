@@ -28,7 +28,7 @@ func NewSmapsRollup(smapsRollupFileData []byte) (map[string]uint64, error) {
 	result := make(map[string]uint64)
 	matches := smapsRollupRE.FindAllSubmatch(smapsRollupFileData, -1)
 	if matches == nil {
-		return nil, errors.Errorf("failed to parse smaps_rollup file %q with RE %q", smapsRollupRE.String(), smapsRollupFileData)
+		return nil, errors.Errorf("failed to parse smaps_rollup file %q", string(smapsRollupFileData))
 	}
 	for _, match := range matches {
 		field := string(match[1])
@@ -70,6 +70,9 @@ func SmapsRollups(ctx context.Context, processes []*process.Process, sharedSwapP
 				// Not all processes have a smaps_rollup, this process may have
 				// exited.
 				return nil
+			} else if len(smapsData) == 0 {
+				// On some processes, smaps_rollups exists but is empty.
+				return nil
 			}
 			command, err := p.Cmdline()
 			if err != nil {
@@ -77,7 +80,7 @@ func SmapsRollups(ctx context.Context, processes []*process.Process, sharedSwapP
 			}
 			rollup, err := NewSmapsRollup(smapsData)
 			if err != nil {
-				return err
+				return errors.Wrapf(err, "failed to parse /proc/%d/smaps_rollup", p.Pid)
 			}
 			rollups[i] = &NamedSmapsRollup{
 				Command:       command,
