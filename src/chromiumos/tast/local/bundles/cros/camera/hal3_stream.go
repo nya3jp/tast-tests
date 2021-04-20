@@ -27,7 +27,7 @@ func init() {
 }
 
 func HAL3Stream(ctx context.Context, s *testing.State) {
-	if err := hal3.RunTest(ctx, hal3.StreamTestConfig(s.OutDir())); err != nil {
+	if err := hal3.RunTest(ctx, hal3.StreamTestConfig()); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }

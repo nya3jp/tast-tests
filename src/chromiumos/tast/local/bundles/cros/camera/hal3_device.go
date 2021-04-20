@@ -27,7 +27,7 @@ func init() {
 }
 
 func HAL3Device(ctx context.Context, s *testing.State) {
-	if err := hal3.RunTest(ctx, hal3.DeviceTestConfig(s.OutDir())); err != nil {
+	if err := hal3.RunTest(ctx, hal3.DeviceTestConfig()); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }

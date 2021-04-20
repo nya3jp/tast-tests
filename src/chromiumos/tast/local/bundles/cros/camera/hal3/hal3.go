@@ -169,7 +169,6 @@ type crosCameraTestConfig struct {
 	gtestFilter          string // filter for Google Test
 	recordingParams      string // resolutions and fps to test in recording
 	perfLog              string // path to the performance log
-	outDir               string // directory where result will be written into.
 	portraitModeTestData string // test data for portrait mode test.
 }
 
@@ -211,8 +210,13 @@ func runCrosCameraTest(ctx context.Context, cfg crosCameraTestConfig) error {
 		return err
 	}
 
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.New("missing out dir")
+	}
+
 	t := gtest.New("cros_camera_test",
-		gtest.TempLogfile(filepath.Join(cfg.outDir, "cros_camera_test_*.log")),
+		gtest.TempLogfile(filepath.Join(outDir, "cros_camera_test_*.log")),
 		gtest.Filter(cfg.gtestFilter),
 		gtest.ExtraArgs(cfg.toArgs()...),
 		gtest.UID(uid))
@@ -391,7 +395,6 @@ func RunTest(ctx context.Context, cfg TestConfig) (retErr error) {
 	cameraCfg := crosCameraTestConfig{
 		gtestFilter:  cfg.GtestFilter,
 		cameraFacing: cfg.CameraFacing,
-		outDir:       cfg.OutDir,
 	}
 
 	if cfg.RequireRecordingParams {
@@ -414,9 +417,15 @@ func RunTest(ctx context.Context, cfg TestConfig) (retErr error) {
 		}
 		return nil
 	}
+
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.New("missing out dir")
+	}
+
 	if len(cfg.CameraFacing) > 0 || cfg.ConnectToCameraService {
 		if cfg.GeneratePerfLog {
-			cameraCfg.perfLog = filepath.Join(cfg.OutDir, "perf.log")
+			cameraCfg.perfLog = filepath.Join(outDir, "perf.log")
 		}
 		if err := runCrosCameraTest(shortCtx, cameraCfg); err != nil {
 			return err
@@ -434,7 +443,7 @@ func RunTest(ctx context.Context, cfg TestConfig) (retErr error) {
 			cameraCfg.cameraHALPath = path
 			filepath.Base(path)
 			if cfg.GeneratePerfLog {
-				cameraCfg.perfLog = filepath.Join(cfg.OutDir, fmt.Sprintf("perf_%d.log", i))
+				cameraCfg.perfLog = filepath.Join(outDir, fmt.Sprintf("perf_%d.log", i))
 			}
 			if err := runCrosCameraTest(shortCtx, cameraCfg); err != nil {
 				return err
@@ -445,7 +454,7 @@ func RunTest(ctx context.Context, cfg TestConfig) (retErr error) {
 		}
 	}
 	if cfg.GeneratePerfLog {
-		if err := p.Save(cfg.OutDir); err != nil {
+		if err := p.Save(outDir); err != nil {
 			return errors.Wrap(err, "failed to save perf data")
 		}
 	}

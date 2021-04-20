@@ -27,7 +27,7 @@ func init() {
 }
 
 func HAL3Perf(ctx context.Context, s *testing.State) {
-	if err := hal3.RunTest(ctx, hal3.PerfTestConfig(s.OutDir())); err != nil {
+	if err := hal3.RunTest(ctx, hal3.PerfTestConfig()); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }

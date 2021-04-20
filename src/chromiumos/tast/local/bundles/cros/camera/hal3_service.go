@@ -27,7 +27,7 @@ type HAL3Service struct {
 	s *testing.ServiceState
 }
 
-type getTestConfig = func(outDir string) hal3.TestConfig
+type getTestConfig = func() hal3.TestConfig
 
 var getTestConfigMap = map[cameraboxpb.HAL3CameraTest]getTestConfig{
 	cameraboxpb.HAL3CameraTest_DEVICE:        hal3.DeviceTestConfig,
@@ -47,11 +47,7 @@ func (c *HAL3Service) RunTest(ctx context.Context, req *cameraboxpb.RunTestReque
 	if !ok {
 		return nil, errors.Errorf("failed to run unknown test %v", req.Test)
 	}
-	outDir, ok := testing.ContextOutDir(ctx)
-	if !ok {
-		return nil, errors.New("failed to get remote output directory")
-	}
-	cfg := getTestConfig(outDir)
+	cfg := getTestConfig()
 	switch req.Facing {
 	case cameraboxpb.Facing_FACING_BACK:
 		cfg.CameraFacing = "back"
@@ -75,6 +71,10 @@ func (c *HAL3Service) RunTest(ctx context.Context, req *cameraboxpb.RunTestReque
 		result.Error = testErr.Error()
 	}
 
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return nil, errors.New("failed to get remote output directory")
+	}
 	if err := endLogFn(ctx, outDir); err != nil {
 		return nil, errors.Wrap(err, "failed to finish collecting syslog")
 	}

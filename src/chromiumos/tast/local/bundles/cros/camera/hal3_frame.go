@@ -31,7 +31,7 @@ func init() {
 }
 
 func HAL3Frame(ctx context.Context, s *testing.State) {
-	if err := hal3.RunTest(ctx, hal3.FrameTestConfig(s.OutDir())); err != nil {
+	if err := hal3.RunTest(ctx, hal3.FrameTestConfig()); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }

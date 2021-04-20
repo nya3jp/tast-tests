@@ -27,7 +27,7 @@ func init() {
 }
 
 func HAL3Preview(ctx context.Context, s *testing.State) {
-	if err := hal3.RunTest(ctx, hal3.PreviewTestConfig(s.OutDir())); err != nil {
+	if err := hal3.RunTest(ctx, hal3.PreviewTestConfig()); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }

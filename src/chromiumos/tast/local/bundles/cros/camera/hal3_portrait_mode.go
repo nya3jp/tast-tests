@@ -36,7 +36,7 @@ func init() {
 const portraitModeTestFile = "portrait_4096x3072.jpg"
 
 func HAL3PortraitMode(ctx context.Context, s *testing.State) {
-	if err := hal3.RunTest(ctx, hal3.PortraitModeTestConfig(s.OutDir(), s.Param().(bool), s.DataPath(portraitModeTestFile))); err != nil {
+	if err := hal3.RunTest(ctx, hal3.PortraitModeTestConfig(s.Param().(bool), s.DataPath(portraitModeTestFile))); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }

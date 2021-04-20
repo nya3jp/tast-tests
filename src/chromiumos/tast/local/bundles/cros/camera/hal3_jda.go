@@ -25,7 +25,7 @@ func init() {
 }
 
 func HAL3JDA(ctx context.Context, s *testing.State) {
-	if err := hal3.RunTest(ctx, hal3.JDATestConfig(s.OutDir())); err != nil {
+	if err := hal3.RunTest(ctx, hal3.JDATestConfig()); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }
