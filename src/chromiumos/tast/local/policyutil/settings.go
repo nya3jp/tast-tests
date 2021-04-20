@@ -54,9 +54,25 @@ func VerifySettingsState(ctx context.Context, cr *chrome.Chrome, settingsPage st
 	if err != nil {
 		return errors.Wrap(err, "failed to create Test API connection")
 	}
-	conn, err := apps.LaunchOSSettings(ctx, cr, settingsPage)
+	conn, err := cr.NewConn(ctx, settingsPage)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the settings page")
+	}
+	defer conn.Close()
+	return VerifySettingsNode(ctx, tconn, params, expectedParams)
+}
+
+// VerifyOSSettingsState will open a OS settings page with given link (e.g. "chrome://os-settings/device/display").
+// Then it will find a node with the given params.
+// It will also compare the attributes of the found node with the given expected params.
+func VerifyOSSettingsState(ctx context.Context, cr *chrome.Chrome, osSettingsPage string, params, expectedParams ui.FindParams) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create Test API connection")
+	}
+	conn, err := apps.LaunchOSSettings(ctx, cr, osSettingsPage)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to the OS Settings page")
 	}
 	defer conn.Close()
 	return VerifySettingsNode(ctx, tconn, params, expectedParams)
