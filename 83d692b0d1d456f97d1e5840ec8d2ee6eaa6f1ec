@@ -39,6 +39,30 @@
       },
       "revId": "83d692b0d1d456f97d1e5840ec8d2ee6eaa6f1ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c6a857_df37ccad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-04-20T08:04:46Z",
+      "side": 1,
+      "message": "This URL seems very \"local\" to the Tast test (other tast perhaps don\u0027t need it). So I\u0027m happy with hard-coding this in test.\n\n\nAt any rate, I\u0027ll leave this up to the test author to decide. :)",
+      "parentUuid": "93090473_90190e68",
+      "range": {
+        "startLine": 91,
+        "startChar": 55,
+        "endLine": 91,
+        "endChar": 93
+      },
+      "revId": "83d692b0d1d456f97d1e5840ec8d2ee6eaa6f1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

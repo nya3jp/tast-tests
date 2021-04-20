@@ -50,6 +50,24 @@
       "message": "adjust the comment to refer os settings",
       "revId": "f1faeb272cbaddb3554f8e44a7390e613b06ba32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fe3ab62_c62d0752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-04-20T08:04:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed46fd31_275c0ec2",
+      "revId": "f1faeb272cbaddb3554f8e44a7390e613b06ba32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
