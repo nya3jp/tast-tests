@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5bbc0d6_7fcbab8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-20T03:02:22Z",
+      "side": 1,
+      "message": "Please use action.Retry.",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 3
+      },
+      "revId": "91a05437fe4992cbe56b56ce405164b953e7b14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea97df3a_58eb9afb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-20T03:02:22Z",
+      "side": 1,
+      "message": "Please use action.Retry.\n\nIf you use action.Retry in both places, you could use uiauto.Combine to combine these four steps together.",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 3
+      },
+      "revId": "91a05437fe4992cbe56b56ce405164b953e7b14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89423839_70e26ab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-20T03:02:22Z",
+      "side": 1,
+      "message": "Please return an action.Action.",
+      "range": {
+        "startLine": 144,
+        "startChar": 5,
+        "endLine": 144,
+        "endChar": 20
+      },
+      "revId": "91a05437fe4992cbe56b56ce405164b953e7b14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d6a66ed_f5f80352",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-20T03:02:22Z",
+      "side": 1,
+      "message": "drag and move a",
+      "range": {
+        "startLine": 90,
+        "startChar": 28,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "91a05437fe4992cbe56b56ce405164b953e7b14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa2aa8c5_aa0c98cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-20T03:02:22Z",
+      "side": 1,
+      "message": "Please define all the nodes in advance.",
+      "range": {
+        "startLine": 92,
+        "startChar": 18,
+        "endLine": 92,
+        "endChar": 49
+      },
+      "revId": "91a05437fe4992cbe56b56ce405164b953e7b14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9e929b9_4c622435",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-20T03:02:22Z",
+      "side": 1,
+      "message": "Why not combine this as well?",
+      "range": {
+        "startLine": 414,
+        "startChar": 16,
+        "endLine": 414,
+        "endChar": 25
+      },
+      "revId": "91a05437fe4992cbe56b56ce405164b953e7b14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9349c07c_8b738517",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-20T03:02:22Z",
+      "side": 1,
+      "message": "Please define all the nodes in advance.",
+      "range": {
+        "startLine": 414,
+        "startChar": 26,
+        "endLine": 414,
+        "endChar": 86
+      },
+      "revId": "91a05437fe4992cbe56b56ce405164b953e7b14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47fa8657_0b39a22c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-20T03:02:22Z",
+      "side": 1,
+      "message": "drag",
+      "range": {
+        "startLine": 417,
+        "startChar": 29,
+        "endLine": 417,
+        "endChar": 33
+      },
+      "revId": "91a05437fe4992cbe56b56ce405164b953e7b14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
