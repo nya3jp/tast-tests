@@ -45,6 +45,54 @@
       },
       "revId": "c7eb713451a69566c72f5354cc67bfa46a840c14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "420be8dc_6a21c6fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-04-20T21:09:42Z",
+      "side": 1,
+      "message": "We call ReserveForStopCapture() on L109 to get a shortened ctx, which we use in L112, but we still need the original \"full\" ctx afterward in L122",
+      "parentUuid": "14013399_fb9a38ed",
+      "range": {
+        "startLine": 92,
+        "startChar": 26,
+        "endLine": 92,
+        "endChar": 33
+      },
+      "revId": "c7eb713451a69566c72f5354cc67bfa46a840c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e791fda_c04dff8c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-04-20T21:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ed70a37_e07c14f2",
+      "range": {
+        "startLine": 92,
+        "startChar": 109,
+        "endLine": 92,
+        "endChar": 112
+      },
+      "revId": "c7eb713451a69566c72f5354cc67bfa46a840c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
