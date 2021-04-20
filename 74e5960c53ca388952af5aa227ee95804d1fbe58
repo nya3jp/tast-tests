@@ -1,0 +1,220 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebb9de16_aa043840",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T21:24:04Z",
+      "side": 1,
+      "message": "Please add a docstring describing the expected timestamp. I believe it\u0027s YY-mm-dd HH:MM:SS.sss, but it would be good to document.",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26153c17_05931c12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T21:24:04Z",
+      "side": 1,
+      "message": "start and startTime are quite similar names. Could you rename startTime to uartStartTime?\n\nNote, this is moot if you take my L72 suggestion of using testing.Poll, which would eliminate the need for start.",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dc8f933_15f3cc07",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T21:24:04Z",
+      "side": 1,
+      "message": "nit/style: Clean up L65-71 with a var() block:\n\n    // gofmt would probably have some comments here...\n    var (\n        start \u003d time.Now()\n        coldBootTime time.Duration \u003d -1\n        bootTime time.Duration \u003d -1\n        uartTime time.Duration \u003d -1\n        rolloverOffset time.Duration\n        leftoverLines string\n    )",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98e9597d_c60eb59f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T21:24:04Z",
+      "side": 1,
+      "message": "Could you rename bootTime (and bootMax, and BootFinished) to be slightly more specific? IIUC they might refer to the AP\u0027s or the DUT\u0027s reboot; could we rename to apBootTime or dutBootTime, and similar?",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba9461bf_dfe00c61",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T21:24:04Z",
+      "side": 1,
+      "message": "optional: This basically reimplements testing.Poll. It might be simpler to call testing.Poll directly:\n\n    if err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n        // Lines 73-120 go here.\n        if coldBootTime \u003c 0 {\n            return errors.New(\"Failed to find ColdBootTime in EC Log\")\n        }\n        if bootTime \u003c 0 {\n            return errors.New(\"Failed to find BootTime in EC Log\")\n        }\n        return nil\n    }, testing.PollOptions{Interval: time.Millisecond * 200, Timeout: maxWaitTime}); err !\u003d nil {\n        s.Error(err)\n    }",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1585147f_3bcb9e4b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T21:24:04Z",
+      "side": 1,
+      "message": "While Go has no maximum line length, go/go-code-review-comments advises us to \"keep the normal code path at a minimal indentation\". We can do this with a `continue`:\n\n    for ; (coldBootTime \u003c 0 || bootTime \u003c 0) \u0026\u0026 time.Since(start) \u003c maxWaitTime; testing.Sleep(time.Millisecond * 200) {\n        if lines, err :\u003d svo.GetQuotedString(ctx, servo.ECUARTStream); err !\u003d nil {\n            s.Fatal(\"Failed to read UART: \", err)\n        } else if lines \u003d\u003d \"\" {\n            continue\n        }\n        // L76-119 go here\n    }",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07855e4f_905dc470",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T21:24:04Z",
+      "side": 1,
+      "message": "I think we can capture the entire timestamp more easily with time.Parse, which would avoid the need for rolloverOffset calculations:\n\n    if match :\u003d UARTAbsoluteTime.FindString(l); match !\u003d \"\") {\n        uartTime, err :\u003d time.Parse(\"06-01-02 15:04:05.000\", match)\n        if err !\u003d nil {\n            s.Fatal(\"Could not parse uart time: \", err)\n        }\n    }\n\nThis would eliminate the need for rolloverOffset calculations:\n\n    // L109\n    coldBootTime \u003d uartTime - startTime\n\n    // L115\n    bootTime \u003d uartTime - startTime - coldBootTime",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0e25c96_44426cc6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T21:24:04Z",
+      "side": 1,
+      "message": "The time.Duration cast is not necessary, since time.Duration is already an int64. (https://pkg.go.dev/time#Duration)\n\n    newTime :\u003d secs*time.Second + millis*time.Millisecond",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 35
+      },
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d599df2_7fabf5af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T21:24:04Z",
+      "side": 1,
+      "message": "There\u0027s no submatch here, so use FindString:\n\n    if match :\u003d ColdBootFinished.FindString(l); match !\u003d \"\" {\n\nDitto L114",
+      "range": {
+        "startLine": 108,
+        "startChar": 34,
+        "endLine": 108,
+        "endChar": 52
+      },
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "874faccc_a5a72414",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T21:24:04Z",
+      "side": 1,
+      "message": "s.Logf(\"Cold Boot \u003d %q\", match)",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5205661f_256b2f85",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T21:24:04Z",
+      "side": 1,
+      "message": "s.Logf(\"Boot \u003d %q\", match)",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d779479f_5ed616ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T21:24:04Z",
+      "side": 1,
+      "message": "nit: Per http://go/go-code-review-comments#useful-test-failures, Go prescribes the error message order of \"actual !\u003d expected\":\n\n    s.Errorf(\"EC boot time \u003d %s; want \u003c\u003d%s\")\n\nDitto L134",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
