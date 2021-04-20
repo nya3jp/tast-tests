@@ -16,6 +16,40 @@
       "message": "lgtm\n\nTast owners, please bless the CL. Thanks.",
       "revId": "634dc0199bda966d38d6e69770404bcff08ef011",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ba8f9c_053cb894",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-20T14:40:36Z",
+      "side": 1,
+      "message": "lgtm with minor request.",
+      "revId": "634dc0199bda966d38d6e69770404bcff08ef011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8aaeb58_a35a36dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-20T14:40:36Z",
+      "side": 1,
+      "message": "As you touch this, could you move this line to (just before) L108?",
+      "revId": "634dc0199bda966d38d6e69770404bcff08ef011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
