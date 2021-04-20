@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bb56903_a09b78cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T23:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebb9de16_aa043840",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26153c17_05931c12",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-20T21:24:04Z",
       "side": 1,
       "message": "start and startTime are quite similar names. Could you rename startTime to uartStartTime?\n\nNote, this is moot if you take my L72 suggestion of using testing.Poll, which would eliminate the need for start.",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2c22afe_f0fbd38f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T23:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26153c17_05931c12",
       "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dac2987e_6f6f1fe9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T23:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dc8f933_15f3cc07",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98e9597d_c60eb59f",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-04-20T21:24:04Z",
       "side": 1,
       "message": "Could you rename bootTime (and bootMax, and BootFinished) to be slightly more specific? IIUC they might refer to the AP\u0027s or the DUT\u0027s reboot; could we rename to apBootTime or dutBootTime, and similar?",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08ea9ea7_cbfdc5bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T23:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98e9597d_c60eb59f",
       "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0db4a416_f43c54a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T23:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba9461bf_dfe00c61",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1585147f_3bcb9e4b",
@@ -99,6 +189,24 @@
       "writtenOn": "2021-04-20T21:24:04Z",
       "side": 1,
       "message": "While Go has no maximum line length, go/go-code-review-comments advises us to \"keep the normal code path at a minimal indentation\". We can do this with a `continue`:\n\n    for ; (coldBootTime \u003c 0 || bootTime \u003c 0) \u0026\u0026 time.Since(start) \u003c maxWaitTime; testing.Sleep(time.Millisecond * 200) {\n        if lines, err :\u003d svo.GetQuotedString(ctx, servo.ECUARTStream); err !\u003d nil {\n            s.Fatal(\"Failed to read UART: \", err)\n        } else if lines \u003d\u003d \"\" {\n            continue\n        }\n        // L76-119 go here\n    }",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0f47dff_4686fca0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T23:00:08Z",
+      "side": 1,
+      "message": "That doesn\u0027t work if we use testing.Poll.",
+      "parentUuid": "1585147f_3bcb9e4b",
       "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c8b1531_16505f38",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T23:00:08Z",
+      "side": 1,
+      "message": "Yes, but then the test might fail at the DST switchover, and we don\u0027t actually care about the full date, just the relative times.",
+      "parentUuid": "07855e4f_905dc470",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0e25c96_44426cc6",
@@ -133,6 +259,30 @@
       "writtenOn": "2021-04-20T21:24:04Z",
       "side": 1,
       "message": "The time.Duration cast is not necessary, since time.Duration is already an int64. (https://pkg.go.dev/time#Duration)\n\n    newTime :\u003d secs*time.Second + millis*time.Millisecond",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 35
+      },
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "216757a4_78e67adc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T23:00:08Z",
+      "side": 1,
+      "message": "2021-04-20T22:46:32.569962Z ../tast-tests/src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go:103:21: invalid operation: secs * time.Second (mismatched types int and time.Duration)",
+      "parentUuid": "e0e25c96_44426cc6",
       "range": {
         "startLine": 98,
         "startChar": 16,
@@ -166,6 +316,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfeea33a_344117a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T23:00:08Z",
+      "side": 1,
+      "message": "Done, though I don\u0027t care for FindString returning \"\" for both not matched and also  matching the empty string.",
+      "parentUuid": "5d599df2_7fabf5af",
+      "range": {
+        "startLine": 108,
+        "startChar": 34,
+        "endLine": 108,
+        "endChar": 52
+      },
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "874faccc_a5a72414",
@@ -179,6 +353,24 @@
       "writtenOn": "2021-04-20T21:24:04Z",
       "side": 1,
       "message": "s.Logf(\"Cold Boot \u003d %q\", match)",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "301c02d3_da222554",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T23:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "874faccc_a5a72414",
       "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -200,6 +392,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7e7c1a3_0c444d42",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T23:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5205661f_256b2f85",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d779479f_5ed616ae",
@@ -213,6 +423,24 @@
       "writtenOn": "2021-04-20T21:24:04Z",
       "side": 1,
       "message": "nit: Per http://go/go-code-review-comments#useful-test-failures, Go prescribes the error message order of \"actual !\u003d expected\":\n\n    s.Errorf(\"EC boot time \u003d %s; want \u003c\u003d%s\")\n\nDitto L134",
+      "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cba5062_fcfba100",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T23:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d779479f_5ed616ae",
       "revId": "74e5960c53ca388952af5aa227ee95804d1fbe58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
