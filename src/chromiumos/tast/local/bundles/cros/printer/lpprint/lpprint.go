@@ -24,16 +24,6 @@ import (
 // CleanPSContents filters any unwanted lines from content to ensure a stable
 // diff.
 func CleanPSContents(content string) string {
-	data := []byte(content)
-	// printer.AddBrotherPrinter generates slightly different print data on kevin64
-	// compared to the other boards. For now ignore the two byte difference.
-	// TODO(b/173152142): Remove when fixed.
-	for _, b := range []int{0x489, 0x96c} {
-		if len(data) > b && data[b] == 0xff {
-			data[b] = 0
-		}
-	}
-	content = string(data)
 	r := regexp.MustCompile(
 		// Matches the embedded ghostscript version in the PS file.
 		// This gets outdated on every gs uprev, so we strip it out.
