@@ -422,6 +422,10 @@ func RunTest(ctx context.Context, cfg TestConfig) (retErr error) {
 	if !ok {
 		return errors.New("missing out dir")
 	}
+	// Need to be writable by arc-camera.
+	if err := os.Chmod(outDir, 0777); err != nil {
+		return errors.Wrap(err, "failed to chmod outDir")
+	}
 
 	if len(cfg.CameraFacing) > 0 || cfg.ConnectToCameraService {
 		if cfg.GeneratePerfLog {
