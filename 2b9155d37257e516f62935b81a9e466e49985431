@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0d7a972_122ce4cc",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-20T02:29:25Z",
+      "side": 1,
+      "message": "I got a bit confused. The signature of this func has not been changed, how could this change work?",
+      "range": {
+        "startLine": 279,
+        "startChar": 11,
+        "endLine": 279,
+        "endChar": 31
+      },
+      "revId": "2b9155d37257e516f62935b81a9e466e49985431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "979f9016_48b1917d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-20T02:29:25Z",
+      "side": 1,
+      "message": "Please wrap the errors in this func.",
+      "range": {
+        "startLine": 795,
+        "startChar": 9,
+        "endLine": 795,
+        "endChar": 12
+      },
+      "revId": "2b9155d37257e516f62935b81a9e466e49985431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da65c53b_0045bb5c",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-20T02:29:25Z",
+      "side": 1,
+      "message": "Suggest to format the error msg like this: failed to validate the firmware image, got %, want %",
+      "range": {
+        "startLine": 904,
+        "startChar": 24,
+        "endLine": 904,
+        "endChar": 79
+      },
+      "revId": "2b9155d37257e516f62935b81a9e466e49985431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b08af422_0982b6f2",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-20T02:29:25Z",
+      "side": 1,
+      "message": "Do not capitalise the first letter.",
+      "range": {
+        "startLine": 922,
+        "startChar": 28,
+        "endLine": 922,
+        "endChar": 40
+      },
+      "revId": "2b9155d37257e516f62935b81a9e466e49985431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41715894_5af596fc",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-20T02:29:25Z",
+      "side": 1,
+      "message": "Please wrap the error.",
+      "range": {
+        "startLine": 942,
+        "startChar": 9,
+        "endLine": 942,
+        "endChar": 12
+      },
+      "revId": "2b9155d37257e516f62935b81a9e466e49985431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33eec57c_955572b7",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-20T02:29:25Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 947,
+        "startChar": 9,
+        "endLine": 947,
+        "endChar": 12
+      },
+      "revId": "2b9155d37257e516f62935b81a9e466e49985431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4908ec29_d3655a26",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-20T02:29:25Z",
+      "side": 1,
+      "message": "Suggest to format the error: failed to validate the RW firmware version: got %q, want %",
+      "range": {
+        "startLine": 951,
+        "startChar": 24,
+        "endLine": 951,
+        "endChar": 83
+      },
+      "revId": "2b9155d37257e516f62935b81a9e466e49985431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f132f45_ff1b3c70",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-20T02:29:25Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 955,
+        "startChar": 24,
+        "endLine": 955,
+        "endChar": 83
+      },
+      "revId": "2b9155d37257e516f62935b81a9e466e49985431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
