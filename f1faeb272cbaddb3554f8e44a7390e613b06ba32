@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd603a46_ec981027",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-04-20T07:58:12Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "f1faeb272cbaddb3554f8e44a7390e613b06ba32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed46fd31_275c0ec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-04-20T07:58:12Z",
+      "side": 1,
+      "message": "adjust the comment to refer os settings",
+      "revId": "f1faeb272cbaddb3554f8e44a7390e613b06ba32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
