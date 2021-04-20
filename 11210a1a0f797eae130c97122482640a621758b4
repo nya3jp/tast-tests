@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10bdc0ee_c3834705",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T23:34:18Z",
+      "side": 1,
+      "message": "I got the cmp lib to work. It treats nil slices as different than empty slices.",
+      "revId": "11210a1a0f797eae130c97122482640a621758b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
