@@ -1,0 +1,347 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "713c7d9d_4f9c2946",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "There\u0027s enough going on here that we might want to create a new file, with a name like (ec_methods.go|ec_uart_methods.go|ec_uart.go|ec.go).",
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5da260ce_ff56a1a7",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "There are two strings here: there\u0027s the overall string represented by value, and there\u0027s the internal string that we\u0027re parsing. Please clarify here that *index moves to the end of the internal quoted string.",
+      "range": {
+        "startLine": 244,
+        "startChar": 91,
+        "endLine": 244,
+        "endChar": 97
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a79d145f_89fcdf86",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "I\u0027m finding this docstring to be ambiguous, along with several other docstrings here that refer to parsing a string. Parsing can mean any number of things; can you please clarify the input and output? Ditto for the other parsing docstrings.",
+      "range": {
+        "startLine": 244,
+        "startChar": 29,
+        "endLine": 244,
+        "endChar": 58
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09564e43_d475d9c2",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "Does the \"Internal\" aspect of ParseQuotedStringInternal and ParseStringListInternal refer to the fact that these are helper functions, not meant to be used outside of this package? If so, the Go construct you want is non-exported (i.e., non-capitalized) functions. If that is the case, then please rename ParseQuotedStringInternal to parseQuotedString, and ParseStringListInternal to parseStringList.",
+      "range": {
+        "startLine": 245,
+        "startChar": 5,
+        "endLine": 245,
+        "endChar": 30
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6201f5ef_3728a4bc",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "Is this comment related? We don\u0027t handle [] in this function.",
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fde5780_6284f059",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "typo: \"possibly\"",
+      "range": {
+        "startLine": 279,
+        "startChar": 47,
+        "endLine": 279,
+        "endChar": 55
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a05891_b47c7980",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "nit: Move to immediately before L286",
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ffa760d_7f343bcf",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "This would be clearer as a switch-case, as you have done in L262-269.",
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4963e920_c923695c",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "Could you clarify what \"encoded\" means here? Personally I would describe the result as \"a possibly nested list of strings\", as you have done elsewhere.",
+      "range": {
+        "startLine": 327,
+        "startChar": 53,
+        "endLine": 327,
+        "endChar": 60
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2688c909_b4376545",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "Call GetString to avoid repeated code:\n\n    func (s *Servo) GetStringList(ctx context.Context, control StringControl) ([]interface{}, error) {\n        v, err :\u003d s.GetString(ctx, control)\n        if err !\u003d nil {\n            return err\n        }\n        return ParseStringList(v)\n    }",
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2befce9e_27ea38f4",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "Call GetString to avoid repeated code:\n\n    func (s *Servo) GetQuotedString(ctx context.Context, control StringControl) (string, error) {\n        v, err :\u003d s.GetString(ctx, err)\n        if err !\u003d nil {\n            return \"\", err\n        }\n        return ParseQuotedString(v)\n    }",
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b413307_1b6119a0",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "L366-367 would be simpler with the equivalent strings.ReplaceAll, rather than strings.Replace(..., -1).",
+      "range": {
+        "startLine": 366,
+        "startChar": 17,
+        "endLine": 366,
+        "endChar": 24
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56a567e0_98fbe3ac",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "These escaped characters would be clearer with `` (indicating raw strings):\n\n    part \u003d strings.Replace(part, `\\`, `\\\\`, -1)\n    part \u003d strings.Replace(part, \"\u0027\", `\\\u0027`)\n\nIn fact, it looks like L366 is a no-op as written, as it replaces \"\\\\\" with the equivalent \"\\\\\".",
+      "range": {
+        "startLine": 366,
+        "startChar": 31,
+        "endLine": 366,
+        "endChar": 35
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e629a8_f0f246c2",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "nit: For consistency, either remove newline here, or add one after L364",
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c921b32b_53073cde",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "To avoid repeated code, you can replace L373-376 with:\n\n    return s.SetString(ctx, control, value)",
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71d12895_1857642e",
+        "filename": "src/chromiumos/tast/remote/servo/servo_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "Exclusion of assertion methods from the testing library was a design choice in Go: https://golang.org/doc/faq#testing_framework. The Tast writers address this, too: http://go/tast-writing#errors-and-logging\n\nIt looks like we can accomplish the same objective while adhering to the style guide with a table-driven test:\n\n    func TestParseStringList(t *testing.T) {\n        type testCase struct {\n            pslParam  string,\n            expectErr bool,\n            expected  string,\n        }\n        for _, tc :\u003d range []testCase{\n            // I\u0027ve listed these in one-line form, but it might be clearer to do one attribute per line.\n            {\"[]\", false, []interface{}},\n            {\"\", true, []interface{}},\n            {`[\u0027foo\u0027, \u0027bar\\\u0027\u0027, \u0027ba\\\\z\u0027]`, false, []interface{\"foo\", \"bar\u0027\", `ba\\z`}},\n            {`[[\u0027one\u0027, \u0027two\u0027], [\u0027three\u0027]]`, false, []interface{[]interface{}{\"one\", \"two\"}, []interface{}{\"three\"}}},\n        } {\n            res, err :\u003d ParseStringList(pslParam)\n            if err !\u003d expectErr {\n                t.Error(...)\n            } else if err !\u003d nil \u0026\u0026 res !\u003d expected { // Or you might expand this check as you\u0027ve done in AssertEquals.\n                t.Error(...)\n            }\n        }\n    }",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "304bda79_c3704aaa",
+        "filename": "src/chromiumos/tast/remote/servo/servo_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-20T20:26:57Z",
+      "side": 1,
+      "message": "Please move to method_test.go. You might need to create that file.",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
