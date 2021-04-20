@@ -279,13 +279,8 @@ func (d *differ) DiffWithOptions(name string, finder *nodewith.Finder, options D
 			"--png-file", filepath.Join(d.dir, fullName, screenshotFile),
 		}, d.goldArgs...)...); err != nil {
 			d.failedTests = append(d.failedTests, name)
-			// In local dev, seeing the error early will help debug quicker.
-			if d.testMode == local {
-				d.state.Logf("Failed local test %s: %v", name, err)
-				// TODO(crbug.com/skia/10808): once we have a proper triage URL for CQ, delete this.
-			} else if d.testMode == cq {
-				d.state.Logf("Failed test on CQ %s: %v", name, err)
-			}
+			// In case you don't have access to a filter by commit ID / release, output the logs directly.
+			d.state.Logf("Failed test %s: %v", name, err)
 		}
 
 		return nil
