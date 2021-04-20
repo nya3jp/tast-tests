@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01ad9e40_c2a693f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-04-20T02:32:31Z",
+      "side": 1,
+      "message": "Some devices might not support HP. I think we should to set proper expected profile for them to avoid test failures.",
+      "range": {
+        "startLine": 278,
+        "startChar": 40,
+        "endLine": 278,
+        "endChar": 55
+      },
+      "revId": "3cf6b93ffd27a0e8cdf6640c475241940edbc73c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02aaa960_611ebe97",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_video_option_perf.go",
         "patchSetId": 1
