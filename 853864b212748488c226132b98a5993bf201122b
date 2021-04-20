@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddbc07dd_61c3f8a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-04-20T11:50:07Z",
+      "side": 1,
+      "message": "Looking forward to have that fix. Thanks Jit for the CL!",
+      "revId": "853864b212748488c226132b98a5993bf201122b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
