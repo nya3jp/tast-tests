@@ -681,6 +681,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "110b56dc_bb2efb49",
+        "filename": "src/chromiumos/tast/remote/servo/servo_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-20T22:22:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80a144c7_6971aa3e",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "0e625ed6d8fefcaf0464cf687f07c70915a12ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "304bda79_c3704aaa",
