@@ -30,6 +30,9 @@ import (
 )
 
 const (
+	// WaitForUserTimeout is the maximum time until a user mount is available.
+	WaitForUserTimeout = 80 * time.Second
+
 	// mountPollInterval contains the delay between WaitForUserMount's parses of mtab.
 	mountPollInterval = 10 * time.Millisecond
 
@@ -239,8 +242,7 @@ func WaitForUserMount(ctx context.Context, user string) error {
 		return err
 	}
 
-	const waitTimeout = 80 * time.Second
-	testing.ContextLogf(ctx, "Waiting for cryptohome for user %q with timeout %v", user, waitTimeout)
+	testing.ContextLogf(ctx, "Waiting for cryptohome for user %q with timeout %v", user, WaitForUserTimeout)
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		partitions, err := findMounts(mounter)
 		if err != nil {
@@ -261,7 +263,7 @@ func WaitForUserMount(ctx context.Context, user string) error {
 			return err
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: waitTimeout, Interval: mountPollInterval})
+	}, &testing.PollOptions{Timeout: WaitForUserTimeout, Interval: mountPollInterval})
 
 	if err != nil {
 		return errors.Wrapf(err, "not mounted for %s", user)
