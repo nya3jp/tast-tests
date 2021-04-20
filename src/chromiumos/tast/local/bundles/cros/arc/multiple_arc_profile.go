@@ -199,8 +199,10 @@ func addARCAccount(ctx context.Context, arcDevice *androidui.Device, tconn *chro
 		return errors.Wrap(err, "failed to click About Device")
 	}
 
-	// Enter User Name.
-	if err := uiauto.Combine("Click on User Name",
+	// Click OK and Enter User Name.
+	if err := uiauto.Combine("Click on OK and proceed",
+		ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button)),
+		ui.LeftClick(nodewith.Name("OK").Role(role.Button)),
 		ui.WaitUntilExists(nodewith.Name("Email or phone").Role(role.TextField)),
 		ui.LeftClick(nodewith.Name("Email or phone").Role(role.TextField)),
 	)(ctx); err != nil {
