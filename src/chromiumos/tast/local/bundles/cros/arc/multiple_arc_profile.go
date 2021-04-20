@@ -199,8 +199,10 @@ func addARCAccount(ctx context.Context, arcDevice *androidui.Device, tconn *chro
 		return errors.Wrap(err, "failed to click About Device")
 	}
 
-	// Enter User Name.
-	if err := uiauto.Combine("Click on User Name",
+	// Click OK and Enter User Name.
+	if err := uiauto.Combine("Click on OK and proceed",
+		ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button)),
+		ui.LeftClick(nodewith.Name("OK").Role(role.Button)),
 		ui.WaitUntilExists(nodewith.Name("Email or phone").Role(role.TextField)),
 		ui.LeftClick(nodewith.Name("Email or phone").Role(role.TextField)),
 	)(ctx); err != nil {
@@ -233,9 +235,10 @@ func addARCAccount(ctx context.Context, arcDevice *androidui.Device, tconn *chro
 	if err := uiauto.Combine("Agree and Finish Adding Account",
 		ui.LeftClick(nodewith.Name("Next").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("I agree").Role(role.Button)),
-		ui.WaitUntilExists(nodewith.Name("Manage Android preferences").Role(role.Link)),
+		ui.WaitUntilExists(nodewith.Name("Manage Android preferences").Role(role.Link).Focused()),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to add account")
 	}
+
 	return nil
 }
