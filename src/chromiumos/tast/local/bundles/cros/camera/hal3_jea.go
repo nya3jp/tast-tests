@@ -38,11 +38,11 @@ func init() {
 func HAL3JEA(ctx context.Context, s *testing.State) {
 	usbOnly := s.Param().(string) == "usb"
 	if usbOnly {
-		if err := hal3.RunTest(ctx, hal3.JEAUSBTestConfig(s.OutDir())); err != nil {
+		if err := hal3.RunTest(ctx, hal3.JEAUSBTestConfig()); err != nil {
 			s.Error("Test failed: ", err)
 		}
 	} else {
-		if err := hal3.RunTest(ctx, hal3.JEATestConfig(s.OutDir())); err != nil {
+		if err := hal3.RunTest(ctx, hal3.JEATestConfig()); err != nil {
 			s.Error("Test failed: ", err)
 		}
 	}

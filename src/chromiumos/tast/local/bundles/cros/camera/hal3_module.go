@@ -30,7 +30,7 @@ func init() {
 }
 
 func HAL3Module(ctx context.Context, s *testing.State) {
-	if err := hal3.RunTest(ctx, hal3.ModuleTestConfig(s.OutDir())); err != nil {
+	if err := hal3.RunTest(ctx, hal3.ModuleTestConfig()); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }

@@ -27,8 +27,6 @@ type TestConfig struct {
 	// ForceJPEGHWDec is the flag to enforce hardware decode for JPEG, so it
 	// won't fall back to SW decode when the HW decode failed.
 	ForceJPEGHWDec bool
-	// OutDir is where the test result will be written into.
-	OutDir string
 	// ConnectToCameraService is the flag to connect to the cros-camera service,
 	// instead of loading camera HALs.
 	ConnectToCameraService bool
@@ -37,117 +35,104 @@ type TestConfig struct {
 }
 
 // DeviceTestConfig returns test config for running HAL3Device test.
-func DeviceTestConfig(outDir string) TestConfig {
+func DeviceTestConfig() TestConfig {
 	return TestConfig{
 		GtestFilter: "Camera3DeviceTest/*",
-		OutDir:      outDir,
 	}
 }
 
 // FrameTestConfig returns test config for running HAL3Frame test.
-func FrameTestConfig(outDir string) TestConfig {
+func FrameTestConfig() TestConfig {
 	return TestConfig{
 		GtestFilter: "Camera3FrameTest/*",
-		OutDir:      outDir,
 	}
 }
 
 // JDATestConfig returns test config for running HAL3JDA test.
-func JDATestConfig(outDir string) TestConfig {
+func JDATestConfig() TestConfig {
 	return TestConfig{
 		CameraHALs:     []string{"usb"},
 		GtestFilter:    "*/Camera3SingleFrameTest.GetFrame/0",
 		ForceJPEGHWDec: true,
-		OutDir:         outDir,
 	}
 }
 
 // JEAUSBTestConfig returns test config for running HAL3JEA test on USB HAL.
-func JEAUSBTestConfig(outDir string) TestConfig {
+func JEAUSBTestConfig() TestConfig {
 	return TestConfig{
 		CameraHALs:     []string{"usb"},
 		GtestFilter:    "*/Camera3SimpleStillCaptureTest.TakePictureTest/0",
 		ForceJPEGHWEnc: true,
-		OutDir:         outDir,
 	}
 }
 
 // JEATestConfig returns test config for running HAL3JEA test.
-func JEATestConfig(outDir string) TestConfig {
+func JEATestConfig() TestConfig {
 	return TestConfig{
 		GtestFilter:    "*/Camera3SimpleStillCaptureTest.TakePictureTest/0",
 		ForceJPEGHWEnc: true,
-		OutDir:         outDir,
 	}
 }
 
 // ModuleTestConfig returns test config for running HAL3Module test.
-func ModuleTestConfig(outDir string) TestConfig {
+func ModuleTestConfig() TestConfig {
 	return TestConfig{
 		GtestFilter:            "Camera3ModuleFixture.*",
 		RequireRecordingParams: true,
-		OutDir:                 outDir,
 	}
 }
 
 // PerfTestConfig returns test config for running HAL3Perf test.
-func PerfTestConfig(outDir string) TestConfig {
+func PerfTestConfig() TestConfig {
 	return TestConfig{
 		GtestFilter:     "Camera3StillCaptureTest/Camera3SimpleStillCaptureTest.PerformanceTest/*",
 		GeneratePerfLog: true,
-		OutDir:          outDir,
 	}
 }
 
 // PreviewTestConfig returns test config for running HAL3Preview test.
-func PreviewTestConfig(outDir string) TestConfig {
+func PreviewTestConfig() TestConfig {
 	return TestConfig{
 		GtestFilter: "Camera3PreviewTest/*",
-		OutDir:      outDir,
 	}
 }
 
 // RecordingTestConfig returns test config for running HAL3Recording test.
-func RecordingTestConfig(outDir string) TestConfig {
+func RecordingTestConfig() TestConfig {
 	return TestConfig{
 		GtestFilter:            "Camera3RecordingFixture/*",
 		RequireRecordingParams: true,
-		OutDir:                 outDir,
 	}
 }
 
 // StillCaptureTestConfig returns test config for running HAL3StillCapture test.
-func StillCaptureTestConfig(outDir string) TestConfig {
+func StillCaptureTestConfig() TestConfig {
 	return TestConfig{
 		GtestFilter: "Camera3StillCaptureTest/*",
-		OutDir:      outDir,
 	}
 }
 
 // StreamTestConfig returns test config for running HAL3Stream test.
-func StreamTestConfig(outDir string) TestConfig {
+func StreamTestConfig() TestConfig {
 	return TestConfig{
 		GtestFilter: "Camera3StreamTest/*",
-		OutDir:      outDir,
 	}
 }
 
 // PortraitModeTestConfig returns test config for running HAL3PortraitMode test.
-func PortraitModeTestConfig(outDir string, generatePerfLog bool, portraitModeTestFile string) TestConfig {
+func PortraitModeTestConfig(generatePerfLog bool, portraitModeTestFile string) TestConfig {
 	return TestConfig{
 		GtestFilter:            "Camera3FrameTest/Camera3PortraitModeTest.*",
 		ConnectToCameraService: true,
 		GeneratePerfLog:        generatePerfLog,
 		PortraitModeTestData:   portraitModeTestFile,
-		OutDir:                 outDir,
 	}
 }
 
 // StillCaptureZSLTestConfig returns test config for running HAL3StillCaptureZSL test.
-func StillCaptureZSLTestConfig(outDir string) TestConfig {
+func StillCaptureZSLTestConfig() TestConfig {
 	return TestConfig{
 		GtestFilter:            "Camera3StillCaptureTest/Camera3SimpleStillCaptureTest.TakePictureZslTest/*",
 		ConnectToCameraService: true,
-		OutDir:                 outDir,
 	}
 }

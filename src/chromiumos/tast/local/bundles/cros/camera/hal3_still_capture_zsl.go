@@ -27,7 +27,7 @@ func init() {
 }
 
 func HAL3StillCaptureZSL(ctx context.Context, s *testing.State) {
-	if err := hal3.RunTest(ctx, hal3.StillCaptureZSLTestConfig(s.OutDir())); err != nil {
+	if err := hal3.RunTest(ctx, hal3.StillCaptureZSLTestConfig()); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }

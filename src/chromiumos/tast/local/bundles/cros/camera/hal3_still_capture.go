@@ -29,7 +29,7 @@ func init() {
 }
 
 func HAL3StillCapture(ctx context.Context, s *testing.State) {
-	if err := hal3.RunTest(ctx, hal3.StillCaptureTestConfig(s.OutDir())); err != nil {
+	if err := hal3.RunTest(ctx, hal3.StillCaptureTestConfig()); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }

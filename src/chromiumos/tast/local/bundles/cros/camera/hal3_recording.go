@@ -27,7 +27,7 @@ func init() {
 }
 
 func HAL3Recording(ctx context.Context, s *testing.State) {
-	if err := hal3.RunTest(ctx, hal3.RecordingTestConfig(s.OutDir())); err != nil {
+	if err := hal3.RunTest(ctx, hal3.RecordingTestConfig()); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }
