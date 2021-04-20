@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bea63a00_acd9ed8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-20T00:15:33Z",
+      "side": 1,
+      "message": "I would normally add ricardoq@ for review, but he\u0027s OOO.\n\nPTAL, thanks!",
+      "revId": "ed11ccc5c91607064b90f925c7e68cd3b0f1ecce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
