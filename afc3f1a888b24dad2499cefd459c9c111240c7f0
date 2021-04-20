@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "61985b09_678af56e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-20T09:30:22Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "afc3f1a888b24dad2499cefd459c9c111240c7f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6990db1f_c8f9b439",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3_test_config.go",
         "patchSetId": 1
