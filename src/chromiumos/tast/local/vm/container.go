@@ -643,12 +643,12 @@ func (c *Container) UninstallPackageOwningFile(ctx context.Context, desktopFileI
 // containerCommand returns a testexec.Cmd with a vsh command that will run in
 // the specified container.
 func containerCommand(ctx context.Context, vmName, containerName, ownerID string, vshArgs ...string) *testexec.Cmd {
-	args := append([]string{"--vm_name=" + vmName,
+	args := append([]string{"vsh", "--vm_name=" + vmName,
 		"--target_container=" + containerName,
 		"--owner_id=" + ownerID,
 		"--"},
 		vshArgs...)
-	cmd := testexec.CommandContext(ctx, "vsh", args...)
+	cmd := testexec.CommandContext(ctx, "strace", args...)
 	// Add an empty buffer for stdin to force allocating a pipe. vsh uses
 	// epoll internally and generates a warning (EPERM) if stdin is /dev/null.
 	cmd.Stdin = &bytes.Buffer{}
