@@ -27,7 +27,10 @@ const (
 	V4Role               StringControl = "servo_v4_role"
 	V4Type               StringControl = "servo_v4_type"
 	ECBoard              StringControl = "ec_board"
+	ECSystemPowerState   StringControl = "ec_system_powerstate"
 	ECUARTCmd            StringControl = "ec_uart_cmd"
+	ECUARTRegexp         StringControl = "ec_uart_regexp"
+	ECUARTStream         StringControl = "ec_uart_stream"
 	UARTCmd              StringControl = "servo_v4_uart_cmd"
 	WatchdogAdd          StringControl = "watchdog_add"
 	WatchdogRemove       StringControl = "watchdog_remove"
@@ -59,6 +62,7 @@ const (
 	RecMode        OnOffControl = "rec_mode"
 	CCDKeepaliveEn OnOffControl = "ccd_keepalive_en"
 	DTSMode        OnOffControl = "servo_v4_dts_mode"
+	ECUARTCapture  OnOffControl = "ec_uart_capture"
 )
 
 // An OnOffValue is a string value that would be accepted by an OnOffControl.
@@ -237,11 +241,135 @@ func (s *Servo) GetString(ctx context.Context, control StringControl) (string, e
 	return value, nil
 }
 
+// ParseQuotedStringInternal parses a single-quoted string, moves *index to the end of the string.
+func ParseQuotedStringInternal(value []rune, index *int) (string, error) {
+	// The first char should always be a '['
+	if *index >= len(value) {
+		return "", errors.Errorf("unexpected end of string at %d in %s", *index, string(value))
+	}
+	quoteChar := value[*index]
+	if quoteChar != '\'' && quoteChar != '"' {
+		return "", errors.Errorf("unexpected string char %c at index %d in %s", quoteChar, *index, string(value))
+	}
+	(*index)++
+	var current strings.Builder
+	for ; *index < len(value); (*index)++ {
+		c := value[*index]
+		if c == quoteChar {
+			break
+		} else if c == '\\' {
+			(*index)++
+			switch value[*index] {
+			case '"', '\'', '\\':
+				current.WriteRune(value[*index])
+			case 'r':
+				current.WriteRune('\r')
+			case 'n':
+				current.WriteRune('\n')
+			default:
+				return "", errors.Errorf("unexpected escape sequence \\%c at index %d in %s", value[*index], *index, string(value))
+			}
+		} else {
+			current.WriteRune(c)
+		}
+	}
+	return current.String(), nil
+}
+
+// ParseStringListInternal parses a value as a possible nested list of strings, quoted with single quotes and separated by commas. Moves *index to the end of the list.
+func ParseStringListInternal(value []rune, index *int) ([]interface{}, error) {
+	var result []interface{}
+	// The first char should always be a [
+	if *index >= len(value) {
+		return nil, errors.Errorf("unexpected end of string at %d in %s", *index, string(value))
+	}
+	if value[*index] != '[' {
+		return nil, errors.Errorf("unexpected list char %c at index %d in %s", value[*index], *index, string(value))
+	}
+	(*index)++
+	for ; *index < len(value); (*index)++ {
+		c := value[*index]
+		if c == '[' {
+			sublist, err := ParseStringListInternal(value, index)
+			if err != nil {
+				return nil, err
+			}
+			result = append(result, sublist)
+		} else if c == '\'' || c == '"' {
+			substr, err := ParseQuotedStringInternal(value, index)
+			if err != nil {
+				return nil, err
+			}
+			result = append(result, substr)
+		} else if c == ',' || c == ' ' {
+			// Ignore this char
+		} else if c == ']' {
+			return result, nil
+		} else {
+			return nil, errors.Errorf("unexpected list char %c at index %d in %s", c, *index, string(value))
+		}
+	}
+	return nil, errors.Errorf("unexpected end of string at %d in %s", *index, string(value))
+}
+
+// ParseStringList parses a string as a possible nested list of strings, quoted with single quotes and separated by commas.
+func ParseStringList(value string) ([]interface{}, error) {
+	index := 0
+	return ParseStringListInternal([]rune(value), &index)
+}
+
+// ParseQuotedString parses a single-quoted string.
+func ParseQuotedString(value string) (string, error) {
+	index := 0
+	return ParseQuotedStringInternal([]rune(value), &index)
+}
+
+// GetStringList parses the value of a control as an encoded list
+func (s *Servo) GetStringList(ctx context.Context, control StringControl) ([]interface{}, error) {
+	var value string
+	if err := s.run(ctx, newCall("get", string(control)), &value); err != nil {
+		return nil, errors.Wrapf(err, "getting value for servo control %q", control)
+	}
+
+	return ParseStringList(value)
+}
+
+// GetQuotedString parses the value of a control as a quoted string
+func (s *Servo) GetQuotedString(ctx context.Context, control StringControl) (string, error) {
+	var value string
+	if err := s.run(ctx, newCall("get", string(control)), &value); err != nil {
+		return "", errors.Wrapf(err, "getting value for servo control %q", control)
+	}
+
+	return ParseQuotedString(value)
+}
+
 // SetString sets a Servo control to a string value.
 func (s *Servo) SetString(ctx context.Context, control StringControl, value string) error {
 	// Servo's Set method returns a bool stating whether the call succeeded or not.
 	// This is redundant, because a failed call will return an error anyway.
 	// So, we can skip unpacking the output.
+	if err := s.run(ctx, newCall("set", string(control), value)); err != nil {
+		return errors.Wrapf(err, "setting servo control %q to %q", control, value)
+	}
+	return nil
+}
+
+// SetStringList sets a Servo control to a list of string values.
+func (s *Servo) SetStringList(ctx context.Context, control StringControl, values []string) error {
+	value := "["
+	for i, part := range values {
+		if i > 0 {
+			value += ", "
+		}
+		// Escape \ and '
+		part = strings.Replace(part, "\\", "\\", -1)
+		part = strings.Replace(part, "'", "\\'", -1)
+
+		// Surround by '
+		value += "'" + part + "'"
+	}
+	value += "]"
 	if err := s.run(ctx, newCall("set", string(control), value)); err != nil {
 		return errors.Wrapf(err, "setting servo control %q to %q", control, value)
 	}
@@ -415,6 +543,24 @@ func (s *Servo) SetV4Role(ctx context.Context, newRole V4RoleValue) error {
 // RunECCommand runs the given command on the EC on the device.
 func (s *Servo) RunECCommand(ctx context.Context, cmd string) error {
 	return s.SetString(ctx, ECUARTCmd, cmd)
+}
+
+// RunECCommandGetOutput runs the given command on the EC on the device and returns the output matching patterns.
+func (s *Servo) RunECCommandGetOutput(ctx context.Context, cmd string, patterns []string) ([]interface{}, error) {
+	err := s.SetStringList(ctx, ECUARTRegexp, patterns)
+	if err != nil {
+		return nil, errors.Wrapf(err, "setting ECUARTRegexp to %s", patterns)
+	}
+	err = s.SetString(ctx, ECUARTCmd, cmd)
+	if err != nil {
+		return nil, errors.Wrapf(err, "setting ECUARTCmd to %s", cmd)
+	}
+	return s.GetStringList(ctx, ECUARTCmd)
+}
+
+// GetECSystemPowerState returns the power state, like "S0" or "G3"
+func (s *Servo) GetECSystemPowerState(ctx context.Context) (string, error) {
+	return s.GetString(ctx, ECSystemPowerState)
 }
 
 // SetOnOff sets an OnOffControl setting to the specified value.

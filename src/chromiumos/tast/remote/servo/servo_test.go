@@ -5,6 +5,7 @@
 package servo
 
 import (
+	"reflect"
 	"testing"
 )
 
@@ -36,4 +37,38 @@ func TestParseConnSpec(t *testing.T) {
 			t.Errorf("parseConnSpec(%q) returned port %d; want %d", tc.input, actualPort, tc.expectedPort)
 		}
 	}
+}
+
+func AssertEquals(t *testing.T, expected, actual interface{}) {
+	switch expected.(type) {
+	case []interface{}:
+		eVal := reflect.ValueOf(expected)
+		aVal := reflect.ValueOf(actual)
+		for i := 0; i < eVal.Len(); i++ {
+			AssertEquals(t, eVal.Index(i).Interface(), aVal.Index(i).Interface())
+		}
+	case string:
+		if expected.(string) != actual.(string) {
+			t.Errorf("String %q != %q", expected, actual)
+		}
+	default:
+		t.Errorf("Unhandled type %T of %v", expected, expected)
+	}
+}
+
+func TestParseStringList(t *testing.T) {
+	var empty []interface{}
+	res, err := ParseStringList("[]")
+	if err != nil {
+		t.Error(err)
+	}
+	AssertEquals(t, empty, res)
+	res, err = ParseStringList("")
+	if err == nil {
+		t.Error("ParseStringList(\"\") unexpectedly succeeded")
+	}
+	res, err = ParseStringList(`['foo', 'bar\'', 'ba\\z']`)
+	AssertEquals(t, []interface{}{"foo", "bar'", `ba\z`}, res)
+	res, err = ParseStringList(`[['one', 'two'], ['three']]`)
+	AssertEquals(t, []interface{}{[]interface{}{"one", "two"}, []interface{}{"three"}}, res)
 }
