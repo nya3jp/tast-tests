@@ -996,6 +996,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11a2ce09_8222bada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-04-20T11:52:37Z",
+      "side": 1,
+      "message": "I think string is better here or I need to translate string and integer.",
+      "parentUuid": "6ef64e35_f1fad254",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 8
+      },
+      "revId": "9022573007fadf2cbf9d6ba14ed0460614f51738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b904dd2_fbc623dd",
@@ -1009,6 +1033,30 @@
       "writtenOn": "2021-04-12T02:58:47Z",
       "side": 1,
       "message": "Use enum.",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 12
+      },
+      "revId": "9022573007fadf2cbf9d6ba14ed0460614f51738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4736a463_7d46e33a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-04-20T11:52:37Z",
+      "side": 1,
+      "message": "field removed",
+      "parentUuid": "9b904dd2_fbc623dd",
       "range": {
         "startLine": 79,
         "startChar": 1,
@@ -1066,6 +1114,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64935649_7f10b466",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-04-20T11:52:37Z",
+      "side": 1,
+      "message": "change the name to neededControls to prevent confusion",
+      "parentUuid": "5dc13afb_f34871ee",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "9022573007fadf2cbf9d6ba14ed0460614f51738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f25b0ee0_483a64a4",
@@ -1089,6 +1161,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76173b8c_8540088f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-04-20T11:52:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f25b0ee0_483a64a4",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 11
+      },
+      "revId": "9022573007fadf2cbf9d6ba14ed0460614f51738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "483f1b90_6084f2ee",
@@ -1102,6 +1198,30 @@
       "writtenOn": "2021-04-12T02:58:47Z",
       "side": 1,
       "message": "I\u0027m not very sure passing an arbitrary string to the javascript is a good idea. Instead, can you try define a similar go struct according to:\nhttps://w3c.github.io/mediacapture-main/#dom-mediatrackconstraintset\n?",
+      "range": {
+        "startLine": 105,
+        "startChar": 61,
+        "endLine": 105,
+        "endChar": 72
+      },
+      "revId": "9022573007fadf2cbf9d6ba14ed0460614f51738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a77de31f_c332c60d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-04-20T11:52:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "483f1b90_6084f2ee",
       "range": {
         "startLine": 105,
         "startChar": 61,
