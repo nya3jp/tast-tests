@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e895d7f_29350e13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-20T01:07:36Z",
+      "side": 1,
+      "message": "Somehow I can\u0027t set Code-Review labels to this change...\nhttps://screenshot.googleplex.com/AQNdc6uSxiMPQZT\n",
+      "revId": "827f40e92fe1d53e69959dfbac4c4ab932b00917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
