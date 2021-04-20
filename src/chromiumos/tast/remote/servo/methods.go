@@ -27,8 +27,6 @@ const (
 	PowerState           StringControl = "power_state"
 	V4Role               StringControl = "servo_v4_role"
 	V4Type               StringControl = "servo_v4_type"
-	ECBoard              StringControl = "ec_board"
-	ECUARTCmd            StringControl = "ec_uart_cmd"
 	UARTCmd              StringControl = "servo_v4_uart_cmd"
 	WatchdogAdd          StringControl = "watchdog_add"
 	WatchdogRemove       StringControl = "watchdog_remove"
@@ -254,6 +252,108 @@ func (s *Servo) GetString(ctx context.Context, control StringControl) (string, e
 	return value, nil
 }
 
+// parseQuotedStringInternal returns a new string with the quotes and escaped chars from `value` removed, moves `*index` to the index of the closing quote rune.
+func parseQuotedStringInternal(value []rune, index *int) (string, error) {
+	if *index >= len(value) {
+		return "", errors.Errorf("unexpected end of string at %d in %s", *index, string(value))
+	}
+	// The first char should always be a ' or "
+	quoteChar := value[*index]
+	if quoteChar != '\'' && quoteChar != '"' {
+		return "", errors.Errorf("unexpected string char %c at index %d in %s", quoteChar, *index, string(value))
+	}
+	(*index)++
+	var current strings.Builder
+	for ; *index < len(value); (*index)++ {
+		c := value[*index]
+		if c == quoteChar {
+			break
+		} else if c == '\\' {
+			(*index)++
+			switch value[*index] {
+			case '"', '\'', '\\':
+				current.WriteRune(value[*index])
+			case 'r':
+				current.WriteRune('\r')
+			case 'n':
+				current.WriteRune('\n')
+			default:
+				return "", errors.Errorf("unexpected escape sequence \\%c at index %d in %s", value[*index], *index, string(value))
+			}
+		} else {
+			current.WriteRune(c)
+		}
+	}
+	return current.String(), nil
+}
+
+// parseStringListInternal parses `value` as a possibly nested list of strings, each quoted and separated by commas. Moves `*index` to the index of the closing ] rune.
+func parseStringListInternal(value []rune, index *int) ([]interface{}, error) {
+	var result []interface{}
+	if *index >= len(value) {
+		return nil, errors.Errorf("unexpected end of string at %d in %s", *index, string(value))
+	}
+	// The first char should always be a [
+	if value[*index] != '[' {
+		return nil, errors.Errorf("unexpected list char %c at index %d in %s", value[*index], *index, string(value))
+	}
+	(*index)++
+	for ; *index < len(value); (*index)++ {
+		c := value[*index]
+		switch c {
+		case '[':
+			sublist, err := parseStringListInternal(value, index)
+			if err != nil {
+				return nil, err
+			}
+			result = append(result, sublist)
+		case '\'', '"':
+			substr, err := parseQuotedStringInternal(value, index)
+			if err != nil {
+				return nil, err
+			}
+			result = append(result, substr)
+		case ',', ' ':
+			// Ignore this char
+		case ']':
+			return result, nil
+		default:
+			return nil, errors.Errorf("unexpected list char %c at index %d in %s", c, *index, string(value))
+		}
+	}
+	return nil, errors.Errorf("unexpected end of string at %d in %s", *index, string(value))
+}
+
+// ParseStringList parses `value` as a possibly nested list of strings, each quoted and separated by commas.
+func ParseStringList(value string) ([]interface{}, error) {
+	index := 0
+	return parseStringListInternal([]rune(value), &index)
+}
+
+// ParseQuotedString returns a new string with the quotes and escaped chars from `value` removed.
+func ParseQuotedString(value string) (string, error) {
+	index := 0
+	return parseQuotedStringInternal([]rune(value), &index)
+}
+
+// GetStringList parses the value of a control as an encoded list
+func (s *Servo) GetStringList(ctx context.Context, control StringControl) ([]interface{}, error) {
+	v, err := s.GetString(ctx, control)
+	if err != nil {
+		return nil, err
+	}
+	return ParseStringList(v)
+}
+
+// GetQuotedString parses the value of a control as a quoted string
+func (s *Servo) GetQuotedString(ctx context.Context, control StringControl) (string, error) {
+	v, err := s.GetString(ctx, control)
+	if err != nil {
+		return "", err
+	}
+	return ParseQuotedString(v)
+}
+
 // SetString sets a Servo control to a string value.
 func (s *Servo) SetString(ctx context.Context, control StringControl, value string) error {
 	// Servo's Set method returns a bool stating whether the call succeeded or not.
@@ -263,6 +363,25 @@ func (s *Servo) SetString(ctx context.Context, control StringControl, value stri
 		return errors.Wrapf(err, "setting servo control %q to %q", control, value)
 	}
 	return nil
+}
+
+// SetStringList sets a Servo control to a list of string values.
+func (s *Servo) SetStringList(ctx context.Context, control StringControl, values []string) error {
+	value := "["
+	for i, part := range values {
+		if i > 0 {
+			value += ", "
+		}
+
+		// Escape \ and '
+		part = strings.ReplaceAll(part, `\`, `\\`)
+		part = strings.ReplaceAll(part, `'`, `\'`)
+
+		// Surround by '
+		value += "'" + part + "'"
+	}
+	value += "]"
+	return s.SetString(ctx, control, value)
 }
 
 // SetInt sets a Servo control to an integer value.
@@ -427,11 +546,6 @@ func (s *Servo) SetV4Role(ctx context.Context, newRole V4RoleValue) error {
 	}
 
 	return s.SetString(ctx, V4Role, string(newRole))
-}
-
-// RunECCommand runs the given command on the EC on the device.
-func (s *Servo) RunECCommand(ctx context.Context, cmd string) error {
-	return s.SetString(ctx, ECUARTCmd, cmd)
 }
 
 // SetOnOff sets an OnOffControl setting to the specified value.
