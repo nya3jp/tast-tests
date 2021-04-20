@@ -20,7 +20,8 @@ import (
 
 // App represents an instance of the Connectivity Diagnostics App.
 type App struct {
-	tconn *chrome.TestConn
+	cr    *chrome.Chrome
+	Tconn *chrome.TestConn
 	ui    *uiauto.Context
 }
 
@@ -32,7 +33,12 @@ var titleFinder *nodewith.Finder = nodewith.Name("Connectivity Diagnostics").Rol
 
 // Launch launches the Connectivity Diagnostics app and returns the instance of
 // it. An error is returned if the app fails to launch.
-func Launch(ctx context.Context, tconn *chrome.TestConn) (*App, error) {
+func Launch(ctx context.Context, cr *chrome.Chrome) (*App, error) {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		errors.Wrap(err, "failed to connect Test API")
+	}
+
 	if err := apps.Launch(ctx, tconn, apps.ConnectivityDiagnostics.ID); err != nil {
 		return nil, errors.Wrap(err, "failed to launch connectivity diagnostics app")
 	}
@@ -49,14 +55,14 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*App, error) {
 		return nil, errors.Wrap(err, "unable to get app title")
 	}
 
-	app := App{tconn: tconn, ui: ui}
+	app := App{cr: cr, Tconn: tconn, ui: ui}
 	return &app, nil
 }
 
 // ChromeConn returns a Chrome connection to the Connectivity Diagnostics app if
 // already launched.
-func ChromeConn(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(appURL))
+func (a *App) ChromeConn(ctx context.Context) (*chrome.Conn, error) {
+	conn, err := a.cr.NewConnForTarget(ctx, chrome.MatchTargetURL(appURL))
 	if err != nil {
 		return nil, err
 	}

@@ -60,6 +60,7 @@ func (f *networkDiagnosticsFixture) SetUp(ctx context.Context, s *testing.FixtSt
 	// ensure that the Connectivity Diagnostics app with the network diagnostics
 	// mojo API is preserved between tests.
 	success := false
+
 	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
@@ -70,18 +71,13 @@ func (f *networkDiagnosticsFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		}
 	}()
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	_, err = conndiag.Launch(ctx, tconn)
+	app, err := conndiag.Launch(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to launch connectivity diagnostics app: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, app.Tconn)
 
-	conn, err := conndiag.ChromeConn(ctx, cr)
+	conn, err := app.ChromeConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get network diagnostics mojo: ", err)
 	}
