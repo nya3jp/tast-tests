@@ -50,6 +50,24 @@
       "message": "As you touch this, could you move this line to (just before) L108?",
       "revId": "634dc0199bda966d38d6e69770404bcff08ef011",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1923f8f_1616db6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-20T15:12:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8aaeb58_a35a36dc",
+      "revId": "634dc0199bda966d38d6e69770404bcff08ef011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
