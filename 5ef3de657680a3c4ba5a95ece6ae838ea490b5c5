@@ -104,6 +104,30 @@
       },
       "revId": "5ef3de657680a3c4ba5a95ece6ae838ea490b5c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12a67fd0_58598eb4",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-20T01:04:17Z",
+      "side": 1,
+      "message": "Ack. Thanks for preparing a follow-up change!",
+      "parentUuid": "b42e0bf3_5ffcfece",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 34
+      },
+      "revId": "5ef3de657680a3c4ba5a95ece6ae838ea490b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
