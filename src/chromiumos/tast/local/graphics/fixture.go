@@ -99,7 +99,8 @@ func (f *gpuWatchHangsFixture) SetUp(ctx context.Context, s *testing.FixtState) 
 		`Hangcheck timer elapsed...`,
 		`drm/i915: Resetting chip after gpu hang`,
 		`GPU HANG:.+\b[H|h]ang on (rcs0|vcs0|vecs0)`,
-		`hangcheck recover!`, // Freedreno
+		`hangcheck recover!`,      // Freedreno
+		`mtk-mdp.*: cmdq timeout`, // Mediatek
 	}
 	// TODO(pwang): add regex for memory faults.
 	f.regexp = regexp.MustCompile(strings.Join(hangRegexStrs, "|"))
