@@ -20,7 +20,9 @@ import (
 
 // ZramMmStat holds statistics from /sys/block/zram*/mm_stat.
 type ZramMmStat struct {
-	OrigDataSize, ComprDataSize, MemUsedTotal, MemLimit, MemUsedMax, SamePages, PagesCompacted, HugePages uint64
+	OrigDataSize, ComprDataSize, MemUsedTotal, MemLimit, MemUsedMax, SamePages, PagesCompacted uint64
+	// Some fields have been introduced by newer kernels, make them optional.
+	HugePages, HugePagesSince *uint64 `json:",omitempty"`
 }
 
 // NewZramMmStat parses /sys/block/zram*/mm_stat to create a ZramMmStat.
@@ -35,30 +37,37 @@ func NewZramMmStat() (*ZramMmStat, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to read mm_stat")
 	}
-	stats := strings.Fields(string(mmStat))
-	if len(stats) != 8 {
-		return nil, errors.Errorf("expected 8 fields in mm_stat file, got %d", len(stats))
+	fields := strings.Fields(string(mmStat))
+	if len(fields) < 7 {
+		return nil, errors.Errorf("expected at least 7 fields in mm_stat file, got %d", len(fields))
 	}
 
-	parsedStats := make([]uint64, len(stats))
-	for i, stat := range stats {
+	parsedFields := make([]uint64, len(fields))
+	for i, stat := range fields {
 		parsed, err := strconv.ParseUint(stat, 10, 64)
 		if err != nil {
 			return nil, errors.Errorf("failed to parse field %d in mm_stat %q", i, stat)
 		}
-		parsedStats[i] = parsed
+		parsedFields[i] = parsed
 	}
 
-	return &ZramMmStat{
-		OrigDataSize:   parsedStats[0],
-		ComprDataSize:  parsedStats[1],
-		MemUsedTotal:   parsedStats[2],
-		MemLimit:       parsedStats[3],
-		MemUsedMax:     parsedStats[4],
-		SamePages:      parsedStats[5],
-		PagesCompacted: parsedStats[6],
-		HugePages:      parsedStats[7],
-	}, nil
+	stats := &ZramMmStat{
+		OrigDataSize:   parsedFields[0],
+		ComprDataSize:  parsedFields[1],
+		MemUsedTotal:   parsedFields[2],
+		MemLimit:       parsedFields[3],
+		MemUsedMax:     parsedFields[4],
+		SamePages:      parsedFields[5],
+		PagesCompacted: parsedFields[6],
+	}
+	if len(parsedFields) > 7 {
+		stats.HugePages = &parsedFields[7]
+	}
+	if len(parsedFields) > 8 {
+		stats.HugePagesSince = &parsedFields[8]
+	}
+
+	return stats, nil
 }
 
 // ZramMmStatMetrics writes a JSON file containing statistics from
