@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d2893b6_ef04fe0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-04-20T18:24:56Z",
+      "side": 1,
+      "message": "Thanks Armen, PTAL again.",
+      "revId": "ebb2f681aef2c10b0fc4d67d27b87b6798689c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
