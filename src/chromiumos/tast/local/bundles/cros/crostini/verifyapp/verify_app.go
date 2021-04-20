@@ -33,7 +33,7 @@ func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome, cont *vm.
 	nrgba := color.NRGBAModel.Convert(conf.DominantColor).(color.NRGBA)
 	commandColor := fmt.Sprintf("--bgcolor=0x%02x%02x%02x", nrgba.R, nrgba.G, nrgba.B)
 	commandTitle := fmt.Sprintf("--title=%s_terminal", conf.Name)
-	cmd := cont.Command(ctx, conf.AppPath, commandColor, commandTitle)
+	cmd := cont.Command(ctx, "env", "WAYLAND_DEBUG=1", "sommelier", "-X", conf.AppPath, commandColor, commandTitle)
 	if err := cmd.Start(); err != nil {
 		s.Fatalf("Failed launching %v: %v", conf.AppPath, err)
 	}
