@@ -140,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ae80000_5991fc07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-04-20T04:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "536c5ba1_496b3ac9",
+      "range": {
+        "startLine": 14,
+        "startChar": 12,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "9022573007fadf2cbf9d6ba14ed0460614f51738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffb4b7b1_4dabb330",
@@ -239,6 +263,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c243f103_39cae383",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-04-20T04:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e5429b7_ebb67aee",
+      "revId": "9022573007fadf2cbf9d6ba14ed0460614f51738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3039364a_4e8a2c4d",
@@ -252,6 +294,24 @@
       "writtenOn": "2021-04-12T02:58:47Z",
       "side": 1,
       "message": "+jsdoc\n\n/**\n * @param {number}\n * @return {string}\n */",
+      "revId": "9022573007fadf2cbf9d6ba14ed0460614f51738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee503361_646d6bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-04-20T04:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3039364a_4e8a2c4d",
       "revId": "9022573007fadf2cbf9d6ba14ed0460614f51738",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1065,6 +1125,30 @@
       "writtenOn": "2021-04-12T02:58:47Z",
       "side": 1,
       "message": "Instead of returning number of camera, can we simply return the whole array of available |MediaDeviceInfo| containing |label| and |deviceId| so that we don\u0027t need |getCameraLabel| and can open camera preview with specified |deviceId|.",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 71
+      },
+      "revId": "9022573007fadf2cbf9d6ba14ed0460614f51738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58cbec36_8f9aa330",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-04-20T04:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e32018bd_9525e1a3",
       "range": {
         "startLine": 135,
         "startChar": 1,
