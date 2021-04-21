@@ -16,6 +16,29 @@
       "message": "Thanks!",
       "revId": "887e18837d8c137f6ec08f3f148ff60a76b14f7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdb11135_1f2f266f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-21T03:14:25Z",
+      "side": 1,
+      "message": "You\u0027ve removed the outputting of the error message here, might be beneficial to include the error message (ditto for the remaining error messages as well)",
+      "range": {
+        "startLine": 264,
+        "startChar": 2,
+        "endLine": 264,
+        "endChar": 64
+      },
+      "revId": "887e18837d8c137f6ec08f3f148ff60a76b14f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
