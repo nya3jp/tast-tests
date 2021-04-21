@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "510822b78e453a82b718e69c0604d41ec820c04f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50d57fde_4a2b8d1e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-21T01:00:52Z",
+      "side": 1,
+      "message": "Hmm... this definition looks strange at a glance since waiting for cryptohome is one of several operations chrome.New does.\n\nCan you add a comment describing the reason behind this definition?\n\nParticularly I\u0027m interested in which timeout to increase, LoginTimeout or WaitForUserTimeout, when we start to observe login timeouts in the future. A comment helping to decide this would be very helpful.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "510822b78e453a82b718e69c0604d41ec820c04f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
