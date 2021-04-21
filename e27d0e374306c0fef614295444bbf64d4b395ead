@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee96aef3_b81b78cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in_direct.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-04-21T20:11:09Z",
+      "side": 1,
+      "message": "Interesting to know, is there any document why we have different code path for tast vs end-user?",
+      "range": {
+        "startLine": 54,
+        "startChar": 31,
+        "endLine": 55,
+        "endChar": 46
+      },
+      "revId": "e27d0e374306c0fef614295444bbf64d4b395ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "719491bf_48d7827f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in_direct.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-04-21T20:11:09Z",
+      "side": 1,
+      "message": "Can you add a bug number here?",
+      "range": {
+        "startLine": 60,
+        "startChar": 21,
+        "endLine": 60,
+        "endChar": 25
+      },
+      "revId": "e27d0e374306c0fef614295444bbf64d4b395ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd7c8cc_2d1b676a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in_direct.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-04-21T20:11:09Z",
+      "side": 1,
+      "message": "Either use crash.LocalCrashDir or emit the hard-code path.\n\n\"Crash files weren\u0027t written to local directory after crashing process:\"",
+      "range": {
+        "startLine": 94,
+        "startChar": 43,
+        "endLine": 94,
+        "endChar": 62
+      },
+      "revId": "e27d0e374306c0fef614295444bbf64d4b395ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0f81a4d_f8f9f1dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in_direct.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-04-21T20:11:09Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 98,
+        "startChar": 42,
+        "endLine": 98,
+        "endChar": 61
+      },
+      "revId": "e27d0e374306c0fef614295444bbf64d4b395ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec66f824_8ab09c4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_not_logged_in_direct.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-04-21T20:11:09Z",
+      "side": 1,
+      "message": "bug number",
+      "range": {
+        "startLine": 59,
+        "startChar": 25,
+        "endLine": 59,
+        "endChar": 26
+      },
+      "revId": "e27d0e374306c0fef614295444bbf64d4b395ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71fb0fe1_942b5b1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-04-21T20:11:09Z",
+      "side": 1,
+      "message": "It seems the new regex `[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{8}-[0-9a-f]{8}\\.dmp` doesn\u0027t cover the old regex.\nIs this intended?\n\nOh, nvm, I saw the CL comment.",
+      "range": {
+        "startLine": 628,
+        "startChar": 21,
+        "endLine": 628,
+        "endChar": 42
+      },
+      "revId": "e27d0e374306c0fef614295444bbf64d4b395ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
