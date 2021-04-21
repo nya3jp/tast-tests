@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "484d2d10_41eea019",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-21T03:12:48Z",
+      "side": 1,
+      "message": "\u003e \"presense\" is a possible misspelling of \"presence\".\n\nPlease fix.",
+      "parentUuid": "91a6ab2b_43a36731",
+      "range": {
+        "startLine": 9,
+        "startChar": 46,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "1947746b42e70ee4e225a3cedca4cdb86c2a5a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7512ab1_025757c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-21T03:12:48Z",
+      "side": 1,
+      "message": "\u003e \"presense\" is a possible misspelling of \"presence\".\n\nPlease fix.",
+      "parentUuid": "d264b297_0721386d",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 44
+      },
+      "revId": "1947746b42e70ee4e225a3cedca4cdb86c2a5a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
