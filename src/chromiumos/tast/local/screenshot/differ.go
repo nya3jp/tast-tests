@@ -166,6 +166,7 @@ func (d *differ) initialize() error {
 
 	baseArgs := []string{
 		"--corpus", strings.Split(d.state.TestName(), ".")[0],
+		"--passfail",
 	}
 
 	if strings.HasPrefix(release[lsbrelease.BuildType], "Continuous Builder") {
@@ -179,8 +180,7 @@ func (d *differ) initialize() error {
 			"--crs", "lookup",
 			"--changelist", "lookup",
 			"--patchset_id", "lookup",
-			"--jobid", builderMatch[1],
-			"--passfail"}...)
+			"--jobid", builderMatch[1]}...)
 		// TODO(crbug.com/skia/10808): once gold supports filtering by job id in the URL, set that.
 		d.triage = "Please look at the comment by the gold bot on the CL for a link to approve."
 
@@ -196,7 +196,6 @@ func (d *differ) initialize() error {
 		d.testMode = local
 		// TODO(crbug.com/skia/11815): once gold supports a local dev mode, replace the git hash field with that.
 		d.goldArgs = append(baseArgs, []string{
-			"--passfail",
 			"--git_hash", "f1d65adb1d7cd922f4677d0f9406a4083f5fdcbc"}...)
 	}
 
