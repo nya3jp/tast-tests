@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
@@ -182,9 +181,9 @@ func assertHelpAppLaunched(ctx context.Context, s *testing.State, tconn *chrome.
 		}
 
 		// Verify perk is shown to default consumer user.
-		isPerkShown, err := uiauto.New(tconn).IsNodeFound(ctx, helpapp.PerksTabFinder)
+		isPerkShown, err := helpCtx.IsHTMLElementPresent(ctx, "showoff-offers-page")
 		if err != nil {
-			s.Fatal("Failed to check perks visibility: ", err)
+			s.Fatal("Failed to evaluate offers page: ", err)
 		}
 
 		if !isPerkShown {

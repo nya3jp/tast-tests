@@ -361,8 +361,7 @@ func ScrollShelfAndWaitUntilFinish(ctx context.Context, tconn *chrome.TestConn, 
 func AppShown(ctx context.Context, tconn *chrome.TestConn, appID string) (bool, error) {
 	var appShown bool
 	if err := tconn.Call(ctx, &appShown, "tast.promisify(chrome.autotestPrivate.isAppShown)", appID); err != nil {
-		errors.Errorf("Running autotestPrivate.isAppShown failed for %v", appID)
-		return false, err
+		return false, errors.Wrapf(err, "failed to run autotestPrivate.isAppShown for %q", appID)
 	}
 	return appShown, nil
 }
