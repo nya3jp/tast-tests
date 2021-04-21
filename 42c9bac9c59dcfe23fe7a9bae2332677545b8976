@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e5f4ee0_0a54c858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-04-21T00:30:14Z",
+      "side": 1,
+      "message": "selinux ?",
+      "range": {
+        "startLine": 28,
+        "startChar": 46,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "42c9bac9c59dcfe23fe7a9bae2332677545b8976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "559572d2_62a12418",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-04-21T00:30:14Z",
+      "side": 1,
+      "message": "I thought chrome.New always does a new login?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 56
+      },
+      "revId": "42c9bac9c59dcfe23fe7a9bae2332677545b8976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f655b03_f2729475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-04-21T00:30:14Z",
+      "side": 1,
+      "message": "Should this be after the log check? Don\u0027t we want to see that anomaly_detector did not generate crash reports for the selinux violation after it sees it?\n\nIf we don\u0027t expect files, don\u0027t we need to shorten the timeout?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 92
+      },
+      "revId": "42c9bac9c59dcfe23fe7a9bae2332677545b8976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6e025c_273047b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-04-21T00:30:14Z",
+      "side": 1,
+      "message": "Explain why. I don\u0027t understand what this step is doing. We want there to be NO crash files generated, correct? \n\nSo this is trying to handle the case that some other program had an selinux violation during the test, is that right? Why would only cros or minijail have an selinux violation?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 59
+      },
+      "revId": "42c9bac9c59dcfe23fe7a9bae2332677545b8976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63317c93_e148cca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-04-21T00:30:14Z",
+      "side": 1,
+      "message": "Is this complexity needed, or can we just return an error if reader.Wait returns an error? It seems like, in practical terms, the test fails iff reader.Wait returns error.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 2
+      },
+      "revId": "42c9bac9c59dcfe23fe7a9bae2332677545b8976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
