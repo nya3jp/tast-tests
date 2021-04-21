@@ -88,6 +88,24 @@
       "parentUuid": "6d452741_7065ee42",
       "revId": "b00840f8d13735e431d753be8b112cc26ab59260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9000fd7a_991fbc00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-21T15:59:40Z",
+      "side": 1,
+      "message": "The tests fail to download the external video files, for example gs://chromiumos-test-assets-public/tast/cros/video/bear-320x240_20200925.av1.mp4\n\nDo I need to configure something to enable the test to download these external files?",
+      "parentUuid": "220e04c8_04ebe085",
+      "revId": "b00840f8d13735e431d753be8b112cc26ab59260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
