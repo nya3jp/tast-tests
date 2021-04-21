@@ -17,6 +17,11 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+// testParameters contains all the data needed to run a single test iteration.
+type testParameters struct {
+	apBootRegexp string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BootTime,
@@ -25,6 +30,22 @@ func init() {
 		Attr:         []string{"group:firmware", "firmware_experimental"},
 		Vars:         []string{"servo"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		Params: []testing.Param{
+			{
+				Name:              "x86",
+				ExtraHardwareDeps: hwdep.D(hwdep.X86()),
+				Val: testParameters{
+					`HC 0x|Port 80|ACPI query`,
+				},
+			},
+			{
+				Name:              "default",
+				ExtraHardwareDeps: hwdep.D(hwdep.NoX86()),
+				Val: testParameters{
+					`power state 3 = S0`,
+				},
+			},
+		},
 	})
 }
 
@@ -36,11 +57,11 @@ const (
 
 // BootTime measures the time from EC boot to the first signal that the AP is booting.
 func BootTime(ctx context.Context, s *testing.State) {
+	param := s.Param().(testParameters)
 	rebootingStarted := regexp.MustCompile(`Rebooting!`)
 	coldBootFinished := regexp.MustCompile(`power state 1 = S5`)
-	// TODO(b/172227463): Vary these strings by platform?
 	// This means the AP is initialized, but does not mean ChromeOS is booted.
-	apBootFinished := regexp.MustCompile(`HC 0x|Port 80|ACPI query|power state 3 = S0`)
+	apBootFinished := regexp.MustCompile(param.apBootRegexp)
 	// YY-mm-dd HH:MM:SS.sss, but only looking at the MM:SS.sss here
 	// See HOST_STRFTIME in src/platform/ec/util/ec3po/console.py
 	uartAbsoluteTime := regexp.MustCompile(`^\d+-\d+-\d+ \d+:(\d+):(\d+)\.(\d+)`)
