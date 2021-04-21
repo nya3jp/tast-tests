@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9d5627c_33ab5aea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-04-21T05:26:43Z",
+      "side": 1,
+      "message": "I wonder if it should be here or \nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/quickstart.md#modify-a-test",
+      "revId": "33da1033990b1fd817a948111ce8fd0f49919cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
