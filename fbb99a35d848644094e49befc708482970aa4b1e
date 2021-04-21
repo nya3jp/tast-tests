@@ -16,6 +16,29 @@
       "message": "Renamed the const to avoid name clashes with other consts in package arc.",
       "revId": "fbb99a35d848644094e49befc708482970aa4b1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eb2458a_c9ead126",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/ArcMediaProjectionPermissionsTest.apk.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-04-21T11:44:46Z",
+      "side": 1,
+      "message": "Use cros/arcapp/ instead?\n\nBoth arc/ and arcapp/ contain APKs currently, but I believe arcapp/ is the recommended place.",
+      "range": {
+        "startLine": 2,
+        "startChar": 50,
+        "endLine": 2,
+        "endChar": 59
+      },
+      "revId": "fbb99a35d848644094e49befc708482970aa4b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
