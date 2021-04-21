@@ -59,7 +59,7 @@ func FpRWNoUpdateRO(ctx context.Context, s *testing.State) {
 
 	testImages, err := fingerprint.GenerateTestFirmwareImages(ctx, d, t.DutfsClient(), s.DataPath(fingerprint.GenTestImagesScript), t.FPBoard(), t.BuildFwFile(), t.DUTTempDir())
 	if err != nil {
-		s.Fatal("Failed to generate test iamges: ", err)
+		s.Fatal("Failed to generate test images: ", err)
 	}
 
 	if err := fingerprint.CheckRunningFirmwareCopy(ctx, d, fingerprint.ImageTypeRW); err != nil {
@@ -78,7 +78,7 @@ func FpRWNoUpdateRO(ctx context.Context, s *testing.State) {
 		"-V",               // verbose
 		"-p", "ec:type=fp", // use "programmer" for fingerprint "EC"
 		"-i", "EC_RO", // target image is RO
-		"-w", testImages[fingerprint.TestImageTypeDev], // write specified file
+		"-w", testImages[fingerprint.TestImageTypeDev].Path, // write specified file
 	}
 	s.Log("Running command: ", shutil.EscapeSlice(flashCmd))
 	if output, err := d.Conn().Command(flashCmd[0], flashCmd[1:]...).CombinedOutput(ctx); err == nil {
