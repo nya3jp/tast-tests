@@ -41,7 +41,7 @@ func init() {
 		// TODO(b/179636279): Remove "no_qemu" after making the test pass on betty.
 		SoftwareDeps: []string{"chrome", "no_qemu"},
 		Timeout:      10 * time.Minute,
-		Vars:         []string{"ui.gaiaPoolDefault"},
+		Vars:         []string{"arc.DataMigration.username", "arc.DataMigration.password"},
 		Params: []testing.Param{{
 			// Launch ARC P with /data created on ARC N (for x86).
 			Name:              "n_to_p_x86",
@@ -71,6 +71,8 @@ func DataMigration(ctx context.Context, s *testing.State) {
 		appToInstall = "com.roblox.client"
 	)
 
+	username := s.RequiredVar("arc.DataMigration.username")
+	password := s.RequiredVar("arc.DataMigration.password")
 	homeDataPath := s.DataPath(s.Param().(string))
 
 	// Ensure to sign out before executing mountVaultWithArchivedHomeData().
@@ -83,31 +85,18 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
-	var creds chrome.Creds
-
-	func() {
-		cr, err := chrome.New(ctx,
-			chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
-			chrome.NoLogin())
-		if err != nil {
-			s.Fatal("Failed to start Chrome: ", err)
-		}
-		defer cr.Close(cleanupCtx)
-		creds = cr.Creds()
-	}()
-
 	// Unarchive the home data under vault before signing in.
-	if err := mountVaultWithArchivedHomeData(ctx, homeDataPath, creds.User, creds.Pass); err != nil {
+	if err := mountVaultWithArchivedHomeData(ctx, homeDataPath, username, password); err != nil {
 		s.Fatal("Failed to mount home with archived data: ", err)
 	}
 	defer func() {
-		cryptohome.UnmountVault(cleanupCtx, creds.User)
-		cryptohome.RemoveVault(cleanupCtx, creds.User)
+		cryptohome.UnmountVault(cleanupCtx, username)
+		cryptohome.RemoveVault(cleanupCtx, username)
 	}()
 
 	args := append(arc.DisableSyncFlags(), "--disable-arc-data-wipe")
 	cr, err := chrome.New(ctx,
-		chrome.GAIALogin(creds),
+		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
 		chrome.ARCSupported(), chrome.KeepState(), chrome.ExtraArgs(args...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
@@ -120,7 +109,7 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close(ctx)
 
-	if err := checkSdkVersionsInPackagesXML(ctx, creds.User); err != nil {
+	if err := checkSdkVersionsInPackagesXML(ctx, username); err != nil {
 		s.Fatal("Failed to check SDK version in arc.log: ", err)
 	}
 
