@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bcb476e_fb810050",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426917
+      },
+      "writtenOn": "2021-04-21T04:34:04Z",
+      "side": 1,
+      "message": "lgtm\n\nJust some nits",
+      "revId": "afa6caf93cfd3b1e8ddb820fc81366228f6f89a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d828fc68_2e59d2d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1426917
+      },
+      "writtenOn": "2021-04-21T04:34:04Z",
+      "side": 1,
+      "message": "nit: call this isPresent for consistency with the function name and comment",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 12
+      },
+      "revId": "afa6caf93cfd3b1e8ddb820fc81366228f6f89a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d13daf57_0fb7d371",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1426917
+      },
+      "writtenOn": "2021-04-21T04:34:04Z",
+      "side": 1,
+      "message": "Can fit on one line in line 137:\n\nshadowPiercingQueryAll(%q).length \u003e 0;",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 139,
+        "endChar": 19
+      },
+      "revId": "afa6caf93cfd3b1e8ddb820fc81366228f6f89a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a11065b_8cbb52d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1426917
+      },
+      "writtenOn": "2021-04-21T04:34:04Z",
+      "side": 1,
+      "message": "Can inline \"showoff-offers-page\" here",
+      "range": {
+        "startLine": 183,
+        "startChar": 56,
+        "endLine": 183,
+        "endChar": 77
+      },
+      "revId": "afa6caf93cfd3b1e8ddb820fc81366228f6f89a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bcbdbbc_6c2c73da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1426917
+      },
+      "writtenOn": "2021-04-21T04:34:04Z",
+      "side": 1,
+      "message": "Failed to find offers page",
+      "range": {
+        "startLine": 185,
+        "startChar": 12,
+        "endLine": 185,
+        "endChar": 42
+      },
+      "revId": "afa6caf93cfd3b1e8ddb820fc81366228f6f89a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7085912d_374c8cd8",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1426917
+      },
+      "writtenOn": "2021-04-21T04:34:04Z",
+      "side": 1,
+      "message": "Is this second \"failed\" needed, or can it be removed?",
+      "range": {
+        "startLine": 364,
+        "startChar": 76,
+        "endLine": 364,
+        "endChar": 82
+      },
+      "revId": "afa6caf93cfd3b1e8ddb820fc81366228f6f89a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
