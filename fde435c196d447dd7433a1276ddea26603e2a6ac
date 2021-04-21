@@ -22,6 +22,30 @@
       },
       "revId": "fde435c196d447dd7433a1276ddea26603e2a6ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38d6379a_4a148ccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-04-21T00:30:14Z",
+      "side": 1,
+      "message": "I don\u0027t know arc well enough to know if we can make a test binary in arc",
+      "parentUuid": "ebac6f4d_d8579fdd",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 50
+      },
+      "revId": "fde435c196d447dd7433a1276ddea26603e2a6ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
