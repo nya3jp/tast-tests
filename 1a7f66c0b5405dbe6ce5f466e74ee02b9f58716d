@@ -68,6 +68,52 @@
       },
       "revId": "1a7f66c0b5405dbe6ce5f466e74ee02b9f58716d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed32802_2b0cee69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-04-21T09:46:18Z",
+      "side": 1,
+      "message": "nit: CTS or CtsVerifier",
+      "range": {
+        "startLine": 142,
+        "startChar": 28,
+        "endLine": 142,
+        "endChar": 31
+      },
+      "revId": "1a7f66c0b5405dbe6ce5f466e74ee02b9f58716d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0aebe74_fcd16d5b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-04-21T09:46:18Z",
+      "side": 1,
+      "message": "This also is used in line #166. Let\u0027s make it a constant.",
+      "range": {
+        "startLine": 144,
+        "startChar": 31,
+        "endLine": 144,
+        "endChar": 51
+      },
+      "revId": "1a7f66c0b5405dbe6ce5f466e74ee02b9f58716d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
