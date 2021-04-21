@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e0dce8e_c29f0e80",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-04-21T17:21:23Z",
+      "side": 1,
+      "message": "nit: I think these were intended to be in alphabetical order",
+      "range": {
+        "startLine": 33,
+        "startChar": 88,
+        "endLine": 33,
+        "endChar": 93
+      },
+      "revId": "23a91a317ab06d9aec948ef88bb7d84f28fe229e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
