@@ -16,6 +16,24 @@
       "message": "Can you check if this is correct? I ran this test yesterday and I don\u0027t see \"Manage Android preferences\" after \"I agree\". I did see it before \"agree and finish adding account\". Thanks.",
       "revId": "9d8bbfa2f161edd9f6912cef8472dd2b07d753df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c606d3a_24a091b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-21T19:35:40Z",
+      "side": 0,
+      "message": "No modifications done in this part of code. This is to verify that add account is successful and settings screen is visible at the end of add account flow.",
+      "parentUuid": "5d8725eb_89aa8b0d",
+      "revId": "9d8bbfa2f161edd9f6912cef8472dd2b07d753df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
