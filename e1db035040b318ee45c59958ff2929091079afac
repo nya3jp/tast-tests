@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "248a7314_88ff752b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-21T05:12:53Z",
+      "side": 1,
+      "message": "My preference is having a bit more information in the first line like:\n\n\"Remove a test hack from common lpprint test utility function\"\n\nbecause only the first line is shown by git in some situations.\nAlso, I\u0027ve found the referred change is not a fix for the root cause but still a similar workaround. To emphasize it, I would suggest having description like:\n\n\"This was a workaround for an issue on kenvin64 (crbug.com/***). Now crrev/i/3772309 excludes the device from affected tests instead.\"",
+      "revId": "e1db035040b318ee45c59958ff2929091079afac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4babc054_7545b32c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-21T05:12:53Z",
+      "side": 1,
+      "message": "lgtm with a comment",
+      "revId": "e1db035040b318ee45c59958ff2929091079afac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
