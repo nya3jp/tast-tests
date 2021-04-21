@@ -26,7 +26,7 @@ type App struct {
 
 const appURL = "chrome://connectivity-diagnostics/"
 
-var windowFinder *nodewith.Finder = nodewith.Name("Connectivity Diagnostics").Role(role.Window)
+var windowFinder *nodewith.Finder = nodewith.Name("Connectivity Diagnostics").ClassName("BrowserFrame").Role(role.Window)
 
 var titleFinder *nodewith.Finder = nodewith.Name("Connectivity Diagnostics").Role(role.InlineTextBox)
 
