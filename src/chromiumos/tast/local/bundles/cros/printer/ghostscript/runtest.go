@@ -13,7 +13,7 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/local/bundles/cros/printer/lpprint"
+	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/testing"
 )
 
@@ -61,7 +61,7 @@ func RunTest(ctx context.Context, s *testing.State, gsFilter, input, golden, env
 		s.Fatalf("Failed to read file %s: %v", golden, err)
 	}
 
-	if lpprint.CleanPSContents(string(goldenBytes)) != lpprint.CleanPSContents(string(output)) {
+	if document.CleanContents(string(goldenBytes)) != document.CleanContents(string(output)) {
 		cmd.DumpLog(ctx)
 		outFile := filepath.Base(golden)
 		outPath := filepath.Join(s.OutDir(), outFile)

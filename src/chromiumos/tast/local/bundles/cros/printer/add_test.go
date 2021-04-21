@@ -16,48 +16,65 @@ import (
 
 // base adds two parameterized tests, one that uses the CUPS proxy for
 // printing and the other that does not.
+// Either ExpectedFile or ExpectedSize should be specified but not both.
 type base struct {
-	ExtraAttr                            []string
-	PrintFile, Name, PpdFile, GoldenFile string
-	Options                              []string
+	PrintFile, Name, PPDFile, ExpectedFile string
+	ExpectedSize                           int
+	ExtraAttr, Options                     []string
 }
 
 // test adds non-informational parametrized tests (one proxy, one regular)
 // that use "to_print.pdf" for printing.
-func test(name, ppdFile, goldenFile string, options ...string) base {
-	return base{nil, "to_print.pdf", name, ppdFile, goldenFile, options}
+func test(name, ppdFile, expectedFile string, options ...string) base {
+	return base{PrintFile: "to_print.pdf", Name: name, PPDFile: ppdFile, ExpectedFile: expectedFile, Options: options}
 }
 
 // iTest adds informational parametrized tests (one proxy, one regular)
 // that use "to_print.pdf" for printing.
-func iTest(name, ppdFile, goldenFile string, options ...string) base {
-	return base{[]string{"informational"}, "to_print.pdf", name, ppdFile, goldenFile, options}
+func iTest(name, ppdFile, expectedFile string, options ...string) base {
+	return base{ExtraAttr: []string{"informational"}, PrintFile: "to_print.pdf", Name: name, PPDFile: ppdFile, ExpectedFile: expectedFile, Options: options}
 }
 
 // test2 adds non-informational parametrized tests (one proxy, one regular)
 // that use "2page.pdf" for printing.
-func test2(name, ppdFile, goldenFile string, options ...string) base {
-	return base{nil, "2page.pdf", name, ppdFile, goldenFile, options}
+func test2(name, ppdFile, expectedFile string, options ...string) base {
+	return base{PrintFile: "2page.pdf", Name: name, PPDFile: ppdFile, ExpectedFile: expectedFile, Options: options}
 }
 
 // iTest2 adds informational parametrized tests (one proxy, one regular)
 // that use "2page.pdf" for printing.
-func iTest2(name, ppdFile, goldenFile string, options ...string) base {
-	return base{[]string{"informational"}, "2page.pdf", name, ppdFile, goldenFile, options}
+func iTest2(name, ppdFile, expectedFile string, options ...string) base {
+	return base{ExtraAttr: []string{"informational"}, PrintFile: "2page.pdf", Name: name, PPDFile: ppdFile, ExpectedFile: expectedFile, Options: options}
+}
+
+// sizeTest adds non-informational parametrized tests (one proxy, one regular)
+// that use "to_print.pdf" for printing and file size instead of a golden file.
+func sizeTest(name, ppdFile string, expectedSize int, options ...string) base {
+	return base{PrintFile: "to_print.pdf", Name: name, PPDFile: ppdFile, ExpectedSize: expectedSize, Options: options}
+}
+
+// iSizeTest adds informational parametrized tests (one proxy, one regular)
+// that use "to_print.pdf" for printing and file size instead of a golden file.
+func iSizeTest(name, ppdFile string, expectedSize int, options ...string) base {
+	return base{ExtraAttr: []string{"informational"}, PrintFile: "to_print.pdf", Name: name, PPDFile: ppdFile, ExpectedSize: expectedSize, Options: options}
 }
 
 func TestAddParams(t *testing.T) {
 	code := genparams.Template(t, `{{ range . }} {
         Name: {{ .Name | fmt }},
         Val: &ippprint.Params{
-                PpdFile:      {{ .PpdFile | fmt }},
+                PPDFile:      {{ .PPDFile | fmt }},
                 PrintFile:    {{ .PrintFile | fmt }},
-                ExpectedFile: {{ .GoldenFile | fmt }},
+		{{ if .ExpectedFile }}
+                ExpectedFile: {{ .ExpectedFile | fmt }},
+		{{ else }}
+		ExpectedSize: {{ .ExpectedSize | fmt }},
+		{{ end}}
                 {{ if .Options }}
                 Options:      {{ .Options | fmt }},
                 {{ end }}
         },
-        ExtraData: []string{ {{ .PrintFile | fmt }}, {{ .PpdFile | fmt }}, {{ .GoldenFile | fmt }} },
+        ExtraData: []string{ {{ .PrintFile | fmt }}, {{ .PPDFile | fmt }}, {{ if .ExpectedFile}} {{ .ExpectedFile | fmt }}, {{ end }} },
         {{ if .ExtraAttr }}
         ExtraAttr: {{ .ExtraAttr | fmt }},
         {{ end }}
@@ -81,6 +98,7 @@ func TestAddParams(t *testing.T) {
 		test("epson_monochrome", "printer_EpsonGenericColorModel.ppd", "printer_add_epson_printer_monochrome_golden.bin", "print-color-mode=monochrome"),
 		test("generic", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_generic_printer_golden.ps"),
 		test("hp_pclm", "printer_add_hp_printer_pclm.ppd.gz", "printer_add_hp_printer_pclm_out.pclm"),
+		iSizeTest("hp_ljcolor", "printer_add_hp_ljcolor.ppd.gz", 138066),
 		test("hp_pwg_raster_color", "hp_ipp_everywhere.ppd", "printer_add_hp_ipp_everywhere_golden.pwg"),
 		test("hp_pwg_raster_monochrome", "hp_ipp_everywhere.ppd", "printer_add_hp_pwg_raster_monochrome_golden.pwg", "print-color-mode=monochrome"),
 		test("star", "printer_add_star_printer_rastertostar.ppd.gz", "printer_add_star_printer_rastertostar.bin"),

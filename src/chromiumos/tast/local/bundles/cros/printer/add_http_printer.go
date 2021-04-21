@@ -14,7 +14,7 @@ import (
 )
 
 // genericPPDFile is ppd.gz file to be registered via debugd.
-const httpTestPpdFile string = "printer_add_generic_printer_GenericPostScript.ppd.gz"
+const httpTestPPDFile string = "printer_add_generic_printer_GenericPostScript.ppd.gz"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -24,7 +24,7 @@ func init() {
 			"skau@chromium.org",
 		},
 		SoftwareDeps: []string{"cros_internal", "cups"},
-		Data:         []string{httpTestPpdFile},
+		Data:         []string{httpTestPPDFile},
 		Attr: []string{
 			"group:mainline",
 			"group:paper-io",
@@ -37,7 +37,7 @@ func AddHTTPPrinter(ctx context.Context, s *testing.State) {
 	// Downloads the PPD and tries to install the printer using the dbus method.
 	const printerID = "HttpPrinterId"
 
-	ppd, err := ioutil.ReadFile(s.DataPath(httpTestPpdFile))
+	ppd, err := ioutil.ReadFile(s.DataPath(httpTestPPDFile))
 	if err != nil {
 		s.Fatal("Failed to read PPD file: ", err)
 	}
