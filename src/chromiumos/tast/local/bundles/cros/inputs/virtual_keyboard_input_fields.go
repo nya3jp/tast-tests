@@ -24,7 +24,7 @@ func init() {
 		Desc:         "Checks that virtual keyboard works on different input fields",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:input-tools"},
-		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		SoftwareDeps: []string{"chrome", "google_virtual_keyboard", "tablet_mode"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
