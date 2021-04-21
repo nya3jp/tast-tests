@@ -16,6 +16,23 @@
       "message": "pwang@ PTAL\n\nOthers FYI",
       "revId": "b9dc1d6b69e20515835fa1919522833eac5f70c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8290a7c_0677bb97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-04-21T18:34:43Z",
+      "side": 1,
+      "message": "Thanks!!!\nI was waiting for some extra patterns and added them at once. ",
+      "revId": "b9dc1d6b69e20515835fa1919522833eac5f70c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
