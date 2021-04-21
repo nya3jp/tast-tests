@@ -60,6 +60,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ad3e6d0_0deb7015",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-04-21T01:33:31Z",
+      "side": 1,
+      "message": "How about \"Media projection notification is expected to be gone, but it is still shown\"",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 55
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "854705bf_91393cc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-04-21T01:33:31Z",
+      "side": 1,
+      "message": "ditto: Move the const out of func MediaProjectionPermissions().",
+      "range": {
+        "startLine": 99,
+        "startChar": 92,
+        "endLine": 99,
+        "endChar": 113
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "048b0c3e_1779bb3e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
         "patchSetId": 2
