@@ -86,6 +86,8 @@ func TestAddParams(t *testing.T) {
 		test("hp_pwg_raster_monochrome", "hp_ipp_everywhere.ppd", "printer_add_hp_pwg_raster_monochrome_golden.pwg", "print-color-mode=monochrome"),
 		test("star", "printer_add_star_printer_rastertostar.ppd.gz", "printer_add_star_printer_rastertostar.bin"),
 		test("star_lm", "printer_add_star_printer_rastertostarlm.ppd.gz", "printer_add_star_printer_rastertostarlm.bin"),
+		iTest("hp_ps_color", "printer_HP.ppd", "printer_pin_print_hp_no_pin_golden.ps", ippprint.WithColor(ippprint.Color)),
+		iTest("hp_ps_monochrome", "printer_HP.ppd", "printer_hp_ps_monochrome_golden.ps", ippprint.WithColor(ippprint.Monochrome)),
 
 		// Pin print
 		test("hp_no_pin", "printer_HP.ppd", "printer_pin_print_hp_no_pin_golden.ps"),

@@ -8,6 +8,7 @@ package ippprint
 import (
 	"context"
 	"fmt"
+	"log"
 	"strings"
 
 	"chromiumos/tast/local/bundles/cros/printer/lpprint"
@@ -23,9 +24,39 @@ type Params struct {
 	Options      []string // Options to be passed to the filter to change output.
 }
 
+// ColorType enumeration for print-color-mode values.
+type ColorType int
+
+const (
+	// Auto print-color-mode=auto
+	Auto ColorType = iota
+	// Monochrome print-color-mode=monochrome aka grayscale
+	Monochrome
+	// Color print-color-mode=color generally RGB
+	Color
+)
+
 // Collate enables collation.
 func Collate() string {
 	return "multiple-document-handling=separate-documents-collated-copies"
+}
+
+// WithColor formats a print-color-mode option.
+func WithColor(color ColorType) string {
+	value := ""
+	switch color {
+	case Auto:
+		value = "auto"
+	case Monochrome:
+		value = "monochrome"
+	case Color:
+		value = "color"
+	default:
+		log.Fatal("Unrecognized Color enum")
+		panic("programmer error")
+	}
+
+	return fmt.Sprintf("print-color-mode=%s", value)
 }
 
 // WithCopies properly formats a copies option.

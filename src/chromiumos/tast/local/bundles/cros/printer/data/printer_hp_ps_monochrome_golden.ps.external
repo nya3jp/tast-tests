@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_hp_ps_monochrome_golden_20210420.ps",
+  "size": 176315,
+  "sha256sum": "81a06d4d2521394145a706f0e60e78dfe6b263956c3eb2db8a7f1a32cc0cfd0b"
+}

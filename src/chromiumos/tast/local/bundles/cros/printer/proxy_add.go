@@ -193,6 +193,26 @@ func init() {
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_star_printer_rastertostarlm.ppd.gz", "printer_add_star_printer_rastertostarlm.bin"},
 			}, {
+				Name: "hp_ps_color",
+				Val: &ippprint.Params{
+					PpdFile:      "printer_HP.ppd",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_pin_print_hp_no_pin_golden.ps",
+					Options:      []string{"print-color-mode=color"},
+				},
+				ExtraData: []string{"to_print.pdf", "printer_HP.ppd", "printer_pin_print_hp_no_pin_golden.ps"},
+				ExtraAttr: []string{"informational"},
+			}, {
+				Name: "hp_ps_monochrome",
+				Val: &ippprint.Params{
+					PpdFile:      "printer_HP.ppd",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_hp_ps_monochrome_golden.ps",
+					Options:      []string{"print-color-mode=monochrome"},
+				},
+				ExtraData: []string{"to_print.pdf", "printer_HP.ppd", "printer_hp_ps_monochrome_golden.ps"},
+				ExtraAttr: []string{"informational"},
+			}, {
 				Name: "hp_no_pin",
 				Val: &ippprint.Params{
 					PpdFile:      "printer_HP.ppd",
