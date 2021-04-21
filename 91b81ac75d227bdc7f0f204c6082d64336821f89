@@ -16,6 +16,24 @@
       "message": "Is the OpenExpandedView resolved? ",
       "revId": "91b81ac75d227bdc7f0f204c6082d64336821f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1ca1ba8_87c6c299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-21T19:35:40Z",
+      "side": 1,
+      "message": "The issue is not resolved as I don\u0027t have the reason why this OpenExpandedView doesn\u0027t launches the expanded view. This is tracked in b/185926279.",
+      "parentUuid": "1d07fe61_e2b24eef",
+      "revId": "91b81ac75d227bdc7f0f204c6082d64336821f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
