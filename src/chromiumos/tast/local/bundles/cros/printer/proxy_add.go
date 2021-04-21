@@ -151,6 +151,15 @@ func init() {
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_hp_printer_pclm.ppd.gz", "printer_add_hp_printer_pclm_out.pclm"},
 			}, {
+				Name: "hp_ljcolor",
+				Val: &ippprint.Params{
+					PpdFile:      "printer_add_hp_ljcolor.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedSize: 154284,
+				},
+				ExtraData: []string{"to_print.pdf", "printer_add_hp_ljcolor.ppd.gz"},
+				ExtraAttr: []string{"informational"},
+			}, {
 				Name: "hp_pwg_raster_color",
 				Val: &ippprint.Params{
 					PpdFile:      "hp_ipp_everywhere.ppd",
