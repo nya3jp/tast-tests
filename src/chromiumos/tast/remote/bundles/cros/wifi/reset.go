@@ -30,7 +30,7 @@ func init() {
 		Timeout: time.Minute * 18,
 		// We only support reset on Intel/Marvell/QCA WiFi (iwlwifi/mwifiex/ath10k).
 		// TODO(chromium:1070299): These models are chosen manually by finding the models that are always failing with NA-error on Autotest network_WiFi_Reset. Replace them with more proper hwdep in the future.
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("blooglet", "dirinboz", "ezkinil", "vilboz")),
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("blooglet", "dirinboz", "ezkinil", "vilboz", "barla")),
 	})
 }
 
