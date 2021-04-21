@@ -7,6 +7,7 @@ package helpapp
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -54,24 +55,7 @@ var (
 
 // WaitForApp waits for the app to be shown and rendered.
 func (hc *HelpContext) WaitForApp() uiauto.Action {
-	return func(ctx context.Context) error {
-		return testing.Poll(ctx, func(ctx context.Context) error {
-			shown, err := hc.ui.IsNodeFound(ctx, OverviewTabFinder)
-			if err != nil {
-				return errors.Wrap(err, "failed to check visibility of overview tab")
-			} else if shown {
-				return nil
-			}
-
-			shown, err = hc.ui.IsNodeFound(ctx, ToggleSideBarFinder)
-			if err != nil {
-				return errors.Wrap(err, "failed to check visibility of toggle sidebar")
-			} else if shown {
-				return nil
-			}
-			return errors.New("neither overview nor toggle sidebar are shown")
-		}, &testing.PollOptions{Timeout: 30 * time.Second})
-	}
+	return hc.ui.WaitUntilExists(RootFinder)
 }
 
 // Launch launches help app and waits for it to be present in shelf.
@@ -143,4 +127,19 @@ func (hc *HelpContext) GetLoadTimeData(ctx context.Context) (*LoadTimeData, erro
 		return nil, errors.Wrap(err, "failed to evaluate window.loadTimeData.data_")
 	}
 	return data, nil
+}
+
+// IsHTMLElementPresent checks whether a HTMLElement in help app is present regardless of visibility.
+// It takes cssSelector as input param and returns a bool value.
+// cssSelector works piercing shadowRoot.
+func (hc *HelpContext) IsHTMLElementPresent(ctx context.Context, cssSelector string) (bool, error) {
+	var isShown bool
+	expr := fmt.Sprintf(`
+				var nodes = shadowPiercingQueryAll(%q);
+				nodes.length>0;
+				`, cssSelector)
+	if err := hc.EvalJSWithShadowPiercer(ctx, expr, &isShown); err != nil {
+		return false, errors.Wrapf(err, "failed to check presence of HTML element: %s", cssSelector)
+	}
+	return isShown, nil
 }
