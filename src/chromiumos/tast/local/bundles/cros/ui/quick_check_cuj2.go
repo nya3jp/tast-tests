@@ -39,14 +39,14 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "basic_unlock",
-				Timeout: 10 * time.Minute,
+				Timeout: 5 * time.Minute,
 				Val: quickCheckParam{
 					tier:     cuj.Basic,
 					scenario: quickcheckcuj.Lock,
 				},
 			}, {
 				Name:    "basic_wakeup",
-				Timeout: 10 * time.Minute,
+				Timeout: 5 * time.Minute,
 				Val: quickCheckParam{
 					tier:     cuj.Basic,
 					scenario: quickcheckcuj.Suspend,
