@@ -106,9 +106,12 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 
 	red := color.RGBA{255, 0, 0, 255}
 	blurredRed := color.RGBA{77, 26, 29, 255}
-	expectedPercent := 85
+	expectedPercent := 90
+	// The background color in tablets is a bit different.
 	// Since the launcher is always open in tablet mode and the apps icons took some space, the expected percentage is reduce to 70%.
 	if tablet {
+		red = color.RGBA{165, 13, 14, 255}
+		blurredRed = color.RGBA{83, 32, 31, 255}
 		expectedPercent = 70
 	}
 
