@@ -24,7 +24,7 @@ func init() {
 			"mhasank@chromium.org",
 			"khmel@chromium.org", // author.
 		},
-		Attr: []string{"group:mainline", "group:arc-functional", "informational"},
+		Attr: []string{"group:mainline", "group:arc-functional"},
 		VarDeps: []string{"ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{
 			"chrome",
