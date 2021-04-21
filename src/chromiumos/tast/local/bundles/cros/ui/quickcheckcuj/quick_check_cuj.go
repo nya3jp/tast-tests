@@ -7,6 +7,8 @@ package quickcheckcuj
 import (
 	"bufio"
 	"context"
+	"fmt"
+	"math"
 	"regexp"
 	"strconv"
 	"time"
@@ -96,38 +98,49 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 	// Execute Suspend function outside of recorder at the beginning because suspend will pause the
 	// execution of the program and recorder and chrome needs to be reset.
 	if pauseMode == Suspend {
+		suspendSeconds := 40 // Tast runner might time out if suspend more than 60 seconds.
 		// Use a shorter context to track wakeup duration.
-		sCtx, sCancel := ctxutil.Shorten(ctx, 2*time.Second)
+		sCtx, sCancel := ctxutil.Shorten(ctx, 5*time.Second)
 		defer sCancel()
+
 		ch, err := trackWakeupDuration(sCtx)
 		if err != nil {
 			s.Fatal("Failed to tract wakeup time: ", err)
 		}
 
-		if err = SuspendAndResume(ctx, cr); err != nil {
+		suspendStartTime := time.Now().UnixNano()
+		if err = SuspendAndResume(ctx, cr, suspendSeconds); err != nil {
 			s.Fatal("Failed to suspend the DUT: ", err)
 		}
-
-		// After suspend/resume, all connections associated with the chrome.Chrome instance are invalid.
-		// Reconnect to test API
-		if tconn, err = cr.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to reconnects to Test API: ", err)
-		}
-
 		select {
 		case d, ok := <-ch:
 			if !ok {
 				s.Fatal("Wakeup time tracking returns no value")
 			}
+			s.Log("DUT wakeup time: ", d)
 			pv.Set(perf.Metric{
 				Name:      "QuickCheckCUJ.WakeUpTime",
 				Unit:      "ms",
 				Direction: perf.SmallerIsBetter,
 			}, float64(d.Milliseconds()))
+
+			resumeEndTime := time.Now().UnixNano()
+			// Use unix nanoseconds to avoide monotonic clock of time.Since().
+			sleepSeconds := float64(resumeEndTime-suspendStartTime) / 1e9
+			s.Logf("DUT finished suspend and resume after %v seconds", sleepSeconds)
+			if sleepSeconds > float64(suspendSeconds+3) {
+				// Noticeable longer sleep time.
+				s.Errorf("Suspend/resume is expected to finish in about %d seconds, but took %v seconds", suspendSeconds, sleepSeconds)
+			}
 		case <-ctx.Done():
 			// This case should not happen because the trackWakeupDuration() uses
 			// a shorter timeout value and the channel should have been closed already.
 			s.Fatal("Failed to wait for wakeup time to be returned")
+		}
+		// After suspend/resume, all connections associated with the chrome.Chrome instance are invalid.
+		// Reconnect to test API
+		if tconn, err = cr.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to reconnects to Test API: ", err)
 		}
 	}
 
@@ -329,52 +342,77 @@ func trackWakeupDuration(ctx context.Context) (chan time.Duration, error) {
 			close(ch)
 		}()
 
+		// The Suspend/Resume procedure will have these steps:
+		// 1. trigger suspend with powerd_dbus_suspend command
+		// 2. Expect the following logs in sequence:
+		//		2.1 NOTICE powerd_suspend[21209]: Finalizing suspend
+		//		2.2 INFO kernel: [ 1362.975945] PM: suspend entry (deep)
+		//		2.3 INFO kernel: [ 1362.975955] PM: Syncing filesystems ...
+		// 		2.4 DEBUG kernel: [ 1363.520587] PM: Preparing system for sleep (deep)
+		// 		2.5 DEBUG kernel: [ 1363.608433] PM: Suspending system (deep)
+		//		2.6 DEBUG kernel: [ 1363.737905] PM: suspend of devices complete after 128.995 msecs
+		// 		2.7 DEBUG kernel: [ 1363.740330] PM: late suspend of devices complete after 2.419 msecs
+		// 		2.8 DEBUG kernel: [ 1363.765000] PM: noirq suspend of devices complete after 24.615 msecs
+		//		2.9 INFO kernel: [ 1363.766674] PM: Saving platform NVS memory
+		//		2.10 INFO kernel: [ 1363.774959] PM: Restoring platform NVS memory
+		//		2.11 DEBUG kernel: [ 1363.775205] PM: Timekeeping suspended for 39.208 seconds
+		//		2.12 DEBUG kernel: [ 1363.831897] PM: noirq resume of devices complete after 25.953 msecs
+		//		2.13 DEBUG kernel: [ 1363.858700] PM: early resume of devices complete after 26.677 msecs
+		//		2.14 DEBUG kernel: [ 1364.116961] PM: resume of devices complete after 258.257 msecs
+		//		2.15 DEBUG kernel: [ 1364.117403] PM: Finishing wakeup.
+		//		2.16 INFO kernel: [ 1364.130740] PM: suspend exit
+		//		2.17 NOTICE powerd_suspend[21209]: wake source: PM1_STS: WAK RTC BMSTATUS
+		//		2.18 NOTICE powerd_suspend[21209]: Resume finished
+		//
+		// Not all DUTs have log of 2.10. We'll use the elapsed time between 2.11 and 2.16 as wakeup time.
+
+		var (
+			msgRestoringNVS = regexp.MustCompile(`\[\s*(\d+\.\d+)\] PM: Timekeeping suspended for .* seconds`)
+			msgSuspendExist = regexp.MustCompile(`\[\s*(\d+\.\d+)\] PM: suspend exit`)
+		)
+
+		var resumeStart, resumeExit float64
 		scanner := bufio.NewScanner(out)
-		reg := regexp.MustCompile("PM: resume of devices complete after ([0-9.]+) (m)?secs")
+
 		// Scan output util it returns false, or matched pattern is found.
 		for scanner.Scan() {
 			text := scanner.Text()
-			ss := reg.FindStringSubmatch(text)
-			if ss == nil {
-				continue
+			if ss := msgRestoringNVS.FindStringSubmatch(text); ss != nil {
+				resumeStart, err = strconv.ParseFloat(ss[1], 64)
+				if err != nil {
+					testing.ContextLogf(ctx, "Failed to get wakeup start timestamp from %q: %v", text, err)
+					return
+				}
+				testing.ContextLog(ctx, "Wakeup start timestamp: ", resumeStart)
 			}
-
-			if len(ss) != 3 {
-				testing.ContextLogf(ctx, "Failed to parser unexpected command line message %q", text)
-				return
+			if ss := msgSuspendExist.FindStringSubmatch(text); ss != nil {
+				resumeExit, err = strconv.ParseFloat(ss[1], 64)
+				if err != nil {
+					testing.ContextLogf(ctx, "Failed to get wakeup exit timestamp from %q: %v", text, err)
+					return
+				}
+				testing.ContextLog(ctx, "Wakeup exit timestamp: ", resumeExit)
+				if resumeStart == 0 {
+					testing.ContextLog(ctx, "Got the wakeup exit timestamp but didn't get wakeup start timestamp")
+					return
+				}
+				if resumeStart > 0 && resumeExit > 0 {
+					ch <- time.Duration(math.Round((resumeExit-resumeStart)*1000)) * time.Millisecond
+					break
+				}
 			}
-
-			f, err := strconv.ParseFloat(ss[1], 64)
-			if err != nil {
-				testing.ContextLogf(ctx, "Failed to convert resume time %q to float: %v", ss[1], err)
-				return
-			}
-
-			u := ss[2]
-			if u == "m" {
-				// the unit is 'msecs', no further conversion needed
-			} else if u == "" {
-				// the unit is 'secs'
-				f *= float64(time.Second / time.Millisecond)
-			} else {
-				testing.ContextLogf(ctx, "Failed to parser unexpected time unit of command line message %q", ss[0])
-				return
-			}
-
-			ch <- time.Duration(f * float64(time.Millisecond))
-			break
 		}
 	}()
+
 	return ch, nil
 }
 
 // SuspendAndResume suspends the ChromeOS and then wakes it up.
 // After calling this method, all connections associated with the current browser session are no longer valid and
 // need to be re-established.
-func SuspendAndResume(ctx context.Context, cr *chrome.Chrome) error {
-	// Suspend 40 seconds. Tast runner might time out if suspend more than 60 seconds.
-	testing.ContextLog(ctx, "Start a DUT suspend of 40 seconds")
-	cmd := testexec.CommandContext(ctx, "powerd_dbus_suspend", "--wakeup_timeout=40")
+func SuspendAndResume(ctx context.Context, cr *chrome.Chrome, suspendSeconds int) error {
+	testing.ContextLogf(ctx, "Start a DUT suspend of %d seconds", suspendSeconds)
+	cmd := testexec.CommandContext(ctx, "powerd_dbus_suspend", fmt.Sprintf("--wakeup_timeout=%d", suspendSeconds))
 	if err := cmd.Run(); err != nil {
 		return err
 	}
