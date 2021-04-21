@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a22895_ee5afba1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in_direct.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-04-21T02:47:32Z",
+      "side": 1,
+      "message": "Done, though I doubt we\u0027ll ever actually to-do it",
+      "parentUuid": "186abea8_d0f72937",
+      "range": {
+        "startLine": 59,
+        "startChar": 31,
+        "endLine": 60,
+        "endChar": 33
+      },
+      "revId": "822779c9dec9713e06e72acc2088bb13996914e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ed619fe_6bc984cb",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6fdfa74_18258fdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in_direct.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-04-21T02:47:32Z",
+      "side": 1,
+      "message": "KillAndGetCrashFiles actually already deletes the files, and just returns the list of names",
+      "parentUuid": "2ed619fe_6bc984cb",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 40
+      },
+      "revId": "822779c9dec9713e06e72acc2088bb13996914e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b95eadb_077636ec",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-16T17:30:05Z",
       "side": 1,
       "message": "o_O what... does it ... do?",
+      "range": {
+        "startLine": 66,
+        "startChar": 73,
+        "endLine": 67,
+        "endChar": 25
+      },
+      "revId": "822779c9dec9713e06e72acc2088bb13996914e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78fd231d_b44c596c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-04-21T02:47:32Z",
+      "side": 1,
+      "message": "It treats it as a character code. So \\x{8} means the Backspace (ASCII 8) character",
+      "parentUuid": "3b95eadb_077636ec",
       "range": {
         "startLine": 66,
         "startChar": 73,
