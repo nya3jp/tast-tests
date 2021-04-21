@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6203476_ec3fbaef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-21T06:24:54Z",
+      "side": 1,
+      "message": "Yes. I suppose so. I do not have an example that it is not rendered. \nThe root node I used here is a root web area. The name is from page title. Which means the browser at least process the html file.",
+      "parentUuid": "1e3e28fb_389022df",
+      "range": {
+        "startLine": 56,
+        "startChar": 48,
+        "endLine": 56,
+        "endChar": 56
+      },
+      "revId": "afa6caf93cfd3b1e8ddb820fc81366228f6f89a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d828fc68_2e59d2d0",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-21T04:34:04Z",
       "side": 1,
       "message": "nit: call this isPresent for consistency with the function name and comment",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 12
+      },
+      "revId": "afa6caf93cfd3b1e8ddb820fc81366228f6f89a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6491eb81_63f01744",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-21T06:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d828fc68_2e59d2d0",
       "range": {
         "startLine": 136,
         "startChar": 5,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbf77a56_fa21066a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-21T06:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d13daf57_0fb7d371",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 139,
+        "endChar": 19
+      },
+      "revId": "afa6caf93cfd3b1e8ddb820fc81366228f6f89a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a11065b_8cbb52d4",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-04-21T04:34:04Z",
       "side": 1,
       "message": "Can inline \"showoff-offers-page\" here",
+      "range": {
+        "startLine": 183,
+        "startChar": 56,
+        "endLine": 183,
+        "endChar": 77
+      },
+      "revId": "afa6caf93cfd3b1e8ddb820fc81366228f6f89a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03cf75f1_5b9edee9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-21T06:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a11065b_8cbb52d4",
       "range": {
         "startLine": 183,
         "startChar": 56,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72b4fe68_4df527cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-21T06:24:54Z",
+      "side": 1,
+      "message": "It returns false if offers page not found. The error here means JS evaluation failed.",
+      "parentUuid": "0bcbdbbc_6c2c73da",
+      "range": {
+        "startLine": 185,
+        "startChar": 12,
+        "endLine": 185,
+        "endChar": 42
+      },
+      "revId": "afa6caf93cfd3b1e8ddb820fc81366228f6f89a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7085912d_374c8cd8",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-04-21T04:34:04Z",
       "side": 1,
       "message": "Is this second \"failed\" needed, or can it be removed?",
+      "range": {
+        "startLine": 364,
+        "startChar": 76,
+        "endLine": 364,
+        "endChar": 82
+      },
+      "revId": "afa6caf93cfd3b1e8ddb820fc81366228f6f89a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe004a8_40d39d8e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-21T06:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7085912d_374c8cd8",
       "range": {
         "startLine": 364,
         "startChar": 76,
