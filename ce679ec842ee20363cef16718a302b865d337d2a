@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8146119b_58c4672e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-21T06:31:30Z",
+      "side": 1,
+      "message": "\u003e \"presense\" is a possible misspelling of \"presence\".\n\nPlease fix.",
+      "parentUuid": "3795f490_d5cd2bae",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 44
+      },
+      "revId": "ce679ec842ee20363cef16718a302b865d337d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
