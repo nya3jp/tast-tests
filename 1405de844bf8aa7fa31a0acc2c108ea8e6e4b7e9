@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a64c54e8_50daaab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-21T01:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0ee9887_4d2e45ed",
+      "range": {
+        "startLine": 134,
+        "startChar": 29,
+        "endLine": 134,
+        "endChar": 64
+      },
+      "revId": "1405de844bf8aa7fa31a0acc2c108ea8e6e4b7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aacab94b_fc3d3eda",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-20T23:40:33Z",
       "side": 1,
       "message": "Suggest to remove the post fix \"Finder\"",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 10
+      },
+      "revId": "1405de844bf8aa7fa31a0acc2c108ea8e6e4b7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9020f0e9_4478ef01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-21T01:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aacab94b_fc3d3eda",
       "range": {
         "startLine": 90,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73f9d795_01c8100d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-21T01:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c3c3cee_570afdf2",
+      "range": {
+        "startLine": 118,
+        "startChar": 18,
+        "endLine": 118,
+        "endChar": 24
+      },
+      "revId": "1405de844bf8aa7fa31a0acc2c108ea8e6e4b7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0e8d4f8_41883277",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-20T23:40:33Z",
       "side": 1,
       "message": "Suggest to remove the post fix Finder. It looks not very straightforward to read something like ui.LeftClick(xxxFinder).",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 14
+      },
+      "revId": "1405de844bf8aa7fa31a0acc2c108ea8e6e4b7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbd6febb_4f0a9cdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-04-21T01:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0e8d4f8_41883277",
       "range": {
         "startLine": 194,
         "startChar": 1,
