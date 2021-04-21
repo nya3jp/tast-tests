@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e090c6_14e28853",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-04-21T20:45:49Z",
+      "side": 1,
+      "message": "Is this reasonable in all cases? Do we need to consider cases where  1. newTime \u003e uartTime after a rollover or 2. a rollover \u003e 1 minute?",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "112a2b6483c6725aca8976d4242fcd8ab55bf671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c88933_9140085d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-04-21T20:45:49Z",
+      "side": 1,
+      "message": "Is this going to be set to the very first timestamp after the reboot command? Don\u0027t we need to flush the servo\u0027s UART buffer before capturing the EC output?",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 14
+      },
+      "revId": "112a2b6483c6725aca8976d4242fcd8ab55bf671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
