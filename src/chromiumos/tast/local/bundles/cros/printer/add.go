@@ -31,7 +31,7 @@ func init() {
 			{
 				Name: "epson_software_collate",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_EpsonWF3620.ppd",
+					PPDFile:      "printer_EpsonWF3620.ppd",
 					PrintFile:    "2page.pdf",
 					ExpectedFile: "printer_collate_epson_software_collate_golden.bin",
 					Options:      []string{"copies=2", "multiple-document-handling=separate-documents-collated-copies"},
@@ -40,7 +40,7 @@ func init() {
 			}, {
 				Name: "epson_software_uncollated",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_EpsonWF3620.ppd",
+					PPDFile:      "printer_EpsonWF3620.ppd",
 					PrintFile:    "2page.pdf",
 					ExpectedFile: "printer_collate_epson_software_uncollated_golden.bin",
 					Options:      []string{"copies=2"},
@@ -49,7 +49,7 @@ func init() {
 			}, {
 				Name: "epson_hardware_collate",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_EpsonWFC20590.ppd",
+					PPDFile:      "printer_EpsonWFC20590.ppd",
 					PrintFile:    "2page.pdf",
 					ExpectedFile: "printer_collate_epson_hardware_collate_golden.ps",
 					Options:      []string{"copies=2", "multiple-document-handling=separate-documents-collated-copies"},
@@ -58,7 +58,7 @@ func init() {
 			}, {
 				Name: "epson_hardware_uncollated",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_EpsonWFC20590.ppd",
+					PPDFile:      "printer_EpsonWFC20590.ppd",
 					PrintFile:    "2page.pdf",
 					ExpectedFile: "printer_collate_epson_hardware_uncollated_golden.ps",
 					Options:      []string{"copies=2"},
@@ -67,7 +67,7 @@ func init() {
 			}, {
 				Name: "lexmark_600dpi",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_Lexmark.ppd",
+					PPDFile:      "printer_Lexmark.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_resolution_lexmark_600dpi_golden.ps",
 					Options:      []string{"printer-resolution=600dpi"},
@@ -76,7 +76,7 @@ func init() {
 			}, {
 				Name: "lexmark_1200dpi",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_Lexmark.ppd",
+					PPDFile:      "printer_Lexmark.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_resolution_lexmark_1200dpi_golden.ps",
 					Options:      []string{"printer-resolution=1200dpi"},
@@ -85,7 +85,7 @@ func init() {
 			}, {
 				Name: "lexmark_2400x600dpi",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_Lexmark.ppd",
+					PPDFile:      "printer_Lexmark.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_resolution_lexmark_2400x600dpi_golden.ps",
 					Options:      []string{"printer-resolution=2400x600dpi"},
@@ -94,7 +94,7 @@ func init() {
 			}, {
 				Name: "dymo_lw",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_add_dymo_printer_lw450.ppd",
+					PPDFile:      "printer_add_dymo_printer_lw450.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_add_dymo_lw_printer_golden.bin",
 				},
@@ -102,7 +102,7 @@ func init() {
 			}, {
 				Name: "dymo_lm",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_add_dymo_printer_lm450.ppd",
+					PPDFile:      "printer_add_dymo_printer_lm450.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_add_dymo_lm_printer_golden.bin",
 				},
@@ -110,7 +110,7 @@ func init() {
 			}, {
 				Name: "epson",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_EpsonWF3620.ppd",
+					PPDFile:      "printer_EpsonWF3620.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_add_epson_printer_golden.ps",
 				},
@@ -118,7 +118,7 @@ func init() {
 			}, {
 				Name: "epson_color",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_EpsonGenericColorModel.ppd",
+					PPDFile:      "printer_EpsonGenericColorModel.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_add_epson_printer_color_golden.bin",
 					Options:      []string{"print-color-mode=color"},
@@ -127,7 +127,7 @@ func init() {
 			}, {
 				Name: "epson_monochrome",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_EpsonGenericColorModel.ppd",
+					PPDFile:      "printer_EpsonGenericColorModel.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_add_epson_printer_monochrome_golden.bin",
 					Options:      []string{"print-color-mode=monochrome"},
@@ -136,7 +136,7 @@ func init() {
 			}, {
 				Name: "generic",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_add_generic_printer_GenericPostScript.ppd.gz",
+					PPDFile:      "printer_add_generic_printer_GenericPostScript.ppd.gz",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_add_generic_printer_golden.ps",
 				},
@@ -144,15 +144,24 @@ func init() {
 			}, {
 				Name: "hp_pclm",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_add_hp_printer_pclm.ppd.gz",
+					PPDFile:      "printer_add_hp_printer_pclm.ppd.gz",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_add_hp_printer_pclm_out.pclm",
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_hp_printer_pclm.ppd.gz", "printer_add_hp_printer_pclm_out.pclm"},
 			}, {
+				Name: "hp_ljcolor",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_add_hp_ljcolor.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedSize: 154284,
+				},
+				ExtraData: []string{"to_print.pdf", "printer_add_hp_ljcolor.ppd.gz"},
+				ExtraAttr: []string{"informational"},
+			}, {
 				Name: "hp_pwg_raster_color",
 				Val: &ippprint.Params{
-					PpdFile:      "hp_ipp_everywhere.ppd",
+					PPDFile:      "hp_ipp_everywhere.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_add_hp_ipp_everywhere_golden.pwg",
 				},
@@ -160,7 +169,7 @@ func init() {
 			}, {
 				Name: "hp_pwg_raster_monochrome",
 				Val: &ippprint.Params{
-					PpdFile:      "hp_ipp_everywhere.ppd",
+					PPDFile:      "hp_ipp_everywhere.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_add_hp_pwg_raster_monochrome_golden.pwg",
 					Options:      []string{"print-color-mode=monochrome"},
@@ -169,7 +178,7 @@ func init() {
 			}, {
 				Name: "star",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_add_star_printer_rastertostar.ppd.gz",
+					PPDFile:      "printer_add_star_printer_rastertostar.ppd.gz",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_add_star_printer_rastertostar.bin",
 				},
@@ -177,7 +186,7 @@ func init() {
 			}, {
 				Name: "star_lm",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_add_star_printer_rastertostarlm.ppd.gz",
+					PPDFile:      "printer_add_star_printer_rastertostarlm.ppd.gz",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_add_star_printer_rastertostarlm.bin",
 				},
@@ -185,7 +194,7 @@ func init() {
 			}, {
 				Name: "hp_no_pin",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_HP.ppd",
+					PPDFile:      "printer_HP.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_pin_print_hp_no_pin_golden.ps",
 				},
@@ -193,7 +202,7 @@ func init() {
 			}, {
 				Name: "hp_pin",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_HP.ppd",
+					PPDFile:      "printer_HP.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_pin_print_hp_pin_golden.ps",
 					Options:      []string{"job-password=1234"},
@@ -202,7 +211,7 @@ func init() {
 			}, {
 				Name: "lexmark_no_pin",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_Lexmark.ppd",
+					PPDFile:      "printer_Lexmark.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_pin_print_lexmark_no_pin_golden.ps",
 				},
@@ -210,7 +219,7 @@ func init() {
 			}, {
 				Name: "lexmark_pin",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_Lexmark.ppd",
+					PPDFile:      "printer_Lexmark.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_pin_print_lexmark_pin_golden.ps",
 					Options:      []string{"job-password=1234"},
@@ -219,7 +228,7 @@ func init() {
 			}, {
 				Name: "ricoh_jobpassword_no_pin",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_Ricoh_JobPassword.ppd",
+					PPDFile:      "printer_Ricoh_JobPassword.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_pin_print_ricoh_JobPassword_no_pin_golden.ps",
 				},
@@ -227,7 +236,7 @@ func init() {
 			}, {
 				Name: "ricoh_jobpassword_pin",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_Ricoh_JobPassword.ppd",
+					PPDFile:      "printer_Ricoh_JobPassword.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_pin_print_ricoh_JobPassword_pin_golden.ps",
 					Options:      []string{"job-password=1234"},
@@ -236,7 +245,7 @@ func init() {
 			}, {
 				Name: "ricoh_lockedprintpassword_nopin",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_Ricoh_LockedPrintPassword.ppd",
+					PPDFile:      "printer_Ricoh_LockedPrintPassword.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_pin_print_ricoh_LockedPrintPassword_no_pin_golden.ps",
 				},
@@ -244,7 +253,7 @@ func init() {
 			}, {
 				Name: "ricoh_lockedprintpassword_pin",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_Ricoh_LockedPrintPassword.ppd",
+					PPDFile:      "printer_Ricoh_LockedPrintPassword.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_pin_print_ricoh_LockedPrintPassword_pin_golden.ps",
 					Options:      []string{"job-password=1234"},
@@ -253,7 +262,7 @@ func init() {
 			}, {
 				Name: "ricoh_password_no_pin",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_Ricoh_password.ppd",
+					PPDFile:      "printer_Ricoh_password.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_pin_print_ricoh_password_no_pin_golden.ps",
 				},
@@ -261,7 +270,7 @@ func init() {
 			}, {
 				Name: "ricoh_password_pin",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_Ricoh_password.ppd",
+					PPDFile:      "printer_Ricoh_password.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_pin_print_ricoh_password_pin_golden.ps",
 					Options:      []string{"job-password=1234"},
@@ -270,7 +279,7 @@ func init() {
 			}, {
 				Name: "sharp_no_pin",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_Sharp.ppd",
+					PPDFile:      "printer_Sharp.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_pin_print_sharp_no_pin_golden.ps",
 				},
@@ -278,7 +287,7 @@ func init() {
 			}, {
 				Name: "sharp_pin",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_Sharp.ppd",
+					PPDFile:      "printer_Sharp.ppd",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_pin_print_sharp_pin_golden.ps",
 					Options:      []string{"job-password=1234"},
@@ -287,7 +296,7 @@ func init() {
 			}, {
 				Name: "unsupported_no_pin",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_unsupported_GenericPostScript.ppd.gz",
+					PPDFile:      "printer_unsupported_GenericPostScript.ppd.gz",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_pin_print_unsupported_golden.ps",
 				},
@@ -295,7 +304,7 @@ func init() {
 			}, {
 				Name: "unsupported_pin",
 				Val: &ippprint.Params{
-					PpdFile:      "printer_unsupported_GenericPostScript.ppd.gz",
+					PPDFile:      "printer_unsupported_GenericPostScript.ppd.gz",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_pin_print_unsupported_golden.ps",
 					Options:      []string{"job-password=1234"},
