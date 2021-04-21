@@ -53,11 +53,13 @@ func init() {
 				Name:              "tablet_stable",
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: pre.AppsStableModels,
+				ExtraSoftwareDeps: []string{"tablet_mode"},
 				Val:               true,
 			}, {
 				Name:              "tablet_unstable",
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraSoftwareDeps: []string{"tablet_mode"},
 				Val:               true,
 			},
 		},

@@ -27,7 +27,7 @@ func init() {
 		Desc:         "Validity check on floating virtual keyboard",
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
-		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		SoftwareDeps: []string{"chrome", "google_virtual_keyboard", "tablet_mode"},
 		Params: []testing.Param{{
 			Name:              "stable",
 			ExtraHardwareDeps: pre.InputsStableModels,

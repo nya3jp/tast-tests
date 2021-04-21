@@ -86,6 +86,7 @@ func init() {
 			}, {
 				Name:              "tablet_logged_in_stable",
 				ExtraHardwareDeps: pre.AppsStableModels,
+				ExtraSoftwareDeps: []string{"tablet_mode"},
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       false,
@@ -94,6 +95,7 @@ func init() {
 			}, {
 				Name:              "tablet_logged_in_unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraSoftwareDeps: []string{"tablet_mode"},
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: true,
