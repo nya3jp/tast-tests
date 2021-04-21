@@ -35,6 +35,7 @@ const (
 	BroadcomBCM4356PCIE        = "Broadcom BCM4356 PCIE"
 	BroadcomBCM4371PCIE        = "Broadcom BCM4371 PCIE"
 	Realtek8822CPCIE           = "Realtek 8822C PCIE"
+	Realtek8852APCIE           = "Realtek 8852A PCIE"
 	MediaTekMT7921PCIE         = "MediaTek MT7921 PCIE"
 	// These constants are used in the function "checkBandwidthSupport".
 	intelVendorNum   = "0x8086"
@@ -76,6 +77,7 @@ var lookupWLANDev = map[DevInfo]string{
 	{vendor: "0x14e4", device: "0x43ec"}:                      BroadcomBCM4356PCIE,
 	{vendor: "0x14e4", device: "0x440d"}:                      BroadcomBCM4371PCIE,
 	{vendor: "0x10ec", device: "0xc822"}:                      Realtek8822CPCIE,
+	{vendor: "0x10ec", device: "0x8852"}:                      Realtek8852APCIE,
 	{vendor: "0x14c3", device: "0x7961"}:                      MediaTekMT7921PCIE,
 	{compatible: "qcom,wcn3990-wifi"}:                         QualcommWCN3990,
 }
