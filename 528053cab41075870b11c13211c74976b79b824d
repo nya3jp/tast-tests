@@ -46,6 +46,30 @@
       },
       "revId": "528053cab41075870b11c13211c74976b79b824d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea2674d_00784020",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-04-21T06:51:22Z",
+      "side": 1,
+      "message": "And for iio.Light?\nOr maybe just an else to return nil; on all other sensor types.",
+      "parentUuid": "c0ad97d0_16751d15",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 12
+      },
+      "revId": "528053cab41075870b11c13211c74976b79b824d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
