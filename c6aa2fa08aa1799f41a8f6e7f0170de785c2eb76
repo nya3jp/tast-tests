@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9927595_76482a9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-04-21T23:51:10Z",
+      "side": 1,
+      "message": "Hi Renuga, \n\nPlease review it. Thanks.\n\nRegards,\nMeena",
+      "revId": "c6aa2fa08aa1799f41a8f6e7f0170de785c2eb76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
