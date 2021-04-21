@@ -28,8 +28,9 @@ import (
 )
 
 type arcPIPEnergyAndPowerTestParams struct {
-	activityName string
-	bigPIP       bool
+	activityName          string
+	resizeHandleClassName string
+	bigPIP                bool
 }
 
 func init() {
@@ -42,28 +43,68 @@ func init() {
 		Fixture:      "arcBooted",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
-			Name:              "small",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false},
+			Name: "small",
+			Val: arcPIPEnergyAndPowerTestParams{
+				activityName:          ".VideoActivity",
+				resizeHandleClassName: "android.widget.ImageView",
+				bigPIP:                false,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name:              "big",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: true},
+			Name: "big",
+			Val: arcPIPEnergyAndPowerTestParams{
+				activityName:          ".VideoActivity",
+				resizeHandleClassName: "android.widget.ImageView",
+				bigPIP:                true,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name:              "small_blend",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false},
+			Name: "small_blend",
+			Val: arcPIPEnergyAndPowerTestParams{
+				activityName:          ".VideoActivityWithRedSquare",
+				resizeHandleClassName: "android.widget.ImageView",
+				bigPIP:                false,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name:              "big_blend",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: true},
+			Name: "big_blend",
+			Val: arcPIPEnergyAndPowerTestParams{
+				activityName:          ".VideoActivityWithRedSquare",
+				resizeHandleClassName: "android.widget.ImageView",
+				bigPIP:                true,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name:              "small_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false},
+			Name: "small_vm",
+			Val: arcPIPEnergyAndPowerTestParams{
+				activityName:          ".VideoActivity",
+				resizeHandleClassName: "android.widget.ImageButton",
+				bigPIP:                false,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
-			Name:              "small_blend_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false},
+			Name: "big_vm",
+			Val: arcPIPEnergyAndPowerTestParams{
+				activityName:          ".VideoActivity",
+				resizeHandleClassName: "android.widget.ImageButton",
+				bigPIP:                true,
+			},
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}, {
+			Name: "small_blend_vm",
+			Val: arcPIPEnergyAndPowerTestParams{
+				activityName:          ".VideoActivityWithRedSquare",
+				resizeHandleClassName: "android.widget.ImageButton",
+				bigPIP:                false,
+			},
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}, {
+			Name: "big_blend_vm",
+			Val: arcPIPEnergyAndPowerTestParams{
+				activityName:          ".VideoActivityWithRedSquare",
+				resizeHandleClassName: "android.widget.ImageButton",
+				bigPIP:                true,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
@@ -161,11 +202,11 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to move mouse to PIP window: ", err)
 		}
 
-		// The PIP resize handle is an ImageView with no android:contentDescription.
-		// Here we use the regex (?!.+) to match the empty content description. See:
+		// The PIP resize handle has no android:contentDescription. Here we
+		// use the regex (?!.+) to match the empty content description. See:
 		// frameworks/base/packages/SystemUI/res/layout/pip_menu_activity.xml
 		resizeHandleBounds, err := d.Object(
-			ui.ClassName("android.widget.ImageView"),
+			ui.ClassName(params.resizeHandleClassName),
 			ui.DescriptionMatches("(?!.+)"),
 			ui.PackageName("com.android.systemui"),
 		).GetBounds(ctx)
