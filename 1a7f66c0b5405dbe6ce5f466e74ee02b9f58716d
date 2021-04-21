@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9507766f_d65aab82",
+        "filename": "src/chromiumos/tast/common/android/adb/adb.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-04-21T09:40:42Z",
+      "side": 1,
+      "message": "I feel like there\u0027s a better way to determine whether it\u0027s a host with ARC. I\u0027ll defer that to other reviewers.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 41
+      },
+      "revId": "1a7f66c0b5405dbe6ce5f466e74ee02b9f58716d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59f4b4d4_82323f5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/its_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-04-21T09:40:42Z",
+      "side": 1,
+      "message": "Are these needed?",
+      "range": {
+        "startLine": 46,
+        "startChar": 19,
+        "endLine": 46,
+        "endChar": 71
+      },
+      "revId": "1a7f66c0b5405dbe6ce5f466e74ee02b9f58716d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34a01e46_0a1bc9ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-04-21T09:40:42Z",
+      "side": 1,
+      "message": "Could we add some comments about the consideration around having \"adb\" as a data dependency?",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 0
+      },
+      "revId": "1a7f66c0b5405dbe6ce5f466e74ee02b9f58716d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
