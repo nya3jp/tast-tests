@@ -16,6 +16,184 @@
       "message": "Could you please review this? Thanks!",
       "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "487496e0_6ee1e11b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-04-21T01:15:57Z",
+      "side": 1,
+      "message": "Thanks for creating a prototype so quickly!",
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75bfbcef_3c1a5985",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-04-21T01:15:57Z",
+      "side": 1,
+      "message": "nit: apkName is also used inside init()\n\nHow about moving these const out of this func so init() can use apkName?\n\nconst (\n   ...\n)\n\nfunc init() {",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 56
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "048b0c3e_1779bb3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-04-21T01:15:57Z",
+      "side": 1,
+      "message": "nit: \"clicks an action button (Cancel / Share)\" would be more accurate.",
+      "range": {
+        "startLine": 118,
+        "startChar": 22,
+        "endLine": 118,
+        "endChar": 40
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b62d5ea_3a549694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-04-21T01:15:57Z",
+      "side": 1,
+      "message": "expectedStatus ?",
+      "range": {
+        "startLine": 120,
+        "startChar": 114,
+        "endLine": 120,
+        "endChar": 120
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbaf69a2_b83ea75c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-04-21T01:15:57Z",
+      "side": 1,
+      "message": "how about actionButtonName ?",
+      "range": {
+        "startLine": 120,
+        "startChar": 106,
+        "endLine": 120,
+        "endChar": 112
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14ffd3a0_e56674e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-04-21T01:15:57Z",
+      "side": 1,
+      "message": "No need to pass pkgName if you move the const out of func MediaProjectionPermissions()",
+      "range": {
+        "startLine": 120,
+        "startChar": 97,
+        "endLine": 120,
+        "endChar": 104
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe703952_7348cf13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-04-21T01:15:57Z",
+      "side": 1,
+      "message": "nit: Open media projection dialog and click \u003caction\u003e ?",
+      "range": {
+        "startLine": 127,
+        "startChar": 26,
+        "endLine": 127,
+        "endChar": 58
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d63e2f3_cb69e493",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-04-21T01:15:57Z",
+      "side": 1,
+      "message": "timeout is only used inside this function.\n\nEither move the const inside this func or move it out of func MediaProjectionPermissions() ?",
+      "range": {
+        "startLine": 164,
+        "startChar": 83,
+        "endLine": 164,
+        "endChar": 90
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
