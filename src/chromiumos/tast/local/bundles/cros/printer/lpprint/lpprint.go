@@ -9,100 +9,45 @@ package lpprint
 import (
 	"context"
 	"io/ioutil"
-	"path/filepath"
-	"regexp"
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/printer/fake"
 	"chromiumos/tast/local/debugd"
-	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/testing"
 )
 
-// CleanPSContents filters any unwanted lines from content to ensure a stable
-// diff.
-func CleanPSContents(content string) string {
-	r := regexp.MustCompile(
-		// Matches the embedded ghostscript version in the PS file.
-		// This gets outdated on every gs uprev, so we strip it out.
-		`(?m)(^(%%Creator: GPL Ghostscript .*` +
-			// Removes the postscript creation date.
-			`|%%CreationDate: D:.*` +
-			// Removes the ghostscript invocation command.
-			`|%%Invocation: .*` +
-			// Removes additional lines of the ghostscript invocation command.
-			`|%%\+ .*` +
-			// Removes time metadata for PCLm Jobs.
-			`|% *job-start-time: .*` +
-			// Removes PDF xref objects (they contain byte offsets).
-			`|\d{10} \d{5} [fn] *` +
-			// Removes the byte offset of a PDF xref object.
-			`|startxref[\r\n]+\d+[\r\n]+%%EOF` +
-			// For Brother jobs, jobtime and printlog item 2 contain
-			// time-specific values.
-			`|@PJL SET JOBTIME = .*` +
-			`|@PJL PRINTLOG ITEM = 2,.*` +
-			// For HP jobs, JobAcct4,JobAcc5 & DMINFO contain
-			// time-specific values.
-			`|@PJL SET JOBATTR="JobAcct[45]=.*` +
-			`|@PJL DMINFO ASCIIHEX=".*` +
-			// For Ricoh jobs, the SET DATE/TIME values are time-specific.
-			`|@PJL SET DATE=".*` +
-			`|@PJL SET TIME=".*)[\r\n])` +
-			// For Ricoh jobs, the /ID tag is time-specific.
-			`|\/ID \[<.*>\]` +
-			// For Ricoh jobs, "usercode (\d+)" contains the date
-			// and time of the print job.
-			`|usrcode \(\d+\)` +
-			// For Ricoh PS jobs, the time is contained here.
-			`|/Time \(\d+\)` +
-			// For Ricoh jobs, "(\d+) lppswd" contains the date
-			// and time of the print job.
-			`|\(\d+\) lppswd`)
-	return r.ReplaceAllLiteralString(document.CleanPDFContents(content), "")
-}
-
-// Run executes the main test logic with given parameters.
-func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile string) {
-	RunWithOptions(ctx, s, ppdFile, toPrintFile, goldenFile, "")
-}
-
-// RunWithOptions executes the main test logic with options included in the lp command.
-func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, options string) {
+// Run runs the lp command and returns the generated print output.
+func Run(ctx context.Context, ppdFilePath, toPrintFilePath, options string) ([]byte, error) {
 	const printerID = "FakePrinterID"
 
-	ppd, err := ioutil.ReadFile(s.DataPath(ppdFile))
+	ppd, err := ioutil.ReadFile(ppdFilePath)
 	if err != nil {
-		s.Fatal("Failed to read PPD file: ", err)
-	}
-	expect, err := ioutil.ReadFile(s.DataPath(goldenFile))
-	if err != nil {
-		s.Fatal("Failed to read golden file: ", err)
+		return nil, errors.Wrap(err, "failed to read PPD file")
 	}
 
 	if err := printer.ResetCups(ctx); err != nil {
-		s.Fatal("Failed to reset cupsd: ", err)
+		return nil, errors.Wrap(err, "failed to reset cupsd")
 	}
 
 	fake, err := fake.NewPrinter(ctx)
 	if err != nil {
-		s.Fatal("Failed to start fake printer: ", err)
+		return nil, errors.Wrap(err, "failed to start fake printer")
 	}
 	defer fake.Close()
 
 	d, err := debugd.New(ctx)
 	if err != nil {
-		s.Fatal("Failed to connect to debugd: ", err)
+		return nil, errors.Wrap(err, "failed to connect to debugd")
 	}
 
 	testing.ContextLog(ctx, "Registering a printer")
-	if result, err := d.CupsAddManuallyConfiguredPrinter(
-		ctx, printerID, "socket://127.0.0.1/", ppd); err != nil {
-		s.Fatal("Failed to call CupsAddManuallyConfiguredPrinter: ", err)
+	if result, err := d.CupsAddManuallyConfiguredPrinter(ctx, printerID, "socket://127.0.0.1/", ppd); err != nil {
+		return nil, errors.Wrap(err, "debugd.CupsAddManuallyConfiguredPrinter failed")
 	} else if result != debugd.CUPSSuccess {
-		s.Fatal("Could not set up a printer: ", result)
+		return nil, errors.Errorf("could not set up a printer: %d", result)
 	}
 
 	testing.ContextLog(ctx, "Issuing print request")
@@ -110,11 +55,11 @@ func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile,
 	if len(options) != 0 {
 		args = append(args, "-o", options)
 	}
-	args = append(args, s.DataPath(toPrintFile))
+	args = append(args, toPrintFilePath)
 	cmd := testexec.CommandContext(ctx, "lp", args...)
 
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to run lp: ", err)
+		return nil, errors.Wrap(err, "failed to run lp")
 	}
 
 	testing.ContextLog(ctx, "Receiving print request")
@@ -122,14 +67,7 @@ func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile,
 	defer cancel()
 	request, err := fake.ReadRequest(recvCtx)
 	if err != nil {
-		s.Fatal("Fake printer didn't receive a request: ", err)
+		return nil, errors.Wrap(err, "fake printer didn't receive a request")
 	}
-
-	if CleanPSContents(string(expect)) != CleanPSContents(string(request)) {
-		outPath := filepath.Join(s.OutDir(), goldenFile)
-		if err := ioutil.WriteFile(outPath, request, 0644); err != nil {
-			s.Error("Failed to dump output: ", err)
-		}
-		s.Errorf("Printer output differs from expected: output saved to %q", goldenFile)
-	}
+	return request, nil
 }
