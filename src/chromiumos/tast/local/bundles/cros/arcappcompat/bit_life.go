@@ -70,7 +70,7 @@ func init() {
 func BitLife(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.candywriter.bitlife"
-		appActivity = "com.google.firebase.MessagingUnityPlayerActivity"
+		appActivity = "com.unity3d.player.UnityPlayerActivity"
 	)
 	testCases := s.Param().([]testutil.TestCase)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
