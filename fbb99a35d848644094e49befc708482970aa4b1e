@@ -39,6 +39,30 @@
       },
       "revId": "fbb99a35d848644094e49befc708482970aa4b1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66466a5f_8c039ad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/ArcMediaProjectionPermissionsTest.apk.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-04-21T12:04:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eb2458a_c9ead126",
+      "range": {
+        "startLine": 2,
+        "startChar": 50,
+        "endLine": 2,
+        "endChar": 59
+      },
+      "revId": "fbb99a35d848644094e49befc708482970aa4b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
