@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41859968_03d5237d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-04-21T11:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75bfbcef_3c1a5985",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 56
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ad3e6d0_0deb7015",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-04-21T01:33:31Z",
       "side": 1,
       "message": "How about \"Media projection notification is expected to be gone, but it is still shown\"",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 55
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fab53eaf_346115aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-04-21T11:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ad3e6d0_0deb7015",
       "range": {
         "startLine": 93,
         "startChar": 11,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "322e00d4_7298cf92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-04-21T11:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "854705bf_91393cc6",
+      "range": {
+        "startLine": 99,
+        "startChar": 92,
+        "endLine": 99,
+        "endChar": 113
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "048b0c3e_1779bb3e",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-04-21T01:15:57Z",
       "side": 1,
       "message": "nit: \"clicks an action button (Cancel / Share)\" would be more accurate.",
+      "range": {
+        "startLine": 118,
+        "startChar": 22,
+        "endLine": 118,
+        "endChar": 40
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a21c105f_e199f9ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-04-21T11:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "048b0c3e_1779bb3e",
       "range": {
         "startLine": 118,
         "startChar": 22,
@@ -196,6 +292,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec64669b_8e6c40e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-04-21T11:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbaf69a2_b83ea75c",
+      "range": {
+        "startLine": 120,
+        "startChar": 106,
+        "endLine": 120,
+        "endChar": 112
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71a44d2e_8fe59c96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-04-21T11:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b62d5ea_3a549694",
+      "range": {
+        "startLine": 120,
+        "startChar": 114,
+        "endLine": 120,
+        "endChar": 120
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c1a97b3_e21a9517",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-04-21T11:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14ffd3a0_e56674e6",
+      "range": {
+        "startLine": 120,
+        "startChar": 97,
+        "endLine": 120,
+        "endChar": 104
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe703952_7348cf13",
@@ -219,6 +387,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3375f34_346d9b63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-04-21T11:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe703952_7348cf13",
+      "range": {
+        "startLine": 127,
+        "startChar": 26,
+        "endLine": 127,
+        "endChar": 58
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d63e2f3_cb69e493",
@@ -232,6 +424,30 @@
       "writtenOn": "2021-04-21T01:15:57Z",
       "side": 1,
       "message": "timeout is only used inside this function.\n\nEither move the const inside this func or move it out of func MediaProjectionPermissions() ?",
+      "range": {
+        "startLine": 164,
+        "startChar": 83,
+        "endLine": 164,
+        "endChar": 90
+      },
+      "revId": "072f7c087c5b37a9a2f2198c101fabb20b1b2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a07259d_0753f169",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_projection_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-04-21T11:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d63e2f3_cb69e493",
       "range": {
         "startLine": 164,
         "startChar": 83,
