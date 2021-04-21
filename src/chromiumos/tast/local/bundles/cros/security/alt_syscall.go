@@ -20,8 +20,7 @@ func init() {
 			"ejcaruso@chromium.org", // Tast port author
 			"chromeos-security@google.com",
 		},
-		SoftwareDeps: []string{"alt_syscall"},
-		Attr:         []string{"group:mainline"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
