@@ -16,7 +16,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/printer/lpprint"
+	"chromiumos/tast/local/bundles/cros/printer/ippprint"
 	"chromiumos/tast/local/printing/lp"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/local/printing/usbprinter"
@@ -126,7 +126,7 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 	if err != nil {
 		s.Fatal("Failed to read output file: ", err)
 	}
-	if lpprint.CleanPSContents(string(goldenData)) != lpprint.CleanPSContents(string(output)) {
+	if ippprint.CleanPSContents(string(goldenData)) != ippprint.CleanPSContents(string(output)) {
 		outFile := filepath.Base(golden)
 		outPath := filepath.Join(s.OutDir(), outFile)
 		if err := ioutil.WriteFile(outPath, output, 0644); err != nil {

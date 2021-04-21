@@ -8,68 +8,56 @@ package proxylpprint
 
 import (
 	"context"
-	"io/ioutil"
 	"os"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/printer/fake"
-	"chromiumos/tast/local/bundles/cros/printer/lpprint"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
-// Run executes the main test logic with given parameters.
-func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile string) {
-	RunWithOptions(ctx, s, ppdFile, toPrintFile, goldenFile, "")
-}
-
-// RunWithOptions executes the main test logic with options included in the lp command.
-func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, options string) {
-	printerID := "FakePrinterID"
-	s.Log("printerID: ", printerID)
+// Run runs the lp command and returns the generated print output.
+func Run(ctx context.Context, chrome *chrome.Chrome, ppdFilePath, toPrintFilePath, options string) (_ []byte, returnErr error) {
+	const printerID = "FakePrinterID"
 
 	err := upstart.EnsureJobRunning(ctx, "cups_proxy")
 	if err != nil {
-		s.Fatal("Failed to start cups_proxy service: ", err)
+		return nil, errors.Wrap(err, "failed to start cups_proxy service")
 	}
 
-	if _, err := os.Stat(s.DataPath(ppdFile)); err != nil {
-		s.Fatal("Failed to read PPD file: ", err)
-	}
-	expect, err := ioutil.ReadFile(s.DataPath(goldenFile))
-	if err != nil {
-		s.Fatal("Failed to read golden file: ", err)
+	if _, err := os.Stat(ppdFilePath); err != nil {
+		return nil, errors.Wrap(err, "failed to read PPD file")
 	}
 
 	if err := printer.ResetCups(ctx); err != nil {
-		s.Fatal("Failed to reset cupsd: ", err)
+		return nil, errors.Wrap(err, "failed to reset cupsd")
 	}
 
 	fake, err := fake.NewPrinter(ctx)
 	if err != nil {
-		s.Fatal("Failed to start fake printer: ", err)
+		return nil, errors.Wrap(err, "failed to start fake printer")
 	}
 	defer fake.Close()
 
-	tconn, err := s.PreValue().(*chrome.Chrome).TestAPIConn(ctx)
+	tconn, err := chrome.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
+		return nil, errors.Wrap(err, "failed to create test API connection")
 	}
 
 	testing.ContextLog(ctx, "Registering a printer")
-	err = tconn.Call(ctx, nil, "chrome.autotestPrivate.updatePrinter", map[string]string{"printerName": printerID, "printerId": printerID, "printerUri": "socket://127.0.0.1/", "printerPpd": s.DataPath(ppdFile)})
+	err = tconn.Call(ctx, nil, "chrome.autotestPrivate.updatePrinter", map[string]string{"printerName": printerID, "printerId": printerID, "printerUri": "socket://127.0.0.1/", "printerPpd": ppdFilePath})
 	if err != nil {
-		s.Fatal("Failed to call autotestPrivate.updatePrinter(): ", err)
+		return nil, errors.Wrap(err, "failed to call autotestPrivate.updatePrinter()")
 	}
 
 	defer func() {
 		err := tconn.Call(ctx, nil, "chrome.autotestPrivate.removePrinter", printerID)
 		if err != nil {
-			s.Fatal("autotestPrivate.removePrinter() failed: ", err)
+			returnErr = errors.Wrap(err, "autotestPrivate.removePrinter() failed")
 		}
 	}()
 
@@ -78,11 +66,11 @@ func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile,
 	if len(options) != 0 {
 		args = append(args, "-o", options)
 	}
-	args = append(args, s.DataPath(toPrintFile))
+	args = append(args, toPrintFilePath)
 	cmd := testexec.CommandContext(ctx, "lp", args...)
 
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to run lp: ", err)
+		return nil, errors.Wrap(err, "failed to run lp")
 	}
 
 	testing.ContextLog(ctx, "Receiving print request")
@@ -90,14 +78,7 @@ func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile,
 	defer cancel()
 	request, err := fake.ReadRequest(recvCtx)
 	if err != nil {
-		s.Fatal("Fake printer didn't receive a request: ", err)
+		return nil, errors.Wrap(err, "fake printer didn't receive a request")
 	}
-
-	if lpprint.CleanPSContents(string(expect)) != lpprint.CleanPSContents(string(request)) {
-		outPath := filepath.Join(s.OutDir(), goldenFile)
-		if err := ioutil.WriteFile(outPath, request, 0644); err != nil {
-			s.Error("Failed to dump output: ", err)
-		}
-		s.Errorf("Printer output differs from expected: output saved to %q", goldenFile)
-	}
+	return request, nil
 }
