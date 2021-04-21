@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaa85232_d4d884e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-21T03:16:56Z",
+      "side": 1,
+      "message": "There\u0027s many more tests that use this function, make sure you test it for all these given you may introduce a change in expectations for the tests.",
+      "range": {
+        "startLine": 15,
+        "startChar": 20,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "516e7c504bd93dd63cc466544cf4fdf16a6fc70d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83c81eba_c68b12fc",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-21T03:16:56Z",
+      "side": 1,
+      "message": "nit: you can just return this instead of checking if it\u0027s not nil",
+      "range": {
+        "startLine": 204,
+        "startChar": 11,
+        "endLine": 204,
+        "endChar": 23
+      },
+      "revId": "516e7c504bd93dd63cc466544cf4fdf16a6fc70d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
