@@ -16,6 +16,24 @@
       "message": "Does it mean the original root cause was resolved somewhere else?\nIf so, it would be better to state that the original issue was fixed by X and the hack is no longer needed, in order to provide more context.",
       "revId": "0e815ad0bca31f3061335eafd27bf35c2cf84c93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faf64c08_1f69350c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-04-21T01:42:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e273016d_6ca20b8b",
+      "revId": "0e815ad0bca31f3061335eafd27bf35c2cf84c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
