@@ -8,11 +8,13 @@ package lp
 
 import (
 	"context"
+	"io/ioutil"
 	"regexp"
 	"strings"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/testing"
 )
 
@@ -45,8 +47,21 @@ func CupsAddPrinter(ctx context.Context, printerName, uri, ppd string) error {
 	if ppd == "" {
 		return errors.New("must provide PPD to CupsAddPrinter")
 	}
+	ppdContents, err := ioutil.ReadFile(ppd)
+	if err != nil {
+		return errors.Wrap(err, "failed to read PPD file")
+	}
+	d, err := debugd.New(ctx)
+	if err != nil {
+		errors.Wrap(err, "failed to connect to debugd")
+	}
 	testing.ContextLog(ctx, "Adding driverless printer to CUPS using ", uri)
-	return testexec.CommandContext(ctx, "lpadmin", "-p", printerName, "-v", uri, "-P", ppd, "-E").Run(testexec.DumpLogOnError)
+	if result, err := d.CupsAddManuallyConfiguredPrinter(ctx, printerName, uri, ppdContents); err != nil {
+		return errors.Wrap(err, "debugd.CupsAddManuallyConfiguredPrinter failed")
+	} else if result != debugd.CUPSSuccess {
+		return errors.Errorf("could not set up a printer: %d", result)
+	}
+	return nil
 }
 
 // CupsRemovePrinter removes the printer that was configured for testing.
