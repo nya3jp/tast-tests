@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43ab2af1_bc4df11c",
+        "filename": "src/chromiumos/tast/common/android/adb/adb.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-22T03:52:33Z",
+      "side": 1,
+      "message": "More background of this, I\u0027m trying to reuse the package |adb| for connecting from remote test host to DUT in remote test. But the L55-L58 is not require on remote test host and will hit permission problem when executing them. An alternative way is to add |isOnHost| parameter to make call site decide whether it intend to call this library on DUT or on remote test host.",
+      "parentUuid": "9507766f_d65aab82",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 41
+      },
+      "revId": "1a7f66c0b5405dbe6ce5f466e74ee02b9f58716d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f4b4d4_82323f5b",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/its_service.go",
         "patchSetId": 17
