@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37aad991_5913088e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-04-22T04:02:08Z",
+      "side": 1,
+      "message": "nit: grammar: \"skipping\"",
+      "range": {
+        "startLine": 87,
+        "startChar": 42,
+        "endLine": 87,
+        "endChar": 46
+      },
+      "revId": "d9c372bd2dc1508f9649cf9e1f210db6f9f3f823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6ecd8ff_7e7e9b44",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-04-22T04:02:08Z",
+      "side": 1,
+      "message": "Displaying",
+      "range": {
+        "startLine": 92,
+        "startChar": 28,
+        "endLine": 92,
+        "endChar": 35
+      },
+      "revId": "d9c372bd2dc1508f9649cf9e1f210db6f9f3f823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7019de35_f945f14a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-04-22T04:02:08Z",
+      "side": 1,
+      "message": "This block looked weird to me.\nCould we add a comment saying if the string is empty, we connect to the default chart tablet?",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 71
+      },
+      "revId": "d9c372bd2dc1508f9649cf9e1f210db6f9f3f823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3329770e_f57e9cd8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-04-22T04:02:08Z",
+      "side": 1,
+      "message": "Running. The \"ing\" tells us that It\u0027s going to happen.\n\n\"Run\" is more problematic here because it\u0027s the present perfect tense of the word \"run\", which could mean the \"run\" already happened.",
+      "range": {
+        "startLine": 109,
+        "startChar": 26,
+        "endLine": 109,
+        "endChar": 29
+      },
+      "revId": "d9c372bd2dc1508f9649cf9e1f210db6f9f3f823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
