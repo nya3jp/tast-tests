@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "559d1d3b_301d06e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-22T00:18:18Z",
+      "side": 1,
+      "message": "I did resolve them, maybe refresh to the latest patch set?",
+      "parentUuid": "d480cdf7_5b1a1701",
+      "revId": "d7de4f89c2ff06be0819ab425edba8ffbbc88e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb9fc50b_a737d2c3",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-22T00:15:32Z",
       "side": 1,
       "message": "This looks good to me.",
+      "range": {
+        "startLine": 40,
+        "startChar": 41,
+        "endLine": 40,
+        "endChar": 59
+      },
+      "revId": "d7de4f89c2ff06be0819ab425edba8ffbbc88e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98754964_5f5604b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-22T00:18:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fb9fc50b_a737d2c3",
       "range": {
         "startLine": 40,
         "startChar": 41,

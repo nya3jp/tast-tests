@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da7d0c36_e8684d0d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-22T00:18:18Z",
+      "side": 1,
+      "message": "The testing.Poll timeout is already 60s, so it won\u0027t be longer than that.",
+      "parentUuid": "c9f9086a_fc179ccf",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "112a2b6483c6725aca8976d4242fcd8ab55bf671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6c88933_9140085d",
