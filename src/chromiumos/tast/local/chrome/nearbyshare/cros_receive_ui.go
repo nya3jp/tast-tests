@@ -66,7 +66,7 @@ func AcceptIncomingShareNotification(ctx context.Context, tconn *chrome.TestConn
 	); err != nil {
 		return errors.Wrap(err, "failed to wait for incoming share notification")
 	}
-	if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{Name: "RECEIVE", ClassName: "NotificationMdTextButton"}, nil); err != nil {
+	if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{Name: "ACCEPT", ClassName: "NotificationMdTextButton"}, nil); err != nil {
 		return errors.Wrap(err, "failed to click sharing notification's receive button")
 	}
 	return nil
