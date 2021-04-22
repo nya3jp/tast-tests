@@ -98,9 +98,6 @@ var UnstableModels = []string{
 	"electro",
 	// Platform sarien
 	"arcada",
-	// Platform scarlet
-	"dru",
-	"dumo",
 	// Platform samus
 	"samus", // crbug.com/1072877
 	// Platform stratego
