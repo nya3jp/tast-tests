@@ -739,6 +739,26 @@ func FlashFirmware(ctx context.Context, d *dut.DUT, needsRebootAfterFlashing boo
 	return nil
 }
 
+// FlashRWFirmware flashes the specified firmwareFile as the RW image on the FPMCU.
+// It does not modify the RO image.
+func FlashRWFirmware(ctx context.Context, d *dut.DUT, fs *dutfs.Client, firmwareFile string) error {
+	exists, err := fs.Exists(ctx, firmwareFile)
+	if err != nil {
+		return errors.Wrapf(err, "error checking that file exists: %q", firmwareFile)
+	}
+	if !exists {
+		return errors.Errorf("file does not exist: %q", firmwareFile)
+	}
+
+	flashCmd := []string{"flashrom", "--noverify-all", "-V", "-p", "ec:type=fp", "-i", "EC_RW", "-w", firmwareFile}
+	testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(flashCmd))
+	if output, err := d.Conn().Command(flashCmd[0], flashCmd[1:]...).CombinedOutput(ctx); err != nil {
+		return errors.Wrapf(err, "flashrom failed: %q", output)
+	}
+
+	return nil
+}
+
 // InitializeEntropy initializes the anti-rollback block in RO firmware.
 func InitializeEntropy(ctx context.Context, d *dut.DUT) error {
 	if err := d.Conn().Command("bio_wash", "--factory_init").Run(ctx, ssh.DumpLogOnError); err != nil {
