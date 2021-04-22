@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/data_migration_pi_x86_64_R89_13678_20210125.tbz2",
-  "size": 88420524,
-  "sha256sum": "a5ea38ac3281b6cf1e5e25fb172fd6f45c1067ee4c85f0591decc4c060c92b3d"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/data_migration_pi_x86_64_R89_13729_20210422.tbz2",
+  "size": 155290199,
+  "sha256sum": "0b48edf33b69e6142ccbda9a5ac15833d4df3945cb82f47ec83111a7122cce96"
 }
