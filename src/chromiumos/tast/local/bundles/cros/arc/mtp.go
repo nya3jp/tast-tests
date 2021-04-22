@@ -10,12 +10,14 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/storage"
+	"chromiumos/tast/local/chrome/mtp"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
 
 // mtpURI contains vendor / model id of the Android device under test.
 const (
-	mtpURI = "content://org.chromium.arc.chromecontentprovider/externalfile%3Afileman-mtp-mtp%253AVendorModelVolumeStorage%253A6353%253A20193%253A%253A65537%2FDownload%2F"
+	mtpURI = "content://org.chromium.arc.chromecontentprovider/externalfile%3Afileman-mtp-mtp%253AVendorModelVolumeStorage%253A6353%253A20194%253A%253A65537%2FDownload%2F"
 )
 
 // arc.Mtp / arc.Mtp.vm tast tests depend on the use of actual Android device in the lab.
@@ -26,17 +28,17 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Mtp,
+		Func: MTP,
 		Desc: "ARC++/ARCVM Android app can read files on external Android device (with MTP) via FilesApp",
 		Contacts: []string{
 			"cherieccy@google.com",
 			"arc-storage@google.com",
+			"cros-arc-te@google.com",
 		},
-		// TODO(b/179736612): Enable the test when the lab setup is ready.
-		//Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:mtp"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		Fixture:      "arcBooted",
+		Fixture:      "mtpWithAndroid",
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p"},
@@ -48,11 +50,20 @@ func init() {
 	})
 }
 
-func Mtp(ctx context.Context, s *testing.State) {
-	a := s.FixtValue().(*arc.PreData).ARC
-	cr := s.FixtValue().(*arc.PreData).Chrome
+func MTP(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(*mtp.FixtData).Chrome
+	tconn := s.FixtValue().(*mtp.FixtData).TestConn
 
-	config := storage.TestConfig{DirName: "Nexus/Pixel (MTP)", DirTitle: "Files - Nexus/Pixel (MTP)",
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	//TODO(b/187740535): Investigate and reserve time for cleanup.
+	defer a.Close(ctx)
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	config := storage.TestConfig{DirName: "Nexus/Pixel (MTP+ADB)", DirTitle: "Files - Nexus/Pixel (MTP+ADB)",
 		SubDirectories: []string{"Download"}, FileName: "storage.txt"}
 	expectations := []storage.Expectation{
 		{LabelID: storage.ActionID, Value: storage.ExpectedAction},
