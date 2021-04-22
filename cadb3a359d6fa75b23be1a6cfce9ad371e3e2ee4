@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "658ecf74_9ad46d1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-22T16:41:42Z",
+      "side": 1,
+      "message": "nit: add a blank line before",
+      "revId": "cadb3a359d6fa75b23be1a6cfce9ad371e3e2ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf5fcb9d_5bc73599",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-22T16:41:42Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "cadb3a359d6fa75b23be1a6cfce9ad371e3e2ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
