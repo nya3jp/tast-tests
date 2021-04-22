@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beb8a064_5c58f3ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_stateful_partition_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-22T23:12:12Z",
+      "side": 1,
+      "message": "Should this be a Fatal as well? Seems if you have len(fields) \u003d\u003d 0, this would present an error but the next line would execute and panic.",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 11
+      },
+      "revId": "3461c98a440bb18f074a39b204a95d2193af9336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
