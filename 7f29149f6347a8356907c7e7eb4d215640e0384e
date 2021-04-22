@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "333cafbe_fedb8054",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-04-22T20:08:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70925482_ceeaa456",
+      "range": {
+        "startLine": 21,
+        "startChar": 18,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "7f29149f6347a8356907c7e7eb4d215640e0384e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37879990_b9e98b09",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-04-22T16:19:01Z",
       "side": 1,
       "message": "Per http://go/go-code-review-comments#line-length, please remove this line break.\n\n    In other words, break lines because of the semantics of what you\u0027re writing (as a general rule) and not because of the length of the line.",
+      "revId": "7f29149f6347a8356907c7e7eb4d215640e0384e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdf9076c_302d17d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lpprint/lpprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-04-22T20:08:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37879990_b9e98b09",
       "revId": "7f29149f6347a8356907c7e7eb4d215640e0384e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
