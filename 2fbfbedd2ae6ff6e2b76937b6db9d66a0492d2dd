@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fe38724_4c5e3def",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-22T08:42:05Z",
+      "side": 1,
+      "message": "This CL is adding back the code removed in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2801036/6..8/src/chromiumos/tast/local/bundles/cros/arc/task_manager.go#b109\n\nPlease approve.",
+      "revId": "2fbfbedd2ae6ff6e2b76937b6db9d66a0492d2dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
