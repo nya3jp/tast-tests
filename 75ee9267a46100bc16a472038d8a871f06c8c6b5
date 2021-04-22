@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afcba25a_458d2bc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-04-22T08:03:40Z",
+      "side": 1,
+      "message": "Actually, I\u0027ll use crosfleet to run some more tests with the scarlet-cq image from this build, that will give us a better idea of how reliable this is",
+      "revId": "75ee9267a46100bc16a472038d8a871f06c8c6b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
