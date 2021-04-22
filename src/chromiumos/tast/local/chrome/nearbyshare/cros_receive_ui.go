@@ -66,7 +66,17 @@ func AcceptIncomingShareNotification(ctx context.Context, tconn *chrome.TestConn
 	); err != nil {
 		return errors.Wrap(err, "failed to wait for incoming share notification")
 	}
-	if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{Name: "RECEIVE", ClassName: "NotificationMdTextButton"}, nil); err != nil {
+	// TODO(crbug/1201855): Get rid of the regex and just use "ACCEPT" once we don't have to worry about version skew for CrOS<->CrOS sharing.
+	// Since we don't have multi-DUT support in the lab yet, sender and receiver devices are often running different OS versions, and thus have different strings.
+	r, err := regexp.Compile("(ACCEPT|RECEIVE)")
+	if err != nil {
+		return errors.Wrap(err, "failed to compile regexp for accept/receive button")
+	}
+	btnParams := ui.FindParams{
+		ClassName:  "NotificationMdTextButton",
+		Attributes: map[string]interface{}{"name": r},
+	}
+	if err := ui.StableFindAndClick(ctx, tconn, btnParams, nil); err != nil {
 		return errors.Wrap(err, "failed to click sharing notification's receive button")
 	}
 	return nil
