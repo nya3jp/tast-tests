@@ -34,6 +34,24 @@
       "parentUuid": "5388abb1_2ab5b1f4",
       "revId": "5612ed42d9f47f8837d5038bc9ff04ba73a0b545",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9207826_831b014d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-04-22T08:22:03Z",
+      "side": 1,
+      "message": "As Gabor said, it\u0027s already there. Hopefully there won\u0027t be more fixes for this test. Currently all the boards are passing!",
+      "parentUuid": "5e297f45_ea8f4f33",
+      "revId": "5612ed42d9f47f8837d5038bc9ff04ba73a0b545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
