@@ -16,6 +16,24 @@
       "message": "next time we will be working on this test please add the values of expectedPercent and actual value (blurredRed?) in the error message.",
       "revId": "5612ed42d9f47f8837d5038bc9ff04ba73a0b545",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e297f45_ea8f4f33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-22T07:51:41Z",
+      "side": 1,
+      "message": "This information is inside the err that validateBackground() returns.",
+      "parentUuid": "5388abb1_2ab5b1f4",
+      "revId": "5612ed42d9f47f8837d5038bc9ff04ba73a0b545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
