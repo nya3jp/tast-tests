@@ -104,4 +104,9 @@ func TaskManager(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find ARC entry")
 	}
 
+	// Exit task manager.
+	if err := kb.Accel(ctx, "Ctrl+W"); err != nil {
+		s.Error("Failed to exit Task Manager: ", err)
+	}
+
 }
