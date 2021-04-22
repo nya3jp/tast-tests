@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5369369_d47edfcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-04-22T19:45:08Z",
+      "side": 1,
+      "message": "skau@ ptal",
+      "revId": "7f29149f6347a8356907c7e7eb4d215640e0384e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70925482_ceeaa456",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_test.go",
         "patchSetId": 2
