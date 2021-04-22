@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c2a0bc3f_9a836d4e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-22T04:47:32Z",
+      "side": 1,
+      "message": "Done. Tested on those tests under \"chrome.critical\" suite and no extra failures are observed after applying this CL.",
+      "parentUuid": "eaa85232_d4d884e3",
+      "range": {
+        "startLine": 15,
+        "startChar": 20,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "516e7c504bd93dd63cc466544cf4fdf16a6fc70d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fbdbf61f_38d985ed",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -37,6 +61,24 @@
       "writtenOn": "2021-04-21T03:17:12Z",
       "side": 1,
       "message": "Sorry for the late response btw!",
+      "revId": "516e7c504bd93dd63cc466544cf4fdf16a6fc70d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "066087e2_d858312e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-22T04:47:32Z",
+      "side": 1,
+      "message": "No worries. Thanks for help review :)",
+      "parentUuid": "fbdbf61f_38d985ed",
       "revId": "516e7c504bd93dd63cc466544cf4fdf16a6fc70d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2021-04-21T03:16:56Z",
       "side": 1,
       "message": "nit: you can just return this instead of checking if it\u0027s not nil",
+      "range": {
+        "startLine": 204,
+        "startChar": 11,
+        "endLine": 204,
+        "endChar": 23
+      },
+      "revId": "516e7c504bd93dd63cc466544cf4fdf16a6fc70d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6c5f2ce_7e842fba",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-22T04:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83c81eba_c68b12fc",
       "range": {
         "startLine": 204,
         "startChar": 11,
