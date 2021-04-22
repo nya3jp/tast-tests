@@ -12,6 +12,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type memoryPressureParams struct {
+	enableARC bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     MemoryPressure,
@@ -24,23 +28,23 @@ func init() {
 			mempressure.WPRArchiveName,
 		},
 		SoftwareDeps: []string{"chrome"},
-		Vars:         []string{"platform.MemoryPressure.enableARC"},
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android_p"},
+			Val: &memoryPressureParams{enableARC: false},
 		}, {
 			Name:              "vm",
+			Val:               &memoryPressureParams{enableARC: true},
 			ExtraSoftwareDeps: []string{"android_vm"},
+		}, {
+			Name:              "container",
+			Val:               &memoryPressureParams{enableARC: true},
+			ExtraSoftwareDeps: []string{"android_p"},
 		}},
 	})
 }
 
 // MemoryPressure is the main test function.
 func MemoryPressure(ctx context.Context, s *testing.State) {
-	enableARC := false
-	if val, ok := s.Var("platform.MemoryPressure.enableARC"); ok && val == "1" {
-		enableARC = true
-	}
-	s.Log("enableARC: ", enableARC)
+	enableARC := s.Param().(*memoryPressureParams).enableARC
 
 	testEnv, err := mempressure.NewTestEnv(ctx, s.OutDir(), enableARC, s.DataPath(mempressure.WPRArchiveName))
 	if err != nil {
