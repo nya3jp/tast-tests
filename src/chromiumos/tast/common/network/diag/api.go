@@ -69,6 +69,10 @@ function() {
       return await this.getNetworkDiagnostics().signalStrength();
     },
 
+    async hasSecureWiFiConnection() {
+      return await this.getNetworkDiagnostics().hasSecureWiFiConnection();
+    },
+
     async gatewayCanBePinged() {
       return await this.getNetworkDiagnostics().gatewayCanBePinged();
     },
@@ -123,15 +127,16 @@ func CheckRoutineResult(result, expectedResult *RoutineResult) error {
 
 // List of network diagnostic routines
 const (
-	RoutineLanConnectivity    = "lanConnectivity"
-	RoutineDNSResolverPresent = "dnsResolverPresent"
-	RoutineDNSResolution      = "dnsResolution"
-	RoutineDNSLatency         = "dnsLatency"
-	RoutineHTTPFirewall       = "httpFirewall"
-	RoutineHTTPSFirewall      = "httpsFirewall"
-	RoutineHTTPSLatency       = "httpsLatency"
-	RoutineSignalStrength     = "signalStrength"
-	RoutineGatewayCanBePing   = "gatewayCanBePinged"
-	RoutineCaptivePortal      = "captivePortal"
-	RoutineVideoConferencing  = "videoConferencing"
+	RoutineLanConnectivity      = "lanConnectivity"
+	RoutineDNSResolverPresent   = "dnsResolverPresent"
+	RoutineDNSResolution        = "dnsResolution"
+	RoutineDNSLatency           = "dnsLatency"
+	RoutineHTTPFirewall         = "httpFirewall"
+	RoutineHTTPSFirewall        = "httpsFirewall"
+	RoutineHTTPSLatency         = "httpsLatency"
+	RoutineSignalStrength       = "signalStrength"
+	RoutineSecureWiFiConnection = "hasSecureWiFiConnection"
+	RoutineGatewayCanBePing     = "gatewayCanBePinged"
+	RoutineCaptivePortal        = "captivePortal"
+	RoutineVideoConferencing    = "videoConferencing"
 )
