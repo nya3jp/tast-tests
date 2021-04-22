@@ -240,7 +240,7 @@ func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fs *dutfs.Client, fpBo
 	}
 
 	// Check RO version.
-	actualRoVersion, err := readFmapSection(ctx, d, fs, buildFwFile, "RO_FRID")
+	actualRoVersion, err := GetBuildROFirmwareVersion(ctx, d, fs, buildFwFile)
 	if err != nil {
 		return err
 	}
@@ -272,6 +272,11 @@ func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fs *dutfs.Client, fpBo
 // GetBuildRWFirmwareVersion returns the RW version of a given build firmware file on DUT.
 func GetBuildRWFirmwareVersion(ctx context.Context, d *dut.DUT, fs *dutfs.Client, buildFWFile string) (string, error) {
 	return readFmapSection(ctx, d, fs, buildFWFile, "RW_FWID")
+}
+
+// GetBuildROFirmwareVersion returns the RO version of a given build firmware file on DUT.
+func GetBuildROFirmwareVersion(ctx context.Context, d *dut.DUT, fs *dutfs.Client, buildFWFile string) (string, error) {
+	return readFmapSection(ctx, d, fs, buildFWFile, "RO_FRID")
 }
 
 // readFmapSection reads a section (e.g. RO_FRID) from a firmware file on device.
