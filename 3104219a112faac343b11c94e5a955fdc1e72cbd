@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f096b79_aed0536f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-04-22T22:27:18Z",
+      "side": 1,
+      "message": "How about some information on what\u0027s being changed and why?  Especially since there\u0027s no bug.",
+      "revId": "3104219a112faac343b11c94e5a955fdc1e72cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6049616_e6fd9963",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-04-22T22:27:18Z",
+      "side": 1,
+      "message": "The changes generally look okay.  However, I don\u0027t understand the motivation for moving the CleanPSContents function.",
+      "revId": "3104219a112faac343b11c94e5a955fdc1e72cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3596f76_319e8331",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-04-22T22:27:18Z",
+      "side": 1,
+      "message": "Does go allow lowercase names for structs?",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "3104219a112faac343b11c94e5a955fdc1e72cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d433ada_b154d0d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-04-22T22:27:18Z",
+      "side": 1,
+      "message": "Can we give this a more informative name?  Maybe sizeTest?",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 10
+      },
+      "revId": "3104219a112faac343b11c94e5a955fdc1e72cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
