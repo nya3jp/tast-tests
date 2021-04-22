@@ -33,6 +33,23 @@
       "message": "Po-Hsien, could you please take a look at the change?",
       "revId": "12104460f3f5337d49f4e9098bef5ae4f746cbc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c02d0f56_8bbf435c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-04-22T00:27:54Z",
+      "side": 1,
+      "message": "Talked to Po-Hsien and a good point that we could make this shorter.\nIdeally the reasons are short-ish with most information.\nLet me take another look at this.",
+      "revId": "12104460f3f5337d49f4e9098bef5ae4f746cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
