@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d0a709_0527ca88",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-22T04:25:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37aad991_5913088e",
+      "range": {
+        "startLine": 87,
+        "startChar": 42,
+        "endLine": 87,
+        "endChar": 46
+      },
+      "revId": "d9c372bd2dc1508f9649cf9e1f210db6f9f3f823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6ecd8ff_7e7e9b44",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-22T04:02:08Z",
       "side": 1,
       "message": "Displaying",
+      "range": {
+        "startLine": 92,
+        "startChar": 28,
+        "endLine": 92,
+        "endChar": 35
+      },
+      "revId": "d9c372bd2dc1508f9649cf9e1f210db6f9f3f823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f847a235_7ea02d32",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-22T04:25:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6ecd8ff_7e7e9b44",
       "range": {
         "startLine": 92,
         "startChar": 28,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31294869_041af867",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-22T04:25:17Z",
+      "side": 1,
+      "message": "|chart.New()| may be used in many place, so the best place to explain this is in its function comment. Please check if the function comment is clear to you:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go;rcl\u003d33dd1ae3c5d0e67707ebc9e5696b606339c0a0ce;l\u003d124",
+      "parentUuid": "7019de35_f945f14a",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 71
+      },
+      "revId": "d9c372bd2dc1508f9649cf9e1f210db6f9f3f823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3329770e_f57e9cd8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
         "patchSetId": 18
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-22T04:02:08Z",
       "side": 1,
       "message": "Running. The \"ing\" tells us that It\u0027s going to happen.\n\n\"Run\" is more problematic here because it\u0027s the present perfect tense of the word \"run\", which could mean the \"run\" already happened.",
+      "range": {
+        "startLine": 109,
+        "startChar": 26,
+        "endLine": 109,
+        "endChar": 29
+      },
+      "revId": "d9c372bd2dc1508f9649cf9e1f210db6f9f3f823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b4a2cb_88e0ced0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-22T04:25:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3329770e_f57e9cd8",
       "range": {
         "startLine": 109,
         "startChar": 26,
