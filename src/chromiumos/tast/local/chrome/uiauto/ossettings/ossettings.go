@@ -140,6 +140,14 @@ func LaunchAtPageURL(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chr
 	return s, nil
 }
 
+// LaunchAtAppMgmtPage launches the Settings app at a particular app management page under app
+// via changing URL in javascript.
+// The URL includes an App ID.
+// It calls LaunchAtPageURL.
+func LaunchAtAppMgmtPage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, appID string, condition func(context.Context) error) (*OSSettings, error) {
+	return LaunchAtPageURL(ctx, tconn, cr, fmt.Sprintf("app-management/detail?id=%s", appID), condition)
+}
+
 // LaunchHelpApp returns a function that launches Help app by clicking "Get help with Chrome OS".
 func (s *OSSettings) LaunchHelpApp() uiauto.Action {
 	return s.ui.LeftClick(nodewith.Name("Get help with Chrome OS").Role(role.Link).Ancestor(WindowFinder))

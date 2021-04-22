@@ -219,6 +219,12 @@ var Youtube = App{
 	Name: "Youtube",
 }
 
+// Parallels has details about the Parallels app.
+var Parallels = App{
+	ID:   "lgjpclljbbmphhnalkeplcmnjpfmmaek",
+	Name: "Parallels Desktop",
+}
+
 // Launch launches an app specified by appID.
 func Launch(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
