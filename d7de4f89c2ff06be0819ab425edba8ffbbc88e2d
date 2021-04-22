@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d480cdf7_5b1a1701",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-04-22T00:15:32Z",
+      "side": 1,
+      "message": "+2 for not being too picky but it\u0027ll be great if my follow-up comments are addressed.",
+      "revId": "d7de4f89c2ff06be0819ab425edba8ffbbc88e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb9fc50b_a737d2c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-04-22T00:15:32Z",
+      "side": 1,
+      "message": "This looks good to me.",
+      "range": {
+        "startLine": 40,
+        "startChar": 41,
+        "endLine": 40,
+        "endChar": 59
+      },
+      "revId": "d7de4f89c2ff06be0819ab425edba8ffbbc88e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

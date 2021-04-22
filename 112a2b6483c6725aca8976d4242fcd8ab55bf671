@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f9086a_fc179ccf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-04-22T00:15:32Z",
+      "side": 1,
+      "message": "Maybe you can simply measure the local time (time.Now()) and check it\u0027s not taking more than 60 seconds?",
+      "parentUuid": "113f8490_4d838389",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "112a2b6483c6725aca8976d4242fcd8ab55bf671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6c88933_9140085d",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "In my testing the uart buffer was clear, but I suppose if the uart was already in capture mode, there could possible be some garbage in there from an earlier command.\n\nI\u0027ll change this to look for the `Rebooting!` message instead.",
       "parentUuid": "e6c88933_9140085d",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 14
+      },
+      "revId": "112a2b6483c6725aca8976d4242fcd8ab55bf671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85687a3f_30149aa0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-04-22T00:15:32Z",
+      "side": 1,
+      "message": "Sgtm but flushing the buffer is more accurate.",
+      "parentUuid": "a94d3b97_187f5173",
       "range": {
         "startLine": 111,
         "startChar": 5,
