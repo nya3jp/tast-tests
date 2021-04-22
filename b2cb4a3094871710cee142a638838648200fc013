@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08ac5b18_c6674238",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-22T17:51:25Z",
+      "side": 1,
+      "message": "Hi Jun, thank you for the quick action on reviewing the CL. Please check the addressed comments and a few other changes.",
+      "revId": "b2cb4a3094871710cee142a638838648200fc013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
