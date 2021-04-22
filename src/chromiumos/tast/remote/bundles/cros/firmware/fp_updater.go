@@ -21,8 +21,6 @@ import (
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/firmware"
-	"chromiumos/tast/shutil"
-	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -71,7 +69,7 @@ func getOldFirmwarePath(s *testing.State, fpBoard fingerprint.FPBoardName) (stri
 }
 
 // flashOldRWFirmware flashes a known out-dated version of firmware.
-func flashOldRWFirmware(ctx context.Context, s *testing.State, d *dut.DUT) error {
+func flashOldRWFirmware(ctx context.Context, s *testing.State, d *dut.DUT, fs *dutfs.Client) error {
 	fpBoard, err := fingerprint.Board(ctx, d)
 	if err != nil {
 		return errors.Wrap(err, "failed to get fp board")
@@ -87,12 +85,8 @@ func flashOldRWFirmware(ctx context.Context, s *testing.State, d *dut.DUT) error
 		linuxssh.DereferenceSymlinks); err != nil {
 		return errors.Wrap(err, "failed to send old firmware to DUT")
 	}
-	flashCmd := []string{"flashrom", "--noverify-all", "-w", oldFirmwarePathOnDut, "-i", "EC_RW", "-p", "ec:type=fp"}
-	testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(flashCmd))
-	if err := d.Conn().CommandContext(ctx, flashCmd[0], flashCmd[1:]...).Run(ssh.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "flashrom failed")
-	}
-	return nil
+
+	return fingerprint.FlashRWFirmware(ctx, d, fs, oldFirmwarePathOnDut)
 }
 
 func FpUpdater(ctx context.Context, s *testing.State) {
@@ -141,7 +135,7 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Flashing outdated FP firmware")
-	if err := flashOldRWFirmware(ctx, s, d); err != nil {
+	if err := flashOldRWFirmware(ctx, s, d, dutfsClient); err != nil {
 		s.Fatal("Failed to flash outdated RW firmware: ", err)
 	}
 
