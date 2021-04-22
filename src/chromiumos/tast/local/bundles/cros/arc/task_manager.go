@@ -82,6 +82,12 @@ func TaskManager(ctx context.Context, s *testing.State) {
 	if err := kb.Accel(ctx, "Search+Esc"); err != nil {
 		s.Fatal("Failed to launch Task Manager: ", err)
 	}
+	//TODO(b/186370767): Add task manager cleanup to Chrome.ResetState.
+	defer func() {
+		if kb.Accel(ctx, "Ctrl+W"); err != nil {
+			s.Error("Failed to exit Task Manager: ", err)
+		}
+	}()
 
 	if err := ui.WaitUntilExists(taskManager)(ctx); err != nil {
 		s.Fatal("Failed to open Task Manager: ", err)
@@ -103,5 +109,4 @@ func TaskManager(ctx context.Context, s *testing.State) {
 	if !arcEntryFound {
 		s.Fatal("Failed to find ARC entry")
 	}
-
 }
