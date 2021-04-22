@@ -64,10 +64,14 @@ func init() {
 	})
 }
 
+// DataMigration checks regressions for the following bugs:
+// b/173835269 Can't download or install some apps after P->R data migration.
+// b/183690158 vold hangs while processing fixupAllAppDirs() if there are thousands of files to fix.
+//             (Home data data_migration_pi_* contains 5000 dirs under
+//              /sdcard/Android/data/com.android.vending/files/ for reproducing this bug.)
 func DataMigration(ctx context.Context, s *testing.State) {
 	const (
-		// One of the apps reported by
-		// b/173835269 (Can't download or install some apps after P->R data migration).
+		// One of the apps reported by b/173835269.
 		appToInstall = "com.roblox.client"
 	)
 
