@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37ea1414_cc05a099",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-22T05:26:13Z",
+      "side": 1,
+      "message": "nit:specific",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "1a6cc07e08b421ed3a876dc970dd1c256edec90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e175aa9_b34b7a5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-22T05:26:13Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nit, do we also need a review by the owner of this library code?",
+      "revId": "1a6cc07e08b421ed3a876dc970dd1c256edec90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
