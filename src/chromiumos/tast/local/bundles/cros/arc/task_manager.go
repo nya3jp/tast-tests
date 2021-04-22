@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -79,9 +80,20 @@ func TaskManager(ctx context.Context, s *testing.State) {
 	arcEntry := nodewith.Name("App: " + pkg).Ancestor(taskManager)
 	ui := uiauto.New(tconn)
 
+	// Use a shortened context for tests to reserve time for cleanup.
+	cleanCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+
 	if err := kb.Accel(ctx, "Search+Esc"); err != nil {
 		s.Fatal("Failed to launch Task Manager: ", err)
 	}
+	// TODO(b/186370767): Add task manager cleanup to Chrome.ResetState.
+	defer func() {
+		if kb.Accel(cleanCtx, "Ctrl+W"); err != nil {
+			s.Error("Failed to exit Task Manager: ", err)
+		}
+	}()
 
 	if err := ui.WaitUntilExists(taskManager)(ctx); err != nil {
 		s.Fatal("Failed to open Task Manager: ", err)
@@ -103,5 +115,4 @@ func TaskManager(ctx context.Context, s *testing.State) {
 	if !arcEntryFound {
 		s.Fatal("Failed to find ARC entry")
 	}
-
 }
