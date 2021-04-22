@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3785d06b_86c80c1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_stateful_partition_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-04-22T12:41:52Z",
+      "side": 1,
+      "message": "Right, we should exit the test immediately.",
+      "parentUuid": "7513a4d2_f1de750d",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 9
+      },
+      "revId": "cced5719e13bc9cd948137a2ee9cfb53a44576ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "431dfc15_6bd05681",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-22T10:50:13Z",
       "side": 1,
       "message": "Might be better to make these s.Fatal\u0027s to bail out early and avoid the if else. e.g.\n```\nif statefulPartitionInfo \u003d\u003d nil {\n\ts.Fatal(\"Failed to find stateful partition info in mtab\")\n}\nif statefulPartitionInfo[2] !\u003d vals[2] {\n\ts.Fatalf(\"Wrong filesystem info: got %s; want %s\", vals[2], statefulPartitionInfo[2])\n} \nif statefulPartitionInfo[0] !\u003d vals[3] {\n\ts.Fatalf(\"Wrong mount source info: got %s; want %s\", vals[3], statefulPartitionInfo[0])\n}\n```\ns.Error is usually used to indicate an overall failure but you wish to continue execution (e.g. a loop of assertions where you want to verify all but a failure on any fails the whole test)",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 9
+      },
+      "revId": "cced5719e13bc9cd948137a2ee9cfb53a44576ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8706d300_9064cd1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_stateful_partition_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-04-22T12:41:52Z",
+      "side": 1,
+      "message": "Got it, I didn\u0027t notice that before. I check the implementation in tast/, and yes I should use `Fatal` here. Thanks for pointing this out!",
+      "parentUuid": "431dfc15_6bd05681",
       "range": {
         "startLine": 109,
         "startChar": 4,
