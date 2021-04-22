@@ -16,6 +16,41 @@
       "message": "I can add the mapping for the known bugs in tastboard if you send them to me.\n\nhatch and reks also had flakes. Are those expected?\n\nhttps://cros-health-prod.googleplex.com/test/wifi.UdevRename",
       "revId": "b18f93a739dfdba9cf45366b02460823970da427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f10d32_e2822cbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-04-22T20:20:44Z",
+      "side": 1,
+      "message": "thanks for the scrutiny. LMKWYT",
+      "revId": "b18f93a739dfdba9cf45366b02460823970da427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45a4e52a_0334bd24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-04-22T20:20:44Z",
+      "side": 1,
+      "message": "\u003e I can add the mapping for the known bugs in tastboard if you send them to me.\n\nthe main persistent KI is asurada: https://b.corp.google.com/issues/183992356\n\n\u003e hatch and reks also had flakes. Are those expected?\n\nreks: that\u0027s a bad DUT https://b.corp.google.com/issues/186140702\n\nhatch: that looks like a single instance of a DUT failing to bring WiFi up at all. It affects other existing (mainline/critical) tests too. It\u0027s also less clear what to do, since it\u0027s not a reproducible failure.",
+      "parentUuid": "f9ac0420_cc73c5f3",
+      "revId": "b18f93a739dfdba9cf45366b02460823970da427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
