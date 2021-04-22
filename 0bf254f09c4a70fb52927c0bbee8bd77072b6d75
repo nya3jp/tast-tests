@@ -16,6 +16,23 @@
       "message": "This is why I need to start running the E2E tests locally :facepalm: Thanks for catching and fixing this so quickly Kyle.",
       "revId": "0bf254f09c4a70fb52927c0bbee8bd77072b6d75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7db549da_7847f47a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-22T22:53:00Z",
+      "side": 1,
+      "message": "Actually I need to make it check for both \"ACCEPT\" and \"RECEIVE\", since the lack of proper multi-DUT support means that there can be version skew between sender and receiver. I was wondering why CB-\u003eCB wasn\u0027t failing in the lab haha, it turns out the receiver DUT is typically on M91, and the sender is on M92.",
+      "revId": "0bf254f09c4a70fb52927c0bbee8bd77072b6d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
