@@ -106,6 +106,24 @@
       "parentUuid": "220e04c8_04ebe085",
       "revId": "b00840f8d13735e431d753be8b112cc26ab59260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "437d23b8_74d289e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-22T08:55:57Z",
+      "side": 1,
+      "message": "Hmm? I believe it\u0027s public.\n\n % gsutil acl get gs://chromiumos-test-assets-public/tast/cros/video/bear-320x240_20200925.av1.mp4\n [\n  {\n    \"email\": \"hiroh@google.com\",\n    \"entity\": \"user-hiroh@google.com\",\n    \"role\": \"OWNER\"\n  },\n  {\n    \"entity\": \"allUsers\",\n    \"role\": \"READER\"\n  }\n ]\n\nWould you mind sharing the error message?",
+      "parentUuid": "9000fd7a_991fbc00",
+      "revId": "b00840f8d13735e431d753be8b112cc26ab59260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
