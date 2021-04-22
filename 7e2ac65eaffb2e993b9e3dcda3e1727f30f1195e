@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7407d890_3f2d22ac",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleon.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-22T17:51:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e50e3b80_fa7e49ce",
+      "range": {
+        "startLine": 81,
+        "startChar": 11,
+        "endLine": 81,
+        "endChar": 15
+      },
+      "revId": "7e2ac65eaffb2e993b9e3dcda3e1727f30f1195e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e005d938_cfb63924",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-21T22:14:16Z",
       "side": 1,
       "message": "It seems can be shorter as below:\n\nfor _, p :\u003d range ch.ports {\n\tif p \u003d\u003d portID {\n\t\treturn \u0026Port{ch: ch, id: portID}, nil\n\t}\n}\nreturn nil, errors.Errorf(\"port %d is not supported on the chameleon board\", portID)",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "7e2ac65eaffb2e993b9e3dcda3e1727f30f1195e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa4ce32_e4e0a410",
+        "filename": "src/chromiumos/tast/common/chameleon/port.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-22T17:51:25Z",
+      "side": 1,
+      "message": "Thanks. It\u0027s a neat change!",
+      "parentUuid": "e005d938_cfb63924",
       "range": {
         "startLine": 24,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f9956b_0e2102db",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-22T17:51:25Z",
+      "side": 1,
+      "message": "Changed both to pointer.",
+      "parentUuid": "48b83db2_5896d7b6",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 48
+      },
+      "revId": "7e2ac65eaffb2e993b9e3dcda3e1727f30f1195e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f06fe0f9_36a9fa2d",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-21T22:14:16Z",
       "side": 1,
       "message": "cann\u0027t you use strings.Join here?",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "7e2ac65eaffb2e993b9e3dcda3e1727f30f1195e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49df0ce2_b558623c",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-22T17:51:25Z",
+      "side": 1,
+      "message": "Changed. Also added unit test.",
+      "parentUuid": "f06fe0f9_36a9fa2d",
       "range": {
         "startLine": 113,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40a55ad6_174f726e",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-22T17:51:25Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "b3e9d047_993d4115",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 3
+      },
+      "revId": "7e2ac65eaffb2e993b9e3dcda3e1727f30f1195e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a90b689_7b1e30e2",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-04-21T22:14:16Z",
       "side": 1,
       "message": "Do not know why it was submitted before. A TODO should attach a bug info \n//TODO(crbug.com/...). It would be nice to fix it.",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 18
+      },
+      "revId": "7e2ac65eaffb2e993b9e3dcda3e1727f30f1195e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2fbb016_e05da283",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-22T17:51:25Z",
+      "side": 1,
+      "message": "crbug.com/1201727 was created to track the request.",
+      "parentUuid": "4a90b689_7b1e30e2",
       "range": {
         "startLine": 213,
         "startChar": 1,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f20908f_423b93da",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-22T17:51:25Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "9199e7bc_65bda3e6",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 64
+      },
+      "revId": "7e2ac65eaffb2e993b9e3dcda3e1727f30f1195e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b33227d_3c6710db",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-04-21T22:14:16Z",
       "side": 1,
       "message": "nit: is not a supported type",
+      "range": {
+        "startLine": 369,
+        "startChar": 27,
+        "endLine": 369,
+        "endChar": 48
+      },
+      "revId": "7e2ac65eaffb2e993b9e3dcda3e1727f30f1195e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba6fbb7b_1e05ce37",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-22T17:51:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b33227d_3c6710db",
       "range": {
         "startLine": 369,
         "startChar": 27,
