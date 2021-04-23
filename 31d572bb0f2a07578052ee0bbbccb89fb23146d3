@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aab32014_2d76e6d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-04-23T23:41:19Z",
+      "side": 1,
+      "message": "Please add a comment in the commit to indicate whether the manual testing passed. Thanks.",
+      "revId": "31d572bb0f2a07578052ee0bbbccb89fb23146d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e899463_d075ba37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-04-23T23:41:19Z",
+      "side": 1,
+      "message": "Please remove this blank line.",
+      "revId": "31d572bb0f2a07578052ee0bbbccb89fb23146d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
