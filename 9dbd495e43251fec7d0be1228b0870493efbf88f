@@ -16,6 +16,24 @@
       "message": "nit: move the constants inside expectedFlashProtectOutput",
       "revId": "9dbd495e43251fec7d0be1228b0870493efbf88f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2e6034d_56135bce",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-23T18:44:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "db3f03f6_3d0afa91",
+      "revId": "9dbd495e43251fec7d0be1228b0870493efbf88f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
