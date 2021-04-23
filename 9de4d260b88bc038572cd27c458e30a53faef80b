@@ -46,6 +46,30 @@
       },
       "revId": "9de4d260b88bc038572cd27c458e30a53faef80b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08617762_cb544bc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-04-23T13:10:53Z",
+      "side": 1,
+      "message": "hmmm. Not sure if that won\u0027t mislead someone looking at that in 6 months.\n\nPasting to int is done on result[4] as mentioned but the str has 4 numbers (according to regex).\n\nUnless err carries that information.",
+      "parentUuid": "0fe5dcb2_e8fd71f5",
+      "range": {
+        "startLine": 102,
+        "startChar": 41,
+        "endLine": 102,
+        "endChar": 44
+      },
+      "revId": "9de4d260b88bc038572cd27c458e30a53faef80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
