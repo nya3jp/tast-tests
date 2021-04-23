@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7251a72a_6819153f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-23T17:45:56Z",
+      "side": 1,
+      "message": "The clobber tool is separate. For this test we want to call bio_wash directly to make sure it is behaving correctly.\n\nI added some additional details in the bug on the clobber test part.",
+      "range": {
+        "startLine": 20,
+        "startChar": 42,
+        "endLine": 20,
+        "endChar": 66
+      },
+      "revId": "5595af999745f2d4967f035e8dda38be1dfd929f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6cc39e2_5a812540",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-23T17:45:56Z",
+      "side": 1,
+      "message": "Since fingerprint.NewFirmwareTest does a lot of initialization and is somewhat complex, it would be good to add a check here (before adding entropy) that the initial rollback state is what we want it to be for the test. This is a defensive programming technique to make sure that any additional changes we make to fingerprint.NewFirmwareTest in the future does not accidentally break the assumptions we made in this test.\n\nBefore we add entropy, we expect\n\n Rollback block id:    0\n Rollback min version: 0\n RW rollback version:  0\n\nAfter adding entropy, we expect\n\n Rollback block id:    1\n Rollback min version: 0\n RW rollback version:  0\n\nYou are correctly checking the second with the call to fingerprint.CheckRollbackSetToInitialValue at the end.\n\nTo check the initial state, you can use fingerprint.CheckRollbackState.",
+      "revId": "5595af999745f2d4967f035e8dda38be1dfd929f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "551a67d0_86ef9edb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-23T17:45:56Z",
+      "side": 1,
+      "message": "This function is actually calling \"ectool addentropy\". Ultimately, they should do the same thing, but ectool is just used for testing (we don\u0027t ship on the release image).\n\nFor this test, we want to make sure that \"bio_wash\" (which we do ship on the release image) behaves as expected. You can add a function similar to fingerprint.AddEntropy, but make it call \"bio_wash\" (optionally with the \"--factory_init\" flag).",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 33
+      },
+      "revId": "5595af999745f2d4967f035e8dda38be1dfd929f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a5ccc0_804a8d46",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-23T17:45:56Z",
+      "side": 1,
+      "message": "It\u0027s not very clear from the bug, but the additional test that we want to do after the initial \"bio_wash --factory-init\" is validate that running \"bio_wash\" (without args) increments \"rollback block id\", but not \"min version\" or \"RW rollback version\".",
+      "revId": "5595af999745f2d4967f035e8dda38be1dfd929f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
