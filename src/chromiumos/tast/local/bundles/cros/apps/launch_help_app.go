@@ -31,7 +31,7 @@ func init() {
 			"showoff-eng@google.com",
 			"shengjun@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      chrome.GAIALoginTimeout + time.Minute,
@@ -39,6 +39,7 @@ func init() {
 			{
 				Name:              "clamshell_oobe_stable",
 				ExtraHardwareDeps: pre.AppsStableModels,
+				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: false,
 					oobe:       true,
