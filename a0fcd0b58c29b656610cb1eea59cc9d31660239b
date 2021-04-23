@@ -33,6 +33,24 @@
       "message": "For a static regexp like this, I think using regexp.MustCompile would be simpler and more concise.\n\n    r :\u003d regexp.MustCompile(\"(ACCEPT|RECEIVE)\")",
       "revId": "a0fcd0b58c29b656610cb1eea59cc9d31660239b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "882c5f8e_1cafae74",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-04-23T17:35:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "617912bc_931d1ac9",
+      "revId": "a0fcd0b58c29b656610cb1eea59cc9d31660239b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
