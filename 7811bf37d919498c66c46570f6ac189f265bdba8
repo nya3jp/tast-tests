@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1f330ab_8630662e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-04-23T00:08:56Z",
+      "side": 1,
+      "message": "lgtm.  In the future, it\u0027s easier to review mechanical changes, like the PpdFile rename in a separate CL.",
+      "revId": "7811bf37d919498c66c46570f6ac189f265bdba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
