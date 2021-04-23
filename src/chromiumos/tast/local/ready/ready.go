@@ -207,7 +207,7 @@ func hasTPM(ctx context.Context) bool {
 // waitForCryptohomeService waits for cryptohomed's D-Bus service to become available.
 func waitForCryptohomeService(ctx context.Context) error {
 	const (
-		svc        = "org.chromium.Cryptohome"
+		svc        = "org.chromium.UserDataAuth"
 		svcTimeout = 15 * time.Second
 		minUptime  = 10 * time.Second
 	)
