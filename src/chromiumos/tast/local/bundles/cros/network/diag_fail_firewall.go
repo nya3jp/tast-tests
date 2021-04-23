@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	diagcommon "chromiumos/tast/common/network/diag"
 	"chromiumos/tast/local/bundles/cros/network/diag"
 	"chromiumos/tast/local/bundles/cros/network/firewall"
 	"chromiumos/tast/testing"
@@ -33,14 +34,14 @@ func init() {
 		Params: []testing.Param{{
 			Name: "http",
 			Val: failFirewallParams{
-				Routine:    diag.RoutineHTTPFirewall,
+				Routine:    diagcommon.RoutineHTTPFirewall,
 				BlockPorts: []string{"80"},
 			},
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "https",
 			Val: failFirewallParams{
-				Routine:    diag.RoutineHTTPSFirewall,
+				Routine:    diagcommon.RoutineHTTPSFirewall,
 				BlockPorts: []string{"443"},
 			},
 			ExtraAttr: []string{"informational"},
@@ -71,11 +72,11 @@ func DiagFailFirewall(ctx context.Context, s *testing.State) {
 	}
 
 	const problemFirewallDetected = 1
-	expectedResult := &diag.RoutineResult{
-		Verdict:  diag.VerdictProblem,
+	expectedResult := &diagcommon.RoutineResult{
+		Verdict:  diagcommon.VerdictProblem,
 		Problems: []int{problemFirewallDetected},
 	}
-	if err := diag.CheckRoutineResult(result, expectedResult); err != nil {
+	if err := diagcommon.CheckRoutineResult(result, expectedResult); err != nil {
 		s.Fatal("Routine result did not match: ", err)
 	}
 }

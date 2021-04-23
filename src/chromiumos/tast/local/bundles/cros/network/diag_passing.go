@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	diagcommon "chromiumos/tast/common/network/diag"
 	"chromiumos/tast/local/bundles/cros/network/diag"
 	"chromiumos/tast/testing"
 )
@@ -37,39 +38,39 @@ func init() {
 		Fixture:      "networkDiagnostics",
 		Params: []testing.Param{{
 			Name:      "lan_connectivity",
-			Val:       newNetDiagParams(diag.RoutineLanConnectivity),
+			Val:       newNetDiagParams(diagcommon.RoutineLanConnectivity),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "dns_resolver_present",
-			Val:       newNetDiagParams(diag.RoutineDNSResolverPresent),
+			Val:       newNetDiagParams(diagcommon.RoutineDNSResolverPresent),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "dns_resolution",
-			Val:       newNetDiagParams(diag.RoutineDNSResolution),
+			Val:       newNetDiagParams(diagcommon.RoutineDNSResolution),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "dns_latency",
-			Val:       newNetDiagParams(diag.RoutineDNSLatency),
+			Val:       newNetDiagParams(diagcommon.RoutineDNSLatency),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "http_firewall",
-			Val:       newNetDiagParams(diag.RoutineHTTPFirewall),
+			Val:       newNetDiagParams(diagcommon.RoutineHTTPFirewall),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "https_firewall",
-			Val:       newNetDiagParams(diag.RoutineHTTPSFirewall),
+			Val:       newNetDiagParams(diagcommon.RoutineHTTPSFirewall),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "https_latency",
-			Val:       newNetDiagParams(diag.RoutineHTTPSLatency),
+			Val:       newNetDiagParams(diagcommon.RoutineHTTPSLatency),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "captive_portal",
-			Val:       newNetDiagParams(diag.RoutineCaptivePortal),
+			Val:       newNetDiagParams(diagcommon.RoutineCaptivePortal),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "video_conferencing",
-			Val:       newNetDiagParams(diag.RoutineVideoConferencing),
+			Val:       newNetDiagParams(diagcommon.RoutineVideoConferencing),
 			ExtraAttr: []string{"informational"},
 			Timeout:   5 * time.Minute,
 		}},
@@ -88,11 +89,11 @@ func DiagPassing(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to run routine: ", err)
 	}
 
-	expectedResult := &diag.RoutineResult{
-		Verdict:  diag.VerdictNoProblem,
+	expectedResult := &diagcommon.RoutineResult{
+		Verdict:  diagcommon.VerdictNoProblem,
 		Problems: []int{},
 	}
-	if err := diag.CheckRoutineResult(result, expectedResult); err != nil {
+	if err := diagcommon.CheckRoutineResult(result, expectedResult); err != nil {
 		s.Fatal("Routine result did not match: ", err)
 	}
 }
