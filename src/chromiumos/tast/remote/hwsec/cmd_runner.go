@@ -36,12 +36,27 @@ func NewLoglessCmdRunner(d *dut.DUT) *CmdRunnerRemote {
 	return &CmdRunnerRemote{d: d, printLog: false}
 }
 
-// Run implements the one of hwsec.CmdRunner.
+// Run implements the one of hwsec.CmdRunner.Run.
 func (r *CmdRunnerRemote) Run(ctx context.Context, cmd string, args ...string) ([]byte, error) {
 	if r.printLog {
 		testing.ContextLogf(ctx, "Running: %s", shutil.EscapeSlice(append([]string{cmd}, args...)))
 	}
 	result, err := r.d.Command(cmd, args...).Output(ctx)
+	if e, ok := err.(*ssh.ExitError); ok {
+		err = &hwsec.CmdExitError{
+			E:        errors.Wrapf(err, "failed %q command with error code %d", cmd, e.ExitStatus()),
+			ExitCode: e.ExitStatus(),
+		}
+	}
+	return result, err
+}
+
+// RunWithCombinedOutput implements the one of hwsec.CmdRunner.RunWithCombinedOutput.
+func (r *CmdRunnerRemote) RunWithCombinedOutput(ctx context.Context, cmd string, args ...string) ([]byte, error) {
+	if r.printLog {
+		testing.ContextLogf(ctx, "Running: %s", shutil.EscapeSlice(append([]string{cmd}, args...)))
+	}
+	result, err := r.d.Command(cmd, args...).CombinedOutput(ctx)
 	if e, ok := err.(*ssh.ExitError); ok {
 		err = &hwsec.CmdExitError{
 			E:        errors.Wrapf(err, "failed %q command with error code %d", cmd, e.ExitStatus()),

@@ -16,7 +16,10 @@ import (
 
 // CmdRunner declares interface that runs command on DUT.
 type CmdRunner interface {
+	// Run returns the stdout of the command.
 	Run(ctx context.Context, cmd string, args ...string) ([]byte, error)
+	// RunWithCombinedOutput returns the combination of stdout & stderr of the command.
+	RunWithCombinedOutput(ctx context.Context, cmd string, args ...string) ([]byte, error)
 }
 
 // CmdExitError is the error returned by CmdRunner when the command execution fail.

@@ -46,9 +46,14 @@ func (tc *TPMClearer) PreClearTPM(ctx context.Context) error {
 
 // ClearTPM sends the TPM clear request
 func (tc *TPMClearer) ClearTPM(ctx context.Context) error {
-	// File clear TPM owner request to crossystem.
-	if _, err := tc.cmdRunner.Run(ctx, "crossystem", "clear_tpm_owner_request=1"); err != nil {
-		return errors.Wrap(err, "failed to file clear_tpm_owner_request")
+	// Reset the flag of finished clearing.
+	if output, err := tc.cmdRunner.Run(ctx, "crossystem", "clear_tpm_owner_done=0"); err != nil {
+		return errors.Wrapf(err, "failed to reset clear_tpm_owner_done, output: %q", string(output))
+	}
+
+	// Fire clear TPM owner request to crossystem.
+	if output, err := tc.cmdRunner.Run(ctx, "crossystem", "clear_tpm_owner_request=1"); err != nil {
+		return errors.Wrapf(err, "failed to fire clear_tpm_owner_request, output: %q", string(output))
 	}
 
 	return nil
@@ -63,6 +68,25 @@ func (tc *TPMClearer) PostClearTPM(ctx context.Context) error {
 	// Wait for services.
 	if err := tc.daemonController.WaitForAllDBusServices(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")
+	}
+
+	// Check we have effective reset of TPM.
+	rawOutput, err := tc.cmdRunner.Run(ctx, "crossystem", "clear_tpm_owner_done")
+	output := string(rawOutput)
+	if err != nil {
+		return errors.Wrapf(err, "failed to query clear_tpm_owner_done, output: %q", output)
+	}
+	if output != "1" {
+		return errors.Wrapf(err, "wrong clear_tpm_owner_done result, expect: 1, got: %q", output)
+	}
+
+	rawOutput, err = tc.cmdRunner.Run(ctx, "crossystem", "clear_tpm_owner_request")
+	output = string(rawOutput)
+	if err != nil {
+		return errors.Wrapf(err, "failed to query clear_tpm_owner_request, output: %q", output)
+	}
+	if output != "0" {
+		return errors.Wrapf(err, "wrong clear_tpm_owner_request result, expect: 0, got: %q", output)
 	}
 
 	return nil
