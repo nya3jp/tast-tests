@@ -57,7 +57,7 @@ func DiagFailLANConnectivity(ctx context.Context, s *testing.State) {
 	// problem occurs.
 	expectedResult := &diagcommon.RoutineResult{
 		Verdict:  diagcommon.VerdictProblem,
-		Problems: []int{},
+		Problems: []uint32{},
 	}
 	if err := mojo.PollRoutine(ctx, diagcommon.RoutineLanConnectivity, expectedResult); err != nil {
 		s.Fatal("Failed to poll routine: ", err)

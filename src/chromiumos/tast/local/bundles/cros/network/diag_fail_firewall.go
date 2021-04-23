@@ -74,7 +74,7 @@ func DiagFailFirewall(ctx context.Context, s *testing.State) {
 	const problemFirewallDetected = 1
 	expectedResult := &diagcommon.RoutineResult{
 		Verdict:  diagcommon.VerdictProblem,
-		Problems: []int{problemFirewallDetected},
+		Problems: []uint32{problemFirewallDetected},
 	}
 	if err := diagcommon.CheckRoutineResult(result, expectedResult); err != nil {
 		s.Fatal("Routine result did not match: ", err)

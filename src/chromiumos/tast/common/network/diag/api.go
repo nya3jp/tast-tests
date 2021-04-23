@@ -82,7 +82,7 @@ function() {
 
 // RoutineVerdict represents the possible return values a diagnostic routine can
 // have.
-type RoutineVerdict int
+type RoutineVerdict int32
 
 const (
 	// VerdictUnknown is an unknown verdict.
@@ -99,7 +99,7 @@ const (
 // diagnostic routine.
 type RoutineResult struct {
 	Verdict  RoutineVerdict
-	Problems []int
+	Problems []uint32
 }
 
 // CheckRoutineResult compares the routine result to the expected result. If
