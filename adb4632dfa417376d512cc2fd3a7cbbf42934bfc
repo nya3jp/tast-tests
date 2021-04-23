@@ -16,6 +16,52 @@
       "message": "Hi Renuga,\n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "adb4632dfa417376d512cc2fd3a7cbbf42934bfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64306804_61585ca5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-23T08:39:21Z",
+      "side": 1,
+      "message": "Assume that test runs in clean state as this test will pass even if gmail app closes on esc key when some other app with system dialog is open.",
+      "range": {
+        "startLine": 548,
+        "startChar": 3,
+        "endLine": 548,
+        "endChar": 202
+      },
+      "revId": "adb4632dfa417376d512cc2fd3a7cbbf42934bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84f82e40_8146849c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-23T08:39:21Z",
+      "side": 1,
+      "message": "Can we reduce nesting for better readability. Refer  https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 3
+      },
+      "revId": "adb4632dfa417376d512cc2fd3a7cbbf42934bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
