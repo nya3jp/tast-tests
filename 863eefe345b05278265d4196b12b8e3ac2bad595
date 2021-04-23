@@ -16,6 +16,23 @@
       "message": "Sonny what do you think?\n\nDo you know of anyone looking at the results of this test?",
       "revId": "863eefe345b05278265d4196b12b8e3ac2bad595",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "925cdd4f_9449c73c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-04-23T04:36:40Z",
+      "side": 1,
+      "message": "Talked with Sonny over chat, he hasn\u0027t had a chance to look at the CL, but the overall idea is correct, so sending to tast-owners.",
+      "revId": "863eefe345b05278265d4196b12b8e3ac2bad595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
