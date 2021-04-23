@@ -1,0 +1,38 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.network;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/network";
+
+service NetDiagService {
+  // SetupDiagAPI creates a new chrome instance and launches the connectivity
+  // diagnostics application to be used for running the network diagnostics.
+  rpc SetupDiagAPI(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Close will close the connectivity diagnostics application and the
+  // underlying Chrome instance.
+  rpc Close(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // RunRoutine will run the specified network diagnostic routine and return the
+  // result.
+  rpc RunRoutine(RunRoutineRequest) returns (RoutineResult) {}
+}
+
+message RunRoutineRequest {
+  // The name of the routine to run.
+  string routine = 1;
+}
+
+message RoutineResult {
+  // The verdict of running the routine.
+  int32 verdict = 1;
+
+  // List of routine problems if they exist.
+  repeated uint32 problems = 2;
+}
