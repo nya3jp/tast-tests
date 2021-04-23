@@ -78,7 +78,7 @@ func FpRWNoUpdateRO(ctx context.Context, s *testing.State) {
 		"-V",               // verbose
 		"-p", "ec:type=fp", // use "programmer" for fingerprint "EC"
 		"-i", "EC_RO", // target image is RO
-		"-w", testImages[fingerprint.TestImageTypeDev], // write specified file
+		"-w", testImages[fingerprint.TestImageTypeDev].Path, // write specified file
 	}
 	s.Log("Running command: ", shutil.EscapeSlice(flashCmd))
 	if output, err := d.Conn().Command(flashCmd[0], flashCmd[1:]...).CombinedOutput(ctx); err == nil {
