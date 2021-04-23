@@ -65,7 +65,7 @@ func FpRWNoUpdateRO(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Flashing RO firmware (expected to fail)")
-	flashCmd := []string{"flashrom", "--fast-verify", "-V", "-p", "ec:type=fp", "-i", "EC_RO", "-w", testImages[fingerprint.TestImageTypeDev]}
+	flashCmd := []string{"flashrom", "--fast-verify", "-V", "-p", "ec:type=fp", "-i", "EC_RO", "-w", testImages[fingerprint.TestImageTypeDev].Path}
 	testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(flashCmd))
 	if output, err := d.Conn().Command(flashCmd[0], flashCmd[1:]...).CombinedOutput(ctx); err == nil {
 		s.Fatal("Flashing RO firmware should not succeed, cmd output: ", output)
