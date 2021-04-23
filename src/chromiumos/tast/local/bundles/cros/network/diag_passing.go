@@ -91,7 +91,7 @@ func DiagPassing(ctx context.Context, s *testing.State) {
 
 	expectedResult := &diagcommon.RoutineResult{
 		Verdict:  diagcommon.VerdictNoProblem,
-		Problems: []int{},
+		Problems: []uint32{},
 	}
 	if err := diagcommon.CheckRoutineResult(result, expectedResult); err != nil {
 		s.Fatal("Routine result did not match: ", err)
