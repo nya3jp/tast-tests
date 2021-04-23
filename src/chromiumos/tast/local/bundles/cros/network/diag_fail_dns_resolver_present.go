@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	diagcommon "chromiumos/tast/common/network/diag"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/local/bundles/cros/network/diag"
 	"chromiumos/tast/local/shill"
@@ -96,11 +97,11 @@ func DiagFailDNSResolverPresent(ctx context.Context, s *testing.State) {
 	// After the property change is emitted, Chrome still needs to process it.
 	// Since Chrome does not emit a change, poll to test whether the expected
 	// problem occurs.
-	expectedResult := &diag.RoutineResult{
-		Verdict:  diag.VerdictProblem,
+	expectedResult := &diagcommon.RoutineResult{
+		Verdict:  diagcommon.VerdictProblem,
 		Problems: []int{int(params.ExpectedProblem)},
 	}
-	if err := mojo.PollRoutine(ctx, diag.RoutineDNSResolverPresent, expectedResult); err != nil {
+	if err := mojo.PollRoutine(ctx, diagcommon.RoutineDNSResolverPresent, expectedResult); err != nil {
 		s.Fatal("Failed to poll routine: ", err)
 	}
 }
