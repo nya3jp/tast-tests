@@ -142,6 +142,24 @@
       "parentUuid": "437d23b8_74d289e8",
       "revId": "b00840f8d13735e431d753be8b112cc26ab59260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66098fec_7183f1a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-23T01:32:02Z",
+      "side": 1,
+      "message": "Thanks for logs. Can you also try the following command in your CrOS chroot?\n\n gsutil cp gs://chromiumos-test-assets-public/tast/cros/video/bear-320x240_20200925.av1.mp4 /tmp/\n\nEphemeral devserver uses a command similar to one above to download files from GCS. Since the ephemeral server returned 500, it is very likely that gsutil command failed somehow.",
+      "parentUuid": "59629206_334b67e7",
+      "revId": "b00840f8d13735e431d753be8b112cc26ab59260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
