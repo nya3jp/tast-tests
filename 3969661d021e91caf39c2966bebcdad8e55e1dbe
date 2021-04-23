@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c22279b0_84345e6f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-23T18:54:21Z",
+      "side": 1,
+      "message": "The comment was meant to describe why we\u0027re checking that it exists. I moved it to before the \"t.dutfsClient.Exists\" call, which hopefully is clearer.",
+      "parentUuid": "a981a040_8d3c926d",
+      "revId": "3969661d021e91caf39c2966bebcdad8e55e1dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a287ba4b_450298c3",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-04-19T14:57:12Z",
       "side": 1,
       "message": "If the directory no longer exists, is this actually an error? I guess that Wrapf will return nil if there\u0027s no error already, but it seems like we may just want to log this and move on.\n\n(Or maybe log if it\u0027s ENOENT and return an error otherwise?)",
+      "revId": "3969661d021e91caf39c2966bebcdad8e55e1dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc22b1ac_6c0a7fb5",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-23T18:54:21Z",
+      "side": 1,
+      "message": "This case will return an error if the removal fails. We\u0027ll only do this if the directory exists, so we don\u0027t expect it to fail.",
+      "parentUuid": "a287ba4b_450298c3",
       "revId": "3969661d021e91caf39c2966bebcdad8e55e1dbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
