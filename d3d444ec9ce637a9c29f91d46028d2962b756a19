@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cfc01d0_acfdb534",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-23T00:43:02Z",
+      "side": 1,
+      "message": "Hi Judy, could you help review this quick change?",
+      "revId": "d3d444ec9ce637a9c29f91d46028d2962b756a19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
