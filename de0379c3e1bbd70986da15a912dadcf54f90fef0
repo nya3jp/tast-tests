@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28e0d9ac_72dca944",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-04-23T15:47:36Z",
+      "side": 1,
+      "message": "It might be a good idea to update this, because the test no longer \"reports\" things, now it will start to enforce things.",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 63
+      },
+      "revId": "de0379c3e1bbd70986da15a912dadcf54f90fef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e0a5324_7548cbb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-04-23T15:47:36Z",
+      "side": 1,
+      "message": "Is this proper formatting?",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 61
+      },
+      "revId": "de0379c3e1bbd70986da15a912dadcf54f90fef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05cbdad6_56970ada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-04-23T15:47:36Z",
+      "side": 1,
+      "message": "Same",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 35
+      },
+      "revId": "de0379c3e1bbd70986da15a912dadcf54f90fef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a75fd776_31ea5e29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-04-23T15:47:36Z",
+      "side": 1,
+      "message": "End with period.",
+      "range": {
+        "startLine": 262,
+        "startChar": 27,
+        "endLine": 262,
+        "endChar": 30
+      },
+      "revId": "de0379c3e1bbd70986da15a912dadcf54f90fef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
