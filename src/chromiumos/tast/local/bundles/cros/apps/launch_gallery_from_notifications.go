@@ -33,7 +33,7 @@ func init() {
 			"backlight-swe@google.com",
 			"benreich@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"gear_wheels_4000x3000_20200624.jpg", "download_link.html"},
@@ -46,6 +46,7 @@ func init() {
 			}, {
 				Name:              "clamshell_unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraAttr:         []string{"informational"},
 				Val:               false,
 			}, {
 				Name:              "tablet_stable",
@@ -54,6 +55,7 @@ func init() {
 			}, {
 				Name:              "tablet_unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraAttr:         []string{"informational"},
 				Val:               true,
 			},
 		},

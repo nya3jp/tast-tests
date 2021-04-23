@@ -41,7 +41,6 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "clamshell_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: pre.AppsStableModels,
 				Val:               false,
 			}, {
