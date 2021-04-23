@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08848afd_102cf72f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-04-23T13:55:04Z",
+      "side": 1,
+      "message": "puff (dooly) is failing the test with \"No detected devices\" --\u003e \"/usr/bin/fwupdtool get-devices --plugins flashrom\" failed: exit status 2\"",
+      "revId": "9b76e8345e61afc904ff1f852c90575b6733c5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
