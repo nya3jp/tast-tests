@@ -22,6 +22,30 @@
       },
       "revId": "3461c98a440bb18f074a39b204a95d2193af9336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c8efce5_9d9ff8be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_stateful_partition_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-04-23T01:10:27Z",
+      "side": 1,
+      "message": "Instead of making it failure immediately, I think we should skip this line and keep parsing, so I add `continue` when this happens in patchset#4. Thanks for catching this!",
+      "parentUuid": "beb8a064_5c58f3ba",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 11
+      },
+      "revId": "3461c98a440bb18f074a39b204a95d2193af9336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
