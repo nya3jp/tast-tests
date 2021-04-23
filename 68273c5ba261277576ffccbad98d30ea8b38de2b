@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e9119a9_87a549e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-04-23T08:23:29Z",
+      "side": 1,
+      "message": "Indeed, it looks like we must develop another test, as even with the single-AP approach, we still hit dual-DHCP dual-network issue that will break all connections.",
+      "parentUuid": "e95faf72_e5f02409",
+      "revId": "68273c5ba261277576ffccbad98d30ea8b38de2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a930390_8eacaa17",
