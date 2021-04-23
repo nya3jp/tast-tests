@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41b402cd_f58ce723",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-23T20:25:36Z",
+      "side": 1,
+      "message": "Is there a doc that explains the benefits of wrapping every error? For example, CheckRunningFirmwareCopy provides a detailed error message. I don\u0027t really have anything new to add to it here, so it\u0027s not clear what benefit it provides. I guess it saves the stack: https://chromium.googlesource.com/chromiumos/platform/tast/+/4491c69e6d9d47f0eec2a8b180447c9701b53030/src/chromiumos/tast/errors/errors.go#131.",
+      "parentUuid": "979f9016_48b1917d",
+      "range": {
+        "startLine": 795,
+        "startChar": 9,
+        "endLine": 795,
+        "endChar": 12
+      },
+      "revId": "2b9155d37257e516f62935b81a9e466e49985431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da65c53b_0045bb5c",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
         "patchSetId": 2
