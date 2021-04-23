@@ -9,9 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/capturemode"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -31,6 +29,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
+		Fixture:      "chromePolicyLoggedIn",
 	})
 }
 
@@ -41,24 +40,8 @@ func DisableScreenshotsCaptureMode(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	fdms, err := fakedms.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start FakeDMS: ", err)
-	}
-	defer fdms.Stop(ctx)
-
-	if err := fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
-		s.Fatal("Failed to write policies to FakeDMS: ", err)
-	}
-
-	cr, err := chrome.New(ctx,
-		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
-		chrome.DMSPolicy(fdms.URL),
-		chrome.EnableFeatures("CaptureMode"))
-	if err != nil {
-		s.Fatal("Failed to create Chrome instance: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.FixtValue().(*fixtures.FixtData).Chrome
+	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
