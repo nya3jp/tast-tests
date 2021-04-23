@@ -46,6 +46,30 @@
       },
       "revId": "3461c98a440bb18f074a39b204a95d2193af9336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ef3ed6_c8a55638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_stateful_partition_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-23T02:33:34Z",
+      "side": 1,
+      "message": "SGTM. Just FYI the overall test will fail if this incorrect format is identified",
+      "parentUuid": "8c8efce5_9d9ff8be",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 11
+      },
+      "revId": "3461c98a440bb18f074a39b204a95d2193af9336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
