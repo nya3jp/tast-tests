@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type dnsResolverPresentProblem int
+type dnsResolverPresentProblem uint32
 
 const (
 	// problemNoNameServersFound - IP config has no name servers available
@@ -99,7 +99,7 @@ func DiagFailDNSResolverPresent(ctx context.Context, s *testing.State) {
 	// problem occurs.
 	expectedResult := &diagcommon.RoutineResult{
 		Verdict:  diagcommon.VerdictProblem,
-		Problems: []int{int(params.ExpectedProblem)},
+		Problems: []uint32{uint32(params.ExpectedProblem)},
 	}
 	if err := mojo.PollRoutine(ctx, diagcommon.RoutineDNSResolverPresent, expectedResult); err != nil {
 		s.Fatal("Failed to poll routine: ", err)

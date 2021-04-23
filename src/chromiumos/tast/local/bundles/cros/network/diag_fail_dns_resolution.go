@@ -15,12 +15,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type dnsResolutionProblem int
-
-// problemFailedToResolveHost means that the DNS server was unable to
-// resolve the specified host.
-const problemFailedToResolveHost dnsResolutionProblem = 0
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: DiagFailDNSResolution,
@@ -63,9 +57,10 @@ func DiagFailDNSResolution(ctx context.Context, s *testing.State) {
 	// After the property change is emitted, Chrome still needs to process it.
 	// Since Chrome does not emit a change, poll to test whether the expected
 	// problem occurs.
+	const problemFailedToResolveHost uint32 = 0
 	expectedResult := &diagcommon.RoutineResult{
 		Verdict:  diagcommon.VerdictProblem,
-		Problems: []int{int(problemFailedToResolveHost)},
+		Problems: []uint32{problemFailedToResolveHost},
 	}
 	if err := mojo.PollRoutine(ctx, diagcommon.RoutineDNSResolution, expectedResult); err != nil {
 		s.Fatal("Failed to poll routine: ", err)
