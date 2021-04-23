@@ -33,6 +33,24 @@
       "message": "nit: Can we add a comment what this regex tries to match against?\n\nTypically the last line of ramoops should be like:\n[  195.399181] reboot: Restarting system\nIs this always the case? If not should we add a warning?",
       "revId": "55bc0e98e0a2177aea1fca1d69c17f282f0f9cee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f636ce67_5ad80cb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-23T05:09:23Z",
+      "side": 1,
+      "message": "That\u0027s a good point, updated.",
+      "parentUuid": "7a26459e_c2418f42",
+      "revId": "55bc0e98e0a2177aea1fca1d69c17f282f0f9cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
