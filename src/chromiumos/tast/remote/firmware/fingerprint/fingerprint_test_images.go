@@ -39,6 +39,16 @@ const generatedImagesSubDirectory = "images"
 // TestImageType specifies the test image variant.
 type TestImageType int
 
+// TestImageData represents a firmware test image
+type TestImageData struct {
+	// Path is the absolute path to the firmware file on the DUT
+	Path string
+	// ROVersion is the RO version string
+	ROVersion string
+	// RWVersion is the RW version string
+	RWVersion string
+}
+
 const (
 	// TestImageTypeOriginal is the original firmware on the DUT.
 	TestImageTypeOriginal TestImageType = iota
@@ -56,8 +66,8 @@ const (
 	TestImageTypeDevRollbackNine
 )
 
-// TestImages maps a given test image type to a path.
-type TestImages map[TestImageType]string
+// TestImages maps a given test image type to data describing the image.
+type TestImages map[TestImageType]*TestImageData
 
 // GenerateTestFirmwareImages generates a set of test firmware images from the firmware that is on the DUT.
 func GenerateTestFirmwareImages(ctx context.Context, d *dut.DUT, fs *dutfs.Client, generateScript string, fpBoard FPBoardName, buildFWFile, dutTempDir string) (ret TestImages, retErr error) {
@@ -83,20 +93,20 @@ func GenerateTestFirmwareImages(ctx context.Context, d *dut.DUT, fs *dutfs.Clien
 
 	fpBoardStr := string(fpBoard)
 	images := TestImages{
-		TestImageTypeOriginal:         fpBoardStr + ".bin",
-		TestImageTypeDev:              fpBoardStr + ".dev",
-		TestImageTypeCorruptFirstByte: fpBoardStr + "_corrupt_first_byte.bin",
-		TestImageTypeCorruptLastByte:  fpBoardStr + "_corrupt_last_byte.bin",
-		TestImageTypeDevRollbackZero:  fpBoardStr + ".dev.rb0",
-		TestImageTypeDevRollbackOne:   fpBoardStr + ".dev.rb1",
-		TestImageTypeDevRollbackNine:  fpBoardStr + ".dev.rb9",
+		TestImageTypeOriginal:         &TestImageData{Path: fpBoardStr + ".bin"},
+		TestImageTypeDev:              &TestImageData{Path: fpBoardStr + ".dev"},
+		TestImageTypeCorruptFirstByte: &TestImageData{Path: fpBoardStr + "_corrupt_first_byte.bin"},
+		TestImageTypeCorruptLastByte:  &TestImageData{Path: fpBoardStr + "_corrupt_last_byte.bin"},
+		TestImageTypeDevRollbackZero:  &TestImageData{Path: fpBoardStr + ".dev.rb0"},
+		TestImageTypeDevRollbackOne:   &TestImageData{Path: fpBoardStr + ".dev.rb1"},
+		TestImageTypeDevRollbackNine:  &TestImageData{Path: fpBoardStr + ".dev.rb9"},
 	}
 
 	filesToCopy := make(map[string]string)
-	for imageType, fileName := range images {
-		dutFileName := filepath.Join(dutTempDir, generatedImagesSubDirectory, fileName)
-		filesToCopy[filepath.Join(serverTmpDir, generatedImagesSubDirectory, fileName)] = dutFileName
-		images[imageType] = dutFileName
+	for imageType, imageData := range images {
+		dutFileName := filepath.Join(dutTempDir, generatedImagesSubDirectory, imageData.Path)
+		filesToCopy[filepath.Join(serverTmpDir, generatedImagesSubDirectory, imageData.Path)] = dutFileName
+		images[imageType].Path = dutFileName
 	}
 
 	testing.ContextLog(ctx, "Copying generating firmware images to DUT")
@@ -104,15 +114,28 @@ func GenerateTestFirmwareImages(ctx context.Context, d *dut.DUT, fs *dutfs.Clien
 		return nil, errors.Wrapf(err, "failed to copy files from %q to %q", serverTmpDir, dutTempDir)
 	}
 
-	// Make sure that images were actually copied to DUT.
-	for _, fileName := range images {
-		exists, err := fs.Exists(ctx, fileName)
+	for _, imageData := range images {
+		// Make sure that images were actually copied to DUT.
+		exists, err := fs.Exists(ctx, imageData.Path)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to check existence of %q", fileName)
+			return nil, errors.Wrapf(err, "failed to check existence of %q", imageData.Path)
 		}
 		if !exists {
-			return nil, errors.Errorf("expected file to exist, but it does not: %q", fileName)
+			return nil, errors.Errorf("expected file to exist, but it does not: %q", imageData.Path)
 		}
+
+		// Collect the version strings from each of the generated images.
+		version, err := GetBuildROFirmwareVersion(ctx, d, fs, imageData.Path)
+		if err != nil {
+			return nil, errors.Wrapf(err, "unable to get RO version from firmware file: %q", imageData.Path)
+		}
+		imageData.ROVersion = version
+
+		version, err = GetBuildRWFirmwareVersion(ctx, d, fs, imageData.Path)
+		if err != nil {
+			return nil, errors.Wrapf(err, "unable to get RW version from firmware file: %q", imageData.Path)
+		}
+		imageData.RWVersion = version
 	}
 
 	return images, nil
