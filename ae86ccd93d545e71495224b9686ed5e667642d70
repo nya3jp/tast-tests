@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3febab8_6a415574",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-23T02:18:15Z",
+      "side": 1,
+      "message": "!Promise\u003c!Array\u003c!MediaDeviceInfo\u003e\u003e",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "ae86ccd93d545e71495224b9686ed5e667642d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "329d6e24_af9402ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-23T02:18:15Z",
+      "side": 1,
+      "message": "No need to wrap this. Simply return |(await navigator.mediaDevices.enumerateDevices()).filter((device) \u003d\u003e device.kind \u003d\u003d\u003d \u0027videoinput\u0027)|",
+      "range": {
+        "startLine": 15,
+        "startChar": 2,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "ae86ccd93d545e71495224b9686ed5e667642d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae8ac10_4d3fb77f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-23T02:18:15Z",
+      "side": 1,
+      "message": "Opens",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 7
+      },
+      "revId": "ae86ccd93d545e71495224b9686ed5e667642d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f593cb5_a6f34dac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-23T02:18:15Z",
+      "side": 1,
+      "message": "{\naudio: false,\nvideo { deviceId },\n}",
+      "range": {
+        "startLine": 39,
+        "startChar": 22,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "ae86ccd93d545e71495224b9686ed5e667642d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98bf3ff2_f80c7bc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-23T02:18:15Z",
+      "side": 1,
+      "message": "It\u0027s obvious no need the comment.",
+      "range": {
+        "startLine": 50,
+        "startChar": 16,
+        "endLine": 50,
+        "endChar": 60
+      },
+      "revId": "ae86ccd93d545e71495224b9686ed5e667642d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e7cbb1d_6b85f0e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-23T02:18:15Z",
+      "side": 1,
+      "message": "Closes",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 8
+      },
+      "revId": "ae86ccd93d545e71495224b9686ed5e667642d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08e172f5_096ae11d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-23T02:18:15Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "ae86ccd93d545e71495224b9686ed5e667642d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bc853b0_e054067b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-23T02:18:15Z",
+      "side": 1,
+      "message": "no need comment.",
+      "range": {
+        "startLine": 61,
+        "startChar": 43,
+        "endLine": 61,
+        "endChar": 77
+      },
+      "revId": "ae86ccd93d545e71495224b9686ed5e667642d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c03f2ab_99a907cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-23T02:18:15Z",
+      "side": 1,
+      "message": "This check appear many times for verifying the camera is opened. Can we move  into a common function similar to |getPreviewVideo()|?",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "ae86ccd93d545e71495224b9686ed5e667642d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc18ec62_d2a3c954",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-23T02:18:15Z",
+      "side": 1,
+      "message": "No need to await, also remove |async| in function signature. And also change return type to |!MediaTrackSettings|.",
+      "range": {
+        "startLine": 95,
+        "startChar": 19,
+        "endLine": 95,
+        "endChar": 24
+      },
+      "revId": "ae86ccd93d545e71495224b9686ed5e667642d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a44888c4_cfcc54b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-23T02:18:15Z",
+      "side": 1,
+      "message": "Applies",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 8
+      },
+      "revId": "ae86ccd93d545e71495224b9686ed5e667642d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "055b09c5_68288521",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-23T02:18:15Z",
+      "side": 1,
+      "message": "How about simply comment as:\nFrom w3c standard MediaDeviceInfo type.",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 35
+      },
+      "revId": "ae86ccd93d545e71495224b9686ed5e667642d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90b5d587_8d070bba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-23T02:18:15Z",
+      "side": 1,
+      "message": "Move to comment before each field.\ne.g.\n```\ntype testParameter struct {\n        // ...\n\tcontrol        string\n        // ...\n\tneededControls []controlParameter\n        // ...\n\ttolerance      float64\n...\n}\n```",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 54
+      },
+      "revId": "ae86ccd93d545e71495224b9686ed5e667642d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09fe6038_950ece4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-04-23T02:18:15Z",
+      "side": 1,
+      "message": "Can we simply put combination of |mediaTrackSettings| by each test here instead of using each field as string?\nThe reflection is error-prone for lack of compile-time static type checking.\nPlease rewrite the code structure to avoid using reflection and replace reflection with polymorphism structure.",
+      "range": {
+        "startLine": 173,
+        "startChar": 38,
+        "endLine": 173,
+        "endChar": 75
+      },
+      "revId": "ae86ccd93d545e71495224b9686ed5e667642d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
