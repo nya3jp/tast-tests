@@ -34,17 +34,32 @@ func NewLoglessCmdRunner() *CmdRunnerLocal {
 	return &CmdRunnerLocal{printLog: false}
 }
 
-// Run implements the one of hwsec.CmdRunner.
+// Run implements hwsec.CmdRunner.Run.
 func (r *CmdRunnerLocal) Run(ctx context.Context, cmd string, args ...string) ([]byte, error) {
 	if r.printLog {
 		testing.ContextLogf(ctx, "Running: %s", shutil.EscapeSlice(append([]string{cmd}, args...)))
 	}
 	result, err := testexec.CommandContext(ctx, cmd, args...).Output()
+	err = checkExitError(cmd, err)
+	return result, err
+}
+
+// RunWithCombinedOutput implements hwsec.CmdRunner.RunWithCombinedOutput.
+func (r *CmdRunnerLocal) RunWithCombinedOutput(ctx context.Context, cmd string, args ...string) ([]byte, error) {
+	if r.printLog {
+		testing.ContextLogf(ctx, "Running: %s", shutil.EscapeSlice(append([]string{cmd}, args...)))
+	}
+	result, err := testexec.CommandContext(ctx, cmd, args...).CombinedOutput()
+	err = checkExitError(cmd, err)
+	return result, err
+}
+
+func checkExitError(cmd string, err error) error {
 	if e, ok := err.(*exec.ExitError); ok && e.Exited() {
 		err = &hwsec.CmdExitError{
 			E:        errors.Wrapf(err, "failed %q command with error code %d", cmd, e.ExitCode()),
 			ExitCode: e.ExitCode(),
 		}
 	}
-	return result, err
+	return err
 }
