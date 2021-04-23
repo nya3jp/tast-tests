@@ -148,6 +148,11 @@ func (d *Device) EnableDebug() {
 
 // Close releases resources associated with d.
 func (d *Device) Close(ctx context.Context) error {
+	// Request to stop the remote server
+	var res string
+	if err := d.call(ctx, "stop", &res); err != nil {
+		testing.ContextLog(ctx, "Failed to stop UI Automator server: ", err)
+	}
 	if err := d.hostDevice.RemoveForwardTCP(ctx, d.hostPort); err != nil {
 		testing.ContextLogf(ctx, "Failed to clean up UI Automator port(%d) for device(%v): %v", d.hostPort, d.hostDevice, err)
 	}
