@@ -276,11 +276,13 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 		return nil, errors.Wrap(err, "failed to create remote working directory")
 	}
 
-	if err := InitializeKnownState(ctx, d, outDir, pxy, needsReboot); err != nil {
+	if err := InitializeKnownState(ctx, d, dutfsClient, outDir, pxy, fpBoard, buildFwFile, needsReboot); err != nil {
 		return nil, errors.Wrap(err, "initializing known state failed")
 	}
 
-	// TODO(b/182596510): Check the FPMCU is running expected firmware version.
+	if err := CheckInitialState(ctx, d, dutfsClient, fpBoard, buildFwFile); err != nil {
+		return nil, err
+	}
 
 	if err := InitializeHWAndSWWriteProtect(ctx, d, pxy, fpBoard, enableHWWP, enableSWWP); err != nil {
 		return nil, errors.Wrap(err, "initializing write protect failed")
@@ -773,19 +775,21 @@ func ReimageFPMCU(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, needsReboot
 }
 
 // InitializeKnownState checks that the AP can talk to FPMCU. If not, it flashes the FPMCU.
-func InitializeKnownState(ctx context.Context, d *dut.DUT, outdir string, pxy *servo.Proxy, needsRebootAfterFlashing bool) error {
-	if out, err := CheckFirmwareIsFunctional(ctx, d); err == nil {
-		versionOutputFile := "cros_fp_version.txt"
-		testing.ContextLogf(ctx, "Writing FP firmware version to %s", versionOutputFile)
-		if err := ioutil.WriteFile(filepath.Join(outdir, versionOutputFile), out, 0644); err != nil {
-			// This is a nonfatal error that shouldn't kill the test.
-			testing.ContextLog(ctx, "Failed to write FP firmware version to file: ", err)
-		}
-	} else {
+func InitializeKnownState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, outdir string, pxy *servo.Proxy, fpBoard FPBoardName, buildFWFile string, needsRebootAfterFlashing bool) error {
+	out, err := CheckFirmwareIsFunctional(ctx, d)
+	if err != nil {
 		testing.ContextLogf(ctx, "FPMCU firmware is not functional (error: %v). Trying re-flashing FP firmware", err)
-		return ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing)
+		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
+			return err
+		}
 	}
-	return nil
+	versionOutputFile := "cros_fp_version.txt"
+	testing.ContextLogf(ctx, "Writing FP firmware version to %s", versionOutputFile)
+	if err := ioutil.WriteFile(filepath.Join(outdir, versionOutputFile), out, 0644); err != nil {
+		// This is a nonfatal error that shouldn't kill the test.
+		testing.ContextLog(ctx, "Failed to write FP firmware version to file: ", err)
+	}
+	return CheckInitialState(ctx, d, fs, fpBoard, buildFWFile)
 }
 
 // CheckInitialState validates the rollback state and the running firmware versions (RW and RO).

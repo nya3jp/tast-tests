@@ -116,9 +116,27 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	}
+	defer cl.Close(ctx)
+
+	dutfsClient := dutfs.NewClient(cl.Conn)
+
+	fpBoard, err := fingerprint.Board(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to get fingerprint board: ", err)
+	}
+
+	buildFWFile, err := fingerprint.FirmwarePath(ctx, d, fpBoard)
+	if err != nil {
+		s.Fatal("Failed to get build firmware file path: ", err)
+	}
+
 	// InitializeKnownState enables HW write protect so that we are testing
 	// the same configuration as the end user.
-	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy, needsReboot); err != nil {
+	if err := fingerprint.InitializeKnownState(ctx, d, dutfsClient, s.OutDir(), pxy, fpBoard, buildFWFile, needsReboot); err != nil {
 		s.Fatal("Initialization failed: ", err)
 	}
 
@@ -140,7 +158,7 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to DUT: ", err)
 	}
 
-	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	cl, err = rpc.Dial(ctx, d, s.RPCHint(), "cros")
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
@@ -173,16 +191,6 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 
 	if !strings.Contains(latest, successString) {
 		s.Fatal("Updater did not succeed, please check output dir")
-	}
-
-	fpBoard, err := fingerprint.Board(ctx, d)
-	if err != nil {
-		s.Fatal("Failed to query FP board: ", err)
-	}
-
-	buildFWFile, err := fingerprint.FirmwarePath(ctx, d, fpBoard)
-	if err != nil {
-		s.Fatal("Failed to query build firmware path: ", err)
 	}
 
 	buildRWVersion, err := fingerprint.GetBuildRWFirmwareVersion(ctx, d, dutfs.NewClient(cl.Conn), buildFWFile)
