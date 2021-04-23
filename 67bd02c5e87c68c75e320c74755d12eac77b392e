@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0fe8fb3_aea86009",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-04-23T06:31:32Z",
+      "side": 1,
+      "message": "I think this code looks okay to me except for the changes in adb.go.\n\nIt feels to me that there might be a better way to do this other than stat\u0027ing a file.",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
