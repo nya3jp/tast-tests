@@ -16,6 +16,23 @@
       "message": "lgtm again",
       "revId": "a0fcd0b58c29b656610cb1eea59cc9d31660239b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "617912bc_931d1ac9",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-23T16:01:17Z",
+      "side": 1,
+      "message": "For a static regexp like this, I think using regexp.MustCompile would be simpler and more concise.\n\n    r :\u003d regexp.MustCompile(\"(ACCEPT|RECEIVE)\")",
+      "revId": "a0fcd0b58c29b656610cb1eea59cc9d31660239b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
