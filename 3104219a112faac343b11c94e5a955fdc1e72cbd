@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f109f9c0_7cbc260c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-04-23T00:00:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f096b79_aed0536f",
+      "revId": "3104219a112faac343b11c94e5a955fdc1e72cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f6049616_e6fd9963",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-22T22:27:18Z",
       "side": 1,
       "message": "The changes generally look okay.  However, I don\u0027t understand the motivation for moving the CleanPSContents function.",
+      "revId": "3104219a112faac343b11c94e5a955fdc1e72cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d110b8ea_195dc830",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-04-23T00:00:55Z",
+      "side": 1,
+      "message": "The main idea is to separate the utility function CleanPSContents from specific print implementations such as lpprint or proxylppprint. Actually it probably makes more sense to move it to document.go and combine it with cleanPDFcontents.",
+      "parentUuid": "f6049616_e6fd9963",
       "revId": "3104219a112faac343b11c94e5a955fdc1e72cbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed7c7b97_abc0d3d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-04-23T00:00:55Z",
+      "side": 1,
+      "message": "Internal (file-private) structs are lower case.",
+      "parentUuid": "a3596f76_319e8331",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "3104219a112faac343b11c94e5a955fdc1e72cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d433ada_b154d0d6",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-04-22T22:27:18Z",
       "side": 1,
       "message": "Can we give this a more informative name?  Maybe sizeTest?",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 10
+      },
+      "revId": "3104219a112faac343b11c94e5a955fdc1e72cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f29d920e_8ba9f5c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-04-23T00:00:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d433ada_b154d0d6",
       "range": {
         "startLine": 52,
         "startChar": 5,
