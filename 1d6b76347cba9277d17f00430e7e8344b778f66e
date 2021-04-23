@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "321a1128_8054f8a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-23T23:23:28Z",
+      "side": 1,
+      "message": "Note: there is no one available on my team for reviews, so we have to rely on Tast owner reviews for now. Thanks.",
+      "revId": "1d6b76347cba9277d17f00430e7e8344b778f66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
