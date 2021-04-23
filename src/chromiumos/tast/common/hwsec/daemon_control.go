@@ -112,7 +112,7 @@ var CryptohomeDaemon = &DaemonInfo{
 	Name:       "cryptohome",
 	DaemonName: "cryptohomed",
 	HasDBus:    true,
-	DBusName:   "org.chromium.Cryptohome",
+	DBusName:   "org.chromium.UserDataAuth",
 }
 
 // TPMManagerDaemon represents the DaemonsInfo for tpm_manager.
