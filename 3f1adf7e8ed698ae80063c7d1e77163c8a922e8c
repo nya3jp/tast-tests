@@ -16,6 +16,23 @@
       "message": "Okay, I ran tast.critical-crostini 8 times on each of dru and dumo, with a total of 5 failures, all of which seem to be infrastructure-related:\n\ndru:\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8849211359683371328\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8849211361759234736\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8849211363416250704\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8849211365472814336\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8849247262170846656\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8849247332407595104\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8849247259400163136 - Task cancelled while uploading test logs, so no results\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8849247518063713488 - Failed with \"autoserv crashed\" and no test results\n\ndumo:\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8849211372154405712\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8849211374213811440\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8849211376068908256\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8849247151344616400\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8849247236660620112\n\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8849211378329511360 - Tast failed to SSH to DUT before tests started\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8849247147834310528 - DUT lost contact with devservers, was unable to download data files\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8849247149536369568 - Tast failed to SSH to DUT before tests started\n\nI conclude that these models are much less flaky then the underlying infrastructure, so we should enable them.",
       "revId": "3f1adf7e8ed698ae80063c7d1e77163c8a922e8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4955d57f_b09ddb78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-23T02:37:06Z",
+      "side": 1,
+      "message": "Looks reasonable on Stainless too, majority of failures are in informational tests and are not board related.\n\nhttps://stainless.corp.google.com/search?view\u003dcluster\u0026first_date\u003d2021-04-17\u0026last_date\u003d2021-04-23\u0026test\u003dcrostini\u0026build\u003d.*%5C.0%5C.0%24\u0026board\u003dscarlet\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse",
+      "revId": "3f1adf7e8ed698ae80063c7d1e77163c8a922e8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
