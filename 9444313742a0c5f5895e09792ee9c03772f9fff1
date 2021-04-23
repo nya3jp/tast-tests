@@ -16,6 +16,23 @@
       "message": "Hi Victor,\n\nCan you please take a look?\n\nThanks!",
       "revId": "9444313742a0c5f5895e09792ee9c03772f9fff1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4bc1210_9d78b66b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-23T18:17:28Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "9444313742a0c5f5895e09792ee9c03772f9fff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
