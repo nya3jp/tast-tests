@@ -179,6 +179,7 @@ func (d *Device) call(ctx context.Context, method string, out interface{}, param
 	req.Body = ioutil.NopCloser(bytes.NewReader(reqBody))
 	req.ContentLength = int64(len(reqBody))
 	req.Header.Add("Content-Type", "application/json")
+	req.Close = true
 
 	if d.debug {
 		testing.ContextLog(ctx, "-> ", string(reqBody))
