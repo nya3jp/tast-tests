@@ -275,7 +275,7 @@ func (d *differ) DiffWithOptions(name string, finder *nodewith.Finder, options D
 			"--instance", goldInstance,
 			"--keys-file", filepath.Join(d.dir, keysFile),
 			"--test-name", fullName,
-			"--png-file", filepath.Join(d.dir, fullName, screenshotFile),
+			"--png-file", filepath.Join(d.dir, name, screenshotFile),
 		}, d.goldArgs...)...); err != nil {
 			d.failedTests = append(d.failedTests, name)
 			// In case you don't have access to a filter by commit ID / release, output the logs directly.
