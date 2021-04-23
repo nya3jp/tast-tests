@@ -148,16 +148,6 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
-	if err != nil {
-		s.Fatal("Failed to open CCA: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := app.Close(ctx); err != nil {
-			s.Error("Failed to close app: ", err)
-		}
-	}(ctx)
-
 	subTestTimeout := 30 * time.Second
 	for _, tst := range []struct {
 		name     string
@@ -171,8 +161,19 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 	} {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
+			cleanupCtx := ctx
 			shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
+
+			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
+			if err != nil {
+				s.Fatal("Failed to open CCA: ", err)
+			}
+			defer func(ctx context.Context) {
+				if err := app.Close(ctx); err != nil {
+					s.Error("Failed to close app: ", err)
+				}
+			}(cleanupCtx)
 
 			cleanup, err := app.EnsureTabletModeEnabled(shortCtx, tst.tablet)
 			if err != nil {
@@ -182,15 +183,10 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 				}
 				s.Fatalf("Failed to switch to %v mode: %v", modeName, err)
 			}
-			defer cleanup(ctx)
+			defer cleanup(cleanupCtx)
 
 			if err := tst.testFunc(shortCtx, cr, app, kb, vh); err != nil {
 				s.Error("Test failed: ", err)
-			}
-
-			// Restart app using non-shorten context.
-			if err := app.Restart(ctx, tb); err != nil {
-				s.Fatal("Failed to restart CCA: ", err)
 			}
 		})
 		cancel()
