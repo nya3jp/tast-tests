@@ -70,6 +70,30 @@
       },
       "revId": "9de4d260b88bc038572cd27c458e30a53faef80b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5eba1dc_bf175b5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-04-23T16:15:46Z",
+      "side": 1,
+      "message": "add more detailed error info.",
+      "parentUuid": "08617762_cb544bc1",
+      "range": {
+        "startLine": 102,
+        "startChar": 41,
+        "endLine": 102,
+        "endChar": 44
+      },
+      "revId": "9de4d260b88bc038572cd27c458e30a53faef80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
