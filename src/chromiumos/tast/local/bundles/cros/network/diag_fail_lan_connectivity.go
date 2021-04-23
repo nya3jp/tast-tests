@@ -7,6 +7,7 @@ package network
 import (
 	"context"
 
+	diagcommon "chromiumos/tast/common/network/diag"
 	"chromiumos/tast/local/bundles/cros/network/diag"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
@@ -54,11 +55,11 @@ func DiagFailLANConnectivity(ctx context.Context, s *testing.State) {
 	// After the property change is emitted, Chrome still needs to process it.
 	// Since Chrome does not emit a change, poll to test whether the expected
 	// problem occurs.
-	expectedResult := &diag.RoutineResult{
-		Verdict:  diag.VerdictProblem,
+	expectedResult := &diagcommon.RoutineResult{
+		Verdict:  diagcommon.VerdictProblem,
 		Problems: []int{},
 	}
-	if err := mojo.PollRoutine(ctx, diag.RoutineLanConnectivity, expectedResult); err != nil {
+	if err := mojo.PollRoutine(ctx, diagcommon.RoutineLanConnectivity, expectedResult); err != nil {
 		s.Fatal("Failed to poll routine: ", err)
 	}
 }
