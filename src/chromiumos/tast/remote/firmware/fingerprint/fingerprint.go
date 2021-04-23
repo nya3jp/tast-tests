@@ -98,6 +98,11 @@ const (
 	dutTempPathPattern   = "fp_test_*"
 )
 
+const (
+	ectoolROVersion = "RO version"
+	ectoolRWVersion = "RW version"
+)
+
 // Map from signing key ID to type of signing key.
 var keyIDMap = map[string]keyType{
 	// bloonchipper.
@@ -783,6 +788,30 @@ func InitializeKnownState(ctx context.Context, d *dut.DUT, outdir string, pxy *s
 	return nil
 }
 
+// CheckInitialState validates the rollback state and the running firmware versions (RW and RO).
+// It returns an error if any of the values are incorrect.
+func CheckInitialState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, fpBoard FPBoardName, buildFWFile string) error {
+	if err := CheckRunningFirmwareCopy(ctx, d, ImageTypeRW); err != nil {
+		return errors.Wrap(err, "RW firmware check failed")
+	}
+
+	if err := CheckRollbackSetToInitialValue(ctx, d); err != nil {
+		return errors.Wrap(err, "rollback check failed")
+	}
+
+	expectedRWVersion, err := GetBuildRWFirmwareVersion(ctx, d, fs, buildFWFile)
+	if err != nil {
+		return errors.Wrap(err, "failed to get expected RW version")
+	}
+
+	expectedROVersion, err := getExpectedFwInfo(fpBoard, buildFWFile, fwInfoTypeRoVersion)
+	if err != nil {
+		return errors.Wrap(err, "failed to get expected RO version")
+	}
+
+	return CheckRunningFirmwareVersionMatches(ctx, d, expectedROVersion, expectedRWVersion)
+}
+
 // InitializeHWAndSWWriteProtect ensures hardware and software write protect are initialized as requested.
 func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, fpBoard FPBoardName, enableHWWP, enableSWWP bool) error {
 	testing.ContextLogf(ctx, "Initializing HW WP to %t, SW WP to %t", enableHWWP, enableSWWP)
@@ -864,14 +893,69 @@ func RunningFirmwareCopy(ctx context.Context, d *dut.DUT) (FWImageType, error) {
 	return FWImageType(firmwareCopy), nil
 }
 
-// RunningRWVersion returns the RW version running on FPMCU.
-func RunningRWVersion(ctx context.Context, d *dut.DUT) (string, error) {
+// CheckRunningFirmwareCopy validates that image is the running FPMCU firmware copy
+// and returns an error if that is not the case.
+func CheckRunningFirmwareCopy(ctx context.Context, d *dut.DUT, image FWImageType) error {
+	runningImage, err := RunningFirmwareCopy(ctx, d)
+	if err != nil {
+		return err
+	}
+	if runningImage != image {
+		return errors.Errorf("failed to validate the firmware image, got %q, want %q", runningImage, image)
+	}
+	return nil
+}
+
+// runningFirmwareVersion returns the current RO or RW firmware version on the FPMCU.
+func runningFirmwareVersion(ctx context.Context, d *dut.DUT, image FWImageType) (string, error) {
 	out, err := EctoolCommand(ctx, d, "version").Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to query FPMCU version")
 	}
 	versionInfoMap := parseColonDelimitedOutput(string(out))
-	return versionInfoMap["RW version"], nil
+	switch image {
+	case ImageTypeRW:
+		return versionInfoMap[ectoolRWVersion], nil
+	case ImageTypeRO:
+		return versionInfoMap[ectoolROVersion], nil
+	default:
+		return "", errors.Errorf("unrecognized image type: %q", image)
+	}
+}
+
+// RunningRWVersion returns the RW version running on FPMCU.
+func RunningRWVersion(ctx context.Context, d *dut.DUT) (string, error) {
+	return runningFirmwareVersion(ctx, d, ImageTypeRW)
+}
+
+// RunningROVersion returns the RO version running on FPMCU.
+func RunningROVersion(ctx context.Context, d *dut.DUT) (string, error) {
+	return runningFirmwareVersion(ctx, d, ImageTypeRO)
+}
+
+// CheckRunningFirmwareVersionMatches compares the running RO and RW firmware
+// versions to expectedROVersion and expectedRWVersion and returns an error if
+// they do not match.
+func CheckRunningFirmwareVersionMatches(ctx context.Context, d *dut.DUT, expectedROVersion, expectedRWVersion string) error {
+	runningRWVersion, err := RunningRWVersion(ctx, d)
+	if err != nil {
+		return errors.Wrap(err, "failed to get RW version")
+	}
+
+	runningROVersion, err := RunningROVersion(ctx, d)
+	if err != nil {
+		return errors.Wrap(err, "failed to get RO version")
+	}
+
+	if runningRWVersion != expectedRWVersion {
+		return errors.Errorf("failed to validate the RW firmware version: got %q, want %q", expectedRWVersion, runningRWVersion)
+	}
+
+	if runningROVersion != expectedROVersion {
+		return errors.Errorf("failed to validate the RO firmware version: got %q, want %", expectedROVersion, runningROVersion)
+	}
+
+	return nil
 }
 
 // RollbackInfo returns the rollbackinfo of the fingerprint MCU.
