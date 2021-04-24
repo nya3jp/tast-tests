@@ -145,7 +145,7 @@ func launchAppForNetflix(ctx context.Context, s *testing.State, tconn *chrome.Te
 	// Select User.
 	selectUser := d.Object(ui.ID(selectUserID), ui.Index(selectUserIndex))
 	if err := selectUser.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("SelectUser doesn't exist: ", err)
+		s.Log("SelectUser doesn't exist: ", err)
 	} else if err := selectUser.Click(ctx); err != nil {
 		s.Fatal("Failed to click on selectUser: ", err)
 	}
@@ -153,7 +153,7 @@ func launchAppForNetflix(ctx context.Context, s *testing.State, tconn *chrome.Te
 	// Click on ok button.
 	okButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(okButtonText))
 	if err := okButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("okButton doesn't exist: ", err)
+		s.Log("okButton doesn't exist: ", err)
 	} else if err := okButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on okButton: ", err)
 	}
@@ -175,13 +175,16 @@ func signOutOfNetflix(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		homeIconID       = "com.netflix.mediaclient:id/ribbon_n_logo"
 		signOutButtonID  = "com.netflix.mediaclient:id/row_text"
 		signOutText      = "Sign Out"
+		selectUserID     = "com.netflix.mediaclient:id/profile_avatar_img"
 	)
+	var selectUserIndex int
 
-	// Check for homeIcon.
-	homeIcon := d.Object(ui.ID(homeIconID))
-	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Log("homeIcon doesn't exist and skipped logout: ", err)
-		return
+	// Select User.
+	selectUser := d.Object(ui.ID(selectUserID), ui.Index(selectUserIndex))
+	if err := selectUser.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("SelectUser doesn't exist: ", err)
+	} else if err := selectUser.Click(ctx); err != nil {
+		s.Fatal("Failed to click on selectUser: ", err)
 	}
 
 	// Click on hamburger icon.
