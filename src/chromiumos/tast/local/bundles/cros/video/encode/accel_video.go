@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -172,12 +173,17 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 		testArgs = append(testArgs, fmt.Sprintf("--num_temporal_layers=%d", opts.temporalLayers))
 	}
 
-	gtestFilter := gtest.Filter("-*NV12Dmabuf*")
+	filterString := "-*NV12Dmabuf*"
 	if opts.verifyNV12Input {
-		gtestFilter = gtest.Filter("*NV12Dmabuf*")
+		filterString = "*NV12Dmabuf*"
 	}
+	gtestFilter := gtest.Filter(filterString)
 
 	exec := filepath.Join(chrome.BinTestDir, "video_encode_accelerator_tests")
+
+	command := append([]string{exec, "--gtest-filter=" + filterString}, testArgs[:]...)
+	testing.ContextLogf(ctx, "Running %s", shutil.EscapeSlice(command))
+
 	logfile := filepath.Join(s.OutDir(), fmt.Sprintf("output_%s_%d.txt", filepath.Base(exec), time.Now().Unix()))
 	t := gtest.New(exec, gtest.Logfile(logfile),
 		gtestFilter,
