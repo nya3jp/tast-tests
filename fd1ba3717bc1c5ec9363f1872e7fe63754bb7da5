@@ -16,6 +16,40 @@
       "message": "Hi Renuga,\n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "fd1ba3717bc1c5ec9363f1872e7fe63754bb7da5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8427522_746cb49e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-24T00:58:19Z",
+      "side": 1,
+      "message": "LGTM with nits",
+      "revId": "fd1ba3717bc1c5ec9363f1872e7fe63754bb7da5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0def1604_5d2072da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/pandora.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-24T00:58:19Z",
+      "side": 1,
+      "message": "nit: Remove this line.",
+      "revId": "fd1ba3717bc1c5ec9363f1872e7fe63754bb7da5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
