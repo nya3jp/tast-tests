@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
@@ -91,7 +92,6 @@ func launchAppForNetflix(ctx context.Context, s *testing.State, tconn *chrome.Te
 		selectUserID          = "com.netflix.mediaclient:id/profile_avatar_img"
 		okButtonText          = "OK"
 	)
-	var selectUserIndex int
 
 	// Check for signInButton.
 	signInButton := d.Object(ui.TextMatches("(?i)" + signInButtonText))
@@ -143,7 +143,7 @@ func launchAppForNetflix(ctx context.Context, s *testing.State, tconn *chrome.Te
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 
 	// Select User.
-	selectUser := d.Object(ui.ID(selectUserID), ui.Index(selectUserIndex))
+	selectUser := d.Object(ui.ID(selectUserID), ui.Index(0))
 	if err := selectUser.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Error("SelectUser doesn't exist: ", err)
 	} else if err := selectUser.Click(ctx); err != nil {
@@ -153,7 +153,7 @@ func launchAppForNetflix(ctx context.Context, s *testing.State, tconn *chrome.Te
 	// Click on ok button.
 	okButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(okButtonText))
 	if err := okButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("okButton doesn't exist: ", err)
+		s.Log("okButton doesn't exist: ", err)
 	} else if err := okButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on okButton: ", err)
 	}
@@ -170,21 +170,32 @@ func launchAppForNetflix(ctx context.Context, s *testing.State, tconn *chrome.Te
 // signOutOfNetflix verifies app is signed out.
 func signOutOfNetflix(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		layoutClassName  = "android.widget.FrameLayout"
-		hamburgerIconDes = "More"
-		homeIconID       = "com.netflix.mediaclient:id/ribbon_n_logo"
-		signOutButtonID  = "com.netflix.mediaclient:id/row_text"
-		signOutText      = "Sign Out"
+		downloadID            = "com.netflix.mediaclient:id/smart_downloads_icon"
+		layoutClassName       = "android.widget.FrameLayout"
+		hamburgerIconDes      = "More"
+		homeIconID            = "com.netflix.mediaclient:id/ribbon_n_logo"
+		scrollLayoutClassName = "android.widget.ScrollView"
+		signOutButtonID       = "com.netflix.mediaclient:id/row_text"
+		signOutText           = "Sign Out"
+		selectUserID          = "com.netflix.mediaclient:id/profile_avatar_img"
 	)
 
-	// Check for homeIcon.
-	homeIcon := d.Object(ui.ID(homeIconID))
-	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Log("homeIcon doesn't exist and skipped logout: ", err)
-		return
+	// Select User.
+	selectUser := d.Object(ui.ID(selectUserID), ui.Index(0))
+	if err := selectUser.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("SelectUser doesn't exist: ", err)
+	} else if err := selectUser.Click(ctx); err != nil {
+		s.Fatal("Failed to click on selectUser: ", err)
 	}
 
-	// Click on hamburger icon.
+	// Check for Introducing downloads pop up
+	checkForIntroDownloads := d.Object(ui.ID(downloadID))
+	if err := checkForIntroDownloads.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("checkForIntroDownloads doesn't exist: ", err)
+	} else if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
+		s.Fatal("Failed to enter KEYCODE_BACK: ", err)
+	}
+
 	clickOnHamburgerIcon := d.Object(ui.ClassName(layoutClassName), ui.Description(hamburgerIconDes))
 	if err := clickOnHamburgerIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("ClickOnHamburgerIcon doesn't exist: ", err)
@@ -192,9 +203,25 @@ func signOutOfNetflix(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		s.Fatal("Failed to click on clickOnHamburgerIcon: ", err)
 	}
 
+	// Click on signIn button until scroll layout exists.
+	signOutButton := d.Object(ui.TextMatches("(?i)" + signOutText))
+	scrollLayout := d.Object(ui.ClassName(scrollLayoutClassName), ui.Scrollable(true))
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := scrollLayout.Exists(ctx); err != nil {
+			if err := clickOnHamburgerIcon.Click(ctx); err != nil {
+				return errors.Wrap(err, "failed to click on HamburgerIcon")
+			}
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
+		s.Log("scrollLayout doesn't exist: ", err)
+	} else if err := scrollLayout.ScrollTo(ctx, signOutButton); err != nil {
+		s.Fatal("Failed to scroll: ", err)
+	}
+
 	// Click on sign out button.
-	signOutButton := d.Object(ui.ID(signOutButtonID), ui.Text(signOutText))
-	if err := signOutButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := signOutButton.Exists(ctx); err != nil {
 		s.Error("signOutButton doesn't exist: ", err)
 	} else if err := signOutButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on signOutButton: ", err)
