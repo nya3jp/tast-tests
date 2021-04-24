@@ -33,6 +33,29 @@
       "message": "This should make reading the logs by people that don\u0027t know the test much easier to understand.",
       "revId": "efa725ea24378d0a3d21fd8aacf545be10539239",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21c95404_75bcf67c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-24T21:29:03Z",
+      "side": 1,
+      "message": "Note that this would not print out any hypothetical gTestFilter \nfilled in l.176-178. To add that we\u0027d need another two entries,\none:\n --gtest_filter\u003d\n\nand then another:\n  gTestFilter.filter\n\n(I think)\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/gtest/gtest.go;l\u003d83-87",
+      "range": {
+        "startLine": 183,
+        "startChar": 33,
+        "endLine": 183,
+        "endChar": 34
+      },
+      "revId": "efa725ea24378d0a3d21fd8aacf545be10539239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
