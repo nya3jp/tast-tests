@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -23,62 +24,192 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+const fastInkAPK = "LowLatencyStylusDemoGPU_20210423.apk"
+
+type fastInkTestParams struct {
+	arc              bool
+	tablet           bool
+	displayRotations []display.RotationAngle
+	wStates          []ash.WindowStateType
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ChromeFastInk,
-		Desc:         "Verifies that Chrome fast ink is working as evidenced by a hardware overlay",
+		Func:         FastInk,
+		Desc:         "Verifies that fast ink is working as evidenced by a hardware overlay",
 		Contacts:     []string{"amusbach@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays(), hwdep.InternalDisplay(), hwdep.TouchScreen()),
-		Data:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
-		Fixture:      "chromeLoggedIn",
 		Timeout:      5 * time.Minute,
-		Params: []testing.Param{
-			{
-				Name: "clamshell",
-				Val:  false,
-			},
-			{
-				Name:              "tablet",
-				ExtraSoftwareDeps: []string{"tablet_mode"},
-				Val:               true,
-			},
-		},
+		Params: []testing.Param{{
+			Name:      "chrome_clamshell",
+			ExtraData: []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
+			Fixture:   "chromeLoggedIn",
+			Val: fastInkTestParams{
+				arc:    false,
+				tablet: false,
+				displayRotations: []display.RotationAngle{
+					display.Rotate0,
+					display.Rotate90,
+					display.Rotate180,
+					display.Rotate270,
+				},
+				wStates: []ash.WindowStateType{
+					ash.WindowStateNormal,
+					ash.WindowStateMaximized,
+					ash.WindowStateFullscreen,
+				}},
+		}, {
+			Name:              "chrome_tablet",
+			ExtraSoftwareDeps: []string{"tablet_mode"},
+			ExtraData:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
+			Fixture:           "chromeLoggedIn",
+			Val: fastInkTestParams{
+				arc:    false,
+				tablet: true,
+				displayRotations: []display.RotationAngle{
+					display.Rotate0,
+					display.Rotate90,
+					display.Rotate180,
+					display.Rotate270,
+				},
+				wStates: []ash.WindowStateType{
+					ash.WindowStateMaximized,
+					ash.WindowStateFullscreen,
+				}},
+		}, {
+			Name:              "arc_clamshell",
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraData:         []string{fastInkAPK},
+			Fixture:           "arcBooted",
+			Val: fastInkTestParams{
+				arc:    true,
+				tablet: false,
+				displayRotations: []display.RotationAngle{
+					display.Rotate0,
+					display.Rotate180,
+				},
+				wStates: []ash.WindowStateType{
+					ash.WindowStateNormal,
+					ash.WindowStateLeftSnapped,
+					ash.WindowStateRightSnapped,
+					ash.WindowStateMaximized,
+					ash.WindowStateFullscreen,
+				}},
+		}, {
+			Name:              "arc_tablet",
+			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+			ExtraData:         []string{fastInkAPK},
+			Fixture:           "arcBootedInTabletMode",
+			Val: fastInkTestParams{
+				arc:    true,
+				tablet: true,
+				displayRotations: []display.RotationAngle{
+					display.Rotate0,
+					display.Rotate180,
+				},
+				wStates: []ash.WindowStateType{
+					ash.WindowStateMaximized,
+					ash.WindowStateLeftSnapped,
+					ash.WindowStateRightSnapped,
+					ash.WindowStateFullscreen,
+				}},
+		}, {
+			Name:              "arc_clamshell_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraData:         []string{fastInkAPK},
+			Fixture:           "arcBooted",
+			Val: fastInkTestParams{
+				arc:    true,
+				tablet: false,
+				displayRotations: []display.RotationAngle{
+					display.Rotate0,
+					display.Rotate180,
+				},
+				wStates: []ash.WindowStateType{
+					ash.WindowStateNormal,
+					ash.WindowStateLeftSnapped,
+					ash.WindowStateRightSnapped,
+					ash.WindowStateMaximized,
+					ash.WindowStateFullscreen,
+				}},
+		}, {
+			Name:              "arc_tablet_vm",
+			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+			ExtraData:         []string{fastInkAPK},
+			Fixture:           "arcBootedInTabletMode",
+			Val: fastInkTestParams{
+				arc:    true,
+				tablet: true,
+				displayRotations: []display.RotationAngle{
+					display.Rotate0,
+					display.Rotate180,
+				},
+				wStates: []ash.WindowStateType{
+					ash.WindowStateMaximized,
+					ash.WindowStateLeftSnapped,
+					ash.WindowStateRightSnapped,
+					ash.WindowStateFullscreen,
+				}},
+		}},
 	})
 }
 
-func ChromeFastInk(ctx context.Context, s *testing.State) {
+func FastInk(ctx context.Context, s *testing.State) {
 	// Reserve ten seconds for various cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	params := s.Param().(fastInkTestParams)
+	var cr *chrome.Chrome
+	if params.arc {
+		cr = s.FixtValue().(*arc.PreData).Chrome
+	} else {
+		cr = s.FixtValue().(*chrome.Chrome)
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	tabletMode := s.Param().(bool)
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, params.tablet)
 	if err != nil {
 		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
 	}
 	defer cleanup(cleanupCtx)
 
-	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
-	defer srv.Close()
+	if params.arc {
+		a := s.FixtValue().(*arc.PreData).ARC
+		if err := a.Install(ctx, s.DataPath(fastInkAPK)); err != nil {
+			s.Fatal("Failed installing app: ", err)
+		}
 
-	conn, err := cr.NewConn(ctx, srv.URL+"/d-canvas/main.html")
-	if err != nil {
-		s.Fatal("Failed to load d-canvas/main.html: ", err)
-	}
-	defer conn.Close()
+		act, err := arc.NewActivity(a, "dev.chromeos.lowlatencystylusdemogpu", ".MainActivity")
+		if err != nil {
+			s.Fatal("Failed to create new activity: ", err)
+		}
+		defer act.Close()
 
-	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for d-canvas/main.html to achieve quiescence: ", err)
+		if err := act.Start(ctx, tconn); err != nil {
+			s.Fatal("Failed to start activity: ", err)
+		}
+		defer act.Stop(cleanupCtx, tconn)
+	} else {
+		srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+		defer srv.Close()
+
+		conn, err := cr.NewConn(ctx, srv.URL+"/d-canvas/main.html")
+		if err != nil {
+			s.Fatal("Failed to load d-canvas/main.html: ", err)
+		}
+		defer conn.Close()
+
+		if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
+			s.Fatal("Failed to wait for d-canvas/main.html to achieve quiescence: ", err)
+		}
 	}
 
 	ws, err := ash.GetAllWindows(ctx, tconn)
@@ -92,13 +223,6 @@ func ChromeFastInk(ctx context.Context, s *testing.State) {
 
 	wID := ws[0].ID
 
-	var wStates []ash.WindowStateType
-	if tabletMode {
-		wStates = []ash.WindowStateType{ash.WindowStateMaximized, ash.WindowStateFullscreen}
-	} else {
-		wStates = []ash.WindowStateType{ash.WindowStateNormal, ash.WindowStateMaximized, ash.WindowStateFullscreen}
-	}
-
 	// The display info would be stale when we rotate the display.
 	// To be safe, we limit the scope of info used to get the ID.
 	var internalDisplayID string
@@ -109,13 +233,13 @@ func ChromeFastInk(ctx context.Context, s *testing.State) {
 	}
 
 	defer display.SetDisplayRotationSync(cleanupCtx, tconn, internalDisplayID, display.Rotate0)
-	for _, displayRotation := range []display.RotationAngle{display.Rotate0, display.Rotate90, display.Rotate180, display.Rotate270} {
+	for _, displayRotation := range params.displayRotations {
 		s.Run(ctx, string(displayRotation), func(ctx context.Context, s *testing.State) {
 			if err := display.SetDisplayRotationSync(ctx, tconn, internalDisplayID, displayRotation); err != nil {
 				s.Fatal("Failed to rotate display: ", err)
 			}
 
-			for _, wState := range wStates {
+			for _, wState := range params.wStates {
 				s.Run(ctx, string(wState), func(ctx context.Context, s *testing.State) {
 					if err := ash.SetWindowStateAndWait(ctx, tconn, wID, wState); err != nil {
 						s.Fatalf("Failed to set window state to %v: %v", wState, err)
@@ -145,7 +269,7 @@ func ChromeFastInk(ctx context.Context, s *testing.State) {
 						}
 					}
 
-					if !tabletMode {
+					if !params.tablet {
 						w, err := ash.GetWindow(ctx, tconn, wID)
 						if err != nil {
 							s.Fatal("Failed to get window info: ", err)
