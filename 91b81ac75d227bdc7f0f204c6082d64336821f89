@@ -51,6 +51,24 @@
       "message": "Add Jonathan to look at the issue with OpenExpandedView. Since the test has not passed, there is no rush to merge the change. \n\nJonathan, you can cherry pick this change to your repo or simply download it. If you don\u0027t know how to do it, please let me know. I will show you. \n\nThanks.\n",
       "revId": "91b81ac75d227bdc7f0f204c6082d64336821f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4db7143a_825d8fc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-04-24T03:25:23Z",
+      "side": 1,
+      "message": "Thanks Seewai. I will take a look at that. Sorry, I guess my Chromium gmail account is not properly linked so I did not see the email yesterday",
+      "parentUuid": "72f279bc_79d9c52e",
+      "revId": "91b81ac75d227bdc7f0f204c6082d64336821f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
