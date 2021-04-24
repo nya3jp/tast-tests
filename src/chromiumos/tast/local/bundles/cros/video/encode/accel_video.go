@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -183,6 +184,11 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 		gtestFilter,
 		gtest.ExtraArgs(testArgs...),
 		gtest.UID(int(sysutil.ChronosUID)))
+
+	command, _ := t.Args()
+	if command != nil {
+		testing.ContextLogf(ctx, "Running %s", shutil.EscapeSlice(command))
+	}
 
 	if report, err := t.Run(ctx); err != nil {
 		if report != nil {
