@@ -122,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2f2d507_76e03341",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-24T01:46:37Z",
+      "side": 1,
+      "message": "Any specific case or device this is hit?. If it is certain set of devices then let\u0027s check if there is any other way to skip this test case like hwdeps or something.",
+      "parentUuid": "6388db1e_0829db41",
+      "range": {
+        "startLine": 552,
+        "startChar": 59,
+        "endLine": 554,
+        "endChar": 3
+      },
+      "revId": "2760085de07c7d065654d541a3e166417ebe09c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c2e243ef_7df500d4",
@@ -135,6 +159,30 @@
       "writtenOn": "2021-04-18T23:20:37Z",
       "side": 1,
       "message": "optional: In order to test the stylus behavior end-to-end, injecting an input event from ChromeOS side may be better. For the other types of input devices, we already have modules in input/ [1]. However, we have not had a module for stylus. If we are going to add more tests related to stylus, it would be great to add a module to inject stylus input events.\n\n[1]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/input/",
+      "range": {
+        "startLine": 562,
+        "startChar": 26,
+        "endLine": 562,
+        "endChar": 56
+      },
+      "revId": "2760085de07c7d065654d541a3e166417ebe09c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4832ec15_a3c9aed9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-24T01:46:37Z",
+      "side": 1,
+      "message": "Please create a bug for this with this comment and proceed for this test.",
+      "parentUuid": "c2e243ef_7df500d4",
       "range": {
         "startLine": 562,
         "startChar": 26,
