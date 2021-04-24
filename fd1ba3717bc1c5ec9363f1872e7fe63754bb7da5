@@ -68,6 +68,24 @@
       "parentUuid": "0def1604_5d2072da",
       "revId": "fd1ba3717bc1c5ec9363f1872e7fe63754bb7da5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25644f0a_79e783f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/pandora.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-04-24T01:13:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7a2e0ed_accefff0",
+      "revId": "fd1ba3717bc1c5ec9363f1872e7fe63754bb7da5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
