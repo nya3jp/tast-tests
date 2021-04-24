@@ -39,6 +39,30 @@
       },
       "revId": "4bfc5bd7b735685b757f0a1d489109770468d4d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18c4ec23_509c3129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/roblox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-04-24T00:24:47Z",
+      "side": 1,
+      "message": "sure. I will add a comment. If the login page is on web view. The test will skip login part(FYI: XML hierarchy of login web page doesn\u0027t have login button).",
+      "parentUuid": "b1097a82_367c6b13",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "4bfc5bd7b735685b757f0a1d489109770468d4d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
