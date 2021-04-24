@@ -16,6 +16,23 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "8a8cc84ff1cd95dbff8db6969e4948026239ae73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a9a4ea_bee7a054",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-04-24T07:27:55Z",
+      "side": 1,
+      "message": "It seemed that the RunWithCombinedOutput isn\u0027t used in this CL, do you want to split it off into another CL?",
+      "revId": "8a8cc84ff1cd95dbff8db6969e4948026239ae73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
