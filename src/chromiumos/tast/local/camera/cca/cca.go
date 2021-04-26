@@ -296,7 +296,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 
 		return loadScripts(ctx, conn, scriptPaths)
 	}(); err != nil {
-		if closeErr := testutil.CloseApp(ctx, cr, conn); closeErr != nil {
+		if closeErr := testutil.CloseApp(ctx, cr, conn, appLauncher.UseSWAWindow); closeErr != nil {
 			testing.ContextLog(ctx, "Failed to close app: ", closeErr)
 		}
 		if closeErr := conn.Close(); closeErr != nil {
@@ -341,9 +341,10 @@ func loadScripts(ctx context.Context, conn *chrome.Conn, scriptPaths []string) e
 
 // New launches a CCA instance. The returned App instance must be closed when the test is finished.
 func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, tb *testutil.TestBridge) (*App, error) {
-	return Init(ctx, cr, scriptPaths, outDir, func(ctx context.Context, tconn *chrome.TestConn) error {
-		return apps.LaunchSystemWebApp(ctx, tconn, "Camera", "chrome://camera-app/views/main.html")
-	}, tb)
+	return Init(ctx, cr, scriptPaths, outDir, testutil.AppLauncher{
+		func(ctx context.Context, tconn *chrome.TestConn) error {
+			return apps.LaunchSystemWebApp(ctx, tconn, "Camera", "chrome://camera-app/views/main.html")
+		}, true}, tb)
 }
 
 // InstanceExists checks if there is any running CCA instance.
@@ -428,7 +429,7 @@ func (a *App) Close(ctx context.Context) (retErr error) {
 			}
 		}
 
-		if err := testutil.CloseApp(ctx, a.cr, a.conn); err != nil {
+		if err := testutil.CloseApp(ctx, a.cr, a.conn, a.appLauncher.UseSWAWindow); err != nil {
 			reportOrLogError(errors.Wrap(err, "failed to close app"))
 		}
 		if err := a.conn.Close(); err != nil {

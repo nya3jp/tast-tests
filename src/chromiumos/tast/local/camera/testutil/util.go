@@ -37,7 +37,10 @@ func ChromeBypassCameraPermissions() testing.Precondition { return chromeBypassC
 
 // AppLauncher is used during the launch process of CCA. We could launch CCA
 // by launchApp event, camera intent or any other ways.
-type AppLauncher func(ctx context.Context, tconn *chrome.TestConn) error
+type AppLauncher struct {
+	LaunchApp    func(ctx context.Context, tconn *chrome.TestConn) error
+	UseSWAWindow bool
+}
 
 // LaunchApp launches the camera app and handles the communication flow between tests and app.
 func LaunchApp(ctx context.Context, cr *chrome.Chrome, tb *TestBridge, appLauncher AppLauncher) (*chrome.Conn, *AppWindow, error) {
@@ -51,7 +54,7 @@ func LaunchApp(ctx context.Context, cr *chrome.Chrome, tb *TestBridge, appLaunch
 		if err != nil {
 			return nil, err
 		}
-		if err := appLauncher(ctx, tconn); err != nil {
+		if err := appLauncher.LaunchApp(ctx, tconn); err != nil {
 			return nil, err
 		}
 
@@ -118,10 +121,14 @@ func RefreshApp(ctx context.Context, conn *chrome.Conn, tb *TestBridge) (*AppWin
 }
 
 // CloseApp closes the camera app and ensure the window is closed via autotest private API.
-func CloseApp(ctx context.Context, cr *chrome.Chrome, appConn *chrome.Conn) error {
+func CloseApp(ctx context.Context, cr *chrome.Chrome, appConn *chrome.Conn, useSWAWindow bool) error {
 	if err := appConn.CloseTarget(ctx); err != nil {
 		return errors.Wrap(err, "failed to close target")
 	}
+	if !useSWAWindow {
+		return nil
+	}
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get test API connection")
