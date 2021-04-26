@@ -51,6 +51,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dee11035_cd98cfa2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-26T07:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "328af4e1_b0266096",
+      "range": {
+        "startLine": 9,
+        "startChar": 53,
+        "endLine": 9,
+        "endChar": 60
+      },
+      "revId": "6e5beed36b1404f5c5229965c30c4fa13c8c57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e53eff_663f9ad1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-26T07:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a484e66_54cb4181",
+      "range": {
+        "startLine": 9,
+        "startChar": 126,
+        "endLine": 9,
+        "endChar": 140
+      },
+      "revId": "6e5beed36b1404f5c5229965c30c4fa13c8c57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "748ba627_880ce9b7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "writtenOn": "2021-04-26T03:48:11Z",
       "side": 1,
       "message": "Maybe touchscreen hwdep instead?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/main/src/chromiumos/tast/testing/hwdep/hwdep.go#163\n\nIf you really have to do the stable approach, make sure you document your stable condition clearly that no non-touch devices should be added.",
+      "revId": "6e5beed36b1404f5c5229965c30c4fa13c8c57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "679e51bf_38df16d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-26T07:38:57Z",
+      "side": 1,
+      "message": "Thanks for the comment. To solve this problem and enable stronger hardware filter. I have to change the predefined hwdeps type from dependency to a condition. Though lots of code involved. I have been thinking of this limitation very long time. Thanks for the comment but sorry for big change after.",
+      "parentUuid": "748ba627_880ce9b7",
       "revId": "6e5beed36b1404f5c5229965c30c4fa13c8c57a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
