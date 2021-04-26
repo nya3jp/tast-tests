@@ -61,6 +61,16 @@ func VKEnabled() Option {
 // wiping them before logging in.
 func KeepState() Option {
 	return func(cfg *config.MutableConfig) error {
+		cfg.KeepOwnership = true
+		cfg.KeepState = true
+		return nil
+	}
+}
+
+// ResetOwnershipAndKeepState returns an Option that clears the device ownership and preserves other state.
+func ResetOwnershipAndKeepState() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.KeepOwnership = false
 		cfg.KeepState = true
 		return nil
 	}

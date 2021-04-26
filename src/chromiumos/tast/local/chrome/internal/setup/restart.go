@@ -221,13 +221,14 @@ func restartSession(ctx context.Context, cfg *config.Config) error {
 				}
 			}
 		}
-
-		if !cfg.KeepOwnership() {
-			// Delete policy files to clear the device's ownership state since the account
-			// whose cryptohome we'll delete may be the owner: http://crbug.com/897278
-			if err := session.ClearDeviceOwnership(ctx); err != nil {
-				return err
-			}
+	}
+	if !cfg.KeepOwnership() {
+		// Delete policy files to clear the device's ownership state.
+		// If the users under /home/chronos are deleted, clearing ownership is necessary since the account
+		// whose cryptohome we'll delete may be the owner: http://crbug.com/897278.
+		// Clearing the ownership also makes sure the new login account will take the ownership.
+		if err := session.ClearDeviceOwnership(ctx); err != nil {
+			return err
 		}
 	}
 
