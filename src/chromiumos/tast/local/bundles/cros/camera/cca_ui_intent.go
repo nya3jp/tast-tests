@@ -266,7 +266,10 @@ func launchIntent(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options in
 		testing.ContextLog(ctx, string(output))
 		return nil
 	}
-	return cca.Init(ctx, cr, scripts, outDir, launchByIntent, tb)
+	return cca.Init(ctx, cr, scripts, outDir, testutil.AppLauncher{
+		LaunchApp:    launchByIntent,
+		UseSWAWindow: false,
+	}, tb)
 }
 
 func closeCCAAndTestApp(ctx context.Context, a *arc.ARC, app *cca.App, outDir string) error {
