@@ -16,6 +16,24 @@
       "message": "This tests seems flaky on betty-pi-arc-direct-tast-vm\n",
       "revId": "7e2980b8e4be603d916f1d46fc9aceaf5f001d38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d39dab66_a9cae7c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-26T11:28:51Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s flaky. But it isn\u0027t related to this CL. Here is a bug: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1202585\n\nI created a CL to remove test from the CQ.",
+      "parentUuid": "a1002a2c_24beaddc",
+      "revId": "7e2980b8e4be603d916f1d46fc9aceaf5f001d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
