@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a67e43c1_ec53b0ac",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-04-26T04:50:26Z",
+      "side": 1,
+      "message": "Is there a way to tell whether we are using SWA window without pass it in AppLauncher? For example, can we tell that from the connection, or checking isSystemWebAppOpen() here?",
+      "revId": "c9d344d72526dc0f0f773d8dd63df85c1f5e292d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
