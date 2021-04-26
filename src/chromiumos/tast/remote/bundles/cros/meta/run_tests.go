@@ -63,8 +63,7 @@ func init() {
 					"meta.RemotePass/faillog/ps.txt": notExists,
 				},
 			},
-			// TODO(https://crbug.com/1111251): Test is disabled until it can be fixed
-			// ExtraAttr: []string{"group:mainline", "informational"},
+			ExtraAttr: []string{"group:mainline", "informational"},
 		}, {
 			Name: "files",
 			Val: runTestsParam{
