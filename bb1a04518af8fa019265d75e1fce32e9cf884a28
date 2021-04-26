@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c89b46e_c2d734f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2021-04-26T02:07:08Z",
+      "side": 1,
+      "message": "I could either name the function \u0027RightClickFile\u0027 or \u0027OpenContextMenu\u0027.\n\nGiven that it only opens context menu for items in FileList (not dir tree) I thought RightClickFile was a clearer name.",
+      "revId": "bb1a04518af8fa019265d75e1fce32e9cf884a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
