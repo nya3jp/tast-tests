@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f01c634a_139fac43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-26T02:33:36Z",
+      "side": 1,
+      "message": "According to the investigation in b/185378075#comment3, this is likely a test AP problem. As the test can\u0027t really detect DUT problems, I guess we can remove it from wificell_func. WDYT?",
+      "revId": "91df17ed724f6d86b96216f5b8591f671aaa5fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
