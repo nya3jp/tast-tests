@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bbdd708_b5d4f2b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-26T20:30:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7b8f6d2_fc4f4401",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 12
+      },
+      "revId": "3ffbd3230a6ec50ba0fc9faccdcf95172c941d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "341a2fa8_e168c30d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-26T10:01:11Z",
       "side": 1,
       "message": "This method will do nothing if ctx is already expired. I recommend reserving a short time in advance for cleanup.\n\nExample:\n\n cleanCtx :\u003d ctx\n ctx, cancel :\u003d ctxutil.Shorten(ctx, 3*time.Second)\n defer cancel()\n\n if err :\u003d kb.Accel(ctx, \"Search+Esc\"); err !\u003d nil {\n   ...\n }\n defer func() {\n   if kb.Accel(cleanCtx, \"Ctrl+W\"); err !\u003d nil {  // NOTE: remember to use cleanCtx here!\n     ...\n   }\n }()",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "3ffbd3230a6ec50ba0fc9faccdcf95172c941d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15a9fada_eed250d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-26T20:30:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "341a2fa8_e168c30d",
       "range": {
         "startLine": 87,
         "startChar": 5,
