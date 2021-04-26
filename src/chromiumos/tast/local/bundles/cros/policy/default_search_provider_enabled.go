@@ -7,10 +7,12 @@ package policy
 import (
 	"context"
 	"strings"
-	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/browser"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -35,6 +37,7 @@ func DefaultSearchProviderEnabled(ctx context.Context, s *testing.State) {
 	const (
 		defaultSearchEngine = "google.com" // search engine checked in the test
 	)
+	addressBarNode := nodewith.Role(role.TextField).Name("Address and search bar")
 
 	cr := s.FixtValue().(*fixtures.FixtData).Chrome
 	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
@@ -97,12 +100,11 @@ func DefaultSearchProviderEnabled(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
+			uiauto := uiauto.New(tconn)
+
 			// Click the address and search bar.
-			if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeTextField,
-				Name: "Address and search bar",
-			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-				s.Fatal("Failed to click address bar: ", err)
+			if err := uiauto.LeftClick(addressBarNode)(ctx); err != nil {
+				s.Fatal("Could not find the address bar: ", err)
 			}
 
 			// Type something.
@@ -111,35 +113,19 @@ func DefaultSearchProviderEnabled(ctx context.Context, s *testing.State) {
 			}
 
 			// Wait for the page to load.
-			if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+			if err := uiauto.WaitForLocation(addressBarNode)(ctx); err != nil {
 				s.Fatal("Failed to wait for location change: ", err)
 			}
 
-			var location string
-
-			// Get location from JS.
-			if err := conn.Eval(ctx, "location.href", &location); err != nil {
-				s.Fatal("Failed to execute JS expression: ", err)
-			}
-
-			// If we cannot connect to www.google.com the location will be set
-			// to "chrome-error://chromewebdata/".
-			// In that case we have to check the ui tree for the "rootWebArea".
-			if strings.Contains(location, "chrome-error://chromewebdata/") {
-				params := ui.FindParams{
-					Role: "rootWebArea",
-				}
-				node, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-				if err != nil {
-					s.Fatal("Failed to find rootWebArea: ", err)
-				}
-				defer node.Release(ctx)
-				location = node.Name
+			// Find the address bar.
+			location, err := browser.GetAddressBarText(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to get address bar text: ", err)
 			}
 
 			defaultSearchEngineUsed := strings.Contains(location, defaultSearchEngine)
 			if param.enabled != defaultSearchEngineUsed {
-				s.Fatalf("Unexpected usage of search engine: got %t; want %t", defaultSearchEngineUsed, param.enabled)
+				s.Fatalf("Unexpected usage of search engine: got %t; want %t (got %q; want %q)", defaultSearchEngineUsed, param.enabled, location, defaultSearchEngine)
 			}
 		})
 	}
