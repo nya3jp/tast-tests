@@ -178,6 +178,24 @@
       "parentUuid": "66098fec_7183f1a1",
       "revId": "b00840f8d13735e431d753be8b112cc26ab59260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c4548c1_e6c8dd9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-26T10:05:01Z",
+      "side": 1,
+      "message": "Thanks for confirming. Then I think we can just try removing the flag.\n\nOptional: You might want to create a separate CL to update restart.go only. In case video tests start to fail with the flag change, we have to revert the CL... and in that case separating a risky flag change and other policy test changes would let you avoid relanding whole changes.",
+      "parentUuid": "69911f35_29a4f696",
+      "revId": "b00840f8d13735e431d753be8b112cc26ab59260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
