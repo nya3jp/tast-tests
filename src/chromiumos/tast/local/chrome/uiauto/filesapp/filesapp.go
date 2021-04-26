@@ -37,7 +37,7 @@ const filesTitlePrefix = "Files - "
 // Context menu items for a file.
 const (
 	Open         = "Open"
-	OpenWith     = "Open with..."
+	OpenWith     = "Open with…"
 	Cut          = "Cut"
 	Copy         = "Copy"
 	Paste        = "Paste"
@@ -165,6 +165,11 @@ func (f *FilesApp) SelectFile(fileName string) uiauto.Action {
 // OpenFile returns a function that executes double click on a file to open it with default app.
 func (f *FilesApp) OpenFile(fileName string) uiauto.Action {
 	return f.DoubleClick(file(fileName))
+}
+
+// RightClickFile returns a function that executes right click on a file to open its context menu.
+func (f *FilesApp) RightClickFile(fileName string) uiauto.Action {
+	return f.RightClick(file(fileName))
 }
 
 // OpenQuickView returns a function that opens the QuickView menu for a file.
