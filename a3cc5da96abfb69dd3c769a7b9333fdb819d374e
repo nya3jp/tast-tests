@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e8e2fe7_37c23ffb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-04-26T09:06:06Z",
+      "side": 1,
+      "message": "Hi Pavol,\n\nThis tast tests verifies that the proxy resolution service in Chrome works as expected. Can you please take a look?\n\nThanks!",
+      "revId": "a3cc5da96abfb69dd3c769a7b9333fdb819d374e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
