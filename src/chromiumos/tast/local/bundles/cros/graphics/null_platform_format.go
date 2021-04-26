@@ -26,6 +26,7 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		Attr:         []string{"group:graphics", "graphics_perbuild"},
+		SoftwareDeps: []string{"no_qemu"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      time.Minute,
 		Params: []testing.Param{{
