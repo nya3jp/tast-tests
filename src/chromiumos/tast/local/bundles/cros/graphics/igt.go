@@ -42,7 +42,7 @@ func init() {
 			"chromeos-gfx-display@google.com",
 			"markyacoub@google.com",
 		},
-		SoftwareDeps: []string{"drm_atomic", "igt"},
+		SoftwareDeps: []string{"drm_atomic", "igt", "no_qemu"},
 		Params: []testing.Param{{
 			Name: "drm_import_export",
 			Val: igtTest{

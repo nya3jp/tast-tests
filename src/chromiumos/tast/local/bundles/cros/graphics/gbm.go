@@ -20,8 +20,9 @@ func init() {
 			"marcheu@chromium.org",
 			"hidehiko@chromium.org", // Tast port author.
 		},
-		Attr:    []string{"group:mainline", "informational"},
-		Fixture: "gpuWatchDog",
+		SoftwareDeps: []string{"no_qemu"},
+		Attr:         []string{"group:mainline", "informational"},
+		Fixture:      "gpuWatchDog",
 	})
 }
 

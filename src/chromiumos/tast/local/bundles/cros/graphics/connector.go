@@ -61,7 +61,8 @@ func init() {
 			"pwang@chromium.org",
 			"chromeos-gfx@google.com",
 		},
-		Attr: []string{"group:mainline"},
+		Attr:         []string{"group:mainline"},
+		SoftwareDeps: []string{"no_qemu"},
 		Params: []testing.Param{
 			{
 				Name:              "",
