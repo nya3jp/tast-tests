@@ -16,6 +16,23 @@
       "message": "Note: there is no one available on my team for reviews, so we have to rely on Tast owner reviews for now. Thanks.",
       "revId": "d2619dbc480e542cc13454c4100fdc917bf036c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfa53d04_af35d02d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/data/gen_test_images.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-26T09:02:38Z",
+      "side": 1,
+      "message": "Before entering into the details, I have a question:\n\n- Is this tool run offline? (i.e. run locally during the development to generate data)? Or, is it expected to run on DUT?\n\nIf the former\n- could you avoid put under data, because it will be uploaded to DUT unnecessarily.\nIf the latter\n- could you make usual go function(s) under some subpackage of cros/firmware?\n\nIn either case:\n- Could you get rid of shell script (i.e. port to golang)? I know it is the autotest way, but shell script is not statically typed and less error prone. We do not want to follow autotest in that characteristic. This script looks enough long and complicate.",
+      "revId": "d2619dbc480e542cc13454c4100fdc917bf036c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
