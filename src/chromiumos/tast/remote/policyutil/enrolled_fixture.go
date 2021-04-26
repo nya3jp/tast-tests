@@ -7,13 +7,17 @@ package policyutil
 import (
 	"context"
 	"encoding/json"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/dut"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/rpc"
 	ps "chromiumos/tast/services/cros/policy"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -34,7 +38,25 @@ type enrolledFixt struct {
 	fdmsDir string
 }
 
+func (e *enrolledFixt) checkVPDState(ctx context.Context, d *dut.DUT) error {
+	// https://chromeos.google.com/partner/dlm/docs/factory/vpd.html#required-rw-fields
+	const requiredField = "gbind_attribute"
+
+	if out, err := d.Conn().Command("vpd", "-i", "RW_VPD", "-l").Output(ctx, ssh.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to run the vpd command")
+	} else if !strings.Contains(string(out), requiredField) {
+		testing.ContextLog(ctx, "vpd RW_VPD content: ", string(out))
+		return errors.Errorf("VPD error, did not find the required field %q", requiredField)
+	}
+
+	return nil
+}
+
 func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	if err := e.checkVPDState(ctx, s.DUT()); err != nil {
+		s.Fatal("VPD broken, skipping enrollment: ", err)
+	}
+
 	if err := EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
