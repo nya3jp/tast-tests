@@ -245,6 +245,11 @@ func SetWindowBounds(ctx context.Context, tconn *chrome.TestConn, id int, b coor
 	return result.Bounds, result.DisplayID, nil
 }
 
+// ActivateWindow requests to activate this window.
+func (w *Window) ActivateWindow(ctx context.Context, tconn *chrome.TestConn) error {
+	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.activateAppWindow)", w.ID)
+}
+
 // CloseWindow requests to close this window.
 func (w *Window) CloseWindow(ctx context.Context, tconn *chrome.TestConn) error {
 	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.closeAppWindow)", w.ID)
