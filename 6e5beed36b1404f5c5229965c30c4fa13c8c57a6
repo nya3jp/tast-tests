@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "748ba627_880ce9b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-26T03:48:11Z",
+      "side": 1,
+      "message": "Maybe touchscreen hwdep instead?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/main/src/chromiumos/tast/testing/hwdep/hwdep.go#163\n\nIf you really have to do the stable approach, make sure you document your stable condition clearly that no non-touch devices should be added.",
+      "revId": "6e5beed36b1404f5c5229965c30c4fa13c8c57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
