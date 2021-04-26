@@ -160,6 +160,24 @@
       "parentUuid": "59629206_334b67e7",
       "revId": "b00840f8d13735e431d753be8b112cc26ab59260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69911f35_29a4f696",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-26T08:14:27Z",
+      "side": 1,
+      "message": "Thanks that lead me to a problem with my credentials for gsutil, now it works fine.\nThe tests from video.Play and video.PlaybackPerf pass, except for a few which were skipped due to missing software dependencies.\nThe videos in the tests played automatically without the --autoplay-policy\u003dno-user-gesture-required parameter, so it should be fine I think.",
+      "parentUuid": "66098fec_7183f1a1",
+      "revId": "b00840f8d13735e431d753be8b112cc26ab59260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
