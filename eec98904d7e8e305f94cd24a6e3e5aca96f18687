@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fba2dc8_5860975c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-04-26T19:31:44Z",
+      "side": 1,
+      "message": "It might be good to include a comment with the config explaining why a particular driver is included, so if the reason stops being true at some point we could remove drivers that are no longer used by supported devices etc.",
+      "revId": "eec98904d7e8e305f94cd24a6e3e5aca96f18687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
