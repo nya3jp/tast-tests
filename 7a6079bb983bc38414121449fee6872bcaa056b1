@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef31a5fa_617b3bf2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-26T21:06:03Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we specify why this change? E.g.\n\n  This change splits level 5.1 so that they can be gated by its\n  own HWDecodeVP9_4K60 caps.\n\nor some such.",
+      "revId": "7a6079bb983bc38414121449fee6872bcaa056b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a1960fc_aea3da12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-26T21:06:03Z",
+      "side": 1,
+      "message": "Changes LGTM!",
+      "revId": "7a6079bb983bc38414121449fee6872bcaa056b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
