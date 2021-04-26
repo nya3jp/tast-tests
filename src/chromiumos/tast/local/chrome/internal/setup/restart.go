@@ -51,7 +51,6 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		"--remote-debugging-port=0",                       // Let Chrome choose its own debugging port.
 		"--disable-logging-redirect",                      // Disable redirection of Chrome logging into cryptohome.
 		"--ash-disable-system-sounds",                     // Disable system startup sound.
-		"--autoplay-policy=no-user-gesture-required",      // Allow media autoplay.
 		"--enable-experimental-extension-apis",            // Allow Chrome to use the Chrome Automation API.
 		"--redirect-libassistant-logging",                 // Redirect libassistant logging to /var/log/chrome/.
 		"--no-first-run",                                  // Prevent showing up offer pages, e.g. google.com/chromebooks.
