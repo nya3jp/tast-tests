@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25a7f930_0a26b1e4",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-26T02:36:04Z",
+      "side": 1,
+      "message": "In my opinion, when wrapping the error, the msg would help to find the failed line.",
+      "parentUuid": "41b402cd_f58ce723",
+      "range": {
+        "startLine": 795,
+        "startChar": 9,
+        "endLine": 795,
+        "endChar": 12
+      },
+      "revId": "2b9155d37257e516f62935b81a9e466e49985431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da65c53b_0045bb5c",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
         "patchSetId": 2
