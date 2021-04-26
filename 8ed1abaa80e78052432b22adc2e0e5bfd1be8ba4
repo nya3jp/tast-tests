@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "607ceab5_1873853e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1485298
+      },
+      "writtenOn": "2021-04-26T18:50:10Z",
+      "side": 1,
+      "message": "Tast owner: PTAL, small logging update",
+      "revId": "8ed1abaa80e78052432b22adc2e0e5bfd1be8ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
