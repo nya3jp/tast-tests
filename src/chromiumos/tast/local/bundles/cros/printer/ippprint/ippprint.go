@@ -20,12 +20,10 @@ import (
 )
 
 // Params struct used by all ipp print tests for parameterized tests.
-// Either ExpectedFile or ExpectedSize should be provided but not both.
 type Params struct {
 	PPDFile      string   // Name of the ppd used to print the job.
 	PrintFile    string   // The file to print.
 	ExpectedFile string   // The file output should be compared to.
-	ExpectedSize int      // The size output should be compared to.
 	Options      []string // Options to be passed to the filter to change output.
 }
 
@@ -63,22 +61,8 @@ func ProxyRun(ctx context.Context, s *testing.State, p *Params) {
 	})
 }
 
-// run runs the given print function and compares the output to the golden file
-// (if p.ExpectedFile) or file size (if p.ExpectedSize).
-
+// run runs the given print function and compares the output to the golden file.
 func run(ctx context.Context, s *testing.State, p *Params, printFun func(context.Context) ([]byte, error)) {
-	if p.ExpectedFile != "" {
-		runWithFile(ctx, s, p, printFun)
-		return
-	}
-	if p.ExpectedSize > 0 {
-		runWithSize(ctx, s, p, printFun)
-		return
-	}
-	s.Fatal("Invalid test parameters - both ExpectedFile and ExpectedSize omitted")
-}
-
-func runWithFile(ctx context.Context, s *testing.State, p *Params, printFun func(context.Context) ([]byte, error)) {
 	expect, err := ioutil.ReadFile(s.DataPath(p.ExpectedFile))
 	if err != nil {
 		s.Fatal("Failed to read golden file: ", err)
@@ -93,20 +77,5 @@ func runWithFile(ctx context.Context, s *testing.State, p *Params, printFun func
 			s.Error("Failed to dump output: ", err)
 		}
 		s.Errorf("Printer output differs from expected: output saved to %q", p.ExpectedFile)
-	}
-}
-
-func runWithSize(ctx context.Context, s *testing.State, p *Params, printFun func(context.Context) ([]byte, error)) {
-	request, err := printFun(ctx)
-	if err != nil {
-		s.Fatal("Print job failed: ", err)
-	}
-	p.ExpectedFile = "output.bin"
-	if len(request) != p.ExpectedSize {
-		outPath := filepath.Join(s.OutDir(), p.ExpectedFile)
-		if err := ioutil.WriteFile(outPath, request, 0644); err != nil {
-			s.Error("Failed to dump output: ", err)
-		}
-		s.Errorf("Printer output (%d bytes) differs from expected (%d bytes): output saved to %q", len(request), p.ExpectedSize, p.ExpectedFile)
 	}
 }
