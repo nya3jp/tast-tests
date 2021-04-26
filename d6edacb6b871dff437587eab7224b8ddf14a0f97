@@ -16,6 +16,52 @@
       "message": "The drm test had the same problem judging from the log.\nAdding to the other tests for clarity.",
       "revId": "d6edacb6b871dff437587eab7224b8ddf14a0f97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25f13242_76bbec00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-04-26T23:22:24Z",
+      "side": 1,
+      "message": "I think it can be run in VM?",
+      "range": {
+        "startLine": 23,
+        "startChar": 81,
+        "endLine": 23,
+        "endChar": 88
+      },
+      "revId": "d6edacb6b871dff437587eab7224b8ddf14a0f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "645a8450_35784e80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-04-26T23:22:24Z",
+      "side": 1,
+      "message": "Should able to run in VM as well?",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "d6edacb6b871dff437587eab7224b8ddf14a0f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
