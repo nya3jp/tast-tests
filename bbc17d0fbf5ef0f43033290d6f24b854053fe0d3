@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0eac01a_d23d5c94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-26T22:31:45Z",
+      "side": 0,
+      "message": "no hwdep to replace this?",
+      "range": {
+        "startLine": 55,
+        "startChar": 32,
+        "endLine": 55,
+        "endChar": 45
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88ddc86c_c1b9d2b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-26T22:31:45Z",
+      "side": 0,
+      "message": "No hwdep to erplace this?",
+      "range": {
+        "startLine": 30,
+        "startChar": 61,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c52a9ca_66b85863",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-26T22:31:45Z",
+      "side": 0,
+      "message": "no hwdep to replace this?",
+      "range": {
+        "startLine": 28,
+        "startChar": 61,
+        "endLine": 28,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "739a8c97_7dc60b03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-26T22:31:45Z",
+      "side": 0,
+      "message": "no hwdep to replace this?",
+      "range": {
+        "startLine": 30,
+        "startChar": 61,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a97d272_0e3c8a02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-26T22:31:45Z",
+      "side": 0,
+      "message": "no hwdep to replace this?",
+      "range": {
+        "startLine": 51,
+        "startChar": 61,
+        "endLine": 51,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7db4afc7_bb6f6882",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-26T22:31:45Z",
+      "side": 0,
+      "message": "no hwdep to replace this?",
+      "range": {
+        "startLine": 27,
+        "startChar": 61,
+        "endLine": 27,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce08cf46_3fddc025",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-26T22:31:45Z",
+      "side": 0,
+      "message": "no hwdep to replace this?",
+      "range": {
+        "startLine": 30,
+        "startChar": 62,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39474351_e3847168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_oobe.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-26T22:31:45Z",
+      "side": 0,
+      "message": "no hwdep to replace this?",
+      "range": {
+        "startLine": 30,
+        "startChar": 61,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55e42c87_349bbcd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-26T22:31:45Z",
+      "side": 0,
+      "message": "no hwdep to replace this?",
+      "range": {
+        "startLine": 30,
+        "startChar": 62,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1366e08d_6bfb6c90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_omnibox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-26T22:31:45Z",
+      "side": 0,
+      "message": "no hwdep to replace this?",
+      "range": {
+        "startLine": 30,
+        "startChar": 62,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

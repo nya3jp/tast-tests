@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b0286b2_273670d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-26T22:31:45Z",
+      "side": 1,
+      "message": "looks good, but a number of places have tablet_mode removed but no hwdep added.  Just wanted to confirm that each of these was intentional, then good to submit.",
+      "revId": "c6c1d3d5d566281857c86f5b9f8dea9c81f1ca3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
