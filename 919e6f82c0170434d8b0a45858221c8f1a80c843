@@ -145,6 +145,24 @@
       "parentUuid": "48d6b463_aaf9109b",
       "revId": "919e6f82c0170434d8b0a45858221c8f1a80c843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01cfd656_7cd4bd38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_login_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-26T09:22:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d2cfcce_00db63fa",
+      "revId": "919e6f82c0170434d8b0a45858221c8f1a80c843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
