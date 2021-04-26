@@ -60,7 +60,7 @@ func init() {
 // ChromeCrashNotLoggedInTastMode
 func ChromeCrashNotLoggedInDirect(ctx context.Context, s *testing.State) {
 	params := s.Param().(chromeCrashNotLoggedInDirectParams)
-	ct, err := chromecrash.NewCrashTester(ctx, chromecrash.Browser, params.fileType)
+	ct, err := chromecrash.NewCrashTester(ctx, chromecrash.GPUProcess, params.fileType)
 	if err != nil {
 		s.Fatal("NewCrashTester failed: ", err)
 	}
