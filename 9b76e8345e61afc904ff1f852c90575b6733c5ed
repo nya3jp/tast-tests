@@ -34,6 +34,24 @@
       "parentUuid": "08848afd_102cf72f",
       "revId": "9b76e8345e61afc904ff1f852c90575b6733c5ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1230300b_81034025",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-04-26T15:59:58Z",
+      "side": 1,
+      "message": "Add hwdep.SkipOnModel(\"dooly\") ?",
+      "parentUuid": "9e5451d9_fbc86209",
+      "revId": "9b76e8345e61afc904ff1f852c90575b6733c5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
