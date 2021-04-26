@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab5b5397_3f3f63ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-26T22:40:44Z",
+      "side": 0,
+      "message": "Yes. It is intentional. I tried to use TouchScreen to replace tablet_mode. Unfortunately betty does not TouchScreen either. It will skip Betty if I add the dep. So adding deps cannot solve my problem. \n\nThe main problem is that some Chromebase devices can not be switched to tablet mode, such as dooly. Force switch to tablet mode ash.EnsureTabletModeEnabled throws out error. `Failed to ensure in tablet mode: Error: failed to switch the tablet mode state`\nhttps://tastboard.corp.google.com/test/apps.LaunchGallery.tablet_unstable\n\nThe correct solution is to add `tablet_mode` to tests wehre use ash.EnsureTabletModeEnabled().\n\nThe definition of `tablet_mode` is that a device having touchscreen and can be converted to tablet mode. In my case, it works better than TouchScreen hwdep.",
+      "parentUuid": "b0eac01a_d23d5c94",
+      "range": {
+        "startLine": 55,
+        "startChar": 32,
+        "endLine": 55,
+        "endChar": 45
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88ddc86c_c1b9d2b0",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-26T22:31:45Z",
       "side": 0,
       "message": "No hwdep to erplace this?",
+      "range": {
+        "startLine": 30,
+        "startChar": 61,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eb4c90c_71e1a4a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-26T22:40:44Z",
+      "side": 0,
+      "message": "ditto",
+      "parentUuid": "88ddc86c_c1b9d2b0",
       "range": {
         "startLine": 30,
         "startChar": 61,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "739bcd80_ca0a1d84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-26T22:40:44Z",
+      "side": 0,
+      "message": "ditto",
+      "parentUuid": "5c52a9ca_66b85863",
+      "range": {
+        "startLine": 28,
+        "startChar": 61,
+        "endLine": 28,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "739a8c97_7dc60b03",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-26T22:31:45Z",
       "side": 0,
       "message": "no hwdep to replace this?",
+      "range": {
+        "startLine": 30,
+        "startChar": 61,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b50185e4_c3cacd0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-26T22:40:44Z",
+      "side": 0,
+      "message": "ditto",
+      "parentUuid": "739a8c97_7dc60b03",
       "range": {
         "startLine": 30,
         "startChar": 61,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e2685e4_c8d3673b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-26T22:40:44Z",
+      "side": 0,
+      "message": "ditto",
+      "parentUuid": "1a97d272_0e3c8a02",
+      "range": {
+        "startLine": 51,
+        "startChar": 61,
+        "endLine": 51,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7db4afc7_bb6f6882",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-04-26T22:31:45Z",
       "side": 0,
       "message": "no hwdep to replace this?",
+      "range": {
+        "startLine": 27,
+        "startChar": 61,
+        "endLine": 27,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "018846b4_a4eb82b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-26T22:40:44Z",
+      "side": 0,
+      "message": "ditto",
+      "parentUuid": "7db4afc7_bb6f6882",
       "range": {
         "startLine": 27,
         "startChar": 61,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6546601e_71836ae6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-26T22:40:44Z",
+      "side": 0,
+      "message": "ditto",
+      "parentUuid": "ce08cf46_3fddc025",
+      "range": {
+        "startLine": 30,
+        "startChar": 62,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39474351_e3847168",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-04-26T22:31:45Z",
       "side": 0,
       "message": "no hwdep to replace this?",
+      "range": {
+        "startLine": 30,
+        "startChar": 61,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51757f20_28acb144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_oobe.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-26T22:40:44Z",
+      "side": 0,
+      "message": "ditto",
+      "parentUuid": "39474351_e3847168",
       "range": {
         "startLine": 30,
         "startChar": 61,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c24608f6_db843ccb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-26T22:40:44Z",
+      "side": 0,
+      "message": "ditto",
+      "parentUuid": "55e42c87_349bbcd8",
+      "range": {
+        "startLine": 30,
+        "startChar": 62,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1366e08d_6bfb6c90",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-04-26T22:31:45Z",
       "side": 0,
       "message": "no hwdep to replace this?",
+      "range": {
+        "startLine": 30,
+        "startChar": 62,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "bbc17d0fbf5ef0f43033290d6f24b854053fe0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3707b30b_d88ee488",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_omnibox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-26T22:40:44Z",
+      "side": 0,
+      "message": "ditto",
+      "parentUuid": "1366e08d_6bfb6c90",
       "range": {
         "startLine": 30,
         "startChar": 62,
