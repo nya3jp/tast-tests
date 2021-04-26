@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "b813a14d7318aeac2641f8cc97f25979838cc36a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c81e4a_0991a379",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-26T10:22:08Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "b813a14d7318aeac2641f8cc97f25979838cc36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b08d79b_5cf56039",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-26T10:22:08Z",
+      "side": 1,
+      "message": "nit: \"e\" is not used, so checkVPDState can be just a function, not a method",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "b813a14d7318aeac2641f8cc97f25979838cc36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
