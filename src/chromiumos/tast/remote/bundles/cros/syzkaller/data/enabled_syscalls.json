@@ -620,5 +620,24 @@
 			"sendmsg$qrtr",
 			"recvmsg$qrtr"
 		]
+	},
+	{
+		"driver": "freedreno",
+		"archs": ["arm"],
+		"syscalls": [
+			"openat$msm",
+			"ioctl$DRM_IOCTL_MSM_GET_PARAM",
+			"ioctl$DRM_IOCTL_MSM_GEM_NEW",
+			"ioctl$DRM_IOCTL_MSM_GEM_INFO",
+			"ioctl$DRM_IOCTL_MSM_GEM_CPU_PREP",
+			"ioctl$DRM_IOCTL_MSM_GEM_CPU_FINI",
+			"ioctl$DRM_IOCTL_MSM_GEM_SUBMIT",
+			"ioctl$DRM_IOCTL_MSM_WAIT_FENCE",
+			"ioctl$DRM_IOCTL_MSM_GEM_MADVISE",
+			"ioctl$DRM_IOCTL_MSM_SUBMITQUEUE_NEW",
+			"ioctl$DRM_IOCTL_MSM_SUBMITQUEUE_CLOSE",
+			"ioctl$DRM_IOCTL_MSM_SUBMITQUEUE_QUERY",
+			"mmap$DRM_MSM"
+		]
 	}
 ]
