@@ -34,7 +34,12 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"fwupd"},
-		HardwareDeps: hwdep.D(hwdep.Platform("puff")),
+		HardwareDeps: hwdep.D(
+			// TODO(https://crbug.com/1198060): replace with PS175 feature
+			hwdep.Platform("puff"),
+			// Dooly doesn't have an LSPCON
+			hwdep.SkipOnModel("dooly"),
+		),
 	})
 }
 
