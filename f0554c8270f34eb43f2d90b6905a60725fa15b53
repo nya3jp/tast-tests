@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "660f0bc6_2f717f55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-04-26T11:39:17Z",
+      "side": 1,
+      "message": "This CL looks valid, but does not solve the original unknown mojo issue at the root. I would prefer to revert the culprit CL https://crrev.com/c/2786683 first if we cannot find the root cause now. WDYT?",
+      "revId": "f0554c8270f34eb43f2d90b6905a60725fa15b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
