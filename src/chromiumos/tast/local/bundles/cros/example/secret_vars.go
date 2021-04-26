@@ -16,8 +16,7 @@ func init() {
 		// Document: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#secret-variables
 		Desc:     "Secret variables",
 		Contacts: []string{"tast-owners@google.com", "oka@chromium.org"},
-		// TODO(crbug/1083347): consider cleaner way to skip test when secret is not available.
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		// example.SecretVars.password is defined in tast-tests-private/vars/example.SecretVars.yaml
 		// example.commonVar is defined in tast-tests-private/vars/example.yaml
 		VarDeps: []string{"example.SecretVars.password", "example.commonVar"},
