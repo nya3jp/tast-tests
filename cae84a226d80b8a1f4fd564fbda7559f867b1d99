@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a4e2a2c_044550f4",
+        "filename": "src/chromiumos/tast/common/hwsec/cmd_runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-26T10:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13d58650_96aaebdb",
+      "revId": "cae84a226d80b8a1f4fd564fbda7559f867b1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9951b9f7_ab9d22a9",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-04-26T04:24:16Z",
       "side": 1,
       "message": "Suggested alternative comment:\n// RunWithCombinedOutput runs the specified command and returns its combined standard output and standard error.\nhttps://golang.org/pkg/os/exec/#Cmd.CombinedOutput",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 84
+      },
+      "revId": "cae84a226d80b8a1f4fd564fbda7559f867b1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0327ff12_47c1f9a5",
+        "filename": "src/chromiumos/tast/common/hwsec/cmd_runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-26T10:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9951b9f7_ab9d22a9",
       "range": {
         "startLine": 21,
         "startChar": 0,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01d2ea03_919df527",
+        "filename": "src/chromiumos/tast/local/hwsec/cmd_runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-26T10:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac39699b_2bfb53fd",
+      "range": {
+        "startLine": 37,
+        "startChar": 18,
+        "endLine": 37,
+        "endChar": 28
+      },
+      "revId": "cae84a226d80b8a1f4fd564fbda7559f867b1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2626d0a1_6ef5eeb5",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-04-26T04:24:16Z",
       "side": 1,
       "message": "As above.\n// RunWithCombinedOutput implements hwsec.CmdRunner.RunWithCombinedOutput.",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 85
+      },
+      "revId": "cae84a226d80b8a1f4fd564fbda7559f867b1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb1e0ffc_d17f2411",
+        "filename": "src/chromiumos/tast/local/hwsec/cmd_runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-26T10:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2626d0a1_6ef5eeb5",
       "range": {
         "startLine": 52,
         "startChar": 3,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ffd837b_ae3f81bd",
+        "filename": "src/chromiumos/tast/local/hwsec/cmd_runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-26T10:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44f7cfc5_71892115",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 2
+      },
+      "revId": "cae84a226d80b8a1f4fd564fbda7559f867b1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0709160b_c93be980",
@@ -140,6 +254,30 @@
       "writtenOn": "2021-04-26T04:24:16Z",
       "side": 1,
       "message": "nit: delete\n(see other similar comments)",
+      "range": {
+        "startLine": 39,
+        "startChar": 18,
+        "endLine": 39,
+        "endChar": 28
+      },
+      "revId": "cae84a226d80b8a1f4fd564fbda7559f867b1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dfd26ad_255ffd85",
+        "filename": "src/chromiumos/tast/remote/hwsec/cmd_runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-26T10:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0709160b_c93be980",
       "range": {
         "startLine": 39,
         "startChar": 18,
@@ -173,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2714d23_7807d7bd",
+        "filename": "src/chromiumos/tast/remote/hwsec/cmd_runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-26T10:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "116b9d61_a22dcc50",
+      "range": {
+        "startLine": 54,
+        "startChar": 36,
+        "endLine": 54,
+        "endChar": 46
+      },
+      "revId": "cae84a226d80b8a1f4fd564fbda7559f867b1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d77af274_1267c8f9",
@@ -186,6 +348,30 @@
       "writtenOn": "2021-04-26T04:24:16Z",
       "side": 1,
       "message": "optional: consider extracting\n(see other similar comment)",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "cae84a226d80b8a1f4fd564fbda7559f867b1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f73196d_0c56a25b",
+        "filename": "src/chromiumos/tast/remote/hwsec/cmd_runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-26T10:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d77af274_1267c8f9",
       "range": {
         "startLine": 60,
         "startChar": 1,
@@ -219,6 +405,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6206fa3_3afe4fef",
+        "filename": "src/chromiumos/tast/remote/hwsec/tpm_clearer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-26T10:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d444f5af_8ce5664d",
+      "range": {
+        "startLine": 80,
+        "startChar": 28,
+        "endLine": 80,
+        "endChar": 81
+      },
+      "revId": "cae84a226d80b8a1f4fd564fbda7559f867b1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "841d4fa9_0f11f7db",
@@ -232,6 +442,30 @@
       "writtenOn": "2021-04-26T04:24:16Z",
       "side": 1,
       "message": "see above. Update to:\n\"clear_tpm_owner_request \u003d %q; want 0\"",
+      "range": {
+        "startLine": 89,
+        "startChar": 28,
+        "endLine": 89,
+        "endChar": 84
+      },
+      "revId": "cae84a226d80b8a1f4fd564fbda7559f867b1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0ccada3_5b569f24",
+        "filename": "src/chromiumos/tast/remote/hwsec/tpm_clearer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-04-26T10:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "841d4fa9_0f11f7db",
       "range": {
         "startLine": 89,
         "startChar": 28,
