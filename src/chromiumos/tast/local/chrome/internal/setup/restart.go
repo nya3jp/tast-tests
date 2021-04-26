@@ -60,6 +60,7 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		"--enable-oobe-test-api",                          // Enable OOBE helper functions for authentication.
 		"--disable-hid-detection-on-oobe",                 // Skip OOBE check for keyboard/mouse on chromeboxes/chromebases.
 		"--enable-oobe-chromevox-hint-timer-for-dev-mode", // Used to override the default dev mode behavior, which disables this feature by default.
+
 	}
 	if !cfg.EnableRestoreTabs() {
 		args = append(args, "--no-startup-window") // Do not start up chrome://newtab by default to avoid unexpected patterns (doodle etc.)
