@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c05bf616_13651173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_login_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-26T09:22:22Z",
+      "side": 1,
+      "message": "Makes sense, user data is cleared without KeepState.",
+      "parentUuid": "280d8727_b07ba3ae",
+      "revId": "0ad47d11b48625bebd68c05f674c1bdddfc94833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7a9b5a1_57aa8ef5",
