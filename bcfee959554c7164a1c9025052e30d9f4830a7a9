@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83d11f3c_cb8b6b38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-26T23:20:16Z",
+      "side": 1,
+      "message": "Yeah! I figured this was also a good learning test.\n\nThis should also provide confidence for crrev.com/c/2851634",
+      "parentUuid": "e4b28813_f3ae0c2f",
+      "revId": "bcfee959554c7164a1c9025052e30d9f4830a7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "977046be_ffe15698",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-26T22:38:17Z",
       "side": 1,
       "message": "Check with tast reviewers, but I think the golang style is \"FPMCU\": https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 20,
+        "startChar": 15,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "bcfee959554c7164a1c9025052e30d9f4830a7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc8b9cb5_41d3043d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_flash_fp_mcu_hello.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-26T23:20:16Z",
+      "side": 1,
+      "message": "This was intentional, since we are referring to the flash_fp_mcu script, not really the fpmcu. Furthermore, the file name is fp_flash_fp_mcu_hello.go to refer to the the flahing script.\n\nI don\u0027t like the way it looks, but I think this is indeed playing by the rules.",
+      "parentUuid": "977046be_ffe15698",
       "range": {
         "startLine": 20,
         "startChar": 15,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63fdd2ef_30db8c4a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_flash_fp_mcu_hello.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-26T23:20:16Z",
+      "side": 1,
+      "message": "OOPS. Forgot that. Done.",
+      "parentUuid": "ee286b2a_ba8c2b1f",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "bcfee959554c7164a1c9025052e30d9f4830a7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb82fb5c_1ce0ccf6",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-04-26T22:38:17Z",
       "side": 1,
       "message": "Maybe leave this out since it implies there\u0027s something nefarious about it.",
+      "range": {
+        "startLine": 36,
+        "startChar": 31,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "bcfee959554c7164a1c9025052e30d9f4830a7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de24b521_cb2bf6ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_flash_fp_mcu_hello.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-26T23:20:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb82fb5c_1ce0ccf6",
       "range": {
         "startLine": 36,
         "startChar": 31,
