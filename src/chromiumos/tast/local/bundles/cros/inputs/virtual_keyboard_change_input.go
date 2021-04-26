@@ -27,7 +27,7 @@ func init() {
 		Desc:         "Checks that changing input method in different ways",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
-		SoftwareDeps: []string{"chrome", "google_virtual_keyboard", "tablet_mode"},
+		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
@@ -37,6 +37,7 @@ func init() {
 		}, {
 			Name:              "unstable",
 			Pre:               pre.VKEnabledTablet,
+			ExtraSoftwareDeps: []string{"tablet_mode"},
 			ExtraHardwareDeps: pre.InputsUnstableModels,
 		}},
 	})

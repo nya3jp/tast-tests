@@ -25,7 +25,7 @@ func init() {
 		Desc:         "Checks that the input settings works in Chrome",
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:input-tools"},
-		SoftwareDeps: []string{"chrome", "google_virtual_keyboard", "tablet_mode"},
+		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Pre:          pre.VKEnabledTablet,
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
@@ -33,6 +33,7 @@ func init() {
 			ExtraHardwareDeps: pre.InputsStableModels,
 		}, {
 			Name:              "unstable",
+			ExtraSoftwareDeps: []string{"tablet_mode"},
 			ExtraHardwareDeps: pre.InputsUnstableModels,
 		}},
 	})

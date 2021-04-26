@@ -27,7 +27,7 @@ func init() {
 		Desc:         "Checks that the virtual keyboard works in Chrome browser omnibox",
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
-		SoftwareDeps: []string{"chrome", "google_virtual_keyboard", "tablet_mode"},
+		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
@@ -37,6 +37,7 @@ func init() {
 		}, {
 			Name:              "unstable",
 			Pre:               pre.VKEnabledTablet,
+			ExtraSoftwareDeps: []string{"tablet_mode"},
 			ExtraHardwareDeps: pre.InputsUnstableModels,
 		}}})
 }
