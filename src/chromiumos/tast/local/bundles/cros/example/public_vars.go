@@ -15,7 +15,7 @@ func init() {
 		Func:     PublicVars,
 		Desc:     "Public variables",
 		Contacts: []string{"tast-owners@google.com", "oka@chromium.org"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 		// example.PublicVars.foo is defined in tast-tests/vars/example.PublicVars.yaml
 		VarDeps: []string{"example.PublicVars.foo"},
 	})
