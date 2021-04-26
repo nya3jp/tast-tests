@@ -47,18 +47,6 @@ func iTest2(name, ppdFile, expectedFile string, options ...string) base {
 	return base{ExtraAttr: []string{"informational"}, PrintFile: "2page.pdf", Name: name, PPDFile: ppdFile, ExpectedFile: expectedFile, Options: options}
 }
 
-// sizeTest adds non-informational parametrized tests (one proxy, one regular)
-// that use "to_print.pdf" for printing and file size instead of a golden file.
-func sizeTest(name, ppdFile string, expectedSize int, options ...string) base {
-	return base{PrintFile: "to_print.pdf", Name: name, PPDFile: ppdFile, ExpectedSize: expectedSize, Options: options}
-}
-
-// iSizeTest adds informational parametrized tests (one proxy, one regular)
-// that use "to_print.pdf" for printing and file size instead of a golden file.
-func iSizeTest(name, ppdFile string, expectedSize int, options ...string) base {
-	return base{ExtraAttr: []string{"informational"}, PrintFile: "to_print.pdf", Name: name, PPDFile: ppdFile, ExpectedSize: expectedSize, Options: options}
-}
-
 func TestAddParams(t *testing.T) {
 	code := genparams.Template(t, `{{ range . }} {
         Name: {{ .Name | fmt }},
@@ -98,7 +86,7 @@ func TestAddParams(t *testing.T) {
 		test("epson_monochrome", "printer_EpsonGenericColorModel.ppd", "printer_add_epson_printer_monochrome_golden.bin", "print-color-mode=monochrome"),
 		test("generic", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_generic_printer_golden.ps"),
 		test("hp_pclm", "printer_add_hp_printer_pclm.ppd.gz", "printer_add_hp_printer_pclm_out.pclm"),
-		iSizeTest("hp_ljcolor", "printer_add_hp_ljcolor.ppd.gz", 138066),
+		iTest("hp_ljcolor", "printer_add_hp_ljcolor.ppd.gz", "printer_add_hp_printer_ljcolor_out.pcl"),
 		test("hp_pwg_raster_color", "hp_ipp_everywhere.ppd", "printer_add_hp_ipp_everywhere_golden.pwg"),
 		test("hp_pwg_raster_monochrome", "hp_ipp_everywhere.ppd", "printer_add_hp_pwg_raster_monochrome_golden.pwg", "print-color-mode=monochrome"),
 		test("star", "printer_add_star_printer_rastertostar.ppd.gz", "printer_add_star_printer_rastertostar.bin"),
