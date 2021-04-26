@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb5f8326_3e4d1f5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-26T08:36:35Z",
+      "side": 1,
+      "message": "we often avoid prefixes, like \"is\", \"get\", \"has\", etc.\nrecommendation: ramoopsRebootTime()",
+      "range": {
+        "startLine": 422,
+        "startChar": 5,
+        "endLine": 422,
+        "endChar": 25
+      },
+      "revId": "42c1ae8b813ef228a32dc68814c9a86fdad08169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9691fa6d_c853bc78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-26T08:36:35Z",
+      "side": 1,
+      "message": "Could you document about its unit?\nBTW, go\u0027s time package can be used?",
+      "range": {
+        "startLine": 422,
+        "startChar": 48,
+        "endLine": 422,
+        "endChar": 55
+      },
+      "revId": "42c1ae8b813ef228a32dc68814c9a86fdad08169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a69c28b_ec8a5274",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-26T08:36:35Z",
+      "side": 1,
+      "message": "could you handle error?",
+      "revId": "42c1ae8b813ef228a32dc68814c9a86fdad08169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "827e6367_ca6a7107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-26T08:36:35Z",
+      "side": 1,
+      "message": "optional/style: we often write this like:\n\nif len(rampoos) !\u003d 1 {\n  return 0, errors.Errorf(\"Unexpected number of ramoops files: got %d, want 1\", len(ramoops))\n}",
+      "range": {
+        "startLine": 425,
+        "startChar": 0,
+        "endLine": 431,
+        "endChar": 2
+      },
+      "revId": "42c1ae8b813ef228a32dc68814c9a86fdad08169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77fb6003_7ba6a9c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-26T08:36:35Z",
+      "side": 1,
+      "message": "what does this \"-3\" mean? Could you comment at least?",
+      "range": {
+        "startLine": 441,
+        "startChar": 44,
+        "endLine": 441,
+        "endChar": 46
+      },
+      "revId": "42c1ae8b813ef228a32dc68814c9a86fdad08169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
