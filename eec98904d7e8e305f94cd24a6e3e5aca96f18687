@@ -16,6 +16,24 @@
       "message": "It might be good to include a comment with the config explaining why a particular driver is included, so if the reason stops being true at some point we could remove drivers that are no longer used by supported devices etc.",
       "revId": "eec98904d7e8e305f94cd24a6e3e5aca96f18687",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed9a1b9d_06d0a2f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-04-26T21:15:50Z",
+      "side": 1,
+      "message": "Thanks! Sounds good, ill add another CL to this relation chain",
+      "parentUuid": "0fba2dc8_5860975c",
+      "revId": "eec98904d7e8e305f94cd24a6e3e5aca96f18687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
