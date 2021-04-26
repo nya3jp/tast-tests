@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4b28813_f3ae0c2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-26T22:38:17Z",
+      "side": 1,
+      "message": "Thanks for adding this; it will be useful to have a simpler test that indicates whether flash_fp_mcu is behaving correctly.\n\nYou\u0027ll need to add \"tast-owners\" to get a review from them in order to submit: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md .",
+      "revId": "bcfee959554c7164a1c9025052e30d9f4830a7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "977046be_ffe15698",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_flash_fp_mcu_hello.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-26T22:38:17Z",
+      "side": 1,
+      "message": "Check with tast reviewers, but I think the golang style is \"FPMCU\": https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 20,
+        "startChar": 15,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "bcfee959554c7164a1c9025052e30d9f4830a7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee286b2a_ba8c2b1f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_flash_fp_mcu_hello.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-26T22:38:17Z",
+      "side": 1,
+      "message": "nit: we can probably decrease this to something smaller since we\u0027re only disabling HW WP and pinging the bootloader (not doing any flashing).",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "bcfee959554c7164a1c9025052e30d9f4830a7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb82fb5c_1ce0ccf6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_flash_fp_mcu_hello.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-26T22:38:17Z",
+      "side": 1,
+      "message": "Maybe leave this out since it implies there\u0027s something nefarious about it.",
+      "range": {
+        "startLine": 36,
+        "startChar": 31,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "bcfee959554c7164a1c9025052e30d9f4830a7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
