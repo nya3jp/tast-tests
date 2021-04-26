@@ -16,6 +16,24 @@
       "message": "puff (dooly) is failing the test with \"No detected devices\" --\u003e \"/usr/bin/fwupdtool get-devices --plugins flashrom\" failed: exit status 2\"",
       "revId": "9b76e8345e61afc904ff1f852c90575b6733c5ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e5451d9_fbc86209",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-04-26T00:09:03Z",
+      "side": 1,
+      "message": "Dooly doesn\u0027t have an LSPCON, so that\u0027s kind of expected. https://crbug.com/1198060 seems most relevant, since we really want a more precise way to express the test dependency.",
+      "parentUuid": "08848afd_102cf72f",
+      "revId": "9b76e8345e61afc904ff1f852c90575b6733c5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
