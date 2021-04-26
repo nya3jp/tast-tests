@@ -16,6 +16,46 @@
       "message": "Note: there is no one available on my team for reviews, so we have to rely on Tast owner reviews for now. Thanks.",
       "revId": "1d50ed30b0ca0267e6b9d9dd04b1ceb35bba9135",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeba0204_e6440c24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_software_write_protect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-26T00:06:55Z",
+      "side": 1,
+      "message": "Not for this CL: The number of arguments here makes it kind of unreadable (what is the true, true at the end?).\n\nOptionally, in the longer term a builder pattern might work better for this.",
+      "range": {
+        "startLine": 36,
+        "startChar": 39,
+        "endLine": 36,
+        "endChar": 112
+      },
+      "revId": "1d50ed30b0ca0267e6b9d9dd04b1ceb35bba9135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "907eb117_4c3a5896",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_software_write_protect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-26T00:06:55Z",
+      "side": 1,
+      "message": "Not for this CL: a long list of operations like this can be made more readable by using the Action pattern: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/action/action.go\n\nOriginally made for the uiauto library, as UI automation code looks a lot like this too.",
+      "revId": "1d50ed30b0ca0267e6b9d9dd04b1ceb35bba9135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
