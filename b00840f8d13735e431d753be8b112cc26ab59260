@@ -196,6 +196,24 @@
       "parentUuid": "69911f35_29a4f696",
       "revId": "b00840f8d13735e431d753be8b112cc26ab59260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "018595f3_c8d5175c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-26T15:17:33Z",
+      "side": 1,
+      "message": "That makes sense, I created a second CL for removing the flag.",
+      "parentUuid": "4c4548c1_e6c8dd9b",
+      "revId": "b00840f8d13735e431d753be8b112cc26ab59260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
