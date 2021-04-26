@@ -10,7 +10,7 @@
 		]
 	},
 	{
-		"driver": "i915",
+		"driver": "i915(CONFIG_DRM_I915)",
 		"archs": ["amd64"],
 		"startup_cmds": ["ln -s /dev/dri/card0 /dev/i915"],
 		"syscalls": [
@@ -57,7 +57,7 @@
 		]
 	},
 	{
-		"driver": "bluetooth",
+		"driver": "bluetooth(CONFIG_BT)",
 		"syscalls": [
 			"accept4$bt_l2cap",
 			"bind$bt_hci",
@@ -127,7 +127,7 @@
 		]
 	},
 	{
-		"driver": "v4l",
+		"driver": "v4l(CONFIG_VIDEO_V4L2)",
 		"syscalls": [
 			"ioctl$MEDIA_IOC_REQUEST_ALLOC",
 			"ioctl$MEDIA_REQUEST_IOC_QUEUE",
@@ -246,7 +246,7 @@
 		]
 	},
 	{
-		"driver": "audio",
+		"driver": "audio(CONFIG_SOUND)",
 		"syscalls": [
 			"ioctl$SNDRV_CTL_IOCTL_CARD_INFO",
 			"ioctl$SNDRV_CTL_IOCTL_ELEM_ADD",
@@ -390,7 +390,7 @@
 		]
 	},
 	{
-		"driver": "bifrost",
+		"driver": "bifrost(CONFIG_MALI_MIDGARD)",
 		"archs": ["arm"],
 		"startup_cmds": ["if [ -f /dev/mali0 ]; then ln -s /dev/mali0 /dev/bifrost; fi"],
 		"syscalls": [
@@ -445,7 +445,7 @@
 		]
 	},
 	{
-		"driver": "IMGPowerVR",
+		"driver": "IMGPowerVR(CONFIG_DRM_POWERVR_ROGUE_1_13)",
 		"archs": ["arm"],
 		"startup_cmds": ["ln -s /dev/dri/card1 /dev/img-rogue"],
 		"syscalls": [
@@ -606,7 +606,7 @@
 		]
 	},
 	{
-		"driver": "qrtr-modem",
+		"driver": "qrtr-modem(CONFIG_QRTR)",
 		"archs": ["arm"],
 		"syscalls": [
 			"socket$qrtr",
@@ -622,7 +622,7 @@
 		]
 	},
 	{
-		"driver": "freedreno",
+		"driver": "freedreno(CONFIG_DRM_MSM)",
 		"archs": ["arm"],
 		"syscalls": [
 			"openat$msm",
@@ -641,7 +641,7 @@
 		]
 	},
 	{
-		"driver": "drm",
+		"driver": "drm(CONFIG_DRM)",
 		"syscalls": [
 			"syz_open_dev$dri",
 			"syz_open_dev$dricontrol",
