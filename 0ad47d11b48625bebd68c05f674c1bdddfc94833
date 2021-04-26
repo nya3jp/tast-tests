@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "280d8727_b07ba3ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_login_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-04-26T08:57:52Z",
+      "side": 1,
+      "message": "I tried using KeepEnrollment() but it doesn\u0027t seem to work for the DeviceLocalAccount policy (the Managed Guest Session does not appear on the login screen).",
+      "parentUuid": "193704f5_bfd9600b",
+      "revId": "0ad47d11b48625bebd68c05f674c1bdddfc94833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7a9b5a1_57aa8ef5",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_login_api.go",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-24T09:13:15Z",
       "side": 1,
       "message": "Is there a reason not to name this test LaunchManageGuestSession? Other checks can be added in separate tests.",
+      "revId": "0ad47d11b48625bebd68c05f674c1bdddfc94833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "997e04c5_4e26a22f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_login_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-04-26T08:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7a9b5a1_57aa8ef5",
       "revId": "0ad47d11b48625bebd68c05f674c1bdddfc94833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13535df6_08189782",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_login_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-04-26T08:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6851576e_c8eb04f1",
+      "revId": "0ad47d11b48625bebd68c05f674c1bdddfc94833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c52dbb84_88f046d0",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-03-24T09:13:15Z",
       "side": 1,
       "message": "Same as above.",
+      "revId": "0ad47d11b48625bebd68c05f674c1bdddfc94833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acaa300a_7b35fce6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_login_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-04-26T08:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c52dbb84_88f046d0",
       "revId": "0ad47d11b48625bebd68c05f674c1bdddfc94833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

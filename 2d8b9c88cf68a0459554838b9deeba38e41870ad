@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "584744b8_62c6bf09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-04-26T08:57:52Z",
+      "side": 1,
+      "message": "Hi vsavu,\n\nI\u0027ve updated and rebased after the previous CLs were submitted.\n\nI\u0027ve tried using the KeepEnrollment() flag but it doesn\u0027t seem to work for Managed Guest Sessions.\n\nPTAL!\n\nThanks,\nJit",
+      "revId": "2d8b9c88cf68a0459554838b9deeba38e41870ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
