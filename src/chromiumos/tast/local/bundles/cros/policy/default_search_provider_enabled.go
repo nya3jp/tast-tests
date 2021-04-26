@@ -35,6 +35,10 @@ func DefaultSearchProviderEnabled(ctx context.Context, s *testing.State) {
 	const (
 		defaultSearchEngine = "google.com" // search engine checked in the test
 	)
+	addressBarParams := ui.FindParams{
+		Role: ui.RoleTypeTextField,
+		Name: "Address and search bar",
+	}
 
 	cr := s.FixtValue().(*fixtures.FixtData).Chrome
 	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
@@ -115,27 +119,13 @@ func DefaultSearchProviderEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to wait for location change: ", err)
 			}
 
-			var location string
-
-			// Get location from JS.
-			if err := conn.Eval(ctx, "location.href", &location); err != nil {
-				s.Fatal("Failed to execute JS expression: ", err)
+			// Find the address bar.
+			addressBar, err := ui.FindWithTimeout(ctx, tconn, addressBarParams, 10*time.Second)
+			if err != nil {
+				s.Fatal("Failed to find the address bar: ", err)
 			}
-
-			// If we cannot connect to www.google.com the location will be set
-			// to "chrome-error://chromewebdata/".
-			// In that case we have to check the ui tree for the "rootWebArea".
-			if strings.Contains(location, "chrome-error://chromewebdata/") {
-				params := ui.FindParams{
-					Role: "rootWebArea",
-				}
-				node, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-				if err != nil {
-					s.Fatal("Failed to find rootWebArea: ", err)
-				}
-				defer node.Release(ctx)
-				location = node.Name
-			}
+			defer addressBar.Release(ctx)
+			location := addressBar.Value
 
 			defaultSearchEngineUsed := strings.Contains(location, defaultSearchEngine)
 			if param.enabled != defaultSearchEngineUsed {
