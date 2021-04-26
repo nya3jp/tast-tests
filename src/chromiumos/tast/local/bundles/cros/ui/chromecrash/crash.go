@@ -63,9 +63,8 @@ const (
 
 	// breakpadDmpFileRegexp is the regexp we use to find a BreakpadDmp file.
 	// Unlike normal .meta files, the native breakpad .dmp files do not include
-	// the PID in the filename. Note: we use [0-9a-f] instead of \x because \x
-	// treats {8} specially.
-	breakpadDmpFileRegexp = `[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{8}-[0-9a-f]{8}\.dmp`
+	// the PID in the filename.
+	breakpadDmpFileRegexp = `chromium-.*-minidump-.*\.dmp`
 )
 
 // CrashHandler indicates which crash handler the test wants Chrome to use:
