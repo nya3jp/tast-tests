@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4ecc320_664f5f2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-26T05:31:24Z",
+      "side": 1,
+      "message": "Moved the task manager close to defer",
+      "parentUuid": "bd9064a5_c88525e2",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 41
+      },
+      "revId": "2fbfbedd2ae6ff6e2b76937b6db9d66a0492d2dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef8232d6_5579a28e",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-22T09:19:21Z",
       "side": 1,
       "message": "From go/tast-writing:\n\n\u003e Tests should also avoid performing unnecessary de-initialization steps on completion: UI tests should leave Chrome logged in at completion instead of restarting it, for example. Since later tests can‘t safely make assumptions about the initial state of the system, they’ll need to e.g. restart Chrome again regardless, which takes even more time. In addition to resulting in a faster overall running time for the suite, leaving the system in a logged-in state makes it easier for developers to manually inspect it after running the test when diagnosing a failure.\n\n\nThe problem here is that arcBooted fixture does not close the task manager window between tests. It\u0027s much preferable if we could improve the fixture instead of dealing with this problem per-test.\n\nNote that arcBooted fixture calls chrome.Chrome.ResetState to close all open tabs between tests. This is the best place to add a logic to close task manager as well.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;rcl\u003d99514a9ff89f34fb58811da334f123edca7f9cd2;l\u003d337",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 22
+      },
+      "revId": "2fbfbedd2ae6ff6e2b76937b6db9d66a0492d2dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3861705c_df610d40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-26T05:31:24Z",
+      "side": 1,
+      "message": "Couldn\u0027t find the target type of task manager yet as I tried printing the targets from Chrome.ResetState and got only extensions listed. Adding a ToDo for this to reach out to task manager UI team to figure this out and added a temp fix to close task manager in defer func().",
+      "parentUuid": "ef8232d6_5579a28e",
       "range": {
         "startLine": 107,
         "startChar": 1,
