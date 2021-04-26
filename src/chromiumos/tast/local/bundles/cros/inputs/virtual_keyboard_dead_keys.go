@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // deadKeysTestCase struct encapsulates parameters for each Dead Keys test.
@@ -43,7 +44,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "french_stable",
-				ExtraHardwareDeps: pre.InputsStableModels,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				// "French - French keyboard" input method uses a compact-layout VK for
 				// non-a11y mode where there's no dead keys, and a full-layout VK for
@@ -63,7 +64,7 @@ func init() {
 				},
 			}, {
 				Name:              "french_unstable",
-				ExtraHardwareDeps: pre.InputsUnstableModels,
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				Pre:               pre.VKEnabledClamshell,
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:fr::fra",
@@ -73,7 +74,7 @@ func init() {
 				},
 			}, {
 				Name:              "catalan_stable",
-				ExtraHardwareDeps: pre.InputsStableModels,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				// "Catalan keyboard" input method uses the same full-layout VK (that
 				// has dead keys) for both a11y & non-a11y. Just use non-a11y here.
@@ -92,7 +93,7 @@ func init() {
 				},
 			}, {
 				Name:              "catalan_unstable",
-				ExtraHardwareDeps: pre.InputsUnstableModels,
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				Pre:               pre.VKEnabledTablet,
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:es:cat:cat",

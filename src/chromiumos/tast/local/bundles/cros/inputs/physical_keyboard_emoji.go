@@ -31,7 +31,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...), hwdep.SkipOnModel("kodama", "kefka")),
 		}, {
 			Name:              "unstable",
-			ExtraHardwareDeps: pre.InputsUnstableModels,
+			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 		}}})
 }
 
