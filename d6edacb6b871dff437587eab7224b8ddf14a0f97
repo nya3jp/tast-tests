@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ca1f802_7fcbe834",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-04-26T23:29:11Z",
+      "side": 1,
+      "message": "I think it probably can\u0027t run on the VM. Just making it explicit.\n\t\t\t\"crosvm_gpu\":        `\"crosvm-gpu\" \u0026\u0026 \"virtio_gpu\"`,\n\nbetty\n2021-04-26T06:36:21.446298Z graphics.TraceReplay.glxgears_stable                         [ SKIP ] missing SoftwareDeps: dlc, vm_host, device.Config does not have ModelId",
+      "parentUuid": "25f13242_76bbec00",
+      "range": {
+        "startLine": 23,
+        "startChar": 81,
+        "endLine": 23,
+        "endChar": 88
+      },
+      "revId": "d6edacb6b871dff437587eab7224b8ddf14a0f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "645a8450_35784e80",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-26T23:22:24Z",
       "side": 1,
       "message": "Should able to run in VM as well?",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "d6edacb6b871dff437587eab7224b8ddf14a0f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4324502_4c1679d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-04-26T23:29:11Z",
+      "side": 1,
+      "message": "It computes performance numbers and requires hw codecs. So, no, it won\u0027t run in the VM.\n\nMiguel, do you have an opinion?",
+      "parentUuid": "645a8450_35784e80",
       "range": {
         "startLine": 27,
         "startChar": 36,
