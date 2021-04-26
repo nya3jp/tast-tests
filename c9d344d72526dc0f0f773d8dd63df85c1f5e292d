@@ -16,6 +16,24 @@
       "message": "Is there a way to tell whether we are using SWA window without pass it in AppLauncher? For example, can we tell that from the connection, or checking isSystemWebAppOpen() here?",
       "revId": "c9d344d72526dc0f0f773d8dd63df85c1f5e292d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41919957_5d2f8b58",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-04-26T04:57:37Z",
+      "side": 1,
+      "message": "I don\u0027t think we can know it from the connection. And using isSystemWebAppOpen() to judge that also sounds problematic to me since we can first open a non-intent instance and then open an intent instance so that isSystemWebAppOpen() might be true during the whole lifetime of the intent instance.",
+      "parentUuid": "a67e43c1_ec53b0ac",
+      "revId": "c9d344d72526dc0f0f773d8dd63df85c1f5e292d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
