@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const testFile = "gear_wheels_4000x3000_20200624.jpg"
@@ -41,24 +42,23 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "clamshell_stable",
-				ExtraHardwareDeps: pre.AppsStableModels,
+				ExtraAttr:         []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 				Val:               false,
 			}, {
 				Name:              "clamshell_unstable",
 				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 				Val:               false,
 			}, {
 				Name:              "tablet_stable",
 				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: pre.AppsStableModels,
-				ExtraSoftwareDeps: []string{"tablet_mode"},
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels, hwdep.TouchScreen()),
 				Val:               true,
 			}, {
 				Name:              "tablet_unstable",
 				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: pre.AppsUnstableModels,
-				ExtraSoftwareDeps: []string{"tablet_mode"},
+				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels, hwdep.TouchScreen()),
 				Val:               true,
 			},
 		},

@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -41,21 +42,21 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "clamshell_stable",
-				ExtraHardwareDeps: pre.AppsStableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 				Val:               false,
 			}, {
 				Name:              "clamshell_unstable",
-				ExtraHardwareDeps: pre.AppsUnstableModels,
 				ExtraAttr:         []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 				Val:               false,
 			}, {
 				Name:              "tablet_stable",
-				ExtraHardwareDeps: pre.AppsStableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels, hwdep.TouchScreen()),
 				Val:               true,
 			}, {
 				Name:              "tablet_unstable",
-				ExtraHardwareDeps: pre.AppsUnstableModels,
 				ExtraAttr:         []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels, hwdep.TouchScreen()),
 				Val:               true,
 			},
 		},

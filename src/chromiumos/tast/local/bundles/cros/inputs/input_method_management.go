@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/imesettings"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -28,11 +29,11 @@ func init() {
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
-			ExtraHardwareDeps: pre.InputsStableModels,
+			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}, {
 			Name:              "unstable",
-			ExtraHardwareDeps: pre.InputsUnstableModels,
+			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 			ExtraAttr:         []string{"informational"},
 		}},
 	})

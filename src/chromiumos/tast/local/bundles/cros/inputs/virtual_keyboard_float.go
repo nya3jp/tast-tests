@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,14 +28,15 @@ func init() {
 		Desc:         "Validity check on floating virtual keyboard",
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
-		SoftwareDeps: []string{"chrome", "google_virtual_keyboard", "tablet_mode"},
+		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		HardwareDeps: hwdep.D(hwdep.TouchScreen()),
 		Params: []testing.Param{{
 			Name:              "stable",
-			ExtraHardwareDeps: pre.InputsStableModels,
+			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}, {
 			Name:              "unstable",
-			ExtraHardwareDeps: pre.InputsUnstableModels,
+			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 		}},
 	})
 }
