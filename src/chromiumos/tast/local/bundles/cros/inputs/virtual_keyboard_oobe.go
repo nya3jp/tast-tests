@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,9 +28,9 @@ func init() {
 		Desc:         "Checks that the virtual keyboard works in OOBE Gaia Login",
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream", "informational"},
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		SoftwareDeps: []string{"chrome", "google_virtual_keyboard", "tablet_mode"},
+		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Vars:         []string{"inputs.signinProfileTestExtensionManifestKey"},
-		HardwareDeps: pre.InputsStableModels,
+		HardwareDeps: hwdep.D(pre.InputsStableModels),
 	})
 }
 

@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -26,17 +27,18 @@ func init() {
 		Desc:         "Checks that long pressing keys pop up accent window",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
-		SoftwareDeps: []string{"chrome", "google_virtual_keyboard", "tablet_mode"},
+		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		HardwareDeps: hwdep.D(hwdep.TouchScreen()),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
 			Pre:               pre.VKEnabledTablet,
-			ExtraHardwareDeps: pre.InputsStableModels,
+			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}, {
 			Name:              "unstable",
 			Pre:               pre.VKEnabledTablet,
-			ExtraHardwareDeps: pre.InputsUnstableModels,
+			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 		}},
 	})
 }
