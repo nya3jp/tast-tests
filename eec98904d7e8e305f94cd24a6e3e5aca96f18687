@@ -34,6 +34,23 @@
       "parentUuid": "0fba2dc8_5860975c",
       "revId": "eec98904d7e8e305f94cd24a6e3e5aca96f18687",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc6e0265_4d2069a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-04-26T22:41:24Z",
+      "side": 1,
+      "message": "I\u0027ll test these CLs once the newer syzkaller binaries are built onto the images, and then send to CQ.",
+      "revId": "eec98904d7e8e305f94cd24a6e3e5aca96f18687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
