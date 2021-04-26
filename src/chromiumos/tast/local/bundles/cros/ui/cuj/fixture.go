@@ -41,7 +41,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		Vars:            []string{"ui.cuj_username", "ui.cuj_password"},
+		Vars:            []string{"ui.cuj_username", "ui.cuj_password", "cuj_username", "cuj_password"},
 	})
 }
 
