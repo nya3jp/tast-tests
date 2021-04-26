@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c1f2b2c_7693ee23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-26T02:14:53Z",
+      "side": 1,
+      "message": "Will you elaborate a bit more about the issue and how the fix resolves it?\nThe change stops verifying that the app activity exists. Since all the other checks and interactions with the UI elements in the test function (such as the sign in button) passes when each UI element was not found, I am afraid the test would pass even when the app doesn\u0027t run at all.",
+      "revId": "2e6bbe974337cb0c0ffa69a33f64f0f90dee7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f5a43b73_ace88ff5",
