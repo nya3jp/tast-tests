@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
 	fwpb "chromiumos/tast/services/cros/firmware"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
@@ -313,7 +314,7 @@ func (h *Helper) SyncTastFilesToDUT(ctx context.Context) error {
 		filepath.Join(dutLocalBundleDir, "bin_pushed", "local_test_runner"),
 		filepath.Join(dutLocalBundleDir, "bundles", "local", "cros"),
 		filepath.Join(dutLocalBundleDir, "bundles", "local_pushed", "cros"),
-	).Run(ctx); err != nil {
+	).Run(ctx, ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "changing file permissions on DUT")
 	}
 	return nil
