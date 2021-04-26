@@ -26,7 +26,10 @@ func init() {
 			"yenlinlai@google.com",            // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		// This test is not in any group because it is for manual debugging
+		// a pcap problem that frame checksum might not be trust-worthy.
+		// See previous investigation in b/185378075.
+		Attr:        []string{"group:wificell"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
@@ -35,9 +38,6 @@ func init() {
 
 func ProbeReqFormat(ctx context.Context, s *testing.State) {
 	// Trigger active scans and verify the format of probe requests in pcap.
-	// In b/169117094#c3, we found that on some DUTs, the probe requests
-	// captured in pcap have good checksum but malformed body. It is still
-	// not clear if this is a problem on the DUT side or pcap side.
 	tf := s.PreValue().(*wificell.TestFixture)
 	defer func(ctx context.Context) {
 		if err := tf.CollectLogs(ctx); err != nil {
