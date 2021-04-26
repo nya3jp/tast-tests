@@ -48,7 +48,7 @@ func init() {
 		Func:         VirtualKeyboardHandwriting,
 		Desc:         "Test handwriting input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		SoftwareDeps: []string{"chrome", "google_virtual_keyboard", "tablet_mode"},
+		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		HardwareDeps: hwdep.D(hwdep.Model(stableModels...)),
 		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
 		Params: []testing.Param{

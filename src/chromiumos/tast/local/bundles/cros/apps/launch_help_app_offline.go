@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -33,10 +34,10 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "stable",
-				ExtraHardwareDeps: pre.AppsStableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 			}, {
 				Name:              "unstable",
-				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 			},
 		},

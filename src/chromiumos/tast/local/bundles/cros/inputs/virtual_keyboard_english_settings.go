@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -25,15 +26,16 @@ func init() {
 		Desc:         "Checks that the input settings works in Chrome",
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:input-tools"},
-		SoftwareDeps: []string{"chrome", "google_virtual_keyboard", "tablet_mode"},
+		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		HardwareDeps: hwdep.D(hwdep.TouchScreen()),
 		Pre:          pre.VKEnabledTablet,
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
-			ExtraHardwareDeps: pre.InputsStableModels,
+			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 		}, {
 			Name:              "unstable",
-			ExtraHardwareDeps: pre.InputsUnstableModels,
+			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 		}},
 	})
 }

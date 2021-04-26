@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -41,6 +42,7 @@ func init() {
 		Desc:         "Test voice input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		HardwareDeps: hwdep.D(hwdep.TouchScreen()),
 		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
 		Params: []testing.Param{
 			{

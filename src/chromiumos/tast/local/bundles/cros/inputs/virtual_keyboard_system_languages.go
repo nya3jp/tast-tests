@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // testParameters contains all the data needed to run a single test iteration.
@@ -33,7 +34,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "es_stable",
-				ExtraHardwareDeps: pre.InputsStableModels,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val: testParameters{
 					regionCode:           "es",
@@ -41,14 +42,14 @@ func init() {
 				},
 			}, {
 				Name:              "es_unstable",
-				ExtraHardwareDeps: pre.InputsUnstableModels,
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				Val: testParameters{
 					regionCode:           "es",
 					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
 				},
 			}, {
 				Name:              "fr_stable",
-				ExtraHardwareDeps: pre.InputsStableModels,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val: testParameters{
 					regionCode:           "fr",
@@ -56,14 +57,14 @@ func init() {
 				},
 			}, {
 				Name:              "fr_unstable",
-				ExtraHardwareDeps: pre.InputsUnstableModels,
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				Val: testParameters{
 					regionCode:           "fr",
 					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
 				},
 			}, {
 				Name:              "jp_stable",
-				ExtraHardwareDeps: pre.InputsStableModels,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val: testParameters{
 					regionCode:           "jp",
@@ -71,7 +72,7 @@ func init() {
 				},
 			}, {
 				Name:              "jp_unstable",
-				ExtraHardwareDeps: pre.InputsUnstableModels,
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				Val: testParameters{
 					regionCode:           "jp",
 					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_JP_JPN),

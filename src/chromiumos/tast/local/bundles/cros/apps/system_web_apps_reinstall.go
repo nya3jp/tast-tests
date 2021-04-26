@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -31,21 +32,21 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "default_enabled_apps_unstable",
 			Val:               []chrome.Option{},
-			ExtraHardwareDeps: pre.SystemWebAppsUnstableModels,
+			ExtraHardwareDeps: hwdep.D(pre.SystemWebAppsUnstableModels),
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "all_apps_unstable",
 			Val:               []chrome.Option{chrome.EnableFeatures("EnableAllSystemWebApps")},
-			ExtraHardwareDeps: pre.SystemWebAppsUnstableModels,
+			ExtraHardwareDeps: hwdep.D(pre.SystemWebAppsUnstableModels),
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "default_enabled_apps_stable",
 			Val:               []chrome.Option{},
-			ExtraHardwareDeps: pre.SystemWebAppsStableModels,
+			ExtraHardwareDeps: hwdep.D(pre.SystemWebAppsStableModels),
 		}, {
 			Name:              "all_apps_stable",
 			Val:               []chrome.Option{chrome.EnableFeatures("EnableAllSystemWebApps")},
-			ExtraHardwareDeps: pre.SystemWebAppsStableModels,
+			ExtraHardwareDeps: hwdep.D(pre.SystemWebAppsStableModels),
 		}},
 	})
 }

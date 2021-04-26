@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -33,20 +34,20 @@ func init() {
 			{
 				Name:              "stable",
 				Fixture:           "chromeLoggedInForEA",
-				ExtraHardwareDeps: pre.AppsStableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 			}, {
 				Name:              "unstable",
 				Fixture:           "chromeLoggedInForEA",
-				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 			},
 			{
 				Name:              "stable_guest",
 				Fixture:           "chromeLoggedInGuestForEA",
-				ExtraHardwareDeps: pre.AppsStableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 			}, {
 				Name:              "unstable_guest",
 				Fixture:           "chromeLoggedInGuestForEA",
-				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 			},
 		},
 	})

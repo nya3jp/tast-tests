@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // testParameters contains all the data needed to run a single test iteration.
@@ -38,14 +39,14 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "clamshell_oobe_stable",
-				ExtraHardwareDeps: pre.AppsStableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 				Val: testParameters{
 					tabletMode: false,
 					oobe:       true,
 				},
 			}, {
 				Name:              "clamshell_oobe_unstable",
-				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: true,
@@ -53,14 +54,14 @@ func init() {
 				},
 			}, {
 				Name:              "tablet_oobe_stable",
-				ExtraHardwareDeps: pre.AppsStableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels, hwdep.TouchScreen()),
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       true,
 				},
 			}, {
 				Name:              "tablet_oobe_unstable",
-				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels, hwdep.TouchScreen()),
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: true,
@@ -68,7 +69,7 @@ func init() {
 				},
 			}, {
 				Name:              "clamshell_logged_in_stable",
-				ExtraHardwareDeps: pre.AppsStableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 				Val: testParameters{
 					tabletMode: false,
 					oobe:       false,
@@ -76,7 +77,7 @@ func init() {
 				Fixture: "chromeLoggedInForEA",
 			}, {
 				Name:              "clamshell_logged_in_unstable",
-				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: true,
@@ -84,8 +85,7 @@ func init() {
 				},
 			}, {
 				Name:              "tablet_logged_in_stable",
-				ExtraHardwareDeps: pre.AppsStableModels,
-				ExtraSoftwareDeps: []string{"tablet_mode"},
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels, hwdep.TouchScreen()),
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       false,
@@ -93,8 +93,7 @@ func init() {
 				Fixture: "chromeLoggedInForEA",
 			}, {
 				Name:              "tablet_logged_in_unstable",
-				ExtraHardwareDeps: pre.AppsUnstableModels,
-				ExtraSoftwareDeps: []string{"tablet_mode"},
+				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels, hwdep.TouchScreen()),
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: true,

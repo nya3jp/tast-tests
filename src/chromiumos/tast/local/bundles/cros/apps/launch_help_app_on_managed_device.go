@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	policyFixt "chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -32,21 +33,21 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "oobe_stable",
-				ExtraHardwareDeps: pre.AppsStableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 				Val:               true,
 			}, {
 				Name:              "oobe_unstable",
-				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 				Val:               true,
 				ExtraAttr:         []string{"informational"},
 			}, {
 				Name:              "logged_in_stable",
-				ExtraHardwareDeps: pre.AppsStableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 				Fixture:           "chromePolicyLoggedIn",
 				Val:               false,
 			}, {
 				Name:              "logged_in_unstable",
-				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 				Fixture:           "chromePolicyLoggedIn",
 				Val:               false,
 				ExtraAttr:         []string{"informational"},
