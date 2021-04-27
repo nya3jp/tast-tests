@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5fcbe99_2278a677",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2021-04-27T15:03:06Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m probably not the best reviewer for this.  I\u0027d suggest using git history to find someone who\u0027s more familiar with flashrom options.  I\u0027ve also added tast-owners@ to find you a Tast reviewer.",
+      "revId": "287902342ae9277ecb8fb54e79e48daa1d17a42c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
