@@ -198,7 +198,7 @@ func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (ti
 	}
 	defer tconn.Close()
 
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
 		return 0, 0, errors.Wrap(err, "failed to wait CPU cool down")
 	}
 

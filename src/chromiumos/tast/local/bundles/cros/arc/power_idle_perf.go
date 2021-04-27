@@ -138,7 +138,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	s.Log("Finished setup")
 
 	// Wait until CPU is cooled down.
-	cooldownTime, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI)
+	cooldownTime, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI))
 	if err != nil {
 		s.Fatal("CPU failed to cool down: ", err)
 	}

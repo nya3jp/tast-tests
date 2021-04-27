@@ -79,7 +79,7 @@ func VKBench(ctx context.Context, s *testing.State) {
 
 	logTemperature(ctx)
 	if !testConfig.hasty {
-		if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+		if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
 			s.Log("Unable get cool machine. Trying to get idle cpu: ", err)
 			if err2 := cpu.WaitUntilIdle(ctx); err2 != nil {
 				s.Error("Unable to get stable machine: ", errors.Wrap(err, err2.Error()))

@@ -103,7 +103,7 @@ func CameraPerfExtraMetrics(ctx context.Context, s *testing.State) {
 	sup.Add(setup.GrantAndroidPermission(ctx, a, cameraAppPackage, "android.permission.CAMERA"))
 
 	// Wait until CPU is cooled down.
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
 		s.Fatal("CPU failed to cool down: ", err)
 	}
 
