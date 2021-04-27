@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3494056_241f8020",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-27T16:10:18Z",
+      "side": 1,
+      "message": "I\u0027m not sure if there is precedent for this in the code base, but this makes converting to and from the proto requests to the golang type much easier. Let me know if you think there is a better way to do this. ",
+      "revId": "b2ac505bbfbef49596a3cbbd3447f63f9f5ca7ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
