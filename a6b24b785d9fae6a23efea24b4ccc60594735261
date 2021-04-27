@@ -22,6 +22,30 @@
       },
       "revId": "a6b24b785d9fae6a23efea24b4ccc60594735261",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68080a1b_9c40af80",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-04-27T13:06:11Z",
+      "side": 1,
+      "message": "As long as I tested, these elements appear immediately after calling Oobe.showAddUserForTesting. \n(I tested this several times on hatch and it never failed.)",
+      "parentUuid": "073beafe_5f7d7f12",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "a6b24b785d9fae6a23efea24b4ccc60594735261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
