@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4faaaea2_f8831baa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-27T16:58:04Z",
+      "side": 1,
+      "message": "Changes LGTM",
+      "revId": "d6edacb6b871dff437587eab7224b8ddf14a0f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25f13242_76bbec00",
@@ -102,6 +119,30 @@
       "side": 1,
       "message": "It computes performance numbers and requires hw codecs. So, no, it won\u0027t run in the VM.\n\nMiguel, do you have an opinion?",
       "parentUuid": "645a8450_35784e80",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "d6edacb6b871dff437587eab7224b8ddf14a0f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f422f59_52ed5d18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-27T16:58:04Z",
+      "side": 1,
+      "message": "Not interesting in VMs IMHO.",
+      "parentUuid": "f4324502_4c1679d0",
       "range": {
         "startLine": 27,
         "startChar": 36,
