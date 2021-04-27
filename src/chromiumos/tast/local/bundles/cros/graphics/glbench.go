@@ -19,9 +19,8 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
@@ -115,6 +114,12 @@ var (
 )
 
 func GLBench(ctx context.Context, s *testing.State) {
+	// Leave a bit of time to clean up benchmark mode.
+	cleanUpCtx := ctx
+	cleanUpTime := 10 * time.Second
+	ctx, cancel := ctxutil.Shorten(cleanUpCtx, cleanUpTime)
+	defer cancel()
+
 	testConfig := s.Param().(glbenchConfig)
 
 	var pv *perf.Values // nil when hasty == true
@@ -130,23 +135,13 @@ func GLBench(ctx context.Context, s *testing.State) {
 			s.Fatal("Set up failed: ", err)
 		}
 
-		cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
-		if err != nil {
-			s.Fatal("Set up failed: ", err)
-		}
-		defer cleanUpBenchmark(ctx)
-
-		// Leave a bit of time to clean up benchmark mode.
-		cleanUpTime := 10 * time.Second
-		var cancel func()
-		ctx, cancel = ctxutil.Shorten(ctx, cleanUpTime)
-		defer cancel()
-
 		// Make machine behaviour consistent.
 		if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
-			s.Log("Unable get cool machine. Trying to get idle cpu: ", err)
-			if err2 := cpu.WaitUntilIdle(ctx); err2 != nil {
-				s.Error("Unable to get stable machine: ", errors.Wrap(err, err2.Error()))
+			faillog.SaveToDir(ctx, filepath.Join(s.OutDir(), "before_tests1"))
+			s.Log("Unable get cool machine by default setting: ", err)
+			if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownConfig{PollTimeout: 1 * time.Minute, PollInterval: 2 * time.Second, CPUTemperatureThreshold: 60000, CoolDownMode: power.CoolDownPreserveUI}); err != nil {
+				faillog.SaveToDir(ctx, filepath.Join(s.OutDir(), "before_tests2"))
+				s.Error("Unable get cool machine to reach 60C: ", err)
 			}
 		}
 
@@ -171,7 +166,7 @@ func GLBench(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed on set up: ", err)
 		}
 		defer func() {
-			if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
+			if err := upstart.EnsureJobRunning(cleanUpCtx, "ui"); err != nil {
 				s.Fatal("Failed to clean up: ", err)
 			}
 		}()
@@ -185,7 +180,7 @@ func GLBench(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to disable the display: ", err)
 		}
 		defer func() {
-			if err := power.SetDisplayPower(ctx, power.DisplayPowerAllOff); err != nil {
+			if err := power.SetDisplayPower(cleanUpCtx, power.DisplayPowerAllOff); err != nil {
 				s.Fatal("Failed to clean up: ", err)
 			}
 		}()
@@ -232,11 +227,11 @@ func GLBench(ctx context.Context, s *testing.State) {
 	defer f.Close()
 	fmt.Fprintf(f, `# ---------------------------------------------------
 # [%s]
-%s
+				    %s
 
 # -------------------------------------------------
 # [glbench.go postprocessing]
-`, cmdLine, summary)
+				    `, cmdLine, summary)
 
 	// Analyze the output. Sample:
 	// # board_id: NVIDIA Corporation - Quadro FX 380/PCI/SSE2
