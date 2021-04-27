@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "519d4c92_7bd7f5da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-27T07:45:01Z",
+      "side": 1,
+      "message": "minor nit:\n\u003e  policy: Fix DefaultSearchProviderEnabled\nis shorter, and without redundant information.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "070ba3776d9d39bd8896a0831d092cc83a680f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "963e2938_9a0f1e15",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
         "patchSetId": 2
@@ -50,6 +73,52 @@
       "side": 1,
       "message": "thanks for the info Anastasiia. I will take a look as it may cause false negatives in tests using them.",
       "parentUuid": "ae3ccd0f_1fe99ae7",
+      "revId": "070ba3776d9d39bd8896a0831d092cc83a680f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dac1c28_04406c2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-27T07:45:01Z",
+      "side": 1,
+      "message": "There is a new UI package, and the NodeInfo() function can be used here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d152\nAs the old UI package will be deprecated, this change it a good opportunity to change for the new one in this test.",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 40
+      },
+      "revId": "070ba3776d9d39bd8896a0831d092cc83a680f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baeb22a3_c4d13c85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-27T07:45:01Z",
+      "side": 1,
+      "message": "If the DUT cannot connect to google.com, that the JS location will be chrome-error..., but the address bar value will still contain the search engine?",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 128,
+        "endChar": 31
+      },
       "revId": "070ba3776d9d39bd8896a0831d092cc83a680f9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
