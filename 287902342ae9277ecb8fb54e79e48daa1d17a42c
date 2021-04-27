@@ -16,6 +16,23 @@
       "message": "Sorry, I\u0027m probably not the best reviewer for this.  I\u0027d suggest using git history to find someone who\u0027s more familiar with flashrom options.  I\u0027ve also added tast-owners@ to find you a Tast reviewer.",
       "revId": "287902342ae9277ecb8fb54e79e48daa1d17a42c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ab62707_56a8f62b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-04-27T15:56:17Z",
+      "side": 1,
+      "message": "skipping shadow review because the change is trivial. Please find someone to sign off on the content of the change as well as I don\u0027t really touch flashrom much.",
+      "revId": "287902342ae9277ecb8fb54e79e48daa1d17a42c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
