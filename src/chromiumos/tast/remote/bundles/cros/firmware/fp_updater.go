@@ -88,7 +88,7 @@ func flashOldRWFirmware(ctx context.Context, s *testing.State, d *dut.DUT) error
 		linuxssh.DereferenceSymlinks); err != nil {
 		return errors.Wrap(err, "failed to send old firmware to DUT")
 	}
-	flashCmd := []string{"flashrom", "--fast-verify", "-w", oldFirmwarePathOnDut, "-i", "EC_RW", "-p", "ec:type=fp"}
+	flashCmd := []string{"flashrom", "--noverify-all", "-w", oldFirmwarePathOnDut, "-i", "EC_RW", "-p", "ec:type=fp"}
 	testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(flashCmd))
 	if err := d.Conn().Command(flashCmd[0], flashCmd[1:]...).Run(ctx, ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "flashrom failed")
