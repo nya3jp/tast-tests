@@ -5,19 +5,17 @@
 package camera
 
 import (
-	"bufio"
 	"context"
+	"encoding/json"
 	"fmt"
-	"os"
+	"io/ioutil"
 	"path/filepath"
-	"regexp"
 	"strconv"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/cpu"
@@ -87,11 +85,11 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Measuring SW JPEG decode performance")
-	cpuUsageSW, decodeLatencySW := runJPEGPerfBenchmark(ctx, s, testDir,
-		measureDuration, perfJPEGDecodeTimes, swFilter)
+	cpuUsageSW, metricsSW := runJPEGPerfBenchmark(ctx, s, testDir,
+		measureDuration, perfJPEGDecodeTimes, swFilter, "sw")
 	s.Log("Measuring HW JPEG decode performance")
-	cpuUsageHW, decodeLatencyHW := runJPEGPerfBenchmark(ctx, s, testDir,
-		measureDuration, perfJPEGDecodeTimes, hwFilter)
+	cpuUsageHW, metricsHW := runJPEGPerfBenchmark(ctx, s, testDir,
+		measureDuration, perfJPEGDecodeTimes, hwFilter, "hw")
 
 	p := perf.NewValues()
 	p.Set(perf.Metric{
@@ -104,27 +102,33 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, cpuUsageHW)
-	p.Set(perf.Metric{
-		Name:      "sw_jpeg_decode_latency",
-		Unit:      "milliseconds",
-		Direction: perf.SmallerIsBetter,
-	}, decodeLatencySW.Seconds()*1000)
-	p.Set(perf.Metric{
-		Name:      "hw_jpeg_decode_latency",
-		Unit:      "milliseconds",
-		Direction: perf.SmallerIsBetter,
-	}, decodeLatencyHW.Seconds()*1000)
+	for name, value := range metricsSW {
+		p.Set(perf.Metric{
+			Name:      name,
+			Unit:      "milliseconds",
+			Direction: perf.SmallerIsBetter,
+		}, value)
+	}
+	for name, value := range metricsHW {
+		p.Set(perf.Metric{
+			Name:      name,
+			Unit:      "milliseconds",
+			Direction: perf.SmallerIsBetter,
+		}, value)
+	}
 	p.Save(s.OutDir())
 }
 
 // runJPEGPerfBenchmark runs the JPEG decode accelerator unittest binary, and
 // returns the measured CPU usage percentage and decode latency.
 func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, testDir string,
-	measureDuration time.Duration, perfJPEGDecodeTimes int, filter string) (float64, time.Duration) {
+	measureDuration time.Duration, perfJPEGDecodeTimes int, filter, id string) (float64, map[string]float64) {
 	// Measures CPU usage while running the unittest, and waits for the unittest
 	// process to finish for the complete logs.
 	const exec = "jpeg_decode_accelerator_unittest"
-	logPath := fmt.Sprintf("%s/%s.%s.log", s.OutDir(), exec, filter)
+	logPath := fmt.Sprintf("%s/%s.%s.log", s.OutDir(), exec, id)
+	outPath := fmt.Sprintf("%s/perf_output.%s.json", s.OutDir(), id)
+	startTime := time.Now()
 	measurements, err := cpu.MeasureProcessUsage(ctx, measureDuration, cpu.WaitProcess,
 		gtest.New(
 			filepath.Join(chrome.BinTestDir, exec),
@@ -132,6 +136,7 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, testDir string,
 			gtest.Filter(filter),
 			gtest.ExtraArgs(
 				"--perf_decode_times="+strconv.Itoa(perfJPEGDecodeTimes),
+				"--perf_output_path="+outPath,
 				"--test_data_path="+testDir+"/",
 				"--jpeg_filenames="+decodeAccelJpegPerfTestFile),
 			gtest.UID(int(sysutil.ChronosUID)),
@@ -140,45 +145,23 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, testDir string,
 		s.Fatalf("Failed to measure CPU usage %v: %v", exec, err)
 	}
 	cpuUsage := measurements["cpu"]
-
-	// Parse the log file for the decode latency measured by the unittest.
-	decodeLatency, err := parseJPEGDecodeLog(logPath, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to parse test log: ", err)
-	}
+	duration := time.Since(startTime)
 
 	// Check the total decoding time is longer than the measure duration. If not,
 	// the measured CPU usage is inaccurate and we should fail this test.
-	if decodeLatency*time.Duration(perfJPEGDecodeTimes) < measureDuration {
+	if duration < measureDuration {
 		s.Fatal("Decoder did not run long enough for measuring CPU usage")
 	}
 
-	return cpuUsage, decodeLatency
-}
-
-// parseJPEGDecodeLog parses the log file created by the JPEG decode accelerator
-// unitttest and returns the averaged decode latency.
-func parseJPEGDecodeLog(logPath, outputDir string) (time.Duration, error) {
-	file, err := os.Open(logPath)
+	// Parse the log file for the decode latency measured by the unittest.
+	out, err := ioutil.ReadFile(outPath)
 	if err != nil {
-		return 0.0, errors.Wrap(err, "couldn't open log file")
+		s.Fatal("Failed to read output file: ", err)
 	}
-	defer file.Close()
+	var metrics map[string]float64
+	if err := json.Unmarshal(out, &metrics); err != nil {
+		s.Fatal("Failed to parse output file: ", err)
+	}
 
-	// The log format printed from unittest looks like:
-	//   [...] 27.5416 s for 10000 iterations (avg: 0.002754 s) ...
-	pattern := regexp.MustCompile(`\(avg: (\d+(?:\.\d*)?) s\)`)
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		match := pattern.FindStringSubmatch(scanner.Text())
-		if len(match) != 2 {
-			continue
-		}
-		decodeLatency, err := strconv.ParseFloat(match[1], 64)
-		if err != nil {
-			return 0.0, errors.Wrapf(err, "failed to parse decode latency: %v", match[1])
-		}
-		return time.Duration(decodeLatency * float64(time.Second)), nil
-	}
-	return 0.0, errors.New("couldn't find decode latency in log file")
+	return cpuUsage, metrics
 }
