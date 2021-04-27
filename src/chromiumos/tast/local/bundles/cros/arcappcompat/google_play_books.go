@@ -29,6 +29,7 @@ var clamshellTestsForGooglePlayBooks = []testutil.TestCase{
 // TouchviewTests are placed here.
 var touchviewTestsForGooglePlayBooks = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForGooglePlayBooks},
+	{Name: "Touchview : Splitscreen", Fn: testutil.SplitScreen},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
