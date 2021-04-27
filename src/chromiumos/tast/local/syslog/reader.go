@@ -178,8 +178,6 @@ type options struct {
 
 // Reader allows tests to read syslog messages. It only reports messages written
 // after it is started. It also deals with system log rotation.
-// TODO(crbug.com/991416): This should also handle messages logged to journal,
-// since someday we will move to journald for everything.
 type Reader struct {
 	lineReader *LineReader
 	filters    []EntryPred // predicates to filter syslog entries
