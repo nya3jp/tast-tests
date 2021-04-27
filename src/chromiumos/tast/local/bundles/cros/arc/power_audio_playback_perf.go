@@ -192,7 +192,7 @@ func PowerAudioPlaybackPerf(ctx context.Context, s *testing.State) {
 	sup.Add(setup.InstallApp(ctx, a, arc.APKPath(audio.Apk), audio.Pkg))
 
 	// Wait until CPU is cooled down.
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
 		s.Fatal("CPU failed to cool down: ", err)
 	}
 
