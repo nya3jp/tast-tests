@@ -33,6 +33,41 @@
       "message": "I\u0027m not sure what it means to keep user directories while clearing ownership.\n\nVictor, what do you think?\n",
       "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "767d3899_aaf537f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-27T10:01:29Z",
+      "side": 1,
+      "message": "For enrolled devices this makes no sense whatsoever, clearing ownership will break the device in subtle ways.\n\nFor consumer devices I\u0027m not sure if ownership can be transferred. Why not simply create the user + its state after ownership is cleared?",
+      "parentUuid": "f379be6b_f99d1321",
+      "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9fa62b4_ee688dcf",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-27T10:01:29Z",
+      "side": 1,
+      "message": "This also needs to be updated.",
+      "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
