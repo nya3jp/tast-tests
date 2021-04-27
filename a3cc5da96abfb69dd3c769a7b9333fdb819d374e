@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8bb2dcf_cd55f80c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-04-27T14:59:47Z",
+      "side": 1,
+      "message": "nit: tast :-)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "a3cc5da96abfb69dd3c769a7b9333fdb819d374e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7e8e2fe7_37c23ffb",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-04-26T09:06:06Z",
       "side": 1,
       "message": "Hi Pavol,\n\nThis tast tests verifies that the proxy resolution service in Chrome works as expected. Can you please take a look?\n\nThanks!",
+      "revId": "a3cc5da96abfb69dd3c769a7b9333fdb819d374e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0f0b994_9f92dc49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_resolution_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-04-27T14:59:47Z",
+      "side": 1,
+      "message": "Should we do OptOut for completeness?",
       "revId": "a3cc5da96abfb69dd3c769a7b9333fdb819d374e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
