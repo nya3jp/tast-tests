@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26590de9_d1dafed7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-27T15:42:17Z",
+      "side": 1,
+      "message": "LGTM to unblock.\nPer offline chat, there\u0027s a plan to switch to something else.\nCould you file a tracking issue, and add a link from the file?\n",
+      "revId": "27295353e21811fc41de8fee886d463f15d0025a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5605a5f1_f9a7ddfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/analyze.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-27T15:42:17Z",
+      "side": 1,
+      "message": "uint64(v.GetDoubleValue() * 1000.) to use fraction parts as much as possible?",
+      "range": {
+        "startLine": 98,
+        "startChar": 30,
+        "endLine": 98,
+        "endChar": 63
+      },
+      "revId": "27295353e21811fc41de8fee886d463f15d0025a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff542415_2b98d47f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/analyze.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-27T15:42:17Z",
+      "side": 1,
+      "message": "Could you comment that matchFn is called in the reverse order?",
+      "revId": "27295353e21811fc41de8fee886d463f15d0025a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

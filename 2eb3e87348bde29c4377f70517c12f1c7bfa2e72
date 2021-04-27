@@ -270,6 +270,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d53f6577_477fb7ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/analyze.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-27T15:42:17Z",
+      "side": 1,
+      "message": "Marked as resolved per offline discusion.",
+      "parentUuid": "039a0ad1_14c68514",
+      "revId": "2eb3e87348bde29c4377f70517c12f1c7bfa2e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3988d2cc_313da14d",
