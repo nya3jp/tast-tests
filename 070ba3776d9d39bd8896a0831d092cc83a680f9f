@@ -34,6 +34,24 @@
       "parentUuid": "963e2938_9a0f1e15",
       "revId": "070ba3776d9d39bd8896a0831d092cc83a680f9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dd53c5b_d27e9ff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-04-27T07:28:00Z",
+      "side": 1,
+      "message": "thanks for the info Anastasiia. I will take a look as it may cause false negatives in tests using them.",
+      "parentUuid": "ae3ccd0f_1fe99ae7",
+      "revId": "070ba3776d9d39bd8896a0831d092cc83a680f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
