@@ -34,6 +34,23 @@
       "parentUuid": "660f0bc6_2f717f55",
       "revId": "f0554c8270f34eb43f2d90b6905a60725fa15b53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bbae7bf_7e0a4019",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-04-27T05:25:09Z",
+      "side": 1,
+      "message": "How about something like\n\ncamera.CCAUIVolumeShutter: Revise the app restart flow\n\ngiven this test does not actually fix the underlying issue, but mitigate it as a side effect of a nice refactor.",
+      "revId": "f0554c8270f34eb43f2d90b6905a60725fa15b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
