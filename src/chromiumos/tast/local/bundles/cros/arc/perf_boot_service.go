@@ -42,7 +42,7 @@ type PerfBootService struct {
 }
 
 func (c *PerfBootService) WaitUntilCPUCoolDown(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownStopUI); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownStopUI)); err != nil {
 		return nil, errors.Wrap(err, "failed to wait until CPU is cooled down")
 	}
 	return &empty.Empty{}, nil
