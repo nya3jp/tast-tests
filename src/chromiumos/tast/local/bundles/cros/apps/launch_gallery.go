@@ -67,13 +67,6 @@ func init() {
 
 // LaunchGallery verifies launching Gallery on opening supported files.
 func LaunchGallery(ctx context.Context, s *testing.State) {
-	// Setup the test image.
-	testFileLocation := filepath.Join(filesapp.DownloadPath, testFile)
-	if err := fsutil.CopyFile(s.DataPath(testFile), testFileLocation); err != nil {
-		s.Fatalf("Failed to copy the test image to %s: %s", testFileLocation, err)
-	}
-	defer os.Remove(testFileLocation)
-
 	cr := s.FixtValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -88,6 +81,15 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure in tablet mode: ", err)
 	}
 	defer cleanup(ctx)
+
+	//TODO (crbug/1146196) remove sleep after Downloads mounting issue fixed.
+	testing.Sleep(ctx, 5*time.Second)
+	// Setup the test image.
+	testFileLocation := filepath.Join(filesapp.DownloadPath, testFile)
+	if err := fsutil.CopyFile(s.DataPath(testFile), testFileLocation); err != nil {
+		s.Fatalf("Failed to copy the test image to %s: %s", testFileLocation, err)
+	}
+	defer os.Remove(testFileLocation)
 
 	// SWA installation is not guaranteed during startup.
 	// Using this wait to check installation finished before starting test.
@@ -104,7 +106,7 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("open Downloads folder and double click file to launch Gallery",
 		files.OpenDownloads(),
-		files.WaitForFile(testFile),
+		files.WithTimeout(30*time.Second).WaitForFile(testFile),
 		files.OpenFile(testFile),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open file in Downloads: ", err)
