@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "608e9e53_9e41c8db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-27T17:25:08Z",
+      "side": 1,
+      "message": "Hi Victor, I\u0027ve add comments in crbug.com/1202797 for more information of what we encountered during our critical user journey (CUJ test). More discussion about this issue (along with other issues) can be found at b:184890503\n\nAlso, per my test, I don\u0027t think the ready.go policy cleanup takes effect - the policy.1 file under /var/lib/whitelist still has the account of the previous device owner when KeepState is used. \n\nThe ClearDeviceOwnership() has a comment:\n\n// The UI must be stopped while we do this, or the session_manager will\n// write the policy and key files out again.\n\nI guess in ready.go, UI is not stopped so policy.1 is re-written.",
+      "parentUuid": "f4496612_cbc320bd",
+      "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9fa62b4_ee688dcf",
         "filename": "src/chromiumos/tast/local/chrome/option.go",
         "patchSetId": 1
