@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4496612_cbc320bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-27T16:54:35Z",
+      "side": 1,
+      "message": "Tast runs on consumer owned devices (and fails some tests if not), but there is a fixture that performs enrollment. All tests using that fixture need to use KeepEnrollment when starting Chrome.\n\nRegarding your tests, ready.go already clears ownership before tests start. You can simply use KeepState in that case.\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/ready/ready.go;l\u003d347?q\u003dfile:ready.go\n\nWhat kind of tests are you writing? What undesired behavior are you encountering when running your tests?",
+      "parentUuid": "4417903f_bd33ebfc",
+      "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9fa62b4_ee688dcf",
         "filename": "src/chromiumos/tast/local/chrome/option.go",
         "patchSetId": 1
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "I\u0027m not quite sure what change to make for this code line. I think we should keep it because we don\u0027t want to clear ownership when KeepEnrollment() is called.",
       "parentUuid": "b9fa62b4_ee688dcf",
+      "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43045d5a_8a3b2c01",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-27T16:54:35Z",
+      "side": 1,
+      "message": "Add for consistency:\ncfg.KeepState \u003d false",
+      "parentUuid": "07bb8a54_5cc7987a",
       "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
