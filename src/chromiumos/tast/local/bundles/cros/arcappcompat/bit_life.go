@@ -29,6 +29,7 @@ var clamshellTestsForBitLife = []testutil.TestCase{
 // TouchviewTests are placed here.
 var touchviewTestsForBitLife = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForBitLife},
+	{Name: "Touchview : Splitscreen", Fn: testutil.SplitScreen},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
@@ -70,7 +71,7 @@ func init() {
 func BitLife(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.candywriter.bitlife"
-		appActivity = "com.google.firebase.MessagingUnityPlayerActivity"
+		appActivity = "com.unity3d.player.UnityPlayerActivity"
 	)
 	testCases := s.Param().([]testutil.TestCase)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
