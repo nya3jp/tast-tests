@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "389610d7_01105ce7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-27T00:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e5f4ee0_0a54c858",
+      "range": {
+        "startLine": 28,
+        "startChar": 46,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "42c9bac9c59dcfe23fe7a9bae2332677545b8976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "559572d2_62a12418",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-21T00:30:14Z",
       "side": 1,
       "message": "I thought chrome.New always does a new login?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 56
+      },
+      "revId": "42c9bac9c59dcfe23fe7a9bae2332677545b8976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "395c0c1f_d2bd034e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-27T00:58:59Z",
+      "side": 1,
+      "message": "Fair enough; I just copy/pasted this. I don\u0027t know if it\u0027s actually necessary. Removed.",
+      "parentUuid": "559572d2_62a12418",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4630da5_36ccdc6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-27T00:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f655b03_f2729475",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 92
+      },
+      "revId": "42c9bac9c59dcfe23fe7a9bae2332677545b8976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e6e025c_273047b2",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10c2bf00_e2a8301f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-27T00:58:59Z",
+      "side": 1,
+      "message": "Added some explanations. That\u0027s correct. The dependent CL changes our logic to ignore violations from everything but \"cros\" and \"minijail\" contexts, so we look for those strings to verify nothing else got through.",
+      "parentUuid": "2e6e025c_273047b2",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 59
+      },
+      "revId": "42c9bac9c59dcfe23fe7a9bae2332677545b8976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63317c93_e148cca7",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-04-21T00:30:14Z",
       "side": 1,
       "message": "Is this complexity needed, or can we just return an error if reader.Wait returns an error? It seems like, in practical terms, the test fails iff reader.Wait returns error.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 2
+      },
+      "revId": "42c9bac9c59dcfe23fe7a9bae2332677545b8976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af35a9d1_fe696c47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-27T00:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63317c93_e148cca7",
       "range": {
         "startLine": 114,
         "startChar": 0,
