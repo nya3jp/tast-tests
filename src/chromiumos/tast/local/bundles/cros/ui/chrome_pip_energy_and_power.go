@@ -109,7 +109,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to build metrics: ", err)
 	}
 
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
 		s.Fatal("Failed to wait for CPU to cool down: ", err)
 	}
 

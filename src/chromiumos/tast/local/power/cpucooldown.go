@@ -29,17 +29,25 @@ const (
 	CoolDownStopUI
 )
 
+// CoolDownConfig contains the config to wait for the machine to cooldown.
+type CoolDownConfig struct {
+	PollTimeout  time.Duration
+	PollInterval time.Duration
+	// CPUTemperatureThreshold is the threshold for CPU temperature.
+	CPUTemperatureThreshold int
+	CoolDownMode            CoolDownMode
+}
+
+// DefaultCoolDownConfig returns the default config to wait for the machine to cooldown.
+func DefaultCoolDownConfig(mode CoolDownMode) CoolDownConfig {
+	return CoolDownConfig{PollTimeout: 300 * time.Second, PollInterval: 2 * time.Second, CPUTemperatureThreshold: 46000, CoolDownMode: mode}
+}
+
 // WaitUntilCPUCoolDown waits until CPU is cooled down and returns the time it
 // took to cool down.
 // Ported from cheets_PerfBoot.wait_cpu_cool_down().
-func WaitUntilCPUCoolDown(ctx context.Context, coolDownMode CoolDownMode) (time.Duration, error) {
+func WaitUntilCPUCoolDown(ctx context.Context, config CoolDownConfig) (time.Duration, error) {
 	const (
-		pollTimeout  = 300 * time.Second
-		pollInterval = 2 * time.Second
-
-		// cpuTemperatureThreshold is the threshold for CPU temperature.
-		cpuTemperatureThreshold = 46000
-
 		// thermalZonePath is the path to thermal zone directories.
 		thermalZonePath = "/sys/class/thermal/thermal_zone*"
 	)
@@ -54,7 +62,7 @@ func WaitUntilCPUCoolDown(ctx context.Context, coolDownMode CoolDownMode) (time.
 
 	timeBefore := time.Now()
 
-	switch coolDownMode {
+	switch config.CoolDownMode {
 	case CoolDownPreserveUI:
 	case CoolDownStopUI:
 		// Stop UI in order to cool down CPU faster as Chrome is the heaviest process when
@@ -111,15 +119,15 @@ func WaitUntilCPUCoolDown(ctx context.Context, coolDownMode CoolDownMode) (time.
 					"failed to parse temperature value in %q", zoneTempPath))
 			}
 
-			if zoneTemp > cpuTemperatureThreshold {
+			if zoneTemp > config.CPUTemperatureThreshold {
 				testing.ContextLogf(ctx, "Waiting until %s temperature (%d) falls below %d",
-					zoneType, zoneTemp, cpuTemperatureThreshold)
+					zoneType, zoneTemp, config.CPUTemperatureThreshold)
 				return errors.Errorf("timed out while waiting until %s temperature (%d) falls below %d",
-					zoneType, zoneTemp, cpuTemperatureThreshold)
+					zoneType, zoneTemp, config.CPUTemperatureThreshold)
 			}
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: pollTimeout, Interval: pollInterval}); err != nil {
+	}, &testing.PollOptions{Timeout: config.PollTimeout, Interval: config.PollInterval}); err != nil {
 		return 0, err
 	}
 
