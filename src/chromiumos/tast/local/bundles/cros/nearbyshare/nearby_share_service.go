@@ -65,6 +65,9 @@ func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyservice.C
 		n.username = req.Username
 		nearbyOpts = append(nearbyOpts, chrome.GAIALogin(chrome.Creds{User: req.Username, Pass: req.Password}))
 	}
+	if req.KeepState {
+		nearbyOpts = append(nearbyOpts, chrome.KeepState())
+	}
 	cr, err := chrome.New(ctx, nearbyOpts...)
 	if err != nil {
 		testing.ContextLog(ctx, "Failed to start Chrome")

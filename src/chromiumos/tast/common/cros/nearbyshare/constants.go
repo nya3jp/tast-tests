@@ -40,3 +40,6 @@ const BtsnoopLog = "nearby_btsnoop_cros.log"
 
 // NearbyLogDir is the dir that logs will be saved in temporarily on the DUT during remote tests before being pulled back to remote host.
 const NearbyLogDir = "/tmp/nearbyshare/"
+
+// KeepStateVar is the runtime variable name used to specify the chrome.KeepState parameter to preserve the DUT's user accounts.
+const KeepStateVar = "keepState"
