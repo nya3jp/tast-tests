@@ -107,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3a9b39f_342b2f14",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_flash_fp_mcu_hello.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-27T05:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd77db6f_283c5cc0",
+      "range": {
+        "startLine": 20,
+        "startChar": 15,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "bcfee959554c7164a1c9025052e30d9f4830a7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee286b2a_ba8c2b1f",
