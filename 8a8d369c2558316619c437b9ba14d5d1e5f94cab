@@ -33,6 +33,23 @@
       "message": "Katherine, gentle ping",
       "revId": "8a8d369c2558316619c437b9ba14d5d1e5f94cab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fab12b50_dc361fa1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-04-27T07:45:16Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "8a8d369c2558316619c437b9ba14d5d1e5f94cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
