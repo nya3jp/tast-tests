@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e8cbb9_d1095f53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-27T16:02:05Z",
+      "side": 1,
+      "message": "Looks good from a functional perspective. Next step is to get a +2 from tast-owners: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md",
+      "revId": "2d5192b7adc2156491c30e2be087e7feb7721209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc74e8aa_8ad62566",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-27T16:02:05Z",
+      "side": 1,
+      "message": "This is the same as fingerprint.CheckRollbackSetToInitialValue, so you can use that.",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 43
+      },
+      "revId": "2d5192b7adc2156491c30e2be087e7feb7721209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
