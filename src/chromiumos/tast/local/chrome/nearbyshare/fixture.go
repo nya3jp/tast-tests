@@ -64,6 +64,8 @@ func init() {
 		// Use these vars to log in with your own GAIA credentials. If running in-contacts tests with an Android device, it is expected that the CrOS user and Android user are already mutual contacts.
 		customCrOSUsername = "cros_username"
 		customCrOSPassword = "cros_password"
+		// Set this var to True to prevent the tests from clearing existing user accounts from the DUT.
+		keepState = nearbycommon.KeepStateVar
 	)
 
 	testing.AddFixture(&testing.Fixture{
@@ -75,6 +77,7 @@ func init() {
 			defaultAndroidPassword,
 			rooted,
 			skipAndroidLogin,
+			keepState,
 		},
 		SetUpTimeout:    2 * time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -96,6 +99,7 @@ func init() {
 			skipAndroidLogin,
 			customCrOSUsername,
 			customCrOSPassword,
+			keepState,
 		},
 		SetUpTimeout:    2 * time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -118,6 +122,7 @@ func init() {
 			skipAndroidLogin,
 			customCrOSUsername,
 			customCrOSPassword,
+			keepState,
 		},
 		SetUpTimeout:    2 * time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -139,6 +144,7 @@ func init() {
 			skipAndroidLogin,
 			customCrOSUsername,
 			customCrOSPassword,
+			keepState,
 		},
 		SetUpTimeout:    2 * time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -161,6 +167,7 @@ func init() {
 			customAndroidUsername,
 			customCrOSUsername,
 			customCrOSPassword,
+			keepState,
 		},
 		SetUpTimeout:    2 * time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -183,6 +190,7 @@ func init() {
 			customAndroidUsername,
 			customCrOSUsername,
 			customCrOSPassword,
+			keepState,
 		},
 		SetUpTimeout:    2 * time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -205,6 +213,7 @@ func init() {
 			customAndroidUsername,
 			customCrOSUsername,
 			customCrOSPassword,
+			keepState,
 		},
 		SetUpTimeout:    2 * time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -268,6 +277,16 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 			s.Log("Logging in with default GAIA credentials")
 		}
 		f.opts = append(f.opts, chrome.GAIALogin(chrome.Creds{User: crosUsername, Pass: crosPassword}))
+	}
+
+	if val, ok := s.Var(nearbycommon.KeepStateVar); ok {
+		b, err := strconv.ParseBool(val)
+		if err != nil {
+			s.Fatalf("Unable to convert %v var to bool: %v", nearbycommon.KeepStateVar, err)
+		}
+		if b {
+			f.opts = append(f.opts, chrome.KeepState())
+		}
 	}
 
 	cr, err := chrome.New(
