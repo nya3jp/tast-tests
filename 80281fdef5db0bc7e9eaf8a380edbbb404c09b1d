@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06d72ae4_565e6b19",
+        "filename": "src/chromiumos/tast/local/power/cpucooldown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-27T09:54:56Z",
+      "side": 1,
+      "message": "nit\u0026optional: I recommend spliting the literal to multiple lines.",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 137
+      },
+      "revId": "80281fdef5db0bc7e9eaf8a380edbbb404c09b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
