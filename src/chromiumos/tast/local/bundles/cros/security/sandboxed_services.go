@@ -164,6 +164,8 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"goofy_control.sh", "root", "root", 0},
 		// src/third_party/chromiumos-overlay/sys-apps/ureadahead/files/init/ureadahead.conf
 		{"ureadahead", "root", "root", 0},
+		{"sed", "root", "root", 0},
+		{"start", "root", "root", 0},
 	}
 
 	// Names of processes whose children should be ignored. These processes themselves are also ignored.
