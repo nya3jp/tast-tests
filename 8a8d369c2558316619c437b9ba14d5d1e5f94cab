@@ -67,6 +67,23 @@
       "message": "I was asked by khmel@ to help +2 since tast owner kathrelkeld@ is OoO. ",
       "revId": "8a8d369c2558316619c437b9ba14d5d1e5f94cab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1f7e702_05ec7adc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-04-27T19:47:54Z",
+      "side": 1,
+      "message": "Re-adding tast owner once had no feedback for a long time",
+      "revId": "8a8d369c2558316619c437b9ba14d5d1e5f94cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
