@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14ff8960_0dea4776",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-27T16:12:54Z",
+      "side": 1,
+      "message": "This section is basically the same as the network diagnostics fixture: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/diag/fixture.go;l\u003d58?q\u003ddiag%2Ffixture.go\n\nI tried factoring this out into a common function, but I\u0027m not sure if it makes sense to. Let me know if you have any thoughts.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 27
+      },
+      "revId": "879dded69d1e90513166722d49e6c0b6fdb378ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
