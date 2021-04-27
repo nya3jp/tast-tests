@@ -16,6 +16,24 @@
       "message": "there is a helper in browser package:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/browser/browser.go;l\u003d23",
       "revId": "070ba3776d9d39bd8896a0831d092cc83a680f9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae3ccd0f_1fe99ae7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-04-27T07:03:01Z",
+      "side": 1,
+      "message": "I\u0027ve tried to use it, but it returns an empty string for me (probably because it uses Find and not FindWithTimeout?)",
+      "parentUuid": "963e2938_9a0f1e15",
+      "revId": "070ba3776d9d39bd8896a0831d092cc83a680f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
