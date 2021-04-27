@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b5b3cae_4ae83a2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/netflix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-27T07:11:06Z",
+      "side": 1,
+      "message": "Should this is initialized as it is passed to ui.Index below. Same for launchAppForNetflix as well.",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 24
+      },
+      "revId": "dc3e025c7d8bd91f4eb5ac96b875cae94fedd7ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
