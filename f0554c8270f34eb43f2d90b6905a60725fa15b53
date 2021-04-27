@@ -16,6 +16,24 @@
       "message": "This CL looks valid, but does not solve the original unknown mojo issue at the root. I would prefer to revert the culprit CL https://crrev.com/c/2786683 first if we cannot find the root cause now. WDYT?",
       "revId": "f0554c8270f34eb43f2d90b6905a60725fa15b53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be1bd560_b66b6160",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2021-04-27T03:34:31Z",
+      "side": 1,
+      "message": "As offline discussion, this CL can be landed and we also need a workaround CL to cache the mojo connection error in CCA.",
+      "parentUuid": "660f0bc6_2f717f55",
+      "revId": "f0554c8270f34eb43f2d90b6905a60725fa15b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
