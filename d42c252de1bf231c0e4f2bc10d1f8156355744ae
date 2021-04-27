@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4417903f_bd33ebfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-27T16:12:16Z",
+      "side": 1,
+      "message": "Thanks Victor and Shuhei for your comments.\n\nWe want to use KeepState between multiple tast runs to avoid some time consuming configuration setup and app installation for the same account. (It\u0027s ok to do the setup in the initial run.) But with KeepState, if the DUT was logged in with another account before the first run, the ownership remains to the old account and we see some undesired behavior. I hope this problem statement makes sense.\n\nDo you know if there is an API in ChromeOS to query the current owner of the device? If so, I think we can compare the login account with the device owner. If they are the same, then keep state / ownership. Otherwise, clear the ownership and also remove user directories.\n\nAnother question: If the ownership should not be cleared for an enrolled device, how do we avoid running most of the tast tests, which clears ownership, on those devices?",
+      "parentUuid": "767d3899_aaf537f9",
+      "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9fa62b4_ee688dcf",
         "filename": "src/chromiumos/tast/local/chrome/option.go",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "writtenOn": "2021-04-27T10:01:29Z",
       "side": 1,
       "message": "This also needs to be updated.",
+      "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07bb8a54_5cc7987a",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-27T16:12:16Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure what change to make for this code line. I think we should keep it because we don\u0027t want to clear ownership when KeepEnrollment() is called.",
+      "parentUuid": "b9fa62b4_ee688dcf",
       "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
