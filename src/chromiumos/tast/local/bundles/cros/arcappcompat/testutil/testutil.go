@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -536,6 +537,62 @@ func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
 	}
 }
 
+// SplitScreen Test verifies if app supports split screen and check if app perform split screen without crash or ANR.
+func SplitScreen(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	displayInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the internal display info: ", err)
+	}
+	s.Logf("displayInfo:%+v", displayInfo.HasTouchSupport)
+	if !displayInfo.HasTouchSupport {
+		s.Log("Device doesn't support touchscreen. Skipping test")
+		return
+	}
+	windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
+	if err != nil {
+		s.Error("Failed to get window info: ", err)
+	}
+	if !windowInfo.CanResize {
+		s.Log("App doesn't support split screen. Skipping test")
+		return
+	}
+
+	orientation, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the orientation info: ", err)
+	}
+	//TODO(b/178401320): Remove this if a proper solution is found to perform split screen on portrait oriented apps.
+	if orientation.Type == display.OrientationPortraitPrimary {
+		s.Log("App is in portrait orientation. Skipping test")
+		return
+	}
+	tew, err := input.Touchscreen(ctx)
+	if err != nil {
+		s.Fatal("Failed to access to the touch screen: ", err)
+	}
+
+	defer tew.Close()
+	stw, err := tew.NewSingleTouchWriter()
+	if err != nil {
+		s.Fatal("Failed to create a single touch writer: ", err)
+	}
+	defer stw.Close()
+
+	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+		s.Fatal("Failed to enter overview: ", err)
+	}
+	defer stw.Close()
+
+	if err := dragToSnapFirstOverviewWindow(ctx, s, tconn, tew, stw, 0); err != nil {
+		s.Fatal("Failed to drag window from overview and snap left: ", err)
+	}
+
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateLeftSnapped); err != nil {
+		s.Fatal("Failed to wait until window state change to left: ", err)
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
 // DetectAndHandleCloseCrashOrAppNotResponding func to handle Crash or ANR.
 func DetectAndHandleCloseCrashOrAppNotResponding(ctx context.Context, s *testing.State, d *ui.Device) {
 	const (
@@ -740,4 +797,35 @@ func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appP
 	}, &testing.PollOptions{Timeout: LongUITimeout}); err != nil {
 		s.Error("appPkgName doesn't exist: ", err)
 	}
+}
+
+// dragToSnapFirstOverviewWindow finds the first window in overview, and drags
+// to snap it. This function assumes that overview is already active.
+func dragToSnapFirstOverviewWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, tew *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter, targetX input.TouchCoord) error {
+	info, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the internal display info")
+	}
+	tcc := tew.NewTouchCoordConverter(info.Bounds.Size())
+
+	w, err := ash.FindFirstWindowInOverview(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to find window in overview grid")
+	}
+
+	centerX, centerY := tcc.ConvertLocation(w.OverviewInfo.Bounds.CenterPoint())
+	if err := stw.LongPressAt(ctx, centerX, centerY); err != nil {
+		return errors.Wrap(err, "failed to long-press to start dragging landscape window")
+	}
+	s.Logf("Long pressed: centerX,%v centerY,%v", centerX, centerY)
+
+	if err := stw.Swipe(ctx, centerX, centerY, targetX, tew.Height()/2, time.Second); err != nil {
+		return errors.Wrap(err, "failed to swipe for snapping window to left")
+	}
+	s.Logf("Swipe: centerX,%v centerY,%v targetX, %v tew.Height()/2, %v time.Second, %v", centerX, centerY, targetX, tew.Height()/2, time.Second)
+
+	if err := stw.End(); err != nil {
+		return errors.Wrap(err, "failed to end swipe")
+	}
+	return nil
 }
