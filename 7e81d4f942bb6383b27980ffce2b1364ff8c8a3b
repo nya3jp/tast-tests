@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ff3a52_2341dd51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-27T02:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66cf4989_ae2b6a85",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 23
+      },
+      "revId": "7e81d4f942bb6383b27980ffce2b1364ff8c8a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "766f7fde_e22b2e09",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-04-27T02:30:53Z",
       "side": 1,
       "message": "It shouldn\u0027t be needed .. but does calling ::sync() help? https://pkg.go.dev/syscall#Sync\n\nPossibly it will \"work\" simply because that is a really slow syscall and it might take 5 seconds anyway",
+      "revId": "7e81d4f942bb6383b27980ffce2b1364ff8c8a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1aadb41_834ed265",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-27T02:50:58Z",
+      "side": 1,
+      "message": "I think it might help. However, it should not be taken care by the test script. I will talk to bug owner with the proposal. The fix is nice to be done in fsutil package.",
+      "parentUuid": "766f7fde_e22b2e09",
       "revId": "7e81d4f942bb6383b27980ffce2b1364ff8c8a3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
