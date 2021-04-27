@@ -22,6 +22,30 @@
       },
       "revId": "4ffbfb4bbd2e5d299bed96bc254f44f8034bf862",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e035a168_5126eb09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-27T12:35:45Z",
+      "side": 1,
+      "message": "Hi Mohamed, thanks for the comment. Agree that in normal cases Sleep is not a good solution. This issue occurs in Files component and someone is investigating the root cause. Add sleep is a temporary solution to reduce flakiness unblocking CQ.\n\nI would not add sleep here if I know any successful condition for polling.",
+      "parentUuid": "5695c793_7485fbe3",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 34
+      },
+      "revId": "4ffbfb4bbd2e5d299bed96bc254f44f8034bf862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
