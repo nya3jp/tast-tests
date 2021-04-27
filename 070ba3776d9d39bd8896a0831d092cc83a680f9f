@@ -102,6 +102,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2340614e_586d1ece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-04-27T09:27:53Z",
+      "side": 1,
+      "message": "I\u0027ve tried to do this: https://paste.googleplex.com/5389511098892288\n\nbut the Value of addressBar is empty (even though we call ui.WaitForLocationChangeCompleted before that).\n\nLooking at the device screen, I think the code that reads address bar value is getting executed before any text is actually typed into the input field. I\u0027m not sure why it happens",
+      "parentUuid": "6dac1c28_04406c2b",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 40
+      },
+      "revId": "070ba3776d9d39bd8896a0831d092cc83a680f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "baeb22a3_c4d13c85",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
         "patchSetId": 2
@@ -113,6 +137,30 @@
       "writtenOn": "2021-04-27T07:45:01Z",
       "side": 1,
       "message": "If the DUT cannot connect to google.com, that the JS location will be chrome-error..., but the address bar value will still contain the search engine?",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 128,
+        "endChar": 31
+      },
+      "revId": "070ba3776d9d39bd8896a0831d092cc83a680f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cd9067d_08981e47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-04-27T09:27:53Z",
+      "side": 1,
+      "message": "Yes, the address bar should still contain the original text",
+      "parentUuid": "baeb22a3_c4d13c85",
       "range": {
         "startLine": 122,
         "startChar": 3,
