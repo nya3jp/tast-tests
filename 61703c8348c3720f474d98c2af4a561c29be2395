@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "61703c8348c3720f474d98c2af4a561c29be2395",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44de041b_2ac6d506",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-27T00:50:15Z",
+      "side": 1,
+      "message": "For the record: more context available at crrev.com/c/2827938",
+      "revId": "61703c8348c3720f474d98c2af4a561c29be2395",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
