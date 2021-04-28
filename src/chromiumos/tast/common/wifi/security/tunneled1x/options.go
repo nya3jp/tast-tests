@@ -5,6 +5,7 @@
 package tunneled1x
 
 import (
+	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/common/wifi/security/wpaeap"
 )
 
@@ -47,5 +48,12 @@ func AltSubjectMatch(sans []string) Option {
 func FileSuffix(suffix string) Option {
 	return func(c *ConfigFactory) {
 		c.wpaeapOps = append(c.wpaeapOps, wpaeap.FileSuffix(suffix))
+	}
+}
+
+// Mode returns an Option which sets WPA mode in Config.
+func Mode(mode wpa.ModeEnum) Option {
+	return func(c *ConfigFactory) {
+		c.wpaeapOps = append(c.wpaeapOps, wpaeap.Mode(mode))
 	}
 }
