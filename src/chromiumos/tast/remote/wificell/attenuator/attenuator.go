@@ -59,7 +59,7 @@ func (a *Attenuator) sendCmd(ctx context.Context, cmd string) (string, error) {
 func Open(ctx context.Context, host string, proxyConn *ssh.Conn) (att *Attenuator, errRet error) {
 	a := &Attenuator{}
 
-	fixedAttenuations, found := HostFixedAttenuations[host]
+	fixedAttenuations, found := HostFixedAttenuations[strings.TrimSuffix(host, ".cros")]
 	if !found {
 		return nil, errors.Errorf("Attenuator data not found for host %s", host)
 	}
