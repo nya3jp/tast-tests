@@ -37,7 +37,7 @@ func init() {
 		Contacts:     []string{"pbond@chromium.org", "arc-eng-muc@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      8 * time.Minute,
+		Timeout:      9 * time.Minute,
 		Vars: []string{
 			"enterprise.ARCProvisioning.user",
 			"enterprise.ARCProvisioning.password",
@@ -116,6 +116,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	const (
 		searchBarTextStart = "Search for apps"
 		emptyPlayStoreText = "No results found."
+		playStartTimeout   = 5 * time.Second
 	)
 
 	user := s.RequiredVar(s.Param().(credentialKeys).user)
@@ -192,7 +193,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close(ctx)
 
-	if err := d.Object(ui.TextStartsWith(searchBarTextStart)).WaitForExists(ctx, time.Second); err != nil {
+	if err := d.Object(ui.TextStartsWith(searchBarTextStart)).WaitForExists(ctx, playStartTimeout); err != nil {
 		s.Fatal("Unknown Play Store UI screen is shown: ", err)
 	}
 
