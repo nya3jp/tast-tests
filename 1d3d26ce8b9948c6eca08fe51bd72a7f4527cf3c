@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0c8629a_3805534b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-28T07:53:19Z",
+      "side": 1,
+      "message": "nit: please put the exact command you run to verify you CL, it might help other people who are no familiar with Tast to verify your CL:\n\ntast run \u003cIP\u003e apps.LaunchHelpAppOffline*",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "1d3d26ce8b9948c6eca08fe51bd72a7f4527cf3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9007948d_731ae01c",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-04-28T04:09:52Z",
       "side": 1,
       "message": "LGTM",
+      "revId": "1d3d26ce8b9948c6eca08fe51bd72a7f4527cf3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e53e712d_ad2fcf88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-28T07:53:19Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "1d3d26ce8b9948c6eca08fe51bd72a7f4527cf3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
