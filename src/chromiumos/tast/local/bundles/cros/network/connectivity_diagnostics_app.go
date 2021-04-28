@@ -26,6 +26,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
+		Timeout:      chrome.LoginTimeout + (30 * time.Second),
 	})
 }
 
