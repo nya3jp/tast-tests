@@ -63,6 +63,30 @@
       },
       "revId": "e2e6cd6f8f7b0adb5ac539a729d5fcc2c96ef688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "492940f2_7f605e00",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-04-28T23:44:59Z",
+      "side": 1,
+      "message": "Maybe log the error so that we have some clue to debug if something unusual is happening.",
+      "parentUuid": "1eacbb76_f683fe6b",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 18
+      },
+      "revId": "e2e6cd6f8f7b0adb5ac539a729d5fcc2c96ef688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
