@@ -28,6 +28,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// EncoderBlocklistVM is the list of devices on which the ARCVM HW encoder is not enabled.
+// TODO(b/155138175): Remove devices from this list once the ARCVM HW encoder is enabled.
+var EncoderBlocklistVM = []string{
+	"grunt",
+	"zork-arc-r",
+	"kukui-arc-r",
+}
+
 // cpuLog is the name of log file recording CPU usage.
 const cpuLog = "cpu.log"
 
