@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a080cefa_ea9e6702",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-28T07:36:26Z",
+      "side": 1,
+      "message": "Adding a second Tast reviewer, who is more familiar with remote services.",
+      "revId": "879dded69d1e90513166722d49e6c0b6fdb378ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14ff8960_0dea4776",
