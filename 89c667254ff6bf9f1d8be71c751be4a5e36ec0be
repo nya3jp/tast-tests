@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f15e1bb_b98f51dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/enumerate_ipp_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-28T20:04:53Z",
+      "side": 1,
+      "message": "Should this reserving time for cleanup to take care of ctx expiry scenario.\nRefer: https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "89c667254ff6bf9f1d8be71c751be4a5e36ec0be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
