@@ -72,7 +72,7 @@ func init() {
 				},
 				ExtraData:         []string{video.Crowd1080P.Name},
 				ExtraSoftwareDeps: []string{"android_vm"},
-				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge(), hwdep.SkipOnPlatform(video.EncoderBlocklistVM...)),
 			},
 			{
 				Name: "h264_1080p_i420_nobatterymetrics",
@@ -97,7 +97,7 @@ func init() {
 				},
 				ExtraData:         []string{video.Crowd1080P.Name},
 				ExtraSoftwareDeps: []string{"android_vm"},
-				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge(), hwdep.SkipOnPlatform(video.EncoderBlocklistVM...)),
 			},
 		},
 	})
