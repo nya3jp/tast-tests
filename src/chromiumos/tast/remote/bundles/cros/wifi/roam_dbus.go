@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -99,19 +99,19 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 	props := []*wificell.ShillProperty{{
 		Property:       shillconst.ServicePropertyWiFiRoamState,
 		ExpectedValues: []interface{}{shillconst.RoamStateConfiguration},
-		Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,
 	}, {
 		Property:       shillconst.ServicePropertyWiFiRoamState,
 		ExpectedValues: []interface{}{shillconst.RoamStateReady},
-		Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,
 	}, {
 		Property:       shillconst.ServicePropertyWiFiRoamState,
 		ExpectedValues: []interface{}{shillconst.RoamStateIdle},
-		Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,
 	}, {
 		Property:       shillconst.ServicePropertyWiFiBSSID,
 		ExpectedValues: []interface{}{ap2BSSID},
-		Method:         network.ExpectShillPropertyRequest_CHECK_ONLY,
+		Method:         wifi.ExpectShillPropertyRequest_CHECK_ONLY,
 	}}
 
 	waitCtx, cancel := context.WithTimeout(ctx, 60*time.Second)

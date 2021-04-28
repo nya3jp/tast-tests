@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -88,7 +88,7 @@ func Prefer5Ghz(ctx context.Context, s *testing.State) {
 	s.Log("AP setup done. Expecting the DUT to see the SSID on both 2.4GHz and 5GHz channels")
 
 	// Check SSID on both 2.4GHz and 5GHz channels.
-	req := &network.ExpectWifiFrequenciesRequest{
+	req := &wifi.ExpectWifiFrequenciesRequest{
 		Ssid:        []byte(ssid),
 		Frequencies: []uint32{uint32(freq2g), uint32(freq5g)},
 	}

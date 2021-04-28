@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -99,12 +99,12 @@ func GTK(ctx context.Context, s *testing.State) {
 	props := []*wificell.ShillProperty{
 		&wificell.ShillProperty{
 			Property:       shillconst.ServicePropertyIsConnected,
-			Method:         network.ExpectShillPropertyRequest_CHECK_ONLY,
+			Method:         wifi.ExpectShillPropertyRequest_CHECK_ONLY,
 			ExpectedValues: []interface{}{true},
 		},
 		&wificell.ShillProperty{
 			Property:       shillconst.ServicePropertyIsConnected,
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+			Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,
 			ExpectedValues: []interface{}{false},
 		},
 	}

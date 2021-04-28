@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/pcap"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -45,8 +45,8 @@ func OptionalDHCPProperties(ctx context.Context, s *testing.State) {
 	const vendorClass = "testVendorClass"
 	const hostname = "testHostname"
 
-	req := &network.SetDHCPPropertiesRequest{
-		Props: &network.DHCPProperties{
+	req := &wifi.SetDHCPPropertiesRequest{
+		Props: &wifi.DHCPProperties{
 			Hostname:    hostname,
 			VendorClass: vendorClass,
 		},
@@ -55,8 +55,8 @@ func OptionalDHCPProperties(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to set DHCP properties: ", err)
 	}
-	defer func(ctx context.Context, p *network.DHCPProperties) {
-		req := &network.SetDHCPPropertiesRequest{Props: p}
+	defer func(ctx context.Context, p *wifi.DHCPProperties) {
+		req := &wifi.SetDHCPPropertiesRequest{Props: p}
 		if _, err := tf.WifiClient().SetDHCPProperties(ctx, req); err != nil {
 			s.Error("Failed to restore DHCP properties: ", err)
 		}

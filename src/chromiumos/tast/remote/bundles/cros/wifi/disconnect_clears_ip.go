@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -57,7 +57,7 @@ func DisconnectClearsIP(ctx context.Context, s *testing.State) {
 		s.Fatal("DUT: failed to connect to WiFi: ", err)
 	}
 	defer func(ctx context.Context) {
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}); err != nil {
+		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &wifi.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}); err != nil {
 			s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
 		}
 	}(ctx)

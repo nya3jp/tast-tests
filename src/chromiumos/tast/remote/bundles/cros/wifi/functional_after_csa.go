@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -120,7 +120,7 @@ func FunctionalAfterCSA(ctx context.Context, s *testing.State) {
 					s.Error("Failed to disconnect WiFi: ", err)
 				}
 			}
-			req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
+			req := &wifi.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
 			if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
 				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
 			}

@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -84,13 +84,13 @@ func RandomMACAddress(ctx context.Context, s *testing.State) {
 	}
 
 	testOnce := func(ctx context.Context, s *testing.State, name string, enabled bool) {
-		resp, err := tf.WifiClient().SetMACRandomize(ctx, &network.SetMACRandomizeRequest{Enable: enabled})
+		resp, err := tf.WifiClient().SetMACRandomize(ctx, &wifi.SetMACRandomizeRequest{Enable: enabled})
 		if err != nil {
 			s.Fatalf("Failed to set MAC randomization to %t: %v", enabled, err)
 		}
 		// Always restore the setting on leaving.
 		defer func(ctx context.Context, restore bool) {
-			if _, err := tf.WifiClient().SetMACRandomize(ctx, &network.SetMACRandomizeRequest{Enable: restore}); err != nil {
+			if _, err := tf.WifiClient().SetMACRandomize(ctx, &wifi.SetMACRandomizeRequest{Enable: restore}); err != nil {
 				s.Errorf("Failed to restore MAC randomization setting back to %t: %v", restore, err)
 			}
 		}(ctx, resp.OldSetting)

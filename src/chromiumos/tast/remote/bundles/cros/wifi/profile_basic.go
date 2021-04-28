@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -72,8 +72,8 @@ func ProfileBasic(ctx context.Context, s *testing.State) {
 		return propsProto
 	}
 
-	genRequestConfig := func(ap *wificell.APIface) *network.ProfileBasicTestRequest_Config {
-		return &network.ProfileBasicTestRequest_Config{
+	genRequestConfig := func(ap *wificell.APIface) *wifi.ProfileBasicTestRequest_Config {
+		return &wifi.ProfileBasicTestRequest_Config{
 			Ssid:       []byte(ap.Config().SSID),
 			Security:   ap.Config().SecurityConfig.Class(),
 			Ip:         ap.ServerIP().String(),
@@ -81,7 +81,7 @@ func ProfileBasic(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if _, err := tf.WifiClient().ProfileBasicTest(ctx, &network.ProfileBasicTestRequest{
+	if _, err := tf.WifiClient().ProfileBasicTest(ctx, &wifi.ProfileBasicTestRequest{
 		Ap0: genRequestConfig(aps[0]),
 		Ap1: genRequestConfig(aps[1]),
 	}); err != nil {

@@ -18,7 +18,7 @@ import (
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -170,9 +170,9 @@ func BgscanBackoff(ctx context.Context, s *testing.State) {
 			return nil, errors.Wrap(err, "failed to get background scan config")
 		}
 		oldConfig := bgscanResp.Config
-		var config network.BgscanConfig
+		var config wifi.BgscanConfig
 		if bgscan {
-			config = network.BgscanConfig{
+			config = wifi.BgscanConfig{
 				Method:        shillconst.DeviceBgscanMethodSimple,
 				LongInterval:  bgscanInterval,
 				ShortInterval: bgscanInterval,
@@ -181,12 +181,12 @@ func BgscanBackoff(ctx context.Context, s *testing.State) {
 			config = *bgscanResp.Config
 			config.Method = shillconst.DeviceBgscanMethodNone
 		}
-		if _, err := tf.WifiClient().SetBgscanConfig(ctx, &network.SetBgscanConfigRequest{Config: &config}); err != nil {
+		if _, err := tf.WifiClient().SetBgscanConfig(ctx, &wifi.SetBgscanConfigRequest{Config: &config}); err != nil {
 			return nil, errors.Wrap(err, "failed to set background scan config")
 		}
 		defer func(ctx context.Context) {
 			s.Log("Restoring bgscan config: ", oldConfig)
-			req := &network.SetBgscanConfigRequest{
+			req := &wifi.SetBgscanConfigRequest{
 				Config: oldConfig,
 			}
 			if _, err := tf.WifiClient().SetBgscanConfig(ctx, req); err != nil {
@@ -255,7 +255,7 @@ func BgscanBackoff(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Waiting for AP2 to be found")
-		req := &network.WaitForBSSIDRequest{
+		req := &wifi.WaitForBSSIDRequest{
 			Ssid:  []byte(ssid),
 			Bssid: ap2MAC.String(),
 		}

@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -187,7 +187,7 @@ func ChannelHop(ctx context.Context, s *testing.State) {
 		props := []*wificell.ShillProperty{{
 			Property:       shillconst.ServicePropertyIsConnected,
 			ExpectedValues: []interface{}{true},
-			Method:         network.ExpectShillPropertyRequest_CHECK_WAIT,
+			Method:         wifi.ExpectShillPropertyRequest_CHECK_WAIT,
 		}}
 		wait, err := tf.ExpectShillProperty(ctx, servicePath, props, nil)
 		if err != nil {

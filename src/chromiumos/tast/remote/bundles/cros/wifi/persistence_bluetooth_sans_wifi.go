@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -52,8 +53,8 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 		}
 		defer r.Close(ctx)
 		// Enable wifi device.
-		wifiClient := network.NewWifiServiceClient(r.Conn)
-		if _, err := wifiClient.SetWifiEnabled(ctx, &network.SetWifiEnabledRequest{Enabled: true}); err != nil {
+		wifiClient := wifi.NewShillServiceClient(r.Conn)
+		if _, err := wifiClient.SetWifiEnabled(ctx, &wifi.SetWifiEnabledRequest{Enabled: true}); err != nil {
 			s.Error("Could not enable Wifi through shill: ", err)
 		}
 	}(ctx)
@@ -101,8 +102,8 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 		}
 
 		// Disable WiFi.
-		wifiClient := network.NewWifiServiceClient(r.Conn)
-		if _, err := wifiClient.SetWifiEnabled(ctx, &network.SetWifiEnabledRequest{Enabled: false}); err != nil {
+		wifiClient := wifi.NewShillServiceClient(r.Conn)
+		if _, err := wifiClient.SetWifiEnabled(ctx, &wifi.SetWifiEnabledRequest{Enabled: false}); err != nil {
 			s.Fatal("Could not disable Wifi: ", err)
 		}
 
@@ -129,7 +130,7 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 	defer r.Close(ctx)
 
 	// Assert WiFi is down.
-	wifiClient := network.NewWifiServiceClient(r.Conn)
+	wifiClient := wifi.NewShillServiceClient(r.Conn)
 	if response, err := wifiClient.GetWifiEnabled(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Could not get WiFi status: ", err)
 	} else if response.Enabled {
