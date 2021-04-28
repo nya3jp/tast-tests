@@ -10,6 +10,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"regexp"
+	"sort"
+	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/uiauto/checked"
@@ -23,6 +25,7 @@ import (
 type Finder struct {
 	ancestor   *Finder
 	attributes map[string]interface{}
+	name       map[string]regexp.Regexp
 	first      bool
 	nth        int
 	role       role.Role
@@ -35,6 +38,7 @@ func newFinder() *Finder {
 	return &Finder{
 		attributes: make(map[string]interface{}),
 		state:      make(map[state.State]bool),
+		name:       make(map[string]regexp.Regexp),
 	}
 }
 
@@ -52,6 +56,9 @@ func (f *Finder) copy() *Finder {
 	for k, v := range f.state {
 		copy.state[k] = v
 	}
+	for k, v := range f.name {
+		copy.name[k] = v
+	}
 	return copy
 }
 
@@ -60,23 +67,29 @@ func (f *Finder) copy() *Finder {
 func (f *Finder) attributesBytes() ([]byte, error) {
 	var buf bytes.Buffer
 	buf.WriteByte('{')
-	first := true
 	for k, v := range f.attributes {
-		if first {
-			first = false
-		} else {
-			buf.WriteByte(',')
-		}
 		switch v := v.(type) {
 		case string, checked.Checked, restriction.Restriction:
-			fmt.Fprintf(&buf, "%q:%q", k, v)
+			fmt.Fprintf(&buf, "%q:%q,", k, v)
 		case int, float32, float64, bool:
-			fmt.Fprintf(&buf, "%q:%v", k, v)
-		case regexp.Regexp, *regexp.Regexp:
-			fmt.Fprintf(&buf, `%q:/%v/`, k, v)
+			fmt.Fprintf(&buf, "%q:%v,", k, v)
 		default:
 			return nil, errors.Errorf("nodewith.Finder does not support type(%T) for parameter(%s)", v, k)
 		}
+	}
+	if len(f.name) != 0 {
+		// Sorting keys is required for consistency for unit tests.
+		locales := make([]string, 0, len(f.name))
+		for locale := range f.name {
+			locales = append(locales, locale)
+		}
+		sort.Strings(locales)
+		fmt.Fprintf(&buf, "\"name\":selectName({")
+		for _, locale := range locales {
+			regex := f.name[locale]
+			fmt.Fprintf(&buf, `%q:/%v/,`, locale, &regex)
+		}
+		fmt.Fprintf(&buf, "})")
 	}
 	buf.WriteByte('}')
 	return buf.Bytes(), nil
@@ -118,31 +131,40 @@ const (
 // It must be called in an async function because it starts by awaiting the chrome.automation Desktop node.
 // The final node will be in the variable node.
 func (f *Finder) GenerateQuery() (string, error) {
+	return f.generateQuery(false)
+}
+
+// GenerateQueryForMultipleNodes generates the JS query to find one or more nodes.
+// It must be called in an async function because it starts by awaiting the chrome.automation Desktop node.
+func (f *Finder) GenerateQueryForMultipleNodes() (string, error) {
+	return f.generateQuery(true)
+}
+
+// generateQuery generates the tree of queries and then wraps it to give it access to variables it may need.
+func (f *Finder) generateQuery(multipleNodes bool) (string, error) {
 	// Both node and nodes need to be generated now so they can be used in the subqueries.
 	out := `
 		let node = await tast.promisify(chrome.automation.getDesktop)();
 		let nodes = [];
 	`
-	subQuery, err := f.generateSubQuery(false)
+	if f.nameInTree() {
+		out += `
+		 let locale = chrome.i18n.getUILanguage();
+		 function selectName(names) {
+			 return names[locale] || names[locale.split("-")[0]] || names["en"]
+		 }
+		`
+	}
+	subQuery, err := f.generateSubQuery(multipleNodes)
 	if err != nil {
 		return "", err
 	}
 	return out + subQuery, nil
 }
 
-// GenerateQueryForMultipleNodes generates the JS query to find one or more nodes.
-// It must be called in an async function because it starts by awaiting the chrome.automation Desktop node.
-func (f *Finder) GenerateQueryForMultipleNodes() (string, error) {
-	// Both node and nodes need to be generated now so they can be used in the subqueries.
-	out := `
-		let node = await tast.promisify(chrome.automation.getDesktop)();
-		let nodes = [];
-	`
-	subQuery, err := f.generateSubQuery(true)
-	if err != nil {
-		return "", err
-	}
-	return out + subQuery, nil
+// nameInTree returns whether this node or any of its sub-nodes have used the Name attribute.
+func (f *Finder) nameInTree() bool {
+	return len(f.name) != 0 || (f.ancestor != nil && f.ancestor.nameInTree())
 }
 
 // generateSubQuery is a helper function for GenerateQuery.
@@ -296,48 +318,195 @@ func (f *Finder) State(k state.State, v bool) *Finder {
 	return c
 }
 
+// makeArXBString creates an approximation of the ar-XB string for a given string.
+// If the string is incorrect, it can be overridden in Multilingual*
+func makeArXBString(english string) string {
+	runes := []rune(english)
+	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i]
+	}
+	return string(runes)
+}
+
+// makeEnXAString creates an approximation of the en-XA string for a given string.
+// If the string is incorrect, it can be overridden in Multilingual*
+func makeEnXAString(english string, addNumbers bool) string {
+	// Taken from tools/grit/grit/pseudolocales.py.
+	numberWords := [...]string{"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"}
+	accentedLetters := map[rune]rune{
+		'!': '\u00a1',
+		'$': '\u20ac',
+		'?': '\u00bf',
+		'A': '\u00c5',
+		'C': '\u00c7',
+		'D': '\u00d0',
+		'E': '\u00c9',
+		'G': '\u011c',
+		'H': '\u0124',
+		'I': '\u00ce',
+		'J': '\u0134',
+		'K': '\u0136',
+		'L': '\u013b',
+		'N': '\u00d1',
+		'O': '\u00d6',
+		'P': '\u00de',
+		'R': '\u00ae',
+		'S': '\u0160',
+		'T': '\u0162',
+		'U': '\u00db',
+		'W': '\u0174',
+		'Y': '\u00dd',
+		'Z': '\u017d',
+		'a': '\u00e5',
+		'c': '\u00e7',
+		'd': '\u00f0',
+		'e': '\u00e9',
+		'f': '\u0192',
+		'g': '\u011d',
+		'h': '\u0125',
+		'i': '\u00ee',
+		'j': '\u0135',
+		'k': '\u0137',
+		'l': '\u013c',
+		'n': '\u00f1',
+		'o': '\u00f6',
+		'p': '\u00fe',
+		's': '\u0161',
+		't': '\u0163',
+		'u': '\u00fb',
+		'w': '\u0175',
+		'y': '\u00fd',
+		'z': '\u017e',
+	}
+	result := []rune(english)
+	for i, letter := range result {
+		if accented, ok := accentedLetters[letter]; ok {
+			result[i] = accented
+		}
+	}
+	words := strings.Split(string(result), " ")
+	if addNumbers {
+		nWords := len(words)
+		for i := 0; i < nWords; i++ {
+			words = append(words, numberWords[i%len(numberWords)])
+		}
+	}
+	return strings.Join(words, " ")
+}
+
+// nameAttribute creates a copy of the finder with the name attribute filled.
+// If matchStart is specified, then it only matches a string starting with this text.
+// If matchEnd is specified, then it only matches a string ending with this text.
+// In RTL languages, matchStart and matchEnd will be reversed.
+func (f *Finder) nameAttribute(english string, other map[string]string, matchStart, matchEnd bool) *Finder {
+	c := f.copy()
+	addName := func(lang, text string) {
+		baseLanguage := strings.Split(lang, "-")[0]
+		start := ".*"
+		end := ".*"
+		// It's unlikely we'll write tast tests for more than one RTL language, so just hardcode this.
+		rtl := baseLanguage == "ar"
+		if (matchEnd && rtl) || (matchStart && !rtl) {
+			start = ""
+		}
+		if (matchStart && rtl) || (matchEnd && !rtl) {
+			end = ""
+		}
+		c.name[lang] = *regexp.MustCompile("^" + start + regexp.QuoteMeta(text) + end + "$")
+	}
+	addName("en", english)
+	// These are defaults, and can be overridden by using the other map
+	addName("ar-XB", makeArXBString(english))
+	// Only generate the number words when doing a precise match for the string.
+	// Otherwise, you might search for a string "a b one two" in "a b c one two three".
+	addName("en-XA", makeEnXAString(english, matchStart && matchEnd))
+	for lang, text := range other {
+		addName(lang, text)
+	}
+	return c
+}
+
 // Name creates a Finder with the specified name.
 func Name(n string) *Finder {
-	return Attribute("name", n)
+	return newFinder().Name(n)
 }
 
 // Name creates a copy of the input Finder with the specified name.
 func (f *Finder) Name(n string) *Finder {
-	return f.Attribute("name", n)
+	return f.MultilingualName(n, map[string]string{})
+}
+
+// MultilingualName creates a Finder with the specified names.
+func MultilingualName(english string, other map[string]string) *Finder {
+	return newFinder().MultilingualName(english, other)
+}
+
+// MultilingualName creates a copy of the input Finder with the specified names.
+func (f *Finder) MultilingualName(english string, other map[string]string) *Finder {
+	return f.nameAttribute(english, other, true, true)
 }
 
 // NameContaining creates a Finder with a name containing the specified string.
 func NameContaining(n string) *Finder {
-	r := regexp.MustCompile(fmt.Sprintf(".*%s.*", regexp.QuoteMeta(n)))
-	return Attribute("name", r)
+	return newFinder().NameContaining(n)
 }
 
 // NameContaining creates a copy of the input Finder with a name containing the specified string.
 func (f *Finder) NameContaining(n string) *Finder {
-	r := regexp.MustCompile(fmt.Sprintf(".*%s.*", regexp.QuoteMeta(n)))
-	return f.Attribute("name", r)
+	return f.MultilingualNameContaining(n, map[string]string{})
+}
+
+// MultilingualNameContaining creates a Finder with a name containing the specified strings.
+func MultilingualNameContaining(english string, other map[string]string) *Finder {
+	return newFinder().MultilingualNameContaining(english, other)
+}
+
+// MultilingualNameContaining creates a copy of the input Finder with a name containing the specified strings.
+func (f *Finder) MultilingualNameContaining(english string, other map[string]string) *Finder {
+	return f.nameAttribute(english, other, false, false)
 }
 
 // NameStartingWith creates a Finder with a name starting with the specified string.
 func NameStartingWith(n string) *Finder {
-	r := regexp.MustCompile(fmt.Sprintf("^%s.*", regexp.QuoteMeta(n)))
-	return Attribute("name", r)
+	return newFinder().NameStartingWith(n)
 }
 
 // NameStartingWith creates a copy of the input Finder with a name starting with the specified string.
 func (f *Finder) NameStartingWith(n string) *Finder {
-	r := regexp.MustCompile(fmt.Sprintf("^%s.*", regexp.QuoteMeta(n)))
-	return f.Attribute("name", r)
+	return f.MultilingualNameStartingWith(n, map[string]string{})
+}
+
+// MultilingualNameStartingWith creates a Finder with a name starting with the specified strings.
+func MultilingualNameStartingWith(english string, other map[string]string) *Finder {
+	return newFinder().MultilingualNameStartingWith(english, other)
+}
+
+// MultilingualNameStartingWith creates a copy of the input Finder with a name starting with the specified strings.
+func (f *Finder) MultilingualNameStartingWith(english string, other map[string]string) *Finder {
+	return f.nameAttribute(english, other, true, false)
 }
 
 // NameRegex creates a Finder with a name containing the specified regexp.
 func NameRegex(r *regexp.Regexp) *Finder {
-	return Attribute("name", r)
+	return newFinder().NameRegex(r)
+}
+
+// MultilingualNameRegex creates a Finder with a name containing the specified regexp.
+func MultilingualNameRegex(english *regexp.Regexp, other map[string]regexp.Regexp) *Finder {
+	return newFinder().MultilingualNameRegex(english, other)
 }
 
 // NameRegex creates a copy of the input Finder with a name containing the specified regexp.
 func (f *Finder) NameRegex(r *regexp.Regexp) *Finder {
-	return f.Attribute("name", r)
+	return MultilingualNameRegex(r, map[string]regexp.Regexp{})
+}
+
+// MultilingualNameRegex creates a copy of the input Finder with a name containing the specified regexp.
+func (f *Finder) MultilingualNameRegex(english *regexp.Regexp, other map[string]regexp.Regexp) *Finder {
+	c := f.copy()
+	c.name = other
+	c.name["en"] = *english
+	return c
 }
 
 // ClassName creates a Finder with the specified class name.
