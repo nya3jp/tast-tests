@@ -87,6 +87,11 @@ func runEnumerationTest(ctx context.Context, s *testing.State, info scannerInfo)
 	if err != nil {
 		s.Fatal("Failed to connect to lorgnette: ", err)
 	}
+	defer func() {
+		// Lorgnette was auto started during testing.  Kill it to avoid
+		// affecting subsequent tests.
+		lorgnette.StopService(ctx)
+	}()
 	scanners, err := l.ListScanners(ctx)
 	if err != nil {
 		s.Fatal("Failed to call ListScanners: ", err)
@@ -141,8 +146,4 @@ func EnumerateIPPUSB(ctx context.Context, s *testing.State) {
 	}} {
 		runEnumerationTest(ctx, s, info)
 	}
-
-	// Lorgnette was auto started during testing.  Kill it to avoid
-	// affecting subsequent tests.
-	lorgnette.StopService(cleanupCtx)
 }
