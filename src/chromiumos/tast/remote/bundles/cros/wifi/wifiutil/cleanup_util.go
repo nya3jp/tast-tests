@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 )
 
 const waitServiceIdleTime = 30 * time.Second
@@ -28,7 +28,7 @@ func WaitServiceIdle(ctx context.Context, tf *wificell.TestFixture, servicePath 
 	props := []*wificell.ShillProperty{{
 		Property:       shillconst.ServicePropertyState,
 		ExpectedValues: []interface{}{shillconst.ServiceStateIdle},
-		Method:         network.ExpectShillPropertyRequest_CHECK_WAIT,
+		Method:         wifi.ExpectShillPropertyRequest_CHECK_WAIT,
 	}}
 	wait, err := tf.ExpectShillProperty(ctx, servicePath, props, nil)
 	if err != nil {

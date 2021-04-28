@@ -35,7 +35,7 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/rpc"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -122,7 +122,7 @@ func TFLogLevel(level int) TFOption {
 }
 
 // TFServiceName is the service needed by TestFixture.
-const TFServiceName = "tast.cros.network.WifiService"
+const TFServiceName = "tast.cros.wifi.ShillService"
 
 type routerData struct {
 	target string
@@ -134,7 +134,7 @@ type routerData struct {
 type TestFixture struct {
 	dut        *dut.DUT
 	rpc        *rpc.Client
-	wifiClient network.WifiServiceClient
+	wifiClient wifi.ShillServiceClient
 
 	routers []routerData
 
@@ -250,10 +250,10 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect rpc")
 	}
-	tf.wifiClient = network.NewWifiServiceClient(tf.rpc.Conn)
+	tf.wifiClient = wifi.NewShillServiceClient(tf.rpc.Conn)
 
 	// TODO(crbug.com/728769): Make sure if we need to turn off powersave.
-	if _, err := tf.wifiClient.InitDUT(ctx, &network.InitDUTRequest{WithUi: tf.option.withUI}); err != nil {
+	if _, err := tf.wifiClient.InitDUT(ctx, &wifi.InitDUTRequest{WithUi: tf.option.withUI}); err != nil {
 		return nil, errors.Wrap(err, "failed to InitDUT")
 	}
 
@@ -664,7 +664,7 @@ func ConnProperties(p map[string]interface{}) ConnOption {
 }
 
 // ConnectWifi asks the DUT to connect to the specified WiFi.
-func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...ConnOption) (*network.ConnectResponse, error) {
+func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...ConnOption) (*wifi.ConnectResponse, error) {
 	c := &connConfig{
 		ssid:    ssid,
 		secConf: &base.Config{},
@@ -703,7 +703,7 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...
 	if err != nil {
 		return nil, err
 	}
-	request := &network.ConnectRequest{
+	request := &wifi.ConnectRequest{
 		Ssid:       []byte(c.ssid),
 		Hidden:     c.hidden,
 		Security:   c.secConf.Class(),
@@ -720,7 +720,7 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...
 func (tf *TestFixture) DiscoverBSSID(ctx context.Context, bssid, iface string, ssid []byte) error {
 	ctx, st := timing.Start(ctx, "tf.DiscoverBSSID")
 	defer st.End()
-	request := &network.DiscoverBSSIDRequest{
+	request := &wifi.DiscoverBSSIDRequest{
 		Bssid:     bssid,
 		Interface: iface,
 		Ssid:      ssid,
@@ -734,7 +734,7 @@ func (tf *TestFixture) DiscoverBSSID(ctx context.Context, bssid, iface string, s
 
 // RequestRoam requests DUT to roam to the specified BSSID and waits until the DUT has roamed.
 func (tf *TestFixture) RequestRoam(ctx context.Context, iface, bssid string, timeout time.Duration) error {
-	request := &network.RequestRoamRequest{
+	request := &wifi.RequestRoamRequest{
 		InterfaceName: iface,
 		Bssid:         bssid,
 		Timeout:       timeout.Nanoseconds(),
@@ -748,7 +748,7 @@ func (tf *TestFixture) RequestRoam(ctx context.Context, iface, bssid string, tim
 
 // Reassociate triggers reassociation with the current AP and waits until it has reconnected or the timeout expires.
 func (tf *TestFixture) Reassociate(ctx context.Context, iface string, timeout time.Duration) error {
-	_, err := tf.wifiClient.Reassociate(ctx, &network.ReassociateRequest{
+	_, err := tf.wifiClient.Reassociate(ctx, &wifi.ReassociateRequest{
 		InterfaceName: iface,
 		Timeout:       timeout.Nanoseconds(),
 	})
@@ -757,7 +757,7 @@ func (tf *TestFixture) Reassociate(ctx context.Context, iface string, timeout ti
 
 // FlushBSS flushes BSS entries over the specified age from wpa_supplicant's cache.
 func (tf *TestFixture) FlushBSS(ctx context.Context, iface string, age time.Duration) error {
-	req := &network.FlushBSSRequest{
+	req := &wifi.FlushBSSRequest{
 		InterfaceName: iface,
 		Age:           age.Nanoseconds(),
 	}
@@ -766,7 +766,7 @@ func (tf *TestFixture) FlushBSS(ctx context.Context, iface string, age time.Dura
 }
 
 // ConnectWifiAP asks the DUT to connect to the WiFi provided by the given AP.
-func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface, options ...ConnOption) (*network.ConnectResponse, error) {
+func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface, options ...ConnOption) (*wifi.ConnectResponse, error) {
 	conf := ap.Config()
 	opts := append([]ConnOption{ConnHidden(conf.Hidden), ConnSecurity(conf.SecurityConfig)}, options...)
 	return tf.ConnectWifi(ctx, conf.SSID, opts...)
@@ -786,7 +786,7 @@ func (tf *TestFixture) disconnectWifi(ctx context.Context, removeProfile bool) e
 	// call will also fail and caller usually leaves hint for this.
 	// In Close and Reinit, we pop + remove related profiles so it should still be
 	// safe for next test if this case happened in clean up.
-	req := &network.DisconnectRequest{
+	req := &wifi.DisconnectRequest{
 		ServicePath:   resp.ServicePath,
 		RemoveProfile: removeProfile,
 	}
@@ -813,7 +813,7 @@ func (tf *TestFixture) ReserveForDisconnect(ctx context.Context) (context.Contex
 
 // AssureDisconnect assures that the WiFi service has disconnected within timeout.
 func (tf *TestFixture) AssureDisconnect(ctx context.Context, servicePath string, timeout time.Duration) error {
-	req := &network.AssureDisconnectRequest{
+	req := &wifi.AssureDisconnectRequest{
 		ServicePath: servicePath,
 		Timeout:     timeout.Nanoseconds(),
 	}
@@ -824,13 +824,13 @@ func (tf *TestFixture) AssureDisconnect(ctx context.Context, servicePath string,
 }
 
 // QueryService queries shill information of selected service.
-func (tf *TestFixture) QueryService(ctx context.Context) (*network.QueryServiceResponse, error) {
+func (tf *TestFixture) QueryService(ctx context.Context) (*wifi.QueryServiceResponse, error) {
 	selectedSvcResp, err := tf.wifiClient.SelectedService(ctx, &empty.Empty{})
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get selected service")
 	}
 
-	req := &network.QueryServiceRequest{
+	req := &wifi.QueryServiceRequest{
 		Path: selectedSvcResp.ServicePath,
 	}
 	resp, err := tf.wifiClient.QueryService(ctx, req)
@@ -949,7 +949,7 @@ func (tf *TestFixture) ClientIPv4Addrs(ctx context.Context) ([]net.IP, error) {
 		return nil, errors.Wrap(err, "DUT: failed to get the client WiFi interface")
 	}
 
-	netIface := &network.GetIPv4AddrsRequest{
+	netIface := &wifi.GetIPv4AddrsRequest{
 		InterfaceName: iface,
 	}
 	addrs, err := tf.WifiClient().GetIPv4Addrs(ctx, netIface)
@@ -975,7 +975,7 @@ func (tf *TestFixture) ClientHardwareAddr(ctx context.Context) (string, error) {
 		return "", errors.Wrap(err, "DUT: failed to get the client WiFi interface")
 	}
 
-	netIface := &network.GetHardwareAddrRequest{
+	netIface := &wifi.GetHardwareAddrRequest{
 		InterfaceName: iface,
 	}
 	resp, err := tf.WifiClient().GetHardwareAddr(ctx, netIface)
@@ -1031,12 +1031,12 @@ func (tf *TestFixture) Attenuator() *attenuator.Attenuator {
 	return tf.attenuator
 }
 
-// WifiClient returns the gRPC WifiServiceClient of the DUT.
-func (tf *TestFixture) WifiClient() network.WifiServiceClient {
+// WifiClient returns the gRPC ShillServiceClient of the DUT.
+func (tf *TestFixture) WifiClient() wifi.ShillServiceClient {
 	return tf.wifiClient
 }
 
-// DefaultOpenNetworkAPOptions returns the Options for an common 802.11n open network.
+// DefaultOpenNetworkAPOptions returns the Options for an common 802.11n open wifi.
 // The function is useful to allow common logic shared between the default setting
 // and customized setting.
 func (tf *TestFixture) DefaultOpenNetworkAPOptions() []hostapd.Option {
@@ -1047,7 +1047,7 @@ func (tf *TestFixture) DefaultOpenNetworkAPOptions() []hostapd.Option {
 	}
 }
 
-// DefaultOpenNetworkAP configures the router to provide an 802.11n open network.
+// DefaultOpenNetworkAP configures the router to provide an 802.11n open wifi.
 func (tf *TestFixture) DefaultOpenNetworkAP(ctx context.Context) (*APIface, error) {
 	return tf.ConfigureAP(ctx, tf.DefaultOpenNetworkAPOptions(), nil)
 }
@@ -1083,7 +1083,7 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 	}
 
 	// Check subnet.
-	addrs, err := tf.WifiClient().GetIPv4Addrs(ctx, &network.GetIPv4AddrsRequest{InterfaceName: iface})
+	addrs, err := tf.WifiClient().GetIPv4Addrs(ctx, &wifi.GetIPv4AddrsRequest{InterfaceName: iface})
 	if err != nil {
 		return errors.Wrap(err, "failed to get client ipv4 addresses")
 	}
@@ -1139,7 +1139,7 @@ type ShillProperty struct {
 	Property         string
 	ExpectedValues   []interface{}
 	UnexpectedValues []interface{}
-	Method           network.ExpectShillPropertyRequest_CheckMethod
+	Method           wifi.ExpectShillPropertyRequest_CheckMethod
 }
 
 // ExpectShillProperty is a wrapper for the streaming gRPC call ExpectShillProperty.
@@ -1147,9 +1147,9 @@ type ShillProperty struct {
 // a shill service path. It returns a function that waites for the expected property
 // changes and returns the monitor results.
 func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath string, props []*ShillProperty, monitorProps []string) (func() ([]protoutil.ShillPropertyHolder, error), error) {
-	var expectedProps []*network.ExpectShillPropertyRequest_Criterion
+	var expectedProps []*wifi.ExpectShillPropertyRequest_Criterion
 	for _, prop := range props {
-		var anyOfVals []*network.ShillVal
+		var anyOfVals []*wifi.ShillVal
 		for _, shillState := range prop.ExpectedValues {
 			state, err := protoutil.ToShillVal(shillState)
 			if err != nil {
@@ -1158,7 +1158,7 @@ func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath strin
 			anyOfVals = append(anyOfVals, state)
 		}
 
-		var noneOfVals []*network.ShillVal
+		var noneOfVals []*wifi.ShillVal
 		for _, shillState := range prop.UnexpectedValues {
 			state, err := protoutil.ToShillVal(shillState)
 			if err != nil {
@@ -1167,7 +1167,7 @@ func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath strin
 			noneOfVals = append(noneOfVals, state)
 		}
 
-		shillPropReqCriterion := &network.ExpectShillPropertyRequest_Criterion{
+		shillPropReqCriterion := &wifi.ExpectShillPropertyRequest_Criterion{
 			Key:    prop.Property,
 			AnyOf:  anyOfVals,
 			NoneOf: noneOfVals,
@@ -1176,7 +1176,7 @@ func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath strin
 		expectedProps = append(expectedProps, shillPropReqCriterion)
 	}
 
-	req := &network.ExpectShillPropertyRequest{
+	req := &wifi.ExpectShillPropertyRequest{
 		ObjectPath:   objectPath,
 		Props:        expectedProps,
 		MonitorProps: monitorProps,
@@ -1268,7 +1268,7 @@ func (tf *TestFixture) SuspendAssertConnect(ctx context.Context, wakeUpTimeout t
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to get selected service")
 	}
-	resp, err := tf.wifiClient.SuspendAssertConnect(ctx, &network.SuspendAssertConnectRequest{
+	resp, err := tf.wifiClient.SuspendAssertConnect(ctx, &wifi.SuspendAssertConnectRequest{
 		WakeUpTimeout: wakeUpTimeout.Nanoseconds(),
 		ServicePath:   service.ServicePath,
 	})
@@ -1280,7 +1280,7 @@ func (tf *TestFixture) SuspendAssertConnect(ctx context.Context, wakeUpTimeout t
 
 // Suspend suspends the DUT for wakeUpTimeout seconds through gRPC.
 func (tf *TestFixture) Suspend(ctx context.Context, wakeUpTimeout time.Duration) error {
-	if _, err := tf.wifiClient.Suspend(ctx, &network.SuspendRequest{WakeUpTimeout: wakeUpTimeout.Nanoseconds()}); err != nil {
+	if _, err := tf.wifiClient.Suspend(ctx, &wifi.SuspendRequest{WakeUpTimeout: wakeUpTimeout.Nanoseconds()}); err != nil {
 		return errors.Wrap(err, "failed to suspend")
 	}
 	return nil
@@ -1302,14 +1302,14 @@ func (tf *TestFixture) DisableMACRandomize(ctx context.Context) (shortenCtx cont
 		if resp.Enabled {
 			ctxRestore := ctx
 			ctx, cancel := ctxutil.Shorten(ctx, time.Second)
-			_, err := tf.WifiClient().SetMACRandomize(ctx, &network.SetMACRandomizeRequest{Enable: false})
+			_, err := tf.WifiClient().SetMACRandomize(ctx, &wifi.SetMACRandomizeRequest{Enable: false})
 			if err != nil {
 				return ctx, nil, errors.Wrap(err, "failed to disable MAC randomization")
 			}
 			// Restore the setting when exiting.
 			restore := func() error {
 				cancel()
-				if _, err := tf.WifiClient().SetMACRandomize(ctxRestore, &network.SetMACRandomizeRequest{Enable: true}); err != nil {
+				if _, err := tf.WifiClient().SetMACRandomize(ctxRestore, &wifi.SetMACRandomizeRequest{Enable: true}); err != nil {
 					return errors.Wrap(err, "failed to re-enable MAC randomization")
 				}
 				return nil
@@ -1323,7 +1323,7 @@ func (tf *TestFixture) DisableMACRandomize(ctx context.Context) (shortenCtx cont
 
 // SetWifiEnabled persistently enables/disables Wifi via shill.
 func (tf *TestFixture) SetWifiEnabled(ctx context.Context, enabled bool) error {
-	req := &network.SetWifiEnabledRequest{Enabled: enabled}
+	req := &wifi.SetWifiEnabledRequest{Enabled: enabled}
 	_, err := tf.WifiClient().SetWifiEnabled(ctx, req)
 	return err
 }
@@ -1342,14 +1342,14 @@ func (tf *TestFixture) TurnOffBgscan(ctx context.Context) (context.Context, func
 
 	turnOffBgConfig := *bgscanResp.Config
 	turnOffBgConfig.Method = shillconst.DeviceBgscanMethodNone
-	if _, err := tf.wifiClient.SetBgscanConfig(ctx, &network.SetBgscanConfigRequest{Config: &turnOffBgConfig}); err != nil {
+	if _, err := tf.wifiClient.SetBgscanConfig(ctx, &wifi.SetBgscanConfigRequest{Config: &turnOffBgConfig}); err != nil {
 		return ctxForRestoreBgConfig, nil, err
 	}
 
 	return ctx, func() error {
 		cancel()
 		testing.ContextLog(ctxForRestoreBgConfig, "Restore the DUT's background scan config: ", oldBgConfig)
-		_, err := tf.wifiClient.SetBgscanConfig(ctxForRestoreBgConfig, &network.SetBgscanConfigRequest{Config: oldBgConfig})
+		_, err := tf.wifiClient.SetBgscanConfig(ctxForRestoreBgConfig, &wifi.SetBgscanConfigRequest{Config: oldBgConfig})
 		return err
 	}, nil
 }
@@ -1439,7 +1439,7 @@ func (tf *TestFixture) DisablePowersaveMode(ctx context.Context) (shortenCtx con
 // setLoggingConfig configures the logging setting with the specified values (level and tags).
 func (tf *TestFixture) setLoggingConfig(ctx context.Context, level int, tags []string) error {
 	testing.ContextLogf(ctx, "Configuring logging level: %d, tags: %v", level, tags)
-	_, err := tf.wifiClient.SetLoggingConfig(ctx, &network.SetLoggingConfigRequest{DebugLevel: int32(level), DebugTags: tags})
+	_, err := tf.wifiClient.SetLoggingConfig(ctx, &wifi.SetLoggingConfigRequest{DebugLevel: int32(level), DebugTags: tags})
 	return err
 }
 

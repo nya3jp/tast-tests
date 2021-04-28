@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -77,7 +77,7 @@ func ConnectAndCollectPcap(ctx context.Context, tf *wificell.TestFixture, apOps 
 func ScanAndCollectPcap(fullCtx context.Context, tf *wificell.TestFixture, name string, scanCount, ch int) (string, error) {
 	action := func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Request active scans")
-		req := &network.RequestScansRequest{Count: int32(scanCount)}
+		req := &wifi.RequestScansRequest{Count: int32(scanCount)}
 		if _, err := tf.WifiClient().RequestScans(ctx, req); err != nil {
 			return errors.Wrap(err, "failed to trigger active scans")
 		}

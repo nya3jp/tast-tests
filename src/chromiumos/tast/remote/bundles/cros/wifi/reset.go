@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/remote/wificell"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -73,7 +73,7 @@ func Reset(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ping from the DUT: ", err)
 	}
 
-	if _, err := tf.WifiClient().ResetTest(ctx, &network.ResetTestRequest{
+	if _, err := tf.WifiClient().ResetTest(ctx, &wifi.ResetTestRequest{
 		ServicePath: resp.ServicePath,
 		ServerIp:    ap.ServerIP().String(),
 	}); err != nil {

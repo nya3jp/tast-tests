@@ -18,7 +18,7 @@ import (
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/attenuator"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -102,7 +102,7 @@ retryLoop:
 	for scan := 0; scan < roamDiagnosticsScanCount; scan++ {
 		timeoutCtx, cancel := context.WithTimeout(ctx, roamDiagnosticsScansTimeout)
 		defer cancel()
-		req := &network.RequestScansRequest{Count: 1}
+		req := &wifi.RequestScansRequest{Count: 1}
 		if _, err := tf.WifiClient().RequestScans(timeoutCtx, req); err != nil {
 			s.Fatal("Failed to request scan: ", err)
 		}

@@ -4,14 +4,14 @@
 
 syntax = "proto3";
 
-package tast.cros.network;
+package tast.cros.wifi;
 
 import "google/protobuf/empty.proto";
 
-option go_package = "chromiumos/tast/services/cros/network";
+option go_package = "chromiumos/tast/services/cros/wifi";
 
-// WifiService allows remote WiFi setup through shill dbus interface.
-service WifiService {
+// ShillService allows remote WiFi setup through shill dbus interface.
+service ShillService {
   // InitDUT initialize the DUT for WiFi testing.
   rpc InitDUT(InitDUTRequest) returns (google.protobuf.Empty) {}
 

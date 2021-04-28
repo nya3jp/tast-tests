@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package network
+package wifi
 
 import (
 	"bytes"
@@ -29,14 +29,14 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	local_network "chromiumos/tast/local/network"
+	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/network/cmd"
 	network_iface "chromiumos/tast/local/network/iface"
 	local_ping "chromiumos/tast/local/network/ping"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/local/wpasupplicant"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -49,7 +49,7 @@ func reserveForStreamingReturn(ctx context.Context) (context.Context, func()) {
 func init() {
 	testing.AddService(&testing.Service{
 		Register: func(srv *grpc.Server, s *testing.ServiceState) {
-			network.RegisterWifiServiceServer(srv, &WifiService{s: s})
+			wifi.RegisterShillServiceServer(srv, &ShillService{s: s})
 		},
 	})
 }
@@ -57,13 +57,13 @@ func init() {
 // wifiTestProfileName is the profile we create and use for WiFi tests.
 const wifiTestProfileName = "test"
 
-// WifiService implements tast.cros.network.Wifi gRPC service.
-type WifiService struct {
+// ShillService implements tast.cros.wifi.Shill gRPC service.
+type ShillService struct {
 	s *testing.ServiceState
 }
 
 // InitDUT properly initializes the DUT for WiFi tests.
-func (s *WifiService) InitDUT(ctx context.Context, req *network.InitDUTRequest) (*empty.Empty, error) {
+func (s *ShillService) InitDUT(ctx context.Context, req *wifi.InitDUTRequest) (*empty.Empty, error) {
 	if !req.WithUi {
 		// Stop UI to avoid interference from UI (e.g. request scan).
 		if err := upstart.StopJob(ctx, "ui"); err != nil {
@@ -90,7 +90,7 @@ func (s *WifiService) InitDUT(ctx context.Context, req *network.InitDUTRequest) 
 }
 
 // reinitTestState prepare the environment for WiFi testcase.
-func (s *WifiService) reinitTestState(ctx context.Context, m *shill.Manager) error {
+func (s *ShillService) reinitTestState(ctx context.Context, m *shill.Manager) error {
 	// Clean old profiles.
 	if err := s.cleanProfiles(ctx, m); err != nil {
 		return errors.Wrap(err, "cleanProfiles failed")
@@ -116,7 +116,7 @@ func (s *WifiService) reinitTestState(ctx context.Context, m *shill.Manager) err
 }
 
 // ReinitTestState cleans and sets up the environment for a single WiFi testcase.
-func (s *WifiService) ReinitTestState(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+func (s *ShillService) ReinitTestState(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
 	m, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create Manager object")
@@ -145,7 +145,7 @@ func (s *WifiService) ReinitTestState(ctx context.Context, _ *empty.Empty) (*emp
 }
 
 // TearDown reverts the settings made by InitDUT and InitTestState.
-func (s *WifiService) TearDown(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+func (s *ShillService) TearDown(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
 	m, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create Manager object")
@@ -167,7 +167,7 @@ func (s *WifiService) TearDown(ctx context.Context, _ *empty.Empty) (*empty.Empt
 	return &empty.Empty{}, nil
 }
 
-func (s *WifiService) discoverService(ctx context.Context, m *shill.Manager, props map[string]interface{}) (*shill.Service, error) {
+func (s *ShillService) discoverService(ctx context.Context, m *shill.Manager, props map[string]interface{}) (*shill.Service, error) {
 	ctx, st := timing.Start(ctx, "discoverService")
 	defer st.End()
 	testing.ContextLog(ctx, "Discovering a WiFi service with properties: ", props)
@@ -201,7 +201,7 @@ func (s *WifiService) discoverService(ctx context.Context, m *shill.Manager, pro
 
 // connectService connects to a WiFi service and wait until conntected state.
 // The time used for association and configuration is returned when success.
-func (s *WifiService) connectService(ctx context.Context, service *shill.Service) (assocTime, configTime time.Duration, retErr error) {
+func (s *ShillService) connectService(ctx context.Context, service *shill.Service) (assocTime, configTime time.Duration, retErr error) {
 	ctx, st := timing.Start(ctx, "connectService")
 	defer st.End()
 	testing.ContextLog(ctx, "Connecting to the service: ", service)
@@ -257,7 +257,7 @@ func (s *WifiService) connectService(ctx context.Context, service *shill.Service
 // waitForBSSID waits for a BSS with specific SSID and BSSID on the
 // given iface. Returns error if it fails to wait for the BSS before
 // ctx.Done.
-func (s *WifiService) waitForBSSID(ctx context.Context, iface *wpasupplicant.Interface, targetSSID, targetBSSID []byte) error {
+func (s *ShillService) waitForBSSID(ctx context.Context, iface *wpasupplicant.Interface, targetSSID, targetBSSID []byte) error {
 	// Create a watcher for BSSAdded signal.
 	sw, err := iface.DBusObject().CreateWatcher(ctx, wpasupplicant.DBusInterfaceSignalBSSAdded)
 	if err != nil {
@@ -315,8 +315,8 @@ func (s *WifiService) waitForBSSID(ctx context.Context, iface *wpasupplicant.Int
 }
 
 // DiscoverBSSID discovers the specified BSSID by running a scan.
-// This is the implementation of network.Wifi/DiscoverBSSID gRPC.
-func (s *WifiService) DiscoverBSSID(ctx context.Context, request *network.DiscoverBSSIDRequest) (*network.DiscoverBSSIDResponse, error) {
+// This is the implementation of wifi.ShillService/DiscoverBSSID gRPC.
+func (s *ShillService) DiscoverBSSID(ctx context.Context, request *wifi.DiscoverBSSIDRequest) (*wifi.DiscoverBSSIDResponse, error) {
 	supplicant, err := wpasupplicant.NewSupplicant(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to wpa_supplicant")
@@ -362,7 +362,7 @@ func (s *WifiService) DiscoverBSSID(ctx context.Context, request *network.Discov
 				return nil, err
 			}
 			discoveryTime := time.Since(start)
-			return &network.DiscoverBSSIDResponse{
+			return &wifi.DiscoverBSSIDResponse{
 				DiscoveryTime: discoveryTime.Nanoseconds(),
 			}, nil
 		case <-ctx.Done():
@@ -373,8 +373,8 @@ func (s *WifiService) DiscoverBSSID(ctx context.Context, request *network.Discov
 }
 
 // Connect connects to a WiFi service with specific config.
-// This is the implementation of network.Wifi/Connect gRPC.
-func (s *WifiService) Connect(ctx context.Context, request *network.ConnectRequest) (*network.ConnectResponse, error) {
+// This is the implementation of wifi.ShillService/Connect gRPC.
+func (s *ShillService) Connect(ctx context.Context, request *wifi.ConnectRequest) (*wifi.ConnectResponse, error) {
 	ctx, st := timing.Start(ctx, "wifi_service.Connect")
 	defer st.End()
 	testing.ContextLog(ctx, "Attempting to connect with config: ", request)
@@ -426,7 +426,7 @@ func (s *WifiService) Connect(ctx context.Context, request *network.ConnectReque
 		return nil, err
 	}
 
-	return &network.ConnectResponse{
+	return &wifi.ConnectResponse{
 		ServicePath:       string(service.ObjectPath()),
 		DiscoveryTime:     discoveryTime.Nanoseconds(),
 		AssociationTime:   assocTime.Nanoseconds(),
@@ -434,7 +434,7 @@ func (s *WifiService) Connect(ctx context.Context, request *network.ConnectReque
 	}, nil
 }
 
-func (s *WifiService) selectedService(ctx context.Context) (dbus.ObjectPath, error) {
+func (s *ShillService) selectedService(ctx context.Context) (dbus.ObjectPath, error) {
 	ctx, st := timing.Start(ctx, "wifi_service.selectedService")
 	defer st.End()
 
@@ -455,7 +455,7 @@ func (s *WifiService) selectedService(ctx context.Context) (dbus.ObjectPath, err
 }
 
 // SelectedService returns the object path of selected service of WiFi service.
-func (s *WifiService) SelectedService(ctx context.Context, _ *empty.Empty) (*network.SelectedServiceResponse, error) {
+func (s *ShillService) SelectedService(ctx context.Context, _ *empty.Empty) (*wifi.SelectedServiceResponse, error) {
 	servicePath, err := s.selectedService(ctx)
 	if err != nil {
 		return nil, err
@@ -466,14 +466,14 @@ func (s *WifiService) SelectedService(ctx context.Context, _ *empty.Empty) (*net
 		return nil, errors.New("no selected service")
 	}
 
-	return &network.SelectedServiceResponse{
+	return &wifi.SelectedServiceResponse{
 		ServicePath: string(servicePath),
 	}, nil
 }
 
 // Disconnect disconnects from a WiFi service.
-// This is the implementation of network.Wifi/Disconnect gRPC.
-func (s *WifiService) Disconnect(ctx context.Context, request *network.DisconnectRequest) (ret *empty.Empty, retErr error) {
+// This is the implementation of wifi.ShillService/Disconnect gRPC.
+func (s *ShillService) Disconnect(ctx context.Context, request *wifi.DisconnectRequest) (ret *empty.Empty, retErr error) {
 	ctx, st := timing.Start(ctx, "wifi_service.Disconnect")
 	defer st.End()
 
@@ -518,8 +518,8 @@ func (s *WifiService) Disconnect(ctx context.Context, request *network.Disconnec
 
 // AssureDisconnect assures that the WiFi service has disconnected within request.Timeout.
 // It waits for the service state to be idle.
-// This is the implementation of network.Wifi/AssureDisconnect gRPC.
-func (s *WifiService) AssureDisconnect(ctx context.Context, request *network.AssureDisconnectRequest) (*empty.Empty, error) {
+// This is the implementation of wifi.ShillService/AssureDisconnect gRPC.
+func (s *ShillService) AssureDisconnect(ctx context.Context, request *wifi.AssureDisconnectRequest) (*empty.Empty, error) {
 	ctx, st := timing.Start(ctx, "wifi_service.AssureDisconnect")
 	defer st.End()
 
@@ -569,8 +569,8 @@ func uint16sToUint32s(s []uint16) []uint32 {
 }
 
 // QueryService queries shill service information.
-// This is the implementation of network.Wifi/QueryService gRPC.
-func (s *WifiService) QueryService(ctx context.Context, req *network.QueryServiceRequest) (*network.QueryServiceResponse, error) {
+// This is the implementation of wifi.ShillService/QueryService gRPC.
+func (s *ShillService) QueryService(ctx context.Context, req *wifi.QueryServiceRequest) (*wifi.QueryServiceResponse, error) {
 	ctx, st := timing.Start(ctx, "wifi_service.QueryService")
 	defer st.End()
 
@@ -642,7 +642,7 @@ func (s *WifiService) QueryService(ctx context.Context, req *network.QueryServic
 		return nil, err
 	}
 
-	return &network.QueryServiceResponse{
+	return &wifi.QueryServiceResponse{
 		Name:        name,
 		Device:      string(device),
 		Type:        serviceType,
@@ -651,7 +651,7 @@ func (s *WifiService) QueryService(ctx context.Context, req *network.QueryServic
 		Visible:     visible,
 		IsConnected: isConnected,
 		Guid:        guid,
-		Wifi: &network.QueryServiceResponse_Wifi{
+		Wifi: &wifi.QueryServiceResponse_Wifi{
 			Bssid:         bssid,
 			Frequency:     uint32(frequency),
 			FrequencyList: uint16sToUint32s(frequencyList),
@@ -663,7 +663,7 @@ func (s *WifiService) QueryService(ctx context.Context, req *network.QueryServic
 }
 
 // DeleteEntriesForSSID deletes all WiFi profile entries for a given SSID.
-func (s *WifiService) DeleteEntriesForSSID(ctx context.Context, request *network.DeleteEntriesForSSIDRequest) (*empty.Empty, error) {
+func (s *ShillService) DeleteEntriesForSSID(ctx context.Context, request *wifi.DeleteEntriesForSSIDRequest) (*empty.Empty, error) {
 	ctx, st := timing.Start(ctx, "wifi_service.DeleteEntriesForSSID")
 	defer st.End()
 
@@ -683,7 +683,7 @@ func (s *WifiService) DeleteEntriesForSSID(ctx context.Context, request *network
 
 // cleanProfiles pops and removes all active profiles until default profile and
 // then removes the WiFi test profile if still exists.
-func (s *WifiService) cleanProfiles(ctx context.Context, m *shill.Manager) error {
+func (s *ShillService) cleanProfiles(ctx context.Context, m *shill.Manager) error {
 	for {
 		profile, err := m.ActiveProfile(ctx)
 		if err != nil {
@@ -713,7 +713,7 @@ func (s *WifiService) cleanProfiles(ctx context.Context, m *shill.Manager) error
 }
 
 // removeWifiEntries removes all the entries with type=wifi in all profiles.
-func (s *WifiService) removeWifiEntries(ctx context.Context, m *shill.Manager) error {
+func (s *ShillService) removeWifiEntries(ctx context.Context, m *shill.Manager) error {
 	filter := map[string]interface{}{
 		shillconst.ProfileEntryPropertyType: shillconst.TypeWifi,
 	}
@@ -721,7 +721,7 @@ func (s *WifiService) removeWifiEntries(ctx context.Context, m *shill.Manager) e
 }
 
 // removeMatchedEntries traverses all profiles and removes all entries matching the properties in propFilter.
-func (s *WifiService) removeMatchedEntries(ctx context.Context, m *shill.Manager, propFilter map[string]interface{}) error {
+func (s *ShillService) removeMatchedEntries(ctx context.Context, m *shill.Manager, propFilter map[string]interface{}) error {
 	profiles, err := m.Profiles(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get profiles")
@@ -758,7 +758,7 @@ func (s *WifiService) removeMatchedEntries(ctx context.Context, m *shill.Manager
 }
 
 // GetInterface returns the WiFi device interface name (e.g., wlan0).
-func (s *WifiService) GetInterface(ctx context.Context, e *empty.Empty) (*network.GetInterfaceResponse, error) {
+func (s *ShillService) GetInterface(ctx context.Context, e *empty.Empty) (*wifi.GetInterfaceResponse, error) {
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create shill manager proxy")
@@ -767,13 +767,13 @@ func (s *WifiService) GetInterface(ctx context.Context, e *empty.Empty) (*networ
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the WiFi interface")
 	}
-	return &network.GetInterfaceResponse{
+	return &wifi.GetInterfaceResponse{
 		Name: netIf,
 	}, nil
 }
 
 // GetIPv4Addrs returns the IPv4 addresses for the network interface.
-func (s *WifiService) GetIPv4Addrs(ctx context.Context, iface *network.GetIPv4AddrsRequest) (*network.GetIPv4AddrsResponse, error) {
+func (s *ShillService) GetIPv4Addrs(ctx context.Context, iface *wifi.GetIPv4AddrsRequest) (*wifi.GetIPv4AddrsResponse, error) {
 	ifaceObj, err := net.InterfaceByName(iface.InterfaceName)
 	if err != nil {
 		return nil, err
@@ -784,7 +784,7 @@ func (s *WifiService) GetIPv4Addrs(ctx context.Context, iface *network.GetIPv4Ad
 		return nil, err
 	}
 
-	var ret network.GetIPv4AddrsResponse
+	var ret wifi.GetIPv4AddrsResponse
 
 	for _, a := range addrs {
 		if ipnet, ok := a.(*net.IPNet); ok && ipnet.IP.To4() != nil {
@@ -796,18 +796,18 @@ func (s *WifiService) GetIPv4Addrs(ctx context.Context, iface *network.GetIPv4Ad
 }
 
 // GetHardwareAddr returns the HardwareAddr for the network interface.
-func (s *WifiService) GetHardwareAddr(ctx context.Context, iface *network.GetHardwareAddrRequest) (*network.GetHardwareAddrResponse, error) {
+func (s *ShillService) GetHardwareAddr(ctx context.Context, iface *wifi.GetHardwareAddrRequest) (*wifi.GetHardwareAddrResponse, error) {
 	ifaceObj, err := net.InterfaceByName(iface.InterfaceName)
 	if err != nil {
 		return nil, err
 	}
 
-	return &network.GetHardwareAddrResponse{HwAddr: ifaceObj.HardwareAddr.String()}, nil
+	return &wifi.GetHardwareAddrResponse{HwAddr: ifaceObj.HardwareAddr.String()}, nil
 }
 
 // RequestScans requests shill to trigger active scans on WiFi devices,
 // and waits until at least req.Count scans are done.
-func (s *WifiService) RequestScans(ctx context.Context, req *network.RequestScansRequest) (*empty.Empty, error) {
+func (s *ShillService) RequestScans(ctx context.Context, req *wifi.RequestScansRequest) (*empty.Empty, error) {
 	// Create watcher for ScanDone signal.
 	m, err := shill.NewManager(ctx)
 	if err != nil {
@@ -882,8 +882,8 @@ func (s *WifiService) RequestScans(ctx context.Context, req *network.RequestScan
 }
 
 // RequestRoam requests shill to roam to another BSSID and waits until the DUT has roamed.
-// This is the implementation of network.Wifi/RequestRoam gRPC.
-func (s *WifiService) RequestRoam(ctx context.Context, req *network.RequestRoamRequest) (*empty.Empty, error) {
+// This is the implementation of wifi.ShillService/RequestRoam gRPC.
+func (s *ShillService) RequestRoam(ctx context.Context, req *wifi.RequestRoamRequest) (*empty.Empty, error) {
 	m, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, err
@@ -902,8 +902,8 @@ func (s *WifiService) RequestRoam(ctx context.Context, req *network.RequestRoamR
 }
 
 // Reassociate triggers reassociation with the current AP and waits until it has reconnected or the timeout expires.
-// This is the implementation of network.WiFi/Reassociate gRPC.
-func (s *WifiService) Reassociate(ctx context.Context, req *network.ReassociateRequest) (*empty.Empty, error) {
+// This is the implementation of wifi.WiFi/Reassociate gRPC.
+func (s *ShillService) Reassociate(ctx context.Context, req *wifi.ReassociateRequest) (*empty.Empty, error) {
 	supplicant, err := wpasupplicant.NewSupplicant(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to wpa_supplicant")
@@ -972,7 +972,7 @@ func (s *WifiService) Reassociate(ctx context.Context, req *network.ReassociateR
 }
 
 // MACRandomizeSupport tells if MAC randomization is supported for the WiFi device.
-func (s *WifiService) MACRandomizeSupport(ctx context.Context, _ *empty.Empty) (*network.MACRandomizeSupportResponse, error) {
+func (s *ShillService) MACRandomizeSupport(ctx context.Context, _ *empty.Empty) (*wifi.MACRandomizeSupportResponse, error) {
 	_, dev, err := s.wifiDev(ctx)
 	if err != nil {
 		return nil, err
@@ -988,11 +988,11 @@ func (s *WifiService) MACRandomizeSupport(ctx context.Context, _ *empty.Empty) (
 		return nil, errors.Wrapf(err, "failed to get WiFi device boolean prop %q",
 			shillconst.DevicePropertyMACAddrRandomSupported)
 	}
-	return &network.MACRandomizeSupportResponse{Supported: supported}, nil
+	return &wifi.MACRandomizeSupportResponse{Supported: supported}, nil
 }
 
 // GetMACRandomize tells if MAC randomization is enabled for the WiFi device.
-func (s *WifiService) GetMACRandomize(ctx context.Context, _ *empty.Empty) (*network.GetMACRandomizeResponse, error) {
+func (s *ShillService) GetMACRandomize(ctx context.Context, _ *empty.Empty) (*wifi.GetMACRandomizeResponse, error) {
 	_, dev, err := s.wifiDev(ctx)
 	if err != nil {
 		return nil, err
@@ -1009,12 +1009,12 @@ func (s *WifiService) GetMACRandomize(ctx context.Context, _ *empty.Empty) (*net
 			shillconst.DevicePropertyMACAddrRandomEnabled)
 	}
 
-	return &network.GetMACRandomizeResponse{Enabled: enabled}, nil
+	return &wifi.GetMACRandomizeResponse{Enabled: enabled}, nil
 }
 
 // SetMACRandomize sets the MAC randomization setting on the WiFi device.
 // The original setting is returned for ease of restoring.
-func (s *WifiService) SetMACRandomize(ctx context.Context, req *network.SetMACRandomizeRequest) (*network.SetMACRandomizeResponse, error) {
+func (s *ShillService) SetMACRandomize(ctx context.Context, req *wifi.SetMACRandomizeRequest) (*wifi.SetMACRandomizeResponse, error) {
 	_, dev, err := s.wifiDev(ctx)
 	if err != nil {
 		return nil, err
@@ -1049,14 +1049,14 @@ func (s *WifiService) SetMACRandomize(ctx context.Context, req *network.SetMACRa
 		}
 	}
 
-	return &network.SetMACRandomizeResponse{OldSetting: old}, nil
+	return &wifi.SetMACRandomizeResponse{OldSetting: old}, nil
 }
 
 // WaitScanIdle waits for not scanning state. If there's a running scan, it
 // waits for the scan to be done with timeout 10 seconds.
 // This is useful when the test sets some parameters regarding scans and wants
 // to avoid noises due to in-progress scans.
-func (s *WifiService) WaitScanIdle(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+func (s *ShillService) WaitScanIdle(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
 	_, dev, err := s.wifiDev(ctx)
 	if err != nil {
 		return nil, err
@@ -1096,7 +1096,7 @@ func (s *WifiService) WaitScanIdle(ctx context.Context, _ *empty.Empty) (*empty.
 // As in our tests, the SSID might contain non-ASCII characters, use WiFi.HexSSID
 // field for better compatibility.
 // Note: shill has the hex in upper case.
-func (s *WifiService) hexSSID(ssid []byte) string {
+func (s *ShillService) hexSSID(ssid []byte) string {
 	return strings.ToUpper(hex.EncodeToString(ssid))
 }
 
@@ -1118,7 +1118,7 @@ func uint16sEqualUint32s(a []uint16, b []uint32) bool {
 }
 
 // ExpectWifiFrequencies checks if the device discovers the given SSID on the specific frequencies.
-func (s *WifiService) ExpectWifiFrequencies(ctx context.Context, req *network.ExpectWifiFrequenciesRequest) (*empty.Empty, error) {
+func (s *ShillService) ExpectWifiFrequencies(ctx context.Context, req *wifi.ExpectWifiFrequenciesRequest) (*empty.Empty, error) {
 	ctx, st := timing.Start(ctx, "wifi_service.ExpectWifiFrequencies")
 	defer st.End()
 	testing.ContextLog(ctx, "ExpectWifiFrequencies: ", req)
@@ -1170,7 +1170,7 @@ func (s *WifiService) ExpectWifiFrequencies(ctx context.Context, req *network.Ex
 	}
 }
 
-func (s *WifiService) wifiDev(ctx context.Context) (*shill.Manager, *shill.Device, error) {
+func (s *ShillService) wifiDev(ctx context.Context) (*shill.Manager, *shill.Device, error) {
 	m, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to create Manager object")
@@ -1186,7 +1186,7 @@ func (s *WifiService) wifiDev(ctx context.Context) (*shill.Manager, *shill.Devic
 	return m, dev, nil
 }
 
-func (s *WifiService) GetBgscanConfig(ctx context.Context, e *empty.Empty) (*network.GetBgscanConfigResponse, error) {
+func (s *ShillService) GetBgscanConfig(ctx context.Context, e *empty.Empty) (*wifi.GetBgscanConfigResponse, error) {
 	ctx, st := timing.Start(ctx, "wifi_service.GetBgscan")
 	defer st.End()
 
@@ -1211,8 +1211,8 @@ func (s *WifiService) GetBgscanConfig(ctx context.Context, e *empty.Empty) (*net
 	if err != nil {
 		return nil, err
 	}
-	return &network.GetBgscanConfigResponse{
-		Config: &network.BgscanConfig{
+	return &wifi.GetBgscanConfigResponse{
+		Config: &wifi.BgscanConfig{
 			Method:        method,
 			LongInterval:  uint32(interval),
 			ShortInterval: uint32(shortInterval),
@@ -1220,7 +1220,7 @@ func (s *WifiService) GetBgscanConfig(ctx context.Context, e *empty.Empty) (*net
 	}, nil
 }
 
-func (s *WifiService) SetBgscanConfig(ctx context.Context, req *network.SetBgscanConfigRequest) (*empty.Empty, error) {
+func (s *ShillService) SetBgscanConfig(ctx context.Context, req *wifi.SetBgscanConfigRequest) (*empty.Empty, error) {
 	ctx, st := timing.Start(ctx, "wifi_service.SetBgscan")
 	defer st.End()
 
@@ -1253,7 +1253,7 @@ func (s *WifiService) SetBgscanConfig(ctx context.Context, req *network.SetBgsca
 // The reason we place most of the logic here is that, we need to spawn a shill properties watcher before disabling/enabling
 // the WiFi interface, so we won't lose the state change events between the gRPC commands of disabling/enabling interface
 // and checking state.
-func (s *WifiService) DisableEnableTest(ctx context.Context, request *network.DisableEnableTestRequest) (*empty.Empty, error) {
+func (s *ShillService) DisableEnableTest(ctx context.Context, request *wifi.DisableEnableTestRequest) (*empty.Empty, error) {
 	m, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create Manager object")
@@ -1320,8 +1320,8 @@ func (s *WifiService) DisableEnableTest(ctx context.Context, request *network.Di
 
 // ConfigureAndAssertAutoConnect configures the matched shill service and then waits for the IsConnected property becomes true.
 // Note that this function does not attempt to connect; it waits for auto connect instead.
-func (s *WifiService) ConfigureAndAssertAutoConnect(ctx context.Context,
-	request *network.ConfigureAndAssertAutoConnectRequest) (*network.ConfigureAndAssertAutoConnectResponse, error) {
+func (s *ShillService) ConfigureAndAssertAutoConnect(ctx context.Context,
+	request *wifi.ConfigureAndAssertAutoConnectRequest) (*wifi.ConfigureAndAssertAutoConnectResponse, error) {
 	m, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a manager object")
@@ -1358,7 +1358,7 @@ func (s *WifiService) ConfigureAndAssertAutoConnect(ctx context.Context,
 		return nil, err
 	}
 	if isConnected {
-		return &network.ConfigureAndAssertAutoConnectResponse{Path: string(servicePath)}, nil
+		return &wifi.ConfigureAndAssertAutoConnectResponse{Path: string(servicePath)}, nil
 	}
 
 	done := make(chan error, 1)
@@ -1382,16 +1382,16 @@ func (s *WifiService) ConfigureAndAssertAutoConnect(ctx context.Context,
 			if err != nil {
 				return nil, errors.Wrap(err, "failed to wait for IsConnected property becoming true")
 			}
-			return &network.ConfigureAndAssertAutoConnectResponse{Path: string(servicePath)}, nil
+			return &wifi.ConfigureAndAssertAutoConnectResponse{Path: string(servicePath)}, nil
 		case <-time.After(200 * time.Millisecond):
 		}
 	}
 }
 
 // GetCurrentTime returns the current local time in the given format.
-func (s *WifiService) GetCurrentTime(ctx context.Context, _ *empty.Empty) (*network.GetCurrentTimeResponse, error) {
+func (s *ShillService) GetCurrentTime(ctx context.Context, _ *empty.Empty) (*wifi.GetCurrentTimeResponse, error) {
 	now := time.Now()
-	return &network.GetCurrentTimeResponse{NowSecond: now.Unix(), NowNanosecond: int64(now.Nanosecond())}, nil
+	return &wifi.GetCurrentTimeResponse{NowSecond: now.Unix(), NowNanosecond: int64(now.Nanosecond())}, nil
 }
 
 // ExpectShillProperty is a streaming gRPC, takes a shill service path, expects a list of property
@@ -1407,8 +1407,8 @@ func (s *WifiService) GetCurrentTime(ctx context.Context, _ *empty.Empty) (*netw
 // 1. CHECK_ONLY: checks if the criterion is met.
 // 2. ON_CHANGE: waits for the property changes to the expected values.
 // 3. CHECK_WAIT: checks if the criterion is met; if not, waits until the property's value is met.
-// This is the implementation of network.Wifi/ExpectShillProperty gRPC.
-func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyRequest, sender network.WifiService_ExpectShillPropertyServer) error {
+// This is the implementation of wifi.ShillService/ExpectShillProperty gRPC.
+func (s *ShillService) ExpectShillProperty(req *wifi.ExpectShillPropertyRequest, sender wifi.ShillService_ExpectShillPropertyServer) error {
 	ctx := sender.Context()
 
 	service, err := shill.NewService(ctx, dbus.ObjectPath(req.ObjectPath))
@@ -1421,7 +1421,7 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 	}
 	defer pw.Close(ctx)
 
-	if err := sender.Send(&network.ExpectShillPropertyResponse{}); err != nil {
+	if err := sender.Send(&wifi.ExpectShillPropertyResponse{}); err != nil {
 		return errors.Wrap(err, "failed to send a response")
 	}
 
@@ -1461,7 +1461,7 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 		}
 
 		// Check the current value of the property.
-		if p.Method != network.ExpectShillPropertyRequest_ON_CHANGE {
+		if p.Method != wifi.ExpectShillPropertyRequest_ON_CHANGE {
 			props, err := service.GetProperties(ctx)
 			if err != nil {
 				return err
@@ -1481,7 +1481,7 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 				if err != nil {
 					return err
 				}
-				if err := sender.Send(&network.ExpectShillPropertyResponse{Key: p.Key, Val: shillVal}); err != nil {
+				if err := sender.Send(&wifi.ExpectShillPropertyResponse{Key: p.Key, Val: shillVal}); err != nil {
 					return errors.Wrap(err, "failed to send response")
 				}
 
@@ -1490,7 +1490,7 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 			}
 
 			// Return an error if the method is CHECK_ONLY and the property does not meet the criterion.
-			if p.Method == network.ExpectShillPropertyRequest_CHECK_ONLY {
+			if p.Method == wifi.ExpectShillPropertyRequest_CHECK_ONLY {
 				return errors.Errorf("unexpected property [ %q ] value: got %s, want any of %v", p.Key, val, expectedVals)
 			}
 		}
@@ -1524,7 +1524,7 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 			return err
 		}
 
-		if err := sender.Send(&network.ExpectShillPropertyResponse{Key: p.Key, Val: shillVal}); err != nil {
+		if err := sender.Send(&wifi.ExpectShillPropertyResponse{Key: p.Key, Val: shillVal}); err != nil {
 			return errors.Wrap(err, "failed to send response")
 		}
 	}
@@ -1534,7 +1534,7 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 		return err
 	}
 
-	if err := sender.Send(&network.ExpectShillPropertyResponse{Props: rslt, MonitorDone: true}); err != nil {
+	if err := sender.Send(&wifi.ExpectShillPropertyResponse{Props: rslt, MonitorDone: true}); err != nil {
 		return errors.Wrap(err, "failed to send response")
 	}
 
@@ -1542,7 +1542,7 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 }
 
 // expectServiceProperty sets up a properties watcher before calling f, and waits for the given property/value.
-func (*WifiService) expectServiceProperty(ctx context.Context, service *shill.Service, prop string, val interface{}, f func() error) (dbus.Sequence, error) {
+func (*ShillService) expectServiceProperty(ctx context.Context, service *shill.Service, prop string, val interface{}, f func() error) (dbus.Sequence, error) {
 	pw, err := service.CreateWatcher(ctx)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to create a service property watcher")
@@ -1563,8 +1563,8 @@ func (*WifiService) expectServiceProperty(ctx context.Context, service *shill.Se
 }
 
 // ProfileBasicTest is the main body of the ProfileBasic test, which creates, pushes, and pops the profiles and asserts the connection states between those operations.
-// This is the implementation of network.Wifi/ProfileBasicTest gRPC.
-func (s *WifiService) ProfileBasicTest(ctx context.Context, req *network.ProfileBasicTestRequest) (_ *empty.Empty, retErr error) {
+// This is the implementation of wifi.ShillService/ProfileBasicTest gRPC.
+func (s *ShillService) ProfileBasicTest(ctx context.Context, req *wifi.ProfileBasicTestRequest) (_ *empty.Empty, retErr error) {
 	const (
 		profileBottomName = "bottom"
 		profileTopName    = "top"
@@ -1582,7 +1582,7 @@ func (s *WifiService) ProfileBasicTest(ctx context.Context, req *network.Profile
 		defer cancel()
 		return s.expectServiceProperty(ctx, service, shillconst.ServicePropertyIsConnected, true, f)
 	}
-	connectAndPing := func(ctx context.Context, service *shill.Service, ap *network.ProfileBasicTestRequest_Config) error {
+	connectAndPing := func(ctx context.Context, service *shill.Service, ap *wifi.ProfileBasicTestRequest_Config) error {
 		shillProps, err := protoutil.DecodeFromShillValMap(ap.ShillProps)
 		if err != nil {
 			return err
@@ -1762,7 +1762,7 @@ func (s *WifiService) ProfileBasicTest(ctx context.Context, req *network.Profile
 }
 
 // waitForWifiAvailable waits for WiFi to be available in shill.
-func (s *WifiService) waitForWifiAvailable(ctx context.Context, m *shill.Manager) error {
+func (s *ShillService) waitForWifiAvailable(ctx context.Context, m *shill.Manager) error {
 	pw, err := m.CreateWatcher(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create watcher")
@@ -1808,7 +1808,7 @@ func (s *WifiService) waitForWifiAvailable(ctx context.Context, m *shill.Manager
 // GetWifiEnabled checks to see if Wifi is an enabled technology on shill.
 // This call will wait for WiFi to appear in available technologies so we
 // can get correct enabled setting.
-func (s *WifiService) GetWifiEnabled(ctx context.Context, _ *empty.Empty) (*network.GetWifiEnabledResponse, error) {
+func (s *ShillService) GetWifiEnabled(ctx context.Context, _ *empty.Empty) (*wifi.GetWifiEnabledResponse, error) {
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create Manager object")
@@ -1830,14 +1830,14 @@ func (s *WifiService) GetWifiEnabled(ctx context.Context, _ *empty.Empty) (*netw
 
 	for _, t := range technologies {
 		if t == string(shill.TechnologyWifi) {
-			return &network.GetWifiEnabledResponse{Enabled: true}, nil
+			return &wifi.GetWifiEnabledResponse{Enabled: true}, nil
 		}
 	}
-	return &network.GetWifiEnabledResponse{Enabled: false}, nil
+	return &wifi.GetWifiEnabledResponse{Enabled: false}, nil
 }
 
 // SetWifiEnabled persistently enables/disables Wifi via shill.
-func (s *WifiService) SetWifiEnabled(ctx context.Context, request *network.SetWifiEnabledRequest) (*empty.Empty, error) {
+func (s *ShillService) SetWifiEnabled(ctx context.Context, request *wifi.SetWifiEnabledRequest) (*empty.Empty, error) {
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create Manager object")
@@ -1859,7 +1859,7 @@ func (s *WifiService) SetWifiEnabled(ctx context.Context, request *network.SetWi
 }
 
 // SetDHCPProperties sets DHCP properties in shill and returns the original values.
-func (s *WifiService) SetDHCPProperties(ctx context.Context, req *network.SetDHCPPropertiesRequest) (ret *network.SetDHCPPropertiesResponse, retErr error) {
+func (s *ShillService) SetDHCPProperties(ctx context.Context, req *wifi.SetDHCPPropertiesRequest) (ret *wifi.SetDHCPPropertiesResponse, retErr error) {
 	m, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a Manager object")
@@ -1908,8 +1908,8 @@ func (s *WifiService) SetDHCPProperties(ctx context.Context, req *network.SetDHC
 		}
 	}
 
-	return &network.SetDHCPPropertiesResponse{
-		Props: &network.DHCPProperties{
+	return &wifi.SetDHCPPropertiesResponse{
+		Props: &wifi.DHCPProperties{
 			Hostname:    oldHostname,
 			VendorClass: oldVendor,
 		},
@@ -1917,7 +1917,7 @@ func (s *WifiService) SetDHCPProperties(ctx context.Context, req *network.SetDHC
 }
 
 // WaitForBSSID waits for a specific BSSID to be found.
-func (s *WifiService) WaitForBSSID(ctx context.Context, request *network.WaitForBSSIDRequest) (*empty.Empty, error) {
+func (s *ShillService) WaitForBSSID(ctx context.Context, request *wifi.WaitForBSSIDRequest) (*empty.Empty, error) {
 	m, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create shill manager")
@@ -1947,7 +1947,7 @@ func (s *WifiService) WaitForBSSID(ctx context.Context, request *network.WaitFor
 // EAPAuthSkipped is a streaming gRPC, who watches wpa_supplicant's D-Bus signals until the next connection
 // completes, and tells that the EAP authentication is skipped (i.e., PMKSA is cached and used) or not.
 // Note that the method sends an empty response after the signal watcher is initialized.
-func (s *WifiService) EAPAuthSkipped(_ *empty.Empty, sender network.WifiService_EAPAuthSkippedServer) error {
+func (s *ShillService) EAPAuthSkipped(_ *empty.Empty, sender wifi.ShillService_EAPAuthSkippedServer) error {
 	ctx, cancel := reserveForStreamingReturn(sender.Context())
 	defer cancel()
 
@@ -1975,7 +1975,7 @@ func (s *WifiService) EAPAuthSkipped(_ *empty.Empty, sender network.WifiService_
 	defer sw.Close(ctx)
 
 	// Send an empty response to notify that the watcher is ready.
-	if err := sender.Send(&network.EAPAuthSkippedResponse{}); err != nil {
+	if err := sender.Send(&wifi.EAPAuthSkippedResponse{}); err != nil {
 		return errors.Wrap(err, "failed to send a ready signal")
 	}
 
@@ -1997,7 +1997,7 @@ func (s *WifiService) EAPAuthSkipped(_ *empty.Empty, sender network.WifiService_
 			props := s.Body[0].(map[string]dbus.Variant)
 			if val, ok := props["State"]; ok {
 				if state := val.Value().(string); state == wpasupplicant.DBusInterfaceStateCompleted {
-					return sender.Send(&network.EAPAuthSkippedResponse{Skipped: skipped})
+					return sender.Send(&wifi.EAPAuthSkippedResponse{Skipped: skipped})
 				}
 			}
 		default:
@@ -2010,8 +2010,8 @@ func (s *WifiService) EAPAuthSkipped(_ *empty.Empty, sender network.WifiService_
 // DisconnectReason property change, and returns the code to the client.
 // To notify the caller that it is ready, it sends an empty response after
 // the signal watcher is initialized.
-// This is the implementation of network.Wifi/DisconnectReason gRPC.
-func (s *WifiService) DisconnectReason(_ *empty.Empty, sender network.WifiService_DisconnectReasonServer) error {
+// This is the implementation of wifi.ShillService/DisconnectReason gRPC.
+func (s *ShillService) DisconnectReason(_ *empty.Empty, sender wifi.ShillService_DisconnectReasonServer) error {
 	ctx, cancel := reserveForStreamingReturn(sender.Context())
 	defer cancel()
 
@@ -2039,7 +2039,7 @@ func (s *WifiService) DisconnectReason(_ *empty.Empty, sender network.WifiServic
 	defer sw.Close(ctx)
 
 	// Send an empty response to notify that the watcher is ready.
-	if err := sender.Send(&network.DisconnectReasonResponse{}); err != nil {
+	if err := sender.Send(&wifi.DisconnectReasonResponse{}); err != nil {
 		return errors.Wrap(err, "failed to send a ready signal")
 	}
 
@@ -2053,7 +2053,7 @@ func (s *WifiService) DisconnectReason(_ *empty.Empty, sender network.WifiServic
 			props := s.Body[0].(map[string]dbus.Variant)
 			if val, ok := props[wpasupplicant.DBusInterfacePropDisconnectReason]; ok {
 				reason := val.Value().(int32)
-				return sender.Send(&network.DisconnectReasonResponse{Reason: reason})
+				return sender.Send(&wifi.DisconnectReasonResponse{Reason: reason})
 			}
 		case <-ctx.Done():
 			return errors.Wrap(ctx.Err(), "failed to wait for signal")
@@ -2070,7 +2070,7 @@ func suspend(ctx context.Context, wakeUpTimeout time.Duration) error {
 		pauseEthernetHookPath = "/run/autotest_pause_ethernet_hook"
 	)
 
-	unlock, err := local_network.LockCheckNetworkHook(ctx)
+	unlock, err := network.LockCheckNetworkHook(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to lock the check network hook")
 	}
@@ -2121,7 +2121,7 @@ func suspend(ctx context.Context, wakeUpTimeout time.Duration) error {
 }
 
 // SuspendAssertConnect suspends the DUT and waits for connection after resuming.
-func (s *WifiService) SuspendAssertConnect(ctx context.Context, req *network.SuspendAssertConnectRequest) (*network.SuspendAssertConnectResponse, error) {
+func (s *ShillService) SuspendAssertConnect(ctx context.Context, req *wifi.SuspendAssertConnectRequest) (*wifi.SuspendAssertConnectResponse, error) {
 	service, err := shill.NewService(ctx, dbus.ObjectPath(req.ServicePath))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a new shill service")
@@ -2144,11 +2144,11 @@ func (s *WifiService) SuspendAssertConnect(ctx context.Context, req *network.Sus
 		return nil, errors.Wrap(err, "failed to wait for connection")
 	}
 
-	return &network.SuspendAssertConnectResponse{ReconnectTime: time.Since(resumeStartTime).Nanoseconds()}, nil
+	return &wifi.SuspendAssertConnectResponse{ReconnectTime: time.Since(resumeStartTime).Nanoseconds()}, nil
 }
 
 // Suspend suspends the DUT.
-func (s *WifiService) Suspend(ctx context.Context, req *network.SuspendRequest) (*empty.Empty, error) {
+func (s *ShillService) Suspend(ctx context.Context, req *wifi.SuspendRequest) (*empty.Empty, error) {
 	if err := suspend(ctx, time.Duration(req.WakeUpTimeout)); err != nil {
 		return nil, err
 	}
@@ -2156,7 +2156,7 @@ func (s *WifiService) Suspend(ctx context.Context, req *network.SuspendRequest) 
 }
 
 // GetGlobalFTProperty returns the WiFi.GlobalFTEnabled manager property value.
-func (s *WifiService) GetGlobalFTProperty(ctx context.Context, _ *empty.Empty) (*network.GetGlobalFTPropertyResponse, error) {
+func (s *ShillService) GetGlobalFTProperty(ctx context.Context, _ *empty.Empty) (*wifi.GetGlobalFTPropertyResponse, error) {
 	m, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a shill manager")
@@ -2170,11 +2170,11 @@ func (s *WifiService) GetGlobalFTProperty(ctx context.Context, _ *empty.Empty) (
 	if err != nil {
 		return nil, err
 	}
-	return &network.GetGlobalFTPropertyResponse{Enabled: enabled}, nil
+	return &wifi.GetGlobalFTPropertyResponse{Enabled: enabled}, nil
 }
 
 // SetGlobalFTProperty set the WiFi.GlobalFTEnabled manager property value.
-func (s *WifiService) SetGlobalFTProperty(ctx context.Context, req *network.SetGlobalFTPropertyRequest) (*empty.Empty, error) {
+func (s *ShillService) SetGlobalFTProperty(ctx context.Context, req *wifi.SetGlobalFTPropertyRequest) (*empty.Empty, error) {
 	m, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a shill manager")
@@ -2186,7 +2186,7 @@ func (s *WifiService) SetGlobalFTProperty(ctx context.Context, req *network.SetG
 }
 
 // FlushBSS flushes BSS entries over the specified age from wpa_supplicant's cache.
-func (s *WifiService) FlushBSS(ctx context.Context, req *network.FlushBSSRequest) (*empty.Empty, error) {
+func (s *ShillService) FlushBSS(ctx context.Context, req *wifi.FlushBSSRequest) (*empty.Empty, error) {
 	supplicant, err := wpasupplicant.NewSupplicant(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to wpa_supplicant")
@@ -2203,7 +2203,7 @@ func (s *WifiService) FlushBSS(ctx context.Context, req *network.FlushBSSRequest
 }
 
 // ResetTest is the main body of the Reset test, which resets/suspends and verifies the connection for several times.
-func (s *WifiService) ResetTest(ctx context.Context, req *network.ResetTestRequest) (*empty.Empty, error) {
+func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest) (*empty.Empty, error) {
 	const (
 		resetNum           = 15
 		suspendNum         = 5
@@ -2427,7 +2427,7 @@ func (s *WifiService) ResetTest(ctx context.Context, req *network.ResetTestReque
 }
 
 // HealthCheck checks if the DUT has a WiFi device. If not, we may need to reboot the DUT.
-func (s *WifiService) HealthCheck(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+func (s *ShillService) HealthCheck(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create shill manager")
@@ -2441,7 +2441,7 @@ func (s *WifiService) HealthCheck(ctx context.Context, _ *empty.Empty) (*empty.E
 }
 
 // GetLoggingConfig returns the logging configuration the device currently uses.
-func (s *WifiService) GetLoggingConfig(ctx context.Context, e *empty.Empty) (*network.GetLoggingConfigResponse, error) {
+func (s *ShillService) GetLoggingConfig(ctx context.Context, e *empty.Empty) (*wifi.GetLoggingConfigResponse, error) {
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create shill manager proxy")
@@ -2457,14 +2457,14 @@ func (s *WifiService) GetLoggingConfig(ctx context.Context, e *empty.Empty) (*ne
 		return nil, errors.Wrap(err, "failed to get the debug tags")
 	}
 
-	return &network.GetLoggingConfigResponse{
+	return &wifi.GetLoggingConfigResponse{
 		DebugLevel: int32(level),
 		DebugTags:  tags,
 	}, nil
 }
 
 // SetLoggingConfig sets the device logging configuration.
-func (s *WifiService) SetLoggingConfig(ctx context.Context, req *network.SetLoggingConfigRequest) (*empty.Empty, error) {
+func (s *ShillService) SetLoggingConfig(ctx context.Context, req *wifi.SetLoggingConfigRequest) (*empty.Empty, error) {
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create shill manager proxy")

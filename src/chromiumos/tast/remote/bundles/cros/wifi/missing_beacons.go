@@ -10,7 +10,7 @@ import (
 
 	remoteiw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -83,7 +83,7 @@ func MissingBeacons(ctx context.Context, s *testing.State) {
 		// Explicitly delete service entries here because it could have
 		// no active service here so calling tf.CleanDisconnectWifi()
 		// would fail.
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(apSSID)}); err != nil {
+		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &wifi.DeleteEntriesForSSIDRequest{Ssid: []byte(apSSID)}); err != nil {
 			s.Errorf("Failed to remove entries for ssid=%s, err: %v", apSSID, err)
 		}
 	}(ctx)

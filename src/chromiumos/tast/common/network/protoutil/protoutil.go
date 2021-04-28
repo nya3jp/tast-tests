@@ -7,14 +7,14 @@ package protoutil
 
 import (
 	"chromiumos/tast/errors"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 )
 
 // ShillValMap is a type alias of map[string]*network.ShillVal. It can be sent through protobuf.
-type ShillValMap map[string]*network.ShillVal
+type ShillValMap map[string]*wifi.ShillVal
 
 // ShillPropertyChangedSignalList a type alias of []*network.ShillPropertyChangedSignal. It can be sent through protobuf.
-type ShillPropertyChangedSignalList []*network.ShillPropertyChangedSignal
+type ShillPropertyChangedSignalList []*wifi.ShillPropertyChangedSignal
 
 // ShillPropertyHolder holds the parameters of shill "PropertyChanged" signal.
 type ShillPropertyHolder struct {
@@ -43,41 +43,41 @@ func EncodeToShillPropertyChangedSignalList(conf []ShillPropertyHolder) (ShillPr
 		if err != nil {
 			return nil, err
 		}
-		ret = append(ret, &network.ShillPropertyChangedSignal{Prop: prop.Name, Val: shillVal})
+		ret = append(ret, &wifi.ShillPropertyChangedSignal{Prop: prop.Name, Val: shillVal})
 	}
 	return ret, nil
 }
 
 // ToShillVal converts a common golang type to a ShillVal .
-func ToShillVal(i interface{}) (*network.ShillVal, error) {
+func ToShillVal(i interface{}) (*wifi.ShillVal, error) {
 	switch x := i.(type) {
 	case string:
-		return &network.ShillVal{
-			Val: &network.ShillVal_Str{
+		return &wifi.ShillVal{
+			Val: &wifi.ShillVal_Str{
 				Str: x,
 			},
 		}, nil
 	case bool:
-		return &network.ShillVal{
-			Val: &network.ShillVal_Bool{
+		return &wifi.ShillVal{
+			Val: &wifi.ShillVal_Bool{
 				Bool: x,
 			},
 		}, nil
 	case uint32:
-		return &network.ShillVal{
-			Val: &network.ShillVal_Uint32{
+		return &wifi.ShillVal{
+			Val: &wifi.ShillVal_Uint32{
 				Uint32: x,
 			},
 		}, nil
 	case []uint32:
-		return &network.ShillVal{
-			Val: &network.ShillVal_Uint32Array{
-				Uint32Array: &network.Uint32Array{Vals: x},
+		return &wifi.ShillVal{
+			Val: &wifi.ShillVal_Uint32Array{
+				Uint32Array: &wifi.Uint32Array{Vals: x},
 			},
 		}, nil
 	case uint16:
-		return &network.ShillVal{
-			Val: &network.ShillVal_Uint32{
+		return &wifi.ShillVal{
+			Val: &wifi.ShillVal_Uint32{
 				Uint32: uint32(x),
 			},
 		}, nil
@@ -86,15 +86,15 @@ func ToShillVal(i interface{}) (*network.ShillVal, error) {
 		for _, val := range x {
 			temp = append(temp, uint32(val))
 		}
-		return &network.ShillVal{
-			Val: &network.ShillVal_Uint32Array{
-				Uint32Array: &network.Uint32Array{Vals: temp},
+		return &wifi.ShillVal{
+			Val: &wifi.ShillVal_Uint32Array{
+				Uint32Array: &wifi.Uint32Array{Vals: temp},
 			},
 		}, nil
 	case []string:
-		return &network.ShillVal{
-			Val: &network.ShillVal_StrArray{
-				StrArray: &network.StrArray{Vals: x},
+		return &wifi.ShillVal{
+			Val: &wifi.ShillVal_StrArray{
+				StrArray: &wifi.StrArray{Vals: x},
 			},
 		}, nil
 	default:
@@ -129,17 +129,17 @@ func DecodeFromShillValMap(conf ShillValMap) (map[string]interface{}, error) {
 }
 
 // FromShillVal converts a ShillVal to a common golang type.
-func FromShillVal(v *network.ShillVal) (interface{}, error) {
+func FromShillVal(v *wifi.ShillVal) (interface{}, error) {
 	switch x := v.Val.(type) {
-	case *network.ShillVal_Str:
+	case *wifi.ShillVal_Str:
 		return x.Str, nil
-	case *network.ShillVal_Bool:
+	case *wifi.ShillVal_Bool:
 		return x.Bool, nil
-	case *network.ShillVal_Uint32:
+	case *wifi.ShillVal_Uint32:
 		return x.Uint32, nil
-	case *network.ShillVal_Uint32Array:
+	case *wifi.ShillVal_Uint32Array:
 		return x.Uint32Array.Vals, nil
-	case *network.ShillVal_StrArray:
+	case *wifi.ShillVal_StrArray:
 		return x.StrArray.Vals, nil
 	default:
 		return nil, errors.Errorf("unsupported type %T", x)

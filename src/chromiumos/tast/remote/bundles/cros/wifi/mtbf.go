@@ -20,7 +20,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -229,7 +229,7 @@ func MTBF(ctx context.Context, s *testing.State) {
 			disconnFromAp1Props, err := tf.ExpectShillProperty(ctx, ap1ServicePath, []*wificell.ShillProperty{{
 				Property:       shillconst.ServicePropertyState,
 				ExpectedValues: []interface{}{shillconst.ServiceStateIdle},
-				Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+				Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,
 			}}, nil)
 			if err != nil {
 				return errors.Wrap(err, "failed to start shill property watcher for disconnect from AP1")
@@ -269,11 +269,11 @@ func MTBF(ctx context.Context, s *testing.State) {
 			backToAP1Props, err := tf.ExpectShillProperty(ctx, ap1ServicePath, []*wificell.ShillProperty{{
 				Property:       shillconst.ServicePropertyState,
 				ExpectedValues: []interface{}{shillconst.ServiceStateIdle},
-				Method:         network.ExpectShillPropertyRequest_CHECK_ONLY,
+				Method:         wifi.ExpectShillPropertyRequest_CHECK_ONLY,
 			}, {
 				Property:       shillconst.ServicePropertyIsConnected,
 				ExpectedValues: []interface{}{true},
-				Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+				Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,
 			}}, nil)
 			if err != nil {
 				return errors.Wrap(err, "failed to start shill property watcher for reconnect to AP1")

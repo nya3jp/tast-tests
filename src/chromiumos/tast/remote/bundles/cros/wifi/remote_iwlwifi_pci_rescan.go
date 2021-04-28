@@ -10,7 +10,6 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/rpc"
-	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
@@ -42,7 +41,7 @@ func RemoteIwlwifiPCIRescan(ctx context.Context, s *testing.State) {
 		s.Error("Test failed with reason: ", err)
 	}
 
-	wifiClient := network.NewWifiServiceClient(r.Conn)
+	wifiClient := wifi.NewShillServiceClient(r.Conn)
 	// Cleanup. Check if we ruined anything and reboot if needed.
 	if _, err := wifiClient.HealthCheck(ctx, &empty.Empty{}); err != nil {
 		s.Log("Reboot DUT as the healthy check failed: ", err)

@@ -16,7 +16,7 @@ import (
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -128,7 +128,7 @@ func PTK(ctx context.Context, s *testing.State) {
 	for i := range props {
 		props[i] = &wificell.ShillProperty{
 			Property:       shillconst.ServicePropertyWiFiRekeyInProgress,
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+			Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,
 			ExpectedValues: []interface{}{i%2 == 0},
 		}
 	}

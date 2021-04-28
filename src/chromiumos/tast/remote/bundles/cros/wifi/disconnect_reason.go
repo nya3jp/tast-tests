@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -180,7 +180,7 @@ func DisconnectReason(ctx context.Context, s *testing.State) {
 			// Explicitly delete service entries here because it could have
 			// no active service here so calling tf.CleanDisconnectWifi()
 			// would fail.
-			if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap1.Config().SSID)}); err != nil {
+			if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &wifi.DeleteEntriesForSSIDRequest{Ssid: []byte(ap1.Config().SSID)}); err != nil {
 				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap1.Config().SSID, err)
 			}
 		}

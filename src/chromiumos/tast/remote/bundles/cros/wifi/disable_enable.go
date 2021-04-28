@@ -8,7 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/remote/wificell"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -72,7 +72,7 @@ func DisableEnable(ctx context.Context, s *testing.State) {
 	}
 
 	// Start disabling and enabling WiFi interface.
-	if _, err := tf.WifiClient().DisableEnableTest(ctx, &network.DisableEnableTestRequest{
+	if _, err := tf.WifiClient().DisableEnableTest(ctx, &wifi.DisableEnableTestRequest{
 		InterfaceName: iface,
 		ServicePath:   connRes.ServicePath,
 	}); err != nil {

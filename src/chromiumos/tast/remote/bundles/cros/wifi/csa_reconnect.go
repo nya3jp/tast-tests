@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -90,7 +90,7 @@ func CSAReconnect(ctx context.Context, s *testing.State) {
 		&wificell.ShillProperty{
 			Property:       shillconst.ServicePropertyWiFiFrequency,
 			ExpectedValues: []interface{}{uint32(alterFreq)},
-			Method:         network.ExpectShillPropertyRequest_CHECK_WAIT,
+			Method:         wifi.ExpectShillPropertyRequest_CHECK_WAIT,
 		},
 	}
 
