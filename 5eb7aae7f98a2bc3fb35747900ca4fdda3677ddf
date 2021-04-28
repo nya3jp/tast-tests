@@ -33,6 +33,24 @@
       "message": "Would LGTM but it looks like you need to exclude the kukui-kernelnext boards somehow...",
       "revId": "5eb7aae7f98a2bc3fb35747900ca4fdda3677ddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a006868_4e8d6f33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-28T22:53:38Z",
+      "side": 1,
+      "message": "Damn. It is unfortunate. \nI removed this experimental board from the list.\nPlease let me know if you are still happy with this promotion.",
+      "parentUuid": "6b736565_6ae9006a",
+      "revId": "5eb7aae7f98a2bc3fb35747900ca4fdda3677ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
