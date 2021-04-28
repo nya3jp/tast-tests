@@ -28,8 +28,7 @@ func init() {
 			"janagrill@google.com", // Test author
 			"chromeos-commercial-stability@google.com",
 		},
-		// TODO(crbug.com/1191935) Re-enable the test after it is fixed.
-		// Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromePolicyLoggedIn",
 	})
@@ -99,7 +98,7 @@ func QuickUnlockModeWhitelist(ctx context.Context, s *testing.State) {
 			}
 
 			// Open the Lockscreen page where we can set a PIN.
-			conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/lockScreen")
+			conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/osPrivacy/lockScreen")
 			if err != nil {
 				s.Fatal("Failed to connect to the settings page: ", err)
 			}
