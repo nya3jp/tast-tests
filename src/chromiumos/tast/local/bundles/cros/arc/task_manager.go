@@ -44,7 +44,7 @@ func TaskManager(ctx context.Context, s *testing.State) {
 		cls = ".MainActivity"
 		// An estimate task count in the task manager list.
 		//TODO(b/185606104): Identify end of task manager list.
-		maxScroll = 50
+		maxScroll = 100
 	)
 
 	a := s.FixtValue().(*arc.PreData).ARC
