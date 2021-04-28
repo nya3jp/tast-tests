@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/common/wifi/security/wpaeap"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -161,7 +161,7 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 		&wificell.ShillProperty{
 			Property:       shillconst.ServicePropertyWiFiBSSID,
 			ExpectedValues: []interface{}{ap2BSSID},
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+			Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,
 		},
 	}
 

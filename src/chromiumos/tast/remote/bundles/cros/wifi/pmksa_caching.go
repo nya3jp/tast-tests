@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/common/wifi/security/wpaeap"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -81,7 +81,7 @@ func PMKSACaching(ctx context.Context, s *testing.State) {
 		return []*wificell.ShillProperty{{
 			Property:       shillconst.ServicePropertyWiFiBSSID,
 			ExpectedValues: []interface{}{bssid},
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+			Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,
 		}}
 	}
 

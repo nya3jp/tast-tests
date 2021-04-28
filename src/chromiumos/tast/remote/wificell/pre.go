@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/rpc"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -112,7 +112,7 @@ func (p *testFixturePreImpl) dutHealthCheck(ctx context.Context, s *testing.PreS
 	}
 	defer rpcClient.Close(ctx)
 
-	wifiClient := network.NewWifiServiceClient(rpcClient.Conn)
+	wifiClient := wifi.NewShillServiceClient(rpcClient.Conn)
 	if _, err := wifiClient.HealthCheck(ctx, &empty.Empty{}); err != nil {
 		return errors.Wrap(err, "health check failed")
 	}

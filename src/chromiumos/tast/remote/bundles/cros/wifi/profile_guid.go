@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -51,7 +51,7 @@ func ProfileGUID(ctx context.Context, s *testing.State) {
 
 	ssid := hostapd.RandomSSID("TAST_TEST_")
 	defer func(ctx context.Context) {
-		req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ssid)}
+		req := &wifi.DeleteEntriesForSSIDRequest{Ssid: []byte(ssid)}
 		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
 			s.Errorf("Failed to remove entries for ssid=%s: %v", ssid, err)
 		}
@@ -146,7 +146,7 @@ func ProfileGUID(ctx context.Context, s *testing.State) {
 		}
 
 		// Make sure that the GUID is missing after deleting the entries.
-		req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ssid)}
+		req := &wifi.DeleteEntriesForSSIDRequest{Ssid: []byte(ssid)}
 		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
 			s.Fatalf("Failed to remove entries for ssid=%s: %v", ssid, err)
 		}
@@ -157,7 +157,7 @@ func ProfileGUID(ctx context.Context, s *testing.State) {
 }
 
 func assertGUID(ctx context.Context, tf *wificell.TestFixture, servicePath, expectedGUID string) error {
-	res, err := tf.WifiClient().QueryService(ctx, &network.QueryServiceRequest{Path: servicePath})
+	res, err := tf.WifiClient().QueryService(ctx, &wifi.QueryServiceRequest{Path: servicePath})
 	if err != nil {
 		return errors.Wrap(err, "failed to query service info")
 	}
@@ -173,7 +173,7 @@ func configureAndAssertAutoConnect(ctx context.Context, tf *wificell.TestFixture
 		return "", errors.Wrap(err, "failed to encode shill properties")
 	}
 	service, err := tf.WifiClient().ConfigureAndAssertAutoConnect(ctx,
-		&network.ConfigureAndAssertAutoConnectRequest{Props: propsEnc},
+		&wifi.ConfigureAndAssertAutoConnectRequest{Props: propsEnc},
 	)
 	if err != nil {
 		return "", err

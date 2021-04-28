@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -50,9 +51,9 @@ func BluetoothXorWifi(ctx context.Context, s *testing.State) {
 		if _, err := btClient.SetBluetoothPoweredFast(ctx, &network.SetBluetoothPoweredFastRequest{Powered: true}); err != nil {
 			s.Error("Could not enable Bluetooth: ", err)
 		}
-		wifiClient := network.NewWifiServiceClient(r.Conn)
+		wifiClient := wifi.NewShillServiceClient(r.Conn)
 		// Enable WiFi.
-		if _, err := wifiClient.SetWifiEnabled(ctx, &network.SetWifiEnabledRequest{Enabled: true}); err != nil {
+		if _, err := wifiClient.SetWifiEnabled(ctx, &wifi.SetWifiEnabledRequest{Enabled: true}); err != nil {
 			s.Error("Could not enable WiFi: ", err)
 		}
 	}(ctx)
@@ -93,7 +94,7 @@ func BluetoothXorWifi(ctx context.Context, s *testing.State) {
 
 	// Validate phys can function without the other on multiple channels
 	channels := [4]int{36, 149, 1, 11}
-	wifiClient := network.NewWifiServiceClient(r.Conn)
+	wifiClient := wifi.NewShillServiceClient(r.Conn)
 	btClient := network.NewBluetoothServiceClient(r.Conn)
 	for _, ch := range channels {
 		if err := togglePhys(ctx, ch, btClient, tf, wifiClient, true); err != nil {
@@ -105,7 +106,7 @@ func BluetoothXorWifi(ctx context.Context, s *testing.State) {
 	}
 }
 
-func togglePhys(ctx context.Context, channel int, btClient network.BluetoothServiceClient, tf *wificell.TestFixture, wifiClient network.WifiServiceClient, enableWifiFirst bool) error {
+func togglePhys(ctx context.Context, channel int, btClient network.BluetoothServiceClient, tf *wificell.TestFixture, wifiClient wifi.ShillServiceClient, enableWifiFirst bool) error {
 	// Disable and Assert Wifi is down
 	if err := setAssertWifi(ctx, tf, wifiClient, []int{}, false); err != nil {
 		return err
@@ -156,10 +157,10 @@ func setAssertBluetooth(ctx context.Context, btClient network.BluetoothServiceCl
 	return nil
 }
 
-func setAssertWifi(ctx context.Context, tf *wificell.TestFixture, wifiClient network.WifiServiceClient, channels []int, enabled bool) error {
+func setAssertWifi(ctx context.Context, tf *wificell.TestFixture, wifiClient wifi.ShillServiceClient, channels []int, enabled bool) error {
 	if enabled {
 		// Enable WiFi.
-		if _, err := wifiClient.SetWifiEnabled(ctx, &network.SetWifiEnabledRequest{Enabled: true}); err != nil {
+		if _, err := wifiClient.SetWifiEnabled(ctx, &wifi.SetWifiEnabledRequest{Enabled: true}); err != nil {
 			return errors.Wrap(err, "could not enable WiFi")
 		}
 		// Assert WiFi is functional on channel.
@@ -171,7 +172,7 @@ func setAssertWifi(ctx context.Context, tf *wificell.TestFixture, wifiClient net
 		}
 	} else {
 		// Disable WiFi.
-		if _, err := wifiClient.SetWifiEnabled(ctx, &network.SetWifiEnabledRequest{Enabled: false}); err != nil {
+		if _, err := wifiClient.SetWifiEnabled(ctx, &wifi.SetWifiEnabledRequest{Enabled: false}); err != nil {
 			return errors.Wrap(err, "could not disable WiFi")
 		}
 		// Assert WiFi is down.

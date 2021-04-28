@@ -23,7 +23,7 @@ import (
 	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -292,19 +292,19 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		props := []*wificell.ShillProperty{{
 			Property:       shillconst.ServicePropertyWiFiRoamState,
 			ExpectedValues: []interface{}{shillconst.RoamStateConfiguration},
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+			Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,
 		}, {
 			Property:       shillconst.ServicePropertyWiFiRoamState,
 			ExpectedValues: []interface{}{shillconst.RoamStateReady},
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+			Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,
 		}, {
 			Property:       shillconst.ServicePropertyWiFiRoamState,
 			ExpectedValues: []interface{}{shillconst.RoamStateIdle},
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+			Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,
 		}, {
 			Property:       shillconst.ServicePropertyWiFiBSSID,
 			ExpectedValues: []interface{}{mac1.String()},
-			Method:         network.ExpectShillPropertyRequest_CHECK_ONLY,
+			Method:         wifi.ExpectShillPropertyRequest_CHECK_ONLY,
 		}}
 		waitCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 		defer cancel()
@@ -404,7 +404,7 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the global FT property: ", err)
 	}
 	defer func(ctx context.Context) {
-		if _, err := tf.WifiClient().SetGlobalFTProperty(ctx, &network.SetGlobalFTPropertyRequest{Enabled: ftResp.Enabled}); err != nil {
+		if _, err := tf.WifiClient().SetGlobalFTProperty(ctx, &wifi.SetGlobalFTPropertyRequest{Enabled: ftResp.Enabled}); err != nil {
 			s.Errorf("Failed to set global FT property back to %v: %v", ftResp.Enabled, err)
 		}
 	}(ctx)
@@ -413,13 +413,13 @@ func RoamFT(ctx context.Context, s *testing.State) {
 
 	param := s.Param().(roamFTparam)
 	// Turn on the global FT and test once.
-	if _, err := tf.WifiClient().SetGlobalFTProperty(ctx, &network.SetGlobalFTPropertyRequest{Enabled: true}); err != nil {
+	if _, err := tf.WifiClient().SetGlobalFTProperty(ctx, &wifi.SetGlobalFTPropertyRequest{Enabled: true}); err != nil {
 		s.Fatal("Failed to turn on the global FT property: ", err)
 	}
 	// Expect failure if we are running pure FT test and the DUT is not supporting SME.
 	runOnce(ctx, param.secConfFac, !param.mixed && !hasFTSupport(ctx))
 	// Run the test without global FT. It should pass iff we configured the AP in mixed mode.
-	if _, err := tf.WifiClient().SetGlobalFTProperty(ctx, &network.SetGlobalFTPropertyRequest{Enabled: false}); err != nil {
+	if _, err := tf.WifiClient().SetGlobalFTProperty(ctx, &wifi.SetGlobalFTPropertyRequest{Enabled: false}); err != nil {
 		s.Fatal("Failed to turn off the global FT property: ", err)
 	}
 	runOnce(ctx, param.secConfFac, !param.mixed)

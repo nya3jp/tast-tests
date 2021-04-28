@@ -9,7 +9,7 @@ import (
 	"testing"
 
 	"chromiumos/tast/common/shillconst"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 )
 
 func TestShillValMapConvert(t *testing.T) {
@@ -28,11 +28,11 @@ func TestShillValMapConvert(t *testing.T) {
 				"[]uint32": []uint32{100, 200, 300},
 			},
 			shillValMap: ShillValMap{
-				"bool":     &network.ShillVal{Val: &network.ShillVal_Bool{Bool: true}},
-				"string":   &network.ShillVal{Val: &network.ShillVal_Str{Str: "abc"}},
-				"[]string": &network.ShillVal{Val: &network.ShillVal_StrArray{StrArray: &network.StrArray{Vals: []string{"abc", "123"}}}},
-				"uint32":   &network.ShillVal{Val: &network.ShillVal_Uint32{Uint32: uint32(100)}},
-				"[]uint32": &network.ShillVal{Val: &network.ShillVal_Uint32Array{Uint32Array: &network.Uint32Array{Vals: []uint32{100, 200, 300}}}},
+				"bool":     &wifi.ShillVal{Val: &wifi.ShillVal_Bool{Bool: true}},
+				"string":   &wifi.ShillVal{Val: &wifi.ShillVal_Str{Str: "abc"}},
+				"[]string": &wifi.ShillVal{Val: &wifi.ShillVal_StrArray{StrArray: &wifi.StrArray{Vals: []string{"abc", "123"}}}},
+				"uint32":   &wifi.ShillVal{Val: &wifi.ShillVal_Uint32{Uint32: uint32(100)}},
+				"[]uint32": &wifi.ShillVal{Val: &wifi.ShillVal_Uint32Array{Uint32Array: &wifi.Uint32Array{Vals: []uint32{100, 200, 300}}}},
 			},
 			shouldFail: false,
 		},
@@ -114,8 +114,8 @@ func TestShillPropertyChangedSignalListConvert(t *testing.T) {
 				},
 			},
 			shillPropertyChangedSignalList: ShillPropertyChangedSignalList{
-				&network.ShillPropertyChangedSignal{Prop: shillconst.ServicePropertyIsConnected, Val: &network.ShillVal{Val: &network.ShillVal_Bool{Bool: true}}},
-				&network.ShillPropertyChangedSignal{Prop: shillconst.ServicePropertyState, Val: &network.ShillVal{Val: &network.ShillVal_Str{Str: "online"}}},
+				&wifi.ShillPropertyChangedSignal{Prop: shillconst.ServicePropertyIsConnected, Val: &wifi.ShillVal{Val: &wifi.ShillVal_Bool{Bool: true}}},
+				&wifi.ShillPropertyChangedSignal{Prop: shillconst.ServicePropertyState, Val: &wifi.ShillVal{Val: &wifi.ShillVal_Str{Str: "online"}}},
 			},
 			shouldFail: false,
 		},

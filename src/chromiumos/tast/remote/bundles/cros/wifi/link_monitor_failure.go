@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -65,7 +65,7 @@ func LinkMonitorFailure(ctx context.Context, s *testing.State) {
 		if err := tf.DisconnectWifi(ctx); err != nil {
 			s.Error("Failed to disconnect WiFi: ", err)
 		}
-		req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
+		req := &wifi.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
 		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
 			s.Errorf("Failed to remove entries for ssid=%s: %v", ap.Config().SSID, err)
 		}
