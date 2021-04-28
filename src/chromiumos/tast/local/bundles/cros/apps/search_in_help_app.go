@@ -30,7 +30,7 @@ func init() {
 			"callistus@chromium.org", // test author.
 			"showoff-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
@@ -39,6 +39,7 @@ func init() {
 			}, {
 				Name:              "unstable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
