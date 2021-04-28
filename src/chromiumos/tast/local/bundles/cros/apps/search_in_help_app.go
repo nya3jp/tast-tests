@@ -30,15 +30,16 @@ func init() {
 			"callistus@chromium.org", // test author.
 			"showoff-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
 				Name:              "stable",
-				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels, hwdep.SkipOnModel("kukui")),
 			}, {
 				Name:              "unstable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
