@@ -33,6 +33,23 @@
       "message": "Hi Renuga,\n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "2e6bbe974337cb0c0ffa69a33f64f0f90dee7d8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0436e3f_3dff1aea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-04-28T11:14:06Z",
+      "side": 1,
+      "message": "I will be OOO until May 6. Feel free to re-assign to tast-owners if needed.",
+      "revId": "2e6bbe974337cb0c0ffa69a33f64f0f90dee7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
