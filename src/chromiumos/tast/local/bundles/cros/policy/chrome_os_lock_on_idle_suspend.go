@@ -27,9 +27,8 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		// TODO(crbug.com/1156041) Re-enable the test after it is fixed.
-		// Attr:         []string{"group:mainline", "informational"},
-		Fixture: "chromePolicyLoggedIn",
+		Attr:         []string{"group:mainline", "informational"},
+		Fixture:      "chromePolicyLoggedIn",
 	})
 }
 
@@ -90,7 +89,7 @@ func ChromeOsLockOnIdleSuspend(ctx context.Context, s *testing.State) {
 			}
 
 			// Open the Security and sign-in page where the affected toggle button can be found.
-			conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/lockScreen")
+			conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/osPrivacy/lockScreen")
 			if err != nil {
 				s.Fatal("Failed to connect to the settings page: ", err)
 			}
