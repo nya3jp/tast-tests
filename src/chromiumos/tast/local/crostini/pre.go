@@ -400,7 +400,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 	// Read the -keepState variable always, to force an error if tests don't
 	// have it defined.
-	useLocalImage := keepState(s) && vm.TerminaImageExists()
+	useLocalImage := keepState(s) && terminaDLCAvailable()
 
 	if p.cont != nil {
 		if err := BasicCommandWorks(ctx, p.cont); err != nil {
@@ -525,6 +525,12 @@ func keepState(s *testing.PreState) bool {
 		return b
 	}
 	return false
+}
+
+// terminaDLCAvailable returns true if the DLC package can be read.
+func terminaDLCAvailable() bool {
+	_, err := os.Stat("/run/imageloader/termina-dlc/package/root/vm_rootfs.img")
+	return err == nil
 }
 
 // Connect connects the precondition to a running VM/container.
