@@ -225,6 +225,6 @@ func (h *APIface) StartChannelSwitch(ctx context.Context, count, channel int, op
 }
 
 // SendBSSTMRequest sends a BSS Transition Management Request to the specified client.
-func (h *APIface) SendBSSTMRequest(ctx context.Context, clientMAC string, neighbors ...string) error {
-	return h.hostapd.SendBSSTMRequest(ctx, clientMAC, neighbors)
+func (h *APIface) SendBSSTMRequest(ctx context.Context, clientMAC string, params hostapd.BSSTMReqParams) error {
+	return h.hostapd.SendBSSTMRequest(ctx, clientMAC, params)
 }
