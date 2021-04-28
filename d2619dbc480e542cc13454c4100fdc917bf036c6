@@ -33,6 +33,24 @@
       "message": "Before entering into the details, I have a question:\n\n- Is this tool run offline? (i.e. run locally during the development to generate data)? Or, is it expected to run on DUT?\n\nIf the former\n- could you avoid put under data, because it will be uploaded to DUT unnecessarily.\nIf the latter\n- could you make usual go function(s) under some subpackage of cros/firmware?\n\nIn either case:\n- Could you get rid of shell script (i.e. port to golang)? I know it is the autotest way, but shell script is not statically typed and less error prone. We do not want to follow autotest in that characteristic. This script looks enough long and complicate.",
       "revId": "d2619dbc480e542cc13454c4100fdc917bf036c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceb7535d_e309f389",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/data/gen_test_images.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-28T22:58:56Z",
+      "side": 1,
+      "message": "The tool is run on the on the host. Unfortunately, it\u0027s not data we can easily precompute, because it changes whenever the firmware changes.\n\nI would like to get rid of the shell script, but porting immediately porting it to golang is risky, since it\u0027s unfortunately complicated. I would like to use it as-is first so that I can make sure the test is working correctly and then port the script over in a second pass. I can add a TODO for that so that it\u0027s not lost.",
+      "parentUuid": "bfa53d04_af35d02d",
+      "revId": "d2619dbc480e542cc13454c4100fdc917bf036c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
