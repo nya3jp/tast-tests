@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3f88e5e_40175159",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_language.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-28T10:31:23Z",
+      "side": 1,
+      "message": "these are automatically formated by lint tool. So I think it should be good.",
+      "parentUuid": "01d66de2_65a2ab4b",
+      "revId": "6e874c0348a64a80bd736a632909067b6dc33ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c968f28_6e4a210b",
@@ -66,6 +84,24 @@
       "writtenOn": "2021-04-27T23:28:46Z",
       "side": 1,
       "message": "this doesn\u0027t seem to be the right error message - wouldn\u0027t this mean that the language was wrong, not that Gallery failed to launch?",
+      "revId": "6e874c0348a64a80bd736a632909067b6dc33ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb370204_0f66852f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_language.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-28T10:31:23Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "7c968f28_6e4a210b",
       "revId": "6e874c0348a64a80bd736a632909067b6dc33ffb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
