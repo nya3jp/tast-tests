@@ -41,7 +41,6 @@ func init() {
 				consent: crash.RealConsent,
 			},
 			ExtraSoftwareDeps: []string{"breakpad", "metrics_consent"},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "breakpad_mock_consent",
 			Val: chromeCrashLoopParams{
