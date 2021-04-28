@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a3d62af_ac0a14eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-04-28T21:18:23Z",
+      "side": 1,
+      "message": "I don\u0027t think it is the right approach. I think there are other ui library functions would make it more efficient. Please check.",
+      "revId": "9bfb226a15b5ea404d58cbaf40e7809f8f8302d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb4e3dc4_6a39de76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-04-28T21:18:23Z",
+      "side": 1,
+      "message": "Do we have to hard code the number of scrolls and then do a sequential search? It does not generalize to all situation and looks very inefficient. Will it works if we use Descendants in ui/automation.go (or something similar) to find the object and bring it to focus? \n\nIf we have to use scroll, you still can use Descendants to find the number of entries, right?",
+      "revId": "9bfb226a15b5ea404d58cbaf40e7809f8f8302d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
