@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf7eca2a_b21dfbf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-28T00:13:08Z",
+      "side": 1,
+      "message": "LGTM % nit, apologies for the late reply!",
+      "revId": "df6cddf06af7b0d193fd49c0be54fd068de64fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba1ed31d_7ab7ffd5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_reboot_to_ro.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-28T00:13:08Z",
+      "side": 1,
+      "message": "nit: Any reason you\u0027re not using s.Log? testing.ContextLog is usually used for helper packages to log when they don\u0027t have a testing.State available",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "df6cddf06af7b0d193fd49c0be54fd068de64fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
