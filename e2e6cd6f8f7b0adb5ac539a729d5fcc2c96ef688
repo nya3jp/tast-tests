@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "502196db_f4f93194",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-28T07:27:28Z",
+      "side": 1,
+      "message": "+2 for Tast Review % comment, but a Test Owner review is still required -- adding @mwarton who is more familiar with crostini tests.",
+      "revId": "e2e6cd6f8f7b0adb5ac539a729d5fcc2c96ef688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bcc7c1d_6efdded3",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-28T07:27:28Z",
+      "side": 1,
+      "message": "this approach ignores other OS errors (other than os.IsNotExist(err)). You could make this return a bool and an error, something like:\n\n```\nfunc terminaDLCExists() (bool, error) {\n    _, err :\u003d os.Stat(\"/run/imageloader/termina-dlc/package/root/vm_rootfs.img\")\n    if err !\u003d nil {\n        if os.IsNotExist(err) {\n             return false, nil\n        } else {\n             return false, err\n        }\n    }\n    return true, nil\n}\n```\n\nSee: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 18
+      },
+      "revId": "e2e6cd6f8f7b0adb5ac539a729d5fcc2c96ef688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
