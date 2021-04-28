@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdb7be68_6efaa60a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_language.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1215107
+      },
+      "writtenOn": "2021-04-28T22:55:18Z",
+      "side": 1,
+      "message": "oh interesting! it seemed like the other tast tests in this folder used spaces 😕 (looking at code search)",
+      "parentUuid": "e3f88e5e_40175159",
+      "revId": "6e874c0348a64a80bd736a632909067b6dc33ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c968f28_6e4a210b",
