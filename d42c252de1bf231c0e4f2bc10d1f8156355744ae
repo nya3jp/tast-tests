@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc3e024d_8b314dca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-28T08:22:02Z",
+      "side": 1,
+      "message": "This still seems like the wrong way to fix the encountered issues and hiding other problems. This is not how Chrome OS devices normally operate.\n\nUsers should still be able log in even if they are not the owner of the device. That seems like the issue that needs to be fixed. Clearing the Welcome screen should also be added to tast as it will impact more tests.\n\nnya@:\n Are you aware of any issues with GAIA login with other existing users?\n Should all dialogs already be cleared by tast?\n Do we want to merge this change until the other issues are fixed in tast?\n\nxiliu@:\n  Are the tests designed to only be run manually?\n  Do you actually need the users to be device owners for the tests (for the extra permissions)? I would expect meet to work in other accounts.\n  From the test I see you just do a GAIA login. Will this change in the future? \nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/conference_service.go;l\u003d110?q\u003dRunGoogleMeetScenario",
+      "parentUuid": "608e9e53_9e41c8db",
+      "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9fa62b4_ee688dcf",
         "filename": "src/chromiumos/tast/local/chrome/option.go",
         "patchSetId": 1
