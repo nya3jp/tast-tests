@@ -140,6 +140,19 @@ func (d *Debugd) CupsAddManuallyConfiguredPrinter(ctx context.Context, name, uri
 	return CUPSResult(status), nil
 }
 
+// CupsRemovePrinter calls debugd.CupsRemovePrinter D-Bus method.
+func (d *Debugd) CupsRemovePrinter(ctx context.Context, name string) error {
+	c := d.call(ctx, "CupsRemovePrinter", name)
+	result := false
+	if err := c.Store(&result); err != nil {
+		return err
+	}
+	if !result {
+		return errors.New("CupsRemovePrinter returned false")
+	}
+	return nil
+}
+
 // SetSchedulerConfiguration calls debugd's SetSchedulerConfigurationV2 D-Bus method.
 func (d *Debugd) SetSchedulerConfiguration(ctx context.Context, param Scheduler) (err error) {
 	result := false

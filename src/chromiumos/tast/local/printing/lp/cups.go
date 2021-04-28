@@ -66,7 +66,11 @@ func CupsAddPrinter(ctx context.Context, printerName, uri, ppd string) error {
 
 // CupsRemovePrinter removes the printer that was configured for testing.
 func CupsRemovePrinter(ctx context.Context, printerName string) error {
-	return testexec.CommandContext(ctx, "lpadmin", "-x", printerName).Run()
+	d, err := debugd.New(ctx)
+	if err != nil {
+		errors.Wrap(err, "failed to connect to debugd")
+	}
+	return d.CupsRemovePrinter(ctx, printerName)
 }
 
 // CupsStartPrintJob starts a new print job for the file toPrint. Returns the
