@@ -58,6 +58,7 @@ func init() {
 			},
 			ExtraData:         []string{video.Crowd1080P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP8},
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(video.EncoderAllowlistVPxVM...)),
 		}, {
 			Name: "vp9_1080p_i420_vm",
 			Val: video.EncodeTestOptions{
@@ -67,6 +68,7 @@ func init() {
 			},
 			ExtraData:         []string{video.Crowd1080P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP9},
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(video.EncoderAllowlistVPxVM...)),
 		}},
 	})
 }

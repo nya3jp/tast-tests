@@ -35,6 +35,10 @@ var EncoderBlocklistVM = []string{
 	"kukui-arc-r",
 }
 
+// EncoderAllowlistVPxVM is the list of devices on which the ARCVM VP8/9 HW encoder is enabled.
+// Note: Currently the list is empty as b/158655609 is blocking the rollout of VP8/9.
+var EncoderAllowlistVPxVM = []string{}
+
 // cpuLog is the name of log file recording CPU usage.
 const cpuLog = "cpu.log"
 
