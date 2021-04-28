@@ -16,6 +16,23 @@
       "message": "LGTM!",
       "revId": "5eb7aae7f98a2bc3fb35747900ca4fdda3677ddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b736565_6ae9006a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-04-28T17:46:16Z",
+      "side": 1,
+      "message": "Would LGTM but it looks like you need to exclude the kukui-kernelnext boards somehow...",
+      "revId": "5eb7aae7f98a2bc3fb35747900ca4fdda3677ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
