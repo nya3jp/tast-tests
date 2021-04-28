@@ -512,6 +512,35 @@ func simpleConnect8021xWPA() simpleConnectParams {
 	}
 }
 
+func simpleConnect8021xWPA3() []simpleConnectParams {
+	mkOps := func(pmf, mode string) []simpleConnectParamsVal {
+		return []simpleConnectParamsVal{{
+			APOpts: fmt.Sprintf("%s, ap.PMF(ap.PMF%s)", simpleConnectCommonSecApOpts, pmf),
+			SecConfFac: fmt.Sprintf(`wpaeap.NewConfigFactory(
+				eapCert1.CACred.Cert, eapCert1.ServerCred,
+				wpaeap.ClientCACert(eapCert1.CACred.Cert),
+				wpaeap.ClientCred(eapCert1.ClientCred),
+				wpaeap.Mode(wpa.Mode%sWPA3),
+			)`, mode),
+		}}
+	}
+	return []simpleConnectParams{
+		{
+			Name:      "8021xwpa3mixed",
+			Doc:       simpleConnectDocPref("an WPA3-Enterprise-transition AP"),
+			Val:       mkOps("Optional", "Mixed"),
+			ExtraAttr: []string{"wificell_unstable"},
+		},
+		{
+			Name:      "8021xwpa3",
+			Doc:       simpleConnectDocPref("an WPA3-Enterprise-only AP"),
+			Val:       mkOps("Required", "Pure"),
+			ExtraAttr: []string{"wificell_unstable"},
+		},
+	}
+
+}
+
 func simpleConnectTunneled1x() []simpleConnectParams {
 	mkP := func(outer, inner string, extraAttr []string) simpleConnectParams {
 		ret := simpleConnectParams{
@@ -636,6 +665,7 @@ func TestSimpleConnect(t *testing.T) {
 	ps = append(ps, simpleConnectNonASCIISSID())
 	ps = append(ps, simpleConnect8021xWEP())
 	ps = append(ps, simpleConnect8021xWPA())
+	ps = append(ps, simpleConnect8021xWPA3()...)
 	ps = append(ps, simpleConnectTunneled1x()...)
 
 	genparams.Ensure(t, "simple_connect.go", genparams.Template(t, `{{ range . }}{

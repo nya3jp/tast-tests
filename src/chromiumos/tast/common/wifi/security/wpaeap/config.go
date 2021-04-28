@@ -7,6 +7,7 @@ package wpaeap
 
 import (
 	"strconv"
+	"strings"
 
 	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/common/shillconst"
@@ -34,19 +35,33 @@ func (c *Config) HostapdConfig() (map[string]string, error) {
 		return nil, errors.Wrap(err, "failed to get hostapd config from underlying EAP Config")
 	}
 
-	ret["wpa"] = strconv.Itoa(int(c.mode))
+	var mode int
+	// WPA2 and WPA3 are both RSN, and share the same bit in wpa=.
+	if c.mode&(wpa.ModePureWPA2|wpa.ModePureWPA3) > 0 {
+		mode |= int(wpa.ModePureWPA2)
+	}
+	if c.mode&wpa.ModePureWPA > 0 {
+		mode |= int(wpa.ModePureWPA)
+	}
+	ret["wpa"] = strconv.Itoa(mode)
 	ret["wpa_pairwise"] = "CCMP"
 
-	switch c.ftMode {
-	case wpa.FTModeNone:
-		ret["wpa_key_mgmt"] = "WPA-EAP"
-	case wpa.FTModePure:
-		ret["wpa_key_mgmt"] = "FT-EAP"
-	case wpa.FTModeMixed:
-		ret["wpa_key_mgmt"] = "WPA-EAP FT-EAP"
-	default:
-		return nil, errors.Errorf("invalid ftMode %d", c.ftMode)
+	var keyMgmt []string
+	if c.ftMode&wpa.FTModeNone > 0 {
+		// WPA2 does not require SHA256.
+		if c.mode&wpa.ModeMixed > 0 {
+			keyMgmt = append(keyMgmt, "WPA-EAP")
+		}
+		// WPA3 supports SHA256.
+		if c.mode&wpa.ModePureWPA3 > 0 {
+			keyMgmt = append(keyMgmt, "WPA-EAP-SHA256")
+		}
 	}
+	if c.ftMode&wpa.FTModePure > 0 {
+		// FT-EAP is already using SHA256, so it goes with either WPA/WPA2 or WPA3.
+		keyMgmt = append(keyMgmt, "FT-EAP")
+	}
+	ret["wpa_key_mgmt"] = strings.Join(keyMgmt, " ")
 
 	return ret, nil
 }
@@ -67,7 +82,7 @@ func (c *Config) ShillServiceProperties() (map[string]interface{}, error) {
 }
 
 func (c *Config) validate() error {
-	if c.mode&(^wpa.ModeMixed) > 0 || c.mode == 0 {
+	if c.mode&(^(wpa.ModeMixed|wpa.ModeMixedWPA3)) > 0 || c.mode == 0 {
 		return errors.Errorf("invalid mode %d", c.mode)
 	}
 	if c.ftMode&(^wpa.FTModeMixed) > 0 || c.ftMode == 0 {
