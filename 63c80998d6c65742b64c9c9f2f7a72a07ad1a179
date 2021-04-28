@@ -22,6 +22,30 @@
       },
       "revId": "63c80998d6c65742b64c9c9f2f7a72a07ad1a179",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4baf8e25_0cf99bf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usb_printer_timeout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-04-28T07:09:47Z",
+      "side": 0,
+      "message": "Ack; in this case though removing the printer is redundant since printers are automatically cleared when printer.ResetCups() restarts cups at the start of each print test.",
+      "parentUuid": "a71dde98_c65109d0",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 10
+      },
+      "revId": "63c80998d6c65742b64c9c9f2f7a72a07ad1a179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
