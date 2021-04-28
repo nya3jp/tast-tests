@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b94f223b_6eb70f0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2021-04-28T01:36:50Z",
+      "side": 1,
+      "message": "Does this need to apply for VP8/VP9 vm test?\nOr should we prepare 2 block list for H264 and VPx separately?",
+      "range": {
+        "startLine": 106,
+        "startChar": 36,
+        "endLine": 106,
+        "endChar": 50
+      },
+      "revId": "0c8c3f8c1be713f22549d9704d2c397799b325a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
