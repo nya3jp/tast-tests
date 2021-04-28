@@ -249,15 +249,32 @@ func (s *Server) DeauthClient(ctx context.Context, clientMAC string) error {
 	return nil
 }
 
+// BSSTMReqParams defines the parameters for a BSS Transition Management Request.
+type BSSTMReqParams struct {
+	// Neighbors is the list of neighboring APs
+	Neighbors []string
+	// DisassocImminent indicates whether or not the AP will disassociate the STA soon.
+	DisassocImminent bool
+	// DisassocTimer is the time (in 100ms) before the AP will disassoc the STA.
+	DisassocTimer time.Duration
+	// ReassocDelay is the delay (in seconds) before the STA is permitted to reassociate to the AP.
+	ReassocDelay time.Duration
+}
+
 // SendBSSTMRequest sends a BSS Transition Management Request to the specified client.
-func (s *Server) SendBSSTMRequest(ctx context.Context, clientMAC string, neighbors []string) error {
+func (s *Server) SendBSSTMRequest(ctx context.Context, clientMAC string, params BSSTMReqParams) error {
 	// Construct the arguments for:
 	//   `hostapd_cli -p${ctrlPath} BSS_TM_REQ ${clientMAC} neighbor=${n},0,0,0,0 pref=1`
 	args := []string{"-p" + s.ctrlPath(), "BSS_TM_REQ", clientMAC}
-	for _, n := range neighbors {
+	for _, n := range params.Neighbors {
 		args = append(args, fmt.Sprintf("neighbor=%s,0,0,0,0", n))
 	}
 	args = append(args, "pref=1")
+	if params.DisassocImminent {
+		args = append(args, "disassoc_imminent=1")
+		args = append(args, fmt.Sprintf("disassoc_timer=%d", (params.DisassocTimer/(100*time.Millisecond))))
+		args = append(args, fmt.Sprintf("mbo=3:%d:0", params.ReassocDelay/time.Second))
+	}
 
 	// Run the command
 	if err := s.host.Command(hostapdCLI, args...).Run(ctx); err != nil {

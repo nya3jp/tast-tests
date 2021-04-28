@@ -15,6 +15,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	roamTimeout   = 30 * time.Second
+	verifyTimeout = 20 * time.Second
+	// Give a 20 second buffer to make sure we can attempt to roam back to
+	// the original AP before the retry delay is over.
+	reassocDelay  = roamTimeout + 20*time.Second
+	reassocBuffer = 5 * time.Second
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: BSSTMRequest,
@@ -27,6 +36,20 @@ func init() {
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
+		Params: []testing.Param{
+			{
+				Val: hostapd.BSSTMReqParams{},
+			},
+			{
+				Name:              "disassoc_imminent",
+				ExtraSoftwareDeps: []string{"mbo"},
+				Val: hostapd.BSSTMReqParams{
+					DisassocImminent: true,
+					DisassocTimer:    5 * time.Second,
+					ReassocDelay:     reassocDelay,
+				},
+			},
+		},
 	})
 }
 
@@ -40,29 +63,30 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
-	// Generate BSSIDs for the two APs.
-	mac0, err := hostapd.RandomMAC()
-	if err != nil {
-		s.Fatal("Failed to generate BSSID: ", err)
-	}
-	mac1, err := hostapd.RandomMAC()
-	if err != nil {
-		s.Fatal("Failed to generate BSSID: ", err)
-	}
-	fromBSSID := mac0.String()
-	roamBSSID := mac1.String()
-	s.Log("AP 0 BSSID: ", fromBSSID)
-	s.Log("AP 1 BSSID: ", roamBSSID)
-
-	const (
-		testSSID      = "BSS_TM"
-		roamTimeout   = 30 * time.Second
-		verifyTimeout = 20 * time.Second
-	)
-	apOpts0 := []hostapd.Option{hostapd.SSID(testSSID), hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(1), hostapd.BSSID(fromBSSID)}
-	apOpts1 := []hostapd.Option{hostapd.SSID(testSSID), hostapd.Mode(hostapd.Mode80211a), hostapd.Channel(48), hostapd.BSSID(roamBSSID)}
-
 	runTest := func(ctx context.Context, s *testing.State, waitForScan bool) {
+		// Generate BSSIDs for the two APs.
+		mac0, err := hostapd.RandomMAC()
+		if err != nil {
+			s.Fatal("Failed to generate BSSID: ", err)
+		}
+		mac1, err := hostapd.RandomMAC()
+		if err != nil {
+			s.Fatal("Failed to generate BSSID: ", err)
+		}
+		fromBSSID := mac0.String()
+		roamBSSID := mac1.String()
+		s.Log("AP 0 BSSID: ", fromBSSID)
+		s.Log("AP 1 BSSID: ", roamBSSID)
+
+		testSSID := hostapd.RandomSSID("BSS_TM_")
+		apOpts0 := []hostapd.Option{hostapd.SSID(testSSID), hostapd.Mode(hostapd.Mode80211nMixed), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.Channel(1), hostapd.BSSID(fromBSSID)}
+		apOpts1 := []hostapd.Option{hostapd.SSID(testSSID), hostapd.Mode(hostapd.Mode80211nMixed), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.Channel(48), hostapd.BSSID(roamBSSID)}
+		params := s.Param().(hostapd.BSSTMReqParams)
+		if params.DisassocImminent {
+			apOpts0 = append(apOpts0, hostapd.MBO())
+			apOpts1 = append(apOpts1, hostapd.MBO())
+		}
+
 		// Configure the first AP.
 		s.Log("Configuring AP 0")
 		ap0, err := tf.ConfigureAP(ctx, apOpts0, nil)
@@ -99,24 +123,26 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 
 		// Set up a watcher for the Shill WiFi BSSID property.
 		monitorProps := []string{shillconst.ServicePropertyIsConnected}
-		props := []*wificell.ShillProperty{{
-			Property:       shillconst.ServicePropertyWiFiRoamState,
-			ExpectedValues: []interface{}{shillconst.RoamStateConfiguration},
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
-		}, {
-			Property:       shillconst.ServicePropertyWiFiRoamState,
-			ExpectedValues: []interface{}{shillconst.RoamStateReady},
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
-		}, {
-			Property:       shillconst.ServicePropertyWiFiRoamState,
-			ExpectedValues: []interface{}{shillconst.RoamStateIdle},
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
-		}, {
-			Property:       shillconst.ServicePropertyWiFiBSSID,
-			ExpectedValues: []interface{}{roamBSSID},
-			Method:         network.ExpectShillPropertyRequest_CHECK_ONLY,
-		}}
-
+		getProps := func(bssid string) []*wificell.ShillProperty {
+			return []*wificell.ShillProperty{{
+				Property:       shillconst.ServicePropertyWiFiRoamState,
+				ExpectedValues: []interface{}{shillconst.RoamStateConfiguration},
+				Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+			}, {
+				Property:       shillconst.ServicePropertyWiFiRoamState,
+				ExpectedValues: []interface{}{shillconst.RoamStateReady},
+				Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+			}, {
+				Property:       shillconst.ServicePropertyWiFiRoamState,
+				ExpectedValues: []interface{}{shillconst.RoamStateIdle},
+				Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+			}, {
+				Property:       shillconst.ServicePropertyWiFiBSSID,
+				ExpectedValues: []interface{}{bssid},
+				Method:         network.ExpectShillPropertyRequest_CHECK_ONLY,
+			}}
+		}
+		props := getProps(roamBSSID)
 		waitCtx, cancel := context.WithTimeout(ctx, roamTimeout)
 		defer cancel()
 		waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
@@ -162,32 +188,83 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		// Send BSS Transition Management Request to client.
-		s.Logf("Sending BSS Transition Management Request from AP %s to DUT %s", fromBSSID, clientMAC)
-		if err := ap0.SendBSSTMRequest(ctx, clientMAC, roamBSSID); err != nil {
-			s.Fatal("Failed to send BSS TM Request: ", err)
-		}
+		sendReqAndWaitConnected := func(from, to string, fromAP, toAP *wificell.APIface, expectConnectFail bool) {
+			req := params
+			if expectConnectFail {
+				// We expect the connection to fail, so send a
+				// request without any additional parameters to
+				// test that the connection fails. Otherwise,
+				// the reassoc delay will disable the current AP
+				// as well and cause us to deauth.
+				req = hostapd.BSSTMReqParams{Neighbors: []string{to}}
+			} else {
+				req.Neighbors = []string{to}
+			}
+			// Send BSS Transition Management Request to client.
+			s.Logf("Sending BSS Transition Management Request from AP %s to DUT %s", from, clientMAC)
+			if err := fromAP.SendBSSTMRequest(ctx, clientMAC, req); err != nil {
+				s.Fatal("Failed to send BSS TM Request: ", err)
+			}
 
-		// Wait for the DUT to roam to the second AP, then assert that there was
-		// no disconnection during roaming.
-		s.Log("Waiting for roaming")
-		monitorResult, err := waitForProps()
-		if err != nil {
-			s.Fatal("Failed to roam within timeout: ", err)
-		}
-		for _, ph := range monitorResult {
-			if ph.Name == shillconst.ServicePropertyIsConnected {
-				if !ph.Value.(bool) {
-					s.Fatal("Failed to stay connected during the roaming process")
+			// Wait for the DUT to roam to the second AP, then assert that there was
+			// no disconnection during roaming.
+			s.Log("Waiting for roaming")
+			monitorResult, err := waitForProps()
+			if err != nil {
+				if expectConnectFail {
+					s.Log("Connection failed as expected")
+					return
 				}
+				s.Fatal("Failed to roam within timeout: ", err)
+			}
+			if expectConnectFail {
+				s.Fatal("Expected roam to fail but it succeeded")
+			}
+			for _, ph := range monitorResult {
+				if ph.Name == shillconst.ServicePropertyIsConnected {
+					if !ph.Value.(bool) {
+						s.Fatal("Failed to stay connected during the roaming process")
+					}
+				}
+			}
+
+			// Just for good measure make sure we're properly connected.
+			s.Log("Verifying connection to AP ", to)
+			if err := tf.VerifyConnection(ctx, toAP); err != nil {
+				s.Fatal("DUT: failed to verify connection: ", err)
 			}
 		}
 
-		// Just for good measure make sure we're properly connected.
-		s.Log("Verifying connection to AP 1")
-		if err := tf.VerifyConnection(ctx, ap1); err != nil {
-			s.Fatal("DUT: failed to verify connection: ", err)
+		sendReqAndWaitConnected(fromBSSID, roamBSSID, ap0, ap1, false)
+		t := time.Now()
+
+		props = getProps(fromBSSID)
+		waitCtx, cancel = context.WithTimeout(ctx, roamTimeout)
+		defer cancel()
+		waitForProps, err = tf.ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
+		if err != nil {
+			s.Fatal("Failed to create Shill property watcher: ", err)
 		}
+
+		if params.DisassocImminent {
+			// Test that the reassoc delay works as expected, and we
+			// fail to reassoc to the original AP, and then sleep
+			// until we are sure the delay has expired.
+			sendReqAndWaitConnected(roamBSSID, fromBSSID, ap1, ap0, true)
+			if params.ReassocDelay+reassocBuffer > time.Now().Sub(t) {
+				sleepDur := params.ReassocDelay + reassocBuffer - time.Now().Sub(t)
+				s.Log("Sleeping for ", sleepDur)
+				testing.Sleep(ctx, sleepDur)
+			}
+
+			waitCtx, cancel = context.WithTimeout(ctx, roamTimeout)
+			defer cancel()
+			waitForProps, err = tf.ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
+			if err != nil {
+				s.Fatal("Failed to create Shill property watcher: ", err)
+			}
+		}
+		sendReqAndWaitConnected(roamBSSID, fromBSSID, ap1, ap0, false)
 	}
 
 	// Before sending the BSS TM request, run a scan and make sure the DUT
