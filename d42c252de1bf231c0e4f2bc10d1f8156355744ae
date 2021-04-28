@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d74828f7_590fbc97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-04-28T16:45:03Z",
+      "side": 1,
+      "message": "\u003e We should be able to log in to the Chrome once with keeping all states, and if the current user doesn\u0027t have ownership, restart the session and re-login with clearing the state.\nActually the first-time login account cannot log in. \n- Without KeepState, it needs to click the \"accept\" button during OOBE on the \"Welcome to your new account\" screen. This is another issue that tast OOBE should handle but for CUJ, we can live with it by manually click it the first time. \n- With KeepState, the OOBE will stuck at the adding new user screen at the first run.\n\n\u003e Are the tests designed to only be run manually? Do you actually need the users to be device owners for the tests (for the extra permissions)? I would expect meet to work in other accounts.\nVictor, the test is designed to run automatically. We don\u0027t need the users to be the device owner in GoogleMeetCUJ. But for the situation I described in the bug, without clearing the previous ownership, the user can not do login.\n\nThis CL resolves the issue for our special use case (partner get an account that has never been used before), also trying to tackle a general problem that login account might not have the device ownership when KeepState is used.",
+      "parentUuid": "5f3fd296_091230ce",
+      "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9fa62b4_ee688dcf",
         "filename": "src/chromiumos/tast/local/chrome/option.go",
         "patchSetId": 1
