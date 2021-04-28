@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f3fd296_091230ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-28T08:50:57Z",
+      "side": 1,
+      "message": "\u003e  Are you aware of any issues with GAIA login with other existing users?\n\u003e  Should all dialogs already be cleared by tast?\n\nRecently I saw a CL crrev.com/c/2850407 that skips a new user creation screen in OOBE (b/186175663). Is it related?\n\n\u003e  Do we want to merge this change until the other issues are fixed in tast?\n\nFrom what Victor said, I\u0027m afraid that clearing the ownership with keeping user data is not expected in Chrome OS, so I\u0027m hesitant to introduce this option.\n\nRather an approach Xibin mentioned sounds better:\n\n\u003e Do you know if there is an API in ChromeOS to query the current owner of the device? If so, I think we can compare the login account with the device owner. If they are the same, then keep state / ownership. Otherwise, clear the ownership and also remove user directories.\n\nI\u0027m not sure if querying the current owner without logging in is possible. But even if it\u0027s impossible, we should be able to log in to the Chrome once with keeping all states, and if the current user doesn\u0027t have ownership, restart the session and re-login with clearing the state. That is, introducing a new option like chrome.KeepStateIfOwnerMatches().",
+      "parentUuid": "dc3e024d_8b314dca",
+      "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9fa62b4_ee688dcf",
         "filename": "src/chromiumos/tast/local/chrome/option.go",
         "patchSetId": 1
