@@ -7,6 +7,7 @@
 
 import gi
 import os
+import sys
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
 
@@ -19,7 +20,7 @@ class DragWindow(Gtk.Window):
     self.drag_source_add_uri_targets()
 
   def on_drag_data_get(self, widget, drag_context, data, info, time):
-    data.set_uris(["file://" + os.path.abspath("crostini.txt")])
+    data.set_uris(["file://" + os.path.abspath(sys.argv[1])])
 
   def on_drag_end(self, drag_context, data):
     self.close()

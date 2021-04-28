@@ -37,7 +37,7 @@ func init() {
 
 	testing.AddTest(&testing.Test{
 		Func:         DragDrop,
-		Desc:         "Drag and drop a file in both directions between FilesApp and crostini",
+		Desc:         "Drag and drop a file and folder in both directions between FilesApp and crostini",
 		Contacts:     []string{"joelhockey@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
@@ -84,7 +84,6 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	tconn := pre.TestAPIConn
 	cont := pre.Container
-	kb := pre.Keyboard
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	s.Log("Copying testing applets to container")
@@ -95,98 +94,58 @@ func DragDrop(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to push drop applet to container: ", err)
 	}
 
-	// Setup the test file.
+	// Setup the test file and folder.
 	const (
+		dirDragFromFilesapp  = "filesappdir"
+		dirDragFromCrostini  = "crostinidir"
 		fileDragFromFilesapp = "filesapp.txt"
 		fileDragFromCrostini = "crostini.txt"
 	)
-	path := filepath.Join(filesapp.MyFilesPath, fileDragFromFilesapp)
-	if err := ioutil.WriteFile(path, []byte(fileDragFromFilesapp), 0644); err != nil {
-		s.Fatalf("Creating file %s failed: %s", path, err)
+	path := filepath.Join(filesapp.MyFilesPath, dirDragFromFilesapp)
+	if err := os.Mkdir(path, 0644); err != nil {
+		s.Fatalf("Create dir %s failed: %s", path, err)
 	}
 	defer os.Remove(path)
+	path = filepath.Join(filesapp.MyFilesPath, fileDragFromFilesapp)
+	if err := ioutil.WriteFile(path, []byte(fileDragFromFilesapp), 0644); err != nil {
+		s.Fatalf("Create file %s failed: %s", path, err)
+	}
+	defer os.Remove(path)
+	if err := cont.Command(ctx, "mkdir", dirDragFromCrostini).Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Create container dir failed: ", err)
+	}
+	defer cont.RemoveAll(ctx, dirDragFromCrostini)
+	if err := cont.WriteFile(ctx, fileDragFromCrostini, fileDragFromCrostini); err != nil {
+		s.Fatal("Create container file failed: ", err)
+	}
+	defer cont.RemoveAll(ctx, fileDragFromCrostini)
 
-	// Open the Files App left-snapped.
+	// Open FilesApp left-snapped.
 	files, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
+	defer files.Close(ctx)
 	_, err = setWindowState(ctx, tconn, "Files - My files", ash.WindowStateLeftSnapped)
 	if err != nil {
 		s.Fatal("Failed to set Files App left-snapped: ", err)
 	}
+	defer setWindowState(ctx, tconn, "Files - My files", ash.WindowStateNormal)
 
-	// Open drop_applet.py right-snapped.
-	s.Logf("Starting %s", dropAppletTitle)
-	cmdArgs := []string{"python3", dropApplet}
-	cmd := cont.Command(ctx, cmdArgs...)
-	var buf bytes.Buffer
-	cmd.Stdout = &buf
-	if err := cmd.Start(); err != nil {
-		s.Fatalf("Failed to start command %v: %v", cmdArgs, err)
+	// Drag and drop file and dir from FilesApp to app.
+	if err = dragFromFilesApp(ctx, pre, files, dirDragFromFilesapp, "['file:///mnt/chromeos/MyFiles/filesappdir']"); err != nil {
+		s.Fatalf("Failed to drag %s from FilesApp to crostini: %v", dirDragFromFilesapp, err)
 	}
-	dropAppletWindow, err := setWindowState(ctx, tconn, dropAppletTitle, ash.WindowStateRightSnapped)
-	if err != nil {
-		s.Fatal("Failed to set drop app right-snapped: ", err)
-	}
-
-	// Drag and drop file from FilesApp to drop app.
-	dropPoint := dropAppletWindow.BoundsInRoot.CenterPoint()
-	if err = files.DragAndDropFile(fileDragFromFilesapp, dropPoint, kb)(ctx); err != nil {
-		s.Fatal("Failed to drag and drop: ", err)
-	}
-
-	// Wait for drop app to close and write dropped filename.
-	if err = cmd.Wait(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Unexpected wait error: ", err)
-	}
-	output := string(buf.Bytes())
-	expected := "['file:///mnt/chromeos/MyFiles/filesapp.txt']"
-	if output != expected {
-		s.Fatalf("Unexpected drop output: got %q, want %q", output, expected)
-	}
-
-	// Validate file is shared.
-	contPath := filepath.Join(sharedfolders.MountPathMyFiles, fileDragFromFilesapp)
-	if err = cont.CheckFileContent(ctx, contPath, fileDragFromFilesapp); err != nil {
-		s.Fatalf("Drag and drop file %s not shared with VM: %v", fileDragFromFilesapp, err)
+	if err = dragFromFilesApp(ctx, pre, files, fileDragFromFilesapp, "['file:///mnt/chromeos/MyFiles/filesapp.txt']"); err != nil {
+		s.Fatalf("Failed to drag %s from FilesApp to crostini: %v", fileDragFromFilesapp, err)
 	}
 
 	// Drag and drop file from drag app to FilesApp.
-	if err = cont.WriteFile(ctx, fileDragFromCrostini, fileDragFromCrostini); err != nil {
-		s.Fatal("Create container file failed: ", err)
+	if err = dragFromCrostini(ctx, pre, files, dirDragFromCrostini, false); err != nil {
+		s.Fatalf("Failed to drag %s from crostini to FilesApp: %v", dirDragFromCrostini, err)
 	}
-
-	s.Logf("Starting %s", dragAppletTitle)
-	cmdArgs = []string{"python3", dragApplet}
-	cmd = cont.Command(ctx, cmdArgs...)
-	if err := cmd.Start(); err != nil {
-		s.Fatalf("Failed to start command %v: %v", cmdArgs, err)
-	}
-	defer cmd.Wait(testexec.DumpLogOnError)
-	dragAppletWindow, err := setWindowState(ctx, tconn, dragAppletTitle, ash.WindowStateRightSnapped)
-	if err != nil {
-		s.Fatal("Failed to set drag app right-snapped: ", err)
-	}
-
-	dragPoint := dragAppletWindow.BoundsInRoot.CenterPoint()
-	dropPoint = coords.Point{X: dragAppletWindow.BoundsInRoot.Left - 100, Y: 400}
-	if err = mouse.Drag(ctx, tconn, dragPoint, dropPoint, time.Second); err != nil {
-		s.Fatal("Failed to drag and drop: ", err)
-	}
-
-	// Validate file is copied to FilesApp MyFiles.
-	if err = files.WaitForFile(fileDragFromCrostini)(ctx); err != nil {
-		s.Fatal("Failed to find the test file in Files app: ", err)
-	}
-	path = filepath.Join(filesapp.MyFilesPath, fileDragFromCrostini)
-	b, err := ioutil.ReadFile(path)
-	if err != nil {
-		s.Fatal("Failed to read the file in Chrome OS: ", err)
-	}
-	os.Remove(path)
-	if string(b) != fileDragFromCrostini {
-		s.Fatalf("Failed to verify the content of the file: got %s, want %s", string(b), fileDragFromCrostini)
+	if err = dragFromCrostini(ctx, pre, files, fileDragFromCrostini, true); err != nil {
+		s.Fatalf("Failed to drag %s from crostini to FilesApp: %v", fileDragFromCrostini, err)
 	}
 }
 
@@ -203,4 +162,92 @@ func setWindowState(ctx context.Context, tconn *chrome.TestConn, title string, s
 		return nil, errors.Wrapf(err, "failed to set app %q right-snapped", title)
 	}
 	return ash.GetWindow(ctx, tconn, window.ID)
+}
+
+// dragFromFilesApp drags the specified file or directory from FilesApp to crostini.
+func dragFromFilesApp(ctx context.Context, pre crostini.PreData, files *filesapp.FilesApp, path, expected string) error {
+	tconn := pre.TestAPIConn
+	cont := pre.Container
+	kb := pre.Keyboard
+
+	// Open drop_applet.py right-snapped.
+	testing.ContextLogf(ctx, "Starting %s for %s", dropAppletTitle, path)
+	cmdArgs := []string{"python3", dropApplet}
+	cmd := cont.Command(ctx, cmdArgs...)
+	var buf bytes.Buffer
+	cmd.Stdout = &buf
+	if err := cmd.Start(); err != nil {
+		return errors.Wrapf(err, "command %v", cmdArgs)
+	}
+	dropAppletWindow, err := setWindowState(ctx, tconn, dropAppletTitle, ash.WindowStateRightSnapped)
+	if err != nil {
+		return errors.Wrap(err, "set drop app right-snapped")
+	}
+
+	// Drag and drop file from FilesApp to drop app.
+	dropPoint := dropAppletWindow.BoundsInRoot.CenterPoint()
+	if err = files.DragAndDropFile(path, dropPoint, kb)(ctx); err != nil {
+		return errors.Wrap(err, "drag and drop")
+	}
+	defer files.SelectFile(path)(ctx)
+
+	// Wait for drop app to close and write dropped filename.
+	if err = cmd.Wait(testexec.DumpLogOnError); err != nil {
+		return err
+	}
+	output := string(buf.Bytes())
+	if output != expected {
+		return errors.Errorf("unexpected drop output: got %q, want %q", output, expected)
+	}
+
+	// Validate file is shared.
+	if err = cont.CheckFilesExistInDir(ctx, sharedfolders.MountPathMyFiles, path); err != nil {
+		return errors.Wrap(err, "file not shared with VM")
+	}
+	return nil
+}
+
+// dragFromCrostini drags the specified file or directory from crostini to FilesApp.
+func dragFromCrostini(ctx context.Context, pre crostini.PreData, files *filesapp.FilesApp, path string, isFile bool) error {
+	tconn := pre.TestAPIConn
+	cont := pre.Container
+
+	testing.ContextLogf(ctx, "Starting %s for %s", dragAppletTitle, path)
+	cmdArgs := []string{"python3", dragApplet, path}
+	cmd := cont.Command(ctx, cmdArgs...)
+	if err := cmd.Start(); err != nil {
+		return errors.Wrapf(err, "command %v", cmdArgs)
+	}
+	defer cmd.Wait(testexec.DumpLogOnError)
+	dragAppletWindow, err := setWindowState(ctx, tconn, dragAppletTitle, ash.WindowStateRightSnapped)
+	if err != nil {
+		return errors.Wrap(err, "set drag app right-snapped: ")
+	}
+
+	dragPoint := dragAppletWindow.BoundsInRoot.CenterPoint()
+	dropPoint := coords.Point{X: dragAppletWindow.BoundsInRoot.Left - 100, Y: 400}
+	if err = mouse.Drag(ctx, tconn, dragPoint, dropPoint, time.Second); err != nil {
+		return errors.Wrap(err, "drag and drop")
+	}
+
+	// Validate file is copied to FilesApp MyFiles.
+	if err = files.WaitForFile(path)(ctx); err != nil {
+		return errors.Wrap(err, "find the test file in Files app")
+	}
+
+	crosPath := filepath.Join(filesapp.MyFilesPath, path)
+	if _, err := os.Stat(crosPath); err != nil {
+		return errors.Wrap(err, "stat")
+	}
+	if isFile {
+		b, err := ioutil.ReadFile(crosPath)
+		if err != nil {
+			return errors.Wrap(err, "read the file in Chrome OS")
+		}
+		if string(b) != path {
+			return errors.Errorf("verify the content of the file: got %s, want %s", string(b), path)
+		}
+	}
+	os.Remove(crosPath)
+	return nil
 }
