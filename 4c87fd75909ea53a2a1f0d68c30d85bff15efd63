@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89d43b33_1c13507a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-04-28T17:57:53Z",
+      "side": 1,
+      "message": "yamaguchi, tast-owners PTAL\n\nOthers FYI",
+      "revId": "4c87fd75909ea53a2a1f0d68c30d85bff15efd63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
