@@ -46,6 +46,30 @@
       },
       "revId": "a6b24b785d9fae6a23efea24b4ccc60594735261",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "858f3ff8_b6b8af68",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-28T03:38:15Z",
+      "side": 1,
+      "message": "I see, thanks for testing. Then it sounds fine to just try this and see if it fixes the problem without flake.",
+      "parentUuid": "68080a1b_9c40af80",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "a6b24b785d9fae6a23efea24b4ccc60594735261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
