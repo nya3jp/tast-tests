@@ -84,6 +84,46 @@
       "message": "Re-adding tast owner once had no feedback for a long time",
       "revId": "8a8d369c2558316619c437b9ba14d5d1e5f94cab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85391cdd_60678d82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-28T08:25:06Z",
+      "side": 1,
+      "message": "LGTM % one comment.",
+      "revId": "8a8d369c2558316619c437b9ba14d5d1e5f94cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a007a9c_8d9ce828",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-28T08:25:06Z",
+      "side": 1,
+      "message": "I think this is a similar case as https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#combinedoutput. It might be OK if it is guaranteed that only stdout or stderr is written on the successful call. If not, I\u0027ll suggest writing stderr to another file. Or, if stderr is only useful when the command fails, you can also use DumpLogOnError:\n\n  cmd.Stdout \u003d logFile\n  // don\u0027t set cmd.Stderr, so it goes to default log buffer\n  // and DumpLogOnError can dump it.\n\n  err \u003d cmd.Run(testexec.DumpLogOnError)\n  ...\n\nThis way, stderr will be dump to test log when the cmd failed.\n\nWDYT?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 21
+      },
+      "revId": "8a8d369c2558316619c437b9ba14d5d1e5f94cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
