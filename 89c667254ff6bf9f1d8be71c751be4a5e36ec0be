@@ -22,6 +22,30 @@
       },
       "revId": "89c667254ff6bf9f1d8be71c751be4a5e36ec0be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdaa58e0_756f2f95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/enumerate_ipp_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-04-28T20:17:16Z",
+      "side": 1,
+      "message": "The cleanup in the main test function does reserve time, but I don\u0027t think we need to do it in the inner iterations.  Stopping lorgnette between iterations is intended to make sure it starts from a consistent place on the next iteration.  If the context runs out of time, there won\u0027t be a next iteration, and then the regular lorgnette timeout will take care of cleaning it up at the end.",
+      "parentUuid": "4f15e1bb_b98f51dd",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "89c667254ff6bf9f1d8be71c751be4a5e36ec0be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
