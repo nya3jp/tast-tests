@@ -16,6 +16,52 @@
       "message": "You can see how this change will be used in https://crrev.com/c/2853809 if you are curious.",
       "revId": "d24ad9279a4065c224c1ba790407b59e203fbe8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4299e37_0c7f7130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/connectivity_diagnostics_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-04-28T00:52:42Z",
+      "side": 1,
+      "message": "Is this still necessary? This deferred call will execute immediately, and there isn\u0027t anything after here that could fail.",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 79
+      },
+      "revId": "d24ad9279a4065c224c1ba790407b59e203fbe8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b956c73f_54a80cfd",
+        "filename": "src/chromiumos/tast/local/chrome/ui/conndiag/conndiag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-04-28T00:52:42Z",
+      "side": 1,
+      "message": "return nil, ...",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "d24ad9279a4065c224c1ba790407b59e203fbe8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
