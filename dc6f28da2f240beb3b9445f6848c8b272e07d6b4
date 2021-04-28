@@ -22,6 +22,30 @@
       },
       "revId": "dc6f28da2f240beb3b9445f6848c8b272e07d6b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eacbb425_fd0ab68b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2021-04-28T03:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3914a49_84d40264",
+      "range": {
+        "startLine": 186,
+        "startChar": 17,
+        "endLine": 186,
+        "endChar": 20
+      },
+      "revId": "dc6f28da2f240beb3b9445f6848c8b272e07d6b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
