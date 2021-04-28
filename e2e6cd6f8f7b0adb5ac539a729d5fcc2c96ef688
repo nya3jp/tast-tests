@@ -39,6 +39,30 @@
       },
       "revId": "e2e6cd6f8f7b0adb5ac539a729d5fcc2c96ef688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eacbb76_f683fe6b",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2021-04-28T08:26:24Z",
+      "side": 1,
+      "message": "This code is based off vm.TerminaImageExists()\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/vm/images.go;l\u003d31;drc\u003ddd6612e2f9df9e70bb4ab5c8d679e07f57c41577\n\nIt considers any error to indicate that terminal-dlc is not installed.",
+      "parentUuid": "3bcc7c1d_6efdded3",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 18
+      },
+      "revId": "e2e6cd6f8f7b0adb5ac539a729d5fcc2c96ef688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
