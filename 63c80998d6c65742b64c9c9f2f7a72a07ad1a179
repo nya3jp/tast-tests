@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a71dde98_c65109d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usb_printer_timeout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-28T05:24:40Z",
+      "side": 0,
+      "message": "nit/optional: if you don\u0027t care if the printer fails or succeeds to be removed, you can just change this to a testing.ContextLog",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 10
+      },
+      "revId": "63c80998d6c65742b64c9c9f2f7a72a07ad1a179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
