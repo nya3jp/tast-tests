@@ -93,14 +93,6 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 	}
 	s.Log("Printer configured with name: ", foundPrinterName)
 
-	defer func() {
-		// Regardless of whether the printer was added automatically by Chrome, or
-		// explicitly by the test, it is safe to remove the printer using CUPS.
-		if err := lp.CupsRemovePrinter(oldContext, foundPrinterName); err != nil {
-			s.Error("Failed to remove printer: ", err)
-		}
-	}()
-
 	job, err := lp.CupsStartPrintJob(ctx, foundPrinterName, toPrint)
 	if err != nil {
 		s.Fatal("Failed to start printer: ", err)

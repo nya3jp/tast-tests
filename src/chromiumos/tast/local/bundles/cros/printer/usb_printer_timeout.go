@@ -48,14 +48,6 @@ func USBPrinterTimeout(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Printer configured with name: ", foundPrinterName)
 
-	defer func() {
-		// Regardless of whether the printer was added automatically by Chrome, or
-		// explicitly by the test, it is safe to remove the printer using CUPS.
-		if err := lp.CupsRemovePrinter(ctx, foundPrinterName); err != nil {
-			s.Error("Failed to remove printer: ", err)
-		}
-	}()
-
 	logReader, readerErr := syslog.NewReader(ctx, syslog.Program("cupsd"))
 	if readerErr != nil {
 		s.Fatal("Failed to start log reader: ", readerErr)
