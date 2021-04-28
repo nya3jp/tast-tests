@@ -73,7 +73,7 @@ function module$contents$google3$javascript$polymer$testing$shadow_piercer_match
 // EvalWithShadowPiercer loads shadowPiercingQuery and shadowPiercingQueryAll function into connection before evaluate JS code.
 // These functions allow locating web elements piercing shadowroots.
 // e.g. Help APP: shadowPiercingQueryAll("showoff-card") returns all cards.
-// e.g. Setting: shadowPiercingQueryAll("#wallpaperButton") returns wallpaper button.
+// e.g. Setting: shadowPiercingQuery("#wallpaperButton") returns wallpaper button.
 func EvalWithShadowPiercer(ctx context.Context, c *chrome.Conn, expr string, out interface{}) error {
 	if err := c.Eval(ctx, shadowPiercerJS, nil); err != nil {
 		return errors.Wrap(err, "failed to load shadow piercer")
