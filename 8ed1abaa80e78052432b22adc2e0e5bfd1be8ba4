@@ -33,6 +33,24 @@
       "message": "How about adding log here, making use of t.Args()? Then you don\u0027t have to construct command on your own.",
       "revId": "8ed1abaa80e78052432b22adc2e0e5bfd1be8ba4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "364e2ed1_4b442cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1485298
+      },
+      "writtenOn": "2021-04-28T22:07:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e43c29b0_36330760",
+      "revId": "8ed1abaa80e78052432b22adc2e0e5bfd1be8ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
