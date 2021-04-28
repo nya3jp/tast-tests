@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45c00296_90d7bb2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-28T23:18:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3ca3512c_4d714802",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 8
+      },
+      "revId": "0e8059d723b05096a82af473ee1e18a8cabc42e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5229d5c7_aa06c27b",
@@ -344,6 +368,30 @@
       "side": 1,
       "message": "Type C functionality on this port will be broken till the next EC reboot. Note that if this command fails, it is symptomatic of a much larger issue in the EC and the system is already in a bad state.",
       "parentUuid": "5bf317f2_6ba13902",
+      "range": {
+        "startLine": 115,
+        "startChar": 20,
+        "endLine": 115,
+        "endChar": 34
+      },
+      "revId": "0e8059d723b05096a82af473ee1e18a8cabc42e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08493136_cb9cffee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-28T23:18:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "19b5ccdf_6ab0c11a",
       "range": {
         "startLine": 115,
         "startChar": 20,
