@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bca70de7_1667852d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-28T04:44:03Z",
+      "side": 1,
+      "message": "It doesn\u0027t take a long time. I\u0027ll remove the log messages in the next patchset for this CL.",
+      "parentUuid": "5229d5c7_aa06c27b",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 6
+      },
+      "revId": "0e8059d723b05096a82af473ee1e18a8cabc42e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fbc45a6f_d6176966",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_hotplug.go",
         "patchSetId": 1
