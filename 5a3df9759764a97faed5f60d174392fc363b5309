@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9037de5_5c169a99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-04-28T03:46:33Z",
+      "side": 1,
+      "message": "Seems like it\u0027s not necessarily caused by previous tests. See ps.txt for the full process tree.\n\n1st example (start)\n\n u:r:cros_dbus_daemon:s0         message+   555  1.0  0.0   4432  3276 ?        Ss   10:47   0:06 dbus-daemon --system --fork\n u:r:cros_dbus_daemon:s0         message+ 23382  0.0  0.0   4432  1616 ?        S    10:57   0:00  \\_ dbus-daemon --system --fork\n u:r:cros_dbus_daemon:s0         root     23383  0.0  0.0   2808  1104 ?        S    10:57   0:00      \\_ /sbin/start system-proxy\n\n2nd example (sed)\n\n kernel                          root     12067  0.0  0.0   2296   760 ?        Ss   21:11   0:00 /bin/sh /lib/udev/chromeos-kip-modem-watchdog.sh\n kernel                          root     12068  0.0  0.0   2296  1156 ?        S    21:11   0:00  \\_ /bin/sh /lib/udev/chromeos-kip-modem-watchdog.sh\n kernel                          root     29237  0.0  0.0   2296   120 ?        S    21:16   0:00      \\_ /bin/sh /lib/udev/chromeos-kip-modem-watchdog.sh\n kernel                          root     29238  0.0  0.0   2648   908 ?        S    21:16   0:00          \\_ dbus-send --fixed --system --print-reply --dest\u003dorg.freedesktop.ModemManager1 /org/freedesktop/ModemManager1 org.freedesktop.DBus.ObjectManager GetManagedObjects\n kernel                          root     29239  0.0  0.0   2292   824 ?        S    21:16   0:00          \\_ sed -nE s|.*/Device (/sys/devices/.+)|\\1|p\n\nSo I\u0027m afraid that the root cause is in this test\u0027s approach to gather processes.\n\nSince the test is critical and it\u0027s important to reduce flakiness, it LGTM to submit this change, but I recommend revisiting the approach soon.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "5a3df9759764a97faed5f60d174392fc363b5309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "27ba5f01_3484aaed",
