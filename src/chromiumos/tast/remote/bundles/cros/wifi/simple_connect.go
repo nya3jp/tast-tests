@@ -571,6 +571,32 @@ func init() {
 					expectedFailure: true,
 				}},
 			}, {
+				// Verifies that DUT can connect to an WPA3-Enterprise-transition AP
+				Name:      "8021xwpa3mixed",
+				ExtraAttr: []string{"wificell_unstable"},
+				Val: []simpleConnectTestcase{{
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.PMF(ap.PMFOptional)},
+					secConfFac: wpaeap.NewConfigFactory(
+						eapCert1.CACred.Cert, eapCert1.ServerCred,
+						wpaeap.ClientCACert(eapCert1.CACred.Cert),
+						wpaeap.ClientCred(eapCert1.ClientCred),
+						wpaeap.Mode(wpa.ModeMixedWPA3),
+					),
+				}},
+			}, {
+				// Verifies that DUT can connect to an WPA3-Enterprise-only AP
+				Name:      "8021xwpa3",
+				ExtraAttr: []string{"wificell_unstable"},
+				Val: []simpleConnectTestcase{{
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.PMF(ap.PMFRequired)},
+					secConfFac: wpaeap.NewConfigFactory(
+						eapCert1.CACred.Cert, eapCert1.ServerCred,
+						wpaeap.ClientCACert(eapCert1.CACred.Cert),
+						wpaeap.ClientCred(eapCert1.ClientCred),
+						wpaeap.Mode(wpa.ModePureWPA3),
+					),
+				}},
+			}, {
 				// Verifies that DUT CANNOT connect to a PEAP network with wrong settings.
 				// We do these tests for only one inner authentication protocol because we
 				// presume that supplicant reuses this code between inner authentication types.
