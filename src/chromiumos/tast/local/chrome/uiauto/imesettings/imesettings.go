@@ -25,6 +25,7 @@ var defaultPollOpts = testing.PollOptions{Timeout: 10 * time.Second, Interval: 1
 
 var addInputMethodButton = nodewith.Name("Add input methods").Role(role.Button)
 var searchInputMethodField = nodewith.Name("Search by language or input name").Role(role.SearchBox)
+var toggleShowInputOptionsInShelfFinder = nodewith.Name("Show input options in the shelf").Role(role.ToggleButton)
 
 // IMESettings is a wrapper around the settings app used to control the inputs settings page.
 type IMESettings struct {
@@ -74,4 +75,9 @@ func (i *IMESettings) ClickAddButtonToConfirm() uiauto.Action {
 // RemoveInputMethod returns a function that removes the input method by clicking cross button next to the input method on UI.
 func (i *IMESettings) RemoveInputMethod(inputMethodName string) uiauto.Action {
 	return i.settings.LeftClick(nodewith.Name("Remove " + inputMethodName).Role(role.Button))
+}
+
+// ToggleShowInputOptionsInShelf clicks toggle button of 'Show input options in the shelf' option.
+func (i *IMESettings) ToggleShowInputOptionsInShelf() uiauto.Action {
+	return i.settings.LeftClick(toggleShowInputOptionsInShelfFinder)
 }
