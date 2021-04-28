@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/video"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -51,6 +52,7 @@ func init() {
 			},
 			ExtraData:         []string{video.Bear192P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeH264},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklistVM...)),
 		}, {
 			Name: "h264_360p_i420",
 			Val: video.EncodeTestOptions{
@@ -67,6 +69,7 @@ func init() {
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Tulip360P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeH264},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklistVM...)),
 		}, {
 			Name: "h264_720p_i420",
 			Val: video.EncodeTestOptions{
@@ -83,6 +86,7 @@ func init() {
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Tulip720P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeH264},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklistVM...)),
 		}, {
 			Name: "h264_1080p_i420",
 			Val: video.EncodeTestOptions{
@@ -99,6 +103,7 @@ func init() {
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Crowd1080P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeH264},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklistVM...)),
 		}, {
 			Name: "vp8_192p_i420_vm",
 			Val: video.EncodeTestOptions{
@@ -108,6 +113,7 @@ func init() {
 			},
 			ExtraData:         []string{video.Bear192P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP8},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklistVM...)),
 		}, {
 			Name: "vp8_360p_i420_vm",
 			Val: video.EncodeTestOptions{
@@ -116,6 +122,7 @@ func init() {
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Tulip360P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP8},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklistVM...)),
 		}, {
 			Name: "vp8_720p_i420_vm",
 			Val: video.EncodeTestOptions{
@@ -124,6 +131,7 @@ func init() {
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Tulip720P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP8},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklistVM...)),
 		}, {
 			Name: "vp8_1080p_i420_vm",
 			Val: video.EncodeTestOptions{
@@ -132,6 +140,7 @@ func init() {
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Crowd1080P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP8},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklistVM...)),
 		}, {
 			Name: "vp9_192p_i420_vm",
 			Val: video.EncodeTestOptions{
@@ -141,6 +150,7 @@ func init() {
 			},
 			ExtraData:         []string{video.Bear192P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP9},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklistVM...)),
 		}, {
 			Name: "vp9_360p_i420_vm",
 			Val: video.EncodeTestOptions{
@@ -149,6 +159,7 @@ func init() {
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Tulip360P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP9},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklistVM...)),
 		}, {
 			Name: "vp9_720p_i420_vm",
 			Val: video.EncodeTestOptions{
@@ -157,6 +168,7 @@ func init() {
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Tulip720P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP9},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklistVM...)),
 		}, {
 			Name: "vp9_1080p_i420_vm",
 			Val: video.EncodeTestOptions{
@@ -165,6 +177,7 @@ func init() {
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Crowd1080P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP9},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklistVM...)),
 		}},
 	})
 }
