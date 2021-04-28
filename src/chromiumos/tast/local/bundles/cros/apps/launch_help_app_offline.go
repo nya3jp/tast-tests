@@ -88,16 +88,6 @@ func LaunchHelpAppOffline(ctx context.Context, s *testing.State) {
 				}`
 			return helpCtx.EvalJSWithShadowPiercer(ctx, expr, nil)
 		},
-
-		// Verify help article category available offline.
-		// Clicking tab is not very reliable on rendering. Using retry to stabilize the test.
-		ui.WithInterval(1*time.Second).Retry(3,
-			// Expand Help article category by clicking Help tab.
-			uiauto.Combine("click help tab and wait for subtree appears",
-				ui.LeftClick(helpapp.HelpTabFinder),
-				ui.WaitUntilExists(helpapp.TabFinder.Name("Get started")),
-			),
-		),
 	)
 
 	// Run test steps in offline mode.
