@@ -45,7 +45,7 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*App, error) {
 	}
 
 	// Ensure the title of the app is visible
-	if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(titleFinder)(ctx); err != nil {
+	if err := ui.WithTimeout(30 * time.Second).WaitUntilExists(titleFinder)(ctx); err != nil {
 		return nil, errors.Wrap(err, "unable to get app title")
 	}
 
