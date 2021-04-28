@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "086bd670_3a660f6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-28T08:21:39Z",
+      "side": 1,
+      "message": "Looks fine from a formal perspective.",
+      "revId": "6e874c0348a64a80bd736a632909067b6dc33ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01d66de2_65a2ab4b",
@@ -14,6 +31,24 @@
       "writtenOn": "2021-04-27T23:28:46Z",
       "side": 1,
       "message": "should these be spaces instead of tabs?",
+      "revId": "6e874c0348a64a80bd736a632909067b6dc33ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c20274e1_eb977bac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_language.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-04-28T08:21:39Z",
+      "side": 1,
+      "message": "Tabs are fine. All tast tests as well as the tast packages use tabs.",
+      "parentUuid": "01d66de2_65a2ab4b",
       "revId": "6e874c0348a64a80bd736a632909067b6dc33ffb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
