@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a3cc74d_600c3c33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2021-04-28T01:38:35Z",
+      "side": 1,
+      "message": "nit: Looks like it\u0027s only for H264, maybe it\u0027s clear to rename it to EncoderBlocklistH264VM?",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "a379dfa077ed726555ca6d189e0af88ac722d429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
