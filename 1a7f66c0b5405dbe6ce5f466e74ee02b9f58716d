@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b59f4a2_30cac66e",
+        "filename": "src/chromiumos/tast/common/android/adb/adb.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "Maybe nice to pass host/guest from caller to be more explicit.\nYou can have a wrapper for tast/{local,remote} package to make it automatic?",
+      "parentUuid": "43ab2af1_bc4df11c",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 41
+      },
+      "revId": "1a7f66c0b5405dbe6ce5f466e74ee02b9f58716d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f4b4d4_82323f5b",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/its_service.go",
         "patchSetId": 17

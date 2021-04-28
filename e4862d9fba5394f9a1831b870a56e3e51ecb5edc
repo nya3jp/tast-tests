@@ -213,6 +213,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "108a64ac_6d55e306",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "so stdout/stderr is now mixed.\nI\u0027m wondering if this works, specifically concerning interleaving the part of lines from stdout/err.",
+      "revId": "e4862d9fba5394f9a1831b870a56e3e51ecb5edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d50a418f_45177fef",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
         "patchSetId": 8
@@ -277,6 +294,24 @@
       "side": 1,
       "message": "I choose to dump it directly on console because the test items in ITS may take many seconds or minutes to run.\nAnd there will have a corresponding output with running time when each single item is finished like:\n...\nPASS  scene1/test_burst_sameness_manual [30.0s]\nPASS  scene1/test_capture_result [16.0s]   \nSKIP  scene1/test_crop_region_raw [2.2s]        \nPASS  scene1/test_crop_regions [24.6s]\n...\n\nBecause it long blocking task for each test item. I would like to inform developer that it\u0027s still slowly progressing.\nOr alternatively I can parse only the finish line for test items and console log those lines instead?",
       "parentUuid": "59bdc38c_4c0dac02",
+      "revId": "e4862d9fba5394f9a1831b870a56e3e51ecb5edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76020373_2908977e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "I think it makes more sense to pritn only lines you\u0027re interested in.\nYou can still dump the whole output into a file for the future debugging.",
+      "parentUuid": "55772411_888b590e",
       "revId": "e4862d9fba5394f9a1831b870a56e3e51ecb5edc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

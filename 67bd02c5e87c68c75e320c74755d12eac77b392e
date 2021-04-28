@@ -33,6 +33,268 @@
       "message": "@hidehiko, Can you take another look at this CL? thanks.",
       "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f127f8_8504aef2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "Sorry for delay.\nThis CL is much rewritten since my last reply :-).\n\n",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac9327f5_53d5f6f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/its/x86/patch/core.patch",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "Can the patch be upstreamed?",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c06e188_69ab762a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "could you make the variables, rather than functions?\nWe really need to the test metadata statically defined (i.e. defined at build time always). So, we do want to restrict the flexibility. Variable can reduce the chance.",
+      "range": {
+        "startLine": 51,
+        "startChar": 39,
+        "endLine": 51,
+        "endChar": 68
+      },
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3f4f43a_e8cd8506",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "can the test be configured by variable?\nSo, the behavior of testing can be determined without depending on the running environment?",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80c93feb_0111d016",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "style:\n(with following suggestion)\n\nif !ok {\n  s.Fatal(...)\n}\nif r.total ... {\n  ...\n}",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 2
+      },
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03a94ac8_728eedd2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "Can this be done in defer so that it should be always collected?",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce5a4d36_b111af9c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "This is referred from testing metadata. (AddTest()\u0027s argument).\nCould you instead use variables for arrays, or constant for variables?\n\nPlease find my comment above, too.",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af9b7da8_4e0ac82a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "same.",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f959f047_4fdd07c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "nit: ARC (no ++)",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 17
+      },
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9738928a_06bda590",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "Can zip module be used instead of depending on external command?\nTast prefers go\u0027s implementation.",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c81d17e1_1dd1b15e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "I know the transition from py2 to py3, but it happens everywhere, incl Android.\nIs it possible to update upstream, and meanwhile, can we use py2 without modification?",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a63c88ff_24669fe9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "oldEnvPath may not be set if Prepare failed before it.\nI think you\u0027ll need the guard.",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38d41212_d0500bdf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "nit/style: fmt.Sprintf() can work with one call.",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cc1117d_e03a9706",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-28T10:05:11Z",
+      "side": 1,
+      "message": "nit/style: Can be simplified.\n\nif bask \u0026\u0026 front \u0026\u0026 facing !\u003d pb.Facing_FACING_BACK {\n  return 1, nil;\n}\nreturn 0, nil",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 14
+      },
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
