@@ -87,6 +87,30 @@
       },
       "revId": "e2e6cd6f8f7b0adb5ac539a729d5fcc2c96ef688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c696b2fb_0bc7c2ba",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2021-04-28T23:51:03Z",
+      "side": 1,
+      "message": "But the error is not unusual. I expect this to error in every bot that runs. This should only not have an error when running locally with keepState var set.",
+      "parentUuid": "492940f2_7f605e00",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 18
+      },
+      "revId": "e2e6cd6f8f7b0adb5ac539a729d5fcc2c96ef688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
