@@ -523,6 +523,7 @@ func simpleConnectTunneled1x() []simpleConnectParams {
 			APOpts: simpleConnectCommonSecApOpts,
 			SecConfFac: fmt.Sprintf(`tunneled1x.NewConfigFactory(
 				eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
+				tunneled1x.Mode(wpa.ModePureWPA2),
 				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
 				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
 			)`, outer, inner),

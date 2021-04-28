@@ -621,6 +621,7 @@ func init() {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
 						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
+						tunneled1x.Mode(wpa.ModePureWPA2),
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 					),
@@ -667,6 +668,7 @@ func init() {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
 						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
+						tunneled1x.Mode(wpa.ModePureWPA2),
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 					),
@@ -713,6 +715,7 @@ func init() {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
 						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
+						tunneled1x.Mode(wpa.ModePureWPA2),
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 					),
@@ -803,6 +806,7 @@ func init() {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
 						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
+						tunneled1x.Mode(wpa.ModePureWPA2),
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 					),
@@ -849,6 +853,7 @@ func init() {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
 						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
+						tunneled1x.Mode(wpa.ModePureWPA2),
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 					),
@@ -895,6 +900,7 @@ func init() {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
 						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
+						tunneled1x.Mode(wpa.ModePureWPA2),
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 					),
@@ -941,6 +947,7 @@ func init() {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
 						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
+						tunneled1x.Mode(wpa.ModePureWPA2),
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
 					),
@@ -987,6 +994,7 @@ func init() {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
 						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
+						tunneled1x.Mode(wpa.ModePureWPA2),
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
 					),
@@ -1033,6 +1041,7 @@ func init() {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
 						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
+						tunneled1x.Mode(wpa.ModePureWPA2),
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
 					),
