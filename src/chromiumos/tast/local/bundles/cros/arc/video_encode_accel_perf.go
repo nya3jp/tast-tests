@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/video"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // Enable to cache the extracted raw video to speed up the test.
@@ -47,6 +48,7 @@ func init() {
 			},
 			ExtraData:         []string{video.Crowd1080P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeH264},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklistVM...)),
 		}, {
 			Name: "vp8_1080p_i420_vm",
 			Val: video.EncodeTestOptions{
