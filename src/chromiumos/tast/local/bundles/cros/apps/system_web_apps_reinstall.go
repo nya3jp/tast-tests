@@ -30,16 +30,6 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
-			Name:              "default_enabled_apps_unstable",
-			Val:               []chrome.Option{},
-			ExtraHardwareDeps: hwdep.D(pre.SystemWebAppsUnstableModels),
-			ExtraAttr:         []string{"informational"},
-		}, {
-			Name:              "all_apps_unstable",
-			Val:               []chrome.Option{chrome.EnableFeatures("EnableAllSystemWebApps")},
-			ExtraHardwareDeps: hwdep.D(pre.SystemWebAppsUnstableModels),
-			ExtraAttr:         []string{"informational"},
-		}, {
 			Name:              "default_enabled_apps_stable",
 			Val:               []chrome.Option{},
 			ExtraHardwareDeps: hwdep.D(pre.SystemWebAppsStableModels),
