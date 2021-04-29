@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01d8e787_3521fa91",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-29T05:11:03Z",
+      "side": 1,
+      "message": "Please document this field and add some examples.",
+      "range": {
+        "startLine": 28,
+        "startChar": 12,
+        "endLine": 28,
+        "endChar": 36
+      },
+      "revId": "09e14a00124f65c461911415a633378ed00d3909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e309951c_fadca7db",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-29T05:11:03Z",
+      "side": 1,
+      "message": "So now there will be a \u0027,\u0027 in the end, would that be ok?",
+      "range": {
+        "startLine": 73,
+        "startChar": 27,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "09e14a00124f65c461911415a633378ed00d3909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5156b94_58958da7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-29T05:11:03Z",
+      "side": 1,
+      "message": "Is it needed for real usage?",
+      "range": {
+        "startLine": 81,
+        "startChar": 34,
+        "endLine": 81,
+        "endChar": 60
+      },
+      "revId": "09e14a00124f65c461911415a633378ed00d3909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4d89433_c0a4bd26",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-29T05:11:03Z",
+      "side": 1,
+      "message": "Is it gauranteed that locale will not be None and locale.split(\"-\") will have at least one element?",
+      "range": {
+        "startLine": 152,
+        "startChar": 7,
+        "endLine": 152,
+        "endChar": 13
+      },
+      "revId": "09e14a00124f65c461911415a633378ed00d3909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "147b58e4_4a7ab7a9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-29T05:11:03Z",
+      "side": 1,
+      "message": "End with .",
+      "range": {
+        "startLine": 322,
+        "startChar": 67,
+        "endLine": 322,
+        "endChar": 68
+      },
+      "revId": "09e14a00124f65c461911415a633378ed00d3909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90384b6e_c05897c2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-29T05:11:03Z",
+      "side": 1,
+      "message": "End with .",
+      "range": {
+        "startLine": 332,
+        "startChar": 67,
+        "endLine": 332,
+        "endChar": 68
+      },
+      "revId": "09e14a00124f65c461911415a633378ed00d3909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b33a0994_fc61ea95",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-29T05:11:03Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m not qualified to review this since I do not have any experience or knowledge about it.",
+      "range": {
+        "startLine": 333,
+        "startChar": 5,
+        "endLine": 333,
+        "endChar": 19
+      },
+      "revId": "09e14a00124f65c461911415a633378ed00d3909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff193867_7300d403",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-04-29T05:11:03Z",
+      "side": 1,
+      "message": "It seems that an English version is always needed even if another language is tested?",
+      "range": {
+        "startLine": 401,
+        "startChar": 31,
+        "endLine": 401,
+        "endChar": 38
+      },
+      "revId": "09e14a00124f65c461911415a633378ed00d3909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
