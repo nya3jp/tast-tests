@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/dutfs"
-	"chromiumos/tast/remote/firmware"
+	fw "chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/remote/sysutil"
@@ -36,15 +36,6 @@ type RollbackState struct {
 	MinVersion int
 	RWVersion  int
 }
-
-// FWImageType is the type of firmware (RO or RW).
-type FWImageType string
-
-// These are the possible values of FWImageType.
-const (
-	ImageTypeRO FWImageType = "RO"
-	ImageTypeRW FWImageType = "RW"
-)
 
 type firmwareMetadata struct {
 	sha256sum string
@@ -787,7 +778,7 @@ func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.P
 		return errors.Wrapf(err, "failed to set HW write protect to %q", hwWPArg)
 	}
 
-	if err := CheckWriteProtectStateCorrect(ctx, d, fpBoard, ImageTypeRW, enableSWWP, enableHWWP); err != nil {
+	if err := CheckWriteProtectStateCorrect(ctx, d, fpBoard, fw.FWImageTypeRW, enableSWWP, enableHWWP); err != nil {
 		return errors.Wrap(err, "failed to validate write protect settings")
 	}
 
@@ -795,11 +786,11 @@ func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.P
 }
 
 // RebootFpmcu reboots the fingerprint MCU. It does not reboot the AP.
-func RebootFpmcu(ctx context.Context, d *dut.DUT, bootTo FWImageType) error {
+func RebootFpmcu(ctx context.Context, d *dut.DUT, bootTo fw.FWImageType) error {
 	testing.ContextLog(ctx, "Rebooting FPMCU")
 	// This command returns error even on success, so ignore error. b/116396469
 	_ = EctoolCommand(ctx, d, "reboot_ec").Run(ctx)
-	if bootTo == ImageTypeRO {
+	if bootTo == fw.FWImageTypeRO {
 		testing.Sleep(ctx, 500*time.Millisecond)
 		err := EctoolCommand(ctx, d, "rwsigaction", "abort").Run(ctx)
 		if err != nil {
@@ -823,7 +814,7 @@ func RebootFpmcu(ctx context.Context, d *dut.DUT, bootTo FWImageType) error {
 }
 
 // WaitForRunningFirmwareImage waits for the requested image to boot.
-func WaitForRunningFirmwareImage(ctx context.Context, d *dut.DUT, image FWImageType) error {
+func WaitForRunningFirmwareImage(ctx context.Context, d *dut.DUT, image fw.FWImageType) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		firmwareCopy, err := RunningFirmwareCopy(ctx, d)
 		if err != nil {
@@ -837,17 +828,17 @@ func WaitForRunningFirmwareImage(ctx context.Context, d *dut.DUT, image FWImageT
 }
 
 // RunningFirmwareCopy returns the firmware copy on FPMCU (RO or RW).
-func RunningFirmwareCopy(ctx context.Context, d *dut.DUT) (FWImageType, error) {
+func RunningFirmwareCopy(ctx context.Context, d *dut.DUT) (fw.FWImageType, error) {
 	out, err := EctoolCommand(ctx, d, "version").Output(ctx)
 	if err != nil {
-		return FWImageType(""), errors.Wrap(err, "failed to query FPMCU version")
+		return fw.FWImageType(""), errors.Wrap(err, "failed to query FPMCU version")
 	}
 	versionInfoMap := parseColonDelimitedOutput(string(out))
 	firmwareCopy := versionInfoMap["Firmware copy"]
-	if firmwareCopy != string(ImageTypeRO) && firmwareCopy != string(ImageTypeRW) {
-		return FWImageType(""), errors.New("cannot find firmware copy string")
+	if firmwareCopy != string(fw.FWImageTypeRO) && firmwareCopy != string(fw.FWImageTypeRW) {
+		return fw.FWImageType(""), errors.New("cannot find firmware copy string")
 	}
-	return FWImageType(firmwareCopy), nil
+	return fw.FWImageType(firmwareCopy), nil
 }
 
 // RunningRWVersion returns the RW version running on FPMCU.
@@ -938,7 +929,7 @@ func parseColonDelimitedOutput(output string) map[string]string {
 
 // EctoolCommand constructs an "ectool" command for the FPMCU.
 func EctoolCommand(ctx context.Context, d *dut.DUT, args ...string) *ssh.Cmd {
-	cmd := firmware.NewECTool(d, firmware.ECToolNameFingerprint).Command(args...)
+	cmd := fw.NewECTool(d, fw.ECToolNameFingerprint).Command(args...)
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd.Args))
 	return cmd
 }
