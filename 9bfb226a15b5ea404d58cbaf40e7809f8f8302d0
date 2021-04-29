@@ -33,6 +33,24 @@
       "message": "Do we have to hard code the number of scrolls and then do a sequential search? It does not generalize to all situation and looks very inefficient. Will it works if we use Descendants in ui/automation.go (or something similar) to find the object and bring it to focus? \n\nIf we have to use scroll, you still can use Descendants to find the number of entries, right?",
       "revId": "9bfb226a15b5ea404d58cbaf40e7809f8f8302d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d270754a_e8e8eb11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-29T00:06:47Z",
+      "side": 1,
+      "message": "This has been commented earlier and there is a TODO to address this. IIUC the task manager list is dynamic and keeps updating as it is scrolled down. Hence need an efficient way to check an item in the list.",
+      "parentUuid": "fb4e3dc4_6a39de76",
+      "revId": "9bfb226a15b5ea404d58cbaf40e7809f8f8302d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
