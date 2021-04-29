@@ -59,6 +59,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a294eba_f98507c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T11:28:44Z",
+      "side": 1,
+      "message": "Thanks a lot for the comment. I have updated the test logic. Your cl is merged. I will test it again with the latest build before submit.",
+      "parentUuid": "1b842b5a_7791f602",
+      "revId": "db8d8ba4d82f0da04f8d2e1ba016914775b2dca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd038cec_247b809c",
