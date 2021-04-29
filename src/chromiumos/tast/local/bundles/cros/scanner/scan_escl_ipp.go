@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net"
+	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
@@ -168,6 +169,19 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 			Interval: 1 * time.Second,
 		}); err != nil {
 			s.Fatal("Failed to wait for ippusb_bridge to start: ", err)
+		}
+
+		// Even after ippusb_bridge is listening, it may take a few seconds to finish
+		// probing USB devices before it responds.  In order to avoid lorgnette timing out,
+		// do an initial query to make sure traffic is passing through the tunnel.
+		resp, err := http.Get(fmt.Sprintf("http://localhost:%d/eSCL/ScannerCapabilities", port))
+		if err != nil {
+			s.Fatal("Failed to send query to ippusb_bridge: ", err)
+		}
+		_, err = ioutil.ReadAll(resp.Body)
+		resp.Body.Close()
+		if err != nil {
+			s.Fatal("Failed to read response from ippusb_bridge: ", err)
 		}
 
 		deviceName = fmt.Sprintf("airscan:escl:TestScanner:http://localhost:%d/eSCL", port)
