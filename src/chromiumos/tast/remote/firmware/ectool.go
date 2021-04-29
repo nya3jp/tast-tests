@@ -52,6 +52,17 @@ func (ec *ECTool) Command(args ...string) *ssh.Cmd {
 	return ec.dut.Conn().Command("ectool", args...)
 }
 
+// Hello pings the EC as a communication check.
+// It returns nil if communication was established successfully and an
+// error otherwise.
+func (ec *ECTool) Hello(ctx context.Context) error {
+	_, err := ec.Command("hello").Output(ctx, ssh.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "running 'ectool hello' on DUT")
+	}
+	return nil
+}
+
 // Version returns the EC version of the active firmware.
 func (ec *ECTool) Version(ctx context.Context) (string, error) {
 	output, err := ec.Command("version").Output(ctx, ssh.DumpLogOnError)
