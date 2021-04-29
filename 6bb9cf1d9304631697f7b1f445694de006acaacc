@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c5c8b1_33abaf5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-04-29T14:27:05Z",
+      "side": 1,
+      "message": "Please file a bug to figure out what\u0027s up with kukui-kernelnext, but this should be fine for now. Thanks!",
+      "revId": "6bb9cf1d9304631697f7b1f445694de006acaacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
