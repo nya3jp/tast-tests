@@ -23,7 +23,7 @@ func init() {
 }
 
 func ECVersion(ctx context.Context, s *testing.State) {
-	ec := firmware.NewECTool(s.DUT())
+	ec := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
 	version, err := ec.Version(ctx)
 	if err != nil {
 		s.Fatal("Failed to determine EC version: ", err)
