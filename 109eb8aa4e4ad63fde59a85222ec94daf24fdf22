@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92607c3a_344e308e",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-29T19:32:55Z",
+      "side": 1,
+      "message": "nit/style: Per https://github.com/golang/go/wiki/CodeReviewComments#initialisms, initialisms should have a consistent case. Please update to ECToolCommand.",
+      "range": {
+        "startLine": 940,
+        "startChar": 5,
+        "endLine": 940,
+        "endChar": 18
+      },
+      "revId": "109eb8aa4e4ad63fde59a85222ec94daf24fdf22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
