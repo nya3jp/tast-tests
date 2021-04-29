@@ -22,6 +22,30 @@
       },
       "revId": "109eb8aa4e4ad63fde59a85222ec94daf24fdf22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37fb6d8b_aa5ec855",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-29T19:48:59Z",
+      "side": 1,
+      "message": "Keeping this function in fingerprint.go is strictly for bridging compatibility and would eventually be removed.\n\nThat being said, I believe the capitalization here is more proper than \"ECTool\", since we are referring to the \"ectool\" command.",
+      "parentUuid": "92607c3a_344e308e",
+      "range": {
+        "startLine": 940,
+        "startChar": 5,
+        "endLine": 940,
+        "endChar": 18
+      },
+      "revId": "109eb8aa4e4ad63fde59a85222ec94daf24fdf22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
