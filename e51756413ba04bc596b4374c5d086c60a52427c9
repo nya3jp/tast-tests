@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd9bd224_bfcbc05d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308136
+      },
+      "writtenOn": "2021-04-29T02:22:32Z",
+      "side": 1,
+      "message": "Happy to add a specific substitute if we have any in mind. Otherwise, the arc-core@ list seems to accurately reflect the state of affairs.",
+      "revId": "e51756413ba04bc596b4374c5d086c60a52427c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
