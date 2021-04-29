@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	fw "chromiumos/tast/remote/firmware"
 )
 
 const (
@@ -53,14 +54,14 @@ func flashprotectState(ctx context.Context, d *dut.DUT) (string, error) {
 	return string(bytes), nil
 }
 
-func expectedFlashProtectOutput(fpBoard FPBoardName, curImage FWImageType, softwareWriteProtectEnabled, hardwareWriteProtectEnabled bool) string {
+func expectedFlashProtectOutput(fpBoard FPBoardName, curImage fw.FWImageType, softwareWriteProtectEnabled, hardwareWriteProtectEnabled bool) string {
 	expectedOutput := ""
 
 	switch {
 	case softwareWriteProtectEnabled && hardwareWriteProtectEnabled:
 		// TODO(b/149590275): remove once fixed
 		if fpBoard == FPBoardNameBloonchipper {
-			if curImage == ImageTypeRO {
+			if curImage == fw.FWImageTypeRO {
 				expectedOutput = flashprotectOutputHardwareAndSoftwareWriteProtectEnabledROBloonchipper
 			} else {
 				expectedOutput = flashprotectOutputHardwareAndSoftwareWriteProtectEnabledBloonchipper
@@ -84,7 +85,7 @@ func expectedFlashProtectOutput(fpBoard FPBoardName, curImage FWImageType, softw
 
 // CheckWriteProtectStateCorrect correct returns an error if the FPMCU's current write
 // protection state does not match the expected state.
-func CheckWriteProtectStateCorrect(ctx context.Context, d *dut.DUT, fpBoard FPBoardName, curImage FWImageType, softwareWriteProtectEnabled, hardwareWriteProtectEnabled bool) error {
+func CheckWriteProtectStateCorrect(ctx context.Context, d *dut.DUT, fpBoard FPBoardName, curImage fw.FWImageType, softwareWriteProtectEnabled, hardwareWriteProtectEnabled bool) error {
 	output, err := flashprotectState(ctx, d)
 	if err != nil {
 		return err
