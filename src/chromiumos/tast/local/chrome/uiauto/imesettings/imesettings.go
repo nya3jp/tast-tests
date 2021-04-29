@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -25,6 +26,7 @@ var defaultPollOpts = testing.PollOptions{Timeout: 10 * time.Second, Interval: 1
 
 var addInputMethodButton = nodewith.Name("Add input methods").Role(role.Button)
 var searchInputMethodField = nodewith.Name("Search by language or input name").Role(role.SearchBox)
+var toggleShowInputOptionsInShelfFinder = nodewith.Name("Show input options in the shelf").Role(role.ToggleButton)
 
 // IMESettings is a wrapper around the settings app used to control the inputs settings page.
 type IMESettings struct {
@@ -74,4 +76,33 @@ func (i *IMESettings) ClickAddButtonToConfirm() uiauto.Action {
 // RemoveInputMethod returns a function that removes the input method by clicking cross button next to the input method on UI.
 func (i *IMESettings) RemoveInputMethod(inputMethodName string) uiauto.Action {
 	return i.settings.LeftClick(nodewith.Name("Remove " + inputMethodName).Role(role.Button))
+}
+
+// ToggleShowInputOptionsInShelf clicks toggle button of 'Show input options in the shelf' option.
+func (i *IMESettings) ToggleShowInputOptionsInShelf() uiauto.Action {
+	return i.settings.LeftClick(toggleShowInputOptionsInShelfFinder)
+}
+
+// ShowInputOptionsInShelfShouldBe verifies the 'Show input options in the shelf' option.
+func (i *IMESettings) ShowInputOptionsInShelfShouldBe(cr *chrome.Chrome, tconn *chrome.TestConn, expected bool) uiauto.Action {
+	const toggleButtonCSSSelector = `cr-toggle[aria-label="Show input options in the shelf"]`
+	expr := fmt.Sprintf(`
+		var optionNode = shadowPiercingQuery(%q);
+		if(optionNode == undefined){
+			throw new Error("Show input options in shelf is not found.");
+		}
+		optionNode.getAttribute("aria-pressed")==="true";
+		`, toggleButtonCSSSelector)
+
+	return uiauto.New(tconn).WithInterval(time.Second).Retry(5, func(ctx context.Context) error {
+		var actual bool
+		if err := i.settings.EvalJSWithShadowPiercer(ctx, cr, expr, &actual); err != nil {
+			return testing.PollBreak(err)
+		}
+		if actual != expected {
+			return errors.Errorf(`'Show input options in shelf' option value is incorrect. got %v; want %v`, actual, expected)
+		}
+		return nil
+
+	})
 }
