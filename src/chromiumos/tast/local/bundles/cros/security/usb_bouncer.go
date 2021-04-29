@@ -142,6 +142,9 @@ func USBBouncer(ctx context.Context, s *testing.State) {
 	if err := filepath.Walk(userStateDir, func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() {
 			return os.Remove(path)
+		} else if info.Name() == "device-db" {
+			// Chmod to 755 to trigger brillo::SafeFD::Rmdir at least once for seccomp coverage.
+			os.Chmod(path, 755)
 		}
 		return nil
 	}); err != nil {
