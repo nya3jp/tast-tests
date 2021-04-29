@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54b68a21_2b328e4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-29T08:09:19Z",
+      "side": 1,
+      "message": "LGTM with nites",
+      "revId": "40677df1910b9afc5ca6da02cd1da057dc70da38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79eaf44e_0d744907",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/netflix.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-29T08:09:19Z",
+      "side": 1,
+      "message": "nit: Is this right as sign in has been done already.?",
+      "range": {
+        "startLine": 206,
+        "startChar": 13,
+        "endLine": 206,
+        "endChar": 27
+      },
+      "revId": "40677df1910b9afc5ca6da02cd1da057dc70da38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
