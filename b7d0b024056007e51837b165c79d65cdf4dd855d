@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7274276_aed8bf1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_wake_locks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-04-29T18:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f8ae13d_a14f5b5b",
+      "range": {
+        "startLine": 53,
+        "startChar": 63,
+        "endLine": 53,
+        "endChar": 64
+      },
+      "revId": "b7d0b024056007e51837b165c79d65cdf4dd855d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c185f37c_521c92e0",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b73c5895_090226b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_wake_locks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-04-29T18:01:16Z",
+      "side": 1,
+      "message": "It won\u0027t work if it\u0027s moved outside the subtest.",
+      "parentUuid": "c185f37c_521c92e0",
+      "revId": "b7d0b024056007e51837b165c79d65cdf4dd855d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50e0c1b1_7fb6361f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/allow_wake_locks_index.html",
         "patchSetId": 4
@@ -54,6 +96,24 @@
       "writtenOn": "2021-04-29T16:08:48Z",
       "side": 1,
       "message": "Any reason not to handle this in tast? Nobody will see this error message otherwise.",
+      "revId": "b7d0b024056007e51837b165c79d65cdf4dd855d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42a64856_8748c990",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/allow_wake_locks_index.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-04-29T18:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e0c1b1_7fb6361f",
       "revId": "b7d0b024056007e51837b165c79d65cdf4dd855d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
