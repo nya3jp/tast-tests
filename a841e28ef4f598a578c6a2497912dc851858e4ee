@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee5170cb_e26f6120",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-04-29T17:52:46Z",
+      "side": 1,
+      "message": "Was there a bug that motivated this work? It\u0027s helpful to provide  in case you stumbled on this as part of some larger (perhaps unrelated) effort.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "a841e28ef4f598a578c6a2497912dc851858e4ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
