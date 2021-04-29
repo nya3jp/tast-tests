@@ -70,12 +70,15 @@ var testFiles = []string{
 	"webserver.go",
 }
 
+// TODO: Disable unit test due to chromium:1204172.
+/*
 func TestParams(t *testing.T) {
 	params := crostini.MakeTestParams(t)
 	for _, filename := range testFiles {
 		genparams.Ensure(t, filename, params)
 	}
 }
+*/
 
 var perfTests = map[string]time.Duration{
 	"cpu_perf.go":      12 * time.Minute,
