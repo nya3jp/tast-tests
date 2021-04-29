@@ -22,31 +22,6 @@ const (
 	adbHome = "/tmp/adb_home"
 )
 
-// LaunchServer installs vendor keys and relaunches the local ADB sever.
-// The server must be relaunched to load the vendor keys.
-func LaunchServer(ctx context.Context) error {
-	testing.ContextLog(ctx, "Installing ADB vendor keys")
-	if err := installVendorKeys(); err != nil {
-		return err
-	}
-
-	testing.ContextLog(ctx, "Killing existing ADB server process(es)")
-	if err := killADBLocalServer(ctx); err != nil {
-		return errors.Wrap(err, "failed to kill ADB local server")
-	}
-
-	// If using adb to connect to a phone before a CrOS login we need to create the adb home.
-	if err := os.MkdirAll("/run/arc/adb/", 0755); err != nil {
-		return errors.Wrap(err, "failed to create adb home directory")
-	}
-
-	testing.ContextLog(ctx, "Starting ADB server")
-	if err := Command(ctx, "start-server").Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed starting ADB local server")
-	}
-	return nil
-}
-
 // Command creates an ADB command with appropriate environment variables.
 func Command(ctx context.Context, args ...string) *testexec.Cmd {
 	cmd := testexec.CommandContext(ctx, "adb", args...)
@@ -58,11 +33,11 @@ func Command(ctx context.Context, args ...string) *testexec.Cmd {
 	return cmd
 }
 
-// killADBLocalServer kills the existing ADB local server if it is running.
+// KillADBLocalServer kills the existing ADB local server if it is running.
 //
 // We do not use adb kill-server since it is unreliable (crbug.com/855325).
 // We do not use killall since it can wait for orphan adb processes indefinitely (b/137797801).
-func killADBLocalServer(ctx context.Context) error {
+func KillADBLocalServer(ctx context.Context) error {
 	ps, err := process.Processes()
 	if err != nil {
 		return err
