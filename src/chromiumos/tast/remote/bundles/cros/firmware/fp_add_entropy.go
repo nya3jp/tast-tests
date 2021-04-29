@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/dutfs"
+	fw "chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -53,7 +54,7 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to query running firmware copy: ", err)
 	}
-	if firmwareCopy != fingerprint.ImageTypeRW {
+	if firmwareCopy != fw.FWImageTypeRW {
 		s.Fatal("Not running RW firmware")
 	}
 
@@ -72,7 +73,7 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Adding entropy from RO should succeed")
-	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRO); err != nil {
+	if err := fingerprint.RebootFpmcu(ctx, d, fw.FWImageTypeRO); err != nil {
 		s.Fatal("Failed to reboot to RO: ", err)
 	}
 	_ = fingerprint.AddEntropy(ctx, d, false)
@@ -83,7 +84,7 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Adding entropy with reset (double write) from RO should succeed")
-	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRO); err != nil {
+	if err := fingerprint.RebootFpmcu(ctx, d, fw.FWImageTypeRO); err != nil {
 		s.Fatal("Failed to reboot to RO: ", err)
 	}
 	_ = fingerprint.AddEntropy(ctx, d, true)
@@ -94,7 +95,7 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Switching back to RW")
-	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRW); err != nil {
+	if err := fingerprint.RebootFpmcu(ctx, d, fw.FWImageTypeRW); err != nil {
 		s.Fatal("Failed to reboot to RW: ", err)
 	}
 	testing.ContextLog(ctx, "Validating nothing changed")
