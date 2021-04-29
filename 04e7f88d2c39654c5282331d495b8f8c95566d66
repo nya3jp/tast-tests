@@ -16,6 +16,58 @@
       "message": "Hi Otabek:\n\nI need your help in testing it with servo in different condition. Please let me know what I should do next. Thanks.\n\nSeewai",
       "revId": "04e7f88d2c39654c5282331d495b8f8c95566d66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13ff07e9_3e69ffab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2021-04-29T18:55:02Z",
+      "side": 1,
+      "message": "Hi Seewai. Can you run the test from local on the bad setup (with bad servo)?\n\nI think we can extract defer logic to some private method and run on good and bad servos?\n\nI do not know to run task from local :)",
+      "parentUuid": "71050096_8dfe39ba",
+      "revId": "04e7f88d2c39654c5282331d495b8f8c95566d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d6a3f57_f166379e",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2021-04-29T18:55:02Z",
+      "side": 1,
+      "message": "It is good to have original error.\nIf exit code is not 0 then servod is not running and we do not need try to run dut-control as it will fail.\n\nPlease print `out` even we do not have error for debugging",
+      "revId": "04e7f88d2c39654c5282331d495b8f8c95566d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0414a3c4_9a01f654",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2021-04-29T18:55:02Z",
+      "side": 1,
+      "message": "please print out for debugging",
+      "revId": "04e7f88d2c39654c5282331d495b8f8c95566d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
