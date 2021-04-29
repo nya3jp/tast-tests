@@ -6,6 +6,7 @@ package servo
 
 import (
 	"context"
+	"fmt"
 	"net"
 	"strings"
 	"time"
@@ -32,7 +33,7 @@ type Proxy struct {
 // to the host running servod and servod connections will be forwarded through it.
 // keyFile and keyDir are used for establishing the SSH connection and should
 // typically come from dut.DUT's KeyFile and KeyDir methods.
-func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (*Proxy, error) {
+func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (newProxy *Proxy, err error) {
 	var pxy Proxy
 	toClose := &pxy
 	defer func() {
@@ -64,6 +65,22 @@ func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (*Proxy, error)
 			return nil, err
 		}
 
+		defer func() {
+			// if there is an error connecting to servo, check servo status.
+			if err == nil {
+				return
+			}
+			// Check if servod is running of the servo host.
+			if out, servoErr := pxy.hst.Command(fmt.Sprintf("servodtool instance show -p %v", port)).CombinedOutput(ctx); err != nil {
+				err = errors.Wrapf(err, "failed to run servodtool on servo host: %v: %v", servoErr, out)
+			}
+
+			// Check if servod is busy.
+			if out, servoErr := pxy.hst.Command(fmt.Sprintf("dut-control -p %v serialname", port)).CombinedOutput(ctx); err != nil {
+				err = errors.Wrapf(err, "failed to run dut-control on servo host: %v: %v", servoErr, out)
+			}
+		}()
+
 		// Next, forward a local port over the SSH connection to the servod port.
 		testing.ContextLog(ctx, "Creating forwarded connection to port ", port)
 		pxy.fwd, err = pxy.hst.NewForwarder("localhost:0", "localhost:"+port,
@@ -74,7 +91,6 @@ func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (*Proxy, error)
 		spec = pxy.fwd.LocalAddr().String()
 	}
 
-	var err error
 	testing.ContextLog(ctx, "Connecting to servod at ", spec)
 	pxy.svo, err = New(ctx, spec)
 	if err != nil {
