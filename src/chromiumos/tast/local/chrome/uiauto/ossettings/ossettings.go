@@ -9,6 +9,7 @@ package ossettings
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/testing"
 )
 
@@ -160,7 +162,8 @@ func (s *OSSettings) LaunchWhatsNew() uiauto.Action {
 
 // ChromeConn returns a Chrome connection to the Settings app.
 func (s *OSSettings) ChromeConn(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
-	settingsConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(urlPrefix))
+	targetFilter := func(t *chrome.Target) bool { return strings.HasPrefix(t.URL, urlPrefix) }
+	settingsConn, err := cr.NewConnForTarget(ctx, targetFilter)
 	if err != nil {
 		return nil, err
 	}
@@ -210,4 +213,14 @@ func (s *OSSettings) EnablePINUnlock(cr *chrome.Chrome, password, PIN string, au
 // Useful for checking that some content has loaded and Settings is ready to use.
 func (s *OSSettings) WaitForSearchBox() uiauto.Action {
 	return s.ui.WaitUntilExists(SearchBoxFinder)
+}
+
+// EvalJSWithShadowPiercer executes javascript in Settings app web page.
+func (s *OSSettings) EvalJSWithShadowPiercer(ctx context.Context, cr *chrome.Chrome, expr string, out interface{}) error {
+	conn, err := s.ChromeConn(ctx, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to Settings web page")
+	}
+	defer conn.Close()
+	return webutil.EvalWithShadowPiercer(ctx, conn, expr, out)
 }
