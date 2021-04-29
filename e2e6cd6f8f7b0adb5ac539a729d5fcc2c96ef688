@@ -135,6 +135,30 @@
       },
       "revId": "e2e6cd6f8f7b0adb5ac539a729d5fcc2c96ef688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb907a34_b3e0f3b6",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-04-29T00:32:23Z",
+      "side": 1,
+      "message": "FYI, as regards the discussion of TerminaImageExists(), the Tast Reviewer then also raised this issue... https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2367574/10..14/src/chromiumos/tast/local/vm/images.go#b35\n\nAnyway, I don\u0027t necessarily agree but will let you continue anyway, I think this is a small point :)",
+      "parentUuid": "4c6f2882_449ed1c3",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 18
+      },
+      "revId": "e2e6cd6f8f7b0adb5ac539a729d5fcc2c96ef688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
