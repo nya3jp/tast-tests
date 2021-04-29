@@ -30,6 +30,20 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedInDisableSync(),
+		Params: []testing.Param{
+			{
+				// Primary form factor is not tablet.
+				Name:              "",
+				Val:               false,
+				ExtraSoftwareDeps: []string{"no_tablet_form_factor"},
+			},
+			{
+				// Primary form factor is tablet.
+				Name:              "tablet_form_factor",
+				Val:               true,
+				ExtraSoftwareDeps: []string{"tablet_form_factor"},
+			},
+		},
 	})
 }
 
@@ -53,8 +67,14 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 		chromeApp.Name = "Google Chrome"
 	}
 
-	default2Apps := []apps.App{chromeApp, apps.Files}
-	default5Apps := append(default2Apps, apps.Gmail, apps.Docs, apps.Youtube)
+	tabletMode := s.Param().(bool)
+	var defaultAppsPartial []apps.App
+	if tabletMode {
+		defaultAppsPartial = []apps.App{chromeApp}
+	} else {
+		defaultAppsPartial = []apps.App{chromeApp, apps.Files}
+	}
+	defaultAppsFull := append(defaultAppsPartial, apps.Gmail, apps.Docs, apps.Youtube)
 
 	// Check that default apps are already pinned once logged in.
 	shelfItems, err := ash.ShelfItems(ctx, tconn)
@@ -63,12 +83,12 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 	}
 
 	var defaultApps []apps.App
-	if len(shelfItems) == 2 {
-		defaultApps = default2Apps
-	} else if len(shelfItems) == 5 {
-		defaultApps = default5Apps
+	if len(shelfItems) == len(defaultAppsPartial) {
+		defaultApps = defaultAppsPartial
+	} else if len(shelfItems) == len(defaultAppsFull) {
+		defaultApps = defaultAppsFull
 	} else {
-		s.Fatal("Unexpected number of apps in shelf, expected 2 or 5, got: ", len(shelfItems))
+		s.Fatalf("Unexpected number of apps in shelf, expected  %d or %d, got: %d", len(defaultAppsPartial), len(defaultAppsFull), len(shelfItems))
 	}
 
 	for _, app := range defaultApps {
