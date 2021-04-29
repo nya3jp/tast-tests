@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1d4dd5_24de9ce8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-29T20:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d236c7ef_6da94f84",
+      "range": {
+        "startLine": 7,
+        "startChar": 47,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c26e6479_a968488f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-29T07:37:18Z",
       "side": 1,
       "message": "nit: SELinuxViolation",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb1475c4_176f6f0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-29T20:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c26e6479_a968488f",
       "range": {
         "startLine": 24,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44c77c34_54ca5041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-29T20:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fb35998_44c425ac",
+      "range": {
+        "startLine": 25,
+        "startChar": 43,
+        "endLine": 25,
+        "endChar": 50
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "addbdc6c_9ac1d88a",
@@ -83,6 +155,24 @@
       "writtenOn": "2021-04-29T07:37:18Z",
       "side": 1,
       "message": "Can you add a comment on which step(s) do you expect to take a longer time?",
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bbab82c_619a86e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-29T20:41:30Z",
+      "side": 1,
+      "message": "This was an overestimate; changed to something more reasonable.\n\nIf I don\u0027t explicitly specify the timeout, I get an error that the timeout is zero from a checker script:\n\ntast-local-tests-cros-0.0.1-r5990: --- FAIL: TestTimeout (0.00s)\ntast-local-tests-cros-0.0.1-r5990:     testcheck.go:48: arc.SelinuxViolation: timeout is too short (0s \u003c 3m50s)\ntast-local-tests-cros-0.0.1-r5990: FAIL",
+      "parentUuid": "addbdc6c_9ac1d88a",
       "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72fd55cc_3b8ee7a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-29T20:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80d00545_f346bc93",
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ed8439d_30b35634",
@@ -117,6 +225,30 @@
       "writtenOn": "2021-04-29T07:58:45Z",
       "side": 1,
       "message": "nit: it makes sense to pass 15*time.Seconds instead of introducing new context",
+      "range": {
+        "startLine": 81,
+        "startChar": 31,
+        "endLine": 81,
+        "endChar": 53
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4f56f92_34434387",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-29T20:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ed8439d_30b35634",
       "range": {
         "startLine": 81,
         "startChar": 31,
@@ -150,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f44f0870_614a6ca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-29T20:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8782b9da_4dd67eaf",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 71
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e9c28e1_4b6773f5",
@@ -163,6 +319,30 @@
       "writtenOn": "2021-04-29T07:58:45Z",
       "side": 1,
       "message": "nit: there is no need to use fmt.Sprintf here, you don\u0027t do formatting.",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 88,
+        "endChar": 20
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "858c4782_54b2db95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-29T20:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e9c28e1_4b6773f5",
       "range": {
         "startLine": 88,
         "startChar": 9,
@@ -213,6 +393,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3412d60_7665172a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-29T20:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ff43bf9_75f023bc",
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7899202_ca571d0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-29T20:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11497bf5_d790e1d5",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 14
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "956227e2_3f796524",
@@ -226,6 +448,30 @@
       "writtenOn": "2021-04-29T07:58:45Z",
       "side": 1,
       "message": "nit: content?",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 109,
+        "endChar": 11
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bab78e9_207243fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-29T20:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "956227e2_3f796524",
       "range": {
         "startLine": 109,
         "startChar": 3,
@@ -259,6 +505,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa2ac438_d10f0c5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-29T20:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef1308c8_d7c99e3e",
+      "range": {
+        "startLine": 114,
+        "startChar": 24,
+        "endLine": 114,
+        "endChar": 41
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6804c4c_199f70c3",
@@ -272,6 +542,30 @@
       "writtenOn": "2021-04-29T07:58:45Z",
       "side": 1,
       "message": "nit: use %q",
+      "range": {
+        "startLine": 115,
+        "startChar": 28,
+        "endLine": 115,
+        "endChar": 29
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2480ca15_3040e04b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-29T20:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6804c4c_199f70c3",
       "range": {
         "startLine": 115,
         "startChar": 28,
