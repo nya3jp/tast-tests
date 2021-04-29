@@ -1,0 +1,30 @@
+<!-- Copyright 2021 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Wake Lock Page</title>
+  <script type="text/javascript">
+    if ('wakeLock' in navigator) {
+      const requestWakeLock = async () => {
+        try {
+          wakeLock = await navigator.wakeLock.request('screen');
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      requestWakeLock()
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+		<h1>Wake Lock Active</h1>
+	</header>
+</body>
+
+</html>
