@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/wpasupplicant"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/wpasupplicant"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/network"
