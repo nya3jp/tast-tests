@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb82b0bc_8448a047",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-29T23:50:09Z",
+      "side": 1,
+      "message": "This is a bit beyond my comfort zone, can you find someone from the WiFi team to review this?",
+      "revId": "6417eb8582b5d59712d5024ce4451abe9202175f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
