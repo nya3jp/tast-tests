@@ -9,12 +9,47 @@ package firmware
 
 import (
 	"context"
-	"regexp"
+	"strings"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
+	"chromiumos/tast/testing"
 )
+
+// UnmarshalerECTool is the interface implemented by types that can unmarshal
+// the ectool output of themselves.
+//
+// This is inspired by json.Unmarshaler.
+type UnmarshalerECTool interface {
+	UnmarshalECTool([]byte) error
+}
+
+// UnmarshalECTool parses the output from ectool into v.
+func UnmarshalECTool(data []byte, v UnmarshalerECTool) error {
+	return v.UnmarshalECTool(data)
+}
+
+// FWImageType is the type of firmware (RO or RW).
+type FWImageType string
+
+// The different firmware image type.
+const (
+	FWImageTypeUnknown FWImageType = "unknown"
+	FWImageTypeRO      FWImageType = "RO"
+	FWImageTypeRW      FWImageType = "RW"
+)
+
+// UnmarshalECTool unmarshal part of ectool's output into an FWImageType.
+func (u *FWImageType) UnmarshalECTool(data []byte) error {
+	switch active := FWImageType(data); active {
+	case FWImageTypeRO, FWImageTypeRW, FWImageTypeUnknown:
+		*u = active
+		return nil
+	default:
+		return errors.Errorf("received unrecognized image type %q", active)
+	}
+}
 
 // ECToolName specifies which of the many Chromium EC based MCUs ectool will
 // be communicated with.
@@ -39,45 +74,109 @@ func NewECTool(d *dut.DUT, name ECToolName) *ECTool {
 	return &ECTool{dut: d, name: name}
 }
 
-// Regexps to capture values outputted by ectool version.
-var (
-	reFirmwareCopy = regexp.MustCompile(`Firmware copy:\s*(RO|RW)`)
-	reROVersion    = regexp.MustCompile(`RO version:\s*(\S+)\s`)
-	reRWVersion    = regexp.MustCompile(`RW version:\s*(\S+)\s`)
-)
-
 // Command return the prebuilt ssh Command with options and args applied.
 func (ec *ECTool) Command(args ...string) *ssh.Cmd {
 	args = append([]string{"--name=" + string(ec.name)}, args...)
 	return ec.dut.Conn().Command("ectool", args...)
 }
 
+// ECToolVersion holds the version parts that are returned by the
+// ectool version command.
+type ECToolVersion struct {
+	Active      FWImageType
+	ROVersion   string
+	RWVersion   string
+	BuildInfo   string
+	ToolVersion string
+}
+
+// String composes a multi-line print friendly string of ECToolVersion.
+func (ver *ECToolVersion) String() string {
+	var b strings.Builder
+	b.WriteString("Active Image: " + string(ver.Active) + "\n")
+	b.WriteString("RO Version:   " + ver.ROVersion + "\n")
+	b.WriteString("RW Version:   " + ver.RWVersion + "\n")
+	b.WriteString("Build Info:   " + ver.BuildInfo + "\n")
+	b.WriteString("Tool Version: " + ver.ToolVersion)
+	return b.String()
+}
+
+// UnmarshalECTool unmarshals ectool output into an ECToolVersion.
+func (ver *ECToolVersion) UnmarshalECTool(data []byte) error {
+	values := parseColonDelimited(string(data))
+
+	var v ECToolVersion
+
+	active, ok := values["Firmware copy"]
+	if !ok {
+		return errors.New("missing firmware copy")
+	}
+	if err := UnmarshalECTool([]byte(active), &v.Active); err != nil {
+		return err
+	}
+
+	if v.ROVersion, ok = values["RO version"]; !ok {
+		return errors.New("missing RO version")
+	}
+	if v.RWVersion, ok = values["RW version"]; !ok {
+		return errors.New("missing RW version")
+	}
+	if v.BuildInfo, ok = values["Build info"]; !ok {
+		return errors.New("missing build info")
+	}
+	if v.ToolVersion, ok = values["Tool version"]; !ok {
+		return errors.New("missing tool version")
+	}
+
+	*ver = v
+	return nil
+}
+
 // Version returns the EC version of the active firmware.
-func (ec *ECTool) Version(ctx context.Context) (string, error) {
+func (ec *ECTool) Version(ctx context.Context) (ECToolVersion, error) {
 	output, err := ec.Command("version").Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
-		return "", errors.Wrap(err, "running 'ectool version' on DUT")
+		return ECToolVersion{},
+			errors.Wrap(err, "running 'ectool version' on DUT")
 	}
 
-	// Parse output to determine whether RO or RW is the active firmware.
-	match := reFirmwareCopy.FindSubmatch(output)
-	if len(match) == 0 {
-		return "", errors.Errorf("did not find firmware copy in 'ectool version' output: %s", output)
+	var ver ECToolVersion
+	if err := UnmarshalECTool(output, &ver); err != nil {
+		testing.ContextLogf(ctx, "Bad ectool output: %q", string(output))
+		return ECToolVersion{},
+			errors.Wrap(err, "failed to unmarshal ectool version")
 	}
-	var reActiveFWVersion *regexp.Regexp
-	switch string(match[1]) {
-	case "RO":
-		reActiveFWVersion = reROVersion
-	case "RW":
-		reActiveFWVersion = reRWVersion
+
+	return ver, nil
+}
+
+// VersionActive returns the EC version of the active firmware.
+func (ec *ECTool) VersionActive(ctx context.Context) (string, error) {
+	ver, err := ec.Version(ctx)
+	if err != nil {
+		return "", err
+	}
+
+	switch ver.Active {
+	case FWImageTypeRO:
+		return ver.ROVersion, nil
+	case FWImageTypeRW:
+		return ver.RWVersion, nil
 	default:
-		return "", errors.Errorf("unexpected match from reFirmwareCopy: got %s; want RO or RW", match[1])
+		return "", errors.Errorf("unknown active image %q", string(ver.Active))
 	}
+}
 
-	// Parse either RO version line or RW version line, depending on which is active, to find the active firmware version.
-	match = reActiveFWVersion.FindSubmatch(output)
-	if len(match) == 0 {
-		return "", errors.Errorf("failed to match regexp %s in ectool version output: %s", reActiveFWVersion, output)
+// parseColonDelimited parses colon delimited key values into a map.
+func parseColonDelimited(text string) map[string]string {
+	ret := map[string]string{}
+	for _, line := range strings.Split(text, "\n") {
+		// Note that the build info line uses ':'s as time of date delimiters.
+		splits := strings.SplitN(line, ":", 2)
+		if len(splits) != 2 {
+			continue
+		}
+		ret[strings.TrimSpace(splits[0])] = strings.TrimSpace(splits[1])
 	}
-	return string(match[1]), nil
+	return ret
 }
