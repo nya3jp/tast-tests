@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feccbda4_6ef78fa1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-29T19:55:51Z",
+      "side": 1,
+      "message": "Generally just style nits",
+      "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "335077af_19521d0a",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-29T19:55:51Z",
+      "side": 1,
+      "message": "Is this method necessary? We could just call string(t) directly.",
+      "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf853efa_3baa0bca",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-29T19:55:51Z",
+      "side": 1,
+      "message": "Is this method necessary? I think it fulfills the same purpose as formatting with %+v:\n\n    v :\u003d ECToolVersion{FWImageTypeRO, \"MyROVersion\", \"MyRWVersion\", \"MyBuildInfo\", \"MyToolVersion\"}\n    s.Logf(\"ECToolVersion: %+v\", v) // or testing.Contextlogf\n\n    // Output:\n    // ECToolVersion: {Active:RO ROVersion:MyROVersion RWVersion:MyRWVersion BuildInfo:MyBuildInfo ToolVersion:MyToolVersion}",
+      "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b95f134_d9de55ce",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-29T19:55:51Z",
+      "side": 1,
+      "message": "Here and elsewhere, it is idiomatic to return a zero-value (ECToolVersion{}) in the error-case. If the function returns an error, the calling function presumably should not inspect the output. I recommend not instantiating ver until you need it at the end.\n\n    return ECToolVersion{}, errors.Wrap(...)",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 88,
+        "endChar": 12
+      },
+      "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c9ef1eb_b14043cf",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-29T19:55:51Z",
+      "side": 1,
+      "message": "nit/style: For concision and consistency, remove L93-95 and use the :\u003d operator. Because we\u0027ll need to use `active` later, this will also require the `if` to be on a separate line.\n\n    active, ok :\u003d values[\"Firmware copy\"]\n    if !ok {\n        return ver, errors.New(\"parsing firmware copy\")\n    }",
+      "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bacbd33_c9400519",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-29T19:55:51Z",
+      "side": 1,
+      "message": "Here, and in L106, L109, L112, and L115, please include `values` in the error message so that we can debug.\n\n    return ver, errors.Errorf(\"parsing firmware copy from %+v\", values)",
+      "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2df1226_9652f1dc",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-29T19:55:51Z",
+      "side": 1,
+      "message": "Please include ver.Active in the error message.\n\n    return \"\", errors.New(\"unknown active image: \" + ver.Active)",
+      "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d3d85ed_49cd2fb8",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-29T19:55:51Z",
+      "side": 1,
+      "message": "Please also check the actual keys/values. In particular, it would be good to ensure that \"Build info\" (which has additional colons) is parsed correctly, and that whitespace is trimmed appropriately.",
+      "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
