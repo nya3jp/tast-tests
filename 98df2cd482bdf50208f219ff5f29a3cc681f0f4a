@@ -16,6 +16,24 @@
       "message": "nit: add a blank line before",
       "revId": "98df2cd482bdf50208f219ff5f29a3cc681f0f4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60c19953_ad3c2d59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2021-04-29T08:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9f20692_9b75d989",
+      "revId": "98df2cd482bdf50208f219ff5f29a3cc681f0f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
