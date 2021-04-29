@@ -158,6 +158,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8c9c6b4_6a9970f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2021-04-29T15:45:04Z",
+      "side": 1,
+      "message": "You\u0027re correct, in wificell setup there are 4 Attenuator channels, or more correctly, two pairs: Tx/Rx for Gale1 (router) and Tx/Rx for Gale2.\n\nFor reference, see: https://docs.google.com/document/d/1klnkcEpbG6_0BKeLXEN9ST13-w8gcNYG1xH80dlvt7U/edit#heading\u003dh.5qbjna8vt4qu\n\nIt might be better to iterate with SetTotalAttenuation() over all four channels to have the optimal results.",
+      "parentUuid": "43bbe858_62a12cc3",
+      "range": {
+        "startLine": 66,
+        "startChar": 47,
+        "endLine": 66,
+        "endChar": 54
+      },
+      "revId": "bf79fb3f398e12feed3d73036b9c886fb4ff58d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdd514fd_d5755eee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2021-04-29T15:45:04Z",
+      "side": 1,
+      "message": "Yes, and keep in mind, that minimal attenuation\u003dmaximum signal strength.",
+      "parentUuid": "220c261a_358233d8",
+      "range": {
+        "startLine": 66,
+        "startChar": 56,
+        "endLine": 66,
+        "endChar": 64
+      },
+      "revId": "bf79fb3f398e12feed3d73036b9c886fb4ff58d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbbec00f_07b3f231",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
         "patchSetId": 4
