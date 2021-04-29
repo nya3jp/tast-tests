@@ -111,6 +111,30 @@
       },
       "revId": "e2e6cd6f8f7b0adb5ac539a729d5fcc2c96ef688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c6f2882_449ed1c3",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2021-04-29T00:09:20Z",
+      "side": 1,
+      "message": "I\u0027ve changed the function name to be terminalDLCAvailable(). For the caller, any error that comes back from os.Stat is equivalent. The distinction between os.IsNotExist(err) and any other err is not helpful. And if there is something strange happening where Stat is failing for any reason besides os.IsNotExist, the error will surface when pvm installer runs.",
+      "parentUuid": "c696b2fb_0bc7c2ba",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 18
+      },
+      "revId": "e2e6cd6f8f7b0adb5ac539a729d5fcc2c96ef688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
