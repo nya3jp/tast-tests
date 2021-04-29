@@ -73,6 +73,30 @@
       },
       "revId": "08143758f82fcce925236254d9be5bd7343bae89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "725cf96a_527510f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/galleryapp/galleryapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T11:31:56Z",
+      "side": 1,
+      "message": "There are more Gallery tests coming soon. This dialog element will be commonly used as ancestor in test. I decided to export it so in-test element finder can locate dialog buttons more accurate.\n\nCan you please provide cr+2 if it answers your question?",
+      "parentUuid": "46ee0401_c0b260b0",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "08143758f82fcce925236254d9be5bd7343bae89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
