@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16fed7bd_f9e4cd4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-04-29T23:36:05Z",
+      "side": 1,
+      "message": "Looks good to me, but do wait for deanliao@ since I\u0027m not familiar with the WiFi parts.",
+      "revId": "b01d175f9c62f6eebf64e9eabc3272e7d796be4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
