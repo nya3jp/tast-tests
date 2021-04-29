@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c73124b2_9df753a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-04-29T14:50:45Z",
+      "side": 1,
+      "message": "IIRC this isn\u0027t marked critical because of an issue with the chrome tast library being inherently flakey, so this would probably make it through the CQ regardless of if it failed or not.",
+      "revId": "5101ba93cc0545d410fd83f85e32ff6326987626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
