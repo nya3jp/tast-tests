@@ -131,6 +131,16 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 				}
 			}(cleanupCtx)
 
+			// Minimum interval between captureVisibleTab requests is 1 second, so we
+			// must sleep for 1 seconds to be able to take screenshot,
+			// otherwise API will return an error.
+			//
+			// Please check MAX_CAPTURE_VISIBLE_TAB_CALLS_PER_SECOND constant in
+			// chrome/common/extensions/api/tabs.json
+			if err := testing.Sleep(ctx, time.Second); err != nil {
+				s.Fatal("Failed to sleep: ", err)
+			}
+
 			// Update policies.
 			if err := policyutil.ServeAndVerify(ctx, fdms, cr, tc.value); err != nil {
 				s.Fatal("Failed to update policies: ", err)
