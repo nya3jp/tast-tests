@@ -106,6 +106,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ed8439d_30b35634",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-29T07:58:45Z",
+      "side": 1,
+      "message": "nit: it makes sense to pass 15*time.Seconds instead of introducing new context",
+      "range": {
+        "startLine": 81,
+        "startChar": 31,
+        "endLine": 81,
+        "endChar": 53
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8782b9da_4dd67eaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-29T07:58:45Z",
+      "side": 1,
+      "message": "nit: please put `err` in logs",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 71
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e9c28e1_4b6773f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-29T07:58:45Z",
+      "side": 1,
+      "message": "nit: there is no need to use fmt.Sprintf here, you don\u0027t do formatting.",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 88,
+        "endChar": 20
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ff43bf9_75f023bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
         "patchSetId": 7
@@ -117,6 +186,98 @@
       "writtenOn": "2021-04-29T07:37:18Z",
       "side": 1,
       "message": "It would be better to return early if the err !\u003d nil.",
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11497bf5_d790e1d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-29T07:58:45Z",
+      "side": 1,
+      "message": "Please always check errors.\n\nFor example, you might not have 5 seconds to wait for crashes, but you probably expect to wait at least for 5 seconds.",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 14
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "956227e2_3f796524",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-29T07:58:45Z",
+      "side": 1,
+      "message": "nit: content?",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 109,
+        "endChar": 11
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef1308c8_d7c99e3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-29T07:58:45Z",
+      "side": 1,
+      "message": "nit: you convert 3 times contents to the string, maybe have a separate value for it?\n\nfor example:\n\n```\nbytes, err :\u003d ioutil.ReadFile(f)\n...\ncontent \u003d string(bytes)\n```",
+      "range": {
+        "startLine": 114,
+        "startChar": 24,
+        "endLine": 114,
+        "endChar": 41
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6804c4c_199f70c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-29T07:58:45Z",
+      "side": 1,
+      "message": "nit: use %q",
+      "range": {
+        "startLine": 115,
+        "startChar": 28,
+        "endLine": 115,
+        "endChar": 29
+      },
       "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
