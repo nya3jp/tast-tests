@@ -32,7 +32,7 @@ type Proxy struct {
 // to the host running servod and servod connections will be forwarded through it.
 // keyFile and keyDir are used for establishing the SSH connection and should
 // typically come from dut.DUT's KeyFile and KeyDir methods.
-func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (*Proxy, error) {
+func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (newProxy *Proxy, retErr error) {
 	var pxy Proxy
 	toClose := &pxy
 	defer func() {
@@ -64,6 +64,11 @@ func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (*Proxy, error)
 			return nil, err
 		}
 
+		defer func() {
+			if retErr != nil {
+				logServoStatus(ctx, pxy.hst, port)
+			}
+		}()
 		// Next, forward a local port over the SSH connection to the servod port.
 		testing.ContextLog(ctx, "Creating forwarded connection to port ", port)
 		pxy.fwd, err = pxy.hst.NewForwarder("localhost:0", "localhost:"+port,
@@ -82,6 +87,23 @@ func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (*Proxy, error)
 	}
 	toClose = nil // disarm cleanup
 	return &pxy, nil
+}
+
+// logServoStatus logs the current servo status from the servo host.
+func logServoStatus(ctx context.Context, hst *ssh.Conn, port string) {
+	// Check if servod is running of the servo host.
+	out, err := hst.Command("servodtool", "instance", "show", "-p", port).CombinedOutput(ctx)
+	if err != nil {
+		testing.ContextLogf(ctx, "Servod process is not initialized on the servo-host: %v: %v", err, string(out))
+		return
+	}
+	testing.ContextLogf(ctx, "Servod instance is running on port %v of the servo host", port)
+	// Check if servod is busy.
+	if out, err = hst.Command("dut-control", "-p ", port, "serialname").CombinedOutput(ctx); err != nil {
+		testing.ContextLogf(ctx, "The servod is not responsive or busy: %v: %v", err, string(out))
+		return
+	}
+	testing.ContextLog(ctx, "Servod is responsive on the host and can provide information about serialname: ", string(out))
 }
 
 // Close closes the proxy's SSH connection if present.
