@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "23d943c4_d0730729",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-29T20:47:58Z",
+      "side": 1,
+      "message": "nit: mention that FWImageType was added to the firmware package earlier and is being updated here",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "2728fe57274144dd40b496efef312c17380f81ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "275c523a_478d2203",
