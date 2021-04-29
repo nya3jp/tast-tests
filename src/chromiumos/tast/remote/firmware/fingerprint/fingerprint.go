@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/dutfs"
+	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/remote/sysutil"
@@ -1041,10 +1042,9 @@ func parseColonDelimitedOutput(output string) map[string]string {
 
 // EctoolCommand constructs an "ectool" command for the FPMCU.
 func EctoolCommand(ctx context.Context, d *dut.DUT, args ...string) *ssh.Cmd {
-	cmd := []string{"ectool", "--name=cros_fp"}
-	cmd = append(cmd, args...)
-	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd))
-	return d.Conn().Command(cmd[0], cmd[1:]...)
+	cmd := firmware.NewECTool(d, firmware.ECToolNameFingerprint).Command(args...)
+	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd.Args))
+	return cmd
 }
 
 func rawFPFrameCommand(ctx context.Context, d *dut.DUT) *ssh.Cmd {
