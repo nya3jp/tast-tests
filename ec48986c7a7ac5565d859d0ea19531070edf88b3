@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d236c7ef_6da94f84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-29T07:37:18Z",
+      "side": 1,
+      "message": "nit: there shouldn\u0027t be a dot at the end of the title.",
+      "range": {
+        "startLine": 7,
+        "startChar": 47,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c26e6479_a968488f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-29T07:37:18Z",
+      "side": 1,
+      "message": "nit: SELinuxViolation",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fb35998_44c425ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-29T07:37:18Z",
+      "side": 1,
+      "message": "nit: SELinux",
+      "range": {
+        "startLine": 25,
+        "startChar": 43,
+        "endLine": 25,
+        "endChar": 50
+      },
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "addbdc6c_9ac1d88a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-29T07:37:18Z",
+      "side": 1,
+      "message": "Can you add a comment on which step(s) do you expect to take a longer time?",
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d00545_f346bc93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-29T07:37:18Z",
+      "side": 1,
+      "message": "There are a lot of defer() in this function, and the timeout is quite large. It would be better to save the original ctx as a cleanupCtx and use it in defer() calls, and a shortened ctx could go for the normal function calls.\nThere are some tests in the codebase with this approach.",
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff43bf9_75f023bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-29T07:37:18Z",
+      "side": 1,
+      "message": "It would be better to return early if the err !\u003d nil.",
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
