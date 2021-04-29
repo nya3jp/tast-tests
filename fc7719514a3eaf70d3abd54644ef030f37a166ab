@@ -16,6 +16,23 @@
       "message": "Comment has been addressed. Additional testing was done. Please take a look. thanks.",
       "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a1ff073_29d1b72f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-04-29T22:02:50Z",
+      "side": 1,
+      "message": "Forgot to reply to one comment last time. Just replied to that comment.",
+      "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
