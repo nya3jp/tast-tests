@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "545a2ff6_35f8df63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002092
+      },
+      "writtenOn": "2021-04-29T22:32:14Z",
+      "side": 1,
+      "message": "One of the CQ failures is concerning\n\n    - betty-pi-arc-cq.tast_vm.direct_tast_vm: [apps.LaunchGalleryFromNotifications.tablet_stable](https://cr-buildbucket.appspot.com/build/8848606273157850592)\n\nBut there\u0027s a bug about it - https://crbug.com/1202630\n\n",
+      "revId": "58674c767a2ea3ed045a54ed642c6187051bd370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
