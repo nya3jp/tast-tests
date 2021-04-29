@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f8ae13d_a14f5b5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_wake_locks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-29T16:08:48Z",
+      "side": 1,
+      "message": "minor nit: either . or ;",
+      "range": {
+        "startLine": 53,
+        "startChar": 63,
+        "endLine": 53,
+        "endChar": 64
+      },
+      "revId": "b7d0b024056007e51837b165c79d65cdf4dd855d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c185f37c_521c92e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_wake_locks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-29T16:08:48Z",
+      "side": 1,
+      "message": "Have you tried to open the page outside the subtest?",
+      "revId": "b7d0b024056007e51837b165c79d65cdf4dd855d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e0c1b1_7fb6361f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/allow_wake_locks_index.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-29T16:08:48Z",
+      "side": 1,
+      "message": "Any reason not to handle this in tast? Nobody will see this error message otherwise.",
+      "revId": "b7d0b024056007e51837b165c79d65cdf4dd855d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
