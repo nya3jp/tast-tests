@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e690ad04_a79b46f8",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-04-29T20:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d6a3f57_f166379e",
+      "revId": "04e7f88d2c39654c5282331d495b8f8c95566d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0414a3c4_9a01f654",
@@ -66,6 +84,24 @@
       "writtenOn": "2021-04-29T18:55:02Z",
       "side": 1,
       "message": "please print out for debugging",
+      "revId": "04e7f88d2c39654c5282331d495b8f8c95566d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe0a03b_7ea40157",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-04-29T20:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0414a3c4_9a01f654",
       "revId": "04e7f88d2c39654c5282331d495b8f8c95566d66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
