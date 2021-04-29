@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e88ffeb_1dfb97a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-29T03:50:31Z",
+      "side": 1,
+      "message": "nit: include the test you ran (if you just want to ensure it builds, you can navigate to the platform/tast directory and call the ./fast_build.sh script to build it, then just include that here ./fast_build.sh)",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "34af0aa184212168e6cec06fcd663ceb24c9ee1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b507d22d_ae59781d",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-04-29T03:42:46Z",
       "side": 1,
       "message": "Hi Ben,\n\nCould you review this change to remove those two unstable tests?\n\nThanks,\ndom",
+      "revId": "34af0aa184212168e6cec06fcd663ceb24c9ee1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a723faf7_8f8dc9bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-04-29T03:50:31Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "34af0aa184212168e6cec06fcd663ceb24c9ee1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
