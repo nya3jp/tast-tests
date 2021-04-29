@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eb56ce5_e304d54e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-29T18:10:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa915ef0_736305f5",
+      "revId": "bf79fb3f398e12feed3d73036b9c886fb4ff58d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "414829de_65521053",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-29T14:42:02Z",
       "side": 1,
       "message": "when",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "bf79fb3f398e12feed3d73036b9c886fb4ff58d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c0caaf2_38d33b1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-29T18:10:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "414829de_65521053",
       "range": {
         "startLine": 10,
         "startChar": 39,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34bb5f97_4c18ba33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-29T18:10:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa49e6ce_6e503269",
+      "range": {
+        "startLine": 11,
+        "startChar": 30,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "bf79fb3f398e12feed3d73036b9c886fb4ff58d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f05fe95_ef9cda1a",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd97183d_bbb3e2a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-29T18:10:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f05fe95_ef9cda1a",
+      "range": {
+        "startLine": 14,
+        "startChar": 35,
+        "endLine": 14,
+        "endChar": 49
+      },
+      "revId": "bf79fb3f398e12feed3d73036b9c886fb4ff58d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed75df27_794c13b0",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-04-29T14:42:02Z",
       "side": 1,
       "message": "If the test depends on TFFeaturesAttenuator, then you need to use Attr: \n\"group:wificell_roam\", \"wificell_roam_perf\"\n\nAlso, please consult Harpreet, the WiFi lab\u0027s owner, about the resource allocation.",
+      "range": {
+        "startLine": 32,
+        "startChar": 90,
+        "endLine": 32,
+        "endChar": 110
+      },
+      "revId": "bf79fb3f398e12feed3d73036b9c886fb4ff58d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13983009_df41bd9d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-29T18:10:16Z",
+      "side": 1,
+      "message": "Done. Harpreet, do you foresee any resource issues adding this test? Also is there a way to denote this test is informational? Similar to `wificell_unstable`?",
+      "parentUuid": "ed75df27_794c13b0",
       "range": {
         "startLine": 32,
         "startChar": 90,
@@ -204,6 +318,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "063cdb67_cc144b3a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-29T18:10:16Z",
+      "side": 1,
+      "message": "Thanks for the doc link! Done",
+      "parentUuid": "a8c9c6b4_6a9970f4",
+      "range": {
+        "startLine": 66,
+        "startChar": 47,
+        "endLine": 66,
+        "endChar": 54
+      },
+      "revId": "bf79fb3f398e12feed3d73036b9c886fb4ff58d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ada24b1_fc5c2179",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-29T18:10:16Z",
+      "side": 1,
+      "message": "That sounds like a better flow, thanks for the suggestion. Yes looks like I mixed up min and max attenuation. This should be resolved now.",
+      "parentUuid": "220c261a_358233d8",
+      "range": {
+        "startLine": 66,
+        "startChar": 56,
+        "endLine": 66,
+        "endChar": 64
+      },
+      "revId": "bf79fb3f398e12feed3d73036b9c886fb4ff58d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbbec00f_07b3f231",
@@ -217,6 +379,30 @@
       "writtenOn": "2021-04-29T14:42:02Z",
       "side": 1,
       "message": "connect to the",
+      "range": {
+        "startLine": 71,
+        "startChar": 21,
+        "endLine": 71,
+        "endChar": 29
+      },
+      "revId": "bf79fb3f398e12feed3d73036b9c886fb4ff58d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee48efb_59a12a33",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-29T18:10:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbbec00f_07b3f231",
       "range": {
         "startLine": 71,
         "startChar": 21,
