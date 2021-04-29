@@ -16,6 +16,23 @@
       "message": "Kindly ping reviewers.",
       "revId": "08143758f82fcce925236254d9be5bd7343bae89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c642739_fad3a6d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T09:25:43Z",
+      "side": 1,
+      "message": "Re-assign this cl to tast owner because Tatsuhisa is OOO.",
+      "revId": "08143758f82fcce925236254d9be5bd7343bae89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
