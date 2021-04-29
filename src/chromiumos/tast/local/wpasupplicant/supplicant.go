@@ -20,20 +20,6 @@ const (
 	dbusBaseGetIfaceMethod = "GetInterface"
 )
 
-// The following are some of the expected values of the property DisconnectReason.
-const (
-	// DisconnReasonPreviousAuthenticationInvalid previous authentication no longer valid.
-	DisconnReasonPreviousAuthenticationInvalid = 2
-	// DisconnReasonDeauthSTALeaving deauthenticated because sending STA is leaving (or has left) IBSS or ESS.
-	DisconnReasonDeauthSTALeaving = 3
-	// DisconnReasonLGDeauthSTALeaving (locally generated).
-	DisconnReasonLGDeauthSTALeaving = -3
-	// DisconnReasonLGDisassociatedInactivity (locally generated) disassociated due to inactivity.
-	DisconnReasonLGDisassociatedInactivity = -4
-	// DisconnReasonUnknown.
-	DisconnReasonUnknown = 0
-)
-
 // Supplicant is the object to interact with wpa_supplicant's
 // fi.w1.wpa_supplicant1 interface.
 type Supplicant struct {
