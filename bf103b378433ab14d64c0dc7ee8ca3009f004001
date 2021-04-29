@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f9e2cc4_e87163cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_wake_locks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-04-29T15:44:35Z",
+      "side": 1,
+      "message": "Well, if I used DoNothing then the idle window won\u0027t show up.\nIs it possible to login again if the test failed?",
+      "parentUuid": "d7e793c0_457c7672",
+      "range": {
+        "startLine": 54,
+        "startChar": 15,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "bf103b378433ab14d64c0dc7ee8ca3009f004001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ed20c5c_008ff43d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_wake_locks.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-29T14:25:50Z",
       "side": 1,
       "message": "Can this be shorter, like 50 ms? It will make the test much faster.",
+      "range": {
+        "startLine": 57,
+        "startChar": 16,
+        "endLine": 57,
+        "endChar": 20
+      },
+      "revId": "bf103b378433ab14d64c0dc7ee8ca3009f004001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14ddec76_4dd7b86f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_wake_locks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-04-29T15:44:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ed20c5c_008ff43d",
       "range": {
         "startLine": 57,
         "startChar": 16,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f33224b7_2609d936",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_wake_locks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-04-29T15:44:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ed78d1e_509e1842",
+      "revId": "bf103b378433ab14d64c0dc7ee8ca3009f004001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afdf4b0c_8f4ae476",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19e5a8c8_97ac9141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/allow_wake_locks_index.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-04-29T15:44:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afdf4b0c_8f4ae476",
+      "revId": "bf103b378433ab14d64c0dc7ee8ca3009f004001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fa01a72_7c96d04d",
@@ -94,6 +178,24 @@
       "writtenOn": "2021-04-29T14:25:50Z",
       "side": 1,
       "message": "nit: is this formatted correctly?",
+      "revId": "bf103b378433ab14d64c0dc7ee8ca3009f004001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db01d36_1d398e09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/allow_wake_locks_index.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-04-29T15:44:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fa01a72_7c96d04d",
       "revId": "bf103b378433ab14d64c0dc7ee8ca3009f004001",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
