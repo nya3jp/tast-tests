@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71050096_8dfe39ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-04-29T18:02:37Z",
+      "side": 1,
+      "message": "Hi Otabek:\n\nI need your help in testing it with servo in different condition. Please let me know what I should do next. Thanks.\n\nSeewai",
+      "revId": "04e7f88d2c39654c5282331d495b8f8c95566d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
