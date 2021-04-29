@@ -22,6 +22,30 @@
       },
       "revId": "6735c962c98fe91f782ed9072513c713b9e8a5ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d6b8753_cb96947c",
+        "filename": "src/chromiumos/tast/local/printing/lp/cups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-04-29T02:31:18Z",
+      "side": 0,
+      "message": "By default the following functions are checked for unused return values (go tool vet help unusedresult): context.WithCancel,context.WithDeadline,context.WithTimeout,context.WithValue,errors.New,fmt.Errorf,fmt.Sprint,fmt.Sprintf,sort.Reverse.\n\nWe should probably add errors.Wrap to the list.",
+      "parentUuid": "87319061_f673192d",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 13
+      },
+      "revId": "6735c962c98fe91f782ed9072513c713b9e8a5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
