@@ -20,7 +20,6 @@ func init() {
 		Func: MiniContainer,
 		Desc: "Ensures Android mini container is upgraded after login",
 		Contacts: []string{
-			"ereth@chromium.org",
 			"arc-core@google.com",
 			"nya@chromium.org", // Tast port author.
 		},

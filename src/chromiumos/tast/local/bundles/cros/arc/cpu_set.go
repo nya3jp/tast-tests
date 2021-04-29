@@ -27,7 +27,6 @@ func init() {
 		Func: CPUSet,
 		Desc: "Verifies cpuset",
 		Contacts: []string{
-			"ereth@chromium.org",
 			"arc-core@google.com",
 			"arc-storage@google.com",
 			"hidehiko@chromium.org", // Tast port author.
