@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b87139ef_14b8f719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T13:49:34Z",
+      "side": 1,
+      "message": "nit: this can be one line.",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 4
+      },
+      "revId": "33eab671ec130a1a6ee5b1cee8f67d49dff2ed68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4ae47c1_25db5d3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T13:49:34Z",
+      "side": 1,
+      "message": "launchCtx and ctx are mix used below. Maybe nice to add a comment of launchCtx and cleanup usage if required.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 10
+      },
+      "revId": "33eab671ec130a1a6ee5b1cee8f67d49dff2ed68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4af9a46_ff0a55db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T13:49:34Z",
+      "side": 1,
+      "message": "Sleep is not encouraged. btw NewConnForTarget has internal WaitForTarget. So I do not think it is required an explicit wait here.",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "33eab671ec130a1a6ee5b1cee8f67d49dff2ed68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33591ea4_11a02b8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T13:49:34Z",
+      "side": 1,
+      "message": "Is there a reason why to use javascript rather than screen interaction? These elements should be also accessible from a11y tree.\nIf have to so, why dont you put this logic in a single js block as below?\n\ninputElement \u003d document.querySelector(\"#id:not([style*\u003d\u0027display: none\u0027])\");\nif inputElement !\u003d undefined{\n    inputElement.value\u003d%q;\n    checkDeviceName();\n}",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "33eab671ec130a1a6ee5b1cee8f67d49dff2ed68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af6f99ca_a4a6aaa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T13:49:34Z",
+      "side": 1,
+      "message": "You can simplify the code as below. There is no need to create this function.\nconn.WaitForExpr(ctx, \"document.readyState \u003d\u003d\u003d \u0027complete\u0027\")",
+      "range": {
+        "startLine": 195,
+        "startChar": 5,
+        "endLine": 195,
+        "endChar": 18
+      },
+      "revId": "33eab671ec130a1a6ee5b1cee8f67d49dff2ed68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a913565f_2efeb52c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T13:49:34Z",
+      "side": 1,
+      "message": "it is not used.",
+      "range": {
+        "startLine": 227,
+        "startChar": 91,
+        "endLine": 227,
+        "endChar": 95
+      },
+      "revId": "33eab671ec130a1a6ee5b1cee8f67d49dff2ed68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d29017e2_a944f9f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T13:49:34Z",
+      "side": 1,
+      "message": "use param?",
+      "range": {
+        "startLine": 234,
+        "startChar": 46,
+        "endLine": 234,
+        "endChar": 54
+      },
+      "revId": "33eab671ec130a1a6ee5b1cee8f67d49dff2ed68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32c396fa_fc13085c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T13:49:34Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 238,
+        "startChar": 44,
+        "endLine": 238,
+        "endChar": 52
+      },
+      "revId": "33eab671ec130a1a6ee5b1cee8f67d49dff2ed68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "517ed53e_542e2b18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T13:49:34Z",
+      "side": 1,
+      "message": "name should be more meaningful.",
+      "range": {
+        "startLine": 241,
+        "startChar": 55,
+        "endLine": 241,
+        "endChar": 57
+      },
+      "revId": "33eab671ec130a1a6ee5b1cee8f67d49dff2ed68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "457efa2c_d4c29457",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T13:49:34Z",
+      "side": 1,
+      "message": "find some duplicate code here to install Chrome extension. local_tests/policy/extension_allowed_types.go.\n\nMaybe it can be reusable.",
+      "range": {
+        "startLine": 248,
+        "startChar": 5,
+        "endLine": 248,
+        "endChar": 21
+      },
+      "revId": "33eab671ec130a1a6ee5b1cee8f67d49dff2ed68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
