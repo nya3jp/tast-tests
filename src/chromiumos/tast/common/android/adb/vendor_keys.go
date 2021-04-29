@@ -67,7 +67,8 @@ func vendorKeyPath() string {
 	return strings.Join(paths, ":")
 }
 
-func installVendorKeys() error {
+// InstallVendorKeys installs vendor public/private key for authorizing adb connection.
+func InstallVendorKeys() error {
 	if err := os.MkdirAll(adbHome, 0755); err != nil {
 		return err
 	}

@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android"
+	localAdb "chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
@@ -238,7 +239,7 @@ func AndroidSetup(ctx context.Context, testDevice *adb.Device, accountUtilZipPat
 // AdbSetup configures adb and connects to the Android device.
 func AdbSetup(ctx context.Context) (*adb.Device, error) {
 	// Load the ARC adb vendor key, which must be pre-loaded on the Android device to allow adb over usb without requiring UI interaction.
-	if err := adb.LaunchServer(ctx); err != nil {
+	if err := localAdb.LaunchServer(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to launch adb server")
 	}
 	// Wait for the first available device, since we are assuming only a single Android device is connected to each CrOS device.
