@@ -16,6 +16,24 @@
       "message": "LGTM, FYI there is an OOBE test API that you might be able to use to skip some UI interaction and improve test stability:\nhttps://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/resources/chromeos/login/test_api/test_api.js\n\nHere\u0027s a test that uses it extensively for reference:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/autotest/files/client/site_tests/autoupdate_StartOOBEUpdate/autoupdate_StartOOBEUpdate.py",
       "revId": "244a2108f30a66d5cb23ef865a1b1ae28fa9fbb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c828a6dd_84e14ecd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-29T05:04:45Z",
+      "side": 1,
+      "message": "These APIs appear to be until GAIA login and not beyond that. The above test is beyond the password entry until home screen launch.",
+      "parentUuid": "fb0add68_a8c40904",
+      "revId": "244a2108f30a66d5cb23ef865a1b1ae28fa9fbb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
