@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f13321a5_4ad8ef6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-29T16:42:31Z",
+      "side": 1,
+      "message": "Hi all,\n\nCan you please take a look to unblock broken CQ?\n\nThanks!",
+      "revId": "72d689590cc7e593b42ed422f04684a9dcf4e00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
