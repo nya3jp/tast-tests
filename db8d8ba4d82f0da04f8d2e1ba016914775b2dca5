@@ -42,6 +42,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b842b5a_7791f602",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394418
+      },
+      "writtenOn": "2021-04-29T05:03:04Z",
+      "side": 1,
+      "message": "FYI, https://crrev.com/c/2854241 will enable this option by default when a user adds 2 or more input languages - you may want to adjust the test after that is merged, or check whether it has already been turned on before clicking the toggle.",
+      "revId": "db8d8ba4d82f0da04f8d2e1ba016914775b2dca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd038cec_247b809c",
