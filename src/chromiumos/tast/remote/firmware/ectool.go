@@ -16,14 +16,27 @@ import (
 	"chromiumos/tast/ssh"
 )
 
+// ECToolName specifies which of the many Chromium EC based MCUs ectool will
+// be communicated with.
+// Some options are cros_ec, cros_fp, cros_pd, cros_scp, and cros_ish.
+type ECToolName string
+
+const (
+	// ECToolNameMain selects the main EC using cros_ec.
+	ECToolNameMain = ECToolName("cros_ec")
+	// ECToolNameFingerprint selects the FPMCU using cros_fp.
+	ECToolNameFingerprint = ECToolName("cros_fp")
+)
+
 // ECTool allows for interaction with the host command `ectool`.
 type ECTool struct {
-	dut *dut.DUT
+	dut  *dut.DUT
+	name ECToolName
 }
 
 // NewECTool creates an ECTool.
-func NewECTool(d *dut.DUT) *ECTool {
-	return &ECTool{dut: d}
+func NewECTool(d *dut.DUT, name ECToolName) *ECTool {
+	return &ECTool{dut: d, name: name}
 }
 
 // Regexps to capture values outputted by ectool version.
@@ -33,9 +46,15 @@ var (
 	reRWVersion    = regexp.MustCompile(`RW version:\s*(\S+)\s`)
 )
 
+// Command return the prebuilt ssh Command with options and args applied.
+func (ec *ECTool) Command(args ...string) *ssh.Cmd {
+	args = append([]string{"--name=" + string(ec.name)}, args...)
+	return ec.dut.Conn().Command("ectool", args...)
+}
+
 // Version returns the EC version of the active firmware.
 func (ec *ECTool) Version(ctx context.Context) (string, error) {
-	output, err := ec.dut.Conn().Command("ectool", "version").Output(ctx, ssh.DumpLogOnError)
+	output, err := ec.Command("version").Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "running 'ectool version' on DUT")
 	}
