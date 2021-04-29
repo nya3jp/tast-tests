@@ -53,7 +53,7 @@ func CupsAddPrinter(ctx context.Context, printerName, uri, ppd string) error {
 	}
 	d, err := debugd.New(ctx)
 	if err != nil {
-		errors.Wrap(err, "failed to connect to debugd")
+		return errors.Wrap(err, "failed to connect to debugd")
 	}
 	testing.ContextLog(ctx, "Adding driverless printer to CUPS using ", uri)
 	if result, err := d.CupsAddManuallyConfiguredPrinter(ctx, printerName, uri, ppdContents); err != nil {
@@ -68,7 +68,7 @@ func CupsAddPrinter(ctx context.Context, printerName, uri, ppd string) error {
 func CupsRemovePrinter(ctx context.Context, printerName string) error {
 	d, err := debugd.New(ctx)
 	if err != nil {
-		errors.Wrap(err, "failed to connect to debugd")
+		return errors.Wrap(err, "failed to connect to debugd")
 	}
 	return d.CupsRemovePrinter(ctx, printerName)
 }
