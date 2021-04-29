@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e85cb3_df32b227",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-29T18:40:26Z",
+      "side": 1,
+      "message": "Thanks Yen-lin!\n\n@tomhughes to further signoff",
+      "parentUuid": "78bec56d_07a81e1d",
+      "revId": "315268ca0ec51e41116949a1bd55aac0a2bcb90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4ccfdd0_1eec9fb5",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-29T06:37:15Z",
       "side": 1,
       "message": "small nit: I think it might be more common to declare type than conversion:\n\n  const (\n    ECToolNameMain ECToolName \u003d \"cros_ec\"\n  )\n\nExamples: https://golang.org/doc/effective_go#constants, DumpLogOnError in common/testing/testexec.go\n\nbut I didn\u0027t see any rules against conversion, so it is also OK.",
+      "revId": "315268ca0ec51e41116949a1bd55aac0a2bcb90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b3925ae_5d919d5e",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-29T18:40:26Z",
+      "side": 1,
+      "message": "Fair, thanks. I changed it to conform.",
+      "parentUuid": "b4ccfdd0_1eec9fb5",
       "revId": "315268ca0ec51e41116949a1bd55aac0a2bcb90e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
