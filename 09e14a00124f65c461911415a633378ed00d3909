@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "814b9bd0_fc4b73aa",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-04-29T07:18:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01d8e787_3521fa91",
+      "range": {
+        "startLine": 28,
+        "startChar": 12,
+        "endLine": 28,
+        "endChar": 36
+      },
+      "revId": "09e14a00124f65c461911415a633378ed00d3909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e309951c_fadca7db",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-29T05:11:03Z",
       "side": 1,
       "message": "So now there will be a \u0027,\u0027 in the end, would that be ok?",
+      "range": {
+        "startLine": 73,
+        "startChar": 27,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "09e14a00124f65c461911415a633378ed00d3909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec93282e_550d51ea",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-04-29T07:18:59Z",
+      "side": 1,
+      "message": "This is replacing the \"if first\" section above. It was originally designed to ensure that you get commas between every element but not after the last element, but it just adds complexity, and {\u0027a\u0027:\u0027b\u0027,} is valid javascript code.",
+      "parentUuid": "e309951c_fadca7db",
       "range": {
         "startLine": 73,
         "startChar": 27,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3551d79_6fd741c2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-04-29T07:18:59Z",
+      "side": 1,
+      "message": "It isn\u0027t, but it\u0027s unavoidable for the unit test, since the output is a string containing javascript.",
+      "parentUuid": "c5156b94_58958da7",
+      "range": {
+        "startLine": 81,
+        "startChar": 34,
+        "endLine": 81,
+        "endChar": 60
+      },
+      "revId": "09e14a00124f65c461911415a633378ed00d3909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4d89433_c0a4bd26",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-29T05:11:03Z",
       "side": 1,
       "message": "Is it gauranteed that locale will not be None and locale.split(\"-\") will have at least one element?",
+      "range": {
+        "startLine": 152,
+        "startChar": 7,
+        "endLine": 152,
+        "endChar": 13
+      },
+      "revId": "09e14a00124f65c461911415a633378ed00d3909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed999a31_0ce223cd",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-04-29T07:18:59Z",
+      "side": 1,
+      "message": "According to the documentation, it will always return a string, and any string split by anything will always have at least one element (eg. \"en\".split(\"-\") \u003d [\"en\"])",
+      "parentUuid": "e4d89433_c0a4bd26",
       "range": {
         "startLine": 152,
         "startChar": 7,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "534ecf49_2b31cfe6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-04-29T07:18:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "147b58e4_4a7ab7a9",
+      "range": {
+        "startLine": 322,
+        "startChar": 67,
+        "endLine": 322,
+        "endChar": 68
+      },
+      "revId": "09e14a00124f65c461911415a633378ed00d3909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90384b6e_c05897c2",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-04-29T05:11:03Z",
       "side": 1,
       "message": "End with .",
+      "range": {
+        "startLine": 332,
+        "startChar": 67,
+        "endLine": 332,
+        "endChar": 68
+      },
+      "revId": "09e14a00124f65c461911415a633378ed00d3909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "425b51de_8b767f1c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-04-29T07:18:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90384b6e_c05897c2",
       "range": {
         "startLine": 332,
         "startChar": 67,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6799c8ce_1589f4d7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-04-29T07:18:59Z",
+      "side": 1,
+      "message": "I\u0027m probably the person qualified most to review this part, since I wrote the pseudolocales.py that this is attempting to duplicate, so I\u0027ll just tell you what it\u0027s supposed to do.\n\nIt replaces specific letters (from the dictionary in pseudolocales.py) with accented variants. If addNumbers is specified, it should also add a number to the string for each word, wrapping if there are more than ten words, like in the unit test (eg. \"a b c\" \u003d 3 words, so \"a b c one two three\").",
+      "parentUuid": "b33a0994_fc61ea95",
+      "range": {
+        "startLine": 333,
+        "startChar": 5,
+        "endLine": 333,
+        "endChar": 19
+      },
+      "revId": "09e14a00124f65c461911415a633378ed00d3909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff193867_7300d403",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-04-29T05:11:03Z",
       "side": 1,
       "message": "It seems that an English version is always needed even if another language is tested?",
+      "range": {
+        "startLine": 401,
+        "startChar": 31,
+        "endLine": 401,
+        "endChar": 38
+      },
+      "revId": "09e14a00124f65c461911415a633378ed00d3909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36c4c0c0_e0e762f9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-04-29T07:18:59Z",
+      "side": 1,
+      "message": "That\u0027s correct. I made this decision because:\n* When testing in another language, you usually want to check that it works in english as well\n* Even if you don\u0027t, as a developer, I probably don\u0027t know the other language, so seeing the name in english will help me know what it\u0027s for.\n* This ensures that the selectName function always returns a valid name no matter what language you\u0027re in (since the fallback is always en).",
+      "parentUuid": "ff193867_7300d403",
       "range": {
         "startLine": 401,
         "startChar": 31,
