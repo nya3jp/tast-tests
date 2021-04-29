@@ -7,6 +7,7 @@ package servo
 import (
 	"context"
 	"net"
+	"os/exec"
 	"strings"
 	"time"
 
@@ -32,10 +33,23 @@ type Proxy struct {
 // to the host running servod and servod connections will be forwarded through it.
 // keyFile and keyDir are used for establishing the SSH connection and should
 // typically come from dut.DUT's KeyFile and KeyDir methods.
-func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (*Proxy, error) {
+func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (newProxy *Proxy, err error) {
 	var pxy Proxy
+	hostname, port, err := net.SplitHostPort(spec)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to parse %q", spec)
+	}
+
+	// Function to execute command on servo host.
+	cmdFunc := func(name string, args ...string) ([]byte, error) {
+		return exec.Command(name, args...).CombinedOutput()
+	}
+
 	toClose := &pxy
 	defer func() {
+		if err != nil {
+			logServoStatus(ctx, cmdFunc, port)
+		}
 		if toClose != nil {
 			toClose.Close(ctx)
 		}
@@ -43,11 +57,6 @@ func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (*Proxy, error)
 
 	// If the servod instance isn't running locally, assume that we need to connect to it via SSH.
 	if !strings.HasPrefix(spec, "localhost:") && !strings.HasPrefix(spec, "127.0.0.1:") {
-		hostname, port, err := net.SplitHostPort(spec)
-		if err != nil {
-			return nil, errors.Wrapf(err, "failed to parse %q", spec)
-		}
-
 		// First, create an SSH connection to the remote system running servod.
 		sopt := ssh.Options{
 			KeyFile:        keyFile,
@@ -56,14 +65,17 @@ func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (*Proxy, error)
 			WarnFunc:       func(msg string) { testing.ContextLog(ctx, msg) },
 		}
 		// Use the default SSH username and port.
-		if err := ssh.ParseTarget(hostname, &sopt); err != nil {
+		if err = ssh.ParseTarget(hostname, &sopt); err != nil {
 			return nil, err
 		}
 		testing.ContextLogf(ctx, "Opening SSH connection to %s", sopt.Hostname)
 		if pxy.hst, err = ssh.New(ctx, &sopt); err != nil {
 			return nil, err
 		}
-
+		// Since servo is running on a remote command, a different function is needed to execute commands.
+		cmdFunc = func(name string, args ...string) ([]byte, error) {
+			return pxy.hst.Command(name, args...).CombinedOutput(ctx)
+		}
 		// Next, forward a local port over the SSH connection to the servod port.
 		testing.ContextLog(ctx, "Creating forwarded connection to port ", port)
 		pxy.fwd, err = pxy.hst.NewForwarder("localhost:0", "localhost:"+port,
@@ -74,7 +86,6 @@ func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (*Proxy, error)
 		spec = pxy.fwd.LocalAddr().String()
 	}
 
-	var err error
 	testing.ContextLog(ctx, "Connecting to servod at ", spec)
 	pxy.svo, err = New(ctx, spec)
 	if err != nil {
@@ -82,6 +93,22 @@ func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (*Proxy, error)
 	}
 	toClose = nil // disarm cleanup
 	return &pxy, nil
+}
+
+// logServoStatus logs the current servo status from the servo host.
+func logServoStatus(ctx context.Context, cmdFunc func(string, ...string) ([]byte, error), port string) {
+	var out []byte
+	// Check if servod is running of the servo host.
+	if out, err := cmdFunc("servodtool", "instance", "show", "-p", port); err != nil {
+		testing.ContextLogf(ctx, "Servod process is not initialized on the servo-host: %v: %v", err, string(out))
+		return
+	}
+	testing.ContextLogf(ctx, "Servod instance is running on port %v of the servo host", port)
+	// Check if servod is busy.
+	if out, err := cmdFunc("dut-control", "-p ", port, "serialname"); err != nil {
+		testing.ContextLogf(ctx, "The servod is not responsive or busy: %v: %v", err, string(out))
+	}
+	testing.ContextLog(ctx, "Servod is responsive on the host and can provide information about serialname: ", string(out))
 }
 
 // Close closes the proxy's SSH connection if present.
