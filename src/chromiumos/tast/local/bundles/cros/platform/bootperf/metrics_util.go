@@ -243,6 +243,7 @@ func parseUptime(eventName, bootstatDir string, index int) (float64, error) {
 //   * seconds_kernel_to_wifi_registered
 //   * seconds_kernel_to_network
 func GatherTimeMetrics(ctx context.Context, results *platform.GetBootPerfMetricsResponse) error {
+	var missingNonRequiredEvennts []string
 	for _, k := range eventMetrics {
 		key := "seconds_" + k.MetricName
 		val, err := parseUptime(k.EventName, bootstatCurrentDir, 0)
@@ -251,10 +252,13 @@ func GatherTimeMetrics(ctx context.Context, results *platform.GetBootPerfMetrics
 				return errors.Wrapf(err, "failed in gather time for %s", k.EventName)
 			}
 			// Failed in getting a non-required metric. Log and skip.
-			testing.ContextLog(ctx, "Warning: failed to gather time for non-required event: ", err)
+			missingNonRequiredEvennts = append(missingNonRequiredEvennts, k.EventName)
 		} else {
 			results.Metrics[key] = val
 		}
+	}
+	if len(missingNonRequiredEvennts) != 0 {
+		testing.ContextLogf(ctx, "Skip gathering time metrics for non-required event: %s", strings.Join(missingNonRequiredEvennts, ", "))
 	}
 
 	// Not all 'uptime-network-*-ready' files necessarily exist; probably there's only one.
