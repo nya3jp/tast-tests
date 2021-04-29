@@ -27,6 +27,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8fd2d3c0_21dd57dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T11:36:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7df8d978_a855b88b",
+      "range": {
+        "startLine": 9,
+        "startChar": 150,
+        "endLine": 9,
+        "endChar": 156
+      },
+      "revId": "db8d8ba4d82f0da04f8d2e1ba016914775b2dca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e243e756_cfe30efa",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -100,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "537aa5fe_9edb98b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/input_method_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T11:36:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd038cec_247b809c",
+      "range": {
+        "startLine": 67,
+        "startChar": 45,
+        "endLine": 67,
+        "endChar": 47
+      },
+      "revId": "db8d8ba4d82f0da04f8d2e1ba016914775b2dca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1147ba23_23077ae7",
@@ -123,6 +171,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "737b65c3_a0687524",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/imesettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T11:36:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1147ba23_23077ae7",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 39
+      },
+      "revId": "db8d8ba4d82f0da04f8d2e1ba016914775b2dca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47d6c9c7_b83963b7",
@@ -136,6 +208,30 @@
       "writtenOn": "2021-04-29T01:01:26Z",
       "side": 1,
       "message": "nit/grammar: clicks the \u0027Show input options in the shelf\u0027 toggle button.",
+      "range": {
+        "startLine": 80,
+        "startChar": 32,
+        "endLine": 80,
+        "endChar": 98
+      },
+      "revId": "db8d8ba4d82f0da04f8d2e1ba016914775b2dca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ae9e7cf_455e38ea",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/imesettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-29T11:36:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47d6c9c7_b83963b7",
       "range": {
         "startLine": 80,
         "startChar": 32,
