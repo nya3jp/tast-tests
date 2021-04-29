@@ -85,7 +85,6 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/etc/hosts.d":                      {regexp.MustCompile("^run$"), "tmpfs", defaultRW},
 		"/home":                             {nil, "ext4", defaultRW},
 		"/home/chronos":                     {nil, "ext4", defaultRW},
-		"/home/root":                        {nil, "ext4", defaultRW}, // TODO(crbug.com/1069501): remove once bug is fixed.
 		"/media":                            {nil, "tmpfs", defaultRW},
 		"/mnt/stateful_partition":           {nil, "ext4", defaultRW},
 		"/mnt/stateful_partition/encrypted": {nil, "ext4", defaultRW},
@@ -113,7 +112,6 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/run/imageloader":             {nil, "tmpfs", defaultRW},
 		"/run/lock":                    {nil, "tmpfs", defaultRW},
 		"/run/namespaces":              {nil, "tmpfs", defaultRW}, // This is a bind mount
-		"/run/namespaces/mnt_chrome":   {nil, "proc", defaultRW},  // Bind-mount of the user session namespace.
 		"/run/netns":                   {nil, "tmpfs", defaultRW}, // TODO: avoid creating mountpoint under /run: crbug.com/757953
 		"/sys":                         {nil, "sysfs", defaultRW},
 		"/sys/fs/cgroup/cpuacct":       {nil, "cgroup", defaultRW},
@@ -172,7 +170,8 @@ func Mtab(ctx context.Context, s *testing.State) {
 	// Filesystem types that are skipped.
 	ignoredTypes := []string{
 		"ecryptfs",
-		"nsfs", // kernel filesystem used with network namespaces
+		"nsfs", // kernel filesystem used with namespaces
+		"proc", // TODO(crbug.com/1204115): Re-enable "proc" testing once 3.18 kernels are out.
 	}
 
 	// Returns true if s appears in vals.
