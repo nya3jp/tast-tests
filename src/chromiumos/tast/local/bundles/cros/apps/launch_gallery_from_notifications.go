@@ -41,23 +41,12 @@ func init() {
 		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{
 			{
-				Name:              "clamshell_stable",
+				Name:              "stable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
-				Val:               false,
 			}, {
-				Name:              "clamshell_unstable",
+				Name:              "unstable",
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-				Val:               false,
-			}, {
-				Name:              "tablet_stable",
-				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
-				Val:               true,
-			}, {
-				Name:              "tablet_unstable",
-				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-				Val:               true,
 			},
 		},
 	})
@@ -88,13 +77,6 @@ func LaunchGalleryFromNotifications(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
-	isTabletEnabled := s.Param().(bool)
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, isTabletEnabled)
-	if err != nil {
-		s.Fatal("Failed to ensure in tablet mode: ", err)
-	}
-	defer cleanup(cleanupCtx)
 
 	conn, err := cr.NewConn(ctx, filepath.Join(server.URL, "download_link.html"))
 	if err != nil {
