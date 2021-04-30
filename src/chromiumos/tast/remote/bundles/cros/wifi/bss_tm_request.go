@@ -48,6 +48,12 @@ func init() {
 					ReassocDelay:     bssTMReassocDelay,
 				},
 			},
+			{
+				Name: "bss_term",
+				Val: hostapd.BSSTMReqParams{
+					BSSTerm: 1 * time.Minute,
+				},
+			},
 		},
 	})
 }
