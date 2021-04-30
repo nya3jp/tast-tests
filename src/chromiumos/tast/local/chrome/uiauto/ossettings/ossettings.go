@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/testing"
 )
 
@@ -121,20 +122,7 @@ func LaunchAtPageURL(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chr
 		return nil, errors.Wrap(err, "failed to connect to OS settings target")
 	}
 
-	// Sometimes changing window.location in javascript just does not work and no error thrown out.
-	// Using uiauto.Retry to allow 3 times retries. Refer to b/177868367.
-	if s.ui.Retry(3, func(ctx context.Context) error {
-		// Eval javascript function to change page url.
-		if err := settingsConn.Eval(ctx, fmt.Sprintf("window.location = %q", urlPrefix+pageShortURL), nil); err != nil {
-			return errors.Wrap(err, "failed to run javascript to set window location")
-		}
-
-		// Wait for condition after changing location.
-		if err := testing.Poll(ctx, condition, &testing.PollOptions{Timeout: 20 * time.Second, Interval: 200 * time.Millisecond}); err != nil {
-			return errors.Wrap(err, "failed to match condition after changing page location in javascript")
-		}
-		return nil
-	})(ctx); err != nil {
+	if err := webutil.NavigateToURLInApp(settingsConn, urlPrefix+pageShortURL, condition, 20*time.Second)(ctx); err != nil {
 		return nil, err
 	}
 	return s, nil

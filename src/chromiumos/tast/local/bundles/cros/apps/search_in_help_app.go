@@ -69,23 +69,22 @@ func SearchInHelpApp(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("launch Help app and navigate to search page",
 		helpCtx.Launch(),
-		ui.LeftClick(helpapp.SearchTabFinder),
+		helpCtx.NavigateToSearchPage(),
 	)(ctx); err != nil {
 		s.Fatal("Failed to launch help app or navigate to search page: ", err)
 	}
 
-	// Establish a Chrome connection to the Help app and wait for it to finish
+	// Establish a Chrome connection to the Help app trusted frame and wait for it to finish
 	// initializing the local search service.
-	helpAppConn, err := cr.NewConnForTarget(ctx,
-		chrome.MatchTargetURL("chrome://help-app/"))
+	trustedHelpAppConn, err := helpCtx.TrustedUIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to establish connection to help app")
+		s.Fatal("Failed to establish connection to help app trusted frame")
 	}
-	defer helpAppConn.Close()
+	defer trustedHelpAppConn.Close()
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		responseStatus := -1
-		err := helpAppConn.Eval(ctx,
+		err := trustedHelpAppConn.Eval(ctx,
 			`(async () => {
 				return (await indexRemote.find(toString16('foo'))).status;
 			})()`, &responseStatus)
@@ -96,11 +95,11 @@ func SearchInHelpApp(ctx context.Context, s *testing.State) {
 		// Status 1 corresponds to kSuccess.
 		// https://source.chromium.org/chromium/chromium/src/+/HEAD:chromeos/components/local_search_service/mojom/types.mojom;l=68;drc=378c706113a7a8573a184d60e1bd67d704644251
 		if responseStatus != 1 {
-			return errors.Wrap(err, "response status not equal to kSuccess")
+			return errors.Wrapf(err, "response status does not equal to kSuccess, want 1, got %d", responseStatus)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-		s.Fatal("Failed to initialize local search service")
+		s.Fatal("Failed to initialize local search service: ", err)
 	}
 
 	// Search for "halp". If local search service is used, it should return
@@ -111,11 +110,15 @@ func SearchInHelpApp(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
-	searchResultFinder := nodewith.ClassName("search-result selected").Role(role.ListItem).Ancestor(helpapp.RootFinder)
+	firstSearchResultContainer := nodewith.ClassName("search-result selected").Role(role.ListItem).Ancestor(helpapp.RootFinder)
+
+	const searchKeyword = "halp"
+	expectedResultFinder := nodewith.Role(role.Link).NameContaining("help").Ancestor(firstSearchResultContainer)
 
 	if err := uiauto.Combine("type keyword to search and validate result",
-		keyboard.TypeAction("halp"),
-		ui.WaitUntilExists(searchResultFinder),
+		helpCtx.ClickSearchInputAndWaitForActive(),
+		keyboard.TypeAction(searchKeyword),
+		ui.WaitUntilExists(expectedResultFinder),
 	)(ctx); err != nil {
 		s.Error("Failed to search in Help app: ", err)
 	}
