@@ -33,6 +33,24 @@
       "message": "Combine lines?",
       "revId": "220b68d49b118fed39379442224388b4f1232f28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ee16aca_30cc5c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/connectivity_diagnostics_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-30T15:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ace5528_3691a321",
+      "revId": "220b68d49b118fed39379442224388b4f1232f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
