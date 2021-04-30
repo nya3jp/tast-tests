@@ -33,6 +33,149 @@
       "message": "Forgot to reply to one comment last time. Just replied to that comment.",
       "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76696127_7ea0d76a",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2021-04-30T17:31:45Z",
+      "side": 1,
+      "message": "just err",
+      "range": {
+        "startLine": 36,
+        "startChar": 83,
+        "endLine": 36,
+        "endChar": 92
+      },
+      "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "728bafca_41d1f40c",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2021-04-30T17:31:45Z",
+      "side": 1,
+      "message": "first question why it is in defer and not just on line 98?\n\nmaybe it can be just simple method we can run as we will not use servo-errors?",
+      "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6bca2a6_2753a831",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2021-04-30T17:31:45Z",
+      "side": 1,
+      "message": "`Servod process is not initialized on the servo-host`",
+      "range": {
+        "startLine": 75,
+        "startChar": 30,
+        "endLine": 75,
+        "endChar": 68
+      },
+      "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21490964_89564776",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2021-04-30T17:31:45Z",
+      "side": 1,
+      "message": "if we do not have error with servodtool: `Servod instance is running on \u003cport\u003e of the servo host, probably we have XMLRPC issue on servo-host. Please file a bug!`",
+      "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b6dff55_da6c96d6",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2021-04-30T17:31:45Z",
+      "side": 1,
+      "message": "extra as from left there are no new variable?",
+      "range": {
+        "startLine": 79,
+        "startChar": 20,
+        "endLine": 79,
+        "endChar": 21
+      },
+      "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0475d06c_461154a7",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2021-04-30T17:31:45Z",
+      "side": 1,
+      "message": "The servod is not responsive or busy:",
+      "range": {
+        "startLine": 80,
+        "startChar": 30,
+        "endLine": 80,
+        "endChar": 70
+      },
+      "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff42a33d_1b38d9c9",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2021-04-30T17:31:45Z",
+      "side": 1,
+      "message": "if dut-control did not fail: `Servod is responsive on the host and can provide information about serialname`",
+      "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

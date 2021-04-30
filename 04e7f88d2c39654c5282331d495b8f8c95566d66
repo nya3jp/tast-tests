@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5267954e_6b46bf34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2021-04-30T17:31:45Z",
+      "side": 1,
+      "message": "if proxy fail but servod is running will we resutl of the command we running?\n\nCan we have print the command as well to the debug logs?",
+      "parentUuid": "37323136_b6942572",
+      "revId": "04e7f88d2c39654c5282331d495b8f8c95566d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d6a3f57_f166379e",
