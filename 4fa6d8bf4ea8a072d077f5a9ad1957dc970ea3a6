@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "831d7961_03171f81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-04-30T12:11:59Z",
+      "side": 1,
+      "message": "I changed the base for the test to RoamFT. Also, for more context, I\u0027ve added verifier code and a sample (ping) verification.\n\nI\u0027ve reshuffled reviewers basing on previous activity. People that responded previously I\u0027ve set as reviewers, people that didn\u0027t were moved to CC. Feel free to change assignment or remove youself from CC entirely.\n\nPlease review.",
+      "revId": "4fa6d8bf4ea8a072d077f5a9ad1957dc970ea3a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
