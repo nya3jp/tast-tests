@@ -8,6 +8,7 @@ package helpapp
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -45,13 +46,14 @@ var TabFinder = nodewith.Role(role.TreeItem).Ancestor(RootFinder)
 
 // Tab names in Help app.
 var (
-	SearchTabFinder     = TabFinder.Name("Search")
-	OverviewTabFinder   = TabFinder.Name("Overview")
-	PerksTabFinder      = TabFinder.Name("Perks")
-	HelpTabFinder       = TabFinder.Name("Help")
-	WhatsNewTabFinder   = TabFinder.Name("See what's new")
-	ToggleSideBarFinder = nodewith.Name("Toggle sidebar").Role(role.PopUpButton).Ancestor(RootFinder)
+	SearchTabFinder   = TabFinder.Name("Search")
+	OverviewTabFinder = TabFinder.Name("Overview")
+	PerksTabFinder    = TabFinder.Name("Perks")
+	HelpTabFinder     = TabFinder.Name("Help")
+	WhatsNewTabFinder = TabFinder.Name("See what's new")
 )
+
+var searchInputFinder = nodewith.Name("Search").Role(role.TextField).Ancestor(RootFinder)
 
 // WaitForApp waits for the app to be shown and rendered.
 func (hc *HelpContext) WaitForApp() uiauto.Action {
@@ -87,15 +89,29 @@ func (hc *HelpContext) Exists(ctx context.Context) (bool, error) {
 // where JavaScript can be executed to simulate interactions with the UI.
 // The caller should close the returned connection. e.g. defer helpAppConn.Close().
 func (hc *HelpContext) UIConn(ctx context.Context) (*chrome.Conn, error) {
+	return hc.helpConn(ctx, "chrome-untrusted://help-app/")
+}
+
+// TrustedUIConn returns a connection to the trusted frame of Help app.
+// It has more privileges to access browser functions same as other SWAs.
+// The caller should close the returned connection. e.g. defer trustedConn.Close().
+func (hc *HelpContext) TrustedUIConn(ctx context.Context) (*chrome.Conn, error) {
+	return hc.helpConn(ctx, "chrome://help-app/")
+}
+
+func (hc *HelpContext) helpConn(ctx context.Context, urlPrefix string) (*chrome.Conn, error) {
 	// Establish a Chrome connection to the Help app and wait for it to finish loading.
-	helpAppConn, err := hc.cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome-untrusted://help-app/"))
+	connTargetFilter := func(t *chrome.Target) bool {
+		return strings.HasPrefix(t.URL, urlPrefix)
+	}
+	conn, err := hc.cr.NewConnForTarget(ctx, connTargetFilter)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get connection to help app")
 	}
-	if err := helpAppConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+	if err := conn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for help app to finish loading")
 	}
-	return helpAppConn, nil
+	return conn, nil
 }
 
 // EvalJSWithShadowPiercer executes javascript in Help app web page.
@@ -139,4 +155,27 @@ func (hc *HelpContext) IsHTMLElementPresent(ctx context.Context, cssSelector str
 		return false, errors.Wrapf(err, "failed to check presence of HTML element: %s", cssSelector)
 	}
 	return isPresent, nil
+}
+
+// NavigateToPageWithURL navigates to a sub page by changing url location directly.
+func (hc *HelpContext) NavigateToPageWithURL(url string, condition uiauto.Action) uiauto.Action {
+	return func(ctx context.Context) error {
+		trustedConn, err := hc.TrustedUIConn(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to connect to help ui")
+		}
+		defer trustedConn.Close()
+
+		return webutil.NavigateToURLInApp(trustedConn, url, condition, 10*time.Second)(ctx)
+	}
+}
+
+// NavigateToSearchPage navigates to Search page by changing url via javascript.
+func (hc *HelpContext) NavigateToSearchPage() uiauto.Action {
+	return hc.NavigateToPageWithURL("chrome://help-app/search", hc.ui.WithTimeout(5*time.Second).WaitUntilExists(searchInputFinder))
+}
+
+// ClickSearchInputAndWaitForActive clicks search input field and waits for active.
+func (hc *HelpContext) ClickSearchInputAndWaitForActive() uiauto.Action {
+	return hc.ui.LeftClickUntil(searchInputFinder, hc.ui.WaitUntilExists(searchInputFinder.Focused()))
 }
