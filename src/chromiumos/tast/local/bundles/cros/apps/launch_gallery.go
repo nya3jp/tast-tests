@@ -42,28 +42,13 @@ func init() {
 		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{
 			{
-				Name:              "clamshell_stable",
+				Name:              "stable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 				ExtraAttr:         []string{"informational"},
-				Val:               false,
 			}, {
-				Name:              "clamshell_unstable",
+				Name:              "unstable",
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-				Val:               false,
-			}, {
-				Name:              "tablet_stable",
-				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
-				Val:               true,
-			}, {
-				Name:              "tablet_unstable",
-				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-				// Exclude devices that can not be converted to tablet mode.
-				ExtraSoftwareDeps: []string{"tablet_mode"},
-
-				Val: true,
 			},
 		},
 	})
@@ -78,13 +63,6 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 	}
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	isTabletEnabled := s.Param().(bool)
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, isTabletEnabled)
-	if err != nil {
-		s.Fatal("Failed to ensure in tablet mode: ", err)
-	}
-	defer cleanup(ctx)
 
 	//TODO(crbug/1146196) Remove sleep after Downloads mounting issue fixed.
 	testing.Sleep(ctx, 5*time.Second)
