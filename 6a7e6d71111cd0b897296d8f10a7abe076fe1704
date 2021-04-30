@@ -16,6 +16,40 @@
       "message": "hi Otabek:\n\nPlease check if my latest changes addressed all your concerns. Thanks.\n\nSeewai",
       "revId": "6a7e6d71111cd0b897296d8f10a7abe076fe1704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ecfe02e_25cd114b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2021-04-30T19:11:30Z",
+      "side": 1,
+      "message": "I a not familiar with code and wonder will we have in the logs the results which we got from servo-host? ",
+      "revId": "6a7e6d71111cd0b897296d8f10a7abe076fe1704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19eb3645_294849f0",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2021-04-30T19:11:30Z",
+      "side": 1,
+      "message": "I think, you do not need to pre declare them before use is left side will have new variable and previous code has to work fine.",
+      "revId": "6a7e6d71111cd0b897296d8f10a7abe076fe1704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
