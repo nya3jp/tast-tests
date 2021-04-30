@@ -35,6 +35,7 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 		gotItButtonText    = "got it"
 		installButtonText  = "install"
 		openButtonText     = "open"
+		playButtonText     = "Play"
 		okButtonText       = "ok"
 		retryButtonText    = "retry"
 		skipButtonText     = "skip"
@@ -167,11 +168,16 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 				return testing.PollBreak(err)
 			}
 		}
-
-		// Installation is complete once the open button is enabled.
-		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+openButtonText), ui.Enabled(true)).Exists(ctx); err != nil {
+		// Check if open button or play button is available.
+		// Installation is complete once the open button or play button is enabled.
+		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+openButtonText)).Exists(ctx); err != nil {
+			if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+playButtonText), ui.Enabled(true)).Exists(ctx); err != nil {
+				return errors.Wrap(err, "failed to wait for enabled play button")
+			}
+		} else if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+openButtonText), ui.Enabled(true)).Exists(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait for enabled open button")
 		}
+
 		return nil
 	}, &testing.PollOptions{Interval: time.Second}); err != nil {
 		return err
