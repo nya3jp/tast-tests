@@ -83,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "966cd383_fbc78c3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_wake_locks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-30T07:09:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b73c5895_090226b0",
+      "revId": "b7d0b024056007e51837b165c79d65cdf4dd855d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50e0c1b1_7fb6361f",
