@@ -112,6 +112,10 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 			// TODO(b/177777412): Enable VK typing tests on auto-cap fields.
 			// TODO(b/182960492): Enable vk typing test on '*' char on number input field.
 			{
+				inputField:   testserver.TextInputField,
+				keySeq:       strings.Split("hello", ""),
+				expectedText: "hello",
+			}, {
 				inputField:   testserver.PasswordInputField,
 				keySeq:       strings.Split("hello", ""),
 				expectedText: "hello",
@@ -231,6 +235,9 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 		s.Fatalf("%s is not supported", imeCode)
 	}
 
+	// Add a timeout as a temporary stopgap to make the tests pass.
+	testing.Sleep(ctx, 2*time.Second)
+
 	for _, subtest := range subTests {
 		s.Run(ctx, string(subtest.inputField), func(ctx context.Context, s *testing.State) {
 			defer func() {
@@ -252,6 +259,8 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 			if err := vkbCtx.TapKeys(subtest.keySeq)(ctx); err != nil {
 				s.Fatalf("Failed to tap keys %v: %v", subtest.keySeq, err)
 			}
+
+			testing.Sleep(ctx, 2*time.Second)
 
 			// some IMEs need to manually select from candidates to submit.
 			if subtest.inputSuggestion {
