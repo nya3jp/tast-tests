@@ -54,6 +54,11 @@ func Retry(n int, action Action, interval time.Duration) Action {
 		var err error
 		for i := 0; i < n; i++ {
 			if err = action(ctx); err == nil {
+				// Print a success log to clear confusing.
+				// Retry logs are sometimes mistaken as errors.
+				if i > 0 {
+					testing.ContextLogf(ctx, "Retry succeed in attempt %d", i+1)
+				}
 				return nil
 			}
 			testing.ContextLogf(ctx, "Retry failed attempt %d: %v", i+1, err)
