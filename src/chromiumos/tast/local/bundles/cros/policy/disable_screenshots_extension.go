@@ -103,17 +103,17 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 		{
 			name:      "true",
 			value:     []policy.Policy{&policy.DisableScreenshots{Val: true}},
-			wantTitle: "screen capture not allowed",
+			wantTitle: "Taking screenshots has been disabled",
 		},
 		{
 			name:      "false",
 			value:     []policy.Policy{&policy.DisableScreenshots{Val: false}},
-			wantTitle: "screen capture allowed",
+			wantTitle: "Screen capture allowed",
 		},
 		{
 			name:      "unset",
 			value:     []policy.Policy{},
-			wantTitle: "screen capture allowed",
+			wantTitle: "Screen capture allowed",
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
