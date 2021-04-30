@@ -69,6 +69,24 @@
       "parentUuid": "ceb7535d_e309f389",
       "revId": "d2619dbc480e542cc13454c4100fdc917bf036c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecad0476_1d603a12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/data/gen_test_images.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-30T14:56:37Z",
+      "side": 1,
+      "message": "There\u0027s no direct blocker per-se. However, any time we port something we risk introducing bugs. The logic in this script is much more obtuse than the other parts of the test being ported, so there\u0027s a greater chance of making a mistake. Since it\u0027s test code, we don\u0027t have tests for the tests, so I\u0027m going to have to be more careful when doing the porting and try to make some basic tests to make sure that I don\u0027t inadvertently introduce a subtle bug.\n\nSince switching from the script to Go can be a drop-in replacement I\u0027d like to be able to land the followup CLs (https://crrev.com/c/2847138 and https://crrev.com/c/2849055) to make sure that the tests behaves as expected with the existing script and then port the script.\n\nThis is along the lines of the code review philosophy: \"In general, reviewers should favor approving a CL once it is in a state where it definitely improves the overall code health of the system being worked on, even if the CL isn’t perfect.\"\n\nhttps://google.github.io/eng-practices/review/reviewer/standard.html",
+      "parentUuid": "769dbb11_d0fb0654",
+      "revId": "d2619dbc480e542cc13454c4100fdc917bf036c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
