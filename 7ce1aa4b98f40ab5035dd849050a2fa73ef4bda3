@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ee7bb13_cf2cecc0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-30T20:33:31Z",
+      "side": 1,
+      "message": "+1 to Harpreet \n\nI think this would probably be something that is better suited to perform in the fixture. The tast docs state that tests shouldn\u0027t assume that things are in a particular state when they run, and that tests shouldn\u0027t perform unnecessary deinitialization steps: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#startup-and-shutdown\n\nI realized that my test was not properly setting the attenuation before connecting, so I moved that logic above were I attempt to connect to the AP.",
+      "parentUuid": "a39b2f3c_49bcd9a5",
+      "revId": "7ce1aa4b98f40ab5035dd849050a2fa73ef4bda3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf1bd6ca_979b3171",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
         "patchSetId": 6
@@ -49,6 +67,30 @@
       "writtenOn": "2021-04-30T17:52:40Z",
       "side": 1,
       "message": "Here you probably might set not high enough attenuation.\n\nSpeaking about attenuations, we actally mean two attenuations: attenuation set on the attenuator (0-95) and total attenuation on the line (including loss on cables splitters etc, variable in different setups, adding another 30-60dB). Anything in the code referring to TotalAttenuation is as the name suggests Total (line) attenuation. Anything that does not refer to the Total attenuation, means attenuator setting.\n\nMaking long story short, if you want to cut the signal off, instead of attenuator.SetTotalAttneuation(attenuator.MaximumAttenuation()...) you should use\nattenuator.SetAttneuation(attenuator.MaximumAttenuation()...).",
+      "range": {
+        "startLine": 144,
+        "startChar": 37,
+        "endLine": 144,
+        "endChar": 55
+      },
+      "revId": "7ce1aa4b98f40ab5035dd849050a2fa73ef4bda3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08aef179_67d57cbc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-30T20:33:31Z",
+      "side": 1,
+      "message": "Thanks for the context Jacek! \n\nI tested using the SetAttenuation, and at this point the network is no longer connected. Ideally, I would like to still have the network connected but with a weak signal strength. When I test using the SetTotalAttenuation, the signal strength drops from 100 (maximum) to 37, which is well below the threshold I\u0027m testing. Is it fine to just attenuate the line instead of using the attenuator? Or would it be better to actually set the attenuator, but use a value less than maximum?",
+      "parentUuid": "cf1bd6ca_979b3171",
       "range": {
         "startLine": 144,
         "startChar": 37,
