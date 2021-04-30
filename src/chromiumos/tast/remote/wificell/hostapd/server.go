@@ -259,6 +259,8 @@ type BSSTMReqParams struct {
 	DisassocTimer time.Duration
 	// ReassocDelay is the delay (in seconds) before the STA is permitted to reassociate to the AP.
 	ReassocDelay time.Duration
+	// BSSTerm is the time before the AP will be terminated
+	BSSTerm time.Duration
 }
 
 // SendBSSTMRequest sends a BSS Transition Management Request to the specified client.
@@ -274,6 +276,9 @@ func (s *Server) SendBSSTMRequest(ctx context.Context, clientMAC string, params 
 		args = append(args, "disassoc_imminent=1")
 		args = append(args, fmt.Sprintf("disassoc_timer=%d", (params.DisassocTimer/(100*time.Millisecond))))
 		args = append(args, fmt.Sprintf("mbo=3:%d:0", params.ReassocDelay/time.Second))
+	}
+	if params.BSSTerm > 0 {
+		args = append(args, fmt.Sprintf("bss_term=0,%d", params.BSSTerm/time.Minute))
 	}
 
 	// Run the command
