@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c851a07_6aae6113",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-30T07:25:24Z",
+      "side": 1,
+      "message": "LGTM % question",
+      "revId": "7ba1a7d0a779db1b82cd028c063d0581ed4327df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90b8c389_eeb96f94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-30T07:25:24Z",
+      "side": 1,
+      "message": "Usually defer() is after the error handling. In this case is it useful before that (and files contains information even in case of an error)?",
+      "revId": "7ba1a7d0a779db1b82cd028c063d0581ed4327df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

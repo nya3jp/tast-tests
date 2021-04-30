@@ -177,6 +177,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e7355a4_6bea74be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-04-30T07:25:24Z",
+      "side": 1,
+      "message": "Interesting. You should be able to skip the whole Timeout line, and in that case it uses the default timeout (which is 1,5 minutes I think).",
+      "parentUuid": "0bbab82c_619a86e6",
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80d00545_f346bc93",
