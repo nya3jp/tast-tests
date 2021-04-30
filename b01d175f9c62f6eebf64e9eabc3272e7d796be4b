@@ -16,6 +16,103 @@
       "message": "Looks good to me, but do wait for deanliao@ since I\u0027m not familiar with the WiFi parts.",
       "revId": "b01d175f9c62f6eebf64e9eabc3272e7d796be4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "808e1de7_c58b0b3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-30T01:15:14Z",
+      "side": 1,
+      "message": "+Harpreet and Nicolas,\n\nThis test plans to be added to suite:wifi_matfunc, what do you think? \n\nMy opinion is: it should be run in a separate suite. However, the suite can use the same pool of DUTs as suite:wifi_matfunc.",
+      "revId": "b01d175f9c62f6eebf64e9eabc3272e7d796be4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48b0f722_85078211",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_secure_wifi.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-30T01:15:14Z",
+      "side": 1,
+      "message": "Rephrase \"secure WiFi connection network diagnostic routine\" as \"network diagnostic routine for secure WiFi connection\"",
+      "revId": "b01d175f9c62f6eebf64e9eabc3272e7d796be4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af1369a4_a9afc657",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_secure_wifi.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-30T01:15:14Z",
+      "side": 1,
+      "message": "Rephrase \"Secure WiFi connection network diagnostic routine\" as \"network diagnostic routine for secure WiFi connection\"",
+      "revId": "b01d175f9c62f6eebf64e9eabc3272e7d796be4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c5100f_3d0c4128",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_secure_wifi.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-30T01:15:14Z",
+      "side": 1,
+      "message": "secure",
+      "range": {
+        "startLine": 102,
+        "startChar": 33,
+        "endLine": 102,
+        "endChar": 39
+      },
+      "revId": "b01d175f9c62f6eebf64e9eabc3272e7d796be4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05fdda98_a32dcfd2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_secure_wifi.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-04-30T01:15:14Z",
+      "side": 1,
+      "message": "set up",
+      "range": {
+        "startLine": 143,
+        "startChar": 21,
+        "endLine": 143,
+        "endChar": 26
+      },
+      "revId": "b01d175f9c62f6eebf64e9eabc3272e7d796be4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
