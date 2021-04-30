@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9104770a_8739d942",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-30T07:01:19Z",
+      "side": 1,
+      "message": "Review is expected to be slow for large cls. I will continue to review it when available.",
+      "revId": "ba2d99ab19f19aafcbaf01a67c73baeb6738f754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9116b74_3991b16b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-30T07:01:19Z",
+      "side": 1,
+      "message": "nit: comment should ends with period.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 52
+      },
+      "revId": "ba2d99ab19f19aafcbaf01a67c73baeb6738f754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "084d1a30_759afcae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-30T07:01:19Z",
+      "side": 1,
+      "message": "nit: This is a mix use of /**/ and //. \n\nBlock comments are mostly used for packages or large blocks. For these cases including below, // should be fine.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 3
+      },
+      "revId": "ba2d99ab19f19aafcbaf01a67c73baeb6738f754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b0d3b63_6dab21c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-30T07:01:19Z",
+      "side": 1,
+      "message": "Looks like only the second half of the data is used. I would be nice to comment the structure of the bandwidth output data. So it can be clearer how it works.",
+      "range": {
+        "startLine": 72,
+        "startChar": 39,
+        "endLine": 72,
+        "endChar": 46
+      },
+      "revId": "ba2d99ab19f19aafcbaf01a67c73baeb6738f754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab5a6145_4ffff391",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-30T07:01:19Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 3
+      },
+      "revId": "ba2d99ab19f19aafcbaf01a67c73baeb6738f754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
