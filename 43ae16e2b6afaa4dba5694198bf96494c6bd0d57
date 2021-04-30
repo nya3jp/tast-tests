@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc89df27_fa0cd871",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-04-30T02:24:18Z",
+      "side": 1,
+      "message": "lgtm (I don\u0027t have reivew +2 on the UI)",
+      "revId": "43ae16e2b6afaa4dba5694198bf96494c6bd0d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
