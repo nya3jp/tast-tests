@@ -3,8 +3,15 @@
 // found in the LICENSE file.
 
 function setTitle(capture) {
-  const title = capture ? "screen capture allowed" :
-    "screen capture not allowed";
+  let title = "Screen capture allowed";
+  if (!capture) {
+    if (chrome.runtime.lastError) {
+      title = chrome.runtime.lastError.message;
+    } else {
+      title = "Unknown error";
+    }
+  }
+
   chrome.tabs.executeScript({code: 'document.title = "' + title + '"'});
 }
 
