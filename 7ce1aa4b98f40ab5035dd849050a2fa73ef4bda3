@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a39b2f3c_49bcd9a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2021-04-30T18:21:40Z",
+      "side": 1,
+      "message": "+1 \n\nJacek,\n\nWhile it is a good practice to reset all channels to 0 at the end of the test, we should also set the attenuation to 0 during initialization (when you initially open access to atten?) as we do in autotest (link below) to account for cases where the test hangs or does not complete as expected. In such cases the attenuator may be left with any non-zero atten which can interfere with the following tests.\n\nhttps://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/cros/network/attenuator_controller.py;l\u003d47",
+      "parentUuid": "4d285ae0_b38febbb",
+      "revId": "7ce1aa4b98f40ab5035dd849050a2fa73ef4bda3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf1bd6ca_979b3171",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
         "patchSetId": 6
