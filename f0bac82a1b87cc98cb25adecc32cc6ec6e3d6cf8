@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "cba6bae5_a99749fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-30T18:02:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4039bdf4_60695f0b",
+      "range": {
+        "startLine": 7,
+        "startChar": 57,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "f0bac82a1b87cc98cb25adecc32cc6ec6e3d6cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5bf529ce_76ae3fbd",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -71,6 +95,30 @@
       "writtenOn": "2021-04-30T07:46:03Z",
       "side": 1,
       "message": "minor nit:\nIf you change the order of the checks, the not set error message can be more exact, as none of the properties are set in that case.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 2
+      },
+      "revId": "f0bac82a1b87cc98cb25adecc32cc6ec6e3d6cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2209fe25_3d372473",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-04-30T18:02:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2623bc8_33df2248",
       "range": {
         "startLine": 186,
         "startChar": 0,
