@@ -33,6 +33,23 @@
       "message": "Thanks for the review. Add tast-owners.",
       "revId": "72298f476f81c21c0f1046000be41d6f02085025",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f29ec345_c0bcc92a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-04-30T15:58:12Z",
+      "side": 1,
+      "message": "LGTM, nice way to get your CL stats up ;)",
+      "revId": "72298f476f81c21c0f1046000be41d6f02085025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
