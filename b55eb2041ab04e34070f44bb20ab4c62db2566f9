@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7319b49_33447c53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002092
+      },
+      "writtenOn": "2021-04-30T05:42:30Z",
+      "side": 1,
+      "message": "natural ui mode to test",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "b55eb2041ab04e34070f44bb20ab4c62db2566f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df9af350_921b5cdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002092
+      },
+      "writtenOn": "2021-04-30T05:42:30Z",
+      "side": 1,
+      "message": "conceptually lgtm, but I\u0027m not an expert on the tast config settings.\n\nCertainly I agree that for Gallery we\u0027re unlikely to have anything picked up in one mode that wouldn\u0027t be picked up in both/either.",
+      "revId": "b55eb2041ab04e34070f44bb20ab4c62db2566f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
