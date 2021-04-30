@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2fdb31c_079a1810",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2021-04-30T05:07:59Z",
+      "side": 1,
+      "message": "Yes if this test is added to a different (non wifi_matfunc) suite, we can set that suite to run on the same pool of devices as wifi_matfunc.\n\nDo we expect there to be more \u0027network\u0027 tests that use wifi APs?",
+      "parentUuid": "808e1de7_c58b0b3b",
+      "revId": "b01d175f9c62f6eebf64e9eabc3272e7d796be4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48b0f722_85078211",
