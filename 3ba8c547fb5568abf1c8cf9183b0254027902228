@@ -22,6 +22,30 @@
       },
       "revId": "3ba8c547fb5568abf1c8cf9183b0254027902228",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed67721c_78be5842",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-04-30T09:31:34Z",
+      "side": 1,
+      "message": "I\u0027d not sure this would be better, because this will enforce .cros domain for all attenuator hostnames, which may not always be true (i.e. we\u0027re preparing an attenuated setup in our local lab, so this won\u0027t come with .cros suffix).\n\nSo sometimes it also doesn\u0027t exist when we don\u0027t want it. :/",
+      "parentUuid": "3f47098e_fd294965",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 58
+      },
+      "revId": "3ba8c547fb5568abf1c8cf9183b0254027902228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
