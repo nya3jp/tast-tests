@@ -39,6 +39,24 @@
       "message": "Is the nil check needed? I think t.Args() always returns non-nil.",
       "revId": "357da9cc344b0b4c42d801da062961b927076577",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e755a97d_ed51e0cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-04-30T02:36:32Z",
+      "side": 1,
+      "message": "Ah, I missed the second return value from t.Args() (error).",
+      "parentUuid": "e25cd919_36268212",
+      "revId": "357da9cc344b0b4c42d801da062961b927076577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
