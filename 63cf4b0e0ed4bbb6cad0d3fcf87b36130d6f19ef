@@ -33,6 +33,24 @@
       "message": "Might want to rebase this, looks like the unit tests for crostini are failing, I believe this was fixed in crbug.com/1204172 (although it might not be picked up in the annealing build for a while so may just have to wait a little longer before doing that 😞)",
       "revId": "63cf4b0e0ed4bbb6cad0d3fcf87b36130d6f19ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca58d53d_d15e09cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1418650
+      },
+      "writtenOn": "2021-04-30T03:15:49Z",
+      "side": 1,
+      "message": "Cool. Will do. I see that the tree is closed right now anyway.",
+      "parentUuid": "8e849b68_c9a2ae55",
+      "revId": "63cf4b0e0ed4bbb6cad0d3fcf87b36130d6f19ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
