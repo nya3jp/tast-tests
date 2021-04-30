@@ -6,11 +6,13 @@ package health
 
 import (
 	"context"
-	"io/ioutil"
+	"os"
 	"path/filepath"
 	"reflect"
 	"strings"
+	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
@@ -32,44 +34,65 @@ func init() {
 
 func ProbeNetworkInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryNetwork}
-	b, err := croshealthd.RunTelem(ctx, params, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to run telem command: ", err)
-	}
 
 	// Helper function to write the result from telem to a file.
-	writeResultToFile := func() {
-		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "network_health_telem.txt"),
-			b, 0644); err != nil {
-			s.Error("Unable to write network_health_telem.txt file: ", err)
+	f, err := os.OpenFile(filepath.Join(s.OutDir(), "network_health_telem.txt"), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		s.Error("Unable to open network_health_telem.txt file: ", err)
+	}
+	defer f.Close()
+	appendResultToFile := func(b []byte) {
+		if _, err := f.Write(b); err != nil {
+			s.Fatal("Failed to append to network_health_telem.txt file: ", err)
 		}
 	}
 
-	// Every system should have the field headers and at least one network
-	// devices.
-	lines := strings.Split(strings.TrimRight(string(b), "\n"), "\n")
-	if len(lines) < 2 {
-		writeResultToFile()
-		s.Fatal("Could not find any lines of network info")
-	}
-
-	// Verify the header keys are correct.
-	header := []string{
-		"type", "state", "portal_state", "guid", "name", "signal_strength",
-		"mac_address", "ipv4_address", "ipv6_addresses"}
-	got := strings.Split(lines[0], ",")
-	if !reflect.DeepEqual(got, header) {
-		writeResultToFile()
-		s.Fatalf("Incorrect NetworkInfo keys: got %v; want %v", got, header)
-	}
-
-	// Verify that all network devices have the correct number of fields.
-	for _, line := range lines[1:] {
-		vals := strings.Split(line, ",")
-		if len(vals) != len(header) {
-			writeResultToFile()
-			s.Fatalf("Unexpected number of fields in network structure: got: %v, want: %v, fields: %v",
-				len(vals), len(header), vals)
+	// If this test is run right after chrome is started, it's possible that the
+	// network health information has not been populated. Poll the routine until
+	// network information is present.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		b, err := croshealthd.RunTelem(ctx, params, s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to run telem command: ", err)
 		}
+		lines := strings.Split(strings.TrimRight(string(b), "\n"), "\n")
+
+		// Every response should have the field headers.
+		if len(lines) < 1 {
+			appendResultToFile(b)
+			s.Fatal("Could not find network info header")
+		}
+
+		// Verify the header keys are correct.
+		header := []string{
+			"type", "state", "portal_state", "guid", "name", "signal_strength",
+			"mac_address", "ipv4_address", "ipv6_addresses"}
+		got := strings.Split(lines[0], ",")
+		if !reflect.DeepEqual(got, header) {
+			appendResultToFile(b)
+			s.Fatalf("Incorrect NetworkInfo keys: got %v; want %v", got, header)
+		}
+
+		// Every system should have at least one network device populated. If
+		// not, re-poll the routine.
+		if len(lines) < 2 {
+			appendResultToFile(b)
+			return errors.New("no network info populated")
+		}
+
+		// Verify that all network devices have the correct number of fields.
+		for _, line := range lines[1:] {
+			vals := strings.Split(line, ",")
+			if len(vals) != len(header) {
+				appendResultToFile(b)
+				s.Fatalf("Unexpected number of fields in network structure: got: %v, want: %v, fields: %v",
+					len(vals), len(header), vals)
+			}
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		s.Fatal("Timed out waiting for network health info: ", err)
 	}
 }
