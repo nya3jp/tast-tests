@@ -240,7 +240,8 @@ var vaapiVp9Files = map[string]map[string]map[string][]string{
 				"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf",
 			},
 		},
-		"level5": {
+		// Name this level "5.0" instead of 5 to ensure it runs before 5.1.
+		"level5_0": {
 			"buf": {
 				"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_4096X2176_fr30_bd8_4buf_l5.ivf",
 				"test_vectors/vp9/Profile_0_8bit/buf/grass_1_4096X2176_fr30_bd8_4buf_l5.ivf",
@@ -334,13 +335,13 @@ func TestPlatformDecodingParams(t *testing.T) {
 	const defaultTimeout = 10 * time.Minute
 	vp9GroupExtensions := map[string]time.Duration{
 		"group4":   24 * time.Hour,
-		"level5":   24 * time.Hour,
+		"level5_0": 24 * time.Hour,
 		"level5_1": 24 * time.Hour,
 	}
 
 	// Generate VAAPI VP9 tests.
 	for i, profile := range []string{"profile_0"} {
-		for _, levelGroup := range []string{"group1", "group2", "group3", "group4", "level5", "level5_1"} {
+		for _, levelGroup := range []string{"group1", "group2", "group3", "group4", "level5_0", "level5_1"} {
 			for _, cat := range []string{
 				"buf", "frm_resize", "gf_dist", "odd_size", "sub8x8", "sub8x8_sf",
 			} {
@@ -364,7 +365,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 				}
 
 				switch levelGroup {
-				case "level5":
+				case "level5_0":
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K)
 				case "level5_1":
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K60)
