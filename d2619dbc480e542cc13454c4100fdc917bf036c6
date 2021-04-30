@@ -51,6 +51,24 @@
       "parentUuid": "bfa53d04_af35d02d",
       "revId": "d2619dbc480e542cc13454c4100fdc917bf036c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "769dbb11_d0fb0654",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/data/gen_test_images.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-04-30T03:38:59Z",
+      "side": 1,
+      "message": "\u003e I would like to get rid of the shell script, but porting immediately porting it to golang is risky\n\nHow much? You\u0027re porting the code from autotest to Tast. I think this should be considered as a part of porting, so in terms of risk level, it looks not that much different from other places.\n\nI found the actual usage of this script in the stack of your CLs.\nSo, it actually runs during the test, so considered as a part of the test.\nI think porting this to go should be a part of \"porting test\", and needs to be done at the same time. Actually, we ported much code into Go native, and, hmm..., at this moment, I couldn\u0027t find unique reasons that this is exceptional.\nIf you\u0027re trying to make sure \"other parts\" of your test work with this script, then could you upload the CL to replace this with go on top of your CL stack now? Then, I\u0027m ok to move forward, too.\n\nBTW, walking through the code, I couldn\u0027t find a blocker to port to Go, so am encouraging you to do it now. However, if there is, then please let me know, since the story should be different.\nAlso, if there\u0027s missing pieces I didn\u0027t capture, please let me know, too.",
+      "parentUuid": "ceb7535d_e309f389",
+      "revId": "d2619dbc480e542cc13454c4100fdc917bf036c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
