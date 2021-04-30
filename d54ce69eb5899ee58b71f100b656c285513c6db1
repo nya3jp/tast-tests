@@ -39,6 +39,30 @@
       },
       "revId": "d54ce69eb5899ee58b71f100b656c285513c6db1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06700fa2_091ef5c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-04-30T18:20:02Z",
+      "side": 1,
+      "message": "Thanks! Added elaboration in the commit messages.",
+      "parentUuid": "aa7edce9_a6fa0a18",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 243,
+        "endChar": 69
+      },
+      "revId": "d54ce69eb5899ee58b71f100b656c285513c6db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
