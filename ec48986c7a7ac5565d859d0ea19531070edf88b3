@@ -197,6 +197,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06767f7a_a2c805e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-04-30T10:30:49Z",
+      "side": 1,
+      "message": "This is how minimal timeout for arc test is calculated:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/registration_test.go;l\u003d21?q\u003dtestcheck.Timeout\n\nThis is a unit test which you can run inside chroot:\n\n```\n/mnt/host/source/src/platform/tast/fast_build.sh -T\n```\n\nIt fails, so you need to increase timeout to at least 3m 50s, maybe 5 minutes will be fine:\n\n```\nok      chromiumos/tast/local/bundles/cros      0.185s                                                                                                                                                                                      \n--- FAIL: TestTimeout (0.00s)                                                                                                                                                                                                               \n    testcheck.go:48: arc.SELinuxViolation: timeout is too short (3m0s \u003c 3m50s)                                                                                                                                                              \nFAIL                                                                                                                                                                                                                                        \n```",
+      "parentUuid": "8e7355a4_6bea74be",
+      "revId": "ec48986c7a7ac5565d859d0ea19531070edf88b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80d00545_f346bc93",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
         "patchSetId": 7
