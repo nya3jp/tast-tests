@@ -22,6 +22,30 @@
       },
       "revId": "aafaf5a299a6bb904ffe28a44227722fcecf47e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2715e6c_a38a2516",
+        "filename": "src/chromiumos/tast/local/action/action.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-04-30T22:55:24Z",
+      "side": 1,
+      "message": "This success log is to clear the warning message which causes confusing.\nThe warning log is only printed on retry. For the first attempt, no log is output. So a success log is not necessary.",
+      "parentUuid": "cce78b12_47e982e5",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 12
+      },
+      "revId": "aafaf5a299a6bb904ffe28a44227722fcecf47e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
