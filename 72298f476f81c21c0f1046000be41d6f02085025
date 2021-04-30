@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f271f6f_af8b8ede",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-04-30T00:05:38Z",
+      "side": 1,
+      "message": "LGTM.\n\nOne thing I was considering was whether to just name the service service.go instead of shill_service.go. I ended up thinking that shill_service.go was better in the end since this module does indeed mostly leverage shill. Additionally when used, the wifi package will always have to be invoked, resolving potential confusion.",
+      "revId": "72298f476f81c21c0f1046000be41d6f02085025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
