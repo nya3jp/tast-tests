@@ -33,6 +33,29 @@
       "message": "Thanks!!",
       "revId": "cc06432c450b42d29f6e9bdb59cb49b5ab2a7826",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50da0ccc_177b6cab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-04-30T03:09:17Z",
+      "side": 1,
+      "message": "You mean ro.serialno ?\n\n(We can also check if ro.serialno and ro.boot.serialno have the same value)",
+      "range": {
+        "startLine": 182,
+        "startChar": 16,
+        "endLine": 182,
+        "endChar": 32
+      },
+      "revId": "cc06432c450b42d29f6e9bdb59cb49b5ab2a7826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
