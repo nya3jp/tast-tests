@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f83f46bc_4aa812fd",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-04-30T19:00:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76696127_7ea0d76a",
+      "range": {
+        "startLine": 36,
+        "startChar": 83,
+        "endLine": 36,
+        "endChar": 92
+      },
+      "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "728bafca_41d1f40c",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-04-30T17:31:45Z",
       "side": 1,
       "message": "first question why it is in defer and not just on line 98?\n\nmaybe it can be just simple method we can run as we will not use servo-errors?",
+      "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a9e083_a62a8e68",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-04-30T19:00:44Z",
+      "side": 1,
+      "message": "We may encounter error while calling NewForwarder. It will not go to line 98 if the call to NewForwarder has failed. In fact, it was where the error happened in your example.\n\nFor your second comment, I have move the code that check servo status to a function.",
+      "parentUuid": "728bafca_41d1f40c",
       "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7efe767e_d6fe86d4",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-04-30T19:00:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6bca2a6_2753a831",
+      "range": {
+        "startLine": 75,
+        "startChar": 30,
+        "endLine": 75,
+        "endChar": 68
+      },
+      "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21490964_89564776",
@@ -115,6 +181,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae451e0c_60177074",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-04-30T19:00:44Z",
+      "side": 1,
+      "message": "Done. Since we change the part to check servo status to a function, I don\u0027t think \"probably we have XMLRPC issue on servo-host. Please file a bug!\" should be included in the message because it may be used by other situation. Therefore, I am not going to include that part of message.",
+      "parentUuid": "21490964_89564776",
+      "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b6dff55_da6c96d6",
@@ -128,6 +212,30 @@
       "writtenOn": "2021-04-30T17:31:45Z",
       "side": 1,
       "message": "extra as from left there are no new variable?",
+      "range": {
+        "startLine": 79,
+        "startChar": 20,
+        "endLine": 79,
+        "endChar": 21
+      },
+      "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e514f35a_e1d3afce",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-04-30T19:00:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b6dff55_da6c96d6",
       "range": {
         "startLine": 79,
         "startChar": 20,
@@ -161,6 +269,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba07a155_5790a538",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-04-30T19:00:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0475d06c_461154a7",
+      "range": {
+        "startLine": 80,
+        "startChar": 30,
+        "endLine": 80,
+        "endChar": 70
+      },
+      "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff42a33d_1b38d9c9",
@@ -174,6 +306,24 @@
       "writtenOn": "2021-04-30T17:31:45Z",
       "side": 1,
       "message": "if dut-control did not fail: `Servod is responsive on the host and can provide information about serialname`",
+      "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98f99706_0161db34",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-04-30T19:00:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff42a33d_1b38d9c9",
       "revId": "fc7719514a3eaf70d3abd54644ef030f37a166ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
