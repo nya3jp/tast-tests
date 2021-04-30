@@ -124,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27f2adfa_039537fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_violation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-04-30T18:50:12Z",
+      "side": 1,
+      "message": "Done. Thanks for the pointer!",
+      "parentUuid": "3310cbfc_f27ab545",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 45
+      },
+      "revId": "7ba1a7d0a779db1b82cd028c063d0581ed4327df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67a19fee_1174831c",
