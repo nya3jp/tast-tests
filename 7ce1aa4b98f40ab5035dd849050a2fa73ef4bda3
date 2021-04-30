@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d285ae0_b38febbb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2021-04-30T17:52:40Z",
+      "side": 1,
+      "message": "It would be good to defer here a function that would reset all channels to 0, to leave the setup in the same state as you got it. Definitely leaving it set to maximum attenuation would not be appreciated by next tests 😊",
+      "revId": "7ce1aa4b98f40ab5035dd849050a2fa73ef4bda3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf1bd6ca_979b3171",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2021-04-30T17:52:40Z",
+      "side": 1,
+      "message": "Here you probably might set not high enough attenuation.\n\nSpeaking about attenuations, we actally mean two attenuations: attenuation set on the attenuator (0-95) and total attenuation on the line (including loss on cables splitters etc, variable in different setups, adding another 30-60dB). Anything in the code referring to TotalAttenuation is as the name suggests Total (line) attenuation. Anything that does not refer to the Total attenuation, means attenuator setting.\n\nMaking long story short, if you want to cut the signal off, instead of attenuator.SetTotalAttneuation(attenuator.MaximumAttenuation()...) you should use\nattenuator.SetAttneuation(attenuator.MaximumAttenuation()...).",
+      "range": {
+        "startLine": 144,
+        "startChar": 37,
+        "endLine": 144,
+        "endChar": 55
+      },
+      "revId": "7ce1aa4b98f40ab5035dd849050a2fa73ef4bda3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
