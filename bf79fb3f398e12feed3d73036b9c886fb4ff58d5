@@ -226,6 +226,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7899e70_042e583c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2021-04-30T03:41:29Z",
+      "side": 1,
+      "message": "Hi Trent, what is the total runtime of this test?\n\n\nI don\u0027t see an informational/unstable suite for roam tests. There is only this http://shortn/_o2V3AFFgRy\n\nHere is how the wificell_unstable is setup http://shortn/_CVs6VjC5Rj; more info here go/cros-wifi-tast-suites",
+      "parentUuid": "13983009_df41bd9d",
+      "range": {
+        "startLine": 32,
+        "startChar": 90,
+        "endLine": 32,
+        "endChar": 110
+      },
+      "revId": "bf79fb3f398e12feed3d73036b9c886fb4ff58d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "220c261a_358233d8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
         "patchSetId": 4
