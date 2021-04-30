@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a197326_d14ee23c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_wake_locks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-04-30T07:09:57Z",
+      "side": 1,
+      "message": "nit: res :\u003d \"\" or var res string",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "9efc5a5faa945bb94ca256511e7d65469482bb16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
