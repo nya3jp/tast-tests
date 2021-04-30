@@ -217,7 +217,7 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 func WaitForLacrosWindow(ctx context.Context, tconn *chrome.TestConn, title string) error {
 	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 		return w.IsVisible && strings.HasPrefix(w.Title, title) && strings.HasPrefix(w.Name, "ExoShellSurface")
-	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for lacros-chrome window to be visible")
 	}
 	return nil
