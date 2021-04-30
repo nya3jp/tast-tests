@@ -298,6 +298,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49ba247e_acc37fb1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-04-30T20:33:31Z",
+      "side": 1,
+      "message": "If you look at the latest patch set, the Attributes are as follows: \nAttr:         []string{\"group:wificell_roam\", \"wificell_roam_perf\"}\n\nI renamed the file so the patch set diffs might have been confusing.",
+      "parentUuid": "583ace61_5c67836b",
+      "range": {
+        "startLine": 32,
+        "startChar": 90,
+        "endLine": 32,
+        "endChar": 110
+      },
+      "revId": "bf79fb3f398e12feed3d73036b9c886fb4ff58d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "220c261a_358233d8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
         "patchSetId": 4
