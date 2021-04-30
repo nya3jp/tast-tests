@@ -70,6 +70,7 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 		propertyFirstAPILevel = "ro.product.first_api_level"
 		propertyModel         = "ro.product.model"
 		propertySDKVersion    = "ro.build.version.sdk"
+		propertySerialNo      = "ro.serialno"
 	)
 
 	a := s.FixtValue().(*arc.PreData).ARC
@@ -176,6 +177,12 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 		}
 		s.Errorf("Unexpected %v property (see props.txt for details): got %q; want %q", propertyFirstAPILevel,
 			firstAPILevel, expectedFirstAPILevel)
+	}
+
+	// Verify that ro.boot.serialno has some value.
+	arcSerialNo := getProperty(propertySerialNo)
+	if len(arcSerialNo) < 2 {
+		s.Errorf("Invalid Serial number: %s ", arcSerialNo)
 	}
 
 	// Verify that these important properties without a partition name still exist.
