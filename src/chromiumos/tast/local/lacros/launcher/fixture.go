@@ -87,6 +87,17 @@ func init() {
 		Vars:            LacrosFixtureVars,
 	})
 
+	testing.AddFixture(&testing.Fixture{
+		Name:            "lacrosStartedByDataGAIAPool",
+		Desc:            "Lacros Chrome from a pre-built image with Ash Chrome logged in via GAIA user",
+		Contacts:        []string{"benreich@chromium.org"},
+		Impl:            NewStartedByData(PreExist, chrome.EnableFeatures("LacrosSupport")),
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            append(LacrosFixtureVars, "ui.gaiaPoolDefault"),
+	})
+
 	// lacrosStartedByOmaha is a fixture to enable Lacros by feature flag in Chrome.
 	// This does not require downloading a binary from Google Storage before the test.
 	// It will use the currently available fishfood release of Lacros from Omaha.
@@ -219,6 +230,10 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 	// If there's a parent fixture and the fixture supplies extra options, use them.
 	if extraOpts, ok := s.ParentValue().([]chrome.Option); ok {
 		f.opts = append(f.opts, extraOpts...)
+	}
+
+	if creds, ok := s.Var("ui.gaiaPoolDefault"); ok {
+		f.opts = append(f.opts, chrome.GAIALoginPool(creds))
 	}
 
 	if f.cr, err = chrome.New(ctx, f.opts...); err != nil {
