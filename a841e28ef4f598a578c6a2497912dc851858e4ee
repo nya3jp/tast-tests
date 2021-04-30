@@ -22,6 +22,30 @@
       },
       "revId": "a841e28ef4f598a578c6a2497912dc851858e4ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c598ec9_75a8f675",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-04-30T04:03:08Z",
+      "side": 1,
+      "message": "No, it just broke the new check in upload hook when I uploaded the next CL, but this is unrelated to that change.",
+      "parentUuid": "ee5170cb_e26f6120",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "a841e28ef4f598a578c6a2497912dc851858e4ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
