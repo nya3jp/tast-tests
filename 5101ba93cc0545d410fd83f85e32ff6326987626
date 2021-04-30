@@ -39,6 +39,30 @@
       },
       "revId": "5101ba93cc0545d410fd83f85e32ff6326987626",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46a6e359_a7dd5a4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-04-30T01:35:13Z",
+      "side": 1,
+      "message": "It expects 700, so either works. However the comments should match the code.",
+      "parentUuid": "70ab89fc_f7b11d69",
+      "range": {
+        "startLine": 147,
+        "startChar": 18,
+        "endLine": 147,
+        "endChar": 21
+      },
+      "revId": "5101ba93cc0545d410fd83f85e32ff6326987626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
