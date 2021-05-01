@@ -71,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81dad337_82179afd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/its/x86/patch/core.patch",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-01T12:09:55Z",
+      "side": 1,
+      "message": "As our discussion with yinchiayeh@ and other ITS contributor from Android team, sadly, they decide no to migration these script to python3 until Android S. And we agree that maintain the patch here should be the easiest way for making it work on ChromeOS sdk. Also reference yinchiayeh@\u0027s previous comment in this CL that the py2/py3 changes shouldn\u0027t evolve too much when upgrading CTS version.",
+      "parentUuid": "ac9327f5_53d5f6f4",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c06e188_69ab762a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
         "patchSetId": 19
@@ -82,6 +100,30 @@
       "writtenOn": "2021-04-28T10:05:11Z",
       "side": 1,
       "message": "could you make the variables, rather than functions?\nWe really need to the test metadata statically defined (i.e. defined at build time always). So, we do want to restrict the flexibility. Variable can reduce the chance.",
+      "range": {
+        "startLine": 51,
+        "startChar": 39,
+        "endLine": 51,
+        "endChar": 68
+      },
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c1801ea_c6654a7c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-01T12:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c06e188_69ab762a",
       "range": {
         "startLine": 51,
         "startChar": 39,
@@ -109,6 +151,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b8608c4_6568ec44",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-01T12:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3f4f43a_e8cd8506",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80c93feb_0111d016",
@@ -122,6 +182,30 @@
       "writtenOn": "2021-04-28T10:05:11Z",
       "side": 1,
       "message": "style:\n(with following suggestion)\n\nif !ok {\n  s.Fatal(...)\n}\nif r.total ... {\n  ...\n}",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 2
+      },
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fddc02f5_c1142ae6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-01T12:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80c93feb_0111d016",
       "range": {
         "startLine": 208,
         "startChar": 0,
@@ -166,6 +250,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd5fbedc_fb8ff0bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-01T12:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce5a4d36_b111af9c",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af9b7da8_4e0ac82a",
@@ -179,6 +281,24 @@
       "writtenOn": "2021-04-28T10:05:11Z",
       "side": 1,
       "message": "same.",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54272b23_17029e8e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-01T12:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af9b7da8_4e0ac82a",
       "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -206,6 +326,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63dce829_d9ef52d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-01T12:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f959f047_4fdd07c0",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 17
+      },
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9738928a_06bda590",
@@ -219,6 +363,24 @@
       "writtenOn": "2021-04-28T10:05:11Z",
       "side": 1,
       "message": "Can zip module be used instead of depending on external command?\nTast prefers go\u0027s implementation.",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77889ae4_c46add9a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-01T12:09:55Z",
+      "side": 1,
+      "message": "Done by adding |itsUnzip|.",
+      "parentUuid": "9738928a_06bda590",
       "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -240,6 +402,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9ccba06_c2167128",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-01T12:09:55Z",
+      "side": 1,
+      "message": "As the previous comment, our conclusion with Android team is that we need maintain our own patch until Android S.",
+      "parentUuid": "c81d17e1_1dd1b15e",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a63c88ff_24669fe9",
@@ -253,6 +433,24 @@
       "writtenOn": "2021-04-28T10:05:11Z",
       "side": 1,
       "message": "oldEnvPath may not be set if Prepare failed before it.\nI think you\u0027ll need the guard.",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce86ef6c_c09f7415",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-01T12:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a63c88ff_24669fe9",
       "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -274,6 +472,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f095662_eba883a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-01T12:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38d41212_d0500bdf",
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cc1117d_e03a9706",
@@ -287,6 +503,30 @@
       "writtenOn": "2021-04-28T10:05:11Z",
       "side": 1,
       "message": "nit/style: Can be simplified.\n\nif bask \u0026\u0026 front \u0026\u0026 facing !\u003d pb.Facing_FACING_BACK {\n  return 1, nil;\n}\nreturn 0, nil",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 14
+      },
+      "revId": "67bd02c5e87c68c75e320c74755d12eac77b392e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fa89f07_3851582e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-01T12:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cc1117d_e03a9706",
       "range": {
         "startLine": 229,
         "startChar": 1,

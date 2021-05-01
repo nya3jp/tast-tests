@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "799376c0_9287851d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-01T12:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31294869_041af867",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 71
+      },
+      "revId": "d9c372bd2dc1508f9649cf9e1f210db6f9f3f823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3329770e_f57e9cd8",
