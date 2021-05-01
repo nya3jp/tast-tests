@@ -69,6 +69,24 @@
       "parentUuid": "f9c5d2b2_549c0e57",
       "revId": "455d146a59640950ee5a6e2fe4dcd5c60df462d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9b6f3a4_a0afb7bf",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-01T02:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6058ecb0_eba643e9",
+      "revId": "455d146a59640950ee5a6e2fe4dcd5c60df462d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
