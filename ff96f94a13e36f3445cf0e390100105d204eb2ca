@@ -16,6 +16,24 @@
       "message": "Note: I considered including this as part of the SimpleConnect tests, but decided against this because this is a separate feature, not just an AP configuration, and I thought it deserved its own test.",
       "revId": "ff96f94a13e36f3445cf0e390100105d204eb2ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2193489e_f3dc5887",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-01T05:09:36Z",
+      "side": 1,
+      "message": "I realized that it\u0027s also necessary to check that the DUT doesn\u0027t send any assoc requests since it\u0027s possible that the feature isn\u0027t working correctly but hostapd is rejecting the assoc requests, so I added that in PS2 (which means that it can\u0027t be part of SimpleConnect and none of this matters 🤓).",
+      "parentUuid": "d8441973_4e3e39d2",
+      "revId": "ff96f94a13e36f3445cf0e390100105d204eb2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
