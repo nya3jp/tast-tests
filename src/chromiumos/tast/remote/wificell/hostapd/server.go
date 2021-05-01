@@ -266,6 +266,23 @@ func (s *Server) SendBSSTMRequest(ctx context.Context, clientMAC string, neighbo
 	return nil
 }
 
+// Property is the property name of a hostapd property
+type Property string
+
+const (
+	// PropertyMBOAssocDisallow prevents association to hostapd if set to 1.
+	PropertyMBOAssocDisallow Property = "mbo_assoc_disallow"
+)
+
+// Set sets a hostapd property prop to value val
+func (s *Server) Set(ctx context.Context, prop Property, val string) error {
+	args := []string{"-p" + s.ctrlPath(), "SET", string(prop), val}
+	if err := s.host.Command(hostapdCLI, args...).Run(ctx); err != nil {
+		return errors.Wrapf(err, "failed to set property %v to value %v", prop, val)
+	}
+	return nil
+}
+
 // Interface returns the interface used by the hostapd.
 func (s *Server) Interface() string {
 	return s.iface
