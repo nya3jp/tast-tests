@@ -228,3 +228,8 @@ func (h *APIface) StartChannelSwitch(ctx context.Context, count, channel int, op
 func (h *APIface) SendBSSTMRequest(ctx context.Context, clientMAC string, neighbors ...string) error {
 	return h.hostapd.SendBSSTMRequest(ctx, clientMAC, neighbors)
 }
+
+// Set sets the specified property to the specified value.
+func (h *APIface) Set(ctx context.Context, prop hostapd.Property, val string) error {
+	return h.hostapd.Set(ctx, prop, val)
+}
