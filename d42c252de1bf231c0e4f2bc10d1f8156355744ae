@@ -163,6 +163,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f6248b6_f2e02931",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-01T00:31:35Z",
+      "side": 1,
+      "message": "nya@\nWithout knowing the current device owner, as a workaround, can we write tast login information on the DUT each time Chrome.New() is called. The information can include whether KeepState is used, and the last login user. Next time in Chrome.New it can decide if ownership needs to be cleared.",
+      "parentUuid": "d74828f7_590fbc97",
+      "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9fa62b4_ee688dcf",
         "filename": "src/chromiumos/tast/local/chrome/option.go",
         "patchSetId": 1
