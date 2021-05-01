@@ -51,6 +51,24 @@
       "parentUuid": "5b37bc78_88589243",
       "revId": "455d146a59640950ee5a6e2fe4dcd5c60df462d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6058ecb0_eba643e9",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2021-05-01T01:40:46Z",
+      "side": 1,
+      "message": "I am not worry about local, only remote running tests. if it is not working locally then it will be raised as bug by default.",
+      "parentUuid": "f9c5d2b2_549c0e57",
+      "revId": "455d146a59640950ee5a6e2fe4dcd5c60df462d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
