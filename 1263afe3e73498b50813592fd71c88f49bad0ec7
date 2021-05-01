@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cd7261d_84d800e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-01T02:08:38Z",
+      "side": 1,
+      "message": "I have address the latest comment. \n\nAlso, I have this line \"var hostname, port string\" because \"hostname, port, err \u003d net.SplitHostPort(spec)\" will create a local variable err inside the \"if\" scope. I need to make sure the err used in the defer func is the one in the outer scope. \n\n\n",
+      "revId": "1263afe3e73498b50813592fd71c88f49bad0ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
