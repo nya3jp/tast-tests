@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35ebef3d_f090fd3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-01T01:10:26Z",
+      "side": 1,
+      "message": "I have removed logging when there is a failure in the connection to the servo host at the beginning. Please review new change.",
+      "revId": "47272f58c844206f5e108fc43e552eb2366b5294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

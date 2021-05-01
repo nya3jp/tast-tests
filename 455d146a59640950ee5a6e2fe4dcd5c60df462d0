@@ -33,6 +33,24 @@
       "message": "you do not need run logServoStatus if code did not pass line 68\n\nI think you can just set `var conn *ssh.Conn` and initialize it on line 75",
       "revId": "455d146a59640950ee5a6e2fe4dcd5c60df462d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c5d2b2_549c0e57",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-01T01:10:26Z",
+      "side": 1,
+      "message": "How about the case that servod running locally? I do agree that we don\u0027t need it if the code did not pass line 68 for the remote servod. Please review new change.",
+      "parentUuid": "5b37bc78_88589243",
+      "revId": "455d146a59640950ee5a6e2fe4dcd5c60df462d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
