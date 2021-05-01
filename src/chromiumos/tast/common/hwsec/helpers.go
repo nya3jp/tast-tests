@@ -273,10 +273,9 @@ func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bo
 
 	// Wrap this section to a function, so we can ensure all daemons are up.
 	err = func(ctx context.Context) error {
-		if tpmInfo.IsOwned {
-			if err := h.tpmClearer.PreClearTPM(ctx); err != nil {
-				return errors.Wrap(err, "failed to pre clear TPM")
-			}
+
+		if err := h.tpmClearer.PreClearTPM(ctx); err != nil {
+			return errors.Wrap(err, "failed to pre clear TPM")
 		}
 
 		if err := h.daemonController.TryStop(ctx, UIDaemon); err != nil {
@@ -303,10 +302,8 @@ func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bo
 			}
 		}(ctx)
 
-		if tpmInfo.IsOwned {
-			if err := h.tpmClearer.ClearTPM(ctx); err != nil {
-				return errors.Wrap(err, "failed to clear TPM")
-			}
+		if err := h.tpmClearer.ClearTPM(ctx); err != nil {
+			return errors.Wrap(err, "failed to clear TPM")
 		}
 
 		if removeFiles {
@@ -317,11 +314,10 @@ func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bo
 			}
 		}
 
-		if tpmInfo.IsOwned {
-			if err := h.tpmClearer.PostClearTPM(ctx); err != nil {
-				return errors.Wrap(err, "failed to post clear TPM")
-			}
+		if err := h.tpmClearer.PostClearTPM(ctx); err != nil {
+			return errors.Wrap(err, "failed to post clear TPM")
 		}
+
 		return nil
 	}(ctx)
 
