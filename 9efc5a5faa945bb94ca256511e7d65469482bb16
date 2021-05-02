@@ -22,6 +22,30 @@
       },
       "revId": "9efc5a5faa945bb94ca256511e7d65469482bb16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "128af9c4_3cf19585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_wake_locks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-05-02T14:33:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a197326_d14ee23c",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "9efc5a5faa945bb94ca256511e7d65469482bb16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
