@@ -46,6 +46,30 @@
       },
       "revId": "3ba8c547fb5568abf1c8cf9183b0254027902228",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42e4ab47_2ab5703d",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-02T23:43:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ed67721c_78be5842",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 58
+      },
+      "revId": "3ba8c547fb5568abf1c8cf9183b0254027902228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
