@@ -8,16 +8,31 @@ import (
 	"context"
 
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/graphics/trace"
 	"chromiumos/tast/local/graphics/trace/comm"
 	"chromiumos/tast/testing"
 )
 
-// TraceReplayCommon replays a graphics trace inside a crostini container.
-func TraceReplayCommon(ctx context.Context, s *testing.State) {
+// TraceReplayCommon replays a graphics trace inside a crostini container. The VM disk will be resized for resizeDiskGB > 0.
+func TraceReplayCommon(ctx context.Context, s *testing.State, resizeDiskGB uint64) {
 	pre := s.PreValue().(crostini.PreData)
-	config := s.Param().(comm.TestGroupConfig)
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
+
+	if (resizeDiskGB > 0) {
+		testing.ContextLogf(ctx, "Resizing VM disk to %d GB", resizeDiskGB)
+		settingsApp, err := settings.OpenLinuxSettings(ctx, pre.TestAPIConn, pre.Chrome)
+		if err != nil {
+			s.Fatal("Failed to open Linux settings: ", err)
+		}
+		defer settingsApp.Close(ctx)
+		if err := settingsApp.ResizeDisk(ctx, pre.Keyboard, resizeDiskGB * settings.SizeGB, true); err != nil {
+			s.Fatal("Failed to resize VM disk: ", err)
+		}
+	}
+
+	config := s.Param().(comm.TestGroupConfig)
+
 	guest := CrostiniGuestOS{
 		VMInstance: pre.Container,
 	}
