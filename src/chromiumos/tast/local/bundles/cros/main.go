@@ -43,6 +43,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/hwsec"
 	_ "chromiumos/tast/local/bundles/cros/inputs"
 	_ "chromiumos/tast/local/bundles/cros/kernel"
+	_ "chromiumos/tast/local/bundles/cros/kiosk"
 	_ "chromiumos/tast/local/bundles/cros/lacros"
 	_ "chromiumos/tast/local/bundles/cros/launcher"
 	_ "chromiumos/tast/local/bundles/cros/logs"
