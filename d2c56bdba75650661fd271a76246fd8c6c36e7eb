@@ -16,6 +16,29 @@
       "message": "Looks like yamaguchi@ is OOO for a few days, going to see if I can re-roll a different tast reviewer",
       "revId": "d2c56bdba75650661fd271a76246fd8c6c36e7eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cfac0a4_51300361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/smoke_high_visibility_ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-03T23:41:17Z",
+      "side": 1,
+      "message": "Optional: It would be nice to add a comment above to clarify how to pass in the variable and the format. Such as tast run -keepState\u003dtrue nearbyshare.SmokeHighVisibilityUI.\n\nCan not remember the exact cli 😂",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "d2c56bdba75650661fd271a76246fd8c6c36e7eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
