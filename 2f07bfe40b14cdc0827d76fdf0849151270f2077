@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab81fae1_f4310e2a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-03T00:56:47Z",
+      "side": 1,
+      "message": "Did you mean you ran some tests using the uiauto package?",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 40
+      },
+      "revId": "2f07bfe40b14cdc0827d76fdf0849151270f2077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23be0e85_cd9ed6f3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-03T00:56:47Z",
+      "side": 1,
+      "message": "This is different from the cl description, please make them consistent.",
+      "range": {
+        "startLine": 29,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 26
+      },
+      "revId": "2f07bfe40b14cdc0827d76fdf0849151270f2077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
