@@ -33,7 +33,7 @@ func init() {
 }
 
 func FpSoftwareWriteProtect(ctx context.Context, s *testing.State) {
-	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), s.RequiredVar("servo"), s.RPCHint(), s.OutDir(), true, true)
+	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), s.RequiredVar("servo"), s.RPCHint(), s.OutDir(), true, true, false)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
