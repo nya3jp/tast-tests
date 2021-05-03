@@ -185,6 +185,7 @@ type FirmwareTest struct {
 	upstartService           platform.UpstartServiceClient
 	daemonState              []daemonState
 	needsRebootAfterFlashing bool
+	initentropy              bool
 	dutfsClient              *dutfs.Client
 	cleanupTime              time.Duration
 	dutTempDir               string
@@ -193,7 +194,7 @@ type FirmwareTest struct {
 // NewFirmwareTest creates and initializes a new fingerprint firmware test.
 // enableHWWP indicates whether the test should enable hardware write protect.
 // enableSWWP indicates whether the test should enable software write protect.
-func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *testing.RPCHint, outDir string, enableHWWP, enableSWWP bool) (*FirmwareTest, error) {
+func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *testing.RPCHint, outDir string, enableHWWP, enableSWWP, initentropy bool) (*FirmwareTest, error) {
 	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to servo")
@@ -276,7 +277,7 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 		return nil, errors.Wrap(err, "failed to create remote working directory")
 	}
 
-	if err := InitializeKnownState(ctx, d, dutfsClient, outDir, pxy, fpBoard, buildFwFile, needsReboot); err != nil {
+	if err := InitializeKnownState(ctx, d, dutfsClient, outDir, pxy, fpBoard, buildFwFile, needsReboot, initentropy); err != nil {
 		return nil, errors.Wrap(err, "initializing known state failed")
 	}
 
@@ -298,6 +299,7 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 			upstartService:           upstartService,
 			daemonState:              daemonState,
 			needsRebootAfterFlashing: needsReboot,
+			initentropy:              initentropy,
 			dutfsClient:              dutfsClient,
 			cleanupTime:              cleanupTime,
 			dutTempDir:               dutTempDir,
@@ -311,7 +313,7 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 	testing.ContextLog(ctx, "Tearing down")
 	var firstErr error
 
-	if err := ReimageFPMCU(ctx, t.d, t.servo, t.needsRebootAfterFlashing); err != nil {
+	if err := ReimageFPMCU(ctx, t.d, t.servo, t.needsRebootAfterFlashing, t.initentropy); err != nil {
 		firstErr = err
 	}
 
@@ -397,6 +399,11 @@ func (t *FirmwareTest) BuildFwFile() string {
 // NeedsRebootAfterFlashing describes whether DUT needs to be rebooted after flashing.
 func (t *FirmwareTest) NeedsRebootAfterFlashing() bool {
 	return t.needsRebootAfterFlashing
+}
+
+// NeedsEntropyInit describes whether DUT needs to be rebooted after flashing.
+func (t *FirmwareTest) NeedsEntropyInit() bool {
+	return t.initentropy
 }
 
 // DutfsClient gets the dutfs client.
@@ -711,7 +718,7 @@ func FirmwarePath(ctx context.Context, d *dut.DUT, fpBoard FPBoardName) (string,
 }
 
 // FlashFirmware flashes the original fingerprint firmware in rootfs.
-func FlashFirmware(ctx context.Context, d *dut.DUT, needsRebootAfterFlashing bool) error {
+func FlashFirmware(ctx context.Context, d *dut.DUT, needsRebootAfterFlashing, initentropy bool) error {
 	fpBoard, err := Board(ctx, d)
 	if err != nil {
 		return errors.Wrap(err, "failed to get fp board")
@@ -753,16 +760,19 @@ func CheckFirmwareIsFunctional(ctx context.Context, d *dut.DUT) ([]byte, error) 
 }
 
 // ReimageFPMCU flashes the FPMCU completely and initializes entropy.
-func ReimageFPMCU(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, needsRebootAfterFlashing bool) error {
+func ReimageFPMCU(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, needsRebootAfterFlashing, initentropy bool) error {
 	if err := pxy.Servo().SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
 		return errors.Wrap(err, "failed to disable HW write protect")
 	}
-	if err := FlashFirmware(ctx, d, needsRebootAfterFlashing); err != nil {
+	if err := FlashFirmware(ctx, d, needsRebootAfterFlashing, initentropy); err != nil {
 		return errors.Wrap(err, "failed to flash FP firmware")
 	}
-	testing.ContextLog(ctx, "Flashed FP firmware, now initializing the entropy")
-	if err := InitializeEntropy(ctx, d); err != nil {
-		return err
+
+	if initentropy {
+		testing.ContextLog(ctx, "Flashed FP firmware, now initializing the entropy")
+		if err := InitializeEntropy(ctx, d); err != nil {
+			return err
+		}
 	}
 	testing.ContextLog(ctx, "Entropy initialized, now rebooting to get seed")
 	if err := d.Reboot(ctx); err != nil {
@@ -775,11 +785,11 @@ func ReimageFPMCU(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, needsReboot
 }
 
 // InitializeKnownState checks that the AP can talk to FPMCU. If not, it flashes the FPMCU.
-func InitializeKnownState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, outdir string, pxy *servo.Proxy, fpBoard FPBoardName, buildFWFile string, needsRebootAfterFlashing bool) error {
+func InitializeKnownState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, outdir string, pxy *servo.Proxy, fpBoard FPBoardName, buildFWFile string, needsRebootAfterFlashing, initentropy bool) error {
 	out, err := CheckFirmwareIsFunctional(ctx, d)
 	if err != nil {
 		testing.ContextLogf(ctx, "FPMCU firmware is not functional (error: %v). Trying re-flashing FP firmware", err)
-		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
+		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing, initentropy); err != nil {
 			return err
 		}
 	}
