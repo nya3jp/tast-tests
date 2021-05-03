@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f96fcca_f0e64eed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-03T06:16:59Z",
+      "side": 1,
+      "message": "LGTM with nits",
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93aa4404_2916fbce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-03T06:16:59Z",
+      "side": 1,
+      "message": "nit:guestSuccess",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 16
+      },
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb98aa64_f4ac323a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-03T06:16:59Z",
+      "side": 1,
+      "message": "nit: Can we have b/ added here for TODO",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a455179f_9eebeadd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-03T06:16:59Z",
+      "side": 1,
+      "message": "Same can be tagged with bug for tracking",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 33
+      },
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
