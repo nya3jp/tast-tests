@@ -34,6 +34,24 @@
       "parentUuid": "c6b5ad01_5a514904",
       "revId": "fd2b581cf2116f5472758ddcda23ed9a9dcb9ac7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3687f13c_8592bf57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/chrome_fast_ink.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-05-03T21:45:39Z",
+      "side": 1,
+      "message": "Yes, as discussed in\nhttps://chat.google.com/room/AAAA8PhtVqs/-KmvzcaQCoI",
+      "parentUuid": "2d16a273_cd5a1f59",
+      "revId": "fd2b581cf2116f5472758ddcda23ed9a9dcb9ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
