@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c697a63d_07d3e262",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-03T01:06:25Z",
+      "side": 1,
+      "message": "Correct",
+      "parentUuid": "ab81fae1_f4310e2a",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 40
+      },
+      "revId": "2f07bfe40b14cdc0827d76fdf0849151270f2077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23be0e85_cd9ed6f3",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-03T00:56:47Z",
       "side": 1,
       "message": "This is different from the cl description, please make them consistent.",
+      "range": {
+        "startLine": 29,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 26
+      },
+      "revId": "2f07bfe40b14cdc0827d76fdf0849151270f2077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c64ab334_98aa6bc0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-03T01:06:25Z",
+      "side": 1,
+      "message": "It\u0027s stored internally as a regex, but the API to access it is a string. This is the same as the old behaviour of the nodewith package.",
+      "parentUuid": "23be0e85_cd9ed6f3",
       "range": {
         "startLine": 29,
         "startChar": 9,
