@@ -65,7 +65,7 @@ func FpSensor(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to determine whether reboot is needed: ", err)
 	}
 
-	if err := fingerprint.InitializeKnownState(ctx, d, dutfsClient, s.OutDir(), pxy, fpBoard, buildFWFile, needsReboot); err != nil {
+	if err := fingerprint.InitializeKnownState(ctx, d, dutfsClient, s.OutDir(), pxy, fpBoard, buildFWFile, needsReboot, true); err != nil {
 		s.Fatal("Initialization failed: ", err)
 	}
 
