@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6b5ad01_5a514904",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/chrome_fast_ink.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-05-03T21:32:13Z",
+      "side": 1,
+      "message": "is this because test fails with 80 and 270?",
+      "revId": "fd2b581cf2116f5472758ddcda23ed9a9dcb9ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
