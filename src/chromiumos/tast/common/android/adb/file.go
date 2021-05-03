@@ -126,6 +126,33 @@ func (d *Device) RemoveAll(ctx context.Context, path string) error {
 	return d.ShellCommand(ctx, "rm", "-rf", path).Run(testexec.DumpLogOnError)
 }
 
+// ListContents returns the contents of the given path.
+func (d *Device) ListContents(ctx context.Context, path string) ([]string, error) {
+	res, err := d.ShellCommand(ctx, "ls", path).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to list contents under %v", path)
+	}
+	return strings.Split(strings.TrimRight(string(res), "\n"), "\n"), nil
+}
+
+// RemoveContents removes the contents under the path in Android.
+// The path must be abspath.
+func (d *Device) RemoveContents(ctx context.Context, path string) error {
+	if !filepath.IsAbs(path) {
+		return errors.Errorf("path (%q) needs to be absolute path", path)
+	}
+	files, err := d.ListContents(ctx, path)
+	if err != nil {
+		return err
+	}
+	for _, f := range files {
+		if err := d.RemoveAll(ctx, filepath.Join(path, f)); err != nil {
+			return errors.Wrapf(err, "failed to remove %v", filepath.Join(path, f))
+		}
+	}
+	return nil
+}
+
 // SHA256Sum returns the sha256sum of the specified file as a string.
 func (d *Device) SHA256Sum(ctx context.Context, filename string) (string, error) {
 	res, err := d.ShellCommand(ctx, "sha256sum", filename).Output(testexec.DumpLogOnError)

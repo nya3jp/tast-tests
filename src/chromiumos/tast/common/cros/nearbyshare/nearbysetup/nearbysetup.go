@@ -104,7 +104,7 @@ func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, d
 // AndroidSetup prepares the connected Android device for Nearby Share tests.
 func AndroidSetup(ctx context.Context, testDevice *adb.Device, accountUtilZipPath, username, password string, loggedIn bool, apkZipPath string, rooted bool, screenOff time.Duration, dataUsage nearbysnippet.DataUsage, visibility nearbysnippet.Visibility, name string) (*nearbysnippet.AndroidNearbyDevice, error) {
 	// Clear the Android's default directory for receiving shares.
-	if err := testDevice.RemoveAll(ctx, android.DownloadDir); err != nil {
+	if err := testDevice.RemoveContents(ctx, android.DownloadDir); err != nil {
 		return nil, errors.Wrap(err, "failed to clear Android downloads directory")
 	}
 
