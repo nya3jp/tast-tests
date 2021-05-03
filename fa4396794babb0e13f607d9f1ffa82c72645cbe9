@@ -75,6 +75,24 @@
       "parentUuid": "b8d10ea8_d6d772ed",
       "revId": "fa4396794babb0e13f607d9f1ffa82c72645cbe9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "077e6d52_fcfe257a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-05-03T19:42:31Z",
+      "side": 1,
+      "message": "IIUC, enroll the DUT implies taking the TPM ownership....\nIf the device could enroll without taking the TPM ownership, we may have another big problem in somewhere...",
+      "parentUuid": "7f3bbf5a_ed73b900",
+      "revId": "fa4396794babb0e13f607d9f1ffa82c72645cbe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
