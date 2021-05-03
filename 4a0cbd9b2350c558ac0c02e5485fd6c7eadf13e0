@@ -16,6 +16,24 @@
       "message": "Also regenerate defs.go in the same CL.",
       "revId": "4a0cbd9b2350c558ac0c02e5485fd6c7eadf13e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e2324c5_7804542b",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-03T14:06:08Z",
+      "side": 1,
+      "message": "Wanted to do it in a separate one. Sure, can do it here.",
+      "parentUuid": "b72bade2_7c033b01",
+      "revId": "4a0cbd9b2350c558ac0c02e5485fd6c7eadf13e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
