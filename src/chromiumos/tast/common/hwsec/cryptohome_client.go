@@ -659,11 +659,9 @@ func (u *CryptohomeClient) SupportsLECredentials(ctx context.Context) (bool, err
 
 	// TODO(crbug.com/1187192): Parsing human readable output is error prone.
 	// Parse the text output which looks something like:
-	// [cryptohome.GetSupportedKeyPoliciesReply.reply] {
-	//	 low_entropy_credentials: true
-	// }
+	// low_entropy_credentials_supported: true
 	// GetSupportedKeyPolicies success.
-	return strings.Contains(string(binaryMsg), "low_entropy_credentials: true"), nil
+	return strings.Contains(string(binaryMsg), "low_entropy_credentials_supported: true"), nil
 }
 
 // GetKeyData returns the key data for the specified user and label.
