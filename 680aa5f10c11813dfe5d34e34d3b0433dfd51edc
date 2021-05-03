@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c299093_93673734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_hotplug.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-05-03T17:51:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86fc30fa_4b01f2d4",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 19
+      },
+      "revId": "680aa5f10c11813dfe5d34e34d3b0433dfd51edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20c02bf6_7c0048c9",
@@ -88,6 +112,30 @@
       "writtenOn": "2021-04-28T23:18:05Z",
       "side": 1,
       "message": "Failed: to make the error msg consistent.",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 18
+      },
+      "revId": "680aa5f10c11813dfe5d34e34d3b0433dfd51edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f182215e_e2542d6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_hotplug.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-05-03T17:51:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20c02bf6_7c0048c9",
       "range": {
         "startLine": 110,
         "startChar": 12,
