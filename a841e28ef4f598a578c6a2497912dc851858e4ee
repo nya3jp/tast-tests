@@ -94,6 +94,23 @@
       },
       "revId": "a841e28ef4f598a578c6a2497912dc851858e4ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd17847c_fd9d1cf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-03T06:05:13Z",
+      "side": 1,
+      "message": "Looks like the test task failed in provisioning. Let\u0027s retry one more time.",
+      "revId": "a841e28ef4f598a578c6a2497912dc851858e4ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
