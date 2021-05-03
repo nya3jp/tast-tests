@@ -55,9 +55,7 @@ func init() {
 // These models are known to fail this test, and are therefore only run in the
 // informational version. These failures are all tracked in the referenced bugs.
 var badModels = []string{
-	"leona",   // TODO(b/181049667): Bad SAR table.
-	"meep",    // TODO(b/181887950): Bad GEO SAR table.
-	"mimrock", // TODO(b/181887950): Bad GEO SAR table.
+	"leona", // TODO(b/181049667): Bad SAR table.
 }
 
 // sarTableType is an enum that accounts for the different kinds of SAR tables
