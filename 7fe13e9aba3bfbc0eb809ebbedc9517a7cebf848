@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdca8ae9_579b6d69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/data/futility",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-03T18:37:34Z",
+      "side": 0,
+      "message": "We should not host binary blobs in git. You should store this blob in google cloud and download from it each time you run test:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Data-files",
+      "revId": "7fe13e9aba3bfbc0eb809ebbedc9517a7cebf848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
