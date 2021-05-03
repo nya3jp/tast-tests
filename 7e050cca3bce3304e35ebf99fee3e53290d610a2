@@ -16,6 +16,75 @@
       "message": "Thanks @keith for making the fix. However, I did not see any issues yet in the tast dashboard or at leaset not related:\nhttps://tastboard.corp.google.com/test/inputs.VirtualKeyboardInputFields.us_en_stable\n\n",
       "revId": "7e050cca3bce3304e35ebf99fee3e53290d610a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7487d49e_1f8b3335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-03T06:57:02Z",
+      "side": 1,
+      "message": "This test was removed on purpose because of upper b/177777412.\n\nWhen testing on TextInputField with default settings on English, Capped VK should be shown for the first letter input, you should not be able to find \u0027h\u0027 letter but \u0027H\u0027. vkb.TapKey function looks for displayed letter on the screen and case sensitive.",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 6
+      },
+      "revId": "7e050cca3bce3304e35ebf99fee3e53290d610a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0425544_35efa23c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-03T06:57:02Z",
+      "side": 1,
+      "message": "Sleep is not acceptable unless there is on track issue or convincing reason.",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 0
+      },
+      "revId": "7e050cca3bce3304e35ebf99fee3e53290d610a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a43b5351_6af64590",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-03T06:57:02Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 263,
+        "startChar": 3,
+        "endLine": 263,
+        "endChar": 36
+      },
+      "revId": "7e050cca3bce3304e35ebf99fee3e53290d610a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
