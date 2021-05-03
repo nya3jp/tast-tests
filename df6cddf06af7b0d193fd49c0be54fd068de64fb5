@@ -39,6 +39,30 @@
       },
       "revId": "df6cddf06af7b0d193fd49c0be54fd068de64fb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d66674dd_52173ca9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_reboot_to_ro.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-03T18:27:17Z",
+      "side": 1,
+      "message": "No reason. I didn\u0027t know about s.Log. Thanks!",
+      "parentUuid": "ba1ed31d_7ab7ffd5",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "df6cddf06af7b0d193fd49c0be54fd068de64fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
