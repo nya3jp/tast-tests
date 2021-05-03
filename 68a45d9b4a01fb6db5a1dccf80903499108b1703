@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21cc44fd_51cc24c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-05-03T17:55:45Z",
+      "side": 1,
+      "message": "I\u0027m sorry, I\u0027m missing a couple of bits of context here:\n- Why am I listed as an author? I don\u0027t remember authoring such a patch.\n- Why is this test related to Type C functionality?\n\nI suspect your change is outdated, so I would suggest rebasing it.",
+      "revId": "68a45d9b4a01fb6db5a1dccf80903499108b1703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
