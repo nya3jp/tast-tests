@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fed0a32e_94ff300a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-03T14:40:12Z",
+      "side": 1,
+      "message": "huge nit: \"Reports\" to match with \"fails\".",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 15
+      },
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93aa4404_2916fbce",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
         "patchSetId": 6
@@ -43,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f45a6a5b_fd949cfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-03T14:40:12Z",
+      "side": 1,
+      "message": "could you avoid to use two ways to represent test errors, i.e. s.{Error,Fatal} family and return value?\nYou can use testing.State in this function, so could you avoid adding the bool for return value?",
+      "range": {
+        "startLine": 101,
+        "startChar": 106,
+        "endLine": 101,
+        "endChar": 110
+      },
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb98aa64_f4ac323a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
         "patchSetId": 6
@@ -59,6 +105,127 @@
         "startChar": 0,
         "endLine": 103,
         "endChar": 51
+      },
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43bcf0e1_9593f5e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-03T14:40:12Z",
+      "side": 1,
+      "message": "+1. Could you file a tracking issue if there isn\u0027t?",
+      "parentUuid": "cb98aa64_f4ac323a",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afb124b9_e4d30a80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-03T14:40:12Z",
+      "side": 1,
+      "message": "nit: maybe \"paths\" ?",
+      "range": {
+        "startLine": 105,
+        "startChar": 46,
+        "endLine": 105,
+        "endChar": 51
+      },
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d9cf210_ff4b5d11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-03T14:40:12Z",
+      "side": 1,
+      "message": "the entries in this set is expected to be appeared in \"user\"\u0027s one below.\nCould you share to de-duplicate the entries?\n\nditto for ARCVM.",
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f202e3b_c2b879c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-03T14:40:12Z",
+      "side": 1,
+      "message": "two questions:\n- Do you need \"^\" to make this prefix match?\n- Stepping back, is it ok to use prefix match? I guess we need full-match in this use?",
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a4380c6_8a5b7ccc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-03T14:40:12Z",
+      "side": 1,
+      "message": "IIUC, these lines are interpreted for the comments for the following line.\nCould you restyle the comment lines by putting them to the leading lines?\n\n// We need /run/netns ...\n// ....\n// ...\n\"/run/netns\":  true,\n\n(for all entries for consistency)?",
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e896109_93f90f76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-03T14:40:12Z",
+      "side": 1,
+      "message": "nit: if prefix match is by design, they are not needed because /run/arc/media already matches for the targets.",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 40
       },
       "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
