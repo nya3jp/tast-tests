@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de3280a_e6f4475c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-03T18:34:31Z",
+      "side": 1,
+      "message": "I think you should rebase on the main branch and edit src/chromiumos/tast/local/bundles/cros/graphics/chrome_fast_ink.go file instead.\n\n",
+      "revId": "bef0de3f13cfb6f1a97caa72ce2a93b2055993c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
