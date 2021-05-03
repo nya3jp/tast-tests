@@ -62,5 +62,5 @@ func init() {
 
 // TraceReplay replays a graphics trace inside a crostini container.
 func TraceReplay(ctx context.Context, s *testing.State) {
-	guestos.TraceReplayCrostiniSetup(ctx, s)
+	guestos.TraceReplayCrostiniSetup(ctx, s, 0)
 }

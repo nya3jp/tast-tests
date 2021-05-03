@@ -7,17 +7,52 @@ package guestos
 import (
 	"context"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/graphics/trace"
 	"chromiumos/tast/local/graphics/trace/comm"
 	"chromiumos/tast/testing"
 )
 
-// TraceReplayCrostiniSetup replays a graphics trace inside a crostini container.
-func TraceReplayCrostiniSetup(ctx context.Context, s *testing.State) {
+// resizeDisk resizes the VM's disk for size > 0 and reports the actual VM size.
+func resizeDisk(ctx context.Context, pre *crostini.PreData, sizeBytes uint64) error {
+	settingsApp, err := settings.OpenLinuxSettings(ctx, pre.TestAPIConn, pre.Chrome)
+	if err != nil {
+		return errors.Wrap(err, "failed to open Linux settings")
+	}
+	defer settingsApp.Close(ctx)
+
+	if sizeBytes > 0 {
+		testing.ContextLogf(ctx, "Resizing VM disk to %d bytes", sizeBytes)
+		if err := settingsApp.ResizeDisk(ctx, pre.Keyboard, sizeBytes, true); err != nil {
+			return errors.Wrap(err, "failed to resize VM disk")
+		}
+	}
+
+	diskSizeString, err := settingsApp.GetDiskSize(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to query VM disk size")
+	}
+	testing.ContextLogf(ctx, "VM disk configured with size: %s", diskSizeString)
+
+	return nil
+}
+
+// TraceReplayCrostiniSetup replays a graphics trace inside a crostini container. The VM disk will be resized for resizeDiskBytes > 0.
+func TraceReplayCrostiniSetup(ctx context.Context, s *testing.State, resizeDiskBytes uint64) {
 	pre := s.PreValue().(crostini.PreData)
-	config := s.Param().(comm.TestGroupConfig)
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
+
+	if err := resizeDisk(ctx, &pre, resizeDiskBytes); err != nil {
+		if resizeDiskBytes > 0 {
+			s.Fatal("Failed to resize: ", err)
+		}
+		s.Error("Failed to resize: ", err)
+	}
+
+	config := s.Param().(comm.TestGroupConfig)
+
 	guest := CrostiniGuestOS{
 		VMInstance: pre.Container,
 	}
