@@ -456,6 +456,7 @@ func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 }
 
 func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	// Save CrOS and Android device logs.
 	if f.ChromeReader == nil {
 		s.Error("ChromeReader not defined")
 	}
@@ -469,6 +470,14 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 		s.Error("Failed to stop btsnoop log capture: ", err)
 	}
 	f.btsnoopCmd = nil
+
+	// Clear test files from both devices.
+	if err := nearbytestutils.ClearCrOSDownloads(ctx); err != nil {
+		s.Error("Failed to clear contents of the CrOS downloads folder: ", err)
+	}
+	if err := f.androidDevice.ClearDownloads(ctx); err != nil {
+		s.Error("Failed to clear contents of the Android doownloads folder: ", err)
+	}
 }
 
 // saveDeviceAttributes saves the CrOS and Android device attributes as a formatted JSON at the specified filepath.
