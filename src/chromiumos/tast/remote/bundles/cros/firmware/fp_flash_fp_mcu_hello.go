@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
@@ -23,8 +24,12 @@ func init() {
 			"chromeos-fingerprint@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
-		// On hatch+bloonchipper flash_fp_mcu --hello takes about 4 sec.
-		Timeout:      1 * time.Minute,
+		// On hatch+bloonchipper(Dratini) flash_fp_mcu --hello takes about
+		// 4 seconds and the full test with reboot takes about 30 seconds.
+		// Given flash_fp_mcu can run into scenarios were it needs to retry a
+		// few times, we delegate a minute for flash_fp_mcu and a minute for
+		// the reboot cleanup.
+		Timeout:      2 * time.Minute,
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
 		Vars:         []string{"servo"},
@@ -42,6 +47,27 @@ func init() {
 // doesn't respond after being returned to the normal operating mode.
 // See https://source.chromium.org/search?q=file:flash_fp_mcu for behavior.
 func FpFlashFpMcuHello(ctx context.Context, s *testing.State) {
+
+	defer func(ctx context.Context) {
+		// The flash_fp_mcu script will reboot the FPMCU. This causes the FPMCU to
+		// lose the at-boot TPM seed (provided by bio_crypto_init). The only way
+		// to restore the correct TPM seed is to reboot the DUT.
+		// Furthermore, the flash_fp_mcu script will force unbinding of the cros-ec
+		// driver, which biod had opened at boot. Biod needs to reopen /dev/cros_fp.
+		//
+		// This is also needed for Zork, where the cros-ec driver cannot be rebound
+		// without a DUT reboot.
+		testing.ContextLog(ctx, "Rebooting DUT to restore TPM seed")
+		if err := s.DUT().Reboot(ctx); err != nil {
+			s.Fatal("Failed to reboot device on test exit: ", err)
+		}
+	}(ctx)
+
+	// Reduce overall ctx time for servo and flash_fp_mcu by a minute to
+	// reserve the remaining minute for the above cleanup.
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+
 	servop, err := servo.NewProxy(ctx, s.RequiredVar("servo"), s.DUT().KeyFile(), s.DUT().KeyDir())
 	if err != nil {
 		s.Fatal("Failed to get servo proxy: ", err)
@@ -57,4 +83,5 @@ func FpFlashFpMcuHello(ctx context.Context, s *testing.State) {
 	if err := cmd.Run(ctx, ssh.DumpLogOnError); err != nil {
 		s.Fatal("Error encountered when running flash_fp_mcu: ", err)
 	}
+
 }
