@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dae540a_542f838c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-05-03T18:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "519d4c92_7bd7f5da",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "070ba3776d9d39bd8896a0831d092cc83a680f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "963e2938_9a0f1e15",
@@ -138,6 +162,48 @@
       "side": 1,
       "message": "Can you try to add\n\u003e  if err :\u003d conn.WaitForExpr(ctx, \"document.readyState \u003d\u003d\u003d \u0027complete\u0027\"); err !\u003d nil {\n\u003e  \treturn nil, errors.Wrap(err, \"failed to wait for loading\")\n\u003e  }\nto see if waits until the search page is loaded?",
       "parentUuid": "2340614e_586d1ece",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 40
+      },
+      "revId": "070ba3776d9d39bd8896a0831d092cc83a680f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deaf804d_d07db325",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-05-03T18:40:52Z",
+      "side": 1,
+      "message": "Oh it looks like the problem was in the flakiness of the test. After I synced today it started always passing for me with the fix.\n\nI updated to use browser.GetAddressBarText",
+      "parentUuid": "5dd53c5b_d27e9ff6",
+      "revId": "070ba3776d9d39bd8896a0831d092cc83a680f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0efe5c8_45a0d6b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-05-03T18:40:52Z",
+      "side": 1,
+      "message": "Oh it looks like the problem was in the flakiness of the test. After I synced today it started always passing for me with the fix.\n\nI updated to use uiauto.",
+      "parentUuid": "bc51165e_a9e28830",
       "range": {
         "startLine": 123,
         "startChar": 25,
