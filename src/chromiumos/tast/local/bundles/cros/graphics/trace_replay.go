@@ -62,13 +62,5 @@ func init() {
 
 // TraceReplay replays a graphics trace inside a crostini container.
 func TraceReplay(ctx context.Context, s *testing.State) {
-	pre := s.PreValue().(crostini.PreData)
-	config := s.Param().(comm.TestGroupConfig)
-	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
-	guest := guestos.CrostiniGuestOS{
-		VMInstance: pre.Container,
-	}
-	if err := trace.RunTraceReplayTest(ctx, s.OutDir(), s.CloudStorage(), &guest, &config, nil); err != nil {
-		s.Fatal("Trace replay test failed: ", err)
-	}
+	guestos.TraceReplayCommon(ctx, s)
 }

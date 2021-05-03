@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/graphics/trace"
 	"chromiumos/tast/local/graphics/trace/comm"
 	"chromiumos/tast/local/graphics/trace/guestos"
 	"chromiumos/tast/testing"
@@ -46,14 +45,5 @@ func init() {
 
 // TraceReplayExtended replays a graphics trace repeatedly inside a crostini container.
 func TraceReplayExtended(ctx context.Context, s *testing.State) {
-	pre := s.PreValue().(crostini.PreData)
-	config := s.Param().(comm.TestGroupConfig)
-	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
-	testVars := comm.TestVars{PowerTestVars: comm.GetPowerTestVars(s)}
-	guest := guestos.CrostiniGuestOS{
-		VMInstance: pre.Container,
-	}
-	if err := trace.RunTraceReplayTest(ctx, s.OutDir(), s.CloudStorage(), &guest, &config, &testVars); err != nil {
-		s.Fatal("Trace replay test failed: ", err)
-	}
+	guestos.TraceReplayCommon(ctx, s)
 }
