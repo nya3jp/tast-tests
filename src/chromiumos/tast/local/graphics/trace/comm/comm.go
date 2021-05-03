@@ -60,9 +60,9 @@ type PowerTestVars struct {
 // values by querying the testing.State
 func GetPowerTestVars(s *testing.State) PowerTestVars {
 	vars := PowerTestVars{
-		ResultDir:            s.RequiredVar("graphics.TraceReplayExtended.resultDir"),
-		SignalRunningFile:    s.RequiredVar("graphics.TraceReplayExtended.signalRunningFile"),
-		SignalCheckpointFile: s.RequiredVar("graphics.TraceReplayExtended.signalCheckpointFile"),
+		ResultDir:            s.RequiredVar("PowerTest.resultDir"),
+		SignalRunningFile:    s.RequiredVar("PowerTest.signalRunningFile"),
+		SignalCheckpointFile: s.RequiredVar("PowerTest.signalCheckpointFile"),
 	}
 	return vars
 }
