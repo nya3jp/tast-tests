@@ -40,7 +40,7 @@ func init() {
 
 func FpRDP0(ctx context.Context, s *testing.State) {
 	// Set both HW and SW write protect to false to get RDP0 state.
-	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), s.RequiredVar("servo"), s.RPCHint(), s.OutDir(), false, false)
+	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), s.RequiredVar("servo"), s.RPCHint(), s.OutDir(), false, false, true)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
@@ -60,7 +60,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	// the original firmware that was flashed and the value that is
 	// read.
 	testing.ContextLog(ctx, "Force flashing original FP firmware")
-	if err := fingerprint.FlashFirmware(ctx, d, t.NeedsRebootAfterFlashing()); err != nil {
+	if err := fingerprint.FlashFirmware(ctx, d, t.NeedsRebootAfterFlashing(), true); err != nil {
 		s.Fatal("Failed to flash original FP firmware: ", err)
 	}
 
