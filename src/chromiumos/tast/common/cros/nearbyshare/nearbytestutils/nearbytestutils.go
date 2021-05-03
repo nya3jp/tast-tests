@@ -246,3 +246,18 @@ func SaveLogs(ctx context.Context, reader *syslog.LineReader, path string) error
 
 	return nil
 }
+
+// ClearCrOSDownloads clears the Downloads folder (where incoming shares are received).
+func ClearCrOSDownloads(ctx context.Context) error {
+	files, err := ioutil.ReadDir(DownloadPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to retrieve Downloads folder contents")
+	}
+
+	for _, f := range files {
+		if err := os.Remove(filepath.Join(DownloadPath, f.Name())); err != nil {
+			return errors.Wrapf(err, "failed to remove %v from Downloads", f.Name())
+		}
+	}
+	return nil
+}
