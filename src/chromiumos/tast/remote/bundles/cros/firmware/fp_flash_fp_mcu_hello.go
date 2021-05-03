@@ -57,4 +57,16 @@ func FpFlashFpMcuHello(ctx context.Context, s *testing.State) {
 	if err := cmd.Run(ctx, ssh.DumpLogOnError); err != nil {
 		s.Fatal("Error encountered when running flash_fp_mcu: ", err)
 	}
+
+	// The flash_fp_mcu script will reboot the FPMCU. This causes the FPMCU to
+	// loose the at-boot TPM seed (provided by bio_crypto_init). The only way
+	// to restore the correct TPM seed is to reboot the DUT.
+	// Furthermore, the flash_fp_mcu script will force unbinding of the cros-ec
+	// driver, which biod had opened at boot. Biod needs to reopen /dev/cros_fp.
+	//
+	// Don't fail the test if rebooting fails, since that can't be our fault.
+	testing.ContextLog(ctx, "Looks good, rebooting DUT to restore TPM seed")
+	if err := s.DUT().Reboot(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to reboot device on test exit: ", err)
+	}
 }
