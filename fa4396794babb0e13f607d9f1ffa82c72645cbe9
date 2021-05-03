@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae7763bf_7f8b7d10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-03T07:36:03Z",
+      "side": 1,
+      "message": "Hi everyone. As explained in https://crbug.com/1204482 I remove conditional clearing of TPM.\n\nAn alternative would be to create a separate function for enrollment tests. Within the scope of creating a separate function, the existing ones:\n- ownership -\u003e EnsureTPMAndSystemStateAreReset\n- helpers -\u003e EnsureTPMIsReset\n- helpers -\u003e EnsureTPMAndSystemStateAreReset\nshould be renamed to convey the information about the conditional clearing of TPM. Something like:\nEnsureTPMAndSystemStateAreReset -\u003e ClearTPMIfOwnedEnsureSystemStateAreReset\nEnsureTPMIsReset -\u003e EnsureTPMIsResetIfOwned\n\nLooking forward to hear commnets.\n",
+      "revId": "fa4396794babb0e13f607d9f1ffa82c72645cbe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
