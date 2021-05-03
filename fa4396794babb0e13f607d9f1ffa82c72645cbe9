@@ -57,6 +57,24 @@
       "parentUuid": "ae7763bf_7f8b7d10",
       "revId": "fa4396794babb0e13f607d9f1ffa82c72645cbe9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f3bbf5a_ed73b900",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-03T16:13:26Z",
+      "side": 1,
+      "message": "I think I will create a separate calls to avoid that extra reboot for other tests. Just need to come up with good names for those two different calls (forceCleanTpm? or something)\n\nThe sequence for me was as following:\n- enroll the DUT\n- apply device policy (DeviceLocalAccounts)\n- run test\n\nThe outcome:\n- test generally doesn\u0027t work (the applied policy didn\u0027t do what it was expected from the DUT - enable Kiosk mode on the DUT)\n- if test execution is interrupted (CTRL+c) and started again then the test WORKS.\n\nWe narrowed the problem down to conditional TPM clearance causing the issue. When checks \"tpmInfo.IsOwned\" was removed we got consistence in test running -\u003e DUT turns into Kiosk mode.",
+      "parentUuid": "b8d10ea8_d6d772ed",
+      "revId": "fa4396794babb0e13f607d9f1ffa82c72645cbe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
