@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type ptkParam struct {
@@ -42,7 +43,22 @@ func init() {
 		Params: []testing.Param{
 			{
 				// Default case.
-				ExtraAttr: []string{"wificell_unstable"},
+				ExtraHardwareDeps: hwdep.D(hwdep.WifiNotQualcomm()),
+				// The ping configuration gives us around 75 seconds to ping,
+				// which covers around 15 rekeys with 5 seconds period.
+				Val: ptkParam{
+					rekeyPeriod:      5,
+					pingCount:        150,
+					pingInterval:     0.5,
+					allowedLossCount: 30, // Allow 20% ping loss.
+				},
+			},
+			{
+				// Qualcomm WiFi case.
+				// TODO(b/183463918): remove this once the issue is fixed.
+				Name:              "qualcomm",
+				ExtraHardwareDeps: hwdep.D(hwdep.WifiQualcomm()),
+				ExtraAttr:         []string{"wificell_unstable"},
 				// The ping configuration gives us around 75 seconds to ping,
 				// which covers around 15 rekeys with 5 seconds period.
 				Val: ptkParam{
