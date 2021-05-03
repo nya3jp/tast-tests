@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbc59a2f_736f4c62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-03T09:23:20Z",
+      "side": 1,
+      "message": "Isn\u0027t it possible to just update the test instead of removing it from CQ?",
+      "revId": "3e237322bb2d2ea0c32b35473586b47d74e31b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
