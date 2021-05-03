@@ -7,6 +7,7 @@ package galleryapp
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
@@ -55,7 +56,8 @@ func (gc *GalleryContext) DeleteAndConfirm() uiauto.Action {
 	deleteButtonFinder := nodewith.Role(role.Button).Name("Delete").Ancestor(RootFinder)
 	confirmButtonFinder := nodewith.Role(role.Button).Name("Delete").Ancestor(DialogFinder)
 	return uiauto.Combine("remove current opened media file",
-		gc.ui.LeftClick(deleteButtonFinder),
+		gc.ui.WithTimeout(30*time.Second).WithInterval(1*time.Second).LeftClickUntil(
+			deleteButtonFinder, gc.ui.WithTimeout(3*time.Second).WaitUntilExists(confirmButtonFinder)),
 		gc.ui.LeftClick(confirmButtonFinder),
 	)
 }
