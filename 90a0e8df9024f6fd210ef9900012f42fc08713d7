@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6b413ae_e880e9ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-05-03T16:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fed0a32e_94ff300a",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 15
+      },
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93aa4404_2916fbce",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c8893b0_fbc7e36d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-05-03T16:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93aa4404_2916fbce",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 16
+      },
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f45a6a5b_fd949cfe",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-05-03T14:40:12Z",
       "side": 1,
       "message": "could you avoid to use two ways to represent test errors, i.e. s.{Error,Fatal} family and return value?\nYou can use testing.State in this function, so could you avoid adding the bool for return value?",
+      "range": {
+        "startLine": 101,
+        "startChar": 106,
+        "endLine": 101,
+        "endChar": 110
+      },
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e303a257_671dbffb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-05-03T16:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f45a6a5b_fd949cfe",
       "range": {
         "startLine": 101,
         "startChar": 106,
@@ -134,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7138a96b_d7970ca9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-05-03T16:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43bcf0e1_9593f5e0",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afb124b9_e4d30a80",
@@ -147,6 +243,30 @@
       "writtenOn": "2021-05-03T14:40:12Z",
       "side": 1,
       "message": "nit: maybe \"paths\" ?",
+      "range": {
+        "startLine": 105,
+        "startChar": 46,
+        "endLine": 105,
+        "endChar": 51
+      },
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08a5f798_3d497b2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-05-03T16:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afb124b9_e4d30a80",
       "range": {
         "startLine": 105,
         "startChar": 46,
@@ -174,6 +294,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cff95bb2_9266cf2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-05-03T16:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d9cf210_ff4b5d11",
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f202e3b_c2b879c9",
@@ -191,6 +329,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eac521de_53df67b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-05-03T16:06:25Z",
+      "side": 1,
+      "message": "Good catch. Changed most to full-match except for media which we do want to be a prefix match.",
+      "parentUuid": "4f202e3b_c2b879c9",
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a4380c6_8a5b7ccc",
@@ -204,6 +360,24 @@
       "writtenOn": "2021-05-03T14:40:12Z",
       "side": 1,
       "message": "IIUC, these lines are interpreted for the comments for the following line.\nCould you restyle the comment lines by putting them to the leading lines?\n\n// We need /run/netns ...\n// ....\n// ...\n\"/run/netns\":  true,\n\n(for all entries for consistency)?",
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ad056f_a9719d6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-05-03T16:06:25Z",
+      "side": 1,
+      "message": "Not sure what you are asking here. These 2 lines are continuations of the \"// We need /run/netns\" comment above it. vim autoformat puts them inline with the value, but can move to be inline with the first line of the comment if that makes more sense.",
+      "parentUuid": "5a4380c6_8a5b7ccc",
       "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -231,6 +405,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b49e7b_7dc690bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-05-03T16:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e896109_93f90f76",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 40
+      },
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a455179f_9eebeadd",
@@ -244,6 +442,30 @@
       "writtenOn": "2021-05-03T06:16:59Z",
       "side": 1,
       "message": "Same can be tagged with bug for tracking",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 33
+      },
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e818052_4f89b566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-05-03T16:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a455179f_9eebeadd",
       "range": {
         "startLine": 151,
         "startChar": 0,
