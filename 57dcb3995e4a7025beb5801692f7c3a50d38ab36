@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9447bd0e_143e974f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-03T16:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f687a0a8_9d5e6410",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc96f2f8_a7e83ea9",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72fbb3e3_3b019c43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-03T16:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc96f2f8_a7e83ea9",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a621512e_5c1ce66a",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-05-03T15:27:59Z",
       "side": 1,
       "message": "Did you check with the stability team about this test?",
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c1f9c8_28cc8ad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-03T16:03:03Z",
+      "side": 1,
+      "message": "In what sense? I didn\u0027t know there is a procedure for that :/ \nShall I send an info to stability team, shall they be pulled into the review?",
+      "parentUuid": "a621512e_5c1ce66a",
       "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +172,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "829632f3_5f4f65cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-03T16:03:03Z",
+      "side": 1,
+      "message": "it is just:\ngrep Starting\\\\ kiosk\\\\ mode /var/logs/messages\n\nAnd sure - I added a suitable comment.",
+      "parentUuid": "0bacb86f_14d1acb6",
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3323ef0f_a726916b",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
         "patchSetId": 1
@@ -117,6 +201,30 @@
       "writtenOn": "2021-05-03T15:27:59Z",
       "side": 1,
       "message": "nit: Some quotation might be helpful when reading the logs.",
+      "range": {
+        "startLine": 113,
+        "startChar": 34,
+        "endLine": 113,
+        "endChar": 42
+      },
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e934598_1a404bf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-03T16:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3323ef0f_a726916b",
       "range": {
         "startLine": 113,
         "startChar": 34,
@@ -144,6 +252,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b32c76c6_42c51e6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-03T16:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b19b163_8e57a7e0",
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f281f928_3276b97e",
@@ -157,6 +283,30 @@
       "writtenOn": "2021-05-03T15:27:59Z",
       "side": 1,
       "message": "!res",
+      "range": {
+        "startLine": 118,
+        "startChar": 84,
+        "endLine": 118,
+        "endChar": 96
+      },
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a4d0227_9270b32e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-03T16:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f281f928_3276b97e",
       "range": {
         "startLine": 118,
         "startChar": 84,
@@ -185,6 +335,53 @@
         "startChar": 138,
         "endLine": 119,
         "endChar": 144
+      },
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "746424c0_16cc0027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-03T16:03:03Z",
+      "side": 1,
+      "message": "Possible - yes. That would mean that more that once Kiosk log message pop in the messages log file.",
+      "parentUuid": "f0960264_10720b17",
+      "range": {
+        "startLine": 119,
+        "startChar": 138,
+        "endLine": 119,
+        "endChar": 144
+      },
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f39dcac7_ee14118a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-03T16:03:03Z",
+      "side": 1,
+      "message": "That has to be polled.",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 2
       },
       "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
