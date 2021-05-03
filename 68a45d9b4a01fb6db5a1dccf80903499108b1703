@@ -34,6 +34,24 @@
       "parentUuid": "21cc44fd_51cc24c7",
       "revId": "68a45d9b4a01fb6db5a1dccf80903499108b1703",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc2fa89_77d48a13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-05-03T19:44:26Z",
+      "side": 1,
+      "message": "This is because you probably made a mistake in the rebase process, and merged your commit into my earlier commit (but retained my authorship). I would suggest modifying the commit to your authorship and re-uploading.",
+      "parentUuid": "3cacbedd_6ee0e988",
+      "revId": "68a45d9b4a01fb6db5a1dccf80903499108b1703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
