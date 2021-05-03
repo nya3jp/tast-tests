@@ -16,6 +16,24 @@
       "message": "I got the policy_template from:\nhttps://source.chromium.org/chromium/chromium/src/+/HEAD:components/policy/resources/policy_templates.json\n\nthe ran command:\npython src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py --policy_templates ~/Downloads/policy_templates.json --out src/chromiumos/tast/common/policy/defs.go",
       "revId": "04fcba62a678f51db48628a5951965649912b3b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "752a60c3_80e71eac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-03T14:26:49Z",
+      "side": 1,
+      "message": "Without running, we don\u0027t know if the generator is broken.",
+      "parentUuid": "f60d5622_dfc66a7f",
+      "revId": "04fcba62a678f51db48628a5951965649912b3b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
