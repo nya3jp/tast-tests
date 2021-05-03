@@ -16,6 +16,23 @@
       "message": "a",
       "revId": "5885b67f532437ee84c74385a2d771ac36b9cbb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd60ff31_a66499cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-05-03T22:33:46Z",
+      "side": 1,
+      "message": "Not related to this change. \n\"no_shared_folder.go: Params is stale\"",
+      "revId": "5885b67f532437ee84c74385a2d771ac36b9cbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
