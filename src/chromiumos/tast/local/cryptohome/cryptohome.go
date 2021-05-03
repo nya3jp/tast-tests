@@ -440,9 +440,7 @@ func CheckService(ctx context.Context) error {
 	const (
 		svcName = "org.chromium.Cryptohome"
 
-		// TODO(crbug.com/879797): decrease the timeout value once cryptohome D-Bus service
-		// startup latency is reduced.
-		svcTimeout = 25 * time.Second
+		svcTimeout = 10 * time.Second
 	)
 	svcCtx, svcCancel := context.WithTimeout(ctx, svcTimeout)
 	defer svcCancel()
