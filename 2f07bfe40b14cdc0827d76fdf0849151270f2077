@@ -48,6 +48,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29666502_6a9826af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-03T23:08:05Z",
+      "side": 1,
+      "message": "It seems that the failure of tast.ui.TabletOperations is a real flakiness. Please take a look before try again.",
+      "revId": "2f07bfe40b14cdc0827d76fdf0849151270f2077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23be0e85_cd9ed6f3",
