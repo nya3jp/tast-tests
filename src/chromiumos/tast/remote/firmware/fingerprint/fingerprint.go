@@ -187,6 +187,7 @@ type FirmwareTest struct {
 	upstartService           platform.UpstartServiceClient
 	daemonState              []daemonState
 	needsRebootAfterFlashing bool
+	initEntropy              bool
 	dutfsClient              *dutfs.Client
 	cleanupTime              time.Duration
 	dutTempDir               string
@@ -195,7 +196,7 @@ type FirmwareTest struct {
 // NewFirmwareTest creates and initializes a new fingerprint firmware test.
 // enableHWWP indicates whether the test should enable hardware write protect.
 // enableSWWP indicates whether the test should enable software write protect.
-func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *testing.RPCHint, outDir string, enableHWWP, enableSWWP bool) (*FirmwareTest, error) {
+func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *testing.RPCHint, outDir string, enableHWWP, enableSWWP, forceFlash, initEntropy bool) (*FirmwareTest, error) {
 	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to servo")
@@ -278,11 +279,11 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 		return nil, errors.Wrap(err, "failed to create remote working directory")
 	}
 
-	if err := InitializeKnownState(ctx, d, dutfsClient, outDir, pxy, fpBoard, buildFwFile, needsReboot); err != nil {
+	if err := InitializeKnownState(ctx, d, dutfsClient, outDir, pxy, fpBoard, buildFwFile, needsReboot, forceFlash, initEntropy); err != nil {
 		return nil, errors.Wrap(err, "initializing known state failed")
 	}
 
-	if err := CheckInitialState(ctx, d, dutfsClient, fpBoard, buildFwFile); err != nil {
+	if err := CheckInitialState(ctx, d, dutfsClient, fpBoard, buildFwFile, initEntropy); err != nil {
 		return nil, err
 	}
 
@@ -300,6 +301,7 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 			upstartService:           upstartService,
 			daemonState:              daemonState,
 			needsRebootAfterFlashing: needsReboot,
+			initEntropy:              initEntropy,
 			dutfsClient:              dutfsClient,
 			cleanupTime:              cleanupTime,
 			dutTempDir:               dutTempDir,
@@ -313,7 +315,7 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 	testing.ContextLog(ctx, "Tearing down")
 	var firstErr error
 
-	if err := ReimageFPMCU(ctx, t.d, t.servo, t.needsRebootAfterFlashing); err != nil {
+	if err := ReimageFPMCU(ctx, t.d, t.servo, t.needsRebootAfterFlashing, false); err != nil {
 		firstErr = err
 	}
 
@@ -755,19 +757,21 @@ func CheckFirmwareIsFunctional(ctx context.Context, d *dut.DUT) ([]byte, error) 
 }
 
 // ReimageFPMCU flashes the FPMCU completely and initializes entropy.
-func ReimageFPMCU(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, needsRebootAfterFlashing bool) error {
+func ReimageFPMCU(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, needsRebootAfterFlashing, initEntropy bool) error {
 	if err := pxy.Servo().SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
 		return errors.Wrap(err, "failed to disable HW write protect")
 	}
 	if err := FlashFirmware(ctx, d, needsRebootAfterFlashing); err != nil {
 		return errors.Wrap(err, "failed to flash FP firmware")
 	}
-	testing.ContextLog(ctx, "Flashed FP firmware, now initializing the entropy")
-	if err := InitializeEntropy(ctx, d); err != nil {
-		return err
+	if initEntropy {
+		testing.ContextLog(ctx, "Flashed FP firmware, now initializing the entropy")
+		if err := InitializeEntropy(ctx, d); err != nil {
+			return err
+		}
 	}
-	testing.ContextLog(ctx, "Entropy initialized, now rebooting to get seed")
-	if err := d.Reboot(ctx); err != nil {
+	testing.ContextLog(ctx, "Rebooting after flashing")
+	if err := RebootFpmcu(ctx, d, ImageTypeRW); err != nil {
 		return errors.Wrap(err, "failed to reboot DUT")
 	}
 	if err := pxy.Servo().SetFWWPState(ctx, servo.FWWPStateOn); err != nil {
@@ -777,11 +781,16 @@ func ReimageFPMCU(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, needsReboot
 }
 
 // InitializeKnownState checks that the AP can talk to FPMCU. If not, it flashes the FPMCU.
-func InitializeKnownState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, outdir string, pxy *servo.Proxy, fpBoard FPBoardName, buildFWFile string, needsRebootAfterFlashing bool) error {
+func InitializeKnownState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, outdir string, pxy *servo.Proxy, fpBoard FPBoardName, buildFWFile string, needsRebootAfterFlashing, forceFlash, initEntropy bool) error {
 	out, err := CheckFirmwareIsFunctional(ctx, d)
-	if err != nil {
-		testing.ContextLogf(ctx, "FPMCU firmware is not functional (error: %v). Trying re-flashing FP firmware", err)
-		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
+	if err != nil || forceFlash {
+		if err != nil {
+			testing.ContextLogf(ctx, "FPMCU firmware is not functional (error: %v). Trying re-flashing FP firmware", err)
+		}
+		if forceFlash {
+			testing.ContextLog(ctx, "Reflashing FPMCU to clear entropy")
+		}
+		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing, initEntropy); err != nil {
 			return err
 		}
 	}
@@ -791,18 +800,25 @@ func InitializeKnownState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, out
 		// This is a nonfatal error that shouldn't kill the test.
 		testing.ContextLog(ctx, "Failed to write FP firmware version to file: ", err)
 	}
-	return CheckInitialState(ctx, d, fs, fpBoard, buildFWFile)
+	return CheckInitialState(ctx, d, fs, fpBoard, buildFWFile, initEntropy)
 }
 
 // CheckInitialState validates the rollback state and the running firmware versions (RW and RO).
 // It returns an error if any of the values are incorrect.
-func CheckInitialState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, fpBoard FPBoardName, buildFWFile string) error {
+func CheckInitialState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, fpBoard FPBoardName, buildFWFile string, initEntropy bool) error {
 	if err := CheckRunningFirmwareCopy(ctx, d, ImageTypeRW); err != nil {
 		return errors.Wrap(err, "RW firmware check failed")
 	}
 
-	if err := CheckRollbackSetToInitialValue(ctx, d); err != nil {
-		return errors.Wrap(err, "rollback check failed")
+	if initEntropy {
+		if err := CheckRollbackSetToInitialValue(ctx, d); err != nil {
+			return errors.Wrap(err, "rollback check failed")
+		}
+	} else {
+		if err := CheckRollbackState(ctx, d, RollbackState{
+			BlockID: 0, MinVersion: 0, RWVersion: 0}); err != nil {
+			return errors.Wrap(err, "rollback check failed")
+		}
 	}
 
 	expectedRWVersion, err := GetBuildRWFirmwareVersion(ctx, d, fs, buildFWFile)
