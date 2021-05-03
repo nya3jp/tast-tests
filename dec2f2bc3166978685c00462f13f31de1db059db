@@ -33,6 +33,23 @@
       "message": "tast-owners@ PTAL",
       "revId": "dec2f2bc3166978685c00462f13f31de1db059db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4fe5a13_4f164eda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-03T15:39:56Z",
+      "side": 1,
+      "message": "sorry for the delay, I was OOO.\n\ntast-wise: +2",
+      "revId": "dec2f2bc3166978685c00462f13f31de1db059db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
