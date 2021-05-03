@@ -305,6 +305,14 @@ func (a *AndroidNearbyDevice) StageFile(ctx context.Context, file string) error 
 	return nil
 }
 
+// ClearDownloads clears the device's Downloads folder, where outgoing shares are staged and incoming shares are received.
+func (a *AndroidNearbyDevice) ClearDownloads(ctx context.Context) error {
+	if err := a.device.RemoveContents(ctx, android.DownloadDir); err != nil {
+		return errors.Wrap(err, "failed to clear Android downloads directory")
+	}
+	return nil
+}
+
 // jsonRPCCmd is the command format required to initialize the RPC server.
 type jsonRPCCmd struct {
 	Cmd string `json:"cmd"`

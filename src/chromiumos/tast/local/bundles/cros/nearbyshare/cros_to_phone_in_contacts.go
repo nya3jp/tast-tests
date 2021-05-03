@@ -6,7 +6,6 @@ package nearbyshare
 
 import (
 	"context"
-	"os"
 	"path/filepath"
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
@@ -82,7 +81,6 @@ func CrosToPhoneInContacts(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to extract test data files: ", err)
 	}
-	defer os.RemoveAll(nearbytestutils.SendDir)
 
 	// Get the full paths of the test files to pass to chrome://nearby.
 	var testFiles []string
