@@ -39,6 +39,24 @@
       "message": "It seems like Gerrit cannot handle this CL correctly. Can you do the renaming and the other changes in different CLs, so the changes are visible in Gerrit as well?",
       "revId": "5dc59b3b0b7abc944425f3eeeff76f99e1830db0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8f6d4fa_1ce4ce88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-03T18:34:10Z",
+      "side": 1,
+      "message": "I think author should rebase on the main branch and edit src/chromiumos/tast/local/bundles/cros/graphics/chrome_fast_ink.go instead.",
+      "parentUuid": "efedf3fe_917a3bfe",
+      "revId": "5dc59b3b0b7abc944425f3eeeff76f99e1830db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
