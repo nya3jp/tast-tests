@@ -16,6 +16,24 @@
       "message": "Isn\u0027t it possible to just update the test instead of removing it from CQ?",
       "revId": "3e237322bb2d2ea0c32b35473586b47d74e31b70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "140d4201_68295af7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-03T10:10:21Z",
+      "side": 1,
+      "message": "The change will be in the browser, so it will be in the Chromium repo. It cannot be changed at the same time with this test.",
+      "parentUuid": "fbc59a2f_736f4c62",
+      "revId": "3e237322bb2d2ea0c32b35473586b47d74e31b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
