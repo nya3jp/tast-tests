@@ -39,6 +39,24 @@
       "message": "Hi everyone. As explained in https://crbug.com/1204482 I remove conditional clearing of TPM.\n\nAn alternative would be to create a separate function for enrollment tests. Within the scope of creating a separate function, the existing ones:\n- ownership -\u003e EnsureTPMAndSystemStateAreReset\n- helpers -\u003e EnsureTPMIsReset\n- helpers -\u003e EnsureTPMAndSystemStateAreReset\nshould be renamed to convey the information about the conditional clearing of TPM. Something like:\nEnsureTPMAndSystemStateAreReset -\u003e ClearTPMIfOwnedEnsureSystemStateAreReset\nEnsureTPMIsReset -\u003e EnsureTPMIsResetIfOwned\n\nLooking forward to hear commnets.\n",
       "revId": "fa4396794babb0e13f607d9f1ffa82c72645cbe9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8d10ea8_d6d772ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-05-03T08:12:01Z",
+      "side": 1,
+      "message": "hmmm, the only concern of removing conditional clearing TPM is the extra reboot.\nI\u0027m ok with this CL if tast team didn\u0027t think the extra reboot is a real concern.\nBTW, what kind of test sequence would cause the test failed?\n\nAnother solution is adding the files that need to be cleared in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/hwsec/tpm_clearer.go;drc\u003d24d6cf922affff2085df8b9f22a98f35c2e1e93f;l\u003d24\n\nAnd adding the daemons that need to be restarted in \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/hwsec/daemon_control.go;drc\u003d392917c4aafe67b99b75cb643eaa6d678ca3ae0c;l\u003d200",
+      "parentUuid": "ae7763bf_7f8b7d10",
+      "revId": "fa4396794babb0e13f607d9f1ffa82c72645cbe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
