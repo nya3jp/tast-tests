@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f687a0a8_9d5e6410",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-03T15:27:59Z",
+      "side": 1,
+      "message": "nit:\ntast-tests: Add kiosk.Autostart test\nor\nkiosk: Add Autostart test",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc96f2f8_a7e83ea9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-03T15:27:59Z",
+      "side": 1,
+      "message": "nit: add that you are creating a new package.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a621512e_5c1ce66a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-03T15:27:59Z",
+      "side": 1,
+      "message": "Did you check with the stability team about this test?",
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2c0b0c9_5d58362d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-03T15:27:59Z",
+      "side": 1,
+      "message": "There are 2 cr.Close() in this block.\nIt would be better to put this block into a Run(), that would limit the scope of the defer, and it would close the current chrome instance at the end of the run.\nThis way you can move one of the defers after the next chrome.New().",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bacb86f_14d1acb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-03T15:27:59Z",
+      "side": 1,
+      "message": "Can you add some comments on what exactly are you grepping for? This seems like an advanced usage of grep.",
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3323ef0f_a726916b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-03T15:27:59Z",
+      "side": 1,
+      "message": "nit: Some quotation might be helpful when reading the logs.",
+      "range": {
+        "startLine": 113,
+        "startChar": 34,
+        "endLine": 113,
+        "endChar": 42
+      },
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b19b163_8e57a7e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-03T15:27:59Z",
+      "side": 1,
+      "message": "minor nit: this empty line can be deleted, the next line belongs to this same logical block.",
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f281f928_3276b97e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-03T15:27:59Z",
+      "side": 1,
+      "message": "!res",
+      "range": {
+        "startLine": 118,
+        "startChar": 84,
+        "endLine": 118,
+        "endChar": 96
+      },
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0960264_10720b17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-03T15:27:59Z",
+      "side": 1,
+      "message": "Is it possible that this output becomes too large to be included in a log?",
+      "range": {
+        "startLine": 119,
+        "startChar": 138,
+        "endLine": 119,
+        "endChar": 144
+      },
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
