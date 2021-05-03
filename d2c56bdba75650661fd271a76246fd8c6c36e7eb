@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e08c929d_7d906c15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-03T22:21:56Z",
+      "side": 1,
+      "message": "Looks like yamaguchi@ is OOO for a few days, going to see if I can re-roll a different tast reviewer",
+      "revId": "d2c56bdba75650661fd271a76246fd8c6c36e7eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
