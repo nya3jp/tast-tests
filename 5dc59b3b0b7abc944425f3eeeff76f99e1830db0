@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dd7c543_55edcf33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-03T07:47:47Z",
+      "side": 1,
+      "message": "nit: the subject line should not be longer than 50 characters.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 72
+      },
+      "revId": "5dc59b3b0b7abc944425f3eeeff76f99e1830db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efedf3fe_917a3bfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-03T07:47:47Z",
+      "side": 1,
+      "message": "It seems like Gerrit cannot handle this CL correctly. Can you do the renaming and the other changes in different CLs, so the changes are visible in Gerrit as well?",
+      "revId": "5dc59b3b0b7abc944425f3eeeff76f99e1830db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
