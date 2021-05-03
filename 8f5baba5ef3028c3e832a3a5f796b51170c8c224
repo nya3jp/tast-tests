@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee2804e_c733dcfe",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-03T20:23:53Z",
+      "side": 1,
+      "message": "tried os.TempDir here but it doesn\u0027t match with os.TempDir on the DUT side, so I just made this /tmp in both places.",
+      "range": {
+        "startLine": 354,
+        "startChar": 81,
+        "endLine": 354,
+        "endChar": 85
+      },
+      "revId": "8f5baba5ef3028c3e832a3a5f796b51170c8c224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a768f876_13867276",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-03T20:23:53Z",
+      "side": 1,
+      "message": "Just a note, I tried taking care of starting/stopping this command from within nearby_share_service, but couldn\u0027t get it working.\n\nWhat I tried was passing s.TestContext() into f.\u003csender/receiver\u003e.StartLogging, starting the btmon command from within the service, storing the *testexec.Cmd, and then killing the command in f.\u003csender/receiver\u003e.SaveLogs. The logs were never present that way, though, so the command was not starting correctly.\n\nNot sure what was wrong, but I already spent way too long just trying to add this logging, don\u0027t want to spend much more time since we need these logs ASAP to help with debugging test issues.",
+      "range": {
+        "startLine": 355,
+        "startChar": 11,
+        "endLine": 355,
+        "endChar": 52
+      },
+      "revId": "8f5baba5ef3028c3e832a3a5f796b51170c8c224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
