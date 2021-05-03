@@ -50,6 +50,24 @@
       "message": "sorry for the delay, I was OOO.\n\ntast-wise: +2",
       "revId": "dec2f2bc3166978685c00462f13f31de1db059db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0269eb74_6e8a4e5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-05-03T16:31:01Z",
+      "side": 1,
+      "message": "Thanks! I had to totally forgotten about this CL too.",
+      "parentUuid": "e4fe5a13_4f164eda",
+      "revId": "dec2f2bc3166978685c00462f13f31de1db059db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
