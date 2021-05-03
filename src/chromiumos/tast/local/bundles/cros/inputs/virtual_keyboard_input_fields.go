@@ -115,7 +115,7 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 				inputField:   testserver.TextInputField,
 				keySeq:       strings.Split("hello", ""),
 				expectedText: "hello",
-			},			{
+			}, {
 				inputField:   testserver.PasswordInputField,
 				keySeq:       strings.Split("hello", ""),
 				expectedText: "hello",
