@@ -327,6 +327,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 		HardwareDeps string
 		SoftwareDeps []string
 		Metadata     []string
+		Attr         []string
 	}
 
 	var params []paramData
@@ -354,6 +355,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 					Timeout:      defaultTimeout,
 					SoftwareDeps: []string{"vaapi"},
 					Metadata:     genExtraData(files),
+					Attr:         []string{"graphics_video_vp9"},
 				}
 				if extension, ok := vp9GroupExtensions[levelGroup]; ok {
 					param.Timeout = extension
@@ -388,6 +390,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 		// These SoftwareDeps do not include the 10 bit version of AV1.
 		SoftwareDeps: []string{"vaapi", caps.HWDecodeAV1},
 		Metadata:     genExtraData(vaapiAv1Files),
+		Attr:         []string{"graphics_video_av1"},
 	})
 
 	// Generate V4L2 VP9 tests.
@@ -400,6 +403,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 		HardwareDeps: "hwdep.D(hwdep.Platform(\"trogdor\"))",
 		SoftwareDeps: []string{"v4l2_codec", caps.HWDecodeVP9},
 		Metadata:     genExtraData(v4l2Vp9Files),
+		Attr:         []string{"graphics_video_vp9"},
 	})
 
 	code := genparams.Template(t, `{{ range . }}{
@@ -417,6 +421,9 @@ func TestPlatformDecodingParams(t *testing.T) {
 		ExtraSoftwareDeps: {{ .SoftwareDeps | fmt }},
 		{{ end }}
 		ExtraData: {{ .Metadata | fmt }},
+		{{ if .Attr }}
+		ExtraAttr: {{ .Attr | fmt }},
+		{{ end }}
 	},
 	{{ end }}`, params)
 	genparams.Ensure(t, "platform_decoding.go", code)
