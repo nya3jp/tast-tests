@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dbdd067_b46278aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-04T07:19:49Z",
+      "side": 1,
+      "message": "nit: comment sentences should start with capital letter and end with \u0027.\u0027",
+      "range": {
+        "startLine": 34,
+        "startChar": 41,
+        "endLine": 34,
+        "endChar": 42
+      },
+      "revId": "1523c1de6dcc047136eb58ef02b531afde59d9c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
