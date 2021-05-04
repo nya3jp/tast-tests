@@ -201,6 +201,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f84c7cb_4d06ea4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-04T15:31:03Z",
+      "side": 1,
+      "message": "Done -\u003e new mailing list was created",
+      "parentUuid": "98157b16_61d7f1e6",
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2c0b0c9_5d58362d",
@@ -238,6 +256,30 @@
       "side": 1,
       "message": "working on it.",
       "parentUuid": "d2c0b0c9_5d58362d",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed65a4f3_5eb34882",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-04T15:31:03Z",
+      "side": 1,
+      "message": "checked anonymous function as well as s.Run(). Both caused issues with fakeDMS\nhttps://bit.googleplex.com/#/kamilszarek/5791865255231488",
+      "parentUuid": "7514a0dd_f1866d3e",
       "range": {
         "startLine": 36,
         "startChar": 0,
