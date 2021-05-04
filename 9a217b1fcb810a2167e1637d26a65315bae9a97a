@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f31df8f_a8f5dab0",
+        "filename": "src/chromiumos/tast/local/graphics/trace/guestos/trace_replay_common.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-05-04T19:51:30Z",
+      "side": 1,
+      "message": "How about have crostini mentioned somewhere in the package name?\ne.g. TraceReplayCrostiniSetup?",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "9a217b1fcb810a2167e1637d26a65315bae9a97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
