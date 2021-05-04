@@ -45,6 +45,30 @@
       },
       "revId": "8f5baba5ef3028c3e832a3a5f796b51170c8c224",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7959981_d42d8239",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-04T19:12:32Z",
+      "side": 1,
+      "message": "Do you need to pass in TestContext at all? If you start and stop the cmd in nearby_share_service with the service\u0027s context would that work? Similarly to what is being done already in StartLogging and SaveLogs functions in the service.",
+      "parentUuid": "a768f876_13867276",
+      "range": {
+        "startLine": 355,
+        "startChar": 11,
+        "endLine": 355,
+        "endChar": 52
+      },
+      "revId": "8f5baba5ef3028c3e832a3a5f796b51170c8c224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
