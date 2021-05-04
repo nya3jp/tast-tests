@@ -321,6 +321,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "196af87e_87d5a978",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-04T13:06:41Z",
+      "side": 1,
+      "message": "How do you get\n\u003e  grep \u0027\u0027\"\u0027\"\u0027Kiosk launch succeeded\u0027\"\u0027\"\u0027\u0027 /var/log/messages\nform\n\u003e  grep \u0027Starting kiosk mode \u0027 /var/log/messages\n?",
+      "parentUuid": "82e8aceb_73f89623",
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3323ef0f_a726916b",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
         "patchSetId": 1
