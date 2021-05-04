@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5f38a81_ab977505",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-04T00:52:32Z",
+      "side": 1,
+      "message": "I don\u0027t see split screen test added to Gmail and Only to reddit app.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "42bf613278361344dcca03d8dd5b65028b4f56ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "561cce61_7e147120",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-04T00:52:32Z",
+      "side": 1,
+      "message": "Can this be run on Kohaku? When I put the Kohaku in Tablet mode and run this test gets skipped with log \"App is in portrait orientation. Skipping test\". Is this intentional?",
+      "revId": "42bf613278361344dcca03d8dd5b65028b4f56ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eeb74eb_9d228d71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-04T00:52:32Z",
+      "side": 1,
+      "message": "Guess this is not needed.",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 18
+      },
+      "revId": "42bf613278361344dcca03d8dd5b65028b4f56ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
