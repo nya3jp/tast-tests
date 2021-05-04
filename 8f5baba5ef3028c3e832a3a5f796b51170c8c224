@@ -93,6 +93,30 @@
       },
       "revId": "8f5baba5ef3028c3e832a3a5f796b51170c8c224",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acf88a24_2a0724e8",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-04T23:16:08Z",
+      "side": 1,
+      "message": "Can you make a bug to come back and clean this up when we are not under as much of a time crunch?",
+      "parentUuid": "d4f0de93_ce871f46",
+      "range": {
+        "startLine": 355,
+        "startChar": 11,
+        "endLine": 355,
+        "endChar": 52
+      },
+      "revId": "8f5baba5ef3028c3e832a3a5f796b51170c8c224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
