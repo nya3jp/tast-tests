@@ -85,6 +85,23 @@
       "parentUuid": "d1476d0b_2a86d73a",
       "revId": "91602d842230f57c54f7c8c57c617e6e380cb80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da9c7ffe_c03d3aad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-04T21:36:13Z",
+      "side": 1,
+      "message": "Two options here:\n1. tell the CQ to rebuild atlas, b/c it ain\u0027t passing parallels tests\n2. chump, b/c parallels tests aren\u0027t relevant\n3. [yes, I can\u0027t count] repeatedly resubmit forever\n\nI\u0027m going with #2.",
+      "revId": "91602d842230f57c54f7c8c57c617e6e380cb80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
