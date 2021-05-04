@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "26c8f55b_ed162cd4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-04T10:22:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8bb2dcf_cd55f80c",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "a3cc5da96abfb69dd3c769a7b9333fdb819d374e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7e8e2fe7_37c23ffb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "writtenOn": "2021-04-27T14:59:47Z",
       "side": 1,
       "message": "Should we do OptOut for completeness?",
+      "revId": "a3cc5da96abfb69dd3c769a7b9333fdb819d374e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5dc1734_5725b63f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_resolution_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-04T10:22:59Z",
+      "side": 1,
+      "message": "Good point! We should also check for invalid values.",
+      "parentUuid": "c0f0b994_9f92dc49",
       "revId": "a3cc5da96abfb69dd3c769a7b9333fdb819d374e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
