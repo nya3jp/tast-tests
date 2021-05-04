@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2a03524_f0f8076c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-04T21:27:58Z",
+      "side": 1,
+      "message": "Reverified with `tast run -var\u003dservo\u003dlocalhost:9999 localhost:2200 firmware.FpFlashFpMcuHello` on hatch via crosfleet.\n",
+      "revId": "bb963f4e718b48bca083771fbd4466d1822b6dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
