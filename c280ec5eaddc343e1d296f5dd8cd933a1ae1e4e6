@@ -33,6 +33,29 @@
       "message": "+Jonathan to have a look at the use of the newer ui framework",
       "revId": "c280ec5eaddc343e1d296f5dd8cd933a1ae1e4e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c02ff55_7be709fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_insession.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-04T20:43:45Z",
+      "side": 1,
+      "message": "Is there any non-ui way to check that the account has been added as well?",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 2
+      },
+      "revId": "c280ec5eaddc343e1d296f5dd8cd933a1ae1e4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
