@@ -38,6 +38,8 @@ func init() {
 	})
 }
 
+// DeviceWilcoDtcAllowed tests DeviceWilcoDtcAllowed policy.
+// TODO(b/189457904): remove once policy.DeviceWilcoDtcAllowedEnrolled will be stable enough.
 func DeviceWilcoDtcAllowed(ctx context.Context, s *testing.State) {
 	defer func(ctx context.Context) {
 		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
