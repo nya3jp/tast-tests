@@ -190,6 +190,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7514a0dd_f1866d3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-04T12:22:23Z",
+      "side": 1,
+      "message": "working on it.",
+      "parentUuid": "d2c0b0c9_5d58362d",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0bacb86f_14d1acb6",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
         "patchSetId": 1
@@ -237,6 +261,24 @@
       "side": 1,
       "message": "So \"Starting\\ kiosk\\ mode\" is the one string you are looking for?\nOr \"\\ \" is an escape as well, and you are looking for \"Starting kiosk mode\"?\nIf so, it there a better way to escape spaces in grep?",
       "parentUuid": "829632f3_5f4f65cc",
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82e8aceb_73f89623",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-04T12:22:23Z",
+      "side": 1,
+      "message": "the code looks for:\n\"Starting kiosk mode\"\n\n\"\\\\ \" -\u003e is the escape of the space in grep, and then another \\ is the escape of the first \\.\n\nWhen I changed the grep to:\ngrep \u0027Starting kiosk mode \u0027 /var/log/messages\n\nIMHO this log looks more confusing that clearing up:\n\n2021-05-04T08:43:36.165331Z [08:43:36.065] Command: grep \u0027\u0027\"\u0027\"\u0027Kiosk launch succeeded\u0027\"\u0027\"\u0027\u0027 /var/log/messages\n\nin contrast to the double escape that end up as:\n2021-05-04T08:50:59.676549Z [08:50:59.088] Command: grep \u0027Kiosk\\ launch\\ succeeded\u0027 /var/log/messages",
+      "parentUuid": "cbbffcbc_c914b083",
       "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
