@@ -67,6 +67,24 @@
       "message": "IIRC, removing system state files needs to put between \"ClearTPM\" and \"PostClearTPM\", because soft clear TPM(only for local tests) need the system state(/var/lib/tpm_manager/local_tpm_data) to clear the TPM.",
       "revId": "7bf9375787e7d264f75e8d45f3fe4cfd61c429e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3db4d148_4959f18a",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-04T10:05:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5935fa92_659ea400",
+      "revId": "7bf9375787e7d264f75e8d45f3fe4cfd61c429e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
