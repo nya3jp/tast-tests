@@ -18,17 +18,19 @@ const batteryCheckInterval = time.Second
 
 // BatteryInfoTracker is a helper to collect battery info.
 type BatteryInfoTracker struct {
-	prefix             string
-	batteryPath        string
-	chargeFullDesign   float64
-	voltageMinDesign   float64
-	batteryChargeStart float64
-	batteryChargeEnd   float64
-	energy             float64 // Total energy consumed.
-	energyFullDesign   float64
-	collecting         chan bool
-	collectingErr      chan error
-	err                error
+	prefix               string
+	batteryPath          string
+	chargeFullDesign     float64
+	voltageMinDesign     float64
+	batteryChargeStart   float64
+	batteryChargeEnd     float64
+	batteryCapacityStart float64
+	batteryCapacityEnd   float64
+	energy               float64 // Total energy consumed.
+	energyFullDesign     float64
+	collecting           chan bool
+	collectingErr        chan error
+	err                  error
 }
 
 // NewBatteryInfoTracker creates a new instance of BatteryInfoTracker. If battery is not
@@ -77,9 +79,14 @@ func (t *BatteryInfoTracker) Start(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
+	capacityNow, err := power.ReadBatteryCapacity(t.batteryPath)
+	if err != nil {
+		return err
+	}
 
 	t.batteryChargeStart = chargeNow
-	testing.ContextLog(ctx, "charge_now value at start: ", chargeNow)
+	t.batteryCapacityStart = capacityNow
+	testing.ContextLogf(ctx, "charge_now value at start: %f, capacity value at start: %f", chargeNow, capacityNow)
 
 	go func() {
 		ticker := time.NewTicker(batteryCheckInterval)
@@ -124,9 +131,14 @@ func (t *BatteryInfoTracker) Stop(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
+	capacityNow, err := power.ReadBatteryCapacity(t.batteryPath)
+	if err != nil {
+		return err
+	}
 
 	t.batteryChargeEnd = chargeNow
-	testing.ContextLog(ctx, "charge_now value at end: ", chargeNow)
+	t.batteryCapacityEnd = capacityNow
+	testing.ContextLogf(ctx, "charge_now value at end: %f, capacity value at end: %f", chargeNow, capacityNow)
 
 	t.energyFullDesign = t.chargeFullDesign * t.voltageMinDesign * 1e-12 * 3600
 
@@ -189,4 +201,9 @@ func (t *BatteryInfoTracker) Record(pv *perf.Values) {
 			Direction: perf.SmallerIsBetter,
 		}, t.energy/t.energyFullDesign*100)
 	}
+	pv.Set(perf.Metric{
+		Name:      t.prefix + "Battery.Capacity.change",
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+	}, t.batteryCapacityStart-t.batteryCapacityEnd)
 }
