@@ -1,0 +1,81 @@
+<!-- Copyright 2021 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+
+<!DOCTYPE html>
+
+<title>Web Handwriting Recognition Test</title>
+<h1>Drawing - English and Gesture</h1>
+
+<script>
+    // Construct a drawing from |dataPath|, get prediction from |recognizer|, and verify the output
+    // prediction texts contains |expectedText|, and the segmentation result has
+    // |expectedGraphemeCount| number of graphemes.
+    async function testDrawing(recognizer, name, dataPath, expectedText, expectedGraphemeCount) {
+        // Build JS Drawing from |dataPath|.
+        const jsDrawing = await recognizer.startDrawing();
+        const drawing = await fetch(dataPath).then(resp => resp.json());
+        for (const stroke of drawing) {
+            const jsStroke = new HandwritingStroke();
+            for (const point of stroke) {
+                jsStroke.addPoint(point);
+            }
+            jsDrawing.addStroke(jsStroke);
+        }
+
+        // Check at least one prediction matches |expectedText|.
+        const predictions = await jsDrawing.getPrediction();
+        const wantedPrediction = predictions.find(pred => pred.text === expectedText);
+        if (!wantedPrediction) {
+            throw new Error(`Can't find expected text "${expectedText}", predictions are: ${predictions.map(p => p.text).join(", ")}, test case: ${name}`);
+        }
+
+        // Check the number of segments matches |expectedGraphemeCount|.
+        const graphemeCount = wantedPrediction.segmentationResult.length;
+        if (graphemeCount !== expectedGraphemeCount) {
+            throw new Error(`Number of graphemes doesn't match, got ${graphemeCount}, want ${expectedText}, test case: ${name}`);
+        }
+    }
+
+    async function testEnglishModel() {
+        const constraints = { languages: ['en'] };
+        const featureSupport = await navigator.queryHandwritingRecognizerSupport(constraints);
+        if (!featureSupport.languages) {
+            throw new Error("Handwriting recognizer doesn't support 'en' language");
+        }
+
+        const recognizer = await navigator.createHandwritingRecognizer(constraints);
+
+        await testDrawing(
+            recognizer, "English Model - Normal text",
+            '/web_handwriting_recognition_drawing_abc.json', "abc", 3);
+    }
+
+    async function testGestureModel() {
+        const constraints = { languages: ['zxx-x-Gesture'] };
+        const featureSupport = await navigator.queryHandwritingRecognizerSupport(constraints);
+        if (!featureSupport.languages) {
+            throw new Error("Handwriting recognizer doesn't support gesture model");
+        }
+
+        const recognizer = await navigator.createHandwritingRecognizer(constraints);
+
+        await testDrawing(
+            recognizer, "Gesture Model -  Normal text",
+            '/web_handwriting_recognition_drawing_abc.json', "NO_GESTURE", 0);
+        await testDrawing(
+            recognizer, "Gesture Model - Crossed-Out",
+            '/web_handwriting_recognition_drawing_crossed_out.json', "X_OUT", 0);
+    }
+
+    // Tast test should wait for this Promise.
+    // This method should throw an Error with a description if test fails.
+    window.resultPromise = (async function () {
+        if (!navigator.queryHandwritingRecognizerSupport || !navigator.createHandwritingRecognizer) {
+            throw new Error("Web Handwriting Recognition API is not available");
+        }
+
+        await testEnglishModel();
+        await testGestureModel();
+    })();
+</script>
