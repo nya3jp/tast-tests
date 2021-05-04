@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86f7dc8d_d0ad8b3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/chrome_fast_ink.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-05-04T16:34:56Z",
+      "side": 1,
+      "message": "[FAILED] chromiumos/platform/tast-tests: tast_lint                        \n    Hook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors should be modified by yourself:\n        src/chromiumos/tast/local/bundles/cros/graphics/chrome_fast_ink.go:39:2: testing.AddTest() should be the only top level statement of init()\n      \n        Refer the following documents for details:\n         https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Test-registration",
+      "parentUuid": "15a6f4d9_314145b6",
+      "range": {
+        "startLine": 53,
+        "startChar": 22,
+        "endLine": 58,
+        "endChar": 6
+      },
+      "revId": "fd2b581cf2116f5472758ddcda23ed9a9dcb9ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6b5ad01_5a514904",
@@ -107,6 +131,30 @@
       "writtenOn": "2021-05-04T07:13:36Z",
       "side": 1,
       "message": "nit: please add some short comment to the file, like \"Ensure we only have 1 window.\" for here.\n\nquestion: in the params.arc true branch, which call creates the window?",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 2
+      },
+      "revId": "fd2b581cf2116f5472758ddcda23ed9a9dcb9ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "560a9b27_0b1cb09c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/chrome_fast_ink.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-05-04T16:34:56Z",
+      "side": 1,
+      "message": "act.Start(ctx, tconn) creates the window.",
+      "parentUuid": "3ceb3aff_0e300848",
       "range": {
         "startLine": 216,
         "startChar": 0,
