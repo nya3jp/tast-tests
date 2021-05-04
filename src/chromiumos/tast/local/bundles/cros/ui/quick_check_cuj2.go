@@ -29,7 +29,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "wifi"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "loggedInAndKeepState",
+		Fixture:      "loggedInToCUJUser",
 		Vars: []string{
 			"ui.cuj_mode",     // Optional. Expecting "tablet" or "clamshell".
 			"ui.cuj_password", // Required to unlock screen.
