@@ -12,7 +12,100 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/checked"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
 )
+
+// nodeChecker is used in checking different properties of a node while collecting the error messages.
+type nodeChecker struct {
+	err  error
+	info *uiauto.NodeInfo
+}
+
+// openedPage stores information that allows chaining SettingsPage() and SelectNode() together
+// without the repetition of some input parameters.
+type openedPage struct {
+	cr  *chrome.Chrome
+	err error
+}
+
+// SettingsPage will open a settings page with given link (e.g. "chrome://settings/content/location").
+// The returned openedPage value can be used to select a node from the node tree (not just from the page).
+func SettingsPage(ctx context.Context, cr *chrome.Chrome, settingsPageLink string) *openedPage {
+	page := &openedPage{
+		cr: cr,
+	}
+
+	conn, err := cr.NewConn(ctx, settingsPageLink)
+	if err != nil {
+		page.err = err
+		return page
+	}
+	defer conn.Close()
+
+	return page
+}
+
+// SelectNode will create a nodeChecker from the selected node.
+// It can be used to verify different properties of the node.
+func (page *openedPage) SelectNode(ctx context.Context, finder *nodewith.Finder) *nodeChecker {
+	checker := &nodeChecker{}
+
+	if page.err != nil {
+		checker.err = errors.Wrap(page.err, "unable to select node as page was not opened properly")
+		return checker
+	}
+
+	tconn, err := page.cr.TestAPIConn(ctx)
+	if err != nil {
+		checker.err = err
+		return checker
+	}
+
+	uia := uiauto.New(tconn)
+	info, err := uia.Info(ctx, finder)
+	if err != nil {
+		checker.err = err
+		return checker
+	}
+
+	checker.info = info
+	return checker
+}
+
+// Restriction checks the restriction state of a Settings node given by the SettingsState() function.
+func (checker *nodeChecker) Restriction(expectedRestriction restriction.Restriction) *nodeChecker {
+	if checker.info == nil {
+		return checker
+	}
+
+	if checker.info.Restriction != expectedRestriction {
+		checker.err = errors.Wrapf(checker.err, "unexpected node restriction state; want %q, got %q", expectedRestriction, checker.info.Restriction)
+	}
+
+	return checker
+}
+
+// Checked checks the checked state of a Settings node given by the SettingsState() function.
+func (checker *nodeChecker) Checked(expectedChecked checked.Checked) *nodeChecker {
+	if checker.info == nil {
+		return checker
+	}
+
+	if checker.info.Checked != expectedChecked {
+		checker.err = errors.Wrapf(checker.err, "unexpected node checked state; want %q, got %q", expectedChecked, checker.info.Checked)
+	}
+
+	return checker
+}
+
+// Verify is the last element of the Settings state verifying.
+// It returns with the errors collected during the process.
+func (checker *nodeChecker) Verify() error {
+	return checker.err
+}
 
 // CheckNodeAttributes returns whether this node matches the given expected params.
 // It will return an error with the first non-matching attribute, nil otherwise.
