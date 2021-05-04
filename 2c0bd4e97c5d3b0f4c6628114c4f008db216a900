@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "516118c5_dc6a567d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-04T15:52:42Z",
+      "side": 1,
+      "message": "I think those two suffice -\u003e \n1. Kiosk starting\n2. Kiosk started",
+      "parentUuid": "30b72723_81e41997",
+      "range": {
+        "startLine": 134,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 34
+      },
+      "revId": "2c0bd4e97c5d3b0f4c6628114c4f008db216a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2950e639_a96edb86",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-04T14:10:46Z",
       "side": 1,
       "message": "This makes assumptions on the content of the search phrase.",
+      "range": {
+        "startLine": 145,
+        "startChar": 37,
+        "endLine": 145,
+        "endChar": 81
+      },
+      "revId": "2c0bd4e97c5d3b0f4c6628114c4f008db216a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cb69590_e2789c5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-04T15:52:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2950e639_a96edb86",
       "range": {
         "startLine": 145,
         "startChar": 37,
