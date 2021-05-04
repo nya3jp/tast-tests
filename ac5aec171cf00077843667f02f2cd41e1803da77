@@ -16,6 +16,24 @@
       "message": "How much priority is needed for this?\ndue to CrOS infra issue we hit, investigation of test falkiness is delaying.\nI\u0027d like to prioritize the current one first, and so for the purpose I\u0027d like to keep the current ones if possible.\nWDYT?",
       "revId": "ac5aec171cf00077843667f02f2cd41e1803da77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43a40fa2_95e568a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-05-04T22:09:38Z",
+      "side": 1,
+      "message": "That sgtm! It\u0027s not urgent, but I think we want to land this eventually because it\u0027s making our builders taking much longer to fail. For example, there is a version skew issue that resulted in Lacros failing to launch, and our skylab builder is running 10 tests, so it\u0027s taking 10min to fail, which won\u0027t scale given that we\u0027re looking into increasing the number of Lacros tests for Lacros.",
+      "parentUuid": "5367d40b_236bd998",
+      "revId": "ac5aec171cf00077843667f02f2cd41e1803da77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
