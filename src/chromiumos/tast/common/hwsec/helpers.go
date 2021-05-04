@@ -261,7 +261,7 @@ func (h *CmdHelper) GetTPMVersion(ctx context.Context) (string, error) {
 // ensureTPMIsReset ensures the TPM is reset when the function returns nil.
 // Otherwise, returns any encountered error.
 // Optionally removes files from the DUT to simulate a powerwash.
-func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bool) error {
+func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles, removeFilesOnReset bool) error {
 	if err := h.daemonController.WaitForAllDBusServices(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")
 	}
@@ -303,18 +303,26 @@ func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bo
 			}
 		}(ctx)
 
-		if tpmInfo.IsOwned {
-			if err := h.tpmClearer.ClearTPM(ctx); err != nil {
-				return errors.Wrap(err, "failed to clear TPM")
-			}
-		}
-
-		if removeFiles {
+		rmFiles := func() {
 			args := append([]string{"-rf", "--"}, SystemStateFiles...)
 			if out, err := h.cmdRunner.Run(ctx, "rm", args...); err != nil {
 				// TODO(b/173189029): Ignore errors on failure. This is a workaround to prevent Permission denied when removing a fscrypt directory.
 				testing.ContextLog(ctx, "Failed to remove files to clear ownership: ", err, string(out))
 			}
+		}
+
+		if tpmInfo.IsOwned {
+			if err := h.tpmClearer.ClearTPM(ctx); err != nil {
+				return errors.Wrap(err, "failed to clear TPM")
+			}
+
+			if removeFilesOnReset {
+				rmFiles()
+			}
+		}
+
+		if removeFiles {
+			rmFiles()
 		}
 
 		if tpmInfo.IsOwned {
@@ -349,10 +357,15 @@ func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bo
 // EnsureTPMIsReset ensures the TPM is reset when the function returns nil.
 // Otherwise, returns any encountered error.
 func (h *CmdTPMClearHelper) EnsureTPMIsReset(ctx context.Context) error {
-	return h.ensureTPMIsReset(ctx, false)
+	return h.ensureTPMIsReset(ctx, false, false)
 }
 
 // EnsureTPMAndSystemStateAreReset ensures the TPM is reset and simulates a Powerwash.
 func (h *CmdTPMClearHelper) EnsureTPMAndSystemStateAreReset(ctx context.Context) error {
-	return h.ensureTPMIsReset(ctx, true)
+	return h.ensureTPMIsReset(ctx, true, false)
+}
+
+// EnsureReadyForEnrollment ensures the TPM is reset and simulates a Powerwash only if it is reset.
+func (h *CmdTPMClearHelper) EnsureReadyForEnrollment(ctx context.Context) error {
+	return h.ensureTPMIsReset(ctx, false, true)
 }
