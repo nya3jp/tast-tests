@@ -259,7 +259,77 @@ func (t *TabletActionHandler) switchToWindowThroughHotseat(ctx context.Context, 
 // SwitchToLRUWindow switches the window to LRU (Least Recently Used) one.
 // opt specifies the way of switching.
 func (t *TabletActionHandler) SwitchToLRUWindow(ctx context.Context, opt SwitchWindowOption) error {
-	return errors.New("to be implemented")
+	msg := ""
+	switch opt {
+	case SwitchWindowThroughOverview:
+		testing.ContextLog(ctx, "Switching to LRU window, by overview")
+		return t.switchToLRUWindowByOverview(ctx)
+	case SwitchWindowThroughHotseat:
+		msg = "switch to LRU window through hotseat not support for TabletActionHandler, please use SwitchWindowThroughOverview instead"
+	case SwitchWindowThroughKeyEvent:
+		msg = "switch to LRU window through key event not support for TabletActionHandler, please use SwitchWindowThroughOverview instead"
+	}
+	return errors.New(msg)
+}
+
+// switchToWindowThroughHotseat switch current focus window to another through hotseat.
+func (t *TabletActionHandler) switchToWindowThroughHotseat(ctx context.Context, appName string, menuItemFinder *nodewith.Finder) error {
+	if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, t.tconn, t.stew, t.tcc); err != nil {
+		return errors.Wrap(err, "failed to show hotseat")
+	}
+
+	if strings.Contains(appName, "Chrome") || strings.Contains(appName, "Chromium") {
+		if _, err := t.clickChromeOnHotseat(ctx); err != nil {
+			return errors.Wrap(err, "failed to clicl Chrome app icon on hotseat")
+		}
+	} else {
+		icon, err := openedAppIconFinder(ctx, t.tconn, appName)
+		if err != nil {
+			return errors.Wrap(err, "failed to find app icon")
+		}
+		if err := t.tc.Tap(icon)(ctx); err != nil {
+			return errors.Wrap(err, "failed to tap app icon on hotseat")
+		}
+	}
+
+	if err := t.ui.Exists(nodewith.ClassName("MenuItemView").First())(ctx); err != nil {
+		// Node (any menu item) does not exist.
+		// In this case, there is only one window for target app, and the window is already switched after tap the icon,
+		// so no need to further tap the menu item.
+		return nil
+	}
+
+	if err := ash.WaitForHotseatAnimatingToIdealState(ctx, t.tconn, ash.ShelfExtended); err != nil {
+		return errors.Wrap(err, "failed to wait for hotseat animating to ideal")
+	}
+
+	if err := t.tc.Tap(menuItemFinder)(ctx); err != nil {
+		return errors.Wrap(err, "failed to tap menu item")
+	}
+
+	return ash.WaitForHotseatAnimatingToIdealState(ctx, t.tconn, ash.ShelfHidden)
+}
+
+// switchToLRUWindowByOverview switches the window to least recently used one through overview.
+func (t *TabletActionHandler) switchToLRUWindowByOverview(ctx context.Context) error {
+	// Ensure overview is shown.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return ash.DragToShowOverview(ctx, t.tew, t.stew, t.tconn)
+	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}); err != nil {
+		return errors.Wrap(err, "failed to show overview")
+	}
+	// Ensure overview is hidden even if an error occur.
+	defer ash.SetOverviewModeAndWait(ctx, t.tconn, false)
+
+	targetWindowFinder, err := overviewLRUWindowFinder(ctx, t.ui)
+	if err != nil {
+		return errors.Wrap(err, "failed to get LRU window finder")
+	}
+
+	return uiauto.Combine("Click item on overview",
+		t.tc.Tap(targetWindowFinder),
+		t.ui.WaitUntilGone(targetWindowFinder),
+	)(ctx)
 }
 
 // SwitchChromeTab switches to the next Chrome tab.
@@ -715,4 +785,37 @@ func openedAppIconFinder(ctx context.Context, tconn *chrome.TestConn, name strin
 
 	// APP is not found.
 	return nil, errors.Wrapf(err, "target icon [%s] not found", name)
+}
+
+// overviewLRUWindowFinder finds the LRU item (which is the bottom right one) from overview.
+func overviewLRUWindowFinder(ctx context.Context, ui *uiauto.Context) (*nodewith.Finder, error) {
+	windowsFinder := nodewith.ClassName("OverviewItemView")
+	windowsInfo, err := ui.NodesInfo(ctx, windowsFinder)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to obtain the overview window info")
+	}
+
+	// Find the LRU window, which is the bottom-right one.
+	target := coords.NewPoint(0, 0)
+	idxWindow := -1
+	found := false
+	for i, info := range windowsInfo {
+		if info.Location.CenterPoint().Y < target.Y {
+			continue
+		}
+		if info.Location.CenterPoint().X <= target.X {
+			continue
+		}
+
+		target.X = info.Location.CenterPoint().X
+		target.Y = info.Location.CenterPoint().Y
+		idxWindow = i
+		found = true
+	}
+
+	if !found {
+		return nil, errors.Wrap(err, "failed to find the LRU window on overview")
+	}
+
+	return windowsFinder.Nth(idxWindow), nil
 }
