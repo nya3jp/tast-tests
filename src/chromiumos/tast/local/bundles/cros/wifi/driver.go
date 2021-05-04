@@ -93,6 +93,7 @@ var expectedWLANDriver = map[string]map[string]string{
 	},
 	wlan.QualcommAtherosQCA6174SDIO: {
 		"4.19": "wireless/ath/ath10k/ath10k_sdio.ko",
+		"5.10": "wireless/ath/ath10k/ath10k_sdio.ko",
 	},
 	wlan.QualcommWCN3990: {
 		"4.14": "wireless/ath/ath10k/ath10k_snoc.ko",
