@@ -27,7 +27,7 @@ var SystemStateFiles = []string{
 	"/home/chronos/Local State",
 	"/mnt/stateful_partition/.tpm_owned",
 	"/run/cryptohome",
-	"/run/lockbox",
+	"/run/lockbox/*",
 	"/run/tpm_manager",
 	"/var/cache/app_pack",
 	"/var/cache/shill/default.profile",
