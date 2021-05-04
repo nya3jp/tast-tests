@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -29,6 +30,10 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
+		HardwareDeps: hwdep.D(
+			// Test is failing on dooly b/187069593.
+			hwdep.SkipOnModel("dooly"),
+		),
 	})
 }
 
