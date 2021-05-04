@@ -35,7 +35,8 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "stable",
-				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels, hwdep.SkipOnPlatform("kukui-kernelnext"), hwdep.SkipOnModel("betty-pi-arc")),
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+				ExtraAttr:         []string{"informational"},
 			}, {
 				Name:              "unstable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
