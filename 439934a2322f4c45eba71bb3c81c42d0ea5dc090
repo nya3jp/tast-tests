@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93dfbef3_93c5f453",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-04T14:51:45Z",
+      "side": 1,
+      "message": "Marking CR+2 to reduce cross time zone iteration.\nThough, could you address my comments inline before submitting?\nL41 sounds like \"must\" to me. L63 is a kind of optional, but nice to do, I think, too.",
+      "revId": "439934a2322f4c45eba71bb3c81c42d0ea5dc090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4e2e787_d239629d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_network_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-04T14:51:45Z",
+      "side": 1,
+      "message": "could you use s.Fatal() in order not to continue the following code in this case?",
+      "revId": "439934a2322f4c45eba71bb3c81c42d0ea5dc090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81b41b99_9b685267",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_network_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-04T14:51:45Z",
+      "side": 1,
+      "message": "Could you move this to just before L59?\nThen you can drop \"appendResultToFile\"s below.\n(I assume it is ok to record it, even for the success case).",
+      "revId": "439934a2322f4c45eba71bb3c81c42d0ea5dc090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
