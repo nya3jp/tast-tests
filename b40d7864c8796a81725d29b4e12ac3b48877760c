@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "085dc8b2_47cd2993",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_resolution_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-05-04T10:46:59Z",
+      "side": 1,
+      "message": "nit: I\u0027d suggest reusing pacProxy.",
+      "range": {
+        "startLine": 67,
+        "startChar": 13,
+        "endLine": 67,
+        "endChar": 35
+      },
+      "revId": "b40d7864c8796a81725d29b4e12ac3b48877760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73c86d84_03b60a13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_resolution_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-05-04T10:46:59Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 91,
+        "startChar": 13,
+        "endLine": 91,
+        "endChar": 35
+      },
+      "revId": "b40d7864c8796a81725d29b4e12ac3b48877760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b13ee137_da9cb3b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_resolution_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-05-04T10:46:59Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 102,
+        "startChar": 13,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "b40d7864c8796a81725d29b4e12ac3b48877760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
