@@ -28,8 +28,9 @@ func init() {
 		SoftwareDeps: []string{"chrome", "ondevice_handwriting"},
 		Attr:         []string{"group:mainline", "informational"}, // TODO(qjw): Remove "informational" once crbug.com/1199053 is fixed.
 		Data: []string{
-			"web_handwriting_recognition_drawing_abc.html",
+			"web_handwriting_recognition.html",
 			"web_handwriting_recognition_drawing_abc.json",
+			"web_handwriting_recognition_drawing_crossed_out.json",
 		},
 	})
 }
@@ -56,7 +57,7 @@ func WebHandwritingRecognition(ctx context.Context, s *testing.State) {
 	defer cr.Close(cleanupCtx)
 
 	// Open the test page.
-	conn, err := cr.NewConn(ctx, server.URL+"/web_handwriting_recognition_drawing_abc.html")
+	conn, err := cr.NewConn(ctx, server.URL+"/web_handwriting_recognition.html")
 	if err != nil {
 		s.Fatal("Failed to open test web page: ", err)
 	}
