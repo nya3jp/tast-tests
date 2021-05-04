@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6da433a_2a27de95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-04T05:06:24Z",
+      "side": 1,
+      "message": "LGTM. I\u0027d vote to chump this CL, and then set go/cros-broken-before for the relevant boards (namely volteer, nocturne, hatch and zork).",
+      "revId": "254004af4ee73e967154a9cb0834622f5d9cdbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
