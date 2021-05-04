@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8a444e6_0a87f323",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-04T21:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3f08a6d_951381df",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 12
+      },
+      "revId": "cd73017e5a9c46e67a2f5924878a19f531ca19e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae73f253_44603ab6",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f03be8bd_6506376f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-04T21:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae73f253_44603ab6",
+      "range": {
+        "startLine": 405,
+        "startChar": 23,
+        "endLine": 405,
+        "endChar": 39
+      },
+      "revId": "cd73017e5a9c46e67a2f5924878a19f531ca19e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a39846c_d8130b75",
@@ -60,6 +108,54 @@
       "writtenOn": "2021-05-04T15:52:57Z",
       "side": 1,
       "message": "This comment no longer makes sense. You can put something like \"Initializing entropy\" in the if statement and remove \"Entropy initialized\" here.",
+      "range": {
+        "startLine": 777,
+        "startChar": 1,
+        "endLine": 777,
+        "endChar": 74
+      },
+      "revId": "cd73017e5a9c46e67a2f5924878a19f531ca19e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7679f532_85ba313d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-04T21:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a39846c_d8130b75",
+      "range": {
+        "startLine": 777,
+        "startChar": 1,
+        "endLine": 777,
+        "endChar": 74
+      },
+      "revId": "cd73017e5a9c46e67a2f5924878a19f531ca19e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67521e51_32e39e59",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-04T21:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a39846c_d8130b75",
       "range": {
         "startLine": 777,
         "startChar": 1,
