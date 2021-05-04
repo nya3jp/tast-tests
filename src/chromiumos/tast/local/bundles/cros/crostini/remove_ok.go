@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/crostini/vmc"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/vmc"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/testing"

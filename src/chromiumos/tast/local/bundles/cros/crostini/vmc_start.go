@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/local/bundles/cros/crostini/vmc"
+	"chromiumos/tast/local/chrome/vmc"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
 )
