@@ -16,6 +16,24 @@
       "message": "nit: It will be good to capture the reason for the change either in a bug or in description for record.",
       "revId": "2d322a6c4ac787a96f68e436fa78654f53b0e70c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dedf214_1f55bdd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-05-04T06:44:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca6619f0_d33c5e31",
+      "revId": "2d322a6c4ac787a96f68e436fa78654f53b0e70c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
