@@ -343,10 +343,10 @@ func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 	}
 
 	// Start  logging on each DUT.
-	if _, err := f.sender.StartLogging(ctx, &empty.Empty{}); err != nil {
+	if _, err := f.sender.StartLogging(s.TestContext(), &empty.Empty{}); err != nil {
 		s.Error("Failed to save nearby share logs on the sender: ", err)
 	}
-	if _, err := f.receiver.StartLogging(ctx, &empty.Empty{}); err != nil {
+	if _, err := f.receiver.StartLogging(s.TestContext(), &empty.Empty{}); err != nil {
 		s.Error("Failed to save nearby share logs on the receiver: ", err)
 	}
 }

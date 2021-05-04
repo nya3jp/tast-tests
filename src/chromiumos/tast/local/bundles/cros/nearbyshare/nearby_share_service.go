@@ -17,7 +17,10 @@ import (
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
 	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -49,6 +52,7 @@ type NearbyService struct {
 	username        string
 	dataUsage       nearbysetup.DataUsage
 	visibility      nearbysetup.Visibility
+	btsnoopCmd      *testexec.Cmd
 }
 
 // NewChromeLogin logs into Chrome with Nearby Share flags enabled.
@@ -121,6 +125,11 @@ func (n *NearbyService) StartLogging(ctx context.Context, req *empty.Empty) (*em
 	testing.ContextLog(ctx, "Started logging chrome and message logs")
 	n.chromeReader = chromeReader
 	n.messageReader = messageReader
+
+	n.btsnoopCmd = bluetooth.StartBTSnoopLogging(ctx, filepath.Join(os.TempDir(), nearbycommon.BtsnoopLog))
+	if err := n.btsnoopCmd.Start(); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to start btmon")
+	}
 	return &empty.Empty{}, err
 }
 
@@ -138,6 +147,12 @@ func (n *NearbyService) SaveLogs(ctx context.Context, req *empty.Empty) (*empty.
 	}
 	if err = nearbytestutils.SaveLogs(ctx, n.messageReader, filepath.Join(nearbycommon.NearbyLogDir, nearbycommon.MessageLog)); err != nil {
 		testing.ContextLog(ctx, "Failed to save message log: ", err)
+	}
+	if err := n.btsnoopCmd.Kill(); err != nil {
+		testing.ContextLog(ctx, "Failed to kill btmon command: ", err)
+	}
+	if err := fsutil.CopyFile(filepath.Join(os.TempDir(), nearbycommon.BtsnoopLog), filepath.Join(nearbycommon.NearbyLogDir, nearbycommon.BtsnoopLog)); err != nil {
+		testing.ContextLog(ctx, "Failed to save btsnoop log: ", err)
 	}
 	return &empty.Empty{}, err
 }
