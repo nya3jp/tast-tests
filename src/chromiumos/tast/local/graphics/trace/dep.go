@@ -5,6 +5,7 @@
 package trace
 
 import (
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing/hwdep"
 )
 
@@ -12,7 +13,7 @@ import (
 var modelAllowlist = []string{"atlas", "eve", "drallion", "nocturne"}
 
 // HwDepsStable is hardwareDeps condition that stable to run trace tests.
-var HwDepsStable = hwdep.D(hwdep.Model(modelAllowlist...))
+var HwDepsStable = hwdep.D(hwdep.Model(modelAllowlist...), crostini.CrostiniMinDiskSizeCond)
 
 // HwDepsUnstable is hardwareDeps condition that unstable to run trace tests.
-var HwDepsUnstable = hwdep.D(hwdep.SkipOnModel(modelAllowlist...))
+var HwDepsUnstable = hwdep.D(hwdep.SkipOnModel(modelAllowlist...), crostini.CrostiniMinDiskSizeCond)
