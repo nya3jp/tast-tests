@@ -181,6 +181,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1daf0425_3bec0a20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-04T01:07:09Z",
+      "side": 1,
+      "message": "Hi Shuhei, any feedback on my proposed solution? We are seeing more similar problems reported by partners (when they use a Google generated account which is never used before). I can remove the KeepState option at this time so partners can see the \"Welcome to your new account\" screen during login and manually click \"accept\" button. But this means for each CUJ, some setup procedures will have to be repeated between multiple iterations because state is not kept.",
+      "parentUuid": "5f6248b6_f2e02931",
+      "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9fa62b4_ee688dcf",
         "filename": "src/chromiumos/tast/local/chrome/option.go",
         "patchSetId": 1
