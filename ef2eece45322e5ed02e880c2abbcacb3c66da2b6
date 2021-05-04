@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df3d485_51b9bff0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_uprev.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-04T19:35:26Z",
+      "side": 1,
+      "message": "This fails with 500 error.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 154
+      },
+      "revId": "ef2eece45322e5ed02e880c2abbcacb3c66da2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4283cc_027a19a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_uprev.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-04T19:35:26Z",
+      "side": 1,
+      "message": "This Works.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 133
+      },
+      "revId": "ef2eece45322e5ed02e880c2abbcacb3c66da2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
