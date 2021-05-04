@@ -98,6 +98,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		// Make sure we are running new chrome UI when tablet mode is enabled by CUJ test.
 		// Remove this when new UI becomes default.
 		chrome.EnableFeatures("WebUITabStrip"),
+		chrome.KeepState(),
 		chrome.ARCSupported(),
 		chrome.GAIALogin(chrome.Creds{User: account, Pass: password}))
 	if err != nil {
