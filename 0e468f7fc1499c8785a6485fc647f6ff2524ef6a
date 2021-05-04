@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "247db9ee_0f3db48f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-04T22:46:43Z",
+      "side": 1,
+      "message": "Nope, we can get rid of it now.",
+      "parentUuid": "8a739201_220cbff4",
+      "revId": "0e468f7fc1499c8785a6485fc647f6ff2524ef6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04c19371_d457c0dc",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcf31349_05a42a18",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbytestutils/nearbytestutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-04T22:46:43Z",
+      "side": 1,
+      "message": "Good catch, had to change os.Remove to os.RemoveAll after removing the `defer os.RemoveAll` from tests.",
+      "parentUuid": "04c19371_d457c0dc",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 43
+      },
+      "revId": "0e468f7fc1499c8785a6485fc647f6ff2524ef6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cc7d38f_9acd5dbf",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-05-04T18:40:49Z",
       "side": 1,
       "message": "Does this mean that each test within the same fixture needs to extract the test files again into Downloads at the start of the test run?",
+      "range": {
+        "startLine": 475,
+        "startChar": 27,
+        "endLine": 475,
+        "endChar": 45
+      },
+      "revId": "0e468f7fc1499c8785a6485fc647f6ff2524ef6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82ea57de_4ba83f2d",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-04T22:46:43Z",
+      "side": 1,
+      "message": "Yep, that\u0027s how we\u0027re currently doing it. If we want to move that into the fixture, we can have this skip nearbytestutils.SendDir so we just need to extract it once and leave it",
+      "parentUuid": "2cc7d38f_9acd5dbf",
       "range": {
         "startLine": 475,
         "startChar": 27,
