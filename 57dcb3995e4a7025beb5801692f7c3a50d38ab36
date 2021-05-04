@@ -97,6 +97,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19ba2405_f2b66591",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-04T06:47:32Z",
+      "side": 1,
+      "message": "You forgot to upload a new patch set (after marking comments as \"Done\").",
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a621512e_5c1ce66a",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
         "patchSetId": 1
@@ -126,6 +143,24 @@
       "side": 1,
       "message": "In what sense? I didn\u0027t know there is a procedure for that :/ \nShall I send an info to stability team, shall they be pulled into the review?",
       "parentUuid": "a621512e_5c1ce66a",
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b9f40b_2a958b4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-04T06:47:32Z",
+      "side": 1,
+      "message": "It is new type of test, you should check if it fits into their responsibilities.",
+      "parentUuid": "c1c1f9c8_28cc8ad2",
       "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -184,6 +219,24 @@
       "side": 1,
       "message": "it is just:\ngrep Starting\\\\ kiosk\\\\ mode /var/logs/messages\n\nAnd sure - I added a suitable comment.",
       "parentUuid": "0bacb86f_14d1acb6",
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbbffcbc_c914b083",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-04T06:47:32Z",
+      "side": 1,
+      "message": "So \"Starting\\ kiosk\\ mode\" is the one string you are looking for?\nOr \"\\ \" is an escape as well, and you are looking for \"Starting kiosk mode\"?\nIf so, it there a better way to escape spaces in grep?",
+      "parentUuid": "829632f3_5f4f65cc",
       "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
