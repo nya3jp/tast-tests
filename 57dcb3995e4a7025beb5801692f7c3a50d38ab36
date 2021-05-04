@@ -167,6 +167,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98157b16_61d7f1e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-04T12:31:49Z",
+      "side": 1,
+      "message": "I sent email asking about if that fits the team objectives.",
+      "parentUuid": "65b9f40b_2a958b4f",
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2c0b0c9_5d58362d",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
         "patchSetId": 1
