@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a739201_220cbff4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-04T18:40:49Z",
+      "side": 1,
+      "message": "I know we call this in some of the local tests\ndefer os.RemoveAll(nearbytestutils.SendDir)\n\nIs this needed now with this CL?",
+      "revId": "0e468f7fc1499c8785a6485fc647f6ff2524ef6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04c19371_d457c0dc",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbytestutils/nearbytestutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-04T18:40:49Z",
+      "side": 1,
+      "message": "This will work for nested paths too right? I think the files are in a subdir of Downloads",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 43
+      },
+      "revId": "0e468f7fc1499c8785a6485fc647f6ff2524ef6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cc7d38f_9acd5dbf",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-04T18:40:49Z",
+      "side": 1,
+      "message": "Does this mean that each test within the same fixture needs to extract the test files again into Downloads at the start of the test run?",
+      "range": {
+        "startLine": 475,
+        "startChar": 27,
+        "endLine": 475,
+        "endChar": 45
+      },
+      "revId": "0e468f7fc1499c8785a6485fc647f6ff2524ef6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
