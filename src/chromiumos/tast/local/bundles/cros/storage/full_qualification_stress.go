@@ -134,6 +134,8 @@ func setupBenchmarks(ctx context.Context, s *testing.State, rw *stress.FioResult
 	runFioStress(ctx, s, testConfig.WithPath(stress.BootDeviceFioPath).WithJob("seq_write"))
 	runFioStress(ctx, s, testConfig.WithPath(stress.BootDeviceFioPath).WithJob("seq_read"))
 	runFioStress(ctx, s, testConfig.WithPath(stress.BootDeviceFioPath).WithJob("4k_write"))
+	runFioStress(ctx, s, testConfig.WithPath(stress.BootDeviceFioPath).WithJob("4k_write_qd4"))
+	runFioStress(ctx, s, testConfig.WithPath(stress.BootDeviceFioPath).WithJob("4k_read_qd4"))
 	runFioStress(ctx, s, testConfig.WithPath(stress.BootDeviceFioPath).WithJob("4k_read"))
 	runFioStress(ctx, s, testConfig.WithPath(stress.BootDeviceFioPath).WithJob("16k_write"))
 	runFioStress(ctx, s, testConfig.WithPath(stress.BootDeviceFioPath).WithJob("16k_read"))
@@ -141,6 +143,8 @@ func setupBenchmarks(ctx context.Context, s *testing.State, rw *stress.FioResult
 	if testParam.isSlcEnabled {
 		// Run tests to collect metrics for Slc device.
 		runFioStress(ctx, s, testConfig.WithPath(testParam.slcDevice).WithJob("4k_write"))
+		runFioStress(ctx, s, testConfig.WithPath(stress.BootDeviceFioPath).WithJob("4k_write_qd4"))
+		runFioStress(ctx, s, testConfig.WithPath(stress.BootDeviceFioPath).WithJob("4k_read_qd4"))
 		runFioStress(ctx, s, testConfig.WithPath(testParam.slcDevice).WithJob("4k_read"))
 	}
 }
