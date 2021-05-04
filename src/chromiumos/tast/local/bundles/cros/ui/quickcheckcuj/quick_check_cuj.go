@@ -266,7 +266,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		// Switch windows to measure the responsiveness.
 		// Wait each window to finish loading (to see if the network connection works)
 		for idx, tab := range tabsInfo {
-			if err := uiActionHandler.SwitchWindow(ctx, idx, len(tabsInfo)); err != nil {
+			if err := uiActionHandler.SwitchToAppWindowByIndex(ctx, "Chrome", idx); err != nil {
 				return errors.Wrap(err, "failed to switch between windows")
 			}
 			if err := webutil.WaitForRender(ctx, tab.conn, 10*time.Second); err != nil {
