@@ -33,6 +33,23 @@
       "message": "Solved the problem. Thanks Victor.",
       "revId": "7bf9375787e7d264f75e8d45f3fe4cfd61c429e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b8eca2b_f8026d1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-04T09:02:15Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "7bf9375787e7d264f75e8d45f3fe4cfd61c429e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
