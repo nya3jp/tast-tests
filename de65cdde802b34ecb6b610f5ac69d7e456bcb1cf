@@ -16,6 +16,23 @@
       "message": "Mohamed as the owner of the original functionality with the old UI library.\nOleh as Tast reviewer.",
       "revId": "de65cdde802b34ecb6b610f5ac69d7e456bcb1cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3998704c_a6611fb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-04T15:14:01Z",
+      "side": 1,
+      "message": "I am against storing context inside struct, at least because it hides places where context is used. Check documentation:\nhttps://golang.org/pkg/context/\n\n```\nDo not store Contexts inside a struct type; instead, pass a Context explicitly to each function that needs it. The Context should be the first parameter, typically named ctx:\n```\n\nOf course there are some exceptions where we cannot avoid that, but I think this is not such case.\n\n\nWDYT about using functional options pattern instead?\nhttps://www.sohamkamani.com/golang/options-pattern/\n\nWe also can think about supporting multiple nodes verification when there will be such use case.",
+      "revId": "de65cdde802b34ecb6b610f5ac69d7e456bcb1cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
