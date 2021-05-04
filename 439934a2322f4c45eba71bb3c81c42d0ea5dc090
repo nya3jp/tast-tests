@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c52d5fa_3866df0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-04T15:03:16Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "93dfbef3_93c5f453",
+      "revId": "439934a2322f4c45eba71bb3c81c42d0ea5dc090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4e2e787_d239629d",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90391210_af5a8cf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_network_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-04T15:03:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4e2e787_d239629d",
+      "revId": "439934a2322f4c45eba71bb3c81c42d0ea5dc090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81b41b99_9b685267",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-05-04T14:51:45Z",
       "side": 1,
       "message": "Could you move this to just before L59?\nThen you can drop \"appendResultToFile\"s below.\n(I assume it is ok to record it, even for the success case).",
+      "revId": "439934a2322f4c45eba71bb3c81c42d0ea5dc090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dceb9f2_818b6f42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_network_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-04T15:03:16Z",
+      "side": 1,
+      "message": "Good suggestion, done.",
+      "parentUuid": "81b41b99_9b685267",
       "revId": "439934a2322f4c45eba71bb3c81c42d0ea5dc090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
