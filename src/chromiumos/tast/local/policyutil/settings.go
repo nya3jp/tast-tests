@@ -12,7 +12,78 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/checked"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
 )
+
+// nodeChecker is used in checking different properties of a node while collecting the error messages.
+type nodeChecker struct {
+	info *uiauto.NodeInfo
+	err  error
+}
+
+// SettingsState will open a settings page with given link (e.g. "chrome://settings/content/location").
+// Then it will find a node with the given params, and returns with the node info.
+// Different checks can be done on the return value.
+func SettingsState(ctx context.Context, cr *chrome.Chrome, settingsPage string, finder *nodewith.Finder) *nodeChecker {
+	var checker nodeChecker
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		checker.err = err
+		return &checker
+	}
+
+	conn, err := cr.NewConn(ctx, settingsPage)
+	if err != nil {
+		checker.err = err
+		return &checker
+	}
+	defer conn.Close()
+
+	uia := uiauto.New(tconn)
+	info, err := uia.Info(ctx, finder)
+	if err != nil {
+		checker.err = err
+		return &checker
+	}
+
+	checker.info = info
+	return &checker
+}
+
+// Restriction checks the restriction state of a Settings node given by the SettingsState() function.
+func (checker *nodeChecker) Restriction(expectedRestriction restriction.Restriction) *nodeChecker {
+	if checker.info == nil {
+		return checker
+	}
+
+	if checker.info.Restriction != expectedRestriction {
+		checker.err = errors.Wrapf(checker.err, "unexpected node restriction state; want %q, got %q", expectedRestriction, checker.info.Restriction)
+	}
+
+	return checker
+}
+
+// Checked checks the checked state of a Settings node given by the SettingsState() function.
+func (checker *nodeChecker) Checked(expectedChecked checked.Checked) *nodeChecker {
+	if checker.info == nil {
+		return checker
+	}
+
+	if checker.info.Checked != expectedChecked {
+		checker.err = errors.Wrapf(checker.err, "unexpected node checked state; want %q, got %q", expectedChecked, checker.info.Checked)
+	}
+
+	return checker
+}
+
+// Verify is the last element of the Settings state verifying.
+// It returns with the errors collected in the process.
+func (checker *nodeChecker) Verify() error {
+	return checker.err
+}
 
 // CheckNodeAttributes returns whether this node matches the given expected params.
 // It will return an error with the first non-matching attribute, nil otherwise.
