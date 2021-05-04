@@ -575,6 +575,23 @@ func (cl *ClamshellActionHandler) LaunchChrome(ctx context.Context) (time.Time, 
 	return LaunchAppFromShelf(ctx, cl.tconn, "Chrome", "Chromium")
 }
 
+func (cl *ClamshellActionHandler) clickChromeOnShelf(ctx context.Context) (time.Time, error) {
+	return LaunchAppFromShelf(ctx, cl.tconn, "Chrome", "Chromium")
+}
+
+func (cl *ClamshellActionHandler) clickOpenedAppOnShelf(ctx context.Context, appName string) (time.Time, error) {
+	icon, err := openedAppIconFinder(ctx, cl.tconn, appName)
+	if err != nil {
+		return time.Time{}, errors.Wrap(err, "failed to find window with name")
+	}
+	startTime := time.Now()
+	if err := cl.ui.LeftClick(icon)(ctx); err != nil {
+		return time.Time{}, errors.Wrap(err, "failed to tap app icon on hotseat")
+	}
+
+	return startTime, nil
+}
+
 // NewChromeTab creates a new tab of Google Chrome.
 // newWindow decide this new tab should open in current Chrome window or open in new Chrome window.
 func (cl *ClamshellActionHandler) NewChromeTab(ctx context.Context, cr *chrome.Chrome, url string, newWindow bool) (*chrome.Conn, error) {
@@ -611,25 +628,107 @@ func (cl *ClamshellActionHandler) SwitchWindow(ctx context.Context) error {
 // SwitchToAppWindow switches to the window of the given app.
 // If the APP has multiple windows, it will switch to the first window.
 func (cl *ClamshellActionHandler) SwitchToAppWindow(ctx context.Context, appName string) error {
-	return errors.New("to be implemented")
+	return cl.SwitchToAppWindowByIndex(ctx, appName, 0)
 }
 
 // SwitchToAppWindowByIndex switches to the specific window identified by the window index of the given APP.
 // It is used when the APP has multiple windows.
 func (cl *ClamshellActionHandler) SwitchToAppWindowByIndex(ctx context.Context, appName string, targetIdx int) error {
-	return errors.New("to be implemented")
+	testing.ContextLogf(ctx, "Switching to app window, by index (%d)", targetIdx)
+	// The first one (which is the name of the app) should be skipped.
+	menuItem := nodewith.ClassName("MenuItemView").Nth(targetIdx + 1)
+	return cl.switchToWindowThroughShelf(ctx, appName, menuItem)
 }
 
 // SwitchToAppWindowByName switches to the specific window identified by the window name of the given APP.
 // It is used when the APP has multiple windows.
 func (cl *ClamshellActionHandler) SwitchToAppWindowByName(ctx context.Context, appName, targetName string) error {
-	return errors.New("to be implemented")
+	testing.ContextLogf(ctx, "Switching to app %s window, by name (%s)", appName, targetName)
+	menuItem := nodewith.ClassName("MenuItemView").NameContaining(appName)
+	return cl.switchToWindowThroughShelf(ctx, appName, menuItem)
 }
 
 // SwitchToLRUWindow switches the window to LRU (Least Recently Used) one.
 // opt specifies the way of switching.
 func (cl *ClamshellActionHandler) SwitchToLRUWindow(ctx context.Context, opt SwitchWindowOption) error {
-	return errors.New("to be implemented")
+	msg := ""
+	switch opt {
+	case SwitchWindowThroughOverview:
+		testing.ContextLog(ctx, "Switching to LRU window, by overview")
+		return cl.switchToLRUWindowThroughOverview(ctx)
+	case SwitchWindowThroughKeyEvent:
+		testing.ContextLog(ctx, "Switching to app window, by key event")
+		ws, err := ash.GetAllWindows(ctx, cl.tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed get current windows")
+		}
+		return cl.switchToLRUWindowThroughKeyEvent(ctx, len(ws))
+	case SwitchWindowThroughShelf:
+		msg = "switch to LRU window through shelf not support for ClamshellActionHandler, please use SwitchWindowThroughOverview or SwitchWindowThroughKeyEvent instead"
+	}
+	return errors.New(msg)
+}
+
+// switchToWindowThroughShelf switch current focus window to another through shelf.
+func (cl *ClamshellActionHandler) switchToWindowThroughShelf(ctx context.Context, appName string, menuItemFinder *nodewith.Finder) error {
+	if strings.Contains(appName, "Chrome") || strings.Contains(appName, "Chromium") {
+		if _, err := cl.clickChromeOnShelf(ctx); err != nil {
+			return errors.Wrap(err, "failed to click Chrome app icon on shelf")
+		}
+	} else {
+		if _, err := cl.clickOpenedAppOnShelf(ctx, appName); err != nil {
+			return errors.Wrapf(err, "failed to click [%s] app icon on shelf", appName)
+		}
+	}
+
+	if err := cl.ui.LeftClick(menuItemFinder)(ctx); err != nil {
+		return errors.Wrap(err, "failed to tap app icon on shelf")
+	}
+
+	return nil
+}
+
+// switchToLRUWindowThroughKeyEvent switches current focus window to least recently used one through alt+tab.
+func (cl *ClamshellActionHandler) switchToLRUWindowThroughKeyEvent(ctx context.Context, numWindows int) error {
+	// No need to switch if there is only one window exist.
+	if numWindows <= 1 {
+		return nil
+	}
+
+	shortPause := func(ctx context.Context) error { return testing.Sleep(ctx, 200*time.Millisecond) }
+
+	actions := []action.Action{cl.kb.AccelPressAction("Alt")}
+	for i := 1; i < numWindows; i++ {
+		actions = append(actions,
+			shortPause,
+			cl.kb.AccelPressAction("Tab"),
+			shortPause,
+			cl.kb.AccelReleaseAction("Tab"),
+		)
+	}
+	actions = append(actions, cl.kb.AccelReleaseAction("Alt"))
+
+	return action.Combine("Alt-Tab", actions...)(ctx)
+}
+
+// switchToLRUWindowThroughOverview switches the window to least recently used one through overview.
+func (cl *ClamshellActionHandler) switchToLRUWindowThroughOverview(ctx context.Context) error {
+	// Ensure overview is shown.
+	if err := ash.SetOverviewModeAndWait(ctx, cl.tconn, true); err != nil {
+		return errors.Wrap(err, "failed to show overview")
+	}
+	// Ensure overview is hidden even if an error occur.
+	defer ash.SetOverviewModeAndWait(ctx, cl.tconn, false)
+
+	targetWindowFinder, err := overviewLRUWindowFinder(ctx, cl.ui)
+	if err != nil {
+		return errors.Wrap(err, "failed to get LRU window finder")
+	}
+
+	return uiauto.Combine("Click item on overview",
+		cl.ui.LeftClick(targetWindowFinder),
+		cl.ui.WaitUntilGone(targetWindowFinder),
+	)(ctx)
 }
 
 // SwitchChromeTab switches to the next Chrome tab.
@@ -640,12 +739,65 @@ func (cl *ClamshellActionHandler) SwitchChromeTab(ctx context.Context) error {
 
 // SwitchToChromeTabByIndex switches the Chrome tab from one to another through UI operation.
 func (cl *ClamshellActionHandler) SwitchToChromeTabByIndex(ctx context.Context, tabIdxDest int) error {
-	return errors.New("to be implemented")
+	testing.ContextLogf(ctx, "Switching to chrome tab, by index (%d)", tabIdxDest)
+	tabFinder := nodewith.Role(role.Tab).ClassName("Tab").Nth(tabIdxDest)
+	return cl.switchChromeTab(ctx, tabFinder)
 }
 
 // SwitchToChromeTabByName switches the Chrome tab from one to another through UI operation.
 func (cl *ClamshellActionHandler) SwitchToChromeTabByName(ctx context.Context, tabNameDest string) error {
-	return errors.New("to be implemented")
+	testing.ContextLogf(ctx, "Switching Chrome tab, by name (%s)", tabNameDest)
+	tabFinder := nodewith.NameContaining(tabNameDest).First().Role(role.Tab)
+	return cl.switchChromeTab(ctx, tabFinder)
+}
+
+// switchChromeTab switches the Chrome tab from one to another in the current active chrome window.
+func (cl *ClamshellActionHandler) switchChromeTab(ctx context.Context, tabFinder *nodewith.Finder) error {
+	// findActiveChromeWindowAndClickTab finds the current active Chrome window, uses its title to match
+	// the ui node, and then clicks the tab inside this node.
+	// The function will fail if the window title changes during the process. So We'll using testing.Poll()
+	// to run this function until it succeeds.
+	findActiveChromeWindowAndClickTab := func(ctx context.Context) error {
+		w, err := ash.FindWindow(ctx, cl.tconn, func(w *ash.Window) bool {
+			return w.IsActive && w.IsFrameVisible
+		})
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get current active window"))
+		}
+		if w.Name != "BrowserFrame" {
+			return testing.PollBreak(errors.New("active window is not a browser"))
+		}
+
+		testing.ContextLog(ctx, "Current chrome window title: ", w.Title)
+		windowNode := nodewith.Name(w.Title).Role(role.Window).ClassName("BrowserFrame")
+		infos, err := cl.ui.NodesInfo(ctx, windowNode)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get window nodes info"))
+		}
+		if len(infos) == 0 {
+			return errors.Errorf("cannot find a chrome window with title %q", w.Title)
+		} else if len(infos) > 1 {
+			// There are more than one chrome windows with the same name.
+			// Use location to determine the active one.
+			found := false
+			for i, info := range infos {
+				if w.BoundsInRoot.Contains(info.Location) {
+					windowNode = windowNode.Nth(i)
+					found = true
+					break
+				}
+			}
+			if !found {
+				return errors.Errorf("cannot find an active chrome window with title %q", w.Title)
+			}
+		}
+
+		tabList := nodewith.ClassName("TabStripRegionView").Role(role.TabList).Ancestor(windowNode)
+		tabFinder = tabFinder.Ancestor(tabList)
+		// Click the target to switch to that tab, with a shorter timeout.
+		return cl.ui.WithTimeout(5 * time.Second).LeftClick(tabFinder)(ctx)
+	}
+	return testing.Poll(ctx, findActiveChromeWindowAndClickTab, &defaultPollOpt)
 }
 
 // RefreshChromePage refresh a web page (current focus page).
