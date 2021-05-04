@@ -629,6 +629,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6dbcb1aa_159d04cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-04T16:00:40Z",
+      "side": 1,
+      "message": "expected found log is one line. Worst cases:\n- testexec.CommandEcontext returns way more than just grep output\n- grep picks up way more than it should\n\nWhat alternative would you propose?",
+      "parentUuid": "746424c0_16cc0027",
+      "range": {
+        "startLine": 119,
+        "startChar": 138,
+        "endLine": 119,
+        "endChar": 144
+      },
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f39dcac7_ee14118a",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
         "patchSetId": 1
