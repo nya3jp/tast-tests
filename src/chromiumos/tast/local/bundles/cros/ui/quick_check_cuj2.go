@@ -26,7 +26,7 @@ func init() {
 		Func:         QuickCheckCUJ2,
 		Desc:         "Measures the system performance after login or wakeup by checking common apps",
 		Contacts:     []string{"xliu@cienet.com", "hc.tsai@cienet.com", "alfredyu@cienet.com"},
-		SoftwareDeps: []string{"chrome", "wifi"},
+		SoftwareDeps: []string{"chrome", "arc", "wifi"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      "loggedInAndKeepState",
 		Vars: []string{
