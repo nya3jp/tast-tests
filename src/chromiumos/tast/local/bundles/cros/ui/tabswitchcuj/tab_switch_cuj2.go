@@ -453,19 +453,17 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, targets *[]*chromeW
 
 	for idx, window := range windows {
 		testing.ContextLogf(ctx, "Switching to window #%d", idx+1)
-		if err := tsAction.SwitchWindow(ctx, idx, len(windows)); err != nil {
+		if err := tsAction.SwitchToAppWindowByIndex(ctx, "Chrome", idx); err != nil {
 			return errors.Wrap(err, "failed to switch window: ")
 		}
 
 		tabTotalNum := len(window.tabs)
-		tabIdxPre := tabTotalNum - 1 // Last tab is still active.
 		for tabIdx := 0; tabIdx < tabTotalNum; tabIdx++ {
 			testing.ContextLogf(ctx, "Switching tab to window %d, tab %d", idx+1, tabIdx+1)
 
-			if err := tsAction.SwitchChromeTab(ctx, tabIdxPre, tabIdx, tabTotalNum); err != nil {
+			if err := tsAction.SwitchToChromeTabByIndex(ctx, tabIdx); err != nil {
 				return errors.Wrap(err, "failed to switch tab")
 			}
-			tabIdxPre = tabIdx
 			tab := window.tabs[tabIdx]
 
 			timeStart := time.Now()
