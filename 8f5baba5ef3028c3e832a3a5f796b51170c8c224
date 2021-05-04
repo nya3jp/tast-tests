@@ -69,6 +69,30 @@
       },
       "revId": "8f5baba5ef3028c3e832a3a5f796b51170c8c224",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4f0de93_ce871f46",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-04T23:13:53Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem to work from what I\u0027ve tried:\nhttps://paste.googleplex.com/6454785176764416\n\nI think StartLogging and SaveLogs work fine because they don\u0027t rely on the passed context persisting after they\u0027re called. Since btmon is blocking, we need to start it with a context that stays alive for the duration of the test, otherwise it ends early and doesn\u0027t save anything. I can\u0027t figure out how to get that working with the service, passing in the TestContext doesn\u0027t work as I\u0027d expect it to.",
+      "parentUuid": "c7959981_d42d8239",
+      "range": {
+        "startLine": 355,
+        "startChar": 11,
+        "endLine": 355,
+        "endChar": 52
+      },
+      "revId": "8f5baba5ef3028c3e832a3a5f796b51170c8c224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
