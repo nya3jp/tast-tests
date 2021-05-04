@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94e3e98c_95384e2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_resolution_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-04T11:31:53Z",
+      "side": 1,
+      "message": "Good point!",
+      "parentUuid": "085dc8b2_47cd2993",
+      "range": {
+        "startLine": 67,
+        "startChar": 13,
+        "endLine": 67,
+        "endChar": 35
+      },
+      "revId": "b40d7864c8796a81725d29b4e12ac3b48877760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73c86d84_03b60a13",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d29035cd_31ae8ba1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_resolution_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-04T11:31:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73c86d84_03b60a13",
+      "range": {
+        "startLine": 91,
+        "startChar": 13,
+        "endLine": 91,
+        "endChar": 35
+      },
+      "revId": "b40d7864c8796a81725d29b4e12ac3b48877760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b13ee137_da9cb3b3",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-05-04T10:46:59Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 102,
+        "startChar": 13,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "b40d7864c8796a81725d29b4e12ac3b48877760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c6766e8_8921bae7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_resolution_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-04T11:31:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b13ee137_da9cb3b3",
       "range": {
         "startLine": 102,
         "startChar": 13,
