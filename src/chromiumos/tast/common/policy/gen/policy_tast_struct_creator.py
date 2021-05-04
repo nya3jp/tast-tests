@@ -326,11 +326,13 @@ class Reference(object):
 
 class Policy(object):
   """Class representing a single policy, used with POLICY_TEMPLATE."""
-  def __init__(self, p, device_field_lookup):
+  def __init__(self, p, device_field_lookup, one_to_many):
     # name: Name of this policy as defined in policy_templates.
     self.name = p['name']
     # id: Id number of this policy as defined in policy_templates.
     self.id = p['id']
+    # one_to_many: Indicates whether this is a legacy one_to_many policy.
+    self.one_to_many = one_to_many
     # cros_supported: Whether the policy is currently supported on Chrome OS.
     self.cros_supported = False
     for elt in p['supported_on']:
@@ -590,10 +592,18 @@ def main():
   device_field_lookup = pt_contents['device_policy_proto_map']
   # Save legacy field values. Note: this implementation won't work with any
   # "one-to-many" legacy device policy field names. Only the last is used.
+  # one_to_many_policies is used to ignore unsupported policies.
+  one_to_many_policies = set()
+  one_to_many_count = set()
   for [legacy, val] in pt_contents['legacy_device_policy_proto_map']:
-    if not legacy:
+    if not legacy or not val:
       # Discard unknown/invalid fields which are noted as '' in this list.
       continue
+    if legacy in one_to_many_count:
+      one_to_many_policies.add(legacy)
+      continue
+
+    one_to_many_count.add(legacy)
     device_field_lookup[legacy] = val
   schema_ids = {}
 
@@ -604,7 +614,8 @@ def main():
     if pt.get('type') == 'group':
       continue
     try:
-      policies.append(Policy(pt, device_field_lookup))
+      one_to_many = pt['name'] in one_to_many_policies
+      policies.append(Policy(pt, device_field_lookup, one_to_many))
     except KeyError as e:
       errors.append('{}: {}'.format(pt['name'], e))
 
@@ -619,6 +630,8 @@ def main():
   supported_policies_by_id = {}
   for p in policies:
     if not p.cros_supported:
+      continue
+    if p.one_to_many:
       continue
     try:
       p.generate_code(schema_ids)

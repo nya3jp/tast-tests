@@ -7126,41 +7126,6 @@ func (p *NativePrinters) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 351. NetworkThrottlingEnabled
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type NetworkThrottlingEnabled struct {
-	Stat Status
-	Val  *NetworkThrottlingEnabledValue
-}
-
-type NetworkThrottlingEnabledValue struct {
-	DownloadRateKbits int  `json:"download_rate_kbits"`
-	Enabled           bool `json:"enabled"`
-	UploadRateKbits   int  `json:"upload_rate_kbits"`
-}
-
-func (p *NetworkThrottlingEnabled) Name() string          { return "NetworkThrottlingEnabled" }
-func (p *NetworkThrottlingEnabled) Field() string         { return "network_throttling.download_rate_kbits" }
-func (p *NetworkThrottlingEnabled) Scope() Scope          { return ScopeDevice }
-func (p *NetworkThrottlingEnabled) Status() Status        { return p.Stat }
-func (p *NetworkThrottlingEnabled) UntypedV() interface{} { return p.Val }
-func (p *NetworkThrottlingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v *NetworkThrottlingEnabledValue
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as *NetworkThrottlingEnabledValue", m)
-	}
-	return v, nil
-}
-func (p *NetworkThrottlingEnabled) Equal(iface interface{}) bool {
-	v, ok := iface.(*NetworkThrottlingEnabledValue)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 352. QuickUnlockModeWhitelist
 // This policy has a default value of [].
 // This policy can be modified without rebooting.
@@ -7633,41 +7598,6 @@ func (p *NoteTakingAppsLockScreenWhitelist) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 380. DeviceOffHours
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type DeviceOffHours struct {
-	Stat Status
-	Val  *DeviceOffHoursValue
-}
-
-type DeviceOffHoursValue struct {
-	IgnoredPolicyProtoTags []int                     `json:"ignored_policy_proto_tags"`
-	Intervals              []*RefWeeklyTimeIntervals `json:"intervals"`
-	Timezone               string                    `json:"timezone"`
-}
-
-func (p *DeviceOffHours) Name() string          { return "DeviceOffHours" }
-func (p *DeviceOffHours) Field() string         { return "device_off_hours.ignored_policy_proto_tags" }
-func (p *DeviceOffHours) Scope() Scope          { return ScopeDevice }
-func (p *DeviceOffHours) Status() Status        { return p.Stat }
-func (p *DeviceOffHours) UntypedV() interface{} { return p.Val }
-func (p *DeviceOffHours) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v *DeviceOffHoursValue
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as *DeviceOffHoursValue", m)
-	}
-	return v, nil
-}
-func (p *DeviceOffHours) Equal(iface interface{}) bool {
-	v, ok := iface.(*DeviceOffHoursValue)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 382. NativePrintersBulkConfiguration
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -7909,43 +7839,6 @@ func (p *DeviceNativePrintersWhitelist) UnmarshalAs(m json.RawMessage) (interfac
 }
 func (p *DeviceNativePrintersWhitelist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 390. TPMFirmwareUpdateSettings
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type TPMFirmwareUpdateSettings struct {
-	Stat Status
-	Val  *TPMFirmwareUpdateSettingsValue
-}
-
-type TPMFirmwareUpdateSettingsValue struct {
-	AllowUserInitiatedPowerwash           bool `json:"allow-user-initiated-powerwash"`
-	AllowUserInitiatedPreserveDeviceState bool `json:"allow-user-initiated-preserve-device-state"`
-	AutoUpdateMode                        int  `json:"auto-update-mode"`
-}
-
-func (p *TPMFirmwareUpdateSettings) Name() string { return "TPMFirmwareUpdateSettings" }
-func (p *TPMFirmwareUpdateSettings) Field() string {
-	return "tpm_firmware_update_settings.allow_user_initiated_preserve_device_state"
-}
-func (p *TPMFirmwareUpdateSettings) Scope() Scope          { return ScopeDevice }
-func (p *TPMFirmwareUpdateSettings) Status() Status        { return p.Stat }
-func (p *TPMFirmwareUpdateSettings) UntypedV() interface{} { return p.Val }
-func (p *TPMFirmwareUpdateSettings) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v *TPMFirmwareUpdateSettingsValue
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as *TPMFirmwareUpdateSettingsValue", m)
-	}
-	return v, nil
-}
-func (p *TPMFirmwareUpdateSettings) Equal(iface interface{}) bool {
-	v, ok := iface.(*TPMFirmwareUpdateSettingsValue)
 	if !ok {
 		return ok
 	}
