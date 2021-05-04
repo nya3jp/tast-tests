@@ -8,8 +8,11 @@ import (
 	"context"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -36,26 +39,26 @@ func PasswordManagerEnabled(ctx context.Context, s *testing.State) {
 
 	for _, param := range []struct {
 		name            string
-		wantRestriction ui.RestrictionState            // wantRestriction is the wanted restriction state of the toggle button for the "Offer to save password" option.
-		wantChecked     ui.CheckedState                // wantChecked is the wanted checked state of the toggle button for the "Offer to save password" option.
+		wantRestriction restriction.Restriction        // wantRestriction is the wanted restriction state of the toggle button for the "Offer to save password" option.
+		wantChecked     checked.Checked                // wantChecked is the wanted checked state of the toggle button for the "Offer to save password" option.
 		value           *policy.PasswordManagerEnabled // value is the value of the policy.
 	}{
 		{
 			name:            "unset",
-			wantRestriction: ui.RestrictionNone,
-			wantChecked:     ui.CheckedStateTrue,
+			wantRestriction: restriction.None,
+			wantChecked:     checked.True,
 			value:           &policy.PasswordManagerEnabled{Stat: policy.StatusUnset},
 		},
 		{
 			name:            "forced",
-			wantRestriction: ui.RestrictionDisabled,
-			wantChecked:     ui.CheckedStateTrue,
+			wantRestriction: restriction.Disabled,
+			wantChecked:     checked.True,
 			value:           &policy.PasswordManagerEnabled{Val: true},
 		},
 		{
 			name:            "deny",
-			wantRestriction: ui.RestrictionDisabled,
-			wantChecked:     ui.CheckedStateFalse,
+			wantRestriction: restriction.Disabled,
+			wantChecked:     checked.False,
 			value:           &policy.PasswordManagerEnabled{Val: false},
 		},
 	} {
@@ -73,18 +76,10 @@ func PasswordManagerEnabled(ctx context.Context, s *testing.State) {
 			}
 
 			// Open the password settings page where the affected toggle button can be found.
-			if err := policyutil.VerifySettingsState(ctx, cr, "chrome://settings/passwords",
-				ui.FindParams{
-					Role: ui.RoleTypeToggleButton,
-					Name: "Offer to save passwords",
-				},
-				ui.FindParams{
-					Attributes: map[string]interface{}{
-						"restriction": param.wantRestriction,
-						"checked":     param.wantChecked,
-					},
-				},
-			); err != nil {
+			if err := policyutil.SettingsState(ctx, cr,
+				"chrome://settings/passwords",
+				nodewith.Name("Offer to save passwords").Role(role.ToggleButton),
+			).Restriction(param.wantRestriction).Checked(param.wantChecked).Verify(); err != nil {
 				s.Error("Unexpected settings state: ", err)
 			}
 		})
