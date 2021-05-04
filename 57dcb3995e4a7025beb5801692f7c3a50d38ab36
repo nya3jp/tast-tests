@@ -130,6 +130,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da3db82e_91671d55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-04T15:52:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba6fe8c7_ba0edc7c",
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a621512e_5c1ce66a",
@@ -411,6 +429,24 @@
       "side": 1,
       "message": "What happens if you don\u0027t escape the spaces at all? testexec.CommandContext() might do it for you. I mean\n\u003e  const kioskStarting \u003d \"Starting kiosk mode\"",
       "parentUuid": "f1c7df7f_09235cbf",
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3692a7ae_ca67fde5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-04T15:52:42Z",
+      "side": 1,
+      "message": "Checked - executed grep command in the test does not look for the whole phrase. That causes false negatives.",
+      "parentUuid": "437f1ec9_ac690ec6",
       "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
