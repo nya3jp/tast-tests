@@ -27,7 +27,7 @@ func init() {
 			"tomhughes@chromium.org",
 			"chromeos-fingerprint@google.com",
 		},
-		Attr:         []string{"group:mainline", "group:fingerprint-cq"},
+		Attr:         []string{"group:mainline", "group:fingerprint-cq", "informational"},
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
 		ServiceDeps:  []string{"tast.cros.platform.UpstartService", dutfs.ServiceName},
