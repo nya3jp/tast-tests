@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "534963cf_c97cedce",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-04T13:23:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "994da5b6_0edb9bd6",
+      "range": {
+        "startLine": 30,
+        "startChar": 80,
+        "endLine": 30,
+        "endChar": 117
+      },
+      "revId": "0ab66e6d626a3a43c96a8b70e4d96231e9979238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b82fe3d_e8156b8c",
