@@ -56,6 +56,30 @@
       },
       "revId": "c280ec5eaddc343e1d296f5dd8cd933a1ae1e4e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e655c16c_e117b016",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_insession.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-05-04T20:58:02Z",
+      "side": 1,
+      "message": "I don\u0027t think so. There\u0027s nothing on the server side that associates this Family Link and EDU account together. That\u0027s why if the FL user logs into a different device, they have to add the EDU secondary account again. This relationship only temporarily exists on the client side, which is only detectable by looking at the UI on the account settings page.",
+      "parentUuid": "7c02ff55_7be709fc",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 2
+      },
+      "revId": "c280ec5eaddc343e1d296f5dd8cd933a1ae1e4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
