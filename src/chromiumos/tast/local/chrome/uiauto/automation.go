@@ -467,6 +467,29 @@ func (ac *Context) LeftClickUntil(finder *nodewith.Finder, condition func(contex
 	}
 }
 
+// DoActionUntil returns a function that repeatedly does the given action until the condition returns no error.
+// It will try to do action once before it checks the condition.
+// It uses the polling options from the Context.
+func (ac *Context) DoActionUntil(action, condition Action) Action {
+	return func(ctx context.Context) error {
+		if err := action(ctx); err != nil {
+			return errors.Wrap(err, "failed to initially do action")
+		}
+		if err := testing.Sleep(ctx, ac.pollOpts.Interval); err != nil {
+			return err
+		}
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if err := condition(ctx); err != nil {
+				if err := action(ctx); err != nil {
+					return errors.Wrap(err, "failed to do action")
+				}
+				return errors.Wrap(err, "action has been done but condition is not met")
+			}
+			return nil
+		}, &ac.pollOpts)
+	}
+}
+
 // FocusAndWait returns a function that calls the focus() JS method of the found node.
 // This can be used to scroll to nodes which aren't currently visible, enabling them to be clicked.
 // The focus event is not instant, so an EventWatcher (watcher.go) is used to check its status.
