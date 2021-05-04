@@ -118,6 +118,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "671d00f6_e3720274",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_resolution_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-05-04T16:33:50Z",
+      "side": 1,
+      "message": "in that case it should remain lower case (e.g. non-exported functions). but I wasn\u0027t sure what is the reference of \"system-proxy\".",
+      "parentUuid": "dd54e94c_62959c1f",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 5
+      },
+      "revId": "e7faf92fb68ef2fc6b7bd3ade5020b96d508dc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4db2377e_7ad4482a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_resolution_service.go",
         "patchSetId": 3
