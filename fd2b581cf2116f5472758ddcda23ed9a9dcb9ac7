@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "718482ec_cf74a5bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-04T07:13:36Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "fd2b581cf2116f5472758ddcda23ed9a9dcb9ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15a6f4d9_314145b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/chrome_fast_ink.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-04T07:13:36Z",
+      "side": 1,
+      "message": "Just an idea to make the testing table shorter:\nYou could put this into a variable \"rotationsBy90\", and \"rotationsBy180\" for the other set.",
+      "range": {
+        "startLine": 53,
+        "startChar": 22,
+        "endLine": 58,
+        "endChar": 6
+      },
+      "revId": "fd2b581cf2116f5472758ddcda23ed9a9dcb9ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6b5ad01_5a514904",
@@ -50,6 +90,29 @@
       "side": 1,
       "message": "Yes, as discussed in\nhttps://chat.google.com/room/AAAA8PhtVqs/-KmvzcaQCoI",
       "parentUuid": "2d16a273_cd5a1f59",
+      "revId": "fd2b581cf2116f5472758ddcda23ed9a9dcb9ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ceb3aff_0e300848",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/chrome_fast_ink.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-04T07:13:36Z",
+      "side": 1,
+      "message": "nit: please add some short comment to the file, like \"Ensure we only have 1 window.\" for here.\n\nquestion: in the params.arc true branch, which call creates the window?",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 2
+      },
       "revId": "fd2b581cf2116f5472758ddcda23ed9a9dcb9ac7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
