@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2f3634_24bceaf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/password_manager_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-04T10:33:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81c70d82_6744eb3c",
+      "revId": "0ab66e6d626a3a43c96a8b70e4d96231e9979238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80687ed6_f7dd6ab7",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-05-04T09:58:47Z",
       "side": 1,
       "message": "Maybe nodeChecker.",
+      "revId": "0ab66e6d626a3a43c96a8b70e4d96231e9979238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa125bad_9e13a4b5",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-04T10:33:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80687ed6_f7dd6ab7",
       "revId": "0ab66e6d626a3a43c96a8b70e4d96231e9979238",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -60,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2368e59_586c4d7e",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-04T10:33:05Z",
+      "side": 1,
+      "message": "cr.NewConn() will be closed in SettingState(), and I don\u0027t know if that is a problem.\nSelectNode() would also need ctx, and cr or tconn. We either store it in NodeChecker, or get it from the input.",
+      "parentUuid": "64579380_72d6a9fa",
+      "range": {
+        "startLine": 30,
+        "startChar": 80,
+        "endLine": 30,
+        "endChar": 117
+      },
+      "revId": "0ab66e6d626a3a43c96a8b70e4d96231e9979238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b82fe3d_e8156b8c",
         "filename": "src/chromiumos/tast/local/policyutil/settings.go",
         "patchSetId": 1
@@ -71,6 +131,24 @@
       "writtenOn": "2021-05-04T09:58:47Z",
       "side": 1,
       "message": "nit: newline",
+      "revId": "0ab66e6d626a3a43c96a8b70e4d96231e9979238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9e91867_c570dcde",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-04T10:33:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b82fe3d_e8156b8c",
       "revId": "0ab66e6d626a3a43c96a8b70e4d96231e9979238",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +166,24 @@
       "writtenOn": "2021-05-04T09:58:47Z",
       "side": 1,
       "message": "nit: newline",
+      "revId": "0ab66e6d626a3a43c96a8b70e4d96231e9979238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a299ea98_081d66a8",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-04T10:33:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1dc3f56_b7646d22",
       "revId": "0ab66e6d626a3a43c96a8b70e4d96231e9979238",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
