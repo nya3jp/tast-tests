@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2864ff72_3cae5cfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-05-04T18:56:54Z",
+      "side": 1,
+      "message": "Note that the test has moved and the name has changed to `wifi.Driver`.\nThe path to the test is now src/chromiumos/tast/local/bundles/cros/wifi/driver.go.\n\nPlease update the change to align with the current source, and please update the TEST\u003d line.",
+      "revId": "d4408af7aa56289c59c1a92c9eaa1c667e207987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
