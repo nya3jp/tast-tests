@@ -16268,6 +16268,36 @@ func (p *NoteTakingAppsLockScreenAllowlist) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// 761. NearbyShareAllowed
+// This policy has a default value of False.
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type NearbyShareAllowed struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *NearbyShareAllowed) Name() string          { return "NearbyShareAllowed" }
+func (p *NearbyShareAllowed) Field() string         { return "" }
+func (p *NearbyShareAllowed) Scope() Scope          { return ScopeUser }
+func (p *NearbyShareAllowed) Status() Status        { return p.Stat }
+func (p *NearbyShareAllowed) UntypedV() interface{} { return p.Val }
+func (p *NearbyShareAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *NearbyShareAllowed) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // 762. PerAppTimeLimitsAllowlist
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -18188,6 +18218,7 @@ func (p *SharedArrayBufferUnrestrictedAccessAllowed) Equal(iface interface{}) bo
 
 ///////////////////////////////////////////////////////////////////////////////
 // 855. LacrosAvailability
+// This policy has a default value of lacros_disallowed.
 ///////////////////////////////////////////////////////////////////////////////
 type LacrosAvailability struct {
 	Stat Status
