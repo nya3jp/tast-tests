@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eff15e97_f362dd7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-04T07:25:43Z",
+      "side": 1,
+      "message": "Does the test work without this? This is the last usage of the old UI library in this test.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 4
+      },
+      "revId": "ed165f61ab6acf025edf23b67ad51db15282b555",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
