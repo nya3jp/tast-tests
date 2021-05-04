@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1ff3e01_87d747ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-04T13:50:15Z",
+      "side": 1,
+      "message": "Mohamed as the owner of the original functionality with the old UI library.\nOleh as Tast reviewer.",
+      "revId": "de65cdde802b34ecb6b610f5ac69d7e456bcb1cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
