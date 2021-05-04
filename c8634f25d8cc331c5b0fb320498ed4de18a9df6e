@@ -16,6 +16,23 @@
       "message": "friendly ping stevensd@",
       "revId": "c8634f25d8cc331c5b0fb320498ed4de18a9df6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ef9a9ef_f597cd5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-04T20:22:28Z",
+      "side": 1,
+      "message": "Removing stevensd@ because OOO. Adding gredelston@",
+      "revId": "c8634f25d8cc331c5b0fb320498ed4de18a9df6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
