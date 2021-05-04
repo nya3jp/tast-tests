@@ -29,13 +29,16 @@ var defaultPollOpts = &testing.PollOptions{Timeout: 10 * time.Second, Interval: 
 const urlPrefix = "chrome://os-settings/"
 
 // WindowFinder is the finder for the Settings window.
-var WindowFinder *nodewith.Finder = nodewith.NameStartingWith("Settings").Role(role.Window).First()
+var WindowFinder *nodewith.Finder = nodewith.MultilingualNameStartingWith("Settings", map[string]string{"de": "Einstellungen"}).
+	Role(role.Window).First()
 
 // SearchBoxFinder is the finder for the search box in the settings app.
-var SearchBoxFinder = nodewith.Name("Search settings").Role(role.SearchBox).Ancestor(WindowFinder)
+var SearchBoxFinder = nodewith.MultilingualName("Search settings", map[string]string{"de": "In Einstellungen suchen"}).
+	Role(role.SearchBox).Ancestor(WindowFinder)
 
 // AboutChromeOS is a subpage link.
-var AboutChromeOS = nodewith.Name("About Chrome OS").Role(role.Link)
+var AboutChromeOS = nodewith.MultilingualName("About Chrome OS", map[string]string{"de": "Über Chrome OS"}).
+	Role(role.Link)
 
 // OSSettings represents an instance of the Settings app.
 type OSSettings struct {

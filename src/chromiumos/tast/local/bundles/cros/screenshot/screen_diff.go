@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -41,60 +42,66 @@ func expectError(err error, expectation string) error {
 	return nil
 }
 
+func screenshotSettingsSearchBox(ctx context.Context, cr *chrome.Chrome, d screenshot.Differ) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+	if _, err := ossettings.Launch(ctx, tconn); err != nil {
+		return err
+	}
+	ui := uiauto.New(tconn)
+	return uiauto.Combine("open about and take screenshot",
+		// Ensure that the focus is no longer on the search box. Otherwise, the flashing mouse cursor could be a problem.
+		ui.LeftClick(ossettings.AboutChromeOS),
+		// By the time the new page has loaded, we can assume that the searchbox has lost focus.
+		ui.WaitForLocation(ossettings.AboutChromeOS.Role(role.Heading)),
+		d.Diff("settingssearchbox", ossettings.SearchBoxFinder))(ctx)
+}
+
 func ScreenDiff(ctx context.Context, s *testing.State) {
-	launcher := nodewith.ClassName("ash/HomeButton")
-	searchBox := nodewith.ClassName("SearchBoxView").Role(role.Group)
-
 	// The defer in the SingleConfigDiffer needs to happen before the multiconfigdiffer starts.
-	func() {
-		d, _, err := screenshot.NewDiffer(ctx, s)
-		if err != nil {
-			s.Fatal("Failed to initialize differ: ", err)
-		}
-		defer d.DieOnFailedDiffs()
+	d, cr, err := screenshot.NewDiffer(ctx, s)
+	if err != nil {
+		s.Fatal("Failed to initialize differ: ", err)
+	}
 
-		if err := expectError(
-			d.DiffWithOptions("nomatches", nodewith.ClassName("MissingClassName"), screenshot.DiffTestOptions{Timeout: 500 * time.Millisecond})(ctx),
-			"failed to find node"); err != nil {
-			s.Fatal("diffing with no matching elements succeeded: ", err)
-		}
-		if err := expectError(
-			d.DiffWithOptions("multiplematches", nodewith.ClassName("FrameCaptionButton"), screenshot.DiffTestOptions{Timeout: 500 * time.Millisecond})(ctx),
-			"failed to find node"); err != nil {
-			s.Fatal("diffing with multiple matching elements succeeded: ", err)
-		}
+	if err := expectError(
+		d.DiffWithOptions("nomatches", nodewith.ClassName("MissingClassName"), screenshot.DiffTestOptions{Timeout: 500 * time.Millisecond})(ctx),
+		"failed to find node"); err != nil {
+		s.Fatal("diffing with no matching elements succeeded: ", err)
+	}
+	if err := expectError(
+		d.DiffWithOptions("multiplematches", nodewith.ClassName("FrameCaptionButton"), screenshot.DiffTestOptions{Timeout: 500 * time.Millisecond})(ctx),
+		"failed to find node"); err != nil {
+		s.Fatal("diffing with multiple matching elements succeeded: ", err)
+	}
 
-		if err := d.Diff("repeat", launcher)(ctx); err != nil {
-			s.Fatal("Failed to send diff: ", err)
-		}
+	if err := screenshotSettingsSearchBox(ctx, cr, d); err != nil {
+		s.Fatal("Failed to screenshot with single config: ", err)
+	}
 
-		if err := expectError(
-			d.Diff("repeat", launcher)(ctx),
-			"screenshot has already been taken"); err != nil {
-			s.Fatal("sending the same diff twice succeeded: ", err)
-		}
-	}()
+	if err := expectError(
+		screenshotSettingsSearchBox(ctx, cr, d),
+		"screenshot has already been taken"); err != nil {
+		s.Fatal("sending the same diff twice succeeded: ", err)
+	}
+
+	failedSingle := d.GetFailedDiffs()
 
 	// Unfortunately, it's not possible to test that images fail on gold, because
 	// gold would then comment on everyone's CLs saying that they failed this test.
-	if err := screenshot.DiffPerConfig(ctx, s, []screenshot.Config{
-		{Region: "us"},
-		{Region: "jp"},
-	}, func(d screenshot.Differ, cr *chrome.Chrome) {
-		tconn, err := cr.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Failed to create tconn: ", err)
+	failedMulti := screenshot.DiffPerConfig(ctx, s, []screenshot.Config{{Region: "de"}, {Region: "en"}}, func(d screenshot.Differ, cr *chrome.Chrome) {
+		if err := screenshotSettingsSearchBox(ctx, cr, d); err != nil {
+			s.Fatal("Failed to take screenshot with multiple configs: ", err)
 		}
-		ui := uiauto.New(tconn)
-		if err := uiauto.Combine("Take screenshots",
-			d.Diff("launcher", launcher),
-			ui.LeftClick(launcher),
-			ui.WaitForLocation(searchBox),
-			d.Diff("searchbox", searchBox),
-		)(ctx); err != nil {
-			s.Fatal("Failed to screenshot searchbox: ", err)
-		}
-	}); err != nil {
-		s.Fatal("Taking screenshots of launcher and searchbox failed: ", err)
+	})
+
+	if failedSingle != nil && failedMulti != nil {
+		s.Fatalf("Failed both single and multi-config diffs: single-config %s AND multi-config %s", failedSingle, failedMulti)
+	} else if failedSingle != nil {
+		s.Fatal("Failed single-config diffs: ", failedSingle)
+	} else if failedMulti != nil {
+		s.Fatal("Failed multi-config diffs: ", failedMulti)
 	}
 }

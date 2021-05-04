@@ -295,9 +295,8 @@ func (d *differ) GetFailedDiffs() error {
 	}
 
 	if len(d.failedTests) > 0 {
-		// Ignore the no newlines lint rule, because it makes it much easier to see what went wrong this way.
-		return errors.Errorf("failed screenshot tests:\n%s\n\n%s\n", // NOLINT
-			strings.Join(d.failedTests, "\n"), d.triage)
+		return errors.Errorf("failed screenshot tests: %s %s",
+			strings.Join(d.failedTests, " "), d.triage)
 	}
 	return nil
 }
