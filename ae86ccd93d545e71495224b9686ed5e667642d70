@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc85741f_e950f57e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-05-05T09:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90cb960b_dd4673f1",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "ae86ccd93d545e71495224b9686ed5e667642d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "329d6e24_af9402ef",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "From my understanding |Label string `json:\"label\"`| in |mediaDeviceInfo| should know how to marshall/unmarshall to the correct field.",
       "parentUuid": "f9ed1e51_369f442e",
+      "range": {
+        "startLine": 15,
+        "startChar": 2,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "ae86ccd93d545e71495224b9686ed5e667642d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a0ee624_e677f9b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-05-05T09:33:26Z",
+      "side": 1,
+      "message": "Looks like I can\u0027t unmarshall anything from mediaDeviceInfo.\nThe deviceId is also empty when I just return it.",
+      "parentUuid": "12dc8e93_e55196f6",
       "range": {
         "startLine": 15,
         "startChar": 2,

@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be8f316b_7b2ecb42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 17
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-05-05T09:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c1b8061_a73dc4cc",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 12,
+        "endChar": 45
+      },
+      "revId": "c5738eba8d29f0a59758b42b617475096e2bbb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdb0200f_2d66154e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89803520_02bc6f73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-05-05T09:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdb0200f_2d66154e",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "c5738eba8d29f0a59758b42b617475096e2bbb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50bdb32b_ea6b6116",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-05-05T05:32:49Z",
       "side": 1,
       "message": "Refactor this part to avoid using |reflect|.",
+      "range": {
+        "startLine": 201,
+        "startChar": 8,
+        "endLine": 201,
+        "endChar": 15
+      },
+      "revId": "c5738eba8d29f0a59758b42b617475096e2bbb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "386a509a_7b4367ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-05-05T09:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50bdb32b_ea6b6116",
       "range": {
         "startLine": 201,
         "startChar": 8,
