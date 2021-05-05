@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1e87de1_844f8f6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": "2021-05-05T20:37:04.934163Z [20:37:04.933] Stop Verification\n2021-05-05T20:37:04.934235Z [20:37:04.933] Iteration 1: Time\u003d20:36:27.455, Loss rate\u003d1.5\n2021-05-05T20:37:04.934274Z [20:37:04.933] Iteration 2: Time\u003d20:36:39.441, Loss rate\u003d3.8\n2021-05-05T20:37:04.934344Z [20:37:04.933] Iteration 3: Time\u003d20:36:53.043, Loss rate\u003d2.7\n2021-05-05T20:37:04.934370Z [20:37:04.933] Iteration 4: Time\u003d20:37:04.933, Loss rate\u003d2.4\n2021-05-05T20:37:04.934422Z [20:37:04.933] Total loss rate\u003d2% (104/4000)\n2\n\nMore complete logs sent by email.",
+      "parentUuid": "cdc61cef_c4ce2aea",
+      "revId": "4fa6d8bf4ea8a072d077f5a9ad1957dc970ea3a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "831d7961_03171f81",
