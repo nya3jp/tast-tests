@@ -16,6 +16,23 @@
       "message": "rebased the CL on ToT",
       "revId": "4e35a0afe1e80bde2e3e140333a227a9314858fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b46d4ce7_4017170d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-05T04:48:52Z",
+      "side": 1,
+      "message": "The CQ failure looks kind of strange. Tast couldn\u0027t reconnect to DUT but it seems to be reachable when collecting system logs after the task. I also don\u0027t notice any related logs in system logs when Tast failed to SSH into DUT.\n\nIn any case, the failure looks unrelated to this chain of CLs, so retry CQ.",
+      "revId": "4e35a0afe1e80bde2e3e140333a227a9314858fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
