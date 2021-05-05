@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af3180f6_8a72206b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/nested_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-05T04:39:13Z",
+      "side": 1,
+      "message": "cros-containers-dev?",
+      "range": {
+        "startLine": 21,
+        "startChar": 49,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "f86135cc785f45f7786c98f1960ad1d202c9f557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "128b6428_60d65fe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/nested_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-05T04:39:13Z",
+      "side": 1,
+      "message": "Check the result?",
+      "range": {
+        "startLine": 72,
+        "startChar": 47,
+        "endLine": 72,
+        "endChar": 50
+      },
+      "revId": "f86135cc785f45f7786c98f1960ad1d202c9f557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd52bdde_9720ce30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/nested_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-05T04:39:13Z",
+      "side": 1,
+      "message": "gcc is preinstalled in the image?",
+      "range": {
+        "startLine": 80,
+        "startChar": 44,
+        "endLine": 80,
+        "endChar": 47
+      },
+      "revId": "f86135cc785f45f7786c98f1960ad1d202c9f557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c400dbaf_8d3aa06a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/nested_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-05T04:39:13Z",
+      "side": 1,
+      "message": "Check the result?",
+      "range": {
+        "startLine": 80,
+        "startChar": 72,
+        "endLine": 80,
+        "endChar": 75
+      },
+      "revId": "f86135cc785f45f7786c98f1960ad1d202c9f557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
