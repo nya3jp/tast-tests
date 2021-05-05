@@ -149,6 +149,7 @@ func Scan(ctx context.Context, s *testing.State) {
 
 	for _, test := range tests {
 		s.Run(ctx, test.name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+test.name)
 			defer func() {
 				if err := scanning.RemoveScans(scanning.DefaultScanPattern); err != nil {
 					s.Error("Failed to remove scans: ", err)

@@ -91,7 +91,7 @@ func PhysicalKeyboardInputFields(ctx context.Context, s *testing.State) {
 
 	for _, subtest := range subtests {
 		s.Run(ctx, string(subtest.InputField), func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+string(subtest.InputField))
 			inputField := subtest.InputField
 
 			if err := its.ValidateInputOnField(inputField, subtest.InputFunc, subtest.ExpectedText)(ctx); err != nil {

@@ -99,7 +99,7 @@ func PhysicalKeyboardEnglishTyping(ctx context.Context, s *testing.State) {
 
 	for _, subtest := range subtests {
 		s.Run(ctx, subtest.TestName, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+subtest.TestName)
 
 			if err := its.ValidateInputOnField(inputField, subtest.InputFunc, subtest.ExpectedText)(ctx); err != nil {
 				s.Fatalf("Failed to validate %s: %v", subtest.TestName, err)

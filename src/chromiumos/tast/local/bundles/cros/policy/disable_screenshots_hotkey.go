@@ -81,7 +81,7 @@ func DisableScreenshotsHotkey(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+tc.name+".txt")
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+tc.name)
 
 			// Minimum interval between screenshot commands is 1 second, so we
 			// must sleep for 1 seconds to be able to take screenshot,
