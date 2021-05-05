@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc3e287f_fbbefe8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-05T03:52:33Z",
+      "side": 1,
+      "message": "Per WiFi team discussion, suite:wifi_matfunc is used as AVL test list. As this test is not a basic WiFi functional test, to avoid adding vendors\u0027 burden, we decide to create a new suite for the test running in Wificell fixture but not belongs to AVL test list. Will file an issue for this.\n\nHarpreet and Nicolas, shall we gate the CL until the suite is set, or it can go first then move to the proper suite later?",
+      "parentUuid": "b15c9889_04e4fa67",
+      "revId": "b01d175f9c62f6eebf64e9eabc3272e7d796be4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48b0f722_85078211",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_secure_wifi.go",
         "patchSetId": 5
