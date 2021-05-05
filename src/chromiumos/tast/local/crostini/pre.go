@@ -78,13 +78,18 @@ var UnstableModels = []string{
 	"nocturne",
 	// Platform octopus
 	"ampton",
+	"apel",
 	"bloog",
+	"bluebird",
 	"droid",
+	"fleex",
 	"foob",
 	"garg",
 	"laser14",
+	"mimrock",
 	"phaser360",
 	"sparky",
+	"vorticon",
 	"vortininja",
 	// Platform reef
 	"electro",
@@ -107,7 +112,7 @@ var UnstableModels = []string{
 // CrostiniMinDiskSizeCond is a hardware condition that only runs tests on models with > 12GB of disk size.
 // Crostini needs a minimum of 3GB of free space to install which is frequently not available on devices with 8GB
 // disks. For more see http://crbug.com/1039403
-var CrostiniMinDiskSizeCond = hwdep.MinStorage(12)
+var CrostiniMinDiskSizeCond = hwdep.MinStorage(16)
 
 // CrostiniStableCond is a hardware condition that only runs a test on models that can run Crostini tests without
 // known flakiness issues.
