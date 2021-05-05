@@ -35,8 +35,7 @@ type fastInkTestParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		// TODO(https://crbug.com/1070307): Rename to FastInk because this has tests for both Chrome and ARC++
-		Func:         ChromeFastInk,
+		Func:         FastInk,
 		Desc:         "Verifies that fast ink is working as evidenced by a hardware overlay",
 		Contacts:     []string{"amusbach@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -157,7 +156,7 @@ func init() {
 	})
 }
 
-func ChromeFastInk(ctx context.Context, s *testing.State) {
+func FastInk(ctx context.Context, s *testing.State) {
 	// Reserve ten seconds for various cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
