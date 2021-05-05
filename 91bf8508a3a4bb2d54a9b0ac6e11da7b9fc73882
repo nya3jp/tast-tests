@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3468620a_41ca4d94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-05T17:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47874d95_a71dd5d7",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "91bf8508a3a4bb2d54a9b0ac6e11da7b9fc73882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4b3e231_73cabe83",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-05T17:08:12Z",
       "side": 1,
       "message": "fix is now",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "91bf8508a3a4bb2d54a9b0ac6e11da7b9fc73882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae83e580_15d81b52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-05T17:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4b3e231_73cabe83",
       "range": {
         "startLine": 12,
         "startChar": 16,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3504fbae_0b5bef59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-05T17:42:31Z",
+      "side": 1,
+      "message": "entries to open in tracing is relative to Android root / rather than /opt/google/containers/android/rootfs/root/. Not 100% but probably something changed while ago.\nThat is why if we set filter /opt/google/containers/android/rootfs/root/* kernel just filters it out.",
+      "parentUuid": "cd8a9a93_72a0dd53",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "91bf8508a3a4bb2d54a9b0ac6e11da7b9fc73882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63a7f785_4b5134d7",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2021-05-05T17:08:12Z",
       "side": 1,
       "message": "was this CL verified on a VM DUT as well?",
+      "range": {
+        "startLine": 19,
+        "startChar": 39,
+        "endLine": 19,
+        "endChar": 44
+      },
+      "revId": "91bf8508a3a4bb2d54a9b0ac6e11da7b9fc73882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3fe7ac4_8dd22873",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-05T17:42:31Z",
+      "side": 1,
+      "message": "No, I think it is not required (I don\u0027t have handy build VM now to test). VM is broken similar way:\nhttps://tastboard.corp.google.com/test/arc.UreadaheadValidation.vm",
+      "parentUuid": "63a7f785_4b5134d7",
       "range": {
         "startLine": 19,
         "startChar": 39,
