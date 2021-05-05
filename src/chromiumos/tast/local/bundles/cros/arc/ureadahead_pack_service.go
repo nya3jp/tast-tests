@@ -177,10 +177,13 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 
 	if err := processFlags(resetFlag); err != nil {
 		return nil, errors.Wrap(err, "failed to reset ureadahead flag")
+<<<<<<< HEAD   (af8299 wifi.Reset: Align the test settings with Autotest and move t)
 	}
 
 	if err := ioutil.WriteFile("/sys/kernel/debug/tracing/trace", []byte(""), 0644); err != nil {
 		return nil, errors.Wrap(err, "failed to reset tracing buffer")
+=======
+>>>>>>> CHANGE (941511 arc: Fix ureadahed is generated almost empty)
 	}
 
 	logPath := filepath.Join(ureadaheadDataDir, logName)
@@ -233,6 +236,7 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		}
 	}()
 
+<<<<<<< HEAD   (af8299 wifi.Reset: Align the test settings with Autotest and move t)
 	if vmEnabled {
 		// In ARCVM we trace system and vendor images. They are mounted as block devices
 		// and normally they would not appear in tracing open requests.
@@ -248,6 +252,8 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		}
 	}
 
+=======
+>>>>>>> CHANGE (941511 arc: Fix ureadahed is generated almost empty)
 	// Opt in.
 	testing.ContextLog(ctx, "Waiting for ARC opt-in flow to complete")
 	if err := optin.Perform(ctx, cr, tconn); err != nil {
