@@ -34,6 +34,24 @@
       "parentUuid": "be6e7d65_063fac39",
       "revId": "a9a4dc48c70f46349d1d505e399c3e347e3f6f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "039ce54e_225b95bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-05T11:13:18Z",
+      "side": 1,
+      "message": "Ack.\nThat was my understanding as well.",
+      "parentUuid": "8a993cde_6f853bdc",
+      "revId": "a9a4dc48c70f46349d1d505e399c3e347e3f6f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
