@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47aaa328_8dacb27f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-05T13:39:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a84aaf22_97334bc6",
+      "range": {
+        "startLine": 40,
+        "startChar": 132,
+        "endLine": 40,
+        "endChar": 135
+      },
+      "revId": "0025026d8ae485f81cc80376e847a4b8a21bc1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f341e3a_17c7a458",
@@ -72,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61d3e32b_b0432994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-05T13:39:16Z",
+      "side": 1,
+      "message": "Policy data struct (DeviceLocalAccountInfo) uses *string (for a reason related to json - omitempty).\n\nInlining causes compilation error:\ncannot convert \"kioskAccountId\" (untyped string constant) to *string",
+      "parentUuid": "2bbfedf0_d88c6cb6",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 40
+      },
+      "revId": "0025026d8ae485f81cc80376e847a4b8a21bc1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b5b5a44d_b71690b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
         "patchSetId": 5
@@ -83,6 +131,30 @@
       "writtenOn": "2021-05-05T11:29:00Z",
       "side": 1,
       "message": "Same",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 49
+      },
+      "revId": "0025026d8ae485f81cc80376e847a4b8a21bc1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3dccc8b_3a50d085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-05T13:39:16Z",
+      "side": 1,
+      "message": "same as explained above",
+      "parentUuid": "b5b5a44d_b71690b4",
       "range": {
         "startLine": 63,
         "startChar": 1,
@@ -110,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d258b2d_0707d4d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-05T13:39:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f864060_12bb7146",
+      "revId": "0025026d8ae485f81cc80376e847a4b8a21bc1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7b8537d_329d3f81",
@@ -127,6 +217,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b8c01fa_faeb3082",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-05T13:39:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7b8537d_329d3f81",
+      "revId": "0025026d8ae485f81cc80376e847a4b8a21bc1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6024b5df_4eb578bf",
@@ -140,6 +248,30 @@
       "writtenOn": "2021-05-05T11:29:00Z",
       "side": 1,
       "message": "nit: either check Kiosk or check the Kiosk product",
+      "range": {
+        "startLine": 5,
+        "startChar": 42,
+        "endLine": 5,
+        "endChar": 61
+      },
+      "revId": "0025026d8ae485f81cc80376e847a4b8a21bc1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e35deea_a283ab88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-05T13:39:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6024b5df_4eb578bf",
       "range": {
         "startLine": 5,
         "startChar": 42,
