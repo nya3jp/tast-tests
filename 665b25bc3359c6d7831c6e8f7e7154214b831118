@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9f36793d_0caa97d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-05-05T12:07:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d04e894_f3332bb2",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "665b25bc3359c6d7831c6e8f7e7154214b831118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8a82b845_8b541604",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -116,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34c676af_6419d6a6",
+        "filename": "src/chromiumos/tast/remote/hwsec/tpm_clearer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-05-05T12:07:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "142e6d20_0c38f5d3",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "665b25bc3359c6d7831c6e8f7e7154214b831118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5067ff45_59fe51e1",
@@ -129,6 +177,30 @@
       "writtenOn": "2021-05-05T11:36:33Z",
       "side": 1,
       "message": "It is already a string.",
+      "range": {
+        "startLine": 81,
+        "startChar": 90,
+        "endLine": 81,
+        "endChar": 96
+      },
+      "revId": "665b25bc3359c6d7831c6e8f7e7154214b831118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4df3e03_7423ae3e",
+        "filename": "src/chromiumos/tast/remote/hwsec/tpm_clearer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-05-05T12:07:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5067ff45_59fe51e1",
       "range": {
         "startLine": 81,
         "startChar": 90,
