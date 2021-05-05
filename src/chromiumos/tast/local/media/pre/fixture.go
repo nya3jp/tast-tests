@@ -448,7 +448,10 @@ var chromeVModuleArgs = []string{
 	"--vmodule=" + strings.Join([]string{
 		"*/media/gpu/chromeos/*=2",
 		"*/media/gpu/vaapi/*=2",
-		"*/media/gpu/v4l2/*=2"}, ",")}
+		"*/media/gpu/v4l2/*=2"}, ","),
+	// Allow media autoplay.
+	"--autoplay-policy=no-user-gesture-required",
+}
 
 var chromeUseHWCodecsForSmallResolutions = []string{
 	// The Renderer video stack might have a policy of not using hardware
