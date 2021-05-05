@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6746a87_9cece038",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-05-05T22:21:53Z",
+      "side": 1,
+      "message": "The failure was unrelated\n\n\ntast-local-tests-cros-0.0.1-r6019: --- FAIL: TestLauncherParams (0.09s)\ntast-local-tests-cros-0.0.1-r6019:     launcher_test.go:62: launcher.go: Params is stale; run the following command to update:\ntast-local-tests-cros-0.0.1-r6019:         TAST_GENERATE_UPDATE\u003d1 ~/trunk/src/platform/tast/tools/go.sh test -count\u003d1 chromiumos/tast/local/bundles/cros/crostini\ntast-local-tests-cros-0.0.1-r6019: --- FAIL: TestParams (0.88s)\ntast-local-tests-cros-0.0.1-r6019:     params_test.go:76: no_shared_folder.go: Params is stale; run the following command to update:\ntast-local-tests-cros-0.0.1-r6019:         TAST_GENERATE_UPDATE\u003d1 ~/trunk/src/platform/tast/tools/go.sh test -count\u003d1 chromiumos/tast/local/bundles/cros/crostini\ntast-local-tests-cros-0.0.1-r6019:     params_test.go:76: verify_app_wayland.go: Params is stale; run the following command to update:\ntast-local-tests-cros-0.0.1-r6019:         TAST_GENERATE_UPDATE\u003d1 ~/trunk/src/platform/tast/tools/go.sh test -count\u003d1 chromiumos/tast/local/bundles/cros/crostini\ntast-local-tests-cros-0.0.1-r6019: --- FAIL: TestSecureCopyPasteParams (0.06s)\ntast-local-tests-cros-0.0.1-r6019:     secure_copy_paste_test.go:54: secure_copy_paste.go: Params is stale; run the following command to update:\ntast-local-tests-cros-0.0.1-r6019:         TAST_GENERATE_UPDATE\u003d1 ~/trunk/src/platform/tast/tools/go.sh test -count\u003d1 chromiumos/tast/local/bundles/cros/crostini\ntast-local-tests-cros-0.0.1-r6019: --- FAIL: TestToolkitParams (0.06s)\ntast-local-tests-cros-0.0.1-r6019:     toolkit_test.go:58: toolkit.go: Params is stale; run the following command to update:\ntast-local-tests-cros-0.0.1-r6019:         TAST_GENERATE_UPDATE\u003d1 ~/trunk/src/platform/tast/tools/go.sh test -count\u003d1 chromiumos/tast/local/bundles/cros/crostini\ntast-local-tests-cros-0.0.1-r6019: FAIL",
+      "revId": "55cdc637438542447dd7b7c25a0d3d2822495ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
