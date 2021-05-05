@@ -346,6 +346,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17756fc1_1927e39e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-05T03:42:51Z",
+      "side": 1,
+      "message": "I check the control file that triggers {\"group:wificell_roam\", \"wificell_roam_perf\"}: http://cs/chromeos_public/src/third_party/autotest/files/server/site_tests/tast/control.wificell-atten-roam-perf?l\u003d19\nIt uses suite:wifi_atten_roam_perf. However, I didn\u0027t see it in http://cs/chromeos_public/infra/suite_scheduler/generated_configs/suite_scheduler.ini (only suite:wifi_atten_perf). Jacek, as you are the user of wificell_roam, does that ever run in the lab?",
+      "parentUuid": "79357a57_702f39c1",
+      "range": {
+        "startLine": 32,
+        "startChar": 90,
+        "endLine": 32,
+        "endChar": 110
+      },
+      "revId": "bf79fb3f398e12feed3d73036b9c886fb4ff58d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "220c261a_358233d8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
         "patchSetId": 4

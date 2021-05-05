@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1eed022_18764d15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-05T03:42:51Z",
+      "side": 1,
+      "message": "One question regarding  suite:wifi_atten_roam_perf. It is not listed in suite_scheduler.ini.",
+      "revId": "52232c99401352a2c606b5fd3fcfa1353fbdd570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28896f0c_9f3e126d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-05T03:42:51Z",
+      "side": 1,
+      "message": "SetAttenuation()\n\nThough SetTotalAttenuation(0) would set the attenuator to no attenuation. But as Jacek described, if you want to set variable attenuator, just call SetAttneuation().",
+      "range": {
+        "startLine": 68,
+        "startChar": 24,
+        "endLine": 68,
+        "endChar": 43
+      },
+      "revId": "52232c99401352a2c606b5fd3fcfa1353fbdd570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78b74531_b24d0e98",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-05T03:42:51Z",
+      "side": 1,
+      "message": "If you use attenuator.SetAttenuation() in setAttenuation function, you can just call setAttenuation(0).\n\nMmm... but in line 146, it should set total attenuation. \n\nOne question, why we need to set four channel\u0027s at once in line 146?",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "52232c99401352a2c606b5fd3fcfa1353fbdd570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
