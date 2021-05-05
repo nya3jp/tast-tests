@@ -48,7 +48,9 @@ func (tc *TPMClearer) PreClearTPM(ctx context.Context) error {
 func (tc *TPMClearer) ClearTPM(ctx context.Context) error {
 	// Reset the flag of finished clearing.
 	if output, err := tc.cmdRunner.RunWithCombinedOutput(ctx, "crossystem", "clear_tpm_owner_done=0"); err != nil {
-		return errors.Wrapf(err, "failed to reset clear_tpm_owner_done, output: %q", string(output))
+		// clear_tpm_owner_done is meaningless on VM.
+		// We should log the error message instead of failing the test.
+		testing.ContextLogf(ctx, "Failed to reset clear_tpm_owner_done, output: %q, %v", string(output), err)
 	}
 
 	// Fire clear TPM owner request to crossystem.
@@ -74,10 +76,14 @@ func (tc *TPMClearer) PostClearTPM(ctx context.Context) error {
 	rawOutput, err := tc.cmdRunner.RunWithCombinedOutput(ctx, "crossystem", "clear_tpm_owner_done")
 	output := string(rawOutput)
 	if err != nil {
-		return errors.Wrapf(err, "failed to query clear_tpm_owner_done, output: %q", output)
+		// clear_tpm_owner_done is meaningless on VM.
+		// We should log the error message instead of failing the test.
+		testing.ContextLogf(ctx, "Failed to query clear_tpm_owner_done, output: %q, %v", string(output), err)
 	}
 	if output != "1" {
-		return errors.Wrapf(err, "clear_tpm_owner_done = %q; want 1", output)
+		// clear_tpm_owner_done is meaningless on VM.
+		// We should log the error message instead of failing the test.
+		testing.ContextLogf(ctx, "clear_tpm_owner_done = %q; want 1", output)
 	}
 
 	rawOutput, err = tc.cmdRunner.RunWithCombinedOutput(ctx, "crossystem", "clear_tpm_owner_request")
