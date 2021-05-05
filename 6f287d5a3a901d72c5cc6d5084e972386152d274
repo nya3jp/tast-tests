@@ -16,6 +16,344 @@
       "message": "Fixed some minor bugs overlooked by last refactoring.",
       "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "988eea4b_c5578092",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": "A quick self-review.",
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75acb2df_d14099ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": "This is rather not a functional test...",
+      "range": {
+        "startLine": 51,
+        "startChar": 51,
+        "endLine": 51,
+        "endChar": 56
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b94e2f3_7906e7b5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": "Add comment why we\u0027re running a separate runner.",
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9888c19_086e146f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": ", ping.Count(3), ping.Interval(0.3)\nShould spped up the whole test.",
+      "range": {
+        "startLine": 360,
+        "startChar": 47,
+        "endLine": 360,
+        "endChar": 48
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e007a9a_3d8438dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": "I start to wonder, whether we should have a Job per round.\nIt is important, if we want a maximum loss thershold - unlike tha maximum avarage loss over n rounds.",
+      "range": {
+        "startLine": 417,
+        "startChar": 1,
+        "endLine": 417,
+        "endChar": 14
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b75032_8d494e28",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": "Could we get away with only one scan for all iterations (e.g. before the loop)?",
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f222c4c_5b36877b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": "Round",
+      "range": {
+        "startLine": 431,
+        "startChar": 10,
+        "endLine": 431,
+        "endChar": 14
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c44afbfc_b56ebd20",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": "`i+1` for better readibility.",
+      "range": {
+        "startLine": 431,
+        "startChar": 51,
+        "endLine": 431,
+        "endChar": 52
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52defdd1_197a6bbe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": "End Time",
+      "range": {
+        "startLine": 467,
+        "startChar": 42,
+        "endLine": 467,
+        "endChar": 46
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c2ca2fa_08d5ece6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": "I started to wonder, whether we should rather check the raw number of packets lost against a certain threshold (e.g. 10 per round?) The % is really susceptible to false negatives if e.g. scan takes longer.",
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f56b014_72bd7b77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": "remove this cast",
+      "range": {
+        "startLine": 476,
+        "startChar": 20,
+        "endLine": 476,
+        "endChar": 23
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c52e9b4_01b4d138",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": "Add state machine description.",
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67a728b0_7843d63c",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": "This is quite important structure, better describe its members.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 29
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58df8451_38cb8c07",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": "Some comment why we\u0027re using non-blocking channel might be handy.",
+      "range": {
+        "startLine": 67,
+        "startChar": 28,
+        "endLine": 67,
+        "endChar": 29
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "676e8d5d_c72c33f9",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": "Add timeout",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f07bdcff_332fb3bd",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-05T21:18:44Z",
+      "side": 1,
+      "message": "Add timeout",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 20
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
