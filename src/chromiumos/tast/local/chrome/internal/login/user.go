@@ -16,6 +16,18 @@ import (
 	"chromiumos/tast/timing"
 )
 
+const (
+	takeScreenshot = `new Promise(function(resolve, reject) {
+		chrome.autotestPrivate.takeScreenshot(function(base64PNG) {
+		  if (chrome.runtime.lastError === undefined) {
+				resolve(null);
+		  } else {
+				reject(chrome.runtime.lastError.message);
+		  }
+		});
+	  })`
+)
+
 // loginUser logs in to a freshly-restarted Chrome instance.
 // It waits for the login process to complete before returning.
 func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
@@ -63,6 +75,15 @@ func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) er
 			return nil
 		}, pollOpts); err != nil {
 			return errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE not dismissed")
+		}
+
+		tconn, err := sess.TestAPIConn(ctx)
+		if err != nil {
+			return err
+		}
+		// Taking a screenshot blocks until the UI is actually visible.
+		if err := tconn.Eval(ctx, takeScreenshot, nil); err != nil {
+			return err
 		}
 	}
 
