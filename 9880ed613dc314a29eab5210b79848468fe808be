@@ -22,6 +22,30 @@
       },
       "revId": "9880ed613dc314a29eab5210b79848468fe808be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cffe7dc8_b708e07a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/manual_verify.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-05T03:09:53Z",
+      "side": 1,
+      "message": "Move it before adding IME.",
+      "parentUuid": "c5b3456d_ac62269c",
+      "range": {
+        "startLine": 317,
+        "startChar": 2,
+        "endLine": 317,
+        "endChar": 41
+      },
+      "revId": "9880ed613dc314a29eab5210b79848468fe808be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
