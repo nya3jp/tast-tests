@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eea6563e_900664f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-05T05:25:58Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "13d58cb9bd4b9a8688c815d147e92d080b379613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1780e28a_a0b51a0f",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-05T05:25:58Z",
+      "side": 1,
+      "message": "nit: why not just one line. const takeScreenshot \u003d ``",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "13d58cb9bd4b9a8688c815d147e92d080b379613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca351027_02d88e7d",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-05T05:25:58Z",
+      "side": 1,
+      "message": "Good to know screenshot will block until UI ready. It might be a good solution if no other better option.",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 3
+      },
+      "revId": "13d58cb9bd4b9a8688c815d147e92d080b379613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
