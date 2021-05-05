@@ -6,10 +6,13 @@
 package chromeproc
 
 import (
+	"context"
+	"regexp"
 	"strings"
 
 	"github.com/shirou/gopsutil/process"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 )
 
@@ -20,6 +23,21 @@ const ExecPath = "/opt/google/chrome/chrome"
 // the same executable as Chrome, it is spawned from Chrome and we consider as
 // one of the Chrome processes.
 const crashpadExecPath = "/opt/google/chrome/crashpad_handler"
+
+// Version returns the Chrome browser version. E.g. Chrome version W.X.Y.Z will be reported as a list of strings.
+func Version(ctx context.Context) ([]string, error) {
+	versionStr, err := testexec.CommandContext(ctx, ExecPath, "--version").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get chrome version")
+	}
+
+	versionRE := regexp.MustCompile(`(\d+)\.(\d+)\.(\d+)\.(\d+)`)
+	matches := versionRE.FindStringSubmatch(string(versionStr))
+	if len(matches) <= 1 {
+		return nil, errors.Errorf("can't recognize version string: %s", string(versionStr))
+	}
+	return matches[1:], nil
+}
 
 // GetPIDs returns all PIDs corresponding to Chrome processes (including
 // crashpad's handler).
