@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38838624_b3c02027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T00:03:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9116b74_3991b16b",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 52
+      },
+      "revId": "ba2d99ab19f19aafcbaf01a67c73baeb6738f754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "084d1a30_759afcae",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-30T07:01:19Z",
       "side": 1,
       "message": "nit: This is a mix use of /**/ and //. \n\nBlock comments are mostly used for packages or large blocks. For these cases including below, // should be fine.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 3
+      },
+      "revId": "ba2d99ab19f19aafcbaf01a67c73baeb6738f754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "356039d8_37c2c385",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T00:03:00Z",
+      "side": 1,
+      "message": "Fixed the format and added more comments.",
+      "parentUuid": "084d1a30_759afcae",
       "range": {
         "startLine": 68,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64976e0a_8008b259",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T00:03:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b0d3b63_6dab21c1",
+      "range": {
+        "startLine": 72,
+        "startChar": 39,
+        "endLine": 72,
+        "endChar": 46
+      },
+      "revId": "ba2d99ab19f19aafcbaf01a67c73baeb6738f754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab5a6145_4ffff391",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c923f4d_326cb4f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T00:03:00Z",
+      "side": 1,
+      "message": "Fixed the format and added more comments.",
+      "parentUuid": "ab5a6145_4ffff391",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 3
+      },
+      "revId": "ba2d99ab19f19aafcbaf01a67c73baeb6738f754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0fe508b_115b7c6d",
@@ -123,6 +219,24 @@
       "writtenOn": "2021-05-03T03:18:52Z",
       "side": 1,
       "message": "Nice to have more comments before key steps to understand the workflow.",
+      "revId": "ba2d99ab19f19aafcbaf01a67c73baeb6738f754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55cd9f36_628a0111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T00:03:00Z",
+      "side": 1,
+      "message": "Done. Added more comments.",
+      "parentUuid": "b0fe508b_115b7c6d",
       "revId": "ba2d99ab19f19aafcbaf01a67c73baeb6738f754",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -173,6 +287,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42727b91_698dcbed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T00:03:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a06b4630_9f86c257",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 2
+      },
+      "revId": "ba2d99ab19f19aafcbaf01a67c73baeb6738f754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d269faed_3132e646",
@@ -186,6 +324,30 @@
       "writtenOn": "2021-05-03T03:18:52Z",
       "side": 1,
       "message": "This is very strange implementation. Why do not do it as below?\n\nif len(info.options)\u003d\u003d0{\n    return 0.0, nil, errors.New(\"no run options are given\")\n}else{\n    s.Logf(\"Start to run %s benchmark (run %s): %s %s\", info.testName, opt.name, info.command, strings.Join(opt.option, \" \"))\n    // Only run the first option and return.\n    return execute(ctx, info, opt.option[0])\n}",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 295,
+        "endChar": 56
+      },
+      "revId": "ba2d99ab19f19aafcbaf01a67c73baeb6738f754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2c6706d_0a2c27fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T00:03:00Z",
+      "side": 1,
+      "message": "Thanks. Optimized the code.",
+      "parentUuid": "d269faed_3132e646",
       "range": {
         "startLine": 290,
         "startChar": 1,
