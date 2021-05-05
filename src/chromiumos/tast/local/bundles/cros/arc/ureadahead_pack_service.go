@@ -108,6 +108,38 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		return nil, errors.Wrap(err, "failed to clean up existing pack")
 	}
 
+	testing.ContextLog(ctx, "Login Chrome")
+
+	chromeArgs := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui")
+	if vmEnabled {
+		chromeArgs = append(chromeArgs, "--arcvm-ureadahead-mode=generate")
+	}
+
+	opts := []chrome.Option{
+		chrome.ARCSupported(), // This does not start ARC automatically
+		chrome.RestrictARCCPU(),
+		chrome.GAIALoginPool(request.Creds),
+		chrome.ExtraArgs(chromeArgs...)}
+
+	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to Chrome")
+	}
+
+	// Shorten the total context by 5 seconds to allow for cleanup.
+	cleanCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+	defer cr.Close(cleanCtx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create test API connection")
+	}
+	defer tconn.Close()
+
+	testing.ContextLog(ctx, "Reset file caches")
+
 	if err := ioutil.WriteFile("/proc/sys/vm/drop_caches", []byte("3"), 0200); err != nil {
 		return nil, errors.Wrap(err, "failed to clear caches")
 	}
@@ -138,11 +170,6 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		return nil, errors.Wrap(err, "failed to start ureadahead tracing")
 	}
 
-	// Shorten the total context by 5 seconds to allow for cleanup.
-	cleanCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
 	// Wait ureadahead actually started.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		for _, flag := range flags {
@@ -167,46 +194,22 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		}
 	}()
 
-	// Explicitly set filter for sys_open in order to significantly reduce the tracing traffic.
-	sysOpenFilterPath := filepath.Join(sysOpenTrace, "filter")
-	sysOpenFilterContent := fmt.Sprintf("filename ~ \"%s/*\"", arcRoot)
-	if err := ioutil.WriteFile(sysOpenFilterPath, []byte(sysOpenFilterContent), 0644); err != nil {
-		return nil, errors.Wrap(err, "failed to set sys open filter")
-	}
-	// Try to reset filter on exit.
-	defer func() {
-		if err := ioutil.WriteFile(sysOpenFilterPath, []byte("0"), 0644); err != nil {
-			testing.ContextLog(cleanCtx, "WARNING: Failed to reset sys open filter")
-		}
-	}()
-
-	chromeArgs := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui")
-	if vmEnabled {
-		chromeArgs = append(chromeArgs, "--arcvm-ureadahead-mode=generate")
-	}
-
-	opts := []chrome.Option{
-		chrome.ARCSupported(),
-		chrome.RestrictARCCPU(),
-		chrome.GAIALoginPool(request.Creds),
-		chrome.ExtraArgs(chromeArgs...)}
-
-	cr, err := chrome.New(ctx, opts...)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to Chrome")
-	}
-	defer cr.Close(cleanCtx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create test API connection")
-	}
-	defer tconn.Close()
-
 	// Opt in.
 	testing.ContextLog(ctx, "Waiting for ARC opt-in flow to complete")
 	if err := optin.Perform(ctx, cr, tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to perform opt-in")
+	}
+
+	// Make sure tracing was not stopped in between.
+	for _, flag := range flags {
+		content, err := ioutil.ReadFile(flag)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to read")
+		}
+		contentStr := strings.TrimSpace(string(content))
+		if contentStr != "1" {
+			return nil, errors.Errorf("flag %q=%q was changed outside of ureadahead", flag, contentStr)
+		}
 	}
 
 	if err := stopUreadaheadTracing(ctx, cmd); err != nil {
