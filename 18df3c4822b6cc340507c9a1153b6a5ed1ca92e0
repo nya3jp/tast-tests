@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "461a5cd7_f87027cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T21:12:44Z",
+      "side": 1,
+      "message": "Yes. Changed to cienet development group.",
+      "parentUuid": "c6696c11_af7d355d",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "18df3c4822b6cc340507c9a1153b6a5ed1ca92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ef3941c_f667e6e3",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-03T00:47:28Z",
       "side": 1,
       "message": "In the doc of this func, it says \"Play Store should be open to the homepage before running this function.\", but it is not opened in advance here?",
+      "range": {
+        "startLine": 64,
+        "startChar": 21,
+        "endLine": 64,
+        "endChar": 31
+      },
+      "revId": "18df3c4822b6cc340507c9a1153b6a5ed1ca92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdfa8300_9f4e7cd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T21:12:44Z",
+      "side": 1,
+      "message": "Added a procedure of launching play store. (in installGeekbench() function)",
+      "parentUuid": "0ef3941c_f667e6e3",
       "range": {
         "startLine": 64,
         "startChar": 21,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c69a7c29_7b24f1a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T21:12:44Z",
+      "side": 1,
+      "message": "Good catch! Moved to installGeekbench() function and use defer.",
+      "parentUuid": "ff10969f_a86a057c",
+      "range": {
+        "startLine": 67,
+        "startChar": 16,
+        "endLine": 67,
+        "endChar": 21
+      },
+      "revId": "18df3c4822b6cc340507c9a1153b6a5ed1ca92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9549a701_ecf5d495",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-05-03T00:47:28Z",
       "side": 1,
       "message": "Please keep the error msg consistent with others: Failed to launch Geekbench:",
+      "range": {
+        "startLine": 72,
+        "startChar": 11,
+        "endLine": 72,
+        "endChar": 56
+      },
+      "revId": "18df3c4822b6cc340507c9a1153b6a5ed1ca92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11eeae6f_44a47a1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T21:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9549a701_ecf5d495",
       "range": {
         "startLine": 72,
         "startChar": 11,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "317ec5d5_01c3e479",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T21:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8144de3d_274afea4",
+      "range": {
+        "startLine": 92,
+        "startChar": 28,
+        "endLine": 92,
+        "endChar": 60
+      },
+      "revId": "18df3c4822b6cc340507c9a1153b6a5ed1ca92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cdfa104_7cfe2a75",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-05-03T00:47:28Z",
       "side": 1,
       "message": "The timeout of this step is 30min, and there are intervals and other steps, I guess the timeout for the whole test should be longer?",
+      "range": {
+        "startLine": 96,
+        "startChar": 12,
+        "endLine": 96,
+        "endChar": 28
+      },
+      "revId": "18df3c4822b6cc340507c9a1153b6a5ed1ca92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34bff76a_2d8079ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T21:12:44Z",
+      "side": 1,
+      "message": "Add 5 more minutes to the whole test timeout.",
+      "parentUuid": "3cdfa104_7cfe2a75",
       "range": {
         "startLine": 96,
         "startChar": 12,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bc4c311_06289374",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T21:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbe3afb6_660dbb49",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 61
+      },
+      "revId": "18df3c4822b6cc340507c9a1153b6a5ed1ca92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56c7fbf3_563a57cb",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-05-03T00:47:28Z",
       "side": 1,
       "message": "Suggest to move the following code (until the end of this func) into a func, the name of the func could be readAndSaveResult",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 10
+      },
+      "revId": "18df3c4822b6cc340507c9a1153b6a5ed1ca92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36c87535_1352e048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T21:12:44Z",
+      "side": 1,
+      "message": "Modified as advised. Thanks!",
+      "parentUuid": "56c7fbf3_563a57cb",
       "range": {
         "startLine": 102,
         "startChar": 4,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35e515d1_b4ebb359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T21:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be73eb24_affc675b",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 3
+      },
+      "revId": "18df3c4822b6cc340507c9a1153b6a5ed1ca92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "979726f4_0b9ff65d",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-05-03T00:47:28Z",
       "side": 1,
       "message": "parse",
+      "range": {
+        "startLine": 159,
+        "startChar": 26,
+        "endLine": 159,
+        "endChar": 33
+      },
+      "revId": "18df3c4822b6cc340507c9a1153b6a5ed1ca92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e0a1db0_87e947b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T21:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "979726f4_0b9ff65d",
       "range": {
         "startLine": 159,
         "startChar": 26,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a8ef68_5e0fb68a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T21:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "814bc78c_65372eb6",
+      "range": {
+        "startLine": 163,
+        "startChar": 26,
+        "endLine": 163,
+        "endChar": 33
+      },
+      "revId": "18df3c4822b6cc340507c9a1153b6a5ed1ca92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90ce78de_a3f9afd5",
@@ -267,6 +531,30 @@
       "writtenOn": "2021-05-03T00:47:28Z",
       "side": 1,
       "message": "Move this before the defer, otherwise a null pointer error if there is error.",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 2
+      },
+      "revId": "18df3c4822b6cc340507c9a1153b6a5ed1ca92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29eb9abe_0fd12e14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T21:12:44Z",
+      "side": 1,
+      "message": "Good catch. Fixed!",
+      "parentUuid": "90ce78de_a3f9afd5",
       "range": {
         "startLine": 185,
         "startChar": 1,
@@ -300,6 +588,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6049de94_ccfa8c0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T21:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f26878b4_7cef8068",
+      "range": {
+        "startLine": 190,
+        "startChar": 43,
+        "endLine": 190,
+        "endChar": 46
+      },
+      "revId": "18df3c4822b6cc340507c9a1153b6a5ed1ca92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b34f423_ffc740e0",
@@ -313,6 +625,30 @@
       "writtenOn": "2021-05-03T00:47:28Z",
       "side": 1,
       "message": "WaitForVisible is using a default PollOptions: defaultPollOptions \u003d \u0026testing.PollOptions{Timeout: 20 * time.Second}. If the timeout is not enough, sugges to to call WaitForCondition directly.",
+      "range": {
+        "startLine": 193,
+        "startChar": 19,
+        "endLine": 193,
+        "endChar": 23
+      },
+      "revId": "18df3c4822b6cc340507c9a1153b6a5ed1ca92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7bbcd75_565f9ff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-05T21:12:44Z",
+      "side": 1,
+      "message": "Thank you for the tip. Modified to use WaitForCondition()",
+      "parentUuid": "8b34f423_ffc740e0",
       "range": {
         "startLine": 193,
         "startChar": 19,
