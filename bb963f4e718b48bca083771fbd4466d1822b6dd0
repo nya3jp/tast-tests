@@ -16,6 +16,64 @@
       "message": "Reverified with `tast run -var\u003dservo\u003dlocalhost:9999 localhost:2200 firmware.FpFlashFpMcuHello` on hatch via crosfleet.\n",
       "revId": "bb963f4e718b48bca083771fbd4466d1822b6dd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b93588ab_b5a4fdf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-05T15:46:28Z",
+      "side": 1,
+      "message": "Minor changes, then will +2.",
+      "revId": "bb963f4e718b48bca083771fbd4466d1822b6dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69e82926_7f1ca3cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-05T15:46:28Z",
+      "side": 1,
+      "message": "Thanks for re-testing. This would be a good thing to put in the commit message on the \"TEST\u003d\" line:\n\n TEST\u003dOn hatch via crosfleet: tast run -var\u003dservo\u003dlocalhost:9999 localhost:2200 firmware.FpFlashFpMcuHello\n\nThat makes it easy for future readers to run the same test if they\u0027re trying to debug it: \n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Describe-testing-performed",
+      "parentUuid": "f2a03524_f0f8076c",
+      "revId": "bb963f4e718b48bca083771fbd4466d1822b6dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92df5947_fa6edd87",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-05T15:46:28Z",
+      "side": 1,
+      "message": "Can you add a testing.ContextLog line before we reboot? It just makes the test a little easier to follow when running locally (i.e., so that you don\u0027t think the device spontaneously rebooted)",
+      "range": {
+        "startLine": 776,
+        "startChar": 1,
+        "endLine": 776,
+        "endChar": 2
+      },
+      "revId": "bb963f4e718b48bca083771fbd4466d1822b6dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
