@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5047675c_b8a97a66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/manual_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2021-05-05T01:53:24Z",
+      "side": 1,
+      "message": "delete?",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "ee10a477ae1c30294a2e3fccb51d068bf69d32a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ca69c26_be727a1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/manual_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2021-05-05T01:53:24Z",
+      "side": 1,
+      "message": "\"Chromoting\" or \"Chrome Remote Desktop\" or \"crd\" is actually the right terms for this case, the previous \u0027rdp\u0027 seems not quite precise.\n\nSo s/rdp/crd/g",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "ee10a477ae1c30294a2e3fccb51d068bf69d32a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8601a0_0345a6cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/manual_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2021-05-05T01:53:24Z",
+      "side": 1,
+      "message": "delete?",
+      "range": {
+        "startLine": 41,
+        "startChar": 49,
+        "endLine": 41,
+        "endChar": 50
+      },
+      "revId": "ee10a477ae1c30294a2e3fccb51d068bf69d32a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d422f82_2aeb80f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/manual_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2021-05-05T01:53:24Z",
+      "side": 1,
+      "message": "profile is confusing here. I believe what you want is here:\n https://source.chromium.org/chromium/chromium/src/+/main:components/user_manager/user_type.h",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 8
+      },
+      "revId": "ee10a477ae1c30294a2e3fccb51d068bf69d32a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bea6c9d_27084a9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/manual_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2021-05-05T01:53:24Z",
+      "side": 1,
+      "message": "imeCode here is confusing. Either imeId or imeEngineId should be clear.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "ee10a477ae1c30294a2e3fccb51d068bf69d32a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
