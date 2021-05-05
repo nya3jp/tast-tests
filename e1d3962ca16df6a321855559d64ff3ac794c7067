@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0714588a_219ac26d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-05-05T18:57:23Z",
+      "side": 1,
+      "message": "I think we can wait with the revert and just use add the flag to the precondition as Po-Hsien did.",
+      "revId": "e1d3962ca16df6a321855559d64ff3ac794c7067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
