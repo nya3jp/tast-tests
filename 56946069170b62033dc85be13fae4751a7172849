@@ -69,6 +69,24 @@
       "parentUuid": "4764024b_b32c58f1",
       "revId": "56946069170b62033dc85be13fae4751a7172849",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e238022f_70c803fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-05-05T22:05:27Z",
+      "side": 1,
+      "message": "Removed myself from reviewers. Took a brief look and it LGTM, but I don\u0027t have enough context to really review.",
+      "parentUuid": "8e0c0298_17709ae3",
+      "revId": "56946069170b62033dc85be13fae4751a7172849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
