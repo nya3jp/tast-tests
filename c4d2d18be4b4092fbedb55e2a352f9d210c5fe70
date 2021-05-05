@@ -16,6 +16,23 @@
       "message": "chump approved to try improve crostini CQ results",
       "revId": "c4d2d18be4b4092fbedb55e2a352f9d210c5fe70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35d04c3c_134858af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-05T01:03:42Z",
+      "side": 1,
+      "message": "submitting directly to unbreak CQ as discussed in on call chat",
+      "revId": "c4d2d18be4b4092fbedb55e2a352f9d210c5fe70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
