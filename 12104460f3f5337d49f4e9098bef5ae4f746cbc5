@@ -50,6 +50,75 @@
       "message": "Talked to Po-Hsien and a good point that we could make this shorter.\nIdeally the reasons are short-ish with most information.\nLet me take another look at this.",
       "revId": "12104460f3f5337d49f4e9098bef5ae4f746cbc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93eb5587_8b5e4ac7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-05-05T23:23:07Z",
+      "side": 1,
+      "message": "Can be removed.",
+      "range": {
+        "startLine": 23,
+        "startChar": 48,
+        "endLine": 24,
+        "endChar": 58
+      },
+      "revId": "12104460f3f5337d49f4e9098bef5ae4f746cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3ecc88e_2f9d2044",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-05-05T23:23:07Z",
+      "side": 1,
+      "message": "Remove failLines, we don\u0027t use them.",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 16
+      },
+      "revId": "12104460f3f5337d49f4e9098bef5ae4f746cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97877e89_37d56523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-05-05T23:23:07Z",
+      "side": 1,
+      "message": "errorLines :\u003d getErrorLog(f)\n        if errorLines !\u003d \"\" {\n                s.Error(errorLines)\n        } else if err !\u003d nil {\n                s.Errorf(\"Failed to run %s: %v\", exe, err)\n        }",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "12104460f3f5337d49f4e9098bef5ae4f746cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
