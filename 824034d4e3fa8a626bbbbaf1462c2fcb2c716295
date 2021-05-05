@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eaad354_0a45b653",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/manual_verify.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-05T04:51:36Z",
+      "side": 1,
+      "message": "The could be assigned directly in line 104 - 109.",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 50
+      },
+      "revId": "824034d4e3fa8a626bbbbaf1462c2fcb2c716295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
