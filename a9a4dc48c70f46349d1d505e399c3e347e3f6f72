@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be6e7d65_063fac39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-05T09:00:45Z",
+      "side": 1,
+      "message": "Can you give an example where this line is executed, and res is false?",
+      "revId": "a9a4dc48c70f46349d1d505e399c3e347e3f6f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
