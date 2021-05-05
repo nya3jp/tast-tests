@@ -14,10 +14,8 @@ import (
 func ChromeVideo() testing.Precondition { return chromeVideoPre }
 
 var chromeVideoPre = chrome.NewPrecondition("video",
-	chrome.ExtraArgs(chromeVModuleArgs...),
-	chrome.ExtraArgs(chromeUseHWCodecsForSmallResolutions...),
-	chrome.ExtraArgs(chromeBypassPermissionsArgs...),
-	chrome.ExtraArgs(chromeSuppressNotificationsArgs...))
+	chrome.ExtraArgs(chromeVideoArgs...),
+	chrome.ExtraArgs(chromeBypassPermissionsArgs...))
 
 // ChromeVideoWithFakeWebcam returns precondition equal to ChromeVideo above,
 // supplementing it with the use of a fake video/audio capture device (a.k.a.
@@ -25,9 +23,7 @@ var chromeVideoPre = chrome.NewPrecondition("video",
 func ChromeVideoWithFakeWebcam() testing.Precondition { return chromeVideoWithFakeWebcamPre }
 
 var chromeVideoWithFakeWebcamPre = chrome.NewPrecondition("videoWithFakeWebcam",
-	chrome.ExtraArgs(chromeVModuleArgs...),
-	chrome.ExtraArgs(chromeUseHWCodecsForSmallResolutions...),
-	chrome.ExtraArgs(chromeSuppressNotificationsArgs...),
+	chrome.ExtraArgs(chromeVideoArgs...),
 	chrome.ExtraArgs(chromeFakeWebcamArgs...))
 
 // ChromeCameraPerf returns a precondition that Chrome is started with camera
