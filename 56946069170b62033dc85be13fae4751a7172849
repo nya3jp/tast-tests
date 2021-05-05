@@ -51,6 +51,24 @@
       "message": "LGTM :)",
       "revId": "56946069170b62033dc85be13fae4751a7172849",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e0c0298_17709ae3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-05T22:01:45Z",
+      "side": 1,
+      "message": "Kevin, did you still want to take a look? No rush, just want to know whether or not I should wait.",
+      "parentUuid": "4764024b_b32c58f1",
+      "revId": "56946069170b62033dc85be13fae4751a7172849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
