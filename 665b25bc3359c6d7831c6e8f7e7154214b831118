@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d04e894_f3332bb2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-05T11:36:33Z",
+      "side": 1,
+      "message": "minor nit: Ignore",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "665b25bc3359c6d7831c6e8f7e7154214b831118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8a82b845_8b541604",
@@ -49,6 +72,69 @@
       "side": 1,
       "message": "I think there is no simple way to ignore the error on VM.\nAnd an ineffective reset would still fail and caught by checks later on.",
       "parentUuid": "51666b72_280ab7db",
+      "revId": "665b25bc3359c6d7831c6e8f7e7154214b831118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a59150c_15e485f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-05T11:36:33Z",
+      "side": 1,
+      "message": "LGTM % nits, comment",
+      "revId": "665b25bc3359c6d7831c6e8f7e7154214b831118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "142e6d20_0c38f5d3",
+        "filename": "src/chromiumos/tast/remote/hwsec/tpm_clearer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-05T11:36:33Z",
+      "side": 1,
+      "message": "The naming is inconsistent within the file. Please rename it to rawOutput.",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "665b25bc3359c6d7831c6e8f7e7154214b831118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5067ff45_59fe51e1",
+        "filename": "src/chromiumos/tast/remote/hwsec/tpm_clearer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-05T11:36:33Z",
+      "side": 1,
+      "message": "It is already a string.",
+      "range": {
+        "startLine": 81,
+        "startChar": 90,
+        "endLine": 81,
+        "endChar": 96
+      },
       "revId": "665b25bc3359c6d7831c6e8f7e7154214b831118",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
