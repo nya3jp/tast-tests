@@ -402,9 +402,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if !needPermission {
 			return nil
 		}
-		container := nodewith.ClassName("Desk_Container_A")
-		bubble := nodewith.ClassName("PermissionPromptBubbleView").Ancestor(container).First()
-		allow := nodewith.Name("Allow").Ancestor(container).Role(role.Button).Ancestor(bubble)
+		bubble := nodewith.ClassName("PermissionPromptBubbleView").First()
+		allow := nodewith.Name("Allow").Role(role.Button).Ancestor(bubble)
 		if err := ui.LeftClick(allow)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click the allow button")
 		}
