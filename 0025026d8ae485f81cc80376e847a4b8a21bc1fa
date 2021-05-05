@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a84aaf22_97334bc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-05T11:29:00Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "range": {
+        "startLine": 40,
+        "startChar": 132,
+        "endLine": 40,
+        "endChar": 135
+      },
+      "revId": "0025026d8ae485f81cc80376e847a4b8a21bc1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f341e3a_17c7a458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-05T11:29:00Z",
+      "side": 1,
+      "message": "nit: if you do this, you need to set cr to nil in all error cases. I\u0027m not confident enough it will always be returned as nil on error.",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 16
+      },
+      "revId": "0025026d8ae485f81cc80376e847a4b8a21bc1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bbfedf0_d88c6cb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-05T11:29:00Z",
+      "side": 1,
+      "message": "Any reason these are not inline?",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 40
+      },
+      "revId": "0025026d8ae485f81cc80376e847a4b8a21bc1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5b5a44d_b71690b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-05T11:29:00Z",
+      "side": 1,
+      "message": "Same",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 49
+      },
+      "revId": "0025026d8ae485f81cc80376e847a4b8a21bc1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f864060_12bb7146",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-05T11:29:00Z",
+      "side": 1,
+      "message": "C++ code might change, not sure if this comment needs to be that detailed.",
+      "revId": "0025026d8ae485f81cc80376e847a4b8a21bc1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b8537d_329d3f81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-05T11:29:00Z",
+      "side": 1,
+      "message": "Use the built in log reader. It\u0027s much cleaner than using grep.\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/syslog/reader.go?q\u003dfile:Tast%20log%20reader\n\nExample:\n\nreader, err :\u003d syslog.NewReader(ctx, syslog.Program(\"cryptohomed\"))\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to start log reader\")\n\t}\n\tdefer reader.Close()\n\n// Wait for cleanup to finish.\n\tif _, err :\u003d reader.Wait(ctx, 60*time.Second, func(e *syslog.Entry) bool {\n\t\treturn strings.Contains(e.Content, \"Disk cleanup complete.\")\n\t}); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"cleanup not complete\")\n\t}",
+      "revId": "0025026d8ae485f81cc80376e847a4b8a21bc1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6024b5df_4eb578bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-05T11:29:00Z",
+      "side": 1,
+      "message": "nit: either check Kiosk or check the Kiosk product",
+      "range": {
+        "startLine": 5,
+        "startChar": 42,
+        "endLine": 5,
+        "endChar": 61
+      },
+      "revId": "0025026d8ae485f81cc80376e847a4b8a21bc1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
