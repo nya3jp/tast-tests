@@ -24,6 +24,7 @@ func init() {
 				chrome.ExtraArgs(chromeUseHWCodecsForSmallResolutions...),
 				chrome.ExtraArgs(chromeBypassPermissionsArgs...),
 				chrome.ExtraArgs(chromeSuppressNotificationsArgs...),
+				chrome.ExtraArgs(chromeAllowAutoPlayArgs...),
 			}, nil
 		}),
 		Parent:          "gpuWatchDog",
@@ -295,6 +296,7 @@ func init() {
 				chrome.ExtraArgs(chromeUseHWCodecsForSmallResolutions...),
 				chrome.ExtraArgs(chromeSuppressNotificationsArgs...),
 				chrome.ExtraArgs("--enable-features=VaapiAV1Decoder"),
+				chrome.ExtraArgs(chromeAllowAutoPlayArgs...),
 			}, nil
 		}),
 		Parent:          "gpuWatchDog",
@@ -487,3 +489,8 @@ var chromeAllowDistinctiveIdentifierArgs = []string{
 	// allow a distinctive identifier for localhost which is where we server the
 	// DRM content from in the test.
 	"--unsafely-allow-protected-media-identifier-for-domain=127.0.0.1"}
+
+var chromeAllowAutoPlayArgs = []string{
+	// Allow media autoplay.
+	"--autoplay-policy=no-user-gesture-required",
+}
