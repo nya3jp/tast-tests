@@ -159,6 +159,12 @@ var PlayStore = App{
 	Name: "Play Store",
 }
 
+// Calculator has details about the Calculator app.
+var Calculator = App{
+	ID:   "joodangkbfjnajiiifokapkpmhfnpleo",
+	Name: "Calculator",
+}
+
 // Clock has details about the Clock app.
 var Clock = App{
 	ID:   "ddmmnabaeomoacfpfjgghfpocfolhjlg",
