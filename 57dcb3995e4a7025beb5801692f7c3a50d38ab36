@@ -653,6 +653,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45085b2e_e97104c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-05T09:00:45Z",
+      "side": 1,
+      "message": "Is the messages file saved in the logs? After all the tests.",
+      "parentUuid": "6dbcb1aa_159d04cc",
+      "range": {
+        "startLine": 119,
+        "startChar": 138,
+        "endLine": 119,
+        "endChar": 144
+      },
+      "revId": "57dcb3995e4a7025beb5801692f7c3a50d38ab36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f39dcac7_ee14118a",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
         "patchSetId": 1
