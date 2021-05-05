@@ -63,7 +63,7 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 	// Wait for the app to install.
 	testing.ContextLog(ctx, "Waiting for app to install")
 	tries := 0
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
 		// Sometimes a dialog of "Can't download <app name>" pops up. Press Okay to
 		// dismiss the dialog. This check needs to be done before checking the
 		// install button since the install button exists underneath.
@@ -168,22 +168,15 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 			}
 		}
 
-		// Installation is complete once the open button is enabled.
-		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+openButtonText), ui.Enabled(true)).Exists(ctx); err != nil {
-			return errors.Wrap(err, "failed to wait for enabled open button")
+		// Verify if the package has been installed.
+		installed, err = a.PackageInstalled(ctx, pkgName)
+		if err != nil {
+			return testing.PollBreak(err)
 		}
-		return nil
-	}, &testing.PollOptions{Interval: time.Second}); err != nil {
-		return err
-	}
+		if !installed {
+			return errors.Errorf("package %s has not been installed", pkgName)
+		}
 
-	// Ensure that the correct package is installed, just in case the Play Store ui changes again.
-	installed, err = a.PackageInstalled(ctx, pkgName)
-	if err != nil {
-		return err
-	}
-	if !installed {
-		return errors.Errorf("failed to install %s", pkgName)
-	}
-	return nil
+		return nil
+	}, &testing.PollOptions{Interval: time.Second})
 }
