@@ -16,6 +16,46 @@
       "message": "LGTM. Thanks for updating for all video fixtures!",
       "revId": "b8f792d99e951d2a2d8cd07d0ba76469d44416e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acda8b7d_c085ec0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-05-05T19:35:20Z",
+      "side": 1,
+      "message": "LGTM with a comment on the comment. Thanks!",
+      "revId": "b8f792d99e951d2a2d8cd07d0ba76469d44416e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a1b7985_0c10b550",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-05-05T19:35:20Z",
+      "side": 1,
+      "message": "nit: perhaps say why this is needed? E.g.:\n  // \u003cvideo\u003es won\u0027t automatically play upon loading the source unless this flag is set.\n\nOr some such?",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 25
+      },
+      "revId": "b8f792d99e951d2a2d8cd07d0ba76469d44416e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
