@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e54e1ddc_f4f03fcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-05T19:47:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3504fbae_0b5bef59",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "91bf8508a3a4bb2d54a9b0ac6e11da7b9fc73882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63a7f785_4b5134d7",
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "No, I think it is not required (I don\u0027t have handy build VM now to test). VM is broken similar way:\nhttps://tastboard.corp.google.com/test/arc.UreadaheadValidation.vm",
       "parentUuid": "63a7f785_4b5134d7",
+      "range": {
+        "startLine": 19,
+        "startChar": 39,
+        "endLine": 19,
+        "endChar": 44
+      },
+      "revId": "91bf8508a3a4bb2d54a9b0ac6e11da7b9fc73882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5fe950f_e9e53fbd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-05T19:47:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b3fe7ac4_8dd22873",
       "range": {
         "startLine": 19,
         "startChar": 39,
