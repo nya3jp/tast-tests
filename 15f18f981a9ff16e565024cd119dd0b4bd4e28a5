@@ -16,6 +16,92 @@
       "message": "Adding cros-wifi-reviews@ for deeper knowledge of remote services",
       "revId": "15f18f981a9ff16e565024cd119dd0b4bd4e28a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa4e28a0_35cfd863",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-05T17:54:36Z",
+      "side": 1,
+      "message": "LGTM. minor nits.",
+      "revId": "15f18f981a9ff16e565024cd119dd0b4bd4e28a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5abb662_45d26ba5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-05T17:54:36Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with this \"context\" import. I see that it\u0027s used in a few other files on code search, but I\u0027m mostly familiar with the import of just \"context\" which also seems to be used in other files in the module.\n\nI just want to make sure this is the correct context usage (if there is a difference at all).",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "15f18f981a9ff16e565024cd119dd0b4bd4e28a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11bc4774_01dee6b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-05T17:54:36Z",
+      "side": 1,
+      "message": "Since \"req\" isn\u0027t used here, I would suggest replacing this with the blank identifier \"_\" indicating that the paramater isn\u0027t used in code but is there to satisfy the function signature.",
+      "range": {
+        "startLine": 39,
+        "startChar": 59,
+        "endLine": 39,
+        "endChar": 62
+      },
+      "revId": "15f18f981a9ff16e565024cd119dd0b4bd4e28a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67c7de62_d1a5a266",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-05T17:54:36Z",
+      "side": 1,
+      "message": "Same as above. I recommend replacing this with \"_\"",
+      "range": {
+        "startLine": 90,
+        "startChar": 52,
+        "endLine": 90,
+        "endChar": 55
+      },
+      "revId": "15f18f981a9ff16e565024cd119dd0b4bd4e28a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
