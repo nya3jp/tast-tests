@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37806425_ea1e9729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/manual_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-05T02:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5047675c_b8a97a66",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "ee10a477ae1c30294a2e3fccb51d068bf69d32a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ca69c26_be727a1e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-05T01:53:24Z",
       "side": 1,
       "message": "\"Chromoting\" or \"Chrome Remote Desktop\" or \"crd\" is actually the right terms for this case, the previous \u0027rdp\u0027 seems not quite precise.\n\nSo s/rdp/crd/g",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "ee10a477ae1c30294a2e3fccb51d068bf69d32a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e0ae5f_0c3de67f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/manual_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-05T02:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ca69c26_be727a1e",
       "range": {
         "startLine": 36,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d936be9c_c9405d15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/manual_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-05T02:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b8601a0_0345a6cf",
+      "range": {
+        "startLine": 41,
+        "startChar": 49,
+        "endLine": 41,
+        "endChar": 50
+      },
+      "revId": "ee10a477ae1c30294a2e3fccb51d068bf69d32a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d422f82_2aeb80f8",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8223e5b_b80cdfc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/manual_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-05T02:09:32Z",
+      "side": 1,
+      "message": "renamed to userType",
+      "parentUuid": "0d422f82_2aeb80f8",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 8
+      },
+      "revId": "ee10a477ae1c30294a2e3fccb51d068bf69d32a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bea6c9d_27084a9b",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-05-05T01:53:24Z",
       "side": 1,
       "message": "imeCode here is confusing. Either imeId or imeEngineId should be clear.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "ee10a477ae1c30294a2e3fccb51d068bf69d32a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "744c0e04_89845012",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/manual_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-05T02:09:32Z",
+      "side": 1,
+      "message": "Use imeId instead.",
+      "parentUuid": "0bea6c9d_27084a9b",
       "range": {
         "startLine": 61,
         "startChar": 1,
