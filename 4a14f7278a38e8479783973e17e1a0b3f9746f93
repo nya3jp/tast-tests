@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60e99493_f0adb222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_rtd2142.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-05-05T23:41:48Z",
+      "side": 0,
+      "message": "Is this already removed?",
+      "range": {
+        "startLine": 87,
+        "startChar": 67,
+        "endLine": 87,
+        "endChar": 77
+      },
+      "revId": "4a14f7278a38e8479783973e17e1a0b3f9746f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
