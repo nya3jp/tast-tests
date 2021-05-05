@@ -126,6 +126,7 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 
 	for _, data := range subTests {
 		s.Run(ctx, data.zipBaseName, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+data.zipBaseName)
 			zipFile := data.zipBaseName + ".zip"
 
 			duration := testMountingZipFile(ctx, s, files, zipFile)

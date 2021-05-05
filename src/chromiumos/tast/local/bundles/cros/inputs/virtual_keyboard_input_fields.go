@@ -235,8 +235,7 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 		s.Run(ctx, string(subtest.inputField), func(ctx context.Context, s *testing.State) {
 			defer func() {
 				outDir := filepath.Join(s.OutDir(), string(subtest.inputField))
-				faillog.DumpUITreeOnError(ctx, outDir, s.HasError, tconn)
-				faillog.SaveScreenshotOnError(ctx, cr, outDir, s.HasError)
+				faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, s.HasError, cr, "ui_tree_"+string(subtest.inputField))
 
 				if err := vkbCtx.HideVirtualKeyboard()(ctx); err != nil {
 					s.Log("Failed to hide virtual keyboard: ", err)

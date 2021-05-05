@@ -89,7 +89,7 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 
 	for _, subTest := range subTests {
 		s.Run(ctx, subTest.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+subTest.name)
 
 			// TODO(b/172498469): Change settings via Chrome OS settings page after we migrate settings to there.
 			if err := tconn.Eval(ctx, fmt.Sprintf(`chrome.inputMethodPrivate.setSettings(
