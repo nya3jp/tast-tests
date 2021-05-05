@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"regexp"
+	"strings"
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/testexec"
@@ -32,10 +33,28 @@ func init() {
 
 var ctrlBusy = regexp.MustCompile(`(?m)^VIDIOC_G_EXT_CTRLS: failed: Device or resource busy$`)
 
+func logCommand(ctx context.Context, name string, arg ...string) {
+	testing.ContextLogf(ctx, "running %s %s:", name, strings.Join(arg, " "))
+
+	cmd := testexec.CommandContext(ctx, name, arg...)
+	out, err := cmd.Output()
+	if err != nil {
+		return
+	}
+	testing.ContextLog(ctx, string(out))
+
+	return
+}
+
 func hasPrivacySwitchControl(ctx context.Context) (bool, error) {
 
 	usbCams, err := testutil.GetUSBCamerasFromV4L2Test(ctx)
+
 	if err != nil {
+		// TODO(b/186374611) Remove all the logCommand once the issue has been solved
+		logCommand(ctx, "which", "media_v4l2_test")
+		logCommand(ctx, "ldd", "/usr/local/bin/media_v4l2_test")
+		logCommand(ctx, "md5sum", "/usr/lib64/libbase-core.so", "/usr/lib64/libbase-dl.so", "/usr/lib64/libbase-dbus.so", "/usr/local/bin/media_v4l2_test")
 		return false, errors.Wrap(err, "failed to get USB cameras")
 	}
 	if len(usbCams) == 0 {
