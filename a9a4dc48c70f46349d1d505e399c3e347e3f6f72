@@ -16,6 +16,24 @@
       "message": "Can you give an example where this line is executed, and res is false?",
       "revId": "a9a4dc48c70f46349d1d505e399c3e347e3f6f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a993cde_6f853bdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-05T10:29:39Z",
+      "side": 1,
+      "message": "Checked how testexec.CommandContext works -\u003e exit status 1 (when grep won\u0027t find anything) is an error. Hence if there is no log entry in the log file the test will fail in the above err check. \nWill remove that check.",
+      "parentUuid": "be6e7d65_063fac39",
+      "revId": "a9a4dc48c70f46349d1d505e399c3e347e3f6f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
