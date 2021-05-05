@@ -16,6 +16,23 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "665b25bc3359c6d7831c6e8f7e7154214b831118",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51666b72_280ab7db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-05-05T04:40:29Z",
+      "side": 1,
+      "message": "Is there a way for us to only ignore the error on VM? If not, tentatively LGTM+2 this CL, an ineffective reset would most likely be caught by checks later on.",
+      "revId": "665b25bc3359c6d7831c6e8f7e7154214b831118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
