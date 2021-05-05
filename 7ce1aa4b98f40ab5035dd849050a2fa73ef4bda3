@@ -99,6 +99,30 @@
       },
       "revId": "7ce1aa4b98f40ab5035dd849050a2fa73ef4bda3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a0dfe7_cc930e49",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-05T03:42:51Z",
+      "side": 1,
+      "message": "Thanks Jacek\u0027s detailed explanation. The original code \nattenuator.SetTotalAttneuation(attenuator.MaximumAttenuation()) \nworks just because the parameter attenuates the signal to a weak but not disconnect level. I would say the test should define a constant, i.e. AttenuationForWeakConnection, and call attenuator.SetTotalAttneuation(AttenuationForWeakConnection) so that let the function do the calculation for you.",
+      "parentUuid": "08aef179_67d57cbc",
+      "range": {
+        "startLine": 144,
+        "startChar": 37,
+        "endLine": 144,
+        "endChar": 55
+      },
+      "revId": "7ce1aa4b98f40ab5035dd849050a2fa73ef4bda3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
