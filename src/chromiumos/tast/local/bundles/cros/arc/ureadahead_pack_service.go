@@ -27,6 +27,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// Defines custom error that indicate required flag file is not set to "1".
+type flagIsNotSetError struct {
+	reason string
+}
+
+func (e *flagIsNotSetError) Error() string {
+	return e.reason
+}
+
 func init() {
 	testing.AddService(&testing.Service{
 		Register: func(srv *grpc.Server, s *testing.ServiceState) {
@@ -105,19 +114,66 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		return nil, errors.Wrap(err, "failed to clean up existing pack")
 	}
 
+	testing.ContextLog(ctx, "Login Chrome")
+
+	chromeArgs := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui")
+	if vmEnabled {
+		chromeArgs = append(chromeArgs, "--arcvm-ureadahead-mode=generate")
+	}
+
+	opts := []chrome.Option{
+		chrome.ARCSupported(), // This does not start ARC automatically
+		chrome.RestrictARCCPU(),
+		chrome.GAIALoginPool(request.Creds),
+		chrome.ExtraArgs(chromeArgs...)}
+
+	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to Chrome")
+	}
+
+	// Shorten the total context by 5 seconds to allow for cleanup.
+	cleanCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+	defer cr.Close(cleanCtx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create test API connection")
+	}
+
+	testing.ContextLog(ctx, "Reset file caches")
+
 	if err := ioutil.WriteFile("/proc/sys/vm/drop_caches", []byte("3"), 0200); err != nil {
 		return nil, errors.Wrap(err, "failed to clear caches")
 	}
 
 	testing.ContextLog(ctx, "Start ureadahead tracing")
 
-	// Make sure ureadahead flips these flags to confirm it is started.
 	flags := []string{"/sys/kernel/debug/tracing/tracing_on",
 		filepath.Join(sysOpenTrace, "enable")}
-	for _, flag := range flags {
-		if err := ioutil.WriteFile(flag, []byte("0"), 0644); err != nil {
-			return nil, errors.Wrap(err, "failed to reset ureadahead flag")
+
+	// Define callback to handle flag.
+	type flagHandler func(string) error
+
+	// Helper that processes all tracked tracing flags.
+	processFlags := func(fn flagHandler) error {
+		for _, flag := range flags {
+			if err := fn(flag); err != nil {
+				return err
+			}
 		}
+		return nil
+	}
+
+	// Make sure ureadahead flips these flags to confirm it is started.
+	resetFlag := func(flag string) error {
+		return ioutil.WriteFile(flag, []byte("0"), 0644)
+	}
+
+	if err := processFlags(resetFlag); err != nil {
+		return nil, errors.Wrap(err, "failed to reset ureadahead flag")
 	}
 
 	cmd := testexec.CommandContext(ctx, "ureadahead", args...)
@@ -125,23 +181,29 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		return nil, errors.Wrap(err, "failed to start ureadahead tracing")
 	}
 
-	// Shorten the total context by 5 seconds to allow for cleanup.
-	cleanCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
+	// Make sure that content of the flag is set to "1".
+	enusureFlagSet := func(flag string) error {
+		content, err := ioutil.ReadFile(flag)
+		if err != nil {
+			return err
+		}
+		contentStr := strings.TrimSpace(string(content))
+		// 1 means flag is enabled.
+		if contentStr != "1" {
+			return &flagIsNotSetError{
+				reason: fmt.Sprintf("flag %q=%q is not set to 1", flag, contentStr),
+			}
+		}
+		return nil
+	}
 
-	// Wait ureadahead actually started.
+	// Wait ureadahead actually started. All tracked flags must be flipped to "1".
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		for _, flag := range flags {
-			content, err := ioutil.ReadFile(flag)
-			if err != nil {
-				return testing.PollBreak(errors.Wrap(err, "failed to read flag"))
+		if err := processFlags(enusureFlagSet); err != nil {
+			if _, ok := err.(*flagIsNotSetError); ok {
+				return err
 			}
-			contentStr := strings.TrimSpace(string(content))
-			if contentStr != "1" {
-				return errors.Errorf("flag %q=%q is not yet flipped to 1", flag, contentStr)
-			}
-
+			return testing.PollBreak(errors.Wrap(err, "failed to read flag"))
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: ureadaheadTimeout}); err != nil {
@@ -154,46 +216,17 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		}
 	}()
 
-	// Explicitly set filter for sys_open in order to significantly reduce the tracing traffic.
-	sysOpenFilterPath := filepath.Join(sysOpenTrace, "filter")
-	sysOpenFilterContent := fmt.Sprintf("filename ~ \"%s/*\"", arcRoot)
-	if err := ioutil.WriteFile(sysOpenFilterPath, []byte(sysOpenFilterContent), 0644); err != nil {
-		return nil, errors.Wrap(err, "failed to set sys open filter")
-	}
-	// Try to reset filter on exit.
-	defer func() {
-		if err := ioutil.WriteFile(sysOpenFilterPath, []byte("0"), 0644); err != nil {
-			testing.ContextLog(cleanCtx, "WARNING: Failed to reset sys open filter")
-		}
-	}()
-
-	chromeArgs := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui")
-	if vmEnabled {
-		chromeArgs = append(chromeArgs, "--arcvm-ureadahead-mode=generate")
-	}
-
-	opts := []chrome.Option{
-		chrome.ARCSupported(),
-		chrome.RestrictARCCPU(),
-		chrome.GAIALoginPool(request.Creds),
-		chrome.ExtraArgs(chromeArgs...)}
-
-	cr, err := chrome.New(ctx, opts...)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to Chrome")
-	}
-	defer cr.Close(cleanCtx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create test API connection")
-	}
-	defer tconn.Close()
-
 	// Opt in.
 	testing.ContextLog(ctx, "Waiting for ARC opt-in flow to complete")
 	if err := optin.Perform(ctx, cr, tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to perform opt-in")
+	}
+
+	// Make sure tracing was not stopped in between. This verifies that all tracked flags
+	// are still set to 1. If it not, that indicates that other component altered it while
+	// ureadahead tracing session was running.
+	if err := processFlags(enusureFlagSet); err != nil {
+		return nil, errors.Wrap(err, "failed to ensure flag is set")
 	}
 
 	if err := stopUreadaheadTracing(ctx, cmd); err != nil {
@@ -206,6 +239,8 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 	}, &testing.PollOptions{Timeout: ureadaheadTimeout}); err != nil {
 		return nil, errors.Wrap(err, "failed to ensure pack file exists")
 	}
+
+	testing.ContextLog(ctx, "Ureadahead pack was generated")
 
 	var vmPackPath string
 	if vmEnabled {
