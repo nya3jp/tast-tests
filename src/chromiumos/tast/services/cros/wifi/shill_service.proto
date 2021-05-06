@@ -144,7 +144,7 @@ service ShillService {
   rpc SuspendAssertConnect(SuspendAssertConnectRequest) returns (SuspendAssertConnectResponse) {}
 
   // Suspend suspends the DUT.
-  rpc Suspend(SuspendRequest) returns (google.protobuf.Empty) {}
+  rpc Suspend(SuspendRequest) returns (SuspendResponse) {}
 
   // GetGlobalFTProperty returns the WiFi.GlobalFTEnabled manager property value.
   rpc GetGlobalFTProperty(google.protobuf.Empty) returns (GetGlobalFTPropertyResponse) {}
@@ -458,6 +458,11 @@ message SuspendAssertConnectResponse {
 
 message SuspendRequest {
   int64 wake_up_timeout = 1;
+  bool check_early_wake = 2;
+}
+
+message SuspendResponse {
+  int64 suspend_time = 1;
 }
 
 message GetGlobalFTPropertyResponse {
