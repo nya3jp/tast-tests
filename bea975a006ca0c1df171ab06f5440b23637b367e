@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "700d8aea_be423ed6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-06T03:08:02Z",
+      "side": 1,
+      "message": "I\u0027m confused here. The bug specifically mentions inputs.PhysicalKeyboardEnglishTyping, but the test does not call chrome.New; instead it uses chromeLoggedInForInputs fixture. I looked at logs from a few failures, but in all cases the test started at least 30 seconds after the fixture was set up.\n\nDoes this CL fix inputs.PhysicalKeyboardEnglishTyping and crbug.com/1204926?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "bea975a006ca0c1df171ab06f5440b23637b367e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0b6712b_0d491712",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-06T03:08:02Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m surprised to see the bug (crbug.com/1204926) saying that restarting UI takes ~30 seconds on esche/jacuzzi. Does it have real impacts to users, e.g. logout\u0026login takes tens of seconds?\n\nIn particular I\u0027m wondering if it is a product issue or test issue. The test is consistently passing on other boards... Do you know what is special about esche/jacuzzi?\n",
+      "revId": "bea975a006ca0c1df171ab06f5440b23637b367e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
