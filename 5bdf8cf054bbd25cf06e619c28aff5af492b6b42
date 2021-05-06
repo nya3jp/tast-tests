@@ -3,6 +3,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea4f3bf6_dda615cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-05-06T02:27:50Z",
+      "side": 1,
+      "message": "nit: Move this to ~L40, with shutil.EscapeSlice(cmd.Args)",
+      "revId": "5bdf8cf054bbd25cf06e619c28aff5af492b6b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8a13846_c102e1d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-05-06T02:27:50Z",
+      "side": 1,
+      "message": "nit: CombinedOutput() with DumpLogOnError",
+      "range": {
+        "startLine": 40,
+        "startChar": 17,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "5bdf8cf054bbd25cf06e619c28aff5af492b6b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dff156b3_4d67dd41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-05-06T02:27:50Z",
+      "side": 1,
+      "message": "nit: no need to return here",
+      "revId": "5bdf8cf054bbd25cf06e619c28aff5af492b6b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99f4cbc5_bdc05c85",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
         "patchSetId": 1
@@ -14,6 +71,29 @@
       "writtenOn": "2021-05-06T02:01:24Z",
       "side": 1,
       "message": "We can also log the content of `/etc/lsb-release` to help us check if rootfs has been modified by an AU test.",
+      "revId": "5bdf8cf054bbd25cf06e619c28aff5af492b6b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b2350c_d66a79da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-05-06T02:27:50Z",
+      "side": 1,
+      "message": "On arm devices, it\u0027s in /usr/lib/libbase-core.so instead of lib64",
+      "range": {
+        "startLine": 57,
+        "startChar": 34,
+        "endLine": 57,
+        "endChar": 39
+      },
       "revId": "5bdf8cf054bbd25cf06e619c28aff5af492b6b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
