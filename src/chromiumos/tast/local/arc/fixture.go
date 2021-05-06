@@ -99,7 +99,7 @@ func NewArcBootedFixture(fOpts chrome.OptionsCallback) testing.FixtureImpl {
 			if err != nil {
 				return nil, err
 			}
-			return append(opts, chrome.ARCEnabled()), nil
+			return append(opts, chrome.ARCEnabled(), chrome.ExtraArgs("--disable-features=ArcResizeLock")), nil
 		},
 	}
 }
