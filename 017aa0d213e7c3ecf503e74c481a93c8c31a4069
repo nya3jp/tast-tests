@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7564d992_5e109c7d",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-06T15:28:44Z",
+      "side": 1,
+      "message": "nit: opens, same in other places",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "017aa0d213e7c3ecf503e74c481a93c8c31a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fc2c077_224f0a6f",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-06T15:28:44Z",
+      "side": 1,
+      "message": "this actually might be any URL in the current implementation and might be used on other pages. So maybe 1) limit to the setting page only by adding prefix \"chrome://settings/\" to the input URL or 2) keep general but move into some common place or 3) rename to make it sounds like general",
+      "range": {
+        "startLine": 36,
+        "startChar": 58,
+        "endLine": 36,
+        "endChar": 74
+      },
+      "revId": "017aa0d213e7c3ecf503e74c481a93c8c31a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1efe7c8_6a911f9a",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-06T15:28:44Z",
+      "side": 1,
+      "message": "nit: can we have shorter receiver name?",
+      "range": {
+        "startLine": 79,
+        "startChar": 6,
+        "endLine": 79,
+        "endChar": 13
+      },
+      "revId": "017aa0d213e7c3ecf503e74c481a93c8c31a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35bfb21c_4b5e4d22",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-06T15:28:44Z",
+      "side": 1,
+      "message": "nit: isn\u0027t it more common to have next error message:\n\n```\nunexpected node restriction state: want %q; got %q\n```",
+      "range": {
+        "startLine": 85,
+        "startChar": 43,
+        "endLine": 85,
+        "endChar": 93
+      },
+      "revId": "017aa0d213e7c3ecf503e74c481a93c8c31a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8504400_3d911944",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-06T15:28:44Z",
+      "side": 1,
+      "message": "if checker.err is not nil, you should make it clear that there are multiple errors. Then using errors.Wrapf, there might be a feeling that there was only one error and formatting might be confusing\n\nMaybe we should either return first error or store array of errors and combine them into one error in Verify method?",
+      "range": {
+        "startLine": 98,
+        "startChar": 29,
+        "endLine": 98,
+        "endChar": 40
+      },
+      "revId": "017aa0d213e7c3ecf503e74c481a93c8c31a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
