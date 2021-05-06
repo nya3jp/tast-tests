@@ -73,6 +73,11 @@ func MBOAssocDisallow(ctx context.Context, s *testing.State) {
 	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
+	freqOpts, err := ap.Config().PcapFreqOptions()
+	if err != nil {
+		s.Fatal("Failed to get pcap frequency options: ", err)
+	}
+
 	s.Log("Setting assoc disallow")
 	if err := ap.Set(ctx, hostapd.PropertyMBOAssocDisallow, "1"); err != nil {
 		s.Fatal("Unable to set assoc disallow on AP: ", err)
@@ -92,7 +97,7 @@ func MBOAssocDisallow(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get legacy router: ", err)
 	}
-	pcapPath, err := wifiutil.CollectPcapForAction(ctx, legacyRouter, "mbo_assoc_disallow", channel, expectFailConnect)
+	pcapPath, err := wifiutil.CollectPcapForAction(ctx, legacyRouter, "mbo_assoc_disallow", channel, freqOpts, expectFailConnect)
 	if err != nil {
 		s.Fatal("Failed to collect pcap: ", err)
 	}
