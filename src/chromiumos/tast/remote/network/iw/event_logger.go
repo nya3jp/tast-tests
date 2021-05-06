@@ -31,7 +31,7 @@ func NewEventLogger(ctx context.Context, dut *dut.DUT, ops ...EventWatcherOption
 	}
 	ew, err := NewEventWatcher(ctx, dut, ops...)
 	if err != nil {
-		return nil, errors.New("failed to create an event watcher")
+		return nil, errors.Wrap(err, "failed to create an event watcher")
 	}
 	e.watcher = ew
 	go func() {
