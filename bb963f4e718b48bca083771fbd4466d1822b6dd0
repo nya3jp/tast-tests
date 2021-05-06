@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6115028a_1bc1e226",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-06T16:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69e82926_7f1ca3cb",
+      "revId": "bb963f4e718b48bca083771fbd4466d1822b6dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92df5947_fa6edd87",
@@ -66,6 +84,30 @@
       "writtenOn": "2021-05-05T15:46:28Z",
       "side": 1,
       "message": "Can you add a testing.ContextLog line before we reboot? It just makes the test a little easier to follow when running locally (i.e., so that you don\u0027t think the device spontaneously rebooted)",
+      "range": {
+        "startLine": 776,
+        "startChar": 1,
+        "endLine": 776,
+        "endChar": 2
+      },
+      "revId": "bb963f4e718b48bca083771fbd4466d1822b6dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c436c11_ce240ade",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-06T16:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92df5947_fa6edd87",
       "range": {
         "startLine": 776,
         "startChar": 1,
