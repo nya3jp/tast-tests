@@ -16,6 +16,29 @@
       "message": "Comment has been addressed. Please review. Thanks.",
       "revId": "37ce3281ed102afa5c8371fa9123c6870c27379a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a6f0561_f350866e",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-06T06:40:08Z",
+      "side": 1,
+      "message": "I\u0027m confused... which output do you want to print here? servodtool or dut-control?",
+      "range": {
+        "startLine": 106,
+        "startChar": 114,
+        "endLine": 106,
+        "endChar": 120
+      },
+      "revId": "37ce3281ed102afa5c8371fa9123c6870c27379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
