@@ -25,7 +25,7 @@ func init() {
 }
 
 func OOBESmoke(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.EnableFeatures("ChildSpecificSignin"))
+	cr, err := chrome.New(ctx, chrome.NoLogin())
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
