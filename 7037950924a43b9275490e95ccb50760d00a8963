@@ -211,6 +211,30 @@
       },
       "revId": "7037950924a43b9275490e95ccb50760d00a8963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5311f4f8_25ba4a7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-06T12:08:16Z",
+      "side": 1,
+      "message": "when I corrected non-inclusive words I simply saved the file. \n\nAm I seeing it right that code formatting runs by the script is in the else statement?",
+      "parentUuid": "3d11a924_b1f86f7e",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "7037950924a43b9275490e95ccb50760d00a8963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
