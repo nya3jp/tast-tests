@@ -7,6 +7,7 @@ package wifiutil
 import (
 	"context"
 
+	"chromiumos/tast/common/network/iw"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -83,15 +84,16 @@ func ScanAndCollectPcap(fullCtx context.Context, tf *wificell.TestFixture, name 
 		}
 		return nil
 	}
-	return CollectPcapForAction(fullCtx, tf.Pcap(), name, ch, action)
+	pcapPath, err := CollectPcapForAction(fullCtx, tf.Pcap(), name, ch, nil, action)
+	return pcapPath, err
 }
 
 // CollectPcapForAction starts a capture on the specified channel, performs a
 // custom action, and then stops the capture. The path to the pcap file is
 // returned.
-func CollectPcapForAction(fullCtx context.Context, router *wificell.Router, name string, ch int, action func(context.Context) error) (string, error) {
+func CollectPcapForAction(fullCtx context.Context, router *wificell.Router, name string, ch int, freqOps []iw.SetFreqOption, action func(context.Context) error) (string, error) {
 	capturer, err := func() (ret *pcap.Capturer, retErr error) {
-		capturer, err := router.StartCapture(fullCtx, name, ch, nil)
+		capturer, err := router.StartCapture(fullCtx, name, ch, freqOps)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to start capturer")
 		}
