@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bd096639_96c51007",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-06T00:36:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1780e28a_a0b51a0f",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "13d58cb9bd4b9a8688c815d147e92d080b379613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ca351027_02d88e7d",
         "filename": "src/chromiumos/tast/local/chrome/internal/login/user.go",
         "patchSetId": 1
