@@ -187,6 +187,30 @@
       },
       "revId": "7037950924a43b9275490e95ccb50760d00a8963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d11a924_b1f86f7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-06T11:52:32Z",
+      "side": 1,
+      "message": "How are you formatting?\n\ngofmt is called by the generator.\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py;l\u003d646?q\u003dpolicy_tast",
+      "parentUuid": "d81ee6bb_faa067c8",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "7037950924a43b9275490e95ccb50760d00a8963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
