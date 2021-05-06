@@ -99,6 +99,24 @@
       "parentUuid": "6ee42afc_65b1ff34",
       "revId": "bea975a006ca0c1df171ab06f5440b23637b367e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6cd7602_790e1d2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-06T09:20:23Z",
+      "side": 1,
+      "message": "Thanks for looking into this, @nya. Do you think we should just exclude these boards until the issue solved. Alternatively, we can exclude these boards to run tast in general.",
+      "parentUuid": "c4ecd4e3_aa2ce0e0",
+      "revId": "bea975a006ca0c1df171ab06f5440b23637b367e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
