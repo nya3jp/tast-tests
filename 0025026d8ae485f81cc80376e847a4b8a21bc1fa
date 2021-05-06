@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b172329_10071b9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-06T13:29:01Z",
+      "side": 1,
+      "message": "Unexpected..., add a comment that it\u0027s needed to avoid future confusion.",
+      "parentUuid": "61d3e32b_b0432994",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 40
+      },
+      "revId": "0025026d8ae485f81cc80376e847a4b8a21bc1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b5b5a44d_b71690b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
         "patchSetId": 5
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "same as explained above",
       "parentUuid": "b5b5a44d_b71690b4",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 49
+      },
+      "revId": "0025026d8ae485f81cc80376e847a4b8a21bc1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdf2223d_5fa95a64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-06T13:29:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d3dccc8b_3a50d085",
       "range": {
         "startLine": 63,
         "startChar": 1,
