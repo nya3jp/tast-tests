@@ -31,7 +31,7 @@ func init() {
 		Timeout:      2 * time.Minute,
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
-		Vars:         []string{"servo"},
+		Fixture:      "servo",
 	})
 }
 
@@ -64,13 +64,7 @@ func FpFlashFpMcuHello(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	servoSpec, _ := s.Var("servo")
-	servop, err := servo.NewProxy(ctx, servoSpec, s.DUT().KeyFile(), s.DUT().KeyDir())
-	if err != nil {
-		s.Fatal("Failed to connect to servo: ", err)
-	}
-	defer servop.Close(ctx)
-
+	servop := s.FixtValue().(*servo.Proxy)
 	if err := servop.Servo().SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
 		s.Fatal("Failed to disable hardware write protection: ", err)
 	}
