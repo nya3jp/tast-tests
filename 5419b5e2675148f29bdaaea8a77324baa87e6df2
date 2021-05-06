@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2887e38_1bf04d96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-06T08:13:53Z",
+      "side": 1,
+      "message": "LGTM. Thanks for making this change.",
+      "revId": "5419b5e2675148f29bdaaea8a77324baa87e6df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd5b0b0b_0baac3b6",
