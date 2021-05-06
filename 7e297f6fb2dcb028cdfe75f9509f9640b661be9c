@@ -34,6 +34,24 @@
       "parentUuid": "2bf00743_d83bea6c",
       "revId": "7e297f6fb2dcb028cdfe75f9509f9640b661be9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "517cccf7_d2fd9c5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2021-05-06T18:43:26Z",
+      "side": 1,
+      "message": "Thanks, I see it now. My tree was a few days behind the CL that added it to pre.go.\n\nLGTM",
+      "parentUuid": "1c23189c_34491ebf",
+      "revId": "7e297f6fb2dcb028cdfe75f9509f9640b661be9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
