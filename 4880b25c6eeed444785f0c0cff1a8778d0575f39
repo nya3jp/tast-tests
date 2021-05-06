@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dade657_06b4a764",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-05-06T10:07:56Z",
+      "side": 1,
+      "message": "Haven\u0027t fixed all linter warnings/errors, but it\u0027s the first draft of the example using metrics: android_mem.\nPlease take a look, thanks!",
+      "revId": "4880b25c6eeed444785f0c0cff1a8778d0575f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
