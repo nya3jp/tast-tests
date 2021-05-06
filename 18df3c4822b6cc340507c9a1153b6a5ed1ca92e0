@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a97ec629_0f968dd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-06T03:45:46Z",
+      "side": 1,
+      "message": "Usually there are two contacts, one is the author of this code, one is the group contact.",
+      "parentUuid": "461a5cd7_f87027cf",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "18df3c4822b6cc340507c9a1153b6a5ed1ca92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ef3941c_f667e6e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
         "patchSetId": 46
