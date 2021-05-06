@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff4eb652_6ade3e62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-06T06:53:27Z",
+      "side": 1,
+      "message": "I have answered the last comment. Please see my comment. Thanks.",
+      "revId": "37ce3281ed102afa5c8371fa9123c6870c27379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a6f0561_f350866e",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-05-06T06:40:08Z",
       "side": 1,
       "message": "I\u0027m confused... which output do you want to print here? servodtool or dut-control?",
+      "range": {
+        "startLine": 106,
+        "startChar": 114,
+        "endLine": 106,
+        "endChar": 120
+      },
+      "revId": "37ce3281ed102afa5c8371fa9123c6870c27379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23cf3852_a3a29c03",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-06T06:53:27Z",
+      "side": 1,
+      "message": "dut-control\n\nservodtool let us know if there is a servod running for that port. By the time we get to line 106. We already know servod is up and running so we don\u0027t need output from servodtool at this point.\n\ndut-control would give us more information to debug the reason for servo connection failure.",
+      "parentUuid": "9a6f0561_f350866e",
       "range": {
         "startLine": 106,
         "startChar": 114,
