@@ -147,6 +147,10 @@ func getVars(s *testing.State) *envSettings {
 		settings.chromeArgs = strings.Fields(chromeArgs)
 	}
 
+	if err := validateSettings(settings); err != nil {
+		s.Fatal("Failed to validate variables: ", err)
+	}
+
 	return settings
 }
 
