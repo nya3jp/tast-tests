@@ -51,6 +51,24 @@
       "parentUuid": "3998704c_a6611fb1",
       "revId": "de65cdde802b34ecb6b610f5ac69d7e456bcb1cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e6b98de_ec93562f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-06T10:11:11Z",
+      "side": 1,
+      "message": "I have another idea: extend uiauto functionality instead. It\u0027s pretty common that once you found Node you what it to match specific conditions.\n\nHere is how it can be used (MatchSettingsPage takes list of Match rules from uiauto):\n\n```\nif err :\u003d policyutil.MatchSettingsPage(\n    ctx, cr, \"chrome://settings/passwords\",\n    uiauto.Match(\n        nodewith\n            .Name(\"Offer to save passwords\")\n            .Role(role.ToggleButton),   // search\n        nodematchwith\n            .Restriction(param.wantRestriction)\n            .Checked(param.wantChecked) // match target\n    ),\n    uiauto.Match(\n        nodewith\n            .Name(\"Another match name node\")\n            .Role(role.ToggleButton),   // search\n        nodematchwith\n            .Checked(param.wantChecked) // match target\n    )\n); err !\u003d nil {\n   ...\n}\n```\n\nHuge benefit is that we will have less repetitive code across tests.",
+      "parentUuid": "9d8fa604_73bf5466",
+      "revId": "de65cdde802b34ecb6b610f5ac69d7e456bcb1cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
