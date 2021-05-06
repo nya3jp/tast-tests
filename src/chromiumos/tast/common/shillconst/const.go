@@ -52,12 +52,16 @@ const (
 	DevicePropertyEapCompleted      = "EapAuthenticationCompleted"
 
 	// WiFi device property names.
-	DevicePropertyWiFiBgscanMethod        = "BgscanMethod"
-	DevicePropertyWiFiScanInterval        = "ScanInterval"
-	DevicePropertyWiFiBgscanShortInterval = "BgscanShortInterval"
-	DevicePropertyMACAddrRandomEnabled    = "MACAddressRandomizationEnabled"
-	DevicePropertyMACAddrRandomSupported  = "MACAddressRandomizationSupported"
-	DevicePropertyScanning                = "Scanning" // Also for cellular.
+	DevicePropertyWiFiBgscanMethod           = "BgscanMethod"
+	DevicePropertyWiFiScanInterval           = "ScanInterval"
+	DevicePropertyWiFiBgscanShortInterval    = "BgscanShortInterval"
+	DevicePropertyMACAddrRandomEnabled       = "MACAddressRandomizationEnabled"
+	DevicePropertyMACAddrRandomSupported     = "MACAddressRandomizationSupported"
+	DevicePropertyScanning                   = "Scanning" // Also for cellular.
+	DevicePropertyWakeOnWiFiAllowed          = "WakeOnWiFiAllowed"
+	DevicePropertyWakeOnWiFiFeaturesEnabled  = "WakeOnWiFiFeaturesEnabled"
+	DevicePropertyLastWakeReason             = "LastWakeReason"
+	DevicePropertyNetDetectScanPeriodSeconds = "NetDetectScanPeriodSeconds"
 )
 
 // IPConfig property names.
@@ -239,6 +243,20 @@ const (
 	DeviceBgscanMethodSimple = "simple"
 	DeviceBgscanMethodLearn  = "learn"
 	DeviceBgscanMethodNone   = "none"
+)
+
+// WakeOnWiFi features.
+const (
+	WakeOnWiFiFeaturesDarkConnect = "darkconnect"
+	WakeOnWiFiFeaturesNone        = "none"
+)
+
+// LastWakeReason values.
+const (
+	WakeOnWiFiReasonDisconnect = "WiFi.Disconnect"
+	WakeOnWiFiReasonPattern    = "WiFi.Pattern"
+	WakeOnWiFiReasonSSID       = "WiFi.SSID"
+	WakeOnWiFiReasonUnknown    = "Unknown"
 )
 
 // DBus Errors
