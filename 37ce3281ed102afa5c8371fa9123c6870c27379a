@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80ffa762_fd5fe069",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-06T07:34:28Z",
+      "side": 1,
+      "message": "LGTM % comment\n",
+      "revId": "37ce3281ed102afa5c8371fa9123c6870c27379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a6f0561_f350866e",
@@ -72,6 +89,30 @@
       "side": 1,
       "message": "dut-control\n\nservodtool let us know if there is a servod running for that port. By the time we get to line 106. We already know servod is up and running so we don\u0027t need output from servodtool at this point.\n\ndut-control would give us more information to debug the reason for servo connection failure.",
       "parentUuid": "9a6f0561_f350866e",
+      "range": {
+        "startLine": 106,
+        "startChar": 114,
+        "endLine": 106,
+        "endChar": 120
+      },
+      "revId": "37ce3281ed102afa5c8371fa9123c6870c27379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "271063d7_ea92c1c3",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-06T07:34:28Z",
+      "side": 1,
+      "message": "OK. Then can you format the code in the following way:\n\n if out, err :\u003d hst.Command(\"servodtool\", ...); err !\u003d nil {\n   ...\n }\n ...\n out, err :\u003d hst.Command(\"dut-control\", ...)\n if err !\u003d nil {\n   ...\n }\n ...\n\nIt\u0027s because \"out\" from servodtool is used only when err !\u003d nil, while that from dut-control is used in any case. That\u0027s what confused me.",
+      "parentUuid": "23cf3852_a3a29c03",
       "range": {
         "startLine": 106,
         "startChar": 114,
