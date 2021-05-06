@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97b7a973_cb154ec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mtp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-05-06T11:24:09Z",
+      "side": 1,
+      "message": "Can you remove this?",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "09924df14ad8aa8d1a899f951112b7d41fcd0831",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37df668b_2b296953",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mtp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-05-06T11:24:09Z",
+      "side": 1,
+      "message": "Can you remove this?",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 68
+      },
+      "revId": "09924df14ad8aa8d1a899f951112b7d41fcd0831",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f4c941f_1ce54501",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mtp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-05-06T11:24:09Z",
+      "side": 1,
+      "message": "Can you remove this extra line?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "09924df14ad8aa8d1a899f951112b7d41fcd0831",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ca729e_0c8b9d0d",
+        "filename": "src/chromiumos/tast/local/chrome/mtp/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-05-06T11:24:09Z",
+      "side": 1,
+      "message": "Can you update this?",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 92
+      },
+      "revId": "09924df14ad8aa8d1a899f951112b7d41fcd0831",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0485b94b_5c39159d",
+        "filename": "src/chromiumos/tast/local/chrome/mtp/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-05-06T11:24:09Z",
+      "side": 1,
+      "message": "Can you remove the extra space?",
+      "range": {
+        "startLine": 106,
+        "startChar": 8,
+        "endLine": 106,
+        "endChar": 9
+      },
+      "revId": "09924df14ad8aa8d1a899f951112b7d41fcd0831",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
