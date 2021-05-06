@@ -1,0 +1,25 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.platform;
+
+option go_package = "chromiumos/tast/services/cros/platform";
+
+// PerfettoSystemTracingService provides RPC methods to the
+// platform.PerfettoSystemTracingService remote test.
+service PerfettoSystemTracingService {
+  // Use perfetto to generate trace and send back to the host.
+  rpc GeneratePerfettoTrace(GeneratePerfettoTraceRequest)
+      returns (GeneratePerfettoTraceResponse) {}
+}
+
+message GeneratePerfettoTraceRequest {
+  string config = 1;
+}
+
+message GeneratePerfettoTraceResponse {
+  bytes result = 1;
+}

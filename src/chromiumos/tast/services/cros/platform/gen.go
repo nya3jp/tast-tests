@@ -3,9 +3,11 @@
 // found in the LICENSE file.
 
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. boot_perf_service.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. perfetto_system_tracing_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. upstart_service.proto
 
-// Package platform provides the BootPerfService and UpstartService.
+// Package platform provides the BootPerfService, PerfettoSystemTracingService
+// and UpstartService.
 package platform
 
 // Run the following command in CrOS chroot to regenerate protocol buffer bindings:
