@@ -28,8 +28,8 @@ func init() {
 		HardwareDeps: hwdep.D(
 			hwdep.InternalDisplay(),
 			// Due to the varying sizes of touchpads on different models, it is hard to have one good swipe
-			// motion reliably pass all models. Since samus is an older model, just skip running it.
-			hwdep.SkipOnModel("samus"),
+			// motion reliably pass all models. Since this test is for collecting performance metrics, having it work on most boards is good enough.
+			hwdep.SkipOnModel("kohaku", "morphius", "samus"),
 		),
 		Fixture: "chromeLoggedIn",
 	})
