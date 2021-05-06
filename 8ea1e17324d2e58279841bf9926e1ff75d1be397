@@ -37,6 +37,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4de26f87_44b2a5de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-06T14:34:54Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "8ea1e17324d2e58279841bf9926e1ff75d1be397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4998c9c5_b6b263b4",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 9
@@ -48,6 +65,30 @@
       "writtenOn": "2021-05-06T11:31:22Z",
       "side": 1,
       "message": "optional: see many similar code in stop and defer start. Ideally they can be wrapped into a function.",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 4
+      },
+      "revId": "8ea1e17324d2e58279841bf9926e1ff75d1be397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02ba8376_98396491",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-06T14:34:54Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "4998c9c5_b6b263b4",
       "range": {
         "startLine": 201,
         "startChar": 1,
