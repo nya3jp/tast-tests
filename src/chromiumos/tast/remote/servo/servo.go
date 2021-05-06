@@ -48,7 +48,7 @@ func New(ctx context.Context, connSpec string) (*Servo, error) {
 	s := &Servo{xmlrpc: xmlrpc.New(host, port)}
 
 	// Ensure Servo is set up properly before returning.
-	return s, s.verifyConnectivity(ctx)
+	return s, s.VerifyConnectivity(ctx)
 }
 
 // Default creates a Servo object for communicating with a local servod
@@ -58,9 +58,9 @@ func Default(ctx context.Context) (*Servo, error) {
 	return New(ctx, connSpec)
 }
 
-// verifyConnectivity sends and verifies an echo request to make sure
+// VerifyConnectivity sends and verifies an echo request to make sure
 // everything is set up properly.
-func (s *Servo) verifyConnectivity(ctx context.Context) error {
+func (s *Servo) VerifyConnectivity(ctx context.Context) error {
 	const msg = "hello from servo"
 	actualMessage, err := s.Echo(ctx, "hello from servo")
 	if err != nil {
