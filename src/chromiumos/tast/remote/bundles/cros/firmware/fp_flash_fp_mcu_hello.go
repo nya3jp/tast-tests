@@ -45,7 +45,7 @@ func init() {
 func FpFlashFpMcuHello(ctx context.Context, s *testing.State) {
 	servop, err := servo.NewProxy(ctx, s.RequiredVar("servo"), s.DUT().KeyFile(), s.DUT().KeyDir())
 	if err != nil {
-		s.Fatal("Failed to get servo proxy: ", err)
+		s.Fatal("Failed to connect to servo: ", err)
 	}
 	defer servop.Close(ctx)
 
