@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2e85656_47d1a994",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-05-06T18:50:11Z",
+      "side": 1,
+      "message": "Same comment as https://crrev.com/c/2868186, it should be more precise than that. It should depend on \"proper PTK support\" rather than \"${VENDOR_NAME}\"",
+      "range": {
+        "startLine": 46,
+        "startChar": 37,
+        "endLine": 46,
+        "endChar": 52
+      },
+      "revId": "bd39505ece56dea8a1c8ac5c618984753e53cfdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
