@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ffdb6b2_32ed0a94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-05-06T04:52:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea4f3bf6_dda615cf",
+      "revId": "5bdf8cf054bbd25cf06e619c28aff5af492b6b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8a13846_c102e1d2",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-05-06T02:27:50Z",
       "side": 1,
       "message": "nit: CombinedOutput() with DumpLogOnError",
+      "range": {
+        "startLine": 40,
+        "startChar": 17,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "5bdf8cf054bbd25cf06e619c28aff5af492b6b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab4f6ba1_5fa5f6b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-05-06T04:52:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8a13846_c102e1d2",
       "range": {
         "startLine": 40,
         "startChar": 17,
@@ -94,6 +136,48 @@
         "endLine": 57,
         "endChar": 39
       },
+      "revId": "5bdf8cf054bbd25cf06e619c28aff5af492b6b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d7aafa7_4dfad083",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-05-06T04:52:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8b2350c_d66a79da",
+      "range": {
+        "startLine": 57,
+        "startChar": 34,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "5bdf8cf054bbd25cf06e619c28aff5af492b6b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b1c3fde_7be45be2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-05-06T04:52:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99f4cbc5_bdc05c85",
       "revId": "5bdf8cf054bbd25cf06e619c28aff5af492b6b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
