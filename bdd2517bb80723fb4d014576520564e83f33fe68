@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb35980d_26d9437f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-05-06T16:22:21Z",
+      "side": 1,
+      "message": "LGTM, Though I no longer work on ChromeOS and should not be added to reviews.",
+      "revId": "bdd2517bb80723fb4d014576520564e83f33fe68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
