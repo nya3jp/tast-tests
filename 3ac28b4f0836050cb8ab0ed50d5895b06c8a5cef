@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "171d6ee4_dc8078ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-06T10:43:40Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "3ac28b4f0836050cb8ab0ed50d5895b06c8a5cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b476a95d_00d77d11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-06T10:43:40Z",
+      "side": 1,
+      "message": "nit: First letter should be capitalized",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "3ac28b4f0836050cb8ab0ed50d5895b06c8a5cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "995174c8_498b67ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-06T10:43:40Z",
+      "side": 1,
+      "message": "nit: this comment should be above opt :\u003d info.options[0]",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 318,
+        "endChar": 41
+      },
+      "revId": "3ac28b4f0836050cb8ab0ed50d5895b06c8a5cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
