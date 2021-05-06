@@ -16,6 +16,23 @@
       "message": "Hi Shuhei, Matt, as discussed in https://crrev.com/c/2874085, we agree that this test is ready for promotion. So I added you both directly as reviewers to this cl.\n\ncc @shend kudos to your contribution creating this test.",
       "revId": "9f6c94c66f2186e5ebac5f7ab30a957170c37352",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a99c1870_2fea3508",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-05-06T23:06:38Z",
+      "side": 1,
+      "message": "Thanks Jun!",
+      "revId": "9f6c94c66f2186e5ebac5f7ab30a957170c37352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
