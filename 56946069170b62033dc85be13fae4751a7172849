@@ -105,6 +105,24 @@
       "parentUuid": "e238022f_70c803fe",
       "revId": "56946069170b62033dc85be13fae4751a7172849",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d9190e_450e2fe7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-06T04:20:15Z",
+      "side": 1,
+      "message": "Sorry, I realized I should have offered more context. I don\u0027t know how much you have, but basically Multiband Operation (MBO) is a set of roaming features including 802.11k/r/v/u (and a few other random features that aren\u0027t part of a standard, like this one). There is a WFA certification for MBO, and the goal is to eventually get our devices certified, which requires passing certain tests. Up until now, whenever someone (enterprises, other teams, etc) asks \"do Chromebooks support 802.11k/r/v?\", our answer has been \"we think so\". The point of doing the MBO certification is so that we can answer with a definitive \"yes\" in the future. I\u0027m currently working on writing a bunch of tests according to the WFA test plan to ensure that we actually do support these features properly.\n\nThis feature in particular is extremely simple: the AP specifies this bit (for whatever reason), and the DUT shouldn\u0027t attempt to associate to it (see https://source.corp.google.com/chromeos_public/src/third_party/wpa_supplicant-2.9/wpa_supplicant/events.c;rcl\u003deda4b58f1f0e25d4e91f460a5571bc24c59e7134;l\u003d1341). \n\nHopefully this helps. LMK if you\u0027d like any more clarification.",
+      "parentUuid": "de6aa08b_fbd3bb1e",
+      "revId": "56946069170b62033dc85be13fae4751a7172849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
