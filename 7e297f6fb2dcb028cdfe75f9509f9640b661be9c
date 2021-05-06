@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bf00743_d83bea6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2021-05-06T16:56:54Z",
+      "side": 1,
+      "message": "I can\u0027t find references to crostini.CrostiniMinDiskSizeCond in the tree. Is it part of the tast genparams stuff? Assuming this builds and runs, it seems reasonable to me.\n\nIf there are devices that are expected to fail this condition for every run, would it make more sense to disable those test altogether.",
+      "revId": "7e297f6fb2dcb028cdfe75f9509f9640b661be9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
