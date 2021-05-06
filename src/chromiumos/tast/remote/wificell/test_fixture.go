@@ -1279,8 +1279,15 @@ func (tf *TestFixture) SuspendAssertConnect(ctx context.Context, wakeUpTimeout t
 }
 
 // Suspend suspends the DUT for wakeUpTimeout seconds through gRPC.
+// This call will fail when the DUT wake up early. If the caller expects the DUT to
+// wake up early, please use the Suspend gRPC to specify the detailed options.
 func (tf *TestFixture) Suspend(ctx context.Context, wakeUpTimeout time.Duration) error {
-	if _, err := tf.wifiClient.Suspend(ctx, &wifi.SuspendRequest{WakeUpTimeout: wakeUpTimeout.Nanoseconds()}); err != nil {
+	req := &wifi.SuspendRequest{
+		WakeUpTimeout:  wakeUpTimeout.Nanoseconds(),
+		CheckEarlyWake: true,
+	}
+	_, err := tf.wifiClient.Suspend(ctx, req)
+	if err != nil {
 		return errors.Wrap(err, "failed to suspend")
 	}
 	return nil
