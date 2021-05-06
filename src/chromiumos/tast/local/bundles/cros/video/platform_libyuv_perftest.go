@@ -19,11 +19,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const libyuvUnitTestBin = "libyuv_unittest"
+const libyuvUnitTestBin = "libyuv_perftest"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PlatformLibYUVUnittest,
+		Func: PlatformLibYUVPerftest,
 		Desc: "Runs libyuv unit tests as perf tests",
 		Contacts: []string{
 			"pmolinalopez@google.com",
@@ -40,9 +40,9 @@ func init() {
 	})
 }
 
-// PlatformLibYUVUnittest runs a libyuv unit test with and without assembly
+// PlatformLibYUVPerftest runs a libyuv unit test with and without assembly
 // optimization to compare performance.
-func PlatformLibYUVUnittest(ctx context.Context, s *testing.State) {
+func PlatformLibYUVPerftest(ctx context.Context, s *testing.State) {
 	env := []string{"LIBYUV_REPEAT=1000",
 		"LIBYUV_WIDTH=640",
 		"LIBYUV_HEIGHT=360"}
