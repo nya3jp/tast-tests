@@ -22,6 +22,30 @@
       },
       "revId": "000dc4f33e2f0460fa05cdfd8da71342a6312b14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "704d8bf4_a06613e0",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-06T00:09:36Z",
+      "side": 1,
+      "message": "Ah that\u0027s a good point, the comment for adb.Device.RemoveAll was a bit misleading. I\u0027d rather just delete the contents of the folder so we don\u0027t have to worry about getting the permissions right, I added 2 new functions to device.go for that purpose. Could you take another look and let me know what you think?",
+      "parentUuid": "4799e30b_166fafa4",
+      "range": {
+        "startLine": 310,
+        "startChar": 43,
+        "endLine": 310,
+        "endChar": 54
+      },
+      "revId": "000dc4f33e2f0460fa05cdfd8da71342a6312b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
