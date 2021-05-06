@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62e571d0_cf2e716e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-06T03:53:57Z",
+      "side": 1,
+      "message": "chromeLoggedInForInputs calls NewLoggedInFixture, which in its setup calls chrome.New (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/fixture.go;l\u003d146?q\u003dfixture.go\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2F).\n\nThe logs don\u0027t really help, you need to lease a device if you want to see what happens. I put a stopwatch on it a while back, and IIRC, the test starts around 30 seconds after the fixture is set up, but it isn\u0027t ready for around 40 seconds.",
+      "parentUuid": "700d8aea_be423ed6",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "bea975a006ca0c1df171ab06f5440b23637b367e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0b6712b_0d491712",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-05-06T03:08:02Z",
       "side": 1,
       "message": "Hmm, I\u0027m surprised to see the bug (crbug.com/1204926) saying that restarting UI takes ~30 seconds on esche/jacuzzi. Does it have real impacts to users, e.g. logout\u0026login takes tens of seconds?\n\nIn particular I\u0027m wondering if it is a product issue or test issue. The test is consistently passing on other boards... Do you know what is special about esche/jacuzzi?\n",
+      "revId": "bea975a006ca0c1df171ab06f5440b23637b367e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ee42afc_65b1ff34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-06T03:53:57Z",
+      "side": 1,
+      "message": "I don\u0027t know what the difference is between running the login through tast and through the real login screen, but I can say the following on the esche model leased on skylab:\n* After running the test, when I clicked logout and then \"browse as guest\", it only took a few seconds.\n* After completing OOBE for my OTA, it took around 30 seconds to log in. When signing out and signing in again, it only took around 10\n* No matter what method I used, I was unable to see the screen that you see when logging in through tast / after running \"initctl start ui\" (white screen except the bottom-right has the little notification bar with a clock and the input method or something).\n\nSo to sum it up, I have no idea if it\u0027s a product issue or test issue. My suspicion is that the test codepath is slightly different, so it\u0027s an issue that won\u0027t affect end-users, but I can\u0027t really tell.",
+      "parentUuid": "c0b6712b_0d491712",
       "revId": "bea975a006ca0c1df171ab06f5440b23637b367e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
