@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5969bb46_4611b0ac",
+        "filename": "src/chromiumos/tast/local/graphics/trace/guestos/trace_replay_crostini_setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2021-05-06T20:20:56Z",
+      "side": 1,
+      "message": "Done. Changed the flow to avoid s.Fatal() at every step when resizing is not requested.",
+      "parentUuid": "1b44bc67_c76be3a8",
+      "range": {
+        "startLine": 22,
+        "startChar": 10,
+        "endLine": 22,
+        "endChar": 85
+      },
+      "revId": "5104a786eda102a9f4689e1d80436a0d17d11178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a388f68_b63b10b7",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb50039_69c8482c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/guestos/trace_replay_crostini_setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2021-05-06T20:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a388f68_b63b10b7",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "5104a786eda102a9f4689e1d80436a0d17d11178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3deb4405_22a5f0aa",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-05-06T19:26:42Z",
       "side": 1,
       "message": "s.Error. \nThis is not a critical part of the test.",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 11
+      },
+      "revId": "5104a786eda102a9f4689e1d80436a0d17d11178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90636b44_2aad77a7",
+        "filename": "src/chromiumos/tast/local/graphics/trace/guestos/trace_replay_crostini_setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2021-05-06T20:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3deb4405_22a5f0aa",
       "range": {
         "startLine": 37,
         "startChar": 6,
