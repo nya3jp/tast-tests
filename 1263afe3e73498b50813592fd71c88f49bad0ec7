@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "318d6872_7ee7dd40",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-06T05:51:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ad3cdb9_b94669a5",
+      "range": {
+        "startLine": 35,
+        "startChar": 83,
+        "endLine": 35,
+        "endChar": 86
+      },
+      "revId": "1263afe3e73498b50813592fd71c88f49bad0ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9003801a_271e2a83",
@@ -72,6 +96,30 @@
       "writtenOn": "2021-05-06T05:25:51Z",
       "side": 1,
       "message": "IIUC this should never happen.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "1263afe3e73498b50813592fd71c88f49bad0ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5f0dfe5_021903f9",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-06T05:51:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9003801a_271e2a83",
       "range": {
         "startLine": 92,
         "startChar": 0,
@@ -105,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ce7b351_ce3354b7",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-06T05:51:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6839736_32965be4",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 6
+      },
+      "revId": "1263afe3e73498b50813592fd71c88f49bad0ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49b7b3a8_d67af8ea",
@@ -118,6 +190,30 @@
       "writtenOn": "2021-05-06T05:25:51Z",
       "side": 1,
       "message": "out is already empty here since we always use \"out, err :\u003d ...\" above.",
+      "range": {
+        "startLine": 106,
+        "startChar": 115,
+        "endLine": 106,
+        "endChar": 118
+      },
+      "revId": "1263afe3e73498b50813592fd71c88f49bad0ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c04c51f0_b188d121",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-06T05:51:06Z",
+      "side": 1,
+      "message": "Good catch. Thanks.",
+      "parentUuid": "49b7b3a8_d67af8ea",
       "range": {
         "startLine": 106,
         "startChar": 115,
