@@ -34,6 +34,98 @@
       "parentUuid": "9cd7261d_84d800e6",
       "revId": "1263afe3e73498b50813592fd71c88f49bad0ec7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ad3cdb9_b94669a5",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-06T05:25:51Z",
+      "side": 1,
+      "message": "I recommend naming this return value different from \"err\", e.g. \"retErr\". Since it\u0027s too common name, it\u0027s easy to introduce a bug in a future change (i.e. inserting \"x, err :\u003d foo()\" in the function can break the function).",
+      "range": {
+        "startLine": 35,
+        "startChar": 83,
+        "endLine": 35,
+        "endChar": 86
+      },
+      "revId": "1263afe3e73498b50813592fd71c88f49bad0ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9003801a_271e2a83",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-06T05:25:51Z",
+      "side": 1,
+      "message": "IIUC this should never happen.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "1263afe3e73498b50813592fd71c88f49bad0ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6839736_32965be4",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-06T05:25:51Z",
+      "side": 1,
+      "message": "return is missing",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 6
+      },
+      "revId": "1263afe3e73498b50813592fd71c88f49bad0ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49b7b3a8_d67af8ea",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-06T05:25:51Z",
+      "side": 1,
+      "message": "out is already empty here since we always use \"out, err :\u003d ...\" above.",
+      "range": {
+        "startLine": 106,
+        "startChar": 115,
+        "endLine": 106,
+        "endChar": 118
+      },
+      "revId": "1263afe3e73498b50813592fd71c88f49bad0ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
