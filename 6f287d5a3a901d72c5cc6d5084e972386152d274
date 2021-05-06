@@ -123,6 +123,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77c207ee_007df4fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-06T00:52:21Z",
+      "side": 1,
+      "message": "This was actually my first thought; if we just take an average over the course of a bunch of runs, then we\u0027re probably biasing toward slow scans and such -- the slower the scan, the more non-roaming time included in the average.\n\nOr, it\u0027s possible I\u0027m not understanding the whole test timeline, because it\u0027s sorta hidden by at least 1 or 2 state machines: do we have a fixed amount of verifier time (the ping parameters)? Or a fixed amount of roaming iterations? Or both? If we\u0027re only fixing the number of rounds (and not the test time), then my above comment is more relevant.",
+      "parentUuid": "3e007a9a_3d8438dd",
+      "range": {
+        "startLine": 417,
+        "startChar": 1,
+        "endLine": 417,
+        "endChar": 14
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6b75032_8d494e28",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
         "patchSetId": 5
@@ -134,6 +158,24 @@
       "writtenOn": "2021-05-05T21:18:44Z",
       "side": 1,
       "message": "Could we get away with only one scan for all iterations (e.g. before the loop)?",
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e031727c_c9457b42",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-06T00:52:21Z",
+      "side": 1,
+      "message": "Scan results have a kind of \"lifetime\" to them, depending on who you\u0027re asking [1], so it kinda depends on how long each step takes.\n\nWe probably need to at least _ensure_ we currently see the BSS, but that doesn\u0027t technically require a new scan each time.\n\nMaybe that implies we could improve DiscoverBSSID() (or some new method) to Discover, but not necessarily start new scans unless necessary. But that doesn\u0027t seem super critical to do here and now.\n\n[1] e.g., I believe the kernel has a 30 (?) second timer after which it drops BSSs we haven\u0027t seen recently (which happens if we\u0027re not actively scanning, and they\u0027re not on the current channel); but then wpa_supplicant and shill may have different behaviors.",
+      "parentUuid": "e6b75032_8d494e28",
       "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -351,6 +393,29 @@
         "startChar": 1,
         "endLine": 100,
         "endChar": 20
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b90c8aca_f9a03bfb",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-06T00:52:21Z",
+      "side": 1,
+      "message": "nit: to",
+      "range": {
+        "startLine": 110,
+        "startChar": 40,
+        "endLine": 110,
+        "endChar": 42
       },
       "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
