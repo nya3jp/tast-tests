@@ -27,7 +27,7 @@ func init() {
 		Func: CPUSet,
 		Desc: "Verifies cpuset",
 		Contacts: []string{
-			"ereth@chromium.org",
+			"risan@chromium.org",
 			"arc-core@google.com",
 			"arc-storage@google.com",
 			"hidehiko@chromium.org", // Tast port author.
@@ -41,7 +41,6 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
