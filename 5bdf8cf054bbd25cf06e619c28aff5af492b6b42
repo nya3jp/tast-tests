@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99f4cbc5_bdc05c85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2021-05-06T02:01:24Z",
+      "side": 1,
+      "message": "We can also log the content of `/etc/lsb-release` to help us check if rootfs has been modified by an AU test.",
+      "revId": "5bdf8cf054bbd25cf06e619c28aff5af492b6b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
