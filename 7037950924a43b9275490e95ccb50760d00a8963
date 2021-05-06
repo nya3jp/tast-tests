@@ -283,6 +283,30 @@
       },
       "revId": "7037950924a43b9275490e95ccb50760d00a8963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e42bb18e_926f3c56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-06T13:22:53Z",
+      "side": 1,
+      "message": "Please don\u0027t manually edit the file, it\u0027s not maintainable. We need to fix policy_templates.json, not the code generated from it.\n\nWhat are you using to format the code? Can you disable it? gofmt is enough.",
+      "parentUuid": "128c5e6e_88675324",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "7037950924a43b9275490e95ccb50760d00a8963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
