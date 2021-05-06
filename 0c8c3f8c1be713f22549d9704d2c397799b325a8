@@ -22,6 +22,30 @@
       },
       "revId": "0c8c3f8c1be713f22549d9704d2c397799b325a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b33daa_f23e2901",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-05-06T05:22:47Z",
+      "side": 1,
+      "message": "Changed this CL to apply to both H264 and VPx.",
+      "parentUuid": "b94f223b_6eb70f0d",
+      "range": {
+        "startLine": 106,
+        "startChar": 36,
+        "endLine": 106,
+        "endChar": 50
+      },
+      "revId": "0c8c3f8c1be713f22549d9704d2c397799b325a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
