@@ -27,7 +27,7 @@ func init() {
 		Timeout:      1 * time.Minute,
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
-		Vars:         []string{"servo"},
+		Fixture:      "servo",
 	})
 }
 
@@ -42,11 +42,7 @@ func init() {
 // doesn't respond after being returned to the normal operating mode.
 // See https://source.chromium.org/search?q=file:flash_fp_mcu for behavior.
 func FpFlashFpMcuHello(ctx context.Context, s *testing.State) {
-	servop, err := servo.NewProxy(ctx, s.RequiredVar("servo"), s.DUT().KeyFile(), s.DUT().KeyDir())
-	if err != nil {
-		s.Fatal("Failed to get servo proxy: ", err)
-	}
-	defer servop.Close(ctx)
+	servop := s.FixtValue().(*servo.Proxy)
 
 	if err := servop.Servo().SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
 		s.Fatal("Failed to disable hardware write protection: ", err)
