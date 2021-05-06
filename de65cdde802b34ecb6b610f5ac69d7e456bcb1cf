@@ -69,6 +69,24 @@
       "parentUuid": "9d8fa604_73bf5466",
       "revId": "de65cdde802b34ecb6b610f5ac69d7e456bcb1cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2813b1d8_5a92c789",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-06T12:45:26Z",
+      "side": 1,
+      "message": "This does not fit into the existing uiauto pattern.\nI would prefer to have a policyutil solution for now, and if there is an accepted extension to uiauto that we can use, I don\u0027t mind changing it.",
+      "parentUuid": "3e6b98de_ec93562f",
+      "revId": "de65cdde802b34ecb6b610f5ac69d7e456bcb1cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
