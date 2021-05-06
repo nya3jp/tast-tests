@@ -34,6 +34,24 @@
       "parentUuid": "7b256481_b78fa5ef",
       "revId": "ac348c67b3fb38e95fc099f36ff7f681d91582b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5fadc7_1b3b1ae4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-06T10:37:34Z",
+      "side": 1,
+      "message": "Based on the fact that arc.Boot.vm is already in critical group, +2 this CL.",
+      "parentUuid": "ff9055c5_728219b1",
+      "revId": "ac348c67b3fb38e95fc099f36ff7f681d91582b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
