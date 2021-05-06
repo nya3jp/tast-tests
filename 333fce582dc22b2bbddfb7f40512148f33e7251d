@@ -80,6 +80,30 @@
       },
       "revId": "333fce582dc22b2bbddfb7f40512148f33e7251d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b046997e_06fbefe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-05-06T22:02:50Z",
+      "side": 1,
+      "message": "Sure, lets do this in a followup.",
+      "parentUuid": "f89431e7_c6e80aed",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 45
+      },
+      "revId": "333fce582dc22b2bbddfb7f40512148f33e7251d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
