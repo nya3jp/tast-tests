@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1e93cf0_fd863646",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-06T11:43:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e470f9dc_e3ce4d0a",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "7037950924a43b9275490e95ccb50760d00a8963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "240dffe4_9bbc5f6e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-06T10:53:34Z",
       "side": 1,
       "message": "generator",
+      "range": {
+        "startLine": 9,
+        "startChar": 35,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "7037950924a43b9275490e95ccb50760d00a8963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c50633a7_98ecd026",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-06T11:43:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "240dffe4_9bbc5f6e",
       "range": {
         "startLine": 9,
         "startChar": 35,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54756747_372af3a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-06T11:43:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d86db514_96ce8a85",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "7037950924a43b9275490e95ccb50760d00a8963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa0d39f4_a1ed02e4",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-05-06T10:53:34Z",
       "side": 1,
       "message": "This is automatic.",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "7037950924a43b9275490e95ccb50760d00a8963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d81ee6bb_faa067c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-06T11:43:04Z",
+      "side": 1,
+      "message": "yes and no.\nParser applies formatting, and when I open defs.go and saved it formatting was applied again. Hence I mentioned it. Otherwise Changes would show up as every line was changed.",
+      "parentUuid": "aa0d39f4_a1ed02e4",
       "range": {
         "startLine": 10,
         "startChar": 45,
