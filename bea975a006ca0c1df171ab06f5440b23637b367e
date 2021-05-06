@@ -81,6 +81,24 @@
       "parentUuid": "c0b6712b_0d491712",
       "revId": "bea975a006ca0c1df171ab06f5440b23637b367e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ecd4e3_aa2ce0e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-06T09:03:45Z",
+      "side": 1,
+      "message": "In syslog I see suspicious kernel stack traces related to graphics:\nhttps://storage.cloud.google.com/chromeos-autotest-results/swarming-532fd57d3904de10/autoserv_test/tast/results/tests/inputs.PhysicalKeyboardEnglishTyping/messages\n\nSearching Buganizer with the function name gives several issues:\nhttps://b.corp.google.com/issues?q\u003dmtk_drm_crtc_atomic_begin\n\nSo I guess this is actually a product issue. I\u0027m afraid that inserting a workaround in tests / support libraries may hide the issue.",
+      "parentUuid": "6ee42afc_65b1ff34",
+      "revId": "bea975a006ca0c1df171ab06f5440b23637b367e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
