@@ -199,6 +199,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b24875dc_41ab16a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-06T05:19:07Z",
+      "side": 1,
+      "message": "Hi Xibin, now I\u0027m back from 1-week long national holiday.\n\nI see at least 3 orthogonal issues involved here. Let me try to describe them, and please correct me if I\u0027m wrong.\n\n1. When logging with a brand-new Google account, \"Welcome to your new account\" screen is shown and Tast doesn\u0027t know how to handle it.\n\n\u003d\u003e IIUC this screen is asking the user to accept Google TOS before logging in. If so, once logging in, the screen should not appear on later logins, regardless of whether chrome.KeepState is used or not.\n\n2. When logging in with a real GAIA account, \"Who would you like to add to this Chromebook?\" screen is shown and Tast doesn\u0027t know how to handle it.\n\n\u003d\u003e This screen was enabled by default recently (crbug.com/1101318, crrev.com/c/2831531), and Tast support library has been already fixed to handle this screen (crrev.com/c/2850407, b/186175663).\n\n3. When logging in with chrome.KeepState, the user might not be the device owner, which prevents tests from performing certain operations.\n\n\u003d\u003e As Victor said, this is expected. If a test needs the device ownership to run its scenario, it should call chrome.New without chrome.KeepState to clear device states and create a new user with device ownership.\n\n--------\n\n\u003e Without knowing the current device owner, as a workaround, can we write tast login information on the DUT each time Chrome.New() is called. The information can include whether KeepState is used, and the last login user. Next time in Chrome.New it can decide if ownership needs to be cleared.\n\nAfter thinking more about this again, I\u0027m getting hesitant to add a new option to the chrome package. The usage of chrome.KeepState in CUJ tests are very unusual (IIUC they want to avoid re-logins across multiple \"tast run\") and don\u0027t want to introduce more complexity to the chrome package for this particular use case.\n\nRather what do you think about handling this in CUJ-specific fixtures? That is, to write a fixture that performs following:\n\n- Log into a session with chrome.KeepState\n- Check if the current user is the device owner. If it\u0027s not the case, re-login to a session without chrome.KeepState",
+      "parentUuid": "1daf0425_3bec0a20",
+      "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9fa62b4_ee688dcf",
         "filename": "src/chromiumos/tast/local/chrome/option.go",
         "patchSetId": 1
