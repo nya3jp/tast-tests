@@ -16,6 +16,24 @@
       "message": "I can\u0027t find references to crostini.CrostiniMinDiskSizeCond in the tree. Is it part of the tast genparams stuff? Assuming this builds and runs, it seems reasonable to me.\n\nIf there are devices that are expected to fail this condition for every run, would it make more sense to disable those test altogether.",
       "revId": "7e297f6fb2dcb028cdfe75f9509f9640b661be9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c23189c_34491ebf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-05-06T18:26:15Z",
+      "side": 1,
+      "message": "Here is the location\n/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/crostini/pre.go\n\nIf the condition is failing, tast would marked it as SKIP instead of failure. There\u0027s not much we can do if the device simply doesn\u0027t have the capacity to run crostini.\nIf there\u0027s a problematic DUT, either small disk size or ram. Yes, we might want to just disable tests to run against that specific DUT.",
+      "parentUuid": "2bf00743_d83bea6c",
+      "revId": "7e297f6fb2dcb028cdfe75f9509f9640b661be9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
