@@ -41,6 +41,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b346ff4c_43147aa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-05-06T10:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d432e1b_18fc3f3a",
+      "revId": "3ef676fc70eedac54f90026d91e0296b76869cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "445f90c8_4c62dbaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-05-06T10:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eacf2184_3587d157",
+      "range": {
+        "startLine": 42,
+        "startChar": 44,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "3ef676fc70eedac54f90026d91e0296b76869cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33981567_9f45dd72",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-05-06T07:16:59Z",
       "side": 1,
       "message": "nit: log err as well",
+      "revId": "3ef676fc70eedac54f90026d91e0296b76869cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a3f5ce4_e24822b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-05-06T10:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33981567_9f45dd72",
       "revId": "3ef676fc70eedac54f90026d91e0296b76869cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30666295_9b7b29b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-05-06T10:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76ac6e69_cae9c658",
+      "revId": "3ef676fc70eedac54f90026d91e0296b76869cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16b711dd_c9b08451",
@@ -88,6 +166,24 @@
       "writtenOn": "2021-05-06T07:16:59Z",
       "side": 1,
       "message": "Hmm one of the lib/lib64 command will fail here. How about running\n```\nbash -c \u0027md5sum /usr/lib*/libbase-{core,dbus,dl}.so\u0027\n```\nto get the checksums?",
+      "revId": "3ef676fc70eedac54f90026d91e0296b76869cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a93a20ee_c93ae825",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-05-06T10:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b711dd_c9b08451",
       "revId": "3ef676fc70eedac54f90026d91e0296b76869cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
