@@ -11,8 +11,9 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -42,73 +43,73 @@ func Notifications(ctx context.Context, tconn *chrome.TestConn) ([]*Notification
 
 // HideVisibleNotifications clicks on the tray button to show and hide the system tray button, which should also hide any visible notification.
 func HideVisibleNotifications(ctx context.Context, tconn *chrome.TestConn) error {
-	trayButton, err := ui.StableFind(ctx,
-		tconn,
-		ui.FindParams{Role: ui.RoleTypeButton, ClassName: "UnifiedSystemTray"},
-		&testing.PollOptions{Timeout: 5 * time.Second})
+	ns, err := Notifications(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "system tray button not found")
+		return errors.Wrap(err, "failed to get notifications")
 	}
-	defer trayButton.Release(ctx)
-
-	if err := mouse.Click(ctx, tconn, trayButton.Location.CenterPoint(), mouse.LeftButton); err != nil {
-		return errors.Wrap(err, "failed to click the tray button")
+	if len(ns) == 0 {
+		// No notification to hide.
+		return nil
 	}
-
-	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "SettingBubbleContainer"}, 2*time.Second); err != nil {
-		return errors.Wrap(err, "quick settings does not appear")
-	}
-
-	if err := mouse.Click(ctx, tconn, trayButton.Location.CenterPoint(), mouse.LeftButton); err != nil {
-		return errors.Wrap(err, "failed to click the tray button")
-	}
-	return nil
+	ui := uiauto.New(tconn)
+	trayButton := nodewith.ClassName("UnifiedSystemTray").Role(role.Button)
+	settingBubble := nodewith.ClassName("SettingBubbleContainer")
+	return uiauto.Combine("hide visible notifications",
+		ui.LeftClick(trayButton),
+		ui.WithTimeout(2*time.Second).WaitUntilExists(settingBubble),
+		ui.LeftClick(trayButton),
+	)(ctx)
 }
 
 // CloseNotifications clicks on the tray button to show the system tray button,
 // clicks close button on each notification and clicks on the tray button
 // to hide the system tray button.
 func CloseNotifications(ctx context.Context, tconn *chrome.TestConn) error {
-	trayButton, err := ui.Find(ctx, tconn, ui.FindParams{Role: ui.RoleTypeButton, ClassName: "UnifiedSystemTray"})
+	ns, err := Notifications(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "system tray button not found")
+		return errors.Wrap(err, "failed to get notifications")
 	}
-	defer trayButton.Release(ctx)
-
-	if err := mouse.Click(ctx, tconn, trayButton.Location.CenterPoint(), mouse.LeftButton); err != nil {
-		return errors.Wrap(err, "failed to click the tray button")
+	if len(ns) == 0 {
+		// No notification to close.
+		return nil
 	}
-
-	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "SettingBubbleContainer"}, 2*time.Second); err != nil {
-		return errors.Wrap(err, "quick settings does not appear")
-	}
-
-	params := ui.FindParams{
-		Name:      "Notification close",
-		ClassName: "ImageButton",
-		Role:      ui.RoleTypeButton,
+	ui := uiauto.New(tconn)
+	trayButton := nodewith.ClassName("UnifiedSystemTray").Role(role.Button)
+	settingBubble := nodewith.ClassName("SettingBubbleContainer")
+	if err := uiauto.Combine("open setting bubble",
+		ui.LeftClick(trayButton),
+		ui.WithTimeout(2*time.Second).WaitUntilExists(settingBubble),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to open setting bubble")
 	}
 
+	clearAll := nodewith.ClassName("LabelButtonLabel").Name("Clear all").Ancestor(nodewith.ClassName("StackedNotificationBar"))
+	notificationMsg := nodewith.ClassName("UnifiedMessageListView").Ancestor(nodewith.ClassName("UnifiedMessageListView").First())
+	closeBtn := nodewith.Name("Notification close").ClassName("PaddedButton").Ancestor(nodewith.ClassName("NotificationControlButtonsView"))
 	for {
-		nodes, err := ui.FindAll(ctx, tconn, params)
+		ns, err := Notifications(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "failed get list of all notifications close buttons")
+			return errors.Wrap(err, "failed to get notifications")
 		}
-		if len(nodes) == 0 {
+		if len(ns) == 0 {
 			break
 		}
-
-		for _, node := range nodes {
-			// Here we intentionaly ignore errors, because we modify
-			// accesability tree by clicking close buttons.
-			// However it's not a problem since we repeat operation until there
-			// will be no close buttons.
-			node.LeftClick(ctx)
+		// Use "Clear all" button if it exists.
+		if err := ui.Exists(clearAll)(ctx); err == nil {
+			if err := ui.LeftClick(clearAll)(ctx); err == nil {
+				break
+			}
 		}
-		nodes.Release(ctx)
+		// Here we intentionally ignore errors, because the notification UI tree keeps changing.
+		// However it's not a problem since we repeat operation until there
+		// will be no notifications.
+		uiauto.Combine("hover and close notification",
+			ui.WithTimeout(2*time.Second).MouseMoveTo(notificationMsg.First(), 0),
+			ui.WithTimeout(2*time.Second).LeftClick(closeBtn),
+		)(ctx)
 	}
 
-	if err := mouse.Click(ctx, tconn, trayButton.Location.CenterPoint(), mouse.LeftButton); err != nil {
+	if err := ui.LeftClick(trayButton)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click the tray button")
 	}
 
