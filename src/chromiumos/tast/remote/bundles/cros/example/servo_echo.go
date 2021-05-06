@@ -17,21 +17,13 @@ func init() {
 		Desc:     "Demonstrates running a test using Servo",
 		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
-		VarDeps:  []string{"servo"},
+		Fixture:  "servo",
 	})
 }
 
 // ServoEcho demonstrates how you'd use Servo in a Tast test using the echo method.
 func ServoEcho(ctx context.Context, s *testing.State) {
-	dut := s.DUT()
-
-	// This is expected to fail in VMs, since Servo is unusable there and the "servo" var won't
-	// be supplied. https://crbug.com/967901 tracks finding a way to skip tests when needed.
-	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), dut.KeyFile(), dut.KeyDir())
-	if err != nil {
-		s.Fatal("Failed to connect to servo: ", err)
-	}
-	defer pxy.Close(ctx)
+	pxy := s.FixtValue().(*servo.Proxy)
 
 	const msg = "hello from servo"
 	s.Logf("Sending echo request for %q", msg)
