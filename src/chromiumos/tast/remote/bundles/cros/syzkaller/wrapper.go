@@ -298,7 +298,7 @@ func loadEnabledSyscalls(fpath, syzArch string) (drivers, enabledSyscalls []stri
 		if len(config.Archs) == 0 || contains(config.Archs, syzArch) {
 			enabledSyscalls = append(enabledSyscalls, config.Syscalls...)
 			drivers = append(drivers, config.Driver)
-			scriptContents = scriptContents + strings.Join(config.StartupCmds, "\n")
+			scriptContents = scriptContents + strings.Join(config.StartupCmds, "\n") + "\n"
 		}
 	}
 
