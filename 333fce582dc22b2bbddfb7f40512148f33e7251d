@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4e3ef69_3e3984ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-05-06T21:50:40Z",
+      "side": 1,
+      "message": "Thank you for making this change!!",
+      "revId": "333fce582dc22b2bbddfb7f40512148f33e7251d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc55bbb8_1296805e",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-05-06T21:44:33Z",
       "side": 1,
       "message": "Can this not be part of the Attr field above? I presume we will have a platform_decoding_vp9.go soo, as otherwise the files get too long when we add av1 and h264.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 45
+      },
+      "revId": "333fce582dc22b2bbddfb7f40512148f33e7251d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f89431e7_c6e80aed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-05-06T21:50:40Z",
+      "side": 1,
+      "message": "Would it potentially make sense to add this to platform_decoding_test.go instead, here or in a follow-up?",
+      "parentUuid": "dc55bbb8_1296805e",
       "range": {
         "startLine": 60,
         "startChar": 0,
