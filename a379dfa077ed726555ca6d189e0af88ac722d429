@@ -46,6 +46,30 @@
       },
       "revId": "a379dfa077ed726555ca6d189e0af88ac722d429",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4d8d951_19cb53c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-05-06T05:24:07Z",
+      "side": 1,
+      "message": "Changed CL to apply both the block and allow list for VPx tests, merging different hardware dependencies seems to work perfectly fine.",
+      "parentUuid": "314207d2_206fc58c",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "a379dfa077ed726555ca6d189e0af88ac722d429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
