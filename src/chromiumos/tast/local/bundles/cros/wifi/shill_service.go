@@ -2061,9 +2061,12 @@ func (s *ShillService) DisconnectReason(_ *empty.Empty, sender wifi.ShillService
 	}
 }
 
-// suspend suspends the DUT for wakeUpTimeout.
+// suspend suspends the DUT for wakeUpTimeout. On success, the time of this
+// suspend is returned.
+// If checkEarlyWake is true, the call will fail when the suspend time is
+// shorter than wakeUpTimeout.
 // TODO(b/171280216): Extract these logics from network component.
-func suspend(ctx context.Context, wakeUpTimeout time.Duration) error {
+func suspend(ctx context.Context, wakeUpTimeout time.Duration, checkEarlyWake bool) (time.Duration, error) {
 	const (
 		powerdDBusSuspendPath = "/usr/bin/powerd_dbus_suspend"
 		rtcPath               = "/sys/class/rtc/rtc0/since_epoch"
@@ -2072,7 +2075,7 @@ func suspend(ctx context.Context, wakeUpTimeout time.Duration) error {
 
 	unlock, err := network.LockCheckNetworkHook(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to lock the check network hook")
+		return 0, errors.Wrap(err, "failed to lock the check network hook")
 	}
 	defer unlock()
 
@@ -2089,12 +2092,12 @@ func suspend(ctx context.Context, wakeUpTimeout time.Duration) error {
 		// It happens when the current clock (floating point) is close to the
 		// next integer, as the RTC sysfs interface only accepts integers.
 		// Make sure it is larger than or equal to 2.
-		return errors.Errorf("unexpected wake up timeout: got %s, want >= 2 seconds", wakeUpTimeout)
+		return 0, errors.Errorf("unexpected wake up timeout: got %s, want >= 2 seconds", wakeUpTimeout)
 	}
 
 	startRTC, err := rtcTimeSeconds()
 	if err != nil {
-		return err
+		return 0, err
 	}
 
 	wakeUpTimeoutSecond := int(wakeUpTimeout.Seconds())
@@ -2103,21 +2106,22 @@ func suspend(ctx context.Context, wakeUpTimeout time.Duration) error {
 		fmt.Sprintf("--wakeup_timeout=%d", wakeUpTimeoutSecond),  // Ask the powerd_dbus_suspend to spawn a RTC alarm to wake the DUT up after wakeUpTimeoutSecond.
 		fmt.Sprintf("--suspend_for_sec=%d", wakeUpTimeoutSecond), // Request powerd daemon to suspend for wakeUpTimeoutSecond.
 	).Run(); err != nil {
-		return err
+		return 0, err
 	}
 
 	finishRTC, err := rtcTimeSeconds()
 	if err != nil {
-		return err
+		return 0, err
 	}
 
-	testing.ContextLogf(ctx, "RTC suspend time: %d", finishRTC-startRTC)
+	suspendedInterval := finishRTC - startRTC
+	testing.ContextLogf(ctx, "RTC suspend time: %d", suspendedInterval)
 
-	if suspendedInterval := finishRTC - startRTC; suspendedInterval < wakeUpTimeoutSecond {
-		return errors.Errorf("the DUT wakes up too early, got %d, want %d", suspendedInterval, wakeUpTimeoutSecond)
+	if checkEarlyWake && suspendedInterval < wakeUpTimeoutSecond {
+		return 0, errors.Errorf("the DUT wakes up too early, got %d, want %d", suspendedInterval, wakeUpTimeoutSecond)
 	}
 
-	return nil
+	return time.Duration(suspendedInterval) * time.Second, nil
 }
 
 // SuspendAssertConnect suspends the DUT and waits for connection after resuming.
@@ -2129,7 +2133,7 @@ func (s *ShillService) SuspendAssertConnect(ctx context.Context, req *wifi.Suspe
 	pw, err := service.CreateWatcher(ctx)
 	defer pw.Close(ctx)
 
-	if err := suspend(ctx, time.Duration(req.WakeUpTimeout)); err != nil {
+	if _, err := suspend(ctx, time.Duration(req.WakeUpTimeout), true); err != nil {
 		return nil, errors.Wrap(err, "failed to suspend")
 	}
 
@@ -2148,11 +2152,14 @@ func (s *ShillService) SuspendAssertConnect(ctx context.Context, req *wifi.Suspe
 }
 
 // Suspend suspends the DUT.
-func (s *ShillService) Suspend(ctx context.Context, req *wifi.SuspendRequest) (*empty.Empty, error) {
-	if err := suspend(ctx, time.Duration(req.WakeUpTimeout)); err != nil {
+func (s *ShillService) Suspend(ctx context.Context, req *wifi.SuspendRequest) (*wifi.SuspendResponse, error) {
+	interval, err := suspend(ctx, time.Duration(req.WakeUpTimeout), req.CheckEarlyWake)
+	if err != nil {
 		return nil, err
 	}
-	return &empty.Empty{}, nil
+	return &wifi.SuspendResponse{
+		SuspendTime: interval.Nanoseconds(),
+	}, nil
 }
 
 // GetGlobalFTProperty returns the WiFi.GlobalFTEnabled manager property value.
@@ -2411,7 +2418,7 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 			defer cancel()
 
 			return assertIdleAndConnect(ctx, func(ctx context.Context) error {
-				if err := suspend(ctx, suspendDuration); err != nil {
+				if _, err := suspend(ctx, suspendDuration, true); err != nil {
 					return errors.Wrap(err, "failed to suspend")
 				}
 				return nil

@@ -139,7 +139,8 @@ func MTBF(ctx context.Context, s *testing.State) {
 		bgCtx, cancel := context.WithCancel(ctx)
 		go func() {
 			defer close(ch)
-			ch <- tf.Suspend(bgCtx, duration)
+			_, err := tf.Suspend(bgCtx, duration, true)
+			ch <- err
 		}()
 		return ch, func() {
 			// In case we failed and returned early in fg routine, cancel the bg routine and wait for it.
