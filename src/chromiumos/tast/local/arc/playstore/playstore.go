@@ -7,6 +7,7 @@ package playstore
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -34,8 +35,9 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 		continueButtonText = "continue"
 		gotItButtonText    = "got it"
 		installButtonText  = "install"
-		openButtonText     = "open"
 		okButtonText       = "ok"
+		openButtonText     = "open"
+		playButtonText     = "play"
 		retryButtonText    = "retry"
 		skipButtonText     = "skip"
 
@@ -168,9 +170,9 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 			}
 		}
 
-		// Installation is complete once the open button is enabled.
-		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+openButtonText), ui.Enabled(true)).Exists(ctx); err != nil {
-			return errors.Wrap(err, "failed to wait for enabled open button")
+		// Installation is complete once the open button or the play button is enabled.
+		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(fmt.Sprintf("(?i)(%s|%s)", openButtonText, playButtonText)), ui.Enabled(true)).Exists(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for enabled open button or play button")
 		}
 		return nil
 	}, &testing.PollOptions{Interval: time.Second}); err != nil {
