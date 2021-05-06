@@ -14,14 +14,14 @@ func TestParseAndFilterGetDiskInfo(t *testing.T) {
 	const out = `
 {
   "blockdevices": [
-    {"name": "loop0", "type": "loop", "hotplug": "0", "size": "536870912000", "state": null},
-    {"name": "sda", "type": "disk", "hotplug": "0", "size": "1073741824000", "state": "running"},
-    {"name": "mmcblk0", "type": "disk", "hotplug": "1", "size": "31268536320", "state": null},
-    {"name": "mmcblk0boot0", "type": "disk", "hotplug": "1", "size": "4194304", "state": null},
-    {"name": "mmcblk0boot1", "type": "disk", "hotplug": "1", "size": "4194304", "state": null},
-    {"name":"nvme0n1", "type":"disk", "hotplug": "0", "size":"137438953472", "state":"live"},
-    {"name":"nvme0n2", "type":"disk", "hotplug": "0", "size":"17179869184", "state":"live"},
-    {"name":"nvme1n1", "type":"disk", "hotplug": "0", "size":"34359738368", "state":"live"}
+    {"name": "loop0", "type": "loop", "hotplug": false, "size": "536870912000", "state": null},
+    {"name": "sda", "type": "disk", "hotplug": false, "size": "1073741824000", "state": "running"},
+    {"name": "mmcblk0", "type": "disk", "hotplug": true, "size": "31268536320", "state": null},
+    {"name": "mmcblk0boot0", "type": "disk", "hotplug": true, "size": "4194304", "state": null},
+    {"name": "mmcblk0boot1", "type": "disk", "hotplug": true, "size": "4194304", "state": null},
+    {"name":"nvme0n1", "type":"disk", "hotplug": false, "size":"137438953472", "state":"live"},
+    {"name":"nvme0n2", "type":"disk", "hotplug": false, "size":"17179869184", "state":"live"},
+    {"name":"nvme1n1", "type":"disk", "hotplug": false, "size":"34359738368", "state":"live"}
   ]
 }`
 
@@ -36,35 +36,35 @@ func TestParseAndFilterGetDiskInfo(t *testing.T) {
 		{
 			Name:    "sda",
 			Type:    "disk",
-			Hotplug: "0",
+			Hotplug: false,
 			Size:    1073741824000,
 			State:   "running",
 		},
 		{
 			Name:    "mmcblk0",
 			Type:    "disk",
-			Hotplug: "1",
+			Hotplug: true,
 			Size:    31268536320,
 			State:   "",
 		},
 		{
 			Name:    "nvme0n1",
 			Type:    "disk",
-			Hotplug: "0",
+			Hotplug: false,
 			Size:    137438953472,
 			State:   "live",
 		},
 		{
 			Name:    "nvme0n2",
 			Type:    "disk",
-			Hotplug: "0",
+			Hotplug: false,
 			Size:    17179869184,
 			State:   "live",
 		},
 		{
 			Name:    "nvme1n1",
 			Type:    "disk",
-			Hotplug: "0",
+			Hotplug: false,
 			Size:    34359738368,
 			State:   "live",
 		},
@@ -83,7 +83,7 @@ func TestGetMainDeviceSize(t *testing.T) {
 	const out = `
 {
 	"blockdevices": [
-		{"name": "sda", "type": "disk", "hotplug": "0", "size": "10000", "state": "running"}
+		{"name": "sda", "type": "disk", "hotplug": false, "size": "10000", "state": "running"}
 	]
 }`
 
@@ -104,17 +104,17 @@ func TestMainDeviceOnly(t *testing.T) {
 	const out = `
 {
 	"blockdevices": [
-		{"name": "loop0", "type": "loop", "hotplug": "0", "size": "536870912000", "state": null},
-		{"name": "mmcblk0d1", "type": "disk", "hotplug": "1", "size": "536870912000", "state": null},
-		{"name": "mmcblk0", "type": "disk", "hotplug": "1", "size": "10000", "state": null},
-		{"name": "zram0", "type": "loop", "hotplug": "0", "size": "536870912000", "state": null}
+		{"name": "loop0", "type": "loop", "hotplug": false, "size": "536870912000", "state": null},
+		{"name": "mmcblk0d1", "type": "disk", "hotplug": true, "size": "536870912000", "state": null},
+		{"name": "mmcblk0", "type": "disk", "hotplug": true, "size": "10000", "state": null},
+		{"name": "zram0", "type": "loop", "hotplug": false, "size": "536870912000", "state": null}
 	]
 }`
 
 	exp := &Blockdevice{
 		Name:    "mmcblk0",
 		Type:    "disk",
-		Hotplug: "1",
+		Hotplug: true,
 		Size:    10000,
 		State:   "",
 	}
@@ -144,17 +144,17 @@ func TestMainAndSlcDeviceOnly(t *testing.T) {
 	const out = `
 {
 	"blockdevices": [
-    {"name": "loop0", "type": "loop", "hotplug": "0", "size": "536870912000", "state": null},
-    {"name":"nvme0n1", "type":"disk", "hotplug": "0", "size":"17179869184", "state":"live"},
-    {"name":"nvme0n2", "type":"disk", "hotplug": "0", "size":"137438953472", "state":"live"},
-    {"name": "zram0", "type": "loop", "hotplug": "0", "size": "536870912000", "state": null}
+    {"name": "loop0", "type": "loop", "hotplug": false, "size": "536870912000", "state": null},
+    {"name":"nvme0n1", "type":"disk", "hotplug": false, "size":"17179869184", "state":"live"},
+    {"name":"nvme0n2", "type":"disk", "hotplug": false, "size":"137438953472", "state":"live"},
+    {"name": "zram0", "type": "loop", "hotplug": false, "size": "536870912000", "state": null}
 	]
 }`
 
 	mainDeviceExp := &Blockdevice{
 		Name:    "nvme0n2",
 		Type:    "disk",
-		Hotplug: "0",
+		Hotplug: false,
 		Size:    137438953472,
 		State:   "live",
 	}
@@ -162,7 +162,7 @@ func TestMainAndSlcDeviceOnly(t *testing.T) {
 	slcDeviceExp := &Blockdevice{
 		Name:    "nvme0n1",
 		Type:    "disk",
-		Hotplug: "0",
+		Hotplug: false,
 		Size:    17179869184,
 		State:   "live",
 	}

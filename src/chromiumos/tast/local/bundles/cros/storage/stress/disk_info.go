@@ -26,8 +26,8 @@ var devRegExp = regexp.MustCompile(`(sda|nvme\dn\d|mmcblk\d)$`)
 type Blockdevice struct {
 	Name    string `json:"name"`
 	Type    string `json:"type"`
-	Hotplug string `json:"hotplug"`
-	Size    int64  `json:"size,string"`
+	Hotplug bool   `json:"hotplug"`
+	Size    int64  `json:"size"`
 	State   string `json:"state"`
 }
 
