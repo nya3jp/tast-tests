@@ -117,6 +117,24 @@
       "parentUuid": "c4ecd4e3_aa2ce0e0",
       "revId": "bea975a006ca0c1df171ab06f5440b23637b367e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e30960e_c800f010",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-06T09:39:09Z",
+      "side": 1,
+      "message": "Assuming that this is a graphics issue, it is not easy to tell which tests are actually affected, so disabling specific tests on esche/jacuzzi might be not scalable. Maybe we don\u0027t need to scale though.\n\nIf the motivation is to promote inputs.PhysicalKeyboardEnglishTyping to critical, I think it\u0027s okay to ignore errors from jacuzzi since they are highly likely known product issues.\n\nIdeally we can able to distinguish \"normal\" test errors from graphics errors...",
+      "parentUuid": "c6cd7602_790e1d2d",
+      "revId": "bea975a006ca0c1df171ab06f5440b23637b367e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
