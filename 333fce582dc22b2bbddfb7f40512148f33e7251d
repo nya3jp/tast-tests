@@ -146,6 +146,30 @@
       },
       "revId": "333fce582dc22b2bbddfb7f40512148f33e7251d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602ec0d0_c5ec7352",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2021-05-06T23:06:54Z",
+      "side": 1,
+      "message": "Sorry --- the platform_decoding_test.go mention was confused because the UI wasn\u0027t showing the changes, so please ignore that specific bit :) But the follow-up does have to do with any potential refactoring, yes.\n\nIn particular, IIUC if we split out the tests per-codec, then we also don\u0027t need the extra field in paramData, and can just add the codec Attr directly to the testing.Test to cover all the tests in the particular codec file.",
+      "parentUuid": "9c5cba4b_da7fe2d3",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 45
+      },
+      "revId": "333fce582dc22b2bbddfb7f40512148f33e7251d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
