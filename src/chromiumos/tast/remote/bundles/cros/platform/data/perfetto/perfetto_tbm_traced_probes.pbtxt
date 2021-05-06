@@ -1,0 +1,184 @@
+# Buffer 0: for package list.
+buffers {
+    size_kb: 512
+    fill_policy: RING_BUFFER
+}
+
+# Buffer 1: for process stats.
+buffers {
+    size_kb: 4096
+    fill_policy: RING_BUFFER
+}
+
+# Buffer 2: Small buffer for meminfo and procfs scans
+buffers {
+    size_kb: 128
+    fill_policy: RING_BUFFER
+}
+
+# Buffer 3: for ftrace, frame timeline, rss_stat, GPU memory.
+buffers {
+    size_kb: 28608
+    fill_policy: RING_BUFFER
+}
+
+data_sources {
+    config {
+        name: "android.packages_list"
+        target_buffer: 0
+    }
+}
+
+data_sources {
+    config {
+        name: "linux.process_stats"
+        target_buffer: 1
+        process_stats_config {
+            scan_all_processes_on_start: true
+        }
+    }
+}
+
+data_sources: {
+    config {
+        name: "linux.sys_stats"
+        target_buffer: 2
+        sys_stats_config {
+            meminfo_period_ms: 5000
+            meminfo_counters: MEMINFO_MEM_FREE
+            meminfo_counters: MEMINFO_SWAP_FREE
+            meminfo_counters: MEMINFO_SLAB
+            meminfo_counters: MEMINFO_SLAB_UNRECLAIMABLE
+            meminfo_counters: MEMINFO_KERNEL_STACK
+        }
+    }
+}
+
+data_sources {
+    config {
+        name: "linux.process_stats"
+        target_buffer: 2
+        process_stats_config {
+            proc_stats_poll_ms: 30000 # 30 seconds
+            quirks: DISABLE_ON_DEMAND
+        }
+    }
+}
+
+data_sources {
+    config {
+        name: "linux.ftrace"
+        target_buffer: 3
+        ftrace_config {
+            symbolize_ksyms: true
+
+            # os.Trace markers:
+            ftrace_events: "ftrace/print"
+
+            # LMK
+            atrace_apps: "lmkd"
+            ftrace_events: "lowmemorykiller/lowmemory_kill"
+            ftrace_events: "oom/oom_score_adj_update"
+            ftrace_events: "oom/mark_victim"
+
+            # RSS and ION buffer events:
+            ftrace_events: "gpu_mem/gpu_mem_total"
+            ftrace_events: "dmabuf_heap/dma_heap_stat"
+            ftrace_events: "ion/ion_stat"
+            ftrace_events: "kmem/ion_heap_grow"
+            ftrace_events: "kmem/ion_heap_shrink"
+            ftrace_events: "rss_stat"
+
+            # Scheduling information & process tracking. Useful for:
+            # - what is happening on each CPU at each moment
+            # - why a thread was descheduled
+            # - parent/child relationships between processes and threads.
+            ftrace_events: "power/suspend_resume"
+            ftrace_events: "sched/sched_blocked_reason"
+            ftrace_events: "sched/sched_process_free"
+            ftrace_events: "sched/sched_switch"
+            ftrace_events: "task/task_newtask"
+            ftrace_events: "task/task_rename"
+
+            # Wakeup info. Allows you to compute how long a task was
+            # blocked due to CPU contention.
+            ftrace_events: "sched/sched_waking"
+            ftrace_events: "sched/sched_wakeup_new"
+
+            # Workqueue events.
+            ftrace_events: "workqueue/workqueue_activate_work"
+            ftrace_events: "workqueue/workqueue_execute_end"
+            ftrace_events: "workqueue/workqueue_execute_start"
+            ftrace_events: "workqueue/workqueue_queue_work"
+
+            # vmscan and mm_compaction events.
+            ftrace_events: "vmscan/mm_vmscan_kswapd_wake"
+            ftrace_events: "vmscan/mm_vmscan_kswapd_sleep"
+            ftrace_events: "vmscan/mm_vmscan_direct_reclaim_begin"
+            ftrace_events: "vmscan/mm_vmscan_direct_reclaim_end"
+            ftrace_events: "compaction/mm_compaction_begin"
+            ftrace_events: "compaction/mm_compaction_end"
+
+            # Atrace activity manager:
+            atrace_categories: "am"
+            # Atrace camera category:
+            atrace_categories: "camera"
+            # Atrace system_server:
+            atrace_categories: "ss"
+
+            # Java and C:
+            atrace_categories: "dalvik"
+            atrace_categories: "bionic"
+
+            atrace_categories: "binder_driver"
+            atrace_categories: "disk"
+            atrace_categories: "freq"
+            atrace_categories: "gfx"
+            atrace_categories: "hal"
+            atrace_categories: "res"
+            atrace_categories: "sched"
+            atrace_categories: "view"
+            atrace_categories: "wm"
+
+            atrace_apps: "system_server"
+            atrace_apps: "com.android.systemui"
+            atrace_apps: "com.google.android.apps.nexuslauncher"
+            atrace_apps: "com.google.android.GoogleCamera"
+            atrace_apps: "com.android.settings"
+
+            # PRIMES
+            atrace_apps: "com.google.android.apps.betterbug"
+            atrace_apps: "com.google.android.apps.betterbug.partners"
+            atrace_apps: "com.google.android.apps.internal.betterbug"
+            atrace_apps: "com.google.android.apps.maps"
+            atrace_apps: "com.google.android.apps.searchlite"
+            atrace_apps: "com.google.android.apps.photos"
+            atrace_apps: "com.google.android.apps.magazines"
+            atrace_apps: "com.google.android.apps.messaging"
+            atrace_apps: "com.google.android.apps.photosgo"
+            atrace_apps: "com.google.android.apps.tv.launcherx"
+            atrace_apps: "com.google.android.gm"
+            atrace_apps: "com.google.android.wearable.app"
+            atrace_apps: "com.google.android.apps.freighter"
+            atrace_apps: "com.google.android.apps.gmm.qp"
+            atrace_apps: "com.google.android.apps.subscriptions.red"
+            atrace_apps: "com.google.android.dialer"
+            atrace_apps: "com.google.android.apps.gmm"
+            atrace_apps: "com.google.android.googlequicksearchbox"
+
+            compact_sched {
+                enabled: true
+            }
+        }
+    }
+}
+
+data_sources {
+    config {
+        name: "android.surfaceflinger.frametimeline"
+        target_buffer: 3
+    }
+}
+
+duration_ms: 15000
+
