@@ -1456,3 +1456,59 @@ func (tf *TestFixture) getLoggingConfig(ctx context.Context) (int, []string, err
 	}
 	return int(currentConfig.DebugLevel), currentConfig.DebugTags, err
 }
+
+// SetWakeOnWifiOption is the type of options of SetWakeOnWifi method of TestFixture.
+type SetWakeOnWifiOption func(*wifi.WakeOnWifiConfig)
+
+// WakeOnWifiFeatures returns a option for SetWakeOnWifi to modify the
+// WakeOnWiFiFeaturesEnabled property.
+func WakeOnWifiFeatures(features string) SetWakeOnWifiOption {
+	return func(config *wifi.WakeOnWifiConfig) {
+		config.Features = features
+	}
+}
+
+// WakeOnWifiNetDetectScanPeriod returns an option for SetWakeOnWifi to modify
+// the NetDetectScanPeriodSeconds property.
+func WakeOnWifiNetDetectScanPeriod(seconds uint32) SetWakeOnWifiOption {
+	return func(config *wifi.WakeOnWifiConfig) {
+		config.NetDetectScanPeriod = seconds
+	}
+}
+
+// SetWakeOnWifi sets properties related to wake on WiFi.
+func (tf *TestFixture) SetWakeOnWifi(ctx context.Context, ops ...SetWakeOnWifiOption) (shortenCtx context.Context, cleanupFunc func() error, retErr error) {
+	resp, err := tf.WifiClient().GetWakeOnWifi(ctx, &empty.Empty{})
+	if err != nil {
+		return ctx, nil, errors.Wrap(err, "failed to get WoWiFi setting")
+	}
+
+	origConfig := resp.Config
+	newConfig := *origConfig // Copy so we won't modify the original one.
+
+	// Allow WakeOnWiFi.
+	newConfig.Allowed = true
+	for _, op := range ops {
+		op(&newConfig)
+	}
+
+	ctxRestore := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	req := &wifi.SetWakeOnWifiRequest{
+		Config: &newConfig,
+	}
+	if _, err := tf.WifiClient().SetWakeOnWifi(ctx, req); err != nil {
+		return ctx, nil, errors.Wrap(err, "failed to set WoWiFi features")
+	}
+	restore := func() error {
+		cancel()
+		req := &wifi.SetWakeOnWifiRequest{
+			Config: origConfig,
+		}
+		if _, err := tf.WifiClient().SetWakeOnWifi(ctxRestore, req); err != nil {
+			return errors.Wrapf(err, "failed to restore WoWiFi features to %v", origConfig)
+		}
+		return nil
+	}
+	return ctx, restore, nil
+}

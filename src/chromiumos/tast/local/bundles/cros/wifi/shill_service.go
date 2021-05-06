@@ -2487,3 +2487,90 @@ func (s *ShillService) SetLoggingConfig(ctx context.Context, req *wifi.SetLoggin
 
 	return &empty.Empty{}, nil
 }
+
+// GetWakeOnWifi returns the wake on WiFi related properties of WiFi device.
+func (s *ShillService) GetWakeOnWifi(ctx context.Context, _ *empty.Empty) (*wifi.GetWakeOnWifiResponse, error) {
+	_, dev, err := s.wifiDev(ctx)
+	if err != nil {
+		return nil, err
+	}
+	props, err := dev.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the WiFi device properties")
+	}
+	allowed, err := props.GetBool(shillconst.DevicePropertyWakeOnWiFiAllowed)
+	if err != nil {
+		return nil, err
+	}
+	features, err := props.GetString(shillconst.DevicePropertyWakeOnWiFiFeaturesEnabled)
+	if err != nil {
+		return nil, err
+	}
+	netDetectScanPeriod, err := props.GetUint32(shillconst.DevicePropertyNetDetectScanPeriodSeconds)
+	if err != nil {
+		return nil, err
+	}
+
+	return &wifi.GetWakeOnWifiResponse{
+		Config: &wifi.WakeOnWifiConfig{
+			Allowed:             allowed,
+			Features:            features,
+			NetDetectScanPeriod: netDetectScanPeriod,
+		},
+	}, nil
+}
+
+// SetWakeOnWifi sets wake on WiFi related property of WiFi device.
+func (s *ShillService) SetWakeOnWifi(ctx context.Context, req *wifi.SetWakeOnWifiRequest) (*empty.Empty, error) {
+	_, dev, err := s.wifiDev(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	config := req.Config
+
+	// Currently, we block WoWiFi enablement behind the "allowed" flag.
+	// Check if the setting is valid before further action.
+	if !config.Allowed && config.Features != shillconst.WakeOnWiFiFeaturesNone {
+		return nil, errors.New("WoWiFi not allowed but expected features to be enabled")
+	}
+
+	// Set allowed first.
+	if err := dev.SetProperty(ctx, shillconst.DevicePropertyWakeOnWiFiAllowed, config.Allowed); err != nil {
+		return nil, errors.Wrapf(err, "failed to set WakeOnWiFiAllowed to %t", config.Allowed)
+	}
+	// Only set features when allowed as it should be always "none" when not allowed.
+	if config.Allowed {
+		if err := dev.SetProperty(ctx, shillconst.DevicePropertyWakeOnWiFiFeaturesEnabled, config.Features); err != nil {
+			return nil, errors.Wrapf(err, "failed to set the WakeOnWiFiFeaturesEnabled property to %s", config.Features)
+		}
+	}
+	if err := dev.SetProperty(ctx, shillconst.DevicePropertyNetDetectScanPeriodSeconds, config.NetDetectScanPeriod); err != nil {
+		return nil, errors.Wrapf(err, "failed to set NetDetectScanPeriod to %d seconds", config.NetDetectScanPeriod)
+	}
+
+	return &empty.Empty{}, nil
+}
+
+// CheckLastWakeReason checks if the last wake reason of WiFi device is as expeteced.
+func (s *ShillService) CheckLastWakeReason(ctx context.Context, req *wifi.CheckLastWakeReasonRequest) (*empty.Empty, error) {
+	_, dev, err := s.wifiDev(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	props, err := dev.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the WiFi device properties")
+	}
+	reason, err := props.GetString(shillconst.DevicePropertyLastWakeReason)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get LastWakeReason property")
+	}
+	// TODO(b/187362093): The check can race with NL80211 message to shill. Could improve
+	// robustness by waiting for PropertyChanged.
+	if reason != req.Reason {
+		return nil, errors.Wrapf(err, "unexpected LastWakeReason, got %s, want %s", reason, req.Reason)
+	}
+	return &empty.Empty{}, nil
+}
