@@ -16,6 +16,24 @@
       "message": "The test is still having known issues (118 known, 432 passes, 550 total). It is not ready to be promoted yet.",
       "revId": "ac348c67b3fb38e95fc099f36ff7f681d91582b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff9055c5_728219b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-05-06T08:34:37Z",
+      "side": 1,
+      "message": "All of these known issues were unrelated to this test.\n\n13936-13938 : b/186359032\n13950       : b/179332089\n\nNote that all ARC tests (including arc.Boot.vm) were failing during these periods due to these issues.\narc.Boot.vm : https://tastboard.corp.google.com/test/arc.Boot.vm",
+      "parentUuid": "7b256481_b78fa5ef",
+      "revId": "ac348c67b3fb38e95fc099f36ff7f681d91582b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
