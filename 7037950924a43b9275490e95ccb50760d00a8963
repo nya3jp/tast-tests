@@ -259,6 +259,30 @@
       },
       "revId": "7037950924a43b9275490e95ccb50760d00a8963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "128c5e6e_88675324",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-06T13:07:53Z",
+      "side": 1,
+      "message": "yes, as mentioned in the description \"adjust not complied wording\". Some of the links don\u0027t have references to main but to master. Precommit checks that and I corrected that before submitting. On \"save action\" it was reformatted.",
+      "parentUuid": "4bb4f2f2_c34451e7",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "7037950924a43b9275490e95ccb50760d00a8963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
