@@ -22,6 +22,30 @@
       },
       "revId": "ae7e23c36b3d52434dbbb5f92765c5723e85e6df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32146eb8_93fa53be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-05-06T05:53:11Z",
+      "side": 1,
+      "message": "Added to the CL description.",
+      "parentUuid": "fc8ad290_50a46dc4",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "ae7e23c36b3d52434dbbb5f92765c5723e85e6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
