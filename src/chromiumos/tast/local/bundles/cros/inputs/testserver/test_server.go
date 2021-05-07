@@ -240,3 +240,16 @@ func (its *InputsTestServer) ValidateInputOnField(inputField InputField, inputFu
 		its.WaitForFieldValueToBe(inputField, expectedValue),
 	)
 }
+
+// ValidateInputNotEmpty returns an action checking the input value is not empty.
+func (its *InputsTestServer) ValidateInputNotEmpty(inputField InputField) uiauto.Action {
+	return its.ui.WithInterval(time.Second).Retry(5, func(ctx context.Context) error {
+		nodeInfo, err := its.ui.Info(ctx, inputField.Finder())
+		if err != nil {
+			return err
+		} else if nodeInfo.Value == "" {
+			return errors.New("failed to validate input value is not empty")
+		}
+		return nil
+	})
+}
