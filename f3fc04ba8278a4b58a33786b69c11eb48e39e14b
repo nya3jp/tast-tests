@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34e61070_63bf4f16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-07T03:01:31Z",
+      "side": 1,
+      "message": "Oh right, I read it as ValidateInputEmpty, my bad",
+      "parentUuid": "b8181e2d_e0ecc994",
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01bab4bd_ad9777da",
