@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cb5bacc_d1b6441f",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-07T14:39:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aeceac6_ef27cced",
+      "range": {
+        "startLine": 36,
+        "startChar": 58,
+        "endLine": 36,
+        "endChar": 74
+      },
+      "revId": "017aa0d213e7c3ecf503e74c481a93c8c31a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1efe7c8_6a911f9a",
@@ -298,6 +322,30 @@
       "side": 1,
       "message": "https://pkg.go.dev/github.com/pkg/errors#hdr-Adding_context_to_an_error\n\nYou basically misuse Wrap function a bit. It should be used to add additional context, but these errors are independent.\n\nYou probably need something like multierror:\nhttps://github.com/hashicorp/go-multierror\n\nOr just return the first error.",
       "parentUuid": "1c45dae7_41727662",
+      "range": {
+        "startLine": 98,
+        "startChar": 29,
+        "endLine": 98,
+        "endChar": 40
+      },
+      "revId": "017aa0d213e7c3ecf503e74c481a93c8c31a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c87820c_a8e9a0c6",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-07T14:39:20Z",
+      "side": 1,
+      "message": "Returning with the first error.",
+      "parentUuid": "68bc6a35_b70205da",
       "range": {
         "startLine": 98,
         "startChar": 29,
