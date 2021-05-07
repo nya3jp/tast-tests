@@ -16,24 +16,16 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 // Documentation on file format can be found in go/tast-handwriting-svg-parsing.
 const (
-	handwritingFileEN = "handwriting_en_hello_20210129.svg"
-	handwritingFileCN = "handwriting_cn_hello_20210129.svg"
-	handwritingFileJP = "handwriting_jp_hello_20210129.svg"
+	handwritingWarmupFile  = "handwriting_digit_3_20210510.svg"
+	handwritingWarmupDigit = "3"
+	handwritingFileEN      = "handwriting_en_hello_20210129.svg"
+	handwritingFileCN      = "handwriting_cn_hello_20210129.svg"
+	handwritingFileJP      = "handwriting_jp_hello_20210129.svg"
 )
-
-// TODO(crbug/1175982): Stabilize handwriting input test.
-// Stable models to test handwriting input testing.
-var stableModels = []string{
-	"hana",
-	"kefka",
-	"coral",
-	"betty",
-}
 
 // Struct to contain the virtual keyboard handwriting test parameters.
 type handwritingTestParams struct {
@@ -49,8 +41,8 @@ func init() {
 		Desc:         "Test handwriting input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		HardwareDeps: hwdep.D(hwdep.Model(stableModels...)),
 		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
+		Data:         []string{handwritingWarmupFile},
 		Params: []testing.Param{
 			{
 				Name:      "hello_jp",
@@ -163,7 +155,11 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("Test handwriting on virtual keyboard",
 		its.ClickFieldUntilVKShown(inputField),
-		vkbCtx.TapHandwritingInputAndWaitForEngine(),
+		vkbCtx.TapHandwritingInputAndWaitForEngine(uiauto.Combine("Wait for handwriting engine to be ready",
+			vkbCtx.DrawHandwritingFromFile(s.DataPath(handwritingWarmupFile)),
+			its.WaitForFieldValueToBe(inputField, handwritingWarmupDigit))),
+		vkbCtx.TapKey("backspace"),
+		its.Clear(inputField),
 		vkbCtx.DrawHandwritingFromFile(s.DataPath(params.handwritingFile)),
 		its.WaitForFieldValueToBe(inputField, params.expectedText),
 	)(ctx); err != nil {
