@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0aeceac6_ef27cced",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-07T10:31:10Z",
+      "side": 1,
+      "message": "ack, please don\u0027t forget to update the test :)",
+      "parentUuid": "9af086ea_95db2c2e",
+      "range": {
+        "startLine": 36,
+        "startChar": 58,
+        "endLine": 36,
+        "endChar": 74
+      },
+      "revId": "017aa0d213e7c3ecf503e74c481a93c8c31a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1efe7c8_6a911f9a",
         "filename": "src/chromiumos/tast/local/policyutil/settings.go",
         "patchSetId": 4
@@ -250,6 +274,30 @@
       "side": 1,
       "message": "I don\u0027t understand what you mean.\nThe current solution collects all the errors, you will see them one after another if both the checked and restriction verification failed.\nOr you mean that it might seems like the first check second check failed because of the first check failed?",
       "parentUuid": "c8504400_3d911944",
+      "range": {
+        "startLine": 98,
+        "startChar": 29,
+        "endLine": 98,
+        "endChar": 40
+      },
+      "revId": "017aa0d213e7c3ecf503e74c481a93c8c31a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68bc6a35_b70205da",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-07T10:31:10Z",
+      "side": 1,
+      "message": "https://pkg.go.dev/github.com/pkg/errors#hdr-Adding_context_to_an_error\n\nYou basically misuse Wrap function a bit. It should be used to add additional context, but these errors are independent.\n\nYou probably need something like multierror:\nhttps://github.com/hashicorp/go-multierror\n\nOr just return the first error.",
+      "parentUuid": "1c45dae7_41727662",
       "range": {
         "startLine": 98,
         "startChar": 29,
