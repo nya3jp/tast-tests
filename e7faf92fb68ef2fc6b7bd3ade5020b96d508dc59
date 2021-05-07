@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "259bd552_5cdb131c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_resolution_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-07T11:41:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1cf722_b9c6cbab",
+      "revId": "e7faf92fb68ef2fc6b7bd3ade5020b96d508dc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1554484_495f9b99",
@@ -140,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7535e59_576e6e7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_resolution_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-07T11:41:25Z",
+      "side": 1,
+      "message": "\"system-proxy\" is the name of the CrOS daemon. I included this in the comment, sorry for the confusion.",
+      "parentUuid": "671d00f6_e3720274",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 5
+      },
+      "revId": "e7faf92fb68ef2fc6b7bd3ade5020b96d508dc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4db2377e_7ad4482a",
@@ -153,6 +195,30 @@
       "writtenOn": "2021-05-04T12:09:32Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 5
+      },
+      "revId": "e7faf92fb68ef2fc6b7bd3ade5020b96d508dc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5243f473_73c216bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_resolution_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-07T11:41:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4db2377e_7ad4482a",
       "range": {
         "startLine": 90,
         "startChar": 1,
