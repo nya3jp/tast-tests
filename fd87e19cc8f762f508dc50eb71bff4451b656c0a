@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d886f179_4f8c5281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 50
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-07T18:30:57Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "62f64741_72131927",
+      "range": {
+        "startLine": 64,
+        "startChar": 33,
+        "endLine": 64,
+        "endChar": 34
+      },
+      "revId": "fd87e19cc8f762f508dc50eb71bff4451b656c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "303ab3d3_e0840125",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-06T03:45:46Z",
       "side": 1,
       "message": "Please do not pass s around.\nInstead, return an error is there is any.",
+      "range": {
+        "startLine": 99,
+        "startChar": 24,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "fd87e19cc8f762f508dc50eb71bff4451b656c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93a8dae6_94ee8201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 50
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-07T18:30:57Z",
+      "side": 1,
+      "message": "Fixed. Thanks!",
+      "parentUuid": "303ab3d3_e0840125",
       "range": {
         "startLine": 99,
         "startChar": 24,
