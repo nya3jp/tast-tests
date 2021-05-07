@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bab4e11e_c6280f0c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/guestos/trace_replay_crostini_setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2021-05-07T21:55:54Z",
+      "side": 1,
+      "message": "Switching to bytes sounds good. I\u0027ll need to change the test definitions too: this CL and crrev/i/3806256.\n\nHow about `sizeBytes` for the variable name? A bit verbose maybe, but there\u0027s no room for misinterpretation.",
+      "parentUuid": "f2b5a562_83008072",
+      "range": {
+        "startLine": 18,
+        "startChar": 78,
+        "endLine": 18,
+        "endChar": 89
+      },
+      "revId": "ad2db401439bde7f7a93019205a184ec233e6f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "704f9b5f_7cecdeef",
         "filename": "src/chromiumos/tast/local/graphics/trace/guestos/trace_replay_crostini_setup.go",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-07T21:39:33Z",
       "side": 1,
       "message": "%s bytes",
+      "range": {
+        "startLine": 42,
+        "startChar": 57,
+        "endLine": 42,
+        "endChar": 59
+      },
+      "revId": "ad2db401439bde7f7a93019205a184ec233e6f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b1b14cb_1ca81781",
+        "filename": "src/chromiumos/tast/local/graphics/trace/guestos/trace_replay_crostini_setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2021-05-07T21:55:54Z",
+      "side": 1,
+      "message": "settingsApp.GetDiskSize(ctx) returns a string containing the most appropriate unit.",
+      "parentUuid": "704f9b5f_7cecdeef",
       "range": {
         "startLine": 42,
         "startChar": 57,
