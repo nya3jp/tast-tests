@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9fff960_610770ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-05-07T14:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55748a60_ababc838",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 51
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d33fe347_d8cfeee0",
@@ -87,6 +111,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6fd654d_e7484b65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-05-07T14:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d33fe347_d8cfeee0",
+      "range": {
+        "startLine": 39,
+        "startChar": 12,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49cb7c14_f875b70e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-05-07T14:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f756276_fa1f0ede",
+      "range": {
+        "startLine": 39,
+        "startChar": 21,
+        "endLine": 39,
+        "endChar": 23
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a51b75c4_edb07a66",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-05-07T05:31:35Z",
       "side": 1,
       "message": "Optional: I\u0027d recommend saving the output of \"perf list\" to a file so that we can inspect it later.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41de635e_dda824c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-05-07T14:51:01Z",
+      "side": 1,
+      "message": "Good point. Thanks!",
+      "parentUuid": "a51b75c4_edb07a66",
       "range": {
         "startLine": 40,
         "startChar": 1,
@@ -135,6 +231,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4e10f85_6525e3bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-05-07T14:51:01Z",
+      "side": 1,
+      "message": "We need to split by records (divided by \\n\\n) because we want to make sure that pattern1, pattern2 and pattern3 are matched within one record.",
+      "parentUuid": "19891491_d0418c34",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 41
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74dc1c44_4ba29293",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
         "patchSetId": 2
@@ -146,6 +266,30 @@
       "writtenOn": "2021-05-07T05:31:35Z",
       "side": 1,
       "message": "nit: const tracedCommand \u003d \"ls\"",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 14
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edd14926_71ed26ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-05-07T14:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74dc1c44_4ba29293",
       "range": {
         "startLine": 99,
         "startChar": 1,
@@ -181,6 +325,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12a2e45b_f8522643",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-05-07T14:51:01Z",
+      "side": 1,
+      "message": "But err is already defined.\nWhat is the standard pattern in this case? Use a new err name?",
+      "parentUuid": "5575977c_9e3668c2",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 15
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a4a04f1_4180e22d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
         "patchSetId": 2
@@ -192,6 +360,30 @@
       "writtenOn": "2021-05-07T05:31:35Z",
       "side": 1,
       "message": "style: PerfETM\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nSame for other occurrences of \"Etm\" in this file.",
+      "range": {
+        "startLine": 181,
+        "startChar": 5,
+        "endLine": 181,
+        "endChar": 12
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f8fef96_aad584b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-05-07T14:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a4a04f1_4180e22d",
       "range": {
         "startLine": 181,
         "startChar": 5,
