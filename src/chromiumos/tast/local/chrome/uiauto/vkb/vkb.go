@@ -316,15 +316,15 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToVoiceInput() uiauto.Action {
 // TapHandwritingInputAndWaitForEngine returns an action
 // changing virtual keyboard to handwriting input layout
 // and waits for the handwriting engine to become ready.
-func (vkbCtx *VirtualKeyboardContext) TapHandwritingInputAndWaitForEngine() uiauto.Action {
+func (vkbCtx *VirtualKeyboardContext) TapHandwritingInputAndWaitForEngine(checkHandwritingEngineReady uiauto.Action) uiauto.Action {
 	return uiauto.Combine("tap handwriting layout button and wait for engine ready",
 		vkbCtx.ui.LeftClick(KeyFinder.Name("switch to handwriting, not compatible with ChromeVox")),
-		uiauto.NamedAction("wait for handwriting engine ready", func(ctx context.Context) error {
-			// TODO(crbug/1165424): Check if handwriting input engine is ready.
-			// Wait for the handwriting input to become ready to take in the handwriting.
-			// If a stroke is completed before the handwriting input is ready, the stroke will not be recognized.
-			return testing.Sleep(ctx, 5*time.Second)
-		}))
+		// Wait for the handwriting input to become ready to take in the handwriting.
+		// If a stroke is completed before the handwriting input is ready, the stroke will not be recognized.
+		vkbCtx.ui.Retry(10, checkHandwritingEngineReady),
+		vkbCtx.TapKey("backspace"),
+		// Wait for the handwriting canvas to be cleared.
+		vkbCtx.ui.Sleep(500*time.Millisecond))
 }
 
 // EnableA11yVirtualKeyboard returns an action enabling or disabling
@@ -345,4 +345,13 @@ func (vkbCtx *VirtualKeyboardContext) SelectFromSuggestion(candidateText string)
 	return uiauto.Combine("wait for suggestion and select",
 		ac.WaitUntilExists(suggestionFinder),
 		ac.LeftClick(suggestionFinder))
+}
+
+// WithTimeout returns a new VirtualKeyboardContext with the specified timeout.
+func (vkbCtx *VirtualKeyboardContext) WithTimeout(timeout time.Duration) *VirtualKeyboardContext {
+	return &VirtualKeyboardContext{
+		ui:    vkbCtx.ui.WithTimeout(timeout),
+		tconn: vkbCtx.tconn,
+		cr:    vkbCtx.cr,
+	}
 }
