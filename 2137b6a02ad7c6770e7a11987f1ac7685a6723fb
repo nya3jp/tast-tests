@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8d3143c_f1bee116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-05-07T08:36:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f423e231_281dc07f",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 8
+      },
+      "revId": "2137b6a02ad7c6770e7a11987f1ac7685a6723fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "689b2f94_6cee81b7",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-05-07T01:29:27Z",
       "side": 1,
       "message": "better to have `defer cr.Close(ctx)` here?",
+      "revId": "2137b6a02ad7c6770e7a11987f1ac7685a6723fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc79317c_877bc810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-05-07T08:36:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "689b2f94_6cee81b7",
       "revId": "2137b6a02ad7c6770e7a11987f1ac7685a6723fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "260cdbfb_69837c86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-05-07T08:36:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87c30954_18defad5",
+      "range": {
+        "startLine": 103,
+        "startChar": 25,
+        "endLine": 103,
+        "endChar": 33
+      },
+      "revId": "2137b6a02ad7c6770e7a11987f1ac7685a6723fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d145283_716d13db",
@@ -111,6 +177,30 @@
       "writtenOn": "2021-05-07T01:29:27Z",
       "side": 1,
       "message": "super nit: pixel*C*olorDiffMargin?",
+      "range": {
+        "startLine": 174,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 22
+      },
+      "revId": "2137b6a02ad7c6770e7a11987f1ac7685a6723fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0aa15d6_d91a6a42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-05-07T08:36:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d145283_716d13db",
       "range": {
         "startLine": 174,
         "startChar": 2,
