@@ -54,6 +54,47 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75a3fb8c_438501f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T07:04:45Z",
+      "side": 1,
+      "message": "As I proposed in other comments, this function is not needed.",
+      "parentUuid": "34e61070_63bf4f16",
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de9d35a1_3723693e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T07:04:45Z",
+      "side": 1,
+      "message": "This test is more about handwriting input function, not recognition. Also it adds execution time to each test case, it can be as simple as possible. How about \u00277\u0027 or \u00278\u0027",
+      "range": {
+        "startLine": 24,
+        "startChar": 25,
+        "endLine": 24,
+        "endChar": 54
+      },
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01bab4bd_ad9777da",
@@ -91,6 +132,70 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "edab8d5b_542c879e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T07:04:45Z",
+      "side": 1,
+      "message": "oh, the stable models mentioned here is actually shortlisted popular boards to run EI testing. For CQ promotion, the term is stable test 😊",
+      "parentUuid": "e0a3e737_4dfb82ea",
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b818063_335e368d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T07:04:45Z",
+      "side": 1,
+      "message": "It is a fixed file for all tests. No need to put into the test param structure.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f768401_a65c729d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T07:04:45Z",
+      "side": 1,
+      "message": "This data is used in all tests. Put it into Data[] outside Params.",
+      "range": {
+        "startLine": 61,
+        "startChar": 24,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9db6fcd0_49f2f291",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
         "patchSetId": 3
@@ -102,6 +207,116 @@
       "writtenOn": "2021-05-07T02:44:59Z",
       "side": 1,
       "message": "This feels slightly hacky, but I\u0027m not familiar enough with the area to say if there\u0027s a better way.",
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d02bb495_51233f98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T07:04:45Z",
+      "side": 1,
+      "message": "The reason is that activating handwriting in some languages, need to download language models and ... things. It takes almost 10s+. It is really bad but a known issue. Since it only happens the first time adding a new input method, it is a low priority issue.\n\nTo enable automation test on handwriting, we have to do a hack here.\n\nI got a new idea on this. Since number should also need to be tested on different languages, we can actually cover it in this warm up. Probably do below:\n\ninputField.Clear()\nvkbCtx.DrawHandwritingFromFile(s.DataPath(params.handwritingWarmupFile))\nits.WaitInputFieldToBe(number)),",
+      "parentUuid": "9db6fcd0_49f2f291",
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a804c3d8_ec2484a1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T07:04:45Z",
+      "side": 1,
+      "message": "IIUC, this ui timeout is 15s by default. I am afraid you might want longer for low-end devices.",
+      "range": {
+        "startLine": 324,
+        "startChar": 9,
+        "endLine": 324,
+        "endChar": 11
+      },
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1c135f4_d99231a1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T07:04:45Z",
+      "side": 1,
+      "message": "This can be outside the function. Clear input field is separated from engine ready.",
+      "range": {
+        "startLine": 325,
+        "startChar": 2,
+        "endLine": 325,
+        "endChar": 29
+      },
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "258ea6cf_5ae2f7a5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T07:04:45Z",
+      "side": 1,
+      "message": "Is there any better solution? sleep is never encouraged. Besides, it can be fragile.",
+      "range": {
+        "startLine": 326,
+        "startChar": 2,
+        "endLine": 327,
+        "endChar": 40
+      },
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32c38216_9f172ede",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T07:04:45Z",
+      "side": 1,
+      "message": "What\u0027s this for? you can use vkbCtx.ui.WithTimeout to return a new ui context.",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 1
+      },
       "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
