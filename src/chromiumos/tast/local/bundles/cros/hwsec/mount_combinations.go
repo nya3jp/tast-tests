@@ -50,6 +50,25 @@ func MountCombinations(ctx context.Context, s *testing.State) {
 	}
 
 	utility := helper.CryptohomeClient()
+	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, utility)
+
+	defer func(ctx context.Context) {
+		// Ensure we remove the user account after the test.
+		if err := mountInfo.CleanUpMount(ctx, util.FirstUsername); err != nil {
+			s.Error("Failed to cleanup first user: ", err)
+		}
+		if err := mountInfo.CleanUpMount(ctx, util.SecondUsername); err != nil {
+			s.Error("Failed to cleanup second user: ", err)
+		}
+	}(ctx)
+
+	// Ensure clean cryptohome.
+	if err := mountInfo.CleanUpMount(ctx, util.FirstUsername); err != nil {
+		s.Fatal("Failed to cleanup first user: ", err)
+	}
+	if err := mountInfo.CleanUpMount(ctx, util.SecondUsername); err != nil {
+		s.Fatal("Failed to cleanup second user: ", err)
+	}
 
 	// Take TPM ownership before running the test.
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
