@@ -89,6 +89,11 @@ type Config struct {
 	FirmwareScreen    time.Duration
 	USBPlug           time.Duration
 
+	// Instructions for updating AP firmware over servo
+	APFlashCCDProgrammer   string   `json:"ap_flash_ccd_programmer"`
+	APFlashCCDPreCommands  []string `json:"ap_flash_ccd_pre_commands"`
+	APFlashCCDPostCommands []string `json:"ap_flash_ccd_post_commands"`
+
 	// Models maps DUT model names to overriding config JSON objects.
 	Models map[string]json.RawMessage `json:"models"`
 }
