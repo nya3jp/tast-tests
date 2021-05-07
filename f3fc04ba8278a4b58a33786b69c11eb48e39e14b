@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8181e2d_e0ecc994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-07T02:58:30Z",
+      "side": 1,
+      "message": "The purpose of this function is to verify that the input field is not empty. WaitForValueToBe(inputField, expectedValue) doesn\u0027t fit here unless it accepts regex strings, as expectedValue can be any non-empty string.",
+      "parentUuid": "59c0d06d_bd050b3b",
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01bab4bd_ad9777da",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2021-05-07T02:44:59Z",
       "side": 1,
       "message": "I\u0027m not an expert on stabilization of boards, but I believe you\u0027re not allowed to mark them as stable unless they\u0027ve had 20 successful consecutive runs on tastboard. @junsheng, please confirm?",
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0a3e737_4dfb82ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-07T02:58:30Z",
+      "side": 1,
+      "message": "I think this is simply to tell \"only test on these models first\", the hardware dependencies will be removed eventually. Perhaps it is better not to use the word \"stable\", which was used originally in the file.",
+      "parentUuid": "01bab4bd_ad9777da",
       "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
