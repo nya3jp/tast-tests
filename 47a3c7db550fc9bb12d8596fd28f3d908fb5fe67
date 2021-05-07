@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8934ab4_fd483f11",
+        "filename": "android/ArcBlackFlashTest/AndroidManifest.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-07T09:48:13Z",
+      "side": 1,
+      "message": "tiny nit, just curious: are there any reason specifying this? Also, this targetSdkVersion mismatches the one in BUILD.gn.",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "47a3c7db550fc9bb12d8596fd28f3d908fb5fe67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc3e7e88_5b90a394",
+        "filename": "android/ArcBlackFlashTest/AndroidManifest.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-07T09:48:13Z",
+      "side": 1,
+      "message": "do we still use this...?",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "47a3c7db550fc9bb12d8596fd28f3d908fb5fe67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abdd0719_cb73b6ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-07T09:48:13Z",
+      "side": 1,
+      "message": "these ExtraAttr seems redundant. It\u0027s already defined in Attr (line 31)",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 66
+      },
+      "revId": "47a3c7db550fc9bb12d8596fd28f3d908fb5fe67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
