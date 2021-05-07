@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a62fc654_2df970ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/conference.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-07T00:09:07Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "0b6fdda7_72fb5d9c",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "a016f426582fa6ab644cc85db1a019880eed38cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6741aa9_2b1e25a2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-05T11:02:32Z",
       "side": 1,
       "message": "I do not think First() is a good choice if multiple nodes available. It is nice to add a comment on clarifying the situation.",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 99
+      },
+      "revId": "a016f426582fa6ab644cc85db1a019880eed38cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a58ef325_0145cfdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-07T00:09:07Z",
+      "side": 1,
+      "message": "Added Role(role.Heading) to the node to make it more unique and removed First()",
+      "parentUuid": "b6741aa9_2b1e25a2",
       "range": {
         "startLine": 128,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fd64364_e6384fc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-07T00:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a996f1d7_6fa1b8cd",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "a016f426582fa6ab644cc85db1a019880eed38cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "696ab616_ad1ce824",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-05-05T11:02:32Z",
       "side": 1,
       "message": "This finder is too simple and each to break by future changes. A better way to find an element is to use Ancestor to locate element in a specific window / dialog / section. It can nicely isolate your test with outside environment. The same to other finders in this test.",
+      "range": {
+        "startLine": 156,
+        "startChar": 3,
+        "endLine": 156,
+        "endChar": 49
+      },
+      "revId": "a016f426582fa6ab644cc85db1a019880eed38cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22401047_9d75a841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-07T00:09:07Z",
+      "side": 1,
+      "message": "Added .Ancestor(signInWebArea) to OK button.",
+      "parentUuid": "696ab616_ad1ce824",
       "range": {
         "startLine": 156,
         "startChar": 3,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa614676_0652a9fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-07T00:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9428da3_090de96f",
+      "range": {
+        "startLine": 240,
+        "startChar": 33,
+        "endLine": 240,
+        "endChar": 49
+      },
+      "revId": "a016f426582fa6ab644cc85db1a019880eed38cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8da97edc_38f705ff",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-05-05T11:02:32Z",
       "side": 1,
       "message": "nit: comment should finish in full stop.",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 87
+      },
+      "revId": "a016f426582fa6ab644cc85db1a019880eed38cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e11f395_596bed06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-07T00:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8da97edc_38f705ff",
       "range": {
         "startLine": 257,
         "startChar": 2,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef5db1c1_71ef8d51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-07T00:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da0ead62_de352213",
+      "range": {
+        "startLine": 266,
+        "startChar": 3,
+        "endLine": 266,
+        "endChar": 33
+      },
+      "revId": "a016f426582fa6ab644cc85db1a019880eed38cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71d5ecfe_11a5c9fd",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-05-05T11:02:32Z",
       "side": 1,
       "message": "The error message is not accurate. This action is only about press keyboard, maybe `failed to press Alt+Tab to switch to conference page`",
+      "range": {
+        "startLine": 590,
+        "startChar": 27,
+        "endLine": 590,
+        "endChar": 62
+      },
+      "revId": "a016f426582fa6ab644cc85db1a019880eed38cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d8ec129_31958b5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-07T00:09:07Z",
+      "side": 1,
+      "message": "Thanks. Changed as advised.",
+      "parentUuid": "71d5ecfe_11a5c9fd",
       "range": {
         "startLine": 590,
         "startChar": 27,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e84269c8_525dc662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-07T00:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4276ddd7_75b50539",
+      "range": {
+        "startLine": 605,
+        "startChar": 27,
+        "endLine": 605,
+        "endChar": 57
+      },
+      "revId": "a016f426582fa6ab644cc85db1a019880eed38cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4bfba6d_30cceaf0",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-05-05T11:02:32Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 620,
+        "startChar": 27,
+        "endLine": 620,
+        "endChar": 62
+      },
+      "revId": "a016f426582fa6ab644cc85db1a019880eed38cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3afc2277_a7b36389",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-07T00:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4bfba6d_30cceaf0",
       "range": {
         "startLine": 620,
         "startChar": 27,
