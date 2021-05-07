@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9daa02d6_95f5f28a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_libyuv_perftest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2021-05-07T22:01:10Z",
+      "side": 1,
+      "message": "FYI I usually quote performance for 1280x720 1000 iterations.",
+      "range": {
+        "startLine": 47,
+        "startChar": 16,
+        "endLine": 47,
+        "endChar": 19
+      },
+      "revId": "13e2075124b9c7171f284279b55f2496d03bde85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
