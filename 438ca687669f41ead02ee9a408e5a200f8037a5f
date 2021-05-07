@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a16730c_a878a5e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2021-05-07T04:12:21Z",
+      "side": 1,
+      "message": "There is one failure on tastboard, but was due to a dropped connection and not related to these tests:\n\nhttps://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003dplatform.NNAPIDriver.*\u0026dep\u003d",
+      "revId": "438ca687669f41ead02ee9a408e5a200f8037a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
