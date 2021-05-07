@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab4d7d6b_08be0bd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/calculator/calculator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-07T03:06:21Z",
+      "side": 1,
+      "message": "suggest to wrap the error",
+      "range": {
+        "startLine": 28,
+        "startChar": 14,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "07834f5fcc21d28a6badd69298abda9c64ac6571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0dbb6d6_cdbe5afd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/calculator/calculator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-07T03:06:21Z",
+      "side": 1,
+      "message": "using uiauto.Retry?",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 12
+      },
+      "revId": "07834f5fcc21d28a6badd69298abda9c64ac6571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d061b856_6a16e515",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/calculator_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-07T03:06:21Z",
+      "side": 1,
+      "message": "Please be more specific",
+      "range": {
+        "startLine": 26,
+        "startChar": 49,
+        "endLine": 26,
+        "endChar": 64
+      },
+      "revId": "07834f5fcc21d28a6badd69298abda9c64ac6571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "516e8112_107d5cda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/calculator_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-07T03:06:21Z",
+      "side": 1,
+      "message": "Do you plan to use it in the future?",
+      "range": {
+        "startLine": 32,
+        "startChar": 20,
+        "endLine": 32,
+        "endChar": 43
+      },
+      "revId": "07834f5fcc21d28a6badd69298abda9c64ac6571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07833ae_bd51a4a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/calculator_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-07T03:06:21Z",
+      "side": 1,
+      "message": "add err",
+      "range": {
+        "startLine": 70,
+        "startChar": 47,
+        "endLine": 70,
+        "endChar": 51
+      },
+      "revId": "07834f5fcc21d28a6badd69298abda9c64ac6571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
