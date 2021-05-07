@@ -9,11 +9,13 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path"
 	"path/filepath"
 	"strings"
 	"time"
 
-	"chromiumos/tast/common/testexec"
+	gossh "golang.org/x/crypto/ssh"
+
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware/reporters"
@@ -264,8 +266,13 @@ func (h *Helper) CopyTastFilesFromDUT(ctx context.Context) error {
 		dutLocalBundleDir: filepath.Join(tmpDir, tmpLocalBundleDir),
 		dutLocalDataDir:   filepath.Join(tmpDir, tmpLocalDataDir),
 	} {
-		if err = linuxssh.GetFile(ctx, h.DUT.Conn(), dutSrc, serverDst); err != nil {
-			return errors.Wrapf(err, "copying local Tast file %s from DUT", dutSrc)
+		// Only copy the file if it exists
+		if err = h.DUT.Conn().Command("test", "-x", dutSrc).Run(ctx); err == nil {
+			if err = linuxssh.GetFile(ctx, h.DUT.Conn(), dutSrc, serverDst); err != nil {
+				return errors.Wrapf(err, "copying local Tast file %s from DUT", dutSrc)
+			}
+		} else if _, ok := err.(*gossh.ExitError); !ok {
+			return errors.Wrapf(err, "Checking for existence of %s: %T", dutSrc, err)
 		}
 	}
 	return nil
@@ -279,43 +286,32 @@ func (h *Helper) SyncTastFilesToDUT(ctx context.Context) error {
 	if !h.DoesServerHaveTastHostFiles() {
 		return errors.New("must copy Tast files from DUT before syncing back onto DUT")
 	}
-	testing.ContextLog(ctx, "Syncing Tast files from test server onto DUT")
-	dutHost := strings.Split(h.DUT.HostName(), ":")[0] // HostName == host::port
-
-	// Find a key file to authenticate SSH for rsync.
-	kf, err := h.findSSHKeyFile()
-	if err != nil {
-		return errors.Wrap(err, "finding SSH key file")
+	fileMap := map[string]string{
+		path.Join(h.hostFilesTmpDir, tmpLocalRunner):    dutLocalRunner,
+		path.Join(h.hostFilesTmpDir, tmpLocalBundleDir): dutLocalBundleDir,
+		path.Join(h.hostFilesTmpDir, tmpLocalDataDir):   dutLocalDataDir,
+	}
+	for key := range fileMap {
+		if _, err := os.Stat(key); os.IsNotExist(err) {
+			delete(fileMap, key)
+		}
 	}
 
-	for relSrc, dst := range map[string]string{
-		tmpLocalRunner:    dutLocalRunner,
-		tmpLocalBundleDir: dutLocalBundleDir,
-		tmpLocalDataDir:   dutLocalDataDir,
-	} {
-		absSrc := filepath.Join(h.hostFilesTmpDir, relSrc)
-		// Trailing slashes are meaningful for rsync, but filepath.Join trims trailing suffixes.
-		if strings.HasSuffix(relSrc, "/") && !strings.HasSuffix(absSrc, "/") {
-			absSrc += "/"
-		}
-		remoteDst := fmt.Sprintf("%s:%s", dutHost, dst)
-
-		// Call rsync.
-		// -a = archive mode. Includes recursion, maintaining links, file permissions/executability, modified times, owners, groups, device/special files.
-		// --rsh = specify remote command. This allows us to use SSH with -i, to pass in the key file for authentication.
-		if err := testexec.CommandContext(ctx, "rsync", "-a", "--rsh", fmt.Sprintf("ssh -i %s", kf), absSrc, remoteDst).Run(testexec.DumpLogOnError); err != nil {
-			return errors.Wrapf(err, "syncing %s to %s", absSrc, remoteDst)
-		}
+	testing.ContextLog(ctx, "Syncing Tast files from test server onto DUT: ", fileMap)
+	if _, err := linuxssh.PutFiles(ctx, h.DUT.Conn(), fileMap, linuxssh.DereferenceSymlinks); err != nil {
+		return errors.Wrap(err, "failed syncing Tast files from test server onto DUT")
 	}
 
 	// Set file permissions on the DUT.
-	if err := h.DUT.Command("chmod", "755",
+	for _, filename := range []string{
 		dutLocalRunner,
 		filepath.Join(dutLocalBundleDir, "bin_pushed", "local_test_runner"),
 		filepath.Join(dutLocalBundleDir, "bundles", "local", "cros"),
 		filepath.Join(dutLocalBundleDir, "bundles", "local_pushed", "cros"),
-	).Run(ctx, ssh.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "changing file permissions on DUT")
+	} {
+		if err := h.DUT.Conn().Command("sh", "-c", fmt.Sprintf("if [ -x %q ] ; then chmod 0755 %q ; fi", filename, filename)).Run(ctx, ssh.DumpLogOnError); err != nil {
+			return errors.Wrapf(err, "chmod %s failed", filename)
+		}
 	}
 	return nil
 }
