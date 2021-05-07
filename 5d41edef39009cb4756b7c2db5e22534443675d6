@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "834d6f66_f577d680",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390815
+      },
+      "writtenOn": "2021-05-07T01:54:10Z",
+      "side": 1,
+      "message": "LGTM assuming the try bot failure is unrelated.",
+      "revId": "5d41edef39009cb4756b7c2db5e22534443675d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bc89b02_9ab627f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/calculator_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1390815
+      },
+      "writtenOn": "2021-05-07T01:54:10Z",
+      "side": 1,
+      "message": "nit: Calculator",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "5d41edef39009cb4756b7c2db5e22534443675d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
