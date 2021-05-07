@@ -21,9 +21,10 @@ import (
 
 // Documentation on file format can be found in go/tast-handwriting-svg-parsing.
 const (
-	handwritingFileEN = "handwriting_en_hello_20210129.svg"
-	handwritingFileCN = "handwriting_cn_hello_20210129.svg"
-	handwritingFileJP = "handwriting_jp_hello_20210129.svg"
+	handwritingFileDigit = "handwriting_digit_55_20210505.svg"
+	handwritingFileEN    = "handwriting_en_hello_20210129.svg"
+	handwritingFileCN    = "handwriting_cn_hello_20210129.svg"
+	handwritingFileJP    = "handwriting_jp_hello_20210129.svg"
 )
 
 // TODO(crbug/1175982): Stabilize handwriting input test.
@@ -31,16 +32,19 @@ const (
 var stableModels = []string{
 	"hana",
 	"kefka",
-	"coral",
+	"blacktip",
 	"betty",
+	"candy",
+	"juniper",
 }
 
 // Struct to contain the virtual keyboard handwriting test parameters.
 type handwritingTestParams struct {
-	handwritingFile string
-	expectedText    string
-	imeID           ime.InputMethodCode
-	testFloat       bool
+	handwritingWarmupFile string
+	handwritingFile       string
+	expectedText          string
+	imeID                 ime.InputMethodCode
+	testFloat             bool
 }
 
 func init() {
@@ -48,60 +52,66 @@ func init() {
 		Func:         VirtualKeyboardHandwriting,
 		Desc:         "Test handwriting input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.Model(stableModels...)),
 		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
 		Params: []testing.Param{
 			{
 				Name:      "hello_jp",
-				ExtraData: []string{handwritingFileJP},
+				ExtraData: []string{handwritingFileDigit, handwritingFileJP},
 				Val: handwritingTestParams{
-					handwritingFile: handwritingFileJP,
-					expectedText:    "こんにちは",
-					imeID:           ime.INPUTMETHOD_NACL_MOZC_JP,
+					handwritingWarmupFile: handwritingFileDigit,
+					handwritingFile:       handwritingFileJP,
+					expectedText:          "こんにちは",
+					imeID:                 ime.INPUTMETHOD_NACL_MOZC_JP,
 				},
 			}, {
 				Name:      "hello_jp_float",
-				ExtraData: []string{handwritingFileJP},
+				ExtraData: []string{handwritingFileDigit, handwritingFileJP},
 				Val: handwritingTestParams{
-					handwritingFile: handwritingFileJP,
-					expectedText:    "こんにちは",
-					imeID:           ime.INPUTMETHOD_NACL_MOZC_JP,
-					testFloat:       true,
+					handwritingWarmupFile: handwritingFileDigit,
+					handwritingFile:       handwritingFileJP,
+					expectedText:          "こんにちは",
+					imeID:                 ime.INPUTMETHOD_NACL_MOZC_JP,
+					testFloat:             true,
 				},
 			}, {
 				Name:      "hello_cn",
-				ExtraData: []string{handwritingFileCN},
+				ExtraData: []string{handwritingFileDigit, handwritingFileCN},
 				Val: handwritingTestParams{
-					handwritingFile: handwritingFileCN,
-					expectedText:    "你好",
-					imeID:           ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
+					handwritingWarmupFile: handwritingFileDigit,
+					handwritingFile:       handwritingFileCN,
+					expectedText:          "你好",
+					imeID:                 ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
 				},
 			}, {
 				Name:      "hello_cn_float",
-				ExtraData: []string{handwritingFileCN},
+				ExtraData: []string{handwritingFileDigit, handwritingFileCN},
 				Val: handwritingTestParams{
-					handwritingFile: handwritingFileCN,
-					expectedText:    "你好",
-					imeID:           ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
-					testFloat:       true,
+					handwritingWarmupFile: handwritingFileDigit,
+					handwritingFile:       handwritingFileCN,
+					expectedText:          "你好",
+					imeID:                 ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
+					testFloat:             true,
 				},
 			}, {
 				Name:      "hello_en",
-				ExtraData: []string{handwritingFileEN},
+				ExtraData: []string{handwritingFileDigit, handwritingFileEN},
 				Val: handwritingTestParams{
-					handwritingFile: handwritingFileEN,
-					expectedText:    "hello",
-					imeID:           ime.INPUTMETHOD_XKB_US_ENG,
+					handwritingWarmupFile: handwritingFileDigit,
+					handwritingFile:       handwritingFileEN,
+					expectedText:          "hello",
+					imeID:                 ime.INPUTMETHOD_XKB_US_ENG,
 				},
 			}, {
 				Name:      "hello_en_float",
-				ExtraData: []string{handwritingFileEN},
+				ExtraData: []string{handwritingFileDigit, handwritingFileEN},
 				Val: handwritingTestParams{
-					handwritingFile: handwritingFileEN,
-					expectedText:    "hello",
-					imeID:           ime.INPUTMETHOD_XKB_US_ENG,
-					testFloat:       true,
+					handwritingWarmupFile: handwritingFileDigit,
+					handwritingFile:       handwritingFileEN,
+					expectedText:          "hello",
+					imeID:                 ime.INPUTMETHOD_XKB_US_ENG,
+					testFloat:             true,
 				},
 			},
 		},
@@ -163,7 +173,10 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("Test handwriting on virtual keyboard",
 		its.ClickFieldUntilVKShown(inputField),
-		vkbCtx.TapHandwritingInputAndWaitForEngine(),
+		vkbCtx.TapHandwritingInputAndWaitForEngine(uiauto.Combine("Wait for handwriting engine to be ready",
+			vkbCtx.DrawHandwritingFromFile(s.DataPath(params.handwritingWarmupFile)),
+			its.ValidateInputNotEmpty(inputField))),
+		its.Clear(inputField),
 		vkbCtx.DrawHandwritingFromFile(s.DataPath(params.handwritingFile)),
 		its.WaitForFieldValueToBe(inputField, params.expectedText),
 	)(ctx); err != nil {
