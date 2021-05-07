@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ef01b8_3d02d9ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-07T15:23:39Z",
+      "side": 1,
+      "message": "Yeah this context is required to satisfy the gRPC service methods: https://source.chromium.org/search?q\u003df:tast%20%22golang.org%2Fx%2Fnet%2Fcontext%22\u0026sq\u003d",
+      "parentUuid": "a5abb662_45d26ba5",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "15f18f981a9ff16e565024cd119dd0b4bd4e28a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11bc4774_01dee6b4",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a891b83f_c669911b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-07T15:23:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11bc4774_01dee6b4",
+      "range": {
+        "startLine": 39,
+        "startChar": 59,
+        "endLine": 39,
+        "endChar": 62
+      },
+      "revId": "15f18f981a9ff16e565024cd119dd0b4bd4e28a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67c7de62_d1a5a266",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-05-05T17:54:36Z",
       "side": 1,
       "message": "Same as above. I recommend replacing this with \"_\"",
+      "range": {
+        "startLine": 90,
+        "startChar": 52,
+        "endLine": 90,
+        "endChar": 55
+      },
+      "revId": "15f18f981a9ff16e565024cd119dd0b4bd4e28a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82ed15cf_b2e4867d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-07T15:23:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67c7de62_d1a5a266",
       "range": {
         "startLine": 90,
         "startChar": 52,
