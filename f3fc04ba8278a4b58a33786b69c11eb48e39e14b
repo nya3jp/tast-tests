@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59c0d06d_bd050b3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-07T02:44:59Z",
+      "side": 1,
+      "message": "Why not use WaitForValueToBe(inputField, \"\") (either externally or inside this function)",
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01bab4bd_ad9777da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-07T02:44:59Z",
+      "side": 1,
+      "message": "I\u0027m not an expert on stabilization of boards, but I believe you\u0027re not allowed to mark them as stable unless they\u0027ve had 20 successful consecutive runs on tastboard. @junsheng, please confirm?",
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db6fcd0_49f2f291",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-07T02:44:59Z",
+      "side": 1,
+      "message": "This feels slightly hacky, but I\u0027m not familiar enough with the area to say if there\u0027s a better way.",
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
