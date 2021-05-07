@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e5f2406_25344f96",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-07T10:31:10Z",
+      "side": 1,
+      "message": "nit: probably remove?",
+      "range": {
+        "startLine": 34,
+        "startChar": 61,
+        "endLine": 34,
+        "endChar": 78
+      },
+      "revId": "65e95a64d406475f137bf784a5ba91b8f80dab58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
