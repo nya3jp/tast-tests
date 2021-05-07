@@ -6,8 +6,10 @@ package hwsec
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/hwsec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/hwsec/util"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
@@ -50,6 +52,29 @@ func MountCombinations(ctx context.Context, s *testing.State) {
 	}
 
 	utility := helper.CryptohomeClient()
+	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, utility)
+
+	ctxForCleanUp := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	defer func(ctx context.Context) {
+		// Ensure we remove the user account after the test.
+		if err := mountInfo.CleanUpMount(ctx, util.FirstUsername); err != nil {
+			s.Error("Failed to cleanup first user: ", err)
+		}
+		if err := mountInfo.CleanUpMount(ctx, util.SecondUsername); err != nil {
+			s.Error("Failed to cleanup second user: ", err)
+		}
+	}(ctxForCleanUp)
+
+	// Ensure clean cryptohome.
+	if err := mountInfo.CleanUpMount(ctx, util.FirstUsername); err != nil {
+		s.Fatal("Failed to cleanup first user: ", err)
+	}
+	if err := mountInfo.CleanUpMount(ctx, util.SecondUsername); err != nil {
+		s.Fatal("Failed to cleanup second user: ", err)
+	}
 
 	// Take TPM ownership before running the test.
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
