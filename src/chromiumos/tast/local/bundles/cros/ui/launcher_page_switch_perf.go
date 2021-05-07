@@ -105,7 +105,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	// actions on certain devices and causes test failures. Open and close the
 	// quick settings to dismiss those notification popups. See
 	// https://crbug.com/1084185.
-	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
+	if err := ash.CloseNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to open/close the quick settings: ", err)
 	}
 
