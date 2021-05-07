@@ -7,6 +7,7 @@ package ash
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -14,6 +15,9 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -34,6 +38,9 @@ const (
 	ShelfBehaviorHidden = "hidden"
 	// ShelfBehaviorInvalid represents an invalid state.
 	ShelfBehaviorInvalid = "invalid"
+
+	// shelfIconClassName is the class name of the node of the apps on shelf.
+	shelfIconClassName = "ash/ShelfAppButton"
 )
 
 // SetShelfBehavior sets the shelf visibility behavior.
@@ -509,7 +516,7 @@ func LaunchAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName, ap
 	if err := ShowHotseat(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to launch app from shelf")
 	}
-	params := ui.FindParams{Name: appName, ClassName: "ash/ShelfAppButton"}
+	params := ui.FindParams{Name: appName, ClassName: shelfIconClassName}
 	icon, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		return errors.Wrapf(err, "failed to find app %q", appName)
@@ -556,7 +563,7 @@ func ShowHotseat(ctx context.Context, tconn *chrome.TestConn) error {
 // The parameter appName should be the name of the app which is same as the value stored in apps.App.Name.
 func PinAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName string) error {
 	// Find the icon from shelf.
-	params := ui.FindParams{Name: appName, ClassName: "ash/ShelfAppButton"}
+	params := ui.FindParams{Name: appName, ClassName: shelfIconClassName}
 	icon, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		return errors.Wrapf(err, "failed to find app %q", appName)
@@ -606,7 +613,7 @@ func PinAppFromHotseat(ctx context.Context, tconn *chrome.TestConn, appName stri
 	}
 
 	// Find the icon from hotseat.
-	params := ui.FindParams{Name: appName, ClassName: "ash/ShelfAppButton"}
+	params := ui.FindParams{Name: appName, ClassName: shelfIconClassName}
 	icon, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		return errors.Wrapf(err, "failed to find app %q", appName)
@@ -702,4 +709,19 @@ func WaitForStableShelfBounds(ctx context.Context, tc *chrome.TestConn) error {
 	}
 
 	return nil
+}
+
+// ShowHotseatAction returns a function that makes sure hotseat is shown in tablet mode.
+func ShowHotseatAction(tconn *chrome.TestConn) uiauto.Action {
+	return func(ctx context.Context) error {
+		return ShowHotseat(ctx, tconn)
+	}
+}
+
+// RightClickApp right clicks the given app's icon on the shelf.
+func RightClickApp(tconn *chrome.TestConn, appName string) uiauto.Action {
+	appOnShelf := nodewith.Name(appName).Role(role.Button).ClassName(shelfIconClassName)
+	return uiauto.Combine(fmt.Sprintf("right click %s icon on the shelf", appName),
+		ShowHotseatAction(tconn),
+		uiauto.New(tconn).RightClick(appOnShelf))
 }

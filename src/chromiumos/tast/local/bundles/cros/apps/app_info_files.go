@@ -1,0 +1,87 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package apps
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: AppInfoFiles,
+		Desc: "Test Files app info from the context menu on shelf and app list",
+		Contacts: []string{
+			"jinrongwu@google.com",
+			"chromeos-apps-foundation-team@google.com",
+		},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome"},
+		Pre:          chrome.LoggedIn(),
+	})
+}
+
+func AppInfoFiles(ctx context.Context, s *testing.State) {
+	cr := s.PreValue().(*chrome.Chrome)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	const (
+		newWindow      = "New window"
+		unpin          = "Unpin"
+		unpinFromShelf = "Unpin from shelf"
+		appInfo        = "App info"
+	)
+
+	newWindowMenu := nodewith.Name(newWindow).Role(role.MenuItem)
+	unpinMenu := nodewith.Name(unpin).Role(role.MenuItem)
+	appInfoMenu := nodewith.Name(appInfo).Role(role.MenuItem)
+
+	ui := uiauto.New(tconn)
+	s.Run(ctx, "check_files_appinfo_on_shelf", func(ctx context.Context, s *testing.State) {
+		if err := uiauto.Combine("check context menu of Files app on the shelf",
+			ash.RightClickApp(tconn, apps.Files.Name),
+			ui.WaitUntilExists(newWindowMenu),
+			ui.WaitUntilExists(unpinMenu),
+			ui.WaitUntilExists(appInfoMenu))(ctx); err != nil {
+			s.Fatal("Failed to check app info for Files app: ", err)
+		}
+	})
+
+	unpinMenu = unpinMenu.Name(unpinFromShelf)
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	s.Run(ctx, "check_files_appinfo_on_app_list", func(ctx context.Context, s *testing.State) {
+		kb, err := input.Keyboard(ctx)
+		if err != nil {
+			s.Fatal("Failed to find keyboard: ", err)
+		}
+		defer kb.Close()
+		if err := uiauto.Combine("check context menu of Files app on app list",
+			launcher.SearchAndRightClick(tconn, kb, apps.Files.Name, apps.Files.Name),
+			ui.WaitUntilExists(newWindowMenu),
+			ui.WaitUntilExists(unpinMenu),
+			ui.WaitUntilExists(appInfoMenu))(ctx); err != nil {
+			s.Fatal("Failed to check app info for Files app: ", err)
+		}
+	})
+}
