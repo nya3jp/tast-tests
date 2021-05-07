@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a532a4fc_0a82ff24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-07T01:48:14Z",
+      "side": 1,
+      "message": "Unfortunately, this does not work because the InitalizeEntropy function is only called at tear down. I need to do a bit more digging to find out where entropy comes from before the test. Uploading mostly to save progress.",
+      "revId": "6c6bac332c61bb2ec26add3a5dec665b1fc07514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
