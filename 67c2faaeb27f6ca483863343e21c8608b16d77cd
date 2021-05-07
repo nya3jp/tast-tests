@@ -16,6 +16,24 @@
       "message": "It seems I am just in CC\u0027ed. Let me know if you need me to review this CL.",
       "revId": "67c2faaeb27f6ca483863343e21c8608b16d77cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dad98ce_2fb4df2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-05-07T05:52:35Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll move you to reviewer when CL:2874807\u0027s review is done~",
+      "parentUuid": "5c088a72_a1b4e241",
+      "revId": "67c2faaeb27f6ca483863343e21c8608b16d77cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
