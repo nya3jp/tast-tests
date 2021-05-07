@@ -22,6 +22,30 @@
       },
       "revId": "6f8da46203b39aa899a2b4c6c02dbce41ce22c7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f210ea4_3644280f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T06:40:33Z",
+      "side": 1,
+      "message": "Raised https://crrev.com/c/2879218. Can we hold this cl and see the feedback of my proposed solution?",
+      "parentUuid": "1c084a6b_0afd59a6",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 23
+      },
+      "revId": "6f8da46203b39aa899a2b4c6c02dbce41ce22c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
