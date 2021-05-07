@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2b5a562_83008072",
+        "filename": "src/chromiumos/tast/local/graphics/trace/guestos/trace_replay_crostini_setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-05-07T21:39:33Z",
+      "side": 1,
+      "message": "Should this be resizeDiskGB as well? uint64 hints to bytes not GBytes.\n\nI am a little torn on GB granularity though. We have a lot of low end devices that don\u0027t have much storage. Being able to specify finer granularity has value. So maybe pass bytes?",
+      "range": {
+        "startLine": 18,
+        "startChar": 78,
+        "endLine": 18,
+        "endChar": 89
+      },
+      "revId": "ad2db401439bde7f7a93019205a184ec233e6f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "704f9b5f_7cecdeef",
+        "filename": "src/chromiumos/tast/local/graphics/trace/guestos/trace_replay_crostini_setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-05-07T21:39:33Z",
+      "side": 1,
+      "message": "%s bytes",
+      "range": {
+        "startLine": 42,
+        "startChar": 57,
+        "endLine": 42,
+        "endChar": 59
+      },
+      "revId": "ad2db401439bde7f7a93019205a184ec233e6f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
