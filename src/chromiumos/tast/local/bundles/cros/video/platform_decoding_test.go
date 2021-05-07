@@ -324,7 +324,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 		CmdBuilder   string
 		Files        []string
 		Timeout      time.Duration
-		HardwareDeps string
+		HardwareDeps []string
 		SoftwareDeps []string
 		Metadata     []string
 	}
@@ -361,14 +361,16 @@ func TestPlatformDecodingParams(t *testing.T) {
 
 				// TODO(b/184683272): Reenable everywhere.
 				if cat == "frm_resize" || cat == "sub8x8_sf" {
-					param.HardwareDeps = "hwdep.D(hwdep.SkipOnPlatform(\"grunt\", \"zork\"))"
+					param.HardwareDeps = []string{"hwdep.SkipOnPlatform(\"grunt\", \"zork\")"}
 				}
 
 				switch levelGroup {
 				case "level5_0":
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K)
+					param.HardwareDeps = append(param.HardwareDeps, "hwdep.MinMemoryMB(4196)")
 				case "level5_1":
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K60)
+					param.HardwareDeps = append(param.HardwareDeps, "hwdep.MinMemoryMB(4196)")
 				default:
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9)
 				}
@@ -397,7 +399,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 		CmdBuilder:   "vp9decodeV4L2args",
 		Files:        v4l2Vp9Files,
 		Timeout:      defaultTimeout,
-		HardwareDeps: "hwdep.D(hwdep.Platform(\"trogdor\"))",
+		HardwareDeps: []string{"hwdep.Platform(\"trogdor\")"},
 		SoftwareDeps: []string{"v4l2_codec", caps.HWDecodeVP9},
 		Metadata:     genExtraData(v4l2Vp9Files),
 	})
@@ -411,7 +413,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 		},
 		Timeout: {{ .Timeout | fmt }},
 		{{ if .HardwareDeps }}
-		ExtraHardwareDeps: {{ .HardwareDeps }},
+		ExtraHardwareDeps: hwdep.D({{ range .HardwareDeps }}{{ . }}, {{ end }}),
 		{{ end }}
 		{{ if .SoftwareDeps }}
 		ExtraSoftwareDeps: {{ .SoftwareDeps | fmt }},
