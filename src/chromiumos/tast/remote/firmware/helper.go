@@ -6,21 +6,21 @@ package firmware
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"os"
+	"path"
 	"path/filepath"
 	"strings"
 	"time"
 
-	"chromiumos/tast/common/testexec"
+	gossh "golang.org/x/crypto/ssh"
+
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
 	fwpb "chromiumos/tast/services/cros/firmware"
-	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
@@ -264,8 +264,13 @@ func (h *Helper) CopyTastFilesFromDUT(ctx context.Context) error {
 		dutLocalBundleDir: filepath.Join(tmpDir, tmpLocalBundleDir),
 		dutLocalDataDir:   filepath.Join(tmpDir, tmpLocalDataDir),
 	} {
-		if err = linuxssh.GetFile(ctx, h.DUT.Conn(), dutSrc, serverDst); err != nil {
-			return errors.Wrapf(err, "copying local Tast file %s from DUT", dutSrc)
+		// Only copy the file if it exists
+		if err = h.DUT.Conn().Command("test", "-x", dutSrc).Run(ctx); err == nil {
+			if err = linuxssh.GetFile(ctx, h.DUT.Conn(), dutSrc, serverDst); err != nil {
+				return errors.Wrapf(err, "copying local Tast file %s from DUT", dutSrc)
+			}
+		} else if _, ok := err.(*gossh.ExitError); !ok {
+			return errors.Wrapf(err, "Checking for existence of %s: %T", dutSrc, err)
 		}
 	}
 	return nil
@@ -279,82 +284,20 @@ func (h *Helper) SyncTastFilesToDUT(ctx context.Context) error {
 	if !h.DoesServerHaveTastHostFiles() {
 		return errors.New("must copy Tast files from DUT before syncing back onto DUT")
 	}
-	testing.ContextLog(ctx, "Syncing Tast files from test server onto DUT")
-	dutHost := strings.Split(h.DUT.HostName(), ":")[0] // HostName == host::port
-
-	// Find a key file to authenticate SSH for rsync.
-	kf, err := h.findSSHKeyFile()
-	if err != nil {
-		return errors.Wrap(err, "finding SSH key file")
+	fileMap := map[string]string{
+		path.Join(h.hostFilesTmpDir, tmpLocalRunner):    dutLocalRunner,
+		path.Join(h.hostFilesTmpDir, tmpLocalBundleDir): dutLocalBundleDir,
+		path.Join(h.hostFilesTmpDir, tmpLocalDataDir):   dutLocalDataDir,
 	}
-
-	for relSrc, dst := range map[string]string{
-		tmpLocalRunner:    dutLocalRunner,
-		tmpLocalBundleDir: dutLocalBundleDir,
-		tmpLocalDataDir:   dutLocalDataDir,
-	} {
-		absSrc := filepath.Join(h.hostFilesTmpDir, relSrc)
-		// Trailing slashes are meaningful for rsync, but filepath.Join trims trailing suffixes.
-		if strings.HasSuffix(relSrc, "/") && !strings.HasSuffix(absSrc, "/") {
-			absSrc += "/"
-		}
-		remoteDst := fmt.Sprintf("%s:%s", dutHost, dst)
-
-		// Call rsync.
-		// -a = archive mode. Includes recursion, maintaining links, file permissions/executability, modified times, owners, groups, device/special files.
-		// --rsh = specify remote command. This allows us to use SSH with -i, to pass in the key file for authentication.
-		if err := testexec.CommandContext(ctx, "rsync", "-a", "--rsh", fmt.Sprintf("ssh -i %s", kf), absSrc, remoteDst).Run(testexec.DumpLogOnError); err != nil {
-			return errors.Wrapf(err, "syncing %s to %s", absSrc, remoteDst)
+	for key := range fileMap {
+		if _, err := os.Stat(key); os.IsNotExist(err) {
+			delete(fileMap, key)
 		}
 	}
 
-	// Set file permissions on the DUT.
-	if err := h.DUT.Command("chmod", "755",
-		dutLocalRunner,
-		filepath.Join(dutLocalBundleDir, "bin_pushed", "local_test_runner"),
-		filepath.Join(dutLocalBundleDir, "bundles", "local", "cros"),
-		filepath.Join(dutLocalBundleDir, "bundles", "local_pushed", "cros"),
-	).Run(ctx, ssh.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "changing file permissions on DUT")
+	testing.ContextLog(ctx, "Syncing Tast files from test server onto DUT: ", fileMap)
+	if _, err := linuxssh.PutFiles(ctx, h.DUT.Conn(), fileMap, linuxssh.DereferenceSymlinks); err != nil {
+		return errors.Wrap(err, "failed syncing Tast files from test server onto DUT")
 	}
 	return nil
-}
-
-// findSSHKeyFile searches for an SSH keyfile that can be used to connect to the DUT.
-// If multiple files are present, the first one found will be returned.
-func (h *Helper) findSSHKeyFile() (string, error) {
-	// Build a list of possible key files, based on tast/src/chromiumos/tast/ssh/conn.go.
-	possibleKeyFiles := []string{h.DUT.KeyFile()}
-	for _, fp := range []string{
-		// testing_rsa is used by Autotest's SSH config, so look for the same key here.
-		// See https://www.chromium.org/chromium-os/testing/autotest-developer-faq/ssh-test-keys-setup.
-		"testing_rsa",
-		// mobbase_id_rsa is stored in /home/moblab/.ssh on Moblab devices.
-		"mobbase_id_rsa",
-		"id_dsa",
-		"id_ecdsa",
-		"id_ed25519",
-		"id_rsa",
-	} {
-		possibleKeyFiles = append(possibleKeyFiles, filepath.Join(h.DUT.KeyDir(), fp))
-	}
-
-	// Find and return the first keyfile that exists.
-	for _, fp := range possibleKeyFiles {
-		info, err := os.Stat(fp)
-		if errors.Is(err, os.ErrNotExist) {
-			// If the file doesn't exist, that's fine; try the next option.
-			continue
-		} else if err != nil {
-			return "", errors.Wrapf(err, "getting file info for potential SSH key file %s", fp)
-		}
-		// Ensure that the keyfile has sufficient permissions.
-		if info.Mode() != 0600 {
-			if err := os.Chmod(fp, 0600); err != nil {
-				return "", errors.Wrapf(err, "setting permission for SSH key file %s", fp)
-			}
-		}
-		return fp, nil
-	}
-	return "", errors.Errorf("couldn't find an SSH key file with dut.KeyFile=%s, dut.KeyDir=%s", h.DUT.KeyFile(), h.DUT.KeyDir())
 }
