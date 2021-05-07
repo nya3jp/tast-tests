@@ -22,6 +22,30 @@
       },
       "revId": "65e95a64d406475f137bf784a5ba91b8f80dab58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45257b99_8d9d1063",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-07T14:39:20Z",
+      "side": 1,
+      "message": "Changed it.",
+      "parentUuid": "4e5f2406_25344f96",
+      "range": {
+        "startLine": 34,
+        "startChar": 61,
+        "endLine": 34,
+        "endChar": 78
+      },
+      "revId": "65e95a64d406475f137bf784a5ba91b8f80dab58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
