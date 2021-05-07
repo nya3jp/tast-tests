@@ -16,6 +16,108 @@
       "message": "Haven\u0027t fixed all linter warnings/errors, but it\u0027s the first draft of the example using metrics: android_mem.\nPlease take a look, thanks!",
       "revId": "4880b25c6eeed444785f0c0cff1a8778d0575f39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aae95d77_92c1ec31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-05-07T07:33:13Z",
+      "side": 1,
+      "message": "Thanks for the patch. It\u0027s a nice start!\nFor duplicated code, I think the right direction is refactoring to avoid duplication.",
+      "revId": "4880b25c6eeed444785f0c0cff1a8778d0575f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4cd878c_0711c675",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-05-07T07:33:13Z",
+      "side": 1,
+      "message": "I think you have prefix this function with |func| to avoid name clashing, right? This indicates that we should *not* make a copy of the function and need to refactor the code.",
+      "revId": "4880b25c6eeed444785f0c0cff1a8778d0575f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d7ee36b_f782d284",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-05-07T07:33:13Z",
+      "side": 1,
+      "message": "Same for this function. This needs a refactoring.",
+      "revId": "4880b25c6eeed444785f0c0cff1a8778d0575f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b309d2ae_37278a6c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-05-07T07:33:13Z",
+      "side": 1,
+      "message": "You may use a raw string to make the string value easier to write and read.",
+      "revId": "4880b25c6eeed444785f0c0cff1a8778d0575f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cd5ed57_0cc3be7c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-05-07T07:33:13Z",
+      "side": 1,
+      "message": "Here it\u0027s only android_mem. Do you plan to test more of the traced_probes?",
+      "revId": "4880b25c6eeed444785f0c0cff1a8778d0575f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feb88254_301971d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-05-07T07:33:13Z",
+      "side": 1,
+      "message": "Why ignore the first 2 lines?",
+      "revId": "4880b25c6eeed444785f0c0cff1a8778d0575f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
