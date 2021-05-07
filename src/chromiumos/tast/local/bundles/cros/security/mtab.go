@@ -78,66 +78,39 @@ func Mtab(ctx context.Context, s *testing.State) {
 
 	// Specifications used to check mounts. These are ignored if not present.
 	expMounts := map[string]mountSpec{
-		"/":                                 {regexp.MustCompile("^/dev/root$"), "ext2", "ro"},
-		"/dev":                              {nil, "devtmpfs", "rw,nosuid,noexec,mode=755"},
-		"/dev/pts":                          {nil, "devpts", "rw,nosuid,noexec,gid=5,mode=620"},
-		"/dev/shm":                          {nil, "tmpfs", defaultRW},
-		"/etc/hosts.d":                      {regexp.MustCompile("^run$"), "tmpfs", defaultRW},
-		"/home":                             {nil, "ext4", defaultRW},
-		"/home/chronos":                     {nil, "ext4", defaultRW},
-		"/home/root":                        {nil, "ext4", defaultRW}, // TODO(crbug.com/1069501): remove once bug is fixed.
-		"/media":                            {nil, "tmpfs", defaultRW},
-		"/mnt/stateful_partition":           {nil, "ext4", defaultRW},
-		"/mnt/stateful_partition/encrypted": {nil, "ext4", defaultRW},
-		"/opt/google/containers/android/rootfs/android-data/data/dalvik-cache/arm":    {nil, "ext4", defaultRW},
-		"/opt/google/containers/android/rootfs/android-data/data/dalvik-cache/x86_64": {nil, "ext4", defaultRW},
-		"/opt/google/containers/android/rootfs/android-data/data/dalvik-cache/x86":    {nil, "ext4", defaultRW},
-		"/opt/google/containers/android/rootfs/root":                                  {loopDev, "squashfs", "ro"},
-		"/opt/google/containers/android/rootfs/root/system/lib/arm":                   {loopDev, "squashfs", "ro,nosuid,nodev"},
-		"/opt/google/containers/arc-obb-mounter/mountpoints/container-root":           {loopDev, "squashfs", "ro,noexec"},
-		"/opt/google/containers/arc-sdcard/mountpoints/container-root":                {loopDev, "squashfs", "ro,noexec"},
-		"/proc":                        {nil, "proc", defaultRW},
-		"/run":                         {nil, "tmpfs", defaultRW + ",mode=755"},
-		"/run/arc/adb":                 {nil, "tmpfs", defaultRW + ",mode=775"},
-		"/run/arc/adbd":                {nil, "tmpfs", defaultRW + ",mode=770"},
-		"/run/arc/debugfs/sync":        {nil, "debugfs", defaultRW},
-		"/run/arc/debugfs/tracing":     {nil, "debugfs,tracefs", defaultRW},
-		"/run/arc/media":               {nil, "tmpfs", defaultRO + ",mode=755"},
-		"/run/arc/obb":                 {nil, "tmpfs", defaultRO + ",mode=755"},
-		"/run/arc/oem":                 {nil, "tmpfs", defaultRW + ",mode=755"},
-		"/run/arc/sdcard":              {nil, "tmpfs", defaultRO + ",mode=755"},
-		"/run/arc/shared_mounts":       {nil, "tmpfs", defaultRW + ",mode=755"},
-		"/run/chromeos-config/private": {nil, "squashfs,tmpfs", defaultRO},
-		"/run/chromeos-config/v1":      {nil, "squashfs,tmpfs", defaultRO},                // This is a bind mount
-		"/run/debugfs_gpu":             {nil, "debugfs", defaultRW + ",gid=605,mode=750"}, // debugfs-access
-		"/run/imageloader":             {nil, "tmpfs", defaultRW},
-		"/run/lock":                    {nil, "tmpfs", defaultRW},
-		"/run/namespaces":              {nil, "tmpfs", defaultRW}, // This is a bind mount
-		"/run/namespaces/mnt_chrome":   {nil, "proc", defaultRW},  // Bind-mount of the user session namespace.
-		"/run/netns":                   {nil, "tmpfs", defaultRW}, // TODO: avoid creating mountpoint under /run: crbug.com/757953
-		"/sys":                         {nil, "sysfs", defaultRW},
-		"/sys/fs/cgroup/cpuacct":       {nil, "cgroup", defaultRW},
-		"/sys/fs/cgroup/cpu":           {nil, "cgroup", defaultRW},
-		"/sys/fs/cgroup/cpuset":        {nil, "cgroup", defaultRW},
-		"/sys/fs/cgroup/devices":       {nil, "cgroup", defaultRW},
-		"/sys/fs/cgroup/freezer":       {nil, "cgroup", defaultRW},
-		"/sys/fs/cgroup/net_cls":       {nil, "cgroup", defaultRW},
-		"/sys/fs/cgroup/schedtune":     {nil, "cgroup", defaultRW},
-		"/sys/fs/cgroup":               {nil, "tmpfs", defaultRW + ",mode=755"},
-		"/sys/fs/fuse/connections":     {nil, "fusectl", defaultRW},
-		"/sys/fs/pstore":               {nil, "pstore", defaultRW},
-		"/sys/fs/selinux":              {nil, "selinuxfs", "rw,nosuid,noexec"},
-		"/sys/kernel/config":           {nil, "configfs", defaultRW},
-		"/sys/kernel/debug":            {nil, "debugfs", defaultRW},
-		"/sys/kernel/debug/tracing":    {nil, "tracefs", defaultRW},
-		"/sys/kernel/security":         {nil, "securityfs", defaultRW},
-		"/tmp":                         {nil, "tmpfs", defaultRW},
+		"/": {regexp.MustCompile("^/dev/root$"), "ext2", "ro"},
+
+		"/dev":     {nil, "devtmpfs", "rw,nosuid,noexec,mode=755"},
+		"/dev/pts": {nil, "devpts", "rw,nosuid,noexec,gid=5,mode=620"},
+
+		"/opt/google/containers/android/rootfs/root":                        {loopDev, "squashfs", "ro"},
+		"/opt/google/containers/android/rootfs/root/system/lib/arm":         {loopDev, "squashfs", "ro,nosuid,nodev"},
+		"/opt/google/containers/arc-obb-mounter/mountpoints/container-root": {loopDev, "squashfs", "ro,noexec"},
+		"/opt/google/containers/arc-sdcard/mountpoints/container-root":      {loopDev, "squashfs", "ro,noexec"},
+
+		"/run":                   {nil, "tmpfs", defaultRW + ",mode=755"},
+		"/run/arc/adb":           {nil, "tmpfs", defaultRW + ",mode=775"},
+		"/run/arc/adbd":          {nil, "tmpfs", defaultRW + ",mode=770"},
+		"/run/arc/media":         {nil, "tmpfs", defaultRO + ",mode=755"},
+		"/run/arc/obb":           {nil, "tmpfs", defaultRO + ",mode=755"},
+		"/run/arc/oem":           {nil, "tmpfs", defaultRW + ",mode=755"},
+		"/run/arc/sdcard":        {nil, "tmpfs", defaultRO + ",mode=755"},
+		"/run/arc/shared_mounts": {nil, "tmpfs", defaultRW + ",mode=755"},
+		"/run/arc/debugfs/sync":  {nil, "debugfs", defaultRW + ",gid=605,mode=750"},
+		"/run/debugfs_gpu":       {nil, "debugfs", defaultRW + ",gid=605,mode=750"}, // debugfs-access
+		"/run/imageloader":       {nil, "tmpfs", defaultRW + ",mode=755"},
+		"/run/namespaces":        {nil, "tmpfs", defaultRW + ",mode=755"}, // This is a bind mount
+		"/run/lock":              {nil, "tmpfs", defaultRW + ",mode=755"},
+
+		"/sys/fs/cgroup":    {nil, "tmpfs", defaultRW + ",mode=755"},
+		"/sys/fs/selinux":   {nil, "selinuxfs", "rw,nosuid,noexec"},
+		"/sys/kernel/debug": {nil, "debugfs", defaultRW + ",gid=605,mode=750"},
+
 		"/usr/share/chromeos-assets/quickoffice/_platform_specific": {loopDev, "squashfs", defaultRO},
 		"/usr/share/chromeos-assets/speech_synthesis/patts":         {loopDev, "squashfs", "nodev,nosuid"},
-		"/usr/share/oem": {nil, "ext4", defaultRO},
-		"/var":           {nil, "ext4", defaultRW},
-		"/var/lock":      {nil, "tmpfs", defaultRW},               // duplicate of /run/lock
-		"/var/run":       {nil, "tmpfs", defaultRW + ",mode=755"}, // duplicate of /run
+
+		"/var/lock": {nil, "tmpfs", defaultRW + ",mode=755"}, // duplicate of /run/lock
+		"/var/run":  {nil, "tmpfs", defaultRW + ",mode=755"}, // duplicate of /run
 	}
 
 	// Moblab devices mount external USB storage devices at several locations.
@@ -185,12 +158,35 @@ func Mtab(ctx context.Context, s *testing.State) {
 		return false
 	}
 
+	// Returns true if s is a prefix of any value in vals.
+	hasPrefixInSlice := func(s string, vals []string) bool {
+		for _, v := range vals {
+			if strings.HasPrefix(v, s) {
+				return true
+			}
+		}
+		return false
+	}
+
+	// Returns true if all values in needle are included in haystack, and also
+	// returns the set difference (needle - haystack). The function returns true
+	// iff the difference is empty.
+	included := func(needle, haystack []string) (bool, []string) {
+		var difference []string
+		for _, o := range needle {
+			if !inSlice(o, haystack) {
+				difference = append(difference, o)
+			}
+		}
+		return len(difference) == 0, difference
+	}
+
 	const (
 		liveMtab  = "/etc/mtab"                  // mtab listing live mounts
 		buildMtab = "/var/log/mount_options.log" // mtab captured before modifying for dev/test
 	)
 
-	// checkMounts reports non-fatal errors if the mount described in info doesn't match the expected spec.
+	// checkMount reports non-fatal errors if the mount described in info doesn't match the expected spec.
 	checkMount := func(info mountInfo, mtab string) {
 		// Skip rootfs since /dev/root is mapped to the same location.
 		if info.dev == "rootfs" {
@@ -201,6 +197,16 @@ func Mtab(ctx context.Context, s *testing.State) {
 		}
 		// When looking at /etc/mtab, skip mounts that are modified for dev/test images.
 		if mtab == liveMtab && ignoredLiveMountsRegexp.MatchString(info.mount) {
+			return
+		}
+
+		// Mounts that include either the defaultRO or defaultRW flags *and*
+		// no extra mode= or gid= flags are OK.
+		okRO, _ := included(strings.Split(defaultRO, ","), info.options)
+		okRW, _ := included(strings.Split(defaultRW, ","), info.options)
+		if (okRO || okRW) &&
+			!hasPrefixInSlice("mode", info.options) &&
+			!hasPrefixInSlice("gid", info.options) {
 			return
 		}
 
@@ -222,7 +228,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 			// All other mounts must be listed in the map.
 			var ok bool
 			if exp, ok = expMounts[info.mount]; !ok {
-				s.Errorf("Unexpected mount %v in %v with device %q and type %q", info.mount, mtab, info.dev, info.fs)
+				s.Errorf("Unexpected mount %v in %v with device %q, type %q, options %v", info.mount, mtab, info.dev, info.fs, info.options)
 				return
 			}
 		}
@@ -243,12 +249,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 			s.Errorf("Mount %v in %v has type %q; want %s", info.mount, mtab, info.fs, validFSes)
 		}
 
-		var missing []string
-		for _, o := range strings.Split(exp.options, ",") {
-			if !inSlice(o, info.options) {
-				missing = append(missing, o)
-			}
-		}
+		_, missing := included(strings.Split(exp.options, ","), info.options)
 		if len(missing) > 0 {
 			s.Errorf("Mount %v in %v is missing option(s) %v (has %v)", info.mount, mtab, missing, info.options)
 		}
