@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "493992cb_d5e5630e",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-07T08:23:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7564d992_5e109c7d",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "017aa0d213e7c3ecf503e74c481a93c8c31a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fc2c077_224f0a6f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-06T15:28:44Z",
       "side": 1,
       "message": "this actually might be any URL in the current implementation and might be used on other pages. So maybe 1) limit to the setting page only by adding prefix \"chrome://settings/\" to the input URL or 2) keep general but move into some common place or 3) rename to make it sounds like general",
+      "range": {
+        "startLine": 36,
+        "startChar": 58,
+        "endLine": 36,
+        "endChar": 74
+      },
+      "revId": "017aa0d213e7c3ecf503e74c481a93c8c31a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9af086ea_95db2c2e",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-07T08:23:53Z",
+      "side": 1,
+      "message": "I am going with 1), and plan to create a general page opener later.\nThis way if there is a change in the settings page, the calls are already separated in the tests.",
+      "parentUuid": "4fc2c077_224f0a6f",
       "range": {
         "startLine": 36,
         "startChar": 58,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52bc04ed_b26c03f2",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-07T08:23:53Z",
+      "side": 1,
+      "message": "In this function we can, but not in SelectNode(). And I would better keep the consistency.",
+      "parentUuid": "a1efe7c8_6a911f9a",
+      "range": {
+        "startLine": 79,
+        "startChar": 6,
+        "endLine": 79,
+        "endChar": 13
+      },
+      "revId": "017aa0d213e7c3ecf503e74c481a93c8c31a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35bfb21c_4b5e4d22",
         "filename": "src/chromiumos/tast/local/policyutil/settings.go",
         "patchSetId": 4
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5648438e_1d0bec6a",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-07T08:23:53Z",
+      "side": 1,
+      "message": "Yes, that is more common, but I think \":\" should be kept as a delimiter between wrapped error messages. If we don\u0027t use \":\" in the message, it is easier to separate the different levels of errors when reading the whole error message.",
+      "parentUuid": "35bfb21c_4b5e4d22",
+      "range": {
+        "startLine": 85,
+        "startChar": 43,
+        "endLine": 85,
+        "endChar": 93
+      },
+      "revId": "017aa0d213e7c3ecf503e74c481a93c8c31a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8504400_3d911944",
         "filename": "src/chromiumos/tast/local/policyutil/settings.go",
         "patchSetId": 4
@@ -106,6 +202,30 @@
       "writtenOn": "2021-05-06T15:28:44Z",
       "side": 1,
       "message": "if checker.err is not nil, you should make it clear that there are multiple errors. Then using errors.Wrapf, there might be a feeling that there was only one error and formatting might be confusing\n\nMaybe we should either return first error or store array of errors and combine them into one error in Verify method?",
+      "range": {
+        "startLine": 98,
+        "startChar": 29,
+        "endLine": 98,
+        "endChar": 40
+      },
+      "revId": "017aa0d213e7c3ecf503e74c481a93c8c31a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c45dae7_41727662",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-07T08:23:53Z",
+      "side": 1,
+      "message": "I don\u0027t understand what you mean.\nThe current solution collects all the errors, you will see them one after another if both the checked and restriction verification failed.\nOr you mean that it might seems like the first check second check failed because of the first check failed?",
+      "parentUuid": "c8504400_3d911944",
       "range": {
         "startLine": 98,
         "startChar": 29,
