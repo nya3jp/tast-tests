@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c088a72_a1b4e241",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-05-07T05:49:39Z",
+      "side": 1,
+      "message": "It seems I am just in CC\u0027ed. Let me know if you need me to review this CL.",
+      "revId": "67c2faaeb27f6ca483863343e21c8608b16d77cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
