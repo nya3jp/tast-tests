@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "029d8e25_fe02463d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-07T11:25:38Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this really worths a hwdep function in Tast, if no other tests will use it. I thought that a bug ID in comments + a local SkipOnModel list might be enough because we probably don\u0027t want to end up with one hwdep.XXX per known issue.\n\nIn any case, this change still looks good enough to me.",
+      "revId": "a1f602d6b5a3412d01e3c6d423bc4d06a7ec9d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6bf9647_0ccadb65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-07T11:25:38Z",
+      "side": 1,
+      "message": "(might be part of this CL, but) this \"low loss\" case might not be valuable now if the new check in the test already catches the same bug.",
+      "revId": "a1f602d6b5a3412d01e3c6d423bc4d06a7ec9d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
