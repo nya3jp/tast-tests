@@ -739,6 +739,13 @@ func wmPIP(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device
 		return err
 	}
 	defer actPIP.Stop(ctx, tconn)
+	// We can't use WaitUntilActivityIsReady() as it's not WM Test App.
+	if err := ash.WaitForVisible(ctx, tconn, actPIP.PackageName()); err != nil {
+		return err
+	}
+	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return err
+	}
 
 	// TODO(crbug.com/1010469): This tries to verify that nothing changes, which is very hard.
 	// PIP activity must not be in PIP mode yet.
