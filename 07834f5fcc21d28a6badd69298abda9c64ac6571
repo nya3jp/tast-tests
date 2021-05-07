@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da68322b_a4968e0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/calculator/calculator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T03:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab4d7d6b_08be0bd9",
+      "range": {
+        "startLine": 28,
+        "startChar": 14,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "07834f5fcc21d28a6badd69298abda9c64ac6571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0dbb6d6_cdbe5afd",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-07T03:06:21Z",
       "side": 1,
       "message": "using uiauto.Retry?",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 12
+      },
+      "revId": "07834f5fcc21d28a6badd69298abda9c64ac6571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f86f4cb_6045378c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/calculator/calculator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T03:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0dbb6d6_cdbe5afd",
       "range": {
         "startLine": 53,
         "startChar": 8,
