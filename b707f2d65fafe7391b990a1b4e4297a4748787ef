@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "556398ed_793a16d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T09:13:32Z",
+      "side": 1,
+      "message": "LeftClick will implicitly wait for element exist.",
+      "range": {
+        "startLine": 108,
+        "startChar": 15,
+        "endLine": 108,
+        "endChar": 26
+      },
+      "revId": "b707f2d65fafe7391b990a1b4e4297a4748787ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a83fb74f_6ef3f0d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T09:13:32Z",
+      "side": 1,
+      "message": "func (ac *Context) MakeVisible(finder *nodewith.Finder) Action will scroll the screen and make sure the element is visible.\n\nsrc/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go?l\u003d532",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 39
+      },
+      "revId": "b707f2d65fafe7391b990a1b4e4297a4748787ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e9176b_40894c37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T09:13:32Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 186,
+        "endChar": 68
+      },
+      "revId": "b707f2d65fafe7391b990a1b4e4297a4748787ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2be8bf6_6f909c8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T09:13:32Z",
+      "side": 1,
+      "message": "Can you confirm it is intended as 30s?",
+      "range": {
+        "startLine": 199,
+        "startChar": 53,
+        "endLine": 199,
+        "endChar": 79
+      },
+      "revId": "b707f2d65fafe7391b990a1b4e4297a4748787ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9986eed_f3748883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-07T09:13:32Z",
+      "side": 1,
+      "message": "Please try with the proposed solution above, hopefully it works. Otherwise I will review this part later.",
+      "range": {
+        "startLine": 243,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 39
+      },
+      "revId": "b707f2d65fafe7391b990a1b4e4297a4748787ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
