@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6d42540_03990a03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-07T05:31:35Z",
+      "side": 1,
+      "message": "I have minor comments only.",
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55748a60_ababc838",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-07T05:31:35Z",
+      "side": 1,
+      "message": "It\u0027s nice to add comments explaining why these deps are needed.",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 51
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d33fe347_d8cfeee0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-07T05:31:35Z",
+      "side": 1,
+      "message": "A string returned from shutil.EscapeSlice is already escaped, so I recommend formatting it with %s.",
+      "range": {
+        "startLine": 39,
+        "startChar": 12,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f756276_fa1f0ede",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-07T05:31:35Z",
+      "side": 1,
+      "message": "nit: Usually error messages are chained with colons.\n\n \"%s failed: %v\"",
+      "range": {
+        "startLine": 39,
+        "startChar": 21,
+        "endLine": 39,
+        "endChar": 23
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a51b75c4_edb07a66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-07T05:31:35Z",
+      "side": 1,
+      "message": "Optional: I\u0027d recommend saving the output of \"perf list\" to a file so that we can inspect it later.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19891491_d0418c34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-07T05:31:35Z",
+      "side": 1,
+      "message": "Optional: Do we need to split the string? Can we just find a regexp match against the whole string?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 41
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74dc1c44_4ba29293",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-07T05:31:35Z",
+      "side": 1,
+      "message": "nit: const tracedCommand \u003d \"ls\"",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 14
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5575977c_9e3668c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-07T05:31:35Z",
+      "side": 1,
+      "message": "nit: You can drop this line and use :\u003d in the following line.",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 15
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a4a04f1_4180e22d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-07T05:31:35Z",
+      "side": 1,
+      "message": "style: PerfETM\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nSame for other occurrences of \"Etm\" in this file.",
+      "range": {
+        "startLine": 181,
+        "startChar": 5,
+        "endLine": 181,
+        "endChar": 12
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
