@@ -18,7 +18,7 @@ func init() {
 		Func:         VMPstoreDump,
 		Desc:         "Test of vm_pstore_dump command: check the kernel's console output after running vm_pstore_dump",
 		Contacts:     []string{"kimiyuki@google.com", "arcvm-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "android_vm", "arc_pstore"},
 		Fixture:      "arcBooted",
 	})
