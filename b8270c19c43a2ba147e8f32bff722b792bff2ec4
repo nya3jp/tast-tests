@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03387963_ba702c33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-07T02:21:53Z",
+      "side": 1,
+      "message": "Hi all, \n\nJust added a functionality to check the handwriting engine being ready. I have tested it on six stable models. Will start to stabilise on other models once it proves to be stable on the current ones. \n\nBest,\nAlvin ",
+      "revId": "b8270c19c43a2ba147e8f32bff722b792bff2ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
