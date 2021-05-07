@@ -16,6 +16,24 @@
       "message": "Ah, didn\u0027t notice we have a shadow reviewer... my bad!",
       "revId": "1cb64e609f6baafff5e2fa268f8aa384f792a53d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63bb0840_05839a04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-07T00:12:49Z",
+      "side": 1,
+      "message": "Thanks for the review Eric. Don you mind to share what is a \"shadow reviewer\"?",
+      "parentUuid": "889b1d8c_a47b53d0",
+      "revId": "1cb64e609f6baafff5e2fa268f8aa384f792a53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
