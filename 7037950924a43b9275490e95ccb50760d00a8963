@@ -355,6 +355,30 @@
       },
       "revId": "7037950924a43b9275490e95ccb50760d00a8963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcf4c403_f5cece91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-07T08:22:54Z",
+      "side": 1,
+      "message": "and now I know why format didn\u0027t work. My python was pointing to the wrong python version.",
+      "parentUuid": "f5bf1066_d23fb0b0",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "7037950924a43b9275490e95ccb50760d00a8963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
