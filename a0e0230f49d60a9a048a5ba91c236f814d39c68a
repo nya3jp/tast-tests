@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41483a45_53a637ad",
+        "filename": "android/ArcResizeLockTest/AndroidManifest.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-05-07T00:18:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b18e4b8_3ae7a551",
+      "range": {
+        "startLine": 2,
+        "startChar": 15,
+        "endLine": 2,
+        "endChar": 19
+      },
+      "revId": "a0e0230f49d60a9a048a5ba91c236f814d39c68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b39fdd0f_3a454910",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-05-06T08:07:33Z",
       "side": 1,
       "message": "Can you change to |GetPrimaryInfo| for chromebox devices? If it\u0027s limited to \"internal\" one, we should add `HardwareDeps: hwdep.D(hwdep.InternalDisplay())`.",
+      "range": {
+        "startLine": 101,
+        "startChar": 26,
+        "endLine": 101,
+        "endChar": 41
+      },
+      "revId": "a0e0230f49d60a9a048a5ba91c236f814d39c68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53e9337d_a538e451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-05-07T00:18:59Z",
+      "side": 1,
+      "message": "Good catch. Thanks!",
+      "parentUuid": "b39fdd0f_3a454910",
       "range": {
         "startLine": 101,
         "startChar": 26,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ff7b306_b6bf7af7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-05-07T00:18:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dc688e9_0edd30c0",
+      "range": {
+        "startLine": 156,
+        "startChar": 47,
+        "endLine": 156,
+        "endChar": 60
+      },
+      "revId": "a0e0230f49d60a9a048a5ba91c236f814d39c68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7147b33_e5fc1564",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c647168_1cec73f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-05-07T00:18:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7147b33_e5fc1564",
+      "range": {
+        "startLine": 243,
+        "startChar": 43,
+        "endLine": 243,
+        "endChar": 46
+      },
+      "revId": "a0e0230f49d60a9a048a5ba91c236f814d39c68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cda51475_e3294dda",
@@ -140,6 +236,24 @@
       "writtenOn": "2021-05-06T08:07:33Z",
       "side": 1,
       "message": "better to have wm.WaitUntilActivityIsReady here I think.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go;l\u003d516;drc\u003daf74c6b5d461c216296f4a9a432f1391928a36ce",
+      "revId": "a0e0230f49d60a9a048a5ba91c236f814d39c68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "960d2f4c_c4f02983",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-05-07T00:18:59Z",
+      "side": 1,
+      "message": "Turns out the function is specific to WM Test App.\n\nI\u0027ll leave it for now as I always poll when asserting something.",
+      "parentUuid": "cda51475_e3294dda",
       "revId": "a0e0230f49d60a9a048a5ba91c236f814d39c68a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
