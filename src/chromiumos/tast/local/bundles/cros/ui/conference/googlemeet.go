@@ -386,9 +386,9 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 	tconn := conf.tconn
 	ui := uiauto.New(tconn)
 
-	// Hide all notifications to prevent them from covering the "More options" button.
-	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to hide visible notifications")
+	// Close all notifications to prevent them from covering the print button.
+	if err := ash.CloseNotifications(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to close otifications")
 	}
 
 	moreOptions := nodewith.Name("More options").First()
