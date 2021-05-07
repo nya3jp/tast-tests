@@ -22,7 +22,7 @@ func init() {
 			"hesling@chromium.org", // Test author
 			"chromeos-fingerprint@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline", "group:fingerprint-cq"},
 		// On hatch+bloonchipper(Dratini) flash_fp_mcu --hello takes about
 		// 4 seconds and the full test with reboot takes about 30 seconds.
 		// Given flash_fp_mcu can run into scenarios were it needs to retry a
