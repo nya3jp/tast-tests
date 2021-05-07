@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9231f00d_c4c838a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-05-07T19:17:35Z",
+      "side": 1,
+      "message": "Agreed, since it\u0027s only 2 particular platforms I think the test itself can handle the list of platforms to skip instead of adding a full-blown hwdep. See for example how this test does it: http://source/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go;rcl\u003df9961b5741d7b41be713aff82298eac3a8aff70d;l\u003d58\n\nThat\u0027s what I meant by:\n\u003e I think in that case, since it\u0027s for a specific feature, it makes sense for the test itself to list the limitation.\nbut that wasn\u0027t very clear :-( I should have made it a bit clearer, sorry!",
+      "parentUuid": "029d8e25_fe02463d",
+      "revId": "a1f602d6b5a3412d01e3c6d423bc4d06a7ec9d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6bf9647_0ccadb65",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
         "patchSetId": 4
