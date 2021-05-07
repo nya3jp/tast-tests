@@ -30,9 +30,14 @@ func init() {
 		Contacts:     []string{"takise@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		SoftwareDeps: []string{"android_p", "chrome"},
-		Fixture:      "arcBooted",
-		Data:         []string{"ArcBlackFlashTest.apk"},
+		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
+		Fixture: "arcBooted",
 	})
 }
 
@@ -49,6 +54,12 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed initializing UI Automator: ", err)
+	}
+	defer d.Close(ctx)
 
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
@@ -75,7 +86,7 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 	}
 	defer ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, origShelfBehavior)
 
-	if err := a.Install(ctx, s.DataPath(apkName)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 
@@ -87,6 +98,13 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start the BlackFlashTest activity: ", err)
+	}
+	defer act.Stop(ctx, tconn)
+	if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+		s.Fatal("Failed to wait for activity to be visible: ", err)
+	}
+	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
+		s.Fatal("Failed to wait for system to be idle: ", err)
 	}
 
 	// Set the activity to Restored.
