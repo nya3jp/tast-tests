@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bccc6542_3f97a15a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-07T04:06:09Z",
+      "side": 1,
+      "message": "Thanks Jun. \"results\" is the var name. I guess we should keep it as is.",
+      "parentUuid": "b476a95d_00d77d11",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "3ac28b4f0836050cb8ab0ed50d5895b06c8a5cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "995174c8_498b67ed",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-06T10:43:40Z",
       "side": 1,
       "message": "nit: this comment should be above opt :\u003d info.options[0]",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 318,
+        "endChar": 41
+      },
+      "revId": "3ac28b4f0836050cb8ab0ed50d5895b06c8a5cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b0f9bc_99d2a7a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-07T04:06:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "995174c8_498b67ed",
       "range": {
         "startLine": 318,
         "startChar": 1,
