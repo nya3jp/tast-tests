@@ -33,6 +33,24 @@
       "message": "Could we rejigger this to run the for-loop DUT-side? That would allow us to minimize the SSH round-trips, per go/tast-design:\n\n    All communication with the DUT should happen over a single persistent SSH connection, and round trips should be minimized on the critical path — otherwise, network latency kills performance when running tests on a DUT in a different geographical location.\n\nSomething like:\n\n    if err :\u003d h.DUT.Conn().Command(\"sh\", \"c\", fmt.Sprintf(\"for FP in %s; do if [ -x $FP ] ; then chmod 0755 $FP ; fi ; done\", strings.Join(fps, \" \")); err !\u003d nil {\n\nNo doubt it\u0027s uglier.\n\nIt might also help debugging later if we can know whether we\u0027ve changed any file permissions -- since theoretically, all files might not exist due to some mangled paths, and we wouldn\u0027t know until later. One way we could do that is by echoing after the chmod, turning the `Run` into an `Output`, and logging the output.",
       "revId": "65361619ac86d4f20a519bbb73463b1e110616dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab85f33_b3ccc32c",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-07T19:04:57Z",
+      "side": 1,
+      "message": "Optionally, I think there\u0027s a flag we can add to the `tar` command in PutFiles, which would preserve file permissions.",
+      "parentUuid": "3b795096_cb0e300a",
+      "revId": "65361619ac86d4f20a519bbb73463b1e110616dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
