@@ -17,14 +17,14 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:    NNAPIDriver,
 		Desc:    "Validates that the HAL driver conforms to the NNAPI specification",
-		Timeout: 10 * time.Minute,
+		Timeout: 30 * time.Minute,
 		Contacts: []string{
 			"jmpollock@google.com",
 			"slangley@google.com",
 			"chromeos-platform-ml@google.com",
 		},
 		Attr: []string{
-			"group:mainline", "informational",
+			"group:mainline",
 		},
 		SoftwareDeps: []string{"nnapi"},
 		Params: []testing.Param{{
