@@ -3,6 +3,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c1be783b_45540710",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-07T02:35:15Z",
+      "side": 1,
+      "message": "Thanks for writing detailed explanation, it\u0027s very helpful!",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "9f6c94c66f2186e5ebac5f7ab30a957170c37352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b7bc17e2_a74c8eb5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
