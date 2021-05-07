@@ -16,6 +16,23 @@
       "message": "Tast Owners, please bless the CL.",
       "revId": "c7f360676a3e4165f2e289bcadf09facac09ae36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b80b0109_663a7c9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-07T02:15:44Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "c7f360676a3e4165f2e289bcadf09facac09ae36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
