@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "604d7c1b_bcd5c068",
+        "filename": "src/chromiumos/tast/local/graphics/trace/guestos/trace_replay_crostini_setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2021-05-07T22:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0220dd46_37ec249f",
+      "range": {
+        "startLine": 18,
+        "startChar": 78,
+        "endLine": 18,
+        "endChar": 89
+      },
+      "revId": "ad2db401439bde7f7a93019205a184ec233e6f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "704f9b5f_7cecdeef",
