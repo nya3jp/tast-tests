@@ -363,8 +363,8 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 	if len(ns) > 0 {
 		testing.ContextLog(ctx, "Hide visible notifications")
 		// Hide notifications which could cover the "More options" button.
-		if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to hide notifications")
+		if err := ash.CloseNotifications(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to close notifications")
 		}
 		quickSetting := nodewith.Role(role.Window).ClassName("TrayBubbleView")
 		if err := ui.WaitUntilGone(quickSetting)(ctx); err != nil {
