@@ -33,6 +33,7 @@ type TelemParams struct {
 
 // Categories for the cros_healthd telem command.
 const (
+	TelemCategoryAudio             TelemCategory = "audio"
 	TelemCategoryBacklight         TelemCategory = "backlight"
 	TelemCategoryBattery           TelemCategory = "battery"
 	TelemCategoryBluetooth         TelemCategory = "bluetooth"
