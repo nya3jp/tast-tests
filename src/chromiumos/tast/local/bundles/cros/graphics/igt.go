@@ -92,15 +92,81 @@ func init() {
 			},
 			Timeout: 5 * time.Minute,
 		}, {
+			Name: "kms_busy",
+			Val: igtTest{
+				exe: "kms_busy",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_color",
+			Val: igtTest{
+				exe: "kms_color",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
 			Name: "kms_concurrent",
 			Val: igtTest{
 				exe: "kms_concurrent",
 			},
 			Timeout: 5 * time.Minute,
 		}, {
+			Name: "kms_content_protection",
+			Val: igtTest{
+				exe: "kms_content_protection",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_crtc_background_color",
+			Val: igtTest{
+				exe: "kms_crtc_background_color",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_cursor_crc",
+			Val: igtTest{
+				exe: "kms_cursor_crc",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_cursor_legacy",
+			Val: igtTest{
+				exe: "kms_cursor_legacy",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_dp_aux_dev",
+			Val: igtTest{
+				exe: "kms_dp_aux_dev",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_dp_dsc",
+			Val: igtTest{
+				exe: "kms_dp_dsc",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
 			Name: "kms_draw_crc",
 			Val: igtTest{
 				exe: "kms_draw_crc",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_flip",
+			Val: igtTest{
+				exe: "kms_flip",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_flip_event_leak",
+			Val: igtTest{
+				exe: "kms_flip_event_leak",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_frontbuffer_tracking",
+			Val: igtTest{
+				exe: "kms_frontbuffer_tracking",
 			},
 			Timeout: 5 * time.Minute,
 		}, {
@@ -122,9 +188,39 @@ func init() {
 			},
 			Timeout: 5 * time.Minute,
 		}, {
+			Name: "kms_invalid_dotclock",
+			Val: igtTest{
+				exe: "kms_invalid_dotclock",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_multipipe_modeset",
+			Val: igtTest{
+				exe: "kms_multipipe_modeset",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_panel_fitting",
+			Val: igtTest{
+				exe: "kms_panel_fitting",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_pipe_crc_blank",
+			Val: igtTest{
+				exe: "kms_pipe_crc_blank",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
 			Name: "kms_plane",
 			Val: igtTest{
 				exe: "kms_plane",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_plane_alpha_blend",
+			Val: igtTest{
+				exe: "kms_plane_alpha_blend",
 			},
 			Timeout: 5 * time.Minute,
 		}, {
@@ -137,6 +233,18 @@ func init() {
 			Name: "kms_plane_lowres",
 			Val: igtTest{
 				exe: "kms_plane_lowres",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_plane_multiple",
+			Val: igtTest{
+				exe: "kms_plane_multiple",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_plane_scaling",
+			Val: igtTest{
+				exe: "kms_plane_scaling",
 			},
 			Timeout: 5 * time.Minute,
 		}, {
@@ -158,15 +266,63 @@ func init() {
 			},
 			Timeout: 5 * time.Minute,
 		}, {
+			Name: "kms_psr",
+			Val: igtTest{
+				exe: "kms_psr",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_psr2_su",
+			Val: igtTest{
+				exe: "kms_psr2_su",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
 			Name: "kms_rmfb",
 			Val: igtTest{
 				exe: "kms_rmfb",
 			},
 			Timeout: 5 * time.Minute,
 		}, {
+			Name: "kms_rotation_crc",
+			Val: igtTest{
+				exe: "kms_rotation_crc",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_selftest",
+			Val: igtTest{
+				exe: "kms_selftest",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_setmode",
+			Val: igtTest{
+				exe: "kms_setmode",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_sysfs_edid_timing",
+			Val: igtTest{
+				exe: "kms_sysfs_edid_timing",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
 			Name: "kms_universal_plane",
 			Val: igtTest{
 				exe: "kms_universal_plane",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_vblank",
+			Val: igtTest{
+				exe: "kms_vblank",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_vvs",
+			Val: igtTest{
+				exe: "kms_vvs",
 			},
 			Timeout: 5 * time.Minute,
 		}, {
