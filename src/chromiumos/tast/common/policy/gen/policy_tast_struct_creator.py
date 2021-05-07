@@ -468,9 +468,29 @@ const (
 \tAccountTypeKioskWebApp // 4
 )
 
+type AndroidKioskAppInfo struct {
+\tPackageName\t*string `json:"package_name,omitempty"`
+\tClassName\t*string `json:"class_name,omitempty"`
+\tAction\t*string\t`json:"action,omitempty"`
+\tDisplayName\t*string\t`json:"display_name,omitempty"`
+}
+
+type KioskAppInfo struct {
+\tAppId\t*string\t`json:"app_id,omitempty"`
+\tUpdateUrl\t*string\t`json:"update_url,omitempty"`
+}
+
+type WebKioskAppInfo struct {
+\tUrl\t*string\t`json:"url,omitempty"`
+\tTitle\t*string\t`json:"title,omitempty"`
+\tIconUrl\t*string\t`json:"icon_url,omitempty"`
+}
 type DeviceLocalAccountInfo struct {
 \tAccountID\t*string\t`json:"account_id,omitempty"`
 \tAccountType\t*AccountType\t`json:"type,omitempty"`
+\tAndroidKioskAppInfo *AndroidKioskAppInfo `json:"android_kiosk_app,omitempty"`
+\tKioskAppInfo\t*KioskAppInfo\t`json:"kiosk_app,omitempty"`
+\tWebKioskAppInfo\t*WebKioskAppInfo\t`json:"web_kiosk_app,omitempty"`
 }
 """
   return attr_type, attr_structs
