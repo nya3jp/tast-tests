@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf4f9288_bba79881",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-07T05:33:56Z",
+      "side": 1,
+      "message": "LGTM (I\u0027m not waiting for the shadow reviewer since the change is trivial)\n",
+      "revId": "938d79be1c67576653c3bc3af12ddda8466431d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
