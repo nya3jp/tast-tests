@@ -51,6 +51,19 @@ func SearchAndLaunchWithQuery(tconn *chrome.TestConn, kb *input.KeyboardEventWri
 	)
 }
 
+// SearchAndRightClick return a function that searches a query in the launcher and right click the app from the list.
+// It right clicks the app until an menu item is displayed.
+func SearchAndRightClick(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, query, appName string) uiauto.Action {
+	ui := uiauto.New(tconn)
+	menuItem := nodewith.Role(role.MenuItem).First()
+	app := AppSearchFinder(appName)
+	return uiauto.Combine(fmt.Sprintf("SearchAndRightClick(%s, %s)", query, appName),
+		Open(tconn),
+		Search(tconn, kb, query),
+		ui.WithTimeout(time.Minute).WithInterval(10*time.Second).RightClickUntil(app, ui.WaitUntilExists(menuItem)),
+	)
+}
+
 // Open return a function that opens the launcher.
 func Open(tconn *chrome.TestConn) uiauto.Action {
 	return OpenExpandedView(tconn)
