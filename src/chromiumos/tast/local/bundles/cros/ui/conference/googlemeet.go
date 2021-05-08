@@ -149,9 +149,9 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 
 		addAccPrompt := nodewith.NameStartingWith("Add another Google Account for").Role(role.Heading)
 		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(addAccPrompt)(ctx); err == nil {
-			// Hide all notifications to prevent them from covering the ok button.
-			if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
-				return errors.Wrap(err, "failed to hide visible notifications")
+			// Close all notifications to prevent them from covering the ok button.
+			if err := ash.CloseNotifications(ctx, tconn); err != nil {
+				return errors.Wrap(err, "failed to close notifications")
 			}
 
 			dontReminder := nodewith.Name("Don't remind me next time").Role(role.CheckBox)
@@ -386,9 +386,9 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 	tconn := conf.tconn
 	ui := uiauto.New(tconn)
 
-	// Hide all notifications to prevent them from covering the "More options" button.
-	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to hide visible notifications")
+	// Close all notifications to prevent them from covering the print button.
+	if err := ash.CloseNotifications(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to close otifications")
 	}
 
 	moreOptions := nodewith.Name("More options").First()

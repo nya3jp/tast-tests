@@ -349,8 +349,8 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
-		s.Fatal("Failed to hide ash notification: ", err)
+	if err := ash.CloseNotifications(ctx, tconn); err != nil {
+		s.Fatal("Failed to close ash notification: ", err)
 	}
 
 	s.Log("Make video fullscreen")

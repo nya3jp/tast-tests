@@ -522,8 +522,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	pv := perf.NewValues()
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Hide notifications so that they won't overlap with other UI components.
-		if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to hide visible notifications")
+		if err := ash.CloseNotifications(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to close all notifications")
 		}
 		shareMessage := "Share this info with people you want in the meeting"
 		if err := ui.WaitUntilExists(nodewith.Name(shareMessage).Ancestor(webview))(ctx); err == nil {
@@ -557,8 +557,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		// Hide notifications so that they won't overlap with other UI components.
-		if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to hide visible notifications")
+		if err := ash.CloseNotifications(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to close all notifications")
 		}
 		if err := meetConn.Eval(ctx, fmt.Sprintf("hrTelemetryApi.set%sLayout()", string(meet.layout)), nil); err != nil {
 			return errors.Wrapf(err, "failed to set %s layout", string(meet.layout))
