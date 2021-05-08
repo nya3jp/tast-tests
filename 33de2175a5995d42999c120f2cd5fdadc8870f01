@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b5c1f86_2d26fd8a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_secure_wifi.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-05-08T01:30:16Z",
+      "side": 1,
+      "message": "with this combination of attributes the test won\u0027t run anywhere afaik. |wificell_cq| would make it part of the wificell-cq suite, but |wificell_unstable| would filter it out of that suite.\n\nWhat we normally do for WiFi-specific tests is to add the |wificell_func| attribute to make it part of of the wifi test suites (see control.wificell-func-stable and wificell-func-unstable for details). After that, a subset of those are also added to |wificell_cq|, after they\u0027re proven to be stable and if the run time is not putting too much stress on the wificell-cq pool",
+      "range": {
+        "startLine": 67,
+        "startChar": 43,
+        "endLine": 67,
+        "endChar": 77
+      },
+      "revId": "33de2175a5995d42999c120f2cd5fdadc8870f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
