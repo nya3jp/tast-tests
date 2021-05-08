@@ -75,8 +75,8 @@ type Settings struct {
 // OpenLinuxSubpage opens Linux subpage on Settings page. If Linux is not installed, it opens the installer.
 func OpenLinuxSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (*Settings, error) {
 	// Open Settings app.
-	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
-		return nil, errors.Wrap(err, "failed to hide all notifications in OpenLinuxSubpage()")
+	if err := ash.CloseNotifications(ctx, tconn); err != nil {
+		return nil, errors.Wrap(err, "failed to close all notifications in OpenLinuxSubpage()")
 	}
 
 	ui := uiauto.New(tconn)
