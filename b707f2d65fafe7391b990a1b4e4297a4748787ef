@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "567545e6_2f6d406b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-08T03:44:12Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "556398ed_793a16d6",
+      "range": {
+        "startLine": 108,
+        "startChar": 15,
+        "endLine": 108,
+        "endChar": 26
+      },
+      "revId": "b707f2d65fafe7391b990a1b4e4297a4748787ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a83fb74f_6ef3f0d5",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-07T09:13:32Z",
       "side": 1,
       "message": "func (ac *Context) MakeVisible(finder *nodewith.Finder) Action will scroll the screen and make sure the element is visible.\n\nsrc/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go?l\u003d532",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 39
+      },
+      "revId": "b707f2d65fafe7391b990a1b4e4297a4748787ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82de1917_ad356236",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-08T03:44:12Z",
+      "side": 1,
+      "message": "The team did some test and found there are two situations that MakeVisible doesn\u0027t work: \n(1) It works if the node is offscreen but doesn\u0027t work if the node is not offscreen but is partially covered (overlay) by other node (in this case, the footer might cover the button).\n(2) It doesn\u0027t work on tablet kukui. Failed to click target node happened on kukui (tablet) \u0026 hana in our env. MakeVisible works on hana but not for kukui, and scrollToAdjustNodeVerticalPosition works for both models",
+      "parentUuid": "a83fb74f_6ef3f0d5",
       "range": {
         "startLine": 118,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50413253_f59cf697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-08T03:44:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67e9176b_40894c37",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 186,
+        "endChar": 68
+      },
+      "revId": "b707f2d65fafe7391b990a1b4e4297a4748787ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2be8bf6_6f909c8d",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-05-07T09:13:32Z",
       "side": 1,
       "message": "Can you confirm it is intended as 30s?",
+      "range": {
+        "startLine": 199,
+        "startChar": 53,
+        "endLine": 199,
+        "endChar": 79
+      },
+      "revId": "b707f2d65fafe7391b990a1b4e4297a4748787ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f366a7c_33b7ff8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-08T03:44:12Z",
+      "side": 1,
+      "message": "Yes. The test runs 10+ minutes. Each polling interval we print a log to indicate test is still running. 30 seconds is a balance of log number and check frequency.",
+      "parentUuid": "d2be8bf6_6f909c8d",
       "range": {
         "startLine": 199,
         "startChar": 53,
