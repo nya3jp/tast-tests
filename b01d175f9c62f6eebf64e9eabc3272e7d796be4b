@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b204b55_f8725137",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-05-08T01:30:16Z",
+      "side": 1,
+      "message": "\u003e Harpreet and Nicolas, shall we gate the CL until the suite is set, or it can go first then move to the proper suite later?\n\nI\u0027m ok with temporarily adding that test to wifi_matfunc while we\u0027re in the process of spinning up a separate suite. Actually, we should add it to wifi_func_tast first until the test is stable, and promote it to wifi_matfunc once it\u0027s green :-)\n\n\nSo I think for now the attributes should be:\n\nAttr:         []string{\"group:wificell\", \"wificell_func\", \"wificell_unstable\"},\n\nCorrect?",
+      "parentUuid": "7b22df53_1c3ff611",
+      "revId": "b01d175f9c62f6eebf64e9eabc3272e7d796be4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48b0f722_85078211",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_secure_wifi.go",
         "patchSetId": 5
