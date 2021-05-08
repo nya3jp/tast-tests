@@ -194,13 +194,13 @@ type AppType string
 
 // Corresponds to the definition in autotest_private.idl.
 const (
-	Arc       AppType = "Arc"
-	BuiltIn   AppType = "BuiltIn"
-	Crostini  AppType = "Crostini"
-	Extension AppType = "Extension"
-	Lacros    AppType = "Lacros"
-	Web       AppType = "Web"
-	MacNative AppType = "MacNative"
+	Arc               AppType = "Arc"
+	BuiltIn           AppType = "BuiltIn"
+	Crostini          AppType = "Crostini"
+	Extension         AppType = "Extension"
+	StandaloneBrowser AppType = "StandaloneBrowser"
+	Web               AppType = "Web"
+	MacNative         AppType = "MacNative"
 )
 
 // AppInstallSource maps apps::mojom::InstallSource.

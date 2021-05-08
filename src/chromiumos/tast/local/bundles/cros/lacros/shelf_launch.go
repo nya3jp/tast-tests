@@ -56,12 +56,17 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 	found := false
 	for _, appItem := range appItems {
-		if appItem.AppID == apps.Lacros.ID && appItem.Name == apps.Lacros.Name && appItem.Type == ash.Lacros {
+		if appItem.AppID == apps.Lacros.ID && appItem.Name == apps.Lacros.Name && appItem.Type == ash.StandaloneBrowser {
 			found = true
 			break
 		}
 	}
 	if !found {
+		s.Logf("AppID: %v, Name: %v, Type: %v, was expected, but got",
+			apps.Lacros.ID, apps.Lacros.Name, ash.StandaloneBrowser)
+		for _, appItem := range appItems {
+			s.Logf("AppID: %v, Name: %v, Type: %v", appItem.AppID, appItem.Name, appItem.Type)
+		}
 		s.Fatal("Lacros was not included in the list of installed applications: ", err)
 	}
 
