@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0154057c_89540231",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/app_info_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-09T23:37:33Z",
+      "side": 1,
+      "message": "nit: you might want to check that the Files icon is present first (some of the slower machines don\u0027t show it immediately, might flake)",
+      "revId": "f1ef3216310ed13dc3d7df3d01f4ceef29afce86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

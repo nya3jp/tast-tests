@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54df67b9_bdfed600",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/app_info_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-09T23:37:33Z",
+      "side": 1,
+      "message": "Should prefer chromeLoggedIn fixture over the chrome.LoggedIn precondition",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "0914fbd2adfc8b8769884eb8f804049677cd2f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09dc7cf0_e4ea5722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/app_info_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-09T23:37:33Z",
+      "side": 1,
+      "message": "Any reason you\u0027re shortening the context when you\u0027re not doing anything with the extra 5s?",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "0914fbd2adfc8b8769884eb8f804049677cd2f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a9bb7b1_0c0a035f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/app_info_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-09T23:37:33Z",
+      "side": 1,
+      "message": "optional: you can jump straight into the Files app info page by using\n```\nLaunchOSSettings(ctx, tconn, \"chrome://os-settings/app-management/detail?id\u003dhhaomjibdihmijegdhdafkllkbggdgoj\")\n```",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 81,
+        "endChar": 41
+      },
+      "revId": "0914fbd2adfc8b8769884eb8f804049677cd2f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f1a1632_c13683d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/app_info_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-09T23:37:33Z",
+      "side": 1,
+      "message": "Defer a bit earlier to capture them in the subtest check_files_appinfo_on_shelf?",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 68
+      },
+      "revId": "0914fbd2adfc8b8769884eb8f804049677cd2f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39924efe_c4428864",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-09T23:37:33Z",
+      "side": 1,
+      "message": "nit: returns an Action?",
+      "range": {
+        "startLine": 54,
+        "startChar": 23,
+        "endLine": 54,
+        "endChar": 40
+      },
+      "revId": "0914fbd2adfc8b8769884eb8f804049677cd2f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55d19d3d_b32ae4ab",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-09T23:37:33Z",
+      "side": 1,
+      "message": "nit: a menu item",
+      "range": {
+        "startLine": 55,
+        "startChar": 33,
+        "endLine": 55,
+        "endChar": 45
+      },
+      "revId": "0914fbd2adfc8b8769884eb8f804049677cd2f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cace570_e97eeaa3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-09T23:37:33Z",
+      "side": 1,
+      "message": "This is a really long interval, can this be tightened to 1s or less?",
+      "range": {
+        "startLine": 63,
+        "startChar": 43,
+        "endLine": 63,
+        "endChar": 57
+      },
+      "revId": "0914fbd2adfc8b8769884eb8f804049677cd2f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
