@@ -36,8 +36,6 @@ const (
 type Base interface {
 	// Close cleans the resource used by Router.
 	Close(ctx context.Context) error
-	// ReserveForClose returns a shortened ctx with cancel function.
-	ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc)
 	// GetRouterType
 	GetRouterType() Type
 }
@@ -177,9 +175,9 @@ type BaseRouterStruct struct {
 	rtype Type
 }
 
-// ReserveForClose returns a shortened ctx with cancel function.
+// ReserveForRouterClose returns a shortened ctx with cancel function.
 // The shortened ctx is used for running things before r.Close() to reserve time for it to run.
-func (r *legacyRouterStruct) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
+func ReserveForRouterClose(ctx context.Context) (context.Context, context.CancelFunc) {
 	return ctxutil.Shorten(ctx, 5*time.Second)
 }
 
@@ -197,5 +195,4 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtyp
 	default:
 		return nil, errors.Errorf("unexpected routerType, got %v", rtype)
 	}
-
 }
