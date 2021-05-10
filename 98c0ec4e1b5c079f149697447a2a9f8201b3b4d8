@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc18f5ba_39bae7a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-10T10:08:32Z",
+      "side": 1,
+      "message": "Thanks for pointing that out. Will adjust the description.",
+      "parentUuid": "6289be6d_d23b344e",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "98c0ec4e1b5c079f149697447a2a9f8201b3b4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "364d8093_3d469d62",
@@ -43,6 +67,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0774f3f_10fb9fc6",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-10T10:08:32Z",
+      "side": 1,
+      "message": "Should I deprecate this one?",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 1
+      },
+      "revId": "98c0ec4e1b5c079f149697447a2a9f8201b3b4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26ecb67d_e6cb4ff3",
         "filename": "src/chromiumos/tast/local/syslog/reader.go",
         "patchSetId": 1
@@ -54,6 +101,30 @@
       "writtenOn": "2021-05-10T09:43:35Z",
       "side": 1,
       "message": "Can you export this type?\n\nA rule of thumb is that all types of exported symbols should also be exported. This might sound unnecessary at first, but otherwise callers have troubles in some cases.\n\nFor example:\n\n // We want to try multiple program names, but it\u0027s impossible.\n for _, p :\u003d range []syslog.programName{syslog.Chrome, syslog.CrashReported} { ... }\n\n // We want to introduce a utility function converting an enum to programName, but it\u0027s impossible.\n type chromeOrCryptohome int\n const (\n   chrome chromeOrCryptohome \u003d iota\n   cryptohome\n )\n\n func (i chromeOrCryptohome) ProgramName() chrome.programName { ... }",
+      "range": {
+        "startLine": 206,
+        "startChar": 5,
+        "endLine": 206,
+        "endChar": 16
+      },
+      "revId": "98c0ec4e1b5c079f149697447a2a9f8201b3b4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02d18ac_ee834e28",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-10T10:08:32Z",
+      "side": 1,
+      "message": "will do",
+      "parentUuid": "26ecb67d_e6cb4ff3",
       "range": {
         "startLine": 206,
         "startChar": 5,
@@ -89,6 +160,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4644d6f7_18fdc718",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-10T10:08:32Z",
+      "side": 1,
+      "message": "mistyped it :/ Thanks 👍",
+      "parentUuid": "61eb3996_7f1263e7",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 14
+      },
+      "revId": "98c0ec4e1b5c079f149697447a2a9f8201b3b4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f243a263_31de0ed1",
         "filename": "src/chromiumos/tast/local/syslog/reader.go",
         "patchSetId": 1
@@ -100,6 +195,24 @@
       "writtenOn": "2021-05-10T10:03:10Z",
       "side": 1,
       "message": "I would suggest to modify Program() instead. Or delete the unused Program() if you rather have this verbose name.",
+      "revId": "98c0ec4e1b5c079f149697447a2a9f8201b3b4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6920d360_6ad6d8ed",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-10T10:08:32Z",
+      "side": 1,
+      "message": "I am thinking of either as you pointed, \n1. simply replace current usage (I see problem associated with that)\n2. deprecate the Program() function and later do the clean up (in a month or so)",
+      "parentUuid": "f243a263_31de0ed1",
       "revId": "98c0ec4e1b5c079f149697447a2a9f8201b3b4d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
