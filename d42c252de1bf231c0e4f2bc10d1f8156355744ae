@@ -253,6 +253,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92373385_25f6f05b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483212
+      },
+      "writtenOn": "2021-05-10T17:42:49Z",
+      "side": 1,
+      "message": "I agree that for issue #1, manually clicking Accept once per account is reasonable. We can do this for each test account we create",
+      "parentUuid": "2869e4b6_f20bae08",
+      "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9fa62b4_ee688dcf",
         "filename": "src/chromiumos/tast/local/chrome/option.go",
         "patchSetId": 1
