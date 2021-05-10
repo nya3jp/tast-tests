@@ -62,6 +62,46 @@
       },
       "revId": "98c0ec4e1b5c079f149697447a2a9f8201b3b4d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61eb3996_7f1263e7",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-10T10:03:10Z",
+      "side": 1,
+      "message": "Why not CrashReporter?",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 14
+      },
+      "revId": "98c0ec4e1b5c079f149697447a2a9f8201b3b4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f243a263_31de0ed1",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-10T10:03:10Z",
+      "side": 1,
+      "message": "I would suggest to modify Program() instead. Or delete the unused Program() if you rather have this verbose name.",
+      "revId": "98c0ec4e1b5c079f149697447a2a9f8201b3b4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
