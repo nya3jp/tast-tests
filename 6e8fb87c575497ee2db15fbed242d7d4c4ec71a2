@@ -16,6 +16,29 @@
       "message": "Hi tast-owners, PTAL",
       "revId": "6e8fb87c575497ee2db15fbed242d7d4c4ec71a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9960a8_d04acec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition_not_supported.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-05-10T12:20:24Z",
+      "side": 1,
+      "message": "nit: does it mean when the feature is turned on by default?",
+      "range": {
+        "startLine": 49,
+        "startChar": 62,
+        "endLine": 49,
+        "endChar": 84
+      },
+      "revId": "6e8fb87c575497ee2db15fbed242d7d4c4ec71a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
