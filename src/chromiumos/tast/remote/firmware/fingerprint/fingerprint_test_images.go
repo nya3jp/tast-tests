@@ -40,6 +40,13 @@ const (
 	NocturneFPDevKey = "fingerprint_dev_keys/nocturne_fp/dev_key.pem"
 )
 
+var devKeyMap = map[FPBoardName]string {
+	FPBoardNameBloonchipper: BloonchipperDevKey,
+	FPBoardNameDartmonkey: DartmonkeyDevKey,
+	FPBoardNameNami: NamiFPDevKey,
+	FPBoardNameNocturne: NocturneFPDevKey,
+}
+
 const (
 	generatedImagesSubDirectory = "images"
 	versionStringLenBytes       = 32
@@ -109,6 +116,11 @@ type fmapSectionValue struct {
 type keyPair struct {
 	PublicKeyPath string
 	PrivateKeyPath string
+}
+
+// DevKeyForFPBoard gets the dev key for the given fpBoard.
+func DevKeyForFPBoard(fpBoard FPBoardName) string {
+	return devKeyMap[fpBoard]
 }
 
 func hostCommand(ctx context.Context, cmd []string) *exec.Cmd {
@@ -371,7 +383,7 @@ func readFMAPSection(ctx context.Context, firmwareFilePath string, section FMAPS
 }
 
 // GenerateTestFirmwareImages generates a set of test firmware images from the firmware that is on the DUT.
-func GenerateTestFirmwareImages(ctx context.Context, d *dut.DUT, fs *dutfs.Client, generateScript string, fpBoard FPBoardName, buildFWFile, dutTempDir string) (ret TestImages, retErr error) {
+func GenerateTestFirmwareImages(ctx context.Context, d *dut.DUT, fs *dutfs.Client, keyFilePath string, fpBoard FPBoardName, buildFWFile, dutTempDir string) (ret TestImages, retErr error) {
 	testing.ContextLog(ctx, "Creating temp dir")
 	serverTmpDir, err := ioutil.TempDir("", "*")
 	if err != nil {
@@ -379,7 +391,8 @@ func GenerateTestFirmwareImages(ctx context.Context, d *dut.DUT, fs *dutfs.Clien
 	}
 
 	testing.ContextLog(ctx, "Copying firmware from DUT to host")
-	if err := linuxssh.GetFile(ctx, d.Conn(), buildFWFile, path.Join(serverTmpDir, path.Base(buildFWFile))); err != nil {
+	serverFWFilePath := path.Join(serverTmpDir, path.Base(buildFWFile))
+	if err := linuxssh.GetFile(ctx, d.Conn(), buildFWFile, serverFWFilePath); err != nil {
 		return nil, errors.Wrap(err, "failed to get file")
 	}
 
@@ -401,27 +414,76 @@ func GenerateTestFirmwareImages(ctx context.Context, d *dut.DUT, fs *dutfs.Clien
 		}
 	}()
 
-	testing.ContextLog(ctx, "Running script on host to generate firmware images")
-	cmd := []string{generateScript, string(fpBoard), path.Base(buildFWFile)}
-	if output, err := exec.Command(cmd[0], cmd[1:]...).CombinedOutput(); err != nil {
-		return nil, errors.Wrapf(err, "failed to run command: %q, output: %q", cmd, string(output))
+	// create a copy of the original firmware
+	origFWFileCopy := filepath.Join(serverTmpDir, string(fpBoard) + ".bin")
+	if err := fsutil.CopyFile(serverFWFilePath, origFWFileCopy); err != nil {
+		return nil, errors.Wrap(err, "failed to copy original firmware file")
 	}
 
-	fpBoardStr := string(fpBoard)
+	devKeyPair, err := createKeyPairFromRSAKey(ctx, keyFilePath, string(fpBoard) + " dev key")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create key pair")
+	}
+
+	roVersion, err := readFMAPSection(ctx, origFWFileCopy, ROFirmwareID)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read RO firmware info")
+	}
+
+	rwVersion, err := readFMAPSection(ctx, origFWFileCopy, RWFirmwareID)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read RW firmware info")
+	}
+
+	devFilePath, err := generateDevSignedImage(ctx, devKeyPair, origFWFileCopy, rwVersion, roVersion)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generate dev signed image")
+	}
+
+	rollback, err := readFMAPSection(ctx, origFWFileCopy, RWRollbackVersion)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read rollback version")
+	}
+
+	rollbackZeroFilePath, err := generateRollbackImage(ctx, devKeyPair, origFWFileCopy, rwVersion, roVersion, rollback, 0)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generate image with modified rollback value 0")
+	}
+
+	rollbackOneFilePath, err := generateRollbackImage(ctx, devKeyPair, origFWFileCopy, rwVersion, roVersion, rollback, 1)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generate image with modified rollback value 1")
+	}
+
+	rollbackNineFilePath, err := generateRollbackImage(ctx, devKeyPair, origFWFileCopy, rwVersion, roVersion, rollback, 9)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generate image with modified rollback value 9")
+	}
+
+	corruptFirstBytePath, err := generateCorruptFirstByteImage(ctx, origFWFileCopy)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generate image with corrupt first byte")
+	}
+
+	corruptLastBytePath, err := generateCorruptLastByteImage(ctx, origFWFileCopy)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generate image with corrupt last byte")
+	}
+
 	images := TestImages{
-		TestImageTypeOriginal:         &TestImageData{Path: fpBoardStr + ".bin"},
-		TestImageTypeDev:              &TestImageData{Path: fpBoardStr + ".dev"},
-		TestImageTypeCorruptFirstByte: &TestImageData{Path: fpBoardStr + "_corrupt_first_byte.bin"},
-		TestImageTypeCorruptLastByte:  &TestImageData{Path: fpBoardStr + "_corrupt_last_byte.bin"},
-		TestImageTypeDevRollbackZero:  &TestImageData{Path: fpBoardStr + ".dev.rb0"},
-		TestImageTypeDevRollbackOne:   &TestImageData{Path: fpBoardStr + ".dev.rb1"},
-		TestImageTypeDevRollbackNine:  &TestImageData{Path: fpBoardStr + ".dev.rb9"},
+		TestImageTypeOriginal:         &TestImageData{Path: origFWFileCopy},
+		TestImageTypeDev:              &TestImageData{Path: devFilePath},
+		TestImageTypeCorruptFirstByte: &TestImageData{Path: corruptFirstBytePath},
+		TestImageTypeCorruptLastByte:  &TestImageData{Path: corruptLastBytePath},
+		TestImageTypeDevRollbackZero:  &TestImageData{Path: rollbackZeroFilePath},
+		TestImageTypeDevRollbackOne:   &TestImageData{Path: rollbackOneFilePath},
+		TestImageTypeDevRollbackNine:  &TestImageData{Path: rollbackNineFilePath},
 	}
 
 	filesToCopy := make(map[string]string)
 	for imageType, imageData := range images {
-		dutFileName := filepath.Join(dutTempDir, generatedImagesSubDirectory, imageData.Path)
-		filesToCopy[filepath.Join(serverTmpDir, generatedImagesSubDirectory, imageData.Path)] = dutFileName
+		dutFileName := filepath.Join(dutTempDir, generatedImagesSubDirectory, filepath.Base(imageData.Path))
+		filesToCopy[imageData.Path] = dutFileName
 		images[imageType].Path = dutFileName
 	}
 
