@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1f74430_4f7e658f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-10T09:04:37Z",
+      "side": 1,
+      "message": "created ticked:\nhttps://crbug.com/1207293",
+      "parentUuid": "2313d67d_a89b0766",
+      "revId": "746dcd33d8d39436b77cb80371e83b91e86847c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2872671b_0238fe71",
         "filename": "src/chromiumos/tast/local/syslog/reader.go",
         "patchSetId": 8
@@ -67,6 +85,24 @@
       "writtenOn": "2021-05-10T07:49:30Z",
       "side": 1,
       "message": "Do you plan to add more field to this struct, or it would be enough to use the following?\n\u003e  type programName string\nand\n\u003e  const (\n\u003e    Chrome programName \"chrome\"\n\u003e    ...\n\u003e    CrashSender programName \"crash_sender\"\n\u003e  )",
+      "revId": "746dcd33d8d39436b77cb80371e83b91e86847c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a80e3d_d84a4d13",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-10T09:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2872671b_0238fe71",
       "revId": "746dcd33d8d39436b77cb80371e83b91e86847c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

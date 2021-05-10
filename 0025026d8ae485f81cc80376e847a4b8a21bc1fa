@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d50512_d6ff8b4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-10T09:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0af6377a_97611bed",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 16
+      },
+      "revId": "0025026d8ae485f81cc80376e847a4b8a21bc1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bbfedf0_d88c6cb6",
