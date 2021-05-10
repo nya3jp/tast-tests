@@ -22,8 +22,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// rpcTimeout is the default and maximum timeout for XML-RPC requests.
-const rpcTimeout = 10 * time.Second
+const defaultRPCTimeout = 10 * time.Second
+
+// maxRPCTimeout is very long, because some of the servo calls are really slow
+const maxRPCTimeout = 90 * time.Second
 
 // XMLRpc holds the XML-RPC information.
 type XMLRpc struct {
@@ -38,8 +40,9 @@ func New(host string, port int) *XMLRpc {
 
 // Call represents a XML-RPC call request.
 type Call struct {
-	method string
-	args   []interface{}
+	method  string
+	args    []interface{}
+	timeout time.Duration
 }
 
 // methodCall mirrors the structure of an XML-RPC method call.
@@ -250,7 +253,12 @@ func newParams(args []interface{}) ([]param, error) {
 
 // NewCall creates a XML-RPC call.
 func NewCall(method string, args ...interface{}) Call {
-	return Call{method, args}
+	return Call{method, args, defaultRPCTimeout}
+}
+
+// NewCallTimeout creates a XML-RPC call.
+func NewCallTimeout(method string, timeout time.Duration, args ...interface{}) Call {
+	return Call{method, args, timeout}
 }
 
 // serializeMethodCall turns a method and args into a serialized XML-RPC method call.
@@ -264,13 +272,16 @@ func serializeMethodCall(cl Call) ([]byte, error) {
 
 // getTimeout returns the lowest of the default timeout or remaining duration
 // to the context's deadline.
-func getTimeout(ctx context.Context) time.Duration {
-	timeout := rpcTimeout
+func getTimeout(ctx context.Context, cl Call) time.Duration {
+	timeout := cl.timeout
+	if timeout > maxRPCTimeout {
+		timeout = maxRPCTimeout
+	}
 	if dl, ok := ctx.Deadline(); ok {
 		newTimeout := dl.Sub(time.Now())
-		// Timeout is min(deadline - now, rpcTimeout).
-		if newTimeout < rpcTimeout {
+		if newTimeout < timeout {
 			timeout = newTimeout
+			testing.ContextLogf(ctx, "Using context timeout %v", timeout)
 		}
 	}
 	return timeout
@@ -427,13 +438,13 @@ func (r *XMLRpc) Run(ctx context.Context, cl Call, out ...interface{}) error {
 	}
 
 	// Get RPC timeout duration from context or use default.
-	timeout := getTimeout(ctx)
+	timeout := getTimeout(ctx, cl)
 	serverURL := fmt.Sprintf("http://%s:%d", r.host, r.port)
 	httpClient := &http.Client{Timeout: timeout}
 
 	resp, err := httpClient.Post(serverURL, "text/xml", bytes.NewBuffer(body))
 	if err != nil {
-		return err
+		return errors.Wrapf(err, "timeout = %v", timeout)
 	}
 	defer resp.Body.Close()
 
