@@ -39,7 +39,7 @@ func init() {
 		Func:         Concepts,
 		Desc:         "Functional test for Concepts  that installs the app also verifies it is logged in and that the main page is open, checks Gmail correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:appcompat"},
+		Attr:         []string{"group:appcompat", "group:appcompat_basic"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("elm")),
 		Params: []testing.Param{{
