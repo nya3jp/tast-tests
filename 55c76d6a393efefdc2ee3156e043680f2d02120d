@@ -33,6 +33,23 @@
       "message": "Katherine, gentle ping\nTY",
       "revId": "55c76d6a393efefdc2ee3156e043680f2d02120d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "312df592_f728d13e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-10T16:32:58Z",
+      "side": 1,
+      "message": "No response from Katherine. Trying other owner. Note, this is candidate for M91 merge so it is bit urgent.\nTY",
+      "revId": "55c76d6a393efefdc2ee3156e043680f2d02120d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
