@@ -39,6 +39,30 @@
       },
       "revId": "6e8fb87c575497ee2db15fbed242d7d4c4ec71a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c08768a9_f6aba3e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition_not_supported.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-05-10T12:51:53Z",
+      "side": 1,
+      "message": "Yes. this feature is added to limit this feature to a specific set of devices in M91 (with device config overlay).\n\nIf things go smoothly, we can remove this feature in M92/M93. We may not need to enable feature by default.",
+      "parentUuid": "cb9960a8_d04acec2",
+      "range": {
+        "startLine": 49,
+        "startChar": 62,
+        "endLine": 49,
+        "endChar": 84
+      },
+      "revId": "6e8fb87c575497ee2db15fbed242d7d4c4ec71a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
