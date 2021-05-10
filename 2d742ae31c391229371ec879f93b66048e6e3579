@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c5b46f_a42e908b",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-10T09:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40f97fb0_483517ac",
+      "range": {
+        "startLine": 63,
+        "startChar": 16,
+        "endLine": 63,
+        "endChar": 19
+      },
+      "revId": "2d742ae31c391229371ec879f93b66048e6e3579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d33f42a_a7c20e5e",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-07T15:26:19Z",
       "side": 1,
       "message": "nit: same",
+      "range": {
+        "startLine": 70,
+        "startChar": 16,
+        "endLine": 70,
+        "endChar": 19
+      },
+      "revId": "2d742ae31c391229371ec879f93b66048e6e3579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "099fa5c4_e339ef5f",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-10T09:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d33f42a_a7c20e5e",
       "range": {
         "startLine": 70,
         "startChar": 16,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a69dffda_f41fdd11",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-10T09:30:50Z",
+      "side": 1,
+      "message": "I left the info check well, to avoid potential panicking upon using checker.info.",
+      "parentUuid": "a1ef5aa4_c9fb9980",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "2d742ae31c391229371ec879f93b66048e6e3579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c8af1c4_2c54b85a",
         "filename": "src/chromiumos/tast/local/policyutil/settings.go",
         "patchSetId": 6
@@ -100,6 +172,30 @@
       "writtenOn": "2021-05-07T15:26:19Z",
       "side": 1,
       "message": "nit: error",
+      "range": {
+        "startLine": 105,
+        "startChar": 23,
+        "endLine": 105,
+        "endChar": 29
+      },
+      "revId": "2d742ae31c391229371ec879f93b66048e6e3579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "407a524b_708caccb",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-10T09:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c8af1c4_2c54b85a",
       "range": {
         "startLine": 105,
         "startChar": 23,
