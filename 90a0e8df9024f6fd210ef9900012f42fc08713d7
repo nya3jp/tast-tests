@@ -384,6 +384,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58cad51e_4a504479",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-10T16:57:46Z",
+      "side": 1,
+      "message": "I think, putting the lines before the entries makes more sense and common style.\nIIUC, go parser parses so?",
+      "parentUuid": "c2ad056f_a9719d6e",
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e896109_93f90f76",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
         "patchSetId": 6
