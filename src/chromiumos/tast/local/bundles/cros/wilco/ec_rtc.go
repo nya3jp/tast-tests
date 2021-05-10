@@ -43,15 +43,15 @@ func ECRTC(ctx context.Context, s *testing.State) {
 
 	const (
 		numRTCRetries = 5
-		sleepTime     = 3 * time.Second
+		sleepTime     = 4 * time.Second
 		// There is an upstart job that continually keeps the EC RTC in sync with
 		// local time. We need to disable it during the test.
 		upstartJobName = "wilco_sync_ec_rtc"
 	)
 	// Set the RTC to a fake time for consistency.
 	startTime := time.Date(2001, time.January, 1, 12, 0, 0, 0, time.Now().Location())
-	endTimeMin := startTime.Add(sleepTime).Add(-2 * time.Second)
-	endTimeMax := startTime.Add(sleepTime).Add(2 * time.Second)
+	endTimeMin := startTime.Add(sleepTime).Add(-3 * time.Second)
+	endTimeMax := startTime.Add(sleepTime).Add(3 * time.Second)
 
 	wilcoECRTC := rtc.RTC{DevName: "rtc1", LocalTime: true, NoAdjfile: true}
 
