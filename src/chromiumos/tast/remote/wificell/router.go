@@ -50,7 +50,6 @@ type OpenwrtRouter interface {
 type baseRouter interface {
 	initialize(ctx, daemonCtx context.Context) error
 	Close(ctx context.Context) error
-	ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc)
 }
 
 // legacyOpenwrtShared contains the functionality shared between legacy routers and openwrt routers.
@@ -163,7 +162,7 @@ type legacyRouterStruct struct {
 
 // ReserveForClose returns a shortened ctx with cancel function.
 // The shortened ctx is used for running things before r.Close() to reserve time for it to run.
-func (r *legacyRouterStruct) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
+func ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
 	return ctxutil.Shorten(ctx, 5*time.Second)
 }
 
@@ -194,7 +193,7 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtyp
 	default:
 		return nil, errors.Errorf("unexpected routerType, got %v", rtype)
 	}
-	shortCtx, cancel := r.ReserveForClose(ctx)
+	shortCtx, cancel := ReserveForClose(ctx)
 	defer cancel()
 	if err := r.initialize(shortCtx, daemonCtx); err != nil {
 		r.Close(ctx)
