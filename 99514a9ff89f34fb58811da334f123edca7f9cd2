@@ -34,6 +34,24 @@
       "parentUuid": "07d2df30_f17c4226",
       "revId": "99514a9ff89f34fb58811da334f123edca7f9cd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59f321b1_5c9ffc7f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1430497
+      },
+      "writtenOn": "2021-05-10T09:59:13Z",
+      "side": 1,
+      "message": "Thank you @Victor.\nWe\u0027ve included you in the Partner Bug for more information on this.",
+      "parentUuid": "cb25ce7f_60bdc8be",
+      "revId": "99514a9ff89f34fb58811da334f123edca7f9cd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
