@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 type diskCategory struct {
@@ -37,6 +38,68 @@ var diskCategories = []diskCategory{
 		pathRE: regexp.MustCompile(`.*`),
 		name:   "crosvm_other_file",
 	},
+}
+
+type fincoreJSONEntry struct {
+	Resident uint64 `json:"res"`
+	Pages    uint64 `json:"pages"`
+	Size     uint64 `json:"size"`
+	File     string `json:"file"`
+}
+
+type fincoreJSON struct {
+	Fincore []fincoreJSONEntry `json:"fincore"`
+}
+
+type fincoreJSONv1 struct {
+	fincoreJSON
+}
+
+// UnmarshalJSON overrides the default JSON parsing to be compatible with an
+// older version of fincore output.
+func (f fincoreJSONv1) UnmarshalJSON(b []byte) error {
+	var v1 struct {
+		Fincore []struct {
+			Resident uint64 `json:"res,string"`
+			Pages    uint64 `json:"pages,string"`
+			Size     uint64 `json:"size,string"`
+			File     string `json:"file"`
+		} `json:"fincore"`
+	}
+	if err := json.Unmarshal(b, &v1); err != nil {
+		return err
+	}
+	f.Fincore = make([]fincoreJSONEntry, len(v1.Fincore))
+	for i, e := range v1.Fincore {
+		f.Fincore[i] = fincoreJSONEntry{
+			Resident: e.Resident,
+			Pages:    e.Pages,
+			Size:     e.Size,
+			File:     e.File,
+		}
+	}
+	return nil
+}
+
+func parseFincoreJSON(ctx context.Context, bytes []byte) (*fincoreJSON, error) {
+	var v2 fincoreJSON
+	err2 := json.Unmarshal(bytes, &v2)
+	if err2 == nil {
+		return &v2, nil
+	}
+
+	var v1 fincoreJSONv1
+	err1 := json.Unmarshal(bytes, &v1)
+	if err1 == nil {
+		return &(v1.fincoreJSON), nil
+	}
+
+	// Failure, log fincore output and the errors from the previous versions.
+	testing.ContextLogf(ctx, "Failed to parse fincore output %q", string(bytes))
+	testing.ContextLog(ctx, "Failed to parse with v1 format: ", err1)
+
+	// Return the error from parsing the most recent format.
+	return nil, errors.Wrap(err2, "failed to parse fincore output")
 }
 
 // CrosvmFincoreMetrics logs a JSON file with the amount resident memory for
@@ -90,15 +153,8 @@ func CrosvmFincoreMetrics(ctx context.Context, p *perf.Values, outdir, suffix st
 		return nil
 	}
 
-	var fincore struct {
-		Fincore []struct {
-			Resident uint64 `json:"res,string"`
-			Pages    uint64 `json:"pages,string"`
-			Size     uint64 `json:"size,string"`
-			File     string `json:"file"`
-		} `json:"fincore"`
-	}
-	if err := json.Unmarshal(fincoreBytes, &fincore); err != nil {
+	fincore, err := parseFincoreJSON(ctx, fincoreBytes)
+	if err != nil {
 		return errors.Wrap(err, "failed to parse fincore JSON output")
 	}
 
