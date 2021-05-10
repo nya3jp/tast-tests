@@ -98,7 +98,7 @@ func Autostart(ctx context.Context, s *testing.State) {
 		s.Error("Failed to close Chrome connection: ", err)
 	}
 
-	reader, err := syslog.NewReader(ctx, syslog.Program("chrome"))
+	reader, err := syslog.NewReader(ctx, syslog.ProgramNameFilter(syslog.Chrome))
 	if err != nil {
 		s.Fatal("Failed to start log reader: ", err)
 	}
