@@ -47,11 +47,8 @@ func ECRTC(ctx context.Context, s *testing.State) {
 		// There is an upstart job that continually keeps the EC RTC in sync with
 		// local time. We need to disable it during the test.
 		upstartJobName = "wilco_sync_ec_rtc"
+		tolerance      = 2
 	)
-	// Set the RTC to a fake time for consistency.
-	startTime := time.Date(2001, time.January, 1, 12, 0, 0, 0, time.Now().Location())
-	endTimeMin := startTime.Add(sleepTime).Add(-2 * time.Second)
-	endTimeMax := startTime.Add(sleepTime).Add(2 * time.Second)
 
 	wilcoECRTC := rtc.RTC{DevName: "rtc1", LocalTime: true, NoAdjfile: true}
 
@@ -100,11 +97,20 @@ func ECRTC(ctx context.Context, s *testing.State) {
 	defer func() {
 		writeECRTC(cleanupCtx, time.Now())
 	}()
+
+	// Set the RTC to a fake time for consistency.
+	startTime := time.Date(2001, time.January, 1, 12, 0, 0, 0, time.UTC)
+
 	// Set the RTC, sleep a bit, and the RTC better have updated itself.
 	writeECRTC(mainCtx, startTime)
+	realStartTime := time.Now()
+
 	testing.Sleep(mainCtx, sleepTime)
-	t := readECRTC()
-	if t.Before(endTimeMin) || t.After(endTimeMax) {
-		s.Fatalf("RTC did not update properly: got %v; want in [%v, %v]", t, endTimeMin, endTimeMax)
+
+	t := readECRTC().Sub(startTime)
+	elapsed := time.Now().Sub(realStartTime)
+
+	if t < elapsed-tolerance || t > elapsed+tolerance {
+		s.Fatalf("RTC did not update properly: got %v; want in [%v, %v]", t, elapsed-tolerance, elapsed+tolerance)
 	}
 }
