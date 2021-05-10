@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "015dbb2d_221b933c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-10T08:28:58Z",
+      "side": 1,
+      "message": "Yes. SGTM.",
+      "parentUuid": "2b204b55_f8725137",
+      "revId": "b01d175f9c62f6eebf64e9eabc3272e7d796be4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48b0f722_85078211",
