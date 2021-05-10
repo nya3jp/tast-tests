@@ -39,6 +39,49 @@ var diskCategories = []diskCategory{
 	},
 }
 
+type fincoreEntryJSON struct {
+	Resident uint64 `json:"res"`
+	Pages    uint64 `json:"pages"`
+	Size     uint64 `json:"size"`
+	File     string `json:"file"`
+}
+
+type fincoreJSON struct {
+	Fincore []fincoreEntryJSON `json:"fincore"`
+}
+
+func parseFincoreJSON(bytes []byte) (*fincoreJSON, error) {
+	// Frist, try parsing the newest version of the JSON format.
+	var fincoreJSONv2 fincoreJSON
+	if err := json.Unmarshal(bytes, &fincoreJSONv2); err == nil {
+		return &fincoreJSONv2, nil
+	}
+
+	// Older versions of fincore quoted the size values.
+	var fincoreJSONv1 struct {
+		Fincore []struct {
+			Resident uint64 `json:"res,string"`
+			Pages    uint64 `json:"pages,string"`
+			Size     uint64 `json:"size,string"`
+			File     string `json:"file"`
+		} `json:"fincore"`
+	}
+	if err := json.Unmarshal(bytes, &fincoreJSONv1); err == nil {
+		entries := make([]fincoreEntryJSON, len(fincoreJSONv1.Fincore))
+		for i, entry := range fincoreJSONv1.Fincore {
+			entries[i] = fincoreEntryJSON{
+				Resident: entry.Resident,
+				Pages:    entry.Pages,
+				Size:     entry.Size,
+				File:     entry.File,
+			}
+		}
+		return &fincoreJSON{Fincore: entries}, nil
+	}
+
+	return nil, errors.Errorf("unable to parse fincore output %q", string(bytes))
+}
+
 // CrosvmFincoreMetrics logs a JSON file with the amount resident memory for
 // each file used as a disk by crosvm. If p is not nil, the amount of memory
 // used by each VM type is logged as perf.Values.
@@ -90,15 +133,8 @@ func CrosvmFincoreMetrics(ctx context.Context, p *perf.Values, outdir, suffix st
 		return nil
 	}
 
-	var fincore struct {
-		Fincore []struct {
-			Resident uint64 `json:"res,string"`
-			Pages    uint64 `json:"pages,string"`
-			Size     uint64 `json:"size,string"`
-			File     string `json:"file"`
-		} `json:"fincore"`
-	}
-	if err := json.Unmarshal(fincoreBytes, &fincore); err != nil {
+	fincore, err := parseFincoreJSON(fincoreBytes)
+	if err != nil {
 		return errors.Wrap(err, "failed to parse fincore JSON output")
 	}
 
