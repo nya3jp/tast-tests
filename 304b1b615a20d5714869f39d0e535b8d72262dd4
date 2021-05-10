@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a75019d0_d3111539",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-10T19:37:04Z",
+      "side": 1,
+      "message": "LGTM. minor nits",
+      "revId": "304b1b615a20d5714869f39d0e535b8d72262dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "871e5dab_dc6e557a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-10T19:37:04Z",
+      "side": 1,
+      "message": "minor nit: should we move this TODO to above Params since we probably won\u0027t need to keep running asurada on informational once the issue is fixed? We probably just want to remove all of Params.",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 77
+      },
+      "revId": "304b1b615a20d5714869f39d0e535b8d72262dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
