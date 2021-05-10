@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8a042a4_d2594cae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-10T16:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75acb2df_d14099ed",
+      "range": {
+        "startLine": 51,
+        "startChar": 51,
+        "endLine": 51,
+        "endChar": 56
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b94e2f3_7906e7b5",
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33350911_3cf238f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-10T16:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b94e2f3_7906e7b5",
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9888c19_086e146f",
@@ -88,6 +130,30 @@
       "writtenOn": "2021-05-05T21:18:44Z",
       "side": 1,
       "message": ", ping.Count(3), ping.Interval(0.3)\nShould spped up the whole test.",
+      "range": {
+        "startLine": 360,
+        "startChar": 47,
+        "endLine": 360,
+        "endChar": 48
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "693fa942_67bbea3e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-10T16:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9888c19_086e146f",
       "range": {
         "startLine": 360,
         "startChar": 47,
@@ -135,6 +201,30 @@
       "side": 1,
       "message": "This was actually my first thought; if we just take an average over the course of a bunch of runs, then we\u0027re probably biasing toward slow scans and such -- the slower the scan, the more non-roaming time included in the average.\n\nOr, it\u0027s possible I\u0027m not understanding the whole test timeline, because it\u0027s sorta hidden by at least 1 or 2 state machines: do we have a fixed amount of verifier time (the ping parameters)? Or a fixed amount of roaming iterations? Or both? If we\u0027re only fixing the number of rounds (and not the test time), then my above comment is more relevant.",
       "parentUuid": "3e007a9a_3d8438dd",
+      "range": {
+        "startLine": 417,
+        "startChar": 1,
+        "endLine": 417,
+        "endChar": 14
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d706627_78936769",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-10T16:55:30Z",
+      "side": 1,
+      "message": "Ping time is sort of fixed (defined by ping count and interval), but it\u0027s run in a loop until we told it to stop. So the tradeof in job-per-round is as follows:\nSufficiently long ping time (roaming time average+some margin): longer test time.\nShort ping time (much shorter than roaming time average): shorter test time, but a chance for false-negative (increased chance we won\u0027t be sending ping at the moment when it would fail).\n\nHowever, if we decide the pass criteria is the actual number of packets lost on average per roaming event, then the job-per-round is not necessary.",
+      "parentUuid": "77c207ee_007df4fc",
       "range": {
         "startLine": 417,
         "startChar": 1,
@@ -329,6 +419,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9143c0e_45b43c9e",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-10T16:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67a728b0_7843d63c",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 29
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58df8451_38cb8c07",
@@ -342,6 +456,30 @@
       "writtenOn": "2021-05-05T21:18:44Z",
       "side": 1,
       "message": "Some comment why we\u0027re using non-blocking channel might be handy.",
+      "range": {
+        "startLine": 67,
+        "startChar": 28,
+        "endLine": 67,
+        "endChar": 29
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6111367_3d4dc7db",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-10T16:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58df8451_38cb8c07",
       "range": {
         "startLine": 67,
         "startChar": 28,
@@ -375,6 +513,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4eeab16_09662342",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-10T16:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "676e8d5d_c72c33f9",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f07bdcff_332fb3bd",
@@ -398,6 +560,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac8244f1_103d734b",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-10T16:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f07bdcff_332fb3bd",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 20
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b90c8aca_f9a03bfb",
@@ -411,6 +597,30 @@
       "writtenOn": "2021-05-06T00:52:21Z",
       "side": 1,
       "message": "nit: to",
+      "range": {
+        "startLine": 110,
+        "startChar": 40,
+        "endLine": 110,
+        "endChar": 42
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "648645af_430f0b10",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-10T16:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b90c8aca_f9a03bfb",
       "range": {
         "startLine": 110,
         "startChar": 40,
