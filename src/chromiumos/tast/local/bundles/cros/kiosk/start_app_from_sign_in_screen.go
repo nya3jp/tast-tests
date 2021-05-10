@@ -12,6 +12,9 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/syslog"
@@ -20,25 +23,24 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Autostart,
-		Desc: "Checks that Kiosk configuration starts when set to autologin",
+		Func: StartAppFromSignInScreen,
+		Desc: "Adds 2 Kiosk accounts, checks if both are available then starts one of them",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author
 			"alt-modalities-stability@google.com",
 		},
-		// Informational attribute can only be removed when
-		// https://crbug.com/1207293 is resolved.
+		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "fakeDMSEnrolled",
 	})
 }
 
-func Autostart(ctx context.Context, s *testing.State) {
+func StartAppFromSignInScreen(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(*fakedms.FakeDMS)
 	cr, err := chrome.New(
 		ctx,
-		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}), // Required as refreshing policies require test API.
+		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.KeepEnrollment(),
 	)
@@ -48,13 +50,13 @@ func Autostart(ctx context.Context, s *testing.State) {
 
 	defer func(ctx context.Context) {
 		// Use cr as a reference to close the last started Chrome instance.
-		if err := cr.Close(ctx); err != nil {
-			s.Error("Failed to close Chrome connection: ", err)
+		if cr != nil {
+			if err := cr.Close(ctx); err != nil {
+				s.Error("Failed to close Chrome connection: ", err)
+			}
 		}
 	}(ctx)
 
-	// DeviceLocalAccountInfo uses *string instead of string for internal data
-	// structure. That is needed since fields in json are marked as omitempty.
 	webKioskAccountID := "1"
 	webKioskAccountType := policy.AccountTypeKioskWebApp
 	webKioskIconURL := "https://www.google.com"
@@ -64,12 +66,7 @@ func Autostart(ctx context.Context, s *testing.State) {
 	kioskAppAccountID := "2"
 	kioskAppAccountType := policy.AccountTypeKioskApp
 	kioskAppID := "aajgmlihcokkalfjbangebcffdoanjfo"
-	// TODO: kamilszarek@ - turn that into a default Kiosk mode fixture
-	// Update policies and refresh. Here we wait for test API, hence login was
-	// required.
-	// ServerAndRefresh is used instead of ServerAndVerify since Verify part
-	// uses Autotest private api that returns only Enterprise policies values
-	// but not device policies values.
+	// Update policies.
 	if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{
 		&policy.DeviceLocalAccounts{
 			Val: []policy.DeviceLocalAccountInfo{
@@ -91,30 +88,25 @@ func Autostart(ctx context.Context, s *testing.State) {
 				},
 			},
 		},
-		&policy.DeviceLocalAccountAutoLoginId{
-			Val: webKioskAccountID,
-		},
 	}); err != nil {
 		s.Fatal("Failed to update policies: ", err)
 	}
+
 	// Close the previous Chrome instance.
 	if err := cr.Close(ctx); err != nil {
 		s.Error("Failed to close Chrome connection: ", err)
 	}
 
-	// In this particular case when Kiosk mode starts the entry
-	// '[...] Starting kiosk mode of type 2...'
-	// '[...] Kiosk launch succeeded, wait for app window.'
-	// is logged in /var/log/messages. Code below will search for that entry.
 	reader, err := syslog.NewReader(ctx, syslog.Program(syslog.Chrome))
 	if err != nil {
 		s.Fatal("Failed to start log reader: ", err)
 	}
 	defer reader.Close()
 
-	// Restart Chrome. After that Kiosk auto starts.
+	// Restart Chrome.
 	cr, err = chrome.New(ctx,
-		chrome.NoLogin(),
+		chrome.DeferLogin(),
+		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.KeepEnrollment(),
 	)
@@ -122,6 +114,42 @@ func Autostart(ctx context.Context, s *testing.State) {
 		s.Fatal("Chrome restart failed: ", err)
 	}
 
+	testConn, err := cr.SigninProfileTestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to get Test API connection: ", err)
+	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, testConn)
+
+	localAccountsButton := nodewith.Name("Apps").ClassName("MenuButton")
+	simplePrintTestApplicationButton := nodewith.Name("Simple Printest").ClassName("MenuItemView")
+	ui := uiauto.New(testConn)
+	if err := uiauto.Combine("open Kiosk application menu",
+		ui.LeftClick(localAccountsButton),
+		ui.WaitUntilExists(simplePrintTestApplicationButton),
+	)(ctx); err != nil {
+		s.Fatal("Failed to find local account button: ", err)
+	}
+
+	// Gat applications that show up after clicking App button.
+	menuItems, err := ui.NodesInfo(ctx, nodewith.ClassName("MenuItemView"))
+	if err != nil {
+		s.Fatal("Failed to get local accounts: ", err)
+	}
+
+	const expectedLocalAccountsCount = 2
+	if len(menuItems) != expectedLocalAccountsCount {
+		s.Fatalf("Expected %d local accounts, but found %v app(s) %q", expectedLocalAccountsCount, len(menuItems), menuItems)
+	}
+
+	// Open Kiosk application.
+	s.Log("Open one Kiosk app")
+	if err := uiauto.Combine("open web Kiosk application",
+		ui.LeftClick(simplePrintTestApplicationButton),
+	)(ctx); err != nil {
+		s.Fatal("Failed to find local account button: ", err)
+	}
+
+	// Check Kiosk starts successfully.
 	const (
 		kioskStarting        = "Starting kiosk mode"
 		kioskLaunchSucceeded = "Kiosk launch succeeded"
@@ -129,6 +157,7 @@ func Autostart(ctx context.Context, s *testing.State) {
 
 	if _, err := reader.Wait(ctx, 60*time.Second,
 		func(e *syslog.Entry) bool {
+			s.Log(e.Content)
 			return strings.Contains(e.Content, kioskStarting)
 		},
 	); err != nil {
