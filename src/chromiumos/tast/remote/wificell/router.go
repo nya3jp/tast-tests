@@ -172,11 +172,10 @@ func (r *legacyRouterStruct) ReserveForClose(ctx context.Context) (context.Conte
 // method and daemonCtx is for the spawned background daemons.
 // After getting a Server instance, d, the caller should call r.Close() at the end, and use the
 // shortened ctx (provided by d.ReserveForClose()) before r.Close() to reserve time for it to run.
-func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (SuperRouter, error) {
+func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtype RouterType) (SuperRouter, error) {
 	ctx, st := timing.Start(ctx, "NewRouter")
 	defer st.End()
 	var r SuperRouter
-	var rtype = legacy
 	switch rtype {
 	case legacy:
 		r = &legacyRouterStruct{
