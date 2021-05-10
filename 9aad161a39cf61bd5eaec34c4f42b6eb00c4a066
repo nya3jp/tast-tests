@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cc27a0e_c4b5e35c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-05-10T00:50:31Z",
+      "side": 1,
+      "message": "Hi Katherine, PTAL",
+      "revId": "9aad161a39cf61bd5eaec34c4f42b6eb00c4a066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
