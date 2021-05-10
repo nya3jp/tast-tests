@@ -137,10 +137,10 @@ func GLBench(ctx context.Context, s *testing.State) {
 
 		// Make machine behaviour consistent.
 		if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
-			faillog.SaveToDir(ctx, filepath.Join(s.OutDir(), "before_tests1"))
+			saveFailLog(ctx, filepath.Join(s.OutDir(), "before_tests1"))
 			s.Log("Unable get cool machine by default setting: ", err)
 			if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownConfig{PollTimeout: 1 * time.Minute, PollInterval: 2 * time.Second, CPUTemperatureThreshold: 60000, CoolDownMode: power.CoolDownPreserveUI}); err != nil {
-				faillog.SaveToDir(ctx, filepath.Join(s.OutDir(), "before_tests2"))
+				saveFailLog(ctx, filepath.Join(s.OutDir(), "before_tests2"))
 				s.Error("Unable get cool machine to reach 60C: ", err)
 			}
 		}
@@ -379,4 +379,12 @@ func reportTemperature(ctx context.Context, pv *perf.Values, name string) error 
 		Direction: perf.SmallerIsBetter,
 	}, temp)
 	return nil
+}
+
+func saveFailLog(ctx context.Context, dir string) {
+	// Create the directory if it doesn't exist.
+	if _, err := os.Stat(dir); os.IsNotExist(err) {
+		os.MkDir(dir)
+	}
+	faillog.SaveToDir(ctx, dir)
 }
