@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "676095d6_df06f935",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-10T09:18:01Z",
+      "side": 1,
+      "message": "to be removed",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 0
+      },
+      "revId": "6f6f62925d77712d1d8154477949eb5ecbde23e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99e23564_17247978",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-10T09:18:01Z",
+      "side": 1,
+      "message": "unnecessary log",
+      "revId": "6f6f62925d77712d1d8154477949eb5ecbde23e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
