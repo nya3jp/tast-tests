@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0416374e_0c4b4dd2",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-10T09:34:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a69dffda_f41fdd11",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "2d742ae31c391229371ec879f93b66048e6e3579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c8af1c4_2c54b85a",

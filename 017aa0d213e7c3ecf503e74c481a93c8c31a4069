@@ -214,6 +214,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aced393b_df756535",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-10T09:34:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "43ea0d7d_0c030db2",
+      "range": {
+        "startLine": 79,
+        "startChar": 6,
+        "endLine": 79,
+        "endChar": 13
+      },
+      "revId": "017aa0d213e7c3ecf503e74c481a93c8c31a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35bfb21c_4b5e4d22",
@@ -251,6 +275,30 @@
       "side": 1,
       "message": "Yes, that is more common, but I think \":\" should be kept as a delimiter between wrapped error messages. If we don\u0027t use \":\" in the message, it is easier to separate the different levels of errors when reading the whole error message.",
       "parentUuid": "35bfb21c_4b5e4d22",
+      "range": {
+        "startLine": 85,
+        "startChar": 43,
+        "endLine": 85,
+        "endChar": 93
+      },
+      "revId": "017aa0d213e7c3ecf503e74c481a93c8c31a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "234c4447_7a38fa56",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-10T09:34:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5648438e_1d0bec6a",
       "range": {
         "startLine": 85,
         "startChar": 43,
