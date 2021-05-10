@@ -114,6 +114,14 @@ func hostCommand(ctx context.Context, cmd []string) *exec.Cmd {
 	return exec.CommandContext(ctx, cmd[0], cmd[1:]...)
 }
 
+func signFirmware(ctx context.Context, privateKeyFile, firmwareFile string) error {
+	cmd := []string{Futility, "sign", "--type", "rwsig", "--prikey", privateKeyFile, "--version", "1", firmwareFile}
+	if err := hostCommand(ctx, cmd).Run(); err != nil {
+		return errors.Wrap(err, "failed to run futility sign")
+	}
+	return nil
+}
+
 func createKeyPairFromRSAKey(ctx context.Context, pemFilePath, keyDescription string) (*keyPair, error) {
 	curDir, err := os.Getwd()
 	if err != nil {
