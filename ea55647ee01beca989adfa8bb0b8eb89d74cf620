@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa8f8201_43030a75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-10T06:40:23Z",
+      "side": 1,
+      "message": "@Gabor, @Victor the problem I mentioned here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2867483/1..8/src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go#b95\n\nhappens when bug that this test covers manifest here. After we start Chrome in line 94 Chrome starts engaging with Kiosk and then restarts and lands on \"sign in screen\" Add that is a different process.\nThat causes the deferred cr.Close() to fail but that is ONLY in case when bug appears. Otherwise, everything works just fine.",
+      "revId": "ea55647ee01beca989adfa8bb0b8eb89d74cf620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
