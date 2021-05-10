@@ -235,6 +235,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2869e4b6_f20bae08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-10T09:31:00Z",
+      "side": 1,
+      "message": "\u003e Hi Shuhei, thanks for the summary.\n\u003e Issue #1: yes your description is correct.\n\u003e Issue #2: \n\u003e \u003e When logging in with a real GAIA account, \"Who would you like to add to this Chromebook?\" screen is shown and Tast doesn\u0027t know how to handle it.\n\u003e This only happens to the brand-new account when KeepState is used but the DUT has an owner already (from previous test). The login will stuck in the \"Who would you like to add to this Chromebook?\" screen. If the account has logged in before (not brand new), tast can handle this screen correctly.\n\nHmm, I could not reproduce the issue. I used Chrome OS R92-13961.0.0 and a test from crrev.com/c/2883116 to attempt:\n\n1. Log in with a GAIA account\n2. Log out\n3. Log in with a different GAIA account and KeepState\n\nAnd the test ran successfully. I also verified the user creation screen is shown at (3) and the test clicks a button to proceed without problems. Can you double-check that the fix (crrev.com/c/2850407) is included in your repository?\n\nAlso, what do you mean by \"brand new\" here? Does it mean that a Google account has not agreed with Google TOS? If that\u0027s the case we can attempt to log in with the account manually just once and the problem should be gone...\n\n\n\u003e Issue #3: I tried to tackle the general problem of KeepState is used by DUT is owned by other account, but actually I just want to bypass issue #2 when KeepState is used. If #2 can be resolved, we can continue to use KeepState without changing DUT owner, and we don\u0027t have to introduce a new option.\n\u003e \n\u003e I\u0027ve already submitted workaround to remove KeepState for some CUJ tests, so we can continue the test with manual \"accept\" when #1 issue happens. The side effect is the test has to re-install all apps during different tast runs. (we usually run CUJ 10 iterations to better measure the performance result)\n\nI agree that it\u0027s undesirable to install all apps every time.",
+      "parentUuid": "98ac31fc_372e850e",
+      "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9fa62b4_ee688dcf",
         "filename": "src/chromiumos/tast/local/chrome/option.go",
         "patchSetId": 1
