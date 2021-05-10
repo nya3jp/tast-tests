@@ -57,7 +57,7 @@ func FpRWNoUpdateRO(ctx context.Context, s *testing.State) {
 
 	d := t.DUT()
 
-	testImages, err := fingerprint.GenerateTestFirmwareImages(ctx, d, t.DutfsClient(), s.DataPath(fingerprint.GenTestImagesScript), t.FPBoard(), t.BuildFwFile(), t.DUTTempDir())
+	testImages, err := fingerprint.GenerateTestFirmwareImages(ctx, d, t.DutfsClient(), s.DataPath(fingerprint.DevKeyForFPBoard(t.FPBoard())), t.FPBoard(), t.BuildFwFile(), t.DUTTempDir())
 	if err != nil {
 		s.Fatal("Failed to generate test images: ", err)
 	}
