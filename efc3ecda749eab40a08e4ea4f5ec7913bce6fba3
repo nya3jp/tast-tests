@@ -46,6 +46,30 @@
       },
       "revId": "efc3ecda749eab40a08e4ea4f5ec7913bce6fba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57955125_17677610",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-10T01:02:19Z",
+      "side": 1,
+      "message": "Thanks for clarification. It is ridiculous. Do not understand why the screenshot must have the same name as ui_tree. I do not have any idea either. Let\u0027s just keep it as now. Thanks for making it.",
+      "parentUuid": "70cc96c5_eec3ee96",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 117
+      },
+      "revId": "efc3ecda749eab40a08e4ea4f5ec7913bce6fba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
