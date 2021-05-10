@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfa6d784_8bb794c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-10T09:23:31Z",
+      "side": 1,
+      "message": "Thank you for working on this while I\u0027m OOO.\nPost-submit comment. Could you make a quick fix somehow?",
+      "revId": "fe84fc2ee3278c8ac050bed0536241e3edea652a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49d50b5a_170987cd",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-10T09:23:31Z",
+      "side": 1,
+      "message": "https://blog.golang.org/package-names\n\nCould you use all lowercase name?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 9
+      },
+      "revId": "fe84fc2ee3278c8ac050bed0536241e3edea652a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
