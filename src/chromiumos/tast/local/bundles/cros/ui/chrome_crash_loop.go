@@ -74,7 +74,7 @@ func init() {
 // the crash report.
 func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 	params := s.Param().(chromeCrashLoopParams)
-	r, err := syslog.NewReader(ctx, syslog.Program("crash_sender"))
+	r, err := syslog.NewReader(ctx, syslog.ProgramNameFilter(syslog.CrashSender))
 	if err != nil {
 		s.Fatal("Could not start watching system message file: ", err)
 	}

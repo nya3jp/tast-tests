@@ -39,7 +39,7 @@ func RunAutomaticCleanup(ctx context.Context, cleanupThreshold, aggressiveCleanu
 
 	cleanupThresholdsArgs := fmt.Sprintf("--cleanup_threshold=%d --aggressive_cleanup_threshold=%d --target_free_space=%d", cleanupThreshold, aggressiveCleanupThreshold, targetThreshold)
 
-	reader, err := syslog.NewReader(ctx, syslog.Program("cryptohomed"))
+	reader, err := syslog.NewReader(ctx, syslog.ProgramNameFilter(syslog.Cryptohomed))
 	if err != nil {
 		return errors.Wrap(err, "failed to start log reader")
 	}

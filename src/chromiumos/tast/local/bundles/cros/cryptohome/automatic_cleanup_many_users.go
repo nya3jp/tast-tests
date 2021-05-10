@@ -105,7 +105,7 @@ func AutomaticCleanupManyUsers(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to unmount users: ", err)
 	}
 
-	reader, err := syslog.NewReader(ctx, syslog.Program("cryptohomed"))
+	reader, err := syslog.NewReader(ctx, syslog.ProgramNameFilter(syslog.Cryptohomed))
 	if err != nil {
 		s.Fatal("Failed to start log reader: ", err)
 	}
