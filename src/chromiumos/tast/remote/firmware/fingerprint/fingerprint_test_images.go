@@ -12,6 +12,8 @@ import (
 	"os/exec"
 	"path"
 	"path/filepath"
+	"strconv"
+	"strings"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -54,6 +56,22 @@ type TestImageData struct {
 	RWVersion string
 }
 
+// FMAPSection describes a firmware map section.
+type FMAPSection string
+
+const (
+	// ROFirmwareID is the read-only firmware ID.
+	ROFirmwareID FMAPSection = "RO_FRID"
+	// RWFirmwareID is the read-write firmware ID.
+	RWFirmwareID FMAPSection = "RW_FWID"
+	// RWRollbackVersion is the read-write rollback version.
+	RWRollbackVersion FMAPSection = "RW_RBVER"
+	// EC_RW is the read-write section.
+	EC_RW FMAPSection = "EC_RW"
+	// SignatureRW is the signature section.
+	SignatureRW FMAPSection = "SIG_RW"
+)
+
 const (
 	// TestImageTypeOriginal is the original firmware on the DUT.
 	TestImageTypeOriginal TestImageType = iota
@@ -73,6 +91,55 @@ const (
 
 // TestImages maps a given test image type to data describing the image.
 type TestImages map[TestImageType]*TestImageData
+
+type fmapSection struct {
+	Name   string
+	Offset int
+	Size   int
+}
+
+type fmapSectionValue struct {
+	Section *fmapSection
+	Bytes   []byte
+}
+
+func hostCommand(ctx context.Context, name string, arg ...string) *exec.Cmd {
+	testing.ContextLogf(ctx, "Command: %s %s", name, strings.Join(arg, " "))
+	return exec.CommandContext(ctx, name, arg...)
+}
+
+func fmapSectionInfo(ctx context.Context, firmwareFilePath string, section FMAPSection) (*fmapSection, error) {
+	cmd := []string{Futility, "dump_fmap", "-p", firmwareFilePath, string(section)}
+	output, err := hostCommand(ctx, cmd[0], cmd[1:]...).Output()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to run futility dump_fmap")
+	}
+
+	// The format of the output is:
+	// SECTION OFFSET SIZE
+	fields := strings.Fields(string(output))
+	if len(fields) != 3 {
+		return nil, errors.Errorf("unexpected number of fields: %q, output: %q", len(fields), string(output))
+	}
+
+	name := fields[0]
+
+	offset, err := strconv.Atoi(fields[1])
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to convert offset string to int")
+	}
+
+	size, err := strconv.Atoi(fields[2])
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to convert size string to int")
+	}
+
+	return &fmapSection{
+		Name:   name,
+		Offset: offset,
+		Size:   size,
+	}, nil
+}
 
 func readFileAtOffset(fileName string, data []byte, offset int64) error {
 	f, err := os.OpenFile(fileName, os.O_RDONLY, 0644)
@@ -128,6 +195,23 @@ func createRollbackBytes(newRollbackValue uint32) []byte {
 	rollbackBytes := make([]byte, rollbackSizeBytes)
 	binary.LittleEndian.PutUint32(rollbackBytes, newRollbackValue)
 	return rollbackBytes
+}
+
+func readFMAPSection(ctx context.Context, firmwareFilePath string, section FMAPSection) (*fmapSectionValue, error) {
+	sectionInfo, err := fmapSectionInfo(ctx, firmwareFilePath, section)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get FMAP info for section: %q", section)
+	}
+
+	sectionData := make([]byte, sectionInfo.Size)
+	if err := readFileAtOffset(firmwareFilePath, sectionData, int64(sectionInfo.Offset)); err != nil {
+		return nil, errors.Wrapf(err, "unable to read FMAP section: %q", section)
+	}
+
+	return &fmapSectionValue{
+		Section: sectionInfo,
+		Bytes:   sectionData,
+	}, nil
 }
 
 // GenerateTestFirmwareImages generates a set of test firmware images from the firmware that is on the DUT.
