@@ -123,6 +123,20 @@ func TFLogLevel(level int) TFOption {
 	}
 }
 
+// TFRouterType sets the router type used in the test fixture.
+func TFRouterType(rtype router.Type) TFOption {
+	return func(tf *TestFixture) {
+		tf.rtype = rtype
+	}
+}
+
+// TFPcapType sets the pcap type used in the test fixture.
+func TFPcapType(rtype router.Type) TFOption {
+	return func(tf *TestFixture) {
+		tf.ptype = rtype
+	}
+}
+
 // TFServiceName is the service needed by TestFixture.
 const TFServiceName = "tast.cros.wifi.ShillService"
 
@@ -139,6 +153,8 @@ type TestFixture struct {
 	wifiClient wifi.ShillServiceClient
 
 	routers []routerData
+	rtype   router.Type
+	ptype   router.Type
 
 	pcapTarget string
 	pcapHost   *ssh.Conn
@@ -225,6 +241,9 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		dut:       d,
 		capturers: make(map[*APIface]*pcap.Capturer),
 		aps:       make(map[*APIface]struct{}),
+		// Set the default routertype on the DUT by default
+		rtype: router.LegacyT,
+		ptype: router.LegacyT,
 		// Set the debug values on the DUT by default.
 		setLogging: true,
 		// Default log level used in WiFi tests.
@@ -288,7 +307,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		}
 		rt.host = routerHost
 		routerObj, err := router.NewRouter(ctx, daemonCtx, rt.host,
-			strings.ReplaceAll(rt.target, ":", "_"))
+			strings.ReplaceAll(rt.target, ":", "_"), tf.rtype)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to create a router object")
 		}
@@ -348,7 +367,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 				return nil, errors.Wrap(err, "failed to connect to pcap")
 			}
 		} else {
-			tf.pcap, err = router.NewRouter(ctx, daemonCtx, tf.pcapHost, "pcap")
+			tf.pcap, err = router.NewRouter(ctx, daemonCtx, tf.pcapHost, "pcap", tf.ptype)
 			if err != nil {
 				return nil, errors.Wrap(err, "failed to create a router object for pcap")
 			}
