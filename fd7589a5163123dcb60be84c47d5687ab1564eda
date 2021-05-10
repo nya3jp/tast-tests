@@ -39,6 +39,30 @@
       },
       "revId": "fd7589a5163123dcb60be84c47d5687ab1564eda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f357f1f3_21abb8fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/app_info_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-10T02:07:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9022f745_965158c4",
+      "range": {
+        "startLine": 32,
+        "startChar": 17,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "fd7589a5163123dcb60be84c47d5687ab1564eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
