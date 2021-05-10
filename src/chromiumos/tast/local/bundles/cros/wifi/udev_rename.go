@@ -31,11 +31,20 @@ func init() {
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"wifi", "shill-wifi"},
-		// TODO(b/149247291): remove the dependency once elm/hana upreved kernel to 4.19 or above.
-		// TODO(crbug.com/1115620): remove "Elm" and "Hana" after unibuild migration completed.
-		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("oak"), hwdep.SkipOnPlatform("elm"), hwdep.SkipOnPlatform("hana")),
+		Attr: []string{"group:mainline"},
+		// TODO(b/149247291): remove the elm/hana 3.18 dependency once elm/hana upreved kernel to 4.19 or above.
+		SoftwareDeps: []string{"wifi", "shill-wifi", "no_elm_hana_3_18"},
+		// TODO(b/183992356): remove informational variant once Asurada unbind/bind issues are fixed.
+		Params: []testing.Param{
+			{
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("asurada")),
+			},
+			{
+				Name:              "informational",
+				ExtraAttr:         []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("asurada")),
+			},
+		},
 	})
 }
 
