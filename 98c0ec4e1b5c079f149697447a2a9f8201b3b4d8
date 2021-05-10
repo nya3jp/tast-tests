@@ -135,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93f02694_dc3b7c51",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-10T12:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e02d18ac_ee834e28",
+      "range": {
+        "startLine": 206,
+        "startChar": 5,
+        "endLine": 206,
+        "endChar": 16
+      },
+      "revId": "98c0ec4e1b5c079f149697447a2a9f8201b3b4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61eb3996_7f1263e7",
@@ -172,6 +196,30 @@
       "side": 1,
       "message": "mistyped it :/ Thanks 👍",
       "parentUuid": "61eb3996_7f1263e7",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 14
+      },
+      "revId": "98c0ec4e1b5c079f149697447a2a9f8201b3b4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf63fe2f_86b6eae6",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-10T12:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4644d6f7_18fdc718",
       "range": {
         "startLine": 213,
         "startChar": 1,
