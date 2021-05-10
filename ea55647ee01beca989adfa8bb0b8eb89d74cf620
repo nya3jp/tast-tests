@@ -1,6 +1,69 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f9a090_7b455625",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-10T12:51:59Z",
+      "side": 1,
+      "message": "Not sure if I understand this test correctly.\nIt is supposed to occasionally trigger a bug which will make the test fail?",
+      "revId": "ea55647ee01beca989adfa8bb0b8eb89d74cf620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d1bbda9_0f6376cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-10T12:51:59Z",
+      "side": 1,
+      "message": "Add short comment about what these values are/why you are using those.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 49
+      },
+      "revId": "ea55647ee01beca989adfa8bb0b8eb89d74cf620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da4fb19f_5dbaa011",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-10T12:51:59Z",
+      "side": 1,
+      "message": "Move to line 108 right before its first usage.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 21
+      },
+      "revId": "ea55647ee01beca989adfa8bb0b8eb89d74cf620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa8f8201_43030a75",
@@ -14,6 +77,63 @@
       "writtenOn": "2021-05-10T06:40:23Z",
       "side": 1,
       "message": "@Gabor, @Victor the problem I mentioned here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2867483/1..8/src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go#b95\n\nhappens when bug that this test covers manifest here. After we start Chrome in line 94 Chrome starts engaging with Kiosk and then restarts and lands on \"sign in screen\" Add that is a different process.\nThat causes the deferred cr.Close() to fail but that is ONLY in case when bug appears. Otherwise, everything works just fine.",
+      "revId": "ea55647ee01beca989adfa8bb0b8eb89d74cf620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ac49187_34715d53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-10T12:51:59Z",
+      "side": 1,
+      "message": "Add a log message that the test will read the syslog for a while.",
+      "revId": "ea55647ee01beca989adfa8bb0b8eb89d74cf620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f82366_5936410b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-10T12:51:59Z",
+      "side": 1,
+      "message": "Do we need this log output?",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 19
+      },
+      "revId": "ea55647ee01beca989adfa8bb0b8eb89d74cf620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b11d25e_19676258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-10T12:51:59Z",
+      "side": 1,
+      "message": "as above",
       "revId": "ea55647ee01beca989adfa8bb0b8eb89d74cf620",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
