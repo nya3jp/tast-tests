@@ -6,6 +6,7 @@ package fingerprint
 
 import (
 	"context"
+	"crypto/rand"
 	"encoding/binary"
 	"io/ioutil"
 	"os"
@@ -17,6 +18,7 @@ import (
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
@@ -252,6 +254,101 @@ func modifyFirmwareFileRollbackValue(firmwareFilePath string, newRollbackValue u
 	}
 
 	return nil
+}
+
+func generateDevSignedImage(ctx context.Context, devKeyPair *keyPair, origFirmwareFilePath string, rwVersion, roVersion *fmapSectionValue) (string, error) {
+	devFilePath := strings.TrimSuffix(origFirmwareFilePath, filepath.Ext(origFirmwareFilePath)) + ".dev"
+
+	if err := fsutil.CopyFile(origFirmwareFilePath, devFilePath); err != nil {
+		return "", errors.Wrap(err, "failed to copy file")
+	}
+
+	if err := addSuffixToVersionString(devFilePath, ".dev", roVersion); err != nil {
+		return "", errors.Wrap(err, "failed to modify RO version string")
+	}
+
+	if err := addSuffixToVersionString(devFilePath, ".dev", rwVersion); err != nil {
+		return "", errors.Wrap(err, "failed to modify RW version string")
+	}
+
+	// The firmware was modified, so we need to re-sign it.
+	if err := signFirmware(ctx, devKeyPair.PrivateKeyPath, devFilePath); err != nil {
+		return "", errors.Wrap(err, "failed to sign firmware")
+	}
+
+	return devFilePath, nil
+}
+
+func generateRollbackImage(ctx context.Context, devKeyPair *keyPair, origFirmwareFilePath string, rwVersion, roVersion, rollback *fmapSectionValue, newRollbackValue uint32) (string, error) {
+	versionSuffix := ".rb" + strconv.FormatUint(uint64(newRollbackValue), 10)
+	ext := ".dev" + versionSuffix
+	rollbackFilePath := strings.TrimSuffix(origFirmwareFilePath, filepath.Ext(origFirmwareFilePath)) + ext
+
+	if err := fsutil.CopyFile(origFirmwareFilePath, rollbackFilePath); err != nil {
+		return "", errors.Wrap(err, "failed to copy file")
+	}
+
+	if err := addSuffixToVersionString(rollbackFilePath, ".dev", roVersion); err != nil {
+		return "", errors.Wrap(err, "failed to modify RO version string")
+	}
+
+	if err := addSuffixToVersionString(rollbackFilePath, versionSuffix, rwVersion); err != nil {
+		return "", errors.Wrap(err, "failed to modify RW version string")
+	}
+
+	if err := modifyFirmwareFileRollbackValue(rollbackFilePath, newRollbackValue, rollback); err != nil {
+		return "", errors.Wrap(err, "failed to modify rollback value")
+	}
+
+	// The firmware was modified, so we need to re-sign it
+	if err := signFirmware(ctx, devKeyPair.PrivateKeyPath, rollbackFilePath); err != nil {
+		return "", errors.Wrap(err, "failed to sign firmware")
+	}
+
+	return rollbackFilePath, nil
+}
+
+func generateCorruptFirstByteImage(ctx context.Context, origFirmwareFilePath string) (string, error) {
+	corruptFilePath := strings.TrimSuffix(origFirmwareFilePath, filepath.Ext(origFirmwareFilePath)) + "_corrupt_first_byte.bin"
+
+	if err := fsutil.CopyFile(origFirmwareFilePath, corruptFilePath); err != nil {
+		return "", errors.Wrap(err, "failed to copy file")
+	}
+
+	rwSection, err := fmapSectionInfo(ctx, corruptFilePath, EC_RW)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get FMAP info for EC_RW")
+	}
+
+	randByte := make([]byte, 1)
+	if _, err := rand.Read(randByte); err != nil {
+		return "", errors.Wrap(err, "failed to generate random value")
+	}
+
+	if err := writeFileAtOffset(corruptFilePath, randByte, int64(rwSection.Offset)+100); err != nil {
+		return "", errors.Wrap(err, "failed to write corrupt first byte")
+	}
+
+	return corruptFilePath, nil
+}
+
+func generateCorruptLastByteImage(ctx context.Context, origFirmwareFilePath string) (string, error) {
+	corruptFilePath := strings.TrimSuffix(origFirmwareFilePath, filepath.Ext(origFirmwareFilePath)) + "_corrupt_last_byte.bin"
+
+	if err := fsutil.CopyFile(origFirmwareFilePath, corruptFilePath); err != nil {
+		return "", errors.Wrap(err, "failed to copy file")
+	}
+
+	rwSection, err := fmapSectionInfo(ctx, corruptFilePath, SignatureRW)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get FMAP info for SIG_RW")
+	}
+
+	if err := writeFileAtOffset(corruptFilePath, []byte{0}, int64(rwSection.Offset)-100); err != nil {
+		return "", errors.Wrap(err, "failed to write corrupt first byte")
+	}
+
+	return corruptFilePath, nil
 }
 
 func readFMAPSection(ctx context.Context, firmwareFilePath string, section FMAPSection) (*fmapSectionValue, error) {
