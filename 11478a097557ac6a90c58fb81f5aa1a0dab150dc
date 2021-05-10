@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9abc5b6d_e2152511",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-10T03:18:16Z",
+      "side": 1,
+      "message": "Move Brian to reviewer as we had some discussion in the Tauto version.",
+      "revId": "11478a097557ac6a90c58fb81f5aa1a0dab150dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "441e1769_8e0e31eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wake_on_ssid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-10T03:18:16Z",
+      "side": 1,
+      "message": "(Move the discussion from crrev.com/c/1268897 to this CL)\n\nPerhaps no need of this, if\n- we properly set HWDep to only run on target models.\n- these would be part of wifi_matfunc after stabilized.",
+      "revId": "11478a097557ac6a90c58fb81f5aa1a0dab150dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
