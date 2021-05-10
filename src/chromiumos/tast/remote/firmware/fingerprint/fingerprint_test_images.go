@@ -74,6 +74,34 @@ const (
 // TestImages maps a given test image type to data describing the image.
 type TestImages map[TestImageType]*TestImageData
 
+func readFileAtOffset(fileName string, data []byte, offset int64) error {
+	f, err := os.OpenFile(fileName, os.O_RDONLY, 0644)
+	if err != nil {
+		return errors.Wrapf(err, "failed to open file: %q", fileName)
+	}
+	defer f.Close()
+
+	if _, err := f.ReadAt(data, offset); err != nil {
+		return errors.Wrapf(err, "failed to read from offset: %v", offset)
+	}
+
+	return nil
+}
+
+func writeFileAtOffset(fileName string, data []byte, offset int64) error {
+	f, err := os.OpenFile(fileName, os.O_RDWR, 0644)
+	if err != nil {
+		return errors.Wrapf(err, "failed to open file: %q", fileName)
+	}
+	defer f.Close()
+
+	if _, err := f.WriteAt(data, offset); err != nil {
+		return errors.Wrapf(err, "failed to write data: %v to offset: %v", data, offset)
+	}
+
+	return nil
+}
+
 // createVersionStringWithSuffix returns a new copy of version with the last bytes
 // replaced by suffix.
 func createVersionStringWithSuffix(suffix string, version []byte) ([]byte, error) {
