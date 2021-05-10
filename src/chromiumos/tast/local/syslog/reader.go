@@ -203,6 +203,34 @@ func Program(name string) Option {
 	}
 }
 
+type programName string
+
+const (
+	// Chrome filter.
+	Chrome programName = "chrome"
+
+	// CrashReported filter.
+	CrashReported programName = "crash_reporter"
+
+	// Cryptohomed filter.
+	Cryptohomed programName = "cryptohomed"
+
+	// Cupsd filter.
+	Cupsd programName = "cupsd"
+
+	// CrashSender filter.
+	CrashSender programName = "crash_sender"
+)
+
+// ProgramNameFilter creates Option for filtering logs for specific program.
+func ProgramNameFilter(name programName) Option {
+	return func(o *options) {
+		o.filters = append(o.filters, func(e *Entry) bool {
+			return e.Program == string(name)
+		})
+	}
+}
+
 // Entry represents a log message entry of syslog.
 type Entry struct {
 	// Timestamp is the time when the log message was emitted.

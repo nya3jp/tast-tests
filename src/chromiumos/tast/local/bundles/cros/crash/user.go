@@ -258,7 +258,7 @@ func testCoreFileRemovedInProduction(ctx context.Context, cr *chrome.Chrome, s *
 	}
 	defer unstashLeaveCore(fullCtx)
 
-	reader, err := syslog.NewReader(ctx, syslog.Program("crash_reporter"))
+	reader, err := syslog.NewReader(ctx, syslog.ProgramNameFilter(syslog.CrashReported))
 	if err != nil {
 		s.Fatal("Failed to create log reader: ", err)
 	}
