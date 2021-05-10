@@ -34,6 +34,58 @@
       "parentUuid": "42213667_768705ee",
       "revId": "746dcd33d8d39436b77cb80371e83b91e86847c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2313d67d_a89b0766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-10T07:49:30Z",
+      "side": 1,
+      "message": "If you file a bug about it, and link it here, and link it at the Attributes, that the \"informational\" tag should not be removed till the bug is resolved, than it is fine.",
+      "parentUuid": "8f7c1044_f2143dc5",
+      "revId": "746dcd33d8d39436b77cb80371e83b91e86847c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2872671b_0238fe71",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-10T07:49:30Z",
+      "side": 1,
+      "message": "Do you plan to add more field to this struct, or it would be enough to use the following?\n\u003e  type programName string\nand\n\u003e  const (\n\u003e    Chrome programName \"chrome\"\n\u003e    ...\n\u003e    CrashSender programName \"crash_sender\"\n\u003e  )",
+      "revId": "746dcd33d8d39436b77cb80371e83b91e86847c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde27243_f3585c42",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-10T07:49:30Z",
+      "side": 1,
+      "message": "This is almost the same as the Program() function.\nYou should use that in your CL, without defining the new struct, and in a follow-up CL, add the program names to constants, and update all the usages of the function (there is only a few).",
+      "revId": "746dcd33d8d39436b77cb80371e83b91e86847c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
