@@ -31,7 +31,6 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.platform.UpstartService", dutfs.ServiceName},
 		Vars:         []string{"servo"},
 		Data: []string{
-			fingerprint.GenTestImagesScript,
 			fingerprint.Futility,
 			fingerprint.BloonchipperDevKey,
 			fingerprint.DartmonkeyDevKey,
@@ -57,7 +56,7 @@ func FpRWNoUpdateRO(ctx context.Context, s *testing.State) {
 
 	d := t.DUT()
 
-	testImages, err := fingerprint.GenerateTestFirmwareImages(ctx, d, t.DutfsClient(), s.DataPath(fingerprint.GenTestImagesScript), t.FPBoard(), t.BuildFwFile(), t.DUTTempDir())
+	testImages, err := fingerprint.GenerateTestFirmwareImages(ctx, d, t.DutfsClient(), s.DataPath(fingerprint.Futility), s.DataPath(fingerprint.DevKeyForFPBoard(t.FPBoard())), t.FPBoard(), t.BuildFwFile(), t.DUTTempDir())
 	if err != nil {
 		s.Fatal("Failed to generate test images: ", err)
 	}
