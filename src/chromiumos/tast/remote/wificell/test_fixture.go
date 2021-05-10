@@ -123,6 +123,20 @@ func TFLogLevel(level int) TFOption {
 	}
 }
 
+// TFRouterType sets the router type used in the test fixture.
+func TFRouterType(rtype router.Type) TFOption {
+	return func(tf *TestFixture) {
+		tf.routerType = rtype
+	}
+}
+
+// TFPcapType sets the router type of the pcap capturing device. The pcap device in our testbeds is a router.
+func TFPcapType(rtype router.Type) TFOption {
+	return func(tf *TestFixture) {
+		tf.pcapType = rtype
+	}
+}
+
 // TFServiceName is the service needed by TestFixture.
 const TFServiceName = "tast.cros.wifi.ShillService"
 
@@ -138,7 +152,9 @@ type TestFixture struct {
 	rpc        *rpc.Client
 	wifiClient wifi.ShillServiceClient
 
-	routers []routerData
+	routers    []routerData
+	routerType router.Type
+	pcapType   router.Type
 
 	pcapTarget string
 	pcapHost   *ssh.Conn
@@ -225,6 +241,10 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		dut:       d,
 		capturers: make(map[*APIface]*pcap.Capturer),
 		aps:       make(map[*APIface]struct{}),
+		// Set the router's default router type.
+		routerType: router.LegacyT,
+		// Set the pcap capture device's default router type.
+		pcapType: router.LegacyT,
 		// Set the debug values on the DUT by default.
 		setLogging: true,
 		// Default log level used in WiFi tests.
@@ -288,7 +308,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		}
 		rt.host = routerHost
 		routerObj, err := router.NewRouter(ctx, daemonCtx, rt.host,
-			strings.ReplaceAll(rt.target, ":", "_"))
+			strings.ReplaceAll(rt.target, ":", "_"), tf.routerType)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to create a router object")
 		}
@@ -348,7 +368,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 				return nil, errors.Wrap(err, "failed to connect to pcap")
 			}
 		} else {
-			tf.pcap, err = router.NewRouter(ctx, daemonCtx, tf.pcapHost, "pcap")
+			tf.pcap, err = router.NewRouter(ctx, daemonCtx, tf.pcapHost, "pcap", tf.pcapType)
 			if err != nil {
 				return nil, errors.Wrap(err, "failed to create a router object for pcap")
 			}
