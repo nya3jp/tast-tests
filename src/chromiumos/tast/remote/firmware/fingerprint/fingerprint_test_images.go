@@ -104,9 +104,31 @@ type fmapSectionValue struct {
 	Bytes []byte
 }
 
+type keyPair struct {
+	PublicKeyPath string
+	PrivateKeyPath string
+}
+
 func hostCommand(ctx context.Context, cmd []string) *exec.Cmd {
 	testing.ContextLogf(ctx, "Command: %s", shutil.EscapeSlice(cmd))
 	return exec.CommandContext(ctx, cmd[0], cmd[1:]...)
+}
+
+func createKeyPairFromRSAKey(ctx context.Context, pemFilePath, keyDescription string) (*keyPair, error) {
+	curDir, err := os.Getwd()
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to get working directory")
+	}
+
+	cmd := []string{Futility, "create", "--desc", keyDescription, pemFilePath, "key"}
+	if err := hostCommand(ctx, cmd).Run(); err != nil {
+		return nil, errors.Wrap(err, "failed to run futility create")
+	}
+
+	return &keyPair{
+		PublicKeyPath:  filepath.Join(curDir, "key.vbpubk2"),
+		PrivateKeyPath: filepath.Join(curDir, "key.vbprik2"),
+	}, nil
 }
 
 func fmapSectionInfo(ctx context.Context, firmwareFilePath string, section FMAPSection) (*fmapSection, error) {
