@@ -127,7 +127,7 @@ const TFServiceName = "tast.cros.wifi.ShillService"
 type routerData struct {
 	target string
 	host   *ssh.Conn
-	object *Router
+	object SuperRouter
 }
 
 // TestFixture sets up the context for a basic WiFi test.
@@ -140,7 +140,7 @@ type TestFixture struct {
 
 	pcapTarget string
 	pcapHost   *ssh.Conn
-	pcap       *Router
+	pcap       SuperRouter
 
 	attenuatorTarget string
 	attenuator       *attenuator.Attenuator
@@ -1012,17 +1012,17 @@ func (tf *TestFixture) AssertNoDisconnect(ctx context.Context, f func(context.Co
 }
 
 // RouterByID returns the respective Router object in the fixture.
-func (tf *TestFixture) RouterByID(idx int) *Router {
+func (tf *TestFixture) RouterByID(idx int) SuperRouter {
 	return tf.routers[idx].object
 }
 
 // Router returns Router 0 object in the fixture.
-func (tf *TestFixture) Router() *Router {
+func (tf *TestFixture) Router() SuperRouter {
 	return tf.RouterByID(0)
 }
 
 // Pcap returns the pcap Router object in the fixture.
-func (tf *TestFixture) Pcap() *Router {
+func (tf *TestFixture) Pcap() SuperRouter {
 	return tf.pcap
 }
 
