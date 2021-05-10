@@ -16,6 +16,23 @@
       "message": "Friendy OWNERS ping.",
       "revId": "20f6a7d83a822402e9db91e26ecece0d947c72a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2434602_703d6951",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-05-10T20:50:20Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "20f6a7d83a822402e9db91e26ecece0d947c72a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
