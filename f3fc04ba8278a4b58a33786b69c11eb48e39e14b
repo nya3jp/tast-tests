@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e479c7a_351cd42b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-10T04:30:19Z",
+      "side": 1,
+      "message": "Done. use a simple number as warm up check",
+      "parentUuid": "44f5dade_5c3e2311",
+      "range": {
+        "startLine": 24,
+        "startChar": 25,
+        "endLine": 24,
+        "endChar": 54
+      },
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01bab4bd_ad9777da",
@@ -357,6 +381,24 @@
       "side": 1,
       "message": "As discussed offline. This test is not used for text recognition but vk integration. So please use any character as clear as possible.",
       "parentUuid": "8ccc9c49_39176f82",
+      "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2224d66_bff59269",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-10T04:30:19Z",
+      "side": 1,
+      "message": "Done. the warm up step now validates the number instead of checking non-empty",
+      "parentUuid": "c8ca462f_057d3b53",
       "revId": "f3fc04ba8278a4b58a33786b69c11eb48e39e14b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
