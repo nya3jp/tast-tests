@@ -6,6 +6,7 @@ package fingerprint
 
 import (
 	"context"
+	"encoding/binary"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -34,7 +35,11 @@ const (
 	NocturneFPDevKey = "fingerprint_dev_keys/nocturne_fp/dev_key.pem"
 )
 
-const generatedImagesSubDirectory = "images"
+const (
+	generatedImagesSubDirectory = "images"
+	versionStringLenBytes       = 32
+	rollbackSizeBytes           = 4
+)
 
 // TestImageType specifies the test image variant.
 type TestImageType int
@@ -68,6 +73,34 @@ const (
 
 // TestImages maps a given test image type to data describing the image.
 type TestImages map[TestImageType]*TestImageData
+
+// createVersionStringWithSuffix returns a new copy of version with the last bytes
+// replaced by suffix.
+func createVersionStringWithSuffix(suffix string, version []byte) ([]byte, error) {
+	if len(version) != versionStringLenBytes {
+		return nil, errors.Errorf("incorrect version size, actual: %d, expected: %d", len(version), versionStringLenBytes)
+	}
+
+	newVersion := make([]byte, versionStringLenBytes)
+	// golang strings are not NUL terminated, so add one
+	suffix += "\x00"
+	end := versionStringLenBytes - len(suffix)
+
+	if end < 0 {
+		return nil, errors.Errorf("suffix %q is too long for version len: %d", suffix, len(version))
+	}
+
+	copy(newVersion, version[0:end])
+	copy(newVersion[end:], suffix)
+
+	return newVersion, nil
+}
+
+func createRollbackBytes(newRollbackValue uint32) []byte {
+	rollbackBytes := make([]byte, rollbackSizeBytes)
+	binary.LittleEndian.PutUint32(rollbackBytes, newRollbackValue)
+	return rollbackBytes
+}
 
 // GenerateTestFirmwareImages generates a set of test firmware images from the firmware that is on the DUT.
 func GenerateTestFirmwareImages(ctx context.Context, d *dut.DUT, fs *dutfs.Client, generateScript string, fpBoard FPBoardName, buildFWFile, dutTempDir string) (ret TestImages, retErr error) {
