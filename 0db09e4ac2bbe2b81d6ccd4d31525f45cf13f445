@@ -22,6 +22,30 @@
       },
       "revId": "0db09e4ac2bbe2b81d6ccd4d31525f45cf13f445",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e19d4d_51e87b48",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-10T03:31:16Z",
+      "side": 1,
+      "message": "Thanks Jun for your input. So to control the re-try with a fixed timeout value but not a retry number, we need to set the desired timeout in the context, but with a very big retry number. This doesn\u0027t seem intuitive though.",
+      "parentUuid": "e61cf4a5_e9dca51b",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 1
+      },
+      "revId": "0db09e4ac2bbe2b81d6ccd4d31525f45cf13f445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
