@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c53c145_897b408e",
+        "filename": "src/chromiumos/tast/local/graphics/trace/guestos/trace_replay_crostini_setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2021-05-10T20:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf94402a_d389546a",
+      "range": {
+        "startLine": 18,
+        "startChar": 37,
+        "endLine": 18,
+        "endChar": 53
+      },
+      "revId": "1a941ffeda7b99d7fde0a419b339ad73132539a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9aa9466a_35216cda",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-10T20:32:21Z",
       "side": 1,
       "message": "You should return an error here.\nThe principle of tast utility function is returning an error and let callee call Fatal/Error.\n\nreturn errors.Wrap(err, \"failed to open Linux settings\")",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "1a941ffeda7b99d7fde0a419b339ad73132539a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5722f01_29902784",
+        "filename": "src/chromiumos/tast/local/graphics/trace/guestos/trace_replay_crostini_setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2021-05-10T20:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aa9466a_35216cda",
       "range": {
         "startLine": 23,
         "startChar": 3,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4346bd0d_63e18e3a",
+        "filename": "src/chromiumos/tast/local/graphics/trace/guestos/trace_replay_crostini_setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2021-05-10T20:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1d2df76_59336404",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "1a941ffeda7b99d7fde0a419b339ad73132539a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84bd4db4_9ea36a62",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eaa732f_3addf70b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/guestos/trace_replay_crostini_setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2021-05-10T20:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84bd4db4_9ea36a62",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 9
+      },
+      "revId": "1a941ffeda7b99d7fde0a419b339ad73132539a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8baaeade_ac5bf86a",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-05-10T20:32:21Z",
       "side": 1,
       "message": "This function returns an error. Do not omit it.\n\nif err :\u003d resize(...); err !\u003d nil {\n    if resizeDiskBytes \u003e 0 {s.Fatal(\"Failed to resize: \", err)}\n    s.Error(\"Failed to resize: \", err)\n}",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "1a941ffeda7b99d7fde0a419b339ad73132539a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfde7361_a3f09b4b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/guestos/trace_replay_crostini_setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2021-05-10T20:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8baaeade_ac5bf86a",
       "range": {
         "startLine": 52,
         "startChar": 1,
