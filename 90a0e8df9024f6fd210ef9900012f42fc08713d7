@@ -400,6 +400,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c902e2f_e740119d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-05-10T18:43:58Z",
+      "side": 1,
+      "message": "Ah did not realize that. I was following style from other tests, but none of them had wrapping lines, so wasn\u0027t sure how to deal with that. Fixed.",
+      "parentUuid": "58cad51e_4a504479",
+      "revId": "90a0e8df9024f6fd210ef9900012f42fc08713d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e896109_93f90f76",
