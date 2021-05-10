@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c27484e1_63a9ff68",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-10T21:53:58Z",
+      "side": 1,
+      "message": "That only works for error instances, not error types.",
+      "parentUuid": "b0cff3f6_5b2c9e1c",
+      "revId": "65361619ac86d4f20a519bbb73463b1e110616dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b795096_cb0e300a",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "Optionally, I think there\u0027s a flag we can add to the `tar` command in PutFiles, which would preserve file permissions.",
       "parentUuid": "3b795096_cb0e300a",
+      "revId": "65361619ac86d4f20a519bbb73463b1e110616dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0706c77d_d479f0bb",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-10T21:53:58Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2885285",
+      "parentUuid": "9ab85f33_b3ccc32c",
       "revId": "65361619ac86d4f20a519bbb73463b1e110616dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
