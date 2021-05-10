@@ -34,6 +34,24 @@
       "parentUuid": "889b1d8c_a47b53d0",
       "revId": "1cb64e609f6baafff5e2fa268f8aa384f792a53d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec036821_e54fadc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-10T20:53:10Z",
+      "side": 1,
+      "message": "When you assign a tast reviewer, sometimes a shadow reviewer will also be assigned. The shadow reviewer (me in this case) is supposed to comment first before the main reviewer so they can get practice. Either way it\u0027s all good :)",
+      "parentUuid": "63bb0840_05839a04",
+      "revId": "1cb64e609f6baafff5e2fa268f8aa384f792a53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
