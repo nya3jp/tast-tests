@@ -39,6 +39,30 @@
       },
       "revId": "304b1b615a20d5714869f39d0e535b8d72262dd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "599be95a_593209b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-10T20:12:04Z",
+      "side": 1,
+      "message": "Good idea. Done.",
+      "parentUuid": "871e5dab_dc6e557a",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 77
+      },
+      "revId": "304b1b615a20d5714869f39d0e535b8d72262dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
