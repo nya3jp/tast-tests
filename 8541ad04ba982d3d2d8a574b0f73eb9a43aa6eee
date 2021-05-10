@@ -33,6 +33,24 @@
       "message": "I think the failures are yours:\n\n```\ntast-local-tests-cros-0.0.1-r6121: --- FAIL: TestTimeout (0.00s)\ntast-local-tests-cros-0.0.1-r6121:     testcheck.go:48: arc.Cgroups: timeout is too short (4m0s \u003c 4m50s)\ntast-local-tests-cros-0.0.1-r6121:     testcheck.go:48: arc.Cgroups.vm: timeout is too short (4m0s \u003c 4m50s)\ntast-local-tests-cros-0.0.1-r6121:     testcheck.go:48: arc.DragDrop: timeout is too short (4m0s \u003c 4m50s)\ntast-local-tests-cros-0.0.1-r6121:     testcheck.go:48: arc.DragDrop.vm: timeout is too short (4m0s \u003c 4m50s)\ntast-local-tests-cros-0.0.1-r6121:     testcheck.go:48: arc.Drivefs: timeout is too short (4m0s \u003c 4m50s)\ntast-local-tests-cros-0.0.1-r6121:     testcheck.go:48: arc.Drivefs.vm: timeout is too short (4m0s \u003c 4m50s)\ntast-local-tests-cros-0.0.1-r6121:     testcheck.go:48: arc.Fsp: timeout is too short (4m0s \u003c 4m50s)\n...\n```",
       "revId": "8541ad04ba982d3d2d8a574b0f73eb9a43aa6eee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "794568f1_d94d29f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-05-10T23:30:23Z",
+      "side": 1,
+      "message": "Does it mean I have to update all of time limits to update the BootTimeout?",
+      "parentUuid": "d50c9869_c92e7b03",
+      "revId": "8541ad04ba982d3d2d8a574b0f73eb9a43aa6eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
