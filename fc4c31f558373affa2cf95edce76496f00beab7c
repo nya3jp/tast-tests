@@ -16,6 +16,80 @@
       "message": "Friendly ping on review here",
       "revId": "fc4c31f558373affa2cf95edce76496f00beab7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd3e8ea4_60acd564",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-10T16:57:46Z",
+      "side": 1,
+      "message": "this is no longer only for Guest. Maybe \"Common\" or something?\nCould you document these mount points are expected for \"user\" cases, too?",
+      "range": {
+        "startLine": 105,
+        "startChar": 24,
+        "endLine": 105,
+        "endChar": 29
+      },
+      "revId": "fc4c31f558373affa2cf95edce76496f00beab7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cdde435_d321775a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-10T16:57:46Z",
+      "side": 1,
+      "message": "^/run/arc/media(/|$)\n\nto match only media (not media-prefixed directory) and its subdirectories.",
+      "revId": "fc4c31f558373affa2cf95edce76496f00beab7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02dddab3_fa319c9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/unblocked_terms.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-10T16:57:46Z",
+      "side": 1,
+      "message": "Could you file a tracking issue hoping to remove \"master\" eventually?",
+      "revId": "fc4c31f558373affa2cf95edce76496f00beab7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b43a7c63_d0b8ab3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/unblocked_terms.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-10T16:57:46Z",
+      "side": 1,
+      "message": "Looks like your test does not have the word?",
+      "revId": "fc4c31f558373affa2cf95edce76496f00beab7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
