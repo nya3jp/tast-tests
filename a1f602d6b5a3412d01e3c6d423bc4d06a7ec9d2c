@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11a9266f_c0f2db69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-10T07:37:35Z",
+      "side": 1,
+      "message": "At first I thought all models that uses Qualcomm WiFi modules are affected. The model selection logic cannot be done by using SkipPlatform or SkipModel as grunt/balra is an exception.\n\nAfter a closer look, the affected models use QCA6174A-3. See http://b/183463918#comment8. So we don\u0027t need to implement hwdep.SupportPTK(). I\u0027ll revert https://crrev.com/c/2868186.",
+      "parentUuid": "9231f00d_c4c838a0",
+      "revId": "a1f602d6b5a3412d01e3c6d423bc4d06a7ec9d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6bf9647_0ccadb65",
@@ -49,6 +67,24 @@
       "writtenOn": "2021-05-07T11:25:38Z",
       "side": 1,
       "message": "(might be part of this CL, but) this \"low loss\" case might not be valuable now if the new check in the test already catches the same bug.",
+      "revId": "a1f602d6b5a3412d01e3c6d423bc4d06a7ec9d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "387cdbfe_eec1043c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-10T07:37:35Z",
+      "side": 1,
+      "message": "Will remove in the following CL.",
+      "parentUuid": "c6bf9647_0ccadb65",
       "revId": "a1f602d6b5a3412d01e3c6d423bc4d06a7ec9d2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
