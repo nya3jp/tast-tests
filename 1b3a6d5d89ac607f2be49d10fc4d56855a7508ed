@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f91f7bd_ac7aa375",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-10T07:54:21Z",
+      "side": 1,
+      "message": "\u003e \"catpure\" is a possible misspelling of \"capture\".\n\nFixed",
+      "parentUuid": "7e8c5b2c_5e75818d",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 7
+      },
+      "revId": "1b3a6d5d89ac607f2be49d10fc4d56855a7508ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
