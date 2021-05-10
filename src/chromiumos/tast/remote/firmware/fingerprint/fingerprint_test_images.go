@@ -221,10 +221,37 @@ func createVersionStringWithSuffix(suffix string, version []byte) ([]byte, error
 	return newVersion, nil
 }
 
+func addSuffixToVersionString(filePath, suffix string, version *fmapSectionValue) error {
+	newVersion, err := createVersionStringWithSuffix(suffix, version.Bytes)
+	if err != nil {
+		return errors.Wrap(err, "failed to modify version string")
+	}
+
+	if err := writeFileAtOffset(filePath, newVersion, int64(version.Section.Offset)); err != nil {
+		return errors.Wrap(err, "failed to update RO version string")
+	}
+
+	return nil
+}
+
 func createRollbackBytes(newRollbackValue uint32) []byte {
 	rollbackBytes := make([]byte, rollbackSizeBytes)
 	binary.LittleEndian.PutUint32(rollbackBytes, newRollbackValue)
 	return rollbackBytes
+}
+
+func modifyFirmwareFileRollbackValue(firmwareFilePath string, newRollbackValue uint32, rollback *fmapSectionValue) error {
+	if rollback.Section.Size != rollbackSizeBytes {
+		return errors.Errorf("incorrect version size, actual: %v, expected: %v", rollback.Section.Size, rollbackSizeBytes)
+	}
+
+	rollbackBytes := createRollbackBytes(newRollbackValue)
+
+	if err := writeFileAtOffset(firmwareFilePath, rollbackBytes, int64(rollback.Section.Offset)); err != nil {
+		return errors.Wrap(err, "failed to update rollback")
+	}
+
+	return nil
 }
 
 func readFMAPSection(ctx context.Context, firmwareFilePath string, section FMAPSection) (*fmapSectionValue, error) {
