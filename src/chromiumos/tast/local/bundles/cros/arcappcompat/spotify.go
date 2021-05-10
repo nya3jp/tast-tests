@@ -41,7 +41,7 @@ func init() {
 		Func:         Spotify,
 		Desc:         "Functional test for Spotify that installs the app also verifies it is logged in and that the main page is open, checks Spotify correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:appcompat"},
+		Attr:         []string{"group:appcompat", "group:appcompat_release"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Val:               clamshellTestsForSpotify,
