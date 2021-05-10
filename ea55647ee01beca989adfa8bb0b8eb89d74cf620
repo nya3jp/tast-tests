@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cfb9166f_cad7e5d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-10T13:39:52Z",
+      "side": 1,
+      "message": "The naming is good, it\u0027s more about the values.\nIs there only one kisokAppID, so the value will always be \"aajgmlihcokkalfjbangebcffdoanjfo\" when you set up a kiosk account with DeviceLocalAccounts?\nAnd why is the kioskAppAccountID \"2\", it looks a little bit like a magic number.\n\nIf these are just the values you always need to create a Kiosk Account I think it\u0027s ok.\nAs I\u0027m not familiar with kiosk accounts those just looked like arbitrary values to me where I can\u0027t really assess why exactly these values are used.",
+      "parentUuid": "64ecee72_10878471",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 49
+      },
+      "revId": "ea55647ee01beca989adfa8bb0b8eb89d74cf620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da4fb19f_5dbaa011",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
         "patchSetId": 2
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "It has so be here. Otherwise it does not pick up the first expected log line. I will add a comment why it has to be here.",
       "parentUuid": "da4fb19f_5dbaa011",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 21
+      },
+      "revId": "ea55647ee01beca989adfa8bb0b8eb89d74cf620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0f32d0a_6352fce1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-10T13:39:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9cb01e2a_2c51c653",
       "range": {
         "startLine": 87,
         "startChar": 0,
