@@ -46,7 +46,7 @@ func newLegacyRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string
 		ipr:           remote_ip.NewRemoteRunner(host),
 		logCollectors: make(map[string]*log.Collector),
 	}
-	shortCtx, cancel := r.ReserveForClose(ctx)
+	shortCtx, cancel := ReserveForRouterClose(ctx)
 	defer cancel()
 	if err := r.initialize(shortCtx, daemonCtx); err != nil {
 		r.Close(ctx)
