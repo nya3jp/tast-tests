@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf468ce_cdd74468",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-10T08:11:54Z",
+      "side": 1,
+      "message": "set up",
+      "range": {
+        "startLine": 9,
+        "startChar": 26,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe5feebe_3aa85dd3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-10T08:11:54Z",
+      "side": 1,
+      "message": "Android",
+      "range": {
+        "startLine": 9,
+        "startChar": 36,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f3203f05_29b5edd9",
@@ -14,6 +60,201 @@
       "writtenOn": "2021-05-07T09:11:31Z",
       "side": 1,
       "message": "+ Tast owners",
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c72ba1_6b30f125",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mtp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-10T08:11:54Z",
+      "side": 1,
+      "message": "MTP\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 8
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec6af4bf_0e166373",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mtp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-10T08:11:54Z",
+      "side": 1,
+      "message": "Shall leave some time for defer function to run:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 61,
+        "startChar": 15,
+        "endLine": 61,
+        "endChar": 18
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56ab4ea5_95028290",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-10T08:11:54Z",
+      "side": 1,
+      "message": "Is it used?",
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85666e3a_2f286158",
+        "filename": "src/chromiumos/tast/local/chrome/mtp/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-10T08:11:54Z",
+      "side": 1,
+      "message": "mtpWithAndroid  or  mtpAndroid",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 23
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67c7710f_80951949",
+        "filename": "src/chromiumos/tast/local/chrome/mtp/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-10T08:11:54Z",
+      "side": 1,
+      "message": "Android",
+      "range": {
+        "startLine": 40,
+        "startChar": 61,
+        "endLine": 40,
+        "endChar": 68
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a401073_2348b53b",
+        "filename": "src/chromiumos/tast/local/chrome/mtp/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-10T08:11:54Z",
+      "side": 1,
+      "message": "Should be named as arc.MTP... but this is out of the CL\u0027s scope.",
+      "range": {
+        "startLine": 41,
+        "startChar": 27,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f023c10_97f8f981",
+        "filename": "src/chromiumos/tast/local/chrome/mtp/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-10T08:11:54Z",
+      "side": 1,
+      "message": "a new build is flashed.",
+      "range": {
+        "startLine": 106,
+        "startChar": 62,
+        "endLine": 106,
+        "endChar": 78
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d19d95d0_805332db",
+        "filename": "src/chromiumos/tast/local/chrome/mtp/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-10T08:11:54Z",
+      "side": 1,
+      "message": "Set up",
+      "range": {
+        "startLine": 115,
+        "startChar": 4,
+        "endLine": 115,
+        "endChar": 9
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "571de340_d583a73c",
+        "filename": "src/chromiumos/tast/local/chrome/mtp/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-10T08:11:54Z",
+      "side": 1,
+      "message": "ADBSetUp",
       "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
