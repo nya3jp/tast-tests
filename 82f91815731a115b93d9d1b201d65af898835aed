@@ -253,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ee03a5_78fd4f81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-10T08:47:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b4e10f85_6525e3bf",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 41
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74dc1c44_4ba29293",
@@ -337,6 +361,30 @@
       "side": 1,
       "message": "But err is already defined.\nWhat is the standard pattern in this case? Use a new err name?",
       "parentUuid": "5575977c_9e3668c2",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 15
+      },
+      "revId": "82f91815731a115b93d9d1b201d65af898835aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dced306c_758567c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-10T08:47:25Z",
+      "side": 1,
+      "message": "As long as there is at least one undefined variable in left-hand side, you can use :\u003d.\nhttps://play.golang.org/p/CmRJYA4JZ1u\n\nSo you can simply just drop this line and use :\u003d below.",
+      "parentUuid": "12a2e45b_f8522643",
       "range": {
         "startLine": 111,
         "startChar": 1,

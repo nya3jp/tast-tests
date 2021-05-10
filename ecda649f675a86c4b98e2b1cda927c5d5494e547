@@ -16,6 +16,23 @@
       "message": "Thanks Shuhei. I have a few comments/questions. Could you please take a look?",
       "revId": "ecda649f675a86c4b98e2b1cda927c5d5494e547",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a6071d3_92512f8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-10T08:47:25Z",
+      "side": 1,
+      "message": "LGTM % comment.",
+      "revId": "ecda649f675a86c4b98e2b1cda927c5d5494e547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
