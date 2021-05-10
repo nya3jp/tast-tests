@@ -86,6 +86,24 @@
       "message": "This is almost the same as the Program() function.\nYou should use that in your CL, without defining the new struct, and in a follow-up CL, add the program names to constants, and update all the usages of the function (there is only a few).",
       "revId": "746dcd33d8d39436b77cb80371e83b91e86847c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49effb81_79fa4578",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-10T08:50:41Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "bde27243_f3585c42",
+      "revId": "746dcd33d8d39436b77cb80371e83b91e86847c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
