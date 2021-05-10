@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a04a65d_53da4611",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-10T14:55:09Z",
+      "side": 1,
+      "message": "added comments and adjusted values.",
+      "parentUuid": "cfb9166f_cad7e5d4",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 49
+      },
+      "revId": "ea55647ee01beca989adfa8bb0b8eb89d74cf620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da4fb19f_5dbaa011",
