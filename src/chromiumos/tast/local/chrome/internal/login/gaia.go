@@ -46,21 +46,24 @@ func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Sess
 		// If user creation screen asks whether to add an account for "You" or "A child",
 		// click next button to choose "You".
 		testing.ContextLog(ctx, "Clicking next button on user creation screen")
-		err := oobeConn.Call(ctx, nil, `() => {
+		var shown bool
+		err := oobeConn.Call(ctx, &shown, `() => {
 		  const elem = document.querySelector('user-creation-element');
 		  if (!elem || !elem.shadowRoot) {
 		    // This is not an error because user creation screen is not always shown.
-		    return;
+		    return false;
 		  }
 		  const nextButton = elem.shadowRoot.querySelector('oobe-next-button');
 		  if (!nextButton) {
 		    throw new Error('Next button not found on user creation screen');
 		  }
 		  nextButton.click();
+		  return true;
 		}`)
 		if err != nil {
 			return err
 		}
+		testing.ContextLog(ctx, "******** User creation screen: ", shown)
 	}
 
 	isGAIAWebView := func(t *driver.Target) bool {
