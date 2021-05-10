@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02d620ca_6fed5378",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-10T09:35:28Z",
+      "side": 1,
+      "message": "nit: required.",
+      "range": {
+        "startLine": 68,
+        "startChar": 76,
+        "endLine": 68,
+        "endChar": 84
+      },
+      "revId": "6f6f62925d77712d1d8154477949eb5ecbde23e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22e8dc54_f039d270",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-10T09:35:28Z",
+      "side": 1,
+      "message": "Can you add a comment on why ServeAndVerify() cannot be used here?",
+      "range": {
+        "startLine": 69,
+        "startChar": 22,
+        "endLine": 69,
+        "endChar": 37
+      },
+      "revId": "6f6f62925d77712d1d8154477949eb5ecbde23e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "676095d6_df06f935",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
         "patchSetId": 10
