@@ -11,7 +11,6 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
-	"path"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -25,8 +24,6 @@ import (
 )
 
 const (
-	// GenTestImagesScript generates test images.
-	GenTestImagesScript = "gen_test_images.sh"
 	// Futility is the futility executable name.
 	Futility = "futility"
 	// BloonchipperDevKey is the path to the dev key.
@@ -38,6 +35,13 @@ const (
 	// NocturneFPDevKey is the path to the dev key.
 	NocturneFPDevKey = "fingerprint_dev_keys/nocturne_fp/dev_key.pem"
 )
+
+var devKeyMap = map[FPBoardName]string{
+	FPBoardNameBloonchipper: BloonchipperDevKey,
+	FPBoardNameDartmonkey:   DartmonkeyDevKey,
+	FPBoardNameNami:         NamiFPDevKey,
+	FPBoardNameNocturne:     NocturneFPDevKey,
+}
 
 const (
 	generatedImagesSubDirectory = "images"
@@ -110,26 +114,31 @@ type keyPair struct {
 	PrivateKeyPath string
 }
 
+// DevKeyForFPBoard gets the dev key for the given fpBoard.
+func DevKeyForFPBoard(fpBoard FPBoardName) string {
+	return devKeyMap[fpBoard]
+}
+
 func hostCommand(ctx context.Context, name string, arg ...string) *exec.Cmd {
 	testing.ContextLogf(ctx, "Command: %s %s", name, strings.Join(arg, " "))
 	return exec.CommandContext(ctx, name, arg...)
 }
 
-func signFirmware(ctx context.Context, privateKeyFile, firmwareFile string) error {
-	cmd := []string{Futility, "sign", "--type", "rwsig", "--prikey", privateKeyFile, "--version", "1", firmwareFile}
+func signFirmware(ctx context.Context, futilityPath, privateKeyFile, firmwareFile string) error {
+	cmd := []string{futilityPath, "sign", "--type", "rwsig", "--prikey", privateKeyFile, "--version", "1", firmwareFile}
 	if err := hostCommand(ctx, cmd[0], cmd[1:]...).Run(); err != nil {
 		return errors.Wrap(err, "failed to run futility sign")
 	}
 	return nil
 }
 
-func createKeyPairFromRSAKey(ctx context.Context, pemFilePath, keyDescription string) (*keyPair, error) {
+func createKeyPairFromRSAKey(ctx context.Context, futilityPath, pemFilePath, keyDescription string) (*keyPair, error) {
 	curDir, err := os.Getwd()
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get working directory")
 	}
 
-	cmd := []string{Futility, "create", "--desc", keyDescription, pemFilePath, "key"}
+	cmd := []string{futilityPath, "create", "--desc", keyDescription, pemFilePath, "key"}
 	if err := hostCommand(ctx, cmd[0], cmd[1:]...).Run(); err != nil {
 		return nil, errors.Wrap(err, "failed to run futility create")
 	}
@@ -140,8 +149,8 @@ func createKeyPairFromRSAKey(ctx context.Context, pemFilePath, keyDescription st
 	}, nil
 }
 
-func fmapSectionInfo(ctx context.Context, firmwareFilePath string, section FMAPSection) (*fmapSection, error) {
-	cmd := []string{Futility, "dump_fmap", "-p", firmwareFilePath, string(section)}
+func fmapSectionInfo(ctx context.Context, futilityPath, firmwareFilePath string, section FMAPSection) (*fmapSection, error) {
+	cmd := []string{futilityPath, "dump_fmap", "-p", firmwareFilePath, string(section)}
 	output, err := hostCommand(ctx, cmd[0], cmd[1:]...).Output()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to run futility dump_fmap")
@@ -256,7 +265,7 @@ func modifyFirmwareFileRollbackValue(firmwareFilePath string, newRollbackValue u
 	return nil
 }
 
-func generateDevSignedImage(ctx context.Context, devKeyPair *keyPair, origFirmwareFilePath string, rwVersion, roVersion *fmapSectionValue) (string, error) {
+func generateDevSignedImage(ctx context.Context, devKeyPair *keyPair, futilityPath, origFirmwareFilePath string, rwVersion, roVersion *fmapSectionValue) (string, error) {
 	devFilePath := strings.TrimSuffix(origFirmwareFilePath, filepath.Ext(origFirmwareFilePath)) + ".dev"
 
 	if err := fsutil.CopyFile(origFirmwareFilePath, devFilePath); err != nil {
@@ -272,14 +281,14 @@ func generateDevSignedImage(ctx context.Context, devKeyPair *keyPair, origFirmwa
 	}
 
 	// The firmware was modified, so we need to re-sign it.
-	if err := signFirmware(ctx, devKeyPair.PrivateKeyPath, devFilePath); err != nil {
+	if err := signFirmware(ctx, futilityPath, devKeyPair.PrivateKeyPath, devFilePath); err != nil {
 		return "", errors.Wrap(err, "failed to sign firmware")
 	}
 
 	return devFilePath, nil
 }
 
-func generateRollbackImage(ctx context.Context, devKeyPair *keyPair, origFirmwareFilePath string, rwVersion, roVersion, rollback *fmapSectionValue, newRollbackValue uint32) (string, error) {
+func generateRollbackImage(ctx context.Context, devKeyPair *keyPair, futilityPath, origFirmwareFilePath string, rwVersion, roVersion, rollback *fmapSectionValue, newRollbackValue uint32) (string, error) {
 	versionSuffix := ".rb" + strconv.FormatUint(uint64(newRollbackValue), 10)
 	ext := ".dev" + versionSuffix
 	rollbackFilePath := strings.TrimSuffix(origFirmwareFilePath, filepath.Ext(origFirmwareFilePath)) + ext
@@ -301,21 +310,21 @@ func generateRollbackImage(ctx context.Context, devKeyPair *keyPair, origFirmwar
 	}
 
 	// The firmware was modified, so we need to re-sign it
-	if err := signFirmware(ctx, devKeyPair.PrivateKeyPath, rollbackFilePath); err != nil {
+	if err := signFirmware(ctx, futilityPath, devKeyPair.PrivateKeyPath, rollbackFilePath); err != nil {
 		return "", errors.Wrap(err, "failed to sign firmware")
 	}
 
 	return rollbackFilePath, nil
 }
 
-func generateCorruptFirstByteImage(ctx context.Context, origFirmwareFilePath string) (string, error) {
+func generateCorruptFirstByteImage(ctx context.Context, futilityPath, origFirmwareFilePath string) (string, error) {
 	corruptFilePath := strings.TrimSuffix(origFirmwareFilePath, filepath.Ext(origFirmwareFilePath)) + "_corrupt_first_byte.bin"
 
 	if err := fsutil.CopyFile(origFirmwareFilePath, corruptFilePath); err != nil {
 		return "", errors.Wrap(err, "failed to copy file")
 	}
 
-	rwSection, err := fmapSectionInfo(ctx, corruptFilePath, EC_RW)
+	rwSection, err := fmapSectionInfo(ctx, futilityPath, corruptFilePath, EC_RW)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get FMAP info for EC_RW")
 	}
@@ -332,14 +341,14 @@ func generateCorruptFirstByteImage(ctx context.Context, origFirmwareFilePath str
 	return corruptFilePath, nil
 }
 
-func generateCorruptLastByteImage(ctx context.Context, origFirmwareFilePath string) (string, error) {
+func generateCorruptLastByteImage(ctx context.Context, futilityPath, origFirmwareFilePath string) (string, error) {
 	corruptFilePath := strings.TrimSuffix(origFirmwareFilePath, filepath.Ext(origFirmwareFilePath)) + "_corrupt_last_byte.bin"
 
 	if err := fsutil.CopyFile(origFirmwareFilePath, corruptFilePath); err != nil {
 		return "", errors.Wrap(err, "failed to copy file")
 	}
 
-	rwSection, err := fmapSectionInfo(ctx, corruptFilePath, SignatureRW)
+	rwSection, err := fmapSectionInfo(ctx, futilityPath, corruptFilePath, SignatureRW)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get FMAP info for SIG_RW")
 	}
@@ -351,8 +360,8 @@ func generateCorruptLastByteImage(ctx context.Context, origFirmwareFilePath stri
 	return corruptFilePath, nil
 }
 
-func readFMAPSection(ctx context.Context, firmwareFilePath string, section FMAPSection) (*fmapSectionValue, error) {
-	sectionInfo, err := fmapSectionInfo(ctx, firmwareFilePath, section)
+func readFMAPSection(ctx context.Context, futilityPath, firmwareFilePath string, section FMAPSection) (*fmapSectionValue, error) {
+	sectionInfo, err := fmapSectionInfo(ctx, futilityPath, firmwareFilePath, section)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to get FMAP info for section: %q", section)
 	}
@@ -369,7 +378,7 @@ func readFMAPSection(ctx context.Context, firmwareFilePath string, section FMAPS
 }
 
 // GenerateTestFirmwareImages generates a set of test firmware images from the firmware that is on the DUT.
-func GenerateTestFirmwareImages(ctx context.Context, d *dut.DUT, fs *dutfs.Client, generateScript string, fpBoard FPBoardName, buildFWFile, dutTempDir string) (ret TestImages, retErr error) {
+func GenerateTestFirmwareImages(ctx context.Context, d *dut.DUT, fs *dutfs.Client, futilityPath, keyFilePath string, fpBoard FPBoardName, buildFWFile, dutTempDir string) (ret TestImages, retErr error) {
 	testing.ContextLog(ctx, "Creating temp dir")
 	serverTmpDir, err := ioutil.TempDir("", "*")
 	if err != nil {
@@ -378,33 +387,80 @@ func GenerateTestFirmwareImages(ctx context.Context, d *dut.DUT, fs *dutfs.Clien
 	defer os.RemoveAll(serverTmpDir)
 
 	testing.ContextLog(ctx, "Copying firmware from DUT to host")
-	if err := linuxssh.GetFile(ctx, d.Conn(), buildFWFile, filepath.Join(serverTmpDir, filepath.Base(buildFWFile)), linuxssh.DereferenceSymlinks); err != nil {
+	serverFWFilePath := filepath.Join(serverTmpDir, filepath.Base(buildFWFile))
+	if err := linuxssh.GetFile(ctx, d.Conn(), buildFWFile, serverFWFilePath, linuxssh.DereferenceSymlinks); err != nil {
 		return nil, errors.Wrap(err, "failed to get file")
 	}
 
-	testing.ContextLog(ctx, "Running script on host to generate firmware images")
-	cmdStr := []string{generateScript, string(fpBoard), path.Base(buildFWFile)}
-	cmd := exec.Command(cmdStr[0], cmdStr[1:]...)
-	cmd.Dir = serverTmpDir
-	if output, err := cmd.CombinedOutput(); err != nil {
-		return nil, errors.Wrapf(err, "failed to run command: %q, output: %q", cmdStr, string(output))
+	origFWFileCopy := filepath.Join(serverTmpDir, string(fpBoard)+".bin")
+	if err := fsutil.CopyFile(serverFWFilePath, origFWFileCopy); err != nil {
+		return nil, errors.Wrap(err, "failed to copy original firmware file")
 	}
 
-	fpBoardStr := string(fpBoard)
+	devKeyPair, err := createKeyPairFromRSAKey(ctx, futilityPath, keyFilePath, string(fpBoard)+" dev key")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create key pair")
+	}
+
+	roVersion, err := readFMAPSection(ctx, futilityPath, origFWFileCopy, ROFirmwareID)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read RO firmware info")
+	}
+
+	rwVersion, err := readFMAPSection(ctx, futilityPath, origFWFileCopy, RWFirmwareID)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read RW firmware info")
+	}
+
+	devFilePath, err := generateDevSignedImage(ctx, devKeyPair, futilityPath, origFWFileCopy, rwVersion, roVersion)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generate dev signed image")
+	}
+
+	rollback, err := readFMAPSection(ctx, futilityPath, origFWFileCopy, RWRollbackVersion)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read rollback version")
+	}
+
+	rollbackZeroFilePath, err := generateRollbackImage(ctx, devKeyPair, futilityPath, origFWFileCopy, rwVersion, roVersion, rollback, 0)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generate image with modified rollback value 0")
+	}
+
+	rollbackOneFilePath, err := generateRollbackImage(ctx, devKeyPair, futilityPath, origFWFileCopy, rwVersion, roVersion, rollback, 1)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generate image with modified rollback value 1")
+	}
+
+	rollbackNineFilePath, err := generateRollbackImage(ctx, devKeyPair, futilityPath, origFWFileCopy, rwVersion, roVersion, rollback, 9)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generate image with modified rollback value 9")
+	}
+
+	corruptFirstBytePath, err := generateCorruptFirstByteImage(ctx, futilityPath, origFWFileCopy)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generate image with corrupt first byte")
+	}
+
+	corruptLastBytePath, err := generateCorruptLastByteImage(ctx, futilityPath, origFWFileCopy)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generate image with corrupt last byte")
+	}
+
 	images := TestImages{
-		TestImageTypeOriginal:         &TestImageData{Path: fpBoardStr + ".bin"},
-		TestImageTypeDev:              &TestImageData{Path: fpBoardStr + ".dev"},
-		TestImageTypeCorruptFirstByte: &TestImageData{Path: fpBoardStr + "_corrupt_first_byte.bin"},
-		TestImageTypeCorruptLastByte:  &TestImageData{Path: fpBoardStr + "_corrupt_last_byte.bin"},
-		TestImageTypeDevRollbackZero:  &TestImageData{Path: fpBoardStr + ".dev.rb0"},
-		TestImageTypeDevRollbackOne:   &TestImageData{Path: fpBoardStr + ".dev.rb1"},
-		TestImageTypeDevRollbackNine:  &TestImageData{Path: fpBoardStr + ".dev.rb9"},
+		TestImageTypeOriginal:         &TestImageData{Path: origFWFileCopy},
+		TestImageTypeDev:              &TestImageData{Path: devFilePath},
+		TestImageTypeCorruptFirstByte: &TestImageData{Path: corruptFirstBytePath},
+		TestImageTypeCorruptLastByte:  &TestImageData{Path: corruptLastBytePath},
+		TestImageTypeDevRollbackZero:  &TestImageData{Path: rollbackZeroFilePath},
+		TestImageTypeDevRollbackOne:   &TestImageData{Path: rollbackOneFilePath},
+		TestImageTypeDevRollbackNine:  &TestImageData{Path: rollbackNineFilePath},
 	}
 
 	filesToCopy := make(map[string]string)
 	for imageType, imageData := range images {
-		dutFileName := filepath.Join(dutTempDir, generatedImagesSubDirectory, imageData.Path)
-		filesToCopy[filepath.Join(serverTmpDir, generatedImagesSubDirectory, imageData.Path)] = dutFileName
+		dutFileName := filepath.Join(dutTempDir, generatedImagesSubDirectory, filepath.Base(imageData.Path))
+		filesToCopy[imageData.Path] = dutFileName
 		images[imageType].Path = dutFileName
 	}
 
