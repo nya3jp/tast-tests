@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b45ecca_da593345",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-10T16:46:31Z",
+      "side": 1,
+      "message": "LGTM with request.",
+      "revId": "b5493554cb6cb1a8ba5b2467c4142a61ed9c8329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57a757b5_d46dea4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-10T16:46:31Z",
+      "side": 1,
+      "message": "nit: /* checkEarlyWake */ true\n\nso that the meaning is more explicit.\nOr, could you instead introduced named enum?\n\nditto for below.",
+      "range": {
+        "startLine": 2136,
+        "startChar": 61,
+        "endLine": 2136,
+        "endChar": 65
+      },
+      "revId": "b5493554cb6cb1a8ba5b2467c4142a61ed9c8329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
