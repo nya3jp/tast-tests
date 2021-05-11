@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
 	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -139,9 +138,6 @@ func (n *NearbyService) SaveLogs(ctx context.Context, req *empty.Empty) (*empty.
 	}
 	if err = nearbytestutils.SaveLogs(ctx, n.messageReader, filepath.Join(nearbycommon.NearbyLogDir, nearbycommon.MessageLog)); err != nil {
 		testing.ContextLog(ctx, "Failed to save message log: ", err)
-	}
-	if err := fsutil.CopyFile(filepath.Join("/tmp", nearbycommon.BtsnoopLog), filepath.Join(nearbycommon.NearbyLogDir, nearbycommon.BtsnoopLog)); err != nil {
-		testing.ContextLog(ctx, "Failed to save btsnoop log: ", err)
 	}
 	return &empty.Empty{}, err
 }
