@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83753420_6a53abb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-11T03:25:31Z",
+      "side": 1,
+      "message": "Couple of comments, but this mostly looks good to me.",
+      "revId": "0f104e76c272a5c35ec944452df1cc3b8a7380b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e55c75aa_78d9ee34",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-11T03:25:31Z",
+      "side": 1,
+      "message": "Maybe we should make this Pure instead and skip on devices on that don\u0027t support FT. We don\u0027t really care that devices are able to connect to a mixed mode AP (we already test that in RoamFT), we just care about the packet loss when we know we\u0027re using FT.",
+      "range": {
+        "startLine": 95,
+        "startChar": 122,
+        "endLine": 95,
+        "endChar": 133
+      },
+      "revId": "0f104e76c272a5c35ec944452df1cc3b8a7380b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1083f6b_38a66dfa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-11T03:25:31Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 125,
+        "startChar": 54,
+        "endLine": 125,
+        "endChar": 65
+      },
+      "revId": "0f104e76c272a5c35ec944452df1cc3b8a7380b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39591149_fc0b3f4d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-11T03:25:31Z",
+      "side": 1,
+      "message": "mentioned this in the other comment, but I think we should avoid reporting loss rate and use packets lost instead.",
+      "range": {
+        "startLine": 381,
+        "startChar": 53,
+        "endLine": 381,
+        "endChar": 62
+      },
+      "revId": "0f104e76c272a5c35ec944452df1cc3b8a7380b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd3c9ca1_7f0fd5ba",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/doc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-11T03:25:31Z",
+      "side": 1,
+      "message": "nit: results",
+      "range": {
+        "startLine": 20,
+        "startChar": 12,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "0f104e76c272a5c35ec944452df1cc3b8a7380b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a3930cc_dc06af22",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-11T03:25:31Z",
+      "side": 1,
+      "message": "this should probably take a Context object",
+      "revId": "0f104e76c272a5c35ec944452df1cc3b8a7380b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d86f4b08_ede7928d",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-11T03:25:31Z",
+      "side": 1,
+      "message": "I think the golang way to do this is `if f, ok :\u003d ...; !ok {`",
+      "revId": "0f104e76c272a5c35ec944452df1cc3b8a7380b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
