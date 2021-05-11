@@ -50,6 +50,92 @@
       "message": "No response from Katherine. Trying other owner. Note, this is candidate for M91 merge so it is bit urgent.\nTY",
       "revId": "55c76d6a393efefdc2ee3156e043680f2d02120d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "258b1829_d65b9873",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-11T01:58:56Z",
+      "side": 1,
+      "message": "a few nits",
+      "revId": "55c76d6a393efefdc2ee3156e043680f2d02120d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c0f373_266fdd37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-11T01:58:56Z",
+      "side": 1,
+      "message": "don\u0027t close tconn:\n\nhttps://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome#Chrome.TestAPIConn",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 20
+      },
+      "revId": "55c76d6a393efefdc2ee3156e043680f2d02120d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4848cb2_236f84ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-11T01:58:56Z",
+      "side": 1,
+      "message": "nit: perhaps creating a function that does the \"for range flags\"... and call it from here and from L175?",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 29
+      },
+      "revId": "55c76d6a393efefdc2ee3156e043680f2d02120d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2646964e_7c7b94b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-11T01:58:56Z",
+      "side": 1,
+      "message": "nit: not clear how \"1\" is related to \"outside of ureadhead\".\n(The error message on L182 gives more info)\n\n... but see previous comment... might not be needed.\n\nIn any case, adding a comment that gives more info about what \"1\" is, would be helpful.",
+      "range": {
+        "startLine": 210,
+        "startChar": 19,
+        "endLine": 210,
+        "endChar": 23
+      },
+      "revId": "55c76d6a393efefdc2ee3156e043680f2d02120d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
