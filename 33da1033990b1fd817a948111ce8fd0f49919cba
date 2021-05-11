@@ -16,6 +16,40 @@
       "message": "I wonder if it should be here or \nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/quickstart.md#modify-a-test",
       "revId": "33da1033990b1fd817a948111ce8fd0f49919cba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e4efb94_b69b6428",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-11T13:52:38Z",
+      "side": 1,
+      "message": "LGTM with a comment.",
+      "revId": "33da1033990b1fd817a948111ce8fd0f49919cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c932b37c_565220ef",
+        "filename": "src/chromiumos/tast/services/cros/arc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-11T13:52:38Z",
+      "side": 1,
+      "message": "Could you add where CWD?",
+      "revId": "33da1033990b1fd817a948111ce8fd0f49919cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
