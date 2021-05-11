@@ -16,6 +16,40 @@
       "message": "Note: there is no one available on my team for reviews, so we have to rely on Tast owner reviews for now. Thanks.",
       "revId": "80d951877296185c6c3ec07ae1ad97260ef7e5a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7ef0a70_7a816e32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-11T14:25:34Z",
+      "side": 1,
+      "message": "drive-by",
+      "revId": "80d951877296185c6c3ec07ae1ad97260ef7e5a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbce7066_9f42a9f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_ro_only_boots_valid_rw.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-11T14:25:34Z",
+      "side": 1,
+      "message": "Could you remove the script?",
+      "revId": "80d951877296185c6c3ec07ae1ad97260ef7e5a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
