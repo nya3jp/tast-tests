@@ -22,6 +22,30 @@
       },
       "revId": "33de2175a5995d42999c120f2cd5fdadc8870f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be313084_618d8954",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_secure_wifi.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-11T17:40:06Z",
+      "side": 1,
+      "message": "Thanks for the info! I updated the Attributes to match the previous comment.",
+      "parentUuid": "7b5c1f86_2d26fd8a",
+      "range": {
+        "startLine": 67,
+        "startChar": 43,
+        "endLine": 67,
+        "endChar": 77
+      },
+      "revId": "33de2175a5995d42999c120f2cd5fdadc8870f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
