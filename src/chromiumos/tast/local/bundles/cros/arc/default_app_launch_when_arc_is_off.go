@@ -12,8 +12,10 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -65,34 +67,15 @@ func DefaultAppLaunchWhenArcIsOff(ctx context.Context, s *testing.State) {
 		s.Log("Failed to Launch the Play Games: ", err)
 	}
 
-	// Find  "More" button and click
-	moreParams := ui.FindParams{
-		Role: ui.RoleTypeButton,
-		Name: "More",
-	}
-	more, err := ui.FindWithTimeout(ctx, tconn, moreParams, defaultTimeout)
-	if err != nil {
-		s.Fatal("Failed to find More Button: ", err)
-	}
-	defer more.Release(ctx)
+	ui := uiauto.New(tconn)
+	more := nodewith.Name("More").Role(role.StaticText)
+	accept := nodewith.Name("Accept").Role(role.Button)
 
-	if err := more.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click More button: ", err)
-	}
-
-	// Find the "Accept" button and click
-	acceptParams := ui.FindParams{
-		Role: ui.RoleTypeButton,
-		Name: "Accept",
-	}
-	accept, err := ui.FindWithTimeout(ctx, tconn, acceptParams, defaultTimeout)
-	if err != nil {
-		s.Fatal("Failed to find Accept Button: ", err)
-	}
-	defer accept.Release(ctx)
-
-	if err := accept.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click Accept button: ", err)
+	if err := uiauto.Combine("verify optin flow launch",
+		ui.IfSuccessThen(ui.WithTimeout(20*time.Second).WaitUntilExists(more), ui.LeftClick(more)),
+		ui.IfSuccessThen(ui.WithTimeout(20*time.Second).WaitUntilExists(accept), ui.LeftClick(accept)),
+	)(ctx); err != nil {
+		s.Fatal("Failed to launch optin flow: ", err)
 	}
 
 	// Verify Play Store is Enabled.
