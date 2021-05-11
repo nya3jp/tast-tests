@@ -68,6 +68,30 @@
       },
       "revId": "789c272ca52383ea18593b926f9b110ed2667934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57abd32f_95cb044d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-11T22:48:03Z",
+      "side": 1,
+      "message": "clearEntropy causes the fpmcu to force flash WITHOUT initializing entropy after (line 772 in this file). If the fpmcu is reflashed due to bad firmware (line 796), entropy should be initialized after flashing.",
+      "parentUuid": "18bcbba6_a90c7f69",
+      "range": {
+        "startLine": 790,
+        "startChar": 0,
+        "endLine": 793,
+        "endChar": 2
+      },
+      "revId": "789c272ca52383ea18593b926f9b110ed2667934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
