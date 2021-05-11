@@ -20,6 +20,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90fd9290_68e139de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-11T07:43:00Z",
+      "side": 1,
+      "message": "Probably want to namespace these, like contentPreviewsTextFile if you\u0027re going to have them at this level.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c21e201c_300b789a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-11T07:43:00Z",
+      "side": 1,
+      "message": "Not doing anything with the extra 5s, remove?",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 15
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e7397fe_561c3220",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-11T07:43:00Z",
+      "side": 1,
+      "message": "Any reason you don\u0027t fsutil.CopyFile here instead of during each test?",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 24
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3fff92c_244332bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
         "patchSetId": 2
@@ -36,6 +105,75 @@
         "startChar": 16,
         "endLine": 85,
         "endChar": 24
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f6aaaad_1f7cce2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-11T07:43:00Z",
+      "side": 1,
+      "message": "This is already available under filesapp.Share\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go;l\u003d49;drc\u003d3bccbe12a18829ced771533ad34a340c0bf19b74",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 22
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac53ab0b_95822a8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-11T07:43:00Z",
+      "side": 1,
+      "message": "I\u0027m wondering if you should define the two functions above and use those to iterate over? e.g.\n```\nclickShareButton :\u003d func (ctx context.Context, files *filesapp.FilesApp) uiauto.Action {\n  shareButton :\u003d nodewith.Name(filesapp.Share).WaitForFile(data.name)\n  return uiauto.NamedAction(\"share button\", files.LeftClick(sharebutton))\n}\n\nclickContextMenuShare :\u003d func (ctx context.Context, files *filesapp.FilesApp) uiauto.Action {\n  return uiauto.NamedAction(\"share context menu\", files.ClickContextMenuItem(data.name))\n}\n\nfor _, shareAction :\u003d range []uiauto.Action{clickShareButton, clickContextMenuShare} {\n...\nif err :\u003d uiauto.Combine(\"share file\",\n  files.OpenDownloads(),\n  files.WithTimeout(30*time.Second).WaitForFile(data.name),\n  files.SelectFile(data.name),\n  shareAction)(ctx); err !\u003d nil {\n  s.Fatal(\"Failed to share file in Downloads: \", err)\n}\n...\n}\n```\nWDYT?",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 6
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06fe7571_75d9ed49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-11T07:43:00Z",
+      "side": 1,
+      "message": "Given these are the same for every test, is it worth moving this outside the s.Run scope?",
+      "range": {
+        "startLine": 159,
+        "startChar": 5,
+        "endLine": 161,
+        "endChar": 104
       },
       "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
