@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45ebf1c5_f63098a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-11T01:11:10Z",
+      "side": 1,
+      "message": "Sure, that sounds good. Will do!",
+      "parentUuid": "b6ee9b74_c4eede7a",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "71e81c22aeebe5cce537b2c24edf0d86a0be335a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b14d0497_93663437",
