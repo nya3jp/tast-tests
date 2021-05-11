@@ -52,6 +52,7 @@ type dutConfig struct {
 	TargetDir     string   `json:"target_dir"`
 	TargetReboot  bool     `json:"target_reboot"`
 	StartupScript string   `json:"startup_script"`
+	Pstore        bool     `json:"pstore"`
 }
 
 type syzkallerConfig struct {
@@ -173,6 +174,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 			TargetDir:     "/tmp",
 			TargetReboot:  true,
 			StartupScript: startupScript,
+			Pstore:        true,
 		},
 		EnableSyscalls: enabledSyscalls,
 	}
