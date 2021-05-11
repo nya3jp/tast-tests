@@ -34,6 +34,75 @@
       "parentUuid": "418c4331_3e58739e",
       "revId": "5b727ca7ec506ac69fb525390bf2b95f7dbe6afa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce54e784_47d116ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-11T20:43:29Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 55,
+        "startChar": 22,
+        "endLine": 55,
+        "endChar": 28
+      },
+      "revId": "5b727ca7ec506ac69fb525390bf2b95f7dbe6afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e6d7083_c5306b1e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-11T20:43:29Z",
+      "side": 1,
+      "message": "It\u0027s been a while since I\u0027ve looked at the rollback code. IIRC, the ID should increment by 1 each time we make a call to set the entropy: https://chromium.googlesource.com/chromiumos/platform/ec/+/7c0c46c5c1ecfd30148092879fe6428dd4277a1b/test/rollback_entropy.c\n\nCan you check to see why it is increasing by two here? (and add a comment explaining it?)",
+      "range": {
+        "startLine": 74,
+        "startChar": 46,
+        "endLine": 74,
+        "endChar": 60
+      },
+      "revId": "5b727ca7ec506ac69fb525390bf2b95f7dbe6afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab38f1ff_ef0114d0",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-11T20:43:29Z",
+      "side": 1,
+      "message": "\"set the entropy on the FPMCU\".\n\nSBP is also fine to use, but I think most of the code in Tast and biod uses FPMCU. I think we only have used SBP in the design doc:\n\nhttp://shortn/_XnVgax8fOM\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md",
+      "range": {
+        "startLine": 1051,
+        "startChar": 29,
+        "endLine": 1051,
+        "endChar": 42
+      },
+      "revId": "5b727ca7ec506ac69fb525390bf2b95f7dbe6afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
