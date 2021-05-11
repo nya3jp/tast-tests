@@ -16,6 +16,24 @@
       "message": "Sorry for the late review.",
       "revId": "236556f8443ffe5e7caf45766743ac445a539a07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ad59047_74b44cc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-11T16:40:32Z",
+      "side": 1,
+      "message": "no worries",
+      "parentUuid": "18ffc07d_e3056221",
+      "revId": "236556f8443ffe5e7caf45766743ac445a539a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
