@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0989b71_64d2c7d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1357200
+      },
+      "writtenOn": "2021-05-11T04:58:26Z",
+      "side": 1,
+      "message": "LGTM % nits. General outline LGTM but I\u0027m not very familiar with tast.",
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3fff92c_244332bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1357200
+      },
+      "writtenOn": "2021-05-11T04:58:26Z",
+      "side": 1,
+      "message": "nit: maybe clearer to call this \u0027textString\u0027 since it\u0027s not a file.",
+      "range": {
+        "startLine": 85,
+        "startChar": 16,
+        "endLine": 85,
+        "endChar": 24
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
