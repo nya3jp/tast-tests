@@ -1,0 +1,276 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package camera
+
+import (
+	"context"
+	"fmt"
+	"image"
+	"io/ioutil"
+	"os"
+	"time"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/camera/cca"
+	"chromiumos/tast/local/camera/testutil"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         CCAUIPTZ,
+		Desc:         "Opens CCA and verifies the PTZ functionality",
+		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
+		SoftwareDeps: []string{"camera_app", "chrome"},
+		Data:         []string{"cca_ui.js"},
+	})
+}
+
+const (
+	y4mWidth      = 1280
+	y4mHeight     = 720
+	patternWidth  = 101
+	patternHeight = 101
+)
+
+// preparePattern prepares fake preview y4m file.
+func preparePattern() (_ string, retErr error) {
+	file, err := ioutil.TempFile("/tmp", "*.y4m")
+	if err != nil {
+		return "", err
+	}
+	defer func() {
+		if retErr != nil {
+			os.Remove(file.Name())
+		}
+	}()
+
+	header := fmt.Sprintf("YUVMPEG2 W%d H%d F30:1 Ip A0:0 C420jpeg\nFRAME\n", y4mWidth, y4mHeight)
+	if _, err := file.WriteString(header); err != nil {
+		return "", errors.Wrap(err, "failed to write header of temp y4m")
+	}
+
+	// White background.
+	const (
+		bgY = 255
+		bgU = 128
+		bgV = 128
+	)
+
+	// Y plane.
+	yp := make([][]byte, y4mHeight)
+	for y := range yp {
+		yp[y] = make([]byte, y4mWidth)
+		for x := range yp[y] {
+			yp[y][x] = bgY
+		}
+	}
+
+	// Draws black square pattern at the center.
+	cy := y4mHeight / 2
+	cx := y4mWidth / 2
+	for dy := -patternHeight / 2; dy <= patternHeight/2; dy++ {
+		for dx := -patternWidth / 2; dx <= patternWidth/2; dx++ {
+			yp[cy+dy][cx+dx] = 0
+		}
+	}
+
+	for _, bs := range yp {
+		if _, err := file.Write(bs); err != nil {
+			return "", errors.Wrap(err, "failed to write Y plane of temp y4m")
+		}
+	}
+
+	// U plane.
+	up := make([]byte, y4mWidth*y4mHeight/4)
+	for x := 0; x < len(up); x++ {
+		up[x] = bgU
+	}
+	if _, err := file.Write(up); err != nil {
+		return "", errors.Wrap(err, "failed to write U plane of temp y4m")
+	}
+
+	// V plane.
+	vp := make([]byte, y4mWidth*y4mHeight/4)
+	for x := 0; x < len(vp); x++ {
+		vp[x] = bgV
+	}
+	if _, err := file.Write(vp); err != nil {
+		return "", errors.Wrap(err, "failed to write V plane of temp y4m")
+	}
+
+	if err := os.Chmod(file.Name(), 0644); err != nil {
+		return "", err
+	}
+
+	return file.Name(), nil
+}
+
+// findPattern finds the region where the pattern resides.
+func findPattern(ctx context.Context, app *cca.App) (*image.Rectangle, error) {
+	frame, err := app.PreviewFrame(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get preview frame")
+	}
+	defer frame.Release(ctx)
+
+	// Find the coordinates of top-left corner.
+	minPt, err := frame.Find(ctx, `function() {
+		const {width, height} = this.canvas;
+		const {data} = this.getImageData(0, 0, width, height);
+		let idx = 0;
+		for (let y = 0 ; y < height ; y ++) {
+			for (let x = 0 ; x < width ; x ++) {
+				const r = data[idx];
+				idx += 4;
+				if (r === 0) {
+					return {x, y};
+				}
+			}
+		}
+		return {x: -1, y: -1};
+	}`)
+	if err != nil {
+		return nil, err
+	}
+
+	// Find the coordinates of bottom-right corner.
+	maxPt, err := frame.Find(ctx, `function() {
+		const {width, height} = this.canvas;
+		const {data} = this.getImageData(0, 0, width, height);
+		let idx = data.length - 4;
+		for (let y = height-1 ; y >= 0 ; y --) {
+			for (let x = width-1 ; x >= 0 ; x --) {
+				const r = data[idx];
+				idx -= 4;
+				if (r === 0) {
+					return {x, y};
+				}
+			}
+		}
+		return {x: -1, y: -1};
+	}`)
+	if err != nil {
+		return nil, err
+	}
+
+	return &image.Rectangle{*minPt, *maxPt}, nil
+}
+
+func CCAUIPTZ(ctx context.Context, s *testing.State) {
+	y4m, err := preparePattern()
+	if err != nil {
+		s.Fatal("Failed to prepare temp y4m: ", y4m)
+	}
+	defer os.Remove(y4m)
+
+	cr, err := chrome.New(ctx, chrome.ExtraArgs(
+		"--use-fake-device-for-media-stream=fps=30",
+		"--use-file-for-fake-video-capture="+y4m))
+	if err != nil {
+		s.Fatalf("Failed to start chrome with file source %v: %v", y4m, err)
+	}
+	defer cr.Close(ctx)
+	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
+	if err != nil {
+		s.Fatal("Failed to construct test bridge: ", err)
+	}
+	defer tb.TearDown(ctx)
+
+	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+		s.Fatal("Failed to clear saved directory: ", err)
+	}
+
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
+	if err != nil {
+		s.Fatal("Failed to open CCA: ", err)
+	}
+
+	if err := app.Click(ctx, cca.OpenPTZPanelButton); err != nil {
+		s.Fatal("Failed to open ptz panel: ", err)
+	}
+
+	// Do all comparisons with 1px precision tolerance introduced by fake
+	// file VCD bilinear resizing implementation.
+	const precision = 1
+	abs := func(n int) int {
+		if n < 0 {
+			return -n
+		}
+		return n
+	}
+	calShift := func(r, r2 *image.Rectangle) (*image.Point, error) {
+		sz := r.Size()
+		sz2 := r2.Size()
+		if abs(sz.X-sz2.X) > precision {
+			return nil, errors.Errorf("inconsistent width, got %v; want %v", sz2.X, sz.X)
+		}
+		if abs(sz.Y-sz2.Y) > precision {
+			return nil, errors.Errorf("inconsistent height, got %v; want %v", sz2.Y, sz.Y)
+		}
+		return &image.Point{r2.Min.X - r.Min.X, r2.Min.Y - r.Min.Y}, nil
+	}
+
+	for _, tc := range []struct {
+		ui       cca.UIComponent
+		testFunc func(r, r2 *image.Rectangle) (bool, error)
+	}{
+		{cca.ZoomInButton, func(r, r2 *image.Rectangle) (bool, error) {
+			return r.Size().X < r2.Size().X && r.Size().Y < r2.Size().Y, nil
+		}},
+		{cca.PanLeftButton, func(r, r2 *image.Rectangle) (bool, error) {
+			shift, err := calShift(r, r2)
+			if err != nil {
+				return false, err
+			}
+			return shift.X < 0 && shift.Y == 0, nil
+		}},
+		{cca.PanRightButton, func(r, r2 *image.Rectangle) (bool, error) {
+			shift, err := calShift(r, r2)
+			if err != nil {
+				return false, err
+			}
+			return shift.X > 0 && shift.Y == 0, nil
+		}},
+		{cca.TiltDownButton, func(r, r2 *image.Rectangle) (bool, error) {
+			shift, err := calShift(r, r2)
+			if err != nil {
+				return false, err
+			}
+			return shift.X == 0 && shift.Y < 0, nil
+		}},
+		{cca.TiltUpButton, func(r, r2 *image.Rectangle) (bool, error) {
+			shift, err := calShift(r, r2)
+			if err != nil {
+				return false, err
+			}
+			return shift.X == 0 && shift.Y > 0, nil
+		}},
+		{cca.ZoomOutButton, func(r, r2 *image.Rectangle) (bool, error) {
+			return r.Size().X > r2.Size().X && r.Size().Y > r2.Size().Y, nil
+		}},
+	} {
+		pRect, err := findPattern(ctx, app)
+		if err != nil {
+			s.Fatalf("Failed to find pattern before clicking %v: %v", tc.ui.Name, err)
+		}
+		if err := app.Hold(ctx, tc.ui, 200*time.Millisecond); err != nil {
+			s.Fatal("Failed to click: ", err)
+		}
+		rect, err := findPattern(ctx, app)
+		if err != nil {
+			s.Fatalf("Failed to find pattern after clicking %v: %v", tc.ui.Name, err)
+		}
+		result, err := tc.testFunc(pRect, rect)
+		if err != nil {
+			s.Fatalf("Failed to run %v test func: %v", tc.ui.Name, err)
+		}
+		if !result {
+			s.Errorf("Failed on testing %v UI with region before %v ; after %v", tc.ui.Name, pRect, rect)
+		}
+	}
+}
