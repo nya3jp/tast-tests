@@ -465,14 +465,15 @@ func (ms *ModeSwitcher) poweroff(ctx context.Context) error {
 	testing.ContextLog(ctx, "Powering off DUT")
 	poweroffCtx, cancel := context.WithTimeout(ctx, cmdTimeout)
 	defer cancel()
-	h.DUT.Command("poweroff").Run(poweroffCtx) // ignore the error
+	// Since the DUT will power off, deadline exceeded is expected here.
+	if err := h.DUT.Conn().Command("poweroff").Run(poweroffCtx); err != nil && !errors.Is(err, context.DeadlineExceeded) {
+		return errors.Wrapf(err, "DUT poweroff %T", err)
+	}
 
 	offCtx, cancel := context.WithTimeout(ctx, offTimeout)
 	defer cancel()
 	if err := h.DUT.WaitUnreachable(offCtx); err != nil {
 		return errors.Wrap(err, "waiting for DUT to be unreachable after sending poweroff command")
 	}
-	// Show servod that the power state has changed
-	h.Servo.SetPowerState(ctx, servo.PowerStateOff)
 	return nil
 }
