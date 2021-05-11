@@ -87,6 +87,24 @@
       "parentUuid": "769dbb11_d0fb0654",
       "revId": "d2619dbc480e542cc13454c4100fdc917bf036c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a2565da_72fa76a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/data/gen_test_images.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-11T00:23:09Z",
+      "side": 1,
+      "message": "I added followup commits to replace the script with native golang versions: https://crrev.com/c/2886370. I\u0027m hoping we can land this commit with the script as an incremental change that will be fixed in the commits following it.",
+      "parentUuid": "ecad0476_1d603a12",
+      "revId": "d2619dbc480e542cc13454c4100fdc917bf036c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
