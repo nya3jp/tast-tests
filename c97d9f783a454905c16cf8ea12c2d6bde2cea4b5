@@ -128,6 +128,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "294c8c61_544143f6",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-11T21:09:57Z",
+      "side": 1,
+      "message": "I find it very useful for debugging. Just logging the errors results in missing a lot of context. i.e., it\u0027s great to know something failed, but if you can\u0027t trace the sequence of events leading up to it, it\u0027s often hard to see why it failed. This is especially true when looking at failures on stainless. If you have a little bit more context in the logs, it\u0027s often possible to see what went wrong directly from the logs. If you only log the errors, you have to go through the code and try to infer what happened.",
+      "parentUuid": "e0e08095_070828d6",
+      "range": {
+        "startLine": 114,
+        "startChar": 16,
+        "endLine": 114,
+        "endChar": 27
+      },
+      "revId": "c97d9f783a454905c16cf8ea12c2d6bde2cea4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "394ae7a3_7fdb5e3f",
