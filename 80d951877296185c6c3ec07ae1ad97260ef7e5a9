@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "752ed0b9_08fdd670",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-11T14:32:05Z",
+      "side": 1,
+      "message": "LGTM % nit, suggestion",
+      "revId": "80d951877296185c6c3ec07ae1ad97260ef7e5a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbce7066_9f42a9f1",
@@ -48,6 +65,63 @@
       "writtenOn": "2021-05-11T14:25:34Z",
       "side": 1,
       "message": "Could you remove the script?",
+      "revId": "80d951877296185c6c3ec07ae1ad97260ef7e5a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb1daa3d_a6e7fd3c",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-11T14:32:05Z",
+      "side": 1,
+      "message": "Do you still need this constant?",
+      "revId": "80d951877296185c6c3ec07ae1ad97260ef7e5a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "581ed345_624b952a",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-11T14:32:05Z",
+      "side": 1,
+      "message": "nit: \"Create a copy of the original firmware.\"",
+      "range": {
+        "startLine": 417,
+        "startChar": 4,
+        "endLine": 417,
+        "endChar": 42
+      },
+      "revId": "80d951877296185c6c3ec07ae1ad97260ef7e5a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2a234e6_334b364a",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-11T14:32:05Z",
+      "side": 1,
+      "message": "All these functions have really similar signatures. Please consider creating a generator structure that contains devKeyPair, origFWFileCopy, rwVersion and roVersion, and define these function on the generator. Examples\n\u003e  gen :\u003d generator.New(devKeyPair, origFWFileCopy, rwVersion, roVersion)\n\u003e  devFilePath, err :\u003d gen.DevSignedImage(ctx)\n\u003e  rollbackZeroFilePath, err :\u003d gen.RollbackImage(ctx, rollback, 0)\n\nI did not check the function implementations, so I am not sure that this approach can be used here, all I ask is to consider it.",
       "revId": "80d951877296185c6c3ec07ae1ad97260ef7e5a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
