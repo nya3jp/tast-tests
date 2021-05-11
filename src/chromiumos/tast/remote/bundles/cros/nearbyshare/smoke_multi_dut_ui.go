@@ -6,11 +6,9 @@ package nearbyshare
 
 import (
 	"context"
-	"strconv"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
-	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
 	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/dut"
@@ -30,7 +28,7 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.nearbyservice.NearbyShareService"},
 		// TODO(crbug/1127165): Move to fixture when data is available in fixtures.
 		Data: []string{"small_jpg.zip", "small_png.zip", "big_txt.zip"},
-		Vars: []string{"secondaryTarget", nearbycommon.KeepStateVar},
+		Vars: []string{"secondaryTarget"},
 	})
 }
 
@@ -55,25 +53,17 @@ func SmokeMultiDUTUI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to secondary DUT: ", err)
 	}
 
-	var keepState bool
-	if val, ok := s.Var(nearbycommon.KeepStateVar); ok {
-		b, err := strconv.ParseBool(val)
-		if err != nil {
-			s.Fatalf("Unable to convert %v var to bool: %v", nearbycommon.KeepStateVar, err)
-		}
-		keepState = b
-	}
-	if err := openHighVisibilityMode(ctx, s, d1, "dut1", keepState); err != nil {
+	if err := openHighVisibilityMode(ctx, s, d1, "dut1"); err != nil {
 		s.Fatal("Failed to enable high vis mode on primary DUT: ", err)
 	}
 
-	if err := openHighVisibilityMode(ctx, s, d2, "dut2", keepState); err != nil {
+	if err := openHighVisibilityMode(ctx, s, d2, "dut2"); err != nil {
 		s.Fatal("Failed to enable high vis mode on secondary DUT: ", err)
 	}
 }
 
 // openHighVisibilityMode is a helper function to enable high vis mode on each DUT.
-func openHighVisibilityMode(ctx context.Context, s *testing.State, d *dut.DUT, tag string, keepState bool) error {
+func openHighVisibilityMode(ctx context.Context, s *testing.State, d *dut.DUT, tag string) error {
 	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
@@ -82,7 +72,7 @@ func openHighVisibilityMode(ctx context.Context, s *testing.State, d *dut.DUT, t
 
 	// Connect to the Nearby Share Service so we can execute local code on the DUT.
 	ns := nearbyservice.NewNearbyShareServiceClient(cl.Conn)
-	loginReq := &nearbyservice.CrOSLoginRequest{KeepState: keepState}
+	loginReq := &nearbyservice.CrOSLoginRequest{}
 	if _, err := ns.NewChromeLogin(ctx, loginReq); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

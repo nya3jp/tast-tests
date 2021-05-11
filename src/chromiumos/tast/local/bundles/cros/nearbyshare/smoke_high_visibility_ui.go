@@ -6,9 +6,7 @@ package nearbyshare
 
 import (
 	"context"
-	"strconv"
 
-	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
 	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome"
@@ -24,9 +22,6 @@ func init() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		// Use this variable to preserve user accounts on the DUT when running locally,
-		// i.e. tast run -var=keepState=true <dut> nearbyshare.SmokeHighVisibilityUI
-		Vars:         []string{nearbycommon.KeepStateVar},
 		Attr:         []string{"group:nearby-share"},
 		SoftwareDeps: []string{"chrome"},
 	})
@@ -34,20 +29,9 @@ func init() {
 
 // SmokeHighVisibilityUI tests that we can open the receiving UI surface from Quick Settings.
 func SmokeHighVisibilityUI(ctx context.Context, s *testing.State) {
-	var opts []chrome.Option
-	opts = append(opts, chrome.ExtraArgs("--nearby-share-verbose-logging"))
-	if val, ok := s.Var(nearbycommon.KeepStateVar); ok {
-		b, err := strconv.ParseBool(val)
-		if err != nil {
-			s.Fatalf("Unable to convert %v var to bool: %v", nearbycommon.KeepStateVar, err)
-		}
-		if b {
-			opts = append(opts, chrome.KeepState())
-		}
-	}
 	cr, err := chrome.New(
 		ctx,
-		opts...,
+		chrome.ExtraArgs("--nearby-share-verbose-logging"),
 	)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
