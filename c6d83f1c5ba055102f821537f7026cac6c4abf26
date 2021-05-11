@@ -16,6 +16,69 @@
       "message": "Note: there is no one available on my team for reviews, so we have to rely on Tast owner reviews for now. Thanks.",
       "revId": "c6d83f1c5ba055102f821537f7026cac6c4abf26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "793604db_56b3e067",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2021-05-11T17:39:44Z",
+      "side": 1,
+      "message": "is there a better name for this function that would reflect how or why you are modifying the variable?",
+      "range": {
+        "startLine": 244,
+        "startChar": 5,
+        "endLine": 244,
+        "endChar": 11
+      },
+      "revId": "c6d83f1c5ba055102f821537f7026cac6c4abf26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "411216ca_5f008937",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2021-05-11T17:39:44Z",
+      "side": 1,
+      "message": "it\u0027s not necessary since they\u0027re not exported functions, but I think doc comments would help your future teammates use these two functions appropriately - particularly this one since it\u0027s not obvious from the name what it does",
+      "revId": "c6d83f1c5ba055102f821537f7026cac6c4abf26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d355d609_320eaacf",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2021-05-11T17:39:44Z",
+      "side": 1,
+      "message": "put the actual value first in the error message\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 246,
+        "startChar": 48,
+        "endLine": 246,
+        "endChar": 72
+      },
+      "revId": "c6d83f1c5ba055102f821537f7026cac6c4abf26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
