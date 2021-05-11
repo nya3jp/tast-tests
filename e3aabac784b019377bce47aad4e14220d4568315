@@ -16,6 +16,24 @@
       "message": "I have different opinion. ReserveForClose shall be router type specific. Making it a function we need to assume all type of routers needs the same amount of clean-up time. If we have confidence that the assumption is valid, we shall consider renaming the function as its naming scope is the wificell package, not just router.go file. Even more, as all router types share the same value, we can just provide a constant, like TimeForClosingRouter \u003d 5*time.Second, and let caller calls ctxutil.Shorten(TimeForClosingRouter).",
       "revId": "e3aabac784b019377bce47aad4e14220d4568315",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee8f575_a4a139e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-11T02:05:17Z",
+      "side": 1,
+      "message": "I have a related but different concern here: the function will become wificell.ReserveForClose that is not obvious which \"close\" it is for. ReserveForRouterClose might be clearer, or, as we\u0027re going to have a lot more router codes, we might want to have a wificell/router package.\n\nFor me, I\u0027m not too concerned about shared/different cleanup time because it is usually a very rough estimation, as long as it doesn\u0027t get too long. Still, \"ReserveForClose(ctx)\" looks slightly cleaner than \"ctxutil.Shorten(ctx, TimeForClosingRouter)\" to me.",
+      "parentUuid": "54639142_a812e473",
+      "revId": "e3aabac784b019377bce47aad4e14220d4568315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
