@@ -80,15 +80,15 @@ func WordPress(ctx context.Context, s *testing.State) {
 // verify WordPress reached main activity page of the app.
 func launchAppForWordPress(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		continueWithWordPressID = "org.wordpress.android:id/first_button"
-		continueWithGoogleID    = "org.wordpress.android:id/continue_with_google"
-		accountID               = "com.google.android.gms:id/account_display_name"
-		notNowText              = "NOT RIGHT NOW"
-		readerText              = "Reader"
+		continueText         = "Log in or sign up with WordPress.com"
+		continueWithGoogleID = "org.wordpress.android:id/continue_with_google"
+		accountID            = "com.google.android.gms:id/account_display_name"
+		notNowText           = "NOT RIGHT NOW"
+		readerText           = "Reader"
 	)
 
 	// Click on continue with Wordpress button.
-	continueButton := d.Object(ui.ID(continueWithWordPressID))
+	continueButton := d.Object(ui.TextMatches("(?i)" + continueText))
 	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("Continue button doesn't exist: ", err)
 	} else if err := continueButton.Click(ctx); err != nil {
