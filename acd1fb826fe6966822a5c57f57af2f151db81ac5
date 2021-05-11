@@ -33,6 +33,24 @@
       "message": "Note that if err is returned, we could\u0027nt trust the output of the command.\n\nThus, I suggest move the code a little bit to check the error first.\n\nif err :\u003d cmd.Run(...); err !\u003d nil {\n    s.Errorf(...)\n}\n\nf.Seeek(0, 0)\nerrorLine :\u003d getErrorLog(f)\n...",
       "revId": "acd1fb826fe6966822a5c57f57af2f151db81ac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ca0b29_e16cf693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-05-11T22:32:18Z",
+      "side": 1,
+      "message": "I believe in the case of err !\u003d nil, we should call s.Fatal",
+      "parentUuid": "4df14f4e_dac5c848",
+      "revId": "acd1fb826fe6966822a5c57f57af2f151db81ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
