@@ -39,6 +39,30 @@
       },
       "revId": "aced6b2252b80234b77b82e8c599d535d3f9ba6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88cbe30e_e48545f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2021-05-11T02:00:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4fe47e9f_dcbad3e5",
+      "range": {
+        "startLine": 235,
+        "startChar": 2,
+        "endLine": 235,
+        "endChar": 55
+      },
+      "revId": "aced6b2252b80234b77b82e8c599d535d3f9ba6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
