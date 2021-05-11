@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f4d3599_64ac64b3",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-11T07:39:25Z",
+      "side": 1,
+      "message": "I kind of prefer having a New function for each \"struct\" here. The NewRouter will be much cleaner this way:\n\n  func NewRouter(ctx, dCtx context.Context, host *ssh.Conn, name string, rtype RouterType) (SuperRouter, error) {\n    switch rtype {\n    case legacy:\n      return newLegacyRouter(ctx, dCtx, host, name)\n    case openWrt:\n      return newOpenWrtRouter(ctx, dCtx, host, name)\n    default:\n      reutrn nil, errors.New(...)\n    }\n  }\n\nAlso, this allows all codes of a struct to be placed together. e.g. legacyRouterStruct\u0027s methods, definition, and constructor can be all in legacy_router.go",
+      "revId": "db3a34f0860eb79bb465bb60252e4539785f8cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce5ada7_bedb08ed",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-11T07:39:25Z",
+      "side": 1,
+      "message": "I think this type assertion will never fail as supportLogs is one indirect member of SuperRouter. This make me feel confused about how SuperRouter would be used.\n\nMy initial thought is that this interface would be implemented by a wrapper like:\n\n  type routerWrap {\n    base baseRouter\n  }\n\n  func (r *routerWrap) A() error {\n    if a, ok :\u003d r.base.(supportA) {\n      return a.A()\n    }\n    return errors.New(\"router doesn\u0027t support A\")\n  }\n\nThen, the support check can be kept in a structure and will not spread in tests/TestFixture. However, that guess doesn\u0027t match the code here...\n\n(btw, the design above still comes with a downside that it is unclear to the caller whether a call might possibly fail with \"not support\")\n\nIf you only need an interface to contain all routers, probably baseRouter is more suitable? and then, caller can/should check if a function is supported with type assertion.",
+      "revId": "db3a34f0860eb79bb465bb60252e4539785f8cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
