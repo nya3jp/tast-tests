@@ -22,7 +22,7 @@ import (
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	localAdb "chromiumos/tast/local/android/adb"
+	localadb "chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/syslog"
@@ -233,7 +233,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	testing.ContextLog(ctx, "Setting up ADB connection")
 	ch = make(chan error, 1)
 	go func() {
-		ch <- localAdb.LaunchServer(ctx)
+		ch <- localadb.LaunchServer(ctx)
 	}()
 
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
