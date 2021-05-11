@@ -1,0 +1,178 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package apps
+
+import (
+	"context"
+	"fmt"
+	"io/ioutil"
+	"os"
+	"path/filepath"
+	"time"
+
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
+)
+
+const (
+	textFileName  = "contentpreview_20210511.txt"
+	zipFileName   = "contentpreview_20210511.zip"
+	videoFileName = "contentpreview_20210511.webm"
+	pngFileName   = "contentpreview_20210511.png"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: ContentPreview,
+		Desc: "Test content preview while sharing a single file",
+		Contacts: []string{
+			"jinrongwu@google.com",
+			"chromeos-apps-foundation-team@google.com",
+		},
+		Attr:         []string{"group:mainline", "informational"},
+		Data:         []string{textFileName, zipFileName, videoFileName, pngFileName},
+		SoftwareDeps: []string{"chrome"},
+		Fixture:      "chromeLoggedIn",
+	})
+}
+
+type subTestData struct {
+	name        string
+	filePath    string
+	thumbnail   string
+	shareString string
+}
+
+func ContentPreview(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(*chrome.Chrome)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect Test API: ", err)
+	}
+
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	// Clean up in the end.
+	defer func() {
+		files, err := ioutil.ReadDir(filesapp.DownloadPath)
+		if err != nil {
+			s.Log("Failed to read files in Downloads: ", err)
+		} else {
+			for _, f := range files {
+				path := filepath.Join(filesapp.DownloadPath, f.Name())
+				if err := os.RemoveAll(path); err != nil {
+					s.Logf("Failed to RemoveAll(%q)", path)
+				}
+			}
+		}
+	}()
+
+	subTests := []subTestData{
+		{
+			name:        textFileName,
+			filePath:    filepath.Join(filesapp.DownloadPath, textFileName),
+			thumbnail:   "", // TODO (melzhang@google.com): to add functions to create thumbnail for the files.
+			shareString: textFileName,
+		},
+		{
+			name:        zipFileName,
+			filePath:    filepath.Join(filesapp.DownloadPath, zipFileName),
+			thumbnail:   "",
+			shareString: zipFileName,
+		},
+		{
+			name:        videoFileName,
+			filePath:    filepath.Join(filesapp.DownloadPath, videoFileName),
+			thumbnail:   "",
+			shareString: videoFileName,
+		},
+		{
+			name:        pngFileName,
+			filePath:    filepath.Join(filesapp.DownloadPath, pngFileName),
+			thumbnail:   "",
+			shareString: pngFileName,
+		},
+	}
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
+	}
+	defer kb.Close()
+
+	ui := uiauto.New(tconn)
+	bubbleView := nodewith.ClassName("SharesheetBubbleView").Role(role.Window)
+	shareLabel := nodewith.Name(filesapp.Share).ClassName("Label").Role(role.StaticText).Ancestor(bubbleView)
+
+	for _, data := range subTests {
+		for _, button := range []bool{true, false} {
+			way := "menu_bar"
+			if !button {
+				way = "context_menu"
+			}
+			des := fmt.Sprintf("test_content_preview_from_%s_for_%s", way, data.name)
+			s.Run(ctx, des, func(ctx context.Context, s *testing.State) {
+				// Copy the file to Downloads for sharing.
+				if err := fsutil.CopyFile(s.DataPath(data.name), data.filePath); err != nil {
+					s.Fatalf("Failed to copy %s to Downloads, hence skip the test: %s", data.name, err)
+				} else {
+					// Open the Files App.
+					files, err := filesapp.Launch(ctx, tconn)
+					if err != nil {
+						s.Fatal("Failed to launch Files app: ", err)
+					}
+
+					if err := uiauto.Combine("select file",
+						files.OpenDownloads(),
+						files.WithTimeout(30*time.Second).WaitForFile(data.name),
+						files.SelectFile(data.name))(ctx); err != nil {
+						s.Fatal("Failed to select file in Downloads: ", err)
+					}
+
+					// Share the test file.
+					if button {
+						// Click button Share on the menu bar.
+						shareButton := nodewith.Name(filesapp.Share).Role(role.Button)
+						if err := files.LeftClick(shareButton)(ctx); err != nil {
+							s.Fatal("Failed to click button Share: ", err)
+						}
+					} else {
+						// Click context menu item Share.
+						if err := files.ClickContextMenuItem(data.name, filesapp.Share)(ctx); err != nil {
+							s.Fatal("Failed to click context menu item Share: ", err)
+						}
+					}
+
+					// This is to exit the share dialog in the end of each sub test.
+					defer kb.AccelAction("Esc")(ctx)
+
+					fileLabel := nodewith.Name(data.name).ClassName("Label").Role(role.StaticText).Ancestor(bubbleView)
+					// Verify the Share dialog and content preview.
+					if err := uiauto.Combine("test "+data.name,
+						ui.WaitUntilExists(shareLabel),
+						ui.WaitUntilExists(fileLabel),
+						verifyThumbnail(data))(ctx); err != nil {
+						s.Fatalf("Failed to verify content preview for %s: %s", data.name, err)
+					}
+				}
+			})
+		}
+	}
+}
+
+func verifyThumbnail(data subTestData) uiauto.Action {
+	return func(ctx context.Context) error {
+		// TODO (melzhang@google.com): add code when thumbnail is implemented for content preview.
+		return nil
+	}
+}

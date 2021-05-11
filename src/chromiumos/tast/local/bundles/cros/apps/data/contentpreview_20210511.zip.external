@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/apps/contentpreview_20210511.zip",
+  "size": 2120,
+  "sha256sum": "08c559c281b503a4b146547a2c20edaa39d4e71ad2ee5ce0e7b6154132d51212"
+}
