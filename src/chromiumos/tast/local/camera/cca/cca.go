@@ -207,6 +207,21 @@ var (
 	VideoProfileSelect = UIComponent{"video profile select", []string{"#video-profile"}}
 	// BitrateMultiplierRangeInput is range input for selecting bitrate multiplier.
 	BitrateMultiplierRangeInput = UIComponent{"bitrate multiplier range input", []string{"#bitrate-slider input[type=range]"}}
+
+	// OpenPTZPanelButton is the button for opening PTZ panel.
+	OpenPTZPanelButton = UIComponent{"open ptz panel button", []string{"#open-ptz-panel"}}
+	// PanLeftButton is the button for panning left preview.
+	PanLeftButton = UIComponent{"pan left button", []string{"#pan-left"}}
+	// PanRightButton is the button for panning right preview.
+	PanRightButton = UIComponent{"pan right button", []string{"#pan-right"}}
+	// TiltUpButton is the button for tilting up preview.
+	TiltUpButton = UIComponent{"tilt up button", []string{"#tilt-up"}}
+	// TiltDownButton is the button for tilting down preview.
+	TiltDownButton = UIComponent{"tilt down button", []string{"#tilt-down"}}
+	// ZoomInButton is the button for zoom in preview.
+	ZoomInButton = UIComponent{"zoom in button", []string{"#zoom-in"}}
+	// ZoomOutButton is the button for zoom out preview.
+	ZoomOutButton = UIComponent{"zoom out button", []string{"#zoom-out"}}
 )
 
 // ResolutionType is different capture resolution type.
@@ -658,6 +673,18 @@ func (a *App) GetState(ctx context.Context, state string) (bool, error) {
 		return false, errors.Wrapf(err, "failed to get state: %v", state)
 	}
 	return result, nil
+}
+
+// PreviewFrame grabs a frame from preview. The caller should be responsible for releasing the frame.
+func (a *App) PreviewFrame(ctx context.Context) (*Frame, error) {
+	if err := a.WaitForVideoActive(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for preview active")
+	}
+	var f chrome.JSObject
+	if err := a.conn.Call(ctx, &f, "Tast.getPreviewFrame"); err != nil {
+		return nil, errors.Wrap(err, "failed to get preview frame")
+	}
+	return &Frame{&f}, nil
 }
 
 // PortraitModeSupported returns whether portrait mode is supported by the current active video device.
@@ -1277,6 +1304,24 @@ func (a *App) ClickWithIndex(ctx context.Context, ui UIComponent, index int) err
 	return nil
 }
 
+// Hold holds on |ui| by sending pointerdown and pointerup for |d| duration.
+func (a *App) Hold(ctx context.Context, ui UIComponent, d time.Duration) error {
+	wrapError := func(err error) error {
+		return errors.Wrapf(err, "failed to hold on %v", ui.Name)
+	}
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return wrapError(err)
+	}
+	return a.conn.Call(ctx, nil, `Tast.hold`, selector, d.Milliseconds())
+}
+
+// ClickPTZButton clicks on PTZ Button.
+func (a *App) ClickPTZButton(ctx context.Context, ui UIComponent) error {
+	// Hold for 0ms to trigger PTZ minimal step movement.
+	return a.Hold(ctx, ui, 0)
+}
+
 // IsCheckedWithIndex gets checked state of nth ui.
 func (a *App) IsCheckedWithIndex(ctx context.Context, ui UIComponent, index int) (bool, error) {
 	selector, err := a.resolveUISelector(ctx, ui)
@@ -1292,7 +1337,7 @@ func (a *App) IsCheckedWithIndex(ctx context.Context, ui UIComponent, index int)
 
 // ClickWithSelector clicks an element with given selector.
 func (a *App) ClickWithSelector(ctx context.Context, selector string) error {
-	return a.conn.Call(ctx, nil, `(selector) => document.querySelector(selector).click()`, selector)
+	return a.conn.Call(ctx, nil, `Tast.click`, selector)
 }
 
 // SelectOption selects the target option in HTMLSelectElement.
