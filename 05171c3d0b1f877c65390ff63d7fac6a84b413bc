@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7216748f_6986db79",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-11T19:52:53Z",
+      "side": 1,
+      "message": "any particular reason for picking the SSID semi-manually? Or just aesthetic?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 49
+      },
+      "revId": "05171c3d0b1f877c65390ff63d7fac6a84b413bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25dbbcc2_b69118c9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
         "patchSetId": 3
