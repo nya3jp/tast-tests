@@ -39,6 +39,30 @@
       },
       "revId": "7f6d2630656ec10b3699f91f7bfa36dce19f3ede",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a05fce5f_effc18c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/calculator_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-11T09:23:41Z",
+      "side": 1,
+      "message": "Thanks for the information.I had the feeling actually. Let\u0027s see if this fix can solve most issues on more boards. I will try to reduce this wait time separately.",
+      "parentUuid": "3c0235c3_b3f86d69",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "7f6d2630656ec10b3699f91f7bfa36dce19f3ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
