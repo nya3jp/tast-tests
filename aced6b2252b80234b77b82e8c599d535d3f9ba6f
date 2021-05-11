@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc111960_bd2ea42c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-05-11T00:30:09Z",
+      "side": 1,
+      "message": "Looking great, thank you!\n\nJust one more thing... ;-)",
+      "revId": "aced6b2252b80234b77b82e8c599d535d3f9ba6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe47e9f_dcbad3e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-05-11T00:30:09Z",
+      "side": 1,
+      "message": "Right now this just adds the text \"Encountered...\" to the logs and passes the test.\nThis needs to be s.Error(errorLines)\n\nThe latter is also less verbose and actually just surfaces the output from the DRM test binary to tast and stainless. There is no need to make it longer by writing \"Encountered failures during test:\".\n\nExample shows 2 ERROR lines in the reason. I think it is ok to have several, but if it gets too long we could put a limit on how many lines we pass here.\n\n2021-05-11T00:27:40.180726Z graphics.DRM.mapped_access_perf_test  [ FAIL ] ERROR:dma_buf_map():mmap.c:60:dma-buf mmap returned MAP_FAILED: 22\nERROR:main():mapped_access_perf_test.c:281:failed to mmap gbm bo plane 1 (UV)",
+      "range": {
+        "startLine": 235,
+        "startChar": 2,
+        "endLine": 235,
+        "endChar": 55
+      },
+      "revId": "aced6b2252b80234b77b82e8c599d535d3f9ba6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
