@@ -47,6 +47,7 @@ type CrasherOptions struct {
 	Consent                 bool
 	CrasherPath             string
 	ExpectCrashReporterFail bool
+	CheckVariations         bool
 }
 
 // CrasherResult stores result status and outputs from a crasher process execution.
@@ -84,6 +85,7 @@ func DefaultCrasherOptions() CrasherOptions {
 		Consent:                 true,
 		CrasherPath:             CrasherPath,
 		ExpectCrashReporterFail: false,
+		CheckVariations:         false,
 	}
 }
 
@@ -449,6 +451,40 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 	result.Meta = crashReportFiles[".meta"]
 	result.Log = crashReportFiles[".log"]
 	result.Pslog = crashReportFiles[".pslog"]
+
+	metaContentsBytes, err := ioutil.ReadFile(result.Meta)
+	if err != nil {
+		return nil, errors.Wrap(err, "meta file is unreadable")
+	}
+	metaContents := string(metaContentsBytes)
+
+	// Verify that the .meta file contains essential keys
+	requiredContents := []string{
+		// Generally expected, core fields
+		"payload=",
+		"upload_var_channel=",
+		"upload_var_collector=",
+		"upload_var_cros_milestone=",
+		"upload_var_lsb-release=",
+		"upload_var_osName=",
+		"upload_var_osVersion=",
+		"upload_var_reportTimeMillis=",
+		"ver=",
+	}
+	if opts.CheckVariations {
+		testing.ContextLog(ctx, "checking variations")
+		requiredContents = append(requiredContents, "upload_var_num-experiments=")
+		if !strings.Contains(metaContents, "upload_var_num-experiments=0") {
+			// Only require the variations key if we have nonzero experiments.
+			requiredContents = append(requiredContents, "upload_var_variations=")
+		}
+	}
+	for _, key := range requiredContents {
+		if !strings.Contains(metaContents, key) {
+			return nil, errors.Errorf(".meta file is missing contents: %s", key)
+		}
+	}
+
 	return result, nil
 }
 
@@ -572,7 +608,7 @@ func CheckCrashingProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOp
 }
 
 // RunCrashTest runs a crash test case after setting up crash reporter.
-func RunCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, testFunc func(context.Context, *chrome.Chrome, *testing.State), consentType crash.ConsentType) error {
+func RunCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, testFunc func(context.Context, *chrome.Chrome, *testing.State, CrasherOptions), consentType crash.ConsentType, checkVariations bool) error {
 	opt := crash.WithMockConsent()
 	if consentType == crash.RealConsent {
 		opt = crash.WithConsent(cr)
@@ -603,7 +639,9 @@ func RunCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, test
 		}
 	}
 	resetRateLimiting()
-	testFunc(ctx, cr, s)
+	opts := DefaultCrasherOptions()
+	opts.CheckVariations = checkVariations
+	testFunc(ctx, cr, s, opts)
 	return nil
 }
 
