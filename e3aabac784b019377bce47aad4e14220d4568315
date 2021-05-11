@@ -34,6 +34,24 @@
       "parentUuid": "54639142_a812e473",
       "revId": "e3aabac784b019377bce47aad4e14220d4568315",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b24fab73_a0face04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-05-11T03:12:43Z",
+      "side": 1,
+      "message": "I think renaming the function to wificell.ReserveForRouterClose is cleaner and clearer. We can use the shared clean-up time (5*time.Second) for now and it can be changed in the future, if some routers need a significantly longer clean-up time. If that happens then we can pass a constant such as TimeForClosingGaleRouter,  and TimeForClosingOpenWrtRouter.",
+      "parentUuid": "cee8f575_a4a139e6",
+      "revId": "e3aabac784b019377bce47aad4e14220d4568315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
