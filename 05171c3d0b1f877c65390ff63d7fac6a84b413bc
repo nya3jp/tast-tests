@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad99787_65742f68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-11T19:51:01Z",
+      "side": 1,
+      "message": "+ yen-lin, who wrote some of the original stuff that\u0027s getting extended",
+      "revId": "05171c3d0b1f877c65390ff63d7fac6a84b413bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38034424_b0575f06",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-11T19:51:01Z",
+      "side": 1,
+      "message": "want to dump that output somewhere? either to log or to a file\n\nI guess ClearBlacklist does the same already though.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 63
+      },
+      "revId": "05171c3d0b1f877c65390ff63d7fac6a84b413bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25dbbcc2_b69118c9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-11T19:51:01Z",
+      "side": 1,
+      "message": "in case the API change doesn\u0027t work out so nicely (I\u0027m unsure right now): couldn\u0027t you just bind this locally? e.g., `var connectSuccessful bool` above line 142, and set it true at line 146.",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 21
+      },
+      "revId": "05171c3d0b1f877c65390ff63d7fac6a84b413bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3e80c24_87c46384",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-11T19:51:01Z",
+      "side": 1,
+      "message": "This feels a bit vague to me. Is the emphasis on \"successful\" or on \"completed\"? Because you might get errors just because we didn\u0027t even try the action (pcap failed to start), and we also can get errors because action ran (and completed) but failed. Both of these give you \u0027false\u0027 right now.\n\nIIUC, the only differentiating case (i.e., different than \u0027err \u003d\u003d nil\u0027) is when the action completes successfully but closing the pcap fails. Is this a useful property? I guess it happens to help with one thing you\u0027re doing in this test, but it feels a little off.\n\nSorry if I\u0027m missing something or have bad taste; but this feels like a function that wants to be very general, but isn\u0027t. Or maybe it\u0027s OK and just the comment needs tweaked.",
+      "range": {
+        "startLine": 92,
+        "startChar": 13,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "05171c3d0b1f877c65390ff63d7fac6a84b413bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "258ba6b1_2f861975",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-11T19:51:01Z",
+      "side": 1,
+      "message": "I know this is existing code, but this is not really enough to specify pcap behavior. Packet capture in general needs channel and bandwidth (and sometimes center-frequency) -- you\u0027re just lucky that all the current tests are looking for management frames, which are typically expected only on 20 MHz channels (and this also happens to be the default for `iw ... set freq`).",
+      "range": {
+        "startLine": 94,
+        "startChar": 89,
+        "endLine": 94,
+        "endChar": 95
+      },
+      "revId": "05171c3d0b1f877c65390ff63d7fac6a84b413bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
