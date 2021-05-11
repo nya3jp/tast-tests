@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "374fde49_c2724cd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-05-11T03:05:03Z",
+      "side": 1,
+      "message": "lgtm with a comment",
+      "revId": "c62384768558e30e6837c6947c0c24fc27b6e1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc3d16d6_48798e37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-05-11T03:05:03Z",
+      "side": 1,
+      "message": "optionally, consider adding TODO comment with a open bug that tracks the task to enable HW encoder for these devices. (I assume the b:176388316 is going to be closed after this workaround.)",
+      "revId": "c62384768558e30e6837c6947c0c24fc27b6e1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
