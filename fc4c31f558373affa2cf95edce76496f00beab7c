@@ -170,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26ded7e7_5218e5eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/unblocked_terms.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-05-11T15:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c675ef8e_c433194e",
+      "revId": "fc4c31f558373affa2cf95edce76496f00beab7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b43a7c63_d0b8ab3a",
