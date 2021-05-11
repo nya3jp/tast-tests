@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "418c4331_3e58739e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-11T16:46:49Z",
+      "side": 1,
+      "message": "Are these logs for denoting a long running operation that could hang? I think in general we should minimize logging unless there is an error or long running operation. It might makes more sense for these to be comments.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log\n\nSame for the other testing.ContextLog calls.",
+      "revId": "5b727ca7ec506ac69fb525390bf2b95f7dbe6afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
