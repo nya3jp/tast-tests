@@ -154,6 +154,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c675ef8e_c433194e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/unblocked_terms.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-11T01:15:13Z",
+      "side": 1,
+      "message": "Yes, that\u0027s expected, but I think we still want to have a tracking issue for it with external dependencies.",
+      "parentUuid": "732976df_7dc69d57",
+      "revId": "fc4c31f558373affa2cf95edce76496f00beab7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b43a7c63_d0b8ab3a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/unblocked_terms.txt",
         "patchSetId": 7
