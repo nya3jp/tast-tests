@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7c21542_fb51ecea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-11T14:42:05Z",
+      "side": 1,
+      "message": "# Sorry for delay. I was OOO last week and am catching up.\n\nLet me schedule to have a quick VC with you to make sure patches.",
+      "revId": "f1951d029fd6beefbecacc3efdedb391582896cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bacab276_cbb1bd43",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-11T14:42:05Z",
+      "side": 1,
+      "message": "Could you move back to ITS? (All capital letters for abbriviation).\n\nDitto for everywhere.",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 19
+      },
+      "revId": "f1951d029fd6beefbecacc3efdedb391582896cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39871b85_a49200e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-11T14:42:05Z",
+      "side": 1,
+      "message": "style: remoteadb",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "f1951d029fd6beefbecacc3efdedb391582896cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f96b2ec_6ae2bc4e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-11T14:42:05Z",
+      "side": 1,
+      "message": "# sorry I overlooked in past iterations.\n\nCTSVerifier.\n\n\nditto for below.",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "f1951d029fd6beefbecacc3efdedb391582896cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fccbb79_ae1c3df9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-11T14:42:05Z",
+      "side": 1,
+      "message": "ITSX86...\n\nDitto for below.",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 19
+      },
+      "revId": "f1951d029fd6beefbecacc3efdedb391582896cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
