@@ -365,6 +365,17 @@ func (s *Servo) SetString(ctx context.Context, control StringControl, value stri
 	return nil
 }
 
+// SetStringTimeout sets a Servo control to a string value.
+func (s *Servo) SetStringTimeout(ctx context.Context, control StringControl, value string, timeout time.Duration) error {
+	// Servo's Set method returns a bool stating whether the call succeeded or not.
+	// This is redundant, because a failed call will return an error anyway.
+	// So, we can skip unpacking the output.
+	if err := s.xmlrpc.Run(ctx, xmlrpc.NewCallTimeout("set", timeout, string(control), value)); err != nil {
+		return errors.Wrapf(err, "setting servo control %q to %q", control, value)
+	}
+	return nil
+}
+
 // SetStringList sets a Servo control to a list of string values.
 func (s *Servo) SetStringList(ctx context.Context, control StringControl, values []string) error {
 	value := "["
@@ -454,7 +465,7 @@ func (s *Servo) SetUSBMuxState(ctx context.Context, value USBMuxState) error {
 	// * The port is power cycled if it is changing directions
 	// * The port ends up in a powered state after this call
 	// * If facing the host side, the call only returns once a USB device is detected, or after a generous timeout (10s)
-	if err := s.SetString(ctx, ImageUSBKeyDirection, string(value)); err != nil {
+	if err := s.SetStringTimeout(ctx, ImageUSBKeyDirection, string(value), 90*time.Second); err != nil {
 		return err
 	}
 	// Because servod makes no guarantees when switching to the DUT side,
@@ -473,22 +484,9 @@ func (s *Servo) SetUSBMuxState(ctx context.Context, value USBMuxState) error {
 
 // SetPowerState sets the PowerState control.
 // Because this is particularly disruptive, it is always logged.
+// It can be slow, because some boards are configured to hold down the power button for 12 seconds.
 func (s *Servo) SetPowerState(ctx context.Context, value PowerStateValue) error {
-	testing.ContextLogf(ctx, "Setting %q to %q", PowerState, value)
-	if value == PowerStateOff {
-		// HTTP request is expected to time out while awaiting headers. So we expect an error.
-		// So to reduce wait time, call SetString with a short timeout, and ignore the error.
-		shortCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
-		defer cancel()
-		if err := s.SetString(shortCtx, PowerState, string(value)); err == nil {
-			return errors.Errorf("expected a timeout error from setting servo %q to %q; got nil", PowerState, value)
-		}
-		return nil
-	}
-	shortCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
-	defer cancel()
-	s.SetString(shortCtx, PowerState, string(value))
-	return nil
+	return s.SetStringTimeout(ctx, PowerState, string(value), 20*time.Second)
 }
 
 // SetFWWPState sets the FWWPState control.
