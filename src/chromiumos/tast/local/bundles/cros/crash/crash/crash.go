@@ -449,6 +449,27 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 	result.Meta = crashReportFiles[".meta"]
 	result.Log = crashReportFiles[".log"]
 	result.Pslog = crashReportFiles[".pslog"]
+
+	metaContentsBytes, err := ioutil.ReadFile(result.Meta)
+	if err != nil {
+		return nil, errors.Wrap(err, "meta file is unreadable")
+	}
+	metaContents := string(metaContentsBytes)
+
+	// Verify that the .meta file contains essential keys
+	requiredContents := []string{
+		"upload_var_cros_milestone=",
+		"upload_var_channel=",
+		"upload_var_collector=",
+		"upload_var_variations=",
+		"upload_var_num-experiments=",
+	}
+	for _, key := range requiredContents {
+		if !strings.Contains(metaContents, key) {
+			return nil, errors.Errorf(".meta file is missing contents: %s", key)
+		}
+	}
+
 	return result, nil
 }
 
