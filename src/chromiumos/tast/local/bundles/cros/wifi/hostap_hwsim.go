@@ -197,11 +197,9 @@ func HostapHwsim(fullCtx context.Context, s *testing.State) {
 	defer upstart.StartJob(fullCtx, "wpasupplicant")
 
 	s.Log("Running hwsim tests, args: ", runArgs)
-	// Hwsim tests like to run from their own directory.
-	if err := os.Chdir("/usr/local/libexec/hostap/tests/hwsim"); err != nil {
-		s.Fatal("Failed to chdir: ", err)
-	}
 	cmd := testexec.CommandContext(ctx, "./run-all.sh", runArgs...)
+	// Hwsim tests like to run from their own directory.
+	cmd.Dir = "/usr/local/libexec/hostap/tests/hwsim"
 	// Log to the output directory, so they get captured for later
 	// analysis.
 	cmd.Env = append(os.Environ(), "LOGDIR="+s.OutDir())
