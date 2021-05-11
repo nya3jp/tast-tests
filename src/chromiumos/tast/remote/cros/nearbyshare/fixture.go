@@ -11,14 +11,12 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"strconv"
 	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/cros/nearbyshare"
-	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
 	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/dut"
@@ -50,7 +48,6 @@ func init() {
 		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, false),
 		Vars: []string{
 			"secondaryTarget",
-			nearbycommon.KeepStateVar,
 		},
 		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
 		SetUpTimeout:    2 * time.Minute,
@@ -69,7 +66,6 @@ func init() {
 			"nearbyshare.cros_password",
 			"nearbyshare.cros2_username",
 			"nearbyshare.cros2_password",
-			nearbycommon.KeepStateVar,
 		},
 		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
 		SetUpTimeout:    2 * time.Minute,
@@ -88,7 +84,6 @@ func init() {
 			"nearbyshare.cros_password",
 			"nearbyshare.cros2_username",
 			"nearbyshare.cros2_password",
-			nearbycommon.KeepStateVar,
 		},
 		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
 		SetUpTimeout:    2 * time.Minute,
@@ -107,7 +102,6 @@ func init() {
 			"nearbyshare.cros_password",
 			"nearbyshare.cros2_username",
 			"nearbyshare.cros2_password",
-			nearbycommon.KeepStateVar,
 		},
 		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
 		SetUpTimeout:    2 * time.Minute,
@@ -126,7 +120,6 @@ func init() {
 			"nearbyshare.cros_password",
 			"nearbyshare.cros2_username",
 			"nearbyshare.cros2_password",
-			nearbycommon.KeepStateVar,
 		},
 		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
 		SetUpTimeout:    2 * time.Minute,
@@ -145,7 +138,6 @@ func init() {
 			"nearbyshare.cros_password",
 			"nearbyshare.cros2_username",
 			"nearbyshare.cros2_password",
-			nearbycommon.KeepStateVar,
 		},
 		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
 		SetUpTimeout:    2 * time.Minute,
@@ -241,15 +233,6 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		}
 	}
 
-	var keepState bool
-	if val, ok := s.Var(nearbycommon.KeepStateVar); ok {
-		b, err := strconv.ParseBool(val)
-		if err != nil {
-			s.Fatalf("Unable to convert %v var to bool: %v", nearbycommon.KeepStateVar, err)
-		}
-		keepState = b
-	}
-
 	// Login and setup Nearby Share on DUT 1 (Sender).
 	cl1, err := rpc.Dial(s.FixtContext(), d1, s.RPCHint(), "cros")
 	if err != nil {
@@ -263,7 +246,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		senderUsername = s.RequiredVar("nearbyshare.cros_username")
 		senderPassword = s.RequiredVar("nearbyshare.cros_password")
 	}
-	sender, err := f.enableNearbyShare(ctx, s, cl1, senderDisplayName, senderUsername, senderPassword, "", keepState)
+	sender, err := f.enableNearbyShare(ctx, s, cl1, senderDisplayName, senderUsername, senderPassword, "")
 	if err != nil {
 		s.Fatal("Failed to enable Nearby Share on DUT1 (Sender): ", err)
 	}
@@ -281,7 +264,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		receiverUsername = s.RequiredVar("nearbyshare.cros2_username")
 		receiverPassword = s.RequiredVar("nearbyshare.cros2_password")
 	}
-	receiver, err := f.enableNearbyShare(ctx, s, cl2, receiverDisplayName, receiverUsername, receiverPassword, senderUsername, keepState)
+	receiver, err := f.enableNearbyShare(ctx, s, cl2, receiverDisplayName, receiverUsername, receiverPassword, senderUsername)
 	if err != nil {
 		s.Fatal("Failed to enable Nearby Share on DUT2 (Receiver): ", err)
 	}
@@ -324,12 +307,11 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 
 // enableNearbyShare is a helper function to enable Nearby Share on each DUT.
 // senderUsername is only used when the device visibility is "Some contacts".
-// keepState is used to optionally preserve user accounts on the DUT.
 // Sender devices should pass an empty string since the visibility setting is only relevant to receivers.
-func (f *nearbyShareFixture) enableNearbyShare(ctx context.Context, s *testing.FixtState, cl *rpc.Client, deviceName, username, password, senderUsername string, keepState bool) (nearbyservice.NearbyShareServiceClient, error) {
+func (f *nearbyShareFixture) enableNearbyShare(ctx context.Context, s *testing.FixtState, cl *rpc.Client, deviceName, username, password, senderUsername string) (nearbyservice.NearbyShareServiceClient, error) {
 	// Connect to the Nearby Share Service so we can execute local code on the DUT.
 	ns := nearbyservice.NewNearbyShareServiceClient(cl.Conn)
-	loginReq := &nearbyservice.CrOSLoginRequest{Username: username, Password: password, KeepState: keepState}
+	loginReq := &nearbyservice.CrOSLoginRequest{Username: username, Password: password}
 	if _, err := ns.NewChromeLogin(ctx, loginReq); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
