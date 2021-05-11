@@ -47,6 +47,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Path("encrypted/chronos"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0755), chk.SkipChildren()), // contents checked by security.UserFiles*
 
 		chk.NewPattern(chk.Path("encrypted/var/cache/app_pack"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
+		chk.NewPattern(chk.Path("encrypted/var/cache/arcvm"), chk.Users("crosvm"), chk.Groups("crosvm"), chk.Mode(0700), chk.SkipChildren()),
 		// TODO(crbug.com/905719): Check for a specific user:group and mode.
 		chk.NewPattern(chk.Path("encrypted/var/cache/camera"), chk.Users("chronos", "root"), chk.NotMode(02), chk.SkipChildren()),
 		chk.NewPattern(chk.Path("encrypted/var/cache/device_local_account_component_policy"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
