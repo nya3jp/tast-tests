@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f946a090_addcfd86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-11T13:59:12Z",
+      "side": 1,
+      "message": "Currently, because the EncoderAllowlistVPxVM is empty, it is already considered as switched.\nIn the sense, I do not think it works to have both SkipOnPlatform and Platform as dependency.\nCould you remove SkipOnPlatform, now?",
+      "range": {
+        "startLine": 14,
+        "startChar": 58,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "27fc5baeeb702eef94fc8645563bf4d3fc4f2424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
