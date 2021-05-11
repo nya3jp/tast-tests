@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d200477e_26f8ce72",
+        "filename": "src/chromiumos/tast/local/memory/crosvm_fincore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-05-11T06:37:39Z",
+      "side": 1,
+      "message": "It was changed because we updated util-linux: https://crrev.com/c/2426844\n\nDo we not need to worry about keeping back compat? In case we need to rerun on older builds? (for a bisect or something)",
+      "parentUuid": "db027a03_e6f03020",
+      "revId": "7d225c1218cd057b59ba3986943f2f2f5425f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "209ea803_ae09ae03",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-05-10T17:07:50Z",
       "side": 1,
       "message": "I think this error could be hard to read in Stainless/Tastboard, where it will be shown on a single line. The reader will have to look at `bytes` and figure out why parsing failed themselves.\n\nSeems like it would be best to use errors.Wrapf here to make it easier to understand why parsing failed (assuming json.Unmarshal\u0027s error output contains useful info). There are 2 errors at this point though so it\u0027s a little tricky. For the sake of surfacing the error info, perhaps it would be good to split this into 2 functions for v1 and v2 formats and have each wrap json.Unmarshal\u0027s error if it fails?",
+      "range": {
+        "startLine": 82,
+        "startChar": 20,
+        "endLine": 82,
+        "endChar": 26
+      },
+      "revId": "7d225c1218cd057b59ba3986943f2f2f5425f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "779cdf25_d59f41c0",
+        "filename": "src/chromiumos/tast/local/memory/crosvm_fincore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-05-11T06:37:39Z",
+      "side": 1,
+      "message": "I\u0027ve updated the code based on @shaochuan\u0027s suggestion to use UnmarshalJSON to encapsulate the older parsing logic a bit better.\n\nI now log the JSON instead of putting it in the error, so it won\u0027t make Stainless messy, but still make it easy to investigate future failures.\n\nIf they both fail, I log the error from parsing the older version, and return the newer failure.",
+      "parentUuid": "209ea803_ae09ae03",
       "range": {
         "startLine": 82,
         "startChar": 20,
