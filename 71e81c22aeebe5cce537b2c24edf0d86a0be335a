@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6ee9b74_c4eede7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-11T00:49:12Z",
+      "side": 1,
+      "message": "Not relevant to this cl. I am thinking maybe nice to have a predefined structure to store file name and text. Then use this type for test param and inside the test.\n\ntype handWritingInput struct{\n     inputFile  string\n     inputText  string\n}\n\nYou can raise a separate cl to do this if you have the same feeling. Otherwise let\u0027s discuss it.",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "71e81c22aeebe5cce537b2c24edf0d86a0be335a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b14d0497_93663437",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-11T00:49:12Z",
+      "side": 1,
+      "message": "What is backspace used for? Below Clear function should clean the text field already.",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 29
+      },
+      "revId": "71e81c22aeebe5cce537b2c24edf0d86a0be335a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
