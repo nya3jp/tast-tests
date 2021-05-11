@@ -86,6 +86,12 @@ window.Tast = class Tast {
     return windowController.focus();
   }
 
+  static sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  }
+
   /**
    * @return {string}
    */
@@ -130,6 +136,22 @@ window.Tast = class Tast {
       throw new Error('No visible element: ', selector);
     }
     element.click();
+  }
+
+  /**
+   * Holds element with |selector| by sending pointerdown and pointerup events
+   * for |ms| milliseconds.
+   * @param {string} selector
+   * @param {number} ms
+   */
+  static async hold(selector, ms) {
+    const element = document.querySelector(selector);
+    if (!Tast.isVisible(selector)) {
+      throw new Error('No visible element: ', selector);
+    }
+    element.dispatchEvent(new Event('pointerdown'));
+    await Tast.sleep(ms);
+    element.dispatchEvent(new Event('pointerup'));
   }
 
   /**
@@ -344,6 +366,21 @@ window.Tast = class Tast {
   static getPreviewResolution() {
     const video = Tast.previewVideo;
     return {width: video.videoWidth, height: video.videoHeight};
+  }
+
+  /**
+   * Gets resolution of preview video.
+   * @throws {LegacyVCDError}
+   * @return {!Promise<!CanvasRenderingContext2D>}
+   */
+  static getPreviewFrame() {
+    const video = Tast.previewVideo;
+    const canvas =
+        new OffscreenCanvas(video.videoWidth, video.videoHeight);
+    const ctx =
+        /** @type {!CanvasRenderingContext2D} */ (canvas.getContext('2d'));
+    ctx.drawImage(video, 0, 0);
+    return ctx;
   }
 
   /**
