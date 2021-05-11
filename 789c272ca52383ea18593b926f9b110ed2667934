@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6299830d_b6b1ba5d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-11T20:22:54Z",
+      "side": 1,
+      "message": "Should this be inverted based on the name \"EntropyInitialized\"? That said, see other comments about whether to use \"initEntropy\" or \"clearEntropy\".",
+      "range": {
+        "startLine": 408,
+        "startChar": 8,
+        "endLine": 408,
+        "endChar": 22
+      },
+      "revId": "789c272ca52383ea18593b926f9b110ed2667934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "474b6a80_42c7c139",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-11T20:22:54Z",
+      "side": 1,
+      "message": "This is mostly a nit, but I think this was a little clearer when it was \"initEntropy\" instead of \"clearEntropy\". Mainly because the default case is to do the entropy initialization. It\u0027s not exactly the same, but inspired by this: go/tott/530.",
+      "range": {
+        "startLine": 772,
+        "startChar": 1,
+        "endLine": 777,
+        "endChar": 2
+      },
+      "revId": "789c272ca52383ea18593b926f9b110ed2667934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18bcbba6_a90c7f69",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-11T20:22:54Z",
+      "side": 1,
+      "message": "I see from this why you wanted to change the arg to \"clearEntropy\".\n\nI think we can make this logic a little more general by removing this and adding a new bool argument called something like \"forceFlash\": https://chromium.googlesource.com/chromiumos/third_party/autotest/+/030ff1682045483ae51a7b8a3e526ffde473a1de/server/cros/faft/fingerprint_test.py#216\n\nThen instead of this if statement, we can do something like:\n\n CheckFirwmareIsFunctional(...)\n if err !\u003d nil || forceFlash {\n   ReimageFPMCU(...)\n }\n\nWith that change, switching the argument back to \"initEntropy\" also makes things consistent since we only check the variable in ReimageFPMCU.",
+      "range": {
+        "startLine": 790,
+        "startChar": 0,
+        "endLine": 793,
+        "endChar": 2
+      },
+      "revId": "789c272ca52383ea18593b926f9b110ed2667934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
