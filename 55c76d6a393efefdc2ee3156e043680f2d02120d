@@ -92,6 +92,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3537df32_6023b39e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-11T18:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20c0f373_266fdd37",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 20
+      },
+      "revId": "55c76d6a393efefdc2ee3156e043680f2d02120d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4848cb2_236f84ee",
@@ -115,6 +139,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e7cb7a_ad275213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-11T18:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4848cb2_236f84ee",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 29
+      },
+      "revId": "55c76d6a393efefdc2ee3156e043680f2d02120d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2646964e_7c7b94b6",
@@ -128,6 +176,30 @@
       "writtenOn": "2021-05-11T01:58:56Z",
       "side": 1,
       "message": "nit: not clear how \"1\" is related to \"outside of ureadhead\".\n(The error message on L182 gives more info)\n\n... but see previous comment... might not be needed.\n\nIn any case, adding a comment that gives more info about what \"1\" is, would be helpful.",
+      "range": {
+        "startLine": 210,
+        "startChar": 19,
+        "endLine": 210,
+        "endChar": 23
+      },
+      "revId": "55c76d6a393efefdc2ee3156e043680f2d02120d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46b8ce0c_ba5667cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-11T18:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2646964e_7c7b94b6",
       "range": {
         "startLine": 210,
         "startChar": 19,
