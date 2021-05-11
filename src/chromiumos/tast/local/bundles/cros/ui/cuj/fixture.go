@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/testing"
 )
@@ -23,6 +24,13 @@ import (
 const resetTimeout = 30 * time.Second
 
 func init() {
+	var fixtureVars = []string{
+		"ui.cuj_username",
+		"ui.cuj_password",
+		"cuj_username",
+		"cuj_password",
+	}
+
 	testing.AddFixture(&testing.Fixture{
 		Name:            "loggedInToCUJUser",
 		Desc:            "The main fixture used for UI CUJ tests",
@@ -31,7 +39,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		Vars:            []string{"ui.cuj_username", "ui.cuj_password", "cuj_username", "cuj_password"},
+		Vars:            fixtureVars,
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name:            "loggedInAndKeepState",
@@ -41,8 +49,40 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		Vars:            []string{"ui.cuj_username", "ui.cuj_password", "cuj_username", "cuj_password"},
+		Vars:            fixtureVars,
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name:     "loggedInToCUJUserLacros",
+		Desc:     "Fixture used for lacros variation of UI CUJ tests",
+		Contacts: []string{"mukai@chromium.org"},
+		Impl: launcher.NewStartedByData(launcher.PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.GAIALogin(getCreds(s)),
+				chrome.EnableFeatures("LacrosSupport"),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		Vars:            append(fixtureVars, launcher.LacrosFixtureVars...),
+	})
+}
+
+func getCreds(s *testing.FixtState) chrome.Creds {
+	var username string
+	var password string
+
+	cujUser, userOk := s.Var("cuj_username")
+	cujPass, passOk := s.Var("cuj_password")
+	if userOk && passOk {
+		username = cujUser
+		password = cujPass
+	} else {
+		username = s.RequiredVar("ui.cuj_username")
+		password = s.RequiredVar("ui.cuj_password")
+	}
+
+	return chrome.Creds{User: username, Pass: password}
 }
 
 func runningPackages(ctx context.Context, a *arc.ARC) (map[string]struct{}, error) {
@@ -82,19 +122,9 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 	func() {
 		ctx, cancel := context.WithTimeout(ctx, chrome.LoginTimeout)
 		defer cancel()
-		var username string
-		var password string
-		cujUser, userOk := s.Var("cuj_username")
-		cujPass, passOk := s.Var("cuj_password")
-		if userOk && passOk {
-			username = cujUser
-			password = cujPass
-		} else {
-			username = s.RequiredVar("ui.cuj_username")
-			password = s.RequiredVar("ui.cuj_password")
-		}
+
 		opts := []chrome.Option{
-			chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+			chrome.GAIALogin(getCreds(s)),
 			chrome.ARCSupported(),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...),
 		}

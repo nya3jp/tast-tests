@@ -9,6 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
@@ -19,12 +21,21 @@ func init() {
 		Func:         TabSwitchCUJ,
 		Desc:         "Measures the performance of tab-switching CUJ",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org", "chromeos-wmp@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{tabswitchcuj.WPRArchiveName},
 		Timeout:      22 * time.Minute,
 		Vars:         []string{"mute"},
-		Pre:          wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
+		Params: []testing.Param{{
+			ExtraAttr: []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraData: []string{tabswitchcuj.WPRArchiveName},
+			Val:       lacros.ChromeTypeChromeOS,
+			Pre:       wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
+		}, {
+			Name:              "lacros",
+			Val:               lacros.ChromeTypeLacros,
+			Fixture:           "loggedInToCUJUserLacros",
+			ExtraData:         []string{launcher.DataArtifact},
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
 	})
 }
 
