@@ -16,6 +16,52 @@
       "message": "Note: there is no one available on my team for reviews, so we have to rely on Tast owner reviews for now. Thanks.",
       "revId": "28d4ea607a54fe7d3ac6a8064f3d78ec09437495",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb2e7294_8c3b2c6f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_ro_only_boots_valid_rw.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-05-11T00:41:12Z",
+      "side": 1,
+      "message": "These two functions look nearly the same. Would it make sense to add a parameter for which type of firmware is running and then combine the two functions?",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 36
+      },
+      "revId": "28d4ea607a54fe7d3ac6a8064f3d78ec09437495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "470a24d2_ad66a1f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_ro_only_boots_valid_rw.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-05-11T00:41:12Z",
+      "side": 1,
+      "message": "This test looks like it\u0027s testing a few different things. Unless setup takes a really long time, it might make sense to at least break this up into multiple parameterized test cases.",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "28d4ea607a54fe7d3ac6a8064f3d78ec09437495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
