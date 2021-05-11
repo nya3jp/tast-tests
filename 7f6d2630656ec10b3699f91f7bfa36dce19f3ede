@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a68316ef_9f9b7115",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-11T07:44:56Z",
+      "side": 1,
+      "message": "LGTM, but as already noted maybe performance can be improved by using a specialised account.",
+      "revId": "7f6d2630656ec10b3699f91f7bfa36dce19f3ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c0235c3_b3f86d69",
