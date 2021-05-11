@@ -276,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b41fd29_1bd259ed",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-11T05:19:04Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "79c5ae27_d5e845bf",
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85666e3a_2f286158",
