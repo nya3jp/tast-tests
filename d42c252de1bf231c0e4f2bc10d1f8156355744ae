@@ -271,6 +271,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6b6c64e_f00082c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-11T21:23:05Z",
+      "side": 1,
+      "message": "Hi Shuhei,\nWith KeepState enabled, and login as a different brand-new account, I can see the verify user creation screen in R92. (Was once a problem in R90 for brand-new account but not an issue for \"old\" account). It might be the fix you mentioned worked.\n\nI think I can add the \"KeepState\" option back to CUJ test now. And I\u0027ll abandon this CL.",
+      "parentUuid": "92373385_25f6f05b",
+      "revId": "d42c252de1bf231c0e4f2bc10d1f8156355744ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9fa62b4_ee688dcf",
         "filename": "src/chromiumos/tast/local/chrome/option.go",
         "patchSetId": 1
