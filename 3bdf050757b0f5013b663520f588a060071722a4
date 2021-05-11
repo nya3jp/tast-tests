@@ -16,6 +16,92 @@
       "message": "Note: there is no one available on my team for reviews, so we have to rely on Tast owner reviews for now. Thanks.",
       "revId": "3bdf050757b0f5013b663520f588a060071722a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d062de1_1df711d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-11T07:30:15Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "3bdf050757b0f5013b663520f588a060071722a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b21add88_78bfa399",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rw_no_update_ro.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-11T07:30:15Z",
+      "side": 1,
+      "message": "nit: any bug to assign to this TODO?",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 8
+      },
+      "revId": "3bdf050757b0f5013b663520f588a060071722a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8a9bc55_f6a8ac89",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rw_no_update_ro.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-11T07:30:15Z",
+      "side": 1,
+      "message": "nit: use s.Log, ditto for other instances.",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 19
+      },
+      "revId": "3bdf050757b0f5013b663520f588a060071722a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82f35fc4_2b5b847d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rw_no_update_ro.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-11T07:30:15Z",
+      "side": 1,
+      "message": "I\u0027m wondering if it might be beneficial to include a comment that defines all these switches and what they do? Like\n```\n[]string{\n\"flashrom\",\n\"--fast-verify\", // Does something magical...\n}\n```",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 9
+      },
+      "revId": "3bdf050757b0f5013b663520f588a060071722a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
