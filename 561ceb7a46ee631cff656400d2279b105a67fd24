@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7349518_cdd7e7e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T08:43:29Z",
+      "side": 1,
+      "message": "It guess it is ok without the prefix since it is not global.",
+      "parentUuid": "90fd9290_68e139de",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c21e201c_300b789a",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-11T07:43:00Z",
       "side": 1,
       "message": "Not doing anything with the extra 5s, remove?",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 15
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c08fa370_8f455cfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T08:43:29Z",
+      "side": 1,
+      "message": "Need to delete the files in Downloads. The defer func does not take a ctx, so did not assign a cleanupCtx.",
+      "parentUuid": "c21e201c_300b789a",
       "range": {
         "startLine": 62,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4a0bb0d_1cfb6690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T08:43:29Z",
+      "side": 1,
+      "message": "I guess fsutil.CopyFile only copies files but do not delete them?",
+      "parentUuid": "2e7397fe_561c3220",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 24
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3fff92c_244332bc",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9837deb_350f13ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T08:43:29Z",
+      "side": 1,
+      "message": "I change the string to textFileName, which is a bit more readable. It might be something else in the future if it is changed.",
+      "parentUuid": "f3fff92c_244332bc",
+      "range": {
+        "startLine": 85,
+        "startChar": 16,
+        "endLine": 85,
+        "endChar": 24
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f6aaaad_1f7cce2d",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-05-11T07:43:00Z",
       "side": 1,
       "message": "This is already available under filesapp.Share\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go;l\u003d49;drc\u003d3bccbe12a18829ced771533ad34a340c0bf19b74",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 22
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2630b04_e8acc299",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T08:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f6aaaad_1f7cce2d",
       "range": {
         "startLine": 107,
         "startChar": 1,
@@ -158,6 +278,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcd30536_efe1243c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T08:43:29Z",
+      "side": 1,
+      "message": "Personally, I think the current one is more readable. Please feel free to disagree.",
+      "parentUuid": "ac53ab0b_95822a8d",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 6
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06fe7571_75d9ed49",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
         "patchSetId": 2
@@ -169,6 +313,30 @@
       "writtenOn": "2021-05-11T07:43:00Z",
       "side": 1,
       "message": "Given these are the same for every test, is it worth moving this outside the s.Run scope?",
+      "range": {
+        "startLine": 159,
+        "startChar": 5,
+        "endLine": 161,
+        "endChar": 104
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9810455_a7987cd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T08:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06fe7571_75d9ed49",
       "range": {
         "startLine": 159,
         "startChar": 5,
