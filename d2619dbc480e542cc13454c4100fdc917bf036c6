@@ -105,6 +105,24 @@
       "parentUuid": "ecad0476_1d603a12",
       "revId": "d2619dbc480e542cc13454c4100fdc917bf036c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9473c835_735d983c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/data/gen_test_images.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-11T14:24:42Z",
+      "side": 1,
+      "message": "SGTM. Thank you very much for taking care of my concern for overall tast eco-system.\nIncremental step works for me now.",
+      "parentUuid": "4a2565da_72fa76a6",
+      "revId": "d2619dbc480e542cc13454c4100fdc917bf036c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
