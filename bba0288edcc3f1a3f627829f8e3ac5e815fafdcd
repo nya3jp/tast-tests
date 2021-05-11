@@ -16,6 +16,24 @@
       "message": "Demoting trogdor lgtm, but zork and dedede seem to have the same issue across many different tests",
       "revId": "bba0288edcc3f1a3f627829f8e3ac5e815fafdcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a23f28f9_192f110b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-11T01:35:32Z",
+      "side": 1,
+      "message": "Acknowleged, reduced to trogdor only.",
+      "parentUuid": "9e026083_6138f534",
+      "revId": "bba0288edcc3f1a3f627829f8e3ac5e815fafdcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
