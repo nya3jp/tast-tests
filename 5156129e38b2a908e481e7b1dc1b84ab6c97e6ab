@@ -95,6 +95,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "37c3719c_03d87dd1",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-11T07:38:47Z",
+      "side": 1,
+      "message": "Given the massive interfaces, I feel like it\u0027s likely cleaner to move this to wificell/router. WDYT? (might cause some troubles if TestFixture needs to access private fields/methods)",
+      "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10461954_97e323d9",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 1
