@@ -64,6 +64,16 @@ var (
 	removeLinuxDialog     = nodewith.NameRegex(regexp.MustCompile("Remove|Delete")).Role(role.Dialog).First()
 	resizeButton          = nodewith.Name("Change disk size").Role(role.Button)
 	RemoveLinuxAlert      = nodewith.Name("Remove Linux development environment").Role(role.AlertDialog).ClassName("Widget")
+	BackupButton          = nodewith.NameStartingWith("Backup Linux").Role(role.Button).Ancestor(ossettings.WindowFinder)
+	RestoreButton         = nodewith.NameStartingWith("Replace").Role(role.Button).Ancestor(ossettings.WindowFinder)
+	BackupFileWindow      = nodewith.Name("Backup").Role(role.Window).ClassName("ExtensionViewViews")
+	BackupSave            = nodewith.Name("Save").Role(role.Button).Ancestor(BackupFileWindow)
+	BackupNotification    = nodewith.NameStartingWith("Backup complete").Role(role.AlertDialog).ClassName("MessagePopupView")
+	RestoreNotification   = nodewith.NameStartingWith("Restore complete").Role(role.AlertDialog).ClassName("MessagePopupView")
+	RestoreConfirmButton  = nodewith.Name("Restore").Role(role.Button).ClassName("action-button")
+	RestoreFileWindow     = nodewith.Name("Restore").Role(role.Window).ClassName("ExtensionViewViews")
+	RestoreTiniFile       = nodewith.NameContaining(".tini").Role(role.StaticText).Ancestor(RestoreFileWindow)
+	RestoreOpen           = nodewith.Name("Open").Role(role.Button).Ancestor(RestoreFileWindow)
 )
 
 // Settings represents an instance of the Linux settings in Settings App.
@@ -402,4 +412,16 @@ func (s *Settings) Resize(ctx context.Context, keyboard *input.KeyboardEventWrit
 	}
 
 	return sizeOnSlider, size, nil
+}
+
+// LeftClickUI performs a left click action on the given Finder
+func (s *Settings) LeftClickUI(findParams *nodewith.Finder) uiauto.Action {
+	return uiauto.Combine("focus and left click UI",
+		s.ui.FocusAndWait(findParams),
+		s.ui.LeftClick(findParams))
+}
+
+// WaitForUI waits until findParams exists
+func (s *Settings) WaitForUI(findParams *nodewith.Finder) uiauto.Action {
+	return s.ui.WaitUntilExists(findParams)
 }
