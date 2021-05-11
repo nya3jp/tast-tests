@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbdcff0e_71940c96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-11T08:35:51Z",
+      "side": 1,
+      "message": "LGTM % nits\nPlease wait for +1 from kyleshima before submitting.",
+      "revId": "c97d9f783a454905c16cf8ea12c2d6bde2cea4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5086a2a0_a3d88d01",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-11T08:35:51Z",
+      "side": 1,
+      "message": "nit: Comments should be sentences ending with .\nThat\u0027s missing in all comments here.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 47
+      },
+      "revId": "c97d9f783a454905c16cf8ea12c2d6bde2cea4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6f861dc_6ab1e17b",
@@ -54,6 +94,30 @@
       "writtenOn": "2021-05-11T03:25:01Z",
       "side": 1,
       "message": "Do you need to log every command? Could we just execute the command directly here and include the parameters (firmwareFilePath, section) in the returned errors instead?",
+      "range": {
+        "startLine": 114,
+        "startChar": 16,
+        "endLine": 114,
+        "endChar": 27
+      },
+      "revId": "c97d9f783a454905c16cf8ea12c2d6bde2cea4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0e08095_070828d6",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-11T08:35:51Z",
+      "side": 1,
+      "message": "+1 we should only log when errors occur or when something will take a while to process:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "parentUuid": "4f1f61b8_a7539235",
       "range": {
         "startLine": 114,
         "startChar": 16,
