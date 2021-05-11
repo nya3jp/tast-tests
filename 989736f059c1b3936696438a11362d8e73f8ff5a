@@ -1,0 +1,510 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e64e6412_a4939cdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "Does the Activity in the have some special name? If not, what about testResizeLockedAppResizability?",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ede013c7_423bf932",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "What about testUnresizableAppResizability",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e298ae_b3646616",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "Does the Activity in the have some special name? If not, what about testResizeLockedAppSplash?",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 47
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4da90b2_3501d081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "What about testUnresizableAppSplash?",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 29
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e4632f2_64a6c602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "Please make the failure msg consistent with others: Failed to start.",
+      "range": {
+        "startLine": 91,
+        "startChar": 10,
+        "endLine": 91,
+        "endChar": 30
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b450229f_baeb7c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "Failed to initialized",
+      "range": {
+        "startLine": 97,
+        "startChar": 11,
+        "endLine": 97,
+        "endChar": 31
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d75587e_ca5ce9f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "Suggest to rename it to tabletModeStatus",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 18
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fcd3800_90aeafd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "Failed to run test %s",
+      "range": {
+        "startLine": 141,
+        "startChar": 13,
+        "endLine": 141,
+        "endChar": 27
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e13d372_903b1fba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "ShoudNotBeResizable?",
+      "range": {
+        "startLine": 153,
+        "startChar": 122,
+        "endLine": 153,
+        "endChar": 139
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65557f22_82dcb829",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 158,
+        "startChar": 129,
+        "endLine": 158,
+        "endChar": 146
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e5f8cea_289e6f0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "shouldNotShowSplash?",
+      "range": {
+        "startLine": 168,
+        "startChar": 127,
+        "endLine": 168,
+        "endChar": 143
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c5127c_31cc7dcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "This name is a bit confusing, according to the func, it indicates whether the app is installed, so what about name it as installed?",
+      "range": {
+        "startLine": 178,
+        "startChar": 4,
+        "endLine": 178,
+        "endChar": 15
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a8f73c3_214081f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "Please include the apk name",
+      "range": {
+        "startLine": 179,
+        "startChar": 47,
+        "endLine": 179,
+        "endChar": 50
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8248dbbf_9f74054d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "IIUC, it is \"if installed\" here?",
+      "range": {
+        "startLine": 180,
+        "startChar": 12,
+        "endLine": 180,
+        "endChar": 23
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7bdba09_a515a3c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "Please include the package name and the activity name.",
+      "range": {
+        "startLine": 186,
+        "startChar": 44,
+        "endLine": 186,
+        "endChar": 52
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "219c25d4_7ef721cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "Is it always O4C? \nPlease include the activity name.",
+      "range": {
+        "startLine": 191,
+        "startChar": 43,
+        "endLine": 191,
+        "endChar": 46
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b316b8e0_f6329698",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 230,
+        "startChar": 4,
+        "endLine": 230,
+        "endChar": 15
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f032c349_8ed4d3f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "Please include the package name and the activity name.",
+      "range": {
+        "startLine": 238,
+        "startChar": 44,
+        "endLine": 238,
+        "endChar": 52
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cfaec6a_a8cafb46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "Please include the activity name.",
+      "range": {
+        "startLine": 243,
+        "startChar": 43,
+        "endLine": 243,
+        "endChar": 51
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc1752ec_60be8d68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "Please include the package name.",
+      "range": {
+        "startLine": 250,
+        "startChar": 36,
+        "endLine": 250,
+        "endChar": 39
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c13eb1ca_b9a93176",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "failed to verify the resizability",
+      "range": {
+        "startLine": 253,
+        "startChar": 43,
+        "endLine": 253,
+        "endChar": 83
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d464b115_8ed91682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-11T00:39:32Z",
+      "side": 1,
+      "message": "It means that the re-install failed, then the app is uninstalled, so return false?",
+      "range": {
+        "startLine": 275,
+        "startChar": 9,
+        "endLine": 275,
+        "endChar": 18
+      },
+      "revId": "989736f059c1b3936696438a11362d8e73f8ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
