@@ -31,7 +31,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"ui.gaiaPoolDefault"},
 		HardwareDeps: hwdep.D(pre.AppsStableModels),
-		Timeout:      5 * time.Minute,
+		Timeout:      8 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 	})
 }
@@ -52,7 +52,7 @@ func CalculatorSmoke(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := ash.WaitForChromeAppInstalled(ctx, tconn, apps.Calculator.ID, 2*time.Minute); err != nil {
+	if err := ash.WaitForChromeAppInstalled(ctx, tconn, apps.Calculator.ID, 5*time.Minute); err != nil {
 		s.Fatal("Failed to wait for installed app: ", err)
 	}
 
