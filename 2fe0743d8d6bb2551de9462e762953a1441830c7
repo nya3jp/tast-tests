@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b23ce5d1_4e90bc12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-11T00:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe5feebe_3aa85dd3",
+      "range": {
+        "startLine": 9,
+        "startChar": 36,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6c0bda6_5b2a87c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-11T00:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bf468ce_cdd74468",
+      "range": {
+        "startLine": 9,
+        "startChar": 26,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f3203f05_29b5edd9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25b54e36_560af8a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-11T00:03:25Z",
+      "side": 1,
+      "message": "Updated the documentation in CL(http://crrev/c/2885982)",
+      "parentUuid": "38059784_aad4083a",
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6c72ba1_6b30f125",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-05-10T08:11:54Z",
       "side": 1,
       "message": "MTP\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 8
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f46656e_a64d103f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mtp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-11T00:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6c72ba1_6b30f125",
       "range": {
         "startLine": 53,
         "startChar": 5,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb20d66d_31a6c2f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mtp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-11T00:03:25Z",
+      "side": 1,
+      "message": "Would like to take this in a separate CL as I see that most of tests with similar defer a.close(ctx) don\u0027t have this time reserved. Added a TODO for the same.",
+      "parentUuid": "ec6af4bf_0e166373",
+      "range": {
+        "startLine": 61,
+        "startChar": 15,
+        "endLine": 61,
+        "endChar": 18
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56ab4ea5_95028290",
@@ -144,6 +258,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79c5ae27_d5e845bf",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-11T00:03:25Z",
+      "side": 1,
+      "message": "This change was required for the fixture to call Lock and Unlock similar to other fixtures. Without this change the fixture fails at Lock().",
+      "parentUuid": "56ab4ea5_95028290",
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85666e3a_2f286158",
@@ -157,6 +289,30 @@
       "writtenOn": "2021-05-10T08:11:54Z",
       "side": 1,
       "message": "mtpWithAndroid  or  mtpAndroid",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 23
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6287a09_69bf2f52",
+        "filename": "src/chromiumos/tast/local/chrome/mtp/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-11T00:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85666e3a_2f286158",
       "range": {
         "startLine": 39,
         "startChar": 9,
@@ -192,6 +348,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6c4e0761_58ac4329",
+        "filename": "src/chromiumos/tast/local/chrome/mtp/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-11T00:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67c7710f_80951949",
+      "range": {
+        "startLine": 40,
+        "startChar": 61,
+        "endLine": 40,
+        "endChar": 68
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3a401073_2348b53b",
         "filename": "src/chromiumos/tast/local/chrome/mtp/fixture.go",
         "patchSetId": 3
@@ -203,6 +383,30 @@
       "writtenOn": "2021-05-10T08:11:54Z",
       "side": 1,
       "message": "Should be named as arc.MTP... but this is out of the CL\u0027s scope.",
+      "range": {
+        "startLine": 41,
+        "startChar": 27,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c675e4c_cf746960",
+        "filename": "src/chromiumos/tast/local/chrome/mtp/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-11T00:03:25Z",
+      "side": 1,
+      "message": "Have sent the other CL for approval (crrev/c/3821808)",
+      "parentUuid": "3a401073_2348b53b",
       "range": {
         "startLine": 41,
         "startChar": 27,
@@ -236,6 +440,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51d36331_c3fd9f91",
+        "filename": "src/chromiumos/tast/local/chrome/mtp/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-11T00:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f023c10_97f8f981",
+      "range": {
+        "startLine": 106,
+        "startChar": 62,
+        "endLine": 106,
+        "endChar": 78
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d19d95d0_805332db",
@@ -259,6 +487,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89018577_118e3399",
+        "filename": "src/chromiumos/tast/local/chrome/mtp/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-11T00:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d19d95d0_805332db",
+      "range": {
+        "startLine": 115,
+        "startChar": 4,
+        "endLine": 115,
+        "endChar": 9
+      },
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "571de340_d583a73c",
@@ -272,6 +524,24 @@
       "writtenOn": "2021-05-10T08:11:54Z",
       "side": 1,
       "message": "ADBSetUp",
+      "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b8cf4f6_60164eb3",
+        "filename": "src/chromiumos/tast/local/chrome/mtp/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-11T00:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "571de340_d583a73c",
       "revId": "2fe0743d8d6bb2551de9462e762953a1441830c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
