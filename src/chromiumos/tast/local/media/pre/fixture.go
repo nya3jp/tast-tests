@@ -33,12 +33,14 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoLacros",
 		Desc: "Logged into a user session with logging enabled (lacros)",
-		Impl: launcher.NewStartedByData(launcher.PreExist,
-			chrome.ExtraArgs(chromeVideoArgs...),
-			chrome.LacrosExtraArgs(chromeVideoArgs...),
-			chrome.ExtraArgs(chromeBypassPermissionsArgs...),
-			chrome.LacrosExtraArgs(chromeBypassPermissionsArgs...),
-		),
+		Impl: launcher.NewStartedByData(launcher.PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ExtraArgs(chromeVideoArgs...),
+				chrome.LacrosExtraArgs(chromeVideoArgs...),
+				chrome.ExtraArgs(chromeBypassPermissionsArgs...),
+				chrome.LacrosExtraArgs(chromeBypassPermissionsArgs...),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -49,12 +51,14 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeCameraPerfLacros",
 		Desc: "Logged into a user session on Lacros without verbose logging that can affect the performance",
-		Impl: launcher.NewStartedByData(launcher.PreExist,
-			chrome.ExtraArgs(chromeBypassPermissionsArgs...),
-			chrome.LacrosExtraArgs(chromeBypassPermissionsArgs...),
-			chrome.ExtraArgs(chromeSuppressNotificationsArgs...),
-			chrome.LacrosExtraArgs(chromeSuppressNotificationsArgs...),
-		),
+		Impl: launcher.NewStartedByData(launcher.PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ExtraArgs(chromeBypassPermissionsArgs...),
+				chrome.LacrosExtraArgs(chromeBypassPermissionsArgs...),
+				chrome.ExtraArgs(chromeSuppressNotificationsArgs...),
+				chrome.LacrosExtraArgs(chromeSuppressNotificationsArgs...),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,

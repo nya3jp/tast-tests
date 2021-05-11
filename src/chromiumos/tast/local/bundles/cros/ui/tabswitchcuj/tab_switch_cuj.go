@@ -28,8 +28,11 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 
@@ -90,7 +93,25 @@ func waitUntilAllTabsLoaded(ctx context.Context, tconn *chrome.TestConn, timeout
 // record web contents via WPR and invoked by TabSwitchCUJ to exercise the tests
 // from the recorded contents.
 func Run(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	var cr *chrome.Chrome
+	var cs ash.ConnSource
+
+	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeChromeOS {
+		cr := s.PreValue().(*chrome.Chrome)
+		cs = cr
+	} else {
+		// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+		var artifactPath string
+		artifactPath = s.DataPath(launcher.DataArtifact)
+
+		var l *launcher.LacrosChrome
+		var err error
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), artifactPath, s.Param().(lacros.ChromeType))
+		if err != nil {
+			s.Fatal("Failed to initialize test: ", err)
+		}
+		defer lacros.CloseLacrosChrome(ctx, l)
+	}
 
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx
@@ -156,7 +177,7 @@ func Run(ctx context.Context, s *testing.State) {
 					}
 				}
 			}()
-			firstPage, err := cr.NewConn(ctx, data.startURL)
+			firstPage, err := cs.NewConn(ctx, data.startURL)
 			if err != nil {
 				s.Fatalf("Failed to open %s: %v", data.startURL, err)
 			}
@@ -168,7 +189,7 @@ func Run(ctx context.Context, s *testing.State) {
 			}
 
 			for _, u := range urls {
-				c, err := cr.NewConn(ctx, u)
+				c, err := cs.NewConn(ctx, u)
 				if err != nil {
 					s.Fatalf("Failed to open the URL %s: %v", u, err)
 				}
