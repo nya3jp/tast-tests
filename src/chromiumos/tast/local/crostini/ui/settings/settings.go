@@ -403,3 +403,15 @@ func (s *Settings) Resize(ctx context.Context, keyboard *input.KeyboardEventWrit
 
 	return sizeOnSlider, size, nil
 }
+
+// LeftClickUI performs a left click action on the given Finder
+func (s *Settings) LeftClickUI(ctx context.Context, findParams *nodewith.Finder) error {
+	return uiauto.Combine("focus and left click UI",
+		s.ui.FocusAndWait(findParams),
+		s.ui.LeftClick(findParams))(ctx)
+}
+
+// WaitForUI waits until findParams exists
+func (s *Settings) WaitForUI(ctx context.Context, findParams *nodewith.Finder) error {
+	return s.ui.WaitUntilExists(findParams)(ctx)
+}
