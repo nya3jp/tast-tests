@@ -32,7 +32,7 @@ func init() {
 			"pmarheine@chromium.org",    // Test Author
 			"chromeos-fwupd@google.com", // CrOS FWUPD
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"fwupd"},
 		HardwareDeps: hwdep.D(
 			// TODO(https://crbug.com/1198060): replace with PS175 feature
