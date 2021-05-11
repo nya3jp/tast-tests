@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cb71376_53fb6041",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-11T17:39:34Z",
+      "side": 1,
+      "message": "Using the SetAttenuation call. I also updated the initial call to just set the attenuation to 0.",
+      "parentUuid": "28896f0c_9f3e126d",
+      "range": {
+        "startLine": 68,
+        "startChar": 24,
+        "endLine": 68,
+        "endChar": 43
+      },
+      "revId": "52232c99401352a2c606b5fd3fcfa1353fbdd570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78b74531_b24d0e98",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-05T03:42:51Z",
       "side": 1,
       "message": "If you use attenuator.SetAttenuation() in setAttenuation function, you can just call setAttenuation(0).\n\nMmm... but in line 146, it should set total attenuation. \n\nOne question, why we need to set four channel\u0027s at once in line 146?",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "52232c99401352a2c606b5fd3fcfa1353fbdd570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64035a72_0a7a9cb5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-11T17:39:34Z",
+      "side": 1,
+      "message": "Using the SetAttenuation call. I loop through all of the channels to simulate a weak signal, which would include tx and rx. We probably could only set the first attenuation for the first AP, but I think it would be better to set both just in case the code for selecting the AP changes.",
+      "parentUuid": "78b74531_b24d0e98",
       "range": {
         "startLine": 75,
         "startChar": 1,
