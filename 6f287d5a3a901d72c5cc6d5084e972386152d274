@@ -237,6 +237,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae1279db_6d2eb7e8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-11T03:25:31Z",
+      "side": 1,
+      "message": "IMO, what we care about is how long we don\u0027t have connectivity -\u003e how many packets we lose, so we should probably avoid reporting loss rate since that takes into account other factors.",
+      "parentUuid": "4d706627_78936769",
+      "range": {
+        "startLine": 417,
+        "startChar": 1,
+        "endLine": 417,
+        "endChar": 14
+      },
+      "revId": "6f287d5a3a901d72c5cc6d5084e972386152d274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6b75032_8d494e28",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
         "patchSetId": 5
