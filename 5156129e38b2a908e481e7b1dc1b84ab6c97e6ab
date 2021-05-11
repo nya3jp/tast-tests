@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2125a80_27c15931",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-11T01:24:14Z",
+      "side": 1,
+      "message": "We can omit the rest.",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "933e54b1_9c589f5a",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-11T01:24:14Z",
+      "side": 1,
+      "message": "How about placing legacy to the first place as default?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 7
+      },
+      "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2102d2a_bf9aaa72",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-11T01:24:14Z",
+      "side": 1,
+      "message": "OpenWrt",
+      "range": {
+        "startLine": 61,
+        "startChar": 60,
+        "endLine": 61,
+        "endChar": 67
+      },
+      "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4064e525_1ac82f4c",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-11T01:24:14Z",
+      "side": 1,
+      "message": "OpenWrt, let\u0027s follow the official naming style: https://openwrt.org/",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 11
+      },
+      "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10461954_97e323d9",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-11T01:24:14Z",
+      "side": 1,
+      "message": "Shall we comment those interface as well as the functions they define?",
+      "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
