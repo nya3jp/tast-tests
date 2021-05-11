@@ -87,6 +87,16 @@ window.Tast = class Tast {
   }
 
   /**
+   * @param {number} ms
+   * @return {!Promise}
+   */
+  static sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  }
+
+  /**
    * @return {string}
    */
   static getScreenOrientation() {
@@ -100,9 +110,20 @@ window.Tast = class Tast {
    */
   static isVisible(selector) {
     const element = document.querySelector(selector);
-    const style = element && window.getComputedStyle(element);
-    return style && style.visibility !== 'hidden' &&
-        element.getClientRects().length > 0;
+    if (element === null) {
+      return false;
+    }
+    return Tast.isVisibleElement(element);
+  }
+
+  /**
+   * Returns whether the target HTML element is visible.
+   * @param {!HTMLElement} element
+   * @return {boolean}
+   */
+  static isVisibleElement(element) {
+    const style = window.getComputedStyle(element);
+    return style.visibility !== 'hidden' && element.getClientRects().length > 0;
   }
 
   /**
@@ -121,15 +142,28 @@ window.Tast = class Tast {
    * @param {string} selector Selector for the target element.
    */
   static click(selector) {
-    const element =
-        Array.from(document.querySelectorAll(selector)).find((element) => {
-          const style = window.getComputedStyle(element);
-          return style.display !== 'none';
-        });
+    const element = Array.from(document.querySelectorAll(selector))
+                        .find(Tast.isVisibleElement);
     if (!element) {
       throw new Error('No visible element: ', selector);
     }
     element.click();
+  }
+
+  /**
+   * Holds element with |selector| by sending pointerdown and pointerup events
+   * for |ms| milliseconds.
+   * @param {string} selector
+   * @param {number} ms
+   */
+  static async hold(selector, ms) {
+    const element = document.querySelector(selector);
+    if (!Tast.isVisible(selector)) {
+      throw new Error('No visible element: ', selector);
+    }
+    element.dispatchEvent(new Event('pointerdown'));
+    await Tast.sleep(ms);
+    element.dispatchEvent(new Event('pointerup'));
   }
 
   /**
@@ -344,6 +378,21 @@ window.Tast = class Tast {
   static getPreviewResolution() {
     const video = Tast.previewVideo;
     return {width: video.videoWidth, height: video.videoHeight};
+  }
+
+  /**
+   * Gets resolution of preview video.
+   * @throws {LegacyVCDError}
+   * @return {!Promise<!CanvasRenderingContext2D>}
+   */
+  static getPreviewFrame() {
+    const video = Tast.previewVideo;
+    const canvas =
+        new OffscreenCanvas(video.videoWidth, video.videoHeight);
+    const ctx =
+        /** @type {!CanvasRenderingContext2D} */ (canvas.getContext('2d'));
+    ctx.drawImage(video, 0, 0);
+    return ctx;
   }
 
   /**
