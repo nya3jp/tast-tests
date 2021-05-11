@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71e534ae_c7b7c464",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-05-11T09:54:48Z",
+      "side": 1,
+      "message": "Initial pass.",
+      "revId": "b7a65438e0f4f5553f8a1f7a005fe4ec34fd910f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f27eb4ae_9e82b19b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-05-11T09:54:48Z",
+      "side": 1,
+      "message": "nit: You can use time.Local .",
+      "range": {
+        "startLine": 52,
+        "startChar": 60,
+        "endLine": 52,
+        "endChar": 81
+      },
+      "revId": "b7a65438e0f4f5553f8a1f7a005fe4ec34fd910f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7564b3d_97c6d1a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-05-11T09:54:48Z",
+      "side": 1,
+      "message": "Can we make the scope of these variables shorter by moving these before its use (L103)?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "b7a65438e0f4f5553f8a1f7a005fe4ec34fd910f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea275b7f_7d842822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-05-11T09:54:48Z",
+      "side": 1,
+      "message": "If readECRTC() itself consumes some time in the loop in the function, the expectation becomes less precise.\n\nConsider the following timeline. ti represents real time.\nt1: writeERCTC(startTime) runs.\nt2: wilcoECRTC.Write() successfully completes, and it runs Sleep(sleepTime)\nt3: Sleep is done, and readECRTC() runs.\nt4: t, err :\u003d wilcoECRTC.Read(mainCtx) successfully completes.\n\nI think we should expect t to be about startTime + (t4 - t2).\nHowever, our expectation is centered around startTime + (t3 - t2).\n\nCan we possibly update the algorithm as follows to make the expectation more precise?\n\nwriteECRTC(mainCtx, startTime)\nrealStartTime :\u003d time.Now()\n\nSleep(sleepTime)\nt :\u003d readECRTC()\n\nrealElapsed :\u003d time.Now().Sub(realStartTime)\nelapsed :\u003d t.Sub(startTime)\n\ncheck |realElapsed - elapsed| \u003c 3s.",
+      "range": {
+        "startLine": 106,
+        "startChar": 6,
+        "endLine": 106,
+        "endChar": 15
+      },
+      "revId": "b7a65438e0f4f5553f8a1f7a005fe4ec34fd910f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
