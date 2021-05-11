@@ -108,6 +108,29 @@
       "message": "Shall we comment those interface as well as the functions they define?",
       "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63370f92_d57fa319",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-05-11T06:38:56Z",
+      "side": 1,
+      "message": "Shall we embed supportBridge and supportVeth in this interface?",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 29
+      },
+      "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
