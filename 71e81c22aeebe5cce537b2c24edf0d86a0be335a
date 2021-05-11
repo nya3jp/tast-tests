@@ -45,6 +45,30 @@
       },
       "revId": "71e81c22aeebe5cce537b2c24edf0d86a0be335a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a32f246b_56409185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-11T01:10:05Z",
+      "side": 1,
+      "message": "Typing backspace is to clear the VK canvas, otherwise we have to wait a small amount of time for the canvas to fade out (but sleeping is discouraged as you pointed out), and drawing strokes before the the canvas is clear can result in non-match errors. Typing backspace or enter can clear the canvas immediately as suggested by Curtis.",
+      "parentUuid": "b14d0497_93663437",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 29
+      },
+      "revId": "71e81c22aeebe5cce537b2c24edf0d86a0be335a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
