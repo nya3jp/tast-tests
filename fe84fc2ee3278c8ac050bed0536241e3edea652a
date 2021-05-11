@@ -39,6 +39,30 @@
       },
       "revId": "fe84fc2ee3278c8ac050bed0536241e3edea652a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e9faade_a0b93e16",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-11T01:02:22Z",
+      "side": 1,
+      "message": "Will be fixed in crrev.com/c/2886519.",
+      "parentUuid": "49d50b5a_170987cd",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 9
+      },
+      "revId": "fe84fc2ee3278c8ac050bed0536241e3edea652a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
