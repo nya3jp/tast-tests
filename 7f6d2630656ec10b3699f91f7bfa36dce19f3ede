@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c0235c3_b3f86d69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/calculator_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-11T03:33:30Z",
+      "side": 1,
+      "message": "Man that\u0027s a long time lol. Could it be that the accounts in gaiaPoolDefault are also trying to load a bunch of apps that other people/tests have synced? I remember another really widely shared OTA had a ton of apps synced to it that it would take a long time to load. Just wondering if this could be shorter with a more controlled OTA that\u0027s not used by other tests.",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "7f6d2630656ec10b3699f91f7bfa36dce19f3ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
