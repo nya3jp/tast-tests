@@ -122,6 +122,11 @@ func RoamFT(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
+	legacyRouter, err := tf.LegacyRouter()
+	if err != nil {
+		s.Fatal("Failed to get legacy router: ", err)
+	}
+
 	// Shorten a second for releasing each network device.
 	reserveForRelease := func(ctx context.Context) (context.Context, func()) {
 		return ctxutil.Shorten(ctx, time.Second)
@@ -139,12 +144,12 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		var err error
 		var br [2]string
 		for i := 0; i < 2; i++ {
-			br[i], err = tf.Router().NewBridge(ctx)
+			br[i], err = legacyRouter.NewBridge(ctx)
 			if err != nil {
 				s.Fatal("Failed to get a bridge: ", err)
 			}
 			defer func(ctx context.Context, b string) {
-				if err := tf.Router().ReleaseBridge(ctx, b); err != nil {
+				if err := legacyRouter.ReleaseBridge(ctx, b); err != nil {
 					s.Error("Failed to release bridge: ", err)
 				}
 			}(ctx, br[i])
@@ -153,12 +158,12 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		}
 
 		var veth [2]string
-		veth[0], veth[1], err = tf.Router().NewVethPair(ctx)
+		veth[0], veth[1], err = legacyRouter.NewVethPair(ctx)
 		if err != nil {
 			s.Fatal("Failed to get a veth pair: ", err)
 		}
 		defer func(ctx context.Context) {
-			if err := tf.Router().ReleaseVethPair(ctx, veth[0]); err != nil {
+			if err := legacyRouter.ReleaseVethPair(ctx, veth[0]); err != nil {
 				s.Error("Failed to release veth: ", err)
 			}
 		}(ctx)
@@ -167,11 +172,11 @@ func RoamFT(ctx context.Context, s *testing.State) {
 
 		// Bind the two ends of the veth to the two bridges.
 		for i := 0; i < 2; i++ {
-			if err := tf.Router().BindVethToBridge(ctx, veth[i], br[i]); err != nil {
+			if err := legacyRouter.BindVethToBridge(ctx, veth[i], br[i]); err != nil {
 				s.Fatalf("Failed to bind the veth %q to bridge %q: %v", veth[i], br[i], err)
 			}
 			defer func(ctx context.Context, ve string) {
-				if err := tf.Router().UnbindVeth(ctx, ve); err != nil {
+				if err := legacyRouter.UnbindVeth(ctx, ve); err != nil {
 					s.Errorf("Failed to unbind %q: %v", ve, err)
 				}
 			}(ctx, veth[i])
@@ -233,12 +238,12 @@ func RoamFT(ctx context.Context, s *testing.State) {
 
 		s.Log("Starting the first AP on ", br[0])
 		ap0Name := uniqueAPName()
-		ap0, err := tf.Router().StartHostapd(ctx, ap0Name, ap0Conf)
+		ap0, err := legacyRouter.StartHostapd(ctx, ap0Name, ap0Conf)
 		if err != nil {
 			s.Fatal("Failed to start the hostapd server on the first AP: ", err)
 		}
 		defer func(ctx context.Context) {
-			if err := tf.Router().StopHostapd(ctx, ap0); err != nil {
+			if err := legacyRouter.StopHostapd(ctx, ap0); err != nil {
 				s.Error("Failed to stop the hostapd server on the first AP: ", err)
 			}
 		}(ctx)
@@ -253,12 +258,12 @@ func RoamFT(ctx context.Context, s *testing.State) {
 			mask        = net.IPv4Mask(255, 255, 255, 0)
 		)
 		s.Logf("Starting the DHCP server on %s, serverIP=%s", br[0], serverIP)
-		ds, err := tf.Router().StartDHCP(ctx, ap0Name, br[0], startIP, endIP, serverIP, broadcastIP, mask)
+		ds, err := legacyRouter.StartDHCP(ctx, ap0Name, br[0], startIP, endIP, serverIP, broadcastIP, mask)
 		if err != nil {
 			s.Fatal("Failed to start the DHCP server: ", err)
 		}
 		defer func(ctx context.Context) {
-			if err := tf.Router().StopDHCP(ctx, ds); err != nil {
+			if err := legacyRouter.StopDHCP(ctx, ds); err != nil {
 				s.Error("Failed to stop the DHCP server: ", err)
 			}
 		}(ctx)
@@ -315,12 +320,12 @@ func RoamFT(ctx context.Context, s *testing.State) {
 
 		s.Log("Starting the second AP on ", br[1])
 		ap1Name := uniqueAPName()
-		ap1, err := tf.Router().StartHostapd(ctx, ap1Name, ap1Conf)
+		ap1, err := legacyRouter.StartHostapd(ctx, ap1Name, ap1Conf)
 		if err != nil {
 			s.Fatal("Failed to start the hostapd server on the second AP: ", err)
 		}
 		defer func(ctx context.Context) {
-			if err := tf.Router().StopHostapd(ctx, ap1); err != nil {
+			if err := legacyRouter.StopHostapd(ctx, ap1); err != nil {
 				s.Error("Failed to stop the hostapd server on the second AP: ", err)
 			}
 		}(ctx)

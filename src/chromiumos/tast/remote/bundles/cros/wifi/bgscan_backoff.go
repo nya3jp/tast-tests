@@ -93,6 +93,10 @@ func BgscanBackoff(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
+	legacyRouter, err := tf.LegacyRouter()
+	if err != nil {
+		s.Fatal("Failed to get legacy router: ", err)
+	}
 	// Turn off power save in this test as we are using ping RTT
 	// as metric in this test. The default beacon interval (~100ms)
 	// is too large compared with our threshold/margin and we'll
@@ -249,7 +253,7 @@ func BgscanBackoff(ctx context.Context, s *testing.State) {
 		ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap2)
 		defer cancel()
 
-		ap2MAC, err := tf.Router().MAC(ctx, ap2.Interface())
+		ap2MAC, err := legacyRouter.MAC(ctx, ap2.Interface())
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to get MAC address of %s on router", ap2.Interface())
 		}
