@@ -341,6 +341,14 @@ devices that support NV12 overlays (see `hwdep.SupportsNV12Overlays()`. The
 *_composited_hw tests don't have this restriction: they force hardware overlays
 off so that they have to be composited.
 
+Additionally, there are lacros variations for the *_exotic_crop_hw and
+the *_exotic_crop_composited_hw tests. Currently, both lacros-chrome and
+ash-chrome can demote videos to non-overlay by using their corresponding
+--enable-hardware-overlays flag. Both paths handle video visible rectangles
+differently. Therefore, the composited test for lacros needs two variations:
+one where only lacros-chrome disables overlays (*_lacros_composited_hw_lacros)
+and one where only ash-chrome disables overlays (*_ash_composited_hw_lacros).
+
 To check for color correctness, we sample a few interesting pixels. A video
 frame should have the following structure:
 
