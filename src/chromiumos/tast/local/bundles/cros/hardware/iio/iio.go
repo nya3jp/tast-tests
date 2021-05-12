@@ -5,6 +5,7 @@
 package iio
 
 import (
+	"context"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -15,6 +16,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // Device is a object we can read and write attributes from.
@@ -162,7 +164,7 @@ const iioBasePath = "sys/bus/iio/devices"
 var basePath = "/"
 
 // GetSensors enumerates sensors that are exposed by Cros EC as iio devices.
-func GetSensors() ([]*Sensor, error) {
+func GetSensors(ctx context.Context) ([]*Sensor, error) {
 	var ret []*Sensor
 
 	fullpath := filepath.Join(basePath, iioBasePath)
@@ -181,6 +183,8 @@ func GetSensors() ([]*Sensor, error) {
 		sensor, err := parseSensor(file.Name())
 		if err == nil {
 			ret = append(ret, sensor)
+		} else {
+			testing.ContextLogf(ctx, "Parsing sensor %s FAILED: %+v", file.Name(), err)
 		}
 	}
 
