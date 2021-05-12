@@ -31,7 +31,7 @@ const helpStr = `
 		contact: Contact is required for dual auth on test account login.
 		imeID: Input method to be installed and activated for testing. Default IME is xkb:us::eng.
 		region: Region for device language. Default value is "us". Other region options: jp, fr.
-		vkEnabled: 'true' or 'false'. Whether virtual keyboard is force enabled.
+		vk: 'true' or 'false'. Whether virtual keyboard is force enabled.
 		arc: 'true' or 'false'. Whether install arc and input test app. It is disabled by default to optimize booting time.
 		crd: 'true' or 'false'. Whether install RDP extension and initializing remote desktop session.
 		reset: 'true' or 'false'. Existing home is cleaned every iteration by default unless reset is false.
@@ -39,9 +39,9 @@ const helpStr = `
 
 	Example command:
 	* Login guest user with virtual keyboard enabled.
-		tast run -var=userType=guest -var=vkEnabled=true <dut ip> inputs.ManualVerify
+		tast run -var=userType=guest -var=vk=true <dut ip> inputs.Manual
 	* To test a specific input method on an android app.
-		tast run -var=arc=true -var=imeID=nacl_mozc_us <dut ip> inputs.ManualVerify
+		tast run -var=arc=true -var=imeID=nacl_mozc_us <dut ip> inputs.Manual
 `
 
 // envSettings represents the configurable parameters for the manual testing environment.
@@ -61,8 +61,8 @@ type envSettings struct {
 	imeID string
 	// region for device language. Default value is "us". Other region options: jp, fr.
 	region string
-	// vkEnabled indicates whether virtual keyboard is force enabled.
-	vkEnabled bool
+	// vk indicates whether virtual keyboard is force enabled.
+	vk bool
 	// arc indicates whether install arc and input test app.
 	arc bool
 	// crd indicates whether install RDP extension and initializing remote desktop session.
@@ -76,16 +76,16 @@ type envSettings struct {
 
 func init() {
 	// Example usage:
-	// $ tast run -var=user=<username> -var=pass=<password> <dut ip> inputs.ManualVerify
+	// $ tast run -var=user=<username> -var=pass=<password> <dut ip> inputs.Manual
 	// <username> and <password> are the credentials of the test GAIA account.
 	testing.AddTest(&testing.Test{
-		Func:         ManualVerify,
+		Func:         Manual,
 		Desc:         "Login device and setup environment for manual testing purpose",
 		Contacts:     []string{"shengjun@google.com", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		Timeout:      10 * time.Minute,
 		Vars: []string{
-			"userType", "user", "pass", "contact", "imeID", "region", "vkEnabled",
+			"userType", "user", "pass", "contact", "imeID", "region", "vk",
 			"arc", "crd", "reset", "chromeArgs",
 		},
 		Params: []testing.Param{{
@@ -107,19 +107,19 @@ func getVars(s *testing.State) *envSettings {
 		contact:    parseStringVar(s, "contact", ""),
 		imeID:      parseStringVar(s, "imeID", ""),
 		region:     parseStringVar(s, "region", ""),
-		vkEnabled:  true,
+		vk:         true,
 		arc:        false,
 		crd:        false,
 		reset:      true,
 		chromeArgs: []string{},
 	}
 
-	vkEnabledStr := parseStringVar(s, "vkEnabled", "true")
-	vkEnabled, err := strconv.ParseBool(vkEnabledStr)
+	vkStr := parseStringVar(s, "vk", "true")
+	vk, err := strconv.ParseBool(vkStr)
 	if err != nil {
-		s.Fatal("Failed to parse the variable `vkEnabled`: ", err)
+		s.Fatal("Failed to parse the variable `vk`: ", err)
 	}
-	settings.vkEnabled = vkEnabled
+	settings.vk = vk
 
 	arcStr := parseStringVar(s, "arc", "false")
 	arc, err := strconv.ParseBool(arcStr)
@@ -163,7 +163,7 @@ func validateSettings(settings *envSettings) error {
 	return nil
 }
 
-func ManualVerify(ctx context.Context, s *testing.State) {
+func Manual(ctx context.Context, s *testing.State) {
 	// Print out help content and end the test.
 	isHelp := s.Param().(bool)
 	if isHelp {
@@ -173,7 +173,7 @@ func ManualVerify(ctx context.Context, s *testing.State) {
 
 	defer func() {
 		if s.HasError() {
-			s.Log(`Please run "tast run <dut ip> inputs.ManualVerify.help" for more insructions of this test`)
+			s.Log(`Please run "tast run <dut ip> inputs.Manual.help" for more insructions of this test`)
 		}
 	}()
 
@@ -221,7 +221,7 @@ func ManualVerify(ctx context.Context, s *testing.State) {
 		opts = append(opts, chrome.Region(settings.region))
 	}
 
-	if settings.vkEnabled {
+	if settings.vk {
 		opts = append(opts, chrome.VKEnabled())
 	}
 
