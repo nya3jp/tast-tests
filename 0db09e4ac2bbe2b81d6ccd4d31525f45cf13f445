@@ -46,6 +46,30 @@
       },
       "revId": "0db09e4ac2bbe2b81d6ccd4d31525f45cf13f445",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef4712a7_4bcafb0a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-12T12:58:36Z",
+      "side": 1,
+      "message": "In this case, I do not think it is  common requirement. It could just be done inline the test. WDYT @Judy",
+      "parentUuid": "09e19d4d_51e87b48",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 1
+      },
+      "revId": "0db09e4ac2bbe2b81d6ccd4d31525f45cf13f445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
