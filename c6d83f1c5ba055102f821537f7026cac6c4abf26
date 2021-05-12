@@ -58,6 +58,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef0de40e_4c65ec7e",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-12T23:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "793604db_56b3e067",
+      "range": {
+        "startLine": 244,
+        "startChar": 5,
+        "endLine": 244,
+        "endChar": 11
+      },
+      "revId": "c6d83f1c5ba055102f821537f7026cac6c4abf26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a06f210_87192df3",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-12T23:16:33Z",
+      "side": 1,
+      "message": "Ack. I renamed the function to be clearer.",
+      "parentUuid": "411216ca_5f008937",
+      "revId": "c6d83f1c5ba055102f821537f7026cac6c4abf26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d355d609_320eaacf",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-05-11T17:39:44Z",
       "side": 1,
       "message": "put the actual value first in the error message\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 246,
+        "startChar": 48,
+        "endLine": 246,
+        "endChar": 72
+      },
+      "revId": "c6d83f1c5ba055102f821537f7026cac6c4abf26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25e62090_642d0fbf",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-12T23:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d355d609_320eaacf",
       "range": {
         "startLine": 246,
         "startChar": 48,
