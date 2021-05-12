@@ -127,7 +127,7 @@ const TFServiceName = "tast.cros.wifi.ShillService"
 type routerData struct {
 	target string
 	host   *ssh.Conn
-	object *Router
+	object BaseRouter
 }
 
 // TestFixture sets up the context for a basic WiFi test.
@@ -140,7 +140,7 @@ type TestFixture struct {
 
 	pcapTarget string
 	pcapHost   *ssh.Conn
-	pcap       *Router
+	pcap       BaseRouter
 
 	attenuatorTarget string
 	attenuator       *attenuator.Attenuator
@@ -383,7 +383,12 @@ func (tf *TestFixture) ReserveForClose(ctx context.Context) (context.Context, co
 func (tf *TestFixture) CollectLogs(ctx context.Context) error {
 	var firstErr error
 	for _, router := range tf.routers {
-		err := router.object.CollectLogs(ctx)
+		// Assert router can collect logs
+		obj, ok := router.object.(supportLogs)
+		if !ok {
+			return errors.New("Router does not support log collection")
+		}
+		err := obj.CollectLogs(ctx)
 		if err != nil {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect logs"))
 		}
@@ -497,6 +502,14 @@ func (tf *TestFixture) getUniqueAPName() string {
 func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "tf.ConfigureAP")
 	defer st.End()
+	p, ok := tf.pcap.(supportCapture)
+	if !ok {
+		return nil, errors.Errorf("pcap device of type %v does not have log capture support", tf.pcap.GetRouterType())
+	}
+	r, ok := tf.routers[idx].object.(legacyOpenWrtShared)
+	if !ok {
+		return nil, errors.Errorf("router device of type %v does not have legacy/openwrt support", tf.routers[idx].object.GetRouterType())
+	}
 
 	name := tf.getUniqueAPName()
 
@@ -523,18 +536,18 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 		if err != nil {
 			return nil, err
 		}
-		capturer, err = tf.pcap.StartCapture(ctx, name, config.Channel, freqOps)
+		capturer, err = p.StartCapture(ctx, name, config.Channel, freqOps)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to start capturer")
 		}
 		defer func() {
 			if retErr != nil {
-				tf.pcap.StopCapture(ctx, capturer)
+				p.StopCapture(ctx, capturer)
 			}
 		}()
 	}
 
-	ap, err := StartAPIface(ctx, tf.routers[idx].object, name, config)
+	ap, err := StartAPIface(ctx, r, name, config)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start APIface")
 	}
@@ -559,12 +572,20 @@ func (tf *TestFixture) ReserveForDeconfigAP(ctx context.Context, ap *APIface) (c
 	if len(tf.routers) == 0 {
 		return ctx, func() {}
 	}
+	p, ok := tf.pcap.(supportCapture)
+	if !ok {
+		return ctx, func() {}
+	}
 	ctx, cancel := ap.ReserveForStop(ctx)
 	if capturer, ok := tf.capturers[ap]; ok {
+		// Stop the call if the router does not support ResrveForStopCapture.
+		if _, ok := tf.pcap.(supportCapture); !ok {
+			return ctx, func() {}
+		}
 		// Also reserve time for stopping the capturer if it exists.
 		// Noted that CancelFunc returned here is dropped as we rely on its
 		// parent's cancel() being called.
-		ctx, _ = tf.pcap.ReserveForStopCapture(ctx, capturer)
+		ctx, _ = p.ReserveForStopCapture(ctx, capturer)
 	}
 	return ctx, cancel
 }
@@ -573,7 +594,10 @@ func (tf *TestFixture) ReserveForDeconfigAP(ctx context.Context, ap *APIface) (c
 func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 	ctx, st := timing.Start(ctx, "tf.DeconfigAP")
 	defer st.End()
-
+	p, ok := tf.pcap.(supportCapture)
+	if !ok {
+		return errors.Errorf("pcap device of type %v does not have log capture support", tf.pcap.GetRouterType())
+	}
 	var firstErr error
 
 	capturer := tf.capturers[ap]
@@ -582,7 +606,7 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop APIface"))
 	}
 	if capturer != nil {
-		if err := tf.pcap.StopCapture(ctx, capturer); err != nil {
+		if err := p.StopCapture(ctx, capturer); err != nil {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop capturer"))
 		}
 	}
@@ -1012,17 +1036,27 @@ func (tf *TestFixture) AssertNoDisconnect(ctx context.Context, f func(context.Co
 }
 
 // RouterByID returns the respective Router object in the fixture.
-func (tf *TestFixture) RouterByID(idx int) *Router {
+func (tf *TestFixture) RouterByID(idx int) BaseRouter {
 	return tf.routers[idx].object
 }
 
+// GetLegacyRouter returns Router 0 object in the fixture.
+func (tf *TestFixture) GetLegacyRouter() LegacyRouter {
+	return tf.RouterByID(0).(LegacyRouter)
+}
+
 // Router returns Router 0 object in the fixture.
-func (tf *TestFixture) Router() *Router {
+func (tf *TestFixture) Router() BaseRouter {
 	return tf.RouterByID(0)
 }
 
-// Pcap returns the pcap Router object in the fixture.
-func (tf *TestFixture) Pcap() *Router {
+// GetLegacyPcap returns the pcap Router object in the fixture.
+func (tf *TestFixture) GetLegacyPcap() LegacyRouter {
+	return tf.pcap.(LegacyRouter)
+}
+
+// fPcap returns the pcap Router object in the fixture.
+func (tf *TestFixture) fPcap() BaseRouter {
 	return tf.pcap
 }
 
@@ -1357,14 +1391,18 @@ func (tf *TestFixture) TurnOffBgscan(ctx context.Context) (context.Context, func
 // SendChannelSwitchAnnouncement sends a CSA frame and waits for Client_Disconnection, or Channel_Switch event.
 func (tf *TestFixture) SendChannelSwitchAnnouncement(ctx context.Context, ap *APIface, maxRetry, alternateChannel int) error {
 	ctxForCloseFrameSender := ctx
-	ctx, cancel := tf.Router().ReserveForCloseFrameSender(ctx)
+	r, ok := tf.GetLegacyRouter().(supportFrameSender)
+	if !ok {
+		return errors.Errorf("router device of type %v does not have management frame support", tf.GetLegacyRouter().GetRouterType())
+	}
+	ctx, cancel := r.ReserveForCloseFrameSender(ctx)
 	defer cancel()
-	sender, err := tf.Router().NewFrameSender(ctx, ap.Interface())
+	sender, err := r.NewFrameSender(ctx, ap.Interface())
 	if err != nil {
 		return errors.Wrap(err, "failed to create frame sender")
 	}
 	defer func(ctx context.Context) error {
-		if err := tf.Router().CloseFrameSender(ctx, sender); err != nil {
+		if err := r.CloseFrameSender(ctx, sender); err != nil {
 			return errors.Wrap(err, "failed to close frame sender")
 		}
 		return nil

@@ -40,7 +40,7 @@ func freeSubnetIdx(i byte) {
 // It is comprised of a hostapd and a dhcpd. The DHCP server is assigned with the subnet
 // 192.168.$subnetIdx.0/24.
 type APIface struct {
-	router    *Router
+	router    BaseRouter
 	name      string
 	iface     string
 	subnetIdx byte
@@ -92,13 +92,12 @@ func (h *APIface) ServerSubnet() *net.IPNet {
 // StartAPIface starts the service.
 // After started, the caller should call h.Stop() at the end, and use the shortened ctx
 // (provided by h.ReserveForStop()) before h.Stop() to reserve time for h.Stop() to run.
-func StartAPIface(ctx context.Context, r *Router, name string, conf *hostapd.Config) (_ *APIface, retErr error) {
+func StartAPIface(ctx context.Context, r legacyOpenWrtShared, name string, conf *hostapd.Config) (_ *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "StartAPIface")
 	defer st.End()
 
 	var h APIface
 	var err error
-
 	h.router = r
 
 	h.hostapd, err = r.StartHostapd(ctx, name, conf)
@@ -159,18 +158,21 @@ func (h *APIface) ReserveForStop(ctx context.Context) (context.Context, context.
 func (h *APIface) Stop(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "APIface.Stop")
 	defer st.End()
-
+	r, ok := h.router.(legacyOpenWrtShared)
+	if !ok {
+		return errors.Errorf("router device of type %v does not have legacy/openwrt support", h.router.GetRouterType())
+	}
 	if h.stopped {
 		return nil
 	}
 	var retErr error
 	if h.dhcpd != nil {
-		if err := h.router.StopDHCP(ctx, h.dhcpd); err != nil {
+		if err := r.StopDHCP(ctx, h.dhcpd); err != nil {
 			retErr = errors.Wrapf(retErr, "failed to stop dhcp server, err=%s", err.Error())
 		}
 	}
 	if h.hostapd != nil {
-		if err := h.router.StopHostapd(ctx, h.hostapd); err != nil {
+		if err := r.StopHostapd(ctx, h.hostapd); err != nil {
 			retErr = errors.Wrapf(retErr, "failed to stop hostapd, err=%s", err.Error())
 		}
 	}
@@ -188,8 +190,12 @@ func (h *APIface) DeauthenticateClient(ctx context.Context, clientMAC string) er
 // On failure, the APIface object will keep holding the old index, but the states of the
 // dhcp server and WiFi interface are not guaranteed and a call of Stop is still needed.
 func (h *APIface) ChangeSubnetIdx(ctx context.Context) (retErr error) {
+	r, ok := h.router.(supportDhcp)
+	if !ok {
+		return errors.Errorf("router device of type %v does not have dhcpcd support", h.router.GetRouterType())
+	}
 	if h.dhcpd != nil {
-		if err := h.router.StopDHCP(ctx, h.dhcpd); err != nil {
+		if err := r.StopDHCP(ctx, h.dhcpd); err != nil {
 			return errors.Wrap(err, "failed to stop dhcp server")
 		}
 		h.dhcpd = nil
@@ -212,7 +218,7 @@ func (h *APIface) ChangeSubnetIdx(ctx context.Context) (retErr error) {
 	}()
 	testing.ContextLogf(ctx, "changing AP subnet index from %d to %d", oldIdx, newIdx)
 
-	h.dhcpd, err = h.router.StartDHCP(ctx, h.name, h.iface, h.subnetIP(1), h.subnetIP(128), h.ServerIP(), h.broadcastIP(), h.mask())
+	h.dhcpd, err = r.StartDHCP(ctx, h.name, h.iface, h.subnetIP(1), h.subnetIP(128), h.ServerIP(), h.broadcastIP(), h.mask())
 	if err != nil {
 		return errors.Wrap(err, "failed to start dhcp server")
 	}

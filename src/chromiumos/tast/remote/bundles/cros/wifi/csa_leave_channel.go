@@ -118,16 +118,16 @@ func CSALeaveChannel(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ping from DUT: ", err)
 	}
 
-	sender, err := tf.Router().NewFrameSender(ctx, ap.Interface())
+	sender, err := tf.GetLegacyRouter().NewFrameSender(ctx, ap.Interface())
 	if err != nil {
 		s.Fatal("Failed to create frame sender: ", err)
 	}
 	defer func(dCtx context.Context) {
-		if err := tf.Router().CloseFrameSender(dCtx, sender); err != nil {
+		if err := tf.GetLegacyRouter().CloseFrameSender(dCtx, sender); err != nil {
 			s.Error("Failed to close frame sender: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.Router().ReserveForCloseFrameSender(ctx)
+	ctx, cancel = tf.GetLegacyRouter().ReserveForCloseFrameSender(ctx)
 	defer cancel()
 
 	ew, err := iw.NewEventWatcher(ctx, s.DUT())
