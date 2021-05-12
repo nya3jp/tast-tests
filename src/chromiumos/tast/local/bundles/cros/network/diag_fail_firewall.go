@@ -9,6 +9,7 @@ import (
 	"time"
 
 	diagcommon "chromiumos/tast/common/network/diag"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/network/diag"
 	"chromiumos/tast/local/bundles/cros/network/firewall"
 	"chromiumos/tast/testing"
@@ -54,29 +55,38 @@ func init() {
 func DiagFailFirewall(ctx context.Context, s *testing.State) {
 	params := s.Param().(failFirewallParams)
 
+	// Create cleanup context to ensure iptables are restored.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, firewall.IptablesCleanupTimeout)
+	defer cancel()
+
+	if err := firewall.SaveIptables(ctx, s.OutDir()); err != nil {
+		s.Fatal("Unable to save iptables: ", err)
+	}
+
 	createFirewallParams := firewall.CreateFirewallParams{
 		// Drop http and https traffic.
 		BlockPorts:     params.BlockPorts,
 		BlockProtocols: []string{"tcp", "udp"},
 		Timeout:        3 * time.Second,
 	}
-
 	if err := firewall.CreateFirewall(ctx, createFirewallParams); err != nil {
 		s.Fatal("Failed to create firewall: ", err)
 	}
 
-	mojo := s.FixtValue().(*diag.MojoAPI)
-	result, err := mojo.RunRoutine(ctx, params.Routine)
-	if err != nil {
-		s.Fatal("Failed to run routine: ", err)
-	}
+	defer func() {
+		if err := firewall.RestoreIptables(cleanupCtx, s.OutDir()); err != nil {
+			s.Log("Failed to restore iptables: ", err)
+		}
+	}()
 
 	const problemFirewallDetected = 1
 	expectedResult := &diagcommon.RoutineResult{
 		Verdict:  diagcommon.VerdictProblem,
 		Problems: []uint32{problemFirewallDetected},
 	}
-	if err := diagcommon.CheckRoutineResult(result, expectedResult); err != nil {
-		s.Fatal("Routine result did not match: ", err)
+	mojo := s.FixtValue().(*diag.MojoAPI)
+	if err := mojo.PollRoutine(ctx, params.Routine, expectedResult); err != nil {
+		s.Fatal("Failed to poll routine: ", err)
 	}
 }
