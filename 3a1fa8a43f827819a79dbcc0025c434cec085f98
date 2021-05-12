@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2982e6d5_3f9a18ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-12T07:03:54Z",
+      "side": 1,
+      "message": "This is the dependency of CL:2891114, add the same reviewer.",
+      "revId": "3a1fa8a43f827819a79dbcc0025c434cec085f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
