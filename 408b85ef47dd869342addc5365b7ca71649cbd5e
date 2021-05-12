@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ca6135_7fff215c",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-05-12T09:54:16Z",
+      "side": 1,
+      "message": "DHCP",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 12
+      },
+      "revId": "408b85ef47dd869342addc5365b7ca71649cbd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa129a17_f982be92",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-05-12T09:54:16Z",
+      "side": 1,
+      "message": "I think the names of these named return values (ret, retErr, etc) don\u0027t provide much info in the interface definition. We may either omit them, or give them better names especially when it\u0027s a default golang type. E.g., NewBridge returns the name of the created bridge, so instead of only `string`, `bridgeName string` might be better.",
+      "range": {
+        "startLine": 94,
+        "startChar": 109,
+        "endLine": 94,
+        "endChar": 112
+      },
+      "revId": "408b85ef47dd869342addc5365b7ca71649cbd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
