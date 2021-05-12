@@ -16,6 +16,115 @@
       "message": "Note: there is no one available on my team for reviews, so we have to rely on Tast owner reviews for now. Thanks.",
       "revId": "f561cf6de87bdce4d5da3afc7612cc1704274a26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6300f11e_c26dec54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-12T02:55:25Z",
+      "side": 1,
+      "message": "Sorry for delay, I was busy on constable rotation yesterday.\n",
+      "revId": "f561cf6de87bdce4d5da3afc7612cc1704274a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04983be3_8a676499",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-12T02:55:25Z",
+      "side": 1,
+      "message": "style: Please add a period to the end of full-line comments.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 23,
+        "startChar": 32,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "f561cf6de87bdce4d5da3afc7612cc1704274a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5e3e2f2_45096bec",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-12T02:55:25Z",
+      "side": 1,
+      "message": "This directory should be removed after we\u0027re done with it.",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 13
+      },
+      "revId": "f561cf6de87bdce4d5da3afc7612cc1704274a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7960968_62b8132e",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-12T02:55:25Z",
+      "side": 1,
+      "message": "We should use path/filepath for file path manipulations. But I see you use filepath in some places in this file... what are difference?",
+      "range": {
+        "startLine": 71,
+        "startChar": 56,
+        "endLine": 71,
+        "endChar": 60
+      },
+      "revId": "f561cf6de87bdce4d5da3afc7612cc1704274a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af3cca27_18797bba",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-12T02:55:25Z",
+      "side": 1,
+      "message": "As discussed in tast-users (https://groups.google.com/a/chromium.org/g/tast-users/c/mrIgfzlLVfg/m/2ArBaI-UAwAJ), it\u0027s nicer to avoid using os.Chdir. Can you use exec.Cmd.Dir instead?",
+      "range": {
+        "startLine": 82,
+        "startChar": 11,
+        "endLine": 82,
+        "endChar": 19
+      },
+      "revId": "f561cf6de87bdce4d5da3afc7612cc1704274a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
