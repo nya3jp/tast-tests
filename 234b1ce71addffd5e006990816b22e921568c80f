@@ -16,6 +16,46 @@
       "message": "Please approve this Cherry Pick to R91",
       "revId": "234b1ce71addffd5e006990816b22e921568c80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c272e858_0cc0b503",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-12T08:15:42Z",
+      "side": 1,
+      "message": "LGTM, but please check the comment before submitting.",
+      "revId": "234b1ce71addffd5e006990816b22e921568c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "772c83f3_53b99f1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc_app_open.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-12T08:15:42Z",
+      "side": 1,
+      "message": "Just to make sure: isn\u0027t this line redundant with line 76, or are is there really another noThanks button after the first one got clicked in line 76?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 101
+      },
+      "revId": "234b1ce71addffd5e006990816b22e921568c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
