@@ -134,6 +134,11 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		return id
 	}
 
+	clientMAC, err := tf.ClientHardwareAddr(ctx)
+	if err != nil {
+		s.Fatal("Unable to get DUT MAC address: ", err)
+	}
+
 	// runOnce sets up the network environment as mentioned above, and verifies the DUT is able to roam between the APs iff expectedFailure is not set.
 	runOnce := func(ctx context.Context, secConfFac security.ConfigFactory, expectedFailure bool) {
 		var err error
@@ -337,10 +342,10 @@ func RoamFT(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to discover the BSSID %s: %v", mac1.String(), err)
 		}
 
-		s.Logf("Requesting roam from %s to %s", mac0, mac1)
-		// Request shill to send D-Bus roam request to wpa_supplicant.
-		if err := tf.RequestRoam(ctx, iface, mac1.String(), 15*time.Second); err != nil {
-			s.Fatalf("Failed to roam from %s to %s: %v", mac0, mac1, err)
+		s.Logf("Sending BSS TM Request from AP %s to DUT %s", mac0, clientMAC)
+		req := hostapd.BSSTMReqParams{Neighbors: []string{mac1.String()}}
+		if err := ap0.SendBSSTMRequest(ctx, clientMAC, req); err != nil {
+			s.Fatal("Failed to send BSS TM Request: ", err)
 		}
 
 		monitorResult, err := waitForProps()
