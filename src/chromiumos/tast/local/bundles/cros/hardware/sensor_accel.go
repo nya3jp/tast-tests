@@ -33,7 +33,7 @@ func SensorAccel(ctx context.Context, s *testing.State) {
 		accelErr = accel1g * .25
 	)
 
-	sensors, err := iio.GetSensors()
+	sensors, err := iio.GetSensors(ctx)
 	if err != nil {
 		s.Fatal("Error reading sensors on DUT: ", err)
 	}
