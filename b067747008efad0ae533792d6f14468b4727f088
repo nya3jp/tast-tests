@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56d76524_4dd9edff",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-12T23:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fe2c2fc_aed53ffe",
+      "range": {
+        "startLine": 275,
+        "startChar": 54,
+        "endLine": 275,
+        "endChar": 55
+      },
+      "revId": "b067747008efad0ae533792d6f14468b4727f088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f041068_a1f043ff",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-05-11T02:08:37Z",
       "side": 1,
       "message": "huge nit: \"w\" -\u003e \"W\"\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 329,
+        "startChar": 4,
+        "endLine": 329,
+        "endChar": 5
+      },
+      "revId": "b067747008efad0ae533792d6f14468b4727f088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53b56e90_63eccba5",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-12T23:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f041068_a1f043ff",
       "range": {
         "startLine": 329,
         "startChar": 4,
