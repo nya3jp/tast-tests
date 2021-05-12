@@ -6,10 +6,12 @@ package video
 
 import (
 	"context"
+	"strings"
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/video/play"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -17,6 +19,7 @@ import (
 type contentsParams struct {
 	fileName    string
 	refFileName string
+	chromeType  lacros.ChromeType
 }
 
 func init() {
@@ -35,6 +38,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-360p.h264.mp4",
 				refFileName: "still-colors-360p.ref.png",
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-360p.h264.mp4", "still-colors-360p.ref.png"},
@@ -47,6 +51,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-720x480-cropped-to-640x360.h264.mp4",
 				refFileName: "still-colors-360p.ref.png",
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png"},
@@ -54,10 +59,24 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Fixture:           "chromeVideo",
 		}, {
+			// TODO(andrescj): move to graphics_nightly after the test is stabilized.
+			Name: "h264_360p_exotic_crop_hw_lacros",
+			Val: contentsParams{
+				fileName:    "still-colors-720x480-cropped-to-640x360.h264.mp4",
+				refFileName: "still-colors-360p.ref.png",
+				chromeType:  lacros.ChromeTypeLacros,
+			},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png", launcher.DataArtifact},
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs", "lacros"},
+			Fixture:           "chromeVideoLacros",
+		}, {
 			Name: "h264_480p_hw",
 			Val: contentsParams{
 				fileName:    "still-colors-480p.h264.mp4",
 				refFileName: "still-colors-480p.ref.png",
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-480p.h264.mp4", "still-colors-480p.ref.png"},
@@ -69,6 +88,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-720p.h264.mp4",
 				refFileName: "still-colors-720p.ref.png",
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-720p.h264.mp4", "still-colors-720p.ref.png"},
@@ -80,6 +100,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-1080p.h264.mp4",
 				refFileName: "still-colors-1080p.ref.png",
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-1080p.h264.mp4", "still-colors-1080p.ref.png"},
@@ -91,6 +112,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-360p.h264.mp4",
 				refFileName: "still-colors-360p.ref.png",
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-360p.h264.mp4", "still-colors-360p.ref.png"},
@@ -102,16 +124,42 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-720x480-cropped-to-640x360.h264.mp4",
 				refFileName: "still-colors-360p.ref.png",
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Fixture:           "chromeCompositedVideo",
 		}, {
+			// TODO(andrescj): move to graphics_nightly after the test is stabilized.
+			Name: "h264_360p_exotic_crop_ash_composited_hw_lacros",
+			Val: contentsParams{
+				fileName:    "still-colors-720x480-cropped-to-640x360.h264.mp4",
+				refFileName: "still-colors-360p.ref.png",
+				chromeType:  lacros.ChromeTypeLacros,
+			},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png", launcher.DataArtifact},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs", "lacros"},
+			Fixture:           "chromeAshCompositedVideoLacros",
+		}, {
+			// TODO(andrescj): move to graphics_nightly after the test is stabilized.
+			Name: "h264_360p_exotic_crop_lacros_composited_hw_lacros",
+			Val: contentsParams{
+				fileName:    "still-colors-720x480-cropped-to-640x360.h264.mp4",
+				refFileName: "still-colors-360p.ref.png",
+				chromeType:  lacros.ChromeTypeLacros,
+			},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png", launcher.DataArtifact},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs", "lacros"},
+			Fixture:           "chromeLacrosCompositedVideoLacros",
+		}, {
 			Name: "h264_480p_composited_hw",
 			Val: contentsParams{
 				fileName:    "still-colors-480p.h264.mp4",
 				refFileName: "still-colors-480p.ref.png",
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-480p.h264.mp4", "still-colors-480p.ref.png"},
@@ -122,6 +170,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-720p.h264.mp4",
 				refFileName: "still-colors-720p.ref.png",
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-720p.h264.mp4", "still-colors-720p.ref.png"},
@@ -132,6 +181,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-1080p.h264.mp4",
 				refFileName: "still-colors-1080p.ref.png",
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-1080p.h264.mp4", "still-colors-1080p.ref.png"},
@@ -146,7 +196,28 @@ func init() {
 // Contents starts playing a video, takes a screenshot, and checks a few interesting pixels.
 func Contents(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(contentsParams)
-	if err := play.TestPlayAndScreenshot(ctx, s, s.FixtValue().(*chrome.Chrome), testOpt.fileName, testOpt.refFileName); err != nil {
+
+	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+	var artifactPath string
+	if testOpt.chromeType == lacros.ChromeTypeLacros {
+		if !strings.Contains(s.TestName(), "lacros") {
+			s.Fatal("Non-lacros test run with lacros chrome-type")
+		}
+		artifactPath = s.DataPath(launcher.DataArtifact)
+	}
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, testOpt.chromeType)
+	if err != nil {
+		s.Fatal("Failed to initialize test: ", err)
+	}
+	defer lacros.CloseLacrosChrome(ctx, l)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+	defer tconn.Close()
+
+	if err := play.TestPlayAndScreenshot(ctx, s, tconn, cs, testOpt.fileName, testOpt.refFileName); err != nil {
 		s.Fatal("TestPlayAndScreenshot failed: ", err)
 	}
 }
