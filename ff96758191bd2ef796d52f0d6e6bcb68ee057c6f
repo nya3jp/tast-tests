@@ -45,6 +45,30 @@
       },
       "revId": "ff96758191bd2ef796d52f0d6e6bcb68ee057c6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac70716d_4fa0b908",
+        "filename": "src/chromiumos/tast/local/memory/crosvm_fincore.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-12T02:39:51Z",
+      "side": 1,
+      "message": "I think it\u0027s okay to implement UnmarshalJSON in fincoreJSONv1 and use json.Unmarshal; it\u0027s more aligned to the json package\u0027s way to overriding JSON deserialization.",
+      "parentUuid": "114ab17e_7b703352",
+      "range": {
+        "startLine": 92,
+        "startChar": 14,
+        "endLine": 92,
+        "endChar": 23
+      },
+      "revId": "ff96758191bd2ef796d52f0d6e6bcb68ee057c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
