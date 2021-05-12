@@ -320,9 +320,9 @@ func init() {
 			},
 			Timeout: 5 * time.Minute,
 		}, {
-			Name: "kms_vvs",
+			Name: "kms_vrr",
 			Val: igtTest{
-				exe: "kms_vvs",
+				exe: "kms_vrr",
 			},
 			Timeout: 5 * time.Minute,
 		}, {
