@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cb3b063_f7587418",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-05-12T20:36:57Z",
+      "side": 1,
+      "message": "Looks like infra failure, \"autoserv crashed\".",
+      "revId": "2355dbddef37cf1b1a65d7d9380f0d6f545884bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
