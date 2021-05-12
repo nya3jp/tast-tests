@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be30fce8_44c8618e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rw_no_update_ro.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-12T23:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b21add88_78bfa399",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 8
+      },
+      "revId": "3bdf050757b0f5013b663520f588a060071722a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8a9bc55_f6a8ac89",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "137f7a27_dfe8fa99",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rw_no_update_ro.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-12T23:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8a9bc55_f6a8ac89",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 19
+      },
+      "revId": "3bdf050757b0f5013b663520f588a060071722a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82f35fc4_2b5b847d",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-05-11T07:30:15Z",
       "side": 1,
       "message": "I\u0027m wondering if it might be beneficial to include a comment that defines all these switches and what they do? Like\n```\n[]string{\n\"flashrom\",\n\"--fast-verify\", // Does something magical...\n}\n```",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 9
+      },
+      "revId": "3bdf050757b0f5013b663520f588a060071722a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c0ab964_9e791074",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rw_no_update_ro.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-12T23:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82f35fc4_2b5b847d",
       "range": {
         "startLine": 68,
         "startChar": 1,
