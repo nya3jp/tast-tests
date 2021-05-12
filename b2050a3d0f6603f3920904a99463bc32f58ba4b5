@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd9c4d9_45275ef4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2021-05-12T04:48:07Z",
+      "side": 1,
+      "message": "Why -name \u0027.*\u0027? I\u0027d think you\u0027d want to check all files, not only dot files?",
+      "range": {
+        "startLine": 97,
+        "startChar": 86,
+        "endLine": 97,
+        "endChar": 88
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95f70add_92ed6580",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2021-05-12T04:48:07Z",
+      "side": 1,
+      "message": "Should this be /usr as well?",
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df0a182_0e6cd34d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2021-05-12T04:48:07Z",
+      "side": 1,
+      "message": "I don\u0027t see it being used post-restore, is it used to verify restore? Or is this a TODO?",
+      "range": {
+        "startLine": 116,
+        "startChar": 23,
+        "endLine": 117,
+        "endChar": 26
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e9c1dcc_6367c688",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2021-05-12T04:48:07Z",
+      "side": 1,
+      "message": "Should you do something before restoring to modify or invalidate the container, to check that the restore did something instead of being a no-op?",
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
