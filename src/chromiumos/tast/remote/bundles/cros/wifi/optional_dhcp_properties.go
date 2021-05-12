@@ -42,6 +42,11 @@ func OptionalDHCPProperties(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
+	legacyRouter, err := tf.LegacyRouter()
+	if err != nil {
+		s.Fatal("Failed to get legacy router: ", err)
+	}
+
 	const vendorClass = "testVendorClass"
 	const hostname = "testHostname"
 
@@ -89,16 +94,16 @@ func OptionalDHCPProperties(ctx context.Context, s *testing.State) {
 		ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 		defer cancel()
 
-		capturer, err := tf.Router().StartRawCapturer(ctx, "dhcp", ap.Interface())
+		capturer, err := legacyRouter.StartRawCapturer(ctx, "dhcp", ap.Interface())
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to start capturer")
 		}
 		defer func(ctx context.Context) {
-			if err := tf.Router().StopRawCapturer(ctx, capturer); err != nil {
+			if err := legacyRouter.StopRawCapturer(ctx, capturer); err != nil {
 				collectFirstErr(errors.Wrap(err, "failed to close capturer"))
 			}
 		}(ctx)
-		ctx, cancel = tf.Router().ReserveForStopRawCapturer(ctx, capturer)
+		ctx, cancel = legacyRouter.ReserveForStopRawCapturer(ctx, capturer)
 		defer cancel()
 
 		testing.ContextLog(ctx, "Connecting to WiFi")
