@@ -200,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46a7dbbb_19ee7f4f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-12T23:16:15Z",
+      "side": 1,
+      "message": "Unfortunately, logging only on error does not provide the context that is helpful for debugging. See my earlier comment about the sequence of events (not failures) leading up to the error being useful context to understand the situation that led up to the failure. I don\u0027t think there\u0027s any hard requirement about not doing this in Tast. See for example, this CL: https://crrev.com/c/2847137, which also has logging.",
+      "parentUuid": "ae736ea1_595225e5",
+      "range": {
+        "startLine": 114,
+        "startChar": 16,
+        "endLine": 114,
+        "endChar": 27
+      },
+      "revId": "c97d9f783a454905c16cf8ea12c2d6bde2cea4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "394ae7a3_7fdb5e3f",
