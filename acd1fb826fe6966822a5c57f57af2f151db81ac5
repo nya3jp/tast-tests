@@ -69,6 +69,24 @@
       "parentUuid": "69ca0b29_e16cf693",
       "revId": "acd1fb826fe6966822a5c57f57af2f151db81ac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80ce184d_45f046fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-05-12T22:34:50Z",
+      "side": 1,
+      "message": "if error is not nil, then maybe the command doesn\u0027t even executed properly and the content of the output file might corrupted.\n\nWith patchset 5, it tries to getErrorLog no matter if err is nil or not, which is wrong. \n\nI think the correct way to write is\nif err :\u003d cmd.Run(...); err !\u003d nil {\n    s.Fatalf(...)\n}\nf.Seeek(0, 0)\nif errorLine :\u003d getErrorLog(f); errorLine !\u003d \"\"{\n    s.Error(errorLines)\n}\n\nNote the above is different from the base as it tries to get the ErrorLine from the logs.",
+      "parentUuid": "984f247a_d3c8c436",
+      "revId": "acd1fb826fe6966822a5c57f57af2f151db81ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
