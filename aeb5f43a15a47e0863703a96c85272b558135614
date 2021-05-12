@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e39e6339_a6bde7b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-12T19:32:07Z",
+      "side": 1,
+      "message": "Please review and tell me if that\u0027s what you meant opening the bug.",
+      "revId": "aeb5f43a15a47e0863703a96c85272b558135614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
