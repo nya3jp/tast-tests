@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93f31e78_14018d2a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2021-05-12T22:03:24Z",
+      "side": 1,
+      "message": "I guess so.\n\nHowever, from the practical point of view, I remember I had some problems with cleanly disconnecting WiFi, when attenuation was too high (could not get SelectedService). I\u0027m not sure if it\u0027s still the case, but looking at the code the way the defer()s stack it might still happen.",
+      "parentUuid": "8a01bfca_53f65f15",
+      "revId": "7ce1aa4b98f40ab5035dd849050a2fa73ef4bda3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf1bd6ca_979b3171",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
         "patchSetId": 6
