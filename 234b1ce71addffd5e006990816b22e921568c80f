@@ -56,6 +56,30 @@
       },
       "revId": "234b1ce71addffd5e006990816b22e921568c80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5f7b0b7_96238d14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc_app_open.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-12T09:00:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "772c83f3_53b99f1e",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 101
+      },
+      "revId": "234b1ce71addffd5e006990816b22e921568c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
