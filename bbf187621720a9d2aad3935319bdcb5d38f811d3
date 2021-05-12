@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "593b397a_277e78c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-05-12T10:43:10Z",
+      "side": 1,
+      "message": "Could we also add cros-tdm-tpe-eng@ above?",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "bbf187621720a9d2aad3935319bdcb5d38f811d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6041778_a7e23604",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-05-12T10:43:10Z",
+      "side": 1,
+      "message": "is this ordered? If so, sounds we will need to take care the index order change? (for line 61)",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "bbf187621720a9d2aad3935319bdcb5d38f811d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
