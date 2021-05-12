@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87ad28ec_7eeb4ef4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-12T05:06:26Z",
+      "side": 1,
+      "message": "It\u0027s not global but it is on the apps.* namespace. So any other test that tries to use these vars from an apps.* test will fail",
+      "parentUuid": "d7349518_cdd7e7e6",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c21e201c_300b789a",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
         "patchSetId": 2
@@ -114,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f89ae79_27d3795f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-12T05:06:26Z",
+      "side": 1,
+      "message": "What you\u0027re doing here though is shortening the test context by 5s then discarding the context with the additional 5s. So cleaning up the files in Downloads will be on the shortened context, if they don\u0027t take a context you don\u0027t need to shorten as they simply won\u0027t get cancelled when the enclosing scope finishes.",
+      "parentUuid": "c08fa370_8f455cfd",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 15
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e7397fe_561c3220",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
         "patchSetId": 2
@@ -149,6 +197,30 @@
       "side": 1,
       "message": "I guess fsutil.CopyFile only copies files but do not delete them?",
       "parentUuid": "2e7397fe_561c3220",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 24
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0e8da44_dbf2f837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-12T05:06:26Z",
+      "side": 1,
+      "message": "Sorry I meant on line 126 you\u0027re copying the files after each test, why not just copy them once and delete them once? Why after every test, seems like a waste",
+      "parentUuid": "c4a0bb0d_1cfb6690",
       "range": {
         "startLine": 65,
         "startChar": 4,
@@ -290,6 +362,30 @@
       "side": 1,
       "message": "Personally, I think the current one is more readable. Please feel free to disagree.",
       "parentUuid": "ac53ab0b_95822a8d",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 6
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16b5ee48_822d01c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-12T05:06:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dcd30536_efe1243c",
       "range": {
         "startLine": 117,
         "startChar": 3,

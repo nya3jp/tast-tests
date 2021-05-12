@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10606bd9_6ca8a339",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-12T05:06:26Z",
+      "side": 1,
+      "message": "You don\u0027t actually need this level of indentation, s.Fatalf will return early. It\u0027s preferable to return early instead of using many layers of nesting\n\nSee go/tott-455",
+      "range": {
+        "startLine": 128,
+        "startChar": 6,
+        "endLine": 128,
+        "endChar": 10
+      },
+      "revId": "1c54e7e25c63982ba49d4f6933e5460f27c283f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
