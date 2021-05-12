@@ -30,7 +30,7 @@ func init() {
 // SensorPresence verifies that sensors defined in a board's model.yaml file are
 // defined as iio devices on the DUT.
 func SensorPresence(ctx context.Context, s *testing.State) {
-	dutSensors, err := iio.GetSensors()
+	dutSensors, err := iio.GetSensors(ctx)
 	if err != nil {
 		s.Fatal("Error reading sensors on DUT: ", err)
 	}

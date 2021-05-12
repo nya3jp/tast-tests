@@ -101,7 +101,7 @@ func runSingleClient(ctx context.Context, s *testing.State, sn *iio.Sensor, i in
 func SensorIioserviceHard(ctx context.Context, s *testing.State) {
 	const nClientPerSensor = 3
 
-	sensors, err := iio.GetSensors()
+	sensors, err := iio.GetSensors(ctx)
 	if err != nil {
 		s.Fatal("Error reading sensors on DUT: ", err)
 	}

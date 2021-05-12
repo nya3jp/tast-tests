@@ -26,7 +26,7 @@ func init() {
 
 // SensorLight gets the current sensor reading of all light sensors.
 func SensorLight(ctx context.Context, s *testing.State) {
-	sensors, err := iio.GetSensors()
+	sensors, err := iio.GetSensors(ctx)
 	if err != nil {
 		s.Fatal("Error reading sensors on DUT: ", err)
 	}
