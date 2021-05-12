@@ -305,6 +305,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54a4fe8d_751712ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-12T06:37:43Z",
+      "side": 1,
+      "message": "From what I can see, each of them is copied at the start of each subtest? Why not copy them before the defer at line 62? Given you are not deleting them if they succeed before all the subtests, they won\u0027t be altered by each of the subtests.",
+      "parentUuid": "76274581_5b32bc31",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 24
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3fff92c_244332bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
         "patchSetId": 2
