@@ -5,6 +5,7 @@
 package firmware
 
 import (
+	"context"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -12,8 +13,6 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
-
-	"golang.org/x/net/context"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"

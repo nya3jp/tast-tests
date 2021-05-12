@@ -5,11 +5,11 @@
 package firmware
 
 import (
+	"context"
 	"os"
 	"strings"
 
 	"github.com/golang/protobuf/ptypes/empty"
-	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/common/testexec"

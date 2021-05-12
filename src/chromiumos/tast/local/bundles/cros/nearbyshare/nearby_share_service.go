@@ -5,13 +5,13 @@
 package nearbyshare
 
 import (
+	"context"
 	"encoding/json"
 	"os"
 	"path/filepath"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
-	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"

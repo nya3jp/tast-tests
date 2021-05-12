@@ -6,11 +6,11 @@
 package crash
 
 import (
+	"context"
 	"os"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
-	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"

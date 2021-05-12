@@ -6,6 +6,7 @@ package arc
 
 import (
 	"bufio"
+	"context"
 	"io/ioutil"
 	"os"
 	"regexp"
@@ -15,7 +16,6 @@ import (
 
 	"github.com/golang/protobuf/ptypes"
 	"github.com/golang/protobuf/ptypes/empty"
-	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/common/testexec"
