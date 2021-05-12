@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d284d285_89920a72",
+        "filename": "src/chromiumos/tast/local/memory/crosvm_fincore.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-05-12T04:11:52Z",
+      "side": 1,
+      "message": "Yes, it\u0027s used by json.Unmarshal.\n\nThe idea is that if we need to support other formats, everything goes through json.Unmarshal, keeping the root parsing function clean (and just concerned with aggregating errors). Any format specific stuff would be added to a custom UnmarshalJSON method for that version.",
+      "parentUuid": "87efc070_71743c2e",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 16
+      },
+      "revId": "ff96758191bd2ef796d52f0d6e6bcb68ee057c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "114ab17e_7b703352",
