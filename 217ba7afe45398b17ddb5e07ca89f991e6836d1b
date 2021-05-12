@@ -18,6 +18,57 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5a00177_5f8d3c25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-12T12:02:31Z",
+      "side": 1,
+      "message": "Some minor comments.",
+      "revId": "217ba7afe45398b17ddb5e07ca89f991e6836d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62eccf46_52ac8989",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-12T12:02:31Z",
+      "side": 1,
+      "message": "nit: maybe we can move this into NonPrefChan? If this will be shared, perhaps can move it to a public variable in support library.\n\n(Note: Tast doesn\u0027t allow referencing parameters between test files, but the variable is in package scope.)",
+      "revId": "217ba7afe45398b17ddb5e07ca89f991e6836d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "031a2d61_9aa2f0fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-12T12:02:31Z",
+      "side": 1,
+      "message": "nit: maybe defer a setNonPrefChans() to always restore the setting? in case we hit Fatal before the empty NonPrefChan case.",
+      "revId": "217ba7afe45398b17ddb5e07ca89f991e6836d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0164fe9f_e4156676",
