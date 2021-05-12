@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e09c11_fd26b463",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-12T09:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2125a80_27c15931",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "933e54b1_9c589f5a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-11T01:24:14Z",
       "side": 1,
       "message": "How about placing legacy to the first place as default?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 7
+      },
+      "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e7fa733_06eeda6f",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-12T09:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "933e54b1_9c589f5a",
       "range": {
         "startLine": 41,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46086c14_5c80a50d",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-12T09:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2102d2a_bf9aaa72",
+      "range": {
+        "startLine": 61,
+        "startChar": 60,
+        "endLine": 61,
+        "endChar": 67
+      },
+      "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4064e525_1ac82f4c",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-05-11T01:24:14Z",
       "side": 1,
       "message": "OpenWrt, let\u0027s follow the official naming style: https://openwrt.org/",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 11
+      },
+      "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd59ed02_43616b4a",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-12T09:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4064e525_1ac82f4c",
       "range": {
         "startLine": 62,
         "startChar": 5,
@@ -112,6 +208,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62f690c0_f1b23ca9",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-12T09:00:23Z",
+      "side": 1,
+      "message": "Just want to confirm, are you suggesting to move the whole router (and future legacy_router.go file) or just the interface definitions?",
+      "parentUuid": "37c3719c_03d87dd1",
+      "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10461954_97e323d9",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 1
@@ -123,6 +237,24 @@
       "writtenOn": "2021-05-11T01:24:14Z",
       "side": 1,
       "message": "Shall we comment those interface as well as the functions they define?",
+      "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69a54829_85185619",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-12T09:00:23Z",
+      "side": 1,
+      "message": "Done. I copied over the main exported documentation from the functions.",
+      "parentUuid": "10461954_97e323d9",
       "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -140,6 +272,30 @@
       "writtenOn": "2021-05-11T06:38:56Z",
       "side": 1,
       "message": "Shall we embed supportBridge and supportVeth in this interface?",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 29
+      },
+      "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "437d41b6_503f7479",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-12T09:00:23Z",
+      "side": 1,
+      "message": "Sounds reasonable. Done",
+      "parentUuid": "63370f92_d57fa319",
       "range": {
         "startLine": 122,
         "startChar": 5,
