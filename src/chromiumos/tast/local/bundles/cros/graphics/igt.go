@@ -396,7 +396,10 @@ func IGT(ctx context.Context, s *testing.State) {
 		results.passed+results.failed, results.failed, results.skipped)
 
 	if results.passed+results.failed+results.skipped == 0 {
-		s.Error("No tests were run")
+		// TODO(markyacoub): Many tests have igt_require_intel(), which automatically skips
+		// everything on other platforms. Mark the test as PASS for now until there are no more
+		// platform specific dependencies
+		s.Log("Entire test was skipped - No subtests were run")
 		// In the case of running multiple subtests which all happen to be skipped, igt_exitcode is 0,
 		// but the final exit code will be 77.
 	} else if results.passed+results.failed == 0 && isExitErr && exitErr.ExitCode() == 77 {
