@@ -22,6 +22,30 @@
       },
       "revId": "9b7d8b02c83061685fb3e21d6c82c17dacbbfad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d045d0a_4cf3601f",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-12T09:14:17Z",
+      "side": 1,
+      "message": "I think that idea can work and be useful. That being said, I don\u0027t currently have a good strategy for distinguishing the routers yet (I have limited experience with openwrt). I think we can keep the system manual for now and specify/pass in the router type in the test itself.",
+      "parentUuid": "06f56773_f272b36d",
+      "range": {
+        "startLine": 175,
+        "startChar": 74,
+        "endLine": 175,
+        "endChar": 92
+      },
+      "revId": "9b7d8b02c83061685fb3e21d6c82c17dacbbfad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
