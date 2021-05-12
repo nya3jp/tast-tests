@@ -69,6 +69,24 @@
       "parentUuid": "7ce5ada7_bedb08ed",
       "revId": "db3a34f0860eb79bb465bb60252e4539785f8cb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2313812d_a4565714",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-12T11:37:44Z",
+      "side": 1,
+      "message": "Ah, OK, so SuperRouter is not needed. I think the concept sounds good to me. This is what I had in mind when I first saw multiple supportXXX interfaces, but I was later confused by the SuperRouter. :p\n\nI think the current code have a lot of assumption on the \"legacy\" type, so I guess we might have a lot of type assertion. +another comment in GetLegacyRouter, I think it might be kind of messy for now. Maybe we can reduce that gradually by refactoring some of the methods/interfaces, when we have more knowledge about AX router and openWrt.\n\n(Mark resolved)",
+      "parentUuid": "dfdb1b1a_7fdcdb35",
+      "revId": "db3a34f0860eb79bb465bb60252e4539785f8cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
