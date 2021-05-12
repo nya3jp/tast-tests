@@ -129,6 +129,40 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name: "chromeAshCompositedVideoLacros",
+		Desc: "Similar to chromeVideoLacros fixture but disabling hardware overlays in ash-chrome entirely to force video to be composited.",
+		Impl: launcher.NewStartedByData(launcher.PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ExtraArgs(chromeVideoArgs...),
+				chrome.LacrosExtraArgs(chromeVideoArgs...),
+				chrome.ExtraArgs("--enable-hardware-overlays=\"\""),
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            launcher.LacrosFixtureVars,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "chromeLacrosCompositedVideoLacros",
+		Desc: "Similar to chromeVideoLacros fixture but disabling hardware overlays in lacros-chrome entirely to force video to be composited.",
+		Impl: launcher.NewStartedByData(launcher.PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ExtraArgs(chromeVideoArgs...),
+				chrome.LacrosExtraArgs(chromeVideoArgs...),
+				chrome.LacrosExtraArgs("--enable-hardware-overlays=\"\""),
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            launcher.LacrosFixtureVars,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithFakeWebcam",
 		Desc: "Similar to chromeVideo fixture but supplementing it with the use of a fake video/audio capture device (a.k.a. 'fake webcam'), see https://webrtc.org/testing/.",
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
