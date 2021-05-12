@@ -84,13 +84,13 @@ func ScanAndCollectPcap(fullCtx context.Context, tf *wificell.TestFixture, name 
 		}
 		return nil
 	}
-	return CollectPcapForAction(fullCtx, tf.Pcap(), name, ch, action)
+	return CollectPcapForAction(fullCtx, tf.GetLegacyPcap(), name, ch, action)
 }
 
 // CollectPcapForAction starts a capture on the specified channel, performs a
 // custom action, and then stops the capture. The path to the pcap file is
 // returned.
-func CollectPcapForAction(fullCtx context.Context, rt *router.Router, name string, ch int, action func(context.Context) error) (string, error) {
+func CollectPcapForAction(fullCtx context.Context, rt router.Legacy, name string, ch int, action func(context.Context) error) (string, error) {
 	capturer, err := func() (ret *pcap.Capturer, retErr error) {
 		capturer, err := rt.StartCapture(fullCtx, name, ch, nil)
 		if err != nil {

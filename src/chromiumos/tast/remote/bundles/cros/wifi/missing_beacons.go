@@ -129,7 +129,7 @@ func MissingBeacons(ctx context.Context, s *testing.State) {
 	// Take down the AP interface, which looks like the AP "disappeared" from the DUT's point of view.
 	// This is also much faster than actually tearing down the AP, which allows us to watch for the client
 	// reporting itself as disconnected.
-	if err := tf.Router().SetAPIfaceDown(ctx, ap.Interface()); err != nil {
+	if err := tf.GetLegacyRouter().SetAPIfaceDown(ctx, ap.Interface()); err != nil {
 		s.Fatal("DUT: failed to set the AP interface down: ", err)
 	}
 

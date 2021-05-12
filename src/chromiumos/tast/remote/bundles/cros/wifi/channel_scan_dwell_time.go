@@ -142,9 +142,9 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 			s.Log("Starting frame sender on ", ap.Interface())
 			s.Log("SSID Prefix: ", ssidPrefix)
 			cleanupCtx := ctx
-			ctx, cancel = tf.Router().ReserveForCloseFrameSender(ctx)
+			ctx, cancel = tf.GetLegacyRouter().ReserveForCloseFrameSender(ctx)
 			defer cancel()
-			sender, err := tf.Router().NewFrameSender(ctx, ap.Interface())
+			sender, err := tf.GetLegacyRouter().NewFrameSender(ctx, ap.Interface())
 			if err != nil {
 				return nil, nil, errors.Wrap(err, "failed to create frame sender")
 			}
@@ -158,7 +158,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 				)
 			}(ctx)
 			defer func(ctx context.Context) {
-				if err := tf.Router().CloseFrameSender(ctx, sender); err != nil {
+				if err := tf.GetLegacyRouter().CloseFrameSender(ctx, sender); err != nil {
 					s.Error("Failed to close frame sender: ", err)
 				}
 				select {
