@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62de32d4_cdfbab86",
+        "filename": "src/chromiumos/tast/local/memory/crosvm_fincore.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-12T17:30:58Z",
+      "side": 1,
+      "message": "Ah okay gotcha, I hadn\u0027t seen the pattern before of implementing the json.Unmarshaler interface to customize the behavior of json.Unmarshal. Good to know, and thanks for the explanation!",
+      "parentUuid": "d284d285_89920a72",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 16
+      },
+      "revId": "ff96758191bd2ef796d52f0d6e6bcb68ee057c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "114ab17e_7b703352",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I think it\u0027s okay to implement UnmarshalJSON in fincoreJSONv1 and use json.Unmarshal; it\u0027s more aligned to the json package\u0027s way to overriding JSON deserialization.",
       "parentUuid": "114ab17e_7b703352",
+      "range": {
+        "startLine": 92,
+        "startChar": 14,
+        "endLine": 92,
+        "endChar": 23
+      },
+      "revId": "ff96758191bd2ef796d52f0d6e6bcb68ee057c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5c8a8c0_0481ec73",
+        "filename": "src/chromiumos/tast/local/memory/crosvm_fincore.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-12T17:30:58Z",
+      "side": 1,
+      "message": "I see, I hadn\u0027t seen this pattern before but this makes sense now. Thanks!",
+      "parentUuid": "ac70716d_4fa0b908",
       "range": {
         "startLine": 92,
         "startChar": 14,
