@@ -37,7 +37,7 @@ func init() {
 }
 
 func SensorActivity(ctx context.Context, s *testing.State) {
-	sensors, err := iio.GetSensors()
+	sensors, err := iio.GetSensors(ctx)
 	if err != nil {
 		s.Fatal("Error reading sensors on DUT: ", err)
 	}
