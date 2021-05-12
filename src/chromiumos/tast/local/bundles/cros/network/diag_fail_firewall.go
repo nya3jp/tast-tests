@@ -29,8 +29,9 @@ func init() {
 			"cros-network-health@google.com", // network-health team
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
-		Fixture:      "networkDiagnosticsShillReset",
+		// TODO(crbug/1203018): Re-enable once fixed taking ports 80/443 offline.
+		// Attr:         []string{"group:mainline"},
+		Fixture: "networkDiagnosticsShillReset",
 		Params: []testing.Param{{
 			Name: "http",
 			Val: failFirewallParams{
