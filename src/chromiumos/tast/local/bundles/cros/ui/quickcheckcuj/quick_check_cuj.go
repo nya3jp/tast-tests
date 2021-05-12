@@ -266,7 +266,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		// Switch windows to measure the responsiveness.
 		// Wait each window to finish loading (to see if the network connection works)
 		for idx, tab := range tabsInfo {
-			if err := uiActionHandler.SwitchWindow(ctx, idx, len(tabsInfo)); err != nil {
+			if err := uiActionHandler.SwitchToAppWindowByIndex("Chrome", idx)(ctx); err != nil {
 				return errors.Wrap(err, "failed to switch between windows")
 			}
 			if err := webutil.WaitForRender(ctx, tab.conn, 10*time.Second); err != nil {
@@ -281,7 +281,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		totalElapsed = time.Since(startTime)
 		s.Log("Total Elapsed ms: ", totalElapsed.Milliseconds())
 
-		if err := uiActionHandler.MinimizeAllWindow(ctx); err != nil {
+		if err := uiActionHandler.MinimizeAllWindow()(ctx); err != nil {
 			return errors.Wrap(err, "failed to minimize all window: ")
 		}
 

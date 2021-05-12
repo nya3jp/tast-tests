@@ -7,6 +7,7 @@ package cuj
 import (
 	"context"
 	"math"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -25,32 +26,85 @@ import (
 	"chromiumos/tast/testing"
 )
 
-var defaultPollOptions = testing.PollOptions{Timeout: time.Minute, Interval: time.Second}
+// Use 1 minute timeout value because it may take longer to wait for UI nodes to be stable,
+// especially for some low end DUTs.
+var defaultPollOpts = testing.PollOptions{Timeout: time.Minute, Interval: time.Second}
+
+// SwitchWindowOption defines types of operations of switching window.
+type SwitchWindowOption int
+
+const (
+	// SwitchWindowThroughHotseat specifies switch window through hotseat.
+	SwitchWindowThroughHotseat SwitchWindowOption = iota
+	// SwitchWindowThroughOverview specifies switch window through overview.
+	SwitchWindowThroughOverview
+	// SwitchWindowThroughKeyEvent specifies switch window through ker event.
+	SwitchWindowThroughKeyEvent
+	// SwitchWindowThroughShelf specifies switch window through shelf.
+	SwitchWindowThroughShelf = SwitchWindowThroughHotseat
+)
 
 // UIActionHandler defines UI actions performed either on a tablet or on a clamshell UI.
 type UIActionHandler interface {
+	// Close releases the underlying resouses.
+	// Tests should always defer calls to this once the UIActionHandler instance been created.
+	Close()
+
+	// Click returns a function that clicks or taps the node found by input finder.
+	Click(finder *nodewith.Finder) action.Action
+
+	// ClickUntil returns a function that repeatedly left clicks the node until the condition returns no error.
+	// It will try to click the node once before it checks the condition.
+	ClickUntil(finder *nodewith.Finder, condition func(context.Context) error) action.Action
+
 	// LaunchChrome launches the Chrome browser.
 	LaunchChrome(ctx context.Context) (time.Time, error)
+
 	// NewChromeTab creates a new tab of Google Chrome.
 	NewChromeTab(ctx context.Context, cr *chrome.Chrome, url string, newWindow bool) (*chrome.Conn, error)
-	// SwitchWindow switches the Chrome window from one to another.
-	SwitchWindow(ctx context.Context, idxWindow, numWindows int) error
-	// SwitchChromeTab switches the Chrome tab from one to another.
-	SwitchChromeTab(ctx context.Context, tabIdxSrc, tabIdxDest, tabTotalNum int) error
+
+	// SwitchWindow switches to the next window by key event.
+	SwitchWindow() action.Action
+
+	// SwitchToLRUWindow switches the window to LRU (Least Recently Used) one.
+	// opt specifies the way of switching.
+	SwitchToLRUWindow(opt SwitchWindowOption) action.Action
+
+	// SwitchToAppWindow switches to the window of the given app.
+	// If the APP has multiple windows, it will switch to the first window.
+	SwitchToAppWindow(appName string) action.Action
+
+	// SwitchToAppWindowByIndex switches to the specific window identified by the window index of the given APP.
+	// It is used when the APP has multiple windows.
+	SwitchToAppWindowByIndex(appName string, targetIdx int) action.Action
+
+	// SwitchToAppWindowByName switches to the specific window identified by the window name of the given APP.
+	// It is used when the APP has multiple windows.
+	SwitchToAppWindowByName(appName, targetName string) action.Action
+
+	// SwitchToNextChromeTab switches to the next Chrome tab by key event.
+	SwitchToNextChromeTab() action.Action
+
+	// SwitchToChromeTabByIndex switches to the tab identified by the tab index in the current chrome window.
+	SwitchToChromeTabByIndex(tabIdxDest int) action.Action
+
+	// SwitchToChromeTabByName switches the Chrome tab to the one with the given name through UI operation.
+	// The tab name must exact match.
+	// If multiple tabs with same name, it goes to the first one.
+	SwitchToChromeTabByName(tabNameDest string) action.Action
+
 	// ScrollChromePage generate the scroll actions.
 	ScrollChromePage(ctx context.Context) ([]func(ctx context.Context, conn *chrome.Conn) error, error)
-	// ChromePageRefresh refresh a web page (current focus page).
-	ChromePageRefresh(ctx context.Context) error
+
 	// MinimizeAllWindow minimizes all window.
-	MinimizeAllWindow(ctx context.Context) error
-	// Close releases the underlying resouses.
-	Close()
+	MinimizeAllWindow() action.Action
 }
 
 // TabletActionHandler defines the action on tablet devices.
 type TabletActionHandler struct {
 	tconn *chrome.TestConn
 	ui    *uiauto.Context
+	kb    *input.KeyboardEventWriter // Even in tablet mode, some tests might want to use keyboard shortcuts for certain operations.
 	tc    *touch.Context
 	tew   *input.TouchscreenEventWriter
 	tcc   *input.TouchCoordConverter
@@ -59,25 +113,61 @@ type TabletActionHandler struct {
 
 // NewTabletActionHandler returns the action handler which is responsible for handling UI actions on tablet.
 func NewTabletActionHandler(ctx context.Context, tconn *chrome.TestConn) (*TabletActionHandler, error) {
+	succ := false
+
 	tc, err := touch.New(ctx, tconn)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create the touch context instance")
 	}
+	defer func() {
+		if !succ {
+			if err := tc.Close(); err != nil {
+				testing.ContextLog(ctx, "Failed to close touch context")
+			}
+		}
+	}()
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create the keyboard, error")
+	}
+	defer func() {
+		if !succ {
+			if err := kb.Close(); err != nil {
+				testing.ContextLog(ctx, "Failed to close keyboard event writer")
+			}
+		}
+	}()
 
 	// Get touch controller for tablet.
 	tew, tcc, err := touch.NewTouchscreenAndConverter(ctx, tconn)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create the touchscreen and converter")
 	}
+	defer func() {
+		if !succ {
+			if err := tew.Close(); err != nil {
+				testing.ContextLog(ctx, "Failed to close touchscreen event writer")
+			}
+		}
+	}()
 
 	stew, err := tew.NewSingleTouchWriter()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create the single touch writer")
 	}
+	defer func() {
+		if !succ {
+			stew.Close()
+		}
+	}()
+
+	succ = true
 	return &TabletActionHandler{
 		tconn: tconn,
-		ui:    uiauto.New(tconn).WithPollOpts(defaultPollOptions),
-		tc:    tc,
+		kb:    kb,
+		ui:    uiauto.New(tconn).WithPollOpts(defaultPollOpts),
+		tc:    tc.WithPollOpts(defaultPollOpts),
 		tew:   tew,
 		tcc:   tcc,
 		stew:  stew,
@@ -85,9 +175,42 @@ func NewTabletActionHandler(ctx context.Context, tconn *chrome.TestConn) (*Table
 }
 
 // Close releases the underlying resouses.
+// Tests should always defer calls to this once the UIActionHandler instance been created.
 func (t *TabletActionHandler) Close() {
+	t.kb.Close()
 	t.stew.Close()
 	t.tc.Close()
+}
+
+// Click returns a function that taps the node found by input finder on tablet.
+func (t *TabletActionHandler) Click(finder *nodewith.Finder) action.Action {
+	return t.tc.Tap(finder)
+}
+
+// ClickUntil returns a function that repeatedly left clicks the node until the condition returns no error.
+// It will try to click the node once before it checks the condition.
+func (t *TabletActionHandler) ClickUntil(finder *nodewith.Finder, condition func(context.Context) error) action.Action {
+	return func(ctx context.Context) error {
+		if err := t.tc.Tap(finder)(ctx); err != nil {
+			return errors.Wrap(err, "failed to initially click the node")
+		}
+		if err := testing.Sleep(ctx, defaultPollOpts.Interval); err != nil {
+			return err
+		}
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if err := condition(ctx); err != nil {
+				loc, err := t.ui.ImmediateLocation(ctx, finder)
+				if err != nil {
+					return err
+				}
+				if err := t.tc.TapAt(loc.CenterPoint())(ctx); err != nil {
+					return errors.Wrap(err, "failed to click the node")
+				}
+				return errors.Wrap(err, "click may not have been received yet")
+			}
+			return nil
+		}, &defaultPollOpts)
+	}
 }
 
 // LaunchChrome launches the Chrome browser.
@@ -100,9 +223,9 @@ func (t *TabletActionHandler) clickChromeOnHotseat(ctx context.Context) (time.Ti
 }
 
 // showTabList shows the tab list by clicking a button on the Chrome tool bar.
-func (t *TabletActionHandler) showTabList(ctx context.Context) error {
+func (t *TabletActionHandler) showTabList() action.Action {
 	toggle := nodewith.NameContaining("toggle tab strip").Role(role.Button).First()
-	return t.tc.Tap(toggle)(ctx)
+	return t.tc.Tap(toggle)
 }
 
 // NewChromeTab creates a new tab of Google Chrome.
@@ -115,7 +238,7 @@ func (t *TabletActionHandler) NewChromeTab(ctx context.Context, cr *chrome.Chrom
 		return cr.NewConn(ctx, url, cdputil.WithNewWindow())
 	}
 
-	if err := t.showTabList(ctx); err != nil {
+	if err := t.showTabList()(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to open the tab list")
 	}
 
@@ -135,47 +258,142 @@ func (t *TabletActionHandler) NewChromeTab(ctx context.Context, cr *chrome.Chrom
 	return c, nil
 }
 
-// SwitchWindow switches the Chrome window from one to another.
-func (t *TabletActionHandler) SwitchWindow(ctx context.Context, idxWindow, numWindows int) error {
-	// No need to switch if there is only one window exist.
-	if numWindows <= 1 {
-		return nil
-	}
+// SwitchWindow switches to the next window by key event.
+func (t *TabletActionHandler) SwitchWindow() action.Action {
+	return t.kb.AccelAction("Alt+Tab")
+}
 
+// SwitchToAppWindow switches to the window of the given app.
+// If the APP has multiple windows, it will switch to the first window.
+func (t *TabletActionHandler) SwitchToAppWindow(appName string) action.Action {
+	return t.SwitchToAppWindowByIndex(appName, 0)
+}
+
+// SwitchToAppWindowByIndex switches to the specific window identified by the window index of the given APP.
+// It is used when the APP has multiple windows.
+func (t *TabletActionHandler) SwitchToAppWindowByIndex(appName string, targetIdx int) action.Action {
+	return func(ctx context.Context) error {
+		testing.ContextLogf(ctx, "Switching to app window, by index (%d)", targetIdx)
+		// The first one (which is the name of the app) should be skipped.
+		menuItem := nodewith.ClassName("MenuItemView").Nth(targetIdx + 1)
+		return t.switchToWindowThroughHotseat(ctx, appName, menuItem)
+	}
+}
+
+// SwitchToAppWindowByName switches to the specific window identified by the window name of the given APP.
+// It is used when the APP has multiple windows.
+func (t *TabletActionHandler) SwitchToAppWindowByName(appName, targetName string) action.Action {
+	return func(ctx context.Context) error {
+		testing.ContextLogf(ctx, "Switching to app %s window, by name (%s)", appName, targetName)
+		menuItem := nodewith.ClassName("MenuItemView").NameContaining(targetName).First()
+		return t.switchToWindowThroughHotseat(ctx, appName, menuItem)
+	}
+}
+
+// switchToWindowThroughHotseat switch current focus window to another through hotseat.
+func (t *TabletActionHandler) switchToWindowThroughHotseat(ctx context.Context, appName string, menuItemFinder *nodewith.Finder) error {
 	if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, t.tconn, t.stew, t.tcc); err != nil {
 		return errors.Wrap(err, "failed to show hotseat")
 	}
 
-	// Click Google Chrome on hotseat.
-	if _, err := t.clickChromeOnHotseat(ctx); err != nil {
-		return errors.Wrap(err, "failed to find and click new app button on hotseat")
+	if strings.Contains(appName, "Chrome") || strings.Contains(appName, "Chromium") {
+		if _, err := t.clickChromeOnHotseat(ctx); err != nil {
+			return errors.Wrap(err, "failed to click Chrome app icon on hotseat")
+		}
+	} else {
+		icon, err := openedAppIconFinder(ctx, t.tconn, appName)
+		if err != nil {
+			return errors.Wrap(err, "failed to find app icon")
+		}
+		if err := t.tc.Tap(icon)(ctx); err != nil {
+			return errors.Wrap(err, "failed to tap app icon on hotseat")
+		}
 	}
+
+	if err := t.ui.Exists(nodewith.ClassName("MenuItemView").First())(ctx); err != nil {
+		// Node (any menu item) does not exist.
+		// In this case, there is only one window for target app, and the window is already switched after tap the icon,
+		// so no need to further tap the menu item.
+		return nil
+	}
+
 	if err := ash.WaitForHotseatAnimatingToIdealState(ctx, t.tconn, ash.ShelfExtended); err != nil {
 		return errors.Wrap(err, "failed to wait for hotseat animating to ideal")
 	}
 
-	menuItem := nodewith.ClassName("MenuItemView")
+	if err := t.tc.Tap(menuItemFinder)(ctx); err != nil {
+		return errors.Wrap(err, "failed to tap menu item")
+	}
 
-	// The first one (which is "Google Chrome") should be skipped.
-	return t.tc.Tap(menuItem.Nth(idxWindow + 1))(ctx)
+	return ash.WaitForHotseatAnimatingToIdealState(ctx, t.tconn, ash.ShelfHidden)
 }
 
-// SwitchChromeTab switches the Chrome tab from one to another.
-// with WebUITabStrip, there would be only one window at a time.
-func (t *TabletActionHandler) SwitchChromeTab(ctx context.Context, tabIdxSrc, tabIdxDest, tabTotalNum int) error {
-	if tabTotalNum <= tabIdxSrc || tabTotalNum <= tabIdxDest {
-		return errors.New("invalid parameters for switch tab")
+// SwitchToLRUWindow switches the window to LRU (Least Recently Used) one.
+// opt specifies the way of switching.
+func (t *TabletActionHandler) SwitchToLRUWindow(opt SwitchWindowOption) action.Action {
+	return func(ctx context.Context) error {
+		return errors.New("to be implemented")
 	}
-	// No need to switch if there is only one tab exist.
-	if tabTotalNum <= 1 {
-		return errors.New("only one tab exist, nothing to switch")
-	}
+}
 
-	// Open tab list.
-	if err := t.showTabList(ctx); err != nil {
-		return errors.Wrap(err, "failed to open the tab list")
+// SwitchToNextChromeTab switches to the next Chrome tab.
+func (t *TabletActionHandler) SwitchToNextChromeTab() action.Action {
+	return func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Switching Chrome tab by key event Ctrl+Tab")
+		return t.kb.Accel(ctx, "Ctrl+Tab")
 	}
+}
 
+// SwitchToChromeTabByIndex switches to the tab identified by the tab index in the current chrome window.
+func (t *TabletActionHandler) SwitchToChromeTabByIndex(tabIdxDest int) action.Action {
+	return func(ctx context.Context) error {
+		testing.ContextLogf(ctx, "Switching Chrome tab, by index (%d)", tabIdxDest)
+		// Open tab list.
+		if err := t.showTabList()(ctx); err != nil {
+			return errors.Wrap(err, "failed to open the tab list")
+		}
+		return t.switchToChromeTabByIndex(ctx, tabIdxDest)
+	}
+}
+
+// SwitchToChromeTabByName switches the Chrome tab to the one with the given name through UI operation.
+// The tab name must exact match.
+// If multiple tabs with same name, it goes to the first one.
+func (t *TabletActionHandler) SwitchToChromeTabByName(tabNameDest string) action.Action {
+	return func(ctx context.Context) error {
+		testing.ContextLogf(ctx, "Switching Chrome tab, by name (%s)", tabNameDest)
+		// Open tab list.
+		if err := t.showTabList()(ctx); err != nil {
+			return errors.Wrap(err, "failed to open the tab list")
+		}
+
+		// Convert the index of tabs according to given tab name.
+		tcFinder := nodewith.Role(role.TabList).Ancestor(nodewith.Role(role.RootWebArea).Name("Tab list"))
+		tbFinder := nodewith.Role(role.Tab).Ancestor(tcFinder)
+		// Find tab items under tabListContainer.
+		tabs, err := t.ui.NodesInfo(ctx, tbFinder)
+		if err != nil {
+			return errors.Wrap(err, "failed to find tab items in current window")
+		}
+		tabIdxDest := -1
+		for i, tab := range tabs {
+			if tab.Name == tabNameDest {
+				tabIdxDest = i
+				break
+			}
+		}
+
+		if tabIdxDest == -1 {
+			return errors.Errorf("failed to find destination tab with name %q", tabNameDest)
+		}
+
+		return t.switchToChromeTabByIndex(ctx, tabIdxDest)
+	}
+}
+
+// switchToChromeTabByIndex switches the Chrome tab to another one identified by tab index in the current chrome window.
+func (t *TabletActionHandler) switchToChromeTabByIndex(ctx context.Context, tabIdxDest int) error {
+	// With WebUITabStrip, there would be only one Chrome window at a time.
 	tcFinder := nodewith.Role(role.TabList).Ancestor(nodewith.Role(role.RootWebArea).Name("Tab list"))
 	tcLocation, err := t.ui.Location(ctx, tcFinder)
 	if err != nil {
@@ -188,15 +406,27 @@ func (t *TabletActionHandler) SwitchChromeTab(ctx context.Context, tabIdxSrc, ta
 	if err != nil {
 		return errors.Wrap(err, "failed to find tab items in current window")
 	}
-	if len(tabs) < tabTotalNum {
-		return errors.Errorf("tab num %d is different with expected number %d", len(tabs), tabTotalNum)
-	}
 
 	var (
 		swipeDistance    int
 		onscreenTabWidth int
 		succ             = false
 	)
+	tabIdxSrc := -1
+	for i := 0; i < len(tabs); i++ {
+		selected, ok := tabs[i].HTMLAttributes["aria-selected"]
+		if !ok {
+			return errors.New("tab node doesn't have aria-selected HTML attribute")
+		}
+		if selected == "true" {
+			tabIdxSrc = i
+			break
+		}
+	}
+	if tabIdxSrc == -1 {
+		return errors.New("failed to find the current selected tab")
+	}
+	testing.ContextLogf(ctx, "Switch Chrome tab from index %d to %d", tabIdxSrc, tabIdxDest)
 	// Find two adjacent items which are both fully in-screen to calculate the swipe distance.
 	for i := 0; i < len(tabs)-1; i++ {
 		onscreen1 := !tabs[i].State[state.Offscreen]
@@ -211,7 +441,7 @@ func (t *TabletActionHandler) SwitchChromeTab(ctx context.Context, tabIdxSrc, ta
 		}
 	}
 	if !succ {
-		return errors.Wrap(err, "failed to find two adjacency tab items within screen")
+		return errors.Wrap(err, "failed to find two adjacent tab items within screen")
 	}
 
 	// Check if swipe is required to show the target tab.
@@ -239,7 +469,7 @@ func (t *TabletActionHandler) SwitchChromeTab(ctx context.Context, tabIdxSrc, ta
 			return errors.Wrap(err, "failed to swipe")
 		}
 
-		// Wait location be stable after scroll
+		// Wait location to become stable after scroll.
 		if err := t.ui.WaitForLocation(tbFinder.Nth(tabIdxDest))(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait for tab list container to be stable")
 		}
@@ -247,12 +477,6 @@ func (t *TabletActionHandler) SwitchChromeTab(ctx context.Context, tabIdxSrc, ta
 	}
 
 	return t.tc.Tap(tbFinder.Nth(tabIdxDest))(ctx)
-}
-
-// ChromePageRefresh refresh a web page (current focus page).
-func (t *TabletActionHandler) ChromePageRefresh(ctx context.Context) error {
-	btn := nodewith.Name("Reload").Role(role.Button).ClassName("ReloadButton").First()
-	return t.tc.Tap(btn)(ctx)
 }
 
 // ScrollChromePage generate the scroll action.
@@ -263,10 +487,10 @@ func (t *TabletActionHandler) ScrollChromePage(ctx context.Context) ([]func(ctx 
 	}
 	var (
 		x      = info.Bounds.Width / 2
-		ystart = info.Bounds.Height / 4 * 3           // 75% of screen height
-		yend   = info.Bounds.Height / 4               // 25% of screen height
-		start  = coords.NewPoint(int(x), int(ystart)) // start point of swipe
-		end    = coords.NewPoint(int(x), int(yend))   // end point of swipe
+		ystart = info.Bounds.Height / 4 * 3           // 75% of screen height.
+		yend   = info.Bounds.Height / 4               // 25% of screen height.
+		start  = coords.NewPoint(int(x), int(ystart)) // start point of swipe.
+		end    = coords.NewPoint(int(x), int(yend))   // end point of swipe.
 	)
 
 	// Swipe the page down.
@@ -293,20 +517,23 @@ func (t *TabletActionHandler) ScrollChromePage(ctx context.Context) ([]func(ctx 
 }
 
 // MinimizeAllWindow minimizes all window.
-func (t *TabletActionHandler) MinimizeAllWindow(ctx context.Context) error {
-	if err := ash.DragToShowHomescreen(ctx, t.tew.Width(), t.tew.Height(), t.stew, t.tconn); err != nil {
-		return errors.Wrap(err, "failed to show homescreen")
+func (t *TabletActionHandler) MinimizeAllWindow() action.Action {
+	return func(ctx context.Context) error {
+		if err := ash.DragToShowHomescreen(ctx, t.tew.Width(), t.tew.Height(), t.stew, t.tconn); err != nil {
+			return errors.Wrap(err, "failed to show homescreen")
+		}
+		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, t.tconn, ash.ShelfShownHomeLauncher); err != nil {
+			return errors.Wrap(err, "hotseat is in an unexpected state")
+		}
+		testing.ContextLog(ctx, "All windows are minimized")
+		return nil
 	}
-	if err := ash.WaitForHotseatAnimatingToIdealState(ctx, t.tconn, ash.ShelfShownHomeLauncher); err != nil {
-		return errors.Wrap(err, "hotseat is in an unexpected state")
-	}
-	testing.ContextLog(ctx, "All windows are minimized")
-	return nil
 }
 
 // ClamshellActionHandler define the action on clamshell devices.
 type ClamshellActionHandler struct {
 	tconn    *chrome.TestConn
+	ui       *uiauto.Context
 	kb       *input.KeyboardEventWriter
 	pad      *input.TrackpadEventWriter
 	touchPad *input.TouchEventWriter
@@ -314,23 +541,46 @@ type ClamshellActionHandler struct {
 
 // NewClamshellActionHandler returns the action handler which is responsible for handling UI actions on clamshell.
 func NewClamshellActionHandler(ctx context.Context, tconn *chrome.TestConn) (*ClamshellActionHandler, error) {
+	succ := false
+
 	pad, err := input.Trackpad(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create trackpad event writer")
 	}
+	defer func() {
+		if !succ {
+			if err := pad.Close(); err != nil {
+				testing.ContextLog(ctx, "Failed to close trackpad event writer")
+			}
+		}
+	}()
 
 	touchPad, err := pad.NewMultiTouchWriter(2)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create trackpad singletouch writer")
 	}
+	defer func() {
+		if !succ {
+			touchPad.Close()
+		}
+	}()
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create the keyboard, error")
 	}
+	defer func() {
+		if !succ {
+			if err := kb.Close(); err != nil {
+				testing.ContextLog(ctx, "Failed to close keyboard event writer")
+			}
+		}
+	}()
 
+	succ = true
 	return &ClamshellActionHandler{
 		tconn:    tconn,
+		ui:       uiauto.New(tconn).WithPollOpts(defaultPollOpts),
 		kb:       kb,
 		pad:      pad,
 		touchPad: touchPad,
@@ -338,10 +588,22 @@ func NewClamshellActionHandler(ctx context.Context, tconn *chrome.TestConn) (*Cl
 }
 
 // Close releases the underlying resouses.
+// Tests should always defer calls to this once the UIActionHandler instance been created.
 func (cl *ClamshellActionHandler) Close() {
 	cl.kb.Close()
 	cl.pad.Close()
 	cl.touchPad.Close()
+}
+
+// Click returns a function that does left-click on the node found by input finder on clamshell.
+func (cl *ClamshellActionHandler) Click(finder *nodewith.Finder) action.Action {
+	return cl.ui.LeftClick(finder)
+}
+
+// ClickUntil returns a function that repeatedly left clicks the node until the condition returns no error.
+// It will try to click the node once before it checks the condition.
+func (cl *ClamshellActionHandler) ClickUntil(finder *nodewith.Finder, condition func(context.Context) error) action.Action {
+	return cl.ui.LeftClickUntil(finder, condition)
 }
 
 // LaunchChrome launches the Chrome browser.
@@ -377,37 +639,67 @@ func (cl *ClamshellActionHandler) NewChromeTab(ctx context.Context, cr *chrome.C
 	return c, nil
 }
 
-// SwitchWindow switches the Chrome window from one to another.
-func (cl *ClamshellActionHandler) SwitchWindow(ctx context.Context, idxWindow, numWindows int) error {
-	// No need to switch if there is only one window exist.
-	if numWindows <= 1 {
-		return nil
+// SwitchWindow switches to the next window by key event.
+func (cl *ClamshellActionHandler) SwitchWindow() action.Action {
+	return func(ctx context.Context) error {
+		return cl.kb.Accel(ctx, "Alt+Tab")
 	}
-
-	shortPause := func(ctx context.Context) error { return testing.Sleep(ctx, 200*time.Millisecond) }
-
-	actions := []action.Action{cl.kb.AccelPressAction("Alt")}
-	for i := 1; i < numWindows; i++ {
-		actions = append(actions,
-			shortPause,
-			cl.kb.AccelPressAction("Tab"),
-			shortPause,
-			cl.kb.AccelReleaseAction("Tab"),
-		)
-	}
-	actions = append(actions, cl.kb.AccelReleaseAction("Alt"))
-
-	return action.Combine("Alt-Tab", actions...)(ctx)
 }
 
-// SwitchChromeTab switches the Chrome tab from one to another.
-func (cl *ClamshellActionHandler) SwitchChromeTab(ctx context.Context, tabIdxSrc, tabIdxDest, tabTotalNum int) error {
-	return cl.kb.Accel(ctx, "Ctrl+Tab")
+// SwitchToAppWindow switches to the window of the given app.
+// If the APP has multiple windows, it will switch to the first window.
+func (cl *ClamshellActionHandler) SwitchToAppWindow(appName string) action.Action {
+	return func(ctx context.Context) error {
+		return errors.New("to be implemented")
+	}
 }
 
-// ChromePageRefresh refresh a web page (current focus page).
-func (cl *ClamshellActionHandler) ChromePageRefresh(ctx context.Context) error {
-	return cl.kb.Accel(ctx, "refresh")
+// SwitchToAppWindowByIndex switches to the specific window identified by the window index of the given APP.
+// It is used when the APP has multiple windows.
+func (cl *ClamshellActionHandler) SwitchToAppWindowByIndex(appName string, targetIdx int) action.Action {
+	return func(ctx context.Context) error {
+		return errors.New("to be implemented")
+	}
+}
+
+// SwitchToAppWindowByName switches to the specific window identified by the window name of the given APP.
+// It is used when the APP has multiple windows.
+func (cl *ClamshellActionHandler) SwitchToAppWindowByName(appName, targetName string) action.Action {
+	return func(ctx context.Context) error {
+		return errors.New("to be implemented")
+	}
+}
+
+// SwitchToLRUWindow switches the window to LRU (Least Recently Used) one.
+// opt specifies the way of switching.
+func (cl *ClamshellActionHandler) SwitchToLRUWindow(opt SwitchWindowOption) action.Action {
+	return func(ctx context.Context) error {
+		return errors.New("to be implemented")
+	}
+}
+
+// SwitchToNextChromeTab switches to the next Chrome tab.
+func (cl *ClamshellActionHandler) SwitchToNextChromeTab() action.Action {
+	return func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Switching Chrome tab by key event Ctrl+Tab")
+		return cl.kb.Accel(ctx, "Ctrl+Tab")
+	}
+}
+
+// SwitchToChromeTabByIndex switches the Chrome tab from one to another through UI operation.
+func (cl *ClamshellActionHandler) SwitchToChromeTabByIndex(tabIdxDest int) action.Action {
+	return func(ctx context.Context) error {
+		return errors.New("to be implemented")
+	}
+}
+
+// SwitchToChromeTabByName switches the Chrome tab to the one with the given name through UI operation.
+// The tab name must exact match.
+// If multiple tabs with same name, it goes to the first one.
+func (cl *ClamshellActionHandler) SwitchToChromeTabByName(tabNameDest string) action.Action {
+	return func(ctx context.Context) error {
+		return errors.New("to be implemented")
+	}
 }
 
 // ScrollChromePage generate the scroll action.
@@ -416,7 +708,7 @@ func (cl *ClamshellActionHandler) ScrollChromePage(ctx context.Context) ([]func(
 		x      = cl.pad.Width() / 2
 		ystart = cl.pad.Height() / 4
 		yend   = cl.pad.Height() / 4 * 3
-		d      = cl.pad.Width() / 8 // x-axis distance between two fingers
+		d      = cl.pad.Width() / 8 // x-axis distance between two fingers.
 	)
 
 	// Move the mouse cursor to center of the page so the scrolling (by swipe) will be effected on the web page.
@@ -460,48 +752,50 @@ func (cl *ClamshellActionHandler) ScrollChromePage(ctx context.Context) ([]func(
 }
 
 // MinimizeAllWindow minimizes all window.
-func (cl *ClamshellActionHandler) MinimizeAllWindow(ctx context.Context) error {
-	// Count the number of targets to minimize
-	ws, err := ash.GetAllWindows(ctx, cl.tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed get current windows")
-	}
-	total := len(ws)
-	testing.ContextLogf(ctx, "Found %d windows should be minimized", total)
-
-	// Only active and frame-visible ones can be minimize by UI operation.
-	// Scan until all targets are minimized.
-	ui := uiauto.New(cl.tconn)
-	for minimized := 0; minimized < total; {
-		for _, w := range ws {
-			// only active and frameVisible one is the target to minimize.
-			if !w.IsActive || !w.IsFrameVisible {
-				continue
-			}
-
-			// Find the button under window and click it.
-			windowNode := nodewith.Name(w.Title).Role(role.Window).First()
-			minimizeBtn := nodewith.Name("Minimize").Role(role.Button).ClassName("FrameCaptionButton").Ancestor(windowNode)
-			if err := uiauto.Combine("find minimize button under window and click it",
-				ui.WaitUntilExists(windowNode),
-				ui.WaitUntilExists(minimizeBtn),
-				ui.LeftClick(minimizeBtn),
-			)(ctx); err != nil {
-				return errors.Wrap(err, "failed to minimize window")
-			}
-
-			minimized++
-			testing.ContextLogf(ctx, "Window: %q is minimized", w.Title)
-			break
-		}
-		// Get windows again since window state changed.
-		ws, err = ash.GetAllWindows(ctx, cl.tconn)
+func (cl *ClamshellActionHandler) MinimizeAllWindow() action.Action {
+	return func(ctx context.Context) error {
+		// Count the number of targets to minimize.
+		ws, err := ash.GetAllWindows(ctx, cl.tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed get current windows")
 		}
-	}
+		total := len(ws)
+		testing.ContextLogf(ctx, "Found %d windows should be minimized", total)
 
-	return nil
+		// Only active and frame-visible ones can be minimize by UI operation.
+		// Scan until all targets are minimized.
+		ui := uiauto.New(cl.tconn)
+		for minimized := 0; minimized < total; {
+			for _, w := range ws {
+				// only active and frameVisible one is the target to minimize.
+				if !w.IsActive || !w.IsFrameVisible {
+					continue
+				}
+
+				// Find the button under window and click it.
+				windowNode := nodewith.Name(w.Title).Role(role.Window).First()
+				minimizeBtn := nodewith.Name("Minimize").Role(role.Button).ClassName("FrameCaptionButton").Ancestor(windowNode)
+				if err := uiauto.Combine("find minimize button under window and click it",
+					ui.WaitUntilExists(windowNode),
+					ui.WaitUntilExists(minimizeBtn),
+					ui.LeftClick(minimizeBtn),
+				)(ctx); err != nil {
+					return errors.Wrap(err, "failed to minimize window")
+				}
+
+				minimized++
+				testing.ContextLogf(ctx, "Window: %q is minimized", w.Title)
+				break
+			}
+			// Get windows again since window state changed.
+			ws, err = ash.GetAllWindows(ctx, cl.tconn)
+			if err != nil {
+				return errors.Wrap(err, "failed get current windows")
+			}
+		}
+
+		return nil
+	}
 }
 
 // mouseMoveToCenterOfWindow moves the mouse to the center of chrome window.
@@ -511,6 +805,35 @@ func (cl *ClamshellActionHandler) mouseMoveToCenterOfWindow(ctx context.Context,
 		return errors.Wrap(err, "failed to get current tab's title")
 	}
 
-	ui := uiauto.New(cl.tconn).WithPollOpts(defaultPollOptions)
-	return ui.MouseMoveTo(nodewith.Name(title).Role(role.Window).First(), 0)(ctx)
+	return cl.ui.MouseMoveTo(nodewith.Name(title).Role(role.Window).First(), 0)(ctx)
+}
+
+// openedAppIconFinder finds the opened app icon's finder from hotseat or shelf.
+func openedAppIconFinder(ctx context.Context, tconn *chrome.TestConn, name string) (*nodewith.Finder, error) {
+	items, err := ash.ShelfItems(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get hotseat items")
+	}
+
+	appClosed := false
+	nth := 0
+	for _, item := range items {
+		if item.Title == name {
+			if item.Status == ash.ShelfItemClosed {
+				appClosed = true
+				nth++
+				continue
+			}
+			// APP is found and not closed.
+			return nodewith.ClassName("ash/ShelfAppButton").Name(item.Title).Nth(nth), nil
+		}
+	}
+
+	// APP is found but closed.
+	if appClosed {
+		return nil, errors.Wrap(err, "target app is closed")
+	}
+
+	// APP is not found.
+	return nil, errors.Wrapf(err, "target icon [%s] not found", name)
 }
