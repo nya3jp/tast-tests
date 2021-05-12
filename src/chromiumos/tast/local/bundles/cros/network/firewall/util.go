@@ -8,6 +8,7 @@ package firewall
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -15,8 +16,15 @@ import (
 )
 
 const (
-	iptablesCmd  = "/sbin/iptables"
-	ip6tablesCmd = "/sbin/ip6tables"
+	// IptablesCleanupTimeout is the timeout to perform the iptables restore command.
+	IptablesCleanupTimeout = time.Second * 5
+
+	iptablesCmd         = "/sbin/iptables"
+	ip6tablesCmd        = "/sbin/ip6tables"
+	iptablesSaveCmd     = "/sbin/iptables-save"
+	ip6tablesSaveCmd    = "/sbin/ip6tables-save"
+	iptablesRestoreCmd  = "/sbin/iptables-restore"
+	ip6tablesRestoreCmd = "/sbin/ip6tables-restore"
 )
 
 // CreateFirewallParams is a list of optional parameters when creating a firewall.
@@ -70,6 +78,64 @@ func CreateFirewall(ctx context.Context, params CreateFirewallParams) error {
 		}
 	}
 	return nil
+}
+
+// SaveIptables will save the current state of the iptables to a file in the
+// provided path. This function does a best effort to save
+// both the ipv4 and ipv6 iptables.
+func SaveIptables(ctx context.Context, path string) []error {
+	cmds := []string{iptablesSaveCmd, ip6tablesSaveCmd}
+	var errs []error
+	for _, cmd := range cmds {
+		savePath, err := getSavePath(cmd, path)
+		if err != nil {
+			errs = append(errs, errors.Wrap(err, "failed to get iptables save path"))
+			continue
+		}
+		if err := testexec.CommandContext(ctx, cmd, "-f", savePath).Run(testexec.DumpLogOnError); err != nil {
+			errs = append(errs, errors.Wrapf(err, "failed to save iptables rules: %s %s", cmd, path))
+			continue
+		}
+	}
+	return errs
+}
+
+// RestoreIptables will restore the state of the iptables from a previously
+// saved file in the provided path. This function does a best effort to restore
+// both the ipv4 and ipv6 iptables.
+func RestoreIptables(ctx context.Context, path string) []error {
+	cmds := []string{iptablesRestoreCmd, ip6tablesRestoreCmd}
+	var errs []error
+	for _, cmd := range cmds {
+		savePath, err := getSavePath(cmd, path)
+		if err != nil {
+			errs = append(errs, errors.Wrap(err, "failed to get iptables save path"))
+			continue
+		}
+		if err := testexec.CommandContext(ctx, cmd, savePath).Run(testexec.DumpLogOnError); err != nil {
+			errs = append(errs, errors.Wrapf(err, "failed to restore iptables rules: %s %s", cmd, path))
+			continue
+		}
+	}
+	return errs
+}
+
+func getSavePath(cmd, path string) (string, error) {
+	var file string
+	switch cmd {
+	case iptablesSaveCmd:
+		fallthrough
+	case iptablesRestoreCmd:
+		file = "ip4.txt"
+	case ip6tablesSaveCmd:
+		fallthrough
+	case ip6tablesRestoreCmd:
+		file = "ip6.txt"
+	default:
+		return "", errors.Errorf("no iptables save file for cmd: %v", cmd)
+	}
+
+	return filepath.Join(path, file), nil
 }
 
 func executeIptables(ctx context.Context, cmds, args []string) error {
