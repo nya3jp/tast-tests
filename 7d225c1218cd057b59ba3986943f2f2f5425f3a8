@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2070c8e_cf919ef1",
+        "filename": "src/chromiumos/tast/local/memory/crosvm_fincore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-12T00:16:55Z",
+      "side": 1,
+      "message": "I guess if you want to rerun on older builds with a newer Tast checkout you\u0027ll want to keep it around, I think bisects should use the test code that comes with the build though. Sounds good to keep it backward compatible.",
+      "parentUuid": "d200477e_26f8ce72",
+      "revId": "7d225c1218cd057b59ba3986943f2f2f5425f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "209ea803_ae09ae03",
