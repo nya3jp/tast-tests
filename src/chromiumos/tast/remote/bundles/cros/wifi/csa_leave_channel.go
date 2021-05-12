@@ -45,6 +45,11 @@ func CSALeaveChannel(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
+	legacyRouter, err := tf.LegacyRouter()
+	if err != nil {
+		s.Fatal("Failed to get legacy router: ", err)
+	}
+
 	// TODO(b/154879577): Currently the action frames sent by FrameSender
 	// are not buffered for DTIM so if the DUT is in powersave mode, it
 	// cannot receive the action frame and the test will fail.
@@ -118,16 +123,16 @@ func CSALeaveChannel(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ping from DUT: ", err)
 	}
 
-	sender, err := tf.Router().NewFrameSender(ctx, ap.Interface())
+	sender, err := legacyRouter.NewFrameSender(ctx, ap.Interface())
 	if err != nil {
 		s.Fatal("Failed to create frame sender: ", err)
 	}
 	defer func(dCtx context.Context) {
-		if err := tf.Router().CloseFrameSender(dCtx, sender); err != nil {
+		if err := legacyRouter.CloseFrameSender(dCtx, sender); err != nil {
 			s.Error("Failed to close frame sender: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.Router().ReserveForCloseFrameSender(ctx)
+	ctx, cancel = legacyRouter.ReserveForCloseFrameSender(ctx)
 	defer cancel()
 
 	ew, err := iw.NewEventWatcher(ctx, s.DUT())
