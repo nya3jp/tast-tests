@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78f63c72_f05c54c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-12T00:20:09Z",
+      "side": 1,
+      "message": "Is this cl ready for review or should we wait for the other cls to land first?",
+      "revId": "ac12d54ed558951794dd27fc92fa6f4fbb1df9e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
