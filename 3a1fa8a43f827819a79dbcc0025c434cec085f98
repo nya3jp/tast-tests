@@ -33,6 +33,24 @@
       "message": "Thanks for cleanup!\n\nI guess someone (maybe me?) imported x/net/context by a mistake and everyone else copied the file.",
       "revId": "3a1fa8a43f827819a79dbcc0025c434cec085f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5129d641_642fd5b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-12T07:50:31Z",
+      "side": 1,
+      "message": "Thanks for review! I guess it was introduced by old protoc tool (looks like it is fixed in https://github.com/golang/protobuf/pull/742/files) and some IDE might just follow it in the later *_service.go files.",
+      "parentUuid": "17d6050f_cf3814aa",
+      "revId": "3a1fa8a43f827819a79dbcc0025c434cec085f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
