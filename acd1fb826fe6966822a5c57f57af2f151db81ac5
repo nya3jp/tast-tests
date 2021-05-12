@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edfe622a_e8885261",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-05-12T22:49:44Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "acd1fb826fe6966822a5c57f57af2f151db81ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4df14f4e_dac5c848",
@@ -103,6 +120,24 @@
       "side": 1,
       "message": "Oh, I confused a little bit with other CLs. LGTM.",
       "parentUuid": "80ce184d_45f046fb",
+      "revId": "acd1fb826fe6966822a5c57f57af2f151db81ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69d721d1_23cd25b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-05-12T22:49:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "abe3f9e5_fee4e033",
       "revId": "acd1fb826fe6966822a5c57f57af2f151db81ac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
