@@ -31,14 +31,14 @@ type vkTestParams struct {
 var stableVkTests = []vkTestParams{
 	{"Basic editing", chromeVirtualKeyboardBasicEditingTest},
 	{"Editing on TYPE_NULL", chromeVirtualKeyboardEditingOnNullTypeTest},
+	{"Number input", chromeVirtualKeyboardNumberInputTest},
+	{"Password editing", chromeVirtualKeyboardPasswordEditingTest},
 }
 
 var unstableVkTests = []vkTestParams{
 	{"Focus change", chromeVirtualKeyboardFocusChangeTest},
 	{"Floating mode", chromeVirtualKeyboardFloatingTest},
 	{"Rotation", chromeVirtualKeyboardRotationTest},
-	{"Password editing", chromeVirtualKeyboardPasswordEditingTest},
-	{"Number input", chromeVirtualKeyboardNumberInputTest},
 }
 
 const virtualKeyboardTestAppPkg = "org.chromium.arc.testapp.keyboard"
