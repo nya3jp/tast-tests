@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9cbf4ad_1935b9a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-12T17:30:44Z",
+      "side": 1,
+      "message": "Sure, let\u0027s move it to a public library - there\u0027s at least one other test that uses this. Where do you suggest that I move it to?",
+      "parentUuid": "62eccf46_52ac8989",
+      "revId": "217ba7afe45398b17ddb5e07ca89f991e6836d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "031a2d61_9aa2f0fc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
         "patchSetId": 4
@@ -65,6 +83,24 @@
       "writtenOn": "2021-05-12T12:02:31Z",
       "side": 1,
       "message": "nit: maybe defer a setNonPrefChans() to always restore the setting? in case we hit Fatal before the empty NonPrefChan case.",
+      "revId": "217ba7afe45398b17ddb5e07ca89f991e6836d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49997562_9043272b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-12T17:30:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "031a2d61_9aa2f0fc",
       "revId": "217ba7afe45398b17ddb5e07ca89f991e6836d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +118,30 @@
       "writtenOn": "2021-05-12T02:26:04Z",
       "side": 1,
       "message": "I think you can use ap.Config().PcapFreqOptions() here. It somehow address part of another comment. However, it is using Router here, which means tcpdump is sharing the phy with AP, so the `iw set freq` is actually skipped here.",
+      "range": {
+        "startLine": 151,
+        "startChar": 86,
+        "endLine": 151,
+        "endChar": 139
+      },
+      "revId": "217ba7afe45398b17ddb5e07ca89f991e6836d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a54e0cf_a632280d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-12T17:30:44Z",
+      "side": 1,
+      "message": "Ah thanks for the tip. Done.",
+      "parentUuid": "0164fe9f_e4156676",
       "range": {
         "startLine": 151,
         "startChar": 86,
