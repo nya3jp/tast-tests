@@ -51,6 +51,11 @@ func FunctionalAfterCSA(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
+	legacyRouter, err := tf.LegacyRouter()
+	if err != nil {
+		s.Fatal("Failed to get legacy router: ", err)
+	}
+
 	const numRounds = 5
 
 	var (
@@ -129,16 +134,16 @@ func FunctionalAfterCSA(ctx context.Context, s *testing.State) {
 		defer cancel()
 
 		s.Logf("Connected. Sending channel switch frame (channel switch to %d)", alternateChannel)
-		sender, err := tf.Router().NewFrameSender(ctx, ap.Interface())
+		sender, err := legacyRouter.NewFrameSender(ctx, ap.Interface())
 		if err != nil {
 			s.Fatal("Failed to create frame sender: ", err)
 		}
 		defer func(ctx context.Context) {
-			if err := tf.Router().CloseFrameSender(ctx, sender); err != nil {
+			if err := legacyRouter.CloseFrameSender(ctx, sender); err != nil {
 				s.Fatal("Failed to close frame sender: ", err)
 			}
 		}(ctx)
-		ctx, cancel = tf.Router().ReserveForCloseFrameSender(ctx)
+		ctx, cancel = legacyRouter.ReserveForCloseFrameSender(ctx)
 		defer cancel()
 		if err := sender.Send(ctx, framesender.TypeChannelSwitch, alternateChannel); err != nil {
 			s.Fatal("Failed to send channel switch frame: ", err)

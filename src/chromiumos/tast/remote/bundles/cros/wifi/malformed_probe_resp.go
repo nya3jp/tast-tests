@@ -46,6 +46,11 @@ func MalformedProbeResp(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
+	legacyRouter, err := tf.LegacyRouter()
+	if err != nil {
+		s.Fatal("Failed to get legacy router: ", err)
+	}
+
 	// We'll use `iw scan` to trigger background scan, turn it off
 	// in shill so we won't race with shill on the device.
 	ctx, restoreBgscan, err := tf.TurnOffBgscan(ctx)
@@ -102,16 +107,16 @@ func MalformedProbeResp(ctx context.Context, s *testing.State) {
 	}
 
 	// Start the background sender of malformed probe response.
-	sender, err := tf.Router().NewFrameSender(ctx, ap.Interface())
+	sender, err := legacyRouter.NewFrameSender(ctx, ap.Interface())
 	if err != nil {
 		s.Fatal("Failed to create frame sender: ", err)
 	}
 	defer func(ctx context.Context) {
-		if err := tf.Router().CloseFrameSender(ctx, sender); err != nil {
+		if err := legacyRouter.CloseFrameSender(ctx, sender); err != nil {
 			s.Error("Failed to close frame sender: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.Router().ReserveForCloseFrameSender(ctx)
+	ctx, cancel = legacyRouter.ReserveForCloseFrameSender(ctx)
 	defer cancel()
 
 	// Set up background frame sender sending malformed probe response.

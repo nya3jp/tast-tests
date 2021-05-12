@@ -84,7 +84,11 @@ func ScanAndCollectPcap(fullCtx context.Context, tf *wificell.TestFixture, name 
 		}
 		return nil
 	}
-	return CollectPcapForAction(fullCtx, tf.Pcap(), name, ch, action)
+	p, err := tf.LegacyPcap()
+	if err != nil {
+		return "", errors.Wrap(err, "unable to get legacy pcap device")
+	}
+	return CollectPcapForAction(fullCtx, p, name, ch, action)
 }
 
 // CollectPcapForAction starts a capture on the specified channel, performs a
