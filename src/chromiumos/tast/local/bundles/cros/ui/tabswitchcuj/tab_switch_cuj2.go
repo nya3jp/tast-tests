@@ -492,7 +492,7 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 			// these specific websites has been chosen to do scroll actions as per requirement.
 			if tab.pageInfo.webName == wikipedia || tab.pageInfo.webName == hulu || tab.pageInfo.webName == youtube {
 				for _, act := range scrollActions {
-					if err := act(ctx, tab.conn); err != nil {
+					if err := act(ctx); err != nil {
 						return errors.Wrap(err, "failed to execute action")
 					}
 					// Make sure the whole web content is recorded only under Recording.
