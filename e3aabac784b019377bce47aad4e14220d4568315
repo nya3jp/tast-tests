@@ -52,6 +52,24 @@
       "parentUuid": "cee8f575_a4a139e6",
       "revId": "e3aabac784b019377bce47aad4e14220d4568315",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63997275_4e9b5bda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-12T09:19:21Z",
+      "side": 1,
+      "message": "I think what Dean proposed as well as what Yen-lin and Arowa proposed make sense in different deployment situations. If the closing time variance is high between router models, I think Dean\u0027s approach makes the most sense. Otherwise, I think a quick name change to specify what is actually being closed and defining a constant makes sense if all routers need roughly the same close time.\n\nSince I don\u0027t have a good idea of what kind of close times we need, I\u0027m fine abandoning/putting this change on hold for now as it\u0027s more of a speculative fix that really only addresses code reuse rather than runtime efficiency.\n\nFor now, I did the function name change.",
+      "parentUuid": "b24fab73_a0face04",
+      "revId": "e3aabac784b019377bce47aad4e14220d4568315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
