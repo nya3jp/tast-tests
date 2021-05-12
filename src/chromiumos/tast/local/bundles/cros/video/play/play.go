@@ -398,21 +398,15 @@ func TestSeek(ctx context.Context, httpHandler http.Handler, cs ash.ConnSource, 
 // not hold in the future in case we decide to apply night light at
 // compositing time if the hardware does not support the color
 // transform matrix.
-func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename, refFilename string) error {
+func TestPlayAndScreenshot(ctx context.Context, s *testing.State, tconn *chrome.TestConn, cs ash.ConnSource, filename, refFilename string) error {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 	url := path.Join(server.URL, "video.html")
-	conn, err := cr.NewConn(ctx, url)
+	conn, err := cs.NewConn(ctx, url)
 	if err != nil {
 		return errors.Wrapf(err, "failed to open %v", url)
 	}
 	defer conn.Close()
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to connect to test API")
-	}
-	defer tconn.Close()
 
 	// For consistency across test runs, ensure that the device is in landscape-primary orientation.
 	if err = graphics.RotateDisplayToLandscapePrimary(ctx, tconn); err != nil {
