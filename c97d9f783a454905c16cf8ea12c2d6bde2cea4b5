@@ -178,6 +178,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae736ea1_595225e5",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-12T08:38:21Z",
+      "side": 1,
+      "message": "Additional logging to help debugging is fine. However as the guidelines state this logging should be done after the error occured so it won\u0027t clutter the logs if no errors occur.\nSo you could do it like this:\n\noutput, err :\u003d exec.CommandContext(ctx, cmd[0], cmd[1:]...).Output()\nif err !\u003d nil {\n    testing.ContextLogf(ctx, \"Command: %s\", shutil.EscapeSlice(cmd))\n    return nil, errors.Wrap(err, \"failed to run futility dump_fmap\")\n}\n\nSame for the following errors if that logging is needed there too.",
+      "parentUuid": "b7d9196c_f51a6543",
+      "range": {
+        "startLine": 114,
+        "startChar": 16,
+        "endLine": 114,
+        "endChar": 27
+      },
+      "revId": "c97d9f783a454905c16cf8ea12c2d6bde2cea4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "394ae7a3_7fdb5e3f",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
         "patchSetId": 1
