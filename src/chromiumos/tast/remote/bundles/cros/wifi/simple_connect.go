@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/common/wifi/security/wpaeap"
 	"chromiumos/tast/remote/wificell"
 	ap "chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -466,9 +467,9 @@ func init() {
 				Name:      "ssid_limits",
 				ExtraAttr: []string{"wificell_cq"},
 				Val: []simpleConnectTestcase{{
-					apOpts: wificell.CommonAPOptions(ap.SSID("a")),
+					apOpts: wifiutil.CommonAPOptions(ap.SSID("a")),
 				}, {
-					apOpts: wificell.CommonAPOptions(ap.SSID(strings.Repeat("MaxLengthSSID", 4)[:32])),
+					apOpts: wifiutil.CommonAPOptions(ap.SSID(strings.Repeat("MaxLengthSSID", 4)[:32])),
 				}},
 			}, {
 				// This test case verifies that the DUT accepts ascii and non-ascii type characters as the SSID.
@@ -476,30 +477,30 @@ func init() {
 				Val: []simpleConnectTestcase{{
 					// TODO(crbug.com/1082582): shill don't allow leading 0x00 now, so let's append it in the
 					// end to keep the coverage.
-					apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(1, 31) + "\x00")),
+					apOpts: wifiutil.CommonAPOptions(ap.SSID(byteSequenceStr(1, 31) + "\x00")),
 				}, {
-					apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(32, 63))),
+					apOpts: wifiutil.CommonAPOptions(ap.SSID(byteSequenceStr(32, 63))),
 				}, {
-					apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(64, 95))),
+					apOpts: wifiutil.CommonAPOptions(ap.SSID(byteSequenceStr(64, 95))),
 				}, {
-					apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(96, 127))),
+					apOpts: wifiutil.CommonAPOptions(ap.SSID(byteSequenceStr(96, 127))),
 				}, {
-					apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(128, 159))),
+					apOpts: wifiutil.CommonAPOptions(ap.SSID(byteSequenceStr(128, 159))),
 				}, {
-					apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(160, 191))),
+					apOpts: wifiutil.CommonAPOptions(ap.SSID(byteSequenceStr(160, 191))),
 				}, {
-					apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(192, 223))),
+					apOpts: wifiutil.CommonAPOptions(ap.SSID(byteSequenceStr(192, 223))),
 				}, {
-					apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(224, 255))),
+					apOpts: wifiutil.CommonAPOptions(ap.SSID(byteSequenceStr(224, 255))),
 				}, {
 					// Valid Unicode characters.
-					apOpts: wificell.CommonAPOptions(ap.SSID("\xe4\xb8\xad\xe5\x9b\xbd")),
+					apOpts: wifiutil.CommonAPOptions(ap.SSID("\xe4\xb8\xad\xe5\x9b\xbd")),
 				}, {
 					// Single extended ASCII character (a-grave).
-					apOpts: wificell.CommonAPOptions(ap.SSID("\xe0")),
+					apOpts: wifiutil.CommonAPOptions(ap.SSID("\xe0")),
 				}, {
 					// Mix of ASCII and Unicode characters as SSID.
-					apOpts: wificell.CommonAPOptions(ap.SSID("Chrome\xe7\xac\x94\xe8\xae\xb0\xe6\x9c\xac")),
+					apOpts: wifiutil.CommonAPOptions(ap.SSID("Chrome\xe7\xac\x94\xe8\xae\xb0\xe6\x9c\xac")),
 				}},
 				// TODO(b/158150763): Skip Marvell WiFi as there's a known issue to make the test always fail.
 				ExtraHardwareDeps: hwdep.D(hwdep.WifiNotMarvell()),

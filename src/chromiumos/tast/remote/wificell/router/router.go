@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package wificell
+package router
 
 import (
 	"context"
@@ -26,11 +26,148 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/log"
 	"chromiumos/tast/remote/wificell/pcap"
+	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
+
+// Type is an enum indicating what type of router style a router is.
+type Type int
+
+const (
+	// LegacyT is the legacy router type.
+	LegacyT Type = iota
+	// AxT is the ax router type.
+	AxT
+	// OpenWrtT is the openwrt router type.
+	OpenWrtT
+)
+
+// Base contains the basic methods implemented across all routers.
+type Base interface {
+	// Close cleans the resource used by Router.
+	Close(ctx context.Context) error
+	// ReserveForClose returns a shortened ctx with cancel function.
+	ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc)
+	// GetRouterType
+	GetRouterType() Type
+}
+
+// Ax contains the funcionality that the ax testbed router should support.
+type Ax interface {
+	Base
+}
+
+// Legacy contains the functionality the legacy WiFi testing router should support.
+type Legacy interface {
+	LegacyOpenWrtShared
+}
+
+// OpenWrt contains the functionality that the future OpenWrt testbed shall support.
+type OpenWrt interface {
+	LegacyOpenWrtShared
+}
+
+// LegacyOpenWrtShared contains the functionality shared between legacy routers and openwrt routers.
+type LegacyOpenWrtShared interface {
+	Base
+	SupportLogs
+	SupportCapture
+	SupportHostapd
+	SupportDHCP
+	SupportFrameSender
+	SupportIfaceManipulation
+	SupportVethBridgeBinding
+	SupportBridge
+	SupportVeth
+}
+
+// SupportLogs shall be implemented if the router supports log collection.
+type SupportLogs interface {
+	// CollectLogs downloads log files from router to OutDir.
+	CollectLogs(ctx context.Context) error
+}
+
+// SupportCapture shall be implemented if the router supports pcap capture.
+type SupportCapture interface {
+	// StartCapture starts a packet capturer.
+	StartCapture(ctx context.Context, name string, ch int, freqOps []iw.SetFreqOption, pcapOps ...pcap.Option) (*pcap.Capturer, error)
+	// StartRawCapturer starts a capturer on an existing interface on the router instead of a
+	// monitor type interface.
+	StartRawCapturer(ctx context.Context, name, iface string, ops ...pcap.Option) (*pcap.Capturer, error)
+	// StopCapture stops the packet capturer and releases related resources.
+	StopCapture(ctx context.Context, capturer *pcap.Capturer) error
+	// StopRawCapturer stops the packet capturer (no extra resources to release).
+	StopRawCapturer(ctx context.Context, capturer *pcap.Capturer) error
+	// ReserveForStopCapture returns a shortened ctx with cancel function.
+	ReserveForStopCapture(ctx context.Context, capturer *pcap.Capturer) (context.Context, context.CancelFunc)
+	// ReserveForStopRawCapturer returns a shortened ctx with cancel function.
+	ReserveForStopRawCapturer(ctx context.Context, capturer *pcap.Capturer) (context.Context, context.CancelFunc)
+}
+
+// SupportHostapd shall be implemented if the router supports hostapd.
+type SupportHostapd interface {
+	// StartHostapd starts the hostapd server.
+	StartHostapd(ctx context.Context, name string, conf *hostapd.Config) (*hostapd.Server, error)
+	// StopHostapd stops the hostapd server.
+	StopHostapd(ctx context.Context, hs *hostapd.Server) error
+	// ReconfigureHostapd restarts the hostapd server with the new config. It preserves the interface and the name of the old hostapd server.
+	ReconfigureHostapd(ctx context.Context, hs *hostapd.Server, conf *hostapd.Config) (*hostapd.Server, error)
+}
+
+// SupportDHCP shall be implemented if the router supports DHCP configuration.
+type SupportDHCP interface {
+	// StartDHCP starts the DHCP server and configures the server IP.
+	StartDHCP(ctx context.Context, name, iface string, ipStart, ipEnd, serverIP, broadcastIP net.IP, mask net.IPMask) (*dhcp.Server, error)
+	// StopDHCP stops the DHCP server and flushes the interface.
+	StopDHCP(ctx context.Context, ds *dhcp.Server) error
+}
+
+// SupportFrameSender shall be implemented if the router can send management frames.
+type SupportFrameSender interface {
+	// CloseFrameSender closes frame sender and releases related resources.
+	CloseFrameSender(ctx context.Context, s *framesender.Sender) error
+	// NewFrameSender creates a frame sender object.
+	NewFrameSender(ctx context.Context, iface string) (*framesender.Sender, error)
+	// ReserveForCloseFrameSender returns a shortened ctx with cancel function.
+	ReserveForCloseFrameSender(ctx context.Context) (context.Context, context.CancelFunc)
+}
+
+// SupportIfaceManipulation shall be implemented if the router can modify its iface configuration.
+type SupportIfaceManipulation interface {
+	// SetAPIfaceDown brings down the interface that the APIface uses.
+	SetAPIfaceDown(ctx context.Context, iface string) error
+	// MAC returns the MAC address of iface on this router.
+	MAC(ctx context.Context, iface string) (net.HardwareAddr, error)
+}
+
+// SupportVethBridgeBinding shall be implemented if the router supports bridges, veths, and can bind bridges and veths.
+type SupportVethBridgeBinding interface {
+	SupportBridge
+	SupportVeth
+	// BindVethToBridge binds the veth to bridge.
+	BindVethToBridge(ctx context.Context, veth, br string) error
+	// UnbindVeth unbinds the veth to any other interface.
+	UnbindVeth(ctx context.Context, veth string) error
+}
+
+// SupportBridge shall be implemented if the router supports network bridges.
+type SupportBridge interface {
+	// NewBridge returns a bridge name for tests to use.
+	NewBridge(ctx context.Context) (string, error)
+	// ReleaseBridge releases the bridge.
+	ReleaseBridge(ctx context.Context, br string) error
+}
+
+// SupportVeth shall be implemented if the router supports veth.
+type SupportVeth interface {
+	// NewVethPair returns a veth pair for tests to use.
+	NewVethPair(ctx context.Context) (string, string, error)
+	// ReleaseVethPair release the veth pair.
+	ReleaseVethPair(ctx context.Context, veth string) error
+}
 
 const (
 	// Autotest may be used on these routers too, and if it failed to clean up, we may be out of space in /tmp.
@@ -311,13 +448,13 @@ func (r *Router) Close(ctx context.Context) error {
 	// Remove the interfaces that we created.
 	for _, nd := range r.availIfaces {
 		if err := r.removeWifiIface(ctx, nd.IfName); err != nil {
-			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
+			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
 		}
 	}
 	for _, nd := range r.busyIfaces {
 		testing.ContextLogf(ctx, "iface %s not yet freed", nd.IfName)
 		if err := r.removeWifiIface(ctx, nd.IfName); err != nil {
-			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
+			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
 		}
 	}
 
@@ -332,13 +469,13 @@ func (r *Router) Close(ctx context.Context) error {
 	// Collect closing log to facilitate debugging for error occurs in
 	// r.initialize() or after r.CollectLogs().
 	if err := r.collectLogs(ctx, ".close"); err != nil {
-		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect logs"))
+		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect logs"))
 	}
 	if err := r.stopLogCollectors(ctx); err != nil {
-		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop loggers"))
+		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop loggers"))
 	}
 	if err := r.host.Command("rm", "-rf", r.workDir()).Run(ctx); err != nil {
-		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove working dir"))
+		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove working dir"))
 	}
 	return firstErr
 }
@@ -473,9 +610,9 @@ func (r *Router) StopHostapd(ctx context.Context, hs *hostapd.Server) error {
 	var firstErr error
 	iface := hs.Interface()
 	if err := hs.Close(ctx); err != nil {
-		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop hostapd"))
+		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop hostapd"))
 	}
-	collectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, iface))
+	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, iface))
 	r.freeIface(iface)
 	return firstErr
 }
@@ -529,9 +666,9 @@ func (r *Router) StopDHCP(ctx context.Context, ds *dhcp.Server) error {
 	var firstErr error
 	iface := ds.Interface()
 	if err := ds.Close(ctx); err != nil {
-		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop dhcpd"))
+		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop dhcpd"))
 	}
-	collectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, iface))
+	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, iface))
 	return firstErr
 }
 
@@ -603,10 +740,10 @@ func (r *Router) StopCapture(ctx context.Context, capturer *pcap.Capturer) error
 	var firstErr error
 	iface := capturer.Interface()
 	if err := capturer.Close(ctx); err != nil {
-		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop capturer"))
+		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop capturer"))
 	}
 	if err := r.ipr.SetLinkDown(ctx, iface); err != nil {
-		collectFirstErr(ctx, &firstErr, err)
+		wifiutil.CollectFirstErr(ctx, &firstErr, err)
 	}
 	r.freeIface(iface)
 	return firstErr
@@ -696,9 +833,9 @@ func (r *Router) NewBridge(ctx context.Context) (_ string, retErr error) {
 // ReleaseBridge releases the bridge.
 func (r *Router) ReleaseBridge(ctx context.Context, br string) error {
 	var firstErr error
-	collectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, br))
-	collectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, br))
-	collectFirstErr(ctx, &firstErr, r.ipr.DeleteLink(ctx, br))
+	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, br))
+	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, br))
+	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.DeleteLink(ctx, br))
 	return firstErr
 }
 
@@ -736,12 +873,12 @@ func (r *Router) ReleaseVethPair(ctx context.Context, veth string) error {
 	vethPeer := vethPeerPrefix + veth[len(vethPrefix):]
 
 	var firstErr error
-	collectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, veth))
-	collectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, veth))
-	collectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, vethPeer))
-	collectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, vethPeer))
+	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, veth))
+	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, veth))
+	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, vethPeer))
+	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, vethPeer))
 	// Note that we only need to delete one side.
-	collectFirstErr(ctx, &firstErr, r.ipr.DeleteLink(ctx, veth))
+	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.DeleteLink(ctx, veth))
 	return firstErr
 }
 
@@ -987,7 +1124,7 @@ func (r *Router) stopLogCollectors(ctx context.Context) error {
 	var firstErr error
 	for _, c := range r.logCollectors {
 		if err := c.Close(ctx); err != nil {
-			collectFirstErr(ctx, &firstErr, err)
+			wifiutil.CollectFirstErr(ctx, &firstErr, err)
 		}
 	}
 	return firstErr
