@@ -249,7 +249,7 @@ func BgscanBackoff(ctx context.Context, s *testing.State) {
 		ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap2)
 		defer cancel()
 
-		ap2MAC, err := tf.Router().MAC(ctx, ap2.Interface())
+		ap2MAC, err := tf.GetLegacyRouter().MAC(ctx, ap2.Interface())
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to get MAC address of %s on router", ap2.Interface())
 		}
