@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4441180b_f3e494be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8496e6bb_655526aa",
+      "range": {
+        "startLine": 29,
+        "startChar": 38,
+        "endLine": 29,
+        "endChar": 40
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a63f626f_149ed2a1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-12T00:16:38Z",
       "side": 1,
       "message": "Usually it is called defaultPollOpts",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bdf0af7_9b2025f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a63f626f_149ed2a1",
       "range": {
         "startLine": 31,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1851f8da_1a76f0b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Fixed. But still keep the Click() function name - trying to follow the usage in uiauto/pointer/pointer.go\n\t// Click returns a function to cause a click or a tap on the node.\n\tClick(finder *nodewith.Finder) uiauto.Action",
+      "parentUuid": "3dc609cc_786a9c71",
+      "range": {
+        "startLine": 49,
+        "startChar": 49,
+        "endLine": 49,
+        "endChar": 63
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "324b5ae3_e9adf266",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-05-12T00:16:38Z",
       "side": 1,
       "message": "Since it just returns an error, is it possible to make it return a action.Action so that it could be combined?\n\nThe same comment for the following functions.",
+      "range": {
+        "startLine": 58,
+        "startChar": 35,
+        "endLine": 58,
+        "endChar": 40
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8846f58b_f2389899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Thanks. Just changed applicable interfaces to return Action.",
+      "parentUuid": "324b5ae3_e9adf266",
       "range": {
         "startLine": 58,
         "startChar": 35,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47c49dd3_4d973340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6973d36_b31d2957",
+      "range": {
+        "startLine": 65,
+        "startChar": 56,
+        "endLine": 65,
+        "endChar": 61
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a17cf877_addcbb1a",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-05-12T00:16:38Z",
       "side": 1,
       "message": "What about SwitchToNextChromeTab?",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b426c591_c7d1a260",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Sounds good. Fixed.",
+      "parentUuid": "a17cf877_addcbb1a",
       "range": {
         "startLine": 73,
         "startChar": 4,
@@ -185,6 +329,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32dcaf56_e194e57d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Removed RefreshChromePage because no case is using it any more.",
+      "parentUuid": "b4f787e0_8a6e2cd9",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 21
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e601ca7a_d9403951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Thanks. Removed RefreshChromePage because no case is using it any more.",
+      "parentUuid": "647ed94d_75fccddf",
+      "range": {
+        "startLine": 83,
+        "startChar": 22,
+        "endLine": 83,
+        "endChar": 29
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02cd3b3a_44b594de",
@@ -198,6 +390,30 @@
       "writtenOn": "2021-05-12T00:16:38Z",
       "side": 1,
       "message": "This description is a bit wague. Could you please more specific? What does it do and when should the users call it?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 43
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b70954fc_ed9e5248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Added more description and moves up Close() to the top.",
+      "parentUuid": "02cd3b3a_44b594de",
       "range": {
         "startLine": 88,
         "startChar": 1,
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a099f5_8567268e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Added defer function to close resources if function doesn\u0027t return successfully.",
+      "parentUuid": "7d36a868_f7c5b316",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 3
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "942cf1a0_bf2304d3",
@@ -244,6 +484,30 @@
       "writtenOn": "2021-05-12T00:16:38Z",
       "side": 1,
       "message": "the node found by the input finder",
+      "range": {
+        "startLine": 143,
+        "startChar": 38,
+        "endLine": 143,
+        "endChar": 52
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f3758c2_6b88473d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "942cf1a0_bf2304d3",
       "range": {
         "startLine": 143,
         "startChar": 38,
@@ -277,6 +541,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5e2347a_48c4912f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Trying to follow the usage in uiauto/pointer/pointer.go, and hide touchscreen or mouse click.\n\n\t// Click returns a function to cause a click or a tap on the node.\n\tClick(finder *nodewith.Finder) uiauto.Action",
+      "parentUuid": "beed8a13_997a1fc9",
+      "range": {
+        "startLine": 144,
+        "startChar": 30,
+        "endLine": 144,
+        "endChar": 35
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fee2111_75375f55",
@@ -290,6 +578,30 @@
       "writtenOn": "2021-05-12T00:16:38Z",
       "side": 1,
       "message": "What if multiple windows contain the same string? Maybe .First()?",
+      "range": {
+        "startLine": 217,
+        "startChar": 48,
+        "endLine": 217,
+        "endChar": 62
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4553851b_d687f860",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "thanks for pointing out this special case. Added First().",
+      "parentUuid": "0fee2111_75375f55",
       "range": {
         "startLine": 217,
         "startChar": 48,
@@ -323,6 +635,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3306888c_5fc8c0b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22f48d56_ebde12fc",
+      "range": {
+        "startLine": 229,
+        "startChar": 38,
+        "endLine": 229,
+        "endChar": 43
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc5cf398_007a5e16",
@@ -336,6 +672,30 @@
       "writtenOn": "2021-05-12T00:16:38Z",
       "side": 1,
       "message": "So if there are multiple tabs with the same name, it goes to the first one? Please document it.",
+      "range": {
+        "startLine": 282,
+        "startChar": 27,
+        "endLine": 282,
+        "endChar": 32
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4b6da1c_c2f1c917",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Yes. Added document for this case.",
+      "parentUuid": "cc5cf398_007a5e16",
       "range": {
         "startLine": 282,
         "startChar": 27,
@@ -369,6 +729,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcb0ee17_405b9e2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45d676f1_edfb616b",
+      "range": {
+        "startLine": 314,
+        "startChar": 30,
+        "endLine": 314,
+        "endChar": 45
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "111804b6_e5d8fe66",
@@ -382,6 +766,30 @@
       "writtenOn": "2021-05-12T00:16:38Z",
       "side": 1,
       "message": "to become",
+      "range": {
+        "startLine": 391,
+        "startChar": 19,
+        "endLine": 391,
+        "endChar": 21
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73cd4380_1a70a4ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "111804b6_e5d8fe66",
       "range": {
         "startLine": 391,
         "startChar": 19,
@@ -415,6 +823,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a423824f_a8a053fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Removed RefreshChromePage because no case is using it any more.",
+      "parentUuid": "efb4ea46_d0b27f4d",
+      "range": {
+        "startLine": 401,
+        "startChar": 21,
+        "endLine": 401,
+        "endChar": 28
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "194c00a4_14f8f35d",
@@ -438,6 +870,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c66dc32_45dec313",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "194c00a4_14f8f35d",
+      "range": {
+        "startLine": 498,
+        "startChar": 52,
+        "endLine": 498,
+        "endChar": 66
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "554d75c3_4a8a978e",
@@ -451,6 +907,30 @@
       "writtenOn": "2021-05-12T00:16:38Z",
       "side": 1,
       "message": "LeftClick",
+      "range": {
+        "startLine": 499,
+        "startChar": 34,
+        "endLine": 499,
+        "endChar": 39
+      },
+      "revId": "26c1f738a68519d215c71098999c960679f12e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef4ce0e2_b9e62728",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-12T19:57:41Z",
+      "side": 1,
+      "message": "Trying to follow the usage in uiauto/pointer/pointer.go, and hide touchscreen or mouse click. Hope this make sense.\n\n\t// Click returns a function to cause a click or a tap on the node.\n\tClick(finder *nodewith.Finder) uiauto.Action",
+      "parentUuid": "554d75c3_4a8a978e",
       "range": {
         "startLine": 499,
         "startChar": 34,
