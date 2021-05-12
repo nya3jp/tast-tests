@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a6288a7_ca620af4",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-12T20:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6299830d_b6b1ba5d",
+      "range": {
+        "startLine": 408,
+        "startChar": 8,
+        "endLine": 408,
+        "endChar": 22
+      },
+      "revId": "789c272ca52383ea18593b926f9b110ed2667934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "474b6a80_42c7c139",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-11T20:22:54Z",
       "side": 1,
       "message": "This is mostly a nit, but I think this was a little clearer when it was \"initEntropy\" instead of \"clearEntropy\". Mainly because the default case is to do the entropy initialization. It\u0027s not exactly the same, but inspired by this: go/tott/530.",
+      "range": {
+        "startLine": 772,
+        "startChar": 1,
+        "endLine": 777,
+        "endChar": 2
+      },
+      "revId": "789c272ca52383ea18593b926f9b110ed2667934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a0e4e18_0fa00791",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-12T20:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "474b6a80_42c7c139",
       "range": {
         "startLine": 772,
         "startChar": 1,
@@ -84,6 +132,30 @@
       "side": 1,
       "message": "clearEntropy causes the fpmcu to force flash WITHOUT initializing entropy after (line 772 in this file). If the fpmcu is reflashed due to bad firmware (line 796), entropy should be initialized after flashing.",
       "parentUuid": "18bcbba6_a90c7f69",
+      "range": {
+        "startLine": 790,
+        "startChar": 0,
+        "endLine": 793,
+        "endChar": 2
+      },
+      "revId": "789c272ca52383ea18593b926f9b110ed2667934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9612fcdb_d75165af",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-12T20:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57abd32f_95cb044d",
       "range": {
         "startLine": 790,
         "startChar": 0,
