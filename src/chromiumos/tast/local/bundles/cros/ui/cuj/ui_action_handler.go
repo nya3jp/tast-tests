@@ -333,12 +333,42 @@ func (t *TabletActionHandler) switchToWindowThroughHotseat(ctx context.Context, 
 	return ash.WaitForHotseatAnimatingToIdealState(ctx, t.tconn, ash.ShelfHidden)
 }
 
-// SwitchToLRUWindow returns a function which switches the window to LRU (Least Recently Used) one.
+// SwitchToLRUWindow returns a function which switches to the LRU (Least Recently Used) window.
 // opt specifies the way of switching.
 func (t *TabletActionHandler) SwitchToLRUWindow(opt SwitchWindowOption) action.Action {
 	return func(ctx context.Context) error {
-		return errors.New("to be implemented")
+		switch opt {
+		case SwitchWindowThroughOverview:
+			testing.ContextLog(ctx, "Switching to LRU window, by overview")
+			return t.switchToLRUWindowByOverview(ctx)
+		default:
+			return errors.Errorf("switch to LRU window option %d is not supported on tablet", opt)
+		}
 	}
+}
+
+// switchToLRUWindowByOverview switches the window to least recently used one through overview.
+func (t *TabletActionHandler) switchToLRUWindowByOverview(ctx context.Context) error {
+	// Ensure overview is shown.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return ash.DragToShowOverview(ctx, t.tew, t.stew, t.tconn)
+	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}); err != nil {
+		return errors.Wrap(err, "failed to show overview")
+	}
+	// Hide overview mode before the function returns.
+	// If the LUR window has been successfully clicked, overview window should have been hidden
+	// already. But it's still okay to call this function.
+	defer ash.SetOverviewModeAndWait(ctx, t.tconn, false)
+
+	targetWindowFinder, err := overviewLRUWindowFinder(ctx, t.ui)
+	if err != nil {
+		return errors.Wrap(err, "failed to get LRU window finder")
+	}
+
+	return uiauto.Combine("Click item on overview",
+		t.tc.Tap(targetWindowFinder),
+		t.ui.WaitUntilGone(targetWindowFinder),
+	)(ctx)
 }
 
 // SwitchToNextChromeTab returns a function which switches to the next Chrome tab by key event.
@@ -847,4 +877,39 @@ func openedAppIconFinder(ctx context.Context, tconn *chrome.TestConn, name strin
 
 	// APP is not found.
 	return nil, errors.Wrapf(err, "target icon [%s] not found", name)
+}
+
+// overviewLRUWindowFinder finds the LRU item (which is the bottom right one) from overview.
+func overviewLRUWindowFinder(ctx context.Context, ui *uiauto.Context) (*nodewith.Finder, error) {
+	windowsFinder := nodewith.ClassName("OverviewItemView")
+	windowsInfo, err := ui.NodesInfo(ctx, windowsFinder)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to obtain the overview window info")
+	}
+	if len(windowsInfo) == 0 {
+		return nil, errors.New("there is no window under overview mode")
+	}
+
+	// Find the LRU window, which is the bottom-right one under the row-major ordering.
+	x0 := -1
+	y0 := -1
+	var idxWindow int
+	for i, info := range windowsInfo {
+		x := info.Location.CenterPoint().X
+		y := info.Location.CenterPoint().Y
+		// New point is on a smaller row.
+		if y < y0 {
+			continue
+		}
+		// New point is on the same row but not on a larger column.
+		if y == y0 && x <= x0 {
+			continue
+		}
+		// New point is on a larger row, or on the same row and a larger column.
+		x0 = x
+		y0 = y
+		idxWindow = i
+	}
+
+	return windowsFinder.Nth(idxWindow), nil
 }
