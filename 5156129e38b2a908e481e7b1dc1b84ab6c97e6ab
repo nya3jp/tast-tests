@@ -226,6 +226,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "971137bc_aa892833",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-12T11:12:39Z",
+      "side": 1,
+      "message": "I mean moving all router related code including interface and implementation into a router package.\n\nMy guess is that, after extracting the interfaces, all callers/users of \u0027Router\u0027 don\u0027t have to know the exact type but only need to assert interface compatibility. Then, no one will access the private fields of Router and we can just extract it into a separated package. (I\u0027m not 100% sure if this is possible, or we still need to know the exact type in some special usages)\n\nThis is a naive draft:\n\n  router/router.go:\n    // The exported interface, functions, enums ...\n    type Type int\n    const (\n      TypeOpenWrt Type \u003d iota\n      TypeLegacy\n      ...\n    )\n    \n    type Base interface {...}\n    type OpenWrt interface {...}\n    type SupportLogs interface {...}\n    ...\n    func New(ctx, daemonCtx context.Context, host *ssh.Conn, name string, t Type) (Base, error) {\n      switch t {\n      case TypeLegacy:\n        return newLegacy(...)\n      }\n    }\n\n  router/legacy.go\n    (mostly the code of legacy_router.go in the next CL)\n    type legacyObject struct {...}\n\n  router/open_wrt.go\n    ... (a new object that implements OpenWrt interface and its methods)\n\n  router/util.go\n    (utilities for BaseRouter. For example, a common ConfigureAP function that can work with any type of router)\n\n\nWDYT? (I can try to have a CL as a more thorough example, if this is not yet clear)",
+      "parentUuid": "62f690c0_f1b23ca9",
+      "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10461954_97e323d9",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 1
