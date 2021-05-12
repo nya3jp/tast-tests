@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aa1e193_f929b11d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-12T13:19:56Z",
+      "side": 1,
+      "message": "LGTM % comment nits",
+      "revId": "a32d3deaae5c0e43828b31ba5ac60b81a876ba52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "babd4b86_9079f5fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-12T13:19:56Z",
+      "side": 1,
+      "message": "nit: move before the syslog reader",
+      "revId": "a32d3deaae5c0e43828b31ba5ac60b81a876ba52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c301c95_0b28a3b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-12T13:19:56Z",
+      "side": 1,
+      "message": "search",
+      "range": {
+        "startLine": 124,
+        "startChar": 51,
+        "endLine": 124,
+        "endChar": 55
+      },
+      "revId": "a32d3deaae5c0e43828b31ba5ac60b81a876ba52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
