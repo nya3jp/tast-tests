@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a6f53f2_0a5b9e2c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-12T20:47:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce54e784_47d116ce",
+      "range": {
+        "startLine": 55,
+        "startChar": 22,
+        "endLine": 55,
+        "endChar": 28
+      },
+      "revId": "5b727ca7ec506ac69fb525390bf2b95f7dbe6afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e6d7083_c5306b1e",
@@ -72,6 +96,30 @@
       "writtenOn": "2021-05-11T20:43:29Z",
       "side": 1,
       "message": "It\u0027s been a while since I\u0027ve looked at the rollback code. IIRC, the ID should increment by 1 each time we make a call to set the entropy: https://chromium.googlesource.com/chromiumos/platform/ec/+/7c0c46c5c1ecfd30148092879fe6428dd4277a1b/test/rollback_entropy.c\n\nCan you check to see why it is increasing by two here? (and add a comment explaining it?)",
+      "range": {
+        "startLine": 74,
+        "startChar": 46,
+        "endLine": 74,
+        "endChar": 60
+      },
+      "revId": "5b727ca7ec506ac69fb525390bf2b95f7dbe6afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d113c5cb_6e050ded",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-12T20:47:05Z",
+      "side": 1,
+      "message": "confirm on the DUT console that running `bio_wash` does increase blockID by 2. I noticed in the logs that both InitEntropy and AddEntropy functions are called. In InitEntropy, block_id does not trigger the early return so entropy is added twice. \n\nFrom the logs while running `bio_wash`:\n2021-05-12T20:33:02.035550Z INFO bio_wash: [cros_fp_device.cc(209)] Positive match secret is supported.\n2021-05-12T20:33:02.036306Z INFO bio_wash: [cros_fp_device.cc(409)] Entropy source has not been initialized yet.\n2021-05-12T20:33:02.238933Z ERROR bio_wash: [ec_command.h(125)] FPMCU ioctl command 0xd1 failed: Connection timed out (110)\n2021-05-12T20:33:02.241222Z INFO bio_wash: [cros_fp_device.cc(295)] EC image is RO.\n2021-05-12T20:33:05.246167Z INFO bio_wash: [cros_fp_device.cc(295)] EC image is RO.\n\n\n http://cs/chromeos_public/src/platform2/biod/cros_fp_device.cc?l\u003d404\u0026rcl\u003d3a2f74bf64a24b05ec7f789da0e55e3edf83d554",
+      "parentUuid": "8e6d7083_c5306b1e",
       "range": {
         "startLine": 74,
         "startChar": 46,
