@@ -394,6 +394,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6008ea8d_f4c48f07",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2021-05-12T22:03:24Z",
+      "side": 1,
+      "message": "I\u0027m not much of a user of wificell_roam. The goal I guess was to use it for roaming purposes (that also happen to use attenuator).\n\nAs far as I know, the tests are not run (yet). Only two tests are using wificell_roam right now (RoamDiagnostics and RoamNatural).\nWojciech was trying to add them to grover runner but for some reason abandoned it:\nhttps://chrome-internal-review.googlesource.com/c/chromeos/config-internal/+/3380670\nI\u0027ll ask and get back to you.",
+      "parentUuid": "fe73d154_b7235433",
+      "range": {
+        "startLine": 32,
+        "startChar": 90,
+        "endLine": 32,
+        "endChar": 110
+      },
+      "revId": "bf79fb3f398e12feed3d73036b9c886fb4ff58d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "220c261a_358233d8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
         "patchSetId": 4
