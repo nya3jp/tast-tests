@@ -8,6 +8,7 @@ package firewall
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -15,8 +16,12 @@ import (
 )
 
 const (
-	iptablesCmd  = "/sbin/iptables"
-	ip6tablesCmd = "/sbin/ip6tables"
+	iptablesCmd         = "/sbin/iptables"
+	ip6tablesCmd        = "/sbin/ip6tables"
+	iptablesSaveCmd     = "/sbin/iptables-save"
+	ip6tablesSaveCmd    = "/sbin/ip6tables-save"
+	iptablesRestoreCmd  = "/sbin/iptables-restore"
+	ip6tablesRestoreCmd = "/sbin/ip6tables-restore"
 )
 
 // CreateFirewallParams is a list of optional parameters when creating a firewall.
@@ -70,6 +75,47 @@ func CreateFirewall(ctx context.Context, params CreateFirewallParams) error {
 		}
 	}
 	return nil
+}
+
+// SaveIptables will save the current state of the iptables to a file in the
+// provided path.
+func SaveIptables(ctx context.Context, path string) error {
+	cmds := []string{iptablesSaveCmd, ip6tablesSaveCmd}
+	for _, cmd := range cmds {
+		savePath := filepath.Join(path, getSaveFile(cmd))
+		if err := testexec.CommandContext(ctx, cmd, "-f", savePath).Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrapf(err, "failed to save iptables rules: %s %s", cmd, path)
+		}
+	}
+	return nil
+}
+
+// RestoreIptables will restore the state of the iptables from a previously
+// saved file in the provided path.
+func RestoreIptables(ctx context.Context, path string) error {
+	cmds := []string{iptablesRestoreCmd, ip6tablesRestoreCmd}
+	for _, cmd := range cmds {
+		savePath := filepath.Join(path, getSaveFile(cmd))
+		if err := testexec.CommandContext(ctx, cmd, savePath).Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrapf(err, "failed to restore iptables rules: %s %s", cmd, path)
+		}
+	}
+	return nil
+}
+
+func getSaveFile(cmd string) string {
+	switch cmd {
+	case iptablesSaveCmd:
+		fallthrough
+	case iptablesRestoreCmd:
+		return "ip4.txt"
+	case ip6tablesSaveCmd:
+		fallthrough
+	case ip6tablesRestoreCmd:
+		return "ip6.txt"
+	}
+
+	return ""
 }
 
 func executeIptables(ctx context.Context, cmds, args []string) error {
