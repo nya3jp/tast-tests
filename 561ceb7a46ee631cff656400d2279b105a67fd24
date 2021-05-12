@@ -351,6 +351,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eaa3649_e6ca5bf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-12T08:14:23Z",
+      "side": 1,
+      "message": "Ah sorry. I was totally mixing up things here. I kept thinking it was single files so moving all the copies to the start. Your way sounds better, thanks for persisting!",
+      "parentUuid": "2afad0ce_4147b8e8",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 24
+      },
+      "revId": "561ceb7a46ee631cff656400d2279b105a67fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3fff92c_244332bc",
