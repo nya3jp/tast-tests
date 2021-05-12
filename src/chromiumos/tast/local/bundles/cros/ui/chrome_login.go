@@ -26,7 +26,7 @@ func init() {
 		Params: []testing.Param{{
 			Val:       1,
 			ExtraAttr: []string{"group:mainline"},
-			Timeout:   chrome.LoginTimeout + 30*time.Second,
+			Timeout:   chrome.LoginTimeout + 600*time.Second,
 		}, {
 			Name:      "stress",
 			Val:       50,
@@ -43,7 +43,7 @@ func init() {
 func ChromeLogin(ctx context.Context, s *testing.State) {
 	sm := func() *session.SessionManager {
 		// Set up the test environment. Should be done quickly.
-		const setupTimeout = 30 * time.Second
+		const setupTimeout = 600 * time.Second
 		setupCtx, cancel := context.WithTimeout(ctx, setupTimeout)
 		defer cancel()
 
