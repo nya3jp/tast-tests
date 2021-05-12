@@ -16,6 +16,115 @@
       "message": "Note: there is no one available on my team for reviews, so we have to rely on Tast owner reviews for now. Thanks.",
       "revId": "52ee7ea8a5e3d5a78d7ac59099f538abe218e351",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fba7dd74_f7093df1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-12T03:44:19Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nits.\n\nminor: I don\u0027t see where these methods are used; for review purposes it may be nice to include the code that calls this method in the same CL and/or to link to that CL.",
+      "revId": "52ee7ea8a5e3d5a78d7ac59099f538abe218e351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "508ac196_a5d45afd",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-12T03:44:19Z",
+      "side": 1,
+      "message": "optional: consider adding a comment. While it is mostly self-explanatory, the behavior when insufficient data is in the file to read len(b) from offset may be interesting to callers. (The method returns an error in this case.)\n\nSame for writeFileAtOffset.",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 21
+      },
+      "revId": "52ee7ea8a5e3d5a78d7ac59099f538abe218e351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1c8a9f6_82f1920f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-12T03:44:19Z",
+      "side": 1,
+      "message": "Writing an offset with %q is unlikely to have the desired effect; I believe this will result the integer being interpreted as a \"a single-quoted character literal safely escaped with Go syntax.\"\n\nConsider %v instead.\n\nhttps://golang.org/pkg/fmt/#hdr-Printing",
+      "range": {
+        "startLine": 85,
+        "startChar": 56,
+        "endLine": 85,
+        "endChar": 58
+      },
+      "revId": "52ee7ea8a5e3d5a78d7ac59099f538abe218e351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25d63b0a_c8ead9e8",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-12T03:44:19Z",
+      "side": 1,
+      "message": "nit: consistency, above you use \u0027b\u0027 whereas here you use \u0027data\u0027. Also the order of parameters is different between the two methods. My vote would be towards b []byte, offset int64, to be consistent with WriteAt/ReadAt.\n\nhttps://golang.org/pkg/os/#File.WriteAt",
+      "range": {
+        "startLine": 91,
+        "startChar": 54,
+        "endLine": 91,
+        "endChar": 58
+      },
+      "revId": "52ee7ea8a5e3d5a78d7ac59099f538abe218e351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb015c14_7bbf1adf",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-12T03:44:19Z",
+      "side": 1,
+      "message": "As above, use %v instead.\n\nhttps://golang.org/pkg/fmt/#hdr-Printing",
+      "range": {
+        "startLine": 99,
+        "startChar": 64,
+        "endLine": 99,
+        "endChar": 66
+      },
+      "revId": "52ee7ea8a5e3d5a78d7ac59099f538abe218e351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
