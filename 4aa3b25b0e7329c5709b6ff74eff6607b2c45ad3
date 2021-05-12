@@ -33,6 +33,29 @@
       "message": "As this suite is primarily for chrome os build qual, better to have the name as smoke instead of basic which is self-explanatory.",
       "revId": "4aa3b25b0e7329c5709b6ff74eff6607b2c45ad3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84fcb24c_b1dfd7d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/netflix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-12T22:06:04Z",
+      "side": 1,
+      "message": "Will netflix be failing as APFE allowlist would not have been completed by the time tests are run.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 69
+      },
+      "revId": "4aa3b25b0e7329c5709b6ff74eff6607b2c45ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
