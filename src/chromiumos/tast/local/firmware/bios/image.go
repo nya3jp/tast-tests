@@ -6,6 +6,7 @@ package bios
 
 import (
 	"bytes"
+	"context"
 	"encoding/binary"
 	"fmt"
 	"io/ioutil"
@@ -13,8 +14,6 @@ import (
 	"sort"
 	"strconv"
 	"strings"
-
-	"golang.org/x/net/context"
 
 	"chromiumos/tast/common/firmware"
 	"chromiumos/tast/common/testexec"
