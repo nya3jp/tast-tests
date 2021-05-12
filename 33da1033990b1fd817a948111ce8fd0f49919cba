@@ -68,6 +68,24 @@
       "parentUuid": "c932b37c_565220ef",
       "revId": "33da1033990b1fd817a948111ce8fd0f49919cba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6d712ff_9d00cb51",
+        "filename": "src/chromiumos/tast/services/cros/arc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-05-12T05:57:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9585738c_ccf903d1",
+      "revId": "33da1033990b1fd817a948111ce8fd0f49919cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
