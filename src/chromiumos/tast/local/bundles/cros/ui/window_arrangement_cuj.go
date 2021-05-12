@@ -378,8 +378,8 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			if err != nil {
 				return errors.Wrap(err, "failed to get desk mini-views")
 			}
-			if deskMiniViewCount := len(deskMiniViews); deskMiniViewCount != 2 {
-				return errors.Wrapf(err, "expected 2 desk mini-views; found %v", deskMiniViewCount)
+			if deskMiniViewCount := len(deskMiniViews); deskMiniViewCount < 2 {
+				return errors.Wrapf(err, "expected more than 1 desk mini-views; found %v", deskMiniViewCount)
 			}
 			// Drag the second window to another desk to obtain an empty overview grid.
 			if err := pointer.Drag(ctx, pc, w.OverviewInfo.Bounds.CenterPoint(), deskMiniViews[1].Location.CenterPoint(), time.Second); err != nil {
