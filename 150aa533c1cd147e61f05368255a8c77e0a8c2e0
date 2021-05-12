@@ -34,6 +34,23 @@
       "parentUuid": "ec721ce5_4f160036",
       "revId": "150aa533c1cd147e61f05368255a8c77e0a8c2e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c1090be_3c5a0d12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-05-12T02:25:45Z",
+      "side": 1,
+      "message": "vapier@ would you know why there is no /etc/os-release on the amd64-generic-direct-tast-vm? This is also related to the question on chromium-dev. That file is required by fwupd at the moment.",
+      "revId": "150aa533c1cd147e61f05368255a8c77e0a8c2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
