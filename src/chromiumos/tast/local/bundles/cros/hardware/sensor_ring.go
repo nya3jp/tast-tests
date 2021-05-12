@@ -34,7 +34,7 @@ func SensorRing(ctx context.Context, s *testing.State) {
 	}
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
-	dutSensors, err := iio.GetSensors()
+	dutSensors, err := iio.GetSensors(ctx)
 	if err != nil {
 		s.Fatal("Error reading sensors on DUT: ", err)
 	}

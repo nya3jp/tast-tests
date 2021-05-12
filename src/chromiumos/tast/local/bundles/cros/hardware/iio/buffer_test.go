@@ -5,6 +5,7 @@
 package iio
 
 import (
+	"context"
 	"encoding/binary"
 	"os"
 	"path"
@@ -35,7 +36,7 @@ func TestNewBuffer(t *testing.T) {
 		"iio:device0/scan_elements/el_d_type":  "le:u64/64>>0",
 	})()
 
-	sensors, err := GetSensors()
+	sensors, err := GetSensors(context.Background())
 	if err != nil {
 		t.Fatal("Error getting sensors: ", err)
 	}
@@ -73,7 +74,7 @@ func TestOpenBuffer(t *testing.T) {
 		"iio:device0/scan_elements/el_b_type":  "be:u30/32>>2",
 	})()
 
-	sensors, err := GetSensors()
+	sensors, err := GetSensors(context.Background())
 	if err != nil {
 		t.Fatal("Error getting sensors: ", err)
 	}
