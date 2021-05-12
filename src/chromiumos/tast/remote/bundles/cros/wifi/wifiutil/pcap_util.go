@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
+	"chromiumos/tast/remote/wificell/router"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
@@ -89,14 +90,14 @@ func ScanAndCollectPcap(fullCtx context.Context, tf *wificell.TestFixture, name 
 // CollectPcapForAction starts a capture on the specified channel, performs a
 // custom action, and then stops the capture. The path to the pcap file is
 // returned.
-func CollectPcapForAction(fullCtx context.Context, router *wificell.Router, name string, ch int, action func(context.Context) error) (string, error) {
+func CollectPcapForAction(fullCtx context.Context, rt router.SupportCapture, name string, ch int, action func(context.Context) error) (string, error) {
 	capturer, err := func() (ret *pcap.Capturer, retErr error) {
-		capturer, err := router.StartCapture(fullCtx, name, ch, nil)
+		capturer, err := rt.StartCapture(fullCtx, name, ch, nil)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to start capturer")
 		}
 		defer func() {
-			if err := router.StopCapture(fullCtx, capturer); err != nil {
+			if err := rt.StopCapture(fullCtx, capturer); err != nil {
 				if retErr == nil {
 					ret = nil
 					retErr = errors.Wrap(err, "failed to stop capturer")
@@ -106,7 +107,7 @@ func CollectPcapForAction(fullCtx context.Context, router *wificell.Router, name
 			}
 		}()
 
-		ctx, cancel := router.ReserveForStopCapture(fullCtx, capturer)
+		ctx, cancel := rt.ReserveForStopCapture(fullCtx, capturer)
 		defer cancel()
 
 		if err := action(ctx); err != nil {
