@@ -22,6 +22,30 @@
       },
       "revId": "c79265568d3f2a61fe2be8bc60077de5d73728ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94eae443_4315f954",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-05-12T17:29:09Z",
+      "side": 1,
+      "message": "Apparently, yes, according to the CQ. Thanks, CQ, for so clearly answering this question!\n\nI can edit this to check that *if* the .variations-list.txt file exists, we add the keys (which incidentally would also let us submit this change before the chrome side lands), but that wouldn\u0027t catch it if we just never have the file.\n\nAny ideas on how we can best check this?",
+      "parentUuid": "63b83c86_bf8e5c4e",
+      "range": {
+        "startLine": 472,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 0
+      },
+      "revId": "c79265568d3f2a61fe2be8bc60077de5d73728ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
