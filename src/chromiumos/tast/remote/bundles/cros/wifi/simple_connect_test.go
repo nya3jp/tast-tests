@@ -25,7 +25,7 @@ type simpleConnectParamsVal struct {
 
 	// APOpts is used if it is not empty; Otherwise CommonAPOptions is used instead.
 	APOpts          string // apOpts: []ap.Option{ %s },
-	CommonAPOptions string // apOpts: wificell.CommonAPOptions( %s ),
+	CommonAPOptions string // apOpts: wifiutil.CommonAPOptions( %s ),
 
 	SecConfFac      string
 	PingOps         string
@@ -689,7 +689,7 @@ func TestSimpleConnect(t *testing.T) {
 		{{ if .APOpts }}
 		apOpts: []ap.Option{ {{ .APOpts }} },
 		{{ else if .CommonAPOptions }}
-		apOpts: wificell.CommonAPOptions({{ .CommonAPOptions }}),
+		apOpts: wifiutil.CommonAPOptions({{ .CommonAPOptions }}),
 		{{ end }}
 		{{ if .SecConfFac }}
 		secConfFac: {{ .SecConfFac }},

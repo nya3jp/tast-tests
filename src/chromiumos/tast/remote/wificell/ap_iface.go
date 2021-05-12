@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/router"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -40,7 +41,7 @@ func freeSubnetIdx(i byte) {
 // It is comprised of a hostapd and a dhcpd. The DHCP server is assigned with the subnet
 // 192.168.$subnetIdx.0/24.
 type APIface struct {
-	router    *Router
+	router    *router.Router
 	name      string
 	iface     string
 	subnetIdx byte
@@ -92,7 +93,7 @@ func (h *APIface) ServerSubnet() *net.IPNet {
 // StartAPIface starts the service.
 // After started, the caller should call h.Stop() at the end, and use the shortened ctx
 // (provided by h.ReserveForStop()) before h.Stop() to reserve time for h.Stop() to run.
-func StartAPIface(ctx context.Context, r *Router, name string, conf *hostapd.Config) (_ *APIface, retErr error) {
+func StartAPIface(ctx context.Context, r *router.Router, name string, conf *hostapd.Config) (_ *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "StartAPIface")
 	defer st.End()
 
