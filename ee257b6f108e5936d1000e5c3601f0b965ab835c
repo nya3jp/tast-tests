@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acd7d886_e362020b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-12T11:37:44Z",
+      "side": 1,
+      "message": "A few more comments for this CL. I\u0027ll have one more thorough round on all CLs in the stack tomorrow.",
+      "revId": "ee257b6f108e5936d1000e5c3601f0b965ab835c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e68f7de7_179854e3",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-12T11:37:44Z",
+      "side": 1,
+      "message": "I guess this can be moved to line535, i.e. inside \"if tf.option.packetCapture {\"",
+      "range": {
+        "startLine": 505,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 2
+      },
+      "revId": "ee257b6f108e5936d1000e5c3601f0b965ab835c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5965bbbb_2d1ea8bb",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-12T11:37:44Z",
+      "side": 1,
+      "message": "similar as above, might be better to move this into the \"if capturer, ok :\u003d tf.capturers[ap]; ok {\", and return the (ctx, cancel) in line579 if not ok.",
+      "range": {
+        "startLine": 575,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 2
+      },
+      "revId": "ee257b6f108e5936d1000e5c3601f0b965ab835c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dada486b_1244b99a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-12T11:37:44Z",
+      "side": 1,
+      "message": "I guess you might want to reserve an error return here, so that you don\u0027t need to panic when the type assertion failed.\n\nHowever, this also makes the method harder to use...",
+      "range": {
+        "startLine": 1044,
+        "startChar": 41,
+        "endLine": 1044,
+        "endChar": 53
+      },
+      "revId": "ee257b6f108e5936d1000e5c3601f0b965ab835c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14a8c474_06453fa8",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-12T11:37:44Z",
+      "side": 1,
+      "message": "Is this change intentional?",
+      "range": {
+        "startLine": 1059,
+        "startChar": 23,
+        "endLine": 1059,
+        "endChar": 24
+      },
+      "revId": "ee257b6f108e5936d1000e5c3601f0b965ab835c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c63154fe_689c57f3",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-12T11:37:44Z",
+      "side": 1,
+      "message": "Didn\u0027t LegacyRouter already imply this? If not, perhaps we can relax it to tf.GetRouter().(supportFrameSender), so it don\u0027t need to be legacyRouter but just supportFrameSender.",
+      "range": {
+        "startLine": 1394,
+        "startChar": 32,
+        "endLine": 1394,
+        "endChar": 50
+      },
+      "revId": "ee257b6f108e5936d1000e5c3601f0b965ab835c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
