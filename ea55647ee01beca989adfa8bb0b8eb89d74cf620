@@ -203,6 +203,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50c2ce64_1aeabc61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-12T13:24:42Z",
+      "side": 1,
+      "message": "Doesn\u0027t it make sense to fail the test when the bug pops up?",
+      "parentUuid": "fa8f8201_43030a75",
+      "revId": "ea55647ee01beca989adfa8bb0b8eb89d74cf620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ac49187_34715d53",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
         "patchSetId": 2
