@@ -70,7 +70,7 @@ func TestRing(t *testing.T) {
 	// The first 2 events are flush events
 	flushEvents := 2
 
-	dutSensors, err := GetSensors()
+	dutSensors, err := GetSensors(context.Background())
 	if err != nil {
 		t.Fatal("Error reading sensors on DUT: ", err)
 	}

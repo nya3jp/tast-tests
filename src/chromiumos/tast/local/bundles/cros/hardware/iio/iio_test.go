@@ -5,6 +5,7 @@
 package iio
 
 import (
+	"context"
 	"os"
 	"path"
 	"reflect"
@@ -31,7 +32,7 @@ func TestGetSensors(t *testing.T) {
 		"iio:device3/name":                  "cros-ec-ring",
 	})()
 
-	sensors, err := GetSensors()
+	sensors, err := GetSensors(context.Background())
 	if err != nil {
 		t.Fatal("Error getting sensors: ", err)
 	}
@@ -72,7 +73,7 @@ func TestGetTriggers(t *testing.T) {
 func TestNoDeviceDir(t *testing.T) {
 	defer setupTestFiles(t, map[string]string{})()
 
-	sensors, err := GetSensors()
+	sensors, err := GetSensors(context.Background())
 	if err != nil {
 		t.Fatal("Error getting sensors: ", err)
 	}
@@ -92,7 +93,7 @@ func TestSensorRead(t *testing.T) {
 		"iio:device0/in_accel_z_raw": "14",
 	})()
 
-	sensors, err := GetSensors()
+	sensors, err := GetSensors(context.Background())
 	if err != nil {
 		t.Fatal("Error getting sensors: ", err)
 	}
