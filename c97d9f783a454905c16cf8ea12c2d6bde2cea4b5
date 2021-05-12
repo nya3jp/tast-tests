@@ -154,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7d9196c_f51a6543",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-12T00:19:35Z",
+      "side": 1,
+      "message": "I\u0027m fine with additional logging if it makes debugging easier. Will defer to alexanderhartl@ for the final call there, though.",
+      "parentUuid": "294c8c61_544143f6",
+      "range": {
+        "startLine": 114,
+        "startChar": 16,
+        "endLine": 114,
+        "endChar": 27
+      },
+      "revId": "c97d9f783a454905c16cf8ea12c2d6bde2cea4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "394ae7a3_7fdb5e3f",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
         "patchSetId": 1
