@@ -43,6 +43,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb7b283e_d44270ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-12T07:03:41Z",
+      "side": 1,
+      "message": "I had it there, and it was slow slow slow on dirinboz, but can add it back.",
+      "parentUuid": "95f70add_92ed6580",
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f084af9d_73a4ddfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-12T07:03:41Z",
+      "side": 1,
+      "message": "The preceding -a \u0027!\u0027 -name \u0027.*\u0027 means \"and not name matches .*\", so everything except dot files.",
+      "parentUuid": "acd9c4d9_45275ef4",
+      "range": {
+        "startLine": 97,
+        "startChar": 86,
+        "endLine": 97,
+        "endChar": 88
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8df0a182_0e6cd34d",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
         "patchSetId": 2
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8dcac940_0d62f842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-12T07:03:41Z",
+      "side": 1,
+      "message": "I promise you, it\u0027s there further down.",
+      "parentUuid": "8df0a182_0e6cd34d",
+      "range": {
+        "startLine": 116,
+        "startChar": 23,
+        "endLine": 117,
+        "endChar": 26
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e9c1dcc_6367c688",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
         "patchSetId": 2
@@ -77,6 +143,24 @@
       "writtenOn": "2021-05-12T04:48:07Z",
       "side": 1,
       "message": "Should you do something before restoring to modify or invalidate the container, to check that the restore did something instead of being a no-op?",
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2262b609_e9a73af4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-12T07:03:41Z",
+      "side": 1,
+      "message": "Can be done.",
+      "parentUuid": "7e9c1dcc_6367c688",
       "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
