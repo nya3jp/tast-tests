@@ -43,7 +43,7 @@ func init() {
 func ChromeLogin(ctx context.Context, s *testing.State) {
 	sm := func() *session.SessionManager {
 		// Set up the test environment. Should be done quickly.
-		const setupTimeout = 30 * time.Second
+		const setupTimeout = 60 * time.Second
 		setupCtx, cancel := context.WithTimeout(ctx, setupTimeout)
 		defer cancel()
 
