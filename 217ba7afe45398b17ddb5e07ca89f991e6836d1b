@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99d9f905_299d9583",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-12T02:26:04Z",
+      "side": 1,
+      "message": "Reply to the pcap_util comments first. (I guess I\u0027m added for that. :p )\n\nWill do a full review later today.",
+      "revId": "217ba7afe45398b17ddb5e07ca89f991e6836d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0164fe9f_e4156676",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-12T02:26:04Z",
+      "side": 1,
+      "message": "I think you can use ap.Config().PcapFreqOptions() here. It somehow address part of another comment. However, it is using Router here, which means tcpdump is sharing the phy with AP, so the `iw set freq` is actually skipped here.",
+      "range": {
+        "startLine": 151,
+        "startChar": 86,
+        "endLine": 151,
+        "endChar": 139
+      },
+      "revId": "217ba7afe45398b17ddb5e07ca89f991e6836d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

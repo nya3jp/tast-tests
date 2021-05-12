@@ -251,6 +251,30 @@
       },
       "revId": "05171c3d0b1f877c65390ff63d7fac6a84b413bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "289c0f22_6a75ed5b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-12T02:26:04Z",
+      "side": 1,
+      "message": "I think hostapd.Config.PcapFreqOptions could be helpful to get the settings in some cases. (but it doesn\u0027t work that well when AP is spawned in the action function)\n\nI wrote the utility only for capturing scans (probe request/response) so it didn\u0027t handle SetFreqOption very well. Perhaps I could take another look at the users of this to see if we can improve/refactor a little bit here.",
+      "parentUuid": "dc3ceeae_878b1c64",
+      "range": {
+        "startLine": 94,
+        "startChar": 89,
+        "endLine": 94,
+        "endChar": 95
+      },
+      "revId": "05171c3d0b1f877c65390ff63d7fac6a84b413bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
