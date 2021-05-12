@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72138d51_67559b4b",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-12T01:58:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38034424_b0575f06",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 63
+      },
+      "revId": "05171c3d0b1f877c65390ff63d7fac6a84b413bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7216748f_6986db79",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-11T19:52:53Z",
       "side": 1,
       "message": "any particular reason for picking the SSID semi-manually? Or just aesthetic?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 49
+      },
+      "revId": "05171c3d0b1f877c65390ff63d7fac6a84b413bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "799206f0_fb2578c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-12T01:58:23Z",
+      "side": 1,
+      "message": "Aesthetic, and for the sake of consistency (I think several other tests do it this way as well).",
+      "parentUuid": "7216748f_6986db79",
       "range": {
         "startLine": 117,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa2c4dad_e2c2f909",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-12T01:58:23Z",
+      "side": 1,
+      "message": "Doh, this is much cleaner. Thanks for the suggestion.",
+      "parentUuid": "25dbbcc2_b69118c9",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 21
+      },
+      "revId": "05171c3d0b1f877c65390ff63d7fac6a84b413bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3e80c24_87c46384",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82d1ecbb_284741f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-12T01:58:23Z",
+      "side": 1,
+      "message": "I liked your suggestion above and went that way instead.",
+      "parentUuid": "e3e80c24_87c46384",
+      "range": {
+        "startLine": 92,
+        "startChar": 13,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "05171c3d0b1f877c65390ff63d7fac6a84b413bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "258ba6b1_2f861975",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-05-11T19:51:01Z",
       "side": 1,
       "message": "I know this is existing code, but this is not really enough to specify pcap behavior. Packet capture in general needs channel and bandwidth (and sometimes center-frequency) -- you\u0027re just lucky that all the current tests are looking for management frames, which are typically expected only on 20 MHz channels (and this also happens to be the default for `iw ... set freq`).",
+      "range": {
+        "startLine": 94,
+        "startChar": 89,
+        "endLine": 94,
+        "endChar": 95
+      },
+      "revId": "05171c3d0b1f877c65390ff63d7fac6a84b413bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc3ceeae_878b1c64",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-12T01:58:23Z",
+      "side": 1,
+      "message": "Ah, I didn\u0027t know that, thanks. I\u0027m not too familiar with how channel width works so I used iw.ChWidthHT20 for now. Does this make sense? Should I be using HT40+ or HT40-?",
+      "parentUuid": "258ba6b1_2f861975",
       "range": {
         "startLine": 94,
         "startChar": 89,
