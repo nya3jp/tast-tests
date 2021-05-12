@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "072e70f1_819a444c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-12T09:51:47Z",
+      "side": 1,
+      "message": "The test had been stable, but looks like affected by infra breakage for a while.\nlacros.Basic didn\u0027t pass 20 consecutive runs as basic guidelines recommends,\nbut this case should be ok because:\n- All the failure causes are identified that they are unrelated to Lacros.\n- The test has been passed consecutively already in past. There\u0027s no change since then.\n- The latest one was green.\n\nPTAL.",
+      "revId": "7786a3b6fea8854e8d809351c2b9db8e411d63f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
