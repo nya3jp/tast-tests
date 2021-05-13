@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5fb550a_a11d10a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memcheck/memcheck.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-13T09:10:31Z",
+      "side": 1,
+      "message": "nit: !pattern.MatchString(ramType) is shorter.",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 18
+      },
+      "revId": "b1a680c8de163e7526230bd740353319b49ede66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
