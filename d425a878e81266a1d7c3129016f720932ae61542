@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17cfd225_acff0d5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-13T01:51:51Z",
+      "side": 1,
+      "message": "I guess norvez@ is informally the \"shadow\", so I\u0027ll just ask for OWNERS now",
+      "revId": "d425a878e81266a1d7c3129016f720932ae61542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
