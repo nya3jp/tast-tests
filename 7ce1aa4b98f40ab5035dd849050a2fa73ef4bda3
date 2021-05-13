@@ -126,6 +126,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00b0a8f1_ec118349",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-13T18:32:51Z",
+      "side": 1,
+      "message": "Great, I added a TODO in the cleanup code.",
+      "parentUuid": "99f54007_14c944eb",
+      "revId": "7ce1aa4b98f40ab5035dd849050a2fa73ef4bda3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf1bd6ca_979b3171",
