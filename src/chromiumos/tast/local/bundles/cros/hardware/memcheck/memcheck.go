@@ -8,6 +8,7 @@ package memcheck
 import (
 	"context"
 	"io/ioutil"
+	"regexp"
 	"runtime"
 	"strconv"
 	"strings"
@@ -120,7 +121,28 @@ func testMemInfo(ctx context.Context, s *testing.State) {
 	}
 }
 
+func testRAMType(ctx context.Context, s *testing.State) {
+	s.Log("Running testRAMType")
+
+	out, err := testexec.CommandContext(ctx, "mosys", "memory", "spd", "print", "type").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Error("Failed to read type from spd: ", err)
+		return
+	}
+
+	ss := strings.Split(strings.TrimSpace(string(out)), " ")
+	ramType := ss[len(ss)-1]
+
+	// Example: DDR3 DDR4 LPDDR4 LPDDR4X
+	pattern := regexp.MustCompile(`^(LP)?DDR([3-9]|[1-9]\d+)X?$`)
+	match := pattern.FindStringSubmatch(ramType)
+	if match == nil {
+		s.Errorf("Unexpected DRAM type: got %s", ramType)
+	}
+}
+
 // RunTest runs subtests of the MemCheck test.
 func RunTest(ctx context.Context, s *testing.State) {
 	testMemInfo(ctx, s)
+	testRAMType(ctx, s)
 }
