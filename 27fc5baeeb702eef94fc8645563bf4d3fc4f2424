@@ -22,6 +22,30 @@
       },
       "revId": "27fc5baeeb702eef94fc8645563bf4d3fc4f2424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1407c077_a8a11983",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-05-13T01:19:33Z",
+      "side": 1,
+      "message": "That comment was incorrect, thanks for letting me know!\n\nInitially I only used the EncoderAllowlistVPxVM for VP8/9 tests, but Aka asked me if I could also apply the EncoderBlocklistVM. Even if it\u0027s currently not strictly needed, semantically it\u0027s more correct and consistent.\n\nI did various test with combining Platform and SkipOnPlatform, and to my surprise all combinations worked perfectly fine.",
+      "parentUuid": "f946a090_addcfd86",
+      "range": {
+        "startLine": 14,
+        "startChar": 58,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "27fc5baeeb702eef94fc8645563bf4d3fc4f2424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
