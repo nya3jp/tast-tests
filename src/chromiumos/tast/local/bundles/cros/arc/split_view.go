@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type splitViewTestParams struct {
@@ -28,6 +29,7 @@ func init() {
 		Desc:         "Tests split view works properly with ARC apps",
 		Contacts:     []string{"tetsui@chromium.org", "amusbach@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
+		HardwareDeps: hwdep.D(hwdep.TouchScreen()),
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
 		Fixture:      "arcBooted",
