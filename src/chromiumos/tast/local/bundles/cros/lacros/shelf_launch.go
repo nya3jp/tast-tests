@@ -103,11 +103,7 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Checking that Lacros window is visible")
-	firstRunPage := "New Tab"
-	if f.LacrosIsChromeBranded {
-		firstRunPage = "Welcome to Chrome"
-	}
-	if err := launcher.WaitForLacrosWindow(ctx, tconn, firstRunPage); err != nil {
+	if err := launcher.WaitForLacrosWindow(ctx, tconn, "New Tab"); err != nil {
 		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
 	}
 
