@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a41d3319_adfe3f06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-13T18:15:36Z",
+      "side": 1,
+      "message": "Is there anything else that needs to be done for this CL to be merged? I\u0027m not sure if the routine groups question is gating merging the change.\n",
+      "revId": "a1e460bd9dcf5142fe82c7647c5a87d42952e7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c58adfe_3f339e69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-13T18:15:36Z",
+      "side": 1,
+      "message": "I added a function to slowly attenuate the device as it is polled to ensure the signal strength is low enough to trigger the problem state. In my testing sometimes the signal strength is right on the threshold.",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 4
+      },
+      "revId": "a1e460bd9dcf5142fe82c7647c5a87d42952e7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
