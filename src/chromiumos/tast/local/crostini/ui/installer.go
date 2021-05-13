@@ -33,7 +33,8 @@ import (
 
 const uiTimeout = 30 * time.Second
 
-var installWindow = nodewith.NameRegex(regexp.MustCompile(`^Set up Linux`)).Role(role.RootWebArea)
+// InstallWindow is the finder for Crostini install window.
+var InstallWindow = nodewith.NameRegex(regexp.MustCompile(`^Set up Linux`)).Role(role.RootWebArea)
 
 // Image setup mode.
 const (
@@ -67,9 +68,9 @@ func New(tconn *chrome.TestConn) *Installer {
 // size to the smallest slider increment larger than the specified disk size.
 // If minDiskSize is smaller than the possible minimum disk size, disk size will be the smallest size.
 func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftMinimum bool) (uint64, error) {
-	radioGroup := nodewith.Role(role.RadioGroup).Ancestor(installWindow)
+	radioGroup := nodewith.Role(role.RadioGroup).Ancestor(InstallWindow)
 	customStaticText := nodewith.Name("Custom").Role(role.StaticText).Ancestor(radioGroup)
-	slider := nodewith.Role(role.Slider).Ancestor(installWindow)
+	slider := nodewith.Role(role.Slider).Ancestor(InstallWindow)
 
 	// Hide virtual keyboard if it appears.
 	// vkb.HideVirtualKeyboard invokes Chrome API to force hide virtual keyboard.
@@ -169,7 +170,7 @@ func (p *Installer) Install(ctx context.Context) error {
 	installButton := nodewith.Name("Install").Role(role.Button)
 	if err := uiauto.Combine("click install and wait it to finish",
 		ui.LeftClick(installButton),
-		ui.WithTimeout(8*time.Minute).WaitUntilGone(installWindow))(ctx); err != nil {
+		ui.WithTimeout(8*time.Minute).WaitUntilGone(InstallWindow))(ctx); err != nil {
 		// If the install fails, return any error message from the installer rather than a timeout error.
 		message, messageErr := p.checkErrorMessage(cleanupCtx)
 		if messageErr != nil {
