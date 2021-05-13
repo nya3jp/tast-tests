@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bac3ef6b_1d21f6a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-13T18:10:11Z",
+      "side": 1,
+      "message": "Thank you for writing this test, Hsiao-Chieh!",
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "655d4d9f_086e31f5",
@@ -66,6 +83,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "747246e5_e60a36c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-13T18:10:11Z",
+      "side": 1,
+      "message": "I think that chromeos-firmware@, or some subset of chromeos-firmware@, would be more appropriate. Per go/engprod/prototype, EngProd is about testability, not tests.",
+      "parentUuid": "63d2ed1c_73fe71f4",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b214870a_701fc5ec",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
         "patchSetId": 1
@@ -82,6 +123,93 @@
         "startChar": 44,
         "endLine": 22,
         "endChar": 58
+      },
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "714b5e75_10af7396",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-13T18:10:11Z",
+      "side": 1,
+      "message": "That\u0027s a good question. It would be more efficient to have it run weekly. We don\u0027t currently have a weekly attribute/suite set up though. How about we leave firmware_smoke for now and create a follow-up bug to create a weekly suite which includes this test?",
+      "parentUuid": "b214870a_701fc5ec",
+      "range": {
+        "startLine": 22,
+        "startChar": 44,
+        "endLine": 22,
+        "endChar": 58
+      },
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "149bb1be_5dca7a91",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-13T18:10:11Z",
+      "side": 1,
+      "message": "nit/typo: \"Stopping\"",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 15
+      },
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "223390a8_c4b3ea42",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-13T18:10:11Z",
+      "side": 1,
+      "message": "No need to change, but just so you know, the servo control-setting methods\u0027 returned errors include the control name and value, so many of the Fatals in this file could be shortened without loss of information to:\n\n    s.Fatal(err)",
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8266964f_1a99365f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-13T18:10:11Z",
+      "side": 1,
+      "message": "I think this `c` should actually be `ctx`. Either that, or L59 should reference `c` instead of `ctx`.",
+      "range": {
+        "startLine": 58,
+        "startChar": 33,
+        "endLine": 58,
+        "endChar": 34
       },
       "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -112,6 +240,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "620d9a4a_34533410",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-13T18:10:11Z",
+      "side": 1,
+      "message": "for reference: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/servo/ec.go;drc\u003d61cb98d5066be667b6e54cbb8c4e38a31dd22829;l\u003d46",
+      "parentUuid": "390237b6_d7c39e1f",
+      "range": {
+        "startLine": 59,
+        "startChar": 28,
+        "endLine": 59,
+        "endChar": 66
+      },
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f47f14e2_9a099687",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-13T18:10:11Z",
+      "side": 1,
+      "message": "Does this test require the DUT to have a Chrome EC? If so, please add a HwDep for ChromeEC(), like we see in firmware.ECVersion. If a Wilco EC would also be OK (such as for sarien/drallion boards), then we should create a new HwDep for having any embedded controller.\n\nEither way, I think that this line, and RunECCommand() in L88, would fail on DUTs with no EC, such as tidus/rikku/guado.",
+      "range": {
+        "startLine": 59,
+        "startChar": 44,
+        "endLine": 59,
+        "endChar": 64
+      },
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1900193_fcf4f4b4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
         "patchSetId": 1
@@ -129,6 +304,47 @@
         "endLine": 74,
         "endChar": 61
       },
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bfa9e87_57fbb434",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-13T18:10:11Z",
+      "side": 1,
+      "message": "Agreed. It looks like we would need two new control constants: BatteryFullChargeMAH \u003d \"battery_full_charge_mah\" and BatteryChargeMAH \u003d \"battery_charge_mah\".",
+      "parentUuid": "c1900193_fcf4f4b4",
+      "range": {
+        "startLine": 74,
+        "startChar": 38,
+        "endLine": 74,
+        "endChar": 61
+      },
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "096e0a56_e70d655c",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-13T18:10:11Z",
+      "side": 1,
+      "message": "It looks like battery_charge_mah always returns an int. Please create a separate type, IntControl, and change this function\u0027s control param to IntControl.",
       "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
