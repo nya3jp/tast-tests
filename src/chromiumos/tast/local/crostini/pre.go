@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/crostini/ui/settings"
@@ -614,14 +613,8 @@ func uninstallLinuxFromUI(ctx context.Context, tconn *chrome.TestConn, cr *chrom
 		return errors.Wrap(err, "failed to open Linux Settings")
 	}
 
-	// Uninstall Crostini
-	ui := uiauto.New(tconn)
-	if err := uiauto.Combine("remove Linux",
-		st.ClickRemove(),
-		ui.LeftClick(settings.RemoveConfirmDialog.Delete),
-		ui.WaitUntilExists(settings.RemoveLinuxAlert),
-		ui.WaitUntilGone(settings.RemoveLinuxAlert),
-		ui.WaitUntilExists(settings.DevelopersButton))(ctx); err != nil {
+	// Uninstall Crostini.
+	if err := st.Remove()(ctx); err != nil {
 		return err
 	}
 
