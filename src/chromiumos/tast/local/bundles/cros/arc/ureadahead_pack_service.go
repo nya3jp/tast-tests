@@ -62,7 +62,7 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 
 		sysOpenTrace = "/sys/kernel/debug/tracing/events/fs/do_sys_open"
 
-		ureadaheadTimeout = 10 * time.Second
+		ureadaheadTimeout = 30 * time.Second
 	)
 
 	// Create arguments for running ureadahead.
