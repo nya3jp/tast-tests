@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7041b66_67acb62a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-05-13T06:11:27Z",
+      "side": 1,
+      "message": "I guess CL:2894065 depending on this CL is the correct one?",
+      "revId": "4b9da5326e4c8ee1c5e01b37f822a6722c265726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
