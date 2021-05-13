@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d15a0b6a_21a82135",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-13T22:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "195bde05_19fa9d0d",
+      "range": {
+        "startLine": 138,
+        "startChar": 31,
+        "endLine": 138,
+        "endChar": 66
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "373c505c_970c459b",
@@ -72,6 +96,30 @@
       "writtenOn": "2021-05-13T05:52:21Z",
       "side": 1,
       "message": "I think ToggleFromQuicksettings is ok",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d901f7e6_1b3e1a30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-13T22:38:49Z",
+      "side": 1,
+      "message": "I would like to leave UI in since I am planning tests on different layers of the stack.",
+      "parentUuid": "373c505c_970c459b",
       "range": {
         "startLine": 19,
         "startChar": 8,
@@ -105,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99807610_62b6c29a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-13T22:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9871d583_2945c048",
+      "range": {
+        "startLine": 22,
+        "startChar": 109,
+        "endLine": 22,
+        "endChar": 116
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b2bb5e3_abfd4266",
@@ -118,6 +190,30 @@
       "writtenOn": "2021-05-13T05:52:21Z",
       "side": 1,
       "message": "bring",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 32
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15c80a12_90ce4622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-13T22:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b2bb5e3_abfd4266",
       "range": {
         "startLine": 42,
         "startChar": 27,
@@ -151,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c2bce91_631a993f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-13T22:38:49Z",
+      "side": 1,
+      "message": "I have defined all nodes at the start of the files.",
+      "parentUuid": "bcf032ee_a652c11d",
+      "range": {
+        "startLine": 43,
+        "startChar": 15,
+        "endLine": 43,
+        "endChar": 54
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0423cde2_68e4279e",
@@ -164,6 +284,30 @@
       "writtenOn": "2021-05-13T05:52:21Z",
       "side": 1,
       "message": "Gone and IfSuccessThen in uiauto could be used:\nui.IfSuccessThen(ui.Gone(nodewith.ClassName(\"ExpandButton\")),ui.LeftClick(nodewith.ClassName(\"CollapseButton\")))\n\nIf you do change it to IfSuccessThen, you could combine all of them together:\n\nif err :\u003d uiauto.Combine(\"...\", ui.LeftClick(nodewith.ClassName(\"UnifiedSystemTray\")),\nui.IfSuccessThen(ui.Gone(nodewith.ClassName(\"ExpandButton\")),ui.LeftClick(nodewith.ClassName(\"CollapseButton\"))),\n)(ctx)...",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "357f1f19_c536a9c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-13T22:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0423cde2_68e4279e",
       "range": {
         "startLine": 49,
         "startChar": 1,
@@ -197,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c0b123_43683c4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-13T22:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7a7409f_d9420a46",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86da8406_f1232342",
@@ -210,6 +378,30 @@
       "writtenOn": "2021-05-13T05:52:21Z",
       "side": 1,
       "message": "end with .",
+      "range": {
+        "startLine": 67,
+        "startChar": 34,
+        "endLine": 67,
+        "endChar": 42
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf63c960_ef7d866b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-13T22:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86da8406_f1232342",
       "range": {
         "startLine": 67,
         "startChar": 34,
@@ -243,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "116f13e7_5f4a06a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-13T22:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0a00c2c_1b8a2856",
+      "range": {
+        "startLine": 70,
+        "startChar": 12,
+        "endLine": 70,
+        "endChar": 32
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e27e3b93_42649aa8",
@@ -256,6 +472,30 @@
       "writtenOn": "2021-05-13T05:52:21Z",
       "side": 1,
       "message": "Failed to verify Bluetooth status, got enabled, want disabled",
+      "range": {
+        "startLine": 73,
+        "startChar": 12,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af6765e1_813b918f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-13T22:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e27e3b93_42649aa8",
       "range": {
         "startLine": 73,
         "startChar": 12,
@@ -289,6 +529,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "189238fb_46e0e26d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-13T22:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a71fb43_ca3cb551",
+      "range": {
+        "startLine": 77,
+        "startChar": 28,
+        "endLine": 77,
+        "endChar": 35
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16f4866d_bc3d07f5",
@@ -302,6 +566,30 @@
       "writtenOn": "2021-05-13T05:52:21Z",
       "side": 1,
       "message": "end with .",
+      "range": {
+        "startLine": 83,
+        "startChar": 34,
+        "endLine": 83,
+        "endChar": 42
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3f7ac06_1a58da94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-13T22:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16f4866d_bc3d07f5",
       "range": {
         "startLine": 83,
         "startChar": 34,
@@ -335,6 +623,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18cebbe0_2a00dd67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-13T22:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28538145_a1966c61",
+      "range": {
+        "startLine": 86,
+        "startChar": 12,
+        "endLine": 86,
+        "endChar": 32
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f88ce1a_f26753c6",
@@ -348,6 +660,30 @@
       "writtenOn": "2021-05-13T05:52:21Z",
       "side": 1,
       "message": "Failed to verify Bluetooth status, got disabled, want enabled",
+      "range": {
+        "startLine": 89,
+        "startChar": 12,
+        "endLine": 89,
+        "endChar": 33
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "654c9001_e256ad3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-13T22:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f88ce1a_f26753c6",
       "range": {
         "startLine": 89,
         "startChar": 12,
