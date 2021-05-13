@@ -1,0 +1,97 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6346c067_9e80ebd7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-13T05:29:42Z",
+      "side": 1,
+      "message": "\u003e \"intialized\" is a possible misspelling of \"initialized\".\n\nPlease fix.",
+      "parentUuid": "fdde9db6_e9f63962",
+      "range": {
+        "startLine": 12,
+        "startChar": 61,
+        "endLine": 12,
+        "endChar": 71
+      },
+      "revId": "87789145f78285b29e568dd7fa48da28d4e3f643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "145a7a71_5057659b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_add_entropy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-13T05:29:42Z",
+      "side": 1,
+      "message": "This is starting to get a bit unreadable. Maybe add some bool constants in your helper package to make this long sequence of bools more easily readable, or setup a custom struct that you pass in, e.g.\n```\nfirmwareTestParams{\ndut: s.DUT(),\nservo: s.RequiredVar(\"servo\")\nrpcHint: s.RPCHint(),\noutDir: s.OutDir(),\nenableHWWP: true,\n...\n}\n```\nIt\u0027s not easily distinguishable what this sequence of bools means. Alternative:\n```\nconst (\nHWWPEnabled \u003d true\nHWWPDisabled \u003d false\n)\n```\nThen use those constants instead of the raw bool values. Your choice (second suggestions seems preferable given NewFirmwareTest sets up another struct I guess)",
+      "range": {
+        "startLine": 37,
+        "startChar": 102,
+        "endLine": 37,
+        "endChar": 125
+      },
+      "revId": "87789145f78285b29e568dd7fa48da28d4e3f643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88351676_9d282847",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-13T05:29:42Z",
+      "side": 1,
+      "message": "This line and line 820 have the same error message, keep them unique to aid debugging.",
+      "range": {
+        "startLine": 815,
+        "startChar": 28,
+        "endLine": 815,
+        "endChar": 49
+      },
+      "revId": "87789145f78285b29e568dd7fa48da28d4e3f643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dce7806_980cd204",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-13T05:29:42Z",
+      "side": 1,
+      "message": "Should be fine to have this as one single line instead of broken across 2",
+      "range": {
+        "startLine": 818,
+        "startChar": 53,
+        "endLine": 819,
+        "endChar": 3
+      },
+      "revId": "87789145f78285b29e568dd7fa48da28d4e3f643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
