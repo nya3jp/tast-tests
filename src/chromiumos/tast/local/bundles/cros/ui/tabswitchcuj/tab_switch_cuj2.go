@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
@@ -387,7 +388,7 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	defer cancel()
 
 	if err = recorder.Run(shorterCtx, func(ctx context.Context) error {
-		return tabSwitchAction(ctx, cr, &windows, tsAction, caseLevel)
+		return tabSwitchAction(ctx, cr, tconn, &windows, tsAction, caseLevel)
 	}); err != nil {
 		s.Fatal("Failed to execute tab switch action: ", err)
 	}
@@ -443,7 +444,7 @@ func openAllWindowsAndTabs(ctx context.Context, cr *chrome.Chrome, targets *[]*c
 	return nil
 }
 
-func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, targets *[]*chromeWindow, tsAction cuj.UIActionHandler, caseLevel Level) error {
+func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, targets *[]*chromeWindow, tsAction cuj.UIActionHandler, caseLevel Level) error {
 	windows := (*targets)
 	scrollActions, err := tsAction.ScrollChromePage(ctx)
 	if err != nil {
@@ -451,21 +452,24 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, targets *[]*chromeW
 	}
 	plTimeout := pageLoadingTimeout(caseLevel)
 
+	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to check installed chrome browser")
+	}
+
 	for idx, window := range windows {
 		testing.ContextLogf(ctx, "Switching to window #%d", idx+1)
-		if err := tsAction.SwitchWindow(ctx, idx, len(windows)); err != nil {
+		if err := tsAction.SwitchToAppWindowByIndex(chromeApp.Name, idx)(ctx); err != nil {
 			return errors.Wrap(err, "failed to switch window: ")
 		}
 
 		tabTotalNum := len(window.tabs)
-		tabIdxPre := tabTotalNum - 1 // Last tab is still active.
 		for tabIdx := 0; tabIdx < tabTotalNum; tabIdx++ {
 			testing.ContextLogf(ctx, "Switching tab to window %d, tab %d", idx+1, tabIdx+1)
 
-			if err := tsAction.SwitchChromeTab(ctx, tabIdxPre, tabIdx, tabTotalNum); err != nil {
+			if err := tsAction.SwitchToChromeTabByIndex(tabIdx)(ctx); err != nil {
 				return errors.Wrap(err, "failed to switch tab")
 			}
-			tabIdxPre = tabIdx
 			tab := window.tabs[tabIdx]
 
 			timeStart := time.Now()
