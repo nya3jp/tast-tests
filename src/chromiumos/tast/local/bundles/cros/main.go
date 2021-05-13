@@ -20,6 +20,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/audio"
 	_ "chromiumos/tast/local/bundles/cros/baserpc"
 	_ "chromiumos/tast/local/bundles/cros/biod"
+	_ "chromiumos/tast/local/bundles/cros/bluetooth"
 	_ "chromiumos/tast/local/bundles/cros/camera"
 	_ "chromiumos/tast/local/bundles/cros/crash"
 	_ "chromiumos/tast/local/bundles/cros/crostini"
