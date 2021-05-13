@@ -287,6 +287,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95c1c7e0_a0a87391",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-13T18:35:18Z",
+      "side": 1,
+      "message": "The hibernate command will fail on wilco also, so this test does require a chrome ec.\n\nI did find this info about wilco: https://docs.google.com/document/d/1ABk4urqGuYeGato5tpQ6_jKjRaLqCWr1bbdkwRYfyu0/edit#heading\u003dh.k3xc8xvzmtu3\n\nIt seems that it automatically powers off the EC if the AC is removed and the AP is in S5 (I assume G3 would also power off EC).  If we found a way to check the battery level on wilco, then I think we could use cr50 ecrst to shutdown the EC, and use the power button emulation on servo to wake it up again. But we can leave that for another day and just add the HwDep.",
+      "parentUuid": "f47f14e2_9a099687",
+      "range": {
+        "startLine": 59,
+        "startChar": 44,
+        "endLine": 59,
+        "endChar": 64
+      },
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1900193_fcf4f4b4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
         "patchSetId": 1
