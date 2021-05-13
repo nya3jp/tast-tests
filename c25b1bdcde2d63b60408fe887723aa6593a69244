@@ -33,6 +33,40 @@
       "message": "LGTM, might be nice to look into including some cleanup for virtual desks within chrome.go\u0027s ResetState so other tests don\u0027t hit similar issues. Tests using them should probably take care to clean them up as well",
       "revId": "c25b1bdcde2d63b60408fe887723aa6593a69244",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c8f7ce2_5676b5ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-13T00:05:00Z",
+      "side": 1,
+      "message": "+2 for Tast Owners... agree with Kyle\u0027s comment, I\u0027m not sure why Chrome is not resetting when you are creating a new instance. Maybe that should be fixed (?)",
+      "revId": "c25b1bdcde2d63b60408fe887723aa6593a69244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "343a7552_f7a2ba4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-13T00:05:00Z",
+      "side": 1,
+      "message": "general feedback: this test method is almost impossibly long and has multiple levels of indentation which makes it harder to follow what is going on. At some point, you might consider refactoring it into smaller methods.",
+      "revId": "c25b1bdcde2d63b60408fe887723aa6593a69244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
