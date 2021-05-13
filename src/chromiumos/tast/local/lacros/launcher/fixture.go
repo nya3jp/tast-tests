@@ -7,7 +7,6 @@ package launcher
 import (
 	"context"
 	"path/filepath"
-	"strconv"
 	"strings"
 	"time"
 
@@ -19,7 +18,7 @@ import (
 
 // LacrosFixtureVars contains the Fixture Vars necessary to run lacros.
 // This should be used by any lacros fixtures defined outside this file.
-var LacrosFixtureVars = []string{"lacrosDeployedBinary", "lacrosIsChromeBranded"}
+var LacrosFixtureVars = []string{"lacrosDeployedBinary"}
 
 // NewStartedByData creates a new fixture that can launch Lacros chrome with the given setup mode and
 // Chrome options.
@@ -127,22 +126,20 @@ const (
 //		...
 //	}
 type FixtData struct {
-	Chrome                *chrome.Chrome   // The CrOS-chrome instance.
-	TestAPIConn           *chrome.TestConn // The CrOS-chrome connection.
-	Mode                  SetupMode        // Mode used to get the lacros binary.
-	LacrosPath            string           // Root directory for lacros-chrome.
-	LacrosIsChromeBranded bool             // True if lacros-chrome is chrome branded instead of chromium.
+	Chrome      *chrome.Chrome   // The CrOS-chrome instance.
+	TestAPIConn *chrome.TestConn // The CrOS-chrome connection.
+	Mode        SetupMode        // Mode used to get the lacros binary.
+	LacrosPath  string           // Root directory for lacros-chrome.
 }
 
 // fixtureImpl is a fixture that allows Lacros chrome to be launched.
 type fixtureImpl struct {
-	mode                  SetupMode        // How (pre exist/to be downloaded/) the container image is obtained.
-	lacrosPath            string           // Root directory for lacros-chrome, it's dynamically controlled by the lacros.skipInstallation Var.
-	lacrosIsChromeBranded bool             // True if lacros-chrome is chrome branded instead of chromium.
-	cr                    *chrome.Chrome   // Connection to CrOS-chrome.
-	tconn                 *chrome.TestConn // Test-connection for CrOS-chrome.
-	prepared              bool             // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
-	opts                  []chrome.Option  // Options to be run for CrOS-chrome.
+	mode       SetupMode        // How (pre exist/to be downloaded/) the container image is obtained.
+	lacrosPath string           // Root directory for lacros-chrome, it's dynamically controlled by the lacros.skipInstallation Var.
+	cr         *chrome.Chrome   // Connection to CrOS-chrome.
+	tconn      *chrome.TestConn // Test-connection for CrOS-chrome.
+	prepared   bool             // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
+	opts       []chrome.Option  // Options to be run for CrOS-chrome.
 }
 
 // SetupMode describes how lacros-chrome should be set-up during the test. See the SetupMode constants for more explanation.
@@ -198,18 +195,6 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 		f.lacrosPath = path
 	} else {
 		f.lacrosPath = binaryPath
-	}
-
-	// The main motivation of this var is to allow setting different test expectations based on
-	// whether it's Chromium or Chrome, and for example, upon first run, Chromium displays a new
-	// tab page while Chrome displays a Welcome To Chrome page.
-	f.lacrosIsChromeBranded = true
-	if str, ok := s.Var("lacrosIsChromeBranded"); ok {
-		b, err := strconv.ParseBool(str)
-		if err != nil {
-			s.Fatalf("Cannot parse argument %q to lacrosIsChromeBranded: %v", str, err)
-		}
-		f.lacrosIsChromeBranded = b
 	}
 
 	if f.mode == PreExist {
@@ -309,5 +294,5 @@ func (f *fixtureImpl) buildFixtData(ctx context.Context, s *testing.FixtState) F
 	if err := f.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return FixtData{f.cr, f.tconn, f.mode, f.lacrosPath, f.lacrosIsChromeBranded}
+	return FixtData{f.cr, f.tconn, f.mode, f.lacrosPath}
 }
