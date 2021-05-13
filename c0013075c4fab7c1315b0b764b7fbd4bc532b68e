@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b49cf54f_25ee8302",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T01:30:11Z",
+      "side": 1,
+      "message": "lgtm from the point of tast owner. I\u0027ll wait +2 from your team member.",
+      "revId": "c0013075c4fab7c1315b0b764b7fbd4bc532b68e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
