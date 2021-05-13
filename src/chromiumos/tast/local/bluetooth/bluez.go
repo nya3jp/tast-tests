@@ -127,3 +127,33 @@ func (a *Adapter) StopDiscovery(ctx context.Context) error {
 	}
 	return nil
 }
+
+// IsEnabled checks if bluetooth adapter present and powered on.
+func IsEnabled(ctx context.Context) (bool, error) {
+	adapters, err := Adapters(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "unable to get Bluetooth adapters")
+	}
+	if len(adapters) != 1 {
+		return false, errors.Errorf("failed to verify the number of Bluetooth adapters got %d, expected 1 ", len(adapters))
+	}
+	return adapters[0].Powered(ctx)
+}
+
+// IsDisabled checks if bluetooth adapter present and powered off
+func IsDisabled(ctx context.Context) (bool, error) {
+	status, err := IsEnabled(ctx)
+	return !status, err
+}
+
+// Enable powers on the bluetooth adapter
+func Enable(ctx context.Context) error {
+	adapters, err := Adapters(ctx)
+	if err != nil {
+		return errors.Wrap(err, "unable to get Bluetooth adapters")
+	}
+	if len(adapters) != 1 {
+		return errors.Errorf("failed to verify the number of Bluetooth adapters got %d, expected 1 ", len(adapters))
+	}
+	return adapters[0].SetPowered(ctx, true)
+}
