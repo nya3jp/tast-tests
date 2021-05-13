@@ -392,6 +392,15 @@ func (s *Servo) SetInt(ctx context.Context, control IntControl, value int) error
 	return nil
 }
 
+// GetInt returns the integer value of a specified control.
+func (s *Servo) GetInt(ctx context.Context, control FloatControl) (int, error) {
+	var value int
+	if err := s.xmlrpc.Run(ctx, xmlrpc.NewCall("get", string(control)), &value); err != nil {
+		return 0, errors.Wrapf(err, "getting value for servo control %q", control)
+	}
+	return value, nil
+}
+
 // GetFloat returns the floating-point value of a specified control.
 func (s *Servo) GetFloat(ctx context.Context, control FloatControl) (float64, error) {
 	var value float64
