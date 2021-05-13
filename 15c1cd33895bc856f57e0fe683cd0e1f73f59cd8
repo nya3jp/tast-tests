@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d476c61_ad3d57a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_rtc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-05-13T02:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "366c58cd_84d4afe8",
+      "range": {
+        "startLine": 50,
+        "startChar": 19,
+        "endLine": 50,
+        "endChar": 20
+      },
+      "revId": "15c1cd33895bc856f57e0fe683cd0e1f73f59cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9f0f090_092f8134",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-13T02:19:45Z",
       "side": 1,
       "message": "Could you give them symmetrical names? e.g.\nt -\u003e elapsed (corresponding to startTime)\nelapsed -\u003e realElapsed (corresponding to realStartTime).",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 8
+      },
+      "revId": "15c1cd33895bc856f57e0fe683cd0e1f73f59cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57f98d3b_d07fbc8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_rtc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-05-13T02:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9f0f090_092f8134",
       "range": {
         "startLine": 111,
         "startChar": 1,
