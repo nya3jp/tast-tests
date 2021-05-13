@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d9379ad_748fa1f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-13T03:40:40Z",
+      "side": 1,
+      "message": "Hi Judy,\n\nCould you review the UI part of this test? I want to get feedback on the use of the UIAuto library and UI parts before I send it to tast-reviewers.\n\nThe test clicks on the bluetooth button in the quick settings menu repeatedly and confirm that 1) The UI button changes states and 2) the bluetooth adapter is powered on/off.\n\nRegards\nShijin ",
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
