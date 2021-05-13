@@ -16,6 +16,24 @@
       "message": "minor nit: perhaps nice to:\n1. report s.Error when restore somehow failed\n2. reserve some time for this defer.",
       "revId": "8016fadf3da7d9ebe7cee38a73be99db01e2779d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b197fa2c_aa33187e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-13T17:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c52f04e_578f1a29",
+      "revId": "8016fadf3da7d9ebe7cee38a73be99db01e2779d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
