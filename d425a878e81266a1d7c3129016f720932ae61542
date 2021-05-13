@@ -16,6 +16,23 @@
       "message": "I guess norvez@ is informally the \"shadow\", so I\u0027ll just ask for OWNERS now",
       "revId": "d425a878e81266a1d7c3129016f720932ae61542",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beda8120_877b0b06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-13T09:08:18Z",
+      "side": 1,
+      "message": "Sending CR+2 without waiting shadow reviewer since it\u0027s a short change.",
+      "revId": "d425a878e81266a1d7c3129016f720932ae61542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
