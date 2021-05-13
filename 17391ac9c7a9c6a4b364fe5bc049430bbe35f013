@@ -16,6 +16,23 @@
       "message": "PTAL\nTY",
       "revId": "17391ac9c7a9c6a4b364fe5bc049430bbe35f013",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8989960e_d4f9ddcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-05-13T17:14:35Z",
+      "side": 1,
+      "message": "Don\u0027t you think these changes need a comment for rollback once the original bug is fixed?",
+      "revId": "17391ac9c7a9c6a4b364fe5bc049430bbe35f013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
