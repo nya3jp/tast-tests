@@ -33,6 +33,24 @@
       "message": "optionally, consider adding TODO comment with a open bug that tracks the task to enable HW encoder for these devices. (I assume the b:176388316 is going to be closed after this workaround.)",
       "revId": "c62384768558e30e6837c6947c0c24fc27b6e1cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "075515fc_88f2a376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-05-13T01:18:57Z",
+      "side": 1,
+      "message": "Good idea, thanks!",
+      "parentUuid": "fc3d16d6_48798e37",
+      "revId": "c62384768558e30e6837c6947c0c24fc27b6e1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
