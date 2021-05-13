@@ -64,7 +64,7 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 
 		logName = "ureadahead.log"
 
-		ureadaheadTimeout = 10 * time.Second
+		ureadaheadTimeout = 30 * time.Second
 	)
 
 	// Create arguments for running ureadahead.
