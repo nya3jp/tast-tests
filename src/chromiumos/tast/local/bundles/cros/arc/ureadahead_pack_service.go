@@ -53,7 +53,13 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 
 		sysOpenTrace = "/sys/kernel/debug/tracing/events/fs/do_sys_open"
 
+<<<<<<< HEAD   (582f27 Reland "tast tests:Fix the OOBE test as there is UI change")
 		ureadaheadTimeout = 10 * time.Second
+=======
+		logName = "ureadahead.log"
+
+		ureadaheadTimeout = 30 * time.Second
+>>>>>>> CHANGE (a919ff arc: Increase timeout for DataCollector.)
 	)
 
 	// Create arguments for running ureadahead.
