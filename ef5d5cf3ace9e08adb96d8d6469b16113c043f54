@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "695eeb2c_0dad2fd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-13T16:51:21Z",
+      "side": 1,
+      "message": "This is really good, thank you. I just have a few small comments, and I\u0027d like Greg to take a look for golang and tast style issues.",
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "655d4d9f_086e31f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-13T16:51:21Z",
+      "side": 1,
+      "message": "Can you also mention that this replaces manual test 1.10.1",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63d2ed1c_73fe71f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-13T16:51:21Z",
+      "side": 1,
+      "message": "Please add cros-fw-engprod@google.com as a contact also.",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b214870a_701fc5ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-13T16:51:21Z",
+      "side": 1,
+      "message": "@Greg Edelston: Is firmware_smoke a good attribute here? This test takes 4 hours to run, so we don\u0027t want to run it too often, but it should run regularly to catch regressions.",
+      "range": {
+        "startLine": 22,
+        "startChar": 44,
+        "endLine": 22,
+        "endChar": 58
+      },
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "390237b6_d7c39e1f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-13T16:51:21Z",
+      "side": 1,
+      "message": "pxy.Servo().GetECSystemPowerState() is probably better. It\u0027s a wrapper around that same GetString() call.",
+      "range": {
+        "startLine": 59,
+        "startChar": 28,
+        "endLine": 59,
+        "endChar": 66
+      },
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1900193_fcf4f4b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-13T16:51:21Z",
+      "side": 1,
+      "message": "Can you move these magic strings into src/chromiumos/tast/remote/servo/methods.go. It would be good to put the servo strings only in one place to avoid typos.",
+      "range": {
+        "startLine": 74,
+        "startChar": 38,
+        "endLine": 74,
+        "endChar": 61
+      },
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
