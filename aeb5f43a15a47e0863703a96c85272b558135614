@@ -51,6 +51,24 @@
       "message": "+Yenlin as I had discussed with him about this issue before.",
       "revId": "aeb5f43a15a47e0863703a96c85272b558135614",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2f09824_e0c03d96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-13T07:17:49Z",
+      "side": 1,
+      "message": "Hsin-chen already said all what I have. Just append a bit to (1): If we want this in the framework. I guess the \"interceptor\" of gRPC might be a possible place: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/rpc/server.go;l\u003d189;drc\u003d6adc299db92c542ec9799fd3e7cbd8f2cd38351c.",
+      "parentUuid": "8b50cdbb_9190caca",
+      "revId": "aeb5f43a15a47e0863703a96c85272b558135614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
