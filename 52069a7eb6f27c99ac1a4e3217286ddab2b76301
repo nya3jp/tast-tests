@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "009d3de4_a8e4cbcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-13T21:56:20Z",
+      "side": 1,
+      "message": "Thanks. Fixed.",
+      "parentUuid": "f5bd69b5_3c8db82d",
+      "range": {
+        "startLine": 66,
+        "startChar": 17,
+        "endLine": 66,
+        "endChar": 25
+      },
+      "revId": "52069a7eb6f27c99ac1a4e3217286ddab2b76301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba98962b_18e5167e",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-13T02:06:38Z",
       "side": 1,
       "message": "What about this:\n\nvar tc tcType\nvar kb kbType\nvar tew tewType\nvar stew stewType\n\nsucc :\u003d false\n\ndefer func() {\n    if !succ \u0026\u0026 tc !\u003dnil{\n        if err :\u003d tc.Close(); err !\u003d nil {\n            ...\n        }\n    }\n    if !succ \u0026\u0026 kb !\u003dnil{\n        if err :\u003d kb.Close(); err !\u003d nil {\n            ...\n        }\n    }\n    if !succ \u0026\u0026 tew !\u003dnil{\n        if err :\u003d tew.Close(); err !\u003d nil {\n            ...\n        }\n    }\n    if !succ \u0026\u0026 stew!\u003dnil{\n        if err :\u003d stew.Close(); err !\u003d nil {\n            ...\n        }\n    }\n}",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 14
+      },
+      "revId": "52069a7eb6f27c99ac1a4e3217286ddab2b76301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15f33f4a_8764f768",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-13T21:56:20Z",
+      "side": 1,
+      "message": "Thanks. Changed as advised.",
+      "parentUuid": "ba98962b_18e5167e",
       "range": {
         "startLine": 116,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "392a1e3a_9b801b88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-13T21:56:20Z",
+      "side": 1,
+      "message": "Ok. Changed and combined.",
+      "parentUuid": "c7fdd1f4_f5a8b657",
+      "range": {
+        "startLine": 197,
+        "startChar": 20,
+        "endLine": 197,
+        "endChar": 25
+      },
+      "revId": "52069a7eb6f27c99ac1a4e3217286ddab2b76301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5ed377d_8f3d537e",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-05-13T02:06:38Z",
       "side": 1,
       "message": "I guess this log is a bit redundant. Switching tab would not take more than a few sencond. If this log is delete, the \"return func...\" could also be deleted. \n\nSame comment for the rest.",
+      "range": {
+        "startLine": 276,
+        "startChar": 10,
+        "endLine": 276,
+        "endChar": 21
+      },
+      "revId": "52069a7eb6f27c99ac1a4e3217286ddab2b76301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0410a3f6_4de61f1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-13T21:56:20Z",
+      "side": 1,
+      "message": "Hi Judy, the team still want to keep the log because it helps debug the issues especially on low end machine when an operation could take a longer time.",
+      "parentUuid": "d5ed377d_8f3d537e",
       "range": {
         "startLine": 276,
         "startChar": 10,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a519b0_942f2b51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-13T21:56:20Z",
+      "side": 1,
+      "message": "Since we\u0027ll keep the function wrapper in other exported methods, we can leave this un-exported method as as?",
+      "parentUuid": "0433178b_cda0bcc5",
+      "range": {
+        "startLine": 395,
+        "startChar": 92,
+        "endLine": 395,
+        "endChar": 97
+      },
+      "revId": "52069a7eb6f27c99ac1a4e3217286ddab2b76301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "077a0361_b0a23239",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-05-13T02:06:38Z",
       "side": 1,
       "message": "Similar suggestion to line 116.",
+      "range": {
+        "startLine": 544,
+        "startChar": 9,
+        "endLine": 544,
+        "endChar": 14
+      },
+      "revId": "52069a7eb6f27c99ac1a4e3217286ddab2b76301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20fa0a25_09102213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-13T21:56:20Z",
+      "side": 1,
+      "message": "Thanks. Fixed.",
+      "parentUuid": "077a0361_b0a23239",
       "range": {
         "startLine": 544,
         "startChar": 9,
