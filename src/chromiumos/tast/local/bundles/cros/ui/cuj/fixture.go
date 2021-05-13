@@ -34,7 +34,7 @@ func init() {
 }
 
 func runningPackages(ctx context.Context, a *arc.ARC) (map[string]struct{}, error) {
-	tasks, err := a.DumpsysActivityActivities(ctx)
+	tasks, err := a.GetTaskInfosFromDumpsys(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "listing activities failed")
 	}

@@ -118,7 +118,7 @@ func (s *Snapshot) restorePackages(ctx context.Context, a *ARC, cur *Snapshot) e
 // runningPackages returns a set of currently-running packages, e.g. "com.android.settings".
 // It queries all running activities, but it returns the activity's package name.
 func runningPackages(ctx context.Context, a *ARC) (map[string]struct{}, error) {
-	tasks, err := a.DumpsysActivityActivities(ctx)
+	tasks, err := a.GetTaskInfosFromDumpsys(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "listing activities failed")
 	}
