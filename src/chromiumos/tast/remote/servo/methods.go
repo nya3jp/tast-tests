@@ -37,9 +37,11 @@ type IntControl string
 
 // These are the Servo controls which can be get/set with an integer value.
 const (
-	VolumeDownHold   IntControl = "volume_down_hold"    // Integer represents a number of milliseconds.
-	VolumeUpHold     IntControl = "volume_up_hold"      // Integer represents a number of milliseconds.
-	VolumeUpDownHold IntControl = "volume_up_down_hold" // Integer represents a number of milliseconds.
+	BatteryChargeMAH     IntControl = "battery_charge_mah"
+	BatteryFullChargeMAH IntControl = "battery_full_charge_mah"
+	VolumeDownHold       IntControl = "volume_down_hold"    // Integer represents a number of milliseconds.
+	VolumeUpHold         IntControl = "volume_up_hold"      // Integer represents a number of milliseconds.
+	VolumeUpDownHold     IntControl = "volume_up_down_hold" // Integer represents a number of milliseconds.
 )
 
 // A FloatControl contains the name of a gettable/settable Control which takes a floating-point value.
@@ -403,6 +405,25 @@ func (s *Servo) SetInt(ctx context.Context, control IntControl, value int) error
 		return errors.Wrapf(err, "setting servo control %q to %d", control, value)
 	}
 	return nil
+}
+
+// GetInt returns the integer value of a specified control.
+func (s *Servo) GetInt(ctx context.Context, control IntControl) (int, error) {
+	var value int
+	if err := s.xmlrpc.Run(ctx, xmlrpc.NewCall("get", string(control)), &value); err != nil {
+		return 0, errors.Wrapf(err, "getting value for servo control %q", control)
+	}
+	return value, nil
+}
+
+// GetBatteryChargeMAH returns the battery's charge in mAh.
+func (s *Servo) GetBatteryChargeMAH(ctx context.Context) (int, error) {
+	return s.GetInt(ctx, BatteryChargeMAH)
+}
+
+// GetBatteryFullChargeMAH returns the battery's last full charge in mAh.
+func (s *Servo) GetBatteryFullChargeMAH(ctx context.Context) (int, error) {
+	return s.GetInt(ctx, BatteryFullChargeMAH)
 }
 
 // GetFloat returns the floating-point value of a specified control.
