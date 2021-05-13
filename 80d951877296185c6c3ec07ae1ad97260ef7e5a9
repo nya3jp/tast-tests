@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1d4ca11_ba5039e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_ro_only_boots_valid_rw.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-13T00:02:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbce7066_9f42a9f1",
+      "revId": "80d951877296185c6c3ec07ae1ad97260ef7e5a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb1daa3d_a6e7fd3c",
@@ -82,6 +100,24 @@
       "writtenOn": "2021-05-11T14:32:05Z",
       "side": 1,
       "message": "Do you still need this constant?",
+      "revId": "80d951877296185c6c3ec07ae1ad97260ef7e5a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99686abe_22d2e40b",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-13T00:02:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb1daa3d_a6e7fd3c",
       "revId": "80d951877296185c6c3ec07ae1ad97260ef7e5a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
