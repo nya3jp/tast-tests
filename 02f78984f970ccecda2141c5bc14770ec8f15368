@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efe2b1f0_b58d9ca4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-13T06:30:58Z",
+      "side": 1,
+      "message": "Is this comment correct or the logic correct? Seems we\u0027re just verifying we have the correct amount of values, not that they are correct.",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 34
+      },
+      "revId": "02f78984f970ccecda2141c5bc14770ec8f15368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec1c5c3b_9ea325e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-13T06:30:58Z",
+      "side": 1,
+      "message": "nit: of?",
+      "range": {
+        "startLine": 62,
+        "startChar": 48,
+        "endLine": 62,
+        "endChar": 49
+      },
+      "revId": "02f78984f970ccecda2141c5bc14770ec8f15368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85d6ba80_76d5107c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-13T06:30:58Z",
+      "side": 1,
+      "message": "major nit: full stop/period at the end of every comment",
+      "range": {
+        "startLine": 68,
+        "startChar": 47,
+        "endLine": 68,
+        "endChar": 48
+      },
+      "revId": "02f78984f970ccecda2141c5bc14770ec8f15368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a10680f9_c3c19eba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-13T06:30:58Z",
+      "side": 1,
+      "message": "Given you are already using string formatting here, might be beneficial to use %s here and the var audioOutputMute to ensure single place of management for these values. Ditto for the remainder occurrences of these values",
+      "range": {
+        "startLine": 70,
+        "startChar": 34,
+        "endLine": 70,
+        "endChar": 45
+      },
+      "revId": "02f78984f970ccecda2141c5bc14770ec8f15368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f60249_bb1c6d1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-13T06:30:58Z",
+      "side": 1,
+      "message": "nit/optional: can just use Error instead of Errorf as the last value is the only string formatting you\u0027re doing, just omit %d and change to Error",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 10
+      },
+      "revId": "02f78984f970ccecda2141c5bc14770ec8f15368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
