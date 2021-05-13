@@ -54,6 +54,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "078291c5_eb6b8cd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-13T00:57:22Z",
+      "side": 1,
+      "message": "I think it\u0027s because it\u0027s reusing the session with the chromeLoggedIn fixture which only does limited cleanup (same as the logged-in precondition). I filed a request at b/187993907 to take a look at including virtual desks in chrome\u0027s state reset.",
+      "parentUuid": "4c8f7ce2_5676b5ac",
+      "revId": "c25b1bdcde2d63b60408fe887723aa6593a69244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "343a7552_f7a2ba4c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
         "patchSetId": 5
