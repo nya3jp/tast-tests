@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "390b17f7_73cdd6eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-05-13T09:46:16Z",
+      "side": 1,
+      "message": "PTAL again",
+      "revId": "b7a0d49f2a0d02b907a9f4da28186cda8bb27e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b44a167_fd4f8c76",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-05-13T00:00:22Z",
       "side": 1,
       "message": "It seems the logic has not been changed? I guess it only needs uninstall if it is already installed.",
+      "range": {
+        "startLine": 232,
+        "startChar": 12,
+        "endLine": 232,
+        "endChar": 28
+      },
+      "revId": "b7a0d49f2a0d02b907a9f4da28186cda8bb27e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11de952b_7d6a29db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-05-13T09:46:16Z",
+      "side": 1,
+      "message": "Sorry for the confusion, but it\u0027s intentional and what this is doing is different from what reinstallAPK() does.\n\n- In reinstallAPK(), we want to uninstall if the apk is already installed because we want to test the scenario in which the app is newly installed.\n\n- Here, we just want to clean up the state and ensure to make the state the same as the one before running this test. This means, we do want to uninstall if the apk WASN\u0027T originally installed.",
+      "parentUuid": "0b44a167_fd4f8c76",
       "range": {
         "startLine": 232,
         "startChar": 12,
