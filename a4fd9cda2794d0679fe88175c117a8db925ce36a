@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ead0f3f_f1efc4aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_app_launch_when_arc_is_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-05-13T10:16:08Z",
+      "side": 1,
+      "message": "IIUC IfSuccessThen returns nil when the WaitUntilExists failed here, and then it would continue the next steps. Is it intended?",
+      "revId": "a4fd9cda2794d0679fe88175c117a8db925ce36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
