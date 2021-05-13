@@ -594,3 +594,17 @@ func (ac *Context) IfSuccessThen(preFunc, fn Action) Action {
 func (ac *Context) Retry(n int, fn Action) Action {
 	return action.Retry(n, fn, ac.pollOpts.Interval)
 }
+
+// CheckRestriction returns a function that checks the restriction of the node found by the input finder is as expected.
+func (ac *Context) CheckRestriction(finder *nodewith.Finder, restriction restriction.Restriction) Action {
+	return func(ctx context.Context) error {
+		nodeInfo, err := ac.Info(ctx, finder)
+		if err != nil {
+			return err
+		}
+		if nodeInfo.Restriction != restriction {
+			return errors.Wrapf(err, "failed to check restriction state: got %v, want %v", nodeInfo.Restriction, restriction)
+		}
+		return nil
+	}
+}

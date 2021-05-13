@@ -213,6 +213,16 @@ func (s *Settings) ClickRemove() uiauto.Action {
 		s.ui.WaitUntilExists(RemoveConfirmDialog.Self))
 }
 
+// Remove removes Crostini.
+func (s *Settings) Remove() uiauto.Action {
+	return uiauto.Combine("remove Linux",
+		s.ClickRemove(),
+		s.ui.LeftClick(RemoveConfirmDialog.Delete),
+		s.ui.WaitUntilExists(RemoveLinuxAlert),
+		s.ui.WaitUntilGone(RemoveLinuxAlert),
+		s.ui.WaitUntilExists(DevelopersButton))
+}
+
 type resizeDiskDialogStruct struct {
 	Self   *nodewith.Finder
 	Slider *nodewith.Finder
