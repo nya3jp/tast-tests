@@ -708,7 +708,7 @@ var errNoTaskInfo = errors.New("no task info")
 
 // getTaskInfo returns the task record associated for the current activity.
 func (ac *Activity) getTaskInfo(ctx context.Context) (TaskInfo, error) {
-	tasks, err := ac.a.DumpsysActivityActivities(ctx)
+	tasks, err := ac.a.GetTaskInfosFromDumpsys(ctx)
 	if err != nil {
 		return TaskInfo{}, errors.Wrap(err, "could not get task info")
 	}
@@ -736,7 +736,7 @@ func (ac *Activity) PackageResizable(ctx context.Context) (bool, error) {
 
 // getPackageTaskInfo returns the task record associated for an app package name.
 func (ac *Activity) getPackageTaskInfo(ctx context.Context) (TaskInfo, error) {
-	tasks, err := ac.a.DumpsysActivityActivities(ctx)
+	tasks, err := ac.a.GetTaskInfosFromDumpsys(ctx)
 	if err != nil {
 		return TaskInfo{}, errors.Wrap(err, "could not get task info")
 	}
