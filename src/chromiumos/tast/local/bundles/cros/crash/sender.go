@@ -28,7 +28,9 @@ func init() {
 			"cros-telemetry@google.com",
 			"nya@chromium.org", // ported to Tast
 		},
-		Attr: []string{"group:mainline"},
+		// We only care about crash_sender on internal builds.
+		SoftwareDeps: []string{"cros_internal"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:              "real_consent",
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
