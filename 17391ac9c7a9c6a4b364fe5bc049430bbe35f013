@@ -33,6 +33,24 @@
       "message": "Don\u0027t you think these changes need a comment for rollback once the original bug is fixed?",
       "revId": "17391ac9c7a9c6a4b364fe5bc049430bbe35f013",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d25c4549_d9242788",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-13T17:50:49Z",
+      "side": 1,
+      "message": "Not sure if rollback would be needed. At least for one timeout.",
+      "parentUuid": "8989960e_d4f9ddcb",
+      "revId": "17391ac9c7a9c6a4b364fe5bc049430bbe35f013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
