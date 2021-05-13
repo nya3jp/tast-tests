@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbaf8a21_f0592a86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_add_entropy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-13T17:41:17Z",
+      "side": 1,
+      "message": "Josie, here\u0027s an example of using a struct (see \"testParams\"): https://crrev.com/c/2849055",
+      "parentUuid": "145a7a71_5057659b",
+      "range": {
+        "startLine": 37,
+        "startChar": 102,
+        "endLine": 37,
+        "endChar": 125
+      },
+      "revId": "87789145f78285b29e568dd7fa48da28d4e3f643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88351676_9d282847",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
         "patchSetId": 6
