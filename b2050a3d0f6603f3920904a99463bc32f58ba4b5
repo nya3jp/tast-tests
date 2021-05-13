@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df70f812_f7092804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-13T07:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5163a07_434b20a6",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acd9c4d9_45275ef4",
@@ -106,6 +130,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e65f7b30_9099d0c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-13T07:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb7b283e_d44270ec",
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8df0a182_0e6cd34d",
@@ -176,6 +218,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13b1c04e_57f19f1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-13T07:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95f9e808_17e6c493",
+      "range": {
+        "startLine": 123,
+        "startChar": 42,
+        "endLine": 123,
+        "endChar": 46
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c91588e3_43ea15f9",
@@ -189,6 +255,30 @@
       "writtenOn": "2021-05-12T08:43:59Z",
       "side": 1,
       "message": "cleanupCtx",
+      "range": {
+        "startLine": 133,
+        "startChar": 16,
+        "endLine": 133,
+        "endChar": 19
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8748448_11bfb5d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-13T07:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c91588e3_43ea15f9",
       "range": {
         "startLine": 133,
         "startChar": 16,
@@ -222,6 +312,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d11b063_0ebd34f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-13T07:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea45ffe8_d24f22f3",
+      "range": {
+        "startLine": 134,
+        "startChar": 48,
+        "endLine": 134,
+        "endChar": 51
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "661aa943_fc099e60",
@@ -235,6 +349,30 @@
       "writtenOn": "2021-05-12T08:43:59Z",
       "side": 1,
       "message": "Returnning uiauto.Action in these two funcs will allow it to use uiauto.Combine here.",
+      "range": {
+        "startLine": 136,
+        "startChar": 13,
+        "endLine": 136,
+        "endChar": 24
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdac3725_0081835e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-13T07:19:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "661aa943_fc099e60",
       "range": {
         "startLine": 136,
         "startChar": 13,
@@ -268,6 +406,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a01fba6a_182b5e4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-13T07:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb8cfbcc_a4a0f36b",
+      "range": {
+        "startLine": 143,
+        "startChar": 9,
+        "endLine": 143,
+        "endChar": 14
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43a637b0_bdc0902f",
@@ -281,6 +443,30 @@
       "writtenOn": "2021-05-12T08:43:59Z",
       "side": 1,
       "message": "Suggest to use TypeAction",
+      "range": {
+        "startLine": 145,
+        "startChar": 19,
+        "endLine": 145,
+        "endChar": 23
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f3616aa_4eee0859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-13T07:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43a637b0_bdc0902f",
       "range": {
         "startLine": 145,
         "startChar": 19,
@@ -314,6 +500,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "caecc41c_37494616",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-13T07:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c28abaa4_36797245",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 7
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d3dd58c_db73bee0",
@@ -327,6 +537,30 @@
       "writtenOn": "2021-05-12T08:43:59Z",
       "side": 1,
       "message": "Please do not ignore the returnning error.",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 14
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ff34897_279c3a7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-13T07:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d3dd58c_db73bee0",
       "range": {
         "startLine": 165,
         "startChar": 4,
@@ -397,6 +631,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7734ebe2_740b5c2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-13T07:19:16Z",
+      "side": 1,
+      "message": "I prefer not to lose the granular error messages. If uiauto.Combine allowed passing in per-step error prefix messages, it would make life much easier. As it is, I find it harder to understand what\u0027s happening when some things are combined. This way, using the failog defered function and s.Fatal, we see a dump of the UI tree and a screenshot exactly when something went wrong.",
+      "parentUuid": "33db6fa1_40559c9f",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 2
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e759f1e_406aefd6",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
         "patchSetId": 2
@@ -408,6 +666,30 @@
       "writtenOn": "2021-05-12T08:43:59Z",
       "side": 1,
       "message": "Suggest to use fmt.Sprintf, and usually it is in this fmt: \"Failed to verify ..., got %s, want %\"",
+      "range": {
+        "startLine": 208,
+        "startChar": 10,
+        "endLine": 208,
+        "endChar": 82
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6a6294c_0bc0d899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-13T07:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e759f1e_406aefd6",
       "range": {
         "startLine": 208,
         "startChar": 10,
@@ -441,6 +723,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51f33ed3_8d93d9b8",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-13T07:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c360f1b_58d0f17e",
+      "range": {
+        "startLine": 408,
+        "startChar": 81,
+        "endLine": 408,
+        "endChar": 86
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d110165_c61f8f31",
@@ -454,6 +760,30 @@
       "writtenOn": "2021-05-12T08:43:59Z",
       "side": 1,
       "message": "Just delete this is return uiauto.Action",
+      "range": {
+        "startLine": 411,
+        "startChar": 29,
+        "endLine": 411,
+        "endChar": 34
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61636d11_61ad27e2",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-13T07:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d110165_c61f8f31",
       "range": {
         "startLine": 411,
         "startChar": 29,
@@ -487,6 +817,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17d87e3a_b633b26c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-13T07:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76290e1c_195a33e3",
+      "range": {
+        "startLine": 415,
+        "startChar": 79,
+        "endLine": 415,
+        "endChar": 84
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20a1c2e0_cbf334f8",
@@ -500,6 +854,30 @@
       "writtenOn": "2021-05-12T08:43:59Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 416,
+        "startChar": 40,
+        "endLine": 416,
+        "endChar": 45
+      },
+      "revId": "b2050a3d0f6603f3920904a99463bc32f58ba4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1475bcaa_ffdb4324",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-13T07:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20a1c2e0_cbf334f8",
       "range": {
         "startLine": 416,
         "startChar": 40,
