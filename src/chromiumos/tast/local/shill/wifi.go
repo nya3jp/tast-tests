@@ -46,14 +46,6 @@ func NewWifiManager(ctx context.Context, m *Manager) (*WifiManager, error) {
 		}
 	}
 
-	// Make sure WiFi is available.
-	available, err := m.IsAvailable(ctx, TechnologyWifi)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to detect WiFi availability")
-	}
-	if !available {
-		return nil, errors.Wrap(err, "WiFi is not available")
-	}
 	return &WifiManager{m: m, timeout: wifiDefaultTimeout}, nil
 }
 
