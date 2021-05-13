@@ -16,6 +16,41 @@
       "message": "Please review and tell me if that\u0027s what you meant opening the bug.",
       "revId": "aeb5f43a15a47e0863703a96c85272b558135614",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b50cdbb_9190caca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-05-13T06:40:16Z",
+      "side": 1,
+      "message": "Yes, that\u0027s what I meant. But there are some concerns we may need to think twice:\n\n1. Would it be better to be done on Tast framework side? Adding reserveForReturn to every wifi RPC command looks reasonable, but a little bit redundant. I didn\u0027t look into the related framework code so I\u0027m not sure if that would be better, also we should consult with Tast owner first if we decide to do that.\n\n2. Reserving time means shortening the time limit. Thus, this CL is actually shortening all existing comments\u0027 time limit by one second. For some quick commands, a second may affect a lot. Do you think it\u0027s necessary to extend *all* limits of RPC calls (in all test bodies) by one second, given that you\u0027ve run all tests and they all passed?",
+      "parentUuid": "e39e6339_a6bde7b7",
+      "revId": "aeb5f43a15a47e0863703a96c85272b558135614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c164064_e461ff45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-05-13T06:40:16Z",
+      "side": 1,
+      "message": "+Yenlin as I had discussed with him about this issue before.",
+      "revId": "aeb5f43a15a47e0863703a96c85272b558135614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
