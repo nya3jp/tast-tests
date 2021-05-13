@@ -47,12 +47,20 @@ func NewWifiManager(ctx context.Context, m *Manager) (*WifiManager, error) {
 	}
 
 	// Make sure WiFi is available.
-	available, err := m.IsAvailable(ctx, TechnologyWifi)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to detect WiFi availability")
-	}
-	if !available {
-		return nil, errors.Wrap(err, "WiFi is not available")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		available, err := m.IsAvailable(ctx, TechnologyWifi)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to detect WiFi availability"))
+		}
+		if !available {
+			return errors.Wrap(err, "WiFi is not available")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  wifiDefaultTimeout,
+		Interval: 200 * time.Millisecond,
+	}); err != nil {
+		return nil, err
 	}
 	return &WifiManager{m: m, timeout: wifiDefaultTimeout}, nil
 }
