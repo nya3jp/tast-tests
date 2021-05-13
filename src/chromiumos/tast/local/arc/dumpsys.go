@@ -114,8 +114,8 @@ var (
 	regExpForActivitiesP = regexp.MustCompile(regStrForActivitiesP)
 )
 
-// DumpsysActivityActivities returns the "dumpsys activity activities" output as a list of TaskInfo.
-func (a *ARC) DumpsysActivityActivities(ctx context.Context) ([]TaskInfo, error) {
+// TaskInfosFromDumpsys returns a list of all available TaskInfo from the "dumpsys activity activities" and "dumpsys Wayland" if needed.
+func (a *ARC) TaskInfosFromDumpsys(ctx context.Context) ([]TaskInfo, error) {
 	n, err := SDKVersion()
 	if err != nil {
 		return nil, err
@@ -124,7 +124,23 @@ func (a *ARC) DumpsysActivityActivities(ctx context.Context) ([]TaskInfo, error)
 	case SDKP:
 		return a.dumpsysActivityActivitiesP(ctx)
 	case SDKR:
-		return a.dumpsysActivityActivitiesR(ctx)
+		tasks, err := a.dumpsysActivityActivitiesR(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "could not get info from 'dumpsys activity activities'")
+		}
+		// We here use dumpsysWaylandR to fulfil the windowState property which is not available in R's "dumpsys activity activities"
+		tasksFromWayland, err := a.dumpsysWaylandR(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "could not get info from 'dumpsys Wayland'")
+		}
+		for i := range tasks {
+			for _, taskFromWayland := range tasksFromWayland {
+				if tasks[i].ID == taskFromWayland.ID {
+					tasks[i].windowState = taskFromWayland.windowState
+				}
+			}
+		}
+		return tasks, nil
 	default:
 		return nil, errors.Errorf("unsupported Android version %d", n)
 	}
@@ -252,7 +268,7 @@ func (a *ARC) dumpsysActivityActivitiesR(ctx context.Context) (tasks []TaskInfo,
 				// android.content.pm.ActivityInfo.RESIZE_MODE_UNRESIZEABLE == 0
 				resizable: t.GetResizeMode() != 0,
 				focused:   title == focusedActivity,
-				// TODO(b/152576355): StackID, StackSize, windowState
+				// TODO(b/152576355): StackID, StackSize
 			}
 
 			// Add all immediate ActivityRecord children.
@@ -292,6 +308,50 @@ func (a *ARC) dumpsysActivityActivitiesR(ctx context.Context) (tasks []TaskInfo,
 	return tasks, nil
 }
 
+// dumpsysWaylandR returns the "dumpsys Wayland" output as a list of TaskInfo, which is complementary to dumpsysActivityActivitiesR.
+// Should only be called on ARC R devices.
+func (a *ARC) dumpsysWaylandR(ctx context.Context) (tasks []TaskInfo, err error) {
+	out, err := a.Command(ctx, "dumpsys", "Wayland").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not get 'dumpsys Wayland")
+	}
+	re := regexp.MustCompile(`(?m)` + // Enable multiline.
+		`^\s+Task Container 0x[[:alnum:]]+\s+` + // Match Task Container section.
+		`\(task\s+(?P<taskID>\d+).+\n` + // Grab the taskID.
+		`.*window state:\s+(?P<windowState>[A-Z_]+)`) // Grab window state.
+	taskIDIndex := indexOf(re.SubexpNames(), "taskID")
+	windowStateIndex := indexOf(re.SubexpNames(), "windowState")
+
+	matches := re.FindAllStringSubmatch(string(out), -1)
+	wsMap := map[string]WindowState{
+		"WINDOW_STATE_NORMAL":            WindowStateNormal,
+		"WINDOW_STATE_MAXIMIZED":         WindowStateMaximized,
+		"WINDOW_STATE_FULLSCREEN":        WindowStateFullscreen,
+		"WINDOW_STATE_MINIMIZED":         WindowStateMinimized,
+		"WINDOW_STATE_PRIMARY_SNAPPED":   WindowStatePrimarySnapped,
+		"WINDOW_STATE_SECONDARY_SNAPPED": WindowStateSecondarySnapped,
+		"WINDOW_STATE_PIP":               WindowStatePIP,
+	}
+	for _, groups := range matches {
+		ws, ok := wsMap[groups[windowStateIndex]]
+		if !ok {
+			return nil, errors.Errorf("unsupported window state value: %q", groups[windowStateIndex])
+		}
+		taskID, err := strconv.Atoi(groups[taskIDIndex])
+		if err != nil {
+			return nil, errors.Wrapf(err, "could not parse taskID: %q", groups[taskIDIndex])
+		}
+		ti := TaskInfo{
+			ID:          taskID,
+			windowState: ws,
+		}
+
+		tasks = append(tasks, ti)
+	}
+
+	return tasks, nil
+}
+
 // Helper functions.
 
 // parseBounds returns a Rect by parsing a slice of 4 strings.
@@ -310,4 +370,15 @@ func parseBounds(s []string) (bounds coords.Rect, err error) {
 	bounds.Width = right - bounds.Left
 	bounds.Height = bottom - bounds.Top
 	return bounds, nil
+}
+
+// indexOf returns the first index where a given string element can be found in the given slice.
+// If it's not present, returns -1.
+func indexOf(slice []string, element string) int {
+	for i := range slice {
+		if slice[i] == element {
+			return i
+		}
+	}
+	return -1
 }
