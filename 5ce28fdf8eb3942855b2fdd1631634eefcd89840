@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4c5d0d7e_0d31d153",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-05-13T16:41:49Z",
+      "side": 1,
+      "message": "Done. Limited the scope to update version only, at first I was worried this is a breaking change, but it seems the CL to mark AppLauncherLaunch as critical hasn\u0027t landed yet, so I think it\u0027s safe to land separately.\n\nAnd also updated to the version to use 92.0.4492.0",
+      "parentUuid": "2d072077_565cd59f",
+      "revId": "5ce28fdf8eb3942855b2fdd1631634eefcd89840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "821796e3_2b7d1d2c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
