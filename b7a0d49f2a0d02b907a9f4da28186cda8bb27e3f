@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b44a167_fd4f8c76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T00:00:22Z",
+      "side": 1,
+      "message": "It seems the logic has not been changed? I guess it only needs uninstall if it is already installed.",
+      "range": {
+        "startLine": 232,
+        "startChar": 12,
+        "endLine": 232,
+        "endChar": 28
+      },
+      "revId": "b7a0d49f2a0d02b907a9f4da28186cda8bb27e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
