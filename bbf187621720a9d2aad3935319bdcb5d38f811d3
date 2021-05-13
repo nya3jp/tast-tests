@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea9ce822_93b0aaed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-05-13T01:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "593b397a_277e78c5",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "bbf187621720a9d2aad3935319bdcb5d38f811d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6041778_a7e23604",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-12T10:43:10Z",
       "side": 1,
       "message": "is this ordered? If so, sounds we will need to take care the index order change? (for line 61)",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "bbf187621720a9d2aad3935319bdcb5d38f811d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "314667d2_97d01e06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-05-13T01:26:43Z",
+      "side": 1,
+      "message": "Yes, this checks order as well. What I think is, if this check can pass, it means we output correct order. Then we don\u0027t have to modify index from line 61.\n\nIf we don\u0027t use `contentsMap` in line 61, and we add a new field in the middle of the output, we need to modify all index from line 61 when we want to get the value from `vals`. e.g. `vals[3]` -\u003e `vals[4]` for output_volume.",
+      "parentUuid": "b6041778_a7e23604",
       "range": {
         "startLine": 51,
         "startChar": 5,
