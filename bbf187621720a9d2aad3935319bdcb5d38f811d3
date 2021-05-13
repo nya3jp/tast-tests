@@ -93,6 +93,30 @@
       },
       "revId": "bbf187621720a9d2aad3935319bdcb5d38f811d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33f0a771_b7e241ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-05-13T05:07:04Z",
+      "side": 1,
+      "message": "I see. I got what you mean for the comment of line 61.",
+      "parentUuid": "314667d2_97d01e06",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "bbf187621720a9d2aad3935319bdcb5d38f811d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
