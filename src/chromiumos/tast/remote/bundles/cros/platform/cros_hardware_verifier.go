@@ -415,10 +415,10 @@ func report(ctx context.Context, s *testing.State, fieldsMapping requiredFieldSe
 func pollResultFile(ctx context.Context, d *dut.DUT, s *testing.State, resultFilePath, outPath string) error {
 	const (
 		pollInterval = time.Second
-		pollTimeout  = 40 * time.Second
+		pollTimeout  = 60 * time.Second
 	)
 
-	// Current implementation is to sleep 30s before dumping result file.
+	// Current implementation is to sleep 50s before dumping result file.
 	// See https://crrev.com/c/2100362 for more context.
 	s.Log("Polling result file and copy it to local")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
