@@ -16,6 +16,346 @@
       "message": "Hi Judy,\n\nCould you review the UI part of this test? I want to get feedback on the use of the UIAuto library and UI parts before I send it to tast-reviewers.\n\nThe test clicks on the bluetooth button in the quick settings menu repeatedly and confirm that 1) The UI button changes states and 2) the bluetooth adapter is powered on/off.\n\nRegards\nShijin ",
       "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39ce7c7d_ce527d07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T05:52:21Z",
+      "side": 1,
+      "message": "Sure.\n\nBtw, I\u0027m also a tast reviewer.",
+      "parentUuid": "2d9379ad_748fa1f9",
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "195bde05_19fa9d0d",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T05:52:21Z",
+      "side": 1,
+      "message": "failed to verify the number of adapters, got %d, want 1",
+      "range": {
+        "startLine": 138,
+        "startChar": 31,
+        "endLine": 138,
+        "endChar": 66
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "373c505c_970c459b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T05:52:21Z",
+      "side": 1,
+      "message": "I think ToggleFromQuicksettings is ok",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9871d583_2945c048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T05:52:21Z",
+      "side": 1,
+      "message": "end with .",
+      "range": {
+        "startLine": 22,
+        "startChar": 109,
+        "endLine": 22,
+        "endChar": 116
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b2bb5e3_abfd4266",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T05:52:21Z",
+      "side": 1,
+      "message": "bring",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 32
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcf032ee_a652c11d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T05:52:21Z",
+      "side": 1,
+      "message": "Suggesto define all the nodes in advance. Same comments for the code.",
+      "range": {
+        "startLine": 43,
+        "startChar": 15,
+        "endLine": 43,
+        "endChar": 54
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0423cde2_68e4279e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T05:52:21Z",
+      "side": 1,
+      "message": "Gone and IfSuccessThen in uiauto could be used:\nui.IfSuccessThen(ui.Gone(nodewith.ClassName(\"ExpandButton\")),ui.LeftClick(nodewith.ClassName(\"CollapseButton\")))\n\nIf you do change it to IfSuccessThen, you could combine all of them together:\n\nif err :\u003d uiauto.Combine(\"...\", ui.LeftClick(nodewith.ClassName(\"UnifiedSystemTray\")),\nui.IfSuccessThen(ui.Gone(nodewith.ClassName(\"ExpandButton\")),ui.LeftClick(nodewith.ClassName(\"CollapseButton\"))),\n)(ctx)...",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a7409f_d9420a46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T05:52:21Z",
+      "side": 1,
+      "message": "disable",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86da8406_f1232342",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T05:52:21Z",
+      "side": 1,
+      "message": "end with .",
+      "range": {
+        "startLine": 67,
+        "startChar": 34,
+        "endLine": 67,
+        "endChar": 42
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0a00c2c_1b8a2856",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T05:52:21Z",
+      "side": 1,
+      "message": "Failed to check",
+      "range": {
+        "startLine": 70,
+        "startChar": 12,
+        "endLine": 70,
+        "endChar": 32
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e27e3b93_42649aa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T05:52:21Z",
+      "side": 1,
+      "message": "Failed to verify Bluetooth status, got enabled, want disabled",
+      "range": {
+        "startLine": 73,
+        "startChar": 12,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a71fb43_ca3cb551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T05:52:21Z",
+      "side": 1,
+      "message": "enable",
+      "range": {
+        "startLine": 77,
+        "startChar": 28,
+        "endLine": 77,
+        "endChar": 35
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16f4866d_bc3d07f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T05:52:21Z",
+      "side": 1,
+      "message": "end with .",
+      "range": {
+        "startLine": 83,
+        "startChar": 34,
+        "endLine": 83,
+        "endChar": 42
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28538145_a1966c61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T05:52:21Z",
+      "side": 1,
+      "message": "Failed to check",
+      "range": {
+        "startLine": 86,
+        "startChar": 12,
+        "endLine": 86,
+        "endChar": 32
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f88ce1a_f26753c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-13T05:52:21Z",
+      "side": 1,
+      "message": "Failed to verify Bluetooth status, got disabled, want enabled",
+      "range": {
+        "startLine": 89,
+        "startChar": 12,
+        "endLine": 89,
+        "endChar": 33
+      },
+      "revId": "91d5cc9c98ac23a0f279aaac64577ffda0b845d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
