@@ -418,6 +418,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "954c0758_10e7df63",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2021-05-13T20:01:32Z",
+      "side": 1,
+      "message": "OK, according to Wojciech, there was no cell to run these test on at the moment he\u0027s uploaded that CL. Later on, he moved out of the WiFi project and abandoned the change (the only two tests in that group were autotest ports, so I guess there was no pressure to enable them, as they should be already run via autotest). Thus, wificell_roam_perf tests might not be run at all.\n\nI\u0027m not sure if this answers your question, but it\u0027s the best I could get.",
+      "parentUuid": "6008ea8d_f4c48f07",
+      "range": {
+        "startLine": 32,
+        "startChar": 90,
+        "endLine": 32,
+        "endChar": 110
+      },
+      "revId": "bf79fb3f398e12feed3d73036b9c886fb4ff58d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "220c261a_358233d8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_fail_signal_strength.go",
         "patchSetId": 4
