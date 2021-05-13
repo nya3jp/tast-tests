@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32a93fad_5a034c91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2021-05-13T17:34:27Z",
+      "side": 1,
+      "message": "When I started looking at get_user_media.go I was unsure if the \"fake\" test case was intended to pass on a VM or not. The other test cases all appear to be properly skipped as a result of other keywords, but I like the idea of skipping it at the top level using \"no_qemu\". I wonder why the test passes/gets skipped in betty.",
+      "revId": "47b1e7c848ef2eb3e30413e220389996a0f2e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
