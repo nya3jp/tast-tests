@@ -72,9 +72,9 @@ func init() {
 // dragToSnapFirstOverviewWindow finds the first window in overview, and drags
 // to snap it. This function assumes that overview is already active.
 func dragToSnapFirstOverviewWindow(ctx context.Context, tconn *chrome.TestConn, tew *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter, targetX input.TouchCoord) error {
-	info, err := display.GetInternalInfo(ctx, tconn)
+	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to get the internal display info")
+		return errors.Wrap(err, "failed to get the primary display info")
 	}
 	tcc := tew.NewTouchCoordConverter(info.Bounds.Size())
 
@@ -171,9 +171,9 @@ func SplitView(ctx context.Context, s *testing.State) {
 	}
 	rotation := -orientation.Angle
 	if orientation.Type == display.OrientationPortraitPrimary {
-		info, err := display.GetInternalInfo(ctx, tconn)
+		info, err := display.GetPrimaryInfo(ctx, tconn)
 		if err != nil {
-			s.Fatal("Failed to obtain internal display info: ", err)
+			s.Fatal("Failed to obtain primary display info: ", err)
 		}
 		if err = display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate90); err != nil {
 			s.Fatal("Failed to rotate display: ", err)
