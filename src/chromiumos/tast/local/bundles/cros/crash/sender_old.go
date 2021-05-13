@@ -27,6 +27,8 @@ func init() {
 			"nya@chromium.org", // ported to Tast
 		},
 		Attr: []string{"group:mainline"},
+		// we only care about crash_sender on internal builds
+		SoftwareDeps: []string{"cros_internal"},
 	})
 }
 

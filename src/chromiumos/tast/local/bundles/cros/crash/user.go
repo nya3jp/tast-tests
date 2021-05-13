@@ -50,6 +50,8 @@ func init() {
 			"cros-telemetry@google.com",
 		},
 		Attr: []string{"group:mainline"},
+		// Some of these tests verify crash_sender behavior, so only run on internal builds
+		SoftwareDeps: []string{"cros_internal"},
 		Params: []testing.Param{{
 			Name: "reporter_startup",
 			Val: userCrashParams{

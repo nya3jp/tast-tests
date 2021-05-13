@@ -28,6 +28,8 @@ func init() {
 			"mutexlox@chromium.org",
 			"cros-telemetry@google.com",
 		},
+		// we only care about crash_serializer on internal builds
+		SoftwareDeps: []string{"cros_internal"},
 		Params: []testing.Param{{
 			Name: "",
 			Val:  false,
