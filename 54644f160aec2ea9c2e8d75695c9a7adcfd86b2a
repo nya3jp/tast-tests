@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d71fa3a_1a8698e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-14T04:47:23Z",
+      "side": 1,
+      "message": "LGTM with comments.",
+      "revId": "54644f160aec2ea9c2e8d75695c9a7adcfd86b2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dafd852_53ac6dda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-14T04:47:23Z",
+      "side": 1,
+      "message": "ould you file a tracking bug to remove this as well and add TODO?\nPer offline chat, I expect this will be gone sometime soon.\nAlso, could you explicitly comment what happens if this and EncoderBlocklistVM conflicts?",
+      "revId": "54644f160aec2ea9c2e8d75695c9a7adcfd86b2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
