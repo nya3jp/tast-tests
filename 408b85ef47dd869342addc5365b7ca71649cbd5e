@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9d2b88d_2f27edbe",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-14T02:22:04Z",
+      "side": 1,
+      "message": "capturer.",
+      "range": {
+        "startLine": 93,
+        "startChar": 33,
+        "endLine": 93,
+        "endChar": 39
+      },
+      "revId": "408b85ef47dd869342addc5365b7ca71649cbd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa129a17_f982be92",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 2
@@ -42,6 +65,29 @@
         "startChar": 109,
         "endLine": 94,
         "endChar": 112
+      },
+      "revId": "408b85ef47dd869342addc5365b7ca71649cbd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "173219bb_3eab0056",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-14T02:22:04Z",
+      "side": 1,
+      "message": "Consider export the supportXxx interfaces as they can be used as parameter types for functions that need the router object to call specific methods.",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 19
       },
       "revId": "408b85ef47dd869342addc5365b7ca71649cbd5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
