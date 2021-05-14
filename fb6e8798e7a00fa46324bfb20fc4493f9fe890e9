@@ -16,6 +16,52 @@
       "message": "Ricardo, could you take a look please?",
       "revId": "fb6e8798e7a00fa46324bfb20fc4493f9fe890e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4afc452_3d823358",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-14T17:49:40Z",
+      "side": 1,
+      "message": "nit: avoid using \"Get\" prefix in go.\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#TOC-Getters",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 6
+      },
+      "revId": "fb6e8798e7a00fa46324bfb20fc4493f9fe890e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8901350_858d3b97",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-14T17:49:40Z",
+      "side": 1,
+      "message": "I think \"dumpsys wayland\" supports the \"--proto\" argument.\n\nAny chance that you can support it? (please, double check that the --proto output contains the info that you need).\n\n\nInfo about supporting proto:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/README_dumpsys.md",
+      "range": {
+        "startLine": 314,
+        "startChar": 23,
+        "endLine": 314,
+        "endChar": 48
+      },
+      "revId": "fb6e8798e7a00fa46324bfb20fc4493f9fe890e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
