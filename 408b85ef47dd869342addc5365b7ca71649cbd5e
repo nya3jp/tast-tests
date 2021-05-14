@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98fe3adc_97e6f0d2",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-14T07:12:47Z",
+      "side": 1,
+      "message": "This might be no longer needed as it is only called in the constructor for each router type and not the outer New function.",
+      "revId": "408b85ef47dd869342addc5365b7ca71649cbd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1ca6135_7fff215c",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 2
