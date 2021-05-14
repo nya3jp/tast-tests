@@ -27,6 +27,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44dfa276_0dd3178a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-14T16:14:41Z",
+      "side": 1,
+      "message": "This test should be unrelated to these changes.",
+      "range": {
+        "startLine": 16,
+        "startChar": 79,
+        "endLine": 16,
+        "endChar": 105
+      },
+      "revId": "87789145f78285b29e568dd7fa48da28d4e3f643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "145a7a71_5057659b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_add_entropy.go",
         "patchSetId": 6
