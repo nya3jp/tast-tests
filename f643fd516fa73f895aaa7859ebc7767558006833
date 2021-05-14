@@ -16,6 +16,23 @@
       "message": "aside: is there any way to run this on amd64-generic and verify that it\u0027s skipped?",
       "revId": "f643fd516fa73f895aaa7859ebc7767558006833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b748e2_83bd81cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-14T21:17:58Z",
+      "side": 1,
+      "message": "LGTM with nits for all comment lines to follow https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "revId": "f643fd516fa73f895aaa7859ebc7767558006833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
