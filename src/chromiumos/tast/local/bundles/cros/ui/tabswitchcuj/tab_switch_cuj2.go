@@ -11,8 +11,11 @@ import (
 	"context"
 	"fmt"
 	"math/rand"
+	"regexp"
 	"strings"
 	"time"
+
+	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
@@ -199,17 +202,57 @@ func contentSiteUnavailable(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
-func (tab *chromeTab) close(ctx context.Context, s *testing.State) {
+func (tab *chromeTab) close(ctx context.Context) error {
 	if tab.conn == nil {
-		return
+		return nil
 	}
 	if err := tab.conn.CloseTarget(ctx); err != nil {
-		s.Error("Failed to close target, error: ", err)
+		return errors.Wrap(err, "failed to close tab")
 	}
 	if err := tab.conn.Close(); err != nil {
-		s.Error("Failed to close the connection, error: ", err)
+		return errors.Wrap(err, "failed to close tab connection")
 	}
 	tab.conn = nil
+	return nil
+}
+
+// reconnect checks if tab connection is still alive, and reconnect to target if it isn't.
+//
+// Tab-discarding when DUT runs out of memory will cause chrome connection to the tab
+// unusable so reconnecting is needed. (b:184571798)
+func (tab *chromeTab) reconnect(ctx context.Context, cr *chrome.Chrome) error {
+	var url string
+	// Verify if the tab connection is still usable.
+	err := tab.conn.Eval(ctx, "window.location.href", &url)
+	if err != nil && tabDiscarded(err) {
+		testing.ContextLog(ctx, "Tab has been discarded/killed, reconnecting")
+	} else {
+		testing.ContextLog(ctx, "The connection is alive and therefore no need to reconnect")
+		return nil
+	}
+
+	matcher := func(t *target.Info) bool {
+		actualURL := strings.Split(strings.TrimSuffix(t.URL, "/"), "?")[0] // Ignore all possible parameters.
+		expectedURL := strings.Split(strings.TrimSuffix(tab.url, "/"), "?")[0]
+		return t.Type == "page" && actualURL == expectedURL
+	}
+
+	if tab.conn, err = cr.NewConnForTarget(ctx, matcher); err != nil {
+		return errors.Wrapf(err, "failed to reconnect to target %q", tab.url)
+	}
+
+	testing.ContextLogf(ctx, "Target (tab: [%s][%s]) was detached but successfully reconnected", tab.pageInfo.webName, tab.url)
+	return nil
+}
+
+// tabDiscarded returns true if the input error is caused by tab discarding.
+func tabDiscarded(err error) bool {
+	// Discarded tab will return errors with the following pattern (b:184571798).
+	p := regexp.MustCompile(`rpcc: the connection is closing: session: detach failed for session [0-9A-F]{32}: cdp.Target: DetachFromTarget: rpc error: No session with given id`)
+	if p.MatchString(err.Error()) {
+		return true
+	}
+	return false
 }
 
 // chromeWindow is the struct for Chrome browser window. It holds multiple tabs.
@@ -313,6 +356,25 @@ func generateTabSwitchTargets(caseLevel Level) ([]*chromeWindow, error) {
 	return windows, nil
 }
 
+func closeAllTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, windows []*chromeWindow) error {
+	// Close all tabs normally.
+	failed := 0
+	for _, window := range windows {
+		for _, tab := range window.tabs {
+			if err := tab.close(ctx); err != nil {
+				failed++
+			}
+		}
+	}
+
+	if failed == 0 {
+		// All tabs have been closed.
+		return nil
+	}
+	testing.ContextLogf(ctx, "Failed to close %d tab(s), which could have been detached; tring directly close Chrome window", failed)
+	return cuj.CloseAllWindows(ctx, tconn)
+}
+
 // Run2 runs the TabSwitchCUJ test. It is invoked by TabSwitchCujRecorder2 to
 // record web contents via WPR and invoked by TabSwitchCUJ2 to execute the tests
 // from the recorded contents. Additional actions will be executed in each tab.
@@ -383,14 +445,11 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	}
 	defer tsAction.Close()
 	defer func() {
-		// To make debug easier, if something goes wrong, take screen shot before tabs are closed.
+		// To make debug easier, if something goes wrong, take screenshot before tabs are closed.
 		faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 		faillog.SaveScreenshotOnError(ctx, cr, s.OutDir(), s.HasError)
-		// Close all opened tabs before finishing the test.
-		for _, window := range windows {
-			for _, tab := range window.tabs {
-				tab.close(ctx, s)
-			}
+		if err := closeAllTabs(ctx, cr, tconn, windows); err != nil {
+			s.Error("Failed to cleanup: ", err)
 		}
 	}()
 
@@ -503,9 +562,23 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 			}
 			tab := window.tabs[tabIdx]
 
+			// Test the tab connection and reconnect if necessary. This is necessary for
+			// discarded tabs due to OOM issue.
+			// After tab switching, the current focused tab should be active again so
+			// reconnect should succeed.
+			if err := tab.reconnect(ctx, cr); err != nil {
+				return errors.Wrap(err, "cdp connection is invalid and failed to reconnrct")
+			}
+
 			timeStart := time.Now()
 			if err := webutil.WaitForRender(ctx, tab.conn, tabSwitchTimeout); err != nil {
-				return errors.Wrap(err, "failed to wait for the tab to be visible")
+				testing.ContextLog(ctx, "WaitForRender failed. Reconnect and retry")
+				if err := tab.reconnect(ctx, cr); err != nil {
+					return errors.Wrap(err, "failed to reconnect cdp connection")
+				}
+				if err := webutil.WaitForRender(ctx, tab.conn, tabSwitchTimeout); err != nil {
+					return errors.Wrap(err, "failed to wait for render on the second try after reconnect")
+				}
 			}
 			renderTime := time.Since(timeStart)
 			// Debugging purpose message, to observe which tab takes unusual long time to render.
@@ -517,6 +590,11 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 				quiescenceTime := time.Now().Sub(timeStart)
 				// Debugging purpose message, to observe which tab takes unusual long time to quiescence
 				testing.ContextLog(ctx, "Tab quiescence time after switching: ", quiescenceTime)
+			}
+
+			// In case of lose connection to the tab, need to update the URL to reconnect to it
+			if err := tab.conn.Eval(ctx, "window.location.href", &tab.url); err != nil {
+				return errors.Wrap(err, "failed update the URL of tab")
 			}
 
 			// To reduce total execution time of this test case,
