@@ -13,6 +13,8 @@ import (
 	"time"
 
 	"golang.org/x/sys/unix"
+
+	"chromiumos/tast/errors"
 )
 
 func TestNewBuffer(t *testing.T) {
@@ -94,29 +96,46 @@ func TestOpenBuffer(t *testing.T) {
 		t.Fatal("Error making buffer fifo: ", err)
 	}
 
+	bgErrCh := make(chan error, 1)
 	go func() {
-		var s16 int16
-		var u32 uint32
-		bytes := make([]byte, 6)
-		sBytes := bytes[0:2]
-		uBytes := bytes[2:6]
+		defer close(bgErrCh)
+		bgErrCh <- func() error {
+			var s16 int16
+			var u32 uint32
+			bytes := make([]byte, 6)
+			sBytes := bytes[0:2]
+			uBytes := bytes[2:6]
 
-		f, err := os.OpenFile(fifoFile, os.O_WRONLY, 0)
-		if err != nil {
-			t.Fatal("Error opening named pipe for writing: ", err)
-		}
-		defer f.Close()
-
-		for i := 0; i < 5; i++ {
-			s16 = -10 - int16(i)
-			binary.LittleEndian.PutUint16(sBytes, uint16(s16))
-			u32 = (20 + uint32(i)) << 2
-			binary.BigEndian.PutUint32(uBytes, u32)
-
-			_, err = f.Write(bytes)
+			f, err := os.OpenFile(fifoFile, os.O_WRONLY, 0)
 			if err != nil {
-				t.Fatalf("Error writing to named pipe %v: %v", i, err)
+				return errors.Wrap(err, "error opening named pipe for writing")
 			}
+			defer f.Close()
+
+			for i := 0; i < 5; i++ {
+				s16 = -10 - int16(i)
+				binary.LittleEndian.PutUint16(sBytes, uint16(s16))
+				u32 = (20 + uint32(i)) << 2
+				binary.BigEndian.PutUint32(uBytes, u32)
+
+				_, err = f.Write(bytes)
+				if err != nil {
+					return errors.Wrapf(err, "error writing to named pipe %v", i)
+				}
+			}
+			return nil
+		}()
+	}()
+	// Wait for the goroutine and collect the error.
+	defer func() {
+		select {
+		case bgErr := <-bgErrCh:
+			if bgErr != nil {
+				t.Error("Error in background routine: ", bgErr)
+			}
+		case <-time.After(time.Minute):
+			// In case the background gets stuck.
+			t.Error("Background routine didn't properly return")
 		}
 	}()
 

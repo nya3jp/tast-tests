@@ -14,6 +14,8 @@ import (
 	"time"
 
 	"golang.org/x/sys/unix"
+
+	"chromiumos/tast/errors"
 )
 
 func TestRing(t *testing.T) {
@@ -91,27 +93,44 @@ func TestRing(t *testing.T) {
 		t.Fatal("Error making buffer fifo: ", err)
 	}
 
+	bgErrCh := make(chan error, 1)
 	go func() {
-		bytes := make([]byte, 16)
+		defer close(bgErrCh)
+		bgErrCh <- func() error {
+			bytes := make([]byte, 16)
 
-		f, err := os.OpenFile(fifoFile, os.O_WRONLY, 0)
-		if err != nil {
-			t.Fatal("Error opening named pipe for writing: ", err)
-		}
-		defer f.Close()
-
-		for _, r := range ringData {
-			s := ring.Sensors[r.ID]
-			bytes[0] = uint8(r.ID)
-			bytes[1] = uint8(r.Flags)
-			binary.LittleEndian.PutUint16(bytes[2:4], uint16(r.Data[0]/s.Sensor.Scale))
-			binary.LittleEndian.PutUint16(bytes[4:6], uint16(r.Data[1]/s.Sensor.Scale))
-			binary.LittleEndian.PutUint16(bytes[6:8], uint16(r.Data[2]/s.Sensor.Scale))
-			binary.LittleEndian.PutUint64(bytes[8:], uint64(r.Timestamp))
-
-			if _, err = f.Write(bytes); err != nil {
-				t.Fatalf("Error writing %v to named pipe: %v", bytes, err)
+			f, err := os.OpenFile(fifoFile, os.O_WRONLY, 0)
+			if err != nil {
+				return errors.Wrap(err, "error opening named pipe for writing")
 			}
+			defer f.Close()
+
+			for _, r := range ringData {
+				s := ring.Sensors[r.ID]
+				bytes[0] = uint8(r.ID)
+				bytes[1] = uint8(r.Flags)
+				binary.LittleEndian.PutUint16(bytes[2:4], uint16(r.Data[0]/s.Sensor.Scale))
+				binary.LittleEndian.PutUint16(bytes[4:6], uint16(r.Data[1]/s.Sensor.Scale))
+				binary.LittleEndian.PutUint16(bytes[6:8], uint16(r.Data[2]/s.Sensor.Scale))
+				binary.LittleEndian.PutUint64(bytes[8:], uint64(r.Timestamp))
+
+				if _, err = f.Write(bytes); err != nil {
+					return errors.Wrapf(err, "error writing %v to named pipe", bytes)
+				}
+			}
+			return nil
+		}()
+	}()
+	// Wait for the goroutine and collect the error.
+	defer func() {
+		select {
+		case bgErr := <-bgErrCh:
+			if bgErr != nil {
+				t.Error("Error in background routine: ", bgErr)
+			}
+		case <-time.After(time.Minute):
+			// In case the background gets stuck.
+			t.Error("Background routine didn't properly return")
 		}
 	}()
 
