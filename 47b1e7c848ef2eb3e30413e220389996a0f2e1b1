@@ -52,6 +52,24 @@
       "parentUuid": "d2665f71_08794745",
       "revId": "47b1e7c848ef2eb3e30413e220389996a0f2e1b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2501dd4b_6f9a6c57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-05-14T09:02:10Z",
+      "side": 1,
+      "message": "The fake and vivid variant are expected to pass on VM boards.",
+      "parentUuid": "13da09e0_4b410c4e",
+      "revId": "47b1e7c848ef2eb3e30413e220389996a0f2e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
