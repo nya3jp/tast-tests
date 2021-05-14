@@ -1,0 +1,31 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.arc;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/arc";
+
+// ADBOverUSBService provides RPC methods to be used by ADBOverUSB remote test.
+service ADBOverUSBService {
+
+   // Set UDC Enabled to enable or disable USB Device Controller (UDC). Return true if the requested value updated successfully. Otherwise return false.
+   rpc SetUDCEnabled (EnableUDCRequest) returns (EnableUDCResponse) {}
+
+   // Check ADBD job status.
+   rpc CheckADBDJobStatus (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message EnableUDCRequest {
+    // Enable or disable UDC on DUT. If set true, enable UDC on DUT. If set false, disable UDC on DUT.
+    bool enable = 1;
+}
+
+message EnableUDCResponse {
+    // Whether or not the requested value is updated successfully. If set true, UDC request executed successfully, and needs a device reboot. If set false, means no-ops or error occurred.
+    bool UDCValueUpdated = 1;
+}
