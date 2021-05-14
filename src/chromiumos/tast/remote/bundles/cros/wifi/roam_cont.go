@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/common/wifi/security/wpaeap"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/network/iw"
+	"chromiumos/tast/remote/network/netperf"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -35,6 +36,7 @@ type contTestType int
 
 const (
 	pingTest contTestType = iota
+	netperfTest
 )
 
 type contParam struct {
@@ -50,6 +52,10 @@ type pingParam struct {
 	opts []ping.Option
 	// Max packets lost per roaming round.
 	maxLoss int
+}
+
+type netperfParam struct {
+	testType netperf.TestType
 }
 
 var (
@@ -148,6 +154,19 @@ func init() {
 					opts:    []ping.Option{ping.Count(1000), ping.Interval(0.01)},
 					maxLoss: 25,
 				},
+			},
+			ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
+		}, {
+			Name: "netperf",
+			Val: contParam{
+				testType: netperfTest,
+				rounds:   50,
+				apOpts: [2][]hostapd.Option{{hostapd.Channel(1), hostapd.Mode(hostapd.Mode80211g)},
+					{hostapd.Channel(157), hostapd.Mode(hostapd.Mode80211acPure), hostapd.HTCaps(hostapd.HTCapHT40Plus), hostapd.VHTCaps(hostapd.VHTCapSGI80),
+						hostapd.VHTChWidth(hostapd.VHTChWidth80), hostapd.VHTCenterChannel(155)}},
+				secConfFac: wpa.NewConfigFactory("chromeos", wpa.Mode(wpa.ModePureWPA2), wpa.Ciphers2(wpa.CipherCCMP), wpa.FTMode(wpa.FTModePure)),
+				enableFT:   true,
+				param:      netperfParam{testType: netperf.TestTypeTCPStream},
 			},
 			ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 		}},
@@ -448,6 +467,64 @@ func RoamCont(ctx context.Context, s *testing.State) {
 			}
 		}
 		vf = verifier.NewVerifier(ctx, pingF)
+	case netperfTest:
+		addrs, err := tf.ClientIPv4Addrs(ctx)
+		if err != nil || len(addrs) == 0 {
+			s.Fatal("Failed to get the IP address, err: ", err)
+		}
+		session, err := netperf.NewContinuousSession(ctx,
+			s.DUT().Conn(), addrs[0].String(), tf.Router().Conn(), serverIP.String(),
+			netperf.Config{
+				TestType: param.param.(netperfParam).testType,
+				TestTime: 10 * time.Second})
+		if err != nil {
+			s.Fatal("Failed to create session, err: ", err)
+		}
+		err = session.WarmupStations(ctx)
+		if err != nil {
+			s.Fatal("Failed to warmup stations, err: ", err)
+		}
+		res, err := session.Run(ctx)
+		if err != nil {
+			s.Fatal("netperf error: ", err)
+		}
+		targetThorughput := res[0].Measurements[netperf.CategoryThroughput] * 0.8
+		netperfF := func(ctx context.Context) (verifier.ResultType, error) {
+			res, err := session.Run(ctx)
+			if err != nil {
+				testing.ContextLog(ctx, "netperf error: ", err)
+				return verifier.ResultType{}, err
+			}
+			if len(res) == 0 {
+				testing.ContextLog(ctx, "Netperf returned empty result")
+				return verifier.ResultType{}, nil
+			}
+			testing.ContextLogf(ctx, "Continuity: netperf statistics=%+v", res)
+			return verifier.ResultType{Data: res[0], Timestamp: time.Now()}, nil
+		}
+		resultAssertF = func(ctx context.Context, results []verifier.ResultType) {
+			var history netperf.History
+			for i, ret := range results {
+				result := ret.Data.(*netperf.Result)
+				if result == nil {
+					testing.ContextLog(ctx, "Skipping empty result")
+					continue
+				}
+				testing.ContextLogf(ctx, "Iteration %d: End Time=%s, Throughput=%f",
+					i+1, ret.Timestamp.Format("15:04:05.000"), result.Measurements[netperf.CategoryThroughput])
+				history = append(history, result)
+			}
+			aggregateResult, err := netperf.AggregateSamples(ctx, history)
+			if err != nil {
+				s.Fatal("samples aggregation error: ", err)
+			}
+			testing.ContextLogf(ctx, "Average throughput %f, threshold %f",
+				aggregateResult.Measurements[netperf.CategoryThroughput], targetThorughput)
+			if aggregateResult.Measurements[netperf.CategoryThroughput] < targetThorughput {
+				s.Fatal("Throughput too low")
+			}
+		}
+		vf = verifier.NewVerifier(ctx, netperfF)
 	default:
 		s.Fatal("Unknown test type")
 	}
