@@ -34,6 +34,24 @@
       "parentUuid": "32a93fad_5a034c91",
       "revId": "47b1e7c848ef2eb3e30413e220389996a0f2e1b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13da09e0_4b410c4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-14T00:58:03Z",
+      "side": 1,
+      "message": "From VM, the betty will load \"vivid\" kernel module as a fake camera source.\nNot sure what\u0027s the case to be addressed by this CL. ihf@ can you give some explanation on this?",
+      "parentUuid": "d2665f71_08794745",
+      "revId": "47b1e7c848ef2eb3e30413e220389996a0f2e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
