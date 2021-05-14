@@ -16,6 +16,23 @@
       "message": "Hi Renuga,\n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "00eafd37c1ae488a447ce8f6a597962acf0a24d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b716d27_5a9e400e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-14T23:56:48Z",
+      "side": 1,
+      "message": "If we make appcompat_release as subattr of appcompat this CL will required to be fixed too.",
+      "revId": "00eafd37c1ae488a447ce8f6a597962acf0a24d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
