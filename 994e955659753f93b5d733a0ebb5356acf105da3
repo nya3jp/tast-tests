@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e387824c_b2ab8900",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-14T20:36:46Z",
+      "side": 1,
+      "message": "TY Richardo!",
+      "revId": "994e955659753f93b5d733a0ebb5356acf105da3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
