@@ -113,6 +113,18 @@ var (
 // WaitUntilBootComplete is a helper function to wait until boot complete and
 // we are ready to collect boot metrics.
 func WaitUntilBootComplete(ctx context.Context) error {
+	var (
+		// Defines the running states of upstart jobs the test waits for.
+		upstartJobTargets = []struct {
+			JobName     string
+			TargetState upstartcommon.State
+		}{
+			{"bootchart", upstartcommon.WaitingState},
+			{"system-services", upstartcommon.RunningState},
+			{"tlsdated", upstartcommon.RunningState},
+		}
+	)
+
 	pollOnce := func(ctx context.Context, recommendation metricRequirement) error {
 		// Check that bootstat files are available.
 		for _, k := range eventMetrics {
@@ -133,24 +145,15 @@ func WaitUntilBootComplete(ctx context.Context) error {
 			return errors.New("waiting for firmware boot time file")
 		}
 
-		// Wait until bootchart is stopped.
-		job := "bootchart"
-		_, state, _, err := upstart.JobStatus(ctx, job)
-		if err != nil {
-			return errors.Wrapf(err, "failed to get status of job %q", job)
-		}
-		if state != upstartcommon.WaitingState {
-			return errors.Errorf("waiting for %q to stop (current state: %q)", job, state)
-		}
-
-		// Wait until system-services is started.
-		job = "system-services"
-		_, state, _, err = upstart.JobStatus(ctx, job)
-		if err != nil {
-			return errors.Wrapf(err, "failed to get status of job %q", job)
-		}
-		if state != upstartcommon.RunningState {
-			return errors.Errorf("waiting for %q to start (current state: %q)", job, state)
+		// Wait until upstart jobs enter the desired states.
+		for _, job := range upstartJobTargets {
+			_, state, _, err := upstart.JobStatus(ctx, job.JobName)
+			if err != nil {
+				return errors.Wrapf(err, "failed to get status of job %q", job.JobName)
+			}
+			if state != job.TargetState {
+				return errors.Errorf("waiting for %q to become %q (current state: %q)", job.JobName, job.TargetState, state)
+			}
 		}
 
 		return nil
