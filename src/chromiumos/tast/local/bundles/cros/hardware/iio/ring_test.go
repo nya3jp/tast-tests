@@ -91,12 +91,23 @@ func TestRing(t *testing.T) {
 		t.Fatal("Error making buffer fifo: ", err)
 	}
 
+	done := make(chan struct{})
+	defer func() {
+		select {
+		case <-done:
+		case <-time.After(time.Minute):
+			t.Error("Background routine didn't properly return")
+		}
+	}()
 	go func() {
+		defer close(done)
+
 		bytes := make([]byte, 16)
 
 		f, err := os.OpenFile(fifoFile, os.O_WRONLY, 0)
 		if err != nil {
-			t.Fatal("Error opening named pipe for writing: ", err)
+			t.Error("Error opening named pipe for writing: ", err)
+			return
 		}
 		defer f.Close()
 
@@ -110,7 +121,8 @@ func TestRing(t *testing.T) {
 			binary.LittleEndian.PutUint64(bytes[8:], uint64(r.Timestamp))
 
 			if _, err = f.Write(bytes); err != nil {
-				t.Fatalf("Error writing %v to named pipe: %v", bytes, err)
+				t.Errorf("Error writing %v to named pipe: %v", bytes, err)
+				return
 			}
 		}
 	}()
