@@ -143,14 +143,16 @@ func WaitUntilBootComplete(ctx context.Context) error {
 			return errors.Errorf("waiting for %q to stop (current state: %q)", job, state)
 		}
 
-		// Wait until system-services is started.
-		job = "system-services"
-		_, state, _, err = upstart.JobStatus(ctx, job)
-		if err != nil {
-			return errors.Wrapf(err, "failed to get status of job %q", job)
-		}
-		if state != upstartcommon.RunningState {
-			return errors.Errorf("waiting for %q to start (current state: %q)", job, state)
+		// Wait until the following jobs are started.
+		jobs := []string{"system-services", "tlsdated"}
+		for _, job := range jobs {
+			_, state, _, err = upstart.JobStatus(ctx, job)
+			if err != nil {
+				return errors.Wrapf(err, "failed to get status of job %q", job)
+			}
+			if state != upstartcommon.RunningState {
+				return errors.Errorf("waiting for %q to start (current state: %q)", job, state)
+			}
 		}
 
 		return nil
