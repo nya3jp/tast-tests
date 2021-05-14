@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e97a265_217e4d4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-05-14T08:16:31Z",
+      "side": 1,
+      "message": "The indentation is weird. Can you format this? Also, instead of listing the reserved users here again, maybe you can just refer to the array you defined later.",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 123
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eaed32e_5c5612af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-05-14T08:16:31Z",
+      "side": 1,
+      "message": "const? Also, personally I would prefer putting this outside of the function. A big chunk of data here make it a bit harder to follow the flow.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 4
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1029a51c_a43d8c39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-05-14T08:16:31Z",
+      "side": 1,
+      "message": "I think we should test different valid usernames, including something like \"_valid_user-123\"",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 38
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37ff96c4_dd2ace8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-05-14T08:16:31Z",
+      "side": 1,
+      "message": "I am a bit surprised that we have to put this much of code here to remove crostini. Is there a util function somewhere that you can call?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 3
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e1092e8_4ff78450",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-05-14T08:16:31Z",
+      "side": 1,
+      "message": "nit: maybe check that there is no error message here.",
+      "range": {
+        "startLine": 162,
+        "startChar": 58,
+        "endLine": 162,
+        "endChar": 59
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c8cbde1_637324f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-05-14T08:16:31Z",
+      "side": 1,
+      "message": "imo there is no need to actually install crostini --- you can just check that the input field does not allow you to input more than 32 characters. And by not installing crostini, you also don\u0027t need to remove it later.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 30
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
