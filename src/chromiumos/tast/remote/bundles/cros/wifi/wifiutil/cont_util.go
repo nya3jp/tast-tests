@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"net"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -29,6 +30,7 @@ import (
 	"chromiumos/tast/remote/wificell/router"
 	"chromiumos/tast/remote/wificell/router/legacyrouter"
 	"chromiumos/tast/services/cros/wifi"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -56,17 +58,24 @@ type ContTest struct {
 	iface       string
 	restoreBg   func() error
 	servicePath string
+	pcapOpts    []pcap.Option
+	// enableDumpTCP bool
 }
 
 var apID int
 
 var (
-	serverIP    = net.IPv4(192, 168, 0, 254)
-	startIP     = net.IPv4(192, 168, 0, 1)
-	endIP       = net.IPv4(192, 168, 0, 128)
-	broadcastIP = net.IPv4(192, 168, 0, 255)
-	mask        = net.IPv4Mask(255, 255, 255, 0)
+	serverIP      = net.IPv4(192, 168, 0, 254)
+	startIP       = net.IPv4(192, 168, 0, 1)
+	endIP         = net.IPv4(192, 168, 0, 128)
+	broadcastIP   = net.IPv4(192, 168, 0, 255)
+	mask          = net.IPv4Mask(255, 255, 255, 0)
+	perfGatewayIP = net.IPv4(192, 168, 1, 50)
+	perfMask      = mask // Assume the same prefix length.
 )
+
+// PerfServerIP defines IP of the perf server interface.
+var PerfServerIP = net.IPv4(192, 168, 1, 51)
 
 // Cert1 defines a certificate used for testing.
 var Cert1 = certificate.TestCert1()
@@ -102,7 +111,7 @@ func hasFTSupport(ctx context.Context, s *testing.State) bool {
 }
 
 func setupPcapOnRouter(ctx context.Context, r legacyrouter.Legacy,
-	apName string, apConf *hostapd.Config, ds *destructorStack) error {
+	apName string, apConf *hostapd.Config, ds *destructorStack, pcapOpts ...pcap.Option) error {
 	freqOps, err := apConf.PcapFreqOptions()
 	if err != nil {
 		return errors.Wrap(err, "failed to get Freq Opts")
@@ -111,7 +120,7 @@ func setupPcapOnRouter(ctx context.Context, r legacyrouter.Legacy,
 	if !ok {
 		return errors.Wrap(err, "this device does not have a packet capture support")
 	}
-	capturer, err := captureIf.StartCapture(ctx, apName, apConf.Channel, freqOps)
+	capturer, err := captureIf.StartCapture(ctx, apName, apConf.Channel, freqOps, pcapOpts...)
 	if err != nil {
 		return errors.Wrap(err, "failed to start capturer")
 	}
@@ -151,6 +160,7 @@ func ContinuityTestInitialSetup(ctx context.Context, s *testing.State, tf *wific
 		between managed0 and managed1.
 	*/
 	ct := &ContTest{tf: tf}
+	ct.pcapOpts = append(ct.pcapOpts, pcap.Expression("not tcp"))
 	ds, destroyIfNotExported := newDestructorStack()
 	defer destroyIfNotExported()
 
@@ -278,11 +288,11 @@ func ContinuityTestInitialSetup(ctx context.Context, s *testing.State, tf *wific
 		s.Fatal("Failed to generate the hostapd config for AP0: ", err)
 	}
 	ap0Name := uniqueAPName()
-	if err = setupPcapOnRouter(ctx, ct.r, ap0Name, ap0Conf, ds); err != nil {
+	if err = setupPcapOnRouter(ctx, ct.r, ap0Name, ap0Conf, ds, ct.pcapOpts...); err != nil {
 		s.Fatal("Failed to setup pcap: ", err)
 	}
 
-	dutCapturer, err := pcap.StartCapturer(ctx, s.DUT().Conn(), "dut", "wlan0", "/var/log/")
+	dutCapturer, err := pcap.StartCapturer(ctx, s.DUT().Conn(), "dut", "wlan0", "/var/log/", ct.pcapOpts...)
 	if err != nil {
 		s.Fatal("Failed to start DUT capturer: ", err)
 	}
@@ -324,12 +334,156 @@ func ContinuityTestInitialSetup(ctx context.Context, s *testing.State, tf *wific
 	})
 	ct.servicePath = connResp.ServicePath
 
-	if err := tf.PingFromDUT(ctx, serverIP.String(), ping.Count(3), ping.Interval(0.3)); err != nil {
+	if err := tf.PingFromDUT(ctx, serverIP.String(), ping.Count(5), ping.Interval(0.2)); err != nil {
 		s.Fatal("Failed to ping from the DUT: ", err)
 	}
 	s.Log("Connected to the first AP")
 
 	return ctx, ct, ds.export().destroy
+}
+
+// SetupPcapRouterConnection prepares PCAP<->Router connection via a cable connecting LAN ports.
+func (ct *ContTest) SetupPcapRouterConnection(ctx context.Context, s *testing.State,
+	apConn, serverConn *ssh.Conn) (context.Context, func()) {
+	dutConn := s.DUT().Conn()
+
+	type cmdSet struct {
+		conn                         *ssh.Conn
+		setupCommand, teardownComand []string
+		optional                     bool
+	}
+	prefixlen, _ := perfMask.Size()
+	defualtPrefix := "/" + strconv.Itoa(prefixlen)
+
+	cmdList := []cmdSet{
+		// Setup connection to pcap
+		{conn: serverConn,
+			setupCommand:   []string{"ip", "link", "set", "eth1", "up"},
+			teardownComand: []string{"ip", "link", "set", "eth1", "down"},
+		},
+		{conn: serverConn,
+			setupCommand:   []string{"ip", "a", "add", PerfServerIP.String() + defualtPrefix, "dev", "eth1"},
+			teardownComand: []string{"ip", "a", "del", PerfServerIP.String() + defualtPrefix, "dev", "eth1"},
+		},
+		{conn: serverConn,
+			setupCommand: []string{"ip", "r", "add", "table", "255", serverIP.Mask(mask).String() + defualtPrefix,
+				"via", perfGatewayIP.String(), "dev", "eth1"},
+			teardownComand: []string{"ip", "r", "del", "table", "255", serverIP.Mask(mask).String() + defualtPrefix,
+				"via", perfGatewayIP.String(), "dev", "eth1"},
+		},
+		{conn: apConn,
+			setupCommand:   []string{"ip", "link", "set", "eth1", "up"},
+			teardownComand: []string{"ip", "link", "set", "eth1", "down"},
+		},
+		{conn: apConn,
+			setupCommand:   []string{"ip", "a", "add", perfGatewayIP.String() + defualtPrefix, "dev", "eth1"},
+			teardownComand: []string{"ip", "a", "del", perfGatewayIP.String() + defualtPrefix, "dev", "eth1"},
+		},
+		{conn: apConn,
+			setupCommand:   []string{"sysctl", "-w", "net.ipv4.ip_forward=1"},
+			teardownComand: []string{"sysctl", "-w", "net.ipv4.ip_forward=0"},
+		},
+		{conn: dutConn,
+			setupCommand: []string{"ip", "r", "add", "table", "255", PerfServerIP.Mask(mask).String() + defualtPrefix,
+				"via", serverIP.String(), "dev", "wlan0"},
+			teardownComand: []string{"ip", "r", "del", "table", "255", PerfServerIP.Mask(mask).String() + defualtPrefix,
+				"via", serverIP.String(), "dev", "wlan0"},
+		},
+		// Improve forwarding performance.
+		{conn: apConn,
+			setupCommand: []string{"echo", "1", ">", "/sys/class/net/eth1/queues/tx-0/xps_cpus"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "2", ">", "/sys/class/net/eth1/queues/tx-1/xps_cpus"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "4", ">", "/sys/class/net/eth1/queues/tx-2/xps_cpus"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "8", ">", "/sys/class/net/eth1/queues/tx-3/xps_cpus"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "256", ">", "/sys/class/net/eth1/queues/rx-0/rps_flow_count"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "256", ">", "/sys/class/net/eth1/queues/rx-1/rps_flow_count"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "256", ">", "/sys/class/net/eth1/queues/rx-2/rps_flow_count"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "256", ">", "/sys/class/net/eth1/queues/rx-3/rps_flow_count"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "2", ">", "/sys/class/net/eth1/queues/rx-0/xps_cpus"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "4", ">", "/sys/class/net/eth1/queues/rx-1/xps_cpus"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "1", ">", "/sys/class/net/eth1/queues/rx-2/xps_cpus"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "2", ">", "/sys/class/net/eth1/queues/rx-3/xps_cpus"},
+		},
+		// On old images, there might be no ethtool available, let's make this optional.
+		{conn: apConn,
+			setupCommand: []string{"ethtool", "-K", "eth1", "rxhash", "off"},
+			optional:     true,
+		},
+		{conn: apConn,
+			setupCommand: []string{"ethtool", "-K", "eth1", "gro", "on"},
+			optional:     true,
+		},
+		{conn: apConn,
+			setupCommand: []string{"mknod", "/dev/sfe_ipv4", "c", "242", "0"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"mknod", "/dev/sfe_ipv6", "c", "241", "0"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "0", ">", "/sys/sfe_cm/stop"},
+		},
+	}
+
+	ds, destroyIfNotExported := newDestructorStack()
+	defer destroyIfNotExported()
+
+	for _, cmd := range cmdList {
+		s.Logf("Run: %s", strings.Join(cmd.setupCommand, " "))
+		if err := cmd.conn.CommandContext(ctx, cmd.setupCommand[0], cmd.setupCommand[1:]...).Run(); !cmd.optional && err != nil {
+			// If a previous test run was interrupted before teardown, we might attempt to run teardown before
+			// retrying.
+			if len(cmd.teardownComand) > 0 {
+				s.Logf("Failed to run command %s, attempting recovery", strings.Join(cmd.setupCommand, " "))
+				cmd.conn.CommandContext(ctx, cmd.teardownComand[0], cmd.teardownComand[1:]...).Run()
+				if err := cmd.conn.CommandContext(ctx, cmd.setupCommand[0], cmd.setupCommand[1:]...).Run(); err != nil {
+					s.Fatal("Failed to run command ", strings.Join(cmd.setupCommand, " "), ", err: ", err)
+				} else {
+					s.Log("Recovery succeeded")
+				}
+			}
+		}
+		if len(cmd.teardownComand) > 0 {
+			cmdSav := cmd
+			ds.push(func() {
+				s.Logf("Run: %s", strings.Join(cmdSav.teardownComand, " "))
+				cmdSav.conn.CommandContext(ctx, cmdSav.teardownComand[0], cmdSav.teardownComand[1:]...).Run()
+			})
+		}
+	}
+
+	// Make sure we have a pingable server as well.
+	if err := ct.tf.PingFromDUT(ctx, perfGatewayIP.String(), ping.Count(5), ping.Interval(0.2)); err != nil {
+		s.Fatal("Failed to ping ap from the DUT: ", err)
+	}
+	if err := ct.tf.PingFromDUT(ctx, PerfServerIP.String(), ping.Count(5), ping.Interval(0.2)); err != nil {
+		// Pinging pcap on internal address requires a cable to be connected between LAN ports
+		// of both Gales. Failing ping means no such connection exists.
+		s.Fatal("Failed to ping pcap from the DUT. Err: ", err)
+	}
+
+	return ctx, ds.export().destroy
 }
 
 // ContinuityTestSetupFinalize finalizes the setup of the test environment.
@@ -343,7 +497,7 @@ func (ct *ContTest) ContinuityTestSetupFinalize(ctx context.Context, s *testing.
 		s.Fatal("Failed to generate the hostapd config for AP1: ", err)
 	}
 
-	if err = setupPcapOnRouter(ctx, ct.r, ap1Name, ap1Conf, ds); err != nil {
+	if err = setupPcapOnRouter(ctx, ct.r, ap1Name, ap1Conf, ds, ct.pcapOpts...); err != nil {
 		s.Fatal("Failed to setup pcap: ", err)
 	}
 
