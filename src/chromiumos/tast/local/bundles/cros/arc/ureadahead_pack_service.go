@@ -179,6 +179,10 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		return nil, errors.Wrap(err, "failed to reset ureadahead flag")
 	}
 
+	if err := ioutil.WriteFile("/sys/kernel/debug/tracing/trace", []byte(""), 0644); err != nil {
+		return nil, errors.Wrap(err, "failed to reset tracing buffer")
+	}
+
 	logPath := filepath.Join(ureadaheadDataDir, logName)
 	log, err := os.Create(logPath)
 	if err != nil {
@@ -228,6 +232,21 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 			testing.ContextLog(cleanCtx, "Failed to stop ureadahead tracing")
 		}
 	}()
+
+	if vmEnabled {
+		// In ARCVM we trace system and vendor images. They are mount as block devices
+		// and normally they would not appear in tracing open requests.
+		// Open images explicitly here in order to ensure tracing buffer has it.
+		images := []string{"system.raw.img", "vendor.raw.img"}
+		for _, image := range images {
+			imagePath := filepath.Join(arcvmRoot, image)
+			file, err := os.Open(imagePath)
+			if err != nil {
+				return nil, errors.Wrapf(err, "failed to touch image %q", imagePath)
+			}
+			file.Close()
+		}
+	}
 
 	// Opt in.
 	testing.ContextLog(ctx, "Waiting for ARC opt-in flow to complete")
