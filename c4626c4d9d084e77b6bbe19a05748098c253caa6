@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c22433f_741d7240",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-14T20:34:48Z",
+      "side": 1,
+      "message": "+2 % (huge nit)",
+      "revId": "c4626c4d9d084e77b6bbe19a05748098c253caa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b34bff50_3a354094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-14T20:34:48Z",
+      "side": 1,
+      "message": "huge nit:  mount -\u003e mounted",
+      "range": {
+        "startLine": 237,
+        "startChar": 62,
+        "endLine": 237,
+        "endChar": 63
+      },
+      "revId": "c4626c4d9d084e77b6bbe19a05748098c253caa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
