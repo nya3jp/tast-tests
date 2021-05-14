@@ -10,6 +10,7 @@ import (
 	"os"
 	"path"
 	"reflect"
+	"sync"
 	"testing"
 	"time"
 
@@ -95,7 +96,12 @@ func TestOpenBuffer(t *testing.T) {
 		t.Fatal("Error making buffer fifo: ", err)
 	}
 
+	var wg sync.WaitGroup
+	defer wg.Wait()
+	wg.Add(1)
 	go func() {
+		defer wg.Done()
+
 		var s16 int16
 		var u32 uint32
 		bytes := make([]byte, 6)
@@ -104,7 +110,8 @@ func TestOpenBuffer(t *testing.T) {
 
 		f, err := os.OpenFile(fifoFile, os.O_WRONLY, 0)
 		if err != nil {
-			t.Fatal("Error opening named pipe for writing: ", err)
+			t.Error("Error opening named pipe for writing: ", err)
+			return
 		}
 		defer f.Close()
 
@@ -116,7 +123,8 @@ func TestOpenBuffer(t *testing.T) {
 
 			_, err = f.Write(bytes)
 			if err != nil {
-				t.Fatalf("Error writing to named pipe %v: %v", i, err)
+				t.Errorf("Error writing to named pipe %v: %v", i, err)
+				return
 			}
 		}
 	}()
