@@ -54,7 +54,6 @@ func init() {
 			Val: &params{
 				Network: true,
 			},
-			ExtraAttr: []string{"informational"},
 		}},
 	})
 }
