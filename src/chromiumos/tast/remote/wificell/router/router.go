@@ -43,6 +43,7 @@ type Base interface {
 // Ax contains the funcionality that the ax testbed router should support.
 type Ax interface {
 	Base
+	SupportSSHConn
 }
 
 // Legacy contains the functionality the legacy WiFi testing router should support.
@@ -59,6 +60,7 @@ type OpenWrt interface {
 type LegacyOpenWrtShared interface {
 	Base
 	SupportLogs
+	SupportSSHConn
 	SupportCapture
 	SupportHostapd
 	SupportDHCP
@@ -73,6 +75,12 @@ type LegacyOpenWrtShared interface {
 type SupportLogs interface {
 	// CollectLogs downloads log files from router to OutDir.
 	CollectLogs(ctx context.Context) error
+}
+
+// SupportSSHConn shall be implemented if the router supports connecting via ssh.
+type SupportSSHConn interface {
+	// Conn returns the Conn pointer for this router.
+	Conn() *ssh.Conn
 }
 
 // SupportCapture shall be implemented if the router supports pcap capture.
