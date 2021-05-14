@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/cmd"
 	"chromiumos/tast/remote/network/firewall"
@@ -221,4 +222,37 @@ func (r *runner) run(ctx context.Context, retryCount uint) (*Result, error) {
 // close netperf runner.
 func (r *runner) close(ctx context.Context) {
 	r.stopNetserver(ctx)
+}
+
+func (r *runner) warmup(ctx context.Context) error {
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	defer cancel()
+
+	var warmupHistory History
+	for len(warmupHistory) < warmupMaxSamples {
+		ret, err := r.run(ctx, retryCount)
+		if err != nil {
+			return errors.Wrap(err, "error while warming up")
+		}
+		warmupHistory = append(warmupHistory, ret)
+		if len(warmupHistory) > 2*warmupWindowSize {
+			// Grab 2 * warmupWindowSize samples, divided into the most
+			// recent chunk and the chunk before that.
+			start := len(warmupHistory) - 2*warmupWindowSize
+			middle := len(warmupHistory) - warmupWindowSize
+			pastResult, err := AggregateSamples(ctx, warmupHistory[start:middle])
+			if err != nil {
+				return errors.Wrap(err, "error calculating throughput")
+			}
+			recentResult, err := AggregateSamples(ctx, warmupHistory[middle:])
+			if recentResult.Measurements[CategoryThroughput] <
+				(pastResult.Measurements[CategoryThroughput] +
+					pastResult.Measurements[CategoryThroughputDev]) {
+				testing.ContextLog(ctx, "Rate controller is warmed")
+				return nil
+			}
+		}
+	}
+	testing.ContextLog(ctx, "Warning: Did not completely warmup the WiFi part")
+	return nil
 }

@@ -145,36 +145,7 @@ func (s *Session) warmupWifiPart(ctx context.Context, cfg Config) error {
 		return errors.Wrap(err, "failed to initialize runner")
 	}
 	defer runner.close(ctx)
-	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
-	defer cancel()
-
-	var warmupHistory History
-	for len(warmupHistory) < warmupMaxSamples {
-		ret, err := runner.run(ctx, retryCount)
-		if err != nil {
-			return errors.Wrap(err, "error while warming up")
-		}
-		warmupHistory = append(warmupHistory, ret)
-		if len(warmupHistory) > 2*warmupWindowSize {
-			// Grab 2 * warmupWindowSize samples, divided into the most
-			// recent chunk and the chunk before that.
-			start := len(warmupHistory) - 2*warmupWindowSize
-			middle := len(warmupHistory) - warmupWindowSize
-			pastResult, err := AggregateSamples(ctx, warmupHistory[start:middle])
-			if err != nil {
-				return errors.Wrap(err, "error calculating throughput")
-			}
-			recentResult, err := AggregateSamples(ctx, warmupHistory[middle:])
-			if recentResult.Measurements[CategoryThroughput] <
-				(pastResult.Measurements[CategoryThroughput] +
-					pastResult.Measurements[CategoryThroughputDev]) {
-				testing.ContextLog(ctx, "Rate controller is warmed")
-				return nil
-			}
-		}
-	}
-	testing.ContextLog(ctx, "Warning: Did not completely warmup the WiFi part")
-	return nil
+	return runner.warmup(ctx)
 }
 
 // WarmupStations is running short netperf bursts in both directions to make sure

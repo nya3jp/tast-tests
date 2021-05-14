@@ -1030,3 +1030,8 @@ func hostBoard(ctx context.Context, host *ssh.Conn) (string, error) {
 func (r *legacyRouterStruct) MAC(ctx context.Context, iface string) (net.HardwareAddr, error) {
 	return r.ipr.MAC(ctx, iface)
 }
+
+// Conn returns the Conn pointer for this router.
+func (r *legacyRouterStruct) Conn() *ssh.Conn {
+	return r.host
+}
