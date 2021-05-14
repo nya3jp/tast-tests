@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60eb56b5_6ee08e06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-14T02:34:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3900d32_1b114734",
+      "range": {
+        "startLine": 98,
+        "startChar": 25,
+        "endLine": 98,
+        "endChar": 32
+      },
+      "revId": "3034343bd3a21ef08ae7ab0d2c44d66f735b885b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8857e594_dc3c48cb",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-14T01:51:53Z",
       "side": 1,
       "message": "Any error without this sleep?",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 27
+      },
+      "revId": "3034343bd3a21ef08ae7ab0d2c44d66f735b885b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c2965c7_651d176b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-14T02:34:36Z",
+      "side": 1,
+      "message": "Yes. The first few characters typed will be lost, and the filename will be truncated without this pause. I don\u0027t know an elegant way to find out \"ready to respond to events\". Just being visible is not enough.",
+      "parentUuid": "8857e594_dc3c48cb",
       "range": {
         "startLine": 148,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcffe93c_dfbf287a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-14T02:34:36Z",
+      "side": 1,
+      "message": "Turns out we must not use fmt.Sprintf inside s.Fatal. There\u0027s an linter that insists on s.Fatalf instead.",
+      "parentUuid": "8974438e_4ce565ab",
+      "range": {
+        "startLine": 179,
+        "startChar": 10,
+        "endLine": 179,
+        "endChar": 61
+      },
+      "revId": "3034343bd3a21ef08ae7ab0d2c44d66f735b885b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52eebbc5_c073f17a",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-05-14T01:51:53Z",
       "side": 1,
       "message": "end with .",
+      "range": {
+        "startLine": 193,
+        "startChar": 12,
+        "endLine": 193,
+        "endChar": 21
+      },
+      "revId": "3034343bd3a21ef08ae7ab0d2c44d66f735b885b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75a70727_5279216b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-14T02:34:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52eebbc5_c073f17a",
       "range": {
         "startLine": 193,
         "startChar": 12,
