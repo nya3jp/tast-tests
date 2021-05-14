@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fad14203_c1c1492d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-14T18:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cedcfd3c_d180a56f",
+      "range": {
+        "startLine": 33,
+        "startChar": 94,
+        "endLine": 33,
+        "endChar": 96
+      },
+      "revId": "9ae9d3dbcc37536e9750d15229ee7284010f94f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1730b3ee_b620afac",
@@ -72,6 +96,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89e473e1_66b84ef5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-14T18:23:18Z",
+      "side": 1,
+      "message": "If you increase the width, you can see that all comments  indented at same level.\nhttps://screenshot.googleplex.com/68qCKv9jMtvTiD6\n\nDo I still need to change this?",
+      "parentUuid": "bf012a57_6a3b84b6",
+      "range": {
+        "startLine": 43,
+        "startChar": 115,
+        "endLine": 43,
+        "endChar": 121
+      },
+      "revId": "9ae9d3dbcc37536e9750d15229ee7284010f94f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "496f17fb_46cbd600",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-14T18:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1730b3ee_b620afac",
+      "range": {
+        "startLine": 43,
+        "startChar": 201,
+        "endLine": 43,
+        "endChar": 207
+      },
+      "revId": "9ae9d3dbcc37536e9750d15229ee7284010f94f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b4aec6d_4abf15b6",
         "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
         "patchSetId": 5
@@ -83,6 +155,30 @@
       "writtenOn": "2021-05-14T03:34:53Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 44,
+        "startChar": 150,
+        "endLine": 44,
+        "endChar": 154
+      },
+      "revId": "9ae9d3dbcc37536e9750d15229ee7284010f94f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8399ec2e_0e0cd088",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-14T18:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b4aec6d_4abf15b6",
       "range": {
         "startLine": 44,
         "startChar": 150,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "590f914f_a34ae97b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-14T18:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6193e01_0d6d994b",
+      "range": {
+        "startLine": 45,
+        "startChar": 152,
+        "endLine": 45,
+        "endChar": 156
+      },
+      "revId": "9ae9d3dbcc37536e9750d15229ee7284010f94f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "747b0f26_fd1dc4da",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f737b781_cec245f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-14T18:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "747b0f26_fd1dc4da",
+      "range": {
+        "startLine": 46,
+        "startChar": 177,
+        "endLine": 46,
+        "endChar": 179
+      },
+      "revId": "9ae9d3dbcc37536e9750d15229ee7284010f94f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8114a634_62f1f1cc",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-05-14T03:34:53Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 47,
+        "startChar": 177,
+        "endLine": 47,
+        "endChar": 180
+      },
+      "revId": "9ae9d3dbcc37536e9750d15229ee7284010f94f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83316c4c_9553cbf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-14T18:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8114a634_62f1f1cc",
       "range": {
         "startLine": 47,
         "startChar": 177,
