@@ -141,11 +141,11 @@ const (
 	// of the data dependencies of your test.
 	DataArtifact = "lacros_binary.tar"
 
-	// LacrosTestPath is the file path at which all lacros-chrome related test artifacts are stored.
-	lacrosTestPath = "/mnt/stateful_partition/lacros_test_artifacts"
+	// lacrosTestPath is the file path at which all lacros-chrome related test artifacts are stored.
+	lacrosTestPath = "/usr/local/lacros_test_artifacts"
 
-	// binaryPath is the root directory for lacros-chrome related binaries.
-	binaryPath = lacrosTestPath + "/lacros_binary"
+	// lacrosRootPath is the root directory for lacros-chrome related binaries.
+	lacrosRootPath = lacrosTestPath + "/lacros_binary"
 )
 
 // The FixtData object is made available to users of this fixture via:
@@ -236,7 +236,7 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 		if deployed {
 			f.lacrosPath = path
 		} else {
-			f.lacrosPath = binaryPath
+			f.lacrosPath = lacrosRootPath
 		}
 		opts = append(opts, chrome.ExtraArgs("--lacros-chrome-path="+f.lacrosPath))
 	}
