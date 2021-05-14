@@ -168,8 +168,8 @@ func EnsureLacrosChrome(ctx context.Context, f FixtData, artifactPath string) er
 		if err := tarCmd.Run(testexec.DumpLogOnError); err != nil {
 			return errors.Wrap(err, "failed to untar test artifacts")
 		}
-		if err := os.Chmod(binaryPath, 0777); err != nil {
-			return errors.Wrap(err, "failed to change permissions of binary dir path")
+		if err := os.Chmod(filepath.Join(f.LacrosPath, "/chrome"), 0777); err != nil {
+			return errors.Wrap(err, "failed to change permissions of the Lacros binary")
 		}
 	} else {
 		return err
