@@ -35,7 +35,7 @@ func init() {
 			"arc-storage@google.com",
 			"cros-arc-te@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational", "group:mtp"},
+		Attr:         []string{"group:mtp"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		Fixture:      "mtpWithAndroid",
