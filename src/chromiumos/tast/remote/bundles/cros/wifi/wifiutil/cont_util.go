@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"net"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -25,6 +26,7 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/router"
 	"chromiumos/tast/services/cros/wifi"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -287,12 +289,140 @@ func ContinuityTestInitialSetup(ctx context.Context, s *testing.State, tf *wific
 	})
 	ct.servicePath = connResp.ServicePath
 
-	if err := tf.PingFromDUT(ctx, serverIP.String(), ping.Count(3), ping.Interval(0.3)); err != nil {
+	if err := tf.PingFromDUT(ctx, serverIP.String(), ping.Count(5), ping.Interval(0.2)); err != nil {
 		s.Fatal("Failed to ping from the DUT: ", err)
 	}
 	s.Log("Connected to the first AP")
 
 	return ctx, ct, ds.export().destroy
+}
+
+// SetupPcapRouterConnection prepares PCAP<->Router connection via a cable connecting LAN ports.
+func SetupPcapRouterConnection(ctx context.Context, s *testing.State,
+	apConn, serverConn *ssh.Conn) (context.Context, func()) {
+	dutConn := s.DUT().Conn()
+
+	type cmdSet struct {
+		conn                         *ssh.Conn
+		setupCommand, teardownComand []string
+		optional                     bool
+	}
+
+	cmdList := []cmdSet{
+		// Setup connection to pcap
+		{conn: serverConn,
+			setupCommand:   []string{"ip", "link", "set", "eth1", "up"},
+			teardownComand: []string{"ip", "link", "set", "eth1", "down"},
+		},
+		{conn: serverConn,
+			setupCommand:   []string{"ip", "a", "add", "192.168.1.51/24", "dev", "eth1"},
+			teardownComand: []string{"ip", "a", "del", "192.168.1.51/24", "dev", "eth1"},
+		},
+		{conn: serverConn,
+			setupCommand:   []string{"ip", "r", "add", "table", "255", "192.168.0.0/24", "via", "192.168.1.50", "dev", "eth1"},
+			teardownComand: []string{"ip", "r", "del", "table", "255", "192.168.0.0/24", "via", "192.168.1.50", "dev", "eth1"},
+		},
+		{conn: apConn,
+			setupCommand:   []string{"ip", "link", "set", "eth1", "up"},
+			teardownComand: []string{"ip", "link", "set", "eth1", "down"},
+		},
+		{conn: apConn,
+			setupCommand:   []string{"ip", "a", "add", "192.168.1.50/24", "dev", "eth1"},
+			teardownComand: []string{"ip", "a", "del", "192.168.1.50/24", "dev", "eth1"},
+		},
+		{conn: apConn,
+			setupCommand:   []string{"sysctl", "-w", "net.ipv4.ip_forward=1"},
+			teardownComand: []string{"sysctl", "-w", "net.ipv4.ip_forward=0"},
+		},
+		{conn: dutConn,
+			setupCommand:   []string{"ip", "r", "add", "table", "255", "192.168.1.0/24", "via", "192.168.0.254", "dev", "wlan0"},
+			teardownComand: []string{"ip", "r", "del", "table", "255", "192.168.1.0/24", "via", "192.168.0.254", "dev", "wlan0"},
+		},
+		// Improve forwarding performance.
+		{conn: apConn,
+			setupCommand: []string{"echo", "1", ">", "/sys/class/net/eth1/queues/tx-0/xps_cpus"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "2", ">", "/sys/class/net/eth1/queues/tx-1/xps_cpus"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "4", ">", "/sys/class/net/eth1/queues/tx-2/xps_cpus"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "8", ">", "/sys/class/net/eth1/queues/tx-3/xps_cpus"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "256", ">", "/sys/class/net/eth1/queues/rx-0/rps_flow_count"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "256", ">", "/sys/class/net/eth1/queues/rx-1/rps_flow_count"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "256", ">", "/sys/class/net/eth1/queues/rx-2/rps_flow_count"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "256", ">", "/sys/class/net/eth1/queues/rx-3/rps_flow_count"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "2", ">", "/sys/class/net/eth1/queues/rx-0/xps_cpus"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "4", ">", "/sys/class/net/eth1/queues/rx-1/xps_cpus"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "1", ">", "/sys/class/net/eth1/queues/rx-2/xps_cpus"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "2", ">", "/sys/class/net/eth1/queues/rx-3/xps_cpus"},
+		},
+		// On old images, there might be no ethtool available, let's make this optional.
+		{conn: apConn,
+			setupCommand: []string{"ethtool", "-K", "eth1", "rxhash", "off"},
+			optional:     true,
+		},
+		{conn: apConn,
+			setupCommand: []string{"ethtool", "-K", "eth1", "gro", "on"},
+			optional:     true,
+		},
+		{conn: apConn,
+			setupCommand: []string{"mknod", "/dev/sfe_ipv4", "c", "242", "0"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"mknod", "/dev/sfe_ipv6", "c", "241", "0"},
+		},
+		{conn: apConn,
+			setupCommand: []string{"echo", "0", ">", "/sys/sfe_cm/stop"},
+		},
+	}
+
+	ds, destroyIfNotExported := newDestructorStack()
+	defer destroyIfNotExported()
+
+	for _, cmd := range cmdList {
+		s.Logf("Run: %s", strings.Join(cmd.setupCommand, " "))
+		if err := cmd.conn.Command(cmd.setupCommand[0], cmd.setupCommand[1:]...).Run(ctx); !cmd.optional && err != nil {
+			// If a previous test run was interrupted before teardown, we might attempt to run teardown before
+			// retrying.
+			if len(cmd.teardownComand) > 0 {
+				s.Logf("Failed to run command %s, attempting recovery", strings.Join(cmd.setupCommand, " "))
+				cmd.conn.Command(cmd.teardownComand[0], cmd.teardownComand[1:]...).Run(ctx)
+				if err := cmd.conn.Command(cmd.setupCommand[0], cmd.setupCommand[1:]...).Run(ctx); err != nil {
+					s.Fatal("Failed to run command ", strings.Join(cmd.setupCommand, " "), ", err: ", err)
+				} else {
+					s.Log("Recovery succeeded")
+				}
+			}
+		}
+		if len(cmd.teardownComand) > 0 {
+			cmdSav := cmd
+			ds.push(func() {
+				s.Logf("Run: %s", strings.Join(cmdSav.teardownComand, " "))
+				cmdSav.conn.Command(cmdSav.teardownComand[0], cmdSav.teardownComand[1:]...).Run(ctx)
+			})
+		}
+	}
+
+	return ctx, ds.export().destroy
 }
 
 // ContinuityTestSetupFinalize finalizes the setup of the test environment.
