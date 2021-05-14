@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "b8d36b8015bdff74eb5309f546e43b53901b9512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a722a782_96c86175",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-05-14T01:54:07Z",
+      "side": 1,
+      "message": "Thanks for updating, I must have missed the email for this one.",
+      "revId": "b8d36b8015bdff74eb5309f546e43b53901b9512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
