@@ -16,6 +16,23 @@
       "message": "ptal",
       "revId": "2e77858cbe0f70795b4aaf5528e2405199920921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8331dea0_1a5662a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-05-14T19:09:12Z",
+      "side": 1,
+      "message": "Just curious, looking at Tastboard, it seems to have regressed in 13968.0.0 on some boards (not all). is it worth bisecting to find a culprit?",
+      "revId": "2e77858cbe0f70795b4aaf5528e2405199920921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
