@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f26e17c9_de35bc28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-14T02:30:28Z",
+      "side": 1,
+      "message": "Hi Judy,\n\nI have addressed the 3 comments.\n\nRegards\nShijin ",
+      "revId": "85768bbc6f5b2930639d66e631cb920999126213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b01d4394_5770fcfc",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-05-14T01:22:36Z",
       "side": 1,
       "message": "I think it would better to define them after ui :\u003d uiauto.New(tconn)",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 11
+      },
+      "revId": "85768bbc6f5b2930639d66e631cb920999126213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc6c0d73_81b0139a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-14T02:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b01d4394_5770fcfc",
       "range": {
         "startLine": 33,
         "startChar": 1,
@@ -64,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1da36159_91b3d74c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-14T02:30:28Z",
+      "side": 1,
+      "message": "Added roles.",
+      "parentUuid": "b9d2a0b9_a8a97bc9",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 23
+      },
+      "revId": "85768bbc6f5b2930639d66e631cb920999126213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "632801a1_219d4c2d",
@@ -77,6 +142,30 @@
       "writtenOn": "2021-05-14T01:22:36Z",
       "side": 1,
       "message": "if err :\u003d bluetooth.Enable(ctx); err !\u003d nil {\n...\n}",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 14
+      },
+      "revId": "85768bbc6f5b2930639d66e631cb920999126213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "968aa5e0_267039e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-14T02:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "632801a1_219d4c2d",
       "range": {
         "startLine": 48,
         "startChar": 1,
