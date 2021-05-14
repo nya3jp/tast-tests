@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fa7cc9b_5009ea03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-14T10:46:20Z",
+      "side": 1,
+      "message": "Thanks for this information. Very good to know. In this case, do you mind to use javascript to call click() on the element instead of complicated UI interaction? I reckon it would be much more reliable than current solution. But anyway, I will leave this up to you.",
+      "parentUuid": "82de1917_ad356236",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 39
+      },
+      "revId": "b707f2d65fafe7391b990a1b4e4297a4748787ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67e9176b_40894c37",
@@ -202,6 +226,30 @@
       "writtenOn": "2021-05-07T09:13:32Z",
       "side": 1,
       "message": "Please try with the proposed solution above, hopefully it works. Otherwise I will review this part later.",
+      "range": {
+        "startLine": 243,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 39
+      },
+      "revId": "b707f2d65fafe7391b990a1b4e4297a4748787ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "213a64ab_72092dee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-14T10:46:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e9986eed_f3748883",
       "range": {
         "startLine": 243,
         "startChar": 5,
