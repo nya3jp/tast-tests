@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -24,13 +25,19 @@ func init() {
 			"chromeos-platform-ml@google.com",
 		},
 		Attr: []string{
-			"group:mainline", "informational",
+			"group:mainline",
 		},
 		SoftwareDeps: []string{"nnapi"},
 		Params: []testing.Param{{
 			Name: "cts",
 			// b/182264329: Fix SingleOperationTest.RESIZE_BILINEAR_V1_3
 			Val: []string{"cros_nnapi_cts", "--gtest_filter=-TestRandomGraph/SingleOperationTest.RESIZE_BILINEAR_V1_3/*"},
+			ExtraHardwareDeps: hwdep.D(
+				hwdep.SkipOnPlatform(
+					"amd64-generic",
+					"betty",
+					"betty-pi-arc",
+				)),
 		}, {
 			Name: "vts_1_0",
 			Val:  []string{"cros_nnapi_vts_1_0"},
@@ -40,9 +47,21 @@ func init() {
 		}, {
 			Name: "vts_1_2",
 			Val:  []string{"cros_nnapi_vts_1_2"},
+			ExtraHardwareDeps: hwdep.D(
+				hwdep.SkipOnPlatform(
+					"amd64-generic",
+					"betty",
+					"betty-pi-arc",
+				)),
 		}, {
 			Name: "vts_1_3",
 			Val:  []string{"cros_nnapi_vts_1_3"},
+			ExtraHardwareDeps: hwdep.D(
+				hwdep.SkipOnPlatform(
+					"amd64-generic",
+					"betty",
+					"betty-pi-arc",
+				)),
 		}},
 	})
 }
