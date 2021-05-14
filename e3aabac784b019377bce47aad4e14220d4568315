@@ -70,6 +70,24 @@
       "parentUuid": "b24fab73_a0face04",
       "revId": "e3aabac784b019377bce47aad4e14220d4568315",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9506b36_b1bb5414",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-14T02:24:24Z",
+      "side": 1,
+      "message": "SGTM. Unless we have some cases that need extra long time to close, which is unlikely I guess.",
+      "parentUuid": "63997275_4e9b5bda",
+      "revId": "e3aabac784b019377bce47aad4e14220d4568315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
