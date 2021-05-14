@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "654afc68_cd76ec17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-05-14T16:43:55Z",
+      "side": 1,
+      "message": "Looking good! Thanks.",
+      "revId": "b34ac52cbc008480ef61751bc5dc41ba4d0f6ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e78b128_e9485988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/contents.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-05-14T16:43:55Z",
+      "side": 1,
+      "message": "You also need a _lacros variant of this so that we can test exotic crop rectangles with overlays.",
+      "range": {
+        "startLine": 50,
+        "startChar": 10,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "b34ac52cbc008480ef61751bc5dc41ba4d0f6ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72a15d65_dea3e4bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/contents.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-05-14T16:43:55Z",
+      "side": 1,
+      "message": "nit: Remove blank line.",
+      "revId": "b34ac52cbc008480ef61751bc5dc41ba4d0f6ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff1831ac_d690c830",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-05-14T16:43:55Z",
+      "side": 1,
+      "message": "Do you have a way to test this works when using LaCrOS? I\u0027m not sure if tconn has the same capabilities in that case.",
+      "range": {
+        "startLine": 411,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 2
+      },
+      "revId": "b34ac52cbc008480ef61751bc5dc41ba4d0f6ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f62cde06_cc3dd0b4",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-05-14T16:43:55Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we want this. Can we ask Robert what this flag does in the case of lacros? Will lacros flatten everything before sending the content to Wayland? Or does it just ignore this flag?",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 61
+      },
+      "revId": "b34ac52cbc008480ef61751bc5dc41ba4d0f6ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
