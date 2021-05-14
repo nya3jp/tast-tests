@@ -30,7 +30,8 @@ func init() {
 		Params: []testing.Param{{
 			Name: "cts",
 			// b/182264329: Fix SingleOperationTest.RESIZE_BILINEAR_V1_3
-			Val: []string{"cros_nnapi_cts", "--gtest_filter=-TestRandomGraph/SingleOperationTest.RESIZE_BILINEAR_V1_3/*"},
+			Val:               []string{"cros_nnapi_cts", "--gtest_filter=-TestRandomGraph/SingleOperationTest.RESIZE_BILINEAR_V1_3/*"},
+			ExtraSoftwareDeps: []string{"nnapi_vendor_driver"},
 		}, {
 			Name: "vts_1_0",
 			Val:  []string{"cros_nnapi_vts_1_0"},
@@ -38,11 +39,13 @@ func init() {
 			Name: "vts_1_1",
 			Val:  []string{"cros_nnapi_vts_1_1"},
 		}, {
-			Name: "vts_1_2",
-			Val:  []string{"cros_nnapi_vts_1_2"},
+			Name:              "vts_1_2",
+			Val:               []string{"cros_nnapi_vts_1_2"},
+			ExtraSoftwareDeps: []string{"nnapi_vendor_driver"},
 		}, {
-			Name: "vts_1_3",
-			Val:  []string{"cros_nnapi_vts_1_3"},
+			Name:              "vts_1_3",
+			Val:               []string{"cros_nnapi_vts_1_3"},
+			ExtraSoftwareDeps: []string{"nnapi_vendor_driver"},
 		}},
 	})
 }
