@@ -19,7 +19,7 @@ func init() {
 		Func:         NestedVM,
 		Desc:         "Test that /dev/kvm is present and basic functionality works",
 		Contacts:     []string{"sidereal@google.com", "cros-containers-dev@google.com"},
-		SoftwareDeps: []string{"chrome", "vm_host", "untrusted_vm"},
+		SoftwareDeps: []string{"chrome", "vm_host", "untrusted_vm", "amd64"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
 		// The build_image script strips out .c files, so we
