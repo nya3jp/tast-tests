@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "330a8288_7a47e983",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-15T02:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98fe3adc_97e6f0d2",
+      "revId": "408b85ef47dd869342addc5365b7ca71649cbd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1ca6135_7fff215c",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-05-12T09:54:16Z",
       "side": 1,
       "message": "DHCP",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 12
+      },
+      "revId": "408b85ef47dd869342addc5365b7ca71649cbd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7da25b3b_deac4306",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-15T02:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1ca6135_7fff215c",
       "range": {
         "startLine": 77,
         "startChar": 8,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28978f5c_48631239",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-15T02:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9d2b88d_2f27edbe",
+      "range": {
+        "startLine": 93,
+        "startChar": 33,
+        "endLine": 93,
+        "endChar": 39
+      },
+      "revId": "408b85ef47dd869342addc5365b7ca71649cbd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa129a17_f982be92",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42c363a1_6a07676b",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-15T02:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa129a17_f982be92",
+      "range": {
+        "startLine": 94,
+        "startChar": 109,
+        "endLine": 94,
+        "endChar": 112
+      },
+      "revId": "408b85ef47dd869342addc5365b7ca71649cbd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "173219bb_3eab0056",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-05-14T02:22:04Z",
       "side": 1,
       "message": "Consider export the supportXxx interfaces as they can be used as parameter types for functions that need the router object to call specific methods.",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 19
+      },
+      "revId": "408b85ef47dd869342addc5365b7ca71649cbd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "778576fe_92f9d1fd",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-15T02:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "173219bb_3eab0056",
       "range": {
         "startLine": 109,
         "startChar": 5,

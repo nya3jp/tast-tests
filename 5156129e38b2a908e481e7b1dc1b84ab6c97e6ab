@@ -242,6 +242,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff532f92_fe41d8ea",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-15T02:03:43Z",
+      "side": 1,
+      "message": "Done. I had to make some other helpers into other packages so there isn\u0027t an import cycle.",
+      "parentUuid": "971137bc_aa892833",
+      "revId": "5156129e38b2a908e481e7b1dc1b84ab6c97e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10461954_97e323d9",
