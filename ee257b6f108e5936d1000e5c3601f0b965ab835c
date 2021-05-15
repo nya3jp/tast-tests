@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfcb95ae_4d153515",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-15T02:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e68f7de7_179854e3",
+      "range": {
+        "startLine": 505,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 2
+      },
+      "revId": "ee257b6f108e5936d1000e5c3601f0b965ab835c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5965bbbb_2d1ea8bb",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-05-12T11:37:44Z",
       "side": 1,
       "message": "similar as above, might be better to move this into the \"if capturer, ok :\u003d tf.capturers[ap]; ok {\", and return the (ctx, cancel) in line579 if not ok.",
+      "range": {
+        "startLine": 575,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 2
+      },
+      "revId": "ee257b6f108e5936d1000e5c3601f0b965ab835c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c46bd05_782d3ac0",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-15T02:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5965bbbb_2d1ea8bb",
       "range": {
         "startLine": 575,
         "startChar": 0,
@@ -106,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5dfcccda_2b1bdcdb",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-15T02:04:34Z",
+      "side": 1,
+      "message": "Returning an error does make it harder to use unfortunately. Im going to try to think of a clean, but better solution. I do agree some assert checking is necessary here.",
+      "parentUuid": "dada486b_1244b99a",
+      "range": {
+        "startLine": 1044,
+        "startChar": 41,
+        "endLine": 1044,
+        "endChar": 53
+      },
+      "revId": "ee257b6f108e5936d1000e5c3601f0b965ab835c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14a8c474_06453fa8",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3
@@ -117,6 +189,30 @@
       "writtenOn": "2021-05-12T11:37:44Z",
       "side": 1,
       "message": "Is this change intentional?",
+      "range": {
+        "startLine": 1059,
+        "startChar": 23,
+        "endLine": 1059,
+        "endChar": 24
+      },
+      "revId": "ee257b6f108e5936d1000e5c3601f0b965ab835c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b37c691_f7582799",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-15T02:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14a8c474_06453fa8",
       "range": {
         "startLine": 1059,
         "startChar": 23,
@@ -140,6 +236,30 @@
       "writtenOn": "2021-05-12T11:37:44Z",
       "side": 1,
       "message": "Didn\u0027t LegacyRouter already imply this? If not, perhaps we can relax it to tf.GetRouter().(supportFrameSender), so it don\u0027t need to be legacyRouter but just supportFrameSender.",
+      "range": {
+        "startLine": 1394,
+        "startChar": 32,
+        "endLine": 1394,
+        "endChar": 50
+      },
+      "revId": "ee257b6f108e5936d1000e5c3601f0b965ab835c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a02c520_f431142f",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-15T02:04:34Z",
+      "side": 1,
+      "message": "I\u0027ll just swap to Router()",
+      "parentUuid": "c63154fe_689c57f3",
       "range": {
         "startLine": 1394,
         "startChar": 32,
