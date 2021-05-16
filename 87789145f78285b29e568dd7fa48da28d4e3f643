@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad68a8e_fced7a84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-16T17:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6346c067_9e80ebd7",
+      "range": {
+        "startLine": 12,
+        "startChar": 61,
+        "endLine": 12,
+        "endChar": 71
+      },
+      "revId": "87789145f78285b29e568dd7fa48da28d4e3f643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44dfa276_0dd3178a",
@@ -38,6 +62,30 @@
       "writtenOn": "2021-05-14T16:14:41Z",
       "side": 1,
       "message": "This test should be unrelated to these changes.",
+      "range": {
+        "startLine": 16,
+        "startChar": 79,
+        "endLine": 16,
+        "endChar": 105
+      },
+      "revId": "87789145f78285b29e568dd7fa48da28d4e3f643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c9e91a9_9a48f8b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-16T17:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44dfa276_0dd3178a",
       "range": {
         "startLine": 16,
         "startChar": 79,
@@ -95,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9319cf2e_a9159bd7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_add_entropy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-16T17:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbaf8a21_f0592a86",
+      "range": {
+        "startLine": 37,
+        "startChar": 102,
+        "endLine": 37,
+        "endChar": 125
+      },
+      "revId": "87789145f78285b29e568dd7fa48da28d4e3f643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88351676_9d282847",
@@ -118,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13ab4b9f_ae428d67",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-16T17:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88351676_9d282847",
+      "range": {
+        "startLine": 815,
+        "startChar": 28,
+        "endLine": 815,
+        "endChar": 49
+      },
+      "revId": "87789145f78285b29e568dd7fa48da28d4e3f643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8dce7806_980cd204",
@@ -131,6 +227,30 @@
       "writtenOn": "2021-05-13T05:29:42Z",
       "side": 1,
       "message": "Should be fine to have this as one single line instead of broken across 2",
+      "range": {
+        "startLine": 818,
+        "startChar": 53,
+        "endLine": 819,
+        "endChar": 3
+      },
+      "revId": "87789145f78285b29e568dd7fa48da28d4e3f643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91d2e12b_9a78064c",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-16T17:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dce7806_980cd204",
       "range": {
         "startLine": 818,
         "startChar": 53,
