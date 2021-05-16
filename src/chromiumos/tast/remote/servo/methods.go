@@ -32,6 +32,14 @@ const (
 	WatchdogRemove       StringControl = "watchdog_remove"
 )
 
+// A BoolControl contains the name of a gettable/settable Control which takes a boolean value.
+type BoolControl string
+
+// These are the Servo controls which can be get/set with a boolean value.
+const (
+	ChargerAttached BoolControl = "charger_attached"
+)
+
 // An IntControl contains the name of a gettable/settable Control which takes an integer value.
 type IntControl string
 
@@ -248,6 +256,15 @@ func (s *Servo) GetString(ctx context.Context, control StringControl) (string, e
 	var value string
 	if err := s.xmlrpc.Run(ctx, xmlrpc.NewCall("get", string(control)), &value); err != nil {
 		return "", errors.Wrapf(err, "getting value for servo control %q", control)
+	}
+	return value, nil
+}
+
+// GetBool returns the boolean value of a specified control.
+func (s *Servo) GetBool(ctx context.Context, control BoolControl) (bool, error) {
+	var value bool
+	if err := s.xmlrpc.Run(ctx, xmlrpc.NewCall("get", string(control)), &value); err != nil {
+		return false, errors.Wrapf(err, "getting value for servo control %q", control)
 	}
 	return value, nil
 }
