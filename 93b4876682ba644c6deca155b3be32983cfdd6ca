@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b0930ac_9e819b8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-17T23:16:30Z",
+      "side": 1,
+      "message": "Thanks for the review and help Judy.\n\nRegards\nShijin ",
+      "revId": "93b4876682ba644c6deca155b3be32983cfdd6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
