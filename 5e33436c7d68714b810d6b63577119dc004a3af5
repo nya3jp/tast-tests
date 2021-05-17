@@ -260,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7d04f8_f1977a05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T03:17:17Z",
+      "side": 1,
+      "message": "Noted that the role of the parent of the text msg is alert. Checked that the alert does not exist.",
+      "parentUuid": "c22ae4d8_ab87cc3c",
+      "range": {
+        "startLine": 162,
+        "startChar": 58,
+        "endLine": 162,
+        "endChar": 59
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c8cbde1_637324f1",
@@ -321,6 +345,30 @@
       "side": 1,
       "message": "That makes sense.\n\nHere we only check that the username is truncated after installation, can you  check that the user input field is capped to 32 chars after the input if it is not too hard?",
       "parentUuid": "28971fef_3137e2fd",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 30
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32645f3f_ecd57da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T03:17:17Z",
+      "side": 1,
+      "message": "It is checked in line 180.",
+      "parentUuid": "979d2dbc_b4789b5c",
       "range": {
         "startLine": 172,
         "startChar": 0,
