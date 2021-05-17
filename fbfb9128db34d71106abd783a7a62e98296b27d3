@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "054cb9d2_2ec9e46f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-17T21:23:49Z",
+      "side": 1,
+      "message": "unless it is a trivial CL, please add a body to the CL commit message. e.g:",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b266a05_1d67ac4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-17T21:23:49Z",
+      "side": 1,
+      "message": "nit: I noticed that in our code we use both Adb and ADB; and both USB and Usb,\nbut the correct name should be ADBOverUSB\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd60221_0c506c5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-17T21:23:49Z",
+      "side": 1,
+      "message": "Since this test mighty reboot ARC, it is Ok to just create a new ARC instance, (and not reuse one by using Software preconditions).\n\nBut I\u0027d add a comment saying that.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 48
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbdfa1d7_cd574d1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-17T21:23:49Z",
+      "side": 1,
+      "message": "I think it is safe to remove this comment since if the DUTs are not in Dev mode, then Tast won\u0027t run",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 42
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb327f72_01222fa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-17T21:23:49Z",
+      "side": 1,
+      "message": "what if the device already have dev_enable_udc enabled... do you still need to reboot?\n\nIf not, please add a check. Reducing the time a test takes is important",
+      "range": {
+        "startLine": 73,
+        "startChar": 40,
+        "endLine": 73,
+        "endChar": 73
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e27f01_21e1cde4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-17T21:23:49Z",
+      "side": 1,
+      "message": "just double-checking: is it enough to reboot ARC? or you need to reboot ChromeOS as well?\nAccording to this doc go/cros-adb-usb you need to reboot ChromeOS, but I\u0027m 100% sure how reliable that is.\n\nIf so, you might need to create a remote test.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/overview.md#remote-tests",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf1fdbab_841dc764",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-17T21:23:49Z",
+      "side": 1,
+      "message": "huge nit: end sentences with a period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 102,
+        "startChar": 29,
+        "endLine": 102,
+        "endChar": 30
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a39e2751_f09f2b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-17T21:23:49Z",
+      "side": 1,
+      "message": "I wonder if you reboot the machine (not just ARC), whether it might be possible to get the same PID... if so you should use another way to test it...",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 22
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b2168b_d2bb18f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-17T21:23:49Z",
+      "side": 1,
+      "message": "to avoid duplicate code, another possible way could be:\n\n  processName :\u003d \"arc-adbd\"\n  sdkVersion, err :\u003d SDKVersion()\n  if sdkVersion \u003e\u003d SDKR:\n    processName \u003d \"arcvm-adbd\"\n\n  ....",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 42
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
