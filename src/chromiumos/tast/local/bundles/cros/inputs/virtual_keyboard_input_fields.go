@@ -50,13 +50,13 @@ func init() {
 				Name:              "jp_us_stable",
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
-				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
+				ExtraAttr:         []string{"group:mainline", "group:input-tools-upstream"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			}, {
 				Name:              "jp_us_stable_guest",
 				Pre:               pre.VKEnabledTabletInGuest,
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
-				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
+				ExtraAttr:         []string{"group:mainline", "group:input-tools-upstream"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			}, {
 				Name:              "jp_us_unstable",
