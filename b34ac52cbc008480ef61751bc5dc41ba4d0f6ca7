@@ -210,6 +210,30 @@
       },
       "revId": "b34ac52cbc008480ef61751bc5dc41ba4d0f6ca7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "114a4041_d363dd0f",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-05-17T18:22:02Z",
+      "side": 1,
+      "message": "Thanks for checking! Based on that, I\u0027m concerned about the different combinations:\n\n1) Overlays are enabled in both lacros and ash.\n\n2) Overlays are enabled in lacros but not ash.\n\n3) Overlays are enabled in ash but not lacros.\n\n4) Overlays are disabled in both.\n\nWith the chromeCompositedVideoLacros fixture, you\u0027re only taking care of case (4). So some follow-up points of discussion:\n\n- What happens in case (3)? Does lacros flatten everything (including the video) into a framebuffer before sending it through Wayland? If so, this probably ends up being the same as case (4).\n\n- In real usage, which component is in charge of demoting videos to non-overlay? If it\u0027s only ash, then we don\u0027t really care too much about testing cases (3) and (4). If both ash and lacros can demote videos, then we might need to test cases (2) and (3) because they follow different paths for the framebuffer_size change you have in progress.",
+      "parentUuid": "28ecf438_369ef580",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 61
+      },
+      "revId": "b34ac52cbc008480ef61751bc5dc41ba4d0f6ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
