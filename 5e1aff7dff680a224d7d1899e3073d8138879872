@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "692e870d_6aa4a7b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-17T05:21:48Z",
+      "side": 1,
+      "message": "LGTM % nits. Please wait for Tom to readd his LGTM before submitting",
+      "revId": "5e1aff7dff680a224d7d1899e3073d8138879872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef8273a_93f92f2d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-17T05:21:48Z",
+      "side": 1,
+      "message": "nit: end your comments uniformly with full stop (period).",
+      "revId": "5e1aff7dff680a224d7d1899e3073d8138879872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebdf7856_3416584b",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-17T05:21:48Z",
+      "side": 1,
+      "message": "Move these comment lines to just after the bool, e.g.\n```\n...\nEnableSWWP  bool // True if the test should enable hardware write protect.\n...\n```",
+      "range": {
+        "startLine": 196,
+        "startChar": 3,
+        "endLine": 196,
+        "endChar": 77
+      },
+      "revId": "5e1aff7dff680a224d7d1899e3073d8138879872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
