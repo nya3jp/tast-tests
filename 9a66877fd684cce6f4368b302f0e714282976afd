@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "969c263f_2f8d0d9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-17T20:39:17Z",
+      "side": 1,
+      "message": "Clarified with more comments.",
+      "parentUuid": "5d6c9f75_a9ab1d58",
+      "range": {
+        "startLine": 359,
+        "startChar": 1,
+        "endLine": 359,
+        "endChar": 6
+      },
+      "revId": "9a66877fd684cce6f4368b302f0e714282976afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d142b353_f7758eea",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6c8ec40_e665a651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-17T20:39:17Z",
+      "side": 1,
+      "message": "Because this is an unexpected function and only used for tablet mode, maybe calling t.tc.Tap directly makes more sense? For example, in case the exported Click() API is changed, we don\u0027t have to change this underlying implementation...",
+      "parentUuid": "d142b353_f7758eea",
+      "range": {
+        "startLine": 367,
+        "startChar": 11,
+        "endLine": 367,
+        "endChar": 29
+      },
+      "revId": "9a66877fd684cce6f4368b302f0e714282976afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfcf992c_a76fd291",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-05-17T01:00:48Z",
       "side": 1,
       "message": "why it is \u003c here but \u003c\u003d below?",
+      "range": {
+        "startLine": 893,
+        "startChar": 35,
+        "endLine": 893,
+        "endChar": 36
+      },
+      "revId": "9a66877fd684cce6f4368b302f0e714282976afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42b8fd2e_4e3a562f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-17T20:39:17Z",
+      "side": 1,
+      "message": "Judy, thanks you for pointing out this. The logic was not correct and has been refined with more comments.",
+      "parentUuid": "bfcf992c_a76fd291",
       "range": {
         "startLine": 893,
         "startChar": 35,
