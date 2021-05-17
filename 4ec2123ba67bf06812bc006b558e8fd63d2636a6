@@ -51,6 +51,24 @@
       "message": "Should we be using TM requests for all \"forced roaming\" tests? Would that help something (e.g., avoid spending time on artificial problems in the artificial RequestRoam API), or do we miss out on something useful?",
       "revId": "4ec2123ba67bf06812bc006b558e8fd63d2636a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5bcfc8a_489c6ba9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-17T23:33:47Z",
+      "side": 1,
+      "message": "Yeah, I think there is a substantial argument to be made for switching to TM requests entirely. For example, it can only be sent from the AP we\u0027re currently connected to, otherwise it\u0027s ignored. Additionally, if the cached scan results don\u0027t contain the target AP, the DUT will attempt to scan on its own to discover the target AP (and we can probably just avoid using DiscoverBSSID altogether as a result).\n\nI can\u0027t think of anything problematic other than the fact that BSS TM Request probably has its own bugs somewhere, but at least those are bugs that are actually important to catch and fix since it\u0027s a real feature. I\u0027ve filed b/188468135 for this.",
+      "parentUuid": "18a2b9f5_7c6b4f50",
+      "revId": "4ec2123ba67bf06812bc006b558e8fd63d2636a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
