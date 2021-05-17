@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68066ee4_a93fc4e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi_driver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2021-05-17T01:04:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b52d2ee_9e5e2604",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "0551eb92d4113c72212c0697e537a2752d89038d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85b710fa_61eaa308",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-14T07:34:33Z",
       "side": 1,
       "message": "To determine if we\u0027re running under VM, we use software dependencies with tast_vm pseudo USE flag (it\u0027s really a hardware dependency, but it\u0027s now treated as a software dependency due to unfortunate historical reason).\n\nCould you define a new software feature using tast_vm and add its dependency to SoftwareDeps, next to \"nnapi\"?\n\nc.f.\n- go/tast-deps\n- https://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/cmd/local_test_runner/main.go",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 25
+      },
+      "revId": "0551eb92d4113c72212c0697e537a2752d89038d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89761fc1_8220fec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi_driver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2021-05-17T01:04:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85b710fa_61eaa308",
       "range": {
         "startLine": 36,
         "startChar": 4,
