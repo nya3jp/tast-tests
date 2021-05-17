@@ -22,6 +22,30 @@
       },
       "revId": "80b552138b8e86fe3ddee0c525ed7f3cec12749e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "262c6ca0_c7fd52c6",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-17T03:34:59Z",
+      "side": 1,
+      "message": "How do you want to note it?",
+      "parentUuid": "0c2add69_fe861575",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 57
+      },
+      "revId": "80b552138b8e86fe3ddee0c525ed7f3cec12749e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
