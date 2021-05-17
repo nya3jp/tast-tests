@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "392343ca_d767b4f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-17T04:45:54Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 30,
+        "startChar": 14,
+        "endLine": 30,
+        "endChar": 19
+      },
+      "revId": "3cf31e48fee64453be2461415648d2a73a754d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91b9759e_04905986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-17T04:45:54Z",
+      "side": 1,
+      "message": "nit: This should be checkUser as it is checking a single user, not multiple users",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 11
+      },
+      "revId": "3cf31e48fee64453be2461415648d2a73a754d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f026bb2_23b3bcb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-17T04:45:54Z",
+      "side": 1,
+      "message": "Is there some way to identify the error message control without knowing the message in advance?\n\nA test error like \u0027got \"Error 1234\", want \"Error 4321\"\u0027 would be much easier to debug than \u0027A node named \"Error 4321\" was not found\u0027",
+      "revId": "3cf31e48fee64453be2461415648d2a73a754d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "311072a1_c5fff3fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-17T04:45:54Z",
+      "side": 1,
+      "message": "what is the alert node for?  can you add a comment?",
+      "revId": "3cf31e48fee64453be2461415648d2a73a754d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76b9b398_291e5e17",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-17T04:45:54Z",
+      "side": 1,
+      "message": "Can you add that disabled/enabled is a common use case and give an example?",
+      "revId": "3cf31e48fee64453be2461415648d2a73a754d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
