@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f056dc_1b40e143",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-17T20:29:57Z",
+      "side": 1,
+      "message": "Ack. Will wait for matthewmwang@",
+      "parentUuid": "513f144e_0a9735c4",
+      "revId": "c0013075c4fab7c1315b0b764b7fbd4bc532b68e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c5eea7f_3ecd6959",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-05-17T16:09:57Z",
       "side": 1,
       "message": "nit: I would make the time a constant in firewall",
+      "revId": "c0013075c4fab7c1315b0b764b7fbd4bc532b68e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3dadff9_5b0bc2fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_firewall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-17T20:29:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c5eea7f_3ecd6959",
       "revId": "c0013075c4fab7c1315b0b764b7fbd4bc532b68e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
