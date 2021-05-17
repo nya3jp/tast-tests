@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d6c9f75_a9ab1d58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T01:00:48Z",
+      "side": 1,
+      "message": "It sets it to false no mather there is an error or not?",
+      "range": {
+        "startLine": 359,
+        "startChar": 1,
+        "endLine": 359,
+        "endChar": 6
+      },
+      "revId": "9a66877fd684cce6f4368b302f0e714282976afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d142b353_f7758eea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T01:00:48Z",
+      "side": 1,
+      "message": "click",
+      "range": {
+        "startLine": 367,
+        "startChar": 11,
+        "endLine": 367,
+        "endChar": 29
+      },
+      "revId": "9a66877fd684cce6f4368b302f0e714282976afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfcf992c_a76fd291",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T01:00:48Z",
+      "side": 1,
+      "message": "why it is \u003c here but \u003c\u003d below?",
+      "range": {
+        "startLine": 893,
+        "startChar": 35,
+        "endLine": 893,
+        "endChar": 36
+      },
+      "revId": "9a66877fd684cce6f4368b302f0e714282976afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
