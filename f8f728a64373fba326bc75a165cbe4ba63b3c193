@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe992c94_5c6acce1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2021-05-17T01:05:04Z",
+      "side": 1,
+      "message": "Note: This indentation was introduced by gofmt.",
+      "revId": "f8f728a64373fba326bc75a165cbe4ba63b3c193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
