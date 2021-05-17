@@ -282,6 +282,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c85d1e7_3497baa1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-17T15:37:24Z",
+      "side": 1,
+      "message": "Ah, if it breaks tast-lint then nevermind.",
+      "parentUuid": "9c962301_9886c305",
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8266964f_1a99365f",
