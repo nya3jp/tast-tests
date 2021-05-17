@@ -26,7 +26,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardOOBE,
 		Desc:         "Checks that the virtual keyboard works in OOBE Gaia Login",
-		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Vars:         []string{"inputs.signinProfileTestExtensionManifestKey"},
