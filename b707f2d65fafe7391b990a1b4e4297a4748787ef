@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7079f4f1_71cac0f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/crxprt2.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-17T21:05:30Z",
+      "side": 1,
+      "message": "Thanks Jun. We\u0027ve changed to use JavaScript click().",
+      "parentUuid": "9fa7cc9b_5009ea03",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 39
+      },
+      "revId": "b707f2d65fafe7391b990a1b4e4297a4748787ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67e9176b_40894c37",
