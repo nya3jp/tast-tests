@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48307201_d7d7f749",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T05:27:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "392343ca_d767b4f3",
+      "range": {
+        "startLine": 30,
+        "startChar": 14,
+        "endLine": 30,
+        "endChar": 19
+      },
+      "revId": "3cf31e48fee64453be2461415648d2a73a754d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91b9759e_04905986",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-17T04:45:54Z",
       "side": 1,
       "message": "nit: This should be checkUser as it is checking a single user, not multiple users",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 11
+      },
+      "revId": "3cf31e48fee64453be2461415648d2a73a754d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47b597ae_509a0b7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T05:27:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91b9759e_04905986",
       "range": {
         "startLine": 125,
         "startChar": 1,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86fc2e7_6689c425",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T05:27:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f026bb2_23b3bcb5",
+      "revId": "3cf31e48fee64453be2461415648d2a73a754d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "311072a1_c5fff3fa",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a133582_13388ca4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T05:27:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "311072a1_c5fff3fa",
+      "revId": "3cf31e48fee64453be2461415648d2a73a754d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76b9b398_291e5e17",
@@ -94,6 +178,24 @@
       "writtenOn": "2021-05-17T04:45:54Z",
       "side": 1,
       "message": "Can you add that disabled/enabled is a common use case and give an example?",
+      "revId": "3cf31e48fee64453be2461415648d2a73a754d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19081a34_bfbe9e7c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T05:27:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76b9b398_291e5e17",
       "revId": "3cf31e48fee64453be2461415648d2a73a754d8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
