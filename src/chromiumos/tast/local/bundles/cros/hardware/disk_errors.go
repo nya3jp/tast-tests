@@ -5,12 +5,12 @@
 package hardware
 
 import (
-	"bufio"
 	"context"
-	"io"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -33,16 +33,25 @@ func init() {
 // diskErrorLinePatterns is a list of regexp patterns that match disk error
 // messages.
 var diskErrorLinePatterns = []*regexp.Regexp{
-	// Buffer I/O error on dev loop9, logical block 0, async page read
-	regexp.MustCompile(`Buffer I/O error on dev`),
-	// print_req_error: I/O error, dev loop9, sector 0
-	regexp.MustCompile(`print_req_error: I/O error`),
-	// blk_update_request: I/O error, dev mmcblk0, sector 67964904
-	regexp.MustCompile(`blk_update_request: I/O error`),
-	// ata1.00: failed command: READ FPDMA QUEUED
-	regexp.MustCompile(`failed command: .*FPDMA`),
-	// ata1: hard resetting link
+	// drivers/ata/libata-eh.c: ata_eh_link_report
+	regexp.MustCompile(`exception Emask`),
+	// drivers/ata/libata-eh.c: ata_eh_reset
 	regexp.MustCompile(`hard resetting link`),
+	// drivers/scsi/sd.c: sd_print_result
+	regexp.MustCompile(`Result: hostbyte=.*driverbyte=`),
+}
+
+// diskErrorLines returns a subset of lines corresponding to disk error
+// messages.
+func diskErrorLines(lines []string) (matches []string) {
+	for _, line := range lines {
+		for _, r := range diskErrorLinePatterns {
+			if r.MatchString(line) {
+				matches = append(matches, line)
+			}
+		}
+	}
+	return matches
 }
 
 func DiskErrors(ctx context.Context, s *testing.State) {
@@ -59,30 +68,12 @@ func DiskErrors(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run dmesg: ", err)
 	}
 
-	if _, err := f.Seek(0, io.SeekStart); err != nil {
-		s.Fatal("Failed to seek: ", err)
+	b, err := ioutil.ReadFile(f.Name())
+	if err != nil {
+		s.Fatal("Failed to read dmesg.txt: ", err)
 	}
 
-	// Look for error messages. Accumulate matched lines to a slice without
-	// calling s.Error so that we can show the "Disk error found!" message
-	// first.
-	var errorLines []string
-	sc := bufio.NewScanner(f)
-	for sc.Scan() {
-		line := sc.Text()
-		for _, r := range diskErrorLinePatterns {
-			if r.MatchString(line) {
-				errorLines = append(errorLines, line)
-				break
-			}
-		}
-	}
-
-	if err := sc.Err(); err != nil {
-		s.Error("Encountered an error while scanning file: ", err)
-	}
-
-	if len(errorLines) > 0 {
+	if errorLines := diskErrorLines(strings.Split(string(b), "\n")); len(errorLines) > 0 {
 		s.Error("Disk error found! Consider removing this DUT from pool")
 		for _, line := range errorLines {
 			s.Error(line)
