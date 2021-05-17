@@ -377,6 +377,30 @@
       },
       "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c47caef_fcea9874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-05-17T04:01:26Z",
+      "side": 1,
+      "message": "I was taking about the text field itself. What line 180 is testing is that after we installed it, the username appears in the terminal is truncated. But I think it would be good to test that the text field limits the username to 32 characters. So after you input the long username and before you click the install button in the installer, can you read the content of the text field and check that it only has the first 32 chars?",
+      "parentUuid": "32645f3f_ecd57da9",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 30
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
