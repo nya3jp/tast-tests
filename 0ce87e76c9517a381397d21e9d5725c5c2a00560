@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88eabc7e_354b9ce7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-05-17T13:48:46Z",
+      "side": 1,
+      "message": "Friendly ping for deanliao@ review.",
+      "revId": "0ce87e76c9517a381397d21e9d5725c5c2a00560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
