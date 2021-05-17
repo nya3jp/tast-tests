@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ac6f8e_816c81db",
+        "filename": "src/chromiumos/tast/remote/wificell/router/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-05-17T05:50:37Z",
+      "side": 1,
+      "message": "\u003e \"diferent\" is a possible misspelling of \"different\".\n\nPlease fix.",
+      "parentUuid": "51d8312f_f2b8da8f",
+      "range": {
+        "startLine": 5,
+        "startChar": 66,
+        "endLine": 5,
+        "endChar": 74
+      },
+      "revId": "92cc0f8c0f6087e7609c6a5ed9acd59e19c69b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
