@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -25,8 +24,6 @@ func init() {
 		SoftwareDeps: []string{"reboot"},
 		Attr:         []string{"group:mainline"},
 		Timeout:      8 * time.Minute,
-		// Skip "nyan_kitty" due to slow reboot speed.
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty")),
 	})
 }
 
