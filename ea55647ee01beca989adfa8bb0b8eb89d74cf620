@@ -221,6 +221,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "465c5fcf_b8278a33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-17T09:46:12Z",
+      "side": 1,
+      "message": "The test actually fails when the issue (Kiosk not starting) appear.\n\nI was just describing what additionally happens to the expected test failure in regards to the Chrome close call.\n\nFail log:\n\n2021-05-17T09:44:32.841695Z kiosk.LaunchWithDeviceEphemeralUsersEnabled  [ FAIL ] Failed to verify successful launch of Kiosk mode: no matching message found\n2021-05-17T09:44:32.841714Z                                                       Failed to close Chrome connection: browser process 7868 exited; Chrome probably crashed: open /proc/7868: no such file or directory",
+      "parentUuid": "50c2ce64_1aeabc61",
+      "revId": "ea55647ee01beca989adfa8bb0b8eb89d74cf620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ac49187_34715d53",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
         "patchSetId": 2
