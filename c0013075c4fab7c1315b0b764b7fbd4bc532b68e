@@ -33,6 +33,40 @@
       "message": "Adding matthewmwang@ for networking team review",
       "revId": "c0013075c4fab7c1315b0b764b7fbd4bc532b68e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "513f144e_0a9735c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-05-17T16:09:57Z",
+      "side": 1,
+      "message": "lgtm, but I\u0027m not really familiar with the network/firewall code.\n",
+      "revId": "c0013075c4fab7c1315b0b764b7fbd4bc532b68e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c5eea7f_3ecd6959",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_firewall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-05-17T16:09:57Z",
+      "side": 1,
+      "message": "nit: I would make the time a constant in firewall",
+      "revId": "c0013075c4fab7c1315b0b764b7fbd4bc532b68e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
