@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c22ae4d8_ab87cc3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-05-17T01:35:35Z",
+      "side": 1,
+      "message": "The error div has an id \"error\", so are you saying that the uiauto does not support finding a node with an id?",
+      "parentUuid": "d9a0831c_3be9f9be",
+      "range": {
+        "startLine": 162,
+        "startChar": 58,
+        "endLine": 162,
+        "endChar": 59
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c8cbde1_637324f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
         "patchSetId": 2
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "I\u0027d prefer to install it at the end to make sure that Crostini still works after user inputs the username incorrectly.",
       "parentUuid": "1c8cbde1_637324f1",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 30
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "979d2dbc_b4789b5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-05-17T01:35:35Z",
+      "side": 1,
+      "message": "That makes sense.\n\nHere we only check that the username is truncated after installation, can you  check that the user input field is capped to 32 chars after the input if it is not too hard?",
+      "parentUuid": "28971fef_3137e2fd",
       "range": {
         "startLine": 172,
         "startChar": 0,
