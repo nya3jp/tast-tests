@@ -16,6 +16,24 @@
       "message": "OK for the test but I believe the main CL has some unresolved privacy concerns?",
       "revId": "d4614ca4279441236e595bb86dfd39fba9f3e16b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36b334c2_c92dfe43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000657
+      },
+      "writtenOn": "2021-05-17T14:54:44Z",
+      "side": 1,
+      "message": "Yes, thanks! Tracking the privacy question in b/188197063",
+      "parentUuid": "bd013d3d_215041fb",
+      "revId": "d4614ca4279441236e595bb86dfd39fba9f3e16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
