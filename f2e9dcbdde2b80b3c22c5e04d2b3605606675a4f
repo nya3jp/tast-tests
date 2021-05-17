@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3071b947_59a04ed0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-05-17T19:40:48Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "f2e9dcbdde2b80b3c22c5e04d2b3605606675a4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30f58f23_65ed5777",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-05-17T19:30:39Z",
       "side": 1,
       "message": "Out of curiosity, why this is different from other comments?",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 86
+      },
+      "revId": "f2e9dcbdde2b80b3c22c5e04d2b3605606675a4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13716af6_7bff43bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-05-17T19:40:48Z",
+      "side": 1,
+      "message": "Because it\u0027s not obvious why the user.go tests would have anything to do with crash_sender, so I wanted to explain why.",
+      "parentUuid": "30f58f23_65ed5777",
       "range": {
         "startLine": 53,
         "startChar": 5,
