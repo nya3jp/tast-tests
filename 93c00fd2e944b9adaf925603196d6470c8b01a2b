@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec4aa4d_03ae9e30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-05-17T14:45:18Z",
+      "side": 1,
+      "message": "Patchset 1 is the original CL, Patchset 2 is the fix for the reland.",
+      "revId": "93c00fd2e944b9adaf925603196d6470c8b01a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
