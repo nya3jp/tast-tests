@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9502f700_35d2c21d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-17T20:20:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ef8273a_93f92f2d",
+      "revId": "5e1aff7dff680a224d7d1899e3073d8138879872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebdf7856_3416584b",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-05-17T05:21:48Z",
       "side": 1,
       "message": "Move these comment lines to just after the bool, e.g.\n```\n...\nEnableSWWP  bool // True if the test should enable hardware write protect.\n...\n```",
+      "range": {
+        "startLine": 196,
+        "startChar": 3,
+        "endLine": 196,
+        "endChar": 77
+      },
+      "revId": "5e1aff7dff680a224d7d1899e3073d8138879872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ad7a5b1_6199d21d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-17T20:20:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebdf7856_3416584b",
       "range": {
         "startLine": 196,
         "startChar": 3,
