@@ -95,7 +95,9 @@ func (f *Finder) attributesBytes() ([]byte, error) {
 		fmt.Fprintf(&buf, "\"name\":selectName({")
 		for _, locale := range locales {
 			regex := f.name[locale]
-			fmt.Fprintf(&buf, `%q:/%v/,`, locale, &regex)
+			// We need to escape all "/", to avoid something like the regex "a/b" being translated to /a/b/,
+			// which is invalid syntax in javascript.
+			fmt.Fprintf(&buf, `%q:/%s/,`, locale, strings.ReplaceAll(fmt.Sprintf("%v", &regex), "/", "\\/"))
 		}
 		fmt.Fprintf(&buf, "})")
 	}
