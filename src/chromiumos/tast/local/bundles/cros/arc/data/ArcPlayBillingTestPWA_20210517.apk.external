@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arcapp/ArcPlayBillingTestPWA_20210517.apk",
+  "size": 509513,
+  "sha256sum": "57c9ea16d4e95c3d65fea6d0a74251f17a180efc5e667898c67c23b84c196073"
+}
