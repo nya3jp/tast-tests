@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81bd86ec_aef3dd5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-17T16:24:38Z",
+      "side": 1,
+      "message": "I don\u0027t know this well enough to review, but here are some nits mostly related to wording and grammar.",
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0667ec9_0e37c323",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-17T16:24:38Z",
+      "side": 1,
+      "message": "Without this, what are the permission bits?",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 52
+      },
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e53b3a38_9f1c92ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-17T16:24:38Z",
+      "side": 1,
+      "message": "the region where the pattern resides.",
+      "range": {
+        "startLine": 120,
+        "startChar": 21,
+        "endLine": 120,
+        "endChar": 47
+      },
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9536bd95_948d1ee1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-17T16:24:38Z",
+      "side": 1,
+      "message": "the coordinates",
+      "range": {
+        "startLine": 128,
+        "startChar": 9,
+        "endLine": 128,
+        "endChar": 19
+      },
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae81f15_83c3c039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-17T16:24:38Z",
+      "side": 1,
+      "message": "top-left",
+      "range": {
+        "startLine": 128,
+        "startChar": 23,
+        "endLine": 128,
+        "endChar": 31
+      },
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc65a5e0_898d9e31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-17T16:24:38Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 43
+      },
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9f775bd_25e3b351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-17T16:24:38Z",
+      "side": 1,
+      "message": "introduced",
+      "range": {
+        "startLine": 204,
+        "startChar": 47,
+        "endLine": 204,
+        "endChar": 58
+      },
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "199efa3d_626882b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-17T16:24:38Z",
+      "side": 1,
+      "message": "tolerance",
+      "range": {
+        "startLine": 204,
+        "startChar": 41,
+        "endLine": 204,
+        "endChar": 46
+      },
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e302318a_80d1c504",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-17T16:24:38Z",
+      "side": 1,
+      "message": "comparisons",
+      "range": {
+        "startLine": 204,
+        "startChar": 11,
+        "endLine": 204,
+        "endChar": 21
+      },
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
