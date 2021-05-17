@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3a617f3_79110199",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T01:05:12Z",
+      "side": 1,
+      "message": "It is formated, but not displayed formated in the review.",
+      "parentUuid": "2e97a265_217e4d4c",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 123
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3eaed32e_5c5612af",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-14T08:16:31Z",
       "side": 1,
       "message": "const? Also, personally I would prefer putting this outside of the function. A big chunk of data here make it a bit harder to follow the flow.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 4
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "857d79df_f17770ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T01:05:12Z",
+      "side": 1,
+      "message": "Some of them could not be const so I split them into two groups.",
+      "parentUuid": "3eaed32e_5c5612af",
       "range": {
         "startLine": 76,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40c400ec_5593fd1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T01:05:12Z",
+      "side": 1,
+      "message": "There is another test case to test valid users: https://testtracker.googleplex.com/testplans/testcase/detail/2738114?id\u003d18920. \nIt should be automated in another tast test.",
+      "parentUuid": "1029a51c_a43d8c39",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 38
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37ff96c4_dd2ace8d",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-05-14T08:16:31Z",
       "side": 1,
       "message": "I am a bit surprised that we have to put this much of code here to remove crostini. Is there a util function somewhere that you can call?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 3
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b6c5312_b8bbaf1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T01:05:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37ff96c4_dd2ace8d",
       "range": {
         "startLine": 102,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9a0831c_3be9f9be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T01:05:12Z",
+      "side": 1,
+      "message": "It is not straightforward to check the err msg does not exist since the err msg is just static text without any special property.",
+      "parentUuid": "2e1092e8_4ff78450",
+      "range": {
+        "startLine": 162,
+        "startChar": 58,
+        "endLine": 162,
+        "endChar": 59
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c8cbde1_637324f1",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-05-14T08:16:31Z",
       "side": 1,
       "message": "imo there is no need to actually install crostini --- you can just check that the input field does not allow you to input more than 32 characters. And by not installing crostini, you also don\u0027t need to remove it later.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 30
+      },
+      "revId": "5e33436c7d68714b810d6b63577119dc004a3af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28971fef_3137e2fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T01:05:12Z",
+      "side": 1,
+      "message": "I\u0027d prefer to install it at the end to make sure that Crostini still works after user inputs the username incorrectly.",
+      "parentUuid": "1c8cbde1_637324f1",
       "range": {
         "startLine": 172,
         "startChar": 0,
