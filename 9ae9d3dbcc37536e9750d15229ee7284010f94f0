@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "958c7390_d3115f1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-17T00:38:57Z",
+      "side": 1,
+      "message": "I see. I\u0027d prefer to put the comment above the var.",
+      "parentUuid": "89e473e1_66b84ef5",
+      "range": {
+        "startLine": 43,
+        "startChar": 115,
+        "endLine": 43,
+        "endChar": 121
+      },
+      "revId": "9ae9d3dbcc37536e9750d15229ee7284010f94f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b4aec6d_4abf15b6",
         "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_quicksettings.go",
         "patchSetId": 5
