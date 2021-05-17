@@ -16,6 +16,23 @@
       "message": "Mostly looking good. Just a few nits want to check with you.",
       "revId": "65ec65f15803bf0c2c99f01109ea42632e129044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8347bd3a_de0d3206",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_users.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-17T03:19:32Z",
+      "side": 1,
+      "message": "Typo (invalidUser)",
+      "revId": "65ec65f15803bf0c2c99f01109ea42632e129044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
