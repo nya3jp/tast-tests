@@ -147,7 +147,7 @@ func init() {
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP8},
 			// Devices with small SSDs can't store the files, see b/181165183.
-			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(8)),
+			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(24)),
 		}, {
 			Name: "vaapi_vp8_180_meet",
 			Val: testParam{
@@ -194,7 +194,7 @@ func init() {
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP8},
 			// Devices with small SSDs can't store the files, see b/181165183.
-			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(8)),
+			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(24)),
 		}, {
 			Name: "vaapi_vp9_180",
 			Val: testParam{
@@ -241,7 +241,7 @@ func init() {
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP9},
 			// Devices with small SSDs can't store the files, see b/181165183.
-			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(8)),
+			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(24)),
 		}, {
 			Name: "vaapi_vp9_180_meet",
 			Val: testParam{
@@ -288,7 +288,7 @@ func init() {
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP9},
 			// Devices with small SSDs can't store the files, see b/181165183.
-			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(8)),
+			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(24)),
 		}, {
 			Name: "vaapi_h264_180",
 			Val: testParam{
@@ -335,7 +335,7 @@ func init() {
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeH264},
 			// Devices with small SSDs can't store the files, see b/181165183.
-			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(8)),
+			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(24)),
 		}, {
 			Name: "vaapi_h264_180_meet",
 			Val: testParam{
@@ -382,7 +382,7 @@ func init() {
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeH264},
 			// Devices with small SSDs can't store the files, see b/181165183.
-			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(8)),
+			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(24)),
 		}, {
 			Name: "vpxenc_vp8_180",
 			Val: testParam{
@@ -426,7 +426,7 @@ func init() {
 			},
 			ExtraData: []string{"tulip2-1280x720.vp9.webm"},
 			// Devices with small SSDs can't store the files, see b/181165183.
-			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(8)),
+			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(24)),
 		}, {
 			Name: "vpxenc_vp8_180_meet",
 			Val: testParam{
@@ -470,7 +470,7 @@ func init() {
 			},
 			ExtraData: []string{"gipsrestat-1280x720.vp9.webm"},
 			// Devices with small SSDs can't store the files, see b/181165183.
-			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(8)),
+			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(24)),
 		}, {
 			Name: "v4l2_h264_180",
 			Val: testParam{
