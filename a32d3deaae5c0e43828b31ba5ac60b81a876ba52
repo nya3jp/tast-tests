@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d15a223_7bfc4ae1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-17T09:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "babd4b86_9079f5fd",
+      "revId": "a32d3deaae5c0e43828b31ba5ac60b81a876ba52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c301c95_0b28a3b2",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-05-12T13:19:56Z",
       "side": 1,
       "message": "search",
+      "range": {
+        "startLine": 124,
+        "startChar": 51,
+        "endLine": 124,
+        "endChar": 55
+      },
+      "revId": "a32d3deaae5c0e43828b31ba5ac60b81a876ba52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d4363b_d9f46201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-17T09:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c301c95_0b28a3b2",
       "range": {
         "startLine": 124,
         "startChar": 51,
