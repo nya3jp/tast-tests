@@ -202,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96ebe910_c74df361",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-18T19:46:05Z",
+      "side": 1,
+      "message": "\"Create a weekly running test suite for tast test cases that are designed to run weekly\". \n\nHi Greg, is the above bug description correct? What component should this bug be created against?",
+      "parentUuid": "714b5e75_10af7396",
+      "range": {
+        "startLine": 22,
+        "startChar": 44,
+        "endLine": 22,
+        "endChar": 58
+      },
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "149bb1be_5dca7a91",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
         "patchSetId": 1
