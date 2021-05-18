@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c0c32c3_c01f09d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T15:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac9775fe_e1b62329",
+      "range": {
+        "startLine": 42,
+        "startChar": 30,
+        "endLine": 42,
+        "endChar": 36
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4767d347_6d174875",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-18T09:44:37Z",
       "side": 1,
       "message": "What does 4 means here? Does it mean the amount of channels?",
+      "range": {
+        "startLine": 129,
+        "startChar": 11,
+        "endLine": 129,
+        "endChar": 12
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe0d5261_efce1913",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T15:28:10Z",
+      "side": 1,
+      "message": "Yes, it\u0027s rgba 4 channels.",
+      "parentUuid": "4767d347_6d174875",
       "range": {
         "startLine": 129,
         "startChar": 11,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a72f4c8_61c3bc3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T15:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d157e69_fdcacfb0",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 5
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "766cd038_4a7630fa",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64bea055_9714aceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T15:28:10Z",
+      "side": 1,
+      "message": "It\u0027s easier to reason the content of y4m by creating it here.",
+      "parentUuid": "766cd038_4a7630fa",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 29
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fb311ef_d12770fb",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-05-18T09:44:37Z",
       "side": 1,
       "message": "Should we check if the button is visible before trying to click it?",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 63
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6153849f_7331c899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T15:28:10Z",
+      "side": 1,
+      "message": "Done by adding checking in app.Click().",
+      "parentUuid": "8fb311ef_d12770fb",
       "range": {
         "startLine": 193,
         "startChar": 1,
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ee81b17_7aca39fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T15:28:10Z",
+      "side": 1,
+      "message": "It\u0027s not used any other place, what\u0027s the purpose for this?",
+      "parentUuid": "b48b9414_19e59f6f",
+      "range": {
+        "startLine": 207,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 3
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53466a97_3dce7e66",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
         "patchSetId": 4
@@ -152,6 +296,30 @@
       "writtenOn": "2021-05-18T09:44:37Z",
       "side": 1,
       "message": "Dumb question: why do we hold 200 ms instead of clicking once?",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 54
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c538f822_06080a3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T15:28:10Z",
+      "side": 1,
+      "message": "Those button listen for events here:\nhttps://source.chromium.org/chromium/chromium/src/+/master:chromeos/components/camera_app_ui/resources/js/views/ptz_panel.js;drc\u003debec81771fc066f347928f96696bf3b2a99b06fd;l\u003d71",
+      "parentUuid": "53466a97_3dce7e66",
       "range": {
         "startLine": 261,
         "startChar": 12,
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4594923c_85096cfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T15:28:10Z",
+      "side": 1,
+      "message": "The fake file VCD should be fast enough for reflect the change immediately.",
+      "parentUuid": "102670c7_2b23fad3",
+      "range": {
+        "startLine": 264,
+        "startChar": 2,
+        "endLine": 264,
+        "endChar": 36
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "042fabbe_58565d33",
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea01c7c5_a750489c",
+        "filename": "src/chromiumos/tast/local/camera/cca/frame.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T15:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "042fabbe_58565d33",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 54
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a0bbd5d_ee354144",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-05-18T09:44:37Z",
       "side": 1,
       "message": "Can we just define a struct (e.g. Point) so that we don\u0027t need to call getIntFieldFromJsObject() to get |x|, |y| respectively. Similar to how we do for ErrorInfo:\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/camera/testutil/app_window.go;rcl\u003dfdfdc6f72204c0f7f078a1bf2474a037e67627d5;l\u003d35",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ff980e8_c0523ea6",
+        "filename": "src/chromiumos/tast/local/camera/cca/frame.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T15:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a0bbd5d_ee354144",
       "range": {
         "startLine": 33,
         "startChar": 1,
