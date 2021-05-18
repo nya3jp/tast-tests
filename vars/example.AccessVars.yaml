@@ -1,0 +1,5 @@
+example.AccessVars.foo: "bar"
+example.AccessVars.globalBoolean: "true"
+example.AccessVars.globalString: "test"
+example.AccessVars.globalStruct: "{\"name\":\"t1\",\"value\":8}"
+
