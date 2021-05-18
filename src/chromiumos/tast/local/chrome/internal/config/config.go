@@ -194,8 +194,15 @@ func (c *Config) RestrictARCCPU() bool { return c.m.RestrictARCCPU }
 // dumps directly to a hard-coded directory.
 func (c *Config) BreakpadTestMode() bool { return c.m.BreakpadTestMode }
 
-// ExtraArgs returns extra arguments to pass to Chrome.
-func (c *Config) ExtraArgs() []string { return append([]string(nil), c.m.ExtraArgs...) }
+// ExtraFeatureFlags returns extra feature flags arguments to pass to Chrome.
+func (c *Config) ExtraFeatureFlags() []string { return append([]string(nil), c.m.ExtraFeatureFlags...) }
+
+// ExtraArgs returns extra arguments together with the extra feature flags to pass to Chrome.
+func (c *Config) ExtraArgs() []string {
+	var str []string
+	str = append(str, c.m.ExtraArgs...)
+	return append(str, c.m.ExtraFeatureFlags...)
+}
 
 // LacrosExtraArgs returns extra arguments to pass to Lacros Chrome.
 func (c *Config) LacrosExtraArgs() []string { return append([]string(nil), c.m.LacrosExtraArgs...) }
@@ -252,6 +259,7 @@ type MutableConfig struct {
 	ARCMode                         ARCMode   `reuse_match:"true"`
 	RestrictARCCPU                  bool      `reuse_match:"true"`
 	BreakpadTestMode                bool      `reuse_match:"true"`
+	ExtraFeatureFlags               []string  `reuse_match:"true"`
 	ExtraArgs                       []string  `reuse_match:"true"`
 	LacrosExtraArgs                 []string  `reuse_match:"true"`
 	EnableFeatures                  []string  `reuse_match:"true"`

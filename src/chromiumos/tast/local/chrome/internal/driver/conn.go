@@ -221,7 +221,7 @@ func (c *Conn) Call(ctx context.Context, out interface{}, fn string, args ...int
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
 // Errors returned by Eval are treated the same as expr == false.
 func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
-	return c.waitForExprImpl(ctx, expr, cdputil.ContinueOnError, 0)
+	return c.waitForExprImpl(ctx, expr, cdputil.ContinueOnError, 30*time.Second)
 }
 
 // WaitForExprFailOnErr repeatedly evaluates the JavaScript expression expr until it evaluates to true.

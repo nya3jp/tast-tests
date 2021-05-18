@@ -288,6 +288,18 @@ func ExtraArgs(args ...string) Option {
 	}
 }
 
+// ExtraFeatureFlags returns an Option that can be passed to New to append additional feature flags arguments to Chrome's command line.
+// It is always recommended to use EnableFeatures. ExtraFeatureFlags is an alternative if EnableFeatures.
+// E.g, to use this func:
+//    chrome.New(ctx, chrome.ExtraFeatureFlags(`--feature-flags=["full-restore@1"]`))
+//
+func ExtraFeatureFlags(args ...string) Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.ExtraFeatureFlags = append(cfg.ExtraFeatureFlags, args...)
+		return nil
+	}
+}
+
 // LacrosExtraArgs returns an Option that can be passed to New to append additional arguments to Lacros Chrome's command line.
 func LacrosExtraArgs(args ...string) Option {
 	return func(cfg *config.MutableConfig) error {
