@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d02e99_a2ab6763",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-18T01:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "054cb9d2_2ec9e46f",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "612d789e_e8e6fa37",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-18T00:29:22Z",
       "side": 1,
       "message": "Is this correct? Did you mean soraka?",
+      "range": {
+        "startLine": 30,
+        "startChar": 44,
+        "endLine": 30,
+        "endChar": 50
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "497f6e24_1a7528c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-18T01:53:22Z",
+      "side": 1,
+      "message": "You\u0027re right. My mistake. Done.",
+      "parentUuid": "612d789e_e8e6fa37",
       "range": {
         "startLine": 30,
         "startChar": 44,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91369959_a1a5fe12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-18T01:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b266a05_1d67ac4d",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efd60221_0c506c5a",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3d3ff06_20cb59a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-18T01:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efd60221_0c506c5a",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 48
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbdfa1d7_cd574d1f",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-05-17T21:23:49Z",
       "side": 1,
       "message": "I think it is safe to remove this comment since if the DUTs are not in Dev mode, then Tast won\u0027t run",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 42
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efcbe8ac_cc88ae5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-18T01:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbdfa1d7_cd574d1f",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -156,6 +276,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "100f926b_a087b37a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-18T01:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb327f72_01222fa4",
+      "range": {
+        "startLine": 73,
+        "startChar": 40,
+        "endLine": 73,
+        "endChar": 73
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2bab376_13485934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-18T01:53:22Z",
+      "side": 1,
+      "message": "Add cleanup to revert to original state",
+      "parentUuid": "ef42c2db_f94b8d92",
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21e27f01_21e1cde4",
@@ -169,6 +331,30 @@
       "writtenOn": "2021-05-17T21:23:49Z",
       "side": 1,
       "message": "just double-checking: is it enough to reboot ARC? or you need to reboot ChromeOS as well?\nAccording to this doc go/cros-adb-usb you need to reboot ChromeOS, but I\u0027m 100% sure how reliable that is.\n\nIf so, you might need to create a remote test.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/overview.md#remote-tests",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b7273a2_32f1dabd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-18T01:53:22Z",
+      "side": 1,
+      "message": "Reboot ARC is enough to make dev_enable_udc taking effect and start up arc(vm)-adbd job.",
+      "parentUuid": "21e27f01_21e1cde4",
       "range": {
         "startLine": 77,
         "startChar": 1,
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e273e9_a94afff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-18T01:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf1fdbab_841dc764",
+      "range": {
+        "startLine": 102,
+        "startChar": 29,
+        "endLine": 102,
+        "endChar": 30
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a39e2751_f09f2b7d",
@@ -225,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b962cd_932cb013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-18T01:53:22Z",
+      "side": 1,
+      "message": "Reboot ARC is enough for this test",
+      "parentUuid": "a39e2751_f09f2b7d",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 22
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8b2168b_d2bb18f5",
@@ -238,6 +472,30 @@
       "writtenOn": "2021-05-17T21:23:49Z",
       "side": 1,
       "message": "to avoid duplicate code, another possible way could be:\n\n  processName :\u003d \"arc-adbd\"\n  sdkVersion, err :\u003d SDKVersion()\n  if sdkVersion \u003e\u003d SDKR:\n    processName \u003d \"arcvm-adbd\"\n\n  ....",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 42
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b1a4b46_8b2af02c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-18T01:53:22Z",
+      "side": 1,
+      "message": "Added a method to check job.",
+      "parentUuid": "a8b2168b_d2bb18f5",
       "range": {
         "startLine": 125,
         "startChar": 0,
