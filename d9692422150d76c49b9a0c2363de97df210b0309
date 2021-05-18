@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a6365aa_c70215b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-18T05:07:30Z",
+      "side": 1,
+      "message": "smaller",
+      "range": {
+        "startLine": 904,
+        "startChar": 47,
+        "endLine": 904,
+        "endChar": 53
+      },
+      "revId": "d9692422150d76c49b9a0c2363de97df210b0309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a69ac78e_96286365",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-18T05:07:30Z",
+      "side": 1,
+      "message": "In this case, if two windows are on the same position, it chooses the firstly found window. I guess that would be ok?\n\nIf yes, can it be like this:\n\nif y \u003e\u003d y0 \u0026\u0026 x \u003e\u003d x0 {\n    x0 \u003d x\n    y0 \u003d y\n    ...\n}",
+      "range": {
+        "startLine": 905,
+        "startChar": 4,
+        "endLine": 905,
+        "endChar": 23
+      },
+      "revId": "d9692422150d76c49b9a0c2363de97df210b0309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
