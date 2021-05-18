@@ -74,9 +74,12 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftM
 
 	// Hide virtual keyboard if it appears.
 	// vkb.HideVirtualKeyboard invokes Chrome API to force hide virtual keyboard.
-	// It does not throw out error if virtual keyboard is not shown.
-	if err := vkb.NewContext(nil, p.tconn).HideVirtualKeyboard()(ctx); err != nil {
-		return 0, errors.Wrap(err, "failed to hide virtual keyboard")
+	vkbCtx := vkb.NewContext(nil, p.tconn)
+	if shown, err := vkbCtx.IsShown(ctx); err != nil && shown {
+		if err := vkbCtx.HideVirtualKeyboard()(ctx); err != nil {
+			return 0, errors.Wrap(err, "failed to hide virtual keyboard")
+		}
+
 	}
 
 	ui := uiauto.New(p.tconn)
