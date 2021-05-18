@@ -28,7 +28,6 @@ func init() {
 			"shengjun@chromium.org",
 			"zafzal@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"ui.gaiaPoolDefault"},
 		HardwareDeps: hwdep.D(pre.AppsStableModels),
 		Timeout:      8 * time.Minute,
