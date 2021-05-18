@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f7b9d83_3f2ebced",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-18T22:24:35Z",
+      "side": 1,
+      "message": "Hi,\n\nThis CL adds a bluetooth UI test which tests that the toggle button on teh bluetooth quick setting page works. It is similar to https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2893546 but tests a different part of the UI. This UI didn\u0027t have UI elements to wait on after a state change, so I have to poll for change of power state of the Bluetooth adapter.\n\nRegards\nShijin",
+      "revId": "89a245a499eae80f6a7d1a6f620504935d7e2030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
