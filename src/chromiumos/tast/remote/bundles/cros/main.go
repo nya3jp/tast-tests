@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/remote/bundlemain"
 
 	// These packages register their tests via init functions.
+	_ "chromiumos/tast/common/global"
 	_ "chromiumos/tast/remote/bundles/cros/arc"
 	_ "chromiumos/tast/remote/bundles/cros/camera"
 	_ "chromiumos/tast/remote/bundles/cros/crash"
