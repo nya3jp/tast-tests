@@ -333,12 +333,13 @@ class Policy(object):
     self.id = p['id']
     # cros_supported: Whether the policy is currently supported on Chrome OS.
     self.cros_supported = False
-    for elt in p['supported_on']:
+    if 'supported_on' in p:
+      for elt in p['supported_on']:
       # Search for 'chrome_os:##-', insead of 'chrome_os:##-##', which
       # indicates an end date. This may cause problems for generating this file
       # for non-ToT branches.
-      if elt.startswith('chrome_os') and elt.endswith('-'):
-        self.cros_supported = True
+        if elt.startswith('chrome_os') and elt.endswith('-'):
+          self.cros_supported = True
 
     # additional_info: Documentation to add as a comment to the generated code.
     self.additional_info = self.get_additional_info(p)

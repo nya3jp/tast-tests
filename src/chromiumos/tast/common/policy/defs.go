@@ -9160,6 +9160,73 @@ func (p *ArcAppInstallEventLoggingEnabled) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// 448. UsageTimeLimit
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type UsageTimeLimit struct {
+	Stat Status
+	Val  *UsageTimeLimitValue
+}
+
+type UsageTimeLimitValue struct {
+	Overrides       []*UsageTimeLimitValueOverrides     `json:"overrides"`
+	TimeUsageLimit  *UsageTimeLimitValueTimeUsageLimit  `json:"time_usage_limit"`
+	TimeWindowLimit *UsageTimeLimitValueTimeWindowLimit `json:"time_window_limit"`
+}
+
+type UsageTimeLimitValueTimeWindowLimit struct {
+	Entries []*UsageTimeLimitValueTimeWindowLimitEntries `json:"entries"`
+}
+
+type UsageTimeLimitValueTimeWindowLimitEntries struct {
+	EffectiveDay      string        `json:"effective_day"`
+	EndsAt            *RefTime      `json:"ends_at"`
+	LastUpdatedMillis string        `json:"last_updated_millis"`
+	StartsAt          *RefUsageTime `json:"starts_at"`
+}
+
+type UsageTimeLimitValueTimeUsageLimit struct {
+	Friday    *RefTimeUsageLimitEntry `json:"friday"`
+	Monday    *RefTimeUsageLimitEntry `json:"monday"`
+	ResetAt   *RefUsageTime           `json:"reset_at"`
+	Saturday  *RefTimeUsageLimitEntry `json:"saturday"`
+	Sunday    *RefTimeUsageLimitEntry `json:"sunday"`
+	Thursday  *RefTimeUsageLimitEntry `json:"thursday"`
+	Tuesday   *RefTimeUsageLimitEntry `json:"tuesday"`
+	Wednesday *RefTimeUsageLimitEntry `json:"wednesday"`
+}
+
+type UsageTimeLimitValueOverrides struct {
+	Action             string                                          `json:"action"`
+	ActionSpecificData *UsageTimeLimitValueOverridesActionSpecificData `json:"action_specific_data"`
+	CreatedAtMillis    string                                          `json:"created_at_millis"`
+}
+
+type UsageTimeLimitValueOverridesActionSpecificData struct {
+	DurationMins int `json:"duration_mins"`
+}
+
+func (p *UsageTimeLimit) Name() string          { return "UsageTimeLimit" }
+func (p *UsageTimeLimit) Field() string         { return "" }
+func (p *UsageTimeLimit) Scope() Scope          { return ScopeUser }
+func (p *UsageTimeLimit) Status() Status        { return p.Stat }
+func (p *UsageTimeLimit) UntypedV() interface{} { return p.Val }
+func (p *UsageTimeLimit) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v *UsageTimeLimitValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as *UsageTimeLimitValue", m)
+	}
+	return v, nil
+}
+func (p *UsageTimeLimit) Equal(iface interface{}) bool {
+	v, ok := iface.(*UsageTimeLimitValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // 449. ArcBackupRestoreServiceEnabled
 // This policy has a default value of 0.
 ///////////////////////////////////////////////////////////////////////////////
@@ -11092,6 +11159,46 @@ func (p *DevicePowerPeakShiftBatteryThreshold) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// 540. DevicePowerPeakShiftDayConfig
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type DevicePowerPeakShiftDayConfig struct {
+	Stat Status
+	Val  *DevicePowerPeakShiftDayConfigValue
+}
+
+type DevicePowerPeakShiftDayConfigValue struct {
+	Entries []*DevicePowerPeakShiftDayConfigValueEntries `json:"entries"`
+}
+
+type DevicePowerPeakShiftDayConfigValueEntries struct {
+	ChargeStartTime *RefTime `json:"charge_start_time"`
+	Day             string   `json:"day"`
+	EndTime         *RefTime `json:"end_time"`
+	StartTime       *RefTime `json:"start_time"`
+}
+
+func (p *DevicePowerPeakShiftDayConfig) Name() string          { return "DevicePowerPeakShiftDayConfig" }
+func (p *DevicePowerPeakShiftDayConfig) Field() string         { return "device_power_peak_shift.day_configs" }
+func (p *DevicePowerPeakShiftDayConfig) Scope() Scope          { return ScopeDevice }
+func (p *DevicePowerPeakShiftDayConfig) Status() Status        { return p.Stat }
+func (p *DevicePowerPeakShiftDayConfig) UntypedV() interface{} { return p.Val }
+func (p *DevicePowerPeakShiftDayConfig) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v *DevicePowerPeakShiftDayConfigValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as *DevicePowerPeakShiftDayConfigValue", m)
+	}
+	return v, nil
+}
+func (p *DevicePowerPeakShiftDayConfig) Equal(iface interface{}) bool {
+	v, ok := iface.(*DevicePowerPeakShiftDayConfigValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // 541. DeviceBootOnAcEnabled
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -11267,6 +11374,49 @@ func (p *DeviceAdvancedBatteryChargeModeEnabled) UnmarshalAs(m json.RawMessage) 
 }
 func (p *DeviceAdvancedBatteryChargeModeEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 549. DeviceAdvancedBatteryChargeModeDayConfig
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type DeviceAdvancedBatteryChargeModeDayConfig struct {
+	Stat Status
+	Val  *DeviceAdvancedBatteryChargeModeDayConfigValue
+}
+
+type DeviceAdvancedBatteryChargeModeDayConfigValue struct {
+	Entries []*DeviceAdvancedBatteryChargeModeDayConfigValueEntries `json:"entries"`
+}
+
+type DeviceAdvancedBatteryChargeModeDayConfigValueEntries struct {
+	ChargeEndTime   *RefTime `json:"charge_end_time"`
+	ChargeStartTime *RefTime `json:"charge_start_time"`
+	Day             string   `json:"day"`
+}
+
+func (p *DeviceAdvancedBatteryChargeModeDayConfig) Name() string {
+	return "DeviceAdvancedBatteryChargeModeDayConfig"
+}
+func (p *DeviceAdvancedBatteryChargeModeDayConfig) Field() string {
+	return "device_advanced_battery_charge_mode.day_configs"
+}
+func (p *DeviceAdvancedBatteryChargeModeDayConfig) Scope() Scope          { return ScopeDevice }
+func (p *DeviceAdvancedBatteryChargeModeDayConfig) Status() Status        { return p.Stat }
+func (p *DeviceAdvancedBatteryChargeModeDayConfig) UntypedV() interface{} { return p.Val }
+func (p *DeviceAdvancedBatteryChargeModeDayConfig) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v *DeviceAdvancedBatteryChargeModeDayConfigValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as *DeviceAdvancedBatteryChargeModeDayConfigValue", m)
+	}
+	return v, nil
+}
+func (p *DeviceAdvancedBatteryChargeModeDayConfig) Equal(iface interface{}) bool {
+	v, ok := iface.(*DeviceAdvancedBatteryChargeModeDayConfigValue)
 	if !ok {
 		return ok
 	}
@@ -11453,6 +11603,44 @@ func (p *SamlPasswordExpirationAdvanceWarningDays) UnmarshalAs(m json.RawMessage
 }
 func (p *SamlPasswordExpirationAdvanceWarningDays) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 556. DeviceScheduledUpdateCheck
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type DeviceScheduledUpdateCheck struct {
+	Stat Status
+	Val  *DeviceScheduledUpdateCheckValue
+}
+
+type DeviceScheduledUpdateCheckValue struct {
+	DayOfMonth      int      `json:"day_of_month"`
+	DayOfWeek       string   `json:"day_of_week"`
+	Frequency       string   `json:"frequency"`
+	UpdateCheckTime *RefTime `json:"update_check_time"`
+}
+
+func (p *DeviceScheduledUpdateCheck) Name() string { return "DeviceScheduledUpdateCheck" }
+func (p *DeviceScheduledUpdateCheck) Field() string {
+	return "device_scheduled_update_check.device_scheduled_update_check_settings"
+}
+func (p *DeviceScheduledUpdateCheck) Scope() Scope          { return ScopeDevice }
+func (p *DeviceScheduledUpdateCheck) Status() Status        { return p.Stat }
+func (p *DeviceScheduledUpdateCheck) UntypedV() interface{} { return p.Val }
+func (p *DeviceScheduledUpdateCheck) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v *DeviceScheduledUpdateCheckValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as *DeviceScheduledUpdateCheckValue", m)
+	}
+	return v, nil
+}
+func (p *DeviceScheduledUpdateCheck) Equal(iface interface{}) bool {
+	v, ok := iface.(*DeviceScheduledUpdateCheckValue)
 	if !ok {
 		return ok
 	}
@@ -16268,6 +16456,36 @@ func (p *NoteTakingAppsLockScreenAllowlist) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// 761. NearbyShareAllowed
+// This policy has a default value of False.
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type NearbyShareAllowed struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *NearbyShareAllowed) Name() string          { return "NearbyShareAllowed" }
+func (p *NearbyShareAllowed) Field() string         { return "" }
+func (p *NearbyShareAllowed) Scope() Scope          { return ScopeUser }
+func (p *NearbyShareAllowed) Status() Status        { return p.Stat }
+func (p *NearbyShareAllowed) UntypedV() interface{} { return p.Val }
+func (p *NearbyShareAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *NearbyShareAllowed) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // 762. PerAppTimeLimitsAllowlist
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -18188,6 +18406,7 @@ func (p *SharedArrayBufferUnrestrictedAccessAllowed) Equal(iface interface{}) bo
 
 ///////////////////////////////////////////////////////////////////////////////
 // 855. LacrosAvailability
+// This policy has a default value of lacros_disallowed.
 ///////////////////////////////////////////////////////////////////////////////
 type LacrosAvailability struct {
 	Stat Status
@@ -18325,6 +18544,16 @@ type RefWeeklyTimeIntervals struct {
 type RefWeeklyTime struct {
 	DayOfWeek string `json:"day_of_week"`
 	Time      int    `json:"time"`
+}
+
+type RefTime struct {
+	Hour   int `json:"hour"`
+	Minute int `json:"minute"`
+}
+
+type RefUsageTime struct {
+	Hour   int `json:"hour"`
+	Minute int `json:"minute"`
 }
 
 type RefTimeUsageLimitEntry struct {
