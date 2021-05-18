@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3731b895_1471a098",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-18T01:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "420d101f_1a51587b",
+      "revId": "72855a7856ce3b65320c7e15edab215f63346a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f10fbff_bf651a6b",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04b05758_129f6d30",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-18T01:04:34Z",
+      "side": 1,
+      "message": "From my understanding, function literals are used when it\u0027s inconvenient to pass a bunch of variables that are already in the function context and to prevent polluting the package namespace. \n\nI agree the logic of the test isn\u0027t ideal. I reworked it into two polling functions with a helper anonymous function. Let me know if you think they would still be better as separate functions.",
+      "parentUuid": "3f10fbff_bf651a6b",
+      "revId": "72855a7856ce3b65320c7e15edab215f63346a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18418e3b_1a2c0a41",
@@ -82,6 +118,24 @@
       "writtenOn": "2021-05-17T16:21:38Z",
       "side": 1,
       "message": "All of the above is a lot to put between \u0027if err :\u003d testing.Poll\u0027 and \u0027err !\u003d nil\u0027. Maybe combine some or all of the above to a helper func?",
+      "revId": "72855a7856ce3b65320c7e15edab215f63346a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73c75b17_65120230",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-18T01:04:34Z",
+      "side": 1,
+      "message": "I reworked the logic to be easier to follow. Let me know if you have any more suggestions.",
+      "parentUuid": "18418e3b_1a2c0a41",
       "revId": "72855a7856ce3b65320c7e15edab215f63346a48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
