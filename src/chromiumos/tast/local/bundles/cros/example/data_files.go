@@ -13,6 +13,43 @@ import (
 )
 
 func init() {
+	testing.AddFixture(&testing.Fixture{
+		Name:     "dataFileFixture",
+		Desc:     "Demonstrate how to use data files in fixtures",
+		Contacts: []string{"oka@chromium.org", "tast-owner@google.com"},
+		Data: []string{
+			"fixture_data_internal.txt",
+			"fixture_data_external.txt",
+		},
+		Impl: dataFileFixture{},
+	})
+}
+
+type dataFileFixture struct{}
+
+func (dataFileFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	b, err := ioutil.ReadFile(s.DataPath("fixture_data_internal.txt"))
+	if err != nil {
+		s.Error("Failed to read internal data file")
+	} else {
+		s.Log("Read internal data: ", strings.TrimRight(string(b), "\n"))
+	}
+
+	b, err = ioutil.ReadFile(s.DataPath("fixture_data_external.txt"))
+	if err != nil {
+		s.Error("Failed to read external data file")
+	}
+	s.Log("Read external data: ", strings.TrimRight(string(b), "\n"))
+	return nil
+}
+func (dataFileFixture) Reset(ctx context.Context) error {
+	return nil
+}
+func (dataFileFixture) PreTest(ctx context.Context, s *testing.FixtTestState)  {}
+func (dataFileFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (dataFileFixture) TearDown(ctx context.Context, s *testing.FixtState)     {}
+
+func init() {
 	testing.AddTest(&testing.Test{
 		Func:     DataFiles,
 		Desc:     "Demonstrates how to use data files",
@@ -21,7 +58,8 @@ func init() {
 			"data_files_internal.txt",
 			"data_files_external.txt",
 		},
-		Attr: []string{"group:mainline"},
+		Attr:    []string{"group:mainline"},
+		Fixture: "dataFileFixture",
 	})
 }
 

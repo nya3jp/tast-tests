@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/example/data_files_external_20180626.txt",
+  "size": 45,
+  "sha256sum": "6e4f136ebc00b2155468be3fc78a8be727c10933bbbef1b11de35c5f2e11e88a"
+}
