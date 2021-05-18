@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac9775fe_e1b62329",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-18T09:44:37Z",
+      "side": 1,
+      "message": "nit: Maybe os.TempDir() or just empty string.",
+      "range": {
+        "startLine": 42,
+        "startChar": 30,
+        "endLine": 42,
+        "endChar": 36
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4767d347_6d174875",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-18T09:44:37Z",
+      "side": 1,
+      "message": "What does 4 means here? Does it mean the amount of channels?",
+      "range": {
+        "startLine": 129,
+        "startChar": 11,
+        "endLine": 129,
+        "endChar": 12
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d157e69_fdcacfb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-18T09:44:37Z",
+      "side": 1,
+      "message": "nit: Maybe we don\u0027t need |r|.\n```\nif (data[idx] \u003d\u003d\u003d 0) {\n  return {x, y};\n}\nidx +\u003d 4;\n```",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 5
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "766cd038_4a7630fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-18T09:44:37Z",
+      "side": 1,
+      "message": "Hmm, why do we prefer drawing via the codes instead of downloading an existing file from server?",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 29
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fb311ef_d12770fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-18T09:44:37Z",
+      "side": 1,
+      "message": "Should we check if the button is visible before trying to click it?",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 63
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b48b9414_19e59f6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-18T09:44:37Z",
+      "side": 1,
+      "message": "Can we wrap these codes into function like sizeUnchanged()?",
+      "range": {
+        "startLine": 207,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 3
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53466a97_3dce7e66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-18T09:44:37Z",
+      "side": 1,
+      "message": "Dumb question: why do we hold 200 ms instead of clicking once?",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 54
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "102670c7_2b23fad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-18T09:44:37Z",
+      "side": 1,
+      "message": "Do we need to wait for any events so that we know the PTZ button takes effect before verifying?",
+      "range": {
+        "startLine": 264,
+        "startChar": 2,
+        "endLine": 264,
+        "endChar": 36
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "042fabbe_58565d33",
+        "filename": "src/chromiumos/tast/local/camera/cca/frame.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-18T09:44:37Z",
+      "side": 1,
+      "message": "It is not very intuitive to me that Find() actually executes whatever it receives and returns the point.\nThe actual behavior Find() will do is based on the given |code|. So if the |code| do things more than finding point, the behavior will be inconsistent with its name.\n\nHow about moving the JS logic (finding points part) here and define some Enum like TargetPixel {FirstBlack, LastBlack} and use it as |frame.Find(ctx, TargetPixel.FirstBlack)|?\n\nOr some other ways (e.g. rename the function) to make the intention clearer. WDYT?",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 54
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a0bbd5d_ee354144",
+        "filename": "src/chromiumos/tast/local/camera/cca/frame.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-18T09:44:37Z",
+      "side": 1,
+      "message": "Can we just define a struct (e.g. Point) so that we don\u0027t need to call getIntFieldFromJsObject() to get |x|, |y| respectively. Similar to how we do for ErrorInfo:\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/camera/testutil/app_window.go;rcl\u003dfdfdc6f72204c0f7f078a1bf2474a037e67627d5;l\u003d35",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
