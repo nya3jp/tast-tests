@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b55e74e_0a7055ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333932
+      },
+      "writtenOn": "2021-05-18T04:21:41Z",
+      "side": 1,
+      "message": "LGTM, just a question.",
+      "revId": "7d2f4ac85270c3b013d3c94e475c447c80e5c61e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "566bc4d4_0a02f5ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/play_billing_index.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333932
+      },
+      "writtenOn": "2021-05-18T04:21:41Z",
+      "side": 1,
+      "message": "Do we need a button or something we can click to trigger the play billing flow?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "7d2f4ac85270c3b013d3c94e475c447c80e5c61e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
