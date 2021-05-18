@@ -17,6 +17,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type operation string
+
+const (
+	installApp operation = "install"
+	updateApp  operation = "update"
+)
+
 func findAndDismissDialog(ctx context.Context, d *ui.Device, dialogText, buttonText string, timeout time.Duration) error {
 	if err := d.Object(ui.TextMatches(dialogText)).Exists(ctx); err == nil {
 		testing.ContextLogf(ctx, `%q popup found. Skipping`, dialogText)
@@ -32,10 +39,8 @@ func findAndDismissDialog(ctx context.Context, d *ui.Device, dialogText, buttonT
 	return nil
 }
 
-// InstallApp uses the Play Store to install an application.
-// It will wait for the app to finish installing before returning.
-// Play Store should be open to the homepage before running this function.
-func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, tryLimit int) error {
+// installOrUpdate uses the Play Store to install or update an application.
+func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, tryLimit int, op operation) error {
 	const (
 		defaultUITimeout = 20 * time.Second
 
@@ -51,6 +56,7 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 		continueButtonText = "continue"
 		gotItButtonText    = "got it"
 		installButtonText  = "install"
+		updateButtonText   = "update"
 		okButtonText       = "ok"
 		openButtonText     = "open"
 		playButtonText     = "play"
@@ -59,14 +65,6 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 
 		intentActionView = "android.intent.action.VIEW"
 	)
-
-	installed, err := a.PackageInstalled(ctx, pkgName)
-	if err != nil {
-		return err
-	}
-	if installed {
-		return nil
-	}
 
 	testing.ContextLog(ctx, "Opening Play Store with Intent")
 	if err := a.WaitIntentHelper(ctx); err != nil {
@@ -78,10 +76,23 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 		return errors.Wrap(err, "failed to send intent to open the Play Store")
 	}
 
-	// Wait for the app to install.
-	testing.ContextLog(ctx, "Waiting for app to install")
+	var opButton *ui.Object // Operation button - install or update.
+	switch op {
+	case installApp:
+		// Look for install button.
+		opButton = d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+installButtonText), ui.Enabled(true))
+	case updateApp:
+		// Look for update button.
+		opButton = d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+updateButtonText), ui.Enabled(true))
+	default:
+		return errors.Errorf("operation %s is not supported", op)
+	}
+
+	// Wait for the app to install or update.
+	testing.ContextLogf(ctx, "Waiting for app to %s", op)
+
 	tries := 0
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
 		for _, val := range []struct {
 			dialogText string
 			buttonText string
@@ -123,18 +134,17 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 			}
 		}
 
-		// If the install button is enabled, click it.
-		installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+installButtonText), ui.Enabled(true))
-		if err := installButton.Exists(ctx); err == nil {
+		// If the install or update button is enabled, click it.
+		if err := opButton.Exists(ctx); err == nil {
 			// Limit number of tries to help mitigate Play Store rate limiting across test runs.
 			if tryLimit == -1 || tries < tryLimit {
 				tries++
-				testing.ContextLogf(ctx, "Trying to hit the install button. Total attempts so far: %d", tries)
-				if err := installButton.Click(ctx); err != nil {
+				testing.ContextLogf(ctx, "Trying to hit the %s button. Total attempts so far: %d", op, tries)
+				if err := opButton.Click(ctx); err != nil {
 					return err
 				}
 			} else {
-				return testing.PollBreak(errors.Errorf("hit install attempt limit of %d times", tryLimit))
+				return testing.PollBreak(errors.Errorf("hit %s attempt limit of %d times", op, tryLimit))
 			}
 		}
 
@@ -162,12 +172,36 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 			return testing.PollBreak(err)
 		}
 
+		// Make sure we are still on the Play Store installation page by checking whether the "open" or "play" button exists.
+		// If not, reopen the Play Store page by sending the same intent again.
+		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(fmt.Sprintf("(?i)(%s|%s)", openButtonText, playButtonText))).Exists(ctx); err != nil {
+			testing.ContextLog(ctx, "App installation page disappeared; reopen it")
+			if err := a.SendIntentCommand(ctx, intentActionView, playStoreAppPageURI).Run(testexec.DumpLogOnError); err != nil {
+				return errors.Wrap(err, "failed to send intent to reopen the Play Store")
+			}
+		}
+
 		// Installation is complete once the open button or the play button is enabled.
 		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(fmt.Sprintf("(?i)(%s|%s)", openButtonText, playButtonText)), ui.Enabled(true)).Exists(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait for enabled open button or play button")
 		}
 		return nil
-	}, &testing.PollOptions{Interval: time.Second}); err != nil {
+	}, &testing.PollOptions{Interval: time.Second})
+}
+
+// InstallApp uses the Play Store to install an application.
+// It will wait for the app to finish installing before returning.
+// Play Store should be open to the homepage before running this function.
+func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, tryLimit int) error {
+	installed, err := a.PackageInstalled(ctx, pkgName)
+	if err != nil {
+		return err
+	}
+	if installed {
+		return nil
+	}
+
+	if err := installOrUpdate(ctx, a, d, pkgName, tryLimit, installApp); err != nil {
 		return err
 	}
 
@@ -180,4 +214,19 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 		return errors.Errorf("failed to install %s", pkgName)
 	}
 	return nil
+}
+
+// InstallOrUpdateApp installs the application via Play Store. If the application is already installed,
+// it updates the app if an update is available.
+// It will wait for the app to finish installing/updating before returning.
+func InstallOrUpdateApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, tryLimit int) error {
+	installed, err := a.PackageInstalled(ctx, pkgName)
+	if err != nil {
+		return err
+	}
+	if !installed {
+		return InstallApp(ctx, a, d, pkgName, tryLimit)
+	}
+	testing.ContextLog(ctx, "App has already been installed; check if an update is available")
+	return installOrUpdate(ctx, a, d, pkgName, tryLimit, updateApp)
 }
