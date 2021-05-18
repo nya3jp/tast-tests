@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5e502dd_a7b23181",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T02:28:59Z",
+      "side": 1,
+      "message": "Resolve two question with kinaba:\n1. Will upprev together with CTS.\n2. No need for private test for unreleased Android right now.\n\n@hidehiko PTAL thanks.",
+      "revId": "4f0470f9ede850612b35556f50b62ef80f4f403f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
