@@ -229,8 +229,15 @@ func (t *TabletActionHandler) clickChromeOnHotseat(ctx context.Context) (time.Ti
 
 // showTabList shows the tab list by clicking a button on the Chrome tool bar.
 func (t *TabletActionHandler) showTabList() action.Action {
-	toggle := nodewith.NameContaining("toggle tab strip").Role(role.Button).First()
-	return t.tc.Tap(toggle)
+	// There may be multiple browser windows under tablet mode, with one active and others invisible.
+	// The UI layout of different windows are the same and with the same coordinates. So tap the first
+	// found button will trigger the tap on the same button of the active window.
+	toggle := nodewith.NameContaining("press to toggle tab strip").ClassName("WebUITabCounterButton").Role(role.Button).First()
+	tcFinder := nodewith.Role(role.TabList).Ancestor(nodewith.Role(role.RootWebArea).Name("Tab list"))
+	return uiauto.Combine("show tab list",
+		t.tc.Tap(toggle),
+		t.ui.WaitUntilExists(tcFinder),
+	)
 }
 
 // NewChromeTab creates a new tab of Google Chrome.
@@ -243,13 +250,12 @@ func (t *TabletActionHandler) NewChromeTab(ctx context.Context, cr *chrome.Chrom
 		return cr.NewConn(ctx, url, cdputil.WithNewWindow())
 	}
 
-	if err := t.showTabList()(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to open the tab list")
-	}
-
-	btn := nodewith.Name("New tab").Role(role.Button).First()
-	if err := t.tc.Tap(btn)(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to find and click new tab button")
+	// There may be multiple browser windows under tablet mode, with one active and others invisible.
+	// The UI layout of different windows are the same and with the same coordinates. So tap the first
+	// found button will trigger the tap on the same button of the active window.
+	newTabFinder := nodewith.Name("New tab").Role(role.Button).ClassName("ToolbarButton").First()
+	if err := t.tc.Tap(newTabFinder)(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to tap new tab button")
 	}
 
 	c, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/"))

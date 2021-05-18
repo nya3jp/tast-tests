@@ -222,8 +222,8 @@ var allTargets = []struct {
 	{"https://medium.com/topic/business", newPageInfo(Basic, medium, `/topic/business`, `/topic/money`)},
 	{"https://medium.com/topic/startups", newPageInfo(Basic, medium, `/topic/startups`, `/topic/leadership`)},
 	{"https://medium.com/topic/work", newPageInfo(Plus, medium, `/topic/work`, `/topic/freelancing`)},
-	{"https://medium.com/topic/software-engineering", newPageInfo(Premium, medium, `/software-engineering`, `/topic/programming`)},
-	{"https://medium.com/topic/artificial-intelligence", newPageInfo(Premium, medium, `/artificial-intelligence`, `/topic/technology`)},
+	{"https://medium.com/topic/software-engineering", newPageInfo(Premium, medium, `/topic/software-engineering`, `/topic/programming`)},
+	{"https://medium.com/topic/artificial-intelligence", newPageInfo(Premium, medium, `/topic/artificial-intelligence`, `/topic/technology`)},
 
 	{"https://news.yahoo.com/us/", newPageInfo(Basic, yahooNews, `/us/`, `/politics/`)},
 	{"https://news.yahoo.com/world/", newPageInfo(Basic, yahooNews, `/world/`, `/health/`)},
