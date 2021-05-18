@@ -94,6 +94,30 @@
       },
       "revId": "9b7d8b02c83061685fb3e21d6c82c17dacbbfad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c4cb1d6_9d307d21",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-18T01:42:05Z",
+      "side": 1,
+      "message": "As for how, /etc/os-release typically has enough distinguishing info to make this work, if we want it to happen transparently. For example, here are a few good-looking fields from an arbitrary OpenWRT system I have:\n\nNAME\u003d\"OpenWrt\"\n...\nID\u003d\"openwrt\"\nID_LIKE\u003d\"lede openwrt\"\n\n\nvs. Chrome OS:\nID\u003dchromeos\nID_LIKE\u003dchromiumos\n...\nNAME\u003dChrome OS\n\nApparently it\u0027s even a documented freedesktop.org semi-standard?\nhttps://www.freedesktop.org/software/systemd/man/os-release.html\nI guess it was probably dreamed up b/c LSB is effectively dead (?):\nhttps://lwn.net/Articles/658809/",
+      "parentUuid": "ebbf9199_c13c3eaf",
+      "range": {
+        "startLine": 175,
+        "startChar": 74,
+        "endLine": 175,
+        "endChar": 92
+      },
+      "revId": "9b7d8b02c83061685fb3e21d6c82c17dacbbfad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
