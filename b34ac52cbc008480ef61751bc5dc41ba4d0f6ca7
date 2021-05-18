@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff76411a_4869b5aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1459753
+      },
+      "writtenOn": "2021-05-18T23:43:06Z",
+      "side": 1,
+      "message": "It fails in ash too, with the same error. Taking a look into the function RotateDisplayToLandscapePrimary() I saw that it fails here [1] when, after rotating the display with SetDisplayRotationSync() [2], it checks that the resulting orientation is \"landscape-primary\". The call to SetDisplayRotationSync() does not fail, but it leaves the display orientation unchanged, that is \"portrait-primary\". I tested changing the degrees the display is rotated when calling SetDisplayRotationSync(). It currently tries to rotate the display 270 degrees. I tried 180 and that set the orientation to \"landscape-secondary\". So with 0 degrees rotation the orientation was set to \"landscape-primary\" and the test finally passed. This is very counterintuitive... I wonder if this is maybe because it is rotating the display using \"landscape-primary\" as the original rotation always...\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/graphics/screen.go;l\u003d42\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/graphics/screen.go;l\u003d33",
+      "parentUuid": "66bf5a05_0898b975",
+      "range": {
+        "startLine": 411,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 2
+      },
+      "revId": "b34ac52cbc008480ef61751bc5dc41ba4d0f6ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f62cde06_cc3dd0b4",
         "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
         "patchSetId": 1
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "Thanks for checking! Based on that, I\u0027m concerned about the different combinations:\n\n1) Overlays are enabled in both lacros and ash.\n\n2) Overlays are enabled in lacros but not ash.\n\n3) Overlays are enabled in ash but not lacros.\n\n4) Overlays are disabled in both.\n\nWith the chromeCompositedVideoLacros fixture, you\u0027re only taking care of case (4). So some follow-up points of discussion:\n\n- What happens in case (3)? Does lacros flatten everything (including the video) into a framebuffer before sending it through Wayland? If so, this probably ends up being the same as case (4).\n\n- In real usage, which component is in charge of demoting videos to non-overlay? If it\u0027s only ash, then we don\u0027t really care too much about testing cases (3) and (4). If both ash and lacros can demote videos, then we might need to test cases (2) and (3) because they follow different paths for the framebuffer_size change you have in progress.",
       "parentUuid": "28ecf438_369ef580",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 61
+      },
+      "revId": "b34ac52cbc008480ef61751bc5dc41ba4d0f6ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eead322_7a3f2320",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1459753
+      },
+      "writtenOn": "2021-05-18T23:43:06Z",
+      "side": 1,
+      "message": "I checked with Kramer and:\n- If overlays are disabled in lacros but enabled in ash, lacros still flattens everything (including video) into a frambuffer and sends it through Wayland.\n- Both, lacros and ash, can demote videos to non-overlay.",
+      "parentUuid": "114a4041_d363dd0f",
       "range": {
         "startLine": 134,
         "startChar": 3,
