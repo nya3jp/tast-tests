@@ -16,6 +16,46 @@
       "message": "Resolve two question with kinaba:\n1. Will upprev together with CTS.\n2. No need for private test for unreleased Android right now.\n\n@hidehiko PTAL thanks.",
       "revId": "4f0470f9ede850612b35556f50b62ef80f4f403f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65302872_5d87b9af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-18T14:09:02Z",
+      "side": 1,
+      "message": "Thank you for confirming!\n\nI think there\u0027s one missing piece from what we discussed offline, which is:\n- document how to generate patch files.\n\nCould you make some document or even inline comments how to update the ITS files?",
+      "revId": "4f0470f9ede850612b35556f50b62ef80f4f403f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a3f5011_e860b7c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-18T14:09:02Z",
+      "side": 1,
+      "message": "could you close src?",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 5
+      },
+      "revId": "4f0470f9ede850612b35556f50b62ef80f4f403f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
