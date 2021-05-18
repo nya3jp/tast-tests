@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c5a3f0e_b2adce49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T01:50:55Z",
+      "side": 1,
+      "message": "0600, not sure where which part of code will decide the default umask in ChromeOS though. Similar CL here is doing chmod for directory:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2839424",
+      "parentUuid": "e0667ec9_0e37c323",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 52
+      },
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e53b3a38_9f1c92ca",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-17T16:24:38Z",
       "side": 1,
       "message": "the region where the pattern resides.",
+      "range": {
+        "startLine": 120,
+        "startChar": 21,
+        "endLine": 120,
+        "endChar": 47
+      },
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff499d71_93abdb6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T01:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e53b3a38_9f1c92ca",
       "range": {
         "startLine": 120,
         "startChar": 21,
@@ -110,6 +158,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b25bf55_eb83e2c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T01:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9536bd95_948d1ee1",
+      "range": {
+        "startLine": 128,
+        "startChar": 9,
+        "endLine": 128,
+        "endChar": 19
+      },
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c53108c_aae25b40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T01:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aae81f15_83c3c039",
+      "range": {
+        "startLine": 128,
+        "startChar": 23,
+        "endLine": 128,
+        "endChar": 31
+      },
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc65a5e0_898d9e31",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-05-17T16:24:38Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 43
+      },
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e840ae_ada53a96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T01:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc65a5e0_898d9e31",
       "range": {
         "startLine": 148,
         "startChar": 1,
@@ -197,6 +317,78 @@
         "startChar": 11,
         "endLine": 204,
         "endChar": 21
+      },
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e14e7cea_b03321c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T01:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e302318a_80d1c504",
+      "range": {
+        "startLine": 204,
+        "startChar": 11,
+        "endLine": 204,
+        "endChar": 21
+      },
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf3fc2b9_9fe933ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T01:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "199efa3d_626882b1",
+      "range": {
+        "startLine": 204,
+        "startChar": 41,
+        "endLine": 204,
+        "endChar": 46
+      },
+      "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56d6daa3_8491cfed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-18T01:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9f775bd_25e3b351",
+      "range": {
+        "startLine": 204,
+        "startChar": 47,
+        "endLine": 204,
+        "endChar": 58
       },
       "revId": "993e62890f5d9b7394b9def5dd2dc65390a33402",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
