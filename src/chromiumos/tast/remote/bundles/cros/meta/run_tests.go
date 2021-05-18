@@ -57,10 +57,10 @@ func init() {
 					{Name: "meta.RemotePass"},
 				},
 				wantFiles: map[string]string{
-					"meta.LocalFail/faillog/ps.txt":  exists,
-					"meta.LocalPass/faillog/ps.txt":  notExists,
-					"meta.RemoteFail/faillog/ps.txt": exists,
-					"meta.RemotePass/faillog/ps.txt": notExists,
+					"tests/meta.LocalFail/faillog/ps.txt":  exists,
+					"tests/meta.LocalPass/faillog/ps.txt":  notExists,
+					"tests/meta.RemoteFail/faillog/ps.txt": exists,
+					"tests/meta.RemotePass/faillog/ps.txt": notExists,
 				},
 			},
 			ExtraAttr: []string{"group:mainline", "informational"},
@@ -74,8 +74,8 @@ func init() {
 					{Name: "meta.LocalFiles"},
 				},
 				wantFiles: map[string]string{
-					"meta.LocalFiles/local_files_internal.txt": "This is an internal data file.\n",
-					"meta.LocalFiles/local_files_external.txt": "This is an external data file.\n",
+					"tests/meta.LocalFiles/local_files_internal.txt": "This is an internal data file.\n",
+					"tests/meta.LocalFiles/local_files_external.txt": "This is an external data file.\n",
 				},
 			},
 			ExtraAttr: []string{"group:mainline", "group:meta"},
@@ -89,8 +89,8 @@ func init() {
 					{Name: "meta.RemoteFiles"},
 				},
 				wantFiles: map[string]string{
-					"meta.RemoteFiles/remote_files_internal.txt": "This is an internal data file for remote tests.\n",
-					"meta.RemoteFiles/remote_files_external.txt": "This is an external data file for remote tests.\n",
+					"tests/meta.RemoteFiles/remote_files_internal.txt": "This is an internal data file for remote tests.\n",
+					"tests/meta.RemoteFiles/remote_files_external.txt": "This is an external data file for remote tests.\n",
 				},
 			},
 			ExtraAttr: []string{"group:mainline", "informational"},
@@ -117,8 +117,8 @@ func init() {
 					{Name: "meta.RemoteVars"},
 				},
 				wantFiles: map[string]string{
-					"meta.LocalVars/var.txt":  localVarValue,
-					"meta.RemoteVars/var.txt": remoteVarValue,
+					"tests/meta.LocalVars/var.txt":  localVarValue,
+					"tests/meta.RemoteVars/var.txt": remoteVarValue,
 				},
 			},
 			ExtraAttr: []string{"group:mainline", "group:meta"},
@@ -152,7 +152,7 @@ func RunTests(ctx context.Context, s *testing.State) {
 	// Some tests copy their data files to the output directory.
 	// These filenames and corresponding contents are hardcoded in the tests.
 	for p, v := range param.wantFiles {
-		p = filepath.Join(resultsDir, "tests", p)
+		p = filepath.Join(resultsDir, p)
 		b, err := ioutil.ReadFile(p)
 		if v == notExists {
 			if err == nil {
