@@ -64,7 +64,7 @@ func (s *Spotify) Install(ctx context.Context) error {
 	installCtx, cancel := context.WithTimeout(ctx, 3*time.Minute)
 	defer cancel()
 
-	if err := playstore.InstallApp(installCtx, s.a, s.d, spotifyPackageName, -1); err != nil {
+	if err := playstore.UpdateApp(installCtx, s.a, s.d, spotifyPackageName, -1); err != nil {
 		return errors.Wrapf(err, "failed to install %s", spotifyPackageName)
 	}
 	if err := apps.Close(ctx, s.tconn, apps.PlayStore.ID); err != nil {
