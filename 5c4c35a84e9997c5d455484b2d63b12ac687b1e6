@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fc4bec6_6dfa5e96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-18T06:12:14Z",
+      "side": 1,
+      "message": "Please indicate that w8 is the one",
+      "range": {
+        "startLine": 893,
+        "startChar": 51,
+        "endLine": 893,
+        "endChar": 54
+      },
+      "revId": "5c4c35a84e9997c5d455484b2d63b12ac687b1e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
