@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "729f2f9b_bf01872b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-18T06:04:46Z",
+      "side": 1,
+      "message": "generally looks good % the unresolved GetLegencyRouter comment.\n\nI guess that we might want to reduce some GetLegencyRouter usage in tests to be also supported in OpenWrt setup, but we could change that later when we have more knowledge about OpenWrt and AX routers.",
+      "revId": "e4beb95e14e0a5d3f9ca1dc2f1d171e2a8a8c594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
