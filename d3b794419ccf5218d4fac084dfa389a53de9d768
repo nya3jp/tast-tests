@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc38befa_0b428947",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-05-18T17:13:03Z",
+      "side": 1,
+      "message": "lgtm since it is similar to the \"UseSkiaRenderer\" case above.\n\n+mukai to see whether it is okay from owner\u0027s perspective.",
+      "revId": "d3b794419ccf5218d4fac084dfa389a53de9d768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
