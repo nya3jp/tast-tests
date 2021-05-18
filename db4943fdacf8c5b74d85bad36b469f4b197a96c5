@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ec950ef_0d984ebd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-05-18T03:42:55Z",
+      "side": 1,
+      "message": "How about moving this into enableUdc() as well?",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 108
+      },
+      "revId": "db4943fdacf8c5b74d85bad36b469f4b197a96c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b2fe37c_886a6bad",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
         "patchSetId": 4
@@ -37,6 +60,30 @@
       "writtenOn": "2021-05-18T03:09:13Z",
       "side": 1,
       "message": "ditto adbdName",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 42
+      },
+      "revId": "db4943fdacf8c5b74d85bad36b469f4b197a96c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "832f16a4_d192bebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-05-18T03:42:55Z",
+      "side": 1,
+      "message": "After introducing adbdName, we can directly call upstart.WaitForJobStatus here and remove checkJobStatusIfExist()",
+      "parentUuid": "456a6dd3_8c291a9b",
       "range": {
         "startLine": 95,
         "startChar": 1,
