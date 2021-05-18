@@ -42,7 +42,29 @@ func init() {
 		PostTestTimeout: 5 * time.Second,
 		Parent:          "enrolled",
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "fakeDMSFamilyLink",
+		Desc:     "Fixture for a running FakeDMS of Family Link account",
+		Contacts: []string{"vsavu@google.com", "xiqiruan@chromium.org", "chromeos-commercial-stability@google.com"},
+		Vars: []string{
+			"unicorn.childUser",
+		},
+		Impl: &fakeDMSFixture{
+			userCallBack: func(s *testing.FixtState) error {
+				fakedms.PolicyUser = s.RequiredVar("unicorn.childUser")
+				return nil
+			},
+		},
+		SetUpTimeout:    15 * time.Second,
+		ResetTimeout:    5 * time.Second,
+		TearDownTimeout: 5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+	})
 }
+
+// PolicyUserCallback is the function used to set up the fakeDMSFixture with policy user account.
+type PolicyUserCallback func(s *testing.FixtState) error
 
 type fakeDMSFixture struct {
 	// FakeDMS is the currently running fake DM server.
@@ -51,6 +73,11 @@ type fakeDMSFixture struct {
 	fdmsDir string
 	// importState is the path to an existing state file for FakeDMS.
 	importState string
+	// A callback for retrieving policy user value from test.FixtState and updating
+	// fakedms.PolicyUser when using a different account for policy test. If the callback
+	// is not set, the test fixture uses the default policy user(tast-user@managedchrome.com)
+	// in the policy blob.
+	userCallBack PolicyUserCallback
 }
 
 func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -79,6 +106,12 @@ func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interf
 	// Make sure FakeDMS is running.
 	if err := fdms.Ping(ctx); err != nil {
 		s.Fatal("Failed to ping FakeDMS: ", err)
+	}
+
+	if f.userCallBack != nil {
+		if err := f.userCallBack(s); err != nil {
+			s.Fatal("Failed to retrieve policy user variable: ", err)
+		}
 	}
 
 	if err := fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
