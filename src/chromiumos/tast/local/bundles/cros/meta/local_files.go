@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/fsutil"
+	_ "chromiumos/tast/local/meta" // import fixture
 	"chromiumos/tast/testing"
 )
 
@@ -21,6 +22,7 @@ func init() {
 			"local_files_internal.txt",
 			"local_files_external.txt",
 		},
+		Fixture: "metaLocalDataFilesFixture",
 		// This test is executed by remote tests in the meta package.
 	})
 }
