@@ -353,3 +353,12 @@ func TryReuseSession() Option {
 		return nil
 	}
 }
+
+// RemoveNotification returns an Option that can be passed to New to make Chrome to
+// remove or keep the notifications after login.
+func RemoveNotification(remove bool) Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.RemoveNotification = remove
+		return nil
+	}
+}
