@@ -271,7 +271,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	if cfg.DeferLogin() {
 		loginPending = true
 	} else {
-		if err := login.LogIn(ctx, cfg, sess); err == login.ErrNeedNewSession {
+		if err := login.LogIn(ctx, cfg, sess); err == login.ErrNeedNewSession || cfg.IsFullRestoreEnabled() {
 			// Restart session.
 			newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, agg)
 			if err != nil {

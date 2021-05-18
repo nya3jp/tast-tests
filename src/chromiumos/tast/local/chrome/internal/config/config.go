@@ -388,3 +388,13 @@ func (c *Config) customizedReuseCheck(newCfg *Config) error {
 
 	return nil
 }
+
+// IsFullRestoreEnabled checks whether full restore is enabled.
+func (c *Config) IsFullRestoreEnabled() bool {
+	for _, s := range c.ExtraArgs() {
+		if s == "--feature-flags=[\"full-restore@1\"]" {
+			return true
+		}
+	}
+	return false
+}
