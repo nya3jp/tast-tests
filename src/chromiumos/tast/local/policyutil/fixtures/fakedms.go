@@ -42,6 +42,22 @@ func init() {
 		PostTestTimeout: 5 * time.Second,
 		Parent:          "enrolled",
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "fakeDMSFamilyLink",
+		Desc:     "Fixture for a running FakeDMS of Family Link account",
+		Contacts: []string{"vsavu@google.com", "chromeos-commercial-stability@google.com"},
+		Vars: []string{
+			"unicorn.childUser",
+		},
+		Impl: &fakeDMSFixture{
+			policyUserVar: "unicorn.childUser",
+		},
+		SetUpTimeout:    15 * time.Second,
+		ResetTimeout:    5 * time.Second,
+		TearDownTimeout: 5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+	})
 }
 
 type fakeDMSFixture struct {
@@ -51,6 +67,8 @@ type fakeDMSFixture struct {
 	fdmsDir string
 	// importState is the path to an existing state file for FakeDMS.
 	importState string
+	// policyUserVar is the user variable that used as PolicyUser in policy blob.
+	policyUserVar string
 }
 
 func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -81,7 +99,12 @@ func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interf
 		s.Fatal("Failed to ping FakeDMS: ", err)
 	}
 
-	if err := fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
+	policyUser := fakedms.DefaultPolicyUser
+	if f.policyUserVar != "" {
+		policyUser = s.RequiredVar(f.policyUserVar)
+	}
+
+	if err := fdms.WritePolicyBlob(fakedms.PolicyBlobWithUser(policyUser)); err != nil {
 		s.Fatal("Failed to write policies to FakeDMS: ", err)
 	}
 

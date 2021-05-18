@@ -82,6 +82,17 @@ func NewPolicyBlob() *PolicyBlob {
 	}
 }
 
+// PolicyBlobWithUser returns a simple *PolicyBlob with given policy user. Callers are expected to add user
+// and device policies or modify initial setup as desired.
+func PolicyBlobWithUser(policyUser string) *PolicyBlob {
+	return &PolicyBlob{
+		ManagedUsers:     []string{"*"},
+		PolicyUser:       policyUser,
+		InvalidationSrc:  defaultInvalidationSource,
+		InvalidationName: defaultInvalidationName,
+	}
+}
+
 // AddPolicies adds a given slice of Policy to the PolicyBlob.
 // Where it goes is based on both the Scope() and Status() of the given policy.
 // No action happens if Policy is flagged as Unset or having Default value.
