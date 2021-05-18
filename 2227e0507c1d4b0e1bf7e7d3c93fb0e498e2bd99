@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b4acacf_85876122",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-18T17:11:01Z",
+      "side": 1,
+      "message": "According to the log (that is very helpful!)\n\n-rwxr-xr-x.  1 311298 89939 172938568 Apr 28 21:22 chrome\n\nso, chrome has actually x bits already.\n\nIt\u0027s failing in EPERM, and according to manual it happens when\n- The filesystem is mounted nosuid, the user is not the superuser, and the file has the set-user-ID or set-group-ID bit set.\n- The process is being traced, the user is not the superuser and the file has the set-user-ID or set-group-ID bit set.\n- A \"capability-dumb\" applications would not obtain the full set of permitted capabilities granted by the executable file.\n\nThe first two are not met, because chrome does not suid/sgid bits. So, the third case. Do we run the Tast process in some capability restrictions? CC nya@ who may have some thoughts on it.",
+      "revId": "2227e0507c1d4b0e1bf7e7d3c93fb0e498e2bd99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
