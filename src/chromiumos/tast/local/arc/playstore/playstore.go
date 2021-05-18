@@ -7,6 +7,7 @@ package playstore
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -35,6 +36,8 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 		gotItButtonText    = "got it"
 		installButtonText  = "install"
 		okButtonText       = "ok"
+		openButtonText     = "open"
+		playButtonText     = "play"
 		retryButtonText    = "retry"
 		skipButtonText     = "skip"
 
@@ -62,7 +65,7 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 	// Wait for the app to install.
 	testing.ContextLog(ctx, "Waiting for app to install")
 	tries := 0
-	return testing.Poll(ctx, func(ctx context.Context) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Sometimes a dialog of "Can't download <app name>" pops up. Press Okay to
 		// dismiss the dialog. This check needs to be done before checking the
 		// install button since the install button exists underneath.
@@ -167,15 +170,22 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 			}
 		}
 
-		// Verify if the package has been installed.
-		installed, err = a.PackageInstalled(ctx, pkgName)
-		if err != nil {
-			return testing.PollBreak(err)
+		// Installation is complete once the open button or the play button is enabled.
+		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(fmt.Sprintf("(?i)(%s|%s)", openButtonText, playButtonText)), ui.Enabled(true)).Exists(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for enabled open button or play button")
 		}
-		if !installed {
-			return errors.Errorf("package %s has not been installed", pkgName)
-		}
-
 		return nil
-	}, &testing.PollOptions{Interval: time.Second})
+	}, &testing.PollOptions{Interval: time.Second}); err != nil {
+		return err
+	}
+
+	// Ensure that the correct package is installed, just in case the Play Store ui changes again.
+	installed, err = a.PackageInstalled(ctx, pkgName)
+	if err != nil {
+		return err
+	}
+	if !installed {
+		return errors.Errorf("failed to install %s", pkgName)
+	}
+	return nil
 }
