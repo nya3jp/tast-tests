@@ -39,6 +39,30 @@
       },
       "revId": "7d2f4ac85270c3b013d3c94e475c447c80e5c61e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccbcda86_725f81eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/play_billing_index.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-18T04:28:10Z",
+      "side": 1,
+      "message": "Yeah, I had it in a follow up CL with the logic to click it but you\u0027re right might as well put it here. Updated.",
+      "parentUuid": "566bc4d4_0a02f5ab",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "7d2f4ac85270c3b013d3c94e475c447c80e5c61e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
