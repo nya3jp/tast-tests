@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bebec8b1_9db300ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-18T22:56:46Z",
+      "side": 1,
+      "message": "thanks for all the fixes.\n\na few nits left...",
+      "revId": "37da58b009794543dbbca26afbc08c1af305de02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6856d48_31f8e2be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-18T22:56:46Z",
+      "side": 1,
+      "message": "nit: oldPID seems that is only used inside enableUdc/reboot... I\u0027d move it inside the \"reboot\" func",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "37da58b009794543dbbca26afbc08c1af305de02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b46449e_39a98309",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-18T22:56:46Z",
+      "side": 1,
+      "message": "nit: Udc means \"USB Device Controller\"... (it is an acronym) ... it should be enableUDC\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 100,
+        "startChar": 11,
+        "endLine": 100,
+        "endChar": 14
+      },
+      "revId": "37da58b009794543dbbca26afbc08c1af305de02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a18a454_6d326dfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-18T22:56:46Z",
+      "side": 1,
+      "message": "nit: add docstring for all func (except trivial ones)",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 4
+      },
+      "revId": "37da58b009794543dbbca26afbc08c1af305de02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4dba4e9_13d63804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-18T22:56:46Z",
+      "side": 1,
+      "message": "nit, optional:\n\nby reading the main function, it is not clear that \"enableUDC\" might reboot ARC.\n\none suggestion is to rename \"enableUDC\" to something like \"enableUDCAndReboot\" or something like that...\n\nor perhaps you can return a \"requiresReboot\" variable from \"enableUDC\". e.g:\n\n  reboot, cleanup, err :\u003d enableUDC(...)\n  if reboot {\n    rebootARC()\n  }",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 26
+      },
+      "revId": "37da58b009794543dbbca26afbc08c1af305de02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a797d92_0b58190b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-18T22:56:46Z",
+      "side": 1,
+      "message": "nit 1: add docstring\nnit 2: I\u0027d be more explicit and call it rebootARC()",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 11
+      },
+      "revId": "37da58b009794543dbbca26afbc08c1af305de02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
