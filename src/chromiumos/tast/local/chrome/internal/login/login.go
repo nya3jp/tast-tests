@@ -44,6 +44,12 @@ func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error 
 		if err := loginUser(ctx, cfg, sess); err != nil {
 			return err
 		}
+
+		if len(cfg.ExtraFeatureFlags()) > 0 {
+			if err := driver.PrepareForRestart(); err != nil {
+				return err
+			}
+		}
 		// Clear all notifications after logging in so none will be shown at the beginning of tests.
 		// TODO(crbug/1079235): move this outside of the switch once the test API is available in guest mode.
 		tconn, err := sess.TestAPIConn(ctx)
@@ -57,6 +63,11 @@ func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error 
 	case config.GuestLogin:
 		if err := logInAsGuest(ctx, cfg, sess); err != nil {
 			return err
+		}
+		if len(cfg.ExtraFeatureFlags()) > 0 {
+			if err := driver.PrepareForRestart(); err != nil {
+				return err
+			}
 		}
 		// logInAsGuest restarted Chrome. Let the caller know that they
 		// need to recreate a session.
