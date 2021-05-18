@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/remote/wificell"
+	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -22,7 +23,7 @@ func init() {
 			"chharry@google.com",              // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:        []string{"group:wificell", "wificell_suspend", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_suspend"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
@@ -31,6 +32,20 @@ func init() {
 		// We only support reset on Intel/Marvell/QCA WiFi (iwlwifi/mwifiex/ath10k).
 		// TODO(chromium:1070299): These models are chosen manually by finding the models that are always failing with NA-error on Autotest network_WiFi_Reset. Replace them with more proper hwdep in the future.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("barla", "blooglet", "dirinboz", "ezkinil", "vilboz")),
+		Params: []testing.Param{
+			{
+				// Default AP settings ported from Autotest.
+				ExtraAttr: []string{"wificell_unstable"},
+				Val:       []hostapd.Option{hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(1)},
+			},
+			{
+				// The target protocol and channel settings, as this is more widely used nowadays.
+				// TODO(b/175602523): Replace the default with this once the issue is fixed.
+				Name:      "80211n_ch48",
+				ExtraAttr: []string{"wificell_unstable"},
+				Val:       wificell.DefaultOpenNetworkAPOptions(),
+			},
+		},
 	})
 }
 
@@ -44,7 +59,8 @@ func Reset(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
-	ap, err := tf.DefaultOpenNetworkAP(ctx)
+	apOps := s.Param().([]hostapd.Option)
+	ap, err := tf.ConfigureAP(ctx, apOps, nil)
 	if err != nil {
 		s.Fatal("Failed to configure the AP: ", err)
 	}
