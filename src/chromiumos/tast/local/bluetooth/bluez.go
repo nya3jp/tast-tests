@@ -8,11 +8,13 @@ package bluetooth
 
 import (
 	"context"
+	"time"
 
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/testing"
 )
 
 // Adapter contains helper functions for getting and setting bluetooth adapter
@@ -156,4 +158,30 @@ func Enable(ctx context.Context) error {
 		return errors.Errorf("failed to verify the number of Bluetooth adapters got %d, expected 1 ", len(adapters))
 	}
 	return adapters[0].SetPowered(ctx, true)
+}
+
+// PollForBTEnabled polls bluetooth adapter state till Adapter is powered on
+func PollForBTEnabled(ctx context.Context) error {
+	return PollForAdapterState(ctx, true)
+}
+
+// PollForBTDisabled polls bluetooth adapter state till Adapter is powered off
+func PollForBTDisabled(ctx context.Context) error {
+	return PollForAdapterState(ctx, false)
+}
+
+//PollForAdapterState polls bluetooth adapter state until expected state is received or  timeout occurs.
+func PollForAdapterState(ctx context.Context, exp bool) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		status, err := IsEnabled(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to check Bluetooth status"))
+		}
+		if status != exp {
+			return errors.Errorf("failed to verify Bluetooth status, got %t, want %t", status, exp)
+		}
+
+		return nil
+
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second})
 }
