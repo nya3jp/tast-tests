@@ -57,6 +57,24 @@
       "parentUuid": "453d69bd_3d173095",
       "revId": "8757b51d51efd27cff03936e1433d4534920264d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5334a60_5f934f42",
+        "filename": "src/chromiumos/tast/remote/wificell/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-18T05:33:02Z",
+      "side": 1,
+      "message": "I see. To align with the guide, either \"wificellutil\" or \"wifiutil\" is acceptable.",
+      "parentUuid": "6b683b78_c98badab",
+      "revId": "8757b51d51efd27cff03936e1433d4534920264d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
