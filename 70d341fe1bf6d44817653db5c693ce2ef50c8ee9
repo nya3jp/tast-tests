@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fe08651_f4686723",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-18T14:59:49Z",
+      "side": 1,
+      "message": "I know it\u0027s a lot of work, but can you create a CL for each test? It\u0027s easier to revert by sheriffs.",
+      "revId": "70d341fe1bf6d44817653db5c693ce2ef50c8ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
