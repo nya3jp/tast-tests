@@ -16,6 +16,40 @@
       "message": "Hi seewaifu, While running the command, \"test_that --board\u003dscarlet chromeos6-row1-rack21-host1.cros tast.appcompat_release\", I am getting message as, No tests matched by \u0027(\"group:appcompat_release\")\u0027. https://paste.googleplex.com/5098037153103872, Let me know if I am missing any. Thanks.",
       "revId": "dd8645920a28ab6c7d041fa85c8d0514e7383b59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61c88a8d_eb25b139",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-18T03:18:40Z",
+      "side": 1,
+      "message": "I think you need the group: prefix.",
+      "revId": "dd8645920a28ab6c7d041fa85c8d0514e7383b59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7920dd84_bc9a92a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-18T03:18:40Z",
+      "side": 1,
+      "message": "Should it be \"group:appcompat_release\"?",
+      "revId": "dd8645920a28ab6c7d041fa85c8d0514e7383b59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
