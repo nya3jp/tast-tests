@@ -100,14 +100,19 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 	// https://docs.google.com/document/d/1cAgG931pUB2dOKrYRfkHAl0Nyern9ZqD-0NO3zPWPu4/edit#
 	// TODO(crbug/1205034): Change to markdown when it is successfully uploaded
 
-	// ARCExpectedSharedMountsCommon contains the paths of all mountpoints that
-	// are expected to be shared both when logged in as a guest and as a user on
-	// an ARC++ device.
-	ARCExpectedSharedMountsCommon := map[string]bool{
+	// BaseExpectedSharedMounts contains the paths of all shared mountpoints
+	// that will be found on every system, whether ARC is enabled or not.
+	BaseExpectedSharedMounts := map[string]bool{
 		// This is where USB drives get mounted.
 		"^/media$": true,
 		// This is used to mount downloaded disk images.
 		"^/run/imageloader$": true,
+	}
+
+	// ARCExpectedSharedMountsCommon contains the paths of all mountpoints that
+	// are expected to be shared both when logged in as a guest and as a user on
+	// an ARC++ device.
+	ARCExpectedSharedMountsCommon := map[string]bool{
 		// We need /run/netns for giving a name to the
 		// container network namespace so that we can facilitate the creation
 		// of veth pair directly across the host and the container.
@@ -143,21 +148,17 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 		"^/run/netns/arc_netns$": true,
 	}
 
-	for k, v := range ARCExpectedSharedMountsCommon {
-		ARCExpectedSharedMountsUser[k] = v
-	}
-
 	// ARCVMExpectedSharedMountsCommon contains the names of all mountpoints that
 	// are expected to be shared both when logged in as a guest and also as a
 	// user on an ARCVM device.
 	ARCVMExpectedSharedMountsCommon := map[string]bool{
-		// This is where USB drives get mounted.
-		"^/media$": true,
-		// This is used to mount downloaded disk images.
-		"^/run/imageloader$": true,
 		// Used to share Android's sdcard partition to ChromeOS
 		// TODO(crbug/1205038): Is sdcard found often?
 		"^/run/arc/sdcard$": true,
+		// These mount points are to ensure that the root
+		// namespace's /home/root/<hash> is propagated into the mnt_concierge
+		// namespace even when the latter namespace is created before login.
+		"^/run/arcvm$": true,
 	}
 
 	// ARCVMExpectedSharedMountsUser contains the names of all mountpoints that are
@@ -165,18 +166,10 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 	ARCVMExpectedSharedMountsUser := map[string]bool{
 		// This sets up the shadow user directory as a shared subtree.
 		"^/home/\\.shadow/\\w+?/mount/user$": true,
-		// These mount points are to ensure that the root
-		// namespace's /home/root/<hash> is propagated into the mnt_concierge
-		// namespace even when the latter namespace is created before login.
-		"^/run/arcvm$": true,
 		// See arcvm above.
 		"^/run/arcvm/userhome$": true,
 		// See sdcard above.
 		"^/run/arc/sdcard/write/emulated$": true,
-	}
-
-	for k, v := range ARCVMExpectedSharedMountsCommon {
-		ARCVMExpectedSharedMountsUser[k] = v
 	}
 
 	procs, err := process.Processes()
@@ -227,21 +220,27 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 	// To determine which processes we expect, we need to know whether the
 	// test device is running ARC++ or ARCVM and whether we are running as
 	// guest or user.
-	var expectedSharedMounts map[string]bool
+	expectedSharedMounts := BaseExpectedSharedMounts
 	if arc.Supported() {
 		if t, ok := arc.Type(); ok {
 			switch t {
 			case arc.Container:
-				if testType == "guest" {
-					expectedSharedMounts = ARCExpectedSharedMountsCommon
-				} else {
-					expectedSharedMounts = ARCExpectedSharedMountsUser
+				for k, v := range ARCExpectedSharedMountsCommon {
+					expectedSharedMounts[k] = v
+				}
+				if testType == "user" {
+					for k, v := range ARCExpectedSharedMountsUser {
+						expectedSharedMounts[k] = v
+					}
 				}
 			case arc.VM:
-				if testType == "guest" {
-					expectedSharedMounts = ARCVMExpectedSharedMountsCommon
-				} else {
-					expectedSharedMounts = ARCVMExpectedSharedMountsUser
+				for k, v := range ARCVMExpectedSharedMountsCommon {
+					expectedSharedMounts[k] = v
+				}
+				if testType == "user" {
+					for k, v := range ARCVMExpectedSharedMountsUser {
+						expectedSharedMounts[k] = v
+					}
 				}
 			default:
 				s.Errorf("Unsupported ARC type %d", t)
@@ -427,7 +426,8 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 	}
 
 	if len(unexpectedInitSharedMounts) > 0 && testType == "guest" {
-		s.Error("Found unexpected shared mounts on the system when not logged in")
+		s.Error("Found unexpected shared mounts on the system when not logged in: ",
+			unexpectedInitSharedMounts[0])
 	}
 }
 
