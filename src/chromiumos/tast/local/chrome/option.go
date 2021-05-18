@@ -66,6 +66,15 @@ func KeepState() Option {
 	}
 }
 
+// DisablePolicyKeyVerification returns an Option that disables the policy key
+// verification in Chrome.
+func DisablePolicyKeyVerification() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.DisablePolicyKeyVerification = true
+		return nil
+	}
+}
+
 // DeferLogin returns an option that instructs chrome.New to return before logging into a session.
 // After successful return of chrome.New, you can call ContinueLogin to continue login.
 func DeferLogin() Option {
