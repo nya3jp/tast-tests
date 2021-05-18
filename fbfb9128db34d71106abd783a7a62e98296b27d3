@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "612d789e_e8e6fa37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-05-18T00:29:22Z",
+      "side": 1,
+      "message": "Is this correct? Did you mean soraka?",
+      "range": {
+        "startLine": 30,
+        "startChar": 44,
+        "endLine": 30,
+        "endChar": 50
+      },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b266a05_1d67ac4d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
         "patchSetId": 2
@@ -112,6 +135,23 @@
         "endLine": 73,
         "endChar": 73
       },
+      "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef42c2db_f94b8d92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-05-18T00:29:22Z",
+      "side": 1,
+      "message": "Is it okay not to revert back to the original state (dev_enable_udc\u003d0 or 1 depending on the device) after the test is done?",
       "revId": "fbfb9128db34d71106abd783a7a62e98296b27d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
