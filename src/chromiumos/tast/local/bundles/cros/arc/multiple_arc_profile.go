@@ -135,7 +135,7 @@ func switchPlayStoreAccount(ctx context.Context, arcDevice *androidui.Device,
 	}
 
 	accountNameButton := arcDevice.Object(androidui.ClassName("android.widget.TextView"),
-		androidui.Text("Shireen Snow"))
+		androidui.Text("arc.parent.test@gmail.com"))
 	if err := accountNameButton.WaitForExists(ctx, 30*time.Second); err != nil {
 		return errors.Wrap(err, "failed to find Account Name")
 	}
