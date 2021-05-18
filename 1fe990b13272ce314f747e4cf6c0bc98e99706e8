@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f3db45b_58341d3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-18T00:50:51Z",
+      "side": 1,
+      "message": "Good enough, but I\u0027d rather just revert",
+      "revId": "1fe990b13272ce314f747e4cf6c0bc98e99706e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f984f30_f5e8244d",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-18T00:50:51Z",
+      "side": 1,
+      "message": "we\u0027re now allowing 2 of these (b/c WiFiManager also allows this timeout)\n\nWe also didn\u0027t previously need to poll anything -- we relied on D-Bus signals. Now we have to poll.\n\npersonally, I\u0027d rather just drop the IsAvailable check, because that\u0027s not the original purpose here. Also, it used to be somewhat of an \"optimization\" (we don\u0027t have to poll, if we can quickly decide WiFi is gone), but now that we\u0027ve added the same timeout...it\u0027s not.",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 30
+      },
+      "revId": "1fe990b13272ce314f747e4cf6c0bc98e99706e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
