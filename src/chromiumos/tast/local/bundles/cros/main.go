@@ -95,6 +95,7 @@ import (
 	// imports kioskLoggedIn fixture. It is not referenced by tests as it
 	// returns FixtData type from policyutil/fixtures.
 	_ "chromiumos/tast/local/kioskmode/fixtures"
+	_ "chromiumos/tast/local/meta" // import fixture for meta tests
 )
 
 func main() {
