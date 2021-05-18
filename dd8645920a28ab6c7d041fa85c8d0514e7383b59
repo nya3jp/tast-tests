@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "712dffab_5ec2aee6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-18T20:05:33Z",
+      "side": 1,
+      "message": "I think the Cq-Depend is not correct here. I think this one ONLY depends on chromium:2885979",
+      "revId": "dd8645920a28ab6c7d041fa85c8d0514e7383b59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7920dd84_bc9a92a2",
