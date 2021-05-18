@@ -105,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a5b5051_6dc24c3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_signal_strength.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-05-18T21:38:41Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "04b05758_129f6d30",
+      "revId": "72855a7856ce3b65320c7e15edab215f63346a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18418e3b_1a2c0a41",
