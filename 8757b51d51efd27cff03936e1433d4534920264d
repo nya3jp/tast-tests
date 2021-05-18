@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a255ba9e_495937e8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-18T02:24:02Z",
+      "side": 1,
+      "message": "How about using *router.SupportCapture here?",
+      "range": {
+        "startLine": 93,
+        "startChar": 62,
+        "endLine": 93,
+        "endChar": 68
+      },
+      "revId": "8757b51d51efd27cff03936e1433d4534920264d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "453d69bd_3d173095",
+        "filename": "src/chromiumos/tast/remote/wificell/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-05-18T02:24:02Z",
+      "side": 1,
+      "message": "One question: any benefit moving this to util subpackage? More util methods to be added?\n\nAlso, the package name, util, is prohibited according to Go Style:\nhttp://go/go-style/decisions#package-names",
+      "revId": "8757b51d51efd27cff03936e1433d4534920264d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
