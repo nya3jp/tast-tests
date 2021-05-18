@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a44680c_2d14e0ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-18T05:57:50Z",
+      "side": 1,
+      "message": "perhaps also worth to mention the new router package move.",
+      "revId": "8757b51d51efd27cff03936e1433d4534920264d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d987cca_1ef394be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-18T05:57:50Z",
+      "side": 1,
+      "message": "LGTM % existing comments. Defer to others.",
+      "revId": "8757b51d51efd27cff03936e1433d4534920264d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a255ba9e_495937e8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
         "patchSetId": 4
