@@ -22,6 +22,30 @@
       },
       "revId": "5c4c35a84e9997c5d455484b2d63b12ac687b1e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3182d9f5_a6b0f00b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-18T07:38:35Z",
+      "side": 1,
+      "message": "Line 894 indicated that we need find out W8.",
+      "parentUuid": "9fc4bec6_6dfa5e96",
+      "range": {
+        "startLine": 893,
+        "startChar": 51,
+        "endLine": 893,
+        "endChar": 54
+      },
+      "revId": "5c4c35a84e9997c5d455484b2d63b12ac687b1e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
