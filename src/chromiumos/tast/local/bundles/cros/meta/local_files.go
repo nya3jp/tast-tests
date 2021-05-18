@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// Package meta contains supporting code for Tast meta tests.
 package meta
 
 import (
@@ -9,6 +10,7 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/fsutil"
+	_ "chromiumos/tast/local/meta" // import fixture
 	"chromiumos/tast/testing"
 )
 
@@ -21,6 +23,7 @@ func init() {
 			"local_files_internal.txt",
 			"local_files_external.txt",
 		},
+		Fixture: "metaLocalDataFilesFixture",
 		// This test is executed by remote tests in the meta package.
 	})
 }
