@@ -44,14 +44,17 @@ func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error 
 		if err := loginUser(ctx, cfg, sess); err != nil {
 			return err
 		}
-		// Clear all notifications after logging in so none will be shown at the beginning of tests.
-		// TODO(crbug/1079235): move this outside of the switch once the test API is available in guest mode.
-		tconn, err := sess.TestAPIConn(ctx)
-		if err != nil {
-			return err
-		}
-		if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.removeAllNotifications)()", nil); err != nil {
-			return errors.Wrap(err, "failed to clear notifications")
+
+		if cfg.RemoveNotification() {
+			// Clear all notifications after logging in so none will be shown at the beginning of tests.
+			// TODO(crbug/1079235): move this outside of the switch once the test API is available in guest mode.
+			tconn, err := sess.TestAPIConn(ctx)
+			if err != nil {
+				return err
+			}
+			if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.removeAllNotifications)()", nil); err != nil {
+				return errors.Wrap(err, "failed to clear notifications")
+			}
 		}
 		return nil
 	case config.GuestLogin:
