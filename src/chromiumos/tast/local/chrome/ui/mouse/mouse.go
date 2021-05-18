@@ -87,3 +87,9 @@ func Drag(ctx context.Context, tconn *chrome.TestConn, start, end coords.Point, 
 	}
 	return Release(ctx, tconn, LeftButton)
 }
+
+// MoveInDisplay moves the mouse cursor to the specified location in the
+// specified display instantly.
+func MoveInDisplay(ctx context.Context, tconn *chrome.TestConn, location coords.Point, displayID string) error {
+	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.mouseMoveInDisplay)", displayID, location)
+}
