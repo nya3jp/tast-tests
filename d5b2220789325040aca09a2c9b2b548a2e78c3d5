@@ -33,6 +33,24 @@
       "message": "If this is intended to run the test only 32GB or more (in the notation in commercial catalogs), I suggest to make it \"24\".\nAccording to the report there was a failed case when the SSD was reported as 15GB.\nI am afraid devices that are said to have \"16GB SSD\" in the catalog may actually have 15GB or 16GB after subtracting the boot partition and the size value truncation.",
       "revId": "d5b2220789325040aca09a2c9b2b548a2e78c3d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44377588_20a0cffd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-05-18T16:44:25Z",
+      "side": 1,
+      "message": "Thanks! Let\u0027s be a bit safer than sorry(er).",
+      "parentUuid": "7cd2a3ee_df74c09e",
+      "revId": "d5b2220789325040aca09a2c9b2b548a2e78c3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
