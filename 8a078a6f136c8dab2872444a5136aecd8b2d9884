@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac7e81a4_de0254c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-05-18T02:58:59Z",
+      "side": 1,
+      "message": "I assume the commit message is rewritten later.",
+      "revId": "8a078a6f136c8dab2872444a5136aecd8b2d9884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ac096ab1_7ee01820",
@@ -14,6 +31,29 @@
       "writtenOn": "2021-05-18T02:08:08Z",
       "side": 1,
       "message": "This CL makes the current testing.State accessible through context. Please let me know if we can use it to solve the issue of test libraries not able to access runtime variables.",
+      "revId": "8a078a6f136c8dab2872444a5136aecd8b2d9884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8398747f_7e0a485a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-05-18T02:58:59Z",
+      "side": 1,
+      "message": "nit: double quote would be suffice here",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 11
+      },
       "revId": "8a078a6f136c8dab2872444a5136aecd8b2d9884",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
