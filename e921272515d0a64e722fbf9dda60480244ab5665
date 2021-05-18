@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5438d91a_ea3a74ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-18T01:56:12Z",
+      "side": 1,
+      "message": "It seems that rgbToYUV is used only once. Could we just put the color of white in here in YUV directly?",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 35
+      },
+      "revId": "e921272515d0a64e722fbf9dda60480244ab5665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9546ef3_ca664bb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-18T01:56:12Z",
+      "side": 1,
+      "message": "Find the",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 9
+      },
+      "revId": "e921272515d0a64e722fbf9dda60480244ab5665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42764770_b566da06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-18T01:56:12Z",
+      "side": 1,
+      "message": "Find the",
+      "range": {
+        "startLine": 148,
+        "startChar": 4,
+        "endLine": 148,
+        "endChar": 9
+      },
+      "revId": "e921272515d0a64e722fbf9dda60480244ab5665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21276851_83953025",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-18T01:56:12Z",
+      "side": 1,
+      "message": "bottom-right.\ntop and bottom go first.",
+      "range": {
+        "startLine": 148,
+        "startChar": 24,
+        "endLine": 148,
+        "endChar": 36
+      },
+      "revId": "e921272515d0a64e722fbf9dda60480244ab5665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "386b2a35_e0ecd139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-18T01:56:12Z",
+      "side": 1,
+      "message": "nit: Add \u0027,\u0027 here.",
+      "range": {
+        "startLine": 217,
+        "startChar": 48,
+        "endLine": 217,
+        "endChar": 49
+      },
+      "revId": "e921272515d0a64e722fbf9dda60480244ab5665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8c80a9a_3fcde58d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-18T01:56:12Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 220,
+        "startChar": 49,
+        "endLine": 220,
+        "endChar": 50
+      },
+      "revId": "e921272515d0a64e722fbf9dda60480244ab5665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f95ede_f5f25057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-18T01:56:12Z",
+      "side": 1,
+      "message": "clicking",
+      "range": {
+        "startLine": 266,
+        "startChar": 43,
+        "endLine": 266,
+        "endChar": 48
+      },
+      "revId": "e921272515d0a64e722fbf9dda60480244ab5665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5283ad6_45dcdd92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-18T01:56:12Z",
+      "side": 1,
+      "message": "clicking",
+      "range": {
+        "startLine": 273,
+        "startChar": 42,
+        "endLine": 273,
+        "endChar": 47
+      },
+      "revId": "e921272515d0a64e722fbf9dda60480244ab5665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
