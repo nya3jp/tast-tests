@@ -74,8 +74,10 @@ func init() {
 					{Name: "meta.LocalFiles"},
 				},
 				wantFiles: map[string]string{
-					"tests/meta.LocalFiles/local_files_internal.txt": "This is an internal data file.\n",
-					"tests/meta.LocalFiles/local_files_external.txt": "This is an external data file.\n",
+					"tests/meta.LocalFiles/local_files_internal.txt":          "This is an internal data file.\n",
+					"tests/meta.LocalFiles/local_files_external.txt":          "This is an external data file.\n",
+					"fixtures/metaDataFilesFixture/fixture_data_internal.txt": "This is an internal data file.\n",
+					"fixtures/metaDataFilesFixture/fixture_data_external.txt": "This is an external data file.\n",
 				},
 			},
 			ExtraAttr: []string{"group:mainline", "group:meta"},
