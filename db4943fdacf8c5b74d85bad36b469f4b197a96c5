@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b2fe37c_886a6bad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-05-18T03:09:13Z",
+      "side": 1,
+      "message": "How about\n\nvmEnabled, err :\u003d arc.VMEnabled()\n...\n\nif vmEnabled {\n  adbdName \u003d \"arcvm-adbd\"\n} else {\n  adbdName \u003d \"arc-adbd\"\n}\n\n...",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 41
+      },
+      "revId": "db4943fdacf8c5b74d85bad36b469f4b197a96c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "456a6dd3_8c291a9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-05-18T03:09:13Z",
+      "side": 1,
+      "message": "ditto adbdName",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 42
+      },
+      "revId": "db4943fdacf8c5b74d85bad36b469f4b197a96c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
