@@ -1,0 +1,89 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package bluetooth
+
+import (
+	"context"
+
+	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: UIToggleFromOSSettings,
+		Desc: "Enable and disable Bluetooth from ChromeOS Settings UI",
+		Contacts: []string{
+			"chromeos-bluetooth-champs@google.com", // https://b.corp.google.com/issues/new?component=167317&template=1370210.
+			"chromeos-bluetooth-engprod@google.com",
+			"shijinabraham@google.com",
+		},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome"},
+		Pre:          chrome.LoggedIn(),
+	})
+}
+
+// UIToggleFromOSSettings tests enabling/disabling Bluetooth from the ChromeOS settings UI.
+func UIToggleFromOSSettings(ctx context.Context, s *testing.State) {
+	cr := s.PreValue().(*chrome.Chrome)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	ui := uiauto.New(tconn)
+
+	// Bluetooth button in the ChromeOS settings.
+	bluetoothToggleButton := nodewith.Name("Bluetooth enable").Role(role.ToggleButton)
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	// Power on Bluetooth adapter.
+	if err = bluetooth.Enable(ctx); err != nil {
+		s.Fatal("Failed to power on Bluetooth adapter: ", err)
+	}
+
+	// Launch the ChromeOS settings application
+	_, err = ossettings.LaunchAtPage(ctx, tconn, nodewith.Name("Bluetooth").Role(role.Heading))
+	if err != nil {
+		s.Fatal("Failed to bring up Bluetooth os settings page: ", err)
+	}
+	if err = ui.Exists(bluetoothToggleButton)(ctx); err != nil {
+		s.Fatal("Failed to find Bluetooth button is ChromeOS setting UI: ", err)
+	}
+
+	numIterations := 20
+	for i := 0; i < numIterations; i++ {
+		s.Logf("Iteration %d of %d", i, numIterations)
+
+		// Click on Bluetooth UI button and wait for button state to toggle.
+		if err := ui.LeftClick(bluetoothToggleButton)(ctx); err != nil {
+			s.Fatal("Failed to left click bluetooth toggle button: ", err)
+		}
+
+		// Confirm Bluetooth adapter is disabled.
+		if err = bluetooth.PollForBTDisabled(ctx); err != nil {
+			s.Fatal("Failed to verify Bluetooth status, got enabled, want disabled: ", err)
+		}
+
+		// Click on Bluetooth UI button and wait for button state to toggle.
+		if err := ui.LeftClick(bluetoothToggleButton)(ctx); err != nil {
+			s.Fatal("Failed to left click the bluetooth toggle button: ", err)
+		}
+
+		// Confirm Bluetooth adapter is disabled.
+		if err = bluetooth.PollForBTEnabled(ctx); err != nil {
+			s.Fatal("Failed to verify Bluetooth status, got disabled, want enabled: ", err)
+		}
+
+	}
+}
