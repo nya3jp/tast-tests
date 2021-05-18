@@ -227,7 +227,7 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 	// To determine which processes we expect, we need to know whether the
 	// test device is running ARC++ or ARCVM and whether we are running as
 	// guest or user.
-	var expectedSharedMounts map[string]bool
+	expectedSharedMounts := ARCExpectedSharedMountsCommon
 	if arc.Supported() {
 		if t, ok := arc.Type(); ok {
 			switch t {
@@ -427,7 +427,8 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 	}
 
 	if len(unexpectedInitSharedMounts) > 0 && testType == "guest" {
-		s.Error("Found unexpected shared mounts on the system when not logged in")
+		s.Error("Found unexpected shared mounts on the system when not logged in: ",
+			unexpectedInitSharedMounts[0])
 	}
 }
 
