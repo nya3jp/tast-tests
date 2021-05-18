@@ -16,6 +16,23 @@
       "message": "Feedback has been addressed. Please review. Thanks.",
       "revId": "660a1fc417421b31291418063510e32608db48b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c681d08f_abbccbc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-18T03:26:36Z",
+      "side": 1,
+      "message": "Please see my comment on the other CL.\n",
+      "revId": "660a1fc417421b31291418063510e32608db48b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
