@@ -111,6 +111,18 @@ func init() {
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInWith100FakeAppsDoubleBuffering",
+		Desc:     "Logged into a user session with 100 fake apps with double buffer compositing",
+		Contacts: []string{"yjliu@chromium.org"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{ExtraArgs("--double-buffer-compositing")}, nil
+		}),
+		Parent:          "install100Apps",
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
 }
 
 // OptionsCallback is the function used to set up the fixture by returning Chrome options.

@@ -41,6 +41,9 @@ func init() {
 		}, {
 			Name:    "skia_renderer",
 			Fixture: "chromeLoggedInWith100FakeAppsSkiaRenderer",
+		}, {
+			Name:    "double_buffer_compositing",
+			Fixture: "chromeLoggedInWith100FakeAppsDoubleBuffering",
 		}},
 	})
 }
