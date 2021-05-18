@@ -147,6 +147,10 @@ func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Sess
 		}
 	}
 
+	if cfg.IsFullRestoreEnabled() {
+		return driver.PrepareForRestart()
+	}
+
 	return nil
 }
 
