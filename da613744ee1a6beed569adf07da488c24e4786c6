@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a60583_315a62f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-05-18T16:50:39Z",
+      "side": 1,
+      "message": "You cannot use a keyboard shortcut to snap a window from overview. We probably should use mouse input in clamshell mode.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 87
+      },
+      "revId": "da613744ee1a6beed569adf07da488c24e4786c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5e2da180_992834a6",
