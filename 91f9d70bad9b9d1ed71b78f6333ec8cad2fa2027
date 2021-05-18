@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bbe3ee23_b988ef7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-18T17:43:58Z",
+      "side": 1,
+      "message": "Thanks for the background. It sounds like saving and restoring might be the best way to go. I\u0027ll update the commit message and remove the shill comment.",
+      "parentUuid": "02dadaae_22cd38f8",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "91f9d70bad9b9d1ed71b78f6333ec8cad2fa2027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ac6c9eb5_9e44fcd7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -98,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1300fb4_3cfcfaf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_firewall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-18T17:43:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78893697_2cbd9a87",
+      "range": {
+        "startLine": 64,
+        "startChar": 26,
+        "endLine": 64,
+        "endChar": 34
+      },
+      "revId": "91f9d70bad9b9d1ed71b78f6333ec8cad2fa2027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0f35769_8e5f7aab",
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d5504a9_783131d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/firewall/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-18T17:43:58Z",
+      "side": 1,
+      "message": "Good suggestion. Done.",
+      "parentUuid": "f0f35769_8e5f7aab",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 90,
+        "endChar": 9
+      },
+      "revId": "91f9d70bad9b9d1ed71b78f6333ec8cad2fa2027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef062882_8ef14e5a",
@@ -134,6 +206,30 @@
       "writtenOn": "2021-05-18T03:02:06Z",
       "side": 1,
       "message": "This should return an error.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 10
+      },
+      "revId": "91f9d70bad9b9d1ed71b78f6333ec8cad2fa2027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "457ea00c_6caa822d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/firewall/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-18T17:43:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef062882_8ef14e5a",
       "range": {
         "startLine": 121,
         "startChar": 0,
