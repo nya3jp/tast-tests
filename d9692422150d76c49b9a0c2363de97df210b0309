@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eefb2bc4_1faf7f89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-18T05:41:21Z",
+      "side": 1,
+      "message": "Sorry, did not notice the word \"not\".",
+      "parentUuid": "b25ef24e_e4f27122",
+      "range": {
+        "startLine": 904,
+        "startChar": 47,
+        "endLine": 904,
+        "endChar": 53
+      },
+      "revId": "d9692422150d76c49b9a0c2363de97df210b0309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a69ac78e_96286365",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Hi Judy, this is an illustration of what we want to find:\n```\n          Col 1    Col 2.  Col 3\nRow 1.     w1.      w2.     w3\nRow 2.     w4.      w5.     w6\nRow 3.     w7       w8 \n```\n\nThe algorithm is to find out w8. I think we cannot use x \u003e\u003d x0 \u0026\u0026 y \u003e\u003d y0",
       "parentUuid": "a69ac78e_96286365",
+      "range": {
+        "startLine": 905,
+        "startChar": 4,
+        "endLine": 905,
+        "endChar": 23
+      },
+      "revId": "d9692422150d76c49b9a0c2363de97df210b0309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec1e37f8_666d1a62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-18T05:41:21Z",
+      "side": 1,
+      "message": "Then it is 1) point on a larger row or 2) same row but larger column.\n\nI\u0027d prefer to make it as following to make it more readable:\n\nif (y \u003e y0) || (y \u003d\u003d y0 \u0026\u0026 x \u003e x0) {\n    x0 \u003d x\n    y0 \u003d y\n    ...\n}",
+      "parentUuid": "dd430f5b_63dc7853",
       "range": {
         "startLine": 905,
         "startChar": 4,
