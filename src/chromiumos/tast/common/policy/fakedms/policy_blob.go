@@ -15,8 +15,7 @@ const (
 	// DefaultPolicyUser is the username that will be used for "policy_user" in a
 	// PolicyBlob by default. This username should usually be used to log into
 	// Chrome (i.e. passed in to the Chrome login function).
-	DefaultPolicyUser = "tast-user@managedchrome.com"
-
+	DefaultPolicyUser         = "tast-user@managedchrome.com"
 	defaultInvalidationSource = 16
 	defaultInvalidationName   = "test_policy"
 )

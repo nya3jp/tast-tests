@@ -9072,16 +9072,16 @@ type UsageTimeLimitValueTimeWindowLimit struct {
 }
 
 type UsageTimeLimitValueTimeWindowLimitEntries struct {
-	EffectiveDay      string        `json:"effective_day"`
-	EndsAt            *RefTime      `json:"ends_at"`
-	LastUpdatedMillis string        `json:"last_updated_millis"`
-	StartsAt          *RefUsageTime `json:"starts_at"`
+	EffectiveDay      string   `json:"effective_day"`
+	EndsAt            *RefTime `json:"ends_at"`
+	LastUpdatedMillis string   `json:"last_updated_millis"`
+	StartsAt          *RefTime `json:"starts_at"`
 }
 
 type UsageTimeLimitValueTimeUsageLimit struct {
 	Friday    *RefTimeUsageLimitEntry `json:"friday"`
 	Monday    *RefTimeUsageLimitEntry `json:"monday"`
-	ResetAt   *RefUsageTime           `json:"reset_at"`
+	ResetAt   *RefTime                `json:"reset_at"`
 	Saturday  *RefTimeUsageLimitEntry `json:"saturday"`
 	Sunday    *RefTimeUsageLimitEntry `json:"sunday"`
 	Thursday  *RefTimeUsageLimitEntry `json:"thursday"`
@@ -12982,37 +12982,6 @@ func (p *PrintingBackgroundGraphicsDefault) UnmarshalAs(m json.RawMessage) (inte
 }
 func (p *PrintingBackgroundGraphicsDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 623. LegacySameSiteCookieBehaviorEnabled
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type LegacySameSiteCookieBehaviorEnabled struct {
-	Stat Status
-	Val  int
-}
-
-func (p *LegacySameSiteCookieBehaviorEnabled) Name() string {
-	return "LegacySameSiteCookieBehaviorEnabled"
-}
-func (p *LegacySameSiteCookieBehaviorEnabled) Field() string         { return "" }
-func (p *LegacySameSiteCookieBehaviorEnabled) Scope() Scope          { return ScopeUser }
-func (p *LegacySameSiteCookieBehaviorEnabled) Status() Status        { return p.Stat }
-func (p *LegacySameSiteCookieBehaviorEnabled) UntypedV() interface{} { return p.Val }
-func (p *LegacySameSiteCookieBehaviorEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v int
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as int", m)
-	}
-	return v, nil
-}
-func (p *LegacySameSiteCookieBehaviorEnabled) Equal(iface interface{}) bool {
-	v, ok := iface.(int)
 	if !ok {
 		return ok
 	}
@@ -17009,6 +16978,56 @@ func (p *AttestationExtensionAllowlist) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// 786. DataLeakPreventionRulesList
+///////////////////////////////////////////////////////////////////////////////
+type DataLeakPreventionRulesList struct {
+	Stat Status
+	Val  []*DataLeakPreventionRulesListValue
+}
+
+type DataLeakPreventionRulesListValue struct {
+	Description  string                                          `json:"description"`
+	Destinations *DataLeakPreventionRulesListValueDestinations   `json:"destinations"`
+	Name         string                                          `json:"name"`
+	Restrictions []*DataLeakPreventionRulesListValueRestrictions `json:"restrictions"`
+	Sources      *DataLeakPreventionRulesListValueSources        `json:"sources"`
+}
+
+type DataLeakPreventionRulesListValueSources struct {
+	Urls []string `json:"urls"`
+}
+
+type DataLeakPreventionRulesListValueDestinations struct {
+	Components []string `json:"components"`
+	Urls       []string `json:"urls"`
+}
+
+type DataLeakPreventionRulesListValueRestrictions struct {
+	Class string `json:"class"`
+	Level string `json:"level"`
+}
+
+func (p *DataLeakPreventionRulesList) Name() string          { return "DataLeakPreventionRulesList" }
+func (p *DataLeakPreventionRulesList) Field() string         { return "" }
+func (p *DataLeakPreventionRulesList) Scope() Scope          { return ScopeUser }
+func (p *DataLeakPreventionRulesList) Status() Status        { return p.Stat }
+func (p *DataLeakPreventionRulesList) UntypedV() interface{} { return p.Val }
+func (p *DataLeakPreventionRulesList) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []*DataLeakPreventionRulesListValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []*DataLeakPreventionRulesListValue", m)
+	}
+	return v, nil
+}
+func (p *DataLeakPreventionRulesList) Equal(iface interface{}) bool {
+	v, ok := iface.([]*DataLeakPreventionRulesListValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // 787. WebRtcAllowLegacyTLSProtocols
 ///////////////////////////////////////////////////////////////////////////////
 type WebRtcAllowLegacyTLSProtocols struct {
@@ -18357,6 +18376,35 @@ func (p *DataLeakPreventionReportingEnabled) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// 857. AdditionalDnsQueryTypesEnabled
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type AdditionalDnsQueryTypesEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *AdditionalDnsQueryTypesEnabled) Name() string          { return "AdditionalDnsQueryTypesEnabled" }
+func (p *AdditionalDnsQueryTypesEnabled) Field() string         { return "" }
+func (p *AdditionalDnsQueryTypesEnabled) Scope() Scope          { return ScopeUser }
+func (p *AdditionalDnsQueryTypesEnabled) Status() Status        { return p.Stat }
+func (p *AdditionalDnsQueryTypesEnabled) UntypedV() interface{} { return p.Val }
+func (p *AdditionalDnsQueryTypesEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *AdditionalDnsQueryTypesEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // 858. TripleDESEnabled
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -18440,11 +18488,6 @@ type RefWeeklyTime struct {
 }
 
 type RefTime struct {
-	Hour   int `json:"hour"`
-	Minute int `json:"minute"`
-}
-
-type RefUsageTime struct {
 	Hour   int `json:"hour"`
 	Minute int `json:"minute"`
 }
