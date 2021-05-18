@@ -1,0 +1,2 @@
+example.AccessVars.foo: "bar"
+example.AccessVars.globalBoolean: "true"
