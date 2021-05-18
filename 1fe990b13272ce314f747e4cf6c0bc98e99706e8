@@ -39,6 +39,30 @@
       },
       "revId": "1fe990b13272ce314f747e4cf6c0bc98e99706e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8c8f627_4edc17b3",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-18T01:09:44Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Removing the check sounds good to me. Done.",
+      "parentUuid": "9f984f30_f5e8244d",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 30
+      },
+      "revId": "1fe990b13272ce314f747e4cf6c0bc98e99706e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
