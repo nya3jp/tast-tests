@@ -21,6 +21,10 @@ const (
 	defaultInvalidationName   = "test_policy"
 )
 
+// PolicyUser is the user account that used as PolicyUser in policy blob. The value is
+// tast-user@managedchrome.com if it is not set in fakeDMSFixture.
+var PolicyUser = DefaultPolicyUser
+
 // A PolicyBlob is a struct that marshals into what is expected by Chrome's
 // policy_testserver.py.
 type PolicyBlob struct {
@@ -76,7 +80,7 @@ type BlobPolicyMap map[string]json.RawMessage
 func NewPolicyBlob() *PolicyBlob {
 	return &PolicyBlob{
 		ManagedUsers:     []string{"*"},
-		PolicyUser:       DefaultPolicyUser,
+		PolicyUser:       PolicyUser,
 		InvalidationSrc:  defaultInvalidationSource,
 		InvalidationName: defaultInvalidationName,
 	}

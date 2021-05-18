@@ -9,9 +9,11 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -120,11 +122,31 @@ func init() {
 		PreTestTimeout:  resetTimeout,
 		PostTestTimeout: resetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "familyLinkUnicornPolicyLogin",
+		Desc:     "Supervised Family Link user login with Unicorn account and policy setup",
+		Contacts: []string{"tobyhuang@chromium.org", "xiqiruan@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     NewFamilyLinkFixture("unicorn.parentUser", "unicorn.parentPassword", "unicorn.childUser", "unicorn.childPassword", true),
+		Vars: []string{
+			"unicorn.parentUser",
+			"unicorn.parentPassword",
+			"unicorn.childUser",
+			"unicorn.childPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginTimeout + time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+		Parent:          "fakeDMSFamilyLink",
+	})
 }
 
 type familyLinkFixture struct {
 	cr             *chrome.Chrome
 	opts           []chrome.Option
+	fdms           *fakedms.FakeDMS
 	parentUser     string
 	parentPassword string
 	childUser      string
@@ -137,6 +159,9 @@ type FixtData struct {
 	// Chrome is the running chrome instance.
 	Chrome *chrome.Chrome
 
+	// FakeDMS is the running DMS  server if any.
+	FakeDMS *fakedms.FakeDMS
+
 	// TestConn is a connection to the test extension.
 	TestConn *chrome.TestConn
 }
@@ -144,7 +169,9 @@ type FixtData struct {
 func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	parentUser := s.RequiredVar(f.parentUser)
 	parentPass := s.RequiredVar(f.parentPassword)
-	if len(f.childUser) > 0 && len(f.childPassword) > 0 {
+
+	isChildLogin := len(f.childUser) > 0 && len(f.childPassword) > 0
+	if isChildLogin {
 		childUser := s.RequiredVar(f.childUser)
 		childPass := s.RequiredVar(f.childPassword)
 		f.opts = append(f.opts, chrome.GAIALogin(chrome.Creds{
@@ -158,6 +185,15 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 			User: parentUser,
 			Pass: parentPass,
 		}))
+	}
+
+	fdms, isFLPolicyTest := s.ParentValue().(*fakedms.FakeDMS)
+	if isFLPolicyTest {
+		if err := fdms.Ping(ctx); err != nil {
+			s.Fatal("Failed to ping FakeDMS: ", err)
+		}
+		f.opts = append(f.opts, chrome.DMSPolicy(fdms.URL))
+		f.opts = append(f.opts, chrome.DisablePolicyKeyVerification())
 	}
 
 	if !f.isOwner {
@@ -188,11 +224,20 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
+	if isFLPolicyTest {
+		if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, fakedms.NewPolicyBlob()); err != nil {
+			s.Fatal("Failed to serve policies: ", err)
+		}
+	}
+
 	f.cr = cr
+	f.fdms = fdms
 	fixtData := &FixtData{
 		Chrome:   cr,
+		FakeDMS:  f.fdms,
 		TestConn: tconn,
 	}
+
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
 	chrome.Lock()
 
@@ -201,7 +246,10 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 
 func (f *familyLinkFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	chrome.Unlock()
-
+	if f.fdms != nil {
+		f.fdms.Stop(ctx)
+		f.fdms = nil
+	}
 	if err := f.cr.Close(ctx); err != nil {
 		s.Log("Failed to close Chrome connection: ", err)
 	}
@@ -212,6 +260,14 @@ func (f *familyLinkFixture) Reset(ctx context.Context) error {
 	if err := f.cr.Responded(ctx); err != nil {
 		return errors.Wrap(err, "existing Chrome connection is unusable")
 	}
+	if f.fdms != nil {
+		ctx, cancel := context.WithTimeout(ctx, chrome.ResetTimeout)
+		defer cancel()
+		if err := policyutil.ServeBlobAndRefresh(ctx, f.fdms, f.cr, fakedms.NewPolicyBlob()); err != nil {
+			return errors.Wrap(err, "failed to clear policies")
+		}
+	}
+
 	if err := f.cr.ResetState(ctx); err != nil {
 		return errors.Wrap(err, "failed resetting existing Chrome session")
 	}
