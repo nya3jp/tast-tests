@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5f50e740_34c99b03",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-18T03:11:19Z",
+      "side": 1,
+      "message": "I will fix it. Thanks.",
+      "parentUuid": "ac7e81a4_de0254c1",
+      "revId": "8a078a6f136c8dab2872444a5136aecd8b2d9884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ac096ab1_7ee01820",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2021-05-18T02:58:59Z",
       "side": 1,
       "message": "nit: double quote would be suffice here",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 11
+      },
+      "revId": "8a078a6f136c8dab2872444a5136aecd8b2d9884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20b5c267_76e38518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-18T03:11:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8398747f_7e0a485a",
       "range": {
         "startLine": 28,
         "startChar": 10,
