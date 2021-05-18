@@ -97,6 +97,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66f165ea_48d44c3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-05-18T03:01:49Z",
+      "side": 1,
+      "message": "top-left.",
+      "range": {
+        "startLine": 128,
+        "startChar": 24,
+        "endLine": 128,
+        "endChar": 32
+      },
+      "revId": "e921272515d0a64e722fbf9dda60480244ab5665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42764770_b566da06",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
         "patchSetId": 3
