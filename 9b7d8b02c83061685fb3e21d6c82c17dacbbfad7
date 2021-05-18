@@ -70,6 +70,30 @@
       },
       "revId": "9b7d8b02c83061685fb3e21d6c82c17dacbbfad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebbf9199_c13c3eaf",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-18T01:34:21Z",
+      "side": 1,
+      "message": "Hmm, I looked at go/tast-ap-refactor and I don\u0027t see the answer...how do you expect this to work? That we really write new tests, just to target a new AP OS? I can understand that for proprietary ones, where we\u0027ll have less flexibility, but for OpenWRT?",
+      "parentUuid": "28e20e98_9f60dd17",
+      "range": {
+        "startLine": 175,
+        "startChar": 74,
+        "endLine": 175,
+        "endChar": 92
+      },
+      "revId": "9b7d8b02c83061685fb3e21d6c82c17dacbbfad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
