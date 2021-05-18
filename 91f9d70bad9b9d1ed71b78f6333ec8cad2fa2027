@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "02dadaae_22cd38f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-18T03:02:06Z",
+      "side": 1,
+      "message": "Shill does not interact with iptables at all. All \"prod\" iptables commands are/should now be centralized in patchpanel.\n\npatchpanel has some logic to reset the state of iptables to a clean state, but it only resets the chains it uses and leaves alone some other chains like filter INPUT. So even restarting patchpanel may not have the correct effect depending on what you do in your patch.",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "91f9d70bad9b9d1ed71b78f6333ec8cad2fa2027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ac6c9eb5_9e44fcd7",
@@ -14,6 +37,92 @@
       "writtenOn": "2021-05-17T22:46:08Z",
       "side": 1,
       "message": "also not that familiar with iptables. +Hugo who is.",
+      "revId": "91f9d70bad9b9d1ed71b78f6333ec8cad2fa2027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afa1977c_ca9f4c15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-18T03:02:06Z",
+      "side": 1,
+      "message": "Ideally I would prefer to see the test undo exactly the iptables chains and rules it added, but this approach should be ok. One possible problem here is if some other rules are added/removed by patchpanel during the test.",
+      "revId": "91f9d70bad9b9d1ed71b78f6333ec8cad2fa2027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78893697_2cbd9a87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_firewall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-18T03:02:06Z",
+      "side": 1,
+      "message": "\"iptables state\"",
+      "range": {
+        "startLine": 64,
+        "startChar": 26,
+        "endLine": 64,
+        "endChar": 34
+      },
+      "revId": "91f9d70bad9b9d1ed71b78f6333ec8cad2fa2027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0f35769_8e5f7aab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/firewall/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-18T03:02:06Z",
+      "side": 1,
+      "message": "We should try our best to save and restore both v4 and v6 iptables states. Here and in the function below, if v4 fails to save/restore, v6 is also not saved/restored.\n\nCan we accumulate the errors and return them after the loop ?",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 90,
+        "endChar": 9
+      },
+      "revId": "91f9d70bad9b9d1ed71b78f6333ec8cad2fa2027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef062882_8ef14e5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/firewall/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-18T03:02:06Z",
+      "side": 1,
+      "message": "This should return an error.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 10
+      },
       "revId": "91f9d70bad9b9d1ed71b78f6333ec8cad2fa2027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
