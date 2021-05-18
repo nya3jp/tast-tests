@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a46244d_d99e5571",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-18T22:28:22Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective, pending Jorge\u0027s review",
+      "revId": "7ec933904708736c8dab8a18eb11879d1bd3fd38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa7653ed_c291f8c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-18T22:28:22Z",
+      "side": 1,
+      "message": "optional: For concision, consider reducing duplicated logic:\n\n    var mountsCommon, mountsUser map[string]bool\n    switch t {\n    case arc.Container:\n        mountsCommon \u003d ARCExpectedSharedMountsCommon\n        mountsUser \u003d ARCExpectedSharedMountsUser\n   case arc.VM:\n        mountsCommon \u003d ARCVMExpectedSharedMountsCommon\n        mountsUser \u003d ARCVMExpectedSharedMountsUser\n    default:\n        s.Errorf(\"Unsupported ARC type %d\", t)\n    }\n    \n    expectedSharedMounts :\u003d BaseExpectedSharedMounts\n    for k, v :\u003d range mountsCommon {\n        expectedSharedMounts[k] \u003d v\n    }\n    if testType \u003d\u003d \"user\" {\n        for k, v :\u003d range ARCVMExpectedSharedMountsUser {\n            expectedSharedMounts[k] \u003d v\n        }\n    }",
+      "revId": "7ec933904708736c8dab8a18eb11879d1bd3fd38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
