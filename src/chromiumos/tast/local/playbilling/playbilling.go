@@ -10,6 +10,8 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/mafredri/cdp/protocol/input"
+
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
@@ -24,6 +26,11 @@ const (
 	localServerPort    = 80
 	localServerAddress = "http://127.0.0.1/"
 )
+
+type elementCoordinates struct {
+	X float64 `json:"x"`
+	Y float64 `json:"y"`
+}
 
 // TestPWA holds references to the http.Server and the underlying
 // PWA CDP connection.
@@ -100,4 +107,61 @@ func (p *TestPWA) Close(ctx context.Context) {
 
 func (p *TestPWA) shutdownServer(ctx context.Context) error {
 	return p.server.Shutdown(ctx)
+}
+
+// BuySKU clicks a button on the test PWA where the SKU is the element ID.
+func (p *TestPWA) BuySKU(ctx context.Context, sku string) error {
+	return p.clickElementByID(ctx, sku)
+}
+
+func (p *TestPWA) waitForStableElementByID(ctx context.Context, id string) (elementCoordinates, error) {
+	jsExpr := fmt.Sprintf("document.getElementById('%s')", id)
+	if err := p.pbConn.WaitForExprFailOnErrWithTimeout(ctx, fmt.Sprintf("%s != undefined", jsExpr), 30*time.Second); err != nil {
+		return elementCoordinates{}, errors.Wrapf(err, "failed to wait for %q to be defined", jsExpr)
+	}
+
+	var previousLocation, currentLocation elementCoordinates
+	start := time.Now()
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := p.pbConn.Eval(ctx, fmt.Sprintf(`new Promise(resolve => {
+			const domRect = %s.getBoundingClientRect();
+			resolve({
+				x: domRect.x,
+				y: domRect.y,
+			});
+		})`, jsExpr), &currentLocation); err != nil {
+			previousLocation = elementCoordinates{}
+			return err
+		}
+		if currentLocation != previousLocation {
+			previousLocation = currentLocation
+			elapsed := time.Since(start)
+			return errors.Errorf("element has not stopped changing location after %s", elapsed)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
+		return elementCoordinates{}, errors.Wrapf(err, "failed to wait for %q to stabilize", jsExpr)
+	}
+
+	return currentLocation, nil
+}
+
+func (p *TestPWA) clickElementByID(ctx context.Context, id string) error {
+	currentLocation, err := p.waitForStableElementByID(ctx, id)
+	if err != nil {
+		return err
+	}
+
+	// Dispatch a CDP mouse event to click and release relative to the PWA window.
+	// Can't call the JS API as require gesture to initiate mouse click.
+	mousePressed := input.NewDispatchMouseEventArgs("mousePressed", currentLocation.X, currentLocation.Y).SetClickCount(1).SetButton(input.MouseButtonLeft)
+	if err := p.pbConn.DispatchMouseEvent(ctx, mousePressed); err != nil {
+		return errors.Wrapf(err, "failed to mouse down at %v", currentLocation)
+	}
+	mousePressed.Type = "mouseReleased"
+	if err := p.pbConn.DispatchMouseEvent(ctx, mousePressed); err != nil {
+		return errors.Wrapf(err, "failed to mouse up at %v", currentLocation)
+	}
+
+	return nil
 }
