@@ -64,7 +64,11 @@ func RefreshChromePolicies(ctx context.Context, cr *chrome.Chrome) error {
 }
 
 // ResetChrome resets chrome and removes all policies previously served by the FakeDMS.
-func ResetChrome(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome) error {
+func ResetChrome(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, user ...string) error {
+	if len(user) > 1 {
+		return errors.New("the number of user param should not be greater that 1")
+	}
+
 	ctx, cancel := context.WithTimeout(ctx, chrome.ResetTimeout)
 	defer cancel()
 
@@ -76,7 +80,11 @@ func ResetChrome(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome) 
 		return errors.Wrap(err, "failed to reset Chrome")
 	}
 
-	if err := ServeBlobAndRefresh(ctx, fdms, cr, fakedms.NewPolicyBlob()); err != nil {
+	pb := fakedms.NewPolicyBlob()
+	if len(user) == 1 {
+		pb.PolicyUser = user[0]
+	}
+	if err := ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
 		return errors.Wrap(err, "failed to clear policies")
 	}
 
