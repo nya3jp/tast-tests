@@ -360,7 +360,7 @@ func installYoutubeApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) 
 	}
 	defer device.Close(cleanupCtx)
 
-	installErr := playstore.InstallApp(ctx, a, device, youtubePkg, -1)
+	installErr := playstore.InstallOrUpdateApp(ctx, a, device, youtubePkg, -1)
 
 	if err := apps.Close(cleanupCtx, tconn, apps.PlayStore.ID); err != nil {
 		// Leaving PlayStore open will impact the logic of detecting fullscreen
