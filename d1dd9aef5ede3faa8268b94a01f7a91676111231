@@ -16,6 +16,24 @@
       "message": "Considering the regression we had, could you\n1) Split the CL into two? one to introduce params (stable/unstable), and the other to promote stable one to critical?\n2) Following Tast\u0027s generic guideline, can we wait a bit more for the promotion? Even if we do not count one error, which looks unrelated Chrome Crash, we have only 10 passes after fixing the test failure properly, while the guideline is reasonable ~20 passing.",
       "revId": "d1dd9aef5ede3faa8268b94a01f7a91676111231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c5a228_406e1afe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-05-18T18:12:59Z",
+      "side": 1,
+      "message": "Done. I\u0027ve re-scoped this CL to create stable/unstable versions only. And will wait for ~20 passings before promoting it.",
+      "parentUuid": "688f2d2c_7069fe72",
+      "revId": "d1dd9aef5ede3faa8268b94a01f7a91676111231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
