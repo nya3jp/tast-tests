@@ -39,6 +39,24 @@
       "message": "One question: any benefit moving this to util subpackage? More util methods to be added?\n\nAlso, the package name, util, is prohibited according to Go Style:\nhttp://go/go-style/decisions#package-names",
       "revId": "8757b51d51efd27cff03936e1433d4534920264d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b683b78_c98badab",
+        "filename": "src/chromiumos/tast/remote/wificell/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-18T02:28:01Z",
+      "side": 1,
+      "message": "I guess they are moved here to reduce circular dependency between wificell and wificell/router. Not sure if wificellutil works better. (it is kind of long...)",
+      "parentUuid": "453d69bd_3d173095",
+      "revId": "8757b51d51efd27cff03936e1433d4534920264d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
