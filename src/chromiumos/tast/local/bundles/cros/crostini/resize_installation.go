@@ -6,11 +6,15 @@ package crostini
 
 import (
 	"context"
+	"fmt"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/crostini/faillog"
 	"chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
@@ -50,6 +54,7 @@ func init() {
 func ResizeInstallation(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
+
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
@@ -80,19 +85,12 @@ func ResizeInstallation(ctx context.Context, s *testing.State) {
 			testing.ContextLogf(ctx, "Error deleting images: %q", err)
 		}
 	}()
-
+	defer func() { faillog.DumpUITreeAndScreenshot(ctx, tconn, "resize_installation", err) }()
 	// Install Crostini.
 	resultDiskSize, err := ui.InstallCrostini(ctx, tconn, cr, iOptions)
 	if err != nil {
 		s.Fatal("Failed to install Crostini: ", err)
 	}
-
-	// Launch Terminal
-	terminalApp, err := terminalapp.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to lauch terminal after installing Crostini: ", err)
-	}
-	defer terminalApp.Close()(ctx)
 
 	// Get the container.
 	cont, err := vm.DefaultContainer(ctx, iOptions.UserName)
@@ -100,12 +98,51 @@ func ResizeInstallation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the container: ", err)
 	}
 
-	if err := verifyDiskSize(ctx, tconn, cr, cont, resultDiskSize); err != nil {
+	if err := verifyDiskSize(ctx, s, tconn, cr, cont, resultDiskSize); err != nil {
 		s.Fatal("Failed to verify disk size: ", err)
 	}
 }
 
-func verifyDiskSize(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, cont *vm.Container, size uint64) error {
+func verifyDiskSize(ctx context.Context, s *testing.State, tconn *chrome.TestConn, cr *chrome.Chrome, cont *vm.Container, size uint64) error {
+	// Get the keyboard from ctx
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get keyboard")
+	}
+	defer keyboard.Close()
+
+	runInTerminal := func(cmd, outputFile string) error {
+		// Open Terminal app.
+		terminalApp, err := terminalapp.Find(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to find Terminal app: ", err)
+		}
+		return uiauto.Combine("running '"+cmd+"'",
+			terminalApp.RunCommand(keyboard, fmt.Sprintf("%s > %s 2>&1", cmd, outputFile)),
+			terminalApp.WaitForPrompt())(ctx)
+	}
+	// Check the df results in terminal
+	const (
+		dfCmd     = "sudo df / -h -l --output=size,used,avail --type=btrfs"
+		dfOutFile = "/tmp/dfout.txt"
+	)
+	var (
+		dfOutStr        string
+		aptUpdateOutStr string
+	)
+	// Check the disk size with df in Terminal
+	if err = runInTerminal(dfCmd, dfOutFile); err != nil {
+		return errors.Wrap(err, "failed to run df in terminal")
+	}
+	if dfOutStr, err = cont.ReadFile(ctx, dfOutFile); err != nil {
+		return errors.Wrap(err, "failed to read df output")
+	}
+	s.Log(dfOutStr)
+
+	if matched, err := regexp.MatchString(`Size.*\n16G`, dfOutStr); err != nil || !matched {
+		return errors.Wrap(err, "failed to match disk size 16G")
+	}
+
 	// Open the Linux settings.
 	st, err := settings.OpenLinuxSettings(ctx, tconn, cr)
 	if err != nil {
