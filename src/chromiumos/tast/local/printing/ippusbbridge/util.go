@@ -23,6 +23,26 @@ func KeepAlivePath(devInfo usbprinter.DevInfo) string {
 	return fmt.Sprintf("/run/ippusb/%s-%s_keep_alive.sock", devInfo.VID, devInfo.PID)
 }
 
+// SocketPath returns the path to ippusb_bridge's main socket.
+func SocketPath(devInfo usbprinter.DevInfo) string {
+	return fmt.Sprintf("/run/ippusb/%s-%s.sock", devInfo.VID, devInfo.PID)
+}
+
+// WaitForSocket waits for the ippusb_bridge socket that should match devInfo to
+// appear in the filesystem.
+func WaitForSocket(ctx context.Context, devInfo usbprinter.DevInfo) error {
+	socket := SocketPath(devInfo)
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		_, err := os.Stat(socket)
+		return err
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to find ippusb_bridge socket")
+	}
+
+	return nil
+}
+
 // Kill searches the process tree to kill the ippusb_bridge process. It also
 // removes the ippusb_bridge and ippusb_bridge keepalive sockets.
 func Kill(ctx context.Context, devInfo usbprinter.DevInfo) error {
@@ -64,7 +84,7 @@ func Kill(ctx context.Context, devInfo usbprinter.DevInfo) error {
 			return errors.Wrap(err, "failed to wait for ippusb_bridge to exit")
 		}
 	}
-	if err := os.Remove(fmt.Sprintf("/run/ippusb/%s-%s.sock", devInfo.VID, devInfo.PID)); err != nil && !os.IsNotExist(err) {
+	if err := os.Remove(SocketPath(devInfo)); err != nil && !os.IsNotExist(err) {
 		return errors.Wrap(err, "failed to remove ippusb_bridge socket")
 	}
 	if err := os.Remove(KeepAlivePath(devInfo)); err != nil && !os.IsNotExist(err) {
