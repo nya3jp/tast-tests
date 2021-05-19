@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/scanapp"
+	"chromiumos/tast/local/printing/cups"
 	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/local/printing/ippusbbridge"
 	"chromiumos/tast/local/printing/usbprinter"
@@ -135,7 +136,12 @@ func Scan(ctx context.Context, s *testing.State) {
 			usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
 		}
 	}()
-	defer ippusbbridge.Kill(cleanupCtx, devInfo)
+	if err = ippusbbridge.WaitForSocket(ctx, devInfo); err != nil {
+		s.Fatal("Failed to wait for ippusb_bridge socket: ", err)
+	}
+	if err = cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
+		s.Fatal("Failed to wait for printer to be idle: ", err)
+	}
 
 	// Launch the Scan app, configure the settings, and perform scans.
 	app, err := scanapp.Launch(ctx, tconn)

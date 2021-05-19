@@ -11,9 +11,9 @@ import (
 
 	lpb "chromiumos/system_api/lorgnette_proto"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/scanner/cups"
 	"chromiumos/tast/local/bundles/cros/scanner/lorgnette"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/printing/cups"
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
 )
