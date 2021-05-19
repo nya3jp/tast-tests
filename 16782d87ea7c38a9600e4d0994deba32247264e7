@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5d10b8_4fb4c9a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-19T03:09:49Z",
+      "side": 1,
+      "message": "Rebased + use RandomSSID + fix a flake of WakeOnSSID when disconnecting in defer.",
+      "revId": "16782d87ea7c38a9600e4d0994deba32247264e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
