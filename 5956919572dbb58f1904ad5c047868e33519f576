@@ -16,6 +16,23 @@
       "message": "Alexander, So this CL does the cherry pick of crrev/c/2857115 without any changes. Earlier cherry pick crrev/c/2891689 fixed a comment which shouldn\u0027t have been.",
       "revId": "5956919572dbb58f1904ad5c047868e33519f576",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b7dac78_98988102",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-19T07:59:42Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "5956919572dbb58f1904ad5c047868e33519f576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
