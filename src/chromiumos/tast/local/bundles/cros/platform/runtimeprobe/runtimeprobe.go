@@ -8,6 +8,7 @@ package runtimeprobe
 import (
 	"context"
 	"encoding/json"
+	"regexp"
 	"strings"
 
 	"github.com/godbus/dbus"
@@ -80,9 +81,21 @@ func GetHostInfoLabels(s *testing.State) ([]string, error) {
 	return labels, nil
 }
 
+// tryTrimQid tries to trim the "_{qid}" suffix in the component name and
+// append a fixed string "_{Any}" because tast tests do not care about the
+// mutable fields (e.g. firmware) which usually differ in qid but just make
+// sure hardware components are probed by probe configs.
+func tryTrimQid(model, category, compName string) string {
+	pattern := regexp.MustCompile("^(" + regexp.QuoteMeta(model) + "_" + regexp.QuoteMeta(category) + `_\d+)_\d+(?:#.*)?$`)
+	if matches := pattern.FindStringSubmatch(compName); len(matches) > 0 {
+		return matches[1] + "_{Any}"
+	}
+	return compName
+}
+
 // GetKnownComponents uses D-Bus call to get known components with category
 // |category|.
-func GetKnownComponents(ctx context.Context, category string) (map[string]struct{}, error) {
+func GetKnownComponents(ctx context.Context, model, category string) (map[string]struct{}, error) {
 	categoryValue, found := rppb.ProbeRequest_SupportCategory_value[category]
 	if !found {
 		return nil, errors.Errorf("invalid category %q", category)
@@ -97,7 +110,8 @@ func GetKnownComponents(ctx context.Context, category string) (map[string]struct
 	}
 	var components = make(map[string]struct{})
 	for _, name := range result.GetComponentNames() {
-		components[name] = struct{}{}
+		trimmedName := tryTrimQid(model, category, name)
+		components[trimmedName] = struct{}{}
 	}
 	return components, nil
 }
@@ -127,7 +141,7 @@ func GetComponentCount(ctx context.Context, labels, categories []string) (map[st
 	}
 	// Filter labels with prefix "hwid_component:<component type>/" and trim them.
 	for _, category := range categories {
-		knownComponents, err := GetKnownComponents(ctx, category)
+		knownComponents, err := GetKnownComponents(ctx, model, category)
 		if err != nil {
 			return nil, "", err
 		}
@@ -137,7 +151,7 @@ func GetComponentCount(ctx context.Context, labels, categories []string) (map[st
 				continue
 			}
 			label := strings.TrimPrefix(label, categoryPrefix)
-			key := model + "_" + label
+			key := tryTrimQid(model, category, model+"_"+label)
 			if _, found := knownComponents[key]; found {
 				mapping[category][key]++
 			}
@@ -150,7 +164,7 @@ func GetComponentCount(ctx context.Context, labels, categories []string) (map[st
 // count of given component is decreased to 0, it will be removed from |count|.
 // The first returned value will be false on failure.  The second returned
 // value is the display name of |component|.
-func DecreaseComponentCount(count map[string]int, model string, component Component) (bool, string) {
+func DecreaseComponentCount(count map[string]int, model, category string, component Component) (bool, string) {
 	name := component.GetName()
 	info := component.GetInformation()
 	if info != nil {
@@ -161,12 +175,13 @@ func DecreaseComponentCount(count map[string]int, model string, component Compon
 	if name == "generic" {
 		return false, name
 	}
-	if _, exists := count[name]; !exists {
+	trimmedName := tryTrimQid(model, category, name)
+	if _, exists := count[trimmedName]; !exists {
 		return false, name
 	}
-	count[name]--
-	if count[name] == 0 {
-		delete(count, name)
+	count[trimmedName]--
+	if count[trimmedName] == 0 {
+		delete(count, trimmedName)
 	}
 	return true, name
 }
