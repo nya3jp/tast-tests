@@ -37,6 +37,7 @@ func init() {
 			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}, {
 			Name:              "unstable",
+			ExtraAttr:         []string{"informational"},
 			Pre:               pre.VKEnabledTablet,
 			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 		}},

@@ -65,6 +65,7 @@ func init() {
 			}, {
 				Name:              "french_unstable",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraAttr:         []string{"informational"},
 				Pre:               pre.VKEnabledClamshell,
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:fr::fra",
@@ -94,6 +95,7 @@ func init() {
 			}, {
 				Name:              "catalan_unstable",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraAttr:         []string{"informational"},
 				Pre:               pre.VKEnabledTablet,
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:es:cat:cat",

@@ -43,6 +43,7 @@ func init() {
 			}, {
 				Name:              "es_unstable",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					regionCode:           "es",
 					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
@@ -58,6 +59,7 @@ func init() {
 			}, {
 				Name:              "fr_unstable",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					regionCode:           "fr",
 					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
@@ -73,6 +75,7 @@ func init() {
 			}, {
 				Name:              "jp_unstable",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					regionCode:           "jp",
 					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_JP_JPN),
