@@ -285,6 +285,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d07c3393_abd1af80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-19T03:37:39Z",
+      "side": 1,
+      "message": "Since when reading these codes, this part confuses me for a while since I have no idea why it is related to the shift. And I finally understand that it is just like some assertion that the size should not be changed, which I hope we can make it clearer.",
+      "parentUuid": "7ee81b17_7aca39fa",
+      "range": {
+        "startLine": 207,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 3
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53466a97_3dce7e66",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
         "patchSetId": 4
@@ -332,6 +356,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a703e1ec_b2529939",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-19T03:37:39Z",
+      "side": 1,
+      "message": "Hmm, if we change to press \"Enter\" or \"Space\" instead of holding it 200 ms here, will it still work? IMO, if holding 200 ms could lead to different results depends on the performance or latency, it might cause some flakiness in the future.",
+      "parentUuid": "c538f822_06080a3c",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 54
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "102670c7_2b23fad3",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
         "patchSetId": 4
@@ -367,6 +415,30 @@
       "side": 1,
       "message": "The fake file VCD should be fast enough for reflect the change immediately.",
       "parentUuid": "102670c7_2b23fad3",
+      "range": {
+        "startLine": 264,
+        "startChar": 2,
+        "endLine": 264,
+        "endChar": 36
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e92860_f1cc300e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-19T03:37:39Z",
+      "side": 1,
+      "message": "Hmm, not meant to block this CL, but can we guarantee it will always be true? Otherwise, even if it has 1% to be false, that could cause the future flakiness of the test. If we are in hurry to merge this CL and we cannot make sure it is always true shortly, I am okay if you add some comments here and have a bug to track this improvement since this issue should not block the release.",
+      "parentUuid": "4594923c_85096cfc",
       "range": {
         "startLine": 264,
         "startChar": 2,
