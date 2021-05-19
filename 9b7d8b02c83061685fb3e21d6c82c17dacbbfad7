@@ -142,6 +142,30 @@
       },
       "revId": "9b7d8b02c83061685fb3e21d6c82c17dacbbfad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "621233e4_1fec3ea0",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-19T20:22:08Z",
+      "side": 1,
+      "message": "I\u0027m not saying you need to write the auto-determination in this CL, but it would be nice if that was reflected in the design ~soon, so we know where to expect to deal with what pieces eventually. Like, we might expect this parameter to go away eventually? Or, we expect two different types of \"type\" determinations -- one that can\u0027t/won\u0027t be autodetected in these libraries, and one that will be?",
+      "parentUuid": "8f90bb24_5f1013af",
+      "range": {
+        "startLine": 175,
+        "startChar": 74,
+        "endLine": 175,
+        "endChar": 92
+      },
+      "revId": "9b7d8b02c83061685fb3e21d6c82c17dacbbfad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
