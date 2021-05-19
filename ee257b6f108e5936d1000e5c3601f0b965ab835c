@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f8899c6_47d26764",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-19T01:22:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2a9406a_e9472299",
+      "revId": "ee257b6f108e5936d1000e5c3601f0b965ab835c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e68f7de7_179854e3",
