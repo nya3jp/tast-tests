@@ -11,10 +11,9 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -42,26 +41,43 @@ func expectError(err error, expectation string) error {
 	return nil
 }
 
-func screenshotSettingsSearchBox(ctx context.Context, cr *chrome.Chrome, d screenshot.Differ) error {
-	tconn, err := cr.TestAPIConn(ctx)
+func takeScreenshots(ctx context.Context, d screenshot.Differ) error {
+	_, err := filesapp.Launch(ctx, d.Tconn())
 	if err != nil {
 		return err
 	}
-	if _, err := ossettings.Launch(ctx, tconn); err != nil {
-		return err
-	}
-	ui := uiauto.New(tconn)
-	return uiauto.Combine("open about and take screenshot",
-		// Ensure that the focus is no longer on the search box. Otherwise, the flashing mouse cursor could be a problem.
-		ui.LeftClick(ossettings.AboutChromeOS),
-		// By the time the new page has loaded, we can assume that the searchbox has lost focus.
-		ui.WaitForLocation(ossettings.AboutChromeOS.Role(role.Heading)),
-		d.Diff("settingssearchbox", ossettings.SearchBoxFinder))(ctx)
+	ui := uiauto.New(d.Tconn())
+	filesAppOptions := screenshot.DiffTestOptions{RemoveElements: []*nodewith.Finder{nodewith.ClassName("date")}}
+	// We take various screenshots to test various different things:
+	// * System UI elements,
+	// * Icons with no text
+	// * Standalone text
+	// * Text with icons
+	// * Elements that may or may not have a fixed size
+	// * Elements with dynamic content inside them
+	// This should not be done by other users of the screen diff library.
+	// We only do this to attempt to determine how screenshots of different types
+	// of elements are affected by device-specific configuration.
+	return uiauto.Combine("open files app and take screenshots",
+		d.DiffWithOptions("minMaxClose",
+			nodewith.ClassName("FrameCaptionButtonContainerView").Ancestor(filesapp.WindowFinder),
+			screenshot.DiffTestOptions{IgnoredBorderThickness: 1}),
+		d.Diff("searchButton", nodewith.Name("Search").Role(role.Button).Ancestor(filesapp.WindowFinder)),
+		d.Diff("recentText", nodewith.Name("Recent").Role(role.StaticText).Ancestor(filesapp.WindowFinder)),
+		d.Diff("recentItem", nodewith.Name("Recent").Role(role.TreeItem).Ancestor(filesapp.WindowFinder)),
+		d.Diff("tree", nodewith.Role(role.Tree).Ancestor(filesapp.WindowFinder)),
+		ui.WaitUntilGone(nodewith.Role(role.ProgressIndicator).Ancestor(filesapp.WindowFinder)),
+		d.Diff("welcomeMessage", nodewith.ClassName("holding-space-welcome").Ancestor(filesapp.WindowFinder)),
+		d.Diff("tableHeader", nodewith.ClassName("table-header").Ancestor(filesapp.WindowFinder)),
+		d.DiffWithOptions("tableRow", nodewith.ClassName("table-row directory").Ancestor(filesapp.WindowFinder), filesAppOptions),
+		d.DiffWithOptions("filesApp", filesapp.WindowFinder, filesAppOptions))(ctx)
 }
 
 func ScreenDiff(ctx context.Context, s *testing.State) {
-	// The defer in the SingleConfigDiffer needs to happen before the multiconfigdiffer starts.
-	d, cr, err := screenshot.NewDiffer(ctx, s)
+	screenDiffConfig := screenshot.Config{OutputUITrees: true}
+	// Normally the next line would be "defer d.DieOnFailedDiffs()"
+	// However, in our case, we want to run both this and DiffPerConfig.
+	d, err := screenshot.NewDifferFromConfig(ctx, s, screenDiffConfig)
 	if err != nil {
 		s.Fatal("Failed to initialize differ: ", err)
 	}
@@ -77,12 +93,12 @@ func ScreenDiff(ctx context.Context, s *testing.State) {
 		s.Fatal("diffing with multiple matching elements succeeded: ", err)
 	}
 
-	if err := screenshotSettingsSearchBox(ctx, cr, d); err != nil {
+	if err := takeScreenshots(ctx, d); err != nil {
 		s.Fatal("Failed to screenshot with single config: ", err)
 	}
 
 	if err := expectError(
-		screenshotSettingsSearchBox(ctx, cr, d),
+		takeScreenshots(ctx, d),
 		"screenshot has already been taken"); err != nil {
 		s.Fatal("sending the same diff twice succeeded: ", err)
 	}
@@ -91,8 +107,9 @@ func ScreenDiff(ctx context.Context, s *testing.State) {
 
 	// Unfortunately, it's not possible to test that images fail on gold, because
 	// gold would then comment on everyone's CLs saying that they failed this test.
-	failedMulti := screenshot.DiffPerConfig(ctx, s, []screenshot.Config{{Region: "de"}, {Region: "en"}}, func(d screenshot.Differ, cr *chrome.Chrome) {
-		if err := screenshotSettingsSearchBox(ctx, cr, d); err != nil {
+	// TODO(crbug.com/1173812): Once ThoroughConfigs has more than one element, switch to ThoroughConfigs()
+	failedMulti := screenshot.DiffPerConfig(ctx, s, screenshot.WithBase(screenDiffConfig, []screenshot.Config{}), func(d screenshot.Differ) {
+		if err := takeScreenshots(ctx, d); err != nil {
 			s.Fatal("Failed to take screenshot with multiple configs: ", err)
 		}
 	})
