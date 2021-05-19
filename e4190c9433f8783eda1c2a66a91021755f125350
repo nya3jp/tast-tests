@@ -16,6 +16,24 @@
       "message": "Please update the message as well.",
       "revId": "e4190c9433f8783eda1c2a66a91021755f125350",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22b7507b_6c22f7db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-19T12:21:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "982d504b_153a6f40",
+      "revId": "e4190c9433f8783eda1c2a66a91021755f125350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
