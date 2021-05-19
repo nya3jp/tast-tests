@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7b65c5e_d94474b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-19T22:43:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd162bdf_65f56734",
+      "range": {
+        "startLine": 127,
+        "startChar": 10,
+        "endLine": 127,
+        "endChar": 41
+      },
+      "revId": "e32d68d4bb6b46ee87b8965eb6b3ab41f59a9104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6b1932c_c406a715",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-05-19T01:47:52Z",
       "side": 1,
       "message": "nit: I wonder if it\u0027s cleaner to move this to legacy_router.go? I think router.go didn\u0027t need information about the underlying implementation of the interfaces.\n\n(I guess Reserve function is kept here for avoiding conflict with the next CL, which might be OK)",
+      "revId": "e32d68d4bb6b46ee87b8965eb6b3ab41f59a9104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "213a4183_9251451c",
+        "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-19T22:43:19Z",
+      "side": 1,
+      "message": "Done. Now that we have newLegacyRouter, I think this makes more sense.",
+      "parentUuid": "b6b1932c_c406a715",
       "revId": "e32d68d4bb6b46ee87b8965eb6b3ab41f59a9104",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93affb3a_9e076a83",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-19T22:43:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5632ae9a_2fbf2ceb",
+      "range": {
+        "startLine": 1048,
+        "startChar": 23,
+        "endLine": 1048,
+        "endChar": 26
+      },
+      "revId": "e32d68d4bb6b46ee87b8965eb6b3ab41f59a9104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84f7d56b_4356e72d",
@@ -94,6 +160,24 @@
       "writtenOn": "2021-05-19T01:47:52Z",
       "side": 1,
       "message": "I guess this function also needs an error as GetLegacyRouter?\n\n(and Get prefix might be dropped as GetLegacyRouter)",
+      "revId": "e32d68d4bb6b46ee87b8965eb6b3ab41f59a9104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1237715_f50e7ee3",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-19T22:43:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84f7d56b_4356e72d",
       "revId": "e32d68d4bb6b46ee87b8965eb6b3ab41f59a9104",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
