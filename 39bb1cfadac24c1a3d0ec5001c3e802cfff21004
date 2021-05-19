@@ -426,6 +426,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da2c3f9d_13f9d4c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-19T05:57:09Z",
+      "side": 1,
+      "message": "If so, I still prefer pressing a key to trigger the event only once to verify its basic functionality.\n\nAssuming there is a bug that the PTZ function will only be applied since the second event but not for the first one. But because we trigger PTZ events multiple times here, we are not able to catch this and the test will still pass.\n\nIMO, holding the button for a duration can be used to verify something else. For example, holding the button for a few seconds to ensure that it will be stopped when reaching the min/max values of PTZ controls. (But these tests are not necessary to be added in this CL)",
+      "parentUuid": "ac5767aa_b5e4263c",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 54
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "102670c7_2b23fad3",
