@@ -57,7 +57,7 @@ func CrosRuntimeProbeStorage(ctx context.Context, s *testing.State) {
 	probedStorageComponents := result.GetStorage()
 
 	for _, component := range probedStorageComponents {
-		result, name := runtimeprobe.DecreaseComponentCount(labels, model, component)
+		result, name := runtimeprobe.DecreaseComponentCount(labels, model, category, component)
 		s.Logf("Probed %s: %s", category, name)
 		if !result {
 			if name == "generic" {
