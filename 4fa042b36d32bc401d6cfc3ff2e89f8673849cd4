@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9e2ea15_3e60f1d0",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-19T14:41:59Z",
+      "side": 1,
+      "message": "Can you add come comments on what Pcap is, how does is relate to router types?",
+      "revId": "4fa042b36d32bc401d6cfc3ff2e89f8673849cd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9034e13_7a150c53",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-19T14:41:59Z",
+      "side": 1,
+      "message": "nit:\n\u003e  routerType\n\u003e  pcapType",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 20
+      },
+      "revId": "4fa042b36d32bc401d6cfc3ff2e89f8673849cd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
