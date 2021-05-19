@@ -22,6 +22,30 @@
       },
       "revId": "fe109ea32711eaa66717d75e61466f0f99101984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26055b4c_20dee06a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-19T06:48:41Z",
+      "side": 1,
+      "message": "Yes, that\u0027s acutally better. I was thinking vpn_server should get the underlay IP before calling chroot.Startup() but obviously it\u0027s not the case.\nI modified the code to let Startup() returns the ip address directly now, we don\u0027t need to keep it as a property.",
+      "parentUuid": "fd62a270_7fd2cab3",
+      "range": {
+        "startLine": 84,
+        "startChar": 24,
+        "endLine": 84,
+        "endChar": 44
+      },
+      "revId": "fe109ea32711eaa66717d75e61466f0f99101984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
