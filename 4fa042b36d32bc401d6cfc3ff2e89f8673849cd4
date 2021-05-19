@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9df256be_7d8f89be",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-19T23:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9e2ea15_3e60f1d0",
+      "revId": "4fa042b36d32bc401d6cfc3ff2e89f8673849cd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9034e13_7a150c53",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-05-19T14:41:59Z",
       "side": 1,
       "message": "nit:\n\u003e  routerType\n\u003e  pcapType",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 20
+      },
+      "revId": "4fa042b36d32bc401d6cfc3ff2e89f8673849cd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3a6ab0a_3eb2aee9",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-19T23:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9034e13_7a150c53",
       "range": {
         "startLine": 156,
         "startChar": 0,
