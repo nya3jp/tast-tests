@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1f9ea27_f01a89b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-19T06:50:22Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "4284d088_47202718",
+      "range": {
+        "startLine": 98,
+        "startChar": 27,
+        "endLine": 98,
+        "endChar": 35
+      },
+      "revId": "553a188275f84c2a1f753c8914f0443f482e254a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f795f17_8e7109a8",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-19T06:37:17Z",
       "side": 1,
       "message": "same here.",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 8
+      },
+      "revId": "553a188275f84c2a1f753c8914f0443f482e254a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b19326c_292b3e7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-19T06:50:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f795f17_8e7109a8",
       "range": {
         "startLine": 95,
         "startChar": 4,
