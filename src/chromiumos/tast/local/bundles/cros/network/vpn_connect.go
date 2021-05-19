@@ -13,14 +13,12 @@ import (
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/network/veth"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
 	"chromiumos/tast/local/network"
 	localping "chromiumos/tast/local/network/ping"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/timing"
 )
 
 type vpnServer struct {
@@ -49,12 +47,7 @@ const (
 	pskAuth                         = "psk"
 	testDefaultProfileName          = "vpnTestProfile"
 	testUserProfileName             = "vpnTestProfile2"
-	clientInterfaceName             = "pseudoethernet0"
-	serverInterfaceName             = "serverethernet0"
 	version                         = 1
-	serverAddress                   = "10.9.8.1"
-	clientAddress                   = "10.9.8.2"
-	networkPrefix                   = 24
 	checkPortalPropertyName         = "CheckPortalList"
 	checkPortalPropertyValue        = "wifi,cellular"
 	checkPortalPropertyDefaultValue = "ethernet,wifi,cellular"
@@ -138,27 +131,14 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		s.Fatal("Service not found: ", err)
 	}
 
-	// Prepare virtual ethernet link.
-	ctxForDeletingVEth := ctx
-	ctx, cancel = ctxutil.Shorten(ctx, 2*time.Second)
-	defer cancel()
-	vEth, err := veth.NewPair(ctx, serverInterfaceName, clientInterfaceName)
-	if err != nil {
-		s.Fatal("Failed to setup veth: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := vEth.Delete(ctx); err != nil {
-			testing.ContextLog(ctx, "Failed to cleanup veth: ", err)
-		}
-	}(ctxForDeletingVEth)
-
 	vpnType := s.Param().(vpnServer).vpnType
 	authType := s.Param().(vpnServer).authType
 
+	var serverAddress string
 	if vpnType == l2tpIPsec {
 		// Create new L2TP/IPsec.
-		server := vpn.NewL2tpipSecVpnServer(ctx, authType, serverInterfaceName, serverAddress, networkPrefix)
-		if err := server.StartServer(ctx); err != nil {
+		server := vpn.NewL2tpipSecVpnServer(ctx, authType)
+		if serverAddress, err = server.StartServer(ctx); err != nil {
 			s.Fatal("Failed to create a L2TP/IPsec server: ", err)
 		}
 		defer func(ctx context.Context) {
@@ -168,12 +148,6 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		}(cleanupCtx)
 	} else {
 		s.Fatalf("Unexpected VPN type %s", vpnType)
-	}
-
-	// When shill finds this ethernet interface, it will reset its IP address and start a DHCP client.
-	// We must configure the static IP address through shill.
-	if err := configureStaticIP(ctx, clientInterfaceName, clientAddress, manager); err != nil {
-		s.Fatal("Failed configuring the static IP: ", err)
 	}
 
 	if err := connectVPN(ctx, vpnType, authType, serverAddress, manager); err != nil {
@@ -220,61 +194,6 @@ func removeDefaultProfile(ctx context.Context) (retErr error) {
 
 	if err := os.Remove(shillconst.DefaultProfilePath); err != nil && !os.IsNotExist(err) {
 		return errors.Wrap(err, "failed removing default profile")
-	}
-
-	return nil
-}
-
-// configureStaticIP configures the Static IP parameters for the Ethernet interface |interface_name| and applies
-// those parameters to the interface by forcing a re-connect.
-func configureStaticIP(ctx context.Context, interfaceName, address string, manager *shill.Manager) error {
-	testing.ContextLog(ctx, "Wait for static IP to be configured")
-	ctx, st := timing.Start(ctx, "waitConfigureStaticIP")
-	defer st.End()
-
-	device, err := manager.WaitForDeviceByName(ctx, interfaceName, 5*time.Second)
-	if err != nil {
-		return errors.Wrapf(err, "failed to find the device with interface name %s", interfaceName)
-	}
-
-	servicePath, err := device.WaitForSelectedService(ctx, 5*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to get the selected service path")
-	}
-
-	service, err := shill.NewService(ctx, servicePath)
-	if err != nil {
-		return errors.Wrap(err, "failed creating shill service proxy")
-	}
-
-	if err := service.SetProperty(ctx, shillconst.ServicePropertyStaticIPConfig, map[string]interface{}{shillconst.IPConfigPropertyAddress: address, "Prefixlen": networkPrefix}); err != nil {
-		return errors.Wrap(err, "failed to configure the static IP address")
-	}
-
-	// Device::OnIPConfigUpdated doesn't cause an Online Service to change state,
-	// as this would lead to fluctuations of what the default Service is every time
-	// a DHCP lease is renewed. So in this case we need to wait for routing to be
-	// re-established, but don't have a good D-Bus property to poll. Because of that,
-	// we need to disconnect/connect the service to make sure the routing rules are re-stablished.
-	if err = service.Disconnect(ctx); err != nil {
-		return errors.Wrapf(err, "failed to dis-connect the service %v", service)
-	}
-
-	// Spawn a watcher before connect.
-	pw, err := service.CreateWatcher(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to create watcher")
-	}
-	defer pw.Close(ctx)
-
-	if err = service.Connect(ctx); err != nil {
-		return errors.Wrap(err, "failed to re-connect after configuring the static IP")
-	}
-
-	timeoutCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
-	defer cancel()
-	if err := pw.Expect(timeoutCtx, shillconst.ServicePropertyIsConnected, true); err != nil {
-		return err
 	}
 
 	return nil

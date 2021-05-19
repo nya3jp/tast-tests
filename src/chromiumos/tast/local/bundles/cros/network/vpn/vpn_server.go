@@ -100,12 +100,12 @@ var (
 				"  authby=psk\n" +
 				"  {{.xauth_stanza}}\n" +
 				"  rekey=no\n" +
-				"  left={{.local_ip}}\n" +
+				"  left={{.netns_ip}}\n" +
 				"  leftprotoport=17/1701\n" +
 				"  right=%any\n" +
 				"  rightprotoport=17/%any\n" +
 				"  auto=add\n",
-			"etc/ipsec.secrets": "{{.local_ip}} %any : PSK \"{{.preshared_key}}\"\n" +
+			"etc/ipsec.secrets": "{{.netns_ip}} %any : PSK \"{{.preshared_key}}\"\n" +
 				"{{.xauth_user}} : XAUTH \"{{.xauth_password}}\"\n"},
 		"cert": {
 			"etc/ipsec.conf": "config setup\n" +
@@ -115,7 +115,7 @@ var (
 				"  ike=aes128-sha1-modp2048!\n" +
 				"  esp=3des-sha1!\n" +
 				"  type=transport\n" +
-				"  left={{.local_ip}}\n" +
+				"  left={{.netns_ip}}\n" +
 				"  leftcert=server.cert\n" +
 				"  leftid=\"C=US, ST=California, L=Mountain View, " +
 				"CN=chromelab-wifi-testbed-server.mtv.google.com\"\n" +
@@ -135,19 +135,22 @@ type l2tpipSecVpnServer struct {
 }
 
 // NewL2tpipSecVpnServer creates a new L2tpipSecVpnServer.
-func NewL2tpipSecVpnServer(ctx context.Context, authType, interfaceName, address string, networkPrefix int) *l2tpipSecVpnServer {
-	networkChroot := chroot.NewNetworkChroot(interfaceName, address, networkPrefix)
-
+func NewL2tpipSecVpnServer(ctx context.Context, authType string) *l2tpipSecVpnServer {
+	networkChroot := chroot.NewNetworkChroot()
 	return &l2tpipSecVpnServer{authenticationType: authType, netChroot: networkChroot}
 }
 
-// StartServer starts a VPN server.
-func (s *l2tpipSecVpnServer) StartServer(ctx context.Context) error {
+// StartServer starts a VPN server, and returns the underlay server address on success.
+func (s *l2tpipSecVpnServer) StartServer(ctx context.Context) (string, error) {
 	if _, ok := ipsecTypedConfigs[s.authenticationType]; !ok {
-		return errors.Errorf("L2TP/IPSec type %s is not define", s.authenticationType)
+		return "", errors.Errorf("L2TP/IPSec type %s is not define", s.authenticationType)
 	}
 
 	chro := s.netChroot
+	netnsIP, err := chro.InitNetworkNamespace(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to init netns")
+	}
 	chro.AddRootDirectories(xl2tpdRootDirectories)
 	chro.AddConfigTemplates(ipsecCommonConfigs)
 	chro.AddConfigTemplates(ipsecTypedConfigs[s.authenticationType])
@@ -176,10 +179,10 @@ func (s *l2tpipSecVpnServer) StartServer(ctx context.Context) error {
 	chro.AddStartupCommand(xl2tpdCmdStr)
 
 	if err := chro.Startup(ctx); err != nil {
-		return err
+		return "", err
 	}
 
-	return nil
+	return netnsIP, nil
 }
 
 // GetLogContents return all logs related to the chroot.
