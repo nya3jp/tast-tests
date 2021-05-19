@@ -16,6 +16,161 @@
       "message": "Hi,\n\nThis CL adds a bluetooth UI test which tests that the toggle button on teh bluetooth quick setting page works. It is similar to https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2893546 but tests a different part of the UI. This UI didn\u0027t have UI elements to wait on after a state change, so I have to poll for change of power state of the Bluetooth adapter.\n\nRegards\nShijin",
       "revId": "89a245a499eae80f6a7d1a6f620504935d7e2030",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccd90f2d_685b95b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-19T07:56:27Z",
+      "side": 1,
+      "message": "My initial scan.",
+      "revId": "89a245a499eae80f6a7d1a6f620504935d7e2030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40d47349_a53b5f6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-19T07:56:27Z",
+      "side": 1,
+      "message": "human readable text is often fragile.\nCan we have some class or id etc. to identify the specific button for each?",
+      "range": {
+        "startLine": 53,
+        "startChar": 53,
+        "endLine": 53,
+        "endChar": 85
+      },
+      "revId": "89a245a499eae80f6a7d1a6f620504935d7e2030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c83e40c_b1e698ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-19T07:56:27Z",
+      "side": 1,
+      "message": "nit/style\n\nif err :\u003d bluetooth.Enable(ctx); err !\u003d nil {\n  ...\n}\n\nto minimize err\u0027s scope/",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 16
+      },
+      "revId": "89a245a499eae80f6a7d1a6f620504935d7e2030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0428dd1_eda99586",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-19T07:56:27Z",
+      "side": 1,
+      "message": "Do you need to wait for a bit that \"systemTrayExpandButton\" click transition completes here?",
+      "revId": "89a245a499eae80f6a7d1a6f620504935d7e2030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "443c2426_ef1b12e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-19T07:56:27Z",
+      "side": 1,
+      "message": "\u003e \"settting\" is a possible misspelling of \"setting\".\n\nPlease fix.",
+      "parentUuid": "e5806c52_6c43d724",
+      "range": {
+        "startLine": 74,
+        "startChar": 34,
+        "endLine": 74,
+        "endChar": 42
+      },
+      "revId": "89a245a499eae80f6a7d1a6f620504935d7e2030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "864a8c61_a0f32566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-19T07:56:27Z",
+      "side": 1,
+      "message": "could you avoid Sleeping here? Instead, wait for some condition?",
+      "revId": "89a245a499eae80f6a7d1a6f620504935d7e2030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6407ec13_2782c6db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-19T07:56:27Z",
+      "side": 1,
+      "message": "nit: could you use const?",
+      "revId": "89a245a499eae80f6a7d1a6f620504935d7e2030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36bc7313_cef1f3e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-19T07:56:27Z",
+      "side": 1,
+      "message": "huge nit: unneeded empty line. Could you remove?",
+      "revId": "89a245a499eae80f6a7d1a6f620504935d7e2030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
