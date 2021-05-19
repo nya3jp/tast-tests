@@ -16,6 +16,23 @@
       "message": "Hi Mathew,\n\nI noticed a vet warning in the unit test of iio package and tried to fix it. Please take a look. Thanks!",
       "revId": "67ebcbd8626c45faa9ac1c9dbfc39baeaf10fd3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2d6892e_07d321c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-19T02:09:22Z",
+      "side": 1,
+      "message": "Friendly ping for review.\n\nThis change is not domain specific, so I\u0027ll start tast-owner review in parallel.",
+      "revId": "67ebcbd8626c45faa9ac1c9dbfc39baeaf10fd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
