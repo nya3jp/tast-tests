@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
@@ -18,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
@@ -92,7 +92,7 @@ func DisableArc(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	s.Log("Turn Play Store Off from Settings")
-	if err := turnOffPlayStore(ctx, tconn); err != nil {
+	if err := turnOffPlayStore(ctx, cr, tconn); err != nil {
 		s.Fatal("Failed to Turn Off Play Store: ", err)
 	}
 
@@ -112,16 +112,14 @@ func DisableArc(ctx context.Context, s *testing.State) {
 
 }
 
-func turnOffPlayStore(ctx context.Context, tconn *chrome.TestConn) error {
-	// Navigate to Android Settings.
-	if err := apps.Launch(ctx, tconn, apps.Settings.ID); err != nil {
-		return errors.Wrap(err, "failed to launch the Settings app")
-	}
+func turnOffPlayStore(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 
 	ui := uiauto.New(tconn)
 	playStoreButton := nodewith.Name("Google Play Store").Role(role.Button)
+	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "apps", ui.Exists(playStoreButton)); err != nil {
+		return errors.Wrap(err, "failed to launch apps settings page")
+	}
 	return uiauto.Combine("turn off Play Store",
-		ui.LeftClickUntil(nodewith.Name("Apps").Role(role.Heading), ui.Exists(playStoreButton)),
 		ui.FocusAndWait(playStoreButton),
 		ui.LeftClick(playStoreButton),
 		ui.LeftClick(nodewith.Name("Remove Google Play Store").Role(role.Button)),

@@ -76,16 +76,11 @@ func VerifySettings(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close(ctx)
 
-	if _, err := ossettings.LaunchAtPage(
-		ctx,
-		tconn,
-		nodewith.Name("Apps").Role(role.Heading),
-	); err != nil {
-		s.Fatal("Failed to Open Apps Settings Page: ", err)
-	}
-
 	ui := uiauto.New(tconn)
 	playStoreButton := nodewith.Name("Google Play Store").Role(role.Button)
+	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "apps", ui.Exists(playStoreButton)); err != nil {
+		s.Fatal("Failed to launch apps settings page: ", err)
+	}
 
 	if err := uiauto.Combine("Open Android Settings",
 		ui.FocusAndWait(playStoreButton),
