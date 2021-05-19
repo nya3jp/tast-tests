@@ -63,7 +63,7 @@ func CrosRuntimeProbeCamera(ctx context.Context, s *testing.State) {
 	probedCameraComponents := result.GetCamera()
 
 	for _, component := range probedCameraComponents {
-		result, name := runtimeprobe.DecreaseComponentCount(labels, model, component)
+		result, name := runtimeprobe.DecreaseComponentCount(labels, model, category, component)
 		s.Logf("Probed %s: %s", category, name)
 		if !result {
 			if name == "generic" {
