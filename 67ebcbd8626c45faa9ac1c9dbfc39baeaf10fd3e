@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd9a1352_dbba84d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-19T03:24:19Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. That\u0027s much simpler.",
+      "parentUuid": "2d0cd146_588bfad7",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 31
+      },
+      "revId": "67ebcbd8626c45faa9ac1c9dbfc39baeaf10fd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6672eeab_152a4a82",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce82218c_c18020e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-19T03:24:19Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "6672eeab_152a4a82",
+      "range": {
+        "startLine": 137,
+        "startChar": 3,
+        "endLine": 137,
+        "endChar": 40
+      },
+      "revId": "67ebcbd8626c45faa9ac1c9dbfc39baeaf10fd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e27117b5_c571030e",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-05-19T03:13:02Z",
       "side": 1,
       "message": "Same suggestions apply for this file.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 31
+      },
+      "revId": "67ebcbd8626c45faa9ac1c9dbfc39baeaf10fd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1675f69c_82e0660c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-19T03:24:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e27117b5_c571030e",
       "range": {
         "startLine": 96,
         "startChar": 0,
