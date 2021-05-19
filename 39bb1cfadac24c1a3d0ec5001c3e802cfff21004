@@ -450,6 +450,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b75cf05e_c975343e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-19T06:36:01Z",
+      "side": 1,
+      "message": "Please refer the code here:\nhttps://source.chromium.org/chromium/chromium/src/+/master:chromeos/components/camera_app_ui/resources/js/views/ptz_panel.js;drc\u003debec81771fc066f347928f96696bf3b2a99b06fd;l\u003d71\nThe UI can only be interacted with either pointerdown-delay-pointerup or keydown-delay-keyup. The keyup/keydown case is pretty much like pointerdown/up. There\u0027s no way to interact with it by click to do a single move.",
+      "parentUuid": "da2c3f9d_13f9d4c6",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 54
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "102670c7_2b23fad3",
