@@ -106,7 +106,7 @@ func Autostart(ctx context.Context, s *testing.State) {
 	// '[...] Starting kiosk mode of type 2...'
 	// '[...] Kiosk launch succeeded, wait for app window.'
 	// is logged in /var/log/messages. Code below will search for that entry.
-	reader, err := syslog.NewReader(ctx, syslog.Program("chrome"))
+	reader, err := syslog.NewReader(ctx, syslog.Program(syslog.Chrome))
 	if err != nil {
 		s.Fatal("Failed to start log reader: ", err)
 	}

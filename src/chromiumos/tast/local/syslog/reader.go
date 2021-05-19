@@ -194,11 +194,31 @@ func SourcePath(p string) Option {
 	}
 }
 
+// ProgramName encloses names of the program in custom type.
+type ProgramName string
+
+const (
+	// Chrome filter.
+	Chrome ProgramName = "chrome"
+
+	// CrashReporter filter.
+	CrashReporter ProgramName = "crash_reporter"
+
+	// Cryptohomed filter.
+	Cryptohomed ProgramName = "cryptohomed"
+
+	// Cupsd filter.
+	Cupsd ProgramName = "cupsd"
+
+	// CrashSender filter.
+	CrashSender ProgramName = "crash_sender"
+)
+
 // Program instructs Reader to report messages from a certain program only.
-func Program(name string) Option {
+func Program(name ProgramName) Option {
 	return func(o *options) {
 		o.filters = append(o.filters, func(e *Entry) bool {
-			return e.Program == name
+			return e.Program == string(name)
 		})
 	}
 }
