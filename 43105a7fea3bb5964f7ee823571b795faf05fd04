@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc01c86d_f3356aa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/non_educoexistence_insession.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-05-19T02:49:10Z",
+      "side": 1,
+      "message": "What I really want to search for is Name(\"Can\u0027t add account\"), but I suspect the single quote apostrophe messes up the UI tree search. Does anyone know the proper regular expression or escape character?\n\n    node id\u003d1071 role\u003dheading state\u003d{} parentID\u003d507 childIds\u003d[1075] name\u003dCan’t add account className\u003dahT6S  y77zqe\n      node id\u003d1075 role\u003dstaticText state\u003d{} parentID\u003d1071 childIds\u003d[1076] name\u003dCan’t add account\n      node id\u003d1076 role\u003dinlineTextBox state\u003d{} parentID\u003d1075 childIds\u003d[] name\u003dCan’t add account",
+      "range": {
+        "startLine": 122,
+        "startChar": 34,
+        "endLine": 122,
+        "endChar": 63
+      },
+      "revId": "43105a7fea3bb5964f7ee823571b795faf05fd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
