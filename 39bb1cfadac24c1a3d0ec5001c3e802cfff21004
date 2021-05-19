@@ -307,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0d2ba4e_2f7c851a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-19T05:32:22Z",
+      "side": 1,
+      "message": "Add some comments before these line, please see if it\u0027s clear to you.",
+      "parentUuid": "d07c3393_abd1af80",
+      "range": {
+        "startLine": 207,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 3
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53466a97_3dce7e66",
@@ -378,6 +402,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac5767aa_b5e4263c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-19T05:32:22Z",
+      "side": 1,
+      "message": "From the logic on CCA side, it will keep moving in the direction changed by held button and will at least move a small step after receiving the pointerdown and pointerup. So it should at least move a short distance or long distance in case of no matter delay longer or shorter than latency.",
+      "parentUuid": "a703e1ec_b2529939",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 54
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "102670c7_2b23fad3",
@@ -439,6 +487,30 @@
       "side": 1,
       "message": "Hmm, not meant to block this CL, but can we guarantee it will always be true? Otherwise, even if it has 1% to be false, that could cause the future flakiness of the test. If we are in hurry to merge this CL and we cannot make sure it is always true shortly, I am okay if you add some comments here and have a bug to track this improvement since this issue should not block the release.",
       "parentUuid": "4594923c_85096cfc",
+      "range": {
+        "startLine": 264,
+        "startChar": 2,
+        "endLine": 264,
+        "endChar": 36
+      },
+      "revId": "39bb1cfadac24c1a3d0ec5001c3e802cfff21004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f764054e_17b4d96b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-19T05:32:22Z",
+      "side": 1,
+      "message": "Done by using polling to poll if preview is moved.",
+      "parentUuid": "21e92860_f1cc300e",
       "range": {
         "startLine": 264,
         "startChar": 2,
