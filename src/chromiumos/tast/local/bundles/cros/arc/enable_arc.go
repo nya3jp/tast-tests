@@ -49,10 +49,11 @@ func init() {
 
 func EnableArc(ctx context.Context, s *testing.State) {
 
+	cr := s.FixtValue().(*familylink.FixtData).Chrome
 	tconn := s.FixtValue().(*familylink.FixtData).TestConn
 
 	s.Log("Turn On Play Store from Settings")
-	if err := turnOnPlayStore(ctx, tconn); err != nil {
+	if err := turnOnPlayStore(ctx, cr, tconn); err != nil {
 		s.Fatal("Failed to Turn On Play Store: ", err)
 	}
 
@@ -67,18 +68,16 @@ func EnableArc(ctx context.Context, s *testing.State) {
 
 }
 
-func turnOnPlayStore(ctx context.Context, tconn *chrome.TestConn) error {
-
-	settings, err := ossettings.LaunchAtPage(ctx, tconn, nodewith.Name("Apps").Role(role.Heading))
-	if err != nil {
-		return errors.Wrap(err, "failed to Open Apps Settings Page")
-	}
+func turnOnPlayStore(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 
 	ui := uiauto.New(tconn)
 	playStoreButton := nodewith.Name("Google Play Store").Role(role.Button)
+	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "apps", ui.Exists(playStoreButton)); err != nil {
+		return errors.Wrap(err, "failed to launch apps settings page")
+	}
 	if err := uiauto.Combine("enable Play Store",
-		settings.FocusAndWait(playStoreButton),
-		settings.LeftClick(playStoreButton),
+		ui.FocusAndWait(playStoreButton),
+		ui.LeftClick(playStoreButton),
 		ui.LeftClick(nodewith.Name("More").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Accept").Role(role.Button)),
 	)(ctx); err != nil {
