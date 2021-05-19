@@ -9,14 +9,12 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -35,6 +33,7 @@ func init() {
 
 func EducoexistenceInsession(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(*familylink.FixtData).TestConn
+	cr := s.FixtValue().(*familylink.FixtData).Chrome
 
 	parentUser := s.RequiredVar("unicorn.parentUser")
 	parentPass := s.RequiredVar("unicorn.parentPassword")
@@ -45,84 +44,18 @@ func EducoexistenceInsession(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Log("Launching the settings app")
-	if err := apps.Launch(ctx, tconn, apps.Settings.ID); err != nil {
-		s.Fatal("Failed to launch the settings app: ", err)
-	}
-
 	ui := uiauto.New(tconn)
 
-	s.Log("Opening the in-session EDU Coexistence flow")
-	googleAccountsButton := nodewith.Name("Google Accounts").Role(role.Button)
-	addSchoolAccountButton := nodewith.Name("Add school account").Role(role.Button)
-	selectParentOption := nodewith.NameStartingWith(parentFirstName + " " + parentLastName).Role(role.ListBoxOption)
-	if err := uiauto.Combine("open in-session edu coexistence flow",
-		ui.WaitUntilExists(googleAccountsButton),
-		ui.LeftClickUntil(googleAccountsButton, ui.Exists(addSchoolAccountButton)),
-		ui.WithInterval(time.Second).LeftClickUntil(addSchoolAccountButton, ui.Exists(selectParentOption)),
-	)(ctx); err != nil {
-		s.Fatal("Failed to open in-session edu coexistence flow: ", err)
-	}
-
-	s.Log("Clicking button that matches parent email: ", parentUser)
-	parentPasswordText := nodewith.Name("Parent password").Role(role.TextField)
-	if err := ui.LeftClickUntil(selectParentOption, ui.Exists(parentPasswordText))(ctx); err != nil {
-		s.Fatal("Failed to click button that matches parent email: ", err)
-	}
-
-	s.Log("Clicking the parent password text field")
-	if err := ui.LeftClick(parentPasswordText)(ctx); err != nil {
-		s.Fatal("Failed to click parent password text: ", err)
-	}
-
-	s.Log("Setting up keyboard")
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to get keyboard: ", err)
-	}
-	defer kb.Close()
-
-	s.Log("Typing the parent password")
-	if err := kb.Type(ctx, parentPass+"\n"); err != nil {
-		s.Fatal("Failed to type parent password: ", err)
-	}
-
-	s.Log("Clicking next on school account information for parents and Google workspace for education information pages")
-	nextButton := nodewith.Name("Next").Role(role.Button)
-	enterSchoolEmailText := nodewith.Name("School email").Role(role.TextField)
-	if err := uiauto.Combine("Clicking next",
-		ui.WaitUntilExists(nextButton),
-		ui.LeftClickUntil(nextButton, ui.Exists(enterSchoolEmailText)))(ctx); err != nil {
-		s.Fatal("Failed to click next button: ", err)
-	}
-
-	s.Log("Clicking school email text field")
-	if err := ui.LeftClick(enterSchoolEmailText)(ctx); err != nil {
-		s.Fatal("Failed to click school email text field: ", err)
-	}
-
-	s.Log("Typing school account email")
-	if err := kb.Type(ctx, eduUser+"\n"); err != nil {
-		s.Fatal("Failed to type edu user email: ", err)
-	}
-
-	s.Log("Clicking school account password text field")
-	schoolPasswordText := nodewith.Name("School password").Role(role.TextField)
-	if err := uiauto.Combine("Clicking school account password text field",
-		ui.WaitUntilExists(schoolPasswordText), ui.LeftClick(schoolPasswordText))(ctx); err != nil {
-		s.Fatal("Failed to click school account password text field: ", err)
-	}
-
-	s.Log("Typing school account password")
-	if err := kb.Type(ctx, eduPass+"\n"); err != nil {
-		s.Fatal("Failed to type edu user password: ", err)
+	s.Log("Launching the in-session Edu Coexistence flow")
+	if err := familylink.AddEduSecondaryAccountForFamilyLink(ctx, cr, tconn, ui, parentFirstName, parentLastName, parentUser, parentPass, eduUser, eduPass); err != nil {
+		s.Fatal("Failed to go through the in-session Edu Coexistence flow: ", err)
 	}
 
 	s.Log("Clicking next on the final page to wrap up")
 	schoolAccountAddedHeader := nodewith.Name("School account added").Role(role.Heading)
 	if err := uiauto.Combine("Clicking next button and wrapping up",
 		ui.WaitUntilExists(schoolAccountAddedHeader),
-		ui.LeftClickUntil(nextButton, ui.Gone(schoolAccountAddedHeader)))(ctx); err != nil {
+		ui.LeftClickUntil(nodewith.Name("Next").Role(role.Button), ui.Gone(schoolAccountAddedHeader)))(ctx); err != nil {
 		s.Fatal("Failed to click next button: ", err)
 	}
 
