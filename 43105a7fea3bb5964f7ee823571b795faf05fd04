@@ -39,6 +39,30 @@
       },
       "revId": "43105a7fea3bb5964f7ee823571b795faf05fd04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "825e2aa7_6f31d32c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/non_educoexistence_insession.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-19T16:38:20Z",
+      "side": 1,
+      "message": "When you try that, is the problem that the node is not found? Based on the bit of the UI tree you\u0027ve pasted here, the problem could be that the apostrophe is actually the right single quotation mark unicode character (’, not \u0027). I\u0027ve seen that come up before. Does it work if you copy and paste the name directly from the UI tree output into Name()?",
+      "parentUuid": "fc01c86d_f3356aa7",
+      "range": {
+        "startLine": 122,
+        "startChar": 34,
+        "endLine": 122,
+        "endChar": 63
+      },
+      "revId": "43105a7fea3bb5964f7ee823571b795faf05fd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
