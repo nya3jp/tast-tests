@@ -16,6 +16,23 @@
       "message": "This CL is ready for review.",
       "revId": "4bf8680dd5378e4c1ccb7cb1c4009220c3ef3605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4605b020_ad9640f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-05-19T16:56:41Z",
+      "side": 1,
+      "message": "CC Aga",
+      "revId": "4bf8680dd5378e4c1ccb7cb1c4009220c3ef3605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
