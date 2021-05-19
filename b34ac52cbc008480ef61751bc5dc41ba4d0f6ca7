@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cd4dbca_6f89a95e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-05-19T00:32:44Z",
+      "side": 1,
+      "message": "Thanks for checking!\n\nI remember getting confused about all these orientations when writing that rotation code. I forgot what all of them mean. I think I was just trying to make it work with devices in the lab, so I\u0027d say the code is brittle and should be revisited at some point.\n\nFor now, we don\u0027t need to take any action for that here. Let\u0027s see how the test behaves in the lab.",
+      "parentUuid": "ff76411a_4869b5aa",
+      "range": {
+        "startLine": 411,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 2
+      },
+      "revId": "b34ac52cbc008480ef61751bc5dc41ba4d0f6ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f62cde06_cc3dd0b4",
@@ -274,6 +298,30 @@
       "side": 1,
       "message": "I checked with Kramer and:\n- If overlays are disabled in lacros but enabled in ash, lacros still flattens everything (including video) into a frambuffer and sends it through Wayland.\n- Both, lacros and ash, can demote videos to non-overlay.",
       "parentUuid": "114a4041_d363dd0f",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 61
+      },
+      "revId": "b34ac52cbc008480ef61751bc5dc41ba4d0f6ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84df77cc_8c30d126",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-05-19T00:32:44Z",
+      "side": 1,
+      "message": "Thanks for checking!\n\nBased on that, I\u0027d say that we should have two variations of the lacros fixture: one where only lacros disables overlays and one where only ash disables overlays. The reason is that the two paths handle video visible rectangles differently. On one path, the visible rectangle gets propagated only up to the lacros compositor and then it\u0027s used to draw the video onto the framebuffer. On the other, I\u0027d expect it gets propagated to the ash compositor through Wayland.\n\nSo maybe having something like chromeLacrosCompositedVideoLacros and chromeAshCompositedVideoLacros and having one test for each?",
+      "parentUuid": "7eead322_7a3f2320",
       "range": {
         "startLine": 134,
         "startChar": 3,
