@@ -8,9 +8,11 @@ package chroot
 import (
 	"bytes"
 	"context"
+	"encoding/binary"
 	"fmt"
 	"io"
 	"io/ioutil"
+	"net"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -21,6 +23,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	patchpanel "chromiumos/tast/local/bundles/cros/network/patchpanel_client"
 	"chromiumos/tast/testing"
 )
 
@@ -47,8 +50,6 @@ var configFileTemplates = map[string]string{
 
 // NetworkChroot wraps the chroot variables.
 type NetworkChroot struct {
-	netInterface           string
-	netLocalIPandPrefix    string
 	netBindRootDirectories []string
 	netRootDirectories     []string
 	netCopiedConfigFiles   []string
@@ -56,23 +57,19 @@ type NetworkChroot struct {
 	netConfigFileValues    map[string]string
 	netTempDir             string
 	netJailArgs            []string
+	netnsLifelineFD        *os.File
 }
 
 const (
 	startup    = "etc/chroot_startup.sh"
 	startupLog = "var/log/startup.log"
-	netnsVPN   = "netnsVPN"
 )
 
 // NewNetworkChroot creates a new chroot object.
-func NewNetworkChroot(serverInterfaceName, serverAddress string, networkPrefix int) *NetworkChroot {
+func NewNetworkChroot() *NetworkChroot {
 	tempConfigFileValues := make(map[string]string)
-	tempConfigFileValues["local_ip"] = serverAddress
 	tempConfigFileValues["startup_log"] = startupLog
-	localIPandPrefix := fmt.Sprintf("%s/%d", serverAddress, networkPrefix)
 	return &NetworkChroot{
-		netInterface:           serverInterfaceName,
-		netLocalIPandPrefix:    localIPandPrefix,
 		netBindRootDirectories: bindRootDirectories,
 		netRootDirectories:     rootDirectories,
 		netCopiedConfigFiles:   copiedConfigFiles,
@@ -80,49 +77,51 @@ func NewNetworkChroot(serverInterfaceName, serverAddress string, networkPrefix i
 		netConfigFileValues:    tempConfigFileValues}
 }
 
-// Startup create the chroot and start user processes.
-func (n *NetworkChroot) Startup(ctx context.Context) error {
+// Startup creates the chroot, calls patchpanel API to create a netns, starts
+// user processes and returns the IPv4 address inside this netns.
+func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
+	pc, err := patchpanel.New(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to create patchpanel client")
+	}
+
+	// -1 indicates we want a new netns instead of naming a netns associated with a
+	// process. We do not need to communicate outside the DUT in the VPN tests so
+	// the other parameters do not matter.
+	fd, resp, err := pc.ConnectNamespace(ctx, -1, "", false)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to call ConnectNamespace")
+	}
+	b := make([]byte, 4)
+	binary.LittleEndian.PutUint32(b, uint32(resp.PeerIpv4Address))
+	netnsIP := net.IP(b).String()
+	n.netConfigFileValues["netns_ip"] = netnsIP
+	n.netnsLifelineFD = fd
+	netnsName := resp.NetnsName
+
 	if err := n.makeChroot(ctx); err != nil {
-		return errors.Wrap(err, "failed making the chroot")
+		return "", errors.Wrap(err, "failed making the chroot")
 	}
 
 	if err := n.writeConfigs(); err != nil {
-		return errors.Wrap(err, "failed writing the configs")
-	}
-
-	// Create new namespace netnsVPN.
-	if err := testexec.CommandContext(ctx, "ip", "netns", "add", netnsVPN).Run(); err != nil {
-		return errors.Wrapf(err, "failed to add the namespace %s", netnsVPN)
-	}
-
-	// Move network interface to the network namespace of the server.
-	if err := testexec.CommandContext(ctx, "ip", "link", "set", n.netInterface, "netns", netnsVPN).Run(); err != nil {
-		return errors.Wrap(err, "failed to move the network interface to the namespace of the server")
-	}
-
-	if err := testexec.CommandContext(ctx, "ip", "-n", netnsVPN, "addr", "add", n.netLocalIPandPrefix, "dev", n.netInterface).Run(); err != nil {
-		return errors.Wrapf(err, "failed to add the address %s to the server", n.netLocalIPandPrefix)
-	}
-
-	if err := testexec.CommandContext(ctx, "ip", "-n", netnsVPN, "link", "set", n.netInterface, "up").Run(); err != nil {
-		return errors.Wrapf(err, "failed to set the network interface %s up", n.netInterface)
+		return "", errors.Wrap(err, "failed writing the configs")
 	}
 
 	cmdArgs := append(n.netJailArgs, "/bin/bash", filepath.Join("/", startup), "&")
-	ipArgs := []string{"netns", "exec", netnsVPN, "/sbin/minijail0", "-C", n.netTempDir}
+	ipArgs := []string{"netns", "exec", netnsName, "/sbin/minijail0", "-C", n.netTempDir}
 	ipArgs = append(ipArgs, cmdArgs...)
 	if err := testexec.CommandContext(ctx, "ip", ipArgs...).Start(); err != nil {
-		return errors.Wrap(err, "failed to run minijail")
+		return "", errors.Wrap(err, "failed to run minijail")
 	}
 
-	return nil
+	return netnsIP, nil
 }
 
 // Shutdown remove the chroot filesystem in which the VPN server was running.
 func (n *NetworkChroot) Shutdown(ctx context.Context) error {
 	// Delete the network namespace.
-	if err := testexec.CommandContext(ctx, "ip", "netns", "del", netnsVPN).Run(); err != nil {
-		return errors.Wrapf(err, "failed to delete the network namespace %s", netnsVPN)
+	if n.netnsLifelineFD != nil {
+		n.netnsLifelineFD.Close()
 	}
 
 	if err := killPIDs(ctx, "/sbin/minijail0"); err != nil {
