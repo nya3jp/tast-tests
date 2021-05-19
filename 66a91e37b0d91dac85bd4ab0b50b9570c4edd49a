@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a992740_eb4e788c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/start_app_from_sign_in_screen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-19T10:37:57Z",
+      "side": 1,
+      "message": "Remove that file",
+      "revId": "66a91e37b0d91dac85bd4ab0b50b9570c4edd49a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
