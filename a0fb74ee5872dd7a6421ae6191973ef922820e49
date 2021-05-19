@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d365a722_24fa87b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/start_app_from_sign_in_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-19T15:09:21Z",
+      "side": 1,
+      "message": "Like in the other one, please file a bug for it as well.",
+      "revId": "a0fb74ee5872dd7a6421ae6191973ef922820e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed352e23_2763b8d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/start_app_from_sign_in_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-19T15:09:21Z",
+      "side": 1,
+      "message": "This is duplicated as well, and quite long. Can you find a way to move it to a common file?",
+      "revId": "a0fb74ee5872dd7a6421ae6191973ef922820e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b41197_dc5b5809",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/start_app_from_sign_in_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-19T15:09:21Z",
+      "side": 1,
+      "message": "There is only 1 action, you don\u0027t need Combine().",
+      "revId": "a0fb74ee5872dd7a6421ae6191973ef922820e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb99c59_2f097d77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/start_app_from_sign_in_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-19T15:09:21Z",
+      "side": 1,
+      "message": "Duplicated code, move it to a common file.",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 2
+      },
+      "revId": "a0fb74ee5872dd7a6421ae6191973ef922820e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
