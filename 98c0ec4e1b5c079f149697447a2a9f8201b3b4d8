@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ddbe26_f4115890",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-19T10:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0774f3f_10fb9fc6",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 1
+      },
+      "revId": "98c0ec4e1b5c079f149697447a2a9f8201b3b4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26ecb67d_e6cb4ff3",
@@ -303,6 +327,24 @@
       "side": 1,
       "message": "Ah, this is a good point. Sorry I overlooked this in the last iteration.\n\nI think it\u0027s good to keep using Program; Program and ProgramNameFilter are not too different, so we don\u0027t need to deprecate Program and bother rewriting all callers. Changing Program\u0027s parameter type may cause a few build errors, but we can rewrite such callers (I believe there\u0027re not too many cases as we can still pass strings).",
       "parentUuid": "6920d360_6ad6d8ed",
+      "revId": "98c0ec4e1b5c079f149697447a2a9f8201b3b4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec0e9ca1_9bec1bb6",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-19T10:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46abac62_8211ff9e",
       "revId": "98c0ec4e1b5c079f149697447a2a9f8201b3b4d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
