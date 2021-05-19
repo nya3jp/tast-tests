@@ -68,6 +68,24 @@
       "parentUuid": "03c0607f_78a15eba",
       "revId": "137ab9d9837cab76c399b8b8faac64424858548b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2c77cf5_67259901",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-19T16:13:18Z",
+      "side": 1,
+      "message": "I don\u0027t think unresolved comments are a barrier.\n\nIn this case, the Commit Bot\u0027s message at 8:04 AM MT specified that the problem was a VM test called \"apps.LaunchGallery.stable\". Because that\u0027s completely unrelated to our change, there should be no problem CQ+2ing again until it works.",
+      "parentUuid": "dd98abe1_4593dd48",
+      "revId": "137ab9d9837cab76c399b8b8faac64424858548b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
