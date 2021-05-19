@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7477b1bc_fd45e561",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-19T02:29:38Z",
+      "side": 1,
+      "message": "It looks like this will continue to apply on subsequent chrome restarts rather than setting back to the default?",
+      "revId": "69235fd303a7f2003109ac2e8433931548e52373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
