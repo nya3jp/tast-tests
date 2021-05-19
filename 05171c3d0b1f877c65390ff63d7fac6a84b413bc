@@ -299,6 +299,30 @@
       },
       "revId": "05171c3d0b1f877c65390ff63d7fac6a84b413bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93be54de_4478e3f8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-19T20:17:32Z",
+      "side": 1,
+      "message": "Yen-lin got the right answer, but for your specific case I think it ends up as VHT40. You still only care about mgmt frames, so it\u0027s probably OK even if you had the wrong width.",
+      "parentUuid": "6ca9c93c_d7b16bb2",
+      "range": {
+        "startLine": 94,
+        "startChar": 89,
+        "endLine": 94,
+        "endChar": 95
+      },
+      "revId": "05171c3d0b1f877c65390ff63d7fac6a84b413bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

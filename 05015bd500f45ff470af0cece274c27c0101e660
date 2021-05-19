@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11bf8b04_532b8325",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-19T20:17:32Z",
+      "side": 1,
+      "message": "(sorry for the delay)\n\nI think this mostly is good (the helpers are nicer now, thanks!), although the test itself is still pretty hard to read. Partly the excessive magic numbers, and maybe partly the lack of nice 802.11 handling in gopacket (maybe it\u0027s a \"grass is greener on the other side\", but I thought *shark libraries typically did a better job at this stuff).",
+      "revId": "05015bd500f45ff470af0cece274c27c0101e660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14057bc4_7706b573",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-19T20:17:32Z",
+      "side": 1,
+      "message": "there\u0027s still a lot of magic numbers in here. can we at least get some basic self-documenting const\u0027s here? same at line 209, 239, 272, 306, 316, maybe more",
+      "range": {
+        "startLine": 96,
+        "startChar": 11,
+        "endLine": 96,
+        "endChar": 15
+      },
+      "revId": "05015bd500f45ff470af0cece274c27c0101e660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
