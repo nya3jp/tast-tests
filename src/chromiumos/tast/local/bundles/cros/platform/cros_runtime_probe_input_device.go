@@ -73,7 +73,7 @@ func CrosRuntimeProbeInputDevice(ctx context.Context, s *testing.State) {
 			continue
 		}
 		for _, component := range probedInputDeviceComponents {
-			result, name := runtimeprobe.DecreaseComponentCount(mapping[inputDeviceType], model, component)
+			result, name := runtimeprobe.DecreaseComponentCount(mapping[inputDeviceType], model, inputDeviceType, component)
 			s.Logf("Probed %s: %s", inputDeviceType, name)
 			if !result {
 				if name == "generic" {

@@ -77,7 +77,7 @@ func CrosRuntimeProbeNetwork(ctx context.Context, s *testing.State) {
 			continue
 		}
 		for _, component := range probedNetworkComponents {
-			result, name := runtimeprobe.DecreaseComponentCount(mapping[networkType], model, component)
+			result, name := runtimeprobe.DecreaseComponentCount(mapping[networkType], model, networkType, component)
 			s.Logf("Probed %s: %s", networkType, name)
 			if !result {
 				if name == "generic" {
