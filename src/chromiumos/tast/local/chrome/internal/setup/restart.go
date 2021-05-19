@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/internal/extension"
+	"chromiumos/tast/local/chrome/rendering"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -27,6 +28,8 @@ import (
 // ui-post-stop can sometimes block for an extended period of time
 // waiting for "cryptohome --action=pkcs11_terminate" to finish: https://crbug.com/860519
 const uiRestartTimeout = 60 * time.Second
+
+const fontAvailableDir = "/etc/fonts/conf.avail"
 
 // RestartChromeForTesting restarts the ui job, asks session_manager to enable Chrome testing,
 // and waits for Chrome to listen on its debugging port.
@@ -139,6 +142,25 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 			args = append(args,
 				// Disable CPU restrictions to let tests run faster
 				"--disable-arc-cpu-restriction")
+		}
+	}
+
+	// If the requested method is available on the device, set it.
+	// Otherwise, since it's only "preferred", log it but don't error out.
+	if method := cfg.PreferredSubPixelAntialiasingMethod(); method != "" {
+		currentMethod := rendering.CurrentSubPixelAntialiasingMethod()
+		filePointee := filepath.Join(fontAvailableDir, rendering.SPAAFiles[method])
+		if _, err := os.Stat(filePointee); os.IsNotExist(err) {
+			testing.ContextLogf(ctx, "Unable to find subpixel rendering method %s", method)
+		} else if currentMethod == "" {
+			return errors.New("Unable to determine current antialiasing method")
+		} else if currentMethod != method {
+			if err := os.Symlink(filepath.Join(fontAvailableDir, rendering.SPAAFiles[method]), filepath.Join(rendering.FontConfigDir, rendering.SPAAFiles[method])); err != nil {
+				return err
+			}
+			if err := os.Remove(filepath.Join(rendering.FontConfigDir, rendering.SPAAFiles[currentMethod])); err != nil {
+				return err
+			}
 		}
 	}
 

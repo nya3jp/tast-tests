@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome/internal/config"
+	"chromiumos/tast/local/chrome/rendering"
 	"chromiumos/tast/local/cryptohome"
 )
 
@@ -342,4 +343,18 @@ func TryReuseSession() Option {
 		cfg.TryReuseSession = true
 		return nil
 	}
+}
+
+// PreferredSubPixelAntialiasingMethod returns an Option that sets the subpixel
+// antialiasing method to the requested method, if it's available on the device.
+func PreferredSubPixelAntialiasingMethod(method rendering.SubPixelAntialiasingMethod) Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.PreferredSubPixelAntialiasingMethod = method
+		return nil
+	}
+}
+
+// NoSubPixelAntialiasing returns an option that disables sub-pixel antialiasing.
+func NoSubPixelAntialiasing() Option {
+	return PreferredSubPixelAntialiasingMethod(rendering.NoSPAA)
 }
