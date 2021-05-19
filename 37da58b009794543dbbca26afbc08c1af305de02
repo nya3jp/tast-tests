@@ -112,6 +112,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4b0a027_1e3cc1c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-19T00:33:49Z",
+      "side": 1,
+      "message": "another possibility is by adding \"Maybe\". e.g: \"enableUDCAndMaybeRebootARC\"",
+      "parentUuid": "d4dba4e9_13d63804",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 26
+      },
+      "revId": "37da58b009794543dbbca26afbc08c1af305de02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a797d92_0b58190b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
         "patchSetId": 5
