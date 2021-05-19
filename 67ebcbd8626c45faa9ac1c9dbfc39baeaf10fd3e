@@ -33,6 +33,75 @@
       "message": "Friendly ping for review.\n\nThis change is not domain specific, so I\u0027ll start tast-owner review in parallel.",
       "revId": "67ebcbd8626c45faa9ac1c9dbfc39baeaf10fd3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d0cd146_588bfad7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-05-19T03:13:02Z",
+      "side": 1,
+      "message": "How about making it simply report the goroutine is done?\n\ndone :\u003d make(struct{})\ndefer func() {\n  select {\n  case \u003c- done:\n  case \u003c- time.After(...):\n    ...\n  }\n}()\ngo func() { \n  defer close(done)\n  ...\n  if err !\u003d nil {\n    t.Error(...)\n  }\n}()",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 31
+      },
+      "revId": "67ebcbd8626c45faa9ac1c9dbfc39baeaf10fd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6672eeab_152a4a82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-05-19T03:13:02Z",
+      "side": 1,
+      "message": "nit: I think the error message explains it. Can we remove it?",
+      "range": {
+        "startLine": 137,
+        "startChar": 3,
+        "endLine": 137,
+        "endChar": 40
+      },
+      "revId": "67ebcbd8626c45faa9ac1c9dbfc39baeaf10fd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e27117b5_c571030e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-05-19T03:13:02Z",
+      "side": 1,
+      "message": "Same suggestions apply for this file.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 31
+      },
+      "revId": "67ebcbd8626c45faa9ac1c9dbfc39baeaf10fd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
