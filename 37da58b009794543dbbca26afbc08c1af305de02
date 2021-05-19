@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "297ab5dd_df46be01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-19T21:23:34Z",
+      "side": 1,
+      "message": "Thank you for all comments.\n\nI need to move this test to remote test. Reboot android is not enough here since USB driver is not installed. I previously test this on my local DUT which already has USB driver. Sorry for confusion.\n\nSherry",
+      "revId": "37da58b009794543dbbca26afbc08c1af305de02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6856d48_31f8e2be",
@@ -48,6 +65,30 @@
       "writtenOn": "2021-05-18T22:56:46Z",
       "side": 1,
       "message": "nit: oldPID seems that is only used inside enableUdc/reboot... I\u0027d move it inside the \"reboot\" func",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "37da58b009794543dbbca26afbc08c1af305de02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd242a80_68488725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-19T21:23:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c6856d48_31f8e2be",
       "range": {
         "startLine": 67,
         "startChar": 1,
@@ -104,6 +145,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c50094be_15f3102b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-19T21:23:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3a18a454_6d326dfb",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 4
+      },
+      "revId": "37da58b009794543dbbca26afbc08c1af305de02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a66d447c_f01c3107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-19T21:23:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1b46449e_39a98309",
+      "range": {
+        "startLine": 100,
+        "startChar": 11,
+        "endLine": 100,
+        "endChar": 14
+      },
+      "revId": "37da58b009794543dbbca26afbc08c1af305de02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4dba4e9_13d63804",
@@ -151,6 +240,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee30b10d_f3cbb565",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-19T21:23:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d4b0a027_1e3cc1c0",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 26
+      },
+      "revId": "37da58b009794543dbbca26afbc08c1af305de02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a797d92_0b58190b",
@@ -164,6 +277,30 @@
       "writtenOn": "2021-05-18T22:56:46Z",
       "side": 1,
       "message": "nit 1: add docstring\nnit 2: I\u0027d be more explicit and call it rebootARC()",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 11
+      },
+      "revId": "37da58b009794543dbbca26afbc08c1af305de02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ae31711_ead8b01d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-19T21:23:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3a797d92_0b58190b",
       "range": {
         "startLine": 123,
         "startChar": 5,
