@@ -226,6 +226,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe7a1dbe_4d2e5cb7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-19T00:24:20Z",
+      "side": 1,
+      "message": "Almost, but instead of specifying \"tast test cases\", I would specify \"firmware test cases\", or perhaps \"FAFT test cases\". It would be OK to include some Tauto (i.e. non-tast) test cases in that suite, but it should be restricted to firmware.\n\nAdditionally, we might have to create a new DUT pool for these tests. Just a few DUTs (2 to 5) should be OK.\n\nFor a component, I think \"ChromeOS \u003e Platform \u003e Enablement \u003e Firmware \u003e EngProd\"",
+      "parentUuid": "96ebe910_c74df361",
+      "range": {
+        "startLine": 22,
+        "startChar": 44,
+        "endLine": 22,
+        "endChar": 58
+      },
+      "revId": "ef5d5cf3ace9e08adb96d8d6469b16113c043f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "149bb1be_5dca7a91",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
         "patchSetId": 1
