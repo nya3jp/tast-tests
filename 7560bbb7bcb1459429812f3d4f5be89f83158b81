@@ -22,6 +22,30 @@
       },
       "revId": "7560bbb7bcb1459429812f3d4f5be89f83158b81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "353569e6_41d25559",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-19T05:21:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d061e3bd_8cd501cc",
+      "range": {
+        "startLine": 119,
+        "startChar": 3,
+        "endLine": 119,
+        "endChar": 9
+      },
+      "revId": "7560bbb7bcb1459429812f3d4f5be89f83158b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
