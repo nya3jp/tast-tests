@@ -22,6 +22,30 @@
       },
       "revId": "75718d6af73ad8daa0b5d355cbe5661d38a01082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1999726e_fd520523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-19T03:51:45Z",
+      "side": 1,
+      "message": "I don\u0027t understand. I\u0027ve used s.Log in this function, so it needs s to be passed in.",
+      "parentUuid": "62cd7f95_eeea525f",
+      "range": {
+        "startLine": 106,
+        "startChar": 41,
+        "endLine": 106,
+        "endChar": 57
+      },
+      "revId": "75718d6af73ad8daa0b5d355cbe5661d38a01082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
