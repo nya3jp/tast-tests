@@ -18,6 +18,8 @@ const (
 	audioInputMute        = "input_mute"
 	audioOutputVolume     = "output_volume"
 	audioOutputDeviceName = "output_device_name"
+	audioUnderruns        = "underruns"
+	audioSevereUnderruns  = "severe_underruns"
 )
 
 func init() {
@@ -47,7 +49,9 @@ func ProbeAudioInfo(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify the headers are correct.
-	want := []string{audioOutputMute, audioInputMute, audioOutputDeviceName, audioOutputVolume}
+	want := []string{
+		audioOutputMute, audioInputMute, audioOutputDeviceName,
+		audioOutputVolume, audioUnderruns, audioSevereUnderruns}
 	got := records[0]
 	if !reflect.DeepEqual(want, got) {
 		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
@@ -85,5 +89,22 @@ func ProbeAudioInfo(ctx context.Context, s *testing.State) {
 	}
 	if outputVolume < 0 || outputVolume > 100 {
 		s.Error("Failed. output_volume is not in a legal range [0, 100]: ", outputVolume)
+	}
+
+	// Check "underruns" and "severe_underruns" are positive integer or zero.
+	underruns, err := strconv.ParseInt(contentsMap[audioUnderruns], 10, 32)
+	if err != nil {
+		s.Errorf("Failed to convert %q (%s) to int: %v", contentsMap[audioUnderruns], audioUnderruns, err)
+	}
+	if underruns < 0 {
+		s.Error("Failed. underruns is smaller than zero: ", underruns)
+	}
+
+	severeUnderruns, err := strconv.ParseInt(contentsMap[audioSevereUnderruns], 10, 32)
+	if err != nil {
+		s.Errorf("Failed to convert %q (%s) to int: %v", contentsMap[audioSevereUnderruns], audioSevereUnderruns, err)
+	}
+	if severeUnderruns < 0 {
+		s.Error("Failed. severe_underruns is smaller than zero: ", severeUnderruns)
 	}
 }
