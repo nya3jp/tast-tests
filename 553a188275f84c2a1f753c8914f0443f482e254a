@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4284d088_47202718",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-05-19T06:37:17Z",
+      "side": 1,
+      "message": "nit: to finish\n?\nOr I think you can remove the comment if you prefer.",
+      "range": {
+        "startLine": 98,
+        "startChar": 27,
+        "endLine": 98,
+        "endChar": 35
+      },
+      "revId": "553a188275f84c2a1f753c8914f0443f482e254a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f795f17_8e7109a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-05-19T06:37:17Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 8
+      },
+      "revId": "553a188275f84c2a1f753c8914f0443f482e254a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
