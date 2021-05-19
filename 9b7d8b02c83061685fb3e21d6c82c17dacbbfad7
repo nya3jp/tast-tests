@@ -118,6 +118,30 @@
       },
       "revId": "9b7d8b02c83061685fb3e21d6c82c17dacbbfad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f90bb24_5f1013af",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-19T01:24:57Z",
+      "side": 1,
+      "message": "I originally wrote this with the expectation that the test or parameter will define what router is being used rather than being automatically determined. I can add a task to automate this process by reading fields like the one you specified, but I\u0027m not sure if I should do this in this cl or if it should be its own separate cl.",
+      "parentUuid": "7c4cb1d6_9d307d21",
+      "range": {
+        "startLine": 175,
+        "startChar": 74,
+        "endLine": 175,
+        "endChar": 92
+      },
+      "revId": "9b7d8b02c83061685fb3e21d6c82c17dacbbfad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
