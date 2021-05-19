@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8bac254_63d03925",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-19T01:47:52Z",
+      "side": 1,
+      "message": "A few more nitpicks for Tast style.",
+      "revId": "e32d68d4bb6b46ee87b8965eb6b3ab41f59a9104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd162bdf_65f56734",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-19T01:47:52Z",
+      "side": 1,
+      "message": "nit: I wonder if this depends on the details of the function and similar string is already returned by the function. Maybe:\n\n  s.Fatal(\"Failed to get legacy router: \", err)\n\nis more general and could provide the same information?",
+      "range": {
+        "startLine": 127,
+        "startChar": 10,
+        "endLine": 127,
+        "endChar": 41
+      },
+      "revId": "e32d68d4bb6b46ee87b8965eb6b3ab41f59a9104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6b1932c_c406a715",
+        "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-19T01:47:52Z",
+      "side": 1,
+      "message": "nit: I wonder if it\u0027s cleaner to move this to legacy_router.go? I think router.go didn\u0027t need information about the underlying implementation of the interfaces.\n\n(I guess Reserve function is kept here for avoiding conflict with the next CL, which might be OK)",
+      "revId": "e32d68d4bb6b46ee87b8965eb6b3ab41f59a9104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5632ae9a_2fbf2ceb",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-19T01:47:52Z",
+      "side": 1,
+      "message": "(touching less golang recently and missed this, sorry)\n\nI think golang discourages Get prefix, so LegacyRouter might be enough?\n\nref: https://golang.org/doc/effective_go#Getters",
+      "range": {
+        "startLine": 1048,
+        "startChar": 23,
+        "endLine": 1048,
+        "endChar": 26
+      },
+      "revId": "e32d68d4bb6b46ee87b8965eb6b3ab41f59a9104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84f7d56b_4356e72d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-19T01:47:52Z",
+      "side": 1,
+      "message": "I guess this function also needs an error as GetLegacyRouter?\n\n(and Get prefix might be dropped as GetLegacyRouter)",
+      "revId": "e32d68d4bb6b46ee87b8965eb6b3ab41f59a9104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
