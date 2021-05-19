@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "047ca6f0_25dbda33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-19T01:21:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a44680c_2d14e0ce",
+      "revId": "8757b51d51efd27cff03936e1433d4534920264d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1d987cca_1ef394be",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -48,6 +66,30 @@
       "writtenOn": "2021-05-18T02:24:02Z",
       "side": 1,
       "message": "How about using *router.SupportCapture here?",
+      "range": {
+        "startLine": 93,
+        "startChar": 62,
+        "endLine": 93,
+        "endChar": 68
+      },
+      "revId": "8757b51d51efd27cff03936e1433d4534920264d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "736c0043_31a9bc78",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-19T01:21:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a255ba9e_495937e8",
       "range": {
         "startLine": 93,
         "startChar": 62,
@@ -107,6 +149,60 @@
       "side": 1,
       "message": "I see. To align with the guide, either \"wificellutil\" or \"wifiutil\" is acceptable.",
       "parentUuid": "6b683b78_c98badab",
+      "revId": "8757b51d51efd27cff03936e1433d4534920264d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6eb3ad3_71eadb3e",
+        "filename": "src/chromiumos/tast/remote/wificell/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-19T01:21:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5334a60_5f934f42",
+      "revId": "8757b51d51efd27cff03936e1433d4534920264d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a33ee242_df35c0f7",
+        "filename": "src/chromiumos/tast/remote/wificell/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-19T01:21:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5334a60_5f934f42",
+      "revId": "8757b51d51efd27cff03936e1433d4534920264d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fedd199_352b9bc9",
+        "filename": "src/chromiumos/tast/remote/wificell/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-19T01:21:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5334a60_5f934f42",
       "revId": "8757b51d51efd27cff03936e1433d4534920264d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
