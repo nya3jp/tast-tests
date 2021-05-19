@@ -166,6 +166,30 @@
       },
       "revId": "9b7d8b02c83061685fb3e21d6c82c17dacbbfad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4304284_86516779",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-19T23:02:13Z",
+      "side": 1,
+      "message": "Sounds good\n\nI\u0027ve just added a few paragraphs to the design to outline my expectations. In the meantime, the user running the test will have to provide the specific router-type as a paramater if they don\u0027t want the testfixture to default to the legacy router type. I also intend that ideally, this special argument is something we don\u0027t to force users to use forever (auto-determination would be a nice to have).\n\nFrom the test writer\u0027s perspective, they should specify the scope of what router types are supported. I have modified the behavior of some of the remote tests in the parent cl to do some router type checking. However, I have not included the means to actually pass in a different router type via tast arguments to cause it to fail yet.",
+      "parentUuid": "621233e4_1fec3ea0",
+      "range": {
+        "startLine": 175,
+        "startChar": 74,
+        "endLine": 175,
+        "endChar": 92
+      },
+      "revId": "9b7d8b02c83061685fb3e21d6c82c17dacbbfad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
