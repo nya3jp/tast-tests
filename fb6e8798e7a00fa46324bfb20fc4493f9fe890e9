@@ -110,6 +110,30 @@
       },
       "revId": "fb6e8798e7a00fa46324bfb20fc4493f9fe890e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d02bffa_3880463a",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-19T13:44:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8ec7bd09_84413b7e",
+      "range": {
+        "startLine": 314,
+        "startChar": 23,
+        "endLine": 314,
+        "endChar": 48
+      },
+      "revId": "fb6e8798e7a00fa46324bfb20fc4493f9fe890e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

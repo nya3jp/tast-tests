@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a81db3b_0e4bd9f4",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-19T13:44:12Z",
+      "side": 1,
+      "message": "check possible error.\n\nWe know that indices of the groups should not fail, specially since \"MustCompile\" was called.\nBut if the function returns an error, it is a good practice to check for it.\n\nAnother possible way to do it is to get rid of the named-groups, and then just get groups by hardcoded indices (something that is being used very much in our Tast code).",
+      "range": {
+        "startLine": 322,
+        "startChar": 1,
+        "endLine": 322,
+        "endChar": 12
+      },
+      "revId": "f4dd3ee0ca416327a20d29da7eaf54adcd237a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b014a965_6e24e985",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-19T13:44:12Z",
+      "side": 1,
+      "message": "The Go best practice says that you should not override the \"semantics\" of a variable.\nIn this case, if there is an error, instead of returning -1 (overriding the semantics of \"index\"), just return an error.",
+      "range": {
+        "startLine": 383,
+        "startChar": 1,
+        "endLine": 383,
+        "endChar": 10
+      },
+      "revId": "f4dd3ee0ca416327a20d29da7eaf54adcd237a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
