@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd62a270_7fd2cab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-05-19T05:58:00Z",
+      "side": 1,
+      "message": "How about we make InitNetworkNamespace() part of Startup() (and make netnsIP a readable property)? In that way we can eliminate the potential transient state and the downstream component won\u0027t need to call this explicitly.",
+      "range": {
+        "startLine": 84,
+        "startChar": 24,
+        "endLine": 84,
+        "endChar": 44
+      },
+      "revId": "fe109ea32711eaa66717d75e61466f0f99101984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
