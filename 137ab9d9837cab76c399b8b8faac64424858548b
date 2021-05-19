@@ -103,6 +103,24 @@
       "message": "The last few CQ+2\u0027s have all failed with the same error. From reviewing the error logs, the VM is having trouble downloading Tast files. That error seems potentially related to this change, but not necessarily. As a next step, I would recommend rebasing the CL onto the tip of the main branch, and seeing if that fixes it.",
       "revId": "137ab9d9837cab76c399b8b8faac64424858548b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29906921_c5bcb877",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-19T19:48:07Z",
+      "side": 1,
+      "message": "FWIW, I am seeing the same issue on https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2903128, so I think that this is a fleet/infrastructure problem, and not a problem with this CL.",
+      "parentUuid": "f2e177a5_68d0f3f4",
+      "revId": "137ab9d9837cab76c399b8b8faac64424858548b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
