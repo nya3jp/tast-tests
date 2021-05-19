@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "047fafd8_817f323d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-19T20:56:33Z",
+      "side": 1,
+      "message": "Hi Hidehiko,\n\nThanks for the review. I have addressed the comments.\n\nRegards\nShijin ",
+      "revId": "e89fccf21e7f6c4aaba4ab329c0a89a28d76aea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
