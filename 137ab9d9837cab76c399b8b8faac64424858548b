@@ -50,6 +50,24 @@
       "message": "Hello Greg and Jeremy,\n\nI saw message \"Failed builds\" from Commit-Bot. However, it seems I don\u0027t have permission to access these links. Is it something that I should fix?\n\nBesides, we can not do CQ+2. What\u0027s the next step for us the merge the CL?",
       "revId": "137ab9d9837cab76c399b8b8faac64424858548b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd98abe1_4593dd48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-19T16:00:51Z",
+      "side": 1,
+      "message": "The CQ fails often, so don\u0027t worry too much about the failures, just CQ it again.  To CQ+2, you have to have V+1 and CR+2, and no unresolved comments. I think you just need to resolve the comments.",
+      "parentUuid": "03c0607f_78a15eba",
+      "revId": "137ab9d9837cab76c399b8b8faac64424858548b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
