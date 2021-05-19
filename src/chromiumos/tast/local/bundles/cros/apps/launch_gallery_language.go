@@ -20,12 +20,6 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-type langTestParameters struct {
-	regionCode          string
-	appName             string
-	openImageButtonName string
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: LaunchGalleryLanguage,
@@ -37,37 +31,18 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(pre.AppsStableModels),
-		Params: []testing.Param{
-			{
-				Name: "es",
-				Val: langTestParameters{
-					regionCode:          "es",
-					appName:             "Galería",
-					openImageButtonName: "Ábrela",
-				},
-			}, {
-				Name: "jp",
-				Val: langTestParameters{
-					regionCode:          "jp",
-					appName:             "ギャラリー",
-					openImageButtonName: "画像を開く",
-				},
-			},
-		},
+		Fixture:      "chromeLoggedInForEAInJP",
 	})
 }
 
 func LaunchGalleryLanguage(ctx context.Context, s *testing.State) {
-	regionCode := s.Param().(langTestParameters).regionCode
-	appName := s.Param().(langTestParameters).appName
-	openImageButtonName := s.Param().(langTestParameters).openImageButtonName
+	const (
+		regionCode          = "jp"
+		appName             = "ギャラリー"
+		openImageButtonName = "画像を開く"
+	)
 
-	cr, err := chrome.New(ctx, chrome.Region(regionCode))
-	if err != nil {
-		s.Fatalf("Failed to start Chrome in region %s: %v", regionCode, err)
-	}
-	defer cr.Close(ctx)
-
+	cr := s.FixtValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)

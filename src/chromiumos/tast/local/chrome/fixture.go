@@ -39,6 +39,18 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInForEAInJP",
+		Desc:     "Logged into a user session for essential apps in Japanese language",
+		Contacts: []string{"shengjun@chromium.org"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{EnableWebAppInstall(), Region("jp")}, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInForInputs",
 		Desc:     "Logged into a user session for essential inputs",
 		Contacts: []string{"shengjun@chromium.org"},
