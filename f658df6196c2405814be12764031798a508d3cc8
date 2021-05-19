@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f9448ce_33a96fff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-19T07:28:32Z",
+      "side": 1,
+      "message": "LGTM with one last nit. Defer +2 to Tast owners.",
+      "revId": "f658df6196c2405814be12764031798a508d3cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ee2a15d_9c8b69a1",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1321,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-19T07:28:32Z",
+      "side": 1,
+      "message": "nit: Please add some comments about why we don\u0027t use a.Click() but using a.Hold(0ms) instead.",
+      "range": {
+        "startLine": 1321,
+        "startChar": 1,
+        "endLine": 1321,
+        "endChar": 26
+      },
+      "revId": "f658df6196c2405814be12764031798a508d3cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
