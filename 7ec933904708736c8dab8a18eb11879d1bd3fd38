@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42a7e923_c4e1dd62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-05-19T14:19:06Z",
+      "side": 1,
+      "message": "+2 for security logic but consider Greg\u0027s suggestion.",
+      "revId": "7ec933904708736c8dab8a18eb11879d1bd3fd38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa7653ed_c291f8c4",
