@@ -16,6 +16,24 @@
       "message": "Any reason you are using UI automation instead of Container.Command?  Add a comment if so.  If not, consider changing as it is a lot simpler and likely to be less flaky.\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/vm/container.go;l\u003d666?q\u003dvm%20container%20tast",
       "revId": "98b7c33d0bd3dd77b1060f7e48c9dba75622948c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad4ed82d_b8ae8132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-19T02:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18f9dfcb_9ac243b8",
+      "revId": "98b7c33d0bd3dd77b1060f7e48c9dba75622948c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
