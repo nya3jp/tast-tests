@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca0f63a_e27a600f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-19T02:43:10Z",
+      "side": 1,
+      "message": "Can you file a tracking bug?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "a3b7629ed3c9c6de5c400414494ff29a804e954e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43330155_d168aa3b",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-19T02:43:10Z",
+      "side": 1,
+      "message": "Calling PrepareForRestart in gaia.go sounds wrong.\n\nCould you explain the background of the test in this CL and why you need PrepareForRestart?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 2
+      },
+      "revId": "a3b7629ed3c9c6de5c400414494ff29a804e954e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
