@@ -101,6 +101,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "94853e2f_036da06a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-20T23:56:20Z",
+      "side": 1,
+      "message": "we could use, info, err :\u003d display.GetInternalInfo(ctx, tconn)\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to get the internal display info\")\n\t}\n\ts.Log(\"info:\", info.HasTouchSupport)",
+      "parentUuid": "36db2afa_28bc77f2",
+      "range": {
+        "startLine": 540,
+        "startChar": 5,
+        "endLine": 540,
+        "endChar": 16
+      },
+      "revId": "2760085de07c7d065654d541a3e166417ebe09c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6388db1e_0829db41",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 2
@@ -148,6 +172,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8a96040e_b278c68c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-20T23:56:20Z",
+      "side": 1,
+      "message": "It\u0027s not related to device. It\u0027s is related to app. It happens when the app page has web view.",
+      "parentUuid": "e2f2d507_76e03341",
+      "range": {
+        "startLine": 552,
+        "startChar": 59,
+        "endLine": 554,
+        "endChar": 3
+      },
+      "revId": "2760085de07c7d065654d541a3e166417ebe09c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c2e243ef_7df500d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 2
@@ -183,6 +231,30 @@
       "side": 1,
       "message": "Please create a bug for this with this comment and proceed for this test.",
       "parentUuid": "c2e243ef_7df500d4",
+      "range": {
+        "startLine": 562,
+        "startChar": 26,
+        "endLine": 562,
+        "endChar": 56
+      },
+      "revId": "2760085de07c7d065654d541a3e166417ebe09c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7502a063_fb627c87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-20T23:56:20Z",
+      "side": 1,
+      "message": "Added a bug.",
+      "parentUuid": "4832ec15_a3c9aed9",
       "range": {
         "startLine": 562,
         "startChar": 26,
