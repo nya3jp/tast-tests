@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/cellular"
-	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
 
@@ -28,21 +27,6 @@ func init() {
 		Attr:    []string{"group:cellular"},
 		Timeout: 10 * time.Minute,
 	})
-}
-
-func connectAndVerifyConnected(ctx context.Context, helper *cellular.Helper, service *shill.Service) error {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := service.Connect(ctx); err != nil {
-			if strings.Contains(err.Error(), shillconst.ErrorModemNotStarted) {
-				return err
-			}
-			return testing.PollBreak(err)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 60 * time.Second}); err != nil {
-		return errors.Wrap(err, "error connecting to service")
-	}
-	return service.WaitForProperty(ctx, shillconst.ServicePropertyIsConnected, true, 30*time.Second)
 }
 
 func verifyNotConnected(ctx context.Context, helper *cellular.Helper) error {
@@ -104,7 +88,7 @@ func ShillCellularInhibited(ctx context.Context, s *testing.State) {
 	s.Logf("Verify Cellular Service and Connect (this may take up to %v)", timeout)
 	if service, err := helper.FindServiceForDeviceWithTimeout(ctx, timeout); err != nil {
 		s.Fatal("No Cellular Service after uninhibit: ", err)
-	} else if err = connectAndVerifyConnected(ctx, helper, service); err != nil {
+	} else if err = helper.ConnectToService(ctx, service); err != nil {
 		s.Fatal("Error connecting to service after uninhibit: ", err)
 	}
 
@@ -133,9 +117,7 @@ func ShillCellularInhibited(ctx context.Context, s *testing.State) {
 	s.Logf("Verify Cellular Service (this may take up to %v)", timeout)
 	if service, err := helper.FindServiceForDeviceWithTimeout(ctx, timeout); err != nil {
 		s.Fatal("No Cellular Service after uninhibit: ", err)
-	} else if err := service.Connect(ctx); err != nil {
+	} else if err := helper.ConnectToService(ctx, service); err != nil {
 		s.Fatal("Unable to connect to service after uninhibit: ", err)
-	} else if err := service.WaitForProperty(ctx, shillconst.ServicePropertyIsConnected, true, timeout); err != nil {
-		s.Fatal("Service never connected after uninhibit: ", err)
 	}
 }
