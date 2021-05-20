@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72963b59_c5845c26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-05-20T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fba7bbc7_268b93a1",
+      "revId": "ffa0d105f967a3da1bbc3b326e3d6a40d36803f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8a70557_9fa0adee",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-05-19T08:21:19Z",
       "side": 1,
       "message": "nit: this is only used in the Notification() function.",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 4
+      },
+      "revId": "ffa0d105f967a3da1bbc3b326e3d6a40d36803f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa7999ea_86a92db2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-05-20T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8a70557_9fa0adee",
       "range": {
         "startLine": 24,
         "startChar": 1,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "159914bf_711e0d21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-05-20T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29ab6ecb_e633f1e0",
+      "range": {
+        "startLine": 80,
+        "startChar": 34,
+        "endLine": 80,
+        "endChar": 65
+      },
+      "revId": "ffa0d105f967a3da1bbc3b326e3d6a40d36803f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "341d8185_2384382a",
@@ -111,6 +177,30 @@
       "writtenOn": "2021-05-19T08:21:19Z",
       "side": 1,
       "message": "You are using this variable in a large scope. Please give it a more verbose name.",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "ffa0d105f967a3da1bbc3b326e3d6a40d36803f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1229939e_0abe9436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-05-20T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "341d8185_2384382a",
       "range": {
         "startLine": 83,
         "startChar": 1,
@@ -144,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4756850b_984fe113",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-05-20T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f013ab5c_4033a99b",
+      "range": {
+        "startLine": 158,
+        "startChar": 5,
+        "endLine": 158,
+        "endChar": 17
+      },
+      "revId": "ffa0d105f967a3da1bbc3b326e3d6a40d36803f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3dbd3c2_35495573",
@@ -157,6 +271,30 @@
       "writtenOn": "2021-05-19T08:49:07Z",
       "side": 1,
       "message": "This part can be deleted. You are using `s` from the outer scope, so using `tconn` directly from there should be the same.",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 35
+      },
+      "revId": "ffa0d105f967a3da1bbc3b326e3d6a40d36803f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03fd7a83_11efac34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-05-20T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3dbd3c2_35495573",
       "range": {
         "startLine": 212,
         "startChar": 0,
