@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "800c857e_3a7c02c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-05-20T07:50:32Z",
+      "side": 1,
+      "message": "Looks good. Please proceed to the tast owner review",
+      "revId": "2ffe35e2683b68f205005064e5e598132bfb8a0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
