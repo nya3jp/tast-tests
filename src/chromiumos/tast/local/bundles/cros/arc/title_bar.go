@@ -6,12 +6,14 @@ package arc
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
@@ -52,6 +54,27 @@ func TitleBar(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+
+	s.Log("Starting screen recording")
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to create ScreenRecorder: ", err)
+	}
+	defer func() {
+		screenRecorder.Stop(ctx)
+		if s.HasError() {
+			s.Log(ctx, "Saving screen record to %s", s.OutDir())
+			if err := screenRecorder.SaveInString(ctx, filepath.Join(s.OutDir(), "screen_record.txt")); err != nil {
+				s.Fatal("Failed to save screen record in string: ", err)
+			}
+			if err := screenRecorder.SaveInBytes(ctx, filepath.Join(s.OutDir(), "screen_record.webm")); err != nil {
+				s.Fatal("Failed to save screen record in bytes: ", err)
+			}
+		}
+		screenRecorder.Release(ctx)
+	}()
+	screenRecorder.Start(ctx, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	act, err := arc.NewActivity(a, pkgName, cls)
 	if err != nil {
@@ -94,7 +117,7 @@ func TitleBar(ctx context.Context, s *testing.State) {
 		}
 	} else if ok && t == arc.Container {
 		s.Log("ARC-P")
-		if err := uiauto.Combine("testore and maximize it back",
+		if err := uiauto.Combine("restore and maximize it back",
 			ui.LeftClick(nodewith.Name("Restore").Role(role.Button)),
 			ui.LeftClick(nodewith.Name("Maximize").Role(role.Button)),
 		)(ctx); err != nil {
