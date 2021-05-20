@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3293826b_0dd01769",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-20T23:43:01Z",
+      "side": 1,
+      "message": "I\u0027ve moved the test to remote tast test. Please review. Thank you very much !",
+      "revId": "e7c836308bb3ab2c4a8cd1fb412c6f84f2bc5ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
