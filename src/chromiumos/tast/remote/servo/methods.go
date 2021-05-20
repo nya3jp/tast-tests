@@ -277,6 +277,8 @@ func parseQuotedStringInternal(value []rune, index *int) (string, error) {
 				current.WriteRune('\r')
 			case 'n':
 				current.WriteRune('\n')
+			case 't':
+				current.WriteRune('\t')
 			default:
 				return "", errors.Errorf("unexpected escape sequence \\%c at index %d in %s", value[*index], *index, string(value))
 			}
