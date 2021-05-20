@@ -69,6 +69,30 @@
       },
       "revId": "fa12d3a3294a98ac861316c13707a9fcfc966747",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "118c65e6_675f0b75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-05-20T13:34:26Z",
+      "side": 1,
+      "message": "Yes it looks like we need to extract just the testGroups from the new expected files.",
+      "parentUuid": "82884656_c8b9a1df",
+      "range": {
+        "startLine": 1085,
+        "startChar": 0,
+        "endLine": 1085,
+        "endChar": 56
+      },
+      "revId": "fa12d3a3294a98ac861316c13707a9fcfc966747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
