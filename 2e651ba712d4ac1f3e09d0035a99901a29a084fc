@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "261bf963_ea757725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-20T16:16:24Z",
+      "side": 1,
+      "message": "It might be good to add a test for this function to ensure the regex is doing what you expect.",
+      "revId": "2e651ba712d4ac1f3e09d0035a99901a29a084fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1093d3d_1dd94c3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-20T16:16:24Z",
+      "side": 1,
+      "message": "Are these lines needed if key is overwritten immediately?",
+      "range": {
+        "startLine": 153,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 29
+      },
+      "revId": "2e651ba712d4ac1f3e09d0035a99901a29a084fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
