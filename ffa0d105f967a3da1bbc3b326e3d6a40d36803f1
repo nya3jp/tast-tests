@@ -164,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30abf49a_d7ca576c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-20T07:40:05Z",
+      "side": 1,
+      "message": "My mistake, the `ctx` is not needed here.",
+      "parentUuid": "159914bf_711e0d21",
+      "range": {
+        "startLine": 80,
+        "startChar": 34,
+        "endLine": 80,
+        "endChar": 65
+      },
+      "revId": "ffa0d105f967a3da1bbc3b326e3d6a40d36803f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "341d8185_2384382a",
