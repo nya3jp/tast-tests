@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edc8ed9c_665215df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-20T02:02:19Z",
+      "side": 1,
+      "message": "Not sure if it matters, but perhaps can try on other Intel devices to see if other Intel chips also have similar problem. e.g. zork with CcP2 or octopus with JfP2.",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 24
+      },
+      "revId": "365a1999bb6f6b78e60c60feed92cfd263a9bf49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
