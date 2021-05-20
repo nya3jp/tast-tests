@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81a0806d_221033b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-20T12:32:46Z",
+      "side": 1,
+      "message": "There is upcoming UI revamp of Bluetooth. I am planning to ask the eng team to add unique identifiers to Bluetooth UI elements to make UI testing easier. \nI have added a TODO with bug to track this.",
+      "parentUuid": "52e7b0e5_f651afa3",
+      "range": {
+        "startLine": 53,
+        "startChar": 53,
+        "endLine": 53,
+        "endChar": 85
+      },
+      "revId": "89a245a499eae80f6a7d1a6f620504935d7e2030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c83e40c_b1e698ce",
