@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7825e48_2a098784",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-20T02:36:13Z",
+      "side": 1,
+      "message": "This didn\u0027t seem correct here as it now has two return value.",
+      "range": {
+        "startLine": 87,
+        "startChar": 38,
+        "endLine": 87,
+        "endChar": 53
+      },
+      "revId": "fc9fa4bd2b3fc9fa752b7f3430830744ada1c787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
