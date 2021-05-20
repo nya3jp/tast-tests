@@ -165,6 +165,23 @@
       },
       "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b682099_b2e4ed1d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-05-20T23:16:34Z",
+      "side": 1,
+      "message": "Wrap this in if param.vmEnabled (L258) condition since it\u0027s only applicable if VM is enabled.",
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
