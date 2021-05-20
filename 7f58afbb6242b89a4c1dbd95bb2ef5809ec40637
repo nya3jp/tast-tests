@@ -16,6 +16,155 @@
       "message": "PTAL",
       "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0c92b19_a775a130",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-20T21:30:31Z",
+      "side": 1,
+      "message": "lgtm with nits",
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfad4236_077e9c3b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-20T21:30:31Z",
+      "side": 1,
+      "message": "typo: returns",
+      "range": {
+        "startLine": 158,
+        "startChar": 20,
+        "endLine": 158,
+        "endChar": 26
+      },
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c88a48f_3b1e982e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-20T21:30:31Z",
+      "side": 1,
+      "message": "nit/style: It is conventional in Go to send a zero-value in the error case. In this case, that would be 0.\n\nSame for L168, L173",
+      "range": {
+        "startLine": 162,
+        "startChar": 9,
+        "endLine": 162,
+        "endChar": 11
+      },
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "564299be_d25a3349",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-20T21:30:31Z",
+      "side": 1,
+      "message": "optional/nit/style: I think it is more direct to operate directly on the bytes, and only cast when needed at L171.\n\n    memTotal :\u003d regexp.MustCompile(`(\\n|^)MemTotal:\\s+(\\d+)\\s+kB(\\n|$)`).FindSubmatch(memInfo)\n    if memTotal \u003d\u003d nil {\n        return 0, errors.Errorf(\"required MemTotal is not found in %q\", memInfo\")\n    }\n\n    memTotalInt, err :\u003d strConv.Atoi(string(memTotal[2]))\n    ...",
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7db4bc8f_e531cd43",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-20T21:30:31Z",
+      "side": 1,
+      "message": "nit/style: Go tends to favor shorter variable names. How about \"minVMMemoryKb\"?",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 36
+      },
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aa273fa_0c09c646",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-20T21:30:31Z",
+      "side": 1,
+      "message": "Why is this 7.5G instead of 8G?",
+      "range": {
+        "startLine": 216,
+        "startChar": 39,
+        "endLine": 216,
+        "endChar": 46
+      },
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08b26dd0_cb42f022",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-20T21:30:31Z",
+      "side": 1,
+      "message": "typo: Kb?",
+      "range": {
+        "startLine": 216,
+        "startChar": 22,
+        "endLine": 216,
+        "endChar": 24
+      },
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
