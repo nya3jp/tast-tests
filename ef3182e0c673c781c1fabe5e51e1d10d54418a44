@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "863069f4_d386e97c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/kernel/pstore_console_ramoops.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-05-20T20:19:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dcd36ac5_31226ff4",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "ef3182e0c673c781c1fabe5e51e1d10d54418a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6e80b3d_6ba9f00a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-20T19:37:56Z",
       "side": 1,
       "message": "I remembered that on 3.18 and before, the file path is  \"console-ramoops\" (from an ol\u0027 comment here: https://source.corp.google.com/chromeos_public/src/platform2/init/clobber-log;l\u003d114.) Do we still have any straggling devices left on 3.18 (from go/uprev-cal, maybe asuka and co)?",
+      "range": {
+        "startLine": 61,
+        "startChar": 42,
+        "endLine": 61,
+        "endChar": 59
+      },
+      "revId": "ef3182e0c673c781c1fabe5e51e1d10d54418a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a668db7d_d8a48ec1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/kernel/pstore_console_ramoops.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-05-20T20:19:54Z",
+      "side": 1,
+      "message": "Good point. I thought 3.18 was gone but maybe not? I can look for one or the other I suppose.",
+      "parentUuid": "c6e80b3d_6ba9f00a",
       "range": {
         "startLine": 61,
         "startChar": 42,
