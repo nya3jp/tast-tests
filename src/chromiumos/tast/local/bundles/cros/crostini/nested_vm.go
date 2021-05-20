@@ -79,7 +79,12 @@ func NestedVM(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to push test program to VM: ", err)
 	}
 
-	if err := cont.Command(ctx, "bash", "-c", "gcc kvm_test.c && ./a.out").Run(testexec.DumpLogOnError); err != nil {
+	if err := cont.Command(ctx, "gcc", "kvm_test.c").Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to build test program: ", err)
+	}
+
+	if output, err := cont.Command(ctx, "./a.out").CombinedOutput(testexec.DumpLogOnError); err != nil {
+		s.Error("Failed to run test program: ", err)
+		s.Error("Test program output: ", string(output))
 	}
 }
