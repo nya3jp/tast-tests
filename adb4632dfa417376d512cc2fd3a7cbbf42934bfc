@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "737b3093_2ac5d41d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-20T22:05:19Z",
+      "side": 1,
+      "message": "yes, tast.arcappcompat tests will make sure to close all other app windows before starting Clamshell: Esc key test case. So this test case will cleanly verifies if app doesn\u0027t quit on pressing esc key",
+      "parentUuid": "64306804_61585ca5",
+      "range": {
+        "startLine": 548,
+        "startChar": 3,
+        "endLine": 548,
+        "endChar": 202
+      },
+      "revId": "adb4632dfa417376d512cc2fd3a7cbbf42934bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84f82e40_8146849c",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-23T08:39:21Z",
       "side": 1,
       "message": "Can we reduce nesting for better readability. Refer  https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 3
+      },
+      "revId": "adb4632dfa417376d512cc2fd3a7cbbf42934bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40f96057_7a73699c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-20T22:05:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "84f82e40_8146849c",
       "range": {
         "startLine": 541,
         "startChar": 0,
