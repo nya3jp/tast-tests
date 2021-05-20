@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1864160_60c15c36",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-20T00:38:06Z",
+      "side": 1,
+      "message": "Verified that block id should increase by 2 when bio_wash is called without factory-init:  http://b/188456445",
+      "parentUuid": "d113c5cb_6e050ded",
+      "range": {
+        "startLine": 74,
+        "startChar": 46,
+        "endLine": 74,
+        "endChar": 60
+      },
+      "revId": "5b727ca7ec506ac69fb525390bf2b95f7dbe6afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab38f1ff_ef0114d0",
@@ -143,6 +167,30 @@
       "writtenOn": "2021-05-11T20:43:29Z",
       "side": 1,
       "message": "\"set the entropy on the FPMCU\".\n\nSBP is also fine to use, but I think most of the code in Tast and biod uses FPMCU. I think we only have used SBP in the design doc:\n\nhttp://shortn/_XnVgax8fOM\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md",
+      "range": {
+        "startLine": 1051,
+        "startChar": 29,
+        "endLine": 1051,
+        "endChar": 42
+      },
+      "revId": "5b727ca7ec506ac69fb525390bf2b95f7dbe6afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c59e8d_7d417f7a",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-20T00:38:06Z",
+      "side": 1,
+      "message": "Took this description from bio_wash.cc. Using the word \u0027reset\u0027 is good because the biometrics manager calls resetentropy as part of the bio_wash function:\n\nhttps://source.corp.google.com/chromeos_public/src/platform2/biod/tools/bio_wash.cc;l\u003d60;rcl\u003d0826d7cac4c8a22960e144d0891428a9d13ad7ca\n\nhttp://cs/chromeos_public/src/platform2/biod/tools/bio_wash.cc?l\u003d30\u0026rcl\u003d0826d7cac4c8a22960e144d0891428a9d13ad7ca",
+      "parentUuid": "ab38f1ff_ef0114d0",
       "range": {
         "startLine": 1051,
         "startChar": 29,
