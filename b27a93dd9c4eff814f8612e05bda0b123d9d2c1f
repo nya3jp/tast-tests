@@ -33,6 +33,24 @@
       "message": "nit: file a bug and add a TODO here to track the missing functionality.",
       "revId": "b27a93dd9c4eff814f8612e05bda0b123d9d2c1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfafb685_7feb9a7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-05-20T09:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a8d3212_7f6debb0",
+      "revId": "b27a93dd9c4eff814f8612e05bda0b123d9d2c1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
