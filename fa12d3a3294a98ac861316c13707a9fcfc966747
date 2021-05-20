@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d4039b_6be74585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2021-05-20T16:07:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec67b406_58b46e3c",
+      "range": {
+        "startLine": 1022,
+        "startChar": 1,
+        "endLine": 1022,
+        "endChar": 4
+      },
+      "revId": "fa12d3a3294a98ac861316c13707a9fcfc966747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93e50d2a_5db85946",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Yes it looks like we need to extract just the testGroups from the new expected files.",
       "parentUuid": "82884656_c8b9a1df",
+      "range": {
+        "startLine": 1085,
+        "startChar": 0,
+        "endLine": 1085,
+        "endChar": 56
+      },
+      "revId": "fa12d3a3294a98ac861316c13707a9fcfc966747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2a02854_2097035b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2021-05-20T16:07:14Z",
+      "side": 1,
+      "message": "Please apply the latest patch and see if the tests pass.",
+      "parentUuid": "118c65e6_675f0b75",
       "range": {
         "startLine": 1085,
         "startChar": 0,
