@@ -22,6 +22,30 @@
       },
       "revId": "fd6f1e73aedd5c796a4acb5d0a0536e992b405e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6090956_b82786e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-20T03:55:12Z",
+      "side": 1,
+      "message": "Add detail of how to update patches. Please see if it\u0027s clear to you.",
+      "parentUuid": "872258b8_7793382d",
+      "range": {
+        "startLine": 42,
+        "startChar": 61,
+        "endLine": 43,
+        "endChar": 27
+      },
+      "revId": "fd6f1e73aedd5c796a4acb5d0a0536e992b405e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
