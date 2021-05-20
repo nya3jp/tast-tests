@@ -45,6 +45,30 @@
       },
       "revId": "fa12d3a3294a98ac861316c13707a9fcfc966747",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82884656_c8b9a1df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-05-20T13:06:53Z",
+      "side": 1,
+      "message": "Actually only ACVP.hmac_drbg fails with that. \n\nThe rest fail with \"Result returned by Cr50 does not match expected result\". Does the expected result handling need to be modified to support acvVersion too?",
+      "parentUuid": "93e50d2a_5db85946",
+      "range": {
+        "startLine": 1085,
+        "startChar": 0,
+        "endLine": 1085,
+        "endChar": 56
+      },
+      "revId": "fa12d3a3294a98ac861316c13707a9fcfc966747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
