@@ -26,8 +26,9 @@ import (
 )
 
 type vpnServer struct {
-	vpnType  string
-	authType string
+	vpnType               string
+	authType              string
+	underlayIPIsOverlayIP bool
 }
 
 func init() {
@@ -39,14 +40,23 @@ func init() {
 		Params: []testing.Param{{
 			Name: "l2tp_ipsec_psk",
 			Val: vpnServer{
-				vpnType:  "L2TP/IPsec",
-				authType: "psk",
+				vpnType:               "L2TP/IPsec",
+				authType:              "psk",
+				underlayIPIsOverlayIP: false,
+			},
+		}, {
+			Name: "l2tp_ipsec_psk_evil",
+			Val: vpnServer{
+				vpnType:               "L2TP/IPsec",
+				authType:              "psk",
+				underlayIPIsOverlayIP: true,
 			},
 		}, {
 			Name: "l2tp_ipsec_cert",
 			Val: vpnServer{
-				vpnType:  "L2TP/IPsec",
-				authType: "cert",
+				vpnType:               "L2TP/IPsec",
+				authType:              "cert",
+				underlayIPIsOverlayIP: false,
 			},
 		}},
 	})
@@ -144,6 +154,7 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 
 	vpnType := s.Param().(vpnServer).vpnType
 	authType := s.Param().(vpnServer).authType
+	underlayIPIsOverlayIP := s.Param().(vpnServer).underlayIPIsOverlayIP
 
 	var certStore *netcertstore.Store
 	if authType == certAuth {
@@ -160,11 +171,11 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		}(cleanupCtx)
 	}
 
-	var serverAddress string
+	var server *vpn.L2tpipSecVpnServer
 	if vpnType == l2tpIPsec {
 		// Create new L2TP/IPsec.
-		server := vpn.NewL2tpipSecVpnServer(ctx, authType)
-		if serverAddress, err = server.StartServer(ctx); err != nil {
+		server = vpn.NewL2tpipSecVpnServer(ctx, authType, underlayIPIsOverlayIP)
+		if err = server.StartServer(ctx); err != nil {
 			s.Fatal("Failed to create a L2TP/IPsec server: ", err)
 		}
 		defer func(ctx context.Context) {
@@ -176,9 +187,11 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		s.Fatalf("Unexpected VPN type %s", vpnType)
 	}
 
-	if err := connectVPN(ctx, vpnType, authType, serverAddress, manager, certStore); err != nil {
+	if err := connectVPN(ctx, vpnType, authType, server.UnderlayIP, manager, certStore); err != nil {
 		s.Fatal("Failed connecting to VPN server: ", err)
 	}
+
+	s.Logf("VPN connected, underlay_ip is %s, overlay_ip is %s", server.UnderlayIP, server.OverlayIP)
 
 	// Currently, the connected state of a VPN service doesn't mean the VPN service is ready for tunneling traffic: patchpanel needs to setup
 	// some iptables rules (for routing and connection pinning) before that. If ping is started before iptables rules are ready, the traffic
@@ -186,12 +199,12 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	testing.Sleep(ctx, 500*time.Millisecond)
 
 	pr := localping.NewLocalRunner()
-	res, err := pr.Ping(ctx, vpn.Xl2tpdServerIPAddress, ping.Count(3), ping.User("chronos"))
+	res, err := pr.Ping(ctx, server.OverlayIP, ping.Count(3), ping.User("chronos"))
 	if err != nil {
 		s.Fatal("Failed pinging the server IPv4: ", err)
 	}
 	if res.Received == 0 {
-		s.Fatalf("Failed to ping %s: no response received", vpn.Xl2tpdServerIPAddress)
+		s.Fatalf("Failed to ping %s: no response received", server.OverlayIP)
 	}
 
 	// IPv6 should be blackholed.
