@@ -12,6 +12,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -154,6 +155,25 @@ func getBuildDescriptorRemotely(ctx context.Context, dut *dut.DUT, vmEnabled boo
 	return &desc, nil
 }
 
+// getMemoryTotalKb returns total memory available in kilobytes for DUT.
+func getMemoryTotalKb(ctx context.Context, dut *dut.DUT) (int, error) {
+	memInfo, err := dut.Command("cat", "/proc/meminfo").Output(ctx)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to read /proc/meminfo")
+	}
+
+	memTotal := regexp.MustCompile(`(\n|^)MemTotal:\s+(\d+)\s+kB(\n|$)`).FindSubmatch(memInfo)
+	if memTotal == nil {
+		return 0, errors.Errorf("required MemTotal is not found in %q", memInfo)
+	}
+	memTotalInt, err := strconv.Atoi(string(memTotal[2]))
+	if err != nil || memTotalInt <= 0 {
+		return 0, errors.Errorf("failed to parse %q", memTotal[2])
+	}
+
+	return memTotalInt, nil
+}
+
 // DataCollector performs ARC++ boots in various conditions, grabs required data and uploads it to
 // the binary server.
 func DataCollector(ctx context.Context, s *testing.State) {
@@ -186,6 +206,12 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		// needed for occasional OptIn instability on ARC development builds. Only
 		// lower count if for sure OptIn is completely stable.
 		retryCount = 2
+
+		// It is known issue that 4G devices experience memory pressure during the opt in.
+		// This leads to the situation when FS page caches are reclaimed and captured result
+		// does not properly relfect actual FS usage. Don't upload caches to server for
+		// devices lower than 8G.
+		minVMMemoryKb = 7500000
 	)
 
 	d := s.DUT()
@@ -211,6 +237,14 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	v := fmt.Sprintf("%s_%s_%s", desc.cpuAbi, desc.buildType, desc.buildID)
 	s.Logf("Detected version: %s", v)
 
+	memTotalKb := 0
+	if param.vmEnabled {
+		if memTotalKb, err = getMemoryTotalKb(ctx, d); err != nil {
+			s.Fatal("Failed to get memory info: ", err)
+		}
+		s.Logf("Detected memory total: %d kb", memTotalKb)
+	}
+
 	// Checks if generated resources need to be uploaded to the server.
 	needUpload := func(bucket string) bool {
 		if !param.upload {
@@ -218,7 +252,12 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			return false
 		}
 		if !desc.official {
-			s.Logf("Version: %s is not official version and generated ureadahead packs won't be uploaded to the server", v)
+			s.Logf("Version: %s is not official version and generated caches won't be uploaded to the server", v)
+			return false
+		}
+
+		if param.vmEnabled && memTotalKb < minVMMemoryKb {
+			s.Logf("Device has insufficent total memory %d out of %d required. Generated caches won't be uploaded to the server", memTotalKb, minVMMemoryKb)
 			return false
 		}
 
