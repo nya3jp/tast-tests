@@ -6,14 +6,18 @@ package network
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"time"
 
+	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/common/network/ping"
+	"chromiumos/tast/common/pkcs11/netcertstore"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
+	"chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/network"
 	localping "chromiumos/tast/local/network/ping"
 	"chromiumos/tast/local/shill"
@@ -38,6 +42,12 @@ func init() {
 				vpnType:  "L2TP/IPsec",
 				authType: "psk",
 			},
+		}, {
+			Name: "l2tp_ipsec_cert",
+			Val: vpnServer{
+				vpnType:  "L2TP/IPsec",
+				authType: "cert",
+			},
 		}},
 	})
 }
@@ -45,6 +55,7 @@ func init() {
 const (
 	l2tpIPsec                       = "L2TP/IPsec"
 	pskAuth                         = "psk"
+	certAuth                        = "cert"
 	testDefaultProfileName          = "vpnTestProfile"
 	testUserProfileName             = "vpnTestProfile2"
 	version                         = 1
@@ -134,6 +145,21 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	vpnType := s.Param().(vpnServer).vpnType
 	authType := s.Param().(vpnServer).authType
 
+	var certStore *netcertstore.Store
+	if authType == certAuth {
+		runner := hwsec.NewCmdRunner()
+		certStore, err = netcertstore.CreateStore(ctx, runner)
+		if err != nil {
+			s.Fatal("Failed to create cert store: ", err)
+		}
+
+		defer func(ctx context.Context) {
+			if err := certStore.Cleanup(ctx); err != nil {
+				s.Log("Failed to clean up cert store: ", err)
+			}
+		}(cleanupCtx)
+	}
+
 	var serverAddress string
 	if vpnType == l2tpIPsec {
 		// Create new L2TP/IPsec.
@@ -150,7 +176,7 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		s.Fatalf("Unexpected VPN type %s", vpnType)
 	}
 
-	if err := connectVPN(ctx, vpnType, authType, serverAddress, manager); err != nil {
+	if err := connectVPN(ctx, vpnType, authType, serverAddress, manager, certStore); err != nil {
 		s.Fatal("Failed connecting to VPN server: ", err)
 	}
 
@@ -200,7 +226,7 @@ func removeDefaultProfile(ctx context.Context) (retErr error) {
 }
 
 // getVpnClientProperties returns VPN configuration properties.
-func getVpnClientProperties(ctx context.Context, vpnType, authType, serverAddress string) (map[string]interface{}, error) {
+func getVpnClientProperties(ctx context.Context, vpnType, authType, serverAddress string, certStore *netcertstore.Store) (map[string]interface{}, error) {
 	if (vpnType == l2tpIPsec) && (authType == pskAuth) {
 		params := map[string]interface{}{
 			"L2TPIPsec.Password": vpn.ChapSecret,
@@ -211,7 +237,28 @@ func getVpnClientProperties(ctx context.Context, vpnType, authType, serverAddres
 			"Provider.Type":      "l2tpipsec",
 			"Type":               "vpn",
 		}
-
+		return params, nil
+	}
+	if (vpnType == l2tpIPsec) && (authType == certAuth) {
+		slotID := certStore.Slot()
+		pin := certStore.Pin()
+		clientCred := certificate.TestCert1().ClientCred
+		certID, err := certStore.InstallCertKeyPair(ctx, clientCred.PrivateKey, clientCred.Cert)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to insert cert key pair into cert store")
+		}
+		params := map[string]interface{}{
+			"L2TPIPsec.CACertPEM":      []string{certificate.TestCert1().CACred.Cert},
+			"L2TPIPsec.ClientCertID":   certID,
+			"L2TPIPsec.ClientCertSlot": fmt.Sprintf("%d", slotID),
+			"L2TPIPsec.User":           vpn.ChapUser,
+			"L2TPIPsec.Password":       vpn.ChapSecret,
+			"L2TPIPsec.PIN":            pin,
+			"Name":                     "test-vpn-l2tp-cert",
+			"Provider.Host":            serverAddress,
+			"Provider.Type":            "l2tpipsec",
+			"Type":                     "vpn",
+		}
 		return params, nil
 	}
 
@@ -219,8 +266,8 @@ func getVpnClientProperties(ctx context.Context, vpnType, authType, serverAddres
 }
 
 // connectVPN connects the client to the VPN server.
-func connectVPN(ctx context.Context, vpnType, authType, serverAddress string, manager *shill.Manager) error {
-	vpnProps, err := getVpnClientProperties(ctx, vpnType, authType, serverAddress)
+func connectVPN(ctx context.Context, vpnType, authType, serverAddress string, manager *shill.Manager, certStore *netcertstore.Store) error {
+	vpnProps, err := getVpnClientProperties(ctx, vpnType, authType, serverAddress, certStore)
 	if err != nil {
 		return err
 	}
