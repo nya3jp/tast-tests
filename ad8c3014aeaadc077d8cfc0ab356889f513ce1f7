@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d991f9a7_6f850022",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-05-20T05:37:52Z",
+      "side": 1,
+      "message": "I\u0027m not sure how to ensure the DUT has enough disk space to run these tast tests properly. My nami claimes (under tast) to have \u003c 5GB free. ",
+      "revId": "ad8c3014aeaadc077d8cfc0ab356889f513ce1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
