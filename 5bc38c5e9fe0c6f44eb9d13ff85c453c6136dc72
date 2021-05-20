@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57473da3_9b4bc0a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-05-20T11:14:27Z",
+      "side": 1,
+      "message": "Hi vsavu,\n\nThis CL fixes the failing policy.LaunchManagedGuestSession Tast test, PTAL!\n\nRegards,\nJit",
+      "revId": "5bc38c5e9fe0c6f44eb9d13ff85c453c6136dc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
