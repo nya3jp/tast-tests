@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"path/filepath"
 
+	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/chroot"
 	"chromiumos/tast/testing"
@@ -125,7 +126,10 @@ var (
 				"CN=chromelab-wifi-testbed-root.mtv.google.com\"\n" +
 				"  rightprotoport=17/%any\n" +
 				"  auto=add\n",
-			"etc/ipsec.secrets": ": RSA server.key \"\"\n"},
+			"etc/ipsec.secrets":              ": RSA server.key \"\"\n",
+			"etc/ipsec.d/cacerts/ca.cert":    certificate.TestCert1().CACred.Cert,
+			"etc/ipsec.d/certs/server.cert":  certificate.TestCert1().ServerCred.Cert,
+			"etc/ipsec.d/private/server.key": certificate.TestCert1().ServerCred.PrivateKey},
 	}
 )
 
