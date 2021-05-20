@@ -137,6 +137,7 @@ var (
 // L2tpipSecVpnServer represents a L2TP/IPsec VPN server.
 type L2tpipSecVpnServer struct {
 	authenticationType    string
+	ipsecUseXauth         bool
 	underlayIPisOverlayIP bool
 	netChroot             *chroot.NetworkChroot
 	UnderlayIP            string
@@ -144,9 +145,13 @@ type L2tpipSecVpnServer struct {
 }
 
 // NewL2tpipSecVpnServer creates a new L2tpipSecVpnServer.
-func NewL2tpipSecVpnServer(ctx context.Context, authType string, underlayIPisOverlayIP bool) *L2tpipSecVpnServer {
+func NewL2tpipSecVpnServer(ctx context.Context, authType string, ipsecUseXauth, underlayIPisOverlayIP bool) *L2tpipSecVpnServer {
 	networkChroot := chroot.NewNetworkChroot()
-	return &L2tpipSecVpnServer{authenticationType: authType, underlayIPisOverlayIP: underlayIPisOverlayIP, netChroot: networkChroot}
+	return &L2tpipSecVpnServer{
+		authenticationType:    authType,
+		ipsecUseXauth:         ipsecUseXauth,
+		underlayIPisOverlayIP: underlayIPisOverlayIP,
+		netChroot:             networkChroot}
 }
 
 // StartServer starts a VPN server.
@@ -172,8 +177,13 @@ func (s *L2tpipSecVpnServer) StartServer(ctx context.Context) error {
 		"preshared_key":            IPsecPresharedKey,
 		"xauth_user":               XauthUser,
 		"xauth_password":           XauthPassword,
-		"xauth_stanza":             "",
 		"xl2tpd_server_ip_address": xl2tpdServerIPAddress,
+	}
+
+	if s.ipsecUseXauth {
+		configValues["xauth_stanza"] = "rightauth2=xauth"
+	} else {
+		configValues["xauth_stanza"] = ""
 	}
 
 	// For running strongSwan VPN with flag --with-piddir=/run/ipsec. We
