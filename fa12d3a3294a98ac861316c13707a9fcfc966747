@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec67b406_58b46e3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-05-20T13:00:12Z",
+      "side": 1,
+      "message": "I got this error here\n\n2021-05-20T12:39:42.640822Z ../acvp.go:1026:6: no new variables on left side of :\u003d\n\nRenaming err to err_vector and replacing it in 1026 allowed it to proceed.",
+      "range": {
+        "startLine": 1022,
+        "startChar": 1,
+        "endLine": 1022,
+        "endChar": 4
+      },
+      "revId": "fa12d3a3294a98ac861316c13707a9fcfc966747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e50d2a_5db85946",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-05-20T13:00:12Z",
+      "side": 1,
+      "message": "Tests fail with \n\n2021-05-20T12:54:04.434070Z [12:54:03.918] Error at acvp.go:1091: Failed to verify expected result matches processed result: unexpected end of JSON input",
+      "range": {
+        "startLine": 1085,
+        "startChar": 0,
+        "endLine": 1085,
+        "endChar": 56
+      },
+      "revId": "fa12d3a3294a98ac861316c13707a9fcfc966747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
