@@ -133,8 +133,8 @@ func (f *Finder) bytes() ([]byte, error) {
 // They are strings because JS does not return nice Go errors.
 // Instead, it is simplest to just use strings.Contains with these errors.
 const (
-	ErrNotFound   = "failed to find node from query"
-	ErrTooGeneric = "multiple nodes matched query, if you expect this and only want the first use First()"
+	ErrNotFound   = "failed to find node with properties"
+	ErrTooGeneric = "multiple nodes matched, if you expect this and only want the first use First()"
 )
 
 // GenerateQuery generates the JS query to find this node.
@@ -177,6 +177,45 @@ func (f *Finder) nameInTree() bool {
 	return len(f.name) != 0 || (f.ancestor != nil && f.ancestor.nameInTree())
 }
 
+// Pretty returns a nice-looking human-readable version of the finder.
+// For example, Pretty(Name("hello").ClassName("cls").Ancestor(Role(role.Button)))
+// will return `{name: /^hello$/, className: "cls", ancestor: {role: button}}`.
+func (f *Finder) Pretty() string {
+	var result []string
+	if name, ok := f.name["en"]; ok {
+		result = append(result, fmt.Sprintf("name: /%v/", &name))
+	}
+	for k, v := range f.attributes {
+		switch v := v.(type) {
+		case int, float32, float64, bool:
+			result = append(result, fmt.Sprintf("%s: %v", k, v))
+		default:
+			result = append(result, fmt.Sprintf("%s: %q", k, v))
+		}
+	}
+
+	if f.role != "" {
+		result = append(result, fmt.Sprintf("role: %s", f.role))
+	}
+
+	if len(f.state) != 0 {
+		result = append(result, fmt.Sprintf("state: %v", f.state))
+	}
+
+	if f.first {
+		result = append(result, "first: true")
+	}
+
+	if f.nth > 0 {
+		result = append(result, fmt.Sprintf("nth: %d", f.nth))
+	}
+
+	if f.ancestor != nil {
+		result = append(result, "ancestor: "+f.ancestor.Pretty())
+	}
+	return "{" + strings.Join(result, ", ") + "}"
+}
+
 // generateSubQuery is a helper function for GenerateQuery.
 // It creates the JS query to find a node without awaiting the Desktop node.
 func (f *Finder) generateSubQuery(multipleNodes bool) (string, error) {
@@ -192,11 +231,11 @@ func (f *Finder) generateSubQuery(multipleNodes bool) (string, error) {
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to convert finder(%+v) to bytes", f)
 	}
-	errNotFoundBytes, err := json.Marshal(ErrNotFound + ": " + string(bytes))
+	errNotFoundBytes, err := json.Marshal(ErrNotFound + ": " + f.Pretty())
 	if err != nil {
 		return "", errors.Wrap(err, "failed to marshal not found error")
 	}
-	errTooGenericBytes, err := json.Marshal(ErrTooGeneric + ": " + string(bytes))
+	errTooGenericBytes, err := json.Marshal(ErrTooGeneric + ": " + f.Pretty())
 	if err != nil {
 		return "", errors.Wrap(err, "failed to marshal too generic error")
 	}
