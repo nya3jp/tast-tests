@@ -25,9 +25,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type vpnServer struct {
+type vpnTestParams struct {
 	vpnType               string
 	authType              string
+	ipsecUseXauth         bool
 	underlayIPIsOverlayIP bool
 }
 
@@ -39,24 +40,29 @@ func init() {
 		Attr:     []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name: "l2tp_ipsec_psk",
-			Val: vpnServer{
-				vpnType:               "L2TP/IPsec",
-				authType:              "psk",
-				underlayIPIsOverlayIP: false,
+			Val: vpnTestParams{
+				vpnType:  "L2TP/IPsec",
+				authType: "psk",
 			},
 		}, {
 			Name: "l2tp_ipsec_psk_evil",
-			Val: vpnServer{
+			Val: vpnTestParams{
 				vpnType:               "L2TP/IPsec",
 				authType:              "psk",
 				underlayIPIsOverlayIP: true,
 			},
 		}, {
+			Name: "l2tp_ipsec_psk_xauth",
+			Val: vpnTestParams{
+				vpnType:       "L2TP/IPsec",
+				authType:      "psk",
+				ipsecUseXauth: true,
+			},
+		}, {
 			Name: "l2tp_ipsec_cert",
-			Val: vpnServer{
-				vpnType:               "L2TP/IPsec",
-				authType:              "cert",
-				underlayIPIsOverlayIP: false,
+			Val: vpnTestParams{
+				vpnType:  "L2TP/IPsec",
+				authType: "cert",
 			},
 		}},
 	})
@@ -152,12 +158,10 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		s.Fatal("Service not found: ", err)
 	}
 
-	vpnType := s.Param().(vpnServer).vpnType
-	authType := s.Param().(vpnServer).authType
-	underlayIPIsOverlayIP := s.Param().(vpnServer).underlayIPIsOverlayIP
+	params := s.Param().(vpnTestParams)
 
 	var certStore *netcertstore.Store
-	if authType == certAuth {
+	if params.authType == certAuth {
 		runner := hwsec.NewCmdRunner()
 		certStore, err = netcertstore.CreateStore(ctx, runner)
 		if err != nil {
@@ -172,9 +176,9 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	}
 
 	var server *vpn.L2tpipSecVpnServer
-	if vpnType == l2tpIPsec {
+	if params.vpnType == l2tpIPsec {
 		// Create new L2TP/IPsec.
-		server = vpn.NewL2tpipSecVpnServer(ctx, authType, underlayIPIsOverlayIP)
+		server = vpn.NewL2tpipSecVpnServer(ctx, params.authType, params.ipsecUseXauth, params.underlayIPIsOverlayIP)
 		if err = server.StartServer(ctx); err != nil {
 			s.Fatal("Failed to create a L2TP/IPsec server: ", err)
 		}
@@ -184,10 +188,10 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 			}
 		}(cleanupCtx)
 	} else {
-		s.Fatalf("Unexpected VPN type %s", vpnType)
+		s.Fatalf("Unexpected VPN type %s", params.vpnType)
 	}
 
-	if err := connectVPN(ctx, vpnType, authType, server.UnderlayIP, manager, certStore); err != nil {
+	if err := connectVPN(ctx, params, server.UnderlayIP, manager, certStore); err != nil {
 		s.Fatal("Failed connecting to VPN server: ", err)
 	}
 
@@ -239,9 +243,9 @@ func removeDefaultProfile(ctx context.Context) (retErr error) {
 }
 
 // getVpnClientProperties returns VPN configuration properties.
-func getVpnClientProperties(ctx context.Context, vpnType, authType, serverAddress string, certStore *netcertstore.Store) (map[string]interface{}, error) {
-	if (vpnType == l2tpIPsec) && (authType == pskAuth) {
-		params := map[string]interface{}{
+func getVpnClientProperties(ctx context.Context, params vpnTestParams, serverAddress string, certStore *netcertstore.Store) (map[string]interface{}, error) {
+	if (params.vpnType == l2tpIPsec) && (params.authType == pskAuth) {
+		properties := map[string]interface{}{
 			"L2TPIPsec.Password": vpn.ChapSecret,
 			"L2TPIPsec.PSK":      vpn.IPsecPresharedKey,
 			"L2TPIPsec.User":     vpn.ChapUser,
@@ -250,8 +254,12 @@ func getVpnClientProperties(ctx context.Context, vpnType, authType, serverAddres
 			"Provider.Type":      "l2tpipsec",
 			"Type":               "vpn",
 		}
-		return params, nil
-	} else if (vpnType == l2tpIPsec) && (authType == certAuth) {
+		if params.ipsecUseXauth {
+			properties["L2TPIPsec.XauthUser"] = vpn.XauthUser
+			properties["L2TPIPsec.XauthPassword"] = vpn.XauthPassword
+		}
+		return properties, nil
+	} else if (params.vpnType == l2tpIPsec) && (params.authType == certAuth) {
 		slotID := certStore.Slot()
 		pin := certStore.Pin()
 		clientCred := certificate.TestCert1().ClientCred
@@ -259,7 +267,7 @@ func getVpnClientProperties(ctx context.Context, vpnType, authType, serverAddres
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to insert cert key pair into cert store")
 		}
-		params := map[string]interface{}{
+		properties := map[string]interface{}{
 			"L2TPIPsec.CACertPEM":      []string{certificate.TestCert1().CACred.Cert},
 			"L2TPIPsec.ClientCertID":   certID,
 			"L2TPIPsec.ClientCertSlot": fmt.Sprintf("%d", slotID),
@@ -271,15 +279,15 @@ func getVpnClientProperties(ctx context.Context, vpnType, authType, serverAddres
 			"Provider.Type":            "l2tpipsec",
 			"Type":                     "vpn",
 		}
-		return params, nil
+		return properties, nil
 	}
 
-	return nil, errors.Errorf("unexpected server type: got %s-%s, want L2TP/IPsec-psk", vpnType, authType)
+	return nil, errors.Errorf("unexpected server type: got %s-%s, want L2TP/IPsec-psk", params.vpnType, params.authType)
 }
 
 // connectVPN connects the client to the VPN server.
-func connectVPN(ctx context.Context, vpnType, authType, serverAddress string, manager *shill.Manager, certStore *netcertstore.Store) error {
-	vpnProps, err := getVpnClientProperties(ctx, vpnType, authType, serverAddress, certStore)
+func connectVPN(ctx context.Context, params vpnTestParams, serverAddress string, manager *shill.Manager, certStore *netcertstore.Store) error {
+	vpnProps, err := getVpnClientProperties(ctx, params, serverAddress, certStore)
 	if err != nil {
 		return err
 	}
