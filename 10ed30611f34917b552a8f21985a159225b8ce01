@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e4bc6e30_aa7672cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-20T21:39:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "633d7e4b_5f1e235c",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "10ed30611f34917b552a8f21985a159225b8ce01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3a5a1466_3e36eb8e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 9
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93389503_1e428426",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-20T21:39:27Z",
+      "side": 1,
+      "message": "deviceDisplayWidth is used in multiple places. Else, I had use to info.DisplayWidth everywhere. I would like to use a deviceDisplayWidth for better readability.",
+      "parentUuid": "c99a6552_1dca051c",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 540,
+        "endChar": 42
+      },
+      "revId": "10ed30611f34917b552a8f21985a159225b8ce01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55793847_dde57c36",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-04-08T02:47:31Z",
       "side": 1,
       "message": "As the intention is to verify if app is full screen when maximized, I think this should be just as below as there won\u0027t be a case where app is wider than display width.\n\nif appWidth \u003d\u003d info.DisplayWidth {\n    Just Log\n} else {\n    Fail and Log\n}",
+      "range": {
+        "startLine": 544,
+        "startChar": 3,
+        "endLine": 544,
+        "endChar": 74
+      },
+      "revId": "10ed30611f34917b552a8f21985a159225b8ce01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "490ffa6b_e7decc5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-20T21:39:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "55793847_dde57c36",
       "range": {
         "startLine": 544,
         "startChar": 3,
