@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d55740_bcb38d8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-05-20T02:03:10Z",
+      "side": 1,
+      "message": "lgtm with a comment",
+      "revId": "0ae0c7b560ebde1b5c3fc0b953b44c4f47da728b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f94227_fb4a881c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/sound_cloud.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-05-20T02:03:10Z",
+      "side": 1,
+      "message": "If the SoundCloud Play Store app is no longer available for Chrome OS devices, is there any case that this test could be run?",
+      "revId": "0ae0c7b560ebde1b5c3fc0b953b44c4f47da728b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
