@@ -42,7 +42,7 @@ type NetworkChroot struct {
 	netRootDirectories     []string
 	netCopiedConfigFiles   []string
 	netConfigFileTemplates map[string]string
-	netConfigFileValues    map[string]string
+	netConfigFileValues    map[string]interface{}
 	netTempDir             string
 	netJailArgs            []string
 	netnsLifelineFD        *os.File
@@ -63,7 +63,7 @@ func NewNetworkChroot() *NetworkChroot {
 		netRootDirectories:     []string{"etc", "etc/ssl", "tmp", "var", "var/log", "run", "run/lock"},
 		netCopiedConfigFiles:   []string{"etc/ld.so.cache"},
 		netConfigFileTemplates: map[string]string{startup: startupTemplate},
-		netConfigFileValues:    map[string]string{"startup_log": startupLog},
+		netConfigFileValues:    map[string]interface{}{"startup_log": startupLog},
 	}
 }
 
@@ -336,7 +336,7 @@ func (n *NetworkChroot) AddConfigTemplates(templates map[string]string) {
 }
 
 // AddConfigValues add a name-value dict to the set of values for the config template.
-func (n *NetworkChroot) AddConfigValues(values map[string]string) {
+func (n *NetworkChroot) AddConfigValues(values map[string]interface{}) {
 	for k, v := range values {
 		n.netConfigFileValues[k] = v
 	}
