@@ -16,6 +16,24 @@
       "message": "Do we normally Rubber Stamp reverts that re-enable tests? Anyway, I\u0027m happy to approve this CL for Tast Owners as the test looks green again on trogdor.",
       "revId": "e13d07e87f790e37805ad5a526fdf97cc2073810",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40942394_41fae23d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-05-20T00:19:07Z",
+      "side": 1,
+      "message": "Possibly we shouldn\u0027t, but it happens automatically if you check \"send to CQ after approval\", which is checked by default",
+      "parentUuid": "291d59fd_07c308d9",
+      "revId": "e13d07e87f790e37805ad5a526fdf97cc2073810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
