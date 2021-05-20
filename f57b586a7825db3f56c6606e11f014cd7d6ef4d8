@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c08750c_a66823a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1459753
+      },
+      "writtenOn": "2021-05-20T17:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40521151_6998bfc7",
+      "range": {
+        "startLine": 345,
+        "startChar": 39,
+        "endLine": 345,
+        "endChar": 68
+      },
+      "revId": "f57b586a7825db3f56c6606e11f014cd7d6ef4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "077d1018_4287d22b",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-05-20T17:16:25Z",
       "side": 1,
       "message": "Remove comma.",
+      "range": {
+        "startLine": 346,
+        "startChar": 10,
+        "endLine": 346,
+        "endChar": 11
+      },
+      "revId": "f57b586a7825db3f56c6606e11f014cd7d6ef4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d503fd8_e3fef56f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1459753
+      },
+      "writtenOn": "2021-05-20T17:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "077d1018_4287d22b",
       "range": {
         "startLine": 346,
         "startChar": 10,
