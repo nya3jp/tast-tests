@@ -34,6 +34,24 @@
       "parentUuid": "6b4acacf_85876122",
       "revId": "2227e0507c1d4b0e1bf7e7d3c93fb0e498e2bd99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dc8f71c_4b22036b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-20T07:28:55Z",
+      "side": 1,
+      "message": "Tast doesn\u0027t do anything special to run Tast test processes... it just runs processes as root, but that\u0027s it.",
+      "parentUuid": "3c51a3bc_c7c50370",
+      "revId": "2227e0507c1d4b0e1bf7e7d3c93fb0e498e2bd99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
