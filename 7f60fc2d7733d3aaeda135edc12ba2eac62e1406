@@ -16,6 +16,41 @@
       "message": "I suppose we could generate some random number here and then confirm it was what we expected.",
       "revId": "7f60fc2d7733d3aaeda135edc12ba2eac62e1406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6767990d_312fb806",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/kernel/pstore_console_ramoops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-20T16:41:49Z",
+      "side": 1,
+      "message": "Is there any chance that tast is rebooting would be written multiple times to kmsg? I\u0027m not familar with how kmsg is written to consile-ramoops.",
+      "parentUuid": "39c5541a_4f9bf64b",
+      "revId": "7f60fc2d7733d3aaeda135edc12ba2eac62e1406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "016fec28_b10fef03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/kernel/pstore_console_ramoops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-20T16:41:49Z",
+      "side": 1,
+      "message": "Add the error to this s.Fatal call. s.Fatal(\"Failed to ...: \", err). Same with line 68.",
+      "revId": "7f60fc2d7733d3aaeda135edc12ba2eac62e1406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
