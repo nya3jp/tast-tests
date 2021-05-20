@@ -38,7 +38,7 @@ func ShowLowDiskSpaceNotification(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get test API connection: ", err)
 	}
 
-	fillFile, err := cleanup.FillUntil(cleanup.UserHome, cleanup.MinimalFreeSpace)
+	fillFile, err := disk.FillUntil(cleanup.UserHome, cleanup.MinimalFreeSpace)
 	if err != nil {
 		s.Fatal("Failed to fill disk space: ", err)
 	}
