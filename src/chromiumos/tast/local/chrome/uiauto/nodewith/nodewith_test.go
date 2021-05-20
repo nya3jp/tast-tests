@@ -71,3 +71,26 @@ func TestAttributeMatcher(t *gotesting.T) {
 		t.Error("MultilingualName should fail at converting to bytes when the language is invalid")
 	}
 }
+
+func TestPrettyPrinter(t *gotesting.T) {
+	for _, tc := range []struct {
+		in  *Finder
+		out string
+	}{
+		{newFinder(), `{}`},
+		{Role(role.Button), `{role: button}`},
+		{ClassName("clsname"), `{className: "clsname"}`},
+		{Name("hello"), `{name: /^hello$/}`},
+		{Collapsed(), `{state: map[collapsed:true]}`},
+		{First(), `{first: true}`},
+		{Nth(5), `{nth: 5}`},
+		{Attribute("a", 5), `{a: 5}`},
+		{Ancestor(Role(role.Button)), `{ancestor: {role: button}}`},
+		{Name("hello").ClassName("cls"), `{name: /^hello$/, className: "cls"}`},
+	} {
+		out := tc.in.Pretty()
+		if out != tc.out {
+			t.Errorf("%+v.attributesBytes() failed:\ngot:\n%v\nexpected:\n%v", tc.in, string(out), tc.out)
+		}
+	}
+}
