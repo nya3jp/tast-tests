@@ -87,6 +87,7 @@ func AllowDeletingBrowserHistory(ctx context.Context, s *testing.State) {
 			defer conn.Close()
 
 			// Loop for different checkboxes.
+			// TODO(https://crbug.com/1158773): Use regex in the node names in the AllowDeletingBrowserHistory policy test.
 			for _, cb := range []struct {
 				ref  string // ref is the shortened name of the checkbox that can be used in logging.
 				name string // name is a unique part of the checkbox name in the UI tree.
@@ -94,7 +95,7 @@ func AllowDeletingBrowserHistory(ctx context.Context, s *testing.State) {
 			}{
 				{
 					ref:  "Browsing history",
-					name: "Browsing history Clears history and autocompletions in the address bar.",
+					name: "Browsing history Clears history and autocompletions in the search box",
 					tab:  "Basic",
 				},
 				{
@@ -144,7 +145,7 @@ func AllowDeletingBrowserHistory(ctx context.Context, s *testing.State) {
 						},
 					},
 				); err != nil {
-					s.Error("Unexpected settings state: ", err)
+					s.Errorf("Unexpected settings state for %q: %v", cb.name, err)
 				}
 			}
 		})
