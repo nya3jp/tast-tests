@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "757792ae_742bc750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/contents.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1459753
+      },
+      "writtenOn": "2021-05-20T17:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73444ded_b94a3858",
+      "range": {
+        "startLine": 135,
+        "startChar": 49,
+        "endLine": 135,
+        "endChar": 56
+      },
+      "revId": "cf610f0962aef2ba37d2d147988046b2670a9ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "542d0225_6a17f810",
