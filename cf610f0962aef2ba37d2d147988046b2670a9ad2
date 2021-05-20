@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c92fa6e9_e00312ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-05-20T15:38:21Z",
+      "side": 1,
+      "message": "Use b:159158467",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "cf610f0962aef2ba37d2d147988046b2670a9ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c3a3b5d_67b4116e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-05-20T15:38:21Z",
+      "side": 1,
+      "message": "Thanks! Looks good % minor requests.",
+      "revId": "cf610f0962aef2ba37d2d147988046b2670a9ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbc5ff3d_a0c3730f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/contents.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-05-20T15:38:21Z",
+      "side": 1,
+      "message": "Can you adapt the documentation at [1] to include the lacros variations and to explain why we need both the _ash_composited_ and _lacros_composited_ versions?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/README.md;l\u003d339-342;drc\u003d1738f8449050d1500975e7c0d86626de692d745d",
+      "range": {
+        "startLine": 135,
+        "startChar": 49,
+        "endLine": 135,
+        "endChar": 56
+      },
+      "revId": "cf610f0962aef2ba37d2d147988046b2670a9ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "542d0225_6a17f810",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-05-20T15:38:21Z",
+      "side": 1,
+      "message": "in ash-chrome",
+      "range": {
+        "startLine": 129,
+        "startChar": 77,
+        "endLine": 129,
+        "endChar": 78
+      },
+      "revId": "cf610f0962aef2ba37d2d147988046b2670a9ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bacd1d9b_33695513",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-05-20T15:38:21Z",
+      "side": 1,
+      "message": "in lacros-chrome",
+      "range": {
+        "startLine": 144,
+        "startChar": 77,
+        "endLine": 144,
+        "endChar": 78
+      },
+      "revId": "cf610f0962aef2ba37d2d147988046b2670a9ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
