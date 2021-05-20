@@ -16,6 +16,23 @@
       "message": "Thank you for reviewing :)",
       "revId": "4639111054f92b1511a7ba23bc97a950d782cee3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4252e2e4_f8f98bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-20T09:17:34Z",
+      "side": 1,
+      "message": "minor nit: end sentence with a .",
+      "revId": "4639111054f92b1511a7ba23bc97a950d782cee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
