@@ -89,11 +89,12 @@ func LaunchManagedGuestSession(ctx context.Context, s *testing.State) {
 		s.Error("Failed to close Chrome connection: ", err)
 	}
 
-	// Restart Chrome.
+	// Restart Chrome, forcing Devtools to be available on the login screen.
 	cr, err = chrome.New(ctx,
 		chrome.NoLogin(),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.KeepState(),
+		chrome.ExtraArgs("--force-devtools-available"),
 		chrome.ExtraArgs("--disable-policy-key-verification"))
 	if err != nil {
 		s.Fatal("Chrome restart failed: ", err)
