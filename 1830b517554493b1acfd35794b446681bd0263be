@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f154478_9398c315",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-20T08:21:11Z",
+      "side": 1,
+      "message": "Note: it seems that this test may affect the next test running right after it -- the next test may fail at ipv4 ping step with message \"no response received\". If I put this test as the last one, all tests can pass. I haven\u0027t checked the root cause but seems like another ip conntrack issue?",
+      "revId": "1830b517554493b1acfd35794b446681bd0263be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b9e808f_33777f56",
