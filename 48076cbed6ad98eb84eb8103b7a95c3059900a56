@@ -16,6 +16,46 @@
       "message": "Please take another look.",
       "revId": "48076cbed6ad98eb84eb8103b7a95c3059900a56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d3c3125_592289dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-20T17:15:45Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "48076cbed6ad98eb84eb8103b7a95c3059900a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccf4a95a_2702c7f3",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-20T17:15:45Z",
+      "side": 1,
+      "message": "nit: since these are const do:\n\n  const (\n    taskIDIndex \u003d 1\n    windowStateIndex \u003d 2\n  )",
+      "range": {
+        "startLine": 322,
+        "startChar": 1,
+        "endLine": 323,
+        "endChar": 22
+      },
+      "revId": "48076cbed6ad98eb84eb8103b7a95c3059900a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
