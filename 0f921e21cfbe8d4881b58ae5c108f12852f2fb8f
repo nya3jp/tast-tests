@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3dd1a09_cb7a4d4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-05-20T01:54:50Z",
+      "side": 1,
+      "message": "\"until\": did you mean \"when\" or \"once\"?",
+      "range": {
+        "startLine": 518,
+        "startChar": 59,
+        "endLine": 518,
+        "endChar": 64
+      },
+      "revId": "0f921e21cfbe8d4881b58ae5c108f12852f2fb8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cfe0c63_8af549a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-05-20T01:54:50Z",
+      "side": 1,
+      "message": "Apply a consistent TODO comment style either:\nTODO(crbug.com/XXXXX): Do something\nTODO(b:XXXXX): Do something\nTODO(username): Do something",
+      "revId": "0f921e21cfbe8d4881b58ae5c108f12852f2fb8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
