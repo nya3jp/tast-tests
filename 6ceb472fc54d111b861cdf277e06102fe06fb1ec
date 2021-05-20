@@ -39,6 +39,30 @@
       },
       "revId": "6ceb472fc54d111b861cdf277e06102fe06fb1ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7769f6f_cb8f2421",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/word_press.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-20T18:50:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ac046332_884c6706",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 9
+      },
+      "revId": "6ceb472fc54d111b861cdf277e06102fe06fb1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
