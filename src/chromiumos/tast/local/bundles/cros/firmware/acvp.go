@@ -27,6 +27,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type acv struct {
+	Version string `json:"acvVersion"`
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: ACVP,
@@ -1015,8 +1019,38 @@ func ACVP(ctx context.Context, s *testing.State) {
 		s.Log("Read data file: ", d.inputFile)
 	}
 
-	if err := json.Unmarshal([]byte(vectorsBytes), &vectors); err != nil {
-		s.Fatal("Failed to parse vector set: ", err)
+	err := json.Unmarshal(vectorsBytes, &vectors)
+	// Check if parsing worked, otherwise try the lab format.
+	// Input file may be obtained from lab, in which case it uses a slightly
+	// different format.
+	if err != nil || vectors.ID == 0 {
+		// Assume new format.
+		dec := json.NewDecoder(bytes.NewReader(vectorsBytes))
+		// Parse the starting '['
+		arrayStart, err := dec.Token()
+		if err != nil {
+			s.Fatal("Failed to read from input file: ", err)
+		}
+		if delim, ok := arrayStart.(json.Delim); !ok || delim != '[' {
+			s.Fatalf("Found %#v when expecting initial array in input file", arrayStart)
+		}
+		// Extract the ACV version
+		var a acv
+		if err := dec.Decode(&a); err != nil {
+			s.Fatal("Parse error while decoding acv version: " + err.Error())
+		}
+		// Extract the test vector
+		var v interface{}
+		if err := dec.Decode(&v); err != nil {
+			s.Fatal("Parse error while decoding vector: " + err.Error())
+		}
+		vectorsBytes, err = json.Marshal(v)
+		if err != nil {
+			s.Fatal("Can't marshal interface to bytes: ", err)
+		}
+		if err := json.Unmarshal(vectorsBytes, &vectors); err != nil {
+			s.Fatal("Failed to parse vector set: ", err)
+		}
 	}
 
 	inout := cr50IO{
