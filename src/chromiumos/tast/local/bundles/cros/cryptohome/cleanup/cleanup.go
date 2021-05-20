@@ -177,7 +177,7 @@ func CreateFilledUserHomedir(ctx context.Context, user, pass, dir string, size u
 		return "", errors.Wrap(err, "folder not created")
 	}
 
-	fillFile, err := Fill(filepath.Join(UserHome, hash, dir), size)
+	fillFile, err := disk.Fill(filepath.Join(UserHome, hash, dir), size)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to fill space")
 	}
