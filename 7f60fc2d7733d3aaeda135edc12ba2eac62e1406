@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c5541a_4f9bf64b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/kernel/pstore_console_ramoops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-05-20T08:11:23Z",
+      "side": 1,
+      "message": "I suppose we could generate some random number here and then confirm it was what we expected.",
+      "revId": "7f60fc2d7733d3aaeda135edc12ba2eac62e1406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
