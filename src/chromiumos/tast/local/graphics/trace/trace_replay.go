@@ -449,7 +449,7 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 	file := filepath.Join(outDir, glxInfoFile)
 	testing.ContextLog(ctx, "Logging guest OS graphics environment to ", glxInfoFile)
 	if err := logGuestInfo(ctx, guest, file); err != nil {
-		return errors.Wrap(err, "failed to log guest OS graphics environmen information")
+		return errors.Wrap(err, "failed to log guest OS graphics environment information")
 	}
 
 	if err := getSystemInfo(&group.Host); err != nil {
