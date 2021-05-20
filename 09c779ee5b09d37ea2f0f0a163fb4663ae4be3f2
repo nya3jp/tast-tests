@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "512c0ebb_6ab3ef3c",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-05-20T20:45:38Z",
+      "side": 0,
+      "message": "It\u0027s a shame this collides with the package name and requires rename :(",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 8
+      },
+      "revId": "09c779ee5b09d37ea2f0f0a163fb4663ae4be3f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
