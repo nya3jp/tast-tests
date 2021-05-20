@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eceee0b_a661a1e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-20T00:00:39Z",
+      "side": 1,
+      "message": "Why is this needed while there is LaunchChrome?",
+      "range": {
+        "startLine": 653,
+        "startChar": 34,
+        "endLine": 653,
+        "endChar": 52
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62312637_56e0b015",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-20T00:00:39Z",
+      "side": 1,
+      "message": "please include the name in the error msg.",
+      "range": {
+        "startLine": 660,
+        "startChar": 67,
+        "endLine": 660,
+        "endChar": 71
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "323934ac_464434a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-20T00:00:39Z",
+      "side": 1,
+      "message": "Do you want to check some window after LeftClick? If yes, suggest to use LeftClickUntil",
+      "range": {
+        "startLine": 663,
+        "startChar": 17,
+        "endLine": 663,
+        "endChar": 26
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b69cb749_3b4481aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-20T00:00:39Z",
+      "side": 1,
+      "message": "ui.Sleep(200*time.Millisecond)?",
+      "range": {
+        "startLine": 785,
+        "startChar": 3,
+        "endLine": 785,
+        "endChar": 13
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39ff4347_35d75bce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-20T00:00:39Z",
+      "side": 1,
+      "message": "Suggest to use LeftClickUntil",
+      "range": {
+        "startLine": 811,
+        "startChar": 2,
+        "endLine": 812,
+        "endChar": 42
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93cb40b4_56ad7c80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-20T00:00:39Z",
+      "side": 1,
+      "message": "use w.Name instead",
+      "range": {
+        "startLine": 864,
+        "startChar": 67,
+        "endLine": 864,
+        "endChar": 81
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f83a37b8_8ca6644f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-20T00:00:39Z",
+      "side": 1,
+      "message": "This else is not needed or recommended since it returns in the above line.",
+      "range": {
+        "startLine": 871,
+        "startChar": 4,
+        "endLine": 871,
+        "endChar": 8
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52425c40_db09765d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-20T00:00:39Z",
+      "side": 1,
+      "message": "15s is the default timeout,so WithTimeout is not needed here.",
+      "range": {
+        "startLine": 896,
+        "startChar": 21,
+        "endLine": 896,
+        "endChar": 35
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9832d15f_47e10eda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-20T00:00:39Z",
+      "side": 1,
+      "message": "The truncate is a bit weird, suggest to make a new line since \"Test should\"",
+      "range": {
+        "startLine": 1000,
+        "startChar": 101,
+        "endLine": 1000,
+        "endChar": 112
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
