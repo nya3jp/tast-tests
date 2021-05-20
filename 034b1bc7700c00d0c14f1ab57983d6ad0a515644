@@ -39,6 +39,30 @@
       },
       "revId": "034b1bc7700c00d0c14f1ab57983d6ad0a515644",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93211927_171ac119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-05-20T13:43:53Z",
+      "side": 1,
+      "message": "These expected lines do cause the test to fail.",
+      "parentUuid": "f951f8f7_834a6d20",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 58
+      },
+      "revId": "034b1bc7700c00d0c14f1ab57983d6ad0a515644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
