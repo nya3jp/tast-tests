@@ -29,7 +29,10 @@ type vpnTestParams struct {
 	vpnType               string
 	authType              string
 	ipsecUseXauth         bool
+	ipsecXauthMissingUser bool
+	ipsecXauthWrongUser   bool
 	underlayIPIsOverlayIP bool
+	shouldFail            bool
 }
 
 func init() {
@@ -57,6 +60,24 @@ func init() {
 				vpnType:       "L2TP/IPsec",
 				authType:      "psk",
 				ipsecUseXauth: true,
+			},
+		}, {
+			Name: "l2tp_ipsec_psk_xauth_missing_user",
+			Val: vpnTestParams{
+				vpnType:               "L2TP/IPsec",
+				authType:              "psk",
+				ipsecUseXauth:         true,
+				ipsecXauthMissingUser: true,
+				shouldFail:            true,
+			},
+		}, {
+			Name: "l2tp_ipsec_psk_xauth_wrong_user",
+			Val: vpnTestParams{
+				vpnType:             "L2TP/IPsec",
+				authType:            "psk",
+				ipsecUseXauth:       true,
+				ipsecXauthWrongUser: true,
+				shouldFail:          true,
 			},
 		}, {
 			Name: "l2tp_ipsec_cert",
@@ -191,8 +212,15 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		s.Fatalf("Unexpected VPN type %s", params.vpnType)
 	}
 
-	if err := connectVPN(ctx, params, server.UnderlayIP, manager, certStore); err != nil {
-		s.Fatal("Failed connecting to VPN server: ", err)
+	connected, err := connectVPN(ctx, params, server.UnderlayIP, manager, certStore)
+	if err != nil {
+		s.Fatal("Failed to connect to VPN server: ", err)
+	} else if !connected && !params.shouldFail {
+		s.Fatal("Failed to connect to VPN server: the service state changed to failure")
+	} else if connected && params.shouldFail {
+		s.Fatal("Connect to VPN server should fail")
+	} else if !connected && params.shouldFail {
+		return
 	}
 
 	s.Logf("VPN connected, underlay_ip is %s, overlay_ip is %s", server.UnderlayIP, server.OverlayIP)
@@ -254,9 +282,14 @@ func getVpnClientProperties(ctx context.Context, params vpnTestParams, serverAdd
 			"Provider.Type":      "l2tpipsec",
 			"Type":               "vpn",
 		}
-		if params.ipsecUseXauth {
-			properties["L2TPIPsec.XauthUser"] = vpn.XauthUser
-			properties["L2TPIPsec.XauthPassword"] = vpn.XauthPassword
+		if params.ipsecUseXauth && !params.ipsecXauthMissingUser {
+			if params.ipsecXauthWrongUser {
+				properties["L2TPIPsec.XauthUser"] = "wrong-user"
+				properties["L2TPIPsec.XauthPassword"] = "wrong-password"
+			} else {
+				properties["L2TPIPsec.XauthUser"] = vpn.XauthUser
+				properties["L2TPIPsec.XauthPassword"] = vpn.XauthPassword
+			}
 		}
 		return properties, nil
 	} else if (params.vpnType == l2tpIPsec) && (params.authType == certAuth) {
@@ -285,21 +318,22 @@ func getVpnClientProperties(ctx context.Context, params vpnTestParams, serverAdd
 	return nil, errors.Errorf("unexpected server type: got %s-%s, want L2TP/IPsec-psk", params.vpnType, params.authType)
 }
 
-// connectVPN connects the client to the VPN server.
-func connectVPN(ctx context.Context, params vpnTestParams, serverAddress string, manager *shill.Manager, certStore *netcertstore.Store) error {
+// connectVPN connects the client to the VPN server, and returns whether the
+// connection is established successfully.
+func connectVPN(ctx context.Context, params vpnTestParams, serverAddress string, manager *shill.Manager, certStore *netcertstore.Store) (bool, error) {
 	vpnProps, err := getVpnClientProperties(ctx, params, serverAddress, certStore)
 	if err != nil {
-		return err
+		return false, err
 	}
 
 	servicePath, err := manager.ConfigureService(ctx, vpnProps)
 	if err != nil {
-		return errors.Wrapf(err, "unable to configure the service for the VPN properties %v", vpnProps)
+		return false, errors.Wrapf(err, "unable to configure the service for the VPN properties %v", vpnProps)
 	}
 
 	service, err := shill.NewService(ctx, servicePath)
 	if err != nil {
-		return errors.Wrap(err, "failed creating shill service proxy")
+		return false, errors.Wrap(err, "failed creating shill service proxy")
 	}
 
 	// Wait for service to be connected.
@@ -308,22 +342,25 @@ func connectVPN(ctx context.Context, params vpnTestParams, serverAddress string,
 	// Spawn watcher before connect.
 	pw, err := service.CreateWatcher(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to create watcher")
+		return false, errors.Wrap(err, "failed to create watcher")
 	}
 	defer pw.Close(ctx)
 
 	if err = service.Connect(ctx); err != nil {
-		return errors.Wrapf(err, "failed to connect the service %v", service)
+		return false, errors.Wrapf(err, "failed to connect the service %v", service)
 	}
 
-	// Wait until connection established.
-	// According to previous Autotest tests, a reasonable timeout is
-	// 15 seconds for association and 15 seconds for configuration.
-	timeoutCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+	// Wait until connection established or failed. Unfortunately, some of the
+	// failures for L2TP/IPsec VPN are detected based on timeout, which is 30
+	// seconds at maximum for all the current test cases (that value is used in
+	// vpn_manager::IpsecManager).
+	// TODO(b/188489413): Use different timeout values for success and failure
+	// cases.
+	timeoutCtx, cancel := context.WithTimeout(ctx, 35*time.Second)
 	defer cancel()
-	if err := pw.Expect(timeoutCtx, shillconst.ServicePropertyIsConnected, true); err != nil {
-		return err
+	state, err := pw.ExpectIn(timeoutCtx, shillconst.ServicePropertyState, append(shillconst.ServiceConnectedStates, shillconst.ServiceStateFailure))
+	if err != nil {
+		return false, err
 	}
-
-	return nil
+	return state != shillconst.ServiceStateFailure, nil
 }
