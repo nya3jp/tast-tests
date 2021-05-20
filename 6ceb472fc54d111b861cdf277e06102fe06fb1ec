@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d748fe6d_363b7288",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-20T02:04:22Z",
+      "side": 1,
+      "message": "LGTM with a comment.",
+      "revId": "6ceb472fc54d111b861cdf277e06102fe06fb1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac046332_884c6706",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/word_press.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-20T02:04:22Z",
+      "side": 1,
+      "message": "optional (since not the regression): I think we cannot continue the test in this error case? If so, s.Fatal() sounds like a way to go, instead.",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 9
+      },
+      "revId": "6ceb472fc54d111b861cdf277e06102fe06fb1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
