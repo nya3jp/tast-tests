@@ -39,6 +39,48 @@
       "message": "Apply a consistent TODO comment style either:\nTODO(crbug.com/XXXXX): Do something\nTODO(b:XXXXX): Do something\nTODO(username): Do something",
       "revId": "0f921e21cfbe8d4881b58ae5c108f12852f2fb8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9df636f8_622f0bac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-20T19:39:04Z",
+      "side": 1,
+      "message": "sorry for not being clear. I meant, use ash.TabletModeEnabled(ctx, tconn) function until there is an exact way of finding a device in clamshell/ laptop mode using hardware/software dependencies.",
+      "parentUuid": "d3dd1a09_cb7a4d4a",
+      "range": {
+        "startLine": 518,
+        "startChar": 59,
+        "endLine": 518,
+        "endChar": 64
+      },
+      "revId": "0f921e21cfbe8d4881b58ae5c108f12852f2fb8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14b2e197_b31810a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-20T19:39:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0cfe0c63_8af549a6",
+      "revId": "0f921e21cfbe8d4881b58ae5c108f12852f2fb8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
