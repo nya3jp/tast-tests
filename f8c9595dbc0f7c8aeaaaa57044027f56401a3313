@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69d4251d_0da3341e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-20T01:12:26Z",
+      "side": 1,
+      "message": "yes, it ideally run on a device whose form factor is a clamshell laptop. Sure, Added todo comment, \"using ash.TabletModeEnabled(ctx, tconn) function until there is an exact way of finding a device is in clamshell laptop using hardware/software dependencies.\"",
+      "parentUuid": "f463a5c7_bb69f273",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "037d3f15_1b252c33",
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "What do you mean by \"for debugging\"? If it means \"for viewing log when the test failed but not needed when the test passed\", then the recommended way is to include the needed variable values to the error message  in the related Errorf|Fatalf.",
       "parentUuid": "78c4dfc7_972d74d7",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78b03e09_bc499f63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-20T01:12:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2abaf149_c6e664c7",
       "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -226,6 +262,24 @@
       "side": 1,
       "message": "Sorry not being very clear, I mean like this:\nif !arcpFound \u0026\u0026 ... {\n  ...\n  arcpFound\u003dtrue\n  break\n}\nif !arcrFound \u0026\u0026 ... {\n  ...\n  break\n}",
       "parentUuid": "eaae206c_b70c3bab",
+      "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "395bd88d_3ea3a525",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-20T01:12:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "06a2809b_7e3f9313",
       "revId": "f8c9595dbc0f7c8aeaaaa57044027f56401a3313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
