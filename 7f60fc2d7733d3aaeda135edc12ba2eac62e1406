@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a6ab721_1483822b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/kernel/pstore_console_ramoops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-05-20T19:18:36Z",
+      "side": 1,
+      "message": "\u003e Is there any chance that tast is rebooting would be written multiple times to kmsg? I\u0027m not familar with how kmsg is written to consile-ramoops.\n\nNope. It\u0027s a plain ol\u0027 character device. It won\u0027t be written to the kernel logs more than once. I was thinking it would be good to confirm that some other test doesn\u0027t write this message too, so a unique number or something that\u0027s generated in the test.",
+      "parentUuid": "6767990d_312fb806",
+      "revId": "7f60fc2d7733d3aaeda135edc12ba2eac62e1406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "016fec28_b10fef03",
         "filename": "src/chromiumos/tast/remote/bundles/cros/kernel/pstore_console_ramoops.go",
         "patchSetId": 1
@@ -49,6 +67,24 @@
       "writtenOn": "2021-05-20T16:41:49Z",
       "side": 1,
       "message": "Add the error to this s.Fatal call. s.Fatal(\"Failed to ...: \", err). Same with line 68.",
+      "revId": "7f60fc2d7733d3aaeda135edc12ba2eac62e1406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f666b6_a777b06f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/kernel/pstore_console_ramoops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-05-20T19:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "016fec28_b10fef03",
       "revId": "7f60fc2d7733d3aaeda135edc12ba2eac62e1406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
