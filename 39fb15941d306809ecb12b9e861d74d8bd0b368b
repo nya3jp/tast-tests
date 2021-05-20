@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77e401bf_bcf787aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-05-20T00:40:07Z",
+      "side": 1,
+      "message": "There is something weird going on with this CL. CQ keeps failing with:\n| tast-local-tests-crosint-0.0.1-r6008: --- FAIL: TestPowerVideoEncodePerfParamsAreGenerated (0.06s)\n| tast-local-tests-crosint-0.0.1-r6008:     power_video_encode_perf_test.go:97: power_video_encode_perf.go: Params is stale; run the following command to update:\n| tast-local-tests-crosint-0.0.1-r6008:         TAST_GENERATE_UPDATE\u003d1 ~/trunk/src/platform/tast/tools/go.sh test -count\u003d1 chromiumos/tast/local/bundles/cros/arc\ntast-local-tests-crosint-0.0.1-r6008: FAIL\n\nEven though the test works fine locally. Running the command specified in the error message just removes the blocklist from the PowerVideoEncode tests.\n\nTrying to run the test locally results in:\n| tast-base/src/chromiumos/tast/testing/hwdep/hwdep.go:677:23: hf.GetStorage().GetSizeGb undefined (type *api.HardwareFeatures_Storage has no field or method GetSizeGb)\n\nwhich is completely unrelated to any changes made in this CL.\n\nFor now I just removed the blocklist from the power tests. We can add this in a separate CL later if we can ever get this working.",
+      "revId": "39fb15941d306809ecb12b9e861d74d8bd0b368b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
