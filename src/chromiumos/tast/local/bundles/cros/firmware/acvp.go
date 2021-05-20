@@ -79,12 +79,12 @@ func init() {
 		}, {
 			Name: "sha2_256_full",
 			Val: data{
-				inputFile:    "sha2-256-full.json",
-				expectedFile: "sha2-256-full-expected.json",
+				inputFile:    "U2F_request_SHA2-256_555821.json",
+				expectedFile: "U2F_expected_SHA2-256_555821.json",
 			},
 			ExtraData: []string{
-				"sha2-256-full.json",
-				"sha2-256-full-expected.json",
+				"U2F_request_SHA2-256_555821.json",
+				"U2F_expected_SHA2-256_555821.json",
 			},
 		}, {
 			Name: "sha2_256_short",
@@ -139,30 +139,32 @@ func init() {
 		}, {
 			Name: "hmac_drbg",
 			Val: data{
-				inputFile:    "drbg-test.json",
-				expectedFile: "drbg-expected.json",
+				inputFile:    "U2F_request_hmacDRBG_555820.json",
+				expectedFile: "U2F_expected_hmacDRBG_555820.json",
 			},
 			ExtraData: []string{
-				"drbg-test.json",
-				"drbg-expected.json",
+				"U2F_request_hmacDRBG_555820.json",
+				"U2F_expected_hmacDRBG_555820.json",
 			},
 		}, {
 			Name: "hmac_sha2_256",
 			Val: data{
-				inputFile:    "hmac-sha2-256-test.json",
-				expectedFile: "hmac-sha2-256-expected.json",
+				inputFile:    "U2F_request_HMAC-SHA2-256_555822.json",
+				expectedFile: "U2F_expected_HMAC-SHA2-256_555822.json",
 			},
 			ExtraData: []string{
-				"hmac-sha2-256-test.json",
-				"hmac-sha2-256-expected.json",
+				"U2F_request_HMAC-SHA2-256_555822.json",
+				"U2F_expected_HMAC-SHA2-256_555822.json",
 			},
 		}, {
 			Name: "ecdsa_keygen",
 			Val: data{
-				inputFile: "ecdsa-keygen-test.json",
+				inputFile: "U2F_request_ECDSA_keyGen_555823.json",
+				expectedFile: "U2F_expected_ECDSA_keyGen_555823.json",
 			},
 			ExtraData: []string{
-				"ecdsa-keygen-test.json",
+				"U2F_request_ECDSA_keyGen_555823.json",
+				"U2F_expected_ECDSA_keyGen_555823.json",
 			},
 		}, {
 			Name: "ecdsa_keyver",
@@ -177,10 +179,12 @@ func init() {
 		}, {
 			Name: "ecdsa_siggen",
 			Val: data{
-				inputFile: "ecdsa-siggen-test.json",
+				inputFile: "U2F_request_ECDSA_sigGen_555824.json",
+				expectedFile: "U2F_expected_ECDSA_sigGen_555824.json",
 			},
 			ExtraData: []string{
-				"ecdsa-siggen-test.json",
+				"U2F_request_ECDSA_sigGen_555824.json",
+				"U2F_expected_ECDSA_sigGen_555824.json",
 			},
 		}, {
 			Name: "ecdsa_sigver",
