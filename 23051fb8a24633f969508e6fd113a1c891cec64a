@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32270e55_3126333f",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-21T01:54:10Z",
+      "side": 1,
+      "message": "probably want to give the reason why.",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 38
+      },
+      "revId": "23051fb8a24633f969508e6fd113a1c891cec64a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f53f8e17_90bc6b1c",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-21T01:54:10Z",
+      "side": 1,
+      "message": "..., please give this capture a unique screenshotName.",
+      "range": {
+        "startLine": 393,
+        "startChar": 34,
+        "endLine": 393,
+        "endChar": 74
+      },
+      "revId": "23051fb8a24633f969508e6fd113a1c891cec64a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
