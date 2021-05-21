@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5299c2b5_4fb0f4f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2021-05-21T15:29:32Z",
+      "side": 1,
+      "message": "Can you confirm that the output files are in the expected lab format as well?",
+      "parentUuid": "557f73a6_d75ae897",
+      "revId": "4d4706e802b7b81908f2b3d2f33b3771f4e8adc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19ce14da_798b61e6",
