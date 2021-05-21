@@ -123,12 +123,12 @@ func AllowCrossOriginAuthPrompt(ctx context.Context, s *testing.State) {
 
 			conn, err := cr.NewConn(ctx, "")
 			if err != nil {
-				s.Fatal("Failed to connect to the settings page: ", err)
+				s.Fatal("Failed to connect to chrome: ", err)
 			}
 
 			// Open a page that contains a link which requires authentication.
 			if err := conn.Navigate(ctx, server.URL); err != nil {
-				s.Fatal("Failed to connect to chrome: ", err)
+				s.Fatalf("Failed to navigate to the server URL %q: %v", server.URL, err)
 			}
 			defer conn.Close()
 
