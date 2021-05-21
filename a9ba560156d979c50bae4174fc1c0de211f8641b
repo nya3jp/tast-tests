@@ -16,6 +16,80 @@
       "message": "I have submitted a new patchset to address most issues found from the previous one.",
       "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa73d3e1_336478e8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-21T16:13:39Z",
+      "side": 1,
+      "message": "Do all non-Fault scenarios imply that the EC was non-responsive? I think I can imagine some pathological scenarios where RunECCommandGetOutput returns a non-Fault error. If we can validate the message of errEC, I think it would make the test more robust.\n\nAdditionally, we should also check whether errEC \u003d\u003d nil. Currently, if the EC is still responsive (and thus RunECCommandGetOutput returns the EC version with no error), L82 will incorrectly announce that the EC was non-responsive.",
+      "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd1ff71_7a0864fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-21T16:13:39Z",
+      "side": 1,
+      "message": "nit/style: The regexp would be clearer if you use a `raw string` (with backticks):\n\n    var regexChgstate \u003d []string{`ac \u003d (\\d+)`}",
+      "range": {
+        "startLine": 98,
+        "startChar": 30,
+        "endLine": 98,
+        "endChar": 43
+      },
+      "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edca2729_1c7d9771",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-21T16:13:39Z",
+      "side": 1,
+      "message": "If out[0] does not meet the type assertion .([]interface{}), then this will panic. It would give us cleaner logs to use a checked type assertion.\n\n    first, ok :\u003d out[0].([]interface{})\n    if !ok {\n        s.Fatalf(\"First element of EC chgstate output was not an array: %+v\", out)\n    }\n    if len(first) \u003c 2 {\n        s.Fatal(\"First element of EC chgstate output was too short: %+v\", first)\n    }\n    \n    result :\u003d first[1]",
+      "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83dd27db_22a9a1c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-21T16:13:39Z",
+      "side": 1,
+      "message": "Please log what out[0] is, so that we can debug this scenario. Currently there is no way to tell from logs whether there is no output (L104) or too little output (L107).",
+      "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
