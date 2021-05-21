@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c42e84b_890bf5b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-05-21T01:27:35Z",
+      "side": 1,
+      "message": "Given this one is also used for disabling UDC, how about SetEnableUDC (set \"enable_udc\") or SetUDCEnabled ?",
+      "range": {
+        "startLine": 39,
+        "startChar": 26,
+        "endLine": 39,
+        "endChar": 35
+      },
+      "revId": "e7c836308bb3ab2c4a8cd1fb412c6f84f2bc5ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f242c84_c5c1eac0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_over_usb.go",
         "patchSetId": 6
@@ -31,6 +54,30 @@
       "writtenOn": "2021-05-21T00:01:13Z",
       "side": 1,
       "message": "not clear what\u0027s the meaning of \"Result\".\n\nIf what you are testing is whether or not dev_enable_udc was enabled, renaming it to something like \"UDCValueUpdated\" (or something like that...)\n\nAlternative, you can define an enum in the proto and use that instead of a bool.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 14
+      },
+      "revId": "e7c836308bb3ab2c4a8cd1fb412c6f84f2bc5ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e683028_63b2db06",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-05-21T01:27:35Z",
+      "side": 1,
+      "message": "Yeah, there are at least 3 cases:\n\n1) successfully updated -\u003e true\n2) error occurred -\u003e false\n3) already set (non-op) -\u003e ?\n\nCurrent implementation returns false for 3)\nbut I think the normal convention is to return true for 3).",
+      "parentUuid": "6f242c84_c5c1eac0",
       "range": {
         "startLine": 61,
         "startChar": 1,
@@ -59,6 +106,52 @@
         "startChar": 1,
         "endLine": 94,
         "endChar": 1
+      },
+      "revId": "e7c836308bb3ab2c4a8cd1fb412c6f84f2bc5ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6746100_005e8c04",
+        "filename": "src/chromiumos/tast/services/cros/arc/adb_over_usb_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-05-21T01:27:35Z",
+      "side": 1,
+      "message": "Given this one is also used for disabling UDC, how about SetEnableUDC (set \"enable_udc\") ?",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "e7c836308bb3ab2c4a8cd1fb412c6f84f2bc5ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcabd96e_b8047285",
+        "filename": "src/chromiumos/tast/services/cros/arc/adb_over_usb_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-05-21T01:27:35Z",
+      "side": 1,
+      "message": "If we allow only 1 and 0, I think we should make it a bool field.",
+      "range": {
+        "startLine": 24,
+        "startChar": 36,
+        "endLine": 24,
+        "endChar": 74
       },
       "revId": "e7c836308bb3ab2c4a8cd1fb412c6f84f2bc5ffd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
