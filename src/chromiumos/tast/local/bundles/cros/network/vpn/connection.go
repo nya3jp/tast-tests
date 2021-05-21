@@ -34,6 +34,7 @@ type Config struct {
 // VPN types.
 const (
 	TypeL2TPIPsec = "L2TP/IPsec"
+	TypeOpenVPN   = "OpenVPN"
 )
 
 // Authentication types.
@@ -184,59 +185,21 @@ func (c *Connection) prepareCertStore(ctx context.Context) error {
 
 func (c *Connection) startServer(ctx context.Context) error {
 	var err error
-	if c.config.Type == TypeL2TPIPsec {
+	switch c.config.Type {
+	case TypeL2TPIPsec:
 		c.Server, err = StartL2TPIPsecServer(ctx, c.config.AuthType, c.config.IPsecUseXauth, c.config.UnderlayIPIsOverlayIP)
-	} else {
+	case TypeOpenVPN:
+		c.Server, err = StartOpenVPNServer(ctx)
+	default:
 		return errors.Errorf("unexpected VPN type %s", c.config.Type)
 	}
 	return err
 }
 
 func (c *Connection) configureService(ctx context.Context) error {
-	var properties map[string]interface{}
-	var serverAddress string
-
-	if c.config.UnderlayIPIsOverlayIP {
-		serverAddress = c.Server.OverlayIP
-	} else {
-		serverAddress = c.Server.UnderlayIP
-	}
-
-	// Populates the properties at first.
-	if (c.config.Type == TypeL2TPIPsec) && (c.config.AuthType == AuthTypePSK) {
-		properties = map[string]interface{}{
-			"L2TPIPsec.Password": chapSecret,
-			"L2TPIPsec.PSK":      ipsecPresharedKey,
-			"L2TPIPsec.User":     chapUser,
-			"Name":               "test-vpn-l2tp-psk",
-			"Provider.Host":      serverAddress,
-			"Provider.Type":      "l2tpipsec",
-			"Type":               "vpn",
-		}
-		if c.config.IPsecUseXauth && !c.config.IPsecXauthMissingUser {
-			if c.config.IPsecXauthWrongUser {
-				properties["L2TPIPsec.XauthUser"] = "wrong-user"
-				properties["L2TPIPsec.XauthPassword"] = "wrong-password"
-			} else {
-				properties["L2TPIPsec.XauthUser"] = xauthUser
-				properties["L2TPIPsec.XauthPassword"] = xauthPassword
-			}
-		}
-	} else if (c.config.Type == TypeL2TPIPsec) && (c.config.AuthType == AuthTypeCert) {
-		properties = map[string]interface{}{
-			"L2TPIPsec.CACertPEM":      []string{certificate.TestCert1().CACred.Cert},
-			"L2TPIPsec.ClientCertID":   c.certID,
-			"L2TPIPsec.ClientCertSlot": c.certSlot,
-			"L2TPIPsec.User":           chapUser,
-			"L2TPIPsec.Password":       chapSecret,
-			"L2TPIPsec.PIN":            c.certPin,
-			"Name":                     "test-vpn-l2tp-cert",
-			"Provider.Host":            serverAddress,
-			"Provider.Type":            "l2tpipsec",
-			"Type":                     "vpn",
-		}
-	} else {
-		return errors.Errorf("unexpected server type: got %s-%s", c.config.Type, c.config.AuthType)
+	properties, err := c.createProperties()
+	if err != nil {
+		return errors.Wrap(err, "unable to create service properties")
 	}
 
 	servicePath, err := c.manager.ConfigureService(ctx, properties)
@@ -249,6 +212,73 @@ func (c *Connection) configureService(ctx context.Context) error {
 	}
 
 	return nil
+}
+
+func (c *Connection) createProperties() (map[string]interface{}, error) {
+	var serverAddress string
+	if c.config.UnderlayIPIsOverlayIP {
+		serverAddress = c.Server.OverlayIP
+	} else {
+		serverAddress = c.Server.UnderlayIP
+	}
+
+	switch c.config.Type {
+	case TypeL2TPIPsec:
+		return c.createL2TPIPsecProperties(serverAddress)
+	case TypeOpenVPN:
+		return c.createOpenVPNProperties(serverAddress), nil
+	default:
+		return nil, errors.Errorf("unexpected server type: got %s", c.config.Type)
+	}
+}
+
+func (c *Connection) createL2TPIPsecProperties(serverAddress string) (map[string]interface{}, error) {
+	properties := map[string]interface{}{
+		"Provider.Host":      serverAddress,
+		"Provider.Type":      "l2tpipsec",
+		"Type":               "vpn",
+		"L2TPIPsec.User":     chapUser,
+		"L2TPIPsec.Password": chapSecret,
+	}
+
+	if c.config.AuthType == AuthTypePSK {
+		properties["Name"] = "test-vpn-l2tp-psk"
+		properties["L2TPIPsec.PSK"] = ipsecPresharedKey
+	} else if c.config.AuthType == AuthTypeCert {
+		properties["Name"] = "test-vpn-l2tp-cert"
+		properties["L2TPIPsec.CACertPEM"] = []string{certificate.TestCert1().CACred.Cert}
+		properties["L2TPIPsec.ClientCertID"] = c.certID
+		properties["L2TPIPsec.ClientCertSlot"] = c.certSlot
+		properties["L2TPIPsec.PIN"] = c.certPin
+	} else {
+		return nil, errors.Errorf("unexpected auth type %s for L2TP/IPsec", c.config.AuthType)
+	}
+
+	if c.config.IPsecUseXauth && !c.config.IPsecXauthMissingUser {
+		if c.config.IPsecXauthWrongUser {
+			properties["L2TPIPsec.XauthUser"] = "wrong-user"
+			properties["L2TPIPsec.XauthPassword"] = "wrong-password"
+		} else {
+			properties["L2TPIPsec.XauthUser"] = xauthUser
+			properties["L2TPIPsec.XauthPassword"] = xauthPassword
+		}
+	}
+
+	return properties, nil
+}
+
+func (c *Connection) createOpenVPNProperties(serverAddress string) map[string]interface{} {
+	return map[string]interface{}{
+		"Name":                  "test-vpn-openvpn",
+		"Provider.Host":         serverAddress,
+		"Provider.Type":         "openvpn",
+		"Type":                  "vpn",
+		"OpenVPN.CACertPEM":     []string{certificate.TestCert1().CACred.Cert},
+		"OpenVPN.Pkcs11.ID":     c.certID,
+		"OpenVPN.Pkcs11.PIN":    c.certPin,
+		"OpenVPN.RemoteCertEKU": "TLS Web Server Authentication",
+		"OpenVPN.Verb":          "5",
+	}
 }
 
 func (c *Connection) connectService(ctx context.Context) (bool, error) {

@@ -45,6 +45,7 @@ type NetworkChroot struct {
 	netJailArgs            []string
 	netnsLifelineFD        *os.File
 	startupCmd             *testexec.Cmd
+	NetEnv                 []string
 }
 
 const (
@@ -100,6 +101,7 @@ func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
 	ipArgs := []string{"netns", "exec", netnsName, "/sbin/minijail0", "-C", n.netTempDir}
 	ipArgs = append(ipArgs, cmdArgs...)
 	n.startupCmd = testexec.CommandContext(ctx, "ip", ipArgs...)
+	n.startupCmd.Env = append(os.Environ(), n.NetEnv...)
 	if err := n.startupCmd.Start(); err != nil {
 		return "", errors.Wrap(err, "failed to run minijail")
 	}
