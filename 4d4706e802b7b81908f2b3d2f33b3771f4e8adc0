@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e663d89_23b47b0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-05-21T16:25:14Z",
+      "side": 1,
+      "message": "Ah I see. The output files exist and have contents that look like the expected files.",
+      "parentUuid": "92775a91_2c769e6c",
+      "revId": "4d4706e802b7b81908f2b3d2f33b3771f4e8adc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19ce14da_798b61e6",
