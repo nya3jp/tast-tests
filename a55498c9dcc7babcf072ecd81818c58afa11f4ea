@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1e50c23_42123764",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-21T08:26:36Z",
+      "side": 1,
+      "message": "nit: end comment with .",
+      "revId": "a55498c9dcc7babcf072ecd81818c58afa11f4ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e94479_61893f82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-21T08:26:36Z",
+      "side": 1,
+      "message": "nit: end comment with .",
+      "revId": "a55498c9dcc7babcf072ecd81818c58afa11f4ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ea0931c_03b09627",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-21T08:26:36Z",
+      "side": 1,
+      "message": "nit: end comment with .",
+      "revId": "a55498c9dcc7babcf072ecd81818c58afa11f4ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38a273ca_1b482e36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-21T08:26:36Z",
+      "side": 1,
+      "message": "It looks like the code above. Couldn\u0027t that be extracted to function and called from here and from line 1031?",
+      "range": {
+        "startLine": 1090,
+        "startChar": 0,
+        "endLine": 1108,
+        "endChar": 4
+      },
+      "revId": "a55498c9dcc7babcf072ecd81818c58afa11f4ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
