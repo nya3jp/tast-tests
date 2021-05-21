@@ -36,7 +36,7 @@ func init() {
 
 func PlayStore(ctx context.Context, s *testing.State) {
 	const (
-		pkgName = "com.google.android.apps.photos"
+		pkgName = "com.google.android.calculator"
 	)
 
 	// Setup Chrome.
