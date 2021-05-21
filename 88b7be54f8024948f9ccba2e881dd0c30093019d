@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b5ce901_46a00ea5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2021-05-21T17:30:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d00e116e_10548654",
+      "range": {
+        "startLine": 1062,
+        "startChar": 6,
+        "endLine": 1062,
+        "endChar": 7
+      },
+      "revId": "88b7be54f8024948f9ccba2e881dd0c30093019d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3341974a_f85c18ba",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-21T17:28:37Z",
       "side": 1,
       "message": "tv",
+      "range": {
+        "startLine": 1063,
+        "startChar": 24,
+        "endLine": 1063,
+        "endChar": 25
+      },
+      "revId": "88b7be54f8024948f9ccba2e881dd0c30093019d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9cb0d3e_86d56fdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2021-05-21T17:30:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3341974a_f85c18ba",
       "range": {
         "startLine": 1063,
         "startChar": 24,
