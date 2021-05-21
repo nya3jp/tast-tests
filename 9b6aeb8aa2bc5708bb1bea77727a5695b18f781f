@@ -58,6 +58,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95e9a506_90d8a758",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-21T15:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60a0cf31_42178de3",
+      "range": {
+        "startLine": 65,
+        "startChar": 52,
+        "endLine": 65,
+        "endChar": 54
+      },
+      "revId": "9b6aeb8aa2bc5708bb1bea77727a5695b18f781f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c33aeff_1bfc3eeb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-21T15:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60a0cf31_42178de3",
+      "range": {
+        "startLine": 65,
+        "startChar": 52,
+        "endLine": 65,
+        "endChar": 54
+      },
+      "revId": "9b6aeb8aa2bc5708bb1bea77727a5695b18f781f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "069b1d26_b9a89964",
@@ -71,6 +119,54 @@
       "writtenOn": "2021-05-20T01:00:28Z",
       "side": 1,
       "message": "Same",
+      "range": {
+        "startLine": 76,
+        "startChar": 34,
+        "endLine": 76,
+        "endChar": 36
+      },
+      "revId": "9b6aeb8aa2bc5708bb1bea77727a5695b18f781f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3b31152_5e1d79ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-21T15:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "069b1d26_b9a89964",
+      "range": {
+        "startLine": 76,
+        "startChar": 34,
+        "endLine": 76,
+        "endChar": 36
+      },
+      "revId": "9b6aeb8aa2bc5708bb1bea77727a5695b18f781f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a28e6ef2_ae2e1eb6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-21T15:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "069b1d26_b9a89964",
       "range": {
         "startLine": 76,
         "startChar": 34,
