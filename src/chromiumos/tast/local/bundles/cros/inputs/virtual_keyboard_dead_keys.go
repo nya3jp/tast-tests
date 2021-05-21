@@ -76,7 +76,7 @@ func init() {
 			}, {
 				Name:              "catalan_stable",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-				ExtraAttr:         []string{"group:input-tools-upstream"},
+				ExtraAttr:         []string{"group:input-tools-upstream", "informational"},
 				// "Catalan keyboard" input method uses the same full-layout VK (that
 				// has dead keys) for both a11y & non-a11y. Just use non-a11y here.
 				Pre: pre.VKEnabledTablet,
