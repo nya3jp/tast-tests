@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c8b672e_b09551b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_over_usb_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-21T21:42:20Z",
+      "side": 1,
+      "message": "Changed to SetUDCEnabled.",
+      "parentUuid": "3c42e84b_890bf5b0",
+      "range": {
+        "startLine": 39,
+        "startChar": 26,
+        "endLine": 39,
+        "endChar": 35
+      },
+      "revId": "e7c836308bb3ab2c4a8cd1fb412c6f84f2bc5ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f242c84_c5c1eac0",
@@ -88,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c232bdf9_d129e7eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-21T21:42:20Z",
+      "side": 1,
+      "message": "I only care about 2 cases:\n1) the value updated (return true)\n2) the value not updated, either because of error or already set (no-op). (return false)\n\nI updated the name to make it more clear.",
+      "parentUuid": "9e683028_63b2db06",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 14
+      },
+      "revId": "e7c836308bb3ab2c4a8cd1fb412c6f84f2bc5ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "940f3483_dd162fa6",
@@ -101,6 +149,30 @@
       "writtenOn": "2021-05-21T00:01:13Z",
       "side": 1,
       "message": "can you put this in a \"defer\" so that it gets executed no matter what ?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "e7c836308bb3ab2c4a8cd1fb412c6f84f2bc5ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59dab14a_e00591fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-21T21:42:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "940f3483_dd162fa6",
       "range": {
         "startLine": 82,
         "startChar": 1,
@@ -134,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b00d946_5154f6ca",
+        "filename": "src/chromiumos/tast/services/cros/arc/adb_over_usb_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-21T21:42:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6746100_005e8c04",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "e7c836308bb3ab2c4a8cd1fb412c6f84f2bc5ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcabd96e_b8047285",
@@ -147,6 +243,30 @@
       "writtenOn": "2021-05-21T01:27:35Z",
       "side": 1,
       "message": "If we allow only 1 and 0, I think we should make it a bool field.",
+      "range": {
+        "startLine": 24,
+        "startChar": 36,
+        "endLine": 24,
+        "endChar": 74
+      },
+      "revId": "e7c836308bb3ab2c4a8cd1fb412c6f84f2bc5ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "656c6e26_faa87262",
+        "filename": "src/chromiumos/tast/services/cros/arc/adb_over_usb_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-05-21T21:42:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcabd96e_b8047285",
       "range": {
         "startLine": 24,
         "startChar": 36,
