@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b80d78d1_a5d49e4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-05-21T10:13:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13aaadbe_b99b6f5d",
+      "range": {
+        "startLine": 104,
+        "startChar": 24,
+        "endLine": 104,
+        "endChar": 51
+      },
+      "revId": "ff4e81c64cc4bb00b52633bb3a6b667b660c963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ea46cbb_5ce2d29d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46abc374_065443f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-05-21T10:13:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ea46cbb_5ce2d29d",
+      "range": {
+        "startLine": 121,
+        "startChar": 24,
+        "endLine": 121,
+        "endChar": 51
+      },
+      "revId": "ff4e81c64cc4bb00b52633bb3a6b667b660c963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff56d22c_4add961f",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-05-20T07:39:20Z",
       "side": 1,
       "message": "\u003e  removeNotification func(context.Context) error\nshould be here.",
+      "range": {
+        "startLine": 155,
+        "startChar": 34,
+        "endLine": 155,
+        "endChar": 84
+      },
+      "revId": "ff4e81c64cc4bb00b52633bb3a6b667b660c963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fdf2cb1_9317d09e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-05-21T10:13:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff56d22c_4add961f",
       "range": {
         "startLine": 155,
         "startChar": 34,
