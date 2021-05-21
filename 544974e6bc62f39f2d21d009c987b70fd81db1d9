@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b9e9e07_0716adbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-05-21T11:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bfb00ff_65f70b4e",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "544974e6bc62f39f2d21d009c987b70fd81db1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88a7f59d_1835b6fe",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f30bd5c_db61f5aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-05-21T11:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88a7f59d_1835b6fe",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 45
+      },
+      "revId": "544974e6bc62f39f2d21d009c987b70fd81db1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cfddb67_595a7104",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-05-21T11:17:42Z",
       "side": 1,
       "message": "I guess we don\u0027t need to clear saved dir since it should be empty after guest login (if not it\u0027s a bug of guest login and should fail the test). Other CCA tests do this because many of them reuse the Chrome.Loggedin() precondition across runs.",
+      "revId": "544974e6bc62f39f2d21d009c987b70fd81db1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0a73717_07fbfb64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_guest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-05-21T11:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cfddb67_595a7104",
       "revId": "544974e6bc62f39f2d21d009c987b70fd81db1d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
