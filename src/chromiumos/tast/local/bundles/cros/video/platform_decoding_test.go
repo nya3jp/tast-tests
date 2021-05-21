@@ -19,8 +19,6 @@ import (
 // regenerate the test parameters by running the following in a chroot:
 // TAST_GENERATE_UPDATE=1 ~/trunk/src/platform/tast/tools/go.sh test -count=1 chromiumos/tast/local/bundles/cros/video
 
-var v4l2Vp9Files = []string{"1080p_30fps_300frames.vp9.ivf"}
-
 var vaapiAv1Files = []string{
 	"test_vectors/av1/8-bit/00000527.ivf",
 	"test_vectors/av1/8-bit/00000535.ivf",
@@ -38,7 +36,7 @@ var vaapiAv1Files = []string{
 // (rounded down) level, i.e. "group1" consists of level 1 and 1.1 streams,
 // "group2" of level 2 and 2.1, etc. This helps to keep together tests with
 // similar amounts of intended behavior/expected stress on devices.
-var vaapiVp9Files = map[string]map[string]map[string][]string{
+var vp9Files = map[string]map[string]map[string][]string{
 	"profile_0": {
 		"group1": {
 			"buf": {
@@ -346,7 +344,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 			for _, cat := range []string{
 				"buf", "frm_resize", "gf_dist", "odd_size", "sub8x8", "sub8x8_sf",
 			} {
-				files := vaapiVp9Files[profile][levelGroup][cat]
+				files := vp9Files[profile][levelGroup][cat]
 				param := paramData{
 					Name:         fmt.Sprintf("vaapi_vp9_%d_%s_%s", i, levelGroup, cat),
 					Decoder:      filepath.Join(chrome.BinTestDir, "decode_test"),
@@ -393,18 +391,42 @@ func TestPlatformDecodingParams(t *testing.T) {
 		Attr:         []string{"graphics_video_av1"},
 	})
 
-	// Generate V4L2 VP9 tests.
-	params = append(params, paramData{
-		Name:         "v4l2_vp9",
-		Decoder:      "v4l2_stateful_decoder",
-		CmdBuilder:   "vp9decodeV4L2args",
-		Files:        v4l2Vp9Files,
-		Timeout:      defaultTimeout,
-		HardwareDeps: "hwdep.D(hwdep.Platform(\"trogdor\"))",
-		SoftwareDeps: []string{"v4l2_codec", caps.HWDecodeVP9},
-		Metadata:     genExtraData(v4l2Vp9Files),
-		Attr:         []string{"graphics_video_vp9"},
-	})
+	// Generates V4L2 VP9 tests.
+	for i, profile := range []string{"profile_0"} {
+		for _, levelGroup := range []string{"group1", "group2", "group3", "group4", "level5_0", "level5_1"} {
+			for _, cat := range []string{
+				"buf", "frm_resize", "gf_dist", "odd_size", "sub8x8", "sub8x8_sf",
+			} {
+				files := vp9Files[profile][levelGroup][cat]
+				param := paramData{
+					Name:         fmt.Sprintf("v4l2_vp9_%d_%s_%s", i, levelGroup, cat),
+					Decoder:      "v4l2_stateful_decoder",
+					CmdBuilder:   "vp9decodeV4L2args",
+					Files:        files,
+					Timeout:      defaultTimeout,
+					SoftwareDeps: []string{"v4l2_codec"},
+					Metadata:     genExtraData(files),
+					Attr:         []string{"graphics_video_vp9"},
+				}
+				if extension, ok := vp9GroupExtensions[levelGroup]; ok {
+					param.Timeout = extension
+				}
+
+				param.HardwareDeps = "hwdep.D(hwdep.Platform(\"trogdor\"))"
+
+				switch levelGroup {
+				case "level5_0":
+					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K)
+				case "level5_1":
+					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K60)
+				default:
+					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9)
+				}
+
+				params = append(params, param)
+			}
+		}
+	}
 
 	code := genparams.Template(t, `{{ range . }}{
 		Name: {{ .Name | fmt }},
