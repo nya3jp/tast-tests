@@ -26,6 +26,9 @@ const (
 
 // RunECCommand runs the given command on the EC on the device.
 func (s *Servo) RunECCommand(ctx context.Context, cmd string) error {
+	if err := s.SetString(ctx, ECUARTRegexp, "None"); err != nil {
+		return errors.Wrap(err, "Clearing EC UART Regexp")
+	}
 	return s.SetString(ctx, ECUARTCmd, cmd)
 }
 
@@ -35,6 +38,7 @@ func (s *Servo) RunECCommandGetOutput(ctx context.Context, cmd string, patterns 
 	if err != nil {
 		return nil, errors.Wrapf(err, "setting ECUARTRegexp to %s", patterns)
 	}
+	defer s.SetString(ctx, ECUARTRegexp, "None")
 	err = s.SetString(ctx, ECUARTCmd, cmd)
 	if err != nil {
 		return nil, errors.Wrapf(err, "setting ECUARTCmd to %s", cmd)
