@@ -40,6 +40,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/firmware"
 	_ "chromiumos/tast/local/bundles/cros/gamepad"
 	_ "chromiumos/tast/local/bundles/cros/graphics"
+	_ "chromiumos/tast/local/bundles/cros/hammerd"
 	_ "chromiumos/tast/local/bundles/cros/hardware"
 	_ "chromiumos/tast/local/bundles/cros/health"
 	_ "chromiumos/tast/local/bundles/cros/hwsec"
