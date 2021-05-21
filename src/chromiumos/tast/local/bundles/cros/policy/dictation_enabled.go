@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -97,30 +96,15 @@ func DictationEnabled(ctx context.Context, s *testing.State) {
 				s.Errorf("Unexpected existence of Toggle dictation button: got %v; want %v", buttonExists, param.wantButton)
 			}
 
-			// Open settings page where the affected toggle button can be found.
-			sconn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/osAccessibility")
-			if err != nil {
-				s.Fatal("Failed to connect to the accessibility settings page: ", err)
+			if err := policyutil.OSSettingsPage(ctx, cr, "manageAccessibility").
+				SelectNode(ctx, nodewith.
+					Name("Enable dictation (speak to type)").
+					Role(role.ToggleButton)).
+				Restriction(param.wantRestriction).
+				Checked(param.wantChecked).
+				Verify(); err != nil {
+				s.Error("Unexpected OS settings state: ", err)
 			}
-			defer sconn.Close()
-
-			// Find and click manage accessibility link.
-			if err := ui.LeftClick(nodewith.Name("Manage accessibility features Enable accessibility features").Role(role.Link))(ctx); err != nil {
-				s.Fatal("Failed to find and click Manage accessibility features link: ", err)
-			}
-
-			nodeInfo, err := ui.Info(ctx, nodewith.Name("Enable dictation (speak to type)").Role(role.ToggleButton))
-			if err != nil {
-				s.Fatal("Could not find Enable dictation (speak to type) button: ", err)
-			}
-			// Check that the button is in the correct state.
-			if nodeInfo.Restriction != param.wantRestriction {
-				s.Errorf("Unexpected button restriction state: got %v, want %v", nodeInfo.Restriction, param.wantRestriction)
-			}
-			if nodeInfo.Checked != param.wantChecked {
-				s.Errorf("Unexpected button checked state: got %v, want %v", nodeInfo.Checked, param.wantChecked)
-			}
-
 		})
 	}
 }
