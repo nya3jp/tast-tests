@@ -133,6 +133,65 @@ var (
 	}
 )
 
+// Constants that used by OpenVPN server
+const (
+	openvpnCommand           = "/usr/sbin/openvpn"
+	openvpnConfigFile        = "etc/openvpn/openvpn.conf"
+	openvpnCaCertFile        = "etc/openvpn/ca.crt"
+	openvpnServerCertFile    = "etc/openvpn/server.crt"
+	openvpnServerKeyFile     = "etc/openvpn/server.key"
+	openvpnDiffieHellmanFile = "etc/openvpn/diffie-hellman.pem"
+	openvpnExpectedAuthFile  = "etc/openvpn_expected_authentication.txt"
+	openvpnAuthScript        = "etc/openvpn_authentication_script.sh"
+	openvpnLogFile           = "var/log/openvpn.log"
+	openvpnPidFile           = "run/openvpn.pid"
+	openvpnStatusFile        = "tmp/openvpn.status"
+	openvpnUsername          = "username"
+	openvpnPassword          = "password"
+	openvpnServerIPAddress   = "10.11.12.1"
+)
+
+// dh1024PemKey is the Diffie–Hellman parameter which will be used by OpenVPN
+// server in the test. The value is borrowed from Autotest
+// (client/common_lib/cros/site_eap_certs.py)
+const dh1024PemKey = `-----BEGIN DH PARAMETERS-----
+MIGHAoGBAL/YrUzFuA5cPGzhXVqTvDugmPi9CpbWZx2+TCTKxZSjNiVJxcICSnql
+uZtkR3sOAiWn384E4ZQTBrYPUguOuFfbMTRooADhezaG9SXtrE9oeVy9avIO7xQK
+emZydO0bAsRV+eL0XkjGhSyhKoOvSIXaCbJUn7duEsfkICPRLWCrAgEC
+-----END DH PARAMETERS-----
+`
+
+var (
+	openvpnRootDirectories = []string{"etc/openvpn"}
+	openvpnConfigs         = map[string]string{
+		openvpnCaCertFile:        certificate.TestCert1().CACred.Cert,
+		openvpnServerCertFile:    certificate.TestCert1().ServerCred.Cert,
+		openvpnServerKeyFile:     certificate.TestCert1().ServerCred.PrivateKey,
+		openvpnDiffieHellmanFile: dh1024PemKey,
+		openvpnAuthScript:        "#!/bin/bash\ndiff -q $1 {{.expected_authentication_file}}\n",
+		openvpnExpectedAuthFile:  "{{.username}}\n{{.password}}\n",
+		openvpnConfigFile: "ca /{{.ca_cert}}\n" +
+			"cert /{{.server_cert}}\n" +
+			"dev tun\n" +
+			"dh /{{.diffie_hellman_params_file}}\n" +
+			"keepalive 10 120\n" +
+			"local {{.netns_ip}}\n" +
+			"log /{{.log_file}}\n" +
+			"ifconfig-pool-persist /tmp/ipp.txt\n" +
+			"key /{{.server_key}}\n" +
+			"persist-key\n" +
+			"persist-tun\n" +
+			"port 1194\n" +
+			"proto udp\n" +
+			"server 10.11.12.0 255.255.255.0\n" +
+			"status /{{.status_file}}\n" +
+			"verb 5\n" +
+			"writepid /{{.pid_file}}\n" +
+			"tmp-dir /tmp\n" +
+			"{{.optional_user_verification}}\n",
+	}
+)
+
 // Server represents a VPN server that can be used in the test.
 type Server struct {
 	UnderlayIP   string
@@ -200,6 +259,48 @@ func StartL2tpIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 	} else {
 		server.OverlayIP = xl2tpdServerIPAddress
 	}
+	return server, nil
+}
+
+// StartOpenVPNServer starts an OpenVPN server.
+func StartOpenVPNServer(ctx context.Context) (*Server, error) {
+	chro := chroot.NewNetworkChroot()
+	server := &Server{
+		netChroot:    chro,
+		stopCommands: [][]string{},
+		pidFiles:     []string{xl2tpdPidFile, pppdPidFile},
+		logFile:      openvpnLogFile,
+	}
+
+	chro.AddRootDirectories(openvpnRootDirectories)
+	chro.AddConfigTemplates(openvpnConfigs)
+	configValues := map[string]interface{}{
+		"ca_cert":                      openvpnCaCertFile,
+		"diffie_hellman_params_file":   openvpnDiffieHellmanFile,
+		"expected_authentication_file": openvpnExpectedAuthFile,
+		"optional_user_verification":   "",
+		"password":                     openvpnPassword,
+		"pid_file":                     openvpnPidFile,
+		"server_cert":                  openvpnServerCertFile,
+		"server_key":                   openvpnServerKeyFile,
+		"status_file":                  openvpnStatusFile,
+		"username":                     openvpnUsername,
+		"log_file":                     openvpnLogFile,
+	}
+	chro.AddConfigValues(configValues)
+	chro.AddStartupCommand("chmod 755 " + openvpnAuthScript)
+	chro.AddStartupCommand(fmt.Sprintf("%s --config /%s &", openvpnCommand, openvpnConfigFile))
+	chro.NetEnv = []string{
+		"OPENSSL_CONF=/etc/ssl/openssl.cnf.compat",
+		"OPENSSL_CHROMIUM_SKIP_TRUSTED_PURPOSE_CHECK=1",
+	}
+
+	underlayIP, err := chro.Startup(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start OpenVPN server")
+	}
+	server.UnderlayIP = underlayIP
+	server.OverlayIP = openvpnServerIPAddress
 	return server, nil
 }
 

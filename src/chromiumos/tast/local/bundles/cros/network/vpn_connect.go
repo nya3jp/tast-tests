@@ -91,12 +91,19 @@ func init() {
 				vpnType:  "L2TP/IPsec",
 				authType: "cert",
 			},
+		}, {
+			Name: "openvpn",
+			Val: vpnTestParams{
+				vpnType:  "OpenVPN",
+				authType: "cert",
+			},
 		}},
 	})
 }
 
 const (
 	l2tpIPsec                       = "L2TP/IPsec"
+	openvpn                         = "OpenVPN"
 	pskAuth                         = "psk"
 	certAuth                        = "cert"
 	testDefaultProfileName          = "vpnTestProfile"
@@ -212,6 +219,8 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	var server *vpn.Server
 	if params.vpnType == l2tpIPsec {
 		server, err = vpn.StartL2tpIPsecServer(ctx, params.authType, params.ipsecUseXauth, params.underlayIPIsOverlayIP)
+	} else if params.vpnType == openvpn {
+		server, err = vpn.StartOpenVPNServer(ctx)
 	} else {
 		s.Fatalf("Unexpected VPN type %s", params.vpnType)
 	}
@@ -314,6 +323,19 @@ func getVpnClientProperties(ctx context.Context, params vpnTestParams, serverAdd
 			"Provider.Host":            serverAddress,
 			"Provider.Type":            "l2tpipsec",
 			"Type":                     "vpn",
+		}
+		return properties, nil
+	} else if params.vpnType == openvpn {
+		properties := map[string]interface{}{
+			"Name":                  "test-vpn-openvpn",
+			"Provider.Host":         serverAddress,
+			"Provider.Type":         "openvpn",
+			"Type":                  "vpn",
+			"OpenVPN.CACertPEM":     []string{certificate.TestCert1().CACred.Cert},
+			"OpenVPN.Pkcs11.ID":     params.certID,
+			"OpenVPN.Pkcs11.PIN":    params.certPin,
+			"OpenVPN.RemoteCertEKU": "TLS Web Server Authentication",
+			"OpenVPN.Verb":          "5",
 		}
 		return properties, nil
 	}
