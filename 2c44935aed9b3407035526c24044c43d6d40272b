@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2a4318c_0df66c34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-05-21T21:37:54Z",
+      "side": 1,
+      "message": "PTAL, I\u0027ve updated the CL with the recommendation from the chromium-os-dev thread.",
+      "revId": "2c44935aed9b3407035526c24044c43d6d40272b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
