@@ -81,6 +81,24 @@
       "parentUuid": "0cfe0c63_8af549a6",
       "revId": "0f921e21cfbe8d4881b58ae5c108f12852f2fb8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "135e4313_55fd3588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-05-21T02:12:11Z",
+      "side": 1,
+      "message": "Thanks for filing the bug.\nWill you note it as \"TODO\" in all capitals, because it is consistent with other place of our codebase?\n\n(I could not find a document for Go code comment, but there has been a guideline for C++.)\nhttps://chromium.googlesource.com/chromium/src/+/main/styleguide/c++/c++-dos-and-donts.md#comment-style",
+      "parentUuid": "14b2e197_b31810a9",
+      "revId": "0f921e21cfbe8d4881b58ae5c108f12852f2fb8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
