@@ -6,7 +6,6 @@ package camera
 
 import (
 	"context"
-	"fmt"
 	"image/jpeg"
 	"math"
 	"os"
@@ -272,43 +271,24 @@ func testVideoResolution(ctx context.Context, app *cca.App) error {
 
 // withInnerResolutionSetting opens inner |rt| type resolution menu for |facing| camera, calls |onOpened()| and closes the menu.
 func withInnerResolutionSetting(ctx context.Context, app *cca.App, rt cca.ResolutionType, facing cca.Facing, onOpened func() error) error {
-	openSetting := func(name string, openButton cca.UIComponent) error {
-		if err := app.Click(ctx, openButton); err != nil {
-			return err
-		}
-		active, err := app.GetState(ctx, name)
-		if err != nil {
-			return errors.Wrap(err, "failed to get view open state")
-		}
-		if !active {
-			return errors.Errorf("view %q is not openned", name)
-		}
-		return nil
-	}
-
-	if err := openSetting("view-settings", cca.SettingsButton); err != nil {
+	if err := cca.MainMenu.Open(ctx, app); err != nil {
 		return err
 	}
-	defer app.Click(ctx, cca.SettingsBackButton)
+	defer cca.MainMenu.Close(ctx, app)
 
-	if err := openSetting("view-resolution-settings", cca.ResolutionSettingButton); err != nil {
+	if err := cca.ResolutionMenu.Open(ctx, app); err != nil {
 		return err
 	}
-	defer app.Click(ctx, cca.ResolutionSettingBackButton)
+	defer cca.ResolutionMenu.Close(ctx, app)
 
-	btn, err := app.InnerResolutionSettingButton(ctx, facing, rt)
+	innerMenu, err := app.InnerResolutionSetting(ctx, facing, rt)
 	if err != nil {
 		return err
 	}
-	view := fmt.Sprintf("view-%s-resolution-settings", rt)
-	if err := openSetting(view, *btn); err != nil {
+	if err := innerMenu.Open(ctx, app); err != nil {
 		return err
 	}
-	if rt == cca.PhotoResolution {
-		defer app.Click(ctx, cca.PhotoResolutionSettingBackButton)
-	} else {
-		defer app.Click(ctx, cca.VideoResolutionSettingBackButton)
-	}
+	defer innerMenu.Close(ctx, app)
 
 	return onOpened()
 }
