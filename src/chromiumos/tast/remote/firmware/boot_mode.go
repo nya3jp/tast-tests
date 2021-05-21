@@ -77,6 +77,8 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 	if err := h.RequireRPCUtils(ctx); err != nil {
 		return errors.Wrap(err, "requiring RPC utils")
 	}
+	testing.ContextLogf(ctx, "SSH is connected: %+v", h.DUT.Connected(ctx))
+	testing.ContextLogf(ctx, "RPCClient status: %+v", h.RPCClient.Conn.GetState().String())
 	if _, err := h.RPCUtils.BlockingSync(ctx, &empty.Empty{}); err != nil {
 		return errors.Wrap(err, "syncing DUT before reboot")
 	}
