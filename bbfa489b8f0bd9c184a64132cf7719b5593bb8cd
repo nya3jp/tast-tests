@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58ef6f4a_14d39c0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-21T00:39:48Z",
+      "side": 1,
+      "message": "LGTM tast shadow reviewer % optional suggestion",
+      "revId": "bbfa489b8f0bd9c184a64132cf7719b5593bb8cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
