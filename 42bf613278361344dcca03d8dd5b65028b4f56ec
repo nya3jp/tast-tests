@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c69e2cd0_74f28fec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-21T00:22:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d5f38a81_ab977505",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "42bf613278361344dcca03d8dd5b65028b4f56ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "561cce61_7e147120",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -37,6 +61,24 @@
       "writtenOn": "2021-05-04T00:52:32Z",
       "side": 1,
       "message": "Can this be run on Kohaku? When I put the Kohaku in Tablet mode and run this test gets skipped with log \"App is in portrait orientation. Skipping test\". Is this intentional?",
+      "revId": "42bf613278361344dcca03d8dd5b65028b4f56ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec67ccd1_ee2eaa12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-21T00:22:38Z",
+      "side": 1,
+      "message": "it can be run on kohaku. yes skipping test for portrait only apps is intentional.",
+      "parentUuid": "561cce61_7e147120",
       "revId": "42bf613278361344dcca03d8dd5b65028b4f56ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2021-05-04T00:52:32Z",
       "side": 1,
       "message": "Guess this is not needed.",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 18
+      },
+      "revId": "42bf613278361344dcca03d8dd5b65028b4f56ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35bcd6ef_553bc52c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-21T00:22:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0eeb74eb_9d228d71",
       "range": {
         "startLine": 585,
         "startChar": 0,
