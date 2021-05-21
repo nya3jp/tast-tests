@@ -54,6 +54,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "782977d0_7aba2209",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-05-21T10:42:25Z",
+      "side": 1,
+      "message": "Is it the ping in line 202? This sound very weird because in next test it\u0027s supposed to be pinging xl2tpdServerIPAddress \u003d \"192.168.1.99\", which is not even used in this test at all? Or am I misunderstanding anything here?",
+      "parentUuid": "7f154478_9398c315",
+      "revId": "1830b517554493b1acfd35794b446681bd0263be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a11b983a_193dc550",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-05-21T10:42:25Z",
+      "side": 1,
+      "message": "For the same reason I guess this\u0027s supposed to be either L2tpIpsecVpnServer or L2tpipsecVpnServer. Maybe it\u0027s easier to come up later with a separate patch to fix all these?",
+      "range": {
+        "startLine": 138,
+        "startChar": 5,
+        "endLine": 138,
+        "endChar": 23
+      },
+      "revId": "1830b517554493b1acfd35794b446681bd0263be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b9e808f_33777f56",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 2
@@ -89,6 +130,30 @@
       "side": 1,
       "message": "\"Ip\" seems a little strange to me... while I have no strong preference here.\n(Waiting on more input to do the change together here)",
       "parentUuid": "2b9e808f_33777f56",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "1830b517554493b1acfd35794b446681bd0263be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75fe0bfb_cfd7158e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-05-21T10:42:25Z",
+      "side": 1,
+      "message": "In Windows coding style we were told to treat 2-character abbreviations as two words and 3+ ones as a single word (i.e. \"IP\" and \"Dns\"). But I just checked and it looks like Google coding style does not differentiate those two cases? I\u0027m for \"underlayIpIsOverlayIp\" therefore.",
+      "parentUuid": "1db25ccb_8f9cc0fa",
       "range": {
         "startLine": 31,
         "startChar": 9,
