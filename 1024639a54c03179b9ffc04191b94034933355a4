@@ -22,6 +22,30 @@
       },
       "revId": "1024639a54c03179b9ffc04191b94034933355a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c847834_37bb5bff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/nested_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-05-21T03:26:11Z",
+      "side": 1,
+      "message": "s.Error causes test failure, but not an immediate abort like s.Fatal. Since this is the end of the test anyway it doesn\u0027t make any difference, except that I can call it multiple times.",
+      "parentUuid": "6870a2cc_ef4f7f69",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 9
+      },
+      "revId": "1024639a54c03179b9ffc04191b94034933355a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
