@@ -11,6 +11,7 @@ import (
 	"net"
 	"net/http"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
@@ -32,6 +33,7 @@ func init() {
 		},
 		Attr:    []string{"group:cellular", "cellular_unstable"},
 		Fixture: "cellular",
+		Timeout: 10 * time.Minute,
 	})
 }
 
