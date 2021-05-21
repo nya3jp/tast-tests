@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "828697f1_23b0ca71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-21T09:44:35Z",
+      "side": 1,
+      "message": "The test case requires default valid users. It is a bit difficult now given OTA users are used. Modifying the user name during installation could be a replacement.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 11
+      },
+      "revId": "46a4b372d0e22f6a8b014da3baab3f4c6f1f73ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32201eec_b3e8d292",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-21T09:44:35Z",
+      "side": 1,
+      "message": "It takes about 1h to finish the test in my hatch. It would take longer to run in some low end DUTs. This case would always be informational.",
+      "range": {
+        "startLine": 77,
+        "startChar": 23,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "46a4b372d0e22f6a8b014da3baab3f4c6f1f73ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0023902e_f1f35c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-21T09:44:35Z",
+      "side": 1,
+      "message": "It is always flaky to install crostini again and again in one session.",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 28
+      },
+      "revId": "46a4b372d0e22f6a8b014da3baab3f4c6f1f73ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2eaa2a6_f166d344",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-21T09:44:35Z",
+      "side": 1,
+      "message": "Checking no error msg for valid user is not enough. Need to install Crostini.",
+      "range": {
+        "startLine": 119,
+        "startChar": 13,
+        "endLine": 119,
+        "endChar": 20
+      },
+      "revId": "46a4b372d0e22f6a8b014da3baab3f4c6f1f73ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
