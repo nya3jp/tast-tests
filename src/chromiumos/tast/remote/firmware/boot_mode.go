@@ -434,16 +434,6 @@ func (ms *ModeSwitcher) enableRecMode(ctx context.Context, usbMux servo.USBMuxSt
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
 	}
-	if usbMux == servo.USBMuxDUT {
-		// In recovery boot, the locked EC RO doesn't support PD for most CrOS devices.
-		// The default servo v4 power role is SRC, making the DUT a SNK.
-		// Lack of PD makes CrOS unable to do the data role swap from UFP to DFP.
-		// As a result, the DUT can't see the USB disk and Ethernet dongle on Servo v4.
-		// This is a workaround to set Servo v4 as a SNK when using the USB disk for recovery boot.
-		if err := h.Servo.SetV4Role(ctx, servo.V4RoleSnk); err != nil {
-			return errors.Wrap(err, "setting servo_v4 role to snk before powering off")
-		}
-	}
 	if err := ms.poweroff(ctx); err != nil {
 		return errors.Wrap(err, "powering off DUT")
 	}
