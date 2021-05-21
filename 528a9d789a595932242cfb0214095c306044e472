@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "969e21d0_8d4fe900",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-21T15:01:06Z",
+      "side": 1,
+      "message": "Could you clarify why this makes stable (i.e. why the original ones are flaky) in the commit message? I think we should understand the source of flakiness.",
+      "revId": "528a9d789a595932242cfb0214095c306044e472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "863f8310_857d0aba",
