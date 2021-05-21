@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da47e6e2_e21e89dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/start_app_from_sign_in_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-21T15:09:05Z",
+      "side": 1,
+      "message": "Added comment concerning informational tag as for Autostart test.",
+      "parentUuid": "d365a722_24fa87b0",
+      "revId": "a0fb74ee5872dd7a6421ae6191973ef922820e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed352e23_2763b8d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/start_app_from_sign_in_screen.go",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2021-05-19T15:09:21Z",
       "side": 1,
       "message": "This is duplicated as well, and quite long. Can you find a way to move it to a common file?",
+      "revId": "a0fb74ee5872dd7a6421ae6191973ef922820e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4789360_0c726274",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/start_app_from_sign_in_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-21T15:09:05Z",
+      "side": 1,
+      "message": "Done.\n\nIf the solution is okay I will change that in Autostart test too.",
+      "parentUuid": "ed352e23_2763b8d3",
       "revId": "a0fb74ee5872dd7a6421ae6191973ef922820e49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33360db4_4bcd4cef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/start_app_from_sign_in_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-21T15:09:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0b41197_dc5b5809",
+      "revId": "a0fb74ee5872dd7a6421ae6191973ef922820e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbb99c59_2f097d77",
@@ -65,6 +119,30 @@
       "writtenOn": "2021-05-19T15:09:21Z",
       "side": 1,
       "message": "Duplicated code, move it to a common file.",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 2
+      },
+      "revId": "a0fb74ee5872dd7a6421ae6191973ef922820e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4740774c_1c5050f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/start_app_from_sign_in_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-21T15:09:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbb99c59_2f097d77",
       "range": {
         "startLine": 151,
         "startChar": 0,
