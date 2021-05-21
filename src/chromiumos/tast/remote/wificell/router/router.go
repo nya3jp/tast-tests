@@ -43,6 +43,8 @@ type Base interface {
 // Ax contains the funcionality that the ax testbed router should support.
 type Ax interface {
 	Base
+	GetRouterIP(ctx context.Context) (string, error)
+	ApplyRouterSettings(ctx context.Context, settings []AxRouterConfigParam) error
 }
 
 // Legacy contains the functionality the legacy WiFi testing router should support.

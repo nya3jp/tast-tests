@@ -193,6 +193,9 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string) (*
 	sopt.KeyDir = tf.dut.KeyDir()
 	sopt.KeyFile = tf.dut.KeyFile()
 	sopt.ConnectTimeout = 10 * time.Second
+	if tf.routerType == router.AxT {
+		sopt.User = "admin"
+	}
 	return ssh.New(ctx, &sopt)
 }
 
@@ -1584,4 +1587,31 @@ func (tf *TestFixture) SetWakeOnWifi(ctx context.Context, ops ...SetWakeOnWifiOp
 		return nil
 	}
 	return ctx, restore, nil
+}
+
+// GetAxRouterIPAddress gets the ax router's LAN IP address.
+func (tf *TestFixture) GetAxRouterIPAddress(ctx context.Context) (string, error) {
+	r, ok := tf.routers[0].object.(router.Ax)
+	if !ok {
+		return "", errors.Errorf("router device of type %v does not have legacy/openwrt support", tf.routers[0].object.GetRouterType())
+	}
+	return r.GetRouterIP(ctx)
+}
+
+// SetAxSettings takes in a list of router configuration parameters and updates the router to that configuration.
+func (tf *TestFixture) SetAxSettings(ctx context.Context, settings []router.AxRouterConfigParam) error {
+	r, ok := tf.routers[0].object.(router.Ax)
+	if !ok {
+		return errors.Errorf("router device of type %v does not have legacy/openwrt support", tf.routers[0].object.GetRouterType())
+	}
+	return r.ApplyRouterSettings(ctx, settings)
+}
+
+// DeconfigAxRouter disables the radio on a specific band.
+func (tf *TestFixture) DeconfigAxRouter(ctx context.Context, band router.BandEnum) error {
+	r, ok := tf.routers[0].object.(router.Ax)
+	if !ok {
+		return errors.Errorf("router device of type %v does not have legacy/openwrt support", tf.routers[0].object.GetRouterType())
+	}
+	return r.ApplyRouterSettings(ctx, []router.AxRouterConfigParam{{Band: band, Key: router.KeyRadio, Value: "0"}})
 }
