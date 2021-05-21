@@ -90,7 +90,7 @@ func OpenLinuxSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Ch
 	}
 
 	ui := uiauto.New(tconn)
-	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "crostini", ui.Exists(DevelopersButton)); err != nil {
+	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "crostini", ui.WaitUntilExists(DevelopersButton)); err != nil {
 		return nil, errors.Wrap(err, "failed to launch settings app")
 	}
 	if err := ui.LeftClick(DevelopersButton)(ctx); err != nil {
