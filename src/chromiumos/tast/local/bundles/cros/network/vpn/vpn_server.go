@@ -134,40 +134,35 @@ var (
 	}
 )
 
-// L2tpipSecVpnServer represents a L2TP/IPsec VPN server.
-type L2tpipSecVpnServer struct {
-	authenticationType    string
-	ipsecUseXauth         bool
-	underlayIPisOverlayIP bool
-	netChroot             *chroot.NetworkChroot
-	UnderlayIP            string
-	OverlayIP             string
-}
-
-// NewL2tpipSecVpnServer creates a new L2tpipSecVpnServer.
-func NewL2tpipSecVpnServer(ctx context.Context, authType string, ipsecUseXauth, underlayIPisOverlayIP bool) *L2tpipSecVpnServer {
-	networkChroot := chroot.NewNetworkChroot()
-	return &L2tpipSecVpnServer{
-		authenticationType:    authType,
-		ipsecUseXauth:         ipsecUseXauth,
-		underlayIPisOverlayIP: underlayIPisOverlayIP,
-		netChroot:             networkChroot}
+// VpnServer represents a VPN server that can be used in the test.
+type VpnServer struct {
+	UnderlayIP  string
+	OverlayIP   string
+	netChroot   *chroot.NetworkChroot
+	stopCommand []string
+	pidFiles    []string
 }
 
 // StartServer starts a VPN server.
-func (s *L2tpipSecVpnServer) StartServer(ctx context.Context) error {
-	if _, ok := ipsecTypedConfigs[s.authenticationType]; !ok {
-		return errors.Errorf("L2TP/IPSec type %s is not define", s.authenticationType)
+func StartL2tpIPsecServer(ctx context.Context, authType string, ipsecUseXauth, underlayIPisOverlayIP bool) (*VpnServer, error) {
+	chro := chroot.NewNetworkChroot()
+	server := &VpnServer{
+		netChroot:   chro,
+		stopCommand: []string{ipsecCommand, "stop"},
+		pidFiles:    []string{xl2tpdPidFile, pppdPidFile},
 	}
 
-	if s.underlayIPisOverlayIP {
+	if _, ok := ipsecTypedConfigs[authType]; !ok {
+		return nil, errors.Errorf("L2TP/IPSec type %s is not define", authType)
+	}
+
+	if underlayIPisOverlayIP {
 		ipsecCommonConfigs[xl2tpdConfigFile] = strings.ReplaceAll(ipsecCommonConfigs[xl2tpdConfigFile], "{{.xl2tpd_server_ip_address}}", "{{.netns_ip}}")
 	}
 
-	chro := s.netChroot
 	chro.AddRootDirectories(xl2tpdRootDirectories)
 	chro.AddConfigTemplates(ipsecCommonConfigs)
-	chro.AddConfigTemplates(ipsecTypedConfigs[s.authenticationType])
+	chro.AddConfigTemplates(ipsecTypedConfigs[authType])
 
 	configValues := map[string]string{
 		"chap_user":                ChapUser,
@@ -180,7 +175,7 @@ func (s *L2tpipSecVpnServer) StartServer(ctx context.Context) error {
 		"xl2tpd_server_ip_address": xl2tpdServerIPAddress,
 	}
 
-	if s.ipsecUseXauth {
+	if ipsecUseXauth {
 		configValues["xauth_stanza"] = "rightauth2=xauth"
 	} else {
 		configValues["xauth_stanza"] = ""
@@ -199,19 +194,19 @@ func (s *L2tpipSecVpnServer) StartServer(ctx context.Context) error {
 
 	underlayIP, err := chro.Startup(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to start L2TP/IPsec server")
+		return nil, errors.Wrap(err, "failed to start L2TP/IPsec server")
 	}
-	s.UnderlayIP = underlayIP
-	if s.underlayIPisOverlayIP {
-		s.OverlayIP = s.UnderlayIP
+	server.UnderlayIP = underlayIP
+	if underlayIPisOverlayIP {
+		server.OverlayIP = underlayIP
 	} else {
-		s.OverlayIP = xl2tpdServerIPAddress
+		server.OverlayIP = xl2tpdServerIPAddress
 	}
-	return nil
+	return server, nil
 }
 
 // GetLogContents return all logs related to the chroot.
-func (s *L2tpipSecVpnServer) GetLogContents(ctx context.Context) (string, error) {
+func (s *VpnServer) GetLogContents(ctx context.Context) (string, error) {
 	content, err := s.netChroot.GetLogContents(ctx)
 	if err != nil {
 		return "", err
@@ -221,25 +216,23 @@ func (s *L2tpipSecVpnServer) GetLogContents(ctx context.Context) (string, error)
 }
 
 // StopServer stop VPN server instance.
-func (s *L2tpipSecVpnServer) StopServer(ctx context.Context) error {
+func (s *VpnServer) StopServer(ctx context.Context) error {
 	chro := s.netChroot
-	if err := chro.RunChroot(ctx, []string{ipsecCommand, "stop"}); err != nil {
+	if err := chro.RunChroot(ctx, s.stopCommand); err != nil {
 		return errors.Wrap(err, "failed to stop ipsec")
 	}
 
-	if err := chro.KillPidFile(ctx, xl2tpdPidFile, true); err != nil {
-		return errors.Wrapf(err, "failed to kill the PID file %v", xl2tpdPidFile)
-	}
-
-	if err := chro.KillPidFile(ctx, pppdPidFile, true); err != nil {
-		return errors.Wrapf(err, "failed to kill the PID file %v", pppdPidFile)
+	for _, pidFile := range s.pidFiles {
+		if err := chro.KillPidFile(ctx, pidFile, true); err != nil {
+			return errors.Wrapf(err, "failed to kill the PID file %v", pidFile)
+		}
 	}
 
 	return nil
 }
 
 // Exit stops the server, logs the contents, and shuts down the chroot.
-func (s *L2tpipSecVpnServer) Exit(ctx context.Context) error {
+func (s *VpnServer) Exit(ctx context.Context) error {
 	// We should stop the server before call GetLogContents, since the charon
 	// process may not flush all the contents before exiting.
 	if err := s.StopServer(ctx); err != nil {

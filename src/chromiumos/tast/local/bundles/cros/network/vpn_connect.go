@@ -196,21 +196,21 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		}(cleanupCtx)
 	}
 
-	var server *vpn.L2tpipSecVpnServer
+	var server *vpn.VpnServer
 	if params.vpnType == l2tpIPsec {
-		// Create new L2TP/IPsec.
-		server = vpn.NewL2tpipSecVpnServer(ctx, params.authType, params.ipsecUseXauth, params.underlayIPisOverlayIP)
-		if err = server.StartServer(ctx); err != nil {
-			s.Fatal("Failed to create a L2TP/IPsec server: ", err)
-		}
-		defer func(ctx context.Context) {
-			if err := server.Exit(ctx); err != nil {
-				s.Fatal("Failed to Stop a L2TP/IPsec server: ", err)
-			}
-		}(cleanupCtx)
+		// Creates a new L2TP/IPsec server.
+		server, err = vpn.StartL2tpIPsecServer(ctx, params.authType, params.ipsecUseXauth, params.underlayIPisOverlayIP)
 	} else {
 		s.Fatalf("Unexpected VPN type %s", params.vpnType)
 	}
+	if err != nil {
+		s.Fatal("Failed to create the VPN server: ", err)
+	}
+	defer func(ctx context.Context) {
+		if err := server.Exit(ctx); err != nil {
+			s.Fatal("Failed to Stop the VPN server: ", err)
+		}
+	}(cleanupCtx)
 
 	connected, err := connectVPN(ctx, params, server.UnderlayIP, manager, certStore)
 	if err != nil || (!connected && !params.shouldFail) {
