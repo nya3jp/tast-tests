@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
@@ -40,8 +41,8 @@ func init() {
 			"ui.signinProfileTestExtensionManifestKey",
 			"ui.gaiaPoolDefault",
 		},
-		// Test runs login / chrome restart 60+ times.
-		Timeout: 60 * time.Minute,
+		// Test runs login / chrome restart 120+ times.
+		Timeout: 120 * time.Minute,
 		Data:    []string{"animation.html", "animation.js"},
 	})
 }
@@ -168,13 +169,21 @@ func maxHistogramValue(h *metrics.Histogram) (float64, error) {
 func LoginPerf(ctx context.Context, s *testing.State) {
 	// Log in and log out to create a user pod on the login screen.
 	creds, err := func() (chrome.Creds, error) {
-		cr, err := chrome.New(ctx,
+		var initArcOpt []chrome.Option
+		// Only enable arc if it's supoprted.
+		if arc.Supported() {
+			// We anable ARC initially to fully initialize it.
+			initArcOpt = []chrome.Option{chrome.ARCSupported()}
+		}
+		options := []chrome.Option{
 			chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 			chrome.EnableRestoreTabs(),
 			chrome.SkipForceOnlineSignInForTesting(),
 			chrome.EnableWebAppInstall(),
-			// We anable ARC initially to fully initialize it.
-			chrome.ARCSupported(),
+		}
+		cr, err := chrome.New(
+			ctx,
+			append(options, initArcOpt...)...,
 		)
 		if err != nil {
 			return chrome.Creds{}, errors.Wrap(err, "chrome login failed")
@@ -189,20 +198,23 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 			return chrome.Creds{}, errors.Wrap(err, "failed to connect to test api")
 		}
 		defer tconn.Close()
-		//if err := optin.PerformAndClose(ctx, cr, tconn); err != nil {
-		if err := optin.Perform(ctx, cr, tconn); err != nil {
-			return chrome.Creds{}, errors.Wrap(err, "failed to optin to Play Store")
+		if arc.Supported() {
+			if err := optin.Perform(ctx, cr, tconn); err != nil {
+				return chrome.Creds{}, errors.Wrap(err, "failed to optin to Play Store")
+			}
+			s.Log("Opt in finished")
+			// Wait for ARC++ aps to download and initialize.
+			s.Log("Initialiize: let session fully initialize. Sleeping for 400 seconds... ")
+			testing.Sleep(ctx, 400*time.Second)
+		} else {
+			s.Log("ARC++ is not supported. Run test without ARC")
 		}
-		s.Log("Opt in finished")
-		// Wait for ARC++ aps to download and initialize.
-		s.Log("Initialiize: let session fully initialize. Sleeping for 400 seconds.. ")
-		testing.Sleep(ctx, 400*time.Second)
-
 		return creds, nil
 	}()
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
+
 	r := perfutil.NewRunner(nil)
 	// Run an http server to serve the test contents for accessing from the chrome browsers.
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
@@ -215,12 +227,17 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 		arcenabled   = "arcenabled"
 		arcsupported = "arcsupported"
 	)
+	arcmodes := []string{noarc}
+	if arc.Supported() {
+		arcmodes = append(arcmodes, arcenabled, arcsupported)
+	}
+
 	currentWindows := 0
 	// Run the login flow for various situations.
 	// - change the number of browser windows, 2 or 8
 	// - the window system status; clamshell mode or tablet mode.
 	for _, windows := range []int{2, 8} {
-		for _, arcMode := range []string{noarc, arcenabled, arcsupported} {
+		for _, arcMode := range arcmodes {
 			var arcOpt []chrome.Option
 			switch arcMode {
 			case noarc:
