@@ -6,6 +6,7 @@ package typec
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -102,11 +103,12 @@ func ModeHotplug(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to verify TBT & DP after login: ", err)
 	}
 
-	if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "suspend", "1").Run(); err != nil {
+	portStr := strconv.Itoa(port)
+	if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "suspend", portStr).Run(); err != nil {
 		s.Fatal("Failed to simulate unplug: ", err)
 	}
 	defer func() {
-		if err := testexec.CommandContext(ctxForCleanUp, "ectool", "pdcontrol", "resume", "1").Run(); err != nil {
+		if err := testexec.CommandContext(ctxForCleanUp, "ectool", "pdcontrol", "resume", portStr).Run(); err != nil {
 			s.Error("Failed to perform replug: ", err)
 		}
 	}()
@@ -117,7 +119,7 @@ func ModeHotplug(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to verify no TBT devices connected after unplug: ", err)
 	}
 
-	if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "resume", "1").Run(); err != nil {
+	if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "resume", portStr).Run(); err != nil {
 		s.Fatal("Failed to simulate replug: ", err)
 	}
 
