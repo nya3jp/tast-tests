@@ -114,9 +114,9 @@ func FindConnectedDPMonitor(ctx context.Context, tc *chrome.TestConn) error {
 // we are out of ports.
 //
 // This functions returns:
-// - Whether a TBT device is connected to the DUT.
+// - Whether a TBT device is connected to the DUT. If yes, return the port index, otherwise return -1.
 // - The error value if the command didn't run, else nil.
-func CheckPortsForTBTPartner(ctx context.Context) (bool, error) {
+func CheckPortsForTBTPartner(ctx context.Context) (int, error) {
 	for i := 0; i < maxTypeCPorts; i++ {
 		out, err := testexec.CommandContext(ctx, "ectool", "typecdiscovery", strconv.Itoa(i), "0").CombinedOutput()
 		if err != nil {
@@ -126,19 +126,19 @@ func CheckPortsForTBTPartner(ctx context.Context) (bool, error) {
 			// TODO(pmalani): Determine how many ports a device supports, instead of
 			// relying on INVALID_PARAM.
 			if bytes.Contains(out, []byte("INVALID_PARAM")) {
-				return false, nil
+				return -1, nil
 			}
 
-			return false, errors.Wrap(err, "failed to run ectool command")
+			return -1, errors.Wrap(err, "failed to run ectool command")
 		}
 
 		// Look for a TBT SVID in the output. If one exists, return immediately.
 		if bytes.Contains(out, []byte("SVID 0x8087")) {
-			return true, nil
+			return i, nil
 		}
 	}
 
-	return false, nil
+	return -1, nil
 }
 
 // buildTestSettings is a helper function which returns a ChromeDeviceSettingsProto with the
