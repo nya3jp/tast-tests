@@ -6,6 +6,7 @@ package network
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/network/cellular"
@@ -18,6 +19,7 @@ func init() {
 		Desc:     "Verifies that Shill can enable, disable, connect, and disconnect to a Cellular Service",
 		Contacts: []string{"stevenjb@google.com", "cros-network-health@google.com"},
 		Attr:     []string{"group:cellular", "cellular_unstable"},
+		Timeout:  10 * time.Minute,
 		Fixture:  "cellular",
 	})
 }
