@@ -16,6 +16,23 @@
       "message": "Tastboard link: https://tastboard.corp.google.com/test/policy.AutoplayAllowed\nOnly Fixture failures.",
       "revId": "74885d483fc82d0c2638ec26756cffff5cfa16ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cebfb81_dc41081b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-21T15:13:47Z",
+      "side": 1,
+      "message": "Alex, I added you as a CC, as it your test (and wanted to get an +2 from outside of the local team).\nKatherine, even if the CL gets merged, please take a look at the CL.",
+      "revId": "74885d483fc82d0c2638ec26756cffff5cfa16ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
