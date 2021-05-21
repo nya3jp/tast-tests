@@ -27,7 +27,7 @@ func init() {
 		Func:         VirtualKeyboardJapaneseInputs,
 		Desc:         "Checks switching between Romaji and Kana mode for Japanese inputs",
 		Contacts:     []string{"myy@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
