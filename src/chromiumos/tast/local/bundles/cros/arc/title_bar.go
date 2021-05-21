@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"path/filepath"
 	"time"
 
 	androidui "chromiumos/tast/local/android/ui"
@@ -39,43 +38,20 @@ func init() {
 
 func TitleBar(ctx context.Context, s *testing.State) {
 	const (
-		apk     = "ArcAppValidityTest.apk"
-		pkgName = "org.chromium.arc.testapp.appvaliditytast"
-		cls     = ".MainActivity"
+		pkgName = "com.android.settings"
+		cls     = ".Settings"
 	)
 
 	a := s.FixtValue().(*arc.PreData).ARC
-	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
-		s.Fatal("Failed to install app: ", err)
-	}
 
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-
-	s.Log("Starting screen recording")
-	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to create ScreenRecorder: ", err)
-	}
-	defer func() {
-		screenRecorder.Stop(ctx)
-		if s.HasError() {
-			s.Log(ctx, "Saving screen record to %s", s.OutDir())
-			if err := screenRecorder.SaveInString(ctx, filepath.Join(s.OutDir(), "screen_record.txt")); err != nil {
-				s.Fatal("Failed to save screen record in string: ", err)
-			}
-			if err := screenRecorder.SaveInBytes(ctx, filepath.Join(s.OutDir(), "screen_record.webm")); err != nil {
-				s.Fatal("Failed to save screen record in bytes: ", err)
-			}
-		}
-		screenRecorder.Release(ctx)
-	}()
-	screenRecorder.Start(ctx, tconn)
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
+	// Create a Settings activity handle.
 	act, err := arc.NewActivity(a, pkgName, cls)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
@@ -83,8 +59,9 @@ func TitleBar(ctx context.Context, s *testing.State) {
 	defer act.Close()
 
 	s.Log("Starting app")
-	if err = act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed to start app: ", err)
+	// Launch the activity.
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatal("Failed start Settings activity: ", err)
 	}
 	defer act.Stop(ctx, tconn)
 
