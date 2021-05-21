@@ -24,8 +24,17 @@ func init() {
 		Contacts:     []string{"sammiequon@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
-		Fixture:      "chromeLoggedIn",
 		Timeout:      3 * time.Minute,
+		Params: []testing.Param{
+			{
+				Name: "classic",
+				Val:  false,
+			},
+			{
+				Name: "webui",
+				Val:  true,
+			},
+		},
 	})
 }
 
@@ -35,7 +44,17 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	var opt chrome.Option
+	if s.Param().(bool) {
+		opt = chrome.EnableFeatures("WebUITabStrip")
+	} else {
+		opt = chrome.DisableFeatures("WebUITabStrip")
+	}
+	cr, err := chrome.New(ctx, opt)
+	if err != nil {
+		s.Fatal("Failed to start chrome: ", err)
+	}
+	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
