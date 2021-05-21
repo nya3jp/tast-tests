@@ -91,6 +91,16 @@ func toggleExpertMode(ctx context.Context, app *cca.App) error {
 }
 
 func toggleExpertModeOptions(ctx context.Context, app *cca.App) error {
+	if err := cca.MainMenu.Open(ctx, app); err != nil {
+		return err
+	}
+	defer cca.MainMenu.Close(ctx, app)
+
+	if err := cca.ExpertMenu.Open(ctx, app); err != nil {
+		return err
+	}
+	defer cca.ExpertMenu.Close(ctx, app)
+
 	if _, err := app.ToggleShowMetadata(ctx); err != nil {
 		return err
 	}
