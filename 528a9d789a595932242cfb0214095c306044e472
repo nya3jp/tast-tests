@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "528a9d789a595932242cfb0214095c306044e472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91e46472_0cf4a4f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-05-21T00:54:50Z",
+      "side": 1,
+      "message": "Hi Renuga, has the UI navigation changed",
+      "revId": "528a9d789a595932242cfb0214095c306044e472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
