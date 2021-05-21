@@ -58,10 +58,12 @@ func NewImage(ctx context.Context) (*Image, error) {
 	}
 	defer os.Remove(tmpFile.Name())
 
+	testing.ContextLog(ctx, "Running flashrom")
 	if err = testexec.CommandContext(ctx, "flashrom", "-p", "host", "-r", tmpFile.Name()).Run(testexec.DumpLogOnError); err != nil {
 		return nil, errors.Wrap(err, "could not read firmware host image")
 	}
 
+	testing.ContextLog(ctx, "Running dump_fmap")
 	fmap, err := testexec.CommandContext(ctx, "dump_fmap", "-p", tmpFile.Name()).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not dump_fmap on firmware host image")
