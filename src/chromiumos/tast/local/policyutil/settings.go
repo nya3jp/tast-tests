@@ -48,6 +48,23 @@ func SettingsPage(ctx context.Context, cr *chrome.Chrome, shortLink string) *ope
 	return page
 }
 
+// OSSettingsPage opens the OS settings page with given link (e.g. "osAccessibility" -> "chrome://os-settings/osAccessibility").
+// The returned openedPage value can be used to select a node from the node tree (not just from the page).
+func OSSettingsPage(ctx context.Context, cr *chrome.Chrome, shortLink string) *openedPage {
+	page := &openedPage{
+		cr: cr,
+	}
+
+	conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/"+shortLink)
+	if err != nil {
+		page.err = err
+		return page
+	}
+	defer conn.Close()
+
+	return page
+}
+
 // SelectNode creates a nodeChecker from the selected node.
 // It can be used to verify different properties of the node.
 func (page *openedPage) SelectNode(ctx context.Context, finder *nodewith.Finder) *nodeChecker {
