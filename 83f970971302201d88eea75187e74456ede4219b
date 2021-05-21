@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82d90588_2b4e0fa3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-21T22:46:31Z",
+      "side": 1,
+      "message": "+1 to writing two separate tests. Having some shared code is worth the clarity IMO.",
+      "parentUuid": "8c2e930a_1d059ab6",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8df4882a_616c9dc7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
         "patchSetId": 9
@@ -192,6 +216,30 @@
       "writtenOn": "2021-05-21T02:09:47Z",
       "side": 1,
       "message": "I\u0027m not in love with memorizing/guessing a 30 second interval for \"refreshing\" our scan results. At a minimum, that should get a comment about why.\n\nBut I think maybe we can eliminate some of these discovery dances, as well as the RequestRoam() altogether -- Matthew was looking at replacing that with BSS TransitionManagement requests here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2889530/1\nThat has some advantages that he documents there, including that it naturally requires the DUT to handle scanning on its own. It doesn\u0027t seem to have too many downsides.\n\nMaybe we can go with that instead?\n\nUnfortunately, part of that series is waiting on reviews still, so we haven\u0027t yet proven out that the replacement works well in the lab. Maybe we should \"kick\" that? (Matthew, do you need to bump Nicolas, or do you want to add another reviewer?)",
+      "range": {
+        "startLine": 522,
+        "startChar": 0,
+        "endLine": 535,
+        "endChar": 3
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98806cdd_4521bdde",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-21T22:46:31Z",
+      "side": 1,
+      "message": "I think Nicolas may be pretty backed up on reviews, so I\u0027ll probably just add someone else.",
+      "parentUuid": "9d2742cb_e0492ba3",
       "range": {
         "startLine": 522,
         "startChar": 0,
