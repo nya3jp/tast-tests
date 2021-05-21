@@ -73,18 +73,21 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 	}} {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
-			shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
 
-			if err := app.Click(shortCtx, cca.SettingsButton); err != nil {
+			if err := cca.MainMenu.Open(ctx, app); err != nil {
 				s.Fatal("Failed to click settings button: ", err)
 			}
-			if err := tst.testFunc(shortCtx, cr, app); err != nil {
+			defer cca.MainMenu.Close(cleanupCtx, app)
+
+			if err := tst.testFunc(ctx, cr, app); err != nil {
 				s.Fatalf("Failed to run subtest: %v: %v", tst.name, err)
 			}
 
 			// Restart app using non-shorten context.
-			if err := app.Restart(ctx, tb); err != nil {
+			if err := app.Restart(cleanupCtx, tb); err != nil {
 				s.Fatal("Failed to restart CCA: ", err)
 			}
 		})
@@ -126,12 +129,10 @@ func testHelp(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
 
 // testGrid checks that changing grid type in settings is effective.
 func testGrid(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
-	if err := app.Click(ctx, cca.GridTypeSettingsButton); err != nil {
-		return errors.Wrap(err, "failed to click grid type button")
+	if err := cca.GridTypeMenu.Open(ctx, app); err != nil {
+		return err
 	}
-	if err := app.WaitForState(ctx, "view-grid-settings", true); err != nil {
-		return errors.Wrap(err, "failed to wait for grid settings view")
-	}
+	defer cca.GridTypeMenu.Close(ctx, app)
 
 	if err := app.Click(ctx, cca.GoldenGridButton); err != nil {
 		return errors.Wrap(err, "failed to click golden-grid button")
@@ -139,37 +140,21 @@ func testGrid(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
 	if err := app.WaitForState(ctx, "grid-golden", true); err != nil {
 		return errors.Wrap(err, "failed to wait for golden-grid type being active")
 	}
-
-	if err := app.Click(ctx, cca.GridSettingBackButton); err != nil {
-		return errors.Wrap(err, "failed to click back button")
-	}
-	if err := app.WaitForState(ctx, "view-grid-settings", false); err != nil {
-		return errors.Wrap(err, "failed to wait for leaving of grid settings view")
-	}
 	return nil
 }
 
 // testTimer checks that changing timer duration in settings is effective.
 func testTimer(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
-	if err := app.Click(ctx, cca.TimerSettingsButton); err != nil {
-		return errors.Wrap(err, "failed to click timer duration button")
+	if err := cca.TimerMenu.Open(ctx, app); err != nil {
+		return err
 	}
-	if err := app.WaitForState(ctx, "view-timer-settings", true); err != nil {
-		return errors.Wrap(err, "failed to wait for timer settings view")
-	}
+	defer cca.TimerMenu.Close(ctx, app)
 
 	if err := app.Click(ctx, cca.Timer10sButton); err != nil {
 		return errors.Wrap(err, "failed to click 10s-timer button")
 	}
 	if err := app.WaitForState(ctx, "timer-10s", true); err != nil {
 		return errors.Wrap(err, "failed to wait for 10s-timer being active")
-	}
-
-	if err := app.Click(ctx, cca.TimerSettingBackButton); err != nil {
-		return errors.Wrap(err, "failed to click back button")
-	}
-	if err := app.WaitForState(ctx, "view-timer-settings", false); err != nil {
-		return errors.Wrap(err, "failed to wait for leaving of timer settings view")
 	}
 	return nil
 }
