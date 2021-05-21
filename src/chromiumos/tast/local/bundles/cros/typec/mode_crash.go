@@ -57,7 +57,7 @@ func init() {
 func ModeCrash(ctx context.Context, s *testing.State) {
 	// This check is for test executions which take place on
 	// CQ (where TBT peripherals aren't connected).
-	present, err := typecutils.CheckPortsForTBTPartner(ctx)
+	port, err := typecutils.CheckPortsForTBTPartner(ctx)
 	if err != nil {
 		s.Fatal("Couldn't determine TBT device from PD identity: ", err)
 	}
@@ -67,7 +67,7 @@ func ModeCrash(ctx context.Context, s *testing.State) {
 		return
 	}
 
-	if !present {
+	if port == -1 {
 		s.Fatal("No TBT device connected to DUT")
 	}
 
