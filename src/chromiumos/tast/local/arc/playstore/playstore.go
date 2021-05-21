@@ -16,6 +16,21 @@ import (
 	"chromiumos/tast/testing"
 )
 
+func findAndDismissDialog(ctx context.Context, d *ui.Device, dialogText, buttonText string, timeout time.Duration) error {
+	if err := d.Object(ui.TextMatches(dialogText)).Exists(ctx); err == nil {
+		testing.ContextLogf(ctx, `%q popup found. Skipping`, dialogText)
+		okButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+buttonText))
+		if err := okButton.WaitForExists(ctx, timeout); err != nil {
+			return err
+		}
+		if err := okButton.Click(ctx); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
 // InstallApp uses the Play Store to install an application.
 // It will wait for the app to finish installing before returning.
 // Play Store should be open to the homepage before running this function.
@@ -29,6 +44,7 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 		cantInstallText  = "Can.t install.*"
 		versionText      = "Your device isn.t compatible with this version."
 		compatibleText   = "Your device is not compatible with this item."
+		openMyAppsText   = "Please open my apps.*"
 
 		acceptButtonText   = "accept"
 		continueButtonText = "continue"
@@ -64,40 +80,23 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 	testing.ContextLog(ctx, "Waiting for app to install")
 	tries := 0
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		// Sometimes a dialog of "Can't download <app name>" pops up. Press Okay to
-		// dismiss the dialog. This check needs to be done before checking the
-		// install button since the install button exists underneath.
-		if err := d.Object(ui.TextMatches(cantDownloadText)).Exists(ctx); err == nil {
-			testing.ContextLog(ctx, `"Can't download" popup found. Skipping`)
-			okButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+okButtonText))
-			if err := okButton.WaitForExists(ctx, defaultUITimeout); err != nil {
-				return testing.PollBreak(err)
-			}
-			if err := okButton.Click(ctx); err != nil {
-				return testing.PollBreak(err)
-			}
-		}
-		// Similarly, press "Got it" button if "Can't install <app name>" dialog pops up.
-		if err := d.Object(ui.TextMatches(cantInstallText)).Exists(ctx); err == nil {
-			testing.ContextLog(ctx, `"Can't install" popup found. Skipping`)
-			gotItButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+gotItButtonText))
-			if err := gotItButton.WaitForExists(ctx, defaultUITimeout); err != nil {
-				return testing.PollBreak(err)
-			}
-			if err := gotItButton.Click(ctx); err != nil {
-				return testing.PollBreak(err)
-			}
-		}
-
-		// When Play Store hits the rate limit it sometimes show "Your device is not compatible with this item." error.
-		// This error is incorrect and should be ignored like the "Can't download <app name>" error.
-		if err := d.Object(ui.TextMatches(compatibleText)).Exists(ctx); err == nil {
-			testing.ContextLog(ctx, `"Item incompatibiltiy" popup found. Skipping`)
-			okButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+okButtonText))
-			if err := okButton.WaitForExists(ctx, defaultUITimeout); err != nil {
-				return testing.PollBreak(err)
-			}
-			if err := okButton.Click(ctx); err != nil {
+		for _, val := range []struct {
+			dialogText string
+			buttonText string
+		}{
+			// Sometimes a dialog of "Can't download <app name>" pops up. Press Okay to
+			// dismiss the dialog. This check needs to be done before checking the
+			// install button since the install button exists underneath.
+			{cantDownloadText, okButtonText},
+			// Similarly, press "Got it" button if "Can't install <app name>" dialog pops up.
+			{cantInstallText, gotItButtonText},
+			// Also, press Ok to dismiss the dialog if "Please open my apps" dialog pops up.
+			{openMyAppsText, okButtonText},
+			// When Play Store hits the rate limit it sometimes show "Your device is not compatible with this item." error.
+			// This error is incorrect and should be ignored like the "Can't download <app name>" error.
+			{compatibleText, okButtonText},
+		} {
+			if err := findAndDismissDialog(ctx, d, val.dialogText, val.buttonText, defaultUITimeout); err != nil {
 				return testing.PollBreak(err)
 			}
 		}
@@ -157,15 +156,8 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 		}
 
 		// Grant permissions if necessary.
-		if err := d.Object(ui.Text(permissionsText)).Exists(ctx); err == nil {
-			testing.ContextLog(ctx, "Accepting app permissions")
-			acceptButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+acceptButtonText))
-			if err := acceptButton.WaitForExists(ctx, defaultUITimeout); err != nil {
-				return testing.PollBreak(err)
-			}
-			if err := acceptButton.Click(ctx); err != nil {
-				return testing.PollBreak(err)
-			}
+		if err := findAndDismissDialog(ctx, d, permissionsText, acceptButtonText, defaultUITimeout); err != nil {
+			return testing.PollBreak(err)
 		}
 
 		// Installation is complete once the open button is enabled.
