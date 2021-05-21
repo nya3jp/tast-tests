@@ -16,6 +16,52 @@
       "message": "I\u0027ve moved the test to remote tast test. Please review. Thank you very much !",
       "revId": "e7c836308bb3ab2c4a8cd1fb412c6f84f2bc5ffd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f242c84_c5c1eac0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-21T00:01:13Z",
+      "side": 1,
+      "message": "not clear what\u0027s the meaning of \"Result\".\n\nIf what you are testing is whether or not dev_enable_udc was enabled, renaming it to something like \"UDCValueUpdated\" (or something like that...)\n\nAlternative, you can define an enum in the proto and use that instead of a bool.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 14
+      },
+      "revId": "e7c836308bb3ab2c4a8cd1fb412c6f84f2bc5ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "940f3483_dd162fa6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-21T00:01:13Z",
+      "side": 1,
+      "message": "can you put this in a \"defer\" so that it gets executed no matter what ?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "e7c836308bb3ab2c4a8cd1fb412c6f84f2bc5ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
