@@ -192,6 +192,8 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtyp
 	switch rtype {
 	case LegacyT:
 		return newLegacyRouter(ctx, daemonCtx, host, name)
+	case AxT:
+		return newAxRouter(ctx, daemonCtx, host, name)
 	default:
 		return nil, errors.Errorf("unexpected routerType, got %v", rtype)
 	}
