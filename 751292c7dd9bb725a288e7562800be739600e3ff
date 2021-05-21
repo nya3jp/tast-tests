@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb7411cd_37ac6b9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-05-21T18:09:06Z",
+      "side": 1,
+      "message": "So far so good with the latest versions of these patches. Just waiting on firmware.ACVP.sha2_256_full to finish.",
+      "revId": "751292c7dd9bb725a288e7562800be739600e3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
