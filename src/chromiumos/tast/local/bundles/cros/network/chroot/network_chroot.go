@@ -337,17 +337,18 @@ func (n *NetworkChroot) AddStartupCommand(command string) {
 	n.netConfigFileTemplates[startup] = n.netConfigFileTemplates[startup] + fmt.Sprintf("%s\n", command)
 }
 
-// GetLogContents return the logfiles from the chroot.
-func (n *NetworkChroot) GetLogContents(ctx context.Context) (string, error) {
+// GetLogContents return the logfiles from the chroot. |logFilePath| is the
+// relative path to the chroot.
+func (n *NetworkChroot) GetLogContents(ctx context.Context, logFilePath string) (string, error) {
 	startLog := n.chrootPath(startupLog)
-	charonLog := n.chrootPath("var/log/charon.log")
-	if assureExists(charonLog) && assureExists(startLog) {
-		contents, err := testexec.CommandContext(ctx, "head", "-10000", charonLog, startLog).Output()
+	serverLog := n.chrootPath(logFilePath)
+	if assureExists(serverLog) && assureExists(startLog) {
+		contents, err := testexec.CommandContext(ctx, "head", "-10000", serverLog, startLog).Output()
 		if err != nil {
 			return "", errors.Wrap(err, "failed getting the logfiles from the chroot")
 		}
 		return string(contents), nil
-	} else if assureExists(charonLog) {
+	} else if assureExists(serverLog) {
 		testing.ContextLogf(ctx, "%s does not exist", startLog)
 		contents, err := testexec.CommandContext(ctx, "head", "-10000", startLog).Output()
 		if err != nil {
@@ -355,15 +356,15 @@ func (n *NetworkChroot) GetLogContents(ctx context.Context) (string, error) {
 		}
 		return string(contents), nil
 	} else if assureExists(startLog) {
-		testing.ContextLogf(ctx, "%s does not exist", charonLog)
-		contents, err := testexec.CommandContext(ctx, "head", "-10000", charonLog).Output()
+		testing.ContextLogf(ctx, "%s does not exist", serverLog)
+		contents, err := testexec.CommandContext(ctx, "head", "-10000", serverLog).Output()
 		if err != nil {
 			return "", errors.Wrap(err, "failed getting the logfiles from the chroot")
 		}
 		return string(contents), nil
 	}
 
-	return "", errors.Errorf("failed logfiles do not exist: %s, %s", startLog, charonLog)
+	return "", errors.Errorf("failed logfiles do not exist: %s, %s", startLog, serverLog)
 }
 
 // BridgeDbusNamespaces make the system DBus daemon visible inside the chroot.
