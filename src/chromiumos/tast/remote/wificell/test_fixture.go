@@ -193,6 +193,9 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string) (*
 	sopt.KeyDir = tf.dut.KeyDir()
 	sopt.KeyFile = tf.dut.KeyFile()
 	sopt.ConnectTimeout = 10 * time.Second
+	if tf.routerType == router.AxT {
+		sopt.User = "admin"
+	}
 	return ssh.New(ctx, &sopt)
 }
 
