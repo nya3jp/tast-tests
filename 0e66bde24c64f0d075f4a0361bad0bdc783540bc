@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08815917_941d4487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-21T10:09:27Z",
+      "side": 1,
+      "message": "Should we remove these lines?",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "0e66bde24c64f0d075f4a0361bad0bdc783540bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed59b07d_701ee6b5",
+        "filename": "src/chromiumos/tast/local/camera/cca/setting_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-05-21T10:09:27Z",
+      "side": 1,
+      "message": "Is it guarantee that a state will be added right after clicking the |openUI| or should we use WaitForState() just like what we did in CCAUISettings?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "0e66bde24c64f0d075f4a0361bad0bdc783540bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
