@@ -6,8 +6,10 @@ package servo
 
 import (
 	"context"
+	"fmt"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // These are the EC Servo controls which can be get/set with a string value.
@@ -49,4 +51,24 @@ func (s *Servo) RunECCommandGetOutput(ctx context.Context, cmd string, patterns 
 // GetECSystemPowerState returns the power state, like "S0" or "G3"
 func (s *Servo) GetECSystemPowerState(ctx context.Context) (string, error) {
 	return s.GetString(ctx, ECSystemPowerState)
+}
+
+// ForceDownwardDataRole checks each USB-C port and performs a data swap if it is in the UFP role.
+func (s *Servo) ForceDownwardDataRole(ctx context.Context) error {
+	for pdChannel := 0; pdChannel <= 1; pdChannel++ {
+		pdState, err := s.RunECCommandGetOutput(ctx, fmt.Sprintf("pd %d state", pdChannel), []string{`Role: (\S*) State: (\S*),`})
+		if err != nil {
+			return errors.Wrapf(err, "Getting pd %d state", pdChannel)
+		}
+		result := pdState[0].([]interface{})
+		role := result[1].(string)
+		state := result[2].(string)
+		if role == "SRC-UFP" || role == "SNK-UFP" {
+			testing.ContextLogf(ctx, "PD %d: Swapping data role (Role %s State %s)", pdChannel, role, state)
+			if err = s.RunECCommand(ctx, fmt.Sprintf("pd %d swap data", pdChannel)); err != nil {
+				return errors.Wrapf(err, "Swapping pd %d data role", pdChannel)
+			}
+		}
+	}
+	return nil
 }
