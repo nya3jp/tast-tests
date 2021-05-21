@@ -151,22 +151,10 @@ var (
 	// VideoPauseResumeButton is button for pausing or resuming video recording.
 	VideoPauseResumeButton = UIComponent{"video pause/resume button", []string{"#pause-recordvideo"}}
 
-	// SettingsBackButton is back button for closing primary setting menu.
-	SettingsBackButton = UIComponent{"settings back button", []string{
-		"#view-settings .menu-header button"}}
 	// ResolutionSettingButton is button for opening resolution setting menu.
 	ResolutionSettingButton = UIComponent{"resolution setting button", []string{"#settings-resolution"}}
-	// ResolutionSettingBackButton is back button for closing resolution setting menu.
-	ResolutionSettingBackButton = UIComponent{"resolution setting back button", []string{
-		"#view-resolution-settings .menu-header button"}}
 	// ExpertModeButton is button used for opening expert mode setting menu.
 	ExpertModeButton = UIComponent{"expert mode button", []string{"#settings-expert"}}
-	// PhotoResolutionSettingBackButton is back button for closing photo resolution setting menu.
-	PhotoResolutionSettingBackButton = UIComponent{"photo resolution setting back button",
-		[]string{"#view-photo-resolution-settings .menu-header button"}}
-	// VideoResolutionSettingBackButton is back button for closing video resolution setting menu.
-	VideoResolutionSettingBackButton = UIComponent{"video resolution setting back button",
-		[]string{"#view-video-resolution-settings .menu-header button"}}
 	// PhotoResolutionOption is option for each available photo capture resolution.
 	PhotoResolutionOption = UIComponent{"photo resolution option", []string{
 		"#view-photo-resolution-settings input"}}
@@ -177,16 +165,10 @@ var (
 	FeedbackButton = UIComponent{"feedback button", []string{"#settings-feedback"}}
 	// HelpButton is the help button showing in the settings menu.
 	HelpButton = UIComponent{"help button", []string{"#settings-help"}}
-	// GridSettingBackButton is back button for closing grid setting menu.
-	GridSettingBackButton = UIComponent{"grid setting back button", []string{
-		"#view-grid-settings .menu-header button"}}
 	// GridTypeSettingsButton is the button showing in the settings menu which is used for entering the grid type settings menu.
 	GridTypeSettingsButton = UIComponent{"grid type settings button", []string{"#settings-gridtype"}}
 	// GoldenGridButton is the button to enable golden grid type.
 	GoldenGridButton = UIComponent{"golden grid type button", []string{"#grid-golden"}}
-	// TimerSettingBackButton is back button for closing timer setting menu.
-	TimerSettingBackButton = UIComponent{"timer setting back button", []string{
-		"#view-timer-settings .menu-header button"}}
 	// TimerSettingsButton is the button showing in the settings menu which is used for entering the timer settings menu.
 	TimerSettingsButton = UIComponent{"timer settings button", []string{"#settings-timerdur"}}
 	// Timer10sButton is the button to enable 10s timer.
@@ -1556,8 +1538,10 @@ func (a *App) Focus(ctx context.Context) error {
 	return a.conn.Eval(ctx, "Tast.focusWindow()", nil)
 }
 
-// InnerResolutionSettingButton returns button for opening rt resolution setting of facing camera.
-func (a *App) InnerResolutionSettingButton(ctx context.Context, facing Facing, rt ResolutionType) (*UIComponent, error) {
+// InnerResolutionSetting returns setting menu for toggle |rt| resolution of |facing| camera.
+func (a *App) InnerResolutionSetting(ctx context.Context, facing Facing, rt ResolutionType) (*SettingMenu, error) {
+	view := fmt.Sprintf("view-%s-resolution-settings", rt)
+
 	fname, ok := (map[Facing]string{
 		FacingBack:     "back",
 		FacingFront:    "front",
@@ -1566,8 +1550,6 @@ func (a *App) InnerResolutionSettingButton(ctx context.Context, facing Facing, r
 	if !ok {
 		return nil, errors.Errorf("cannot get resolution of unsuppport facing %v", facing)
 	}
-
-	name := fmt.Sprintf("%v camera %v resolution settings button", fname, rt)
 	ariaPrefix := fname
 	if facing == FacingExternal {
 		// Assumes already switched to target external camera.
@@ -1578,8 +1560,12 @@ func (a *App) InnerResolutionSettingButton(ctx context.Context, facing Facing, r
 		ariaPrefix = string(id)
 	}
 	selector := fmt.Sprintf("button[aria-describedby='%s-%sres-desc']", ariaPrefix, rt)
+	openUI := &UIComponent{
+		Name:      fmt.Sprintf("%v camera %v resolution settings button", fname, rt),
+		Selectors: []string{selector},
+	}
 
-	return &UIComponent{name, []string{selector}}, nil
+	return &SettingMenu{view, openUI}, nil
 }
 
 // Refresh refreshes CCA.

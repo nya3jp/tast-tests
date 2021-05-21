@@ -80,6 +80,17 @@ func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
 	} else if !toggled {
 		s.Fatal("Expert mode is not toggled")
 	}
+
+	if err := cca.MainMenu.Open(ctx, app); err != nil {
+		s.Fatal("Failed to open setting menu: ", err)
+	}
+	defer cca.MainMenu.Close(ctx, app)
+
+	if err := cca.ExpertMenu.Open(ctx, app); err != nil {
+		s.Fatal("Failed to open expert setting menu: ", err)
+	}
+	defer cca.ExpertMenu.Close(ctx, app)
+
 	if toggled, err := app.ToggleCustomVideoParameters(ctx); err != nil {
 		s.Fatal("Failed to toggle custom video parameters: ", err)
 	} else if !toggled {
