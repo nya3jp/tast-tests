@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53f93c46_8d1251f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-21T02:09:47Z",
+      "side": 1,
+      "message": "\u003e800 line CLs are kinda large... but I understand the difficulty in breaking it up :)",
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c2e930a_1d059ab6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-21T02:09:47Z",
+      "side": 1,
+      "message": "These are nearly looking like completely different tests. Yes, they use similar setup infrastructure, but the actual function is completely different.\n\nSometimes this means it\u0027s good to actually create separate tests, with a small bit of shared code [1]. One downside of the current setup is that you\u0027re mixing multiple variables into the naming. In the next CL, you\u0027re adding a \".netperf\" variant, while these are just named \".[security-mode]\". I suppose you could resolve that my straightening up the naming across the board -- like \"[mode]_[testtype]\" or something.\n\nWDYT Matthew, Yen-lin, anyone?\n\n[1] For example, these \"shillinit...\" tests have a similar structure, with an in-directory \"support\" package (chromiumos/tast/local/bundles/cros/network/shillscript):\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_login_start_shill.go",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df4882a_616c9dc7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-21T02:09:47Z",
+      "side": 1,
+      "message": "what\u0027s a typical test time for one of these? I\u0027m interested because:\n\n1. 50 roams is kind of a lot (?), and seems like it might bump up on the default Tast timeout limit -- I think it\u0027s only a small single-digit number of minutes? so you might want to specify a timeout explicitly. testing.Test has a Timeout field\n2. lab impact -- a few minutes probably isn\u0027t too bad I guess, but if this grows too many test cases, we\u0027ll at least want to give Harpreet a heads-up",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 13
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eacdb1c_cade811e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-21T02:09:47Z",
+      "side": 1,
+      "message": "update this?\n\nit\u0027d also be nice if there was some small-ish description of what each verifier is doing somewhere. If it\u0027s not so great to stick it in each test variant (they don\u0027t really have \"description\" fields -- and there are many of them), then maybe just some comments up here somewhere in init()?",
+      "range": {
+        "startLine": 62,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 55
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f80a18b_5b0254cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-21T02:09:47Z",
+      "side": 1,
+      "message": "any chance we can update these to 11n or 11ac? I recall you complaining some about performance imbalance between AP 0 and 1, and that would help at least a bit.",
+      "range": {
+        "startLine": 76,
+        "startChar": 74,
+        "endLine": 76,
+        "endChar": 84
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94bc7f26_93d867f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-21T02:09:47Z",
+      "side": 1,
+      "message": "just thinking out loud: it feels like we have to open code quite a bit of setup just to bridge our two APs and share a DHCP server. A future update to TestFixture might be helpful, to make it easier?\n\nAnyway, I know we suggested copy/paste/modify, and I\u0027m happy to go with that for now, so marking this comment \"resolved\".",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 3
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d53a0b7a_ed047bd0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-21T02:09:47Z",
+      "side": 1,
+      "message": "This differs from RoamFT, in that RoamFT actively checks that we _fail_ FT when !hasFTSupport() -- that\u0027s OK, because the test becomes meaningful, while still passing on non-FT devices.\n\nYour test differs, in that we\u0027ll _fail_ on non-FT devices. That\u0027s OK too, but we\u0027ll probably want to teach Tast to skip such devices (i.e., get the \"hwdep\" that you were asking about).\n\nCan you at least add a TODO above for the ft_* variants, to develop such a dep and add it to ExtraHardwareDeps?",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 9
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "878bc94c_a8eba8f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-21T02:09:47Z",
+      "side": 1,
+      "message": "that\u0027s funny -- you\u0027re converting to a string just to convert back 2 lines down? Seems like you could flip this around; perform string parsing only if the var exists. We should also rely on the \u0027ok\u0027 status instead of a \"\" string comparison.\n\nLike:\n\n  var rounds int\n  if str, ok :\u003d s.Var(...); ok {\n    ...\n  } else {\n    rounds \u003d param.rounds\n  }\n\nOr something close to that.",
+      "range": {
+        "startLine": 256,
+        "startChar": 14,
+        "endLine": 256,
+        "endChar": 40
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d2742cb_e0492ba3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-21T02:09:47Z",
+      "side": 1,
+      "message": "I\u0027m not in love with memorizing/guessing a 30 second interval for \"refreshing\" our scan results. At a minimum, that should get a comment about why.\n\nBut I think maybe we can eliminate some of these discovery dances, as well as the RequestRoam() altogether -- Matthew was looking at replacing that with BSS TransitionManagement requests here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2889530/1\nThat has some advantages that he documents there, including that it naturally requires the DUT to handle scanning on its own. It doesn\u0027t seem to have too many downsides.\n\nMaybe we can go with that instead?\n\nUnfortunately, part of that series is waiting on reviews still, so we haven\u0027t yet proven out that the replacement works well in the lab. Maybe we should \"kick\" that? (Matthew, do you need to bump Nicolas, or do you want to add another reviewer?)",
+      "range": {
+        "startLine": 522,
+        "startChar": 0,
+        "endLine": 535,
+        "endChar": 3
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8372826c_3d2dbfbe",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-21T02:09:47Z",
+      "side": 1,
+      "message": "[I haven\u0027t tried to run this whole test myself yet:]\nDo we get a good log of when various state transitions or iterations are happening? e.g., for debugging, or understanding the difference between \"I started a new iteration immediately in the middle of roaming\" vs. \"roaming during a longer iteration\" (think, netperf variants, which are more complex than ping tests).\n\nif not, do we need to log something within handleEvent() or similar?",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 8
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
