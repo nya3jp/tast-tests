@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede8f2be_162289e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-05-21T17:09:57Z",
+      "side": 1,
+      "message": "LGTM with a few nits.  Sorry for the delay of the review.",
+      "revId": "36a53d8ed82dc2f0488e3e3ab7a648be3229e6c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af07c064_cc665aa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-05-21T17:09:57Z",
+      "side": 1,
+      "message": "nit: this could be within init() function?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "36a53d8ed82dc2f0488e3e3ab7a648be3229e6c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea837ca5_8139a09f",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-05-21T17:09:57Z",
+      "side": 1,
+      "message": "just curious: are we giving lacros specific flags for all cases?  I guess that\u0027s okay as it\u0027s meaningless when lacros is not enabled, but looks a bit strange.",
+      "revId": "36a53d8ed82dc2f0488e3e3ab7a648be3229e6c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
