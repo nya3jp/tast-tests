@@ -50,6 +50,7 @@ func TestAttributeMatcher(t *gotesting.T) {
 	}{
 		{Role(role.Button), `{}`},
 		{ClassName("clsname"), `{"className":"clsname",}`},
+		{ClassNameRegex(regexp.MustCompile("^/blah$")), `{"className":/^\/blah$/,}`},
 		{Name("hello"),
 			`{"name":selectName({"ar-XB":/^olleh$/,"en":/^hello$/,"en-XA":/^ĥéļļö one$/,})}`},
 		{Name("/blah"), `{"name":selectName({"ar-XB":/^halb\/$/,"en":/^\/blah$/,"en-XA":/^\/bļåĥ one$/,})}`},
