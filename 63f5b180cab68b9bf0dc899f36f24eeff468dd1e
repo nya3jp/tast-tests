@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "774ef7d8_35f87cd2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-05-21T13:35:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee513022_d00600d1",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 51
+      },
+      "revId": "63f5b180cab68b9bf0dc899f36f24eeff468dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38964552_06e079cb",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e01f07c_e31dfa99",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-05-21T13:35:28Z",
+      "side": 1,
+      "message": "Removed \"crossystem\".",
+      "parentUuid": "38964552_06e079cb",
+      "revId": "63f5b180cab68b9bf0dc899f36f24eeff468dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e1a7c1f_3c06b691",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
         "patchSetId": 1
@@ -54,6 +96,30 @@
       "writtenOn": "2021-05-17T17:57:47Z",
       "side": 1,
       "message": "TODO: There are 2 more deps here, but they don\u0027t exist as hwdeps yet, so you\u0027re not going to be able to add them yet.\n\nThis test requires a servo v4 (because it calls SetV4Role), and the EC has to support hibernation (there is a fw-testing-config setting for that already).\n\nJust file a bug that this needs followup for now.",
+      "range": {
+        "startLine": 26,
+        "startChar": 24,
+        "endLine": 26,
+        "endChar": 40
+      },
+      "revId": "63f5b180cab68b9bf0dc899f36f24eeff468dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "079675c0_ea532e25",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-05-21T13:35:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2e1a7c1f_3c06b691",
       "range": {
         "startLine": 26,
         "startChar": 24,
@@ -89,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4fecf575_2c0ac7fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-05-21T13:35:28Z",
+      "side": 1,
+      "message": "Added GetBool to check on the returned Boolean from \"charger_attached\".",
+      "parentUuid": "e8e92843_8a728d79",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "63f5b180cab68b9bf0dc899f36f24eeff468dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8937c220_13e26f07",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
         "patchSetId": 1
@@ -100,6 +190,30 @@
       "writtenOn": "2021-05-17T15:56:02Z",
       "side": 1,
       "message": "typo?",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "63f5b180cab68b9bf0dc899f36f24eeff468dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b8b7439_9a49b3a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-05-21T13:35:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8937c220_13e26f07",
       "range": {
         "startLine": 52,
         "startChar": 19,
@@ -158,6 +272,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5284a1af_8803c8af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-05-21T13:35:28Z",
+      "side": 1,
+      "message": "Replaced with RunECCommandGetOutput.",
+      "parentUuid": "ce6454e4_7172cec2",
+      "range": {
+        "startLine": 68,
+        "startChar": 56,
+        "endLine": 68,
+        "endChar": 62
+      },
+      "revId": "63f5b180cab68b9bf0dc899f36f24eeff468dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21768f5e_8bb5e3e9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-05-21T13:35:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d567edd4_c6e68274",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 73
+      },
+      "revId": "63f5b180cab68b9bf0dc899f36f24eeff468dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8bf81284_edc1168b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
         "patchSetId": 1
@@ -169,6 +331,30 @@
       "writtenOn": "2021-05-17T15:56:02Z",
       "side": 1,
       "message": "I think that errors.Is would be more appropriate. errors.As is useful if you want to recast the error as a different type in its chain. But here you\u0027re just checking whether the error chain contains a certain type.\n\nhttps://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/errors#Is",
+      "range": {
+        "startLine": 69,
+        "startChar": 12,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "63f5b180cab68b9bf0dc899f36f24eeff468dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a19a348c_019c4490",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-05-21T13:35:28Z",
+      "side": 1,
+      "message": "Removed and added a statement instead to verify error against xmlrpc.FaultError.",
+      "parentUuid": "8bf81284_edc1168b",
       "range": {
         "startLine": 69,
         "startChar": 12,
@@ -196,6 +382,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a10dd8_bd9a360c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-05-21T13:35:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de6059ab_bd3cab77",
+      "revId": "63f5b180cab68b9bf0dc899f36f24eeff468dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ae49d92_2bad72f1",
@@ -209,6 +413,30 @@
       "writtenOn": "2021-05-17T17:57:47Z",
       "side": 1,
       "message": "It seems more direct to use RunECCommandGetOutput instead.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "63f5b180cab68b9bf0dc899f36f24eeff468dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de46097f_7c2db44c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-05-21T13:35:28Z",
+      "side": 1,
+      "message": "Replaced with RunECCommandGetOutput to get output from chgstate, and verify the ac value.",
+      "parentUuid": "5ae49d92_2bad72f1",
       "range": {
         "startLine": 91,
         "startChar": 1,
