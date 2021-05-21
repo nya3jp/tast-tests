@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92775a91_2c769e6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2021-05-21T16:23:35Z",
+      "side": 1,
+      "message": "Thanks.\n\nIt does the check in memory, I just wanted to check the bytes that are written to file (from the data in memory) after don\u0027t contain any encoding errors.\n\nLike it doesn\u0027t write the output file, and then load it and compare it with expected file.\n\nIt compares output with expected file, then serializes the output and writes to file. I just want to make sure there was no error during the serialization.",
+      "parentUuid": "30f4b93b_97639f10",
+      "revId": "4d4706e802b7b81908f2b3d2f33b3771f4e8adc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19ce14da_798b61e6",
