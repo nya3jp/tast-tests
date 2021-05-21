@@ -134,22 +134,83 @@ var (
 	}
 )
 
+// Constants that used by OpenVPN server
+const (
+	openvpnCommand           = "/usr/sbin/openvpn"
+	openvpnConfigFile        = "etc/openvpn/openvpn.conf"
+	openvpnCaCertFile        = "etc/openvpn/ca.crt"
+	openvpnServerCertFile    = "etc/openvpn/server.crt"
+	openvpnServerKeyFile     = "etc/openvpn/server.key"
+	openvpnDiffieHellmanFile = "etc/openvpn/diffie-hellman.pem"
+	openvpnExpectedAuthFile  = "etc/openvpn_expected_authentication.txt"
+	openvpnAuthScript        = "etc/openvpn_authentication_script.sh"
+	openvpnLogFile           = "var/log/openvpn.log"
+	openvpnPidFile           = "run/openvpn.pid"
+	openvpnStatusFile        = "tmp/openvpn.status"
+	openvpnUsername          = "username"
+	openvpnPassword          = "password"
+	openvpnServerIPAddress   = "10.11.12.1"
+)
+
+// dh1024PemKey is the Diffie–Hellman parameter which will be used by OpenVPN
+// server in the test. The value is borrowed from Autotest
+// (client/common_lib/cros/site_eap_certs.py)
+const dh1024PemKey = `-----BEGIN DH PARAMETERS-----
+MIGHAoGBAL/YrUzFuA5cPGzhXVqTvDugmPi9CpbWZx2+TCTKxZSjNiVJxcICSnql
+uZtkR3sOAiWn384E4ZQTBrYPUguOuFfbMTRooADhezaG9SXtrE9oeVy9avIO7xQK
+emZydO0bAsRV+eL0XkjGhSyhKoOvSIXaCbJUn7duEsfkICPRLWCrAgEC
+-----END DH PARAMETERS-----
+`
+
+var (
+	openvpnRootDirectories = []string{"etc/openvpn"}
+	openvpnConfigs         = map[string]string{
+		openvpnCaCertFile:        certificate.TestCert1().CACred.Cert,
+		openvpnServerCertFile:    certificate.TestCert1().ServerCred.Cert,
+		openvpnServerKeyFile:     certificate.TestCert1().ServerCred.PrivateKey,
+		openvpnDiffieHellmanFile: dh1024PemKey,
+		openvpnAuthScript:        "#!/bin/bash\ndiff -q $1 {{.expected_authentication_file}}\n'",
+		openvpnExpectedAuthFile:  "{{.username}}\n{{.password}}\n",
+		openvpnConfigFile: "ca /{{.ca_cert}}\n" +
+			"cert /{{.server_cert}}\n" +
+			"dev tun\n" +
+			"dh /{{.diffie_hellman_params_file}}\n" +
+			"keepalive 10 120\n" +
+			"local {{.netns_ip}}\n" +
+			"log /{{.log_file}}\n" +
+			"ifconfig-pool-persist /tmp/ipp.txt\n" +
+			"key /{{.server_key}}\n" +
+			"persist-key\n" +
+			"persist-tun\n" +
+			"port 1194\n" +
+			"proto udp\n" +
+			"server 10.11.12.0 255.255.255.0\n" +
+			"status /{{.status_file}}\n" +
+			"verb 5\n" +
+			"writepid /{{.pid_file}}\n" +
+			"tmp-dir /tmp\n" +
+			"{{.optional_user_verification}}\n",
+	}
+)
+
 // VpnServer represents a VPN server that can be used in the test.
 type VpnServer struct {
-	UnderlayIP  string
-	OverlayIP   string
-	netChroot   *chroot.NetworkChroot
-	stopCommand []string
-	pidFiles    []string
+	UnderlayIP   string
+	OverlayIP    string
+	netChroot    *chroot.NetworkChroot
+	stopCommands [][]string
+	pidFiles     []string
+	logFile      string
 }
 
 // StartServer starts a VPN server.
 func StartL2tpIPsecServer(ctx context.Context, authType string, ipsecUseXauth, underlayIPisOverlayIP bool) (*VpnServer, error) {
 	chro := chroot.NewNetworkChroot()
 	server := &VpnServer{
-		netChroot:   chro,
-		stopCommand: []string{ipsecCommand, "stop"},
-		pidFiles:    []string{xl2tpdPidFile, pppdPidFile},
+		netChroot:    chro,
+		stopCommands: [][]string{{ipsecCommand, "stop"}},
+		pidFiles:     []string{xl2tpdPidFile, pppdPidFile},
+		logFile:      ipsecLogFile,
 	}
 
 	if _, ok := ipsecTypedConfigs[authType]; !ok {
@@ -205,21 +266,54 @@ func StartL2tpIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 	return server, nil
 }
 
-// GetLogContents return all logs related to the chroot.
-func (s *VpnServer) GetLogContents(ctx context.Context) (string, error) {
-	content, err := s.netChroot.GetLogContents(ctx)
-	if err != nil {
-		return "", err
+func StartOpenVPNServer(ctx context.Context) (*VpnServer, error) {
+	chro := chroot.NewNetworkChroot()
+	server := &VpnServer{
+		netChroot:    chro,
+		stopCommands: [][]string{},
+		pidFiles:     []string{xl2tpdPidFile, pppdPidFile},
+		logFile:      openvpnLogFile,
 	}
 
-	return content, nil
+	chro.AddRootDirectories(openvpnRootDirectories)
+	chro.AddConfigTemplates(openvpnConfigs)
+	configValues := map[string]string{
+		"ca_cert":                      openvpnCaCertFile,
+		"diffie_hellman_params_file":   openvpnDiffieHellmanFile,
+		"expected_authentication_file": openvpnExpectedAuthFile,
+		"optional_user_verification":   "",
+		"password":                     openvpnPassword,
+		"pid_file":                     openvpnPidFile,
+		"server_cert":                  openvpnServerCertFile,
+		"server_key":                   openvpnServerKeyFile,
+		"status_file":                  openvpnStatusFile,
+		"username":                     openvpnUsername,
+		"log_file":                     openvpnLogFile,
+	}
+	chro.AddConfigValues(configValues)
+	chro.AddStartupCommand("chmod 755 " + openvpnAuthScript)
+	chro.AddStartupCommand(fmt.Sprintf("%s --config /%s &", openvpnCommand, openvpnConfigFile))
+	chro.NetEnv = []string{
+		"OPENSSL_CONF=/etc/ssl/openssl.cnf.compat",
+		"OPENSSL_CHROMIUM_SKIP_TRUSTED_PURPOSE_CHECK=1",
+	}
+
+	underlayIP, err := chro.Startup(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start OpenVPN server")
+	}
+	server.UnderlayIP = underlayIP
+	server.OverlayIP = openvpnServerIPAddress
+	return server, nil
 }
 
 // StopServer stop VPN server instance.
 func (s *VpnServer) StopServer(ctx context.Context) error {
 	chro := s.netChroot
-	if err := chro.RunChroot(ctx, s.stopCommand); err != nil {
-		return errors.Wrap(err, "failed to stop ipsec")
+	for _, cmd := range s.stopCommands {
+		if err := chro.RunChroot(ctx, cmd); err != nil {
+			return errors.Wrapf(err, "failed to execute %v", cmd)
+		}
 	}
 
 	for _, pidFile := range s.pidFiles {
@@ -239,9 +333,9 @@ func (s *VpnServer) Exit(ctx context.Context) error {
 		return err
 	}
 
-	content, err := s.GetLogContents(ctx)
+	content, err := s.netChroot.GetLogContents(ctx, s.logFile)
 	if err != nil {
-		return err
+		testing.ContextLog(ctx, "Failed to get logs")
 	}
 
 	// Write the vpn logs to the file logName.
@@ -253,7 +347,6 @@ func (s *VpnServer) Exit(ctx context.Context) error {
 	} else {
 		testing.ContextLog(ctx, "Failed to open OutDir")
 	}
-
 	if err := s.netChroot.Shutdown(ctx); err != nil {
 		return errors.Wrap(err, "failed to shutdown the chroot")
 	}

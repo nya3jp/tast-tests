@@ -85,12 +85,19 @@ func init() {
 				vpnType:  "L2TP/IPsec",
 				authType: "cert",
 			},
+		}, {
+			Name: "openvpn",
+			Val: vpnTestParams{
+				vpnType:  "OpenVPN",
+				authType: "cert",
+			},
 		}},
 	})
 }
 
 const (
 	l2tpIPsec                       = "L2TP/IPsec"
+	openvpn                         = "OpenVPN"
 	pskAuth                         = "psk"
 	certAuth                        = "cert"
 	testDefaultProfileName          = "vpnTestProfile"
@@ -198,8 +205,9 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 
 	var server *vpn.VpnServer
 	if params.vpnType == l2tpIPsec {
-		// Creates a new L2TP/IPsec server.
 		server, err = vpn.StartL2tpIPsecServer(ctx, params.authType, params.ipsecUseXauth, params.underlayIPisOverlayIP)
+	} else if params.vpnType == openvpn {
+		server, err = vpn.StartOpenVPNServer(ctx)
 	} else {
 		s.Fatalf("Unexpected VPN type %s", params.vpnType)
 	}
@@ -270,6 +278,17 @@ func removeDefaultProfile(ctx context.Context) (retErr error) {
 
 // getVpnClientProperties returns VPN configuration properties.
 func getVpnClientProperties(ctx context.Context, params vpnTestParams, serverAddress string, certStore *netcertstore.Store) (map[string]interface{}, error) {
+	var certID, pin, slotID string
+	if params.authType == certAuth {
+		slotID = fmt.Sprintf("%d", certStore.Slot())
+		pin = certStore.Pin()
+		clientCred := certificate.TestCert1().ClientCred
+		var err error
+		certID, err = certStore.InstallCertKeyPair(ctx, clientCred.PrivateKey, clientCred.Cert)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to insert cert key pair into cert store")
+		}
+	}
 	if (params.vpnType == l2tpIPsec) && (params.authType == pskAuth) {
 		properties := map[string]interface{}{
 			"L2TPIPsec.Password": vpn.ChapSecret,
@@ -291,17 +310,10 @@ func getVpnClientProperties(ctx context.Context, params vpnTestParams, serverAdd
 		}
 		return properties, nil
 	} else if (params.vpnType == l2tpIPsec) && (params.authType == certAuth) {
-		slotID := certStore.Slot()
-		pin := certStore.Pin()
-		clientCred := certificate.TestCert1().ClientCred
-		certID, err := certStore.InstallCertKeyPair(ctx, clientCred.PrivateKey, clientCred.Cert)
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to insert cert key pair into cert store")
-		}
 		properties := map[string]interface{}{
 			"L2TPIPsec.CACertPEM":      []string{certificate.TestCert1().CACred.Cert},
 			"L2TPIPsec.ClientCertID":   certID,
-			"L2TPIPsec.ClientCertSlot": fmt.Sprintf("%d", slotID),
+			"L2TPIPsec.ClientCertSlot": slotID,
 			"L2TPIPsec.User":           vpn.ChapUser,
 			"L2TPIPsec.Password":       vpn.ChapSecret,
 			"L2TPIPsec.PIN":            pin,
@@ -309,6 +321,19 @@ func getVpnClientProperties(ctx context.Context, params vpnTestParams, serverAdd
 			"Provider.Host":            serverAddress,
 			"Provider.Type":            "l2tpipsec",
 			"Type":                     "vpn",
+		}
+		return properties, nil
+	} else if params.vpnType == openvpn {
+		properties := map[string]interface{}{
+			"Name":                  "test-vpn-openvpn",
+			"Provider.Host":         serverAddress,
+			"Provider.Type":         "openvpn",
+			"Type":                  "vpn",
+			"OpenVPN.CACertPEM":     []string{certificate.TestCert1().CACred.Cert},
+			"OpenVPN.Pkcs11.ID":     certID,
+			"OpenVPN.Pkcs11.PIN":    slotID,
+			"OpenVPN.RemoteCertEKU": "TLS Web Server Authentication",
+			"OpenVPN.Verb":          "5",
 		}
 		return properties, nil
 	}
