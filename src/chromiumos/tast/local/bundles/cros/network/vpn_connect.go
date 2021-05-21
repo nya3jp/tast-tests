@@ -83,6 +83,14 @@ func init() {
 					AuthType: vpn.AuthTypeCert,
 				},
 			},
+		}, {
+			Name: "openvpn",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:     vpn.TypeOpenVPN,
+					AuthType: vpn.AuthTypeCert,
+				},
+			},
 		}},
 	})
 }
