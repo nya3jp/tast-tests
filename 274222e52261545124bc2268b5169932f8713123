@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8aab70d_d8490b58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-21T14:18:43Z",
+      "side": 1,
+      "message": "Tastboard link: https://tastboard.corp.google.com/test/policy.AllowWakeLocks\nOnly Fixture failures.",
+      "revId": "274222e52261545124bc2268b5169932f8713123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
