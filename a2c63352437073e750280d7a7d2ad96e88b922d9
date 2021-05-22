@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b28514_a068a154",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-22T05:33:56Z",
+      "side": 1,
+      "message": "This seems good to me, other than the one logic change.\n\nIn the future, we might want to consider running \"bio_wash --factory_init\" a second time to check that the rollback id doesn\u0027t change.",
+      "revId": "a2c63352437073e750280d7a7d2ad96e88b922d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2da4036d_1512a59b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-22T05:33:56Z",
+      "side": 1,
+      "message": "This is a bit counter-intuitive with respect to what bio_wash is doing here. This invocation is actually asking bio_wash to indeed \"reset\" the entropy instead of just initializing the entropy if it hadn\u0027t already.",
+      "range": {
+        "startLine": 75,
+        "startChar": 39,
+        "endLine": 75,
+        "endChar": 44
+      },
+      "revId": "a2c63352437073e750280d7a7d2ad96e88b922d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb6e5e2_6333420e",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-22T05:33:56Z",
+      "side": 1,
+      "message": "This logic is a bit reversed as compared to how bio_wash works.\n\nA \"reset\" with respect to the FPMCU entropy translates to bio_wash alone.\n\nExplicitly \"no-reset\"/\"only-initialize\" translates to \"bio_wash --factory_init\"\n\n---\n\nCan you flip the logic on this variable?",
+      "range": {
+        "startLine": 1052,
+        "startChar": 4,
+        "endLine": 1052,
+        "endChar": 9
+      },
+      "revId": "a2c63352437073e750280d7a7d2ad96e88b922d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
