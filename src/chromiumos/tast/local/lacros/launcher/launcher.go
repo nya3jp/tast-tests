@@ -180,8 +180,10 @@ func EnsureLacrosChrome(ctx context.Context, f FixtData, artifactPath string) er
 // LaunchLacrosChrome launches a fresh instance of lacros-chrome.
 // TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
 func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*LacrosChrome, error) {
-	if err := EnsureLacrosChrome(ctx, f, artifactPath); err != nil {
-		return nil, err
+	if f.Mode == PreExist {
+		if err := EnsureLacrosChrome(ctx, f, artifactPath); err != nil {
+			return nil, err
+		}
 	}
 
 	if err := killLacrosChrome(ctx, f.LacrosPath); err != nil {
