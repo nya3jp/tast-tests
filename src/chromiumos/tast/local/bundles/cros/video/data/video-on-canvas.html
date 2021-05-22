@@ -8,6 +8,17 @@
   </canvas>
 </body>
 <script type="text/javascript">
+var ctx;
+
+// Sets the size of the canvas to width x height and obtains a 2d context for
+// later use.
+function initializeCanvas(width, height) {
+  const canvas = document.getElementById('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  ctx = canvas.getContext('2d');
+}
+
 // Starts playing videoSourcePath. Once playback starts, the video is drawn once
 // on the canvas and the resulting image is obtained. The colors of the four
 // corners of this image are checked against hard-coded values.
@@ -19,7 +30,6 @@ async function playAndDrawOnCanvas(videoSourcePath) {
   const canvas = document.getElementById('canvas');
   const cWidth = canvas.width;
   const cHeight = canvas.height;
-  const ctx = canvas.getContext('2d');
   ctx.drawImage(video, 0, 0, cWidth, cHeight);
 
   const expectedRGBAColors = {
