@@ -8,6 +8,12 @@
   </canvas>
 </body>
 <script type="text/javascript">
+function setCanvasSize(width, height) {
+  const canvas = document.getElementById('canvas');
+  canvas.width = width;
+  canvas.height = height;
+}
+
 // Starts playing videoSourcePath. Once playback starts, the video is drawn once
 // on the canvas and the resulting image is obtained. The colors of the four
 // corners of this image are checked against hard-coded values.
