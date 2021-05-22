@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be9ca22_97bfc903",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-22T05:20:56Z",
+      "side": 1,
+      "message": "Using a params struct seem great!",
+      "range": {
+        "startLine": 204,
+        "startChar": 110,
+        "endLine": 204,
+        "endChar": 134
+      },
+      "revId": "b65cd575496ec5f7be37606aeccbdb0a778c1fff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb70fbf3_e22b5954",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-22T05:20:56Z",
+      "side": 1,
+      "message": "Why are we no longer rebooting the DUT to get the TPM seed?\n\nIf it is to avoid biod setting entropy, then this will be a problem for zork, where the FlashFirmware function will issue a DUT reboot.\n\n---\n\nYou may be able to get away with no rebooting the DUT here (bc it looks like none of the test use the tpm seed?), but then you would need to ensure that the DUT is rebooted in the Close routine to ensure the DUT is in a perfectly working state after these test. This is because other integration tests need to run and they might poke biod and other fp services.",
+      "range": {
+        "startLine": 778,
+        "startChar": 11,
+        "endLine": 778,
+        "endChar": 22
+      },
+      "revId": "b65cd575496ec5f7be37606aeccbdb0a778c1fff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51e950ba_0acea880",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-22T05:20:56Z",
+      "side": 1,
+      "message": "FPMCU vs. DUT.",
+      "range": {
+        "startLine": 779,
+        "startChar": 44,
+        "endLine": 779,
+        "endChar": 47
+      },
+      "revId": "b65cd575496ec5f7be37606aeccbdb0a778c1fff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

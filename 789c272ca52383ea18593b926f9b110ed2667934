@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7cf9c89_30f38ea0",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-22T05:20:56Z",
+      "side": 1,
+      "message": "Reducing reviewer change thrashing, since Tom\u0027s suggestion here was to change to initEntropy and my suggesting is to go with noEntropy.",
+      "parentUuid": "0a0e4e18_0fa00791",
+      "range": {
+        "startLine": 772,
+        "startChar": 1,
+        "endLine": 777,
+        "endChar": 2
+      },
+      "revId": "789c272ca52383ea18593b926f9b110ed2667934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18bcbba6_a90c7f69",
