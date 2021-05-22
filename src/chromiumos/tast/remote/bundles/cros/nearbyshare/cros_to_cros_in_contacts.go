@@ -26,35 +26,35 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:      "dataoffline_allcontacts_png5kb",
-				Fixture:   "nearbyShareRemoteDataUsageOfflineAllContactsGAIA",
+				Fixture:   "nearbyShareRemoteDataUsageOfflineAllContacts",
 				Val:       nearbytestutils.TestData{Filename: "small_png.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_png.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
 				Name:      "dataoffline_allcontacts_jpg11kb",
-				Fixture:   "nearbyShareRemoteDataUsageOfflineAllContactsGAIA",
+				Fixture:   "nearbyShareRemoteDataUsageOfflineAllContacts",
 				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
 				Name:      "dataoffline_somecontacts_png5kb",
-				Fixture:   "nearbyShareRemoteDataUsageOfflineSomeContactsGAIA",
+				Fixture:   "nearbyShareRemoteDataUsageOfflineSomeContacts",
 				Val:       nearbytestutils.TestData{Filename: "small_png.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_png.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
 				Name:      "dataoffline_somecontacts_jpg11kb",
-				Fixture:   "nearbyShareRemoteDataUsageOfflineSomeContactsGAIA",
+				Fixture:   "nearbyShareRemoteDataUsageOfflineSomeContacts",
 				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
 				Name:    "dataonline_allcontacts_txt30mb",
-				Fixture: "nearbyShareRemoteDataUsageOnlineAllContactsGAIA",
+				Fixture: "nearbyShareRemoteDataUsageOnlineAllContacts",
 				Val: nearbytestutils.TestData{
 					Filename: "big_txt.zip", TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout},
 				ExtraData: []string{"big_txt.zip"},
@@ -62,7 +62,7 @@ func init() {
 			},
 			{
 				Name:    "dataonline_somecontacts_txt30mb",
-				Fixture: "nearbyShareRemoteDataUsageOnlineSomeContactsGAIA",
+				Fixture: "nearbyShareRemoteDataUsageOnlineSomeContacts",
 				Val: nearbytestutils.TestData{
 					Filename: "big_txt.zip", TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout},
 				ExtraData: []string{"big_txt.zip"},

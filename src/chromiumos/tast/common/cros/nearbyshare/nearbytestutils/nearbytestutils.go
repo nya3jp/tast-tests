@@ -46,8 +46,8 @@ const SendDir = DownloadPath + "nearby_test_files"
 
 // Hostnames of the devices in our temporary Nearby Share lab deployment.
 const (
-	HatchHostname   = "chromeos15-row6a-rack12-host2a"
-	OctopusHostname = "chromeos15-row6a-rack12-host2b"
+	HatchHostname   = "chromeos15-row6a-rack12-host2a.cros"
+	OctopusHostname = "chromeos15-row6a-rack12-host2b.cros"
 	SarienHostname  = "chromeos15-row16-metro1-host1a"
 	CoralHostname   = "chromeos15-row16-metro1-host1b"
 )

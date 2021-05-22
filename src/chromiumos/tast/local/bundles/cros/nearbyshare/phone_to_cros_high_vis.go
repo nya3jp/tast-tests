@@ -35,7 +35,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "dataoffline_allcontacts_jpg11kb",
-				Fixture: "nearbyShareDataUsageOfflineAllContactsTestUser",
+				Fixture: "nearbyShareDataUsageOfflineNoOne",
 				Val: nearbytestutils.TestData{
 					Filename:        "small_jpg.zip",
 					TransferTimeout: nearbycommon.SmallFileTransferTimeout,
@@ -47,7 +47,7 @@ func init() {
 			},
 			{
 				Name:    "dataoffline_allcontacts_png5kb",
-				Fixture: "nearbyShareDataUsageOfflineAllContactsTestUser",
+				Fixture: "nearbyShareDataUsageOfflineNoOne",
 				Val: nearbytestutils.TestData{
 					Filename:        "small_png.zip",
 					TransferTimeout: nearbycommon.SmallFileTransferTimeout,
@@ -59,7 +59,7 @@ func init() {
 			},
 			{
 				Name:    "dataonline_noone_txt30mb",
-				Fixture: "nearbyShareDataUsageOnlineNoOneGAIA",
+				Fixture: "nearbyShareDataUsageOnlineNoOne",
 				Val: nearbytestutils.TestData{
 					Filename:        "big_txt.zip",
 					TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
