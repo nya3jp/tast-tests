@@ -8,7 +8,6 @@ import (
 	"context"
 	"os"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
@@ -17,11 +16,6 @@ import (
 // disk and ready to launch. Does not launch the binary.
 func prepareLacrosChromeBinary(ctx context.Context, s *testing.FixtState) error {
 	testing.ContextLog(ctx, "Preparing the environment to run Lacros")
-	mountCmd := testexec.CommandContext(ctx, "mount", "-o", "remount,exec", "/mnt/stateful_partition")
-	if err := mountCmd.Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to remount stateful partition with exec privilege")
-	}
-
 	if err := os.RemoveAll(lacrosTestPath); err != nil && !os.IsNotExist(err) {
 		return errors.Wrap(err, "failed to remove old test artifacts directory")
 	}
