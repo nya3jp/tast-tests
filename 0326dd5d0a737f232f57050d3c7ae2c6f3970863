@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d45d6bde_fbfaad66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-22T01:45:41Z",
+      "side": 1,
+      "message": "I have added a fixture for testing. Please review. Thanks.",
+      "revId": "0326dd5d0a737f232f57050d3c7ae2c6f3970863",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
