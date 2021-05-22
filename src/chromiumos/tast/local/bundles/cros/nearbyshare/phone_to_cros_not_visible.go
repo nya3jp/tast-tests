@@ -33,7 +33,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "somecontacts",
-				Fixture: "nearbyShareDataUsageOfflineSomeContactsAndroidNotSelectedContactGAIA",
+				Fixture: "nearbyShareDataUsageOfflineSomeContactsAndroidNotSelectedContact",
 				Val: nearbytestutils.TestData{
 					Filename:    "small_jpg.zip",
 					TestTimeout: nearbycommon.DetectionTimeout,
@@ -44,7 +44,7 @@ func init() {
 			},
 			{
 				Name:    "noone",
-				Fixture: "nearbyShareDataUsageOnlineNoOneGAIA",
+				Fixture: "nearbyShareDataUsageOnlineNoOne",
 				Val: nearbytestutils.TestData{
 					Filename:    "small_jpg.zip",
 					TestTimeout: nearbycommon.DetectionTimeout,
