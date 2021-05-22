@@ -16,6 +16,24 @@
       "message": "If there\u0027s any chance of this list being expanded in the future we might want to make an array out of the packages we want to skip the check for.",
       "revId": "296b506c44a9feeb3dcb2a51a06a2ad8fe64e3c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10c609da_5b0f232e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-22T00:48:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "601c7ff3_7195e854",
+      "revId": "296b506c44a9feeb3dcb2a51a06a2ad8fe64e3c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
