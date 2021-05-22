@@ -35,6 +35,10 @@ func init() {
 				ExtraSoftwareDeps: []string{"lacros_unstable"},
 			},
 			{
+				Name:    "rootfs",
+				Fixture: "lacrosStartedFromRootfsUI",
+			},
+			{
 				Name:              "omaha",
 				Fixture:           "lacrosStartedByOmaha",
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
@@ -44,7 +48,7 @@ func init() {
 
 func ShelfLaunch(ctx context.Context, s *testing.State) {
 	f := s.FixtValue().(launcher.FixtData)
-	if f.Mode != launcher.Omaha {
+	if f.Mode == launcher.PreExist {
 		// TODO(crbug.com/1127165): Remove this when we can use Data in fixtures.
 		if err := launcher.EnsureLacrosChrome(ctx, f, s.DataPath(launcher.DataArtifact)); err != nil {
 			s.Fatal("Failed to extract lacros binary: ", err)
