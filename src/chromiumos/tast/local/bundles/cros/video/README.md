@@ -367,7 +367,12 @@ and - and * are the pixels we sample. * are the "outer corners" and - are the
 corner: three of those inside the magenta border and one inside the quadrant.
 These pixels are near each other, so this helps us detect incorrect
 stretching/shifting/rotation/mirroring. Sampling the outer corners helps us
-detect leakage of invisible data.
+detect leakage of invisible data. In practice, we offset three of the outer
+corner sampling points by 1px in video frame space in order to ignore expected
+color blending artifacts in the "exotic crop" cases where there is invisible
+data all around the visible area of the video. For the outer bottom-right
+corner, we don't offset the sampling point: we never expect blending artifacts
+there, even for the exotic crop cases.
 
 Currently, these tests report the color distance for each sampled pixel as a
 performance measurement. They don't currently fail due to unexpected colors.

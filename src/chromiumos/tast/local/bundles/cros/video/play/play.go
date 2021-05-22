@@ -533,14 +533,17 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 	// Measurement 1:
 	// We'll sample 20 interesting corner pixels and report the color distance
 	// with respect to the reference image.
-	// outerCorners defines the four absolute corners of the video, nothing fancy.
+	// outerCorners defines the four absolute corners of the video offset by 1 to
+	// ignore acceptable color blending artifacts on the edges. However, the
+	// outer bottom-right is not offset because we never expect blending artifacts
+	// there.
 	outerCorners := map[string]struct {
 		x, y int
 	}{
-		"outer_top_left":     {0, 0},
-		"outer_top_right":    {videoW - 1, 0},
+		"outer_top_left":     {1, 1},
+		"outer_top_right":    {(videoW - 1) - 1, 1},
 		"outer_bottom_right": {videoW - 1, videoH - 1},
-		"outer_bottom_left":  {0, videoH - 1},
+		"outer_bottom_left":  {1, (videoH - 1) - 1},
 	}
 	// innerCorners defines 4 stencils (one for each corner of the video). Each
 	// stencil is composed of 4 points arranged as a square. Each point
