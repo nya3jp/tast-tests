@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9b30a2c_97742213",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-23T23:42:18Z",
+      "side": 1,
+      "message": "I\u0027ve got a bit confused. It seems that the only thing I could do beside commenting is to cq+2. Since it is a clean revert, I\u0027ll cq+2. Please feel free to remove it.",
+      "revId": "bb47b744f77f0e86ed1a8696e97f6ec5544c563e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
