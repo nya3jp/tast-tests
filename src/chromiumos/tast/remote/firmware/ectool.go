@@ -9,12 +9,77 @@ package firmware
 
 import (
 	"context"
+	"reflect"
 	"strings"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
 )
+
+// Unmarshaler
+type Unmarshaler interface {
+	UnmarshalECTool([]byte) error
+}
+
+// Unmarshal parses the output from ectool into v.
+func Unmarshal(data []byte, v interface{}) error {
+	switch value := v.(type) {
+	case Unmarshaler:
+		return value.UnmarshalECTool((data))
+	case *string:
+		*value = string(data)
+		return nil
+	default:
+		// If the type is a *struct, we will try to use ':' to denote the fields.
+		// This does not cover all ectool output and will need to be overridden
+		// when the output is of a different type.
+		if reflect.TypeOf(v).Kind() == reflect.Ptr &&
+			reflect.TypeOf(v).Elem().Kind() == reflect.Struct {
+			values := parseColonDelimited(string(data))
+
+			stType := reflect.TypeOf(v).Elem()
+			stVal := reflect.ValueOf(v).Elem()
+
+			// The temporary new value that we will unmarshal to before
+			// completion.
+			newStPtr := reflect.New(stType)
+
+			// Use each struct field's ectool tag to find its parsed value.
+			// We then call Unmarshal with the struct field and parsed value
+			// to actually set the struct field.
+			for f := 0; f < stType.NumField(); f++ {
+				stTypeField := stType.Field(f)
+				tag, ok := stTypeField.Tag.Lookup("ectool")
+				if !ok {
+					return errors.New("Struct field " + stTypeField.Name +
+						" doesn't contain ectool tag.")
+				}
+
+				value, ok := values[tag]
+				if !ok {
+					return errors.New("Failed to parse " + stTypeField.Name)
+				}
+				delete(values, tag)
+
+				// Recursively call Unmarshal on each struct field to set value.
+				ret := reflect.ValueOf(Unmarshal).Call([]reflect.Value{
+					reflect.ValueOf([]byte(value)),
+					newStPtr.Elem().Field(f).Addr(),
+				})
+				if err := ret[0].Interface(); err != nil {
+					return err.(error)
+				}
+			}
+			if len(values) != 0 {
+				return errors.New("Extra parsed items remain")
+			}
+			stVal.Set(newStPtr.Elem())
+			return nil
+		}
+		return errors.Errorf("Cannot unmarshal type %T.", v)
+	}
+}
 
 // FWImageType is the type of firmware (RO or RW).
 type FWImageType string
@@ -26,8 +91,14 @@ const (
 	FWImageTypeRW      FWImageType = "RW"
 )
 
-func (t *FWImageType) String() string {
-	return string(*t)
+func (u *FWImageType) UnmarshalECTool(data []byte) error {
+	switch active := FWImageType(data); active {
+	case FWImageTypeRO, FWImageTypeRW, FWImageTypeUnknown:
+		*u = active
+		return nil
+	default:
+		return errors.Errorf("received unrecognized image type %q", active)
+	}
 }
 
 // ECToolName specifies which of the many Chromium EC based MCUs ectool will
@@ -62,11 +133,11 @@ func (ec *ECTool) Command(args ...string) *ssh.Cmd {
 // ECToolVersion holds the version parts that are returned by the
 // ectool version command.
 type ECToolVersion struct {
-	Active      FWImageType
-	ROVersion   string
-	RWVersion   string
-	BuildInfo   string
-	ToolVersion string
+	Active      FWImageType `ectool:"Firmware copy"`
+	ROVersion   string      `ectool:"RO version"`
+	RWVersion   string      `ectool:"RW version"`
+	BuildInfo   string      `ectool:"Build info"`
+	ToolVersion string      `ectool:"Tool version"`
 }
 
 func (ver *ECToolVersion) String() string {
@@ -86,34 +157,8 @@ func (ec *ECTool) Version(ctx context.Context) (ECToolVersion, error) {
 		return ECToolVersion{}, errors.Wrap(err, "running 'ectool version' on DUT")
 	}
 
-	values := parseColonDelimited(string(output))
-
 	var ver ECToolVersion
-
-	active, ok := values["Firmware copy"]
-	if !ok {
-		return ECToolVersion{}, errors.New("parsing firmware copy")
-	}
-	switch ver.Active = FWImageType(active); ver.Active {
-	case FWImageTypeRO, FWImageTypeRW, FWImageTypeUnknown:
-	default:
-		return ECToolVersion{}, errors.Errorf("received unrecognized image type %q", active)
-	}
-
-	if ver.ROVersion, ok = values["RO version"]; !ok {
-		return ECToolVersion{}, errors.New("parsing RO version")
-	}
-	if ver.RWVersion, ok = values["RW version"]; !ok {
-		return ECToolVersion{}, errors.New("parsing RW version")
-	}
-	if ver.BuildInfo, ok = values["Build info"]; !ok {
-		return ECToolVersion{}, errors.New("parsing build info")
-	}
-	if ver.ToolVersion, ok = values["Tool version"]; !ok {
-		return ECToolVersion{}, errors.New("parsing tool version")
-	}
-
-	return ver, nil
+	return ver, Unmarshal(output, &ver)
 }
 
 // VersionActive returns the EC version of the active firmware.

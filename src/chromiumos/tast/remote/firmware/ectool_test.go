@@ -46,3 +46,32 @@ Tool version:  1.1.9999-eb0d047  @funtop
 		t.Fatal("Parsed too many values.")
 	}
 }
+
+func TestECToolVersion(t *testing.T) {
+	const ectoolVersionOutput = `
+RO version:    dratini_v2.1.2766-fa4de253e
+RW version:    dratini_v2.0.2766-e28e9252c
+Firmware copy: RW
+Build info:    dratini_v2.0.2766-e28e9252c 2020-03-05 18:16:43 @chromeos-ci-legacy-us-east1-d-x32-71-nxw7
+Tool version:  1.1.9999-eb0d047  @funtop
+`
+
+	var correctVersion = ECToolVersion{
+		Active:      FWImageTypeRW,
+		ROVersion:   "dratini_v2.1.2766-fa4de253e",
+		RWVersion:   "dratini_v2.0.2766-e28e9252c",
+		BuildInfo:   "dratini_v2.0.2766-e28e9252c 2020-03-05 18:16:43 @chromeos-ci-legacy-us-east1-d-x32-71-nxw7",
+		ToolVersion: "1.1.9999-eb0d047  @funtop",
+	}
+
+	var ver ECToolVersion
+	if err := Unmarshal([]byte(ectoolVersionOutput), &ver); err != nil {
+		t.Fatal("Received error on Unmarshal: ", err)
+	}
+
+	if ver != correctVersion {
+		t.Logf("Correct Version: %#v", correctVersion)
+		t.Logf("Parsed Version: %#v", ver)
+		t.Fatal("Parsed EC Version does not match correct version.")
+	}
+}
