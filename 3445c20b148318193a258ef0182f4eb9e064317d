@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1a0b930_4c4beff5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-23T23:34:35Z",
+      "side": 1,
+      "message": "I did not test it. \nI am afraid if Name also uses regex, the formatting code works on it twice, here and underneath. Not sure if it is a problem, but nice to have a unit test for it.",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 89
+      },
+      "revId": "3445c20b148318193a258ef0182f4eb9e064317d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
