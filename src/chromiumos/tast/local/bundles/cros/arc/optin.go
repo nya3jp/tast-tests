@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"strconv"
 	"time"
 
 	"chromiumos/tast/local/arc"
@@ -24,7 +23,7 @@ func init() {
 			"mhasank@chromium.org",
 			"khmel@chromium.org", // author.
 		},
-		Attr: []string{"group:mainline", "group:arc-functional"},
+		Attr:    []string{"group:mainline", "group:arc-functional"},
 		VarDeps: []string{"ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{
 			"chrome",
@@ -32,7 +31,7 @@ func init() {
 			"play_store",
 		},
 		Params: []testing.Param{{
-			Val:               3,
+			Val:               2,
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "unstable",
@@ -41,12 +40,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
-			Val:               3,
-			ExtraSoftwareDeps: []string{"android_vm"},
-		}, {
-			Name:              "vm_unstable",
 			Val:               1,
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Timeout: 16 * time.Minute,
@@ -61,7 +55,9 @@ func Optin(ctx context.Context, s *testing.State) {
 	s.Log("Performing optin")
 
 	maxAttempts := s.Param().(int)
-	optinWithRetry(ctx, s, cr, maxAttempts)
+	if err := optin.PerformWithRetry(ctx, cr, maxAttempts); err != nil {
+		s.Fatal("Failed to optin: ", err)
+	}
 }
 
 // setupChrome starts chrome with pooled GAIA account and ARC enabled.
@@ -74,36 +70,4 @@ func setupChrome(ctx context.Context, s *testing.State) *chrome.Chrome {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	return cr
-}
-
-// optinWithRetry retries optin on failure up to maxAttempts times.
-func optinWithRetry(ctx context.Context, s *testing.State, cr *chrome.Chrome, maxAttempts int) {
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
-
-	attempts := 1
-	for {
-		err := optin.Perform(ctx, cr, tconn)
-		if err == nil {
-			break
-		}
-
-		if err := optin.DumpLogCat(ctx, strconv.Itoa(attempts)); err != nil {
-			s.Logf("WARNING: Failed to dump logcat: %s", err)
-		}
-
-		if attempts >= maxAttempts {
-			s.Fatal("Failed to optin: ", err)
-		}
-
-		s.Log("Retrying optin, previous attempt failed: ", err)
-		attempts = attempts + 1
-
-		// Opt out.
-		if err := optin.SetPlayStoreEnabled(ctx, tconn, false); err != nil {
-			s.Fatal("Failed to optout: ", err)
-		}
-	}
 }
