@@ -16,6 +16,98 @@
       "message": "Hi,\n\nPlease review this CL.\n\nThis CL adds two Bluetooth UI tests that test where bluetooth can be turned on from the ChromeOS setting page and bluetooth setting page. These test are very similar to following CL\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2904511\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2893546\n\nRegards\nShijin ",
       "revId": "1c685eb5d0104804c0604ff6c1ac8cdf97abfa64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b07459cf_5638b70d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-05-24T23:17:09Z",
+      "side": 1,
+      "message": "how about having a short url？",
+      "range": {
+        "startLine": 24,
+        "startChar": 46,
+        "endLine": 24,
+        "endChar": 117
+      },
+      "revId": "1c685eb5d0104804c0604ff6c1ac8cdf97abfa64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d673c3cd_b99f1b38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-05-24T23:17:09Z",
+      "side": 1,
+      "message": "Recommend using Fixture, aka precondition v2. \nPrecondition will be replace by fixture in the future. \n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/fixture.go?q\u003dfixture%20f:chrome%20f:tast-tests",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 5
+      },
+      "revId": "1c685eb5d0104804c0604ff6c1ac8cdf97abfa64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20e1fc9d_12a92fc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-05-24T23:17:09Z",
+      "side": 1,
+      "message": "enabled.",
+      "range": {
+        "startLine": 79,
+        "startChar": 34,
+        "endLine": 79,
+        "endChar": 42
+      },
+      "revId": "1c685eb5d0104804c0604ff6c1ac8cdf97abfa64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07bde2aa_58dd53f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_os_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-05-24T23:17:09Z",
+      "side": 1,
+      "message": "enabled.",
+      "range": {
+        "startLine": 79,
+        "startChar": 34,
+        "endLine": 79,
+        "endChar": 42
+      },
+      "revId": "1c685eb5d0104804c0604ff6c1ac8cdf97abfa64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
