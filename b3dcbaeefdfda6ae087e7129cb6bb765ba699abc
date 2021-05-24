@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4e45663_5703212f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-24T17:45:52Z",
+      "side": 1,
+      "message": "Add the comment that test fails now and also the tracking bug if any for clarity.",
+      "range": {
+        "startLine": 9,
+        "startChar": 110,
+        "endLine": 9,
+        "endChar": 182
+      },
+      "revId": "b3dcbaeefdfda6ae087e7129cb6bb765ba699abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc94b36f_31dbab77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-24T17:45:52Z",
+      "side": 1,
+      "message": "LGTM with nits.",
+      "revId": "b3dcbaeefdfda6ae087e7129cb6bb765ba699abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c77edb4d_3cfeff69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-24T17:45:52Z",
+      "side": 1,
+      "message": "nit : Punctuate go/go-style/decisions#comment-sentences",
+      "range": {
+        "startLine": 684,
+        "startChar": 0,
+        "endLine": 684,
+        "endChar": 61
+      },
+      "revId": "b3dcbaeefdfda6ae087e7129cb6bb765ba699abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
