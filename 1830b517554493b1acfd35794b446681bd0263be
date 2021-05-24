@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d88ffad9_f7af5d53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-05-24T10:34:39Z",
+      "side": 1,
+      "message": "Oh I see the problem here. Thanks for the clarification.\n\nHow about we add a bool variable for control and change the template to something like \n{{if .use_underlay_ip}}{{.netns_ip}}{{else}}{{.xl2tpd_server_ip_address}}{{end}}\n?",
+      "parentUuid": "3c5f04a4_2cd61a9b",
+      "revId": "1830b517554493b1acfd35794b446681bd0263be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a11b983a_193dc550",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
         "patchSetId": 2
