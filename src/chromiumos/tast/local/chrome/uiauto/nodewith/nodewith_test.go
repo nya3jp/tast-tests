@@ -50,6 +50,8 @@ func TestAttributeMatcher(t *gotesting.T) {
 	}{
 		{Role(role.Button), `{}`},
 		{ClassName("clsname"), `{"className":"clsname",}`},
+		{HasClass("clsname"), `{"className":/\bclsname\b/,}`},
+		{HasClass("clsname").NameRegex(regexp.MustCompile("^/nameBlah$")), `{"className":/\bclsname\b/,"name":selectName({"en":/^\/nameBlah$/,})}`},
 		{Name("hello"),
 			`{"name":selectName({"ar-XB":/^olleh$/,"en":/^hello$/,"en-XA":/^ĥéļļö one$/,})}`},
 		{Name("/blah"), `{"name":selectName({"ar-XB":/^halb\/$/,"en":/^\/blah$/,"en-XA":/^\/bļåĥ one$/,})}`},
@@ -83,6 +85,8 @@ func TestPrettyPrinter(t *gotesting.T) {
 		{newFinder(), `{}`},
 		{Role(role.Button), `{role: button}`},
 		{ClassName("clsname"), `{className: "clsname"}`},
+		{HasClass("clsname"), `{className: /\bclsname\b/}`},
+		{HasClass("clsname").NameRegex(regexp.MustCompile("^/nameBlah$")), `{name: /^/nameBlah$/, className: /\bclsname\b/}`},
 		{Name("hello"), `{name: /^hello$/}`},
 		{Collapsed(), `{state: map[collapsed:true]}`},
 		{First(), `{first: true}`},
