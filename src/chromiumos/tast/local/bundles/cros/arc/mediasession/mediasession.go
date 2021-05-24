@@ -79,7 +79,11 @@ func AbandonAudioFocusInAndroid(ctx context.Context, dev *ui.Device) error {
 
 // RunTest starts Chrome with the media session features enabled. It installs the ARC test app, launches it and waits for it to be ready.
 func RunTest(ctx context.Context, s *testing.State, f TestFunc) {
-	args := []string{"--enable-features=ArcEnableUnifiedAudioFocus,MediaSessionService,AudioFocusEnforcement"}
+	args := []string{
+		"--enable-features=ArcEnableUnifiedAudioFocus,MediaSessionService,AudioFocusEnforcement",
+		// Allow media autoplay. <video> tag won't automatically play upon loading the source unless this flag is set.
+		"--autoplay-policy=no-user-gesture-required",
+	}
 
 	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(args...))
 	if err != nil {
