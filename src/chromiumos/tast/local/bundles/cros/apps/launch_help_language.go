@@ -37,9 +37,9 @@ func init() {
 
 func LaunchHelpLanguage(ctx context.Context, s *testing.State) {
 	const (
-		regionCode         = "jp"
-		appName            = "使い方・ヒント"
-		welcomeHeadingName = "Chrome デバイス へようこそ"
+		regionCode       = "jp"
+		appName          = "使い方・ヒント"
+		helpCategoryName = "新機能"
 	)
 
 	cr := s.FixtValue().(*chrome.Chrome)
@@ -63,7 +63,8 @@ func LaunchHelpLanguage(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
 
 	appRootFinder := nodewith.Name(appName).Role(role.RootWebArea)
-	welcomeTextFinder := nodewith.Role(role.Heading).Name(welcomeHeadingName).Ancestor(appRootFinder)
+
+	welcomeTextFinder := nodewith.Name(helpCategoryName).First().Ancestor(appRootFinder)
 	if err := ui.WaitUntilExists(welcomeTextFinder)(ctx); err != nil {
 		s.Fatalf("Failed to launch Help in %s language: %v", regionCode, err)
 	}
