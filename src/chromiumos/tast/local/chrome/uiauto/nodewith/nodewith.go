@@ -78,6 +78,8 @@ func (f *Finder) attributesBytes() ([]byte, error) {
 			fmt.Fprintf(&buf, "%q:%q,", k, v)
 		case int, float32, float64, bool:
 			fmt.Fprintf(&buf, "%q:%v,", k, v)
+		case *regexp.Regexp:
+			fmt.Fprintf(&buf, `%q:/%s/,`, k, strings.ReplaceAll(fmt.Sprintf("%v", v), "/", "\\/"))
 		default:
 			return nil, errors.Errorf("nodewith.Finder does not support type(%T) for parameter(%s)", v, k)
 		}
@@ -566,6 +568,16 @@ func ClassName(n string) *Finder {
 // ClassName creates a copy of the input Finder with the specified class name.
 func (f *Finder) ClassName(n string) *Finder {
 	return f.Attribute("className", n)
+}
+
+// ClassNameRegex creates a Finder with a class name containing the specified regexp.
+func ClassNameRegex(r *regexp.Regexp) *Finder {
+	return Attribute("className", r)
+}
+
+// ClassNameRegex creates a copy of the input Finder with a class name containing the specified regexp.
+func (f *Finder) ClassNameRegex(r *regexp.Regexp) *Finder {
+	return f.Attribute("className", r)
 }
 
 // AutofillAvailable creates a Finder with AutofillAvailable set to true.
