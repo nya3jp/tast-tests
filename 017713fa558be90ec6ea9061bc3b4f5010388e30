@@ -22,6 +22,30 @@
       },
       "revId": "017713fa558be90ec6ea9061bc3b4f5010388e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "861327d4_4f5f236d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-05-24T12:14:15Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong opinion on that. Let\u0027s see what tast-owners think.",
+      "parentUuid": "8d426c59_cd6f88fe",
+      "range": {
+        "startLine": 158,
+        "startChar": 6,
+        "endLine": 158,
+        "endChar": 18
+      },
+      "revId": "017713fa558be90ec6ea9061bc3b4f5010388e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
