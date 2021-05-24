@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5154bfa7_f330bfd8",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-05-24T20:30:39Z",
+      "side": 1,
+      "message": "Not necessary as preExist takes precedence over any lacros selection.",
+      "parentUuid": "3a354ec4_e8cfbcbf",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 50
+      },
+      "revId": "b7621d24e51b5bbbf0cc52f290dbbc364a8729a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0064a62c_2e4fc9ca",
         "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
         "patchSetId": 2
@@ -88,6 +112,53 @@
         "startChar": 4,
         "endLine": 110,
         "endChar": 52
+      },
+      "revId": "b7621d24e51b5bbbf0cc52f290dbbc364a8729a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfbd408b_dd770ed6",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-05-24T20:30:39Z",
+      "side": 1,
+      "message": "Without this flag, the rootfs lacros will be used (if no stateful lacros existed prior).\n\nSo this forces using stateful lacros + fetching from Omaha it seems.\nWhich seems correct to me.\n\nMaybe a new fixtures is required to test normal flow, which would select rootfs over stateful if there aren\u0027t any existing stateful lacros.",
+      "parentUuid": "0064a62c_2e4fc9ca",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 52
+      },
+      "revId": "b7621d24e51b5bbbf0cc52f290dbbc364a8729a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0f642de_8bc6573f",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-05-24T20:30:39Z",
+      "side": 1,
+      "message": "lacros.squash",
+      "range": {
+        "startLine": 289,
+        "startChar": 27,
+        "endLine": 289,
+        "endChar": 33
       },
       "revId": "b7621d24e51b5bbbf0cc52f290dbbc364a8729a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
