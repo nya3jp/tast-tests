@@ -132,6 +132,9 @@ func (d *Device) ListContents(ctx context.Context, path string) ([]string, error
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to list contents under %v", path)
 	}
+	if len(res) == 0 {
+		return nil, nil
+	}
 	return strings.Split(strings.TrimRight(string(res), "\n"), "\n"), nil
 }
 
