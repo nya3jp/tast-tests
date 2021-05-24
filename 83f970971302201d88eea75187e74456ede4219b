@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5f73e5d_e769d67a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-24T05:28:01Z",
+      "side": 1,
+      "message": "also +1 to separate. I think the ShillInit* tests has quite clean test body. It takes a few more jumps to trace the whole code, but I think golang plugins can do this nicely.",
+      "parentUuid": "82d90588_2b4e0fa3",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8df4882a_616c9dc7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
         "patchSetId": 9
