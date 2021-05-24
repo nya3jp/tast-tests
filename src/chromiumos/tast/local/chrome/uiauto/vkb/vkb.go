@@ -8,6 +8,7 @@ package vkb
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"strings"
 	"time"
 
@@ -317,11 +318,26 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToVoiceInput() uiauto.Action {
 // changing virtual keyboard to handwriting input layout
 // and waits for the handwriting engine to become ready.
 func (vkbCtx *VirtualKeyboardContext) TapHandwritingInputAndWaitForEngine(checkHandwritingEngineReady uiauto.Action) uiauto.Action {
+	// Close the information dialogue if it shows in longform canvas when it is first time used
+	closeInfoDialogue := func(ctx context.Context) error {
+		dialogueCloseButton := KeyFinder.Name("Got it").Focusable()
+		dialogueFound, err := vkbCtx.ui.IsNodeFound(ctx, dialogueCloseButton)
+		if err != nil {
+			return err
+		}
+		if dialogueFound {
+			return vkbCtx.ui.LeftClick(dialogueCloseButton)(ctx)
+		}
+		return nil
+	}
 	return uiauto.Combine("tap handwriting layout button and wait for engine ready",
 		vkbCtx.ui.LeftClick(KeyFinder.Name("switch to handwriting, not compatible with ChromeVox")),
+		// Wait for the handwriting canvas to be stable
+		vkbCtx.ui.WaitForLocation(NodeFinder.Role(role.Canvas)),
+		closeInfoDialogue,
 		// Wait for the handwriting input to become ready to take in the handwriting.
 		// If a stroke is completed before the handwriting input is ready, the stroke will not be recognized.
-		vkbCtx.ui.WithTimeout(30*time.Second).Retry(10, checkHandwritingEngineReady))
+		vkbCtx.ui.WithTimeout(time.Minute).Retry(10, checkHandwritingEngineReady))
 }
 
 // EnableA11yVirtualKeyboard returns an action enabling or disabling
@@ -342,4 +358,40 @@ func (vkbCtx *VirtualKeyboardContext) SelectFromSuggestion(candidateText string)
 	return uiauto.Combine("wait for suggestion and select",
 		ac.WaitUntilExists(suggestionFinder),
 		ac.LeftClick(suggestionFinder))
+}
+
+// IsLongform checks if the handwriting canvas is longform or not
+// It returns true if found otherwise false.
+func (vkbCtx *VirtualKeyboardContext) IsLongform(ctx context.Context) (bool, error) {
+	return vkbCtx.ui.IsNodeFound(ctx, NodeFinder.ClassNameRegex(regexp.MustCompile(".*lf-editing-mode.*")))
+}
+
+// ClearHandwritingCanvas clears the handwriting Canvas
+func (vkbCtx *VirtualKeyboardContext) ClearHandwritingCanvas() uiauto.Action {
+	return func(ctx context.Context) error {
+		isLF, err := vkbCtx.IsLongform(ctx)
+		if err != nil {
+			return err
+		}
+
+		switch isLF {
+		case false:
+			// If it is not longform, tap backspace to clear the canvas
+			return vkbCtx.TapKey("backspace")(ctx)
+		case true:
+			// Undo key remains on the keyboard if the canvas is not clear in longform canvas
+			undoKey := KeyFinder.Name("undo")
+			needToClear, err := vkbCtx.ui.IsNodeFound(ctx, undoKey)
+			if err != nil {
+				return err
+			}
+
+			if needToClear {
+				// Repeatedly click undo until the backspace key appears, indicating the canvas is clear
+				return vkbCtx.ui.LeftClickUntil(undoKey, vkbCtx.ui.Exists(KeyFinder.Name("backspace")))(ctx)
+			}
+		}
+
+		return nil
+	}
 }

@@ -158,7 +158,7 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 		vkbCtx.TapHandwritingInputAndWaitForEngine(uiauto.Combine("Wait for handwriting engine to be ready",
 			vkbCtx.DrawHandwritingFromFile(s.DataPath(handwritingWarmupFile)),
 			its.WaitForFieldValueToBe(inputField, handwritingWarmupDigit))),
-		vkbCtx.TapKey("backspace"),
+		vkbCtx.ClearHandwritingCanvas(),
 		its.Clear(inputField),
 		vkbCtx.DrawHandwritingFromFile(s.DataPath(params.handwritingFile)),
 		its.WaitForFieldValueToBe(inputField, params.expectedText),
