@@ -36,7 +36,7 @@ type IMESettings struct {
 // LaunchAtInputsSettingsPage launches Settings app at inputs setting page.
 func LaunchAtInputsSettingsPage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (*IMESettings, error) {
 	ui := uiauto.New(tconn)
-	inputsHeading := nodewith.Name("Inputs").Role(role.Heading).Ancestor(ossettings.WindowFinder)
+	inputsHeading := nodewith.NameStartingWith("Inputs").Role(role.Heading).Ancestor(ossettings.WindowFinder)
 	settings, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, inputsSubPageURL, ui.Exists(inputsHeading))
 	if err != nil {
 		return nil, err
