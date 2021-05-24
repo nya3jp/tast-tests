@@ -16,6 +16,74 @@
       "message": "I\u0027ll defer Matt to review.",
       "revId": "60364036164626569512659b7445377863b5d557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b80a706_5df8d28d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-24T01:33:41Z",
+      "side": 1,
+      "message": "Related to our discussion offline, I think we should do the following:\n* Add a HasClass method, and mark the ClassName method as deprecated\n* Create a CL that converts all ClassName uses to HasClass method. Since we\u0027re changing the code in the test cases, instead of in the nodewith package, that should make it far easier for the devs to blame this CL if their tests start breaking",
+      "revId": "60364036164626569512659b7445377863b5d557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5add1a0_09a71d3c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-24T01:33:41Z",
+      "side": 1,
+      "message": "After talking offline, I think that we should expose a HasClass(x) method that just calls Attribute(\"className\", regexp.MustCompile(\"\\\\b\" + quotemeta(x) + \"\\\\b\") or similar.\n\nThe only potential issue I can see with that solution is if you have multiple HasClass(), then it won\u0027t work (since it will overwrite). If that\u0027s the case, we could have a list stored directly in the finder instead of in attributes like we have for Name()",
+      "revId": "60364036164626569512659b7445377863b5d557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "399ee7e9_3dd95a60",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-24T01:33:41Z",
+      "side": 1,
+      "message": "We should use newFinder().method(args) when possible, to avoid code duplication",
+      "revId": "60364036164626569512659b7445377863b5d557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18e27a1c_321278fb",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-24T01:33:41Z",
+      "side": 1,
+      "message": "Please add a test to the pretty printer as well. I didn\u0027t confirm that it worked with regexes when I wrote it, since you couldn\u0027t add a regex.",
+      "revId": "60364036164626569512659b7445377863b5d557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
