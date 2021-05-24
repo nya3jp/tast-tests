@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "764643fd_c8802328",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-24T16:50:49Z",
+      "side": 1,
+      "message": "Most of this code comes from RoamFT, that\u0027s why I initially wanted to build upon that test.",
+      "parentUuid": "53f93c46_8d1251f8",
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c2e930a_1d059ab6",
@@ -91,6 +109,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0f703b2_b7f6f9ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-24T16:50:49Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "f5f73e5d_e769d67a",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8df4882a_616c9dc7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
         "patchSetId": 9
@@ -102,6 +144,30 @@
       "writtenOn": "2021-05-21T02:09:47Z",
       "side": 1,
       "message": "what\u0027s a typical test time for one of these? I\u0027m interested because:\n\n1. 50 roams is kind of a lot (?), and seems like it might bump up on the default Tast timeout limit -- I think it\u0027s only a small single-digit number of minutes? so you might want to specify a timeout explicitly. testing.Test has a Timeout field\n2. lab impact -- a few minutes probably isn\u0027t too bad I guess, but if this grows too many test cases, we\u0027ll at least want to give Harpreet a heads-up",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 13
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cf3ef10_be0f9063",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-24T16:50:49Z",
+      "side": 1,
+      "message": "Scan takes ~5s, roam itself not - ~1.3s.\nWhole ping test (incl setup) for 50 rounds is ~2:30 min. The setup in netperf case is longer, so the whole 50-rounds test takes ~5min.",
+      "parentUuid": "8df4882a_616c9dc7",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -137,6 +203,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7cb3d780_246b23da",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-24T16:50:49Z",
+      "side": 1,
+      "message": "I can add comments, sure.",
+      "parentUuid": "2eacdb1c_cade811e",
+      "range": {
+        "startLine": 62,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 55
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f80a18b_5b0254cb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
         "patchSetId": 9
@@ -148,6 +238,30 @@
       "writtenOn": "2021-05-21T02:09:47Z",
       "side": 1,
       "message": "any chance we can update these to 11n or 11ac? I recall you complaining some about performance imbalance between AP 0 and 1, and that would help at least a bit.",
+      "range": {
+        "startLine": 76,
+        "startChar": 74,
+        "endLine": 76,
+        "endChar": 84
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba11158d_c23deeb4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-24T16:50:49Z",
+      "side": 1,
+      "message": "Here it\u0027s no isssue, as I\u0027m not flooding with ping, using a reasonable rate of 1/10ms.\nI plan to upgrade AP0 for the netperf tests.",
+      "parentUuid": "2f80a18b_5b0254cb",
       "range": {
         "startLine": 76,
         "startChar": 74,
@@ -206,6 +320,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "954bc1d5_a66c569d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-24T16:50:49Z",
+      "side": 1,
+      "message": "This was added on Matthew\u0027s request.\nI can add a TODO, too.",
+      "parentUuid": "d53a0b7a_ed047bd0",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 9
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "878bc94c_a8eba8f6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
         "patchSetId": 9
@@ -217,6 +355,30 @@
       "writtenOn": "2021-05-21T02:09:47Z",
       "side": 1,
       "message": "that\u0027s funny -- you\u0027re converting to a string just to convert back 2 lines down? Seems like you could flip this around; perform string parsing only if the var exists. We should also rely on the \u0027ok\u0027 status instead of a \"\" string comparison.\n\nLike:\n\n  var rounds int\n  if str, ok :\u003d s.Var(...); ok {\n    ...\n  } else {\n    rounds \u003d param.rounds\n  }\n\nOr something close to that.",
+      "range": {
+        "startLine": 256,
+        "startChar": 14,
+        "endLine": 256,
+        "endChar": 40
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a2f5039_b469ddeb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-24T16:50:49Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "878bc94c_a8eba8f6",
       "range": {
         "startLine": 256,
         "startChar": 14,
@@ -276,6 +438,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e16c0f96_3ef92163",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-24T16:50:49Z",
+      "side": 1,
+      "message": "If you think it\u0027s worth to wait for BSS TM version, it can wait.\nOr could we have both versions? Or simply replace this one once BSS TM is ready?",
+      "parentUuid": "98806cdd_4521bdde",
+      "range": {
+        "startLine": 522,
+        "startChar": 0,
+        "endLine": 535,
+        "endChar": 3
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8372826c_3d2dbfbe",
         "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
         "patchSetId": 9
@@ -287,6 +473,30 @@
       "writtenOn": "2021-05-21T02:09:47Z",
       "side": 1,
       "message": "[I haven\u0027t tried to run this whole test myself yet:]\nDo we get a good log of when various state transitions or iterations are happening? e.g., for debugging, or understanding the difference between \"I started a new iteration immediately in the middle of roaming\" vs. \"roaming during a longer iteration\" (think, netperf variants, which are more complex than ping tests).\n\nif not, do we need to log something within handleEvent() or similar?",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 8
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2bcc817_b565924b",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-24T16:50:49Z",
+      "side": 1,
+      "message": "I had some more debug during development, but I\u0027ve removed it.\nAnyway, I think that general state transition logging would clutter the logs; if the users wants to see in the logs when each iteration started/ended, they may add the logs themselves. At least this is how I use it (I log the results of each iteration).",
+      "parentUuid": "8372826c_3d2dbfbe",
       "range": {
         "startLine": 175,
         "startChar": 0,

@@ -39,6 +39,30 @@
       },
       "revId": "b65fbbc5fe222e701817ef9477c5d1ea8e6d5155",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e76e1337_275327db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-24T16:50:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "494e946c_865248f4",
+      "range": {
+        "startLine": 65,
+        "startChar": 24,
+        "endLine": 65,
+        "endChar": 67
+      },
+      "revId": "b65fbbc5fe222e701817ef9477c5d1ea8e6d5155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
