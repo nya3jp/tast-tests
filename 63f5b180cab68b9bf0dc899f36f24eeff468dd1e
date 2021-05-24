@@ -198,6 +198,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b3b5165_882522ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-24T15:31:21Z",
+      "side": 1,
+      "message": "Yes, that would be fine.",
+      "parentUuid": "3f0678a0_45ecf9f3",
+      "range": {
+        "startLine": 26,
+        "startChar": 24,
+        "endLine": 26,
+        "endChar": 40
+      },
+      "revId": "63f5b180cab68b9bf0dc899f36f24eeff468dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8e92843_8a728d79",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
         "patchSetId": 1
