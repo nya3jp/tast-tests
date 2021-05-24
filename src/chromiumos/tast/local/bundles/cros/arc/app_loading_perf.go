@@ -43,6 +43,9 @@ var (
 
 	// arcAppLoadingRtVcpuVMBooted adds feature to boot ARC with realtime vcpu is enabled.
 	arcAppLoadingRtVcpuVMBooted = arc.NewPrecondition("arcapploading_rt_vcpu_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--enable-arcvm-rt-vcpu", "--ignore-arcvm-dev-conf")...)
+
+	// arcAppLoadingUseHugePagesVMBooted enable Huge Pages for guest memory mappings.
+	arcAppLoadingUseHugePagesVMBooted = arc.NewPrecondition("arcapploading_use_hugepages_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--arcvm-use-hugepages", "--ignore-arcvm-dev-conf")...)
 )
 
 func init() {
@@ -84,6 +87,15 @@ func init() {
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingRtVcpuVMBooted,
+		}, {
+			Name:              "huge_pages_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: testParameters{
+				batteryMode:       setup.ForceBatteryDischarge,
+				binaryTranslation: false,
+			},
+			Pre: arcAppLoadingUseHugePagesVMBooted,
 		}, {
 			Name:              "binarytranslation",
 			ExtraSoftwareDeps: []string{"android_p"},
