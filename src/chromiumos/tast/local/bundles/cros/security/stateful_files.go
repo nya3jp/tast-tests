@@ -62,6 +62,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Path("encrypted/var/cache/external_cache"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
 		chk.NewPattern(chk.Tree("encrypted/var/cache/ldconfig"), chk.Users("root"), chk.Groups("root"), chk.NotMode(077)),
 		chk.NewPattern(chk.Tree("encrypted/var/cache/modemfwd"), chk.Users("modem"), chk.Groups("modem"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("encrypted/var/cache/modem-utilities"), chk.Users("shill-scripts"), chk.Groups("shill-scripts"), chk.Mode(0664)),
 		chk.NewPattern(chk.Path("encrypted/var/cache/shared_extensions"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
 		chk.NewPattern(chk.Tree("encrypted/var/cache/shill"), chk.Users("shill"), chk.Groups("shill"), chk.NotMode(022)),
 		chk.NewPattern(chk.Path("encrypted/var/cache/signin_profile_component_policy"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
