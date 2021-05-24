@@ -50,6 +50,24 @@
       "message": "Hot take: this strings.Split edge-case behavior is counter-intuitive.",
       "revId": "643820cf97255c9d4da3d923ad60662726a2ad07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b47215e5_2d69029e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-24T20:49:46Z",
+      "side": 1,
+      "message": "Haha I agree, it was really confusing to debug this until I read the strings.Split documentation, very unintuitive",
+      "parentUuid": "d20d0181_d4983572",
+      "revId": "643820cf97255c9d4da3d923ad60662726a2ad07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
