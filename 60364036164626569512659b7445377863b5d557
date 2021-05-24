@@ -84,6 +84,24 @@
       "message": "Please add a test to the pretty printer as well. I didn\u0027t confirm that it worked with regexes when I wrote it, since you couldn\u0027t add a regex.",
       "revId": "60364036164626569512659b7445377863b5d557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9376ba50_4516f0f4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-24T01:36:13Z",
+      "side": 1,
+      "message": "Note that you might need to sync to get those changes - I only submitted the pretty printer late last week, IIRC",
+      "parentUuid": "18e27a1c_321278fb",
+      "revId": "60364036164626569512659b7445377863b5d557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
