@@ -79,6 +79,16 @@ func init() {
 				chromeArgs:        []string{"--enable-arcvm-rt-vcpu"},
 			},
 		}, {
+			Name:              "unmanaged_huge_pages_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: testParam{
+				username:          "arc.AuthPerf.unmanaged_username",
+				password:          "arc.AuthPerf.unmanaged_password",
+				maxErrorBootCount: 3,
+				resultSuffix:      "",
+				chromeArgs:        []string{"--arcvm-use-hugepages"},
+			},
+		}, {
 			Name:              "managed",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
