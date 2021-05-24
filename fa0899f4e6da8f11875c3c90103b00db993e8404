@@ -85,6 +85,24 @@
       "message": "Ideally, I want to do \"--log_level 1\", but it wasn\u0027t working for some reason.",
       "revId": "fa0899f4e6da8f11875c3c90103b00db993e8404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d164735a_cd5ac214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-05-24T21:58:16Z",
+      "side": 1,
+      "message": "\"--log_level\u003d1\" works, but not \"--log_level 1\".",
+      "parentUuid": "bb2821ae_1bc1f262",
+      "revId": "fa0899f4e6da8f11875c3c90103b00db993e8404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
