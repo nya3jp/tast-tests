@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24b40fc8_2522a93d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-05-24T07:42:38Z",
+      "side": 1,
+      "message": "I think you can just change the variable value in vpn_server.go:179 (\"xl2tpd_server_ip_address\": xl2tpdServerIPAddress) to avoid copying the template and make the code easier to read? After all, I guess that\u0027s the original reason why a template is used here.",
+      "parentUuid": "7437728f_6a5135f6",
+      "revId": "1830b517554493b1acfd35794b446681bd0263be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a11b983a_193dc550",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
         "patchSetId": 2
@@ -220,6 +238,30 @@
       "side": 1,
       "message": "Thanks for the information!\nSo I tried to change this to \"Ip\" and I found that it will make presubmit check unhappy... Actually \"IP\" is preferred in go, see https://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nChanged it to underlayIPIsOverlayIP",
       "parentUuid": "75fe0bfb_cfd7158e",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "1830b517554493b1acfd35794b446681bd0263be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00a7f9ea_c0e8d56d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-05-24T07:42:38Z",
+      "side": 1,
+      "message": "Thanks for digging out the Go naming preference. Good to learn.",
+      "parentUuid": "b3253c62_a3568d9a",
       "range": {
         "startLine": 31,
         "startChar": 9,
