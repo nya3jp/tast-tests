@@ -46,6 +46,30 @@
       },
       "revId": "92bf11de72364278a57714649ae4725633c25caf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "407466a1_4dfed5f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-24T05:22:48Z",
+      "side": 1,
+      "message": "I will create a bug to stabilize the API (Settings UI Library) as there might be use case where some pages doesn\u0027t have URL and have to use this API.",
+      "parentUuid": "6e1a1a59_5ca147bc",
+      "range": {
+        "startLine": 10,
+        "startChar": 53,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "92bf11de72364278a57714649ae4725633c25caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
