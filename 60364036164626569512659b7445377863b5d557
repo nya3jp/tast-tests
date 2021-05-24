@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e803f26_e6e4b80c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-24T03:57:36Z",
+      "side": 1,
+      "message": "TLDR: It is possible that we will break existing tast tests, but at least if we break them, it will be done so with a change to the test code, not the app code, which is much easier to debug, and will prevent future changes to the app code breaking the test (also, we can just run the tests locally after changing them, and it should pick up any issues before submit).\n\nSemantically, classes are the same as in HTML - a class is, semantically, a set of strings. There\u0027s a good reason that no-one ever writes HTML that says \"an element that matches this class, and has no other classes\".\n\nYou should never assert that the set of classes is *precisely* this, and *in this specific order*. The latter is unlikely to cause flakiness, but is stylistically bad. The former, on the other hand, is a significant concern.\n\nConsider a very plausible made-up example case here based on a real-world use case:\n* In the files app, when opening a directory, each file/subdirectory has the class table-row\n* When you open the app, there is just a single entry, the \"Downloads\" directory, so you create a selector Name(\"Downloads\").ClassName(\"table-row\")\n* UX decides that they want directories to look different to files, so each entry is given either the class \"directory\" or \"file\" to style it differently.\n* Your test breaks because someone added some styling to the element you were looking for.\n\nThis is a list of all the entries that currently search for multiple classes (there are only 4).\nhttps://source.chromium.org/search?q\u003dClassName%5C(%5C%22%5B%5E%22%5D%2B%5C%20\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2F",
+      "parentUuid": "fd978e92_d65d71e4",
+      "revId": "60364036164626569512659b7445377863b5d557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5add1a0_09a71d3c",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
         "patchSetId": 2
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Just to be clear, are you suggesting to use only HasClass(x) and remove ClassNameRegex(r)?",
       "parentUuid": "d5add1a0_09a71d3c",
+      "revId": "60364036164626569512659b7445377863b5d557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e6c4bb2_07690671",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-05-24T03:57:36Z",
+      "side": 1,
+      "message": "I am - sorry, when I commented on this CL, I was under the impression that it was Jun\u0027s CL, so you may be missing some context.",
+      "parentUuid": "83356f6e_67ffcab9",
       "revId": "60364036164626569512659b7445377863b5d557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
