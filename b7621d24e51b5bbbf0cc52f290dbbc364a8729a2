@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05a77a24_37fbd34b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-24T20:27:21Z",
+      "side": 1,
+      "message": "Can you also run lacros.Basic and lacros.AppLaunch to make sure you didn\u0027t break those",
+      "range": {
+        "startLine": 16,
+        "startChar": 21,
+        "endLine": 16,
+        "endChar": 66
+      },
+      "revId": "b7621d24e51b5bbbf0cc52f290dbbc364a8729a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3579a793_bf35ff8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-24T20:27:21Z",
+      "side": 1,
+      "message": "Why did you change this?\n\nlacros.ShelfLaunch.omaha uses it ?",
+      "range": {
+        "startLine": 51,
+        "startChar": 23,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "b7621d24e51b5bbbf0cc52f290dbbc364a8729a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a354ec4_e8cfbcbf",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-24T20:27:21Z",
+      "side": 1,
+      "message": "Is this needed? Is stateful the default?",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 50
+      },
+      "revId": "b7621d24e51b5bbbf0cc52f290dbbc364a8729a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0064a62c_2e4fc9ca",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-24T20:27:21Z",
+      "side": 1,
+      "message": "Is this needed? This fixture tests the real end user scenario so I\u0027d prefer to not add flags to it and just use the defaults",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 52
+      },
+      "revId": "b7621d24e51b5bbbf0cc52f290dbbc364a8729a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
