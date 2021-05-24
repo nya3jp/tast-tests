@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75fef153_ef4dd6c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-24T03:15:51Z",
+      "side": 1,
+      "message": "It\u0027s still unclear, why this happens? If:\n- It is actual production breakage, the test behaved well to capture the issue. We should fix it, instead.\n- It is just what test specific code failing, we should either remove the method of stabilize the method, otherwise other callers could have the same issue.\nI think.\n\nWhat is your situation?",
+      "range": {
+        "startLine": 10,
+        "startChar": 53,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "92bf11de72364278a57714649ae4725633c25caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
