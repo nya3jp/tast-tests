@@ -21,11 +21,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     TriggeredOnBoot,
-		Desc:     "Hammerd smoke test to check if Hammerd is triggered on boot",
-		Contacts: []string{"fshao@chromium.org"},
-		Attr:     []string{"group:mainline", "informational"},
-		Timeout:  1 * time.Minute,
+		Func:         TriggeredOnBoot,
+		Desc:         "Hammerd smoke test to check if Hammerd is triggered on boot",
+		Contacts:     []string{"fshao@chromium.org"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"hammerd"},
+		Timeout:      1 * time.Minute,
 	})
 }
 
