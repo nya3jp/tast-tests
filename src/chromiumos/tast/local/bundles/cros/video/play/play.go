@@ -269,9 +269,9 @@ func playSeekVideo(ctx context.Context, cs ash.ConnSource, videoFile, baseURL st
 	return nil
 }
 
-// colorDistance returns the maximum absolute difference between each component of a and b.
+// ColorDistance returns the maximum absolute difference between each component of a and b.
 // Both a and b are assumed to be RGBA colors.
-func colorDistance(a, b color.Color) int {
+func ColorDistance(a, b color.Color) int {
 	aR, aG, aB, aA := a.RGBA()
 	bR, bG, bB, bA := b.RGBA()
 	abs := func(a int) int {
@@ -298,6 +298,78 @@ func colorDistance(a, b color.Color) int {
 		abs(int(aA>>8)-int(bA>>8)))
 }
 
+// ColorSamplingPointsForStillColorsVideo returns a map of points that are considered to be
+// interesting in the rendering of the still-colors-*.mp4 test videos. The key in the map is
+// a name for the corresponding point. There are two categories of points:
+//
+// - Outer corners: the four absolute corners of the video offset by 1 to ignore acceptable
+//   color blending artifacts on the edges. However, the outer bottom-right is not offset
+//   because we never expect blending artifacts there.
+//
+// - Inner corners: 4 stencils (one for each corner of the video). Each stencil is composed
+//   of 4 sampling points arranged as a square. The expectation is that for each stencil, 3
+//   of its points fall on the interior border of the test video while the remaining point
+//   falls inside one of the color rectangles. This helps us detect undesired
+//   stretching/shifting/rotation/mirroring. The naming convention for each point of a
+//   stencil is as follows:
+//
+//     inner_Y_X_00: the corner of the stencil closest to the Y-X corner of the video.
+//     inner_Y_X_01: the corner of the stencil that's in the interior X border of the video.
+//     inner_Y_X_10: the corner of the stencil that's in the interior Y border of the video.
+//     inner_Y_X_11: the only corner of the stencil that's not on the border strip.
+//
+//   For example, the top-right corner of the test video looks like this:
+//
+//     MMMMMMMMMMMMMMMM
+//     MMMMMMMMMM2MMM0M
+//     MMMMMMMMMMMMMMMM
+//               3  M1M
+//                  MMM
+//
+//   Where 'M' is the magenta interior border. So the names of each of the points 0, 1, 2, 3
+//   are:
+//
+//     0: inner_top_right_00
+//     1: inner_top_right_01
+//     2: inner_top_right_10
+//     3: inner_top_right_11
+func ColorSamplingPointsForStillColorsVideo(videoW, videoH int) map[string]image.Point {
+	outerCorners := map[string]image.Point{
+		"outer_top_left":     {1, 1},
+		"outer_top_right":    {(videoW - 1) - 1, 1},
+		"outer_bottom_right": {videoW - 1, videoH - 1},
+		"outer_bottom_left":  {1, (videoH - 1) - 1},
+	}
+	edgeOffset := 5
+	stencilW := 5
+	innerCorners := map[string]image.Point{
+		"inner_top_left_00":     {edgeOffset, edgeOffset},
+		"inner_top_left_01":     {edgeOffset, edgeOffset + stencilW},
+		"inner_top_left_10":     {edgeOffset + stencilW, edgeOffset},
+		"inner_top_left_11":     {edgeOffset + stencilW, edgeOffset + stencilW},
+		"inner_top_right_00":    {(videoW - 1) - edgeOffset, edgeOffset},
+		"inner_top_right_01":    {(videoW - 1) - edgeOffset, edgeOffset + stencilW},
+		"inner_top_right_10":    {(videoW - 1) - edgeOffset - stencilW, edgeOffset},
+		"inner_top_right_11":    {(videoW - 1) - edgeOffset - stencilW, edgeOffset + stencilW},
+		"inner_bottom_right_00": {(videoW - 1) - edgeOffset, (videoH - 1) - edgeOffset},
+		"inner_bottom_right_01": {(videoW - 1) - edgeOffset, (videoH - 1) - edgeOffset - stencilW},
+		"inner_bottom_right_10": {(videoW - 1) - edgeOffset - stencilW, (videoH - 1) - edgeOffset},
+		"inner_bottom_right_11": {(videoW - 1) - edgeOffset - stencilW, (videoH - 1) - edgeOffset - stencilW},
+		"inner_bottom_left_00":  {edgeOffset, (videoH - 1) - edgeOffset},
+		"inner_bottom_left_01":  {edgeOffset, (videoH - 1) - edgeOffset - stencilW},
+		"inner_bottom_left_10":  {edgeOffset + stencilW, (videoH - 1) - edgeOffset},
+		"inner_bottom_left_11":  {edgeOffset + stencilW, (videoH - 1) - edgeOffset - stencilW},
+	}
+	samples := map[string]image.Point{}
+	for k, v := range innerCorners {
+		samples[k] = v
+	}
+	for k, v := range outerCorners {
+		samples[k] = v
+	}
+	return samples
+}
+
 // isVideoPadding returns true iff c corresponds to the expected color of the padding that a
 // video gets when in full screen so that it appears centered. This color is black within a
 // certain tolerance.
@@ -306,7 +378,7 @@ func isVideoPadding(c color.Color) bool {
 	// The tolerance was picked empirically. For example, on kukui, the first padding row below
 	// the video has a color of (20, 1, 22, 255).
 	tolerance := 25
-	return colorDistance(c, black) < tolerance
+	return ColorDistance(c, black) < tolerance
 }
 
 // TestPlay checks that the video file named filename can be played using Chrome.
@@ -531,91 +603,21 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 	videoH := refImg.Bounds().Dy()
 
 	// Measurement 1:
-	// We'll sample 20 interesting corner pixels and report the color distance
-	// with respect to the reference image.
-	// outerCorners defines the four absolute corners of the video offset by 1 to
-	// ignore acceptable color blending artifacts on the edges. However, the
-	// outer bottom-right is not offset because we never expect blending artifacts
-	// there.
-	outerCorners := map[string]struct {
-		x, y int
-	}{
-		"outer_top_left":     {1, 1},
-		"outer_top_right":    {(videoW - 1) - 1, 1},
-		"outer_bottom_right": {videoW - 1, videoH - 1},
-		"outer_bottom_left":  {1, (videoH - 1) - 1},
-	}
-	// innerCorners defines 4 stencils (one for each corner of the video). Each
-	// stencil is composed of 4 points arranged as a square. Each point
-	// corresponds to a pixel which we will sample. The expectation is that for
-	// each stencil, 3 of its points fall on the interior border of the video
-	// while the remaining point falls inside one of the color rectangles. This
-	// helps us detect undesired stretching/shifting/rotation/mirroring. The
-	// naming convention for each point of a stencil is as follows:
-	//
-	//   inner_Y_X_00: the corner of the stencil closest to the Y-X corner of the video.
-	//   inner_Y_X_01: the corner of the stencil that's in the interior X border of the video.
-	//   inner_Y_X_10: the corner of the stencil that's in the interior Y border of the video.
-	//   inner_Y_X_11: the only corner of the stencil that's not on the border strip.
-	//
-	// For example, the top-right corner of the video looks like this:
-	//
-	//   MMMMMMMMMMMMMMMM
-	//   MMMMMMMMMM2MMM0M
-	//   MMMMMMMMMMMMMMMM
-	//             3  M1M
-	//                MMM
-	//
-	// So the names of each of the points 0, 1, 2, 3 are:
-	//
-	//   0: inner_top_right_00
-	//   1: inner_top_right_01
-	//   2: inner_top_right_10
-	//   3: inner_top_right_11
-	edgeOffset := 5
-	stencilW := 5
-	innerCorners := map[string]struct {
-		x, y int
-	}{
-		"inner_top_left_00":     {edgeOffset, edgeOffset},
-		"inner_top_left_01":     {edgeOffset, edgeOffset + stencilW},
-		"inner_top_left_10":     {edgeOffset + stencilW, edgeOffset},
-		"inner_top_left_11":     {edgeOffset + stencilW, edgeOffset + stencilW},
-		"inner_top_right_00":    {(videoW - 1) - edgeOffset, edgeOffset},
-		"inner_top_right_01":    {(videoW - 1) - edgeOffset, edgeOffset + stencilW},
-		"inner_top_right_10":    {(videoW - 1) - edgeOffset - stencilW, edgeOffset},
-		"inner_top_right_11":    {(videoW - 1) - edgeOffset - stencilW, edgeOffset + stencilW},
-		"inner_bottom_right_00": {(videoW - 1) - edgeOffset, (videoH - 1) - edgeOffset},
-		"inner_bottom_right_01": {(videoW - 1) - edgeOffset, (videoH - 1) - edgeOffset - stencilW},
-		"inner_bottom_right_10": {(videoW - 1) - edgeOffset - stencilW, (videoH - 1) - edgeOffset},
-		"inner_bottom_right_11": {(videoW - 1) - edgeOffset - stencilW, (videoH - 1) - edgeOffset - stencilW},
-		"inner_bottom_left_00":  {edgeOffset, (videoH - 1) - edgeOffset},
-		"inner_bottom_left_01":  {edgeOffset, (videoH - 1) - edgeOffset - stencilW},
-		"inner_bottom_left_10":  {edgeOffset + stencilW, (videoH - 1) - edgeOffset},
-		"inner_bottom_left_11":  {edgeOffset + stencilW, (videoH - 1) - edgeOffset - stencilW},
-	}
-	samples := map[string]struct {
-		x, y int
-	}{}
-	for k, v := range innerCorners {
-		samples[k] = v
-	}
-	for k, v := range outerCorners {
-		samples[k] = v
-	}
-
+	// We'll sample a few interesting pixels and report the color distance with
+	// respect to the reference image.
+	samples := ColorSamplingPointsForStillColorsVideo(videoW, videoH)
 	p := perf.NewValues()
 	for k, v := range samples {
 		// First convert the coordinates from video space to screenshot space.
-		videoX := v.x
-		videoY := v.y
-		screenX := left + (right-left)*v.x/(videoW-1)
-		screenY := top + (bottom-top)*v.y/(videoH-1)
+		videoX := v.X
+		videoY := v.Y
+		screenX := left + (right-left)*v.X/(videoW-1)
+		screenY := top + (bottom-top)*v.Y/(videoH-1)
 
 		// Then report the distance between the expected and actual colors at this location.
 		expectedColor := refImg.At(videoX, videoY)
 		actualColor := img.At(screenX, screenY)
-		distance := colorDistance(expectedColor, actualColor)
+		distance := ColorDistance(expectedColor, actualColor)
 		s.Logf("At %v (video space = (%d, %d), screen space = (%d, %d)): expected RGBA = %v; got RGBA = %v; distance = %d",
 			k, videoX, videoY, screenX, screenY, expectedColor, actualColor, distance)
 		p.Set(perf.Metric{
@@ -637,7 +639,7 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 			videoY := (row - top) * (videoH - 1) / (bottom - top)
 			expectedColor := refImg.At(videoX, videoY)
 			actualColor := img.At(col, row)
-			totalDistance += float64(colorDistance(expectedColor, actualColor))
+			totalDistance += float64(ColorDistance(expectedColor, actualColor))
 		}
 	}
 	totalDistance /= float64((right - left + 1) * (bottom - top + 1))
