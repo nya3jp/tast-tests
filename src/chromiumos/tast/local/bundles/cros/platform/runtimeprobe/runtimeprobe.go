@@ -28,6 +28,9 @@ type Component interface {
 	GetInformation() *rppb.Information
 }
 
+// Skip the known concurrent D-Bus call at boot.
+const defaultTryCount = 2
+
 // dbusCall invokes runtime_probe methods via D-Bus with given input protobuf
 // |in|.  If the method called successfully, |out| will be set to the replied
 // message and return without errors.  Otherwise an error will be returned.
@@ -57,11 +60,23 @@ func dbusCall(ctx context.Context, method string, in, out proto.Message) error {
 	return nil
 }
 
+// dbusCallWithRetry wraps dbusCall with retries which try to skip known error
+// caused by concurrent D-Bus calls.
+func dbusCallWithRetry(ctx context.Context, method string, in, out proto.Message, tryCount int) error {
+	var err error
+	for i := 0; i < tryCount; i++ {
+		if err = dbusCall(ctx, method, in, out); err == nil {
+			return nil
+		}
+	}
+	return errors.Wrapf(err, "retry failed for %d times", tryCount)
+}
+
 // Probe uses D-Bus call to get result from runtime_probe with given request.
 // Currently only users chronos and debugd are allowed to call this D-Bus function.
 func Probe(ctx context.Context, request *rppb.ProbeRequest) (*rppb.ProbeResult, error) {
 	result := &rppb.ProbeResult{}
-	err := dbusCall(ctx, "ProbeCategories", request, result)
+	err := dbusCallWithRetry(ctx, "ProbeCategories", request, result, defaultTryCount)
 	return result, err
 }
 
@@ -95,7 +110,7 @@ func tryTrimQid(model, category, compName string) string {
 
 // GetKnownComponents uses D-Bus call to get known components with category
 // |category|.
-func GetKnownComponents(ctx context.Context, model, category string) (map[string]struct{}, error) {
+func GetKnownComponents(ctx context.Context, model, category string, tryCount int) (map[string]struct{}, error) {
 	categoryValue, found := rppb.ProbeRequest_SupportCategory_value[category]
 	if !found {
 		return nil, errors.Errorf("invalid category %q", category)
@@ -104,7 +119,7 @@ func GetKnownComponents(ctx context.Context, model, category string) (map[string
 		Category: rppb.ProbeRequest_SupportCategory(categoryValue),
 	}
 	result := rppb.GetKnownComponentsResult{}
-	err := dbusCall(ctx, "GetKnownComponents", &request, &result)
+	err := dbusCallWithRetry(ctx, "GetKnownComponents", &request, &result, tryCount)
 	if err != nil {
 		return nil, err
 	}
@@ -141,7 +156,7 @@ func GetComponentCount(ctx context.Context, labels, categories []string) (map[st
 	}
 	// Filter labels with prefix "hwid_component:<component type>/" and trim them.
 	for _, category := range categories {
-		knownComponents, err := GetKnownComponents(ctx, model, category)
+		knownComponents, err := GetKnownComponents(ctx, model, category, defaultTryCount)
 		if err != nil {
 			return nil, "", err
 		}
