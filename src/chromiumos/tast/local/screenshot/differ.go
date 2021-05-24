@@ -49,6 +49,7 @@ const fontConfigDir = "/etc/fonts/conf.d"
 var subPixelAAFiles = map[string]string{
 	"10-no-sub-pixel.conf":   "none",
 	"10-sub-pixel-bgr.conf":  "BGR",
+	"10-sub-pixel-rgb.conf":  "RGB",
 	"10-sub-pixel-vbgr.conf": "VGBR",
 	"10-sub-pixel-vrgb.conf": "VRGB"}
 
