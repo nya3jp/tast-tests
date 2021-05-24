@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d0cad9f_018f21b0",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-05-24T22:59:42Z",
+      "side": 1,
+      "message": "FYI I don\u0027t think this is a blocker for this CL, but a feature request that I would like to hear from the Tast framework team about. Please feel free to resolve it. Thanks,",
+      "parentUuid": "5863dd82_bb6a9bb3",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 25
+      },
+      "revId": "228418970a5a2263970417b60c25c2c9f5654818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fdaff004_21400952",
