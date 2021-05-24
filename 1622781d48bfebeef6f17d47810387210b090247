@@ -67,6 +67,24 @@
       "message": "nit: missing . at the end of the comment",
       "revId": "1622781d48bfebeef6f17d47810387210b090247",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e366ae1_c6b84785",
+        "filename": "src/chromiumos/tast/local/android/ui/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-05-24T09:57:10Z",
+      "side": 1,
+      "message": "Oops! Done.",
+      "parentUuid": "1027be68_06dcaa2a",
+      "revId": "1622781d48bfebeef6f17d47810387210b090247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
