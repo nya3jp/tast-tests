@@ -262,7 +262,7 @@ func StartL2TPIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 }
 
 // StartOpenVPNServer starts an OpenVPN server.
-func StartOpenVPNServer(ctx context.Context) (*Server, error) {
+func StartOpenVPNServer(ctx context.Context, useUserPassword bool) (*Server, error) {
 	chro := chroot.NewNetworkChroot()
 	server := &Server{
 		netChroot:    chro,
@@ -286,6 +286,10 @@ func StartOpenVPNServer(ctx context.Context) (*Server, error) {
 		"username":                     openvpnUsername,
 		"log_file":                     openvpnLogFile,
 	}
+	if useUserPassword {
+		configValues["optional_user_verification"] = fmt.Sprintf("auth-user-pass-verify /%s via-file\nscript-security 2", openvpnAuthScript)
+	}
+
 	chro.AddConfigValues(configValues)
 	chro.AddStartupCommand("chmod 755 " + openvpnAuthScript)
 	chro.AddStartupCommand(fmt.Sprintf("%s --config /%s &", openvpnCommand, openvpnConfigFile))
