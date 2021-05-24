@@ -22,6 +22,30 @@
       },
       "revId": "675992e2817dbdde3421d051c6c58f095b55e44d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ca7804f_b3cddae7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-24T06:44:39Z",
+      "side": 1,
+      "message": "Yes, they are the same ones used in autotest\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/crypto/certificate/cert.go?l\u003d1",
+      "parentUuid": "107a2ac3_fb207356",
+      "range": {
+        "startLine": 130,
+        "startChar": 49,
+        "endLine": 130,
+        "endChar": 58
+      },
+      "revId": "675992e2817dbdde3421d051c6c58f095b55e44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
