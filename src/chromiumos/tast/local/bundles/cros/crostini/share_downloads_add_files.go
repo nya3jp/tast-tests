@@ -14,7 +14,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/crostini/cleanupfolder"
 	"chromiumos/tast/local/bundles/cros/crostini/listset"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -85,14 +85,14 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 		if err := sharedFolders.UnshareAll(cont, cr)(cleanupCtx); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
-		if err := removeAllFilesInDirectory(filesapp.DownloadPath); err != nil {
+		if err := cleanupfolder.RemoveAllFilesInDirectory(filesapp.DownloadPath); err != nil {
 			s.Errorf("Failed to remove all files in %s: %v", filesapp.DownloadPath, err)
 		}
 	}()
 
 	// Make sure the downloads directory is empty before we start as any files
 	// left over from previous tests will make the test fail.
-	if err := removeAllFilesInDirectory(filesapp.DownloadPath); err != nil {
+	if err := cleanupfolder.RemoveAllFilesInDirectory(filesapp.DownloadPath); err != nil {
 		s.Fatalf("Failed to remove all files in %s: %v", filesapp.DownloadPath, err)
 	}
 
@@ -266,19 +266,4 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to verify the output of the test file, got %s, want %s", string(result), echoString)
 		}
 	})
-}
-
-// removeAllFilesInDirectory removes all files in a directory but leaves the directory itself intact.
-func removeAllFilesInDirectory(directory string) error {
-	files, err := ioutil.ReadDir(directory)
-	if err != nil {
-		return errors.Wrapf(err, "failed to read files in %s", directory)
-	}
-	for _, f := range files {
-		path := filepath.Join(directory, f.Name())
-		if err := os.RemoveAll(path); err != nil {
-			return errors.Wrapf(err, "failed to RemoveAll(%q)", path)
-		}
-	}
-	return nil
 }
