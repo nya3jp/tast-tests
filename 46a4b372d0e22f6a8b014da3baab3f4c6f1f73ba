@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "76418b18_edcff2ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-24T01:39:42Z",
+      "side": 1,
+      "message": "I doubt this will be able to run even in informational.  There is a 4 hour hard timeout on Swarming, including queueing waiting for the DUT to become available, and the other tests already take \u003e 1 hour to run.\n\nIs it really necessary to test so many names?  What additional testing benefit does each one provide?",
+      "parentUuid": "32201eec_b3e8d292",
+      "range": {
+        "startLine": 77,
+        "startChar": 23,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "46a4b372d0e22f6a8b014da3baab3f4c6f1f73ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0023902e_f1f35c9f",
@@ -83,6 +107,30 @@
       "writtenOn": "2021-05-21T09:44:35Z",
       "side": 1,
       "message": "Checking no error msg for valid user is not enough. Need to install Crostini.",
+      "range": {
+        "startLine": 119,
+        "startChar": 13,
+        "endLine": 119,
+        "endChar": 20
+      },
+      "revId": "46a4b372d0e22f6a8b014da3baab3f4c6f1f73ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "739f2ad3_439847e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-24T01:39:42Z",
+      "side": 1,
+      "message": "do you need to do this for every username?  is checking valid enough for some of them?",
+      "parentUuid": "a2eaa2a6_f166d344",
       "range": {
         "startLine": 119,
         "startChar": 13,
