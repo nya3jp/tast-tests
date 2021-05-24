@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d426c59_cd6f88fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-24T07:04:28Z",
+      "side": 1,
+      "message": "not sure if this should also go into chromiumos/tast/common/crypto/certificate\nI guess this will only be needed by OpenVPN test (and it is in autotest)",
+      "range": {
+        "startLine": 158,
+        "startChar": 6,
+        "endLine": 158,
+        "endChar": 18
+      },
+      "revId": "017713fa558be90ec6ea9061bc3b4f5010388e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
