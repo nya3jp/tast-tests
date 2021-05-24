@@ -33,6 +33,23 @@
       "message": "go/efoa?",
       "revId": "643820cf97255c9d4da3d923ad60662726a2ad07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d20d0181_d4983572",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-24T19:41:43Z",
+      "side": 1,
+      "message": "Hot take: this strings.Split edge-case behavior is counter-intuitive.",
+      "revId": "643820cf97255c9d4da3d923ad60662726a2ad07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
