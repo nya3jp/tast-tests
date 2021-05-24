@@ -190,6 +190,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/var", Context: "cros_var", Log: true},
 		{Path: "/var/cache", Context: "cros_var_cache", Log: true},
 		{Path: "/var/cache/shill", Context: "cros_var_cache_shill"},
+		{Path: "/var/cache/modem-utilities", Context: "cros_var_cache_modem_utilities"},
 		{Path: "/var/lib", Context: "cros_var_lib", Log: true},
 		{Path: "/var/lib/chaps", Context: "cros_var_lib_chaps", Recursive: true},
 		{Path: "/var/lib/crash_reporter", Context: "cros_var_lib_crash_reporter", Recursive: true},
