@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aac7b77b_d260e5eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-05-24T17:52:43Z",
+      "side": 0,
+      "message": "I think we can remove this tests as va-api did so as we are adding whole new set of vp9 tests.",
+      "revId": "c0f046207be219d5b16a1b04d61c4636cbad25b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
