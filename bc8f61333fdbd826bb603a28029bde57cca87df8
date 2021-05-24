@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83a5da49_73dbf0f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-05-24T09:15:41Z",
+      "side": 1,
+      "message": "I just implemented the logic to obtain Tap fd from patchpanel. This code doesn\u0027t have anything specific to vhost-user, though.",
+      "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23811e56_3dc6b98a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-vhost-user-net-test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-05-24T09:15:41Z",
+      "side": 1,
+      "message": "I\u0027ll replace this with netcat command",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "107c61b1_be88108a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-05-24T09:15:41Z",
+      "side": 1,
+      "message": "what permission do we need here?",
+      "range": {
+        "startLine": 53,
+        "startChar": 66,
+        "endLine": 53,
+        "endChar": 70
+      },
+      "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
