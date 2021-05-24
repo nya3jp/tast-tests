@@ -91,6 +91,67 @@ func init() {
 					AuthType: vpn.AuthTypeCert,
 				},
 			},
+		}, {
+			Name: "openvpn_user_pass",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:                   vpn.TypeOpenVPN,
+					AuthType:               vpn.AuthTypeCert,
+					OpenVPNUseUserPassword: true,
+				},
+			},
+		}, {
+			Name: "openvpn_cert_verify",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:              vpn.TypeOpenVPN,
+					AuthType:          vpn.AuthTypeCert,
+					OpenVPNCertVerify: true,
+				},
+			},
+		}, {
+			Name: "openvpn_cert_verify_wrong_hash",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:                       vpn.TypeOpenVPN,
+					AuthType:                   vpn.AuthTypeCert,
+					OpenVPNCertVerify:          true,
+					OpenVPNCertVerifyWrongHash: true,
+				},
+				shouldFail: true,
+			},
+		}, {
+			Name: "openvpn_cert_verify_wrong_subject",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:                          vpn.TypeOpenVPN,
+					AuthType:                      vpn.AuthTypeCert,
+					OpenVPNCertVerify:             true,
+					OpenVPNCertVeirfyWrongSubject: true,
+				},
+				shouldFail: true,
+			},
+		}, {
+			Name: "openvpn_cert_verify_wrong_cn",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:                     vpn.TypeOpenVPN,
+					AuthType:                 vpn.AuthTypeCert,
+					OpenVPNCertVerify:        true,
+					OpenVPNCertVerifyWrongCN: true,
+				},
+				shouldFail: true,
+			},
+		}, {
+			Name: "openvpn_cert_verify_cn_only",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:                    vpn.TypeOpenVPN,
+					AuthType:                vpn.AuthTypeCert,
+					OpenVPNCertVerify:       true,
+					OpenVPNCertVerifyCNOnly: true,
+				},
+			},
 		}},
 	})
 }
