@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd978e92_d65d71e4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-24T02:52:13Z",
+      "side": 1,
+      "message": "It is nice to have a HasClass method, but what is  the reason to convert all ClassName uses to HasClass, since they are not really equivalent? IIUC, they are for different purposes. ClassName(x) is looking for an exact match of x (equivalent to \\^x$\\), while HasClass(x) is just a partial match (equivalent to \\.* x .*\\). It might cause problems after the migration, i.e., within a ui tree node A has class \"a b\", node B has class \"b\", ClassName(\"b\") works fine to find node B, but HasClass(\"b\") may return an error due to dual matches for both A and B. I think sometimes the exact match can be required.",
+      "parentUuid": "9b80a706_5df8d28d",
+      "revId": "60364036164626569512659b7445377863b5d557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5add1a0_09a71d3c",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2021-05-24T01:33:41Z",
       "side": 1,
       "message": "After talking offline, I think that we should expose a HasClass(x) method that just calls Attribute(\"className\", regexp.MustCompile(\"\\\\b\" + quotemeta(x) + \"\\\\b\") or similar.\n\nThe only potential issue I can see with that solution is if you have multiple HasClass(), then it won\u0027t work (since it will overwrite). If that\u0027s the case, we could have a list stored directly in the finder instead of in attributes like we have for Name()",
+      "revId": "60364036164626569512659b7445377863b5d557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83356f6e_67ffcab9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-24T02:52:13Z",
+      "side": 1,
+      "message": "Just to be clear, are you suggesting to use only HasClass(x) and remove ClassNameRegex(r)?",
+      "parentUuid": "d5add1a0_09a71d3c",
       "revId": "60364036164626569512659b7445377863b5d557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
