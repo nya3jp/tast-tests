@@ -146,8 +146,8 @@ const (
 	openvpnLogFile           = "var/log/openvpn.log"
 	openvpnPidFile           = "run/openvpn.pid"
 	openvpnStatusFile        = "tmp/openvpn.status"
-	openvpnUsername          = "username"
-	openvpnPassword          = "password"
+	OpenvpnUsername          = "username"
+	OpenvpnPassword          = "password"
 	openvpnServerIPAddress   = "10.11.12.1"
 )
 
@@ -263,7 +263,7 @@ func StartL2tpIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 }
 
 // StartOpenVPNServer starts an OpenVPN server.
-func StartOpenVPNServer(ctx context.Context) (*Server, error) {
+func StartOpenVPNServer(ctx context.Context, useUserPassword bool) (*Server, error) {
 	chro := chroot.NewNetworkChroot()
 	server := &Server{
 		netChroot:    chro,
@@ -279,14 +279,18 @@ func StartOpenVPNServer(ctx context.Context) (*Server, error) {
 		"diffie_hellman_params_file":   openvpnDiffieHellmanFile,
 		"expected_authentication_file": openvpnExpectedAuthFile,
 		"optional_user_verification":   "",
-		"password":                     openvpnPassword,
+		"password":                     OpenvpnPassword,
 		"pid_file":                     openvpnPidFile,
 		"server_cert":                  openvpnServerCertFile,
 		"server_key":                   openvpnServerKeyFile,
 		"status_file":                  openvpnStatusFile,
-		"username":                     openvpnUsername,
+		"username":                     OpenvpnUsername,
 		"log_file":                     openvpnLogFile,
 	}
+	if useUserPassword {
+		configValues["optional_user_verification"] = fmt.Sprintf("auth-user-pass-verify /%s via-file\nscript-security 2", openvpnAuthScript)
+	}
+
 	chro.AddConfigValues(configValues)
 	chro.AddStartupCommand("chmod 755 " + openvpnAuthScript)
 	chro.AddStartupCommand(fmt.Sprintf("%s --config /%s &", openvpnCommand, openvpnConfigFile))
