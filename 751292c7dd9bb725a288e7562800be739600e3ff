@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e487afc_77eaeb07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-24T05:52:46Z",
+      "side": 1,
+      "message": "Do you have a bug for the format change? Otherwise, it is unclear to me what\u0027s the expected input and output...",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "751292c7dd9bb725a288e7562800be739600e3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cb7411cd_37ac6b9d",
@@ -14,6 +37,46 @@
       "writtenOn": "2021-05-21T18:09:06Z",
       "side": 1,
       "message": "So far so good with the latest versions of these patches. Just waiting on firmware.ACVP.sha2_256_full to finish.",
+      "revId": "751292c7dd9bb725a288e7562800be739600e3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a1db605_f1b90c74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-24T05:52:46Z",
+      "side": 1,
+      "message": "One question: didn\u0027t it work to dec.Decode(\u0026v) directly here? I\u0027m not quite sure why we need the Marshal -\u003e Unmarshal step.",
+      "range": {
+        "startLine": 1062,
+        "startChar": 0,
+        "endLine": 1072,
+        "endChar": 3
+      },
+      "revId": "751292c7dd9bb725a288e7562800be739600e3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2821b266_e0d2815a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-24T05:52:46Z",
+      "side": 1,
+      "message": "Could you elaborate why this object need the indent in particular? Is it required?\n\nIf it is OK to apply the same indent to \u0027a\u0027, marshaling the array directly would be cleaner, e.g.\n\n  json.Marshal([]interface{}{a, outResult})",
       "revId": "751292c7dd9bb725a288e7562800be739600e3ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
