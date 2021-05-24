@@ -43,6 +43,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d4361ce_978d36a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-24T13:50:21Z",
+      "side": 1,
+      "message": "nit: prefer to use bug ids instead of ldap. This is more future-proof and adds a link to some context for people not familiar with your work.",
+      "range": {
+        "startLine": 38,
+        "startChar": 11,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a36798f_52914e2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-24T13:50:21Z",
+      "side": 1,
+      "message": "Does this allow non ascii strings ? If possible prefer to use string type. The kernel will send you back EINVAL on your first syscall if your interface name is too long.",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "107c61b1_be88108a",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
         "patchSetId": 1
@@ -60,6 +106,70 @@
         "endLine": 53,
         "endChar": 70
       },
+      "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e27752a1_df15dc9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-24T13:50:21Z",
+      "side": 1,
+      "message": "According to man open(2). the perm mode argument seems only relevant if you use the O_CREAT flag bit in the second argument and create a new file. This can probably be left to 0.",
+      "parentUuid": "107c61b1_be88108a",
+      "range": {
+        "startLine": 53,
+        "startChar": 66,
+        "endLine": 53,
+        "endChar": 70
+      },
+      "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a6d8dc9_7c6923fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-24T13:50:21Z",
+      "side": 1,
+      "message": "You can\u0027t use your own name here, you need to use the name given back to you by patchpanel which is in pp.NetworkDevice. See the concierge code.",
+      "range": {
+        "startLine": 59,
+        "startChar": 20,
+        "endLine": 59,
+        "endChar": 32
+      },
+      "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e097cfd_e74e5408",
+        "filename": "src/chromiumos/tast/local/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-24T13:50:21Z",
+      "side": 1,
+      "message": "Why do you need to move src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go to src/chromiumos/tast/network ?\n\nAlso could we try to preserve git history and use git mv ?",
       "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
