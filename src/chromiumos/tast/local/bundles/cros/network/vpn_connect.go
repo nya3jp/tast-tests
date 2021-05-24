@@ -6,8 +6,12 @@ package network
 
 import (
 	"context"
+	"crypto/sha1"
+	"crypto/x509"
+	"encoding/pem"
 	"fmt"
 	"os"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/crypto/certificate"
@@ -33,6 +37,13 @@ type vpnTestParams struct {
 	ipsecXauthWrongUser   bool
 	underlayIPIsOverlayIP bool
 	shouldFail            bool
+
+	openvpnUseUserPassword        bool
+	openvpnCertVerify             bool
+	openvpnCertVerifyWrongHash    bool
+	openvpnCertVeirfyWrongSubject bool
+	openvpnCertVerifyWrongCN      bool
+	openvpnCertVerifyCNOnly       bool
 
 	// The following TPM-related fields will be set and used when the authType is
 	// "cert".
@@ -96,6 +107,55 @@ func init() {
 			Val: vpnTestParams{
 				vpnType:  "OpenVPN",
 				authType: "cert",
+			},
+		}, {
+			Name: "openvpn_user_pass",
+			Val: vpnTestParams{
+				vpnType:                "OpenVPN",
+				authType:               "cert",
+				openvpnUseUserPassword: true,
+			},
+		}, {
+			Name: "openvpn_cert_verify",
+			Val: vpnTestParams{
+				vpnType:           "OpenVPN",
+				authType:          "cert",
+				openvpnCertVerify: true,
+			},
+		}, {
+			Name: "openvpn_cert_verify_wrong_hash",
+			Val: vpnTestParams{
+				vpnType:                    "OpenVPN",
+				authType:                   "cert",
+				openvpnCertVerify:          true,
+				openvpnCertVerifyWrongHash: true,
+				shouldFail:                 true,
+			},
+		}, {
+			Name: "openvpn_cert_verify_wrong_subject",
+			Val: vpnTestParams{
+				vpnType:                       "OpenVPN",
+				authType:                      "cert",
+				openvpnCertVerify:             true,
+				openvpnCertVeirfyWrongSubject: true,
+				shouldFail:                    true,
+			},
+		}, {
+			Name: "openvpn_cert_verify_wrong_cn",
+			Val: vpnTestParams{
+				vpnType:                  "OpenVPN",
+				authType:                 "cert",
+				openvpnCertVerify:        true,
+				openvpnCertVerifyWrongCN: true,
+				shouldFail:               true,
+			},
+		}, {
+			Name: "openvpn_cert_verify_cn_only",
+			Val: vpnTestParams{
+				vpnType:                 "OpenVPN",
+				authType:                "cert",
+				openvpnCertVerify:       true,
+				openvpnCertVerifyCNOnly: true,
 			},
 		}},
 	})
@@ -220,7 +280,7 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	if params.vpnType == l2tpIPsec {
 		server, err = vpn.StartL2tpIPsecServer(ctx, params.authType, params.ipsecUseXauth, params.underlayIPIsOverlayIP)
 	} else if params.vpnType == openvpn {
-		server, err = vpn.StartOpenVPNServer(ctx)
+		server, err = vpn.StartOpenVPNServer(ctx, params.openvpnUseUserPassword)
 	} else {
 		s.Fatalf("Unexpected VPN type %s", params.vpnType)
 	}
@@ -336,6 +396,39 @@ func getVpnClientProperties(ctx context.Context, params vpnTestParams, serverAdd
 			"OpenVPN.Pkcs11.PIN":    params.certPin,
 			"OpenVPN.RemoteCertEKU": "TLS Web Server Authentication",
 			"OpenVPN.Verb":          "5",
+		}
+		if params.openvpnUseUserPassword {
+			properties["OpenVPN.User"] = vpn.OpenvpnUsername
+			properties["OpenVPN.Password"] = vpn.OpenvpnPassword
+		}
+		if params.openvpnCertVerify {
+			if params.openvpnCertVerifyWrongHash {
+				properties["OpenVPN.VerifyHash"] = "00" + strings.Repeat(":00", 19)
+			} else {
+				certBlock, _ := pem.Decode([]byte(certificate.TestCert1().CACred.Cert))
+				caCert, err := x509.ParseCertificate(certBlock.Bytes)
+				if err != nil {
+					return nil, errors.Wrap(err, "failed to parse CA cert")
+				}
+				// Translates the form of SHA-1 hash from []byte to "xx:xx:...:xx".
+				properties["OpenVPN.VerifyHash"] = strings.ReplaceAll(fmt.Sprintf("% 02x", sha1.Sum(caCert.Raw)), " ", ":")
+			}
+
+			if params.openvpnCertVeirfyWrongSubject {
+				properties["OpenVPN.VerifyX509Name"] = "bogus subject name"
+			} else if params.openvpnCertVerifyWrongCN {
+				properties["OpenVPN.VerifyX509Name"] = "bogus cn"
+				properties["OpenVPN.VerifyX509Type"] = "name"
+			} else if params.openvpnCertVerifyCNOnly {
+				// This can be parsed from certificate.TestCert1().ServerCred.Cert .
+				properties["OpenVPN.VerifyX509Name"] = "chromelab-wifi-testbed-server.mtv.google.com"
+				properties["OpenVPN.VerifyX509Type"] = "name"
+			} else {
+				// This can be parsed from certificate.TestCert1().ServerCred.Cert, but
+				// the output format of String() function of the parsed result does not
+				// match the format that OpenVPN expects.
+				properties["OpenVPN.VerifyX509Name"] = "C=US, ST=California, L=Mountain View, CN=chromelab-wifi-testbed-server.mtv.google.com"
+			}
 		}
 		return properties, nil
 	}
