@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad0f0913_9032201d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/non_educoexistence_insession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-24T20:18:48Z",
+      "side": 1,
+      "message": "A lot of this is similar to the other educoexistence test. Can you extract common functionality like this into a familylink library somewhere like src/platform/tast-tests/src/chromiumos/tast/local/chrome/familylink",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "48cabcf1ba6f17a51f929a54e23514b3a90cefb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
