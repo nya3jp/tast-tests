@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abc4c547_e52be493",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-05-24T12:14:15Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "85476269_c95575f4",
+      "range": {
+        "startLine": 167,
+        "startChar": 26,
+        "endLine": 167,
+        "endChar": 44
+      },
+      "revId": "42e9c9f0a5d1d3ec856e808d622728d108e391b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a78befb_38cb6f08",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-24T07:04:28Z",
       "side": 1,
       "message": "In the autotest, the test would execute `modprobe tun`, I didn\u0027t add that here since it looks fine on my DUT without that. Will we need that on some certain kernels/boards?",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 270,
+        "endChar": 23
+      },
+      "revId": "42e9c9f0a5d1d3ec856e808d622728d108e391b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9a5e1db_e5c7360a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-05-24T12:14:15Z",
+      "side": 1,
+      "message": "I guess that\u0027s for easy debugging that when there\u0027s a failure because of missing kernel modules it directly fails here. For normal working cases a modprobe shouldn\u0027t be necessary.",
+      "parentUuid": "5a78befb_38cb6f08",
       "range": {
         "startLine": 270,
         "startChar": 5,
