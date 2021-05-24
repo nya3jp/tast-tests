@@ -63,6 +63,30 @@
       },
       "revId": "3445c20b148318193a258ef0182f4eb9e064317d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b42d9f5a_37b2abd3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-24T00:06:30Z",
+      "side": 1,
+      "message": "Good point. Actually Name regex doesn\u0027t go through this code twice, but it is definitely nice to write a unit test for this. I have updated the unit test file to include a test using both NameRegex and ClassNameRegex and the test passed as well.",
+      "parentUuid": "f00df832_7b36cd57",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 89
+      },
+      "revId": "3445c20b148318193a258ef0182f4eb9e064317d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
