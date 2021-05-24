@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ad225ca_0e35f778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hammerd/triggered_on_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-05-24T11:32:55Z",
+      "side": 1,
+      "message": "Is there a more idiomatic for this? It looks like this function just want the latest boot time? Parsing /var/log/messages could be fragile and the log file could be rotated already.",
+      "revId": "54b759e221dd44a88b471e1c42e9c48f6c607c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b2a5532_0d12d73b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hammerd/triggered_on_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-05-24T11:32:55Z",
+      "side": 1,
+      "message": "Can we parse the log file with the syslog package in Tast?\n\nref: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/syslog/reader.go?l\u003d227",
+      "revId": "54b759e221dd44a88b471e1c42e9c48f6c607c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "306a898c_907d2ac7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hammerd/triggered_on_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-05-24T11:32:55Z",
+      "side": 1,
+      "message": "qq: What if the log is rotated?",
+      "revId": "54b759e221dd44a88b471e1c42e9c48f6c607c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
