@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c5f04a4_2cd61a9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-24T08:00:18Z",
+      "side": 1,
+      "message": "\u003e change the variable value in vpn_server.go:179 (\"xl2tpd_server_ip_address\": xl2tpdServerIPAddress)\nI would prefer that way but the netns address is not exposed from chroot now, we need to move the netns creation out of the chroot.Startup(), to know the netns address before that. Maybe I did the merge to early in the previous patch...\n\nOr maybe we can do the netns creation in chroot.NewNetworkChroot(), I think it\u0027s better to do that after the refactor patch, otherwise we will need more code for checking errors.\n\nWDYT?",
+      "parentUuid": "24b40fc8_2522a93d",
+      "revId": "1830b517554493b1acfd35794b446681bd0263be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a11b983a_193dc550",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
         "patchSetId": 2
