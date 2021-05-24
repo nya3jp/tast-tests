@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5863dd82_bb6a9bb3",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-05-24T19:31:27Z",
+      "side": 1,
+      "message": "Not sure if this could be addressed on the test planner side. \n\nThis fixture doesn\u0027t need this var for sideloading as it just picks up the binary in the OS. Here is an error if not added:\n\n[Fixture failure] lacrosStartedFromRootfsUI: Panic: Variable \"lacrosDeployedBinary\" was not registered in testing.Test.Vars. Try a\ndding the line \u0027Vars: []string{\"lacrosDeployedBinary\"},\u0027 to your testing.Test{}",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 25
+      },
+      "revId": "228418970a5a2263970417b60c25c2c9f5654818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdaff004_21400952",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-05-24T19:31:27Z",
+      "side": 1,
+      "message": "FYI this and changes in util.go will be remove once https://crrev.com/c/2897272 gets in.",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 51
+      },
+      "revId": "228418970a5a2263970417b60c25c2c9f5654818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
