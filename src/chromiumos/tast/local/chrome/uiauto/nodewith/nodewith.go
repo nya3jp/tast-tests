@@ -78,6 +78,8 @@ func (f *Finder) attributesBytes() ([]byte, error) {
 			fmt.Fprintf(&buf, "%q:%q,", k, v)
 		case int, float32, float64, bool:
 			fmt.Fprintf(&buf, "%q:%v,", k, v)
+		case *regexp.Regexp:
+			fmt.Fprintf(&buf, `%q:/%s/,`, k, strings.ReplaceAll(fmt.Sprintf("%v", v), "/", "\\/"))
 		default:
 			return nil, errors.Errorf("nodewith.Finder does not support type(%T) for parameter(%s)", v, k)
 		}
@@ -189,6 +191,8 @@ func (f *Finder) Pretty() string {
 		switch v := v.(type) {
 		case int, float32, float64, bool:
 			result = append(result, fmt.Sprintf("%s: %v", k, v))
+		case *regexp.Regexp:
+			result = append(result, fmt.Sprintf("%s: /%v/", k, v))
 		default:
 			result = append(result, fmt.Sprintf("%s: %q", k, v))
 		}
@@ -559,13 +563,28 @@ func (f *Finder) MultilingualNameRegex(english *regexp.Regexp, other map[string]
 }
 
 // ClassName creates a Finder with the specified class name.
+// Deprecated: Use HasClass.
 func ClassName(n string) *Finder {
 	return Attribute("className", n)
 }
 
 // ClassName creates a copy of the input Finder with the specified class name.
+// Deprecated: Use HasClass.
 func (f *Finder) ClassName(n string) *Finder {
 	return f.Attribute("className", n)
+}
+
+// HasClass creates a Finder with a class name containing the specified class name.
+func HasClass(c string) *Finder {
+	return newFinder().HasClass(c)
+}
+
+// HasClass creates a copy of the input Finder with a class name containing the specified class name.
+func (f *Finder) HasClass(c string) *Finder {
+	if _, ok := f.attributes["className"]; ok {
+		panic("mutliple class names not supported")
+	}
+	return f.Attribute("className", regexp.MustCompile("\\b"+regexp.QuoteMeta(c)+"\\b"))
 }
 
 // AutofillAvailable creates a Finder with AutofillAvailable set to true.
