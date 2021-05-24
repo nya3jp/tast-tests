@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fff204a4_4e698e49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-05-24T22:59:42Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. All passed locally with octopus.",
+      "parentUuid": "05a77a24_37fbd34b",
+      "range": {
+        "startLine": 16,
+        "startChar": 21,
+        "endLine": 16,
+        "endChar": 66
+      },
+      "revId": "b7621d24e51b5bbbf0cc52f290dbbc364a8729a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3579a793_bf35ff8b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-24T20:27:21Z",
       "side": 1,
       "message": "Why did you change this?\n\nlacros.ShelfLaunch.omaha uses it ?",
+      "range": {
+        "startLine": 51,
+        "startChar": 23,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "b7621d24e51b5bbbf0cc52f290dbbc364a8729a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee5997d8_1b8ef49f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-05-24T22:59:42Z",
+      "side": 1,
+      "message": "Now that new \u0027Rootfs\u0027 setup type is added, this change just keeps the current condition continue to work.\nf.mode would be \n- before the CL: PreExist, Omaha\n- after the CL: PreExist, Omaha, Rootfs\n\nIf I understand correctly, \u0027Omaha\u0027 or \u0027Rootfs\u0027 doesn\u0027t really need to call EnsureLacrosChrome that is only to check if a stateful lacros is ready for use.",
+      "parentUuid": "3579a793_bf35ff8b",
       "range": {
         "startLine": 51,
         "startChar": 23,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1311a63_0443f9fe",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-05-24T22:59:42Z",
+      "side": 1,
+      "message": "Thanks for the catch! Removed as PreExist precedes the flag.",
+      "parentUuid": "5154bfa7_f330bfd8",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 50
+      },
+      "revId": "b7621d24e51b5bbbf0cc52f290dbbc364a8729a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0064a62c_2e4fc9ca",
@@ -141,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "992265e7_531ab34c",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-05-24T22:59:42Z",
+      "side": 1,
+      "message": "If I read it correctly (see line 275), this fixture assumes that it uses a stateful Lacros. \nThe test would fail with timeout waiting for a stateful to be mounted since the recent M92 OS images would have a rootfs lacros that is newer than the one from the CU/Omaha.\n\nAs Jae pointed out, we may consider another fixture/test to verify a path of selecting rootfs over stateful later in a separate CL, so we can keep this CL small.",
+      "parentUuid": "bfbd408b_dd770ed6",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 52
+      },
+      "revId": "b7621d24e51b5bbbf0cc52f290dbbc364a8729a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0f642de_8bc6573f",
@@ -154,6 +250,30 @@
       "writtenOn": "2021-05-24T20:30:39Z",
       "side": 1,
       "message": "lacros.squash",
+      "range": {
+        "startLine": 289,
+        "startChar": 27,
+        "endLine": 289,
+        "endChar": 33
+      },
+      "revId": "b7621d24e51b5bbbf0cc52f290dbbc364a8729a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "971a5bdd_31b35ad4",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-05-24T22:59:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0f642de_8bc6573f",
       "range": {
         "startLine": 289,
         "startChar": 27,
