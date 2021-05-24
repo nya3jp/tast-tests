@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a80223c5_b60b694d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-24T05:55:30Z",
+      "side": 1,
+      "message": "This function is removed",
+      "parentUuid": "2eceee0b_a661a1e7",
+      "range": {
+        "startLine": 653,
+        "startChar": 34,
+        "endLine": 653,
+        "endChar": 52
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62312637_56e0b015",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-20T00:00:39Z",
       "side": 1,
       "message": "please include the name in the error msg.",
+      "range": {
+        "startLine": 660,
+        "startChar": 67,
+        "endLine": 660,
+        "endChar": 71
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11a4af78_22a48108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-24T05:55:30Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "62312637_56e0b015",
       "range": {
         "startLine": 660,
         "startChar": 67,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "159c4db1_7df8ca0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-24T05:55:30Z",
+      "side": 1,
+      "message": "Thanks, checking window is desired. But this function needs to provide the start time of click action so LeftClickUntil is not suitable. We changed to logic to use Poll here to achieve a similar action of LeftClickUntil.",
+      "parentUuid": "323934ac_464434a1",
+      "range": {
+        "startLine": 663,
+        "startChar": 17,
+        "endLine": 663,
+        "endChar": 26
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b69cb749_3b4481aa",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-05-20T00:00:39Z",
       "side": 1,
       "message": "ui.Sleep(200*time.Millisecond)?",
+      "range": {
+        "startLine": 785,
+        "startChar": 3,
+        "endLine": 785,
+        "endChar": 13
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a8277c_ee5f96db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-24T05:55:30Z",
+      "side": 1,
+      "message": "fixed.",
+      "parentUuid": "b69cb749_3b4481aa",
       "range": {
         "startLine": 785,
         "startChar": 3,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fe91085_46732e4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-24T05:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39ff4347_35d75bce",
+      "range": {
+        "startLine": 811,
+        "startChar": 2,
+        "endLine": 812,
+        "endChar": 42
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93cb40b4_56ad7c80",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-05-20T00:00:39Z",
       "side": 1,
       "message": "use w.Name instead",
+      "range": {
+        "startLine": 864,
+        "startChar": 67,
+        "endLine": 864,
+        "endChar": 81
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "551211a2_671c55c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-24T05:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93cb40b4_56ad7c80",
       "range": {
         "startLine": 864,
         "startChar": 67,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffda23b7_29b60459",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-24T05:55:30Z",
+      "side": 1,
+      "message": "this \"else if\" will be skipped if the size of infos is 1, but we’ve changed the condition here to make it more readable",
+      "parentUuid": "f83a37b8_8ca6644f",
+      "range": {
+        "startLine": 871,
+        "startChar": 4,
+        "endLine": 871,
+        "endChar": 8
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52425c40_db09765d",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "008b0b88_bba040c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-24T05:55:30Z",
+      "side": 1,
+      "message": "We have to explicitly change the timeout here because cl.ui (the *uiauto.Context of ClamshellActionHandler) when created has its own poll-opts (which is defaultPollOpts - see below): \n```\n// Use 1 minute timeout value because it may take longer to wait for UI nodes to be stable,\n// especially for some low end DUTs.\nvar defaultPollOpts \u003d testing.PollOptions{Timeout: time.Minute, Interval: time.Second}\n```",
+      "parentUuid": "52425c40_db09765d",
+      "range": {
+        "startLine": 896,
+        "startChar": 21,
+        "endLine": 896,
+        "endChar": 35
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9832d15f_47e10eda",
@@ -198,6 +390,30 @@
       "writtenOn": "2021-05-20T00:00:39Z",
       "side": 1,
       "message": "The truncate is a bit weird, suggest to make a new line since \"Test should\"",
+      "range": {
+        "startLine": 1000,
+        "startChar": 101,
+        "endLine": 1000,
+        "endChar": 112
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6074bc5c_c60c3998",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-24T05:55:30Z",
+      "side": 1,
+      "message": "The comments here has been adjusted and implementation of this function has been enhanced to be more reliable.",
+      "parentUuid": "9832d15f_47e10eda",
       "range": {
         "startLine": 1000,
         "startChar": 101,
