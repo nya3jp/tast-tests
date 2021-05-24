@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "affff390_3af8d0f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-05-24T12:49:45Z",
+      "side": 1,
+      "message": "defined",
+      "range": {
+        "startLine": 158,
+        "startChar": 55,
+        "endLine": 158,
+        "endChar": 61
+      },
+      "revId": "2173cd1166a8f60b604c3cdd21b06883ce3add40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
