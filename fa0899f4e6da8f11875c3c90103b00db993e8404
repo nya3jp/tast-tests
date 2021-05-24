@@ -16,6 +16,57 @@
       "message": "miguel@ jao-ke@ PTAL",
       "revId": "fa0899f4e6da8f11875c3c90103b00db993e8404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73ef70b6_0411c13a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-05-24T17:20:13Z",
+      "side": 1,
+      "message": "Jao-ke suggested that I also need to update platform_decoding_test.go. ",
+      "revId": "fa0899f4e6da8f11875c3c90103b00db993e8404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e01153b3_ac11ec7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-05-24T17:20:13Z",
+      "side": 1,
+      "message": "group5 -\u003e level5\n\nChecked with Jao-ke. This naming was intentional because \"running all the level 5 and 5.1 together at once can be too much for the devices\".",
+      "revId": "fa0899f4e6da8f11875c3c90103b00db993e8404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb2821ae_1bc1f262",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-05-24T17:20:13Z",
+      "side": 1,
+      "message": "Ideally, I want to do \"--log_level 1\", but it wasn\u0027t working for some reason.",
+      "revId": "fa0899f4e6da8f11875c3c90103b00db993e8404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
