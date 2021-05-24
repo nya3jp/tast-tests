@@ -45,6 +45,30 @@
       },
       "revId": "a3b7629ed3c9c6de5c400414494ff29a804e954e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7704192_7e329837",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-24T23:42:44Z",
+      "side": 1,
+      "message": "As we discussed, using chrome.ExtraArgs(\"--feature-flags\u003dxxx\") will cause chrome to restart after login. It this is not a good way to address the problem, do you have other suggestions?",
+      "parentUuid": "43330155_d168aa3b",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 2
+      },
+      "revId": "a3b7629ed3c9c6de5c400414494ff29a804e954e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
