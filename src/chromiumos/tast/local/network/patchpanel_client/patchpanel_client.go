@@ -19,10 +19,12 @@ import (
 )
 
 const (
-	jobName                = "patchpanel"
-	dbusName               = "org.chromium.PatchPanel"
-	dbusPath               = "/org/chromium/PatchPanel"
-	connectNamespaceMethod = "org.chromium.PatchPanel.ConnectNamespace"
+	jobName                 = "patchpanel"
+	dbusName                = "org.chromium.PatchPanel"
+	dbusPath                = "/org/chromium/PatchPanel"
+	connectNamespaceMethod  = "org.chromium.PatchPanel.ConnectNamespace"
+	terminaVMStartupMethod  = "org.chromium.PatchPanel.TerminaVmStartup"
+	terminaVMShutdownMethod = "org.chromium.PatchPanel.TerminaVmShutdown"
 )
 
 // Client is a wrapper around patchpanel DBus API.
@@ -83,4 +85,52 @@ func (c *Client) ConnectNamespace(ctx context.Context, pid int32, outboundPhysic
 	}
 
 	return local, response, nil
+}
+
+// NotifyTerminaVMStartup sends a TerminaVmStartupRequest for the given container id. The ID must be unique in the system.
+func (c *Client) NotifyTerminaVMStartup(ctx context.Context, cid uint32) (response *pp.TerminaVmStartupResponse, retErr error) {
+	request := &pp.TerminaVmStartupRequest{
+		Cid: cid,
+	}
+	buf, err := proto.Marshal(request)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed marshaling %s request", terminaVMStartupMethod)
+	}
+
+	var state []uint8
+	if retErr = c.obj.CallWithContext(ctx, terminaVMStartupMethod, 0, buf).Store(&state); retErr != nil {
+		// Send a shutdown request as we cannot tell if it failed before or after patchpanel allocates a FD.
+		c.NotifyTerminaVMShutdown(ctx, cid)
+		return nil, errors.Wrapf(retErr, "failed reading %s response", terminaVMStartupMethod)
+	}
+
+	response = &pp.TerminaVmStartupResponse{}
+	if retErr = proto.Unmarshal(state, response); retErr != nil {
+		return nil, errors.Wrapf(retErr, "failed unmarshaling %s response", terminaVMStartupMethod)
+	}
+
+	return response, nil
+}
+
+// NotifyTerminaVMShutdown sends a TerminaVmShutdownRequest for the given container id.
+func (c *Client) NotifyTerminaVMShutdown(ctx context.Context, cid uint32) error {
+	request := &pp.TerminaVmShutdownRequest{
+		Cid: cid,
+	}
+	buf, err := proto.Marshal(request)
+	if err != nil {
+		return errors.Wrapf(err, "failed marshaling %s request", terminaVMShutdownMethod)
+	}
+
+	var state []uint8
+	if err = c.obj.CallWithContext(ctx, terminaVMShutdownMethod, 0, buf).Store(&state); err != nil {
+		return errors.Wrapf(err, "failed reading %s response", terminaVMShutdownMethod)
+	}
+
+	response := &pp.TerminaVmShutdownResponse{}
+	if err = proto.Unmarshal(state, response); err != nil {
+		return errors.Wrapf(err, "failed unmarshaling %s response", terminaVMShutdownMethod)
+	}
+
+	return nil
 }
