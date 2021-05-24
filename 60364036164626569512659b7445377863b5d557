@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e37c565_986e88a5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-24T07:20:28Z",
+      "side": 1,
+      "message": "done as discussed offline.",
+      "parentUuid": "2e803f26_e6e4b80c",
+      "revId": "60364036164626569512659b7445377863b5d557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5add1a0_09a71d3c",
@@ -124,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28893ad1_697d4f2d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-24T07:20:28Z",
+      "side": 1,
+      "message": "Done as discussed.",
+      "parentUuid": "9e6c4bb2_07690671",
+      "revId": "60364036164626569512659b7445377863b5d557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "399ee7e9_3dd95a60",
@@ -137,6 +173,24 @@
       "writtenOn": "2021-05-24T01:33:41Z",
       "side": 1,
       "message": "We should use newFinder().method(args) when possible, to avoid code duplication",
+      "revId": "60364036164626569512659b7445377863b5d557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceba3fb9_d1a12ca3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-24T07:20:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "399ee7e9_3dd95a60",
       "revId": "60364036164626569512659b7445377863b5d557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -172,6 +226,24 @@
       "side": 1,
       "message": "Note that you might need to sync to get those changes - I only submitted the pretty printer late last week, IIRC",
       "parentUuid": "18e27a1c_321278fb",
+      "revId": "60364036164626569512659b7445377863b5d557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b647fbf_e9e2e46e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-24T07:20:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9376ba50_4516f0f4",
       "revId": "60364036164626569512659b7445377863b5d557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
