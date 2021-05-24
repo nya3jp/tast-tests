@@ -90,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4163d52c_9b3cf85a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2021-05-24T16:52:15Z",
+      "side": 1,
+      "message": "We actually need to use vectorsBytes in line 1085, thats is why we need to decode both to bytes and the struct.",
+      "parentUuid": "5a1db605_f1b90c74",
+      "range": {
+        "startLine": 1062,
+        "startChar": 0,
+        "endLine": 1072,
+        "endChar": 3
+      },
+      "revId": "751292c7dd9bb725a288e7562800be739600e3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2821b266_e0d2815a",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 5
@@ -101,6 +125,24 @@
       "writtenOn": "2021-05-24T05:52:46Z",
       "side": 1,
       "message": "Could you elaborate why this object need the indent in particular? Is it required?\n\nIf it is OK to apply the same indent to \u0027a\u0027, marshaling the array directly would be cleaner, e.g.\n\n  json.Marshal([]interface{}{a, outResult})",
+      "revId": "751292c7dd9bb725a288e7562800be739600e3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a37e269a_88d351e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2021-05-24T16:52:15Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. I\u0027ve implemented it. I\u0027m not so familiar with Marshal so didn\u0027t know you can do it like this.\n\nThe indent is only there for readability of output file.",
+      "parentUuid": "2821b266_e0d2815a",
       "revId": "751292c7dd9bb725a288e7562800be739600e3ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
