@@ -5,11 +5,9 @@
 package graphics
 
 import (
-	"bufio"
 	"context"
 	"os"
 	"path/filepath"
-	"regexp"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -19,8 +17,6 @@ import (
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
-
-var drmErrorRegex = regexp.MustCompile(`ERROR:`)
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -203,17 +199,6 @@ func DRM(ctx context.Context, s *testing.State) {
 	runTest(shortCtx, s, commands[0], commands[1:]...)
 }
 
-func getErrorLog(f *os.File) string {
-	scanner := bufio.NewScanner(f)
-	errorLines := ""
-	for scanner.Scan() {
-		if drmErrorRegex.FindString(scanner.Text()) != "" {
-			errorLines += scanner.Text() + "\n"
-		}
-	}
-	return errorLines
-}
-
 // runTest runs the exe binary test and records the output into a file.
 func runTest(ctx context.Context, s *testing.State, exe string, args ...string) {
 	s.Log("Running ", shutil.EscapeSlice(append([]string{exe}, args...)))
@@ -227,13 +212,7 @@ func runTest(ctx context.Context, s *testing.State, exe string, args ...string) 
 	cmd := testexec.CommandContext(ctx, exe, args...)
 	cmd.Stdout = f
 	cmd.Stderr = f
-	err = cmd.Run(testexec.DumpLogOnError)
-
-	f.Seek(0, 0)
-	errorLines := getErrorLog(f)
-	if errorLines != "" {
-		s.Error(errorLines)
-	} else if err != nil {
+	if err := cmd.Run(); err != nil {
 		s.Errorf("Failed to run %s: %v", exe, err)
 	}
 }
