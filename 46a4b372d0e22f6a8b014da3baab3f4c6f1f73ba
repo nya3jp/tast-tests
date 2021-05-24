@@ -73,6 +73,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1f2b69a8_037bb781",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-24T04:06:14Z",
+      "side": 1,
+      "message": "Taking your second comment, I grouped the users into five groups and only install one user in each group.",
+      "parentUuid": "76418b18_edcff2ee",
+      "range": {
+        "startLine": 77,
+        "startChar": 23,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "46a4b372d0e22f6a8b014da3baab3f4c6f1f73ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0023902e_f1f35c9f",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
         "patchSetId": 1
