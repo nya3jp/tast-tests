@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 )
@@ -253,7 +252,7 @@ func (vkbCtx *VirtualKeyboardContext) DrawHandwritingFromFile(filePath string) u
 		sg := newStrokeGroup(svgFile, n)
 
 		// Find the handwriting canvas location.
-		hwCanvasFinder := nodewith.Role(role.Canvas).ClassName("ita-hwt-canvas")
+		hwCanvasFinder := NodeFinder.Role(role.Canvas)
 		loc, err := vkbCtx.ui.Location(ctx, hwCanvasFinder)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get location of %v", hwCanvasFinder)
