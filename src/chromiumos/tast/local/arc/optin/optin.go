@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -80,7 +81,7 @@ func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome
 
 	var msg string
 	if err := conn.Eval(ctx, fmt.Sprintf("%s?%s:''", errorPageLoaded, errorMessage), &msg); err == nil && msg != "" {
-		return errors.New(fmt.Sprintf("failed to load terms of service page: %s", msg))
+		return errors.Errorf("failed to load terms of service page: %s", msg)
 	}
 
 	if err := conn.Eval(ctx, "termsPage.onAgree()", nil); err != nil {
@@ -117,6 +118,40 @@ func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) err
 	}
 
 	// TODO(niwa): Check if we still need to handle non-tos_needed case.
+	return nil
+}
+
+// PerformWithRetry steps through opt-in flow, waits for it to complete, and re-attempts in case of failure.
+func PerformWithRetry(ctx context.Context, cr *chrome.Chrome, maxAttempts int) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create test API connection")
+	}
+
+	attempts := 1
+	for {
+		err := Perform(ctx, cr, tconn)
+		if err == nil {
+			break
+		}
+
+		if err := DumpLogCat(ctx, strconv.Itoa(attempts)); err != nil {
+			testing.ContextLog(ctx, "WARNING: Failed to dump logcat: ", err)
+		}
+
+		if attempts >= maxAttempts {
+			return err
+		}
+
+		testing.ContextLog(ctx, "Retrying optin, previous attempt failed: ", err)
+		attempts = attempts + 1
+
+		// Opt out.
+		if err := SetPlayStoreEnabled(ctx, tconn, false); err != nil {
+			return errors.Wrap(err, "failed to optout")
+		}
+	}
+
 	return nil
 }
 
