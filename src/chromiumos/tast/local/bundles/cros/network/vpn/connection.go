@@ -6,7 +6,11 @@ package vpn
 
 import (
 	"context"
+	"crypto/sha1"
+	"crypto/x509"
+	"encoding/pem"
 	"fmt"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/crypto/certificate"
@@ -24,11 +28,19 @@ type Config struct {
 	Type     string
 	AuthType string
 
-	// Parameters for a L2TP/IPsec VPN connection.
+	// Parameters for an L2TP/IPsec VPN connection.
 	IPsecUseXauth         bool
 	IPsecXauthMissingUser bool
 	IPsecXauthWrongUser   bool
 	UnderlayIPIsOverlayIP bool
+
+	// Parameters for an OpenVPN connection.
+	OpenVPNUseUserPassword        bool
+	OpenVPNCertVerify             bool
+	OpenVPNCertVerifyWrongHash    bool
+	OpenVPNCertVeirfyWrongSubject bool
+	OpenVPNCertVerifyWrongCN      bool
+	OpenVPNCertVerifyCNOnly       bool
 }
 
 // VPN types.
@@ -189,7 +201,7 @@ func (c *Connection) startServer(ctx context.Context) error {
 	case TypeL2TPIPsec:
 		c.Server, err = StartL2TPIPsecServer(ctx, c.config.AuthType, c.config.IPsecUseXauth, c.config.UnderlayIPIsOverlayIP)
 	case TypeOpenVPN:
-		c.Server, err = StartOpenVPNServer(ctx)
+		c.Server, err = StartOpenVPNServer(ctx, c.config.OpenVPNUseUserPassword)
 	default:
 		return errors.Errorf("unexpected VPN type %s", c.config.Type)
 	}
@@ -226,7 +238,7 @@ func (c *Connection) createProperties() (map[string]interface{}, error) {
 	case TypeL2TPIPsec:
 		return c.createL2TPIPsecProperties(serverAddress)
 	case TypeOpenVPN:
-		return c.createOpenVPNProperties(serverAddress), nil
+		return c.createOpenVPNProperties(serverAddress)
 	default:
 		return nil, errors.Errorf("unexpected server type: got %s", c.config.Type)
 	}
@@ -267,8 +279,8 @@ func (c *Connection) createL2TPIPsecProperties(serverAddress string) (map[string
 	return properties, nil
 }
 
-func (c *Connection) createOpenVPNProperties(serverAddress string) map[string]interface{} {
-	return map[string]interface{}{
+func (c *Connection) createOpenVPNProperties(serverAddress string) (map[string]interface{}, error) {
+	properties := map[string]interface{}{
 		"Name":                  "test-vpn-openvpn",
 		"Provider.Host":         serverAddress,
 		"Provider.Type":         "openvpn",
@@ -279,6 +291,43 @@ func (c *Connection) createOpenVPNProperties(serverAddress string) map[string]in
 		"OpenVPN.RemoteCertEKU": "TLS Web Server Authentication",
 		"OpenVPN.Verb":          "5",
 	}
+
+	if c.config.OpenVPNUseUserPassword {
+		properties["OpenVPN.User"] = openvpnUsername
+		properties["OpenVPN.Password"] = openvpnPassword
+	}
+
+	if c.config.OpenVPNCertVerify {
+		if c.config.OpenVPNCertVerifyWrongHash {
+			properties["OpenVPN.VerifyHash"] = "00" + strings.Repeat(":00", 19)
+		} else {
+			certBlock, _ := pem.Decode([]byte(certificate.TestCert1().CACred.Cert))
+			caCert, err := x509.ParseCertificate(certBlock.Bytes)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to parse CA cert")
+			}
+			// Translates the form of SHA-1 hash from []byte to "xx:xx:...:xx".
+			properties["OpenVPN.VerifyHash"] = strings.ReplaceAll(fmt.Sprintf("% 02x", sha1.Sum(caCert.Raw)), " ", ":")
+		}
+
+		if c.config.OpenVPNCertVeirfyWrongSubject {
+			properties["OpenVPN.VerifyX509Name"] = "bogus subject name"
+		} else if c.config.OpenVPNCertVerifyWrongCN {
+			properties["OpenVPN.VerifyX509Name"] = "bogus cn"
+			properties["OpenVPN.VerifyX509Type"] = "name"
+		} else if c.config.OpenVPNCertVerifyCNOnly {
+			// This can be parsed from certificate.TestCert1().ServerCred.Cert .
+			properties["OpenVPN.VerifyX509Name"] = "chromelab-wifi-testbed-server.mtv.google.com"
+			properties["OpenVPN.VerifyX509Type"] = "name"
+		} else {
+			// This can be parsed from certificate.TestCert1().ServerCred.Cert, but
+			// the output format of String() function of the parsed result does not
+			// match the format that OpenVPN expects.
+			properties["OpenVPN.VerifyX509Name"] = "C=US, ST=California, L=Mountain View, CN=chromelab-wifi-testbed-server.mtv.google.com"
+		}
+	}
+
+	return properties, nil
 }
 
 func (c *Connection) connectService(ctx context.Context) (bool, error) {
