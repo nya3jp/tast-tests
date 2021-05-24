@@ -1,0 +1,221 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package hwsec
+
+import (
+	"context"
+	"fmt"
+	"math/rand"
+	"time"
+
+	"chromiumos/tast/common/hwsec"
+	"chromiumos/tast/common/pkcs11"
+	"chromiumos/tast/common/pkcs11/pkcs11test"
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/hwsec/util"
+	hwseclocal "chromiumos/tast/local/hwsec"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: ChapsStress,
+		Desc: "Repeatedly load/unload slots, create/remove keys, sign to check that chaps works as intended. This is designed to uncover flaws in chaps key/session reloading mechanism",
+		Contacts: []string{
+			"zuan@chromium.org",
+			"cros-hwsec@chromium.org",
+		},
+		// Note: This is not in mainline because it takes too long to run.
+		SoftwareDeps: []string{"chrome", "tpm2"},
+		Timeout:      20 * time.Minute,
+	})
+}
+
+const (
+	// userCount is the number of users we want to test simultaneously.
+	userCount = 4
+	// keysPerUser is the maximum number of keys we'll have per user.
+	keysPerUser = 16
+
+	// turnCount is the number of turns we'll go through in one test run.
+	turnCount = 1024
+
+	// The following are relative probabilities of events happening/being selected in runOneTurn().
+	// mountProb is the probability that we mount a user's vault.
+	mountProb = 10.0
+	// unmountProb is the probability that we unmount all user's vault.
+	unmountProb = 1.5
+)
+
+// chapsStressState is a struct that stores the state of the test (i.e. if a user is mounted or
+// if a key is loaded) while the test is running.
+type chapsStressState struct {
+	// usernames is the list of usernames used in the test.
+	usernames []string
+	// passwords is the list of passwords used in the test. It corresponds to the
+	// usernames above.
+	passwords []string
+	// mounted records whether a user is mounted. It corresponds to the usernames above.
+	mounted []bool
+	// keys are the keys for each user. [0:keysPerUser] is for the first user,
+	// [keysPerUser:2*keysPerUser] is for the second user... etc.
+	// If that key is not created/has been deleted, then it'll be nil.
+	keys []*pkcs11.KeyInfo
+	// rand is the source of randomness that is used throughout the test to ensure that
+	// it is deterministic.
+	rand *rand.Rand
+
+	// Below are some statistics of the stress test run:
+
+	// mountCount is the number of times we mounted a vault.
+	mountCount int
+	// unmountCount is the number of times we unmounted all vaults.
+	unmountCount int
+}
+
+// doMountUserTurn randomly selects a user that's not mounted and mount the vault.
+func doMountUserTurn(ctx context.Context, state *chapsStressState, cryptohome *hwsec.CryptohomeClient) (retErr error) {
+	var viableUsers []int
+	for i := 0; i < userCount; i++ {
+		if !state.mounted[i] {
+			viableUsers = append(viableUsers, i)
+		}
+	}
+
+	if len(viableUsers) == 0 {
+		// All users are mounted, so let's skip.
+		return nil
+	}
+
+	// Otherwise, select a user to mount.
+	u := viableUsers[state.rand.Intn(len(viableUsers))]
+	username := state.usernames[u]
+	password := state.passwords[u]
+
+	// Mount the vault.
+	if err := cryptohome.MountVault(ctx, username, password, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+		return errors.Wrap(err, "failed to mount vault in mount user turn")
+	}
+
+	// Wait for it to be ready.
+	if err := cryptohome.WaitForUserToken(ctx, username); err != nil {
+		return errors.Wrap(err, "failed to wait for user token in mount user turn")
+	}
+
+	state.mounted[u] = true
+
+	testing.ContextLogf(ctx, "Mounted user %d", u)
+	state.mountCount++
+	return nil
+}
+
+// doUnmountUserTurn unmounts all users.
+func doUnmountUserTurn(ctx context.Context, state *chapsStressState, cryptohome *hwsec.CryptohomeClient) (retErr error) {
+	// Unmount all users.
+	if err := cryptohome.UnmountAll(ctx); err != nil {
+		return errors.Wrap(err, "failed to unmount all users in unmount user turn")
+	}
+
+	// Clear out the mounted state.
+	for i := 0; i < userCount; i++ {
+		state.mounted[i] = false
+	}
+
+	testing.ContextLog(ctx, "Unmounted all users")
+	state.unmountCount++
+	return nil
+}
+
+// runOneTurn runs one iteration of the test. It'll randomly choose to do one of the following:
+// - Mount a user
+// - Unmount all users
+func runOneTurn(ctx context.Context, state *chapsStressState, cryptohome *hwsec.CryptohomeClient) (retErr error) {
+	totalProb := mountProb + unmountProb
+	accuProb := 0.0
+	r := state.rand.Float64() * totalProb
+
+	if r < accuProb+mountProb {
+		return doMountUserTurn(ctx, state, cryptohome)
+	}
+	accuProb += mountProb
+
+	if r < accuProb+unmountProb {
+		return doUnmountUserTurn(ctx, state, cryptohome)
+	}
+	accuProb += unmountProb
+
+	return nil
+}
+
+func ChapsStress(ctx context.Context, s *testing.State) {
+	r := hwseclocal.NewCmdRunner()
+
+	helper, err := hwseclocal.NewHelper(r)
+	if err != nil {
+		s.Fatal("Failed to create hwsec helper: ", err)
+	}
+	cryptohome := helper.CryptohomeClient()
+
+	// Prepare the states for this test and the user/pass lists.
+	state := &chapsStressState{}
+	state.usernames = make([]string, userCount)
+	state.passwords = make([]string, userCount)
+	for i := 0; i < userCount; i++ {
+		state.usernames[i] = fmt.Sprintf("u%d.%s", i, util.FirstUsername)
+		state.passwords[i] = fmt.Sprintf("u%d.%s", i, util.FirstPassword)
+	}
+	state.mounted = make([]bool, userCount)
+	state.keys = make([]*pkcs11.KeyInfo, userCount*keysPerUser)
+	// Seed the random with a deterministic seed for reproducible run.
+	state.rand = rand.New(rand.NewSource(42))
+
+	const scratchpadPath = "/tmp/ChapsECDSATest"
+
+	// Remove all keys/certs before the test as well.
+	if err := pkcs11test.CleanupScratchpad(ctx, r, scratchpadPath); err != nil {
+		s.Fatal("Failed to clean scratchpad before the start of test: ", err)
+	}
+	if err := cryptohome.UnmountAll(ctx); err != nil {
+		s.Fatal("Failed to unmount before the start of test: ", err)
+	}
+	for _, user := range state.usernames {
+		if _, err := cryptohome.RemoveVault(ctx, user); err != nil {
+			// Those vaults probably don't exist, so it's not fatal.
+			s.Log("Failed to remove vault before the start of test: ", err)
+		}
+	}
+	defer func() {
+		if err := cryptohome.UnmountAll(ctx); err != nil {
+			s.Error("Failed to unmount after the test: ", err)
+		}
+		for _, user := range state.usernames {
+			if _, err := cryptohome.RemoveVault(ctx, user); err != nil {
+				// Those vaults might not exist, so it's not fatal.
+				s.Log("Failed to remove vault after the test: ", err)
+			}
+		}
+	}()
+
+	// Prepare the scratchpad.
+	_, _, err = pkcs11test.PrepareScratchpadAndTestFiles(ctx, r, scratchpadPath)
+	if err != nil {
+		s.Fatal("Failed to initialize the scratchpad space: ", err)
+	}
+	// Remove all keys/certs, if any at the end. i.e. Cleanup after ourselves.
+	defer pkcs11test.CleanupScratchpad(ctx, r, scratchpadPath)
+
+	// Give the cleanup 30 seconds to finish.
+	shortenedCtx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+
+	for i := 0; i < turnCount; i++ {
+		if err := runOneTurn(shortenedCtx, state, cryptohome); err != nil {
+			s.Fatal("Turn failed: ", err)
+		}
+	}
+
+	s.Logf("Mounted %d times, unmounted %d times", state.mountCount, state.unmountCount)
+}
