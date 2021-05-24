@@ -6,6 +6,7 @@ package vm
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"os"
 	"regexp"
@@ -27,12 +28,15 @@ type Crosvm struct {
 
 // CrosvmParams - Parameters for starting a crosvm instance.
 type CrosvmParams struct {
-	vmKernel    string   // path to the VM kernel image
-	rootfsPath  string   // optional path to the VM rootfs
-	diskPaths   []string // paths that will be mounted read only
-	rwDiskPaths []string // paths that will be mounted read/write
-	gsocketPath string   // path to the VM control socket
-	kernelArgs  []string // string arguments to be passed to the VM kernel
+	vmKernel     string   // path to the VM kernel image
+	rootfsPath   string   // optional path to the VM rootfs
+	diskPaths    []string // paths that will be mounted read only
+	rwDiskPaths  []string // paths that will be mounted read/write
+	socketPath   string   // path to the VM control socket
+	kernelArgs   []string // string arguments to be passed to the VM kernel
+	sharedDirs   []string // array of colon-separated options for configuring a directory to be shared with the VM
+	serialOutput string   // path to a file where serial output will be written
+	vhostUserNet []string // paths to sockets that vhost-user-net devices will use
 }
 
 // Option configures a CrosvmParams
@@ -73,6 +77,27 @@ func KernelArgs(args ...string) Option {
 	}
 }
 
+// SharedDir sets a config for directory to be shared with the VM.
+func SharedDir(param string) Option {
+	return func(p *CrosvmParams) {
+		p.sharedDirs = append(p.sharedDirs, param)
+	}
+}
+
+// SerialOutput sets a file that serial log will be written.
+func SerialOutput(file string) Option {
+	return func(p *CrosvmParams) {
+		p.serialOutput = file
+	}
+}
+
+// VhostUserNet sets a socket to be used by a vhost-user net device.
+func VhostUserNet(socket string) Option {
+	return func(p *CrosvmParams) {
+		p.vhostUserNet = append(p.vhostUserNet, socket)
+	}
+}
+
 // NewCrosvmParams constructs a set of crosvm parameters.
 func NewCrosvmParams(kernel string, opts ...Option) *CrosvmParams {
 	p := &CrosvmParams{
@@ -86,7 +111,8 @@ func NewCrosvmParams(kernel string, opts ...Option) *CrosvmParams {
 	return p
 }
 
-func (p *CrosvmParams) toArgs() []string {
+// ToArgs converts CrosvmParams to an array of strings that can be used as crosvm's command line flags.
+func (p *CrosvmParams) ToArgs() []string {
 	args := []string{"run"}
 
 	if p.socketPath != "" {
@@ -105,6 +131,18 @@ func (p *CrosvmParams) toArgs() []string {
 		args = append(args, "-d", path)
 	}
 
+	for _, param := range p.sharedDirs {
+		args = append(args, "--shared-dir", param)
+	}
+
+	if p.serialOutput != "" {
+		args = append(args, "--serial", fmt.Sprintf("type=file,num=1,console=true,path=%s", p.serialOutput))
+	}
+
+	for _, sock := range p.vhostUserNet {
+		args = append(args, "--vhost-user-net", sock)
+	}
+
 	args = append(args, "-p", strings.Join(p.kernelArgs, " "))
 
 	args = append(args, p.vmKernel)
@@ -119,7 +157,7 @@ func NewCrosvm(ctx context.Context, params *CrosvmParams) (*Crosvm, error) {
 	}
 
 	vm := &Crosvm{}
-	vm.cmd = testexec.CommandContext(ctx, "crosvm", params.toArgs()...)
+	vm.cmd = testexec.CommandContext(ctx, "crosvm", params.ToArgs()...)
 	vm.socketPath = params.socketPath
 
 	var err error
