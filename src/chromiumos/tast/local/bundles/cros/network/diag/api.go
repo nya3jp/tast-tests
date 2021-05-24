@@ -54,6 +54,14 @@ func (m *MojoAPI) RunRoutine(ctx context.Context, routine string) (*diag.Routine
 // PollRoutine will continuously run the specified routine until the provided
 // diag.RoutineResult is matched.
 func (m *MojoAPI) PollRoutine(ctx context.Context, routine string, expectedResult *diag.RoutineResult) error {
+	// By default use the context's deadline for a timeout if set, otherwise
+	// default to 10 seconds.
+	deadline, ok := ctx.Deadline()
+	timeout := 10 * time.Second
+	if ok {
+		timeout = deadline.Sub(time.Now())
+	}
+
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		result, err := m.RunRoutine(ctx, routine)
 		if err != nil {
@@ -65,7 +73,7 @@ func (m *MojoAPI) PollRoutine(ctx context.Context, routine string, expectedResul
 		}
 
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
 		return errors.Wrap(err, "timout waiting for routine to have expected results")
 	}
 
