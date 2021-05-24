@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85476269_c95575f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-24T07:04:28Z",
+      "side": 1,
+      "message": "Note: In the autotest, openvpn test also creates a \"etc/ssl/blacklist\" file in the chroot. Not sure if it is required but it seems that removing it doesn\u0027t affect the test, so I didn\u0027t add it since it contains a blocked word.",
+      "range": {
+        "startLine": 167,
+        "startChar": 26,
+        "endLine": 167,
+        "endChar": 44
+      },
+      "revId": "42e9c9f0a5d1d3ec856e808d622728d108e391b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a78befb_38cb6f08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-24T07:04:28Z",
+      "side": 1,
+      "message": "In the autotest, the test would execute `modprobe tun`, I didn\u0027t add that here since it looks fine on my DUT without that. Will we need that on some certain kernels/boards?",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 270,
+        "endChar": 23
+      },
+      "revId": "42e9c9f0a5d1d3ec856e808d622728d108e391b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
