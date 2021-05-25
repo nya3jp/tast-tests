@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1d33e8b_ea592b51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-25T23:26:29Z",
+      "side": 1,
+      "message": "Bumping for one more (hopefully fast) review",
+      "revId": "77b6598ae760277d1ac5cd432025b67a2f89f107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "278cac78_a5ccf419",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-25T23:26:29Z",
+      "side": 1,
+      "message": "Most of these probably won\u0027t be reused, but it may still make sense to move these into ieee80211.go. WDYT?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "77b6598ae760277d1ac5cd432025b67a2f89f107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
