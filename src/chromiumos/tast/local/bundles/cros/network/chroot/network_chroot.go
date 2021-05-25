@@ -27,8 +27,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-var bindRootDirectories = []string{"bin", "dev", "dev/pts", "lib", "lib32", "lib64", "proc", "sbin", "sys", "usr", "usr/local"}
-
 // Subset of bindRootDirectories that should be mounted writable.
 var bindRootWritableDirectories = []string{"dev/pts"}
 
@@ -36,17 +34,7 @@ var bindRootWritableDirectories = []string{"dev/pts"}
 // Includes directories containing the system bus socket and machine ID.
 var dbusBridgeDirectories = []string{"run/dbus/", "var/lib/dbus/"}
 
-var rootDirectories = []string{"etc", "etc/ssl", "tmp", "var", "var/log", "run", "run/lock"}
-
 var rootSymlinks = [][]string{{"var/run", "/run"}, {"var/lock", "/run/lock"}}
-
-var copiedConfigFiles = []string{"etc/ld.so.cache"}
-
-var configFileTemplates = map[string]string{
-	startup: "#!/bin/sh\n" +
-		"exec > /{{.startup_log}} 2>&1\n" + // Redirect all commands output to the file startup.log.
-		"set -x\n", // Print all executed commands to the terminal.
-}
 
 // NetworkChroot wraps the chroot variables.
 type NetworkChroot struct {
@@ -61,20 +49,22 @@ type NetworkChroot struct {
 }
 
 const (
-	startup    = "etc/chroot_startup.sh"
-	startupLog = "var/log/startup.log"
+	startup         = "etc/chroot_startup.sh"
+	startupLog      = "var/log/startup.log"
+	startupTemplate = "#!/bin/sh\n" +
+		"exec > /{{.startup_log}} 2>&1\n" + // Redirect all commands output to the file startup.log.
+		"set -x\n" // Print all executed commands to the terminal.
 )
 
 // NewNetworkChroot creates a new chroot object.
 func NewNetworkChroot() *NetworkChroot {
-	tempConfigFileValues := make(map[string]string)
-	tempConfigFileValues["startup_log"] = startupLog
 	return &NetworkChroot{
-		netBindRootDirectories: bindRootDirectories,
-		netRootDirectories:     rootDirectories,
-		netCopiedConfigFiles:   copiedConfigFiles,
-		netConfigFileTemplates: configFileTemplates,
-		netConfigFileValues:    tempConfigFileValues}
+		netBindRootDirectories: []string{"bin", "dev", "dev/pts", "lib", "lib32", "lib64", "proc", "sbin", "sys", "usr", "usr/local"},
+		netRootDirectories:     []string{"etc", "etc/ssl", "tmp", "var", "var/log", "run", "run/lock"},
+		netCopiedConfigFiles:   []string{"etc/ld.so.cache"},
+		netConfigFileTemplates: map[string]string{startup: startupTemplate},
+		netConfigFileValues:    map[string]string{"startup_log": startupLog},
+	}
 }
 
 // Startup creates the chroot, calls patchpanel API to create a netns, starts
