@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d13cbc25_fcd445fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-25T16:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8f71bfc_9fa94095",
+      "range": {
+        "startLine": 51,
+        "startChar": 37,
+        "endLine": 51,
+        "endChar": 55
+      },
+      "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa73d3e1_336478e8",
@@ -96,6 +120,24 @@
       "side": 1,
       "message": "Added statement to check if errEC \u003d\u003d nil. \n\nFrom our observation, after putting DUT in hibernation, it seems that no more EC commands could be delivered, and we would read a FaultError type error, \"xml-rpc fault with code 1... EC: No data was sent from the pty.\" Should we further handle this error by validating the \"No data was sent\" part?",
       "parentUuid": "aa73d3e1_336478e8",
+      "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e596e2e0_3ad3146e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-25T16:07:06Z",
+      "side": 1,
+      "message": "Because we\u0027re now checking specifically whether errEC is a FaultError, I don\u0027t think that will be necessary. But, it could be helpful / make the test more robust. Up to you.",
+      "parentUuid": "a020f19a_858991c6",
       "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -171,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bfec7a1_9c3183ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-25T16:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3437901e_7425e3f1",
+      "range": {
+        "startLine": 98,
+        "startChar": 30,
+        "endLine": 98,
+        "endChar": 43
+      },
+      "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edca2729_1c7d9771",
@@ -206,6 +272,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf7c5e4_ec80bdf8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-25T16:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b315a27f_0e721bd8",
+      "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83dd27db_22a9a1c0",
@@ -237,6 +321,24 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "83dd27db_22a9a1c0",
+      "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3da28dce_d8fe52aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-25T16:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c74aeb34_90ef5b35",
       "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -575,6 +575,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "497e0c25_f211b645",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-25T16:07:06Z",
+      "side": 1,
+      "message": "Oh, I see: errors.Is checks the error message itself, not just the type. Your errors.As method seems to work; I am sorry for the confusion.\n\nJust for the sake of discussion, we could theoretically create a new function to check whether an error is a FaultError, something like:\n\n    package xmlrpc\n    \n    // IsFault determines whether an error, or any error in its chain, is a FaultError.\n    func IsFault(err error) bool {\n        if _, isFault :\u003d err.(FaultError); isFault {\n            return true\n        }\n        inner :\u003d errors.Unwrap(err)\n        if inner \u003d\u003d nil {\n            return false\n        }\n        return IsFault(inner)\n    }\n\nBut we don\u0027t need to worry about that today.",
+      "parentUuid": "ee98fb23_2f616e66",
+      "range": {
+        "startLine": 69,
+        "startChar": 12,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "63f5b180cab68b9bf0dc899f36f24eeff468dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de6059ab_bd3cab77",
