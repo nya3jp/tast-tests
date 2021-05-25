@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8f71bfc_9fa94095",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-05-25T14:34:24Z",
+      "side": 1,
+      "message": "Replaced by GetChargerAttached() added to methods.go.",
+      "parentUuid": "86af037f_bf4001c2",
+      "range": {
+        "startLine": 51,
+        "startChar": 37,
+        "endLine": 51,
+        "endChar": 55
+      },
+      "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa73d3e1_336478e8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
         "patchSetId": 2
@@ -54,6 +78,24 @@
       "writtenOn": "2021-05-21T16:13:39Z",
       "side": 1,
       "message": "Do all non-Fault scenarios imply that the EC was non-responsive? I think I can imagine some pathological scenarios where RunECCommandGetOutput returns a non-Fault error. If we can validate the message of errEC, I think it would make the test more robust.\n\nAdditionally, we should also check whether errEC \u003d\u003d nil. Currently, if the EC is still responsive (and thus RunECCommandGetOutput returns the EC version with no error), L82 will incorrectly announce that the EC was non-responsive.",
+      "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a020f19a_858991c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-05-25T14:34:24Z",
+      "side": 1,
+      "message": "Added statement to check if errEC \u003d\u003d nil. \n\nFrom our observation, after putting DUT in hibernation, it seems that no more EC commands could be delivered, and we would read a FaultError type error, \"xml-rpc fault with code 1... EC: No data was sent from the pty.\" Should we further handle this error by validating the \"No data was sent\" part?",
+      "parentUuid": "aa73d3e1_336478e8",
       "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -107,6 +149,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3437901e_7425e3f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-05-25T14:34:24Z",
+      "side": 1,
+      "message": "Replaced with Servo().GetChargerAttached() to check whether charger is attached.",
+      "parentUuid": "802259f8_8f20516e",
+      "range": {
+        "startLine": 98,
+        "startChar": 30,
+        "endLine": 98,
+        "endChar": 43
+      },
+      "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "edca2729_1c7d9771",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
         "patchSetId": 2
@@ -124,6 +190,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b315a27f_0e721bd8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-05-25T14:34:24Z",
+      "side": 1,
+      "message": "Remove and replaced by checking the Boolean returned from Servo().GetChargerAttached().",
+      "parentUuid": "edca2729_1c7d9771",
+      "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83dd27db_22a9a1c0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
         "patchSetId": 2
@@ -135,6 +219,24 @@
       "writtenOn": "2021-05-21T16:13:39Z",
       "side": 1,
       "message": "Please log what out[0] is, so that we can debug this scenario. Currently there is no way to tell from logs whether there is no output (L104) or too little output (L107).",
+      "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c74aeb34_90ef5b35",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-05-25T14:34:24Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "83dd27db_22a9a1c0",
       "revId": "a9ba560156d979c50bae4174fc1c0de211f8641b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
