@@ -40,14 +40,10 @@ func init() {
 		// Purposely leave the empty Attr here. Public benchmark tests are not included in crosbolt group for now.
 		Attr:         []string{},
 		SoftwareDeps: []string{"chrome", "arc"},
-		HardwareDeps: hwdep.D(
-			hwdep.InternalDisplay(),
-			// Since the public benchmark will publish data online, run it only on certain approved models.
-			setup.PublicBenchmarkAllowed(),
-		),
-		Fixture: setup.BenchmarkChromeFixture,
-		Timeout: crxprtRunningTime + 15*time.Minute,
-		Vars:    []string{"benchmark.username"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		Fixture:      setup.BenchmarkChromeFixture,
+		Timeout:      crxprtRunningTime + 15*time.Minute,
+		Vars:         []string{"benchmark.username"},
 	})
 }
 
