@@ -43,6 +43,9 @@ const (
 	// turnCount is the number of turns we'll go through in one test run.
 	turnCount = 1024
 
+	// maxSignTimes is the maximum number of times we'll sign with a key in sign key turn.
+	maxSignTimes = 4
+
 	// The following are relative probabilities of events happening/being selected in runOneTurn().
 	// mountProb is the probability that we mount a user's vault.
 	mountProb = 10.0
@@ -52,6 +55,8 @@ const (
 	createKeyProb = 200.0
 	// removeKeyProb is the probability that we remove a key.
 	removeKeyProb = 20.0
+	// signKeyProb is the probability that we sign a key.
+	signKeyProb = 500.0
 )
 
 // chapsStressState is a struct that stores the state of the test (i.e. if a user is mounted or
@@ -84,6 +89,8 @@ type chapsStressState struct {
 	createKeyCount int
 	// removeKeyCount is the number of times we removed a key.
 	removeKeyCount int
+	// signCount is the number of times we signed with a key.
+	signCount int
 }
 
 // getNextKeyID generates the label and keyID for the key that we're going to create.
@@ -231,13 +238,44 @@ func doRemoveKeyTurn(ctx context.Context, state *chapsStressState, pkcs11Util *p
 	return nil
 }
 
+// doSignKeyTurn randomly select a key from a mounted vault to sign.
+func doSignKeyTurn(ctx context.Context, state *chapsStressState, pkcs11Util *pkcs11.Chaps, f1, f2 string) (retErr error) {
+	// Select a key to sign
+	var viableKeys []int
+	for i := 0; i < userCount*keysPerUser; i++ {
+		if state.keys[i] != nil && state.mounted[i/keysPerUser] {
+			viableKeys = append(viableKeys, i)
+		}
+	}
+
+	if len(viableKeys) == 0 {
+		// No key to sign, not signing
+		return nil
+	}
+
+	// Select the key and number of times to sign.
+	k := viableKeys[state.rand.Intn(len(viableKeys))]
+	times := state.rand.Intn(maxSignTimes)
+
+	for i := 0; i < times; i++ {
+		if err := pkcs11test.SignAndVerify(ctx, pkcs11Util, state.keys[k], f1, f2, &pkcs11.SHA256RSAPKCS); err != nil {
+			return errors.Wrap(err, "failed to sign in sign key turn")
+		}
+	}
+
+	testing.ContextLogf(ctx, "Signed with key %d", k)
+	state.signCount++
+	return nil
+}
+
 // runOneTurn runs one iteration of the test. It'll randomly choose to do one of the following:
 // - Mount a user
 // - Unmount all users
 // - Create a key
 // - Remove a key
-func runOneTurn(ctx context.Context, state *chapsStressState, cryptohome *hwsec.CryptohomeClient, pkcs11Util *pkcs11.Chaps, scratchpadPath string) (retErr error) {
-	totalProb := mountProb + unmountProb + createKeyProb + removeKeyProb
+// - Sign with a key
+func runOneTurn(ctx context.Context, state *chapsStressState, cryptohome *hwsec.CryptohomeClient, pkcs11Util *pkcs11.Chaps, scratchpadPath, f1, f2 string) (retErr error) {
+	totalProb := mountProb + unmountProb + createKeyProb + removeKeyProb + signKeyProb
 	accuProb := 0.0
 	r := state.rand.Float64() * totalProb
 
@@ -261,7 +299,7 @@ func runOneTurn(ctx context.Context, state *chapsStressState, cryptohome *hwsec.
 	}
 	accuProb += removeKeyProb
 
-	return nil
+	return doSignKeyTurn(ctx, state, pkcs11Util, f1, f2)
 }
 
 func ChapsStress(ctx context.Context, s *testing.State) {
@@ -319,7 +357,7 @@ func ChapsStress(ctx context.Context, s *testing.State) {
 	}()
 
 	// Prepare the scratchpad.
-	_, _, err = pkcs11test.PrepareScratchpadAndTestFiles(ctx, r, scratchpadPath)
+	f1, f2, err := pkcs11test.PrepareScratchpadAndTestFiles(ctx, r, scratchpadPath)
 	if err != nil {
 		s.Fatal("Failed to initialize the scratchpad space: ", err)
 	}
@@ -331,10 +369,10 @@ func ChapsStress(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	for i := 0; i < turnCount; i++ {
-		if err := runOneTurn(shortenedCtx, state, cryptohome, pkcs11Util, scratchpadPath); err != nil {
+		if err := runOneTurn(shortenedCtx, state, cryptohome, pkcs11Util, scratchpadPath, f1, f2); err != nil {
 			s.Fatal("Turn failed: ", err)
 		}
 	}
 
-	s.Logf("Mounted %d times, unmounted %d times, created %d keys, removed %d keys", state.mountCount, state.unmountCount, state.createKeyCount, state.removeKeyCount)
+	s.Logf("Mounted %d times, unmounted %d times, created %d keys, removed %d keys, signed %d times", state.mountCount, state.unmountCount, state.createKeyCount, state.removeKeyCount, state.signCount)
 }
