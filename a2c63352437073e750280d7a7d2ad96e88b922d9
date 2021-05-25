@@ -62,6 +62,30 @@
       },
       "revId": "a2c63352437073e750280d7a7d2ad96e88b922d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5b7c8a2_8306f3a0",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-25T03:42:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbb6e5e2_6333420e",
+      "range": {
+        "startLine": 1052,
+        "startChar": 4,
+        "endLine": 1052,
+        "endChar": 9
+      },
+      "revId": "a2c63352437073e750280d7a7d2ad96e88b922d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
