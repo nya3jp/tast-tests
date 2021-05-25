@@ -21,6 +21,8 @@ import (
 
 const uiTimeout = 10 * time.Second
 
+var pollOpts = testing.PollOptions{Interval: time.Second, Timeout: uiTimeout}
+
 // State contains the state returned by chrome.autotestPrivate.loginStatus,
 // corresponding to 'LoginStatusDict' as defined in autotest_private.idl.
 type State struct {
@@ -154,5 +156,86 @@ func EnterPIN(ctx context.Context, tconn *chrome.TestConn, PIN string) error {
 
 // SubmitPIN submits the entered PIN.
 func SubmitPIN(ctx context.Context, tconn *chrome.TestConn) error {
-	return uig.Do(ctx, tconn, uig.FindWithTimeout(ui.FindParams{Name: "Submit", Role: ui.RoleTypeButton}, uiTimeout).LeftClick())
+	node, err := ui.FindWithTimeout(ctx, tconn, SubmitBtnParams, uiTimeout)
+	if err != nil {
+		return err
+	}
+	defer node.Release(ctx)
+
+	return node.StableLeftClick(ctx, &pollOpts)
+}
+
+// ShowPassword clicks the Show password button.
+func ShowPassword(ctx context.Context, tconn *chrome.TestConn) error {
+	node, err := ui.FindWithTimeout(ctx, tconn, ShowPasswordBtnParams, uiTimeout)
+	if err != nil {
+		return err
+	}
+	defer node.Release(ctx)
+
+	return node.StableLeftClick(ctx, &pollOpts)
+}
+
+// HidePassword clicks the Hide password button.
+func HidePassword(ctx context.Context, tconn *chrome.TestConn) error {
+	node, err := ui.FindWithTimeout(ctx, tconn, HidePasswordBtnParams, uiTimeout)
+	if err != nil {
+		return err
+	}
+	defer node.Release(ctx)
+
+	return node.StableLeftClick(ctx, &pollOpts)
+}
+
+// SwitchToPassword clicks the 'Switch to password' button.
+func SwitchToPassword(ctx context.Context, tconn *chrome.TestConn) error {
+	node, err := ui.FindWithTimeout(ctx, tconn, SwitchToPwdBtnParams, uiTimeout)
+	if err != nil {
+		return err
+	}
+	defer node.Release(ctx)
+
+	return node.StableLeftClick(ctx, &pollOpts)
+}
+
+// GetUserPassword searches the password field for a given user pod and returns the password node.
+func GetUserPassword(ctx context.Context, tconn *chrome.TestConn, username string) (*ui.Node, error) {
+	params, err := PasswordFieldParams(ctx, tconn, username)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find the password node")
+	}
+
+	return ui.Find(ctx, tconn, params)
+}
+
+// WaitForPasswordHidden checks that PIN / Password field is autohidden 5s after Show password button is pressed.
+func WaitForPasswordHidden(ctx context.Context, tconn *chrome.TestConn) error {
+	testing.ContextLog(ctx, "Clicking Show password button")
+
+	if err := ShowPassword(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to click Show password button: ")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		flag, e := ui.Exists(ctx, tconn, HidePasswordBtnParams)
+		if e != nil {
+			return testing.PollBreak(e)
+		}
+		if flag {
+			return errors.New("Hide password button was found")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 6 * time.Second}); err != nil {
+		return err
+	}
+
+	showPwd, e := ui.Exists(ctx, tconn, ShowPasswordBtnParams)
+	if e != nil {
+		return e
+	}
+	if !showPwd {
+		return errors.New("failed to find Show password button")
+	}
+
+	return nil
 }
