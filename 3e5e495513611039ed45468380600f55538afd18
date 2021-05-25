@@ -16,6 +16,24 @@
       "message": "Hi Arowa,\n\nDo you still remember why do we need this KillPIDs() in the test? I checked https://crrev.com/c/2117039 but failed to find any discussion about this.\n\nThanks!",
       "revId": "3e5e495513611039ed45468380600f55538afd18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7803257e_c65e5279",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-05-25T23:22:43Z",
+      "side": 1,
+      "message": "The KillPIDs was a replacement for the 10 sec wait in the autotest version [1] for processes that take a while to exit, which will cause the cleanup after it to fail.\n\nI think if the cleanup works fine with your change then it\u0027s a better implemetation than KillPIDs. @Brian WDYT?\n\nhttps://source.corp.google.com/chromeos_public/src/third_party/autotest/files/client/cros/network_chroot.py;rcl\u003d8affba01e86e339c53193fc9347a45b83e006e5f;l\u003d110",
+      "parentUuid": "a01a06ac_9036668b",
+      "revId": "3e5e495513611039ed45468380600f55538afd18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
