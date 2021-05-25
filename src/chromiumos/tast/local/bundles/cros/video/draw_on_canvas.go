@@ -7,12 +7,16 @@ package video
 import (
 	"context"
 	"image"
+	"image/color"
 	"net/http"
 	"net/http/httptest"
 	"os"
 	"path"
 
 	"chromiumos/tast/common/media/caps"
+	"chromiumos/tast/common/perf"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -115,7 +119,11 @@ func DrawOnCanvas(ctx context.Context, s *testing.State) {
 	}
 	videoW := refImg.Bounds().Dx()
 	videoH := refImg.Bounds().Dy()
-	if err := conn.Call(ctx, nil, "initializeCanvas", videoW, videoH); err != nil {
+
+	// Note that we set the size of the canvas to 5px more than the video on each dimension.
+	// This is so that we can later check that nothing was drawn outside of the expected
+	// bounds.
+	if err := conn.Call(ctx, nil, "initializeCanvas", videoW+5, videoH+5); err != nil {
 		s.Fatal("initializeCanvas() failed: ", err)
 	}
 
@@ -123,4 +131,94 @@ func DrawOnCanvas(ctx context.Context, s *testing.State) {
 	if err := conn.Call(ctx, nil, "playAndDrawOnCanvas", params.fileName); err != nil {
 		s.Fatal("playAndDrawOnCanvas() failed: ", err)
 	}
+
+	// getCanvasColorAt allows us to get the color of the canvas at an arbitrary point (x, y).
+	getCanvasColorAt := func(x, y int) (color.Color, error) {
+		var c struct {
+			Components map[int]byte `json:"data"`
+		}
+		if err = conn.Call(ctx, &c, "getCanvasColorAt", x, y); err != nil {
+			return nil, errors.Wrap(err, "getCanvasColorAt failed")
+		}
+		return color.RGBA{c.Components[0], c.Components[1], c.Components[2], c.Components[3]}, nil
+	}
+
+	// A simple check first: the intrinsic dimensions of the video should match the dimensions of the reference image.
+	var intrinsicVideoW, intrinsicVideoH int
+	if err = conn.Eval(ctx, "document.getElementById('video').videoWidth", &intrinsicVideoW); err != nil {
+		s.Fatal("Could not get the intrinsic video width: ", err)
+	}
+	if err = conn.Eval(ctx, "document.getElementById('video').videoHeight", &intrinsicVideoH); err != nil {
+		s.Fatal("Could not get the intrinsic video height: ", err)
+	}
+	if intrinsicVideoW != videoW || intrinsicVideoH != videoH {
+		s.Fatalf("Unexpected intrinsic dimensions: expected %dx%d; got %dx%d", videoW, videoH, intrinsicVideoW, intrinsicVideoH)
+	}
+
+	// Another simple check: nothing should have been drawn at (videoW, videoH).
+	c, err := getCanvasColorAt(videoW, videoH)
+	if err != nil {
+		s.Fatalf("Could not get canvas color at (%d, %d): %v", videoW, videoH, err)
+	}
+	blackColor := color.RGBA{0, 0, 0, 255}
+	if c != blackColor {
+		s.Fatalf("At (%d, %d): expected RGBA = %v; got RGBA = %v", videoW, videoH, blackColor, c)
+	}
+
+	// Measurement 1:
+	// We'll sample a few interesting pixels and report the color distance with
+	// respect to the reference image.
+	samples := play.ColorSamplingPointsForStillColorsVideo(videoW, videoH)
+	p := perf.NewValues()
+	for k, v := range samples {
+		expectedColor := refImg.At(v.X, v.Y)
+		actualColor, err := getCanvasColorAt(v.X, v.Y)
+		if err != nil {
+			s.Fatalf("Could not get canvas color at (%d, %d): %v", v.X, v.Y, err)
+		}
+		distance := play.ColorDistance(expectedColor, actualColor)
+		s.Logf("At %v (%d, %d): expected RGBA = %v; got RGBA = %v; distance = %d",
+			k, v.X, v.Y, expectedColor, actualColor, distance)
+		p.Set(perf.Metric{
+			Name:      k,
+			Unit:      "None",
+			Direction: perf.SmallerIsBetter,
+		}, float64(distance))
+	}
+
+	// Measurement 2:
+	// We report an aggregate distance for the image: we go through all the pixels
+	// in the canvas video to add up all the distances and then normalize by the
+	// number of pixels at the end.
+	totalDistance := 0.0
+	for y := 0; y < videoH; y++ {
+		// We get one row at a time because querying one pixel at a time takes too long.
+		var row struct {
+			Data map[int]byte `json:"data"`
+		}
+		if err = conn.Call(ctx, &row, "getRowData", y, videoW); err != nil {
+			s.Fatal("getRowData() failed: ", err)
+		}
+
+		for x := 0; x < videoW; x++ {
+			expectedColor := refImg.At(x, y)
+			aR := row.Data[4*x]
+			aG := row.Data[4*x+1]
+			aB := row.Data[4*x+2]
+			aA := row.Data[4*x+3]
+			actualColor := color.RGBA{aR, aG, aB, aA}
+			if err != nil {
+				s.Fatalf("Could not get canvas color at (%d, %d): %v", x, y, err)
+			}
+			totalDistance += float64(play.ColorDistance(expectedColor, actualColor))
+		}
+	}
+	totalDistance /= float64(videoW * videoH)
+	s.Log("The total distance for the entire image is ", totalDistance)
+	p.Set(perf.Metric{
+		Name:      "total_distance",
+		Unit:      "None",
+		Direction: perf.SmallerIsBetter,
+	}, totalDistance)
+	p.Save(s.OutDir())
 }
