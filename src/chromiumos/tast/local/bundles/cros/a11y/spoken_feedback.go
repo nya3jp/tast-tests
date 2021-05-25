@@ -71,7 +71,7 @@ func SpokenFeedback(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set the ChromeVox voice: ", err)
 	}
 
-	sm, err := a11y.NewSpeechMonitor(ctx, cr, vd.ExtID)
+	sm, err := a11y.NewSpeechMonitor(ctx, cr, cvconn, vd.ExtID)
 	if err != nil {
 		s.Fatal("Failed to connect to the TTS background page: ", err)
 	}
@@ -84,7 +84,7 @@ func SpokenFeedback(ctx context.Context, s *testing.State) {
 	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Alt+Shift+L"}, []string{"Launcher", "Button", "Shelf", "Tool bar", "Press Search plus Space to activate"}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
-	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Alt+Shift+S"}, []string{"Quick Settings, Press search plus left to access the notification center., window"}); err != nil {
+	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Alt+Shift+S"}, []string{"Quick Settings,", "Press search plus left to access the notification center.,", "window"}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
 }
