@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a6794e0_868cde12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/vk_type_test_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-25T03:11:20Z",
+      "side": 1,
+      "message": "hi Yingbing, does this structure work for most input methods?\nIt would be nice if you can provide one data sample of each input method we can use it for testing.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "8d488448fd219d379cf54f5990e3b555684630c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
