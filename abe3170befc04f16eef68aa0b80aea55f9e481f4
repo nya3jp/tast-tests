@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c68f2d9a_865c2b78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-05-25T16:24:49Z",
+      "side": 1,
+      "message": "Miguel: this is a follow-up of https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2915853 and it gets things ready for the interesting CL in the chain.",
+      "revId": "abe3170befc04f16eef68aa0b80aea55f9e481f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
