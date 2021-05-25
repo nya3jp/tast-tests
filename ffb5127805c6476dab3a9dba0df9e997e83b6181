@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf835b6_d67da81e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-25T08:28:26Z",
+      "side": 1,
+      "message": "Oops, yes. Done.",
+      "parentUuid": "a82aae26_ebe54049",
+      "range": {
+        "startLine": 12,
+        "startChar": 42,
+        "endLine": 12,
+        "endChar": 48
+      },
+      "revId": "ffb5127805c6476dab3a9dba0df9e997e83b6181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d57d4f25_15ee1a03",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-25T08:20:15Z",
       "side": 1,
       "message": "Are these read-only? If so shall we mark them as consts as well?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 77
+      },
+      "revId": "ffb5127805c6476dab3a9dba0df9e997e83b6181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e393ba7_f2d34221",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-25T08:28:26Z",
+      "side": 1,
+      "message": "Yes these should be read-only. It seems to me that there is no \"const string array\" in golang. Maybe tast-owners@ have a better solution for it?",
+      "parentUuid": "d57d4f25_15ee1a03",
       "range": {
         "startLine": 30,
         "startChar": 0,
