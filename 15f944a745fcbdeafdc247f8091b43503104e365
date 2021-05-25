@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e624c53d_fe582db1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-25T02:29:22Z",
+      "side": 1,
+      "message": "Is there anyway we could inject or configure this timeout from the test so that we can pass the failure case tests faster than waiting for the full timeout ?",
+      "range": {
+        "startLine": 351,
+        "startChar": 49,
+        "endLine": 354,
+        "endChar": 31
+      },
+      "revId": "15f944a745fcbdeafdc247f8091b43503104e365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
