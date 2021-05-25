@@ -93,6 +93,30 @@
       },
       "revId": "ffb5127805c6476dab3a9dba0df9e997e83b6181",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d58e507_7336a787",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-25T14:44:48Z",
+      "side": 1,
+      "message": "As far as know the only possible package lvl constant types available are strings and numeral values. All data structure values need to be \"var\" and are not really constant.",
+      "parentUuid": "8e393ba7_f2d34221",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 77
+      },
+      "revId": "ffb5127805c6476dab3a9dba0df9e997e83b6181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

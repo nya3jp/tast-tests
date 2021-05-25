@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53b22147_25bc74cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-25T14:44:48Z",
+      "side": 0,
+      "message": "another alternative that could make a smaller change would be to inline a copy of the original package var slice here:\n  netBindRootDirectories: append([], bindRootDirectories...)\n\nYou would still need to redefine the maps.",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 45
+      },
+      "revId": "6f7a73a181ab80b90819202dfff739fefa701ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
