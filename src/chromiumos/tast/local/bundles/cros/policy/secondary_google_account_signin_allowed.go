@@ -6,12 +6,16 @@ package policy
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
@@ -26,53 +30,53 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "chromePolicyLoggedIn",
+		Fixture:      "fakeDMS",
 	})
 }
 
 func SecondaryGoogleAccountSigninAllowed(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
-
-	// Connect to Test API to use it with the UI library.
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
+	fakeDMS := s.FixtValue().(*fakedms.FakeDMS)
 
 	for _, param := range []struct {
 		name           string
-		wantRestricted bool                                        // wantRestricted is the expected restriction state of the "Add account" button.
+		wantRestricted restriction.Restriction                     // wantRestricted is the expected restriction state of the "Add Google Account" button.
 		policy         *policy.SecondaryGoogleAccountSigninAllowed // policy is the policy we test.
 	}{
 		{
 			name:           "unset",
-			wantRestricted: false,
+			wantRestricted: restriction.None,
 			policy:         &policy.SecondaryGoogleAccountSigninAllowed{Stat: policy.StatusUnset},
 		},
 		{
 			name:           "not_allowed",
-			wantRestricted: true,
+			wantRestricted: restriction.Disabled,
 			policy:         &policy.SecondaryGoogleAccountSigninAllowed{Val: false},
 		},
 		{
 			name:           "allowed",
-			wantRestricted: false,
+			wantRestricted: restriction.None,
 			policy:         &policy.SecondaryGoogleAccountSigninAllowed{Val: true},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			// Update the policy blob.
+			pb := fakedms.NewPolicyBlob()
+			pb.AddPolicies([]policy.Policy{param.policy})
+			if err := fakeDMS.WritePolicyBlob(pb); err != nil {
+				s.Fatal("Failed to write policies to FakeDMS: ", err)
+			}
+
+			// Start a Chrome instance that will fetch policies from the FakeDMS.
+			// Policies are only updated after Chrome startup.
+			cr, err := chrome.New(ctx,
+				chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
+				chrome.DMSPolicy(fakeDMS.URL))
+			if err != nil {
+				s.Fatal("Chrome login failed: ", err)
+			}
+			defer cr.Close(ctx)
+
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
-
-			// Perform cleanup.
-			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
-				s.Fatal("Failed to clean up: ", err)
-			}
-
-			// Update policies.
-			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.policy}); err != nil {
-				s.Fatal("Failed to update policies: ", err)
-			}
 
 			// Open people settings page.
 			conn, err := cr.NewConn(ctx, "chrome://settings/people")
@@ -81,44 +85,55 @@ func SecondaryGoogleAccountSigninAllowed(ctx context.Context, s *testing.State) 
 			}
 			defer conn.Close()
 
-			// Click the Google Account button.
-			if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeButton,
-				Name: "Google Accounts",
-			}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
+			// Connect to Test API to use it with the UI library.
+			tconn, err := cr.TestAPIConn(ctx)
+			if err != nil {
+				s.Fatal("Failed to create Test API connection: ", err)
+			}
+
+			ui := uiauto.New(tconn)
+
+			// Find and click the Google accounts button.
+			accountButton := nodewith.Name("Google Accounts").Role(role.Button)
+			if err = ui.WaitUntilExists(accountButton)(ctx); err != nil {
+				s.Fatal("Google Accounts button not found: ", err)
+			}
+			if err := ui.LeftClick(accountButton)(ctx); err != nil {
 				s.Fatal("Failed to click Google Accounts button: ", err)
 			}
 
+			addAccountButton := nodewith.Name("Add Google Account").Role(role.Button)
+			viewAccountButton := nodewith.Name("View accounts").Role(role.Button)
 			// We might get a dialog box where we have to click a button before we get to the actual settings we need.
-			if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-				s.Fatal("Failed to wait for location change: ", err)
-			}
-			paramsVA := ui.FindParams{
-				Role: ui.RoleTypeButton,
-				Name: "View accounts",
-			}
-			if exists, err := ui.Exists(ctx, tconn, paramsVA); err != nil {
-				s.Fatal("Unexpected error while checking for View accounts button node: ", err)
-			} else if exists {
-				if err := ui.StableFindAndClick(ctx, tconn, paramsVA, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
-					s.Fatal("Failed to click View accounts button: ", err)
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+
+				// If the Add Google Account Button already exists we can continue.
+				if err = ui.Exists(addAccountButton)(ctx); err == nil {
+					return nil
 				}
+
+				// Check if we have the dialog and if so click the View account button to continue.
+				if err = ui.Exists(viewAccountButton)(ctx); err != nil {
+					return errors.New("Add Google Account and View accounts button not found")
+				}
+				if err := ui.LeftClick(viewAccountButton)(ctx); err != nil {
+					return testing.PollBreak(errors.Wrap(err, "failed to click View acounts button"))
+				}
+
+				return nil
+
+			}, nil); err != nil {
+				s.Fatal("Could not find Add Google Account button: ", err)
 			}
 
-			// Find the Add account button node.
-			paramsAA := ui.FindParams{
-				Role: ui.RoleTypeButton,
-				Name: "Add account",
-			}
-			nodeAA, err := ui.FindWithTimeout(ctx, tconn, paramsAA, 15*time.Second)
+			// Get the node info for the Add Google Account button.
+			nodeInfo, err := ui.Info(ctx, addAccountButton)
 			if err != nil {
-				s.Fatal("Failed to find Add account button node: ", err)
+				s.Fatal("Could not get info for the Add Google Account button: ", err)
 			}
-			defer nodeAA.Release(ctx)
 
-			// Check the restriction setting of the Add account button.
-			if restricted := (nodeAA.Restriction == ui.RestrictionDisabled || nodeAA.Restriction == ui.RestrictionReadOnly); restricted != param.wantRestricted {
-				s.Errorf("Unexpected button restriction in the settings: got %t; want %t", restricted, param.wantRestricted)
+			if nodeInfo.Restriction != param.wantRestricted {
+				s.Errorf("Unexpected button restriction in the settings: got %s; want %s", nodeInfo.Restriction, param.wantRestricted)
 			}
 		})
 	}
