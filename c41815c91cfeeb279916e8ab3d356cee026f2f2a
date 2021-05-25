@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "110cdb94_c39cfd4d",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-25T20:22:31Z",
+      "side": 1,
+      "message": "The fixture setup doesn\u0027t care about how lacros is launched. It just cares about the setup. So you *could* launch it through the UI (e,g shelf) or you could launch it another way (command line, clicking a link in an ARC++ app, etc). I think lacrosStartedFromRootfs is better.\n\nI added \"UI\" in the other fixtures because for the Omaha test the only way to launch it was through the UI.",
+      "parentUuid": "5174e63f_49f1415a",
+      "range": {
+        "startLine": 119,
+        "startChar": 13,
+        "endLine": 119,
+        "endChar": 38
+      },
+      "revId": "c41815c91cfeeb279916e8ab3d356cee026f2f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82cc409a_f7af6893",
         "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
         "patchSetId": 9
