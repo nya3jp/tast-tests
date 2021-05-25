@@ -173,50 +173,93 @@ type SpeechMonitor struct {
 // starts accumulating utterances. Call Consume to compare expected and actual
 // utterances. If the extension is not ready, the connection will be closed
 // before returning. Otherwise the calling function will close the connection.
-func NewSpeechMonitor(ctx context.Context, c *chrome.Chrome, extID string) (sm *SpeechMonitor, retErr error) {
+func NewSpeechMonitor(ctx context.Context, c *chrome.Chrome, cv *ChromeVoxConn, extID string) (sm *SpeechMonitor, retErr error) {
 	bgURL := chrome.ExtensionBackgroundPageURL(extID)
 	targets, err := c.FindTargets(ctx, chrome.MatchTargetURL(bgURL))
 	if err != nil {
 		return nil, err
 	}
-	if len(targets) > 1 {
-		for _, t := range targets[1:] {
-			// Close all but one instance of the matching background page.
-			// We must do this because because trying to connect when there are multiple
-			// instances triggers the following error:
-			// Error: X targets matched while unique match was expected.
-			// TODO (akihiroota): only close instances that are not tied to the
-			// current profile.
-			c.CloseTarget(ctx, t.TargetID)
-		}
-	}
 
 	var extConn *chrome.Conn
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		extConn, err = c.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
-		return err
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		return nil, errors.Wrap(err, "failed to create a connection to the TTS background page")
-	}
+	testing.ContextLog(ctx, "Iterating through targets")
+	for _, t := range targets {
+		testing.ContextLog(ctx, t.TargetID)
+		testing.ContextLog(ctx, t.Type)
+		testing.ContextLog(ctx, t.Title)
+		testing.ContextLog(ctx, t.URL)
+		testing.ContextLog(ctx, t.Attached)
 
-	defer func() {
-		if retErr != nil {
-			extConn.Close()
+		/*
+			// THE BELOW STRATEGY DOESN'T WORK, SINCE THE CORRECT TARGET ISN'T GUARANTEED
+			// TO BE THE FIRST TARGET. WE NEED A BETTER WAY OF CLOSING IRRELEVANT TARGETS.
+			if len(targets) > 1 {
+				for _, t := range targets[:len(targets) - 1] {
+					// Close all but one instance of the matching background page.
+					// We must do this because because trying to connect when there are multiple
+					// instances triggers the following error:
+					// Error: X targets matched while unique match was expected.
+					// TODO (akihiroota): only close instances that are not tied to the
+					// current profile.
+					c.CloseTarget(ctx, t.TargetID)
+				}
+			}
+		*/
+
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			var err error
+			extConn, err = c.NewConnForTarget(ctx, chrome.MatchTargetID(t.TargetID))
+			return err
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			return nil, errors.Wrap(err, "failed to create a connection to the TTS background page")
 		}
-	}()
 
-	if err := extConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
-		return nil, errors.Wrap(err, "timed out waiting for the TTS engine background page to load")
-	}
+		defer func() {
+			if retErr != nil {
+				extConn.Close()
+			}
+		}()
 
-	if err := extConn.Eval(ctx, `
-		if (!window.testUtterances) {
-	    window.testUtterances = [];
-	    chrome.ttsEngine.onSpeak.addListener(utterance => testUtterances.push(utterance));
-	  }
-`, nil); err != nil {
-		return nil, errors.Wrap(err, "failed to inject code to accumulate utterances")
+		if err := extConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+			testing.ContextLog(ctx, "timed out waiting for the TTS engine background page to load")
+			continue
+		}
+
+		if err := extConn.Eval(ctx, `
+			if (!window.testUtterances) {
+		    window.testUtterances = [];
+		    chrome.ttsEngine.onSpeak.addListener(utterance => testUtterances.push(utterance));
+		  }
+	`, nil); err != nil {
+			testing.ContextLog(ctx, "Failed to inject code to accumulate utterances")
+			continue
+		}
+
+		// Send a ping.
+		if err := cv.Eval(ctx, "ChromeVox.tts.speak('Testing');", nil); err != nil {
+			testing.ContextLog(ctx, "Failed to send a ping")
+			continue
+		}
+
+		// If the target receives it, then it's the correct background page.
+		// Wait for utterance in background page.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			var utterance string
+			if err := extConn.Eval(ctx, "testUtterances.shift()", &utterance); err != nil {
+				return errors.Wrap(err, "couldn't assign utterance to value of testUtterances.shift() (testUtterances is likely empty)")
+			}
+
+			if utterance != "Testing" {
+				return errors.New("'Testing' hasn't been spoken yet")
+			}
+
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			testing.ContextLog(ctx, "This target wasn't the one we were looking for")
+			continue
+		}
+
+		// If we get here, then we found the target we were looking for.
+		break
 	}
 
 	return &SpeechMonitor{extConn}, nil
