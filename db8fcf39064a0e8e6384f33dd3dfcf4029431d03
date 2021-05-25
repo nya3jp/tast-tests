@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82f100e4_e2ed1d32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-05-25T06:31:56Z",
+      "side": 1,
+      "message": "of",
+      "range": {
+        "startLine": 117,
+        "startChar": 39,
+        "endLine": 117,
+        "endChar": 40
+      },
+      "revId": "db8fcf39064a0e8e6384f33dd3dfcf4029431d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c63bb76e_9a2caacc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-05-25T06:31:56Z",
+      "side": 1,
+      "message": "makes",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 7
+      },
+      "revId": "db8fcf39064a0e8e6384f33dd3dfcf4029431d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b0cec70_616c2cb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-05-25T06:31:56Z",
+      "side": 1,
+      "message": ",",
+      "range": {
+        "startLine": 118,
+        "startChar": 39,
+        "endLine": 118,
+        "endChar": 40
+      },
+      "revId": "db8fcf39064a0e8e6384f33dd3dfcf4029431d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
