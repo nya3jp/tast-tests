@@ -332,6 +332,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb162a61_60b3e2f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-25T00:03:28Z",
+      "side": 1,
+      "message": "Since it returns if len(infos) \u003d\u003d 0, there is no need to write else here. It could just be:\n\n    if len(infos) \u003d\u003d 0 {\n        return ...\n    }\n    if len(infos) !\u003d 1 {\n        ...\n    }\n\n    ....",
+      "parentUuid": "ffda23b7_29b60459",
+      "range": {
+        "startLine": 871,
+        "startChar": 4,
+        "endLine": 871,
+        "endChar": 8
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52425c40_db09765d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
         "patchSetId": 6
