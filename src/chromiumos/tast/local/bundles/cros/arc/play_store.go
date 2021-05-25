@@ -24,9 +24,11 @@ func init() {
 		Contacts: []string{"arc-core@google.com", "cros-arc-te@google.com"},
 		Attr:     []string{"group:mainline", "informational", "group:arc-functional"},
 		Params: []testing.Param{{
+			Val:               2,
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
 		}, {
 			Name:              "vm",
+			Val:               1,
 			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
 		}},
 		Timeout: 10 * time.Minute,
@@ -48,15 +50,18 @@ func PlayStore(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
 
 	// Optin to Play Store.
 	s.Log("Opting into Play Store")
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
+	maxAttempts := s.Param().(int)
+
+	if err := optin.PerformWithRetry(ctx, cr, maxAttempts); err != nil {
 		s.Fatal("Failed to optin to Play Store: ", err)
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create test API connection: ", err)
 	}
 	if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
 		s.Fatal("Failed to wait for Play Store: ", err)
