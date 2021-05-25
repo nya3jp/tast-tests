@@ -553,6 +553,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee98fb23_2f616e66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-05-25T14:34:24Z",
+      "side": 1,
+      "message": "It seems that implementing errors.Is(errEC, xmlrpc.FaultError) would run into error. Using errors.As instead to check whether errEC matches with the FaultError type would work. But, please correct me if I have misunderstood or left anything out.",
+      "parentUuid": "75e95bb2_77c0f825",
+      "range": {
+        "startLine": 69,
+        "startChar": 12,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "63f5b180cab68b9bf0dc899f36f24eeff468dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de6059ab_bd3cab77",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
         "patchSetId": 1
