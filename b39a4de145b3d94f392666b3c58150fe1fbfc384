@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5118ff61_c08bc89d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-25T01:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "122ada24_d5c85895",
+      "range": {
+        "startLine": 153,
+        "startChar": 11,
+        "endLine": 153,
+        "endChar": 14
+      },
+      "revId": "b39a4de145b3d94f392666b3c58150fe1fbfc384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34c6e142_5bc09604",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-25T00:09:46Z",
       "side": 1,
       "message": "Usually cleanupCtx is used here instead of the end of this func.",
+      "range": {
+        "startLine": 157,
+        "startChar": 31,
+        "endLine": 157,
+        "endChar": 34
+      },
+      "revId": "b39a4de145b3d94f392666b3c58150fe1fbfc384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0504d0df_37e166be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-25T01:40:07Z",
+      "side": 1,
+      "message": "Just to check my understanding: Do you mean replacing the whole defer block with `defer certStore.Cleanup(ctx)` or some other ways?",
+      "parentUuid": "34c6e142_5bc09604",
       "range": {
         "startLine": 157,
         "startChar": 31,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a114d82_5c3f2248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-25T01:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "169df558_5da89314",
+      "range": {
+        "startLine": 158,
+        "startChar": 10,
+        "endLine": 158,
+        "endChar": 13
+      },
+      "revId": "b39a4de145b3d94f392666b3c58150fe1fbfc384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bc4a764_84e91505",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-05-25T00:09:46Z",
       "side": 1,
       "message": "This indent is not necessary here since it returns in the previous if.",
+      "range": {
+        "startLine": 241,
+        "startChar": 3,
+        "endLine": 241,
+        "endChar": 7
+      },
+      "revId": "b39a4de145b3d94f392666b3c58150fe1fbfc384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3982718b_00168b77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-25T01:40:07Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! I would prefer leaving this as-is here, since we will have more branches soon in the later patches.",
+      "parentUuid": "5bc4a764_84e91505",
       "range": {
         "startLine": 241,
         "startChar": 3,
