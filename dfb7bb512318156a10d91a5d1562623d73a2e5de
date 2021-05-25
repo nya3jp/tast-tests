@@ -16,6 +16,24 @@
       "message": "Let\u0027s have a CCAUIGuest test for basic functionality checking on guest mode beyond launcher. I think taking a single photo could be a good start. We can use cca.New() for just like most of the other CCA tests to launch the app.",
       "revId": "dfb7bb512318156a10d91a5d1562623d73a2e5de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c580b200_943f8309",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_launcher_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-05-25T03:24:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd17a656_9ffb8841",
+      "revId": "dfb7bb512318156a10d91a5d1562623d73a2e5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
