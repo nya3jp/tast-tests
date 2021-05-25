@@ -19,8 +19,6 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/shirou/gopsutil/process"
-
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	patchpanel "chromiumos/tast/local/bundles/cros/network/patchpanel_client"
@@ -46,6 +44,7 @@ type NetworkChroot struct {
 	netTempDir             string
 	netJailArgs            []string
 	netnsLifelineFD        *os.File
+	startupCmd             *testexec.Cmd
 }
 
 const (
@@ -100,7 +99,8 @@ func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
 	cmdArgs := append(n.netJailArgs, "/bin/bash", filepath.Join("/", startup), "&")
 	ipArgs := []string{"netns", "exec", netnsName, "/sbin/minijail0", "-C", n.netTempDir}
 	ipArgs = append(ipArgs, cmdArgs...)
-	if err := testexec.CommandContext(ctx, "ip", ipArgs...).Start(); err != nil {
+	n.startupCmd = testexec.CommandContext(ctx, "ip", ipArgs...)
+	if err := n.startupCmd.Start(); err != nil {
 		return "", errors.Wrap(err, "failed to run minijail")
 	}
 
@@ -114,35 +114,15 @@ func (n *NetworkChroot) Shutdown(ctx context.Context) error {
 		n.netnsLifelineFD.Close()
 	}
 
-	if err := killPIDs(ctx, "/sbin/minijail0"); err != nil {
-		testing.ContextLog(ctx, "Failed to get running pids inside /sbin/minijail0")
+	// Wait for the startup command finishing. Kill it at first just in case if it is still running.
+	if n.startupCmd != nil {
+		n.startupCmd.Kill()
+		n.startupCmd.Wait()
 	}
 
 	// Remove the chroot filesystem.
 	if _, err := testexec.CommandContext(ctx, "rm", "-rf", "--one-file-system", n.netTempDir).Output(); err != nil {
 		return errors.Wrap(err, "failed removing chroot filesystem in which the VPN server was running")
-	}
-
-	return nil
-}
-
-// killPIDs kills all PIDs in the execPath.
-func killPIDs(ctx context.Context, execPath string) error {
-	all, err := process.Pids()
-	if err != nil {
-		return errors.Wrap(err, "failed to get the running processes")
-	}
-
-	for _, pid := range all {
-		proc, err := process.NewProcess(pid)
-		if err != nil {
-			// Assume that the process exited.
-			continue
-		} else if exe, err := proc.Exe(); err == nil && exe == execPath {
-			if err := proc.Kill(); err != nil {
-				testing.ContextLogf(ctx, "Failed to kill the process number %d", int(pid))
-			}
-		}
 	}
 
 	return nil
