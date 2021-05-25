@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4c7fcf7_76307c92",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-25T14:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfad4236_077e9c3b",
+      "range": {
+        "startLine": 158,
+        "startChar": 20,
+        "endLine": 158,
+        "endChar": 26
+      },
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c88a48f_3b1e982e",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1121dcf_a234a40d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-25T14:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c88a48f_3b1e982e",
+      "range": {
+        "startLine": 162,
+        "startChar": 9,
+        "endLine": 162,
+        "endChar": 11
+      },
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "564299be_d25a3349",
@@ -94,6 +142,24 @@
       "writtenOn": "2021-05-20T21:30:31Z",
       "side": 1,
       "message": "optional/nit/style: I think it is more direct to operate directly on the bytes, and only cast when needed at L171.\n\n    memTotal :\u003d regexp.MustCompile(`(\\n|^)MemTotal:\\s+(\\d+)\\s+kB(\\n|$)`).FindSubmatch(memInfo)\n    if memTotal \u003d\u003d nil {\n        return 0, errors.Errorf(\"required MemTotal is not found in %q\", memInfo\")\n    }\n\n    memTotalInt, err :\u003d strConv.Atoi(string(memTotal[2]))\n    ...",
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53f74448_e2754476",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-25T14:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "564299be_d25a3349",
       "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -167,6 +233,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5403da13_f1b851c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-25T14:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7db4bc8f_e531cd43",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 36
+      },
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a6c504f_fd305458",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-25T14:42:40Z",
+      "side": 1,
+      "message": "8G is just average number. Normally devices have slightly less memory than officially declared.",
+      "parentUuid": "2aa273fa_0c09c646",
+      "range": {
+        "startLine": 216,
+        "startChar": 39,
+        "endLine": 216,
+        "endChar": 46
+      },
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76e1b864_124a8437",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-25T14:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08b26dd0_cb42f022",
+      "range": {
+        "startLine": 216,
+        "startChar": 22,
+        "endLine": 216,
+        "endChar": 24
+      },
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b682099_b2e4ed1d",
@@ -198,6 +336,24 @@
       "side": 1,
       "message": "There is a printing L245. I don\u0027t have strong pref to keep or discard printing. However here I don\u0027t have access to DUT and internet is bit slow. So I would keep this once it is hard to re-test change. Let me know if you still think we should remove printing L245.",
       "parentUuid": "6b682099_b2e4ed1d",
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52207b3f_7770e00d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-25T14:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac49b61b_e9b2c73d",
       "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
