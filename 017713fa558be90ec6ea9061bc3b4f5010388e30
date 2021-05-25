@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4948520_09790ba0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-25T08:07:53Z",
+      "side": 1,
+      "message": "As discussed over GVC, the server should be stopped by killing its pid.\nThe next line needs to be corrected for that.\nI\u0027ll fix this after some of the patches before this one submitted to avoid too many rebase operations.",
+      "parentUuid": "daca3bde_8d49904d",
+      "range": {
+        "startLine": 277,
+        "startChar": 16,
+        "endLine": 277,
+        "endChar": 29
+      },
+      "revId": "017713fa558be90ec6ea9061bc3b4f5010388e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54ac3d04_37e3f2a4",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
         "patchSetId": 4
