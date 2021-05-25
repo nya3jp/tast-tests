@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdc57b1a_50119681",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-25T00:15:19Z",
+      "side": 1,
+      "message": "Hi John,\n\nThanks for coming with this great cl. \n\nFrom the comment I notice there are three parts of this test: load/unload slot, create/remove key and sign key operation in chaps. Is there any chance that you could split this big cl into three cls and each cover one part of the test?\n\nBTW, it is generally recommended to get approval from a team member before tast owner review.\n\nRegards,\nJudy",
+      "revId": "a37bd5517baeaf707da1dc203de3363324914bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
