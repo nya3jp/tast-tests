@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88198646_6aa21caa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-05-25T18:43:41Z",
+      "side": 1,
+      "message": "nit: I think it would be more clear here to use if/else and declare timeout unset, but I\u0027m not sure if/how that works with golang style.",
+      "revId": "0898826f166ecb788e0c0f6417792be79a667c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
