@@ -5,14 +5,20 @@
 package video
 
 import (
+	"bytes"
 	"context"
+	"encoding/base64"
 	"image"
+	"image/color"
 	"net/http"
 	"net/http/httptest"
 	"os"
 	"path"
+	"strings"
 
 	"chromiumos/tast/common/media/caps"
+	"chromiumos/tast/common/perf"
+	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -115,7 +121,11 @@ func DrawOnCanvas(ctx context.Context, s *testing.State) {
 	}
 	videoW := refImg.Bounds().Dx()
 	videoH := refImg.Bounds().Dy()
-	if err := conn.Call(ctx, nil, "initializeCanvas", videoW, videoH); err != nil {
+
+	// Note that we set the size of the canvas to 5px more than the video on each dimension.
+	// This is so that we can later check that nothing was drawn outside of the expected
+	// bounds.
+	if err := conn.Call(ctx, nil, "initializeCanvas", videoW+5, videoH+5); err != nil {
 		s.Fatal("initializeCanvas() failed: ", err)
 	}
 
@@ -123,4 +133,80 @@ func DrawOnCanvas(ctx context.Context, s *testing.State) {
 	if err := conn.Call(ctx, nil, "playAndDrawOnCanvas", params.fileName); err != nil {
 		s.Fatal("playAndDrawOnCanvas() failed: ", err)
 	}
+
+	// Get the contents of the canvas as a PNG image and decode it.
+	var canvasPNGB64 string
+	if err = conn.Eval(ctx, "getCanvasAsPNG()", &canvasPNGB64); err != nil {
+		s.Fatal("getCanvasAsPNG() failed: ", err)
+	}
+	if !strings.HasPrefix(canvasPNGB64, "data:image/png;base64,") {
+		s.Fatal("getCanvasAsPNG() returned data in an unknown format")
+	}
+	canvasPNG, err := base64.StdEncoding.DecodeString(strings.TrimPrefix(canvasPNGB64, "data:image/png;base64,"))
+	if err != nil {
+		s.Fatal("Could not base64-decode the data returned by getCanvasAsPNG(): ", err)
+	}
+	canvasImg, _, err := image.Decode(bytes.NewReader(canvasPNG))
+	if err != nil {
+		s.Fatal("Could not decode the image returned by getCanvasAsPNG(): ", err)
+	}
+
+	// A simple check first: the intrinsic dimensions of the video should match the dimensions of the reference image.
+	var intrinsicVideoW, intrinsicVideoH int
+	if err = conn.Eval(ctx, "document.getElementById('video').videoWidth", &intrinsicVideoW); err != nil {
+		s.Fatal("Could not get the intrinsic video width: ", err)
+	}
+	if err = conn.Eval(ctx, "document.getElementById('video').videoHeight", &intrinsicVideoH); err != nil {
+		s.Fatal("Could not get the intrinsic video height: ", err)
+	}
+	if intrinsicVideoW != videoW || intrinsicVideoH != videoH {
+		s.Fatalf("Unexpected intrinsic dimensions: expected %dx%d; got %dx%d", videoW, videoH, intrinsicVideoW, intrinsicVideoH)
+	}
+
+	// Another simple check: nothing should have been drawn at (videoW, videoH).
+	c := canvasImg.At(videoW, videoH)
+	if play.ColorDistance(color.Black, c) != 0 {
+		s.Fatalf("At (%d, %d): expected RGBA = %v; got RGBA = %v", videoW, videoH, color.Black, c)
+	}
+
+	// Measurement 1:
+	// We'll sample a few interesting pixels and report the color distance with
+	// respect to the reference image.
+	samples := play.ColorSamplingPointsForStillColorsVideo(videoW, videoH)
+	p := perf.NewValues()
+	for k, v := range samples {
+		expectedColor := refImg.At(v.X, v.Y)
+		actualColor := canvasImg.At(v.X, v.Y)
+		distance := play.ColorDistance(expectedColor, actualColor)
+		if distance != 0 {
+			s.Logf("At %v (%d, %d): expected RGBA = %v; got RGBA = %v; distance = %d",
+				k, v.X, v.Y, expectedColor, actualColor, distance)
+		}
+		p.Set(perf.Metric{
+			Name:      k,
+			Unit:      "None",
+			Direction: perf.SmallerIsBetter,
+		}, float64(distance))
+	}
+
+	// Measurement 2:
+	// We report an aggregate distance for the image: we go through all the pixels
+	// in the canvas video to add up all the distances and then normalize by the
+	// number of pixels at the end.
+	totalDistance := 0.0
+	for y := 0; y < videoH; y++ {
+		for x := 0; x < videoW; x++ {
+			expectedColor := refImg.At(x, y)
+			actualColor := canvasImg.At(x, y)
+			totalDistance += float64(play.ColorDistance(expectedColor, actualColor))
+		}
+	}
+	totalDistance /= float64(videoW * videoH)
+	s.Log("The total distance for the entire image is ", totalDistance)
+	p.Set(perf.Metric{
+		Name:      "total_distance",
+		Unit:      "None",
+		Direction: perf.SmallerIsBetter,
+	}, totalDistance)
+	p.Save(s.OutDir())
 }
