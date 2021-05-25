@@ -16,6 +16,23 @@
       "message": "Aki, can you take a look at this as well?\n\nAlso, do you want the same in a11y.SpokenFeedback test?",
       "revId": "902e6e2f5b18ccd5a4210e043257a88627a79130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d72ee94_e235afd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-05-25T17:24:03Z",
+      "side": 1,
+      "message": "LGTM, thanks for the improvement!",
+      "revId": "902e6e2f5b18ccd5a4210e043257a88627a79130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
