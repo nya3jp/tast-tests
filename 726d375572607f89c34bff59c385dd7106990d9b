@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87c3ae7d_c0021f27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-05-25T08:56:10Z",
+      "side": 1,
+      "message": "This should fix test failure on boards without ARC++.\n\nPlease review.",
+      "revId": "726d375572607f89c34bff59c385dd7106990d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
