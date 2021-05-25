@@ -142,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95229238_c9af2837",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-25T02:53:20Z",
+      "side": 1,
+      "message": "Thanks! I didn\u0027t know branches can be used in the template before. The new solution sounds better.\nDone.",
+      "parentUuid": "d88ffad9_f7af5d53",
+      "revId": "1830b517554493b1acfd35794b446681bd0263be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a11b983a_193dc550",
