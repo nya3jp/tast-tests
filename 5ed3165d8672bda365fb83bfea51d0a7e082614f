@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61e8c07b_760aafba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-05-25T21:04:51Z",
+      "side": 1,
+      "message": "Resolved.",
+      "parentUuid": "42e61cb9_d469a3e6",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 7
+      },
+      "revId": "5ed3165d8672bda365fb83bfea51d0a7e082614f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8522a8a_8e2bf9fa",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-05T12:49:12Z",
       "side": 1,
       "message": "Probably makes sense to name this after the javascript function that it is calling. ie \n\nSkipToLoginForTesting",
+      "range": {
+        "startLine": 1855,
+        "startChar": 17,
+        "endLine": 1855,
+        "endChar": 36
+      },
+      "revId": "5ed3165d8672bda365fb83bfea51d0a7e082614f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "837666cc_49943115",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1855,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-05-25T21:04:51Z",
+      "side": 1,
+      "message": "Changed the name to SkipToLoginForTesting",
+      "parentUuid": "a8522a8a_8e2bf9fa",
       "range": {
         "startLine": 1855,
         "startChar": 17,
@@ -88,6 +136,54 @@
         "startChar": 25,
         "endLine": 542,
         "endChar": 32
+      },
+      "revId": "5ed3165d8672bda365fb83bfea51d0a7e082614f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a11a7050_a2962998",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-05-25T21:04:51Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "0db3f291_eebf3787",
+      "range": {
+        "startLine": 542,
+        "startChar": 25,
+        "endLine": 542,
+        "endChar": 32
+      },
+      "revId": "5ed3165d8672bda365fb83bfea51d0a7e082614f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50071ce7_a0ed7cb7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-05-25T21:04:51Z",
+      "side": 1,
+      "message": "Changed the name to CommonElementsInQuickSettings.",
+      "parentUuid": "94de614e_2bc514cc",
+      "range": {
+        "startLine": 542,
+        "startChar": 5,
+        "endLine": 542,
+        "endChar": 24
       },
       "revId": "5ed3165d8672bda365fb83bfea51d0a7e082614f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
