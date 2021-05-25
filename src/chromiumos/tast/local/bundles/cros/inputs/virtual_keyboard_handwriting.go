@@ -153,12 +153,18 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	inputField := testserver.TextAreaInputField
 	vkbCtx := vkb.NewContext(cr, tconn)
 
-	if err := uiauto.Combine("Test handwriting on virtual keyboard",
+	if err := uiauto.Combine("Show VK and switch to handwriting",
 		its.ClickFieldUntilVKShown(inputField),
-		vkbCtx.TapHandwritingInputAndWaitForEngine(uiauto.Combine("Wait for handwriting engine to be ready",
+		vkbCtx.TapHandwritingInput(),
+	)(ctx); err != nil {
+		s.Fatal("Failed to show VK and switch to handwriting: ", err)
+	}
+
+	if err := uiauto.Combine("Test handwriting on virtual keyboard",
+		vkbCtx.GetHandwritingCanvasReady(uiauto.Combine("Wait for handwriting engine to be ready",
 			vkbCtx.DrawHandwritingFromFile(s.DataPath(handwritingWarmupFile)),
 			its.WaitForFieldValueToBe(inputField, handwritingWarmupDigit))),
-		vkbCtx.TapKey("backspace"),
+		vkbCtx.ClearHandwritingCanvas(),
 		its.Clear(inputField),
 		vkbCtx.DrawHandwritingFromFile(s.DataPath(params.handwritingFile)),
 		its.WaitForFieldValueToBe(inputField, params.expectedText),
