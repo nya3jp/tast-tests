@@ -18,10 +18,23 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 )
+
+// HandwritingContext represents a context for handwriting.
+type HandwritingContext struct {
+	vkbCtx     *VirtualKeyboardContext
+	isLongForm bool
+}
+
+// NewHandwritingContext creates a new context for handwriting.
+func NewHandwritingContext(vkbCtx *VirtualKeyboardContext, isLongForm bool) *HandwritingContext {
+	return &HandwritingContext{
+		vkbCtx:     vkbCtx,
+		isLongForm: isLongForm,
+	}
+}
 
 // Structs required to unmarshal the SVG file.
 type svg struct {
@@ -238,7 +251,7 @@ func drawHandwriting(ctx context.Context, tconn *chrome.TestConn, sg *strokeGrou
 
 // DrawHandwritingFromFile returns an action reading the handwriting file, transforming the points into the correct scale,
 // populates the data into the struct, and drawing the strokes into the handwriting input.
-func (vkbCtx *VirtualKeyboardContext) DrawHandwritingFromFile(filePath string) uiauto.Action {
+func (hwCtx *HandwritingContext) DrawHandwritingFromFile(filePath string) uiauto.Action {
 	return func(ctx context.Context) error {
 		// Number of points we would like per stroke.
 		const n = 50
@@ -253,8 +266,8 @@ func (vkbCtx *VirtualKeyboardContext) DrawHandwritingFromFile(filePath string) u
 		sg := newStrokeGroup(svgFile, n)
 
 		// Find the handwriting canvas location.
-		hwCanvasFinder := nodewith.Role(role.Canvas).ClassName("ita-hwt-canvas")
-		loc, err := vkbCtx.ui.Location(ctx, hwCanvasFinder)
+		hwCanvasFinder := NodeFinder.Role(role.Canvas)
+		loc, err := hwCtx.vkbCtx.ui.Location(ctx, hwCanvasFinder)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get location of %v", hwCanvasFinder)
 		}
@@ -263,10 +276,36 @@ func (vkbCtx *VirtualKeyboardContext) DrawHandwritingFromFile(filePath string) u
 		sg.scale(*loc)
 
 		// Draw the handwriting into the handwriting input.
-		if err := drawHandwriting(ctx, vkbCtx.tconn, sg); err != nil {
+		if err := drawHandwriting(ctx, hwCtx.vkbCtx.tconn, sg); err != nil {
 			return errors.Wrap(err, "failed to draw handwriting onto the handwriting input")
 		}
 
 		return nil
 	}
+}
+
+// ClearHandwritingCanvas returns an action that clears the handwriting canvas.
+func (hwCtx *HandwritingContext) ClearHandwritingCanvas() uiauto.Action {
+	if !hwCtx.isLongForm {
+		return hwCtx.vkbCtx.TapKey("backspace")
+	}
+	return func(ctx context.Context) error {
+		// Undo key remains on the keyboard if the canvas is not clear in longform canvas.
+		undoKey := KeyFinder.Name("undo")
+		needToClear, err := hwCtx.vkbCtx.ui.IsNodeFound(ctx, undoKey)
+		if err != nil {
+			return err
+		}
+		if needToClear {
+			// Repeatedly click undo until the backspace key appears, indicating the canvas is clear.
+			return hwCtx.vkbCtx.ui.LeftClickUntil(undoKey, hwCtx.vkbCtx.ui.Exists(KeyFinder.Name("backspace")))(ctx)
+		}
+		return nil
+	}
+}
+
+// WaitForHandwritingEngineReady returns an action that waits for the handwriting engine to become ready.
+func (hwCtx *HandwritingContext) WaitForHandwritingEngineReady(checkHandwritingEngineReady uiauto.Action) uiauto.Action {
+	return uiauto.NamedAction("Wait for handwriting engine ready",
+		hwCtx.vkbCtx.ui.WithTimeout(time.Minute).Retry(10, checkHandwritingEngineReady))
 }

@@ -313,15 +313,35 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToVoiceInput() uiauto.Action {
 	}
 }
 
-// TapHandwritingInputAndWaitForEngine returns an action
-// changing virtual keyboard to handwriting input layout
-// and waits for the handwriting engine to become ready.
-func (vkbCtx *VirtualKeyboardContext) TapHandwritingInputAndWaitForEngine(checkHandwritingEngineReady uiauto.Action) uiauto.Action {
-	return uiauto.Combine("tap handwriting layout button and wait for engine ready",
-		vkbCtx.ui.LeftClick(KeyFinder.Name("switch to handwriting, not compatible with ChromeVox")),
-		// Wait for the handwriting input to become ready to take in the handwriting.
-		// If a stroke is completed before the handwriting input is ready, the stroke will not be recognized.
-		vkbCtx.ui.WithTimeout(30*time.Second).Retry(10, checkHandwritingEngineReady))
+// SwitchToHandwriting changes to handwriting layout and returns a handwriting context.
+func (vkbCtx *VirtualKeyboardContext) SwitchToHandwriting(ctx context.Context) (*HandwritingContext, error) {
+	if err := vkbCtx.ui.LeftClick(KeyFinder.NameStartingWith("switch to handwriting"))(ctx); err != nil {
+		return nil, err
+	}
+
+	// Check if it is a longform VK.
+	isLongForm, err := vkbCtx.IsLongform(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	// Close info dialogue if one shows up in longform VK.
+	if isLongForm {
+		if err := vkbCtx.CloseInfoDialogue()(ctx); err != nil {
+			return nil, err
+		}
+	}
+
+	return NewHandwritingContext(vkbCtx, isLongForm), nil
+}
+
+// CloseInfoDialogue closes a information dialogue if it exists in a handwriting canvas.
+func (vkbCtx *VirtualKeyboardContext) CloseInfoDialogue() uiauto.Action {
+	dialogueCloseButton := KeyFinder.Name("Got it").Focusable()
+	// Close the information dialogue if it shows
+	return vkbCtx.ui.IfSuccessThen(
+		vkbCtx.ui.WithTimeout(500*time.Millisecond).Exists(dialogueCloseButton),
+		vkbCtx.ui.LeftClick(dialogueCloseButton))
 }
 
 // EnableA11yVirtualKeyboard returns an action enabling or disabling
@@ -342,4 +362,15 @@ func (vkbCtx *VirtualKeyboardContext) SelectFromSuggestion(candidateText string)
 	return uiauto.Combine("wait for suggestion and select",
 		ac.WaitUntilExists(suggestionFinder),
 		ac.LeftClick(suggestionFinder))
+}
+
+// IsLongform checks if the handwriting canvas is longform or not.
+func (vkbCtx *VirtualKeyboardContext) IsLongform(ctx context.Context) (bool, error) {
+	if err := vkbCtx.ui.WithTimeout(500 * time.Millisecond).WaitUntilExists(NodeFinder.HasClass("lf-keyboard"))(ctx); err != nil {
+		if strings.Contains(err.Error(), nodewith.ErrNotFound) {
+			return false, nil
+		}
+		return false, err
+	}
+	return true, nil
 }
