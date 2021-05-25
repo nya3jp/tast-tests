@@ -299,10 +299,14 @@ acceleration) can be drawn onto a 2D canvas. These tests exercise the full
 Chrome stack. This path is important because it's used to display video
 thumbnails is the Camera Capture App (CCA).
 
-The tests are mostly driven by [video-on-canvas.html] which loads a video,
-starts playing it, draws it once onto a 2D canvas, and finally reads the color
-of the four corners of the canvas to assert a specific value on them (within
-some tolerance).
+Each test loads a video, starts playing it, draws it once onto a 2D canvas, and
+finally reads a few interesting pixels to compare the result against a reference
+image. The comparison is done in the same fashion as in the
+[Contents tests](#contents-tests).
+
+Currently, these tests report the color distance for each sampled pixel as a
+performance measurement. They don't currently fail due to unexpected colors
+except if anything is drawn outside of the expected bounds.
 
 The test videos are designed with certain considerations in mind:
 
