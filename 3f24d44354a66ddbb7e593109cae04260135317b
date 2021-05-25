@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0edd2f29_3b93f577",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hammerd/triggered_on_boot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-05-25T14:04:10Z",
+      "side": 1,
+      "message": "Do we use any regexp feature?",
+      "revId": "3f24d44354a66ddbb7e593109cae04260135317b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
