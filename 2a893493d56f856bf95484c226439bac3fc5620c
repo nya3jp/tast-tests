@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f1e2e7_8da3fe99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-05-25T10:26:06Z",
+      "side": 1,
+      "message": "Sorry for accidentally overwriting this CL. I\u0027ve rolled back.",
+      "revId": "2a893493d56f856bf95484c226439bac3fc5620c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
