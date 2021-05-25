@@ -63,11 +63,13 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	//TODO(crbug/1146196) Remove sleep after Downloads mounting issue fixed.
-	testing.Sleep(ctx, 5*time.Second)
+	ui := uiauto.New(tconn).WithInterval(1 * time.Second)
+	//TODO(crbug/1146196) Remove retry after Downloads mounting issue fixed.
 	// Setup the test image.
 	testFileLocation := filepath.Join(filesapp.DownloadPath, testFile)
-	if err := fsutil.CopyFile(s.DataPath(testFile), testFileLocation); err != nil {
+	if err := ui.Retry(10, func(context.Context) error {
+		return fsutil.CopyFile(s.DataPath(testFile), testFileLocation)
+	})(ctx); err != nil {
 		s.Fatalf("Failed to copy the test image to %s: %s", testFileLocation, err)
 	}
 	defer os.Remove(testFileLocation)
@@ -100,7 +102,7 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 
 	s.Log("Wait for Gallery app rendering")
 	// Use image section to verify Gallery App rendering.
-	ui := uiauto.New(tconn).WithTimeout(60 * time.Second)
+	ui = uiauto.New(tconn).WithTimeout(60 * time.Second)
 	imageElementFinder := nodewith.Role(role.Image).Name(testFile).Ancestor(galleryapp.RootFinder)
 	if err := ui.WaitUntilExists(imageElementFinder)(ctx); err != nil {
 		s.Fatal("Failed to render Gallery: ", err)
