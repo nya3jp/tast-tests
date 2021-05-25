@@ -153,14 +153,27 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	inputField := testserver.TextAreaInputField
 	vkbCtx := vkb.NewContext(cr, tconn)
 
+	// Show VK.
+	if err := its.ClickFieldUntilVKShown(inputField)(ctx); err != nil {
+		s.Fatal("Failed to show VK: ", err)
+	}
+
+	// Switch to handwriting layout.
+	hwCtx, err := vkbCtx.SwitchToHandwritingAndCloseInfoDialogue(ctx)
+	if err != nil {
+		s.Fatal("Failed to switch to handwriting: ", err)
+	}
+
+	// Warm-up steps to check handwriting engine ready.
+	checkEngineReady := uiauto.Combine("Wait for handwriting engine to be ready",
+		hwCtx.DrawStrokesFromFile(s.DataPath(handwritingWarmupFile)),
+		its.WaitForFieldValueToBe(inputField, handwritingWarmupDigit),
+		hwCtx.ClearHandwritingCanvas(),
+		its.Clear(inputField))
+
 	if err := uiauto.Combine("Test handwriting on virtual keyboard",
-		its.ClickFieldUntilVKShown(inputField),
-		vkbCtx.TapHandwritingInputAndWaitForEngine(uiauto.Combine("Wait for handwriting engine to be ready",
-			vkbCtx.DrawHandwritingFromFile(s.DataPath(handwritingWarmupFile)),
-			its.WaitForFieldValueToBe(inputField, handwritingWarmupDigit))),
-		vkbCtx.TapKey("backspace"),
-		its.Clear(inputField),
-		vkbCtx.DrawHandwritingFromFile(s.DataPath(params.handwritingFile)),
+		hwCtx.WaitForHandwritingEngineReady(checkEngineReady),
+		hwCtx.DrawStrokesFromFile(s.DataPath(params.handwritingFile)),
 		its.WaitForFieldValueToBe(inputField, params.expectedText),
 	)(ctx); err != nil {
 		s.Fatal("Failed to verify handwriting input: ", err)
