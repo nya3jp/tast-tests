@@ -31,22 +31,38 @@ func init() {
 		Attr:     []string{"group:mainline", "informational"},
 		// TODO(b/188754062): Add support for mouse input and remove the touch screen deps
 		HardwareDeps: hwdep.D(hwdep.TouchScreen()),
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
 		Fixture:      "arcBooted",
 		Params: []testing.Param{
 			{
-				Name: "clamshell_mode",
-				Val:  splitViewTestParams{tabletMode: false, startFromHomeLauncher: false},
+				Name:              "clamshell_mode",
+				ExtraSoftwareDeps: []string{"android_p"},
+				Val:               splitViewTestParams{tabletMode: false, startFromHomeLauncher: false},
+			},
+			{
+				Name:              "clamshell_mode_vm",
+				ExtraSoftwareDeps: []string{"android_vm"},
+				Val:               splitViewTestParams{tabletMode: false, startFromHomeLauncher: false},
 			},
 			{
 				Name:              "tablet_mode",
-				ExtraSoftwareDeps: []string{"tablet_mode"},
+				ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: false},
+			},
+			{
+				Name:              "tablet_mode_vm",
+				ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: false},
 			},
 			{
 				Name:              "tablet_home_launcher",
-				ExtraSoftwareDeps: []string{"tablet_mode"},
+				ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: true},
+			},
+			{
+				Name:              "tablet_home_launcher_vm",
+				ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: true},
 			},
 		},
