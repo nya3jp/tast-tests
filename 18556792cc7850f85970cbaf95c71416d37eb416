@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e51c533_52ae6854",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-25T06:23:14Z",
+      "side": 1,
+      "message": "Hi reviewers, before the known issue crbug/1146196 fixed. I reckon using retry is more reliable than hard sleep a few seconds",
+      "revId": "18556792cc7850f85970cbaf95c71416d37eb416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
