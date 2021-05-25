@@ -356,6 +356,24 @@
       "parentUuid": "ac49b61b_e9b2c73d",
       "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f9400d0_c08067c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-05-25T16:38:48Z",
+      "side": 1,
+      "message": "Not a strong preference.  We can leave it.",
+      "parentUuid": "52207b3f_7770e00d",
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
