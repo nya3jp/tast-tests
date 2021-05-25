@@ -35,12 +35,6 @@ func init() {
 				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			}, {
-				Name:              "us_en_stable_guest",
-				Pre:               pre.VKEnabledTabletInGuest,
-				Val:               ime.INPUTMETHOD_XKB_US_ENG,
-				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
-				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-			}, {
 				Name:              "us_en_unstable",
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
@@ -51,12 +45,6 @@ func init() {
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
 				ExtraAttr:         []string{"group:mainline", "group:input-tools-upstream", "informational"},
-				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-			}, {
-				Name:              "jp_us_stable_guest",
-				Pre:               pre.VKEnabledTabletInGuest,
-				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
-				ExtraAttr:         []string{"group:mainline", "group:input-tools-upstream"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			}, {
 				Name:              "jp_us_unstable",
