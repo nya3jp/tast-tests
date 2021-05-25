@@ -16,6 +16,24 @@
       "message": "IIUC, this creates another deployed variable, which hides deployed at L234.\n\nvar path string\npath, deployed \u003d s.Var(...)\n\nis needed.",
       "revId": "d29eaf9d5d2571530677e56fcc7606585163ecfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7850ed6a_14005b17",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-05-25T17:18:29Z",
+      "side": 1,
+      "message": "Done. Thanks for the catch!\n\nNow LacrosFixtureVars is not actually used and removed from two fixtures - lacrosStartedByOmaha, lacrosStartedFromRootfsUI. \n\nBtw, reading up the line 20, if a caller expects LacrosFixtureVars to be referenced by all fixtures we can add it back and ignore it conditionally with a warning. Please let me know if there is any way to make it clear until this workaround is removed by new lab provisioning. Thanks,",
+      "parentUuid": "b728396e_b2128b6d",
+      "revId": "d29eaf9d5d2571530677e56fcc7606585163ecfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
