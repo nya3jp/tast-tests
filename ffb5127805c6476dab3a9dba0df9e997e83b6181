@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a82aae26_ebe54049",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-05-25T08:20:15Z",
+      "side": 1,
+      "message": "Do you mean \"strange\"?",
+      "range": {
+        "startLine": 12,
+        "startChar": 42,
+        "endLine": 12,
+        "endChar": 48
+      },
+      "revId": "ffb5127805c6476dab3a9dba0df9e997e83b6181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d57d4f25_15ee1a03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-05-25T08:20:15Z",
+      "side": 1,
+      "message": "Are these read-only? If so shall we mark them as consts as well?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 77
+      },
+      "revId": "ffb5127805c6476dab3a9dba0df9e997e83b6181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
