@@ -117,6 +117,11 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 	}
 
 	testFunc := func(ctx context.Context, cvconn *a11y.ChromeVoxConn, tconn *chrome.TestConn, currentActivity arca11y.TestActivity) error {
+		if err := a11y.SetTtsRate(ctx, tconn, 5.0); err != nil {
+			s.Fatal("Faild to change tts rate: ", err)
+		}
+		defer a11y.SetTtsRate(ctx, tconn, 1.0)
+
 		if err := cvconn.SetVoice(ctx, a11y.VoiceData{
 			ExtID:  a11y.GoogleTTSExtensionID,
 			Locale: "en-US",
