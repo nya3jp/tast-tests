@@ -22,6 +22,30 @@
       },
       "revId": "cfbab05ccf67a7737a6de8c18d780f7c9cb3cf40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5f1815_42f01ab9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-25T10:46:34Z",
+      "side": 1,
+      "message": "This is a very good suggestion but complicated one.\nOption 1: Put the helper function in vkb package. It is definitely not a good idea to couple vkb library and test logic.\nOption 2: Put the helper function in test data file. This will centralize the data and helper function. However more factors need to be considered then, including pass in input target, how to evaluate output value, how to clear field etc.\n\nBesides, the test data file might be eventually replaced by a non-code file, such as json to dynamically provide input. The helper function needs to be defined accordingly.\n\nCan we leave this to your input test parameterization design?",
+      "parentUuid": "21a7d430_991394ba",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 41
+      },
+      "revId": "cfbab05ccf67a7737a6de8c18d780f7c9cb3cf40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
