@@ -184,6 +184,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dd5d738_670dd731",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-25T01:30:53Z",
+      "side": 1,
+      "message": "Thanks for clarification. In that case, this LGTM.",
+      "parentUuid": "f6dd8215_d8362381",
+      "range": {
+        "startLine": 1062,
+        "startChar": 0,
+        "endLine": 1072,
+        "endChar": 3
+      },
+      "revId": "751292c7dd9bb725a288e7562800be739600e3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2821b266_e0d2815a",
