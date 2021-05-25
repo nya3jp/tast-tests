@@ -724,7 +724,7 @@ func FlashFirmware(ctx context.Context, d *dut.DUT, needsRebootAfterFlashing boo
 	if err != nil {
 		return errors.Wrap(err, "failed to get fp firmware path")
 	}
-	flashCmd := []string{"flash_fp_mcu", fpFirmwarePath}
+	flashCmd := []string{"flash_fp_mcu", "--noservices", fpFirmwarePath}
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(flashCmd))
 	if err := d.Conn().Command(flashCmd[0], flashCmd[1:]...).Run(ctx, ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "flash_fp_mcu failed")

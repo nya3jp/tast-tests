@@ -150,10 +150,11 @@ func testRDP0(ctx context.Context, d *dut.DUT, buildFwFile string, rpcHint *test
 	if removeFlashReadProtect {
 		// Use different file name to avoid errors in removing file.
 		fileReadFromFlash = filepath.Join(tempdirPath, "test_rdp0.bin")
-		args = []string{"--read", fileReadFromFlash}
+		args = []string{"--noservices", "--read", fileReadFromFlash}
 	} else {
 		fileReadFromFlash = filepath.Join(tempdirPath, "test_rdp0_noremove.bin")
-		args = []string{"--read", "--noremove_flash_read_protect", fileReadFromFlash}
+		args = []string{"--noservices", "--read",
+			"--noremove_flash_read_protect", fileReadFromFlash}
 	}
 	cmd := d.Conn().Command("flash_fp_mcu", args...)
 	if err := cmd.Run(ctx, ssh.DumpLogOnError); err != nil {
