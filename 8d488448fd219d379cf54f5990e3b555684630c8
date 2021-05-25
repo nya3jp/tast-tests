@@ -22,6 +22,121 @@
       },
       "revId": "8d488448fd219d379cf54f5990e3b555684630c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d666c6_c1881ad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/vk_type_test_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-25T07:26:06Z",
+      "side": 1,
+      "message": "Is there more information on why you would skip a test? Feels like you would just not include that information in the struct.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "8d488448fd219d379cf54f5990e3b555684630c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "917b7926_92e67909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-25T07:26:06Z",
+      "side": 1,
+      "message": "nit: feels like this error wrapping is redundant? you could just simply return the function as it creates a NamedAction right? \"wait for suggestion and select\"",
+      "range": {
+        "startLine": 273,
+        "startChar": 31,
+        "endLine": 273,
+        "endChar": 70
+      },
+      "revId": "8d488448fd219d379cf54f5990e3b555684630c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7894566b_383cac6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-25T07:26:06Z",
+      "side": 1,
+      "message": "nit: this is redundant, s.Run already emits out an s.Log, \"Starting subtest...\"",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 86
+      },
+      "revId": "8d488448fd219d379cf54f5990e3b555684630c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d677216c_614f079e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-25T07:26:06Z",
+      "side": 1,
+      "message": "Should this be deferred?",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 42
+      },
+      "revId": "8d488448fd219d379cf54f5990e3b555684630c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef23292d_bab3fc05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-25T07:26:06Z",
+      "side": 1,
+      "message": "nit: not necessary",
+      "range": {
+        "startLine": 54,
+        "startChar": 39,
+        "endLine": 54,
+        "endChar": 40
+      },
+      "revId": "8d488448fd219d379cf54f5990e3b555684630c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
