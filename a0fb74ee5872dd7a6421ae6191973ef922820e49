@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fd56067_741e44d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/start_app_from_sign_in_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-05-25T07:09:28Z",
+      "side": 1,
+      "message": "I think you will need some modifications to do that. I will start a new thread in the new file.",
+      "parentUuid": "a4789360_0c726274",
+      "revId": "a0fb74ee5872dd7a6421ae6191973ef922820e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0b41197_dc5b5809",
