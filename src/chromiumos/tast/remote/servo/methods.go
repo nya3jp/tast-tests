@@ -86,6 +86,7 @@ const (
 	SysRQX       KeypressControl = "sysrq_x"
 	PowerKey     KeypressControl = "power_key"
 	Pwrbutton    KeypressControl = "pwr_button"
+	USBEnter     KeypressControl = "usb_keyboard_enter_key"
 )
 
 // A KeypressDuration is a string accepted by a KeypressControl.
