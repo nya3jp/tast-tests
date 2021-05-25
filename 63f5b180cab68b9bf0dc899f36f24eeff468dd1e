@@ -220,6 +220,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8d0e00f_5605b6ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hibernate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2021-05-25T02:54:43Z",
+      "side": 1,
+      "message": "b:189165287 was filed to track this request.",
+      "parentUuid": "7b3b5165_882522ef",
+      "range": {
+        "startLine": 26,
+        "startChar": 24,
+        "endLine": 26,
+        "endChar": 40
+      },
+      "revId": "63f5b180cab68b9bf0dc899f36f24eeff468dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8e92843_8a728d79",
