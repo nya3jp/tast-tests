@@ -155,7 +155,7 @@ func testRDP0(ctx context.Context, d *dut.DUT, buildFwFile string, rpcHint *test
 		fileReadFromFlash = filepath.Join(tempdirPath, "test_rdp0_noremove.bin")
 		args = []string{"--read", "--noremove_flash_read_protect", fileReadFromFlash}
 	}
-	cmd := d.Conn().Command("flash_fp_mcu", args...)
+	cmd := d.Conn().Command("flash_fp_mcu", append([]string{"--noservices"}, args...)...)
 	if err := cmd.Run(ctx, ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to read from flash")
 	}
