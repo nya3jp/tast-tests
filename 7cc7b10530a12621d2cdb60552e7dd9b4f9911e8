@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cec2f584_e202f832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_guest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-05-25T03:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d3a1da0_7318ea7e",
+      "range": {
+        "startLine": 20,
+        "startChar": 51,
+        "endLine": 20,
+        "endChar": 63
+      },
+      "revId": "7cc7b10530a12621d2cdb60552e7dd9b4f9911e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60c3680c_de4c1747",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-21T11:28:02Z",
       "side": 1,
       "message": "add pihsun@chromium.org into Contacts?",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "7cc7b10530a12621d2cdb60552e7dd9b4f9911e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3941c200_ea1ed603",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_guest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-05-25T03:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60c3680c_de4c1747",
       "range": {
         "startLine": 21,
         "startChar": 25,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "302e132f_a6d32668",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_guest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-05-25T03:21:41Z",
+      "side": 1,
+      "message": "Changed to chromeLoggedInGuest fixture. Since the ClearSavedDirs currently doesn\u0027t work yet (and instead silently fails since it can\u0027t find home directory in guest mode), also add a TODO.",
+      "parentUuid": "2139d49c_78438727",
+      "revId": "7cc7b10530a12621d2cdb60552e7dd9b4f9911e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5070f5c_bfe64eb0",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-05-21T16:23:44Z",
       "side": 1,
       "message": "I see this object has a Close method. Do we need to close it?",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "7cc7b10530a12621d2cdb60552e7dd9b4f9911e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bc4d6e1_71d1472a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_guest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-05-25T03:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5070f5c_bfe64eb0",
       "range": {
         "startLine": 40,
         "startChar": 1,
