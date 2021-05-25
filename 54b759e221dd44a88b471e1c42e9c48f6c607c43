@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "744dae7b_03532e7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hammerd/triggered_on_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2021-05-25T10:53:49Z",
+      "side": 1,
+      "message": "Dropped.",
+      "parentUuid": "8ad225ca_0e35f778",
+      "revId": "54b759e221dd44a88b471e1c42e9c48f6c607c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b2a5532_0d12d73b",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ceed505_762136ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hammerd/triggered_on_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2021-05-25T10:53:49Z",
+      "side": 1,
+      "message": "Done, didn\u0027t know the syslog package.",
+      "parentUuid": "6b2a5532_0d12d73b",
+      "revId": "54b759e221dd44a88b471e1c42e9c48f6c607c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "306a898c_907d2ac7",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-05-24T11:32:55Z",
       "side": 1,
       "message": "qq: What if the log is rotated?",
+      "revId": "54b759e221dd44a88b471e1c42e9c48f6c607c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85e3c872_9aa522ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hammerd/triggered_on_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2021-05-25T10:53:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "306a898c_907d2ac7",
       "revId": "54b759e221dd44a88b471e1c42e9c48f6c607c43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
