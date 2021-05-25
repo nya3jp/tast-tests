@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "44467b0d_f8b01e03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-25T05:56:59Z",
+      "side": 1,
+      "message": "Ah, sorry that I didn\u0027t notice this. You need to update simple_connect_test.go and regenerate the Params in simple_connect instead of modifying simple_connect.go directly.\n\nI guess a simple s/wificell.CommonAPOptions/wifiutil.CommonAPOptions/ in simple_conntect_test.go should work.",
+      "parentUuid": "b97b1f44_0a109253",
+      "revId": "379cb100b921393b2d35ffc9dfffe1d896e0084f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fc68c3e3_f81b05fc",
         "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
         "patchSetId": 5
