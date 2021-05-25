@@ -46,6 +46,8 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
 		Data:         append(extensionFiles, disableScreenshotsExtensionHTML),
+		// 2 minutes is the default local test timeout. Check localTestTimeout constant in tast/src/chromiumos/tast/internal/bundle/local.go.
+		Timeout: chrome.LoginTimeout + 2*time.Minute,
 	})
 }
 
