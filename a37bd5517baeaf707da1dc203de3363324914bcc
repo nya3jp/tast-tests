@@ -16,6 +16,24 @@
       "message": "Hi John,\n\nThanks for coming with this great cl. \n\nFrom the comment I notice there are three parts of this test: load/unload slot, create/remove key and sign key operation in chaps. Is there any chance that you could split this big cl into three cls and each cover one part of the test?\n\nBTW, it is generally recommended to get approval from a team member before tast owner review.\n\nRegards,\nJudy",
       "revId": "a37bd5517baeaf707da1dc203de3363324914bcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eb632fe_282874f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-05-25T17:01:16Z",
+      "side": 1,
+      "message": "Hello,\n\nThank you for the pointers. I\u0027ve split the CL into 3 parts. When the time comes, should I add you as the reviewer for the other two or should I add tast-owners@ again?\n\nSorry for adding you first without getting the LGTM from within our team, I\u0027ll remember that the next time. If you prefer, I can add you to the attention set again after Andrey have reviewed this CL.\n\nThank you.\nJohn",
+      "parentUuid": "bdc57b1a_50119681",
+      "revId": "a37bd5517baeaf707da1dc203de3363324914bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
