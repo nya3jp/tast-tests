@@ -379,6 +379,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcec0f0e_495ce822",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-25T23:45:21Z",
+      "side": 1,
+      "message": "It is not wrap vkbCtx inside canvasCtx, but create a new context with most vkbCtx attributes with extended isLongForm flag, and other potential attribute in future. vkb is too large in relation to handwriting. For naming, I think HandWritingContext might make more sense. Canvas is an important part of the handwriting. \n\nThis is the first test of handwriting, there will be more cases added, including copy, paste, insert, redo, undo, etc on handwriting.",
+      "parentUuid": "115253aa_719c330b",
+      "range": {
+        "startLine": 372,
+        "startChar": 2,
+        "endLine": 375,
+        "endChar": 3
+      },
+      "revId": "94b32731082b2c68657007e897927cc85c71dae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be393ccd_39987b68",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
         "patchSetId": 1
