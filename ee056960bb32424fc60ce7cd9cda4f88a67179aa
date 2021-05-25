@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b100e5c8_5a80712a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-05-25T16:22:59Z",
+      "side": 1,
+      "message": "Indeed. The interesting CL is https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2915857.",
+      "parentUuid": "40d5821a_32f8dd72",
+      "range": {
+        "startLine": 10,
+        "startChar": 65,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "ee056960bb32424fc60ce7cd9cda4f88a67179aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8058b436_60984ea7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -58,6 +82,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60892e2e_1a580403",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-05-25T16:22:59Z",
+      "side": 1,
+      "message": "Thanks Miguel!",
+      "revId": "ee056960bb32424fc60ce7cd9cda4f88a67179aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "461c1a2f_08bfa49a",
@@ -71,6 +112,30 @@
       "writtenOn": "2021-05-25T16:17:46Z",
       "side": 1,
       "message": "Do we need to get a context at this point? It\u0027ll be done lazily\nanyway so we could do it in l.33 and avoid having a global var.\n(But haven\u0027t read later CLs yet to see if this makes sense).",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 1
+      },
+      "revId": "ee056960bb32424fc60ce7cd9cda4f88a67179aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f58bb9fe_5fea9234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-05-25T16:22:59Z",
+      "side": 1,
+      "message": "Not for the purposes of this CL, but I do use the global variable across functions in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2915857.",
+      "parentUuid": "461c1a2f_08bfa49a",
       "range": {
         "startLine": 19,
         "startChar": 2,
