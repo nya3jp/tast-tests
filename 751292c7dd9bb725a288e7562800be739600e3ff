@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0be295b3_7012d3fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-25T01:00:09Z",
+      "side": 1,
+      "message": "Thanks for the bug link. Now BUG\u003d has it. Mark resolved.",
+      "parentUuid": "67e1a06e_2b3d7a01",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "751292c7dd9bb725a288e7562800be739600e3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cb7411cd_37ac6b9d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "We actually need to use vectorsBytes in line 1085, thats is why we need to decode both to bytes and the struct.",
       "parentUuid": "5a1db605_f1b90c74",
+      "range": {
+        "startLine": 1062,
+        "startChar": 0,
+        "endLine": 1072,
+        "endChar": 3
+      },
+      "revId": "751292c7dd9bb725a288e7562800be739600e3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a575cec_58e820ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-25T01:00:09Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I didn\u0027t notice the scope of vectorsBytes.\n\nThen, I think the last Unmarshal might not be necessary and the following would also work?\n\n  if err :\u003d dec.Decode(\u0026v); err !\u003d nil {\n    s.Fatal(...)\n  }\n  // Update vectorsBytes for later processing.\n  vectorsBytes, err \u003d json.Marshal(v)\n  if err !\u003d nil {\n    s.Fatal(...)\n  }\n\nWDYT?\n\n(this could be another CL as the codes are not introduced in this CL)",
+      "parentUuid": "4163d52c_9b3cf85a",
       "range": {
         "startLine": 1062,
         "startChar": 0,
