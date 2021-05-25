@@ -160,6 +160,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54693291_4c4bebe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-25T03:45:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "79639631_10596f87",
+      "range": {
+        "startLine": 157,
+        "startChar": 31,
+        "endLine": 157,
+        "endChar": 34
+      },
+      "revId": "b39a4de145b3d94f392666b3c58150fe1fbfc384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "169df558_5da89314",
@@ -244,6 +268,30 @@
       "side": 1,
       "message": "Thanks for the suggestion! I would prefer leaving this as-is here, since we will have more branches soon in the later patches.",
       "parentUuid": "5bc4a764_84e91505",
+      "range": {
+        "startLine": 241,
+        "startChar": 3,
+        "endLine": 241,
+        "endChar": 7
+      },
+      "revId": "b39a4de145b3d94f392666b3c58150fe1fbfc384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5d13535_c86d3444",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-25T03:45:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3982718b_00168b77",
       "range": {
         "startLine": 241,
         "startChar": 3,
