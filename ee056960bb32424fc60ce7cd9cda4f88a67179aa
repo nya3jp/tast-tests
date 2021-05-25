@@ -3,6 +3,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "40d5821a_32f8dd72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-05-25T16:17:46Z",
+      "side": 1,
+      "message": "I\u0027m assuming we\u0027ll do something more interesting with the\nfile contents in later CLs.",
+      "range": {
+        "startLine": 10,
+        "startChar": 65,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "ee056960bb32424fc60ce7cd9cda4f88a67179aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8058b436_60984ea7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -14,6 +37,46 @@
       "writtenOn": "2021-05-25T01:59:45Z",
       "side": 1,
       "message": "ihf@, mcasas@ First-come first-served :) I\u0027m finally addressing the bad state of the video.DrawOnCanvas tests.",
+      "revId": "ee056960bb32424fc60ce7cd9cda4f88a67179aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd943bc1_2318c0cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-05-25T16:17:46Z",
+      "side": 1,
+      "message": "Forgot to \"send\". This changes LGTM modulo\nperhaps shifting things around in the 4th CL.",
+      "revId": "ee056960bb32424fc60ce7cd9cda4f88a67179aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "461c1a2f_08bfa49a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-05-25T16:17:46Z",
+      "side": 1,
+      "message": "Do we need to get a context at this point? It\u0027ll be done lazily\nanyway so we could do it in l.33 and avoid having a global var.\n(But haven\u0027t read later CLs yet to see if this makes sense).",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 1
+      },
       "revId": "ee056960bb32424fc60ce7cd9cda4f88a67179aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
