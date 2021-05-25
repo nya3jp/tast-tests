@@ -30,7 +30,7 @@ func init() {
 		SoftwareDeps: []string{"arm"},
 		// ETM is the optional HW implemented only on Trogdor SoC.
 		HardwareDeps: hwdep.D(hwdep.Platform("trogdor")),
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
