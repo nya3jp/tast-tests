@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b728396e_b2128b6d",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-25T09:00:02Z",
+      "side": 1,
+      "message": "IIUC, this creates another deployed variable, which hides deployed at L234.\n\nvar path string\npath, deployed \u003d s.Var(...)\n\nis needed.",
+      "revId": "d29eaf9d5d2571530677e56fcc7606585163ecfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
