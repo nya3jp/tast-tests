@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0bbe6ec_68bd703a",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-05-25T21:00:16Z",
+      "side": 1,
+      "message": "Done removing \u0027UI\u0027 as you pointed out this is just about the setup without having to know about how it is launched. Thanks for explaining in detail!",
+      "parentUuid": "110cdb94_c39cfd4d",
+      "range": {
+        "startLine": 119,
+        "startChar": 13,
+        "endLine": 119,
+        "endChar": 38
+      },
+      "revId": "c41815c91cfeeb279916e8ab3d356cee026f2f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82cc409a_f7af6893",
