@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70452d09_3becef0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-05-25T17:22:28Z",
+      "side": 1,
+      "message": "Hi Hiroki,\n\nThis looks good to me, although there is one issue: the speech monitor is likely flaky. We had to disable the ChromeVox tast tests a while ago and I still haven\u0027t had the chance to fix them. Are you getting any unexpected test failures when testing locally?\n\nI will try to investigate the issue this week, but I also do not want to block your change.",
+      "revId": "9766d96c55b7cf2e9451f3e024472d664878f44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f672e1c_7cf2661c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-05-25T17:22:28Z",
+      "side": 1,
+      "message": "Nit: This should probably be called \u0027keys\u0027, since it can specify multiple keys",
+      "revId": "9766d96c55b7cf2e9451f3e024472d664878f44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
