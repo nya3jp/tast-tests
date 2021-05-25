@@ -16,6 +16,23 @@
       "message": "Fixed the review comments and split the test \u0027LockScreenShowPassword\u0027 to 2 tests. Please review the latest changes.",
       "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af00f665_7c7673ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-25T20:25:37Z",
+      "side": 1,
+      "message": "Provided resolution for review comments.",
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
