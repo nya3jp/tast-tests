@@ -66,7 +66,7 @@ func CheckServoKeyPresses(ctx context.Context, s *testing.State) {
 	// so it can tell the test when it has started listening for keys, to avoid a race condition
 	// here of the keys being sent before the utils service is listening, and to enable validation
 	// of which keys where pressed.
-	svo.KeypressWithDuration(ctx, servo.CtrlD, servo.DurTab)
-	svo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab)
+	svo.KeypressWithDuration(ctx, servo.USBEnter, servo.DurTab)
+	svo.KeypressWithDuration(ctx, servo.USBEnter, servo.DurTab)
 	<-readKeys
 }
