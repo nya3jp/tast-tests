@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b967bd65_d51752bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-25T04:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "467da051_b1656ec7",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 0
+      },
+      "revId": "8fabb47faa28f14ea4758eaa141ae71c76671c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4c8071b_5982b4ae",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-25T03:49:46Z",
       "side": 1,
       "message": "Does it stand for \"description\"? It hard for me to tell, so I would just call it something like \"testName\".",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 5
+      },
+      "revId": "8fabb47faa28f14ea4758eaa141ae71c76671c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ade73f75_1d02838c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-25T04:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4c8071b_5982b4ae",
       "range": {
         "startLine": 111,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb33db5c_af928918",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-25T04:30:58Z",
+      "side": 1,
+      "message": "Yes, otherwise I\u0027ll need to uninstall Crostini before next test.",
+      "parentUuid": "10d271e7_27aaf7ad",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 4
+      },
+      "revId": "8fabb47faa28f14ea4758eaa141ae71c76671c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed277df3_db56b918",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7170cac_63b041b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-25T04:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed277df3_db56b918",
+      "range": {
+        "startLine": 122,
+        "startChar": 34,
+        "endLine": 122,
+        "endChar": 38
+      },
+      "revId": "8fabb47faa28f14ea4758eaa141ae71c76671c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "258343fc_59af521e",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-05-25T03:49:46Z",
       "side": 1,
       "message": "comment? e.g. the first name in `users` will go through the installation process",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 4
+      },
+      "revId": "8fabb47faa28f14ea4758eaa141ae71c76671c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "035339ff_ea580f4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-25T04:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "258343fc_59af521e",
       "range": {
         "startLine": 128,
         "startChar": 0,
