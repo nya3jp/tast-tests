@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7500acd0_5fc126e7",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-25T19:19:00Z",
+      "side": 1,
+      "message": "Can get rid of this part now",
+      "range": {
+        "startLine": 116,
+        "startChar": 15,
+        "endLine": 116,
+        "endChar": 59
+      },
+      "revId": "c41815c91cfeeb279916e8ab3d356cee026f2f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64e329c1_9413658b",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-25T19:19:00Z",
+      "side": 1,
+      "message": "Don\u0027t think you need to mention UI here",
+      "range": {
+        "startLine": 119,
+        "startChar": 13,
+        "endLine": 119,
+        "endChar": 38
+      },
+      "revId": "c41815c91cfeeb279916e8ab3d356cee026f2f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82cc409a_f7af6893",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-25T19:19:00Z",
+      "side": 1,
+      "message": "Or here",
+      "range": {
+        "startLine": 120,
+        "startChar": 39,
+        "endLine": 120,
+        "endChar": 51
+      },
+      "revId": "c41815c91cfeeb279916e8ab3d356cee026f2f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d19110d_c971084d",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-25T19:19:00Z",
+      "side": 1,
+      "message": "this sentence isn\u0027t super clear. Something like this\n\nRootfs is used to force the rootfs version of lacros-chrome",
+      "range": {
+        "startLine": 184,
+        "startChar": 80,
+        "endLine": 184,
+        "endChar": 84
+      },
+      "revId": "c41815c91cfeeb279916e8ab3d356cee026f2f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd203d99_863049e9",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-25T19:19:00Z",
+      "side": 1,
+      "message": "Move this comment since you moved the var",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 88
+      },
+      "revId": "c41815c91cfeeb279916e8ab3d356cee026f2f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63ccbc98_870d92c6",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-25T19:19:00Z",
+      "side": 1,
+      "message": "keep this consistent with other comments and call it lacros-chrome",
+      "range": {
+        "startLine": 283,
+        "startChar": 46,
+        "endLine": 283,
+        "endChar": 56
+      },
+      "revId": "c41815c91cfeeb279916e8ab3d356cee026f2f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "430a1f7e_0901d173",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-25T19:19:00Z",
+      "side": 1,
+      "message": "at is repeated",
+      "range": {
+        "startLine": 283,
+        "startChar": 76,
+        "endLine": 284,
+        "endChar": 8
+      },
+      "revId": "c41815c91cfeeb279916e8ab3d356cee026f2f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
