@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b7354ee_4cec5054",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-25T02:30:36Z",
+      "side": 1,
+      "message": "I mean something like this:\n\ndefer func(...) {\n    if err :\u003d certStore.Cleanup(cleanupCtx)...\n}()",
+      "parentUuid": "0504d0df_37e166be",
+      "range": {
+        "startLine": 157,
+        "startChar": 31,
+        "endLine": 157,
+        "endChar": 34
+      },
+      "revId": "b39a4de145b3d94f392666b3c58150fe1fbfc384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "169df558_5da89314",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 3
