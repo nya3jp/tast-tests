@@ -102,7 +102,7 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get window info: ", err)
 	}
 
-	displayInfo, err := display.GetInternalInfo(ctx, tconn)
+	displayInfo, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to obtain a default display: ", err)
 	}
