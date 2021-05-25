@@ -354,6 +354,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11b9c288_9e125e0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-05-25T00:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb162a61_60b3e2f9",
+      "range": {
+        "startLine": 871,
+        "startChar": 4,
+        "endLine": 871,
+        "endChar": 8
+      },
+      "revId": "7896680068b09ee68a2aad3a2eee913cc987fdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52425c40_db09765d",
