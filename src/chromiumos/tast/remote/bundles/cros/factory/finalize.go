@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -61,7 +62,7 @@ func Finalize(fullCtx context.Context, s *testing.State) {
 	s.Log("Start wiping and umount")
 	defer cleanup(fullCtx, s)
 	// "gooftool" of "factory-mini" package has been already installed on test image.
-	if err := d.Command("gooftool", "wipe_in_place", "--test_umount").Run(ctx); err != nil {
+	if err := d.Command("gooftool", "wipe_in_place", "--test_umount").Run(ctx, ssh.DumpLogOnError); err != nil {
 		s.Fatal("Failed to run wiping of finalize: ", err)
 	}
 
