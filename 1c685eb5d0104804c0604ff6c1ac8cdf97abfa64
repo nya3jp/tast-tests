@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02047c6f_b2c98bbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-25T04:31:58Z",
+      "side": 1,
+      "message": "Thanks for the review. I have addressed the comments.",
+      "revId": "1c685eb5d0104804c0604ff6c1ac8cdf97abfa64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b07459cf_5638b70d",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-05-24T23:17:09Z",
       "side": 1,
       "message": "how about having a short url？",
+      "range": {
+        "startLine": 24,
+        "startChar": 46,
+        "endLine": 24,
+        "endChar": 117
+      },
+      "revId": "1c685eb5d0104804c0604ff6c1ac8cdf97abfa64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fd7cf51_ae2ae3e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-25T04:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b07459cf_5638b70d",
       "range": {
         "startLine": 24,
         "startChar": 46,
@@ -64,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4cd6c8d_8ee32682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-25T04:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d673c3cd_b99f1b38",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 5
+      },
+      "revId": "1c685eb5d0104804c0604ff6c1ac8cdf97abfa64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20e1fc9d_12a92fc5",
@@ -87,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab21a775_c0908550",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-25T04:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20e1fc9d_12a92fc5",
+      "range": {
+        "startLine": 79,
+        "startChar": 34,
+        "endLine": 79,
+        "endChar": 42
+      },
+      "revId": "1c685eb5d0104804c0604ff6c1ac8cdf97abfa64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07bde2aa_58dd53f3",
@@ -100,6 +189,30 @@
       "writtenOn": "2021-05-24T23:17:09Z",
       "side": 1,
       "message": "enabled.",
+      "range": {
+        "startLine": 79,
+        "startChar": 34,
+        "endLine": 79,
+        "endChar": 42
+      },
+      "revId": "1c685eb5d0104804c0604ff6c1ac8cdf97abfa64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19e83381_9ff135b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_os_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-05-25T04:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07bde2aa_58dd53f3",
       "range": {
         "startLine": 79,
         "startChar": 34,
