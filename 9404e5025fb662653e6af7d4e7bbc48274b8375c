@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc84f322_d6ecb0e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hammerd/triggered_on_boot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-05-25T11:10:23Z",
+      "side": 1,
+      "message": "qq: Do we have hammerd on all devices?",
+      "revId": "9404e5025fb662653e6af7d4e7bbc48274b8375c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcdb3403_1b16be7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hammerd/triggered_on_boot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-05-25T11:10:23Z",
+      "side": 1,
+      "message": "What if we failed to find this line in the log files? Shell we treat it as an error?",
+      "revId": "9404e5025fb662653e6af7d4e7bbc48274b8375c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
