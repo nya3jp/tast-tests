@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc83ef5_57e519a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-25T02:48:47Z",
+      "side": 1,
+      "message": "Good question, TBH I don\u0027t know, but it seems to me that there were no differences between the attributes for psk and cert tests in autotest [1], so I guess it\u0027s fine here\n\n[1] http://cs/chromeos_public/src/third_party/autotest/files/client/site_tests/network_VPNConnect/control.l2tpipsec_psk?rcl\u003df5ac82aad1ed3b166e93abd7d2e1c57716683303",
+      "parentUuid": "359018d9_15424d4c",
+      "range": {
+        "startLine": 11,
+        "startChar": 65,
+        "endLine": 12,
+        "endChar": 42
+      },
+      "revId": "6f7a73a181ab80b90819202dfff739fefa701ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ac9bb6e3_244479c1",

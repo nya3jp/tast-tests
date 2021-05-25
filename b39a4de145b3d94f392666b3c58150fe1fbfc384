@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79639631_10596f87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-25T02:48:47Z",
+      "side": 1,
+      "message": "Ah, thanks! Sorry for my poor understanding.\nSince the current style is used in this file (e..g, L106,126,174), to keep the style consistent, maybe we can leave it as-is here and change them together later?",
+      "parentUuid": "9b7354ee_4cec5054",
+      "range": {
+        "startLine": 157,
+        "startChar": 31,
+        "endLine": 157,
+        "endChar": 34
+      },
+      "revId": "b39a4de145b3d94f392666b3c58150fe1fbfc384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "169df558_5da89314",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 3
