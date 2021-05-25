@@ -172,8 +172,9 @@ type EntryPred func(e *Entry) bool
 
 // options contains options for creating a Reader (but not a ChromeReader)
 type options struct {
-	path    string      // path to the syslog messages file
-	filters []EntryPred // predicates to filter syslog entries
+	path      string      // path to the syslog messages file
+	filters   []EntryPred // predicates to filter syslog entries
+	fromStart bool        // set to true to read the file from the beginning
 }
 
 // Reader allows tests to read syslog messages. It only reports messages written
@@ -191,6 +192,14 @@ type Option func(*options)
 func SourcePath(p string) Option {
 	return func(o *options) {
 		o.path = p
+	}
+}
+
+// ReadFromStart toggles the switch of reading log from the start of the file.
+// The default is false.
+func ReadFromStart(b bool) Option {
+	return func(o *options) {
+		o.fromStart = b
 	}
 }
 
@@ -255,13 +264,14 @@ type ParseError struct {
 // written after it is started. Close must be called after use.
 func NewReader(ctx context.Context, opts ...Option) (r *Reader, retErr error) {
 	o := options{
-		path: MessageFile,
+		path:      MessageFile,
+		fromStart: false,
 	}
 	for _, opt := range opts {
 		opt(&o)
 	}
 
-	lineReader, err := NewLineReader(ctx, o.path, false, nil)
+	lineReader, err := NewLineReader(ctx, o.path, o.fromStart, nil)
 	if err != nil {
 		return nil, err
 	}
