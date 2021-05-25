@@ -162,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6dd8215_d8362381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2021-05-25T01:24:17Z",
+      "side": 1,
+      "message": "If we use v (of type vectors struct defined on line 38) to populate vectorsBytes, then we lose the testGroups field, which is present in tv; needed in vectorsBytes, but not part of the vectors struct.",
+      "parentUuid": "8a575cec_58e820ee",
+      "range": {
+        "startLine": 1062,
+        "startChar": 0,
+        "endLine": 1072,
+        "endChar": 3
+      },
+      "revId": "751292c7dd9bb725a288e7562800be739600e3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2821b266_e0d2815a",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 5
