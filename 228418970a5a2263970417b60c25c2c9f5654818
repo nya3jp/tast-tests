@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb52b634_ec615be2",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-25T01:51:58Z",
+      "side": 1,
+      "message": "You\u0027re actually using it at L237, and that\u0027s why Tast framework warns.\nSo, from framework point of view, it\u0027s WAI.\n\nInstead, could you guard it by PreExist?",
+      "parentUuid": "8d0cad9f_018f21b0",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 25
+      },
+      "revId": "228418970a5a2263970417b60c25c2c9f5654818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fdaff004_21400952",
