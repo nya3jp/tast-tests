@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "359018d9_15424d4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-25T02:20:51Z",
+      "side": 1,
+      "message": "does this add some requirements on which boards can run the test ?",
+      "range": {
+        "startLine": 11,
+        "startChar": 65,
+        "endLine": 12,
+        "endChar": 42
+      },
+      "revId": "6f7a73a181ab80b90819202dfff739fefa701ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ac9bb6e3_244479c1",
