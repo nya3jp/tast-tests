@@ -20,60 +20,24 @@ function initializeCanvas(width, height) {
 }
 
 // Starts playing videoSourcePath. Once playback starts, the video is drawn once
-// on the canvas and the resulting image is obtained. The colors of the four
-// corners of this image are checked against hard-coded values.
-async function playAndDrawOnCanvas(videoSourcePath) {
+// on the canvas with size videoW x videoH.
+async function playAndDrawOnCanvas(videoSourcePath, videoW, videoH) {
   const video = document.getElementById('video');
   video.src = videoSourcePath;
   await video.play();
-
   const canvas = document.getElementById('canvas');
-  const cWidth = canvas.width;
-  const cHeight = canvas.height;
-  ctx.drawImage(video, 0, 0, cWidth, cHeight);
-
-  const expectedRGBAColors = {
-    'top-left': {
-      pos: {x: 0, y: 0},
-      color: [128, 64, 32, 255]
-    },
-    'top-right': {
-      pos: {x: cWidth - 1, y: 0},
-      color: [32, 128, 64, 255]
-    },
-    'bottom-right': {
-      pos: {x: cWidth - 1, y: cHeight - 1},
-      color: [64, 32, 128, 255]
-    },
-    'bottom-left': {
-      pos: {x: 0, y: cHeight - 1},
-      color: [128, 32, 64, 255]
-    }
-  };
-  for (const c in expectedRGBAColors) {
-    const pos = expectedRGBAColors[c].pos;
-    const expectedColor = expectedRGBAColors[c].color;
-    const imageData = ctx.getImageData(pos.x, pos.y, 1, 1);
-    if (!expectColor(imageData.data, expectedColor)) {
-      throw new Error(`At ${c}: expected ${colorToString(expectedColor)}; ` +
-        `got ${colorToString(imageData.data)}`);
-    }
-  }
+  ctx.drawImage(video, 0, 0, videoW, videoH);
 }
 
-// Returns true if actualColor is approximately equal to expectedColor. Both
-// arguments are arrays of four elements in RGBA order.
-function expectColor(actualColor, expectedColor) {
-  const tolerance = 2;  // Picked arbitrarily.
-  for (let i = 0; i < 4; i++) {
-    if (Math.abs(actualColor[i] - expectedColor[i]) > tolerance)
-      return false;
-  }
-  return true;
+// Returns the color of the canvas at point (x, y) as an ImageData object.
+function getCanvasColorAt(x, y) {
+  return ctx.getImageData(x, y, 1, 1);
 }
 
-function colorToString(color) {
-  return `RGBA = (${color[0]}, ${color[1]}, ${color[2]}, ${color[3]})`;
+// Returns w pixels of color data for row y of the canvas as an ImageData
+// object.
+function getRowData(y, w) {
+  return ctx.getImageData(0, y, w, 1);
 }
 </script>
 </html>
