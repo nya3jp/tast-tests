@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02276254_936aae04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-25T23:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "065ac31c_fdf054fb",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "5e7ba93533685a709c03536a14dc88ca8f73711b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a095cb4e_9727c818",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-24T02:52:08Z",
       "side": 1,
       "message": "Better mention the 11b/11a -\u003e 11n/11n change in the CL message.",
+      "range": {
+        "startLine": 82,
+        "startChar": 82,
+        "endLine": 82,
+        "endChar": 90
+      },
+      "revId": "5e7ba93533685a709c03536a14dc88ca8f73711b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de59df6d_d0b8b951",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-25T23:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a095cb4e_9727c818",
       "range": {
         "startLine": 82,
         "startChar": 82,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c53cad5_7c44fd40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-25T23:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a344ea89_272bc402",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 4
+      },
+      "revId": "5e7ba93533685a709c03536a14dc88ca8f73711b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20d19bfb_9091e672",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-05-24T02:52:08Z",
       "side": 1,
       "message": "Please catch and handle the returned error.",
+      "range": {
+        "startLine": 257,
+        "startChar": 4,
+        "endLine": 257,
+        "endChar": 32
+      },
+      "revId": "5e7ba93533685a709c03536a14dc88ca8f73711b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89970e56_a9ad7304",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-25T23:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20d19bfb_9091e672",
       "range": {
         "startLine": 257,
         "startChar": 4,
