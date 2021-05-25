@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a01a06ac_9036668b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-25T08:52:42Z",
+      "side": 1,
+      "message": "Hi Arowa,\n\nDo you still remember why do we need this KillPIDs() in the test? I checked https://crrev.com/c/2117039 but failed to find any discussion about this.\n\nThanks!",
+      "revId": "3e5e495513611039ed45468380600f55538afd18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
