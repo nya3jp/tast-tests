@@ -182,6 +182,24 @@
       "message": "Wrap this in if param.vmEnabled (L258) condition since it\u0027s only applicable if VM is enabled.",
       "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac49b61b_e9b2c73d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-25T14:10:09Z",
+      "side": 1,
+      "message": "There is a printing L245. I don\u0027t have strong pref to keep or discard printing. However here I don\u0027t have access to DUT and internet is bit slow. So I would keep this once it is hard to re-test change. Let me know if you still think we should remove printing L245.",
+      "parentUuid": "6b682099_b2e4ed1d",
+      "revId": "7f58afbb6242b89a4c1dbd95bb2ef5809ec40637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
