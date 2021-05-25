@@ -11,5 +11,9 @@ import (
 // PublicBenchmarkAllowed returns the DUT model dependency of running public benchmark tests.
 // Allowed hardware models will be white listed here.
 func PublicBenchmarkAllowed() hwdep.Condition {
-	return hwdep.Model("barla", "bluebird", "eve", "krane", "liara", "maple14", "pantheon", "kohaku", "pyke", "ampton")
+	return hwdep.Model(
+		"ampton", "barla", "bluebird", "drawlat",
+		"eve", "kled", "kohaku", "krane",
+		"liara", "maple14", "pantheon", "pyke",
+	)
 }
