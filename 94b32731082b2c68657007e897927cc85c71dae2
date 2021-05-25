@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f38361fa_114c97d4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-25T23:25:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0161e2ac_d4e64a9d",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 92
+      },
+      "revId": "94b32731082b2c68657007e897927cc85c71dae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af560ff3_6b78df0a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-24T03:47:37Z",
       "side": 1,
       "message": "I reckon use NameRegex or StartingWith should make more sense to simplify the locator.",
+      "range": {
+        "startLine": 334,
+        "startChar": 32,
+        "endLine": 334,
+        "endChar": 59
+      },
+      "revId": "94b32731082b2c68657007e897927cc85c71dae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "185c38c3_ec7c3f71",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-25T23:25:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af560ff3_6b78df0a",
       "range": {
         "startLine": 334,
         "startChar": 32,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff62ef62_a36fcfce",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-25T23:25:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0ed93c7_f41f4bfe",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 49
+      },
+      "revId": "94b32731082b2c68657007e897927cc85c71dae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b4425fd_e6ae77a3",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-05-24T03:47:37Z",
       "side": 1,
       "message": "This WaitForLocation is not appropriate. \nFirstly, it ignores error.\nSecondly, it assumes the infoDialogue is completely loaded on Canvas location stable, because IsNodeFound does not have any polling.\n\nCan you try to use uiauto.IfSuccessThen()",
+      "range": {
+        "startLine": 336,
+        "startChar": 12,
+        "endLine": 336,
+        "endChar": 27
+      },
+      "revId": "94b32731082b2c68657007e897927cc85c71dae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eccb968_d803eb15",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-25T23:25:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b4425fd_e6ae77a3",
       "range": {
         "startLine": 336,
         "startChar": 12,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f41afb6_52915ca8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-25T23:25:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27bcbfe3_70490272",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 65
+      },
+      "revId": "94b32731082b2c68657007e897927cc85c71dae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7b35556_57d2a472",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a98f2542_e8d04935",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-25T23:25:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7b35556_57d2a472",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 44
+      },
+      "revId": "94b32731082b2c68657007e897927cc85c71dae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94bde0df_cf47a75c",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-05-24T03:47:37Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 55
+      },
+      "revId": "94b32731082b2c68657007e897927cc85c71dae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f3170ae_7c34067c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-25T23:25:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94bde0df_cf47a75c",
       "range": {
         "startLine": 369,
         "startChar": 0,
@@ -187,6 +355,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "115253aa_719c330b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-25T23:25:01Z",
+      "side": 1,
+      "message": "I added a flag in vkbCtx indicating whether it is longform. I first implemented the way you suggested, that was nice but made the codes complicated. Because the canvas is quite simple and cannot do much itself (even the infoDialogue node is not a child of it). All actions canvasCtx does is all done by canvasCtx.vkbCtx... which introduces unnecessary indirection. Thus I revised it to the current one, simply adding a flag in vkbCtx and set it in switchToHandWriting.",
+      "parentUuid": "b7d88ea7_6fc00ee4",
+      "range": {
+        "startLine": 372,
+        "startChar": 2,
+        "endLine": 375,
+        "endChar": 3
+      },
+      "revId": "94b32731082b2c68657007e897927cc85c71dae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be393ccd_39987b68",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
         "patchSetId": 1
@@ -198,6 +390,30 @@
       "writtenOn": "2021-05-24T03:47:37Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 379,
+        "startChar": 3,
+        "endLine": 379,
+        "endChar": 62
+      },
+      "revId": "94b32731082b2c68657007e897927cc85c71dae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de38f4f9_2b8858f9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-25T23:25:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be393ccd_39987b68",
       "range": {
         "startLine": 379,
         "startChar": 3,
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d119bc43_de0c2920",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-25T23:25:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ce13393_10636b80",
+      "range": {
+        "startLine": 382,
+        "startChar": 3,
+        "endLine": 382,
+        "endChar": 84
+      },
+      "revId": "94b32731082b2c68657007e897927cc85c71dae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc3b246f_7375a154",
@@ -244,6 +484,30 @@
       "writtenOn": "2021-05-24T03:47:37Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 390,
+        "startChar": 4,
+        "endLine": 390,
+        "endChar": 92
+      },
+      "revId": "94b32731082b2c68657007e897927cc85c71dae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e65dbb89_81598b0a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-25T23:25:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc3b246f_7375a154",
       "range": {
         "startLine": 390,
         "startChar": 4,
