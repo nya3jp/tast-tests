@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21a7d430_991394ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-25T10:17:38Z",
+      "side": 1,
+      "message": "I am not sure whether it is a good idea to introduce a coupling between this helper function file and the data file. If every helper file can access the data file, it may increase the difficulty of future maintenance. Would it be better that we only access the parameterization data in the test file (i.e., vk_typing_guest), which passes whatever needed to this function for processing?",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 41
+      },
+      "revId": "cfbab05ccf67a7737a6de8c18d780f7c9cb3cf40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
