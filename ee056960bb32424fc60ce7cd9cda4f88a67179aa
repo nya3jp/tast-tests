@@ -99,6 +99,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a796d68e_07cbdd48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-25T22:48:51Z",
+      "side": 1,
+      "message": "shadow review +1",
+      "revId": "ee056960bb32424fc60ce7cd9cda4f88a67179aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "461c1a2f_08bfa49a",
@@ -141,6 +158,52 @@
         "startChar": 2,
         "endLine": 20,
         "endChar": 1
+      },
+      "revId": "ee056960bb32424fc60ce7cd9cda4f88a67179aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5482adea_7c4a3c1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-25T22:48:51Z",
+      "side": 1,
+      "message": "nit: maybe put \"This\" in the next line so the whole sentence is contained there",
+      "range": {
+        "startLine": 102,
+        "startChar": 101,
+        "endLine": 102,
+        "endChar": 105
+      },
+      "revId": "ee056960bb32424fc60ce7cd9cda4f88a67179aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d88e1a8_186eb74b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-25T22:48:51Z",
+      "side": 1,
+      "message": "Might be nice to store this in its own variable, since it\u0027s used below on L121 and it would make this line a bit easier to read",
+      "range": {
+        "startLine": 104,
+        "startChar": 23,
+        "endLine": 104,
+        "endChar": 53
       },
       "revId": "ee056960bb32424fc60ce7cd9cda4f88a67179aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
