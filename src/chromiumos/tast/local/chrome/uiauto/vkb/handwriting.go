@@ -23,6 +23,39 @@ import (
 	"chromiumos/tast/local/coords"
 )
 
+// HandwritingContext represents a context for handwriting.
+type HandwritingContext struct {
+	VirtualKeyboardContext
+	isLongForm bool
+}
+
+// NewHandwritingContext creates a new context for handwriting.
+func (vkbCtx *VirtualKeyboardContext) NewHandwritingContext(ctx context.Context) (*HandwritingContext, error) {
+	hwCtx := &HandwritingContext{
+		VirtualKeyboardContext: *vkbCtx,
+		isLongForm:             false,
+	}
+
+	//check if it is a longform keyboard
+	checkIsLongform := func(ctx context.Context) (bool, error) {
+		if err := hwCtx.ui.WithTimeout(2 * time.Second).WaitUntilExists(NodeFinder.HasClass("lf-keyboard"))(ctx); err != nil {
+			if strings.Contains(err.Error(), nodewith.ErrNotFound) {
+				return false, nil
+			}
+			return false, err
+		}
+		return true, nil
+	}
+
+	var err error
+	hwCtx.isLongForm, err = checkIsLongform(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	return hwCtx, nil
+}
+
 // Structs required to unmarshal the SVG file.
 type svg struct {
 	Defs defs `xml:"defs"`
@@ -209,8 +242,8 @@ func (sg *strokeGroup) scale(canvasLoc coords.Rect) {
 	}
 }
 
-// drawHandwriting draws the strokes into the handwriting input.
-func drawHandwriting(ctx context.Context, tconn *chrome.TestConn, sg *strokeGroup) error {
+// drawStrokes draws the strokes into the handwriting input.
+func drawStrokes(ctx context.Context, tconn *chrome.TestConn, sg *strokeGroup) error {
 	// Draw the strokes into the handwriting input.
 	for _, s := range sg.strokes {
 		for i, p := range s.points {
@@ -236,9 +269,9 @@ func drawHandwriting(ctx context.Context, tconn *chrome.TestConn, sg *strokeGrou
 	return nil
 }
 
-// DrawHandwritingFromFile returns an action reading the handwriting file, transforming the points into the correct scale,
+// DrawStrokesFromFile returns an action reading the handwriting file, transforming the points into the correct scale,
 // populates the data into the struct, and drawing the strokes into the handwriting input.
-func (vkbCtx *VirtualKeyboardContext) DrawHandwritingFromFile(filePath string) uiauto.Action {
+func (hwCtx *HandwritingContext) DrawStrokesFromFile(filePath string) uiauto.Action {
 	return func(ctx context.Context) error {
 		// Number of points we would like per stroke.
 		const n = 50
@@ -253,8 +286,8 @@ func (vkbCtx *VirtualKeyboardContext) DrawHandwritingFromFile(filePath string) u
 		sg := newStrokeGroup(svgFile, n)
 
 		// Find the handwriting canvas location.
-		hwCanvasFinder := nodewith.Role(role.Canvas).ClassName("ita-hwt-canvas")
-		loc, err := vkbCtx.ui.Location(ctx, hwCanvasFinder)
+		hwCanvasFinder := NodeFinder.Role(role.Canvas)
+		loc, err := hwCtx.ui.Location(ctx, hwCanvasFinder)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get location of %v", hwCanvasFinder)
 		}
@@ -263,10 +296,38 @@ func (vkbCtx *VirtualKeyboardContext) DrawHandwritingFromFile(filePath string) u
 		sg.scale(*loc)
 
 		// Draw the handwriting into the handwriting input.
-		if err := drawHandwriting(ctx, vkbCtx.tconn, sg); err != nil {
+		if err := drawStrokes(ctx, hwCtx.tconn, sg); err != nil {
 			return errors.Wrap(err, "failed to draw handwriting onto the handwriting input")
 		}
 
 		return nil
 	}
+}
+
+// ClearHandwritingCanvas returns an action that clears the handwriting canvas.
+// TODO(b/189277286): Add support to check whether a handwriting canvas is clear for a non-longform canvas.
+func (hwCtx *HandwritingContext) ClearHandwritingCanvas() uiauto.Action {
+	if !hwCtx.isLongForm {
+		return hwCtx.TapKey("backspace")
+	}
+	return func(ctx context.Context) error {
+		// Undo key remains on the keyboard if the canvas is not clear in longform canvas.
+		undoKey := KeyFinder.Name("undo")
+		needToClear, err := hwCtx.ui.IsNodeFound(ctx, undoKey)
+		if err != nil {
+			return err
+		}
+		if needToClear {
+			// Repeatedly click undo until the backspace key appears, indicating the canvas is clear.
+			waitForBackspaceAction := hwCtx.ui.WithTimeout(500 * time.Millisecond).WaitUntilExists(KeyFinder.Name("backspace"))
+			return hwCtx.ui.LeftClickUntil(undoKey, waitForBackspaceAction)(ctx)
+		}
+		return nil
+	}
+}
+
+// WaitForHandwritingEngineReady returns an action that waits for the handwriting engine to become ready.
+func (hwCtx *HandwritingContext) WaitForHandwritingEngineReady(checkHandwritingEngineReady uiauto.Action) uiauto.Action {
+	return uiauto.NamedAction("Wait for handwriting engine ready",
+		hwCtx.ui.WithTimeout(time.Minute).Retry(10, checkHandwritingEngineReady))
 }
