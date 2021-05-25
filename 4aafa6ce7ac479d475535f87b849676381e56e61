@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8134df7_628831a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-25T02:27:30Z",
+      "side": 1,
+      "message": "L2TP noob question: is xauth only relevant for ipsec ike1 ? If xauth is only applicable to psk auth, we could also have a separate \"psk-xauth\" value for |authType|. Not sure if this is relevant for future extensions of the vpnTestParams struct so the current separate boolean is fine as well.",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 3
+      },
+      "revId": "4aafa6ce7ac479d475535f87b849676381e56e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
