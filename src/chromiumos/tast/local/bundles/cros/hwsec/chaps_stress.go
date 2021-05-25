@@ -48,6 +48,10 @@ const (
 	mountProb = 10.0
 	// unmountProb is the probability that we unmount all user's vault.
 	unmountProb = 1.5
+	// createKeyProb is the probability that we create a key.
+	createKeyProb = 200.0
+	// removeKeyProb is the probability that we remove a key.
+	removeKeyProb = 20.0
 )
 
 // chapsStressState is a struct that stores the state of the test (i.e. if a user is mounted or
@@ -67,6 +71,8 @@ type chapsStressState struct {
 	// rand is the source of randomness that is used throughout the test to ensure that
 	// it is deterministic.
 	rand *rand.Rand
+	// nextKeyID is the ID for the next created key
+	nextKeyID int
 
 	// Below are some statistics of the stress test run:
 
@@ -74,6 +80,18 @@ type chapsStressState struct {
 	mountCount int
 	// unmountCount is the number of times we unmounted all vaults.
 	unmountCount int
+	// createKeyCount is the number of times we created a key.
+	createKeyCount int
+	// removeKeyCount is the number of times we removed a key.
+	removeKeyCount int
+}
+
+// getNextKeyID generates the label and keyID for the key that we're going to create.
+func getNextKeyID(state *chapsStressState) (label, keyID string) {
+	keyID = fmt.Sprintf("4242%06X", state.nextKeyID)
+	label = "Key" + keyID
+	state.nextKeyID++
+	return label, keyID
 }
 
 // doMountUserTurn randomly selects a user that's not mounted and mount the vault.
@@ -129,11 +147,97 @@ func doUnmountUserTurn(ctx context.Context, state *chapsStressState, cryptohome 
 	return nil
 }
 
+// doCreateKeyTurn randomly create a key for a random user.
+func doCreateKeyTurn(ctx context.Context, state *chapsStressState, pkcs11Util *pkcs11.Chaps, scratchpadPath string) (retErr error) {
+	// Select a key that's not created.
+	var viableKeys []int
+	for i := 0; i < userCount*keysPerUser; i++ {
+		if state.keys[i] == nil && state.mounted[i/keysPerUser] {
+			viableKeys = append(viableKeys, i)
+		}
+	}
+
+	if len(viableKeys) == 0 {
+		// No key to create, not creating keys
+		return nil
+	}
+
+	// Select the key.
+	k := viableKeys[state.rand.Intn(len(viableKeys))]
+	username := state.usernames[k/keysPerUser]
+
+	// Next determine the key type that we'll generate.
+	t := state.rand.Float64()
+
+	// Now generate it.
+	if t < 0.45 {
+		// Imported key.
+		label, keyID := getNextKeyID(state)
+		key, err := pkcs11Util.CreateRSASoftwareKey(ctx, scratchpadPath, username, label, keyID, false, true)
+		if err != nil {
+			return errors.Wrap(err, "failed to create imported key in create key turn")
+		}
+		state.keys[k] = key
+	} else if t < 0.90 {
+		// Software backed key.
+		label, keyID := getNextKeyID(state)
+		key, err := pkcs11Util.CreateRSASoftwareKey(ctx, scratchpadPath, username, label, keyID, true, true)
+		if err != nil {
+			return errors.Wrap(err, "failed to create software-backed key in create key turn")
+		}
+		state.keys[k] = key
+	} else {
+		// Key generated in TPM.
+		// This only happens 10% of the time because this is expensive in terms of run time.
+		label, keyID := getNextKeyID(state)
+		key, err := pkcs11Util.CreateGeneratedKey(ctx, scratchpadPath, pkcs11.GenRSA2048, username, label, keyID)
+		if err != nil {
+			return errors.Wrap(err, "failed to create software-backed key in create key turn")
+		}
+		state.keys[k] = key
+	}
+
+	state.createKeyCount++
+	testing.ContextLogf(ctx, "Create key %d", k)
+	return nil
+}
+
+// doRemoveKeyTurn removes a random key.
+func doRemoveKeyTurn(ctx context.Context, state *chapsStressState, pkcs11Util *pkcs11.Chaps) (retErr error) {
+	// Select a key to remove
+	var viableKeys []int
+	for i := 0; i < userCount*keysPerUser; i++ {
+		if state.keys[i] != nil && state.mounted[i/keysPerUser] {
+			viableKeys = append(viableKeys, i)
+		}
+	}
+
+	if len(viableKeys) == 0 {
+		// No key to remove, not removing keys
+		return nil
+	}
+
+	// Select the key.
+	k := viableKeys[state.rand.Intn(len(viableKeys))]
+
+	if err := pkcs11Util.DestroyKey(ctx, state.keys[k]); err != nil {
+		return errors.Wrap(err, "failed to destroy key in remove key turn")
+	}
+
+	state.keys[k] = nil
+
+	state.removeKeyCount++
+	testing.ContextLogf(ctx, "Removed key %d", k)
+	return nil
+}
+
 // runOneTurn runs one iteration of the test. It'll randomly choose to do one of the following:
 // - Mount a user
 // - Unmount all users
-func runOneTurn(ctx context.Context, state *chapsStressState, cryptohome *hwsec.CryptohomeClient) (retErr error) {
-	totalProb := mountProb + unmountProb
+// - Create a key
+// - Remove a key
+func runOneTurn(ctx context.Context, state *chapsStressState, cryptohome *hwsec.CryptohomeClient, pkcs11Util *pkcs11.Chaps, scratchpadPath string) (retErr error) {
+	totalProb := mountProb + unmountProb + createKeyProb + removeKeyProb
 	accuProb := 0.0
 	r := state.rand.Float64() * totalProb
 
@@ -147,6 +251,16 @@ func runOneTurn(ctx context.Context, state *chapsStressState, cryptohome *hwsec.
 	}
 	accuProb += unmountProb
 
+	if r < accuProb+createKeyProb {
+		return doCreateKeyTurn(ctx, state, pkcs11Util, scratchpadPath)
+	}
+	accuProb += createKeyProb
+
+	if r < accuProb+removeKeyProb {
+		return doRemoveKeyTurn(ctx, state, pkcs11Util)
+	}
+	accuProb += removeKeyProb
+
 	return nil
 }
 
@@ -158,6 +272,11 @@ func ChapsStress(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec helper: ", err)
 	}
 	cryptohome := helper.CryptohomeClient()
+
+	pkcs11Util, err := pkcs11.NewChaps(ctx, r, cryptohome)
+	if err != nil {
+		s.Fatal("Failed to create PKCS#11 Utility: ", err)
+	}
 
 	// Prepare the states for this test and the user/pass lists.
 	state := &chapsStressState{}
@@ -212,10 +331,10 @@ func ChapsStress(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	for i := 0; i < turnCount; i++ {
-		if err := runOneTurn(shortenedCtx, state, cryptohome); err != nil {
+		if err := runOneTurn(shortenedCtx, state, cryptohome, pkcs11Util, scratchpadPath); err != nil {
 			s.Fatal("Turn failed: ", err)
 		}
 	}
 
-	s.Logf("Mounted %d times, unmounted %d times", state.mountCount, state.unmountCount)
+	s.Logf("Mounted %d times, unmounted %d times, created %d keys, removed %d keys", state.mountCount, state.unmountCount, state.createKeyCount, state.removeKeyCount)
 }
