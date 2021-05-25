@@ -234,7 +234,8 @@ func physicalKeyboardAllKeycodesTypingTest(ctx context.Context, st pkTestState, 
 		// Skip KEY_SYSRQ (0x63) to avoid launching the screenshot tool. The
 		// screenshot tool can cause subsequent tests to fail by intercepting
 		// mouse clicks.
-		if (scancode >= 0x80 && scancode < 0x160) || scancode == 0x63 {
+		// Skip KEY_LEFTMETA (0x7d), which is a search key, to avoid confusing the test.
+		if (scancode >= 0x80 && scancode < 0x160) || scancode == 0x63 || scancode == 0x7d {
 			continue
 		}
 		// Check whether the mojo connection is already broken or not.
