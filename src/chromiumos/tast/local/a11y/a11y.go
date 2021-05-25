@@ -49,6 +49,11 @@ func SetFeatureEnabled(ctx context.Context, tconn *chrome.TestConn, feature Feat
 	return nil
 }
 
+// SetTTSRate sets the speaking rate of the tts, relative to the default rate (1.0).
+func SetTTSRate(ctx context.Context, tconn *chrome.TestConn, rate float64) error {
+	return tconn.Call(ctx, nil, "tast.promisify(chrome.settingsPrivate.setPref)", "settings.tts.speech_rate", rate)
+}
+
 // ChromeVoxConn represents a connection to the ChromeVox background page.
 type ChromeVoxConn struct {
 	*chrome.Conn
