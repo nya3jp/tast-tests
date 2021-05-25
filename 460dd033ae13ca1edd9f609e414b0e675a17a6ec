@@ -33,6 +33,47 @@
       "message": "Do you have some sample data for this as well?",
       "revId": "460dd033ae13ca1edd9f609e414b0e675a17a6ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88909fb3_44d78f53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-25T18:43:00Z",
+      "side": 1,
+      "message": "Do you mean more than in the commit message? At that time I had troubles going beyond round 9 of the test, so I could produce only a short one.\nHowever, recently I added subtest for non-FT case, it\u0027s only a bit more in quantity; the summary goes like this:\n(...)\n2021-05-24T15:47:48.282121Z [15:47:48.281] Round 50. Requesting roam from 56:bd:17:c4:b3:04 to 56:65:1b:3f:73:fd\n2021-05-24T15:47:48.605375Z [15:47:48.605] The current WiFi service WiFi.RoamState: configuration\n2021-05-24T15:47:49.130524Z [15:47:49.130] The current WiFi service WiFi.RoamState: ready\n2021-05-24T15:47:49.291894Z [15:47:49.291] The current WiFi service WiFi.RoamState: idle\n2021-05-24T15:47:49.291982Z [15:47:49.291] The current WiFi service WiFi.BSSID: 56:65:1b:3f:73:fd\n2021-05-24T15:47:58.474453Z [15:47:58.474] Continuity: netperf statistics\u003d[{type: TCP_STREAM, duration: 10s, measurements:[throughput: 26.220]}]\n2021-05-24T15:47:58.474526Z [15:47:58.474] Stop Verification\n2021-05-24T15:47:58.474604Z [15:47:58.474] Iteration 1: End Time\u003d15:46:07.494, Throughput\u003d39.210000\n2021-05-24T15:47:58.474756Z [15:47:58.474] Iteration 2: End Time\u003d15:46:19.316, Throughput\u003d46.280000\n2021-05-24T15:47:58.474890Z [15:47:58.474] Iteration 3: End Time\u003d15:46:30.543, Throughput\u003d52.890000\n2021-05-24T15:47:58.474962Z [15:47:58.474] Iteration 4: End Time\u003d15:46:41.131, Throughput\u003d50.580000\n2021-05-24T15:47:58.475036Z [15:47:58.474] Iteration 5: End Time\u003d15:46:53.186, Throughput\u003d29.550000\n2021-05-24T15:47:58.475079Z [15:47:58.474] Iteration 6: End Time\u003d15:47:03.822, Throughput\u003d62.750000\n2021-05-24T15:47:58.475165Z [15:47:58.474] Iteration 7: End Time\u003d15:47:14.814, Throughput\u003d51.930000\n2021-05-24T15:47:58.475202Z [15:47:58.474] Iteration 8: End Time\u003d15:47:25.402, Throughput\u003d49.450000\n2021-05-24T15:47:58.475258Z [15:47:58.474] Iteration 9: End Time\u003d15:47:36.049, Throughput\u003d39.080000\n2021-05-24T15:47:58.475306Z [15:47:58.474] Iteration 10: End Time\u003d15:47:47.312, Throughput\u003d40.770000\n2021-05-24T15:47:58.475352Z [15:47:58.474] Iteration 11: End Time\u003d15:47:58.474, Throughput\u003d26.220000\n2021-05-24T15:47:58.475395Z [15:47:58.474] Average throughput 44.428182, threshold 17.392000\n2021-05-24T15:47:58.475423Z [15:47:58.474] Stopping hostapd\n(...)",
+      "parentUuid": "efef2f72_0cda9cbe",
+      "revId": "460dd033ae13ca1edd9f609e414b0e675a17a6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "226ca511_2ee3a516",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-25T18:43:00Z",
+      "side": 1,
+      "message": "Should be more than 802.11g to have a balanced throughput between roams to observe any drops.",
+      "range": {
+        "startLine": 164,
+        "startChar": 74,
+        "endLine": 164,
+        "endChar": 84
+      },
+      "revId": "460dd033ae13ca1edd9f609e414b0e675a17a6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
