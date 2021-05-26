@@ -240,18 +240,17 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 	// for different tiers testing would ask for different size.
 	checkParticipantsNum := func(ctx context.Context) error {
 		showEveryone := nodewith.Name("Show everyone").Role(role.Button)
-		people := nodewith.Name("People").First()
+		participant := nodewith.NameRegex(regexp.MustCompile("[0-9]+ participant[s]?")).Role(role.Tab).First()
 		// Some DUT models have poor performance. When joining
 		// a large conference (over 15 participants), it would take much time
 		// to render DOM elements. Set a longer timer here.
 		if err := uiauto.Combine(`open "Meeting Detail" panel`,
 			ui.WithTimeout(2*time.Minute).WaitUntilExists(showEveryone),
 			ui.LeftClick(showEveryone),
-			ui.WithTimeout(30*time.Second).WaitUntilExists(people),
+			ui.WithTimeout(30*time.Second).WaitUntilExists(participant),
 		)(ctx); err != nil {
 			return err
 		}
-		participant := nodewith.NameRegex(regexp.MustCompile("[0-9]+ participant[s]?")).Role(role.Tab).First()
 		participantInfo, err := ui.Info(ctx, participant)
 		if err != nil {
 			return errors.Wrap(err, "failed to get participant info")
@@ -261,11 +260,26 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		if err != nil {
 			return errors.Wrap(err, "cannot parse number of participants")
 		}
-		// Allow class room over 38 participants only.
-		// For other rooms (_two, _small, _large) should exactly match.
-		if (conf.roomSize == ClassRoomSize && int(num) < conf.roomSize) ||
-			(conf.roomSize != ClassRoomSize && int(num) != conf.roomSize) {
-			return errors.Wrapf(err, "meeting participant number is %d but %d is expected", num, conf.roomSize)
+		// Check number of participants following this logic:
+		// - Class size room: >= 38 participants
+		// - Large size room: 16 ~ 17 participants
+		// - Small size room: 5 ~ 6 participants
+		// - One to one room: 2
+		roomSize := conf.roomSize
+		participantNumber := int(num)
+		switch roomSize {
+		case ClassRoomSize:
+			if participantNumber < roomSize {
+				return errors.Wrapf(err, "meeting participant number is %d but at least %d is expected", num, roomSize)
+			}
+		case SmallRoomSize, LargeRoomSize:
+			if participantNumber != roomSize && participantNumber != roomSize+1 {
+				return errors.Wrapf(err, "meeting participant number is %d but %d ~ %d is expected", num, roomSize, roomSize+1)
+			}
+		case TwoRoomSize:
+			if participantNumber != roomSize {
+				return errors.Wrapf(err, "meeting participant number is %d but %d is expected", num, roomSize)
+			}
 		}
 
 		webArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
