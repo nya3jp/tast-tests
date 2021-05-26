@@ -34,6 +34,24 @@
       "parentUuid": "88198646_6aa21caa",
       "revId": "0898826f166ecb788e0c0f6417792be79a667c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2fa0aa_196e913e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-05-26T20:16:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f042de59_881045e4",
+      "revId": "0898826f166ecb788e0c0f6417792be79a667c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
