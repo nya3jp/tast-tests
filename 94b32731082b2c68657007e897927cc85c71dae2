@@ -425,6 +425,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a496c6bd_6b8595eb",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-26T02:41:02Z",
+      "side": 1,
+      "message": "Thanks for accepting the suggestion. I added comments specifically. Close this.",
+      "parentUuid": "ef4c92e9_c04c9edd",
+      "range": {
+        "startLine": 372,
+        "startChar": 2,
+        "endLine": 375,
+        "endChar": 3
+      },
+      "revId": "94b32731082b2c68657007e897927cc85c71dae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be393ccd_39987b68",
