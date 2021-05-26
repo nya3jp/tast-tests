@@ -16,6 +16,149 @@
       "message": "Hi vsavu,\n\nThis CL adds a new Tast test for the chrome.LoginScreenUi API.\n\nRegards,\nJit",
       "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e1ee184_ac670499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-26T06:43:35Z",
+      "side": 1,
+      "message": "nit: maybe DeviceLoginScreenExtensions ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "371d0341_39d64278",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-26T06:43:35Z",
+      "side": 1,
+      "message": "use KeepEnrollment here to remove users from previous tests.",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "091d0985_40f5c185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-26T06:43:35Z",
+      "side": 1,
+      "message": "Define a cleanup context to make sure this has enough time to complete.",
+      "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4cfecf4_1cb6c2ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-26T06:43:35Z",
+      "side": 1,
+      "message": "Fatal, you should still be able to communicate with Chrome.",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 9
+      },
+      "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db26b19c_ada41ece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-26T06:43:35Z",
+      "side": 1,
+      "message": "Please also test that a different extension is not available when the policy does not set its ID.",
+      "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47866d30_4146a2fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-26T06:43:35Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 9
+      },
+      "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38eaab03_2d536a7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-26T06:43:35Z",
+      "side": 1,
+      "message": "This is not needed, tests should not clean up Chrome state, it will be cleaned by the next test.",
+      "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
