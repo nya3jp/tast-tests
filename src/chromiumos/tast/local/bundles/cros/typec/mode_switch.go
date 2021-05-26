@@ -19,14 +19,16 @@ func init() {
 		Func:         ModeSwitch,
 		Desc:         "Checks USB Type C mode switch behaviour on login",
 		Contacts:     []string{"pmalani@chromium.org"},
+		Attr:         []string{"group:typec"},
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
 		Data:         []string{"testcert.p12"},
 		Params: []testing.Param{
 			// For running manually.
 			{
-				Name: "manual",
-				Val:  false,
+				Name:      "manual",
+				ExtraAttr: []string{"typec_lab"},
+				Val:       false,
 			},
 			// For automated testing.
 			{

@@ -23,14 +23,16 @@ func init() {
 		Func:         ModeHotplug,
 		Desc:         "Checks USB Type C mode switch behaviour when a Thunderbolt dock is unplugged/replugged",
 		Contacts:     []string{"pmalani@chromium.org", "chromeos-power@google.com"},
+		Attr:         []string{"group:typec"},
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
 		Data:         []string{"testcert.p12"},
 		Params: []testing.Param{
 			// For running manually.
 			{
-				Name: "manual",
-				Val:  false,
+				Name:      "manual",
+				ExtraAttr: []string{"typec_lab"},
+				Val:       false,
 			},
 			// For automated testing.
 			{

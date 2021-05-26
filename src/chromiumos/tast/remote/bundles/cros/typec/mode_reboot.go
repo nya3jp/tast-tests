@@ -30,14 +30,16 @@ func init() {
 		Func:         ModeReboot,
 		Desc:         "Demonstrates USB Type C mode selection after reboot",
 		Contacts:     []string{"pmalani@chromium.org", "chromeos-power@google.com"},
+		Attr:         []string{"group:typec"},
 		SoftwareDeps: []string{"tpm2", "reboot", "chrome"},
 		ServiceDeps:  []string{"tast.cros.typec.Service"},
 		Data:         []string{"testcert.p12"},
 		Params: []testing.Param{
 			// For running manually.
 			{
-				Name: "manual",
-				Val:  false,
+				Name:      "manual",
+				ExtraAttr: []string{"typec_lab"},
+				Val:       false,
 			},
 			// For automated testing.
 			{
