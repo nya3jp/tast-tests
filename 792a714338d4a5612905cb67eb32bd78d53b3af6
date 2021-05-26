@@ -16,6 +16,52 @@
       "message": "yhanada@: Please take a look. Thank you.",
       "revId": "792a714338d4a5612905cb67eb32bd78d53b3af6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52e9a3db_8f1b2326",
+        "filename": "android/ArcDragSourceTest/src/org/chromium/arc/testapp/dragsource/DragSourceActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-05-26T12:59:54Z",
+      "side": 1,
+      "message": "nit: Please sort by alphabetical order.",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "792a714338d4a5612905cb67eb32bd78d53b3af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b9d42d2_7e6b4a1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-05-26T12:59:54Z",
+      "side": 1,
+      "message": "q: What happens if the display width is less than 1000?",
+      "range": {
+        "startLine": 207,
+        "startChar": 35,
+        "endLine": 207,
+        "endChar": 52
+      },
+      "revId": "792a714338d4a5612905cb67eb32bd78d53b3af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
