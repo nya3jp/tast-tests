@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b75de9_b7d0a63f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/launched_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-05-26T16:52:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e5deb41_67bb1b43",
+      "range": {
+        "startLine": 33,
+        "startChar": 23,
+        "endLine": 33,
+        "endChar": 27
+      },
+      "revId": "cc8945e531491cbe402d58855454d5ca11197926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90befbd5_b47c01df",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-05-26T15:41:08Z",
       "side": 1,
       "message": "nit: Could you place it as the first param, as the name is empty?",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 4
+      },
+      "revId": "cc8945e531491cbe402d58855454d5ca11197926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da84922a_32865abc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/launched_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-05-26T16:52:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90befbd5_b47c01df",
       "range": {
         "startLine": 36,
         "startChar": 3,
