@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0223951_b00d61c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-05-26T01:45:23Z",
+      "side": 1,
+      "message": "I did not increase the run time in this CL, I just noticed that calculations were incorrect and it times out for me locally.",
+      "parentUuid": "79f6b4dc_a2a1f0a7",
+      "revId": "726d375572607f89c34bff59c385dd7106990d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a209f41_32551fca",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
         "patchSetId": 1
@@ -65,6 +83,24 @@
       "writtenOn": "2021-05-25T17:16:40Z",
       "side": 1,
       "message": "I guess it\u0027s better to split the test cases into 2 by using test params (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests).\n\n* noarc case; verifies only no-ARC case\n* arc case; verifies others.  Plus, add \"android\" ExtraSoftwareDeps here, so that arc case won\u0027t run for the devices without arc support\n\nConveniently, we also set up different shards for \"android\"-related tests and others (cf. https://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/site_tests/tast/control.crosbolt-perbuild-shard-0 and https://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/site_tests/tast/control.crosbolt-perbuild-android-shard-0), so splitting these test parameters could mitigate the trouble of long timeout.",
+      "revId": "726d375572607f89c34bff59c385dd7106990d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "175701d8_e9b57103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-05-26T01:45:23Z",
+      "side": 1,
+      "message": "The issue with parameterized tests is that:\n\n- Test results should be reported separately. For example, video playback performance tests may want to report performance metrics separately for different video formats (VP8/VP9/H.264/...).\n\nBut one of the goals of this test is to see how different user attributes affect the login performance. I.e. \"noarc\" vs \"arc enabled\" vs \"arc supported\" , tablet or laptop mode for the same device.\n\nWe can probably reduce the 10 login attempts in each configuration to 5, for example, which will half the run time.",
+      "parentUuid": "5a209f41_32551fca",
       "revId": "726d375572607f89c34bff59c385dd7106990d9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
