@@ -41,7 +41,7 @@ func init() {
 		// TODO(b/179636279): Remove "no_qemu" after making the test pass on betty.
 		SoftwareDeps: []string{"chrome", "no_qemu"},
 		Timeout:      10 * time.Minute,
-		Vars:         []string{"arc.DataMigration.username", "arc.DataMigration.password"},
+		VarDeps:      []string{"arc.DataMigration.username", "arc.DataMigration.password"},
 		Params: []testing.Param{{
 			// Launch ARC P with /data created on ARC N (for x86).
 			Name:              "n_to_p_x86",

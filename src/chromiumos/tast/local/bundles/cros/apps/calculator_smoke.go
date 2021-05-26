@@ -28,7 +28,7 @@ func init() {
 			"shengjun@chromium.org",
 			"zafzal@google.com",
 		},
-		Vars:         []string{"ui.gaiaPoolDefault"},
+		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		HardwareDeps: hwdep.D(pre.AppsStableModels),
 		Timeout:      8 * time.Minute,
 		SoftwareDeps: []string{"chrome", "chrome_internal"},

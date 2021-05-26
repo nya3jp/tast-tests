@@ -43,7 +43,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Vars: []string{
+		VarDeps: []string{
 			"arc.Sharesheet.username",
 			"arc.Sharesheet.password",
 		},
