@@ -74,6 +74,11 @@ func NewChromeVoxConn(ctx context.Context, c *chrome.Chrome) (*ChromeVoxConn, er
 			return errors.Wrap(err, "timed out waiting for ChromeVox connection to be ready")
 		}
 
+		// Make sure ChromeVoxState is exported globally.
+		if err := extConn.WaitForExpr(ctx, "ChromeVoxState.instance"); err != nil {
+			return errors.Wrap(err, "ChromeVoxState is unavailable")
+		}
+
 		// Export necessary modules which may not be exported globally.
 		// TODO(b/178978967): Migrate to use public APIs rather than internal classes.
 		if err := extConn.Eval(ctx, `(async () => {
@@ -88,11 +93,6 @@ func NewChromeVoxConn(ctx context.Context, c *chrome.Chrome) (*ChromeVoxConn, er
 		  }
 		})()`, nil); err != nil {
 			return errors.Wrap(err, "failed to export ChromeVox modules")
-		}
-
-		// Make sure ChromeVoxState is exported globally.
-		if err := extConn.WaitForExpr(ctx, "ChromeVoxState.instance"); err != nil {
-			return errors.Wrap(err, "ChromeVoxState is unavailable")
 		}
 
 		if err := chrome.AddTastLibrary(ctx, extConn); err != nil {
