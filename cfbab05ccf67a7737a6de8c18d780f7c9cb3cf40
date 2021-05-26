@@ -93,6 +93,30 @@
       },
       "revId": "cfbab05ccf67a7737a6de8c18d780f7c9cb3cf40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfce0104_9a23131a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_guest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-26T06:05:03Z",
+      "side": 1,
+      "message": "It is an interesting and nice suggestion. Done. More interestingly I found that we can use 10 * time.Minute, but not len()*time.Minute.",
+      "parentUuid": "2a244434_70d17db3",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "cfbab05ccf67a7737a6de8c18d780f7c9cb3cf40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
