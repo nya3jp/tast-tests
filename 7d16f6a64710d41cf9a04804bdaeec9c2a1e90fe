@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21235c4b_52b43c1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-26T23:42:01Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "7d16f6a64710d41cf9a04804bdaeec9c2a1e90fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5398bca4_0b3ba61c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_boot_performance_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-26T23:42:01Z",
+      "side": 1,
+      "message": "nit: is it worth making this an else if? If strconv.ParseFloat fails then this will fail as well because strconv.ParseFloat will return 0 if it fails.",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 23
+      },
+      "revId": "7d16f6a64710d41cf9a04804bdaeec9c2a1e90fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f01cbd4_89325b03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_boot_performance_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-26T23:42:01Z",
+      "side": 1,
+      "message": "nit: s.Fatal? Seems if you can\u0027t wait for 5 seconds it might not be worth doing the comparison, WDYT?",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 9
+      },
+      "revId": "7d16f6a64710d41cf9a04804bdaeec9c2a1e90fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
