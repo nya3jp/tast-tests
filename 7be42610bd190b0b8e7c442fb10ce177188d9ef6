@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57257519_9bb6e393",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_shortcut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-26T23:30:42Z",
+      "side": 1,
+      "message": "That\u0027s fair. Maybe remove the comment and prepend \"shortcut_\" to the test name? The comment has no reasons to why it \"might not be suitable\" and probably doesn\u0027t need to be there",
+      "parentUuid": "8ea08fb9_24d645c9",
+      "range": {
+        "startLine": 93,
+        "startChar": 5,
+        "endLine": 93,
+        "endChar": 50
+      },
+      "revId": "7be42610bd190b0b8e7c442fb10ce177188d9ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b06d8b1_097403c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_shortcut.go",
         "patchSetId": 1
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "Did not get your point here. Retry does log the error of each attempt and throws the last error in return. Is that your ask?",
       "parentUuid": "c658a828_6d35fcaf",
+      "range": {
+        "startLine": 107,
+        "startChar": 13,
+        "endLine": 107,
+        "endChar": 21
+      },
+      "revId": "7be42610bd190b0b8e7c442fb10ce177188d9ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d7df5cd_d48cb9f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_shortcut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-26T23:30:42Z",
+      "side": 1,
+      "message": "Ack. Sorry I got a bit confused by the comment \"silently logged\" meaning they are logged but not fatally logged. SGTM.",
+      "parentUuid": "b10b34ec_431f55e6",
       "range": {
         "startLine": 107,
         "startChar": 13,
