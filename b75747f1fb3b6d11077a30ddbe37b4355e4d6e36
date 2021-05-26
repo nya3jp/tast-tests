@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "711e0dfd_ecc30765",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-26T20:35:47Z",
+      "side": 1,
+      "message": "The test is now moved to a separate file.\nPlease review.",
+      "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
