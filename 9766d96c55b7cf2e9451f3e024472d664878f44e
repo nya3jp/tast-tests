@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4840080a_5f2d2a1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-26T02:58:04Z",
+      "side": 1,
+      "message": "Thanks for bringing up the concern.\n\nActually I tested both arc.AccessibilitySpeech and a11y.SpokenFeedback.google_tts multiple times with additional patches crrev/c/2918674 and crrev/c/2914953, and apparently the flakiness I observed was only in non-ARC tests:\n- expected utterances: [\"ChromeVox Options\"], but got: [\"tab created\"]\n\nAlso, having more data point that uses SpeechMonitor would be helpful for us to investigate its flakiness. It\u0027s fine to me for our test to become flaky due to this because I believe this is the right direction rather than each of us having different code for the same purpose. After this migration, both of us can contribute to SpeechMonitor or related classes.",
+      "parentUuid": "70452d09_3becef0a",
+      "revId": "9766d96c55b7cf2e9451f3e024472d664878f44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f672e1c_7cf2661c",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-05-25T17:22:28Z",
       "side": 1,
       "message": "Nit: This should probably be called \u0027keys\u0027, since it can specify multiple keys",
+      "revId": "9766d96c55b7cf2e9451f3e024472d664878f44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd77dfa7_8c19370b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-26T02:58:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f672e1c_7cf2661c",
       "revId": "9766d96c55b7cf2e9451f3e024472d664878f44e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
