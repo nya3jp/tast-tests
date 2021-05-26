@@ -33,6 +33,24 @@
       "message": "nit: this may be more stable to use `lf-keyboard` instead of `lf-editing-mode` as the latter may be removed depending on the \"mode\" entered in longform. `lf-keyboard` is more stable as it is not removed.",
       "revId": "6c09f487f4a4c7aac48f32661013361d172e294c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2035732_1e523716",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-26T01:52:37Z",
+      "side": 1,
+      "message": "Thanks. Has changed to use \"lf-keyboard\"",
+      "parentUuid": "1de19b8e_4c1a7730",
+      "revId": "6c09f487f4a4c7aac48f32661013361d172e294c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
