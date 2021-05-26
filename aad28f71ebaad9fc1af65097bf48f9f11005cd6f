@@ -16,6 +16,24 @@
       "message": "should we also test other functions like game mode?",
       "revId": "aad28f71ebaad9fc1af65097bf48f9f11005cd6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7449d514_ab6046cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-05-26T06:48:50Z",
+      "side": 1,
+      "message": "Added test for other D-Bus methods.",
+      "parentUuid": "dcb73bf8_f6ae734d",
+      "revId": "aad28f71ebaad9fc1af65097bf48f9f11005cd6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
