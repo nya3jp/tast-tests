@@ -16,6 +16,75 @@
       "message": "Hi Ben, added you as reviewer since you are the initial author of this test. Thanks.",
       "revId": "7be42610bd190b0b8e7c442fb10ce177188d9ef6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b98fb5_233f6ab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_shortcut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-26T06:12:00Z",
+      "side": 1,
+      "message": "Why is shortcut not suitable? It\u0027s a string array, seems well suited for the test name, easy in the logs to identify which shortcut failed.",
+      "range": {
+        "startLine": 93,
+        "startChar": 5,
+        "endLine": 93,
+        "endChar": 50
+      },
+      "revId": "7be42610bd190b0b8e7c442fb10ce177188d9ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b06d8b1_097403c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_shortcut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-26T06:12:00Z",
+      "side": 1,
+      "message": "nit: instead",
+      "range": {
+        "startLine": 94,
+        "startChar": 17,
+        "endLine": 94,
+        "endChar": 22
+      },
+      "revId": "7be42610bd190b0b8e7c442fb10ce177188d9ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c658a828_6d35fcaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_shortcut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-26T06:12:00Z",
+      "side": 1,
+      "message": "I wonder if it\u0027s possible to log out which retry we\u0027ve executed. I think if this test is passing after the 4th try consistently, might be beneficial in the logs to identify what try to ensure adequate debugging as according to documentation:\n\n\"The last error will be returned.  Any other errors will be silently logged.\"",
+      "range": {
+        "startLine": 107,
+        "startChar": 13,
+        "endLine": 107,
+        "endChar": 21
+      },
+      "revId": "7be42610bd190b0b8e7c442fb10ce177188d9ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
