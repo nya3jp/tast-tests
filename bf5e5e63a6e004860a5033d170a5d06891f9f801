@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ceb23e4e_f4bcc04e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-05-26T10:10:04Z",
+      "side": 1,
+      "message": "This tests specifically the chrome.loginScreenUi extension API - perhaps LoginScreenUiApi will be better?",
+      "parentUuid": "7e1ee184_ac670499",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "371d0341_39d64278",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-26T06:43:35Z",
       "side": 1,
       "message": "use KeepEnrollment here to remove users from previous tests.",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7614005_cdce1328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-05-26T10:10:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "371d0341_39d64278",
       "range": {
         "startLine": 41,
         "startChar": 9,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9305f890_94c27233",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-05-26T10:10:04Z",
+      "side": 1,
+      "message": "Done - I wasn\u0027t 100% sure how to do this, but I followed the code in  http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go?l\u003d104\u0026rcl\u003d40f756a3868566e10615f9adb5e27ce940dd2a27",
+      "parentUuid": "091d0985_40f5c185",
+      "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4cfecf4_1cb6c2ed",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-05-26T06:43:35Z",
       "side": 1,
       "message": "Fatal, you should still be able to communicate with Chrome.",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 9
+      },
+      "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30cd7ceb_2aa4f62f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-05-26T10:10:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4cfecf4_1cb6c2ed",
       "range": {
         "startLine": 73,
         "startChar": 4,
@@ -123,6 +213,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcae20f2_06102e35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-05-26T10:10:04Z",
+      "side": 1,
+      "message": "The \"chrome-extension://\u003cextension_id\u003e/window.html\" page will only be available when the chrome.loginScreenUi.show() method is called.",
+      "parentUuid": "db26b19c_ada41ece",
+      "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47866d30_4146a2fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
         "patchSetId": 2
@@ -134,6 +242,30 @@
       "writtenOn": "2021-05-26T06:43:35Z",
       "side": 1,
       "message": "Error",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 9
+      },
+      "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95bb6f26_950f91d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-05-26T10:10:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47866d30_4146a2fe",
       "range": {
         "startLine": 123,
         "startChar": 4,
@@ -157,6 +289,24 @@
       "writtenOn": "2021-05-26T06:43:35Z",
       "side": 1,
       "message": "This is not needed, tests should not clean up Chrome state, it will be cleaned by the next test.",
+      "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6844a669_da3006ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-05-26T10:10:04Z",
+      "side": 1,
+      "message": "This part is not cleanup, but is testing that the chrome.loginScreenUi.close() method closes the existing window.",
+      "parentUuid": "38eaab03_2d536a7b",
       "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
