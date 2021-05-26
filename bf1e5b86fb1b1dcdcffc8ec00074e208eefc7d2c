@@ -33,6 +33,115 @@
       "message": "Provided resolution for review comments.",
       "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "817f86f8_f5199546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-26T22:15:19Z",
+      "side": 1,
+      "message": "Testing",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 12
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dfc0b2d_f68485ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_switch_to_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-26T22:15:19Z",
+      "side": 1,
+      "message": "Delete empty line",
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2762174a_8272202d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_switch_to_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-26T22:15:19Z",
+      "side": 1,
+      "message": "Delete comment",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 65
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cba7c7ad_dd400765",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_switch_to_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-26T22:15:19Z",
+      "side": 1,
+      "message": "Testing",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 12
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4deafb1_a00e41b7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-05-26T22:15:19Z",
+      "side": 1,
+      "message": "I don\u0027t think you are supposed to use GetXXX or SetXXX in golang. \n\nUserPassword is probably fine",
+      "range": {
+        "startLine": 202,
+        "startChar": 5,
+        "endLine": 202,
+        "endChar": 8
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
