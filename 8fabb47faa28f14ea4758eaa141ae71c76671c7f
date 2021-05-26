@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12a853a9_19e36c09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-05-26T05:25:23Z",
+      "side": 1,
+      "message": "That is what I meant. While the profile is cleared, the vm is actually still installed in the system, right? And because the installer is tricked to think that crostini is not installed, it allows you to install it again.\n\nIdeally, in the tast we want to be as close to reality as possible. I don\u0027t want to block you if this is too hard. But do you know why it is flaky, and is it possible for us to fix it? Like somehow clean the device more throughly between each install. Also, I see that you reduced the number of re-installation after groiuping the usernames. Is it possible that it is no longer flaky now?\n\nIf we have to do this, we should at least put a comment here explaining the situation, and also put a TODO here.",
+      "parentUuid": "9917dce5_477176e8",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 4
+      },
+      "revId": "8fabb47faa28f14ea4758eaa141ae71c76671c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed277df3_db56b918",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
         "patchSetId": 2
