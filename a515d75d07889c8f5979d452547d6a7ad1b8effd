@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "534d1798_b4312549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2021-05-26T21:52:21Z",
+      "side": 1,
+      "message": "I think the name manual need to be changed if this will be run as continuous tests.\n\nAlso not sure we need to define two parameters here? \n\"manual\" and \"smoke\" should be merged?",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "a515d75d07889c8f5979d452547d6a7ad1b8effd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
