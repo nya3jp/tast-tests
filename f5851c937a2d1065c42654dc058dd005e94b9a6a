@@ -50,6 +50,23 @@
       "message": "Hi tast-owners, PTAL",
       "revId": "f5851c937a2d1065c42654dc058dd005e94b9a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93205370_d49852fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-26T11:45:34Z",
+      "side": 1,
+      "message": "There are 2 test failures on kevin64 (kevin) in recent builds. \nYou can have a few options to solve the problem:\n1) Extend timeout.\n2) Add retry.\n3) Exclude kevin64 if you reckon it is a board specific issue.\n\nBtw, can you please attach the tastboard link when raise a promotion cl.\nhttps://tastboard.corp.google.com/test/mlservice.WebHandwritingRecognitionNotSupported",
+      "revId": "f5851c937a2d1065c42654dc058dd005e94b9a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
