@@ -70,6 +70,29 @@
       },
       "revId": "cfbab05ccf67a7737a6de8c18d780f7c9cb3cf40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a244434_70d17db3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_guest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-26T05:51:38Z",
+      "side": 1,
+      "message": "I\u0027m wondering if it\u0027s worth making this a product of len(data.VKInputMap) to ensure growth of the map and the timeout stays proportionate. WDYT?",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "cfbab05ccf67a7737a6de8c18d780f7c9cb3cf40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
