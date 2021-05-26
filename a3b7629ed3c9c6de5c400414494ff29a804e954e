@@ -69,6 +69,30 @@
       },
       "revId": "a3b7629ed3c9c6de5c400414494ff29a804e954e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d3f6e6_4f893614",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-26T08:20:06Z",
+      "side": 1,
+      "message": "IMO there are two courses we can take:\n\n1. Avoid --feature-flags and use other ways to enable your features that don\u0027t restart Chrome. But I\u0027m not sure if there\u0027s such a way.\n2. Update the chrome support library to support --feature-flags and prepare for restart.\n\nApproach 1 is very much preferred, but I assume that you extensively researched the approach 1 and turned out it is impossible.\n\nIf we go approach 2, please do:\n\n- Introduce a new chrome.Option that enables features with --feature-flags. I recommend it over reusing chrome.ExtraArgs because searching \"--feature-flags\" from string slice can be error-prone.\n- Make sure to add a comment to the new option about when to use the option instead of chrome.EnableFeatures. Actually I don\u0027t know yet when we cannot enable features by chrome.EnableFeatures, but I assume you know this after researching approach 1.\n- Update the support library to prepare for Chrome restart when the new option is specified. I believe it should be somewhere common to all login types (fake/real/guest), not here (gaia.go), because we should be able to enable features for fake users as well.",
+      "parentUuid": "c7704192_7e329837",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 2
+      },
+      "revId": "a3b7629ed3c9c6de5c400414494ff29a804e954e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
