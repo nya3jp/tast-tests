@@ -31,7 +31,7 @@ func init() {
 		Attr: []string{
 			"group:mainline",
 		},
-		Vars: []string{
+		VarDeps: []string{
 			"platform.Drivefs.user",     // GAIA username.
 			"platform.Drivefs.password", // GAIA password.
 		},

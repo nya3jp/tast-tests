@@ -109,11 +109,11 @@ func init() {
 				resultSuffix:      "_managed",
 			},
 		}},
-		Vars: []string{
+		VarDeps: []string{
 			"arc.AuthPerf.managed_username",
 			"arc.AuthPerf.managed_password",
+			"ui.gaiaPoolDefault",
 		},
-		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
 }
 

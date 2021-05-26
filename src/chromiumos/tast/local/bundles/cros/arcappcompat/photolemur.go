@@ -61,7 +61,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeForPhotolemur,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.Photolemur.username", "arcappcompat.Photolemur.password"},
+		VarDeps: []string{"arcappcompat.Photolemur.username", "arcappcompat.Photolemur.password"},
 	})
 }
 

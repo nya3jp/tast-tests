@@ -34,7 +34,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      8 * time.Minute,
-		Vars:         []string{"enterprise.ARCInstallLogging.user", "enterprise.ARCInstallLogging.password"},
+		VarDeps:      []string{"enterprise.ARCInstallLogging.user", "enterprise.ARCInstallLogging.password"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {

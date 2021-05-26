@@ -22,7 +22,7 @@ func init() {
 		Data:         []string{firmware.ConfigFile},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		SoftwareDeps: []string{"crossystem"},
-		Vars:         []string{"servo"},
+		VarDeps:      []string{"servo"},
 		Attr:         []string{"group:firmware"},
 		Params: []testing.Param{{
 			Name:      "normal",

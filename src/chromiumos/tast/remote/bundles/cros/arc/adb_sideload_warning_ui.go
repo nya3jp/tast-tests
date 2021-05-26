@@ -37,7 +37,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Vars: []string{"arc.AdbSideloadWarningUI.signinProfileTestExtensionManifestKey"},
+		VarDeps: []string{"arc.AdbSideloadWarningUI.signinProfileTestExtensionManifestKey"},
 	})
 }
 

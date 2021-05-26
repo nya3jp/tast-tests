@@ -23,7 +23,7 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Vars:         []string{"policy.ExtensionInstallForceList.username", "policy.ExtensionInstallForceList.password"},
+		VarDeps:      []string{"policy.ExtensionInstallForceList.username", "policy.ExtensionInstallForceList.password"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      chrome.GAIALoginTimeout + time.Minute,
 	})

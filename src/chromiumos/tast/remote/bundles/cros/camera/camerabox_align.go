@@ -26,7 +26,8 @@ func init() {
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinCamera},
 		ServiceDeps:  []string{"tast.cros.camerabox.AlignmentService"},
-		Vars:         []string{"chart", "facing", "user", "pass"},
+		Vars:         []string{"chart"},
+		VarDeps:      []string{"facing", "user", "pass"},
 		Timeout:      20 * time.Minute,
 	})
 }

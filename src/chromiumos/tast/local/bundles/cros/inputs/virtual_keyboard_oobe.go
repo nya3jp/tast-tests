@@ -29,7 +29,7 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Vars:         []string{"inputs.signinProfileTestExtensionManifestKey"},
+		VarDeps:      []string{"inputs.signinProfileTestExtensionManifestKey"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 	})
 }

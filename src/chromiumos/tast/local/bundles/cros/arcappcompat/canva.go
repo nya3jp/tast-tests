@@ -61,8 +61,8 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars: []string{"arcappcompat.username", "arcappcompat.password",
-			"arcappcompat.Canva.emailid", "arcappcompat.Canva.password"},
+		Vars:    []string{"arcappcompat.Canva.emailid", "arcappcompat.Canva.password"},
+		VarDeps: []string{"arcappcompat.username", "arcappcompat.password"},
 	})
 }
 

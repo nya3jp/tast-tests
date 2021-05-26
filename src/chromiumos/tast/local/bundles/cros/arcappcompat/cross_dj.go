@@ -63,7 +63,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeForCrossDJ,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.CrossDJ.username", "arcappcompat.CrossDJ.password"},
+		VarDeps: []string{"arcappcompat.CrossDJ.username", "arcappcompat.CrossDJ.password"},
 	})
 }
 

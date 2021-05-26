@@ -30,7 +30,8 @@ func init() {
 		Desc:         "Tests Crostini CPU performance",
 		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
+		Vars:         []string{"keepState"},
+		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		HardwareDeps: crostini.CrostiniAppTest,
 		Params: []testing.Param{

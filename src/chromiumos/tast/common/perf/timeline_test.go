@@ -427,7 +427,6 @@ func TestTimelineSnapshotFail(t *testing.T) {
 	d := newDatasource()
 	d.errSnapshot = errors.New("snapshot should fail")
 
-
 	tl, err := NewTimeline(ctx, []TimelineDatasource{d}, Interval(1*time.Second), WithClock(clock))
 	if err != nil {
 		t.Error("Failed to create Timeline: ", err)
