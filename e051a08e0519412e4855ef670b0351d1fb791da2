@@ -16,6 +16,23 @@
       "message": "At a high level, this looks reasonable, assuming that we really need it (which I don\u0027t know).\n\nI\u0027m neither a qualified go reviewer, nor am I the expert on the storage side of cryptohome. Adding Sarthak for the latter, and you\u0027ll want tast reviewers to look at your go code.",
       "revId": "e051a08e0519412e4855ef670b0351d1fb791da2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a6f4a26_fa7e16f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2021-05-26T23:14:46Z",
+      "side": 1,
+      "message": "Hi Ian, IMO adding more debug info in the error path of login tests is much more likely to catch the specific test failure (which could have different reasons than the entire cryptohome getting unmounted eg. just the daemon store bind mount getting unmounted). The failure mode is also probably a function of the test interaction (as in it\u0027s very unlikely that just idling with a mounted cryptohome triggers the same failure) so a separate test will likely not be able to capture the same state. Do we see the cryptohome unmounted in [1]?\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go;l\u003d192\n",
+      "revId": "e051a08e0519412e4855ef670b0351d1fb791da2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
