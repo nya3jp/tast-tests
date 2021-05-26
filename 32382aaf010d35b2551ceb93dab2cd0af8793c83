@@ -34,6 +34,23 @@
       "parentUuid": "1496657c_17bd1d8c",
       "revId": "32382aaf010d35b2551ceb93dab2cd0af8793c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aec7571d_6dfaf607",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-05-26T06:33:41Z",
+      "side": 1,
+      "message": "LGTM. Will be able to use it in other arc tests which does optin and has flakiness. Thanks",
+      "revId": "32382aaf010d35b2551ceb93dab2cd0af8793c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
