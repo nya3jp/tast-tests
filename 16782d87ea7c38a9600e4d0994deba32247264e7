@@ -92,6 +92,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1824ec9e_7235acc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2535,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-26T05:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d722c4b_6d3022d4",
+      "range": {
+        "startLine": 2535,
+        "startChar": 58,
+        "endLine": 2535,
+        "endChar": 66
+      },
+      "revId": "16782d87ea7c38a9600e4d0994deba32247264e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e8dcc95_bc2a99f1",
@@ -105,6 +129,30 @@
       "writtenOn": "2021-05-26T00:52:19Z",
       "side": 1,
       "message": "expected",
+      "range": {
+        "startLine": 2555,
+        "startChar": 75,
+        "endLine": 2555,
+        "endChar": 84
+      },
+      "revId": "16782d87ea7c38a9600e4d0994deba32247264e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a2d731_38fa9155",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2555,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-26T05:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e8dcc95_bc2a99f1",
       "range": {
         "startLine": 2555,
         "startChar": 75,
@@ -138,6 +186,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e251a3d_9817fbcf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wake_on_ssid.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-26T05:09:09Z",
+      "side": 1,
+      "message": "Sure. Updated to AC here.\n\nIn fact, we have DefaultOpenNetworkAP and DefaultOpenNetworkAPOptions function used in several tests. We can start from the setting there and see if we apply the functions to more tests.\n\nI created b/189273163 for this task.",
+      "parentUuid": "b89b4a6c_0fc69b88",
+      "range": {
+        "startLine": 69,
+        "startChar": 23,
+        "endLine": 69,
+        "endChar": 38
+      },
+      "revId": "16782d87ea7c38a9600e4d0994deba32247264e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad0d2a2c_f1156803",
@@ -151,6 +223,30 @@
       "writtenOn": "2021-05-26T00:52:19Z",
       "side": 1,
       "message": "that\u0027s a lot of buffer. I guess most of this just works out as a \"slow path\", when things are truly broken and we\u0027re going to fail?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "16782d87ea7c38a9600e4d0994deba32247264e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7df290a_1c33541f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/wake_on_wifi_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-26T05:09:09Z",
+      "side": 1,
+      "message": "Yes, if things all go well, I think we probably only need rtcBufferTime. \n\ntriggerBufferTime might be also nice to have to produce more specific error. I noticed a few long AP config/deconfig (~minutes) in the past, likely due to some SSH problem on the router. (I guess it was related to b/177380545)\n\ncommandBufferTime and resumeBufferTime are added just in case something hangs. e.g. the SSH session got broken after suspend/resume as xmlrpc did in Tauto.\n\nMerge resumeBufferTime and rtcBufferTime and hope it\u0027s a little simpler.",
+      "parentUuid": "ad0d2a2c_f1156803",
       "range": {
         "startLine": 29,
         "startChar": 0,
