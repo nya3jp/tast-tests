@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ccfcf41_da0a598a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-26T08:06:31Z",
+      "side": 1,
+      "message": "Thanks for addition!",
+      "revId": "774a7ed27e0c64185938523739e449b0d42457ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0e3bb64_bd7c6a33",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-26T08:06:31Z",
+      "side": 1,
+      "message": "TL;DR: Please consider not relying on syslog in your tests.\n\nEssentially, \"syslog from the start of the file\" is equivalent to \"syslog after the last log rotation\". But people are rarely interested in logs after last rotation and tend to expect different meanings... for example they might expect that all syslog from the current boot are included, but it is not the case if logs were rotated after the boot. So I\u0027m afraid that this option can be rather error-prone.\n\nThe chance of misuse would be lower if the option is to \"read all logs from the current boot\". Actually it looks like what you want to do in crrev.com/c/2910068.\n\nBut this poses another problem since it\u0027s not easy to tell which is the first log after the last boot. We can tell the last boot time and compare timestamps, but system time might be changed if NTP synchronization happens after the boot.\n\nAt the end of the day, it is difficult to extend this package to allow reading all syslog for the current boot.\n\nActually I\u0027d think that it might be easier to modify the hammerd itself to write files to locations where files do not persist across boot (e.g. tmpfs). Then you don\u0027t need to care log rotations, and more importantly, your test will not break when someone changes log messages.",
+      "range": {
+        "startLine": 200,
+        "startChar": 5,
+        "endLine": 200,
+        "endChar": 18
+      },
+      "revId": "774a7ed27e0c64185938523739e449b0d42457ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
