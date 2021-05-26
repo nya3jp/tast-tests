@@ -33,6 +33,23 @@
       "message": "Overriding OWNERS as Sheriff",
       "revId": "7abd9a7b0c2837ac72548c78ebca26018b6c1d6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05bbdef0_13141b28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-05-26T23:25:28Z",
+      "side": 1,
+      "message": "PTAL for OWNERS",
+      "revId": "7abd9a7b0c2837ac72548c78ebca26018b6c1d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
