@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28b60b2c_6df52d7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-26T07:26:07Z",
+      "side": 1,
+      "message": "If this change doesn\u0027t increase the run time, you might want to split the CL into two CLs, one for increasing the timeout and the other for rest of changes. Then we can better isolate discussion about two orthogonoal issues.\n\nThat said, IIUC performance metrics from a test are ignored if it fails. Therefore, longer the timeout is, the more likely we lose metrics reports from the test. I recommend considering ways to reduce the timeout, e.g. by splitting it to multiple tests as Jun mentioned.",
+      "parentUuid": "f0223951_b00d61c2",
+      "revId": "726d375572607f89c34bff59c385dd7106990d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a209f41_32551fca",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
         "patchSetId": 1
