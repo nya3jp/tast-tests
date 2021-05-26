@@ -34,6 +34,24 @@
       "parentUuid": "a01a06ac_9036668b",
       "revId": "3e5e495513611039ed45468380600f55538afd18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c79232a4_108a8341",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-26T00:14:14Z",
+      "side": 1,
+      "message": "I don\u0027t see any issue with this, and it looks much cleaner to me. There are probably still ways that one could misuse this NetworkChroot concept (and especially the \"construct a bash script on the fly\" approach) and accidentally leak processes, but those problems look no worse to me with this change.",
+      "parentUuid": "7803257e_c65e5279",
+      "revId": "3e5e495513611039ed45468380600f55538afd18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
