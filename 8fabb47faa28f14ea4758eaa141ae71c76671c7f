@@ -216,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06b7ed8b_7b1d59cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-05-26T05:25:50Z",
+      "side": 1,
+      "message": "@mwarton, what do you think about this?",
+      "parentUuid": "12a853a9_19e36c09",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 4
+      },
+      "revId": "8fabb47faa28f14ea4758eaa141ae71c76671c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed277df3_db56b918",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
         "patchSetId": 2
