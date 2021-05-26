@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "049586ab_97d79628",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-26T05:27:55Z",
+      "side": 1,
+      "message": "That\u0027s inconsistent with the capitalization of the other constants in that block.",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "d976a95ee657f39dd7649438426e9a346e68d763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb19ebbf_d9957ea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-26T05:27:55Z",
+      "side": 1,
+      "message": "what does that name imply here ? Is this hostname needs to be defined for real ?",
+      "range": {
+        "startLine": 424,
+        "startChar": 44,
+        "endLine": 424,
+        "endChar": 88
+      },
+      "revId": "d976a95ee657f39dd7649438426e9a346e68d763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
