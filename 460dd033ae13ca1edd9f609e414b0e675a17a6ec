@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54fd37c7_cb269a17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-26T20:35:47Z",
+      "side": 1,
+      "message": "Some more results after balancing standards on both APs. Max throughput on this configuration (without roaming) was ~192 Mbps. The last iteration contained only one roaming event, thus higher throughput. The loss was so big that I needed to lower the pass threshold as the test was failing.\n\n2021-05-26T19:46:49.692827Z [19:46:49.692] Stop Verification\n2021-05-26T19:46:49.692869Z [19:46:49.692] Iteration 1: End Time\u003d19:44:50.609, Throughput\u003d109.560000\n2021-05-26T19:46:49.692902Z [19:46:49.692] Iteration 2: End Time\u003d19:45:01.414, Throughput\u003d136.910000\n2021-05-26T19:46:49.693003Z [19:46:49.692] Iteration 3: End Time\u003d19:45:12.188, Throughput\u003d145.740000\n2021-05-26T19:46:49.693055Z [19:46:49.692] Iteration 4: End Time\u003d19:45:22.792, Throughput\u003d140.110000\n2021-05-26T19:46:49.693122Z [19:46:49.692] Iteration 5: End Time\u003d19:45:33.542, Throughput\u003d120.720000\n2021-05-26T19:46:49.693178Z [19:46:49.692] Iteration 6: End Time\u003d19:45:44.222, Throughput\u003d145.880000\n2021-05-26T19:46:49.693244Z [19:46:49.692] Iteration 7: End Time\u003d19:45:54.861, Throughput\u003d150.490000\n2021-05-26T19:46:49.693277Z [19:46:49.692] Iteration 8: End Time\u003d19:46:05.829, Throughput\u003d142.340000\n2021-05-26T19:46:49.693303Z [19:46:49.692] Iteration 9: End Time\u003d19:46:16.903, Throughput\u003d140.100000\n2021-05-26T19:46:49.693317Z [19:46:49.692] Iteration 10: End Time\u003d19:46:28.100, Throughput\u003d139.230000\n2021-05-26T19:46:49.693340Z [19:46:49.692] Iteration 11: End Time\u003d19:46:38.892, Throughput\u003d148.060000\n2021-05-26T19:46:49.693358Z [19:46:49.692] Iteration 12: End Time\u003d19:46:49.692, Throughput\u003d181.060000\n2021-05-26T19:46:49.693384Z [19:46:49.692] Average throughput 141.683333, threshold 95.885000",
+      "parentUuid": "88909fb3_44d78f53",
+      "revId": "460dd033ae13ca1edd9f609e414b0e675a17a6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "226ca511_2ee3a516",
@@ -66,6 +84,30 @@
       "writtenOn": "2021-05-25T18:43:00Z",
       "side": 1,
       "message": "Should be more than 802.11g to have a balanced throughput between roams to observe any drops.",
+      "range": {
+        "startLine": 164,
+        "startChar": 74,
+        "endLine": 164,
+        "endChar": 84
+      },
+      "revId": "460dd033ae13ca1edd9f609e414b0e675a17a6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7148289_4331aafe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-26T20:35:47Z",
+      "side": 1,
+      "message": "I moved both APs to 802.11g, the test result is that throughput under continuous roam drops below 75% (sometimes even more), so I needed to set pass threshold @50% to be secure.",
+      "parentUuid": "226ca511_2ee3a516",
       "range": {
         "startLine": 164,
         "startChar": 74,
