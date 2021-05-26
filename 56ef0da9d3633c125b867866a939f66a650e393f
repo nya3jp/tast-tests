@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54deccae_4f30eba3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-26T08:23:44Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "56ef0da9d3633c125b867866a939f66a650e393f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce4443c3_aaa166be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-26T08:23:44Z",
+      "side": 1,
+      "message": "You are using ureadaheadStopTimeout with ureadaheadFileStatInterval and ureadaheadFileStatTimeout with ureadaheadStopInterval below.\nThis looks very odd.\nWouldn\u0027t it make sense to just switch the values so the name of the timeout matches the name of the interval you\u0027re using?",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 47
+      },
+      "revId": "56ef0da9d3633c125b867866a939f66a650e393f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
