@@ -39,6 +39,30 @@
       },
       "revId": "ca124037f65694a8fc68488fc943902f1add923e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c07497f_c1ee1dd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-05-26T06:29:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8358a8ec_16e32ea2",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 6
+      },
+      "revId": "ca124037f65694a8fc68488fc943902f1add923e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
