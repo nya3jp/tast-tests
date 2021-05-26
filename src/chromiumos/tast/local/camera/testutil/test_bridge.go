@@ -8,12 +8,16 @@ package testutil
 
 import (
 	"context"
+	"encoding/json"
+	"io/ioutil"
+	"os"
 	"strings"
 
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -27,6 +31,8 @@ const (
 	UseVividCamera
 	// UseFakeCamera is used when the test should use fake camera in Chrome stack instead.
 	UseFakeCamera
+
+	jsonConfigPath = "/var/cache/camera/test_config.json"
 )
 
 // TestBridge is used to comminicate with CCA for test specific logic, such as test environment set-up/tear-down flow, performance/error monitoring.
@@ -39,8 +45,34 @@ type TestBridge struct {
 	CameraType UseCameraType
 }
 
+func setupTestConfig(ctx context.Context) error {
+	jsonCfg, err := json.Marshal(map[string]bool{
+		"abort_when_capture_monitor_timeout": true,
+	})
+	if err != nil {
+		return errors.Wrap(err, "failed to encode test config as json")
+	}
+	if err := ioutil.WriteFile(jsonConfigPath, jsonCfg, 0644); err != nil {
+		return errors.Wrap(err, "failed to write json config file")
+	}
+	return nil
+}
+
+func removeTestConfig(ctx context.Context) error {
+	return os.Remove(jsonConfigPath)
+}
+
 // NewTestBridge returns a new test bridge instance.
 func NewTestBridge(ctx context.Context, cr *chrome.Chrome, cameraType UseCameraType) (*TestBridge, error) {
+	if cameraType != UseFakeCamera {
+		if err := setupTestConfig(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to setup test config")
+		}
+		if err := upstart.RestartJob(ctx, "cros-camera"); err != nil {
+			return nil, errors.Wrap(err, "failed to restart cros-camera after test config setup")
+		}
+	}
+
 	pageConn, bridge, err := setUpTestBridge(ctx, cr)
 	if err != nil {
 		return nil, err
@@ -152,6 +184,9 @@ func (t *TestBridge) TearDown(ctx context.Context) error {
 			testing.ContextLog(ctx, "Failed to release bridge page connection: ", err)
 		}
 		t.pageConn = nil
+	}
+	if err := removeTestConfig(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to remove test config: ", err)
 	}
 	return nil
 }
