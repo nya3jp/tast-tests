@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0c7a8ef_0f4f163b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-26T06:12:01Z",
+      "side": 1,
+      "message": "Please get a team member +1 before adding tast-reviewers",
+      "revId": "ca124037f65694a8fc68488fc943902f1add923e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8358a8ec_16e32ea2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-26T06:12:01Z",
+      "side": 1,
+      "message": "Please define a structure with maxOptinAttempts as a member, this is hard to understand without reading the test code.",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 6
+      },
+      "revId": "ca124037f65694a8fc68488fc943902f1add923e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
