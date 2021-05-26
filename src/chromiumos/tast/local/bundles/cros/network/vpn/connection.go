@@ -47,6 +47,7 @@ type Config struct {
 const (
 	TypeL2TPIPsec = "L2TP/IPsec"
 	TypeOpenVPN   = "OpenVPN"
+	TypeWireGuard = "WireGuard"
 )
 
 // Authentication types.
@@ -201,6 +202,8 @@ func (c *Connection) startServer(ctx context.Context) error {
 		c.Server, err = StartL2TPIPsecServer(ctx, c.config.AuthType, c.config.IPsecUseXauth, c.config.UnderlayIPIsOverlayIP)
 	} else if c.config.Type == TypeOpenVPN {
 		c.Server, err = StartOpenVPNServer(ctx, c.config.OpenVPNUseUserPassword)
+	} else if c.config.Type == TypeWireGuard {
+		c.Server, err = StartWireGuardServer(ctx)
 	} else {
 		return errors.Errorf("unexpected VPN type %s", c.config.Type)
 	}
@@ -237,6 +240,8 @@ func (c *Connection) populateProperties() (map[string]interface{}, error) {
 		return c.populateL2TPIPsecProperties(serverAddress)
 	} else if c.config.Type == TypeOpenVPN {
 		return c.populateOpenVPNProperties(serverAddress)
+	} else if c.config.Type == TypeWireGuard {
+		return c.populateWireGuardProperties(serverAddress), nil
 	} else {
 		return nil, errors.Errorf("unexpected server type: got %s", c.config.Type)
 	}
@@ -326,6 +331,29 @@ func (c *Connection) populateOpenVPNProperties(serverAddress string) (map[string
 	}
 
 	return properties, nil
+}
+
+func (c *Connection) populateWireGuardProperties(serverAddress string) map[string]interface{} {
+	peers := []map[string]string{{
+		"PublicKey":    WGServerPublicKey,
+		"PresharedKey": WGPresharedKey,
+		"Endpoint":     serverAddress + ":" + WGServerListenPort,
+		"AllowedIPs":   "0.0.0.0/0",
+	}}
+	staticIPConfig := map[string]interface{}{
+		"Address": WGClientOverlayIP,
+		// "Prefixlen": 24,
+	}
+	return map[string]interface{}{
+		"Name":                 "test-vpn-wg",
+		"Provider.Host":        "wireguard",
+		"Provider.Type":        "wireguard",
+		"Type":                 "vpn",
+		"WireGuard.PrivateKey": WGClientPrivateKey,
+		// "WireGuard.Address":    vpn.WGClientOverlayIP,
+		"WireGuard.Peers": peers,
+		"StaticIPConfig":  staticIPConfig,
+	}
 }
 
 func (c *Connection) connectService(ctx context.Context) (bool, error) {
