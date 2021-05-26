@@ -34,7 +34,8 @@ func init() {
 		// TODO: remove this swdep when the jacuzzi issue is fixed (b:178449023)
 		SoftwareDeps: []string{"chrome", "reboot", "no_eth_loss_on_reboot"},
 		ServiceDeps:  []string{wificell.TFServiceName, "tast.cros.network.BluetoothService"},
-		Vars:         []string{"router", "wifi.signinProfileTestExtensionManifestKey"},
+		Vars:         []string{"router"},
+		VarDeps:      []string{"wifi.signinProfileTestExtensionManifestKey"},
 	})
 }
 

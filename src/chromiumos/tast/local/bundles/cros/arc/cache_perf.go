@@ -39,7 +39,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Timeout:      30 * time.Minute,
-		Vars:         []string{"arc.CachePerf.username", "arc.CachePerf.password"},
+		VarDeps:      []string{"arc.CachePerf.username", "arc.CachePerf.password"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {

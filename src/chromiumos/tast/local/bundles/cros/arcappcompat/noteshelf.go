@@ -61,7 +61,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeForNoteshelf,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.Noteshelf.username", "arcappcompat.Noteshelf.password"},
+		VarDeps: []string{"arcappcompat.Noteshelf.username", "arcappcompat.Noteshelf.password"},
 	})
 }
 

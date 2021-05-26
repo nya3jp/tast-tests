@@ -61,7 +61,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeForArtrage,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.Artrage.username", "arcappcompat.Artrage.password"},
+		VarDeps: []string{"arcappcompat.Artrage.username", "arcappcompat.Artrage.password"},
 	})
 }
 

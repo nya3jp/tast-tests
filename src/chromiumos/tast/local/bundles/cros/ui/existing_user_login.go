@@ -27,7 +27,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Attr:         []string{"group:mainline"},
-		Vars: []string{
+		VarDeps: []string{
 			"ui.signinProfileTestExtensionManifestKey",
 			"ui.gaiaPoolDefault",
 		},

@@ -61,7 +61,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeForMyscriptNebo,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.MyscriptNebo.username", "arcappcompat.MyscriptNebo.password"},
+		VarDeps: []string{"arcappcompat.MyscriptNebo.username", "arcappcompat.MyscriptNebo.password"},
 	})
 }
 

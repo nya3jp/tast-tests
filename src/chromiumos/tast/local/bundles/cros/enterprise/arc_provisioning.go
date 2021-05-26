@@ -38,7 +38,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      8 * time.Minute,
-		Vars: []string{
+		VarDeps: []string{
 			"enterprise.ARCProvisioning.user",
 			"enterprise.ARCProvisioning.password",
 			"enterprise.ARCProvisioning.packages",

@@ -65,7 +65,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.username", "arcappcompat.password", "arcappcompat.Kahoot.emailid", "arcappcompat.Kahoot.password"},
+		VarDeps: []string{"arcappcompat.username", "arcappcompat.password", "arcappcompat.Kahoot.emailid", "arcappcompat.Kahoot.password"},
 	})
 }
 

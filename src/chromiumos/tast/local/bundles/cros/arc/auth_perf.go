@@ -107,7 +107,7 @@ func init() {
 				resultSuffix:      "_managed",
 			},
 		}},
-		Vars: []string{
+		VarDeps: []string{
 			"arc.AuthPerf.unmanaged_username",
 			"arc.AuthPerf.unmanaged_password",
 			"arc.AuthPerf.managed_username",

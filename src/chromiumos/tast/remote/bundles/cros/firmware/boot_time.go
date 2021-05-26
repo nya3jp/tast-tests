@@ -28,7 +28,7 @@ func init() {
 		Desc:         "Measures EC boot time",
 		Contacts:     []string{"jbettis@chromium.org", "cros-fw-engprod@google.com"},
 		Attr:         []string{"group:firmware", "firmware_experimental"},
-		Vars:         []string{"servo"},
+		VarDeps:      []string{"servo"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Params: []testing.Param{
 			{

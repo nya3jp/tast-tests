@@ -18,7 +18,7 @@ func init() {
 		Contacts:     []string{"cros-oac@google.com", "chromeos-sw-engprod@google.com"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Attr:         []string{"group:mainline"},
-		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
+		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 	})
 }
 
