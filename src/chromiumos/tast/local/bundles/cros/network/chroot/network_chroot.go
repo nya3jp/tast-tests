@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	patchpanel "chromiumos/tast/local/network/patchpanel_client"
-	"chromiumos/tast/testing"
 )
 
 // Subset of bindRootDirectories that should be mounted writable.
@@ -344,34 +343,36 @@ func (n *NetworkChroot) AddStartupCommand(command string) {
 	n.netConfigFileTemplates[startup] = n.netConfigFileTemplates[startup] + fmt.Sprintf("%s\n", command)
 }
 
-// GetLogContents return the logfiles from the chroot. |logFilePath| is the
-// relative path to the chroot.
-func (n *NetworkChroot) GetLogContents(ctx context.Context, logFilePath string) (string, error) {
-	startLog := n.chrootPath(startupLog)
-	serverLog := n.chrootPath(logFilePath)
-	if assureExists(serverLog) && assureExists(startLog) {
-		contents, err := testexec.CommandContext(ctx, "head", "-10000", serverLog, startLog).Output()
-		if err != nil {
-			return "", errors.Wrap(err, "failed getting the logfiles from the chroot")
+// GetLogContents return the logfiles from the chroot. |logFilePaths| is a list
+// of relative paths to the chroot. An error will be returned if any file in the
+// list does not exist.
+func (n *NetworkChroot) GetLogContents(ctx context.Context, logFilePaths []string) (string, error) {
+	logFilePaths = append(logFilePaths, startupLog)
+	var missingPaths []string
+
+	headArgs := []string{"-10000"}
+	for _, log := range logFilePaths {
+		path := n.chrootPath(log)
+		if assureExists(path) {
+			headArgs = append(headArgs, path)
+		} else {
+			missingPaths = append(missingPaths, log)
 		}
-		return string(contents), nil
-	} else if assureExists(serverLog) {
-		testing.ContextLogf(ctx, "%s does not exist", startLog)
-		contents, err := testexec.CommandContext(ctx, "head", "-10000", startLog).Output()
-		if err != nil {
-			return "", errors.Wrap(err, "failed getting the logfiles from the chroot")
-		}
-		return string(contents), nil
-	} else if assureExists(startLog) {
-		testing.ContextLogf(ctx, "%s does not exist", serverLog)
-		contents, err := testexec.CommandContext(ctx, "head", "-10000", serverLog).Output()
-		if err != nil {
-			return "", errors.Wrap(err, "failed getting the logfiles from the chroot")
-		}
-		return string(contents), nil
 	}
 
-	return "", errors.Errorf("failed logfiles do not exist: %s, %s", startLog, serverLog)
+	var contents string
+	if len(headArgs) > 1 {
+		output, err := testexec.CommandContext(ctx, "head", headArgs...).Output()
+		if err != nil {
+			return "", errors.Wrap(err, "failed getting the logfiles from the chroot")
+		}
+		contents = string(output)
+	}
+
+	if len(missingPaths) > 0 {
+		return contents, errors.Errorf("files %v do not exist", missingPaths)
+	}
+	return contents, nil
 }
 
 // BridgeDbusNamespaces make the system DBus daemon visible inside the chroot.
