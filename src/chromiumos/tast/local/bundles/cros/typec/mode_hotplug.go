@@ -28,8 +28,9 @@ func init() {
 		Params: []testing.Param{
 			// For running manually.
 			{
-				Name: "manual",
-				Val:  false,
+				Name:      "manual",
+				ExtraAttr: []string{"group:typec", "informational"},
+				Val:       false,
 			},
 			// For automated testing.
 			{
