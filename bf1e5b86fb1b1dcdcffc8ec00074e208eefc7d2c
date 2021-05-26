@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abb644a7_62dcedbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "One thing that came up recently: we should ensure the screen is unlocked after the test runs, since leaving it locked can interfere with other tests. See this test for an example of how to do that:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go;l\u003d88-102",
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "817f86f8_f5199546",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
         "patchSetId": 4
@@ -60,6 +77,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e0454ae_863a5559",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "defer unlocking",
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dfc0b2d_f68485ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_switch_to_password.go",
         "patchSetId": 4
@@ -71,6 +105,23 @@
       "writtenOn": "2021-05-26T22:15:19Z",
       "side": 1,
       "message": "Delete empty line",
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9f2861f_97acd64d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_switch_to_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "defer unlocking the screen",
       "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -123,6 +174,241 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c03154b_12b35347",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "nit: one line?",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 30
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915686cf_215d2c6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "PIN, unless this string matches what the UI shows",
+      "range": {
+        "startLine": 20,
+        "startChar": 119,
+        "endLine": 20,
+        "endChar": 122
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0974fe25_50bc166f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "I think this would be better renamed to \"hiddenPwd\". Otherwise it sounds kinda like an action or a function.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b241af54_f3ea7be1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "delete empty line",
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da0af2a7_a57a891d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "PIN?",
+      "range": {
+        "startLine": 26,
+        "startChar": 55,
+        "endLine": 26,
+        "endChar": 58
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "561fa2cf_29283a12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "use lockscreen.EnterPassword instead, it has more robust readiness checks for typing in the password",
+      "range": {
+        "startLine": 39,
+        "startChar": 12,
+        "endLine": 39,
+        "endChar": 19
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e23382a1_11652c34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "don\u0027t think you need to log the successful outcome",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 102
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1033ea13_55bfc626",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "I think you can remove this logging. If you think it\u0027s important, change it to ContextLogf and add some more info to make the logging more descriptive.",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 45
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ea8e15d_8176e695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95b94ab2_1437c985",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "maybe \"defaultPollOpts\" for clarity",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b404b02_85dbd47c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "add detail about when this button is seen",
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4deafb1_a00e41b7",
         "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
         "patchSetId": 4
@@ -139,6 +425,98 @@
         "startChar": 5,
         "endLine": 202,
         "endChar": 8
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d6e1b7e_36a79c64",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "do we need to return a node here? could we just return the value of the password field instead?",
+      "range": {
+        "startLine": 202,
+        "startChar": 85,
+        "endLine": 202,
+        "endChar": 92
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0941ffbe_e2f816c6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "I don\u0027t think it actually checks this, just that the show/hide password buttons switch. This function\u0027s behavior is very specific to the test cases you\u0027re automating, it might be better to have it in your test subpackage instead. I can\u0027t think of a case where other tests will really need to use this.",
+      "range": {
+        "startLine": 211,
+        "startChar": 37,
+        "endLine": 211,
+        "endChar": 71
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d90d55d0_7248fe4a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "I think you can use \u0027err\u0027 as the name here instead",
+      "range": {
+        "startLine": 220,
+        "startChar": 8,
+        "endLine": 220,
+        "endChar": 9
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b66e8077_e06faa0f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:05:42Z",
+      "side": 1,
+      "message": "I think using err is more standard",
+      "range": {
+        "startLine": 232,
+        "startChar": 10,
+        "endLine": 232,
+        "endChar": 11
       },
       "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
