@@ -93,6 +93,30 @@
       },
       "revId": "3585985ab65cffcf5969e00b51b479f55f8f1e1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cff68ffe_5fe424ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-26T23:51:15Z",
+      "side": 1,
+      "message": "They are functions called by RunTestCases, so they are a step of the test cases.\n\nThere are two usage of s in these functions: \n1. s.Fatal\n2. s.Log\n\ns.Fatal could be replaced by return errors.Wrap(...)\ns.Log could be replaced by testing.ContextLog(...)",
+      "parentUuid": "dcce536f_9962746e",
+      "range": {
+        "startLine": 511,
+        "startChar": 44,
+        "endLine": 511,
+        "endChar": 60
+      },
+      "revId": "3585985ab65cffcf5969e00b51b479f55f8f1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
