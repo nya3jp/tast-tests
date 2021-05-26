@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d38fc365_bf619ddb",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-26T02:41:02Z",
+      "side": 1,
+      "message": "You can use struct as element of another struct, so that functions are inherited as well. How about below:\n\n// HandwritingContext represents a context of virtual keyboard.\ntype HandwritingContext struct {\n\tVirtualKeyboardContext\n\tisLongform bool\n}\n\n// NewHandwritingContext creates a new context for handwriting.\nfunc (vkbCtx *VirtualKeyboardContext) NewHandwritingContext(isLongForm bool) *HandwritingContext {\n\treturn \u0026HandwritingContext{\n\t\tVirtualKeyboardContext: *vkbCtx,\n\t\tisLongform:             isLongForm,\n\t}\n}",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "b48395092728c5058397db5f600f7d44db21bcaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e40797_a9d4d5e6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-26T02:41:02Z",
+      "side": 1,
+      "message": "tap key is not guaranteed to clear the canvas (In some edge cases). Since it is a pre-setup step, robust is very important. It would be ideal to have a method to check the result, retry is also acceptable here.",
+      "range": {
+        "startLine": 290,
+        "startChar": 2,
+        "endLine": 290,
+        "endChar": 41
+      },
+      "revId": "b48395092728c5058397db5f600f7d44db21bcaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29cafc6f_9e86b9bd",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-26T02:41:02Z",
+      "side": 1,
+      "message": "This can be in handwriting file. \nIt is not necessary to be exposed to public.",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 1
+      },
+      "revId": "b48395092728c5058397db5f600f7d44db21bcaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b72d9ca_5583ee8f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-26T02:41:02Z",
+      "side": 1,
+      "message": "This can be in handwriting file as well. \nIt is not necessary to be exposed to public.",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 1
+      },
+      "revId": "b48395092728c5058397db5f600f7d44db21bcaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

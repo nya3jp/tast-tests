@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f6f87eb_02a0dc79",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-26T02:41:02Z",
+      "side": 1,
+      "message": "WaitForHandwritingEngineReady should be the last check step before return result.\n\nIt is an important step of switching to handwriting. Users might not aware of this step and encounter flakiness.\n\nAlternatively, you can have 2 functions here: SwitchToHandwriting and SwitchToHandwritingAndWaitForEngineReady",
+      "range": {
+        "startLine": 317,
+        "startChar": 38,
+        "endLine": 317,
+        "endChar": 57
+      },
+      "revId": "9367e86a939ee5a4b2c422178374b68d7ad00b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
