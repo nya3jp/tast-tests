@@ -50,6 +50,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14174553_62821286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-26T05:23:52Z",
+      "side": 1,
+      "message": "/etc/openvpn or etc/openvpn ?",
+      "range": {
+        "startLine": 166,
+        "startChar": 36,
+        "endLine": 166,
+        "endChar": 39
+      },
+      "revId": "017713fa558be90ec6ea9061bc3b4f5010388e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "daca3bde_8d49904d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
         "patchSetId": 4
@@ -113,6 +136,29 @@
         "startChar": 16,
         "endLine": 278,
         "endChar": 53
+      },
+      "revId": "017713fa558be90ec6ea9061bc3b4f5010388e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3854699b_6a1fdfbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-26T05:23:52Z",
+      "side": 1,
+      "message": "just curious: what does this do ?",
+      "range": {
+        "startLine": 302,
+        "startChar": 3,
+        "endLine": 302,
+        "endChar": 46
       },
       "revId": "017713fa558be90ec6ea9061bc3b4f5010388e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
