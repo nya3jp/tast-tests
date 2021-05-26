@@ -21,7 +21,8 @@ func init() {
 		Contacts:     []string{"sidereal@google.com", "cros-containers-dev@google.com"},
 		SoftwareDeps: []string{"chrome", "vm_host", "untrusted_vm", "amd64"},
 		Attr:         []string{"group:mainline", "informational"},
-		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
+		Vars:         []string{"keepState"},
+		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		// The build_image script strips out .c files, so we
 		// have to use a different extension here.
 		Data: []string{"kvm_test.c-bypass-mask"},

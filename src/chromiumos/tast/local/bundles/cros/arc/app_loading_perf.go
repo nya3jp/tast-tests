@@ -151,7 +151,7 @@ func init() {
 			},
 			Pre: arcAppLoadingVMBooted,
 		}},
-		Vars: []string{"arc.AppLoadingPerf.username", "arc.AppLoadingPerf.password"},
+		VarDeps: []string{"arc.AppLoadingPerf.username", "arc.AppLoadingPerf.password"},
 	})
 }
 

@@ -35,7 +35,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arc.PlayStoreOmnibox.username", "arc.PlayStoreOmnibox.password"},
+		VarDeps: []string{"arc.PlayStoreOmnibox.username", "arc.PlayStoreOmnibox.password"},
 	})
 }
 

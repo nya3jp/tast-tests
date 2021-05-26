@@ -21,7 +21,7 @@ func init() {
 		Contacts:     []string{"pmalani@chromium.org"},
 		Attr:         []string{"group:typec"},
 		SoftwareDeps: []string{"chrome"},
-		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
+		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 		Data:         []string{"testcert.p12"},
 		Params: []testing.Param{
 			// For running manually.

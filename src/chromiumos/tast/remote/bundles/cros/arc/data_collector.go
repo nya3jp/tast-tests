@@ -86,7 +86,7 @@ func init() {
 				dataDir:   "/tmp/data_collector",
 			},
 		}},
-		Vars: []string{"ui.gaiaPoolDefault"},
+		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
 }
 

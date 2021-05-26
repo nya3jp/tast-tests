@@ -39,7 +39,7 @@ func init() {
 			"informational",
 		},
 		Pre: pre.DriveFsStarted,
-		Vars: []string{
+		VarDeps: []string{
 			"filemanager.user",
 			"filemanager.password",
 			"filemanager.drive_credentials",

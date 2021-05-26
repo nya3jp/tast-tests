@@ -28,7 +28,8 @@ func init() {
 		Desc:     "Uses fluffy with the standard charger configuration to check that expected voltages are reached",
 		Contacts: []string{"aaboagye@chromium.org"},
 		Data:     []string{"fluffy_interop_std_config.json"},
-		Vars:     []string{"usbc.MaxPwrReqMW", "ServodPort", "ServodHost", "ServodSSHPort"},
+		Vars:     []string{"ServodPort", "ServodHost", "ServodSSHPort"},
+		VarDeps:  []string{"usbc.MaxPwrReqMW"},
 		// This test requires a specific setup and due to the availability of fluffy, is a manual test.
 	})
 }

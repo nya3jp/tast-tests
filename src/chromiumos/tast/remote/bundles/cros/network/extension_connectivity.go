@@ -26,7 +26,7 @@ func init() {
 		Data:         []string{"allowlist_ssl_inspection.json"},
 		SoftwareDeps: []string{"reboot", "chrome", "chrome_internal"},
 		ServiceDeps:  []string{"tast.cros.network.AllowlistService", "tast.cros.network.ProxyService"},
-		Vars: []string{
+		VarDeps: []string{
 			"allowlist.ext_username",
 			"allowlist.ext_password",
 		},

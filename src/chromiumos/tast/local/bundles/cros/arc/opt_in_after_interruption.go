@@ -87,7 +87,7 @@ func init() {
 				chromeArgs: []string{"--arc-force-show-optin-ui", "--ignore-arcvm-dev-conf"},
 			},
 		}},
-		Vars: []string{
+		VarDeps: []string{
 			"arc.OptInAfterInterruption.unmanaged_username",
 			"arc.OptInAfterInterruption.unmanaged_password",
 			"arc.OptInAfterInterruption.managed_username",
