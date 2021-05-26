@@ -53,7 +53,8 @@ func init() {
 		Attr:         []string{"group:storage-qual"},
 		Data:         stress.Configs,
 		SoftwareDeps: []string{"storage_wearout_detect"},
-		Vars:         []string{"tast_disk_size_gb", "tast_storage_slc_qual", "tast_suspend_block_timeout", "tast_skip_setup_check"},
+		Vars:         []string{"tast_storage_slc_qual", "tast_suspend_block_timeout", "tast_skip_setup_check"},
+		VarDeps:      []string{"tast_disk_size_gb"},
 		Params: []testing.Param{{
 			Name:    "setup_benchmarks",
 			Val:     setupBenchmarks,

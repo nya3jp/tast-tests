@@ -40,7 +40,7 @@ func init() {
 		// TODO(b/184925712): Switch this to rely on SoftwareDeps (for TCPMv2 and kernel >= v5.4) rather
 		// than relying on platform HardwareDeps.
 		HardwareDeps: hwdep.D(hwdep.Platform("dedede", "trogdor", "volteer")),
-		Vars:         []string{"servo"},
+		VarDeps:      []string{"servo"},
 	})
 }
 

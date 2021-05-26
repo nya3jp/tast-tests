@@ -37,7 +37,7 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Vars: []string{
+		VarDeps: []string{
 			"ui.signinProfileTestExtensionManifestKey",
 			"ui.gaiaPoolDefault",
 		},

@@ -31,7 +31,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      "loggedInToCUJUser",
 		Timeout:      4 * time.Minute,
-		Vars:         []string{"ui.cuj_password"},
+		VarDeps:      []string{"ui.cuj_password"},
 	})
 }
 

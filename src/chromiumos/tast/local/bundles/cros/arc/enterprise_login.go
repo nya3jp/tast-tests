@@ -73,7 +73,7 @@ func init() {
 					password:   "arc.EnterpriseLogin.managed_unmanaged_true_password",
 					arcEnabled: true,
 				}}},
-		Vars: []string{
+		VarDeps: []string{
 			"arc.EnterpriseLogin.managed_3pp_true_user",
 			"arc.EnterpriseLogin.managed_3pp_true_password",
 			"arc.EnterpriseLogin.managed_3pp_false_user",

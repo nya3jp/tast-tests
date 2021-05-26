@@ -36,7 +36,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome", "gsc", "reboot"},
 		Attr:         []string{"group:firmware", "firmware_cr50"},
-		Vars:         []string{"servo"},
+		VarDeps:      []string{"servo"},
 		ServiceDeps: []string{
 			"tast.cros.example.ChromeService",
 			"tast.cros.hwsec.AttestationDBusService",

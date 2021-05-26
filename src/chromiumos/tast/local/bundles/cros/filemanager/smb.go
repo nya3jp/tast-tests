@@ -28,7 +28,8 @@ func init() {
 			"chromeos-files-syd@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
+		Vars:         []string{"keepState"},
+		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Data:         []string{"smb.conf"},
 		Params: []testing.Param{

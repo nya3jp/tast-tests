@@ -27,7 +27,7 @@ func init() {
 		Attr: []string{
 			"group:mainline",
 		},
-		Vars: []string{
+		VarDeps: []string{
 			"ui.gaiaPoolDefault",
 		},
 		Timeout: chrome.GAIALoginTimeout + time.Minute,

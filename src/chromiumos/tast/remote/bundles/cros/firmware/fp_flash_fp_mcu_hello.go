@@ -32,7 +32,7 @@ func init() {
 		Timeout:      2 * time.Minute,
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
-		Vars:         []string{"servo"},
+		VarDeps:      []string{"servo"},
 	})
 }
 

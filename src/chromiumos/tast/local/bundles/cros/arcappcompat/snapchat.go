@@ -63,7 +63,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.username", "arcappcompat.password", "arcappcompat.Snapchat.username", "arcappcompat.Snapchat.password"},
+		VarDeps: []string{"arcappcompat.username", "arcappcompat.password", "arcappcompat.Snapchat.username", "arcappcompat.Snapchat.password"},
 	})
 }
 

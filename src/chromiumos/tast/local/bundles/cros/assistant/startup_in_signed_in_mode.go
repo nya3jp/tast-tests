@@ -20,7 +20,7 @@ func init() {
 		Contacts:     []string{"jeroendh@google.com", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Vars:         []string{"assistant.username", "assistant.password"},
+		VarDeps:      []string{"assistant.username", "assistant.password"},
 		Timeout:      chrome.GAIALoginTimeout + time.Minute,
 	})
 }

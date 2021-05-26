@@ -67,7 +67,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars: []string{"arcappcompat.username", "arcappcompat.password",
+		VarDeps: []string{"arcappcompat.username", "arcappcompat.password",
 			"arcappcompat.Paypal.emailid", "arcappcompat.Paypal.password"},
 	})
 }

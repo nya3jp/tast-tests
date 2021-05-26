@@ -33,7 +33,7 @@ func init() {
 			"shengjun@chromium.org",
 		},
 		Attr:         []string{"group:mainline"},
-		Vars:         []string{"ui.gaiaPoolDefault"},
+		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Timeout:      chrome.GAIALoginTimeout + time.Minute,
 		Params: []testing.Param{

@@ -63,7 +63,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.username", "arcappcompat.password", "arcappcompat.AmazonPrimeVideo.username", "arcappcompat.AmazonPrimeVideo.password"},
+		VarDeps: []string{"arcappcompat.username", "arcappcompat.password", "arcappcompat.AmazonPrimeVideo.username", "arcappcompat.AmazonPrimeVideo.password"},
 	})
 }
 

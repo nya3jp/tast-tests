@@ -35,7 +35,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Vars: []string{"ui.gaiaPoolDefault"},
+		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
 }
 
