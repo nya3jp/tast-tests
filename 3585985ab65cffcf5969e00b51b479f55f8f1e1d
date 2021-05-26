@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ee20cbe_ca0897e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-26T23:45:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e5e75786_642aabf2",
+      "range": {
+        "startLine": 510,
+        "startChar": 110,
+        "endLine": 510,
+        "endChar": 113
+      },
+      "revId": "3585985ab65cffcf5969e00b51b479f55f8f1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d532c8f_98d26c33",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-26T23:24:52Z",
       "side": 1,
       "message": "Not for this cl. It seems that s is passed to all of these simialr functions. It is not recommended to do so. Suggest to remove it in a separate cl.",
+      "range": {
+        "startLine": 511,
+        "startChar": 44,
+        "endLine": 511,
+        "endChar": 60
+      },
+      "revId": "3585985ab65cffcf5969e00b51b479f55f8f1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcce536f_9962746e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-26T23:45:00Z",
+      "side": 1,
+      "message": "sorry, I don\u0027t get it. Largescreenlayout func and other func are test cases, so that\u0027s why \"s\" is passed to all functions. Please let me know if it is not recommended.",
+      "parentUuid": "0d532c8f_98d26c33",
       "range": {
         "startLine": 511,
         "startChar": 44,
