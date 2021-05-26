@@ -80,6 +80,25 @@ func (hc *HelpContext) Launch() uiauto.Action {
 	)
 }
 
+// Close closes help app and waits for it to be gone from a11y tree.
+func (hc *HelpContext) Close() uiauto.Action {
+	return func(ctx context.Context) error {
+		if err := apps.Close(ctx, hc.tconn, apps.Help.ID); err != nil {
+			return errors.Wrap(err, "failed to close the app")
+		}
+		ui := uiauto.New(hc.tconn).WithInterval(200 * time.Millisecond)
+		return ui.Retry(10, func(ctx context.Context) error {
+			isExists, err := hc.Exists(ctx)
+			if err != nil {
+				return err
+			} else if isExists {
+				return errors.New("help app still exists in a11y tree")
+			}
+			return nil
+		})(ctx)
+	}
+}
+
 // Exists checks whether the help app exists in the accessiblity tree.
 func (hc *HelpContext) Exists(ctx context.Context) (bool, error) {
 	return hc.ui.IsNodeFound(ctx, RootFinder)
