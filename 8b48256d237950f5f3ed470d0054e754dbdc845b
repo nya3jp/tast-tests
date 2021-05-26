@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "790a9b1f_62467b15",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-26T01:00:42Z",
+      "side": 1,
+      "message": "this sentence confuses me. \u003cfacebook meme\u003edrop \"on the DUT by default\"; it\u0027s cleaner\u003c/meme\u003e ?\n\nhttps://www.youtube.com/watch?v\u003dPEgk2v6KntY\n\nOr, maybe I\u0027m just demonstrating my confusion :)",
+      "range": {
+        "startLine": 244,
+        "startChar": 5,
+        "endLine": 244,
+        "endChar": 53
+      },
+      "revId": "8b48256d237950f5f3ed470d0054e754dbdc845b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
