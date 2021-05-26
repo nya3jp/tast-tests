@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "161b8885_a59c7c57",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-26T12:09:17Z",
+      "side": 1,
+      "message": "This retry is not very much useful. Please remove it and consider it in b/189277286",
+      "parentUuid": "8f8dced4_3276d68d",
+      "range": {
+        "startLine": 290,
+        "startChar": 2,
+        "endLine": 290,
+        "endChar": 41
+      },
+      "revId": "b48395092728c5058397db5f600f7d44db21bcaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29cafc6f_9e86b9bd",

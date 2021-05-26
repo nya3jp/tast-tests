@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99e1630c_27d142b1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-26T12:09:17Z",
+      "side": 1,
+      "message": "This function is very confused with the attribute. hwCtx.isLongForm and hwCtx.isLongForm(). I would not attach isLongForm() on HandwritingContext.\n\nHow about just isLongForm(ctx, tconn)",
+      "range": {
+        "startLine": 39,
+        "startChar": 26,
+        "endLine": 39,
+        "endChar": 36
+      },
+      "revId": "00d21a07fc42becfe1063b4d3e36d5e0e423bdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dedc135_bcf6afa0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-26T12:09:17Z",
+      "side": 1,
+      "message": "nit: comment should finish in full stop.",
+      "range": {
+        "startLine": 303,
+        "startChar": 3,
+        "endLine": 303,
+        "endChar": 106
+      },
+      "revId": "00d21a07fc42becfe1063b4d3e36d5e0e423bdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212da985_7387d05e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-26T12:09:17Z",
+      "side": 1,
+      "message": "It will cause repeatedly clicks since the ui reflection is slow. It is better to do:\n\nwaitForBackspaceAction :\u003d hwCtx.ui.WithTimeout(1*time.Second).WaitUntilExists(KeyFinder.Name(\"backspace\"))\n\nreturn hwCtx.ui.LeftClickUntil(undoKey, waitForBackspaceAction)",
+      "range": {
+        "startLine": 317,
+        "startChar": 16,
+        "endLine": 317,
+        "endChar": 18
+      },
+      "revId": "00d21a07fc42becfe1063b4d3e36d5e0e423bdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f846c05a_a39bad21",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-26T12:09:17Z",
+      "side": 1,
+      "message": "Not sure if 1 sec is enough to wait for this happen. It would be nice to run it a few times to avoid flaky.",
+      "range": {
+        "startLine": 331,
+        "startChar": 32,
+        "endLine": 331,
+        "endChar": 44
+      },
+      "revId": "00d21a07fc42becfe1063b4d3e36d5e0e423bdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5c024b_1056a9f8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-26T12:09:17Z",
+      "side": 1,
+      "message": "It is not ideal to use error to judge element exists or not. Can you please use polling + isNodeFound for this check?",
+      "range": {
+        "startLine": 331,
+        "startChar": 45,
+        "endLine": 331,
+        "endChar": 60
+      },
+      "revId": "00d21a07fc42becfe1063b4d3e36d5e0e423bdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c53c8467_dc12e4ff",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-26T12:09:17Z",
+      "side": 1,
+      "message": "optional: honestly, this timeout would be short sometimes.",
+      "range": {
+        "startLine": 299,
+        "startChar": 2,
+        "endLine": 299,
+        "endChar": 74
+      },
+      "revId": "00d21a07fc42becfe1063b4d3e36d5e0e423bdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be56c32a_6688f95e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-26T12:09:17Z",
+      "side": 1,
+      "message": "I think this step is redundant.",
+      "range": {
+        "startLine": 331,
+        "startChar": 1,
+        "endLine": 332,
+        "endChar": 56
+      },
+      "revId": "00d21a07fc42becfe1063b4d3e36d5e0e423bdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
