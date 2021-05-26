@@ -403,6 +403,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef4c92e9_c04c9edd",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-26T01:52:37Z",
+      "side": 1,
+      "message": "That makes perfect sense. Revised it to use a handwritingContext for handwriting and moved the related code into handwriting.go which focuses on handwriting and should be easy to include more attributes/functions. The basic workflow for handwriting testing now looks like: 1) show VK, create vkbCtx; 2) switch to handwriting, create hwCtx; 3..) use hwCtx for testing.",
+      "parentUuid": "dcec0f0e_495ce822",
+      "range": {
+        "startLine": 372,
+        "startChar": 2,
+        "endLine": 375,
+        "endChar": 3
+      },
+      "revId": "94b32731082b2c68657007e897927cc85c71dae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be393ccd_39987b68",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
         "patchSetId": 1
