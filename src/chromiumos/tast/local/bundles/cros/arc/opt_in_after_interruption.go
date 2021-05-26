@@ -115,6 +115,7 @@ func OptInAfterInterruption(ctx context.Context, s *testing.State) {
 
 	args := append(arc.DisableSyncFlags(), extraArgs...)
 
+	attempts := 1
 	for _, delay := range param.delays {
 		s.Logf("Start iteration for %v delay", delay)
 
@@ -149,7 +150,7 @@ func OptInAfterInterruption(ctx context.Context, s *testing.State) {
 
 			s.Log("Wait for ARC to complete provisioning")
 			if err := waitForArcProvisioned(ctx, tconn); err != nil {
-				if err := optin.DumpLogCat(ctx, strconv.FormatInt(int64(delay), 10)); err != nil {
+				if err := optin.DumpLogCat(ctx, strconv.Itoa(attempts)); err != nil {
 					s.Logf("WARNING: Failed to dump logcat: %s", err)
 				}
 				s.Fatal("Failed to wait for ARC to complete provisioning: ", err)
@@ -157,6 +158,7 @@ func OptInAfterInterruption(ctx context.Context, s *testing.State) {
 			s.Log("ARC is provisioned after restart")
 		}()
 		s.Logf("End iteration for %v delay", delay)
+		attempts++
 	}
 }
 
@@ -189,6 +191,7 @@ func waitForArcProvisioned(ctx context.Context, tconn *chrome.TestConn) error {
 }
 
 // attemptOptIn tries to complete ARC provisioning within the specified delay
+// and returns true to continue if provisioning attempt did not succeed.
 func attemptOptIn(ctx context.Context, username, password string, args []string, delay, firstRun time.Duration) (bool, error) {
 	testing.ContextLog(ctx, "Log into Chrome instance")
 	cr, err := chrome.New(
@@ -234,7 +237,9 @@ func attemptOptIn(ctx context.Context, username, password string, args []string,
 	}
 	testing.ContextLog(ctx, "Sleep completed")
 
-	if arcProvisioned, err := checkArcProvisioned(ctx, tconn); err != nil {
+	// If provisioning fails after delay, cleanup chrome instance and attempt again.
+	arcProvisioned, err := checkArcProvisioned(ctx, tconn)
+	if err != nil {
 		return false, errors.Wrap(err, "failed to check if ARC is provisioned")
 	} else if arcProvisioned {
 		testing.ContextLogf(ctx, "ARC is already provisioned after %v delay", delay)
@@ -243,8 +248,7 @@ func attemptOptIn(ctx context.Context, username, password string, args []string,
 				"was not validated. Consider decreasing initial delay value"
 			testing.ContextLogf(ctx, "WARNING: %s", warnString)
 		}
-		return false, nil
 	}
 	testing.ContextLog(ctx, "ARC provisioning is not completed")
-	return true, nil
+	return !arcProvisioned, nil
 }
