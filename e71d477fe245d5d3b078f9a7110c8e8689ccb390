@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b971fcc0_30f1c042",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-05-26T22:13:13Z",
+      "side": 1,
+      "message": "I\u0027ve updated the group specification.\n\n- All type C tests will have the \"typec\" group\n- The tests which we would like to run in the typec lab will have the \"typec_lab\" ExtraAttr.",
+      "revId": "e71d477fe245d5d3b078f9a7110c8e8689ccb390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
