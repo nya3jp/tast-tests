@@ -318,15 +318,16 @@ func getGuestPack(ctx context.Context) (string, error) {
 
 		arcvmPackName = "arcvm.var.lib.ureadahead.pack"
 
-		ureadaheadStopTimeout     = 50 * time.Second
-		ureadaheadStopInterval    = 3 * time.Second
-		ureadaheadFileStatTimeout = 30 * time.Second
+		ureadaheadStopTimeout      = 50 * time.Second
+		ureadaheadStopInterval     = 3 * time.Second
+		ureadaheadFileStatTimeout  = 1 * time.Minute
+		ureadaheadFileStatInterval = 10 * time.Second
 	)
 
 	packPath := filepath.Join(ureadaheadDataDir, arcvmPackName)
 
 	if err := os.Remove(packPath); err != nil && !os.IsNotExist(err) {
-		return "", errors.Wrap(err, "failed to clean up existing pack")
+		return "", errors.Wrapf(err, "failed to clean up %s on the host", packPath)
 	}
 
 	outdir, ok := testing.ContextOutDir(ctx)
@@ -351,7 +352,7 @@ func getGuestPack(ctx context.Context) (string, error) {
 		return nil
 	}, &testing.PollOptions{
 		Timeout:  ureadaheadStopTimeout,
-		Interval: ureadaheadStopInterval,
+		Interval: ureadaheadFileStatInterval,
 	}); err != nil {
 		return "", errors.Wrap(err, "failed to wait for ureadahead to stop")
 	}
@@ -361,16 +362,20 @@ func getGuestPack(ctx context.Context) (string, error) {
 		return "", errors.Wrap(err, "failed to verify ureadahead to exited")
 	}
 
+	// Check for existence of newly generated pack file on guest side.
 	srcPath := filepath.Join(ureadaheadDataDir, "pack")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		_, err := a.FileSize(ctx, srcPath)
 		return err
-	}, &testing.PollOptions{Timeout: ureadaheadFileStatTimeout}); err != nil {
+	}, &testing.PollOptions{
+		Timeout:  ureadaheadFileStatTimeout,
+		Interval: ureadaheadStopInterval,
+	}); err != nil {
 		return "", errors.Wrap(err, "failed to ensure pack file exists")
 	}
 
 	if err := a.PullFile(ctx, srcPath, packPath); err != nil {
-		return "", errors.Wrapf(err, "failed to pull %s from ARCVM: ", srcPath)
+		return "", errors.Wrapf(err, "failed to pull %s from ARCVM", srcPath)
 	}
 
 	return packPath, nil
