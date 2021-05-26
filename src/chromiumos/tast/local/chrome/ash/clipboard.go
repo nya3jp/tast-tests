@@ -14,7 +14,7 @@ import (
 func ClipboardTextData(ctx context.Context, tconn *chrome.TestConn) (string, error) {
 	var data string
 
-	if err := tconn.Call(ctx, &data, `tast.proimsify(chrome.autotestPrivate.getClipboardTextData)`); err != nil {
+	if err := tconn.Call(ctx, &data, `tast.promisify(chrome.autotestPrivate.getClipboardTextData)`); err != nil {
 		return "", err
 	}
 
