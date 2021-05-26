@@ -56,6 +56,30 @@
       },
       "revId": "4aa3b25b0e7329c5709b6ff74eff6607b2c45ad3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31c288f2_fc21db4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/netflix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-26T23:35:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "84fcb24c_b1dfd7d5",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 69
+      },
+      "revId": "4aa3b25b0e7329c5709b6ff74eff6607b2c45ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
