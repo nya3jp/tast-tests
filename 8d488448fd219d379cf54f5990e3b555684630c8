@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d59791d4_b8a2e572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/vk_type_test_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1110604
+      },
+      "writtenOn": "2021-05-26T01:55:52Z",
+      "side": 1,
+      "message": "I think it\u0027s enough.",
+      "parentUuid": "9a6794e0_868cde12",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "8d488448fd219d379cf54f5990e3b555684630c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3d666c6_c1881ad2",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/vk_type_test_data.go",
         "patchSetId": 1
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "It is a flag to temporarily exclude input method if it fails due to a non-testdata problem.\nI added a comment on it.",
       "parentUuid": "d3d666c6_c1881ad2",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "8d488448fd219d379cf54f5990e3b555684630c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38016c82_1fadf19c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/vk_type_test_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1110604
+      },
+      "writtenOn": "2021-05-26T01:55:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "82e14283_6bb867a4",
       "range": {
         "startLine": 22,
         "startChar": 1,
