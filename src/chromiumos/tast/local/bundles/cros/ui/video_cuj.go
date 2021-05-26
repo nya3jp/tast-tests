@@ -42,6 +42,8 @@ func init() {
 		Fixture:      "loggedInToCUJUser",
 		Vars: []string{
 			"mute",
+		},
+		VarDeps: []string{
 			"ui.VideoCUJ.ytExperiments",
 		},
 		Params: []testing.Param{{

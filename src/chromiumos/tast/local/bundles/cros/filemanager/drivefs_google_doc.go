@@ -38,7 +38,7 @@ func init() {
 		},
 		Timeout: 5 * time.Minute,
 		Pre:     pre.DriveFsStarted,
-		Vars: []string{
+		VarDeps: []string{
 			"filemanager.user",
 			"filemanager.password",
 			"filemanager.drive_credentials",

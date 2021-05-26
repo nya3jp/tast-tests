@@ -29,7 +29,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},
 		Timeout:      4 * time.Minute,
-		Vars:         []string{"ui.gaiaPoolDefault"},
+		VarDeps:      []string{"ui.gaiaPoolDefault"},
 	})
 }
 

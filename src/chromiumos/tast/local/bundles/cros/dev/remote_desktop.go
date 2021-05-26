@@ -39,6 +39,8 @@ func init() {
 		Vars: []string{
 			// For running manually.
 			"user", "pass", "contact", "wait", "extra_args", "reset",
+		},
+		VarDeps: []string{
 			// For automated testing.
 			"dev.username", "dev.password",
 		},

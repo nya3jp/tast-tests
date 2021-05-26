@@ -32,7 +32,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome", "chrome_internal", "drivefs"},
 		Timeout:      4 * time.Minute,
-		Vars:         []string{"arc.Drivefs.user", "arc.Drivefs.password"},
+		VarDeps:      []string{"arc.Drivefs.user", "arc.Drivefs.password"},
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p"},

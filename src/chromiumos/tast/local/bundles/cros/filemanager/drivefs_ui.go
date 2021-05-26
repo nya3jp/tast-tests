@@ -34,7 +34,7 @@ func init() {
 		Attr: []string{
 			"group:mainline",
 		},
-		Vars: []string{
+		VarDeps: []string{
 			"filemanager.DrivefsUI.username",
 			"filemanager.DrivefsUI.password",
 		},
