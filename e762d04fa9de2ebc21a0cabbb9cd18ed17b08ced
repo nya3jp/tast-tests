@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f7d5ee6_79a6a2df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-05-26T23:28:12Z",
+      "side": 1,
+      "message": "ptal (as reviewer of original CL crrev/c/2919079)",
+      "revId": "e762d04fa9de2ebc21a0cabbb9cd18ed17b08ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
