@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9dcf43a_4d62263b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:16:01Z",
+      "side": 1,
+      "message": "Or I guess `BUG\u003db:187794441` now that we\u0027ve migrated to b/ 😊",
+      "parentUuid": "a15cfb13_267204ba",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 65
+      },
+      "revId": "4784360e11c7bc22d9676f52c37beeb474ac4435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c010e7b8_3a63528c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 9
@@ -95,6 +119,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11c3c1cd_b43fb9fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:16:01Z",
+      "side": 1,
+      "message": "you need an additional dependency \"audio_record\" to check this, since the slider only appears on boards with an internal mic. see: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/quick_settings_mic_gain_slider.go;l\u003d27\n\nI recommend making a subtest like the no_battery case, since we still want to run the base version of this test even if the board doesn\u0027t have an internal mic.",
+      "range": {
+        "startLine": 98,
+        "startChar": 59,
+        "endLine": 98,
+        "endChar": 90
+      },
+      "revId": "4784360e11c7bc22d9676f52c37beeb474ac4435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1a4af5b_2cbcfe7f",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 9
@@ -129,6 +176,30 @@
       "writtenOn": "2021-05-26T21:25:55Z",
       "side": 1,
       "message": "I don\u0027t think you need to collect all the errors and return them like this.\n\nIt is probably easier to just return an error at the first problem and have the callers deal with it how they want",
+      "range": {
+        "startLine": 543,
+        "startChar": 1,
+        "endLine": 543,
+        "endChar": 96
+      },
+      "revId": "4784360e11c7bc22d9676f52c37beeb474ac4435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09b72209_b1e300ed",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-26T23:16:01Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "91e50942_cd48b7dc",
       "range": {
         "startLine": 543,
         "startChar": 1,
