@@ -36,6 +36,7 @@ func init() {
 		},
 		Attr: []string{
 			"group:mainline",
+			"informational",
 			"group:paper-io",
 			"paper-io_printing",
 		},
