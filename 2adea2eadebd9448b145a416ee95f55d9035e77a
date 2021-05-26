@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b655bd_6f48f897",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-05-26T05:14:23Z",
+      "side": 1,
+      "message": "Thank you and will wait for teammate\u0027s +1.",
+      "revId": "2adea2eadebd9448b145a416ee95f55d9035e77a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
