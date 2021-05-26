@@ -190,6 +190,30 @@
       },
       "revId": "9b7d8b02c83061685fb3e21d6c82c17dacbbfad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04bee495_30a82c1d",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-26T01:00:42Z",
+      "side": 1,
+      "message": "OK, that makes sense. Thanks.",
+      "parentUuid": "a4304284_86516779",
+      "range": {
+        "startLine": 175,
+        "startChar": 74,
+        "endLine": 175,
+        "endChar": 92
+      },
+      "revId": "9b7d8b02c83061685fb3e21d6c82c17dacbbfad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
