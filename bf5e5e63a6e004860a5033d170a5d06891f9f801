@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57c9e337_6d6b7e0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-26T11:22:37Z",
+      "side": 1,
+      "message": "LoginScreenUIAPI SGTM in that case, make sure acronyms are capitalised (go style).",
+      "parentUuid": "ceb23e4e_f4bcc04e",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "371d0341_39d64278",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
         "patchSetId": 2
@@ -225,6 +249,24 @@
       "side": 1,
       "message": "The \"chrome-extension://\u003cextension_id\u003e/window.html\" page will only be available when the chrome.loginScreenUi.show() method is called.",
       "parentUuid": "db26b19c_ada41ece",
+      "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3bbeb54_655cdca9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-26T11:22:37Z",
+      "side": 1,
+      "message": "You can try to open a different extension that is not whitelisted. OTOH since this test does not check the behaviour of the policy, it\u0027s not actually needed.",
+      "parentUuid": "dcae20f2_06102e35",
       "revId": "bf5e5e63a6e004860a5033d170a5d06891f9f801",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
