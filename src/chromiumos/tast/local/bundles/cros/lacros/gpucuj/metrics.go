@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/power"
+	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
 
@@ -344,6 +345,27 @@ func computeTraceStats(tr *trace.Trace) (*results, error) {
 	return res, nil
 }
 
+// shouldOutputTraceStats determines if we should output custom metrics based on traces.
+// TODO(crbug.com/1140906): We only output custom metrics based on traces on eve.
+// This is because it was taking too long on other boards, and we only need the
+// custom metrics on a single board to check if noise in other metrics is
+// a metric problem or an inherent issue. This code is temporary and will be
+// removed in the future. It is not recommended to look at lsb-release to
+// change test behaviour.
+func shouldOutputTraceStats() (bool, error) {
+	k, err := lsbrelease.Load()
+	if err != nil {
+		return false, err
+	}
+
+	board, ok := k[lsbrelease.Board]
+	if !ok {
+		return false, errors.New("could not look up board in lsb-release")
+	}
+
+	return board == "eve", nil
+}
+
 func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 	invoc *testInvocation, perfFn func(ctx context.Context) error) error {
 	if s, err := os.Stat(invoc.traceDir); err != nil || !s.IsDir() {
@@ -400,18 +422,25 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 		return err
 	}
 
-	res, err := computeTraceStats(tr)
+	shouldOutput, err := shouldOutputTraceStats()
 	if err != nil {
 		return err
 	}
-	if err := invoc.metrics.recordValue(ctx, invoc, "trace_percent_dropped", res.proportionDropped*100.0); err != nil {
-		return err
-	}
-	if err := invoc.metrics.recordValue(ctx, invoc, "trace_fps", res.fps); err != nil {
-		return err
-	}
-	if err := invoc.metrics.recordValue(ctx, invoc, "trace_num_frames", float64(res.numFrames)); err != nil {
-		return err
+
+	if shouldOutput {
+		res, err := computeTraceStats(tr)
+		if err != nil {
+			return err
+		}
+		if err := invoc.metrics.recordValue(ctx, invoc, "trace_percent_dropped", res.proportionDropped*100.0); err != nil {
+			return err
+		}
+		if err := invoc.metrics.recordValue(ctx, invoc, "trace_fps", res.fps); err != nil {
+			return err
+		}
+		if err := invoc.metrics.recordValue(ctx, invoc, "trace_num_frames", float64(res.numFrames)); err != nil {
+			return err
+		}
 	}
 
 	// Store metrics in the form: Scenario.PageSet.UMA metric name.statistic.{chromeos, lacros}.
