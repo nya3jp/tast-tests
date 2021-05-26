@@ -50,6 +50,23 @@
       "message": "+tast-owners",
       "revId": "1a9093bdeb5ace1fd06f06aba12eb4934f5061e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ab868e7_a0d0c38a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-26T00:07:27Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "1a9093bdeb5ace1fd06f06aba12eb4934f5061e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
