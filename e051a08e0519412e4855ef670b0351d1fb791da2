@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6219d31d_25db1d5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2021-05-26T18:44:48Z",
+      "side": 1,
+      "message": "At a high level, this looks reasonable, assuming that we really need it (which I don\u0027t know).\n\nI\u0027m neither a qualified go reviewer, nor am I the expert on the storage side of cryptohome. Adding Sarthak for the latter, and you\u0027ll want tast reviewers to look at your go code.",
+      "revId": "e051a08e0519412e4855ef670b0351d1fb791da2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
