@@ -194,6 +194,34 @@ var (
 	}
 )
 
+// Constants that used by WireGuard server
+const (
+	// Keys are generated randomly using wireguard-tools, only for test usages.
+	wgClientPrivateKey      = "8Ez9VkVl2JL+OhrLZvV2FXsRJTqtBpykhErNef5dzns="
+	wgClientPublicKey       = "dN8f5XplOXpNDP1m9b1V3/AVuOogbw+HckGisfEAphA="
+	wgServerPrivateKey      = "kKhUZZYELpnWFXZmHKvze5kMJ4UfViHo0aacwx9VSXo="
+	wgServerPublicKey       = "VL4pfwqKV4pWX1xJRmvceOZLTftNKi2PrFoBbJWNKXw="
+	wgPresharedKey          = "LqgZ5/qyT8J8nr25n9IEcUi+vOBkd3sphGn1ClhkHw0="
+	wgServerOverlayIP       = "10.12.14.1"
+	wgServerListenPort      = "12345"
+	wgClientOverlayIP       = "10.12.14.2"
+	wgClientOverlayIPPrefix = "32"
+	wgConfigFile            = "tmp/wg.conf"
+)
+
+var (
+	wgConfigs = map[string]string{
+		wgConfigFile: "[Interface]\n" +
+			"PrivateKey = {{.server_private_key}}\n" +
+			"ListenPort = {{.server_listen_port}}\n" +
+			"\n" +
+			"[Peer]\n" +
+			"PublicKey = {{.client_public_key}}\n" +
+			"AllowedIPs = {{.client_ip}}/{{.client_ip_prefix}}\n" +
+			"{{if .preshared_key}}PresharedKey = {{.preshared_key}}{{end}}",
+	}
+)
+
 // Server represents a VPN server that can be used in the test.
 type Server struct {
 	UnderlayIP   string
@@ -201,7 +229,7 @@ type Server struct {
 	netChroot    *chroot.NetworkChroot
 	stopCommands [][]string
 	pidFiles     []string
-	logFile      string
+	logFiles     []string
 }
 
 // StartL2TPIPsecServer starts a L2TP/IPsec server.
@@ -211,7 +239,7 @@ func StartL2TPIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 		netChroot:    chro,
 		stopCommands: [][]string{{ipsecCommand, "stop"}},
 		pidFiles:     []string{xl2tpdPidFile, pppdPidFile},
-		logFile:      ipsecLogFile,
+		logFiles:     []string{ipsecLogFile},
 	}
 
 	if _, ok := ipsecTypedConfigs[authType]; !ok {
@@ -288,7 +316,7 @@ func StartOpenVPNServer(ctx context.Context, useUserPassword bool) (*Server, err
 		netChroot:    chro,
 		stopCommands: [][]string{},
 		pidFiles:     []string{openvpnPidFile},
-		logFile:      openvpnLogFile,
+		logFiles:     []string{openvpnLogFile},
 	}
 
 	chro.AddRootDirectories(openvpnRootDirectories)
@@ -327,6 +355,43 @@ func StartOpenVPNServer(ctx context.Context, useUserPassword bool) (*Server, err
 	return server, nil
 }
 
+// StartWireGuardServer starts a WireGuard server.
+func StartWireGuardServer(ctx context.Context, usePSK bool) (*Server, error) {
+	chro := chroot.NewNetworkChroot()
+	server := &Server{
+		netChroot:    chro,
+		stopCommands: [][]string{{"/bin/ip", "link", "del", "wg1"}},
+		pidFiles:     []string{},
+		logFiles:     []string{}, // No log for WireGuard server.
+	}
+
+	chro.AddConfigTemplates(wgConfigs)
+	configValues := map[string]interface{}{
+		"server_private_key": wgServerPrivateKey,
+		"server_listen_port": wgServerListenPort,
+		"client_public_key":  wgClientPublicKey,
+		"client_ip":          wgClientOverlayIP,
+		"client_ip_prefix":   wgClientOverlayIPPrefix,
+	}
+	if usePSK {
+		configValues["preshared_key"] = wgPresharedKey
+	}
+
+	chro.AddConfigValues(configValues)
+	chro.AddStartupCommand("ip link add wg1 type wireguard")
+	chro.AddStartupCommand("wg setconf wg1 /" + wgConfigFile)
+	chro.AddStartupCommand("ip addr add dev wg1 " + wgServerOverlayIP)
+	chro.AddStartupCommand("ip link set dev wg1 up")
+
+	underlayIP, err := chro.Startup(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start WireGuard server")
+	}
+	server.UnderlayIP = underlayIP
+	server.OverlayIP = wgServerOverlayIP
+	return server, nil
+}
+
 // StopServer stop VPN server instance.
 func (s *Server) StopServer(ctx context.Context) error {
 	chro := s.netChroot
@@ -346,9 +411,10 @@ func (s *Server) StopServer(ctx context.Context) error {
 }
 
 func (s *Server) collectLogs(ctx context.Context) error {
-	content, err := s.netChroot.GetLogContents(ctx, s.logFile)
+	var getLogErr error
+	content, err := s.netChroot.GetLogContents(ctx, s.logFiles)
 	if err != nil {
-		return errors.Wrap(err, "failed to get vpn log contents")
+		getLogErr = errors.Wrap(err, "failed to get vpn log contents")
 	}
 
 	// Write the vpn logs to the file logName.
@@ -362,7 +428,7 @@ func (s *Server) collectLogs(ctx context.Context) error {
 		return errors.Wrap(err, "failed to write vpnlogs output")
 	}
 
-	return nil
+	return getLogErr
 }
 
 // Exit does a best effort to stop the server, log the contents, and shut down the chroot.
