@@ -22,6 +22,30 @@
       },
       "revId": "008ab5765fa368df82eb48d08dc111c1d5462766",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d0f8ffc_23cc41e9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-26T07:28:07Z",
+      "side": 0,
+      "message": "I agree. Changed it to DrawStrokesFromFile",
+      "parentUuid": "9521f5ea_b0424171",
+      "range": {
+        "startLine": 241,
+        "startChar": 38,
+        "endLine": 241,
+        "endChar": 61
+      },
+      "revId": "008ab5765fa368df82eb48d08dc111c1d5462766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
