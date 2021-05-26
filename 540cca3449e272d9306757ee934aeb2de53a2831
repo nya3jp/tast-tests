@@ -16,6 +16,24 @@
       "message": "nit: you don\u0027t need cleanupCtx, you can just reassign ctx after the defer. The goroutine gets the original ctx.",
       "revId": "540cca3449e272d9306757ee934aeb2de53a2831",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e4f2032_ac6536eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/login_screen_ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-05-26T12:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d94037c4_8b8759fd",
+      "revId": "540cca3449e272d9306757ee934aeb2de53a2831",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
