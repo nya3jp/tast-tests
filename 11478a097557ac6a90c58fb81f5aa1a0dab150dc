@@ -33,6 +33,24 @@
       "message": "(Move the discussion from crrev.com/c/1268897 to this CL)\n\nPerhaps no need of this, if\n- we properly set HWDep to only run on target models.\n- these would be part of wifi_matfunc after stabilized.",
       "revId": "11478a097557ac6a90c58fb81f5aa1a0dab150dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f354185f_b07d4f4f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wake_on_ssid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-26T00:52:19Z",
+      "side": 1,
+      "message": "I think the SoftwareDep (or Hardware dep? it\u0027s not clear to me yet) is the main key. We probably will never enable this feature on _all_ devices, but for those that do, we want to test it just the same as any other functional test -- i.e., wifi_matfunc.\n\nBut that\u0027s just my opinion.\n\nI guess if we really decide that this feature is not on par with other features, then maybe that\u0027s a reason to isolate it somewhere else.",
+      "parentUuid": "441e1769_8e0e31eb",
+      "revId": "11478a097557ac6a90c58fb81f5aa1a0dab150dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
