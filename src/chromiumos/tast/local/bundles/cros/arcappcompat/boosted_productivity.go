@@ -61,8 +61,9 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars: []string{"arcappcompat.username", "arcappcompat.password",
+		Vars: []string{
 			"arcappcompat.BoostedProductivity.emailid", "arcappcompat.BoostedProductivity.password"},
+		VarDeps: []string{"arcappcompat.username", "arcappcompat.password"},
 	})
 }
 

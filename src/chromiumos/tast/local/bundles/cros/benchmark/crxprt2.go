@@ -47,7 +47,7 @@ func init() {
 		),
 		Fixture: setup.BenchmarkChromeFixture,
 		Timeout: crxprtRunningTime + 15*time.Minute,
-		Vars:    []string{"benchmark.username"},
+		VarDeps: []string{"benchmark.username"},
 	})
 }
 

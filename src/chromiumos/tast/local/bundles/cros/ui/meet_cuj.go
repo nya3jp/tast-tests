@@ -72,8 +72,10 @@ func init() {
 			"mute",
 			"record",
 			"meeting_code",
-			"ui.MeetCUJ.bond_credentials",
 			"ui.MeetCUJ.doc",
+		},
+		VarDeps: []string{
+			"ui.MeetCUJ.bond_credentials",
 		},
 		Params: []testing.Param{{
 			// Base case.

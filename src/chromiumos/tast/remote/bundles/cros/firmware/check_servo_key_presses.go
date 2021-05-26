@@ -23,7 +23,7 @@ func init() {
 		Desc:        "Verifies that key presses can be initiated on the servo's keyboard emulator and that the DUT can receive them",
 		Contacts:    []string{"kmshelton@chromium.org", "cros-fw-engprod@google.com", "chromeos-firmware@google.com"},
 		ServiceDeps: []string{"tast.cros.firmware.UtilsService"},
-		Vars:        []string{"servo"},
+		VarDeps:     []string{"servo"},
 	})
 }
 

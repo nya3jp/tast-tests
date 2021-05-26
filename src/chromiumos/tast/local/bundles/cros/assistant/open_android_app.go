@@ -24,7 +24,7 @@ func init() {
 		Contacts:     []string{"updowndota@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Vars:         []string{"assistant.username", "assistant.password"},
+		VarDeps:      []string{"assistant.username", "assistant.password"},
 		Timeout:      chrome.GAIALoginTimeout + time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},

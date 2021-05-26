@@ -20,7 +20,7 @@ func init() {
 		Desc:         "Checks USB Type C mode switch behaviour on login",
 		Contacts:     []string{"pmalani@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
-		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
+		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 		Data:         []string{"testcert.p12"},
 		Params: []testing.Param{
 			// For running manually.

@@ -60,7 +60,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeForHearthstone,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.Hearthstone.username", "arcappcompat.Hearthstone.password"},
+		VarDeps: []string{"arcappcompat.Hearthstone.username", "arcappcompat.Hearthstone.password"},
 	})
 }
 
