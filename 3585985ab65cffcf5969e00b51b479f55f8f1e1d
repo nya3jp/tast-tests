@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5e75786_642aabf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-26T23:24:52Z",
+      "side": 1,
+      "message": "end with .",
+      "range": {
+        "startLine": 510,
+        "startChar": 110,
+        "endLine": 510,
+        "endChar": 113
+      },
+      "revId": "3585985ab65cffcf5969e00b51b479f55f8f1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d532c8f_98d26c33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-05-26T23:24:52Z",
+      "side": 1,
+      "message": "Not for this cl. It seems that s is passed to all of these simialr functions. It is not recommended to do so. Suggest to remove it in a separate cl.",
+      "range": {
+        "startLine": 511,
+        "startChar": 44,
+        "endLine": 511,
+        "endChar": 60
+      },
+      "revId": "3585985ab65cffcf5969e00b51b479f55f8f1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
