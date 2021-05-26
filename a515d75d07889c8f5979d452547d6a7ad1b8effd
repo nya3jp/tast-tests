@@ -39,6 +39,30 @@
       },
       "revId": "a515d75d07889c8f5979d452547d6a7ad1b8effd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d94215ca_07e889f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-05-26T22:21:24Z",
+      "side": 1,
+      "message": "We can always update the name once we get the continuous builds running (I can submit a CL to update the names then); the name itself shouldn\u0027t have a bearing on how the tests run.\n\n\u003e Also not sure we need to define two parameters here? \n\u003e \"manual\" and \"smoke\" should be merged?\n\nThere still need to be two distinct test variants here. One which runs \"minimally\" on CQ and really doesn\u0027t do much except exercise the ectool API to check if a TBT device is connected. Since it\u0027s not a full-fledged test, the name \"smoke\" sounds reasonable to me (that was what the reviewer had initially suggested).",
+      "parentUuid": "534d1798_b4312549",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "a515d75d07889c8f5979d452547d6a7ad1b8effd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
