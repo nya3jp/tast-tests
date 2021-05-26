@@ -131,6 +131,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2e750f3_461a5939",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-26T20:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0f703b2_b7f6f9ae",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8df4882a_616c9dc7",
@@ -225,6 +249,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "455ace76_e847b6f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-26T20:23:33Z",
+      "side": 1,
+      "message": "Now it landed in the description of each test.",
+      "parentUuid": "7cb3d780_246b23da",
+      "range": {
+        "startLine": 62,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 55
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f80a18b_5b0254cb",
@@ -262,6 +310,30 @@
       "side": 1,
       "message": "Here it\u0027s no isssue, as I\u0027m not flooding with ping, using a reasonable rate of 1/10ms.\nI plan to upgrade AP0 for the netperf tests.",
       "parentUuid": "2f80a18b_5b0254cb",
+      "range": {
+        "startLine": 76,
+        "startChar": 74,
+        "endLine": 76,
+        "endChar": 84
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4377edf6_283bdc4c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-26T20:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba11158d_c23deeb4",
       "range": {
         "startLine": 76,
         "startChar": 74,
@@ -379,6 +451,30 @@
       "side": 1,
       "message": "ACK",
       "parentUuid": "878bc94c_a8eba8f6",
+      "range": {
+        "startLine": 256,
+        "startChar": 14,
+        "endLine": 256,
+        "endChar": 40
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62062f95_65b78d15",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-26T20:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a2f5039_b469ddeb",
       "range": {
         "startLine": 256,
         "startChar": 14,
