@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10262c7f_54d20cf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2021-05-26T23:14:31Z",
+      "side": 1,
+      "message": "nit: Closes help app and waits for it to be gone from a11y tree.",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 15
+      },
+      "revId": "2a3d53e903dd3b9beec11f0df90d784e32326477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
