@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	patchpanel "chromiumos/tast/local/network/patchpanel_client"
-	"chromiumos/tast/testing"
 )
 
 // Subset of bindRootDirectories that should be mounted writable.
@@ -44,6 +43,7 @@ type NetworkChroot struct {
 	netTempDir             string
 	netJailArgs            []string
 	netnsLifelineFD        *os.File
+	netnsName              string
 	startupCmd             *testexec.Cmd
 	NetEnv                 []string
 }
@@ -87,7 +87,7 @@ func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
 	netnsIP := net.IP(b).String()
 	n.netConfigFileValues["netns_ip"] = netnsIP
 	n.netnsLifelineFD = fd
-	netnsName := resp.NetnsName
+	n.netnsName = resp.NetnsName
 
 	if err := n.makeChroot(ctx); err != nil {
 		return "", errors.Wrap(err, "failed making the chroot")
@@ -98,7 +98,7 @@ func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
 	}
 
 	cmdArgs := append(n.netJailArgs, "/bin/bash", filepath.Join("/", startup), "&")
-	ipArgs := []string{"netns", "exec", netnsName, "/sbin/minijail0", "-C", n.netTempDir}
+	ipArgs := []string{"netns", "exec", n.netnsName, "/sbin/minijail0", "-C", n.netTempDir}
 	ipArgs = append(ipArgs, cmdArgs...)
 	n.startupCmd = testexec.CommandContext(ctx, "ip", ipArgs...)
 	n.startupCmd.Env = append(os.Environ(), n.NetEnv...)
@@ -265,15 +265,17 @@ func (n *NetworkChroot) writeConfigs() error {
 // RunChroot runs a command in a chroot, within a separate network namespace,
 // and returns the output from stdout.
 func (n *NetworkChroot) RunChroot(ctx context.Context, args []string) (string, error) {
-	cmdArgs := append(n.netJailArgs, args...)
-	minijailArgs := []string{"-e", "-C", n.netTempDir}
-	minijailArgs = append(minijailArgs, cmdArgs...)
-	output, err := testexec.CommandContext(ctx, "minijail0", minijailArgs...).Output()
+	minijailArgs := []string{"/sbin/minijail0", "-C", n.netTempDir}
+	ipArgs := []string{"netns", "exec", n.netnsName}
+	ipArgs = append(ipArgs, minijailArgs...)
+	ipArgs = append(ipArgs, n.netJailArgs...)
+	ipArgs = append(ipArgs, args...)
+	output, err := testexec.CommandContext(ctx, "ip", ipArgs...).Output()
+	o := string(output)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to run command inside the chroot")
+		return o, errors.Wrapf(err, "failed to run command inside the chroot %s", o)
 	}
-
-	return string(output), nil
+	return o, nil
 }
 
 // getPidFile returns the integer contents of |pid_file| in the chroot.
@@ -341,34 +343,29 @@ func (n *NetworkChroot) AddStartupCommand(command string) {
 	n.netConfigFileTemplates[startup] = n.netConfigFileTemplates[startup] + fmt.Sprintf("%s\n", command)
 }
 
-// GetLogContents return the logfiles from the chroot. |logFilePath| is the
-// relative path to the chroot.
-func (n *NetworkChroot) GetLogContents(ctx context.Context, logFilePath string) (string, error) {
-	startLog := n.chrootPath(startupLog)
-	serverLog := n.chrootPath(logFilePath)
-	if assureExists(serverLog) && assureExists(startLog) {
-		contents, err := testexec.CommandContext(ctx, "head", "-10000", serverLog, startLog).Output()
-		if err != nil {
-			return "", errors.Wrap(err, "failed getting the logfiles from the chroot")
+// GetLogContents return the logfiles from the chroot. |logFilePaths| is a list
+// of relative paths to the chroot. A path will be ignored if it does not exist.
+func (n *NetworkChroot) GetLogContents(ctx context.Context, logFilePaths []string) (string, error) {
+	logFilePaths = append(logFilePaths, startupLog)
+
+	headArgs := []string{"-10000"}
+	for _, log := range logFilePaths {
+		path := n.chrootPath(log)
+		if assureExists(path) {
+			headArgs = append(headArgs, path)
 		}
-		return string(contents), nil
-	} else if assureExists(serverLog) {
-		testing.ContextLogf(ctx, "%s does not exist", startLog)
-		contents, err := testexec.CommandContext(ctx, "head", "-10000", startLog).Output()
-		if err != nil {
-			return "", errors.Wrap(err, "failed getting the logfiles from the chroot")
-		}
-		return string(contents), nil
-	} else if assureExists(startLog) {
-		testing.ContextLogf(ctx, "%s does not exist", serverLog)
-		contents, err := testexec.CommandContext(ctx, "head", "-10000", serverLog).Output()
-		if err != nil {
-			return "", errors.Wrap(err, "failed getting the logfiles from the chroot")
-		}
-		return string(contents), nil
 	}
 
-	return "", errors.Errorf("failed logfiles do not exist: %s, %s", startLog, serverLog)
+	if len(headArgs) == 1 {
+		return "", nil
+	}
+
+	contents, err := testexec.CommandContext(ctx, "head", headArgs...).Output()
+	if err != nil {
+		return "", errors.Wrap(err, "failed getting the logfiles from the chroot")
+	}
+
+	return string(contents), nil
 }
 
 // BridgeDbusNamespaces make the system DBus daemon visible inside the chroot.
