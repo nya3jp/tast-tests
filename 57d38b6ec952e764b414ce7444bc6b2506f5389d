@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd9692ad_c7f8d6ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-05-26T23:20:05Z",
+      "side": 1,
+      "message": "Thanks! If it\u0027s possible, I would prefer to keep this in one change. The other obvious changes are needed to keep the code clean.",
+      "parentUuid": "472fbc37_c2d186ed",
+      "revId": "57d38b6ec952e764b414ce7444bc6b2506f5389d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb1513e4_4edaabe8",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-05-26T03:17:16Z",
       "side": 1,
       "message": "As I mentioned in another thread, I think an utterance \"tab created\" is one cause of the flakiness.\nI don\u0027t think doing this here doesn\u0027t solve the issue.\n\nAlso, if the second connection is the correct one, the tts would have two \"Testing\" utterance and I\u0027m afraid this would make another source of flakiness.",
+      "revId": "57d38b6ec952e764b414ce7444bc6b2506f5389d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bd15841_5b1924cb",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-05-26T23:20:05Z",
+      "side": 1,
+      "message": "This new strategy fixes a different error, like below:\n\nExpected utterances: [ \"ChromeVox Options\" ], but got: []\n\nIn the error above, we never received any utterances because we weren\u0027t connecting to the correct background page.\n\nI\u0027d also like to comment on the situation below:\n\nExpected utterances: [ \"ChromeVox Options\" ], but got [ \"Tab created\"]\n\nWith the way that SpeechMonitor is currently implemented, extra utterances shouldn\u0027t cause failures because they are thrown out if they do not match the expected utterance (see the consume function).\n\nThe more likely explanation is that ChromeVox isn\u0027t reading \"ChromeVox Options\" at all, which is why we get a failure.",
+      "parentUuid": "fb1513e4_4edaabe8",
       "revId": "57d38b6ec952e764b414ce7444bc6b2506f5389d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b69afbbe_c9e41835",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-05-26T23:20:05Z",
+      "side": 1,
+      "message": "We need this inside NewSpeechMonitor(), so that\u0027s why I kept this separate of SpeechMonitor.",
+      "parentUuid": "7b8aba31_c5990e43",
+      "revId": "57d38b6ec952e764b414ce7444bc6b2506f5389d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76d42afd_47eed4b4",
         "filename": "src/chromiumos/tast/local/a11y/a11y.go",
         "patchSetId": 5
@@ -82,6 +136,24 @@
       "writtenOn": "2021-05-26T03:17:16Z",
       "side": 1,
       "message": "Is it possible to listen both of onSpeak and onSpeakWithAudioStream? It\u0027s much simple.",
+      "revId": "57d38b6ec952e764b414ce7444bc6b2506f5389d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0723fe43_6f7591f2",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-05-26T23:20:05Z",
+      "side": 1,
+      "message": "If we listen to both, we run the risk of getting duplicate utterances. In my experience, it\u0027s best to listen to onSpeak for Google TTS and to onSpeakWithAudioStream for eSpeak. I think there a small differences between their code that might explain this difference.",
+      "parentUuid": "76d42afd_47eed4b4",
       "revId": "57d38b6ec952e764b414ce7444bc6b2506f5389d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
