@@ -192,6 +192,34 @@ var (
 	}
 )
 
+// Constants that used by WireGuard server
+const (
+	// Keys are generated randomly using wireguard-tools, only for test usages.
+	WGClientPrivateKey      = "8Ez9VkVl2JL+OhrLZvV2FXsRJTqtBpykhErNef5dzns="
+	WGClientPublicKey       = "dN8f5XplOXpNDP1m9b1V3/AVuOogbw+HckGisfEAphA="
+	wgServerPrivateKey      = "kKhUZZYELpnWFXZmHKvze5kMJ4UfViHo0aacwx9VSXo="
+	WGServerPublicKey       = "VL4pfwqKV4pWX1xJRmvceOZLTftNKi2PrFoBbJWNKXw="
+	WGPresharedKey          = "LqgZ5/qyT8J8nr25n9IEcUi+vOBkd3sphGn1ClhkHw0="
+	WGServerOverlayIP       = "10.12.14.1"
+	WGServerListenPort      = "12345"
+	WGClientOverlayIP       = "10.12.14.2"
+	WGClientOverlayIPPrefix = "32"
+	wgConfigFile            = "tmp/wg.conf"
+)
+
+var (
+	wgConfigs = map[string]string{
+		wgConfigFile: "[Interface]\n" +
+			"PrivateKey = {{.server_private_key}}\n" +
+			"ListenPort = {{.server_listen_port}}\n" +
+			"\n" +
+			"[Peer]\n" +
+			"PublicKey = {{.client_public_key}}\n" +
+			"AllowedIPs = {{.client_ip}}/{{.client_ip_prefix}}\n" +
+			"PresharedKey = {{.preshared_key}}",
+	}
+)
+
 // Server represents a VPN server that can be used in the test.
 type Server struct {
 	UnderlayIP   string
@@ -305,6 +333,40 @@ func StartOpenVPNServer(ctx context.Context, useUserPassword bool) (*Server, err
 	}
 	server.UnderlayIP = underlayIP
 	server.OverlayIP = openvpnServerIPAddress
+	return server, nil
+}
+
+// StartWireGuardServer starts a WireGuard server.
+func StartWireGuardServer(ctx context.Context) (*Server, error) {
+	chro := chroot.NewNetworkChroot()
+	server := &Server{
+		netChroot:    chro,
+		stopCommands: [][]string{{"/bin/ip", "link", "del", "wg1"}},
+		pidFiles:     []string{},
+		logFile:      "", // TODO(jiejiang): No logs for wg server, need to refactor the get log interface
+	}
+
+	chro.AddConfigTemplates(wgConfigs)
+	configValues := map[string]interface{}{
+		"server_private_key": wgServerPrivateKey,
+		"server_listen_port": WGServerListenPort,
+		"client_public_key":  WGClientPublicKey,
+		"client_ip":          WGClientOverlayIP,
+		"client_ip_prefix":   WGClientOverlayIPPrefix,
+		"preshared_key":      WGPresharedKey,
+	}
+	chro.AddConfigValues(configValues)
+	chro.AddStartupCommand("ip link add wg1 type wireguard")
+	chro.AddStartupCommand("wg setconf wg1 /" + wgConfigFile)
+	chro.AddStartupCommand("ip addr add dev wg1 " + WGServerOverlayIP)
+	chro.AddStartupCommand("ip link set dev wg1 up")
+
+	underlayIP, err := chro.Startup(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start WireGuard server")
+	}
+	server.UnderlayIP = underlayIP
+	server.OverlayIP = WGServerOverlayIP
 	return server, nil
 }
 
