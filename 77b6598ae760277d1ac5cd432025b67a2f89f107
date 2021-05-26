@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e857472_c01b27cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-26T01:20:42Z",
+      "side": 1,
+      "message": "inconsistent capitalization? 0xdd vs. 0x0A",
+      "range": {
+        "startLine": 71,
+        "startChar": 29,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "77b6598ae760277d1ac5cd432025b67a2f89f107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "278cac78_a5ccf419",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
         "patchSetId": 7
@@ -36,6 +59,76 @@
         "startChar": 0,
         "endLine": 72,
         "endChar": 2
+      },
+      "revId": "77b6598ae760277d1ac5cd432025b67a2f89f107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4fd245b_67c6ac64",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-26T01:20:42Z",
+      "side": 1,
+      "message": "*shrug* whatever works for you",
+      "parentUuid": "278cac78_a5ccf419",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "77b6598ae760277d1ac5cd432025b67a2f89f107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a25846_421fa8aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-26T01:20:42Z",
+      "side": 1,
+      "message": "magic?\n\nthere are still plenty of other magics below (lines 324, 329, 340, 341, ...)\n\nI think one thing that might help all of this, is if you use a struct approach to defining some of these layouts, and use encoding/binary:\n\nhttps://golang.org/pkg/encoding/binary/\n\nThis is roughly related: https://www.jonathan-petitcolas.com/2014/09/25/parsing-binary-files-in-go.html\n\nI believe that would resolve the bounds check questions much more naturally, too.\n\nDisclaimer: I\u0027ve only used that package ~once, so it\u0027s possible it doesn\u0027t give you a lot of wins.",
+      "range": {
+        "startLine": 321,
+        "startChar": 12,
+        "endLine": 321,
+        "endChar": 13
+      },
+      "revId": "77b6598ae760277d1ac5cd432025b67a2f89f107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9a11e48_a91ab652",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-05-26T01:20:42Z",
+      "side": 1,
+      "message": "have we bounds-checked that i+tagLen is within the Contents? and actually, we technically need to bounds-check for lines 323, 326, ... too",
+      "range": {
+        "startLine": 335,
+        "startChar": 4,
+        "endLine": 336,
+        "endChar": 54
       },
       "revId": "77b6598ae760277d1ac5cd432025b67a2f89f107",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
