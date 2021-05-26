@@ -47,6 +47,7 @@ type Config struct {
 const (
 	TypeL2TPIPsec = "L2TP/IPsec"
 	TypeOpenVPN   = "OpenVPN"
+	TypeWireGuard = "WireGuard"
 )
 
 // Authentication types.
@@ -202,6 +203,8 @@ func (c *Connection) startServer(ctx context.Context) error {
 		c.Server, err = StartL2TPIPsecServer(ctx, c.config.AuthType, c.config.IPsecUseXauth, c.config.UnderlayIPIsOverlayIP)
 	case TypeOpenVPN:
 		c.Server, err = StartOpenVPNServer(ctx, c.config.OpenVPNUseUserPassword)
+	case TypeWireGuard:
+		c.Server, err = StartWireGuardServer(ctx)
 	default:
 		return errors.Errorf("unexpected VPN type %s", c.config.Type)
 	}
@@ -239,6 +242,8 @@ func (c *Connection) createProperties() (map[string]interface{}, error) {
 		return c.createL2TPIPsecProperties(serverAddress)
 	case TypeOpenVPN:
 		return c.createOpenVPNProperties(serverAddress)
+	case TypeWireGuard:
+		return c.createWireGuardProperties(serverAddress), nil
 	default:
 		return nil, errors.Errorf("unexpected server type: got %s", c.config.Type)
 	}
@@ -328,6 +333,29 @@ func (c *Connection) createOpenVPNProperties(serverAddress string) (map[string]i
 	}
 
 	return properties, nil
+}
+
+func (c *Connection) createWireGuardProperties(serverAddress string) map[string]interface{} {
+	peers := []map[string]string{{
+		"PublicKey":    WGServerPublicKey,
+		"PresharedKey": WGPresharedKey,
+		"Endpoint":     serverAddress + ":" + WGServerListenPort,
+		"AllowedIPs":   "0.0.0.0/0",
+	}}
+	staticIPConfig := map[string]interface{}{
+		"Address": WGClientOverlayIP,
+		// "Prefixlen": 24,
+	}
+	return map[string]interface{}{
+		"Name":                 "test-vpn-wg",
+		"Provider.Host":        "wireguard",
+		"Provider.Type":        "wireguard",
+		"Type":                 "vpn",
+		"WireGuard.PrivateKey": WGClientPrivateKey,
+		// "WireGuard.Address":    vpn.WGClientOverlayIP,
+		"WireGuard.Peers": peers,
+		"StaticIPConfig":  staticIPConfig,
+	}
 }
 
 func (c *Connection) connectService(ctx context.Context) (bool, error) {

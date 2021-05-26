@@ -152,6 +152,14 @@ func init() {
 					OpenVPNCertVerifyCNOnly: true,
 				},
 			},
+		}, {
+			Name: "wireguard",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:     vpn.TypeWireGuard,
+					AuthType: vpn.AuthTypePSK,
+				},
+			},
 		}},
 	})
 }
