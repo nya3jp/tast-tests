@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5c5ef2e_d18c3642",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-05-26T06:49:15Z",
+      "side": 1,
+      "message": "Done. You may not have overlooked this as it was 1 minute. :)",
+      "parentUuid": "270dcdda_4c35d825",
+      "range": {
+        "startLine": 127,
+        "startChar": 38,
+        "endLine": 127,
+        "endChar": 54
+      },
+      "revId": "34a70b9147a8fe74f6d0c2683bf05bd81a5bd0dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5cbf420_2afa4f3d",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-05-26T05:17:15Z",
       "side": 1,
       "message": "nit/style: could you move this line to L235, which is just before its use, to minimize its scope?",
+      "revId": "34a70b9147a8fe74f6d0c2683bf05bd81a5bd0dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcaf5ecf_281c42fb",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-05-26T06:49:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5cbf420_2afa4f3d",
       "revId": "34a70b9147a8fe74f6d0c2683bf05bd81a5bd0dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
