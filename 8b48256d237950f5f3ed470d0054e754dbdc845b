@@ -39,6 +39,30 @@
       },
       "revId": "8b48256d237950f5f3ed470d0054e754dbdc845b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95a1cedd_fccf274f",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-05-26T21:13:24Z",
+      "side": 1,
+      "message": "Done. Yeah my comment actually doesn\u0027t make much sense since the routertype has nothing to do with the DUT.",
+      "parentUuid": "790a9b1f_62467b15",
+      "range": {
+        "startLine": 244,
+        "startChar": 5,
+        "endLine": 244,
+        "endChar": 53
+      },
+      "revId": "8b48256d237950f5f3ed470d0054e754dbdc845b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
