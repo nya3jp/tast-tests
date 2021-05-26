@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54f4301f_839d099e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-05-26T20:23:33Z",
+      "side": 1,
+      "message": "I\u0027ve refactored the test into two tests with the common part separated. I\u0027m not sure if this is how you wanted it done, but in my opinion is good enough (if not better).\nPlease review.",
+      "revId": "956c477ac3d7932ab580ba084b55b800f7cf89b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
