@@ -39,6 +39,30 @@
       },
       "revId": "774a7ed27e0c64185938523739e449b0d42457ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed5a925_4705aa78",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2021-05-26T08:50:04Z",
+      "side": 1,
+      "message": "Yeah I think your statement makes perfect sense, and yes, that\u0027s exactly what I was trying to do in CL:2910068.\n\nAgree that it\u0027s probably better to limit the usage of the reader until people propose a general solution of reading logs of the current boot across all, or at least the major syslogs.\n(I think it\u0027s relatively doable/reliable to use the line \"Booting Linux on physical CPU\" as the pattern for /var/log/messages to determine where the current boot was started from, but that\u0027s not my case here and just a thought anyways)\n\nI\u0027ll try to tee the hammerd log to /tmp which should help simplify my test as well, thanks for the clarification and suggestion!",
+      "parentUuid": "c0e3bb64_bd7c6a33",
+      "range": {
+        "startLine": 200,
+        "startChar": 5,
+        "endLine": 200,
+        "endChar": 18
+      },
+      "revId": "774a7ed27e0c64185938523739e449b0d42457ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
