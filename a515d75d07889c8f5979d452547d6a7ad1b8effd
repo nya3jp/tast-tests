@@ -63,6 +63,30 @@
       },
       "revId": "a515d75d07889c8f5979d452547d6a7ad1b8effd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7888775e_3184a4cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-05-26T22:24:11Z",
+      "side": 1,
+      "message": "Additionally, we\u0027ve shared documentation with partners about how to run these tests , which includes usage of the term \"manual\". We can update this to be something like \"lab\", but I\u0027d like to see the entire scheduling and continuous testing flow deployed successfully before making such changes.",
+      "parentUuid": "d94215ca_07e889f2",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "a515d75d07889c8f5979d452547d6a7ad1b8effd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
