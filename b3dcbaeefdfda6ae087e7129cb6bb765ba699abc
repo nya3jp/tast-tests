@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c05a44c5_d9948299",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-26T18:05:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbb65bb6_b0ecb4a4",
+      "range": {
+        "startLine": 9,
+        "startChar": 110,
+        "endLine": 9,
+        "endChar": 182
+      },
+      "revId": "b3dcbaeefdfda6ae087e7129cb6bb765ba699abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cc94b36f_31dbab77",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 15
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "c77edb4d_3cfeff69",
+      "range": {
+        "startLine": 684,
+        "startChar": 0,
+        "endLine": 684,
+        "endChar": 61
+      },
+      "revId": "b3dcbaeefdfda6ae087e7129cb6bb765ba699abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17f4a25b_87152be3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-26T18:05:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba194da5_8593970f",
       "range": {
         "startLine": 684,
         "startChar": 0,
