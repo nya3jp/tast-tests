@@ -178,7 +178,7 @@ func DrallionTabletPower(ctx context.Context, s *testing.State) {
 		// Use servo to hold down power button
 		s.Logf("Pressing power key for %s seconds", pressDuration)
 		if err = pxy.Servo().SetString(ctx, "power_key", pressDuration); err != nil {
-			return errors.Wrap(err, "Error pressing the power button")
+			return errors.Wrap(err, "error pressing the power button")
 		}
 
 		// Verify that power down menu is only present when expected

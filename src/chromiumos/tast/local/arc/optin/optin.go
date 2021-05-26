@@ -80,7 +80,7 @@ func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome
 
 	var msg string
 	if err := conn.Eval(ctx, fmt.Sprintf("%s?%s:''", errorPageLoaded, errorMessage), &msg); err == nil && msg != "" {
-		return errors.New(fmt.Sprintf("failed to load terms of service page: %s", msg))
+		return errors.Errorf("failed to load terms of service page: %s", msg)
 	}
 
 	if err := conn.Eval(ctx, "termsPage.onAgree()", nil); err != nil {
