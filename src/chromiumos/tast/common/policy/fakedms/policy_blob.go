@@ -152,6 +152,21 @@ func (pb *PolicyBlob) AddPublicAccountPolicy(accountID string, p policy.Policy) 
 	return addValue(p, policies.MandatoryPM)
 }
 
+// AddLegacyDevicePolicy adds a given one to many legacy device policy to the PolicyBlob.
+func (pb *PolicyBlob) AddLegacyDevicePolicy(field string, value interface{}) error {
+	if pb.DevicePM == nil {
+		pb.DevicePM = make(BlobPolicyMap)
+	}
+
+	vJSON, err := json.Marshal(value)
+	if err != nil {
+		return errors.Wrapf(err, "could not marshal the %s field", field)
+	}
+	pb.DevicePM[field] = vJSON
+
+	return nil
+}
+
 // MarshalJSON marshals the policy blob into JSON. PublicAccountPs needs special
 // handling as the key is based on the account ID. To work around this, we first
 // marshal and unmarshal pb into a map which omits PublicAccountPs, and add the
