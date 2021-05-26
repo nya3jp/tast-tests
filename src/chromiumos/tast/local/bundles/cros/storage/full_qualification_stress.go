@@ -164,7 +164,7 @@ func soakTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWr
 		func(ctx context.Context) {
 			runFioStress(ctx, s, testConfigNoVerify.WithPath(stress.BootDeviceFioPath).WithJob("64k_stress"))
 			// 25% of required "surfing" stress duration.
-			runFioStress(ctx, s, testConfigVerify.WithPath(stress.BootDeviceFioPath).WithJob("surfing").WithDuration(singleTestDuration/4))
+			runFioStress(ctx, s, testConfigNoVerify.WithPath(stress.BootDeviceFioPath).WithJob("surfing").WithDuration(singleTestDuration/4))
 			if err := testing.Sleep(ctx, 5*time.Minute); errors.Is(err, context.DeadlineExceeded) {
 				return
 			}
