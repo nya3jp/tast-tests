@@ -16,6 +16,74 @@
       "message": "Hi Hiroki,\n\nDo you mind reviewing this change for me? I\u0027m hoping that this will stabilize the SpeechMonitor so that it can be used for other tests too.\n\nThanks!",
       "revId": "57d38b6ec952e764b414ce7444bc6b2506f5389d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "472fbc37_c2d186ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-26T03:17:16Z",
+      "side": 1,
+      "message": "Thank you for improving this!\n\nI wonder if we can split this CL into two:\n- finding the correct tts extension\n- other obvious changes\n\nI think we need to be careful for the first one. For the second one, already lgtm.",
+      "revId": "57d38b6ec952e764b414ce7444bc6b2506f5389d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb1513e4_4edaabe8",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-26T03:17:16Z",
+      "side": 1,
+      "message": "As I mentioned in another thread, I think an utterance \"tab created\" is one cause of the flakiness.\nI don\u0027t think doing this here doesn\u0027t solve the issue.\n\nAlso, if the second connection is the correct one, the tts would have two \"Testing\" utterance and I\u0027m afraid this would make another source of flakiness.",
+      "revId": "57d38b6ec952e764b414ce7444bc6b2506f5389d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b8aba31_c5990e43",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-26T03:17:16Z",
+      "side": 1,
+      "message": "How about making it a member of SpeechMonitor?",
+      "revId": "57d38b6ec952e764b414ce7444bc6b2506f5389d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76d42afd_47eed4b4",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-26T03:17:16Z",
+      "side": 1,
+      "message": "Is it possible to listen both of onSpeak and onSpeakWithAudioStream? It\u0027s much simple.",
+      "revId": "57d38b6ec952e764b414ce7444bc6b2506f5389d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
