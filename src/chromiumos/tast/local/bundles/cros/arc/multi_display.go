@@ -937,8 +937,7 @@ func snappingOnDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 								return testing.PollBreak(err)
 							}
 							if !reflect.DeepEqual(win.BoundsInRoot, param.wantBnds) {
-								return errors.Errorf(
-									"unexpected snapped window bounds: got %+v; want %+v",
+								return errors.Errorf("unexpected snapped window bounds: got %+v; want %+v",
 									win.BoundsInRoot, param.wantBnds)
 							}
 							return nil

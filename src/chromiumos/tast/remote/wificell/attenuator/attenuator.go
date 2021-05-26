@@ -130,8 +130,7 @@ func (a *Attenuator) Close() {
 // Attenuation returns attenuation of the particular attenuator channel.
 func (a *Attenuator) Attenuation(ctx context.Context, channel int) (float64, error) {
 	if channel > a.channels {
-		return 0, errors.Errorf(
-			"invalid channel %d (valid channels: [%d, %d] for model %s)",
+		return 0, errors.Errorf("invalid channel %d (valid channels: [%d, %d] for model %s)",
 			channel, 0, a.channels-1, a.model)
 	}
 
@@ -147,8 +146,7 @@ func (a *Attenuator) Attenuation(ctx context.Context, channel int) (float64, err
 // SetAttenuation sets attenuation on particular channel.
 func (a *Attenuator) SetAttenuation(ctx context.Context, channel int, val float64) error {
 	if channel >= a.channels {
-		return errors.Errorf(
-			"invalid channel %d (valid channels: [%d, %d] for model %s)",
+		return errors.Errorf("invalid channel %d (valid channels: [%d, %d] for model %s)",
 			channel, 0, a.channels-1, a.model)
 	}
 	if val > a.maxAtten || val < 0 {
@@ -197,8 +195,7 @@ func (a *Attenuator) approximateFrequency(ctx context.Context, channel, freq int
 // frequency and channel and adds a variable attenuation on it.
 func (a *Attenuator) SetTotalAttenuation(ctx context.Context, channel int, attenDb float64, frequencyMhz int) error {
 	if channel >= a.channels {
-		return errors.Errorf(
-			"invalid channel %d (valid channels: [%d, %d] for model %s)",
+		return errors.Errorf("invalid channel %d (valid channels: [%d, %d] for model %s)",
 			channel, 0, a.channels-1, a.model)
 	}
 	freqToFixedLoss := a.fixedAttenuations[channel]
@@ -212,8 +209,7 @@ func (a *Attenuator) SetTotalAttenuation(ctx context.Context, channel int, atten
 // This is obtained by finding the maximum fixed loss of all frequencies the channel has.
 func (a *Attenuator) MinTotalAttenuation(channel int) (float64, error) {
 	if channel >= a.channels {
-		return 0, errors.Errorf(
-			"invalid channel %d (valid channels: [%d, %d] for model %s)",
+		return 0, errors.Errorf("invalid channel %d (valid channels: [%d, %d] for model %s)",
 			channel, 0, a.channels-1, a.model)
 	}
 	return a.minTotalAttenuation[channel], nil

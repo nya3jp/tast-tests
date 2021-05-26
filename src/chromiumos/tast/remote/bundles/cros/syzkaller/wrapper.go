@@ -238,7 +238,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to copy syzkaller logfile: %v", err)
 	}
 
-	s.Log("Done fuzzing, exiting.")
+	s.Log("Done fuzzing, exiting")
 }
 
 func findSyzkallerArch(ctx context.Context, d *dut.DUT) (string, error) {
