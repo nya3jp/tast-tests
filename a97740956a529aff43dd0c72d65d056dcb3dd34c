@@ -51,6 +51,23 @@
       "parentUuid": "c28dd74d_1ee0a0d1",
       "revId": "a97740956a529aff43dd0c72d65d056dcb3dd34c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e632e344_164cda70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2021-05-27T21:57:15Z",
+      "side": 1,
+      "message": "naive question: how does it deal with drivers that only get used when some external device is connected?",
+      "revId": "a97740956a529aff43dd0c72d65d056dcb3dd34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
