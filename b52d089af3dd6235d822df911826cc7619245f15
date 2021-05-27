@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "505f2bc0_396f8234",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-27T13:14:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec279a71_c4849d4c",
+      "revId": "b52d089af3dd6235d822df911826cc7619245f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "85100954_a2bcafd1",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5957a822_b8a55f64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-27T13:14:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ec1f18a_9c593dad",
+      "revId": "b52d089af3dd6235d822df911826cc7619245f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6625ae90_db2e3f8e",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-05-27T12:31:04Z",
       "side": 1,
       "message": "Policies are only updated after Chrome startup, by Chrome.",
+      "revId": "b52d089af3dd6235d822df911826cc7619245f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63af5ed2_a7901a56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-27T13:14:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6625ae90_db2e3f8e",
       "revId": "b52d089af3dd6235d822df911826cc7619245f15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
