@@ -75,9 +75,11 @@ func SmartSelectionChrome(ctx context.Context, s *testing.State) {
 	if err := ui.Select(ctx, node, 0, node, 25); err != nil {
 		s.Fatal("Failed to select address: ", err)
 	}
-	if _, err := watcher.WaitForEvent(ctx, 20*time.Second); err != nil {
+	es, err := watcher.WaitForEvent(ctx, 20*time.Second)
+	if err != nil {
 		s.Fatal("Failed to wait for the address to be selected: ", err)
 	}
+	defer es.Release(ctx)
 
 	// Right click the selected address.
 	if err := node.RightClick(ctx); err != nil {

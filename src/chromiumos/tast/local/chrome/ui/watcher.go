@@ -15,17 +15,31 @@ import (
 
 // Event represents a chrome.automation AutomationEvent.
 // See https://chromium.googlesource.com/chromium/src/+/HEAD/extensions/common/api/automation.idl#492
+// Do not forget to release the Target node.
 type Event struct {
-	Target    *Node     `json:"target"`
+	Target    *Node
 	Type      EventType `json:"type"`
 	EventFrom string    `json:"eventFrom"`
 	MouseX    int       `json:"mouseX"`
 	MouseY    int       `json:"mouseY"`
 }
 
+// EventSlice is a slice of Events. It is used for releaseing nodes in a group of events.
+type EventSlice []Event
+
+// Release frees the reference to Javascript for this node.
+func (es EventSlice) Release(ctx context.Context) {
+	for _, e := range es {
+		if e.Target != nil {
+			defer e.Target.Release(ctx)
+		}
+	}
+}
+
 // EventWatcher registers the listener of AutomationEvent and watches the events.
 type EventWatcher struct {
 	object *chrome.JSObject
+	tconn  *chrome.TestConn
 }
 
 // NewWatcher creates a new event watcher on a node for the specified event
@@ -48,7 +62,7 @@ func NewWatcher(ctx context.Context, n *Node, eventType EventType) (*EventWatche
 	if err := n.object.Call(ctx, object, expr, eventType); err != nil {
 		return nil, errors.Wrap(err, "failed to execute the registration")
 	}
-	ew := &EventWatcher{object: object}
+	ew := &EventWatcher{object: object, tconn: n.tconn}
 	return ew, nil
 }
 
@@ -64,22 +78,58 @@ func NewRootWatcher(ctx context.Context, tconn *chrome.TestConn, eventType Event
 }
 
 // events returns the list of events in the watcher, and clears it.
-func (ew *EventWatcher) events(ctx context.Context) ([]Event, error) {
-	var events []Event
-	if err := ew.object.Call(ctx, &events, `function() {
+func (ew *EventWatcher) events(ctx context.Context) (es EventSlice, retErr error) {
+	eventsList := &chrome.JSObject{}
+	if err := ew.object.Call(ctx, eventsList, `function() {
 		let events = this.events;
 		this.events = [];
 		return events;
 	}`); err != nil {
 		return nil, err
 	}
+	defer eventsList.Release(ctx)
+
+	var len int
+	if err := eventsList.Call(ctx, &len, "function(){return this.length}"); err != nil {
+		return nil, err
+	}
+
+	var events EventSlice
+	defer func() {
+		if retErr != nil {
+			events.Release(ctx)
+		}
+	}()
+
+	for i := 0; i < len; i++ {
+		node, err := func() (*Node, error) {
+			obj := &chrome.JSObject{}
+			if err := eventsList.Call(ctx, obj, "function(i){return this[i].target}", i); err != nil {
+				return nil, err
+			}
+			return NewNode(ctx, ew.tconn, obj)
+		}()
+		if err != nil {
+			return nil, err
+		}
+
+		var event Event
+		if err := eventsList.Call(ctx, &event, "function(i){return this[i]}", i); err != nil {
+			node.Release(ctx)
+			return nil, err
+		}
+		event.Target = node
+		events = append(events, event)
+	}
+
 	return events, nil
 }
 
 // WaitForEvent waits for at least one event to occur on the event watcher and
 // returns the list of the events.
-func (ew *EventWatcher) WaitForEvent(ctx context.Context, timeout time.Duration) ([]Event, error) {
-	var events []Event
+// The caller is responsible to release EventSlice.
+func (ew *EventWatcher) WaitForEvent(ctx context.Context, timeout time.Duration) (EventSlice, error) {
+	var events EventSlice
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var errInPoll error
 		if events, errInPoll = ew.events(ctx); errInPoll != nil {
@@ -99,9 +149,11 @@ func (ew *EventWatcher) WaitForEvent(ctx context.Context, timeout time.Duration)
 // occurred in the wait.
 func (ew *EventWatcher) EnsureNoEvents(ctx context.Context, duration time.Duration) error {
 	// First, clears the list of events beforehand.
-	if _, err := ew.events(ctx); err != nil {
+	es, err := ew.events(ctx)
+	if err != nil {
 		return errors.Wrap(err, "failed to clear the event list")
 	}
+	es.Release(ctx)
 	// wait, and check the events in the wait.
 	if err := testing.Sleep(ctx, duration); err != nil {
 		return errors.Wrap(err, "failed to wait")
@@ -110,6 +162,7 @@ func (ew *EventWatcher) EnsureNoEvents(ctx context.Context, duration time.Durati
 	if err != nil {
 		return errors.Wrap(err, "failed to access to the event list")
 	}
+	defer events.Release(ctx)
 	if len(events) > 0 {
 		return errors.Errorf("there are %d events", len(events))
 	}
