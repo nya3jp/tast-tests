@@ -7,6 +7,7 @@ package ash
 import (
 	"context"
 	"math"
+	"strings"
 	"sync"
 	"time"
 
@@ -27,6 +28,7 @@ type WindowStateType string
 // As defined in ash::WindowStateType here:
 // https://cs.chromium.org/chromium/src/ash/public/cpp/window_state_type.h
 const (
+	// Normal is actually used to represent both "Normal" and "Default".
 	WindowStateNormal       WindowStateType = "Normal"
 	WindowStateMinimized    WindowStateType = "Minimized"
 	WindowStateMaximized    WindowStateType = "Maximized"
@@ -80,6 +82,9 @@ const (
 
 // ErrWindowNotFound is returned when window is failed to be found.
 var ErrWindowNotFound = errors.New("failed to find window")
+
+// ErrMultipleWindowsFound is returned when multiple windows were returned when only one was requested.
+var ErrMultipleWindowsFound = errors.New("found multiple matching windows")
 
 // String returns the CaptionButtonStatus string representation.
 func (c *CaptionButtonStatus) String() string {
@@ -240,6 +245,10 @@ func SetWindowBounds(ctx context.Context, tconn *chrome.TestConn, id int, b coor
 		DisplayID string      `json:"displayId"`
 	}
 	if err := tconn.Call(ctx, &result, "tast.promisify(chrome.autotestPrivate.setWindowBounds)", id, b, displayID); err != nil {
+		if strings.Contains(err.Error(), "Cannot set bounds of window not in normal show state") {
+			// See https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/chromeos/extensions/autotest_private/autotest_private_api.cc;l=580;drc=d6951ec895f1463826be4069fe7da51e296e4b81
+			return coords.Rect{}, "", errors.New("cannot set bounds of window not in normal show state. Note that a window listed as normal show state in tast may actually be in default show state")
+		}
 		return coords.Rect{}, "", err
 	}
 	return result.Bounds, result.DisplayID, nil
@@ -467,6 +476,26 @@ func FindWindow(ctx context.Context, tconn *chrome.TestConn, predicate func(*Win
 		}
 	}
 	return nil, ErrWindowNotFound
+}
+
+// FindOnlyWindow returns the Chrome window with which the given predicate returns true.
+// If there are multiple, this returns an error.
+func FindOnlyWindow(ctx context.Context, tconn *chrome.TestConn, predicate func(*Window) bool) (*Window, error) {
+	windows, err := FindAllWindows(ctx, tconn, predicate)
+	if err != nil {
+		return nil, err
+	}
+	if len(windows) != 1 {
+		return nil, ErrMultipleWindowsFound
+	}
+	return windows[0], err
+}
+
+// GetActiveWindow returns the active window.
+func GetActiveWindow(ctx context.Context, tconn *chrome.TestConn) (*Window, error) {
+	return FindOnlyWindow(ctx, tconn, func(w *Window) bool {
+		return w.IsActive
+	})
 }
 
 // FindAllWindows returns the Chrome windows with which the given predicate returns true.

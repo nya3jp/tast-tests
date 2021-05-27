@@ -14,6 +14,7 @@ import (
 	"image/png"
 	"io/ioutil"
 	"math"
+	"math/rand"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -22,7 +23,9 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -43,6 +46,9 @@ const goldInstance = "cros-tast-dev"
 const goldctlWorkDir = "/tmp/goldctl"
 const keysFile = "keys.json"
 const screenshotFile = "cropped.png"
+const wholeScreenFile = "screenshot.png"
+const oldScreenshotFile = "old_cropped.png"
+const oldWholeScreenFile = "old_screenshot.png"
 
 const fontConfigDir = "/etc/fonts/conf.d"
 
@@ -68,31 +74,13 @@ type screenshotState interface {
 	Logf(string, ...interface{})
 }
 
-// DiffTestOptions provides all of the ways which you can configure the Diff method.
-type DiffTestOptions struct {
-	// The time to spend looking for a node
-	Timeout time.Duration
-
-	// The minimum difference required to treat two pixels as different.
-	// Specifically, this is dr + dg + db (the sum of the difference in	each channel).
-	PixelDeltaThreshold int
-
-	// Pixels within this distance to a border (e.g. the top, the bottom, the side)
-	// will not be considered when determining difference.
-	IgnoredBorderThickness int
-
-	// Elements that will be removed from the screenshot. For example, if you have
-	// some dynamic content interlaced with static content (eg. file modification
-	// times in the files app).
-	RemoveElements []*nodewith.Finder
-}
-
 // Differ is a type for running screendiffs.
 type Differ interface {
 	Chrome() *chrome.Chrome
 	Tconn() *chrome.TestConn
 	Diff(string, *nodewith.Finder) uiauto.Action
-	DiffWithOptions(string, *nodewith.Finder, DiffTestOptions) uiauto.Action
+	DiffWindow(string) uiauto.Action
+	DiffWithOptions(string, *nodewith.Finder, Options) uiauto.Action
 	GetFailedDiffs() error
 	DieOnFailedDiffs()
 }
@@ -112,13 +100,8 @@ type differ struct {
 	triage      string
 }
 
-// NewDiffer creates a differ for a new instance of chrome with default configuration.
-func NewDiffer(ctx context.Context, state screenshotState) (Differ, error) {
-	return NewDifferFromConfig(ctx, state, Config{})
-}
-
-// NewDifferFromConfig creates a differ for a new instance of chrome with configuration specified in cfg.
-func NewDifferFromConfig(ctx context.Context, state screenshotState, cfg Config) (Differ, error) {
+// NewDiffer creates a differ for a new instance of chrome with configuration specified in cfg.
+func NewDiffer(ctx context.Context, state screenshotState, cfg Config) (Differ, error) {
 	var d = &differ{ctx: ctx, state: state, config: cfg}
 	if err := d.initialize(); err != nil {
 		return nil, errors.Wrap(err, "failed to initialize screen differ")
@@ -127,8 +110,8 @@ func NewDifferFromConfig(ctx context.Context, state screenshotState, cfg Config)
 }
 
 // NewDifferFromChrome creates a differ for an existing chrome instance.
-func NewDifferFromChrome(ctx context.Context, state screenshotState, cr *chrome.Chrome) (Differ, error) {
-	var d = &differ{ctx: ctx, state: state, chrome: cr, config: Config{}}
+func NewDifferFromChrome(ctx context.Context, state screenshotState, cr *chrome.Chrome, cfg Config) (Differ, error) {
+	var d = &differ{ctx: ctx, state: state, chrome: cr, config: cfg}
 	if err := d.initialize(); err != nil {
 		return nil, errors.Wrap(err, "failed to initialize screen differ")
 	}
@@ -163,20 +146,51 @@ func (d *differ) initialize() error {
 	if err != nil {
 		return err
 	}
-
 	d.uiScale = uiScale
+
+	tabletMode, err := ash.TabletModeEnabled(d.ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	region := d.config.Region
+	if region == "" {
+		region = "us"
+	}
+	nameSuffix := d.config.NameSuffix
+	if nameSuffix == "" {
+		nameSuffix = "none"
+	}
+
+	cpuInfo, err := d.getCPUInfo()
+	if err != nil {
+		return err
+	}
+
+	modelName, ok := cpuInfo["Model name"]
+	if !ok {
+		modelName = "unknown"
+	}
+
 	params := map[string]string{
-		"display_zoom_factor":      fmt.Sprintf("%.2f", info.DisplayZoomFactor),
-		"device_scale_factor":      fmt.Sprintf("%.2f", displayMode.DeviceScaleFactor),
-		"scale":                    fmt.Sprintf("%.2f", uiScale),
-		"resolution":               fmt.Sprintf("%dx%d", displayMode.WidthInNativePixels, displayMode.HeightInNativePixels),
-		"board":                    release[lsbrelease.Board],
-		"sub_pixel_antialiasing":   currentSubPixelAntialiasingMethod(),
-		"image_matching_algorithm": "fuzzy",
+		"board":               release[lsbrelease.Board],
+		"device_scale_factor": fmt.Sprintf("%.2f", displayMode.DeviceScaleFactor),
+		"display_zoom_factor": fmt.Sprintf("%.2f", info.DisplayZoomFactor),
 		// Fuzzy matcher is a bit weird. Instead of "no more than <max different pixels> with difference of more than <delta>",
 		// it means "no more than <max different pixels> differing, and no individual pixel has more than <delta> difference."
 		// If we want to accept an image with all pixels off by one, this needs to be at least the number of pixels in the image.
 		"fuzzy_max_different_pixels": "999999999",
+		"image_matching_algorithm":   "fuzzy",
+		"cpu_arch":                   cpuInfo["Architecture"],
+		"cpu_model":                  modelName,
+		"cpu_vendor":                 cpuInfo["Vendor ID"],
+		"name_suffix":                nameSuffix,
+		"region":                     region,
+		"resolution":                 fmt.Sprintf("%dx%d", displayMode.WidthInNativePixels, displayMode.HeightInNativePixels),
+		"sub_pixel_antialiasing":     currentSubPixelAntialiasingMethod(),
+		"scale":                      fmt.Sprintf("%.2f", uiScale),
+		"tablet_mode":                fmt.Sprintf("%t", tabletMode),
+		"test_group":                 d.state.TestName(),
 	}
 
 	dir, ok := testing.ContextOutDir(d.ctx)
@@ -198,10 +212,13 @@ func (d *differ) initialize() error {
 		return err
 	}
 
+	corpus := strings.Split(d.state.TestName(), ".")[0]
 	baseArgs := []string{
-		"--corpus", strings.Split(d.state.TestName(), ".")[0],
+		"--corpus", corpus,
 		"--passfail",
 	}
+
+	d.triage = fmt.Sprintf("https://%s-gold.skia.org/search?corpus=%s&left_filter=name_suffix%%3D%s%%26test_group%%3D%s", goldInstance, corpus, nameSuffix, d.state.TestName())
 
 	if strings.HasPrefix(release[lsbrelease.BuildType], "Continuous Builder") {
 		d.testMode = cq
@@ -215,8 +232,6 @@ func (d *differ) initialize() error {
 			"--changelist", "lookup",
 			"--patchset_id", "lookup",
 			"--jobid", builderMatch[1]}...)
-		// TODO(crbug.com/skia/10808): once gold supports filtering by job id in the URL, set that.
-		d.triage = "Please look at the comment by the gold bot on the CL for a link to approve."
 
 		// Note: This will falsely pick up local builds that have been flashed with an official build.
 		// In the future, we may attempt to come up with a way to distinguish between these two.
@@ -286,15 +301,40 @@ func (d *differ) normalizeDisplayInfoAndMode() (*display.Info, *display.DisplayM
 	return info, displayMode, nil
 }
 
-// Diff takes a screenshot of a ui element and uploads the result to gold.
+// Diff takes a screenshot of a ui element within the active window and uploads the
+// result to gold. If finder is nil, takes a screenshot of the whole window.
 // Collect all your diff results at the end with GetFailedDiffs() or DieOnFailedDiffs()
 func (d *differ) Diff(name string, finder *nodewith.Finder) uiauto.Action {
-	return d.DiffWithOptions(name, finder, DiffTestOptions{})
+	return d.DiffWithOptions(name, finder, Options{})
 }
 
-// DiffWithOptions takes a screenshot of a ui element and uploads the result to gold.
+// Diff takes a screenshot of the active window and uploads the result to gold.
 // Collect all your diff results at the end with GetFailedDiffs() or DieOnFailedDiffs()
-func (d *differ) DiffWithOptions(name string, finder *nodewith.Finder, options DiffTestOptions) uiauto.Action {
+func (d *differ) DiffWindow(name string) uiauto.Action {
+	return d.Diff(name, nil)
+}
+
+// DiffWithOptions takes a screenshot of a ui element within the active window and uploads
+// the result to gold. If finder is nil, takes a screenshot of the whole window.
+// Collect all your diff results at the end with GetFailedDiffs() or DieOnFailedDiffs()
+func (d *differ) DiffWithOptions(name string, finder *nodewith.Finder, options Options) uiauto.Action {
+	// Prioritise per-diff options, then test options, then global defaults.
+	options.FillDefaults(d.config.DefaultOptions)
+	options.FillDefaults(Options{
+		Timeout: time.Second * 2,
+		// A window's corners are rounded, and unlike other elements, the background is inconsistent (since it's the wallpaper).
+		WindowBorderWidthDP: 1,
+		// Allow off-by-one in each channel.
+		// Experimental results seem to show that several boards are off by a single color in some channels,
+		// probably due to floating-point arithmetic. Since it's basically invisible to the end-user, ignore it.
+		PixelDeltaThreshold: 3,
+		// By default, retry once to ensure the screen hasn't  changed, and fail if it has changed.
+		ScreenshotRetries: 1,
+		// Pick a random interval so that we don't happen to always be in sync with
+		// an animation (eg. If a cursor blinks every 100ms, and your interval is 1
+		// second, you're unlikely to pick up this issue during development.
+		ScreenshotRetryInterval: time.Duration(rand.Intn(1000))*time.Millisecond + 500*time.Millisecond})
+
 	return func(_ context.Context) error {
 		fullName := d.state.TestName() + "." + name + d.config.Suffix()
 		extraArgs, err := d.capture(name, finder, &options)
@@ -364,31 +404,60 @@ func DiffPerConfig(ctx context.Context, state screenshotState, configs []Config,
 	return d.GetFailedDiffs()
 }
 
-func (d *differ) capture(screenshotName string, finder *nodewith.Finder, options *DiffTestOptions) ([]string, error) {
+func (d *differ) capture(screenshotName string, finder *nodewith.Finder, options *Options) ([]string, error) {
 	var testArgs []string
-	if options.Timeout == 0 {
-		options.Timeout = time.Second * 2
-	}
-	if options.PixelDeltaThreshold < 3 {
-		// Allow off-by-one in each channel.
-		// Experimental results seem to show that several boards are off by a single color in some channels,
-		// probably due to floating-point arithmetic. Since it's basically invisible to the end-user, ignore it.
-		options.PixelDeltaThreshold = 3
-	}
 
 	ui := uiauto.New(d.tconn).WithTimeout(options.Timeout)
-	location, err := ui.Location(d.ctx, finder)
+	window, err := ash.GetActiveWindow(d.ctx, d.tconn)
 	if err != nil {
-		return testArgs, errors.Wrap(err, "failed to find node to take screenshot of")
+		// While it is technically possible to take screenshots of things outside of windows, it's a large source of flakiness.
+		// * The launcher isn't a consistent color between boards
+		// * Background images are inconsistent between boards
+		// * Different screen resolutions can't be normalized when taking pictures of a large portion of the screen
+		return testArgs, errors.Wrap(err, "unable to find focused window - screendiff only supports taking screenshots of apps")
+	}
+	windowBoundsDP := window.BoundsInRoot
+
+	// Even if the window already appears to be in normal state, it may actually be in the Default state. So always set to normal.
+	windowState, err := ash.SetWindowState(d.ctx, d.tconn, window.ID, ash.WMEventNormal)
+	if err != nil {
+		return testArgs, err
 	}
 
-	info, err := ui.Info(d.ctx, finder)
-	if err != nil {
-		return testArgs, errors.Wrap(err, "unable to get info for node")
+	// You can only set the bounds of a window in normal state.
+	if windowState == ash.WindowStateNormal {
+		if window.CanResize && (options.WindowWidthDP == 0 || options.WindowHeightDP == 0) {
+			return testArgs, errors.Errorf("please add screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: %d, WindowHeightDP: %d}} to your screendiff config", windowBoundsDP.Width, windowBoundsDP.Height)
+		}
+		// Ensure it always goes to the top-left corner of the screen. This should prevent misalignment issues.
+		requestedBounds := coords.Rect{Width: windowBoundsDP.Width, Height: windowBoundsDP.Height}
+		if window.CanResize {
+			requestedBounds = coords.Rect{Width: options.WindowWidthDP, Height: options.WindowHeightDP}
+		}
+		var displayID string
+		windowBoundsDP, displayID, err = ash.SetWindowBounds(d.ctx, d.tconn, window.ID, requestedBounds, window.DisplayID)
+		if err != nil {
+			return testArgs, err
+		} else if displayID != window.DisplayID {
+			return testArgs, errors.New("Unable to move window to correct display")
+		}
 	}
-	if options.IgnoredBorderThickness == 0 && info.Role == role.Window {
-		// A window's corners are rounded, and unlike other elements, the background is inconsistent (since it's the wallpaper).
-		options.IgnoredBorderThickness = 1
+	if err := ash.WaitWindowFinishAnimating(d.ctx, d.tconn, window.ID); err != nil {
+		return testArgs, errors.Wrap(err, "Unable to wait for the window to finish animating")
+	}
+
+	isAtTopLeft := windowBoundsDP.Top == 0 && windowBoundsDP.Left == 0
+	windowBoundsDP = windowBoundsDP.WithInset(options.WindowBorderWidthDP, options.WindowBorderWidthDP)
+
+	// .First() ensures it selects the outermost window element.
+	// Using the .Attribute name instead of Name ensures that in other locales,
+	// it won't attempt to translate (since it gets the name from the system,
+	// it's already translated).
+	rootElement := nodewith.Role(role.Window).Attribute("name", window.Title).First()
+	if finder == nil {
+		finder = rootElement
+	} else {
+		finder = finder.Ancestor(rootElement)
 	}
 
 	dir := filepath.Join(d.dir, screenshotName)
@@ -403,49 +472,110 @@ func (d *differ) capture(screenshotName string, finder *nodewith.Finder, options
 		uiauto.LogRootDebugInfo(d.ctx, d.tconn, filepath.Join(dir, "ui_tree.txt"))
 	}
 
-	img, err := CaptureChromeImage(d.ctx, d.chrome)
+	location, err := ui.Location(d.ctx, finder)
 	if err != nil {
-		return testArgs, errors.Wrap(err, "failed to capture the chrome image")
+		return testArgs, errors.Wrap(err, "failed to find node to take screenshot of")
 	}
 
-	// This screenshot isn't used anywhere, but is useful for context to devs.
-	f, err := os.Create(filepath.Join(dir, "screenshot.png"))
-	if err != nil {
-		return testArgs, err
-	}
-	png.Encode(f, img)
+	boundsPx := coords.ConvertBoundsFromDPToPX(location.Intersection(windowBoundsDP), d.uiScale)
+	windowBoundsPX := coords.ConvertBoundsFromDPToPX(windowBoundsDP, d.uiScale)
 
-	boundsPx := coords.ConvertBoundsFromDPToPX(*location, d.uiScale)
-
-	// The screenshot returned is of the whole screen. Crop it to only contain the element requested by the user.
-	srcOffset := image.Point{X: boundsPx.Left, Y: boundsPx.Top}
-	dstSize := image.Rect(0, 0, boundsPx.Width, boundsPx.Height)
 	testArgs = append(testArgs,
 		"--add-test-optional-key", fmt.Sprintf("cropped_resolution:%dx%d", boundsPx.Height, boundsPx.Width),
-		"--add-test-optional-key", fmt.Sprintf("top_left_pixel:left_%d_top_%d", boundsPx.Left, boundsPx.Top),
 		"--add-test-optional-key", fmt.Sprintf("fuzzy_pixel_delta_threshold:%d", options.PixelDeltaThreshold),
-		"--add-test-optional-key", fmt.Sprintf("fuzzy_ignored_border_thickness:%d", options.IgnoredBorderThickness))
-	cropped := image.NewRGBA(dstSize)
-	draw.Draw(cropped, dstSize, img, srcOffset, draw.Src)
+		"--add-test-optional-key", fmt.Sprintf("is_at_top_left:%t", isAtTopLeft),
+		"--add-test-optional-key", fmt.Sprintf("screenshot_name:%s", screenshotName),
+		"--add-test-optional-key", fmt.Sprintf("window_size:%dx%d", windowBoundsPX.Width, windowBoundsPX.Height),
+		"--add-test-optional-key", fmt.Sprintf("window_state:%s", windowState),
+	)
 
+	srcOffset := image.Point{X: boundsPx.Left, Y: boundsPx.Top}
+	dstSize := image.Rect(0, 0, boundsPx.Width, boundsPx.Height)
+	// rectangles removed from the cropped image.
+	var removedRects []image.Rectangle
 	for _, subelement := range options.RemoveElements {
-		location, err := ui.Location(d.ctx, subelement.Ancestor(finder))
+		nodes, err := ui.NodesInfo(d.ctx, subelement.Ancestor(rootElement))
 		if err != nil {
-			return testArgs, errors.Wrap(err, "unable to find element to remove from screenshot")
+			return testArgs, err
 		}
-		removedRect := coords.ConvertBoundsFromDPToPX(*location, d.uiScale)
-		removedRect.Left -= boundsPx.Left
-		removedRect.Top -= boundsPx.Top
-		draw.Draw(cropped,
-			image.Rect(removedRect.Left, removedRect.Top, removedRect.Left+removedRect.Width, removedRect.Top+removedRect.Height),
-			&image.Uniform{color.Transparent}, image.ZP, draw.Src)
+		for _, node := range nodes {
+			removedRect := coords.ConvertBoundsFromDPToPX(node.Location, d.uiScale)
+			removedRect.Left -= boundsPx.Left
+			removedRect.Top -= boundsPx.Top
+			removedRects = append(removedRects, image.Rect(removedRect.Left, removedRect.Top, removedRect.Right(), removedRect.Bottom()))
+		}
 	}
 
-	f, err = os.Create(filepath.Join(dir, screenshotFile))
+	takeScreenshot := func() (*image.RGBA, error) {
+		img, err := CaptureChromeImage(d.ctx, d.chrome)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to capture the chrome image")
+		}
+
+		// This screenshot isn't used anywhere, but is useful for context to devs.
+		f, err := os.Create(filepath.Join(dir, wholeScreenFile))
+		if err != nil {
+			return nil, err
+		}
+		png.Encode(f, img)
+
+		// The screenshot returned is of the whole screen. Crop it to only contain the element requested by the user.
+		cropped := image.NewRGBA(dstSize)
+		draw.Draw(cropped, dstSize, img, srcOffset, draw.Src)
+
+		for _, rect := range removedRects {
+			draw.Draw(cropped, rect, &image.Uniform{color.Transparent}, image.ZP, draw.Src)
+		}
+
+		f, err = os.Create(filepath.Join(dir, screenshotFile))
+		if err != nil {
+			return nil, err
+		}
+		png.Encode(f, cropped)
+		return cropped, nil
+	}
+
+	screenshot, err := takeScreenshot()
 	if err != nil {
 		return testArgs, err
 	}
-	png.Encode(f, cropped)
+	var lastScreenshot *image.RGBA
+	if options.ScreenshotRetries > 1 {
+		if err := testing.Sleep(d.ctx, options.ScreenshotRetryInterval); err != nil {
+			return testArgs, err
+		}
+	}
+	if err := action.Retry(options.ScreenshotRetries, func(ctx context.Context) error {
+		d.state.Logf("Taking screenshot again after %q", options.ScreenshotRetryInterval)
+		if err := os.Rename(filepath.Join(dir, screenshotFile), filepath.Join(dir, oldScreenshotFile)); err != nil {
+			return err
+		}
+		if err := os.Rename(filepath.Join(dir, wholeScreenFile), filepath.Join(dir, oldWholeScreenFile)); err != nil {
+			return err
+		}
+		lastScreenshot = screenshot
+
+		screenshot, err = takeScreenshot()
+		if err != nil {
+			return err
+		}
+		for y := screenshot.Bounds().Min.Y; y < screenshot.Bounds().Max.Y; y++ {
+			for x := screenshot.Bounds().Min.X; x < screenshot.Bounds().Max.X; x++ {
+				if screenshot.RGBAAt(x, y) != lastScreenshot.RGBAAt(x, y) {
+					return errors.Errorf("Screen has changed since the last screenshot. Images %s and %s differ at (%d, %d)", oldScreenshotFile, screenshotFile, x, y)
+				}
+			}
+		}
+		return nil
+	}, options.ScreenshotRetryInterval)(d.ctx); err != nil {
+		return testArgs, err
+		// Cleanup the old screenshot files, since they're the same images as the new ones.
+	} else if err := os.Remove(filepath.Join(dir, oldScreenshotFile)); err != nil {
+		return testArgs, err
+	} else if err := os.Remove(filepath.Join(dir, oldWholeScreenFile)); err != nil {
+		return testArgs, err
+	}
+
 	return testArgs, nil
 }
 
@@ -467,6 +597,10 @@ func (d *differ) authenticateGold() error {
 
 func (d *differ) runGoldCommand(subcommand string, args ...string) error {
 	args = append([](string){subcommand, "--work-dir", goldctlWorkDir}, args...)
+	d.state.Logf(`Running command "goldctl %v"`, args)
+	if d.config.DryRun {
+		return nil
+	}
 	cmd := testexec.CommandContext(d.ctx, "goldctl", args...)
 	out, err := cmd.CombinedOutput()
 	if err != nil {
@@ -474,6 +608,25 @@ func (d *differ) runGoldCommand(subcommand string, args ...string) error {
 		err = errors.Errorf("while running \"goldctl %s\"\n%s", strings.Join(args, " "), out) // NOLINT
 	}
 	return err
+}
+
+func (d *differ) getCPUInfo() (map[string]string, error) {
+	cmd := testexec.CommandContext(d.ctx, "lscpu")
+	out, err := cmd.Output()
+	if err != nil {
+		return nil, errors.Wrap(err, "lscpu failed")
+	}
+	result := map[string]string{}
+	// Each line is of the form "Key: value"
+	lineMatcher := regexp.MustCompile(`([^:]*):\s*(.*)`)
+	for _, line := range strings.Split(strings.TrimSpace(string(out)), "\n") {
+		match := lineMatcher.FindStringSubmatch(line)
+		// Gold params cannot have spaces in them. This will look like:
+
+		result[match[1]] = strings.ReplaceAll(match[2], " ", "_")
+	}
+
+	return result, nil
 }
 
 func currentSubPixelAntialiasingMethod() string {
