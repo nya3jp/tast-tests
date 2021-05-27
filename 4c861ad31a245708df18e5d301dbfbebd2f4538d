@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33e85fa7_93b5502b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-27T20:14:15Z",
+      "side": 1,
+      "message": "shadow review +1 with a couple suggestions",
+      "revId": "4c861ad31a245708df18e5d301dbfbebd2f4538d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d871006a_76bf6ad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-27T20:14:15Z",
+      "side": 1,
+      "message": "Can you just put `checkTypecdRunning` here since it\u0027s a `func(ctx context.Context) error`? Instead of wrapping it an anonymous func",
+      "range": {
+        "startLine": 118,
+        "startChar": 29,
+        "endLine": 118,
+        "endChar": 60
+      },
+      "revId": "4c861ad31a245708df18e5d301dbfbebd2f4538d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "927508b1_840f0c00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-27T20:14:15Z",
+      "side": 1,
+      "message": "Output(testexec.DumpLogOnError) might be useful for capturing more log info",
+      "range": {
+        "startLine": 161,
+        "startChar": 61,
+        "endLine": 161,
+        "endChar": 69
+      },
+      "revId": "4c861ad31a245708df18e5d301dbfbebd2f4538d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
