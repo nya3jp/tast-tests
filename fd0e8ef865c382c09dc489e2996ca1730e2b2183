@@ -16,6 +16,46 @@
       "message": "+tast-owners",
       "revId": "fd0e8ef865c382c09dc489e2996ca1730e2b2183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ff2bbad_3941089b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-27T13:31:38Z",
+      "side": 1,
+      "message": "LGTM % nit, thanks!",
+      "revId": "fd0e8ef865c382c09dc489e2996ca1730e2b2183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "914ce3e4_6aa2a789",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-27T13:31:38Z",
+      "side": 1,
+      "message": "nit: rename to SetTTSRate\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 15
+      },
+      "revId": "fd0e8ef865c382c09dc489e2996ca1730e2b2183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
