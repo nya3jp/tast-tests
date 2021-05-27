@@ -11,24 +11,42 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/bundles/cros/arc/version"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/arc"
 	arcpb "chromiumos/tast/services/cros/arc"
 	"chromiumos/tast/testing"
 )
 
+type testParamCacheValidation struct {
+	vmEnabled bool
+}
+
+const (
+	// Base path
+	buildsRoot = "gs://chromeos-arc-images/builds"
+
+	// Name of jar file
+	jarName = "org.chromium.arc.cachebuilder.jar"
+)
+
+// regExpEndsWithBuildID is the regexp to find the build ID from the path entry where build ID
+// is the laset segment in path.
+var regExpEndsWithBuildID = regexp.MustCompile(`^.+/(\d+)/$`)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: CacheValidation,
 		Desc: "Validates that caches match for both modes when pre-generated packages cache is enabled and disabled",
 		Contacts: []string{
-			"camurcu@chromium.org", // author
 			"khmel@google.com",
 			"arc-performance@google.com",
 		},
@@ -38,53 +56,85 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "pi_container",
 			ExtraSoftwareDeps: []string{"android_p"},
-			Val: []string{
-				"/usr/share/arc/properties/build.prop",
+			Val: testParamCacheValidation{
+				vmEnabled: false,
 			},
 		}, {
 			Name:              "r",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Val: []string{
-				"/usr/share/arcvm/properties/build.prop",
+			Val: testParamCacheValidation{
+				vmEnabled: true,
 			},
 		}},
 		Timeout: 10 * time.Minute,
 	})
 }
 
+// findRecentBuild scans the list of available entries with ARC apps and returns one which
+// has the highest build ID that indicates the most recent entry.
+func findRecentBuild(ctx context.Context, vmEnabled bool) (string, error) {
+	testing.ContextLogf(ctx, "Build is not official, finding the latest %q", jarName)
+
+	branch := ""
+	if vmEnabled {
+		branch = "rvc-arc"
+	} else {
+		branch = "pi-arc"
+	}
+
+	root := fmt.Sprintf("%s/git_%s-linux-apps/", buildsRoot, branch)
+	out, err := testexec.CommandContext(ctx, "gsutil", "ls", root).Output()
+	if err != nil {
+		return "", errors.Wrap(err, "failed to list apps")
+	}
+
+	result := ""
+	resultBuildID := 0
+
+	for _, candidate := range strings.Split(string(out), "\n") {
+		m := regExpEndsWithBuildID.FindStringSubmatch(candidate)
+		// Not finding match is normal once this is external folder and may contain non-matching entries
+		if m == nil {
+			continue
+		}
+		candidateBuildID, err := strconv.Atoi(m[1])
+		if err != nil {
+			return "", errors.Wrapf(err, "failed to parse buildID from %s", candidate)
+		}
+		if candidateBuildID > resultBuildID {
+			result = candidate
+			resultBuildID = candidateBuildID
+		}
+	}
+
+	if result == "" {
+		return "", errors.Errorf("failed to find %q at %q", jarName, root)
+	}
+
+	result = result + jarName
+	testing.ContextLogf(ctx, "Resolved as %q", result)
+	return result, nil
+}
+
 // generateJarURL gets ARC build properties from the device, parses for build ID, and
 // generates gs URL for org.chromium.ard.cachebuilder.jar
-func generateJarURL(ctx context.Context, dut *dut.DUT, propertyFile string) (string, error) {
-	const (
-		// Base path
-		buildsRoot = "gs://chromeos-arc-images/builds"
-
-		// Name of jar file
-		jarName = "org.chromium.arc.cachebuilder.jar"
-	)
-
-	buildProp, err := dut.Command("cat", propertyFile).Output(ctx)
+func generateJarURL(ctx context.Context, dut *dut.DUT, vmEnabled bool) (string, error) {
+	desc, err := version.GetBuildDescriptorRemotely(ctx, dut, vmEnabled)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to read ARC build property file remotely")
+		return "", errors.Wrap(err, "failed to get ARC build desc")
 	}
 
-	buildPropStr := string(buildProp)
-
-	mBuildID := regexp.MustCompile(`(\n|^)ro.build.version.incremental=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
-	if mBuildID == nil {
-		return "", errors.Errorf("ro.build.version.incremental is not found in %q", buildPropStr)
+	if desc.Official {
+		return fmt.Sprintf("%s/%s/%s/%s", buildsRoot, "git_*-linux-apps", desc.BuildID, jarName), nil
 	}
 
-	url := fmt.Sprintf("%s/%s/%s/%s", buildsRoot, "git_*-linux-apps", mBuildID[2], jarName)
-	return url, nil
+	return findRecentBuild(ctx, vmEnabled)
 }
 
 func CacheValidation(ctx context.Context, s *testing.State) {
 	d := s.DUT()
 
-	params := s.Param().([]string)
-
-	propertyFile := params[0]
+	param := s.Param().(testParamCacheValidation)
 
 	tempDir, err := ioutil.TempDir("", "tmp_dir")
 	if err != nil {
@@ -93,7 +143,7 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 
 	defer os.RemoveAll(tempDir)
 
-	url, err := generateJarURL(ctx, d, propertyFile)
+	url, err := generateJarURL(ctx, d, param.vmEnabled)
 	if err != nil {
 		s.Fatal("Failed to generate jar URL: ", err)
 	}
