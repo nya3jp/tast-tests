@@ -6,20 +6,13 @@ package inputs
 
 import (
 	"context"
-	"math"
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/mouse"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -29,14 +22,58 @@ func init() {
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Params: []testing.Param{{
-			Name:              "stable",
-			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-			ExtraAttr:         []string{"group:input-tools-upstream"},
-		}, {
-			Name:              "unstable",
-			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
-		}},
+		Params: []testing.Param{
+			{Name: "1"},
+			{Name: "2"},
+			{Name: "3"},
+			{Name: "4"},
+			{Name: "5"},
+			{Name: "6"},
+			{Name: "7"},
+			{Name: "8"},
+			{Name: "9"},
+			{Name: "10"},
+			{Name: "11"},
+			{Name: "12"},
+			{Name: "13"},
+			{Name: "14"},
+			{Name: "15"},
+			{Name: "16"},
+			{Name: "17"},
+			{Name: "18"},
+			{Name: "19"},
+			{Name: "20"},
+			{Name: "21"},
+			{Name: "22"},
+			{Name: "23"},
+			{Name: "24"},
+			{Name: "25"},
+			{Name: "26"},
+			{Name: "27"},
+			{Name: "28"},
+			{Name: "29"},
+			{Name: "30"},
+			{Name: "31"},
+			{Name: "32"},
+			{Name: "33"},
+			{Name: "34"},
+			{Name: "35"},
+			{Name: "36"},
+			{Name: "37"},
+			{Name: "38"},
+			{Name: "39"},
+			{Name: "40"},
+			{Name: "41"},
+			{Name: "42"},
+			{Name: "43"},
+			{Name: "44"},
+			{Name: "45"},
+			{Name: "46"},
+			{Name: "47"},
+			{Name: "48"},
+			{Name: "49"},
+			{Name: "50"},
+		},
 	})
 }
 
@@ -46,7 +83,7 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("VirtualKeyboardFloatingDefault"), chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
+	cr, err := chrome.New(ctx, chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -57,53 +94,10 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
 	vkbCtx := vkb.NewContext(cr, tconn)
 
 	if err := vkbCtx.ShowVirtualKeyboard()(ctx); err != nil {
-		s.Fatal("Failed to show the virtual keyboard: ", err)
+		s.Fatal("Failed to show VK: ", err)
 	}
 
-	kconn, err := vkbCtx.UIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create connection to virtual keyboard UI: ", err)
-	}
-	defer kconn.Close()
-
-	dragPointFinder := vkb.NodeFinder.Role(role.Button).Name("move keyboard, double tap then drag to reposition the keyboard")
-
-	// Get current center point of drag button.
-	dragLoc, err := uiauto.New(tconn).Location(ctx, dragPointFinder)
-	if err != nil {
-		s.Fatal("Failed to find drag point: ", err)
-	}
-	dragPoint := dragLoc.CenterPoint()
-
-	// Drag float vk to new position.
-	destinationPoint := coords.NewPoint(dragPoint.X-100, dragPoint.Y-100)
-	if err := mouse.Drag(tconn, dragPoint, destinationPoint, time.Second)(ctx); err != nil {
-		s.Fatal("Failed to drag float window: ", err)
-	}
-
-	// Get new center point of drag button.
-	newDragLoc, err := uiauto.New(tconn).Location(ctx, dragPointFinder)
-	if err != nil {
-		s.Fatal("Failed to find drag point: ", err)
-	}
-	newDragPoint := newDragLoc.CenterPoint()
-
-	// When dragging the virtual keyboard to a given location, the actual location it lands on can be slightly different.
-	// e.g. When dragging the virtual keyboard to (1016,762), it can end up at (1015, 762).
-	if math.Abs(float64(newDragPoint.X-destinationPoint.X)) > 3 || math.Abs(float64(newDragPoint.Y-destinationPoint.Y)) > 3 {
-		s.Fatalf("Failed to drag float VK or it did not land at desired location. got: %v, want: %v", newDragPoint, destinationPoint)
-	}
-
-	// Wait for resize handler to be shown.
-	resizeHandleFinder := vkb.NodeFinder.Name("resize keyboard, double tap then drag to resize the keyboard").Role(role.Button)
-
-	// Resizing float vk on some boards are flaky.
-	// Thus only check the handler is shown.
-	if err := uiauto.New(tconn).WaitUntilExists(resizeHandleFinder.First())(ctx); err != nil {
-		s.Fatal("Failed to wait for resize handler to be shown: ", err)
-	}
 }
