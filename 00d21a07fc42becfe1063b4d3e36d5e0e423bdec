@@ -214,6 +214,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "222df83c_2769d90c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-27T05:50:34Z",
+      "side": 1,
+      "message": "Yes. I implemented IsNodeFound. Suggest you to use the same function just to avoid duplicated implementation.",
+      "parentUuid": "bafd5611_2caf030e",
+      "range": {
+        "startLine": 331,
+        "startChar": 45,
+        "endLine": 331,
+        "endChar": 60
+      },
+      "revId": "00d21a07fc42becfe1063b4d3e36d5e0e423bdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c53c8467_dc12e4ff",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
         "patchSetId": 10
