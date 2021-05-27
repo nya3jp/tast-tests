@@ -33,7 +33,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 300*time.Second,
+		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 10*time.Minute,
 		Vars:    []string{"arc.parentUser", "arc.parentPassword"},
 	})
 }
@@ -73,8 +73,7 @@ func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 		ui.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(skip), ui.LeftClick(skip)),
 		ui.LeftClick(nodewith.Name("More").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Accept").Role(role.Button)),
-		ui.IfSuccessThen(ui.WithTimeout(20*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
-		ui.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
+		ui.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
 		ui.LeftClick(nodewith.Name("Get started").Role(role.Button)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to go through the oobe flow: ", err)
@@ -88,7 +87,7 @@ func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 	defer a.Close(ctx)
 
 	s.Log("Waiting for notification")
-	_, err = ash.WaitForNotification(ctx, tconn, 5*time.Minute, ash.WaitTitle("Setup complete"))
+	_, err = ash.WaitForNotification(ctx, tconn, 10*time.Minute, ash.WaitTitle("Setup complete"))
 	if err != nil {
 		s.Fatal("Failed waiting for Setup complete notification: ", err)
 	}
