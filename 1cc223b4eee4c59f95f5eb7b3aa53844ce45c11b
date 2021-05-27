@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3464e99c_a7770946",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-27T15:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4943778_74b82cb1",
+      "range": {
+        "startLine": 70,
+        "startChar": 52,
+        "endLine": 70,
+        "endChar": 63
+      },
+      "revId": "1cc223b4eee4c59f95f5eb7b3aa53844ce45c11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d51eb145_9c9dba41",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17e7a6d0_01bbe3d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-27T15:32:14Z",
+      "side": 1,
+      "message": "No, just forgot to remove it.",
+      "parentUuid": "d51eb145_9c9dba41",
+      "revId": "1cc223b4eee4c59f95f5eb7b3aa53844ce45c11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "116264bc_251123d9",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-05-27T15:07:08Z",
       "side": 1,
       "message": "nit: end with .",
+      "revId": "1cc223b4eee4c59f95f5eb7b3aa53844ce45c11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc9278d_a362700c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-27T15:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "116264bc_251123d9",
       "revId": "1cc223b4eee4c59f95f5eb7b3aa53844ce45c11b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
