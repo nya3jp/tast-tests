@@ -68,6 +68,24 @@
       "message": "naive question: how does it deal with drivers that only get used when some external device is connected?",
       "revId": "a97740956a529aff43dd0c72d65d056dcb3dd34c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dc7bd99_fef661fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-05-27T22:03:23Z",
+      "side": 1,
+      "message": "Not very well right now. It currently ignores drivers that aren\u0027t bound to any devices when they\u0027re compiled as a loadable module. I\u0027m considering adding that on the same line as the driver like this:\n\n /sys/bus/i2c/drivers/bad_driver (module)\n\nso we know it\u0027s a loadable module.\n\nIf some external device is connected later then I hope the driver could be made into some loadable kernel module that is loaded when the uevent triggers on hotplug. Otherwise we have some sort of problem with udev loading the module earlier than is needed.\n\nWould it be useful to have a stat on the total number of drivers present? That can be added pretty easily so we could know how \"small\" the number of unused drivers is.",
+      "parentUuid": "e632e344_164cda70",
+      "revId": "a97740956a529aff43dd0c72d65d056dcb3dd34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
