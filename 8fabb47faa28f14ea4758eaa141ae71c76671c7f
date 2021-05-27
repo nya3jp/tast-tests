@@ -262,6 +262,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d11045cc_7848d544",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_valid_users.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-27T00:10:22Z",
+      "side": 1,
+      "message": "ah, sorry forgot to hit reply on this.... I guess ignore for now.\n\nIt was my understanding that when we get a new profile, the old install is wiped out completely.  What state persists that we are not testing correctly?\n\nAs for flakiness of uninstall reinstall cycle, we can only see by measuring.\n\nGenerally, I think we should go with whatever is least flaky, followed by whatever is fastest.\n\nIf it is important to test the install/uninstall/reinstall cycle, lets make a new test for that similar to the restart test.",
+      "parentUuid": "06b7ed8b_7b1d59cf",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 4
+      },
+      "revId": "8fabb47faa28f14ea4758eaa141ae71c76671c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed277df3_db56b918",
