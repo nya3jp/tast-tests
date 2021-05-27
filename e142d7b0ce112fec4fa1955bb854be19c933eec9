@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f3c5477_20d9f556",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-27T00:27:44Z",
+      "side": 1,
+      "message": "These are crazy long names.  Not sure there is anything you can do, just wanted to note it.",
+      "range": {
+        "startLine": 205,
+        "startChar": 9,
+        "endLine": 205,
+        "endChar": 73
+      },
+      "revId": "e142d7b0ce112fec4fa1955bb854be19c933eec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b23ad7e_94e22dae",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-27T00:27:44Z",
+      "side": 1,
+      "message": "This is quite unreadable, not for this CL, but you may want to consider switching to a builder pattern or option args to make this clearer.",
+      "range": {
+        "startLine": 207,
+        "startChar": 8,
+        "endLine": 207,
+        "endChar": 186
+      },
+      "revId": "e142d7b0ce112fec4fa1955bb854be19c933eec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bd91698_8a2455b7",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-05-27T00:27:44Z",
+      "side": 1,
+      "message": "If you start to see flakiness related to Gaia login with more tests using the login, consider switching to GaiaLoginPool:\nhttps://pkg.go.dev/chromium.googlesource.com/chromiumos/\nplatform/tast-tests.git/src/chromiumos/tast/local/chrome#GAIALoginPool",
+      "range": {
+        "startLine": 278,
+        "startChar": 42,
+        "endLine": 278,
+        "endChar": 54
+      },
+      "revId": "e142d7b0ce112fec4fa1955bb854be19c933eec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
