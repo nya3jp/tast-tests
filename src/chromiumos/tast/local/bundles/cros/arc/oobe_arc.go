@@ -66,7 +66,7 @@ func OobeArc(ctx context.Context, s *testing.State) {
 		ui.LeftClick(nodewith.Name("More").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Review Google Play options following setup").Role(role.CheckBox)),
 		ui.LeftClick(nodewith.Name("Accept").Role(role.Button)),
-		ui.IfSuccessThen(ui.WithTimeout(20*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
+		ui.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
 		ui.LeftClick(nodewith.Name("Get started").Role(role.Button)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to test oobe Arc: ", err)
