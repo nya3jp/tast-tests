@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c354bde4_464446ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-27T03:45:04Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nits",
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54c4671e_de4c650a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_play_books.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-27T03:45:04Z",
+      "side": 1,
+      "message": "nit: extra space?",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cac71c78_cb6bd8ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reddit.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-27T03:45:04Z",
+      "side": 1,
+      "message": "nit: extra space?",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c349d01_56688998",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-27T03:45:04Z",
+      "side": 1,
+      "message": "optional: I wasn\u0027t familiar with this abbreviation, consider writing it out in full as \"application not responding\" or \"application losing responsiveness\".",
+      "range": {
+        "startLine": 607,
+        "startChar": 113,
+        "endLine": 607,
+        "endChar": 116
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c5bb1c2_77a483a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-27T03:45:04Z",
+      "side": 1,
+      "message": "nit: ... if the app performs ... ?",
+      "range": {
+        "startLine": 607,
+        "startChar": 67,
+        "endLine": 607,
+        "endChar": 83
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de005109_9bcc992b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-27T03:45:04Z",
+      "side": 1,
+      "message": "assign to variable before passing so we know what this value means:\ne.g. const targetX \u003d 0\ndragToSnapFirstOverViewWindow(... , targetX)\n\nrelated: in its current form, this is the only value ever passed to the method. If you always pass this argument, why make it an argument at all?",
+      "range": {
+        "startLine": 653,
+        "startChar": 66,
+        "endLine": 653,
+        "endChar": 67
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c16b4175_90a289e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-27T03:45:04Z",
+      "side": 1,
+      "message": "see below. I think something like this would be clearest:\n\n\"Long pressed at (%v, %v)\"",
+      "range": {
+        "startLine": 984,
+        "startChar": 23,
+        "endLine": 984,
+        "endChar": 44
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d177638b_bd400d43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-27T03:45:04Z",
+      "side": 1,
+      "message": "nit: here you assume you are snapping to the left, but above you accept targetX as an argument? (this suggests this method could be used to snap to the right as well??)",
+      "range": {
+        "startLine": 987,
+        "startChar": 66,
+        "endLine": 987,
+        "endChar": 70
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7c9d479_7e47d395",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-27T03:45:04Z",
+      "side": 1,
+      "message": "nit: the formatting here is inconsistent (some commas (\",\") are followed by spaces whereas others are not), and I think, fairly hard to follow. A more normal formatting for an arbitrary list of values would be something like \"centerX \u003d %v, centerY \u003d %v, \" etc.\n\nHowever, in this case, I think including the values directly in an English sentence, e.g. \"Swiped from (%v, %v) to (%v, %v)\", might be even easier to follow?",
+      "range": {
+        "startLine": 989,
+        "startChar": 16,
+        "endLine": 989,
+        "endChar": 84
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac6ad9c0_2c2f31aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-27T03:45:04Z",
+      "side": 1,
+      "message": "what use is there in printing this constant value?",
+      "range": {
+        "startLine": 989,
+        "startChar": 69,
+        "endLine": 989,
+        "endChar": 84
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
