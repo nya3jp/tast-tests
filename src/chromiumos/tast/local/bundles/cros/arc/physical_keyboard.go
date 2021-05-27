@@ -230,12 +230,17 @@ func physicalKeyboardAllKeycodesTypingTest(ctx context.Context, st pkTestState, 
 	defer func() {
 		done <- true
 	}()
-	for scancode := input.EventCode(0x01); scancode < 0x220; scancode++ {
+	skipKeys := map[input.EventCode]struct{}{
 		// Skip KEY_SYSRQ (0x63) to avoid launching the screenshot tool. The
 		// screenshot tool can cause subsequent tests to fail by intercepting
 		// mouse clicks.
-		// Skip KEY_LEFTMETA (0x7d), which is a search key, to avoid confusing the test.
-		if (scancode >= 0x80 && scancode < 0x160) || scancode == 0x63 || scancode == 0x7d {
+		0x63: struct{}{},
+		// Skip KEY_LEFTMETA (0x7d) and KEY_RIGHTMETA (0x7e) which are the search key to avoid confusing the test.
+		0x7d: struct{}{},
+		0x7e: struct{}{},
+	}
+	for scancode := input.EventCode(0x01); scancode < 0x220; scancode++ {
+		if _, exist := skipKeys[scancode]; exist || (scancode >= 0x80 && scancode < 0x160) {
 			continue
 		}
 		// Check whether the mojo connection is already broken or not.
