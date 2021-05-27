@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/typec/typecutils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -101,7 +100,7 @@ func ModeHotplug(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to login: ", err)
 	}
 
-	if err := checkTBTAndDP(ctx, testConn); err != nil {
+	if err := typecutils.CheckTBTAndDP(ctx, testConn); err != nil {
 		s.Fatal("Failed to verify TBT & DP after login: ", err)
 	}
 
@@ -125,27 +124,7 @@ func ModeHotplug(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to simulate replug: ", err)
 	}
 
-	if err := checkTBTAndDP(ctx, testConn); err != nil {
+	if err := typecutils.CheckTBTAndDP(ctx, testConn); err != nil {
 		s.Fatal("Failed to verify TBT & DP after replug: ", err)
 	}
-}
-
-// checkTBTAndDP is a convenience function that checks for TBT and DP enumeration.
-// It returns nil on success, and the relevant error otherwise.
-func checkTBTAndDP(ctx context.Context, tc *chrome.TestConn) error {
-	tbtPollOptions := testing.PollOptions{Timeout: 10 * time.Second}
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return typecutils.CheckTBTDevice(true)
-	}, &tbtPollOptions); err != nil {
-		return errors.Wrap(err, "failed to verify TBT devices connected")
-	}
-
-	dpPollOptions := testing.PollOptions{Timeout: 20 * time.Second}
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return typecutils.FindConnectedDPMonitor(ctx, tc)
-	}, &dpPollOptions); err != nil {
-		return errors.Wrap(err, "failed to verify DP monitor working")
-	}
-
-	return nil
 }

@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"regexp"
 	"strconv"
+	"time"
 
 	"github.com/golang/protobuf/proto"
 	"github.com/google/go-cmp/cmp"
@@ -22,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/session"
+	"chromiumos/tast/testing"
 )
 
 // The maximum number of USB Type C ports that a Chromebook supports.
@@ -106,6 +108,26 @@ func FindConnectedDPMonitor(ctx context.Context, tc *chrome.TestConn) error {
 	}
 
 	return errors.New("no enabled and working external display found")
+}
+
+// CheckTBTAndDP is a convenience function that checks for TBT and DP enumeration.
+// It returns nil on success, and the relevant error otherwise.
+func CheckTBTAndDP(ctx context.Context, tc *chrome.TestConn) error {
+	tbtPollOptions := testing.PollOptions{Timeout: 10 * time.Second}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return CheckTBTDevice(true)
+	}, &tbtPollOptions); err != nil {
+		return errors.Wrap(err, "failed to verify TBT devices connected")
+	}
+
+	dpPollOptions := testing.PollOptions{Timeout: 20 * time.Second}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return FindConnectedDPMonitor(ctx, tc)
+	}, &dpPollOptions); err != nil {
+		return errors.Wrap(err, "failed to verify DP monitor working")
+	}
+
+	return nil
 }
 
 // CheckPortsForTBTPartner checks whether the device has a connected Thunderbolt device.
