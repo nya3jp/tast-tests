@@ -16,25 +16,14 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/bundles/cros/arc/version"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/arc"
 	arcpb "chromiumos/tast/services/cros/arc"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
-
-type buildDescriptor struct {
-	// true in case built by ab/
-	official bool
-	// ab/buildID
-	buildID string
-	// build type e.g. user, userdebug
-	buildType string
-	// cpu abi e.g. x86_64, x86, arm
-	cpuAbi string
-}
 
 type testParam struct {
 	vmEnabled bool
@@ -98,61 +87,6 @@ func init() {
 		}},
 		Vars: []string{"ui.gaiaPoolDefault"},
 	})
-}
-
-// getBuildDescriptorRemotely gets ARC build properties from the device, parses for build ID, ABI,
-// and returns these fields as a combined string. It also return whether this is official build.
-func getBuildDescriptorRemotely(ctx context.Context, dut *dut.DUT, vmEnabled bool) (*buildDescriptor, error) {
-	var propertyFile string
-	if vmEnabled {
-		propertyFile = "/usr/share/arcvm/properties/build.prop"
-	} else {
-		propertyFile = "/usr/share/arc/properties/build.prop"
-	}
-
-	buildProp, err := dut.Command("cat", propertyFile).Output(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to read ARC build property file remotely")
-	}
-	buildPropStr := string(buildProp)
-
-	mCPUAbi := regexp.MustCompile(`(\n|^)ro.product.cpu.abi=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
-	if mCPUAbi == nil {
-		return nil, errors.Errorf("ro.product.cpu.abi is not found in %q", buildPropStr)
-	}
-
-	mBuildType := regexp.MustCompile(`(\n|^)ro.build.type=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
-	if mBuildType == nil {
-		return nil, errors.Errorf("ro.product.cpu.abi is not found in %q", buildPropStr)
-	}
-
-	// Note, this should work on official builds only. Custom built Android image contains the
-	// version in different format.
-	mBuildID := regexp.MustCompile(`(\n|^)ro.build.version.incremental=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
-	if mBuildID == nil {
-		return nil, errors.Errorf("ro.build.version.incremental is not found in %q", buildPropStr)
-	}
-
-	abiMap := map[string]string{
-		"armeabi-v7a": "arm",
-		"arm64-v8a":   "arm64",
-		"x86":         "x86",
-		"x86_64":      "x86_64",
-	}
-
-	abi, ok := abiMap[mCPUAbi[2]]
-	if !ok {
-		return nil, errors.Errorf("failed to map ABI %q", mCPUAbi[2])
-	}
-
-	desc := buildDescriptor{
-		official:  regexp.MustCompile(`^\d+$`).MatchString(mBuildID[2]),
-		buildID:   mBuildID[2],
-		buildType: mBuildType[2],
-		cpuAbi:    abi,
-	}
-
-	return &desc, nil
 }
 
 // getMemoryTotalKb returns total memory available in kilobytes for DUT.
@@ -229,12 +163,12 @@ func DataCollector(ctx context.Context, s *testing.State) {
 
 	param := s.Param().(testParam)
 
-	desc, err := getBuildDescriptorRemotely(ctx, d, param.vmEnabled)
+	desc, err := version.GetBuildDescriptorRemotely(ctx, d, param.vmEnabled)
 	if err != nil {
 		s.Fatal("Failed to get ARC build desc: ", err)
 	}
 
-	v := fmt.Sprintf("%s_%s_%s", desc.cpuAbi, desc.buildType, desc.buildID)
+	v := fmt.Sprintf("%s_%s_%s", desc.CPUAbi, desc.BuildType, desc.BuildID)
 	s.Logf("Detected version: %s", v)
 
 	memTotalKb := 0
@@ -251,8 +185,9 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			s.Log("Cloud upload is disabled")
 			return false
 		}
-		if !desc.official {
-			s.Logf("Version: %s is not official version and generated caches won't be uploaded to the server", v)
+
+		if !desc.Official {
+			s.Logf("Version: %s is not official version and generated ureadahead packs won't be uploaded to the server", v)
 			return false
 		}
 
