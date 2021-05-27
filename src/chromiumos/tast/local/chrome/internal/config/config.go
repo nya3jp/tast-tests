@@ -187,6 +187,9 @@ func (c *Config) DisablePolicyKeyVerification() bool { return c.m.DisablePolicyK
 // ARCMode returns the mode of ARC.
 func (c *Config) ARCMode() ARCMode { return c.m.ARCMode }
 
+// ARCUseHugePages returns the memory mode of the guest memory.
+func (c *Config) ARCUseHugePages() bool { return c.m.ARCUseHugePages }
+
 // RestrictARCCPU returns whether to restrict CPU usage of ARC in background.
 func (c *Config) RestrictARCCPU() bool { return c.m.RestrictARCCPU }
 
@@ -250,6 +253,7 @@ type MutableConfig struct {
 	EnrollmentCreds                 Creds     `reuse_match:"true"`
 	DisablePolicyKeyVerification    bool      `reuse_match:"true"`
 	ARCMode                         ARCMode   `reuse_match:"true"`
+	ARCUseHugePages                 bool      `reuse_match:"true"`
 	RestrictARCCPU                  bool      `reuse_match:"true"`
 	BreakpadTestMode                bool      `reuse_match:"true"`
 	ExtraArgs                       []string  `reuse_match:"true"`
