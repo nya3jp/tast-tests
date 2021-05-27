@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/errors"
 	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
@@ -93,20 +94,25 @@ func TitleBar(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
 	defer d.Close(ctx)
-
-	info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
-	if err != nil {
-		s.Fatal("Failed to get App Window Info: ", err)
-	}
-
 	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonMaximizeAndRestore | ash.CaptionButtonClose
 
-	if info.CaptionButtonEnabledStatus != wanted {
-		s.Fatalf("Wanted %s got %s", wanted.String(), info.CaptionButtonEnabledStatus.String())
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Get activity's window info.
+		info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+		if err != nil {
+			return errors.Wrapf(err, "failed to ARC window infomation for package name %s", pkgName)
+		}
+
+		if info.CaptionButtonEnabledStatus != wanted {
+			return errors.Errorf("Wanted %s got %s", wanted.String(), info.CaptionButtonEnabledStatus.String())
+		}
+		return nil
+
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		s.Fatal("Caption button check failed : ", err)
 	}
 
 	ui := uiauto.New(tconn)
-
 	if t, ok := arc.Type(); ok && t == arc.VM {
 		s.Log("ARC-R")
 		if err := uiauto.Combine("maximize and restore it back",
