@@ -175,9 +175,11 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		if err := pointer.Click(ctx, pc, pageButton.Location.CenterPoint()); err != nil {
 			return errors.Wrap(err, "failed to click the page button")
 		}
-		if _, err := ew.WaitForEvent(ctx, pageSwitchTimeout); err != nil {
+		es, err := ew.WaitForEvent(ctx, pageSwitchTimeout)
+		if err != nil {
 			return errors.Wrap(err, "failed to wait for the page switch")
 		}
+		defer es.Release(ctx)
 		return nil
 	}
 	// First: scroll by click. Clicking the second one, clicking the first one to
@@ -239,12 +241,14 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		if err := pointer.Drag(ctx, pc, dragUpStart, dragUpEnd, dragDuration); err != nil {
 			return errors.Wrap(err, "failed to drag from the bottom to the top")
 		}
-		if _, err := ew.WaitForEvent(ctx, pageSwitchTimeout); err != nil {
+		es, err := ew.WaitForEvent(ctx, pageSwitchTimeout)
+		if err != nil {
 			// It is actually fine if the drag doesn't cause scrolling to the next
 			// page. The required metrics for dragging should be made and enough
 			// waiting time should have passed for the next dragging session.
 			s.Log("Failed to wait for the page switch; maybe the dragging does not cause the page scroll")
 		}
+		defer es.Release(ctx)
 		// drag-down operation.
 		if err := pointer.Drag(ctx, pc, dragDownStart, dragDownEnd, dragDuration); err != nil {
 			return errors.Wrap(err, "failed to drag from the top to the bottom")
