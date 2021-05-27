@@ -46,6 +46,30 @@
       },
       "revId": "4aafa6ce7ac479d475535f87b849676381e56e61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e80485_79df7aa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-05-27T06:00:19Z",
+      "side": 1,
+      "message": "Thanks for the answer. That\u0027s much clearer now.\n\n\u003e btw, it seems to me that we cannot set xauth user/password in UI. So actually we only support that configuration via onc?\n\nYeah I would not be surprised at all by this sort of limitations. We could look into it, but I don\u0027t recall anybody complaining about xauth not being available in the UI, and we would rather work on IKEv2 than improving IKEv1 in the greater scheme of things.",
+      "parentUuid": "abf30347_54726700",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 3
+      },
+      "revId": "4aafa6ce7ac479d475535f87b849676381e56e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
