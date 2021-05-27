@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // ClamshellTests are placed here.
@@ -44,6 +45,8 @@ func init() {
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("eve", "kevin", "caroline", "nasher360", "careena", "kasumi", "kasumi360", "treeya360", "treeya",
+			"helios", "bluebird", "duffy", "sarien", "lazor", "elemi", "berknip")),
 		Params: []testing.Param{{
 			Val:               clamshellTestsForPaypal,
 			ExtraSoftwareDeps: []string{"android_p"},
