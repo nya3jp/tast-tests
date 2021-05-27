@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/typec/typecutils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -113,26 +114,9 @@ func ModeCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to kill typecd: ", err)
 	}
 
-	// Wait for 2 seconds for typecd to restart.
-	// TODO(b/181617978): We wait for 2 seconds, to give time for typecd to:
-	// a. Restart.
-	// b. Re-build Type C state.
-	// Come up with a better way to determine that typecd rebuilt its state.
-	if err := testing.Sleep(ctx, 2*time.Second); err != nil {
-		s.Fatal("Failed to wait for typecd to restart: ", err)
-	}
-
 	s.Log("Checking that typecd restarted")
-	out, err := testexec.CommandContext(ctx, "pgrep", "typecd").Output()
-	if err != nil {
-		s.Fatal("Failed to run pgrep to check typecd restart: ", err)
-	}
-
-	// A valid PID is sufficient for us to know typecd is running again.
-	if pid, err := strconv.Atoi(strings.TrimSpace(string(out))); err != nil {
-		s.Fatal("Failed to convert pgrep output: ", err)
-	} else if pid < 0 {
-		s.Fatalf("typecd doesn't have a valid PID on restart: %d", pid)
+	if err := testing.Poll(ctx, checkTypecdRunning, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		s.Fatal("Failed to verify typecd restarted: ", err)
 	}
 
 	// Log out;
@@ -167,4 +151,22 @@ func ModeCrash(ctx context.Context, s *testing.State) {
 	}, &dpPollOptions); err != nil {
 		s.Fatal("Failed to verify DP monitor working at login screen: ", err)
 	}
+}
+
+// checkTypecdRunning uses pgrep to check whether a valid process with the name "typecd"
+// is running.
+func checkTypecdRunning(ctx context.Context) error {
+	out, err := testexec.CommandContext(ctx, "pgrep", "typecd").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "cailed to run pgrep to check typecd restart")
+	}
+
+	// A valid PID is sufficient for us to know typecd is running again.
+	if pid, err := strconv.Atoi(strings.TrimSpace(string(out))); err != nil {
+		return errors.Wrap(err, "failed to convert pgrep output")
+	} else if pid < 0 {
+		return errors.Errorf("typecd doesn't have a valid PID on restart: %d", pid)
+	}
+
+	return nil
 }
