@@ -799,7 +799,7 @@ type TestEnv struct {
 }
 
 // NewTestEnv creates a new TestEnv, creating new WPR, Chrome, and ARC instances to use.
-func NewTestEnv(ctx context.Context, outDir string, enableARC bool, archive string) (*TestEnv, error) {
+func NewTestEnv(ctx context.Context, outDir string, enableARC, useHugePages bool, archive string) (*TestEnv, error) {
 	te := &TestEnv{}
 
 	success := false
@@ -821,6 +821,10 @@ func NewTestEnv(ctx context.Context, outDir string, enableARC bool, archive stri
 
 	if enableARC {
 		opts = append(opts, chrome.ARCEnabled())
+	}
+
+	if useHugePages {
+		opts = append(opts, chrome.HugePagesEnabled())
 	}
 
 	te.cr, err = chrome.New(ctx, opts...)
