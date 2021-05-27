@@ -29,7 +29,7 @@ func init() {
 		Func:         LockScreenIdle,
 		Desc:         "Locks the screen and starts Ambient mode",
 		Contacts:     []string{"cowmoo@chromium.org", "wutao@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"ambient.username", "ambient.password"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
