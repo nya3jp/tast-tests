@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // ClamshellTests are placed here.
@@ -44,6 +45,7 @@ func init() {
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel(skipOnNoBackCameraModels...)),
 		Params: []testing.Param{{
 			Val:               clamshellTestsForPaypal,
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -68,6 +70,26 @@ func init() {
 		Vars: []string{"arcappcompat.username", "arcappcompat.password",
 			"arcappcompat.Paypal.emailid", "arcappcompat.Paypal.password"},
 	})
+}
+
+// skipOnNoBackCameraModels is a list of models to be skipped from test runs.
+var skipOnNoBackCameraModels = []string{
+	"eve",
+	"kevin",
+	"caroline",
+	"nasher360",
+	"careena",
+	"kasumi",
+	"kasumi360",
+	"treeya360",
+	"treeya",
+	"helios",
+	"bluebird",
+	"duffy",
+	"sarien",
+	"lazor",
+	"elemi",
+	"berknip",
 }
 
 // Paypal test uses library for opting into the playstore and installing app.
