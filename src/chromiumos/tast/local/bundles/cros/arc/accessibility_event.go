@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"reflect"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -18,22 +17,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const axEventFilePrefix = "accessibility_event"
-
-// axEventLog represents a log of accessibility event.
-// Defined in https://cs.chromium.org/chromium/src/chrome/browser/resources/chromeos/accessibility/chromevox/background/logging/log_types.js
-// TODO(b/159413215): Use automationEvent instead of axEventLog.
-type axEventLog struct {
-	EventType  ui.EventType `json:"type_"`
-	TargetName string       `json:"targetName_"`
-	RootName   string       `json:"rootName_"`
-	// There is also docUrl property, but it is not used in test.
-}
-
 type axEventTestStep struct {
-	Key    string        // key events to invoke the event.
-	Params ui.FindParams // expected params of focused node after the event.
-	Event  axEventLog    // expected event log.
+	keys      string        // a sequence of keys to invoke.
+	focus     ui.FindParams // expected params of focused node after the event.
+	eventType ui.EventType  // an expected event type from the focused node.
 }
 
 func init() {
@@ -54,95 +41,49 @@ func init() {
 	})
 }
 
-// verifyLog gets the current ChromeVox log and checks that it matches with expected log.
-// Note that as the initial a11y focus is unstable, checkOnlyLatest=true can be used to check only the latest log.
-func verifyLog(ctx context.Context, cvconn *a11y.ChromeVoxConn, expectedLog axEventLog, checkOnlyLatest bool) error {
-	var logs []axEventLog
-	if err := cvconn.Eval(ctx, "LogStore.instance.getLogsOfType(LogStore.LogType.EVENT)", &logs); err != nil {
-		return errors.Wrap(err, "failed to get event logs")
+func runTestStep(ctx context.Context, cvconn *a11y.ChromeVoxConn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, step axEventTestStep, isFirstStep bool) error {
+	watcher, err := ui.NewRootWatcher(ctx, tconn, step.eventType)
+	if err != nil {
+		return errors.Wrap(err, "failed to create EventWatcher")
 	}
-
-	// Filter out event logs from unrelated windows.
-	i := 0
-	for _, log := range logs {
-		if log.RootName == expectedLog.RootName {
-			logs[i] = log
-			i++
-		}
-	}
-	logs = logs[:i]
-	if checkOnlyLatest && len(logs) > 1 {
-		logs = logs[len(logs)-1:]
-	}
-
-	if len(logs) != 1 || !reflect.DeepEqual(logs[0], expectedLog) {
-		return errors.Errorf("event output is not as expected: got %q; want %q", logs, expectedLog)
-	}
-	return nil
-}
-
-func runTestStep(ctx context.Context, cvconn *a11y.ChromeVoxConn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, test axEventTestStep, isFirstStep bool) error {
-	// Ensure that ChromeVox log is cleared before proceeding.
-	if err := cvconn.Eval(ctx, "LogStore.instance.clearLog()", nil); err != nil {
-		return errors.Wrap(err, "error with clearing ChromeVox log")
-	}
+	defer watcher.Release(ctx)
 
 	// Send a key event.
-	if err := ew.Accel(ctx, test.Key); err != nil {
-		return errors.Wrapf(err, "Accel(%s) returned error", test.Key)
+	if err := ew.Accel(ctx, step.keys); err != nil {
+		return errors.Wrapf(err, "Accel(%s) returned error", step.keys)
 	}
 
 	// Wait for the focused element to match the expected.
-	if err := cvconn.WaitForFocusedNode(ctx, tconn, &test.Params, 10*time.Second); err != nil {
+	if err := cvconn.WaitForFocusedNode(ctx, tconn, &step.focus, 10*time.Second); err != nil {
 		return err
 	}
 
-	// Initial action sometimes invokes additional events (like focusing the entire application).
-	// Latest logs should only be checked on the first iteration. (b/123397142#comment19)
-	// TODO(b/142093176) Find the root cause.
-	if err := verifyLog(ctx, cvconn, test.Event, isFirstStep); err != nil {
-		return errors.Wrap(err, "failed to verify the log")
-	}
-
-	return nil
-}
-
-func setupEventStreamLogging(ctx context.Context, cvconn *a11y.ChromeVoxConn, activityName string, axEventTestSteps []axEventTestStep) (func(context.Context, *a11y.ChromeVoxConn) error, error) {
-	eventsSeen := make(map[ui.EventType]bool)
-	var events []ui.EventType
-	for _, test := range axEventTestSteps {
-		currentEvent := test.Event.EventType
-		if _, ok := eventsSeen[currentEvent]; !ok {
-			eventsSeen[currentEvent] = true
-			events = append(events, currentEvent)
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		events, err := watcher.WaitForEvent(ctx, 10*time.Second)
+		if err != nil {
+			return err
 		}
-	}
+		defer events.Release(ctx)
 
-	if err := cvconn.Call(ctx, nil, `async (events) => {
-		  let desktop = await tast.promisify(chrome.automation.getDesktop)();
-		  EventStreamLogger.instance = new EventStreamLogger(desktop);
-		  for (const event of events) {
-		    EventStreamLogger.instance.notifyEventStreamFilterChanged(event, true);
-		  }
-		}`, events); err != nil {
-		return nil, errors.Wrap(err, "enabling event stream logging failed")
-	}
-
-	cleanup := func(ctx context.Context, cvconn *a11y.ChromeVoxConn) error {
-		return cvconn.Call(ctx, nil, `async (events) => {
-		  for (const event of events) {
-		    EventStreamLogger.instance.notifyEventStreamFilterChanged(event, false);
-		  }
-		}`, events)
-	}
-	return cleanup, nil
+		for _, e := range events {
+			if e.Target == nil {
+				continue
+			}
+			if ok, err := e.Target.Matches(ctx, step.focus); err != nil {
+				return err
+			} else if ok {
+				return nil
+			}
+		}
+		return errors.Errorf("expected event didn't occur. got: %+v", events)
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	MainActivityTestSteps := []axEventTestStep{
 		axEventTestStep{
-			Key: "Tab",
-			Params: ui.FindParams{
+			"Tab",
+			ui.FindParams{
 				ClassName: arca11y.ToggleButton,
 				Name:      "OFF",
 				Role:      ui.RoleTypeToggleButton,
@@ -150,14 +91,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 					"checked": ui.CheckedStateFalse,
 				},
 			},
-			Event: axEventLog{
-				EventType:  ui.EventTypeFocus,
-				TargetName: "OFF",
-			},
+			ui.EventTypeFocus,
 		},
 		axEventTestStep{
-			Key: "Search+Space",
-			Params: ui.FindParams{
+			"Search+Space",
+			ui.FindParams{
 				ClassName: arca11y.ToggleButton,
 				Name:      "ON",
 				Role:      ui.RoleTypeToggleButton,
@@ -165,14 +103,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 					"checked": ui.CheckedStateTrue,
 				},
 			},
-			Event: axEventLog{
-				EventType:  ui.EventTypeCheckedStateChanged,
-				TargetName: "ON",
-			},
+			ui.EventTypeCheckedStateChanged,
 		},
 		axEventTestStep{
-			Key: "Tab",
-			Params: ui.FindParams{
+			"Tab",
+			ui.FindParams{
 				ClassName: arca11y.CheckBox,
 				Name:      "CheckBox",
 				Role:      ui.RoleTypeCheckBox,
@@ -180,14 +115,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 					"checked": ui.CheckedStateFalse,
 				},
 			},
-			Event: axEventLog{
-				EventType:  ui.EventTypeFocus,
-				TargetName: "CheckBox",
-			},
+			ui.EventTypeFocus,
 		},
 		axEventTestStep{
-			Key: "Search+Space",
-			Params: ui.FindParams{
+			"Search+Space",
+			ui.FindParams{
 				ClassName: arca11y.CheckBox,
 				Name:      "CheckBox",
 				Role:      ui.RoleTypeCheckBox,
@@ -195,14 +127,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 					"checked": ui.CheckedStateTrue,
 				},
 			},
-			Event: axEventLog{
-				EventType:  ui.EventTypeCheckedStateChanged,
-				TargetName: "CheckBox",
-			},
+			ui.EventTypeCheckedStateChanged,
 		},
 		axEventTestStep{
-			Key: "Tab",
-			Params: ui.FindParams{
+			"Tab",
+			ui.FindParams{
 				ClassName: arca11y.CheckBox,
 				Name:      "CheckBoxWithStateDescription",
 				Role:      ui.RoleTypeCheckBox,
@@ -210,14 +139,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 					"checked": ui.CheckedStateFalse,
 				},
 			},
-			Event: axEventLog{
-				EventType:  ui.EventTypeFocus,
-				TargetName: "CheckBoxWithStateDescription",
-			},
+			ui.EventTypeFocus,
 		},
 		axEventTestStep{
-			Key: "Tab",
-			Params: ui.FindParams{
+			"Tab",
+			ui.FindParams{
 				ClassName: arca11y.SeekBar,
 				Name:      "seekBar",
 				Role:      ui.RoleTypeSlider,
@@ -225,14 +151,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 					"valueForRange": 25,
 				},
 			},
-			Event: axEventLog{
-				EventType:  ui.EventTypeFocus,
-				TargetName: "seekBar",
-			},
+			ui.EventTypeFocus,
 		},
 		axEventTestStep{
-			Key: "=",
-			Params: ui.FindParams{
+			"=",
+			ui.FindParams{
 				ClassName: arca11y.SeekBar,
 				Name:      "seekBar",
 				Role:      ui.RoleTypeSlider,
@@ -240,54 +163,44 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 					"valueForRange": 26,
 				},
 			},
-			Event: axEventLog{
-				EventType:  ui.EventTypeRangeValueChanged,
-				TargetName: "seekBar",
-			},
+			ui.EventTypeRangeValueChanged,
 		},
 		axEventTestStep{
-			Key: "Tab",
-			Params: ui.FindParams{
+			"Tab",
+			ui.FindParams{
 				ClassName: arca11y.SeekBar,
 				Role:      ui.RoleTypeSlider,
 				Attributes: map[string]interface{}{
 					"valueForRange": 3,
 				},
 			},
-			Event: axEventLog{
-				EventType: ui.EventTypeFocus,
-			},
+			ui.EventTypeFocus,
 		},
 		axEventTestStep{
-			Key: "-",
-			Params: ui.FindParams{
+			"-",
+			ui.FindParams{
 				ClassName: arca11y.SeekBar,
 				Role:      ui.RoleTypeSlider,
 				Attributes: map[string]interface{}{
 					"valueForRange": 2,
 				},
 			},
-			Event: axEventLog{
-				EventType: ui.EventTypeRangeValueChanged,
-			},
+			ui.EventTypeRangeValueChanged,
 		},
 	}
 	EditTextActivityTestSteps := []axEventTestStep{
 		axEventTestStep{
-			Key: "Tab",
-			Params: ui.FindParams{
+			"Tab",
+			ui.FindParams{
 				ClassName: arca11y.EditText,
 				Name:      "contentDescription",
 				Role:      ui.RoleTypeTextField,
 			},
-			Event: axEventLog{
-				EventType:  ui.EventTypeFocus,
-				TargetName: "contentDescription",
-			},
+			ui.EventTypeFocus,
 		},
 		axEventTestStep{
-			Key: "a",
-			Params: ui.FindParams{
+			"a",
+			ui.FindParams{
 				ClassName: arca11y.EditText,
 				Name:      "contentDescription",
 				Role:      ui.RoleTypeTextField,
@@ -295,16 +208,16 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 					"value": "a",
 				},
 			},
-			Event: axEventLog{
-				EventType:  ui.EventTypeValueInTextFieldChanged,
-				TargetName: "contentDescription",
-			},
+			ui.EventTypeValueInTextFieldChanged,
 		},
 	}
 	testActivities := []arca11y.TestActivity{arca11y.MainActivity, arca11y.EditTextActivity}
-	events := make(map[string][]axEventTestStep)
-	events[arca11y.MainActivity.Name] = MainActivityTestSteps
-	events[arca11y.EditTextActivity.Name] = EditTextActivityTestSteps
+
+	testSteps := map[arca11y.TestActivity][]axEventTestStep{
+		arca11y.MainActivity:     MainActivityTestSteps,
+		arca11y.EditTextActivity: EditTextActivityTestSteps,
+	}
+
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Error with creating EventWriter from keyboard: ", err)
@@ -312,21 +225,9 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	defer ew.Close()
 
 	testFunc := func(ctx context.Context, cvconn *a11y.ChromeVoxConn, tconn *chrome.TestConn, currentActivity arca11y.TestActivity) error {
-		testSteps := events[currentActivity.Name]
-		cleanup, err := setupEventStreamLogging(ctx, cvconn, currentActivity.Name, testSteps)
-		if err != nil {
-			return err
-		}
-		defer func() {
-			if err := cleanup(ctx, cvconn); err != nil {
-				testing.ContextLog(ctx, "Failed to clean up event stream linsteners: ", err)
-			}
-		}()
-
-		for i, test := range testSteps {
-			test.Event.RootName = currentActivity.Title
+		for i, test := range testSteps[currentActivity] {
 			if err := runTestStep(ctx, cvconn, tconn, ew, test, i == 0); err != nil {
-				return errors.Wrapf(err, "failed to run a test step %v", test)
+				return errors.Wrapf(err, "failed to run a test step %+v", test)
 			}
 		}
 		return nil
