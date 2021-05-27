@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e9d7eb_d8ab33dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-27T01:56:22Z",
+      "side": 1,
+      "message": "nit: I would write this as:\n\n if sleepDur :\u003d params.ReassocDelay + bssTMReassocBuffer - time.Since(t); sleepDur \u003e 0 {\n   ...\n }\n\nwith which we can avoid duplicated expressions.",
+      "range": {
+        "startLine": 248,
+        "startChar": 6,
+        "endLine": 249,
+        "endChar": 76
+      },
+      "revId": "b7598394b378bac2cef17c19b2baccf8d3306410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
