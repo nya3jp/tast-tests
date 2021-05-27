@@ -16,8 +16,11 @@ import (
 )
 
 const (
-	bootPerformanceBootUpSeconds   = "boot_up_seconds"
-	bootPerformanceBootUpTimestamp = "boot_up_timestamp"
+	bootPerformanceBootUpSeconds     = "boot_up_seconds"
+	bootPerformanceBootUpTimestamp   = "boot_up_timestamp"
+	bootPerformanceShutdownSeconds   = "shutdown_seconds"
+	bootPerformanceShutdownTimestamp = "shutdown_timestamp"
+	bootPerformanceShutdownReason    = "shutdown_reason"
 )
 
 func init() {
@@ -47,7 +50,8 @@ func getData(ctx context.Context, s *testing.State) map[string]string {
 	}
 
 	// Verify the headers are correct.
-	want := []string{bootPerformanceBootUpSeconds, bootPerformanceBootUpTimestamp}
+	want := []string{bootPerformanceBootUpSeconds, bootPerformanceBootUpTimestamp, bootPerformanceShutdownSeconds,
+		bootPerformanceShutdownTimestamp, bootPerformanceShutdownReason}
 	got := records[0]
 	if !reflect.DeepEqual(want, got) {
 		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
@@ -84,6 +88,20 @@ func ProbeBootPerformanceInfo(ctx context.Context, s *testing.State) {
 		s.Errorf("Failed to convert %q (%s) to float: %v", contentsMap[bootPerformanceBootUpTimestamp], bootPerformanceBootUpTimestamp, err)
 	} else if bootUpTimestamp < 0.5 {
 		s.Errorf("Failed. It is impossible that %s is less than 0.5", bootPerformanceBootUpTimestamp)
+	}
+
+	// Check "shutdown_seconds" and "shutdown_timestamp" is float.
+	// We don't check the value, since in test lab, the shutdown might be not through powerd.
+	if _, err := strconv.ParseFloat(contentsMap[bootPerformanceShutdownSeconds], 64); err != nil {
+		s.Errorf("Failed to convert %q (%s) to float: %v", contentsMap[bootPerformanceShutdownSeconds], bootPerformanceShutdownSeconds, err)
+	}
+	if _, err := strconv.ParseFloat(contentsMap[bootPerformanceShutdownTimestamp], 64); err != nil {
+		s.Errorf("Failed to convert %q (%s) to float: %v", contentsMap[bootPerformanceShutdownTimestamp], bootPerformanceShutdownTimestamp, err)
+	}
+
+	// Check "shutdown_reason" is not an empty string.
+	if len(contentsMap[bootPerformanceShutdownReason]) == 0 {
+		s.Errorf("Failed. %s should not be empty string", bootPerformanceShutdownReason)
 	}
 
 	// Sleep 5 seconds, fetch data again. "boot_up_timestamp" should be the same.
