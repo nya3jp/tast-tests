@@ -14,6 +14,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/android/adb"
@@ -149,8 +150,7 @@ func (d *Device) EnableDebug() {
 // Close releases resources associated with d.
 func (d *Device) Close(ctx context.Context) error {
 	// Request to stop the remote server.
-	var res string
-	if err := d.call(ctx, "stop", &res); err != nil {
+	if err := d.callStop(ctx); err != nil && !strings.HasSuffix(err.Error(), "EOF") {
 		testing.ContextLog(ctx, "Failed to stop UI Automator server: ", err)
 	}
 	if err := d.hostDevice.RemoveForwardTCP(ctx, d.hostPort); err != nil {
@@ -158,6 +158,24 @@ func (d *Device) Close(ctx context.Context) error {
 	}
 	d.sp.Kill()
 	return d.sp.Wait()
+}
+
+// callStop calls a "stop" remote server method to gracefully shutdown the server.
+func (d *Device) callStop(ctx context.Context) error {
+	req, err := http.NewRequest("GET", fmt.Sprintf("http://localhost:%d/stop", d.hostPort), nil)
+	if err != nil {
+		return errors.Wrap(err, "stop: failed initializing request")
+	}
+	req = req.WithContext(ctx)
+	req.Close = true
+
+	res, err := http.DefaultClient.Do(req)
+	if err != nil {
+		// The server closes the connection immediately, so getting EOF error here is expected.
+		return err
+	}
+	defer res.Body.Close()
+	return nil
 }
 
 // call calls a remote server method by JSON-RPC.
