@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d327b97a_4816387b",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-27T01:41:56Z",
+      "side": 1,
+      "message": "Thanks for the explanation. That\u0027s right, I understand this resolves the case where we aren\u0027t connecting to the correct extension.",
+      "parentUuid": "2bd15841_5b1924cb",
+      "revId": "57d38b6ec952e764b414ce7444bc6b2506f5389d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b8aba31_c5990e43",
@@ -125,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e48181d4_1d6688a8",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-27T01:41:56Z",
+      "side": 1,
+      "message": "Can we create SpeechMonitor before calling waitForUtterance() in NewSpeechMonitor() and return the instance when waitForUtterance successes?",
+      "parentUuid": "b69afbbe_c9e41835",
+      "revId": "57d38b6ec952e764b414ce7444bc6b2506f5389d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76d42afd_47eed4b4",
         "filename": "src/chromiumos/tast/local/a11y/a11y.go",
         "patchSetId": 5
@@ -154,6 +190,24 @@
       "side": 1,
       "message": "If we listen to both, we run the risk of getting duplicate utterances. In my experience, it\u0027s best to listen to onSpeak for Google TTS and to onSpeakWithAudioStream for eSpeak. I think there a small differences between their code that might explain this difference.",
       "parentUuid": "76d42afd_47eed4b4",
+      "revId": "57d38b6ec952e764b414ce7444bc6b2506f5389d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec3a22ae_4ccd4ad4",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-27T01:41:56Z",
+      "side": 1,
+      "message": "I\u0027m reading the implementation:\nhttps://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/speech/extension_api/tts_engine_extension_api_chromeos.cc;l\u003d46;drc\u003d9fb42d79b70e2be3e1a9d687d122ba6e951c26d9\n\nIt looks like when there is an onSpeakWithAudioStream listener, only it is called. Otherwise, only onSpeak is called.\n\nAlso from the API proposal in https://docs.google.com/document/d/1Yg9g2f74ycei5GH7J1_SX0P0edfFDKgn2-TwugfyKno/edit#, apparently we eventually want to migrate GoogleTTS to use onSpeakWithAudioStream.\n\nHow about generalizing this by defining the struct TtsEngine like below?:\n\n  type TtsEngine struct {\n    ExtensionID string\n    UseSpeakWithAudioStream bool\n  }",
+      "parentUuid": "0723fe43_6f7591f2",
       "revId": "57d38b6ec952e764b414ce7444bc6b2506f5389d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

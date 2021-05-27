@@ -16,6 +16,63 @@
       "message": "Responded to comments, thanks!",
       "revId": "cc686f33d08d3d6071b290bc1b2bac749d3edd68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea1b8c4_99bdf506",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-27T01:41:56Z",
+      "side": 1,
+      "message": "Thanks for the reply. I understand the overall direction. I\u0027ve added a few comments.",
+      "revId": "cc686f33d08d3d6071b290bc1b2bac749d3edd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8efce73d_d9d83e0f",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-27T01:41:56Z",
+      "side": 1,
+      "message": "In the new logic, we have to close extConn except for the correct one, otherwise we may leak some resources.",
+      "range": {
+        "startLine": 202,
+        "startChar": 3,
+        "endLine": 204,
+        "endChar": 4
+      },
+      "revId": "cc686f33d08d3d6071b290bc1b2bac749d3edd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41de01fb_aa4e5d8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-27T01:41:56Z",
+      "side": 1,
+      "message": "How about re-adding this test to the informational group?",
+      "revId": "cc686f33d08d3d6071b290bc1b2bac749d3edd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
