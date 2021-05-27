@@ -33,6 +33,24 @@
       "message": "lgtm as a tast-owners. Deferreing to Daniel for the testing logic details.",
       "revId": "a97740956a529aff43dd0c72d65d056dcb3dd34c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7035368c_0411b39d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-05-27T15:50:50Z",
+      "side": 1,
+      "message": "yeah I don\u0027t know how though. I guess we could look at how much the kernel partition is using on the DUT and report that as some sort of stat?",
+      "parentUuid": "c28dd74d_1ee0a0d1",
+      "revId": "a97740956a529aff43dd0c72d65d056dcb3dd34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
