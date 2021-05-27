@@ -33,6 +33,24 @@
       "message": "Probably best to note why the action needs to be passed in as an argument than just being placed earlier in the chain.\n\nRelatedly (and very optional), did you consider an alternate design:\n\nlistener \u003d uiauto.EventListener(node, ev)\nuiauto.Combine(\nlistener.Listen()\nbutton.Click()\nlistener.WaitAndStop()\n)\n\nWhen we did the initial uiauto design as well we considered having an event listener always registered at the root of the document when the context is created.  Would that have helped here?",
       "revId": "9a7a10565f685fa4e1e4cc48d3d536bacfd4e961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64b1daba_85ae9085",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-05-27T21:35:50Z",
+      "side": 1,
+      "message": "Added a comment to describe why it\u0027s not like that.\n\nThat code structure would be fine but it needs to ensure cleaning up the allocated resources for the listener.  Requiring \"defer listener.Release(ctx)\" is an option, though I don\u0027t think that fits well with uiauto design.",
+      "parentUuid": "390ecb49_8b70a54d",
+      "revId": "9a7a10565f685fa4e1e4cc48d3d536bacfd4e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
