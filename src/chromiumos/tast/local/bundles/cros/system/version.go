@@ -22,7 +22,7 @@ func init() {
 		Contacts: []string{
 			"pwang@chromium.org",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline", "informational", "group:graphics", "graphics_perbuild"},
 	})
 }
 
