@@ -96,10 +96,9 @@ func init() {
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name: "vm",
-			Val:  pipTests,
-			// TODO(b/179503195): Reenable after test is fixed
-			// ExtraAttr:         []string{"group:mainline", "informational"},
+			Name:              "vm",
+			Val:               pipTests,
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
@@ -703,26 +702,39 @@ func expandPIPViaMenuTouchR(ctx context.Context, tconn *chrome.TestConn, restore
 
 		bounds := window.BoundsInRoot
 
+		// Move the cursor to the center of the PIP window, where the expand button will be.
 		if err := mouse.Move(ctx, tconn, coords.NewPoint(bounds.Left+bounds.Width/2, bounds.Top+bounds.Height/2), 0); err != nil {
 			return testing.PollBreak(err)
 		}
 
-		// Need to wait for the menu to appear.
-		if err := testing.Sleep(ctx, time.Second); err != nil {
-			return testing.PollBreak(err)
-		}
-		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
-			return testing.PollBreak(err)
-		}
-		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
-			return testing.PollBreak(err)
-		}
-
-		if err := ash.WaitForARCAppWindowState(ctx, tconn, pipTestPkgName, restoreWindowState); err != nil {
-			return errors.Wrap(err, "did not expand to restore window state")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: 500 * time.Millisecond})
+		// The menu may take some time to be brought up which causes clicking to have no effect. Poll if needed until it expands.
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			// Click once to bring up the menu.
+			if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+				return testing.PollBreak(err)
+			}
+			if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+				return testing.PollBreak(err)
+			}
+			// Need to wait for the menu to appear.
+			if err := testing.Sleep(ctx, time.Second); err != nil {
+				return testing.PollBreak(err)
+			}
+			// Click again to actually click on the expand button.
+			if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+				return testing.PollBreak(err)
+			}
+			if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+				return testing.PollBreak(err)
+			}
+			// Check that we restored to the correct window state.
+			if err := ash.WaitForARCAppWindowStateWithPollOptions(ctx, tconn, pipTestPkgName, restoreWindowState,
+				&testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+				return errors.Wrap(err, "did not expand to restore window state")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 25 * time.Second})
+	}, &testing.PollOptions{Timeout: 30 * time.Second})
 }
 
 // waitForPIPWindow keeps looking for a PIP window until it appears on the Chrome side.
