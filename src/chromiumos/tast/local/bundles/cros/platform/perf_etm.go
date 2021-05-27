@@ -29,7 +29,7 @@ func init() {
 		// CoreSight/ETM is the Arm technology.
 		SoftwareDeps: []string{"arm"},
 		// ETM is the optional HW implemented only on Trogdor SoC.
-		HardwareDeps: hwdep.D(hwdep.Platform("trogdor")),
+		HardwareDeps: hwdep.D(hwdep.Platform("strongbad", "trogdor")),
 		Attr:         []string{"group:mainline"},
 	})
 }
