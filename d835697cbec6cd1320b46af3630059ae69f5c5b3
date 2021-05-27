@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81c90656_4008e07c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-05-27T11:49:37Z",
+      "side": 1,
+      "message": "Hi vsavu,\n\nMinor fixes to the LaunchManagedGuestSession Tast test, PTAL!\n\nRegards,\nJit",
+      "revId": "d835697cbec6cd1320b46af3630059ae69f5c5b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
