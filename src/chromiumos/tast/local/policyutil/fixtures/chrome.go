@@ -85,6 +85,8 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 		chrome.FakeLogin(chrome.Creds{User: Username, Pass: Password}),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.CustomLoginTimeout(chrome.ManagedUserLoginTimeout),
+		chrome.ARCEnabled(),
+		chrome.ExtraArgs("--arc-availability=officially-supported"),
 	}
 	opts = append(opts, p.extraOpts...)
 
