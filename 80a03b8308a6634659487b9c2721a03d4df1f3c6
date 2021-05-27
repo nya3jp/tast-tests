@@ -16,6 +16,52 @@
       "message": "PTAL. Thanks!",
       "revId": "80a03b8308a6634659487b9c2721a03d4df1f3c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f6de7ff_4b5115ba",
+        "filename": "src/chromiumos/tast/local/android/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-05-27T08:03:52Z",
+      "side": 1,
+      "message": "can we move this to the inside of callStop? Also, is it possible to use err \u003d\u003d io.EOF?",
+      "range": {
+        "startLine": 153,
+        "startChar": 39,
+        "endLine": 153,
+        "endChar": 80
+      },
+      "revId": "80a03b8308a6634659487b9c2721a03d4df1f3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79467fb1_585a0909",
+        "filename": "src/chromiumos/tast/local/android/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-05-27T08:03:52Z",
+      "side": 1,
+      "message": "nit: use http.Get?",
+      "range": {
+        "startLine": 165,
+        "startChar": 14,
+        "endLine": 165,
+        "endChar": 35
+      },
+      "revId": "80a03b8308a6634659487b9c2721a03d4df1f3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
