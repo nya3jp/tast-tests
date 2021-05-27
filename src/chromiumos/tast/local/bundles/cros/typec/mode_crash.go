@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/typec/typecutils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -110,31 +111,30 @@ func ModeCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to verify DP monitor working after login: ", err)
 	}
 
+	oldPID, err := typecdPID(ctx)
+	if err != nil {
+		s.Fatal("Failed to get original typecd PID: ", err)
+	}
+
 	s.Log("Killing typecd")
 	if err := testexec.CommandContext(ctx, "pkill", "typecd").Run(); err != nil {
 		s.Fatal("Failed to kill typecd: ", err)
 	}
 
-	// Wait for 2 seconds for typecd to restart.
-	// TODO(b/181617978): We wait for 2 seconds, to give time for typecd to:
-	// a. Restart.
-	// b. Re-build Type C state.
-	// Come up with a better way to determine that typecd rebuilt its state.
-	if err := testing.Sleep(ctx, 2*time.Second); err != nil {
-		s.Fatal("Failed to wait for typecd to restart: ", err)
-	}
-
 	s.Log("Checking that typecd restarted")
-	out, err := testexec.CommandContext(ctx, "pgrep", "typecd").Output()
-	if err != nil {
-		s.Fatal("Failed to run pgrep to check typecd restart: ", err)
-	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		newPID, err := typecdPID(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get new typecd PID")
+		}
 
-	// A valid PID is sufficient for us to know typecd is running again.
-	if pid, err := strconv.Atoi(strings.TrimSpace(string(out))); err != nil {
-		s.Fatal("Failed to convert pgrep output: ", err)
-	} else if pid < 0 {
-		s.Fatalf("typecd doesn't have a valid PID on restart: %d", pid)
+		if newPID == oldPID {
+			return errors.Errorf("typecd still has old PID: %d", newPID)
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		s.Fatal("Failed to verify typecd restarted: ", err)
 	}
 
 	// Log out;
@@ -169,4 +169,14 @@ func ModeCrash(ctx context.Context, s *testing.State) {
 	}, &dpPollOptions); err != nil {
 		s.Fatal("Failed to verify DP monitor working at login screen: ", err)
 	}
+}
+
+// typecdPID returns the `typecd` process ID.
+func typecdPID(ctx context.Context) (int, error) {
+	out, err := testexec.CommandContext(ctx, "pgrep", "typecd").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to run pgrep to check whether typecd is running")
+	}
+
+	return strconv.Atoi(strings.TrimSpace(string(out)))
 }
