@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "64b2e49a_6b974350",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-27T15:56:32Z",
+      "side": 1,
+      "message": "Why does the test need to be moved?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c115e8d4_2c26c92c",
@@ -14,6 +37,132 @@
       "writtenOn": "2021-05-27T12:27:16Z",
       "side": 1,
       "message": "Hi Tast experts, \n\nCan you please take a look at this CL? \n\nThanks!",
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ded339_739ed895",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-27T15:56:32Z",
+      "side": 1,
+      "message": "Is this still true?",
+      "range": {
+        "startLine": 27,
+        "startChar": 45,
+        "endLine": 27,
+        "endChar": 71
+      },
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1788d469_89ec3ca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-27T15:56:32Z",
+      "side": 1,
+      "message": "The previous test had a 12 min timeout. Is one needed in this test?",
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65055709_34b9d2a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-27T15:56:32Z",
+      "side": 1,
+      "message": "Should this be a constant if used later?",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "583a27f4_bbd0ec32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-27T15:56:32Z",
+      "side": 1,
+      "message": "Is this cleanup or ensuring that the DUT is in the correct state before calling ServeAndRefresh?",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 20
+      },
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "701a7e8d_8a91d6be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-27T15:56:32Z",
+      "side": 1,
+      "message": "Is this still true?",
+      "range": {
+        "startLine": 90,
+        "startChar": 122,
+        "endLine": 90,
+        "endChar": 133
+      },
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "110fdbd1_69b480f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-05-27T15:56:32Z",
+      "side": 1,
+      "message": "Is there any other way we can check that Chrome has processed the signal?",
       "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
