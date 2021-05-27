@@ -136,6 +136,7 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 		{"current_features.fb", pathMustExist},
 		{"stored_modulesets.pb", pathMustExist},
 		{"current_modules_init.pb", pathMustNotExist},
+		{"pending_modules_init.pb", pathMustNotExist},
 	} {
 		if err := waitForPath(ctx, filepath.Join(chimeraPath, e.filename), e.cond); err != nil {
 			return err
@@ -303,6 +304,8 @@ func waitForApksOptimized(ctx context.Context, root string, sdkVersion int) erro
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Calculate number of files per extension.
 		perExtCnt := map[string]int{}
+		// Modes for root of odex files.
+		odexParentModes := map[string]os.FileMode{}
 		err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 			if err != nil {
 				return err
@@ -310,15 +313,31 @@ func waitForApksOptimized(ctx context.Context, root string, sdkVersion int) erro
 			if !info.IsDir() {
 				ext := filepath.Ext(info.Name())
 				perExtCnt[ext] = perExtCnt[ext] + 1
+				if ext == ".odex" {
+					parent := filepath.Dir(path)
+					parentInfo, err := os.Stat(parent)
+					if err != nil {
+						return errors.Wrapf(err, "failed to stat odex parent %s", path)
+					}
+					odexParentModes[parent] = parentInfo.Mode()
+				}
 			}
 			return nil
 		})
 		if err != nil {
 			return testing.PollBreak(errors.Wrapf(err, "failed to walk %q", root))
 		}
+
+		for odexParent, mode := range odexParentModes {
+			// Make sure parent has execute bits
+			if mode&0111 != 0111 {
+				return errors.Errorf("odex parent %q has no execution bits 0%o", odexParent, mode)
+			}
+		}
+
 		apkCnt := perExtCnt[".apk"]
 		if perExtCnt[".flock"] != 0 {
-			return errors.Wrapf(err, "file lock detected in %q", root)
+			return errors.Errorf("file lock detected in %q", root)
 		}
 		if apkCnt == 0 {
 			return testing.PollBreak(errors.Errorf("no APK found in %q", root))
@@ -329,7 +348,7 @@ func waitForApksOptimized(ctx context.Context, root string, sdkVersion int) erro
 		// https://source.corp.google.com/piper///depot/google3/java/com/google/android/gmscore/integ/libs/chimera/module/src/com/google/android/chimera/container/DexOptUtils.java;l=34
 		if sdkVersion < arc.SDKQ {
 			if apkCnt != vdexCnt || apkCnt != odexCnt {
-				return errors.Wrapf(err, "not everything yet optimized; APK count: %d, vdex: %d, odex: %d; expected each APK has odex and vdex", apkCnt, vdexCnt, odexCnt)
+				return errors.Errorf("not everything yet optimized; APK count: %d, vdex: %d, odex: %d; expected each APK has odex and vdex", apkCnt, vdexCnt, odexCnt)
 			}
 		} else {
 			if vdexCnt != 0 || odexCnt != 0 {
