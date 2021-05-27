@@ -53,7 +53,12 @@ func init() {
 			javascriptFilename,
 		},
 		SoftwareDeps: []string{"chrome"},
-		Vars:         []string{"platform.MemoryStressBasic.enableARC", "platform.MemoryStressBasic.minFilelistKB", "platform.MemoryStressBasic.seed"},
+		Vars: []string{
+			"platform.MemoryStressBasic.enableARC",
+			"platform.MemoryStressBasic.minFilelistKB",
+			"platform.MemoryStressBasic.seed",
+			"platform.MemoryStressBasic.useHugePages",
+		},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -72,27 +77,35 @@ func MemoryStressBasic(ctx context.Context, s *testing.State) {
 
 	minFilelistKB := -1
 	if val, ok := s.Var("platform.MemoryStressBasic.minFilelistKB"); ok {
-		testing.ContextLog(ctx, "minFilelistKB: ", val)
 		val, err := strconv.Atoi(val)
 		if err != nil {
 			s.Fatal("Cannot parse argument platform.MemoryStressBasic.minFilelistKB: ", err)
 		}
 		minFilelistKB = val
 	}
+	s.Log(ctx, "minFilelistKB: ", minFilelistKB)
 
 	// The memory pressure is higher when ARC is enabled (without launching Android apps).
 	// Checks the ARC enabled case by default.
 	enableARC := true
 	if val, ok := s.Var("platform.MemoryStressBasic.enableARC"); ok {
-		testing.ContextLog(ctx, "enableARC: ", val)
-		intVal, err := strconv.Atoi(val)
+		boolVal, err := strconv.ParseBool(val)
 		if err != nil {
 			s.Fatal("Cannot parse argument platform.MemoryStressBasic.enableARC: ", err)
 		}
-		if intVal == 0 {
-			enableARC = false
-		}
+		enableARC = boolVal
 	}
+	s.Log(ctx, "enableARC: ", enableARC)
+
+	useHugePages := false
+	if val, ok := s.Var("platform.MemoryStressBasic.useHugePages"); ok {
+		boolVal, err := strconv.ParseBool(val)
+		if err != nil {
+			s.Fatal("Cannot parse argument platform.MemoryStressBasic.useHugePages: ", err)
+		}
+		useHugePages = boolVal
+	}
+	s.Log(ctx, "useHugePages: ", useHugePages)
 
 	seed := time.Now().UTC().UnixNano()
 	if val, ok := s.Var("platform.MemoryStressBasic.seed"); ok {
@@ -102,7 +115,7 @@ func MemoryStressBasic(ctx context.Context, s *testing.State) {
 		}
 		seed = intVal
 	}
-	testing.ContextLog(ctx, "Seed: ", seed)
+	s.Log(ctx, "Seed: ", seed)
 	localRand := rand.New(rand.NewSource(seed))
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
@@ -118,12 +131,12 @@ func MemoryStressBasic(ctx context.Context, s *testing.State) {
 	// When there is less random data (33 percent random), the compress ratio is high,
 	// the low memory notification is triggered by low swap free.
 	label67 := "67_percent_random"
-	result67, err := stressTestCase(ctx, perfValues, localRand, mbPerTab, switchCount, minFilelistKB, 0.67, baseURL, label67, enableARC)
+	result67, err := stressTestCase(ctx, perfValues, localRand, mbPerTab, switchCount, minFilelistKB, 0.67, baseURL, label67, enableARC, useHugePages)
 	if err != nil {
 		s.Fatal("67_percent_random test case failed: ", err)
 	}
 	label33 := "33_percent_random"
-	result33, err := stressTestCase(ctx, perfValues, localRand, mbPerTab, switchCount, minFilelistKB, 0.33, baseURL, label33, enableARC)
+	result33, err := stressTestCase(ctx, perfValues, localRand, mbPerTab, switchCount, minFilelistKB, 0.33, baseURL, label33, enableARC, useHugePages)
 	if err != nil {
 		s.Fatal("33_percent_random test case failed: ", err)
 	}
@@ -140,10 +153,13 @@ func MemoryStressBasic(ctx context.Context, s *testing.State) {
 	}
 }
 
-func stressTestCase(ctx context.Context, perfValues *perf.Values, localRand *rand.Rand, mbPerTab, switchCount, minFilelistKB int, compressRatio float64, baseURL, label string, enableARC bool) (testCaseResult, error) {
+func stressTestCase(ctx context.Context, perfValues *perf.Values, localRand *rand.Rand, mbPerTab, switchCount, minFilelistKB int, compressRatio float64, baseURL, label string, enableARC, useHugePages bool) (testCaseResult, error) {
 	var opts []chrome.Option
 	if enableARC {
 		opts = append(opts, chrome.ARCEnabled())
+	}
+	if useHugePages {
+		opts = append(opts, chrome.HugePagesEnabled())
 	}
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
