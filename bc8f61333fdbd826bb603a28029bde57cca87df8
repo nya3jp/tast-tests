@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a6841f8_36570d77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-vhost-user-net-test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-05-27T14:53:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23811e56_3dc6b98a",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d4361ce_978d36a1",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4076825_df9c59b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-05-27T14:53:53Z",
+      "side": 1,
+      "message": "Ah, sorry. This is a note just for me and I intended that I will fix this before I ask you to do a full review.\nSo, this will be removed when I remove \"WIP\" from the commit message.",
+      "parentUuid": "2d4361ce_978d36a1",
+      "range": {
+        "startLine": 38,
+        "startChar": 11,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a36798f_52914e2a",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-05-24T13:50:21Z",
       "side": 1,
       "message": "Does this allow non ascii strings ? If possible prefer to use string type. The kernel will send you back EINVAL on your first syscall if your interface name is too long.",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb714f3e_8924663a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-05-27T14:53:53Z",
+      "side": 1,
+      "message": "I think this field must be a fixed-size array to make the size of this struct match with the size of C\u0027s struct, where this filed is an array of char.\nAlso, I don\u0027t think whether it\u0027s ascii or non-ascii matters here as we don\u0027t check the content of Ifname.\n\nBut, I agree that it\u0027s problematic if the name is too long. I added a check for the name length.",
+      "parentUuid": "8a36798f_52914e2a",
       "range": {
         "startLine": 46,
         "startChar": 7,
@@ -134,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23948220_fd07541f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-05-27T14:53:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e27752a1_df15dc9c",
+      "range": {
+        "startLine": 53,
+        "startChar": 66,
+        "endLine": 53,
+        "endChar": 70
+      },
+      "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a6d8dc9_7c6923fe",
@@ -157,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69feaff7_3692aa9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-05-27T14:53:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a6d8dc9_7c6923fe",
+      "range": {
+        "startLine": 59,
+        "startChar": 20,
+        "endLine": 59,
+        "endChar": 32
+      },
+      "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e097cfd_e74e5408",
@@ -170,6 +290,24 @@
       "writtenOn": "2021-05-24T13:50:21Z",
       "side": 1,
       "message": "Why do you need to move src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go to src/chromiumos/tast/network ?\n\nAlso could we try to preserve git history and use git mv ?",
+      "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4b6df0d_238ed5e2",
+        "filename": "src/chromiumos/tast/local/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-05-27T14:53:53Z",
+      "side": 1,
+      "message": "It\u0027s because code located under /bundles/cros/network/ cannot be used by other types of tests. `src/chromiumos/tast/network` is the right place to have network code that are used from both net.* tests and vm.* tests.\n\nI used git mv, but it seems that git recognized it as a new file because I also added a certain amount of new lines at the file.\nI split this part into CL:2922266.",
+      "parentUuid": "4e097cfd_e74e5408",
       "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
