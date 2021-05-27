@@ -16,6 +16,57 @@
       "message": "PTAL\nTY!",
       "revId": "6a17c7b49a52554bbcfd5d70d46fcd9208f5aeaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "215a93cb_7e27c92d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-05-27T04:42:28Z",
+      "side": 1,
+      "message": "can we define a struct and use it here so it becomes obvious what this false represents instead of finding its usage at L128?",
+      "revId": "6a17c7b49a52554bbcfd5d70d46fcd9208f5aeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36767802_776aa416",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-05-27T04:42:28Z",
+      "side": 1,
+      "message": "can we promote the regex to constant so we know what it represents (by name of it)?",
+      "revId": "6a17c7b49a52554bbcfd5d70d46fcd9208f5aeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdbf93f8_78645415",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-05-27T04:42:28Z",
+      "side": 1,
+      "message": "maybe factor out to a helper method?",
+      "revId": "6a17c7b49a52554bbcfd5d70d46fcd9208f5aeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
