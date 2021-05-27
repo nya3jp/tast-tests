@@ -148,6 +148,34 @@ func (r Rect) Contains(other Rect) bool {
 	return r.Left <= other.Left && r.Top <= other.Top && r.Bottom() >= other.Bottom() && r.Right() >= other.Right()
 }
 
+func min(x, y int) int {
+	if x < y {
+		return x
+	}
+	return y
+}
+
+func max(x, y int) int {
+	if x < y {
+		return y
+	}
+	return x
+}
+
+// Intersection returns the intersection of two rectangles, or an empty
+// rectangle if they don't intersect.
+func (r Rect) Intersection(other Rect) Rect {
+	res := NewRectLTRB(
+		max(r.Left, other.Left),
+		max(r.Top, other.Top),
+		min(r.Right(), other.Right()),
+		min(r.Bottom(), other.Bottom()))
+	if res.Width < 0 || res.Height < 0 {
+		return Rect{}
+	}
+	return res
+}
+
 // WithInset returns a new Rect inset by the given amounts. If insetting would cause the rectangle to
 // have negative area, instead an empty rectangle with the same CenterPoint is returned.
 // Note that dw and dh may be negative to outset a rectangle.

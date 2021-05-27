@@ -46,8 +46,25 @@ func takeScreenshots(ctx context.Context, d screenshot.Differ) error {
 	if err != nil {
 		return err
 	}
+
+	noRetries := screenshot.DiffTestOptions{Timeout: 500 * time.Millisecond}
+	if err := expectError(
+		d.DiffWithOptions("nomatches", nodewith.ClassName("MissingClassName"), noRetries)(ctx),
+		"failed to find node"); err != nil {
+		return errors.Wrap(err, "diffing with no matching elements succeeded")
+	}
+	if err := expectError(
+		d.DiffWithOptions("nomatchesinwindow", nodewith.ClassName("UnifiedSystemTray"), noRetries)(ctx),
+		"failed to find node"); err != nil {
+		return errors.Wrap(err, "diffing with the matching element outside of the window succeeded")
+	}
+	if err := expectError(
+		d.DiffWithOptions("multiplematches", nodewith.Name("My Files"), noRetries)(ctx),
+		"failed to find node"); err != nil {
+		return errors.Wrap(err, "diffing with multiple matching elements succeeded")
+	}
+
 	ui := uiauto.New(d.Tconn())
-	filesAppOptions := screenshot.DiffTestOptions{RemoveElements: []*nodewith.Finder{nodewith.ClassName("date")}}
 	// We take various screenshots to test various different things:
 	// * System UI elements,
 	// * Icons with no text
@@ -58,49 +75,50 @@ func takeScreenshots(ctx context.Context, d screenshot.Differ) error {
 	// This should not be done by other users of the screen diff library.
 	// We only do this to attempt to determine how screenshots of different types
 	// of elements are affected by device-specific configuration.
-	return uiauto.Combine("open files app and take screenshots",
-		d.DiffWithOptions("minMaxClose",
-			nodewith.ClassName("FrameCaptionButtonContainerView").Ancestor(filesapp.WindowFinder),
-			screenshot.DiffTestOptions{IgnoredBorderThickness: 1}),
-		d.Diff("searchButton", nodewith.Name("Search").Role(role.Button).Ancestor(filesapp.WindowFinder)),
-		d.Diff("recentText", nodewith.Name("Recent").Role(role.StaticText).Ancestor(filesapp.WindowFinder)),
-		d.Diff("recentItem", nodewith.Name("Recent").Role(role.TreeItem).Ancestor(filesapp.WindowFinder)),
-		d.Diff("tree", nodewith.Role(role.Tree).Ancestor(filesapp.WindowFinder)),
-		ui.WaitUntilGone(nodewith.Role(role.ProgressIndicator).Ancestor(filesapp.WindowFinder)),
-		d.Diff("welcomeMessage", nodewith.ClassName("holding-space-welcome").Ancestor(filesapp.WindowFinder)),
-		d.Diff("tableHeader", nodewith.ClassName("table-header").Ancestor(filesapp.WindowFinder)),
-		d.DiffWithOptions("tableRow", nodewith.ClassName("table-row directory").Ancestor(filesapp.WindowFinder), filesAppOptions),
-		d.DiffWithOptions("filesApp", filesapp.WindowFinder, filesAppOptions))(ctx)
+	if err := uiauto.Combine("take screenshots of files app",
+		d.Diff("minMaxClose",
+			nodewith.ClassName("FrameCaptionButtonContainerView")),
+		d.Diff("searchButton", nodewith.Name("Search").Role(role.Button)),
+		d.Diff("recentText", nodewith.Name("Recent").Role(role.StaticText)),
+		d.Diff("recentItem", nodewith.Name("Recent").Role(role.TreeItem)),
+		d.Diff("tree", nodewith.Role(role.Tree)),
+		ui.WaitUntilGone(nodewith.Role(role.ProgressIndicator)),
+		d.Diff("welcomeMessage", nodewith.ClassName("holding-space-welcome")),
+		d.Diff("tableHeader", nodewith.ClassName("table-header")),
+		d.Diff("tableRow", nodewith.ClassName("table-row directory")),
+		d.Diff("filesApp", nil))(ctx); err != nil {
+		return err
+	}
+
+	if err := expectError(
+		d.Diff("filesApp", nodewith.First())(ctx),
+		"screenshot has already been taken"); err != nil {
+		return errors.Wrap(err, "sending the same diff twice succeeded: ")
+	}
+	return nil
 }
 
 func ScreenDiff(ctx context.Context, s *testing.State) {
-	screenDiffConfig := screenshot.Config{OutputUITrees: true}
+	screenDiffConfig := screenshot.Config{
+		WindowWidthDP:  1000,
+		WindowHeightDP: 632,
+		RemoveElements: []*nodewith.Finder{nodewith.ClassName("date")},
+		NameSuffix:     "V2"}
 	// Normally the next line would be "defer d.DieOnFailedDiffs()"
 	// However, in our case, we want to run both this and DiffPerConfig.
-	d, err := screenshot.NewDifferFromConfig(ctx, s, screenDiffConfig)
+	d, err := screenshot.NewDiffer(ctx, s, screenDiffConfig)
 	if err != nil {
 		s.Fatal("Failed to initialize differ: ", err)
 	}
 
 	if err := expectError(
-		d.DiffWithOptions("nomatches", nodewith.ClassName("MissingClassName"), screenshot.DiffTestOptions{Timeout: 500 * time.Millisecond})(ctx),
-		"failed to find node"); err != nil {
-		s.Fatal("diffing with no matching elements succeeded: ", err)
-	}
-	if err := expectError(
-		d.DiffWithOptions("multiplematches", nodewith.ClassName("FrameCaptionButton"), screenshot.DiffTestOptions{Timeout: 500 * time.Millisecond})(ctx),
-		"failed to find node"); err != nil {
-		s.Fatal("diffing with multiple matching elements succeeded: ", err)
+		d.DiffWithOptions("nowindowopen", nodewith.ClassName("FrameCaptionButton"), screenshot.DiffTestOptions{Timeout: 500 * time.Millisecond})(ctx),
+		"unable to find focused window"); err != nil {
+		s.Fatal("Diffing with no window open succeeded: ", err)
 	}
 
 	if err := takeScreenshots(ctx, d); err != nil {
 		s.Fatal("Failed to screenshot with single config: ", err)
-	}
-
-	if err := expectError(
-		takeScreenshots(ctx, d),
-		"screenshot has already been taken"); err != nil {
-		s.Fatal("sending the same diff twice succeeded: ", err)
 	}
 
 	failedSingle := d.GetFailedDiffs()
