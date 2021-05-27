@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44d9b26b_1b3ac99d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-05-27T21:16:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d871006a_76bf6ad3",
+      "range": {
+        "startLine": 118,
+        "startChar": 29,
+        "endLine": 118,
+        "endChar": 60
+      },
+      "revId": "4c861ad31a245708df18e5d301dbfbebd2f4538d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "927508b1_840f0c00",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-27T20:14:15Z",
       "side": 1,
       "message": "Output(testexec.DumpLogOnError) might be useful for capturing more log info",
+      "range": {
+        "startLine": 161,
+        "startChar": 61,
+        "endLine": 161,
+        "endChar": 69
+      },
+      "revId": "4c861ad31a245708df18e5d301dbfbebd2f4538d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "379bf534_b76fdf50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-05-27T21:16:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "927508b1_840f0c00",
       "range": {
         "startLine": 161,
         "startChar": 61,
