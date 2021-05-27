@@ -25,7 +25,7 @@ func init() {
 		Func:         OobeArcAppOpen,
 		Desc:         "Launch ARC App post the OOBE Flow Setup Complete",
 		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
-		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
+		Attr:         []string{"group:mainline", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -33,7 +33,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 300*time.Second,
+		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 10*time.Minute,
 		Vars:    []string{"arc.parentUser", "arc.parentPassword"},
 	})
 }
@@ -73,8 +73,8 @@ func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 		ui.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(skip), ui.LeftClick(skip)),
 		ui.LeftClick(nodewith.Name("More").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Accept").Role(role.Button)),
-		ui.IfSuccessThen(ui.WithTimeout(20*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
-		ui.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
+		ui.IfSuccessThen(ui.WithTimeout(30*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
+		ui.IfSuccessThen(ui.WithTimeout(30*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
 		ui.LeftClick(nodewith.Name("Get started").Role(role.Button)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to go through the oobe flow: ", err)
@@ -88,7 +88,7 @@ func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 	defer a.Close(ctx)
 
 	s.Log("Waiting for notification")
-	_, err = ash.WaitForNotification(ctx, tconn, 5*time.Minute, ash.WaitTitle("Setup complete"))
+	_, err = ash.WaitForNotification(ctx, tconn, 10*time.Minute, ash.WaitTitle("Setup complete"))
 	if err != nil {
 		s.Fatal("Failed waiting for Setup complete notification: ", err)
 	}
