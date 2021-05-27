@@ -16,6 +16,24 @@
       "message": "I\u0027m fine to increase the timeout for reducing the flakyness.\nBut I guess the tast team may concern about the timeout is too long?",
       "revId": "b4cd98df60bfe9cb38f83745656530fad55e6021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2639847a_71765d29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2021-05-27T04:18:04Z",
+      "side": 1,
+      "message": "I guess we\u0027ll need to do with it, unless we find a way to reduce the test time from 6 minutes to less than 4 minutes.",
+      "parentUuid": "7d9a2b8a_853c6474",
+      "revId": "b4cd98df60bfe9cb38f83745656530fad55e6021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
