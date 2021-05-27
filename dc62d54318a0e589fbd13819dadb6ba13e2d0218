@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de26358c_69747c85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-05-27T20:50:35Z",
+      "side": 1,
+      "message": "This \"sleep\" looks flaky, can\u0027t you just detect that the menu have actually appeared? perhaps by querying a value in the App itself (or somewhat that replaces the sleep in a more reliable way)",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 722,
+        "endChar": 4
+      },
+      "revId": "dc62d54318a0e589fbd13819dadb6ba13e2d0218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
