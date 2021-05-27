@@ -50,26 +50,22 @@ func init() {
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
+		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      8 * time.Minute,
 		Params: []testing.Param{{
 			Val:               stablePkTests,
-			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
 			Val:               stablePkTests,
-			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
 			Name:              "unstable",
 			Val:               unstablePkTests,
-			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name: "unstable_vm",
-			Val:  unstablePkTests,
-			// TODO(b/179504225): Reenable once the test is fixed.
-			// ExtraAttr:         []string{"group:mainline", "informational"},
+			Name:              "unstable_vm",
+			Val:               unstablePkTests,
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
