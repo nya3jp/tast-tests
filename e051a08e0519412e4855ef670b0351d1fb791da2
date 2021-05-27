@@ -33,6 +33,24 @@
       "message": "Hi Ian, IMO adding more debug info in the error path of login tests is much more likely to catch the specific test failure (which could have different reasons than the entire cryptohome getting unmounted eg. just the daemon store bind mount getting unmounted). The failure mode is also probably a function of the test interaction (as in it\u0027s very unlikely that just idling with a mounted cryptohome triggers the same failure) so a separate test will likely not be able to capture the same state. Do we see the cryptohome unmounted in [1]?\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go;l\u003d192\n",
       "revId": "e051a08e0519412e4855ef670b0351d1fb791da2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abc5ccc0_3e566398",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-05-27T02:01:51Z",
+      "side": 1,
+      "message": "Here\u0027s an example of a recent failure which is probably better (doesn\u0027t involve send crash signals to Chrome, generally less complex):\n\nhttps://stainless.corp.google.com/browse/chromeos-autotest-results/swarming-53bb17789abd8610/autoserv_test/tast/results/tests/ui.WebUIJSErrors/\n\nThe test sends a message to Chrome which eventually causes it to call crash_reporter to write out an error file.\n\nIt gets the following error:\n\n  2021-05-25T08:11:39.253773Z [08:11:39.409] Checking for crash files after bad page load\n  2021-05-25T08:11:39.356736Z [08:11:39.511] Error at webui_js_errors.go:242: checkPageLoadError failed: couldn\u0027t read meta file: open /home/user/277989f7cf509d882b5c093ae5a64bad5df989f9/crash/jserror.20210525.011139.12030.31042.meta: no such file or directory\n  2021-05-25T08:11:39.356809Z [08:11:39.511] Stack trace:\n  checkPageLoadError failed\n\tat chromiumos/tast/local/bundles/cros/ui.WebUIJSErrors (webui_js_errors.go:242)\n\tat chromiumos/tast/internal/planner.runTestWithRoot.func3.1 (run.go:820)\n\tat chromiumos/tast/internal/planner.safeCall.func2 (safe.go:92)\n\tat runtime.goexit (asm_arm.s:857)\n  couldn\u0027t read meta file\n\tat chromiumos/tast/local/bundles/cros/ui.checkJavaScriptError (webui_js_errors.go:77)\n\tat chromiumos/tast/local/bundles/cros/ui.checkPageLoadError (webui_js_errors.go:127)\n\tat chromiumos/tast/local/bundles/cros/ui.WebUIJSErrors (webui_js_errors.go:241)\n\tat chromiumos/tast/internal/planner.runTestWithRoot.func3.1 (run.go:820)\n\tat chromiumos/tast/internal/planner.safeCall.func2 (safe.go:92)\n\tat runtime.goexit (asm_arm.s:857)\n  open \n/home/user/277989f7cf509d882b5c093ae5a64bad5df989f9/crash/jserror.20210525.011139.12030.31042.meta: no such file or directory\n\tat ???\n\nThe Go code looks something like:\n\n1. Trigger the error by loading a bad page\n2. Call crash.WaitForCrashFiles which runs testing.Poll until:\n..a. A file in the /home/user/277989f7cf509d882b5c093ae5a64bad5df989f9/crash directory matches the pattern jserror\\.\\d{8}\\.\\d{6}\\.\\d+\\.\\d+\\.meta AND\n..b. That file, when read by ioutil.ReadFile, has the string \"done\u003d1\" in it\n..c. It then returns that filename\n3. It then calls ioutil.ReadFile with the filename (here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go;l\u003d75;drc\u003d4a44cbb368863fe4da0a9855df3b3784cad6ab9d)\n\nThe ioutil.ReadFile in step 3 says it can\u0027t read the file because there is no such file. Even though the ioutil.ReadFile in step 2b read it to confirm it has \"done\u003d1\" in the file.\n\nLater, a second part of the test fails because it now can see multiple error meta files -- the one it was expecting, plus jserror.20210525.011139.12030.31042.meta. (You can see the two .meta files it found attached to the stainless report; note that one of the attached files matches the name of the file we were looking for above.)\n\nI don\u0027t see how this is possible other than the file system \u0027flickering\u0027 for an instant. If you can see a bug in the Go code, I\u0027d be very happy, but I don\u0027t see it. It\u0027s also not having problems in very similar tests like ChromeCrashNotLoggedIn, where it writes to /home/chronos/crash (not in cryptohome). cryptohome seems to be the common denominator of the flaky tests.\n\nIf not this, then what would you suggest?",
+      "parentUuid": "7a6f4a26_fa7e16f7",
+      "revId": "e051a08e0519412e4855ef670b0351d1fb791da2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
