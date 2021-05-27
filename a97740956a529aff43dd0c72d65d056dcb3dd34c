@@ -86,6 +86,24 @@
       "parentUuid": "e632e344_164cda70",
       "revId": "a97740956a529aff43dd0c72d65d056dcb3dd34c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e88234a_f78700a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2021-05-27T23:26:13Z",
+      "side": 1,
+      "message": "Ok, so if it ignores loadable modules then that would cover a lot of that type of device hopefully.  Knowing the number of unused drivers seems like an interesting stat -- if nothing else can watch it move over time",
+      "parentUuid": "9dc7bd99_fef661fd",
+      "revId": "a97740956a529aff43dd0c72d65d056dcb3dd34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
