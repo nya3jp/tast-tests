@@ -303,6 +303,12 @@ func GetAllARCAppWindowStates(ctx context.Context, tconn *chrome.TestConn, pkgNa
 // WaitForARCAppWindowState waits for a window state to appear on the Chrome side. If you expect an Activity's window state
 // to change, this method will guarantee that the state change has fully occurred and propagated to the Chrome side.
 func WaitForARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName string, state WindowStateType) error {
+	return WaitForARCAppWindowStateWithPollOptions(ctx, tconn, pkgName, state, defaultPollOptions)
+}
+
+// WaitForARCAppWindowStateWithPollOptions waits for a window state to appear on the Chrome side. If you expect an Activity's window state
+// to change, this method will guarantee that the state change has fully occurred and propagated to the Chrome side.
+func WaitForARCAppWindowStateWithPollOptions(ctx context.Context, tconn *chrome.TestConn, pkgName string, state WindowStateType, pollOptions *testing.PollOptions) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		actual, err := GetARCAppWindowState(ctx, tconn, pkgName)
 		if err != nil {
@@ -313,7 +319,7 @@ func WaitForARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgNa
 			return errors.Errorf("window isn't in expected state yet; got: %s, want: %s", actual, state)
 		}
 		return nil
-	}, defaultPollOptions)
+	}, pollOptions)
 }
 
 // WaitForVisible waits for a window to be visible on the Chrome side. Visibility is defined to be the corresponding
