@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type testParam struct {
@@ -69,13 +70,24 @@ func init() {
 				resultSuffix:      "",
 			},
 		}, {
+			Name:              "unmanaged_no_guest_readahead_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(8000)),
+			Val: testParam{
+				username:          "arc.AuthPerf.unmanaged_username",
+				password:          "arc.AuthPerf.unmanaged_password",
+				maxErrorBootCount: 3,
+				resultSuffix:      "_no_guest_readahead",
+				chromeArgs:        []string{"--arcvm-ureadahead-mode=disabled"},
+			},
+		}, {
 			Name:              "unmanaged_rt_vcpu_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
 				username:          "arc.AuthPerf.unmanaged_username",
 				password:          "arc.AuthPerf.unmanaged_password",
 				maxErrorBootCount: 3,
-				resultSuffix:      "",
+				resultSuffix:      "_rt_vcpu",
 				chromeArgs:        []string{"--enable-arcvm-rt-vcpu"},
 			},
 		}, {
