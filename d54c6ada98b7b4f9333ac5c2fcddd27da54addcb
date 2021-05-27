@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c959704_909a036d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/start_app_from_sign_in_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-27T13:22:42Z",
+      "side": 1,
+      "message": "I need help with this part.\n\nAs mentioned it seems to me that UI tree is being modified and using waitUntilExists does not guarantee flawless execution. Moreover, when test cannot successfully click and open menu it makes the App button not responsive -\u003e when I manually clicked on the button nothing happened. Other UI element were still okay.\n\nSolutions that worked on my DUT were:\n- simply wait for the button (where interaction starts) multiple times\nOR\n- use hard time.Sleep(10 seconds)\n\nI tried waiting for UI to stabilize but that didn\u0027t prevent the problem from occurring.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "d54c6ada98b7b4f9333ac5c2fcddd27da54addcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
