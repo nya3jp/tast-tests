@@ -139,6 +139,24 @@
       "parentUuid": "5a209f41_32551fca",
       "revId": "726d375572607f89c34bff59c385dd7106990d9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b77ffa_6901a865",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-05-27T21:52:13Z",
+      "side": 1,
+      "message": "It\u0027s up to you, but there would be several other usages. For example, many of arc tests have \u0027vm\u0027 param where the test scenario runs with arcvm. For comparing the graphs in crosbolt, I guess it\u0027s not much different between seeing graphs in a single test case page or seeing graphcs in multiple test case pages, thanks to tabbed browser.\n\nBut, if you prefer this form, it\u0027s okay.",
+      "parentUuid": "175701d8_e9b57103",
+      "revId": "726d375572607f89c34bff59c385dd7106990d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
