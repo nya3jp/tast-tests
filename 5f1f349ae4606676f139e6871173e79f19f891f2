@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7976ac28_06c95195",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-27T13:17:13Z",
+      "side": 1,
+      "message": "I like the proposal.",
+      "parentUuid": "14d7569d_cc8d3aaa",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "5f1f349ae4606676f139e6871173e79f19f891f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5264a4f_32f47802",
         "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-25T07:09:28Z",
       "side": 1,
       "message": "I think you can put the highlighted part into a variable, and that way you can add/set different policies as well in ServeAndRefresh(), so you can use it in autostart.go as well.",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 4
+      },
+      "revId": "5f1f349ae4606676f139e6871173e79f19f891f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbfdc7a4_a0b81f76",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-27T13:17:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5264a4f_32f47802",
       "range": {
         "startLine": 54,
         "startChar": 2,
@@ -83,6 +131,54 @@
       "writtenOn": "2021-05-25T07:09:28Z",
       "side": 1,
       "message": "nit: This function name is also a bit too long.",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 48
+      },
+      "revId": "5f1f349ae4606676f139e6871173e79f19f891f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccf9cba7_048eafb8",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-27T13:17:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "653282ca_925b4c4c",
+      "range": {
+        "startLine": 80,
+        "startChar": 70,
+        "endLine": 80,
+        "endChar": 71
+      },
+      "revId": "5f1f349ae4606676f139e6871173e79f19f891f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f97e577f_9096077b",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-27T13:17:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfc06cad_9c4bbd6d",
       "range": {
         "startLine": 80,
         "startChar": 5,
