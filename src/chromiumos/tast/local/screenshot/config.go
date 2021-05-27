@@ -4,6 +4,10 @@
 
 package screenshot
 
+import (
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+)
+
 // Config controls how the screen is rendered during screenshot tests.
 type Config struct {
 	// The region chrome should be started in. Should correspond to an entry in
@@ -18,8 +22,30 @@ type Config struct {
 	// as similar as possible.
 	SkipDpiNormalization bool
 
+	// The width and height requested of a window.
+	// You probably don't want to set this yourself - the screen diffing
+	// framework will tell you what to set this to.
+	WindowWidthDP  int
+	WindowHeightDP int
+
+	// Pixels within this distance to a border (top / bottom / sides) of the window
+	// will not be considered when determining difference.
+	WindowBorderWidthDP int
+
+	// Elements that will be removed from the screenshot. For example, if you have
+	// some dynamic content interlaced with static content (eg. file modification
+	// times in the files app).
+	RemoveElements []*nodewith.Finder
+
 	// Whether to output the UI tree for each screenshot.
 	OutputUITrees bool
+
+	// A suffix to add to the name. Might be a version number (eg. "V2"), or a
+	// human-readable label.
+	NameSuffix string
+
+	// If DryRun is true, instead of running the goldctl imgtest, logs it.
+	DryRun bool
 }
 
 // Suffix should return a string representation of the suffix for the test
@@ -27,6 +53,9 @@ type Config struct {
 // eg. Region: "de" would be ".de"
 func (c *Config) Suffix() string {
 	result := ""
+	if c.NameSuffix != "" {
+		result += "." + c.NameSuffix
+	}
 	if c.Region != "" {
 		result += "." + c.Region
 	}
