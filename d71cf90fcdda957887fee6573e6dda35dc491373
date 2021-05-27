@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1448ef2_93b10e6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-27T20:02:16Z",
+      "side": 1,
+      "message": "Maybe add a comment about this, since it\u0027s unusual to need to focus a node before clicking it unless it\u0027s off screen and needs to be scrolled to.\n\nBTW does clicking the button work fine manually?",
+      "revId": "d71cf90fcdda957887fee6573e6dda35dc491373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
