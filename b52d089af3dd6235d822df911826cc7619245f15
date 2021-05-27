@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec279a71_c4849d4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-27T12:31:04Z",
+      "side": 1,
+      "message": "nit: mention that Chrome is restarted for each subtest now",
+      "revId": "b52d089af3dd6235d822df911826cc7619245f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "85100954_a2bcafd1",
@@ -14,6 +31,40 @@
       "writtenOn": "2021-05-27T12:21:16Z",
       "side": 1,
       "message": "PTAL",
+      "revId": "b52d089af3dd6235d822df911826cc7619245f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ec1f18a_9c593dad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-27T12:31:04Z",
+      "side": 1,
+      "message": "Please use the fakeDMS fixture.",
+      "revId": "b52d089af3dd6235d822df911826cc7619245f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6625ae90_db2e3f8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-27T12:31:04Z",
+      "side": 1,
+      "message": "Policies are only updated after Chrome startup, by Chrome.",
       "revId": "b52d089af3dd6235d822df911826cc7619245f15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
