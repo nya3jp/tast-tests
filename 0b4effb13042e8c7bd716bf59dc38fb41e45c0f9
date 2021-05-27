@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9528eea_e1aabbd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-05-27T07:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c07b217_644c29a3",
+      "range": {
+        "startLine": 36,
+        "startChar": 19,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "0b4effb13042e8c7bd716bf59dc38fb41e45c0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a5476fe_5ca36108",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-24T14:20:34Z",
       "side": 1,
       "message": "const",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 5
+      },
+      "revId": "0b4effb13042e8c7bd716bf59dc38fb41e45c0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d3c8ad7_0f32de8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-05-27T07:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a5476fe_5ca36108",
       "range": {
         "startLine": 40,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2767696_5fd08e46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-05-27T07:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2521178_5a2a2686",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 11
+      },
+      "revId": "0b4effb13042e8c7bd716bf59dc38fb41e45c0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "454adffd_77df3790",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b59090e_760dee2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-05-27T07:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "454adffd_77df3790",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "0b4effb13042e8c7bd716bf59dc38fb41e45c0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b274cfb_f8f1c019",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-05-24T14:20:34Z",
       "side": 1,
       "message": "What\u0027s the purpose of this? If you do nothing but rethrow the error, no need to catch it.",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 3
+      },
+      "revId": "0b4effb13042e8c7bd716bf59dc38fb41e45c0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b95ce8b_72d8eeb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/media_track_advanced_controls.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-05-27T07:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b274cfb_f8f1c019",
       "range": {
         "startLine": 49,
         "startChar": 2,
@@ -158,6 +278,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce83846e_49fb13cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-05-27T07:36:23Z",
+      "side": 1,
+      "message": "https://pkg.go.dev/google.golang.org/grpc/attributes\nIt said that \"This package is EXPERIMENTAL and may be changed or removed in a later release.\"",
+      "parentUuid": "1ebfa1a2_48e74827",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "0b4effb13042e8c7bd716bf59dc38fb41e45c0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "204e96b7_044f6595",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
         "patchSetId": 19
@@ -169,6 +313,30 @@
       "writtenOn": "2021-05-24T14:20:34Z",
       "side": 1,
       "message": "Does it pass presubmit check? IIRC the comment style should like:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/camera/cca/cca.go;rcl\u003d594517a9e58e5ad8b80ad6d5fb1ab69b7b643473;l\u003d206",
+      "range": {
+        "startLine": 92,
+        "startChar": 6,
+        "endLine": 92,
+        "endChar": 15
+      },
+      "revId": "0b4effb13042e8c7bd716bf59dc38fb41e45c0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0adafeb_98dbf4e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-05-27T07:36:23Z",
+      "side": 1,
+      "message": "It passed the verification of repo upload.\nI can dry run to check them.",
+      "parentUuid": "204e96b7_044f6595",
       "range": {
         "startLine": 92,
         "startChar": 6,
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "feefe00d_3a7fa761",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-05-27T07:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "941e9f8c_300b49f1",
+      "range": {
+        "startLine": 235,
+        "startChar": 2,
+        "endLine": 235,
+        "endChar": 8
+      },
+      "revId": "0b4effb13042e8c7bd716bf59dc38fb41e45c0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "051c876c_a8c26395",
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57182628_c6d32062",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-05-27T07:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "051c876c_a8c26395",
+      "range": {
+        "startLine": 237,
+        "startChar": 5,
+        "endLine": 237,
+        "endChar": 10
+      },
+      "revId": "0b4effb13042e8c7bd716bf59dc38fb41e45c0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d854f06f_19af56a7",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-05-24T14:20:34Z",
       "side": 1,
       "message": "Fatal",
+      "range": {
+        "startLine": 241,
+        "startChar": 5,
+        "endLine": 241,
+        "endChar": 10
+      },
+      "revId": "0b4effb13042e8c7bd716bf59dc38fb41e45c0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "335da4a5_cf912cac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-05-27T07:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d854f06f_19af56a7",
       "range": {
         "startLine": 241,
         "startChar": 5,
