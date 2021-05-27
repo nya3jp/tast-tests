@@ -120,17 +120,8 @@ func PrintersBulkAccessMode(ctx context.Context, s *testing.State) {
 			}
 
 			// Retrieve Printers seen by user.
-			if err := tconn.Exec(ctx, `	window.__printers = null;
-										chrome.autotestPrivate.getPrinterList(function(printers) {
-			    							window.__printers = printers;
-										});`); err != nil {
-				s.Fatal("Failed to execute JS expression: ", err)
-			}
-			if err := tconn.WaitForExpr(ctx, "window.__printers !== null"); err != nil {
-				s.Fatal("Failed to wait for non null printers: ", err)
-			}
 			printers := make([]map[string]string, 0)
-			if err := tconn.Eval(ctx, `window.__printers`, &printers); err != nil {
+			if err := tconn.Call(ctx, &printers, `tast.promisify(chrome.autotestPrivate.getPrinterList)`); err != nil {
 				s.Fatal("Failed to evaluate JS expression and get printers: ", err)
 			}
 
