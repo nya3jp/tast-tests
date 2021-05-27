@@ -302,6 +302,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1db9676_debd644f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-05-27T07:50:44Z",
+      "side": 1,
+      "message": "looks like we also use unsafe in other places.\nhttps://source.corp.google.com/search?q\u003dunsafe\u0026sq\u003d\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2F",
+      "parentUuid": "ce83846e_49fb13cc",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "0b4effb13042e8c7bd716bf59dc38fb41e45c0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "204e96b7_044f6595",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
         "patchSetId": 19
