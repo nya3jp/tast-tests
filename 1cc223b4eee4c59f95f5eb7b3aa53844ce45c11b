@@ -16,6 +16,63 @@
       "message": "Thanks for the comments.",
       "revId": "1cc223b4eee4c59f95f5eb7b3aa53844ce45c11b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4943778_74b82cb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-27T15:07:08Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 70,
+        "startChar": 52,
+        "endLine": 70,
+        "endChar": 63
+      },
+      "revId": "1cc223b4eee4c59f95f5eb7b3aa53844ce45c11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d51eb145_9c9dba41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-27T15:07:08Z",
+      "side": 1,
+      "message": "Any reason for this return?",
+      "revId": "1cc223b4eee4c59f95f5eb7b3aa53844ce45c11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "116264bc_251123d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-27T15:07:08Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "revId": "1cc223b4eee4c59f95f5eb7b3aa53844ce45c11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
