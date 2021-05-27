@@ -253,7 +253,7 @@ func (f *Finder) generateSubQuery(multipleNodes bool) (string, error) {
 			if (!node) {
 				throw %[2]q;
 			}
-		`, bytes, ErrNotFound)
+		`, bytes, errNotFoundBytes)
 	} else {
 		out += fmt.Sprintf(`
 			nodes = node.findAll(%[1]s);
