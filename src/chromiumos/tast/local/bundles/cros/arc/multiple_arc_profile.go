@@ -234,6 +234,9 @@ func addARCAccount(ctx context.Context, arcDevice *androidui.Device, tconn *chro
 
 	if err := uiauto.Combine("Agree and Finish Adding Account",
 		ui.LeftClick(nodewith.Name("Next").Role(role.Button)),
+		// We need to focus the button first to click at right location
+		// as it returns wrong coordinates when button is offscreen.
+		ui.FocusAndWait(nodewith.Name("I agree").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("I agree").Role(role.Button)),
 		ui.WaitUntilExists(nodewith.Name("Manage Android preferences").Role(role.Link).Focused()),
 	)(ctx); err != nil {
