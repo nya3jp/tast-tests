@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "407fbb71_5c978030",
+        "filename": "src/chromiumos/tast/local/android/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-05-27T12:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f6de7ff_4b5115ba",
+      "range": {
+        "startLine": 153,
+        "startChar": 39,
+        "endLine": 153,
+        "endChar": 80
+      },
+      "revId": "80a03b8308a6634659487b9c2721a03d4df1f3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79467fb1_585a0909",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-27T08:03:52Z",
       "side": 1,
       "message": "nit: use http.Get?",
+      "range": {
+        "startLine": 165,
+        "startChar": 14,
+        "endLine": 165,
+        "endChar": 35
+      },
+      "revId": "80a03b8308a6634659487b9c2721a03d4df1f3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8169b912_b3d0fd60",
+        "filename": "src/chromiumos/tast/local/android/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-05-27T12:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79467fb1_585a0909",
       "range": {
         "startLine": 165,
         "startChar": 14,
