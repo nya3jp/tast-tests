@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6779ae0b_08d229ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-27T21:09:23Z",
+      "side": 1,
+      "message": "Nvm! I forgot about table-driven tests, disregard",
+      "parentUuid": "1baa2bc1_bf99c55d",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 4
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "247d9c13_be5d6c11",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-27T21:04:51Z",
       "side": 1,
       "message": "If you use parameterized tests, this could be taken care of in the fixture\u0027s PreTest/PostTest/Reset perhaps",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 4
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d79f168_49a9d432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-05-27T21:09:23Z",
+      "side": 1,
+      "message": "Nvm, forgot about the table-driven pattern",
+      "parentUuid": "247d9c13_be5d6c11",
       "range": {
         "startLine": 67,
         "startChar": 3,
