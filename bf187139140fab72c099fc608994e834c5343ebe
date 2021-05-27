@@ -56,6 +56,30 @@
       },
       "revId": "bf187139140fab72c099fc608994e834c5343ebe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "458baf25_a2adaf2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-05-27T04:58:48Z",
+      "side": 1,
+      "message": "Thank you Yen-lin for the comment. \n\nI think this was done intentionally. I followed similar change in I.364. \n\nIf I remove \\, then I get the below error. \n\n(cr) (drain_repo) stevecho@stevecho-glaptop ~/trunk/src/platform/drm-tests $ TAST_GENERATE_UPDATE\u003d1 ~/trunk/src/platform/tast/tools/go.sh test -count\u003d1 chromiumos/tast/local/bundles/cros/video\n# chromiumos/tast/local/bundles/cros/video\n/mnt/host/source/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go:415:51: expected \u0027;\u0027, found trogdor\nFAIL\tchromiumos/tast/local/bundles/cros/video [setup failed]\nFAIL",
+      "parentUuid": "74f60923_da2fc0ec",
+      "range": {
+        "startLine": 415,
+        "startChar": 25,
+        "endLine": 415,
+        "endChar": 63
+      },
+      "revId": "bf187139140fab72c099fc608994e834c5343ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
