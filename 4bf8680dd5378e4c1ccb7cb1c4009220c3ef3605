@@ -56,6 +56,30 @@
       },
       "revId": "4bf8680dd5378e4c1ccb7cb1c4009220c3ef3605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b5109e4_04dcc7c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/incognito_mode_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-05-27T06:07:37Z",
+      "side": 1,
+      "message": "Good catch! Yes this test would have failed on Chrome branded builds. I used ChromeOrChromium() to figure out the correct browser name.",
+      "parentUuid": "e3580120_2e26b15c",
+      "range": {
+        "startLine": 41,
+        "startChar": 31,
+        "endLine": 41,
+        "endChar": 39
+      },
+      "revId": "4bf8680dd5378e4c1ccb7cb1c4009220c3ef3605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
