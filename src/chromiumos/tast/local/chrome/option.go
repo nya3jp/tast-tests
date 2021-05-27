@@ -230,6 +230,15 @@ func ARCEnabled() Option {
 	}
 }
 
+// HugePagesEnabled returns an Option that can be passed to New to enable huge pages (without Play Store)
+// for the user session with mock GAIA account.
+func HugePagesEnabled() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.HugePagesMode = config.HugePagesEnabled
+		return nil
+	}
+}
+
 // ARCSupported returns an Option that can be passed to New to allow to enable ARC with Play Store gaia opt-in for the user
 // session with real GAIA account.
 // In this case ARC is not launched by default and is required to be launched by user policy or from UI.

@@ -35,6 +35,15 @@ const (
 	ARCSupported // ARC is supported and can be launched by user policy
 )
 
+// HugePagesMode describes the guest memory mode.
+type HugePagesMode bool
+
+// Valid values for HugePagesMode
+const (
+	HugePagesDisabled HugePagesMode = false
+	HugePagesEnabled                = true
+)
+
 // LoginMode describes the user mode for the login.
 type LoginMode int
 
@@ -187,6 +196,9 @@ func (c *Config) DisablePolicyKeyVerification() bool { return c.m.DisablePolicyK
 // ARCMode returns the mode of ARC.
 func (c *Config) ARCMode() ARCMode { return c.m.ARCMode }
 
+// HugePagesMode returns the memory mode of the guest memory.
+func (c *Config) HugePagesMode() HugePagesMode { return c.m.HugePagesMode }
+
 // RestrictARCCPU returns whether to restrict CPU usage of ARC in background.
 func (c *Config) RestrictARCCPU() bool { return c.m.RestrictARCCPU }
 
@@ -230,35 +242,36 @@ func (c *Config) SkipForceOnlineSignInForTesting() bool { return c.m.SkipForceOn
 // - "customized": Reuse checking logic is expected to be customized in customizedReuseCheck() function.
 // This tag must be set for every field with one of the above values. Otherwise, unit test will fail.
 type MutableConfig struct {
-	Creds                           Creds     `reuse_match:"true"`
-	NormalizedUser                  string    `reuse_match:"true"`
-	KeepState                       bool      `reuse_match:"false"`
-	KeepOwnership                   bool      `reuse_match:"true"`
-	DeferLogin                      bool      `reuse_match:"customized"`
-	EnableRestoreTabs               bool      `reuse_match:"false"`
-	LoginMode                       LoginMode `reuse_match:"customized"`
-	TryReuseSession                 bool      `reuse_match:"false"`
-	EnableLoginVerboseLogs          bool      `reuse_match:"true"`
-	VKEnabled                       bool      `reuse_match:"true"`
-	SkipOOBEAfterLogin              bool      `reuse_match:"false"`
-	CustomLoginTimeout              int64     `reuse_match:"false"` // time.Duration can not be serialized to JSON. Store duration in nanoseconds.
-	InstallWebApp                   bool      `reuse_match:"true"`
-	Region                          string    `reuse_match:"true"`
-	PolicyEnabled                   bool      `reuse_match:"true"`
-	DMSAddr                         string    `reuse_match:"true"`
-	Enroll                          bool      `reuse_match:"true"`
-	EnrollmentCreds                 Creds     `reuse_match:"true"`
-	DisablePolicyKeyVerification    bool      `reuse_match:"true"`
-	ARCMode                         ARCMode   `reuse_match:"true"`
-	RestrictARCCPU                  bool      `reuse_match:"true"`
-	BreakpadTestMode                bool      `reuse_match:"true"`
-	ExtraArgs                       []string  `reuse_match:"true"`
-	LacrosExtraArgs                 []string  `reuse_match:"true"`
-	EnableFeatures                  []string  `reuse_match:"true"`
-	DisableFeatures                 []string  `reuse_match:"true"`
-	ExtraExtDirs                    []string  `reuse_match:"customized"`
-	SigninExtKey                    string    `reuse_match:"customized"`
-	SkipForceOnlineSignInForTesting bool      `reuse_match:"true"`
+	Creds                           Creds         `reuse_match:"true"`
+	NormalizedUser                  string        `reuse_match:"true"`
+	KeepState                       bool          `reuse_match:"false"`
+	KeepOwnership                   bool          `reuse_match:"true"`
+	DeferLogin                      bool          `reuse_match:"customized"`
+	EnableRestoreTabs               bool          `reuse_match:"false"`
+	LoginMode                       LoginMode     `reuse_match:"customized"`
+	TryReuseSession                 bool          `reuse_match:"false"`
+	EnableLoginVerboseLogs          bool          `reuse_match:"true"`
+	VKEnabled                       bool          `reuse_match:"true"`
+	SkipOOBEAfterLogin              bool          `reuse_match:"false"`
+	CustomLoginTimeout              int64         `reuse_match:"false"` // time.Duration can not be serialized to JSON. Store duration in nanoseconds.
+	InstallWebApp                   bool          `reuse_match:"true"`
+	Region                          string        `reuse_match:"true"`
+	PolicyEnabled                   bool          `reuse_match:"true"`
+	DMSAddr                         string        `reuse_match:"true"`
+	Enroll                          bool          `reuse_match:"true"`
+	EnrollmentCreds                 Creds         `reuse_match:"true"`
+	DisablePolicyKeyVerification    bool          `reuse_match:"true"`
+	ARCMode                         ARCMode       `reuse_match:"true"`
+	HugePagesMode                   HugePagesMode `reuse_match:"true"`
+	RestrictARCCPU                  bool          `reuse_match:"true"`
+	BreakpadTestMode                bool          `reuse_match:"true"`
+	ExtraArgs                       []string      `reuse_match:"true"`
+	LacrosExtraArgs                 []string      `reuse_match:"true"`
+	EnableFeatures                  []string      `reuse_match:"true"`
+	DisableFeatures                 []string      `reuse_match:"true"`
+	ExtraExtDirs                    []string      `reuse_match:"customized"`
+	SigninExtKey                    string        `reuse_match:"customized"`
+	SkipForceOnlineSignInForTesting bool          `reuse_match:"true"`
 }
 
 // Option is a self-referential function can be used to configure Chrome.
