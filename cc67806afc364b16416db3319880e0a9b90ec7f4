@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2013681_07ba5403",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-27T07:05:33Z",
+      "side": 1,
+      "message": "This issue can be easily reproduced on caroline in skylab.\n1. Lease a device: skylab lease-dut -model caroline\n2. patch this cl.\n3. run tast against DUT. tast run \u003cDUT\u003e inputs.VirtualKeyboardFloat*",
+      "revId": "cc67806afc364b16416db3319880e0a9b90ec7f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
