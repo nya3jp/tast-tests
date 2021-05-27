@@ -360,9 +360,11 @@ func (n *Node) FocusAndWait(ctx context.Context, timeout time.Duration) error {
 		return errors.Wrap(err, "failed to call focus() on the specified node")
 	}
 
-	if _, err := ew.WaitForEvent(ctx, timeout); err != nil {
+	es, err := ew.WaitForEvent(ctx, timeout)
+	if err != nil {
 		return errors.Wrap(err, "failed to wait for the focus event on the specified node")
 	}
+	es.Release(ctx)
 
 	return nil
 }
