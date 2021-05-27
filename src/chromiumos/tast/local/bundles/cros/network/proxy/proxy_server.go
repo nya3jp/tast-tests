@@ -17,7 +17,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	patchpanel "chromiumos/tast/local/bundles/cros/network/patchpanel_client"
+	patchpanel "chromiumos/tast/local/network/patchpanel_client"
 )
 
 const (
