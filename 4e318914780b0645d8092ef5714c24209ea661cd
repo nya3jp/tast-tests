@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b2982b_9438417a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_play_books.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-27T19:37:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "54c4671e_de4c650a",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cac71c78_cb6bd8ab",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-05-27T03:45:04Z",
       "side": 1,
       "message": "nit: extra space?",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "228437fd_e90fc875",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reddit.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-27T19:37:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cac71c78_cb6bd8ab",
       "range": {
         "startLine": 32,
         "startChar": 18,
@@ -127,6 +175,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00a849b7_755a8b19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-27T19:37:48Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "4c349d01_56688998",
+      "range": {
+        "startLine": 607,
+        "startChar": 113,
+        "endLine": 607,
+        "endChar": 116
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c14776b2_74a36866",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-27T19:37:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c5bb1c2_77a483a3",
+      "range": {
+        "startLine": 607,
+        "startChar": 67,
+        "endLine": 607,
+        "endChar": 83
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de005109_9bcc992b",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-05-27T03:45:04Z",
       "side": 1,
       "message": "assign to variable before passing so we know what this value means:\ne.g. const targetX \u003d 0\ndragToSnapFirstOverViewWindow(... , targetX)\n\nrelated: in its current form, this is the only value ever passed to the method. If you always pass this argument, why make it an argument at all?",
+      "range": {
+        "startLine": 653,
+        "startChar": 66,
+        "endLine": 653,
+        "endChar": 67
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d40c0ba1_01edc840",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-27T19:37:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "de005109_9bcc992b",
       "range": {
         "startLine": 653,
         "startChar": 66,
@@ -173,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9894609_38c5db5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-27T19:37:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c16b4175_90a289e7",
+      "range": {
+        "startLine": 984,
+        "startChar": 23,
+        "endLine": 984,
+        "endChar": 44
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d177638b_bd400d43",
@@ -186,6 +330,30 @@
       "writtenOn": "2021-05-27T03:45:04Z",
       "side": 1,
       "message": "nit: here you assume you are snapping to the left, but above you accept targetX as an argument? (this suggests this method could be used to snap to the right as well??)",
+      "range": {
+        "startLine": 987,
+        "startChar": 66,
+        "endLine": 987,
+        "endChar": 70
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73655096_e07f1d46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-27T19:37:48Z",
+      "side": 1,
+      "message": "It could be used to snap to right, if we change the targetX vlue",
+      "parentUuid": "d177638b_bd400d43",
       "range": {
         "startLine": 987,
         "startChar": 66,
@@ -232,6 +400,54 @@
       "writtenOn": "2021-05-27T03:45:04Z",
       "side": 1,
       "message": "what use is there in printing this constant value?",
+      "range": {
+        "startLine": 989,
+        "startChar": 69,
+        "endLine": 989,
+        "endChar": 84
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e73cd9_f7d34a1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-27T19:37:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b7c9d479_7e47d395",
+      "range": {
+        "startLine": 989,
+        "startChar": 16,
+        "endLine": 989,
+        "endChar": 84
+      },
+      "revId": "4e318914780b0645d8092ef5714c24209ea661cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12906b74_1985abc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-27T19:37:48Z",
+      "side": 1,
+      "message": "It is needed for debugging.",
+      "parentUuid": "ac6ad9c0_2c2f31aa",
       "range": {
         "startLine": 989,
         "startChar": 69,
