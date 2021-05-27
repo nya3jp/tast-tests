@@ -6,9 +6,11 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -50,11 +52,17 @@ func LaunchManagedGuestSession(ctx context.Context, s *testing.State) {
 		}
 	}(ctx)
 
+	// Use a shortened context for test operations to reserve time for cleanup.
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+
 	accountID := "foo@bar.com"
 	accountType := policy.AccountTypePublicSession
 
 	// These extensions are unlisted on the Chrome Web Store but can be
 	// downloaded directly using the extension IDs.
+	// The code for the extensions can be found in the Chromium repo at
+	// chrome/test/data/extensions/api_test/login_screen_apis/.
 	// ID for "Login screen APIs test extension".
 	loginScreenExtensionID := "oclffehlkdgibkainkilopaalpdobkan"
 	// ID for "Login screen APIs in-session test extension".
@@ -81,12 +89,12 @@ func LaunchManagedGuestSession(ctx context.Context, s *testing.State) {
 	})
 
 	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
-		s.Fatal("Failed to kerve policies: ", err)
+		s.Fatal("Failed to serve policies: ", err)
 	}
 
 	// Close the previous Chrome instance.
 	if err := cr.Close(ctx); err != nil {
-		s.Error("Failed to close Chrome connection: ", err)
+		s.Fatal("Failed to close Chrome connection: ", err)
 	}
 
 	// Restart Chrome, forcing Devtools to be available on the login screen.
