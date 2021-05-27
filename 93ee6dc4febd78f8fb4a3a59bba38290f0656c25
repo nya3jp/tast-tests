@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "904a09d3_f386483a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-27T13:46:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "304b85b6_5548c3a3",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "93ee6dc4febd78f8fb4a3a59bba38290f0656c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "269013d1_5523cdda",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -71,6 +95,30 @@
       "writtenOn": "2021-05-27T13:25:08Z",
       "side": 1,
       "message": "nit: should should be to items in the array, i.e.: \n\n{\"group:mainline\", \"informational\"}",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 55
+      },
+      "revId": "93ee6dc4febd78f8fb4a3a59bba38290f0656c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c75938f4_7b277452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers_bulk_access_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-05-27T13:46:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc22740c_e3145b63",
       "range": {
         "startLine": 29,
         "startChar": 26,
