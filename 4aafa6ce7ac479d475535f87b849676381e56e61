@@ -22,6 +22,30 @@
       },
       "revId": "4aafa6ce7ac479d475535f87b849676381e56e61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abf30347_54726700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-05-27T05:54:32Z",
+      "side": 1,
+      "message": "(Below is my current understanding and maybe they are not correct)\n\n\u003e L2TP noob question\nThis should be an IPsec question but not L2TP :)\n\n\u003e is xauth only relevant for ipsec ikev1 ?\nYes, while IKEv2 supports EAP.\n\n\u003e If xauth is only applicable to psk auth\nTechnically, xauth can be used with certificates together, but it seems that we\u0027re not supporting that (In service-api.txt, it says \"In addition, since XAUTH is an extension rather than replacement of psk, L2TPIPsec.PSK must also be set.\")\n\nbtw, it seems to me that we cannot set xauth user/password in UI. So actually we only support that configuration via onc?",
+      "parentUuid": "e8134df7_628831a8",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 3
+      },
+      "revId": "4aafa6ce7ac479d475535f87b849676381e56e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
