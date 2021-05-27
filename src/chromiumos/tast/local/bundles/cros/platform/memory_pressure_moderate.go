@@ -26,7 +26,7 @@ func init() {
 			mempressure.WPRArchiveName,
 		},
 		SoftwareDeps: []string{"chrome"},
-		Vars:         []string{"platform.MemoryPressureModerate.maxTab", "platform.MemoryPressureModerate.enableARC"},
+		Vars:         []string{"platform.MemoryPressureModerate.maxTab", "platform.MemoryPressureModerate.enableARC", "platform.MemoryPressureModerate.useHugePages"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -74,9 +74,16 @@ func MemoryPressureModerate(ctx context.Context, s *testing.State) {
 	if val, ok := s.Var("platform.MemoryPressureModerate.enableARC"); ok && val == "1" {
 		enableARC = true
 	}
-	s.Log("enableARC: ", enableARC)
 
-	testEnv, err := mempressure.NewTestEnv(ctx, s.OutDir(), enableARC, s.DataPath(mempressure.WPRArchiveName))
+	useHugePages := false
+	if val, ok := s.Var("platform.MemoryPressureModerate.useHugePages"); ok && val == "1" {
+		enableARC = true
+		useHugePages = true
+	}
+	s.Log("enableARC: ", enableARC)
+	s.Log("useHugePages: ", useHugePages)
+
+	testEnv, err := mempressure.NewTestEnv(ctx, s.OutDir(), enableARC, useHugePages, s.DataPath(mempressure.WPRArchiveName))
 	if err != nil {
 		s.Fatal("Failed creating the test environment: ", err)
 	}
