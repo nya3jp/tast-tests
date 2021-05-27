@@ -22,6 +22,30 @@
       },
       "revId": "dc62d54318a0e589fbd13819dadb6ba13e2d0218",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff31468_0fb1b68f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2021-05-27T21:03:48Z",
+      "side": 1,
+      "message": "I agree - but I\u0027m not sure if there\u0027s a way to get that information. The test app has no way of knowing whether the menu is visible. It may help that the menu is actually an Activity in R - so if we can check whether an Activity is visible we could wait on that. I remember there were some limitations related to that (only being able to check a package name?) - but I\u0027ll give that another try.",
+      "parentUuid": "de26358c_69747c85",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 722,
+        "endChar": 4
+      },
+      "revId": "dc62d54318a0e589fbd13819dadb6ba13e2d0218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
