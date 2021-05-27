@@ -16,6 +16,46 @@
       "message": "LGTM -- tast-owners@ PTAL",
       "revId": "bf187139140fab72c099fc608994e834c5343ebe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3536a0c_b8c0da0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-27T02:23:50Z",
+      "side": 1,
+      "message": "LGTM for tast style.",
+      "revId": "bf187139140fab72c099fc608994e834c5343ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f60923_da2fc0ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-27T02:23:50Z",
+      "side": 1,
+      "message": "minor nit: not sure if it is more readable to use backquote and avoid escaping:\n\n  `hwdep.D(hwdep.Platform(\"trogdor\"))`",
+      "range": {
+        "startLine": 415,
+        "startChar": 25,
+        "endLine": 415,
+        "endChar": 63
+      },
+      "revId": "bf187139140fab72c099fc608994e834c5343ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
