@@ -157,6 +157,24 @@
       "parentUuid": "175701d8_e9b57103",
       "revId": "726d375572607f89c34bff59c385dd7106990d9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ec138ad_b58d3351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-05-27T22:11:32Z",
+      "side": 1,
+      "message": "I would prefer more compare capabilities in crosbolt. It would be nice to get more votes/opinions in b/184304451.\n\nI think we should land this as it is (this CL only makes it better and faster).\nAnd then I\u0027ll look at making this test parameterized.",
+      "parentUuid": "f1b77ffa_6901a865",
+      "revId": "726d375572607f89c34bff59c385dd7106990d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
