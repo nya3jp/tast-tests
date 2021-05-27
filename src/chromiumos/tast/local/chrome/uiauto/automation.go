@@ -519,9 +519,11 @@ func (ac *Context) FocusAndWait(finder *nodewith.Finder) Action {
 				return errors.Wrap(err, "failed to call focus() on the node")
 			}
 
-			if _, err := ew.WaitForEvent(ctx, ac.pollOpts.Timeout); err != nil {
+			es, err := ew.WaitForEvent(ctx, ac.pollOpts.Timeout)
+			if err != nil {
 				return errors.Wrap(err, "failed to wait for the focus event on the specified node")
 			}
+			es.Release(ctx)
 			return nil
 		}, &ac.pollOpts)
 	}
