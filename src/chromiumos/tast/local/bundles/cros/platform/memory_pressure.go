@@ -13,7 +13,8 @@ import (
 )
 
 type memoryPressureParams struct {
-	enableARC bool
+	enableARC    bool
+	useHugePages bool
 }
 
 func init() {
@@ -29,14 +30,18 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val: &memoryPressureParams{enableARC: false},
+			Val: &memoryPressureParams{enableARC: false, useHugePages: false},
 		}, {
 			Name:              "vm",
-			Val:               &memoryPressureParams{enableARC: true},
+			Val:               &memoryPressureParams{enableARC: true, useHugePages: false},
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}, {
+			Name:              "huge_pages_vm",
+			Val:               &memoryPressureParams{enableARC: true, useHugePages: true},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
 			Name:              "container",
-			Val:               &memoryPressureParams{enableARC: true},
+			Val:               &memoryPressureParams{enableARC: true, useHugePages: false},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}},
 	})
@@ -45,8 +50,9 @@ func init() {
 // MemoryPressure is the main test function.
 func MemoryPressure(ctx context.Context, s *testing.State) {
 	enableARC := s.Param().(*memoryPressureParams).enableARC
+	useHugePages := s.Param().(*memoryPressureParams).useHugePages
 
-	testEnv, err := mempressure.NewTestEnv(ctx, s.OutDir(), enableARC, s.DataPath(mempressure.WPRArchiveName))
+	testEnv, err := mempressure.NewTestEnv(ctx, s.OutDir(), enableARC, useHugePages, s.DataPath(mempressure.WPRArchiveName))
 	if err != nil {
 		s.Fatal("Failed creating the test environment: ", err)
 	}
