@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c115e8d4_2c26c92c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-27T12:27:16Z",
+      "side": 1,
+      "message": "Hi Tast experts, \n\nCan you please take a look at this CL? \n\nThanks!",
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
