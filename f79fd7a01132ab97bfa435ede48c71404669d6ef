@@ -16,6 +16,40 @@
       "message": "Mukai-san, Can you take a look?\n\nI understand ui package is deprecated and we want to migrate to uiauto. But uiauto.NewRootWatcher directly uses ui package internally.\n\nAlternatively, we can migrate entire EventWatcher to uiauto, it needs some amount of work though.\n\nWhat do you think?\nThank you.",
       "revId": "f79fd7a01132ab97bfa435ede48c71404669d6ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9496ab_2f71b1ae",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-05-27T17:41:50Z",
+      "side": 1,
+      "message": "Thanks for making a change, but it\u0027s not clear to me why we want to keep the target node.  Isn\u0027t it good enough to simply drop the \u0027Target\u0027 field?  Or do you have a new case where Target property is crucial?",
+      "revId": "f79fd7a01132ab97bfa435ede48c71404669d6ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a3c98ba_597caf7d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-05-27T17:41:50Z",
+      "side": 1,
+      "message": "Sorry but I have another CL to refactor the use of event watcher in uiauto (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2802697).  Please wait for that.",
+      "revId": "f79fd7a01132ab97bfa435ede48c71404669d6ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
