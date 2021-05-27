@@ -104,6 +104,24 @@
       "parentUuid": "9dc7bd99_fef661fd",
       "revId": "a97740956a529aff43dd0c72d65d056dcb3dd34c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "643ee8e0_33a0d911",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-05-27T23:41:37Z",
+      "side": 1,
+      "message": "Yeah I can break that out to another file like unused_module_drivers.txt and then track that stat as kernel_unused_module_drivers. Does crosbolt have multi-point graphs? Maybe I could put the total number of drivers and total number of devices on a bus into each metric as a different datapoint so we can see them side-by-side.",
+      "parentUuid": "8e88234a_f78700a7",
+      "revId": "a97740956a529aff43dd0c72d65d056dcb3dd34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
