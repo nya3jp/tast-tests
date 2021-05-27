@@ -122,6 +122,24 @@
       "parentUuid": "8e88234a_f78700a7",
       "revId": "a97740956a529aff43dd0c72d65d056dcb3dd34c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f375a166_13386c23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-05-27T23:44:23Z",
+      "side": 1,
+      "message": "I think I\u0027ll implement that logic in platform.ReportDiskUsage as that already records the other disk usage stats like arc size and chrome size.",
+      "parentUuid": "7035368c_0411b39d",
+      "revId": "a97740956a529aff43dd0c72d65d056dcb3dd34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
