@@ -12,8 +12,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 	"time"
 
 	"chromiumos/tast/common/android/adb"
@@ -149,8 +151,7 @@ func (d *Device) EnableDebug() {
 // Close releases resources associated with d.
 func (d *Device) Close(ctx context.Context) error {
 	// Request to stop the remote server.
-	var res string
-	if err := d.call(ctx, "stop", &res); err != nil {
+	if err := d.callStop(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to stop UI Automator server: ", err)
 	}
 	if err := d.hostDevice.RemoveForwardTCP(ctx, d.hostPort); err != nil {
@@ -158,6 +159,19 @@ func (d *Device) Close(ctx context.Context) error {
 	}
 	d.sp.Kill()
 	return d.sp.Wait()
+}
+
+// callStop calls a "stop" remote server method to gracefully shutdown the server.
+func (d *Device) callStop(ctx context.Context) error {
+	res, err := http.Get(fmt.Sprintf("http://localhost:%d/stop", d.hostPort))
+	// The server closes the connection immediately, so getting EOF error here is expected.
+	if err != nil && err.(*url.Error).Err != io.EOF {
+		return err
+	}
+	if err == nil {
+		res.Body.Close()
+	}
+	return nil
 }
 
 // call calls a remote server method by JSON-RPC.
