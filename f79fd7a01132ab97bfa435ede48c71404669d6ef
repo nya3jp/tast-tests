@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd71fec_2ee2d96d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-27T08:12:59Z",
+      "side": 1,
+      "message": "Mukai-san, Can you take a look?\n\nI understand ui package is deprecated and we want to migrate to uiauto. But uiauto.NewRootWatcher directly uses ui package internally.\n\nAlternatively, we can migrate entire EventWatcher to uiauto, it needs some amount of work though.\n\nWhat do you think?\nThank you.",
+      "revId": "f79fd7a01132ab97bfa435ede48c71404669d6ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
