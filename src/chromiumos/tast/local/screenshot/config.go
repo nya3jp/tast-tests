@@ -4,8 +4,17 @@
 
 package screenshot
 
+import (
+	"time"
+
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+)
+
 // Config controls how the screen is rendered during screenshot tests.
 type Config struct {
+	// The set of default options to use for diff tests.
+	DefaultOptions Options
+
 	// The region chrome should be started in. Should correspond to an entry in
 	// /usr/share/misc/cros-regions.json.
 	Region string
@@ -18,8 +27,76 @@ type Config struct {
 	// as similar as possible.
 	SkipDpiNormalization bool
 
+	// If DryRun is true, instead of running the goldctl imgtest, logs it.
+	DryRun bool
+
 	// Whether to output the UI tree for each screenshot.
 	OutputUITrees bool
+
+	// A suffix to add to the name. Might be a version number (eg. "V2"), or a
+	// human-readable label.
+	NameSuffix string
+}
+
+// Options provides all of the ways which you can configure the Diff method.
+type Options struct {
+	// The time to spend looking for a node
+	Timeout time.Duration
+
+	// The minimum difference required to treat two pixels as different.
+	// Specifically, this is dr + dg + db (the sum of the difference in	each channel).
+	PixelDeltaThreshold int
+
+	// The width and height requested of a window.
+	// You probably don't want to set this yourself - the screen diffing
+	// framework will tell you what to set this to.
+	WindowWidthDP  int
+	WindowHeightDP int
+
+	// Pixels within this distance to a border (top / bottom / sides) of the window
+	// will not be considered when determining difference.
+	WindowBorderWidthDP int
+
+	// Elements that will be removed from the screenshot. For example, if you have
+	// some dynamic content interlaced with static content (eg. file modification
+	// times in the files app).
+	RemoveElements []*nodewith.Finder
+
+	// The number of times and interval between retries when taking screenshots.
+	// We retry for two reasons:
+	// 1) Check that any animations have completed (eg. attempting to move the
+	//    window can be slow, and the ui tree updates before the window has
+	//    finished moving).
+	// 2) Try and pick up on any ongoing animations during development rather
+	//    than in gold.
+	ScreenshotRetries       int
+	ScreenshotRetryInterval time.Duration
+}
+
+// FillDefaults fills any unfilled fields in o with values from d.
+func (o *Options) FillDefaults(d Options) {
+	if o.Timeout == 0 {
+		o.Timeout = d.Timeout
+	}
+	if o.PixelDeltaThreshold == 0 {
+		o.PixelDeltaThreshold = d.PixelDeltaThreshold
+	}
+	if o.WindowWidthDP == 0 {
+		o.WindowWidthDP = d.WindowWidthDP
+	}
+	if o.PixelDeltaThreshold == 0 {
+		o.WindowHeightDP = d.WindowHeightDP
+	}
+	if o.PixelDeltaThreshold == 0 {
+		o.WindowBorderWidthDP = d.WindowBorderWidthDP
+	}
+	o.RemoveElements = append(o.RemoveElements, d.RemoveElements...)
+	if o.ScreenshotRetries == 0 {
+		o.ScreenshotRetries = d.ScreenshotRetries
+	}
+	if o.ScreenshotRetryInterval == 0 {
+		o.ScreenshotRetryInterval = d.ScreenshotRetryInterval
+	}
 }
 
 // Suffix should return a string representation of the suffix for the test
@@ -27,6 +104,9 @@ type Config struct {
 // eg. Region: "de" would be ".de"
 func (c *Config) Suffix() string {
 	result := ""
+	if c.NameSuffix != "" {
+		result += "." + c.NameSuffix
+	}
 	if c.Region != "" {
 		result += "." + c.Region
 	}
