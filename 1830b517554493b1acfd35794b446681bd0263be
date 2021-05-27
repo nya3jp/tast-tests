@@ -209,6 +209,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1726baeb_6e43b3d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-05-27T15:20:18Z",
+      "side": 1,
+      "message": "Per http://go/go-code-review-comments#Initialisms, each initialism should have a consistent case. So I would expect to see \"L2TP\" or \"l2tp\", but not \"L2tp\". Similarly \"IP\" and \"VPN\".\n\nBut, I agree that it makes sense to address this in a separate CL.",
+      "parentUuid": "01dd3b19_05472634",
+      "range": {
+        "startLine": 138,
+        "startChar": 5,
+        "endLine": 138,
+        "endChar": 23
+      },
+      "revId": "1830b517554493b1acfd35794b446681bd0263be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b9e808f_33777f56",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 2
