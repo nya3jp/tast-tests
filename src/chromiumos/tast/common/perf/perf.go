@@ -40,6 +40,7 @@ import (
 	"github.com/google/uuid"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/services/cros/perf"
 )
 
 var (
@@ -152,6 +153,27 @@ func (p *Values) Merge(vs ...*Values) {
 					panic("Single-valued metric already present. Cannot merge with another value.")
 				}
 				p.Set(k, v...)
+			}
+		}
+	}
+}
+
+// MergeRemote merges all data points from a remote test into this Values
+// structure.
+func (p *Values) MergeRemote(vs ...*perf.PerfValues) {
+	for _, val := range vs {
+		for _, v := range val.Values {
+			m := Metric{
+				Name:      v.Name,
+				Variant:   v.Variant,
+				Unit:      v.Unit,
+				Direction: Direction(v.Direction),
+				Multiple:  v.Multiple,
+			}
+			if v.Multiple {
+				p.Append(m, v.Value...)
+			} else {
+				p.Set(m, v.Value...)
 			}
 		}
 	}
@@ -360,6 +382,23 @@ func (p *Values) Save(outDir string) error {
 		return err
 	}
 	return ioutil.WriteFile(filepath.Join(outDir, fileName), json, 0644)
+}
+
+// ExportToRemote converts this Values to something that can be returned from a
+// remote test.
+func (p *Values) ExportToRemote() *perf.PerfValues {
+	result := &perf.PerfValues{}
+	for k, v := range p.values {
+		result.Values = append(result.Values, &perf.PerfValues_PerfValue{
+			Name:      k.Name,
+			Variant:   k.Variant,
+			Unit:      k.Unit,
+			Direction: perf.PerfValues_PerfValue_Direction(k.Direction),
+			Multiple:  k.Multiple,
+			Value:     v,
+		})
+	}
+	return result
 }
 
 // SaveAs saves performance metric values in the format provided to outDir.

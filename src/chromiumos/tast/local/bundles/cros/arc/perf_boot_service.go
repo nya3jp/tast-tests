@@ -13,17 +13,20 @@ import (
 	"strings"
 	"time"
 
-	"github.com/golang/protobuf/ptypes"
 	"github.com/golang/protobuf/ptypes/empty"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/memory"
+	arcmem "chromiumos/tast/local/memory/arc"
 	"chromiumos/tast/local/power"
 	arcpb "chromiumos/tast/services/cros/arc"
+	perfpb "chromiumos/tast/services/cros/perf"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -48,7 +51,7 @@ func (c *PerfBootService) WaitUntilCPUCoolDown(ctx context.Context, req *empty.E
 	return &empty.Empty{}, nil
 }
 
-func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (*arcpb.GetPerfValuesResponse, error) {
+func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (*perfpb.PerfValues, error) {
 	const (
 		logcatTimeout = 30 * time.Second
 
@@ -135,7 +138,7 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 		cmd.Wait()
 	}()
 
-	res := &arcpb.GetPerfValuesResponse{}
+	p := perf.NewValues()
 	lastEventSeen := false
 
 	testing.ContextLog(ctx, "Scanning logcat output")
@@ -159,11 +162,11 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 		}
 		dur := time.Duration(eventTimeMS-adjustedArcStartTimeMS) * time.Millisecond
 
-		perfValue := &arcpb.GetPerfValuesResponse_PerfValue{
-			Name:     eventTag,
-			Duration: ptypes.DurationProto(dur),
-		}
-		res.Values = append(res.Values, perfValue)
+		p.Set(perf.Metric{
+			Name:      eventTag,
+			Unit:      "milliseconds",
+			Direction: perf.SmallerIsBetter,
+		}, float64(dur.Milliseconds()))
 
 		if eventTag == logcatLastEventTag {
 			lastEventSeen = true
@@ -178,7 +181,20 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 			logcatLastEventTag)
 	}
 
-	return res, nil
+	if err := memory.SmapsMetrics(ctx, p, "", ""); err != nil {
+		return nil, errors.Wrap(err, "failed to collect smaps_rollup metrics")
+	}
+	if err := memory.CrosvmFincoreMetrics(ctx, p, "", ""); err != nil {
+		return nil, errors.Wrap(err, "failed to collect crosvm fincore metrics")
+	}
+	if err := memory.ZramMmStatMetrics(ctx, p, "", ""); err != nil {
+		return nil, errors.Wrap(err, "failed to collect zram mm_stats metrics")
+	}
+	if err := arcmem.DumpsysMeminfoMetrics(ctx, a, p, "", ""); err != nil {
+		return nil, errors.Wrap(err, "failed to collect ARC dumpsys meminfo metrics")
+	}
+
+	return p.ExportToRemote(), nil
 }
 
 // clockDeltaMS returns (the host's CLOCK_MONOTONIC - the guest's CLOCK_MONOTONIC) in milliseconds.

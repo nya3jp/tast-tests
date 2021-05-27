@@ -73,7 +73,7 @@ var appCategories = []appCategory{
 
 // DumpsysMeminfoMetrics write the output of `dumpsys meminfo` to outdir. If p
 // is provided, it adds PSS metrics for each of the app categories defined in
-// appCategories above.
+// appCategories above. If outdir is empty, then no logs are written.
 func DumpsysMeminfoMetrics(ctx context.Context, a *arc.ARC, p *perf.Values, outdir, suffix string) error {
 	meminfo, err := a.Command(ctx, "dumpsys", "meminfo").Output()
 	if err != nil {
@@ -81,10 +81,12 @@ func DumpsysMeminfoMetrics(ctx context.Context, a *arc.ARC, p *perf.Values, outd
 	}
 
 	// Keep a copy in logs for debugging.
-	outfile := "arc.meminfo" + suffix + ".txt"
-	outpath := filepath.Join(outdir, outfile)
-	if err := ioutil.WriteFile(outpath, meminfo, 0644); err != nil {
-		return errors.Wrapf(err, "failed to write meminfo to %q", outpath)
+	if len(outdir) > 0 {
+		outfile := "arc.meminfo" + suffix + ".txt"
+		outpath := filepath.Join(outdir, outfile)
+		if err := ioutil.WriteFile(outpath, meminfo, 0644); err != nil {
+			return errors.Wrapf(err, "failed to write meminfo to %q", outpath)
+		}
 	}
 
 	if p == nil {
@@ -95,12 +97,12 @@ func DumpsysMeminfoMetrics(ctx context.Context, a *arc.ARC, p *perf.Values, outd
 	// Extract the position of the "Total PSS by process" section.
 	pos := pssByProcessPosRE.FindIndex(meminfo)
 	if pos == nil {
-		return errors.Errorf("failed to find 'Total PSS by process' section in %s in outdir", outfile)
+		return errors.New("failed to find 'Total PSS by process' section")
 	}
 	matches := processPssRE.FindAllSubmatch(meminfo[pos[0]:pos[1]], -1)
 
 	if matches == nil {
-		return errors.Errorf("unable to parse meminfo, see %s in outdir", outfile)
+		return errors.New("unable to parse meminfo")
 	}
 
 	metrics := make(map[string]float64)
