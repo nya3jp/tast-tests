@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76be122d_50b9b290",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273375
+      },
+      "writtenOn": "2021-05-28T15:12:33Z",
+      "side": 1,
+      "message": "I encounter build error with this commit.\n\ntast-remote-tests-cros-0.0.1-r6377: src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go:91:63: cannot use tf.Router() (type router.Base) as type router.SupportCapture in argument to \"chromiumos/tast/remote/bundles/cros/wifi/wifiutil\".CollectPcapForAction:\ntast-remote-tests-cros-0.0.1-r6377: \trouter.Base does not implement router.SupportCapture (missing ReserveForStopCapture method)\ntast-remote-tests-cros-0.0.1-r6377: chromiumos/tast/local/chrome/systemlogs\ntast-remote-tests-cros-0.0.1-r6377: chromiumos/tast/common/cros/nearbyshare/nearbysetup\ntast-remote-tests-cros-0.0.1-r6377: chromiumos/tast/remote/cros/nearbyshare\ntast-remote-tests-cros-0.0.1-r6377: chromiumos/tast/remote/bundles/cros/nearbyshare\ntast-remote-tests-cros-0.0.1-r6377:  * ERROR: chromeos-base/tast-remote-tests-cros-0.0.1-r6377::chromiumos failed (compile phase):\ntast-remote-tests-cros-0.0.1-r6377:  *   (no error message)\ntast-remote-tests-cros-0.0.1-r6377:  * \ntast-remote-tests-cros-0.0.1-r6377:  * Call stack:\ntast-remote-tests-cros-0.0.1-r6377:  *               ebuild.sh, line  125:  Called src_compile\ntast-remote-tests-cros-0.0.1-r6377:  *             environment, line 3404:  Called tast-bundle_src_compile\ntast-remote-tests-cros-0.0.1-r6377:  *             environment, line 3538:  Called cros-go_src_compile\ntast-remote-tests-cros-0.0.1-r6377:  *             environment, line  984:  Called cros_go \u0027build\u0027 \u0027-v\u0027 \u0027-o\u0027 \u0027cros\u0027 \u0027chromiumos/tast/remote/bundles/cros\u0027\ntast-remote-tests-cros-0.0.1-r6377:  *             environment, line 1365:  Called die\ntast-remote-tests-cros-0.0.1-r6377:  * The specific snippet of code:\ntast-remote-tests-cros-0.0.1-r6377:  *       GOPATH\u003d\"$(cros-go_gopath)\" $(tc-getGO) \"$@\" || die\ntast-remote-tests-cros-0.0.1-r6377:  * \ntast-remote-tests-cros-0.0.1-r6377:  * Build log: /var/log/portage/chromeos-base:tast-remote-tests-cros-0.0.1-r6377:20210528-140623.log\ntast-remote-tests-cros-0.0.1-r6377:  * Stable log symlink: /var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.1-r6377/temp/build.log\ntast-remote-tests-cros-0.0.1-r6377:  * CWD: /var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.1-r6377/work/tast-remote-tests-cros-0.0.1\ntast-remote-tests-cros-0.0.1-r6377:  * S:   /var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.1-r6377/work/tast-remote-tests-cros-0.0.1\n",
+      "revId": "e424da09c856cec38acc83f3905779cace6ad1fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
