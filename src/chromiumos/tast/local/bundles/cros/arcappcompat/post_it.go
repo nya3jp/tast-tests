@@ -76,14 +76,12 @@ func PostIt(ctx context.Context, s *testing.State) {
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
 }
 
-// launchAppForPostIt verifies PostIt is logged in and
-// verify PostIt reached main activity page of the app.
+// launchAppForPostIt verifies app reached main activity page.
 func launchAppForPostIt(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
-	// Check for launch verifier.
-	launchVerifier := d.Object(ui.PackageName(appPkgName))
-	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
-		s.Fatal("launchVerifier doesn't exists: ", err)
+	if currentAppPkg, err := testutil.CurrentAppPackage(ctx, d); err != nil {
+		s.Fatal("Failed to get current app package: ", err)
+	} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" && currentAppPkg != "com.google.android.gms" && currentAppPkg != "com.google.android.permissioncontroller" {
+		s.Fatalf("Failed to launch after login: incorrect package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
 	}
+	testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
