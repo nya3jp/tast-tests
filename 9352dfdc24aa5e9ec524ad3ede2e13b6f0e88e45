@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e865a3a3_7546fd6c",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-28T02:50:21Z",
+      "side": 1,
+      "message": "We can exploit parseColonDelimited a bit and indent.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "9352dfdc24aa5e9ec524ad3ede2e13b6f0e88e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
