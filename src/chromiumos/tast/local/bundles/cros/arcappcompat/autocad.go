@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // ClamshellTests are placed here.
@@ -41,6 +42,7 @@ func init() {
 		Contacts:     []string{"archanasing@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("caroline", "nasher360")),
 		Params: []testing.Param{{
 			Val:               clamshellTestsForAutocad,
 			ExtraSoftwareDeps: []string{"android_p"},
