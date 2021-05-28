@@ -39,12 +39,12 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Autocad,
 		Desc:         "Functional test for Autocad that installs the app also verifies it is logged in and that the main page is open, checks Autocad correctly changes the window state in both clamshell and touchview mode",
-		Contacts:     []string{"archanasing@chromium.org", "cros-appcompat-test-team@google.com"},
+		Contacts:     []string{"cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Val:               clamshellTestsForAutocad,
-			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraSoftwareDeps: []string{"android_p", "no_arc_x86"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
@@ -52,7 +52,7 @@ func init() {
 		}, {
 			Name:              "tablet_mode",
 			Val:               touchviewTestsForAutocad,
-			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+			ExtraSoftwareDeps: []string{"android_p", "tablet_mode", "no_arc_x86"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
@@ -60,7 +60,7 @@ func init() {
 		}, {
 			Name:              "vm",
 			Val:               clamshellTestsForAutocad,
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm", "no_arc_x86"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
@@ -68,7 +68,7 @@ func init() {
 		}, {
 			Name:              "vm_tablet_mode",
 			Val:               touchviewTestsForAutocad,
-			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode", "no_arc_x86"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
@@ -119,7 +119,7 @@ func launchAppForAutocad(ctx context.Context, s *testing.State, tconn *chrome.Te
 
 	// Click on sign in button.
 	signInButton := d.Object(ui.Text(signInText))
-	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := signInButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Error("sign in button doesn't exist: ", err)
 	} else if err := signInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on sign in button: ", err)
