@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0489dbc_1bcef25d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-05-28T06:00:54Z",
+      "side": 1,
+      "message": "Have a nice long weekend. I am OOO next week as well.",
+      "revId": "29b4911b0f9b0d745f403ab45fd09d1128db5c01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
