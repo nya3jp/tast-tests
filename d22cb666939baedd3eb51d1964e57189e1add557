@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "658d79c7_11c54ad6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-05-28T00:55:06Z",
+      "side": 0,
+      "message": "It is only for your testing to temporary remove \"informational\" attribute, right? If so, please put WIP in the commit comment. Remove WIP after you put informational back Also, I assume you do so because you want to test it in CQ. If so, you need to do both Verified+1 and CQ+1.",
+      "revId": "d22cb666939baedd3eb51d1964e57189e1add557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
