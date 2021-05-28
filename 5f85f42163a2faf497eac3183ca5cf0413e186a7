@@ -33,6 +33,23 @@
       "message": "Refactoring LGTM. Also great function explanation.",
       "revId": "5f85f42163a2faf497eac3183ca5cf0413e186a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10210a69_16c7410a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-05-28T00:58:47Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "5f85f42163a2faf497eac3183ca5cf0413e186a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
