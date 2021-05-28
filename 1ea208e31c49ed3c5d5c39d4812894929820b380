@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42c2f8d8_e9646eb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-28T13:33:31Z",
+      "side": 1,
+      "message": "Is there a specific reason to change password, username from \"\" to \"********\"?\nIf this cl just moves the test to another repo. It should keep as less changes as possible.\n\nbtw, I did not find anywhere using this structure, except SystemProxyEnabled true / false. Can it be Val: bool? I hope I have not missed anything.",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 6
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1baa2bc1_bf99c55d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
         "patchSetId": 1
@@ -120,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bad145e6_de6cb617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-28T13:33:31Z",
+      "side": 1,
+      "message": "+1.",
+      "parentUuid": "089c7dd6_1ac6e86e",
+      "range": {
+        "startLine": 77,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 36
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c52893ab_4ab21c09",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
         "patchSetId": 1
@@ -136,6 +183,98 @@
         "startChar": 25,
         "endLine": 87,
         "endChar": 33
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adca1fa8_1df819b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-28T13:33:31Z",
+      "side": 1,
+      "message": "These s.Errorf() will not stop execution. For example, if processRunning returns error, then isRunning is false. It continuous to throw the next error and keep running.\n\nIf you want to test mainBinPath and workerBinPath, you can probably do below:\n\nif isRunning, err :\u003d processRunning(mainBinPath); err !\u003d nil {\n    s.Errorf(\"Failed to determin if %s is running: %v\", mainBinPath, err)\n} else if !isRunning {\n    s.Error(\"Main process is not running\")\n}",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 74
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e3e783b_903fd997",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-28T13:33:31Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 5
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb8cd98_ed6bd1e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-28T13:33:31Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 5
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "773f35ba_3773e8b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-28T13:33:31Z",
+      "side": 1,
+      "message": "nit:\n\nif n, err :\u003d p.Name(); err \u003d\u003d nil \u0026\u0026 n \u003d\u003d procName {\n    return true, nil\n}",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 3
       },
       "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
