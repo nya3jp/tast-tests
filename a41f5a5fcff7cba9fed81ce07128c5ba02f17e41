@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1bae92a_09fa148a",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-28T02:30:34Z",
+      "side": 1,
+      "message": "Oh, I guess we don\u0027t need it. Looks like types derived from integral types can be directly printed without implementing the Stringer interface.",
+      "parentUuid": "335077af_19521d0a",
+      "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf853efa_3baa0bca",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-04-29T19:55:51Z",
       "side": 1,
       "message": "Is this method necessary? I think it fulfills the same purpose as formatting with %+v:\n\n    v :\u003d ECToolVersion{FWImageTypeRO, \"MyROVersion\", \"MyRWVersion\", \"MyBuildInfo\", \"MyToolVersion\"}\n    s.Logf(\"ECToolVersion: %+v\", v) // or testing.Contextlogf\n\n    // Output:\n    // ECToolVersion: {Active:RO ROVersion:MyROVersion RWVersion:MyRWVersion BuildInfo:MyBuildInfo ToolVersion:MyToolVersion}",
+      "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f13340c7_868222b0",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-28T02:30:34Z",
+      "side": 1,
+      "message": "Hmmm, but that\u0027s not super helpful to look at in logs and doesn\u0027t promote printing.\n\nIn reality it will look much messier, like:\n\n{Active:RW ROVersion:bloonchipper_v2.0.4277-9f652bb3 RWVersion:bloonchipper_v2.0.7314-3dfc5ff6 BuildInfo:bloonchipper_v2.0.7314-3dfc5ff6 cryptoc:v1.9308_26_0.9-3830fff private:1.1.9999-3dfc5ff fpc:1.1.9999-3dfc5ff 2021-02-05 22:03:09 @chromeos-ci-legacy-us-east1-d-x32-43-hpq3 ToolVersion:v2.0.8910-557b9dd40a 2021-05-22 01:29:45 @chromeos-ci-legacy-us-east1-d-x32-22-dt1v}\n\nIf you are printing it for debug purposes, this is kinda useless.\n\nSee https://play.golang.org/p/2sqH9JdXSQH\n\n---\n\nBased on our offline convo, this should be okay. Please reopen if I misunderstood.",
+      "parentUuid": "bf853efa_3baa0bca",
       "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aecb38f0_db16638b",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-28T02:30:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b95f134_d9de55ce",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 88,
+        "endChar": 12
+      },
+      "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c9ef1eb_b14043cf",
@@ -88,6 +148,24 @@
       "writtenOn": "2021-04-29T19:55:51Z",
       "side": 1,
       "message": "nit/style: For concision and consistency, remove L93-95 and use the :\u003d operator. Because we\u0027ll need to use `active` later, this will also require the `if` to be on a separate line.\n\n    active, ok :\u003d values[\"Firmware copy\"]\n    if !ok {\n        return ver, errors.New(\"parsing firmware copy\")\n    }",
+      "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c7555a1_6e27cb52",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-28T02:30:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c9ef1eb_b14043cf",
       "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +189,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7f92e28_831ee99b",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-28T02:30:34Z",
+      "side": 1,
+      "message": "So, I now drop the ectool output before returning the error in the handler functions. Let me know if this seems to be sufficient.",
+      "parentUuid": "2bacbd33_c9400519",
+      "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2df1226_9652f1dc",
         "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
         "patchSetId": 3
@@ -122,6 +218,24 @@
       "writtenOn": "2021-04-29T19:55:51Z",
       "side": 1,
       "message": "Please include ver.Active in the error message.\n\n    return \"\", errors.New(\"unknown active image: \" + ver.Active)",
+      "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fef0b996_a03f8488",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-28T02:30:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2df1226_9652f1dc",
       "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -139,6 +253,24 @@
       "writtenOn": "2021-04-29T19:55:51Z",
       "side": 1,
       "message": "Please also check the actual keys/values. In particular, it would be good to ensure that \"Build info\" (which has additional colons) is parsed correctly, and that whitespace is trimmed appropriately.",
+      "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5cc0a52_9d3c635f",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-28T02:30:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d3d85ed_49cd2fb8",
       "revId": "a41f5a5fcff7cba9fed81ce07128c5ba02f17e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
