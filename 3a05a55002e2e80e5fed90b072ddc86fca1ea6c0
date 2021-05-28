@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78e27cbd_9bd6333e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-05-28T14:32:49Z",
+      "side": 1,
+      "message": "First CQ run: https://ci.chromium.org/ui/p/chromeos/builders/cq/cq-orchestrator/b8846000553515713376/overview\n\n- atlas-cq failure looks like a flake (passed in second run)\n- grunt/kevin failed wificell-cq but looks like a Tast issue: \"Failed to run tast (last line: Getting architecture from target)\"\n- trogdor bvt-tast-cq failure looks unrelated (tast.typec.Basic)",
+      "revId": "3a05a55002e2e80e5fed90b072ddc86fca1ea6c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
