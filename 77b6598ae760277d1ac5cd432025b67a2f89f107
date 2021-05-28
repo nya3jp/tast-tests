@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce881c33_54b934c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-28T04:20:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e857472_c01b27cc",
+      "range": {
+        "startLine": 71,
+        "startChar": 29,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "77b6598ae760277d1ac5cd432025b67a2f89f107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "278cac78_a5ccf419",
@@ -88,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81735bdc_81e210de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-28T04:20:16Z",
+      "side": 1,
+      "message": "Moved the OpClass ones there, but left everything else.",
+      "parentUuid": "e4fd245b_67c6ac64",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "77b6598ae760277d1ac5cd432025b67a2f89f107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11a25846_421fa8aa",
@@ -111,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7026629_f326a93c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-28T04:20:16Z",
+      "side": 1,
+      "message": "Good suggestion, I (hopefully) cleaned up the magics. lmkwyt",
+      "parentUuid": "11a25846_421fa8aa",
+      "range": {
+        "startLine": 321,
+        "startChar": 12,
+        "endLine": 321,
+        "endChar": 13
+      },
+      "revId": "77b6598ae760277d1ac5cd432025b67a2f89f107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9a11e48_a91ab652",
@@ -124,6 +196,30 @@
       "writtenOn": "2021-05-26T01:20:42Z",
       "side": 1,
       "message": "have we bounds-checked that i+tagLen is within the Contents? and actually, we technically need to bounds-check for lines 323, 326, ... too",
+      "range": {
+        "startLine": 335,
+        "startChar": 4,
+        "endLine": 336,
+        "endChar": 54
+      },
+      "revId": "77b6598ae760277d1ac5cd432025b67a2f89f107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94e67889_7b015aa8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-28T04:20:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9a11e48_a91ab652",
       "range": {
         "startLine": 335,
         "startChar": 4,
