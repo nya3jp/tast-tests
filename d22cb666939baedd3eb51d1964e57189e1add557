@@ -16,6 +16,24 @@
       "message": "It is only for your testing to temporary remove \"informational\" attribute, right? If so, please put WIP in the commit comment. Remove WIP after you put informational back Also, I assume you do so because you want to test it in CQ. If so, you need to do both Verified+1 and CQ+1.",
       "revId": "d22cb666939baedd3eb51d1964e57189e1add557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f82e982_6c9e96d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-05-28T01:26:45Z",
+      "side": 0,
+      "message": "Thanks, I do want to test those in the CQ. Most tests using this API is informational.\nI was noticed that when I did CQ+1, it only ran Tricium but not the other CQs.",
+      "parentUuid": "658d79c7_11c54ad6",
+      "revId": "d22cb666939baedd3eb51d1964e57189e1add557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
