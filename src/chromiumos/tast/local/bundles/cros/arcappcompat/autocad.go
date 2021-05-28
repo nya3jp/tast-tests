@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // ClamshellTests are placed here.
@@ -38,9 +39,11 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Autocad,
 		Desc:         "Functional test for Autocad that installs the app also verifies it is logged in and that the main page is open, checks Autocad correctly changes the window state in both clamshell and touchview mode",
-		Contacts:     []string{"archanasing@chromium.org", "cros-appcompat-test-team@google.com"},
+		Contacts:     []string{"cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
+		// Skip on x86 android builds.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("caroline", "nasher360")),
 		Params: []testing.Param{{
 			Val:               clamshellTestsForAutocad,
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -82,7 +85,7 @@ func Autocad(ctx context.Context, s *testing.State) {
 // verify Autocad reached main activity page of the app.
 func launchAppForAutocad(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		laterText        = "Later"
+		loginPageID      = "com.autodesk.autocadws:id/webLoginIntro"
 		signInText       = "Sign in"
 		enterEmailID     = "userName"
 		nextText         = "Next button"
@@ -95,21 +98,21 @@ func launchAppForAutocad(ctx context.Context, s *testing.State, tconn *chrome.Te
 		plusID           = "com.autodesk.autocadws:id/fabButton"
 	)
 
-	// Skip later dialog.
-	laterButton := d.Object(ui.Text(laterText))
-	if err := laterButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0)
-		d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0)
-	} else if err := laterButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on later button: ", err)
-	}
-
 	// Click on sign in button.
 	signInButton := d.Object(ui.Text(signInText))
-	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := signInButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Error("sign in button doesn't exist: ", err)
 	} else if err := signInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on sign in button: ", err)
+	}
+
+	// Check for login page.
+	checkForloginPage := d.Object(ui.ID(loginPageID))
+	if err := checkForloginPage.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("checkForloginButtonPage does not exist: ", err)
+	} else {
+		s.Log("checkForloginButtonPage in web view does exist")
+		return
 	}
 
 	// Enter email address.
