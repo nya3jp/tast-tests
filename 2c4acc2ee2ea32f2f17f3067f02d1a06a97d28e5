@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae754e4_c8d3e3f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-05-28T04:20:48Z",
+      "side": 1,
+      "message": "Need to clean up all the magics - stay tuned.",
+      "revId": "2c4acc2ee2ea32f2f17f3067f02d1a06a97d28e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
