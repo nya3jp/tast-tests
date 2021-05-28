@@ -140,6 +140,47 @@
       "parentUuid": "7035368c_0411b39d",
       "revId": "a97740956a529aff43dd0c72d65d056dcb3dd34c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a87758ee_6b79b952",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-05-28T00:35:06Z",
+      "side": 1,
+      "message": "And I think I can report the amount of kernel text that\u0027s resident, i.e. the difference between _stext and _etext which should be a good metric to understand how much kernel text we\u0027re carrying along and if that is changing drastically over time.",
+      "parentUuid": "f375a166_13386c23",
+      "revId": "a97740956a529aff43dd0c72d65d056dcb3dd34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9622748_e924a651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/bloat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-05-28T00:35:06Z",
+      "side": 1,
+      "message": "should say devices.",
+      "range": {
+        "startLine": 52,
+        "startChar": 35,
+        "endLine": 52,
+        "endChar": 42
+      },
+      "revId": "a97740956a529aff43dd0c72d65d056dcb3dd34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
