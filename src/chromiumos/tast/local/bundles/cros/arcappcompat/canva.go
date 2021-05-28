@@ -98,14 +98,6 @@ func launchAppForCanva(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Fatal("Failed to click on sign in button: ", err)
 	}
 
-	// Choose first recommend design by hitting enter key
-	designTextButton := d.Object(ui.TextContains(designText))
-	if err := designTextButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("designTextButton doesn't exist: ", err)
-	} else if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
-		s.Fatal("Failed to press ENTER key: ", err)
-	}
-
 	// Click on email address.
 	emailAddress := d.Object(ui.ID(emailAddressID))
 	if err := emailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
@@ -113,11 +105,11 @@ func launchAppForCanva(ctx context.Context, s *testing.State, tconn *chrome.Test
 	} else if err := emailAddress.Click(ctx); err != nil {
 		s.Fatal("Failed to click on EmailAddress: ", err)
 	}
-	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
-	// Check for homePageVerifier.
-	homePageVerifier := d.Object(ui.Text(homeIconText))
-	if err := homePageVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
-		s.Fatal("homePageVerifier button doesn't exist: ", err)
+
+	if currentAppPkg, err := testutil.CurrentAppPackage(ctx, d); err != nil {
+		s.Fatal("Failed to get current app package: ", err)
+	} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" && currentAppPkg != "com.google.android.gms" && currentAppPkg != "com.google.android.permissioncontroller" {
+		s.Fatalf("Failed to launch after login: incorrect package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
 	}
+	testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
