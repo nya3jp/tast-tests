@@ -86,7 +86,9 @@ var (
 			"nodefaultroute\n" +
 			"debug\n" +
 			"lock\n" +
-			"proxyarp\n",
+			"proxyarp\n" +
+			"ms-dns 8.8.8.8\n" +
+			"ms-dns 8.8.4.4\n",
 	}
 	ipsecTypedConfigs = map[string]map[string]string{
 		"psk": {
@@ -193,8 +195,8 @@ var (
 
 // Server represents a VPN server that can be used in the test.
 type Server struct {
-	UnderlayIP   string
 	OverlayIP    string
+	underlayIP   string
 	netChroot    *chroot.NetworkChroot
 	stopCommands [][]string
 	pidFiles     []string
@@ -252,11 +254,15 @@ func StartL2TPIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start L2TP/IPsec server")
 	}
-	server.UnderlayIP = underlayIP
+	server.underlayIP = underlayIP
 	if underlayIPIsOverlayIP {
 		server.OverlayIP = underlayIP
 	} else {
 		server.OverlayIP = xl2tpdServerIPAddress
+	}
+	// Setup internet connectivity for VPN server.
+	if err := chro.Command(ctx, "iptables", "-t", "nat", "-A", "POSTROUTING", "!", "-s", xl2tpdServerIPAddress, "-j", "SNAT", "--to", server.underlayIP, "-w").Run(); err != nil {
+		return nil, errors.Wrap(err, "failed to setup internet connectivity")
 	}
 	return server, nil
 }
@@ -302,7 +308,7 @@ func StartOpenVPNServer(ctx context.Context, useUserPassword bool) (*Server, err
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start OpenVPN server")
 	}
-	server.UnderlayIP = underlayIP
+	server.underlayIP = underlayIP
 	server.OverlayIP = openvpnServerIPAddress
 	return server, nil
 }
