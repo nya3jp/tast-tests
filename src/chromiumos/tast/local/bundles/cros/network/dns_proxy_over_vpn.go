@@ -15,6 +15,9 @@ import (
 	"chromiumos/tast/local/bundles/cros/network/dns"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crostini"
+	cui "chromiumos/tast/local/crostini/ui"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -28,23 +31,35 @@ func init() {
 		Desc:         "Ensure that DNS proxies are working correctly",
 		Contacts:     []string{"jasongustaman@google.com", "garrick@google.com", "cros-networking@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "arc"},
+		SoftwareDeps: []string{"chrome", "vm_host", "arc"},
 		Fixture:      "shillReset",
 		Params: []testing.Param{{
 			Name: "doh_off",
 			Val: dnsProxyOverVPNTestParams{
 				mode: dns.DoHOff,
 			},
+			ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
+			ExtraSoftwareDeps: []string{"dlc"},
+			ExtraHardwareDeps: crostini.CrostiniStable,
+			Timeout:           7 * time.Minute,
 		}, {
 			Name: "doh_automatic",
 			Val: dnsProxyOverVPNTestParams{
 				mode: dns.DoHAutomatic,
 			},
+			ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
+			ExtraSoftwareDeps: []string{"dlc"},
+			ExtraHardwareDeps: crostini.CrostiniStable,
+			Timeout:           7 * time.Minute,
 		}, {
 			Name: "doh_always_on",
 			Val: dnsProxyOverVPNTestParams{
 				mode: dns.DoHAlwaysOn,
 			},
+			ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
+			ExtraSoftwareDeps: []string{"dlc"},
+			ExtraHardwareDeps: crostini.CrostiniStable,
+			Timeout:           7 * time.Minute,
 		}},
 	})
 }
@@ -82,6 +97,29 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get test API connection: ", err)
+	}
+
+	// Install Crostini.
+	opts := crostini.GetInstallerOptions(s, vm.DebianBuster, false /*largeContainer*/, cr.NormalizedUser())
+	if _, err := cui.InstallCrostini(ctx, tconn, cr, opts); err != nil {
+		s.Fatal("Failed to install Crostini: ", err)
+	}
+	defer func() {
+		vm.UnmountComponent(cleanupCtx)
+		if err := vm.DeleteImages(); err != nil {
+			testing.ContextLogf(cleanupCtx, "Error deleting images: %q", err)
+		}
+	}()
+
+	// Get the container.
+	cont, err := vm.DefaultContainer(ctx, opts.UserName)
+	if err != nil {
+		s.Fatal("Failed to connect to container: ", err)
+	}
+
+	// Install dig in container.
+	if err := dns.InstallDigInContainer(ctx, cont); err != nil {
+		s.Fatal("Failed to install dig in container: ", err)
 	}
 
 	// Start ARC.
@@ -125,10 +163,11 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 		testCase{c: dns.System, expectErr: false},
 		testCase{c: dns.User, expectErr: false},
 		testCase{c: dns.Chrome, expectErr: false},
+		testCase{c: dns.Crostini, expectErr: false},
 		testCase{c: dns.ARC, expectErr: false},
 	}
 	for _, tc := range defaultTC {
-		err = dns.QueryDNS(ctx, tc.c, a, domainDefault)
+		err = dns.QueryDNS(ctx, tc.c, a, cont, domainDefault)
 		if err != nil && !tc.expectErr {
 			s.Errorf("Failed DNS query check for %s: %v", dns.GetClientString(tc.c), err)
 		}
@@ -154,9 +193,10 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 	vpnBlockedTC := []testCase{
 		testCase{c: dns.System, expectErr: false},
 		testCase{c: dns.User, expectErr: true},
-		testCase{c: dns.Chrome, expectErr: true}}
+		testCase{c: dns.Chrome, expectErr: true},
+		testCase{c: dns.Crostini, expectErr: true}}
 	for _, tc := range vpnBlockedTC {
-		err = dns.QueryDNS(ctx, tc.c, a, domainVPNBlocked)
+		err = dns.QueryDNS(ctx, tc.c, a, cont, domainVPNBlocked)
 		if err != nil && !tc.expectErr {
 			s.Errorf("Failed DNS query check for %s: %v", dns.GetClientString(tc.c), err)
 		}
@@ -178,10 +218,11 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 	secureDNSBlockedTC := []testCase{
 		testCase{c: dns.System, expectErr: false},
 		testCase{c: dns.User, expectErr: false},
-		testCase{c: dns.Chrome, expectErr: false}}
+		testCase{c: dns.Chrome, expectErr: false},
+		testCase{c: dns.Crostini, expectErr: false}}
 
 	for _, tc := range secureDNSBlockedTC {
-		err = dns.QueryDNS(ctx, tc.c, a, domainSecureDNSBlocked)
+		err = dns.QueryDNS(ctx, tc.c, a, cont, domainSecureDNSBlocked)
 		if err != nil && !tc.expectErr {
 			s.Errorf("Failed DNS query check for %s: %v", dns.GetClientString(tc.c), err)
 		}
