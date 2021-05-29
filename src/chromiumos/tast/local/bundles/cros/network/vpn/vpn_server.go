@@ -86,7 +86,9 @@ var (
 			"nodefaultroute\n" +
 			"debug\n" +
 			"lock\n" +
-			"proxyarp\n",
+			"proxyarp\n" +
+			"ms-dns 8.8.8.8\n" +
+			"ms-dns 8.8.4.4\n",
 	}
 	ipsecTypedConfigs = map[string]map[string]string{
 		"psk": {
@@ -198,6 +200,10 @@ func StartL2TPIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 		server.OverlayIP = underlayIP
 	} else {
 		server.OverlayIP = xl2tpdServerIPAddress
+	}
+	// Setup internet connectivity for VPN server. Source subnet is a hardcoded value taken from xl2tpd config file.
+	if err := chro.Command(ctx, "iptables", "-t", "nat", "-A", "POSTROUTING", "-s", "192.168.1.128/25", "-j", "SNAT", "--to", server.UnderlayIP).Run(); err != nil {
+		return nil, errors.Wrap(err, "failed to setup internet connectivity")
 	}
 	return server, nil
 }
