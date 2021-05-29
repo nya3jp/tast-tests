@@ -44,6 +44,7 @@ type NetworkChroot struct {
 	netTempDir             string
 	netJailArgs            []string
 	netnsLifelineFD        *os.File
+	netnsName              string
 	startupCmd             *testexec.Cmd
 	NetEnv                 []string
 }
@@ -87,7 +88,7 @@ func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
 	netnsIP := net.IP(b).String()
 	n.netConfigFileValues["netns_ip"] = netnsIP
 	n.netnsLifelineFD = fd
-	netnsName := resp.NetnsName
+	n.netnsName = resp.NetnsName
 
 	if err := n.makeChroot(ctx); err != nil {
 		return "", errors.Wrap(err, "failed making the chroot")
@@ -98,7 +99,7 @@ func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
 	}
 
 	cmdArgs := append(n.netJailArgs, "/bin/bash", filepath.Join("/", startup), "&")
-	ipArgs := []string{"netns", "exec", netnsName, "/sbin/minijail0", "-C", n.netTempDir}
+	ipArgs := []string{"netns", "exec", n.netnsName, "/sbin/minijail0", "-C", n.netTempDir}
 	ipArgs = append(ipArgs, cmdArgs...)
 	n.startupCmd = testexec.CommandContext(ctx, "ip", ipArgs...)
 	n.startupCmd.Env = append(os.Environ(), n.NetEnv...)
@@ -372,4 +373,9 @@ func (n *NetworkChroot) GetLogContents(ctx context.Context, logFilePath string) 
 // BridgeDbusNamespaces make the system DBus daemon visible inside the chroot.
 func (n *NetworkChroot) BridgeDbusNamespaces() {
 	n.netBindRootDirectories = append(n.netBindRootDirectories, dbusBridgeDirectories...)
+}
+
+// Command returns a command inside the network chroot.
+func (n *NetworkChroot) Command(ctx context.Context, args ...string) *testexec.Cmd {
+	return testexec.CommandContext(ctx, "ip", append([]string{"netns", "exec", n.netnsName}, args...)...)
 }
