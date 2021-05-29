@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6850022d_07b5276d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Added defer func()",
+      "parentUuid": "abb644a7_62dcedbb",
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "817f86f8_f5199546",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-05-26T22:15:19Z",
       "side": 1,
       "message": "Testing",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 12
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44b5eb20_6dab9bc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "817f86f8_f5199546",
       "range": {
         "startLine": 56,
         "startChar": 8,
@@ -92,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d7d4de_de05c131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e0454ae_863a5559",
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dfc0b2d_f68485ed",
@@ -105,6 +165,24 @@
       "writtenOn": "2021-05-26T22:15:19Z",
       "side": 1,
       "message": "Delete empty line",
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaf37440_b7f466ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_switch_to_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dfc0b2d_f68485ed",
       "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +204,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e442323_c3b095ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_switch_to_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9f2861f_97acd64d",
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2762174a_8272202d",
@@ -139,6 +235,30 @@
       "writtenOn": "2021-05-26T22:15:19Z",
       "side": 1,
       "message": "Delete comment",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 65
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6111aeef_95d9fecc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_switch_to_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2762174a_8272202d",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -172,6 +292,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e41cbc01_a2b1d3d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_switch_to_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cba7c7ad_dd400765",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 12
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c03154b_12b35347",
@@ -185,6 +329,30 @@
       "writtenOn": "2021-05-26T23:05:42Z",
       "side": 1,
       "message": "nit: one line?",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 30
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4da2b885_e7474777",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c03154b_12b35347",
       "range": {
         "startLine": 4,
         "startChar": 0,
@@ -218,6 +386,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bef3ea6b_72094888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "915686cf_215d2c6c",
+      "range": {
+        "startLine": 20,
+        "startChar": 119,
+        "endLine": 20,
+        "endChar": 122
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0974fe25_50bc166f",
@@ -231,6 +423,30 @@
       "writtenOn": "2021-05-26T23:05:42Z",
       "side": 1,
       "message": "I think this would be better renamed to \"hiddenPwd\". Otherwise it sounds kinda like an action or a function.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85042907_44f1746d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0974fe25_50bc166f",
       "range": {
         "startLine": 22,
         "startChar": 1,
@@ -258,6 +474,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50f32c82_54b79b77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b241af54_f3ea7be1",
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da0af2a7_a57a891d",
@@ -271,6 +505,30 @@
       "writtenOn": "2021-05-26T23:05:42Z",
       "side": 1,
       "message": "PIN?",
+      "range": {
+        "startLine": 26,
+        "startChar": 55,
+        "endLine": 26,
+        "endChar": 58
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a18b21ce_88c8133c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da0af2a7_a57a891d",
       "range": {
         "startLine": 26,
         "startChar": 55,
@@ -304,6 +562,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4d74568_b6c33e4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Cannot replace with this function since this function does submitting password whereas the script does typing in the password. Raised a bug to split this function: https://b.corp.google.com/issues/189597597",
+      "parentUuid": "561fa2cf_29283a12",
+      "range": {
+        "startLine": 39,
+        "startChar": 12,
+        "endLine": 39,
+        "endChar": 19
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e23382a1_11652c34",
@@ -317,6 +599,30 @@
       "writtenOn": "2021-05-26T23:05:42Z",
       "side": 1,
       "message": "don\u0027t think you need to log the successful outcome",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 102
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c489bfab_db5a897d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Retaining this log statement for better interpretation of the log file for this script.",
+      "parentUuid": "e23382a1_11652c34",
       "range": {
         "startLine": 67,
         "startChar": 1,
@@ -350,6 +656,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c40d82dd_fc562eea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1033ea13_55bfc626",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 45
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ea8e15d_8176e695",
@@ -363,6 +693,24 @@
       "writtenOn": "2021-05-26T23:05:42Z",
       "side": 1,
       "message": "same here",
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2df3e22a_1ad3fd32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ea8e15d_8176e695",
       "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -390,6 +738,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "062888ff_e1d77857",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95b94ab2_1437c985",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b404b02_85dbd47c",
@@ -403,6 +775,24 @@
       "writtenOn": "2021-05-26T23:05:42Z",
       "side": 1,
       "message": "add detail about when this button is seen",
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b34aebb_e9016f04",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b404b02_85dbd47c",
       "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -453,6 +843,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46222b1a_6ce1153d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4deafb1_a00e41b7",
+      "range": {
+        "startLine": 202,
+        "startChar": 5,
+        "endLine": 202,
+        "endChar": 8
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "046c6d63_e36fcd1b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "ui.Find() returns a node and an error. For better error handling at the caller, I\u0027m sending the same return values as from ui.Find().",
+      "parentUuid": "4d6e1b7e_36a79c64",
+      "range": {
+        "startLine": 202,
+        "startChar": 85,
+        "endLine": 202,
+        "endChar": 92
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0941ffbe_e2f816c6",
@@ -466,6 +904,30 @@
       "writtenOn": "2021-05-26T23:05:42Z",
       "side": 1,
       "message": "I don\u0027t think it actually checks this, just that the show/hide password buttons switch. This function\u0027s behavior is very specific to the test cases you\u0027re automating, it might be better to have it in your test subpackage instead. I can\u0027t think of a case where other tests will really need to use this.",
+      "range": {
+        "startLine": 211,
+        "startChar": 37,
+        "endLine": 211,
+        "endChar": 71
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ceb01b5_b1815b3a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Moved this function to showpassword subpackage",
+      "parentUuid": "0941ffbe_e2f816c6",
       "range": {
         "startLine": 211,
         "startChar": 37,
@@ -499,6 +961,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e638ff48_1b38b58a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d90d55d0_7248fe4a",
+      "range": {
+        "startLine": 220,
+        "startChar": 8,
+        "endLine": 220,
+        "endChar": 9
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b66e8077_e06faa0f",
@@ -512,6 +998,30 @@
       "writtenOn": "2021-05-26T23:05:42Z",
       "side": 1,
       "message": "I think using err is more standard",
+      "range": {
+        "startLine": 232,
+        "startChar": 10,
+        "endLine": 232,
+        "endChar": 11
+      },
+      "revId": "bf1e5b86fb1b1dcdcffc8ec00074e208eefc7d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d41c0f58_167148f6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-05-29T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b66e8077_e06faa0f",
       "range": {
         "startLine": 232,
         "startChar": 10,
