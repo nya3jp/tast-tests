@@ -87,7 +87,9 @@ var (
 			"nodefaultroute\n" +
 			"debug\n" +
 			"lock\n" +
-			"proxyarp\n",
+			"proxyarp\n" +
+			"ms-dns 8.8.8.8\n" +
+			"ms-dns 8.8.4.4\n",
 	}
 	ipsecTypedConfigs = map[string]map[string]string{
 		"psk": {
