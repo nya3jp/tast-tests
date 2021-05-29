@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -212,7 +213,7 @@ func SetDoHMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 }
 
 // QueryDNS resolves a domain through DNS with a specific client.
-func QueryDNS(ctx context.Context, c Client, a *arc.ARC, domain string) error {
+func QueryDNS(ctx context.Context, c Client, a *arc.ARC, cont *vm.Container, domain string) error {
 	switch c {
 	case System:
 		return testexec.CommandContext(ctx, "dig", domain).Run()
@@ -221,10 +222,33 @@ func QueryDNS(ctx context.Context, c Client, a *arc.ARC, domain string) error {
 	case Chrome:
 		return testexec.CommandContext(ctx, "sudo", "-u", "chronos", "dig", domain).Run()
 	case Crostini:
-		// TODO(jasongustaman): Query DNS from Crostini.
-		return nil
+		return cont.Command(ctx, "dig", domain).Run()
 	case ARC:
 		return a.Command(ctx, "dumpsys", "wifi", "tools", "dns", domain).Run()
 	}
 	return errors.New("unknown client")
+}
+
+// InstallDigInContainer installs dig in container.
+func InstallDigInContainer(ctx context.Context, cont *vm.Container) error {
+	// Check whether dig is preinstalled or not.
+	if err := cont.Command(ctx, "dig", "-v").Run(); err == nil {
+		return nil
+	}
+
+	// Run command sudo apt update in container.
+	if err := cont.Command(ctx, "sudo", "apt", "update").Run(); err != nil {
+		return errors.Wrap(err, "failed to run command sudo apt update in container")
+	}
+
+	// Run command sudo apt install dnsutils in container.
+	if err := cont.Command(ctx, "sudo", "DEBIAN_FRONTEND=noninteractive", "apt-get", "-y", "install", "dnsutils").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to run command sudo apt install dnsutils in container")
+	}
+
+	// Run command dig -v and check the output to make sure vim has been installed successfully.
+	if err := cont.Command(ctx, "dig", "-v").Run(); err != nil {
+		return errors.Wrap(err, "failed to install dig in container")
+	}
+	return nil
 }
