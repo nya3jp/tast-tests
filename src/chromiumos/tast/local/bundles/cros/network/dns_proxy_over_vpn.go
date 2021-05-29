@@ -15,6 +15,9 @@ import (
 	"chromiumos/tast/local/bundles/cros/network/dns"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crostini"
+	cui "chromiumos/tast/local/crostini/ui"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -28,8 +31,11 @@ func init() {
 		Desc:         "Ensure that DNS proxies are working correctly over VPN",
 		Contacts:     []string{"jasongustaman@google.com", "garrick@google.com", "cros-networking@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "arc"},
+		SoftwareDeps: []string{"chrome", "vm_host", "arc", "dlc"},
 		Fixture:      "shillReset",
+		Data:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
+		HardwareDeps: crostini.CrostiniStable,
+		Timeout:      7 * time.Minute,
 		Params: []testing.Param{{
 			Name: "doh_off",
 			Val: dnsProxyOverVPNTestParams{
@@ -82,6 +88,29 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get test API connection: ", err)
 	}
 
+	// Install Crostini.
+	opts := crostini.GetInstallerOptions(s, vm.DebianBuster, false /*largeContainer*/, cr.NormalizedUser())
+	if _, err := cui.InstallCrostini(ctx, tconn, cr, opts); err != nil {
+		s.Fatal("Failed to install Crostini: ", err)
+	}
+	defer func() {
+		vm.UnmountComponent(cleanupCtx)
+		if err := vm.DeleteImages(); err != nil {
+			s.Log("Error deleting images: ", err)
+		}
+	}()
+
+	// Get the container.
+	cont, err := vm.DefaultContainer(ctx, opts.UserName)
+	if err != nil {
+		s.Fatal("Failed to connect to container: ", err)
+	}
+
+	// Install dig in container.
+	if err := dns.InstallDigInContainer(ctx, cont); err != nil {
+		s.Fatal("Failed to install dig in container: ", err)
+	}
+
 	// Start ARC.
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
@@ -123,7 +152,7 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 		dns.ProxyTestCase{Client: dns.Chrome},
 		dns.ProxyTestCase{Client: dns.ARC},
 	}
-	if errs := dns.TestQueryDNSProxy(ctx, defaultTC, a, domainDefault); len(errs) != 0 {
+	if errs := dns.TestQueryDNSProxy(ctx, defaultTC, a, cont, domainDefault); len(errs) != 0 {
 		for _, err := range errs {
 			s.Error("Failed DNS query check: ", err)
 		}
@@ -146,8 +175,9 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 		dns.ProxyTestCase{Client: dns.System},
 		dns.ProxyTestCase{Client: dns.User, ExpectErr: true},
 		dns.ProxyTestCase{Client: dns.Chrome, ExpectErr: true},
+		dns.ProxyTestCase{Client: dns.Crostini, ExpectErr: true},
 		dns.ProxyTestCase{Client: dns.ARC}}
-	if errs := dns.TestQueryDNSProxy(ctx, vpnBlockedTC, a, domainVPNBlocked); len(errs) != 0 {
+	if errs := dns.TestQueryDNSProxy(ctx, vpnBlockedTC, a, cont, domainVPNBlocked); len(errs) != 0 {
 		for _, err := range errs {
 			s.Error("Failed DNS query check: ", err)
 		}
@@ -169,8 +199,9 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 		dns.ProxyTestCase{Client: dns.System},
 		dns.ProxyTestCase{Client: dns.User},
 		dns.ProxyTestCase{Client: dns.Chrome},
+		dns.ProxyTestCase{Client: dns.Crostini},
 		dns.ProxyTestCase{Client: dns.ARC}}
-	if errs := dns.TestQueryDNSProxy(ctx, secureDNSBlockedTC, a, domainSecureDNSBlocked); len(errs) != 0 {
+	if errs := dns.TestQueryDNSProxy(ctx, secureDNSBlockedTC, a, cont, domainSecureDNSBlocked); len(errs) != 0 {
 		for _, err := range errs {
 			s.Error("Failed DNS query check: ", err)
 		}
