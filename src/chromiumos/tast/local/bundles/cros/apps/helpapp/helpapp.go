@@ -56,8 +56,9 @@ var (
 var searchInputFinder = nodewith.Name("Search").Role(role.TextField).Ancestor(RootFinder)
 
 // WaitForApp waits for the app to be shown and rendered.
+// It can be slow when the app is auto-lauched after OOBE.
 func (hc *HelpContext) WaitForApp() uiauto.Action {
-	return hc.ui.WaitUntilExists(RootFinder)
+	return hc.ui.WithTimeout(time.Minute).WaitUntilExists(RootFinder)
 }
 
 // Launch launches help app and waits for it to be present in shelf.
