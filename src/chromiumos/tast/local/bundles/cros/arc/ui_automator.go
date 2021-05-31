@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/testing"
@@ -52,6 +51,13 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 	)
 
 	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
@@ -64,9 +70,16 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	if err := a.Command(ctx, "am", "start", "-W", pkg+"/"+cls).Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed starting app: ", err)
+	act, err := arc.NewActivity(a, pkg, cls)
+	if err != nil {
+		s.Fatalf("Failed to create a new activity %q: %v", cls, err)
 	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatal("Failed to start the app: ", err)
+	}
+	defer act.Stop(ctx, tconn)
 
 	must := func(err error) {
 		if err != nil {
