@@ -33,6 +33,24 @@
       "message": "nit: This comment makes it seem like the error on 169 is expected to be io.EOF. It would make more sense if this comment was above line 167.",
       "revId": "9d61b690597158884ddf455d6f6965acef745c04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a1ad549_332be489",
+        "filename": "src/chromiumos/tast/local/android/ui/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-05-31T02:19:32Z",
+      "side": 1,
+      "message": "I agree. Done!",
+      "parentUuid": "e31dbbdd_ea821176",
+      "revId": "9d61b690597158884ddf455d6f6965acef745c04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
