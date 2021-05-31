@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4b70fc8_8b4ed182",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-31T04:59:15Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "74c02f3161315371e9d30ed0772c9035eb903314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f1553bb_9b4f310e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_boot_performance_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-05-31T04:59:15Z",
+      "side": 1,
+      "message": "nit: might be more readable if you separate these onto their own lines? e.g.\n```\n  // Verify the headers are correct.\n  want :\u003d []string{\n    bootPerformanceBootUpSeconds,\n    bootPerformanceBootUpTimestamp,\n    bootPerformanceShutdownSeconds,\n    bootPerformanceShutdownTimestamp,\n    bootPerformanceShutdownReason,\n  }\n  got :\u003d records[0]\n  if !reflect.DeepEqual(want, got) {\n    s.Fatalf(\"Incorrect headers: got %v; want %v\", got, want)\n  }\n```",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "74c02f3161315371e9d30ed0772c9035eb903314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
