@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "edb0641f_ca52e0e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-31T07:06:03Z",
+      "side": 1,
+      "message": "Thanks for pointing that out. Removed the function and instead used IfSuccessThen with WaitUntilExists to fix the flakiness.",
+      "parentUuid": "79f9c7e4_b70446ed",
+      "revId": "0e802c83309202220fe3960d40c4f2fbf5dbefdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "286363e1_363038d0",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go",
         "patchSetId": 4
