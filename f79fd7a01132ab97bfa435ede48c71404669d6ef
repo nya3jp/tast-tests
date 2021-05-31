@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3f1cc13_2acb4e1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-31T01:57:53Z",
+      "side": 1,
+      "message": "Thanks for the reply.",
+      "revId": "f79fd7a01132ab97bfa435ede48c71404669d6ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f9496ab_2f71b1ae",
@@ -31,6 +48,24 @@
       "writtenOn": "2021-05-27T17:41:50Z",
       "side": 1,
       "message": "Thanks for making a change, but it\u0027s not clear to me why we want to keep the target node.  Isn\u0027t it good enough to simply drop the \u0027Target\u0027 field?  Or do you have a new case where Target property is crucial?",
+      "revId": "f79fd7a01132ab97bfa435ede48c71404669d6ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dca8b5e8_34829747",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-05-31T01:57:53Z",
+      "side": 1,
+      "message": "This change is intended as a preparation of https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2921793/1, which is still WIP though.\n\nFrom my perspective, I\u0027d like to migrate that test from using ChroemVox internal classes to public automation API.\nEventually, in that test, I would like to make it listen all events under the Android root and verify the event sequence.\n\nDo you have any suggestions? It\u0027s fine to me to implement by myself using chrome.automation APIs directly instead of using ui or uiauto packages.",
+      "parentUuid": "5f9496ab_2f71b1ae",
       "revId": "f79fd7a01132ab97bfa435ede48c71404669d6ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
