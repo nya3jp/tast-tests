@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a239875d_47d14f79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-31T05:21:57Z",
+      "side": 1,
+      "message": "Could you add TODO comment in the code with filing a tracking bug?",
+      "range": {
+        "startLine": 13,
+        "startChar": 34,
+        "endLine": 13,
+        "endChar": 75
+      },
+      "revId": "426fcbbefb1a0b6bed781729d95533fe460e097e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80ac871e_1767e28c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-31T05:21:57Z",
+      "side": 1,
+      "message": "huge nit: \"ARC\"",
+      "range": {
+        "startLine": 109,
+        "startChar": 173,
+        "endLine": 109,
+        "endChar": 178
+      },
+      "revId": "426fcbbefb1a0b6bed781729d95533fe460e097e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
