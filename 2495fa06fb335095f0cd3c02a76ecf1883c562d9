@@ -16,6 +16,24 @@
       "message": "lgtm now. But usually we +2 after a team member of the cl owner +2 or +1.",
       "revId": "2495fa06fb335095f0cd3c02a76ecf1883c562d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6293c848_0dbf6e93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-05-31T23:59:30Z",
+      "side": 1,
+      "message": "Hi Judy,Renuga did CR+1 and myself did CQ+1 and CR+1. Thanks.\n\nRegards,\nMeena",
+      "parentUuid": "4534351f_a48aba9b",
+      "revId": "2495fa06fb335095f0cd3c02a76ecf1883c562d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
