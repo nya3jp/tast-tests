@@ -7,6 +7,8 @@ package vm
 import (
 	"context"
 	"io"
+	"io/ioutil"
+	"os"
 	"regexp"
 	"time"
 
@@ -26,14 +28,35 @@ func init() {
 	})
 }
 
+// genSocketPath returns a path suitable to use as a temporary crosvm control socket path.
+func genSocketPath(td string) (string, error) {
+	file, err := ioutil.TempFile(td, "crosvm_socket")
+	if err != nil {
+		return "", err
+	}
+	defer os.Remove(file.Name())
+	if err := file.Close(); err != nil {
+		os.Remove(file.Name())
+		return "", err
+	}
+
+	return file.Name(), nil
+}
+
 func StartCrosvm(ctx context.Context, s *testing.State) {
 	data := s.PreValue().(vm.PreData)
 
-	cvm, err := vm.NewCrosvm(ctx, &vm.CrosvmParams{
-		VMKernel:   data.Kernel,
-		RootfsPath: data.Rootfs,
-		KernelArgs: []string{"init=/bin/bash"},
-	})
+	td := os.TempDir()
+	defer os.RemoveAll(td)
+
+	socket, err := genSocketPath(td)
+	if err != nil {
+		s.Fatal("Failed to generate socket file: ", err)
+	}
+
+	ps := vm.NewCrosvmParams(data.Kernel, vm.Socket(socket), vm.Rootfs(data.Rootfs), vm.KernelArgs("init=/bin/bash"))
+
+	cvm, err := vm.NewCrosvm(ctx, ps)
 	if err != nil {
 		s.Fatal("Failed to start crosvm: ", err)
 	}
