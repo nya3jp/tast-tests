@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54aedad7_2e8aa0ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-31T06:17:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd4b386d_b6824b55",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 10
+      },
+      "revId": "bb3ecc262e587b827e7405c5ec42fc7bb660f7ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85516b58_85b903eb",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3eba08d_88e4bf38",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-31T06:17:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85516b58_85b903eb",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 22
+      },
+      "revId": "bb3ecc262e587b827e7405c5ec42fc7bb660f7ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "928173d5_5f940dd5",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-05-31T03:00:02Z",
       "side": 1,
       "message": "style: \"result + jarName\" works.",
+      "range": {
+        "startLine": 114,
+        "startChar": 10,
+        "endLine": 114,
+        "endChar": 46
+      },
+      "revId": "bb3ecc262e587b827e7405c5ec42fc7bb660f7ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08489fde_1cafc468",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-05-31T06:17:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "928173d5_5f940dd5",
       "range": {
         "startLine": 114,
         "startChar": 10,
