@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "329d931f_50bc10d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-31T13:18:31Z",
+      "side": 1,
+      "message": "This test was only remote because it was not possible to apply device policies in local tests; it now is.\n\nAlso, there\u0027s a `SystemProxyForArc` test, which is similar to this test, but verifies PlayStore apps instead of system services. That test was pretty ugly because we had to add UI logic to the policy service when it was ran as a remote test (CL:2920574); since both tests are part of the same \"test suite\", it\u0027s better to keep them together.",
+      "parentUuid": "64b2e49a_6b974350",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c115e8d4_2c26c92c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e9f21a_21d4dd1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-31T13:18:31Z",
+      "side": 1,
+      "message": "This is a poor description :/ \n\nI\u0027ve changed \"host\" to \"web endpoint\" (this endpoint currently is clients3.google.com).",
+      "parentUuid": "c6ded339_739ed895",
+      "range": {
+        "startLine": 27,
+        "startChar": 45,
+        "endLine": 27,
+        "endChar": 71
+      },
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1788d469_89ec3ca7",
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bdfaa32_8d10c7cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-31T13:18:31Z",
+      "side": 1,
+      "message": "No, the timeout was because of the ssh and remote commands.",
+      "parentUuid": "1788d469_89ec3ca7",
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65055709_34b9d2a3",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-05-27T15:56:32Z",
       "side": 1,
       "message": "Should this be a constant if used later?",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bd0b907_ec4c4116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-31T13:18:31Z",
+      "side": 1,
+      "message": "Later we use it through the `ps` object (ps.HostAndPort) and then as part of a regex, so I\u0027d leave it like this for now.",
+      "parentUuid": "65055709_34b9d2a3",
       "range": {
         "startLine": 49,
         "startChar": 22,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af48b723_a189913f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-31T13:18:31Z",
+      "side": 1,
+      "message": "Good point, TBH I copied lines 70-79 from another test.\n\nI removed the comment since it\u0027s confusing and the method name is pretty descriptive.",
+      "parentUuid": "583a27f4_bbd0ec32",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 20
+      },
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "701a7e8d_8a91d6be",
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54f96fb2_9fdd4a9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-31T13:18:31Z",
+      "side": 1,
+      "message": "Again, poor description. I replaced `host` with `web endpoint`.",
+      "parentUuid": "701a7e8d_8a91d6be",
+      "range": {
+        "startLine": 90,
+        "startChar": 122,
+        "endLine": 90,
+        "endChar": 133
+      },
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "110fdbd1_69b480f2",
@@ -163,6 +301,24 @@
       "writtenOn": "2021-05-27T15:56:32Z",
       "side": 1,
       "message": "Is there any other way we can check that Chrome has processed the signal?",
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c2d9e08_9bb2e91f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-31T13:18:31Z",
+      "side": 1,
+      "message": "One option would be to continuously ask Chrome to do proxy resolution (via D-Bus commands) and depending on the result we can tell that Chrome has gotten the address of system-proxy or not. \n\nI\u0027m not sure if it\u0027s necessarily nicer. A 5 second sleep is more than enough though so at least the test would not fail.",
+      "parentUuid": "110fdbd1_69b480f2",
       "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
