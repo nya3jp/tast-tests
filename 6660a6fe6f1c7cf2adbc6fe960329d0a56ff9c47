@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a16cd986_9e5e4bec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-31T15:15:55Z",
+      "side": 1,
+      "message": "nit: I think we can just omit this",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "6660a6fe6f1c7cf2adbc6fe960329d0a56ff9c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd4d27d6_83f867fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-31T15:15:55Z",
+      "side": 1,
+      "message": "Hi Prashant,\n\nSorry to the long reply, I waited first for shadow reviewer to review and we also had a day off on Friday.",
+      "revId": "6660a6fe6f1c7cf2adbc6fe960329d0a56ff9c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "629c8068_cfde2145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-31T15:15:55Z",
+      "side": 1,
+      "message": "Do we have a guarantee that after this command typecd is stopped? If not, maybe we should check that PID will change?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 78
+      },
+      "revId": "6660a6fe6f1c7cf2adbc6fe960329d0a56ff9c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da79e997_de8e1b00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-31T15:15:55Z",
+      "side": 1,
+      "message": "nit: failed",
+      "range": {
+        "startLine": 161,
+        "startChar": 27,
+        "endLine": 161,
+        "endChar": 33
+      },
+      "revId": "6660a6fe6f1c7cf2adbc6fe960329d0a56ff9c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "035fda71_aed98ff9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-31T15:15:55Z",
+      "side": 1,
+      "message": "nit: running",
+      "range": {
+        "startLine": 161,
+        "startChar": 63,
+        "endLine": 161,
+        "endChar": 70
+      },
+      "revId": "6660a6fe6f1c7cf2adbc6fe960329d0a56ff9c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28c10a46_d0c3ffef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-31T15:15:55Z",
+      "side": 1,
+      "message": "nit: is 0 a valid PID? Shouldn\u0027t we use pid \u003c\u003d 0 instead?",
+      "range": {
+        "startLine": 167,
+        "startChar": 11,
+        "endLine": 167,
+        "endChar": 18
+      },
+      "revId": "6660a6fe6f1c7cf2adbc6fe960329d0a56ff9c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64cca088_c3b28f67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-05-31T15:15:55Z",
+      "side": 1,
+      "message": "nit: we probably omit it, this function does not know whether typecd was restarted before",
+      "range": {
+        "startLine": 168,
+        "startChar": 56,
+        "endLine": 168,
+        "endChar": 66
+      },
+      "revId": "6660a6fe6f1c7cf2adbc6fe960329d0a56ff9c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
