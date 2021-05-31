@@ -37,7 +37,11 @@ func StartCrosvm(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start crosvm: ", err)
 	}
-	defer cvm.Close(ctx)
+	defer func() {
+		if err := cvm.Close(ctx); err != nil {
+			s.Error("Failed to close crosvm: ", err)
+		}
+	}()
 
 	testing.ContextLog(ctx, "Waiting for VM to boot")
 	startCtx, cancel := context.WithTimeout(ctx, 20*time.Second)
