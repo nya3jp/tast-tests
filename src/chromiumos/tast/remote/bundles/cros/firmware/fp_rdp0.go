@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/dutfs"
+	fw "chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/ssh"
@@ -66,7 +67,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 
 	// Wait for FPMCU to boot to RW. Fail if it does not.
 	testing.ContextLog(ctx, "Waiting for FPMCU to reboot to RW")
-	if err := fingerprint.WaitForRunningFirmwareImage(ctx, d, fingerprint.ImageTypeRW); err != nil {
+	if err := fingerprint.WaitForRunningFirmwareImage(ctx, d, fw.FWImageTypeRW); err != nil {
 		s.Fatal("Failed to boot to RW image: ", err)
 	}
 

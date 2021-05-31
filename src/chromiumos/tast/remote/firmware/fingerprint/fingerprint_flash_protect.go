@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	fw "chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
@@ -58,14 +59,14 @@ func flashprotectState(ctx context.Context, d *dut.DUT) (string, error) {
 	return string(bytes), nil
 }
 
-func expectedFlashProtectOutput(fpBoard FPBoardName, curImage FWImageType, softwareWriteProtectEnabled, hardwareWriteProtectEnabled bool) string {
+func expectedFlashProtectOutput(fpBoard FPBoardName, curImage fw.FWImageType, softwareWriteProtectEnabled, hardwareWriteProtectEnabled bool) string {
 	expectedOutput := ""
 
 	switch {
 	case softwareWriteProtectEnabled && hardwareWriteProtectEnabled:
 		// TODO(b/149590275): remove once fixed
 		if fpBoard == FPBoardNameBloonchipper {
-			if curImage == ImageTypeRO {
+			if curImage == fw.FWImageTypeRO {
 				expectedOutput = flashprotectOutputHardwareAndSoftwareWriteProtectEnabledROBloonchipper
 			} else {
 				expectedOutput = flashprotectOutputHardwareAndSoftwareWriteProtectEnabledBloonchipper
@@ -120,7 +121,7 @@ func SetSoftwareWriteProtect(ctx context.Context, d *dut.DUT, enable bool) error
 	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}); err != nil {
 		return errors.Wrap(err, "failed to poll after running flashprotect")
 	}
-	if err := RebootFpmcu(ctx, d, ImageTypeRW); err != nil {
+	if err := RebootFpmcu(ctx, d, fw.FWImageTypeRW); err != nil {
 		return errors.Wrapf(err, "failed to set software write protect to %t", enable)
 	}
 	return nil
@@ -128,7 +129,7 @@ func SetSoftwareWriteProtect(ctx context.Context, d *dut.DUT, enable bool) error
 
 // CheckWriteProtectStateCorrect correct returns an error if the FPMCU's current write
 // protection state does not match the expected state.
-func CheckWriteProtectStateCorrect(ctx context.Context, d *dut.DUT, fpBoard FPBoardName, curImage FWImageType, softwareWriteProtectEnabled, hardwareWriteProtectEnabled bool) error {
+func CheckWriteProtectStateCorrect(ctx context.Context, d *dut.DUT, fpBoard FPBoardName, curImage fw.FWImageType, softwareWriteProtectEnabled, hardwareWriteProtectEnabled bool) error {
 	output, err := flashprotectState(ctx, d)
 	if err != nil {
 		return err
