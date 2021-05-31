@@ -297,7 +297,7 @@ func (vkbCtx *VirtualKeyboardContext) closeInfoDialogue(buttonName string) uiaut
 	// Close the information dialogue if it shows
 	return vkbCtx.ui.IfSuccessThen(
 		vkbCtx.ui.WithTimeout(time.Second).WaitUntilExists(dialogueCloseButton),
-		vkbCtx.ui.LeftClick(dialogueCloseButton))
+		vkbCtx.ui.LeftClickUntil(dialogueCloseButton, vkbCtx.ui.WithTimeout(500*time.Second).WaitUntilGone(dialogueCloseButton)))
 }
 
 // ClickUntilVKShown returns an action retrying left clicks the node until the vk is shown with no error.
