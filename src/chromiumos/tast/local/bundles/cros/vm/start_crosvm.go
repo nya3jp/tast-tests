@@ -7,6 +7,9 @@ package vm
 import (
 	"context"
 	"io"
+	"io/ioutil"
+	"os"
+	"path/filepath"
 	"regexp"
 	"time"
 
@@ -29,11 +32,20 @@ func init() {
 func StartCrosvm(ctx context.Context, s *testing.State) {
 	data := s.PreValue().(vm.PreData)
 
-	cvm, err := vm.NewCrosvm(ctx, &vm.CrosvmParams{
-		VMKernel:   data.Kernel,
-		RootfsPath: data.Rootfs,
-		KernelArgs: []string{"init=/bin/bash"},
-	})
+	td, err := ioutil.TempDir("", "tast.vm.StartCrosvm.")
+	if err != nil {
+		s.Fatal("Failed to create temporary directory: ", err)
+	}
+	defer os.RemoveAll(td)
+
+	ps := vm.NewCrosvmParams(
+		data.Kernel,
+		vm.Socket(filepath.Join(td, "crosvm_socket")),
+		vm.Rootfs(data.Rootfs),
+		vm.KernelArgs("init=/bin/bash"),
+	)
+
+	cvm, err := vm.NewCrosvm(ctx, ps)
 	if err != nil {
 		s.Fatal("Failed to start crosvm: ", err)
 	}
