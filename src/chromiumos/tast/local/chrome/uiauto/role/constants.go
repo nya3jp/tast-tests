@@ -10,7 +10,7 @@ package role
 // Role describes the purpose of a chrome.automation AutomationNode.
 type Role string
 
-// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl
+// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/automation.idl
 const (
 	Abbr                   Role = "abbr"
 	Alert                  Role = "alert"

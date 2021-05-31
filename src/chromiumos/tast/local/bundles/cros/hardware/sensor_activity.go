@@ -131,7 +131,7 @@ func testOnBodyDetection(ctx context.Context, s *testing.State, sensor *iio.Sens
 
 // spoofActivity is a helper function for command line: ectool motionsense spoof sensorID activity activityID [enable/disable] [state]
 // If the |args| is empty, it queries the spoofing enable status.
-// See https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/util/ectool.c for more details.
+// See https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/util/ectool.c for more details.
 func spoofActivity(ctx context.Context, sensor *iio.Sensor, act iio.ActivityID, args ...int) (output []byte, err error) {
 	id := strconv.Itoa(int(sensor.ID))
 	strArgs := []string{"motionsense", "spoof", id, "activity", strconv.Itoa(int(act))}
@@ -144,7 +144,7 @@ func spoofActivity(ctx context.Context, sensor *iio.Sensor, act iio.ActivityID, 
 
 // listActivities is a helper function for command line: ectool motionsense list_activities
 // It will return the ID of all available activities on the DUT.
-// See https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/util/ectool.c for more details.
+// See https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/util/ectool.c for more details.
 func listActivities(ctx context.Context, s *testing.State) (activities []iio.ActivityID, err error) {
 	rawOutput, err := testexec.CommandContext(ctx, "ectool", "motionsense", "list_activities").Output()
 	if err != nil {

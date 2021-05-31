@@ -15,7 +15,7 @@ type clockID uint32
 
 // clock describes the current state of a clock domain. The information is taken
 // from clock snapshots in the traces.
-// See https://source.chromium.org/chromium/chromium/src/+/master:third_party/perfetto/protos/perfetto/trace/clock_snapshot.proto
+// See https://source.chromium.org/chromium/chromium/src/+/main:third_party/perfetto/protos/perfetto/trace/clock_snapshot.proto
 type clock struct {
 	clk         clockID
 	multiplier  uint64 // Clock units to nanoseconds conversion factor.
@@ -37,7 +37,7 @@ func newClockFromSnapshot(dc *trace.ClockSnapshot_Clock) *clock {
 }
 
 func (c *clock) isBuiltin() bool {
-	// See https://source.chromium.org/chromium/chromium/src/+/master:third_party/perfetto/protos/perfetto/common/builtin_clock.proto
+	// See https://source.chromium.org/chromium/chromium/src/+/main:third_party/perfetto/protos/perfetto/common/builtin_clock.proto
 	return c.clk >= 1 && c.clk <= 63
 }
 

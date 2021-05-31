@@ -91,4 +91,4 @@ The original .webm files were converted with
 [aomenc]: https://aomedia.googlesource.com/aom/
 [AOM license]: ../licenses/AOM-LICENSE
 [Creative Commons Attribution 3.0 Unported License]: ../licenses/CC-LICENSE
-[test-25fps.av1.ivf]: https://source.chromium.org/chromium/chromium/src/+/master:media/test/data/test-25fps.av1.ivf
+[test-25fps.av1.ivf]: https://source.chromium.org/chromium/chromium/src/+/main:media/test/data/test-25fps.av1.ivf

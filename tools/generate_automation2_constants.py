@@ -64,7 +64,7 @@ def generate_definitions(
 
   out = '// %s describes %s.\n' % (go_type_name, description)
   out += 'type %s string\n\n' % go_type_name
-  out += '// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl\n'
+  out += '// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/automation.idl\n'
   out += 'const (\n'
 
   for r in defs:

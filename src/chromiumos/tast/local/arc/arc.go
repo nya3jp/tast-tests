@@ -588,7 +588,7 @@ func (a *ARC) WaitForPackages(ctx context.Context, packages []string) error {
 
 // State holds the ARC state returned from autotestPrivate.getArcState() call.
 //
-// Refer to https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/autotest_private.idl
+// Refer to https://chromium.googlesource.com/chromium/src/+/main/chrome/common/extensions/api/autotest_private.idl
 // for the mapping of the fields to JavaScript.
 type State struct {
 	// Provisioned indicates whether the ARC is provisioned.

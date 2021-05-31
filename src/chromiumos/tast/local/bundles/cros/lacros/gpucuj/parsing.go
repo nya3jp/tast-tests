@@ -174,7 +174,7 @@ func (ta *traceAnalyzer) parseState(p *trace.TracePacket) (*seqData, bool, error
 			sd.trackMap[*d.Uuid] = *d.Thread.ThreadName
 		}
 		// If name is specified, use it. Otherwise, use the thread name as a default.
-		// See https://source.chromium.org/chromium/chromium/src/+/master:third_party/perfetto/protos/perfetto/trace/track_event/track_descriptor.proto
+		// See https://source.chromium.org/chromium/chromium/src/+/main:third_party/perfetto/protos/perfetto/trace/track_event/track_descriptor.proto
 		if d.Name != nil {
 			sd.trackMap[*d.Uuid] = *d.Name
 		}
