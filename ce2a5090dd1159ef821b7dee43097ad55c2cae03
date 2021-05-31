@@ -16,6 +16,24 @@
       "message": "Nit: Rephrase as \"It returns whether a matching node appears before the timeout\".\n\nI\u0027d generally avoid phrasing something as \"It returns true if x else false\" - \"It returns whether x\" avoids redundant phrasing (I know you\u0027re just copying the IsNodeFound)",
       "revId": "ce2a5090dd1159ef821b7dee43097ad55c2cae03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0948a80a_b8f48ab3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-05-31T05:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38415fcf_913f019c",
+      "revId": "ce2a5090dd1159ef821b7dee43097ad55c2cae03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
