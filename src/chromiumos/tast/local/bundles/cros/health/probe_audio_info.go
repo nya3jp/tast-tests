@@ -18,6 +18,8 @@ const (
 	audioInputMute        = "input_mute"
 	audioOutputVolume     = "output_volume"
 	audioOutputDeviceName = "output_device_name"
+	audioInputGain        = "input_gain"
+	audioInputDeviceName  = "input_device_name"
 	audioUnderruns        = "underruns"
 	audioSevereUnderruns  = "severe_underruns"
 )
@@ -50,8 +52,15 @@ func ProbeAudioInfo(ctx context.Context, s *testing.State) {
 
 	// Verify the headers are correct.
 	want := []string{
-		audioOutputMute, audioInputMute, audioOutputDeviceName,
-		audioOutputVolume, audioUnderruns, audioSevereUnderruns}
+		audioOutputMute,
+		audioInputMute,
+		audioOutputDeviceName,
+		audioOutputVolume,
+		audioInputDeviceName,
+		audioInputGain,
+		audioUnderruns,
+		audioSevereUnderruns,
+	}
 	got := records[0]
 	if !reflect.DeepEqual(want, got) {
 		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
@@ -89,6 +98,20 @@ func ProbeAudioInfo(ctx context.Context, s *testing.State) {
 	}
 	if outputVolume < 0 || outputVolume > 100 {
 		s.Error("Failed. output_volume is not in a legal range [0, 100]: ", outputVolume)
+	}
+
+	// Check "input_device_name" is not empty.
+	if contentsMap[audioInputDeviceName] == "" {
+		s.Errorf("Failed. %s field is empty", audioInputDeviceName)
+	}
+
+	// Check "input_gain" is integer and between [0, 100].
+	inputGain, err := strconv.ParseInt(contentsMap[audioInputGain], 10, 32)
+	if err != nil {
+		s.Errorf("Failed to convert %q (%s) to int: %v", contentsMap[audioInputGain], audioInputGain, err)
+	}
+	if inputGain < 0 || inputGain > 100 {
+		s.Error("Failed. input_gain is not in a legal range [0, 100]: ", inputGain)
 	}
 
 	// Check "underruns" and "severe_underruns" are positive integer or zero.
