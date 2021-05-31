@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65fedf22_083221bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-05-31T10:23:03Z",
+      "side": 1,
+      "message": "Hi vsavu,\n\nThis CL adds a test for the LaunchManagedGuestSession API which tests the flow where a password is provided (session can be locked and unlocked).\n\nRegards,\nJit",
+      "revId": "263b9f2c502a24436044129e181e298c445d419d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
