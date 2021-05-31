@@ -7,7 +7,6 @@ package vm
 import (
 	"context"
 	"io"
-	"io/ioutil"
 	"os"
 	"regexp"
 	"strings"
@@ -28,46 +27,102 @@ type Crosvm struct {
 
 // CrosvmParams - Parameters for starting a crosvm instance.
 type CrosvmParams struct {
-	VMKernel    string   // path to the VM kernel image
-	RootfsPath  string   // optional path to the VM rootfs
-	DiskPaths   []string // paths that will be mounted read only
-	RWDiskPaths []string // paths that will be mounted read/write
-	KernelArgs  []string // string arguments to be passed to the VM kernel
+	vmKernel    string   // path to the VM kernel image
+	rootfsPath  string   // optional path to the VM rootfs
+	diskPaths   []string // paths that will be mounted read only
+	rwDiskPaths []string // paths that will be mounted read/write
+	gsocketPath string   // path to the VM control socket
+	kernelArgs  []string // string arguments to be passed to the VM kernel
+}
+
+// Option configures a CrosvmParams
+type Option func(s *CrosvmParams)
+
+// Rootfs sets a path to the VM rootfs.
+func Rootfs(path string) Option {
+	return func(p *CrosvmParams) {
+		p.rootfsPath = path
+	}
+}
+
+// Disks adds paths to disks that will be mounted read only.
+func Disks(paths ...string) Option {
+	return func(p *CrosvmParams) {
+		p.diskPaths = append(p.diskPaths, paths...)
+	}
+}
+
+// RWDisks adds paths to disks that will be mounted read/write.
+func RWDisks(paths ...string) Option {
+	return func(p *CrosvmParams) {
+		p.rwDiskPaths = append(p.rwDiskPaths, paths...)
+	}
+}
+
+// Socket sets a path to the control socket.
+func Socket(path string) Option {
+	return func(p *CrosvmParams) {
+		p.socketPath = path
+	}
+}
+
+// KernelArgs sets extra kernel command line arguments.
+func KernelArgs(args ...string) Option {
+	return func(p *CrosvmParams) {
+		p.kernelArgs = append(p.kernelArgs, args...)
+	}
+}
+
+// NewCrosvmParams constructs a set of crosvm parameters.
+func NewCrosvmParams(kernel string, opts ...Option) *CrosvmParams {
+	p := &CrosvmParams{
+		vmKernel: kernel,
+	}
+
+	for _, opt := range opts {
+		opt(p)
+	}
+
+	return p
+}
+
+func (p *CrosvmParams) toArgs() []string {
+	args := []string{"run"}
+
+	if p.socketPath != "" {
+		args = append(args, "--socket", p.socketPath)
+	}
+
+	if p.rootfsPath != "" {
+		args = append(args, "--root", p.rootfsPath)
+	}
+
+	for _, path := range p.rwDiskPaths {
+		args = append(args, "--rwdisk", path)
+	}
+
+	for _, path := range p.diskPaths {
+		args = append(args, "-d", path)
+	}
+
+	args = append(args, "-p", strings.Join(p.kernelArgs, " "))
+
+	args = append(args, p.vmKernel)
+
+	return args
 }
 
 // NewCrosvm starts a crosvm instance with the optional disk path as an additional disk.
 func NewCrosvm(ctx context.Context, params *CrosvmParams) (*Crosvm, error) {
-	if _, err := os.Stat(params.VMKernel); err != nil {
+	if _, err := os.Stat(params.vmKernel); err != nil {
 		return nil, errors.Wrap(err, "failed to find VM kernel")
 	}
 
 	vm := &Crosvm{}
+	vm.cmd = testexec.CommandContext(ctx, "crosvm", params.toArgs()...)
+	vm.socketPath = params.socketPath
 
 	var err error
-	if vm.socketPath, err = genSocketPath(); err != nil {
-		return nil, err
-	}
-	args := []string{"run", "--socket", vm.socketPath}
-
-	if params.RootfsPath != "" {
-		args = append(args, "--root", params.RootfsPath)
-	}
-
-	for _, path := range params.RWDiskPaths {
-		args = append(args, "--rwdisk", path)
-	}
-
-	for _, path := range params.DiskPaths {
-		args = append(args, "-d", path)
-	}
-
-	for _, arg := range params.KernelArgs {
-		args = append(args, "-p", arg)
-	}
-
-	args = append(args, params.VMKernel)
-
-	vm.cmd = testexec.CommandContext(ctx, "crosvm", args...)
 
 	if vm.stdin, err = vm.cmd.StdinPipe(); err != nil {
 		return nil, err
@@ -115,19 +170,6 @@ func (vm *Crosvm) Stdin() io.Writer {
 // Stdout is attached to the crosvm process's stdout. It receives all console output.
 func (vm *Crosvm) Stdout() io.Reader {
 	return vm.stdout
-}
-
-// genSocketPath returns a path suitable to use as a temporary crosvm control socket path.
-func genSocketPath() (string, error) {
-	file, err := ioutil.TempFile(os.TempDir(), "crosvm_socket")
-	if err != nil {
-		return "", err
-	}
-	defer os.Remove(file.Name())
-	if err := file.Close(); err != nil {
-		return "", err
-	}
-	return file.Name(), nil
 }
 
 // WaitForOutput waits until a line matched by re has been written to stdout,
