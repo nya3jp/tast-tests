@@ -173,6 +173,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/sbin/daisydog", matchRegexp, "cros_daisydog", zeroProcs, ""},
 				{exe, "/usr/sbin/dlcservice", matchRegexp, "cros_dlcservice", zeroProcs, ""},
 				{exe, "/usr/sbin/huddly-monitor", matchRegexp, "cros_huddly_monitor", zeroProcs, ""},
+				{exe, "/usr/sbin/hpsd", matchRegexp, "cros_hpsd", zeroProcs, ""},
 				{exe, "/usr/sbin/mimo-minitor", matchRegexp, "cros_mimo_monitor", zeroProcs, ""},
 				{exe, "/usr/sbin/mtpd", matchRegexp, "cros_mtpd", zeroProcs, ""},
 				{exe, "/usr/sbin/oobe_config_restore", matchRegexp, "cros_oobe_config_restore", zeroProcs, ""},

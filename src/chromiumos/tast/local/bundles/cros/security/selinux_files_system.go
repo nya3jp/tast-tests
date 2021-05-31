@@ -156,6 +156,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/usr/sbin/cryptohomed", Context: "cros_cryptohomed_exec"},
 		{Path: "/usr/sbin/cryptohome-proxy", Context: "cros_cryptohome_proxy_exec"},
 		{Path: "/usr/sbin/jetstream-update-stats", Context: "cros_jetstream_update_stats_exec", IgnoreErrors: true},
+		{Path: "/usr/sbin/hpsd", Context: "cros_hpsd_exec"},
 		{Path: "/usr/sbin/rsyslogd", Context: "cros_rsyslogd_exec"},
 		{Path: "/usr/sbin/sshd", Context: "cros_sshd_exec", IgnoreErrors: true},
 		{Path: "/usr/sbin/sslh", Context: "cros_sslh_exec", IgnoreErrors: true},
