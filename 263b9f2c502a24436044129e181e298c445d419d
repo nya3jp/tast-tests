@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1eeb843_5b225ece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session_with_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-05-31T12:21:39Z",
+      "side": 1,
+      "message": "Ack, I will have one more API (loginScreenStorage) to test, but am waiting for CLs on the Chromium side which likely won\u0027t land in this bug bash.\n\nWill add the helpers in the next bug bash.",
+      "parentUuid": "3a33e5cd_7ef0a644",
+      "revId": "263b9f2c502a24436044129e181e298c445d419d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81c60d0b_19048c41",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-05-31T11:40:07Z",
       "side": 1,
       "message": "use KeepEnrollment here to clean up previous tests user data.",
+      "revId": "263b9f2c502a24436044129e181e298c445d419d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc638fb2_85643e37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session_with_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-05-31T12:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81c60d0b_19048c41",
       "revId": "263b9f2c502a24436044129e181e298c445d419d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be0f71e6_76e21375",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session_with_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-05-31T12:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41884d06_d82f70a5",
+      "range": {
+        "startLine": 202,
+        "startChar": 14,
+        "endLine": 209,
+        "endChar": 4
+      },
+      "revId": "263b9f2c502a24436044129e181e298c445d419d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef354144_d7b157f8",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-05-31T11:40:07Z",
       "side": 1,
       "message": "Printing nil is not useful 😊",
+      "range": {
+        "startLine": 210,
+        "startChar": 50,
+        "endLine": 210,
+        "endChar": 55
+      },
+      "revId": "263b9f2c502a24436044129e181e298c445d419d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d0664a_f650eed1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session_with_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-05-31T12:21:39Z",
+      "side": 1,
+      "message": "D\u0027oh!",
+      "parentUuid": "ef354144_d7b157f8",
       "range": {
         "startLine": 210,
         "startChar": 50,
