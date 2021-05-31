@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f47b4a2c_e523d34f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-05-31T03:03:11Z",
+      "side": 1,
+      "message": "LGTM. (Took a day, so skipping shadow).",
+      "revId": "83246daf6f8de1f3379fe2dd8efcd53c06674248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
