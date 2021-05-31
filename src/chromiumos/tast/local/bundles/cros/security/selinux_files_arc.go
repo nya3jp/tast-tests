@@ -114,7 +114,9 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 			testArgs = append(
 				testArgs,
 				[]arcFileTestCase{
-					{path: iioDevice, context: "cros_sensor_hal_sysfs", recursive: true, filter: selinux.IIOSensorFilter},
+					// TODO(b:190243278): When iioservice is enabled everywhere, remove cros_sensor_hal_sysfs.
+					// cros_sensor_hal_sysfs is needed when iioservice is not used and direct access is required from ARC.
+					{path: iioDevice, context: "cros_sensor_hal_sysfs|sysfs", recursive: true, filter: selinux.IIOSensorFilter},
 					{path: iioDevice, context: "sysfs", recursive: true, filter: selinux.InvertFilterSkipFile(selinux.IIOSensorFilter)},
 				}...)
 		}
