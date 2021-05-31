@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "622cffb7_bf73a06c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-31T12:51:57Z",
+      "side": 1,
+      "message": "\u003e Is there a specific reason to change password, username from \"\" to \"********\"?\n \nYes, the `Verify` part in policyutil.ServeAndVerify checks the value of the policy against the *text* in the chrome://policy page :(. Since the credentials are secret data, they\u0027re display in the UI as \"********\", regardless of the value.\n\n\u003e I did not find anywhere using this structure, except SystemProxyEnabled true / false. Can it be Val: bool? I hope I have not missed anything.\nI\u0027m not sure what you mean, but the definition of the policy here is consistent with the policy structure in defs.go.[1]\n\n[1]http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/policy/defs.go?l\u003d14117\u0026rcl\u003d67adef240adfe1fcc5174e85455268ca7a493f49",
+      "parentUuid": "42c2f8d8_e9646eb3",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 6
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1baa2bc1_bf99c55d",
@@ -165,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f3a4de1_b12f6864",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-31T12:51:57Z",
+      "side": 1,
+      "message": "For SystemProxyEnabled\u003dtrue, the test can wait for a D-Bus signal which notifies that the daemon is running, but for SystemProxyEnabled\u003dfalse we would still need to wait 5 seconds to make sure the daemon is not accidentally started.\n\nFYI: This feature was approved to be enabled behind a chrome flag (for M92). Once we have enough data, system-proxy will always be running and this test can be removed.",
+      "parentUuid": "bad145e6_de6cb617",
+      "range": {
+        "startLine": 77,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 36
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c52893ab_4ab21c09",
@@ -211,6 +259,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03cee2f9_9df3b3c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-31T12:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c52893ab_4ab21c09",
+      "range": {
+        "startLine": 87,
+        "startChar": 25,
+        "endLine": 87,
+        "endChar": 33
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5423fe25_0ff9ab8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-31T12:51:57Z",
+      "side": 1,
+      "message": "Good point!",
+      "parentUuid": "adca1fa8_1df819b9",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 74
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e3e783b_903fd997",
@@ -224,6 +320,30 @@
       "writtenOn": "2021-05-28T13:33:31Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 5
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e163d9e_77417a6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-31T12:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e3e783b_903fd997",
       "range": {
         "startLine": 93,
         "startChar": 4,
@@ -257,6 +377,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e1be67_7e8fcc2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-31T12:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eb8cd98_ed6bd1e3",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 5
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "773f35ba_3773e8b1",
@@ -270,6 +414,30 @@
       "writtenOn": "2021-05-28T13:33:31Z",
       "side": 1,
       "message": "nit:\n\nif n, err :\u003d p.Name(); err \u003d\u003d nil \u0026\u0026 n \u003d\u003d procName {\n    return true, nil\n}",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 3
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c184f8b_5a5568c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-31T12:51:57Z",
+      "side": 1,
+      "message": "Thanks for this suggestion!",
+      "parentUuid": "773f35ba_3773e8b1",
       "range": {
         "startLine": 120,
         "startChar": 2,
