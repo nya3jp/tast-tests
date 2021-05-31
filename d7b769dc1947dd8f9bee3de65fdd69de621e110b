@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ae2d1a_280aa9b5",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-31T08:57:47Z",
+      "side": 1,
+      "message": "As you see, all existing methods in Config are basically simple getters of fields of MutableConfig. Please try following the pattern.",
+      "revId": "d7b769dc1947dd8f9bee3de65fdd69de621e110b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f1d507d_e9d25cb5",
+        "filename": "src/chromiumos/tast/local/chrome/internal/driver/conn.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-31T08:57:47Z",
+      "side": 1,
+      "message": "This is a function called from hundreds of places, please don\u0027t change its default.\n\nCould you explain what happens if we keep the original value?",
+      "revId": "d7b769dc1947dd8f9bee3de65fdd69de621e110b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e658fc_3db881f9",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-31T08:57:47Z",
+      "side": 1,
+      "message": "After looking at https://source.corp.google.com/chromeos_public/src/platform2/login_manager/feature_flags_util.cc , I now suspect that --feature-flags is now preferred over --enable-features. I send an email to ask this to mnissler@, and cc\u0027ed you.",
+      "revId": "d7b769dc1947dd8f9bee3de65fdd69de621e110b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa13b6b2_3ed6136c",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-05-31T08:57:47Z",
+      "side": 1,
+      "message": "I would let ExtraFeatureFlags accept \"full-restore@1\" part instead. Otherwise I imagine that all usage of ExtraFeatureFlags repeat \"--features-flags\u003d[...]\"",
+      "revId": "d7b769dc1947dd8f9bee3de65fdd69de621e110b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
