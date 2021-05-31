@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8639c07_75042528",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wake_on_disconnect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-31T07:58:57Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Done.",
+      "parentUuid": "34d6a537_f13729d8",
+      "range": {
+        "startLine": 59,
+        "startChar": 34,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "0459204798938a863e56e80c48c38dcee1d7da20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88e17be0_2d001826",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-27T19:16:02Z",
       "side": 1,
       "message": "So for this \u0027waitForProps\u0027, we don\u0027t have a specific timeout, right? And if this fails, it\u0027s going to take the entire test timeout? I understand it could be a little hard to put a precise timeout, since VerifyWakeOnWifiReason() will have a potentially long timeline. So is it OK to just let this run for ~a few minutes (at L154), or should we put a smaller timeout?",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 74
+      },
+      "revId": "0459204798938a863e56e80c48c38dcee1d7da20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54e82f55_3286746f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wake_on_ssid.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-31T07:58:57Z",
+      "side": 1,
+      "message": "Yeah, the time in VerifyWakeOnWifiReason makes it hard to determine the timeout here. I think it would be more convenient to have it CHECK_WAIT after VerifyWakeOnWifiReason. We already make sure it is disconnected before suspend (line119), so CHECK_WAIT there should be equivalent.",
+      "parentUuid": "88e17be0_2d001826",
       "range": {
         "startLine": 132,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ea2489_2a64c950",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wake_on_ssid.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-31T07:58:57Z",
+      "side": 1,
+      "message": "Add VerifyConnection after reconnect.",
+      "parentUuid": "4ee4a384_f5956dbd",
+      "range": {
+        "startLine": 153,
+        "startChar": 24,
+        "endLine": 153,
+        "endChar": 33
+      },
+      "revId": "0459204798938a863e56e80c48c38dcee1d7da20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f502d1a_8b303f87",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-05-27T19:16:02Z",
       "side": 1,
       "message": "nit: remove\n\n(not \"X, and Y, and Z.\", but \"X, Y, and Z\")",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 6
+      },
+      "revId": "0459204798938a863e56e80c48c38dcee1d7da20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "689d0f9a_d8eb3ec4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/wake_on_wifi_util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-05-31T07:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f502d1a_8b303f87",
       "range": {
         "startLine": 18,
         "startChar": 3,
