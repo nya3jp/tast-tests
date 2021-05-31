@@ -16,6 +16,86 @@
       "message": "Hi vsavu,\n\nThis CL adds a test for the LaunchManagedGuestSession API which tests the flow where a password is provided (session can be locked and unlocked).\n\nRegards,\nJit",
       "revId": "263b9f2c502a24436044129e181e298c445d419d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a33e5cd_7ef0a644",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session_with_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-31T11:40:07Z",
+      "side": 1,
+      "message": "IF you plan on adding further tests it might make sense to create a helper or a fixture that encapsulates all these setup steps and just runs the API in the test itself.\n\n+ create helpers to call API functions. The if (chrome.runtime.lastError) ... is repeated often.",
+      "revId": "263b9f2c502a24436044129e181e298c445d419d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c60d0b_19048c41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session_with_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-31T11:40:07Z",
+      "side": 1,
+      "message": "use KeepEnrollment here to clean up previous tests user data.",
+      "revId": "263b9f2c502a24436044129e181e298c445d419d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41884d06_d82f70a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session_with_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-31T11:40:07Z",
+      "side": 1,
+      "message": "Move to a constant, it\u0027s shared below.",
+      "range": {
+        "startLine": 202,
+        "startChar": 14,
+        "endLine": 209,
+        "endChar": 4
+      },
+      "revId": "263b9f2c502a24436044129e181e298c445d419d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef354144_d7b157f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session_with_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-05-31T11:40:07Z",
+      "side": 1,
+      "message": "Printing nil is not useful 😊",
+      "range": {
+        "startLine": 210,
+        "startChar": 50,
+        "endLine": 210,
+        "endChar": 55
+      },
+      "revId": "263b9f2c502a24436044129e181e298c445d419d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
