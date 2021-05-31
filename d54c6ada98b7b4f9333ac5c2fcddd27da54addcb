@@ -22,6 +22,30 @@
       },
       "revId": "d54c6ada98b7b4f9333ac5c2fcddd27da54addcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef72d701_2a94ced1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/start_app_from_sign_in_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-05-31T10:58:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c959704_909a036d",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "d54c6ada98b7b4f9333ac5c2fcddd27da54addcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
