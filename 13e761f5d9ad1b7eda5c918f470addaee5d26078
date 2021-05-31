@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fd07e94_f94d1d23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-05-31T12:51:57Z",
+      "side": 1,
+      "message": "Thanks a lot for reviewing this CL! PTAL",
+      "revId": "13e761f5d9ad1b7eda5c918f470addaee5d26078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
