@@ -294,10 +294,10 @@ func (vkbCtx *VirtualKeyboardContext) WaitForDecoderEnabled(enabled bool) uiauto
 // closeInfoDialogue closes a information dialogue if it exists in a handwriting canvas.
 func (vkbCtx *VirtualKeyboardContext) closeInfoDialogue(buttonName string) uiauto.Action {
 	dialogueCloseButton := KeyFinder.Name(buttonName)
-	// Close the information dialogue if it shows
+	// Close the information dialogue if it shows.
 	return vkbCtx.ui.IfSuccessThen(
 		vkbCtx.ui.WithTimeout(time.Second).WaitUntilExists(dialogueCloseButton),
-		vkbCtx.ui.LeftClick(dialogueCloseButton))
+		vkbCtx.ui.LeftClickUntil(dialogueCloseButton, vkbCtx.ui.WithTimeout(500*time.Millisecond).WaitUntilGone(dialogueCloseButton)))
 }
 
 // ClickUntilVKShown returns an action retrying left clicks the node until the vk is shown with no error.
