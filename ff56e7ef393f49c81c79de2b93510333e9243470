@@ -22,6 +22,30 @@
       },
       "revId": "ff56e7ef393f49c81c79de2b93510333e9243470",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad780011_e23dff66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-05-31T11:59:16Z",
+      "side": 1,
+      "message": "Fixed in crrev.com/c/2920571",
+      "parentUuid": "7da0ce9f_2d077c58",
+      "range": {
+        "startLine": 84,
+        "startChar": 21,
+        "endLine": 84,
+        "endChar": 26
+      },
+      "revId": "ff56e7ef393f49c81c79de2b93510333e9243470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
