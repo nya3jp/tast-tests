@@ -275,6 +275,25 @@ func (ac *Context) IsNodeFound(ctx context.Context, finder *nodewith.Finder) (bo
 	return true, nil
 }
 
+// IsNodeFoundWithTimeout repeatedly checks if any nodes found with given finder before timeout.
+// It returns whether a matching node appears before the timeout
+func (ac *Context) IsNodeFoundWithTimeout(ctx context.Context, finder *nodewith.Finder, timeout time.Duration) (bool, error) {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := ac.Exists(finder)(ctx); err != nil {
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout: timeout}); err != nil {
+		if strings.Contains(err.Error(), nodewith.ErrNotFound) {
+			return false, nil
+		}
+		return false, err
+	}
+	return true, nil
+
+}
+
 // WaitUntilExists returns a function that waits until the node found by the input finder exists.
 func (ac *Context) WaitUntilExists(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
