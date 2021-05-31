@@ -58,7 +58,7 @@ func inputsPreCondition(name string, dm deviceMode, opts ...chrome.Option) *preI
 		name:    name,
 		timeout: resetTimeout + chrome.LoginTimeout,
 		dm:      dm,
-		opts:    opts,
+		opts:    append(opts, chrome.EnableFeatures("ImeMojoDecoder")),
 	}
 }
 
