@@ -16,6 +16,40 @@
       "message": "Kevin: Would you like to also take a look?\n\nAdd tast-owners for Tast style review in parallel.",
       "revId": "d55f86e0388afe330e90cc179567ca89c312c20b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69c026c7_b6fdefee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-05-31T20:51:54Z",
+      "side": 1,
+      "message": "LGTM % minor nit",
+      "revId": "d55f86e0388afe330e90cc179567ca89c312c20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4859ef67_71099159",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/wake_on_wifi_util.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-05-31T20:51:54Z",
+      "side": 1,
+      "message": "nit: missing . at the end of the comment.",
+      "revId": "d55f86e0388afe330e90cc179567ca89c312c20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
