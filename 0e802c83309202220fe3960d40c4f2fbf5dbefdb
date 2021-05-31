@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d5598e_9aa93f68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-05-31T05:51:48Z",
+      "side": 1,
+      "message": "I personally do not think it is necessary to add this function. This function will return immediately if node exists, but poll if node does not exist. It is very close to function WaitUntilExists, but returns (bool, error). Similarly, you might want another function IsNodeNotFoundWithTimeout. \n\nIn automation lib, there is already a function IfSuccessThen(PreAction, Action). You can probably do IfSuccessThen(WaitUntilExists, Action) and IfSuccessThen(WaitUntilGone, Action). Besides, polling is still very useful in supporting specific need. It is not encouraged to add many similar functions into automation lib to complicate the usage.",
+      "revId": "0e802c83309202220fe3960d40c4f2fbf5dbefdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
