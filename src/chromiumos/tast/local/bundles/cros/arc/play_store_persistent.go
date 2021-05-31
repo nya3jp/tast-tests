@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/media/cpu"
@@ -36,6 +37,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
+		Vars: []string{"ui.gaiaPoolDefault"},
 	})
 }
 
@@ -60,11 +62,11 @@ func getPlayStorePid(ctx context.Context, a *arc.ARC) (uint, error) {
 }
 
 // readFinskyPrefs reads content of Finsky shared prefs file.
-func readFinskyPrefs(ctx context.Context) ([]byte, error) {
+func readFinskyPrefs(ctx context.Context, cr *chrome.Chrome) ([]byte, error) {
 	const finskyPrefsPath = "/data/data/com.android.vending/shared_prefs/finsky.xml"
 
-	// Cryptohome dir for the current user. (PlayStorePersistent signs in as chrome.DefaultUser.)
-	rootCryptDir, err := cryptohome.SystemPath(chrome.DefaultUser)
+	// Cryptohome dir for the current user.
+	rootCryptDir, err := cryptohome.SystemPath(cr.NormalizedUser())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the cryptohome directory for the user")
 	}
@@ -81,12 +83,12 @@ func readFinskyPrefs(ctx context.Context) ([]byte, error) {
 // daily hygiene fails internally. This is not ARC fault and we detect this as a signal that
 // daily hygiene ends. Next potentially successful attempt should happen in 20 min which is
 // problematic to wait in test.
-func waitForDailyHygieneDone(ctx context.Context, a *arc.ARC) (bool, error) {
+func waitForDailyHygieneDone(ctx context.Context, cr *chrome.Chrome) (bool, error) {
 	reOk := regexp.MustCompile(`<int name="dailyhygiene-last-version" value="\d+"`)
 	reFail := regexp.MustCompile(`<int name="dailyhygiene-failed" value="1" />`)
 	var ok bool
 	return ok, testing.Poll(ctx, func(ctx context.Context) error {
-		out, err := readFinskyPrefs(ctx)
+		out, err := readFinskyPrefs(ctx, cr)
 		if err != nil {
 			// It is OK if it does not exist yet
 			return err
@@ -107,12 +109,25 @@ func waitForDailyHygieneDone(ctx context.Context, a *arc.ARC) (bool, error) {
 }
 
 func PlayStorePersistent(ctx context.Context, s *testing.State) {
-
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(arc.DisableSyncFlags()...))
+	// Setup Chrome.
+	cr, err := chrome.New(ctx,
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+		chrome.ARCSupported(),
+		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 	defer cr.Close(ctx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create test API connection: ", err)
+	}
+	// Optin to Play Store.
+	s.Log("Opting into Play Store")
+	if err := optin.Perform(ctx, cr, tconn); err != nil {
+		s.Fatal("Failed to optin to Play Store: ", err)
+	}
 
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
@@ -126,9 +141,9 @@ func PlayStorePersistent(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Wating for daily hygiene done")
-	ok, err := waitForDailyHygieneDone(ctx, a)
+	ok, err := waitForDailyHygieneDone(ctx, cr)
 	if err != nil {
-		if out, rerr := readFinskyPrefs(ctx); rerr != nil {
+		if out, rerr := readFinskyPrefs(ctx, cr); rerr != nil {
 			s.Error("Failed to read Finsky prefs: ", rerr)
 		} else if rerr := ioutil.WriteFile(filepath.Join(s.OutDir(), "finsky.xml"), out, 0644); rerr != nil {
 			s.Error("Failed to write Finsky prefs: ", rerr)
