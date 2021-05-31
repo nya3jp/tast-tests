@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/dutfs"
+	fw "chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -53,7 +54,7 @@ func FpReadFlash(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to query running firmware copy: ", err)
 	}
-	if firmwareCopy != fingerprint.ImageTypeRW {
+	if firmwareCopy != fw.FWCopyRW {
 		s.Fatal("Not running RW firmware")
 	}
 
@@ -67,7 +68,7 @@ func FpReadFlash(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Reboot to RO")
-	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRO); err != nil {
+	if err := fingerprint.RebootFpmcu(ctx, d, fw.FWCopyRO); err != nil {
 		s.Fatal("Failed to reboot to RO: ", err)
 	}
 
@@ -77,7 +78,7 @@ func FpReadFlash(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Reboot to RW")
-	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRW); err != nil {
+	if err := fingerprint.RebootFpmcu(ctx, d, fw.FWCopyRW); err != nil {
 		s.Fatal("Failed to reboot to RW: ", err)
 	}
 }
