@@ -142,6 +142,7 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 
 	opts = append(opts, chrome.DMSPolicy(fdms.URL))
 	opts = append(opts, chrome.ExtraArgs(req.ExtraArgs))
+	opts = append(opts, chrome.EnableLoginVerboseLogs())
 
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
