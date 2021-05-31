@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4433c640_cd60456f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2021-05-31T14:13:08Z",
+      "side": 1,
+      "message": "Folks, per the email discussion I think you should be using --enable-features here instead of --feature-flags. Conceptually, the former represents the situation of the feature being enabled by default, whereas the latter is what you\u0027d get if the user where to switch on the feature via chrome://flags.",
+      "revId": "d7b769dc1947dd8f9bee3de65fdd69de621e110b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08ae2d1a_280aa9b5",
