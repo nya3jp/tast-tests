@@ -16,6 +16,46 @@
       "message": "PTAL. Thanks!",
       "revId": "c2ece9136a09b5e955624ebcfc21aad1963597b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d761eed0_50111ba7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-31T00:12:26Z",
+      "side": 1,
+      "message": "+2 for Tast Owners % nit",
+      "revId": "c2ece9136a09b5e955624ebcfc21aad1963597b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a29ce2db_1f39e90a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-05-31T00:12:26Z",
+      "side": 1,
+      "message": "nit: keys",
+      "range": {
+        "startLine": 238,
+        "startChar": 76,
+        "endLine": 238,
+        "endChar": 79
+      },
+      "revId": "c2ece9136a09b5e955624ebcfc21aad1963597b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
