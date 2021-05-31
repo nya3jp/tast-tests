@@ -350,6 +350,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3511d2b_287b3bbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-31T01:00:14Z",
+      "side": 1,
+      "message": "What I mean is nothing to do with \"grpc/attributes\". the attribute is a new type defined in local package which act as base class for all attributes you what to test.\nYou can also reference for example and explanation of inheritance in golang from: \nhttps://geeksforgeeks.org/inheritance-in-golang",
+      "parentUuid": "c309538a_dded254a",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "0b4effb13042e8c7bd716bf59dc38fb41e45c0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "204e96b7_044f6595",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
         "patchSetId": 19
@@ -385,6 +409,30 @@
       "side": 1,
       "message": "It passed the verification of repo upload.\nI can dry run to check them.",
       "parentUuid": "204e96b7_044f6595",
+      "range": {
+        "startLine": 92,
+        "startChar": 6,
+        "endLine": 92,
+        "endChar": 15
+      },
+      "revId": "0b4effb13042e8c7bd716bf59dc38fb41e45c0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc72a1c2_f601292d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-05-31T01:00:14Z",
+      "side": 1,
+      "message": "Got it, leave it to tast-owner for style check.",
+      "parentUuid": "a0adafeb_98dbf4e8",
       "range": {
         "startLine": 92,
         "startChar": 6,
