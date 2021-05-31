@@ -10,7 +10,7 @@ package event
 // Event describes the type of a chrome.automation AutomationEvent.
 type Event string
 
-// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl
+// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/automation.idl
 const (
 	AccessKeyChanged                Event = "accessKeyChanged"
 	ActiveDescendantChanged         Event = "activeDescendantChanged"

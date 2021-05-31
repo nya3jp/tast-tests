@@ -10,7 +10,7 @@ package restriction
 // Restriction describes the restriction state of a chrome.automation AutomationNode.
 type Restriction string
 
-// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl
+// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/automation.idl
 const (
 	Disabled Restriction = "disabled"
 	ReadOnly Restriction = "readOnly"

@@ -10,7 +10,7 @@ package checked
 // Checked describes tri-state values of a checkbox or radio button.
 type Checked string
 
-// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl
+// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/automation.idl
 const (
 	True  Checked = "true"
 	False Checked = "false"

@@ -10,7 +10,7 @@ package state
 // State describes characteristics of a chrome.automation AutomationNode.
 type State string
 
-// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl
+// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/automation.idl
 const (
 	AutofillAvailable State = "autofillAvailable"
 	Collapsed         State = "collapsed"
