@@ -31,9 +31,42 @@ var VKInputMap = map[ime.InputMethodCode]vkInputData{
 		TapKeySeq:    strings.Split("hello", ""),
 		ExpectedText: "hello",
 	},
+	ime.INPUTMETHOD_XKB_US_INTL: {
+		TapKeySeq:    strings.Split("hello", ""),
+		ExpectedText: "hello",
+	},
+	ime.INPUTMETHOD_XKB_GB_EXTD_ENG: {
+		TapKeySeq:    strings.Split("hello", ""),
+		ExpectedText: "hello",
+	},
+	ime.INPUTMETHOD_XKB_ES_SPA: {
+		TapKeySeq:    strings.Split("hello", ""),
+		ExpectedText: "hello",
+	},
+	ime.INPUTMETHOD_XKB_SE_SWE: {
+		TapKeySeq:            strings.Split("kött", ""),
+		SubmitFromSuggestion: true,
+		ExpectedText:         "kött",
+	},
+	ime.INPUTMETHOD_XKB_CA_ENG: {
+		TapKeySeq:    strings.Split("hello", ""),
+		ExpectedText: "hello",
+	},
+	ime.INPUTMETHOD_XKB_JP_JPN: {
+		TapKeySeq:    strings.Split("hello", ""),
+		ExpectedText: "hello",
+	},
+	ime.INPUTMETHOD_NACL_MOZC_JP: {
+		TapKeySeq:    strings.Split("konnnitiha", ""),
+		ExpectedText: "こんにちは",
+	},
 	ime.INPUTMETHOD_NACL_MOZC_US: {
 		TapKeySeq:    strings.Split("konnnitiha", ""),
 		ExpectedText: "こんにちは",
+	},
+	ime.INPUTMETHOD_XKB_FR_FRA: {
+		TapKeySeq:    strings.Split("hello", ""),
+		ExpectedText: "hello",
 	},
 	ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED: {
 		TapKeySeq:            strings.Split("nihao", ""),
@@ -49,5 +82,9 @@ var VKInputMap = map[ime.InputMethodCode]vkInputData{
 		TapKeySeq:            strings.Split("竹手戈", ""),
 		SubmitFromSuggestion: true,
 		ExpectedText:         "我",
+	},
+	ime.INPUTMETHOD_HANGUL_KOREAN: {
+		TapKeySeq:    []string{"ㅎ", "\u1161", "ㄴ"}, // ㅎㅏㄴ
+		ExpectedText: "한",
 	},
 }
