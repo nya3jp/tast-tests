@@ -50,6 +50,24 @@
       "message": "nit: . missing at the end of the comment line",
       "revId": "54ccd0c6c0c96c50a749c5d34149c0b951b89d34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63b08142_a8d8424c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-01T12:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9e96252_cbd3023b",
+      "revId": "54ccd0c6c0c96c50a749c5d34149c0b951b89d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
