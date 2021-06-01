@@ -6,6 +6,7 @@ package apps
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -66,7 +67,7 @@ func LaunchReleaseNotesFromSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch Settings: ", err)
 	}
 
-	whatsNewTabFinder := nodewith.NameStartingWith("What's new").Role(role.Heading).Ancestor(helpapp.RootFinder)
+	whatsNewTabFinder := nodewith.NameRegex(regexp.MustCompile("What's new|What’s New")).Role(role.Heading).Ancestor(helpapp.RootFinder)
 
 	if err := uiauto.Combine("launch WhatsNew and verify landing page",
 		settings.LaunchWhatsNew(),
