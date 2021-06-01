@@ -907,3 +907,42 @@ func getAppWindowInfo(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.D
 	}
 	return windowInfo, err
 }
+
+// SkipModelsInTabletMode is a list of models to be skipped from tablet mode runs.
+var SkipModelsInTabletMode = []string{
+	"sarien",
+	"elemi",
+	"berknip",
+	"dratini",
+
+	// grunt:
+	"careena",
+	"kasumi",
+	"treeya",
+	"grunt",
+	"barla",
+	"aleena",
+	"liara",
+	"nuwani",
+
+	// octopus:
+	"bluebird",
+	"apel",
+	"blooglet",
+	"blorb",
+	"bobba",
+	"casta",
+	"dorp",
+	"droid",
+	"fleex",
+	"foob",
+	"garfour",
+	"garg",
+	"laser14",
+	"lick",
+	"mimrock",
+	"nospike",
+	"orbatrix",
+	"phaser",
+	"sparky",
+}
