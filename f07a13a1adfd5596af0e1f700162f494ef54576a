@@ -16,6 +16,40 @@
       "message": "TY",
       "revId": "f07a13a1adfd5596af0e1f700162f494ef54576a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ded254a1_ef50957e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-01T16:50:23Z",
+      "side": 1,
+      "message": "Maybe we should ensure this is a regular file first?",
+      "revId": "f07a13a1adfd5596af0e1f700162f494ef54576a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da578b9_6250d0c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-01T16:50:23Z",
+      "side": 1,
+      "message": "The message makes it seem like the %o-formatted mode is the set of expected execution bits, rather than the actual mode.\n\nI think os.FileMode has a String() method, as well. Not sure if it\u0027s useful here.",
+      "revId": "f07a13a1adfd5596af0e1f700162f494ef54576a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
