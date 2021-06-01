@@ -41,7 +41,7 @@ func init() {
 				LaunchTests: clamshellLaunchForPhotolemur,
 				CommonTests: testutil.ClamshellCommonTests,
 			},
-			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraSoftwareDeps: []string{"android_p", "no_arc_x86", "lacros"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
@@ -52,7 +52,7 @@ func init() {
 				LaunchTests: touchviewLaunchForPhotolemur,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
-			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraSoftwareDeps: []string{"android_p", "no_arc_x86", "lacros"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
@@ -63,7 +63,7 @@ func init() {
 				LaunchTests: clamshellLaunchForPhotolemur,
 				CommonTests: testutil.ClamshellCommonTests,
 			},
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm", "no_arc_x86", "lacros"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
@@ -74,7 +74,7 @@ func init() {
 				LaunchTests: touchviewLaunchForPhotolemur,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm", "no_arc_x86", "lacros"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
