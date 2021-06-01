@@ -36,17 +36,9 @@ const uiTimeout = 30 * time.Second
 // InstallWindow is the finder for Crostini install window.
 var InstallWindow = nodewith.NameRegex(regexp.MustCompile(`^Set up Linux`)).Role(role.RootWebArea)
 
-// Image setup mode.
-const (
-	Component = "component"
-	Dlc       = "dlc"
-)
-
 // InstallationOptions is a struct contains parameters for Crostini installation.
 type InstallationOptions struct {
 	UserName              string
-	Mode                  string
-	VMArtifactPath        string
 	ContainerMetadataPath string
 	ContainerRootfsPath   string
 	MinDiskSize           uint64
@@ -188,18 +180,10 @@ func (p *Installer) Install(ctx context.Context) error {
 	return nil
 }
 
-func prepareImages(ctx context.Context, iOptions *InstallationOptions) (containerMetadata, containerRootfs, terminaImage string, err error) {
-	if iOptions.Mode == Component {
-		// Prepare image.
-		terminaImage, err = vm.ExtractTermina(ctx, iOptions.VMArtifactPath)
-		if err != nil {
-			return "", "", "", errors.Wrap(err, "failed to extract termina: ")
-		}
-	}
-
+func prepareImages(ctx context.Context, iOptions *InstallationOptions) (containerMetadata, containerRootfs string, err error) {
 	containerMetadata = iOptions.ContainerMetadataPath
 	containerRootfs = iOptions.ContainerRootfsPath
-	return containerMetadata, containerRootfs, terminaImage, nil
+	return containerMetadata, containerRootfs, nil
 }
 
 func startLxdServer(ctx context.Context, containerMetadata, containerRootfs string) (server *lxd.Server, addr string, err error) {
@@ -223,7 +207,7 @@ func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chr
 		return 0, errors.Wrap(err, "cannot install crostini: cannot stat /dev/kvm")
 	}
 	// Setup lxd server.
-	containerMetadata, containerRootfs, terminaImage, err := prepareImages(ctx, iOptions)
+	containerMetadata, containerRootfs, err := prepareImages(ctx, iOptions)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to prepare image")
 	}
@@ -240,18 +224,6 @@ func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chr
 		`chrome.autotestPrivate.registerComponent(%q, %q)`,
 		vm.ImageServerURLComponentName, url), nil); err != nil {
 		return 0, errors.Wrap(err, "failed to run autotestPrivate.registerComponent")
-	}
-
-	if iOptions.Mode == Component {
-		if err := vm.MountComponent(ctx, terminaImage); err != nil {
-			return 0, errors.Wrap(err, "failed to mount component")
-		}
-
-		if err := tconn.Eval(ctx, fmt.Sprintf(
-			`chrome.autotestPrivate.registerComponent(%q, %q)`,
-			vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
-			return 0, errors.Wrap(err, "failed to run autotestPrivate.registerComponent")
-		}
 	}
 
 	if err := settings.OpenInstaller(ctx, tconn, cr); err != nil {

@@ -59,7 +59,7 @@ func ResizeInstallation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	iOptions := crostini.GetInstallerOptions(s, false /*isComponent*/, vm.DebianBuster, false /*largeContainer*/, cr.NormalizedUser())
+	iOptions := crostini.GetInstallerOptions(s, vm.DebianBuster, false /*largeContainer*/, cr.NormalizedUser())
 	iOptions.MinDiskSize = 16 * settings.SizeGB
 	iOptions.IsSoftMinimum = true
 

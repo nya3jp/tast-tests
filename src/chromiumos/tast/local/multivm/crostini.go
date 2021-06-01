@@ -21,7 +21,6 @@ const CrostiniName = "Crostini"
 
 // CrostiniOptions describe how to start Crostini.
 type CrostiniOptions struct {
-	Mode           string                    // Where (download/build artifact) the container image comes from.
 	DebianVersion  vm.ContainerDebianVersion // OS version of the container image.
 	MinDiskSize    uint64                    // The minimum size of the VM image in bytes. 0 to use default disk size.
 	LargeContainer bool
@@ -52,7 +51,7 @@ func (o CrostiniOptions) ActivateTimeout() time.Duration {
 // Activate spins up the Crostini VM.
 func (o CrostiniOptions) Activate(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, st StateManagerTestingState) (VMActivation, error) {
 	testing.ContextLog(ctx, "Creating Crostini")
-	iOptions := crostini.GetInstallerOptions(st, true, o.DebianVersion, o.LargeContainer, cr.NormalizedUser())
+	iOptions := crostini.GetInstallerOptions(st, o.DebianVersion, o.LargeContainer, cr.NormalizedUser())
 	iOptions.UserName = cr.NormalizedUser()
 	iOptions.MinDiskSize = o.MinDiskSize
 	if _, err := cui.InstallCrostini(ctx, tconn, cr, iOptions); err != nil {
