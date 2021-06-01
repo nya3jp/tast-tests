@@ -189,6 +189,7 @@ func loginHelperForChromeAndroidApp(ctx context.Context, s *testing.State, tconn
 		allowButtonText        = "Allow"
 		scrollLayoutClassName  = "android.webkit.WebView"
 		scrollLayoutText       = "Sign in - Google Accounts"
+		googleIconDes          = "Setup Google account."
 	)
 	act, err := arc.NewActivity(a, chromeAppPkgName, chromeAppActivity)
 	// Click on getStarted button.
@@ -240,6 +241,14 @@ func loginHelperForChromeAndroidApp(ctx context.Context, s *testing.State, tconn
 		s.Log("continueButton doesn't exists: ", err)
 	} else if err := continueButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on continueButton: ", err)
+	}
+
+	// Select google icon.
+	googleIcon := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.DescriptionMatches("(?i)"+googleIconDes))
+	if err := googleIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("googleIcon doesn't exists: ", err)
+	} else if err := googleIcon.Click(ctx); err != nil {
+		s.Fatal("Failed to click on googleIcon: ", err)
 	}
 
 	// Click on accept and continue button.
