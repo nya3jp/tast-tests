@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac563966_a2c61176",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-01T23:16:57Z",
+      "side": 1,
+      "message": "TBH, I was recommended this pattern by the earlier TAST reviewer for the test.\n\nSince all the other tests in this folder are using this pattern, I\u0027d prefer we continue using it. FWIW, we do have comments mentioning that we want to return early on the CQ (L64). That, L51 (which states the test requires a H/W setup in the test lab) and the fact that this variant is named \"smoke\" will I hope provide enough clues as to why we are using this param.",
+      "parentUuid": "0a005dde_9d5b5d8e",
+      "revId": "4c9b01143e88eb24c86f46cece48c0dafe00f421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1bdfb59d_af3e4df9",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
         "patchSetId": 2
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "Ack. Is this documented somewhere? It might be good to add a comment in the test.",
       "parentUuid": "365be0ab_63ab4387",
+      "revId": "4c9b01143e88eb24c86f46cece48c0dafe00f421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1987a30_9784ef27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-01T23:16:57Z",
+      "side": 1,
+      "message": "There are a few design docs/slides from the security team / product team around this, and it is fairly basic functionality for TBT/USB4-capable Chromebooks. I can drop a comment here, since I think linking to the docs/slides is impractical.\n\nWe\u0027ll eventually add a line or two about this to the typecd README (I plan to do that after these tests start running in the Type C lab setup).",
+      "parentUuid": "2a03c3cc_8d3be0a1",
       "revId": "4c9b01143e88eb24c86f46cece48c0dafe00f421",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
