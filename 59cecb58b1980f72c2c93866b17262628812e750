@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b93d7d_cc8ae5ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-01T17:18:09Z",
+      "side": 1,
+      "message": "Thanks for the quick fix.",
+      "revId": "59cecb58b1980f72c2c93866b17262628812e750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bef851d_d1642446",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2361,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-01T17:18:09Z",
+      "side": 1,
+      "message": "Move it to const wcn3990Signature",
+      "range": {
+        "startLine": 2361,
+        "startChar": 12,
+        "endLine": 2361,
+        "endChar": 29
+      },
+      "revId": "59cecb58b1980f72c2c93866b17262628812e750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f8d298e_7c3640a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2409,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-01T17:18:09Z",
+      "side": 1,
+      "message": "// WCN3990 belongs to ath10k Wi-Fi family. Evaluate the specific Wi-Fi module detectors first.",
+      "revId": "59cecb58b1980f72c2c93866b17262628812e750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
