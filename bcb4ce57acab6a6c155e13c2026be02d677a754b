@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2efec70c_3b1e3efa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_wilco_dtc_allowed_enrolled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-01T16:27:32Z",
+      "side": 1,
+      "message": "Thanks, makes sense!",
+      "parentUuid": "829c9f37_5d3c276b",
+      "revId": "bcb4ce57acab6a6c155e13c2026be02d677a754b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63897611_211a4d81",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-05-31T06:53:51Z",
       "side": 1,
       "message": "nit: I\u0027d keep this as separate calls to ResetChrome and ServeBlobAndRefresh like all the other tests.",
+      "revId": "bcb4ce57acab6a6c155e13c2026be02d677a754b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e84a194_915e97fa",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-01T16:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63897611_211a4d81",
       "revId": "bcb4ce57acab6a6c155e13c2026be02d677a754b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
