@@ -573,8 +573,7 @@ func init() {
 				}},
 			}, {
 				// Verifies that DUT can connect to an WPA3-Enterprise-transition AP
-				Name:      "8021xwpa3mixed",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "8021xwpa3mixed",
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.PMF(ap.PMFOptional)},
 					secConfFac: wpaeap.NewConfigFactory(

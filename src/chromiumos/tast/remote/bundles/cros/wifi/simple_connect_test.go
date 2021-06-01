@@ -526,10 +526,9 @@ func simpleConnect8021xWPA3() []simpleConnectParams {
 	}
 	return []simpleConnectParams{
 		{
-			Name:      "8021xwpa3mixed",
-			Doc:       simpleConnectDocPref("an WPA3-Enterprise-transition AP"),
-			Val:       mkOps("Optional", "Mixed"),
-			ExtraAttr: []string{"wificell_unstable"},
+			Name: "8021xwpa3mixed",
+			Doc:  simpleConnectDocPref("an WPA3-Enterprise-transition AP"),
+			Val:  mkOps("Optional", "Mixed"),
 		},
 		{
 			Name:      "8021xwpa3",
