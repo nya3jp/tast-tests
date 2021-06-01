@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // ClamshellTests are placed here.
@@ -40,6 +41,8 @@ func init() {
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
+		// Skip on non-touch devices: bluebird, duffy, elemi, berknip.
+		HardwareDeps: hwdep.D(hwdep.TouchScreen()),
 		Params: []testing.Param{{
 			Val:               clamshellTestsForAmazonKindle,
 			ExtraSoftwareDeps: []string{"android_p"},
