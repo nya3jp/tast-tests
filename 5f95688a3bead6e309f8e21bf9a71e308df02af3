@@ -16,6 +16,23 @@
       "message": "Hi, mukai@,\n\nlooks like we need an owner from cros side, can you take a look?",
       "revId": "5f95688a3bead6e309f8e21bf9a71e308df02af3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33ce646_ca8494f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-01T21:36:50Z",
+      "side": 1,
+      "message": "The reported problem looks related to crbug.com/1214151 (login failure), but chromeos tree guardians are talking like the problem is not observed lately.  Probably better to notify them.  Also, I don\u0027t think it\u0027s a good idea to disable example tests like this.  The problem should be somewhere else.",
+      "revId": "5f95688a3bead6e309f8e21bf9a71e308df02af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
