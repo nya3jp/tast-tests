@@ -2234,6 +2234,9 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 		//    effectively causes a restart, but we'll leave it aside for now.
 		iwlwifiFormat = "/sys/kernel/debug/iwlwifi/%s/iwlmvm/fw_restart"
 
+		// The path is used to check for wcn399x device.
+		ath10kDeviceFormat = "/sys/class/net/%s/device/of_node/compatible"
+
 		mwifiexTimeout  = time.Second * 20
 		mwifiexInterval = time.Millisecond * 500
 	)
@@ -2345,6 +2348,27 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 		}
 		return nil
 	}
+	ath10kWCN3990ResetPath := func(ctx context.Context, iface string) (string, error) {
+		rp, err := ath10kResetPath(ctx, iface)
+		if err != nil {
+			return "", err
+		}
+		b, err := ioutil.ReadFile(fmt.Sprintf(ath10kDeviceFormat, iface))
+		if err != nil {
+			return "", err
+		}
+		for _, d := range strings.Split(string(b), "\000") {
+			if d == "qcom,wcn3990-wifi" {
+				return rp, nil
+			}
+		}
+		return "", errors.New("not a wcn3990 device")
+	}
+	ath10kWCN3990Reset := func(ctx context.Context, resetPath string) error {
+		return assertIdleAndConnect(ctx, func(ctx context.Context) error {
+			return ath10kReset(ctx, resetPath)
+		})
+	}
 	iwlwifiResetPath := func(ctx context.Context, iface string) (string, error) {
 		par, err := network_iface.NewInterface(iface).ParentDeviceName(ctx)
 		if err != nil {
@@ -2382,6 +2406,8 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 		resetPath func(context.Context, string) (string, error)
 	}{
 		{mwifiexReset, mwifiexResetPath},
+		// The successfull call of ath10kWCN3990ResetPath implies ath10kResetPath's, so it should be tested first.
+		{ath10kWCN3990Reset, ath10kWCN3990ResetPath},
 		{ath10kReset, ath10kResetPath},
 		{iwlwifiReset, iwlwifiResetPath},
 	} {
