@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd32376_ea2d8abb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-01T22:31:24Z",
+      "side": 1,
+      "message": "Hi Hiroki,\n\nThanks for the feedback. I addressed your comments and made a few other changes. Let me know how it looks!",
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
