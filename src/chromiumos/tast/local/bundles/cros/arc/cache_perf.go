@@ -39,13 +39,13 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Timeout:      30 * time.Minute,
-		Vars:         []string{"arc.CachePerf.username", "arc.CachePerf.password"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
+		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
 }
 
@@ -61,7 +61,7 @@ func init() {
 func CachePerf(ctx context.Context, s *testing.State) {
 	const (
 		// successBootCount is the number of passing ARC boots to collect results.
-		successBootCount = 5
+		successBootCount = 3
 
 		// maxErrorBootCount is the number of maximum allowed boot errors.
 		// used for reliability against optin flow flakiness.
@@ -179,13 +179,10 @@ func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (ti
 		return 0, 0, errors.Wrap(err, "failed to drop caches")
 	}
 
-	username := s.RequiredVar("arc.CachePerf.username")
-	password := s.RequiredVar("arc.CachePerf.password")
-
+	// Setup Chrome.
 	cr, err := chrome.New(ctx,
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCSupported(),
-		chrome.RestrictARCCPU(),
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
 		chrome.ExtraArgs(args...))
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "failed to login to Chrome")

@@ -55,8 +55,6 @@ func init() {
 			Name:              "unmanaged",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
-				username:          "arc.AuthPerf.unmanaged_username",
-				password:          "arc.AuthPerf.unmanaged_password",
 				maxErrorBootCount: 1,
 				resultSuffix:      "",
 			},
@@ -64,8 +62,6 @@ func init() {
 			Name:              "unmanaged_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
-				username:          "arc.AuthPerf.unmanaged_username",
-				password:          "arc.AuthPerf.unmanaged_password",
 				maxErrorBootCount: 3,
 				resultSuffix:      "",
 			},
@@ -74,8 +70,6 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(8000)),
 			Val: testParam{
-				username:          "arc.AuthPerf.unmanaged_username",
-				password:          "arc.AuthPerf.unmanaged_password",
 				maxErrorBootCount: 3,
 				resultSuffix:      "_no_guest_readahead",
 				chromeArgs:        []string{"--arcvm-ureadahead-mode=disabled"},
@@ -84,8 +78,6 @@ func init() {
 			Name:              "unmanaged_rt_vcpu_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
-				username:          "arc.AuthPerf.unmanaged_username",
-				password:          "arc.AuthPerf.unmanaged_password",
 				maxErrorBootCount: 3,
 				resultSuffix:      "_rt_vcpu",
 				chromeArgs:        []string{"--enable-arcvm-rt-vcpu"},
@@ -94,8 +86,6 @@ func init() {
 			Name:              "unmanaged_huge_pages_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
-				username:          "arc.AuthPerf.unmanaged_username",
-				password:          "arc.AuthPerf.unmanaged_password",
 				maxErrorBootCount: 3,
 				resultSuffix:      "",
 				chromeArgs:        []string{"--arcvm-use-hugepages"},
@@ -120,11 +110,10 @@ func init() {
 			},
 		}},
 		Vars: []string{
-			"arc.AuthPerf.unmanaged_username",
-			"arc.AuthPerf.unmanaged_password",
 			"arc.AuthPerf.managed_username",
 			"arc.AuthPerf.managed_password",
 		},
+		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
 }
 
@@ -149,8 +138,6 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	)
 
 	param := s.Param().(testParam)
-	username := s.RequiredVar(param.username)
-	password := s.RequiredVar(param.password)
 	maxErrorBootCount := param.maxErrorBootCount
 
 	args := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui", "--ignore-arcvm-dev-conf")
@@ -158,11 +145,18 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 		args = append(args, param.chromeArgs...)
 	}
 
+	var gaia chrome.Option
+	if param.username != "" {
+		gaia = chrome.GAIALogin(chrome.Creds{User: s.RequiredVar(param.username), Pass: s.RequiredVar(param.password)})
+	} else {
+		gaia = chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault"))
+	}
+
 	// TODO(crbug.com/995869): Remove set of flags to disable app sync, PAI, locale sync, Play Store auto-update.
 	cr, err := chrome.New(ctx,
 		chrome.ARCSupported(),
 		chrome.RestrictARCCPU(),
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		gaia,
 		chrome.ExtraArgs(args...))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)

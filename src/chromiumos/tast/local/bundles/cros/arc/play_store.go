@@ -40,7 +40,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"ui.gaiaPoolDefault"},
+		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
 }
 
