@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33d98dec_1a65db8f",
+        "filename": "src/chromiumos/tast/local/playbilling/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-01T23:33:44Z",
+      "side": 1,
+      "message": "No need to defer since this is just in the end or move it to the beginning?",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 6
+      },
+      "revId": "9123df7bc8d9bb30ddaa59a8344026589578b1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
