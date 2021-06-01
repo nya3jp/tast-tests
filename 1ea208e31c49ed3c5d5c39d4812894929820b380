@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d7d614_7b14c72b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-01T06:57:34Z",
+      "side": 1,
+      "message": "My point is that these data are not differentiated between tests. You can provide \u0027true\u0027 / \u0027false\u0027 in the Val, and instantiates a struct with the val inside the test.\n\n//Test Params\nVal: true / false\n//\n\n//Test script\nproxySetting :\u003d \u0026policy.SystemProxySettingsValue{\n\tSystemProxyEnabled:           s.Param().(bool),\n\tSystemServicesPassword:       \"********\",\n\tSystemServicesUsername:       \"********\",\n\tPolicyCredentialsAuthSchemes: []string{},\n}\n\nAnyway, it is up to you.",
+      "parentUuid": "622cffb7_bf73a06c",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 6
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1baa2bc1_bf99c55d",
