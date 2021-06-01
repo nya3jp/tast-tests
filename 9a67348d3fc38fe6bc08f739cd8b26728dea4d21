@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a561479_5756d2da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-01T23:36:27Z",
+      "side": 1,
+      "message": "Where do these numbers come from?",
+      "range": {
+        "startLine": 79,
+        "startChar": 122,
+        "endLine": 79,
+        "endChar": 125
+      },
+      "revId": "9a67348d3fc38fe6bc08f739cd8b26728dea4d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e863d9b7_3c4a3e0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-01T23:36:27Z",
+      "side": 1,
+      "message": "Comment this one too.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 57
+      },
+      "revId": "9a67348d3fc38fe6bc08f739cd8b26728dea4d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ac976b2_66173c32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-01T23:36:27Z",
+      "side": 1,
+      "message": "... for consistent screendiffs.",
+      "range": {
+        "startLine": 114,
+        "startChar": 39,
+        "endLine": 114,
+        "endChar": 46
+      },
+      "revId": "9a67348d3fc38fe6bc08f739cd8b26728dea4d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
