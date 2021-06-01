@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b5a9e2_ce329c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_moderate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-01T10:22:39Z",
+      "side": 1,
+      "message": "nit: maybe it makes sense to sort vars and split by multiple lines for better readability, e.g.\n\n```\nVars: []string{ \n  \"platform.MemoryPressureModerate.enableARC\", \n  \"platform.MemoryPressureModerate.maxTab\",\n  \"platform.MemoryPressureModerate.useHugePages\"\n}\n```",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 157
+      },
+      "revId": "72c79e3567180de98833d0b343a53c45d537ea17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67cbc507_d4dc7dc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_moderate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-01T10:22:39Z",
+      "side": 1,
+      "message": "Do we really want to enable ARC based on this flag or you just forgot to remove it? I think it might be super confusing for people.",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 18
+      },
+      "revId": "72c79e3567180de98833d0b343a53c45d537ea17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23b7ff46_e89f3477",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_moderate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-01T10:22:39Z",
+      "side": 1,
+      "message": "There is some inconsistency how do we check flags in different files in this CL.\n\nI think the best way is to convert value to bool, because you will be able to pass 0/1/false/true\n\nhttps://golang.org/pkg/strconv/#ParseBool",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "72c79e3567180de98833d0b343a53c45d537ea17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df51feb7_9e93aa38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-01T10:22:39Z",
+      "side": 1,
+      "message": "nit: same",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 187
+      },
+      "revId": "72c79e3567180de98833d0b343a53c45d537ea17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e9ec5d_f16ca411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-01T10:22:39Z",
+      "side": 1,
+      "message": "nit: same, it\u0027s better to use ParseBool here",
+      "range": {
+        "startLine": 88,
+        "startChar": 17,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "revId": "72c79e3567180de98833d0b343a53c45d537ea17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4af1c25_8d1bfe40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-01T10:22:39Z",
+      "side": 1,
+      "message": "nit: I think it makes sense to log useHugePages value only when we successfully parsed vars.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 48
+      },
+      "revId": "72c79e3567180de98833d0b343a53c45d537ea17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1bf9e21_d108e09f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-01T10:22:39Z",
+      "side": 1,
+      "message": "I think using ParseBool is preferred",
+      "range": {
+        "startLine": 100,
+        "startChar": 17,
+        "endLine": 100,
+        "endChar": 29
+      },
+      "revId": "72c79e3567180de98833d0b343a53c45d537ea17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "261444fa_e037632f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-01T10:22:39Z",
+      "side": 1,
+      "message": "nit: same",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "72c79e3567180de98833d0b343a53c45d537ea17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4860469_f9e124c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-01T10:22:39Z",
+      "side": 1,
+      "message": "I think we should not enable ARC by that flag. If you want ARC to be enabled, you probably have to fail test if useHugePages is true and enableARC is false",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 44
+      },
+      "revId": "72c79e3567180de98833d0b343a53c45d537ea17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
