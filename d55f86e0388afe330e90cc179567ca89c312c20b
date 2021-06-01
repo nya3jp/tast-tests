@@ -50,6 +50,24 @@
       "message": "nit: missing . at the end of the comment.",
       "revId": "d55f86e0388afe330e90cc179567ca89c312c20b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "131b8065_b341612e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/wake_on_wifi_util.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-01T05:52:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4859ef67_71099159",
+      "revId": "d55f86e0388afe330e90cc179567ca89c312c20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
