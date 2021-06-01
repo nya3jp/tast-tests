@@ -11,9 +11,12 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -47,45 +50,46 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+	ui := uiauto.New(tconn)
 
 	for _, param := range []struct {
 		name            string
 		nodeName        string                            // nodeName is the name of the toggle button node we want to check.
 		wantAsk         bool                              // wantAsk states whether a dialog to ask for permission should appear or not.
-		wantRestriction ui.RestrictionState               // wantRestriction is the wanted restriction state of the toggle button in the location settings.
-		wantChecked     ui.CheckedState                   // wantChecked is the wanted checked state of the toggle button in the location settings.
+		wantChecked     checked.Checked                   // wantChecked is the wanted checked state of the toggle button in the location settings.
+		wantRestriction restriction.Restriction           // wantRestriction is the wanted restriction state of the toggle button in the location settings.
 		value           *policy.DefaultGeolocationSetting // value is the value of the policy.
 	}{
 		{
 			name:            "unset",
 			nodeName:        "Ask before accessing (recommended)",
 			wantAsk:         true,
-			wantRestriction: ui.RestrictionNone,
-			wantChecked:     ui.CheckedStateTrue,
+			wantChecked:     checked.True,
+			wantRestriction: restriction.None,
 			value:           &policy.DefaultGeolocationSetting{Stat: policy.StatusUnset},
 		},
 		{
 			name:            "allow",
 			nodeName:        "Ask before accessing (recommended)",
 			wantAsk:         false,
-			wantRestriction: ui.RestrictionDisabled,
-			wantChecked:     ui.CheckedStateTrue,
+			wantChecked:     checked.True,
+			wantRestriction: restriction.Disabled,
 			value:           &policy.DefaultGeolocationSetting{Val: 1},
 		},
 		{
 			name:            "deny",
 			nodeName:        "Blocked",
 			wantAsk:         false,
-			wantRestriction: ui.RestrictionDisabled,
-			wantChecked:     ui.CheckedStateFalse,
+			wantChecked:     checked.False,
+			wantRestriction: restriction.Disabled,
 			value:           &policy.DefaultGeolocationSetting{Val: 2},
 		},
 		{
 			name:            "ask",
 			nodeName:        "Ask before accessing (recommended)",
 			wantAsk:         true,
-			wantRestriction: ui.RestrictionDisabled,
-			wantChecked:     ui.CheckedStateTrue,
+			wantChecked:     checked.True,
+			wantRestriction: restriction.Disabled,
 			value:           &policy.DefaultGeolocationSetting{Val: 3},
 		},
 	} {
@@ -114,20 +118,18 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 			// The routine will then click the allow button in the dialog.
 			ch := make(chan error, 1)
 			go func() {
-				params := ui.FindParams{
-					Role: ui.RoleTypeButton,
-					Name: "Allow",
-				}
+				allowButton := nodewith.Name("Allow").Role(role.Button)
 
-				if err := policyutil.WaitUntilExistsStatus(ctx, tconn, params, param.wantAsk, 30*time.Second); err != nil {
-					ch <- errors.Wrap(err, "failed to confirm the desired status of the allow button")
-					return
-				}
-
-				// Return if there is no dialog.
-				if !param.wantAsk {
+				if err = ui.WaitUntilExists(allowButton)(ctx); err != nil {
+					if param.wantAsk {
+						s.Error("Allow button not found: ", err)
+					}
 					ch <- nil
 					return
+				}
+
+				if !param.wantAsk {
+					s.Error("Unexpected dialog to ask for geolocation access permission found")
 				}
 
 				// TODO(crbug.com/1197511): investigate why this is needed.
@@ -135,23 +137,8 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 				// won't be registered otherwise.
 				testing.Sleep(ctx, time.Second)
 
-				// Get the allow button.
-				node, err := ui.Find(ctx, tconn, params)
-				if err != nil {
-					ch <- errors.Wrap(err, "failed to find allow button node")
-					return
-				}
-
-				// This button takes a bit before it is clickable.
-				// Keep clicking it until the click is received and the dialog closes.
-				condition := func(ctx context.Context) (bool, error) {
-					exists, err := ui.Exists(ctx, tconn, params)
-					return !exists, err
-				}
-				opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond}
-				if err := node.LeftClickUntil(ctx, condition, &opts); err != nil {
-					ch <- errors.Wrap(err, "failed to click allow button")
-					return
+				if err := ui.LeftClickUntil(allowButton, ui.Gone(allowButton))(ctx); err != nil {
+					s.Fatal("Failed to click the Allow button: ", err)
 				}
 
 				ch <- nil
@@ -168,25 +155,19 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 			}
 
 			// Check if we got an error while requesting the current position.
-			if ec == 1 && param.wantChecked == ui.CheckedStateTrue {
+			if ec == 1 && param.wantChecked == checked.True {
 				s.Error("Failed to get geolocation")
-			} else if ec != 1 && param.wantChecked == ui.CheckedStateFalse {
+			} else if ec != 1 && param.wantChecked == checked.False {
 				s.Error("Getting geolocation wasn't blocked")
 			}
 
-			// Open settings page where the affected toggle button can be found.
-			if err := policyutil.VerifySettingsState(ctx, cr, "chrome://settings/content/location",
-				ui.FindParams{
-					Role: ui.RoleTypeToggleButton,
-					Name: param.nodeName,
-				},
-				ui.FindParams{
-					Attributes: map[string]interface{}{
-						"restriction": param.wantRestriction,
-						"checked":     param.wantChecked,
-					},
-				},
-			); err != nil {
+			if err := policyutil.SettingsPage(ctx, cr, "content/location").
+				SelectNode(ctx, nodewith.
+					Name(param.nodeName).
+					Role(role.ToggleButton)).
+				Restriction(param.wantRestriction).
+				Checked(param.wantChecked).
+				Verify(); err != nil {
 				s.Error("Unexpected settings state: ", err)
 			}
 		})
