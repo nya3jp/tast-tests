@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32dde208_184cfd8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/canva.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-06-01T19:09:20Z",
+      "side": 0,
+      "message": "As UI got changed for the new version of the app, pressing enter key is not required.",
+      "parentUuid": "84a22317_a78a59ce",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 54
+      },
+      "revId": "eacc5a9bb0489346cd40af726a22c366a9f9c024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78cb3ff7_99c28fbb",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-01T17:47:07Z",
       "side": 0,
       "message": "Do all the tests require this replacement to new API DetectAndHandleCloseCrashOrAppNotResponding? and this new way app home page is checked?",
+      "range": {
+        "startLine": 116,
+        "startChar": 10,
+        "endLine": 116,
+        "endChar": 27
+      },
+      "revId": "eacc5a9bb0489346cd40af726a22c366a9f9c024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "defdae95_f301f361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/canva.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-06-01T19:09:20Z",
+      "side": 0,
+      "message": "Not all require the replacement of new API DetectAndHandleCloseCrashOrAppNotResponding. This way of app home page check will be used only for the apps whose home screen page shows an error\nlike this, “error while obtaining UI xml hierarchy file” while using\nUiAutomatorviewer.",
+      "parentUuid": "78cb3ff7_99c28fbb",
       "range": {
         "startLine": 116,
         "startChar": 10,
