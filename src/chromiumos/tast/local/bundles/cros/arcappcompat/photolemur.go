@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // ClamshellTests are placed here.
@@ -40,6 +41,7 @@ func init() {
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel(skipOnX86ARMModels...)),
 		Params: []testing.Param{{
 			Val:               clamshellTestsForPhotolemur,
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -63,6 +65,15 @@ func init() {
 		Timeout: 10 * time.Minute,
 		Vars:    []string{"arcappcompat.Photolemur.username", "arcappcompat.Photolemur.password"},
 	})
+}
+
+// skipOnX86ARMModels is a list of models to be skipped from test runs.
+var skipOnX86ARMModels = []string{
+	"caroline",
+	"nasher360",
+	"kevin",
+	"krane",
+	"lazor",
 }
 
 // Photolemur test uses library for opting into the playstore and installing app.
