@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46553b19_f39f14e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-01T20:12:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ff28518f_2405cceb",
+      "revId": "f07a13a1adfd5596af0e1f700162f494ef54576a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3da578b9_6250d0c8",

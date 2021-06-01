@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "702804ed_4595ae1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-01T20:12:17Z",
+      "side": 1,
+      "message": "lgtm % nit",
+      "revId": "b7bddd1647e40aca796a238435d10f77ef7ae247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "833af040_fcc5d895",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-01T20:12:17Z",
+      "side": 1,
+      "message": "You want all the execution bits, not just any, right? i.e. 0011 still fails that check above.",
+      "range": {
+        "startLine": 334,
+        "startChar": 45,
+        "endLine": 334,
+        "endChar": 47
+      },
+      "revId": "b7bddd1647e40aca796a238435d10f77ef7ae247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
