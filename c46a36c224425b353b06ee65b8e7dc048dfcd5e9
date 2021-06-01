@@ -33,6 +33,24 @@
       "message": "LGTM. Thanks for the finding!",
       "revId": "c46a36c224425b353b06ee65b8e7dc048dfcd5e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b2952b4_d97d3ab0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-06-01T18:03:42Z",
+      "side": 1,
+      "message": "My bad. Took it for granted that old code path would be fine when creating the lacros CL. :p",
+      "parentUuid": "ef599131_9b994053",
+      "revId": "c46a36c224425b353b06ee65b8e7dc048dfcd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
