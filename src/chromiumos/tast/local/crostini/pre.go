@@ -162,26 +162,11 @@ func GetContainerRootfsArtifact(debianVersion vm.ContainerDebianVersion, largeCo
 }
 
 // GetInstallerOptions returns an InstallationOptions struct with data
-// paths, install mode, and debian version set appropriately for the
-// test.
-func GetInstallerOptions(s testingState, isComponent bool, debianVersion vm.ContainerDebianVersion, largeContainer bool, userName string) *cui.InstallationOptions {
-	var mode string
-	if isComponent {
-		mode = cui.Component
-	} else {
-		mode = cui.Dlc
-	}
-
-	var vmPath string
-	if isComponent {
-		vmPath = s.DataPath(vm.ArtifactData())
-	}
-
+// paths, and debian version set appropriately for the test.
+func GetInstallerOptions(s testingState, debianVersion vm.ContainerDebianVersion, largeContainer bool, userName string) *cui.InstallationOptions {
 	iOptions := &cui.InstallationOptions{
-		VMArtifactPath:        vmPath,
 		ContainerMetadataPath: s.DataPath(GetContainerMetadataArtifact(debianVersion, largeContainer)),
 		ContainerRootfsPath:   s.DataPath(GetContainerRootfsArtifact(debianVersion, largeContainer)),
-		Mode:                  mode,
 		DebianVersion:         debianVersion,
 		UserName:              userName,
 	}
@@ -214,37 +199,19 @@ type PreData struct {
 	Keyboard    *input.KeyboardEventWriter
 }
 
-// StartedByComponentStretch ensures that a VM running stretch has
+// StartedByDlcStretch ensures that a VM running stretch has
 // started before the test runs. This precondition has complex
 // requirements to use that are best met using the test parameter
 // generator in params.go.
-// Tip: Run tests with -var=keepState=true to speed up local development
-func StartedByComponentStretch() testing.Precondition { return startedByComponentStretchPre }
-
-// StartedByComponentBuster ensures that a VM running buster has
-// started before the test runs. This precondition has complex
-// requirements to use that are best met using the test parameter
-// generator in params.go.
-// Tip: Run tests with -var=keepState=true to speed up local development
-func StartedByComponentBuster() testing.Precondition { return startedByComponentBusterPre }
-
-// StartedByDlcStretch is like StartedByComponentStretch, except for
-// setting up the VM via DLC.
 // Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByDlcStretch() testing.Precondition { return startedByDlcStretchPre }
 
-// StartedByDlcBuster is like StartedByComponentBuster, except for
-// setting up the VM via DLC.
+// StartedByDlcBuster ensures that a VM running buster has
+// started before the test runs. This precondition has complex
+// requirements to use that are best met using the test parameter
+// generator in params.go.
 // Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByDlcBuster() testing.Precondition { return startedByDlcBusterPre }
-
-// StartedByComponentBusterGaia is similar to StartedByComponentBuster, except for
-// logging in to Chrome using gaia user.
-func StartedByComponentBusterGaia() testing.Precondition { return startedByComponentBusterGaiaPre }
-
-// StartedByComponentStretchGaia is similar to StartedByComponentStretch, except for
-// logging in to Chrome using gaia user.
-func StartedByComponentStretchGaia() testing.Precondition { return startedByComponentStretchGaiaPre }
 
 // StartedByDlcBusterGaia is similar to StartedByDlcBuster, except for
 // logging in to Chrome using gaia user.
@@ -254,24 +221,11 @@ func StartedByDlcBusterGaia() testing.Precondition { return startedByDlcBusterGa
 // logging in to Chrome using gaia user.
 func StartedByDlcStretchGaia() testing.Precondition { return startedByDlcStretchGaiaPre }
 
-// StartedByComponentBusterLargeContainer is similar to StartedByComponentBuster,
-// but will download the large container which has apps (Gedit, Emacs, Eclipse, Android Studio, and Visual Studio) installed.
-func StartedByComponentBusterLargeContainer() testing.Precondition {
-	return startedByComponentBusterLargeContainerPre
-}
-
 // StartedByDlcBusterLargeContainer is similar to StartedByDlcBuster,
 // but will download the large container which has apps (Gedit, Emacs, Eclipse, Android Studio, and Visual Studio) installed.
 func StartedByDlcBusterLargeContainer() testing.Precondition {
 	return startedByDlcBusterLargeContainerPre
 }
-
-type vmSetupMode int
-
-const (
-	component vmSetupMode = iota
-	dlc
-)
 
 type containerType int
 
@@ -287,26 +241,9 @@ const (
 	loginGaia
 )
 
-var startedByComponentStretchPre = &preImpl{
-	name:          "crostini_started_by_component_stretch",
-	timeout:       chrome.LoginTimeout + 7*time.Minute,
-	vmMode:        component,
-	container:     normal,
-	debianVersion: vm.DebianStretch,
-}
-
-var startedByComponentBusterPre = &preImpl{
-	name:          "crostini_started_by_component_buster",
-	timeout:       chrome.LoginTimeout + 7*time.Minute,
-	vmMode:        component,
-	container:     normal,
-	debianVersion: vm.DebianBuster,
-}
-
 var startedByDlcStretchPre = &preImpl{
 	name:          "crostini_started_by_dlc_stretch",
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
-	vmMode:        dlc,
 	container:     normal,
 	debianVersion: vm.DebianStretch,
 }
@@ -314,33 +251,13 @@ var startedByDlcStretchPre = &preImpl{
 var startedByDlcBusterPre = &preImpl{
 	name:          "crostini_started_by_dlc_buster",
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
-	vmMode:        dlc,
 	container:     normal,
 	debianVersion: vm.DebianBuster,
-}
-
-var startedByComponentStretchGaiaPre = &preImpl{
-	name:          "crostini_started_by_component_stretch_gaia",
-	timeout:       chrome.GAIALoginTimeout + 7*time.Minute,
-	vmMode:        component,
-	container:     normal,
-	debianVersion: vm.DebianStretch,
-	loginType:     loginGaia,
-}
-
-var startedByComponentBusterGaiaPre = &preImpl{
-	name:          "crostini_started_by_component_buster_gaia",
-	timeout:       chrome.GAIALoginTimeout + 7*time.Minute,
-	vmMode:        component,
-	container:     normal,
-	debianVersion: vm.DebianBuster,
-	loginType:     loginGaia,
 }
 
 var startedByDlcStretchGaiaPre = &preImpl{
 	name:          "crostini_started_by_dlc_stretch_gaia",
 	timeout:       chrome.GAIALoginTimeout + 7*time.Minute,
-	vmMode:        dlc,
 	container:     normal,
 	debianVersion: vm.DebianStretch,
 	loginType:     loginGaia,
@@ -349,24 +266,14 @@ var startedByDlcStretchGaiaPre = &preImpl{
 var startedByDlcBusterGaiaPre = &preImpl{
 	name:          "crostini_started_by_dlc_buster_gaia",
 	timeout:       chrome.GAIALoginTimeout + 7*time.Minute,
-	vmMode:        dlc,
 	container:     normal,
 	debianVersion: vm.DebianBuster,
 	loginType:     loginGaia,
 }
 
-var startedByComponentBusterLargeContainerPre = &preImpl{
-	name:          "crostini_started_by_component_buster_large_container",
-	timeout:       chrome.LoginTimeout + 10*time.Minute,
-	vmMode:        component,
-	container:     largeContainer,
-	debianVersion: vm.DebianBuster,
-}
-
 var startedByDlcBusterLargeContainerPre = &preImpl{
 	name:          "crostini_started_by_dlc_buster_large_container",
 	timeout:       chrome.LoginTimeout + 10*time.Minute,
-	vmMode:        dlc,
 	container:     largeContainer,
 	debianVersion: vm.DebianBuster,
 }
@@ -375,7 +282,6 @@ var startedByDlcBusterLargeContainerPre = &preImpl{
 type preImpl struct {
 	name          string                    // Name of this precondition (for logging/uniqueing purposes).
 	timeout       time.Duration             // Timeout for completing the precondition.
-	vmMode        vmSetupMode               // Where (component/dlc) the VM comes from.
 	container     containerType             // What type of container (regular or extra-large) to use.
 	debianVersion vm.ContainerDebianVersion // OS version of the container image.
 	cr            *chrome.Chrome
@@ -452,11 +358,6 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	if p.loginType == loginGaia {
 		opts = append(opts, chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")))
 	}
-	if p.vmMode == dlc {
-		opts = append(opts, chrome.EnableFeatures("CrostiniUseDlc"))
-	} else {
-		opts = append(opts, chrome.DisableFeatures("CrostiniUseDlc"))
-	}
 	if useLocalImage {
 		// Retain the user's cryptohome directory and previously installed VM.
 		opts = append(opts, chrome.KeepState())
@@ -486,7 +387,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		}
 	} else {
 		// Install Crostini.
-		iOptions := GetInstallerOptions(s, p.vmMode == component, p.debianVersion, p.container == largeContainer, p.cr.NormalizedUser())
+		iOptions := GetInstallerOptions(s, p.debianVersion, p.container == largeContainer, p.cr.NormalizedUser())
 		if _, err := cui.InstallCrostini(ctx, p.tconn, p.cr, iOptions); err != nil {
 			s.Fatal("Failed to install Crostini: ", err)
 		}
@@ -575,14 +476,8 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 		// Unmount the VM image to prevent later tests from
 		// using it by accident. Otherwise we may have a dlc
 		// test use the component or vice versa.
-		if p.vmMode == component {
-			if err := vm.UnmountComponent(ctx); err != nil {
-				s.Error("Failed to unmount cros-termina component: ", err)
-			}
-		} else {
-			if err := dlcutil.Uninstall(ctx, "termina-dlc"); err != nil {
-				s.Error("Failed to unmount termina-dlc: ", err)
-			}
+		if err := dlcutil.Uninstall(ctx, "termina-dlc"); err != nil {
+			s.Error("Failed to unmount termina-dlc: ", err)
 		}
 
 		if err := vm.DeleteImages(); err != nil {

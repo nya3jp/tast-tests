@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/multivm"
-	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -29,7 +28,7 @@ func init() {
 		}, {
 			Name:              "arc_crostini",
 			Pre:               multivm.ArcCrostiniStarted(),
-			ExtraData:         []string{vm.ArtifactData(), crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
+			ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
 			ExtraHardwareDeps: crostini.CrostiniStable,
 			ExtraSoftwareDeps: []string{"vm_host", "android_vm"},
 		}, {
@@ -39,7 +38,7 @@ func init() {
 		}, {
 			Name:              "crostini",
 			Pre:               multivm.CrostiniStarted(),
-			ExtraData:         []string{vm.ArtifactData(), crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
+			ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
 			ExtraHardwareDeps: crostini.CrostiniStable,
 			ExtraSoftwareDeps: []string{"vm_host"},
 		}},
