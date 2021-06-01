@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfe579ea_82398ca6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-06-01T09:58:48Z",
+      "side": 1,
+      "message": "Got it, sorry for the misunderstanding!\n\nMuch better, thanks for this suggestion!",
+      "parentUuid": "11d7d614_7b14c72b",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 6
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1baa2bc1_bf99c55d",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "Nvm! I forgot about table-driven tests, disregard",
       "parentUuid": "1baa2bc1_bf99c55d",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 4
+      },
+      "revId": "1ea208e31c49ed3c5d5c39d4812894929820b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce3bfaa_67561fe2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-06-01T09:58:48Z",
+      "side": 1,
+      "message": "I changed to parametrized tests, Thanks for the suggestions!",
+      "parentUuid": "6779ae0b_08d229ee",
       "range": {
         "startLine": 39,
         "startChar": 0,
