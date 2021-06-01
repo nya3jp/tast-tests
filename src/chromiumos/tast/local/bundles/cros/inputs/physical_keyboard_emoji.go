@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
@@ -56,7 +57,7 @@ func PhysicalKeyboardEmoji(ctx context.Context, s *testing.State) {
 	emojiPickerFinder := nodewith.Name("Emoji Picker").Role(role.RootWebArea)
 	emojiCharFinder := nodewith.Name(emojiChar).First().Ancestor(emojiPickerFinder)
 
-	ui := uiauto.New(tconn)
+	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
 
 	if err := uiauto.Combine("verify quick emoji input",
 		// Right click input to trigger context menu and select Emoji.
