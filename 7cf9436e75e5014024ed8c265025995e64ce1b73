@@ -16,6 +16,24 @@
       "message": "Checked on laptop and tablet mode. \nThe only failure for the \"hide case\" is a known issue (https://crbug.com/1199312) due to the node being still in the ui tree.",
       "revId": "7cf9436e75e5014024ed8c265025995e64ce1b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a8b4c0_4a7230cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-06-01T10:31:48Z",
+      "side": 1,
+      "message": "I think this comment is important, maybe adding it in the test will be helpful. leave it as a todo or something.",
+      "parentUuid": "64f20b20_dca7e88d",
+      "revId": "7cf9436e75e5014024ed8c265025995e64ce1b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
