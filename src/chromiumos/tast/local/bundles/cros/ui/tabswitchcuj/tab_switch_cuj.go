@@ -97,7 +97,7 @@ func Run(ctx context.Context, s *testing.State) {
 	var cs ash.ConnSource
 
 	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeChromeOS {
-		cr := s.PreValue().(*chrome.Chrome)
+		cr = s.PreValue().(*chrome.Chrome)
 		cs = cr
 	} else {
 		// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
