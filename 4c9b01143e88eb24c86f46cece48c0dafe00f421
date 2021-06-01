@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a005dde_9d5b5d8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-01T23:07:54Z",
+      "side": 1,
+      "message": "Thanks for the explanation. I think it would make more sense to have a separate test that simply tries to call the EC command line tool. It\u0027s currently difficult to know why this tests is parameterized with `true` and `false` without really digging into the details. WDYT?",
+      "parentUuid": "4914e4f3_12ca7063",
+      "revId": "4c9b01143e88eb24c86f46cece48c0dafe00f421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1bdfb59d_af3e4df9",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
         "patchSetId": 2
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "That is because the alternate mode switch occurs only on user login (this was mandated by the Chrome OS security team).",
       "parentUuid": "1bdfb59d_af3e4df9",
+      "revId": "4c9b01143e88eb24c86f46cece48c0dafe00f421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a03c3cc_8d3be0a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-01T23:07:54Z",
+      "side": 1,
+      "message": "Ack. Is this documented somewhere? It might be good to add a comment in the test.",
+      "parentUuid": "365be0ab_63ab4387",
       "revId": "4c9b01143e88eb24c86f46cece48c0dafe00f421",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
