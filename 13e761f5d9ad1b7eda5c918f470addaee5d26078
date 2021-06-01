@@ -16,6 +16,23 @@
       "message": "Thanks a lot for reviewing this CL! PTAL",
       "revId": "13e761f5d9ad1b7eda5c918f470addaee5d26078",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9661992f_187ef8f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-01T06:57:34Z",
+      "side": 1,
+      "message": "LGTM % Please wait for Kyle\u0027s review.",
+      "revId": "13e761f5d9ad1b7eda5c918f470addaee5d26078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
