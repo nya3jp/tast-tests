@@ -156,11 +156,37 @@ func (cv *ChromeVoxConn) SetVoice(ctx context.Context, vd VoiceData) error {
 			if err := cv.Eval(ctx, expr, nil); err != nil {
 				return err
 			}
+
+			// Use a poll to wait for ChromeVox's current voice to update.
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				var actualVoicename string
+				if err := cv.Eval(ctx, "getCurrentVoice()", &actualVoicename); err != nil {
+					return err
+				}
+
+				if actualVoicename != voice.Name {
+					return errors.New("voiceName has not yet been updated yet")
+				}
+
+				return nil
+			}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+				return errors.Wrapf(err, "failed to wait for ChromeVox to update its current voice to: %s", voice.Name)
+			}
+
 			return nil
 		}
 	}
 
 	return errors.Errorf("could not find voice with extension ID: %s and locale: %s", vd.ExtID, vd.Locale)
+}
+
+// TTSEngineData represents data for a TTS background page. ExtensionID specifies
+// the ID of the background page. If |UseOnSpeakWithAudioStream| is true, we
+// listen to onSpeakWithAudioStream when accumulating utterances. Otherwise, we
+// listen to onSpeak.
+type TTSEngineData struct {
+	ExtID                     string
+	UseOnSpeakWithAudioStream bool
 }
 
 // SpeechMonitor represents a connection to a TTS extension background
@@ -169,57 +195,94 @@ type SpeechMonitor struct {
 	conn *chrome.Conn
 }
 
-// NewSpeechMonitor connects to a TTS extension, specified by extID, and
-// starts accumulating utterances. Call Consume to compare expected and actual
-// utterances. If the extension is not ready, the connection will be closed
-// before returning. Otherwise the calling function will close the connection.
-func NewSpeechMonitor(ctx context.Context, c *chrome.Chrome, extID string) (sm *SpeechMonitor, retErr error) {
+// GetRelevantSpeechMonitor searches through all possible connections to TTS
+// background pages and returns a SpeechMonitor for the one that is currently
+// connected to ChromeVox.
+func GetRelevantSpeechMonitor(ctx context.Context, c *chrome.Chrome, cv *ChromeVoxConn, engineData TTSEngineData) (*SpeechMonitor, error) {
+	extID := engineData.ExtID
 	bgURL := chrome.ExtensionBackgroundPageURL(extID)
 	targets, err := c.FindTargets(ctx, chrome.MatchTargetURL(bgURL))
 	if err != nil {
 		return nil, err
 	}
-	if len(targets) > 1 {
-		for _, t := range targets[1:] {
-			// Close all but one instance of the matching background page.
-			// We must do this because because trying to connect when there are multiple
-			// instances triggers the following error:
-			// Error: X targets matched while unique match was expected.
-			// TODO (akihiroota): only close instances that are not tied to the
-			// current profile.
-			c.CloseTarget(ctx, t.TargetID)
-		}
-	}
 
+	// Find and connect to the correct TTS extension background page. For each
+	// potential background page:
+	// 1. Connect to the background page and wait for it to load.
+	// 2. Create a SpeechMonitor for the background page.
+	// 3. Send a test utterance from ChromeVox.
+	// 4. Try to use the SpeechMonitor to consume the utterance. If it doesn't
+	// consume, then we can assume that the current target is not the correct one.
 	var extConn *chrome.Conn
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		extConn, err = c.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
-		return err
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		return nil, errors.Wrap(err, "failed to create a connection to the TTS background page")
-	}
+	for _, t := range targets {
+		// A helper function that will return an error if there was an error with
+		// creating a SpeechMonitor. If this function returns an error, then we will
+		// close extConn and continue to the next target.
+		candidateMonitor, err := func() (*SpeechMonitor, error) {
+			// Use a poll to connect to the target's background page.
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				var err error
+				extConn, err = c.NewConnForTarget(ctx, chrome.MatchTargetID(t.TargetID))
+				return err
+			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+				return nil, errors.Wrap(err, "failed to create a connection to candidate TTS background page")
+			}
 
-	defer func() {
-		if retErr != nil {
+			if err := extConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+				return nil, errors.Wrap(err, "timed out waiting for the TTS engine background page to load")
+			}
+
+			// Create SpeechMonitor.
+			candidateMonitor, err := newSpeechMonitor(ctx, extConn, engineData)
+			if err != nil {
+				return nil, errors.Wrap(err, "could not create a speech monitor")
+			}
+
+			return candidateMonitor, nil
+		}()
+
+		if err != nil {
 			extConn.Close()
+			continue
 		}
-	}()
 
-	if err := extConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
-		return nil, errors.Wrap(err, "timed out waiting for the TTS engine background page to load")
+		// A helper function that will return an error if there was a problem with
+		// candidateMonitor. If this function returns an error, then we will close
+		// candidateMonitor and continue to the next target.
+		if err := func() error {
+			// Send a test utterance from ChromeVox.
+			if err := cv.Eval(ctx, "ChromeVox.tts.speak('Testing');", nil); err != nil {
+				return errors.Wrap(err, "failed to send a test utterance from ChromeVox")
+			}
+
+			// Consume the test utterance.
+			if err := candidateMonitor.consume(ctx, []string{"Testing"}); err != nil {
+				return errors.Wrap(err, "failed to consume the test utterance from ChromeVox")
+			}
+
+			return nil
+		}(); err != nil {
+			candidateMonitor.Close()
+			continue
+		}
+
+		// If we get here, then we found the target we were looking for. Return the
+		// SpeechMonitor for the target.
+		return candidateMonitor, nil
 	}
 
-	if err := extConn.Eval(ctx, `
-		if (!window.testUtterances) {
-	    window.testUtterances = [];
-	    chrome.ttsEngine.onSpeak.addListener(utterance => testUtterances.push(utterance));
-	  }
-`, nil); err != nil {
-		return nil, errors.Wrap(err, "failed to inject code to accumulate utterances")
-	}
+	return nil, errors.Wrap(err, "failed to connect to a TTS background page and create a speech monitor")
+}
 
-	return &SpeechMonitor{extConn}, nil
+// newSpeechMonitor connects to a TTS extension, specified by conn and engineData, and
+// starts accumulating utterances. Call Consume to compare expected and actual
+// utterances. If the extension is not ready, the connection will be closed
+// before returning. Otherwise the calling function will close the connection.
+func newSpeechMonitor(ctx context.Context, conn *chrome.Conn, engineData TTSEngineData) (*SpeechMonitor, error) {
+	if err := injectJavaScriptToAccumulateUtterances(ctx, conn, engineData); err != nil {
+		return nil, errors.Wrap(err, "failed to inject JavaScript to accumulate utterances")
+	}
+	return &SpeechMonitor{conn}, nil
 }
 
 // Close closes the connection to the TTS extension's background page.
@@ -280,4 +343,31 @@ func PressKeysAndConsumeUtterances(ctx context.Context, sm *SpeechMonitor, keySe
 	}
 
 	return nil
+}
+
+// injectJavaScriptToAccumulateUtterances injects JavaScript into conn's background
+// page to accumulate spoken utterances. This function only supports the Google
+// TTS and eSpeak TTS engines. If engineData.UseOnSpeakWithAudioStream is true,
+// then we will listen to onSpeakWithAudioStream when accumulating utterances.
+// Otherwise, we will listen to onSpeak.
+func injectJavaScriptToAccumulateUtterances(ctx context.Context, conn *chrome.Conn, engineData TTSEngineData) error {
+	extID := engineData.ExtID
+	if extID != GoogleTTSExtensionID && extID != ESpeakExtensionID {
+		return errors.Errorf("could not inject JavaScript into the background page of extension with id: %s", extID)
+	}
+	if engineData.UseOnSpeakWithAudioStream {
+		return conn.Eval(ctx, `
+			if (!window.testUtterances) {
+		    window.testUtterances = [];
+		    chrome.ttsEngine.onSpeakWithAudioStream.addListener(utterance => testUtterances.push(utterance));
+		  }
+	`, nil)
+	}
+
+	return conn.Eval(ctx, `
+	if (!window.testUtterances) {
+    window.testUtterances = [];
+    chrome.ttsEngine.onSpeak.addListener(utterance => testUtterances.push(utterance));
+  }
+`, nil)
 }
