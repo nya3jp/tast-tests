@@ -22,6 +22,30 @@
       },
       "revId": "9123df7bc8d9bb30ddaa59a8344026589578b1da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "712adbbe_37d857a4",
+        "filename": "src/chromiumos/tast/local/playbilling/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-01T23:42:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33d98dec_1a65db8f",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 6
+      },
+      "revId": "9123df7bc8d9bb30ddaa59a8344026589578b1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
