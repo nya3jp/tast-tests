@@ -16,6 +16,138 @@
       "message": "Fixed the review comments. Please review the changes.",
       "revId": "a59394bcb57144b329a23381c606a41b325c4ac1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "002bb413_596a5449",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-01T21:25:25Z",
+      "side": 1,
+      "message": "Looks good to me with a few minor changes ",
+      "revId": "a59394bcb57144b329a23381c606a41b325c4ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6017558a_f082487b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-01T21:25:25Z",
+      "side": 1,
+      "message": "nit: Put it in quotes so it\u0027s easier to read\n\nfunctionality of \"Show password\" button to view the password and \"Hide password\" button to hide it on lockscreen",
+      "range": {
+        "startLine": 28,
+        "startChar": 53,
+        "endLine": 28,
+        "endChar": 66
+      },
+      "revId": "a59394bcb57144b329a23381c606a41b325c4ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc1b337c_51cbb687",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-01T21:25:25Z",
+      "side": 1,
+      "message": "nit: use the migrated buganizer version",
+      "range": {
+        "startLine": 56,
+        "startChar": 9,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "a59394bcb57144b329a23381c606a41b325c4ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c55b0fd5_871022be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-01T21:25:25Z",
+      "side": 1,
+      "message": "This is used in a few files. Can it be extracted to a common library function UnlockScreen?",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "a59394bcb57144b329a23381c606a41b325c4ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d54ff4f4_9b8e5583",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_switch_to_password.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-01T21:25:25Z",
+      "side": 1,
+      "message": "This doesn\u0027t really match with the test name. Can you add a bit more detail",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 90
+      },
+      "revId": "a59394bcb57144b329a23381c606a41b325c4ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31b7106f_e839a0e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_switch_to_password.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-01T21:25:25Z",
+      "side": 1,
+      "message": "Same here. Use quotes around button names",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 148
+      },
+      "revId": "a59394bcb57144b329a23381c606a41b325c4ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
