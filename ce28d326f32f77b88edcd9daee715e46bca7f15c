@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d51427cb_52199406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-01T08:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6e6ace5_7fb1dbcb",
+      "revId": "ce28d326f32f77b88edcd9daee715e46bca7f15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c902613_d90a2981",
@@ -70,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfc1014e_5ded87d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-01T08:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c902613_d90a2981",
+      "revId": "ce28d326f32f77b88edcd9daee715e46bca7f15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78c8b0ff_740142b2",
@@ -83,6 +119,24 @@
       "writtenOn": "2021-06-01T07:42:05Z",
       "side": 1,
       "message": "Logging in with real GAIA accounts will introduce flakiness for contacting real servers. It\u0027s great if we can stick with fake accounts.\n\nWhy do we need real GAIA accounts for this test? I suppose this test was working okay before, what was the breaking change?",
+      "revId": "ce28d326f32f77b88edcd9daee715e46bca7f15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe2c0673_a835a0dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-01T08:53:39Z",
+      "side": 1,
+      "message": "Test is failing for a long time. Not sure, how many times things were refactored. It requires Play Store and all our Play Store based tests (PlayStore, Optin, PlayAutoInstall, AuthPerf*, ...) require optin. As it was implemented it does not longer work. At ARC precondition for fake account Play Store was forced to off. I just moved this to one style for all PlayStore based tests.",
+      "parentUuid": "78c8b0ff_740142b2",
       "revId": "ce28d326f32f77b88edcd9daee715e46bca7f15c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
