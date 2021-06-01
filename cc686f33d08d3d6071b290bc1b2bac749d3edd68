@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2a3b801_3bce1497",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-01T22:31:24Z",
+      "side": 1,
+      "message": "Thank you for catching this. I added some helper functions that will close the connection and candidate speech monitor if an error occurs.",
+      "parentUuid": "8efce73d_d9d83e0f",
+      "range": {
+        "startLine": 202,
+        "startChar": 3,
+        "endLine": 204,
+        "endChar": 4
+      },
+      "revId": "cc686f33d08d3d6071b290bc1b2bac749d3edd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41de01fb_aa4e5d8b",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-05-27T01:41:56Z",
       "side": 1,
       "message": "How about re-adding this test to the informational group?",
+      "revId": "cc686f33d08d3d6071b290bc1b2bac749d3edd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83c65244_a58c3dad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-01T22:31:24Z",
+      "side": 1,
+      "message": "Good idea, done.",
+      "parentUuid": "41de01fb_aa4e5d8b",
       "revId": "cc686f33d08d3d6071b290bc1b2bac749d3edd68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
