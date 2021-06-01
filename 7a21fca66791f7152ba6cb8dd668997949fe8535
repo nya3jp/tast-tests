@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "7a21fca66791f7152ba6cb8dd668997949fe8535",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a8fa7a0_69bb9813",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-06-01T17:02:56Z",
+      "side": 1,
+      "message": "LGTM, also please correct the misspelling from Tricium",
+      "revId": "7a21fca66791f7152ba6cb8dd668997949fe8535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
