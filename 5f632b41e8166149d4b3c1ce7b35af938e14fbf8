@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea6b04ff_00c5226f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-01T02:34:39Z",
+      "side": 1,
+      "message": "from https://w3c.github.io/mediacapture-main/#media-track-capabilities.",
+      "range": {
+        "startLine": 28,
+        "startChar": 96,
+        "endLine": 28,
+        "endChar": 97
+      },
+      "revId": "5f632b41e8166149d4b3c1ce7b35af938e14fbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "755fc325_59bbcd1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-01T02:34:39Z",
+      "side": 1,
+      "message": "from https://w3c.github.io/mediacapture-main/#media-track-settings.",
+      "range": {
+        "startLine": 48,
+        "startChar": 111,
+        "endLine": 48,
+        "endChar": 112
+      },
+      "revId": "5f632b41e8166149d4b3c1ce7b35af938e14fbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de5d28a2_1b09d3c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-01T02:34:39Z",
+      "side": 1,
+      "message": "from https://w3c.github.io/mediacapture-main/#ref-for-dom-mediadeviceinfo-11.",
+      "range": {
+        "startLine": 72,
+        "startChar": 41,
+        "endLine": 72,
+        "endChar": 42
+      },
+      "revId": "5f632b41e8166149d4b3c1ce7b35af938e14fbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "850e218e_48487968",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-01T02:34:39Z",
+      "side": 1,
+      "message": "Add comment about it may return nil if the platform don\u0027t support such control",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 16
+      },
+      "revId": "5f632b41e8166149d4b3c1ce7b35af938e14fbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34b9689d_c628f152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-01T02:34:39Z",
+      "side": 1,
+      "message": "Add func for initializing these like:\nfunc newTestParameter(mc mediaControl, ms mediaTrackSettings) {\n  return testParameter{\u0026mc, \u0026ms, []float64{0.0}}\n}",
+      "range": {
+        "startLine": 410,
+        "startChar": 2,
+        "endLine": 410,
+        "endChar": 68
+      },
+      "revId": "5f632b41e8166149d4b3c1ce7b35af938e14fbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "816ae254_9cf1ac72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-01T02:34:39Z",
+      "side": 1,
+      "message": "Move tolerance into |mediaControl| and have a |defaultControl| base class for determine default value(0.0) like:\n\ntype mediaControl interface {                                                        \n        getTolerance() float64                                                  \n}                                                                               \n                                                                                \ntype defaultControl struct {                                               \n        mediaControl\n}                                                                               \n                                                                                \nfunc (ctl *defaultControl) tolerance() float64 {                                \n        return 0.0                                                              \n}                                                                               \n                                                                                \ntype panControl struct {                                                        \n        defaultControl                                                          \n}                                                                               \n                                                                                \ntype exposureTimeControl struct {                                               \n        defaultControl                                                          \n}                                                                               \n                                                                                \nfunc (ctl *exposureTimeControl) tolerance() float64 {                           \n        return 1.0                                                              \n}",
+      "range": {
+        "startLine": 412,
+        "startChar": 47,
+        "endLine": 412,
+        "endChar": 50
+      },
+      "revId": "5f632b41e8166149d4b3c1ce7b35af938e14fbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2861847_a27a9f11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-01T02:34:39Z",
+      "side": 1,
+      "message": "Add comment before this line:\n// Skip unsupported control.",
+      "range": {
+        "startLine": 433,
+        "startChar": 3,
+        "endLine": 433,
+        "endChar": 11
+      },
+      "revId": "5f632b41e8166149d4b3c1ce7b35af938e14fbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57f1e46e_302cd87f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-01T02:34:39Z",
+      "side": 1,
+      "message": "Do do per control specialized logic in polymorphic method by adding new |getTestVaules| method in |mediaControl|. Get |testValues| from |getTestVaules|.",
+      "range": {
+        "startLine": 444,
+        "startChar": 2,
+        "endLine": 455,
+        "endChar": 3
+      },
+      "revId": "5f632b41e8166149d4b3c1ce7b35af938e14fbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b443434_946efa2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-01T02:34:39Z",
+      "side": 1,
+      "message": "What\u0027s the \"conflict parameters\" you mean here?",
+      "range": {
+        "startLine": 461,
+        "startChar": 2,
+        "endLine": 461,
+        "endChar": 45
+      },
+      "revId": "5f632b41e8166149d4b3c1ce7b35af938e14fbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b21c36b0_7ea62147",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-01T02:34:39Z",
+      "side": 1,
+      "message": "Move the logics here into per control method.",
+      "range": {
+        "startLine": 462,
+        "startChar": 2,
+        "endLine": 470,
+        "endChar": 3
+      },
+      "revId": "5f632b41e8166149d4b3c1ce7b35af938e14fbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28306fb9_8bb50c5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-01T02:34:39Z",
+      "side": 1,
+      "message": "Move the logics here into per control method if possible.",
+      "range": {
+        "startLine": 472,
+        "startChar": 1,
+        "endLine": 486,
+        "endChar": 2
+      },
+      "revId": "5f632b41e8166149d4b3c1ce7b35af938e14fbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
