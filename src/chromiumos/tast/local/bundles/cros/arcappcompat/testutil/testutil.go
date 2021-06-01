@@ -755,3 +755,140 @@ func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appP
 		s.Error("appPkgName doesn't exist: ", err)
 	}
 }
+
+// getAppCoordinates func provides coordinates of the app.
+func getAppCoordinates(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Device, appPkgName string) (int, int, error) {
+	var (
+		xCoordinate int
+		yCoordinate int
+	)
+	// To get app activities.
+	out, err := a.Command(ctx, "am", "stack", "list").Output()
+	if err != nil {
+		s.Fatal("Failed to get stack list: ", err)
+	}
+	output := string(out)
+	coordinatePrefix := "bounds="
+	splitOutput := strings.Split(output, "\n")
+	for splitLine := range splitOutput {
+		if strings.Contains(splitOutput[splitLine], appPkgName) {
+			splitCoordinate := strings.Split(splitOutput[splitLine], " ")
+			for CoordinateInfo := range splitCoordinate {
+				if strings.Contains(splitCoordinate[CoordinateInfo], coordinatePrefix) {
+					s.Log("Coordinates: ", splitCoordinate[CoordinateInfo])
+					x1coordinateWithOutTrim := strings.Split(splitCoordinate[CoordinateInfo], ",")[0]
+					x1Coordinate := strings.Split(x1coordinateWithOutTrim, "[")[1]
+					x1CoordinateValue, err := strconv.Atoi(x1Coordinate)
+					if err != nil {
+						s.Fatal("Failed to get x1CoordinateValue: ", err)
+					}
+					y1coordinateWithOutTrim := strings.Split(splitCoordinate[CoordinateInfo], ",")[1]
+					y1Coordinate := strings.Split(y1coordinateWithOutTrim, "]")[0]
+					y1CoordinateValue, err := strconv.Atoi(y1Coordinate)
+					if err != nil {
+						s.Fatal("Failed to get y1CoordinateValue: ", err)
+					}
+					x2coordinateWithOutTrim := strings.Split(splitCoordinate[CoordinateInfo], ",")[1]
+					x2Coordinate := strings.Split(x2coordinateWithOutTrim, "[")[1]
+					x2CoordinateValue, err := strconv.Atoi(x2Coordinate)
+					if err != nil {
+						s.Fatal("Failed to get x2CoordinateValue: ", err)
+					}
+					y2coordinateWithOutTrim := strings.Split(splitCoordinate[CoordinateInfo], ",")[2]
+					y2Coordinate := strings.Split(y2coordinateWithOutTrim, "]")[0]
+					y2CoordinateValue, err := strconv.Atoi(y2Coordinate)
+					if err != nil {
+						s.Fatal("Failed to get y2CoordinateValue: ", err)
+					}
+					xCoordinate = x2CoordinateValue - x1CoordinateValue
+					yCoordinate = y2CoordinateValue - y1CoordinateValue
+					break
+				}
+			}
+		}
+	}
+	return xCoordinate, yCoordinate, err
+}
+
+// getAppWindowInfo func provides coordinates of the app.
+func getAppWindowInfo(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Device, appPkgName string) (string, error) {
+
+	var windowInfo string
+
+	// To get app activities.
+	out, err := a.Command(ctx, "dumpsys", "activity", "activities").Output()
+	if err != nil {
+		s.Fatal("Failed to get dumpsys activity activities: ", err)
+	}
+	output := string(out)
+	TaskRecordPrefix := "* Task"
+	windowStatePrefixForARCP := "WindowState"
+	windowStatePrefixForARCR := "mode="
+	var arcpFound bool
+	var arcrFound bool
+
+	splitOutput := strings.Split(output, "\n")
+	for splitLine := range splitOutput {
+		if strings.Contains(splitOutput[splitLine], appPkgName) && strings.Contains(splitOutput[splitLine], TaskRecordPrefix) {
+			splitWindowInfo := strings.Split(splitOutput[splitLine], " ")
+			for appWindowInfo := range splitWindowInfo {
+				if !arcpFound && strings.Contains(splitWindowInfo[appWindowInfo], windowStatePrefixForARCP) {
+					s.Log("windowInfo raw message ARCP: ", splitWindowInfo[appWindowInfo])
+					windowInfoForARCP := strings.Split(splitWindowInfo[appWindowInfo], "{")[1]
+					s.Log("windowInfoARCP: ", windowInfoForARCP)
+					windowInfo = windowInfoForARCP
+					arcpFound = true
+					break
+				}
+				if !arcrFound && strings.Contains(splitWindowInfo[appWindowInfo], windowStatePrefixForARCR) {
+					s.Log("windowInfo raw message ARCR: ", splitWindowInfo[appWindowInfo])
+					windowInfoForARCR := strings.Split(splitWindowInfo[appWindowInfo], "=")[1]
+					s.Log("windowInfoARCR: ", windowInfoForARCR)
+					windowInfo = windowInfoForARCR
+					arcrFound = true
+					break
+				}
+			}
+		}
+	}
+	return windowInfo, err
+}
+
+// SkipModelsInTabletMode is a list of models to be skipped from tablet mode runs.
+var SkipModelsInTabletMode = []string{
+	"sarien",
+	"elemi",
+	"berknip",
+	"dratini",
+
+	// grunt:
+	"careena",
+	"kasumi",
+	"treeya",
+	"grunt",
+	"barla",
+	"aleena",
+	"liara",
+	"nuwani",
+
+	// octopus:
+	"bluebird",
+	"apel",
+	"blooglet",
+	"blorb",
+	"bobba",
+	"casta",
+	"dorp",
+	"droid",
+	"fleex",
+	"foob",
+	"garfour",
+	"garg",
+	"laser14",
+	"lick",
+	"mimrock",
+	"nospike",
+	"orbatrix",
+	"phaser",
+	"sparky",
+}
