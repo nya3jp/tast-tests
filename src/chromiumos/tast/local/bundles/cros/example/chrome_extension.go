@@ -23,7 +23,7 @@ func init() {
 		Contacts:     []string{"nya@chromium.org", "tast-owners@google.com"},
 		Data:         []string{"chrome_extension_manifest.json"},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
