@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "375c234c_c6e5022d",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-01T18:10:29Z",
+      "side": 1,
+      "message": "I think that the Unmarshaler pattern makes the library more complicated than it needs to be. Per go/go-style/guide#simplicity, I think we should avoid the abstraction if it is not necessary.\n\nTo me, the Unmarshaler interface would be more necessary if the data were more complex, such as if it could be nested arbitrarily deeply and we needed to support several different methods for unmarshaling the same data, as we see with JSON. But in this case, we\u0027re just parsing a []byte into strings and shallow structs. I think that we could make the following changes without any loss, including loss of testability:\n\n    // Current PS, using Unmarshaler pattern\n    func (u *FWCopy) UnmarshalECTool(data []byte) error\n    func (ver *ECToolVersion) UnmarshalECToolVersion(data []byte) error\n    \n    // What I suggest\n    func ParseECTool(data []byte) (FWCopy, error)\n    func ParseECToolVersion(data []byte) (ECToolVersion, error)\n\nI remember you mentioned this pattern when we GVC\u0027d on Thursday afternoon, Craig, but I don\u0027t remember why you recommended this pattern. Is there some complexity that I\u0027m missing?",
+      "revId": "3d2db4df902abf37e2fee8b23b18eba7280f0e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e906fc2_ac0a0338",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-01T18:10:29Z",
+      "side": 1,
+      "message": "nit/typo: \"unmarshals\"",
+      "range": {
+        "startLine": 43,
+        "startChar": 19,
+        "endLine": 43,
+        "endChar": 28
+      },
+      "revId": "3d2db4df902abf37e2fee8b23b18eba7280f0e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abf35dbe_2bfc7267",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-01T18:10:29Z",
+      "side": 1,
+      "message": "nit/style: Per go/go-code-review-comments#line-length, \"break lines because of the semantics of what you\u0027re writing (as a general rule) and not because of the length of the line.\" I recommend removing this linebreak. Ditto L147.",
+      "revId": "3d2db4df902abf37e2fee8b23b18eba7280f0e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "189b64a5_3ad27f0e",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-01T18:10:29Z",
+      "side": 1,
+      "message": "nit/style: No need to cast as a string, since output is already a []byte which can be formatted by %q",
+      "range": {
+        "startLine": 145,
+        "startChar": 52,
+        "endLine": 145,
+        "endChar": 58
+      },
+      "revId": "3d2db4df902abf37e2fee8b23b18eba7280f0e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dceb4d59_c222351f",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-01T18:10:29Z",
+      "side": 1,
+      "message": "nit/style: No need to cast as a string, since ver.Active can already be formatted by %q",
+      "range": {
+        "startLine": 166,
+        "startChar": 54,
+        "endLine": 166,
+        "endChar": 60
+      },
+      "revId": "3d2db4df902abf37e2fee8b23b18eba7280f0e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
