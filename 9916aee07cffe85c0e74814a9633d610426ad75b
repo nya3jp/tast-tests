@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "500f9c65_93e79a16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-01T16:04:18Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "9916aee07cffe85c0e74814a9633d610426ad75b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1ee5cee_b16674da",
@@ -37,6 +54,23 @@
         "endLine": 31,
         "endChar": 45
       },
+      "revId": "9916aee07cffe85c0e74814a9633d610426ad75b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e4a6392_c6facd18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_moderate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-01T16:04:18Z",
+      "side": 1,
+      "message": "I would make this consistent with memory_stress_basic.go. Either move the log into the var check on line 82, or change memory_stress_basic.go to log outside of the check. Same with useHugePages",
       "revId": "9916aee07cffe85c0e74814a9633d610426ad75b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
