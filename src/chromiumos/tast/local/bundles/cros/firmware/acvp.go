@@ -205,6 +205,16 @@ func init() {
 				"ecdsa-sigver-test.json",
 				"ecdsa-sigver-expected.json",
 			},
+		}, {
+			Name: "u2f_hmac",
+			Val: data{
+				inputFile:    "U2F_request_HMAC-SHA2-256_555822.json",
+				expectedFile: "U2F_expected_HMAC-SHA2-256_555822.json",
+			},
+			ExtraData: []string{
+				"U2F_request_HMAC-SHA2-256_555822.json",
+				"U2F_expected_HMAC-SHA2-256_555822.json",
+			},
 		}},
 		Timeout: time.Hour * 10,
 	})
@@ -1101,8 +1111,12 @@ func ACVP(ctx context.Context, s *testing.State) {
 		if v.Mode != "" {
 			outResult["mode"] = v.Mode
 		}
-
-		outResult["testGroups"] = replyGroups
+		var r interface{}
+		err := json.Unmarshal(replyGroups, &r)
+		if err != nil {
+			s.Fatal("Can't unmarshal replyGroups from acvpTool: ", err)
+		}
+		outResult["testGroups"] = r
 		outResultBytes, err := json.MarshalIndent([]interface{}{a, outResult}, "", "    ")
 		if err != nil {
 			s.Fatal("Can't marshal out results interface to bytes")
