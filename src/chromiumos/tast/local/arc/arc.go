@@ -569,6 +569,14 @@ func (a *ARC) WaitForPackages(ctx context.Context, packages []string) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		pkgs, err := a.InstalledPackages(ctx)
 		if err != nil {
+			// On ARCVM package service may not be running yet. Wait until it's available.
+			vmEnabled, vmerr := VMEnabled()
+			if vmerr != nil {
+				return errors.Wrap(vmerr, "failed to check if VM is enabled")
+			}
+			if vmEnabled && strings.Contains(err.Error(), "package service not running") {
+				return err
+			}
 			return testing.PollBreak(err)
 		}
 
