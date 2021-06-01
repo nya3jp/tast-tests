@@ -15,7 +15,6 @@ import (
 	"time"
 
 	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
@@ -75,54 +74,51 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     "playBillingFixture",
-		Desc:     "The fixture builds on arcBootedForPlayBilling but ensures the Play Billing PWA is started and the APK is sideloaded",
-		Impl:     &playBillingFixture{},
-		Contacts: []string{"benreich@chromium", "jshikaram@chromium.org"},
-		Parent:   "arcBootedForPlayBilling",
-		Vars:     []string{assetLinksVar},
+		Name:         "playBillingFixture",
+		Desc:         "The fixture builds on arcBootedForPlayBilling but ensures the Play Billing PWA is started and the APK is sideloaded",
+		Impl:         &playBillingFixture{},
+		Contacts:     []string{"benreich@chromium", "jshikaram@chromium.org"},
+		Parent:       "arcBootedForPlayBilling",
+		Vars:         []string{assetLinksVar},
+		SetUpTimeout: 2 * time.Minute,
 	})
 }
 
 type playBillingFixture struct {
-	arcDevice   *arc.ARC
-	uiAutomator *ui.Device
-	cr          *chrome.Chrome
-	pwaServer   *http.Server
-	pwaDir      string
+	pwaServer *http.Server
+	pwaDir    string
+}
+
+// The FixtData object is made available to users of this fixture via:
+//
+//	func DoSomething(ctx context.Context, s *testing.State) {
+//		d := s.FixtValue().(playbilling.FixtData)
+//		...
+//	}
+type FixtData struct {
+	ARC     *arc.ARC
+	Chrome  *chrome.Chrome
+	TestApp *TestApp
 }
 
 func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	f.arcDevice = s.ParentValue().(*arc.PreData).ARC
-	f.cr = s.ParentValue().(*arc.PreData).Chrome
+	arcDevice := s.ParentValue().(*arc.PreData).ARC
+	cr := s.ParentValue().(*arc.PreData).Chrome
 
 	// TODO(crbug/1127165): Move this to the fixture once data is supported.
-	const (
-		prebuiltLocalDataPath = "/usr/local/tast/data/chromiumos/tast/local/bundles/cros/arc/data"
-		builtLocalDataPath    = "../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/data"
-	)
-
-	// Use the built local data path if it exists, and fall back to the prebuilt data path otherwise.
-	pathToUse := builtLocalDataPath
-	testFileCheck := filepath.Join(builtLocalDataPath, pwaFiles[0])
-	if _, err := os.Stat(testFileCheck); os.IsNotExist(err) {
-		pathToUse = prebuiltLocalDataPath
-	} else if err != nil {
-		s.Fatal("Failed to check if local data path exists: ", err)
-	}
+	const localDataPath = "/usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/arc/data"
 
 	// Install the test APK.
-	if err := f.arcDevice.Install(ctx, filepath.Join(pathToUse, apk)); err != nil {
+	if err := arcDevice.Install(ctx, filepath.Join(localDataPath, apk)); err != nil {
 		s.Fatal("Failed to install the APK: ", err)
 	}
 
-	uiAutomator, err := f.arcDevice.NewUIDevice(ctx)
+	uiAutomator, err := arcDevice.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed to initialize UI Automator: ", err)
 	}
-	f.uiAutomator = uiAutomator
 
-	if err := f.arcDevice.WaitIntentHelper(ctx); err != nil {
+	if err := arcDevice.WaitIntentHelper(ctx); err != nil {
 		s.Fatal("Failed to wait for intent helper: ", err)
 	}
 
@@ -131,7 +127,7 @@ func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		s.Fatal("Failed to create temporary directory for Play Billing PWA: ", err)
 	}
 	for _, name := range pwaFiles {
-		dataFilePath := filepath.Join(pathToUse, name)
+		dataFilePath := filepath.Join(localDataPath, name)
 		pwaFilePath := filepath.Join(f.pwaDir, strings.TrimPrefix(name, "play_billing_"))
 		if err := fsutil.CopyFile(dataFilePath, pwaFilePath); err != nil {
 			s.Fatalf("Failed to copy extension file %q: %v", name, err)
@@ -166,13 +162,12 @@ func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		}
 	}()
 
-	// Prevent the arc and chrome package's New and Close functions from
-	// being called while this playBillingFixture is active.
-	arc.Lock()
-	chrome.Lock()
+	testApp, err := NewTestApp(ctx, cr, arcDevice, uiAutomator)
+	if err != nil {
+		s.Fatal("Failed trying to setup test app: ", err)
+	}
 
-	// TODO: Return back instance of PWA once struct has been created.
-	return nil
+	return &FixtData{arcDevice, cr, testApp}
 }
 
 func (f *playBillingFixture) Reset(ctx context.Context) error {
