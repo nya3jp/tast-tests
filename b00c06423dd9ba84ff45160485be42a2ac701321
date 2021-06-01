@@ -16,6 +16,29 @@
       "message": "Tast owners usually review after team member review.",
       "revId": "b00c06423dd9ba84ff45160485be42a2ac701321",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ad0520_41b31a8f",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2021-06-01T21:55:10Z",
+      "side": 1,
+      "message": "I\u0027m not a golang style expert, but seems like a bool is good enough for this?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 1
+      },
+      "revId": "b00c06423dd9ba84ff45160485be42a2ac701321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
