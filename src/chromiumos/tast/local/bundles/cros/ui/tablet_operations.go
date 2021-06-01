@@ -41,6 +41,9 @@ func init() {
 			hwdep.InternalDisplay(),
 			// Exclude sparky360 as its touchscreen often doesn't work well. See b/176940351.
 			hwdep.SkipOnModel("sparky360"),
+			// Scarlet devices are failing temporarily, possibly because of the display
+			// rotation failures. "gru" is the platform name for scarlet devices. See b/189704582.
+			hwdep.SkipOnPlatform("gru"),
 		),
 		Params: []testing.Param{
 			{
