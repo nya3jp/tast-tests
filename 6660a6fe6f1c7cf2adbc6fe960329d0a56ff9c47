@@ -162,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7546e001_a871bab0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-01T17:25:35Z",
+      "side": 1,
+      "message": "I think without comparing old and new PIDs this CL is incomplete even though it is better than just sleeping. You don\u0027t really check that process is restarted, you just check that there is some typecd process running.\n\nAt least you potentially introduce a flakiness. Your second CL might be reverted and CQ will be running flaky test for some period of time. Even though this is not your case, but if your test was part of the Chrome CQ, it might be possible that when we uprev ChromeOS version for Chrome, only your first CL was \"synced\" with Chrome and Chrome CQ could be flaky/broken because of that. So I\u0027d recommend to have only 1 CL with a complete fix.",
+      "parentUuid": "4bc68ec2_d12c82e7",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 78
+      },
+      "revId": "6660a6fe6f1c7cf2adbc6fe960329d0a56ff9c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da79e997_de8e1b00",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
         "patchSetId": 2
