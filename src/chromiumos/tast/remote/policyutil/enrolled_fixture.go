@@ -7,6 +7,7 @@ package policyutil
 import (
 	"context"
 	"encoding/json"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/rpc"
 	ps "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/ssh"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
@@ -87,6 +89,13 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	}); err != nil {
 		s.Fatal("Failed to create temporary directory for FakeDMS: ", err)
 	}
+
+	// Always dump the logs.
+	defer func() {
+		if err := linuxssh.GetFile(ctx, s.DUT().Conn(), fakedms.EnrollmentFakeDMSDir, filepath.Join(s.OutDir(), "EnrollmentFakeDMSDir")); err != nil {
+			s.Log("Failed to dump ")
+		}
+	}()
 
 	pJSON, err := json.Marshal(fakedms.NewPolicyBlob())
 	if err != nil {
