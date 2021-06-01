@@ -6,6 +6,7 @@ package benchmark
 
 import (
 	"context"
+	"path/filepath"
 	"strconv"
 	"time"
 
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/benchmark/setup"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -94,6 +96,10 @@ func GeekbenchPublicAndroidApp(ctx context.Context, s *testing.State) {
 		Interval: resultPollInterval,
 	}); err != nil {
 		s.Fatal("Failed to run Geekbench: ", err)
+	}
+
+	if err := screenshot.CaptureChrome(ctx, cr, filepath.Join(s.OutDir(), "result.png")); err != nil {
+		s.Error("Failed to take screenshot: ", err)
 	}
 
 	if err := readAndSaveResult(ctx, device, s.OutDir()); err != nil {
