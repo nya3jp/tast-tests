@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
@@ -105,10 +104,8 @@ func testCancelTimer(ctx context.Context, app *cca.App) error {
 	if err := app.ClickShutter(ctx); err != nil {
 		return err
 	}
-	if taking, err := app.GetState(ctx, "taking"); err != nil {
+	if err := app.WaitForState(ctx, "taking", false); err != nil {
 		return err
-	} else if taking {
-		return errors.New("shutter is not cancelled after clicking cancel shutter")
 	}
 	return nil
 }

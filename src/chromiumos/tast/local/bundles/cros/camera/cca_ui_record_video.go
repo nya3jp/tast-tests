@@ -298,10 +298,8 @@ func testRecordCancelTimer(ctx context.Context, app *cca.App) error {
 	if err := app.ClickShutter(ctx); err != nil {
 		return err
 	}
-	if taking, err := app.GetState(ctx, "taking"); err != nil {
+	if err := app.WaitForState(ctx, "taking", false); err != nil {
 		return err
-	} else if taking {
-		return errors.New("shutter is not cancelled after clicking cancel shutter")
 	}
 	return nil
 }
