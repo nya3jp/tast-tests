@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e778829c_5cb7d35d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-01T05:52:29Z",
+      "side": 1,
+      "message": "(Missed this one in previous round) Thanks for the suggestion. This would be a good test to add. I created b/189797206 for adding this.",
+      "parentUuid": "96eca8ed_2496f8ef",
+      "revId": "0459204798938a863e56e80c48c38dcee1d7da20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "34d6a537_f13729d8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wake_on_disconnect.go",
         "patchSetId": 6
