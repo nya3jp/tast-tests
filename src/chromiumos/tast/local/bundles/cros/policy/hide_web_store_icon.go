@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -52,6 +53,8 @@ func HideWebStoreIcon(ctx context.Context, s *testing.State) {
 		policies []policy.Policy // policies is the policies that will be set.
 	}{
 		{
+			// This case fails due to https://crbug.com/1199312 -> node is
+			// present in the UI tree but not visible in the UI.
 			name:     "hide",
 			wantIcon: false,
 			policies: []policy.Policy{pinWebStoreApp, &policy.HideWebStoreIcon{Val: true}},
@@ -80,19 +83,27 @@ func HideWebStoreIcon(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			// Open Launcher and go to Apps list view page.
-			// Tried to use launcher.OpenExpandedView(tconn) but it seems to be flaky, after some testing
-			// it seems to be mostly flaky at ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps).
+			tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to get tablet mode status: ", err)
+			}
+
 			uia := uiauto.New(tconn)
-			if err := uiauto.Combine("Open Launcher and go to Expanded Apps list view",
-				uia.WithInterval(500*time.Millisecond).LeftClickUntil(
-					nodewith.Name("Launcher").ClassName("ash/HomeButton"),
-					uia.Exists(nodewith.ClassName("AppsContainerView"))),
-				uia.FocusAndWait(nodewith.Name("Expand to all apps").ClassName("ExpandArrowView")),
-				uia.LeftClick(nodewith.Name("Expand to all apps").ClassName("ExpandArrowView")),
-				uia.WaitUntilExists(nodewith.ClassName("AppsGridView")),
-			)(ctx); err != nil {
-				s.Fatal("Failed to open Expanded Apps list view: ", err)
+			// In desktop mode user needs to bring up the application grid.
+			// In tablet mode the application grid is already up.
+			if !tabletMode {
+				// Open Launcher and go to Apps list view page.
+				// Tried to use launcher.OpenExpandedView(tconn) but it seems to be flaky, after some testing
+				// it seems to be mostly flaky at ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps).
+				if err := uiauto.Combine("Open Launcher and go to Expanded Apps list view",
+					uia.WithInterval(500*time.Millisecond).LeftClickUntil(
+						nodewith.Name("Launcher").ClassName("ash/HomeButton"),
+						uia.Exists(nodewith.Name("Expand to all apps").ClassName("ExpandArrowView"))),
+					uia.LeftClick(nodewith.Name("Expand to all apps").ClassName("ExpandArrowView")),
+					uia.WaitUntilExists(nodewith.ClassName("AppsGridView")),
+				)(ctx); err != nil {
+					s.Fatal("Failed to open Expanded Apps list view: ", err)
+				}
 			}
 
 			appName := apps.WebStore.Name
