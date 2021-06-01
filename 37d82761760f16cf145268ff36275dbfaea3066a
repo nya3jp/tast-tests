@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9aa4939_b21f9b23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-01T07:54:34Z",
+      "side": 1,
+      "message": "Nice that Judy found a way to make it work with --enable-features.\n",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "736adba0_418fed50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-01T07:54:34Z",
+      "side": 1,
+      "message": "7 mins sounds long, assuming that we essentially just need to login twice. How did you compute this number?",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6138c091_b1ff124b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-01T07:54:34Z",
+      "side": 1,
+      "message": "Why do we need a real GAIA account? Doesn\u0027t it work with fake accounts?",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa0df92_ec341476",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-01T07:54:34Z",
+      "side": 1,
+      "message": "Do we need chrome.RemoveNotification(false) in the first login?",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d4dbffc_06093175",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-01T07:54:34Z",
+      "side": 1,
+      "message": "This deferred statement is called at the end of the test, but we want to do so before the next chrome.New call.\n\nOne way to correct this is to wrap code in anonymous function call:\n\n func FullRestoreFilesappReboot(ctx context.Context, s *testing.State) {\n   func() {\n     cr, err :\u003d chrome.New(...)\n     if err !\u003d nil { ... }\n     defer cr.Close(ctx)\n\n     ...\n   }()\n\n   func() {\n     cr, err :\u003d chrome.New(...)\n     if err !\u003d nil { ... }\n     defer cr.Close(ctx)\n\n     ...\n   }()\n }",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a72f2ab6_790ac4af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-01T07:54:34Z",
+      "side": 1,
+      "message": "It\u0027s nice to avoid sleep if possible.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#Sleep\n\nDo you know any condition we can poll?\n\nIf not, could you at least clarify in code comments how you computed the \"2.5 seconds\" threshold?",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8dca1a4_94821004",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-01T07:54:34Z",
+      "side": 1,
+      "message": "defer cr.Close(ctx) is missing.",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ffb7c0_7baa6f9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-01T07:54:34Z",
+      "side": 1,
+      "message": "Please remove this commented out line.",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
