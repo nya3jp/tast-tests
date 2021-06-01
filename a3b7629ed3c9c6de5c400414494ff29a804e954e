@@ -117,6 +117,30 @@
       },
       "revId": "a3b7629ed3c9c6de5c400414494ff29a804e954e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f61e9574_71a80cc5",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-01T02:19:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "087553de_f2b24a5c",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 2
+      },
+      "revId": "a3b7629ed3c9c6de5c400414494ff29a804e954e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
