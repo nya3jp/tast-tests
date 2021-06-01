@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ecd0921_78f58e1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-01T20:24:03Z",
+      "side": 1,
+      "message": "LGTM with nits",
+      "revId": "42d3d763412c294c81a723df5b275c6a4c480cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1799f62e_f732ba0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-01T20:24:03Z",
+      "side": 1,
+      "message": "nit/style: No need to assign a variable. Simpler would be:\n\n    if s.Param().(bool) {\n        return\n    }\n\nExample on Playground: https://play.golang.com/p/9pOv4myNObc",
+      "revId": "42d3d763412c294c81a723df5b275c6a4c480cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bc08563_df81d3be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-01T20:24:03Z",
+      "side": 1,
+      "message": "nit/consistency: \"Signin\", not \"SignIn\"",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "42d3d763412c294c81a723df5b275c6a4c480cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54fa6975_ceb3744d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-01T20:24:03Z",
+      "side": 1,
+      "message": "Is this the same testConn instance as before? If not, I think you\u0027ll need to re-defer testConn.Close() to ensure that this one closes.",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "42d3d763412c294c81a723df5b275c6a4c480cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
