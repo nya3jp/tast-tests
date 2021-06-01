@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9432788_46e09f5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-01T16:54:45Z",
+      "side": 1,
+      "message": "I\u0027d prefer to check it in this CL, because if let\u0027s say typecd takes some time to stop, we might catch the same typecd process in the testing.Poll. If that is the case, then this CL itself introduces a bug, so we should not land it even with a follow up CL.",
+      "parentUuid": "02a2373b_3f5d41b8",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 78
+      },
+      "revId": "6660a6fe6f1c7cf2adbc6fe960329d0a56ff9c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da79e997_de8e1b00",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
         "patchSetId": 2
