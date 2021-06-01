@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d220ba90_e183b755",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hammerd/doc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2021-06-01T12:27:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdde8874_11fb49fd",
+      "revId": "71ac4e9c238d3287132d7725f27cd6fb940cd994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22271f72_c4c12c18",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-06-01T09:20:31Z",
       "side": 1,
       "message": "nit: place the . at the end of the comment line.",
+      "revId": "71ac4e9c238d3287132d7725f27cd6fb940cd994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84d2442c_d16480ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hammerd/triggered_on_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2021-06-01T12:27:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22271f72_c4c12c18",
       "revId": "71ac4e9c238d3287132d7725f27cd6fb940cd994",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70d82bb0_bfffa62a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hammerd/triggered_on_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2021-06-01T12:27:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba2f0b9b_a683894a",
+      "revId": "71ac4e9c238d3287132d7725f27cd6fb940cd994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ba27152_88760da7",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-06-01T09:20:31Z",
       "side": 1,
       "message": "nit: . missing",
+      "revId": "71ac4e9c238d3287132d7725f27cd6fb940cd994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61f16e84_9c6a2be2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hammerd/triggered_on_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2021-06-01T12:27:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ba27152_88760da7",
       "revId": "71ac4e9c238d3287132d7725f27cd6fb940cd994",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
