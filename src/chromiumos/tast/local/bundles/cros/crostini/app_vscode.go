@@ -13,11 +13,13 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -48,6 +50,8 @@ func AppVscode(ctx context.Context, s *testing.State) {
 	keyboard := s.PreValue().(crostini.PreData).Keyboard
 	cont := s.PreValue().(crostini.PreData).Container
 
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 90*time.Second)
@@ -74,32 +78,46 @@ func AppVscode(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := testCreateFileWithVSCode(ctx, terminalApp, keyboard, tconn, cont); err != nil {
+	// Cursor blinking breaks screenshots.
+	cont.WriteFile(ctx, ".config/Code/User/settings.json", `{"editor.cursorBlinking": "solid"}`)
+
+	d, err := screenshot.NewDifferFromChrome(ctx, s, cr, screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: 666, WindowHeightDP: 714}})
+	if err != nil {
+		s.Fatal("Failed to start screen differ: ", err)
+	}
+	defer d.DieOnFailedDiffs()
+
+	if err := testCreateFileWithVSCode(ctx, terminalApp, keyboard, tconn, cont, d); err != nil {
 		s.Fatal("Failed to create file with Visual Studio Code in Terminal: ", err)
 	}
 
 	restartIfError = false
 }
 
-func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.TerminalApp, keyboard *input.KeyboardEventWriter, tconn *chrome.TestConn, cont *vm.Container) error {
+func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.TerminalApp, keyboard *input.KeyboardEventWriter, tconn *chrome.TestConn, cont *vm.Container, d screenshot.Differ) error {
 	const (
 		testFile   = "test.go"
 		testString = "//This is a test string."
 	)
 
+	// Required if you use -var=keepstate=true in order to ensure the file doesn't already contain data.
+	cont.WriteFile(ctx, testFile, "")
+
 	ui := uiauto.New(tconn)
-	appWindow := nodewith.Name(fmt.Sprintf("● %s - Visual Studio Code", testFile)).Role(role.Window).First()
+	appWindow := nodewith.Name(fmt.Sprintf("%s - Visual Studio Code", testFile)).Role(role.Window).First()
 
 	if err := uiauto.Combine("Create file with VSCode",
 		// Launch Visual Studio Code.
 		terminalApp.RunCommand(keyboard, fmt.Sprintf("code %s", testFile)),
 		// Left click the app window and type string.
 		ui.LeftClick(appWindow),
+		// Get rid of up to two notification bubbles for consistent screendiffs.
+		keyboard.AccelAction("esc"),
+		keyboard.AccelAction("esc"),
 		keyboard.TypeAction(testString),
 		// Press ctrl+S to save the file.
 		keyboard.AccelAction("ctrl+S"),
-		// Take screenshot.
-		crostini.TakeAppScreenshot("vscode"),
+		d.DiffWindow("vscode"),
 		// Press ctrl+W twice to exit window.
 		keyboard.AccelAction("ctrl+W"),
 		keyboard.AccelAction("ctrl+W"),
