@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"math"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
@@ -26,6 +27,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -198,6 +200,10 @@ func CRXPRT2(ctx context.Context, s *testing.State) {
 		return nil
 	}, &testing.PollOptions{Timeout: crxprtRunningTime, Interval: 30 * time.Second}); err != nil {
 		s.Fatal("Failed to get benchmark score, error: ", err)
+	}
+
+	if err := screenshot.CaptureChrome(ctx, cr, filepath.Join(s.OutDir(), "result.png")); err != nil {
+		s.Error("Failed to take screenshot: ", err)
 	}
 
 	pv := perf.NewValues()
