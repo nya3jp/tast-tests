@@ -51,6 +51,24 @@
       "parentUuid": "7a6f4a26_fa7e16f7",
       "revId": "e051a08e0519412e4855ef670b0351d1fb791da2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "230078b2_a7b29df7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2021-06-01T19:59:27Z",
+      "side": 1,
+      "message": "Thanks for the context, that helps a lot. That indeed looks like a possible filesystem bug. I was looking at the ReadFile() code and there\u0027s only three ways it fails:\n\n- Open() fails: can only return ENOENT if the syscall returns ENOENT.\n- Stat() fails: tries to read a 1 byte file. Either succeeds or fails with EINVAL.\n- Read() fails: can\u0027t fail with ENOENT.\n\nSo, returning ENOENT is only possible when the open() syscall fails which likely points to a caching bug in the filesystem layer. Note that the cryptohome just uses ext4 with filesystem level encryption (compared to plain ext4 for /home/chronos/crash). Do you know if this only occurs on specific kernel versions (from a glance at tastboard, 4.14 and 4.19 jump out from this specific test, but I\u0027m not sure if that\u0027s representative)?\n\nHappy to +1 meanwhile to keep things moving (also, please feel free to reassign related bugs to me since this looks like a filesystem issue). Note that there\u0027s still the possibility that there\u0027s a userspace race that causes this (process A tries to poll for a file created by process B) that would be trickier to replicate. But we can still add the informational test first.",
+      "parentUuid": "abc5ccc0_3e566398",
+      "revId": "e051a08e0519412e4855ef670b0351d1fb791da2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
