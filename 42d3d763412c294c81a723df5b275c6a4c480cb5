@@ -79,6 +79,30 @@
       },
       "revId": "42d3d763412c294c81a723df5b275c6a4c480cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8c9666c_67f642f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-01T20:50:19Z",
+      "side": 1,
+      "message": "Is there a way to do that? would it be problematic if if I add an extra defer testConn.Close() after L110? What would happen to the earlier testConn.Close(), since in this case I\u0027ve already explicitly closed it on L106",
+      "parentUuid": "54fa6975_ceb3744d",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "42d3d763412c294c81a723df5b275c6a4c480cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
