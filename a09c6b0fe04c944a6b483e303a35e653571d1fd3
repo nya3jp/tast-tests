@@ -16,6 +16,23 @@
       "message": "Just fix the commit message a bit. Thanks for the fix.",
       "revId": "a09c6b0fe04c944a6b483e303a35e653571d1fd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c516234e_53aaeeb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-06-01T11:12:10Z",
+      "side": 1,
+      "message": "Abort the CQ+2. I found that on trogdor/pompom, network_WiFi_Reset may spend more than 40 minutes. I need to test on wcn3990 devices.",
+      "revId": "a09c6b0fe04c944a6b483e303a35e653571d1fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
