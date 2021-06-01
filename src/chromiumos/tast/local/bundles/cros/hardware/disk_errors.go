@@ -25,7 +25,7 @@ func init() {
 			"nya@chromium.org",
 			"tast-core@google.com",
 		},
-		Attr:    []string{"group:mainline", "informational"},
+		Attr:    []string{"group:mainline"},
 		Timeout: time.Minute,
 	})
 }
