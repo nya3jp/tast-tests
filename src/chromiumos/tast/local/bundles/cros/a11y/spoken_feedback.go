@@ -14,6 +14,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type testData struct {
+	VoiceData  a11y.VoiceData
+	EngineData a11y.TTSEngineData
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: SpokenFeedback,
@@ -22,23 +27,35 @@ func init() {
 			"akihiroota@chromium.org",      // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list
 		},
-		Attr:         []string{},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name: "google_tts",
-			Val: a11y.VoiceData{
-				ExtID:  a11y.GoogleTTSExtensionID,
-				Locale: "en-US",
+			Val: testData{
+				VoiceData: a11y.VoiceData{
+					ExtID:  a11y.GoogleTTSExtensionID,
+					Locale: "en-US",
+				},
+				EngineData: a11y.TTSEngineData{
+					ExtID:                     a11y.GoogleTTSExtensionID,
+					UseOnSpeakWithAudioStream: false,
+				},
 			},
 		}, {
 			Name: "espeak",
-			Val: a11y.VoiceData{
-				// eSpeak does not come with an English voice built-in, so we need to
-				// use another language. We use Greek here since the voice is built-in
-				// and capable of speaking English words.
-				ExtID:  a11y.ESpeakExtensionID,
-				Locale: "el",
+			Val: testData{
+				VoiceData: a11y.VoiceData{
+					// eSpeak does not come with an English voice built-in, so we need to
+					// use another language. We use Greek here since the voice is built-in
+					// and capable of speaking English words.
+					ExtID:  a11y.ESpeakExtensionID,
+					Locale: "el",
+				},
+				EngineData: a11y.TTSEngineData{
+					ExtID:                     a11y.ESpeakExtensionID,
+					UseOnSpeakWithAudioStream: true,
+				},
 			},
 		}},
 	})
@@ -66,25 +83,34 @@ func SpokenFeedback(ctx context.Context, s *testing.State) {
 	}
 	defer cvconn.Close()
 
-	vd := s.Param().(a11y.VoiceData)
+	td := s.Param().(testData)
+	vd := td.VoiceData
+	ed := td.EngineData
 	if err := cvconn.SetVoice(ctx, vd); err != nil {
 		s.Fatal("Failed to set the ChromeVox voice: ", err)
 	}
 
-	sm, err := a11y.NewSpeechMonitor(ctx, cr, vd.ExtID)
+	sm, err := a11y.GetRelevantSpeechMonitor(ctx, cr, cvconn, ed)
 	if err != nil {
 		s.Fatal("Failed to connect to the TTS background page: ", err)
 	}
 	defer sm.Close()
 
-	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+O", "O"}, []string{"ChromeVox Options"}); err != nil {
+	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+O", "O"}, []string{"tab created", "ChromeVox Options"}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
 
 	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Alt+Shift+L"}, []string{"Launcher", "Button", "Shelf", "Tool bar", "Press Search plus Space to activate"}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
-	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Alt+Shift+S"}, []string{"Quick Settings, Press search plus left to access the notification center., window"}); err != nil {
+	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Alt+Shift+S"}, []string{"Quick Settings,", "Press search plus left to access the notification center.,", "window"}); err != nil {
+		s.Error("Error when pressing keys and expecting speech: ", err)
+	}
+	// Restore state by closing the shelf and the ChromeVox options page.
+	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Alt+Shift+S"}, []string{"ChromeVox Options"}); err != nil {
+		s.Error("Error when pressing keys and expecting speech: ", err)
+	}
+	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Ctrl+W"}, []string{}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
 }
