@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4930928c_af821c99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-01T07:27:11Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "43b2ec7072d1b4e3282fccf76d02c39968983612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "709d2941_a8e3bfaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/vk_type_test_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-01T07:27:11Z",
+      "side": 1,
+      "message": "nit: lots of duplication here, is it worth defining this above and referencing it in all these spots? i.e.\n```\nvar ImeInputMethodEnglish \u003d \u0026vkInputData{\n\tTapKeySeq:    strings.Split(\"hello\", \"\"),\n\tExpectedText: \"hello\",\n}\n...\n\time.INPUTMETHOD_XKB_US_ENG:  ImeInputMethodEnglish,\n\time.INPUTMETHOD_XKB_US_INTL: ImeInputMethodEnglish,\n```\n\nWDYT?",
+      "range": {
+        "startLine": 34,
+        "startChar": 30,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "43b2ec7072d1b4e3282fccf76d02c39968983612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
