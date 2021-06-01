@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b33f9c_54edb7fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1168230
+      },
+      "writtenOn": "2021-06-01T20:57:04Z",
+      "side": 1,
+      "message": "Hi, mukai@,\n\nlooks like we need an owner from cros side, can you take a look?",
+      "revId": "5f95688a3bead6e309f8e21bf9a71e308df02af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
