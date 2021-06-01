@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4bc68ec2_d12c82e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-01T17:05:12Z",
+      "side": 1,
+      "message": "\u003e I\u0027d prefer to check it in this CL, because if let\u0027s say typecd takes some time to stop, we might catch the same typecd process in the testing.Poll.\n\nI\u0027m sorry but I don\u0027t completely agree. The current behaviour is to wait N seconds and then check if it\u0027s running again. There is a possibility that it has not been killed even after those N seconds. I agree we do increase the possibility of catching the same process by performing a poll, but I don\u0027t think we are introducing an *additional* bug.\n\nI strongly prefer to have each CL do one thing as far as possible; I can make the PID check a separate CL and submit the entire chain together (with a Cq-Depend), if there if you maintain a concern about introducing regressions.",
+      "parentUuid": "b9432788_46e09f5b",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 78
+      },
+      "revId": "6660a6fe6f1c7cf2adbc6fe960329d0a56ff9c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da79e997_de8e1b00",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
         "patchSetId": 2
