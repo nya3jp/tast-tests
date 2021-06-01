@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/memory/kernelmeter"
 	"chromiumos/tast/local/memory/memoryuser"
 	"chromiumos/tast/local/multivm"
-	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -48,7 +47,6 @@ func init() {
 			Pre:  multivm.CrostiniStarted(),
 			Val:  &lifecycleParam{inCrostini: true},
 			ExtraData: []string{
-				vm.ArtifactData(),
 				crostini.GetContainerMetadataArtifact("buster", false),
 				crostini.GetContainerRootfsArtifact("buster", false),
 			},

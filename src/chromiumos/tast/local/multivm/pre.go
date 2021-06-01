@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -25,7 +24,6 @@ var DefaultARCOptions = ARCOptions{}
 
 // DefaultCrostiniOptions defines the default options for starting Crostini.
 var DefaultCrostiniOptions = CrostiniOptions{
-	Mode:           cui.Component,
 	LargeContainer: false,
 	DebianVersion:  vm.DebianBuster,
 }
