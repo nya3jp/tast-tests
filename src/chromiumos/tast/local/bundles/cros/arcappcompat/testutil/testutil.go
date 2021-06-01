@@ -1073,3 +1073,42 @@ func dragToSnapFirstOverviewWindow(ctx context.Context, s *testing.State, tconn 
 	}
 	return nil
 }
+
+// SkipOnClamshellOnlyModels is a list of clamshell only models to be skipped from tablet mode runs.
+var SkipOnClamshellOnlyModels = []string{
+	"sarien",
+	"elemi",
+	"berknip",
+	"dratini",
+
+	// grunt:
+	"careena",
+	"kasumi",
+	"treeya",
+	"grunt",
+	"barla",
+	"aleena",
+	"liara",
+	"nuwani",
+
+	// octopus:
+	"bluebird",
+	"apel",
+	"blooglet",
+	"blorb",
+	"bobba",
+	"casta",
+	"dorp",
+	"droid",
+	"fleex",
+	"foob",
+	"garfour",
+	"garg",
+	"laser14",
+	"lick",
+	"mimrock",
+	"nospike",
+	"orbatrix",
+	"phaser",
+	"sparky",
+}
