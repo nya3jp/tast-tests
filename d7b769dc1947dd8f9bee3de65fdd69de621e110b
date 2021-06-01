@@ -35,6 +35,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ea28b6c_6b313998",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-01T02:19:46Z",
+      "side": 1,
+      "message": "Mattias, thanks a lot for the detailed explanation. I\u0027ve found a way to use --enable-features.",
+      "parentUuid": "4433c640_cd60456f",
+      "revId": "d7b769dc1947dd8f9bee3de65fdd69de621e110b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a104e4_bbd073b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-01T02:19:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "75b4a026_543a8758",
+      "revId": "d7b769dc1947dd8f9bee3de65fdd69de621e110b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08ae2d1a_280aa9b5",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-05-31T08:57:47Z",
       "side": 1,
       "message": "As you see, all existing methods in Config are basically simple getters of fields of MutableConfig. Please try following the pattern.",
+      "revId": "d7b769dc1947dd8f9bee3de65fdd69de621e110b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9832f27a_48f44cb7",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-01T02:19:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "08ae2d1a_280aa9b5",
       "revId": "d7b769dc1947dd8f9bee3de65fdd69de621e110b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e825d73c_f790c78e",
+        "filename": "src/chromiumos/tast/local/chrome/internal/driver/conn.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-01T02:19:46Z",
+      "side": 1,
+      "message": "Since there is a way to use EnableFeatures, this is no longer needed.\n\nIn case we need it in the future, setting the timeout as non-zero here is necessary, because with 0 this function will wait until timeout, which will make the following step fail immediately.",
+      "parentUuid": "9f1d507d_e9d25cb5",
+      "revId": "d7b769dc1947dd8f9bee3de65fdd69de621e110b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63e658fc_3db881f9",
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "627bc375_c76bcf94",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-01T02:19:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "63e658fc_3db881f9",
+      "revId": "d7b769dc1947dd8f9bee3de65fdd69de621e110b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa13b6b2_3ed6136c",
@@ -99,6 +189,24 @@
       "writtenOn": "2021-05-31T08:57:47Z",
       "side": 1,
       "message": "I would let ExtraFeatureFlags accept \"full-restore@1\" part instead. Otherwise I imagine that all usage of ExtraFeatureFlags repeat \"--features-flags\u003d[...]\"",
+      "revId": "d7b769dc1947dd8f9bee3de65fdd69de621e110b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23dfdf35_314b906d",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-01T02:19:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aa13b6b2_3ed6136c",
       "revId": "d7b769dc1947dd8f9bee3de65fdd69de621e110b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
