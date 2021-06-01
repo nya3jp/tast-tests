@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47eace07_67d64e19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-06-01T18:59:40Z",
+      "side": 1,
+      "message": "Josie,\n\nI have some changes that might start conflicting with the refactoring here. I don\u0027t want to make this patch a nightmare to rebase if they are submitted first.\n\nYou may want to split up the refactoring and functional changes, so that further changes don\u0027t conflict.",
+      "revId": "7b3d63db1e8173ed4e841b4b95e17710733666c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
