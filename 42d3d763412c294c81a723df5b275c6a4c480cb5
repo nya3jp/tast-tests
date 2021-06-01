@@ -127,6 +127,30 @@
       },
       "revId": "42d3d763412c294c81a723df5b275c6a4c480cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d957f7b_23658388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-01T21:10:43Z",
+      "side": 1,
+      "message": "\u003e would it be problematic if if I add an extra defer testConn.Close() after L110?\n\nI don\u0027t think so. testConn.Close is defined at [1]. It would return an error if testConn.locked were true, which it shouldn\u0027t be; and it would return an error if testConn.co.Close returned an error.\n\ntestConn.co.Close is defined at [2]. It acknowledges that its c.co.Close will return an error if the connection is already closed, and deliberately _doesn\u0027t_ return that error to avoid situations like this. As of 2019, nya@ intended to fix this upstream [3] so that we could close early without raising an error.\n\nSo, I think there is no problem with calling Close() multiple times.\n\n[1]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/driver/conn.go;drc\u003da48f219407261593413d849a135efd35dba96ab2;l\u003d60\n\n[2]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/cdputil/conn.go;drc\u003d05933e25731332c5edacf8489377bda4256da8ab;l\u003d71\n\n[3]: https://github.com/mafredri/cdp/issues/110",
+      "parentUuid": "fe2a4fea_9122e479",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "42d3d763412c294c81a723df5b275c6a4c480cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
