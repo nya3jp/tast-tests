@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "85770cc9_acb5b11b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-01T15:58:59Z",
+      "side": 1,
+      "message": "Thanks for the context. nit: It might be good to add a comment about how it is now possible to apply device policies in local tests.",
+      "parentUuid": "329d931f_50bc10d1",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c115e8d4_2c26c92c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -194,6 +218,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1a3a7ec_74702b8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-01T15:58:59Z",
+      "side": 1,
+      "message": "You could make it a file scoped constant or perhaps in the patchpanel package and then use fmt.Sprintf to create the regex. I\u0027ll leave it up to you though.",
+      "parentUuid": "5bd0b907_ec4c4116",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "583a27f4_bbd0ec32",
@@ -319,6 +367,24 @@
       "side": 1,
       "message": "One option would be to continuously ask Chrome to do proxy resolution (via D-Bus commands) and depending on the result we can tell that Chrome has gotten the address of system-proxy or not. \n\nI\u0027m not sure if it\u0027s necessarily nicer. A 5 second sleep is more than enough though so at least the test would not fail.",
       "parentUuid": "110fdbd1_69b480f2",
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cf9ad08_a24db95d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-01T15:58:59Z",
+      "side": 1,
+      "message": "How long does checking proxy resolution take? I think in general sleeps are to be avoided if at all possible. The proposal to use D-Bus to check it seems reasonable to me.",
+      "parentUuid": "4c2d9e08_9bb2e91f",
       "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
