@@ -96,8 +96,9 @@ type playBillingFixture struct {
 //		...
 //	}
 type FixtData struct {
-	ARC    *arc.ARC
-	Chrome *chrome.Chrome
+	ARC     *arc.ARC
+	Chrome  *chrome.Chrome
+	TestApp *TestApp
 }
 
 func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -110,6 +111,11 @@ func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	// Install the test APK.
 	if err := arcDevice.Install(ctx, filepath.Join(localDataPath, apk)); err != nil {
 		s.Fatal("Failed to install the APK: ", err)
+	}
+
+	uiAutomator, err := arcDevice.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed to initialize UI Automator: ", err)
 	}
 
 	if err := arcDevice.WaitIntentHelper(ctx); err != nil {
@@ -157,7 +163,12 @@ func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		}
 	}()
 
-	return &FixtData{arcDevice, cr}
+	testApp, err := NewTestApp(ctx, cr, arcDevice, uiAutomator)
+	if err != nil {
+		s.Fatal("Failed trying to setup test app: ", err)
+	}
+
+	return &FixtData{arcDevice, cr, testApp}
 }
 
 func (f *playBillingFixture) Reset(ctx context.Context) error {
