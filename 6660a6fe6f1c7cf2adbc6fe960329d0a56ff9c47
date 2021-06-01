@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ad3f7c0c_de849e2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-01T16:28:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a16cd986_9e5e4bec",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "6660a6fe6f1c7cf2adbc6fe960329d0a56ff9c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cd4d27d6_83f867fa",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-31T15:15:55Z",
       "side": 1,
       "message": "Do we have a guarantee that after this command typecd is stopped? If not, maybe we should check that PID will change?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 78
+      },
+      "revId": "6660a6fe6f1c7cf2adbc6fe960329d0a56ff9c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a2373b_3f5d41b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-01T16:28:23Z",
+      "side": 1,
+      "message": "That\u0027s a good idea. Currently the test just relies on SIGTERM actually killing the process. Do you mind if I add this as a separate CL though (I can add you as a reviewer since you will have context)? I\u0027d like to isolate this CL to just doing one thing (converting the sleep+check into a poll).",
+      "parentUuid": "629c8068_cfde2145",
       "range": {
         "startLine": 113,
         "startChar": 0,
@@ -110,6 +158,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6407fa8_f4439d7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-01T16:28:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "035fda71_aed98ff9",
+      "range": {
+        "startLine": 161,
+        "startChar": 63,
+        "endLine": 161,
+        "endChar": 70
+      },
+      "revId": "6660a6fe6f1c7cf2adbc6fe960329d0a56ff9c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b00b8138_f0e294c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-01T16:28:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da79e997_de8e1b00",
+      "range": {
+        "startLine": 161,
+        "startChar": 27,
+        "endLine": 161,
+        "endChar": 33
+      },
+      "revId": "6660a6fe6f1c7cf2adbc6fe960329d0a56ff9c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28c10a46_d0c3ffef",
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c3c8cfe_db0e2d62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-01T16:28:23Z",
+      "side": 1,
+      "message": "Done\n\nBoth 0 and 1 are not valid PIDs for a normal userspace process. I think it\u0027s an academic point in this case, but we can make the change.",
+      "parentUuid": "28c10a46_d0c3ffef",
+      "range": {
+        "startLine": 167,
+        "startChar": 11,
+        "endLine": 167,
+        "endChar": 18
+      },
+      "revId": "6660a6fe6f1c7cf2adbc6fe960329d0a56ff9c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64cca088_c3b28f67",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-05-31T15:15:55Z",
       "side": 1,
       "message": "nit: we probably omit it, this function does not know whether typecd was restarted before",
+      "range": {
+        "startLine": 168,
+        "startChar": 56,
+        "endLine": 168,
+        "endChar": 66
+      },
+      "revId": "6660a6fe6f1c7cf2adbc6fe960329d0a56ff9c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19d65e2a_2c70b12e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-01T16:28:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64cca088_c3b28f67",
       "range": {
         "startLine": 168,
         "startChar": 56,
