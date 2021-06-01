@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62588a19_5c7cf967",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_flash_fp_mcu_hello.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-01T16:52:23Z",
+      "side": 1,
+      "message": "This code works. But it is more idiomatic in Tast to use cmd.CombinedOutput. Per go/go-style/guide#consistency, I recommend preferring the idiomatic approach.\n\n    out, err :\u003d cmd.CombinedOutput(ctx, ssh.DumpLogOnError)\n    if err !\u003d nil {\n        s.Fatal(\"Error encountered when running flash_fp_mcu: \", cmdErr)\n    }\n    s.Log(\"flash_fp_mcu output:\\n\", out)\n\nhttps://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/ssh#Cmd.CombinedOutput",
+      "revId": "3ae487723e55a5a37e12b6b7858a65d856838de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
