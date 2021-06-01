@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1c29fc8_37b1ba69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/title_bar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-06-01T01:19:23Z",
+      "side": 1,
+      "message": "I think you want to return a normal error here because if the app hasn\u0027t started completely yet, this function can return an error and we want to wait a little bit more.",
+      "range": {
+        "startLine": 103,
+        "startChar": 18,
+        "endLine": 103,
+        "endChar": 27
+      },
+      "revId": "8ec337accd35e17f4dd912a50d0e8b4b1baf91be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
