@@ -16,6 +16,23 @@
       "message": "PTAL\nTY",
       "revId": "ce28d326f32f77b88edcd9daee715e46bca7f15c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad52663e_b20d8042",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-01T05:50:32Z",
+      "side": 1,
+      "message": "You\u0027ll need VarDeps as well to prevent this test from failing in environments where the variable is missing.\n\nSee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#runtime-variables",
+      "revId": "ce28d326f32f77b88edcd9daee715e46bca7f15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
