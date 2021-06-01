@@ -34,6 +34,24 @@
       "parentUuid": "4534351f_a48aba9b",
       "revId": "2495fa06fb335095f0cd3c02a76ecf1883c562d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c54aad7_5a218fdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-01T00:06:36Z",
+      "side": 1,
+      "message": "Thanks for the info. It seems that CR+1 from Renuga was not shown.",
+      "parentUuid": "6293c848_0dbf6e93",
+      "revId": "2495fa06fb335095f0cd3c02a76ecf1883c562d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
