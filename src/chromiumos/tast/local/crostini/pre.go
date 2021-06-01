@@ -223,13 +223,24 @@ func StartedByDlcStretch() testing.Precondition { return startedByDlcStretchPre 
 // Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByDlcBuster() testing.Precondition { return startedByDlcBusterPre }
 
-// StartedByDlcBusterGaia is similar to StartedByDlcBuster, except for
-// logging in to Chrome using gaia user.
-func StartedByDlcBusterGaia() testing.Precondition { return startedByDlcBusterGaiaPre }
+// StartedByDlcBullseye ensures that a VM running bullseye has
+// started before the test runs. This precondition has complex
+// requirements to use that are best met using the test parameter
+// generator in params.go.
+// Tip: Run tests with -var=keepState=true to speed up local development
+func StartedByDlcBullseye() testing.Precondition { return startedByDlcBullseyePre }
 
 // StartedByDlcStretchGaia is similar to StartedByDlcStretch, except for
 // logging in to Chrome using gaia user.
 func StartedByDlcStretchGaia() testing.Precondition { return startedByDlcStretchGaiaPre }
+
+// StartedByDlcBusterGaia is similar to StartedByDlcBuster, except for
+// logging in to Chrome using gaia user.
+func StartedByDlcBusterGaia() testing.Precondition { return startedByDlcBusterGaiaPre }
+
+// StartedByDlcBullseyeGaia is similar to StartedByDlcBullseye, except for
+// logging in to Chrome using gaia user.
+func StartedByDlcBullseyeGaia() testing.Precondition { return startedByDlcBullseyeGaiaPre }
 
 // StartedByDlcBusterLargeContainer is similar to StartedByDlcBuster,
 // but will download the large container which has apps (Gedit, Emacs, Eclipse, Android Studio, and Visual Studio) installed.
@@ -265,6 +276,13 @@ var startedByDlcBusterPre = &preImpl{
 	debianVersion: vm.DebianBuster,
 }
 
+var startedByDlcBullseyePre = &preImpl{
+	name:          "crostini_started_by_dlc_bullseye",
+	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	container:     normal,
+	debianVersion: vm.DebianBullseye,
+}
+
 var startedByDlcStretchGaiaPre = &preImpl{
 	name:          "crostini_started_by_dlc_stretch_gaia",
 	timeout:       chrome.GAIALoginTimeout + 7*time.Minute,
@@ -278,6 +296,14 @@ var startedByDlcBusterGaiaPre = &preImpl{
 	timeout:       chrome.GAIALoginTimeout + 7*time.Minute,
 	container:     normal,
 	debianVersion: vm.DebianBuster,
+	loginType:     loginGaia,
+}
+
+var startedByDlcBullseyeGaiaPre = &preImpl{
+	name:          "crostini_started_by_dlc_bullseye_gaia",
+	timeout:       chrome.GAIALoginTimeout + 7*time.Minute,
+	container:     normal,
+	debianVersion: vm.DebianBullseye,
 	loginType:     loginGaia,
 }
 

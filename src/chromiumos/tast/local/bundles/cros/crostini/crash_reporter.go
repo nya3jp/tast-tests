@@ -20,7 +20,7 @@ import (
 
 const (
 	boardRegexp = "board=(tatl|tael)"
-	osRegexp    = "upload_var_vm_os_release=.*(stretch|buster)"
+	osRegexp    = "upload_var_vm_os_release=.*(stretch|buster|bullseye)"
 )
 
 func init() {
