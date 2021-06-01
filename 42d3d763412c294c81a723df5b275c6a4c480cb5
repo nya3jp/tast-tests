@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54397bb4_77bc01da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-01T22:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1799f62e_f732ba0c",
+      "revId": "42d3d763412c294c81a723df5b275c6a4c480cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bc08563_df81d3be",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-06-01T20:24:03Z",
       "side": 1,
       "message": "nit/consistency: \"Signin\", not \"SignIn\"",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "42d3d763412c294c81a723df5b275c6a4c480cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce8e1570_5270e83e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-01T22:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bc08563_df81d3be",
       "range": {
         "startLine": 74,
         "startChar": 9,
@@ -143,6 +185,30 @@
       "side": 1,
       "message": "\u003e would it be problematic if if I add an extra defer testConn.Close() after L110?\n\nI don\u0027t think so. testConn.Close is defined at [1]. It would return an error if testConn.locked were true, which it shouldn\u0027t be; and it would return an error if testConn.co.Close returned an error.\n\ntestConn.co.Close is defined at [2]. It acknowledges that its c.co.Close will return an error if the connection is already closed, and deliberately _doesn\u0027t_ return that error to avoid situations like this. As of 2019, nya@ intended to fix this upstream [3] so that we could close early without raising an error.\n\nSo, I think there is no problem with calling Close() multiple times.\n\n[1]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/driver/conn.go;drc\u003da48f219407261593413d849a135efd35dba96ab2;l\u003d60\n\n[2]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/cdputil/conn.go;drc\u003d05933e25731332c5edacf8489377bda4256da8ab;l\u003d71\n\n[3]: https://github.com/mafredri/cdp/issues/110",
       "parentUuid": "fe2a4fea_9122e479",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "42d3d763412c294c81a723df5b275c6a4c480cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af4bf0b8_e7472a0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-01T22:52:43Z",
+      "side": 1,
+      "message": "Thanks for looking into this. I shall make the change.",
+      "parentUuid": "7d957f7b_23658388",
       "range": {
         "startLine": 107,
         "startChar": 1,
