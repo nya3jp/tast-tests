@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // ClamshellTests are placed here.
@@ -42,21 +43,33 @@ func init() {
 		Params: []testing.Param{{
 			Val:               clamshellTestsForHearthstone,
 			ExtraSoftwareDeps: []string{"android_p"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on tablet only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedForHearthstone,
 		}, {
 			Name:              "tablet_mode",
 			Val:               touchviewTestsForHearthstone,
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on clamshell only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeForHearthstone,
 		}, {
 			Name:              "vm",
 			Val:               clamshellTestsForHearthstone,
 			ExtraSoftwareDeps: []string{"android_vm"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on tablet only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedForHearthstone,
 		}, {
 			Name:              "vm_tablet_mode",
 			Val:               touchviewTestsForHearthstone,
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on clamshell only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeForHearthstone,
 		}},
 		Timeout: 10 * time.Minute,
