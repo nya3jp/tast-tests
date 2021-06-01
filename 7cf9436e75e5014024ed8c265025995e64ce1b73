@@ -34,6 +34,24 @@
       "parentUuid": "64f20b20_dca7e88d",
       "revId": "7cf9436e75e5014024ed8c265025995e64ce1b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f3fb656_b8b43cb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-01T10:47:40Z",
+      "side": 1,
+      "message": "done. Added for \"hide case\"",
+      "parentUuid": "41a8b4c0_4a7230cb",
+      "revId": "7cf9436e75e5014024ed8c265025995e64ce1b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
