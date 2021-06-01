@@ -27,8 +27,8 @@ func init() {
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
-		// For some Marvell DUT, this test may take more than 15 minutes.
-		Timeout: time.Minute * 18,
+		// For some Marvell DUT, this test may take more than 25 minutes.
+		Timeout: time.Minute * 30,
 		// We only support reset on Intel/Marvell/QCA WiFi (iwlwifi/mwifiex/ath10k).
 		// TODO(chromium:1070299): These models are chosen manually by finding the models that are always failing with NA-error on Autotest network_WiFi_Reset. Replace them with more proper hwdep in the future.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("barla", "blooglet", "dirinboz", "ezkinil", "vilboz")),
