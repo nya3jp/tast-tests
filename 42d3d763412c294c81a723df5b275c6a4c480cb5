@@ -103,6 +103,30 @@
       },
       "revId": "42d3d763412c294c81a723df5b275c6a4c480cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe2a4fea_9122e479",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-01T20:55:51Z",
+      "side": 1,
+      "message": "That depends on what testConn.Close() does... I\u0027ll look at the code.",
+      "parentUuid": "b8c9666c_67f642f2",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "42d3d763412c294c81a723df5b275c6a4c480cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
