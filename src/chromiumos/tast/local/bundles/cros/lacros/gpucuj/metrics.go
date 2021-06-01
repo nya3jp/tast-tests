@@ -26,11 +26,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
-var metricMap = map[string]struct {
+type metricInfo struct {
 	unit      string
 	direction perf.Direction
 	uma       bool
-}{
+}
+
+var metricMap = map[string]metricInfo{
 	"Graphics.Smoothness.Checkerboarding.TouchScroll": {
 		unit:      "percent",
 		direction: perf.SmallerIsBetter,
@@ -215,15 +217,11 @@ type statBucketKey struct {
 }
 
 type metricsRecorder struct {
-	buckets map[statBucketKey][]float64
+	buckets   map[statBucketKey][]float64
+	metricMap map[string]metricInfo
 }
 
-func (m *metricsRecorder) record(ctx context.Context, invoc *testInvocation, key statBucketKey, value float64) error {
-	minfo, ok := metricMap[key.metric]
-	if !ok {
-		return errors.Errorf("failed to lookup metric info: %s", key.metric)
-	}
-
+func (m *metricsRecorder) record(ctx context.Context, invoc *testInvocation, minfo metricInfo, key statBucketKey, value float64) error {
 	name := fmt.Sprintf("%s.%s.%s.%s", invoc.page.name, key.metric, string(key.stat), string(key.crt))
 	testing.ContextLog(ctx, name, ": ", value, " ", minfo.unit)
 
@@ -233,6 +231,7 @@ func (m *metricsRecorder) record(ctx context.Context, invoc *testInvocation, key
 		Direction: minfo.direction,
 	}, value)
 	m.buckets[key] = append(m.buckets[key], value)
+	m.metricMap[key.metric] = minfo
 	return nil
 }
 
@@ -247,21 +246,51 @@ func (m *metricsRecorder) recordHistogram(ctx context.Context, invoc *testInvoca
 		return errors.Wrapf(err, "failed to get mean for histogram: %s", h.Name)
 	}
 
-	testing.ContextLog(ctx, h)
-
-	return m.record(ctx, invoc, statBucketKey{
+	key := statBucketKey{
 		metric: h.Name,
 		stat:   meanStat,
 		crt:    invoc.crt,
-	}, mean)
+	}
+
+	minfo, ok := metricMap[key.metric]
+	if !ok {
+		return errors.Errorf("failed to lookup metric info: %s", key.metric)
+	}
+
+	testing.ContextLog(ctx, h)
+
+	return m.record(ctx, invoc, minfo, key, mean)
 }
 
 func (m *metricsRecorder) recordValue(ctx context.Context, invoc *testInvocation, name string, value float64) error {
-	return m.record(ctx, invoc, statBucketKey{
+	key := statBucketKey{
 		metric: name,
 		stat:   valueStat,
 		crt:    invoc.crt,
-	}, value)
+	}
+
+	minfo, ok := metricMap[key.metric]
+	if !ok {
+		return errors.Errorf("failed to lookup metric info: %s", key.metric)
+	}
+
+	return m.record(ctx, invoc, minfo, key, value)
+}
+
+func (m *metricsRecorder) recordMetric(ctx context.Context, invoc *testInvocation, metric perf.Metric, value float64) error {
+	key := statBucketKey{
+		metric: metric.Name,
+		stat:   valueStat,
+		crt:    invoc.crt,
+	}
+
+	minfo := metricInfo{
+		unit:      metric.Unit,
+		direction: metric.Direction,
+		uma:       false,
+	}
+
+	return m.record(ctx, invoc, minfo, key, value)
 }
 
 func (m *metricsRecorder) computeStatistics(ctx context.Context, pv *perf.Values) error {
@@ -282,7 +311,7 @@ func (m *metricsRecorder) computeStatistics(ctx context.Context, pv *perf.Values
 	//   e.g. metric_stddev, metric_mean - statistics on the metric overall not per-page.
 	var logs []string
 	for k, bucket := range m.buckets {
-		minfo, ok := metricMap[k.metric]
+		minfo, ok := m.metricMap[k.metric]
 		if !ok {
 			return errors.Errorf("failed to lookup metric info: %s", k.metric)
 		}
@@ -380,6 +409,9 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 	}
 	sort.Strings(keys)
 
+	thermal := power.NewSysfsThermalMetrics()
+	thermal.Setup(ctx, "") // No prefix, we use our own naming scheme.
+
 	rapl, err := power.NewRAPLSnapshot()
 	if err != nil {
 		return errors.Wrap(err, "failed to get RAPL snapshot")
@@ -396,6 +428,15 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 			testing.ContextLog(ctx, "Failed to stop tracing: ", err)
 		}
 		return errors.Wrap(err, "failed to get histograms")
+	}
+
+	// Collect temperature first in case it decreases after the test finishes.
+	temps, err := thermal.SnapshotValues(ctx)
+	if err != nil {
+		if _, err := tracer.StopTracing(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to stop tracing: ", err)
+		}
+		return errors.Wrap(err, "failed to get temperature data")
 	}
 
 	// `rapl` could be nil when not supported.
@@ -449,6 +490,12 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 	// for the same metric, in the same scenario.
 	for _, h := range histograms {
 		if err := invoc.metrics.recordHistogram(ctx, invoc, h); err != nil {
+			return err
+		}
+	}
+
+	for metric, value := range temps {
+		if err := invoc.metrics.recordMetric(ctx, invoc, metric, value); err != nil {
 			return err
 		}
 	}

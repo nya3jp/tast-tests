@@ -74,18 +74,18 @@ var pageSet = []page{
 		name: "poster", // Poster Circle. This page is for testing compositor performance.
 		url:  "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
 	},
-	{
-		name: "maps", // Google Maps. This page is for testing WebGL.
-		url:  "https://www.google.com/maps/@35.652772,139.6605155,14z",
-	},
-	{
-		name: "video", // Static video. This page is for testing video playback.
-		url:  "/video.html",
-	},
-	{
-		name: "wikipedia", // Wikipedia. This page is for testing conventional web-pages.
-		url:  "https://en.wikipedia.org/wiki/Cat",
-	},
+	// {
+	// 	name: "maps", // Google Maps. This page is for testing WebGL.
+	// 	url:  "https://www.google.com/maps/@35.652772,139.6605155,14z",
+	// },
+	// {
+	// 	name: "video", // Static video. This page is for testing video playback.
+	// 	url:  "/video.html",
+	// },
+	// {
+	// 	name: "wikipedia", // Wikipedia. This page is for testing conventional web-pages.
+	// 	url:  "https://en.wikipedia.org/wiki/Cat",
+	// },
 }
 
 // This test deals with both ChromeOS chrome and lacros chrome. In order to reduce confusion,
@@ -360,7 +360,7 @@ func RunGpuCUJ(ctx context.Context, f launcher.FixtData, artifactPath string, pa
 	}
 
 	pv := perf.NewValues()
-	m := metricsRecorder{buckets: make(map[statBucketKey][]float64)}
+	m := metricsRecorder{buckets: make(map[statBucketKey][]float64), metricMap: make(map[string]metricInfo)}
 	for _, page := range pageSet {
 		if page.url[0] == '/' {
 			page.url = serverURL + page.url
