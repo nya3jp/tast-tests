@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4914e4f3_12ca7063",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-01T15:56:07Z",
+      "side": 1,
+      "message": "On CQ, the smoke param (L64) is set to true, so we won\u0027t error out, as long as the routine doesn\u0027t return an error (i.e it can execute the ectool command successfully).\n\nThis is meant as a \"smoke\" variant to ensure that a minimal version of this test still runs on CQ (which can call the EC command line tool which checks for a valid connected partner).\n\nI expect that once the Type C test lab is set up and operational and running these tests continuously, we can eliminate this variant entirely.",
+      "parentUuid": "492442c5_a35571bc",
+      "revId": "4c9b01143e88eb24c86f46cece48c0dafe00f421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1bdfb59d_af3e4df9",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2021-06-01T15:47:36Z",
       "side": 1,
       "message": "Why does the device need to be logged in? Is it required for this call?",
+      "revId": "4c9b01143e88eb24c86f46cece48c0dafe00f421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "365be0ab_63ab4387",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-01T15:56:07Z",
+      "side": 1,
+      "message": "That is because the alternate mode switch occurs only on user login (this was mandated by the Chrome OS security team).",
+      "parentUuid": "1bdfb59d_af3e4df9",
       "revId": "4c9b01143e88eb24c86f46cece48c0dafe00f421",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
