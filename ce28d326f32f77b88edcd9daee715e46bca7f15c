@@ -33,6 +33,58 @@
       "message": "You\u0027ll need VarDeps as well to prevent this test from failing in environments where the variable is missing.\n\nSee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#runtime-variables",
       "revId": "ce28d326f32f77b88edcd9daee715e46bca7f15c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6e6ace5_7fb1dbcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-01T07:42:05Z",
+      "side": 1,
+      "message": "Actually you just need VarDeps; we don\u0027t need to specify the same name in both Vars and VarDeps.",
+      "parentUuid": "ad52663e_b20d8042",
+      "revId": "ce28d326f32f77b88edcd9daee715e46bca7f15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c902613_d90a2981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-01T07:42:05Z",
+      "side": 1,
+      "message": "This is used just to get normalized user name. I recommend passing the result of cr.NormalizedUser() instead of whole cr.",
+      "revId": "ce28d326f32f77b88edcd9daee715e46bca7f15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78c8b0ff_740142b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-01T07:42:05Z",
+      "side": 1,
+      "message": "Logging in with real GAIA accounts will introduce flakiness for contacting real servers. It\u0027s great if we can stick with fake accounts.\n\nWhy do we need real GAIA accounts for this test? I suppose this test was working okay before, what was the breaking change?",
+      "revId": "ce28d326f32f77b88edcd9daee715e46bca7f15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
