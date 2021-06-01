@@ -56,6 +56,8 @@ const (
 	DebianStretch ContainerDebianVersion = "stretch"
 	// DebianBuster refers to the "buster" distribution of debian (a.k.a. debian 10).
 	DebianBuster ContainerDebianVersion = "buster"
+	// DebianBullseye refers to the "bullseye" distribution of debian (a.k.a. debian 11).
+	DebianBullseye ContainerDebianVersion = "bullseye"
 )
 
 // ContainerArch represents the architecture of the container
