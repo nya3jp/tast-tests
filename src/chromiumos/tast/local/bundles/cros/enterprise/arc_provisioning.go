@@ -192,7 +192,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close(ctx)
 
-	if err := d.Object(ui.TextStartsWith(searchBarTextStart)).WaitForExists(ctx, time.Second); err != nil {
+	if err := d.Object(ui.TextStartsWith(searchBarTextStart)).WaitForExists(ctx, 10*time.Second); err != nil {
 		s.Fatal("Unknown Play Store UI screen is shown: ", err)
 	}
 

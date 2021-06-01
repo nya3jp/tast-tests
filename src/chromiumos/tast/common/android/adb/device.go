@@ -287,8 +287,11 @@ func (d *Device) InstalledPackages(ctx context.Context) (map[string]struct{}, er
 	ctx, st := timing.Start(ctx, "installed_packages")
 	defer st.End()
 
-	out, err := d.ShellCommand(ctx, "pm", "list", "packages").Output(testexec.DumpLogOnError)
+	out, err := d.ShellCommand(ctx, "cmd", "packages").CombinedOutput(testexec.DumpLogOnError)
 	if err != nil {
+		if strings.Contains(string(out), "Can't find service: package") {
+			return nil, errors.Wrap(err, "package service not running")
+		}
 		return nil, errors.Wrap(err, "listing packages failed")
 	}
 
