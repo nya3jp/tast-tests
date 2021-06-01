@@ -139,6 +139,24 @@
       "parentUuid": "78c8b0ff_740142b2",
       "revId": "ce28d326f32f77b88edcd9daee715e46bca7f15c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6ada39d_7c983115",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-01T08:56:23Z",
+      "side": 1,
+      "message": "I see, thanks for explanation... It\u0027s unfortunate.",
+      "parentUuid": "fe2c0673_a835a0dc",
+      "revId": "ce28d326f32f77b88edcd9daee715e46bca7f15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
