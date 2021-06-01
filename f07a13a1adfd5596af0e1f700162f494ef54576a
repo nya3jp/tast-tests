@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff28518f_2405cceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-01T18:24:08Z",
+      "side": 1,
+      "message": "That is done at L313 (symlink should also be valid)",
+      "parentUuid": "ded254a1_ef50957e",
+      "revId": "f07a13a1adfd5596af0e1f700162f494ef54576a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3da578b9_6250d0c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2021-06-01T16:50:23Z",
       "side": 1,
       "message": "The message makes it seem like the %o-formatted mode is the set of expected execution bits, rather than the actual mode.\n\nI think os.FileMode has a String() method, as well. Not sure if it\u0027s useful here.",
+      "revId": "f07a13a1adfd5596af0e1f700162f494ef54576a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6995944c_a3a7a9c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-01T18:24:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3da578b9_6250d0c8",
       "revId": "f07a13a1adfd5596af0e1f700162f494ef54576a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
