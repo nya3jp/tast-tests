@@ -49,25 +49,18 @@ type arcApp struct {
 	Launchable           bool    `json:"launchable"`
 }
 
+const (
+	errorPageLoaded = "appWindow.contentWindow.document.querySelector('#error.section:not([hidden])')"
+	errorMessage    = "appWindow.contentWindow.document.getElementById('error-message')?.innerText"
+)
+
 // SetPlayStoreEnabled is a wrapper for chrome.autotestPrivate.setPlayStoreEnabled.
 func SetPlayStoreEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool) error {
 	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setPlayStoreEnabled)`, enabled)
 }
 
-// FindOptInExtensionPageAndAcceptTerms finds the opt-in extension page, optins if verified,
-// and optionally waits for completion.
-func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome, wait bool) error {
-	bgURL := chrome.ExtensionBackgroundPageURL(apps.PlayStore.ID)
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
-	if err != nil {
-		return errors.Wrapf(err, "failed to find optin extension page %v", bgURL)
-	}
-	defer conn.Close()
-
-	const (
-		errorPageLoaded = "appWindow.contentWindow.document.querySelector('#error.section:not([hidden])')"
-		errorMessage    = "appWindow.contentWindow.document.getElementById('error-message')?.innerText"
-	)
+func waitForTerms(ctx context.Context, conn *chrome.Conn) error {
+	testing.ContextLog(ctx, "Waiting for terms of service page to load")
 
 	for _, condition := range []string{
 		"port != null",
@@ -75,32 +68,76 @@ func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome
 		fmt.Sprintf("termsPage.isManaged_ || termsPage.state_ == LoadState.LOADED || %s", errorPageLoaded),
 	} {
 		if err := conn.WaitForExpr(ctx, condition); err != nil {
-			return errors.Wrap(err, "failed to find terms of service page")
+			return err
 		}
 	}
 
 	var msg string
 	if err := conn.Eval(ctx, fmt.Sprintf("%s?%s:''", errorPageLoaded, errorMessage), &msg); err == nil && msg != "" {
-		return errors.Errorf("failed to load terms of service page: %s", msg)
+		return errors.New(msg)
 	}
 
-	if err := conn.Eval(ctx, "termsPage.onAgree()", nil); err != nil {
+	return nil
+}
+
+func loadTerms(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
+	attempts := 1
+	maxAttempts := 2
+
+	for {
+		bgURL := chrome.ExtensionBackgroundPageURL(apps.PlayStore.ID)
+		conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to find optin extension page")
+		}
+
+		if err = waitForTerms(ctx, conn); err == nil {
+			return conn, nil
+		}
+
+		if attempts == maxAttempts {
+			return nil, err
+		}
+
+		testing.ContextLog(ctx, "Failed to load terms of service: ", err)
+		attempts++
+	}
+}
+
+func waitForOptin(ctx context.Context, conn *chrome.Conn) error {
+	testing.ContextLog(ctx, "Waiting for optin to complete")
+
+	if err := conn.WaitForExpr(ctx, fmt.Sprintf("!appWindow || %s", errorPageLoaded)); err != nil {
+		return errors.Wrap(err, "failed to wait for optin completion")
+	}
+
+	var msg string
+	if err := conn.Eval(ctx, fmt.Sprintf("!appWindow ? '' : %s  ?? 'Unknown error'", errorMessage), &msg); err != nil {
+		return errors.Wrap(err, "failed to evaluate optin result")
+	}
+
+	if msg != "" {
+		return errors.New(msg)
+	}
+
+	return nil
+}
+
+// FindOptInExtensionPageAndAcceptTerms finds the opt-in extension page, optins if verified,
+// and optionally waits for completion.
+func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome, wait bool) error {
+	conn, err := loadTerms(ctx, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to load terms of service")
+	}
+	defer conn.Close()
+
+	if err = conn.Eval(ctx, "termsPage.onAgree()", nil); err != nil {
 		return errors.Wrap(err, "failed to execute 'termsPage.onAgree()'")
 	}
 
 	if wait {
-		if err := conn.WaitForExpr(ctx, fmt.Sprintf("!appWindow || %s", errorPageLoaded)); err != nil {
-			return errors.Wrap(err, "failed to wait for optin completion")
-		}
-
-		var msg string
-		if err := conn.Eval(ctx, fmt.Sprintf("!appWindow ? '' : %s  ?? 'Unknown error'", errorMessage), &msg); err != nil {
-			return errors.Wrap(err, "failed to evaluate optin result")
-		}
-
-		if msg != "" {
-			return errors.New(msg)
-		}
+		return waitForOptin(ctx, conn)
 	}
 
 	return nil
