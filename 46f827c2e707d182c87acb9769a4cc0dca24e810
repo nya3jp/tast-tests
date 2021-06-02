@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e225ad41_64d900b1",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-06-02T18:24:10Z",
+      "side": 1,
+      "message": "I\u0027m wondering a bit about the future of these modes, it seems that at some point, we should deprecate the PreExist mode, which is manually maintained and rolled, and always use the rootfs one for testing by default, am I understanding it correctly?",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 7
+      },
+      "revId": "46f827c2e707d182c87acb9769a4cc0dca24e810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
