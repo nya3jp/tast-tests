@@ -132,7 +132,7 @@ func setWindowBounds(ctx context.Context, ctconn *chrome.TestConn, windowID int,
 		return err
 	}
 
-	info, err := display.GetInternalInfo(ctx, ctconn)
+	info, err := display.GetPrimaryInfo(ctx, ctconn)
 	if err != nil {
 		return err
 	}
@@ -170,7 +170,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData, t
 		return err
 	}
 
-	info, err := display.GetInternalInfo(ctx, f.TestAPIConn)
+	info, err := display.GetPrimaryInfo(ctx, f.TestAPIConn)
 	if err != nil {
 		return err
 	}
