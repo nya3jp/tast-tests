@@ -202,7 +202,7 @@ var processCategories = []processCategory{
 
 // SmapsMetrics writes a JSON file containing data from every running process'
 // smaps_rollup file. If perf.Values is not nil, it adds metrics based on
-// processCategories defined above.
+// processCategories defined above. If outdir is "", then no logs are written.
 func SmapsMetrics(ctx context.Context, p *perf.Values, outdir, suffix string) error {
 	processes, err := process.Processes()
 	if err != nil {
@@ -216,13 +216,15 @@ func SmapsMetrics(ctx context.Context, p *perf.Values, outdir, suffix string) er
 	if err != nil {
 		return err
 	}
-	rollupsJSON, err := json.MarshalIndent(rollups, "", "  ")
-	if err != nil {
-		return errors.Wrap(err, "failed to convert smaps_rollups to JSON")
-	}
-	filename := fmt.Sprintf("smaps_rollup%s.json", suffix)
-	if err := ioutil.WriteFile(path.Join(outdir, filename), rollupsJSON, 0644); err != nil {
-		return errors.Wrapf(err, "failed to write smaps_rollups to %s", filename)
+	if len(outdir) > 0 {
+		rollupsJSON, err := json.MarshalIndent(rollups, "", "  ")
+		if err != nil {
+			return errors.Wrap(err, "failed to convert smaps_rollups to JSON")
+		}
+		filename := fmt.Sprintf("smaps_rollup%s.json", suffix)
+		if err := ioutil.WriteFile(path.Join(outdir, filename), rollupsJSON, 0644); err != nil {
+			return errors.Wrapf(err, "failed to write smaps_rollups to %s", filename)
+		}
 	}
 
 	if p == nil {
