@@ -33,6 +33,23 @@
       "message": "LGTM, also please correct the misspelling from Tricium",
       "revId": "7a21fca66791f7152ba6cb8dd668997949fe8535",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "065d7af9_7aa028f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-02T08:10:01Z",
+      "side": 1,
+      "message": "Thanks for the review",
+      "revId": "7a21fca66791f7152ba6cb8dd668997949fe8535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
