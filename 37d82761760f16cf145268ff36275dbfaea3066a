@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56114587_002763b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-02T09:43:15Z",
+      "side": 1,
+      "message": "Using real GAIA accounts has flakiness risk. Obviously it\u0027s risky to access production servers on the Internet... Also, if we use real GAIA accounts, profiles are sync\u0027ed across runs, which can affect your tests particularly if the feature is related to profiles.\n\nI recommend considering again if real GAIA accounts are better than fake accounts. I believe there are many existing tests related to profile/sessions but using fake accounts.\n\nIf you decide to use real GAIA accounts, it\u0027s really helpful for future readers if you add a code comment here describing the background.",
+      "parentUuid": "54f8acdc_af1733e4",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fa0df92_ec341476",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
         "patchSetId": 8

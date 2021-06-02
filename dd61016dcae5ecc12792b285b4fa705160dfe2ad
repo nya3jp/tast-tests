@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5472d2b5_358dd859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-02T09:43:15Z",
+      "side": 1,
+      "message": "I guess you had to define cr outside of anonymous functions just because you need cr.Creds() in the second chrome.New call? Then you can save chrome.Creds only, i.e.\n\n var creds chrome.Creds\n \n func() {\n   cr, err :\u003d chrome.New(...)\n   if err !\u003d nil { ... }\n   defer cr.Close(ctx)\n   \n   creds \u003d cr.Creds()\n   \n   ...\n }()",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "dd61016dcae5ecc12792b285b4fa705160dfe2ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce0053d_818f394a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-02T09:43:15Z",
+      "side": 1,
+      "message": "Thanks for this comment, it\u0027s helpful to understand why we need sleep here.",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "dd61016dcae5ecc12792b285b4fa705160dfe2ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73b6da70_2e545f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-02T09:43:15Z",
+      "side": 1,
+      "message": "Nice to add a comment why we need this option.",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 67,
+        "endChar": 36
+      },
+      "revId": "dd61016dcae5ecc12792b285b4fa705160dfe2ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c871315_7e1a38f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-02T09:43:15Z",
+      "side": 1,
+      "message": "This can easily fail if we change the UI string in Chrome. Recently UI test\u0027s unstability is becoming increasingly a problem (go/chromium-cros-tests). Could you consider matching the UI element with more stable attributes?",
+      "range": {
+        "startLine": 79,
+        "startChar": 45,
+        "endLine": 79,
+        "endChar": 96
+      },
+      "revId": "dd61016dcae5ecc12792b285b4fa705160dfe2ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
