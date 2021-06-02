@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "227bd335_c366df1d",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-02T22:25:25Z",
+      "side": 1,
+      "message": "nit: add docstring for func",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 17
+      },
+      "revId": "13ada2f5b22e51966bbaee943269f4a0b70eddb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08defdeb_5d47de10",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-02T22:25:25Z",
+      "side": 1,
+      "message": "ditto: add docstring for func",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 14
+      },
+      "revId": "13ada2f5b22e51966bbaee943269f4a0b70eddb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a78cea7_55463608",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-02T22:25:25Z",
+      "side": 1,
+      "message": "nit: const maxAttemps \u003d 2",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 12
+      },
+      "revId": "13ada2f5b22e51966bbaee943269f4a0b70eddb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e90f50fd_8687e88c",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-02T22:25:25Z",
+      "side": 1,
+      "message": "what about:\n \n  // note: using \"i\" instead of \"attempts\" is valid in this context.\n  const maxAttempts \u003d 2\n  var err\n  for attempts :\u003d 0; i\u003c maxAttempts; attempts++ {\n     ...\n  }\n  return nil, err",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "13ada2f5b22e51966bbaee943269f4a0b70eddb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39f30d2e_1d71a828",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-02T22:25:25Z",
+      "side": 1,
+      "message": "nit, optional: I\u0027d add the attempt number:\n\n  \"Attempt %d, failed to load terms of service\"",
+      "range": {
+        "startLine": 102,
+        "startChar": 26,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "13ada2f5b22e51966bbaee943269f4a0b70eddb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a50a5fa_3e86cd57",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-02T22:25:25Z",
+      "side": 1,
+      "message": "ditto: docstring for func",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 17
+      },
+      "revId": "13ada2f5b22e51966bbaee943269f4a0b70eddb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "984b74e6_e75c0fb2",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-02T22:25:25Z",
+      "side": 1,
+      "message": "nit: not clear why when msg !\u003d \"\" it is an error. could you add a comment?",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 15
+      },
+      "revId": "13ada2f5b22e51966bbaee943269f4a0b70eddb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
