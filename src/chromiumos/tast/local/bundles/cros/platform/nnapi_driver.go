@@ -30,7 +30,7 @@ func init() {
 		Params: []testing.Param{{
 			Name: "cts",
 			// b/182264329: Fix SingleOperationTest.RESIZE_BILINEAR_V1_3
-			Val:               []string{"cros_nnapi_cts", "--gtest_filter=-TestRandomGraph/SingleOperationTest.RESIZE_BILINEAR_V1_3/*"},
+			Val:               []string{"cros_nnapi_cts", "--gtest_filter=-TestRandomGraph/SingleOperationTest.RESIZE_BILINEAR_V1_3/*:TestGenerated/*.Test/svdf_bias_present*:"},
 			ExtraSoftwareDeps: []string{"nnapi_vendor_driver"},
 		}, {
 			Name: "vts_1_0",
