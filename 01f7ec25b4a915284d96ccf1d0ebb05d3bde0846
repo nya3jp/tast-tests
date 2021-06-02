@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feadab4f_6b3f4c37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-02T05:51:19Z",
+      "side": 1,
+      "message": "As per b/181045525#comment3 I see there are more devices. Are these 2 enough?. How about using ABI hwdep like X86?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 68
+      },
+      "revId": "01f7ec25b4a915284d96ccf1d0ebb05d3bde0846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
