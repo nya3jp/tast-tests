@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d112f19_66039fdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/file_stability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-02T21:01:52Z",
+      "side": 1,
+      "message": "to avoid convertions in L105 and L127, what about doing:\n\n  fileContents :\u003d [][]byte {\n    []byte(\"hello\"),\n    []byte(\"...\"),\n    make([]byte, 20000), // this will create a 20000-byte long slice made of zeroes.\n  }",
+      "range": {
+        "startLine": 59,
+        "startChar": 17,
+        "endLine": 59,
+        "endChar": 26
+      },
+      "revId": "d292c761792d482069961f6a4fa4d39c676a77d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f24c3784_946ef917",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/file_stability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-02T21:01:52Z",
+      "side": 1,
+      "message": "see comment above.\n\n\nthis looks kind of strange because you are not appending 10000 bytes since you are using Itoa().\n\nFor simplicity, I\u0027d just append one byte so that you know that you are appending exactly 10000 bytes.\n\nOr better yet, if you don\u0027t mind appending just \"0\", you can do:\n\n  zeroes :\u003d make([]byte, 20000)\n  fileContentes[2] \u003d append(fileContents[2], zeroes[:]...)\n  \nBut if you don\u0027t mind having just 20000 zeroes  (without the \"this is a long file\" prefix\") you can just do what I mentioned i the comment above.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "d292c761792d482069961f6a4fa4d39c676a77d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f919b9_c71e49c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/file_stability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-02T21:01:52Z",
+      "side": 1,
+      "message": "huge nit: append period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 110,
+        "startChar": 30,
+        "endLine": 110,
+        "endChar": 31
+      },
+      "revId": "d292c761792d482069961f6a4fa4d39c676a77d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
