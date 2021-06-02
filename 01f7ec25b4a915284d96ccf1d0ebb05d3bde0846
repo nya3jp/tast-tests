@@ -22,6 +22,30 @@
       },
       "revId": "01f7ec25b4a915284d96ccf1d0ebb05d3bde0846",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "239211f4_6324b717",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-06-02T15:40:07Z",
+      "side": 1,
+      "message": "1) hana\n2) bruce\n3) babymega\n4) lava mentioned in the bug are no more used in the tast.arcappcompat runs. So these two devices are enough.\nCould you please share the link of ABI hwdep like X86. I couldn\u0027t find it.",
+      "parentUuid": "feadab4f_6b3f4c37",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 68
+      },
+      "revId": "01f7ec25b4a915284d96ccf1d0ebb05d3bde0846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
