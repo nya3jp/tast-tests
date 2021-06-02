@@ -41,7 +41,6 @@ func init() {
 			{
 				Name:              "tablet_mode",
 				Val:               true,
-				ExtraSoftwareDeps: []string{"tablet_mode"},
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 			},
 		},

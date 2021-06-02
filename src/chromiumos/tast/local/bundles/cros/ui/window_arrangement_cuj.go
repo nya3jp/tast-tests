@@ -31,6 +31,7 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -40,6 +41,7 @@ func init() {
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc", "chrome_internal"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars:         []string{"record"},
 		Timeout:      10 * time.Minute,
 		Data:         []string{"bear-320x240.vp8.webm", "pip.html"},
@@ -50,9 +52,8 @@ func init() {
 				Fixture: "chromeLoggedIn",
 			},
 			{
-				Name:              "tablet_mode",
-				Val:               true,
-				ExtraSoftwareDeps: []string{"tablet_mode"},
+				Name: "tablet_mode",
+				Val:  true,
 			},
 		},
 	})

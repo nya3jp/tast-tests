@@ -45,7 +45,7 @@ func init() {
 		Desc:         "Measures the presentation time of window dragging in overview in tablet mode",
 		Contacts:     []string{"xiyuan@chromium.org", "mukai@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", "tablet_mode"},
+		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      "chromeLoggedIn",
 		Timeout:      4 * time.Minute,

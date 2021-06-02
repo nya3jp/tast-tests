@@ -29,8 +29,8 @@ func init() {
 		Desc:     "Tests split view works properly with ARC apps",
 		Contacts: []string{"tetsui@chromium.org", "amusbach@chromium.org", "arc-framework+tast@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
-		// TODO(b/188754062): Add support for mouse input and remove the touch screen deps
-		HardwareDeps: hwdep.D(hwdep.TouchScreen()),
+		// TODO(b/188754062): Add support for mouse input and remove the internal display deps
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
 		Fixture:      "arcBooted",
@@ -47,22 +47,22 @@ func init() {
 			},
 			{
 				Name:              "tablet_mode",
-				ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+				ExtraSoftwareDeps: []string{"android_p"},
 				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: false},
 			},
 			{
 				Name:              "tablet_mode_vm",
-				ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+				ExtraSoftwareDeps: []string{"android_vm"},
 				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: false},
 			},
 			{
 				Name:              "tablet_home_launcher",
-				ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+				ExtraSoftwareDeps: []string{"android_p"},
 				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: true},
 			},
 			{
 				Name:              "tablet_home_launcher_vm",
-				ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+				ExtraSoftwareDeps: []string{"android_vm"},
 				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: true},
 			},
 		},
