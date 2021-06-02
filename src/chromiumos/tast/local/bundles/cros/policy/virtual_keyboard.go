@@ -9,8 +9,10 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -141,6 +143,7 @@ func VirtualKeyboard(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+	uia := uiauto.New(tconn)
 
 	tcs := s.Param().([]vkTestCase)
 
@@ -166,27 +169,21 @@ func VirtualKeyboard(ctx context.Context, s *testing.State) {
 			defer conn.Close()
 
 			// Click the address bar.
-			if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeTextField,
-				Name: "Address and search bar",
-			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+			if err := uia.LeftClick(nodewith.ClassName("OmniboxViewViews").Role(role.TextField))(ctx); err != nil {
 				s.Fatal("Failed to click address bar: ", err)
 			}
 
 			const vkTimeout = 15 * time.Second
-			vkFindParams := ui.FindParams{
-				Role: ui.RoleTypeKeyboard,
-				Name: "Chrome OS Virtual Keyboard",
-			}
+			vkNode := nodewith.Name("Chrome OS Virtual Keyboard").Role(role.Keyboard)
 
 			if tc.wantedAllowVK {
 				// Confirm that the virtual keyboard exists.
-				if err := ui.WaitUntilExists(ctx, tconn, vkFindParams, vkTimeout); err != nil {
+				if err := uia.WithTimeout(vkTimeout).WaitUntilExists(vkNode)(ctx); err != nil {
 					s.Errorf("Virtual keyboard did not show up within %s: %s", vkTimeout, err)
 				}
 			} else {
 				// Confirm that the virtual keyboard does not exist.
-				if err := policyutil.VerifyNotExists(ctx, tconn, vkFindParams, vkTimeout); err != nil {
+				if err := uia.EnsureGoneFor(vkNode, vkTimeout)(ctx); err != nil {
 					s.Errorf("Virtual keyboard was still visible after %s: %s", vkTimeout, err)
 				}
 			}
