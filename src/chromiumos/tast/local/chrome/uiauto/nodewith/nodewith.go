@@ -455,17 +455,17 @@ func (f *Finder) nameAttribute(english string, other map[string]string, matchSta
 	c := f.copy()
 	addName := func(lang, text string) {
 		baseLanguage := strings.Split(lang, "-")[0]
-		start := ".*"
-		end := ".*"
+		start := ""
+		end := ""
 		// It's unlikely we'll write tast tests for more than one RTL language, so just hardcode this.
 		rtl := baseLanguage == "ar"
 		if (matchEnd && rtl) || (matchStart && !rtl) {
-			start = ""
+			start = "^"
 		}
 		if (matchStart && rtl) || (matchEnd && !rtl) {
-			end = ""
+			end = "$"
 		}
-		c.name[lang] = *regexp.MustCompile("^" + start + regexp.QuoteMeta(text) + end + "$")
+		c.name[lang] = *regexp.MustCompile(start + regexp.QuoteMeta(text) + end)
 	}
 	addName("en", english)
 	// These are defaults, and can be overridden by using the other map

@@ -61,9 +61,9 @@ func TestAttributeMatcher(t *gotesting.T) {
 		{MultilingualName("hello", map[string]string{"en-XA": "hello a"}),
 			`{"name":selectName({"ar-XB":/^olleh$/,"en":/^hello$/,"en-XA":/^hello a$/,})}`},
 		{MultilingualNameStartingWith("hello", map[string]string{"de": "hallo", "ar": "abc"}),
-			`{"name":selectName({"ar":/^.*abc$/,"ar-XB":/^.*olleh$/,"de":/^hallo.*$/,"en":/^hello.*$/,"en-XA":/^ĥéļļö.*$/,})}`},
+			`{"name":selectName({"ar":/abc$/,"ar-XB":/olleh$/,"de":/^hallo/,"en":/^hello/,"en-XA":/^ĥéļļö/,})}`},
 		{MultilingualNameContaining("hello", map[string]string{"de": "hallo", "ar": "abc"}),
-			`{"name":selectName({"ar":/^.*abc.*$/,"ar-XB":/^.*olleh.*$/,"de":/^.*hallo.*$/,"en":/^.*hello.*$/,"en-XA":/^.*ĥéļļö.*$/,})}`},
+			`{"name":selectName({"ar":/abc/,"ar-XB":/olleh/,"de":/hallo/,"en":/hello/,"en-XA":/ĥéļļö/,})}`},
 	} {
 		out, err := tc.in.attributesBytes()
 		if err != nil {
