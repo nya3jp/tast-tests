@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -24,7 +25,8 @@ func init() {
 			"alexanderhartl@google.com", // Test author
 			"chromeos-commercial-stability@google.com",
 		},
-		SoftwareDeps: []string{"chrome", "display_backlight"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      "chromePolicyLoggedIn",
 	})

@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -19,6 +20,7 @@ func init() {
 		Desc:         "Takes a screenshot using the CLI",
 		Contacts:     []string{"nya@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"chrome", "screenshot"},
 		Fixture:      "chromeGraphics",
 	})
