@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22ee75b1_8411a7c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-02T16:46:07Z",
+      "side": 1,
+      "message": "Sorry for the delay.  I changed the uiauto-side and ui/launcher_page_switch_perf.go -- they are not using chrome/ui.EventWatcher anymore. Please rebase, I guess you don\u0027t need to change those files.",
+      "revId": "f79fd7a01132ab97bfa435ede48c71404669d6ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f9496ab_2f71b1ae",
@@ -66,6 +83,24 @@
       "side": 1,
       "message": "This change is intended as a preparation of https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2921793/1, which is still WIP though.\n\nFrom my perspective, I\u0027d like to migrate that test from using ChroemVox internal classes to public automation API.\nEventually, in that test, I would like to make it listen all events under the Android root and verify the event sequence.\n\nDo you have any suggestions? It\u0027s fine to me to implement by myself using chrome.automation APIs directly instead of using ui or uiauto packages.",
       "parentUuid": "5f9496ab_2f71b1ae",
+      "revId": "f79fd7a01132ab97bfa435ede48c71404669d6ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2579eb7_f418feeb",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-02T16:46:07Z",
+      "side": 1,
+      "message": "Thanks for the reply.  However, the CL looks like doing:\n* create a root event watcher\n* check if the event target is the wanted node or not through \"match\"\n\nI guess you could do that by creating an event watcher for the target node instead of root one. Isn\u0027t it working well?",
+      "parentUuid": "dca8b5e8_34829747",
       "revId": "f79fd7a01132ab97bfa435ede48c71404669d6ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
