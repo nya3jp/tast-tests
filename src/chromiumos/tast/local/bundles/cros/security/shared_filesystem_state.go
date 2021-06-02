@@ -96,9 +96,8 @@ func SharedFilesystemState(ctx context.Context, s *testing.State) {
 }
 
 func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusionsMap map[string]struct{}) {
-	// Additional info about all mounts and reasoning behind them can be found here:
-	// https://docs.google.com/document/d/1cAgG931pUB2dOKrYRfkHAl0Nyern9ZqD-0NO3zPWPu4/edit#
-	// TODO(crbug/1205034): Change to markdown when it is successfully uploaded
+	// Additional info about all mounts and reasoning behind them can be found
+	// here: go/shared-filesystem-state
 
 	// BaseExpectedSharedMounts contains the paths of all shared mountpoints
 	// that will be found on every system, whether ARC is enabled or not.
@@ -152,7 +151,6 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 	// user on an ARCVM device.
 	ARCVMExpectedSharedMountsCommon := map[string]bool{
 		// Used to share Android's sdcard partition to ChromeOS
-		// TODO(crbug/1205038): Is sdcard found often?
 		"^/run/arc/sdcard$": true,
 		// These mount points are to ensure that the root
 		// namespace's /home/root/<hash> is propagated into the mnt_concierge
