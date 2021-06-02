@@ -47,22 +47,22 @@ func init() {
 			},
 			{
 				Name:              "tablet_mode",
-				ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+				ExtraSoftwareDeps: []string{"android_p"},
 				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: false},
 			},
 			{
 				Name:              "tablet_mode_vm",
-				ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+				ExtraSoftwareDeps: []string{"android_vm"},
 				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: false},
 			},
 			{
 				Name:              "tablet_home_launcher",
-				ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+				ExtraSoftwareDeps: []string{"android_p"},
 				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: true},
 			},
 			{
 				Name:              "tablet_home_launcher_vm",
-				ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+				ExtraSoftwareDeps: []string{"android_vm"},
 				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: true},
 			},
 		},
