@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "424b7a5a_fbe4f6e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-06-02T17:03:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "834794dc_aed8aa42",
+      "range": {
+        "startLine": 31,
+        "startChar": 75,
+        "endLine": 31,
+        "endChar": 113
+      },
+      "revId": "f0a00a84bfdf98b2b1080d8278d641fbf3f6f382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0539edf7_d3117b49",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-02T16:40:52Z",
       "side": 1,
       "message": "Do we need to use shutil.EscapeSlice here? It looks like it\u0027s generally useful for creating shell commands, not logging; besides, I think it\u0027ll be a noop on cmd.Args.",
+      "range": {
+        "startLine": 33,
+        "startChar": 35,
+        "endLine": 33,
+        "endChar": 46
+      },
+      "revId": "f0a00a84bfdf98b2b1080d8278d641fbf3f6f382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bd338a7_16b7cea9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-06-02T17:03:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0539edf7_d3117b49",
       "range": {
         "startLine": 33,
         "startChar": 35,
