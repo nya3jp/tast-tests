@@ -104,7 +104,8 @@ func parseFincoreJSON(ctx context.Context, bytes []byte) (*fincoreJSON, error) {
 
 // CrosvmFincoreMetrics logs a JSON file with the amount resident memory for
 // each file used as a disk by crosvm. If p is not nil, the amount of memory
-// used by each VM type is logged as perf.Values.
+// used by each VM type is logged as perf.Values. If outdir is "", then no logs
+// are written.
 func CrosvmFincoreMetrics(ctx context.Context, p *perf.Values, outdir, suffix string) error {
 	// Look for crosvm processes with
 	processes, err := process.Processes()
@@ -144,9 +145,11 @@ func CrosvmFincoreMetrics(ctx context.Context, p *perf.Values, outdir, suffix st
 	if err != nil {
 		return errors.Wrapf(err, "failed to get fincore for %v", args)
 	}
-	filename := fmt.Sprintf("fincore%s.json", suffix)
-	if err := ioutil.WriteFile(path.Join(outdir, filename), fincoreBytes, 0644); err != nil {
-		return errors.Wrapf(err, "failed to write fincore JSON to %s", filename)
+	if len(outdir) > 0 {
+		filename := fmt.Sprintf("fincore%s.json", suffix)
+		if err := ioutil.WriteFile(path.Join(outdir, filename), fincoreBytes, 0644); err != nil {
+			return errors.Wrapf(err, "failed to write fincore JSON to %s", filename)
+		}
 	}
 
 	if p == nil {

@@ -23,6 +23,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/memory"
+	arcmem "chromiumos/tast/local/memory/arc"
 	"chromiumos/tast/local/power"
 	arcpb "chromiumos/tast/services/cros/arc"
 	"chromiumos/tast/shutil"
@@ -177,6 +179,19 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 	if !lastEventSeen {
 		return nil, errors.Errorf("timeout while waiting for event %q to appear in logcat",
 			logcatLastEventTag)
+	}
+
+	if err := memory.SmapsMetrics(ctx, p, "", ""); err != nil {
+		return nil, errors.Wrap(err, "failed to collect smaps_rollup metrics")
+	}
+	if err := memory.CrosvmFincoreMetrics(ctx, p, "", ""); err != nil {
+		return nil, errors.Wrap(err, "failed to collect crosvm fincore metrics")
+	}
+	if err := memory.ZramMmStatMetrics(ctx, p, "", ""); err != nil {
+		return nil, errors.Wrap(err, "failed to collect zram mm_stats metrics")
+	}
+	if err := arcmem.DumpsysMeminfoMetrics(ctx, a, p, "", ""); err != nil {
+		return nil, errors.Wrap(err, "failed to collect ARC dumpsys meminfo metrics")
 	}
 
 	return p.Proto(), nil
