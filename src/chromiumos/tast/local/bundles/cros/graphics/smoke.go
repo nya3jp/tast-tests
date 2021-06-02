@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -35,9 +36,9 @@ func init() {
 			"vsuley@chromium.org",
 			"hidehiko@chromium.org", // Tast port author
 		},
-		Attr: []string{"group:mainline"},
-		// TODO(pwang): Remove display_backlight once crbug.com/950346 support hardware dependency.
-		SoftwareDeps: []string{"display_backlight", "no_qemu"},
+		Attr:         []string{"group:mainline"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		SoftwareDeps: []string{"no_qemu"},
 		Fixture:      "gpuWatchHangs",
 		Params: []testing.Param{{
 			Name:              "chrome",

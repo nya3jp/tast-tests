@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -22,7 +23,8 @@ func init() {
 		Desc:         "Tests changing the screen brightness using Assistant queries",
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "meilinw@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "display_backlight"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		SoftwareDeps: []string{"chrome"},
 		Pre:          assistant.VerboseLoggingEnabled(),
 	})
 }
