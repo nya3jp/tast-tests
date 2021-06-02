@@ -22,6 +22,30 @@
       },
       "revId": "15f944a745fcbdeafdc247f8091b43503104e365",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b89eb7f_e55ebd8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-02T02:24:44Z",
+      "side": 1,
+      "message": "Yes, we could and it sounds better. The timeout value should also be related to the vpn type. Since we will have several refactor patches later, let me leave a TODO here and revisit it later.",
+      "parentUuid": "e624c53d_fe582db1",
+      "range": {
+        "startLine": 351,
+        "startChar": 49,
+        "endLine": 354,
+        "endChar": 31
+      },
+      "revId": "15f944a745fcbdeafdc247f8091b43503104e365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

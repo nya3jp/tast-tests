@@ -22,6 +22,30 @@
       },
       "revId": "16edc3161f8373a0a2cb5a78189a1d4970c0a393",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5f8f0a1_c61d05d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-02T02:24:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24135d9f_0f5540dc",
+      "range": {
+        "startLine": 351,
+        "startChar": 49,
+        "endLine": 351,
+        "endChar": 63
+      },
+      "revId": "16edc3161f8373a0a2cb5a78189a1d4970c0a393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
