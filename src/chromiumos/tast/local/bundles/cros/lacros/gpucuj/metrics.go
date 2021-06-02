@@ -277,6 +277,22 @@ func (m *metricsRecorder) recordValue(ctx context.Context, invoc *testInvocation
 	return m.record(ctx, invoc, minfo, key, value)
 }
 
+func (m *metricsRecorder) recordMetric(ctx context.Context, invoc *testInvocation, metric perf.Metric, value float64) error {
+	key := statBucketKey{
+		metric: metric.Name,
+		stat:   valueStat,
+		crt:    invoc.crt,
+	}
+
+	minfo := metricInfo{
+		unit:      metric.Unit,
+		direction: metric.Direction,
+		uma:       false,
+	}
+
+	return m.record(ctx, invoc, minfo, key, value)
+}
+
 func (m *metricsRecorder) computeStatistics(ctx context.Context, pv *perf.Values) error {
 	// Collect means and standard deviations for each bucket. Each bucket contains results from several different pages.
 	// We define the population as the set of all pages (another option would be to define the population as the
@@ -393,6 +409,9 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 	}
 	sort.Strings(keys)
 
+	thermal := power.NewSysfsThermalMetrics()
+	thermal.Setup(ctx, "") // No prefix, we use our own naming scheme.
+
 	rapl, err := power.NewRAPLSnapshot()
 	if err != nil {
 		return errors.Wrap(err, "failed to get RAPL snapshot")
@@ -409,6 +428,15 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 			testing.ContextLog(ctx, "Failed to stop tracing: ", err)
 		}
 		return errors.Wrap(err, "failed to get histograms")
+	}
+
+	// Collect temperature first in case it decreases after the test finishes.
+	temps, err := thermal.SnapshotValues(ctx)
+	if err != nil {
+		if _, err := tracer.StopTracing(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to stop tracing: ", err)
+		}
+		return errors.Wrap(err, "failed to get temperature data")
 	}
 
 	// `rapl` could be nil when not supported.
@@ -462,6 +490,12 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 	// for the same metric, in the same scenario.
 	for _, h := range histograms {
 		if err := invoc.metrics.recordHistogram(ctx, invoc, h); err != nil {
+			return err
+		}
+	}
+
+	for metric, value := range temps {
+		if err := invoc.metrics.recordMetric(ctx, invoc, metric, value); err != nil {
 			return err
 		}
 	}
