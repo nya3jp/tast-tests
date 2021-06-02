@@ -20,18 +20,18 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VirtualKeyboardTypingGuest,
-		Desc:         "Checks that virtual keyboard works in guest mode",
+		Func:         VirtualKeyboardTypingIME,
+		Desc:         "Checks that virtual keyboard works in different input methods",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:input-tools-upstream", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Pre:          pre.VKEnabledTabletInGuest,
+		Pre:          pre.VKEnabledTablet,
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Timeout:      time.Duration(len(data.VKInputMap)) * time.Minute,
 	})
 }
 
-func VirtualKeyboardTypingGuest(ctx context.Context, s *testing.State) {
+func VirtualKeyboardTypingIME(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
@@ -53,7 +53,7 @@ func VirtualKeyboardTypingGuest(ctx context.Context, s *testing.State) {
 			}()
 			// 1 minute should be enough for the retries to avoid flakiness.
 			ui := uiauto.New(tconn).WithTimeout(time.Minute)
-			if err := ui.Retry(5, its.ValidateVKInputOnField(testserver.TextAreaInputField, imeCode))(ctx); err != nil {
+			if err := ui.Retry(5, its.ValidateVKInputOnField(testserver.TextAreaNoCorrectionInputField, imeCode))(ctx); err != nil {
 				s.Fatalf("Failed to validate virtual keyboard input in %s: %v", string(imeCode), err)
 			}
 		})
