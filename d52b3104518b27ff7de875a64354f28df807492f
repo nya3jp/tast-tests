@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e309086_9ec56624",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-02T09:38:16Z",
+      "side": 1,
+      "message": "This CL itself isn\u0027t related to vhost-user net. This is just an improvement that I noticed while reading the code.",
+      "revId": "d52b3104518b27ff7de875a64354f28df807492f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
