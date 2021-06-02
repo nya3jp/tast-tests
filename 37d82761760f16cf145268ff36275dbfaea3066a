@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c87bc2a1_819fa419",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-02T01:02:04Z",
+      "side": 1,
+      "message": "Thanks for the review. This timeout was changed when I debugged why it always failed to create a new session after login. The error showed that it went timeout during testing.Poll. However, it did not resolve the problem by extending the test case timeout. That\u0027s why I changed https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2902923/7..8/src/chromiumos/tast/local/chrome/internal/driver/conn.go#b224.\nFortunately, we do not need it anymore.",
+      "parentUuid": "736adba0_418fed50",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6138c091_b1ff124b",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-06-01T07:54:34Z",
       "side": 1,
       "message": "Why do we need a real GAIA account? Doesn\u0027t it work with fake accounts?",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54f8acdc_af1733e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-02T01:02:04Z",
+      "side": 1,
+      "message": "Fake accounts work in this case. However, full restore is a feature related to user profile and session, I\u0027d prefer to using a real user login instead of a fake account.",
+      "parentUuid": "6138c091_b1ff124b",
       "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c54f913e_e5917196",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-02T01:02:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fa0df92_ec341476",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d4dbffc_06093175",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-06-01T07:54:34Z",
       "side": 1,
       "message": "This deferred statement is called at the end of the test, but we want to do so before the next chrome.New call.\n\nOne way to correct this is to wrap code in anonymous function call:\n\n func FullRestoreFilesappReboot(ctx context.Context, s *testing.State) {\n   func() {\n     cr, err :\u003d chrome.New(...)\n     if err !\u003d nil { ... }\n     defer cr.Close(ctx)\n\n     ...\n   }()\n\n   func() {\n     cr, err :\u003d chrome.New(...)\n     if err !\u003d nil { ... }\n     defer cr.Close(ctx)\n\n     ...\n   }()\n }",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb87c8c0_57a83ca8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-02T01:02:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d4dbffc_06093175",
       "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a42342d_33d4d076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-02T01:02:04Z",
+      "side": 1,
+      "message": "Added a comment. It is required by the feature. Unfortunately, no condition we can poll.",
+      "parentUuid": "a72f2ab6_790ac4af",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8dca1a4_94821004",
@@ -120,6 +210,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b273593b_e4e15639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-02T01:02:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8dca1a4_94821004",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1ffb7c0_7baa6f9d",
@@ -133,6 +241,24 @@
       "writtenOn": "2021-06-01T07:54:34Z",
       "side": 1,
       "message": "Please remove this commented out line.",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faef0850_74202f44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-02T01:02:04Z",
+      "side": 1,
+      "message": "Sorry for confusion, but I have not finished debugging this. The name of the alert dialog is \"Restore apps \u0026 pages?.*\" and it fails to find it. It may because there is a new line in the name.",
+      "parentUuid": "b1ffb7c0_7baa6f9d",
       "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
