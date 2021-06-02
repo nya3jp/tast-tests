@@ -67,6 +67,24 @@
       "message": "go/go-style/decisions#variable-names\ngo/go-style/decisions#underscores\nI think this name is intended to resemble the string literal including the underscore, however, I think use of underscores for variable names is not consistent.",
       "revId": "700af2ce4ca7c7df49554f6a9a9d1ef6c36ea1d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a5faebb_11341196",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/bloat.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-06-02T16:09:02Z",
+      "side": 1,
+      "message": "ok I\u0027ll use startText and endText",
+      "parentUuid": "f9476468_dde0b3bb",
+      "revId": "700af2ce4ca7c7df49554f6a9a9d1ef6c36ea1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
