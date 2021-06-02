@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c69c46_779e686a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-06-02T04:07:32Z",
+      "side": 1,
+      "message": "This CL uses the perf values.proto types, and converts the existing test metrics to use them.",
+      "revId": "c40aeec64a1c18ce27ea144bf365cd3cc8fd18bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
