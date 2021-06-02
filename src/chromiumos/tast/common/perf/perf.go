@@ -39,6 +39,7 @@ import (
 
 	"github.com/google/uuid"
 
+	"chromiumos/tast/common/perf/perfpb"
 	"chromiumos/tast/errors"
 )
 
@@ -155,6 +156,28 @@ func (p *Values) Merge(vs ...*Values) {
 			}
 		}
 	}
+}
+
+// NewFromProto creates a Values from a perfpf.Values.
+func NewFromProto(vs ...*perfpb.Values) *Values {
+	p := NewValues()
+	for _, val := range vs {
+		for _, v := range val.Values {
+			m := Metric{
+				Name:      v.Name,
+				Variant:   v.Variant,
+				Unit:      v.Unit,
+				Direction: Direction(v.Direction),
+				Multiple:  v.Multiple,
+			}
+			if v.Multiple {
+				p.Append(m, v.Value...)
+			} else {
+				p.Set(m, v.Value...)
+			}
+		}
+	}
+	return p
 }
 
 // Append appends performance metrics values. It can be called only for multi-valued
@@ -360,6 +383,22 @@ func (p *Values) Save(outDir string) error {
 		return err
 	}
 	return ioutil.WriteFile(filepath.Join(outDir, fileName), json, 0644)
+}
+
+// Proto converts this Values to something that can be passed in a gRPC call.
+func (p *Values) Proto() *perfpb.Values {
+	result := &perfpb.Values{}
+	for k, v := range p.values {
+		result.Values = append(result.Values, &perfpb.Value{
+			Name:      k.Name,
+			Variant:   k.Variant,
+			Unit:      k.Unit,
+			Direction: perfpb.Direction(k.Direction),
+			Multiple:  k.Multiple,
+			Value:     v,
+		})
+	}
+	return result
 }
 
 // SaveAs saves performance metric values in the format provided to outDir.
