@@ -23,14 +23,8 @@ func init() {
 		Contacts:     []string{"ricardoq@chromium.org", "tast-owners@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.TouchScreen()),
 		Pre:          chrome.LoggedIn(),
-		Params: []testing.Param{{
-			// Adding 'tablet_mode' since it guarantees touch support.
-			ExtraSoftwareDeps: []string{"tablet_mode"},
-		}, {
-			Name:              "hwdep",
-			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen()),
-		}},
 	})
 }
 

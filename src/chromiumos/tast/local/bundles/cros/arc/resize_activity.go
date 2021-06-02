@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,8 +28,8 @@ func init() {
 		Contacts: []string{"ruanc@chromium.org", "arc-framework+tast@google.com"},
 		// TODO(http://b/166827552): Test is disabled until it can be fixed
 		// Attr:     []string{"group:mainline", "informational"},
-		// Adding 'tablet_mode' since moving/resizing the window requires screen touch support.
-		SoftwareDeps: []string{"chrome", "tablet_mode"},
+		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
