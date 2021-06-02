@@ -77,6 +77,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2dc6e390_684d5686",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-02T03:05:10Z",
+      "side": 1,
+      "message": "(sorry for typo) I mean, move the declaration of extConn to inside for-loop.",
+      "parentUuid": "6a21053f_c54f9070",
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "290efe74_4bb3fae1",
         "filename": "src/chromiumos/tast/local/a11y/a11y.go",
         "patchSetId": 8
