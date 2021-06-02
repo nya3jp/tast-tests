@@ -16,6 +16,69 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "57ca179306cbac9e61026952082e948d8323e0f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3b55f81_290902f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-06-02T05:14:23Z",
+      "side": 1,
+      "message": "Generally ok, though I\u0027d suggest to simplify the multiple layers of probabilities of events if possible.",
+      "revId": "57ca179306cbac9e61026952082e948d8323e0f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "456943df_a6800c07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-06-02T05:14:23Z",
+      "side": 1,
+      "message": "it\u0027s hard to reason about these values once there are more than 3 entries. e.g. is 200 a good idea, or should it be 150 or 300 or 2000?\n\ncan we use a simpler approach? something like: run 3 mount/unmount ops, then 10 create/remove key ops, then repeat.\n\nI see you already use a deterministic RNG that you seed with a const value, so at least repro is not a problem.",
+      "range": {
+        "startLine": 46,
+        "startChar": 22,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "57ca179306cbac9e61026952082e948d8323e0f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ea8a265_9c4ee645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-06-02T05:14:23Z",
+      "side": 1,
+      "message": "that\u0027s another layer of probabilities.",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 173,
+        "endChar": 12
+      },
+      "revId": "57ca179306cbac9e61026952082e948d8323e0f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
