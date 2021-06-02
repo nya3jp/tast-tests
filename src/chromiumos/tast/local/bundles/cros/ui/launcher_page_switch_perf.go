@@ -43,9 +43,8 @@ func init() {
 				Val:  false,
 			},
 			{
-				Name:              "tablet_mode",
-				Val:               true,
-				ExtraSoftwareDeps: []string{"tablet_mode"},
+				Name: "tablet_mode",
+				Val:  true,
 			},
 		},
 		Timeout: 3 * time.Minute,

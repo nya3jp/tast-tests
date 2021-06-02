@@ -31,6 +31,7 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -52,7 +53,7 @@ func init() {
 			{
 				Name:              "tablet_mode",
 				Val:               true,
-				ExtraSoftwareDeps: []string{"tablet_mode"},
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 			},
 		},
 	})
