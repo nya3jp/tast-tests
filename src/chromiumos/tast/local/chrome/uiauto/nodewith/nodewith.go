@@ -455,8 +455,9 @@ func (f *Finder) nameAttribute(english string, other map[string]string, matchSta
 	c := f.copy()
 	addName := func(lang, text string) {
 		baseLanguage := strings.Split(lang, "-")[0]
-		start := ".*"
-		end := ".*"
+		// A dot doesn't match a newline, so we match a character class and its inverse.
+		start := "[\\s\\S]*"
+		end := "[\\s\\S]*"
 		// It's unlikely we'll write tast tests for more than one RTL language, so just hardcode this.
 		rtl := baseLanguage == "ar"
 		if (matchEnd && rtl) || (matchStart && !rtl) {

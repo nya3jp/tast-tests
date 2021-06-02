@@ -61,9 +61,9 @@ func TestAttributeMatcher(t *gotesting.T) {
 		{MultilingualName("hello", map[string]string{"en-XA": "hello a"}),
 			`{"name":selectName({"ar-XB":/^olleh$/,"en":/^hello$/,"en-XA":/^hello a$/,})}`},
 		{MultilingualNameStartingWith("hello", map[string]string{"de": "hallo", "ar": "abc"}),
-			`{"name":selectName({"ar":/^.*abc$/,"ar-XB":/^.*olleh$/,"de":/^hallo.*$/,"en":/^hello.*$/,"en-XA":/^ĥéļļö.*$/,})}`},
+			`{"name":selectName({"ar":/^[\s\S]*abc$/,"ar-XB":/^[\s\S]*olleh$/,"de":/^hallo[\s\S]*$/,"en":/^hello[\s\S]*$/,"en-XA":/^ĥéļļö[\s\S]*$/,})}`},
 		{MultilingualNameContaining("hello", map[string]string{"de": "hallo", "ar": "abc"}),
-			`{"name":selectName({"ar":/^.*abc.*$/,"ar-XB":/^.*olleh.*$/,"de":/^.*hallo.*$/,"en":/^.*hello.*$/,"en-XA":/^.*ĥéļļö.*$/,})}`},
+			`{"name":selectName({"ar":/^[\s\S]*abc[\s\S]*$/,"ar-XB":/^[\s\S]*olleh[\s\S]*$/,"de":/^[\s\S]*hallo[\s\S]*$/,"en":/^[\s\S]*hello[\s\S]*$/,"en-XA":/^[\s\S]*ĥéļļö[\s\S]*$/,})}`},
 	} {
 		out, err := tc.in.attributesBytes()
 		if err != nil {
