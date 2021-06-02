@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f32cdd5_3ff51cd3",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-02T01:26:04Z",
+      "side": 1,
+      "message": "This seems to confuse the issue more than help.  probably better is \"please make sure window is not maximized, minimized, etc.\"",
+      "range": {
+        "startLine": 250,
+        "startChar": 95,
+        "endLine": 250,
+        "endChar": 187
+      },
+      "revId": "9cd596b90b3b988a0cd38c02602dbe9fdab2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3da8af67_19256f3d",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-02T01:26:04Z",
+      "side": 1,
+      "message": "this makes me a little sad 😞\n\n(obviously nothing can be done here)",
+      "range": {
+        "startLine": 151,
+        "startChar": 5,
+        "endLine": 151,
+        "endChar": 8
+      },
+      "revId": "9cd596b90b3b988a0cd38c02602dbe9fdab2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aea314e_a0a6d50a",
+        "filename": "src/chromiumos/tast/local/screenshot/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-02T01:26:04Z",
+      "side": 1,
+      "message": "in device pixels.",
+      "range": {
+        "startLine": 50,
+        "startChar": 46,
+        "endLine": 50,
+        "endChar": 47
+      },
+      "revId": "9cd596b90b3b988a0cd38c02602dbe9fdab2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6537c802_444b0a01",
+        "filename": "src/chromiumos/tast/local/screenshot/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-02T01:26:04Z",
+      "side": 1,
+      "message": "Device pixels",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 10
+      },
+      "revId": "9cd596b90b3b988a0cd38c02602dbe9fdab2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10fcd38f_a2280af0",
+        "filename": "src/chromiumos/tast/local/screenshot/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-02T01:26:04Z",
+      "side": 1,
+      "message": "development seems the wrong word.  maybe execution?",
+      "range": {
+        "startLine": 70,
+        "startChar": 56,
+        "endLine": 70,
+        "endChar": 67
+      },
+      "revId": "9cd596b90b3b988a0cd38c02602dbe9fdab2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "755123d9_0f24a73a",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-02T01:26:04Z",
+      "side": 1,
+      "message": "might want to add some max value checks to these, we need the same size on even boards with the smallest screens right?",
+      "range": {
+        "startLine": 430,
+        "startChar": 167,
+        "endLine": 430,
+        "endChar": 210
+      },
+      "revId": "9cd596b90b3b988a0cd38c02602dbe9fdab2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a11889bd_9dd5207c",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-02T01:26:04Z",
+      "side": 1,
+      "message": "is this possible?  isn\u0027t this the same value we are asking to set it to?",
+      "range": {
+        "startLine": 441,
+        "startChar": 12,
+        "endLine": 441,
+        "endChar": 41
+      },
+      "revId": "9cd596b90b3b988a0cd38c02602dbe9fdab2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50c1f7e0_b63e6a67",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-02T01:26:04Z",
+      "side": 1,
+      "message": "Does this work if they are trying to screenshot the whole window?",
+      "range": {
+        "startLine": 460,
+        "startChar": 18,
+        "endLine": 460,
+        "endChar": 26
+      },
+      "revId": "9cd596b90b3b988a0cd38c02602dbe9fdab2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63c0df13_6ca9affe",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-02T01:26:04Z",
+      "side": 1,
+      "message": "any reason you can\u0027t use testing.ContextLogf?",
+      "range": {
+        "startLine": 600,
+        "startChar": 9,
+        "endLine": 600,
+        "endChar": 13
+      },
+      "revId": "9cd596b90b3b988a0cd38c02602dbe9fdab2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "801052db_6dd9b920",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-02T01:26:04Z",
+      "side": 1,
+      "message": "must have missed this earlier, but context should never be stored in another struct: go/go-style/decisions#contexts",
+      "range": {
+        "startLine": 604,
+        "startChar": 32,
+        "endLine": 604,
+        "endChar": 37
+      },
+      "revId": "9cd596b90b3b988a0cd38c02602dbe9fdab2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
