@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "385932c1_9d5e4ad0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-06-02T00:45:28Z",
+      "side": 1,
+      "message": "See the diffbase. When you first run it, it calculates the current size of the window and tells you to put those numbers in the config, so that all devices have the same sized windows.\n\nI\u0027ll likely need to set a maximum value for these, but I\u0027m not sure what that value is yet.",
+      "parentUuid": "3a561479_5756d2da",
+      "range": {
+        "startLine": 79,
+        "startChar": 122,
+        "endLine": 79,
+        "endChar": 125
+      },
+      "revId": "9a67348d3fc38fe6bc08f739cd8b26728dea4d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e863d9b7_3c4a3e0c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0778336_8600df6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-06-02T00:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e863d9b7_3c4a3e0c",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 57
+      },
+      "revId": "9a67348d3fc38fe6bc08f739cd8b26728dea4d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ac976b2_66173c32",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-01T23:36:27Z",
       "side": 1,
       "message": "... for consistent screendiffs.",
+      "range": {
+        "startLine": 114,
+        "startChar": 39,
+        "endLine": 114,
+        "endChar": 46
+      },
+      "revId": "9a67348d3fc38fe6bc08f739cd8b26728dea4d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7dea376_2004e1dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-06-02T00:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac976b2_66173c32",
       "range": {
         "startLine": 114,
         "startChar": 39,
