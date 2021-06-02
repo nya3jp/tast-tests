@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "795f9b68_8ae54137",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2021-06-02T03:59:11Z",
+      "side": 1,
+      "message": "Currently force-submitting this CL as it\u0027s blocking CQ as a fix to a previous breaking build.",
+      "revId": "3c6cf035cbe2bcc4175319900f602c4aa4f5ca86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
