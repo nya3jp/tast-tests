@@ -284,6 +284,11 @@ func (l *LacrosChrome) NewConnForTarget(ctx context.Context, tm chrome.TargetMat
 	return l.newConnInternal(ctx, t.TargetID, t.URL)
 }
 
+// FindTargets returns the info about Targets, which satisfies the given cond condition.
+func (l *LacrosChrome) FindTargets(ctx context.Context, tm chrome.TargetMatcher) ([]*chrome.Target, error) {
+	return l.Devsess.FindTargets(ctx, tm)
+}
+
 // NewConn creates a new Chrome renderer and returns a connection to it.
 // If url is empty, an empty page (about:blank) is opened. Otherwise, the page
 // from the specified URL is opened. You can assume that the page loading has
