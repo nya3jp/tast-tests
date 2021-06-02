@@ -16,6 +16,23 @@
       "message": "Hi Polina,\n\nThis CL contains the changes we discussed yesterday. I tested it locally and at least it didn\u0027t break any passing runs. Please take a look! Thanks!",
       "revId": "8fd71a099ccd5f383d1a90ba7b292551dd538fb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4d958a3_142c38bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2021-06-02T08:08:18Z",
+      "side": 1,
+      "message": "Thanks, Yi, LGTM.\n\nLet\u0027s watch the timeout of Play UI breakages afterwards.",
+      "revId": "8fd71a099ccd5f383d1a90ba7b292551dd538fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
