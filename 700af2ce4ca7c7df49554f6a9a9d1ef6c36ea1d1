@@ -16,6 +16,23 @@
       "message": "I think this is good enough to send in and it can be improved in another CL.",
       "revId": "700af2ce4ca7c7df49554f6a9a9d1ef6c36ea1d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1446a12b_1b85440b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2021-06-02T08:16:04Z",
+      "side": 1,
+      "message": "Most Chrome OS devices use kernels that are shared by broad product families with much hardware diversity.  So, it is expected that on any given DUT, the kernel will have a lot of functionality included that is not used.\n\nThat being said, there are probably still plenty of optimization opportunities, and this test sets up a good metric to track fixes and regressions over time.\n\n+1 for concept and logic + Tatsuhisa\u0027s +1 (tast / .go) \u003d\u003d +2.",
+      "revId": "700af2ce4ca7c7df49554f6a9a9d1ef6c36ea1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
