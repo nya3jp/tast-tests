@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"github.com/golang/protobuf/ptypes"
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/perf"
@@ -73,24 +72,16 @@ func PerfBoot(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("PerfBootService.GetPerfValues returned an error: ", err)
 	}
-
-	perfValues := perf.NewValues()
-
-	for _, val := range res.Values {
-		dur, err := ptypes.Duration(val.Duration)
-		if err != nil {
-			s.Fatal("Invalid duration value is returned: ", err)
+	for _, m := range res.Values {
+		if m.Multiple {
+			s.Logf("Logcat event entry: tag=%s unit=%s values=%v", m.Name, m.Unit, m.Value)
+		} else {
+			s.Logf("Logcat event entry: tag=%s unit=%s value=%f", m.Name, m.Unit, m.Value[0])
 		}
-		durMS := dur / time.Millisecond
-		s.Logf("Logcat event entry: tag=%s time=%dms", val.Name, durMS)
-		perfValues.Set(perf.Metric{
-			Name:      val.Name,
-			Unit:      "milliseconds",
-			Direction: perf.SmallerIsBetter,
-		}, float64(durMS))
 	}
 
-	if err = perfValues.Save(s.OutDir()); err != nil {
+	p := perf.NewValuesFromProto(res)
+	if err = p.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed to save perf data: ", err)
 	}
 }

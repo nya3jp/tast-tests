@@ -6,8 +6,9 @@ syntax = "proto3";
 
 package tast.cros.arc;
 
-import "google/protobuf/duration.proto";
 import "google/protobuf/empty.proto";
+
+import "values.proto";
 
 option go_package = "chromiumos/tast/services/cros/arc";
 
@@ -18,13 +19,5 @@ service PerfBootService {
   rpc WaitUntilCPUCoolDown (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
   // GetPerfValues signs in to DUT and measures Android boot performance metrics.
-  rpc GetPerfValues (google.protobuf.Empty) returns (GetPerfValuesResponse) {}
-}
-
-message GetPerfValuesResponse {
-  message PerfValue {
-    string name = 1;
-    google.protobuf.Duration duration = 2;
-  }
-  repeated PerfValue values = 1;
+  rpc GetPerfValues (google.protobuf.Empty) returns (tast.common.perf.perfpb.Values) {}
 }
