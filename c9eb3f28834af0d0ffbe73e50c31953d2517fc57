@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cef5382c_34db39b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-06-02T00:55:01Z",
+      "side": 1,
+      "message": "| CL is missing the approving vote on Branch-Review label.\n\nSeems to be related to the mandatory Code Review \u0026 OWNERS rollout:\nhttps://groups.google.com/a/google.com/g/chrome-code-review-wg/c/RItaiVLjNo4/m/-hsNi7QWAAAJ\n\nShould be fixed now, giving it another try!",
+      "revId": "c9eb3f28834af0d0ffbe73e50c31953d2517fc57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
