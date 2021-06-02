@@ -51,6 +51,24 @@
       "parentUuid": "39d4f7dc_d3904c42",
       "revId": "cbaad2754b14836b0c0f137ffb4385c86b62a67f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b01620a_86cb00f7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-02T23:35:09Z",
+      "side": 1,
+      "message": "It does not know / check.  It just invokes \"focus\" method (in line 556), and then wait for the next focus event appears.  Technically it may quit too early.  But at least that has been the behavior of FocusAndWait before my CL (see https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2802697/3/src/chromiumos/tast/local/chrome/uiauto/automation.go -- RootWatcher with Poll with focus).",
+      "parentUuid": "485e31c1_573d9153",
+      "revId": "cbaad2754b14836b0c0f137ffb4385c86b62a67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
