@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c13ee46_ee6e9ba1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-02T09:40:27Z",
+      "side": 1,
+      "message": "PTAL.\nOther relevant CLs are found in the topic \"vhost-user-net-tast\":\nhttps://chromium-review.googlesource.com/q/topic:vhost-user-net-tast",
+      "revId": "2e950af044820d6c6569f04196bd316eddccf9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
