@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1a48f57_67c8c7f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-02T23:07:57Z",
+      "side": 1,
+      "message": "Hi David,\n\nWondering if you could help review this change for me. Excited to finally have end-to-end coverage for this feature, let me know what you think!",
+      "revId": "0ac8cfa394b9a7352bd91e169dc5755a69d58b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
