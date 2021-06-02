@@ -212,6 +212,24 @@
       "parentUuid": "d1987a30_9784ef27",
       "revId": "4c9b01143e88eb24c86f46cece48c0dafe00f421",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "513f8ec5_99af6c40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-02T18:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1987a30_9784ef27",
+      "revId": "4c9b01143e88eb24c86f46cece48c0dafe00f421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
