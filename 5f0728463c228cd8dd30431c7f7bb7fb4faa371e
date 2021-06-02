@@ -39,6 +39,30 @@
       },
       "revId": "5f0728463c228cd8dd30431c7f7bb7fb4faa371e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0ea2db0_150a09d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/non_pref_chan.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-02T19:38:31Z",
+      "side": 1,
+      "message": "Removed this check - it was specified in the MBO test plan, but it\u0027s redundant to check the length if the contents of the IE are good.",
+      "parentUuid": "8b469197_37e1f5e1",
+      "range": {
+        "startLine": 254,
+        "startChar": 29,
+        "endLine": 254,
+        "endChar": 31
+      },
+      "revId": "5f0728463c228cd8dd30431c7f7bb7fb4faa371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
