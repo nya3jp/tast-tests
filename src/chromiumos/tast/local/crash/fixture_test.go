@@ -94,10 +94,14 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	// Start a fake crash_sender process.
 	procName := fmt.Sprintf("test_%d", rand.Int31())
 	scriptPath := filepath.Join(tmpDir, procName)
-	if err := ioutil.WriteFile(scriptPath, []byte("#!/bin/sh\nsleep 30\n"), 0777); err != nil {
+	if err := ioutil.WriteFile(scriptPath, []byte("#!/bin/sh -x\nsleep 30\n"), 0777); err != nil {
 		t.Fatalf("WriteFile: %v", err)
 	}
 	cmd := exec.Command(scriptPath)
+	stderrPipe, err := cmd.StderrPipe()
+	if err != nil {
+		t.Fatalf("Failed to get stderr pipe: %v", err)
+	}
 	if err := cmd.Start(); err != nil {
 		t.Fatalf("Failed to start fake crash_sender process: %v", err)
 	}
@@ -107,6 +111,11 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	done := make(chan struct{})
 	go func() {
 		defer close(done)
+		if stderr, err := ioutil.ReadAll(stderrPipe); err != nil {
+			t.Errorf("Failed to get stderr: %v", err)
+		} else {
+			t.Logf("stderr: %s\n", stderr)
+		}
 		err := cmd.Wait()
 		if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
 			t.Errorf("Fake crash_sender process was not killed (ok: %v, signaled: %v, signal: %v): %v", ok, ws.Signaled(), ws.Signal(), err)
