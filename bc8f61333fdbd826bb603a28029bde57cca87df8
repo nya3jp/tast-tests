@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b2fe8b_df70430b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-06-02T13:45:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fb714f3e_8924663a",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "bc8f61333fdbd826bb603a28029bde57cca87df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "107c61b1_be88108a",
