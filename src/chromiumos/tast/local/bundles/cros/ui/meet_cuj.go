@@ -306,7 +306,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	// Jank criteria for input event latencies. The 1st number is the
 	// threshold to be marked as jank and the 2nd one is to be marked
 	// very jank.
-	jankCriteria := []int64{14000, 60000}
+	jankCriteria := []int64{80000, 400000}
 	if meet.docs {
 		configs = append(configs, cuj.NewCustomMetricConfig(
 			"Event.Latency.EndToEnd.KeyPress", "microsecond", perf.SmallerIsBetter,
