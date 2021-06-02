@@ -16,6 +16,166 @@
       "message": "Hi Hiroki,\n\nThanks for the feedback. I addressed your comments and made a few other changes. Let me know how it looks!",
       "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "007a2a89_6917e35a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-02T03:01:57Z",
+      "side": 1,
+      "message": "Thank you for addressing my comments!\nThe new approach looks good to me.\n\nLGTM after addressing my new comments.",
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff17520_2ae8d480",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-02T03:01:57Z",
+      "side": 1,
+      "message": "It would be great if we won\u0027t depend on ChromeVoxConn for initializing SpeechMonitor. For example, in the future when we add S2S test, we need to change here again. (i.e. I think ChromeVoxConn and SpeechMonitor should be independent if possible)\n\nThe only usage of ChromeVoxConn is \"ChromeVox.tts.speak(\u0027Testing\u0027)\". Instead, is it possible to query annoucement from tast test connection via \"chrome.tts.speak\" API? (maybe we also need to add tts permission to the manifest in [1])\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/extension/test_extension.go?l\u003d110\u0026rcl\u003d54acaf0fa391267cf38872e8f208da1b74953c41",
+      "range": {
+        "startLine": 203,
+        "startChar": 69,
+        "endLine": 203,
+        "endChar": 86
+      },
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a21053f_c54f9070",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-02T03:01:57Z",
+      "side": 1,
+      "message": "I think we can move the declaration if exConn inside for-loop.",
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "290efe74_4bb3fae1",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-02T03:01:57Z",
+      "side": 1,
+      "message": "Maybe we want to check if extCon is not nil. When NewConnForTarget returns err, I guess extConn can be nil.",
+      "range": {
+        "startLine": 247,
+        "startChar": 3,
+        "endLine": 247,
+        "endChar": 10
+      },
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e341b545_65a5e168",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-02T03:01:57Z",
+      "side": 1,
+      "message": "nit: How about adding ContextLog with a reason why we\u0027re skipping this connection?\nI guess it would be helpful for debugging.",
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e78c0a_65220fe6",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-02T03:01:57Z",
+      "side": 1,
+      "message": "nit: ditto here, how about adding logging?",
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd603e5f_b51b6e5b",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-02T03:01:57Z",
+      "side": 1,
+      "message": "I wonder if we really need this check.\nI think, with the current implementation, the logic can be used for any extension that is listening the tts event.",
+      "range": {
+        "startLine": 356,
+        "startChar": 4,
+        "endLine": 356,
+        "endChar": 63
+      },
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03ba05eb_fbed29a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-02T03:01:57Z",
+      "side": 1,
+      "message": "nit: This visibility is private to package. Other files in a11y package can access this. In order to avoid confusion in the future, I would name it \"SpokenFeedbackTestData\" or something more specific.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
