@@ -108,19 +108,32 @@ func (b *SysfsThermalMetrics) Start(ctx context.Context) error {
 	return nil
 }
 
-// Snapshot takes a snapshot of thermal metrics.
-// If there are no thermal sensors, Snapshot does nothing and returns without error.
-func (b *SysfsThermalMetrics) Snapshot(ctx context.Context, values *perf.Values) error {
-	if len(b.metrics) == 0 {
-		return nil
-	}
+// SnapshotValues takes a snapshot of thermal metrics and returns a map of metrics to values.
+func (b *SysfsThermalMetrics) SnapshotValues(ctx context.Context) (map[perf.Metric]float64, error) {
+	m := make(map[perf.Metric]float64)
+
 	for _, metric := range b.metrics {
 		tempFile := path.Join(metric.path, "temp")
 		temp, err := readInt64(tempFile)
 		if err != nil {
-			return errors.Wrapf(err, "cannot read temperature from %s", tempFile)
+			return nil, errors.Wrapf(err, "cannot read temperature from %s", tempFile)
 		}
-		values.Append(metric.metric, float64(temp)/1000)
+		m[metric.metric] = float64(temp) / 1000
+	}
+
+	return m, nil
+}
+
+// Snapshot takes a snapshot of thermal metrics.
+// If there are no thermal sensors, Snapshot does nothing and returns without error.
+func (b *SysfsThermalMetrics) Snapshot(ctx context.Context, values *perf.Values) error {
+	m, err := b.SnapshotValues(ctx)
+	if err != nil {
+		return err
+	}
+
+	for metric, value := range m {
+		values.Append(metric, value)
 	}
 
 	return nil
