@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52ea2101_fd5fbd0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-06-02T16:10:33Z",
+      "side": 1,
+      "message": "looks like +1 doesn\u0027t stick 😞",
+      "parentUuid": "bd63687b_48a750a5",
+      "revId": "700af2ce4ca7c7df49554f6a9a9d1ef6c36ea1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9476468_dde0b3bb",
