@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ed5bbab_d335488e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_machines_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-06-02T15:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28e643bb_bb194e04",
+      "revId": "00563ad115d13d820ecaca07833ae760b5df746b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddcf2220_1d34ab85",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c7bd96_08b44324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_machines_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-06-02T15:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddcf2220_1d34ab85",
+      "revId": "00563ad115d13d820ecaca07833ae760b5df746b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38b6b2db_6c259d08",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-06-02T13:58:17Z",
       "side": 1,
       "message": "Should this trigger an error when crostini is unavailable? Maybe add a comment.",
+      "revId": "00563ad115d13d820ecaca07833ae760b5df746b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cb977a3_9ddde523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_machines_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-06-02T15:28:06Z",
+      "side": 1,
+      "message": "Yes, in that case it triggers an error thrown from here: https://osscs.corp.google.com/chromium/chromium/src/+/main:chrome/browser/chromeos/extensions/autotest_private/autotest_private_api.cc;drc\u003dd6951ec895f1463826be4069fe7da51e296e4b81;l\u003d2103\n\nAdded a comment explaining this.",
+      "parentUuid": "38b6b2db_6c259d08",
       "revId": "00563ad115d13d820ecaca07833ae760b5df746b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
