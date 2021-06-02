@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc73f3b8_12f0b458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-06-02T15:59:39Z",
+      "side": 1,
+      "message": "I have removed this criteria in CL:2876174 for b/186747231. Otherwise, we need to handle multiple instances of \"Desk_Container_A\" in ui tree when connected with multiple monitors.\n\nSince our tests run in a known env, clicking on \"PermissionPromptBubbleView\" in any \"Desk_Container_A\" should work. So we probably don\u0027t need it to restrict where \"PermissionPromptBubbleView\" is.",
+      "range": {
+        "startLine": 397,
+        "startChar": 34,
+        "endLine": 397,
+        "endChar": 50
+      },
+      "revId": "67de029496fd65f3def3a1a65131315e304eb97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e46b75f5_18d373c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-06-02T15:59:39Z",
+      "side": 1,
+      "message": "Does this pick up window and drag it as expected? For tablet mode, I remember seeing behavior like what we have before the change that we need a long press first to pick up the window to be able to move it. The sleep after pc.Press() is to achieve that.",
+      "range": {
+        "startLine": 481,
+        "startChar": 14,
+        "endLine": 481,
+        "endChar": 21
+      },
+      "revId": "67de029496fd65f3def3a1a65131315e304eb97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b31dd38a_fc486f4c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 1
