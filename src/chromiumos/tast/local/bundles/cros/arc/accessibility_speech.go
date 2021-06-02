@@ -129,7 +129,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to set the ChromeVox voice")
 		}
 
-		sm, err := a11y.NewSpeechMonitor(ctx, s.FixtValue().(*arc.PreData).Chrome, a11y.GoogleTTSExtensionID)
+		sm, err := a11y.RelevantSpeechMonitor(ctx, s.FixtValue().(*arc.PreData).Chrome, tconn, a11y.TTSEngineData{ExtID: a11y.GoogleTTSExtensionID, UseOnSpeakWithAudioStream: false})
 		if err != nil {
 			return errors.Wrap(err, "failed to connect to the TTS background page")
 		}
