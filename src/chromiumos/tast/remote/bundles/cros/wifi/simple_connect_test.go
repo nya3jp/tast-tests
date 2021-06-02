@@ -456,8 +456,10 @@ func simpleConnect8021xWEP() simpleConnectParams {
 
 func simpleConnect8021xWPA() simpleConnectParams {
 	return simpleConnectParams{
-		Name: "8021xwpa",
-		Doc:  simpleConnectDocPref("a protected network supporting for WPA-EAP encryption."),
+		Name:                 "8021xwpa",
+		Doc:                  simpleConnectDocPref("a protected network supporting for WPA-EAP encryption."),
+		ExtraHardwareDepsDoc: []string{"TODO(b/189986748): Remove the skiplist once those flaky boards have reached AUE."},
+		ExtraHardwareDeps:    `hwdep.D(hwdep.SkipOnPlatform("banjo", "candy", "gnawty", "kip", "ninja", "sumo", "swanky", "winky"))`,
 		Val: []simpleConnectParamsVal{{
 			APOpts: simpleConnectCommonSecApOpts,
 			SecConfFac: `wpaeap.NewConfigFactory(
