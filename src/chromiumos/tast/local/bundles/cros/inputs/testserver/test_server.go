@@ -56,6 +56,9 @@ const (
 const html = `<!DOCTYPE html>
 <meta charset="utf-8">
 <title>E14s test page</title>
+<pre>No autocomplete</pre>
+<textarea aria-label="textArea disabled autocomplete, autocorrect, autocapitalize" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width: 100%"></textarea>
+<br /><br />
 <pre>&lt;<b>textarea</b> rows="7"&gt;&lt;/textarea&gt;</pre>
 <textarea rows="7" aria-label="textAreaInputField" style="width: 100%"></textarea>
 <br /><br />
@@ -73,9 +76,6 @@ const html = `<!DOCTYPE html>
 <br /><br />
 <pre>&lt;input type="<b>number</b>"/&gt;</pre>
 <input type="number" id="numberInput" aria-label="numberInputField" style="width: 100%" />
-<br /><br />
-<pre>No autocomplete</pre>
-<textarea aria-label="textArea disabled autocomplete, autocorrect, autocapitalize" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width: 100%"></textarea>
 <br /><br />
 <pre>No spellcheck (should have no autocorrect)</pre>
 <textarea spellcheck="false" style="width:100%"></textarea>
