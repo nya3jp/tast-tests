@@ -545,18 +545,20 @@ func (ac *Context) RightClickUntil(finder *nodewith.Finder, condition func(conte
 // The focus event is not instant, so an EventWatcher (watcher.go) is used to check its status.
 // The EventWatcher waits the duration of timeout for the event to occur.
 func (ac *Context) FocusAndWait(finder *nodewith.Finder) Action {
-	return ac.WaitForEvent(finder, event.Focus, func(ctx context.Context) error {
+	return ac.WaitForEvent(nodewith.Root(), event.Focus, func(ctx context.Context) error {
 		q, err := finder.GenerateQuery()
 		if err != nil {
 			return err
 		}
 		query := fmt.Sprintf(`
-		(async () => {
-			%s
-			node.focus();
-		})()
-	`, q)
-		return ac.tconn.Eval(ctx, query, nil)
+			(async () => {
+				%s
+				node.focus();
+			})()
+		`, q)
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			return ac.tconn.Eval(ctx, query, nil)
+		}, &ac.pollOpts)
 	})
 }
 
