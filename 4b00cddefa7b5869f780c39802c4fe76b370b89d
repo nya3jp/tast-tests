@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d707c2cb_71d4554a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-02T18:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "013cd50e_891fb355",
+      "range": {
+        "startLine": 130,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 16
+      },
+      "revId": "4b00cddefa7b5869f780c39802c4fe76b370b89d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1587cff0_95b93cee",
@@ -77,6 +101,54 @@
       "writtenOn": "2021-06-02T12:22:21Z",
       "side": 1,
       "message": "nit: maybe now it makes sense to rename function to \"typecdPID\" to make it more self descriptive?",
+      "range": {
+        "startLine": 176,
+        "startChar": 5,
+        "endLine": 176,
+        "endChar": 23
+      },
+      "revId": "4b00cddefa7b5869f780c39802c4fe76b370b89d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cad2b86c_467cf58c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-02T18:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1587cff0_95b93cee",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 0
+      },
+      "revId": "4b00cddefa7b5869f780c39802c4fe76b370b89d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb05490_5cf3f529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-02T18:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d76d4e41_60d40901",
       "range": {
         "startLine": 176,
         "startChar": 5,
