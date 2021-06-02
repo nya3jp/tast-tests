@@ -16,6 +16,23 @@
       "message": "nit: Can the test arc.MultipleArcProfile be run once to confirm.",
       "revId": "cbaad2754b14836b0c0f137ffb4385c86b62a67f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d4f7dc_d3904c42",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-06-02T21:31:07Z",
+      "side": 1,
+      "message": "How does it does if the events returned in the callback corresponds to the focus action rather than other events?",
+      "revId": "cbaad2754b14836b0c0f137ffb4385c86b62a67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
