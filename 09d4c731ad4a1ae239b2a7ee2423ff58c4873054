@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c63937d_4a542e3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-06-02T09:13:29Z",
+      "side": 1,
+      "message": "I think we flushed the snapshots tasks even when the video is too short.\nCan you help to check if the snapshot capture will actually fail if we don\u0027t sleep here?",
+      "revId": "09d4c731ad4a1ae239b2a7ee2423ff58c4873054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
