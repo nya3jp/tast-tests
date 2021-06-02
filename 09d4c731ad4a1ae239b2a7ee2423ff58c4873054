@@ -34,6 +34,29 @@
       "parentUuid": "4c63937d_4a542e3e",
       "revId": "09d4c731ad4a1ae239b2a7ee2423ff58c4873054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23cf4b18_4225d956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-06-02T14:11:01Z",
+      "side": 1,
+      "message": "I see. So you mean we sleep here is to avoid failing the StopRecording(), but it actually won\u0027t cause the snapshot fails.\n\nnit: Please add some comments above Sleep() for the reason why we need to sleep here.",
+      "range": {
+        "startLine": 317,
+        "startChar": 1,
+        "endLine": 317,
+        "endChar": 56
+      },
+      "revId": "09d4c731ad4a1ae239b2a7ee2423ff58c4873054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
