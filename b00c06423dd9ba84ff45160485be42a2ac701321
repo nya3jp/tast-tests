@@ -39,6 +39,30 @@
       },
       "revId": "b00c06423dd9ba84ff45160485be42a2ac701321",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41de9134_c9420c10",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1379789
+      },
+      "writtenOn": "2021-06-02T01:05:32Z",
+      "side": 1,
+      "message": "Then HugePagesMode also needs to be bool. Would this be this OK?",
+      "parentUuid": "86ad0520_41b31a8f",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 1
+      },
+      "revId": "b00c06423dd9ba84ff45160485be42a2ac701321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
