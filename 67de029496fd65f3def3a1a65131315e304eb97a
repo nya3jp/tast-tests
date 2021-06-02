@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc61e13f_1de406b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-06-02T19:15:47Z",
+      "side": 1,
+      "message": "Cool. Thanks for confirming.",
+      "parentUuid": "63fe7654_22020817",
+      "range": {
+        "startLine": 481,
+        "startChar": 14,
+        "endLine": 481,
+        "endChar": 21
+      },
+      "revId": "67de029496fd65f3def3a1a65131315e304eb97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b31dd38a_fc486f4c",
