@@ -52,16 +52,14 @@ func init() {
 				Timeout: 4 * time.Minute,
 			},
 			{
-				ExtraSoftwareDeps: []string{"tablet_mode"},
-				Val:               splitViewResizeTablet,
-				Fixture:           "chromeLoggedIn",
-				Timeout:           5 * time.Minute,
+				Val:     splitViewResizeTablet,
+				Fixture: "chromeLoggedIn",
+				Timeout: 5 * time.Minute,
 			},
 			{
-				Name:              "webui",
-				ExtraSoftwareDeps: []string{"tablet_mode"},
-				Val:               splitViewResizeWebUI,
-				Timeout:           5 * time.Minute,
+				Name:    "webui",
+				Val:     splitViewResizeWebUI,
+				Timeout: 5 * time.Minute,
 			},
 		},
 	})

@@ -28,7 +28,7 @@ func init() {
 		Desc:         "Measures animation smoothness of screen rotation in tablet mode",
 		Contacts:     []string{"chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", "tablet_mode"},
+		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      "chromeLoggedIn",
 		Timeout:      3 * time.Minute,

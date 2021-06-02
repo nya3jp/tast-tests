@@ -52,12 +52,12 @@ func init() {
 			},
 			{
 				Name:              "tablet_mode",
-				ExtraSoftwareDeps: []string{"tablet_mode", "android_p"},
+				ExtraSoftwareDeps: []string{"android_p"},
 				Val:               true,
 			},
 			{
 				Name:              "tablet_mode_vm",
-				ExtraSoftwareDeps: []string{"tablet_mode", "android_vm"},
+				ExtraSoftwareDeps: []string{"android_vm"},
 				Val:               true,
 			},
 		},
