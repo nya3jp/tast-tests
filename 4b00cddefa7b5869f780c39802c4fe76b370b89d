@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3fbb077_0be1d4f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-02T12:22:21Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "4b00cddefa7b5869f780c39802c4fe76b370b89d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "013cd50e_891fb355",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-02T12:22:21Z",
+      "side": 1,
+      "message": "nit: missing \"return\" statement",
+      "range": {
+        "startLine": 130,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 16
+      },
+      "revId": "4b00cddefa7b5869f780c39802c4fe76b370b89d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1587cff0_95b93cee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-02T12:22:21Z",
+      "side": 1,
+      "message": "nit: can you please simplify this comment a bit? Also i\u0027d like to don\u0027t put implementation details into the comment.\n\nFor example:\n\n```\ntypecPID returns \"typecd\" process ID.\n```\n\n?",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 0
+      },
+      "revId": "4b00cddefa7b5869f780c39802c4fe76b370b89d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d76d4e41_60d40901",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-02T12:22:21Z",
+      "side": 1,
+      "message": "nit: maybe now it makes sense to rename function to \"typecdPID\" to make it more self descriptive?",
+      "range": {
+        "startLine": 176,
+        "startChar": 5,
+        "endLine": 176,
+        "endChar": 23
+      },
+      "revId": "4b00cddefa7b5869f780c39802c4fe76b370b89d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
