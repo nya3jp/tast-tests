@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6c270a6_1a123169",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-02T22:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "227bd335_c366df1d",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 17
+      },
+      "revId": "13ada2f5b22e51966bbaee943269f4a0b70eddb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08defdeb_5d47de10",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03f3fbb5_cc758bbb",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-02T22:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08defdeb_5d47de10",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 14
+      },
+      "revId": "13ada2f5b22e51966bbaee943269f4a0b70eddb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a78cea7_55463608",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-02T22:25:25Z",
       "side": 1,
       "message": "nit: const maxAttemps \u003d 2",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 12
+      },
+      "revId": "13ada2f5b22e51966bbaee943269f4a0b70eddb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d44a8c2b_afafbc99",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-02T22:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a78cea7_55463608",
       "range": {
         "startLine": 85,
         "startChar": 1,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81387dde_5f235f95",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-02T22:47:36Z",
+      "side": 1,
+      "message": "that way i\u0027d be logging and throwing in the last failed attempt. Trying to avoid that cleanly",
+      "parentUuid": "e90f50fd_8687e88c",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "13ada2f5b22e51966bbaee943269f4a0b70eddb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39f30d2e_1d71a828",
         "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
         "patchSetId": 2
@@ -106,6 +202,30 @@
       "writtenOn": "2021-06-02T22:25:25Z",
       "side": 1,
       "message": "nit, optional: I\u0027d add the attempt number:\n\n  \"Attempt %d, failed to load terms of service\"",
+      "range": {
+        "startLine": 102,
+        "startChar": 26,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "13ada2f5b22e51966bbaee943269f4a0b70eddb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f25e86d3_b2b2c2c0",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-02T22:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39f30d2e_1d71a828",
       "range": {
         "startLine": 102,
         "startChar": 26,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b51de7cb_a65c7c8b",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-02T22:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a50a5fa_3e86cd57",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 17
+      },
+      "revId": "13ada2f5b22e51966bbaee943269f4a0b70eddb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "984b74e6_e75c0fb2",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-06-02T22:25:25Z",
       "side": 1,
       "message": "nit: not clear why when msg !\u003d \"\" it is an error. could you add a comment?",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 15
+      },
+      "revId": "13ada2f5b22e51966bbaee943269f4a0b70eddb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0f13970_fe5a233f",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-02T22:47:36Z",
+      "side": 1,
+      "message": "renamed the variable to errMsg to make it clear it is an error message",
+      "parentUuid": "984b74e6_e75c0fb2",
       "range": {
         "startLine": 119,
         "startChar": 1,
