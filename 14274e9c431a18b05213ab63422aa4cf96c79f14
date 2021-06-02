@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0a2acfe_09d68b87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-06-02T01:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e545222c_a560fa96",
+      "range": {
+        "startLine": 194,
+        "startChar": 64,
+        "endLine": 194,
+        "endChar": 66
+      },
+      "revId": "14274e9c431a18b05213ab63422aa4cf96c79f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2649000_c7f8498b",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff8602a1_84ab028f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-06-02T01:39:13Z",
+      "side": 1,
+      "message": "Thanks!\nI didn\u0027t notice this because local tast run didn\u0027t complain about it.",
+      "parentUuid": "f2649000_c7f8498b",
+      "range": {
+        "startLine": 197,
+        "startChar": 78,
+        "endLine": 197,
+        "endChar": 95
+      },
+      "revId": "14274e9c431a18b05213ab63422aa4cf96c79f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24aeefba_ff8fdf0a",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-06-02T01:14:46Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 203,
+        "startChar": 59,
+        "endLine": 203,
+        "endChar": 61
+      },
+      "revId": "14274e9c431a18b05213ab63422aa4cf96c79f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1e31e26_6bb48f49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-06-02T01:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24aeefba_ff8fdf0a",
       "range": {
         "startLine": 203,
         "startChar": 59,
