@@ -22,6 +22,30 @@
       },
       "revId": "46f827c2e707d182c87acb9769a4cc0dca24e810",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "870fa1c0_76ad5027",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-06-02T19:43:04Z",
+      "side": 1,
+      "message": "For those who have the context of PreExist please feel free to comment further.\n\nTo me it looks like each mode covers different configs/cases for now.\n- PreExist is a handy mode to sideload any version of stateful-lacros\n- Omaha for the latest fishfood stateful-lacros\n- Rootfs for rootfs-lacros. \n\nGoing forward, correct me if I wrongly understood, would it be possible that TLS could help provision the stateful-lacros communicating with the Component updater, then may be able to replace `PreExist` or `Omaha`?",
+      "parentUuid": "e225ad41_64d900b1",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 7
+      },
+      "revId": "46f827c2e707d182c87acb9769a4cc0dca24e810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
