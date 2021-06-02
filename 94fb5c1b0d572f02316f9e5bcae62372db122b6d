@@ -16,6 +16,29 @@
       "message": "+tast-owners@ for owner review. Thanks!",
       "revId": "94fb5c1b0d572f02316f9e5bcae62372db122b6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15746250_88f476a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-02T22:58:40Z",
+      "side": 1,
+      "message": "The error message below might be a bit awkward in the latter case if err \u003d\u003d nil. Might be nice to separate these cases to more easily distinguish between something going wrong in connectVPN vs. an unexpected failure after calling it successfully.",
+      "range": {
+        "startLine": 216,
+        "startChar": 4,
+        "endLine": 216,
+        "endChar": 52
+      },
+      "revId": "94fb5c1b0d572f02316f9e5bcae62372db122b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
