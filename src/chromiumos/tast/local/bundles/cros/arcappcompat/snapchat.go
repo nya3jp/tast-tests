@@ -87,6 +87,7 @@ func launchAppForSnapchat(ctx context.Context, s *testing.State, tconn *chrome.T
 		enterEmailAddressID         = "com.snapchat.android:id/username_or_email_field"
 		loginButtonClassName        = "android.widget.TextView"
 		loginText                   = "Log In"
+		slideIconID                 = "com.snapchat.android:id/subscreen_top_left"
 		signInID                    = "com.snapchat.android:id/nav_button"
 		notNowID                    = "android:id/autofill_save_no"
 		passwordID                  = "com.snapchat.android:id/password_field"
@@ -179,6 +180,15 @@ func launchAppForSnapchat(ctx context.Context, s *testing.State, tconn *chrome.T
 	}
 
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+
+	// Click on slideDownIcon.
+	clickOnSlideDownIcon := d.Object(ui.ID(slideIconID))
+	if err := clickOnSlideDownIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnSlideDownIcon Button doesn't exists: ", err)
+	} else if err := clickOnSlideDownIcon.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnSlideDownIcon Button: ", err)
+	}
+
 	// Check for profile icon.
 	profileIcon := d.Object(ui.ID(profileID))
 	if err := profileIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
