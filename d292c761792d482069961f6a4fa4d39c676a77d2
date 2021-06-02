@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c09a031f_5895e2ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/file_stability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-06-02T21:29:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d112f19_66039fdb",
+      "range": {
+        "startLine": 59,
+        "startChar": 17,
+        "endLine": 59,
+        "endChar": 26
+      },
+      "revId": "d292c761792d482069961f6a4fa4d39c676a77d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f24c3784_946ef917",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4db7579_605ac690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/file_stability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-06-02T21:29:42Z",
+      "side": 1,
+      "message": "I\u0027d really prefer to have a pattern which is more complex than just 0\u0027s. I\u0027ve been burned in the distant past by having tests with very simple patterns not revealing block-swap issues. \n\nI switched to appending 1 byte at a time.",
+      "parentUuid": "f24c3784_946ef917",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "d292c761792d482069961f6a4fa4d39c676a77d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44f919b9_c71e49c6",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-02T21:01:52Z",
       "side": 1,
       "message": "huge nit: append period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 110,
+        "startChar": 30,
+        "endLine": 110,
+        "endChar": 31
+      },
+      "revId": "d292c761792d482069961f6a4fa4d39c676a77d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9880a82_9abbd970",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/file_stability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-06-02T21:29:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44f919b9_c71e49c6",
       "range": {
         "startLine": 110,
         "startChar": 30,
