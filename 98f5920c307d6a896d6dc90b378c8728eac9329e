@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd822b13_e390c89c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-02T23:29:43Z",
+      "side": 1,
+      "message": "The code looks good, though I\u0027m not sure why those numbers were chosen there.  Based on the git-blame, https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2803883 is the one to add them.  I\u0027ll defer to yichen.",
+      "revId": "98f5920c307d6a896d6dc90b378c8728eac9329e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
