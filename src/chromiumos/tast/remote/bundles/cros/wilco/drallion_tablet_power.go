@@ -28,7 +28,7 @@ func init() {
 			"mwiitala@google.com", // Author
 			"tast-owners@google.com",
 		},
-		SoftwareDeps: []string{"wilco", "tablet_mode", "chrome"},
+		SoftwareDeps: []string{"wilco", "chrome"},
 		ServiceDeps:  []string{"tast.cros.wilco.PowerMenuService"},
 		// On Drallion360, the power button is on the keyboard rather than the side
 		// of the device. To account for this, the power button behaves differently

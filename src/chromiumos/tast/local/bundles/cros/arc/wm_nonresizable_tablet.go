@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -22,7 +23,8 @@ func init() {
 		Desc:         "Verifies that Window Manager non-resizable tablet use-cases behave as described in go/arc-wm-r",
 		Contacts:     []string{"armenk@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_vm", "chrome", "tablet_mode"},
+		SoftwareDeps: []string{"android_vm", "chrome"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      "arcBooted",
 		Timeout:      8 * time.Minute,
 	})

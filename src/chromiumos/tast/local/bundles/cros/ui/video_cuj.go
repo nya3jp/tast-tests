@@ -50,9 +50,8 @@ func init() {
 			Name: "clamshell",
 			Val:  false,
 		}, {
-			Name:              "tablet",
-			Val:               true,
-			ExtraSoftwareDeps: []string{"tablet_mode"},
+			Name: "tablet",
+			Val:  true,
 		}},
 	})
 }

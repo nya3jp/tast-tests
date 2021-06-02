@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -23,7 +24,8 @@ func init() {
 		Desc:         "Measures the animation smoothess of animating to and from tablet mode",
 		Contacts:     []string{"sammiequon@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", "tablet_mode"},
+		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{
 			{
