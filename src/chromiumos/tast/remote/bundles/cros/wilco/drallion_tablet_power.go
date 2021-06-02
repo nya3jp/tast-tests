@@ -28,7 +28,7 @@ func init() {
 			"mwiitala@google.com", // Author
 			"tast-owners@google.com",
 		},
-		SoftwareDeps: []string{"wilco", "tablet_mode", "chrome"},
+		SoftwareDeps: []string{"wilco", "chrome"},
 		ServiceDeps:  []string{"tast.cros.wilco.PowerMenuService"},
 		// On Drallion360, the power button is on the keyboard rather than the side
 		// of the device. To account for this, the power button behaves differently
@@ -178,7 +178,7 @@ func DrallionTabletPower(ctx context.Context, s *testing.State) {
 		// Use servo to hold down power button
 		s.Logf("Pressing power key for %s seconds", pressDuration)
 		if err = pxy.Servo().SetString(ctx, "power_key", pressDuration); err != nil {
-			return errors.Wrap(err, "Error pressing the power button")
+			return errors.Wrap(err, "error pressing the power button")
 		}
 
 		// Verify that power down menu is only present when expected

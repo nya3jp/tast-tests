@@ -25,7 +25,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome", "tablet_mode"},
+		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          chrome.LoggedIn(),
 	})

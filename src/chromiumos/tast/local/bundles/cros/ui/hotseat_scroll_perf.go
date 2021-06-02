@@ -40,8 +40,7 @@ func init() {
 				Val:  false,
 			},
 			{
-				ExtraSoftwareDeps: []string{"tablet_mode"},
-				Val:               true,
+				Val: true,
 			},
 		},
 	})
