@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b03a3e53_841216ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-02T14:53:32Z",
+      "side": 1,
+      "message": "Ok I see the pattern in the rest of the tests.",
+      "parentUuid": "ac563966_a2c61176",
+      "revId": "4c9b01143e88eb24c86f46cece48c0dafe00f421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bdfb59d_af3e4df9",
@@ -174,6 +192,24 @@
       "side": 1,
       "message": "There are a few design docs/slides from the security team / product team around this, and it is fairly basic functionality for TBT/USB4-capable Chromebooks. I can drop a comment here, since I think linking to the docs/slides is impractical.\n\nWe\u0027ll eventually add a line or two about this to the typecd README (I plan to do that after these tests start running in the Type C lab setup).",
       "parentUuid": "2a03c3cc_8d3be0a1",
+      "revId": "4c9b01143e88eb24c86f46cece48c0dafe00f421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dad3ab6_88f0f621",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-02T14:53:32Z",
+      "side": 1,
+      "message": "A comment sounds good to me. Thanks!",
+      "parentUuid": "d1987a30_9784ef27",
       "revId": "4c9b01143e88eb24c86f46cece48c0dafe00f421",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
