@@ -314,6 +314,11 @@ func testVideoSnapshot(ctx context.Context, app *cca.App) error {
 		return errors.Wrap(err, "recording is not started")
 	}
 
+	// Ensure video have at least 1s duration.
+	if err := testing.Sleep(ctx, time.Second); err != nil {
+		return errors.Wrap(err, "failed to sleep in video duration")
+	}
+
 	// Take a video snapshot.
 	if err := app.Click(ctx, cca.VideoSnapshotButton); err != nil {
 		return err
