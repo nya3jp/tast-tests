@@ -11,15 +11,18 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ScreenshotCLI,
-		Desc:         "Takes a screenshot using the CLI",
-		Contacts:     []string{"nya@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "screenshot"},
+		Func:     ScreenshotCLI,
+		Desc:     "Takes a screenshot using the CLI",
+		Contacts: []string{"nya@chromium.org"},
+		Attr:     []string{"group:mainline", "informational"},
+		// screenshot command broken on RK3399: https://issuetracker.google.com/issues/172219229
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay(), hwdep.SkipOnPlatform("gru")),
+		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeGraphics",
 	})
 }
