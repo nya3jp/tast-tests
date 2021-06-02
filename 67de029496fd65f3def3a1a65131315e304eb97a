@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d238d166_37797116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-02T19:05:13Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "dc73f3b8_12f0b458",
+      "range": {
+        "startLine": 397,
+        "startChar": 34,
+        "endLine": 397,
+        "endChar": 50
+      },
+      "revId": "67de029496fd65f3def3a1a65131315e304eb97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e46b75f5_18d373c9",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63fe7654_22020817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-02T19:05:13Z",
+      "side": 1,
+      "message": "yes. pc.Drag emits press event at the given point, and then conducts the following actions. And so there\u0027s action.Sleep() there, it actually makes press, sleep, and then drag.",
+      "parentUuid": "e46b75f5_18d373c9",
+      "range": {
+        "startLine": 481,
+        "startChar": 14,
+        "endLine": 481,
+        "endChar": 21
+      },
+      "revId": "67de029496fd65f3def3a1a65131315e304eb97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b31dd38a_fc486f4c",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-02T13:52:33Z",
       "side": 1,
       "message": "nit: Google :p",
+      "range": {
+        "startLine": 580,
+        "startChar": 59,
+        "endLine": 580,
+        "endChar": 65
+      },
+      "revId": "67de029496fd65f3def3a1a65131315e304eb97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7142ff7e_28ffc001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-02T19:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b31dd38a_fc486f4c",
       "range": {
         "startLine": 580,
         "startChar": 59,
