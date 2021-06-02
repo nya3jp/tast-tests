@@ -1,0 +1,27 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.common.perf.perfpb;
+
+option go_package = "chromiumos/tast/common/perf/perfpb";
+
+enum Direction {
+  SMALLER_IS_BETTER = 0;
+  BIGGER_IS_BETTER = 1;
+}
+
+message Value {
+  string name = 1;
+  string variant = 2;
+  string unit = 3;
+  Direction direction = 4;
+  bool multiple = 5;
+  repeated double value = 6;
+}
+
+message Values {
+  repeated Value values = 1;
+}
