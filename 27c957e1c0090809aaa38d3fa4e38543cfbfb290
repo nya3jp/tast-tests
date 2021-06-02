@@ -16,6 +16,24 @@
       "message": "This is currently breaking betty: b/189876057\n\nCan we revert this?",
       "revId": "27c957e1c0090809aaa38d3fa4e38543cfbfb290",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c48ff6d2_0babee4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_release_notes_from_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-02T01:04:39Z",
+      "side": 1,
+      "message": "The failure is not caused by this merge but a different issue. Fixed in https://crrev.com/c/2928888",
+      "parentUuid": "70fc23ba_15c988a2",
+      "revId": "27c957e1c0090809aaa38d3fa4e38543cfbfb290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
