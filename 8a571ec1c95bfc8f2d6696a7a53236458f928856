@@ -16,6 +16,24 @@
       "message": "Could you please also run crostini.RemoveCancel which uses NameStartingWith.",
       "revId": "8a571ec1c95bfc8f2d6696a7a53236458f928856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f00319_4f3cf3e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-06-02T01:46:02Z",
+      "side": 1,
+      "message": "Looks like it works fine",
+      "parentUuid": "bf153624_f7b68e8a",
+      "revId": "8a571ec1c95bfc8f2d6696a7a53236458f928856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
