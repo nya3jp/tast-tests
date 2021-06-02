@@ -32,6 +32,7 @@ type Finder struct {
 	// * A device set to en, en-US, or any non-AU english variant would attempt to match the hello regex.
 	name  map[string]regexp.Regexp
 	first bool
+	root  bool
 	nth   int
 	role  role.Role
 	state map[state.State]bool
@@ -166,6 +167,9 @@ func (f *Finder) generateQuery(multipleNodes bool) (string, error) {
 			 return names[locale] || names[locale.split("-")[0]] || names["en"]
 		 }
 		`
+	}
+	if f.root {
+		return out, nil
 	}
 	subQuery, err := f.generateSubQuery(multipleNodes)
 	if err != nil {
@@ -307,6 +311,13 @@ func (f *Finder) Attribute(k string, v interface{}) *Finder {
 	c := f.copy()
 	c.attributes[k] = v
 	return c
+}
+
+// Root creates a Finder that will find the root node.
+func Root() *Finder {
+	f := newFinder()
+	f.root = true
+	return f
 }
 
 // First creates a Finder that will find the first node instead of requiring uniqueness.
