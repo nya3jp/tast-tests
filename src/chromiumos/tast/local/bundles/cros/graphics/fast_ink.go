@@ -61,10 +61,9 @@ func init() {
 					ash.WindowStateFullscreen,
 				}},
 		}, {
-			Name:              "chrome_tablet",
-			ExtraSoftwareDeps: []string{"tablet_mode"},
-			ExtraData:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
-			Fixture:           "chromeLoggedIn",
+			Name:      "chrome_tablet",
+			ExtraData: []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
+			Fixture:   "chromeLoggedIn",
 			Val: fastInkTestParams{
 				arc:    false,
 				tablet: true,
@@ -99,7 +98,7 @@ func init() {
 				}},
 		}, {
 			Name:              "arc_tablet",
-			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraData:         []string{fastInkAPK},
 			Fixture:           "arcBootedInTabletMode",
 			Val: fastInkTestParams{
@@ -136,7 +135,7 @@ func init() {
 				}},
 		}, {
 			Name:              "arc_tablet_vm",
-			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraData:         []string{fastInkAPK},
 			Fixture:           "arcBootedInTabletMode",
 			Val: fastInkTestParams{
