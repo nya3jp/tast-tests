@@ -37,10 +37,11 @@ var EncoderBlocklistVM = []string{
 
 // EncoderAllowlistVPxVM is the list of devices on which the ARCVM VP8/9 HW encoder is enabled.
 // TODO(b/155138243): Remove allowlist once VP8/9 HW encoding is enabled on all devices.
-// Note: Currently this list is empty as b/158655609 is blocking the rollout of VP8/9 HW encoding.
 // Note: Combining this allowlist with the above blocklist works fine, entries in this list won't
 //       override entries in the blocklist.
-var EncoderAllowlistVPxVM = []string{}
+var EncoderAllowlistVPxVM = []string{
+	"hatch",
+}
 
 // cpuLog is the name of log file recording CPU usage.
 const cpuLog = "cpu.log"
