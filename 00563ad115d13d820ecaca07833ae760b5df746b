@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28e643bb_bb194e04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_machines_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-02T13:58:17Z",
+      "side": 1,
+      "message": "You can also determine this from the value of the policy directly. It\u0027s false when unset.\n\nminor nit: create it as a variable inside the subtest.",
+      "revId": "00563ad115d13d820ecaca07833ae760b5df746b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddcf2220_1d34ab85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_machines_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-02T13:58:17Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "revId": "00563ad115d13d820ecaca07833ae760b5df746b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38b6b2db_6c259d08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_machines_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-02T13:58:17Z",
+      "side": 1,
+      "message": "Should this trigger an error when crostini is unavailable? Maybe add a comment.",
+      "revId": "00563ad115d13d820ecaca07833ae760b5df746b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
