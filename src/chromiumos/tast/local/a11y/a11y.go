@@ -206,6 +206,10 @@ type SpeechMonitor struct {
 // test connections will be closed before returning. Otherwise the calling
 // function will close the connection.
 func RelevantSpeechMonitor(ctx context.Context, c *chrome.Chrome, tconn *chrome.TestConn, engineData TTSEngineData) (*SpeechMonitor, error) {
+	if err := ensureTTSEngineLoaded(ctx, tconn, engineData); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for the TTS engine to load")
+	}
+
 	extID := engineData.ExtID
 	bgURL := chrome.ExtensionBackgroundPageURL(extID)
 	targets, err := c.FindTargets(ctx, chrome.MatchTargetURL(bgURL))
@@ -267,7 +271,7 @@ func RelevantSpeechMonitor(ctx context.Context, c *chrome.Chrome, tconn *chrome.
 			}
 
 			// Attempt to consume the test utterance.
-			if err := candidateMonitor.consume(ctx, []string{"Testing"}); err != nil {
+			if err := candidateMonitor.Consume(ctx, []string{"Testing"}); err != nil {
 				return errors.Wrap(err, "failed to consume the test utterance")
 			}
 
@@ -301,7 +305,34 @@ func (sm *SpeechMonitor) Close() {
 	sm.conn.Close()
 }
 
-// consume ensures that the expected utterances were spoken by the
+// ensureTTSEngineLoaded is a helper function for RelevantSpeechMonitor. It
+// ensures that the desired TTS engine is awake and loaded
+// before trying to connect to it. Otherwise, we will get errors when trying to
+// create a new SpeechMonitor for an engine that hasn't loaded.
+func ensureTTSEngineLoaded(ctx context.Context, tconn *chrome.TestConn, engineData TTSEngineData) error {
+	// Call chrome.tts.getVoices() and check for a loaded voice with the specified
+	// engine ID.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var voices []VoiceData
+		if err := tconn.Eval(ctx, "tast.promisify(chrome.tts.getVoices)()", &voices); err != nil {
+			return err
+		}
+
+		for _, voice := range voices {
+			if voice.ExtID == engineData.ExtID {
+				return nil
+			}
+		}
+
+		return errors.New("TTS engine hasn't loaded yet")
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for the TTS engine to load")
+	}
+
+	return nil
+}
+
+// Consume ensures that the expected utterances were spoken by the
 // TTS engine. It also consumes all utterances accumulated in TTS extension's
 // background page.
 // For each utterance we:
@@ -309,7 +340,7 @@ func (sm *SpeechMonitor) Close() {
 // we never compare against stale utterances; a spoken utterance is either
 // matched or discarded.
 // 2. Check if it matches the expected utterance.
-func (sm *SpeechMonitor) consume(ctx context.Context, expected []string) error {
+func (sm *SpeechMonitor) Consume(ctx context.Context, expected []string) error {
 	var actual []string
 	for _, exp := range expected {
 		// Use a poll to allow time for each utterance to be spoken.
@@ -349,7 +380,7 @@ func PressKeysAndConsumeUtterances(ctx context.Context, sm *SpeechMonitor, keySe
 		}
 	}
 
-	if err := sm.consume(ctx, utterances); err != nil {
+	if err := sm.Consume(ctx, utterances); err != nil {
 		return errors.Wrap(err, "error when consuming utterances")
 	}
 
