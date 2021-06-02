@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f2c7d7b_40b228d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-02T21:37:16Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "cccd65ed32baf74a4cf484ae36e6b5ebdacd58c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fde7bd24_ce50ca49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/file_stability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-02T21:37:16Z",
+      "side": 1,
+      "message": "nit: add comment about why you need a a pattern... not obvious.",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 5
+      },
+      "revId": "cccd65ed32baf74a4cf484ae36e6b5ebdacd58c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
