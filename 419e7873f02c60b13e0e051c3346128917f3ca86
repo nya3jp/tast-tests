@@ -33,6 +33,24 @@
       "message": "I think it\u0027s fine to leave this line in the configValues definition, but YMMV.",
       "revId": "419e7873f02c60b13e0e051c3346128917f3ca86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee9783ae_dc44c8d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-02T02:22:25Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! I\u0027m feeling having a branch is clearer so let me leave it as-is now",
+      "parentUuid": "802ddbb0_d5836476",
+      "revId": "419e7873f02c60b13e0e051c3346128917f3ca86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
