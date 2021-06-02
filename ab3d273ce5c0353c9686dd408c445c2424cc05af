@@ -16,6 +16,29 @@
       "message": "Hi Renuga,\n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "ab3d273ce5c0353c9686dd408c445c2424cc05af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18f88730_06dbbe58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/paypal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-02T06:50:40Z",
+      "side": 1,
+      "message": "This can be listed as front camera models and use the list here. Example (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/print.go;l\u003d54?q\u003dhwdep.skip\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2F\u0026start\u003d11)",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 24
+      },
+      "revId": "ab3d273ce5c0353c9686dd408c445c2424cc05af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
