@@ -360,7 +360,7 @@ func RunGpuCUJ(ctx context.Context, f launcher.FixtData, artifactPath string, pa
 	}
 
 	pv := perf.NewValues()
-	m := metricsRecorder{buckets: make(map[statBucketKey][]float64)}
+	m := metricsRecorder{buckets: make(map[statBucketKey][]float64), metricMap: make(map[string]metricInfo)}
 	for _, page := range pageSet {
 		if page.url[0] == '/' {
 			page.url = serverURL + page.url
