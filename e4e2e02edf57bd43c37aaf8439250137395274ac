@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28bcbf45_9d217ccb",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-02T18:39:37Z",
+      "side": 1,
+      "message": "Done, we now use chrome.tts.speak() to send the test utterance. Thanks for sending a link to the manifest, we needed to add tts permissions in order to call the API.",
+      "parentUuid": "5ff17520_2ae8d480",
+      "range": {
+        "startLine": 203,
+        "startChar": 69,
+        "endLine": 203,
+        "endChar": 86
+      },
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a21053f_c54f9070",
@@ -93,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45abc76d_2927179c",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-02T18:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dc6e390_684d5686",
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "290efe74_4bb3fae1",
@@ -106,6 +148,30 @@
       "writtenOn": "2021-06-02T03:01:57Z",
       "side": 1,
       "message": "Maybe we want to check if extCon is not nil. When NewConnForTarget returns err, I guess extConn can be nil.",
+      "range": {
+        "startLine": 247,
+        "startChar": 3,
+        "endLine": 247,
+        "endChar": 10
+      },
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f740d76_e0caa149",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-02T18:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "290efe74_4bb3fae1",
       "range": {
         "startLine": 247,
         "startChar": 3,
@@ -133,6 +199,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "500d3de4_a7064661",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-02T18:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e341b545_65a5e168",
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8e78c0a_65220fe6",
@@ -146,6 +230,24 @@
       "writtenOn": "2021-06-02T03:01:57Z",
       "side": 1,
       "message": "nit: ditto here, how about adding logging?",
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05c2f8e4_a4f9329c",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-02T18:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8e78c0a_65220fe6",
       "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -173,6 +275,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d715f05_da6bf36e",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-02T18:39:37Z",
+      "side": 1,
+      "message": "Yes, it\u0027s possible that there are other extensions that can support this, but this is more of a sanity check and serves as documentation for the TTS engines we currently are testing/supporting. I think I will keep this here for those reasons.",
+      "parentUuid": "dd603e5f_b51b6e5b",
+      "range": {
+        "startLine": 356,
+        "startChar": 4,
+        "endLine": 356,
+        "endChar": 63
+      },
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03ba05eb_fbed29a2",
@@ -186,6 +312,30 @@
       "writtenOn": "2021-06-02T03:01:57Z",
       "side": 1,
       "message": "nit: This visibility is private to package. Other files in a11y package can access this. In order to avoid confusion in the future, I would name it \"SpokenFeedbackTestData\" or something more specific.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "e4e2e02edf57bd43c37aaf8439250137395274ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3b468bd_abd72ef2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-02T18:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03ba05eb_fbed29a2",
       "range": {
         "startLine": 17,
         "startChar": 5,
