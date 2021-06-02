@@ -571,6 +571,7 @@ func init() {
 					),
 					expectedFailure: true,
 				}},
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("banjo", "candy", "gnawty", "kip", "ninja", "sumo", "swanky", "winky")),
 			}, {
 				// Verifies that DUT can connect to an WPA3-Enterprise-transition AP
 				Name:      "8021xwpa3mixed",
