@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c791e52_e40c36b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-06-02T13:27:19Z",
+      "side": 1,
+      "message": "LGTM. Deferring approval to tast owners.",
+      "revId": "2b6683ce1c0d5926c8480436b4e2443e49802836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
