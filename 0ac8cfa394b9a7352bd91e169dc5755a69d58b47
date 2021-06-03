@@ -33,6 +33,24 @@
       "message": "nit: it\u0027s not so much \"waking\" the engine but that the loaded part. Both Espeak and Google tts need to have published their voices to TtsController before the voices will be surfaced through get voices.",
       "revId": "0ac8cfa394b9a7352bd91e169dc5755a69d58b47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fca7c81_0870b11e",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-03T20:55:36Z",
+      "side": 1,
+      "message": "Thanks, updated the comment and function name.",
+      "parentUuid": "3204886b_657fc2ee",
+      "revId": "0ac8cfa394b9a7352bd91e169dc5755a69d58b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
