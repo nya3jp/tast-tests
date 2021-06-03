@@ -23,18 +23,31 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type testControl int
+
+const (
+	gainSlider testControl = iota
+	muteButton
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         UIInputGain,
-		Desc:         "Tests that the input capture gain is controllable by UI API",
+		Func:         UIInput,
+		Desc:         "Tests that the input is controllable by UI API",
 		Contacts:     []string{"johnylin@chromium.org", "cychiang@chromium.org"},
 		SoftwareDeps: []string{"chrome", "audio_play", "audio_record"},
 		Attr:         []string{"group:mainline", "informational"},
 		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{
+			{
+				Name: "gain",
+				Val:  gainSlider,
+			},
+		},
 	})
 }
 
-func UIInputGain(ctx context.Context, s *testing.State) {
+func UIInput(ctx context.Context, s *testing.State) {
 	const (
 		cleanupTime     = 10 * time.Second
 		captureDuration = 1 // second(s)
