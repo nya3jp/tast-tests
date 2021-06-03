@@ -18,9 +18,8 @@ func init() {
 		Func:     BasicProfileProperties,
 		Desc:     "Test that shill's DBus properties for profiles work",
 		Contacts: []string{"arowa@google.com", "chromeos-kernel-wifi@google.com"},
-		// TODO(https://crbug.com/1195793, b/184564123): re-enable once shill crashes are fixed.
-		Attr: []string{"group:mainline", "informational"},
-		Pre:  pre.SetLoggingWiFi(),
+		Attr:     []string{"group:mainline"},
+		Pre:      pre.SetLoggingWiFi(),
 	})
 }
 
