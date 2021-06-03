@@ -308,18 +308,22 @@ func (vkbCtx *VirtualKeyboardContext) ClickUntilVKShown(nodeFinder *nodewith.Fin
 	return uiauto.Retry(5, ac.LeftClickUntil(nodeFinder, vkbCtx.WaitLocationStable()))
 }
 
-// SwitchToVoiceInput returns an action changing virtual keyboard to voice input layout.
-func (vkbCtx *VirtualKeyboardContext) SwitchToVoiceInput() uiauto.Action {
-	return func(ctx context.Context) error {
-		bconn, err := vkbCtx.BackgroundConn(ctx)
-		if err != nil {
-			return err
-		}
-		if err := bconn.Eval(ctx, `background.getTestOnlyApi().switchToVoiceInput()`, nil); err != nil {
-			return errors.Wrap(err, "failed to call switchToVoiceInput()")
-		}
-		return nil
-	}
+// SwitchToVoiceInputAndClosePrivacyDialogue returns an action changing virtual keyboard to voice input layout,
+// and closes the privacy dialogue if one shows.
+func (vkbCtx *VirtualKeyboardContext) SwitchToVoiceInputAndClosePrivacyDialogue() uiauto.Action {
+	return uiauto.Combine("tap voice button and close privacy dialogue",
+		// Do nothing if it is already in the voice layout.
+		vkbCtx.ui.IfSuccessThen(
+			vkbCtx.ui.Gone(NodeFinder.HasClass("voice-mic-img")),
+			vkbCtx.ui.LeftClick(KeyFinder.Name("Voice")),
+		),
+		vkbCtx.closeInfoDialogue("Got it"),
+		vkbCtx.ui.WaitUntilExists(NodeFinder.HasClass("voice-mic-img")))
+}
+
+// Retry repeats an action for a specified number of times before the timeout
+func (vkbCtx *VirtualKeyboardContext) Retry(timeout time.Duration, n int, action uiauto.Action) uiauto.Action {
+	return vkbCtx.ui.WithTimeout(timeout).Retry(n, action)
 }
 
 // switchToHandwriting changes to handwriting layout and returns a handwriting context.

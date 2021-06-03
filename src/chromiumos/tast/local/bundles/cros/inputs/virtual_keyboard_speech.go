@@ -115,14 +115,16 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	inputField := testserver.TextAreaInputField
 	vkbCtx := vkb.NewContext(cr, tconn)
 
-	if err := uiauto.Combine("verify audio input",
+	if err := uiauto.Combine("voice input test",
 		its.ClickFieldUntilVKShown(inputField),
-		vkbCtx.SwitchToVoiceInput(),
-		func(ctx context.Context) error {
-			return input.AudioFromFile(ctx, testFileLocation)
-		},
-		// Verify if the derived text is equal to the expected text.
-		its.WaitForFieldValueToBe(inputField, expectedText),
+		vkbCtx.Retry(time.Minute, 5, uiauto.Combine("verify audio input",
+			vkbCtx.SwitchToVoiceInputAndClosePrivacyDialogue(),
+			func(ctx context.Context) error {
+				return input.AudioFromFile(ctx, testFileLocation)
+			},
+			// Verify if the derived text is equal to the expected text.
+			its.WaitForFieldValueToBe(inputField, expectedText),
+		)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to validate voice input: ", err)
 	}
