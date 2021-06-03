@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3345644f_a25576af",
+        "filename": "src/chromiumos/tast/local/crash/fixture_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-03T00:48:27Z",
+      "side": 1,
+      "message": "could you close stderrPipe appropriately?",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 11
+      },
+      "revId": "ac0cdf2d0466d42977c8e27af13a3005c4804219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
