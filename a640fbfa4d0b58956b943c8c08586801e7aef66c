@@ -16,6 +16,57 @@
       "message": "Thanks Miguel. I\u0027ve addressed your comments.\n\ntast-owners@ PTAL",
       "revId": "a640fbfa4d0b58956b943c8c08586801e7aef66c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86ec42bf_deaa4aae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-03T03:45:50Z",
+      "side": 1,
+      "message": "Something else you may want to investigate is that screen-diffing functionality is being added to Tast via integration with Skia gold.  Even if not useful for the test itself, it may be helpful for debugging.\n\nhttps://docs.google.com/presentation/d/1fWm1k11-Gdrs8kSIQmwlv6Zsg32qWY-qoTxLLiOKgIo/edit#slide\u003did.gd96ed6748d_0_16",
+      "revId": "a640fbfa4d0b58956b943c8c08586801e7aef66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc8b939b_e22517a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-03T03:45:50Z",
+      "side": 1,
+      "message": "Optional: as you mention below, this is going to be pretty slow.  Would it be better to grab the image as a png from the canvas, then use go\u0027s image/png to decode it?",
+      "revId": "a640fbfa4d0b58956b943c8c08586801e7aef66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f5086a_5cea195c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-03T03:45:50Z",
+      "side": 1,
+      "message": "Maybe only log if they are different?\n\nToo much logging makes debugging difficult.",
+      "revId": "a640fbfa4d0b58956b943c8c08586801e7aef66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
