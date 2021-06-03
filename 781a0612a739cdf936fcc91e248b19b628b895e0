@@ -16,6 +16,23 @@
       "message": "Hi Hiroki,\n\nHere are two small improvements to spoken feedback tests. Thanks for taking a look!",
       "revId": "781a0612a739cdf936fcc91e248b19b628b895e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b08a97b4_6b7d1a02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-03T23:55:51Z",
+      "side": 1,
+      "message": "LGTM!",
+      "revId": "781a0612a739cdf936fcc91e248b19b628b895e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
