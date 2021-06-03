@@ -64,7 +64,9 @@ func ShillCellularInhibited(ctx context.Context, s *testing.State) {
 		}(ctxForAutoConnectCleanUp)
 	}
 
-	const timeout = 60 * time.Second
+	const timeout = 1 * time.Minute
+	// Connect can take a long time after an un-inhibit while the Modem starts.
+	const connectTimeout = 5 * time.Minute
 	s.Log("Inhibit Cellular Modem")
 	if err := helper.SetDeviceProperty(ctx, shillconst.DevicePropertyInhibited, true, timeout); err != nil {
 		s.Fatal("Unable to set Device.Inhibited to true: ", err)
@@ -88,7 +90,7 @@ func ShillCellularInhibited(ctx context.Context, s *testing.State) {
 	s.Logf("Verify Cellular Service and Connect (this may take up to %v)", timeout)
 	if service, err := helper.FindServiceForDeviceWithTimeout(ctx, timeout); err != nil {
 		s.Fatal("No Cellular Service after uninhibit: ", err)
-	} else if err = helper.ConnectToService(ctx, service); err != nil {
+	} else if err = helper.ConnectToServiceWithTimeout(ctx, service, connectTimeout); err != nil {
 		s.Fatal("Error connecting to service after uninhibit: ", err)
 	}
 
@@ -117,7 +119,7 @@ func ShillCellularInhibited(ctx context.Context, s *testing.State) {
 	s.Logf("Verify Cellular Service (this may take up to %v)", timeout)
 	if service, err := helper.FindServiceForDeviceWithTimeout(ctx, timeout); err != nil {
 		s.Fatal("No Cellular Service after uninhibit: ", err)
-	} else if err := helper.ConnectToService(ctx, service); err != nil {
+	} else if err := helper.ConnectToServiceWithTimeout(ctx, service, connectTimeout); err != nil {
 		s.Fatal("Unable to connect to service after uninhibit: ", err)
 	}
 }
