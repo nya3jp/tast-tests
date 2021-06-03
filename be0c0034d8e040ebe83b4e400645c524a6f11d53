@@ -40,6 +40,23 @@
       "message": "PTAL\nThanks",
       "revId": "be0c0034d8e040ebe83b4e400645c524a6f11d53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7543e73a_58b80edb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-03T15:51:35Z",
+      "side": 1,
+      "message": "this is only a dependency for unmanaged tests, can we move it to unmanaged variants instead of applying it globally?",
+      "revId": "be0c0034d8e040ebe83b4e400645c524a6f11d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
