@@ -107,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f45e92c_61d6c12f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-03T04:57:42Z",
+      "side": 1,
+      "message": "Thank you,\n\nCurrently, your suggestion works. That CL just migrates to use EventWatcher.\nOn the other hand, we\u0027re also planning to capture all events from Android (b/170692165) and verify that sequence. Not only checking the sequence contains the expected events, but also checking some events should be dispatched only once and unexpected event type is not being dispatched.\nI was thinking that in order to make this happen, Event.Target is necessary.\n\nI started to wonder if the purpose of our test is slightly different from what ui/uiauto package provides. arc.Accessibility* tests want to verify the behavior of automation API in ARC tre, and the ui / uiauto is the package to control UI using automation API.\nBecause the purposes are slightly different, I\u0027ve started to think that we should implement our own event monitoring logic, even though many parts of implementation are similar.\n\nWhat do you think?",
+      "parentUuid": "a2579eb7_f418feeb",
+      "revId": "f79fd7a01132ab97bfa435ede48c71404669d6ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a3c98ba_597caf7d",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
         "patchSetId": 2
