@@ -32,7 +32,7 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Fixture:      "chromeLoggedInForEA",
 		Timeout:      5 * time.Minute,
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Params: []testing.Param{{
 			Name:              "stable",
 			ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),

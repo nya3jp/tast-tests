@@ -29,7 +29,7 @@ func init() {
 			"shengjun@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(pre.AppsStableModels),
 		Fixture:      "chromeLoggedInForEAInJP",
 	})

@@ -33,7 +33,7 @@ func init() {
 			"benreich@chromium.org",
 		},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Params: []testing.Param{
 			{
 				Name:              "stable",

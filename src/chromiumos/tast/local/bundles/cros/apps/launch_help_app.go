@@ -34,7 +34,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		Vars:         []string{"ui.gaiaPoolDefault"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Timeout:      chrome.GAIALoginTimeout + time.Minute,
 		Params: []testing.Param{
 			{
