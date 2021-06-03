@@ -9,9 +9,11 @@ import (
 	"time"
 
 	"chromiumos/tast/local/android/ui"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome/familylink"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/testing"
 )
 
@@ -55,13 +57,12 @@ func UnicornParentPermission(ctx context.Context, s *testing.State) {
 	} else {
 		// Optin to Play Store.
 		s.Log("Opting into Play Store")
-		if err := optin.Perform(ctx, cr, tconn); err != nil {
-			s.Fatal("Failed to optin to Play Store: ", err)
+		if err := optin.PerformAndClose(ctx, cr, tconn); err != nil {
+			s.Fatal("Failed to optin to Play Store and Close: ", err)
 		}
 	}
-	// Verify PlayStore is Open.
-	if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
-		s.Fatal("Failed to wait for Play Store: ", err)
+	if err := launcher.LaunchApp(tconn, apps.PlayStore.Name)(ctx); err != nil {
+		s.Fatal("Failed to launch Play Store")
 	}
 
 	// Setup ARC.
