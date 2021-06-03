@@ -298,6 +298,29 @@
       },
       "revId": "64e76fda176902d5ff52ff71010d9b3a5a3c054f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdc662ba_39025f92",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-06-03T18:50:38Z",
+      "side": 1,
+      "message": "nit: just \"\u003e\" seems to follow what we are doing in other places for consistency.\n\nhttps://crrev.com/c/2909731/2/arc/vm/scripts/init/arcvm-ureadahead.conf\nhttps://crrev.com/c/2935085/3/components/arc/arc_util.cc",
+      "range": {
+        "startLine": 298,
+        "startChar": 37,
+        "endLine": 298,
+        "endChar": 39
+      },
+      "revId": "64e76fda176902d5ff52ff71010d9b3a5a3c054f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
