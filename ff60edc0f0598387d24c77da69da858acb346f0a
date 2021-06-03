@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7687ea8b_bb9ead06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2021-06-03T05:25:50Z",
+      "side": 1,
+      "message": "Nice.  I hadn\u0027t heard of the functional options pattern before but it seems pretty useful.",
+      "revId": "ff60edc0f0598387d24c77da69da858acb346f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
