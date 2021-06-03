@@ -90,8 +90,8 @@ func init() {
 	})
 }
 
-// getMemoryTotalKb returns total memory available in kilobytes for DUT.
-func getMemoryTotalKb(ctx context.Context, dut *dut.DUT) (int, error) {
+// getMemoryTotalKB returns total memory available in kilobytes for DUT.
+func getMemoryTotalKB(ctx context.Context, dut *dut.DUT) (int, error) {
 	memInfo, err := dut.Command("cat", "/proc/meminfo").Output(ctx)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to read /proc/meminfo")
@@ -146,7 +146,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		// This leads to the situation when FS page caches are reclaimed and captured result
 		// does not properly relfect actual FS usage. Don't upload caches to server for
 		// devices lower than 8G.
-		minVMMemoryKb = 7500000
+		minVMMemoryKB = 7500000
 	)
 
 	d := s.DUT()
@@ -172,12 +172,12 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	v := fmt.Sprintf("%s_%s_%s", desc.CPUAbi, desc.BuildType, desc.BuildID)
 	s.Logf("Detected version: %s", v)
 
-	memTotalKb := 0
+	memTotalKB := 0
 	if param.vmEnabled {
-		if memTotalKb, err = getMemoryTotalKb(ctx, d); err != nil {
+		if memTotalKB, err = getMemoryTotalKB(ctx, d); err != nil {
 			s.Fatal("Failed to get memory info: ", err)
 		}
-		s.Logf("Detected memory total: %d kb", memTotalKb)
+		s.Logf("Detected memory total: %d kb", memTotalKB)
 	}
 
 	// Checks if generated resources need to be uploaded to the server.
@@ -189,11 +189,6 @@ func DataCollector(ctx context.Context, s *testing.State) {
 
 		if !desc.Official {
 			s.Logf("Version: %s is not official version and generated ureadahead packs won't be uploaded to the server", v)
-			return false
-		}
-
-		if param.vmEnabled && memTotalKb < minVMMemoryKb {
-			s.Logf("Device has insufficent total memory %d out of %d required. Generated caches won't be uploaded to the server", memTotalKb, minVMMemoryKb)
 			return false
 		}
 
@@ -300,11 +295,14 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 
 		if needUpload(ureadAheadPack) {
-			if err := upload(shortCtx, targetTar, ureadAheadPack); err != nil {
-				s.Fatalf("Failed to upload %q: %v", ureadAheadPack, err)
+			if !param.vmEnabled || memTotalKB > minVMMemoryKB {
+				if err := upload(shortCtx, targetTar, ureadAheadPack); err != nil {
+					s.Fatalf("Failed to upload %q: %v", ureadAheadPack, err)
+				}
+			} else {
+				s.Logf("Device has insufficient total memory %d out of %d required. Generated ureadahead won't be uploaded to the server", memTotalKB, minVMMemoryKB)
 			}
 		}
-
 		return nil
 	}
 
