@@ -70,6 +70,24 @@
       "parentUuid": "6ab23994_c7517056",
       "revId": "b2ae3b4d48fa04357e5cad29e7a5c3189edc1624",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "add193bc_afc068e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/bloat.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-06-03T02:03:49Z",
+      "side": 1,
+      "message": "I am sorry, that was my mistake.\nI understood that this is treated differently from normal expression in this context.",
+      "parentUuid": "bc308f4f_ba6c4e27",
+      "revId": "b2ae3b4d48fa04357e5cad29e7a5c3189edc1624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
