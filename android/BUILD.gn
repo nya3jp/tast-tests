@@ -44,6 +44,7 @@ group("all") {
     "ArcResizeLockTest:ArcResizeLockTest",
     "ArcSensorLatencyTest:ArcSensorLatencyTest",
     "ArcSoftInputModeTest:ArcSoftInputModeTest",
+    "ArcTtsTest:ArcTtsTest",
     "ArcSurfaceInsetsTest:ArcSurfaceInsetsTest",
     "ArcWMTestApp:ArcWMTestApp_23",
     "ArcWMTestApp:ArcWMTestApp_24",

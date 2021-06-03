@@ -5,5 +5,5 @@
   "background": { "scripts": ["background.js"] },
   "manifest_version": 2,
   "version": "0.1",
-  "permissions": ["system.memory"]
+  "permissions": ["system.memory", "tts"]
 }
