@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae0413a0_97b55e61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-06-03T15:27:34Z",
+      "side": 1,
+      "message": "deferring to tast owners to confirm reverting is the right move.",
+      "revId": "fb82cd81e4d00e10c1a1148fa9c3416529b99072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
