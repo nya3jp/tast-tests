@@ -199,6 +199,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e79e7ea7_82d70e30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-06-03T07:16:08Z",
+      "side": 1,
+      "message": "Yes that\u0027s a good suggestion. Actually we already almost do so. There is an explicit ipv4_addr field in the Device response proto for that: https://source.corp.google.com/chromeos_public/src/platform2/system_api/dbus/patchpanel/patchpanel_service.proto;l\u003d79\n \nBut we don\u0027t have the \"gateway\" address to use with it. I can add it and come back and clean this up. In the meantime you can already replace addr with Device.Ipv4Addr.",
+      "parentUuid": "0ede5d41_4edf7a95",
+      "range": {
+        "startLine": 130,
+        "startChar": 31,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "792038f6_5321ab0b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
         "patchSetId": 6
