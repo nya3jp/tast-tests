@@ -192,11 +192,6 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			return false
 		}
 
-		if param.vmEnabled && memTotalKb < minVMMemoryKb {
-			s.Logf("Device has insufficent total memory %d out of %d required. Generated caches won't be uploaded to the server", memTotalKb, minVMMemoryKb)
-			return false
-		}
-
 		gsURL := remoteURL(bucket, v)
 		if err := exec.Command(gsUtil, "stat", gsURL).Run(); err != nil {
 			return true
@@ -300,11 +295,14 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 
 		if needUpload(ureadAheadPack) {
-			if err := upload(shortCtx, targetTar, ureadAheadPack); err != nil {
-				s.Fatalf("Failed to upload %q: %v", ureadAheadPack, err)
+			if !param.vmEnabled || memTotalKb >= minVMMemoryKb {
+				if err := upload(shortCtx, targetTar, ureadAheadPack); err != nil {
+					s.Fatalf("Failed to upload %q: %v", ureadAheadPack, err)
+				}
+			} else {
+				s.Logf("Device has insufficent total memory %d out of %d required. Generated ureadahead won't be uploaded to the server", memTotalKb, minVMMemoryKb)
 			}
 		}
-
 		return nil
 	}
 
