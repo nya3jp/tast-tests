@@ -94,6 +94,30 @@
       },
       "revId": "01f7ec25b4a915284d96ccf1d0ebb05d3bde0846",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ca52a62_edaa98d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-06-03T00:40:17Z",
+      "side": 1,
+      "message": "Tried using the following code snippet to run only on x86_64 devices. It is running on nasher360 and Caroline along with Eve, Helios and Careena. Got to know, DUT CPU architecture is different from android architecture. So HardwareDeps: hwdep.D(hwdep.X86_64()) cann\u0027t be used here.\n// X86_64 returns a hardware dependency condition matching x86_64 ABI compatible platform.\nfunc X86_64() Condition {\n\treturn Condition{Satisfied: func(f *protocol.HardwareFeatures) error {\n\t\tdc :\u003d f.GetDeprecatedDeviceConfig()\n\t\tif dc \u003d\u003d nil {\n\t\t\treturn errors.New(\"DeprecatedDeviceConfig is not given\")\n\t\t}\n\t\tif dc.GetCpu() \u003d\u003d protocol.DeprecatedDeviceConfig_X86_64 {\n\t\t\treturn nil\n\t\t}\n\t\treturn errors.New(\"DUT\u0027s CPU is not x86_64 compatible\")\n\t}}\n}",
+      "parentUuid": "29f4bcd0_54355d95",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 68
+      },
+      "revId": "01f7ec25b4a915284d96ccf1d0ebb05d3bde0846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
