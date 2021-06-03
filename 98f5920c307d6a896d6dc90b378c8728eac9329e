@@ -34,6 +34,24 @@
       "parentUuid": "dd822b13_e390c89c",
       "revId": "98f5920c307d6a896d6dc90b378c8728eac9329e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15596343_221d1dfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-06-03T06:39:06Z",
+      "side": 1,
+      "message": "Yes I saw there is a list of metrics configs in cuj/ so I followed that. We should revert the number here.",
+      "parentUuid": "96edb2ef_5bc8d320",
+      "revId": "98f5920c307d6a896d6dc90b378c8728eac9329e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
