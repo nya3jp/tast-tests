@@ -16,6 +16,29 @@
       "message": "Use the stuff introduced in the below 2 commits to add lots of memory metrics to arc.PerfBoot.",
       "revId": "b5a9cdff340553e714a00c477f1d2275ab244392",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0f35a3_32abbc69",
+        "filename": "src/chromiumos/tast/local/memory/zram_mm_stat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-03T15:18:56Z",
+      "side": 1,
+      "message": "This phrasing is ambiguous: it could mean \"if outdir contains the path to an empty directory\", whereas you meant it as \"if outdir is the empty string\". Could you please clarify?\n\nDitto where this comment is replicated in the other functions.",
+      "range": {
+        "startLine": 74,
+        "startChar": 31,
+        "endLine": 74,
+        "endChar": 46
+      },
+      "revId": "b5a9cdff340553e714a00c477f1d2275ab244392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
