@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4906c6a6_d7db7cb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-03T00:43:28Z",
+      "side": 1,
+      "message": "Thanks, lgtm! (and please fix SpeechMonitor usage from arc a11y test:))",
+      "revId": "e5b4289c567f39fc5099785ef9a35eb4ee47b9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a636edd3_0515f109",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-03T00:43:28Z",
+      "side": 1,
+      "message": "style nit: Golang prefers that getters doesn\u0027t start with Get. We just call it RelevantSpeechMonitor()\nhttps://golang.org/doc/effective_go#Getters",
+      "range": {
+        "startLine": 208,
+        "startChar": 5,
+        "endLine": 208,
+        "endChar": 29
+      },
+      "revId": "e5b4289c567f39fc5099785ef9a35eb4ee47b9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a474262_69f0f59e",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-03T00:43:28Z",
+      "side": 1,
+      "message": "can err be non-nil here? Maybe we can use wrrors.New instead?",
+      "range": {
+        "startLine": 286,
+        "startChar": 25,
+        "endLine": 286,
+        "endChar": 28
+      },
+      "revId": "e5b4289c567f39fc5099785ef9a35eb4ee47b9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
