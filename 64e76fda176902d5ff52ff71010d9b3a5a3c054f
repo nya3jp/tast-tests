@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b8d23c_64a94671",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-03T16:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f876ce8_f7c13edf",
+      "range": {
+        "startLine": 43,
+        "startChar": 49,
+        "endLine": 43,
+        "endChar": 60
+      },
+      "revId": "64e76fda176902d5ff52ff71010d9b3a5a3c054f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe002191_117e93c0",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-03T15:10:26Z",
       "side": 1,
       "message": "style:\n\nconst minVMMemoryKB \u003d ...\n\n- getting rid of parens is optional.\n- Kb -\u003e KB fix is to follow the style guide.",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "64e76fda176902d5ff52ff71010d9b3a5a3c054f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f155d2e5_fceebfe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-03T16:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe002191_117e93c0",
       "range": {
         "startLine": 44,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e9c9ca3_cf5459d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-03T16:39:38Z",
+      "side": 1,
+      "message": "Done, ty for sharing this helper",
+      "parentUuid": "256f9e09_b3d87b64",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "64e76fda176902d5ff52ff71010d9b3a5a3c054f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5939ea1c_03d774f6",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-06-03T15:10:26Z",
       "side": 1,
       "message": "required: %v\", I think?",
+      "range": {
+        "startLine": 97,
+        "startChar": 52,
+        "endLine": 97,
+        "endChar": 67
+      },
+      "revId": "64e76fda176902d5ff52ff71010d9b3a5a3c054f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "691dd58b_5710b997",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-03T16:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5939ea1c_03d774f6",
       "range": {
         "startLine": 97,
         "startChar": 52,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6ebe3bb_abcd7dd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-03T16:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bdae52f_43f509a1",
+      "range": {
+        "startLine": 106,
+        "startChar": 52,
+        "endLine": 106,
+        "endChar": 61
+      },
+      "revId": "64e76fda176902d5ff52ff71010d9b3a5a3c054f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12c16923_460c6bee",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-06-03T15:10:26Z",
       "side": 1,
       "message": "style:\n\nif _, err :\u003d os.Stat(...); err !\u003d nil {\n  if !os.IsNotExist(err) {\n    s.Fatalf(...)\n  }\n  required, err :\u003d ...\n  if err !\u003d nil {\n    s.Fatalf(...)\n  }\n  if required {\n    s.Fatalf(...)\n  }\n  testing.ContextLogf(...)\n  return\n}",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 3
+      },
+      "revId": "64e76fda176902d5ff52ff71010d9b3a5a3c054f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf2c34a6_d2bfced5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-03T16:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12c16923_460c6bee",
       "range": {
         "startLine": 94,
         "startChar": 2,
