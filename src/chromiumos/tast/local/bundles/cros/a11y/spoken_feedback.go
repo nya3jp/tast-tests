@@ -10,6 +10,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/a11y"
+	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -68,6 +69,12 @@ func SpokenFeedback(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
+	// Mute the device to avoid noisiness.
+	if err := crastestclient.Mute(ctx); err != nil {
+		s.Fatal("Failed to mute: ", err)
+	}
+	defer crastestclient.Unmute(ctx)
+
 	if err := a11y.SetFeatureEnabled(ctx, tconn, a11y.SpokenFeedback, true); err != nil {
 		s.Fatal("Failed to enable spoken feedback: ", err)
 	}
@@ -89,6 +96,11 @@ func SpokenFeedback(ctx context.Context, s *testing.State) {
 	if err := cvconn.SetVoice(ctx, vd); err != nil {
 		s.Fatal("Failed to set the ChromeVox voice: ", err)
 	}
+
+	if err := a11y.SetTTSRate(ctx, tconn, 5.0); err != nil {
+		s.Fatal("Faild to change TTS rate: ", err)
+	}
+	defer a11y.SetTTSRate(ctx, tconn, 1.0)
 
 	sm, err := a11y.RelevantSpeechMonitor(ctx, cr, tconn, ed)
 	if err != nil {
