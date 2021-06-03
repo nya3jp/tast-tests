@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9bd7a55_2b5787ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-06-03T05:50:13Z",
+      "side": 1,
+      "message": "I don\u0027t really have much context on this specific thing, but other than your comments, LGTM.",
+      "parentUuid": "e4ab8cc7_ca216f80",
+      "revId": "94c07ad2ca95f2ea9e7943c98150ecf3a347b389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41844b72_38dcaffa",
