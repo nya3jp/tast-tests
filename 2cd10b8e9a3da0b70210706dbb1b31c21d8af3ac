@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cf6d8a0_ce482e1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-03T21:09:47Z",
+      "side": 1,
+      "message": "We\u0027re just extending the connect timeout from 4 minutes to 5, in essence? ",
+      "revId": "2cd10b8e9a3da0b70210706dbb1b31c21d8af3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed490fc8_e7fff1a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-03T21:09:47Z",
+      "side": 1,
+      "message": "Is there a reason not to just use the context for a timeout here?",
+      "range": {
+        "startLine": 191,
+        "startChar": 17,
+        "endLine": 191,
+        "endChar": 44
+      },
+      "revId": "2cd10b8e9a3da0b70210706dbb1b31c21d8af3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70af1c8_016bd7cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_inhibited.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-03T21:09:47Z",
+      "side": 1,
+      "message": "Seems like if we use close to the whole timeout here we may end up timing out on the test instead.",
+      "revId": "2cd10b8e9a3da0b70210706dbb1b31c21d8af3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
