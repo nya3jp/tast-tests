@@ -53,6 +53,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5235539f_c6311691",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-03T19:39:43Z",
+      "side": 1,
+      "message": "Looks pretty good to me, just a couple minor comments.",
+      "revId": "956c477ac3d7932ab580ba084b55b800f7cf89b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dbcb1d8_be4275d1",
@@ -78,6 +95,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf97b8bf_1cc5d56d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_ping.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-03T19:39:43Z",
+      "side": 1,
+      "message": "Don\u0027t we need this in all the cases?",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 124,
+        "endChar": 20
+      },
+      "revId": "956c477ac3d7932ab580ba084b55b800f7cf89b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88957248_3b950ded",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_ping.go",
         "patchSetId": 10
@@ -94,6 +134,86 @@
         "startChar": 12,
         "endLine": 143,
         "endChar": 13
+      },
+      "revId": "956c477ac3d7932ab580ba084b55b800f7cf89b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a83d0d6f_bd93ca68",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_ping.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-03T19:39:43Z",
+      "side": 1,
+      "message": "Fatal?",
+      "revId": "956c477ac3d7932ab580ba084b55b800f7cf89b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e8b31a4_359f20fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-03T19:39:43Z",
+      "side": 1,
+      "message": "Since you\u0027re putting all of this into utility functions anyway, is there a way to share some of this with RoamFT (e.g. SetupFTTestFixture or something)?\n\nNot as a part of this change, so marking resolved.",
+      "revId": "956c477ac3d7932ab580ba084b55b800f7cf89b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04f3ed7d_17860494",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-03T19:39:43Z",
+      "side": 1,
+      "message": "Let\u0027s use BSS TM Request now - all my changes there have landed. Then we can also get rid of the whole scanning process above.",
+      "range": {
+        "startLine": 372,
+        "startChar": 17,
+        "endLine": 372,
+        "endChar": 28
+      },
+      "revId": "956c477ac3d7932ab580ba084b55b800f7cf89b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b42326_a6569bf0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/destructor_stack.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-03T19:39:43Z",
+      "side": 1,
+      "message": "nit: exported",
+      "range": {
+        "startLine": 8,
+        "startChar": 30,
+        "endLine": 8,
+        "endChar": 38
       },
       "revId": "956c477ac3d7932ab580ba084b55b800f7cf89b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
