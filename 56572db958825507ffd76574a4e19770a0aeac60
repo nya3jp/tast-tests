@@ -86,6 +86,24 @@
       "parentUuid": "037bea45_78ddf39a",
       "revId": "56572db958825507ffd76574a4e19770a0aeac60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f058675_507d1ddb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_canvas.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002092
+      },
+      "writtenOn": "2021-06-03T00:58:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a8b9caaf_4aa106ba",
+      "revId": "56572db958825507ffd76574a4e19770a0aeac60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
