@@ -121,6 +121,7 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		}
 
 		testArgs = append(testArgs, []arcFileTestCase{
+			{path: "/mnt/stateful_partition/unencrypted/art-data/dalvik-cache/", context: "dalvikcache_data_file", recursive: true},
 			{path: "/run/arc/adbd", context: "(tmpfs|device)"},
 			{path: "/run/arc/cmdline.android", context: "(proc_cmdline|proc)"}, // N or below is proc
 			{path: "/run/arc/debugfs", context: "(debugfs|tmpfs)"},
@@ -147,7 +148,6 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 	// Append common test cases.
 	testArgs = append(testArgs, []arcFileTestCase{
 		{path: "/mnt/stateful_partition/unencrypted/apkcache", context: "apkcache_file"},
-		{path: "/mnt/stateful_partition/unencrypted/art-data/dalvik-cache/", context: "dalvikcache_data_file", recursive: true},
 		{path: "/opt/google/chrome/chrome", context: "chrome_browser_exec"},
 		{path: "/run/arcvm", context: "cros_run_arcvm", ignoreErrors: true},
 		{path: "/run/arcvm/android-data", context: "system_data_root_file", ignoreErrors: true}, // Android label
