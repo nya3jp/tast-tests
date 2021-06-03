@@ -33,6 +33,24 @@
       "message": "As far as I know, simple_connect.go is now a generated file. Please update the source simple_connect_test.go instead  (I know the naming looks a bit weird...)",
       "revId": "ac8c73df6119bf4b52eca9f32080444833e1c64c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a992c205_d9aaecfd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-06-03T03:54:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3a2d852_8e161730",
+      "revId": "ac8c73df6119bf4b52eca9f32080444833e1c64c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
