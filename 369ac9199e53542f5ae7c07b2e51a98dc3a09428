@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c00022_75ee3241",
+        "filename": "src/chromiumos/tast/local/playbilling/testapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-03T00:51:54Z",
+      "side": 1,
+      "message": "It seems that this func is not called in this cl. Suggest to do either of the following:\n1. Add comment to explain when and how this func should be called.\n2. Leave it to a cl where it is called.\n\nPersonally, I\u0027d prefer the second one.",
+      "range": {
+        "startLine": 46,
+        "startChar": 19,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "369ac9199e53542f5ae7c07b2e51a98dc3a09428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
