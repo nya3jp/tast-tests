@@ -41,6 +41,18 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 	ui := uiauto.New(tconn)
 	meetAccount := conf.account
 
+	openConference := func(ctx context.Context) error {
+		conn, err := conf.cr.NewConn(ctx, room)
+		if err != nil {
+			return errors.Wrap(err, "failed to create chrome connection to join the conference")
+		}
+
+		if err := webutil.WaitForQuiescence(ctx, conn, 45*time.Second); err != nil {
+			return errors.Wrapf(err, "failed to wait for %q to be loaded and achieve quiescence", room)
+		}
+		return nil
+	}
+
 	//  allowPerm allows camera, microphone and notification if browser asks for the permissions.
 	allowPerm := func(ctx context.Context) error {
 		allowButton := nodewith.Name("Allow").Role(role.Button)
@@ -80,7 +92,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		return nil
 	}
 
-	// Entern account email and password.
+	// enterAccount enter account email and password.
 	enterAccount := func(ctx context.Context) error {
 		kb, err := input.Keyboard(ctx)
 		if err != nil {
@@ -239,17 +251,13 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 	// Checks the number of participants in the conference that
 	// for different tiers testing would ask for different size.
 	checkParticipantsNum := func(ctx context.Context) error {
-		showEveryone := nodewith.Name("Show everyone").Role(role.Button)
-		participant := nodewith.NameRegex(regexp.MustCompile("[0-9]+ participant[s]?")).Role(role.Tab).First()
+		meetWebArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
+		participant := nodewith.NameRegex(regexp.MustCompile(`^[\d]+$`)).Role(role.StaticText).Ancestor(meetWebArea)
 		// Some DUT models have poor performance. When joining
 		// a large conference (over 15 participants), it would take much time
 		// to render DOM elements. Set a longer timer here.
-		if err := uiauto.Combine(`open "Meeting Detail" panel`,
-			ui.WithTimeout(2*time.Minute).WaitUntilExists(showEveryone),
-			ui.LeftClick(showEveryone),
-			ui.WithTimeout(30*time.Second).WaitUntilExists(participant),
-		)(ctx); err != nil {
-			return err
+		if err := ui.WithTimeout(2 * time.Minute).WaitUntilExists(participant)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait participant info")
 		}
 		participantInfo, err := ui.Info(ctx, participant)
 		if err != nil {
@@ -267,57 +275,36 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		// - One to one room: 2
 		roomSize := conf.roomSize
 		participantNumber := int(num)
+		if participantNumber == 1 {
+			return errors.Wrapf(err, "there are no other participants in the conference room, meeting participant number got %v; want %v", num, roomSize)
+		}
 		switch roomSize {
 		case ClassRoomSize:
 			if participantNumber < roomSize {
-				return errors.Wrapf(err, "meeting participant number is %d but at least %d is expected", num, roomSize)
+				return errors.Wrapf(err, "meeting participant number got %v; want at least %v", num, roomSize)
 			}
 		case SmallRoomSize, LargeRoomSize:
 			if participantNumber != roomSize && participantNumber != roomSize+1 {
-				return errors.Wrapf(err, "meeting participant number is %d but %d ~ %d is expected", num, roomSize, roomSize+1)
+				return errors.Wrapf(err, "meeting participant number got %v; want %v ~ %v", num, roomSize, roomSize+1)
 			}
 		case TwoRoomSize:
 			if participantNumber != roomSize {
-				return errors.Wrapf(err, "meeting participant number is %d but %d is expected", num, roomSize)
+				return errors.Wrapf(err, "meeting participant number got %v; want %v", num, roomSize)
 			}
-		}
-
-		webArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
-		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(webArea)
-		// Close "Meeting Detail" panel.
-		if err := ui.LeftClick(closeButton)(ctx); err != nil {
-			return err
 		}
 
 		return nil
 	}
 
-	conn, err := conf.cr.NewConn(ctx, room)
-	if err != nil {
-		return errors.Wrap(err, "failed to create participant join conference")
-	}
-
-	if err := webutil.WaitForQuiescence(ctx, conn, 45*time.Second); err != nil {
-		return errors.Wrapf(err, "failed to wait for %q to be loaded and achieve quiescence", room)
-	}
-
-	if err := allowPerm(ctx); err != nil {
-		return err
-	}
-
-	if err := switchUserJoin(ctx); err != nil {
-		return err
-	}
-
-	if err := joinConf(ctx); err != nil {
-		return err
-	}
-
-	if err := checkParticipantsNum(ctx); err != nil {
-		return errors.Wrap(err, "failed to check participants number")
-	}
-
-	return nil
+	return uiauto.Combine("join conference",
+		openConference,
+		allowPerm,
+		switchUserJoin,
+		joinConf,
+		// Sometimes participants number caught at the beginning is wrong, it will be correct after a while.
+		// Add retry to get the correct participants number.
+		ui.WithInterval(1*time.Second).Retry(5, checkParticipantsNum),
+	)(ctx)
 }
 
 // VideoAudioControl controls the video and audio during conference.
@@ -406,14 +393,21 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 	}
 
 	moreOptions := nodewith.Name("More options").First()
-	changeLayout := nodewith.Name("Change layout").Role(role.MenuItem)
+	changeLayoutButton := nodewith.Name("Change layout").Role(role.MenuItem)
 	for _, mode := range []string{"Tiled", "Spotlight"} {
 		modeNode := nodewith.Name(mode).Role(role.RadioButton)
-		testing.ContextLog(ctx, "Change layout to ", mode)
+
+		changeLayout := func(ctx context.Context) error {
+			testing.ContextLog(ctx, "Change layout to ", mode)
+			return uiauto.Combine("change layout to "+mode,
+				ui.LeftClickUntil(moreOptions, ui.WithTimeout(5*time.Second).WaitUntilExists(changeLayoutButton)),
+				ui.WithInterval(time.Second).LeftClick(changeLayoutButton), // Wait for 1 second to display the menu.
+				ui.LeftClick(modeNode),
+			)(ctx)
+		}
+
 		if err := uiauto.Combine("change layout",
-			ui.WithTimeout(40*time.Second).LeftClick(moreOptions),
-			ui.WithTimeout(40*time.Second).LeftClick(changeLayout),
-			ui.LeftClick(modeNode),
+			ui.Retry(3, changeLayout),
 			ui.LeftClick(moreOptions),
 			ui.Sleep(10*time.Second), // After applying new layout, give it 10 seconds for viewing before applying next one.
 		)(ctx); err != nil {
@@ -473,11 +467,13 @@ func (conf *GoogleMeetConference) PresentSlide(ctx context.Context) error {
 	defer kb.Close()
 
 	shareScreen := func(ctx context.Context, tconn *chrome.TestConn) error {
-		presentNowButton := nodewith.Name("Present now").First()
+		meetWebArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
+		presentNowButton := nodewith.Name("Present now").Ancestor(meetWebArea)
 		aWindow := nodewith.Name("A window").Role(role.MenuItem)
 		presentWindow := nodewith.ClassName("DesktopMediaSourceView").First()
 		shareButton := nodewith.Name("Share").Role(role.Button)
-		stopPresenting := nodewith.Name("Stop presenting").Role(role.Button)
+		// There are two "Stop presenting" buttons on the screen with the same ancestor, role and name that we can't use unique finder.
+		stopPresenting := nodewith.Name("Stop presenting").Role(role.Button).Ancestor(meetWebArea).First()
 		return uiauto.Combine("share screen",
 			ui.LeftClick(presentNowButton),
 			ui.WithTimeout(time.Minute).LeftClickUntil(aWindow, ui.WaitUntilExists(presentWindow)),
@@ -570,11 +566,13 @@ func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context)
 	}
 
 	shareScreen := func(ctx context.Context) error {
-		presentNowButton := nodewith.Name("Present now").First()
+		meetWebArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
+		presentNowButton := nodewith.Name("Present now").Ancestor(meetWebArea)
 		aWindow := nodewith.Name("A window").First()
 		presentWindow := nodewith.ClassName("DesktopMediaSourceView").NameRegex(regexp.MustCompile("My Drive|" + slideTitle))
 		shareButton := nodewith.Name("Share").Role(role.Button)
-		stopPresentation := nodewith.Name("Stop presenting").Role(role.Button)
+		// There are two "Stop presenting" buttons on the screen with the same ancestor, role and name that we can't use unique finder.
+		stopPresentation := nodewith.Name("Stop presenting").Role(role.Button).Ancestor(meetWebArea).First()
 		return uiauto.Combine("share screen",
 			ui.LeftClick(presentNowButton),
 			ui.WithTimeout(time.Minute).LeftClickUntil(aWindow, ui.WaitUntilExists(presentWindow)),
@@ -635,7 +633,9 @@ func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context)
 // StopPresenting stops the presentation mode.
 func (conf *GoogleMeetConference) StopPresenting(ctx context.Context) error {
 	ui := uiauto.New(conf.tconn)
-	stopPresentingButton := nodewith.Name("Stop presenting").Role(role.Button)
+	meetWebArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
+	// There are two "Stop presenting" buttons on the screen with the same ancestor, role and name that we can't use unique finder.
+	stopPresentingButton := nodewith.Name("Stop presenting").Role(role.Button).Ancestor(meetWebArea).First()
 	testing.ContextLog(ctx, "Stop presenting")
 	return ui.LeftClickUntil(stopPresentingButton, ui.WithTimeout(3*time.Second).WaitUntilGone(stopPresentingButton))(ctx)
 }
