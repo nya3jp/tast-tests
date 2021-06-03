@@ -30,7 +30,7 @@ func init() {
 			"shengjun@chromium.org", // Test author
 		},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Params: []testing.Param{
 			{
 				Name:              "stable",

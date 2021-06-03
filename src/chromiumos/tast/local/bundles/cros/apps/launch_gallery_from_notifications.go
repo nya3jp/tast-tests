@@ -36,7 +36,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{"gear_wheels_4000x3000_20200624.jpg", "download_link.html"},
 		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{
