@@ -185,10 +185,10 @@ func (h *Helper) ConnectToDefault(ctx context.Context) error {
 	return h.ConnectToService(ctx, service)
 }
 
-// ConnectToService connects to a Cellular Service.
+// ConnectToServiceWithTimeout connects to a Cellular Service with a specified timeout.
 // It ensures that the connect attempt succeeds, repeating attempts if necessary.
 // Otherwise an error is returned.
-func (h *Helper) ConnectToService(ctx context.Context, service *shill.Service) error {
+func (h *Helper) ConnectToServiceWithTimeout(ctx context.Context, service *shill.Service, timeout time.Duration) error {
 	props, err := service.GetProperties(ctx)
 	if err != nil {
 		return err
@@ -198,7 +198,6 @@ func (h *Helper) ConnectToService(ctx context.Context, service *shill.Service) e
 		return err
 	}
 
-	const timeout = defaultTimeout * 4
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := service.Connect(ctx); err != nil {
 			return err
@@ -214,6 +213,14 @@ func (h *Helper) ConnectToService(ctx context.Context, service *shill.Service) e
 		return errors.Wrapf(err, "connect to %s failed", name)
 	}
 	return nil
+}
+
+// ConnectToService connects to a Cellular Service.
+// It ensures that the connect attempt succeeds, repeating attempts if necessary.
+// Otherwise an error is returned.
+func (h *Helper) ConnectToService(ctx context.Context, service *shill.Service) error {
+	// Connect requires a longer default timeout than other operations.
+	return h.ConnectToServiceWithTimeout(ctx, service, defaultTimeout*4)
 }
 
 // Disconnect from the Cellular Service and ensure that the disconnect succeeded, otherwise return an error.
