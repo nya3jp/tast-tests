@@ -46,6 +46,30 @@
       },
       "revId": "46f827c2e707d182c87acb9769a4cc0dca24e810",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c85823e_66f4909a",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-03T00:47:01Z",
+      "side": 1,
+      "message": "I think we\u0027re almost aligned.\n\n- PreExist is used in two cases.\n  - As Yuke mentioned, manually maintained lacros fishfood versions.\n    This is now major testing case.\n  - Side-loading, like chromium post-submit/cq tests.\n- Omaha, testing overall Lacros installation over network.\n- rootfs, testing rootfs-lacros, including uprev of images etc.\n\nThe key here is, what Lacros we should use for majority of tests.\nOur plan is to use rootfs lacros and to get rid of current manually maintained lacros.\nHowever, before its switching, we must have a clear strategy when rootfs-lacros uprev happens, and make sure it works to verify \"new lacros\" always.",
+      "parentUuid": "870fa1c0_76ad5027",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 7
+      },
+      "revId": "46f827c2e707d182c87acb9769a4cc0dca24e810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
