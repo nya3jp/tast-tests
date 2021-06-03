@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d47b2d7_fac099c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-06-03T22:41:37Z",
+      "side": 1,
+      "message": "2 minutes (4 * shillconst.defaultTimeout \u003d 4 * 30 seconds) -\u003e 5 minutes\n\nI realize it\u0027s confusing since the timeout used for everything else in the test in 1 minute, not 30 seconds. I can clarify that.",
+      "parentUuid": "7cf6d8a0_ce482e1e",
+      "revId": "2cd10b8e9a3da0b70210706dbb1b31c21d8af3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed490fc8_e7fff1a6",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9153075_b9364801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-06-03T22:41:37Z",
+      "side": 1,
+      "message": "Well, the whole test timeout I think is 10 minutes which seems longer than necessary for a connect.",
+      "parentUuid": "ed490fc8_e7fff1a6",
+      "range": {
+        "startLine": 191,
+        "startChar": 17,
+        "endLine": 191,
+        "endChar": 44
+      },
+      "revId": "2cd10b8e9a3da0b70210706dbb1b31c21d8af3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f70af1c8_016bd7cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_inhibited.go",
         "patchSetId": 1
@@ -54,6 +96,24 @@
       "writtenOn": "2021-06-03T21:09:47Z",
       "side": 1,
       "message": "Seems like if we use close to the whole timeout here we may end up timing out on the test instead.",
+      "revId": "2cd10b8e9a3da0b70210706dbb1b31c21d8af3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c1c3a1c_bdab06e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_inhibited.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-06-03T22:41:37Z",
+      "side": 1,
+      "message": "That\u0027s a possibility, in which case we may need to lengthen the test timeout or shorten the test, but I am hoping that we are just barely taking \u003e 2 minutes.",
+      "parentUuid": "f70af1c8_016bd7cd",
       "revId": "2cd10b8e9a3da0b70210706dbb1b31c21d8af3ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
