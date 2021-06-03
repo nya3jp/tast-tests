@@ -96,7 +96,7 @@ func init() {
 			Val: igtTest{
 				exe: "kms_busy",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout: 15 * time.Minute,
 		}, {
 			Name: "kms_color",
 			Val: igtTest{
@@ -126,13 +126,13 @@ func init() {
 			Val: igtTest{
 				exe: "kms_cursor_crc",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout: 15 * time.Minute,
 		}, {
 			Name: "kms_cursor_legacy",
 			Val: igtTest{
 				exe: "kms_cursor_legacy",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout: 20 * time.Minute,
 		}, {
 			Name: "kms_dp_aux_dev",
 			Val: igtTest{
