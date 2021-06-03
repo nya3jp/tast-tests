@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "041b627a_d9011d9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/calculator_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-03T00:49:15Z",
+      "side": 1,
+      "message": "Yes. I agree they do not require internal bits. However since we only officially support ChromeBook not ChromiumBook, I think it is nice to control the scope like other apps.",
+      "parentUuid": "a0a34fd4_6171293d",
+      "revId": "56572db958825507ffd76574a4e19770a0aeac60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "037bea45_78ddf39a",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-06-03T00:43:11Z",
       "side": 1,
       "message": "Canvas I think is a similar story - it will fetch the app from the network, not from \"chrome_internal\"",
+      "revId": "56572db958825507ffd76574a4e19770a0aeac60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b9caaf_4aa106ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_canvas.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-03T00:49:15Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "037bea45_78ddf39a",
       "revId": "56572db958825507ffd76574a4e19770a0aeac60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
