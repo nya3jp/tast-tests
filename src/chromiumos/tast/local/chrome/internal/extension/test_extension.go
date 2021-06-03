@@ -129,6 +129,7 @@ func writeTestExtension(dir, key, extraBgJs string) (id string, err error) {
     "settingsPrivate",
     "system.display",
     "tabs",
+    "tts",
     "usersPrivate",
     "wallpaper"
   ],
