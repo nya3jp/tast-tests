@@ -34,6 +34,24 @@
       "parentUuid": "a82de3db_377b37da",
       "revId": "b2ae3b4d48fa04357e5cad29e7a5c3189edc1624",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ab23994_c7517056",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/bloat.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-06-03T01:56:28Z",
+      "side": 1,
+      "message": "Also gofmt doesn\u0027t add a space, it removes any space.",
+      "parentUuid": "67f31b19_5114d814",
+      "revId": "b2ae3b4d48fa04357e5cad29e7a5c3189edc1624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
