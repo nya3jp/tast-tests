@@ -8,6 +8,8 @@
 package org.chromium.arc.testapp.arcblackflashtest;
 
 import android.app.Activity;
+import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowMetrics;
@@ -31,10 +33,11 @@ public class MainActivity extends Activity {
         if (savedInstanceState != null) {
             mPrevWidth = savedInstanceState.getInt("PrevWidth");
         }
-        final WindowMetrics windowMetrics = getWindowManager().getCurrentWindowMetrics();
+
+        final int currentWidth = getCurrentWindowWidth();
         // Checking the size of the window should be enough to see if the app transitioned from
         // restored to maximized.
-        if (windowMetrics.getBounds().width() > mPrevWidth) {
+        if (currentWidth > mPrevWidth) {
             try {
                 // We need to block the UI thread to show black flashes.
                 Thread.sleep(BLACK_FLASH_DURATION_MS);
@@ -48,13 +51,26 @@ public class MainActivity extends Activity {
             setContentView(R.layout.main_activity);
         }
 
-        mPrevWidth = windowMetrics.getBounds().width();
+        mPrevWidth = currentWidth;
     }
 
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        WindowMetrics windowMetrics = getWindowManager().getCurrentWindowMetrics();
-        savedInstanceState.putInt("PrevWidth", windowMetrics.getBounds().width());
+        savedInstanceState.putInt("PrevWidth", mPrevWidth);
+    }
+
+    int getCurrentWindowWidth() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            WindowMetrics windowMetrics = getWindowManager().getCurrentWindowMetrics();
+            return windowMetrics.getBounds().width();
+        }
+
+        // Prior to R, there is no canonical API to get the width of the window.
+        // Display#getSize() returns the app's window size if it's called with the activity context.
+        // Please refer to https://developer.android.com/reference/android/view/Display#getSize(android.graphics.Point).
+        Point size = new Point();
+        getWindowManager().getDefaultDisplay().getSize(size);
+        return size.x;
     }
 }
