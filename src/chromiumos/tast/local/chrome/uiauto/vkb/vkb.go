@@ -310,7 +310,8 @@ func (vkbCtx *VirtualKeyboardContext) ClickUntilVKShown(nodeFinder *nodewith.Fin
 
 // SwitchToVoiceInput returns an action changing virtual keyboard to voice input layout.
 func (vkbCtx *VirtualKeyboardContext) SwitchToVoiceInput() uiauto.Action {
-	return func(ctx context.Context) error {
+	// Call background API to switch.
+	callSwitchAPI := func(ctx context.Context) error {
 		bconn, err := vkbCtx.BackgroundConn(ctx)
 		if err != nil {
 			return err
@@ -320,6 +321,16 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToVoiceInput() uiauto.Action {
 		}
 		return nil
 	}
+	// This node indicates if the voice input is active.
+	voiceActiveNode := NodeFinder.HasClass("voice-mic-img")
+	return uiauto.Combine("tap voice button and close privacy dialogue",
+		// Do nothing if it is already in the voice layout.
+		vkbCtx.ui.IfSuccessThen(
+			vkbCtx.ui.Gone(voiceActiveNode),
+			callSwitchAPI,
+		),
+		vkbCtx.ui.WaitUntilExists(voiceActiveNode),
+	)
 }
 
 // switchToHandwriting changes to handwriting layout and returns a handwriting context.
