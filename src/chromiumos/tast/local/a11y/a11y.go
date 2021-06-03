@@ -142,14 +142,22 @@ type VoiceData struct {
 	Name   string `json:"voiceName"`
 }
 
+// GetVoices returns the current TTS voices which are available.
+func GetVoices(ctx context.Context, conn *chrome.TestConn) ([]VoiceData, error) {
+	var voices []VoiceData
+	if err := conn.Eval(ctx, "tast.promisify(chrome.tts.getVoices)()", &voices); err != nil {
+		return nil, err
+	}
+	return voices, nil
+}
+
 // SetVoice sets the ChromeVox's voice, which is specified by using an extension
 // ID and a locale.
 func (cv *ChromeVoxConn) SetVoice(ctx context.Context, vd VoiceData) error {
-	var voices []VoiceData
-	if err := cv.Eval(ctx, "tast.promisify(chrome.tts.getVoices)()", &voices); err != nil {
-		return err
+	voices, err := GetVoices(ctx, &chrome.TestConn{Conn: cv.Conn})
+	if err != nil {
+		return errors.Wrap(err, "failed to getVoices")
 	}
-
 	for _, voice := range voices {
 		if voice.ExtID == vd.ExtID && voice.Locale == vd.Locale {
 			expr := fmt.Sprintf(`chrome.storage.local.set({'voiceName': '%s'});`, voice.Name)
