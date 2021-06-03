@@ -64,9 +64,17 @@ func ShillCellularInhibited(ctx context.Context, s *testing.State) {
 		}(ctxForAutoConnectCleanUp)
 	}
 
-	const timeout = 60 * time.Second
+	// Ensure that Inhibited is false.
+	if err := helper.Device.WaitForProperty(ctx, shillconst.DevicePropertyInhibited, false, shillconst.DefaultTimeout); err != nil {
+		s.Fatal("Initial state, Inhibited != false: ", err)
+	}
+
+	const inhibitTimeout = 1 * time.Minute
+	// Connect can take a long time after an un-inhibit while the Modem starts.
+	const connectTimeout = 5 * time.Minute
+
 	s.Log("Inhibit Cellular Modem")
-	if err := helper.SetDeviceProperty(ctx, shillconst.DevicePropertyInhibited, true, timeout); err != nil {
+	if err := helper.SetDeviceProperty(ctx, shillconst.DevicePropertyInhibited, true, inhibitTimeout); err != nil {
 		s.Fatal("Unable to set Device.Inhibited to true: ", err)
 	}
 	s.Log("Verify not connected to Cellular after Inhibit")
@@ -74,26 +82,26 @@ func ShillCellularInhibited(ctx context.Context, s *testing.State) {
 		s.Fatal("Cellular connected after inhibit: ", err)
 	}
 	s.Log("Uninhibit Cellular Modem")
-	if err := helper.SetDeviceProperty(ctx, shillconst.DevicePropertyInhibited, false, timeout); err != nil {
+	if err := helper.SetDeviceProperty(ctx, shillconst.DevicePropertyInhibited, false, inhibitTimeout); err != nil {
 		s.Fatal("Unable to set Device.Inhibited to false: ", err)
 	}
 
 	// Wait for Scanning to be false.
-	if err := helper.Device.WaitForProperty(ctx, shillconst.DevicePropertyScanning, false, timeout); err != nil {
+	if err := helper.Device.WaitForProperty(ctx, shillconst.DevicePropertyScanning, false, inhibitTimeout); err != nil {
 		s.Fatal("Scanning still true after Inhibit set to false: ", err)
 	}
 
 	// Make sure that Connect succeeds after inhibit / uninhibit.
 	// Note: It may take a long time for a Service to appear.
-	s.Logf("Verify Cellular Service and Connect (this may take up to %v)", timeout)
-	if service, err := helper.FindServiceForDeviceWithTimeout(ctx, timeout); err != nil {
+	s.Logf("Verify Cellular Service and Connect (this may take up to %v)", connectTimeout)
+	if service, err := helper.FindServiceForDeviceWithTimeout(ctx, connectTimeout); err != nil {
 		s.Fatal("No Cellular Service after uninhibit: ", err)
-	} else if err = helper.ConnectToService(ctx, service); err != nil {
+	} else if err = helper.ConnectToServiceWithTimeout(ctx, service, connectTimeout); err != nil {
 		s.Fatal("Error connecting to service after uninhibit: ", err)
 	}
 
 	s.Log("Inhibit Cellular Modem while connected")
-	if err := helper.SetDeviceProperty(ctx, shillconst.DevicePropertyInhibited, true, timeout); err != nil {
+	if err := helper.SetDeviceProperty(ctx, shillconst.DevicePropertyInhibited, true, inhibitTimeout); err != nil {
 		s.Fatal("Unable to set Device.Inhibited=true: ", err)
 	}
 
@@ -103,21 +111,21 @@ func ShillCellularInhibited(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Uninhibit Cellular Modem")
-	if err := helper.SetDeviceProperty(ctx, shillconst.DevicePropertyInhibited, false, timeout); err != nil {
+	if err := helper.SetDeviceProperty(ctx, shillconst.DevicePropertyInhibited, false, inhibitTimeout); err != nil {
 		s.Fatal("Unable to set Device.Inhibited=false: ", err)
 	}
 
 	// Wait for Scanning to be false.
-	if err := helper.Device.WaitForProperty(ctx, shillconst.DevicePropertyScanning, false, timeout); err != nil {
+	if err := helper.Device.WaitForProperty(ctx, shillconst.DevicePropertyScanning, false, inhibitTimeout); err != nil {
 		s.Fatal("Scanning still true after Inhibit set to false: ", err)
 	}
 
 	// Make sure that Connect succeeds after a second uninhibit.
 	// Note: It may take a long time for a Service to appear.
-	s.Logf("Verify Cellular Service (this may take up to %v)", timeout)
-	if service, err := helper.FindServiceForDeviceWithTimeout(ctx, timeout); err != nil {
+	s.Logf("Verify Cellular Service (this may take up to %v)", connectTimeout)
+	if service, err := helper.FindServiceForDeviceWithTimeout(ctx, connectTimeout); err != nil {
 		s.Fatal("No Cellular Service after uninhibit: ", err)
-	} else if err := helper.ConnectToService(ctx, service); err != nil {
+	} else if err := helper.ConnectToServiceWithTimeout(ctx, service, connectTimeout); err != nil {
 		s.Fatal("Unable to connect to service after uninhibit: ", err)
 	}
 }
