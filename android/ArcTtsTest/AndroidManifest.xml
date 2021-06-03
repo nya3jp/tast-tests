@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.chromium.arc.testapp.tts">
+
+    <uses-sdk android:minSdkVersion="28" android:targetSdkVersion="29" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <application>
+        <service android:name=".ArcTtsService">
+            <intent-filter>
+                <action android:name="android.intent.action.TTS_SERVICE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+            <meta-data android:name="android.speech.tts" android:resource="@xml/tts_engine" />
+        </application>
+
+</manifest>
