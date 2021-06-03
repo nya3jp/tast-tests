@@ -31,7 +31,7 @@ func init() {
 		Vars:         []string{"ui.gaiaPoolDefault"},
 		HardwareDeps: hwdep.D(pre.AppsStableModels),
 		Timeout:      8 * time.Minute,
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 	})
 }
 

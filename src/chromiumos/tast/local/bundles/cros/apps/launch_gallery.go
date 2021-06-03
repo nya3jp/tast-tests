@@ -37,7 +37,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{testFile},
 		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{

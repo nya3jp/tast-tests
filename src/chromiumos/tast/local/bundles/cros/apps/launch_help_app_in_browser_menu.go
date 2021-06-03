@@ -27,7 +27,7 @@ func init() {
 			"shengjun@chromium.org", // original test author
 		},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{
 			{

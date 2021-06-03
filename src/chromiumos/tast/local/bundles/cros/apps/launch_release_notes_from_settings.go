@@ -31,7 +31,7 @@ func init() {
 			"showoff-eng@google.com",
 		},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{
 			{
