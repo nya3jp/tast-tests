@@ -16,6 +16,23 @@
       "message": "Josh@, Adding to review for the context",
       "revId": "aae115ac21c4b43dcb6cfe30732b29b525847603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b18a830_e2006eee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-03T08:06:13Z",
+      "side": 1,
+      "message": "nya@, This is a prototype test which downloads(Latest Play Store build) from GS bucket, Installs it and Verifies the basic functionality. Request you to review this GS bucket usage context.",
+      "revId": "aae115ac21c4b43dcb6cfe30732b29b525847603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
