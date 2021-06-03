@@ -16,6 +16,87 @@
       "message": "I\u0027ve refactored the test into two tests with the common part separated. I\u0027m not sure if this is how you wanted it done, but in my opinion is good enough (if not better).\nPlease review.",
       "revId": "956c477ac3d7932ab580ba084b55b800f7cf89b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19036935_43bf8a39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-06-03T00:02:35Z",
+      "side": 1,
+      "message": "this is a lot to review still, but it looks better to me. definitely needs another set of eyes or two, I think.",
+      "revId": "956c477ac3d7932ab580ba084b55b800f7cf89b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85880da8_bd39e348",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-06-03T00:02:35Z",
+      "side": 1,
+      "message": "Yep, this is pretty much what I was thinking. Thanks.",
+      "parentUuid": "54f4301f_839d099e",
+      "revId": "956c477ac3d7932ab580ba084b55b800f7cf89b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dbcb1d8_be4275d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_ping.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-06-03T00:02:35Z",
+      "side": 1,
+      "message": "you\u0027re not *just* sending ping, but you\u0027re roaming too. that\u0027s a key part to include in the description 😊",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 18
+      },
+      "revId": "956c477ac3d7932ab580ba084b55b800f7cf89b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88957248_3b950ded",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_ping.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-06-03T00:02:35Z",
+      "side": 1,
+      "message": "please use return value (\"ok\"), instead of string comparison",
+      "range": {
+        "startLine": 143,
+        "startChar": 12,
+        "endLine": 143,
+        "endChar": 13
+      },
+      "revId": "956c477ac3d7932ab580ba084b55b800f7cf89b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

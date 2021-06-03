@@ -204,6 +204,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbda92e2_8c1af0fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-06-03T00:02:35Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts\n\n\"The default timeout is 2 minutes for local tests and 5 minutes for remote tests.\"\n\nYou might want to add explicit Timeout parameters in the Test struct, then.",
+      "parentUuid": "8cf3ef10_be0f9063",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 13
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2eacdb1c_cade811e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
         "patchSetId": 9
@@ -416,6 +440,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33a97392_fe3e8c2d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-06-03T00:02:35Z",
+      "side": 1,
+      "message": "If you don\u0027t, you\u0027re going to have the FT variants failing on several boards. So, either TODO (pointing at your own bug), or add such a dep, or else we\u0027re going to file a bug and assign it to you as soon as this test starts running in the lab :)",
+      "parentUuid": "954bc1d5_a66c569d",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 9
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "878bc94c_a8eba8f6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
         "patchSetId": 9
@@ -556,6 +604,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6678a7ff_b0fb2a13",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-06-03T00:02:35Z",
+      "side": 1,
+      "message": "I\u0027m OK with the comment you\u0027ve now added, ans we can replace with BSS TM if/when it\u0027s ready.",
+      "parentUuid": "e16c0f96_3ef92163",
+      "range": {
+        "startLine": 522,
+        "startChar": 0,
+        "endLine": 535,
+        "endChar": 3
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8372826c_3d2dbfbe",
@@ -593,6 +665,30 @@
       "side": 1,
       "message": "I had some more debug during development, but I\u0027ve removed it.\nAnyway, I think that general state transition logging would clutter the logs; if the users wants to see in the logs when each iteration started/ended, they may add the logs themselves. At least this is how I use it (I log the results of each iteration).",
       "parentUuid": "8372826c_3d2dbfbe",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 8
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cb12c30_95f60206",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-06-03T00:02:35Z",
+      "side": 1,
+      "message": "OK, that\u0027s probably fine.",
+      "parentUuid": "c2bcc817_b565924b",
       "range": {
         "startLine": 175,
         "startChar": 0,
