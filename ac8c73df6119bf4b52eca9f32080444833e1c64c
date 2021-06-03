@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "438ff99a_38b8456e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-03T03:14:47Z",
+      "side": 1,
+      "message": "+chharry as he is the author of simple_connect parameter generator.",
+      "revId": "ac8c73df6119bf4b52eca9f32080444833e1c64c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3a2d852_8e161730",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-03T03:14:47Z",
+      "side": 1,
+      "message": "As far as I know, simple_connect.go is now a generated file. Please update the source simple_connect_test.go instead  (I know the naming looks a bit weird...)",
+      "revId": "ac8c73df6119bf4b52eca9f32080444833e1c64c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
