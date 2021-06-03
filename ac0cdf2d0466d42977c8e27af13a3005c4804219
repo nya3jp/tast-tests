@@ -22,6 +22,30 @@
       },
       "revId": "ac0cdf2d0466d42977c8e27af13a3005c4804219",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d93088b8_a85c7dfc",
+        "filename": "src/chromiumos/tast/local/crash/fixture_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-06-03T00:54:03Z",
+      "side": 1,
+      "message": "Per https://golang.org/pkg/os/exec/#Cmd.StderrPipe,\n\u003e Wait will close the pipe after seeing the command exit, so most callers need not close the pipe themselves",
+      "parentUuid": "3345644f_a25576af",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 11
+      },
+      "revId": "ac0cdf2d0466d42977c8e27af13a3005c4804219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
