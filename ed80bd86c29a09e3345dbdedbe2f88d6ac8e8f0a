@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cdc46fe_ed5ef469",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/paypal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-03T01:44:55Z",
+      "side": 1,
+      "message": "This doesn\u0027t give information about why we are skipping. Please rename is appropriately like noFrontCameraModels.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 63
+      },
+      "revId": "ed80bd86c29a09e3345dbdedbe2f88d6ac8e8f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
