@@ -189,6 +189,7 @@ type Window struct {
 	OverviewInfo               *OverviewInfo       `json:"overviewInfo,omitempty"`
 	IsFrameVisible             bool                `json:"isFrameVisible"`
 	FrameMode                  FrameMode           `json:"FrameMode"`
+	FullRestoreWindowAppID     string              `json:"fullRestoreWindowAppId"`
 }
 
 var defaultPollOptions = &testing.PollOptions{Timeout: 20 * time.Second}
@@ -278,6 +279,13 @@ func SetARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName s
 func GetARCAppWindowInfo(ctx context.Context, tconn *chrome.TestConn, pkgName string) (*Window, error) {
 	return FindWindow(ctx, tconn, func(window *Window) bool {
 		return window.ARCPackageName == pkgName
+	})
+}
+
+// GetARCGhostWindowInfo queries into Ash and returns the ARC ghost window info by session id.
+func GetARCGhostWindowInfo(ctx context.Context, tconn *chrome.TestConn, appID string) (*Window, error) {
+	return FindWindow(ctx, tconn, func(window *Window) bool {
+		return window.FullRestoreWindowAppID == appID
 	})
 }
 
