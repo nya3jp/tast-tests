@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a82de3db_377b37da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/bloat.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-06-03T01:49:48Z",
+      "side": 1,
+      "message": "Add space between variable and - operator.\nI think the source should be formatted by gofmt or otherwise it would have been blocked by pre-upload check.",
+      "revId": "b2ae3b4d48fa04357e5cad29e7a5c3189edc1624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
