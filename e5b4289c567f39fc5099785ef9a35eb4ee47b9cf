@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bef93e67_a33efb03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-03T20:41:22Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "4906c6a6_d7db7cb1",
+      "revId": "e5b4289c567f39fc5099785ef9a35eb4ee47b9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a636edd3_0515f109",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80a47eaf_80588195",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-03T20:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a636edd3_0515f109",
+      "range": {
+        "startLine": 208,
+        "startChar": 5,
+        "endLine": 208,
+        "endChar": 29
+      },
+      "revId": "e5b4289c567f39fc5099785ef9a35eb4ee47b9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a474262_69f0f59e",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-06-03T00:43:28Z",
       "side": 1,
       "message": "can err be non-nil here? Maybe we can use wrrors.New instead?",
+      "range": {
+        "startLine": 286,
+        "startChar": 25,
+        "endLine": 286,
+        "endChar": 28
+      },
+      "revId": "e5b4289c567f39fc5099785ef9a35eb4ee47b9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8efe1382_aa8ea4f6",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-03T20:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a474262_69f0f59e",
       "range": {
         "startLine": 286,
         "startChar": 25,
