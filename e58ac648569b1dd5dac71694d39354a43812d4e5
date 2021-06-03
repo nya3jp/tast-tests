@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0703e100_b31807e3",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-06-03T05:06:16Z",
+      "side": 1,
+      "message": "I think something like \u0027ARCUseHugePages\u0027 would be better, so it\u0027s clear that the setting modifies something about ARC. It would also allow the type to just be a boolean without losing any clarity as to what true/false means.",
+      "range": {
+        "startLine": 265,
+        "startChar": 1,
+        "endLine": 265,
+        "endChar": 14
+      },
+      "revId": "e58ac648569b1dd5dac71694d39354a43812d4e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b84b255_f9d8c697",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-06-03T05:06:16Z",
+      "side": 1,
+      "message": "How about something like:\n\nHugePagesEnabled returns an Option that can be passed to New to enable huge pages within a session\u0027s ARCVM instance. Has no effect on boards running Android P or if ARCEnabled is not also passed to New.",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 47
+      },
+      "revId": "e58ac648569b1dd5dac71694d39354a43812d4e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
