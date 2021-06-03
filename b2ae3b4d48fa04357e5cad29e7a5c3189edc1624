@@ -52,6 +52,24 @@
       "parentUuid": "67f31b19_5114d814",
       "revId": "b2ae3b4d48fa04357e5cad29e7a5c3189edc1624",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc308f4f_ba6c4e27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/bloat.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-06-03T01:57:32Z",
+      "side": 1,
+      "message": "BTW, that would be a super nice thing to throw into tricium so that all the code is properly formatted and we can all see that it is how we want it to be.",
+      "parentUuid": "6ab23994_c7517056",
+      "revId": "b2ae3b4d48fa04357e5cad29e7a5c3189edc1624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
