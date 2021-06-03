@@ -628,6 +628,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb9cb001_040328d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-03T19:39:43Z",
+      "side": 1,
+      "message": "Ready now!",
+      "parentUuid": "6678a7ff_b0fb2a13",
+      "range": {
+        "startLine": 522,
+        "startChar": 0,
+        "endLine": 535,
+        "endChar": 3
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8372826c_3d2dbfbe",
