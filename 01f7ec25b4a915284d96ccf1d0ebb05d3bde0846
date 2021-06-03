@@ -118,6 +118,30 @@
       },
       "revId": "01f7ec25b4a915284d96ccf1d0ebb05d3bde0846",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49dcb6e0_ae129eec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-06-03T13:08:24Z",
+      "side": 1,
+      "message": "Please find the comment in the bug, https://b.corp.google.com/issues/181045525#comment9. Based on the comment, hwdep ABI is looking for useragent or Cros CPU info which is x86_64 for caroline, Nasher360, Eve, Careena, helios. Whereas android build for caroline, Nasher360 are x86. So hwdep ABI can\u0027t be used here.",
+      "parentUuid": "8ca52a62_edaa98d1",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 68
+      },
+      "revId": "01f7ec25b4a915284d96ccf1d0ebb05d3bde0846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
