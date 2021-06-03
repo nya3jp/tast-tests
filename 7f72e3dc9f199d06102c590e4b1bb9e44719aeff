@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fe83c79_c50a0e83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-06-03T18:50:38Z",
+      "side": 1,
+      "message": "\"upload\"?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "7f72e3dc9f199d06102c590e4b1bb9e44719aeff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f853511c_27a9c8cc",
@@ -14,6 +37,52 @@
       "writtenOn": "2021-06-03T16:39:38Z",
       "side": 1,
       "message": "TY for comments!",
+      "revId": "7f72e3dc9f199d06102c590e4b1bb9e44719aeff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ea803bc_e8a3187b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-06-03T18:50:38Z",
+      "side": 1,
+      "message": "nit: just \"\u003e\" per earlier comment for consistency with other places that do similar check.",
+      "range": {
+        "startLine": 59,
+        "startChar": 16,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "7f72e3dc9f199d06102c590e4b1bb9e44719aeff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f591b41_5d3628cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-06-03T18:50:38Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 303,
+        "startChar": 23,
+        "endLine": 303,
+        "endChar": 34
+      },
       "revId": "7f72e3dc9f199d06102c590e4b1bb9e44719aeff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
