@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "770d4e8c_ea9375fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-06-03T03:23:53Z",
+      "side": 1,
+      "message": "Good idea. Done.",
+      "parentUuid": "f11af034_ee952eca",
+      "range": {
+        "startLine": 19,
+        "startChar": 29,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "28e556e2f691012e89dcc93ec374172274bc3349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee06f83e_2fc7b6ce",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ac63641_98612e99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-06-03T03:23:53Z",
+      "side": 1,
+      "message": "Ah ok. For some reason, I thought video.videoWidth and video.videoHeight would return the dimensions of the scaled video according to line 4. That doesn\u0027t seem to be the case and just using those works.\n\nAlso, I went ahead and put the \"assertions\" in the Go code.",
+      "parentUuid": "ee06f83e_2fc7b6ce",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "28e556e2f691012e89dcc93ec374172274bc3349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acc42656_60952a7d",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-06-03T02:12:41Z",
       "side": 1,
       "message": "nit: s/nothingColor/noColor/ or s/nothingColor/blackColor/ ?",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 13
+      },
+      "revId": "28e556e2f691012e89dcc93ec374172274bc3349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd4c67f_91a40ec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-06-03T03:23:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acc42656_60952a7d",
       "range": {
         "startLine": 151,
         "startChar": 1,
