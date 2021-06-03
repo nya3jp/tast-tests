@@ -26,8 +26,7 @@ func init() {
 			"briannorris@chromium.org",
 			"chromeos-platform-connectivity@google.com",
 		},
-		// TODO(https://crbug.com/1195793, b/184564123): re-enable once shill crashes are fixed.
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "shill-wifi"},
 
 		Params: []testing.Param{

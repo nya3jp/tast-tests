@@ -28,11 +28,10 @@ type testParameters struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     Ethernet8021X,
-		Desc:     "Verifies we can authenticate Ethernet via 802.1X",
-		Contacts: []string{"briannorris@chromium.org", "cros-networking@google.com"},
-		// TODO(https://crbug.com/1195793, b/184564123): re-enable once shill crashes are fixed.
-		Attr:         []string{"group:mainline", "informational"},
+		Func:         Ethernet8021X,
+		Desc:         "Verifies we can authenticate Ethernet via 802.1X",
+		Contacts:     []string{"briannorris@chromium.org", "cros-networking@google.com"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wired_8021x"},
 
 		Params: []testing.Param{
