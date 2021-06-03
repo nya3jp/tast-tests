@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "262f3de5_729364cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-03T04:45:10Z",
+      "side": 1,
+      "message": "Had a chat with the dev @nancylingwang, she mentioned that no full restore for the following users. \n// No service for non-regular user profile, or ephemeral user profile, system\n  // profile.\n  Profile* profile \u003d Profile::FromBrowserContext(context);\n  if (!profile || profile-\u003eIsSystemProfile() ||\n      !ProfileHelper::IsRegularProfile(profile) ||\n      ProfileHelper::IsEphemeralUserProfile(profile)) {\n    return nullptr;\n  }\n  \nI tried with the fake account, it worked. So I changed it to fake account. \n\nAnyway, we could switch back to GAIA user if any problem found.",
+      "parentUuid": "56114587_002763b5",
+      "revId": "37d82761760f16cf145268ff36275dbfaea3066a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fa0df92_ec341476",

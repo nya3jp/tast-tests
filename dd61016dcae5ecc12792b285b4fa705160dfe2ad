@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d532f19e_29a6c12c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-03T04:45:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5472d2b5_358dd859",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "dd61016dcae5ecc12792b285b4fa705160dfe2ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8ce0053d_818f394a",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
         "patchSetId": 9
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc39be15_25708113",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-03T04:45:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73b6da70_2e545f02",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 67,
+        "endChar": 36
+      },
+      "revId": "dd61016dcae5ecc12792b285b4fa705160dfe2ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c871315_7e1a38f8",
@@ -83,6 +131,30 @@
       "writtenOn": "2021-06-02T09:43:15Z",
       "side": 1,
       "message": "This can easily fail if we change the UI string in Chrome. Recently UI test\u0027s unstability is becoming increasingly a problem (go/chromium-cros-tests). Could you consider matching the UI element with more stable attributes?",
+      "range": {
+        "startLine": 79,
+        "startChar": 45,
+        "endLine": 79,
+        "endChar": 96
+      },
+      "revId": "dd61016dcae5ecc12792b285b4fa705160dfe2ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0b01c0f_a6e88997",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_filesapp_reboot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-03T04:45:10Z",
+      "side": 1,
+      "message": "@msta had a cl addressing this problem: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2928457\n\nChanged it to NameStartingWith",
+      "parentUuid": "0c871315_7e1a38f8",
       "range": {
         "startLine": 79,
         "startChar": 45,
