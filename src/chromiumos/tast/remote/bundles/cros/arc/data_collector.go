@@ -146,7 +146,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		// This leads to the situation when FS page caches are reclaimed and captured result
 		// does not properly relfect actual FS usage. Don't upload caches to server for
 		// devices lower than 8G.
-		minVMMemoryKb = 7500000
+		minVMMemoryKB = 7500000
 	)
 
 	d := s.DUT()
@@ -189,11 +189,6 @@ func DataCollector(ctx context.Context, s *testing.State) {
 
 		if !desc.Official {
 			s.Logf("Version: %s is not official version and generated ureadahead packs won't be uploaded to the server", v)
-			return false
-		}
-
-		if param.vmEnabled && memTotalKb < minVMMemoryKb {
-			s.Logf("Device has insufficent total memory %d out of %d required. Generated caches won't be uploaded to the server", memTotalKb, minVMMemoryKb)
 			return false
 		}
 
@@ -300,11 +295,14 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 
 		if needUpload(ureadAheadPack) {
-			if err := upload(shortCtx, targetTar, ureadAheadPack); err != nil {
-				s.Fatalf("Failed to upload %q: %v", ureadAheadPack, err)
+			if !param.vmEnabled || memTotalKb >= minVMMemoryKB {
+				if err := upload(shortCtx, targetTar, ureadAheadPack); err != nil {
+					s.Fatalf("Failed to upload %q: %v", ureadAheadPack, err)
+				}
+			} else {
+				s.Logf("Device has insufficent total memory %d out of %d required. Generated ureadahead won't be uploaded to the server", memTotalKb, minVMMemoryKB)
 			}
 		}
-
 		return nil
 	}
 
