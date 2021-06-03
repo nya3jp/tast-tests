@@ -43,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3dc682c1_e1d46021",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-vhost-user-net-test.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2021-06-03T05:43:56Z",
+      "side": 1,
+      "message": "nit: use double-square brackets.  See https://google.github.io/styleguide/shellguide.html#test----and---",
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4076933f_6e0d43e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
         "patchSetId": 6
@@ -158,6 +175,64 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ede5d41_4edf7a95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2021-06-03T05:43:56Z",
+      "side": 1,
+      "message": "Even better would be if the patchpanel code provided a helper function to get the gateway and address from a subnet.",
+      "parentUuid": "b110af84_fe2df82f",
+      "range": {
+        "startLine": 130,
+        "startChar": 31,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "792038f6_5321ab0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2021-06-03T05:43:56Z",
+      "side": 1,
+      "message": "nit: rather than using 1 and 2 suffixes for all of these variables and file names I feel like it may be more readable to use \"server\" and \"client\" suffixes.",
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29480688_c6f1b871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2021-06-03T05:43:56Z",
+      "side": 1,
+      "message": "Do the vms actually need vsock?  It doesn\u0027t look like anything in this test uses it.  Also, looking at vsock_cid_pool.cc in concierge it seems like we could pick a cid in the range 3-31 or \u003e8192 to guarantee no overlap with crostini/arcvm.",
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1c86859_fdfb31ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
         "patchSetId": 6
@@ -175,6 +250,23 @@
         "endLine": 195,
         "endChar": 10
       },
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3b93580_d025f866",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2021-06-03T05:43:56Z",
+      "side": 1,
+      "message": "I don\u0027t feel that strongly about this but I wonder if having structured data rather than freeform text would be better for this option.",
       "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
