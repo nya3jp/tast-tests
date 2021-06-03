@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6953dce3_ca8de6b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-03T04:11:22Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nit",
+      "revId": "09d4c731ad4a1ae239b2a7ee2423ff58c4873054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23cf4b18_4225d956",
@@ -54,6 +71,29 @@
         "startChar": 1,
         "endLine": 317,
         "endChar": 56
+      },
+      "revId": "09d4c731ad4a1ae239b2a7ee2423ff58c4873054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b426df4_2cbdcfa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-03T04:11:22Z",
+      "side": 1,
+      "message": "nit: please errors.Wrap(err, ...) to provide context",
+      "range": {
+        "startLine": 318,
+        "startChar": 9,
+        "endLine": 318,
+        "endChar": 12
       },
       "revId": "09d4c731ad4a1ae239b2a7ee2423ff58c4873054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
