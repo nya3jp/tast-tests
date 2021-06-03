@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3776f4db_fa9aa34b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-03T19:40:36Z",
+      "side": 1,
+      "message": "Add a comment about this like x86...",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 68
+      },
+      "revId": "8ad0d722f404dafab8e9f5c0d1d598a072926da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
