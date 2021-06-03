@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9befc1b8_b0c66db6",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-03T00:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0c85c65_f025205a",
+      "range": {
+        "startLine": 104,
+        "startChar": 40,
+        "endLine": 104,
+        "endChar": 41
+      },
+      "revId": "29e0ea1b4f0061ba5b990c1d64c86cb43340a41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7fda69b_87e59958",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-02T23:48:56Z",
       "side": 1,
       "message": "huge nit: append period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 109,
+        "startChar": 88,
+        "endLine": 109,
+        "endChar": 89
+      },
+      "revId": "29e0ea1b4f0061ba5b990c1d64c86cb43340a41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6334a894_f0320a46",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-03T00:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7fda69b_87e59958",
       "range": {
         "startLine": 109,
         "startChar": 88,
