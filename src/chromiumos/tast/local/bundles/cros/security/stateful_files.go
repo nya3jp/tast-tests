@@ -216,6 +216,10 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		prependPatterns(chk.NewPattern(chk.Path("encrypted/var/cache/diagnostics"), chk.Users("cros_healthd"), chk.Groups("cros_healthd"), chk.SkipChildren()))
 	}
 
+	if _, err := user.Lookup("missived"); err == nil {
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/reporting"), chk.Users("missived"), chk.Groups("missived"), chk.NotMode(022), chk.SkipChildren()))
+	}
+
 	if _, err := user.Lookup("displaylink"); err == nil {
 		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/log/displaylink"), chk.Users("displaylink"), chk.Groups("displaylink"), chk.NotMode(022), chk.SkipChildren()))
 	}
