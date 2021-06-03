@@ -70,6 +70,30 @@
       },
       "revId": "46f827c2e707d182c87acb9769a4cc0dca24e810",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ef7bd38_1fe2b951",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-06-03T21:01:54Z",
+      "side": 1,
+      "message": "Moving the future discussion to a separate thread. Marking as resolved.",
+      "parentUuid": "3c85823e_66f4909a",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 7
+      },
+      "revId": "46f827c2e707d182c87acb9769a4cc0dca24e810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
