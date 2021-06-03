@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41844b72_38dcaffa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-03T05:27:18Z",
+      "side": 1,
+      "message": "Add clear before each attempt.\n\nuiauto.New(tconn).WithTimeout(time.Minute).Retry(\n\t\t5,\n\t\tuiauto.Combine(\"verify audio input\",\n\t\t\tits.Clear(inputField),\n\t\t\tvkbCtx.SwitchToVoiceInputAndClosePrivacyDialogue(),\n\t\t\tfunc(ctx context.Context) error {\n\t\t\t\treturn input.AudioFromFile(ctx, testFileLocation)\n\t\t\t},\n\t\t\t// Verify if the derived text is equal to the expected text.\n\t\t\tits.WaitForFieldValueToBe(inputField, expectedText),\n\t)",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 5
+      },
+      "revId": "94c07ad2ca95f2ea9e7943c98150ecf3a347b389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff5ed0cf_49effae0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-03T05:27:18Z",
+      "side": 1,
+      "message": "Is it any reason to use UI instead of API call? On betty device, this voice icon should be disabled. Currently it works because of a bug b/176943794.",
+      "range": {
+        "startLine": 316,
+        "startChar": 2,
+        "endLine": 319,
+        "endChar": 4
+      },
+      "revId": "94c07ad2ca95f2ea9e7943c98150ecf3a347b389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db9056a3_65814dd6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-03T05:27:18Z",
+      "side": 1,
+      "message": "nit: Can you please rename this function to maybeClosePrivacyDialogue() since it does not always happen.",
+      "range": {
+        "startLine": 320,
+        "startChar": 9,
+        "endLine": 320,
+        "endChar": 26
+      },
+      "revId": "94c07ad2ca95f2ea9e7943c98150ecf3a347b389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f418741_9ecfa027",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-03T05:27:18Z",
+      "side": 1,
+      "message": "Do not need to add a retry function which is duplicate. I will comment my suggestion in the other file.",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 1
+      },
+      "revId": "94c07ad2ca95f2ea9e7943c98150ecf3a347b389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
