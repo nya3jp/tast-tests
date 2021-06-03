@@ -33,6 +33,259 @@
       "message": "nya@, This is a prototype test which downloads(Latest Play Store build) from GS bucket, Installs it and Verifies the basic functionality. Request you to review this GS bucket usage context.",
       "revId": "aae115ac21c4b43dcb6cfe30732b29b525847603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15f9b528_fc662de4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_uprev.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-03T08:39:56Z",
+      "side": 1,
+      "message": "Could you comment why we restrict to these two devices?",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 64
+      },
+      "revId": "aae115ac21c4b43dcb6cfe30732b29b525847603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "305f4b2a_b50efc80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_uprev.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-03T08:39:56Z",
+      "side": 1,
+      "message": "This test depends on private data files, so it\u0027s never possible that third-party users can run this test. Let\u0027s move this test to platform/tast-tests-private.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 100
+      },
+      "revId": "aae115ac21c4b43dcb6cfe30732b29b525847603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02797386_98befd01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_uprev.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-03T08:39:56Z",
+      "side": 1,
+      "message": "no need to declare versionAfterUpRev now, so we can just write this as:\n\n versionBeforeUpRev, err :\u003d getAppVersion(ctx, a); err !\u003d nil {\n   ...\n }",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 49
+      },
+      "revId": "aae115ac21c4b43dcb6cfe30732b29b525847603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab8878ff_24e78f0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_uprev.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-03T08:39:56Z",
+      "side": 1,
+      "message": "defer r.Close() should be here.",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "aae115ac21c4b43dcb6cfe30732b29b525847603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2266ff07_04a85cbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_uprev.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-03T08:39:56Z",
+      "side": 1,
+      "message": "IIUC bufio.Writer is not needed. Rather it might disable some optimization in io.Copy.\n\nAlso, writing to a file needs some cumbersome handling of errors because:\n\n- File handlers must be closed on errors\n- os.File.Close may return an error as well\n\nOne way to do this correctly is:\n\n w, err :\u003d os.Create(...)\n if err !\u003d nil { ... }\n \n copied, copyErr :\u003d io.Copy(w, r)\n closeErr :\u003d w.Close()\n \n if copyErr !\u003d nil {\n   t.Fatal(...)\n }\n if closeErr !\u003d nil {\n   t.Fatal(...)\n }",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 25
+      },
+      "revId": "aae115ac21c4b43dcb6cfe30732b29b525847603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "928d60d4_b0a24aa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_uprev.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-03T08:39:56Z",
+      "side": 1,
+      "message": "Since we do this twice for two files, it\u0027s nice to introduce a function to avoid duplication.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 42
+      },
+      "revId": "aae115ac21c4b43dcb6cfe30732b29b525847603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6541c92_1efbf41b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_uprev.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-03T08:39:56Z",
+      "side": 1,
+      "message": "Do we ever happen to hit this condition if the image under testing is very new?",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 45
+      },
+      "revId": "aae115ac21c4b43dcb6cfe30732b29b525847603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8be0668_46533c7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_uprev.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-03T08:39:56Z",
+      "side": 1,
+      "message": "nit: please insert a blank line between two functions.\n\nnit\u0026optional: you don\u0027t need a blank line at the beginning/end of a function.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 1
+      },
+      "revId": "aae115ac21c4b43dcb6cfe30732b29b525847603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37a9ac31_36d201c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_uprev.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-03T08:39:56Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 179,
+        "startChar": 33,
+        "endLine": 179,
+        "endChar": 36
+      },
+      "revId": "aae115ac21c4b43dcb6cfe30732b29b525847603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55baf7c2_67588371",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_uprev.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-03T08:39:56Z",
+      "side": 1,
+      "message": "err is always nil here, so this is equivalent to errors.New(...)",
+      "range": {
+        "startLine": 182,
+        "startChar": 12,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "aae115ac21c4b43dcb6cfe30732b29b525847603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62ba608f_0c7c30d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_uprev.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-03T08:39:56Z",
+      "side": 1,
+      "message": "nit: two white spaces",
+      "range": {
+        "startLine": 182,
+        "startChar": 38,
+        "endLine": 182,
+        "endChar": 40
+      },
+      "revId": "aae115ac21c4b43dcb6cfe30732b29b525847603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
