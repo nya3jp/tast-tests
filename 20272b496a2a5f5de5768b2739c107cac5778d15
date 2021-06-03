@@ -16,6 +16,29 @@
       "message": "LGTM for tast style. Please also get code review from your teammates.",
       "revId": "20272b496a2a5f5de5768b2739c107cac5778d15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43b2b90a_64d5db49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-06-03T15:00:38Z",
+      "side": 1,
+      "message": "It might be worth making a go link for this. You can make one at go/",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 101
+      },
+      "revId": "20272b496a2a5f5de5768b2739c107cac5778d15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
