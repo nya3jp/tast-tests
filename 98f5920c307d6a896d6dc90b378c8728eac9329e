@@ -16,6 +16,24 @@
       "message": "The code looks good, though I\u0027m not sure why those numbers were chosen there.  Based on the git-blame, https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2803883 is the one to add them.  I\u0027ll defer to yichen.",
       "revId": "98f5920c307d6a896d6dc90b378c8728eac9329e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96edb2ef_5bc8d320",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-06-03T04:10:08Z",
+      "side": 1,
+      "message": "Okay. Let\u0027s wait for yichenz@.\n\nI asked yichenz@ about it and she is following \"cuj/common_metrics\" [1]. It seems the data there does not fit our MeetCUJ test well.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2803883/10..13/src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go#b326",
+      "parentUuid": "dd822b13_e390c89c",
+      "revId": "98f5920c307d6a896d6dc90b378c8728eac9329e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
