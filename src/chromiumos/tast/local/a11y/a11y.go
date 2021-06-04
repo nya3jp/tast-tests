@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -396,4 +397,21 @@ func startAccumulatingUtterances(ctx context.Context, conn *chrome.Conn, engineD
     chrome.ttsEngine.onSpeak.addListener(utterance => testUtterances.push(utterance));
   }
 `, nil)
+}
+
+// NewTabWithHTML creates a new tab with the specified HTML, waits for it to
+// load, and returns a connection to the page.
+func NewTabWithHTML(ctx context.Context, cr *chrome.Chrome, html string) (*chrome.Conn, error) {
+	url := fmt.Sprintf("data:text/html, %s", html)
+	c, err := cr.NewConn(ctx, url, cdputil.WithNewWindow())
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to open new tab with url: %s", url)
+	}
+
+	if err := c.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+		c.Close()
+		return nil, errors.Wrap(err, "timed out waiting for page to load")
+	}
+
+	return c, nil
 }
