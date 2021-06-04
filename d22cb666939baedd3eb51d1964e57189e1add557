@@ -34,6 +34,24 @@
       "parentUuid": "658d79c7_11c54ad6",
       "revId": "d22cb666939baedd3eb51d1964e57189e1add557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e532b73b_af2152f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-04T17:38:31Z",
+      "side": 0,
+      "message": "You could test on a locally leased DUT or use tryjobs which will also execute informational tests, something like this I think:\n`cros tryjob -g 2923133 --hwtest scarlet-release-tryjob`\n\nIf you have a particular flaky test in mind, one good option would be to lease a lab DUT for several hours, and use the repeat-test.sh script to run the test repeatedly:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/tools/repeat-test.sh",
+      "parentUuid": "5f82e982_6c9e96d9",
+      "revId": "d22cb666939baedd3eb51d1964e57189e1add557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
