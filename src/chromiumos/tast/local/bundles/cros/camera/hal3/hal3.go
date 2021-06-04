@@ -170,6 +170,7 @@ type crosCameraTestConfig struct {
 	recordingParams      string // resolutions and fps to test in recording
 	perfLog              string // path to the performance log
 	portraitModeTestData string // test data for portrait mode test.
+	expectedNumFaces     string // number of faces for face detection test.
 }
 
 // toArgs converts crosCameraTestConfig to a list of argument strings.
@@ -191,6 +192,9 @@ func (t *crosCameraTestConfig) toArgs() []string {
 	}
 	if t.portraitModeTestData != "" {
 		args = append(args, "--portrait_mode_test_data="+t.portraitModeTestData)
+	}
+	if t.expectedNumFaces != "" {
+		args = append(args, "--expected_num_faces="+t.expectedNumFaces)
 	}
 	return args
 }
@@ -406,6 +410,10 @@ func RunTest(ctx context.Context, cfg TestConfig) (retErr error) {
 
 	if cfg.PortraitModeTestData != "" {
 		cameraCfg.portraitModeTestData = cfg.PortraitModeTestData
+	}
+
+	if cfg.ExpectedNumFaces != "" {
+		cameraCfg.expectedNumFaces = cfg.ExpectedNumFaces
 	}
 
 	p := perf.NewValues()

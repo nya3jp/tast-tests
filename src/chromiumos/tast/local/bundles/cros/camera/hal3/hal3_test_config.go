@@ -32,6 +32,8 @@ type TestConfig struct {
 	ConnectToCameraService bool
 	// PortraitModeTestData is the portrait mode test data to be downloaded.
 	PortraitModeTestData string
+	// Number of faces should be detected for face detection test.
+	ExpectedNumFaces string
 }
 
 // DeviceTestConfig returns test config for running HAL3Device test.
