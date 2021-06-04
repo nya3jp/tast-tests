@@ -223,6 +223,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01f58d67_740347e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-06-04T08:39:09Z",
+      "side": 1,
+      "message": "tl;dr: filled b/b/190151836 to properly take care of that on the patchpanel side.\n\nTurns out this field is not populated on TerminaVmStartupResponse. It seems to be only populated for some of the ARC RPCs, for NetworkDeviceChangedSignal, and for GetDevicesResponse objects.",
+      "parentUuid": "e79e7ea7_82d70e30",
+      "range": {
+        "startLine": 130,
+        "startChar": 31,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "792038f6_5321ab0b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
         "patchSetId": 6
