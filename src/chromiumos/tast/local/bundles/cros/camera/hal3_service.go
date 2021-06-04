@@ -6,6 +6,8 @@ package camera
 
 import (
 	"context"
+	"strconv"
+	"strings"
 
 	"google.golang.org/grpc"
 
@@ -31,16 +33,17 @@ type HAL3Service struct {
 type getTestConfig = func() hal3.TestConfig
 
 var getTestConfigMap = map[cameraboxpb.HAL3CameraTest]getTestConfig{
-	cameraboxpb.HAL3CameraTest_DEVICE:        hal3.DeviceTestConfig,
-	cameraboxpb.HAL3CameraTest_FRAME:         hal3.FrameTestConfig,
-	cameraboxpb.HAL3CameraTest_JDA:           hal3.JDATestConfig,
-	cameraboxpb.HAL3CameraTest_JEA:           hal3.JEATestConfig,
-	cameraboxpb.HAL3CameraTest_MODULE:        hal3.ModuleTestConfig,
-	cameraboxpb.HAL3CameraTest_PERF:          hal3.PerfTestConfig,
-	cameraboxpb.HAL3CameraTest_PREVIEW:       hal3.PreviewTestConfig,
-	cameraboxpb.HAL3CameraTest_RECORDING:     hal3.RecordingTestConfig,
-	cameraboxpb.HAL3CameraTest_STILL_CAPTURE: hal3.StillCaptureTestConfig,
-	cameraboxpb.HAL3CameraTest_STREAM:        hal3.StreamTestConfig,
+	cameraboxpb.HAL3CameraTest_DEVICE:         hal3.DeviceTestConfig,
+	cameraboxpb.HAL3CameraTest_FRAME:          hal3.FrameTestConfig,
+	cameraboxpb.HAL3CameraTest_JDA:            hal3.JDATestConfig,
+	cameraboxpb.HAL3CameraTest_JEA:            hal3.JEATestConfig,
+	cameraboxpb.HAL3CameraTest_MODULE:         hal3.ModuleTestConfig,
+	cameraboxpb.HAL3CameraTest_PERF:           hal3.PerfTestConfig,
+	cameraboxpb.HAL3CameraTest_PREVIEW:        hal3.PreviewTestConfig,
+	cameraboxpb.HAL3CameraTest_RECORDING:      hal3.RecordingTestConfig,
+	cameraboxpb.HAL3CameraTest_STILL_CAPTURE:  hal3.StillCaptureTestConfig,
+	cameraboxpb.HAL3CameraTest_STREAM:         hal3.StreamTestConfig,
+	cameraboxpb.HAL3CameraTest_FACE_DETECTION: hal3.FaceDetectionTestConfig,
 }
 
 func (c *HAL3Service) RunTest(ctx context.Context, req *cameraboxpb.RunTestRequest) (_ *cameraboxpb.RunTestResponse, retErr error) {
@@ -56,6 +59,19 @@ func (c *HAL3Service) RunTest(ctx context.Context, req *cameraboxpb.RunTestReque
 		cfg.CameraFacing = "front"
 	default:
 		return nil, errors.Errorf("unsupported facing: %v", req.Facing.String())
+	}
+	for _, pair := range strings.Split(req.ExtendedParams, ",") {
+		key, err := strconv.Atoi(strings.Split(pair, "=")[0])
+		if err != nil {
+			return nil, errors.Errorf("test parameter is not integer: %v", key)
+		}
+		value := strings.Split(pair, "=")[1]
+		switch key {
+		case int(cameraboxpb.HAL3ExtendedParams_ExpectedNumFaces):
+			cfg.ExpectedNumFaces = value
+		default:
+			return nil, errors.Errorf("unsupported test parameter: %v", key)
+		}
 	}
 	cfg.CameraHALs = []string{}
 
