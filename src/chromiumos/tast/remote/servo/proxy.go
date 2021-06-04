@@ -8,12 +8,15 @@ import (
 	"context"
 	"fmt"
 	"net"
+	"os"
 	"strconv"
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
@@ -190,3 +193,41 @@ func (p *Proxy) Close(ctx context.Context) {
 
 // Servo returns the proxy's encapsulated Servo object.
 func (p *Proxy) Servo() *Servo { return p.svo }
+
+// RunCommand execs a command as the root user.
+func (p *Proxy) RunCommand(ctx context.Context, name string, args ...string) error {
+	if p.hst == nil {
+		sudoargs := append([]string{name}, args...)
+		testing.ContextLog(ctx, "Running sudo ", sudoargs)
+		return testexec.CommandContext(ctx, "sudo", sudoargs...).Run(testexec.DumpLogOnError)
+	}
+	return p.hst.Command(name, args...).Run(ctx, ssh.DumpLogOnError)
+}
+
+// OutputCommand execs a command as the root user and returns stdout
+func (p *Proxy) OutputCommand(ctx context.Context, name string, args ...string) ([]byte, error) {
+	if p.hst == nil {
+		sudoargs := append([]string{name}, args...)
+		testing.ContextLog(ctx, "Running sudo ", sudoargs)
+		return testexec.CommandContext(ctx, "sudo", sudoargs...).Output(testexec.DumpLogOnError)
+	}
+	return p.hst.Command(name, args...).Output(ctx, ssh.DumpLogOnError)
+}
+
+// GetFile copies a remote file to a local file
+func (p *Proxy) GetFile(ctx context.Context, remoteFile, localFile string) error {
+	if p.hst == nil {
+		cmd := testexec.CommandContext(ctx, "sudo", "cat", remoteFile)
+		outFile, err := os.OpenFile(localFile, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
+		if err != nil {
+			return errors.Wrap(err, "could not create local file")
+		}
+		cmd.Stdout = outFile
+		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+			outFile.Close()
+			return err
+		}
+		return outFile.Close()
+	}
+	return linuxssh.GetFile(ctx, p.hst, remoteFile, localFile)
+}
