@@ -32,6 +32,8 @@ type TestConfig struct {
 	ConnectToCameraService bool
 	// PortraitModeTestData is the portrait mode test data to be downloaded.
 	PortraitModeTestData string
+	// Extended test parameters. The format is "id1=value1,id2=value2,..."
+	ExtendedParams string
 }
 
 // DeviceTestConfig returns test config for running HAL3Device test.
@@ -133,6 +135,14 @@ func PortraitModeTestConfig(generatePerfLog bool, portraitModeTestFile string) T
 func StillCaptureZSLTestConfig() TestConfig {
 	return TestConfig{
 		GtestFilter:            "Camera3StillCaptureTest/Camera3SimpleStillCaptureTest.TakePictureZslTest/*",
+		ConnectToCameraService: true,
+	}
+}
+
+// FaceDetectionTestConfig returns test config for running Camera3FaceDetection test.
+func FaceDetectionTestConfig() TestConfig {
+	return TestConfig{
+		GtestFilter:            "*Camera3FaceDetection*",
 		ConnectToCameraService: true,
 	}
 }
