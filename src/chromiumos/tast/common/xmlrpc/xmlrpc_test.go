@@ -347,7 +347,8 @@ func TestUnpack(t *testing.T) {
 	}
 
 	arrIntIn := []int{1, 2}
-	params, err := newParams([]interface{}{"rutabaga", true, 1, -3.14, arrIntIn})
+	strMapIn := map[string]string{"One": "1", "Two": "2"}
+	params, err := newParams([]interface{}{"rutabaga", true, 1, -3.14, arrIntIn, strMapIn})
 	if err != nil {
 		t.Fatal("creating params: ", err)
 	}
@@ -357,7 +358,8 @@ func TestUnpack(t *testing.T) {
 	var intOut int
 	var floatOut float64
 	var arrIntOut []int
-	if err := resp.unpack([]interface{}{&stringOut, &boolOut, &intOut, &floatOut, &arrIntOut}); err != nil {
+	strMapOut := make(map[string]string)
+	if err := resp.unpack([]interface{}{&stringOut, &boolOut, &intOut, &floatOut, &arrIntOut, &strMapOut}); err != nil {
 		t.Fatal("unpacking:", err)
 	}
 	if stringOut != "rutabaga" {
@@ -374,6 +376,9 @@ func TestUnpack(t *testing.T) {
 	}
 	if !reflect.DeepEqual(arrIntIn, arrIntOut) {
 		t.Errorf("unpacking %v: got %v", arrIntIn, arrIntOut)
+	}
+	if !reflect.DeepEqual(strMapIn, strMapOut) {
+		t.Errorf("unpacking %v: got %v", strMapIn, strMapOut)
 	}
 }
 
