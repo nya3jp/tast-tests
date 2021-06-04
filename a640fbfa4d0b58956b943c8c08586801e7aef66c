@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17f4326f_a29b8b0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-04T02:00:59Z",
+      "side": 1,
+      "message": "lgtm",
+      "parentUuid": "684b606b_7dd56fb8",
+      "revId": "a640fbfa4d0b58956b943c8c08586801e7aef66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0f5086a_5cea195c",
