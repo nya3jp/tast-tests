@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d829d9e6_b1061484",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-04T22:52:51Z",
+      "side": 1,
+      "message": "If you want this to run in another automated suite, you\u0027ll need to add another attr, like firmware-smoke. See the firmware-smoke scheduling at: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/labpack/files/server/site_tests/tast/control.firmware-smoke\n\nI think it would be more appropriate to create a firmware-ec attribute and control file.",
+      "revId": "300a37de1930b8148ec59f7fbed0918b968d6764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
