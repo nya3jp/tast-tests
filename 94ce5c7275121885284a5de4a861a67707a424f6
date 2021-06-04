@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1438b409_9e2a3693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-04T22:47:21Z",
+      "side": 1,
+      "message": "Ran all the CB\u003c-\u003ePhone tests locally a bunch of times before and after my CL to get average run times.\n\nAll contacts tests are failing for me locally before and after the CL so happy enough that I haven\u0027t broken anything here",
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
