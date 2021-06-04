@@ -6,10 +6,9 @@ package arc
 
 import (
 	"context"
-	"path/filepath"
 	"time"
 
-	"chromiumos/tast/errors"
+	"chromiumos/tast/ctxutil"
 	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
@@ -55,27 +54,23 @@ func TitleBar(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-
-	s.Log("Starting screen recording")
-	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to create ScreenRecorder: ", err)
-	}
-	defer func() {
-		screenRecorder.Stop(ctx)
-		if s.HasError() {
-			s.Log(ctx, "Saving screen record to %s", s.OutDir())
-			if err := screenRecorder.SaveInString(ctx, filepath.Join(s.OutDir(), "screen_record.txt")); err != nil {
-				s.Fatal("Failed to save screen record in string: ", err)
-			}
-			if err := screenRecorder.SaveInBytes(ctx, filepath.Join(s.OutDir(), "screen_record.webm")); err != nil {
-				s.Fatal("Failed to save screen record in bytes: ", err)
-			}
-		}
-		screenRecorder.Release(ctx)
-	}()
-	screenRecorder.Start(ctx, tconn)
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get : ", err)
+	}
+
+	// Force Chrome to be in clamshell mode, where title bar buttons are visible.
+	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to get : ", err)
+	}
+	// Restore tablet mode to its original state on exit.
+	defer ash.SetTabletModeEnabled(cleanupCtx, tconn, tabletModeEnabled)
 
 	act, err := arc.NewActivity(a, pkgName, cls)
 	if err != nil {
@@ -94,22 +89,16 @@ func TitleBar(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
 	defer d.Close(ctx)
+
+	info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+	if err != nil {
+		s.Fatal("Failed to get App Window Info: ", err)
+	}
+
 	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonMaximizeAndRestore | ash.CaptionButtonClose
 
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		// Get activity's window info.
-		info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
-		if err != nil {
-			return errors.Wrapf(err, "failed to ARC window infomation for package name %s", pkgName)
-		}
-
-		if info.CaptionButtonEnabledStatus != wanted {
-			return errors.Errorf("Wanted %s got %s", wanted.String(), info.CaptionButtonEnabledStatus.String())
-		}
-		return nil
-
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Fatal("Caption button check failed : ", err)
+	if info.CaptionButtonEnabledStatus != wanted {
+		s.Fatalf("Wanted %s got %s", wanted.String(), info.CaptionButtonEnabledStatus.String())
 	}
 
 	ui := uiauto.New(tconn)
