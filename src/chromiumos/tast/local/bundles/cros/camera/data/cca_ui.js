@@ -104,6 +104,18 @@ window.Tast = class Tast {
   }
 
   /**
+   * Returns the child amount of target HTML element.
+   * @return {number}
+   */
+  static getChildCount(selector) {
+    const element = document.querySelector(selector);
+    if (element === null) {
+      return -1;
+    }
+    return element.childElementCount;
+  }
+
+  /**
    * @return {string}
    */
   static getStyle(selector, attribute) {

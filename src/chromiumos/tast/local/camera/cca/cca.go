@@ -230,6 +230,9 @@ var (
 	// RetakeButton is the button to retake the document photo.
 	RetakeButton = UIComponent{"retake document photo button", []string{
 		"#retake-document"}}
+	// DocumentScannerOverlay is the overlay that CCA used to draw document corners on.
+	DocumentScannerOverlay = UIComponent{"document scanner overlay", []string{
+		"#preview-document-corner-overlay"}}
 )
 
 // ResolutionType is different capture resolution type.
@@ -611,6 +614,19 @@ func (a *App) MaximizeWindow(ctx context.Context) error {
 // FullscreenWindow fullscreens the window.
 func (a *App) FullscreenWindow(ctx context.Context) error {
 	return a.conn.Eval(ctx, "Tast.fullscreenWindow()", nil)
+}
+
+// ChildCount returns the child count of the target element.
+func (a *App) ChildCount(ctx context.Context, ui UIComponent) (int, error) {
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return -1, errors.Wrapf(err, "failed to get the selector of UI: %v", ui.Name)
+	}
+	var childCount int
+	if err := a.conn.Call(ctx, &childCount, "Tast.getChildCount", selector); err != nil {
+		return -1, errors.Wrapf(err, "failed to get the child count of UI: %v", ui.Name)
+	}
+	return childCount, nil
 }
 
 // GetNumOfCameras returns number of camera devices.
