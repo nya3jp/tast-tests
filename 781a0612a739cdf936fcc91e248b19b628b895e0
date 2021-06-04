@@ -33,6 +33,23 @@
       "message": "LGTM!",
       "revId": "781a0612a739cdf936fcc91e248b19b628b895e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a93bd385_05c0112e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-04T16:51:11Z",
+      "side": 1,
+      "message": "Thanks Hiroki. Adding tast-owners for official approval.",
+      "revId": "781a0612a739cdf936fcc91e248b19b628b895e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
