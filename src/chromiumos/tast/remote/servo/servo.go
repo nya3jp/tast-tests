@@ -9,9 +9,6 @@ package servo
 
 import (
 	"context"
-	"fmt"
-	"strconv"
-	"strings"
 
 	"chromiumos/tast/common/xmlrpc"
 	"chromiumos/tast/errors"
@@ -40,11 +37,7 @@ const (
 // New creates a new Servo object for communicating with a servod instance.
 // connSpec holds servod's location, either as "host:port" or just "host"
 // (to use the default port).
-func New(ctx context.Context, connSpec string) (*Servo, error) {
-	host, port, err := parseConnSpec(connSpec)
-	if err != nil {
-		return nil, err
-	}
+func New(ctx context.Context, host string, port int) (*Servo, error) {
 	s := &Servo{xmlrpc: xmlrpc.New(host, port)}
 
 	// Ensure Servo is set up properly before returning.
@@ -54,8 +47,7 @@ func New(ctx context.Context, connSpec string) (*Servo, error) {
 // Default creates a Servo object for communicating with a local servod
 // instance using the default port.
 func Default(ctx context.Context) (*Servo, error) {
-	connSpec := fmt.Sprintf("%s:%d", servodDefaultHost, servodDefaultPort)
-	return New(ctx, connSpec)
+	return New(ctx, servodDefaultHost, servodDefaultPort)
 }
 
 // verifyConnectivity sends and verifies an echo request to make sure
@@ -73,29 +65,6 @@ func (s *Servo) verifyConnectivity(ctx context.Context) error {
 	}
 
 	return nil
-}
-
-// parseConnSpec parses a connection host:port string and returns the
-// components.
-func parseConnSpec(c string) (host string, port int, err error) {
-	if len(c) == 0 {
-		return "", 0, errors.New("got empty string")
-	}
-
-	parts := strings.Split(c, ":")
-	if len(parts) == 1 {
-		// If no port, return default port.
-		return parts[0], servodDefaultPort, nil
-	}
-	if len(parts) == 2 {
-		port, err = strconv.Atoi(parts[1])
-		if err != nil {
-			return "", 0, errors.Errorf("got invalid port int in spec %q", c)
-		}
-		return parts[0], port, nil
-	}
-
-	return "", 0, errors.Errorf("got invalid connection spec %q", c)
 }
 
 // Close performs Servo cleanup.
