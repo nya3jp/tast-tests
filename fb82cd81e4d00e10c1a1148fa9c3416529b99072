@@ -33,6 +33,24 @@
       "message": "Test history looks okay.\n\nThe only concern is network.ConfigureServiceForUserProfile.guest, but I assume the issue was fixed at 14010.0.0.\nhttps://tastboard.corp.google.com/test/network.ConfigureServiceForUserProfile.guest\n",
       "revId": "fb82cd81e4d00e10c1a1148fa9c3416529b99072",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fa86268_3f9cca93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2021-06-04T07:46:41Z",
+      "side": 1,
+      "message": "Yes, the regression was fixed, I ran the test successfully.",
+      "parentUuid": "596d730d_7ee7045f",
+      "revId": "fb82cd81e4d00e10c1a1148fa9c3416529b99072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
