@@ -109,6 +109,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34835bb3_187fd72d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-06-04T14:51:15Z",
+      "side": 1,
+      "message": "I see. On the one hand that does make sense. On the other hand testing.Poll has an explicit Timeout property, so I\u0027m not sure what the \"right\" way to do this is. I think that the advantage to the explicit timeout here is that it is immediately clear when the test fails in the testing.Poll, vs. a context timeout that happened to occur while waiting for a connect.",
+      "parentUuid": "550185c4_c5fcee3b",
+      "range": {
+        "startLine": 191,
+        "startChar": 17,
+        "endLine": 191,
+        "endChar": 44
+      },
+      "revId": "2cd10b8e9a3da0b70210706dbb1b31c21d8af3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f70af1c8_016bd7cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_inhibited.go",
         "patchSetId": 1
@@ -156,6 +180,24 @@
       "side": 1,
       "message": "OK. Maybe we can move this back down later if we rarely see things take more than e.g. 3 minutes or so, but that\u0027s not important right now.",
       "parentUuid": "5c1c3a1c_bdab06e8",
+      "revId": "2cd10b8e9a3da0b70210706dbb1b31c21d8af3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b718d6a0_fa5e0d04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_inhibited.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-06-04T14:51:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1492d956_a3aeab88",
       "revId": "2cd10b8e9a3da0b70210706dbb1b31c21d8af3ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
