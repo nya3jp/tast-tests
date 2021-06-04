@@ -27,6 +27,7 @@ enum HAL3CameraTest {
   RECORDING = 7;
   STILL_CAPTURE = 8;
   STREAM = 9;
+  FACE_DETECTION = 10;
 }
 
 message RunTestRequest {
@@ -34,6 +35,8 @@ message RunTestRequest {
   HAL3CameraTest test = 1;
   // Facing of camera to be tested.
   Facing facing = 2;
+  // Extended test parameters. The format is "id1=value1,id2=value2,..."
+  string extended_params = 3;
 }
 
 enum TestResult {
