@@ -227,6 +227,41 @@ func (s *Servo) IsServoV4(ctx context.Context) (bool, error) {
 	return strings.HasPrefix(version, "servo_v4"), nil
 }
 
+// EnableCCD checks if the servo has CCD, and switches to it for dual mode V4.
+// Returns true if the servo was put into CCD mode, false if the servo doesn't support CCD,
+// and err if there was a problem communicating with the servo.
+func (s *Servo) EnableCCD(ctx context.Context) (bool, error) {
+	// Check ccd_state == on (Suzy-Q/Servo v4)
+	if hasCCDState, err := s.HasControl(ctx, "ccd_state"); err != nil {
+		return false, err
+	} else if hasCCDState {
+		if ccdState, err := s.GetString(ctx, "ccd_state"); err != nil {
+			return false, err
+		} else if ccdState == "on" {
+			testing.ContextLog(ctx, "Servo has CCD: ccd_state:on")
+			return true, nil
+		}
+	}
+	// Check active_dut_controller == ccd_cr50
+	// Then try setting active_dut_controller:ccd_cr50
+	if hasADC, err := s.HasControl(ctx, "active_dut_controller"); err != nil {
+		return false, err
+	} else if hasADC {
+		if adc, err := s.GetString(ctx, "active_dut_controller"); err != nil {
+			return false, err
+		} else if adc == "ccd_cr50" {
+			testing.ContextLog(ctx, "Servo has CCD: active_dut_controller:ccd_cr50")
+			return true, nil
+		}
+		if err := s.SetString(ctx, "active_dut_controller", "ccd_cr50"); err != nil {
+			return false, err
+		}
+		testing.ContextLog(ctx, "Servo has CCD: set active_dut_controller to ccd_cr50")
+		return true, nil
+	}
+	return false, nil
+}
+
 // GetServoV4Type gets the version of Servo v4 being used, or V4TypeNA if Servo is not v4.
 func (s *Servo) GetServoV4Type(ctx context.Context) (V4TypeValue, error) {
 	if s.v4Type != "" {
