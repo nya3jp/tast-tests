@@ -233,6 +233,13 @@ func newValue(in interface{}) (value, error) {
 	case float64:
 		f := float64ToXMLDouble(v)
 		return value{Double: &f}, nil
+	case map[string]string:
+		var s xmlStruct
+		for key, obj := range v {
+			str := obj
+			s.Members = append(s.Members, member{Name: key, Value: value{Str: &str}})
+		}
+		return value{Struct: &s}, nil
 	}
 
 	return value{}, errors.Errorf("%q is not a supported type for newValue", reflect.TypeOf(in))
@@ -367,6 +374,17 @@ func unpackValue(val value, out interface{}) error {
 				return err
 			}
 			*o = append(*o, i)
+		}
+	case *map[string]string:
+		if val.Struct == nil {
+			return errors.Errorf("value %s is not a map", val)
+		}
+		for _, e := range val.Struct.Members {
+			var i string
+			if err := unpackValue(e.Value, &i); err != nil {
+				return err
+			}
+			(*o)[e.Name] = i
 		}
 	default:
 		return errors.Errorf("%q is not a supported type for unpackValue", reflect.TypeOf(out))
