@@ -45,8 +45,13 @@ type SectionInfo struct {
 
 // Image represents the content and sections of a firmware image.
 type Image struct {
-	data     []byte
-	sections map[ImageSection]SectionInfo
+	Data     []byte
+	Sections map[ImageSection]SectionInfo
+}
+
+// NewImageFromData creates an Image object from an in memory image.
+func NewImageFromData(data []byte, sections map[ImageSection]SectionInfo) *Image {
+	return &Image{data, sections}
 }
 
 // NewImage creates an Image object representing the currently loaded BIOS image.
@@ -65,7 +70,7 @@ func NewImage(ctx context.Context) (*Image, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "could not dump_fmap on firmware host image")
 	}
-	info, err := parseSections(string(fmap))
+	info, err := ParseSections(string(fmap))
 	if err != nil {
 		return nil, errors.Wrap(err, "could not parse dump_fmap output")
 	}
@@ -114,11 +119,11 @@ func (i *Image) WriteFlashrom(ctx context.Context, sec ImageSection) error {
 	}
 	defer os.Remove(imgTmp.Name())
 
-	if err := ioutil.WriteFile(imgTmp.Name(), i.data, 0644); err != nil {
+	if err := ioutil.WriteFile(imgTmp.Name(), i.Data, 0644); err != nil {
 		return errors.Wrap(err, "writing image contents to tmpfile")
 	}
 
-	layData := i.getLayout()
+	layData := i.GetLayout()
 
 	layTmp, err := ioutil.TempFile("", "")
 	if err != nil {
@@ -137,8 +142,8 @@ func (i *Image) WriteFlashrom(ctx context.Context, sec ImageSection) error {
 	return nil
 }
 
-// parseSections extracts section names and locations from dump_fmap output.
-func parseSections(fmap string) (map[ImageSection]SectionInfo, error) {
+// ParseSections extracts section names and locations from dump_fmap output.
+func ParseSections(fmap string) (map[ImageSection]SectionInfo, error) {
 	ret := make(map[ImageSection]SectionInfo)
 	for _, line := range strings.Split(fmap, "\n") {
 		// dump_fmap output line format: <section> <start pos> <length>
@@ -183,16 +188,16 @@ func calcGBBBits(curr, clear, set uint32) uint32 {
 
 // readSectionData returns interpreted data of a given size from raw bytes at the specified location.
 func (i *Image) readSectionData(sec ImageSection, off, sz uint, out interface{}) error {
-	si, ok := i.sections[sec]
+	si, ok := i.Sections[sec]
 	if !ok {
 		return errors.Errorf("Section %s not found", sec)
 	}
 	beg := si.Start + off
 	end := si.Start + off + sz
-	if len(i.data) < int(end) {
-		return errors.Errorf("Data length too short: %d (<=%d)", len(i.data), end)
+	if len(i.Data) < int(end) {
+		return errors.Errorf("Data length too short: %d (<=%d)", len(i.Data), end)
 	}
-	b := i.data[beg:end]
+	b := i.Data[beg:end]
 	r := bytes.NewReader(b)
 	return binary.Read(r, binary.LittleEndian, out)
 }
@@ -204,24 +209,24 @@ func (i *Image) writeSectionData(sec ImageSection, off uint, data interface{}) e
 		return errors.Wrap(err, "could not parse section start")
 	}
 
-	si, ok := i.sections[sec]
+	si, ok := i.Sections[sec]
 	if !ok {
 		return errors.Errorf("Section %s not found", sec)
 	}
 	bb := buf.Bytes()
 	beg := si.Start + off
-	if len(i.data) <= int(beg) {
-		return errors.Errorf("Data length too short: %v (<=%v)", len(i.data), beg)
+	if len(i.Data) <= int(beg) {
+		return errors.Errorf("Data length too short: %v (<=%v)", len(i.Data), beg)
 	}
-	d := append(i.data[0:beg], bb...)
-	i.data = append(d, i.data[beg+uint(len(bb)):]...)
+	d := append(i.Data[0:beg], bb...)
+	i.Data = append(d, i.Data[beg+uint(len(bb)):]...)
 	return nil
 }
 
-// getLayout gets the section locations of all the ones we care about into a flashrom friendly format.
-func (i *Image) getLayout() []byte {
+// GetLayout gets the section locations of all the ones we care about into a flashrom friendly format.
+func (i *Image) GetLayout() []byte {
 	var data []string
-	for name, info := range i.sections {
+	for name, info := range i.Sections {
 		layoutName, ok := defaultChromeosFmapConversion[name]
 		if !ok {
 			continue

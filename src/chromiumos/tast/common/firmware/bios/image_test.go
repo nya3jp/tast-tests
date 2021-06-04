@@ -59,7 +59,7 @@ func TestCalcGBBBits(t *testing.T) {
 }
 
 func TestReadSectionData(t *testing.T) {
-	s := map[ImageSection]SectionInfo{GBBImageSection: SectionInfo{1, 16}}
+	s := map[ImageSection]SectionInfo{GBBImageSection: {1, 16}}
 	i := Image{[]byte{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4}, s}
 	var flag uint32
 	err := i.readSectionData(GBBImageSection, 12, 4, &flag)
@@ -72,7 +72,7 @@ func TestReadSectionData(t *testing.T) {
 }
 
 func TestWriteSectionData(t *testing.T) {
-	s := map[ImageSection]SectionInfo{GBBImageSection: SectionInfo{1, 16}}
+	s := map[ImageSection]SectionInfo{GBBImageSection: {1, 16}}
 	i := Image{[]byte{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18}, s}
 
 	var flag uint32
@@ -82,7 +82,7 @@ func TestWriteSectionData(t *testing.T) {
 	}
 
 	var got [18]byte
-	copy(got[:], i.data[:])
+	copy(got[:], i.Data[:])
 
 	want := [18]byte{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 18}
 
@@ -92,7 +92,7 @@ func TestWriteSectionData(t *testing.T) {
 }
 
 func TestShortGBBSection(t *testing.T) {
-	s := map[ImageSection]SectionInfo{GBBImageSection: SectionInfo{0, 15}}
+	s := map[ImageSection]SectionInfo{GBBImageSection: {0, 15}}
 	i := Image{[]byte{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4}, s}
 	var flag uint32
 	err := i.readSectionData(GBBImageSection, 12, 4, &flag)
@@ -102,7 +102,7 @@ func TestShortGBBSection(t *testing.T) {
 }
 
 func TestGetGBBFlags(t *testing.T) {
-	s := map[ImageSection]SectionInfo{GBBImageSection: SectionInfo{1, 16}}
+	s := map[ImageSection]SectionInfo{GBBImageSection: {1, 16}}
 	i := Image{[]byte{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x01, 0x01, 0, 0, 0xff}, s}
 	cf, sf, err := i.GetGBBFlags()
 	if err != nil {
@@ -129,7 +129,7 @@ func TestClearAndSetGBBFlags(t *testing.T) {
 	copy(dataSlice[0:13], beforeBytes[:])
 	copy(dataSlice[17:18], afterBytes[:])
 
-	s := map[ImageSection]SectionInfo{GBBImageSection: SectionInfo{1, 16}}
+	s := map[ImageSection]SectionInfo{GBBImageSection: {1, 16}}
 	i := Image{dataSlice, s}
 
 	if err := i.ClearAndSetGBBFlags([]pb.GBBFlag{}, []pb.GBBFlag{pb.GBBFlag_DEV_SCREEN_SHORT_DELAY, pb.GBBFlag_FORCE_DEV_BOOT_FASTBOOT_FULL_CAP}); err != nil {
@@ -175,8 +175,8 @@ func TestClearAndSetGBBFlags(t *testing.T) {
 	var resBeforeBytes [13]byte
 	var resAfterBytes [1]byte
 
-	copy(resBeforeBytes[:], i.data[:13])
-	copy(resAfterBytes[:], i.data[17:])
+	copy(resBeforeBytes[:], i.Data[:13])
+	copy(resAfterBytes[:], i.Data[17:])
 
 	if resBeforeBytes != beforeBytes {
 		t.Fatalf("bytes before GBB header changed, got %v, want %v", resBeforeBytes, beforeBytes)
@@ -187,10 +187,10 @@ func TestClearAndSetGBBFlags(t *testing.T) {
 }
 
 func TestGetLayout(t *testing.T) {
-	s := map[ImageSection]SectionInfo{GBBImageSection: SectionInfo{1, 16}}
+	s := map[ImageSection]SectionInfo{GBBImageSection: {1, 16}}
 	i := Image{[]byte{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4}, s}
 	expectedLayout := "0x00000001:0x00000010 FV_GBB\n"
-	layout := string(i.getLayout())
+	layout := string(i.GetLayout())
 	if layout != expectedLayout {
 		t.Fatalf("unexpected layout, want %s, got %s", expectedLayout, layout)
 	}
