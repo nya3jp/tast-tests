@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07906919_68e93bd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 63
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-04T08:55:34Z",
+      "side": 1,
+      "message": "Hello Judy and Alex, I split the CUJ test into four smaller CLs for review. You can review one by one but I\u0027ll assign all the CLs to you as reviewers all together. Thanks in advance for your effort.",
+      "revId": "cffee08a73897f1bbf710d1cfb853c3b81a672cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
