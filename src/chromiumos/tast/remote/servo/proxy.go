@@ -8,12 +8,15 @@ import (
 	"context"
 	"fmt"
 	"net"
+	"os"
 	"strconv"
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
@@ -196,5 +199,94 @@ func (p *Proxy) Close(ctx context.Context) {
 	}
 }
 
+func (p *Proxy) isLocal() bool {
+	return p.hst == nil
+}
+
+func (p *Proxy) isClosed() bool {
+	return p.svo == nil
+}
+
 // Servo returns the proxy's encapsulated Servo object.
 func (p *Proxy) Servo() *Servo { return p.svo }
+
+// RunCommand execs a command on the servo host, optionally as root.
+func (p *Proxy) RunCommand(ctx context.Context, asRoot bool, name string, args ...string) error {
+	if p.isClosed() {
+		return errors.New("connection to servo is closed")
+	}
+	if p.isLocal() {
+		if asRoot {
+			sudoargs := append([]string{name}, args...)
+			testing.ContextLog(ctx, "Running sudo ", sudoargs)
+			return testexec.CommandContext(ctx, "sudo", sudoargs...).Run(testexec.DumpLogOnError)
+		}
+		return testexec.CommandContext(ctx, name, args...).Run(testexec.DumpLogOnError)
+	}
+	return p.hst.Command(name, args...).Run(ctx, ssh.DumpLogOnError)
+}
+
+// OutputCommand execs a command as the root user and returns stdout
+func (p *Proxy) OutputCommand(ctx context.Context, asRoot bool, name string, args ...string) ([]byte, error) {
+	if p.isClosed() {
+		return nil, errors.New("connection to servo is closed")
+	}
+	if p.isLocal() {
+		if asRoot {
+			sudoargs := append([]string{name}, args...)
+			testing.ContextLog(ctx, "Running sudo ", sudoargs)
+			return testexec.CommandContext(ctx, "sudo", sudoargs...).Output(testexec.DumpLogOnError)
+		}
+		return testexec.CommandContext(ctx, name, args...).Output(testexec.DumpLogOnError)
+	}
+	return p.hst.Command(name, args...).Output(ctx, ssh.DumpLogOnError)
+}
+
+// GetFile copies a servo host file to a local file
+func (p *Proxy) GetFile(ctx context.Context, asRoot bool, remoteFile, localFile string) error {
+	if p.isClosed() {
+		return errors.New("connection to servo is closed")
+	}
+	if p.isLocal() {
+		if asRoot {
+			// This is effectively copying the file from root to the user running the test.
+			cmd := testexec.CommandContext(ctx, "sudo", "cat", remoteFile)
+			outFile, err := os.OpenFile(localFile, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
+			if err != nil {
+				return errors.Wrap(err, "could not create local file")
+			}
+			cmd.Stdout = outFile
+			if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+				outFile.Close()
+				return err
+			}
+			return outFile.Close()
+		}
+		return testexec.CommandContext(ctx, "cp", remoteFile, localFile).Run(testexec.DumpLogOnError)
+	}
+	return linuxssh.GetFile(ctx, p.hst, remoteFile, localFile)
+}
+
+// PutFiles copies a local file to a servo host file
+func (p *Proxy) PutFiles(ctx context.Context, asRoot bool, fileMap map[string]string) error {
+	if p.isClosed() {
+		return errors.New("connection to servo is closed")
+	}
+	if p.isLocal() {
+		for l, r := range fileMap {
+			if asRoot {
+				testing.ContextLog(ctx, "Running sudo cp ", l, r)
+				if err := testexec.CommandContext(ctx, "sudo", "cp", l, r).Run(testexec.DumpLogOnError); err != nil {
+					return err
+				}
+			} else {
+				if err := testexec.CommandContext(ctx, "cp", l, r).Run(testexec.DumpLogOnError); err != nil {
+					return err
+				}
+			}
+		}
+		return nil
+	}
+	_, err := linuxssh.PutFiles(ctx, p.hst, fileMap, linuxssh.DereferenceSymlinks)
+	return err
+}
