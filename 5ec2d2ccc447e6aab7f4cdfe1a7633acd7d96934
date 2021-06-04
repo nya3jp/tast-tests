@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b31c733a_f038810e",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-04T22:54:09Z",
+      "side": 1,
+      "message": "nit: this seems to be a holdover from pasting the GetString docstring. please update",
+      "range": {
+        "startLine": 289,
+        "startChar": 40,
+        "endLine": 289,
+        "endChar": 60
+      },
+      "revId": "5ec2d2ccc447e6aab7f4cdfe1a7633acd7d96934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
