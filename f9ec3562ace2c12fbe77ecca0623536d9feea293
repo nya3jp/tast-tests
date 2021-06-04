@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33551802_2d598757",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-04T22:56:14Z",
+      "side": 1,
+      "message": "Fascinating. We should remove the corresponding code from Tauto, whence I stole this logic.",
+      "revId": "f9ec3562ace2c12fbe77ecca0623536d9feea293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a12cc1_ac5f1ae1",
+        "filename": "src/chromiumos/tast/remote/servo/ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-04T22:56:14Z",
+      "side": 1,
+      "message": "These changes appear to be unrelated.",
+      "revId": "f9ec3562ace2c12fbe77ecca0623536d9feea293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
