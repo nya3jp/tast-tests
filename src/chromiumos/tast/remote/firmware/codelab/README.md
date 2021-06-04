@@ -255,7 +255,8 @@ func Codelab(ctx context.Context, s *testing.State) {
 	...
 	// Set up Servo
 	dut := s.DUT()
-	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), dut.KeyFile(), dut.KeyDir())
+	servoSpec, _ := s.Var("servo")
+	pxy, err := servo.NewProxy(ctx, servoSpec, dut.KeyFile(), dut.KeyDir())
 	if err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
@@ -398,7 +399,8 @@ At the start of your test body, initialize a `firmware.Helper`. The [`NewHelper`
 
 ```go
 func Codelab(ctx context.Context, s *testing.State) {
-	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), s.RequiredVar("servo"))
+	servoSpec, _ := s.Var("servo")
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec)
 	defer h.Close(ctx)
 	...
 }
@@ -454,7 +456,8 @@ Next, let's use our `Helper` to create a Servo.
 
 	// Set up Servo
 	dut := s.DUT()
-	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), dut.KeyFile(), dut.KeyDir())
+	servoSpec, _ := s.Var("servo")
+	pxy, err := servo.NewProxy(ctx, servoSpec, dut.KeyFile(), dut.KeyDir())
 	if err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
@@ -617,7 +620,8 @@ The `Pre` has a built-in `Helper`, so we don't need to create our own. Let's rep
 
 ```go
 	// OLD
-	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), s.RequiredVar("servo"))
+	servoSpec, _ := s.Var("servo")
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec)
 	defer h.Close(ctx)
 
 	// NEW

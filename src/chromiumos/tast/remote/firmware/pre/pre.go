@@ -121,7 +121,8 @@ func (i *impl) Timeout() time.Duration {
 // initHelper ensures that the impl has a working Helper instance.
 func (i *impl) initHelper(ctx context.Context, s *testing.PreState) {
 	if i.v.Helper == nil {
-		i.v.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), s.RequiredVar("servo"))
+		servoSpec, _ := s.Var("servo")
+		i.v.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec)
 	}
 }
 
