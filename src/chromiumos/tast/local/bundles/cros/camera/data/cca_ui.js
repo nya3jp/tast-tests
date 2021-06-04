@@ -104,6 +104,18 @@ window.Tast = class Tast {
   }
 
   /**
+   * Returns if the class name contains in the target HTML element.
+   * @return {bool}
+   */
+  static hasClass(selector, className) {
+    const element = document.querySelector(selector);
+    if (element === null) {
+      return false;
+    }
+    return element.classList.contains(className);
+  }
+
+  /**
    * @return {string}
    */
   static getStyle(selector, attribute) {
