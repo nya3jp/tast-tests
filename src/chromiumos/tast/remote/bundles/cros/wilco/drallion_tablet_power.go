@@ -52,7 +52,8 @@ func DrallionTabletPower(ctx context.Context, s *testing.State) {
 
 	// This is expected to fail in VMs, since Servo is unusable there and the "servo" var won't
 	// be supplied. https://crbug.com/967901 tracks finding a way to skip tests when needed.
-	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), d.KeyFile(), d.KeyDir())
+	servoSpec, _ := s.Var("servo")
+	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
 	if err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
