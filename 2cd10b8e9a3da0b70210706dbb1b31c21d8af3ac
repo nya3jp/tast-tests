@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "550185c4_c5fcee3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-04T14:38:28Z",
+      "side": 1,
+      "message": "I meant you get a shortened context and then pass that in, and that acts as the timeout. Here we can get timed out in this function in two separate ways.\n\nI think it\u0027s kind of a YMMV thing though. Feel free to ignore if you think that\u0027s less obvious.",
+      "parentUuid": "c9153075_b9364801",
+      "range": {
+        "startLine": 191,
+        "startChar": 17,
+        "endLine": 191,
+        "endChar": 44
+      },
+      "revId": "2cd10b8e9a3da0b70210706dbb1b31c21d8af3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f70af1c8_016bd7cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_inhibited.go",
         "patchSetId": 1
@@ -114,6 +138,24 @@
       "side": 1,
       "message": "That\u0027s a possibility, in which case we may need to lengthen the test timeout or shorten the test, but I am hoping that we are just barely taking \u003e 2 minutes.",
       "parentUuid": "f70af1c8_016bd7cd",
+      "revId": "2cd10b8e9a3da0b70210706dbb1b31c21d8af3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1492d956_a3aeab88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_inhibited.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-04T14:38:28Z",
+      "side": 1,
+      "message": "OK. Maybe we can move this back down later if we rarely see things take more than e.g. 3 minutes or so, but that\u0027s not important right now.",
+      "parentUuid": "5c1c3a1c_bdab06e8",
       "revId": "2cd10b8e9a3da0b70210706dbb1b31c21d8af3ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
