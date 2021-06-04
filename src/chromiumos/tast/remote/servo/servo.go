@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/common/xmlrpc"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // Servo holds the servod connection information.
@@ -107,4 +108,23 @@ func (s *Servo) Close(ctx context.Context) error {
 		}
 	}
 	return nil
+}
+
+// CCDDep returns a Hardware dep which skips the test if the Servo doesn't have CCD
+func CCDDep() hwdep.Condition {
+	return hwdep.Condition{SatisfiedRuntime: func(ctx context.Context, s hwdep.RuntimeState) (string, error) {
+		dut := s.DUT()
+		servoSpec, _ := s.Var("servo")
+		pxy, err := NewProxy(ctx, servoSpec, dut.KeyFile(), dut.KeyDir())
+		if err != nil {
+			return "", errors.Wrap(err, "connecting to servo")
+		}
+		servo := pxy.Servo()
+		if ccd, err := servo.EnableCCD(ctx); err != nil {
+			return "", errors.Wrap(err, "failed to enable CCD")
+		} else if !ccd {
+			return "Servo does not have CCD", nil
+		}
+		return "", nil
+	}}
 }
