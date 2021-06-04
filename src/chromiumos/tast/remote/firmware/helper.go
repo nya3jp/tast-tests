@@ -214,9 +214,6 @@ func (h *Helper) RequireServo(ctx context.Context) error {
 	if h.Servo != nil {
 		return nil
 	}
-	if h.servoHostPort == "" {
-		return errors.New(`got empty servoHostPort; want s.RequiredVar("servo")`)
-	}
 	pxy, err := servo.NewProxy(ctx, h.servoHostPort, h.DUT.KeyFile(), h.DUT.KeyDir())
 	if err != nil {
 		return errors.Wrap(err, "connecting to servo")
