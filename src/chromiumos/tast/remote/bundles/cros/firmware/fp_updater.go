@@ -99,7 +99,8 @@ func flashOldRWFirmware(ctx context.Context, s *testing.State, d *dut.DUT) error
 func FpUpdater(ctx context.Context, s *testing.State) {
 	d := s.DUT()
 
-	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), d.KeyFile(), d.KeyDir())
+	servoSpec, _ := s.Var("servo")
+	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
 	if err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
