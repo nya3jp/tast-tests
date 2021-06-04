@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3062cc3d_6097ee94",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-04T22:59:08Z",
+      "side": 1,
+      "message": "Please document the meaning of the return value. I think it represents whether CCD was successfully enabled.",
+      "range": {
+        "startLine": 229,
+        "startChar": 48,
+        "endLine": 229,
+        "endChar": 52
+      },
+      "revId": "43ef68d035485ff92f001b41d054ee139897e554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
