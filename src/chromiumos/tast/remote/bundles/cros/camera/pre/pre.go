@@ -27,7 +27,14 @@ func newDataChartPre(name, path string) *chartPre {
 	return &chartPre{name: name, path: path}
 }
 
+var documentScene = newDataChartPre("document_scene", "document_scene.jpg")
+
 var dataChartScene = newDataChartPre("cts_portrait_scene", "third_party/cts_portrait_scene.jpg")
+
+// DocumentScene returns test precondition for displaying a document image on chart tablet.
+func DocumentScene() *chartPre {
+	return documentScene
+}
 
 // DataChartScene returns test precondition for displaying default test scene on chart tablet.
 func DataChartScene() *chartPre {
