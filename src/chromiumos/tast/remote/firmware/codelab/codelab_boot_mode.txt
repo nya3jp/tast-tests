@@ -34,7 +34,8 @@ func init() {
 
 // CodelabBootMode demonstrates switching the DUT's boot-mode.
 func CodelabBootMode(ctx context.Context, s *testing.State) {
-	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), s.RequiredVar("servo"))
+	servoSpec, _ := s.Var("servo")
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec)
 	defer h.Close(ctx)
 
 	r := h.Reporter

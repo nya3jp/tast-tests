@@ -90,7 +90,8 @@ func IntegratedU2F(ctx context.Context, s *testing.State) {
 	}
 
 	// Connect to servo.
-	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), s.DUT().KeyFile(), s.DUT().KeyDir())
+	servoSpec, _ := s.Var("servo")
+	pxy, err := servo.NewProxy(ctx, servoSpec, s.DUT().KeyFile(), s.DUT().KeyDir())
 	if err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
 	}

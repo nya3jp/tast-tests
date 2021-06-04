@@ -42,7 +42,8 @@ func FWTries(ctx context.Context, s *testing.State) {
 			return
 		}
 		s.Log("DUT not connected at end-of-test. Cold-resetting")
-		pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), d.KeyFile(), d.KeyDir())
+		servoSpec, _ := s.Var("servo")
+		pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
 		if err != nil {
 			s.Fatal("Failed to connect to servo: ", err)
 		}

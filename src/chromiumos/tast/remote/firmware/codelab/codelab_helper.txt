@@ -33,7 +33,8 @@ func init() {
 
 // CodelabHelper demonstrates using a firmware.Helper to manage remote firmware structures.
 func CodelabHelper(ctx context.Context, s *testing.State) {
-	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), s.RequiredVar("servo"))
+	servoSpec, _ := s.Var("servo")
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec)
 	defer h.Close(ctx)
 
 	r := h.Reporter

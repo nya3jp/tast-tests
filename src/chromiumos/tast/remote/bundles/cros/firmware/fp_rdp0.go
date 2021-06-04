@@ -40,7 +40,8 @@ func init() {
 
 func FpRDP0(ctx context.Context, s *testing.State) {
 	// Set both HW and SW write protect to false to get RDP0 state.
-	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), s.RequiredVar("servo"), s.RPCHint(), s.OutDir(), false, false)
+	servoSpec, _ := s.Var("servo")
+	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), servoSpec, s.RPCHint(), s.OutDir(), false, false)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
