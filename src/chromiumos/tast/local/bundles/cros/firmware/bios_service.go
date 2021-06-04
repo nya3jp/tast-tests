@@ -10,8 +10,8 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/firmware/bios"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/firmware/bios"
 	pb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
 )
