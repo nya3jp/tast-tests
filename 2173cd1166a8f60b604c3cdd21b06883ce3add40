@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c296861_dca8bbe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-04T03:56:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9176e6f_7721c078",
+      "range": {
+        "startLine": 147,
+        "startChar": 8,
+        "endLine": 147,
+        "endChar": 12
+      },
+      "revId": "2173cd1166a8f60b604c3cdd21b06883ce3add40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "affff390_3af8d0f4",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-24T12:49:45Z",
       "side": 1,
       "message": "defined",
+      "range": {
+        "startLine": 158,
+        "startChar": 55,
+        "endLine": 158,
+        "endChar": 61
+      },
+      "revId": "2173cd1166a8f60b604c3cdd21b06883ce3add40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed3a497b_63709ea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-04T03:56:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "affff390_3af8d0f4",
       "range": {
         "startLine": 158,
         "startChar": 55,
