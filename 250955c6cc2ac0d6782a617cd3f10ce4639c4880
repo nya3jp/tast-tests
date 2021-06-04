@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc2291b5_4bb2a786",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-vhost-user-net-test.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-04T10:20:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "204c1ce0_bd0a83ed",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dc682c1_e1d46021",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22bdccb9_19616623",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-vhost-user-net-test.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-04T10:20:04Z",
+      "side": 1,
+      "message": "Done.\nI want shellcheck to have caught this. I guess Google style guide is stricter than shellcheck?",
+      "parentUuid": "3dc682c1_e1d46021",
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4076933f_6e0d43e8",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-06-02T13:45:56Z",
       "side": 1,
       "message": "This value is a system constant. It might be more interesting to print the value of device.Ifname here.",
+      "range": {
+        "startLine": 52,
+        "startChar": 59,
+        "endLine": 52,
+        "endChar": 68
+      },
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1adeb149_95a29ac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-04T10:20:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4076933f_6e0d43e8",
       "range": {
         "startLine": 52,
         "startChar": 59,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f36c5a43_77400c53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-04T10:20:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5642211_bd6f1fa3",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 16
+      },
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68a6e111_c2aa306e",
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71b6125c_0f993b53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-04T10:20:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68a6e111_c2aa306e",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 17
+      },
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c148cbe_fe5c9b6d",
@@ -140,6 +254,30 @@
       "writtenOn": "2021-06-02T13:45:56Z",
       "side": 1,
       "message": "Note that the type IP is just a []byte. You can use https://golang.org/pkg/encoding/binary/#ByteOrder to create the IP value directly from the BE int32 representation.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 98
+      },
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f0c48eb_9cf2758d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-04T10:20:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c148cbe_fe5c9b6d",
       "range": {
         "startLine": 128,
         "startChar": 0,
@@ -245,6 +383,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a054dc83_df785273",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-04T10:20:04Z",
+      "side": 1,
+      "message": "Ack. Added a TODO comment.",
+      "parentUuid": "01f58d67_740347e7",
+      "range": {
+        "startLine": 130,
+        "startChar": 31,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "792038f6_5321ab0b",
@@ -262,6 +424,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8adbf12_819b66bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-04T10:20:04Z",
+      "side": 1,
+      "message": "Done. I changed to use \u0027server\u0027 and \u0027client\u0027 as \"prefixes\" because \"serverTap\" sounds better than \"tapServer\".",
+      "parentUuid": "792038f6_5321ab0b",
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29480688_c6f1b871",
@@ -275,6 +455,24 @@
       "writtenOn": "2021-06-03T05:43:56Z",
       "side": 1,
       "message": "Do the vms actually need vsock?  It doesn\u0027t look like anything in this test uses it.  Also, looking at vsock_cid_pool.cc in concierge it seems like we could pick a cid in the range 3-31 or \u003e8192 to guarantee no overlap with crostini/arcvm.",
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4a69961_5e803a8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-04T10:20:04Z",
+      "side": 1,
+      "message": "We don\u0027t use vsock, but cid is passed in to patchpanel. I think patchpanel uses cid to identify VMs. So, I\u0027m using cid as just a VM\u0027s ID independent from vsock.\n(Hugo, please correct me if I\u0027m wrong.)\n\nRegarding the range of cid, I don\u0027t understand the meaning of \"Reserve cids 3-31 for static vms\" in vsock_cid_pool.cc. What are \"static vms\"?\nAnyway, using 8193- should be safe. I updated the values and added a comment.",
+      "parentUuid": "29480688_c6f1b871",
       "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -302,6 +500,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c4f9ad_4af9f5af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-04T10:20:04Z",
+      "side": 1,
+      "message": "Good catch.\nI made it avoid using go routine here.",
+      "parentUuid": "d1c86859_fdfb31ed",
+      "range": {
+        "startLine": 195,
+        "startChar": 3,
+        "endLine": 195,
+        "endChar": 10
+      },
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3b93580_d025f866",
@@ -315,6 +537,24 @@
       "writtenOn": "2021-06-03T05:43:56Z",
       "side": 1,
       "message": "I don\u0027t feel that strongly about this but I wonder if having structured data rather than freeform text would be better for this option.",
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a6563a2_54c88044",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-04T10:20:04Z",
+      "side": 1,
+      "message": "Added sharedDirParam for this.\nWe may be able to have more structured one (e.g. enum of \"p9\" or \"fs\"), I think it\u0027s enough so far.",
+      "parentUuid": "d3b93580_d025f866",
       "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
