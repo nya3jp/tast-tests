@@ -33,7 +33,8 @@ func init() {
 }
 
 func FpRebootToRO(ctx context.Context, s *testing.State) {
-	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), s.RequiredVar("servo"), s.RPCHint(), s.OutDir(), true, true)
+	servoSpec, _ := s.Var("servo")
+	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), servoSpec, s.RPCHint(), s.OutDir(), true, true)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}

@@ -28,22 +28,25 @@ func init() {
 		Desc:     "Uses fluffy with the standard charger configuration to check that expected voltages are reached",
 		Contacts: []string{"aaboagye@chromium.org"},
 		Data:     []string{"fluffy_interop_std_config.json"},
-		Vars:     []string{"usbc.MaxPwrReqMW", "ServodPort", "ServodHost"},
+		Vars:     []string{"usbc.MaxPwrReqMW", "ServodPort", "ServodHost", "ServodSSHPort"},
 		// This test requires a specific setup and due to the availability of fluffy, is a manual test.
 	})
 }
 
 func FluffyInteropStd(c context.Context, s *testing.State) {
 	// Obtain the servod host and port if provided.
-	servodHost, ok := s.Var("ServodHost")
+	scfg, ok := s.Var("ServodHost")
 	if !ok {
-		servodHost = "localhost"
+		scfg = "localhost"
 	}
 	servodPort, ok := s.Var("ServodPort")
-	if !ok {
-		servodPort = "9999"
+	if ok {
+		scfg = fmt.Sprintf("%s:%s", scfg, servodPort)
 	}
-	scfg := fmt.Sprintf("%s:%s", servodHost, servodPort)
+	servodSSHPort, ok := s.Var("ServodSSHPort")
+	if ok {
+		scfg = fmt.Sprintf("%s:ssh:%s", scfg, servodSSHPort)
+	}
 
 	// Retrieve the maximum power that the DUT will request.
 	maxPwrReq := s.RequiredVar("usbc.MaxPwrReqMW")
