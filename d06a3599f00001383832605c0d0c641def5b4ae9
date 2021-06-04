@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8aa3c26_c5049552",
+        "filename": "src/chromiumos/tast/common/perf/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-06-04T02:16:40Z",
+      "side": 1,
+      "message": "I copied the variadic signature from the existing merge method. If we\u0027re making a `FromProto` method, maybe it should be the constructor `NewFromProto`?\n\nI don\u0027t think it\u0027s necessary, I just wanted it to match the existing merge call, which supports multiple Values, but only ever seems to be called with one: http://source/search?q\u003dlang:go%20file:%2Ftast%20%5C.Merge%5C(%20perf.Values",
+      "parentUuid": "4e15ea3f_95ccb00c",
+      "range": {
+        "startLine": 163,
+        "startChar": 17,
+        "endLine": 163,
+        "endChar": 28
+      },
+      "revId": "d06a3599f00001383832605c0d0c641def5b4ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2004db18_c052a30d",
         "filename": "src/chromiumos/tast/common/perf/perf.go",
         "patchSetId": 1
@@ -71,6 +95,30 @@
       "writtenOn": "2021-06-02T09:57:04Z",
       "side": 1,
       "message": "Let\u0027s name this agnostic to local/remote concepts. Maybe \"Proto\"?",
+      "range": {
+        "startLine": 389,
+        "startChar": 17,
+        "endLine": 389,
+        "endChar": 31
+      },
+      "revId": "d06a3599f00001383832605c0d0c641def5b4ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ee999d9_376adc3e",
+        "filename": "src/chromiumos/tast/common/perf/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-06-04T02:16:40Z",
+      "side": 1,
+      "message": "Yes, that\u0027s better.",
+      "parentUuid": "2004db18_c052a30d",
       "range": {
         "startLine": 389,
         "startChar": 17,
@@ -98,6 +146,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94e2f9d0_c5c5c47d",
+        "filename": "src/chromiumos/tast/services/cros/perf/values.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-06-04T02:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c33c98e6_144a751e",
+      "revId": "d06a3599f00001383832605c0d0c641def5b4ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c406021_c997074d",
@@ -111,6 +177,30 @@
       "writtenOn": "2021-06-02T09:57:04Z",
       "side": 1,
       "message": "nit: Looks a bit old :)",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d06a3599f00001383832605c0d0c641def5b4ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4716827b_44689624",
+        "filename": "src/chromiumos/tast/services/cros/perf/values.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-06-04T02:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c406021_c997074d",
       "range": {
         "startLine": 1,
         "startChar": 13,
@@ -144,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d55ead7b_61c2ad8e",
+        "filename": "src/chromiumos/tast/services/cros/perf/values.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-06-04T02:16:40Z",
+      "side": 1,
+      "message": "I just used the full path, hopefully tast.common.perf.perfpb isn\u0027t too long.",
+      "parentUuid": "092374fd_72e10a21",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "d06a3599f00001383832605c0d0c641def5b4ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d8e3396_dbc23e63",
@@ -167,6 +281,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0746d846_b1794c9e",
+        "filename": "src/chromiumos/tast/services/cros/perf/values.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-06-04T02:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d8e3396_dbc23e63",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "d06a3599f00001383832605c0d0c641def5b4ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b49d0a2f_baae6ecb",
@@ -180,6 +318,30 @@
       "writtenOn": "2021-06-02T09:57:04Z",
       "side": 1,
       "message": "I recommend unnesting these message/enum so that we can mention them in shorter names in Go code. Since we have a dedicated package for \"perf\", we need little care about name conflicts.",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "d06a3599f00001383832605c0d0c641def5b4ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f34977f_031e842e",
+        "filename": "src/chromiumos/tast/services/cros/perf/values.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-06-04T02:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b49d0a2f_baae6ecb",
       "range": {
         "startLine": 12,
         "startChar": 2,
