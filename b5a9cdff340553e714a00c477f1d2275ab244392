@@ -39,6 +39,30 @@
       },
       "revId": "b5a9cdff340553e714a00c477f1d2275ab244392",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21c4b121_a14abec1",
+        "filename": "src/chromiumos/tast/local/memory/zram_mm_stat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-06-04T02:17:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df0f35a3_32abbc69",
+      "range": {
+        "startLine": 74,
+        "startChar": 31,
+        "endLine": 74,
+        "endChar": 46
+      },
+      "revId": "b5a9cdff340553e714a00c477f1d2275ab244392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
