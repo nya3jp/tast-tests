@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dacadd3f_5ce68b8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-06-04T01:35:41Z",
+      "side": 1,
+      "message": "Matthew: thanks for the comments! You may want to take a look at the changes to implement your canvas-as-a-PNG suggestion.",
+      "revId": "02bc82dfc6e96c73616cad016fd180b4f0964992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
