@@ -6,9 +6,9 @@ package arc
 
 import (
 	"context"
-	"path/filepath"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
@@ -55,27 +55,23 @@ func TitleBar(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-
-	s.Log("Starting screen recording")
-	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to create ScreenRecorder: ", err)
-	}
-	defer func() {
-		screenRecorder.Stop(ctx)
-		if s.HasError() {
-			s.Log(ctx, "Saving screen record to %s", s.OutDir())
-			if err := screenRecorder.SaveInString(ctx, filepath.Join(s.OutDir(), "screen_record.txt")); err != nil {
-				s.Fatal("Failed to save screen record in string: ", err)
-			}
-			if err := screenRecorder.SaveInBytes(ctx, filepath.Join(s.OutDir(), "screen_record.webm")); err != nil {
-				s.Fatal("Failed to save screen record in bytes: ", err)
-			}
-		}
-		screenRecorder.Release(ctx)
-	}()
-	screenRecorder.Start(ctx, tconn)
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get : ", err)
+	}
+
+	// Force Chrome to be in clamshell mode, where title bar buttons are visible.
+	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to get : ", err)
+	}
+	// Restore tablet mode to its original state on exit.
+	defer ash.SetTabletModeEnabled(cleanupCtx, tconn, tabletModeEnabled)
 
 	act, err := arc.NewActivity(a, pkgName, cls)
 	if err != nil {
