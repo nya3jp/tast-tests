@@ -13,6 +13,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
@@ -26,6 +27,7 @@ import (
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
+	cameraboxpb "chromiumos/tast/services/cros/camerabox"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -170,6 +172,7 @@ type crosCameraTestConfig struct {
 	recordingParams      string // resolutions and fps to test in recording
 	perfLog              string // path to the performance log
 	portraitModeTestData string // test data for portrait mode test.
+	extendedParams       string // The format is "id1=value1,id2=value2,..."
 }
 
 // toArgs converts crosCameraTestConfig to a list of argument strings.
@@ -191,6 +194,17 @@ func (t *crosCameraTestConfig) toArgs() []string {
 	}
 	if t.portraitModeTestData != "" {
 		args = append(args, "--portrait_mode_test_data="+t.portraitModeTestData)
+	}
+	for _, pair := range strings.Split(t.extendedParams, ",") {
+		key, err := strconv.Atoi(strings.Split(pair, "=")[0])
+		if err != nil {
+			continue
+		}
+		value := strings.Split(pair, "=")[1]
+		switch key {
+		case int(cameraboxpb.HAL3ExtendedParams_ExpectedNumFaces):
+			args = append(args, "--expected_num_faces="+value)
+		}
 	}
 	return args
 }
