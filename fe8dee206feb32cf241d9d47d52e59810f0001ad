@@ -16,6 +16,395 @@
       "message": "PTAL",
       "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c9600aa_1953b12a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "Thanks for adding a test! I readdly wanted this to be tested.\nOverall approach looks good to me.",
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d04cfa40_9f75f0eb",
+        "filename": "android/ArcTtsTest/AndroidManifest.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "Use Chromium one instead of AOSP.",
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05f5b069_fe9a4cd0",
+        "filename": "android/ArcTtsTest/AndroidManifest.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "most ARC test app is under org.chromium.arc.testapp package. For consistency, I\u0027d use org.chromium.arc.testapp.tts.",
+      "range": {
+        "startLine": 18,
+        "startChar": 13,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae798b63_aac50647",
+        "filename": "android/ArcTtsTest/res/xml/tts_engine.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "I wonder if this file is actually needed.",
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65e61366_863a5802",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "Please format with a consistent (probably AOSP) style.",
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c934055_b1f92907",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "nit: it would be great if we can use java.nio packages instead of java.io if possible.\n\nFor example, java.nio.file.Files.write provides simpler API:\nhttps://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#write-java.nio.file.Path-byte:A-java.nio.file.OpenOption...-",
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c6f3acc_a075b460",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "do we need to override them?",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ce7a4f7_961ca9c7",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "Just curious, does it actually called? I\u0027m wondering if not returning some array containing \"eng\" won\u0027t make inconsistency.",
+      "range": {
+        "startLine": 39,
+        "startChar": 15,
+        "endLine": 39,
+        "endChar": 19
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a643a301_26a447c8",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "similar question as onGetLanguage().\nDon\u0027t we need to return LANG_AVAILABLE for eng language?",
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aec9b70f_7268e243",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "(optional suggestion) Can we validate callbacks as well?\n\nRegarding TTS, there are tree steps)\n1. Android -\u003e Chrome, sends voice information.\n2. Chrome -\u003e Android, requests speak.\n3. Android -\u003e Chrome, dispatches an event regarding speech\n\nIn the current CL, the first and the second one are tested. It would be great if we could verify the third one too.\n\nWhen Android SynthesisCallback is invoked, eventually an event should be delivered to chrome.tts TtsOptions.onEvent.",
+      "range": {
+        "startLine": 62,
+        "startChar": 12,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f0d4f9_e0ac0406",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "Why do we want to lover case it?",
+      "range": {
+        "startLine": 63,
+        "startChar": 43,
+        "endLine": 63,
+        "endChar": 57
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be5cc89b_e89ee0d7",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "nit: extract as a constant value",
+      "range": {
+        "startLine": 66,
+        "startChar": 48,
+        "endLine": 66,
+        "endChar": 63
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4acc3d6_5a5cce5b",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "how about using \"print\" instead of println? so that we don\u0027t need to trim in Golang side.",
+      "range": {
+        "startLine": 68,
+        "startChar": 14,
+        "endLine": 68,
+        "endChar": 21
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b5598ee_1e1a8bb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "TTS, instead of Tts: https://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nBTW, I wonder \"AccessibilityTts\" is an appropriate test name for this. TTS is not only for accessibility, although a11y is the primary usecase.\nHow about naming it TTS or TextToSpeech?",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c313882b_4ac5ed3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "maybe package instead of path?",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287f53cc_254eac12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "how about naming |speakText|?",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 6
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "539d450d_b9325336",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "I wonder if we can share some code for voice getting code with the general a11y package:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/a11y/a11y.go?l\u003d144-156\u0026rcl\u003dda83968091746a26aa610b4b4a0c5f12039c08f9",
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb8e6ae_0fe40236",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "nit: doesn\u0027t `string(actual)` work?",
+      "range": {
+        "startLine": 103,
+        "startChar": 37,
+        "endLine": 103,
+        "endChar": 54
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e13afc_6a6344a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/data/chrome_extension_manifest.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-04T07:57:35Z",
+      "side": 1,
+      "message": "do we need to change this?",
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
