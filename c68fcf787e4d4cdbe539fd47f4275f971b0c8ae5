@@ -16,6 +16,63 @@
       "message": "Thanks for the reivew! +tast-owners for approval",
       "revId": "c68fcf787e4d4cdbe539fd47f4275f971b0c8ae5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f528cf_dd9b8e17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-04T16:25:36Z",
+      "side": 1,
+      "message": "What do you think about changing this variable name to logFilePath to denote a full relative path is needed?",
+      "range": {
+        "startLine": 341,
+        "startChar": 60,
+        "endLine": 341,
+        "endChar": 67
+      },
+      "revId": "c68fcf787e4d4cdbe539fd47f4275f971b0c8ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b398be0_7e7e74c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-04T16:25:36Z",
+      "side": 1,
+      "message": "Should this return an error instead of just logging? Is it ok to write content to the log file if this returns an error? If not L237 - L245 should be wrapped in an else statement on line 235.",
+      "revId": "c68fcf787e4d4cdbe539fd47f4275f971b0c8ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d7b14f8_d52305d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-04T16:25:36Z",
+      "side": 1,
+      "message": "Should this be a s.Error instead so other clean up can occur? It looks like other deferred cleanups are just logging on L207 and L167, while L145 are using s.Error. It might be good to make these consistent through the test unless there is a reason to just log instead of error.",
+      "revId": "c68fcf787e4d4cdbe539fd47f4275f971b0c8ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
