@@ -1,0 +1,36 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.camerabox;
+
+import "common.proto";
+
+option go_package = "chromiumos/tast/services/cros/camerabox";
+
+// CCAService provides RPC methods to be used by CCA remote test.
+service CCAService {
+  // RunTest runs specific CCA camera test on target facing camera.
+  rpc RunTest(CCATestRequest) returns (CCATestResponse) {}
+}
+
+enum CCATest {
+  DOCUMENT_SCANNING = 0;
+}
+
+message CCATestRequest {
+  // Type of test to be run.
+  CCATest test = 1;
+  // Facing of camera to be tested.
+  Facing facing = 2;
+  // Script contents which should be loaded when initializing CCA instance.
+  repeated string script_contents = 3;
+}
+
+message CCATestResponse {
+  TestResult result = 1;
+  // Error message from running test.
+  string error = 2;
+}

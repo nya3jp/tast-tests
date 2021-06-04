@@ -39,14 +39,6 @@ message RunTestRequest {
   string extended_params = 3;
 }
 
-enum TestResult {
-  TEST_RESULT_UNSET = 0;
-  // Test is passed.
-  TEST_RESULT_PASSED = 1;
-  // Test is failed.
-  TEST_RESULT_FAILED = 2;
-}
-
 message RunTestResponse {
   TestResult result = 1;
   // Error message from running test.
