@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. common.proto hal3_service.proto alignment_service.proto its_service.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. common.proto hal3_service.proto alignment_service.proto its_service.proto cca_service.proto
 
 // Package camerabox provides all camerabox related types compiled from protobuf.
 package camerabox
