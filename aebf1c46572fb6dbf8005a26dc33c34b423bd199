@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ebd0402_c9a54c6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-04T00:21:35Z",
+      "side": 1,
+      "message": "This is CL is for adding test for the second approach of making runtime variables global accessible whether they are declared or not.",
+      "revId": "aebf1c46572fb6dbf8005a26dc33c34b423bd199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
