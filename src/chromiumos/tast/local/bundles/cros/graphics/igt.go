@@ -156,7 +156,7 @@ func init() {
 			Val: igtTest{
 				exe: "kms_flip",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout: 30 * time.Minute,
 		}, {
 			Name: "kms_flip_event_leak",
 			Val: igtTest{
