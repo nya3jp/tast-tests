@@ -42,7 +42,8 @@ func init() {
 // doesn't respond after being returned to the normal operating mode.
 // See https://source.chromium.org/search?q=file:flash_fp_mcu for behavior.
 func FpFlashFpMcuHello(ctx context.Context, s *testing.State) {
-	servop, err := servo.NewProxy(ctx, s.RequiredVar("servo"), s.DUT().KeyFile(), s.DUT().KeyDir())
+	servoSpec, _ := s.Var("servo")
+	servop, err := servo.NewProxy(ctx, servoSpec, s.DUT().KeyFile(), s.DUT().KeyDir())
 	if err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
