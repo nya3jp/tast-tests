@@ -218,6 +218,11 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 
 	if _, err := user.Lookup("missived"); err == nil {
 		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/reporting"), chk.Users("missived"), chk.Groups("missived"), chk.NotMode(022), chk.SkipChildren()))
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/reporting/Background"), chk.Users("missived"), chk.Groups("missived"), chk.NotMode(022), chk.SkipChildren()))
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/reporting/FastBatch"), chk.Users("missived"), chk.Groups("missived"), chk.NotMode(022), chk.SkipChildren()))
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/reporting/Immediate"), chk.Users("missived"), chk.Groups("missived"), chk.NotMode(022), chk.SkipChildren()))
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/reporting/Manual"), chk.Users("missived"), chk.Groups("missived"), chk.NotMode(022), chk.SkipChildren()))
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/reporting/SlowBatch"), chk.Users("missived"), chk.Groups("missived"), chk.NotMode(022), chk.SkipChildren()))
 	}
 
 	if _, err := user.Lookup("displaylink"); err == nil {
