@@ -238,6 +238,9 @@ var (
 	// RetakeButton is the button to retake the document photo.
 	RetakeButton = UIComponent{"retake document photo button", []string{
 		"#retake-document"}}
+	// DocumentScannerOverlay is the overlay that CCA used to draw document corners on.
+	DocumentScannerOverlay = UIComponent{"document scanner overlay", []string{
+		"#preview-document-corner-overlay"}}
 )
 
 // ResolutionType is different capture resolution type.
@@ -609,6 +612,19 @@ func (a *App) MaximizeWindow(ctx context.Context) error {
 // FullscreenWindow fullscreens the window.
 func (a *App) FullscreenWindow(ctx context.Context) error {
 	return a.conn.Eval(ctx, "Tast.fullscreenWindow()", nil)
+}
+
+// HasClass returns true if the given HTML element has the given class name.
+func (a *App) HasClass(ctx context.Context, ui UIComponent, className string) (bool, error) {
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to get the selector of UI: %v", ui.Name)
+	}
+	var result bool
+	if err := a.conn.Call(ctx, &result, "Tast.hasClass", selector, className); err != nil {
+		return false, errors.Wrapf(err, "failed to check class for UI: %v and class name: %v", ui.Name, className)
+	}
+	return result, nil
 }
 
 // GetNumOfCameras returns number of camera devices.
