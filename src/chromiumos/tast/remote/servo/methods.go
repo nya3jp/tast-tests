@@ -288,6 +288,15 @@ func (s *Servo) GetString(ctx context.Context, control StringControl) (string, e
 	return value, nil
 }
 
+// GetServoSerials returns a map of servo serial numbers. Interesting map keys are "ccd", "main", "servo_micro", but there are others also.
+func (s *Servo) GetServoSerials(ctx context.Context) (map[string]string, error) {
+	value := make(map[string]string)
+	if err := s.xmlrpc.Run(ctx, xmlrpc.NewCall("get_servo_serials"), &value); err != nil {
+		return map[string]string{}, errors.Wrap(err, "getting servo serials")
+	}
+	return value, nil
+}
+
 // parseQuotedStringInternal returns a new string with the quotes and escaped chars from `value` removed, moves `*index` to the index of the closing quote rune.
 func parseQuotedStringInternal(value []rune, index *int) (string, error) {
 	if *index >= len(value) {
