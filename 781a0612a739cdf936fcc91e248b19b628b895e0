@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd93a3eb_d41d9b2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-04T22:23:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5023fa9_264b1316",
+      "range": {
+        "startLine": 7,
+        "startChar": 54,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "781a0612a739cdf936fcc91e248b19b628b895e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cedaff9_0819d7fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-04T22:23:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e02bb5f9_4d977272",
+      "range": {
+        "startLine": 7,
+        "startChar": 55,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "781a0612a739cdf936fcc91e248b19b628b895e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d91d5393_352e2642",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-04T19:49:18Z",
       "side": 1,
       "message": "nit: please specify command you used to verify your CL, e.g.\n\n```\ntast run \u003cIP\u003e a11y.SpokenFeedback.*\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "781a0612a739cdf936fcc91e248b19b628b895e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67425323_933a970b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-04T22:23:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d91d5393_352e2642",
       "range": {
         "startLine": 15,
         "startChar": 5,
@@ -151,6 +223,30 @@
       "writtenOn": "2021-06-04T19:49:18Z",
       "side": 1,
       "message": "nit: typo: Failed",
+      "range": {
+        "startLine": 101,
+        "startChar": 11,
+        "endLine": 101,
+        "endChar": 16
+      },
+      "revId": "781a0612a739cdf936fcc91e248b19b628b895e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "397fc4c8_b0c37306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-04T22:23:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "279b3e5f_40ea59df",
       "range": {
         "startLine": 101,
         "startChar": 11,
