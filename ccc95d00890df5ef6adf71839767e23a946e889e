@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d608b81_072bcf67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/title_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-06-04T03:00:50Z",
+      "side": 0,
+      "message": "You should leave the polling as is as it\u0027s still useful to prevent flakiness.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 48
+      },
+      "revId": "ccc95d00890df5ef6adf71839767e23a946e889e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
