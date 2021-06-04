@@ -405,6 +405,24 @@
       "parentUuid": "9cf9ad08_a24db95d",
       "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e491b91_d1048077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-04T15:49:50Z",
+      "side": 1,
+      "message": "That looks much better, thanks!",
+      "parentUuid": "86c292b7_e6dbf61d",
+      "revId": "35c1b087468cc8313f0a3f2df191fa6195c9832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
