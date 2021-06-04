@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	pb "chromiumos/tast/services/cros/firmware"
+	"chromiumos/tast/testing"
 )
 
 // ImageSection is the name of sections supported by this package.
@@ -72,6 +73,77 @@ func NewImage(ctx context.Context) (*Image, error) {
 	data, err := ioutil.ReadFile(tmpFile.Name())
 	if err != nil {
 		return nil, errors.Wrap(err, "could not read firmware host image contents")
+	}
+	return &Image{data, info}, nil
+}
+
+// RemoteCommandRunner runs a command on the servo host. Normally this is the servo proxy.
+type RemoteCommandRunner interface {
+	// RunCommand execs a command as the root user.
+	RunCommand(ctx context.Context, name string, args ...string) error
+	// OutputCommand execs a command as the root user and returns stdout
+	OutputCommand(ctx context.Context, name string, args ...string) ([]byte, error)
+	// GetFile copies a remote file to a local file
+	GetFile(ctx context.Context, remoteFile, localFile string) error
+}
+
+// NewRemoteImage creates an Image object representing the currently loaded BIOS image. If you pass in a section, only that section will be read.
+func NewRemoteImage(ctx context.Context, runner RemoteCommandRunner, programmer string, section ImageSection) (*Image, error) {
+	var localTempFileName string
+	localTempFile, err := ioutil.TempFile("", "")
+	if err != nil {
+		return nil, errors.Wrap(err, "creating tmpfile for image contents")
+	}
+	localTempFileName = localTempFile.Name()
+	defer os.Remove(localTempFileName)
+	if err = localTempFile.Close(); err != nil {
+		return nil, errors.Wrap(err, "Closing local temp file")
+	}
+
+	var remoteTempFileName string
+	remoteTmpFile, err := runner.OutputCommand(ctx, "tempfile")
+	if err != nil {
+		return nil, errors.Wrap(err, "Creating remote temp file")
+	}
+	remoteTempFileName = strings.TrimSuffix(string(remoteTmpFile), "\n")
+	defer runner.RunCommand(ctx, "rm", "-f", remoteTempFileName)
+
+	testing.ContextLog(ctx, "Running flashrom (on servohost)")
+	frArgs := []string{"-p", programmer, "-r"}
+	if section != "" {
+		frArgs = append(frArgs, "-i", fmt.Sprintf("%s:%s", section, remoteTempFileName))
+	} else {
+		frArgs = append(frArgs, remoteTempFileName)
+	}
+	if err := runner.RunCommand(ctx, "flashrom", frArgs...); err != nil {
+		return nil, errors.Wrap(err, "could not read firmware host image")
+	}
+	testing.ContextLog(ctx, "Copying image from servohost to localhost")
+	if err := runner.GetFile(ctx, remoteTempFileName, localTempFileName); err != nil {
+		return nil, errors.Wrapf(err, "copy remote %s to local %s", localTempFileName, remoteTempFileName)
+	}
+
+	data, err := ioutil.ReadFile(localTempFileName)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not read firmware host image contents")
+	}
+	var info map[ImageSection]SectionInfo
+	if section == "" {
+		testing.ContextLog(ctx, "Running dump_fmap")
+		fmap, err := testexec.CommandContext(ctx, "dump_fmap", "-p", localTempFileName).Output(testexec.DumpLogOnError)
+		if err != nil {
+			return nil, errors.Wrap(err, "could not dump_fmap on firmware host image")
+		}
+		info, err = parseSections(string(fmap))
+		if err != nil {
+			return nil, errors.Wrap(err, "could not parse dump_fmap output")
+		}
+	} else {
+		info = make(map[ImageSection]SectionInfo)
+		info[section] = SectionInfo{
+			Start:  0,
+			Length: uint(len(data)),
+		}
 	}
 	return &Image{data, info}, nil
 }
