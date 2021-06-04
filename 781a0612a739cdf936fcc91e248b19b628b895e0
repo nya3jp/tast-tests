@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5023fa9_264b1316",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-04T19:49:18Z",
+      "side": 1,
+      "message": "nit: there are changes only to one test :)",
+      "range": {
+        "startLine": 7,
+        "startChar": 54,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "781a0612a739cdf936fcc91e248b19b628b895e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02bb5f9_4d977272",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-04T19:49:18Z",
+      "side": 1,
+      "message": "nit: remove\n\nhttps://chris.beams.io/posts/git-commit/\nAlso check other rules as well.",
+      "range": {
+        "startLine": 7,
+        "startChar": 55,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "781a0612a739cdf936fcc91e248b19b628b895e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d91d5393_352e2642",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-04T19:49:18Z",
+      "side": 1,
+      "message": "nit: please specify command you used to verify your CL, e.g.\n\n```\ntast run \u003cIP\u003e a11y.SpokenFeedback.*\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "781a0612a739cdf936fcc91e248b19b628b895e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4be96c1b_c19ba380",
@@ -48,6 +117,46 @@
       "writtenOn": "2021-06-04T16:51:11Z",
       "side": 1,
       "message": "Thanks Hiroki. Adding tast-owners for official approval.",
+      "revId": "781a0612a739cdf936fcc91e248b19b628b895e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cbcfd4e_63f9aaf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-04T19:49:18Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "781a0612a739cdf936fcc91e248b19b628b895e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "279b3e5f_40ea59df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-04T19:49:18Z",
+      "side": 1,
+      "message": "nit: typo: Failed",
+      "range": {
+        "startLine": 101,
+        "startChar": 11,
+        "endLine": 101,
+        "endChar": 16
+      },
       "revId": "781a0612a739cdf936fcc91e248b19b628b895e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
