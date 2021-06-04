@@ -128,6 +128,23 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	// lacrosStartedFromStateful is a fixture to bring up Lacros from the stateful partition.
+	// This does not require downloading a binary from Google Storage before the tests.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosStartedFromStateful",
+		Desc:     "Lacros Chrome from stateful partition",
+		Contacts: []string{"hidehiko@chromium.org", "lacros-team@google.com"},
+		Impl: NewStartedByData(Stateful, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.EnableFeatures("LacrosSupport"),
+				chrome.ExtraArgs("--lacros-selection=stateful"),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }
 
 const (
@@ -182,6 +199,8 @@ const (
 	Omaha
 	// Rootfs is used to force the rootfs version of lacros-chrome. No external data dependency is needed.
 	Rootfs
+	// Stateful is used to force the stateful version of lacros-chrome. No external data dependency is needed.
+	Stateful
 )
 
 // SetUp is called by tast before each test is run. We use this method to initialize
@@ -281,6 +300,10 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 		// When launched from the rootfs partition, the lacros-chrome is already located
 		// at /opt/google/lacros/lacros.squash in the OS, will be mounted at /run/lacros/.
 		f.lacrosPath = "/run/lacros"
+	case Stateful:
+		// When launched from the stateful partition, the lacros-chrome is already located
+		// at /usr/local/lacros-chrome.
+		f.lacrosPath = "/usr/local/lacros-chrome"
 	default:
 		s.Fatal("Unrecognized mode: ", f.mode)
 	}
