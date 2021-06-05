@@ -228,7 +228,7 @@ func attemptOptIn(ctx context.Context, username, password string, args []string,
 	// optin silently, but the Chrome arg "--arc-force-show-optin-ui" is
 	// used to simplify the unmanaged vs. managed flow.
 	testing.ContextLog(ctx, "Show optin UI and accept terms of service")
-	if err := optin.FindOptInExtensionPageAndAcceptTerms(ctx, cr, false); err != nil {
+	if err := optin.FindOptInExtensionPageAndAcceptTerms(ctx, cr, 1 /*maxAttempts*/, false /*wait*/); err != nil {
 		return false, errors.Wrap(err, "failed to find optin extension page")
 	}
 
