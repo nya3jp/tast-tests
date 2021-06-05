@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/syzcorpus/bin_kvm_x86_64_20210614.zip",
+  "size": 64822010,
+  "sha256sum": "aca9ca3b462ad8bf8911a1860d5e5dd0ef82be92d5bf88162377ac0ff7e2fd17"
+}
