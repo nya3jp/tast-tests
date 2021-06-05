@@ -16,6 +16,40 @@
       "message": "Ran all the CB\u003c-\u003ePhone tests locally a bunch of times before and after my CL to get average run times.\n\nAll contacts tests are failing for me locally before and after the CL so happy enough that I haven\u0027t broken anything here",
       "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39fd1c5f_d02be034",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-05T00:24:26Z",
+      "side": 1,
+      "message": "I tested it on my local setup, and all is good!\nhttps://paste.googleplex.com/6501039894167552\n(the 2 failures are known unrelated issue with CB-\u003ePhone contacts tests)",
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72610c23_54e81d5a",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-05T00:24:26Z",
+      "side": 1,
+      "message": "nit: period at the end",
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
