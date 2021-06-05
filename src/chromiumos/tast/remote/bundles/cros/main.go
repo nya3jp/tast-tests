@@ -29,6 +29,7 @@ import (
 	_ "chromiumos/tast/remote/bundles/cros/policy"
 	_ "chromiumos/tast/remote/bundles/cros/power"
 	_ "chromiumos/tast/remote/bundles/cros/security"
+	_ "chromiumos/tast/remote/bundles/cros/syzcorpus"
 	_ "chromiumos/tast/remote/bundles/cros/syzkaller"
 	_ "chromiumos/tast/remote/bundles/cros/typec"
 	_ "chromiumos/tast/remote/bundles/cros/ui"
