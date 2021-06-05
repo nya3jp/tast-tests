@@ -81,28 +81,29 @@ func waitForTerms(ctx context.Context, conn *chrome.Conn) error {
 	return nil
 }
 
-// loadTerms loads the optin dialog and waits for terms of service page to load.
-func loadTerms(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
+// waitForTermsWithRetry loads the optin dialog and waits for terms of service page to load.
+func waitForTermsWithRetry(ctx context.Context, conn *chrome.Conn, maxAttempts int) error {
 	attempts := 1
-	const maxAttempts = 2
 
 	for {
-		bgURL := chrome.ExtensionBackgroundPageURL(apps.PlayStore.ID)
-		conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to find optin extension page")
-		}
-
-		if err = waitForTerms(ctx, conn); err == nil {
-			return conn, nil
-		}
-
-		if attempts == maxAttempts {
-			return nil, err
+		err := waitForTerms(ctx, conn)
+		if err == nil {
+			return nil
+		} else if attempts >= maxAttempts {
+			return err
 		}
 
 		testing.ContextLogf(ctx, "Attempt %d, failed to load terms of service: %v", attempts, err)
 		attempts++
+
+		// Sleep briefly before retrying.
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			return errors.Wrap(err, "failed to sleep for optin re-attempt")
+		}
+
+		if err := conn.Eval(ctx, "appWindow.contentWindow.document.getElementById('button-retry').click()", nil); err != nil {
+			return errors.Wrap(err, "failed to press the retry button")
+		}
 	}
 }
 
@@ -128,14 +129,20 @@ func waitForOptin(ctx context.Context, conn *chrome.Conn) error {
 
 // FindOptInExtensionPageAndAcceptTerms finds the opt-in extension page, optins if verified,
 // and optionally waits for completion.
-func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome, wait bool) error {
-	conn, err := loadTerms(ctx, cr)
+func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome, maxAttempts int, wait bool) error {
+	bgURL := chrome.ExtensionBackgroundPageURL(apps.PlayStore.ID)
+	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
 	if err != nil {
-		return errors.Wrap(err, "failed to load terms of service")
+		return errors.Wrap(err, "failed to find optin extension page")
 	}
 	defer conn.Close()
 
-	if err = conn.Eval(ctx, "termsPage.onAgree()", nil); err != nil {
+	err = waitForTermsWithRetry(ctx, conn, maxAttempts)
+	if err != nil {
+		return errors.Wrap(err, "failed to load terms of service")
+	}
+
+	if err := conn.Eval(ctx, "termsPage.onAgree()", nil); err != nil {
 		return errors.Wrap(err, "failed to execute 'termsPage.onAgree()'")
 	}
 
@@ -153,7 +160,7 @@ func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) err
 
 	SetPlayStoreEnabled(ctx, tconn, true)
 
-	if err := FindOptInExtensionPageAndAcceptTerms(ctx, cr, true); err != nil {
+	if err := FindOptInExtensionPageAndAcceptTerms(ctx, cr, 2 /*maxAttempts*/, true /*wait*/); err != nil {
 		return err
 	}
 
