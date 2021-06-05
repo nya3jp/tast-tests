@@ -16,6 +16,103 @@
       "message": "The test is now moved to a separate file.\nPlease review.",
       "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ad485ba_484dfa37",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-05T00:26:26Z",
+      "side": 1,
+      "message": "My concern with this is kind of in the same vein as the ping test: this threshold doesn\u0027t really mean anything and depends on the duration of the netperf stream. Is there some kind of absolute value we can use instead (similar to ping packet loss)? Maybe TransactionErrors?",
+      "range": {
+        "startLine": 62,
+        "startChar": 77,
+        "endLine": 62,
+        "endChar": 80
+      },
+      "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24382d38_c4d65dcf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-05T00:26:26Z",
+      "side": 1,
+      "message": "EAP/none tests?",
+      "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b2ce734_53b7a5e9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-05T00:26:26Z",
+      "side": 1,
+      "message": "same comment as previous change (use second return value)",
+      "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2b45315_4aba89f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-05T00:26:26Z",
+      "side": 1,
+      "message": "nit: Throughput",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 17
+      },
+      "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38b938a0_72343b8d",
+        "filename": "src/chromiumos/tast/remote/network/netperf/continuous_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-05T00:26:26Z",
+      "side": 1,
+      "message": "I\u0027m not too familiar with the normal session code, but could we possibly just add an option to reuse the runner? Again, I don\u0027t know the code too well so if you say it makes more sense to add a new session type I\u0027ll take your word for it.",
+      "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
