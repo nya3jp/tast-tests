@@ -33,6 +33,24 @@
       "message": "You can use hwdep.NoX86() instead to skip this test on X86.",
       "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65df7612_5bffaf91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-06-07T18:25:24Z",
+      "side": 1,
+      "message": "Already tried using HardwareDeps: hwdep.D(hwdep.NoX86()). Observed that, it is skipping on other devices like eve, careena, helios. hwdep.NoX86() is looking for DUT CPU architecture not android architecture. Getting message as \" DUT\u0027s CPU is x86 compatible\". So hwdep.D(hwdep.NoX86()) couldn\u0027t be used here.\n\nAdditional Info: Please find the comment in the bug, https://b.corp.google.com/issues/181045525#comment9. Based on the comment, hwdep ABI is looking for useragent or Cros CPU info which is x86_64 for caroline, Nasher360, Eve, Careena, helios. Whereas android build for caroline, Nasher360 are x86. So hwdep.NoX86() couldn\u0027t be used here.",
+      "parentUuid": "6bec2101_ea3e9e91",
+      "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
