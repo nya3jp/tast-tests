@@ -7,6 +7,7 @@ package enterprise
 import (
 	"context"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -225,6 +226,9 @@ func waitForBlockUninstall(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, p
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		out, err := readPackageRestrictions(ctx, cr)
 		if err != nil {
+			if errors.Is(err, os.ErrNotExist) {
+				return errors.Wrap(err, "package-restrictions.xml does not exist yet")
+			}
 			return testing.PollBreak(errors.Wrap(err, "failed to read package-restrictions.xml"))
 		}
 
