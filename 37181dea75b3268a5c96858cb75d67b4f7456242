@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b55d4bd4_410879ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-07T17:04:29Z",
+      "side": 1,
+      "message": "I changed them to use HasClass() however, I am not sure about the regex request. \nYou mean something like:\n\u0027^(keyboard a11y-mode|bordered-key-mode)$\u0027\n\nTo match this or that node? \n\nI am slowly leaning to splitting the test as the crucial part is touch keyboards on tablet mode.\n\nI would leave the previous test as it was and mark hardware dependency on non tablet (no_tablet_form_factor) -\u003e we would make sure that every keyboard obeys policies values.\nAnd cover cases where touch keyboard is shown for TouchVirtualKeyboardEnabled value being unset on tablet devices (tablet_form_factor).",
+      "parentUuid": "7f2c2cc8_144b44df",
+      "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebc25c87_89b65f62",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
         "patchSetId": 1
@@ -72,6 +90,47 @@
         "endLine": 23,
         "endChar": 97
       },
+      "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "414a4458_a361d6e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-07T17:04:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebc25c87_89b65f62",
+      "range": {
+        "startLine": 23,
+        "startChar": 96,
+        "endLine": 23,
+        "endChar": 97
+      },
+      "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2418167f_bf302d09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-07T17:04:29Z",
+      "side": 1,
+      "message": "Is it clear why here is tablet mode touch keyboard and in line 75 virtual on-screen keyboard?",
       "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +196,30 @@
       "side": 1,
       "message": "Exactly, the description does not match.\nThe question is if the description is wrong, or the implementation. Judging from the name of the function the description is wrong, however the function then would be a bit superfluous as you can do exactly the same with WaitUntilGone (with uiauto.WithTimeout() you can create a context with custom timeout and use that in WaitUntilGone).\n\nEither way we need to use WaitUntilExists here or rewrite EnsureGoneFor (but then the name is not that great, it should be something like EnsureNotExists).\n\nMaybe put that on the Agenda for tomorrows tast forum.",
       "parentUuid": "b008187c_6429fe25",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 80
+      },
+      "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a6b569_8ec7d8cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-07T17:04:29Z",
+      "side": 1,
+      "message": "I see. IMHO the function implementation is incorrect. I picked it as it matches what we want -\u003e make sure withing specified timeout that the node won\u0027t appear (is gone). However, as pointed by Gabor EnsureGoneFor has the same implementation as WaitUntilGone but with custom timeout, the rest is the same.\n\nAnd agree with Alex\u0027s point -\u003e it should have a better name.",
+      "parentUuid": "b63d56a2_237a7919",
       "range": {
         "startLine": 207,
         "startChar": 0,
