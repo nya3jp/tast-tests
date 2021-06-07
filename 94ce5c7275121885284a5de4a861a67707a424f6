@@ -1,6 +1,167 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec0e87c_07a0f522",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-07T06:47:30Z",
+      "side": 1,
+      "message": "Column width for commit message: 72.",
+      "range": {
+        "startLine": 13,
+        "startChar": 71,
+        "endLine": 13,
+        "endChar": 73
+      },
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2c22193_c4db30d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-07T06:47:30Z",
+      "side": 1,
+      "message": "a GAIA",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca7c776f_c7d1c935",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-07T06:47:30Z",
+      "side": 1,
+      "message": "the relevant Chrome",
+      "range": {
+        "startLine": 16,
+        "startChar": 55,
+        "endLine": 16,
+        "endChar": 63
+      },
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1770bac0_d9dbcfb5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-07T06:47:30Z",
+      "side": 1,
+      "message": "Chrome OS and Android.",
+      "range": {
+        "startLine": 20,
+        "startChar": 12,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "536fbae5_eeb213ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-07T06:47:30Z",
+      "side": 1,
+      "message": "What does it mean? Please clearly describe the dependency relationship among fixtures.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 70
+      },
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fa55493_461aae6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-07T06:47:30Z",
+      "side": 1,
+      "message": "allows tests that need login share the same login session.",
+      "range": {
+        "startLine": 24,
+        "startChar": 14,
+        "endLine": 24,
+        "endChar": 72
+      },
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c194499_5568fee0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-07T06:47:30Z",
+      "side": 1,
+      "message": "The",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1438b409_9e2a3693",
@@ -31,6 +192,46 @@
       "writtenOn": "2021-06-05T00:24:26Z",
       "side": 1,
       "message": "I tested it on my local setup, and all is good!\nhttps://paste.googleplex.com/6501039894167552\n(the 2 failures are known unrelated issue with CB-\u003ePhone contacts tests)",
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3693ed3a_577335a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-07T06:47:30Z",
+      "side": 1,
+      "message": "First half.",
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fe5d918_bd6925b8",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android_fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-07T06:47:30Z",
+      "side": 1,
+      "message": "Set up",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 14
+      },
       "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
