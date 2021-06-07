@@ -601,6 +601,8 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, tconn *chrome.
 	// respect to the reference image.
 	samples := ColorSamplingPointsForStillColorsVideo(videoW, videoH)
 	p := perf.NewValues()
+	maxDistance := -1
+	maxDistancePoint := ""
 	for k, v := range samples {
 		// First convert the coordinates from video space to screenshot space.
 		videoX := v.X
@@ -612,13 +614,32 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, tconn *chrome.
 		expectedColor := refImg.At(videoX, videoY)
 		actualColor := img.At(screenX, screenY)
 		distance := ColorDistance(expectedColor, actualColor)
-		s.Logf("At %v (video space = (%d, %d), screen space = (%d, %d)): expected RGBA = %v; got RGBA = %v; distance = %d",
-			k, videoX, videoY, screenX, screenY, expectedColor, actualColor, distance)
+		if distance > maxDistance {
+			maxDistance = distance
+			maxDistancePoint = k
+		}
+		if distance != 0 {
+			s.Logf("At %v (video space = (%d, %d), screen space = (%d, %d)): expected RGBA = %v; got RGBA = %v; distance = %d",
+				k, videoX, videoY, screenX, screenY, expectedColor, actualColor, distance)
+		}
 		p.Set(perf.Metric{
 			Name:      k,
 			Unit:      "None",
 			Direction: perf.SmallerIsBetter,
 		}, float64(distance))
+	}
+
+	// The distance threshold was decided by analyzing the data reported above
+	// across many devices. It should ideally be smaller, but for now, it seems we
+	// have color space handling issues. Nonetheless, this threshold should be
+	// enough for detecting major video rendering issues. Note that:
+	//
+	// 1) We still report the distances as perf values so we can continue to
+	//    analyze and improve.
+	// 2) We don't bother to report a total distance if this threshold is exceeded
+	//    because it would just make email alerts very noisy.
+	if maxDistance > 100 {
+		return errors.Errorf("the color distance for %v = %d exceeds the threshold (100)", maxDistancePoint, maxDistance)
 	}
 
 	// Measurement 2:
