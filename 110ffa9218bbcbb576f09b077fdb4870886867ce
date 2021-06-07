@@ -71,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b64a9cec_43b3ada9",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18330,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-06-07T15:11:37Z",
+      "side": 1,
+      "message": "Please, don\u0027t change the entry for DataLeakPreventionReportingEnabled policy. There are 2 DLP policies there currently.\nYou need to add another one for DataLeakPreventionRulesList with a proper ID (see in policy_templates.json), like it\u0027s 856 for DataLeakPreventionReportingEnabled.\nAlso keep the ID order in this file.",
+      "parentUuid": "00c35e59_b3e31728",
+      "revId": "110ffa9218bbcbb576f09b077fdb4870886867ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffbb0b84_6f59d854",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_screenshot.go",
         "patchSetId": 1
@@ -82,6 +100,52 @@
       "writtenOn": "2021-06-07T10:13:14Z",
       "side": 1,
       "message": "Kindly overlook the formatting of parameter of test, Test is not working right so didn\u0027t changed it",
+      "revId": "110ffa9218bbcbb576f09b077fdb4870886867ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "409ebe3b_3127cf0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-06-07T15:11:37Z",
+      "side": 1,
+      "message": "destinations are not needed for SCREENSHOT restriction.",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 8
+      },
+      "revId": "110ffa9218bbcbb576f09b077fdb4870886867ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c797e87_badf461c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-06-07T15:11:37Z",
+      "side": 1,
+      "message": "Not sure I understand why in this policy screenshots should be blocked.\nIf I understand correctly the DLP policy value says that screenshots are only blocked when one of [\"salesforce.com\", \"gmail.com\", \"docs.google.com\", \"drive.google.com\", \"company.com\"] is visible on the screen. \nOn the other hand, here is the test nothing opens one of these pages.",
+      "range": {
+        "startLine": 154,
+        "startChar": 6,
+        "endLine": 154,
+        "endChar": 27
+      },
       "revId": "110ffa9218bbcbb576f09b077fdb4870886867ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
