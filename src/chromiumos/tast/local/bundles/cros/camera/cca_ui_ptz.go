@@ -268,6 +268,23 @@ func CCAUIPTZ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open ptz panel: ", err)
 	}
 
+	// Check cannot pan/tilt when zoom at initial level 0.
+	for _, control := range []ptzControl{
+		zoomOut,
+		panLeft,
+		panRight,
+		tiltUp,
+		tiltDown,
+	} {
+		disabled, err := app.Disabled(ctx, *control.ui)
+		if err != nil {
+			s.Fatalf("Failed to get disabled state of %v: %v", control.ui.Name, err)
+		}
+		if !disabled {
+			s.Fatalf("UI %v is not disabled at initial zoom level", control.ui.Name)
+		}
+	}
+
 	// Test move all controls. The controls need to be tested in order such
 	// that |zoomIn| before all other controls(For all other controls will
 	// be disabled in minimal zoom level as behavior of digital zoom
@@ -284,6 +301,22 @@ func CCAUIPTZ(ctx context.Context, s *testing.State) {
 	} {
 		if err := control.testToggle(ctx, app); err != nil {
 			s.Fatal("Failed: ", err)
+		}
+	}
+
+	// Check cannot pan/tilt when zoom reset to initial level 0.
+	if err := app.Click(ctx, cca.PTZResetAllButton); err != nil {
+		s.Fatal("Failed to reset ptz: ", err)
+	}
+	for _, control := range []ptzControl{
+		zoomOut,
+		panLeft,
+		panRight,
+		tiltUp,
+		tiltDown,
+	} {
+		if err := app.WaitForDisabled(ctx, *control.ui, true); err != nil {
+			s.Fatalf("Failed to wait for ui %v disabled : %v", control.ui.Name, err)
 		}
 	}
 }
