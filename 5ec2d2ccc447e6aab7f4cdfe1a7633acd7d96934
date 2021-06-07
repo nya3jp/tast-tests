@@ -22,6 +22,30 @@
       },
       "revId": "5ec2d2ccc447e6aab7f4cdfe1a7633acd7d96934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92869d9f_1706057e",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-07T17:43:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b31c733a_f038810e",
+      "range": {
+        "startLine": 289,
+        "startChar": 40,
+        "endLine": 289,
+        "endChar": 60
+      },
+      "revId": "5ec2d2ccc447e6aab7f4cdfe1a7633acd7d96934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
