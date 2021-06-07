@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c35e59_b3e31728",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18330,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-07T10:13:14Z",
+      "side": 1,
+      "message": "Changed the name because here: https://source.chromium.org/chromium/chromium/src/+/master:components/policy/resources/policy_templates.json;l\u003d24086;drc\u003d695ffe07105a5edcd41f3691c4586e14ec6c4a53\npolicy name was different",
+      "revId": "110ffa9218bbcbb576f09b077fdb4870886867ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffbb0b84_6f59d854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-07T10:13:14Z",
+      "side": 1,
+      "message": "Kindly overlook the formatting of parameter of test, Test is not working right so didn\u0027t changed it",
+      "revId": "110ffa9218bbcbb576f09b077fdb4870886867ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
