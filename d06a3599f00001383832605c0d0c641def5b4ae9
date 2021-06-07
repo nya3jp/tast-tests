@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9080745b_9723dd27",
+        "filename": "src/chromiumos/tast/common/perf/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-07T08:10:17Z",
+      "side": 1,
+      "message": "Yes, I meant that FromProto to be a constructor. NewFromProto sounds fine as well.\n\nThe currently proposed method MergeProto does two things: (X) conversion from perfpb.Values to perf.Values and (Y) merging multiple perf.Values. We already provide Y as Merge, so why don\u0027t we just provide X? It\u0027s simpler to provide X and Y, rather than Y and X+Y.",
+      "parentUuid": "c8aa3c26_c5049552",
+      "range": {
+        "startLine": 163,
+        "startChar": 17,
+        "endLine": 163,
+        "endChar": 28
+      },
+      "revId": "d06a3599f00001383832605c0d0c641def5b4ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2004db18_c052a30d",
         "filename": "src/chromiumos/tast/common/perf/perf.go",
         "patchSetId": 1
@@ -248,6 +272,30 @@
       "side": 1,
       "message": "I just used the full path, hopefully tast.common.perf.perfpb isn\u0027t too long.",
       "parentUuid": "092374fd_72e10a21",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "d06a3599f00001383832605c0d0c641def5b4ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2348cdd4_eccc63c5",
+        "filename": "src/chromiumos/tast/services/cros/perf/values.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-07T08:10:17Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "d55ead7b_61c2ad8e",
       "range": {
         "startLine": 7,
         "startChar": 8,
