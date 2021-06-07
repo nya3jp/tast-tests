@@ -16,6 +16,23 @@
       "message": "nya@, Here the test fails on x86 devices and model names are hardcoded to skip tests on those devices. Based on your comment on another CL adding you to this CL for suggestions.",
       "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bec2101_ea3e9e91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-07T08:32:55Z",
+      "side": 1,
+      "message": "You can use hwdep.NoX86() instead to skip this test on X86.",
+      "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
