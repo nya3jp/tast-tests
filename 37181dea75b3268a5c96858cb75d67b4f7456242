@@ -51,6 +51,52 @@
       "parentUuid": "b3824505_87d90f19",
       "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebc25c87_89b65f62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-07T14:26:30Z",
+      "side": 1,
+      "message": "nit: be",
+      "range": {
+        "startLine": 23,
+        "startChar": 96,
+        "endLine": 23,
+        "endChar": 97
+      },
+      "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d8ae972_5a57e37e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-07T14:26:30Z",
+      "side": 1,
+      "message": "Now that I look at this again I think this does not do what we actually want.\nif tc.wantedAllowVK is false a virtual keyboard shouldn\u0027t be opened at all.\nBut EnsureGoneFor will wait until it\u0027s gone.\n\nWhat we actually want is to check that it doesn\u0027t come to existence, so we\u0027d need to use WaitUntilExists again but this time we throw the error when it returns nil and let the test pass if it returns an error.",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 80
+      },
+      "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
