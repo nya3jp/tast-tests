@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9229c27f_2c71145c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-07T12:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "412f108d_476570b7",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "b3e107b8929cf6808df62a463aa62701470aa12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70c1b963_a6a6a7d6",
@@ -77,6 +101,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88370b86_0211f844",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-07T12:43:07Z",
+      "side": 1,
+      "message": "I moved the chrome handling inside the subtest, so I\u0027ll keep it as table driven test.",
+      "parentUuid": "70c1b963_a6a6a7d6",
+      "revId": "b3e107b8929cf6808df62a463aa62701470aa12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a126ea8f_0f669f3d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
         "patchSetId": 5
@@ -88,6 +130,30 @@
       "writtenOn": "2021-04-01T10:28:21Z",
       "side": 1,
       "message": "d",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 11
+      },
+      "revId": "b3e107b8929cf6808df62a463aa62701470aa12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a9f7880_6df0a2f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-07T12:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a126ea8f_0f669f3d",
       "range": {
         "startLine": 70,
         "startChar": 10,
@@ -121,6 +187,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "def655eb_a05d005e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-07T12:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3c326f3_46634485",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 11
+      },
+      "revId": "b3e107b8929cf6808df62a463aa62701470aa12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17c92394_10af33e9",
@@ -134,6 +224,30 @@
       "writtenOn": "2021-04-01T10:28:21Z",
       "side": 1,
       "message": "Is this required?",
+      "range": {
+        "startLine": 125,
+        "startChar": 110,
+        "endLine": 125,
+        "endChar": 113
+      },
+      "revId": "b3e107b8929cf6808df62a463aa62701470aa12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04f40544_da0158df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-07T12:43:07Z",
+      "side": 1,
+      "message": "No, just a residual from the previous remote test.",
+      "parentUuid": "17c92394_10af33e9",
       "range": {
         "startLine": 125,
         "startChar": 110,
