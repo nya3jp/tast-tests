@@ -15,6 +15,7 @@ import (
 	"io/ioutil"
 	"math"
 	"math/rand"
+	"net/url"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -223,7 +224,12 @@ func (d *differ) initialize(ctx context.Context) error {
 		"--passfail",
 	}
 
-	d.triage = fmt.Sprintf("https://%s-gold.skia.org/search?corpus=%s&left_filter=name_suffix=%s&test_group=%s&execution_id=%s&not_at_head=true", goldInstance, corpus, nameSuffix, d.state.TestName(), d.executionID)
+	v := url.Values{}
+	v.Set("corpus", corpus)
+	v.Set("left_filter", fmt.Sprintf("name_suffix=%s&test_group=%s&execution_id=%s", nameSuffix, d.state.TestName(), d.executionID))
+	v.Set("not_at_head", "true")
+
+	d.triage = fmt.Sprintf("https://%s-gold.skia.org/search?%s", goldInstance, v.Encode())
 
 	if strings.HasPrefix(release[lsbrelease.BuildType], "Continuous Builder") {
 		d.testMode = cq
