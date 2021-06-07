@@ -33,6 +33,24 @@
       "message": "These changes appear to be unrelated.",
       "revId": "f9ec3562ace2c12fbe77ecca0623536d9feea293",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "759fb44f_5258edf4",
+        "filename": "src/chromiumos/tast/remote/servo/ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-07T17:43:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04a12cc1_ac5f1ae1",
+      "revId": "f9ec3562ace2c12fbe77ecca0623536d9feea293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
