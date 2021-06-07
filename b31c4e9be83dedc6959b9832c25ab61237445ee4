@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc2451ac_1c6129b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-07T05:22:41Z",
+      "side": 1,
+      "message": "Mukai-san,\n\nI\u0027ve updated the CL.\nI wonder if this change makes it hard to migrate to uiauto package. Do we have any plan that migrates EventWatcher to uiauto packege?\n\nThank you!",
+      "revId": "b31c4e9be83dedc6959b9832c25ab61237445ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
