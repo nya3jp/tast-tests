@@ -20,7 +20,7 @@ func init() {
 		Func:        ServiceOutput,
 		Desc:        "Ensure OutDir works for gRPC services",
 		Contacts:    []string{"nya@chromium.org", "tast-owners@google.com"},
-		Attr:        []string{"group:mainline", "informational"},
+		Attr:        []string{"group:mainline"},
 		ServiceDeps: []string{"tast.cros.meta.FileOutputService"},
 	})
 }
