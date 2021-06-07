@@ -29,6 +29,20 @@ import (
 // The maximum number of USB Type C ports that a Chromebook supports.
 const maxTypeCPorts = 8
 
+// List of built-in Thunderbolt devices enumerated by the OS.
+var builtInTBTDevices = []string{"domain0", "domain1", "0-0", "1-0"}
+
+// BuiltInTBTDevice returns whether the specified name is a built-in Thunderbolt device or not.
+func BuiltInTBTDevice(name string) bool {
+	for _, device := range builtInTBTDevices {
+		if name == device {
+			return true
+		}
+	}
+
+	return false
+}
+
 // CheckTBTDevice is a helper function which checks for a TBT connected device.
 // |expected| specifies whether we want to check for the presence of a TBT device (true) or the
 // absence of one (false).
@@ -40,8 +54,7 @@ func CheckTBTDevice(expected bool) error {
 
 	found := ""
 	for _, file := range files {
-		// Check for non-built-in TBT devices.
-		if file.Name() == "domain0" || file.Name() == "0-0" {
+		if BuiltInTBTDevice(file.Name()) {
 			continue
 		}
 
