@@ -121,6 +121,30 @@
       },
       "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63d56a2_237a7919",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-07T15:17:15Z",
+      "side": 1,
+      "message": "Exactly, the description does not match.\nThe question is if the description is wrong, or the implementation. Judging from the name of the function the description is wrong, however the function then would be a bit superfluous as you can do exactly the same with WaitUntilGone (with uiauto.WithTimeout() you can create a context with custom timeout and use that in WaitUntilGone).\n\nEither way we need to use WaitUntilExists here or rewrite EnsureGoneFor (but then the name is not that great, it should be something like EnsureNotExists).\n\nMaybe put that on the Agenda for tomorrows tast forum.",
+      "parentUuid": "b008187c_6429fe25",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 80
+      },
+      "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
