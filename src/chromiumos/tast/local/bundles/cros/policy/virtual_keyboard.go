@@ -6,9 +6,9 @@ package policy
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -20,7 +20,7 @@ import (
 
 type vkTestCase struct {
 	name          string          // name is the subtest name.
-	wantedAllowVK bool            // wantedAllowVK describes if virtual keyboard is expected to to shown or not.
+	wantedAllowVK bool            // wantedAllowVK describes if virtual keyboard is expected to be shown or not.
 	policies      []policy.Policy // policies is the policies values.
 }
 
@@ -132,8 +132,8 @@ func init() {
 	})
 }
 
-// VirtualKeyboard applies VK related policies and uses browser's
-// address bar to bring it up. Then asserts according to expectations.
+// VirtualKeyboard applies VK related policies and uses browser's address bar
+// to bring the virtual keyboard up. Then asserts according to expectations.
 func VirtualKeyboard(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*fixtures.FixtData).Chrome
 	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
@@ -151,6 +151,20 @@ func VirtualKeyboard(ctx context.Context, s *testing.State) {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(
 				ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+tc.name)
+
+			// Get tablet mode state.
+			tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to get tablet mode state: ", err)
+			}
+
+			// Restore the tablet mode to the initial state.
+			defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+
+			// Set tablet mode to false - turn DUT to desktop mode.
+			if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+				s.Fatal("Failed to set tablet mode enabled to false: ", err)
+			}
 
 			// Reset Chrome.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
@@ -172,19 +186,16 @@ func VirtualKeyboard(ctx context.Context, s *testing.State) {
 			if err := uia.LeftClick(nodewith.ClassName("OmniboxViewViews").Role(role.TextField))(ctx); err != nil {
 				s.Fatal("Failed to click address bar: ", err)
 			}
-
 			vkNode := nodewith.Name("Chrome OS Virtual Keyboard").Role(role.Keyboard)
-
 			if tc.wantedAllowVK {
 				// Confirm that the virtual keyboard exists.
 				if err := uia.WaitUntilExists(vkNode)(ctx); err != nil {
 					s.Errorf("Virtual keyboard did not show up: %s", err)
 				}
 			} else {
-				vkTimeout := 15 * time.Second
 				// Confirm that the virtual keyboard does not exist.
-				if err := uia.EnsureGoneFor(vkNode, vkTimeout)(ctx); err != nil {
-					s.Errorf("Virtual keyboard was still visible after %s: %s", vkTimeout, err)
+				if err := uia.WaitUntilExists(vkNode)(ctx); err == nil {
+					s.Error("Virtual keyboard has shown")
 				}
 			}
 		})
