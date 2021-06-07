@@ -8,11 +8,13 @@ package graphics
 import (
 	"context"
 	"io"
+	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/lacros/launcher"
@@ -221,13 +223,14 @@ func (f *gpuWatchDogFixture) getGPUCrash() ([]string, error) {
 }
 
 // checkNewCrashes checks the difference between the oldCrashes and the current crashes. Return error if failed to retrieve current crashes or the list is mismatch.
-func (f *gpuWatchDogFixture) checkNewCrashes(ctx context.Context, oldCrashes []string) error {
+func (f *gpuWatchDogFixture) checkNewCrashes(ctx context.Context, oldCrashes []string, outDir string) error {
 	crashes, err := f.getGPUCrash()
 	if err != nil {
 		return err
 	}
 
 	// Check if there're new crash files got generated during the test.
+	var newCrash []string
 	for _, crash := range crashes {
 		found := false
 		for _, preTestCrash := range oldCrashes {
@@ -237,8 +240,18 @@ func (f *gpuWatchDogFixture) checkNewCrashes(ctx context.Context, oldCrashes []s
 			}
 		}
 		if !found {
-			return errors.Errorf("found gpu crash file: %s", crash)
+			newCrash = append(newCrash, crash)
 		}
+	}
+
+	if len(newCrash) != 0 {
+		for _, crash := range newCrash {
+			destPath := filepath.Join(outDir, filepath.Base(crash))
+			if err := fsutil.CopyFile(crash, destPath); err != nil {
+				testing.ContextLogf(ctx, "Failed to copy crash file %v: %v", crash, err)
+			}
+		}
+		return errors.Errorf("found gpu crash file: %v", newCrash)
 	}
 	return nil
 }
@@ -251,7 +264,7 @@ func (f *gpuWatchDogFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 		s.Log("Failed to get gpu crashes: ", err)
 	} else {
 		f.postFunc = append(f.postFunc, func(ctx context.Context) error {
-			return f.checkNewCrashes(ctx, crashes)
+			return f.checkNewCrashes(ctx, crashes, s.OutDir())
 		})
 	}
 }
