@@ -51,6 +51,41 @@
       "parentUuid": "8e0addc3_d2193299",
       "revId": "cffee08a73897f1bbf710d1cfb853c3b81a672cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "679f3967_209a0577",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 63
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-07T04:58:37Z",
+      "side": 1,
+      "message": "I\u0027ve got a bit confused. The test case itself is placed under ui directly and called video_cuj2.go which is not very meaningful. The library code is in videocuj package. There is another package called cuj under ui. What is the structure here?",
+      "revId": "cffee08a73897f1bbf710d1cfb853c3b81a672cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b41e4e05_a4dac46a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 63
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-07T04:58:37Z",
+      "side": 1,
+      "message": "It would be better if we could keep the CL less than 200 lines.",
+      "parentUuid": "2c8f83d7_8d69547c",
+      "revId": "cffee08a73897f1bbf710d1cfb853c3b81a672cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
