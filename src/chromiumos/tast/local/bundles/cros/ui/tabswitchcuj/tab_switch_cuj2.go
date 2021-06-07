@@ -21,7 +21,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/webutil"
-	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 )
 
@@ -304,24 +303,35 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 		s.Fatal("Failed to connect to test API, error: ", err)
 	}
 
+	// Shorten the context to cleanup crastestclient and resume battery charging.
+	cleanUpCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	if _, ok := s.Var("ui.cuj_mute"); ok {
 		if err := crastestclient.Mute(ctx); err != nil {
 			s.Fatal("Failed to mute: ", err)
 		}
-		defer crastestclient.Unmute(ctx)
+		defer crastestclient.Unmute(cleanUpCtx)
 	}
+
+	// Put battery under discharge in order to collect the power consumption of the test.
+	setBatteryNormal, err := cuj.SetBatteryDischarge(ctx, 50)
+	if err != nil {
+		s.Fatal("Failed to set battery discharge: ", err)
+	}
+	defer setBatteryNormal(cleanUpCtx)
+
+	// Shorten the context to cleanup recorder.
+	cleanUpRecorderCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
 
 	recorder, err := cuj.NewRecorder(ctx, tconn, cuj.MetricConfigs()...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder, error: ", err)
 	}
-	defer recorder.Close(ctx)
-
-	cleanup, err := setup.SetBatteryDischarge(ctx, 50)
-	if err != nil {
-		s.Fatal("Failed to set battery discharge, error: ", err)
-	}
-	defer cleanup(ctx)
+	defer recorder.Close(cleanUpRecorderCtx)
 
 	windows, err := generateTabSwitchTargets(caseLevel)
 	if err != nil {

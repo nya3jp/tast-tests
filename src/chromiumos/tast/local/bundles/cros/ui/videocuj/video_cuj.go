@@ -24,7 +24,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 )
 
@@ -159,7 +158,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	setBatteryNormal, err := setup.SetBatteryDischarge(ctx, 50)
+	setBatteryNormal, err := cuj.SetBatteryDischarge(ctx, 50)
 	if err != nil {
 		return errors.Wrap(err, "failed to set battery discharge")
 	}
