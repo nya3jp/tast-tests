@@ -50,6 +50,74 @@
       "message": "Hi Gwendal,\n\nI see you made some changes in this package before. Could you help take a look at this CL? ",
       "revId": "0db6ebb415b045cafcb2dd205c0e8434c7b9e12a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "608e1e59_7de4f21e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-06-07T20:19:54Z",
+      "side": 1,
+      "message": "For simplicity sake, I would just replace the internal Fatal with an Error in this unit test.",
+      "revId": "0db6ebb415b045cafcb2dd205c0e8434c7b9e12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "890bbcb5_b3551691",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-06-07T20:19:54Z",
+      "side": 1,
+      "message": "Note this is a unit test to the tast test library.",
+      "revId": "0db6ebb415b045cafcb2dd205c0e8434c7b9e12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b843e62a_a394846d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-06-07T20:19:54Z",
+      "side": 1,
+      "message": "For clarity, I would prefer the function to be named instead of inlined.",
+      "revId": "0db6ebb415b045cafcb2dd205c0e8434c7b9e12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c92aca8d_b5ccdb04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-06-07T20:19:54Z",
+      "side": 1,
+      "message": "Why is this timeout needed: we start reading the fifo line 129.",
+      "revId": "0db6ebb415b045cafcb2dd205c0e8434c7b9e12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
