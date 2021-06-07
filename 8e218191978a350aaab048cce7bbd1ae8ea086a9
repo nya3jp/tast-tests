@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd660a1b_a0372a41",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-07T21:33:06Z",
+      "side": 1,
+      "message": "Yeah, I think that would be preferable",
+      "parentUuid": "a2c01ac1_ce8bbff7",
+      "revId": "8e218191978a350aaab048cce7bbd1ae8ea086a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55a60a09_4e8b449a",
         "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
         "patchSetId": 3
