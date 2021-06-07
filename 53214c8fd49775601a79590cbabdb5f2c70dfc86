@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a924c711_15451147",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-06-07T12:17:35Z",
+      "side": 1,
+      "message": "It should",
+      "parentUuid": "80ae1e4c_595eb101",
+      "revId": "53214c8fd49775601a79590cbabdb5f2c70dfc86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f80868d_d14a79fd",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-06-04T15:49:50Z",
       "side": 1,
       "message": "Should this line be deferred after creating the server on L46 to ensure the server is stopped if there is an error in the test?",
+      "revId": "53214c8fd49775601a79590cbabdb5f2c70dfc86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f60edffd_7a8ce824",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-06-07T12:17:35Z",
+      "side": 1,
+      "message": "Good point!",
+      "parentUuid": "4f80868d_d14a79fd",
       "revId": "53214c8fd49775601a79590cbabdb5f2c70dfc86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
