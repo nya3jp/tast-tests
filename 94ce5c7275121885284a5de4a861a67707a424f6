@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa023da_97cfc88b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-07T20:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec0e87c_07a0f522",
+      "range": {
+        "startLine": 13,
+        "startChar": 71,
+        "endLine": 13,
+        "endChar": 73
+      },
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2c22193_c4db30d3",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a82d134e_6b154b65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-07T20:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2c22193_c4db30d3",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76911c38_0bdc1e59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-07T20:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca7c776f_c7d1c935",
+      "range": {
+        "startLine": 16,
+        "startChar": 55,
+        "endLine": 16,
+        "endChar": 63
+      },
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1770bac0_d9dbcfb5",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-07T06:47:30Z",
       "side": 1,
       "message": "Chrome OS and Android.",
+      "range": {
+        "startLine": 20,
+        "startChar": 12,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c2831a8_a326bf6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-07T20:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1770bac0_d9dbcfb5",
       "range": {
         "startLine": 20,
         "startChar": 12,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c8ad1da_3d56362f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-07T20:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "536fbae5_eeb213ef",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 70
+      },
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fa55493_461aae6b",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01324bdb_6f3e80fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-07T20:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fa55493_461aae6b",
+      "range": {
+        "startLine": 24,
+        "startChar": 14,
+        "endLine": 24,
+        "endChar": 72
+      },
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c194499_5568fee0",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-06-07T06:47:30Z",
       "side": 1,
       "message": "The",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce7c2132_dbf8d7ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-07T20:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c194499_5568fee0",
       "range": {
         "startLine": 25,
         "startChar": 0,
@@ -226,6 +394,30 @@
       "writtenOn": "2021-06-07T06:47:30Z",
       "side": 1,
       "message": "Set up",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5ff368a_012d5a1c",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android_fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-07T20:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fe5d918_bd6925b8",
       "range": {
         "startLine": 42,
         "startChar": 9,
