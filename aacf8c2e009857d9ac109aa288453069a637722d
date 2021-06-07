@@ -50,6 +50,74 @@
       "message": "Thanks Katie! Adding tast-owners for official approval.",
       "revId": "aacf8c2e009857d9ac109aa288453069a637722d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c28de80b_be442f71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-07T02:19:41Z",
+      "side": 1,
+      "message": "LGTM % comments.",
+      "revId": "aacf8c2e009857d9ac109aa288453069a637722d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b88f482_fdf3b6cc",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-07T02:19:41Z",
+      "side": 1,
+      "message": "do we need to `c.Close()` when we have error here?",
+      "revId": "aacf8c2e009857d9ac109aa288453069a637722d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "622046bc_19a64695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/select_to_speak.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-07T02:19:41Z",
+      "side": 1,
+      "message": "nit: reserve some time for the defer?\n\nref: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "revId": "aacf8c2e009857d9ac109aa288453069a637722d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df61a4b_a12ce0f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/select_to_speak.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-07T02:19:41Z",
+      "side": 1,
+      "message": "nit: similar as above.",
+      "revId": "aacf8c2e009857d9ac109aa288453069a637722d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
