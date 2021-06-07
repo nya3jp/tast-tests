@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "562d5995_c8e20004",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-07T08:58:23Z",
+      "side": 1,
+      "message": "minor nit: you don\u0027t need the dot here.",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "cd6d94ec5121fbb1290847c3fa0fddbb5a01ab28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "48732da8_035577b0",
@@ -14,6 +37,40 @@
       "writtenOn": "2021-06-07T08:27:40Z",
       "side": 1,
       "message": "PTAL",
+      "revId": "cd6d94ec5121fbb1290847c3fa0fddbb5a01ab28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3c53a6a_fb0a1ee0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-07T08:58:23Z",
+      "side": 1,
+      "message": "As I understood if this step fails, it can cause problems in other tests as well.\nIf this is really the case, it would be nice to add a verbose s.Log() message as well, that enrollment is not cleared, and some possible consequences.",
+      "revId": "cd6d94ec5121fbb1290847c3fa0fddbb5a01ab28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eda8bf9_cb1efc86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-07T08:58:23Z",
+      "side": 1,
+      "message": "There already is a \"Failed to reset TPM: \" error message, one should be changed a little for easier identification of the error message source.",
       "revId": "cd6d94ec5121fbb1290847c3fa0fddbb5a01ab28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
