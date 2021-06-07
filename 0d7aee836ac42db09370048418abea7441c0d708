@@ -16,6 +16,23 @@
       "message": "Thanks for the review!",
       "revId": "0d7aee836ac42db09370048418abea7441c0d708",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c64cb94e_5be0e645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-07T19:48:44Z",
+      "side": 1,
+      "message": "Just wondering about this function: it\u0027s possible for any one of the three parts to fail independently of the other two?",
+      "revId": "0d7aee836ac42db09370048418abea7441c0d708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
