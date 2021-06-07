@@ -26,7 +26,7 @@ func init() {
 		Func:         InputMethodShelf,
 		Desc:         "Verifies that user can toggle shelf option and switch inut method",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
@@ -36,6 +36,7 @@ func init() {
 		}, {
 			Name:              "unstable",
 			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
