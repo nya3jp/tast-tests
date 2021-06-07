@@ -109,21 +109,9 @@ func ModeSwitch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to login: ", err)
 	}
 
-	s.Log("Verifying that TBT device enumerated correctly")
+	s.Log("Verifying that TBT device & DP monitor enumerated correctly")
 
-	err = testing.Poll(ctx, func(ctx context.Context) error {
-		return typecutils.CheckTBTDevice(true)
-	}, &testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: 10 * time.Second})
-	if err != nil {
-		s.Fatal("Failed to verify TBT devices connected after login: ", err)
-	}
-
-	s.Log("Verifying that DP monitor enumerated correctly")
-
-	err = testing.Poll(ctx, func(ctx context.Context) error {
-		return typecutils.FindConnectedDPMonitor(ctx, testConn)
-	}, &testing.PollOptions{Interval: 200 * time.Millisecond, Timeout: 20 * time.Second})
-	if err != nil {
-		s.Fatal("Failed to verify DP monitor working after login: ", err)
+	if err := typecutils.CheckTBTAndDP(ctx, testConn); err != nil {
+		s.Fatal("Failed to verify TBT & DP after login: ", err)
 	}
 }

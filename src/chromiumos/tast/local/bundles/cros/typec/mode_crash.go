@@ -95,20 +95,9 @@ func ModeCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to login: ", err)
 	}
 
-	s.Log("Verifying that TBT device enumerated correctly")
-	tbtPollOptions := testing.PollOptions{Timeout: 10 * time.Second}
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return typecutils.CheckTBTDevice(true)
-	}, &tbtPollOptions); err != nil {
-		s.Fatal("Failed to verify TBT devices connected after login: ", err)
-	}
-
-	s.Log("Verifying that DP monitor enumerated correctly")
-	dpPollOptions := testing.PollOptions{Timeout: 20 * time.Second}
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return typecutils.FindConnectedDPMonitor(ctx, testConn)
-	}, &dpPollOptions); err != nil {
-		s.Fatal("Failed to verify DP monitor working after login: ", err)
+	s.Log("Verifying that TBT device & DP monitor enumerated correctly")
+	if err := typecutils.CheckTBTAndDP(ctx, testConn); err != nil {
+		s.Fatal("Failed to verify TBT & DP after login: ", err)
 	}
 
 	oldPID, err := typecdPID(ctx)
@@ -157,6 +146,7 @@ func ModeCrash(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Verifying that no TBT devices enumerated")
+	tbtPollOptions := testing.PollOptions{Timeout: 10 * time.Second}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return typecutils.CheckTBTDevice(false)
 	}, &tbtPollOptions); err != nil {
@@ -164,6 +154,7 @@ func ModeCrash(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Verifying that DP monitor enumerated correctly")
+	dpPollOptions := testing.PollOptions{Timeout: 20 * time.Second}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return typecutils.FindConnectedDPMonitor(ctx, testConn)
 	}, &dpPollOptions); err != nil {
