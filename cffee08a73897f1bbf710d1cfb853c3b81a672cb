@@ -86,6 +86,42 @@
       "parentUuid": "2c8f83d7_8d69547c",
       "revId": "cffee08a73897f1bbf710d1cfb853c3b81a672cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba37ef96_98b1d501",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 63
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-07T06:13:29Z",
+      "side": 1,
+      "message": "Thanks Judy. Further re-arranged the CLs - now become 5. Each have around 200 lines. Please let me know any issue during you review the code. This CUJ is UI intensive so the code size is large. Thanks for your time and effort in advance!",
+      "parentUuid": "b41e4e05_a4dac46a",
+      "revId": "cffee08a73897f1bbf710d1cfb853c3b81a672cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c626019f_9baabdae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 63
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-07T06:13:29Z",
+      "side": 1,
+      "message": "There is an existing vodeo_cuj test. At the beginning of the development, we had a meeting with Aings, Jun Mukai, and Xiyuan, and decided to use video_cuj2 for this \"new\" video cuj test. \n\nvideocuj package is only used by this video cuj test. cuj package is common package used by all cuj test (video cuj, tab switch, google meet, etc).\n\nHope this clarifies.",
+      "parentUuid": "679f3967_209a0577",
+      "revId": "cffee08a73897f1bbf710d1cfb853c3b81a672cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
