@@ -8,11 +8,13 @@ package graphics
 import (
 	"context"
 	"io"
+	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/syslog"
@@ -58,6 +60,40 @@ func init() {
 		SetUpTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+}
+
+// GetGPUCrash returns gpu related crash files found in system.
+func GetGPUCrash() ([]string, error) {
+	crashFiles, err := crash.GetCrashes(crash.DefaultDirs()...)
+	if err != nil {
+		return nil, err
+	}
+	// Filter the gpu related crash.
+	var crashes []string
+	for _, file := range crashFiles {
+		if strings.HasSuffix(file, crash.GPUStateExt) {
+			crashes = append(crashes, file)
+		}
+	}
+	return crashes, nil
+}
+
+// CopyGPUDumps copies gpu related dumps to outDir.
+func CopyGPUDumps(ctx context.Context, outDir string) error {
+	var resultErr error
+
+	paths, err := GetGPUCrash()
+	if err != nil {
+		return errors.Wrap(err, "failed to get crash list")
+	}
+
+	for _, path := range paths {
+		destPath := filepath.Join(outDir, filepath.Base(path))
+		if err := fsutil.CopyFile(path, destPath); err != nil {
+			resultErr = errors.Wrap(resultErr, err.Error())
+		}
+	}
+	return resultErr
 }
 
 type graphicsNoChromeFixture struct {
@@ -169,10 +205,13 @@ func (f *gpuWatchHangsFixture) PostTest(ctx context.Context, s *testing.FixtTest
 	if postErr != nil {
 		s.Error("PostTest failed: ", postErr)
 	}
+	if err := CopyGPUDumps(ctx, s.OutDir()); err != nil {
+		s.Error("Failed to copy gpu dumps: ", err)
+	}
 }
 
 type gpuWatchDogFixture struct {
-	postFunc []func(ctx context.Context) error
+	postFunc func(ctx context.Context) error
 }
 
 func (f *gpuWatchDogFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -185,25 +224,9 @@ func (f *gpuWatchDogFixture) Reset(ctx context.Context) error {
 	return nil
 }
 
-// getGPUCrash returns gpu related crash files found in system.
-func (f *gpuWatchDogFixture) getGPUCrash() ([]string, error) {
-	crashFiles, err := crash.GetCrashes(crash.DefaultDirs()...)
-	if err != nil {
-		return nil, err
-	}
-	// Filter the gpu related crash.
-	var crashes []string
-	for _, file := range crashFiles {
-		if strings.HasSuffix(file, crash.GPUStateExt) {
-			crashes = append(crashes, file)
-		}
-	}
-	return crashes, nil
-}
-
 // checkNewCrashes checks the difference between the oldCrashes and the current crashes. Return error if failed to retrieve current crashes or the list is mismatch.
 func (f *gpuWatchDogFixture) checkNewCrashes(ctx context.Context, oldCrashes []string) error {
-	crashes, err := f.getGPUCrash()
+	crashes, err := GetGPUCrash()
 	if err != nil {
 		return err
 	}
@@ -227,24 +250,26 @@ func (f *gpuWatchDogFixture) checkNewCrashes(ctx context.Context, oldCrashes []s
 func (f *gpuWatchDogFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	f.postFunc = nil
 	// Record PreTest crashes.
-	crashes, err := f.getGPUCrash()
+	crashes, err := GetGPUCrash()
 	if err != nil {
 		s.Log("Failed to get gpu crashes: ", err)
 	} else {
-		f.postFunc = append(f.postFunc, func(ctx context.Context) error {
+		f.postFunc = func(ctx context.Context) error {
 			return f.checkNewCrashes(ctx, crashes)
-		})
+		}
 	}
 }
 
 func (f *gpuWatchDogFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
-	var postErr error
-	for i := len(f.postFunc) - 1; i >= 0; i-- {
-		if err := f.postFunc[i](ctx); err != nil {
-			postErr = errors.Wrap(postErr, err.Error())
-		}
+	if f.postFunc == nil {
+		return
 	}
-	if postErr != nil {
-		s.Error("PostTest failed: ", postErr)
+
+	if err := f.postFunc(ctx); err != nil {
+		s.Error("PostTest failed: ", err)
+	}
+
+	if err := CopyGPUDumps(ctx, s.OutDir()); err != nil {
+		s.Error("Failed to copy gpu dumps: ", err)
 	}
 }
