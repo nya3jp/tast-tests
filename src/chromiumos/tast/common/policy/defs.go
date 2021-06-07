@@ -18327,29 +18327,51 @@ func (p *LacrosAvailability) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 856. DataLeakPreventionReportingEnabled
+// 856. DataLeakPreventionRulesList
 ///////////////////////////////////////////////////////////////////////////////
-type DataLeakPreventionReportingEnabled struct {
+type DataLeakPreventionRulesList struct {
 	Stat Status
-	Val  bool
+	Val  []*DataLeakPreventionReportingValue
 }
 
-func (p *DataLeakPreventionReportingEnabled) Name() string {
-	return "DataLeakPreventionReportingEnabled"
+type DataLeakPreventionDestinations struct {
+	Urls       []string `json:"urls"`
+	Components []string `json:"components"`
 }
-func (p *DataLeakPreventionReportingEnabled) Field() string         { return "" }
-func (p *DataLeakPreventionReportingEnabled) Scope() Scope          { return ScopeUser }
-func (p *DataLeakPreventionReportingEnabled) Status() Status        { return p.Stat }
-func (p *DataLeakPreventionReportingEnabled) UntypedV() interface{} { return p.Val }
-func (p *DataLeakPreventionReportingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
+
+type DataLeakPreventionRestrictions struct {
+	Class string `json:"class"`
+	Level string `json:"level"`
+}
+
+type DataLeakPreventionReportingValue struct {
+	Description  string                            `json:"description"`
+	Destinations []*DataLeakPreventionDestinations `json:"destinations"`
+	Name         string                            `json:"name"`
+	Restrictions []*DataLeakPreventionRestrictions `json:"restrictions"`
+	Sources      []*DataLeakPreventionSources      `json:"sources"`
+}
+
+type DataLeakPreventionSources struct {
+	Urls []string `json:"urls"`
+}
+
+func (p *DataLeakPreventionRulesList) Name() string {
+	return "DataLeakPreventionRulesList"
+}
+func (p *DataLeakPreventionRulesList) Field() string         { return "" }
+func (p *DataLeakPreventionRulesList) Scope() Scope          { return ScopeUser }
+func (p *DataLeakPreventionRulesList) Status() Status        { return p.Stat }
+func (p *DataLeakPreventionRulesList) UntypedV() interface{} { return p.Val }
+func (p *DataLeakPreventionRulesList) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []*DataLeakPreventionReportingValue
 	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+		return nil, errors.Wrapf(err, "could not read %s as []*DataLeakPreventionReportingValue", m)
 	}
 	return v, nil
 }
-func (p *DataLeakPreventionReportingEnabled) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
+func (p *DataLeakPreventionRulesList) Equal(iface interface{}) bool {
+	v, ok := iface.([]*DataLeakPreventionReportingValue)
 	if !ok {
 		return ok
 	}
