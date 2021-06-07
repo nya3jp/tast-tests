@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05f99a67_161dcccc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-06-07T19:24:45Z",
+      "side": 1,
+      "message": "There is already a testing.poll() for the whole function. I don\u0027t see any benefit adding a nested poll. The delay that was needed for the menu to appear is now done by waitForPIPMenu() which internally has poll(). So I think this poll can be removed.",
+      "range": {
+        "startLine": 708,
+        "startChar": 0,
+        "endLine": 708,
+        "endChar": 60
+      },
+      "revId": "ce6a81bf5eaf81242c92ef590e90090ef2f9acb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d8dd241_dd2ddc57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-06-07T19:24:45Z",
+      "side": 1,
+      "message": "It\u0027s good to wrap the error with a unique meaningful message, that will become very helpful later on debugging.",
+      "range": {
+        "startLine": 712,
+        "startChar": 29,
+        "endLine": 712,
+        "endChar": 32
+      },
+      "revId": "ce6a81bf5eaf81242c92ef590e90090ef2f9acb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22ef1d93_ab936490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-06-07T19:24:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 715,
+        "startChar": 29,
+        "endLine": 715,
+        "endChar": 32
+      },
+      "revId": "ce6a81bf5eaf81242c92ef590e90090ef2f9acb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec67357_db2d3f5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-06-07T19:24:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 723,
+        "startChar": 29,
+        "endLine": 723,
+        "endChar": 32
+      },
+      "revId": "ce6a81bf5eaf81242c92ef590e90090ef2f9acb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2ad55e9_0fe8d9be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-06-07T19:24:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 726,
+        "startChar": 29,
+        "endLine": 726,
+        "endChar": 32
+      },
+      "revId": "ce6a81bf5eaf81242c92ef590e90090ef2f9acb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
