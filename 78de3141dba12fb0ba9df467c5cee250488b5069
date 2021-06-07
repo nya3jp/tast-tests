@@ -151,6 +151,24 @@
       "parentUuid": "0393c50d_43d8613a",
       "revId": "78de3141dba12fb0ba9df467c5cee250488b5069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "741016cc_1cee62f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-07T12:43:07Z",
+      "side": 1,
+      "message": "Yes. The fetching of the certificate won\u0027t be triggered otherwise.",
+      "parentUuid": "aedd55f1_9029ddc2",
+      "revId": "78de3141dba12fb0ba9df467c5cee250488b5069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
