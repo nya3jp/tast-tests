@@ -70,6 +70,30 @@
       },
       "revId": "dc62d54318a0e589fbd13819dadb6ba13e2d0218",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d721b9d_949d34be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2021-06-07T18:31:17Z",
+      "side": 1,
+      "message": "Thanks Takise, using screenshots works very well.",
+      "parentUuid": "99c6f560_e9d9f224",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 722,
+        "endChar": 4
+      },
+      "revId": "dc62d54318a0e589fbd13819dadb6ba13e2d0218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
