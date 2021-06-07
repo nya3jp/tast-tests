@@ -141,9 +141,9 @@ func ReadBatteryProperty(devPath, property string) (float64, error) {
 	return float64(content), nil
 }
 
-// listSysfsBatteryPaths lists paths of batteries which supply power to the system
+// ListSysfsBatteryPaths lists paths of batteries which supply power to the system
 // and has voltage_now and current_now attributes.
-func listSysfsBatteryPaths(ctx context.Context) ([]string, error) {
+func ListSysfsBatteryPaths(ctx context.Context) ([]string, error) {
 	// TODO(hikarun): Remove ContextLogf()s after checking this function works on all platforms
 	const sysfsPowerSupplyPath = "/sys/class/power_supply"
 	testing.ContextLog(ctx, "Listing batteries in ", sysfsPowerSupplyPath)
@@ -185,7 +185,7 @@ func listSysfsBatteryPaths(ctx context.Context) ([]string, error) {
 // SysfsBatteryPath returns a path of battery which supply power to the system
 // and has voltage_now and current_now attributes.
 func SysfsBatteryPath(ctx context.Context) (string, error) {
-	batteryPaths, err := listSysfsBatteryPaths(ctx)
+	batteryPaths, err := ListSysfsBatteryPaths(ctx)
 	if err != nil {
 		return "", err
 	}
@@ -214,7 +214,7 @@ func NewSysfsBatteryMetrics() *SysfsBatteryMetrics {
 // Setup reads the low battery shutdown percent that that we can error out a
 // test if the battery is ever too low.
 func (b *SysfsBatteryMetrics) Setup(ctx context.Context, prefix string) error {
-	batteryPaths, err := listSysfsBatteryPaths(ctx)
+	batteryPaths, err := ListSysfsBatteryPaths(ctx)
 	if err != nil {
 		return err
 	}

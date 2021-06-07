@@ -25,7 +25,6 @@ import (
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
-	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
@@ -94,7 +93,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 	defer cancel()
 
 	// Set battery to discharge so the power consumption of the CUJ can be measured.
-	setBatteryNormal, err := setup.SetBatteryDischarge(ctx, 50)
+	setBatteryNormal, err := cuj.SetBatteryDischarge(ctx, 50)
 	if err != nil {
 		s.Fatal("Failed to set battery discharge: ", err)
 	}

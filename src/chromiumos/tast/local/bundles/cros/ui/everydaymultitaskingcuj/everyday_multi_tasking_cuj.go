@@ -27,7 +27,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 )
 
@@ -139,7 +138,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 	defer recorder.Close(cleanupCtx)
 
 	// Put battery under discharge in order to collect the power consumption of the test.
-	setBatteryNormal, err := setup.SetBatteryDischarge(ctx, 50)
+	setBatteryNormal, err := cuj.SetBatteryDischarge(ctx, 50)
 	if err != nil {
 		return errors.Wrap(err, "failed to set battery discharge")
 	}

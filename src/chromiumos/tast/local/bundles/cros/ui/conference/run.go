@@ -9,11 +9,11 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/graphics"
-	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 )
 
@@ -25,11 +25,16 @@ type Prepare func(context.Context) (string, Cleanup, error)
 
 // Run runs the specified user scenario in conference room with different CUJ tiers.
 func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, outDir string, tabletMode, extendedDisplay bool) error {
+	// Shorten context a bit to allow for cleanup.
+	cleanUpCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	inviteLink, cleanup, err := prepare(ctx)
 	if err != nil {
 		return err
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanUpCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -43,11 +48,17 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 		return errors.Wrap(err, "failed to get browser start time")
 	}
 
-	setBatteryNormal, err := setup.SetBatteryDischarge(ctx, 50)
+	// Put battery under discharge in order to collect the power consumption of the test.
+	setBatteryNormal, err := cuj.SetBatteryDischarge(ctx, 50)
 	if err != nil {
 		return errors.Wrap(err, "failed to set battery discharge")
 	}
-	defer setBatteryNormal(ctx)
+	defer setBatteryNormal(cleanUpCtx)
+
+	// Shorten the context to cleanup recorder.
+	cleanUpRecorderCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
 
 	testing.ContextLog(ctx, "Start recording actions")
 
@@ -55,7 +66,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 	if err != nil {
 		return errors.Wrap(err, "failed to create the recorder")
 	}
-	defer recorder.Close(ctx)
+	defer recorder.Close(cleanUpRecorderCtx)
 
 	meetTimeout := 80 * time.Second
 	if tier == "plus" {
