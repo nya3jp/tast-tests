@@ -100,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d233a8_056287fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-07T09:25:17Z",
+      "side": 1,
+      "message": "I did not know that when Tast starts a different group, it also resets the TPM.\n\nI was thinking about unrelated test groups, where the authors do not know that TPM reset failure means that the enrollment remains, and looking through the logs for clues.",
+      "parentUuid": "ad484dd8_7df8845d",
+      "revId": "cd6d94ec5121fbb1290847c3fa0fddbb5a01ab28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3eda8bf9_cb1efc86",
