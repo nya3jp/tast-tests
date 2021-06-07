@@ -204,6 +204,8 @@ var (
 	ZoomInButton = UIComponent{"zoom in button", []string{"#zoom-in"}}
 	// ZoomOutButton is the button for zoom out preview.
 	ZoomOutButton = UIComponent{"zoom out button", []string{"#zoom-out"}}
+	// PTZResetAllButton is the button for reset PTZ to default value.
+	PTZResetAllButton = UIComponent{"ptz reset all button", []string{"#ptz-reset-all"}}
 )
 
 // ResolutionType is different capture resolution type.
@@ -999,6 +1001,36 @@ func (a *App) WaitForVisibleState(ctx context.Context, ui UIComponent, expected 
 		}
 		if visible != expected {
 			return errors.Errorf("failed to wait visibility state for %v: got %v, want %v", ui.Name, visible, expected)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
+}
+
+// Disabled returns disabled attribute of HTMLElement of |ui|.
+func (a *App) Disabled(ctx context.Context, ui UIComponent) (bool, error) {
+	wrapError := func(err error) error {
+		return errors.Wrapf(err, "failed to get disabled state of %v", ui.Name)
+	}
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return false, wrapError(err)
+	}
+	var disabled bool
+	if err := a.conn.Call(ctx, &disabled, "(selector) => document.querySelector(selector).disabled", selector); err != nil {
+		return false, wrapError(err)
+	}
+	return disabled, nil
+}
+
+// WaitForDisabled waits until the disabled state of ui becomes |expected|.
+func (a *App) WaitForDisabled(ctx context.Context, ui UIComponent, expected bool) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		disabled, err := a.Disabled(ctx, ui)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if disabled != expected {
+			return errors.Errorf("failed to wait disabled state for %v: got %v, want %v", ui.Name, disabled, expected)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second})
