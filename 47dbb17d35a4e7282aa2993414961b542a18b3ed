@@ -16,6 +16,24 @@
       "message": "What will happen if the servo spec is not supplied? Will it assume localhost:9999?",
       "revId": "47dbb17d35a4e7282aa2993414961b542a18b3ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2657ee0a_5edb499d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-07T21:04:13Z",
+      "side": 1,
+      "message": "Yes, exactly.",
+      "parentUuid": "b75670ad_c23293bf",
+      "revId": "47dbb17d35a4e7282aa2993414961b542a18b3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
