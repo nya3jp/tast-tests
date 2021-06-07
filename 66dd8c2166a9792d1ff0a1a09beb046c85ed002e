@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fe93a07_b5c103f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-07T17:04:29Z",
+      "side": 1,
+      "message": "After modifications I have still one failure in tablet mode:\n2021-06-07T16:57:05.793490Z policy.VirtualKeyboard.touch_virtual  [ FAIL ] unset: Virtual keyboard has shown up",
+      "revId": "66dd8c2166a9792d1ff0a1a09beb046c85ed002e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
