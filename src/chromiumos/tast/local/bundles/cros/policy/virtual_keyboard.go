@@ -19,10 +19,20 @@ import (
 )
 
 type vkTestCase struct {
-	name          string          // name is the subtest name.
-	wantedAllowVK bool            // wantedAllowVK describes if virtual keyboard is expected to to shown or not.
-	policies      []policy.Policy // policies is the policies values.
+	name          string           // name is the subtest name.
+	wantedAllowVK bool             // wantedAllowVK describes if virtual keyboard is expected to to shown or not.
+	vkNode        *nodewith.Finder // vkNode holds node for affected virtual keyboard.
+	policies      []policy.Policy  // policies is the policies values.
 }
+
+var (
+	// virtualOnScreenKeyboard identifies a virtual keyboard that settings are
+	//  governed by OS Settings -> Accessibility -> Enable on-screen keyboard.
+	virtualOnScreenKeyboard = nodewith.ClassName("keyboard a11y-mode")
+	// tabletModeTouchKeyboard identifies a virtual keyboard that is available
+	// in table mode for touch screen devices.
+	tabletModeTouchKeyboard = nodewith.ClassName("bordered-key-mode")
+)
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -44,46 +54,55 @@ func init() {
 					{
 						name:          "vke_enabled-tvke_enabled",
 						wantedAllowVK: true,
+						vkNode:        virtualOnScreenKeyboard,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: true}, &policy.TouchVirtualKeyboardEnabled{Val: true}},
 					},
 					{
 						name:          "vke_enabled-tvke_disabled",
 						wantedAllowVK: true,
+						vkNode:        virtualOnScreenKeyboard,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: true}, &policy.TouchVirtualKeyboardEnabled{Val: false}},
 					},
 					{
 						name:          "vke_disabled-tvke_enabled",
 						wantedAllowVK: true,
+						vkNode:        tabletModeTouchKeyboard,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}, &policy.TouchVirtualKeyboardEnabled{Val: true}},
 					},
 					{
 						name:          "vke_disabled-tvke_disabled",
 						wantedAllowVK: false,
+						vkNode:        virtualOnScreenKeyboard,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}, &policy.TouchVirtualKeyboardEnabled{Val: false}},
 					},
 					{
 						name:          "vke_unset-tvke_enabled",
 						wantedAllowVK: true,
+						vkNode:        tabletModeTouchKeyboard,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}, &policy.TouchVirtualKeyboardEnabled{Val: true}},
 					},
 					{
 						name:          "vke_enabled-tvke_unset",
 						wantedAllowVK: true,
+						vkNode:        virtualOnScreenKeyboard,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: true}, &policy.TouchVirtualKeyboardEnabled{Stat: policy.StatusUnset}},
 					},
 					{
 						name:          "vke_unset-tvke_disabled",
 						wantedAllowVK: false,
+						vkNode:        virtualOnScreenKeyboard,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}, &policy.TouchVirtualKeyboardEnabled{Val: false}},
 					},
 					{
 						name:          "vke_disabled-tvke_unset",
 						wantedAllowVK: false,
+						vkNode:        virtualOnScreenKeyboard,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}, &policy.TouchVirtualKeyboardEnabled{Stat: policy.StatusUnset}},
 					},
 					{
 						name:          "vke_unset-tvke_unset",
 						wantedAllowVK: false,
+						vkNode:        virtualOnScreenKeyboard,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}, &policy.TouchVirtualKeyboardEnabled{Stat: policy.StatusUnset}},
 					},
 				},
@@ -94,16 +113,19 @@ func init() {
 					{
 						name:          "enabled",
 						wantedAllowVK: true,
+						vkNode:        virtualOnScreenKeyboard,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: true}},
 					},
 					{
 						name:          "disabled",
 						wantedAllowVK: false,
+						vkNode:        virtualOnScreenKeyboard,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}},
 					},
 					{
 						name:          "unset",
 						wantedAllowVK: false,
+						vkNode:        virtualOnScreenKeyboard,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}},
 					},
 				},
@@ -114,16 +136,19 @@ func init() {
 					{
 						name:          "enabled",
 						wantedAllowVK: true,
+						vkNode:        tabletModeTouchKeyboard,
 						policies:      []policy.Policy{&policy.TouchVirtualKeyboardEnabled{Val: true}},
 					},
 					{
 						name:          "disabled",
 						wantedAllowVK: false,
+						vkNode:        tabletModeTouchKeyboard,
 						policies:      []policy.Policy{&policy.TouchVirtualKeyboardEnabled{Val: false}},
 					},
 					{
 						name:          "unset",
 						wantedAllowVK: false,
+						vkNode:        tabletModeTouchKeyboard,
 						policies:      []policy.Policy{&policy.TouchVirtualKeyboardEnabled{Stat: policy.StatusUnset}},
 					},
 				},
@@ -173,17 +198,15 @@ func VirtualKeyboard(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to click address bar: ", err)
 			}
 
-			vkNode := nodewith.Name("Chrome OS Virtual Keyboard").Role(role.Keyboard)
-
 			if tc.wantedAllowVK {
 				// Confirm that the virtual keyboard exists.
-				if err := uia.WaitUntilExists(vkNode)(ctx); err != nil {
+				if err := uia.WaitUntilExists(tc.vkNode)(ctx); err != nil {
 					s.Errorf("Virtual keyboard did not show up: %s", err)
 				}
 			} else {
 				vkTimeout := 15 * time.Second
 				// Confirm that the virtual keyboard does not exist.
-				if err := uia.EnsureGoneFor(vkNode, vkTimeout)(ctx); err != nil {
+				if err := uia.EnsureGoneFor(tc.vkNode, vkTimeout)(ctx); err != nil {
 					s.Errorf("Virtual keyboard was still visible after %s: %s", vkTimeout, err)
 				}
 			}
