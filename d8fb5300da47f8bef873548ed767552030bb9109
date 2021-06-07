@@ -16,6 +16,98 @@
       "message": "Hi Alex and Jun,\n\nWant this fix goes into R92 so moblab can run this with R92. I did the cherry pick. It seems we have to go through the Review + 2 procedure again. Sorry for this.",
       "revId": "d8fb5300da47f8bef873548ed767552030bb9109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4b02f7c_20390c23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-07T01:41:37Z",
+      "side": 1,
+      "message": "Do you still need First() here? I personally do not encourage to use not-unique finder.",
+      "range": {
+        "startLine": 243,
+        "startChar": 97,
+        "endLine": 243,
+        "endChar": 104
+      },
+      "revId": "d8fb5300da47f8bef873548ed767552030bb9109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2cdc58a_904a1e23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-07T01:41:37Z",
+      "side": 1,
+      "message": "nit: Normally such error expression is formatted as `got %q; want %q`\n\nPlease reformat it if you do not mind.",
+      "range": {
+        "startLine": 273,
+        "startChar": 30,
+        "endLine": 273,
+        "endChar": 90
+      },
+      "revId": "d8fb5300da47f8bef873548ed767552030bb9109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a96fa714_7bbc6f67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-07T01:41:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 277,
+        "startChar": 30,
+        "endLine": 277,
+        "endChar": 86
+      },
+      "revId": "d8fb5300da47f8bef873548ed767552030bb9109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df99ea43_dca5868f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-07T01:41:37Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 281,
+        "startChar": 30,
+        "endLine": 281,
+        "endChar": 81
+      },
+      "revId": "d8fb5300da47f8bef873548ed767552030bb9109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
