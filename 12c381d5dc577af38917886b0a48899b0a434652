@@ -16,6 +16,24 @@
       "message": "please use golang url escaping code rather than hardcoding everything in here\n\nhttps://golang.org/pkg/net/url/",
       "revId": "12c381d5dc577af38917886b0a48899b0a434652",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de81004a_a8b6a424",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-06-07T04:57:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ffde2fe_a2e6ac0b",
+      "revId": "12c381d5dc577af38917886b0a48899b0a434652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
