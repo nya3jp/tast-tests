@@ -102,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aee8acde_96bd2de0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-07T23:42:37Z",
+      "side": 1,
+      "message": "I think this looks better, but I\u0027m also curious what the answer to ejcaruso@\u0027s question is as well. I would only use this pattern if they are truly independent actions (to me they seem like they are).\n\noptional: What do you think about returning an array of errors in this function? Alternatively, you can build an error to return at the end of the function.",
+      "parentUuid": "5ba382cd_40903656",
+      "revId": "c68fcf787e4d4cdbe539fd47f4275f971b0c8ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d7b14f8_d52305d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 5
