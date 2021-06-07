@@ -97,6 +97,30 @@
       },
       "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b008187c_6429fe25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-07T15:03:49Z",
+      "side": 1,
+      "message": "I think the problem is with EnsureGoneFor(), as it does almost the same as WaitUntilGone(), but with a different way to set the timeout in the poll.\nSo EnsureGoneFor() does not do what is should according to its description:\n\u003e  // EnsureGoneFor returns a function that check the specified node does not exist for the timeout period.",
+      "parentUuid": "0d8ae972_5a57e37e",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 80
+      },
+      "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
