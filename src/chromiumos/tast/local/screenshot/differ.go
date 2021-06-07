@@ -223,7 +223,8 @@ func (d *differ) initialize(ctx context.Context) error {
 		"--passfail",
 	}
 
-	d.triage = fmt.Sprintf("https://%s-gold.skia.org/search?corpus=%s&left_filter=name_suffix=%s&test_group=%s&execution_id=%s&not_at_head=true", goldInstance, corpus, nameSuffix, d.state.TestName(), d.executionID)
+	d.triage = fmt.Sprintf("https://%s-gold.skia.org/search?corpus=%s&left_filter=name_suffix%%3D%s%%26test_group%%3D%s%%26execution_id%%3D%s&not_at_head=true", goldInstance, corpus, nameSuffix, d.state.TestName(), d.executionID)
+	testing.ContextLog(ctx, d.triage)
 
 	if strings.HasPrefix(release[lsbrelease.BuildType], "Continuous Builder") {
 		d.testMode = cq
