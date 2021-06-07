@@ -105,11 +105,6 @@ const (
 	// Internal tests proved that using -1 or 0 is unreliable, and values >= 1 should be used instead.
 	// See: https://cs.chromium.org/chromium/src/ash/public/cpp/ash_constants.h
 	borderOffsetForNormal = 5
-	// borderOffsetForPIP is like borderOffsetForNormal, but for Picture-in-Picture windows.
-	// PiP windows are dragged from the inside, and that's why it has a negative value.
-	// The hitbox size is harcoded to 48dp. See PipDragHandleController.isInDragHandleHitbox().
-	// http://cs/pi-arc-dev/frameworks/base/packages/SystemUI/src/com/android/systemui/pip/phone/PipDragHandleController.java
-	borderOffsetForPIP = -5
 	// delayToPreventGesture represents the delay used in swipe() to prevent triggering gestures like "minimize".
 	delayToPreventGesture = 150 * time.Millisecond
 )
@@ -413,9 +408,6 @@ func (ac *Activity) resizeWindowP(ctx context.Context, border BorderType, to coo
 	src := bounds.CenterPoint()
 
 	borderOffset := borderOffsetForNormal
-	if task.windowState == WindowStatePIP {
-		borderOffset = borderOffsetForPIP
-	}
 
 	// Top & Bottom are exclusive.
 	if border&BorderTop != 0 {
@@ -455,11 +447,7 @@ func (ac *Activity) resizeWindowR(ctx context.Context, tconn *chrome.TestConn, b
 	}
 
 	supportsMove := false
-	hasPIPWindow := false
 	for _, windowState := range windowStates {
-		if windowState == ash.WindowStatePIP {
-			hasPIPWindow = true
-		}
 		if windowState == ash.WindowStatePIP || windowState == ash.WindowStateNormal {
 			supportsMove = true
 			break
@@ -474,9 +462,6 @@ func (ac *Activity) resizeWindowR(ctx context.Context, tconn *chrome.TestConn, b
 	src := bounds.CenterPoint()
 
 	borderOffset := borderOffsetForNormal
-	if hasPIPWindow {
-		borderOffset = borderOffsetForPIP
-	}
 
 	// Top & Bottom are exclusive.
 	if border&BorderTop != 0 {
