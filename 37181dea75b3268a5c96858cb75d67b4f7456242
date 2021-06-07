@@ -33,6 +33,24 @@
       "message": "btw, if you have an idea how to solve it differently I am opened for suggestions.\n\nI am tempted to split that tests and I am not sure it is easy to grasp why one keyboard is used here and the other another time.",
       "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f2c2cc8_144b44df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-07T14:04:08Z",
+      "side": 1,
+      "message": "ClassName() got deprecated, and HasClass() seems to support regex. Can you try to combine the 2 class names into one regex? If it is not important which class name we find the node with out of the two.",
+      "parentUuid": "b3824505_87d90f19",
+      "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
