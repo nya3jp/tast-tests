@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/fsutil"
 )
 
-const tpmManagerLocalDataBackupPath = "/tmp/tast-system-backup-local_tpm_data"
+const tpmManagerLocalDataBackupPath = "/var/lib/tpm_manager/local_tpm_data.tast-hwsec-backup"
 
 // isTPMLocalDataIntact uses tpm_manager_client to check if local data still contains owner password,
 // which means the set of imporant secrets are still intact.
