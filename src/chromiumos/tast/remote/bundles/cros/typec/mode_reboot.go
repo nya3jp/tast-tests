@@ -25,6 +25,8 @@ import (
 // The maximum number of USB Type C ports that a Chromebook supports.
 const maxTypeCPorts = 8
 
+var builtInTBTDevices = []string{"domain0", "domain1", "0-0", "1-0"}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ModeReboot,
@@ -139,6 +141,17 @@ func ModeReboot(ctx context.Context, s *testing.State) {
 	// TODO(b/179338646): Check that there is a connected DP monitor.
 }
 
+// builtInTBTDevice returns whether the supplied name is a built-in Thunderbolt device or not.
+func builtInTBTDevice(name string) bool {
+	for _, device := range builtInTBTDevices {
+		if name == device {
+			return true
+		}
+	}
+
+	return false
+}
+
 // checkTBTDevice is a helper function which checks for TBT device connection to a DUT.
 // |expected| specifies whether we want to check for the presence of a TBT device (true) or the
 // absence of one (false).
@@ -154,7 +167,7 @@ func checkTBTDevice(ctx context.Context, d *dut.DUT, expected bool) error {
 			continue
 		}
 
-		if device == "domain0" || device == "0-0" {
+		if builtInTBTDevice(device) {
 			continue
 		}
 
