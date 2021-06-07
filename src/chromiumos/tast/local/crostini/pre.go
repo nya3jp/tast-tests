@@ -113,6 +113,10 @@ var UnstableModels = []string{
 // disks. For more see http://crbug.com/1039403
 var CrostiniMinDiskSizeCond = hwdep.MinStorage(16)
 
+// CrostiniMinDiskSize is a hardware dependency that only runs tests
+// on devices with at least 16 GB of storage.
+var CrostiniMinDiskSize = hwdep.D(CrostiniMinDiskSizeCond)
+
 // CrostiniStableCond is a hardware condition that only runs a test on models that can run Crostini tests without
 // known flakiness issues.
 var CrostiniStableCond = hwdep.SkipOnModel(UnstableModels...)
