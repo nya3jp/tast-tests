@@ -17,7 +17,7 @@ func init() {
 		Desc:         "Checks that region is forced in Chrome tests",
 		Contacts:     []string{"nya@chromium.org", "chromeos-ui@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
