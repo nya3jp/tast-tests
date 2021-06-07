@@ -16,6 +16,64 @@
       "message": "Mukai-san,\n\nI\u0027ve updated the CL.\nI wonder if this change makes it hard to migrate to uiauto package. Do we have any plan that migrates EventWatcher to uiauto packege?\n\nThank you!",
       "revId": "b31c4e9be83dedc6959b9832c25ab61237445ee4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09936a3c_5b1df901",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-07T18:33:31Z",
+      "side": 1,
+      "message": "It\u0027s actually hard to migrate this scheme into uiauto directly -- the primary goal of uiauto\u0027s design is \"Release-free\" -- we don\u0027t want to expose JSObjects and gotchas of Release handlings (and the handling is taken care of and wrapped by \"Action\" abstraction).\n\nFor your case, I roughly think it might be the case to add a matcher interface for the event watching in uiauto/event package and changes WaitForEvent to support that.",
+      "parentUuid": "bc2451ac_1c6129b9",
+      "revId": "b31c4e9be83dedc6959b9832c25ab61237445ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f359b176_5f827e23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-07T18:33:31Z",
+      "side": 1,
+      "message": "LGTM with a nit.",
+      "revId": "b31c4e9be83dedc6959b9832c25ab61237445ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed0e7a69_b30f19df",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-07T18:33:31Z",
+      "side": 1,
+      "message": "Fix here as well?",
+      "range": {
+        "startLine": 152,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 28
+      },
+      "revId": "b31c4e9be83dedc6959b9832c25ab61237445ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
