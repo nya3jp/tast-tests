@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1cfb9cd_9e411c66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-07T23:42:37Z",
+      "side": 1,
+      "message": "I would add somewhere that this is a best effort function or something similar. e.g. Exit does a best effort to stop the server, log the contents, and shut down the chroot.",
+      "revId": "0d7aee836ac42db09370048418abea7441c0d708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c64cb94e_5be0e645",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
         "patchSetId": 7
