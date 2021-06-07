@@ -10,6 +10,8 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/remote/firmware"
+	"chromiumos/tast/remote/firmware/pre"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/arc"
 	arcpb "chromiumos/tast/services/cros/arc"
@@ -27,7 +29,7 @@ func init() {
 			hwdep.Model("eve", "atlas", "nocturne", "soraka"),
 		),
 		SoftwareDeps: []string{"reboot", "chrome", "crossystem"},
-		ServiceDeps:  []string{"tast.cros.arc.ADBOverUSBService"},
+		ServiceDeps:  []string{"tast.cros.arc.ADBOverUSBService", "tast.cros.firmware.UtilsService", "tast.cros.firmware.BiosService"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -35,13 +37,15 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Timeout: 10 * time.Minute,
+		Data:    []string{firmware.ConfigFile},
+		Pre:     pre.DevMode(),
+		Vars:    []string{"servo"},
+		Timeout: 15 * time.Minute,
 	})
 }
 
 func ADBOverUSB(ctx context.Context, s *testing.State) {
 	d := s.DUT()
-
 	// Connect to the gRPC server on the DUT
 	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
 	if err != nil {
