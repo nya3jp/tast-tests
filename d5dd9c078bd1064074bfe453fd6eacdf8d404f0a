@@ -39,6 +39,30 @@
       },
       "revId": "d5dd9c078bd1064074bfe453fd6eacdf8d404f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7bc2a6c_4fe2cf80",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-07T15:46:17Z",
+      "side": 1,
+      "message": "Done. Keeping the api as it was.",
+      "parentUuid": "1ab8f180_9adcd482",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 3
+      },
+      "revId": "d5dd9c078bd1064074bfe453fd6eacdf8d404f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
