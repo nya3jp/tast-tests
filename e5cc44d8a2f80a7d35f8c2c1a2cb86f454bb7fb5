@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5511028_42910ec3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-07T23:25:16Z",
+      "side": 1,
+      "message": "The change is simple, no need to wait for the shadow review.\n\nUnfortunately, however, I\u0027m afraid that this test case is not qualified to be the mainline test. Our basic guideline is \"passes consistently for at least 20 builds\" (see https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md#step-4_remove-attribute-to-make-it-run-on-infra).  https://tastboard.corp.google.com/test/crash.KernelAth10kError shows several of errors lately. Looks like flakiness is mostly on kernelnexts, but also a failure is seen on krane too.",
+      "revId": "e5cc44d8a2f80a7d35f8c2c1a2cb86f454bb7fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
