@@ -17,7 +17,7 @@ func init() {
 		Func:        RemoteFileSystem,
 		Desc:        "Demonstrates how to access remote file system",
 		Contacts:    []string{"nya@chromium.org", "tast-owners@google.com"},
-		Attr:        []string{"group:mainline", "informational"},
+		Attr:        []string{"group:mainline"},
 		ServiceDeps: []string{dutfs.ServiceName},
 	})
 }
