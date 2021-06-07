@@ -16,6 +16,23 @@
       "message": "Explanation I put in comment to the bug:\nFailures happened ONLY in table mode:\n\n2021-06-07T11:55:07.737680Z policy.VirtualKeyboard.both           [ FAIL ] vke_disabled-tvke_unset: Virtual keyboard was still visible after 15s: context deadline exceeded; last error follows: node still exists\n2021-06-07T11:55:07.737693Z                                                vke_unset-tvke_unset: Virtual keyboard was still visible after 15s: context deadline exceeded; last error follows: node still exists\n\nBoth above failures make touch keyboard to be displayed.\n\n2021-06-07T11:55:07.737725Z policy.VirtualKeyboard.touch_virtual  [ FAIL ] unset: Virtual keyboard was still visible after 15s: context deadline exceeded; last error follows: node still exists\n\nWhen touchVK is set to \"unset\" and user clicks on UI (in tablet mode) touch keyboard with be shown.\n\n2021-06-07T11:55:07.737745Z policy.VirtualKeyboard.virtual        [ FAIL ] disabled: Virtual keyboard was still visible after 15s: context deadline exceeded; last error follows: node still exists\n2021-06-07T11:55:07.737757Z                                                unset: Virtual keyboard was still visible after 15s: context deadline exceeded; last error follows: node still exists\n\nBoth cases the touch virtual keyboard is shown.\n\nREASON for failure:\nboth keyboards can be found by:\nnodewith.Name(\"Chrome OS Virtual Keyboard\").Role(role.Keyboard)\n\nhowever, \n\ntouch keyboard (the one shown in table mode) has:\nnodewith.ClassName(\"bordered-key-mode\")\n\nand the regular virtual keyboard governed by accessibility switch has:\nnodewith.ClassName(\"keyboard a11y-mode\")\n\non tablets touch virtual keyboard is shown by default (except if disabled) and the test produces false positives hence the keyboard that was detected was not VK but touch virtual keyboard.",
       "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3824505_87d90f19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-07T13:40:17Z",
+      "side": 1,
+      "message": "btw, if you have an idea how to solve it differently I am opened for suggestions.\n\nI am tempted to split that tests and I am not sure it is easy to grasp why one keyboard is used here and the other another time.",
+      "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
