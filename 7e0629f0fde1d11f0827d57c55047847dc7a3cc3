@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c15f45e3_e442900d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-07T16:56:37Z",
+      "side": 1,
+      "message": "Hi Shuhei-san,\n\nDo you mind helping me with this review when you get the chance? Thank you!",
+      "revId": "7e0629f0fde1d11f0827d57c55047847dc7a3cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
