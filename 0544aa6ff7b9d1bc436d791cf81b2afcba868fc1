@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e63c67c8_6df7d21e",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-07T20:31:11Z",
+      "side": 1,
+      "message": "Can you add a utility function, func (p *Proxy) isLocal() bool, to make lines like L199 and L209 more readable?",
+      "revId": "0544aa6ff7b9d1bc436d791cf81b2afcba868fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb1fe196_2842c633",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-07T20:31:11Z",
+      "side": 1,
+      "message": "Is sudo strictly necessary? In general I\u0027d think it\u0027s safest to only use sudo when necessary.",
+      "range": {
+        "startLine": 211,
+        "startChar": 35,
+        "endLine": 211,
+        "endChar": 39
+      },
+      "revId": "0544aa6ff7b9d1bc436d791cf81b2afcba868fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
