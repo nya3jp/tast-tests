@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a7c05d5_f6aa8052",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-07T07:03:41Z",
+      "side": 1,
+      "message": "Do you know why TOS sometimes fails to load?\n\nAre we sure that this issue doesn\u0027t affect users?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "ae6bff3fbba95504beb0f0b1fddfbd8b83dc9ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8839c91a_61dd481e",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-07T07:03:41Z",
+      "side": 1,
+      "message": "In general it is good to minimize variable scopes. In fact we don\u0027t need err in this scope.\n\nWe can do something like this instead:\n\n for {\n    err :\u003d waitForTerms(...)\n    if err \u003d\u003d nil {\n      return nil\n    }\n    if attempts \u003e\u003d maxAttempts {\n      return err\n    }\n    \n    testing.ContextLogf(..., err)\n    ...\n }",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 14
+      },
+      "revId": "ae6bff3fbba95504beb0f0b1fddfbd8b83dc9ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
