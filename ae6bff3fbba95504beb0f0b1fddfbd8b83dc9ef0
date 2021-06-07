@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca5820bb_f0abaece",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-07T07:17:31Z",
+      "side": 1,
+      "message": "It is a network error logged in chrome log with each failed test for similar reason\n\n```\n2021-06-06T15:50:06.034261Z ERROR chrome[5331:5331]: [CONSOLE(559)] \"TermsView loading is aborted: ERR_CONNECTION_CLOSED\", source: chrome-extension://cnbgggchhmkkdmeppjobngjoejnihlei/background.js (559)\n2021-06-06T15:50:06.037827Z WARNING chrome[5331:5331]: [CONSOLE(264)] \"\u003cwebview\u003e: The load has aborted with error -100: ERR_CONNECTION_CLOSED.\", source: extensions::webViewEvents (264)\n```\n\nThis is intermittent error and depends on the environment.",
+      "parentUuid": "1a7c05d5_f6aa8052",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "ae6bff3fbba95504beb0f0b1fddfbd8b83dc9ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8839c91a_61dd481e",
         "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-07T07:03:41Z",
       "side": 1,
       "message": "In general it is good to minimize variable scopes. In fact we don\u0027t need err in this scope.\n\nWe can do something like this instead:\n\n for {\n    err :\u003d waitForTerms(...)\n    if err \u003d\u003d nil {\n      return nil\n    }\n    if attempts \u003e\u003d maxAttempts {\n      return err\n    }\n    \n    testing.ContextLogf(..., err)\n    ...\n }",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 14
+      },
+      "revId": "ae6bff3fbba95504beb0f0b1fddfbd8b83dc9ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3eccb01_cb206b09",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-07T07:17:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8839c91a_61dd481e",
       "range": {
         "startLine": 87,
         "startChar": 1,
