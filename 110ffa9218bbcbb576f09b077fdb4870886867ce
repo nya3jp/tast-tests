@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cec8757_3d3917e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-07T10:19:35Z",
+      "side": 1,
+      "message": "Main error message after running the test\n\ntrue: Failed to update policies: failed to serve policies: failed to refresh policies: cdp.Runtime: Evaluate: rpcc: the connection is closing\n2021-06-07T08:42:45.813670Z                                               Failed to obtain policies from Chrome: could not get policies from DUT: cdp.Runtime: Evaluate: rpcc: the connection is closing: session: detach failed for session 9DE86920C99330A137D656EE6F8DD5DF: cdp.Target: DetachFromTarget: rpcc: the connection is closing: websocket: close 1006 (abnormal closure): unexpected EOF\n\n\nComplete log message of the error\nhttps://docs.google.com/document/d/1xldGGcdyhXO7vvN5CItfiVIDXjeNLJX4bUq7IezV9iA/edit?usp\u003dsharing\n",
+      "revId": "110ffa9218bbcbb576f09b077fdb4870886867ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00c35e59_b3e31728",
