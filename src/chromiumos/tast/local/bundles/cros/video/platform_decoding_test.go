@@ -7,6 +7,7 @@ package video
 import (
 	"fmt"
 	"path/filepath"
+	"strings"
 	"testing"
 	"time"
 
@@ -359,9 +360,11 @@ func TestPlatformDecodingParams(t *testing.T) {
 					param.Timeout = extension
 				}
 
+				var hardwareDeps []string
+
 				// TODO(b/184683272): Reenable everywhere.
 				if cat == "frm_resize" || cat == "sub8x8_sf" {
-					param.HardwareDeps = "hwdep.D(hwdep.SkipOnPlatform(\"grunt\", \"zork\"))"
+					hardwareDeps = append(hardwareDeps, "hwdep.SkipOnPlatform(\"grunt\", \"zork\")")
 				}
 
 				switch levelGroup {
@@ -369,10 +372,12 @@ func TestPlatformDecodingParams(t *testing.T) {
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K)
 				case "level5_1":
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K60)
+					hardwareDeps = append(hardwareDeps, "hwdep.MinMemory(4096)")
 				default:
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9)
 				}
 
+				param.HardwareDeps = strings.Join(hardwareDeps, ", ")
 				params = append(params, param)
 			}
 		}
@@ -412,17 +417,19 @@ func TestPlatformDecodingParams(t *testing.T) {
 					param.Timeout = extension
 				}
 
-				param.HardwareDeps = "hwdep.D(hwdep.Platform(\"trogdor\"))"
+				hardwareDeps := []string{"hwdep.Platform(\"trogdor\")"}
 
 				switch levelGroup {
 				case "level5_0":
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K)
 				case "level5_1":
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K60)
+					hardwareDeps = append(hardwareDeps, "hwdep.MinMemory(4096)")
 				default:
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9)
 				}
 
+				param.HardwareDeps = strings.Join(hardwareDeps, ", ")
 				params = append(params, param)
 			}
 		}
@@ -437,7 +444,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 		},
 		Timeout: {{ .Timeout | fmt }},
 		{{ if .HardwareDeps }}
-		ExtraHardwareDeps: {{ .HardwareDeps }},
+		ExtraHardwareDeps: hwdep.D({{ .HardwareDeps }}),
 		{{ end }}
 		{{ if .SoftwareDeps }}
 		ExtraSoftwareDeps: {{ .SoftwareDeps | fmt }},
