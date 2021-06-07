@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be44fd3f_f16cd4fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-07T23:41:51Z",
+      "side": 1,
+      "message": "nit: if it\u0027s only used once here, you can directly embed it.\n  }, \u0026testing.PollOptions{Timeout: 10 * time.Second}); err !\u003d nil {\n    ...",
+      "range": {
+        "startLine": 152,
+        "startChar": 5,
+        "endLine": 152,
+        "endChar": 19
+      },
+      "revId": "870c18f339b6dd43fd32a3d4570e4de88de72a46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35157df2_b7b6c4e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-07T23:41:51Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 160,
+        "startChar": 5,
+        "endLine": 160,
+        "endChar": 18
+      },
+      "revId": "870c18f339b6dd43fd32a3d4570e4de88de72a46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
