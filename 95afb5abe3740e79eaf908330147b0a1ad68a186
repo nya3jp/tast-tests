@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aac69f08_78d55d06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409820
+      },
+      "writtenOn": "2021-06-07T20:49:52Z",
+      "side": 1,
+      "message": "Hi Greg and Niwa,\n\nPlease help me reviewing the CL. This CL is using firmware.Pre to enforce firmware boot in developer mode. As we discussed offline with Greg, currently the dev switcher is flaky at this time https://b.corp.google.com/issues/169333650. \n\nThanks,\nSherry",
+      "revId": "95afb5abe3740e79eaf908330147b0a1ad68a186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
