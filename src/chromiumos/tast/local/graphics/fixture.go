@@ -8,11 +8,14 @@ package graphics
 import (
 	"context"
 	"io"
+	"path/filepath"
 	"regexp"
+	"sort"
 	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/lacros/launcher"
@@ -220,14 +223,15 @@ func (f *gpuWatchDogFixture) getGPUCrash() ([]string, error) {
 	return crashes, nil
 }
 
-// checkNewCrashes checks the difference between the oldCrashes and the current crashes. Return error if failed to retrieve current crashes or the list is mismatch.
-func (f *gpuWatchDogFixture) checkNewCrashes(ctx context.Context, oldCrashes []string) error {
+// checkNewCrashes checks the difference between the oldCrashes and the current crashes. It will try to save the new crash to outDir and return error if failed to retrieve current crashes or the list is mismatch.
+func (f *gpuWatchDogFixture) checkNewCrashes(ctx context.Context, oldCrashes []string, outDir string) error {
 	crashes, err := f.getGPUCrash()
 	if err != nil {
 		return err
 	}
 
 	// Check if there're new crash files got generated during the test.
+	var newCrashes []string
 	for _, crash := range crashes {
 		found := false
 		for _, preTestCrash := range oldCrashes {
@@ -237,8 +241,20 @@ func (f *gpuWatchDogFixture) checkNewCrashes(ctx context.Context, oldCrashes []s
 			}
 		}
 		if !found {
-			return errors.Errorf("found gpu crash file: %s", crash)
+			newCrashes = append(newCrashes, crash)
 		}
+	}
+
+	if len(newCrashes) > 0 {
+		sort.Strings(newCrashes)
+		resultErr := errors.Errorf("found gpu crash file: %v", newCrashes)
+		for _, crash := range newCrashes {
+			destPath := filepath.Join(outDir, filepath.Base(crash))
+			if err := fsutil.CopyFile(crash, destPath); err != nil {
+				resultErr = errors.Wrapf(resultErr, "failed to copy crash file %v: %v", crash, err.Error())
+			}
+		}
+		return resultErr
 	}
 	return nil
 }
@@ -251,7 +267,7 @@ func (f *gpuWatchDogFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 		s.Log("Failed to get gpu crashes: ", err)
 	} else {
 		f.postFunc = append(f.postFunc, func(ctx context.Context) error {
-			return f.checkNewCrashes(ctx, crashes)
+			return f.checkNewCrashes(ctx, crashes, s.OutDir())
 		})
 	}
 }
