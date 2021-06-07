@@ -140,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6898e75_dcbb07ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-07T07:39:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddc4a902_635d4cac",
+      "revId": "4880b25c6eeed444785f0c0cff1a8778d0575f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cd5ed57_0cc3be7c",
@@ -171,6 +189,24 @@
       "side": 1,
       "message": "Will do.",
       "parentUuid": "4cd5ed57_0cc3be7c",
+      "revId": "4880b25c6eeed444785f0c0cff1a8778d0575f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33e2618e_85fb457c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-07T07:39:50Z",
+      "side": 1,
+      "message": "Added android_cpu.",
+      "parentUuid": "af3b527b_9b34029e",
       "revId": "4880b25c6eeed444785f0c0cff1a8778d0575f39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
