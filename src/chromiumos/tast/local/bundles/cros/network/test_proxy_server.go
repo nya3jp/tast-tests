@@ -25,6 +25,7 @@ func init() {
 var (
 	authRequiredHeader   = []byte("HTTP/1.0 407 Proxy Authentication Required")
 	pageMovedHeader      = []byte("HTTP/1.0 301 Moved Permanently")
+	noContentHeader      = []byte("HTTP/1.0 204 No Content")
 	requestBlockedHeader = []byte("HTTP/1.0 403 Filtered")
 
 	allowedHost = "google.com"
@@ -53,7 +54,7 @@ func TestProxyServer(ctx context.Context, s *testing.State) {
 	out, err = testexec.CommandContext(ctx, "curl", "-I", "-x", "http://user:test0000@"+Server.HostAndPort, allowedHost).Output()
 	if err != nil {
 		s.Error("Curl command with auth failed: ", err)
-	} else if !bytes.Contains(out, pageMovedHeader) {
+	} else if !bytes.Contains(out, pageMovedHeader) && !bytes.Contains(out, noContentHeader) { // Looks like curl requests to google.com may return 204 code (see b/190208108).
 		s.Errorf("Unexpected curl result with auth: got %s; want %s", out, pageMovedHeader)
 	}
 
