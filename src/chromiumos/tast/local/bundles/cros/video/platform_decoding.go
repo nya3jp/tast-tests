@@ -6,9 +6,7 @@ package video
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"strings"
 	"time"
 
@@ -22,13 +20,15 @@ import (
 )
 
 // commandBuilderFn is the function type to generate the command line with arguments.
-type commandBuilderDecodeFn func(exe, filename string) (command []string)
+type commandBuilderDecodeFn func(filename string) (command []string)
 
 type platformDecodingParams struct {
 	filenames      []string
 	decoder        string                 // command line decoder binary
 	commandBuilder commandBuilderDecodeFn // Function to create the command line arguments.
 }
+
+var validatePath = "/usr/local/graphics/validate"
 
 func init() {
 	// The VP9 tests are named and ordered with increasing VP9 levels (resolution and bitrate) of the
@@ -975,59 +975,6 @@ func init() {
 	})
 }
 
-// readMetadata reads metadata from metadata json.
-func readMetadata(metadataPath string) (map[string]interface{}, error) {
-	metadataJSONBytes, err := ioutil.ReadFile(metadataPath)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to read metadata file at %s", metadataPath)
-	}
-
-	var meta map[string]interface{}
-	if err = json.Unmarshal(metadataJSONBytes, &meta); err != nil {
-		return nil, errors.Wrapf(err, "failed to read json from metadata file at %s", metadataPath)
-	}
-
-	return meta, nil
-}
-
-// verifyContent compares expected per-frame hashes from metadata json to actual
-// hashes.
-func verifyContent(expectedHashesPath, actualOutput string) error {
-	meta, err := readMetadata(expectedHashesPath)
-	if err != nil {
-		return errors.Wrap(err, "failed to verify per-frame hashes")
-	}
-	expected, ok := meta["md5_checksums"].([]interface{})
-	if !ok {
-		return errors.Errorf("`md5_checksums` in metadata at %s not a slice; got %v", expectedHashesPath, meta["md5_checksums"])
-	}
-
-	actual := strings.Split(strings.TrimSpace(actualOutput), "\n")
-	if len(expected) != len(actual) {
-		return errors.Errorf("expected and actual number of frames mismatched (%d != %d)", len(expected), len(actual))
-	}
-
-	var first string
-	var count int
-	for i, ex := range expected {
-		if _, ok := ex.(string); !ok {
-			return errors.Errorf("failed to cast expected hash %v of type %T to string", ex, ex)
-		}
-		if got, wanted := strings.TrimSpace(actual[i]), strings.TrimSpace(ex.(string)); got != wanted {
-			count++
-			if first == "" {
-				first = fmt.Sprintf("frame %d (got %s, want %s)", i, got, wanted)
-			}
-		}
-	}
-
-	if count > 0 {
-		return errors.Errorf("%d mismatched hashes, first at %s", count, first)
-	}
-
-	return nil
-}
-
 // PlatformDecoding runs the media/gpu/vaapi/test:decode_test binary for vaapi
 // or drm-tests/v4l2_stateful_decoder binary on the file specified in the testing state.
 // The test fails if any of the VAAPI or V4L2 calls fail (or if the test is incorrectly invoked):
@@ -1068,9 +1015,13 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 	exec := testOpt.decoder
 	for _, filename := range testOpt.filenames {
 		testing.ContextLogf(ctx, "Running %s on %s", exec, filename)
-		command := testOpt.commandBuilder(exec, s.DataPath(filename))
+		args := testOpt.commandBuilder(s.DataPath(filename))
 		stdout, stderr, err := testexec.CommandContext(
-			ctx, command[0], command[1:]...,
+			ctx,
+			validatePath,
+			"--exec="+exec,
+			fmt.Sprintf("--args=%s", strings.Join(args, " ")),
+			fmt.Sprintf("--metadata=%s.json", s.DataPath(filename)),
 		).SeparatedOutput(testexec.DumpLogOnError)
 
 		if err != nil {
@@ -1078,24 +1029,17 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 			s.Fatalf("%v failed unexpectedly: %v", exec, errors.Wrap(err, string(output)))
 		}
 		// TODO(jchinlee): Investigate saving failing frames.
-		// TODO(jchinlee): Move verification logic out of tast.
-		if err := verifyContent(s.DataPath(filename+".json"), string(stdout)); err != nil {
-			s.Fatalf("%v failed to verify content: %v", exec, errors.Wrap(err, filename))
-		}
 	}
 }
 
 // vp9decodeV4L2args constructs the command line for the VP9 decoding binary exe for v4l2.
-func vp9decodeV4L2args(exe, filename string) []string {
-	return []string{exe, "--file=" + filename,
-		"--md5",
-		"--log_level=1"}
+func vp9decodeV4L2args(filename string) []string {
+	return []string{"--file=" + filename, "--md5", "--log_level=1"}
 }
 
 // av1decodeVAAPIargs constructs the command line for the AV1 decoding binary exe for vaapi.
-func av1decodeVAAPIargs(exe, filename string) []string {
+func av1decodeVAAPIargs(filename string) []string {
 	return []string{
-		exe,
 		"--video=" + filename,
 		"--md5",
 		// aomdec is used to compute reference hashes, and outputs only those for
@@ -1105,9 +1049,8 @@ func av1decodeVAAPIargs(exe, filename string) []string {
 }
 
 // vp9decodeVAAPIargs constructs the command line for the VP9 decoding binary exe for vaapi.
-func vp9decodeVAAPIargs(exe, filename string) []string {
+func vp9decodeVAAPIargs(filename string) []string {
 	return []string{
-		exe,
 		"--video=" + filename,
 		"--md5",
 		// vpxdec is used to compute reference hashes, and outputs only those for
