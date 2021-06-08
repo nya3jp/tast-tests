@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/av1/aom/av1-1-b8-01-size-34x18_20210607.ivf",
+  "size": 356,
+  "sha256sum": "3208cffddd336d5aa0590fc07706583d5983913115b939d03582b3a1259f242f"
+}
