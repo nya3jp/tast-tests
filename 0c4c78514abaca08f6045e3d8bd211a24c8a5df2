@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6b33a73_f912cebb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-08T20:45:24Z",
+      "side": 1,
+      "message": "LGTM, optional comments",
+      "revId": "0c4c78514abaca08f6045e3d8bd211a24c8a5df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3efd8932_67f514cb",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-08T20:45:24Z",
+      "side": 1,
+      "message": "This parsing works, but I wonder whether a regexp would be easier to update in the future. I know regexps are sometimes contentious, so this might not actually be preferable, but I thought I\u0027d surface the option.\n\n    hostRe :\u003d `((?P\u003chost\u003e\\w+)|\\[(?P\u003cbracketedHost\u003e::\\d+)\\])`\n    portRe :\u003d `(:(?P\u003cport\u003e\\d+))`\n    sshPortRe :\u003d `(:ssh:(?P\u003csshPort\u003e\\d+))`\n    re :\u003d regexp.MustCompile(fmt.Sprintf(`^%s?%s?%s?$`, hostRe, portRe, sshPortRe))\n    // or just build it all in one line\n\n    if !re.MatchString(servoHostPort) {\n        return \"\", 0, 0, errors.New(\"failed to parse host/port: \", servoHostPort)\n    }\n    matches :\u003d re.FindStringSubmatch(sshHostPort)\n    \n    var host string\n    host :\u003d matches[re.SubexpIndex(\"host\")]\n    if host \u003d\u003d \"\" {\n        bracketedHost :\u003d matches[re.SubexpIndex(\"bracketedHost\")]\n        if bracketedHost \u003d\u003d \"\" {\n            host \u003d \"localhost\"\n        } else {\n            host \u003d bracketedHost\n        }\n    }\n    var port, sshPort int\n    portStr :\u003d matches[re.SubexpIndex(\"port\")]\n    if portStr \u003d\u003d \"\" {\n        if port, err \u003d strconv.Atoi(portStr); err !\u003d nil {\n            return \"\", 0, 0, errors.Wrapf(err, \"parsing servo port %s\", portStr)\n        }\n    sshPortStr :\u003d matches[re.SubexpIndex(\"hostPort\")]\n    if sshPortStr \u003d\u003d \"\" {\n        if port, err \u003d strconv.Atoi(sshPortStr); err !\u003d nil {\n            return \"\", 0, 0, errors.Wrapf(err, \"parsing servo host ssh port\")\n        }\n    }\n    \n    return host, port, sshPort, nil",
+      "revId": "0c4c78514abaca08f6045e3d8bd211a24c8a5df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cebee3c9_6f40847b",
+        "filename": "src/chromiumos/tast/remote/servo/proxy_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-08T20:45:24Z",
+      "side": 1,
+      "message": "nit: `continue` would allow us to run the other test cases. If you\u0027d rather stop testing upon an unexpected error state, I think `t.Fatalf` is more direct.",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 9
+      },
+      "revId": "0c4c78514abaca08f6045e3d8bd211a24c8a5df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
