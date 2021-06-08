@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff055fed_c0080e6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T06:02:27Z",
+      "side": 1,
+      "message": "Can the test proceed if this fails? err !\u003d nil here means the item is there but it fails to click.",
+      "range": {
+        "startLine": 83,
+        "startChar": 10,
+        "endLine": 83,
+        "endChar": 20
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec9b9cb5_2a90f51f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T06:02:27Z",
+      "side": 1,
+      "message": "Suggest to use uiauto.Combine to combine kb.TypeAction and kb.AccelAction",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 3
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e0171b1_b8ce3a5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T06:02:27Z",
+      "side": 1,
+      "message": "Make it a method of struct YtApp so that you do not need to create kb or pass tconn?",
+      "range": {
+        "startLine": 189,
+        "startChar": 5,
+        "endLine": 189,
+        "endChar": 23
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65983ea0_a6e6df41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T06:02:27Z",
+      "side": 1,
+      "message": "Since you did not do anything with the error of Poll, you could just return testing.Poll(...)...",
+      "range": {
+        "startLine": 200,
+        "startChar": 19,
+        "endLine": 200,
+        "endChar": 23
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d6193b0_c581e462",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T06:02:27Z",
+      "side": 1,
+      "message": "This else is not needed.",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 8
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be24b167_09c5a24f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T06:02:27Z",
+      "side": 1,
+      "message": "Why do you need this?",
+      "range": {
+        "startLine": 210,
+        "startChar": 21,
+        "endLine": 210,
+        "endChar": 26
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cdc1e30_e1e31276",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T06:02:27Z",
+      "side": 1,
+      "message": "Why do you need this?",
+      "range": {
+        "startLine": 217,
+        "startChar": 21,
+        "endLine": 217,
+        "endChar": 26
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "551d72ce_b5d6b838",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T06:02:27Z",
+      "side": 1,
+      "message": "Why it always return error?",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 220,
+        "endChar": 56
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c374e0_7815223b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T06:02:27Z",
+      "side": 1,
+      "message": "Just return testing.Poll...",
+      "range": {
+        "startLine": 261,
+        "startChar": 11,
+        "endLine": 261,
+        "endChar": 23
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "501634d4_9a555fdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T06:02:27Z",
+      "side": 1,
+      "message": "This else is not needed.",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 8
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d6ced6a_f71408f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T06:02:27Z",
+      "side": 1,
+      "message": "return testing.Poll",
+      "range": {
+        "startLine": 292,
+        "startChar": 19,
+        "endLine": 292,
+        "endChar": 23
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b14db521_31f045c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T06:02:27Z",
+      "side": 1,
+      "message": "Nothing is done after this sleep?",
+      "range": {
+        "startLine": 320,
+        "startChar": 20,
+        "endLine": 320,
+        "endChar": 25
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
