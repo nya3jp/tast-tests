@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88c8368b_8f24d307",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-06-08T01:09:01Z",
+      "side": 1,
+      "message": "Constructor should be called NewValuesFromProto, not NewFromProto.",
+      "revId": "779e536871d0dc59f215a8aacbf7258daa83dff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
