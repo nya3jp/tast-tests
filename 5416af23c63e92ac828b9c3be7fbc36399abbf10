@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07b9c39_a757b222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-08T12:26:47Z",
+      "side": 1,
+      "message": "Can you file a bug for EnsureGoneFor(), and link it here? I think that function should be fixed.",
+      "range": {
+        "startLine": 197,
+        "startChar": 18,
+        "endLine": 197,
+        "endChar": 33
+      },
+      "revId": "5416af23c63e92ac828b9c3be7fbc36399abbf10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
