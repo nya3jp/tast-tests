@@ -34,6 +34,24 @@
       "parentUuid": "f5e94ecd_c9bbc5d5",
       "revId": "cbafc73f4fee535c6fbf527f4466152ef5430cd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5674e528_49467f37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-06-08T18:42:10Z",
+      "side": 1,
+      "message": "I think it would be more readable to make the 4097. We used to have, and maybe still do, 2GB devices in the lab. On first read I would assume that the intention is to exclude those. But notice we do sell some 6GB ARM Samsung devices. So there is a step between 4GB and 8GB.",
+      "parentUuid": "68f66d0f_7d4352fe",
+      "revId": "cbafc73f4fee535c6fbf527f4466152ef5430cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
