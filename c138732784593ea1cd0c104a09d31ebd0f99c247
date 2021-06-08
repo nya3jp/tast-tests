@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf9544b6_0fff753b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-08T04:52:23Z",
+      "side": 1,
+      "message": "I guess you meant Commit-Queue+2 (I often make similar mistakes...)",
+      "revId": "c138732784593ea1cd0c104a09d31ebd0f99c247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
