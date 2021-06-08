@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b007da83_b1c2a425",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-08T14:08:04Z",
+      "side": 1,
+      "message": "If you are removing the file at the end of the test, it makes more sense to use a temporary file.",
+      "revId": "74dc77a7cc7f2652d25dcdab907dc3a4eb7d6ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd9b435a_ec38e66b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-08T14:08:04Z",
+      "side": 1,
+      "message": "These don\u0027t need to be arguments, you can just refer to them in go.",
+      "range": {
+        "startLine": 103,
+        "startChar": 35,
+        "endLine": 103,
+        "endChar": 56
+      },
+      "revId": "74dc77a7cc7f2652d25dcdab907dc3a4eb7d6ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af58d527_9e7e4ff0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-08T14:08:04Z",
+      "side": 1,
+      "message": "Why are you removing the file twice?",
+      "revId": "74dc77a7cc7f2652d25dcdab907dc3a4eb7d6ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57adb5c2_52066f2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-08T14:08:04Z",
+      "side": 1,
+      "message": "maybe Pipe?",
+      "range": {
+        "startLine": 111,
+        "startChar": 7,
+        "endLine": 111,
+        "endChar": 11
+      },
+      "revId": "74dc77a7cc7f2652d25dcdab907dc3a4eb7d6ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d5dd1ee_c4bf8d21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-08T14:08:04Z",
+      "side": 1,
+      "message": "Fatal? Can the test continue after an error?",
+      "range": {
+        "startLine": 136,
+        "startChar": 6,
+        "endLine": 136,
+        "endChar": 11
+      },
+      "revId": "74dc77a7cc7f2652d25dcdab907dc3a4eb7d6ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12721576_4ffbf82d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-08T14:08:04Z",
+      "side": 1,
+      "message": "You can use Run if you don\u0027t care about the output.",
+      "range": {
+        "startLine": 141,
+        "startChar": 79,
+        "endLine": 141,
+        "endChar": 85
+      },
+      "revId": "74dc77a7cc7f2652d25dcdab907dc3a4eb7d6ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19de423d_71b7c386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-08T14:08:04Z",
+      "side": 1,
+      "message": "Fatal",
+      "range": {
+        "startLine": 155,
+        "startChar": 6,
+        "endLine": 155,
+        "endChar": 11
+      },
+      "revId": "74dc77a7cc7f2652d25dcdab907dc3a4eb7d6ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
