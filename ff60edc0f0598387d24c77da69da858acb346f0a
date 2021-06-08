@@ -16,6 +16,74 @@
       "message": "Nice.  I hadn\u0027t heard of the functional options pattern before but it seems pretty useful.",
       "revId": "ff60edc0f0598387d24c77da69da858acb346f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94529322_91192611",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-08T17:05:26Z",
+      "side": 1,
+      "message": "LGTM for the stated purpose of the CL, but opportunities to clean up genSocketPath",
+      "revId": "ff60edc0f0598387d24c77da69da858acb346f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d206d81_8512874a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-08T17:05:26Z",
+      "side": 1,
+      "message": "If the only purpose of this function is to generate a filepath like `${td}/${random_string}crosvm_socket`, then it would be simpler and more error-proof to do this via string manipulation, instead of creating and deleting file.\n\nIf you need a randomly generated name, you can do this with the uuid library, which is already available for use in Tast:\n\n    import (\n        \"fmt\"\n        \"path/filepath\"\n        \n        \"github.com/google/uuid\"\n    )\n\n    func genSocketPath(td string) string {\n        u :\u003d uuid.New()\n        filename :\u003d fmt.Sprintf(\"%scrosvm_socket\", u)\n        return filepath.Join(td, filename)\n        \n        // One-line version:\n        // return filepath.Join(td, fmt.Sprintf(\"%scrosvm_socket\", uuid.New()))\n    }\n\nDocumentation for uuid.New: https://pkg.go.dev/github.com/google/uuid#New",
+      "revId": "ff60edc0f0598387d24c77da69da858acb346f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d57cce_b5d34594",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-08T17:05:26Z",
+      "side": 1,
+      "message": "This deferred function will run when genSocketPath returns (or panics). So, genSocketPath will return a path, but no file will exist at that path. Is that what you intended?",
+      "revId": "ff60edc0f0598387d24c77da69da858acb346f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ed10e5a_ea165e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-08T17:05:26Z",
+      "side": 1,
+      "message": "This is redundant with L37, since the deferred os.Remove will call when you return at L40.",
+      "revId": "ff60edc0f0598387d24c77da69da858acb346f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
