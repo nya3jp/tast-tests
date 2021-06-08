@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22ac30cd_e0d69ee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 64
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-08T04:40:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34d877af_55756717",
+      "range": {
+        "startLine": 35,
+        "startChar": 39,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "5caabbb8c269551dc129a1505b5b603ccd46f723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5d0fe23_059bdb8d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "588604a2_23f86fc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 64
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-08T04:40:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5d0fe23_059bdb8d",
+      "range": {
+        "startLine": 44,
+        "startChar": 38,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "5caabbb8c269551dc129a1505b5b603ccd46f723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e18c822a_503f8166",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-08T00:23:50Z",
       "side": 1,
       "message": "Please do not pass s around.",
+      "range": {
+        "startLine": 61,
+        "startChar": 30,
+        "endLine": 61,
+        "endChar": 46
+      },
+      "revId": "5caabbb8c269551dc129a1505b5b603ccd46f723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "657f141c_7cd6968d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 64
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-08T04:40:38Z",
+      "side": 1,
+      "message": "Replaced s with s.OutDir(), which will be used inside the videocuj.Run()",
+      "parentUuid": "e18c822a_503f8166",
       "range": {
         "startLine": 61,
         "startChar": 30,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2909aec0_d912d170",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 64
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-08T04:40:38Z",
+      "side": 1,
+      "message": "In the videocuj.Run(), cr is used to take screenshot. Since we have to pass cr in, I think we\u0027d better create tconn inside. Hope this makes sence.",
+      "parentUuid": "ac44fbd0_faa2804c",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "5caabbb8c269551dc129a1505b5b603ccd46f723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d4a14a2_0278e5a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
         "patchSetId": 64
@@ -106,6 +202,30 @@
       "writtenOn": "2021-06-08T00:23:50Z",
       "side": 1,
       "message": "Suggest to create the kb outside and pass it in because it sometimes could take a long time to creat a kb.",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 17
+      },
+      "revId": "5caabbb8c269551dc129a1505b5b603ccd46f723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf90e6d5_f323f6a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 64
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-08T04:40:38Z",
+      "side": 1,
+      "message": "Thanks for the tip, Judy. It\u0027s good to know. The CUJ test will collect metric in recorder. This code snippet is out of the recorder.Run(), I think we can keep it here along with other initiations.",
+      "parentUuid": "0d4a14a2_0278e5a5",
       "range": {
         "startLine": 74,
         "startChar": 1,
@@ -163,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3928cb22_26b57225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 64
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-08T04:40:38Z",
+      "side": 1,
+      "message": "YoutubeApp will be added in that CL. Just wanted to keep things related in a single CL. :-)",
+      "parentUuid": "2db09bf4_4f1702cb",
+      "range": {
+        "startLine": 130,
+        "startChar": 8,
+        "endLine": 130,
+        "endChar": 18
+      },
+      "revId": "5caabbb8c269551dc129a1505b5b603ccd46f723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcf420af_c0ad70f0",
@@ -176,6 +320,30 @@
       "writtenOn": "2021-06-08T00:23:50Z",
       "side": 1,
       "message": "Can 0 be some window id? If yes, suggest to use -1.",
+      "range": {
+        "startLine": 203,
+        "startChar": 9,
+        "endLine": 203,
+        "endChar": 10
+      },
+      "revId": "5caabbb8c269551dc129a1505b5b603ccd46f723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80700439_59031826",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 64
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-08T04:40:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcf420af_c0ad70f0",
       "range": {
         "startLine": 203,
         "startChar": 9,
