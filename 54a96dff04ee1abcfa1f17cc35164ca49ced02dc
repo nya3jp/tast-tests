@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecb701d0_8ed932a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-08T19:43:01Z",
+      "side": 1,
+      "message": "Thanks for catching this. Removed this ui var declaration and use y.ui directly in the following logic.",
+      "parentUuid": "4eda5843_97310925",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "54a96dff04ee1abcfa1f17cc35164ca49ced02dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06b35897_e8fec0b6",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-08T02:23:42Z",
       "side": 1,
       "message": "So this is to look for a string which starts with \"Quality\"? If yes, suggest just using NameStartingWith.",
+      "range": {
+        "startLine": 86,
+        "startChar": 51,
+        "endLine": 86,
+        "endChar": 61
+      },
+      "revId": "54a96dff04ee1abcfa1f17cc35164ca49ced02dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c566f7b6_c8b84b90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-08T19:43:01Z",
+      "side": 1,
+      "message": "You are right. Changed.",
+      "parentUuid": "06b35897_e8fec0b6",
       "range": {
         "startLine": 86,
         "startChar": 51,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c09253c1_c5e62081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-08T19:43:01Z",
+      "side": 1,
+      "message": "Rephrased the comments.",
+      "parentUuid": "0990ba1d_f22c8310",
+      "range": {
+        "startLine": 99,
+        "startChar": 58,
+        "endLine": 99,
+        "endChar": 63
+      },
+      "revId": "54a96dff04ee1abcfa1f17cc35164ca49ced02dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72335a8d_3896b57d",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-08T02:23:42Z",
       "side": 1,
       "message": "NameStartingWith?",
+      "range": {
+        "startLine": 124,
+        "startChar": 60,
+        "endLine": 124,
+        "endChar": 63
+      },
+      "revId": "54a96dff04ee1abcfa1f17cc35164ca49ced02dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9df9c1d_6dd4e980",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-08T19:43:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72335a8d_3896b57d",
       "range": {
         "startLine": 124,
         "startChar": 60,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "face0925_69b1667d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-08T19:43:01Z",
+      "side": 1,
+      "message": "Changed. Also thanks for catch the bug - we should use playButton in WaitUntilExists.",
+      "parentUuid": "4186df2a_19e915e6",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 3
+      },
+      "revId": "54a96dff04ee1abcfa1f17cc35164ca49ced02dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "918bc71b_523fabd8",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-06-08T02:23:42Z",
       "side": 1,
       "message": "Why returnning error when it is already in full screen?",
+      "range": {
+        "startLine": 168,
+        "startChar": 9,
+        "endLine": 168,
+        "endChar": 44
+      },
+      "revId": "54a96dff04ee1abcfa1f17cc35164ca49ced02dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5969df6c_07e3a16e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-08T19:43:01Z",
+      "side": 1,
+      "message": "This is a bug. Fixed. Thanks for catching this!",
+      "parentUuid": "918bc71b_523fabd8",
       "range": {
         "startLine": 168,
         "startChar": 9,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23bf43e2_77946065",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-08T19:43:01Z",
+      "side": 1,
+      "message": "clearNotificationPrompts() has its own timeout, so removed WithTimeout() and make it inline.",
+      "parentUuid": "4b1c7eb6_cc4eb644",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 3
+      },
+      "revId": "54a96dff04ee1abcfa1f17cc35164ca49ced02dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6739d5f0_8796bfdd",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-06-08T02:23:42Z",
       "side": 1,
       "message": "It does not do anything immediately after this step? In that case, what is the point of sleeping?",
+      "range": {
+        "startLine": 215,
+        "startChar": 5,
+        "endLine": 215,
+        "endChar": 10
+      },
+      "revId": "54a96dff04ee1abcfa1f17cc35164ca49ced02dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ce5083d_352c130f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-08T19:43:01Z",
+      "side": 1,
+      "message": "This is just let the video play for a while as a normal user experience. Changed the comments to be clearer.",
+      "parentUuid": "6739d5f0_8796bfdd",
       "range": {
         "startLine": 215,
         "startChar": 5,
