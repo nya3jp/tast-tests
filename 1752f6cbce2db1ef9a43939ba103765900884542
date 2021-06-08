@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "901c6fd7_0468e579",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-08T19:35:33Z",
+      "side": 1,
+      "message": "nit: probably you had to run test before reboot?",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "1752f6cbce2db1ef9a43939ba103765900884542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fa2f421_406a6a0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-08T19:35:33Z",
+      "side": 1,
+      "message": "nit: please specify what VM did you use",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "1752f6cbce2db1ef9a43939ba103765900884542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2e2cb1b1_8c1bec22",
@@ -14,6 +60,46 @@
       "writtenOn": "2021-06-08T05:07:43Z",
       "side": 1,
       "message": "Hello, please help me review this change. Thank you.",
+      "revId": "1752f6cbce2db1ef9a43939ba103765900884542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e36f37d7_4763fb46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-08T19:35:33Z",
+      "side": 1,
+      "message": "In general LGTM, but have some open questions.",
+      "revId": "1752f6cbce2db1ef9a43939ba103765900884542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c08a20ba_44e20ff9",
+        "filename": "src/chromiumos/tast/local/hwsec/backup_important_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-08T19:35:33Z",
+      "side": 1,
+      "message": "Is it something that will be stored on the device even after running Tast test? Will it affect other tests? Maybe we should have a way to remove this file when not needed anymore?",
+      "range": {
+        "startLine": 17,
+        "startChar": 39,
+        "endLine": 17,
+        "endChar": 92
+      },
       "revId": "1752f6cbce2db1ef9a43939ba103765900884542",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
