@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc2639e8_503f614a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-06-08T18:34:29Z",
+      "side": 1,
+      "message": "lgtm.  I don\u0027t appear to have a vote here.",
+      "revId": "dc504b7f77d07d92508868c69b3445881e7e67a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
