@@ -54,6 +54,9 @@ func UnicornParentPermission(ctx context.Context, s *testing.State) {
 	}
 	if st.Provisioned {
 		s.Log("ARC is already provisioned. Skipping the Play Store setup")
+		if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
+			s.Fatal("Failed to close the provisioned Play Store: ", err)
+		}
 	} else {
 		// Optin to Play Store.
 		s.Log("Opting into Play Store")
