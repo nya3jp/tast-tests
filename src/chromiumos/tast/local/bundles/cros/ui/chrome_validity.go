@@ -26,7 +26,7 @@ func init() {
 			"nya@chromium.org",
 			"tast-owners@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 		Timeout:      30 * time.Second,
