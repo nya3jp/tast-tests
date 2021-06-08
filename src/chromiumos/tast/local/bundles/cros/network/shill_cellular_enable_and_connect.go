@@ -46,8 +46,8 @@ func ShillCellularEnableAndConnect(ctx context.Context, s *testing.State) {
 
 	// Test Disable / Enable / Connect / Disconnect.
 	// Run the test a second time to test Disable after Connect/Disconnect.
-	// Run the test a third time to help test against flakiness.
-	for i := 0; i < 3; i++ {
+	// TODO(b:190541087): Run a third time to help test against flakiness.
+	for i := 0; i < 2; i++ {
 		s.Logf("Disable %d", i)
 		if err := helper.Disable(ctx); err != nil {
 			s.Fatalf("Disable failed on attempt %d: %s", i, err)
