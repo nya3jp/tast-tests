@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/av1/aom/av1-1-b8-00-quantizer-45_20210607.ivf",
+  "size": 3711,
+  "sha256sum": "37484c7f37d3c1d5a5a1f97a8107e37bff9ba9e235690e01544790b4982b4707"
+}
