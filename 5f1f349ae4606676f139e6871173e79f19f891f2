@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e6b4c08_a7bda50e",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-08T08:20:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7976ac28_06c95195",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "5f1f349ae4606676f139e6871173e79f19f891f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5264a4f_32f47802",
