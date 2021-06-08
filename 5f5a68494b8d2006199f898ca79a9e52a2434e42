@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbeb29be_97d4ecb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-08T01:39:39Z",
+      "side": 1,
+      "message": "Instead of excluding kevin1, I suppose you might want to narrow the board list a bit more.\n\nYou can start with:\nExtraHardwareDeps: hwdep.D(pre.InputsStableModels),\n\n\n(This can be done separately. Not much related to this cl)\nBesides, you can start to think of using precondition for handwriting and voice test.\n\nPre:               pre.VKEnabledTablet,\n\nA little more you need to consider is to reset layout after each test. Otherwise in following keyboard test, it might show a voice / hw layout fails the test.",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "5f5a68494b8d2006199f898ca79a9e52a2434e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
