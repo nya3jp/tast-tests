@@ -39,6 +39,30 @@
       },
       "revId": "05be9ba5cd6f69ef39fa8f0707aaf8465c253e94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a422e241_2bd9382f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-06-08T18:42:46Z",
+      "side": 1,
+      "message": "I\u0027m actually not sure to which files specifically the original \"### AOM files\" description applies --- in particular, at least some of the 8 bit and 10 bit files I believe were at one point part of the AOM test set (but aren\u0027t complete/currently in the set), but I\u0027m not sure about the provenance of the files linked via people.xiph.org. The \"#### AOM\" section was meant to refer specifically to the aom subdirectory, since those are definitely from AOM, licensed as such.",
+      "parentUuid": "f4ed74cf_3d425da6",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "05be9ba5cd6f69ef39fa8f0707aaf8465c253e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
