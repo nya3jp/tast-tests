@@ -16,6 +16,23 @@
       "message": "tast-wise: +2 \n\nplease, wait for Armen\u0027s review.",
       "revId": "4b763be8c4d0dad52b6fc32211d466373ba42a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "530cb9e9_82c6202d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-06-08T19:58:30Z",
+      "side": 1,
+      "message": "Wait a minute! If this works now then how about [1]? See the code comment on lines 170-172 in [1].\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2862578",
+      "revId": "4b763be8c4d0dad52b6fc32211d466373ba42a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
