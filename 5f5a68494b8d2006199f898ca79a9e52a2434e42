@@ -94,6 +94,30 @@
       },
       "revId": "5f5a68494b8d2006199f898ca79a9e52a2434e42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27bcc5f4_ad6306c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-08T05:05:55Z",
+      "side": 1,
+      "message": "That\u0027s not right. Enable tests to run on all boards is absolutely a goal, but might not worth it. Some boards are almost out of market or poor performance. Some boards might be experimental, not stable enough.\n\nCurrent practice is to promote stable boards (actually they are not stable but popular) to CQ, and remain unstable boards at informational for visibility.",
+      "parentUuid": "7576052c_dcb28f7c",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "5f5a68494b8d2006199f898ca79a9e52a2434e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
