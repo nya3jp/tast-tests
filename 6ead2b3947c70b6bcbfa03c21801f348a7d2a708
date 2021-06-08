@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "612323f1_f6092961",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-08T00:15:33Z",
+      "side": 1,
+      "message": "Idiomatic go way of doing this:\n```\nerrors.Is(err, os.ErrNotExist)\n```",
+      "range": {
+        "startLine": 228,
+        "startChar": 6,
+        "endLine": 228,
+        "endChar": 64
+      },
+      "revId": "6ead2b3947c70b6bcbfa03c21801f348a7d2a708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
