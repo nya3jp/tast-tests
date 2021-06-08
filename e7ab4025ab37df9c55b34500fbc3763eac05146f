@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3759a5bb_4133798b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-06-08T14:34:37Z",
+      "side": 1,
+      "message": "Removed the group:mainline attribute, this test should be for manual test only. This test will be add to the group:crosbolt later.\nThis test took about 2 minutes on my hatch configured to 4 GiB RAM. It could take 4x time on 16 GiB RAM devices. I changed the timeout to 15 minutes.",
+      "parentUuid": "7d0feb96_c879d5a9",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "e7ab4025ab37df9c55b34500fbc3763eac05146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea5eefe6_e77e4a5d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-08T05:31:33Z",
       "side": 1,
       "message": "nit: how about directly passing \"stress\" here?",
+      "range": {
+        "startLine": 92,
+        "startChar": 57,
+        "endLine": 92,
+        "endChar": 62
+      },
+      "revId": "e7ab4025ab37df9c55b34500fbc3763eac05146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1527a939_9aaf4c10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-06-08T14:34:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea5eefe6_e77e4a5d",
       "range": {
         "startLine": 92,
         "startChar": 57,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38a89f49_81069104",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-06-08T14:34:37Z",
+      "side": 1,
+      "message": "Changed this to a named constant.",
+      "parentUuid": "356e78a2_8ad7cd5d",
+      "revId": "e7ab4025ab37df9c55b34500fbc3763eac05146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a576a6c2_53562778",
@@ -77,6 +143,24 @@
       "writtenOn": "2021-06-08T05:31:33Z",
       "side": 1,
       "message": "why timeout can be ignored here?\nRegardless of whether an actual error or timeout, memory_stress test is not completed, right?",
+      "revId": "e7ab4025ab37df9c55b34500fbc3763eac05146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f23c4ec_69b59475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-06-08T14:34:37Z",
+      "side": 1,
+      "message": "Returns an error on tab quiesce timeout.",
+      "parentUuid": "a576a6c2_53562778",
       "revId": "e7ab4025ab37df9c55b34500fbc3763eac05146f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16ef7028_47229342",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-06-08T14:34:37Z",
+      "side": 1,
+      "message": "Moved the common parts of lacros.MemoryStress and platform.MemoryStressBasic to local/memory/memory_stress/.",
+      "parentUuid": "4cfeb096_06ea23ab",
+      "revId": "e7ab4025ab37df9c55b34500fbc3763eac05146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a49c7656_18c6b165",
@@ -115,6 +217,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26214420_92f8442c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-06-08T14:34:37Z",
+      "side": 1,
+      "message": "It\u0027s used in \"if i%100 \u003c 50 {\" to move the cursor back and forth.",
+      "parentUuid": "a49c7656_18c6b165",
+      "revId": "e7ab4025ab37df9c55b34500fbc3763eac05146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5e9e080_8eaaba11",
@@ -128,6 +248,24 @@
       "writtenOn": "2021-06-08T05:31:33Z",
       "side": 1,
       "message": "this looks a bit complicated, because this depends on the previous waitTime?\nIs it intentional? If so, could you describe the background into the comment?",
+      "revId": "e7ab4025ab37df9c55b34500fbc3763eac05146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2100707_0f9be7cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-06-08T14:34:37Z",
+      "side": 1,
+      "message": "Updated the comment.",
+      "parentUuid": "c5e9e080_8eaaba11",
       "revId": "e7ab4025ab37df9c55b34500fbc3763eac05146f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
