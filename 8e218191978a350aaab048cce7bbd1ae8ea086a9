@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a9c9f6a_7d29d71b",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-08T19:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd660a1b_a0372a41",
+      "revId": "8e218191978a350aaab048cce7bbd1ae8ea086a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55a60a09_4e8b449a",
@@ -77,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "222afc67_481c8de7",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-08T19:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55a60a09_4e8b449a",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 24
+      },
+      "revId": "8e218191978a350aaab048cce7bbd1ae8ea086a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3698fc83_5510576b",
@@ -90,6 +132,24 @@
       "writtenOn": "2021-06-07T20:05:42Z",
       "side": 1,
       "message": "nit/style: can remove this line, and use :\u003d in L97",
+      "revId": "8e218191978a350aaab048cce7bbd1ae8ea086a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f658d2_ad1d1757",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-08T19:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3698fc83_5510576b",
       "revId": "8e218191978a350aaab048cce7bbd1ae8ea086a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
