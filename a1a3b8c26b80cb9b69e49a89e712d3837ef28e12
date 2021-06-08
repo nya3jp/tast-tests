@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "047dcada_dac6208e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-06-08T19:17:32Z",
+      "side": 1,
+      "message": "Yes, I mean, as I proposed, for those controls, can we run the following steps in order:\n1. Zoom in\n2. Test |control| which only works after Zoom-in\n3. Reset all |controls|\n\nPiping those controls up might make the tests have some implicit assumption according to the order. For example, if somehow \"panRight\" only works if we do \"panLeft\" first, the test will still pass. But swapping the order of \"panLeft\" and \"panRight\" won\u0027t.\n\nTherefore, if we have some known constraints (e.g. Those controls only work after \"Zoom in\"), we can explicitly rule it in the codes. But for those we assume can work independently, ideally we should test them independently. WDYT?",
+      "parentUuid": "d45ff0e1_75644333",
+      "range": {
+        "startLine": 287,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 2
+      },
+      "revId": "a1a3b8c26b80cb9b69e49a89e712d3837ef28e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "535bed2e_c5c5ba77",
         "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
         "patchSetId": 1
