@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be0640a3_14260166",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/servo_gbb_flags.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-08T19:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "280a4e66_87f81937",
+      "range": {
+        "startLine": 44,
+        "startChar": 54,
+        "endLine": 44,
+        "endChar": 73
+      },
+      "revId": "63a84485377b37ec51e8b1e16cbbaeedcb5c2bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd4210a4_937b5aaa",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d39b514_ce72a5c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/servo_gbb_flags.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-08T19:41:51Z",
+      "side": 1,
+      "message": "This cl is marked WIP for a reason.",
+      "parentUuid": "bd4210a4_937b5aaa",
+      "revId": "63a84485377b37ec51e8b1e16cbbaeedcb5c2bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a946067a_3d94aa5f",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-06-07T20:58:24Z",
       "side": 1,
       "message": "nit/style: per go/go-code-review-comments#Initialisms, please change to \"AP\"",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 3
+      },
+      "revId": "63a84485377b37ec51e8b1e16cbbaeedcb5c2bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7d99ccd_e59a3f03",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-08T19:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a946067a_3d94aa5f",
       "range": {
         "startLine": 93,
         "startChar": 1,
