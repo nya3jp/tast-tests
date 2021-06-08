@@ -23,8 +23,8 @@ type Servo struct {
 	version string
 	v4Type  V4TypeValue
 
-	// If initialV4Role is set, then upon Servo.Close(), the V4Role control will be set to initialV4Role.
-	initialV4Role V4RoleValue
+	// If initialPDRole is set, then upon Servo.Close(), the PDRole control will be set to initialPDRole.
+	initialPDRole PDRoleValue
 }
 
 const (
@@ -69,10 +69,10 @@ func (s *Servo) verifyConnectivity(ctx context.Context) error {
 
 // Close performs Servo cleanup.
 func (s *Servo) Close(ctx context.Context) error {
-	if s.initialV4Role != "" && s.initialV4Role != V4RoleNA {
-		testing.ContextLogf(ctx, "Restoring %q to %q", V4Role, s.initialV4Role)
-		if err := s.SetV4Role(ctx, s.initialV4Role); err != nil {
-			return errors.Wrapf(err, "restoring servo control %q to %q", V4Role, s.initialV4Role)
+	if s.initialPDRole != "" && s.initialPDRole != PDRoleNA {
+		testing.ContextLogf(ctx, "Restoring %q to %q", PDRole, s.initialPDRole)
+		if err := s.SetPDRole(ctx, s.initialPDRole); err != nil {
+			return errors.Wrapf(err, "restoring servo control %q to %q", PDRole, s.initialPDRole)
 		}
 	}
 	return nil

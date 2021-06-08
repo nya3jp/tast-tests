@@ -38,7 +38,7 @@ func ECHibernate(ctx context.Context, s *testing.State) {
 
 	// Tell servo to stop supplying power.
 	s.Log("Disable charge-through")
-	if err = pxy.Servo().SetV4Role(ctx, servo.V4RoleSnk); err != nil {
+	if err = pxy.Servo().SetPDRole(ctx, servo.PDRoleSnk); err != nil {
 		s.Fatal("Error disabling charge-through: ", err)
 	}
 
@@ -87,7 +87,7 @@ func ECHibernate(ctx context.Context, s *testing.State) {
 
 	// Wake EC up by telling servo to re-supply power.
 	s.Log("Enable charge-through")
-	if err = pxy.Servo().SetV4Role(ctx, servo.V4RoleSrc); err != nil {
+	if err = pxy.Servo().SetPDRole(ctx, servo.PDRoleSrc); err != nil {
 		s.Fatal("Error enabling charge-through: ", err)
 	}
 
