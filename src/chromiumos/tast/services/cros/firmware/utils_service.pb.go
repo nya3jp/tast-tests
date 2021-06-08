@@ -25,8 +25,49 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+// ReadServoKeyboardRequest listens the servo's keyboard emulator for a specified duration in seconds.
+type ReadServoKeyboardRequest struct {
+	Duration             uint32   `protobuf:"varint,1,opt,name=duration,proto3" json:"duration,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ReadServoKeyboardRequest) Reset()         { *m = ReadServoKeyboardRequest{} }
+func (m *ReadServoKeyboardRequest) String() string { return proto.CompactTextString(m) }
+func (*ReadServoKeyboardRequest) ProtoMessage()    {}
+func (*ReadServoKeyboardRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_187881f7b6ec64e6, []int{0}
+}
+
+func (m *ReadServoKeyboardRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ReadServoKeyboardRequest.Unmarshal(m, b)
+}
+func (m *ReadServoKeyboardRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ReadServoKeyboardRequest.Marshal(b, m, deterministic)
+}
+func (m *ReadServoKeyboardRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReadServoKeyboardRequest.Merge(m, src)
+}
+func (m *ReadServoKeyboardRequest) XXX_Size() int {
+	return xxx_messageInfo_ReadServoKeyboardRequest.Size(m)
+}
+func (m *ReadServoKeyboardRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReadServoKeyboardRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ReadServoKeyboardRequest proto.InternalMessageInfo
+
+func (m *ReadServoKeyboardRequest) GetDuration() uint32 {
+	if m != nil {
+		return m.Duration
+	}
+	return 0
+}
+
+// ReadServoKeyboardResponse provides what keys were pressed.
 type ReadServoKeyboardResponse struct {
-	Keys                 []byte   `protobuf:"bytes,1,opt,name=keys,proto3" json:"keys,omitempty"`
+	Keys                 []string `protobuf:"bytes,1,rep,name=keys,proto3" json:"keys,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -36,7 +77,7 @@ func (m *ReadServoKeyboardResponse) Reset()         { *m = ReadServoKeyboardResp
 func (m *ReadServoKeyboardResponse) String() string { return proto.CompactTextString(m) }
 func (*ReadServoKeyboardResponse) ProtoMessage()    {}
 func (*ReadServoKeyboardResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_187881f7b6ec64e6, []int{0}
+	return fileDescriptor_187881f7b6ec64e6, []int{1}
 }
 
 func (m *ReadServoKeyboardResponse) XXX_Unmarshal(b []byte) error {
@@ -57,7 +98,7 @@ func (m *ReadServoKeyboardResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ReadServoKeyboardResponse proto.InternalMessageInfo
 
-func (m *ReadServoKeyboardResponse) GetKeys() []byte {
+func (m *ReadServoKeyboardResponse) GetKeys() []string {
 	if m != nil {
 		return m.Keys
 	}
@@ -65,28 +106,31 @@ func (m *ReadServoKeyboardResponse) GetKeys() []byte {
 }
 
 func init() {
+	proto.RegisterType((*ReadServoKeyboardRequest)(nil), "tast.cros.firmware.ReadServoKeyboardRequest")
 	proto.RegisterType((*ReadServoKeyboardResponse)(nil), "tast.cros.firmware.ReadServoKeyboardResponse")
 }
 
 func init() { proto.RegisterFile("utils_service.proto", fileDescriptor_187881f7b6ec64e6) }
 
 var fileDescriptor_187881f7b6ec64e6 = []byte{
-	// 227 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x90, 0xb1, 0x4a, 0xc4, 0x40,
-	0x10, 0x86, 0x2f, 0x20, 0x16, 0x4b, 0x1a, 0x57, 0x10, 0x3d, 0x1b, 0x49, 0x21, 0xd7, 0x38, 0x0b,
-	0xfa, 0x02, 0x72, 0x60, 0x65, 0x97, 0x60, 0x23, 0x82, 0x24, 0x7b, 0x73, 0x71, 0xb9, 0x24, 0x13,
-	0x66, 0x36, 0x27, 0xfb, 0x52, 0x3e, 0xa3, 0x6c, 0x72, 0x57, 0x85, 0x74, 0xcb, 0x32, 0xff, 0xf7,
-	0xcd, 0x3f, 0xea, 0x7a, 0xf0, 0xae, 0x91, 0x6f, 0x41, 0x3e, 0x3a, 0x8b, 0xd0, 0x33, 0x79, 0xd2,
-	0xda, 0x97, 0xe2, 0xc1, 0x32, 0x09, 0xec, 0x1d, 0xb7, 0xbf, 0x25, 0xe3, 0xfa, 0xbe, 0x26, 0xaa,
-	0x1b, 0x34, 0xe3, 0x44, 0x35, 0xec, 0x0d, 0xb6, 0xbd, 0x0f, 0x53, 0x20, 0x33, 0xea, 0x2e, 0xc7,
-	0x72, 0x57, 0x20, 0x1f, 0xe9, 0x1d, 0x43, 0x45, 0x25, 0xef, 0x72, 0x94, 0x9e, 0x3a, 0x41, 0xad,
-	0xd5, 0xc5, 0x01, 0x83, 0xdc, 0x26, 0x0f, 0xc9, 0x26, 0xcd, 0xc7, 0xf7, 0xf3, 0x5f, 0xa2, 0xd2,
-	0x8f, 0x68, 0x2e, 0x26, 0xb1, 0x7e, 0x55, 0xe9, 0xb6, 0x21, 0x7b, 0x70, 0x5d, 0x5d, 0x84, 0xce,
-	0xea, 0x1b, 0x98, 0x7c, 0x70, 0xf6, 0xc1, 0x5b, 0xf4, 0xad, 0x17, 0xfe, 0xb3, 0x95, 0xfe, 0x52,
-	0x57, 0xb3, 0x1d, 0x16, 0x31, 0x4f, 0x30, 0xaf, 0x08, 0x8b, 0x15, 0xb2, 0xd5, 0x76, 0xf3, 0xf9,
-	0x68, 0x7f, 0x98, 0x5a, 0x37, 0xb4, 0x24, 0x26, 0x86, 0xcd, 0xe9, 0x66, 0x62, 0x22, 0xc5, 0x9c,
-	0x29, 0xd5, 0xe5, 0xa8, 0x7a, 0xf9, 0x0f, 0x00, 0x00, 0xff, 0xff, 0xc9, 0xcd, 0xd1, 0xef, 0x5a,
-	0x01, 0x00, 0x00,
+	// 260 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x91, 0x31, 0x4b, 0xc4, 0x40,
+	0x10, 0x85, 0x2f, 0x28, 0xa2, 0xcb, 0x59, 0xb8, 0x82, 0xc4, 0xd8, 0x1c, 0x29, 0x24, 0x85, 0xee,
+	0x82, 0x82, 0xb5, 0x1c, 0x58, 0xd9, 0x25, 0xd8, 0xd8, 0x48, 0xb2, 0x99, 0x8b, 0xcb, 0x25, 0x99,
+	0x38, 0xb3, 0x7b, 0x92, 0xff, 0xe7, 0x0f, 0x93, 0x24, 0x9e, 0xcd, 0x79, 0x60, 0xb7, 0x3b, 0xbc,
+	0xf7, 0xf8, 0xde, 0x8c, 0x38, 0xf7, 0xce, 0xd6, 0xfc, 0xc6, 0x40, 0x1b, 0x6b, 0x40, 0x75, 0x84,
+	0x0e, 0xa5, 0x74, 0x39, 0x3b, 0x65, 0x08, 0x59, 0xad, 0x2c, 0x35, 0x9f, 0x39, 0x41, 0x74, 0x55,
+	0x21, 0x56, 0x35, 0xe8, 0x51, 0x51, 0xf8, 0x95, 0x86, 0xa6, 0x73, 0xfd, 0x64, 0x88, 0x1f, 0x44,
+	0x98, 0x42, 0x5e, 0x66, 0x40, 0x1b, 0x7c, 0x86, 0xbe, 0xc0, 0x9c, 0xca, 0x14, 0x3e, 0x3c, 0xb0,
+	0x93, 0x91, 0x38, 0x2e, 0x3d, 0xe5, 0xce, 0x62, 0x1b, 0x06, 0x8b, 0x20, 0x39, 0x4d, 0x7f, 0xff,
+	0xb1, 0x16, 0x97, 0x7f, 0xf8, 0xb8, 0xc3, 0x96, 0x41, 0x4a, 0x71, 0xb8, 0x86, 0x9e, 0xc3, 0x60,
+	0x71, 0x90, 0x9c, 0xa4, 0xe3, 0xfb, 0xee, 0x2b, 0x10, 0xf3, 0x97, 0x81, 0x38, 0x9b, 0x80, 0xe5,
+	0xa3, 0x98, 0x2f, 0x6b, 0x34, 0x6b, 0xdb, 0x56, 0x59, 0xdf, 0x1a, 0x79, 0xa1, 0x26, 0x4e, 0xb5,
+	0xe5, 0x54, 0x4f, 0x03, 0x67, 0xb4, 0x67, 0x1e, 0xcf, 0x24, 0x89, 0xb3, 0x1d, 0x06, 0x79, 0xa3,
+	0x76, 0x57, 0xa0, 0xf6, 0x55, 0x8c, 0x6e, 0xff, 0xa9, 0x9e, 0x8a, 0xc5, 0xb3, 0x65, 0xf2, 0x7a,
+	0x6d, 0xde, 0x09, 0x1b, 0xeb, 0x1b, 0x64, 0x3d, 0x98, 0xf5, 0xcf, 0x05, 0x58, 0x0f, 0x29, 0x7a,
+	0x9b, 0x52, 0x1c, 0x8d, 0xbc, 0xf7, 0xdf, 0x01, 0x00, 0x00, 0xff, 0xff, 0x08, 0x52, 0x80, 0x6d,
+	0xa8, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -103,8 +147,8 @@ const _ = grpc.SupportPackageIsVersion4
 type UtilsServiceClient interface {
 	// BlockingSync syncs the root device and internal device.
 	BlockingSync(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
-	// ReadServoKeyboard reads from the servo's keyboard emulator.
-	ReadServoKeyboard(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*ReadServoKeyboardResponse, error)
+	// ReadServoKeyboard reads from the servo's keyboard emulator and decodes the key presses.
+	ReadServoKeyboard(ctx context.Context, in *ReadServoKeyboardRequest, opts ...grpc.CallOption) (*ReadServoKeyboardResponse, error)
 }
 
 type utilsServiceClient struct {
@@ -124,7 +168,7 @@ func (c *utilsServiceClient) BlockingSync(ctx context.Context, in *empty.Empty, 
 	return out, nil
 }
 
-func (c *utilsServiceClient) ReadServoKeyboard(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*ReadServoKeyboardResponse, error) {
+func (c *utilsServiceClient) ReadServoKeyboard(ctx context.Context, in *ReadServoKeyboardRequest, opts ...grpc.CallOption) (*ReadServoKeyboardResponse, error) {
 	out := new(ReadServoKeyboardResponse)
 	err := c.cc.Invoke(ctx, "/tast.cros.firmware.UtilsService/ReadServoKeyboard", in, out, opts...)
 	if err != nil {
@@ -137,8 +181,8 @@ func (c *utilsServiceClient) ReadServoKeyboard(ctx context.Context, in *empty.Em
 type UtilsServiceServer interface {
 	// BlockingSync syncs the root device and internal device.
 	BlockingSync(context.Context, *empty.Empty) (*empty.Empty, error)
-	// ReadServoKeyboard reads from the servo's keyboard emulator.
-	ReadServoKeyboard(context.Context, *empty.Empty) (*ReadServoKeyboardResponse, error)
+	// ReadServoKeyboard reads from the servo's keyboard emulator and decodes the key presses.
+	ReadServoKeyboard(context.Context, *ReadServoKeyboardRequest) (*ReadServoKeyboardResponse, error)
 }
 
 // UnimplementedUtilsServiceServer can be embedded to have forward compatible implementations.
@@ -148,7 +192,7 @@ type UnimplementedUtilsServiceServer struct {
 func (*UnimplementedUtilsServiceServer) BlockingSync(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BlockingSync not implemented")
 }
-func (*UnimplementedUtilsServiceServer) ReadServoKeyboard(ctx context.Context, req *empty.Empty) (*ReadServoKeyboardResponse, error) {
+func (*UnimplementedUtilsServiceServer) ReadServoKeyboard(ctx context.Context, req *ReadServoKeyboardRequest) (*ReadServoKeyboardResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReadServoKeyboard not implemented")
 }
 
@@ -175,7 +219,7 @@ func _UtilsService_BlockingSync_Handler(srv interface{}, ctx context.Context, de
 }
 
 func _UtilsService_ReadServoKeyboard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(empty.Empty)
+	in := new(ReadServoKeyboardRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -187,7 +231,7 @@ func _UtilsService_ReadServoKeyboard_Handler(srv interface{}, ctx context.Contex
 		FullMethod: "/tast.cros.firmware.UtilsService/ReadServoKeyboard",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UtilsServiceServer).ReadServoKeyboard(ctx, req.(*empty.Empty))
+		return srv.(UtilsServiceServer).ReadServoKeyboard(ctx, req.(*ReadServoKeyboardRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

@@ -15,11 +15,16 @@ service UtilsService {
   // BlockingSync syncs the root device and internal device.
   rpc BlockingSync (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
-  // ReadServoKeyboard reads from the servo's keyboard emulator.
-  rpc ReadServoKeyboard (google.protobuf.Empty) returns (ReadServoKeyboardResponse) {}
+  // ReadServoKeyboard reads from the servo's keyboard emulator and decodes the key presses.
+  rpc ReadServoKeyboard (ReadServoKeyboardRequest) returns (ReadServoKeyboardResponse) {}
 }
 
+// ReadServoKeyboardRequest listens the servo's keyboard emulator for a specified duration in seconds.
+message ReadServoKeyboardRequest {
+  uint32 duration = 1;
+}
 
+// ReadServoKeyboardResponse provides what keys were pressed.
 message ReadServoKeyboardResponse {
-  bytes keys = 1;
+  repeated string keys = 1;
 }
