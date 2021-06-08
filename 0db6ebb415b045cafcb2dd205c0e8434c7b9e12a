@@ -105,6 +105,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77f6e0b6_df0b333e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-08T00:43:45Z",
+      "side": 1,
+      "message": "Now we have WaitGroup.Wait here. I think it is more readable now?",
+      "parentUuid": "b843e62a_a394846d",
+      "revId": "0db6ebb415b045cafcb2dd205c0e8434c7b9e12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c92aca8d_b5ccdb04",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring_test.go",
         "patchSetId": 3
@@ -116,6 +134,24 @@
       "writtenOn": "2021-06-07T20:19:54Z",
       "side": 1,
       "message": "Why is this timeout needed: we start reading the fifo line 129.",
+      "revId": "0db6ebb415b045cafcb2dd205c0e8434c7b9e12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd16ad8a_f66b748d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-08T00:43:45Z",
+      "side": 1,
+      "message": "I had this in case some bugs could make it hang. If it\u0027s not necessary, we can use sync.WaitGroup instead which should be simpler and more readable.\n\nUse sync.WaitGroup in the latest patchset. PTAL.",
+      "parentUuid": "c92aca8d_b5ccdb04",
       "revId": "0db6ebb415b045cafcb2dd205c0e8434c7b9e12a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
