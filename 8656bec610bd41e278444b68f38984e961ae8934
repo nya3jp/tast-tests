@@ -33,6 +33,29 @@
       "message": "Based on your comment on b/188446743, adding you to this CL for suggestions. ",
       "revId": "8656bec610bd41e278444b68f38984e961ae8934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e60f1747_7c3d350e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-06-08T01:45:25Z",
+      "side": 1,
+      "message": "How about describing what kind of models should be added here in the future?\nThe code tells that this list is denylist for the test named \"tablet_mode\", however, it is ambiguous whether that test wants only tablet-mode-only device, or devices that supports the tablet mode as one of the options.",
+      "range": {
+        "startLine": 1077,
+        "startChar": 46,
+        "endLine": 1077,
+        "endChar": 81
+      },
+      "revId": "8656bec610bd41e278444b68f38984e961ae8934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
