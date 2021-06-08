@@ -13,7 +13,9 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -31,6 +33,14 @@ func init() {
 			{
 				Name: "us_en",
 				Val:  ime.INPUTMETHOD_XKB_US_ENG,
+			},
+			{
+				Name: "jp_ja",
+				Val:  ime.INPUTMETHOD_NACL_MOZC_US,
+			},
+			{
+				Name: "pinyin",
+				Val:  ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
 			},
 		},
 	})
@@ -69,6 +79,8 @@ func PhysicalKeyboardInputFields(ctx context.Context, s *testing.State) {
 	}
 	defer its.Close()
 
+	vkbCtx := vkb.NewContext(cr, tconn)
+
 	var subtests []util.FieldInputEval
 
 	switch s.Param().(ime.InputMethodCode) {
@@ -82,6 +94,43 @@ func PhysicalKeyboardInputFields(ctx context.Context, s *testing.State) {
 				InputField:   testserver.TextInputField,
 				InputFunc:    keyboard.TypeAction("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"),
 				ExpectedText: "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM",
+			},
+		}
+		break
+	case ime.INPUTMETHOD_NACL_MOZC_US:
+		subtests = []util.FieldInputEval{
+			{
+				InputField:   testserver.TextAreaInputField,
+				InputFunc:    uiauto.Combine("type and select default candidate", vkbCtx.WaitForDecoderEnabled(true), keyboard.TypeAction("nihongo "), keyboard.AccelAction("Enter")),
+				ExpectedText: "日本語",
+			},
+			{
+				InputField:   testserver.TextAreaInputField,
+				InputFunc:    uiauto.Combine("type and select candidate by space", vkbCtx.WaitForDecoderEnabled(true), keyboard.TypeAction("ni  "), keyboard.AccelAction("Enter")),
+				ExpectedText: "２",
+			},
+			{
+				InputField:   testserver.TextAreaInputField,
+				InputFunc:    uiauto.Combine("type and select candidate by number", vkbCtx.WaitForDecoderEnabled(true), keyboard.TypeAction("ni  5"), keyboard.AccelAction("Enter")),
+				ExpectedText: "二",
+			},
+		}
+	case ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED:
+		subtests = []util.FieldInputEval{
+			{
+				InputField:   testserver.TextAreaInputField,
+				InputFunc:    uiauto.Combine("type and select default candidate", vkbCtx.WaitForDecoderEnabled(true), keyboard.TypeAction("zhongwen ")),
+				ExpectedText: "中文",
+			},
+			{
+				InputField:   testserver.TextAreaInputField,
+				InputFunc:    uiauto.Combine("type and select candidate by down arrow", vkbCtx.WaitForDecoderEnabled(true), keyboard.TypeAction("zhong"), keyboard.AccelAction("Down"), keyboard.AccelAction("Space")),
+				ExpectedText: "种",
+			},
+			{
+				InputField:   testserver.TextAreaInputField,
+				InputFunc:    uiauto.Combine("type and select candidate by number", vkbCtx.WaitForDecoderEnabled(true), keyboard.TypeAction("zhong2")),
+				ExpectedText: "中",
 			},
 		}
 		break
