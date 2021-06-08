@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfce4b72_ee5401a9",
+        "filename": "src/chromiumos/tast/common/perf/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-06-08T01:03:10Z",
+      "side": 1,
+      "message": "Yes, that sounds good. If the constructor could return an error then that could lead to too much boilerplate for callers, but since it doesn\u0027t it\u0027s just an extra nested call. Nice and composable.",
+      "parentUuid": "9080745b_9723dd27",
+      "range": {
+        "startLine": 163,
+        "startChar": 17,
+        "endLine": 163,
+        "endChar": 28
+      },
+      "revId": "d06a3599f00001383832605c0d0c641def5b4ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2004db18_c052a30d",
