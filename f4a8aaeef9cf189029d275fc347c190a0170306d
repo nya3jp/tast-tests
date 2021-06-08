@@ -16,6 +16,29 @@
       "message": "Hi PTAL thanks!",
       "revId": "f4a8aaeef9cf189029d275fc347c190a0170306d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02abc747_55749295",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-06-08T01:17:02Z",
+      "side": 1,
+      "message": "Style thought: maybe this giant object should be moved to be some sort of more data friendly file (like JSON?) so that it is easier to add more test cases.  Something like (CSV example since that is easier in code review)\n\nIME,Input string, accel action (optional), expected\n\nThen we can just cut + paste from a spreadsheet to add more tests?\n\nWDYT?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 35
+      },
+      "revId": "f4a8aaeef9cf189029d275fc347c190a0170306d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
