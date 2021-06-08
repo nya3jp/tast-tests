@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b618d9ce_bf01312d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-08T13:44:54Z",
+      "side": 1,
+      "message": "In this CL there are 2 things happening:\n- Refactoring the code to make it more readable (which is really good).\n- Adding new functionality.\n\nIt is hard to see where does a changed line belong form the two above.\nCan I ask you to first do the refactoring in a separate CL?\nIt would make the new additions more visible.",
+      "revId": "a1a3b8c26b80cb9b69e49a89e712d3837ef28e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5de931c_8b2ca6e1",
