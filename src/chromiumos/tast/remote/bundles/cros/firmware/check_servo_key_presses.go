@@ -6,10 +6,9 @@ package firmware
 
 import (
 	"context"
-	"io/ioutil"
-	"path/filepath"
+	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
+	"github.com/google/go-cmp/cmp"
 
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
@@ -20,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:        CheckServoKeyPresses,
-		Desc:        "Verifies that key presses can be initiated on the servo's keyboard emulator and that the DUT can receive them",
+		Desc:        "Verifies that key presses can be initiated on the servo's keyboard emulator and that the DUT can receive and decode them",
 		Contacts:    []string{"kmshelton@chromium.org", "cros-fw-engprod@google.com", "chromeos-firmware@google.com"},
 		ServiceDeps: []string{"tast.cros.firmware.UtilsService"},
 		Vars:        []string{"servo"},
@@ -28,6 +27,10 @@ func init() {
 }
 
 func CheckServoKeyPresses(ctx context.Context, s *testing.State) {
+	// The value of listenSecs is in seconds and is experimentally determined.
+	const listenSecs uint32 = 5
+	const enterKey = "ENTER"
+
 	dut := s.DUT()
 
 	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), dut.KeyFile(), dut.KeyDir())
@@ -51,21 +54,21 @@ func CheckServoKeyPresses(ctx context.Context, s *testing.State) {
 		// Start listening on the DUT for activity from the servo's keyboard emulator,
 		// which the main goroutine will send.
 		s.Log("Sending ReadServoKeyboard to the DUT")
-		res, err := utils.ReadServoKeyboard(ctx, &empty.Empty{})
+		res, err := utils.ReadServoKeyboard(ctx, &fwpb.ReadServoKeyboardRequest{Duration: listenSecs})
 		if err != nil {
 			s.Fatal("Error during ReadServoKeyboard: ", err)
 		}
-		const logFileName = "raw_evdev_events"
-		logPath := filepath.Join(s.OutDir(), logFileName)
-		if err := ioutil.WriteFile(logPath, res.Keys, 0644); err != nil {
-			s.Error("Failed to save the keyboard output: ", err)
+		expectedKeys := []string{enterKey, enterKey}
+		if !cmp.Equal(res.Keys, expectedKeys) {
+			s.Errorf("Something failed in the keys that were read; got %v, want %v", res.Keys, expectedKeys)
 		}
 	}()
 
 	// TODO(kmshelton): Make utils.ReadServoKeyboard a streaming RPC that returns decoded key events,
 	// so it can tell the test when it has started listening for keys, to avoid a race condition
-	// here of the keys being sent before the utils service is listening, and to enable validation
-	// of which keys where pressed.
+	// here of the keys being sent before the utils service is listening.  We must sleep for now to
+	// allow for the key press listenting to get setup on the DUT.
+	testing.Sleep(ctx, 1*time.Second)
 	svo.KeypressWithDuration(ctx, servo.USBEnter, servo.DurTab)
 	svo.KeypressWithDuration(ctx, servo.USBEnter, servo.DurTab)
 	<-readKeys

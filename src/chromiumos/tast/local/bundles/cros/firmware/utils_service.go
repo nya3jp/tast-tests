@@ -5,9 +5,11 @@
 package firmware
 
 import (
+	"bytes"
 	"context"
-	"os"
+	"regexp"
 	"strings"
+	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
@@ -104,28 +106,36 @@ func (*UtilsService) BlockingSync(ctx context.Context, req *empty.Empty) (*empty
 }
 
 // ReadServoKeyboard reads from the servo's keyboard emulator.
-func (*UtilsService) ReadServoKeyboard(ctx context.Context, req *empty.Empty) (*fwpb.ReadServoKeyboardResponse, error) {
+func (us *UtilsService) ReadServoKeyboard(ctx context.Context, req *fwpb.ReadServoKeyboardRequest) (*fwpb.ReadServoKeyboardResponse, error) {
 	// The servo's keyboard emulator device node has a symlink, captured here as a constant,
 	// that will always link to the actual node.  When the node that the symlink links to
 	// gets assigned different values, such assignments are transparent, since we use the
 	// symlink.
 	const node = "/dev/input/by-id/usb-Google_Servo_LUFA_Keyboard_Emulator-event-kbd"
-	kbd, err := os.Open(node)
+	// TODO(kmshelton): Migrate to using a library (i.e. invoking functions from golang-evdev
+	// instead of invoking a binary on the test image), if the usecase of using evdev bindings
+	// is considered strong enough to deal with the drawbacks that come with enabling cgo in
+	// tast (b:187786098).
+	ctx, cancel := context.WithTimeout(ctx, time.Duration(req.Duration)*time.Second)
+	defer cancel()
+	cmd := testexec.CommandContext(ctx, "evtest", "--grab", node)
+	stdout := &bytes.Buffer{}
+	cmd.Stdout = stdout
+	err := cmd.Start()
 	if err != nil {
-		return nil, errors.Wrap(err, "opening keyboard emulator device node")
+		return nil, errors.Wrap(err, "failed to read keyboard")
 	}
-	defer kbd.Close()
-	// TODO(kmshelton): Interpret key events (likely with a third-party library),
-	// thus enabling detection of completion of events.  For now, this constant
-	// sets the number of bytes to read from the servo's keyboard emulator,
-	// somewhat arbitrarily (128 is observed through experimentation to be enough
-	// to capture at least two keyboard events).
-	const amountToRead = 128
-	keys := make([]byte, amountToRead)
-	n, err := kbd.Read(keys)
-	if err != nil {
-		testing.ContextLog(ctx, "number of bytes read from the keyboard emulator is", n)
-		return nil, errors.Wrap(err, "reading keyboard emulator device node")
+	err = cmd.Wait()
+	if !errors.Is(err, context.DeadlineExceeded) {
+		return nil, errors.Wrap(err, "evtest exited unexpectedly")
 	}
-	return &fwpb.ReadServoKeyboardResponse{Keys: keys[:n]}, nil
+	// An occurrence of "value 0" in evtest output corresponds to a press of a key, whereas "value 1" is a release.
+	re := regexp.MustCompile(`\(KEY_([A-Z0-9_]+)\), value 0`)
+	matches := re.FindAllSubmatch(stdout.Bytes(), -1)
+	var keys []string
+	for _, match := range matches {
+		keys = append(keys, string(match[1]))
+	}
+	us.s.Log("Detected keys on the DUT: ", keys)
+	return &fwpb.ReadServoKeyboardResponse{Keys: keys}, nil
 }
