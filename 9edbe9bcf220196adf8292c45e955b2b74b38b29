@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a1e5ef1_1f092c49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-08T19:55:37Z",
+      "side": 1,
+      "message": "go/tast-review is not a valid go link.",
+      "parentUuid": "42cdd7d7_767663b2",
+      "revId": "9edbe9bcf220196adf8292c45e955b2b74b38b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd7a9023_e17b4132",
