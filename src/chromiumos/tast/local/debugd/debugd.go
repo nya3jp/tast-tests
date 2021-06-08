@@ -8,6 +8,7 @@ package debugd
 import (
 	"context"
 	"fmt"
+	"os"
 
 	"github.com/godbus/dbus"
 
@@ -162,6 +163,25 @@ func (d *Debugd) SetSchedulerConfiguration(ctx context.Context, param Scheduler)
 		return err
 	} else if !result {
 		return errors.New("SetSchedulerConfiguration returned false")
+	}
+	return nil
+}
+
+// PacketCaptureStart calls debugd's PacketCaptureStart D-Bus method.
+func (d *Debugd) PacketCaptureStart(ctx context.Context, output, stat *os.File, options map[string]dbus.Variant) (h string, err error) {
+	// The handle of the packet capture process that is started by the D-Bus call.
+	var handle string
+	c := d.call(ctx, "PacketCaptureStart", dbus.UnixFD(stat.Fd()), dbus.UnixFD(output.Fd()), options)
+	if c.Store(&handle) != nil {
+		return handle, errors.Wrap(c.Err, "Packet capture start D-Bus call failed")
+	}
+	return handle, nil
+}
+
+// PacketCaptureStop calls debugd's PacketCaptureStop D-Bus method.
+func (d *Debugd) PacketCaptureStop(ctx context.Context, handle string) (err error) {
+	if err := d.call(ctx, "PacketCaptureStop", handle).Err; err != nil {
+		return errors.Wrap(err, "Packet capture stop D-Bus call failed")
 	}
 	return nil
 }
