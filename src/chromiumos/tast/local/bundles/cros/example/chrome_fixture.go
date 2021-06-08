@@ -19,7 +19,7 @@ func init() {
 		Func:         ChromeFixture,
 		Desc:         "Demonstrates Chrome fixture",
 		Contacts:     []string{"nya@chromium.org", "tast-owners@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
 	})
