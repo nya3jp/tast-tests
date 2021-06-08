@@ -25,6 +25,41 @@
 //  if err := pv.Save(s.OutDir()); err != nil {
 //      s.Error("Failed saving perf data: ", err)
 //  }
+//
+// Remote usage example
+//
+// Protocol buffer definition:
+//  import "values.proto";
+//  service ExampleService {
+//      rpc Method (google.protobuf.Empty)
+//          returns (tast.common.perf.perfpb.Values) {}
+//  }
+// In order to "import values.proto", add a -I argument pointing at
+// src/chromiumos/tast/common/perf/perfpb/ to the protoc command in your
+// service's gen.go file. See src/chromiumos/tast/services/cros/arc/gen.go
+// for an example.
+//
+// Service:
+//  import "chromiumos/tast/common/perf"
+//  import "chromiumos/tast/common/perf/perfpb"
+//  func (s *ExampleService) Method() (*perfpb.Values, error) {
+//      p := perf.NewValues()
+//      ... // Do some computation that generates perf values in p.
+//      return p.Proto(), nil
+//  }
+//
+// Test:
+//  import "chromiumos/tast/common/perf"
+//  func TestMethod(ctx context.Context, s *testing.State) {
+//      ... // Set up gRPC, ExampleServiceClient.
+//      res, err := service.Method()
+//      if err != nil {
+//          s.Fatal("RPC failed: ", err)
+//      }
+//      if err := perf.NewValuesFromProto(res).Save(s.OutDir()); err != nil {
+//          s.Fatal("Failed to save perf results: ", err)
+//      }
+//  }
 package perf
 
 import (
