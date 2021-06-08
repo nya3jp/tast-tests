@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75901f9c_df15599a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-08T08:16:09Z",
+      "side": 1,
+      "message": "As per old comment https://b.corp.google.com/issues/124517332#comment6 it fails on 4 devices and this L disables only eve. Does it work on all other devices?",
+      "revId": "e77451241ade7dbcf43cf27573a0ea77d09326d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
