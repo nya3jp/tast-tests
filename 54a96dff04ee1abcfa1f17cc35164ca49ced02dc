@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eda5843_97310925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T02:23:42Z",
+      "side": 1,
+      "message": "When it NewYtWeb is called here https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2605501/64/src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go#131 it is of the default timeout 15s. Why do you need to reset it again?",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "54a96dff04ee1abcfa1f17cc35164ca49ced02dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06b35897_e8fec0b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T02:23:42Z",
+      "side": 1,
+      "message": "So this is to look for a string which starts with \"Quality\"? If yes, suggest just using NameStartingWith.",
+      "range": {
+        "startLine": 86,
+        "startChar": 51,
+        "endLine": 86,
+        "endChar": 61
+      },
+      "revId": "54a96dff04ee1abcfa1f17cc35164ca49ced02dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0990ba1d_f22c8310",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T02:23:42Z",
+      "side": 1,
+      "message": "does not",
+      "range": {
+        "startLine": 99,
+        "startChar": 58,
+        "endLine": 99,
+        "endChar": 63
+      },
+      "revId": "54a96dff04ee1abcfa1f17cc35164ca49ced02dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72335a8d_3896b57d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T02:23:42Z",
+      "side": 1,
+      "message": "NameStartingWith?",
+      "range": {
+        "startLine": 124,
+        "startChar": 60,
+        "endLine": 124,
+        "endChar": 63
+      },
+      "revId": "54a96dff04ee1abcfa1f17cc35164ca49ced02dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4186df2a_19e915e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T02:23:42Z",
+      "side": 1,
+      "message": "What about IfSuccessThen(WaitUntilExists(playButton), Click(playButton))?",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 3
+      },
+      "revId": "54a96dff04ee1abcfa1f17cc35164ca49ced02dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "918bc71b_523fabd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T02:23:42Z",
+      "side": 1,
+      "message": "Why returnning error when it is already in full screen?",
+      "range": {
+        "startLine": 168,
+        "startChar": 9,
+        "endLine": 168,
+        "endChar": 44
+      },
+      "revId": "54a96dff04ee1abcfa1f17cc35164ca49ced02dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b1c7eb6_cc4eb644",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T02:23:42Z",
+      "side": 1,
+      "message": "It seems that this is only used once, suggest to just create it when calling clearNotificationPrompts.",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 3
+      },
+      "revId": "54a96dff04ee1abcfa1f17cc35164ca49ced02dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6739d5f0_8796bfdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T02:23:42Z",
+      "side": 1,
+      "message": "It does not do anything immediately after this step? In that case, what is the point of sleeping?",
+      "range": {
+        "startLine": 215,
+        "startChar": 5,
+        "endLine": 215,
+        "endChar": 10
+      },
+      "revId": "54a96dff04ee1abcfa1f17cc35164ca49ced02dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
