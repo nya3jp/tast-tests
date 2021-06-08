@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // Documentation on file format can be found in go/tast-handwriting-svg-parsing.
@@ -43,6 +44,9 @@ func init() {
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
 		Data:         []string{handwritingWarmupFile},
+		// kevin64 board doesn't support nacl, thus IMEs using nacl for handwriting canvas fail.
+		// Have to exclude entire kevin model as no distinguish between kevin and kevin64.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kevin1")),
 		Params: []testing.Param{
 			{
 				Name:      "hello_jp",
