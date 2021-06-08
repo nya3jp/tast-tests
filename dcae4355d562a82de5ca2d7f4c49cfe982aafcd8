@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd8aec1b_266d23ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-08T08:33:57Z",
+      "side": 1,
+      "message": "It was intended. I\u0027m going to write a test where the focused node and the event target are different (b/149804065).\n\nBut thinking this again, I started to think that struct axEventParams is no longer needed now.\nI\u0027ve simplified structs here and deleted |target| field. We can add it when we actually need it.",
+      "parentUuid": "353d6782_1cdc8265",
+      "revId": "dcae4355d562a82de5ca2d7f4c49cfe982aafcd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3659f713_b8796c97",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2595725f_2cb52b94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-08T08:33:57Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "3659f713_b8796c97",
+      "revId": "dcae4355d562a82de5ca2d7f4c49cfe982aafcd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c902e5c_5547a7a5",
@@ -82,6 +118,24 @@
       "writtenOn": "2021-06-08T08:14:49Z",
       "side": 1,
       "message": "Is it because we wait for focused node for 10*time.Second that we wait 10*time.Second here? If so, how about defining a constant variable?",
+      "revId": "dcae4355d562a82de5ca2d7f4c49cfe982aafcd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d6fcbd9_1b3e8888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-08T08:33:57Z",
+      "side": 1,
+      "message": "10 seconds here and the one when waiting for focus are not related.\n\nEven after the focused node is updated, there is a chance that expected event is not dispatched yet. Thus we want to want for each triggering event.",
+      "parentUuid": "2c902e5c_5547a7a5",
       "revId": "dcae4355d562a82de5ca2d7f4c49cfe982aafcd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
