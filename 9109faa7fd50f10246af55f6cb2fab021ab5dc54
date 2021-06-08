@@ -16,6 +16,23 @@
       "message": "some nits",
       "revId": "9109faa7fd50f10246af55f6cb2fab021ab5dc54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11ec2658_fe53f54d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-06-08T01:48:33Z",
+      "side": 1,
+      "message": "LGTM from PIP\u0027s perspective.",
+      "revId": "9109faa7fd50f10246af55f6cb2fab021ab5dc54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
