@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a502ec08_4d250671",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-08T15:24:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5de931c_8b2ca6e1",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 20
+      },
+      "revId": "a1a3b8c26b80cb9b69e49a89e712d3837ef28e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14685c54_0a96823b",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d45ff0e1_75644333",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-08T15:24:46Z",
+      "side": 1,
+      "message": "Due to the digital zoom camera behavior requiring zoom in first to make other PT togglable. We need at least zoomIn first before all toggle all other controls. That\u0027s why they\u0027re tested in this order.",
+      "parentUuid": "14685c54_0a96823b",
+      "range": {
+        "startLine": 287,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 2
+      },
+      "revId": "a1a3b8c26b80cb9b69e49a89e712d3837ef28e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "535bed2e_c5c5ba77",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-06-08T06:21:11Z",
       "side": 1,
       "message": "nit: I prefer using different messages for errors in line 1016 and 1020 to make it clearer.",
+      "range": {
+        "startLine": 1016,
+        "startChar": 16,
+        "endLine": 1016,
+        "endChar": 30
+      },
+      "revId": "a1a3b8c26b80cb9b69e49a89e712d3837ef28e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cfdc902_3f336b35",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-08T15:24:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "535bed2e_c5c5ba77",
       "range": {
         "startLine": 1016,
         "startChar": 16,
