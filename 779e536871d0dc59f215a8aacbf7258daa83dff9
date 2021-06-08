@@ -16,6 +16,23 @@
       "message": "Constructor should be called NewValuesFromProto, not NewFromProto.",
       "revId": "779e536871d0dc59f215a8aacbf7258daa83dff9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b1017f3_f676bd92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-08T02:26:13Z",
+      "side": 1,
+      "message": "LGTM, thanks for the change!\n",
+      "revId": "779e536871d0dc59f215a8aacbf7258daa83dff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
