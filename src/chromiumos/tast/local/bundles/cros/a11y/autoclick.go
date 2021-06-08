@@ -10,11 +10,14 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/a11y"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/testing"
 )
 
@@ -39,77 +42,62 @@ func Autoclick(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
+	// Shorten deadline to leave time for cleanup
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	// Enable Autoclick.
 	if err := a11y.SetFeatureEnabled(ctx, tconn, a11y.Autoclick, true); err != nil {
 		s.Fatal("Failed to enable autoclick: ", err)
 	}
 
 	enabled := true
-	defer func() {
+	defer func(ctx context.Context) {
 		// Verify that autoclick is off at the end of this test.
 		if enabled {
 			if err := a11y.SetFeatureEnabled(ctx, tconn, a11y.Autoclick, false); err != nil {
 				s.Error("Failed to disable autoclick: ", err)
 			}
 		}
-	}()
+	}(cleanupCtx)
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	moveMouseToNodeLocationStable := func(node *ui.Node, name string) {
-		if err := node.WaitLocationStable(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
-			s.Fatalf("Failed to wait for %s to have a stable location: %v", name, err)
+	ui := uiauto.New(tconn)
+
+	// Returns a function that moves the mouse to a node defined by finder.
+	// The returned function waits for the node's location to stabilize, then
+	// moves the mouse to the node's center point.
+	moveMouseToNode := func(finder *nodewith.Finder) action.Action {
+		return func(ctx context.Context) error {
+			if err := uiauto.Combine("moving mouse to click node",
+				ui.WithTimeout(10*time.Second).WaitForLocation(finder),
+				ui.MouseMoveTo(finder, time.Second),
+			)(ctx); err != nil {
+				return errors.Wrap(err, "failed to move mouse to node")
+			}
+			return nil
 		}
-
-		s.Logf("Moving the mouse to %v to click %s", node.Location.CenterPoint(), name)
-		if err := mouse.Move(ctx, tconn, node.Location.CenterPoint(), 0); err != nil {
-			s.Fatalf("Failed to move the mouse to %s: %v", name, err)
-		}
 	}
 
-	// Ensure the presence of the floating autoclick menu.
-	menu, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-		ClassName: "AutoclickMenuView",
-		State:     map[ui.StateType]bool{ui.StateTypeOffscreen: false},
-	}, 10*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find the autoclick menu view: ", err)
-	}
-	defer menu.Release(ctx)
+	menu := nodewith.ClassName("AutoclickMenuView").Onscreen()
+	scrollButton := nodewith.Name("Scroll").ClassName("FloatingMenuButton").Onscreen()
+	scrollView := nodewith.ClassName("AutoclickScrollBubbleView").Onscreen().First()
+	leftClickButton := nodewith.Name("Left click").ClassName("FloatingMenuButton").Onscreen()
 
-	// Ensure the presence of the scroll button within the autoclick menu and make
-	// sure that it's not offscreen.
-	scroll, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-		Name:      "Scroll",
-		ClassName: "FloatingMenuButton",
-		State:     map[ui.StateType]bool{ui.StateTypeOffscreen: false},
-	}, 10*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find the autoclick scroll button: ", err)
-	}
-	defer scroll.Release(ctx)
-
-	moveMouseToNodeLocationStable(scroll, "autoclick scroll button")
-
-	// Autoclick is in scroll mode once the scroll view appears.
-	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "AutoclickScrollBubbleView"}, 10*time.Second); err != nil {
-		s.Fatal("Failed to click the scroll button, the scroll view does not appear: ", err)
-	}
-
-	// Change back to left click mode by finding the left click button and hovering.
-	leftClick, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-		Name:      "Left click",
-		ClassName: "FloatingMenuButton",
-	}, 10*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find the autoclick left click button: ", err)
-	}
-	defer leftClick.Release(ctx)
-
-	moveMouseToNodeLocationStable(leftClick, "autoclick left click button")
-
-	// Autoclick is in left click mode once the scroll view disappears.
-	if err := ui.WaitUntilGone(ctx, tconn, ui.FindParams{ClassName: "AutoclickScrollBubbleView"}, 10*time.Second); err != nil {
-		s.Fatal("Failed to change back to left click mode and close the scroll view: ", err)
+	if err := uiauto.Combine("change Autoclick mode",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(menu),
+		// Change Autoclick to scroll mode by hovering on the scroll button in the menu.
+		moveMouseToNode(scrollButton),
+		// Autoclick is in scroll mode once the scroll view appears.
+		ui.WithTimeout(10*time.Second).WaitUntilExists(scrollView),
+		// Change back to left click mode by hovering on the left click button in the menu.
+		moveMouseToNode(leftClickButton),
+		// Autoclick is in left click mode once the scroll view disappears.
+		ui.WithTimeout(10*time.Second).WaitUntilGone(scrollView),
+	)(ctx); err != nil {
+		s.Fatal("Failed to change the Autoclick mode: ", err)
 	}
 
 	// Turn off autoclick.
@@ -119,33 +107,16 @@ func Autoclick(ctx context.Context, s *testing.State) {
 
 	enabled = false
 
-	// Deactivating autoclick should show a confirmation dialog.
-	dialog, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-		Name:  "Are you sure you want to turn off automatic clicks?",
-		State: map[ui.StateType]bool{ui.StateTypeOffscreen: false},
-	}, 10*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find the autoclick confirmation dialog: ", err)
-	}
-	defer dialog.Release(ctx)
+	dialog := nodewith.Name("Are you sure you want to turn off automatic clicks?").Onscreen()
+	yesButton := nodewith.Name("Yes").ClassName("MdTextButton").Onscreen()
 
-	// Hovering over the "Yes" button should deactivate autoclick.
-	yesButton, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-		Name:      "Yes",
-		ClassName: "MdTextButton",
-		State:     map[ui.StateType]bool{ui.StateTypeOffscreen: false},
-	}, 10*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find the yes button in the autoclick confirmation dialog: ", err)
-	}
-	defer yesButton.Release(ctx)
-
-	moveMouseToNodeLocationStable(yesButton, "autoclick confirmation dialog yes button")
-
-	// Wait for the confirmation dialog to disappear.
-	if err := ui.WaitUntilGone(ctx, tconn, ui.FindParams{
-		Name: "Are you sure you want to turn off automatic clicks?",
-	}, 10*time.Second); err != nil {
-		s.Fatal("Failed to close the autoclick confirmation dialog: ", err)
+	if err := uiauto.Combine("close Autoclick confirmation dialog",
+		// Deactivating autoclick should show a confirmation dialog.
+		ui.WithTimeout(10*time.Second).WaitUntilExists(dialog),
+		// Hovering over the "Yes" button should deactivate autoclick.
+		moveMouseToNode(yesButton),
+		ui.WithTimeout(10*time.Second).WaitUntilGone(dialog),
+	)(ctx); err != nil {
+		s.Fatal("Failed to close the Autoclick confirmation dialog: ", err)
 	}
 }
