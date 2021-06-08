@@ -132,6 +132,30 @@
       },
       "revId": "f4a8aaeef9cf189029d275fc347c190a0170306d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a54f05dd_d5c4f634",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2021-06-08T08:20:00Z",
+      "side": 1,
+      "message": "+1. \n\n\"ni \", Enter\n\"ni 5\", Enter\n\"zhong\", Enter\n\"zhong2\", Enter\nall seem very decoder impl dependent and fragile.\n\nWould also prefer if those tests had some way to just check that the suggestion appears somewhere in the candidate popup, instead of expecting them at a specific position.\n\nI don\u0027t think any other Expected text is reasonable for the other test cases, so I think the other tests are fine (Though I\u0027m not familiar with JP)",
+      "parentUuid": "2edc2ac9_e0a1d48a",
+      "range": {
+        "startLine": 105,
+        "startChar": 19,
+        "endLine": 105,
+        "endChar": 22
+      },
+      "revId": "f4a8aaeef9cf189029d275fc347c190a0170306d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
