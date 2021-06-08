@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb51c954_420575c7",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-08T20:18:55Z",
+      "side": 1,
+      "message": "Done, thank you for catching this.",
+      "parentUuid": "49316a28_8b4ecedd",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 22
+      },
+      "revId": "7e0629f0fde1d11f0827d57c55047847dc7a3cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3595e82_1cb39e7b",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00f78aff_713d30ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_hint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-08T20:18:55Z",
+      "side": 1,
+      "message": "Thank you for the suggestion, I changed this test to use uiauto. I can upload a separate patch that ports existing a11y tests to uiauto as well. Thanks!",
+      "parentUuid": "d3595e82_1cb39e7b",
+      "range": {
+        "startLine": 16,
+        "startChar": 31,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "7e0629f0fde1d11f0827d57c55047847dc7a3cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10c80fc1_18c0986f",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-06-08T02:45:33Z",
       "side": 1,
       "message": "Can you use VarDeps instead of Vars?\n\nc.f.\nhttps://groups.google.com/a/chromium.org/g/tast-users/c/BOkEtYTOyiA",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "7e0629f0fde1d11f0827d57c55047847dc7a3cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cf46c10_7c85fc71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_hint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-08T20:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10c80fc1_18c0986f",
       "range": {
         "startLine": 30,
         "startChar": 2,
