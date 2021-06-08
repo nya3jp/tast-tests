@@ -4,7 +4,11 @@
 
 package quicksettings
 
-import "chromiumos/tast/local/chrome/ui"
+import (
+	"regexp"
+
+	"chromiumos/tast/local/chrome/ui"
+)
 
 // quickSettingsParams are the parameters to find the Quick Settings area in the UI.
 var quickSettingsParams ui.FindParams = ui.FindParams{
@@ -81,6 +85,12 @@ var MicGainSliderParams ui.FindParams = ui.FindParams{
 	Name:      "Volume",
 	ClassName: "Slider",
 	Role:      ui.RoleTypeSlider,
+}
+
+// MicToggleParams are the UI params for the button that toggles the microphone's mute status.
+var MicToggleParams ui.FindParams = ui.FindParams{
+	Role:       ui.RoleTypeToggleButton,
+	Attributes: map[string]interface{}{"name": regexp.MustCompile("Toggle Mic")},
 }
 
 // ManagedInfoViewParams are the UI params for the Quick Settings management information display.

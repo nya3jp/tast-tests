@@ -510,6 +510,46 @@ func DecreaseSlider(ctx context.Context, tconn *chrome.TestConn, kb *input.Keybo
 	return SliderValue(ctx, tconn, slider)
 }
 
+// micToggleButton navigates to the audio settings page and returns the UI node for the mic toggle (mute/unmute) button. Callers should defer releasing the returned node.
+func micToggleButton(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
+	if err := OpenAudioSettings(ctx, tconn); err != nil {
+		return nil, err
+	}
+	btn, err := ui.FindWithTimeout(ctx, tconn, MicToggleParams, uiTimeout)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find the mic toggle button")
+	}
+	return btn, nil
+}
+
+// MicEnabled checks if the microphone is enabled (unmuted).
+func MicEnabled(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	btn, err := micToggleButton(ctx, tconn)
+	if err != nil {
+		return false, err
+	}
+	defer btn.Release(ctx)
+	return btn.Checked == ui.CheckedStateTrue, nil
+}
+
+// ToggleMic toggles the microphone's enabled state by clicking the microphone icon adjacent to the slider.
+// If the microphone is already in the desired state, this will do nothing.
+func ToggleMic(ctx context.Context, tconn *chrome.TestConn, enable bool) error {
+	if current, err := MicEnabled(ctx, tconn); err != nil {
+		return err
+	} else if current != enable {
+		btn, err := micToggleButton(ctx, tconn)
+		if err != nil {
+			return err
+		}
+		defer btn.Release(ctx)
+		if err := btn.LeftClick(ctx); err != nil {
+			return errors.Wrap(err, "failed to click mic toggle button")
+		}
+	}
+	return nil
+}
+
 // SelectAudioOption selects the audio input or output device with the given name from the audio settings page.
 func SelectAudioOption(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, device string) error {
 	if err := OpenAudioSettings(ctx, tconn); err != nil {
