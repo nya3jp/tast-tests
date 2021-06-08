@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d0feb96_c879d5a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-08T05:31:33Z",
+      "side": 1,
+      "message": "Looks too long.\nCould you split this into two variations: one for whether the test is functioning, and the other for actual manual testing.\nThe former can run in mainline, and the latter is better to be disabled for a while. We can run it on lab, when we find more efficient way to do so, or find some good place to run.",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "e7ab4025ab37df9c55b34500fbc3763eac05146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea5eefe6_e77e4a5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-08T05:31:33Z",
+      "side": 1,
+      "message": "nit: how about directly passing \"stress\" here?",
+      "range": {
+        "startLine": 92,
+        "startChar": 57,
+        "endLine": 92,
+        "endChar": 62
+      },
+      "revId": "e7ab4025ab37df9c55b34500fbc3763eac05146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "356e78a2_8ad7cd5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-08T05:31:33Z",
+      "side": 1,
+      "message": "ditto, or could you use named constant?\nditto for below.",
+      "revId": "e7ab4025ab37df9c55b34500fbc3763eac05146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a576a6c2_53562778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-08T05:31:33Z",
+      "side": 1,
+      "message": "why timeout can be ignored here?\nRegardless of whether an actual error or timeout, memory_stress test is not completed, right?",
+      "revId": "e7ab4025ab37df9c55b34500fbc3763eac05146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cfeb096_06ea23ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-08T05:31:33Z",
+      "side": 1,
+      "message": "I think they come from memory stress tests for chromeos chrome.\nCould you refactor to share the code?",
+      "revId": "e7ab4025ab37df9c55b34500fbc3763eac05146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a49c7656_18c6b165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-08T05:31:33Z",
+      "side": 1,
+      "message": "unused i?",
+      "revId": "e7ab4025ab37df9c55b34500fbc3763eac05146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5e9e080_8eaaba11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-08T05:31:33Z",
+      "side": 1,
+      "message": "this looks a bit complicated, because this depends on the previous waitTime?\nIs it intentional? If so, could you describe the background into the comment?",
+      "revId": "e7ab4025ab37df9c55b34500fbc3763eac05146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
