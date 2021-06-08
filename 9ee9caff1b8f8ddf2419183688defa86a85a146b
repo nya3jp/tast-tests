@@ -70,6 +70,23 @@
       "parentUuid": "f4e932c9_e1932edd",
       "revId": "9ee9caff1b8f8ddf2419183688defa86a85a146b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e9494b_d132c6b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2021-06-08T00:13:27Z",
+      "side": 1,
+      "message": "Ah right, this wont work because not all images have the hpsd binary installed. Currently only amd64-generic, and it will likely never be on all images. What do owners want done about that?",
+      "revId": "9ee9caff1b8f8ddf2419183688defa86a85a146b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
