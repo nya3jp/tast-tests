@@ -16,6 +16,75 @@
       "message": "Hi Shuhei-san,\n\nDo you mind helping me with this review when you get the chance? Thank you!",
       "revId": "7e0629f0fde1d11f0827d57c55047847dc7a3cc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49316a28_8b4ecedd",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-08T02:45:33Z",
+      "side": 1,
+      "message": "Should we check the returned error?",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 22
+      },
+      "revId": "7e0629f0fde1d11f0827d57c55047847dc7a3cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3595e82_1cb39e7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_hint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-08T02:45:33Z",
+      "side": 1,
+      "message": "I remember that uiauto is recommended for new tests. I suggest looking at it.\nhttps://groups.google.com/a/chromium.org/g/tast-users/c/bhDsp-nO3Ts/m/u4rVb7qpBQAJ",
+      "range": {
+        "startLine": 16,
+        "startChar": 31,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "7e0629f0fde1d11f0827d57c55047847dc7a3cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10c80fc1_18c0986f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_hint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-08T02:45:33Z",
+      "side": 1,
+      "message": "Can you use VarDeps instead of Vars?\n\nc.f.\nhttps://groups.google.com/a/chromium.org/g/tast-users/c/BOkEtYTOyiA",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "7e0629f0fde1d11f0827d57c55047847dc7a3cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
