@@ -27,9 +27,9 @@ func init() {
 			"stevenjb@chromium.org",          // network-health tech lead
 			"cros-network-health@google.com", // network-health team
 		},
-		PreTestTimeout:  10 * time.Second,
+		PreTestTimeout:  30 * time.Second,
 		PostTestTimeout: 5 * time.Second,
-		TearDownTimeout: 10 * time.Second,
+		TearDownTimeout: 30 * time.Second,
 		Impl:            &shillFixture{},
 	})
 }
@@ -57,11 +57,11 @@ func resetShill(ctx context.Context) []error {
 		errs = append(errs, err)
 	}
 
-	// Wait until a service is visible
+	// Wait until a service is connected.
 	expectProps := map[string]interface{}{
-		shillconst.ServicePropertyVisible: true,
+		shillconst.ServicePropertyIsConnected: true,
 	}
-	if _, err := manager.WaitForServiceProperties(ctx, expectProps, 5*time.Second); err != nil {
+	if _, err := manager.WaitForServiceProperties(ctx, expectProps, 15*time.Second); err != nil {
 		errs = append(errs, err)
 	}
 
