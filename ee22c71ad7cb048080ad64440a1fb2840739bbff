@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7985faef_62ebb4a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T00:46:31Z",
+      "side": 1,
+      "message": "Please also run with ui.cuj_mode",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 4
+      },
+      "revId": "ee22c71ad7cb048080ad64440a1fb2840739bbff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e85219f_28272769",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T00:46:31Z",
+      "side": 1,
+      "message": "As I suggested in the previous cl, suggest not to pass s around and return an error.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 9
+      },
+      "revId": "ee22c71ad7cb048080ad64440a1fb2840739bbff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f6cf332_0d885a2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T00:46:31Z",
+      "side": 1,
+      "message": "Suggest to move this just before runScenario to improve the readability.",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 13
+      },
+      "revId": "ee22c71ad7cb048080ad64440a1fb2840739bbff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec07194e_26517cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T00:46:31Z",
+      "side": 1,
+      "message": "Why is it needed to click this?",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 13
+      },
+      "revId": "ee22c71ad7cb048080ad64440a1fb2840739bbff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3906362_03cfe44f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T00:46:31Z",
+      "side": 1,
+      "message": "It seems that IfSuccessThen could be used here.",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 3
+      },
+      "revId": "ee22c71ad7cb048080ad64440a1fb2840739bbff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31b1812c_501642b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T00:46:31Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 31,
+        "startChar": 20,
+        "endLine": 31,
+        "endChar": 23
+      },
+      "revId": "ee22c71ad7cb048080ad64440a1fb2840739bbff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
