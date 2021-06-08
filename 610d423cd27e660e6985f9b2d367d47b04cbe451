@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b55671fd_0011cfa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2021-06-08T08:35:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7970c981_b69a5590",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 11
+      },
+      "revId": "610d423cd27e660e6985f9b2d367d47b04cbe451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "581718a8_d4a8429f",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-08T05:48:49Z",
       "side": 1,
       "message": "Looks unused?\nDo you have a plan to use this in a later CL?",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 7
+      },
+      "revId": "610d423cd27e660e6985f9b2d367d47b04cbe451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd5973c_7661519a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2021-06-08T08:35:51Z",
+      "side": 1,
+      "message": "Yes, it is used for the later CL.",
+      "parentUuid": "581718a8_d4a8429f",
       "range": {
         "startLine": 44,
         "startChar": 4,
