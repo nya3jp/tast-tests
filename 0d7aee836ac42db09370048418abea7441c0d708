@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d417f4b_2b1e0897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-08T01:03:39Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion!",
+      "parentUuid": "c1cfb9cd_9e411c66",
+      "revId": "0d7aee836ac42db09370048418abea7441c0d708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c64cb94e_5be0e645",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-06-07T19:48:44Z",
       "side": 1,
       "message": "Just wondering about this function: it\u0027s possible for any one of the three parts to fail independently of the other two?",
+      "revId": "0d7aee836ac42db09370048418abea7441c0d708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7961c7b5_2310d951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-08T01:03:39Z",
+      "side": 1,
+      "message": "Yes, this should be possible, e.g,, StopServer executes a command in chroot, if that command fails (maybe the server has died or whatever), only that part will fail, and we should continue collecting log and removing chroot.\n\nBut the reason could also be dependent in some cases, e.g., some problem with the chroot environment.",
+      "parentUuid": "c64cb94e_5be0e645",
       "revId": "0d7aee836ac42db09370048418abea7441c0d708",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

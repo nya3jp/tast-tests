@@ -118,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b35a5f_239efe82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-08T01:03:39Z",
+      "side": 1,
+      "message": "\u003e optional: What do you think about returning an array of errors in this function? Alternatively, you can build an error to return at the end of the function.\nThanks for the suggestion! Since it\u0027s optional then let me leave it as-is now to keep it simpler :)\nI think here we just want to understand if there is any issue with our clean up code (in some edge cases), so as long as we have something in the log, that should be fine.",
+      "parentUuid": "aee8acde_96bd2de0",
+      "revId": "c68fcf787e4d4cdbe539fd47f4275f971b0c8ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d7b14f8_d52305d8",
