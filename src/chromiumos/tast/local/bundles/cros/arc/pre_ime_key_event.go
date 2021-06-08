@@ -29,6 +29,7 @@ func init() {
 		Desc:         "Checks View.onKeyPreIme() works on Android apps",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
@@ -155,18 +156,8 @@ func testPreIMEKeyEvent(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 }
 
 func PreIMEKeyEvent(ctx context.Context, s *testing.State) {
-	// TODO(b/148193316): Remove the flag once it's enabled by default.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.EnableFeatures("ArcPreImeKeyEventSupport"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close(ctx)
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
