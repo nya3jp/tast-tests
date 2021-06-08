@@ -6,18 +6,22 @@ violated.
 
 ## AV1
 
-### AOM files
-The license of the video files is [AOM license].
+### AOM
+These are the complete set of test streams included with [libaom](https://aomedia.googlesource.com/aom/#downloading-the-test-data), licensed under [AOM license].
 
-#### 8 bit
+### 8 bit
+dav1d test streams:
 * [8-bit/00000527.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000527.ivf)
 * [8-bit/00000535.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000535.ivf)
 * [8-bit/00000548.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000548.ivf)
+
+AOM test streams (subset/not in current set), licensed under [AOM license]:
 * [8-bit/av1-1-b8-02-allintra.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/intra/av1-1-b8-02-allintra.ivf)
 * [8-bit/av1-1-b8-03-sizeup.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/resize/av1-1-b8-03-sizeup.ivf)
 * [8-bit/av1-1-b8-23-film\_grain-50.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/film_grain/av1-1-b8-23-film_grain-50.ivf)
 
-#### 10 bit
+### 10 bit
+dav1d test streams:
 * [10-bit/00000671.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000671.ivf)
 * [10-bit/00000672.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000672.ivf)
 * [10-bit/00000673.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000673.ivf)
@@ -33,6 +37,8 @@ The license of the video files is [AOM license].
 * [10-bit/00000763.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000763.ivf)
 * [10-bit/00000764.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000764.ivf)
 * [10-bit/00000765.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000765.ivf)
+
+AOM test streams (subset/not in current set), licensed under [AOM license]:
 * [10-bit/av1-1-b10-00-quantizer-00.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/10-bit/quantizer/av1-1-b10-00-quantizer-00.ivf)
 * [10-bit/av1-1-b10-00-quantizer-10.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/10-bit/quantizer/av1-1-b10-00-quantizer-10.ivf)
 * [10-bit/av1-1-b10-00-quantizer-20.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/10-bit/quantizer/av1-1-b10-00-quantizer-20.ivf)
