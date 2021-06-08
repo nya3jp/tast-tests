@@ -22,6 +22,30 @@
       },
       "revId": "5f5a68494b8d2006199f898ca79a9e52a2434e42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a233886_4b61146c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-08T01:54:02Z",
+      "side": 1,
+      "message": "I believe we only need to exclude kevin64. After the last cl, I monitored for over 10 builds, and found the handwriting tests are stable on all other boards, with the only failure reason being vk-not-shown issue, which is an general issue for all VK tests. \n\nWill do that optimisation later together with the parameterization.",
+      "parentUuid": "bbeb29be_97d4ecb2",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "5f5a68494b8d2006199f898ca79a9e52a2434e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
