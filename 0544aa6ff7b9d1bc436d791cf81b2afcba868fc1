@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8bffd2b_619b79b0",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-08T19:48:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e63c67c8_6df7d21e",
+      "revId": "0544aa6ff7b9d1bc436d791cf81b2afcba868fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb1fe196_2842c633",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-07T20:31:11Z",
       "side": 1,
       "message": "Is sudo strictly necessary? In general I\u0027d think it\u0027s safest to only use sudo when necessary.",
+      "range": {
+        "startLine": 211,
+        "startChar": 35,
+        "endLine": 211,
+        "endChar": 39
+      },
+      "revId": "0544aa6ff7b9d1bc436d791cf81b2afcba868fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ec32d3e_611583ea",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-08T19:48:50Z",
+      "side": 1,
+      "message": "Oh, I\u0027ve only been running flashrom, which needs sudo. I could add a asRoot bool param, or have separate commands RunCommandAsRoot and OutputCommandAsRoot.",
+      "parentUuid": "cb1fe196_2842c633",
       "range": {
         "startLine": 211,
         "startChar": 35,
