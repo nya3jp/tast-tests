@@ -16,6 +16,161 @@
       "message": "Hello Jun and Alex, I split the test into three smaller CLs for review. You can review one by one but I\u0027ll assign all the CLs to you as reviewers. Thanks in advance for your effort.",
       "revId": "b8f4dfbb900022ff93406014c096023b3721120b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a67b8fe_148af514",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 71
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-08T05:26:39Z",
+      "side": 1,
+      "message": "So large cl. More comments might come later.",
+      "revId": "b8f4dfbb900022ff93406014c096023b3721120b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4253bfe4_85f5dfec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 71
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-08T05:26:39Z",
+      "side": 1,
+      "message": "Can you please add some comments here what the lists are and usage.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "b8f4dfbb900022ff93406014c096023b3721120b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7086bad_7526ea8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 71
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-08T05:26:39Z",
+      "side": 1,
+      "message": "why append twice? Can you add a comment to avoid confusing if it is the intention.",
+      "range": {
+        "startLine": 78,
+        "startChar": 30,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "b8f4dfbb900022ff93406014c096023b3721120b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34164b0a_1d32576a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 71
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-08T05:26:39Z",
+      "side": 1,
+      "message": "From the name, it is hard to know one is type one is variable. Can you rename the test name to be more meaningful? At least it tells what you are testing.",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 21
+      },
+      "revId": "b8f4dfbb900022ff93406014c096023b3721120b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21d11484_74ba2e3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 71
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-08T05:26:39Z",
+      "side": 1,
+      "message": "nit: Failed to create",
+      "range": {
+        "startLine": 115,
+        "startChar": 11,
+        "endLine": 115,
+        "endChar": 18
+      },
+      "revId": "b8f4dfbb900022ff93406014c096023b3721120b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e90058_bd842b06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 71
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-08T05:26:39Z",
+      "side": 1,
+      "message": "why make the declaration, instantiation and close in different location?\n\nYou can simply do:\npc :\u003d pointer.NewMouse(tconn)\ndefer pc.Close()\n\nPlease correct me if I missed any thing.",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 3
+      },
+      "revId": "b8f4dfbb900022ff93406014c096023b3721120b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48bbe2b9_fd9e7674",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 71
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-08T05:26:39Z",
+      "side": 1,
+      "message": "nit: else is not required.",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 2
+      },
+      "revId": "b8f4dfbb900022ff93406014c096023b3721120b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
