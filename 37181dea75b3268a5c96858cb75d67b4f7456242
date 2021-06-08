@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d918dbff_300bdd87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-08T07:44:05Z",
+      "side": 1,
+      "message": "good point. I saw somewhere that desktop mode can be set for the test. I will check that out.",
+      "parentUuid": "229caaa6_3026fe9b",
+      "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebc25c87_89b65f62",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
         "patchSetId": 1
