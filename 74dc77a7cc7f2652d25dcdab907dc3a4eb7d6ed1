@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f28a27ed_605a1eb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-08T16:31:25Z",
+      "side": 1,
+      "message": "Are temporary files writable by other processes? I may need to give write permission to the file so the executable that is run by packet capture tool can modify and write packets to it. Here I just create the file with all permissions.",
+      "parentUuid": "b007da83_b1c2a425",
+      "revId": "74dc77a7cc7f2652d25dcdab907dc3a4eb7d6ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd9b435a_ec38e66b",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-08T14:08:04Z",
       "side": 1,
       "message": "These don\u0027t need to be arguments, you can just refer to them in go.",
+      "range": {
+        "startLine": 103,
+        "startChar": 35,
+        "endLine": 103,
+        "endChar": 56
+      },
+      "revId": "74dc77a7cc7f2652d25dcdab907dc3a4eb7d6ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "274b664c_b61a7c96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-08T16:31:25Z",
+      "side": 1,
+      "message": "Done. Thank you!",
+      "parentUuid": "bd9b435a_ec38e66b",
       "range": {
         "startLine": 103,
         "startChar": 35,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b3a0101_3a692fae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-08T16:31:25Z",
+      "side": 1,
+      "message": "Oops my bad. I think I forgot to remove it. Thank you for telling!",
+      "parentUuid": "af58d527_9e7e4ff0",
+      "revId": "74dc77a7cc7f2652d25dcdab907dc3a4eb7d6ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57adb5c2_52066f2b",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-06-08T14:08:04Z",
       "side": 1,
       "message": "maybe Pipe?",
+      "range": {
+        "startLine": 111,
+        "startChar": 7,
+        "endLine": 111,
+        "endChar": 11
+      },
+      "revId": "74dc77a7cc7f2652d25dcdab907dc3a4eb7d6ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7feacee_600a634c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-08T16:31:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57adb5c2_52066f2b",
       "range": {
         "startLine": 111,
         "startChar": 7,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "969cf488_dd8ffd0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-08T16:31:25Z",
+      "side": 1,
+      "message": "No, it shouldn\u0027t continue. I thought error did stop the test too. Thank you!",
+      "parentUuid": "5d5dd1ee_c4bf8d21",
+      "range": {
+        "startLine": 136,
+        "startChar": 6,
+        "endLine": 136,
+        "endChar": 11
+      },
+      "revId": "74dc77a7cc7f2652d25dcdab907dc3a4eb7d6ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12721576_4ffbf82d",
@@ -127,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bc914b2_1bdd46eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-08T16:31:25Z",
+      "side": 1,
+      "message": "Done. Thank you!",
+      "parentUuid": "12721576_4ffbf82d",
+      "range": {
+        "startLine": 141,
+        "startChar": 79,
+        "endLine": 141,
+        "endChar": 85
+      },
+      "revId": "74dc77a7cc7f2652d25dcdab907dc3a4eb7d6ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19de423d_71b7c386",
@@ -140,6 +272,30 @@
       "writtenOn": "2021-06-08T14:08:04Z",
       "side": 1,
       "message": "Fatal",
+      "range": {
+        "startLine": 155,
+        "startChar": 6,
+        "endLine": 155,
+        "endChar": 11
+      },
+      "revId": "74dc77a7cc7f2652d25dcdab907dc3a4eb7d6ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c67b4803_e5d22060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-08T16:31:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19de423d_71b7c386",
       "range": {
         "startLine": 155,
         "startChar": 6,
