@@ -63,6 +63,30 @@
       },
       "revId": "d5dd9c078bd1064074bfe453fd6eacdf8d404f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beaf88a7_260e60f8",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-08T07:36:21Z",
+      "side": 1,
+      "message": "As a note: we had a discussion about it, and agreed to leave it as it is.",
+      "parentUuid": "e7bc2a6c_4fe2cf80",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 3
+      },
+      "revId": "d5dd9c078bd1064074bfe453fd6eacdf8d404f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
