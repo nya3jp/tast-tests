@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2294f3ad_7b849b62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-08T02:39:52Z",
+      "side": 1,
+      "message": "This will directly enable new tests in CQ.\n\nHow Attr works: Like SoftwareDeps and HardwareDeps, Attr is a common attribute applies to all params. If you want to append condition to a test param, you can use ExtraSoftwareDeps, ExtraHardwareDeps and ExtraAttr.\n\nAs discussed, we are okay to start with private suite (or informational if you want). To do this:\n// private suite\n\nAttr:         []string{\"group:input-tools\", \"group:input-tools-upstream\"},\n{\n\tName: \"us_en\",\n\tVal:  ime.INPUTMETHOD_XKB_US_ENG,\n\tExtraAttr: []string{\"group:mainline\"},\n},\n{\n\tName: \"jp_ja\",\n\tVal:  ime.INPUTMETHOD_NACL_MOZC_US,\n},\n{\n\tName: \"pinyin\",\n\tVal:  ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,\n},",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 5
+      },
+      "revId": "f4a8aaeef9cf189029d275fc347c190a0170306d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2cb3761_400e3bf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-08T02:39:52Z",
+      "side": 1,
+      "message": "It does not make sense to use vkbCtx in pk test. Since WaitForDecoderEnabled() does not actually do anything, can you please create a private inline function waitForDecoderEnabled sleeps 10s.",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 31
+      },
+      "revId": "f4a8aaeef9cf189029d275fc347c190a0170306d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02abc747_55749295",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
         "patchSetId": 1
@@ -36,6 +82,53 @@
         "startChar": 0,
         "endLine": 100,
         "endChar": 35
+      },
+      "revId": "f4a8aaeef9cf189029d275fc347c190a0170306d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90a86019_226edf3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-08T02:39:52Z",
+      "side": 1,
+      "message": "This will be part of a project @alvinjia works on (go/tast-inputs-param)\n\nIt is still in early stage. We can collect requirements and discuss them there. WDYT",
+      "parentUuid": "02abc747_55749295",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 35
+      },
+      "revId": "f4a8aaeef9cf189029d275fc347c190a0170306d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2edc2ac9_e0a1d48a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-08T02:39:52Z",
+      "side": 1,
+      "message": "For expectedText, I am afraid the number index is from decoder, so very fragile. My personal suggestions:\n\nLocate pk candidate popup, find the node text in position and use it as expectedText.\n\nSounds like we need a pk library in parallel to vkb, which provides functions to choose candidates, emoji...",
+      "range": {
+        "startLine": 105,
+        "startChar": 19,
+        "endLine": 105,
+        "endChar": 22
       },
       "revId": "f4a8aaeef9cf189029d275fc347c190a0170306d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
