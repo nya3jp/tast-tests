@@ -16,6 +16,74 @@
       "message": "Mukai-san, as this change tightly related to the previous one, would you mind taking a look at this as well?\n\nThank you!",
       "revId": "dcae4355d562a82de5ca2d7f4c49cfe982aafcd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "972d4d78_3e831107",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2021-06-08T08:14:49Z",
+      "side": 1,
+      "message": "Thanks! I have some questions.",
+      "revId": "dcae4355d562a82de5ca2d7f4c49cfe982aafcd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "353d6782_1cdc8265",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2021-06-08T08:14:49Z",
+      "side": 1,
+      "message": "Currently, it seems that this field is not checked in the actual test. Is this intended?",
+      "revId": "dcae4355d562a82de5ca2d7f4c49cfe982aafcd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3659f713_b8796c97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2021-06-08T08:14:49Z",
+      "side": 1,
+      "message": "How about updating the comment to something like \"expected params of the event\"?",
+      "revId": "dcae4355d562a82de5ca2d7f4c49cfe982aafcd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c902e5c_5547a7a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2021-06-08T08:14:49Z",
+      "side": 1,
+      "message": "Is it because we wait for focused node for 10*time.Second that we wait 10*time.Second here? If so, how about defining a constant variable?",
+      "revId": "dcae4355d562a82de5ca2d7f4c49cfe982aafcd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
