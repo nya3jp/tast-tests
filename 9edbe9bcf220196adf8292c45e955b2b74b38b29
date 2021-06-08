@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30258b80_5d98f992",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-08T20:44:50Z",
+      "side": 1,
+      "message": "My bad, should be go/tast-reviews",
+      "parentUuid": "4a1e5ef1_1f092c49",
+      "revId": "9edbe9bcf220196adf8292c45e955b2b74b38b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd7a9023_e17b4132",

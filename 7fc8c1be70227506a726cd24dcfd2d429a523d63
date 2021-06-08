@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d1e0a07_410032c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-08T20:44:50Z",
+      "side": 1,
+      "message": "\u003e Patch Set 2:\n\u003e \n\u003e Reviewer source(s):\n\u003e gredelston is from context\n\nWhoops, because I am on the tast-owners@ GWSQ (as a Tast reviewer), this defaulted to adding me.\n\nI recommend adding a bona-fide Tast owner directly, to avoid getting another reviewer (i.e., non-owner) like myself.",
+      "revId": "7fc8c1be70227506a726cd24dcfd2d429a523d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
