@@ -118,6 +118,30 @@
       },
       "revId": "5f5a68494b8d2006199f898ca79a9e52a2434e42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea22954e_7b8fc71a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-08T07:23:53Z",
+      "side": 1,
+      "message": "Thanks, that\u0027s clear now. \n\nExclude kevin64 board for now to stabilize the test. Will keep that in mind when refactoring them later.",
+      "parentUuid": "27bcc5f4_ad6306c9",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "5f5a68494b8d2006199f898ca79a9e52a2434e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
