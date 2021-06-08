@@ -110,6 +110,30 @@
       },
       "revId": "610d423cd27e660e6985f9b2d367d47b04cbe451",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd788be_eefc5e10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-08T14:54:27Z",
+      "side": 1,
+      "message": "In the future, could you add the value when needed?\nSet the value without its consumer looks very concerning.",
+      "parentUuid": "bbd5973c_7661519a",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 7
+      },
+      "revId": "610d423cd27e660e6985f9b2d367d47b04cbe451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
