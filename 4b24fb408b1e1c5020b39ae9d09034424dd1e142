@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39051617_d1f0b509",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/androidui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T02:39:17Z",
+      "side": 1,
+      "message": "Suggest to re-arrange the order like this:\nif err :\u003d obj.WaitForExists(ctx, timeout); err !\u003d nil {\n    testing.Contextlog(ctx, \"obj does not exist\")\n    return nil\n}\nreturn obj.Click(ctx)",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 11
+      },
+      "revId": "4b24fb408b1e1c5020b39ae9d09034424dd1e142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1084ede_816a7e9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T02:39:17Z",
+      "side": 1,
+      "message": "Should this be under appName\u003dYoutubeWeb?",
+      "range": {
+        "startLine": 234,
+        "startChar": 4,
+        "endLine": 234,
+        "endChar": 7
+      },
+      "revId": "4b24fb408b1e1c5020b39ae9d09034424dd1e142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a46a23d_1f25e019",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T02:39:17Z",
+      "side": 1,
+      "message": "Should it fail the test case if it fails to close play store?",
+      "range": {
+        "startLine": 294,
+        "startChar": 9,
+        "endLine": 294,
+        "endChar": 20
+      },
+      "revId": "4b24fb408b1e1c5020b39ae9d09034424dd1e142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0490032b_af8db66e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T02:39:17Z",
+      "side": 1,
+      "message": "The uiauto default time is 15s, do you still need this timeout?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 11
+      },
+      "revId": "4b24fb408b1e1c5020b39ae9d09034424dd1e142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
