@@ -46,6 +46,30 @@
       },
       "revId": "5f5a68494b8d2006199f898ca79a9e52a2434e42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d2769e9_464bfecb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-08T02:13:56Z",
+      "side": 1,
+      "message": "If you look at other existing inputs.* tests, most of them are split to stable \u0026 unstable, or only run on stable boards. \n\nThe reason is as below:\n1. Some boards are failing randomly from time to time, if a board failed 1/100 runs, 100 boards will fail 100/100 runs. You will never get 20+ greenness and promote them to CQ.\n2. vk not shown is not the only blocker here. You will find the reasons are very different after this.\n3. Comparing to support all boards, have a few stable boards to running in CQ is more important.\n\nIt is up to you to choose your approach 😊",
+      "parentUuid": "7a233886_4b61146c",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "5f5a68494b8d2006199f898ca79a9e52a2434e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
