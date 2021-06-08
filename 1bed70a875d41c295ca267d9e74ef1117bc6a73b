@@ -51,6 +51,24 @@
       "parentUuid": "6bec2101_ea3e9e91",
       "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1b11771_65a98e2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-08T02:13:57Z",
+      "side": 1,
+      "message": "Thanks for clarification!\n\nIt looks like you need a new software dependency. ABI of Android container is specified by USE flags at build time, and software dependencies are a way to skip tests based on USE flags. They are defined here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/cmd/local_test_runner/main.go\n\n\"cheets_user\" and \"cheets_user_64\" are USE flags to specify Android container ABI.\nhttps://source.corp.google.com/chromeos_internal/src/private-overlays/project-cheets-private/profiles/android/amd64/make.defaults\n\nSo I think you can define the software dependency as:\n\n \"no_arc_x86\": \"!(amd64 \u0026\u0026 cheets_user)\"\n \nFor more information about software deps, see:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md",
+      "parentUuid": "65df7612_5bffaf91",
+      "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
