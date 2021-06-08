@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "851bdb67_05f4f126",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-08T08:20:39Z",
+      "side": 1,
+      "message": "Found this fixture when checking how other tests deal with resetting shill\u0027s profile.\nIts code can be found at http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+      "revId": "22d11fa0784cd7e0317bb10f350b67c04d4f3d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
