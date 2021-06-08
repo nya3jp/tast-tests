@@ -320,8 +320,8 @@ func getGuestPack(ctx context.Context) (string, error) {
 
 		ureadaheadStopTimeout      = 50 * time.Second
 		ureadaheadStopInterval     = 5 * time.Second
-		ureadaheadFileStatTimeout  = 1 * time.Minute
-		ureadaheadFileStatInterval = 10 * time.Second
+		ureadaheadFileStatTimeout  = 90 * time.Second
+		ureadaheadFileStatInterval = 15 * time.Second
 	)
 
 	packPath := filepath.Join(ureadaheadDataDir, arcvmPackName)
