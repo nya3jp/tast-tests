@@ -16,6 +16,167 @@
       "message": "This is CL is for adding test for the second approach of making runtime variables global accessible whether they are declared or not.",
       "revId": "aebf1c46572fb6dbf8005a26dc33c34b423bd199",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16e477f0_6a454dbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-08T02:24:12Z",
+      "side": 1,
+      "message": "I think this test is better placed at meta category since it\u0027s a test for Tast itself.",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 15
+      },
+      "revId": "aebf1c46572fb6dbf8005a26dc33c34b423bd199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c07201_39a7af6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-08T02:24:12Z",
+      "side": 1,
+      "message": "style: Start comment sentences with capital letters.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "aebf1c46572fb6dbf8005a26dc33c34b423bd199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "869304a2_6dfab70b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-08T02:24:12Z",
+      "side": 1,
+      "message": "Can you mention \"runtime variables\" instead of \"variables\" so as not to be confused with variables in Go?",
+      "range": {
+        "startLine": 27,
+        "startChar": 18,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "aebf1c46572fb6dbf8005a26dc33c34b423bd199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d064b8f8_a793381a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-08T02:24:12Z",
+      "side": 1,
+      "message": "nit: const varName \u003d ...",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 8
+      },
+      "revId": "aebf1c46572fb6dbf8005a26dc33c34b423bd199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e838e86_53535b50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-08T02:24:12Z",
+      "side": 1,
+      "message": "I think it\u0027s simpler to check this within the fixture?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "aebf1c46572fb6dbf8005a26dc33c34b423bd199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfea2490_65c0312c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-08T02:24:12Z",
+      "side": 1,
+      "message": "typo: undeclared",
+      "range": {
+        "startLine": 41,
+        "startChar": 13,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "aebf1c46572fb6dbf8005a26dc33c34b423bd199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd683eff_713363c4",
+        "filename": "src/chromiumos/tast/local/example/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-08T02:24:12Z",
+      "side": 1,
+      "message": "You can omit them; 0 timeout is valid and it works as long as lifecycle methods don\u0027t block.",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "aebf1c46572fb6dbf8005a26dc33c34b423bd199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
