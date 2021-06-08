@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebd17b53_d087c5f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-08T19:52:12Z",
+      "side": 1,
+      "message": "tast-wise: +2 \n\nplease, wait for Armen\u0027s review.",
+      "revId": "4b763be8c4d0dad52b6fc32211d466373ba42a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
