@@ -19,7 +19,7 @@ func init() {
 		Func:         DeepSleep,
 		Desc:         "Estimate battery life in deep sleep state, as a replacement for manual test 1.10.1",
 		Contacts:     []string{"hc.tsai@cienet.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_smoke"},
+		Attr:         []string{"group:firmware", "firmware_slow"},
 		Vars:         []string{"servo", "firmware.hibernate_time"},
 		SoftwareDeps: []string{"crossystem"},
 		HardwareDeps: hwdep.D(hwdep.Battery(), hwdep.ChromeEC()),
