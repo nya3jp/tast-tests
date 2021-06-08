@@ -16,6 +16,23 @@
       "message": "ptla",
       "revId": "fc5d8f9dd38143939270c33589c7a673cb2adc36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caf45d87_08f2d741",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-06-08T23:32:08Z",
+      "side": 1,
+      "message": "Hidehiko: friendly ping 😊",
+      "revId": "fc5d8f9dd38143939270c33589c7a673cb2adc36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
