@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6ace436_6d5d5a5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-08T00:30:31Z",
+      "side": 1,
+      "message": "nit: order of parameters.\n\nI they should go in this order:\n  Chrome, TestConn, ARC, Activity... and the rest\n  \n(the rationale is that Chrome parameters go together, and the same for ARC ones).",
+      "range": {
+        "startLine": 67,
+        "startChar": 67,
+        "endLine": 67,
+        "endChar": 81
+      },
+      "revId": "ce6a81bf5eaf81242c92ef590e90090ef2f9acb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b36ab5f_b0f1bee0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-08T00:30:31Z",
+      "side": 1,
+      "message": "nit, ditto (here and below) I\u0027d move Chrome argument before TestConn (\"Chrome\" seems to be more important than \"TestConn\")",
+      "range": {
+        "startLine": 624,
+        "startChar": 72,
+        "endLine": 624,
+        "endChar": 89
+      },
+      "revId": "ce6a81bf5eaf81242c92ef590e90090ef2f9acb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05f99a67_161dcccc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 3
