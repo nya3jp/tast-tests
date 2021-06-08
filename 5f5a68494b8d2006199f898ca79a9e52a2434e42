@@ -70,6 +70,30 @@
       },
       "revId": "5f5a68494b8d2006199f898ca79a9e52a2434e42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7576052c_dcb28f7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-08T03:24:46Z",
+      "side": 1,
+      "message": "Thanks for the clarification. That makes perfect sense. \n\nFollowing that, I have a general question regarding the hardware dependencies. I previously thought that we should avoid using model/platform dependencies unless there is no other way, as stated in https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md\n\nHere is my question: is removing \"stable/unstable model\" dependencies an ultimate goal for tast tests in CQ? \n\nFrom my understanding, the ability to run tests on all boards is a major advantage of Tast, but it can also be the cause of flakiness. On the other hand, running tests on a few stable boards may not be very different from running Webdriver tests in betty.",
+      "parentUuid": "3d2769e9_464bfecb",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "5f5a68494b8d2006199f898ca79a9e52a2434e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
