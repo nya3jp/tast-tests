@@ -34,6 +34,224 @@
       "parentUuid": "5219f950_6896d922",
       "revId": "ebeda471feced46b13d286a3e8bac93deccb89e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff40ac3_59c3d0c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-08T00:44:48Z",
+      "side": 1,
+      "message": "Most other tests that I see creating tmp dirs just use \"\" as the first argument. This will use TMPDIR and tast sets this explicitly for tests.",
+      "range": {
+        "startLine": 147,
+        "startChar": 28,
+        "endLine": 147,
+        "endChar": 42
+      },
+      "revId": "ebeda471feced46b13d286a3e8bac93deccb89e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10fe31f0_61e50af6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-08T00:44:48Z",
+      "side": 1,
+      "message": "Are these logs files needed at all times? Could they be created only on error? same with serverLog and clientLog crosvm-server and crosvm2?",
+      "revId": "ebeda471feced46b13d286a3e8bac93deccb89e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec426c5_c52f42bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-08T00:44:48Z",
+      "side": 1,
+      "message": "nit: device?",
+      "range": {
+        "startLine": 178,
+        "startChar": 28,
+        "endLine": 178,
+        "endChar": 34
+      },
+      "revId": "ebeda471feced46b13d286a3e8bac93deccb89e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad4cf4d2_32e1070d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-08T00:44:48Z",
+      "side": 1,
+      "message": "In general, we want to reserve logging for long running operations or helping a developer step through a test: https://crrev.com/dfd2d4fb398a1d1bd11103e10dea2c32801a8dc1/docs/writing_tests.md#errors-and-logging. \n\nI\u0027ll leave it to you to decide what\u0027s important to log, but it might be good to just review the log statements you have to make sure they all are important.",
+      "revId": "ebeda471feced46b13d286a3e8bac93deccb89e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "608ec475_4b97d85e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-08T00:44:48Z",
+      "side": 1,
+      "message": "nit: crosvm server log file\n\nIn these cases unique error messages will help people be able to quickly find the exact line where the test fails.",
+      "range": {
+        "startLine": 211,
+        "startChar": 28,
+        "endLine": 211,
+        "endChar": 34
+      },
+      "revId": "ebeda471feced46b13d286a3e8bac93deccb89e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d62437e_97b0204a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-08T00:44:48Z",
+      "side": 1,
+      "message": "nit: failed to run server crosvm",
+      "range": {
+        "startLine": 219,
+        "startChar": 25,
+        "endLine": 219,
+        "endChar": 31
+      },
+      "revId": "ebeda471feced46b13d286a3e8bac93deccb89e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0804049b_a4da4e72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-08T00:44:48Z",
+      "side": 1,
+      "message": "Should this be crosvm-client?",
+      "range": {
+        "startLine": 231,
+        "startChar": 56,
+        "endLine": 231,
+        "endChar": 63
+      },
+      "revId": "ebeda471feced46b13d286a3e8bac93deccb89e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc655eac_d9ca11ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-08T00:44:48Z",
+      "side": 1,
+      "message": "nit: crosvm-client",
+      "range": {
+        "startLine": 233,
+        "startChar": 28,
+        "endLine": 233,
+        "endChar": 34
+      },
+      "revId": "ebeda471feced46b13d286a3e8bac93deccb89e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3e78951_531253f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-08T00:44:48Z",
+      "side": 1,
+      "message": "nit: failed to run client crosvm",
+      "range": {
+        "startLine": 241,
+        "startChar": 24,
+        "endLine": 241,
+        "endChar": 25
+      },
+      "revId": "ebeda471feced46b13d286a3e8bac93deccb89e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a628b2c_4510ef85",
+        "filename": "src/chromiumos/tast/local/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-08T00:44:48Z",
+      "side": 1,
+      "message": "For my own understanding, why are these functions prefixed with notify? Is this method supposed to notify patchpanel that a VM has started?",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 90,
+        "endChar": 9
+      },
+      "revId": "ebeda471feced46b13d286a3e8bac93deccb89e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
