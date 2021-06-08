@@ -74,6 +74,30 @@
       },
       "revId": "b31c4e9be83dedc6959b9832c25ab61237445ee4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e18de19c_74607035",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-08T01:23:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed0e7a69_b30f19df",
+      "range": {
+        "startLine": 152,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 28
+      },
+      "revId": "b31c4e9be83dedc6959b9832c25ab61237445ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
