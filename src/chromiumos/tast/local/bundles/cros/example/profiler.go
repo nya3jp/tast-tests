@@ -18,7 +18,7 @@ func init() {
 		Func:     Profiler,
 		Desc:     "Demonstrates how to use profiler package",
 		Contacts: []string{"chinglinyu@chromium.org", "tast-owners@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 
