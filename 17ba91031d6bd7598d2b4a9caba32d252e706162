@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3e016c8_4f086723",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-06-08T07:52:42Z",
+      "side": 1,
+      "message": "It looks like this copies all crashes. Could this be changed to only copy the new crashes (as in checkNewCrashes)? I am worried that otherwise we could upload a lot of duplicate files when running many video tests and having problems early.",
+      "revId": "17ba91031d6bd7598d2b4a9caba32d252e706162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
