@@ -24,6 +24,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b10cb55_245deaed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-08T00:47:36Z",
+      "side": 1,
+      "message": "Just added myself as a reviewer.",
+      "revId": "ee22c71ad7cb048080ad64440a1fb2840739bbff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e85219f_28272769",
