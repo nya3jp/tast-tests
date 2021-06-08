@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12a7bc45_a56c7033",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-08T13:30:43Z",
+      "side": 1,
+      "message": "I added it at the end because the test also check the d-bus method. Thanks!",
+      "parentUuid": "0c55cf8d_2530c7b8",
+      "range": {
+        "startLine": 26,
+        "startChar": 41,
+        "endLine": 26,
+        "endChar": 58
+      },
+      "revId": "294ac67b7d910e544405382a7b5de2abd264b207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c88033f_effd2b4b",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-06-08T10:30:08Z",
       "side": 1,
       "message": "nit: test names should be lowercase and separated by _ like my_example",
+      "revId": "294ac67b7d910e544405382a7b5de2abd264b207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ac9f853_3b34cf7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-08T13:30:43Z",
+      "side": 1,
+      "message": "Done. Thank you!",
+      "parentUuid": "6c88033f_effd2b4b",
       "revId": "294ac67b7d910e544405382a7b5de2abd264b207",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +119,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "097a255f_869f0c37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-08T13:30:43Z",
+      "side": 1,
+      "message": "I wanted add test case with empty map and I didn\u0027t want to fill the map for every test case. It can also be helpful in future if we want to have test cases with frequency based options.",
+      "parentUuid": "c723d2b4_9ed4c062",
+      "revId": "294ac67b7d910e544405382a7b5de2abd264b207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5cb0ad7d_fbb464f2",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
         "patchSetId": 1
@@ -88,6 +148,24 @@
       "writtenOn": "2021-06-08T10:30:08Z",
       "side": 1,
       "message": "Don\u0027t create files in the current directory, it\u0027s not guaranteed to be sane in tast. Use a temporary file or a file in s.OutDir() if you want to save it.",
+      "revId": "294ac67b7d910e544405382a7b5de2abd264b207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0d7331f_fab5f30e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-08T13:30:43Z",
+      "side": 1,
+      "message": "Done. Thank you!",
+      "parentUuid": "5cb0ad7d_fbb464f2",
       "revId": "294ac67b7d910e544405382a7b5de2abd264b207",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +193,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34f766b7_0f00f484",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-08T13:30:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79e24bec_122fce31",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 7
+      },
+      "revId": "294ac67b7d910e544405382a7b5de2abd264b207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e760824_66afef53",
@@ -132,6 +234,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bba41c6c_afcf0eb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-08T13:30:43Z",
+      "side": 1,
+      "message": "Right. I changed it. Thank you!",
+      "parentUuid": "3e760824_66afef53",
+      "revId": "294ac67b7d910e544405382a7b5de2abd264b207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9094fac_67376f72",
@@ -145,6 +265,24 @@
       "writtenOn": "2021-06-08T10:30:08Z",
       "side": 1,
       "message": "nit: not sure if this is useful, maybe log before triggering the capture.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "revId": "294ac67b7d910e544405382a7b5de2abd264b207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcd0117b_66ef51fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-08T13:30:43Z",
+      "side": 1,
+      "message": "It was so helpful. Thank you!",
+      "parentUuid": "e9094fac_67376f72",
       "revId": "294ac67b7d910e544405382a7b5de2abd264b207",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -172,6 +310,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b275b46_961439c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-08T13:30:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f1fa253_e968fd16",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 40
+      },
+      "revId": "294ac67b7d910e544405382a7b5de2abd264b207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33e92c1c_c611890a",
@@ -185,6 +347,24 @@
       "writtenOn": "2021-06-08T10:30:08Z",
       "side": 1,
       "message": "Keep the main flow of the test unindented if possible. Prefer to return early when an error occurs or a check is done.",
+      "revId": "294ac67b7d910e544405382a7b5de2abd264b207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc029f99_4df013e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-08T13:30:43Z",
+      "side": 1,
+      "message": "I see. I moved the checks above and returning on an expected behaviour before the main block here. Thank you for the advice!",
+      "parentUuid": "33e92c1c_c611890a",
       "revId": "294ac67b7d910e544405382a7b5de2abd264b207",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
