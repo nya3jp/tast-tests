@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b5ac3ef_d82fd632",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-08T17:22:13Z",
+      "side": 1,
+      "message": "Impressive!",
+      "revId": "05be9ba5cd6f69ef39fa8f0707aaf8465c253e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4ed74cf_3d425da6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-08T17:22:13Z",
+      "side": 1,
+      "message": "nit: Seeing this, perhaps we should refactor the sections a bit, i.e.\n\n  ### AOM files\n    // l.46 here\n     \n  ### Other AV1 files\n    // l.10 here\n  ### 8 bit\n    // ...\n  ### 10 bit\n    // ...\n    \nWDYT?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "05be9ba5cd6f69ef39fa8f0707aaf8465c253e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
