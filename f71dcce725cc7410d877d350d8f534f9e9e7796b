@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52336d9f_e4457dd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-08T21:58:42Z",
+      "side": 1,
+      "message": "Hi Hiroki,\n\nWould you mind helping me review this change? Using uiauto was recommended by Shuhei-san here:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2935430/3..4/src/chromiumos/tast/local/bundles/cros/a11y/chromevox_hint.go#b16\n\nThanks!",
+      "revId": "f71dcce725cc7410d877d350d8f534f9e9e7796b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
