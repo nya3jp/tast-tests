@@ -96,15 +96,12 @@ func init() {
 }
 
 const (
-	l2tpIPsec                       = "L2TP/IPsec"
-	pskAuth                         = "psk"
-	certAuth                        = "cert"
-	testDefaultProfileName          = "vpnTestProfile"
-	testUserProfileName             = "vpnTestProfile2"
-	version                         = 1
-	checkPortalPropertyName         = "CheckPortalList"
-	checkPortalPropertyValue        = "wifi,cellular"
-	checkPortalPropertyDefaultValue = "ethernet,wifi,cellular"
+	l2tpIPsec              = "L2TP/IPsec"
+	pskAuth                = "psk"
+	certAuth               = "cert"
+	testDefaultProfileName = "vpnTestProfile"
+	testUserProfileName    = "vpnTestProfile2"
+	version                = 1
 )
 
 func VPNConnect(ctx context.Context, s *testing.State) {
@@ -157,16 +154,6 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	if _, err = manager.PushProfile(ctx, testDefaultProfileName); err != nil {
 		s.Fatal("Failed to push profile: ", err)
 	}
-
-	// Disable portal check ethernet to recognize virtual ethernet as online.
-	if err = manager.SetProperty(ctx, checkPortalPropertyName, checkPortalPropertyValue); err != nil {
-		s.Log(ctx, "Failed to disable portal check on ethernet: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err = manager.SetProperty(ctx, checkPortalPropertyName, checkPortalPropertyDefaultValue); err != nil {
-			s.Error("Failed to re-enable portal check on ethernet: ", err)
-		}
-	}(cleanupCtx)
 
 	// Wait for the Ethernet service to be online before running the test.
 	// It is because the previous profile cleanup step restarts shill and
