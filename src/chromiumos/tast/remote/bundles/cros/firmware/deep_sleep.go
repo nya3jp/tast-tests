@@ -45,7 +45,7 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Stopping power supply from servo")
-	if err = pxy.Servo().SetV4Role(ctx, servo.V4RoleSnk); err != nil {
+	if err = pxy.Servo().SetPDRole(ctx, servo.PDRoleSnk); err != nil {
 		s.Fatal("Failed to set servo role: ", err)
 	}
 
@@ -95,7 +95,7 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waking up DUT by supplying power from servo")
-	if err = pxy.Servo().SetV4Role(ctx, servo.V4RoleSrc); err != nil {
+	if err = pxy.Servo().SetPDRole(ctx, servo.PDRoleSrc); err != nil {
 		s.Fatal("Failed to set servo role: ", err)
 	}
 
