@@ -7,7 +7,6 @@ package network
 import (
 	"context"
 	"fmt"
-	"os"
 	"time"
 
 	"chromiumos/tast/common/crypto/certificate"
@@ -18,10 +17,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
 	"chromiumos/tast/local/hwsec"
-	"chromiumos/tast/local/network"
 	localping "chromiumos/tast/local/network/ping"
 	"chromiumos/tast/local/shill"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -47,6 +44,7 @@ func init() {
 		Desc:     "Ensure that we can connect to a VPN",
 		Contacts: []string{"arowa@google.com", "cros-networking@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
+		Fixture:  "shillReset",
 		Params: []testing.Param{{
 			Name: "l2tp_ipsec_psk",
 			Val: vpnTestParams{
@@ -96,12 +94,10 @@ func init() {
 }
 
 const (
-	l2tpIPsec              = "L2TP/IPsec"
-	pskAuth                = "psk"
-	certAuth               = "cert"
-	testDefaultProfileName = "vpnTestProfile"
-	testUserProfileName    = "vpnTestProfile2"
-	version                = 1
+	l2tpIPsec = "L2TP/IPsec"
+	pskAuth   = "psk"
+	certAuth  = "cert"
+	version   = 1
 )
 
 func VPNConnect(ctx context.Context, s *testing.State) {
@@ -111,48 +107,9 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(cleanupCtx, 3*time.Second)
 	defer cancel()
 
-	// We lose connectivity along the way here, and if that races with the
-	// recover_duts network-recovery hooks, it may interrupt us.
-	unlock, err := network.LockCheckNetworkHook(ctx)
-	if err != nil {
-		s.Fatal("Failed to lock the check network hook: ", err)
-	}
-	defer unlock()
-
-	if err := removeDefaultProfile(ctx); err != nil {
-		s.Fatal("Failed to remove the default profile: ", err)
-	}
-
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		s.Fatal("Failed creating shill manager proxy: ", err)
-	}
-	// Remove test profiles in case they already exist.
-	manager.RemoveProfile(ctx, testDefaultProfileName)
-	manager.RemoveProfile(ctx, testUserProfileName)
-
-	// Clean up custom services and test profiles on exit.
-	defer func(ctx context.Context) {
-		manager.PopProfile(ctx, testUserProfileName)
-		manager.RemoveProfile(ctx, testUserProfileName)
-		manager.PopProfile(ctx, testDefaultProfileName)
-		manager.RemoveProfile(ctx, testDefaultProfileName)
-
-		if err := removeDefaultProfile(ctx); err != nil {
-			s.Error("Failed to remove the default profile: ", err)
-		}
-	}(cleanupCtx)
-
-	// Pop user profiles and push a temporary default profile on top.
-	s.Log("Popping all user profiles and pushing new default profile")
-	if err = manager.PopAllUserProfiles(ctx); err != nil {
-		s.Fatal("Failed to pop user profiles: ", err)
-	}
-	if _, err = manager.CreateProfile(ctx, testDefaultProfileName); err != nil {
-		s.Fatal("Failed to create profile: ", err)
-	}
-	if _, err = manager.PushProfile(ctx, testDefaultProfileName); err != nil {
-		s.Fatal("Failed to push profile: ", err)
 	}
 
 	// Wait for the Ethernet service to be online before running the test.
@@ -243,30 +200,6 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		s.Fatal("IPv6 ping should fail: ", err)
 	}
 
-}
-
-// removeDefaultProfile stops shill temporarily and remove the default profile, then restarts shill.
-func removeDefaultProfile(ctx context.Context) (retErr error) {
-	if err := upstart.StopJob(ctx, "shill"); err != nil {
-		return errors.Wrap(err, "failed stopping shill")
-	}
-
-	defer func() {
-		if err := upstart.RestartJob(ctx, "shill"); err != nil {
-			if retErr != nil {
-				retErr = errors.Wrap(err, "failed starting shill")
-			} else {
-				testing.ContextLog(ctx, "Failed starting shill: ", err)
-			}
-
-		}
-	}()
-
-	if err := os.Remove(shillconst.DefaultProfilePath); err != nil && !os.IsNotExist(err) {
-		return errors.Wrap(err, "failed removing default profile")
-	}
-
-	return nil
 }
 
 // getVpnClientProperties returns VPN configuration properties.
