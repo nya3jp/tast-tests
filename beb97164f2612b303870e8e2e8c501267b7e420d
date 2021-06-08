@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64797b21_5fbe8ad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-08T17:27:28Z",
+      "side": 1,
+      "message": "nit: const?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "beb97164f2612b303870e8e2e8c501267b7e420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b6285fa_a9f21db2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-08T17:27:28Z",
+      "side": 1,
+      "message": "micro-nit: it\u0027s a bit unfortunate that this is not a -- (in Unix\n\"-\" is used for single letter command line arguments and \"--\" for \nwords-like command like arguments). Can it be fixed or would it\nbe a pain? Just wondering. Same with -args and -metadata.",
+      "range": {
+        "startLine": 1022,
+        "startChar": 4,
+        "endLine": 1022,
+        "endChar": 5
+      },
+      "revId": "beb97164f2612b303870e8e2e8c501267b7e420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
