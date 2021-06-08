@@ -172,14 +172,6 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	v := fmt.Sprintf("%s_%s_%s", desc.CPUAbi, desc.BuildType, desc.BuildID)
 	s.Logf("Detected version: %s", v)
 
-	memTotalKB := 0
-	if param.vmEnabled {
-		if memTotalKB, err = getMemoryTotalKB(ctx, d); err != nil {
-			s.Fatal("Failed to get memory info: ", err)
-		}
-		s.Logf("Detected memory total: %d kb", memTotalKB)
-	}
-
 	// Checks if generated resources need to be uploaded to the server.
 	needUpload := func(bucket string) bool {
 		if !param.upload {
@@ -295,12 +287,8 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 
 		if needUpload(ureadAheadPack) {
-			if !param.vmEnabled || memTotalKB > minVMMemoryKB {
-				if err := upload(shortCtx, targetTar, ureadAheadPack); err != nil {
-					s.Fatalf("Failed to upload %q: %v", ureadAheadPack, err)
-				}
-			} else {
-				s.Logf("Device has insufficient total memory %d out of %d required. Generated ureadahead won't be uploaded to the server", memTotalKB, minVMMemoryKB)
+			if err := upload(shortCtx, targetTar, ureadAheadPack); err != nil {
+				s.Fatalf("Failed to upload %q: %v", ureadAheadPack, err)
 			}
 		}
 		return nil
@@ -384,20 +372,32 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		s.Log("Retrying generating GMS Core caches, previous attempt failed: ", err)
 	}
 
-	// Due to race condition of using ureadahead in various parts of Chrome,
-	// first generation might be incomplete. Pass GMS Core cache generation as a warm-up
-	// for ureadahead generation.
-	attempts = 0
-	for {
-		err := genUreadaheadPack()
-		if err == nil {
-			break
+	memTotalKB := 0
+	if param.vmEnabled {
+		if memTotalKB, err = getMemoryTotalKB(ctx, d); err != nil {
+			s.Fatal("Failed to get memory info: ", err)
 		}
-		attempts = attempts + 1
-		dumpLogcat("ureadahead", attempts)
-		if attempts > retryCount {
-			s.Fatal("Failed to generate ureadahead packs. No more retries left: ", err)
+		s.Logf("Detected memory total: %d kb", memTotalKB)
+	}
+
+	if !param.vmEnabled || memTotalKB > minVMMemoryKB {
+		// Due to race condition of using ureadahead in various parts of Chrome,
+		// first generation might be incomplete. Pass GMS Core cache generation as a warm-up
+		// for ureadahead generation.
+		attempts = 0
+		for {
+			err := genUreadaheadPack()
+			if err == nil {
+				break
+			}
+			attempts = attempts + 1
+			dumpLogcat("ureadahead", attempts)
+			if attempts > retryCount {
+				s.Fatal("Failed to generate ureadahead packs. No more retries left: ", err)
+			}
+			s.Log("Retrying generating ureadahead, previous attempt failed: ", err)
 		}
-		s.Log("Retrying generating ureadahead, previous attempt failed: ", err)
+	} else {
+		s.Logf("Device total memory %d does not meet %d required to run ureadahead pack generation on VM", memTotalKB, minVMMemoryKB)
 	}
 }
