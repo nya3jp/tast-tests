@@ -2,7 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package vpn context enclosing the use of a VPN server instance..
 package vpn
 
 import (
@@ -19,15 +18,15 @@ import (
 
 // Constants that used by the L2TP/IPsec server.
 const (
-	ChapUser              = "chapuser"
-	ChapSecret            = "chapsecret"
+	chapUser              = "chapuser"
+	chapSecret            = "chapsecret"
 	makeIPSecDir          = "mkdir -p /run/ipsec"
 	ipsecCommand          = "/usr/sbin/ipsec"
 	ipsecLogFile          = "var/log/charon.log"
-	IPsecPresharedKey     = "preshared-key"
+	ipsecPresharedKey     = "preshared-key"
 	pppdPidFile           = "run/ppp0.pid"
-	XauthUser             = "xauth_user"
-	XauthPassword         = "xauth_password"
+	xauthUser             = "xauth_user"
+	xauthPassword         = "xauth_password"
 	xl2tpdCommand         = "/usr/sbin/xl2tpd"
 	xl2tpdConfigFile      = "etc/xl2tpd/xl2tpd.conf"
 	xl2tpdPidFile         = "run/xl2tpd.pid"
@@ -162,13 +161,13 @@ func StartL2TPIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 	chro.AddConfigTemplates(ipsecTypedConfigs[authType])
 
 	configValues := map[string]interface{}{
-		"chap_user":                ChapUser,
-		"chap_secret":              ChapSecret,
+		"chap_user":                chapUser,
+		"chap_secret":              chapSecret,
 		"charon_debug_flags":       "dmn 2, mgr 2, ike 2, net 2",
 		"charon_logfile":           ipsecLogFile,
-		"preshared_key":            IPsecPresharedKey,
-		"xauth_user":               XauthUser,
-		"xauth_password":           XauthPassword,
+		"preshared_key":            ipsecPresharedKey,
+		"xauth_user":               xauthUser,
+		"xauth_password":           xauthPassword,
 		"xl2tpd_server_ip_address": xl2tpdServerIPAddress,
 		"use_underlay_ip":          underlayIPIsOverlayIP,
 	}

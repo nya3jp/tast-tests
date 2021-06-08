@@ -6,99 +6,86 @@ package network
 
 import (
 	"context"
-	"fmt"
 	"time"
 
-	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/common/network/ping"
-	"chromiumos/tast/common/pkcs11/netcertstore"
-	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
-	"chromiumos/tast/local/hwsec"
 	localping "chromiumos/tast/local/network/ping"
-	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
 
 type vpnTestParams struct {
-	vpnType               string
-	authType              string
-	ipsecUseXauth         bool
-	ipsecXauthMissingUser bool
-	ipsecXauthWrongUser   bool
-	underlayIPIsOverlayIP bool
-	shouldFail            bool
-
-	// The following TPM-related fields will be set and used when the authType is
-	// "cert".
-	certID   string
-	certSlot string
-	certPin  string
+	config     vpn.Config
+	shouldFail bool
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     VPNConnect,
 		Desc:     "Ensure that we can connect to a VPN",
-		Contacts: []string{"arowa@google.com", "cros-networking@google.com"},
+		Contacts: []string{"jiejiang@google.com", "cros-networking@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		Fixture:  "shillReset",
 		Params: []testing.Param{{
 			Name: "l2tp_ipsec_psk",
 			Val: vpnTestParams{
-				vpnType:  "L2TP/IPsec",
-				authType: "psk",
+				config: vpn.Config{
+					Type:     vpn.TypeL2TPIPsec,
+					AuthType: vpn.AuthTypePSK,
+				},
 			},
 		}, {
 			Name: "l2tp_ipsec_psk_evil",
 			Val: vpnTestParams{
-				vpnType:               "L2TP/IPsec",
-				authType:              "psk",
-				underlayIPIsOverlayIP: true,
+				config: vpn.Config{
+					Type:                  vpn.TypeL2TPIPsec,
+					AuthType:              vpn.AuthTypePSK,
+					UnderlayIPIsOverlayIP: true,
+				},
 			},
 		}, {
 			Name: "l2tp_ipsec_psk_xauth",
 			Val: vpnTestParams{
-				vpnType:       "L2TP/IPsec",
-				authType:      "psk",
-				ipsecUseXauth: true,
+				config: vpn.Config{
+					Type:          vpn.TypeL2TPIPsec,
+					AuthType:      vpn.AuthTypePSK,
+					IPsecUseXauth: true,
+				},
 			},
 		}, {
 			Name: "l2tp_ipsec_psk_xauth_missing_user",
 			Val: vpnTestParams{
-				vpnType:               "L2TP/IPsec",
-				authType:              "psk",
-				ipsecUseXauth:         true,
-				ipsecXauthMissingUser: true,
-				shouldFail:            true,
+				config: vpn.Config{
+					Type:                  vpn.TypeL2TPIPsec,
+					AuthType:              vpn.AuthTypePSK,
+					IPsecUseXauth:         true,
+					IPsecXauthMissingUser: true,
+				},
+				shouldFail: true,
 			},
 		}, {
 			Name: "l2tp_ipsec_psk_xauth_wrong_user",
 			Val: vpnTestParams{
-				vpnType:             "L2TP/IPsec",
-				authType:            "psk",
-				ipsecUseXauth:       true,
-				ipsecXauthWrongUser: true,
-				shouldFail:          true,
+				config: vpn.Config{
+					Type:                vpn.TypeL2TPIPsec,
+					AuthType:            vpn.AuthTypePSK,
+					IPsecUseXauth:       true,
+					IPsecXauthWrongUser: true,
+				},
+				shouldFail: true,
 			},
 		}, {
 			Name: "l2tp_ipsec_cert",
 			Val: vpnTestParams{
-				vpnType:  "L2TP/IPsec",
-				authType: "cert",
+				config: vpn.Config{
+					Type:     vpn.TypeL2TPIPsec,
+					AuthType: vpn.AuthTypeCert,
+				},
 			},
 		}},
 	})
 }
-
-const (
-	l2tpIPsec = "L2TP/IPsec"
-	pskAuth   = "psk"
-	certAuth  = "cert"
-	version   = 1
-)
 
 func VPNConnect(ctx context.Context, s *testing.State) {
 	// If the main body of the test times out, we still want to reserve a few
@@ -107,185 +94,44 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(cleanupCtx, 3*time.Second)
 	defer cancel()
 
-	manager, err := shill.NewManager(ctx)
+	vpn.NewConnection(ctx, vpn.Config{
+		Type: vpn.TypeL2TPIPsec, AuthType: vpn.AuthTypePSK,
+	})
+
+	conn, err := vpn.NewConnection(ctx, s.Param().(vpnTestParams).config)
 	if err != nil {
-		s.Fatal("Failed creating shill manager proxy: ", err)
+		s.Fatal("Failed to create connection object: ", err)
 	}
 
-	// Wait for the Ethernet service to be online before running the test.
-	// It is because the previous profile cleanup step restarts shill and
-	// the Ethernet service the test depends on might not be ready yet.
-	// Also, a change in the default physical Ethernet during the test,
-	// could cause the L2TP VPN connection to fail (b:157677857).
-	props := map[string]interface{}{
-		shillconst.ServicePropertyType:  shillconst.TypeEthernet,
-		shillconst.ServicePropertyState: shillconst.ServiceStateOnline,
-	}
-
-	// Wait for Connected Ethernet service. We wait 60 seconds for DHCP
-	// negotiation since some DUTs will end up retrying DHCP discover/request, and
-	// this can often take 15-30 seconds depending on the number of retries.
-	if _, err := manager.WaitForServiceProperties(ctx, props, 60*time.Second); err != nil {
-		s.Fatal("Service not found: ", err)
-	}
-
-	params := s.Param().(vpnTestParams)
-
-	if params.authType == certAuth {
-		runner := hwsec.NewCmdRunner()
-		certStore, err := netcertstore.CreateStore(ctx, runner)
-		if err != nil {
-			s.Fatal("Failed to create cert store: ", err)
+	defer func() {
+		if err := conn.Cleanup(cleanupCtx); err != nil {
+			s.Error("Failed to clean up connection: ", err)
 		}
+	}()
 
-		params.certSlot = fmt.Sprintf("%d", certStore.Slot())
-		params.certPin = certStore.Pin()
-		clientCred := certificate.TestCert1().ClientCred
-		params.certID, err = certStore.InstallCertKeyPair(ctx, clientCred.PrivateKey, clientCred.Cert)
-		if err != nil {
-			s.Fatal(ctx, "Failed to insert cert key pair into cert store", err)
-		}
-
-		defer func(ctx context.Context) {
-			if err := certStore.Cleanup(ctx); err != nil {
-				s.Error("Failed to clean up cert store: ", err)
-			}
-		}(cleanupCtx)
-	}
-
-	var server *vpn.Server
-	if params.vpnType == l2tpIPsec {
-		server, err = vpn.StartL2TPIPsecServer(ctx, params.authType, params.ipsecUseXauth, params.underlayIPIsOverlayIP)
-	} else {
-		s.Fatalf("Unexpected VPN type %s", params.vpnType)
-	}
-	if err != nil {
-		s.Fatal("Failed to create and start the VPN server: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := server.Exit(ctx); err != nil {
-			s.Error("Failed to Stop the VPN server: ", err)
-		}
-	}(cleanupCtx)
-
-	connected, err := connectVPN(ctx, params, server.UnderlayIP, manager)
+	connected, err := conn.Start(ctx)
+	shouldFail := s.Param().(vpnTestParams).shouldFail
 	if err != nil {
 		s.Fatal("Failed to connect to VPN server: ", err)
-	} else if !connected && !params.shouldFail {
+	} else if !connected && !shouldFail {
 		s.Fatal("Failed to connect to VPN server: the service state changed to failure")
-	} else if connected && params.shouldFail {
+	} else if connected && shouldFail {
 		s.Fatal("Connect to VPN server should fail")
-	} else if !connected && params.shouldFail {
+	} else if !connected && shouldFail {
 		return
 	}
 
-	s.Logf("VPN connected, underlay_ip is %s, overlay_ip is %s", server.UnderlayIP, server.OverlayIP)
-
-	// Currently, the connected state of a VPN service doesn't mean the VPN service is ready for tunneling traffic: patchpanel needs to setup
-	// some iptables rules (for routing and connection pinning) before that. If ping is started before iptables rules are ready, the traffic
-	// generated by ping will be "pinned" to the previous default interface. So adds a small timeout here to mitigate this racing case.
-	testing.Sleep(ctx, 500*time.Millisecond)
-
 	pr := localping.NewLocalRunner()
-	res, err := pr.Ping(ctx, server.OverlayIP, ping.Count(3), ping.User("chronos"))
+	res, err := pr.Ping(ctx, conn.Server.OverlayIP, ping.Count(3), ping.User("chronos"))
 	if err != nil {
 		s.Fatal("Failed pinging the server IPv4: ", err)
 	}
 	if res.Received == 0 {
-		s.Fatalf("Failed to ping %s: no response received", server.OverlayIP)
+		s.Fatalf("Failed to ping %s: no response received", conn.Server.OverlayIP)
 	}
 
 	// IPv6 should be blackholed.
 	if res, err := pr.Ping(ctx, "2001:db8::1", ping.Count(1), ping.User("chronos")); err == nil && res.Received != 0 {
 		s.Fatal("IPv6 ping should fail: ", err)
 	}
-
-}
-
-// getVpnClientProperties returns VPN configuration properties.
-func getVpnClientProperties(ctx context.Context, params vpnTestParams, serverAddress string) (map[string]interface{}, error) {
-	if (params.vpnType == l2tpIPsec) && (params.authType == pskAuth) {
-		properties := map[string]interface{}{
-			"L2TPIPsec.Password": vpn.ChapSecret,
-			"L2TPIPsec.PSK":      vpn.IPsecPresharedKey,
-			"L2TPIPsec.User":     vpn.ChapUser,
-			"Name":               "test-vpn-l2tp-psk",
-			"Provider.Host":      serverAddress,
-			"Provider.Type":      "l2tpipsec",
-			"Type":               "vpn",
-		}
-		if params.ipsecUseXauth && !params.ipsecXauthMissingUser {
-			if params.ipsecXauthWrongUser {
-				properties["L2TPIPsec.XauthUser"] = "wrong-user"
-				properties["L2TPIPsec.XauthPassword"] = "wrong-password"
-			} else {
-				properties["L2TPIPsec.XauthUser"] = vpn.XauthUser
-				properties["L2TPIPsec.XauthPassword"] = vpn.XauthPassword
-			}
-		}
-		return properties, nil
-	} else if (params.vpnType == l2tpIPsec) && (params.authType == certAuth) {
-		properties := map[string]interface{}{
-			"L2TPIPsec.CACertPEM":      []string{certificate.TestCert1().CACred.Cert},
-			"L2TPIPsec.ClientCertID":   params.certID,
-			"L2TPIPsec.ClientCertSlot": params.certSlot,
-			"L2TPIPsec.User":           vpn.ChapUser,
-			"L2TPIPsec.Password":       vpn.ChapSecret,
-			"L2TPIPsec.PIN":            params.certPin,
-			"Name":                     "test-vpn-l2tp-cert",
-			"Provider.Host":            serverAddress,
-			"Provider.Type":            "l2tpipsec",
-			"Type":                     "vpn",
-		}
-		return properties, nil
-	}
-
-	return nil, errors.Errorf("unexpected server type: got %s-%s, want L2TP/IPsec-psk", params.vpnType, params.authType)
-}
-
-// connectVPN connects the client to the VPN server, and returns whether the
-// connection is established successfully.
-func connectVPN(ctx context.Context, params vpnTestParams, serverAddress string, manager *shill.Manager) (bool, error) {
-	vpnProps, err := getVpnClientProperties(ctx, params, serverAddress)
-	if err != nil {
-		return false, err
-	}
-
-	servicePath, err := manager.ConfigureService(ctx, vpnProps)
-	if err != nil {
-		return false, errors.Wrapf(err, "unable to configure the service for the VPN properties %v", vpnProps)
-	}
-
-	service, err := shill.NewService(ctx, servicePath)
-	if err != nil {
-		return false, errors.Wrap(err, "failed creating shill service proxy")
-	}
-
-	// Wait for service to be connected.
-	testing.ContextLog(ctx, "Connecting to service: ", service)
-
-	// Spawn watcher before connect.
-	pw, err := service.CreateWatcher(ctx)
-	if err != nil {
-		return false, errors.Wrap(err, "failed to create watcher")
-	}
-	defer pw.Close(ctx)
-
-	if err = service.Connect(ctx); err != nil {
-		return false, errors.Wrapf(err, "failed to connect the service %v", service)
-	}
-
-	// Wait until connection established or failed. Unfortunately, some of the
-	// failures for L2TP/IPsec VPN are detected based on timeout, which is 30
-	// seconds at maximum for all the current test cases (that value is used in
-	// vpn_manager::IpsecManager).
-	// TODO(b/188489413): Use different timeout values for success and failure
-	// cases.
-	timeoutCtx, cancel := context.WithTimeout(ctx, 35*time.Second)
-	defer cancel()
-	state, err := pw.ExpectIn(timeoutCtx, shillconst.ServicePropertyState, append(shillconst.ServiceConnectedStates, shillconst.ServiceStateFailure))
-	if err != nil {
-		return false, err
-	}
-	return state != shillconst.ServiceStateFailure, nil
 }
