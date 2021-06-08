@@ -16,6 +16,29 @@
       "message": "tast-wise: +2\n\nplease wait for Jorge\u0027s review.",
       "revId": "d039f46f495f56667fdc533bb38e3a0c1b86548c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43644a2f_d20d8d2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-06-08T02:35:22Z",
+      "side": 1,
+      "message": "@jorgelo, this can be enabled as well. I\u0027ll do that in a followup CL.",
+      "range": {
+        "startLine": 183,
+        "startChar": 5,
+        "endLine": 183,
+        "endChar": 30
+      },
+      "revId": "d039f46f495f56667fdc533bb38e3a0c1b86548c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
