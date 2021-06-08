@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "306a9df0_2f9b74f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-08T02:16:39Z",
+      "side": 1,
+      "message": "Mukai-san, as this change tightly related to the previous one, would you mind taking a look at this as well?\n\nThank you!",
+      "revId": "dcae4355d562a82de5ca2d7f4c49cfe982aafcd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
