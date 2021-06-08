@@ -87,6 +87,23 @@
       "message": "Ah right, this wont work because not all images have the hpsd binary installed. Currently only amd64-generic, and it will likely never be on all images. What do owners want done about that?",
       "revId": "9ee9caff1b8f8ddf2419183688defa86a85a146b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e171bdc_0eb300a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2021-06-08T00:45:00Z",
+      "side": 1,
+      "message": "Only SELinux.FilesSysyem test has failed, not SELinux.Processes. And FilesSystem test shouldn\u0027t complain if you remove hpsd from that test, so you can remove it. But please keep cros_hpsd check in processes_test_internal.go otherwise SELinux.Processes test could fail on the boards that run hspd.",
+      "revId": "9ee9caff1b8f8ddf2419183688defa86a85a146b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
