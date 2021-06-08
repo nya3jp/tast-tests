@@ -38,6 +38,80 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65dbd3e5_3ac70431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-vhost-user-net-test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-08T17:33:29Z",
+      "side": 1,
+      "message": "This function appears to be unused.",
+      "revId": "ebeda471feced46b13d286a3e8bac93deccb89e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9260cafe_13d92b71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-vhost-user-net-test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-08T17:33:29Z",
+      "side": 1,
+      "message": "Check the number of args, and maybe validate args, to help debug future failures",
+      "revId": "ebeda471feced46b13d286a3e8bac93deccb89e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0adc8e67_4a4dedc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-vhost-user-net-test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-08T17:33:29Z",
+      "side": 1,
+      "message": "Do we need to umount these at the end of the script?",
+      "revId": "ebeda471feced46b13d286a3e8bac93deccb89e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99fcc8ab_71355063",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-08T17:33:29Z",
+      "side": 1,
+      "message": "nit/style: In Go, it is idiomatic to return a zero-value along with error.\n\n    return 0, errors.Wrapf(...)\n\nDitto L58, L71.",
+      "range": {
+        "startLine": 53,
+        "startChar": 9,
+        "endLine": 53,
+        "endChar": 11
+      },
+      "revId": "ebeda471feced46b13d286a3e8bac93deccb89e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ff40ac3_59c3d0c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
         "patchSetId": 7
