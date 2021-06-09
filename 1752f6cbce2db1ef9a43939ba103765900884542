@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8784a1f1_2c194cd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-06-09T00:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "901c6fd7_0468e579",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "1752f6cbce2db1ef9a43939ba103765900884542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a383fd07_89c3ea43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-06-09T00:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fa2f421_406a6a0e",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "1752f6cbce2db1ef9a43939ba103765900884542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2e2cb1b1_8c1bec22",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -94,6 +142,30 @@
       "writtenOn": "2021-06-08T19:35:33Z",
       "side": 1,
       "message": "Is it something that will be stored on the device even after running Tast test? Will it affect other tests? Maybe we should have a way to remove this file when not needed anymore?",
+      "range": {
+        "startLine": 17,
+        "startChar": 39,
+        "endLine": 17,
+        "endChar": 92
+      },
+      "revId": "1752f6cbce2db1ef9a43939ba103765900884542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fc15a50_900f3229",
+        "filename": "src/chromiumos/tast/local/hwsec/backup_important_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-06-09T00:31:52Z",
+      "side": 1,
+      "message": "I don\u0027t think we have a good timing to remove this file.\nCurrently, we only have one test(hwsec.AttestationNoExternalServer) needs this file, but we may add more tests in the future, and we would also need it if we want to run this test multiple times.\nAfter we remove this file, the only way to recover it is power wash, and we shouldn\u0027t do a power wash in a local test.",
+      "parentUuid": "c08a20ba_44e20ff9",
       "range": {
         "startLine": 17,
         "startChar": 39,
