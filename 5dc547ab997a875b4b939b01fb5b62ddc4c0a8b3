@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f14313b_ac2fea73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 72
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T19:54:46Z",
+      "side": 1,
+      "message": "Hi Jun, to make the review easier, I further split the test into 4 CLs from 3, with each CLs under 200 code lines (with two exceptions that are slightly over 200).\n\nAlso based on the review from VideoCUJ2, we avoided passing around *testing.State as parameter. Some code is re-written with more comments for better understanding.",
+      "revId": "5dc547ab997a875b4b939b01fb5b62ddc4c0a8b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
