@@ -16,6 +16,24 @@
       "message": "I don\u0027t have a lot of context here. The error looks like the DUT got offline and Tast/autotest cannot reconnect. Maybe the DUT crashed, shutdown or lost ethernet for some reasons.\n\nI took a look at one log of successful AdminRepair right after the failed test, but it seems that the system logs around the moment of failure was not properly synced to disk and provide little information.\n\nIn any case, this looks like a reasonable change to isolate the problem.",
       "revId": "359ad95c1de5674dd719958c816addb3a3ee2c84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb8c4eb9_9cde963a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-06-09T14:53:08Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s very strange behavior. It does look like the DUT went offline or crashed, but it\u0027s just a Cellular-Disable operation, which is also performed earlier in the test, and I can\u0027t reproduce it myself, even on a skylab DUT, so I am very confused.",
+      "parentUuid": "c6eb20fc_0240bb2a",
+      "revId": "359ad95c1de5674dd719958c816addb3a3ee2c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
