@@ -17,8 +17,10 @@ import (
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -136,12 +138,15 @@ func testBlockCameraFeature(ctx context.Context, cr *chrome.Chrome, scripts []st
 		return errors.Wrap(err, "failed to find camera app in the launcher")
 	}
 
-	dialogView, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Camera is blocked"}, 5*time.Second)
+	ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
+	blockedWindowFinder := nodewith.Role(role.Window).Name("Camera is blocked")
+	okButtonFinder := nodewith.Role(role.Button).Name("OK")
+	err = uiauto.Combine("Check and close blocked window",
+		ui.WaitUntilExists(blockedWindowFinder),
+		ui.LeftClick(okButtonFinder))(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to get blocked dialog")
+		return errors.Wrap(err, "failed to check and close blocked window")
 	}
-	defer dialogView.Release(ctx)
-
 	return nil
 }
 
