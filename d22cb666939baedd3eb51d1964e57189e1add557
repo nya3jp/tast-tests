@@ -52,6 +52,24 @@
       "parentUuid": "5f82e982_6c9e96d9",
       "revId": "d22cb666939baedd3eb51d1964e57189e1add557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d4b5f80_643539c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-06-09T22:18:15Z",
+      "side": 0,
+      "message": "Thanks Kyle, is there an easy how find out whether a test is included in a particular tryjob?",
+      "parentUuid": "e532b73b_af2152f8",
+      "revId": "d22cb666939baedd3eb51d1964e57189e1add557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
