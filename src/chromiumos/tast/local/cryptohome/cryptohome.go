@@ -522,9 +522,9 @@ func AddCredentialsWithAuthSession(ctx context.Context, user, password, authSess
 		ctx, "cryptohome", "--action=add_credentials",
 		"--auth_session_id="+authSessionID)
 	if publicMount {
-		cmd.Args = append(cmd.Args, "--public_mount")
+		cmd.Args = append(cmd.Args, "--public_mount", "--key_label=public_mount")
 	} else {
-		cmd.Args = append(cmd.Args, "--password="+password)
+		cmd.Args = append(cmd.Args, "--password="+password, "--key_label=fake_label")
 	}
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrapf(err, "failed to create new credentials for %s", user)
