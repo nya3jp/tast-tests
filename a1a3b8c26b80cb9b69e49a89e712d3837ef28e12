@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68f7c79a_6ba9ae23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-09T08:55:18Z",
+      "side": 1,
+      "message": "Checked that not only zoom in need to toggle before all others, because the initial pan is 0 with range [0, 15]. the panLeft also need to toggle before panRight. Same for tiltDown need to toggle before tiltUp. I don\u0027t think it can easily fit int the structure you proposed. So I prefer to keep current code structure.",
+      "parentUuid": "047dcada_dac6208e",
+      "range": {
+        "startLine": 287,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 2
+      },
+      "revId": "a1a3b8c26b80cb9b69e49a89e712d3837ef28e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "535bed2e_c5c5ba77",
