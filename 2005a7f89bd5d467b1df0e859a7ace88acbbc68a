@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f821f53e_be5655a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-06-09T23:05:01Z",
+      "side": 1,
+      "message": "EnsureGoneFor and WaitForGone are semantically different.  Curious if you were trying to change the behavior?",
+      "revId": "2005a7f89bd5d467b1df0e859a7ace88acbbc68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "606e7e44_281695bf",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
         "patchSetId": 4
