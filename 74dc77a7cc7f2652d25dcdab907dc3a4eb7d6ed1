@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a65e085_dddabf2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-09T06:50:49Z",
+      "side": 1,
+      "message": "You can change the permissions of the created temporary file. \n\nhttps://golang.org/pkg/io/ioutil/#TempFile\nhttps://golang.org/pkg/os/#Chmod (use .Name() to get the path)",
+      "parentUuid": "f28a27ed_605a1eb7",
+      "revId": "74dc77a7cc7f2652d25dcdab907dc3a4eb7d6ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd9b435a_ec38e66b",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
         "patchSetId": 2

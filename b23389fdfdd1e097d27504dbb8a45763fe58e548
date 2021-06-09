@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e666fa72_6843c7e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-09T06:50:49Z",
+      "side": 1,
+      "message": "LGTM % remaining issues",
+      "revId": "b23389fdfdd1e097d27504dbb8a45763fe58e548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76992e1b_1371f277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-09T06:50:49Z",
+      "side": 1,
+      "message": "Error, you are returning after this",
+      "range": {
+        "startLine": 128,
+        "startChar": 7,
+        "endLine": 128,
+        "endChar": 12
+      },
+      "revId": "b23389fdfdd1e097d27504dbb8a45763fe58e548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
