@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6ae67fc3_68b958fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-09T00:40:26Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "498d3160_da862bfa",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "e24ecf16ea8f5c7fa50ac9eccaff8b957615b224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "93084a7f_3a05ca08",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
