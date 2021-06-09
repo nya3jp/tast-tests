@@ -19,6 +19,8 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/testing"
 )
 
@@ -289,5 +291,46 @@ func MeasurePackageCStateCounters(ctx context.Context, t time.Duration, p *perf.
 	testing.ContextLogf(ctx, "c0: %f%%", c0Percent)
 	reportMetric("c0", "percent", c0Percent, perf.SmallerIsBetter, p)
 
+	return nil
+}
+
+// UpdatePerfMetricFromHistogram takes a snapshot of histogramName and
+// calculates the average difference with initHistogram. The result is then
+// logged to perfValues with metricName.
+func UpdatePerfMetricFromHistogram(ctx context.Context, tconn *chrome.TestConn, histogramName string, initHistogram *metrics.Histogram, perfValues *perf.Values, metricName string) error {
+	laterHistogram, err := metrics.GetHistogram(ctx, tconn, histogramName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get later histogram")
+	}
+	histogramDiff, err := laterHistogram.Diff(initHistogram)
+	if err != nil {
+		return errors.Wrap(err, "failed diffing histograms")
+	}
+	// Some devices don't have hardware decode acceleration, so the histogram diff
+	// will be empty, this is not an error condition.
+	if len(histogramDiff.Buckets) > 0 {
+		decodeMetric := perf.Metric{
+			Name:      metricName,
+			Unit:      "ms",
+			Direction: perf.SmallerIsBetter,
+			Multiple:  true,
+		}
+
+		numHistogramSamples := float64(histogramDiff.TotalCount())
+		var average float64
+		// Walk the buckets of histogramDiff, append the central value of the
+		// histogram bucket as many times as bucket entries to perfValues, and
+		// calculate the average on the fly for debug printout purposes. This average
+		// is a discrete approximation to the statistical average of the samples
+		// underlying the histogramDiff histograms.
+		for _, bucket := range histogramDiff.Buckets {
+			bucketMidpoint := float64(bucket.Max+bucket.Min) / 2.0
+			for i := 0; i < int(bucket.Count); i++ {
+				perfValues.Append(decodeMetric, bucketMidpoint)
+			}
+			average += bucketMidpoint * float64(bucket.Count) / numHistogramSamples
+		}
+		testing.ContextLog(ctx, histogramName, ": histogram:", histogramDiff.String(), "; average: ", average)
+	}
 	return nil
 }
