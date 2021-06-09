@@ -12,9 +12,11 @@ import (
 
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -59,37 +61,17 @@ func ImageQuickView(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
-	defer files.Release(ctx)
 
-	// Open the Downloads folder.
-	if err := files.OpenDownloads(ctx); err != nil {
-		s.Fatal("Opening Downloads folder failed: ", err)
-	}
-
-	// Click the test image and wait for Open button in top bar.
-	if err := files.WaitForFile(ctx, previewImageFile, 10*time.Second); err != nil {
-		s.Fatal("Waiting for test file failed: ", err)
-	}
-	if err := files.SelectFile(ctx, previewImageFile); err != nil {
-		s.Fatal("Waiting to select test file failed: ", err)
-	}
-	params := ui.FindParams{
-		Name: "Open",
-		Role: ui.RoleTypeButton,
-	}
-	if err := files.Root.WaitUntilDescendantExists(ctx, params, 10*time.Second); err != nil {
-		s.Fatal("Waiting for Open button failed: ", err)
-	}
-
-	// Open QuickView for the test image and check dimensions.
-	if err := files.OpenQuickView(ctx, previewImageFile); err != nil {
-		s.Fatal("Openning QuickView failed: ", err)
-	}
-	params = ui.FindParams{
-		Name: previewImageDimensions,
-		Role: ui.RoleTypeStaticText,
-	}
-	if err := files.Root.WaitUntilDescendantExists(ctx, params, 10*time.Second); err != nil {
-		s.Fatal("Waiting for image preview information failed: ", err)
+	openButton := nodewith.Name("Open").Role(role.Button)
+	dimensionText := nodewith.Name(previewImageDimensions).Role(role.StaticText)
+	// View image preview information of test image.
+	if err := uiauto.Combine("View image preview information",
+		files.OpenDownloads(),
+		files.WithTimeout(10*time.Second).WaitForFile(previewImageFile),
+		files.SelectFile(previewImageFile),
+		files.WithTimeout(10*time.Second).WaitUntilExists(openButton),
+		files.OpenQuickView(previewImageFile),
+		files.WithTimeout(10*time.Second).WaitUntilExists(dimensionText))(ctx); err != nil {
+		s.Fatal("Failed to view image preview information: ", err)
 	}
 }
