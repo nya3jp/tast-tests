@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini/faillog"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -158,37 +159,45 @@ func (s *Settings) Close(ctx context.Context) error {
 
 // GetSharedFolders returns a list of shared folders.
 // Settings must be open at the Linux Manage Shared Folders page.
-func (s *Settings) GetSharedFolders(ctx context.Context) (listOffolders []string, err error) {
+func (s *Settings) GetSharedFolders(ctx context.Context) (listOfFolders []string, err error) {
+	// Polling here works around a couple of different races:
+	// - On first load, both the empty shared folders message and the shared folders heading
+	//   are present. Normally only one of these is present.
+	// - When folders are shared or unshared (deleted), the UI will asynchronously update.
+	//   This can cause inconsistencies between textErr/listErr/sharedFolders.
 
-	// Find "Shared folders will appear here". It will be displayed if no folder is shared.
-	textErr := s.ui.WithTimeout(2 * time.Second).WaitUntilExists(emptySharedFoldersMsg)(ctx)
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		// Find "Shared folders will appear here". It will be displayed if no folder is shared.
+		textErr := s.ui.WithTimeout(2 * time.Second).WaitUntilExists(emptySharedFoldersMsg)(ctx)
 
-	// Find "Shared folders" list. It will be displayed if any folder is shared.
-	listErr := s.ui.WithTimeout(2 * time.Second).WaitUntilExists(sharedFoldersList)(ctx)
+		// Find "Shared folders" list. It will be displayed if any folder is shared.
+		listErr := s.ui.WithTimeout(2 * time.Second).WaitUntilExists(sharedFoldersList)(ctx)
 
-	if textErr != nil && listErr != nil {
-		// Did not find "Shared folders will appear here" or "Shared folders" list.
-		return nil, errors.Wrap(err, "failed to find list of 'Shared folders' or 'Shared folders will appear here'")
-	} else if listErr == nil {
-		// Found "Shared folders".
-		// It sometimes takes a bit time for the UI to display the shared folders.
-		sharedFolderButtons := nodewith.Role(role.Button).Ancestor(sharedFoldersList)
-		if err := s.ui.WaitUntilExists(sharedFolderButtons.First())(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed to find any shared folder")
+		if textErr == nil && listErr == nil {
+			return errors.New("page is still initialising")
+		} else if textErr != nil && listErr != nil {
+			return errors.Wrap(listErr, "page appears to be in an inconsistent state")
+		} else if textErr == nil && listErr != nil {
+			// No shared folders
+			return nil
+		} else {
+			// Found shared folders
+			sharedFolderButtons := nodewith.Role(role.Button).Ancestor(sharedFoldersList)
+			sharedFolders, err := s.ui.NodesInfo(ctx, sharedFolderButtons)
+			if err != nil {
+				return errors.Wrap(err, "page appears to be in an inconsistent state")
+			}
+			for _, folder := range sharedFolders {
+				listOfFolders = append(listOfFolders, folder.Name)
+			}
+			return nil
 		}
-		sharedFolders, err := s.ui.NodesInfo(ctx, sharedFolderButtons)
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to find list of shared folders")
-		}
-		var listOfFolders []string
-		for _, folder := range sharedFolders {
-			listOfFolders = append(listOfFolders, folder.Name)
-		}
-		return listOfFolders, nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+
+	if err != nil {
+		return nil, err
 	}
-
-	// No shared folder.
-	return nil, nil
+	return listOfFolders, nil
 }
 
 // UnshareFolder deletes a shared folder from Settings app.
