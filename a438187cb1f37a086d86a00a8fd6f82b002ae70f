@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8e4b9a0d_f78c3e8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-06-09T22:26:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14bf6b54_86bc9810",
+      "range": {
+        "startLine": 7,
+        "startChar": 58,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "a438187cb1f37a086d86a00a8fd6f82b002ae70f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e06e9421_5639ec40",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -71,6 +95,30 @@
       "writtenOn": "2021-06-09T13:49:30Z",
       "side": 1,
       "message": "nit: please update the comments for these 3 changed functions.",
+      "range": {
+        "startLine": 1035,
+        "startChar": 21,
+        "endLine": 1035,
+        "endChar": 48
+      },
+      "revId": "a438187cb1f37a086d86a00a8fd6f82b002ae70f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a638bb7a_3e2649c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-06-09T22:26:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f233b8ec_099dbbe0",
       "range": {
         "startLine": 1035,
         "startChar": 21,
