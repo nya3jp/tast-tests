@@ -70,6 +70,24 @@
       "parentUuid": "e532b73b_af2152f8",
       "revId": "d22cb666939baedd3eb51d1964e57189e1add557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "654d1fd7_41c9c5fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-09T22:31:02Z",
+      "side": 0,
+      "message": "not 100% sure, but in my experience --hwtest will run both informational and critical tast tests (+more). links to stainless results will show up on the build results page",
+      "parentUuid": "9d4b5f80_643539c9",
+      "revId": "d22cb666939baedd3eb51d1964e57189e1add557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
