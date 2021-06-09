@@ -39,6 +39,30 @@
       },
       "revId": "f8753550c0a67a62b4f676f5510581b311940189",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b1d2f98_92ba30fb",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1003044
+      },
+      "writtenOn": "2021-06-09T07:21:58Z",
+      "side": 1,
+      "message": "Adding the new condition here and leaving everything else will fix the issue I\u0027m trying to fix, but it leaves a different race condition if the last shared folder is deleted:\n\n- Page is already initialized, and there is one shared folder\n- Evaluate 164-167: textErr not nil, listErr nil\n- The folder is unshared as it is deleted (since otherwise you have to use this settings page to unshare), and this event reaches the settings page\n- Evaluate 175-178: No shared folders are found, error raised\n\nIdeally NodesInfo would just return an empty array (in fact its comment suggests that it should, but it is unhappy about not finding the ancestor) so we wouldn\u0027t need any special casing, but short of that, this is the best approach I came up with.",
+      "parentUuid": "8c2cf213_65293728",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 2
+      },
+      "revId": "f8753550c0a67a62b4f676f5510581b311940189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
