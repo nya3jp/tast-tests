@@ -18,7 +18,10 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	chromeui "chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
+	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
@@ -126,7 +129,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		cancel()
 	}
 
-	var pc pointer.Controller
+	var pc pointer.Context
 	var setOverviewModeAndWait func(ctx context.Context) error
 	var openAppList func(ctx context.Context) error
 	type subtest struct {
@@ -138,13 +141,19 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	var ws []*ash.Window
 	var subtest2 subtest
 	if tabletMode {
-		tc, err := pointer.NewTouchController(ctx, tconn)
+		pc, err = pointer.NewTouch(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to create a touch controller")
 		}
-		pc = tc
-		stw := tc.EventWriter()
-		tsew := tc.Touchscreen()
+		tsew, tcc, err := touch.NewTouchscreenAndConverter(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to access to the touchscreen: ", err)
+		}
+		defer tsew.Close()
+		stw, err := tsew.NewSingleTouchWriter()
+		if err != nil {
+			s.Fatal("Failed to create the single touch writer: ", err)
+		}
 		setOverviewModeAndWait = func(ctx context.Context) error {
 			return ash.DragToShowOverview(ctx, tsew, stw, tconn)
 		}
@@ -159,12 +168,8 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 				// swipe-up quickly to reveal the hotseat, and then tap the app icon
 				// for the next active window. In case there are multiple windows in
 				// an app, it will show up a pop-up, so tap on the menu item.
-				tcc := tc.TouchCoordConverter()
 				if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
 					return errors.Wrap(err, "failed to show the hotseat")
-				}
-				if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-					return errors.Wrap(err, "failed to wait for location changes")
 				}
 
 				// Get the bounds of the shelf icons. The shelf icon bounds are
@@ -226,37 +231,39 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 					popupIdx = -iconIdx
 					iconIdx = 0
 				}
-				if err := pointer.Click(ctx, tc, iconBounds[iconIdx].CenterPoint()); err != nil {
+				if err := pc.ClickAt(iconBounds[iconIdx].CenterPoint())(ctx); err != nil {
 					return errors.Wrapf(err, "failed to click icon at %d", iconIdx)
 				}
 				if isPopup {
-					menuFindParams := chromeui.FindParams{ClassName: "MenuItemView"}
-					if err := chromeui.WaitUntilExists(ctx, tconn, menuFindParams, 10*time.Second); err != nil {
-						return errors.Wrap(err, "expected to see menu items, but not seen")
+					ac := uiauto.New(tconn)
+					menus := nodewith.ClassName("MenuItemView")
+					if err := ac.WaitUntilExists(menus.First())(ctx); err != nil {
+						return errors.Wrap(err, "failed to wait for the menu to appear")
 					}
-					menus, err := chromeui.FindAll(ctx, tconn, menuFindParams)
+					menuInfo, err := ac.NodesInfo(ctx, menus)
 					if err != nil {
-						return errors.Wrap(err, "can't find the menu items")
+						return errors.Wrap(err, "failed to find the menu items")
 					}
-					defer menus.Release(closeCtx)
-					targetMenus := make([]*chromeui.Node, 0, len(menus))
-					for i := 1; i < len(menus); i++ {
-						if !hasYoutubeIcon || !strings.HasPrefix(strings.ToLower(menus[i].Name), "youtube") {
-							targetMenus = append(targetMenus, menus[i])
+					targetIdx := popupIdx + 1
+					for i := 1; i < len(menuInfo); i++ {
+						if hasYoutubeIcon && strings.HasPrefix(strings.ToLower(menuInfo[i].Name), "youtube") {
+							targetIdx++
 						}
 					}
-					if err := pointer.Click(ctx, tc, targetMenus[popupIdx].Location.CenterPoint()); err != nil {
+					if err := pc.Click(menus.Nth(targetIdx))(ctx); err != nil {
 						return errors.Wrapf(err, "failed to click menu item %d", popupIdx)
 					}
 				}
-				if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-					return errors.Wrap(err, "failed to wait for location changes")
+				if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+					return ash.WaitWindowFinishAnimating(ctx, tconn, w.ID)
+				}); err != nil {
+					return errors.Wrap(err, "failed to wait for the window animation")
 				}
 				return ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfHidden)
 			},
 		}
 	} else {
-		pc = pointer.NewMouseController(tconn)
+		pc = pointer.NewMouse(tconn)
 		topRow, err := input.KeyboardTopRowLayout(ctx, kw)
 		if err != nil {
 			s.Fatal("Failed to obtain the top-row layout: ", err)
@@ -523,7 +530,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 				if targetWindow == nil {
 					return errors.New("no windows are in overview mode")
 				}
-				if err := pointer.Click(ctx, pc, targetWindow.OverviewInfo.Bounds.CenterPoint()); err != nil {
+				if err := pc.ClickAt(targetWindow.OverviewInfo.Bounds.CenterPoint())(ctx); err != nil {
 					return errors.Wrap(err, "failed to click")
 				}
 				if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
