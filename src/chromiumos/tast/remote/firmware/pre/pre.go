@@ -49,6 +49,11 @@ func RecMode() testing.Precondition {
 	return recMode
 }
 
+// Helper doesn't boot to any particular mode, but creates the helper for you.
+func Helper() testing.Precondition {
+	return anyMode
+}
+
 // newPrecondition creates an instance of firmware Precondition.
 func newPrecondition(mode common.BootMode) testing.Precondition {
 	return &impl{
@@ -67,6 +72,13 @@ var (
 	normalMode = newPrecondition(common.BootModeNormal)
 	devMode    = newPrecondition(common.BootModeDev)
 	recMode    = newPrecondition(common.BootModeRecovery)
+	anyMode    = &impl{
+		v: &Value{
+			BootMode: common.BootModeUnspecified,
+		},
+		// The maximum time that the Prepare method should take, adjust as needed.
+		timeout: 5 * time.Minute,
+	}
 )
 
 // Prepare ensures that the DUT is booted into the specified mode.
@@ -75,6 +87,15 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 	if i.v.Helper == nil {
 		s.Log("Creating a new firmware Helper instance for Precondition: ", i.String())
 		i.initHelper(ctx, s)
+	} else {
+		configFilePath := ""
+		if _, err := s.DataFileSystem().Open(firmware.ConfigFile); err == nil {
+			configFilePath = s.DataPath(firmware.ConfigFile)
+		}
+		if i.v.Helper.CfgFilepath != configFilePath {
+			i.destroyHelper(ctx, s)
+			i.initHelper(ctx, s)
+		}
 	}
 
 	if err := i.setupBootMode(ctx); err != nil {
@@ -96,7 +117,8 @@ func (i *impl) Close(ctx context.Context, s *testing.PreState) {
 		i.origGBBFlags = nil
 	}()
 
-	// Don't reuse the Helper, as the helper's servo RPC connection may be down.
+	// Don't reuse the Helper, as the helper's gRPC connection may be down.
+	i.destroyHelper(ctx, s)
 	i.initHelper(ctx, s)
 
 	if err := i.restoreGBBFlags(ctx); err != nil {
@@ -121,7 +143,12 @@ func (i *impl) Timeout() time.Duration {
 // initHelper ensures that the impl has a working Helper instance.
 func (i *impl) initHelper(ctx context.Context, s *testing.PreState) {
 	if i.v.Helper == nil {
-		i.v.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), s.RequiredVar("servo"))
+		// Don't fail if the test doesn't need the config file.
+		configFilePath := ""
+		if _, err := s.DataFileSystem().Open(firmware.ConfigFile); err == nil {
+			configFilePath = s.DataPath(firmware.ConfigFile)
+		}
+		i.v.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), configFilePath, s.RequiredVar("servo"))
 	}
 }
 
@@ -130,7 +157,7 @@ func (i *impl) destroyHelper(ctx context.Context, s *testing.PreState) {
 	if i.v.Helper == nil {
 		return
 	}
-	if err := i.v.Helper.Close(ctx); err != nil {
+	if err := i.v.Helper.CheckPowerAndClose(ctx); err != nil {
 		s.Log("Closing helper failed: ", err)
 	}
 	i.v.Helper = nil
@@ -149,7 +176,7 @@ func (i *impl) setupBootMode(ctx context.Context) error {
 		i.origBootMode = &mode
 	}
 
-	if mode != i.v.BootMode {
+	if mode != i.v.BootMode && i.v.BootMode != common.BootModeUnspecified {
 		testing.ContextLogf(ctx, "Current boot mode is %q, rebooting to %q to satisfy precondition", mode, i.v.BootMode)
 		if err := i.rebootToMode(ctx, i.v.BootMode); err != nil {
 			return errors.Wrapf(err, "failed to reboot to mode %q", i.v.BootMode)
@@ -195,6 +222,10 @@ func (i *impl) rebootToMode(ctx context.Context, mode common.BootMode) error {
 
 // setupGBBFlags sets and clears GBB Flags for firmware testing.
 func (i *impl) setupGBBFlags(ctx context.Context) error {
+	// If no GBB changes requested, just return.
+	if len(i.v.GBBFlags.Clear) <= 0 && len(i.v.GBBFlags.Set) <= 0 {
+		return nil
+	}
 	if err := i.v.Helper.RequireBiosServiceClient(ctx); err != nil {
 		return errors.Wrap(err, "failed to require BiosServiceClient")
 	}
