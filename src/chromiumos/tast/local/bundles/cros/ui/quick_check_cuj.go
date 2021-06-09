@@ -12,8 +12,10 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
@@ -111,13 +113,9 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		defer conn.Close()
 
 		s.Log("Opening the first email thread")
-		row, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeRow}, gmailTimeout)
-		if err != nil {
-			return errors.Wrap(err, "failed to find email thread row")
-		}
-		defer row.Release(closeCtx)
-
-		if err := row.LeftClick(ctx); err != nil {
+		firstRow := nodewith.Role(role.Row).First()
+		ac := uiauto.New(tconn)
+		if err := ac.LeftClick(firstRow)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click to open the email thread row")
 		}
 
