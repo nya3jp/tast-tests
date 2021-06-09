@@ -524,6 +524,8 @@ func (ac *Activity) SetWindowState(ctx context.Context, tconn *chrome.TestConn, 
 		return ac.setWindowStateP(ctx, state)
 	case SDKR:
 		return ac.setWindowStateR(ctx, tconn, state)
+	case SDKS:
+		return ac.setWindowStateS(ctx, tconn, state)
 	default:
 		return errors.Errorf("unsupported SDK version: %d", sdkVer)
 	}
@@ -567,6 +569,13 @@ func (ac *Activity) setWindowStateR(ctx context.Context, tconn *chrome.TestConn,
 		return errors.Wrap(err, "failed to set window state")
 	}
 	return nil
+}
+
+// setWindowStateS sets the window state. Note this method is async, so ensure to call ash.WaitForArcAppWindowState after this.
+// Supported states: WindowStateNormal, WindowStateMaximized, WindowStateFullscreen, WindowStateMinimized
+func (ac *Activity) setWindowStateS(ctx context.Context, tconn *chrome.TestConn, state WindowState) error {
+	// Delegate to R version because there isn't significant difference.
+	return ac.setWindowStateR(ctx, tconn, state)
 }
 
 func windowStateToWMEvent(state WindowState) (ash.WMEventType, error) {
