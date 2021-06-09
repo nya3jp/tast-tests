@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7170d63e_b4b7c2ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-06-09T23:41:49Z",
+      "side": 1,
+      "message": "Cool. Thanks for the tip. Updated as suggested.",
+      "parentUuid": "c8f85e3e_295a2657",
+      "range": {
+        "startLine": 277,
+        "startChar": 2,
+        "endLine": 277,
+        "endChar": 6
+      },
+      "revId": "dda94d009b41e2c500f723f1259b71d4468c8853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0e20b6f_481224c9",
