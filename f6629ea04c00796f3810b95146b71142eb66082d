@@ -50,6 +50,24 @@
       "message": "nit: not sure it should be plural.  Maybe simply \"key\" might be okay (or \"accel\"?)",
       "revId": "f6629ea04c00796f3810b95146b71142eb66082d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f52ae67b_6540d8a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-09T03:20:45Z",
+      "side": 1,
+      "message": "I named it \"keys\" considering the previous review in another test:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2916317/2..4/src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go#b73\n\nI\u0027ve updated the comment here.",
+      "parentUuid": "77ed8545_cc42915a",
+      "revId": "f6629ea04c00796f3810b95146b71142eb66082d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
