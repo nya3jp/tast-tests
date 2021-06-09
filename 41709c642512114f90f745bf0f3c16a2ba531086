@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb9fe021_a322f712",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-09T02:16:18Z",
+      "side": 1,
+      "message": "(moved cert* fields from Config to Connection, which should make better sense)",
+      "revId": "41709c642512114f90f745bf0f3c16a2ba531086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
