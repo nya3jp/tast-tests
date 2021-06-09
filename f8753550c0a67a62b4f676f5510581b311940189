@@ -87,6 +87,30 @@
       },
       "revId": "f8753550c0a67a62b4f676f5510581b311940189",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc4327c_441731a3",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1003044
+      },
+      "writtenOn": "2021-06-09T08:31:03Z",
+      "side": 1,
+      "message": "Is dropping these errors such a big deal? It seems like the proper way to fix this is to make NodesInfo not return an error in this case. The suggested approach here is structurally pretty different and more complicated to how I would expect to see this function written, and it seems like it is both introducing and working around a race condition for the sake of catching this error. Also note we can\u0027t even make such an error break the polling loop.",
+      "parentUuid": "67e9287d_e6d034cf",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 2
+      },
+      "revId": "f8753550c0a67a62b4f676f5510581b311940189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
