@@ -443,6 +443,24 @@
       "message": "nit: period at the end",
       "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47539e8c_1a92a1f0",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-09T19:12:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72610c23_54e81d5a",
+      "revId": "94ce5c7275121885284a5de4a861a67707a424f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
