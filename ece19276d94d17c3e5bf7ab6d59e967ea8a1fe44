@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287e6057_31ef037c",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-06-09T17:25:18Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be S?",
+      "range": {
+        "startLine": 143,
+        "startChar": 94,
+        "endLine": 143,
+        "endChar": 95
+      },
+      "revId": "ece19276d94d17c3e5bf7ab6d59e967ea8a1fe44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
