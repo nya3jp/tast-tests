@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b1315ea_3a58aeba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-09T23:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f821f53e_be5655a2",
+      "revId": "2005a7f89bd5d467b1df0e859a7ace88acbbc68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "606e7e44_281695bf",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-09T22:58:47Z",
       "side": 1,
       "message": "the first icon on top of the second icon",
+      "range": {
+        "startLine": 111,
+        "startChar": 68,
+        "endLine": 111,
+        "endChar": 100
+      },
+      "revId": "2005a7f89bd5d467b1df0e859a7ace88acbbc68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "250d6a30_1099c7f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-09T23:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "606e7e44_281695bf",
       "range": {
         "startLine": 111,
         "startChar": 68,
@@ -78,6 +120,30 @@
       "side": 1,
       "message": "Agreed with Judy\u0027s comment. \n\nOr you can consider cutting down the two location calls below, as nodeInfo should give location also.",
       "parentUuid": "5ec83b86_f1142523",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "2005a7f89bd5d467b1df0e859a7ace88acbbc68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b80c52d2_013f1acc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-09T23:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6954062f_c919d48e",
       "range": {
         "startLine": 117,
         "startChar": 1,
