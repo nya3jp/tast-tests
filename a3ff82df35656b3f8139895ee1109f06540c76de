@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5513b93_c7e1281e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/abc_kids.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-06-09T03:30:51Z",
+      "side": 1,
+      "message": "Since this is common to all the tests, define and reuse a valiable for this list (or a dependency object) just like done for clamshell-only models.",
+      "revId": "a3ff82df35656b3f8139895ee1109f06540c76de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
