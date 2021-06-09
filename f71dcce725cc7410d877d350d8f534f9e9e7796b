@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18cbaa37_b6c9b6e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-09T17:54:45Z",
+      "side": 1,
+      "message": "Yes you\u0027re right. I addressed this by creating a function that will deactivate autoclick and close the confirmation dialog. I tested each code path locally and it passed both times.",
+      "parentUuid": "102fe732_6d341a42",
+      "revId": "f71dcce725cc7410d877d350d8f534f9e9e7796b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44437f94_21802b65",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-06-09T03:09:06Z",
       "side": 1,
       "message": "Can we simplify this like below?:\n\n\tmoveMouseToNode :\u003d func(finder *nodewith.Finder) action.Action {\n\t\treturn uiauto.Combine(\"moving mouse to node location\",\n\t\t\tui.WithTimeout(10*time.Second).WaitForLocation(finder),\n\t\t\tui.MouseMoveTo(finder, time.Second),\n\t\t\t)\n\t}",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "f71dcce725cc7410d877d350d8f534f9e9e7796b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80cc636d_4a513dc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-09T17:54:45Z",
+      "side": 1,
+      "message": "I tried it, but I don\u0027t think that will work. moveMouseToNode needs to return a function so that it can be used within a uiauto.Combine() statement. Please see other functions that follow this pattern:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d328",
+      "parentUuid": "44437f94_21802b65",
       "range": {
         "startLine": 72,
         "startChar": 0,
