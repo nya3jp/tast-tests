@@ -36,6 +36,9 @@ func init() {
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		Vars:         []string{"servo"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		Data:         []string{firmware.ConfigFile},
+		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
+		Pre:          pre.NormalMode(),
 		Params: []testing.Param{
 			{
 				Name:              "x86",
