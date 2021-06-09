@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64906671_b1f7949d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-09T18:04:21Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "4a743d444f99476b73c8ef22a546ffd1e2cdda0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ac3c550_078d6fe5",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-09T18:04:21Z",
+      "side": 1,
+      "message": "nit: break after this perhaps?",
+      "range": {
+        "startLine": 385,
+        "startChar": 4,
+        "endLine": 385,
+        "endChar": 54
+      },
+      "revId": "4a743d444f99476b73c8ef22a546ffd1e2cdda0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
