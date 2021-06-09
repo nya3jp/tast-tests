@@ -33,6 +33,29 @@
       "message": "Thanks Shuhei-san.  Hi Yury, PTAL as well.",
       "revId": "4785b41a05f5647c9f0e3c7120f72925351ff1f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c5891e2_80dd2cf4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-09T22:30:36Z",
+      "side": 1,
+      "message": "I would probably allow ureadahead generation for local passes, .local, vm_local\nWDYT?",
+      "range": {
+        "startLine": 383,
+        "startChar": 5,
+        "endLine": 383,
+        "endChar": 20
+      },
+      "revId": "4785b41a05f5647c9f0e3c7120f72925351ff1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
