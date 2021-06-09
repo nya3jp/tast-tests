@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "194e447c_abd5a39d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/abc_kids.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-06-09T01:53:46Z",
+      "side": 1,
+      "message": "Tried using \"no_tablet_form_factor\" for skipping on Dru and Krane. Observed that it isn\u0027t skipping the test on Dru (R93-14020.0.0). On Krane, test is skipping on R93-14020.0.0 build and test not skipping on R92-13982.18.0 build due to similar reason as mentioned in the comment, https://b.corp.google.com/issues/188446743#comment4. So use of hwdep.SkipOnModel is needed here.\nRegarding using \"tablet_form_factor\" for \"arcappcompat.*.tablet_mode\" tests, need to run on both convertible and tablet devices. As \"tablet_form_factor\" is for \"The device\u0027s primary form factor is tablet\" couldn\u0027t be used here. (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md)\n\nNote: arcappcompat.*.tablet_mode tests already using \"tablet_mode\" as a software dependency (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arcappcompat/abc_kids.go;l\u003d52). \"arcappcomapt.*.tablet_mode\" tests aren\u0027t skipping the runs on clamshell only device due to the bug,b/188446743 mentioned in the CL commit statement. So \"hwdep.SkipOnModel\" is neede here.",
+      "parentUuid": "8d86b863_03c9e18f",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "8656bec610bd41e278444b68f38984e961ae8934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e60f1747_7c3d350e",
@@ -95,6 +119,30 @@
       "side": 1,
       "message": "The comments in the tests says:\n// Skip on clamshell only models.\n\nSo I suggest renaming this variable as \"ClamshellOnlyModels\" instead.",
       "parentUuid": "e60f1747_7c3d350e",
+      "range": {
+        "startLine": 1077,
+        "startChar": 46,
+        "endLine": 1077,
+        "endChar": 81
+      },
+      "revId": "8656bec610bd41e278444b68f38984e961ae8934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4cc3d6d_d02c8d76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-06-09T01:53:46Z",
+      "side": 1,
+      "message": "yes, test want devices that supports the tablet mode as one of the options. Renamed the variable as \"SkipOnClamshellOnlyModels\"",
+      "parentUuid": "93afe163_f7425843",
       "range": {
         "startLine": 1077,
         "startChar": 46,
