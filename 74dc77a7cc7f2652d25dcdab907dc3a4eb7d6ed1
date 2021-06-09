@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f58856f_5e52a86c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-06-09T08:32:57Z",
+      "side": 1,
+      "message": "Done. Thank you!",
+      "parentUuid": "7a65e085_dddabf2c",
+      "revId": "74dc77a7cc7f2652d25dcdab907dc3a4eb7d6ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd9b435a_ec38e66b",
