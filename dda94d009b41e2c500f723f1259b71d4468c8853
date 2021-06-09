@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e4bb906_f42efa84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-06-09T22:56:38Z",
+      "side": 1,
+      "message": "uiauto + 1 minor fix.",
+      "revId": "dda94d009b41e2c500f723f1259b71d4468c8853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e20b6f_481224c9",
+        "filename": "src/chromiumos/tast/local/chrome/webutil/webutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-06-09T22:56:38Z",
+      "side": 1,
+      "message": "Piggybacked on this CL since I happened to run into crbug/1215210 when doing the uiaudo change. If you don\u0027t like it, I would split this out into its own CL.",
+      "revId": "dda94d009b41e2c500f723f1259b71d4468c8853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
