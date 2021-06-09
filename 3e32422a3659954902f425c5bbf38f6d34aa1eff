@@ -63,6 +63,30 @@
       },
       "revId": "3e32422a3659954902f425c5bbf38f6d34aa1eff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfee7e5a_55d63566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-09T23:35:15Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "48fe593c_5f4e328d",
+      "range": {
+        "startLine": 112,
+        "startChar": 44,
+        "endLine": 112,
+        "endChar": 69
+      },
+      "revId": "3e32422a3659954902f425c5bbf38f6d34aa1eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
