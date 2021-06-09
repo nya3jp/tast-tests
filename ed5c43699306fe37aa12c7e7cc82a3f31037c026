@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04e30549_dd7b764e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-09T13:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7deb3211_cd0d27d9",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 0
+      },
+      "revId": "ed5c43699306fe37aa12c7e7cc82a3f31037c026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b75519e1_8bb04dd3",

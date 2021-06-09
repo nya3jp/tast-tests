@@ -171,6 +171,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9818e22c_2f8780be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-09T13:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2418167f_bf302d09",
+      "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d8ae972_5a57e37e",
@@ -256,6 +274,30 @@
       "side": 1,
       "message": "I see. IMHO the function implementation is incorrect. I picked it as it matches what we want -\u003e make sure withing specified timeout that the node won\u0027t appear (is gone). However, as pointed by Gabor EnsureGoneFor has the same implementation as WaitUntilGone but with custom timeout, the rest is the same.\n\nAnd agree with Alex\u0027s point -\u003e it should have a better name.",
       "parentUuid": "b63d56a2_237a7919",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 80
+      },
+      "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4b85058_5e7f0c36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-09T13:21:23Z",
+      "side": 1,
+      "message": "ticket has been opened\nhttps://buganizer.corp.google.com/issues/190596080",
+      "parentUuid": "a3a6b569_8ec7d8cb",
       "range": {
         "startLine": 207,
         "startChar": 0,
