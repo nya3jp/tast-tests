@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "606e7e44_281695bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-09T22:58:47Z",
+      "side": 1,
+      "message": "the first icon on top of the second icon",
+      "range": {
+        "startLine": 111,
+        "startChar": 68,
+        "endLine": 111,
+        "endChar": 100
+      },
+      "revId": "2005a7f89bd5d467b1df0e859a7ace88acbbc68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ec83b86_f1142523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-09T22:58:47Z",
+      "side": 1,
+      "message": "I guess this is not necessary as only the names of nodes are used in the following code. It always drag the first icon to the second icon, the name of the icon would not add much value to debug.",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "2005a7f89bd5d467b1df0e859a7ace88acbbc68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
