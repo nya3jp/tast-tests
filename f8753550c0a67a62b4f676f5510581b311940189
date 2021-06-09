@@ -63,6 +63,30 @@
       },
       "revId": "f8753550c0a67a62b4f676f5510581b311940189",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e9287d_e6d034cf",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-09T07:35:03Z",
+      "side": 1,
+      "message": "What about chucking the whole thing in a testing.Poll (cutting out the uiauto retry in your new condition as it would be redundant?) so that you can loop back around in case a race condition?\n\nPsudocode:\n\nerr :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n   if textErr \u003d\u003d nil \u0026\u0026 listErr \u003d\u003d nil \n      return errors.New(\"still initialising\")\n   } else if textErr \u003d\u003d nil \u0026\u0026 textErr !\u003d nil {\n      return testing.PollBreak(errors.New(\"failed to find list of \u0027Shared folders\u0027 or \u0027Shared folders will appear here\u0027\"))\n   } else if listErr \u003d\u003d nil {\n\t// Found \"Shared folders\".\n\t...\n\t// Errors that could be due to races (e.g. Shared folders disappearing)\n\t// NOT wrapped in testing.PollBreak().\n   }\n   \n   // No shared folder.\n   return nil, nil\n\n})\nif err !\u003d nil {\n   ...\n}",
+      "parentUuid": "0b1d2f98_92ba30fb",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 2
+      },
+      "revId": "f8753550c0a67a62b4f676f5510581b311940189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

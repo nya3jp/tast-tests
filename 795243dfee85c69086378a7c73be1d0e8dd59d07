@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8def4ca7_8ffc7d17",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-09T07:35:03Z",
+      "side": 0,
+      "message": "this seems buggy (err \u003d\u003d nil), let\u0027s make sure we fix this.",
+      "range": {
+        "startLine": 171,
+        "startChar": 26,
+        "endLine": 171,
+        "endChar": 29
+      },
+      "revId": "795243dfee85c69086378a7c73be1d0e8dd59d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
