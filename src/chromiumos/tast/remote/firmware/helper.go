@@ -25,7 +25,29 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Helper tracks several firmware-related objects.
+// Helper tracks several firmware-related objects. The recommended way to initialize the helper is to use firmware.Pre:
+//
+// import (
+//	...
+//	"chromiumos/tast/remote/firmware/pre"
+// )
+//
+// func init() {
+//	testing.AddTest(&testing.Test{
+//		...
+//		Pre:	pre.Helper(),
+//		Vars:	[]string{"servo"},
+//	})
+// }
+//
+// func MyTest(ctx context.Context, s *testing.State) {
+// 	h := s.PreValue().(*pre.Value).Helper
+//
+// 	if err := h.RequireServo(ctx); err != nil {
+// 		s.Fatal("Failed to init servo: ", err)
+// 	}
+// ...
+// }
 type Helper struct {
 	// BiosServiceClient provides bios related services such as GBBFlags manipulation.
 	BiosServiceClient fwpb.BiosServiceClient
@@ -37,9 +59,9 @@ type Helper struct {
 	// Config contains a variety of platform-specific attributes.
 	Config *Config
 
-	// cfgFilepath is the full path to the data directory containing fw-testing-configs JSON files.
-	// Any tests requiring a Config should set cfgFilepath to s.DataPath(firmware.ConfigFile) during NewHelper.
-	cfgFilepath string
+	// CfgFilepath is the full path to the data directory containing fw-testing-configs JSON files.
+	// Any tests requiring a Config should set CfgFilepath to s.DataPath(firmware.ConfigFile) during NewHelper.
+	CfgFilepath string
 
 	// doesDUTImageHaveTastFiles and doesRecHaveTastFiles track whether the DUT's on-board image
 	// and the USB recovery image are known to have up-to-date Tast host files.
@@ -82,7 +104,7 @@ type Helper struct {
 // For tests that do not use a certain Helper aspect (e.g. RPC or Servo), it is OK to pass null-values (nil or "").
 func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, cfgFilepath, servoHostPort string) *Helper {
 	return &Helper{
-		cfgFilepath:   cfgFilepath,
+		CfgFilepath:   cfgFilepath,
 		DUT:           d,
 		Reporter:      reporters.New(d),
 		rpcHint:       rpcHint,
@@ -105,6 +127,37 @@ func (h *Helper) Close(ctx context.Context) error {
 	}
 	if err := h.CloseRPCConnection(ctx); err != nil && firstErr == nil {
 		firstErr = errors.Wrap(err, "closing rpc connection")
+	}
+	return firstErr
+}
+
+// CheckPowerAndClose checks the power state, and attempts to boot the DUT if it is off.
+// If you power off the DUT during the test, this will restore the power at the end of the test.
+// Typical invocation should look like:
+//
+// h := firmware.NewHelper(...)
+// defer h.CheckPowerAndClose(ctx)
+//
+// if err := h.RequireServo(ctx); err != nil {
+//   s.Fatal("failed to init servo: ", err)
+// }
+func (h *Helper) CheckPowerAndClose(ctx context.Context) error {
+	var firstErr error
+	if h.Servo != nil {
+		state, err := h.Servo.GetECSystemPowerState(ctx)
+		if err != nil {
+			testing.ContextLog(ctx, "Error getting power state: ", err)
+			firstErr = err
+		} else if state != "S0" {
+			testing.ContextLog(ctx, "DUT is off at end of test, booting with power key")
+			if err = h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+				testing.ContextLog(ctx, "Failed to press power key: ", err)
+				firstErr = err
+			}
+		}
+	}
+	if err := h.Close(ctx); err != nil && firstErr != nil {
+		firstErr = err
 	}
 	return firstErr
 }
@@ -190,6 +243,7 @@ func (h *Helper) RequirePlatform(ctx context.Context) error {
 }
 
 // RequireConfig creates a firmware.Config, unless one already exists.
+// This requires your test to have `Data: []string{firmware.ConfigFile},` in its `testing.Test` block.
 func (h *Helper) RequireConfig(ctx context.Context) error {
 	if h.Config != nil {
 		return nil
@@ -197,11 +251,11 @@ func (h *Helper) RequireConfig(ctx context.Context) error {
 	if err := h.RequirePlatform(ctx); err != nil {
 		return errors.Wrap(err, "requiring DUT platform")
 	}
-	// cfgFilepath comes from testing.State, so it needs to be passed during NewHelper.
-	if h.cfgFilepath == "" {
-		return errors.New("cannot create firmware Config with a null Helper.cfgFilepath")
+	// CfgFilepath comes from testing.State, so it needs to be passed during NewHelper.
+	if h.CfgFilepath == "" {
+		return errors.New("cannot create firmware Config with a null Helper.CfgFilepath")
 	}
-	cfg, err := NewConfig(h.cfgFilepath, h.Board, h.Model)
+	cfg, err := NewConfig(h.CfgFilepath, h.Board, h.Model)
 	if err != nil {
 		return errors.Wrapf(err, "during NewConfig with board=%s, model=%s", h.Board, h.Model)
 	}
