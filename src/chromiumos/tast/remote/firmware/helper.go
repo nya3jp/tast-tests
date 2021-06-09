@@ -265,6 +265,7 @@ func (h *Helper) RequirePlatform(ctx context.Context) error {
 }
 
 // RequireConfig creates a firmware.Config, unless one already exists.
+// This requires your test to have `Data: []string{firmware.ConfigFile},` in its `testing.Test` block.
 func (h *Helper) RequireConfig(ctx context.Context) error {
 	if h.Config != nil {
 		return nil

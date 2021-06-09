@@ -19,15 +19,15 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CodelabPre,
-		Desc: "Demonstrates common functionality for remote firmware tests",
-		Contacts: []string{
+		Func:         CodelabPre,
+		Desc:         "Demonstrates common functionality for remote firmware tests",
+		Contacts:     []string{
 			"me@chromium.org",      // Test author
 			"my-team@chromium.org", // Backup mailing list
 		},
-		Data: []string{firmware.ConfigFile},
 		Attr:         []string{"group:firmware", "firmware_experimental"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		Data:         []string{firmware.ConfigFile},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		Vars:         []string{"servo"},

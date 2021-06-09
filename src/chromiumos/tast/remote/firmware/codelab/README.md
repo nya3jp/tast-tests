@@ -174,6 +174,8 @@ fw-testing-configs are a set of JSON files defining platform-specific attributes
 
 In Tast, we access that consolidated JSON as a [data file]. The relative path to that data file is exported in the remote `firmware` library as [`firmware.ConfigFile`].
 
+> This section is for background, you should actually use the Helper class to read the configs.
+
 To use that data file in our test, we first have to import the remote `firmware` library, and declare that our test uses the data file:
 
 ```go
@@ -226,6 +228,8 @@ At this point (after running `gofmt`), your test file should resemble [`codelab_
 Many firmware tests rely on [Servo] for controlling the DUT. Let's use Servo in our test.
 
 In order to send commands via Servo, the test needs to know the address of the machine running servod (the "servo\_host"), and the port on which that machine is running servod (the "servo\_port"). These values are supplied at runtime as a [runtime variable], of the form `${SERVO_HOST}:${SERVO_PORT}`.
+
+> This section is for background, you should actually use the Helper class.
 
 To start, we will need to declare `"servo"` as a variable in the test:
 
@@ -398,6 +402,8 @@ For that reason, we have a structure called [`firmware.Helper`], whose job is to
 
 At the start of your test body, initialize a `firmware.Helper`. The [`NewHelper`] constructor requires several parameters, which it will use later to initialize other structures: `dut` (to construct the Reporter and Servo), `rpcHint` (for the RPC connection), `cfgFilepath` (for the Config), and `servoHostPort` (for Servo).
 
+> This is simpler, but keep reading. firmware.Pre is simpler yet!
+
 ```go
 func Codelab(ctx context.Context, s *testing.State) {
 	servoSpec, _ := s.Var("servo")
@@ -449,6 +455,8 @@ So, let's replace the `Config` constructor in our test with `h.RequireConfig`.
 ```
 
 Note that we didn't need to pass the board and model to `RequireConfig`; it fetched them via its `Reporter`. And, note that `RequireConfig` didn't return a `Config` object; it was stored as `h.Config`.
+
+> `RequireConfig` will fail if your `testing.Test` block doesn't contain `Data: []string{firmware.ConfigFile},`
 
 Next, let's use our `Helper` to create a Servo.
 
