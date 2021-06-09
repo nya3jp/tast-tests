@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "14bf6b54_86bc9810",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-09T13:49:30Z",
+      "side": 1,
+      "message": "minor nit: you don\u0027t need the dot at the end of the subject line.",
+      "range": {
+        "startLine": 7,
+        "startChar": 58,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "a438187cb1f37a086d86a00a8fd6f82b002ae70f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e06e9421_5639ec40",
@@ -14,6 +37,46 @@
       "writtenOn": "2021-06-08T22:43:51Z",
       "side": 1,
       "message": "Thanks!",
+      "revId": "a438187cb1f37a086d86a00a8fd6f82b002ae70f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d26effb_03de784a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-09T13:49:30Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "a438187cb1f37a086d86a00a8fd6f82b002ae70f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f233b8ec_099dbbe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-09T13:49:30Z",
+      "side": 1,
+      "message": "nit: please update the comments for these 3 changed functions.",
+      "range": {
+        "startLine": 1035,
+        "startChar": 21,
+        "endLine": 1035,
+        "endChar": 48
+      },
       "revId": "a438187cb1f37a086d86a00a8fd6f82b002ae70f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
