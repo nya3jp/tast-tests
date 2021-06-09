@@ -226,6 +226,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9440bf82_299ca77f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-06-09T22:24:37Z",
+      "side": 1,
+      "message": "Explicit timeout added (with 100% margin).",
+      "parentUuid": "cbda92e2_8c1af0fa",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 13
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eacdb1c_cade811e",
@@ -452,6 +476,30 @@
       "side": 1,
       "message": "If you don\u0027t, you\u0027re going to have the FT variants failing on several boards. So, either TODO (pointing at your own bug), or add such a dep, or else we\u0027re going to file a bug and assign it to you as soon as this test starts running in the lab :)",
       "parentUuid": "954bc1d5_a66c569d",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 9
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f816c69_b2e19dda",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-06-09T22:24:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure how many devices we have that support 802.11ac but don\u0027t support 802.11r, but I added a bug anyway. BTW. Is there any way to find a complete list?",
+      "parentUuid": "33a97392_fe3e8c2d",
       "range": {
         "startLine": 245,
         "startChar": 4,
