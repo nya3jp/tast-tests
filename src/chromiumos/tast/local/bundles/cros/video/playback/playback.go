@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/devtools"
@@ -52,7 +53,7 @@ const (
 
 // RunTest measures a number of performance metrics while playing a video with
 // or without hardware acceleration as per decoderType.
-func RunTest(ctx context.Context, s *testing.State, cs ash.ConnSource, videoName string, decoderType DecoderType) {
+func RunTest(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrome.Chrome, videoName string, decoderType DecoderType) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -65,14 +66,14 @@ func RunTest(ctx context.Context, s *testing.State, cs ash.ConnSource, videoName
 	defer crastestclient.Unmute(ctx)
 
 	testing.ContextLog(ctx, "Measuring performance")
-	if err = measurePerformance(ctx, cs, s.DataFileSystem(), videoName, decoderType, s.OutDir()); err != nil {
+	if err = measurePerformance(ctx, cs, cr, s.DataFileSystem(), videoName, decoderType, s.OutDir()); err != nil {
 		s.Fatal("Failed to collect CPU usage and dropped frames: ", err)
 	}
 }
 
 // measurePerformance collects video playback performance playing a video with
 // either SW or HW decoder.
-func measurePerformance(ctx context.Context, cs ash.ConnSource, fileSystem http.FileSystem, videoName string,
+func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrome, fileSystem http.FileSystem, videoName string,
 	decoderType DecoderType, outDir string) error {
 	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
@@ -129,6 +130,21 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, fileSystem http.
 
 	p := perf.NewValues()
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to test API")
+	}
+	const decodeHistogramName = "Media.MojoVideoDecoder.Decode"
+	initDecodeHistogram, err := metrics.GetHistogram(ctx, tconn, decodeHistogramName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get initial histogram")
+	}
+	const platformDecodeHistogramName = "Media.PlatformVideoDecoding.Decode"
+	initPlatformDecodeHistogramName, err := metrics.GetHistogram(ctx, tconn, platformDecodeHistogramName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get initial histogram")
+	}
+
 	var gpuErr, cStateErr, cpuErr error
 	var wg sync.WaitGroup
 	wg.Add(3)
@@ -153,6 +169,13 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, fileSystem http.
 	}
 	if cpuErr != nil {
 		return errors.Wrap(cpuErr, "failed to measure CPU/Package power")
+	}
+
+	if err := graphics.UpdatePerfMetricFromHistogram(ctx, tconn, decodeHistogramName, initDecodeHistogram, p, "video_decode_delay"); err != nil {
+		return errors.Wrap(err, "failed to calculate Decode perf metric")
+	}
+	if err := graphics.UpdatePerfMetricFromHistogram(ctx, tconn, platformDecodeHistogramName, initPlatformDecodeHistogramName, p, "platform_video_decode_delay"); err != nil {
+		return errors.Wrap(err, "failed to calculate Platform Decode perf metric")
 	}
 
 	if err := sampleDroppedFrames(ctx, conn, p); err != nil {
@@ -227,5 +250,43 @@ func sampleDroppedFrames(ctx context.Context, conn *chrome.Conn, p *perf.Values)
 		Direction: perf.SmallerIsBetter,
 	}, droppedFramePercent)
 
+	return nil
+}
+
+func updatePerfMetricFromHistogram(ctx context.Context, tconn *chrome.TestConn, histogramName string, initHistogram *metrics.Histogram, perfValues *perf.Values, metricName string) error {
+	laterHistogram, err := metrics.GetHistogram(ctx, tconn, histogramName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get later histogram: ")
+	}
+	histogramDiff, err := laterHistogram.Diff(initHistogram)
+	if err != nil {
+		return errors.Wrap(err, "failed diffing histograms: ")
+	}
+	// Some devices don't have hardware decode acceleration, so the histogram diff
+	// will be empty, this is not an error condition.
+	if len(histogramDiff.Buckets) > 0 {
+		decodeMetric := perf.Metric{
+			Name:      metricName,
+			Unit:      "ms",
+			Direction: perf.SmallerIsBetter,
+			Multiple:  true,
+		}
+
+		numHistogramSamples := float64(histogramDiff.TotalCount())
+		var average float64
+		// Walk the buckets of histogramDiff, append the central value of the
+		// histogram bucket as many times as bucket entries to perfValues, and
+		// calculate the average on the fly for debug printout purposes. This average
+		// is a discrete approximation to the statistical average of the samples
+		// underlying the histogramDiff histograms.
+		for _, bucket := range histogramDiff.Buckets {
+			bucketMidpoint := float64(bucket.Max+bucket.Min) / 2.0
+			for i := 0; i < int(bucket.Count); i++ {
+				perfValues.Append(decodeMetric, bucketMidpoint)
+			}
+			average += bucketMidpoint * float64(bucket.Count) / numHistogramSamples
+		}
+		testing.ContextLog(ctx, histogramName, ": histogram:", histogramDiff.String(), "; average: ", average)
+	}
 	return nil
 }
