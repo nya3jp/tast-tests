@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e1027b2_5d4bd69a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T03:08:21Z",
+      "side": 1,
+      "message": "Thank you! Changed to error.",
+      "parentUuid": "ff055fed_c0080e6d",
+      "range": {
+        "startLine": 83,
+        "startChar": 10,
+        "endLine": 83,
+        "endChar": 20
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec9b9cb5_2a90f51f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-08T06:02:27Z",
       "side": 1,
       "message": "Suggest to use uiauto.Combine to combine kb.TypeAction and kb.AccelAction",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 3
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d64ba52_72a47d02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T03:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec9b9cb5_2a90f51f",
       "range": {
         "startLine": 99,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "525eb5d5_f49c0d57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T03:08:21Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "0e0171b1_b8ce3a5d",
+      "range": {
+        "startLine": 189,
+        "startChar": 5,
+        "endLine": 189,
+        "endChar": 23
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65983ea0_a6e6df41",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-08T06:02:27Z",
       "side": 1,
       "message": "Since you did not do anything with the error of Poll, you could just return testing.Poll(...)...",
+      "range": {
+        "startLine": 200,
+        "startChar": 19,
+        "endLine": 200,
+        "endChar": 23
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90898fca_2b7aca0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T03:08:21Z",
+      "side": 1,
+      "message": "Changed to use uiauto.Retry(), and return error directly.",
+      "parentUuid": "65983ea0_a6e6df41",
       "range": {
         "startLine": 200,
         "startChar": 19,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "046d8efa_80a85867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T03:08:21Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "9d6193b0_c581e462",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 8
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be24b167_09c5a24f",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-06-08T06:02:27Z",
       "side": 1,
       "message": "Why do you need this?",
+      "range": {
+        "startLine": 210,
+        "startChar": 21,
+        "endLine": 210,
+        "endChar": 26
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f077bf02_a47f6782",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T03:08:21Z",
+      "side": 1,
+      "message": "Replace with \"Alt+\u003d\". Verified it works! Thanks!",
+      "parentUuid": "be24b167_09c5a24f",
       "range": {
         "startLine": 210,
         "startChar": 21,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95781b33_f12a89be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T03:08:21Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "1cdc1e30_e1e31276",
+      "range": {
+        "startLine": 217,
+        "startChar": 21,
+        "endLine": 217,
+        "endChar": 26
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "551d72ce_b5d6b838",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-06-08T06:02:27Z",
       "side": 1,
       "message": "Why it always return error?",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 220,
+        "endChar": 56
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a61ba5d8_9b456d16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T03:08:21Z",
+      "side": 1,
+      "message": "This should be a bug. Fixed.",
+      "parentUuid": "551d72ce_b5d6b838",
       "range": {
         "startLine": 220,
         "startChar": 3,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e885ea4c_b5e91039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T03:08:21Z",
+      "side": 1,
+      "message": "Removed Poll because inside WaitForARCAppWindowState() it also use 20-second Poll()",
+      "parentUuid": "05c374e0_7815223b",
+      "range": {
+        "startLine": 261,
+        "startChar": 11,
+        "endLine": 261,
+        "endChar": 23
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "501634d4_9a555fdb",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-06-08T06:02:27Z",
       "side": 1,
       "message": "This else is not needed.",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 8
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e28fa55_5fa9a28a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T03:08:21Z",
+      "side": 1,
+      "message": "Re-wrote with WaitForARCAppWindowState()",
+      "parentUuid": "501634d4_9a555fdb",
       "range": {
         "startLine": 264,
         "startChar": 4,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5998bd56_881ee1a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T03:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d6ced6a_f71408f1",
+      "range": {
+        "startLine": 292,
+        "startChar": 19,
+        "endLine": 292,
+        "endChar": 23
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b14db521_31f045c6",
@@ -267,6 +531,30 @@
       "writtenOn": "2021-06-08T06:02:27Z",
       "side": 1,
       "message": "Nothing is done after this sleep?",
+      "range": {
+        "startLine": 320,
+        "startChar": 20,
+        "endLine": 320,
+        "endChar": 25
+      },
+      "revId": "12e51775ef735704f331cc8f35d6c003c072b39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd114b9b_a453f1e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T03:08:21Z",
+      "side": 1,
+      "message": "Modified comments. This is just purposely wait to let the video play.",
+      "parentUuid": "b14db521_31f045c6",
       "range": {
         "startLine": 320,
         "startChar": 20,
