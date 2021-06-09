@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a886c0_384741ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-09T03:56:18Z",
+      "side": 1,
+      "message": "(Only checked the usage for vpn package. And please expect that the interface of that could be changed since it\u0027s still under review :)",
+      "revId": "18a4e6872ff08a477434d730c32be574f77cb77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52802a6b_2660d76e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-09T03:56:18Z",
+      "side": 1,
+      "message": "You might also want to use shillReset fixture to ensure that shill has a clean profile before and after test (it will restart shill). See https://crrev.com/c/2946897 for an example.\n\nBTW, without that fixture, have you checked that the vpn service is removed after the test? I added that function but I haven\u0027t verified that by myself...",
+      "range": {
+        "startLine": 33,
+        "startChar": 26,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "18a4e6872ff08a477434d730c32be574f77cb77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "968dbedc_55149cd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-09T03:56:18Z",
+      "side": 1,
+      "message": "We can expose the netns name, vpn ifname, vpn underlay address if needed... Not in this patch, I can do this later",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 222,
+        "endChar": 3
+      },
+      "revId": "18a4e6872ff08a477434d730c32be574f77cb77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba27f895_04a4708d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-09T03:56:18Z",
+      "side": 1,
+      "message": "Just curious: why do we need to setup the connectivity for VPN in the test?",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 31
+      },
+      "revId": "18a4e6872ff08a477434d730c32be574f77cb77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
