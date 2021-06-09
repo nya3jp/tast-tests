@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1153dedb_c9ae5659",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-06-09T20:51:44Z",
+      "side": 0,
+      "message": "I think that the constant should be renamed to simply \"borderOffset\" and the comment should be updated to speak of a window and not particularly a \"normal\" window.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "d112183d20db631e1bf9851948bc778da5cacfb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e467100e_fb9c232b",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-06-09T20:51:44Z",
+      "side": 0,
+      "message": "I think that now the constant should simply be used directly. No need to define a variable for it here.",
+      "range": {
+        "startLine": 476,
+        "startChar": 1,
+        "endLine": 476,
+        "endChar": 38
+      },
+      "revId": "d112183d20db631e1bf9851948bc778da5cacfb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
