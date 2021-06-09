@@ -62,6 +62,30 @@
       },
       "revId": "2005a7f89bd5d467b1df0e859a7ace88acbbc68a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6954062f_c919d48e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-06-09T23:11:28Z",
+      "side": 1,
+      "message": "Agreed with Judy\u0027s comment. \n\nOr you can consider cutting down the two location calls below, as nodeInfo should give location also.",
+      "parentUuid": "5ec83b86_f1142523",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "2005a7f89bd5d467b1df0e859a7ace88acbbc68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
