@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fd3903d_d5b6f42b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-09T17:30:49Z",
+      "side": 1,
+      "message": "By the way, really nice work here. You\u0027ve cracked some tough nuts figuring this out.",
+      "revId": "d35d0162c8a52ce8bb324baa28e29fb0036d2279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c8deeb2_95ed15ea",
@@ -54,6 +71,30 @@
       "writtenOn": "2021-06-09T17:26:08Z",
       "side": 1,
       "message": "Is this exhaustive? Will we be able to capture numbers, symbols, and other special keys?\n\nIt might be good to add these cases to the end-to-end test.",
+      "range": {
+        "startLine": 128,
+        "startChar": 30,
+        "endLine": 128,
+        "endChar": 37
+      },
+      "revId": "d35d0162c8a52ce8bb324baa28e29fb0036d2279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16331391_8ebdaade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-09T17:30:49Z",
+      "side": 1,
+      "message": "I ran `evtest --grab $node` on a DUT, and it told me the keypress events. Looks like all keypress events are like /KEY_[A-Z0-9_]+/. So, that\u0027s a quick fix.",
+      "parentUuid": "d06d2537_6ba3132d",
       "range": {
         "startLine": 128,
         "startChar": 30,
