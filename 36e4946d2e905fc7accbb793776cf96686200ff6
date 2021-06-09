@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f61e1792_7d6d96b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-09T19:10:08Z",
+      "side": 1,
+      "message": "There is a remote fixture for nearbyshare too. So reworded to include \"fixture.go\" but also keep the wording that it is the local one.",
+      "parentUuid": "6123f66e_ec721914",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "333b8807_7db09aaf",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-09T04:29:43Z",
       "side": 1,
       "message": "andrioid_fixture.go: defines nearbyShareAndroidFixture that sets up ...",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3897a7b_010968f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-09T19:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "333b8807_7db09aaf",
       "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "547003c5_ea257655",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-09T19:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57027733_80cf6cd8",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea7be04a_65cf3464",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d964d11_5157c2c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-09T19:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea7be04a_65cf3464",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73e142e5_4ece402f",
@@ -82,6 +154,24 @@
       "writtenOn": "2021-06-09T04:29:43Z",
       "side": 1,
       "message": "The nested fixtures\u0027 parent \u003c- child relationship: \nnearbyShareAndroidSetup (parent) \u003c- nearbyShareGAIALogin \u003c- nearbyShareFixture \u003c- fixtures defined in fixture.go.\n\n// Note that the arrow direction is not universally the same. I follow the UML format and it is also used in Tast fixture introduction slide[1]. So let\u0027s explicitly label parent and child.\n\n// Also, the relationship is named as \"nested\", which has inheritance concept but not exactly the same. Let\u0027s stick the name \"nested\". \n\n[1] https://docs.google.com/presentation/d/19EXMabCiSwCMfZ5xpmuRSway_wDvjSOCEFyc1M1_tDU/edit?resourcekey\u003d0-es9kZKHRK5bTHfUSGJNEtQ#slide\u003did.g7864377d4a_0_105",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc6ed4a9_4b6b5b1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-09T19:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73e142e5_4ece402f",
       "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +195,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7cdb84ae_652d689e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-09T19:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8793d4ec_16983176",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "76e67db2_b86a17b4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 8
@@ -116,6 +224,24 @@
       "writtenOn": "2021-06-09T06:31:37Z",
       "side": 1,
       "message": "Sorry for the long review delay as the CL is large I have to allocate a long while to read it through. Hope the revised commit description can help readers to understand the nested relationship among fixtures.\n\nBy the way, please consider adding a readme.md in nearbyshare package to store the content of the commit message so that other developers may have a better view of the relationship among the fixtures and why it is designed this way.",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd53194f_e9c78729",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-09T19:10:08Z",
+      "side": 1,
+      "message": "Created a bug in our nearbyshare hotlist for it:\nhttps://b.corp.google.com/issues/190630575",
+      "parentUuid": "76e67db2_b86a17b4",
       "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -143,6 +269,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2861d50f_28840dd6",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-09T19:10:08Z",
+      "side": 1,
+      "message": "This code was copied from fixture.go to here. I didn\u0027t write it so am against changing the code during a refactor. We could revisit it in a future CL.\n\nLet me know if you feel strongly about changing it now",
+      "parentUuid": "9fc2f9b8_11fa0fb6",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 19
+      },
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3173e43f_4857fbf8",
@@ -160,6 +310,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dede95e_621a4638",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-09T19:10:08Z",
+      "side": 1,
+      "message": "Similar to other comment. I\u0027d prefer not to change the code logic during the refactor CL.",
+      "parentUuid": "3173e43f_4857fbf8",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e688fe4_0ff74831",
@@ -173,6 +341,30 @@
       "writtenOn": "2021-06-09T04:29:43Z",
       "side": 1,
       "message": "Set up",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 9
+      },
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac6ae2bf_5d1224ba",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-09T19:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e688fe4_0ff74831",
       "range": {
         "startLine": 98,
         "startChar": 4,
@@ -206,6 +398,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df4411ce_400bcc06",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-09T19:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d362d930_295a0876",
+      "range": {
+        "startLine": 101,
+        "startChar": 21,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23e0d351_6cfb9ad9",
@@ -229,6 +445,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "148f668b_1cfd6bd9",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-09T19:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23e0d351_6cfb9ad9",
+      "range": {
+        "startLine": 120,
+        "startChar": 36,
+        "endLine": 120,
+        "endChar": 41
+      },
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8ac761c_143fa680",
@@ -242,6 +482,24 @@
       "writtenOn": "2021-06-09T04:29:43Z",
       "side": 1,
       "message": "Add:\n// Note that nearbyShareGAIALogin inherits from nearbyShareAndroidSetup.",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "688c442f_6ed54204",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/login_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-09T19:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8ac761c_143fa680",
       "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
