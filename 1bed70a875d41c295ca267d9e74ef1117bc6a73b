@@ -87,6 +87,24 @@
       "parentUuid": "e1b11771_65a98e2f",
       "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8c5e891_084a5598",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-06-09T02:07:42Z",
+      "side": 1,
+      "message": "Tried using ExtraSoftwareDeps: []string{\"android_p\", \"no_arc_x86\"}, in \"arcappcompat.Autocad\" test. Observed that the test isn\u0027t skipping run on Caroline and nasher360. Couldn\u0027t use  \"no_arc_x86\". So hwdep.SkipOnModel is needed here.",
+      "parentUuid": "fcede185_74ff8d99",
+      "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
