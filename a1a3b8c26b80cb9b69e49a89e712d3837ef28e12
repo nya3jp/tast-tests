@@ -184,6 +184,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23d5eba0_9847db39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-09T09:30:57Z",
+      "side": 1,
+      "message": "Added comment in the refactor CL. The panLeft before panRight is due to the initial mirror state is on, also comment it in the previous CL.",
+      "parentUuid": "5723e92a_b4f278b4",
+      "range": {
+        "startLine": 287,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 2
+      },
+      "revId": "a1a3b8c26b80cb9b69e49a89e712d3837ef28e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "535bed2e_c5c5ba77",
