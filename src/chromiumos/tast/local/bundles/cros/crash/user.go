@@ -95,7 +95,6 @@ func init() {
 				testFunc:    testChronosCrasherNoConsent,
 				consentType: localcrash.RealConsent,
 			},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
 		}, {
 			Name: "root_crasher_real_consent",
@@ -130,7 +129,6 @@ func init() {
 				testFunc:    testCrashBlocking,
 				consentType: localcrash.MockConsent,
 			},
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "max_enqueued_crash",
 			Val: userCrashParams{
