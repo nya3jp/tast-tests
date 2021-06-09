@@ -63,6 +63,30 @@
       },
       "revId": "05be9ba5cd6f69ef39fa8f0707aaf8465c253e94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2982be3a_71d91e31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-06-09T22:16:04Z",
+      "side": 1,
+      "message": "I added a bit more detail, and am happy to adjust it in a followup!",
+      "parentUuid": "a422e241_2bd9382f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "05be9ba5cd6f69ef39fa8f0707aaf8465c253e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
