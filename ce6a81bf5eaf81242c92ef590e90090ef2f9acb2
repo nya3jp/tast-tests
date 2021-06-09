@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "479e2c0a_46d31b28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2021-06-09T20:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6ace436_6d5d5a5d",
+      "range": {
+        "startLine": 67,
+        "startChar": 67,
+        "endLine": 67,
+        "endChar": 81
+      },
+      "revId": "ce6a81bf5eaf81242c92ef590e90090ef2f9acb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b36ab5f_b0f1bee0",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-08T00:30:31Z",
       "side": 1,
       "message": "nit, ditto (here and below) I\u0027d move Chrome argument before TestConn (\"Chrome\" seems to be more important than \"TestConn\")",
+      "range": {
+        "startLine": 624,
+        "startChar": 72,
+        "endLine": 624,
+        "endChar": 89
+      },
+      "revId": "ce6a81bf5eaf81242c92ef590e90090ef2f9acb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb139dc5_972a519a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2021-06-09T20:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b36ab5f_b0f1bee0",
       "range": {
         "startLine": 624,
         "startChar": 72,
