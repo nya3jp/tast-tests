@@ -39,6 +39,30 @@
       },
       "revId": "4a743d444f99476b73c8ef22a546ffd1e2cdda0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea896c02_2c111e18",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2021-06-09T18:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac3c550_078d6fe5",
+      "range": {
+        "startLine": 385,
+        "startChar": 4,
+        "endLine": 385,
+        "endChar": 54
+      },
+      "revId": "4a743d444f99476b73c8ef22a546ffd1e2cdda0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
