@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb7962d9_7cb90f63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-09T22:26:41Z",
+      "side": 1,
+      "message": "This CL is to improve stability of launcher.CreateAndRenameFolder by\nretrying create folder if it fails to create folder at the first time.\n\nThe test has been run in CQ by removing \"informational\" tag. It has\npassed all  CQs. Also, it was run with three different kinds of DUTs.\n",
+      "revId": "76e553e04e00aa443aeb277c0a40464d6ffadfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
