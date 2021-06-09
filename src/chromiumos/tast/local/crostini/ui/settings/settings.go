@@ -159,36 +159,30 @@ func (s *Settings) Close(ctx context.Context) error {
 // GetSharedFolders returns a list of shared folders.
 // Settings must be open at the Linux Manage Shared Folders page.
 func (s *Settings) GetSharedFolders(ctx context.Context) (listOffolders []string, err error) {
+	// "Shared folders will appear here" will be displayed if no folder is shared.
+	emptyMsg := s.ui.WithTimeout(time.Second).WaitUntilExists(emptySharedFoldersMsg)
+	// "Shared folders" will be displayed if any folder is shared.
+	noListHeader := s.ui.WithTimeout(time.Second).Gone(sharedFoldersList)
 
-	// Find "Shared folders will appear here". It will be displayed if no folder is shared.
-	textErr := s.ui.WithTimeout(2 * time.Second).WaitUntilExists(emptySharedFoldersMsg)(ctx)
-
-	// Find "Shared folders" list. It will be displayed if any folder is shared.
-	listErr := s.ui.WithTimeout(2 * time.Second).WaitUntilExists(sharedFoldersList)(ctx)
-
-	if textErr != nil && listErr != nil {
-		// Did not find "Shared folders will appear here" or "Shared folders" list.
-		return nil, errors.Wrap(err, "failed to find list of 'Shared folders' or 'Shared folders will appear here'")
-	} else if listErr == nil {
-		// Found "Shared folders".
-		// It sometimes takes a bit time for the UI to display the shared folders.
-		sharedFolderButtons := nodewith.Role(role.Button).Ancestor(sharedFoldersList)
-		if err := s.ui.WaitUntilExists(sharedFolderButtons.First())(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed to find any shared folder")
-		}
-		sharedFolders, err := s.ui.NodesInfo(ctx, sharedFolderButtons)
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to find list of shared folders")
-		}
-		var listOfFolders []string
-		for _, folder := range sharedFolders {
-			listOfFolders = append(listOfFolders, folder.Name)
-		}
-		return listOfFolders, nil
+	// When the page initially loads, it will show both the empty message and the
+	// list header. After loading the list of shared folders, only one of these
+	// will be present.
+	if err := s.ui.WithInterval(time.Second).Retry(5, s.ui.IfSuccessThen(emptyMsg, noListHeader))(ctx); err != nil {
+		return nil, errors.Wrap(err, "shared folders page did not complete initialization")
 	}
 
-	// No shared folder.
-	return nil, nil
+	sharedFolderButtons := nodewith.Role(role.Button).Ancestor(sharedFoldersList)
+	sharedFolders, err := s.ui.NodesInfo(ctx, sharedFolderButtons)
+	if err != nil {
+		// When the requested ancestor is missing (no shared folders), NodesInfo
+		// returns an error instead of an empty array.
+		return nil, nil
+	}
+	var listOfFolders []string
+	for _, folder := range sharedFolders {
+		listOfFolders = append(listOfFolders, folder.Name)
+	}
+	return listOfFolders, nil
 }
 
 // UnshareFolder deletes a shared folder from Settings app.
