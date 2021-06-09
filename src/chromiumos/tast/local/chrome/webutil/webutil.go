@@ -26,8 +26,7 @@ func WaitForYoutubeVideo(ctx context.Context, conn *chrome.Conn, timeout time.Du
 		    return false;
 		  }
 		  const bounds = v.getBoundingClientRect();
-		  return bounds.x >= 0 && bounds.y >= 0 &&
-		      bounds.width > 0 && bounds.height > 0;
+		  return bounds.width > 0 && bounds.height > 0;
 		})()`, timeout)
 }
 
