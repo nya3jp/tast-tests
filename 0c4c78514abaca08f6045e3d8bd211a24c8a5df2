@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a40bc45_c0543b16",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-09T18:28:07Z",
+      "side": 1,
+      "message": "The majority of this logic is straight from net.SplitHostPort, and we know that works, so I am hesitant to change it.",
+      "parentUuid": "3efd8932_67f514cb",
+      "revId": "0c4c78514abaca08f6045e3d8bd211a24c8a5df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cebee3c9_6f40847b",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-06-08T20:45:24Z",
       "side": 1,
       "message": "nit: `continue` would allow us to run the other test cases. If you\u0027d rather stop testing upon an unexpected error state, I think `t.Fatalf` is more direct.",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 9
+      },
+      "revId": "0c4c78514abaca08f6045e3d8bd211a24c8a5df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bb01190_a56f33d4",
+        "filename": "src/chromiumos/tast/remote/servo/proxy_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-09T18:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cebee3c9_6f40847b",
       "range": {
         "startLine": 41,
         "startChar": 3,
