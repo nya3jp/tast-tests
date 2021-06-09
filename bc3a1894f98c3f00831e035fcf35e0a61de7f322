@@ -16,6 +16,24 @@
       "message": "nit: Move this line to line 150 to make it close to its usage",
       "revId": "bc3a1894f98c3f00831e035fcf35e0a61de7f322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee857e32_45c2674a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-09T08:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee403fec_3e4182de",
+      "revId": "bc3a1894f98c3f00831e035fcf35e0a61de7f322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
