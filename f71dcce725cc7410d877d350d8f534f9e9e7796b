@@ -16,6 +16,63 @@
       "message": "Hi Hiroki,\n\nWould you mind helping me review this change? Using uiauto was recommended by Shuhei-san here:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2935430/3..4/src/chromiumos/tast/local/bundles/cros/a11y/chromevox_hint.go#b16\n\nThanks!",
       "revId": "f71dcce725cc7410d877d350d8f534f9e9e7796b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23331c60_77efde62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-09T03:09:06Z",
+      "side": 1,
+      "message": "LGTM, thanks!",
+      "revId": "f71dcce725cc7410d877d350d8f534f9e9e7796b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "102fe732_6d341a42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-09T03:09:06Z",
+      "side": 1,
+      "message": "(unrelated to this change though,) when we hit here, confirmation dialog of closing autoClick remains open...? It would affect tests running after this.",
+      "revId": "f71dcce725cc7410d877d350d8f534f9e9e7796b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44437f94_21802b65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-09T03:09:06Z",
+      "side": 1,
+      "message": "Can we simplify this like below?:\n\n\tmoveMouseToNode :\u003d func(finder *nodewith.Finder) action.Action {\n\t\treturn uiauto.Combine(\"moving mouse to node location\",\n\t\t\tui.WithTimeout(10*time.Second).WaitForLocation(finder),\n\t\t\tui.MouseMoveTo(finder, time.Second),\n\t\t\t)\n\t}",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "f71dcce725cc7410d877d350d8f534f9e9e7796b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
