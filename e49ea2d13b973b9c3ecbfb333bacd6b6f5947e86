@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b164394e_8108bdb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-06-09T22:23:38Z",
+      "side": 1,
+      "message": "Hi Kyle, Seewai, can you please help review?",
+      "revId": "e49ea2d13b973b9c3ecbfb333bacd6b6f5947e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
