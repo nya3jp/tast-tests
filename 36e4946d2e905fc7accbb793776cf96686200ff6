@@ -1,0 +1,215 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6123f66e_ec721914",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-09T04:29:43Z",
+      "side": 1,
+      "message": "Split fixture.go into three files:",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "333b8807_7db09aaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-09T04:29:43Z",
+      "side": 1,
+      "message": "andrioid_fixture.go: defines nearbyShareAndroidFixture that sets up ...",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57027733_80cf6cd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-09T04:29:43Z",
+      "side": 1,
+      "message": "login_fixture.go: defines nearbyShareGAIALogin that logs in ... Note that nearbyShareGAIALogin is a nested fixture of nearbyShareAndroidFixture.",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea7be04a_65cf3464",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-09T04:29:43Z",
+      "side": 1,
+      "message": "fixture.go has all the various fixtures based on nearbyShareFixture, which is a nested fixture of nearbyShareGAIALogin.",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73e142e5_4ece402f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-09T04:29:43Z",
+      "side": 1,
+      "message": "The nested fixtures\u0027 parent \u003c- child relationship: \nnearbyShareAndroidSetup (parent) \u003c- nearbyShareGAIALogin \u003c- nearbyShareFixture \u003c- fixtures defined in fixture.go.\n\n// Note that the arrow direction is not universally the same. I follow the UML format and it is also used in Tast fixture introduction slide[1]. So let\u0027s explicitly label parent and child.\n\n// Also, the relationship is named as \"nested\", which has inheritance concept but not exactly the same. Let\u0027s stick the name \"nested\". \n\n[1] https://docs.google.com/presentation/d/19EXMabCiSwCMfZ5xpmuRSway_wDvjSOCEFyc1M1_tDU/edit?resourcekey\u003d0-es9kZKHRK5bTHfUSGJNEtQ#slide\u003did.g7864377d4a_0_105",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fc2f9b8_11fa0fb6",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-09T04:29:43Z",
+      "side": 1,
+      "message": "Do we need to check the existence of the path?",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 19
+      },
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3173e43f_4857fbf8",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-09T04:29:43Z",
+      "side": 1,
+      "message": "We shall check the existence of apkZipPath again.\n\nHow about having a local func like:\n\nisPathExist :\u003d func(path string) bool {\n  if _, err :\u003d os.Stat(path); err !\u003d nil {\n    if !os.IsNotExist(err) {\n      s.Fatal(\"Failed to check if built local data path exists: \", err)\n    }\n    return false;\n  }\n  return true;\n}\n\nif !isPathExist(apkZipPath) {\n  apkZipPath \u003d ...\n  accountUtilZipPath \u003d ...\n  if !isPathExist(apkZipPath) {\n    s.Fatal(\"Both local data path and prebuilt local data path does not exist\")\n  }\n}\nif !isPathExist(accountUtilZipPath) {\n  s.Fatal(...)\n}",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e688fe4_0ff74831",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-09T04:29:43Z",
+      "side": 1,
+      "message": "Set up",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 9
+      },
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d362d930_295a0876",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-09T04:29:43Z",
+      "side": 1,
+      "message": "set up",
+      "range": {
+        "startLine": 101,
+        "startChar": 21,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23e0d351_6cfb9ad9",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-09T04:29:43Z",
+      "side": 1,
+      "message": "set up",
+      "range": {
+        "startLine": 120,
+        "startChar": 36,
+        "endLine": 120,
+        "endChar": 41
+      },
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8ac761c_143fa680",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/login_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-09T04:29:43Z",
+      "side": 1,
+      "message": "Add:\n// Note that nearbyShareGAIALogin inherits from nearbyShareAndroidSetup.",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
