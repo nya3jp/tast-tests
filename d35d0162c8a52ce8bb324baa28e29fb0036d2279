@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d06d2537_6ba3132d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-09T17:26:08Z",
+      "side": 1,
+      "message": "Is this exhaustive? Will we be able to capture numbers, symbols, and other special keys?\n\nIt might be good to add these cases to the end-to-end test.",
+      "range": {
+        "startLine": 128,
+        "startChar": 30,
+        "endLine": 128,
+        "endChar": 37
+      },
+      "revId": "d35d0162c8a52ce8bb324baa28e29fb0036d2279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03956840_cfddf3c2",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
         "patchSetId": 4
