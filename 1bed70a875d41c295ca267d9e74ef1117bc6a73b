@@ -105,6 +105,24 @@
       "parentUuid": "fcede185_74ff8d99",
       "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe27cb10_a5b179ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-09T02:14:18Z",
+      "side": 1,
+      "message": "I debugged this and found that the USE flag cheets_user is the default if no other cheets_* USE flags are set (which is indicated by a plus sign).\nhttps://source.corp.google.com/chromeos_internal/src/private-overlays/project-cheets-private/chromeos-base/android-container-pi/android-container-pi-9999.ebuild;rcl\u003d88fbff2d980f3778606cbc09e2ba3330fb70a285;l\u003d177\n\nThis issue should be fixed by updating tast-use-flags-9999.ebuild and replacing cheets_user with +cheets_user:\nhttps://source.corp.google.com/chromeos_public/src/third_party/chromiumos-overlay/chromeos-base/tast-use-flags/tast-use-flags-9999.ebuild;rcl\u003dd74da03b8acc8e630c5dbd31520f21a050592ca0;l\u003d42\n\n(I often find that non-centralized default dandling of USE flags is error-prone...)",
+      "parentUuid": "fcede185_74ff8d99",
+      "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
