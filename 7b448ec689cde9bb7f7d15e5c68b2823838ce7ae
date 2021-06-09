@@ -16,6 +16,23 @@
       "message": "The change is quite trivial so skip Tast shadow review.",
       "revId": "7b448ec689cde9bb7f7d15e5c68b2823838ce7ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb51f38b_d0ca720a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-06-09T23:56:55Z",
+      "side": 1,
+      "message": "Thanks for reviewing!",
+      "revId": "7b448ec689cde9bb7f7d15e5c68b2823838ce7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
