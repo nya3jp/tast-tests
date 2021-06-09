@@ -137,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "001967c1_a94ea947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-09T01:20:24Z",
+      "side": 1,
+      "message": "Good point. The project alvinjia starts to work on is the future. It is just a start point. These hardcodes and pain points are actually becoming the requirement and problems to solve in the project. We need start to increase coverage first, then we can have more understanding and good solution there. \n\nRefactoring structure is always coming along with the feature(test) development.",
+      "parentUuid": "8f115532_161ca5be",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 35
+      },
+      "revId": "f4a8aaeef9cf189029d275fc347c190a0170306d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2edc2ac9_e0a1d48a",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
         "patchSetId": 1
