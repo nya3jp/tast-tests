@@ -1,0 +1,267 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c8deeb2_95ed15ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-09T17:17:59Z",
+      "side": 1,
+      "message": "This comment is confusing to me. Could you please clarify what you mean by \"using a library\"? Using a library for what? Is there a particular library you have in mind?",
+      "range": {
+        "startLine": 115,
+        "startChar": 21,
+        "endLine": 115,
+        "endChar": 47
+      },
+      "revId": "d35d0162c8a52ce8bb324baa28e29fb0036d2279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49a76e4c_0eb48712",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-09T17:17:59Z",
+      "side": 1,
+      "message": "Discarding this error is going to make it very difficult to debug failures. See https://github.com/golang/go/wiki/CodeReviewComments#handle-errors: \"Do not discard errors using `_` variables.\"\n\nOf course, we expect an error here due to the deadline exceeded. We should explicitly handle the returned error to ensure that it is the error we expect, so that we can fail gracefully if it\u0027s unexpected.\n\nI was trying to prototype a snippet using `errors.Is(err, context.DeadlineExceeded)`. I wasn\u0027t able to get it to work, but that breadcrumb might be helpful. At worst, you can always just parse the error string with `strings.Contains(err.Error(), \"my error string\")`. That would be more likely to fail with future updates, since the error string might change someday, but it\u0027s an option.",
+      "revId": "d35d0162c8a52ce8bb324baa28e29fb0036d2279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03956840_cfddf3c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-09T17:17:59Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s _sliiiiiiightly_ more efficient to operate directly on Bytes instead of converting to String.\n\n    matches :\u003d re.FindAllSubmatch(stdout.Bytes(), -1)",
+      "range": {
+        "startLine": 129,
+        "startChar": 44,
+        "endLine": 129,
+        "endChar": 50
+      },
+      "revId": "d35d0162c8a52ce8bb324baa28e29fb0036d2279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11e8165a_7be7ef6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-09T17:17:59Z",
+      "side": 1,
+      "message": "nit: per https://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices, I think the preferred style is:\n\n    var keys []string\n\nOr, I think you can find a marginal efficiency gain by allocating the whole slice from the start, since we know the intended length.\n\n    keys :\u003d make([]string, len(matches))\n    for i, match :\u003d range matches {\n        keys[i] \u003d match[1]\n    }",
+      "revId": "d35d0162c8a52ce8bb324baa28e29fb0036d2279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c862d992_7975338b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-09T17:17:59Z",
+      "side": 1,
+      "message": "nit/style: per go/go-code-review-comments#initialisms, DUT should be in a consistent case.\n\nBut more to the point, Go prefers short variable names. How about listenSecs?",
+      "range": {
+        "startLine": 30,
+        "startChar": 35,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "d35d0162c8a52ce8bb324baa28e29fb0036d2279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5e2b81e_324f046b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-09T17:17:59Z",
+      "side": 1,
+      "message": "nit/style: I think it\u0027s clearer to have just one constant called something like \"enter\", \"enterKey\", or \"enterKeyName\", and then in L62 declare expectedKeys :\u003d []string{enterKey, enterKey}.",
+      "revId": "d35d0162c8a52ce8bb324baa28e29fb0036d2279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa58706_19179ae9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-09T17:17:59Z",
+      "side": 1,
+      "message": "No need to log this: if it\u0027s expected, we know what it is, and if it\u0027s not expected, we log it at L64.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "revId": "d35d0162c8a52ce8bb324baa28e29fb0036d2279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a891c56_d267cd34",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-09T17:17:59Z",
+      "side": 1,
+      "message": "nit: Here and in the corresponding error message (L64), the encouraged order is actual; expected. https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 63,
+        "startChar": 24,
+        "endLine": 63,
+        "endChar": 45
+      },
+      "revId": "d35d0162c8a52ce8bb324baa28e29fb0036d2279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "557673e8_e5059823",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-09T17:17:59Z",
+      "side": 1,
+      "message": "nit: Recommend using cmp.Equal, which is \"intended to be a more powerful and safer alternative to reflect.DeepEqual\". https://pkg.go.dev/github.com/google/go-cmp/cmp#Equal\n\nThis is already available in Tast, and is used in several other Tast tests.",
+      "range": {
+        "startLine": 63,
+        "startChar": 6,
+        "endLine": 63,
+        "endChar": 13
+      },
+      "revId": "d35d0162c8a52ce8bb324baa28e29fb0036d2279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2677671a_5f2eabcc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-09T17:17:59Z",
+      "side": 1,
+      "message": "Why sleep?",
+      "revId": "d35d0162c8a52ce8bb324baa28e29fb0036d2279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cae5aa4_c1e55cba",
+        "filename": "src/chromiumos/tast/services/cros/firmware/utils_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-09T17:17:59Z",
+      "side": 1,
+      "message": "Per http://go/protostyle#message_and_field_names, please use camel_case (uncapitalized) for field names.\n\n    uint32 duration \u003d 1\n\nSame thing with ReadServoKeyboardResponse.",
+      "revId": "d35d0162c8a52ce8bb324baa28e29fb0036d2279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fb73a1d_0c1954ee",
+        "filename": "src/chromiumos/tast/services/cros/firmware/utils_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-09T17:17:59Z",
+      "side": 1,
+      "message": "Please specify the units of the duration. Milliseconds? Seconds? Minutes? Just a comment will be fine.",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "d35d0162c8a52ce8bb324baa28e29fb0036d2279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c083d7a6_8ba0d643",
+        "filename": "src/chromiumos/tast/services/cros/firmware/utils_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-09T17:17:59Z",
+      "side": 1,
+      "message": "Per http://go/protostyle#repeated_fields, use pluralized names for repeated fields.\n\n    repeated string keys \u003d 1",
+      "range": {
+        "startLine": 29,
+        "startChar": 18,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "d35d0162c8a52ce8bb324baa28e29fb0036d2279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
