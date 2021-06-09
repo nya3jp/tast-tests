@@ -11,8 +11,10 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -105,14 +107,44 @@ func runActionUnlockScreen(ctx context.Context, s *testing.State,
 	return nil, nil
 }
 
+type findParams struct {
+	Role      role.Role
+	Name      string
+	ClassName string
+}
+
 func runActionClickUI(ctx context.Context, s *testing.State,
 	cr *chrome.Chrome, tconn *chrome.TestConn,
 	ad *json.RawMessage) (func(context.Context) error, error) {
-	args := &ui.FindParams{}
+	args := &findParams{}
 	if err := json.Unmarshal(*ad, args); err != nil {
 		return nil, errors.Wrap(err, "failed to parse args")
 	}
 
-	return nil, ui.StableFindAndClick(ctx, tconn, *args,
-		&testing.PollOptions{Timeout: 30 * time.Second})
+	var f *nodewith.Finder
+
+	if args.Role != "" {
+		f = nodewith.Role(args.Role)
+	}
+
+	if args.Name != "" {
+		if f == nil {
+			f = nodewith.Name(args.Name)
+		} else {
+			f = f.Name(args.Name)
+		}
+	}
+
+	if args.ClassName != "" {
+		if f == nil {
+			f = nodewith.ClassName(args.ClassName)
+		} else {
+			f = f.ClassName(args.ClassName)
+		}
+	}
+
+	f = f.First()
+	ac := uiauto.New(tconn)
+
+	return nil, ac.LeftClick(f)(ctx)
 }
