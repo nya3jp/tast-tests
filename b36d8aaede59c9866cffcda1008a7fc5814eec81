@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab7bef5c_dc802908",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_profile_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-09T08:49:20Z",
+      "side": 1,
+      "message": "any test that does optin, should have same timeout as optin test.\n\nSee https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/optin.go;l\u003d46;drc\u003d5b1f7e5ee9f55d5ada16f65cc47ce5dce5396029\n\nMaybe promote that value as a constant in a shared location and use it in both the tests?",
+      "revId": "b36d8aaede59c9866cffcda1008a7fc5814eec81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5074a083_c22bd408",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_profile_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-09T08:49:20Z",
+      "side": 1,
+      "message": "I think launching an activity is unnecessary if we\u0027re only intending to ensure that the same app is not present in the second profile. Otherwise, this test will also fail when there is something wrong with launching the activity (which should have a test of its own).",
+      "revId": "b36d8aaede59c9866cffcda1008a7fc5814eec81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83476894_1e040293",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_profile_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-09T08:49:20Z",
+      "side": 1,
+      "message": "this can be taken out of this method and promoted to the calling function as it is only necessary to be done between two steps",
+      "revId": "b36d8aaede59c9866cffcda1008a7fc5814eec81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba717218_85dc4c42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_profile_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-09T08:49:20Z",
+      "side": 1,
+      "message": "this code is repeated and can be moved to a separate function that is called in both the methods",
+      "revId": "b36d8aaede59c9866cffcda1008a7fc5814eec81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51b08c79_70b0bb0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_profile_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-09T08:49:20Z",
+      "side": 1,
+      "message": "instead of launching an activity can we just test the presence of the app?",
+      "revId": "b36d8aaede59c9866cffcda1008a7fc5814eec81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
