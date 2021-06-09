@@ -16,6 +16,29 @@
       "message": "All comments here are fixed.",
       "revId": "bca67ee5c2938faf0f21267d6e4e26ed0d817d96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44371311_1621b191",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_ping.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-06-09T23:22:53Z",
+      "side": 1,
+      "message": "nit: I\u0027d drop this, personally. If the variable is provided, we should parse (and reject) it.",
+      "range": {
+        "startLine": 139,
+        "startChar": 8,
+        "endLine": 139,
+        "endChar": 26
+      },
+      "revId": "bca67ee5c2938faf0f21267d6e4e26ed0d817d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

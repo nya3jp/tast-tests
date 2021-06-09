@@ -512,6 +512,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "562dd358_7851ee3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-06-09T23:22:53Z",
+      "side": 1,
+      "message": "Anything with Marvell WiFi. I think go/crconn is still the best resource.",
+      "parentUuid": "6f816c69_b2e19dda",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 9
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "878bc94c_a8eba8f6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
         "patchSetId": 9
