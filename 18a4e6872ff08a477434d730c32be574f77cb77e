@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2bf84ee_45f04eca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-09T04:56:59Z",
+      "side": 1,
+      "message": "Thanks! No worries on the changes, this patch is currently only to kickstart the review process. I\u0027ll follow the new interface once it\u0027s landed.",
+      "parentUuid": "57a886c0_384741ab",
+      "revId": "18a4e6872ff08a477434d730c32be574f77cb77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52802a6b_2660d76e",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-09T03:56:18Z",
       "side": 1,
       "message": "You might also want to use shillReset fixture to ensure that shill has a clean profile before and after test (it will restart shill). See https://crrev.com/c/2946897 for an example.\n\nBTW, without that fixture, have you checked that the vpn service is removed after the test? I added that function but I haven\u0027t verified that by myself...",
+      "range": {
+        "startLine": 33,
+        "startChar": 26,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "18a4e6872ff08a477434d730c32be574f77cb77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b767608e_68be0be1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-09T04:56:59Z",
+      "side": 1,
+      "message": "\u003e You might also want to use shillReset fixture to ensure that shill has a clean profile before and after test (it will restart shill). See https://crrev.com/c/2946897 for an example.\n\nAck, thanks! Will do in the next PS.\n\n\u003e BTW, without that fixture, have you checked that the vpn service is removed after the test? I added that function but I haven\u0027t verified that by myself...\n\nI do see the VPN removed after the test (with the current setup).",
+      "parentUuid": "52802a6b_2660d76e",
       "range": {
         "startLine": 33,
         "startChar": 26,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "003947e4_92745cc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-09T04:56:59Z",
+      "side": 1,
+      "message": "SGTM, refer to the other comment below for the alternative.",
+      "parentUuid": "3fb0d90a_74ca1e33",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 30
+      },
+      "revId": "18a4e6872ff08a477434d730c32be574f77cb77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a30977cf_58ce5c53",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-06-09T04:32:37Z",
       "side": 1,
       "message": "why do we do this?",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 52
+      },
+      "revId": "18a4e6872ff08a477434d730c32be574f77cb77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4108a87c_fc014315",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-09T04:56:59Z",
+      "side": 1,
+      "message": "This is to make sure that the secure DNS settings are properly used. Meaning that when secure DNS is turned off DNS queries are happening through TCP / UDP port 53 and the secure DNS is turned on DNS queries are happening through TCP port 443.",
+      "parentUuid": "a30977cf_58ce5c53",
       "range": {
         "startLine": 175,
         "startChar": 1,
@@ -112,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88f9a7d1_1b1c5afb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-09T04:56:59Z",
+      "side": 1,
+      "message": "It\u0027s possible, but I think this is not a trivial task.\n\n+Jie, to confirm.",
+      "parentUuid": "d16f661c_2b759c2d",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 19
+      },
+      "revId": "18a4e6872ff08a477434d730c32be574f77cb77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "968dbedc_55149cd9",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
         "patchSetId": 2
@@ -123,6 +237,30 @@
       "writtenOn": "2021-06-09T03:56:18Z",
       "side": 1,
       "message": "We can expose the netns name, vpn ifname, vpn underlay address if needed... Not in this patch, I can do this later",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 222,
+        "endChar": 3
+      },
+      "revId": "18a4e6872ff08a477434d730c32be574f77cb77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7d8410e_27a65311",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-09T04:56:59Z",
+      "side": 1,
+      "message": "Thank for the help! That\u0027s nice to have. Not really too urgent though. I think the flow of getting the values on this patch should be pretty safe.",
+      "parentUuid": "968dbedc_55149cd9",
       "range": {
         "startLine": 222,
         "startChar": 1,
@@ -158,6 +296,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebe46b85_acc35137",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-09T04:56:59Z",
+      "side": 1,
+      "message": "If the question is why this test does it, it is because we\u0027d like to test if a DNS query to an actual nameservers (connected through the internet) is successful.\n\nIf the question is why is this necessary, my understanding might not be correct, but I think this is necessary because the ppp interface is \u0027private\u0027 only and we want to use the \u0027public\u0027 interface veth, to do the DNS query.\n\nDo you have any thoughts on this?",
+      "parentUuid": "ba27f895_04a4708d",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 31
+      },
+      "revId": "18a4e6872ff08a477434d730c32be574f77cb77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9ec3269_d3a337b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
         "patchSetId": 2
@@ -169,6 +331,30 @@
       "writtenOn": "2021-06-09T04:32:37Z",
       "side": 1,
       "message": "is this not a good candidate for separate test(s)? seeing if everything works in different setting states?",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 0
+      },
+      "revId": "18a4e6872ff08a477434d730c32be574f77cb77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95a0297e_e0161c91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-09T04:56:59Z",
+      "side": 1,
+      "message": "Sure, sgtm. In regards to the other comment too, I think I can split this test into 3 separate tests:\n\n 1. Make sure DNS queries under normal condition with different DoH settings are successful.\n    a. Without VPN.\n    b. With VPN.\n 2. Make sure that DoH settings are propagated properly by blocking plaintext / secure DNS and making sure the queries are not successful.\n 3. Make sure that the proxy are properly routed through the VPN by blocking DNS on the VPN server and making sure the queries are not successful.\n\nThe cons would be that altogether the test will be much longer, but the pros would be that it is much cleaner. There will be some code duplication though for the setup (starting and installing Crostini, Chrome, ARC, and VPN).\n\nWdyt?",
+      "parentUuid": "a9ec3269_d3a337b8",
       "range": {
         "startLine": 489,
         "startChar": 0,
