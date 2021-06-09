@@ -41,6 +41,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59aaedf1_772fc78c",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-09T17:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ffa39b4_006144f0",
+      "revId": "10ba7b9a689901cf855ae40686e3131676228c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04cf9651_a2c9aa49",
@@ -54,6 +72,24 @@
       "writtenOn": "2021-06-09T13:43:15Z",
       "side": 1,
       "message": "Is it necessary to break the poll in this case? Are there cases where it worth retrying?\nA possible problem with PollBreak(), is that if the context runs out in the Disabled() check, Poll() will return with this timeout error instead of the \"failed to wait disabled state for...\" error.",
+      "revId": "10ba7b9a689901cf855ae40686e3131676228c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "238fcef4_21207897",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-09T17:19:57Z",
+      "side": 1,
+      "message": "Also warp the error here for making the error more clear.",
+      "parentUuid": "04cf9651_a2c9aa49",
       "revId": "10ba7b9a689901cf855ae40686e3131676228c37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
