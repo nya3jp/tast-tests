@@ -6,9 +6,12 @@ package firmware
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware"
+	"chromiumos/tast/remote/firmware/pre"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -19,44 +22,52 @@ func init() {
 		Func:         DeepSleep,
 		Desc:         "Estimate battery life in deep sleep state, as a replacement for manual test 1.10.1",
 		Contacts:     []string{"hc.tsai@cienet.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_slow"},
+		Attr:         []string{"group:firmware", "firmware_unstable"},
 		Vars:         []string{"servo", "firmware.hibernate_time"},
 		SoftwareDeps: []string{"crossystem"},
+		Data:         []string{firmware.ConfigFile},
 		HardwareDeps: hwdep.D(hwdep.Battery(), hwdep.ChromeEC()),
 		Timeout:      260 * time.Minute, // 4hrs 20mins
+		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
+		Pre:          pre.NormalMode(),
 	})
 }
 
 func DeepSleep(ctx context.Context, s *testing.State) {
-	d := s.DUT()
-	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), d.KeyFile(), d.KeyDir())
-	if err != nil {
-		s.Fatal("Failed to connect to servo: ", err)
+	const requiredBatteryLife = 100 * 24 * time.Hour
+	h := s.PreValue().(*pre.Value).Helper
+
+	if err := h.RequireServo(ctx); err != nil {
+		s.Fatal("Failed to init servo: ", err)
 	}
-	defer pxy.Close(ctx)
+	if err := h.RequireConfig(ctx); err != nil {
+		s.Fatal("Failed to get config: ", err)
+	}
 
 	// By default the DUT hibernates for 4 hours. Reduce the duration by
 	// providing an optional variable "firmware.hibernate_time".
 	sleep := 4 * time.Hour
 	if v, ok := s.Var("firmware.hibernate_time"); ok {
+		var err error
 		if sleep, err = time.ParseDuration(v); err != nil {
 			s.Fatalf("Failed to parse duration %s: %v", v, err)
 		}
 	}
 
 	s.Log("Stopping power supply from servo")
-	if err = pxy.Servo().SetPDRole(ctx, servo.PDRoleSnk); err != nil {
+	if err := h.Servo.SetPDRole(ctx, servo.PDRoleSnk); err != nil {
 		s.Fatal("Failed to set servo role: ", err)
 	}
 
-	s.Log("Long pressing power button to make DUT into deep sleep mode")
-	if err = pxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurLongPress); err != nil {
+	s.Log("Pressing power button to make DUT into deep sleep mode")
+	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
 		s.Fatal("Failed to set a KeypressControl by servo: ", err)
 	}
+	h.DUT.Disconnect(ctx)
 
 	s.Log("Waiting until power state is G3")
-	if err = testing.Poll(ctx, func(ctx context.Context) error {
-		state, err := pxy.Servo().GetECSystemPowerState(ctx)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		state, err := h.Servo.GetECSystemPowerState(ctx)
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to get power state"))
 		}
@@ -71,13 +82,13 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait power state to be G3: ", err)
 	}
 
-	max, err := pxy.Servo().GetBatteryFullChargeMAH(ctx)
+	max, err := h.Servo.GetBatteryFullChargeMAH(ctx)
 	if err != nil {
 		s.Fatal("Failed to get full charge mAh: ", err)
 	}
 	s.Logf("Battery max capacity: %dmAh", max)
 
-	mahStart, err := pxy.Servo().GetBatteryChargeMAH(ctx)
+	mahStart, err := h.Servo.GetBatteryChargeMAH(ctx)
 	if err != nil {
 		s.Fatal("Failed to get charge mAh: ", err)
 	}
@@ -85,8 +96,17 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 	s.Logf("Battery charge: %dmAh", mahStart)
 
 	s.Log("Hibernating")
-	if err = pxy.Servo().RunECCommand(ctx, "hibernate"); err != nil {
+	if err = h.Servo.RunECCommand(ctx, "hibernate"); err != nil {
 		s.Fatal("Failed to run EC command: ", err)
+	}
+
+	if out, err := h.Servo.RunECCommandGetOutput(ctx, "version", []string{".+"}); err == nil {
+		s.Logf("Got %v expected error", out)
+		s.Fatal("EC is still active after hibernate")
+	} else {
+		if !strings.Contains(err.Error(), "No data was sent from the pty") {
+			s.Fatal("Unexpected EC error: ", err)
+		}
 	}
 
 	s.Log("Sleeping for ", sleep)
@@ -94,33 +114,37 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
-	s.Log("Waking up DUT by supplying power from servo")
-	if err = pxy.Servo().SetPDRole(ctx, servo.PDRoleSrc); err != nil {
-		s.Fatal("Failed to set servo role: ", err)
+	s.Log("Waking up DUT with short power key press")
+	if err = h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+		s.Fatal("Failed to press power key: ", err)
 	}
 
-	s.Log("Reconnecting to DUT")
-	if err = d.WaitConnect(ctx); err != nil {
-		s.Fatal("Failed to reconnect to DUT: ", err)
-	}
-
-	mahEnd, err := pxy.Servo().GetBatteryChargeMAH(ctx)
+	mahEnd, err := h.Servo.GetBatteryChargeMAH(ctx)
 	if err != nil {
 		s.Fatal("Failed to get charge mAh: ", err)
 	}
 	s.Logf("Battery charge: %dmAh", mahEnd)
 
 	var (
-		dur   = time.Since(start).Seconds()
+		dur   = time.Since(start)
 		usage = mahEnd - mahStart
 	)
-	s.Logf("Battery Usage: %dmAh in %f seconds", usage, dur)
+	s.Logf("Battery Usage: %dmAh in %s", usage, dur)
 
 	if usage > 0 {
-		days := float64(max) / (float64(usage) / dur) / (24 * time.Hour.Seconds())
+		days := float64(max) / (float64(usage) / dur.Seconds()) / (24 * time.Hour.Seconds())
 		s.Logf("Estimate Battery Life: %f day(s)", days)
-		if days < 100 {
-			s.Error("Estimate Battery Life less than 100 days")
+		if days < requiredBatteryLife.Hours()/24 {
+			s.Errorf("Estimate Battery Life(%f) less than 100 days", days)
+		}
+	} else {
+		// If less than 1 mAh is consumed during the test, we still won't know it passed unless we
+		// ran for long enough for it not to be a rounding error. This does assume that
+		// the battery is capable of reporting charge in increments of 1mAh, which might not
+		// be true.
+		minSleepTime := time.Duration(requiredBatteryLife.Nanoseconds() / int64(max))
+		if minSleepTime > dur {
+			s.Errorf("Inconclusive, please run test for at least %s", minSleepTime)
 		}
 	}
 }
