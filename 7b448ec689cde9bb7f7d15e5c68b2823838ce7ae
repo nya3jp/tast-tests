@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d517c06_0df2426d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-09T08:17:07Z",
+      "side": 1,
+      "message": "The change is quite trivial so skip Tast shadow review.",
+      "revId": "7b448ec689cde9bb7f7d15e5c68b2823838ce7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
