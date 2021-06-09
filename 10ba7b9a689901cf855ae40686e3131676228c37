@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9987a892_05a5c0ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-09T13:43:15Z",
+      "side": 1,
+      "message": "Just as a comment, if you prefer, you can make it more compact:\n\u003e  if disabled, err :\u003d app.Disabled(ctx, *control.ui); err !\u003d nil {\n\u003e      s.Fatalf(\"Failed to get disabled state of %v: %v\", control.ui.Name, err)\n\u003e  } else if !disabled {\n\u003e      s.Fatalf(\"UI %v is not disabled at initial zoom level\", control.ui.Name)\n\u003e  }",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 3
+      },
+      "revId": "10ba7b9a689901cf855ae40686e3131676228c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ffa39b4_006144f0",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-09T13:43:15Z",
+      "side": 1,
+      "message": "nit: please move this line into the if.",
+      "revId": "10ba7b9a689901cf855ae40686e3131676228c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04cf9651_a2c9aa49",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-09T13:43:15Z",
+      "side": 1,
+      "message": "Is it necessary to break the poll in this case? Are there cases where it worth retrying?\nA possible problem with PollBreak(), is that if the context runs out in the Disabled() check, Poll() will return with this timeout error instead of the \"failed to wait disabled state for...\" error.",
+      "revId": "10ba7b9a689901cf855ae40686e3131676228c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
