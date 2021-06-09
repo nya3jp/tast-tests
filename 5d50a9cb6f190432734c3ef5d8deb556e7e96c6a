@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ee7a525_66097a5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T21:17:16Z",
+      "side": 1,
+      "message": "Hi Jun, while the changes are being merged to R92, we have some new fixes to master for Google meet. Recent changes from Google Meet UI incurred these fixes. Thank you for your review in advance!",
+      "revId": "5d50a9cb6f190432734c3ef5d8deb556e7e96c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
