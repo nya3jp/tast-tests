@@ -6,9 +6,11 @@ package firmware
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware/pre"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -24,39 +26,41 @@ func init() {
 		SoftwareDeps: []string{"crossystem"},
 		HardwareDeps: hwdep.D(hwdep.Battery(), hwdep.ChromeEC()),
 		Timeout:      260 * time.Minute, // 4hrs 20mins
+		Pre:          pre.Helper(),
 	})
 }
 
 func DeepSleep(ctx context.Context, s *testing.State) {
-	d := s.DUT()
-	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), d.KeyFile(), d.KeyDir())
-	if err != nil {
-		s.Fatal("Failed to connect to servo: ", err)
+	h := s.PreValue().(*pre.Value).Helper
+
+	if err := h.RequireServo(ctx); err != nil {
+		s.Fatal("Failed to init servo: ", err)
 	}
-	defer pxy.Close(ctx)
 
 	// By default the DUT hibernates for 4 hours. Reduce the duration by
 	// providing an optional variable "firmware.hibernate_time".
 	sleep := 4 * time.Hour
 	if v, ok := s.Var("firmware.hibernate_time"); ok {
+		var err error
 		if sleep, err = time.ParseDuration(v); err != nil {
 			s.Fatalf("Failed to parse duration %s: %v", v, err)
 		}
 	}
 
 	s.Log("Stopping power supply from servo")
-	if err = pxy.Servo().SetPDRole(ctx, servo.PDRoleSnk); err != nil {
+	if err := h.Servo.SetPDRole(ctx, servo.PDRoleSnk); err != nil {
 		s.Fatal("Failed to set servo role: ", err)
 	}
 
 	s.Log("Long pressing power button to make DUT into deep sleep mode")
-	if err = pxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurLongPress); err != nil {
+	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurLongPress); err != nil {
 		s.Fatal("Failed to set a KeypressControl by servo: ", err)
 	}
+	h.DUT.Disconnect(ctx)
 
 	s.Log("Waiting until power state is G3")
-	if err = testing.Poll(ctx, func(ctx context.Context) error {
-		state, err := pxy.Servo().GetECSystemPowerState(ctx)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		state, err := h.Servo.GetECSystemPowerState(ctx)
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to get power state"))
 		}
@@ -71,13 +75,13 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait power state to be G3: ", err)
 	}
 
-	max, err := pxy.Servo().GetBatteryFullChargeMAH(ctx)
+	max, err := h.Servo.GetBatteryFullChargeMAH(ctx)
 	if err != nil {
 		s.Fatal("Failed to get full charge mAh: ", err)
 	}
 	s.Logf("Battery max capacity: %dmAh", max)
 
-	mahStart, err := pxy.Servo().GetBatteryChargeMAH(ctx)
+	mahStart, err := h.Servo.GetBatteryChargeMAH(ctx)
 	if err != nil {
 		s.Fatal("Failed to get charge mAh: ", err)
 	}
@@ -85,8 +89,17 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 	s.Logf("Battery charge: %dmAh", mahStart)
 
 	s.Log("Hibernating")
-	if err = pxy.Servo().RunECCommand(ctx, "hibernate"); err != nil {
+	if err = h.Servo.RunECCommand(ctx, "hibernate"); err != nil {
 		s.Fatal("Failed to run EC command: ", err)
+	}
+
+	if out, err := h.Servo.RunECCommandGetOutput(ctx, "version", []string{".+"}); err == nil {
+		s.Logf("Got %v expected error", out)
+		s.Fatal("EC is still active after hibernate")
+	} else {
+		if !strings.Contains(err.Error(), "No data was sent from the pty") {
+			s.Fatal("Unexpected EC error: ", err)
+		}
 	}
 
 	s.Log("Sleeping for ", sleep)
@@ -94,17 +107,12 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
-	s.Log("Waking up DUT by supplying power from servo")
-	if err = pxy.Servo().SetPDRole(ctx, servo.PDRoleSrc); err != nil {
-		s.Fatal("Failed to set servo role: ", err)
+	s.Log("Waking up DUT with short power key press")
+	if err = h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+		s.Fatal("Failed to press power key: ", err)
 	}
 
-	s.Log("Reconnecting to DUT")
-	if err = d.WaitConnect(ctx); err != nil {
-		s.Fatal("Failed to reconnect to DUT: ", err)
-	}
-
-	mahEnd, err := pxy.Servo().GetBatteryChargeMAH(ctx)
+	mahEnd, err := h.Servo.GetBatteryChargeMAH(ctx)
 	if err != nil {
 		s.Fatal("Failed to get charge mAh: ", err)
 	}
@@ -122,5 +130,10 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 		if days < 100 {
 			s.Error("Estimate Battery Life less than 100 days")
 		}
+	}
+
+	// Test cleanup wants to connect to DUT, wait for it to finish booting.
+	if err := h.DUT.WaitConnect(ctx); err != nil {
+		s.Error("Failed to connect to DUT at end of test: ", err)
 	}
 }
