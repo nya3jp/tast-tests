@@ -16,6 +16,29 @@
       "message": "ptal, thanks!",
       "revId": "f8753550c0a67a62b4f676f5510581b311940189",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c2cf213_65293728",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-09T07:04:02Z",
+      "side": 1,
+      "message": "This seems to accept any error returned by NodesInfo. Rather than assuming an error indicates there are no shared folders, what about keeping the old logic which checks for the \"Shared folders will appear here\" message and only returning the empty slice in this case?\n\n(i.e. keep lines 161-191 of the old method as-is, just add the extra condition 170-172 that ensures both emptyMsg and listHeader are not showing concurrently.)",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 2
+      },
+      "revId": "f8753550c0a67a62b4f676f5510581b311940189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
