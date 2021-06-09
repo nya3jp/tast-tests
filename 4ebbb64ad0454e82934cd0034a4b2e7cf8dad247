@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd421cfc_d750fc7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-09T16:22:58Z",
+      "side": 1,
+      "message": "optional: if there is a team alias, it\u0027s good to add those here as well.",
+      "revId": "4ebbb64ad0454e82934cd0034a4b2e7cf8dad247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a0afae1_f296aba8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-09T16:22:58Z",
+      "side": 1,
+      "message": "Should this be `remove \"informational\"`?",
+      "range": {
+        "startLine": 25,
+        "startChar": 82,
+        "endLine": 25,
+        "endChar": 102
+      },
+      "revId": "4ebbb64ad0454e82934cd0034a4b2e7cf8dad247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a2bc76_5b371cf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-09T16:22:58Z",
+      "side": 1,
+      "message": "Could this be a constant since it is used here and in PerfettoChromeProducer?",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "4ebbb64ad0454e82934cd0034a4b2e7cf8dad247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15f9bfc4_3161f3d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-09T16:22:58Z",
+      "side": 1,
+      "message": "See L85 for my context timeout comment.\n\nHowever, if you do want to use a timeout, you can remove this timeout field since you are setting a context timeout. Alternatively, you can remove the context creation on L85 and keep this timeout.",
+      "revId": "4ebbb64ad0454e82934cd0034a4b2e7cf8dad247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15ae470d_6cab72ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-09T16:22:58Z",
+      "side": 1,
+      "message": "See L85 for my context timeout comment.",
+      "revId": "4ebbb64ad0454e82934cd0034a4b2e7cf8dad247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6dd0b24_8562642e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-09T16:22:58Z",
+      "side": 1,
+      "message": "I think in general it\u0027s best not to add a timeout to every call and simply rely on the timeout of the overall context. It\u0027s one less value that might need to be tweaked if an operation is longer running than you expect.",
+      "revId": "4ebbb64ad0454e82934cd0034a4b2e7cf8dad247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73af70cf_2aff893b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-09T16:22:58Z",
+      "side": 1,
+      "message": "Does this need to be a separate function? It seems like this could be replaced with upstart.StopJob(wctx, tracedJob).\n\nYou also will need to shorten ctx to create a cleanupCtx and use that here and on L105",
+      "range": {
+        "startLine": 92,
+        "startChar": 12,
+        "endLine": 92,
+        "endChar": 27
+      },
+      "revId": "4ebbb64ad0454e82934cd0034a4b2e7cf8dad247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0119d4dd_f85cb8d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-09T16:22:58Z",
+      "side": 1,
+      "message": "I think in this case you don\u0027t need to restart the ui job. In general tests are not supposed to clean up their state: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#startup-and-shutdown",
+      "revId": "4ebbb64ad0454e82934cd0034a4b2e7cf8dad247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
