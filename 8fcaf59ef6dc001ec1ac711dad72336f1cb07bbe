@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da6e802b_b46ef33e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-09T23:02:18Z",
+      "side": 1,
+      "message": "I think you should use \n\nTEST\u003dtast run -build\u003dtrue $DUT filemanager.ImageQuickView\n\nto run your modified test.\n\nOtherwise, you are not running the modified code, and are running the code on the DUT.",
+      "revId": "8fcaf59ef6dc001ec1ac711dad72336f1cb07bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
