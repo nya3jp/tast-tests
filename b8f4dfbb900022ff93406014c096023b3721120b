@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9f47ba4_1af18d5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 71
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T19:54:46Z",
+      "side": 1,
+      "message": "Sure! Added more comments.",
+      "parentUuid": "4253bfe4_85f5dfec",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "b8f4dfbb900022ff93406014c096023b3721120b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7086bad_7526ea8e",
@@ -89,6 +113,30 @@
       "writtenOn": "2021-06-08T05:26:39Z",
       "side": 1,
       "message": "why append twice? Can you add a comment to avoid confusing if it is the intention.",
+      "range": {
+        "startLine": 78,
+        "startChar": 30,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "b8f4dfbb900022ff93406014c096023b3721120b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67ba8d36_0b5763f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 71
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T19:54:46Z",
+      "side": 1,
+      "message": "Added comments #3 to indicate that of the four chrome windows, the 3rd and 4th will have same URL list, and leave the plus part to the next CL.",
+      "parentUuid": "a7086bad_7526ea8e",
       "range": {
         "startLine": 78,
         "startChar": 30,
@@ -122,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea2940a6_e0d23d21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 71
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T19:54:46Z",
+      "side": 1,
+      "message": "Renamed some of the related vars, added comments.",
+      "parentUuid": "34164b0a_1d32576a",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 21
+      },
+      "revId": "b8f4dfbb900022ff93406014c096023b3721120b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21d11484_74ba2e3a",
@@ -135,6 +207,30 @@
       "writtenOn": "2021-06-08T05:26:39Z",
       "side": 1,
       "message": "nit: Failed to create",
+      "range": {
+        "startLine": 115,
+        "startChar": 11,
+        "endLine": 115,
+        "endChar": 18
+      },
+      "revId": "b8f4dfbb900022ff93406014c096023b3721120b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d79a9ad_f69c37ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 71
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T19:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21d11484_74ba2e3a",
       "range": {
         "startLine": 115,
         "startChar": 11,
@@ -168,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "454b0095_c28997ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 71
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T19:54:46Z",
+      "side": 1,
+      "message": "Thanks Jun. You are right. Moved close right after New.",
+      "parentUuid": "f4e90058_bd842b06",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 3
+      },
+      "revId": "b8f4dfbb900022ff93406014c096023b3721120b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48bbe2b9_fd9e7674",
@@ -181,6 +301,30 @@
       "writtenOn": "2021-06-08T05:26:39Z",
       "side": 1,
       "message": "nit: else is not required.",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 2
+      },
+      "revId": "b8f4dfbb900022ff93406014c096023b3721120b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "432cdeee_d1a85213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 71
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-09T19:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48bbe2b9_fd9e7674",
       "range": {
         "startLine": 147,
         "startChar": 2,
