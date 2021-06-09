@@ -39,6 +39,30 @@
       },
       "revId": "29b4911b0f9b0d745f403ab45fd09d1128db5c01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6110bc7e_6cc99587",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-09T22:53:00Z",
+      "side": 1,
+      "message": "Based on crrev/c/2948388, it seems like the ARC add secondary account flow is sufficiently different to not share the same code?",
+      "parentUuid": "a286c76d_afa6305c",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "29b4911b0f9b0d745f403ab45fd09d1128db5c01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
