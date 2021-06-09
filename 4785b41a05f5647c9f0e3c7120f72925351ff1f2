@@ -16,6 +16,23 @@
       "message": "LGTM % Tast review, I defer to Yury.\n",
       "revId": "4785b41a05f5647c9f0e3c7120f72925351ff1f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27159408_d36aa3c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-06-09T07:25:07Z",
+      "side": 1,
+      "message": "Thanks Shuhei-san.  Hi Yury, PTAL as well.",
+      "revId": "4785b41a05f5647c9f0e3c7120f72925351ff1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
