@@ -133,13 +133,19 @@ func (a *ARC) TaskInfosFromDumpsys(ctx context.Context) ([]TaskInfo, error) {
 		if err != nil {
 			return nil, errors.Wrap(err, "could not get info from 'dumpsys Wayland'")
 		}
-		for i := range tasks {
-			for _, taskFromWayland := range tasksFromWayland {
-				if tasks[i].ID == taskFromWayland.ID {
-					tasks[i].windowState = taskFromWayland.windowState
-				}
-			}
+		fillWindowState(tasks, tasksFromWayland)
+		return tasks, nil
+	case SDKS:
+		tasks, err := a.dumpsysActivityActivitiesS(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "could not get info from 'dumpsys activity activities'")
 		}
+		// We here use dumpsysWaylandS to fulfil the windowState property which is not available in R's "dumpsys activity activities"
+		tasksFromWayland, err := a.dumpsysWaylandS(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "could not get info from 'dumpsys Wayland'")
+		}
+		fillWindowState(tasks, tasksFromWayland)
 		return tasks, nil
 	default:
 		return nil, errors.Errorf("unsupported Android version %d", n)
@@ -354,7 +360,33 @@ func (a *ARC) dumpsysWaylandR(ctx context.Context) (tasks []TaskInfo, err error)
 	return tasks, nil
 }
 
+// dumpsysActivityActivitiesS returns the "dumpsys activity activities" output as a list of TaskInfo.
+// Should only be called on ARC S devices.
+func (a *ARC) dumpsysActivityActivitiesS(ctx context.Context) (tasks []TaskInfo, err error) {
+	// delegate to R version because there isn't significant difference.
+	return a.dumpsysActivityActivitiesR(ctx)
+}
+
+// dumpsysWaylandS returns the "dumpsys Wayland" output as a list of TaskInfo, which is complementary to dumpsysActivityActivitiesS.
+// Should only be called on ARC S devices.
+func (a *ARC) dumpsysWaylandS(ctx context.Context) (tasks []TaskInfo, err error) {
+	// delegate to R version because there isn't significant difference.
+	return a.dumpsysWaylandR(ctx)
+}
+
 // Helper functions.
+
+// fillWindowState fills windowState property from tasks dumped from Wayland. This is necessary for ARC++ R or above because
+// "dumpsys activity actvities" doesn't have them.
+func fillWindowState(tasks, tasksFromWayland []TaskInfo) {
+	for i := range tasks {
+		for _, taskFromWayland := range tasksFromWayland {
+			if tasks[i].ID == taskFromWayland.ID {
+				tasks[i].windowState = taskFromWayland.windowState
+			}
+		}
+	}
+}
 
 // parseBounds returns a Rect by parsing a slice of 4 strings.
 // Each string represents the left, top, right and bottom values, in that order.
