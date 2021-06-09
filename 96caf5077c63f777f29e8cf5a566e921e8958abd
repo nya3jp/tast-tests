@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8653d4a_d6baa412",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-09T00:40:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93020500_fd84f89f",
+      "range": {
+        "startLine": 86,
+        "startChar": 18,
+        "endLine": 86,
+        "endChar": 26
+      },
+      "revId": "96caf5077c63f777f29e8cf5a566e921e8958abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d900fab_747fc67b",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ab28dca_b3cedb8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-09T00:40:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d900fab_747fc67b",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 15
+      },
+      "revId": "96caf5077c63f777f29e8cf5a566e921e8958abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0462763_e4454734",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-06-08T14:19:09Z",
       "side": 1,
       "message": "Duplicate code?",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "96caf5077c63f777f29e8cf5a566e921e8958abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9edce0e8_05fae993",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-09T00:40:26Z",
+      "side": 1,
+      "message": "Done. I was trying to see if the example code works but forgot to remove it... Thanks!",
+      "parentUuid": "e0462763_e4454734",
       "range": {
         "startLine": 97,
         "startChar": 1,
