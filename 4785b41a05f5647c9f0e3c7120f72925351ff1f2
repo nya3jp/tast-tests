@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9502d4d_5185fbbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-09T02:31:44Z",
+      "side": 1,
+      "message": "LGTM % Tast review, I defer to Yury.\n",
+      "revId": "4785b41a05f5647c9f0e3c7120f72925351ff1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
