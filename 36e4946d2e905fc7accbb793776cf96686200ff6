@@ -88,6 +88,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8793d4ec_16983176",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-09T06:31:37Z",
+      "side": 1,
+      "message": "Based on the nested fixture design, now we only need to set up one nearbyShareAndroidSetup fixture with a nested nearbyShareGAIALogin fixture. Then all the fixtures used for Nearby Share tests are nested inside nearbyShareGAIALogin. The new fixture mechanism can save a lot of setup / teardown time.",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76e67db2_b86a17b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-09T06:31:37Z",
+      "side": 1,
+      "message": "Sorry for the long review delay as the CL is large I have to allocate a long while to read it through. Hope the revised commit description can help readers to understand the nested relationship among fixtures.\n\nBy the way, please consider adding a readme.md in nearbyshare package to store the content of the commit message so that other developers may have a better view of the relationship among the fixtures and why it is designed this way.",
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fc2f9b8_11fa0fb6",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android_fixture.go",
         "patchSetId": 8
