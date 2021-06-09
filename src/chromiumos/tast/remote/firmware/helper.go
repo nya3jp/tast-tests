@@ -7,6 +7,7 @@ package firmware
 import (
 	"context"
 	"io/ioutil"
+	"net/http"
 	"os"
 	"path"
 	"path/filepath"
@@ -90,6 +91,33 @@ func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, cfgFilepath, servoHostPort 
 	}
 }
 
+// VarProvider is the methods from testing.State that NewHelperS actually uses.
+type VarProvider interface {
+	Var(name string) (val string, ok bool)
+	DataFileSystem() http.FileSystem
+	DataPath(p string) string
+	DUT() *dut.DUT
+	RPCHint() *testing.RPCHint
+}
+
+// NewHelperS is like NewHelper, but simpler as you only need to pass the testing.State.
+// Typical invocation should look like:
+//
+// h := firmware.NewHelperS(s)
+// defer h.Close(ctx)
+//
+// if err := h.RequireServo(ctx); err != nil {
+//   s.Fatal("failed to init servo: ", err)
+// }
+func NewHelperS(s VarProvider) *Helper {
+	servoSpec, _ := s.Var("servo")
+	configFilePath := ""
+	if _, err := s.DataFileSystem().Open(ConfigFile); err == nil {
+		configFilePath = s.DataPath(ConfigFile)
+	}
+	return NewHelper(s.DUT(), s.RPCHint(), configFilePath, servoSpec)
+}
+
 // Close shuts down any firmware objects associated with the Helper.
 // Generally, tests should defer Close() immediately after initializing a Helper.
 func (h *Helper) Close(ctx context.Context) error {
@@ -105,6 +133,37 @@ func (h *Helper) Close(ctx context.Context) error {
 	}
 	if err := h.CloseRPCConnection(ctx); err != nil && firstErr == nil {
 		firstErr = errors.Wrap(err, "closing rpc connection")
+	}
+	return firstErr
+}
+
+// CheckPowerAndClose checks the power state, and attempts to boot the DUT if it is off.
+// If you power off the DUT during the test, this will restore the power at the end of the test.
+// Typical invocation should look like:
+//
+// h := firmware.NewHelperS(s)
+// defer h.CheckPowerAndClose(ctx)
+//
+// if err := h.RequireServo(ctx); err != nil {
+//   s.Fatal("failed to init servo: ", err)
+// }
+func (h *Helper) CheckPowerAndClose(ctx context.Context) error {
+	var firstErr error
+	if h.Servo != nil {
+		state, err := h.Servo.GetECSystemPowerState(ctx)
+		if err != nil {
+			testing.ContextLog(ctx, "Error getting power state: ", err)
+			firstErr = err
+		} else if state != "S0" {
+			testing.ContextLog(ctx, "DUT is off at end of test, booting with power key")
+			if err = h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+				testing.ContextLog(ctx, "Failed to press power key: ", err)
+				firstErr = err
+			}
+		}
+	}
+	if err := h.Close(ctx); err != nil && firstErr != nil {
+		firstErr = err
 	}
 	return firstErr
 }
