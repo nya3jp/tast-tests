@@ -151,6 +151,30 @@
       },
       "revId": "8656bec610bd41e278444b68f38984e961ae8934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "119aa16e_7fd44871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-06-09T03:30:51Z",
+      "side": 1,
+      "message": "How about\nvar ClamshellOnlyModels \u003d []string ...\nor\nvar SkipOnClamshellOnlyModels \u003d hwdep.D(hwdep.SkipOnModel(.....\nto make it more self-descriptive?",
+      "parentUuid": "f4cc3d6d_d02c8d76",
+      "range": {
+        "startLine": 1077,
+        "startChar": 46,
+        "endLine": 1077,
+        "endChar": 81
+      },
+      "revId": "8656bec610bd41e278444b68f38984e961ae8934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
