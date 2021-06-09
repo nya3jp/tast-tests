@@ -161,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b9e62d7_9de0ad0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-09T01:21:55Z",
+      "side": 1,
+      "message": "We have done some experiments on vk typing input here. But we are not familiar with pk input at the moment. http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/data/vk_type_test_data.go",
+      "parentUuid": "001967c1_a94ea947",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 35
+      },
+      "revId": "f4a8aaeef9cf189029d275fc347c190a0170306d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2edc2ac9_e0a1d48a",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
         "patchSetId": 1
