@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbb14981_8e7fa897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cujrunner/actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-09T20:52:31Z",
+      "side": 1,
+      "message": "nit: maybe nicer to check if f is nil or not?  i.e.\n\n  if f \u003d\u003d nil {\n    return nil, errors.New(\"no data in args\")\n  }",
+      "revId": "a1945b83a877a03e0b55a31cdf287294173f09bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
