@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b41a2106_5829b741",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-06-10T02:33:16Z",
+      "side": 1,
+      "message": "What is the reason to put this in the lacros package btw? IMO it would be better to place this in the same package as the original memory stress test as a variation (that\u0027s what we\u0027re doing for lacros variations of tests, in general).",
+      "revId": "46ff4619d8f02a30e21607407c3cf9ab744fd61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
