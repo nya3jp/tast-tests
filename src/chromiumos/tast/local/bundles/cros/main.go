@@ -43,6 +43,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/hammerd"
 	_ "chromiumos/tast/local/bundles/cros/hardware"
 	_ "chromiumos/tast/local/bundles/cros/health"
+	_ "chromiumos/tast/local/bundles/cros/hps"
 	_ "chromiumos/tast/local/bundles/cros/hwsec"
 	_ "chromiumos/tast/local/bundles/cros/inputs"
 	_ "chromiumos/tast/local/bundles/cros/kernel"
