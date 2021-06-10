@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a92c53d_66968879",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-06-10T17:02:02Z",
+      "side": 1,
+      "message": "lgtm % one nit + others",
+      "revId": "8306fc64125347e458d39b119f5d005ab1353bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "646952cb_56524255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_gameplay_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-06-10T17:02:02Z",
+      "side": 1,
+      "message": "Would \"LeftClick\" wait for the element to exist and have stable bounds before clicking? If so, could we replace testing.Poll() block with just \"ac.LeftClick\" ?",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 130,
+        "endChar": 24
+      },
+      "revId": "8306fc64125347e458d39b119f5d005ab1353bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
