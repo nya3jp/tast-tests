@@ -16,6 +16,24 @@
       "message": "What is the reason to put this in the lacros package btw? IMO it would be better to place this in the same package as the original memory stress test as a variation (that\u0027s what we\u0027re doing for lacros variations of tests, in general).",
       "revId": "46ff4619d8f02a30e21607407c3cf9ab744fd61c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f86ce6b3_6cecef8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-06-10T05:23:43Z",
+      "side": 1,
+      "message": "I think it\u0027s OK to move lacros/memory_stress.go to platform/memory_stress_lacros.go . I think the difference between lacros/memory_stress.go and platform/memory_stress_basic.go is big enough that it\u0027s clearer to have a separate test than adding a few if statements in platform/memory_stress_basic.go.\n\nHidehiko, what do you think?",
+      "parentUuid": "b41a2106_5829b741",
+      "revId": "46ff4619d8f02a30e21607407c3cf9ab744fd61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
