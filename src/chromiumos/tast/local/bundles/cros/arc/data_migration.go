@@ -69,6 +69,7 @@ func init() {
 // b/183690158 vold hangs while processing fixupAllAppDirs() if there are thousands of files to fix.
 //             (Home data data_migration_pi_* contains 5000 dirs under
 //              /sdcard/Android/data/com.android.vending/files/ for reproducing this bug.)
+// b/190293594 GMSCore for Pi is picked up on ARC R after P->R upgrade.
 func DataMigration(ctx context.Context, s *testing.State) {
 	const (
 		// One of the apps reported by b/173835269.
@@ -113,8 +114,15 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close(ctx)
 
-	if err := checkSdkVersionsInPackagesXML(ctx, username); err != nil {
-		s.Fatal("Failed to check SDK version in arc.log: ", err)
+	systemSdkVersion, err := checkSdkVersionsInPackagesXML(ctx, username)
+	if err != nil {
+		s.Fatal("Failed to check SDK version in packages.xml: ", err)
+	}
+
+	// Regression check for b/190293594.
+	if err := checkGmsCoreVersion(ctx, a, systemSdkVersion); err != nil {
+		// Log error and continue testing.
+		s.Error("Failed to check GMSCore version: ", err)
 	}
 
 	d, err := a.NewUIDevice(ctx)
@@ -123,6 +131,7 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close(cleanupCtx)
 
+	// Regression check for b/173835269.
 	s.Log("Installing app " + appToInstall)
 	if err := playstore.InstallApp(ctx, a, d, appToInstall, -1); err != nil {
 		s.Error("Failed to install app: ", err)
@@ -163,7 +172,9 @@ func mountVaultWithArchivedHomeData(ctx context.Context, homeDataPath, username,
 	return nil
 }
 
-func checkSdkVersionsInPackagesXML(ctx context.Context, username string) error {
+// checkSdkVersionsInPackagesXML checks if system SDK version is higher than data SDK version and
+// returns system SDK version.
+func checkSdkVersionsInPackagesXML(ctx context.Context, username string) (int, error) {
 	const (
 		packagesXMLPath = "/data/system/packages.xml"
 	)
@@ -180,13 +191,13 @@ func checkSdkVersionsInPackagesXML(ctx context.Context, username string) error {
 
 	rootCryptDir, err := cryptohome.SystemPath(username)
 	if err != nil {
-		return errors.Wrap(err, "failed to get the cryptohome directory for the user")
+		return 0, errors.Wrap(err, "failed to get the cryptohome directory for the user")
 	}
 
 	// /home/root/<hash>/android-data/data/system/packages.xml
 	b, err := ioutil.ReadFile(filepath.Join(rootCryptDir, "android-data", packagesXMLPath))
 	if err != nil {
-		return errors.Wrap(err, "failed to open packages.xml")
+		return 0, errors.Wrap(err, "failed to open packages.xml")
 	}
 
 	for _, l := range strings.Split(string(b), "\n") {
@@ -207,12 +218,61 @@ func checkSdkVersionsInPackagesXML(ctx context.Context, username string) error {
 		systemVersion, dataVersion)
 	testing.ContextLog(ctx, foundVersionsText)
 	if systemVersion <= 0 || dataVersion <= 0 {
-		return errors.Wrapf(err, "failed to get system SDK version or data SDK version in packages.xml (%s)",
+		return 0, errors.Wrapf(err, "failed to get system SDK version or data SDK version in packages.xml (%s)",
 			foundVersionsText)
 	}
 	if systemVersion <= dataVersion {
-		return errors.Wrapf(err, "system SDK version should be higher than data SDK version (%s)",
+		return 0, errors.Wrapf(err, "system SDK version should be higher than data SDK version (%s)",
 			foundVersionsText)
 	}
+	return systemVersion, nil
+}
+
+// checkGmsCoreVersion checks if ARC is using an expected version of GMSCore.
+func checkGmsCoreVersion(ctx context.Context, a *arc.ARC, systemSdkVersion int) error {
+	// Regexp for matching a GMSCore version string in logcat.
+	// e.g. "com.google.android.gms@212013032@21.20.13 (100800-374639054)"
+	gmscoreVersionRegexp := regexp.MustCompile(
+		`com\.google\.android\.gms@\d+@\d+\.\d+\.\d+ \((\d{6})-\d+\)`)
+
+	out, err := a.Command(ctx, "logcat", "-d").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed to run logcat")
+	}
+
+	var fullVersionString string
+	var versionCode int
+	for _, line := range strings.Split(string(out), "\n") {
+		m := gmscoreVersionRegexp.FindStringSubmatch(line)
+		if len(m) == 2 {
+			fullVersionString = m[0]
+			versionCode, _ = strconv.Atoi(m[1])
+			break
+		}
+	}
+	if len(fullVersionString) == 0 {
+		return errors.New("failed to find GMSCore version string in logcat")
+	}
+	testing.ContextLogf(ctx, "ARC is using GMSCore of version %q", fullVersionString)
+
+	// Checks "variant" in GMSCore version string. Reference: go/gmscore-decoder-ring
+	var expectedVariant int
+	switch systemSdkVersion {
+	case 28:
+		// Skip checking variant for ARC P.
+		return nil
+	case 30:
+		expectedVariant = 15 // PROD_RVC
+	case 31:
+		expectedVariant = 19 // PROD_SC
+	default:
+		return errors.Errorf("unexpected system SDK version: %d", systemSdkVersion)
+	}
+	variant := versionCode / 10000
+	if variant != expectedVariant {
+		return errors.Errorf("ARC is using GMSCore of unexpected variant: got %d; want %d. Found GMSCore version: %q",
+			variant, expectedVariant, fullVersionString)
+	}
+
 	return nil
 }
