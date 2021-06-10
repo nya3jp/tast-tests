@@ -7,9 +7,11 @@ package kiosk
 import (
 	"context"
 
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/kioskmode"
+	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
@@ -44,6 +46,11 @@ func Autostart(ctx context.Context, s *testing.State) {
 	}
 
 	defer func(ctx context.Context) {
+		// This is required for cases when DeviceLocalAccountAutoLoginId policy
+		// is used. If we won't clear policies and refresh then when test
+		// completes and later Chrome is restarted then Kiosk modes starts
+		// again.
+		policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{})
 		// Use cr as a reference to close the last started Chrome instance.
 		if err := cr.Close(ctx); err != nil {
 			s.Error("Failed to close Chrome connection: ", err)
