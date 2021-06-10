@@ -139,6 +139,30 @@
       },
       "revId": "f71dcce725cc7410d877d350d8f534f9e9e7796b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ebdc7f8_5df5b1f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-10T18:18:12Z",
+      "side": 1,
+      "message": "Got it, I tried again and things work! Thanks for the detailed explanation 😊",
+      "parentUuid": "d9a1df53_f122c748",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "f71dcce725cc7410d877d350d8f534f9e9e7796b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
