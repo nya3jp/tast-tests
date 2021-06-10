@@ -16,6 +16,23 @@
       "message": "Defer +2 to Tast owners",
       "revId": "f2bf0eccc56f5db82ee100919c40b93c31497069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4421efd4_9317a621",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-10T07:17:31Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "f2bf0eccc56f5db82ee100919c40b93c31497069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
