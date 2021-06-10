@@ -25,6 +25,9 @@ func init() {
 func ServoEcho(ctx context.Context, s *testing.State) {
 	pxy := s.FixtValue().(*servo.Proxy)
 
+	s.Logf("INNN TESTTTTTT")
+	// s.Fatal("IN TEST FAILURE")
+
 	const msg = "hello from servo"
 	s.Logf("Sending echo request for %q", msg)
 	actualMessage, err := pxy.Servo().Echo(ctx, msg)

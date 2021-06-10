@@ -750,16 +750,22 @@ func (s *Servo) GetOnOff(ctx context.Context, ctrl OnOffControl) (bool, error) {
 
 // WatchdogAdd adds the specified watchdog to the servod instance.
 func (s *Servo) WatchdogAdd(ctx context.Context, val WatchdogValue) error {
-	return s.SetString(ctx, WatchdogAdd, string(val))
+	if err := s.SetString(ctx, WatchdogAdd, string(val)); err != nil {
+		return err
+	}
+	if s.removedWatchdogs[val] {
+		delete(s.removedWatchdogs, val)
+	}
+	return nil
 }
 
 // WatchdogRemove removes the specified watchdog from the servod instance.
-// Servo.Close() will restore the watchdog.
+// Servo.Restore()/Close() will restore the watchdog.
 func (s *Servo) WatchdogRemove(ctx context.Context, val WatchdogValue) error {
 	if err := s.SetString(ctx, WatchdogRemove, string(val)); err != nil {
 		return err
 	}
-	s.removedWatchdogs = append(s.removedWatchdogs, val)
+	s.removedWatchdogs[val] = true
 	return nil
 }
 
