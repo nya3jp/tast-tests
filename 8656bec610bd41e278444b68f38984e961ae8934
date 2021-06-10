@@ -175,6 +175,30 @@
       },
       "revId": "8656bec610bd41e278444b68f38984e961ae8934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e82b3cff_50110201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-10T06:47:58Z",
+      "side": 1,
+      "message": "+1 to keep the name as ClamshellOnlyModels as the test already has word(Skip) hwdep.SkipOnModel",
+      "parentUuid": "119aa16e_7fd44871",
+      "range": {
+        "startLine": 1077,
+        "startChar": 46,
+        "endLine": 1077,
+        "endChar": 81
+      },
+      "revId": "8656bec610bd41e278444b68f38984e961ae8934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
