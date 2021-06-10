@@ -183,6 +183,30 @@
       },
       "revId": "f8753550c0a67a62b4f676f5510581b311940189",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce38843e_9e5a6899",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-10T10:16:03Z",
+      "side": 1,
+      "message": "So you mentioned:\n/*\n1. Page is already initialized, and there is one shared folder\n2. Evaluate 164-167: textErr not nil, listErr nil\n3. The folder is unshared as it is deleted (since otherwise you have to use this settings page to unshare), and this event reaches the settings page\n4. Evaluate 175-178: No shared folders are found, error raised\n*/\n\nSo what you are saying is:\nPrecondition: only one folder is shared\n\nthread one:\ntime slot 1: Open the settings page at shared folder and leave it open. - Your step 2.\ntime slot 3: Check the shared folders on the settings page. - Your step 4\n\nthread two:\ntime slot 2: delete the shared folder. - Your step 3\n\nRight?\n\nIf we need to write a test case to verify that deleted shared folders should be deleted from the settings page, I don\u0027t see any reason to run deleting a folder and getting shared folder in separate threads. Usually, they are just done in sequence:\n1. Share a folder, call GetSharedFolders to check the shared folders in the settings page. Leave the settings page opened.\n2. Delete the shared foler.\n3. Call GetSharedFolders to check no shared folder listed.\n\nThere is another case which might get into the situation you described: the last shared folder is deleted by some other process while tast test is calling GetSharedFolders. In this case, I think an error should return, as we assume that the environment is untouched by other process while running tast test.",
+      "parentUuid": "2eaaf872_70593965",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 2
+      },
+      "revId": "f8753550c0a67a62b4f676f5510581b311940189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
