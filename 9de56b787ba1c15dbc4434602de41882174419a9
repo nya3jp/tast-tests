@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c946e21_2959c295",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-10T09:13:41Z",
+      "side": 1,
+      "message": "Could you take a look at amd64-generic-tast-vm failure?",
+      "revId": "9de56b787ba1c15dbc4434602de41882174419a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4f04162_e8203a9d",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-10T09:13:41Z",
+      "side": 1,
+      "message": "nit/style: cmd.Args \u003d append(cmd.Args, \"--public_mount\", \"--key_label\u003dpublic_mount\")\n\nditto for below.",
+      "range": {
+        "startLine": 525,
+        "startChar": 2,
+        "endLine": 526,
+        "endChar": 57
+      },
+      "revId": "9de56b787ba1c15dbc4434602de41882174419a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
