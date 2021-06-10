@@ -1,0 +1,17 @@
+{
+   "TBT":{
+      "device_name":"Portable SSD X5",
+      "nvme_version":"35.0",
+      "generation":"3",
+      "rx_speed":"20.0 Gb/s",
+      "tx_speed":"20.0 Gb/s",
+      "device_detection":"Samsung_X5"
+   },
+   "USB4":{
+      "device_name":"Intel Thunderbolt generic model name",
+      "nvme_version":"30.0",
+      "generation":"4",
+      "rx_speed":"20.0 Gb/s",
+      "tx_speed":"20.0 Gb/s"
+   }
+}
