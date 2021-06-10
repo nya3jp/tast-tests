@@ -35,6 +35,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b701443c_c9c1ec59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-06-10T14:39:55Z",
+      "side": 1,
+      "message": "LGTM with 2 minor fixes.",
+      "revId": "7d024fa9c26667390891ad7d6ad582bb5aa6c5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58de1dc1_49c5cf1a",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-06-10T14:39:55Z",
+      "side": 1,
+      "message": "result",
+      "range": {
+        "startLine": 298,
+        "startChar": 61,
+        "endLine": 298,
+        "endChar": 66
+      },
+      "revId": "7d024fa9c26667390891ad7d6ad582bb5aa6c5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1e2f441_bb5ae94f",
@@ -48,6 +88,30 @@
       "writtenOn": "2021-06-10T03:47:40Z",
       "side": 1,
       "message": "I know this is just moving the function, but no need to add \": \" since this is handled by errors.Wrap. Same on L307.",
+      "range": {
+        "startLine": 303,
+        "startChar": 56,
+        "endLine": 303,
+        "endChar": 58
+      },
+      "revId": "7d024fa9c26667390891ad7d6ad582bb5aa6c5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d5f25c_60618f92",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-06-10T14:39:55Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "d1e2f441_bb5ae94f",
       "range": {
         "startLine": 303,
         "startChar": 56,
