@@ -13,7 +13,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -376,11 +378,9 @@ func InstallPWAForURL(ctx context.Context, cr *chrome.Chrome, pwaURL string, tim
 
 	// The installability checks occur asynchronously for PWAs.
 	// Wait for the Install button to appear in the Chrome omnibox before installing.
-	params := ui.FindParams{
-		ClassName: "PwaInstallView",
-		Role:      ui.RoleTypeButton,
-	}
-	if err := ui.WaitUntilExists(ctx, tconn, params, timeout); err != nil {
+	ui := uiauto.New(tconn)
+	install := nodewith.ClassName("PwaInstallView").Role(role.Button)
+	if err := ui.WithTimeout(timeout).WaitUntilExists(install)(ctx); err != nil {
 		return "", errors.Wrap(err, "failed to wait for the install button in the omnibox")
 	}
 

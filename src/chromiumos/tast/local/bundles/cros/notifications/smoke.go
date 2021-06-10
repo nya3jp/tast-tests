@@ -11,10 +11,13 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/testing"
 )
 
@@ -49,32 +52,22 @@ func Smoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create test notification: ", err)
 	}
 	s.Log("Checking that notification appears")
-	params := ui.FindParams{
-		Role:      ui.RoleTypeWindow,
-		ClassName: "ash/message_center/MessagePopup",
-	}
-	if err := ui.WaitUntilExists(ctx, tconn, params, uiTimeout); err != nil {
+	ui := uiauto.New(tconn).WithTimeout(uiTimeout)
+	notification := nodewith.Role(role.Window).ClassName("ash/message_center/MessagePopup")
+	if err := ui.WaitUntilExists(notification)(ctx); err != nil {
 		s.Fatal("Failed to find notification popup: ", err)
 	}
 	s.Log("Waiting for notification to auto-dismiss")
-	// Depending on DUT state when test is run, the notification could be focused and will not autodismiss.
-	// Check for that condition while waiting for notification to dismiss.
-	subparams := ui.FindParams{
-		State: map[ui.StateType]bool{ui.StateTypeFocused: true},
-	}
+
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		notificationPopup, err := ui.Find(ctx, tconn, params)
-		if err != nil {
+		if err := ui.Exists(notification)(ctx); err != nil {
 			// Notification dismissed.
 			return nil
 		}
-		defer notificationPopup.Release(ctx)
-		// Notification still exists. Check if it has focus.
-		exists, err := notificationPopup.DescendantExists(ctx, subparams)
-		if err != nil {
-			return errors.Wrap(err, "failed to find notification with focus")
-		}
-		if !exists {
+		// Notification still exists.
+		// Depending on DUT state when test is run, the notification could be focused and will not autodismiss.
+		// Check for that condition while waiting for notification to dismiss.
+		if err := ui.Exists(nodewith.State(state.Focused, true).Ancestor(notification))(ctx); err != nil {
 			return errors.New("focused notification does not exist")
 		}
 		s.Log("Notification had focus. Opening launcher to change focus")
@@ -105,16 +98,12 @@ func Smoke(ctx context.Context, s *testing.State) {
 }
 
 func closeNotification(ctx context.Context, tconn *chrome.TestConn) error {
-	params := ui.FindParams{Role: ui.RoleTypeButton, Name: "Notification close"}
-	notificationClose, err := ui.FindWithTimeout(ctx, tconn, params, uiTimeout)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the notification close button")
-	}
-	defer notificationClose.Release(ctx)
-	if err := notificationClose.LeftClick(ctx); err != nil {
+	ui := uiauto.New(tconn).WithTimeout(uiTimeout)
+	notificationClose := nodewith.Role(role.Button).Name("Notification close")
+	if err := ui.LeftClick(notificationClose)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click notification close button")
 	}
-	if err := ui.WaitUntilGone(ctx, tconn, params, uiTimeout); err != nil {
+	if err := ui.WaitUntilGone(notificationClose)(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for closed notification to disappear")
 	}
 	return nil

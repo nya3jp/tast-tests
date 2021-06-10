@@ -11,8 +11,10 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -98,24 +100,15 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	icons, err := ui.FindAll(ctx, tconn, ui.FindParams{Role: ui.RoleTypeButton})
-	if err != nil {
-		s.Fatal("Failed to get all buttons: ", err)
-	}
-	defer icons.Release(ctx)
+	ui := uiauto.New(tconn)
 
 	// Check that the icons are also present in the UI
 	for _, app := range defaultApps {
-		var found = false
-		for _, icon := range icons {
-			if icon.Name == app.Name {
-				s.Logf("Found icon for %s", app.Name)
-				found = true
-				break
-			}
-		}
-		if !found {
+		err := ui.Exists(nodewith.Role(role.Button).Name(app.Name))(ctx)
+		if err != nil {
 			s.Errorf("There was no icon for %s in the shelf", app.Name)
+		} else {
+			s.Logf("Found icon for %s", app.Name)
 		}
 	}
 }
