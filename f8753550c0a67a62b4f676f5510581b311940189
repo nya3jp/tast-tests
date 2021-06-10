@@ -135,6 +135,30 @@
       },
       "revId": "f8753550c0a67a62b4f676f5510581b311940189",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37a3d983_357412e8",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-10T05:28:24Z",
+      "side": 1,
+      "message": "Since the purpose of this cl is to address the code race, and the purpose of the first part of the code is to check whether which msg is displayed eventually on the page, I\u0027d like to suggest:\n\nvar textErr error\nvar listErr error\n\nif err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n\t\t// Find \"Shared folders will appear here\". It will be displayed if no folder is shared.\n\t\ttextErr \u003d s.ui.WaitUntilExists(emptySharedFoldersMsg)(ctx)\n\n\t\t// Find \"Shared folders\" list. It will be displayed if any folder is shared.\n\t\tlistErr \u003d s.ui.WaitUntilExists(sharedFoldersList)(ctx)\n\n\t\tif textErr !\u003d nil \u0026\u0026 listErr !\u003d nil {\n\t\t\t// Did not find \"Shared folders will appear here\" or \"Shared folders\" list.\n\t\t\treturn errors.New(\"failed to find list of \u0027Shared folders\u0027 or \u0027Shared folders will appear here\u0027\")\n\t\t}\n\n\t\tif textErr \u003d\u003d nil \u0026\u0026 listErr \u003d\u003d nil {\n\t\t\t// Found both \"Shared folders will appear here\" and \"Shared folders\" list.\n\t\t\treturn errors.New(\"Found both list of \u0027Shared folders\u0027 and \u0027Shared folders will appear here\u0027\")\n\t\t}\n\t\treturn nil\n\t}, pollOpts); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"shared folders page did not complete initialization\")\n\t}\n\n// There are shared folders.\nif listErr !\u003d nil {\n...\n}\n\n// No shared folders.\nreturn nil, nil",
+      "parentUuid": "180def49_6a718d31",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 2
+      },
+      "revId": "f8753550c0a67a62b4f676f5510581b311940189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
