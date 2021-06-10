@@ -40,9 +40,10 @@ const (
 	DevicePropertySelectedService = "SelectedService"
 
 	// Cellular device property names.
-	DevicePropertyCellularICCID       = "Cellular.ICCID"
-	DevicePropertyCellularSIMPresent  = "Cellular.SIMPresent"
-	DevicePropertyCellularSIMSlotInfo = "Cellular.SIMSlotInfo"
+	DevicePropertyCellularICCID              = "Cellular.ICCID"
+	DevicePropertyCellularPolicyAllowRoaming = "Cellular.PolicyAllowRoaming"
+	DevicePropertyCellularSIMPresent         = "Cellular.SIMPresent"
+	DevicePropertyCellularSIMSlotInfo        = "Cellular.SIMSlotInfo"
 
 	// Ethernet device property names.
 	DevicePropertyEthernetBusType   = "Ethernet.DeviceBusType"
@@ -106,7 +107,9 @@ const (
 	ServicePropertyGUID           = "GUID"
 
 	// Cellular service property names.
-	ServicePropertyCellularICCID = "Cellular.ICCID"
+	ServicePropertyCellularICCID        = "Cellular.ICCID"
+	ServicePropertyCellularAllowRoaming = "Cellular.AllowRoaming"
+	ServicePropertyCellularRoamingState = "Cellular.RoamingState"
 
 	// WiFi service property names.
 	ServicePropertyPassphrase          = "Passphrase"

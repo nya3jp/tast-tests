@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
@@ -174,6 +175,45 @@ func (h *Helper) SetServiceAutoConnect(ctx context.Context, autoConnect bool) (b
 		return false, errors.Wrap(err, "failed to set Service.AutoConnect")
 	}
 	return true, nil
+}
+
+func (h *Helper) InitServiceProperty(ctx context.Context, prop string, value interface{}) (interface{}, error) {
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return nil,errors.Wrap(err, "failed to get Cellular Service")
+	}
+	properties, err := service.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to get properties")
+	}
+	curValue, err := properties.GetBool(prop)
+	if err != nil {
+		return nil, errors.Wrapf(err, "unable to get %s", prop)
+	}
+	if value == curValue {
+		return curValue, nil
+	}
+	if err := service.SetProperty(ctx, prop, value); err != nil {
+		return curValue, errors.Wrapf(err, "failed to set %s",prop)
+	}
+	return curValue, nil
+}
+
+func (h *Helper) InitServiceProperty1(ctx context.Context, prop string, value interface{}, s *testing.State) (context.Context, context.CancelFunc, error) {
+	ctxForAutoConnectCleanUp := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, AutoConnectCleanupTime)
+	defer cancel()
+
+	if old_value, err := h.InitServiceProperty(ctx, prop, value); err != nil {
+		s.Fatal("Failed to set property: ", err)
+	} else if old_value!=value {
+		defer func(ctx context.Context, h *Helper, prop string, value interface{}) {
+			if _, err := h.InitServiceProperty(ctx, prop, value); err != nil {
+				s.Fatal("Failed to enable AutoConnect: ", err)
+			}
+		}(ctxForAutoConnectCleanUp, h, prop, old_value)
+	}
+	return ctx, cancel, nil;
 }
 
 // ConnectToDefault connects to the default Cellular Service.

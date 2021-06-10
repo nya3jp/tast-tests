@@ -15,6 +15,7 @@ const (
 	ModemPropertySim            = "Sim"
 	ModemPropertySimSlots       = "SimSlots"
 	ModemPropertyPrimarySimSlot = "PrimarySimSlot"
+	ModemPropertyState          = "State"
 )
 
 // ModemManager1.Sim properties

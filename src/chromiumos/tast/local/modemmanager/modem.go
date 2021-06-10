@@ -67,6 +67,15 @@ func (m *Modem) GetSimProperties(ctx context.Context, simPath dbus.ObjectPath) (
 	return ph.GetProperties(ctx)
 }
 
+// GetSimProperties creates a PropertyHolder for the Sim object and returns the associated Properties.
+func (m *Modem) GetSimple(ctx context.Context) (*dbusutil.PropertyHolder, error) {
+	ph, err := dbusutil.NewPropertyHolder(ctx, DBusModemmanagerService, DBusModemmanagerSimpleInterface, m.ObjectPath())
+	if err != nil {
+		return nil, err
+	}
+	return ph, nil
+}
+
 // GetSimSlots uses the Modem.SimSlots property to fetch SimProperties for each slot.
 // Returns the array of SimProperties and the array index of the primary slot on success.
 // If a slot path is empty, the entry for that slot will be nil.
