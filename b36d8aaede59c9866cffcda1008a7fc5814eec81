@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf929835_ceac5bc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_profile_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-10T06:33:23Z",
+      "side": 1,
+      "message": "There are many tests which would require this change.Will do that in a separate refactor CL and would like to check that with tast owners as I remember a comment that mainline tests should be \u003c10mins. Fixing this as 16 mins for now",
+      "parentUuid": "ab7bef5c_dc802908",
+      "revId": "b36d8aaede59c9866cffcda1008a7fc5814eec81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5074a083_c22bd408",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-09T08:49:20Z",
       "side": 1,
       "message": "I think launching an activity is unnecessary if we\u0027re only intending to ensure that the same app is not present in the second profile. Otherwise, this test will also fail when there is something wrong with launching the activity (which should have a test of its own).",
+      "revId": "b36d8aaede59c9866cffcda1008a7fc5814eec81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70cef00a_fdb16cd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_profile_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-10T06:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5074a083_c22bd408",
       "revId": "b36d8aaede59c9866cffcda1008a7fc5814eec81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79ec34ec_aec29d9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_profile_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-10T06:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83476894_1e040293",
+      "revId": "b36d8aaede59c9866cffcda1008a7fc5814eec81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba717218_85dc4c42",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cf11c79_5aed6cf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_profile_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-10T06:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba717218_85dc4c42",
+      "revId": "b36d8aaede59c9866cffcda1008a7fc5814eec81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51b08c79_70b0bb0d",
@@ -82,6 +154,24 @@
       "writtenOn": "2021-06-09T08:49:20Z",
       "side": 1,
       "message": "instead of launching an activity can we just test the presence of the app?",
+      "revId": "b36d8aaede59c9866cffcda1008a7fc5814eec81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c49199a3_95ba7222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_profile_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-10T06:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51b08c79_70b0bb0d",
       "revId": "b36d8aaede59c9866cffcda1008a7fc5814eec81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
