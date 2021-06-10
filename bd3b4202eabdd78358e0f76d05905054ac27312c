@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "170c53a5_5312f577",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_add_account.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-10T05:34:01Z",
+      "side": 1,
+      "message": "Actually I did think about this and since this test doesn\u0027t do anything on play store, doesn\u0027t require logic to close and launch it if its already provisioned.\n\nBut running this test in sequence with other tests using same fixture brought another issue b/190680218 for which I am adding a temp workaround fix for now.",
+      "parentUuid": "99c8116c_267db236",
+      "revId": "bd3b4202eabdd78358e0f76d05905054ac27312c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3857ed1f_a35bfba9",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-09T23:28:35Z",
       "side": 1,
       "message": "This part of the code is in common with crrev/c/2904942. I\u0027ll refactor out the common parts in that CL. Perhaps wait until that CL lands and use the shared function?",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 11
+      },
+      "revId": "bd3b4202eabdd78358e0f76d05905054ac27312c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b79cb47_30ac3ca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_add_account.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-10T05:34:01Z",
+      "side": 1,
+      "message": "Was waiting for a week for your CL to land. Will wait and reuse your method if implemented sooner. Else will do it later.Hope it is ok.",
+      "parentUuid": "3857ed1f_a35bfba9",
       "range": {
         "startLine": 155,
         "startChar": 1,
