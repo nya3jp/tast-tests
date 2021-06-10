@@ -115,6 +115,30 @@
       },
       "revId": "f71dcce725cc7410d877d350d8f534f9e9e7796b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9a1df53_f122c748",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-10T01:13:50Z",
+      "side": 1,
+      "message": "I still think it works.\n\naction.Action is a type of function that returns error:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/action/action.go;l\u003d18;drc\u003d23aa61ab59537c3b315334973638f061697cebea\n\nuiauto.Combine is a function that returns an Action, and also it accepts Action as its argument:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d93;drc\u003d5de94f2131dad01d130d9552a0b27f411754e453\n\nI\u0027ve downlaoded this patch and changed lines here as I suggested, and it\u0027s working.",
+      "parentUuid": "80cc636d_4a513dc2",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "f71dcce725cc7410d877d350d8f534f9e9e7796b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

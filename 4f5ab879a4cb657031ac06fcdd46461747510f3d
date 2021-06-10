@@ -16,6 +16,23 @@
       "message": "Thanks for the review, I addressed your comments. Please let me know if it still looks good, thanks!",
       "revId": "4f5ab879a4cb657031ac06fcdd46461747510f3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3226302d_561938c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-10T01:13:50Z",
+      "side": 1,
+      "message": "thanks! still lgtm",
+      "revId": "4f5ab879a4cb657031ac06fcdd46461747510f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
