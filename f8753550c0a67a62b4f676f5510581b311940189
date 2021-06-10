@@ -159,6 +159,30 @@
       },
       "revId": "f8753550c0a67a62b4f676f5510581b311940189",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eaaf872_70593965",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1003044
+      },
+      "writtenOn": "2021-06-10T08:06:29Z",
+      "side": 1,
+      "message": "This will still race with deleting the last shared folder as this is retrieving the shared folders outside of the polling loop (basically the same as my first reply in this comment thread).\n\nSo given we don\u0027t have a way to atomically perform: \"check the labels and then get the list of shared folders\", I think we\u0027re choosing between the approach in this CL (potentially dropping real errors from NodesInfo) and wrapping the existing code in a poll loop (which imo is a bit complicated and structurally doesn\u0027t match what we want it to do).",
+      "parentUuid": "37a3d983_357412e8",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 2
+      },
+      "revId": "f8753550c0a67a62b4f676f5510581b311940189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
