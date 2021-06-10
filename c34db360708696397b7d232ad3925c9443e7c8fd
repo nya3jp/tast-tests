@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b9bb5bf_6b0d35fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-10T10:06:02Z",
+      "side": 1,
+      "message": "Can you make sure you ran repo upload hooks?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md#run-repo-upload-hooks",
+      "revId": "c34db360708696397b7d232ad3925c9443e7c8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50729cb2_67f723e4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/utils.go",
         "patchSetId": 1
