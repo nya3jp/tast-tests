@@ -16,11 +16,11 @@ import (
 )
 
 const (
-	deviceInfoPattern = `PS175:
-      Device ID:          [0-9a-f]+
-      Current version:    \d+\.\d+
-      Vendor:             Parade \(I2C:1AF8\)
-      GUID:               f8887c5d-6236-50cd-bbc4-b188a4a3b198 \? FLASHROM-LSPCON-I2C-SPI\\VEN_1AF8&DEV_0175
+	deviceInfoPattern = `.*PS175:
+.*Device ID:          [0-9a-f]+
+.*Current version:    \d+\.\d+
+.*Vendor:             Parade \(I2C:1AF8\)
+.*GUID:               f8887c5d-6236-50cd-bbc4-b188a4a3b198 \? FLASHROM-LSPCON-I2C-SPI\\VEN_1AF8&DEV_0175
 `
 )
 
@@ -43,7 +43,7 @@ func init() {
 	})
 }
 
-// verifyPS175Detected verifies the fwupdtool output shows a PS175 was detected.
+// verifyPS175Detected verifies the fwupdmgr output shows a PS175 was detected.
 func verifyPS175Detected(output []byte) error {
 	matched, err := regexp.Match(deviceInfoPattern, output)
 	if err != nil {
@@ -57,10 +57,10 @@ func verifyPS175Detected(output []byte) error {
 	return nil
 }
 
-// FwupdDetectPS175 runs the fwupdtool utility and verifies that the PS175
+// FwupdDetectPS175 runs the fwupdmgr utility and verifies that the PS175
 // device is recognized.
 func FwupdDetectPS175(ctx context.Context, s *testing.State) {
-	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdtool", "get-devices", "--plugins", "flashrom")
+	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "get-devices")
 
 	output, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
@@ -68,6 +68,6 @@ func FwupdDetectPS175(ctx context.Context, s *testing.State) {
 	}
 
 	if err := verifyPS175Detected(output); err != nil {
-		s.Fatal("fwupdtool failed to detect PS175: ", err)
+		s.Fatal("fwupdmgr failed to detect PS175: ", err)
 	}
 }
