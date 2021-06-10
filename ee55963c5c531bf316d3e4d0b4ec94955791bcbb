@@ -22,6 +22,30 @@
       },
       "revId": "ee55963c5c531bf316d3e4d0b4ec94955791bcbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57e75409_039e94de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T22:07:19Z",
+      "side": 1,
+      "message": "changed to cleanupCtx and rename installCtx to ctx to follow the general pattern",
+      "parentUuid": "73bf37a9_0fe49987",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 9
+      },
+      "revId": "ee55963c5c531bf316d3e4d0b4ec94955791bcbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
