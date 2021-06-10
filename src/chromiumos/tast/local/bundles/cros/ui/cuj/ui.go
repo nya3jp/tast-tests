@@ -13,44 +13,11 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/testing"
 )
-
-// Click executes the click action of the first node found with the
-// given params. If the node doesn't exist in a second, an error is returned.
-func Click(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams) error {
-	return WaitAndClick(ctx, tconn, params, time.Second)
-}
-
-// WaitAndClick executes the click action of a node found with the
-// given params. If the timeout is hit, an error is returned.
-func WaitAndClick(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams, timeout time.Duration) error {
-	node, err := ui.FindWithTimeout(ctx, tconn, params, timeout)
-	if err != nil {
-		return err
-	}
-	defer node.Release(ctx)
-	return node.StableLeftClick(ctx, &testing.PollOptions{Interval: time.Second, Timeout: 10 * time.Second})
-}
-
-// ClickDescendant finds the first descendant of the parent node using the params
-// and clicks it. If the node doesn't exist in a second, an error is returned.
-func ClickDescendant(ctx context.Context, parent *ui.Node, params ui.FindParams) error {
-	return WaitAndClickDescendant(ctx, parent, params, 5*time.Second)
-}
-
-// WaitAndClickDescendant finds a descendant of the parent node using the params
-// and clicks it. If the timeout is hit, an error is returned.
-func WaitAndClickDescendant(ctx context.Context, parent *ui.Node, params ui.FindParams, timeout time.Duration) error {
-	node, err := parent.DescendantWithTimeout(ctx, params, timeout)
-	if err != nil {
-		return err
-	}
-	defer node.Release(ctx)
-	return node.StableLeftClick(ctx, &testing.PollOptions{Interval: time.Second, Timeout: 10 * time.Second})
-}
 
 // CloseAllWindows closes all currently open windows by iterating over
 // the shelf icons and calling apps.closeApp on each one.
@@ -125,20 +92,19 @@ func CloseBrowserTabs(ctx context.Context, tconn *chrome.TestConn) error {
 // Which it is also support multiple names for a single app (e.g. "Chrome"||"Chromium" for Google Chrome, the browser).
 // It returns the time when a mouse click event is injected to the app icon.
 func LaunchAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName string, appOtherPossibleNames ...string) (time.Time, error) {
-	params := ui.FindParams{Name: appName, ClassName: "ash/ShelfAppButton"}
+	params := nodewith.Name(appName).ClassName("ash/ShelfAppButton")
 	if len(appOtherPossibleNames) > 0 {
-		params = (*paramsOfAppNames(append(appOtherPossibleNames, appName)))
+		params = paramsOfAppNames(append(appOtherPossibleNames, appName))
 	}
 
-	icon, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
+	ac := uiauto.New(tconn)
+	if err := ac.WithTimeout(10 * time.Second).WaitForLocation(params)(ctx); err != nil {
 		return time.Time{}, errors.Wrapf(err, "failed to find app %q", appName)
 	}
-	defer icon.Release(ctx)
 
 	// Click mouse to launch app.
 	startTime := time.Now()
-	if err := icon.LeftClick(ctx); err != nil {
+	if err := ac.LeftClick(params)(ctx); err != nil {
 		return startTime, errors.Wrapf(err, "failed to launch app %q", appName)
 	}
 	return startTime, nil
@@ -150,44 +116,47 @@ func LaunchAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName str
 func LaunchAppFromHotseat(ctx context.Context, tconn *chrome.TestConn, appName string, appOtherPossibleNames ...string) (time.Time, error) {
 	var startTime time.Time
 	// Get touch controller for tablet.
-	tc, err := pointer.NewTouchController(ctx, tconn)
+	tc, err := touch.New(ctx, tconn)
 	if err != nil {
 		return startTime, errors.Wrap(err, "failed to create the touch controller")
 	}
 	defer tc.Close()
-	stw := tc.EventWriter()
-	tcc := tc.TouchCoordConverter()
+	tsew, tcc, err := touch.NewTouchscreenAndConverter(ctx, tconn)
+	if err != nil {
+		return startTime, errors.Wrap(err, "failed to access to the touch screen")
+	}
+	defer tsew.Close()
+	stw, err := tsew.NewSingleTouchWriter()
+	if err != nil {
+		return startTime, errors.Wrap(err, "failed to create a new single touch writer")
+	}
+	defer stw.Close()
 
 	// Make sure hotseat is shown.
 	if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
 		return startTime, errors.Wrap(err, "failed to show hotseat")
 	}
 
-	params := ui.FindParams{Name: appName, ClassName: "ash/ShelfAppButton"}
+	params := nodewith.Name(appName).ClassName("ash/ShelfAppButton")
 	if len(appOtherPossibleNames) > 0 {
-		params = (*paramsOfAppNames(append(appOtherPossibleNames, appName)))
+		params = paramsOfAppNames(append(appOtherPossibleNames, appName))
 	}
 
-	icon, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
+	ac := uiauto.New(tconn)
+	if err := ac.WithTimeout(10 * time.Second).WaitForLocation(params)(ctx); err != nil {
 		return startTime, errors.Wrapf(err, "failed to find app %q", appName)
 	}
-	defer icon.Release(ctx)
 
 	// Press button to launch app.
 	startTime = time.Now()
-	x, y := tcc.ConvertLocation(icon.Location.CenterPoint())
-	if err := stw.Move(x, y); err != nil {
-		return startTime, errors.Wrapf(err, "failed to press icon %q", appName)
-	}
-	if err := stw.End(); err != nil {
-		return startTime, errors.Wrapf(err, "failed to release pressed icon %q", appName)
+	if err := tc.Tap(params)(ctx); err != nil {
+		return startTime, errors.Wrapf(err, "failed to tap %q", appName)
 	}
 	return startTime, nil
 }
 
 // paramsOfAppNames combine all possible app names as a ui.FindParams
-func paramsOfAppNames(names []string) *ui.FindParams {
+func paramsOfAppNames(names []string) *nodewith.Finder {
 	pattern := "("
 	for idx, name := range names {
 		pattern += regexp.QuoteMeta(name)
@@ -197,8 +166,5 @@ func paramsOfAppNames(names []string) *ui.FindParams {
 	}
 	pattern += ")"
 
-	return &ui.FindParams{
-		Attributes: map[string]interface{}{"name": regexp.MustCompile(pattern)},
-		ClassName:  "ash/ShelfAppButton",
-	}
+	return nodewith.NameRegex(regexp.MustCompile(pattern)).ClassName("ash/ShelfAppButton")
 }
