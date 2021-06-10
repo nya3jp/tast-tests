@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78c9fd21_7774285f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-10T18:38:54Z",
+      "side": 1,
+      "message": "It\u0027s also needed in l.174. But I\u0027m removing the \"Name\" suffix\nas per comment in l.143 by kyleshima@.",
+      "parentUuid": "f3a0a2b9_1921ee9b",
+      "revId": "4853e20047861de56003cee35bfcbe37da4a7094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e47524a9_dedab27d",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-06-09T21:48:06Z",
       "side": 1,
       "message": "\"Name\" not needed perhaps? since this is the actual histogram",
+      "range": {
+        "startLine": 143,
+        "startChar": 28,
+        "endLine": 143,
+        "endChar": 32
+      },
+      "revId": "4853e20047861de56003cee35bfcbe37da4a7094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9e8675c_b5ef77ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-10T18:38:54Z",
+      "side": 1,
+      "message": "Good point, done.",
+      "parentUuid": "e47524a9_dedab27d",
       "range": {
         "startLine": 143,
         "startChar": 28,
