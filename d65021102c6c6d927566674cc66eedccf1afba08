@@ -1,0 +1,186 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccf0a6be_b23c818e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-06-10T09:37:01Z",
+      "side": 1,
+      "message": "nit: tool",
+      "range": {
+        "startLine": 80,
+        "startChar": 16,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28af7ea6_b07d8687",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-06-10T09:37:01Z",
+      "side": 1,
+      "message": "The 5 sec duration is not obvious in this function. It\u0027s actually deep in |config|. This comment is confusing.\nAlso, if this service is used by other tests that specify a longer collection duration, this timeout will be too short.\nWe either shorten |ctx| a little for cleanup and let the users of this service to decide what context timeout they want to use, or we need to peek into |config| to know the duration and decide the context timeout in this function accordingly.",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb281c45_a2d81b83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-06-10T09:37:01Z",
+      "side": 1,
+      "message": "Need to handle the error returned by io.WriteString().\n\nThe IO overhead in writing to stdin is probably not significant compared to the collection duration. This function is blocking anyway (in cmd.Output()). It would be simpler if we just do io.WriteString() and then stdin.Close().\n\nIf you want to use goroutine, you need to use channel to get the result from the goroutine, but that looks like an overkill to me 😊",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c986444b_d5249ee5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-06-10T09:37:01Z",
+      "side": 1,
+      "message": "Clean this up.",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63f03632_4c097244",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-06-10T09:37:01Z",
+      "side": 1,
+      "message": "nit: The file name clashes with the RPC service implementation, but the term \"service\" has different meaning in these 2 files: the RPC implementation src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing_service.go ends with _service.go to indicate that it\u0027s the RPC implementation file. In this file, it indicates the \"system tracing service\". This is confusing. Is it possible to avoid this name clash?",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dea5a78_617064f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-06-10T09:37:01Z",
+      "side": 1,
+      "message": "Can we use external config pbtxt file as before, or use a separate file for the configs? The config takes a lot of space in the code.",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fb1a458_7f6e4c0f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-06-10T09:37:01Z",
+      "side": 1,
+      "message": "Add a comment here of how we get this URL and what needs to be done if we need to uprev the prebuilt trace_processor_shell.",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dff1ee4_52d36bdd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-06-10T09:37:01Z",
+      "side": 1,
+      "message": "Do we really need to use crosbolt for verifying the functionality of trace collection? This sounds like an overkill to me.\n\nIt looks like this test serves 2 purposes:\n1. function test of traced/traced_probes\n2. an example for how to use trace_based_metrics.\n\nI think it\u0027ll be better to separate the above into separate, smaller tests to for clarity. WDYT?",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09d8d24e_c3f173d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-06-10T09:37:01Z",
+      "side": 1,
+      "message": "You may use ioutil.WriteFile() for brevity.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae52242_35a92310",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-06-10T09:37:01Z",
+      "side": 1,
+      "message": "Do we need to download trace_processor_shell each time this test runs? I think we can do something similar to tests that has media playback.",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
