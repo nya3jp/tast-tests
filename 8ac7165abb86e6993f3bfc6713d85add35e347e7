@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eba1ce5_75f269e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-10T00:35:48Z",
+      "side": 1,
+      "message": "TY",
+      "revId": "8ac7165abb86e6993f3bfc6713d85add35e347e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32c3958a_0e673fc2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-10T00:35:48Z",
+      "side": 1,
+      "message": "nit optional: please drop short comment why this one is needed.",
+      "range": {
+        "startLine": 383,
+        "startChar": 25,
+        "endLine": 383,
+        "endChar": 37
+      },
+      "revId": "8ac7165abb86e6993f3bfc6713d85add35e347e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
