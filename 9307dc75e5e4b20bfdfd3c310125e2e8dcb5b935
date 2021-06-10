@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c68f7f1c_02a5b10b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T17:31:55Z",
+      "side": 1,
+      "message": "Thanks Jun for working on this. We are removing this Netflix file from the tast now with this CL https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2605501, because Netflix is moved out of CUJ test.\n\nYou can remove it from this CL if you like.",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 12
+      },
+      "revId": "9307dc75e5e4b20bfdfd3c310125e2e8dcb5b935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
