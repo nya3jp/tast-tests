@@ -25,10 +25,10 @@ func init() {
 	})
 }
 
-// FwupdGetDevices runs the fwupdtool utility and verifies that it
+// FwupdGetDevices runs the fwupdmgr utility and verifies that it
 // detects devices in the system.
 func FwupdGetDevices(ctx context.Context, s *testing.State) {
-	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdtool", "get-devices", "--show-all")
+	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "get-devices", "--show-all")
 
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		s.Fatalf("%q failed: %v", shutil.EscapeSlice(cmd.Args), err)
