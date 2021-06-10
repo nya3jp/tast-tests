@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a163e60_b808ca1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-10T16:04:07Z",
+      "side": 1,
+      "message": "I normally send reviews to Greg Edelston (part of tast-owners), but was trying not to overwhelm him. There isn\u0027t anyone else who writes tast tests for firmware.",
+      "parentUuid": "7158d828_317a4771",
+      "revId": "f78d9329663853a6800ed91d501996c412082e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11471484_68cc8b30",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b38f459f_1e231635",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-10T16:04:07Z",
+      "side": 1,
+      "message": "Yes. Changing to `sleep, err :\u003d` on line 46 causes a new local var sleep to be created instead of updating the one from the `func DeepSleep` scope, and err doesn\u0027t exist yet at this point.",
+      "parentUuid": "11471484_68cc8b30",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "f78d9329663853a6800ed91d501996c412082e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "616324d6_dd512cf4",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-06-10T00:52:15Z",
       "side": 1,
       "message": "What part of test cleanup wants to connect? Should this be in a defer function to ensure it gets called?",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "f78d9329663853a6800ed91d501996c412082e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e8065ec_9253d1f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-10T16:04:07Z",
+      "side": 1,
+      "message": "At the end of every test, logs are collected and a screenshot is taken.\n\nThis just makes the test finish faster, it doesn\u0027t matter if it gets called or not.  Without it, the test cleanup code times out and prints some annoying errors, but no real harm is done.",
+      "parentUuid": "616324d6_dd512cf4",
       "range": {
         "startLine": 136,
         "startChar": 0,
