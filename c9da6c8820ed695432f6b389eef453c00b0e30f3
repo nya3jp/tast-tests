@@ -16,6 +16,24 @@
       "message": "Thank you! Can you please verify that the test passes after http://ag/14895047 is applied? ",
       "revId": "c9da6c8820ed695432f6b389eef453c00b0e30f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fb08ff7_bea7d389",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-06-10T07:21:55Z",
+      "side": 1,
+      "message": "Confirmed the test passes after applying ag/14895047. Thanks!\n\nTest log: ARC is using GMSCore of version \"com.google.android.gms@210613050@21.06.13 (150800-358943053)\"",
+      "parentUuid": "90dac573_7f3f8058",
+      "revId": "c9da6c8820ed695432f6b389eef453c00b0e30f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
