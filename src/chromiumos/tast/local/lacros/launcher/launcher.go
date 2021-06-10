@@ -29,9 +29,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// LacrosUserDataDir is the directory that contains the user data of lacros.
-const LacrosUserDataDir = "/home/chronos/user/lacros/"
-
 // LacrosChrome contains all state associated with a lacros-chrome instance
 // that has been launched. Must call Close() to release resources.
 type LacrosChrome struct {
