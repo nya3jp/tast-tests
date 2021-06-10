@@ -130,7 +130,7 @@ func DrawOnCanvas(ctx context.Context, s *testing.State) {
 	}
 
 	// Now we can play the video and draw it on the canvas.
-	if err := conn.Call(ctx, nil, "playAndDrawOnCanvas", params.fileName); err != nil {
+	if err := conn.Call(ctx, nil, "drawFirstFrameOnCanvas", params.fileName); err != nil {
 		s.Fatal("playAndDrawOnCanvas() failed: ", err)
 	}
 

@@ -19,14 +19,18 @@ function initializeCanvas(width, height) {
   ctx = canvas.getContext('2d', {alpha: false});
 }
 
-// Starts playing videoSourcePath. Once playback starts, the video is drawn once
-// on the canvas without scaling.
-async function playAndDrawOnCanvas(videoSourcePath) {
-  const video = document.getElementById('video');
-  video.src = videoSourcePath;
-  await video.play();
-  const canvas = document.getElementById('canvas');
-  ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+// Returns a Promise that resolves when the first frame of videoSourcePath is
+// drawn on the canvas without scaling.
+function drawFirstFrameOnCanvas(videoSourcePath) {
+  return new Promise((resolve, reject) => {
+    const video = document.getElementById('video');
+    video.src = videoSourcePath;
+    video.requestVideoFrameCallback((_) => {
+      const canvas = document.getElementById('canvas');
+      ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+      resolve();
+    });
+  });
 }
 
 // Returns the contents of the canvas as a PNG image in data URI format.
