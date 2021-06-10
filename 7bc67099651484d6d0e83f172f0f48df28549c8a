@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e4c5233_627855d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-10T19:33:51Z",
+      "side": 1,
+      "message": "Hello Hiroki and Saho,\n\nWould you please take a look when you get the chance? Thank you so much!",
+      "revId": "7bc67099651484d6d0e83f172f0f48df28549c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
