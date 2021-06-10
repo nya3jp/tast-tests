@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5df29c5e_599329ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-06-10T15:13:55Z",
+      "side": 1,
+      "message": "Thanks, I pushed it with a \"git push cros ...\", i\u0027ll upload a revision after repo checks.",
+      "parentUuid": "2b9bb5bf_6b0d35fb",
+      "revId": "c34db360708696397b7d232ad3925c9443e7c8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50729cb2_67f723e4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/utils.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-10T06:21:16Z",
       "side": 1,
       "message": "This is very basic parsing, there are dozens of strings that indicate a bug. Isn\u0027t there a common parsing for this already? Or how other tests do this?\nYou can peek more strings in syzkaller\u0027s pkg/report/linux.go.",
+      "revId": "c34db360708696397b7d232ad3925c9443e7c8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d44b427_ade1133a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-06-10T15:13:55Z",
+      "side": 1,
+      "message": "thanks, yes, I was hoping to pull that in for a follow-up CL. At the moment I\u0027m aware of debug-kernel-testing that is based on syzkaller\u0027s parsing; but it is used as part of log processing post-testing(so it\u0027s not available to this tast test).\n\nnya@: Do you think it would be useful for tast to provide helper methods that check for specific types of stacktraces/bugs in some contents([]byte) provided by a test? If not, I\u0027ll import the functionality for this test alone from syzkaller\u0027s existing parsing.",
+      "parentUuid": "50729cb2_67f723e4",
       "revId": "c34db360708696397b7d232ad3925c9443e7c8fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
