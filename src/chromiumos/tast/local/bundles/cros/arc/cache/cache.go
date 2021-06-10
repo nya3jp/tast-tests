@@ -290,7 +290,7 @@ func waitForPath(ctx context.Context, path string, c pathCondition) error {
 			}
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 2 * time.Minute, Interval: time.Second}); err != nil {
 		return errors.Wrapf(err, "failed to wait for path %s", path)
 	}
 	return nil
@@ -356,7 +356,7 @@ func waitForApksOptimized(ctx context.Context, root string, sdkVersion int) erro
 			}
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 2 * time.Minute, Interval: time.Second}); err != nil {
 		return errors.Wrapf(err, "failed to wait for APKs optimized %s", root)
 	}
 	return nil
