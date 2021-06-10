@@ -22,6 +22,30 @@
       },
       "revId": "9307dc75e5e4b20bfdfd3c310125e2e8dcb5b935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51fcd22c_e949273e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-10T17:34:45Z",
+      "side": 1,
+      "message": "Okay, I\u0027ll hold this CL until your CL is merged (the netflix.go depends on some chrome/ui package feature in cuj/ui.go, I can\u0027t just remove netflix.go from this CL).",
+      "parentUuid": "c68f7f1c_02a5b10b",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 12
+      },
+      "revId": "9307dc75e5e4b20bfdfd3c310125e2e8dcb5b935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
