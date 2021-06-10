@@ -3,6 +3,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "07dcfaa3_fc06e625",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-06-10T12:53:57Z",
+      "side": 1,
+      "message": "actually we assume that there is not supposed to be any reboot for local tast-test. But yeah, maybe there is no point to being obsessive with the assumption.\n\nBTW, can we really not stop VM from rebooting during other local test (IIUC, if \"suspend\" is attempted or something?) ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 61,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "b9d7b89209bdf84386b28d627f9ad5f6ec9de1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ba17e4f6_a33e1117",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
