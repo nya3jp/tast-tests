@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -66,8 +65,8 @@ func GetShelfBehavior(ctx context.Context, tconn *chrome.TestConn, displayID str
 
 // WaitForShelf waits for the shelf to exist in the UI tree.
 func WaitForShelf(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) error {
-	params := ui.FindParams{Role: ui.RoleTypeToolbar, ClassName: "ShelfView"}
-	if err := ui.WaitUntilExists(ctx, tconn, params, timeout); err != nil {
+	params := nodewith.Role(role.Toolbar).ClassName("ShelfView")
+	if err := uiauto.New(tconn).WithTimeout(timeout).WaitUntilExists(params)(ctx); err != nil {
 		return errors.Wrap(err, "shelf not found")
 	}
 	return nil
@@ -516,14 +515,8 @@ func LaunchAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName, ap
 	if err := ShowHotseat(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to launch app from shelf")
 	}
-	params := ui.FindParams{Name: appName, ClassName: shelfIconClassName}
-	icon, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		return errors.Wrapf(err, "failed to find app %q", appName)
-	}
-	defer icon.Release(ctx)
-	// Click mouse to launch app.
-	if err := icon.LeftClick(ctx); err != nil {
+	params := nodewith.Name(appName).ClassName(shelfIconClassName)
+	if err := uiauto.New(tconn).WithTimeout(10 * time.Second).LeftClick(params)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to launch app %q", appName)
 	}
 	// Make sure app is launched.
@@ -563,34 +556,14 @@ func ShowHotseat(ctx context.Context, tconn *chrome.TestConn) error {
 // The parameter appName should be the name of the app which is same as the value stored in apps.App.Name.
 func PinAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName string) error {
 	// Find the icon from shelf.
-	params := ui.FindParams{Name: appName, ClassName: shelfIconClassName}
-	icon, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		return errors.Wrapf(err, "failed to find app %q", appName)
-	}
-	defer icon.Release(ctx)
-
-	// Open context menu.
-	if err := icon.RightClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to open context menu")
-	}
-	// Find option to pin app to shelf.
-	params = ui.FindParams{Name: "Pin", ClassName: "MenuItemView"}
-	option, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		// The pin to shelf is not available for this icon
-		return errors.Wrap(err, `option "Pin" is not available`)
-	}
-	defer option.Release(ctx)
-	// Pin app to shelf.
-	if err := option.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, `failed to select option "Pin"`)
-	}
-	// Make sure all items on the shelf are done moving.
-	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to wait for location change to be completed")
-	}
-	return nil
+	icon := nodewith.Name(appName).ClassName(shelfIconClassName)
+	option := nodewith.Name("Pin").ClassName("MenuItemView")
+	ac := uiauto.New(tconn)
+	return uiauto.Combine(
+		"click icon and then click pin",
+		ac.RightClick(icon),
+		ac.LeftClick(option),
+	)(ctx)
 }
 
 // PinAppFromHotseat pins an open app on the hotseat using the context menu.
@@ -612,45 +585,16 @@ func PinAppFromHotseat(ctx context.Context, tconn *chrome.TestConn, appName stri
 		return errors.Wrap(err, "failed to show hotseat")
 	}
 
-	// Find the icon from hotseat.
-	params := ui.FindParams{Name: appName, ClassName: shelfIconClassName}
-	icon, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	tc, err := touch.New(ctx, tconn)
 	if err != nil {
-		return errors.Wrapf(err, "failed to find app %q", appName)
-	}
-	defer icon.Release(ctx)
-
-	// Open context menu.
-	x, y := tcc.ConvertLocation(icon.Location.CenterPoint())
-	if err := stw.LongPressAt(ctx, x, y); err != nil {
-		return errors.Wrapf(err, "failed to long press icon %q", appName)
-	}
-	if err := stw.End(); err != nil {
-		return errors.Wrapf(err, "failed to release pressed icon %q", appName)
+		return errors.Wrap(err, "failed to initialize the touch context")
 	}
 
-	// Find option to pin app to hotseat.
-	params = ui.FindParams{Name: "Pin", ClassName: "MenuItemView"}
-	option, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		// The pin option is not available for this icon
-		return errors.Wrap(err, `option "Pin" is not available`)
-	}
-	defer option.Release(ctx)
-
-	// Pin app to hotseat.
-	x, y = tcc.ConvertLocation(option.Location.CenterPoint())
-	if err := stw.Move(x, y); err != nil {
-		return errors.Wrap(err, "failed to press option Pin")
-	}
-	if err := stw.End(); err != nil {
-		return errors.Wrap(err, "failed to release pressed option Pin")
-	}
-	// Make sure all items on the hotseat are done moving.
-	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to wait for location change to be completed")
-	}
-	return nil
+	return uiauto.Combine(
+		"open the menu and tap the pin menu",
+		tc.LongPress(nodewith.Name(appName).ClassName(shelfIconClassName)),
+		tc.Tap(nodewith.Name("Pin").ClassName("MenuItemView")),
+	)(ctx)
 }
 
 // WaitForHotseatAnimationToFinish waits for the hotseat animation is done.
