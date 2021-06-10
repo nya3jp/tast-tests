@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a45354_16237a49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj2.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-10T01:58:47Z",
+      "side": 1,
+      "message": "It seems that if mode is \"clamshell\" or anything else, it is false? If yes, could you please add some comments to the var definition in line 33?",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "2b826e6bf0380079e11d233b10ceee6b15314971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63fd3c33_d14e9163",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj2.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-10T01:58:47Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 86,
+        "startChar": 16,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "2b826e6bf0380079e11d233b10ceee6b15314971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c159eaa_b131f8c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj2.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-10T01:58:47Z",
+      "side": 1,
+      "message": "It should be moved to line 73 and it should look like this:\n// Give 5 seconds to clean up.\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "2b826e6bf0380079e11d233b10ceee6b15314971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8503372_19ed46c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-10T01:58:47Z",
+      "side": 1,
+      "message": "Same comment as others.",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 15
+      },
+      "revId": "2b826e6bf0380079e11d233b10ceee6b15314971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
