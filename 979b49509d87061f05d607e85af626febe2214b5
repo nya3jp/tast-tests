@@ -37,6 +37,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "444113d1_db9feee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-06-10T21:27:21Z",
+      "side": 1,
+      "message": "nit: use const variables?",
+      "range": {
+        "startLine": 293,
+        "startChar": 34,
+        "endLine": 293,
+        "endChar": 72
+      },
+      "revId": "979b49509d87061f05d607e85af626febe2214b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "812b69e2_210d1299",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-06-10T21:27:21Z",
+      "side": 1,
+      "message": "nit: use const variable called `acceptedBlockSizeDelta` for `8`?  Or list if it could be more than one accepted exception.",
+      "range": {
+        "startLine": 311,
+        "startChar": 46,
+        "endLine": 311,
+        "endChar": 47
+      },
+      "revId": "979b49509d87061f05d607e85af626febe2214b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40e5f3b5_7459ff0b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
         "patchSetId": 2
