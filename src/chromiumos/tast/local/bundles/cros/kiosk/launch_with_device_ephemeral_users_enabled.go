@@ -6,12 +6,11 @@ package kiosk
 
 import (
 	"context"
-	"strings"
-	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/kioskmode"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/syslog"
@@ -45,12 +44,18 @@ func LaunchWithDeviceEphemeralUsersEnabled(ctx context.Context, s *testing.State
 	}
 
 	defer func(ctx context.Context) {
+		// This is required for cases when DeviceLocalAccountAutoLoginId policy
+		// is used. If we won't clear policies and refresh then when test
+		// completes and later Chrome is restarted then Kiosk modes starts
+		// again.
+		policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{})
 		// Use cr as a reference to close the last started Chrome instance.
 		if err := cr.Close(ctx); err != nil {
 			s.Error("Failed to close Chrome connection: ", err)
 		}
 	}(ctx)
 
+	// TODO(crbug.com/1218392): Clean up the setup phase for Kiosk mode
 	// those are values that set Kiosk account.
 	// kioskAppAccountID account identifier - set arbitrary.
 	kioskAppAccountID := "anyIdThatCouldIdentifyThisAccount"
@@ -108,26 +113,7 @@ func LaunchWithDeviceEphemeralUsersEnabled(ctx context.Context, s *testing.State
 		s.Fatal("Chrome restart failed: ", err)
 	}
 
-	const (
-		kioskStarting        = "Starting kiosk mode"
-		kioskLaunchSucceeded = "Kiosk launch succeeded"
-	)
-
-	s.Logf("Wait for '%q' to be present in the log", kioskStarting)
-	if _, err := reader.Wait(ctx, 60*time.Second,
-		func(e *syslog.Entry) bool {
-			return strings.Contains(e.Content, kioskStarting)
-		},
-	); err != nil {
-		s.Fatal("Failed to verify starting of Kiosk mode: ", err)
-	}
-
-	s.Logf("Wait for '%q' to be present in the log", kioskLaunchSucceeded)
-	if _, err := reader.Wait(ctx, 60*time.Second,
-		func(e *syslog.Entry) bool {
-			return strings.Contains(e.Content, kioskLaunchSucceeded)
-		},
-	); err != nil {
-		s.Fatal("Failed to verify successful launch of Kiosk mode: ", err)
+	if err := kioskmode.ConfirmKioskStarted(ctx, reader); err != nil {
+		s.Fatal("There was a problem while checking chrome logs for Kiosk related entries: ", err)
 	}
 }
