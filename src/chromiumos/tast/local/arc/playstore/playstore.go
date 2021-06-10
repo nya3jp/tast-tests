@@ -90,6 +90,8 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 			// dismiss the dialog. This check needs to be done before checking the
 			// install button since the install button exists underneath.
 			{cantDownloadText, okButtonText},
+			// Also press "Got it" button if ""Can't download <app name>" pops up.
+			{cantDownloadText, gotItButtonText},
 			// Similarly, press "Got it" button if "Can't install <app name>" dialog pops up.
 			{cantInstallText, gotItButtonText},
 			// Also, press Ok to dismiss the dialog if "Please open my apps" dialog pops up.
