@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7158d828_317a4771",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-06-10T00:52:15Z",
+      "side": 1,
+      "message": "Is there someone on your team that can review the code? That\u0027s generally required in addition to tast owners.",
+      "revId": "f78d9329663853a6800ed91d501996c412082e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11471484_68cc8b30",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-06-10T00:52:15Z",
+      "side": 1,
+      "message": "Is this line necessary?",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "f78d9329663853a6800ed91d501996c412082e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "616324d6_dd512cf4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-06-10T00:52:15Z",
+      "side": 1,
+      "message": "What part of test cleanup wants to connect? Should this be in a defer function to ensure it gets called?",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "f78d9329663853a6800ed91d501996c412082e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
