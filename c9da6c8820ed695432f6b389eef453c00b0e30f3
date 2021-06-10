@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90dac573_7f3f8058",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-10T06:49:38Z",
+      "side": 1,
+      "message": "Thank you! Can you please verify that the test passes after http://ag/14895047 is applied? ",
+      "revId": "c9da6c8820ed695432f6b389eef453c00b0e30f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
