@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "eebf6769_dfeb2209",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-06-10T21:20:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63a6479e_2f0ae45a",
+      "range": {
+        "startLine": 10,
+        "startChar": 71,
+        "endLine": 10,
+        "endChar": 72
+      },
+      "revId": "fcce1354458eca1c7c7c9ddcd97ceb7605db23a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "df3f950a_daec47b2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "988b8d25_5573e4ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-06-10T21:20:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ca9f7bd_bffcd83a",
+      "range": {
+        "startLine": 28,
+        "startChar": 37,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "fcce1354458eca1c7c7c9ddcd97ceb7605db23a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39b4cc7f_a24ee36e",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-06-10T20:47:32Z",
       "side": 1,
       "message": "t: Don\u0027t we need a video.play() here to force the play\nlike in the LHS? Although the element has autoplay\u003dtrue\nand shouldn\u0027t need it (shouldn\u0027t have needed it before\neither).",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 7
+      },
+      "revId": "fcce1354458eca1c7c7c9ddcd97ceb7605db23a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0629ab68_0a1dff7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-06-10T21:20:36Z",
+      "side": 1,
+      "message": "Hmm, yeah, I guess it\u0027s not needed. I probably had it there before in order to make sure the video had started playing (which I think was wrong for my purposes). When I ran it without the explicit call to play(), it drew the video on the canvas fine.",
+      "parentUuid": "39b4cc7f_a24ee36e",
       "range": {
         "startLine": 32,
         "startChar": 4,
