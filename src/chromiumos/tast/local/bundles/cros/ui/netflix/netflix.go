@@ -9,9 +9,10 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -45,24 +46,25 @@ func New(ctx context.Context, tconn *chrome.TestConn, username, password string,
 	if err = webutil.WaitForQuiescence(ctx, conn, timeout); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for Netflix login page to finish loading")
 	}
-	kidsParam := ui.FindParams{Name: "Kids", Role: ui.RoleTypeLink}
-	if err := ui.WaitUntilExists(ctx, tconn, kidsParam, timeout); err == nil {
+	ac := uiauto.New(tconn)
+	kidsParam := nodewith.Name("Kids").Role(role.Link)
+	if err := ac.WithTimeout(timeout).WaitUntilExists(kidsParam)(ctx); err == nil {
 		testing.ContextLog(ctx, "Kids is found, assuming the login is completed already")
 		return &Netflix{conn: conn}, nil
 	}
 	// Check that user was logged in
-	homeParam := ui.FindParams{Name: "Home", Role: ui.RoleTypeLink}
-	if err := ui.WaitUntilExists(ctx, tconn, homeParam, 5*time.Second); err == nil {
+	homeParam := nodewith.Name("Home").Role(role.Link)
+	if err := ac.WithTimeout(5 * time.Second).WaitUntilExists(homeParam)(ctx); err == nil {
 		testing.ContextLog(ctx, "Home is found, assuming the login is completed already")
 		return &Netflix{conn: conn}, nil
 	}
-	if err = n.signIn(ctx, tconn, conn, username, password); err != nil {
+	if err = n.signIn(ctx, ac, conn, username, password); err != nil {
 		return nil, errors.Wrap(err, "failed to sign in Netflix")
 	}
 	return &Netflix{conn: conn}, nil
 }
 
-func (n *Netflix) signIn(ctx context.Context, tconn *chrome.TestConn, conn *chrome.Conn, username, password string) error {
+func (n *Netflix) signIn(ctx context.Context, ac *uiauto.Context, conn *chrome.Conn, username, password string) error {
 	testing.ContextLog(ctx, "Attempting to log into Netflix")
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -70,44 +72,21 @@ func (n *Netflix) signIn(ctx context.Context, tconn *chrome.TestConn, conn *chro
 	}
 	defer kb.Close()
 
-	signInParam := ui.FindParams{Name: "Sign In", Role: ui.RoleTypeLink}
-	if err := cuj.WaitAndClick(ctx, tconn, signInParam, timeout); err != nil {
-		return errors.Wrap(err, "failed to click sign in field")
-	}
-
-	if err := webutil.WaitForQuiescence(ctx, conn, timeout); err != nil {
-		return errors.Wrap(err, "failed to wait for Netflix login page to finish loading")
-	}
-
-	accountParam := ui.FindParams{Name: "Email or phone number"}
-	if err := cuj.WaitAndClick(ctx, tconn, accountParam, timeout); err != nil {
-		return errors.Wrap(err, "failed to click account field")
-	}
-
-	if err := kb.Type(ctx, username); err != nil {
-		return errors.Wrap(err, "failed to type email")
-	}
-
-	passwordParam := ui.FindParams{Name: "Password"}
-	if err := cuj.WaitAndClick(ctx, tconn, passwordParam, timeout); err != nil {
-		return errors.Wrap(err, "failed to click password field")
-	}
-
-	if err := kb.Type(ctx, password); err != nil {
-		return errors.Wrap(err, "failed to type password")
-	}
-
-	if err := kb.Accel(ctx, "Enter"); err != nil {
-		return errors.Wrap(err, "failed to press enter")
-	}
-
-	// Check that user was logged in successfully.
-	homeParam := ui.FindParams{Name: "Home", Role: ui.RoleTypeLink}
-	if err := ui.WaitUntilExists(ctx, tconn, homeParam, timeout); err != nil {
-		return errors.Wrap(err, "failed to sign in")
-	}
-
-	return nil
+	signInParam := nodewith.Name("Sign In").Role(role.Link)
+	accountParam := nodewith.Name("Email or phone number")
+	passwordParam := nodewith.Name("Password")
+	homeParam := nodewith.Name("Home").Role(role.Link)
+	return uiauto.Combine(
+		"netflix signin",
+		ac.WithTimeout(timeout).LeftClick(signInParam),
+		func(ctx context.Context) error { return webutil.WaitForQuiescence(ctx, conn, timeout) },
+		ac.WithTimeout(timeout).LeftClick(accountParam),
+		kb.TypeAction(username),
+		ac.WithTimeout(timeout).LeftClick(passwordParam),
+		kb.TypeAction(password),
+		kb.AccelAction("Enter"),
+		ac.WithTimeout(timeout).WaitUntilExists(homeParam),
+	)(ctx)
 }
 
 // Play starts a Netflix video.
@@ -131,7 +110,7 @@ func (n *Netflix) SignOut(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to wait for Netflix logout page to finish loading")
 	}
 	// Check that user has signed out successfully.
-	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{Name: "Sign In"}, timeout); err != nil {
+	if err := uiauto.New(tconn).WithTimeout(timeout).WaitUntilExists(nodewith.Name("Sign In"))(ctx); err != nil {
 		return errors.Wrap(err, "failed to sign out")
 	}
 	return nil
