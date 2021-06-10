@@ -10,17 +10,21 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/a11y"
+	"chromiumos/tast/local/action"
 	arca11y "chromiumos/tast/local/bundles/cros/arc/a11y"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
 type axEventTestStep struct {
-	keys      string        // a sequence of keys to invoke.
-	focus     ui.FindParams // expected params of focused node after the event.
-	eventType ui.EventType  // an expected event type from the focused node.
+	keys  string           // a sequence of keys to invoke.
+	focus *nodewith.Finder // expected params of focused node after the event.
+	event event.Event      // an expected event type from the focused node.
 }
 
 func init() {
@@ -42,173 +46,87 @@ func init() {
 }
 
 func runTestStep(ctx context.Context, cvconn *a11y.ChromeVoxConn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, step axEventTestStep, isFirstStep bool) error {
-	watcher, err := ui.NewRootWatcher(ctx, tconn, step.eventType)
-	if err != nil {
-		return errors.Wrap(err, "failed to create EventWatcher")
-	}
-	defer watcher.Release(ctx)
-
-	// Send a key event.
-	if err := ew.Accel(ctx, step.keys); err != nil {
-		return errors.Wrapf(err, "Accel(%s) returned error", step.keys)
-	}
-
-	// Wait for the focused element to match the expected.
-	if err := cvconn.WaitForFocusedNode(ctx, tconn, &step.focus, 10*time.Second); err != nil {
-		return err
-	}
-
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		events, err := watcher.WaitForEvent(ctx, 10*time.Second)
-		if err != nil {
-			return err
+	sendKeyEvent := func() action.Action {
+		return func(ctx context.Context) error {
+			return ew.Accel(ctx, step.keys)
 		}
-		defer events.Release(ctx)
+	}
 
-		for _, e := range events {
-			if e.Target == nil {
-				continue
-			}
-			if ok, err := e.Target.Matches(ctx, step.focus); err != nil {
-				return err
-			} else if ok {
-				return nil
-			}
+	waitForFocusedNode := func() action.Action {
+		return func(ctx context.Context) error {
+			return cvconn.WaitForFocusedNode(ctx, tconn, step.focus, 10*time.Second)
 		}
-		return errors.Errorf("expected event didn't occur. got: %+v", events)
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
+	}
+
+	// 1. Send a key event.
+	// 2. Wait for the event to fire on the node.
+	// 3. Wait for ChromeVox focus to change to the correct node.
+	ui := uiauto.New(tconn)
+	if err := ui.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitForEvent(step.focus, step.event, sendKeyEvent()), waitForFocusedNode())(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for event on node")
+	}
+
+	return nil
 }
 
 func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	MainActivityTestSteps := []axEventTestStep{
 		axEventTestStep{
 			"Tab",
-			ui.FindParams{
-				ClassName: arca11y.ToggleButton,
-				Name:      "OFF",
-				Role:      ui.RoleTypeToggleButton,
-				Attributes: map[string]interface{}{
-					"checked": ui.CheckedStateFalse,
-				},
-			},
-			ui.EventTypeFocus,
+			nodewith.Name("OFF").Role(role.ToggleButton).ClassName(arca11y.ToggleButton).Attribute("checked", "false"),
+			event.Focus,
 		},
 		axEventTestStep{
 			"Search+Space",
-			ui.FindParams{
-				ClassName: arca11y.ToggleButton,
-				Name:      "ON",
-				Role:      ui.RoleTypeToggleButton,
-				Attributes: map[string]interface{}{
-					"checked": ui.CheckedStateTrue,
-				},
-			},
-			ui.EventTypeCheckedStateChanged,
+			nodewith.Name("ON").Role(role.ToggleButton).ClassName(arca11y.ToggleButton).Attribute("checked", "true"),
+			event.CheckedStateChanged,
 		},
 		axEventTestStep{
 			"Tab",
-			ui.FindParams{
-				ClassName: arca11y.CheckBox,
-				Name:      "CheckBox",
-				Role:      ui.RoleTypeCheckBox,
-				Attributes: map[string]interface{}{
-					"checked": ui.CheckedStateFalse,
-				},
-			},
-			ui.EventTypeFocus,
+			nodewith.Name("CheckBox").Role(role.CheckBox).ClassName(arca11y.CheckBox).Attribute("checked", "false"),
+			event.Focus,
 		},
 		axEventTestStep{
 			"Search+Space",
-			ui.FindParams{
-				ClassName: arca11y.CheckBox,
-				Name:      "CheckBox",
-				Role:      ui.RoleTypeCheckBox,
-				Attributes: map[string]interface{}{
-					"checked": ui.CheckedStateTrue,
-				},
-			},
-			ui.EventTypeCheckedStateChanged,
+			nodewith.Name("CheckBox").Role(role.CheckBox).ClassName(arca11y.CheckBox).Attribute("checked", "true"),
+			event.CheckedStateChanged,
 		},
 		axEventTestStep{
 			"Tab",
-			ui.FindParams{
-				ClassName: arca11y.CheckBox,
-				Name:      "CheckBoxWithStateDescription",
-				Role:      ui.RoleTypeCheckBox,
-				Attributes: map[string]interface{}{
-					"checked": ui.CheckedStateFalse,
-				},
-			},
-			ui.EventTypeFocus,
+			nodewith.Name("CheckBoxWithStateDescription").Role(role.CheckBox).ClassName(arca11y.CheckBox).Attribute("checked", "false"),
+			event.Focus,
 		},
 		axEventTestStep{
 			"Tab",
-			ui.FindParams{
-				ClassName: arca11y.SeekBar,
-				Name:      "seekBar",
-				Role:      ui.RoleTypeSlider,
-				Attributes: map[string]interface{}{
-					"valueForRange": 25,
-				},
-			},
-			ui.EventTypeFocus,
+			nodewith.Name("seekBar").Role(role.Slider).ClassName(arca11y.SeekBar).Attribute("valueForRange", 25),
+			event.Focus,
 		},
 		axEventTestStep{
 			"=",
-			ui.FindParams{
-				ClassName: arca11y.SeekBar,
-				Name:      "seekBar",
-				Role:      ui.RoleTypeSlider,
-				Attributes: map[string]interface{}{
-					"valueForRange": 26,
-				},
-			},
-			ui.EventTypeRangeValueChanged,
+			nodewith.Name("seekBar").Role(role.Slider).ClassName(arca11y.SeekBar).Attribute("valueForRange", 26),
+			event.RangeValueChanged,
 		},
 		axEventTestStep{
 			"Tab",
-			ui.FindParams{
-				ClassName: arca11y.SeekBar,
-				Role:      ui.RoleTypeSlider,
-				Attributes: map[string]interface{}{
-					"valueForRange": 3,
-				},
-			},
-			ui.EventTypeFocus,
+			nodewith.Role(role.Slider).ClassName(arca11y.SeekBar).Attribute("valueForRange", 3),
+			event.Focus,
 		},
 		axEventTestStep{
 			"-",
-			ui.FindParams{
-				ClassName: arca11y.SeekBar,
-				Role:      ui.RoleTypeSlider,
-				Attributes: map[string]interface{}{
-					"valueForRange": 2,
-				},
-			},
-			ui.EventTypeRangeValueChanged,
+			nodewith.Role(role.Slider).ClassName(arca11y.SeekBar).Attribute("valueForRange", 2),
+			event.RangeValueChanged,
 		},
 	}
 	EditTextActivityTestSteps := []axEventTestStep{
 		axEventTestStep{
 			"Tab",
-			ui.FindParams{
-				ClassName: arca11y.EditText,
-				Name:      "contentDescription",
-				Role:      ui.RoleTypeTextField,
-			},
-			ui.EventTypeFocus,
+			nodewith.Name("contentDescription").Role(role.TextField).ClassName(arca11y.EditText),
+			event.Focus,
 		},
 		axEventTestStep{
 			"a",
-			ui.FindParams{
-				ClassName: arca11y.EditText,
-				Name:      "contentDescription",
-				Role:      ui.RoleTypeTextField,
-				Attributes: map[string]interface{}{
-					"value": "a",
-				},
-			},
-			ui.EventTypeValueInTextFieldChanged,
+			nodewith.Name("contentDescription").Role(role.TextField).ClassName(arca11y.EditText).Attribute("value", "a"),
+			event.ValueInTextFieldChanged,
 		},
 	}
 	testActivities := []arca11y.TestActivity{arca11y.MainActivity, arca11y.EditTextActivity}
