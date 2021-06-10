@@ -6,7 +6,6 @@ package lacros
 
 import (
 	"context"
-	"os"
 
 	"chromiumos/tast/local/apps"
 	applauncher "chromiumos/tast/local/chrome/uiauto/launcher"
@@ -46,8 +45,6 @@ func AppLauncherLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	// Clean up user data dir to ensure a clean start.
-	os.RemoveAll(launcher.LacrosUserDataDir)
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
