@@ -32,6 +32,7 @@ func init() {
 }
 
 func DeepSleep(ctx context.Context, s *testing.State) {
+	const requiredBatteryLife = 100 * 24 * time.Hour
 	h := s.PreValue().(*pre.Value).Helper
 
 	if err := h.RequireServo(ctx); err != nil {
@@ -120,16 +121,25 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 	s.Logf("Battery charge: %dmAh", mahEnd)
 
 	var (
-		dur   = time.Since(start).Seconds()
+		dur   = time.Since(start)
 		usage = mahEnd - mahStart
 	)
-	s.Logf("Battery Usage: %dmAh in %f seconds", usage, dur)
+	s.Logf("Battery Usage: %dmAh in %s", usage, dur)
 
 	if usage > 0 {
-		days := float64(max) / (float64(usage) / dur) / (24 * time.Hour.Seconds())
+		days := float64(max) / (float64(usage) / dur.Seconds()) / (24 * time.Hour.Seconds())
 		s.Logf("Estimate Battery Life: %f day(s)", days)
-		if days < 100 {
-			s.Error("Estimate Battery Life less than 100 days")
+		if days < requiredBatteryLife.Hours()/24 {
+			s.Errorf("Estimate Battery Life(%f) less than 100 days", days)
+		}
+	} else {
+		// If less than 1 mAh is consumed during the test, we still won't know it passed unless we
+		// ran for long enough for it not to be a rounding error. This does assume that
+		// the battery is capable of reporting charge in increments of 1mAh, which might not
+		// be true.
+		minSleepTime := time.Duration(requiredBatteryLife.Nanoseconds() / int64(max))
+		if minSleepTime > dur {
+			s.Errorf("Inconclusive, please run test for at least %s", minSleepTime)
 		}
 	}
 
