@@ -7,6 +7,8 @@ package ui
 import (
 	"context"
 	"fmt"
+	"net/http"
+	"net/http/httptest"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -18,7 +20,6 @@ import (
 	"chromiumos/tast/local/lacros"
 	lacroslauncher "chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
-	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -49,6 +50,7 @@ func init() {
 			ExtraData:         []string{lacroslauncher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
+		Data: []string{"animation.html", "animation.js"},
 	})
 }
 
@@ -135,6 +137,11 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
+	// Run an http server to serve the test contents for accessing from the chrome browsers.
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+	url := server.URL + "/animation.html"
+
 	// TODO(oshima|mukai): run animation once to force creating a
 	// launcher widget once we have a utility to initialize the
 	// prevHists with current data. (crbug.com/1024071)
@@ -157,7 +164,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 			}
 			defer lacros.CloseLacrosChrome(ctx, l)
 
-			if err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, windows-currentWindows); err != nil {
+			if err := ash.CreateWindows(ctx, tconn, cs, url, windows-currentWindows); err != nil {
 				s.Fatal("Failed to create browser windows: ", err)
 			}
 			// Maximize all windows to ensure a consistent state.

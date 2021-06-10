@@ -7,6 +7,8 @@ package ui
 import (
 	"context"
 	"fmt"
+	"net/http"
+	"net/http/httptest"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -19,7 +21,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/power"
-	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -45,6 +46,7 @@ func init() {
 			Name:    "double_buffer_compositing",
 			Fixture: "chromeLoggedInWith100FakeAppsDoubleBuffering",
 		}},
+		Data: []string{"animation.html", "animation.js"},
 	})
 }
 
@@ -151,11 +153,16 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 	bottom := coords.NewPoint(xPosition, primaryBounds.Top+(primaryBounds.Height+primaryWorkArea.Height)/2)
 	top := coords.NewPoint(primaryBounds.Left+primaryBounds.Width/4, primaryBounds.Top+10)
 
+	// Run an http server to serve the test contents for accessing from the chrome browsers.
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+	url := server.URL + "/animation.html"
+
 	runner := perfutil.NewRunner(cr)
 	currentWindows := 0
 	// Run the dragging gesture for different numbers of browser windows (0 or 2).
 	for _, windows := range []int{0, 2} {
-		if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, windows-currentWindows); err != nil {
+		if err := ash.CreateWindows(ctx, tconn, cr, url, windows-currentWindows); err != nil {
 			s.Fatal("Failed to create browser windows: ", err)
 		}
 		currentWindows = windows
