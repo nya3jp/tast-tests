@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aedb21e9_60684f47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-10T08:08:20Z",
+      "side": 1,
+      "message": "LGTM % nit\nPlease wait for the reviews of your team members.",
+      "revId": "90d9d8e93c0cc340d2e5fc9faaee750f975d906b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a6547df_5b95c838",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_ps175.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-10T08:08:20Z",
+      "side": 1,
+      "message": "nit: missing . at end of comment",
+      "revId": "90d9d8e93c0cc340d2e5fc9faaee750f975d906b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8766294_c6717a0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_ps175.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-10T08:08:20Z",
+      "side": 1,
+      "message": "Please also edit this comment to start with a capital letter.",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 9
+      },
+      "revId": "90d9d8e93c0cc340d2e5fc9faaee750f975d906b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
