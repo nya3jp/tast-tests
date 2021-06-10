@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "58ee251a_76450676",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-10T15:44:58Z",
+      "side": 1,
+      "message": "nit: Please replace it by \"tast-tests\" because this change in tast-tests repo.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "c289b9fee258cf347bad270511d7a4b73a960422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "131ebe11_626b276b",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-06-10T03:43:27Z",
       "side": 1,
       "message": "tast shadow reviewer LGTM",
+      "revId": "c289b9fee258cf347bad270511d7a4b73a960422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3d918c0_e232caed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-10T15:44:58Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "c289b9fee258cf347bad270511d7a4b73a960422",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
