@@ -70,6 +70,24 @@
       "parentUuid": "094f7050_7a31ac09",
       "revId": "46ff4619d8f02a30e21607407c3cf9ab744fd61c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bb242a2_0f7c6d6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-06-10T09:32:15Z",
+      "side": 1,
+      "message": "\u003e why do we want the tests to be so different between lacros and ash-chrome?\nThe original MemoryStressBasic is very stressful, it switches the tabs for 300 times with different page content (high/low compress ratio).\nThe lacros version of MemoryStress is less stressful, it only switches the tabs for 10 times with 1 type of page content. It\u0027s less stressful because the lacros tab discarder is still in development, going too stressful could crash the system. When the lacros tab discarder is as mature as the ash one, these 2 test could be merged.",
+      "parentUuid": "15e08201_8befad2d",
+      "revId": "46ff4619d8f02a30e21607407c3cf9ab744fd61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
