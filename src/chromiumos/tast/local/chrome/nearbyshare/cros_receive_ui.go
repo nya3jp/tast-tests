@@ -15,15 +15,11 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 )
-
-// ReceiveUIParams are the UI FindParams for the receiving UI's root node.
-var ReceiveUIParams ui.FindParams = ui.FindParams{
-	Role: ui.RoleTypeRootWebArea,
-	Name: "Settings - Nearby Share",
-}
 
 // StartHighVisibilityMode enables Nearby Share's high visibility mode via Quick Settings.
 func StartHighVisibilityMode(ctx context.Context, tconn *chrome.TestConn, deviceName string) error {
@@ -36,11 +32,11 @@ func StartHighVisibilityMode(ctx context.Context, tconn *chrome.TestConn, device
 		return errors.Wrap(err, "failed to enter Nearby Share high-visibility mode")
 	}
 
-	receiveWindow, err := ui.FindWithTimeout(ctx, tconn, ReceiveUIParams, 10*time.Second)
-	if err != nil {
+	ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
+	receiveWindow := nodewith.Role(role.RootWebArea).Name("Settings - Nearby Share")
+	if err := ui.WaitUntilExists(receiveWindow)(ctx); err != nil {
 		return errors.Wrap(err, "failed to find Nearby Share receiving window")
 	}
-	defer receiveWindow.Release(ctx)
 
 	// Check for the text in the dialog that shows the displayed device name and that we're visible to nearby devices.
 	// This text includes a countdown for remaining high-visibility time that changes dynamically, so we'll match a substring.
@@ -48,11 +44,8 @@ func StartHighVisibilityMode(ctx context.Context, tconn *chrome.TestConn, device
 	if err != nil {
 		return errors.Wrap(err, "failed to compile regexp for visibility and device name text")
 	}
-	textParams := ui.FindParams{
-		Role:       ui.RoleTypeStaticText,
-		Attributes: map[string]interface{}{"name": r},
-	}
-	if err := receiveWindow.WaitUntilDescendantExists(ctx, textParams, 10*time.Second); err != nil {
+	visibleText := nodewith.NameRegex(r).Role(role.StaticText).Ancestor(receiveWindow)
+	if err := ui.WaitUntilExists(visibleText)(ctx); err != nil {
 		return errors.Wrap(err, "failed to find text with device name and visibility indication")
 	}
 	return nil
@@ -69,11 +62,9 @@ func AcceptIncomingShareNotification(ctx context.Context, tconn *chrome.TestConn
 	// TODO(crbug/1201855): Get rid of the regex and just use "ACCEPT" once we don't have to worry about version skew for CrOS<->CrOS sharing.
 	// Since we don't have multi-DUT support in the lab yet, sender and receiver devices are often running different OS versions, and thus have different strings.
 	r := regexp.MustCompile("(ACCEPT|RECEIVE)")
-	btnParams := ui.FindParams{
-		ClassName:  "NotificationMdTextButton",
-		Attributes: map[string]interface{}{"name": r},
-	}
-	if err := ui.StableFindAndClick(ctx, tconn, btnParams, nil); err != nil {
+	ui := uiauto.New(tconn)
+	btn := nodewith.ClassName("NotificationMdTextButton").NameRegex(r)
+	if err := ui.LeftClick(btn)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click sharing notification's receive button")
 	}
 	return nil
