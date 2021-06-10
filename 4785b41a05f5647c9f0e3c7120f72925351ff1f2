@@ -56,6 +56,30 @@
       },
       "revId": "4785b41a05f5647c9f0e3c7120f72925351ff1f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "058aa032_14b8798f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-06-10T00:18:48Z",
+      "side": 1,
+      "message": "I agree we may still want to generate packs locally.  Done.",
+      "parentUuid": "8c5891e2_80dd2cf4",
+      "range": {
+        "startLine": 383,
+        "startChar": 5,
+        "endLine": 383,
+        "endChar": 20
+      },
+      "revId": "4785b41a05f5647c9f0e3c7120f72925351ff1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
