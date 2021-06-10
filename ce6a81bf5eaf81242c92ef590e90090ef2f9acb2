@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "183ad490_3d9a0f2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-10T00:47:45Z",
+      "side": 1,
+      "message": "I think the order now is different that the original, but not what I mentioned.\n\nright now they are:\n\n\ntconn, arc, activity, chrome.\n\nbut would be great to have chromes and arc parameters together, in particular in this order.\n\nchrome, tconn, arc, activity",
+      "parentUuid": "479e2c0a_46d31b28",
+      "range": {
+        "startLine": 67,
+        "startChar": 67,
+        "endLine": 67,
+        "endChar": 81
+      },
+      "revId": "ce6a81bf5eaf81242c92ef590e90090ef2f9acb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b36ab5f_b0f1bee0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 3
