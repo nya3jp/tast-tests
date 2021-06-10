@@ -16,6 +16,63 @@
       "message": "PTAL\nTY",
       "revId": "979b49509d87061f05d607e85af626febe2214b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a377e44_89841879",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-06-10T21:11:08Z",
+      "side": 1,
+      "message": "+1 with comments.",
+      "revId": "979b49509d87061f05d607e85af626febe2214b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40e5f3b5_7459ff0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-06-10T21:11:08Z",
+      "side": 1,
+      "message": "Add comment to provide example of what the regex is parsing and result?",
+      "revId": "979b49509d87061f05d607e85af626febe2214b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab4efdae_9c903c3e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-06-10T21:11:08Z",
+      "side": 1,
+      "message": "typo: verifies\n\nCan we also add short comment on what we check and don\u0027t check in this function (odex, minor file size deltas?) vs. a straight diff.",
+      "range": {
+        "startLine": 355,
+        "startChar": 42,
+        "endLine": 355,
+        "endChar": 49
+      },
+      "revId": "979b49509d87061f05d607e85af626febe2214b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
