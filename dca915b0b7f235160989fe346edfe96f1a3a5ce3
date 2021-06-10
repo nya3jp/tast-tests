@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22c7cff5_905dfb90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-06-10T05:09:20Z",
+      "side": 1,
+      "message": "Maybe these constants (and maybe the method names) should be put into a separate file of constants so they can be used by multiple tests.",
+      "range": {
+        "startLine": 34,
+        "startChar": 23,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "dca915b0b7f235160989fe346edfe96f1a3a5ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
