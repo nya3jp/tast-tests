@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2254c06_eb2a8433",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18330,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-10T03:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b64a9cec_43b3ada9",
+      "revId": "110ffa9218bbcbb576f09b077fdb4870886867ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffbb0b84_6f59d854",
@@ -117,6 +135,30 @@
       "writtenOn": "2021-06-07T15:11:37Z",
       "side": 1,
       "message": "destinations are not needed for SCREENSHOT restriction.",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 8
+      },
+      "revId": "110ffa9218bbcbb576f09b077fdb4870886867ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3046ddd_e2271dbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-10T03:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "409ebe3b_3127cf0f",
       "range": {
         "startLine": 82,
         "startChar": 6,
