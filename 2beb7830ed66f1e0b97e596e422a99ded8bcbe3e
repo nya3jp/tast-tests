@@ -34,6 +34,24 @@
       "parentUuid": "03dfc533_f91eb44b",
       "revId": "2beb7830ed66f1e0b97e596e422a99ded8bcbe3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e972727_cec8e4b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-10T17:02:50Z",
+      "side": 1,
+      "message": "FYI CL:2946493 landed so you should be good to go!",
+      "parentUuid": "2fd82012_3b3e3150",
+      "revId": "2beb7830ed66f1e0b97e596e422a99ded8bcbe3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
