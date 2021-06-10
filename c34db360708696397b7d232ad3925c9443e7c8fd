@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50729cb2_67f723e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1121979
+      },
+      "writtenOn": "2021-06-10T06:21:16Z",
+      "side": 1,
+      "message": "This is very basic parsing, there are dozens of strings that indicate a bug. Isn\u0027t there a common parsing for this already? Or how other tests do this?\nYou can peek more strings in syzkaller\u0027s pkg/report/linux.go.",
+      "revId": "c34db360708696397b7d232ad3925c9443e7c8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
