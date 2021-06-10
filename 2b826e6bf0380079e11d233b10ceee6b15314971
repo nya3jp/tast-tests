@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a84d54_98035711",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj2.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T07:32:21Z",
+      "side": 1,
+      "message": "Added comments",
+      "parentUuid": "61a45354_16237a49",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "2b826e6bf0380079e11d233b10ceee6b15314971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63fd3c33_d14e9163",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-10T01:58:47Z",
       "side": 1,
       "message": "cleanupCtx",
+      "range": {
+        "startLine": 86,
+        "startChar": 16,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "2b826e6bf0380079e11d233b10ceee6b15314971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de7f835_3b6a4543",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj2.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T07:32:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63fd3c33_d14e9163",
       "range": {
         "startLine": 86,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ab817ab_12e406b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj2.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T07:32:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c159eaa_b131f8c4",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "2b826e6bf0380079e11d233b10ceee6b15314971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8503372_19ed46c6",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-10T01:58:47Z",
       "side": 1,
       "message": "Same comment as others.",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 15
+      },
+      "revId": "2b826e6bf0380079e11d233b10ceee6b15314971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af184ca3_6635bed7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T07:32:21Z",
+      "side": 1,
+      "message": "All shorten ctx usage has been fixed in deferred func.",
+      "parentUuid": "f8503372_19ed46c6",
       "range": {
         "startLine": 111,
         "startChar": 1,
