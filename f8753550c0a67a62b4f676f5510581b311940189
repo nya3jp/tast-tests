@@ -111,6 +111,30 @@
       },
       "revId": "f8753550c0a67a62b4f676f5510581b311940189",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "180def49_6a718d31",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-10T00:25:16Z",
+      "side": 1,
+      "message": "I\u0027m going to pull Judy into this thread as she\u0027s done more UI automation.\n\nIn my view there should be some sort of primitive that allows us to check a number of things about the UI in a robust way. \"If the text Shared folders will appear here does not display, then check the list, and if it exists, get the elements.\"-type thing.\n\nConceptually, I think this is similar to the consistency problem in databases where database reads correspond to examining the UI tree, and writes correspond to button clicks / text input.\n\nNormally in databases we take a snapshot of the database (in this case, the UI tree) when we start and all reads occur upon that (ensuring they will be consistent). Where writes (e.g. button clicks, etc.) are required, and the rows (UI elements) we read have been modified in the meantime (button disappeared, etc.), due to another transaction that raced with us, this is detected and the transaction is retried.\n\nIn spanner, for example, a transaction is encapsulated in a function that may be retried multiple times (similiar to the testing.Poll I propose above) until a consistent set of reads/writes can be performed:\nhttps://pkg.go.dev/cloud.google.com/go/spanner#hdr-Writes\n\n(Unfortunately this breaks down in that in UI we cannot roll back our writes :). Still, so long as we only perform at most one write per \u0027transaction\u0027 and it is the last thing we do in that transaction, the analogies should still work.)\n\nAnyway, I\u0027ll let Judy comment.",
+      "parentUuid": "5dc4327c_441731a3",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 2
+      },
+      "revId": "f8753550c0a67a62b4f676f5510581b311940189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
