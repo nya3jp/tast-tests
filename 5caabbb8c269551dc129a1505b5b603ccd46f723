@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "194d8bbe_7b5df0d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 64
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-10T01:39:53Z",
+      "side": 1,
+      "message": "tconn is created in the caller, why do we create it again?",
+      "parentUuid": "2909aec0_d912d170",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "5caabbb8c269551dc129a1505b5b603ccd46f723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d4a14a2_0278e5a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
         "patchSetId": 64
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "Thanks for the tip, Judy. It\u0027s good to know. The CUJ test will collect metric in recorder. This code snippet is out of the recorder.Run(), I think we can keep it here along with other initiations.",
       "parentUuid": "0d4a14a2_0278e5a5",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 17
+      },
+      "revId": "5caabbb8c269551dc129a1505b5b603ccd46f723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1adda6fc_2ad4e76b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 64
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-10T01:39:53Z",
+      "side": 1,
+      "message": "Why should we leave it as it is out of the recorder.Run()?",
+      "parentUuid": "bf90e6d5_f323f6a1",
       "range": {
         "startLine": 74,
         "startChar": 1,
