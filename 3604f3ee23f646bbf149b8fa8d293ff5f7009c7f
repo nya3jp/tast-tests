@@ -58,6 +58,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c2d371c_f1745935",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-06-10T23:02:36Z",
+      "side": 1,
+      "message": "LGTM for legacy-router additions. Minor suggestion to move the method requirement to parent interface.",
+      "revId": "3604f3ee23f646bbf149b8fa8d293ff5f7009c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dff5310_e2965249",
@@ -99,6 +116,29 @@
         "startChar": 12,
         "endLine": 239,
         "endChar": 13
+      },
+      "revId": "3604f3ee23f646bbf149b8fa8d293ff5f7009c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99462e10_76981e14",
+        "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-06-10T23:02:36Z",
+      "side": 1,
+      "message": "This can actually be moved into the Base interface. The Ax interface utilizes the same ssh conn pointer as well in addition to the legacy system and future openwrt system.",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 15
       },
       "revId": "3604f3ee23f646bbf149b8fa8d293ff5f7009c7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
