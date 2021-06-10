@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35a06ae9_d70ebdac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 68
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T07:23:07Z",
+      "side": 1,
+      "message": "This is the quality selection provided by the youtube video source. For this particular video, the choice is \"1080p\", not \"1080p30\". The other two videos provides frame rate like 720p60.\n\nAdded comments in videoSrc struct for this field.",
+      "parentUuid": "96eddc1e_02ff90bc",
+      "range": {
+        "startLine": 52,
+        "startChar": 50,
+        "endLine": 52,
+        "endChar": 55
+      },
+      "revId": "004f5e274a355e1fbefa55d6811a232855a56292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea1246af_b588e197",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-10T01:39:53Z",
       "side": 1,
       "message": "Please group the params:\ncr *chrome.Chrome, a *arc.ARC, outDir, appName string,\n\ttabletMode, tier cuj.Tier, extendedDisplay bool",
+      "range": {
+        "startLine": 62,
+        "startChar": 30,
+        "endLine": 63,
+        "endChar": 53
+      },
+      "revId": "004f5e274a355e1fbefa55d6811a232855a56292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0f0f957_765d28ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 68
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T07:23:07Z",
+      "side": 1,
+      "message": "parameters are grouped into TestPramas and TestResources.",
+      "parentUuid": "ea1246af_b588e197",
       "range": {
         "startLine": 62,
         "startChar": 30,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa1b4069_f22a105d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 68
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T07:23:07Z",
+      "side": 1,
+      "message": "Thanks. Changed as advised.",
+      "parentUuid": "5e3ced00_0c325347",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 15
+      },
+      "revId": "004f5e274a355e1fbefa55d6811a232855a56292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e4b119b_572a022a",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-10T01:39:53Z",
       "side": 1,
       "message": "Could it be:\ndefer faillog.DumpUITreeOnError(cleanupCtx, outDir, retErr !\u003d nil, tconn)\ndefer faillog.SaveScreenshotOnError(cleanupCtx, cr, outDir, retErr !\u003dnil)",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 4
+      },
+      "revId": "004f5e274a355e1fbefa55d6811a232855a56292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5983e37_66121369",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 68
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T07:23:07Z",
+      "side": 1,
+      "message": "Make retErr !\u003d nil in the function and changed as advised.",
+      "parentUuid": "5e4b119b_572a022a",
       "range": {
         "startLine": 129,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2973340_16539e53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 68
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T07:23:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcdb52cc_6ff6ef6f",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 51
+      },
+      "revId": "004f5e274a355e1fbefa55d6811a232855a56292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca07552f_8514b9d9",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a39758a_e1031178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 68
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T07:23:07Z",
+      "side": 1,
+      "message": "Full screen condition is already checked inside the EnterFullscreen(). Here is a wait purposely to let the video play. Changed the comments to make it clear.",
+      "parentUuid": "ca07552f_8514b9d9",
+      "range": {
+        "startLine": 157,
+        "startChar": 21,
+        "endLine": 157,
+        "endChar": 26
+      },
+      "revId": "004f5e274a355e1fbefa55d6811a232855a56292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8e1a7dd_463c3ede",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-06-10T01:39:53Z",
       "side": 1,
       "message": "There is no error here, please use errors.New()",
+      "range": {
+        "startLine": 216,
+        "startChar": 20,
+        "endLine": 216,
+        "endChar": 29
+      },
+      "revId": "004f5e274a355e1fbefa55d6811a232855a56292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec7f7fa0_80ea8bb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 68
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T07:23:07Z",
+      "side": 1,
+      "message": "Used errors.Errorf()",
+      "parentUuid": "a8e1a7dd_463c3ede",
       "range": {
         "startLine": 216,
         "startChar": 20,

@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c27d48e3_cd06f9b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 64
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T07:23:07Z",
+      "side": 1,
+      "message": "changed to pass in from grouped parameters.",
+      "parentUuid": "194d8bbe_7b5df0d4",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "5caabbb8c269551dc129a1505b5b603ccd46f723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d4a14a2_0278e5a5",
@@ -274,6 +298,30 @@
       "side": 1,
       "message": "Why should we leave it as it is out of the recorder.Run()?",
       "parentUuid": "bf90e6d5_f323f6a1",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 17
+      },
+      "revId": "5caabbb8c269551dc129a1505b5b603ccd46f723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "112e14ac_f53a4a54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 64
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T07:23:07Z",
+      "side": 1,
+      "message": "changed to pass in from grouped parameters.",
+      "parentUuid": "1adda6fc_2ad4e76b",
       "range": {
         "startLine": 74,
         "startChar": 1,
