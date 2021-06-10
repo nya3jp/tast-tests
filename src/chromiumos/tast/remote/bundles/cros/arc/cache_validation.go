@@ -5,6 +5,7 @@
 package arc
 
 import (
+	"bufio"
 	"context"
 	"fmt"
 	"io/ioutil"
@@ -41,6 +42,10 @@ const (
 // regExpEndsWithBuildID is the regexp to find the build ID from the path entry where build ID
 // is the laset segment in path.
 var regExpEndsWithBuildID = regexp.MustCompile(`^.+/(\d+)/$`)
+
+// regExpLayoutEntry describes resource entry in layout.txt. For example:
+// /data/user_de/0/com.google.android.gms/app_chimera/m/00000002/oat/x86_64/DynamiteLoader.vdex:644:16
+var regExpLayoutEntry = regexp.MustCompile(`^(.+):([0-7]{3}):(\d+)$`)
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -140,7 +145,6 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create global temp dir: ", err)
 	}
-
 	defer os.RemoveAll(tempDir)
 
 	url, err := generateJarURL(ctx, d, param.vmEnabled)
@@ -248,9 +252,14 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 			filepath.Join(withoutCacheDir, "app_chimera"))); err != nil {
 		s.Error("Error validating app_chimera folders: ", err)
 	}
-	if err := saveOutput(filepath.Join(s.OutDir(), "layout.diff"),
-		testexec.CommandContext(ctx, "diff", withCacheLayout, withoutCacheLayout)); err != nil {
+
+	if diff, err := diffLayouts(withCacheLayout, withoutCacheLayout); err != nil {
 		s.Error("Error validating app_chimera layouts: ", err)
+	} else if diff != "" {
+		s.Error("app_chimera layouts are different, see layout.diff")
+		if err = ioutil.WriteFile(filepath.Join(s.OutDir(), "layout.diff"), []byte(diff), 0644); err != nil {
+			s.Error("Failed to save layout diff: ", err)
+		}
 	}
 
 	const javaClass = "org.chromium.arc.cachebuilder.Validator"
@@ -271,4 +280,109 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 		"--dynamic-validate", "no").Run(testexec.DumpLogOnError); err != nil {
 		s.Error("Failed to validate withoutCache against generated: ", err)
 	}
+}
+
+// resourceInfo describes attributes of file resource used for layout verification.
+type resourceInfo struct {
+	// Name of file resource.
+	name string
+	// Permission bits and file mode.
+	mode os.FileMode
+	// Size in blocks.
+	blockSize int
+}
+
+// Matches compares two giving resources and returns true if they match. Some resources have
+// specific handling.
+func (r1 resourceInfo) Matches(r2 resourceInfo) bool {
+	// odex files are known to be different for every generation. However besides this,
+	// they may slightly change in size even on the same machine and the same build.
+	// We do allow this difference. Small change usually is not reflected but may cross
+	// 4K page size and in the last case this may turn to 8 block size (4K = 512*8)
+	// difference.
+	// TODO(khmel): Check if this sufficient.
+	const odexBlocksDeltaAllowed = 8
+
+	if r1.name != r2.name {
+		return false
+	}
+	if r1.mode != r2.mode {
+		return false
+	}
+	if r1.blockSize != r2.blockSize {
+		d := r1.blockSize - r2.blockSize
+		if d < 0 {
+			d = -d
+		}
+		if filepath.Ext(r1.name) != ".odex" || d != odexBlocksDeltaAllowed {
+			return false
+		}
+	}
+
+	return true
+}
+
+// readLayout reads layout file and returns map of resources information.
+func readLayout(layout string) (map[string]resourceInfo, error) {
+	file, err := os.Open(layout)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open")
+	}
+	defer file.Close()
+
+	result := make(map[string]resourceInfo)
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
+		m := regExpLayoutEntry.FindStringSubmatch(line)
+		if m == nil {
+			return nil, errors.Wrapf(err, "failed to parse layout: %q", line)
+		}
+		bits, err := strconv.ParseInt(m[2], 8, 16)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to parse permissions: %q", m[2])
+		}
+		blockSize, err := strconv.ParseInt(m[3], 0, 32)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to parse block size: %q", m[3])
+		}
+		result[m[1]] = resourceInfo{name: m[1], mode: os.FileMode(bits), blockSize: int(blockSize)}
+	}
+
+	if err := scanner.Err(); err != nil {
+		return nil, errors.Wrap(err, "failed to read")
+	}
+	return result, nil
+}
+
+// diffLayouts reads two layout files and verifies they match. In case of match, empty diff is
+// returned.
+func diffLayouts(path1, path2 string) (string, error) {
+	layout1, err := readLayout(path1)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to read layout: %q", path1)
+	}
+	layout2, err := readLayout(path2)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to read layout: %q", path2)
+	}
+
+	diff := ""
+	for k, v1 := range layout1 {
+		if v2, ok := layout2[k]; ok {
+			if !v1.Matches(v2) {
+				diff += fmt.Sprintf("*%s %s:%d -> %s:%d\n", k, v1.mode.String(), v1.blockSize, v2.mode.String(), v2.blockSize)
+			}
+		} else {
+			diff += fmt.Sprintf("-%s\n", k)
+		}
+	}
+	for k := range layout2 {
+		if _, ok := layout1[k]; !ok {
+			diff += fmt.Sprintf("+%s\n", k)
+		}
+	}
+
+	return diff, nil
 }

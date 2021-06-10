@@ -71,6 +71,8 @@ const (
 	GMSCoreManifest = "gms_core_manifest"
 	// GSFCache defines the GSF cache database file name.
 	GSFCache = "gservices_cache.db"
+	// Timeout to wait GMS Core resources.
+	gmsCoreWaitTimeout = 2 * time.Minute
 )
 
 // OpenSession starts Chrome and ARC with caches turned on or off, depending on the mode parameter.
@@ -290,7 +292,7 @@ func waitForPath(ctx context.Context, path string, c pathCondition) error {
 			}
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: gmsCoreWaitTimeout, Interval: time.Second}); err != nil {
 		return errors.Wrapf(err, "failed to wait for path %s", path)
 	}
 	return nil
@@ -356,7 +358,7 @@ func waitForApksOptimized(ctx context.Context, root string, sdkVersion int) erro
 			}
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: gmsCoreWaitTimeout, Interval: time.Second}); err != nil {
 		return errors.Wrapf(err, "failed to wait for APKs optimized %s", root)
 	}
 	return nil
