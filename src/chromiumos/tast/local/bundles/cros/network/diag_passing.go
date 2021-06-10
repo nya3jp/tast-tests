@@ -72,7 +72,7 @@ func init() {
 			Name:      "video_conferencing",
 			Val:       newNetDiagParams(diagcommon.RoutineVideoConferencing),
 			ExtraAttr: []string{"informational"},
-			Timeout:   5 * time.Minute,
+			Timeout:   10 * time.Minute,
 		}},
 	})
 }
