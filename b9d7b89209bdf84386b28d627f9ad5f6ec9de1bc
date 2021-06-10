@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "667451f0_a49fcf76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-06-10T14:21:27Z",
+      "side": 1,
+      "message": "i know. what i meant is supporting suspend (even a fake one). Anyhow, glad we have to this only because of VM issues but not wipe of encstateful.",
+      "parentUuid": "15f62afa_c5ee97f7",
+      "range": {
+        "startLine": 9,
+        "startChar": 61,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "b9d7b89209bdf84386b28d627f9ad5f6ec9de1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ba17e4f6_a33e1117",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
