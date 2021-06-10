@@ -16,6 +16,176 @@
       "message": "- me, + tastowner",
       "revId": "c47ac65a1d2f7b4efcd3718df7e6e0f989dbafc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "782631b0_2edab370",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-10T18:23:38Z",
+      "side": 1,
+      "message": "I don\u0027t know how device enumeration works, so I will let others to comment on it. I do have a few comments regarding the code. Please take a look. Thanks.\n",
+      "revId": "c47ac65a1d2f7b4efcd3718df7e6e0f989dbafc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b00361a_1e2f9e24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-10T18:23:38Z",
+      "side": 1,
+      "message": "Please put a comment like\n\n// TbtHotplugUnplug \u003cwhat it does\u003e",
+      "revId": "c47ac65a1d2f7b4efcd3718df7e6e0f989dbafc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba0156b6_1aa66ae0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-10T18:23:38Z",
+      "side": 1,
+      "message": "Why don\u0027t you use \n\njson_data, err :\u003d ioutil.ReadFile(jsonFile)\n\n?\n\nThen, you don\u0027 need to call os.Open.",
+      "revId": "c47ac65a1d2f7b4efcd3718df7e6e0f989dbafc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3277a44c_925613dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-10T18:23:38Z",
+      "side": 1,
+      "message": "Should you check if TBT exists in data?",
+      "revId": "c47ac65a1d2f7b4efcd3718df7e6e0f989dbafc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2834e177_c63dc3e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-10T18:23:38Z",
+      "side": 1,
+      "message": "Why do you need to call it this way? Why don\u0027t you just call the 4 functions directly?",
+      "revId": "c47ac65a1d2f7b4efcd3718df7e6e0f989dbafc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d8ae887_c2e4b604",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-10T18:23:38Z",
+      "side": 1,
+      "message": "By convention, error should be the last result parameter.\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#returning-errors",
+      "revId": "c47ac65a1d2f7b4efcd3718df7e6e0f989dbafc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "920ba4c2_0b065c99",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-10T18:23:38Z",
+      "side": 1,
+      "message": "By convention, error should be the last result parameter.\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#returning-errors",
+      "revId": "c47ac65a1d2f7b4efcd3718df7e6e0f989dbafc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "523f06a2_dcea8ee4",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-10T18:23:38Z",
+      "side": 1,
+      "message": "I thinke we should return nil intead cswitchResp when there is an error. It is easier to read that way. Thanks.",
+      "revId": "c47ac65a1d2f7b4efcd3718df7e6e0f989dbafc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5baa2ef_737fa1ad",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-10T18:23:38Z",
+      "side": 1,
+      "message": "By convention, error should be the last result parameter.\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#returning-errors",
+      "revId": "c47ac65a1d2f7b4efcd3718df7e6e0f989dbafc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d980ab5d_ac64124e",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-10T18:23:38Z",
+      "side": 1,
+      "message": "You don\u0027t need else here. Just return nil.",
+      "revId": "c47ac65a1d2f7b4efcd3718df7e6e0f989dbafc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
