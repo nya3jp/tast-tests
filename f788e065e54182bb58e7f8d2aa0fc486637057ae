@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7522a902_ca5a7725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T22:07:31Z",
+      "side": 1,
+      "message": "Changed to IfSuccess, and use WaitForExist()",
+      "parentUuid": "af9f704c_8a7ed48b",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "f788e065e54182bb58e7f8d2aa0fc486637057ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "019c1e8b_e30c296d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-10T03:18:16Z",
       "side": 1,
       "message": "Why do you need to record the location of settings?",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 81
+      },
+      "revId": "f788e065e54182bb58e7f8d2aa0fc486637057ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "491c305d_90fb4d5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T22:07:31Z",
+      "side": 1,
+      "message": "Removed. It was for debugging purpose during development.",
+      "parentUuid": "019c1e8b_e30c296d",
       "range": {
         "startLine": 87,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16f536f5_747bda48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T22:07:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ceecbaf_e7c80caa",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "f788e065e54182bb58e7f8d2aa0fc486637057ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "206c5e0d_630078df",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-10T03:18:16Z",
       "side": 1,
       "message": "This is a bit redundant as there is error msg blow.",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 50
+      },
+      "revId": "f788e065e54182bb58e7f8d2aa0fc486637057ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f565b6b0_f6f06ec6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T22:07:31Z",
+      "side": 1,
+      "message": "Cleared the test log",
+      "parentUuid": "206c5e0d_630078df",
       "range": {
         "startLine": 116,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0852d329_22da4780",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T22:07:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbf117c7_7c14e8e7",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 60
+      },
+      "revId": "f788e065e54182bb58e7f8d2aa0fc486637057ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c811f5cf_cffa013d",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-06-10T03:18:16Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 53
+      },
+      "revId": "f788e065e54182bb58e7f8d2aa0fc486637057ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab5f7a43_da0c7f46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T22:07:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c811f5cf_cffa013d",
       "range": {
         "startLine": 145,
         "startChar": 1,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9855e363_3ed45465",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T22:07:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ab10d5d_cf7a9501",
+      "range": {
+        "startLine": 212,
+        "startChar": 9,
+        "endLine": 212,
+        "endChar": 12
+      },
+      "revId": "f788e065e54182bb58e7f8d2aa0fc486637057ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "147f02f5_4f78c856",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88867bfa_18195af0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T22:07:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "147f02f5_4f78c856",
+      "range": {
+        "startLine": 237,
+        "startChar": 9,
+        "endLine": 237,
+        "endChar": 12
+      },
+      "revId": "f788e065e54182bb58e7f8d2aa0fc486637057ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8403f9ac_f426ca83",
@@ -198,6 +390,30 @@
       "writtenOn": "2021-06-10T03:18:16Z",
       "side": 1,
       "message": "If seems that all err msgs are ignored. What would happen if the buttion exists but it fails to click it?",
+      "range": {
+        "startLine": 257,
+        "startChar": 3,
+        "endLine": 257,
+        "endChar": 8
+      },
+      "revId": "f788e065e54182bb58e7f8d2aa0fc486637057ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f0126bf_a58c5bc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-10T22:07:31Z",
+      "side": 1,
+      "message": "Added comments for the reason not returning error. And also print log if clear notification fails.",
+      "parentUuid": "8403f9ac_f426ca83",
       "range": {
         "startLine": 257,
         "startChar": 3,
