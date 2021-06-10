@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80b88285_1248d1e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-10T15:59:38Z",
+      "side": 1,
+      "message": "Very nice. LGTM % nits",
+      "revId": "1597b7bbf4415a72f602c8907cde8dbefbeb21a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99b1a990_3be2e0bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-10T15:59:38Z",
+      "side": 1,
+      "message": "Please add a separate block for if err \u003d\u003d nil. The error message at L130 would technically be accurate in that case, but would be a bit misleading.\n\n    if err \u003d cmd.Wait(); err \u003d\u003d nil {\n        return nil, errors.New(\"evtest unexpectedly did not time out\")\n    } else if !errors.Is(err, context.DeadlineExceeded) {\n        return nil, errors.Wrap(err, \"evtest exited unexpectedly\")\n    }",
+      "revId": "1597b7bbf4415a72f602c8907cde8dbefbeb21a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2cc1255_cd51b6a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-10T15:59:38Z",
+      "side": 1,
+      "message": "nit/typo: \"listening\"",
+      "range": {
+        "startLine": 70,
+        "startChar": 34,
+        "endLine": 70,
+        "endChar": 35
+      },
+      "revId": "1597b7bbf4415a72f602c8907cde8dbefbeb21a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
