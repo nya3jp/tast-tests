@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba7e2b17_7e3437d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-10T21:52:17Z",
+      "side": 1,
+      "message": "+2\nthanks for updating the library\n\n\n[caveat: I \u0027m not the maintainer of shelf.go, or at least I\"m not familiar with the updated methods, but the code looks good to me]",
+      "revId": "ba59658f85069eaa734182a4a4cd0f60a06b73dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
