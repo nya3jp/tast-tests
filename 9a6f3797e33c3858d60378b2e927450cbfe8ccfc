@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19ca37cb_30d8f2f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-10T03:52:47Z",
+      "side": 1,
+      "message": "I notice that there are many these kind of logs. If the following step does not take too much and it has a fail msg, it is not necessary. Please check the rest.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "9a6f3797e33c3858d60378b2e927450cbfe8ccfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b331527_25a2e39d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-10T03:52:47Z",
+      "side": 1,
+      "message": "type",
+      "range": {
+        "startLine": 100,
+        "startChar": 28,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "9a6f3797e33c3858d60378b2e927450cbfe8ccfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86d7fd2e_7096f8d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-10T03:52:47Z",
+      "side": 1,
+      "message": "you could just return err here, since uiauto.Combine itself will generate the error msg.",
+      "range": {
+        "startLine": 104,
+        "startChar": 10,
+        "endLine": 104,
+        "endChar": 54
+      },
+      "revId": "9a6f3797e33c3858d60378b2e927450cbfe8ccfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
