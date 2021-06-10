@@ -60,6 +60,8 @@ const (
 	Square = "square"
 	// Portrait is the mode used to take portrait photo.
 	Portrait = "portrait"
+	// Scanner is the mode used to scan barcode or document.
+	Scanner = "scanner"
 
 	// Expert is the state used to indicate expert mode.
 	Expert string = "expert"
@@ -204,6 +206,9 @@ var (
 	ZoomInButton = UIComponent{"zoom in button", []string{"#zoom-in"}}
 	// ZoomOutButton is the button for zoom out preview.
 	ZoomOutButton = UIComponent{"zoom out button", []string{"#zoom-out"}}
+
+	// BarcodeScanOption is the button for switching scan type to barcode.
+	BarcodeScanOption = UIComponent{"bar code scan option", []string{"input#scanner-barcode + label"}}
 )
 
 // ResolutionType is different capture resolution type.
@@ -1121,7 +1126,21 @@ func (a *App) ToggleMirroringOption(ctx context.Context) (bool, error) {
 
 // ToggleQRCodeOption toggles the barcode scanning option.
 func (a *App) ToggleQRCodeOption(ctx context.Context) (bool, error) {
-	return a.toggleOption(ctx, "scan-barcode", "#toggle-barcode")
+	const legacyToggleBarcode = "#toggle-barcode"
+	exist, err := a.selectorExist(ctx, legacyToggleBarcode)
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to check existence of %v", legacyToggleBarcode)
+	}
+	if exist {
+		return a.toggleOption(ctx, "scan-barcode", legacyToggleBarcode)
+	}
+	if err := a.SwitchMode(ctx, Scanner); err != nil {
+		return false, err
+	}
+	if err := a.Click(ctx, BarcodeScanOption); err != nil {
+		return false, err
+	}
+	return true, nil
 }
 
 // SetTimerOption sets the timer option to on/off.
