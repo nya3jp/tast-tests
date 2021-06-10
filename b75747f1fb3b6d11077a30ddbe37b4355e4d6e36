@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81d2c0e8_b02dafeb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-10T00:27:40Z",
+      "side": 1,
+      "message": "I suppose if there\u0027s no alternative, this is fine as is.\n\n\u003e What worries me, is the general performance drop, which is even higher in download(maerts) case, than in the stream case.\n\nCan you paste some numbers here? Are you saying that the percentage throughput drop is more for the rx case than the tx case?",
+      "parentUuid": "5f006ee1_2557aaae",
+      "range": {
+        "startLine": 62,
+        "startChar": 77,
+        "endLine": 62,
+        "endChar": 80
+      },
+      "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24382d38_c4d65dcf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
         "patchSetId": 2
@@ -213,6 +237,24 @@
       "side": 1,
       "message": "The original netperf session (as ported from autotest) assumes different configs can be run, thus it created runner for each run (because some configs could require swaping server with client). Each runner creation wasted time on restarting netserver (which took ~5s so it was rather a no-go for us).\n\nHere I pass only one config during session creation, so I can reuse the runner.",
       "parentUuid": "38b938a0_72343b8d",
+      "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23af1d60_f74fe402",
+        "filename": "src/chromiumos/tast/remote/network/netperf/continuous_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-10T00:27:40Z",
+      "side": 1,
+      "message": "Sorry, should have been more clear. I meant that it would be nice to reuse the original code and just add an option to reuse the runner as opposed to creating an entirely new session type and c\u0026p-ing code (in the warmup functions, for example). It\u0027s entirely possible that it\u0027s easier to do it the way you already did it, but I figure it\u0027s worth looking into.",
+      "parentUuid": "2e04b35e_2efee647",
       "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
