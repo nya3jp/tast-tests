@@ -34,6 +34,24 @@
       "parentUuid": "b41a2106_5829b741",
       "revId": "46ff4619d8f02a30e21607407c3cf9ab744fd61c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "094f7050_7a31ac09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-06-10T08:10:20Z",
+      "side": 1,
+      "message": "Quick question - why do we want the tests to be so different between lacros and ash-chrome?\n\nIn general, IMO we should have either all lacros variations in a lacros package, or all variations next to their original tests, not mixed. And out of those two options, having variations next to their original tests seems better to me.\n\nSorry to raise this after you\u0027ve already done the work. Keen to hear from hidehiko@ as well on this.",
+      "parentUuid": "f86ce6b3_6cecef8e",
+      "revId": "46ff4619d8f02a30e21607407c3cf9ab744fd61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
