@@ -272,6 +272,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "397a513a_9fffbe13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-06-10T04:01:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eda9cba9_160d6421",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 19
+      },
+      "revId": "18a4e6872ff08a477434d730c32be574f77cb77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "968dbedc_55149cd9",
@@ -427,6 +451,30 @@
       "side": 1,
       "message": "Sure, sgtm. In regards to the other comment too, I think I can split this test into 3 separate tests:\n\n 1. Make sure DNS queries under normal condition with different DoH settings are successful.\n    a. Without VPN.\n    b. With VPN.\n 2. Make sure that DoH settings are propagated properly by blocking plaintext / secure DNS and making sure the queries are not successful.\n 3. Make sure that the proxy are properly routed through the VPN by blocking DNS on the VPN server and making sure the queries are not successful.\n\nThe cons would be that altogether the test will be much longer, but the pros would be that it is much cleaner. There will be some code duplication though for the setup (starting and installing Crostini, Chrome, ARC, and VPN).\n\nWdyt?",
       "parentUuid": "a9ec3269_d3a337b8",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 0
+      },
+      "revId": "18a4e6872ff08a477434d730c32be574f77cb77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2180e95_32126ceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-06-10T04:01:25Z",
+      "side": 1,
+      "message": "Guess my feeling is that a test should exercise generally one concept - big or small. You can always create a helper package to reduce the duplication but I think it would be better to see that DNSProxy_AlwaysOn_WithVPN is what failed and not just DNSProxyTest.",
+      "parentUuid": "95a0297e_e0161c91",
       "range": {
         "startLine": 489,
         "startChar": 0,
