@@ -39,6 +39,30 @@
       },
       "revId": "8306fc64125347e458d39b119f5d005ab1353bfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a80e887_bb303cce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_gameplay_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-10T18:03:05Z",
+      "side": 1,
+      "message": "Well, actually this is checking 2 different nodes -- check gameStartButton existence, and then click on gameLaunchButton.  Thus Polling can\u0027t be removed.",
+      "parentUuid": "646952cb_56524255",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 130,
+        "endChar": 24
+      },
+      "revId": "8306fc64125347e458d39b119f5d005ab1353bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
