@@ -293,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd73313b_14874c2b",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-10T04:05:45Z",
+      "side": 1,
+      "message": "Agree that the CL focus on refactoring code. Please discuss with your team if this and the comment below is an issue to fix.",
+      "parentUuid": "2861d50f_28840dd6",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 19
+      },
+      "revId": "36e4946d2e905fc7accbb793776cf96686200ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3173e43f_4857fbf8",
