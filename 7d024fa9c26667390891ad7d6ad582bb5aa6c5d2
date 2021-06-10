@@ -16,6 +16,46 @@
       "message": "ihf@, tast-owners@ PTAL\n\nOthers FYI",
       "revId": "7d024fa9c26667390891ad7d6ad582bb5aa6c5d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec5efe82_dbb79c4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-10T03:47:40Z",
+      "side": 1,
+      "message": "tast shadow reviewer LGTM % comment",
+      "revId": "7d024fa9c26667390891ad7d6ad582bb5aa6c5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1e2f441_bb5ae94f",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-10T03:47:40Z",
+      "side": 1,
+      "message": "I know this is just moving the function, but no need to add \": \" since this is handled by errors.Wrap. Same on L307.",
+      "range": {
+        "startLine": 303,
+        "startChar": 56,
+        "endLine": 303,
+        "endChar": 58
+      },
+      "revId": "7d024fa9c26667390891ad7d6ad582bb5aa6c5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
