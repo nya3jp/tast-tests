@@ -6,22 +6,31 @@ package ui
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/chrome/ui"
-	chromeui "chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
+)
+
+const histName = "Viz.DisplayCompositor.OverlayStrategy"
+
+// Values of the enum OverlayStrategies defined in
+// tools/metrics/histograms/enums.xml in the chromium code base.
+const (
+	overlayStrategyNoOverlay = 1
+	overlayStrategyUnderlay  = 4
 )
 
 func init() {
@@ -54,6 +63,8 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
 	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer srv.Close()
 
@@ -67,42 +78,69 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for pip_video.html to achieve quiescence: ", err)
 	}
 
-	var pipButtonCenterString string
-	if err := conn.Call(ctx, &pipButtonCenterString, "getPIPButtonCenter"); err != nil {
-		s.Fatal("Failed to get center of PIP button: ", err)
+	ac := uiauto.New(tconn)
+	pipButton := nodewith.Name("PIP").Role(role.Button)
+	pipWindow := nodewith.Name("Picture in picture").ClassName("PictureInPictureWindow")
+	if err := action.Combine(
+		"click PIP button and wait for PIP window",
+		ac.LeftClick(pipButton),
+		ac.WithTimeout(10*time.Second).WaitUntilExists(pipWindow),
+	)(ctx); err != nil {
+		s.Fatal("Failed to show the PIP window: ", err)
 	}
 
-	var pipButtonCenterInWebContents coords.Point
-	if n, err := fmt.Sscanf(pipButtonCenterString, "%v,%v", &pipButtonCenterInWebContents.X, &pipButtonCenterInWebContents.Y); err != nil {
-		s.Fatalf("Failed to parse center of PIP button (successfully parsed %v of 2 tokens): %v", n, err)
-	}
-
-	webContentsView, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: "WebContentsViewAura"})
+	initialHist, err := metrics.GetHistogram(ctx, tconn, histName)
 	if err != nil {
-		s.Fatal("Failed to get web contents view: ", err)
-	}
-	defer webContentsView.Release(cleanupCtx)
-
-	if err := mouse.Click(ctx, tconn, webContentsView.Location.TopLeft().Add(pipButtonCenterInWebContents), mouse.LeftButton); err != nil {
-		s.Fatal("Failed to click PIP button: ", err)
+		s.Fatal("Failed to get overlay strategy histogram: ", err)
 	}
 
-	if err := chromeui.WaitUntilExists(ctx, tconn, chromeui.FindParams{Name: "Picture in picture", ClassName: "PictureInPictureWindow"}, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for PIP window: ", err)
+	// Wait for the Underlay overlay strategy because the PIP video
+	// takes a moment to be promoted to overlay and then sometimes
+	// uses the SingleOnTop overlay strategy for just a few frames.
+	// failOnError is set to true if we detect an overlay (possibly
+	// SingleOnTop) or a poll-breaking error (such as one returned
+	// by GetHistogram). If we time out without ever detecting an
+	// overlay, failOnError is false meaning the test should pass.
+	failOnError := false
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		currentHist, err := metrics.GetHistogram(ctx, tconn, histName)
+		if err != nil {
+			failOnError = true
+			return testing.PollBreak(errors.Wrap(err, "failed to get overlay strategy histogram"))
+		}
+
+		diffHist, err := currentHist.Diff(initialHist)
+		if err != nil {
+			failOnError = true
+			return testing.PollBreak(errors.Wrap(err, "failed to diff overlay strategy histograms"))
+		}
+
+		for _, bucket := range diffHist.Buckets {
+			if bucket.Min != overlayStrategyNoOverlay {
+				failOnError = true
+			}
+			if bucket.Min == overlayStrategyUnderlay {
+				return nil
+			}
+		}
+		return errors.New("overlay strategy Underlay not found")
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		if failOnError {
+			s.Fatal("Failed to wait for overlay strategy Underlay: ", err)
+		}
+		s.Log("PIP video not promoted to overlay")
+		return
 	}
 
-	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for location change events to be completed: ", err)
-	}
-
+	// Verify consistent use of the Underlay overlay strategy now.
 	hists, err := metrics.Run(ctx, tconn, func(ctx context.Context) error {
 		if err := testing.Sleep(ctx, time.Second); err != nil {
 			return errors.Wrap(err, "failed to wait a second")
 		}
 		return nil
-	}, "Viz.DisplayCompositor.OverlayStrategy")
+	}, histName)
 	if err != nil {
-		s.Fatal("Failed to record histogram Viz.DisplayCompositor.OverlayStrategy: ", err)
+		s.Fatal("Failed to record overlay strategy data: ", err)
 	}
 
 	hist := hists[0]
@@ -111,11 +149,8 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	}
 
 	for _, bucket := range hist.Buckets {
-		// bucket.Min will be from enum OverlayStrategies as defined
-		// in tools/metrics/histograms/enums.xml in the chromium
-		// code base. 1 is "No overlay", and 4 is "Underlay".
-		if bucket.Min != 1 && bucket.Min != 4 {
-			s.Errorf("Found %d frame(s) with an unexpected overlay strategy: got %d; want 1 or 4", bucket.Count, bucket.Min)
+		if bucket.Min != overlayStrategyUnderlay {
+			s.Errorf("Found %d frame(s) with an unexpected overlay strategy: got %d; want %d", bucket.Count, bucket.Min, overlayStrategyUnderlay)
 		}
 	}
 }
