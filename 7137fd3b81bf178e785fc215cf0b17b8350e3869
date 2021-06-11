@@ -46,6 +46,30 @@
       },
       "revId": "7137fd3b81bf178e785fc215cf0b17b8350e3869",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8403aa31_2391314c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-11T07:47:21Z",
+      "side": 0,
+      "message": "Mention this in CL desc. This is another change besides the \"vk enabled\" refactoring.",
+      "parentUuid": "08295f3c_babdff13",
+      "range": {
+        "startLine": 87,
+        "startChar": 113,
+        "endLine": 87,
+        "endChar": 148
+      },
+      "revId": "7137fd3b81bf178e785fc215cf0b17b8350e3869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
