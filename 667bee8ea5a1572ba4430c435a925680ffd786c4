@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f62af803_d7429b40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-11T07:14:37Z",
+      "side": 1,
+      "message": "should this be \"false\"?",
+      "range": {
+        "startLine": 89,
+        "startChar": 79,
+        "endLine": 89,
+        "endChar": 83
+      },
+      "revId": "667bee8ea5a1572ba4430c435a925680ffd786c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
