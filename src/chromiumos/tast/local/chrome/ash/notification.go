@@ -116,22 +116,46 @@ const (
 	NotificationTypeProgress NotificationType = "progress"
 )
 
+// NotificationItem describes an individual item in a list notification.
+// As defined in https://developer.chrome.com/docs/extensions/reference/notifications/#type-NotificationItem
+type NotificationItem struct {
+	Message string `json:"message"`
+	Title   string `json:"title"`
+}
+
 // CreateTestNotification creates a notification with a custom title and message.
 // iconUrl is a required field to the chrome.notifiations.create() call so a 1px transparent data-url is hardcoded.
 func CreateTestNotification(ctx context.Context, tconn *chrome.TestConn, notificationType NotificationType, title, message string) (string, error) {
 	var id string
+	var imageURL string
+	var items []NotificationItem
+
+	if notificationType == NotificationTypeImage {
+		// Used a transparent solid color image for testing.
+		imageURL = "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFUlEQVR42mNk+P+/noEIwDiqkL4KAbERGO3PogdhAAAAAElFTkSuQmCC"
+	}
+
+	if notificationType == NotificationTypeList {
+		// Used 2 mock items for testing.
+		items = []NotificationItem{{Message: "item1", Title: "title1"}, {Message: "item2", Title: "title2"}}
+	}
+
 	if err := tconn.Call(ctx, &id,
-		`async (notificationType, title, message, iconUrl) =>
+		`async (notificationType, title, message, iconUrl, imageURL, items) =>
 		tast.promisify(chrome.notifications.create)({
 			type: notificationType,
 			title: title,
 			message: message,
-			iconUrl: iconUrl
+			iconUrl: iconUrl,
+			imageUrl: imageURL,
+			items: items
 		})`,
 		notificationType,
 		title,
 		message,
-		"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="); err != nil {
+		"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+		imageURL,
+		items); err != nil {
 		return "", errors.Wrap(err, "failed to create notification")
 	}
 	return id, nil
