@@ -464,6 +464,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06bcf0c5_58c25303",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-11T02:23:01Z",
+      "side": 1,
+      "message": "Ah I got it now, sorry I just remembered that we have discuessed this before...\nPerhaps change the comment to \"Setup Internet connectivity for VPN server\" to make it clearer?\nAnd it seems that instead of exposing netns name and other properties, we should setup this connectivity directly in vpn.Server...",
+      "parentUuid": "b77c0337_ff46cbd1",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 31
+      },
+      "revId": "18a4e6872ff08a477434d730c32be574f77cb77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9ec3269_d3a337b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
         "patchSetId": 2
