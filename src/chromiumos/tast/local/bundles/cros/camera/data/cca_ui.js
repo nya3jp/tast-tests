@@ -271,22 +271,6 @@ window.Tast = class Tast {
   }
 
   /**
-   * Switcthes the camera device to next available camera.
-   * @return {Promise} resolves after preview is active again.
-   */
-  static switchCamera() {
-    Tast.click('#switch-device');
-    return new Promise((resolve, reject) => {
-      const interval = setInterval(() => {
-        if (state.get(state.State.STREAMING)) {
-          clearInterval(interval);
-          resolve();
-        }
-      }, 1000);
-    });
-  }
-
-  /**
    * Gets facing of current active camera device.
    * @return {string} The facing string 'user', 'environment', 'external'.
    *     Returns 'unknown' if current device does not support device operator.
