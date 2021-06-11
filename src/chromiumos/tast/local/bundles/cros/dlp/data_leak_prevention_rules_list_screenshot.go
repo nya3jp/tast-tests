@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package policy
+package dlp
 
 import (
 	"context"
@@ -64,9 +64,6 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 	// Update the policy blob.
 	pb := fakedms.NewPolicyBlob()
 	pb.AddPolicies(policyDLP)
-	if err := fakeDMS.WritePolicyBlob(pb); err != nil {
-		s.Fatal("Failed to write policies to FakeDMS: ", err)
-	}
 
 	// Update policy.
 	if err := policyutil.ServeBlobAndRefresh(ctx, fakeDMS, cr, pb); err != nil {
@@ -96,32 +93,31 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 		url              string
 	}{
 		{
-			name:             "Salesforce",
+			name:             "salesforce",
 			wantAllowed:      false,
 			wantNotification: captureNotAllowed,
 			url:              "https://www.salesforce.com/",
 		},
 		{
-			name:             "Google",
+			name:             "google",
 			wantAllowed:      false,
 			wantNotification: captureNotAllowed,
 			url:              "https://www.google.com/",
 		},
 		{
-			name:             "Company",
+			name:             "company",
 			wantAllowed:      false,
 			wantNotification: captureNotAllowed,
 			url:              "https://www.company.com/",
 		},
 		{
-			name:             "Chromium",
+			name:             "chromium",
 			wantAllowed:      true,
 			wantNotification: captureAllowed,
 			url:              "https://www.chromium.org/",
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			if err := ash.CloseNotifications(ctx, tconn); err != nil {
