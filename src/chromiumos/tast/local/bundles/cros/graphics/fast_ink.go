@@ -17,8 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -281,13 +280,13 @@ func FastInk(ctx context.Context, s *testing.State) {
 						// mouse near the bottom could make the shelf visible there, or
 						// a mouse near the top could make the browser frame visible
 						// there. Either of those scenarios could make this test fail.
-						if err := mouse.Move(ctx, tconn, w.TargetBounds.CenterPoint(), time.Second); err != nil {
+						if err := mouse.Move(tconn, w.TargetBounds.CenterPoint(), time.Second)(ctx); err != nil {
 							s.Fatal("Failed to move mouse: ", err)
 						}
 					}
 
-					if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-						s.Fatal("Failed to wait for location change events to be completed: ", err)
+					if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+						s.Fatal("Failed to wait two seconds: ", err)
 					}
 
 					hists, err := metrics.Run(ctx, tconn, func(ctx context.Context) error {
