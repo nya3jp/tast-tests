@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8585d0_990e7824",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-06-11T00:24:14Z",
+      "side": 1,
+      "message": "Who does code reviews for the code part of your firmware? I have no context into the semantic changes being made in this change, so I don\u0027t really feel comfortable +2\u0027ing those changes.",
+      "parentUuid": "5a163e60_b808ca1f",
+      "revId": "f78d9329663853a6800ed91d501996c412082e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11471484_68cc8b30",
@@ -120,6 +138,30 @@
       "side": 1,
       "message": "At the end of every test, logs are collected and a screenshot is taken.\n\nThis just makes the test finish faster, it doesn\u0027t matter if it gets called or not.  Without it, the test cleanup code times out and prints some annoying errors, but no real harm is done.",
       "parentUuid": "616324d6_dd512cf4",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "f78d9329663853a6800ed91d501996c412082e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1db810b4_258eaeeb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-06-11T00:24:14Z",
+      "side": 1,
+      "message": "When will the servo get reconnected in that case? If it only affects the cleanup for this specific test, that\u0027s okay I guess. However, if it ends up having an effect on tests that run after this one, it should be fixed. Inter-test side effects definitely need to be avoided.",
+      "parentUuid": "2e8065ec_9253d1f3",
       "range": {
         "startLine": 136,
         "startChar": 0,
