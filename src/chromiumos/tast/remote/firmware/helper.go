@@ -131,35 +131,25 @@ func (h *Helper) Close(ctx context.Context) error {
 	return firstErr
 }
 
-// CheckPowerAndClose checks the power state, and attempts to boot the DUT if it is off.
-// If you power off the DUT during the test, this will restore the power at the end of the test.
-// Typical invocation should look like:
-//
-// h := firmware.NewHelper(...)
-// defer h.CheckPowerAndClose(ctx)
-//
-// if err := h.RequireServo(ctx); err != nil {
-//   s.Fatal("failed to init servo: ", err)
-// }
-func (h *Helper) CheckPowerAndClose(ctx context.Context) error {
-	var firstErr error
-	if h.Servo != nil {
-		state, err := h.Servo.GetECSystemPowerState(ctx)
-		if err != nil {
-			testing.ContextLog(ctx, "Error getting power state: ", err)
-			firstErr = err
-		} else if state != "S0" {
-			testing.ContextLog(ctx, "DUT is off at end of test, booting with power key")
-			if err = h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
-				testing.ContextLog(ctx, "Failed to press power key: ", err)
-				firstErr = err
-			}
+// EnsureDUTBooted checks the power state, and attempts to boot the DUT if it is off.
+func (h *Helper) EnsureDUTBooted(ctx context.Context) error {
+	if err := h.RequireServo(ctx); err != nil {
+		return nil
+	}
+	state, err := h.Servo.GetECSystemPowerState(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "Error getting power state: ", err)
+	}
+	if state != "S0" {
+		testing.ContextLogf(ctx, "DUT is off (power state %s), resetting", state)
+		if err = h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
+			testing.ContextLog(ctx, "Failed to reset DUT: ", err)
+		}
+		if err = h.DisconnectDUT(ctx); err != nil {
+			testing.ContextLog(ctx, "Error closing connections to DUT: ", err)
 		}
 	}
-	if err := h.Close(ctx); err != nil && firstErr != nil {
-		firstErr = err
-	}
-	return firstErr
+	return h.DUT.WaitConnect(ctx)
 }
 
 // RequireRPCClient creates a client connection to the DUT's gRPC server, unless a connection already exists.

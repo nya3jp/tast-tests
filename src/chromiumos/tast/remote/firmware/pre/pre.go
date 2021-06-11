@@ -98,6 +98,10 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 		}
 	}
 
+	if err := i.v.Helper.EnsureDUTBooted(ctx); err != nil {
+		s.Fatal("DUT is offline before test start: ", err)
+	}
+
 	if err := i.setupBootMode(ctx); err != nil {
 		s.Fatal("Could not setup BootMode: ", err)
 	}
@@ -117,9 +121,11 @@ func (i *impl) Close(ctx context.Context, s *testing.PreState) {
 		i.origGBBFlags = nil
 	}()
 
-	// Don't reuse the Helper, as the helper's gRPC connection may be down.
-	i.destroyHelper(ctx, s)
 	i.initHelper(ctx, s)
+
+	if err := i.v.Helper.EnsureDUTBooted(ctx); err != nil {
+		s.Fatal("DUT is offline before test start: ", err)
+	}
 
 	if err := i.restoreGBBFlags(ctx); err != nil {
 		s.Error("Could not restore GBB flags: ", err)
@@ -157,7 +163,7 @@ func (i *impl) destroyHelper(ctx context.Context, s *testing.PreState) {
 	if i.v.Helper == nil {
 		return
 	}
-	if err := i.v.Helper.CheckPowerAndClose(ctx); err != nil {
+	if err := i.v.Helper.Close(ctx); err != nil {
 		s.Log("Closing helper failed: ", err)
 	}
 	i.v.Helper = nil
