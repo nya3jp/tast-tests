@@ -6,6 +6,7 @@ package servo
 
 import (
 	"context"
+	"fmt"
 	"strings"
 	"time"
 
@@ -108,6 +109,11 @@ const (
 	DurPress     KeypressDuration = "press"
 	DurLongPress KeypressDuration = "long_press"
 )
+
+// Dur returns a custom duration that can be passed to KeypressWithDuration
+func Dur(dur time.Duration) KeypressDuration {
+	return KeypressDuration(fmt.Sprintf("%f", dur.Seconds()))
+}
 
 // A FWWPStateValue is a string accepted by the FWWPState control.
 type FWWPStateValue string
