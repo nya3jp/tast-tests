@@ -18,8 +18,12 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/printing/cups"
+	"chromiumos/tast/local/printing/ippusbbridge"
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
 )
@@ -102,6 +106,12 @@ func Scan(ctx context.Context, s *testing.State) {
 			usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
 		}
 	}()
+	if err = ippusbbridge.WaitForSocket(ctx, devInfo); err != nil {
+		s.Fatal("Failed to wait for ippusb socket: ", err)
+	}
+	if err = cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
+		s.Fatal("Failed to wait for printer to be idle: ", err)
+	}
 
 	extURL := "chrome-extension://" + scanTargetExtID + "/scan.html"
 	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
@@ -116,20 +126,11 @@ func Scan(ctx context.Context, s *testing.State) {
 		s.Fatal("chrome.documentScan API unavailable: ", err)
 	}
 
-	params := ui.FindParams{Name: "Scan", Role: ui.RoleTypeButton}
-	scanButton, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find Scan button: ", err)
-	}
-	defer scanButton.Release(cleanupCtx)
-
 	s.Log("Clicking Scan button")
-	if err := scanButton.LeftClick(ctx); err != nil {
+	ui := uiauto.New(tconn)
+	scanButton := nodewith.Name("Scan").Role(role.Button)
+	if err := ui.WithInterval(1000*time.Millisecond).LeftClickUntil(scanButton, ui.Gone(scanButton))(ctx); err != nil {
 		s.Fatal("Failed to click Scan button: ", err)
-	}
-
-	if err := conn.WaitForExprFailOnErrWithTimeout(ctx, "document.getElementById('scanCompleteText').value == 'Complete!'", 10*time.Second); err != nil {
-		s.Fatal("Scan not completed: ", err)
 	}
 
 	s.Log("Extracting scanned image")
@@ -165,6 +166,12 @@ func Scan(ctx context.Context, s *testing.State) {
 		s.Error("Scanned file differed from golden image: ", err)
 		diff.DumpLog(ctx)
 	}
+
+	// Intentionally stop the printer early to trigger shutdown in
+	// ippusb_bridge. Without this, cleanup may have to wait for other processes
+	// to finish using the printer (e.g. CUPS background probing).
+	usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
+	printer = nil
 }
 
 // setUpDocumentScanExtension moves the extension files into the extension directory and returns extension ID.
