@@ -81,6 +81,30 @@
       },
       "revId": "bd3b4202eabdd78358e0f76d05905054ac27312c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1c64940_9adf491b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_add_account.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-11T15:33:51Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll do the refactoring after my CL lands. Sorry for the slowness. I have another big project (Projector) that\u0027s higher priority.",
+      "parentUuid": "1b79cb47_30ac3ca3",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 11
+      },
+      "revId": "bd3b4202eabdd78358e0f76d05905054ac27312c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
