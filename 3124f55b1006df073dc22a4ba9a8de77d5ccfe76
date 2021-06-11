@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05a02d9e_117a596a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-11T12:23:12Z",
+      "side": 1,
+      "message": "Clipboard notification are not ash notification they are I think toast notification,\nHere is the image of notification: https://drive.google.com/file/d/1IfSMghL-01Rd5YYTclkK0GJDtFxkDYNY/view?usp\u003dsharing\nHere is the string which have to be tested: https://source.chromium.org/chromium/chromium/src/+/main:components/policy_strings.grdp;l\u003d616;bpv\u003d0?q\u003d%22Pasting%20from%20%3Cph%20name%3D%22ORIGIN_NAME%22%3E$1%3Cex%3Ecorp.google.com%3C%2Fex%3E%3C%2Fph%3E%20to%20this%20location%20is%20blocked%20by%20administrator%20policy%22\u0026sq\u003d\u0026ss\u003dchromium%2Fchromium%2Fsrc\nHow could I check if this notification exists in Tast",
+      "revId": "3124f55b1006df073dc22a4ba9a8de77d5ccfe76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
