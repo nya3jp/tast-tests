@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb1b0cb3_9ab94a95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 73
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-11T13:48:37Z",
+      "side": 1,
+      "message": "Have not finished review yet. Sorry for delay.",
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfe0a54c_28cff48e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-11T13:48:37Z",
+      "side": 1,
+      "message": "It is too general. Can you name it as YoutubeMusicApp, or YoutubeMusicAppName?",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d1adbe_700b688b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-11T13:48:37Z",
+      "side": 1,
+      "message": "Please create a bug for TODO. e.g.\n\n//TODO(chromium:12345) Add plus tier URLs.",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 8
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4029b5b8_4160b0db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-11T13:48:37Z",
+      "side": 1,
+      "message": "Name it as switchWindowFunc would make more sense.",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 17
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "620b514b_8f1746ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-11T13:48:37Z",
+      "side": 1,
+      "message": "nit: application",
+      "range": {
+        "startLine": 87,
+        "startChar": 19,
+        "endLine": 87,
+        "endChar": 30
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de89857c_c79601c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-11T13:48:37Z",
+      "side": 1,
+      "message": "I would suggest to name this with a suffix switchWindowByOverviewTest.",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56669f0f_0b9a7551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-11T13:48:37Z",
+      "side": 1,
+      "message": "Can you change this to if !tabletMode {\n    ...\n}",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 2
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1c040a3_91a6b21e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-11T13:48:37Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "727a7e16_665b8bbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-11T13:48:37Z",
+      "side": 1,
+      "message": "nit: btw, in the comment of this constant, there is a typo \u0027ker\u0027. I suppose it should be \u0027key\u0027.\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go?l\u003d43",
+      "range": {
+        "startLine": 115,
+        "startChar": 43,
+        "endLine": 115,
+        "endChar": 70
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a1682e_b36af524",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-11T13:48:37Z",
+      "side": 1,
+      "message": "This looks weird. I reckon the logic as below would make it clearer.\n\n// Define switchWindowTests above.\nswitchWindowTests \u003d []subtest{switchWindowByOverview}\n...\n// Append other tests.\nswitchWindowTests \u003d append(switchWindowTests, switchWindowByKeyboard)",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 18
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c26440a_c348146f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-11T13:48:37Z",
+      "side": 1,
+      "message": "Can you also make a comment for the purpose of this setup.",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 17
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b150f79c_157fb964",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-11T13:48:37Z",
+      "side": 1,
+      "message": "This is not a common practice that I have ever seen. Reuse ctx name reduces code readability.\n\nNormally the cleanupCtx is set in the beginning of the function as below:\n////////\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()\n...\ndefer setBatteryNormal(cleanupCtx)\n////////\n\nBesides, a few earlier setups also need cleanup.",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 15
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2924727c_9358f595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-11T13:48:37Z",
+      "side": 1,
+      "message": "defer conn.Close() should be immediately after successful creation.",
+      "range": {
+        "startLine": 154,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 4
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
