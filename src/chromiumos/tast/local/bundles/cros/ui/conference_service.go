@@ -183,8 +183,9 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 	if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, tabletMode, req.ExtendedDisplay); err != nil {
 		testing.ContextLogf(ctx, "Failed to run conference: %+v", err) // Print error with stack trace.
 
-		// Dump the UI tree to the service/faillog subdirectory. Don't dump directly into outDir because it might be overridden
-		// by the test faillog after pulled back to remote server.
+		// Dump the UI tree to the service/faillog subdirectory.
+		// Don't dump directly into outDir
+		// because it might be overridden by the test faillog after pulled back to remote server.
 		faillog.DumpUITreeWithScreenshotOnError(ctx, filepath.Join(outDir, "service"), func() bool { return true }, cr, "ui_dump")
 		return nil, errors.Wrap(err, "failed to run MeetConference")
 	}
@@ -200,7 +201,7 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	}
 
 	runConferenceAPI := func(ctx context.Context, sessionToken, host, api, parameterData string) (*responseData, error) {
-		reqURL := fmt.Sprintf("http://%s/api/room/zoom/%s%s", host, api, parameterData)
+		reqURL := fmt.Sprintf("%s/api/room/zoom/%s%s", host, api, parameterData)
 		testing.ContextLog(ctx, "Request URL: ", reqURL)
 		httpReq, err := http.NewRequestWithContext(ctx, "GET", reqURL, nil)
 		if err != nil {
@@ -238,6 +239,8 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	if !ok {
 		return nil, errors.New("failed to get variable ui.cuj_username")
 	}
+	// user account is case-insensitive and shown as lower case in CrOS.
+	account = strings.ToLower(account)
 	password, ok := s.s.Var("ui.cuj_password")
 	if !ok {
 		return nil, errors.New("failed to get variable ui.cuj_password")
@@ -323,6 +326,12 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
 	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, tabletMode, req.ExtendedDisplay); err != nil {
+		testing.ContextLogf(ctx, "Failed to run conference: %+v", err) // Print error with stack trace.
+
+		// Dump the UI tree to the service/faillog subdirectory.
+		// Don't dump directly into outDir
+		// because it might be overridden by the test faillog after pulled back to remote server.
+		faillog.DumpUITreeWithScreenshotOnError(ctx, filepath.Join(outDir, "service"), func() bool { return true }, cr, "ui_dump")
 		return nil, errors.Wrap(err, "failed to run MeetConference")
 	}
 
