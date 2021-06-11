@@ -57,7 +57,7 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurLongPress); err != nil {
 		s.Fatal("Failed to set a KeypressControl by servo: ", err)
 	}
-	h.DUT.Disconnect(ctx)
+	h.DisconnectDUT(ctx)
 
 	s.Log("Waiting until power state is G3")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
