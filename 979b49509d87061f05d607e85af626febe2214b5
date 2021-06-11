@@ -60,6 +60,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c543a62_6f70a0bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-11T18:04:20Z",
+      "side": 1,
+      "message": "style: https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\nx, err :\u003d f()\nif err !\u003d nil {\n\t// error handling\n\treturn\n}\n// use x",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 2
+      },
+      "revId": "979b49509d87061f05d607e85af626febe2214b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "812b69e2_210d1299",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
         "patchSetId": 2
