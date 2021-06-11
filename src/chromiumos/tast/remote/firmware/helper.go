@@ -179,6 +179,16 @@ func (h *Helper) CloseRPCConnection(ctx context.Context) error {
 	return nil
 }
 
+// DisconnectDUT shuts down all connections to the DUT. Call this after you have powered down the DUT.
+func (h *Helper) DisconnectDUT(ctx context.Context) error {
+	rpcerr := h.CloseRPCConnection(ctx)
+	duterr := h.DUT.Disconnect(ctx)
+	if duterr != nil {
+		return duterr
+	}
+	return rpcerr
+}
+
 // RequirePlatform fetches the DUT's board and model and caches them, unless they have already been cached.
 func (h *Helper) RequirePlatform(ctx context.Context) error {
 	if h.Board == "" {
