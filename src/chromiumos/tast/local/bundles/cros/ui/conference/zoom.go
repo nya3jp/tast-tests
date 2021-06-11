@@ -35,7 +35,8 @@ type ZoomConference struct {
 func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 	ui := uiauto.New(conf.tconn)
 	openZoomAndSignIn := func(ctx context.Context) error {
-		conn, err := conf.cr.NewConn(ctx, room)
+		const zoomURL = "https://zoom.us/"
+		conn, err := conf.cr.NewConn(ctx, zoomURL)
 		if err != nil {
 			return errors.Wrap(err, "failed to open the zoom website")
 		}
@@ -45,15 +46,6 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 			return errors.Wrapf(err, "failed to wait for %q to be loaded and achieve quiescence", room)
 		}
 
-		testing.ContextLog(ctx, "Click 'Join from Your Browser' link")
-		joinFromYourBrowser := nodewith.Name("Join from Your Browser").Role(role.Anchor)
-		joinButton := nodewith.Name("Join").Role(role.Button)
-		if err := uiauto.Combine("join from Your Browser",
-			ui.LeftClick(joinFromYourBrowser),
-			ui.WaitUntilExists(joinButton),
-		)(ctx); err != nil {
-			return errors.Wrap(err, `failed to click 'Join from Your Browser'`)
-		}
 		if err := ui.WaitUntilExists(nodewith.Name("SIGN IN").Role(role.Link))(ctx); err == nil {
 			testing.ContextLog(ctx, "Start to sign in")
 			if err := conn.Navigate(ctx, "https://zoom.us/google_oauth_signin"); err != nil {
@@ -70,37 +62,39 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 			)(ctx); err != nil {
 				return err
 			}
-
-			if err := conn.Navigate(ctx, room); err != nil {
-				return err
-			}
-
-			testing.ContextLog(ctx, "Click 'Join from Your Browser' link")
-			if err := ui.LeftClick(joinFromYourBrowser)(ctx); err != nil {
-				return errors.Wrap(err, `failed to click 'Join from Your Browser'`)
-			}
 		} else {
 			testing.ContextLog(ctx, "It has been signed in")
+		}
+		if err := conn.Navigate(ctx, room); err != nil {
+			return err
 		}
 		return nil
 	}
 
-	//  allowPerm allows camera, microphone if browser asks for the permissions.
+	//  allowPerm allows camera, microphone and notification if browser asks for the permissions.
 	allowPerm := func(ctx context.Context) error {
-		stepName := "allow microphone and camera"
-		avPerm := nodewith.NameRegex(regexp.MustCompile(".*Use your (microphone|camera).*")).ClassName("RootView").Role(role.AlertDialog).First()
-		allowButton := nodewith.Name("Allow").Role(role.Button).Ancestor(avPerm)
+		allowButton := nodewith.Name("Allow").Role(role.Button)
+		cameraPerm := nodewith.NameRegex(regexp.MustCompile("Use your camera")).ClassName("RootView").Role(role.AlertDialog).First()
+		microphonePerm := nodewith.NameRegex(regexp.MustCompile("Use your microphone")).ClassName("RootView").Role(role.AlertDialog).First()
+		notiPerm := nodewith.NameContaining("Show notifications").ClassName("RootView").Role(role.AlertDialog)
 
-		if err := ui.WithTimeout(4 * time.Second).WaitUntilExists(avPerm)(ctx); err == nil {
-			// Immediately clicking the allow button sometimes doesn't work. Sleep 2 seconds.
-			if err := uiauto.Combine(stepName,
-				ui.Sleep(2*time.Second),
-				ui.LeftClick(allowButton),
-				ui.WaitUntilGone(avPerm))(ctx); err != nil {
-				return err
+		for _, step := range []struct {
+			name   string
+			finder *nodewith.Finder
+			button *nodewith.Finder
+		}{
+			{"allow notifications", notiPerm, allowButton.Ancestor(notiPerm)},
+			{"allow microphone", microphonePerm, allowButton.Ancestor(microphonePerm)},
+			{"allow camera", cameraPerm, allowButton.Ancestor(cameraPerm)},
+		} {
+			if err := ui.WithTimeout(4 * time.Second).WaitUntilExists(step.finder)(ctx); err == nil {
+				// Immediately clicking the allow button sometimes doesn't work. Sleep 2 seconds.
+				if err := uiauto.Combine(step.name, ui.Sleep(2*time.Second), ui.LeftClick(step.button), ui.WaitUntilGone(step.finder))(ctx); err != nil {
+					return err
+				}
+			} else {
+				testing.ContextLog(ctx, "No action is required to ", step.name)
 			}
-		} else {
-			testing.ContextLog(ctx, "No action is required to ", stepName)
 		}
 		return nil
 	}
@@ -128,6 +122,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 
 	startVideo := func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Start video")
+		cameraButton := nodewith.NameRegex(regexp.MustCompile("(stop|start) sending my video")).Role(role.Button)
 		startVideoButton := nodewith.Name("start sending my video").Role(role.Button)
 		stopVideoButton := nodewith.Name("stop sending my video").Role(role.Button)
 		webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
@@ -135,26 +130,50 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 		// Some DUTs start playing video for the first time.
 		// If there is a stop video button, do nothing.
 		return uiauto.Combine("start video",
-			// Click web area in order to make the video button reappear.
-			ui.LeftClick(webArea),
-			ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(startVideoButton),
-				ui.LeftClickUntil(startVideoButton, ui.Gone(startVideoButton))),
+			allowPerm,
+			// Click web area in order to make the camera button reappear.
+			ui.IfSuccessThen(ui.Gone(cameraButton), ui.LeftClick(webArea)),
+			ui.WaitUntilExists(cameraButton),
+			ui.IfSuccessThen(ui.Exists(startVideoButton),
+				ui.LeftClickUntil(startVideoButton, ui.WithTimeout(time.Second).WaitUntilGone(startVideoButton))),
 			ui.WaitUntilExists(stopVideoButton),
 		)(ctx)
 	}
 
 	testing.ContextLog(ctx, "Join conference")
+	joinFromYourBrowser := nodewith.Name("Join from Your Browser").Role(role.StaticText)
 	joinButton := nodewith.Name("Join").Role(role.Button)
 	joinAudioButton := nodewith.Name("Join Audio by Computer").Role(role.Button)
+
+	// It seems zoom has different UI versions. One of the zoom version will open a new tab.
+	// Need to close the initial zoom web page to avoid problems when siwtching tabs.
+	closeLaunchMeetingTab := func(ctx context.Context) error {
+		zoomTab := nodewith.Name("Launch Meeting - Zoom").Role(role.Tab)
+		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(zoomTab)
+		if conf.tabletMode {
+			// If in tablet mode, it should toggle tab strip to show tab list.
+			if err := ui.LeftClick(nodewith.NameContaining("toggle tab strip").Role(role.Button).First())(ctx); err != nil {
+				return err
+			}
+		}
+		if err := ui.LeftClick(closeButton)(ctx); err == nil {
+			testing.ContextLog(ctx, `Close "Launch Meeting - Zoom" tab`)
+		}
+		return nil
+	}
 	return uiauto.Combine("join conference",
 		openZoomAndSignIn,
-		ui.WaitUntilExists(joinButton),
-		allowPerm,
-		ui.LeftClick(joinButton),
-		ui.WithTimeout(time.Second*30).WaitUntilExists(joinAudioButton),
+		ui.LeftClick(joinFromYourBrowser),
+		ui.WithTimeout(time.Minute).WaitUntilExists(joinButton),
+		ui.LeftClickUntil(joinButton, ui.WithTimeout(1*time.Second).WaitUntilGone(joinButton)),
+		ui.WithTimeout(30*time.Second).WaitUntilExists(joinAudioButton),
 		checkParticipantsNum,
-		ui.LeftClickUntil(joinAudioButton, ui.Gone(joinAudioButton)),
-		startVideo,
+		ui.LeftClickUntil(joinAudioButton, ui.WithTimeout(time.Second).WaitUntilGone(joinAudioButton)),
+		// Launch Meeting page is useless so close it.
+		closeLaunchMeetingTab,
+		// Start video requires camera permission.
+		// Allow permission doesn't succeed every time. So add retry here.
+		ui.Retry(3, startVideo),
 	)(ctx)
 }
 
@@ -222,7 +241,6 @@ func (conf *ZoomConference) SwitchTabs(ctx context.Context) error {
 	}
 	defer wikiConn.Close()
 
-	// switch tab
 	if err := kb.Accel(ctx, "Ctrl+Tab"); err != nil {
 		return errors.Wrap(err, "failed to switch tab")
 	}
@@ -237,11 +255,6 @@ func (conf *ZoomConference) ChangeLayout(ctx context.Context) error {
 		speaker = "Speaker View"
 		gallery = "Gallery View"
 	)
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to initialize keyboard input")
-	}
-	defer kb.Close()
 	ui := uiauto.New(conf.tconn)
 	viewButton := nodewith.Name(view).First()
 	webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
