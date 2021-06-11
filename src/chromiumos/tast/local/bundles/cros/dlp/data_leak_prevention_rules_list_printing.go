@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package policy
+package dlp
 
 import (
 	"context"
@@ -67,9 +67,6 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 	// Update the policy blob.
 	pb := fakedms.NewPolicyBlob()
 	pb.AddPolicies(policyDLP)
-	if err := fakeDMS.WritePolicyBlob(pb); err != nil {
-		s.Fatal("Failed to write policies to FakeDMS: ", err)
-	}
 
 	// Update policy.
 	if err := policyutil.ServeBlobAndRefresh(ctx, fakeDMS, cr, pb); err != nil {
@@ -97,32 +94,31 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 		wantNotification string
 	}{
 		{
-			name:             "Salesforce",
+			name:             "salesforce",
 			printingAllowed:  false,
 			url:              "https://www.salesforce.com/",
 			wantNotification: printingNotAllowed,
 		},
 		{
-			name:             "Google",
+			name:             "google",
 			printingAllowed:  false,
 			url:              "https://www.google.com/",
 			wantNotification: printingNotAllowed,
 		},
 		{
-			name:             "Company",
+			name:             "company",
 			printingAllowed:  false,
 			url:              "https://www.company.com/",
 			wantNotification: printingNotAllowed,
 		},
 		{
-			name:             "Chromium",
+			name:             "chromium",
 			printingAllowed:  true,
 			url:              "https://www.chromium.org/",
 			wantNotification: "Printing allowed no notification",
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-
 			conn, err := cr.NewConn(ctx, param.url)
 			if err != nil {
 				s.Fatal("Failed to open page: ", err)
