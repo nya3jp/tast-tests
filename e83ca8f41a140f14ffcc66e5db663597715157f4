@@ -16,6 +16,24 @@
       "message": "Please update go/tast-faft-codelab accordingly",
       "revId": "e83ca8f41a140f14ffcc66e5db663597715157f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea9c8648_d16f5684",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-11T16:13:46Z",
+      "side": 1,
+      "message": "On second thought, that\u0027s not strictly necessary, since it builds up to using Pre at the end. You could add a sentence mentioning the Helper option, but it\u0027s fine to leave it out.",
+      "parentUuid": "56c0c488_c7259416",
+      "revId": "e83ca8f41a140f14ffcc66e5db663597715157f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
