@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "83a83e6f_f09fc54c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-11T01:54:22Z",
+      "side": 1,
+      "message": "It looks like b:190614781 is a tracking bug we can use for migration (according to \"Tast UI library deprecation: Convert Tast tests to UIAuto library\" email)",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "7bc67099651484d6d0e83f172f0f48df28549c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9e4c5233_627855d9",
@@ -14,6 +37,63 @@
       "writtenOn": "2021-06-10T19:33:51Z",
       "side": 1,
       "message": "Hello Hiroki and Saho,\n\nWould you please take a look when you get the chance? Thank you so much!",
+      "revId": "7bc67099651484d6d0e83f172f0f48df28549c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37c17cd7_ba245e12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-11T01:54:22Z",
+      "side": 1,
+      "message": "Thank you for making this!\n",
+      "revId": "7bc67099651484d6d0e83f172f0f48df28549c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eafcdc82_dfd441e8",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-11T01:54:22Z",
+      "side": 1,
+      "message": "This part is fragile against changes of NodeInfo definition. (because js code is not type-checked)\n\nI wonder if we can make a helper function in uiauto.automation so that we can eliminate duplicates of js code:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 22
+      },
+      "revId": "7bc67099651484d6d0e83f172f0f48df28549c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fbab3a0_620660fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-11T01:54:22Z",
+      "side": 1,
+      "message": "Actually, we have two plans for this tests and they\u0027re not compatible with your change:\n\n- b/170692165: To capture all events from Android and verify that sequence. Not only checking the sequence contains the expected events, but also checking some events should be dispatched only once and unexpected event type is not being dispatched.\n- b/149804065: To add a \"live region\" test where the focused node and the event target are different.\n\nI really appreciate you making this, but unfortunatelly we want to take another approach.\n\nI\u0027ve filed b/190773660 and I will take this responsibility.",
       "revId": "7bc67099651484d6d0e83f172f0f48df28549c8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
