@@ -6,20 +6,20 @@ package ui
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/chrome/ui"
-	chromeui "chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -54,6 +54,8 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
 	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer srv.Close()
 
@@ -67,32 +69,19 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for pip_video.html to achieve quiescence: ", err)
 	}
 
-	var pipButtonCenterString string
-	if err := conn.Call(ctx, &pipButtonCenterString, "getPIPButtonCenter"); err != nil {
-		s.Fatal("Failed to get center of PIP button: ", err)
+	ac := uiauto.New(tconn)
+	pipButton := nodewith.Name("PIP").Role(role.Button)
+	pipWindow := nodewith.Name("Picture in picture").ClassName("PictureInPictureWindow")
+	if err := action.Combine(
+		"show PIP window",
+		ac.LeftClick(pipButton),
+		ac.WithTimeout(10*time.Second).WaitUntilExists(pipWindow),
+	)(ctx); err != nil {
+		s.Fatal("Failed to show the PIP window: ", err)
 	}
 
-	var pipButtonCenterInWebContents coords.Point
-	if n, err := fmt.Sscanf(pipButtonCenterString, "%v,%v", &pipButtonCenterInWebContents.X, &pipButtonCenterInWebContents.Y); err != nil {
-		s.Fatalf("Failed to parse center of PIP button (successfully parsed %v of 2 tokens): %v", n, err)
-	}
-
-	webContentsView, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: "WebContentsViewAura"})
-	if err != nil {
-		s.Fatal("Failed to get web contents view: ", err)
-	}
-	defer webContentsView.Release(cleanupCtx)
-
-	if err := mouse.Click(ctx, tconn, webContentsView.Location.TopLeft().Add(pipButtonCenterInWebContents), mouse.LeftButton); err != nil {
-		s.Fatal("Failed to click PIP button: ", err)
-	}
-
-	if err := chromeui.WaitUntilExists(ctx, tconn, chromeui.FindParams{Name: "Picture in picture", ClassName: "PictureInPictureWindow"}, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for PIP window: ", err)
-	}
-
-	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for location change events to be completed: ", err)
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		s.Fatal("Failed to wait five seconds: ", err)
 	}
 
 	hists, err := metrics.Run(ctx, tconn, func(ctx context.Context) error {
