@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d4d56e6_88dd75b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-11T08:05:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d918dbff_300bdd87",
+      "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebc25c87_89b65f62",
@@ -298,6 +316,30 @@
       "side": 1,
       "message": "ticket has been opened\nhttps://buganizer.corp.google.com/issues/190596080",
       "parentUuid": "a3a6b569_8ec7d8cb",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 80
+      },
+      "revId": "37181dea75b3268a5c96858cb75d67b4f7456242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9398426_b315b190",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-11T08:05:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4b85058_5e7f0c36",
       "range": {
         "startLine": 207,
         "startChar": 0,
