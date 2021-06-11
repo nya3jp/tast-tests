@@ -1,0 +1,389 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28447e27_4eed6886",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/kvmtest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "style: binKVMAMD64Zip",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "795a5536_577a2ce0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/kvmtest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "500m is so long! Just curious, what is your plan to schedule this test?",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e6c5595_80866632",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/kvmtest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "What do you mean by \"test\" here? If it just means that it is a test, would you mind dropping \"test\", since it\u0027s obvious that... this is a test. Instead you might want to add more meaningful suffixes, e.g. KVMRepros.\n\nc.f. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Test-names",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2982d934_102dd83b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/kvmtest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "A file path returned by State.DataPath points to a cached file managed by the framework, so it\u0027s not favorable to change its attributes. Would you mind copying the file to some temporary location as well?",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1edbe9d_c82078fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "In general, all functions that can block should take context.Context as the first argument. Otherwise they can ignore the timeout carried with the context and be aborted.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#Context-timeout",
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a1bb5be_29d67b29",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "It is discouraged to put context.Context in a struct.\n\n\u003e Do not store Contexts inside a struct type; instead, pass a Context explicitly to each function that needs it. The Context should be the first parameter, typically named ctx\nhttps://pkg.go.dev/context",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f7d40a1_eca14dda",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "This function uses a support library for firmware tests, but IIUC syzcaller tests are not really about firmwares?\n\nAlso this function supports hard-coded boards only. I\u0027m afraid it\u0027s inconvenient.\n\nCan we detect the target arch in a more general way, e.g. running \"uname -m\".",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 60
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e9972c_d5de83ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "In general we should avoid passing testing.State to functions since it contains too many things and makes it unclear what are I/O of the function.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#state\n\nIn this case, you use testing.State only for two purposes: logging and accessing data files (DataPath).\n\n- You can use testing.ContextLog(ctx, ...) to emit logs with context.Context.\n- You can pass the string result of testing.State.DataPath() to functions requiring data files.",
+      "range": {
+        "startLine": 65,
+        "startChar": 32,
+        "endLine": 65,
+        "endChar": 49
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad45abbc_ae65763f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "I strongly recommend DUT.Reboot() method instead to reboot the DUT. It is not easy to safely reboot the DUT via SSH... DUT.Reboot() is a battle-tested implementation handling many race conditions. The method also waits until the device comes back to normal, so you don\u0027t need isDUTReady and ensureDUTReady.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/dut/dut.go;rcl\u003d1bac101d31eb43b625f021ffdaa2e02ceb272b11;l\u003d179",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 37
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0214c915_0a89310e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "I don\u0027t recommend remounting a filesystem with different options since it can unexpectedly affect later tests. Recently I saw a case with another test that remounts some filesystem with extra permissions and make other tests fail.\n\nWhat about using /usr/local/tmp? I believe it\u0027s mounted with exec by default.",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 33
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "692009af_0bb730ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "Instead of infinite loops, I recommend testing.Poll. It is a handy function that enforces timeouts correctly.",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 6
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72c5c522_3276b974",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "Please use CommandContext instead to honor context timeouts.",
+      "range": {
+        "startLine": 126,
+        "startChar": 13,
+        "endLine": 126,
+        "endChar": 20
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f81e116b_de91defc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "Is it intentional to use OpenSSH instead of dut.DUT methods?",
+      "range": {
+        "startLine": 127,
+        "startChar": 17,
+        "endLine": 127,
+        "endChar": 24
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15781673_a5d6e117",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "typo: Clearing",
+      "range": {
+        "startLine": 163,
+        "startChar": 8,
+        "endLine": 163,
+        "endChar": 17
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe2863eb_2d629a9a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "If you just want to enforce some timeout to command execution, it\u0027s easier to change the context timeout.\n\n ctx, cancel :\u003d context.WithTimeout(ctx, timeout)\n defer cancel\n \n return cmd.Run(ctx)\n\nNote that, however, cmd.Run returns an error if we hit the timeout.",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 54
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e20c970_8db3651e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "Do we need this anonymous function call?",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 9
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3d66404_e548a22e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "This won\u0027t skip a line with indented sharp, e.g.\n\n # this is skipped\n   # this is NOT skipped\n # this is skipped\n\nI\u0027d trim the line before checking for comment lines, i.e.\n\n fname \u003d strings.TrimSpace(fname)\n if fname \u003d\u003d \"\" || strings.HasPrefix(fname, \"#\") {\n   continue\n }",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 220,
+        "endChar": 74
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
