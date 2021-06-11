@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/pre"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/testing"
@@ -24,6 +25,7 @@ func init() {
 		Attr:         []string{"group:firmware", "firmware_slow"},
 		Vars:         []string{"servo", "firmware.hibernate_time"},
 		SoftwareDeps: []string{"crossystem"},
+		Data:         []string{firmware.ConfigFile},
 		HardwareDeps: hwdep.D(hwdep.Battery(), hwdep.ChromeEC()),
 		Timeout:      260 * time.Minute, // 4hrs 20mins
 		Pre:          pre.Helper(),
@@ -36,6 +38,9 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to init servo: ", err)
+	}
+	if err := h.RequireConfig(ctx); err != nil {
+		s.Fatal("Failed to get config: ", err)
 	}
 
 	// By default the DUT hibernates for 4 hours. Reduce the duration by
@@ -53,8 +58,8 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set servo role: ", err)
 	}
 
-	s.Log("Long pressing power button to make DUT into deep sleep mode")
-	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurLongPress); err != nil {
+	s.Log("Pressing power button to make DUT into deep sleep mode")
+	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
 		s.Fatal("Failed to set a KeypressControl by servo: ", err)
 	}
 	h.DisconnectDUT(ctx)
