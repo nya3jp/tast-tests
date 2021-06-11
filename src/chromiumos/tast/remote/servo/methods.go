@@ -6,6 +6,7 @@ package servo
 
 import (
 	"context"
+	"strconv"
 	"strings"
 	"time"
 
@@ -339,6 +340,9 @@ func parseQuotedStringInternal(value []rune, index *int) (string, error) {
 			break
 		} else if c == '\\' {
 			(*index)++
+			if *index >= len(value) {
+				return "", errors.New("unparsable escape sequence \\")
+			}
 			switch value[*index] {
 			case '"', '\'', '\\':
 				current.WriteRune(value[*index])
@@ -348,6 +352,36 @@ func parseQuotedStringInternal(value []rune, index *int) (string, error) {
 				current.WriteRune('\n')
 			case 't':
 				current.WriteRune('\t')
+			case 'x':
+				if *index+3 > len(value) {
+					return "", errors.Errorf("unparsable escape sequence %q", string(value[*index+1]))
+				}
+				char, err := strconv.ParseUint(string(value[*index+1:*index+3]), 16, 8)
+				if err != nil {
+					return "", errors.Wrapf(err, "unparsable escape sequence %q", value[*index-1:*index+3])
+				}
+				current.WriteByte(byte(char))
+				*index += 2
+			case 'u':
+				if *index+5 > len(value) {
+					return "", errors.Errorf("unparsable escape sequence %q", string(value[*index+1]))
+				}
+				char, err := strconv.ParseUint(string(value[*index+1:*index+5]), 16, 16)
+				if err != nil {
+					return "", errors.Wrapf(err, "unparsable escape sequence %q", value[*index-1:*index+5])
+				}
+				current.WriteRune(rune(char))
+				*index += 4
+			case 'U':
+				if *index+9 > len(value) {
+					return "", errors.Errorf("unparsable escape sequence %q", string(value[*index+1]))
+				}
+				char, err := strconv.ParseUint(string(value[*index+1:*index+9]), 16, 32)
+				if err != nil {
+					return "", errors.Wrapf(err, "unparsable escape sequence %q", value[*index-1:*index+9])
+				}
+				current.WriteRune(rune(char))
+				*index += 8
 			default:
 				return "", errors.Errorf("unexpected escape sequence \\%c at index %d in %s", value[*index], *index, string(value))
 			}
