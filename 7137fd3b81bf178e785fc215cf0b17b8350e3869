@@ -22,6 +22,30 @@
       },
       "revId": "7137fd3b81bf178e785fc215cf0b17b8350e3869",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08295f3c_babdff13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-11T07:27:52Z",
+      "side": 0,
+      "message": "It is enabled in stable now. Not required to force enable it any more.",
+      "parentUuid": "1f0f0e37_103fc4de",
+      "range": {
+        "startLine": 87,
+        "startChar": 113,
+        "endLine": 87,
+        "endChar": 148
+      },
+      "revId": "7137fd3b81bf178e785fc215cf0b17b8350e3869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
