@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed03fc54_aa691806",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-11T15:47:02Z",
+      "side": 1,
+      "message": "tast-wise: +2\n\nplease wait for Leo Lai\u0027s review",
+      "revId": "cbf470262a4058979510e7cff83d1b1f940aee69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
