@@ -17015,12 +17015,10 @@ type DataLeakPreventionRulesList struct {
 	Stat Status
 	Val  []*DataLeakPreventionRulesListValue
 }
-
 type DataLeakPreventionRulesListDestinations struct {
 	Urls       []string `json:"urls"`
 	Components []string `json:"components"`
 }
-
 type DataLeakPreventionRulesListRestrictions struct {
 	Class string `json:"class"`
 	Level string `json:"level"`
