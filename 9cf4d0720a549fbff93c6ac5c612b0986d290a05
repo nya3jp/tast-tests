@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61b3e858_79b5cad4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-11T09:29:01Z",
+      "side": 1,
+      "message": "Testing it again. Because I can\u0027t open the logs for failed build, so i can\u0027t figure out what went wrong.\nUnrelated to build there are some comment changes in patch 4",
+      "revId": "9cf4d0720a549fbff93c6ac5c612b0986d290a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
