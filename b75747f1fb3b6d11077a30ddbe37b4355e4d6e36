@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a28ebc3a_e2738044",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-06-11T16:00:22Z",
+      "side": 1,
+      "message": "RX case (FT PSK, Nami):\n2021-06-10T10:48:57.603897Z [10:48:57.603] Achieved starting throughput: 171.340000 Mbps\n[...]\n2021-06-10T10:51:01.565730Z [10:51:01.564] Stop Verification\n2021-06-10T10:51:01.565770Z [10:51:01.564] Iteration 1: End Time\u003d10:49:14.775, Throughput\u003d62.360000\n2021-06-10T10:51:01.565794Z [10:51:01.564] Iteration 2: End Time\u003d10:49:25.591, Throughput\u003d39.010000\n2021-06-10T10:51:01.565836Z [10:51:01.564] Iteration 3: End Time\u003d10:49:36.098, Throughput\u003d127.080000\n2021-06-10T10:51:01.565888Z [10:51:01.564] Iteration 4: End Time\u003d10:49:46.862, Throughput\u003d60.770000\n2021-06-10T10:51:01.565928Z [10:51:01.564] Iteration 5: End Time\u003d10:49:57.488, Throughput\u003d127.520000\n2021-06-10T10:51:01.565954Z [10:51:01.564] Iteration 6: End Time\u003d10:50:08.369, Throughput\u003d93.640000\n2021-06-10T10:51:01.565990Z [10:51:01.564] Iteration 7: End Time\u003d10:50:18.963, Throughput\u003d94.150000\n2021-06-10T10:51:01.566029Z [10:51:01.564] Iteration 8: End Time\u003d10:50:29.864, Throughput\u003d82.130000\n2021-06-10T10:51:01.566066Z [10:51:01.564] Iteration 9: End Time\u003d10:50:40.228, Throughput\u003d65.980000\n2021-06-10T10:51:01.566090Z [10:51:01.564] Iteration 10: End Time\u003d10:50:51.213, Throughput\u003d69.530000\n2021-06-10T10:51:01.566129Z [10:51:01.564] Iteration 11: End Time\u003d10:51:01.564, Throughput\u003d171.100000\n2021-06-10T10:51:01.566163Z [10:51:01.564] Average throughput 90.297273, threshold 68.536000\n\nTX Case:\n2021-06-10T10:59:24.776257Z [10:59:24.775] Achieved starting throughput: 192.100000 Mbps\n[...]\n2021-06-10T11:01:19.061550Z [11:01:19.060] Stop Verification\n2021-06-10T11:01:19.061723Z [11:01:19.060] Iteration 1: End Time\u003d10:59:42.167, Throughput\u003d132.360000\n2021-06-10T11:01:19.061775Z [11:01:19.060] Iteration 2: End Time\u003d10:59:53.071, Throughput\u003d130.310000\n2021-06-10T11:01:19.061801Z [11:01:19.060] Iteration 3: End Time\u003d11:00:03.888, Throughput\u003d147.690000\n2021-06-10T11:01:19.061818Z [11:01:19.060] Iteration 4: End Time\u003d11:00:15.082, Throughput\u003d138.490000\n2021-06-10T11:01:19.061842Z [11:01:19.060] Iteration 5: End Time\u003d11:00:25.831, Throughput\u003d153.920000\n2021-06-10T11:01:19.061864Z [11:01:19.061] Iteration 6: End Time\u003d11:00:36.397, Throughput\u003d134.500000\n2021-06-10T11:01:19.061905Z [11:01:19.061] Iteration 7: End Time\u003d11:00:47.007, Throughput\u003d123.560000\n2021-06-10T11:01:19.061921Z [11:01:19.061] Iteration 8: End Time\u003d11:00:57.667, Throughput\u003d140.050000\n2021-06-10T11:01:19.061952Z [11:01:19.061] Iteration 9: End Time\u003d11:01:08.427, Throughput\u003d138.250000\n2021-06-10T11:01:19.061969Z [11:01:19.061] Iteration 10: End Time\u003d11:01:19.060, Throughput\u003d140.550000\n2021-06-10T11:01:19.061993Z [11:01:19.061] Average throughput 137.968000, threshold 96.050000\n\nThus, average performance drop for RX case is ~50% with high jitter. For TX it\u0027s ~30%.\nLooking at the worst iteration, it\u0027s actually almost 80% of performance drop (39/171Mbps).\nOn Hatch, the numbers are similar (53% drop on RX)\nAverage throughput 81.474000, threshold 70.216000",
+      "parentUuid": "81d2c0e8_b02dafeb",
+      "range": {
+        "startLine": 62,
+        "startChar": 77,
+        "endLine": 62,
+        "endChar": 80
+      },
+      "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24382d38_c4d65dcf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
         "patchSetId": 2
@@ -255,6 +279,24 @@
       "side": 1,
       "message": "Sorry, should have been more clear. I meant that it would be nice to reuse the original code and just add an option to reuse the runner as opposed to creating an entirely new session type and c\u0026p-ing code (in the warmup functions, for example). It\u0027s entirely possible that it\u0027s easier to do it the way you already did it, but I figure it\u0027s worth looking into.",
       "parentUuid": "2e04b35e_2efee647",
+      "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a0d5dbe_5c42fd5e",
+        "filename": "src/chromiumos/tast/remote/network/netperf/continuous_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-06-11T16:00:22Z",
+      "side": 1,
+      "message": "Yes, the warmup part can be moved to a common place (e.g. runner).",
+      "parentUuid": "23af1d60_f74fe402",
       "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
