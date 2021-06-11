@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5da0969_df815795",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-06-11T07:13:57Z",
+      "side": 1,
+      "message": "Is this variable used in the future changes or internal code?",
+      "revId": "a799f248afe081420267be504d4c878e02e830e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
