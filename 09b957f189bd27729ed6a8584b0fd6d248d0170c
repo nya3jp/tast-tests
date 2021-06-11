@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f71e70c_e000476d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_mount_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-06-11T14:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee16f46d_d93ee556",
+      "range": {
+        "startLine": 151,
+        "startChar": 9,
+        "endLine": 151,
+        "endChar": 18
+      },
+      "revId": "09b957f189bd27729ed6a8584b0fd6d248d0170c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb978bca_66fc0874",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-06-11T14:31:42Z",
       "side": 1,
       "message": "just double-checking:\n\ndo you want to log the duration even if the it fails?",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 3
+      },
+      "revId": "09b957f189bd27729ed6a8584b0fd6d248d0170c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba4b0522_9e13c313",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_mount_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-06-11T14:48:37Z",
+      "side": 1,
+      "message": "Hmmm, this should be a fatal error.",
+      "parentUuid": "eb978bca_66fc0874",
       "range": {
         "startLine": 171,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e82f45cc_8b60627b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_mount_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-06-11T14:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc36ff90_fba2badc",
+      "range": {
+        "startLine": 184,
+        "startChar": 30,
+        "endLine": 184,
+        "endChar": 31
+      },
+      "revId": "09b957f189bd27729ed6a8584b0fd6d248d0170c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e8d8d19_70b5d5b6",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-06-11T14:31:42Z",
       "side": 1,
       "message": "ditto above: just double checking that you still want to log the value when there is an error",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 229,
+        "endChar": 38
+      },
+      "revId": "09b957f189bd27729ed6a8584b0fd6d248d0170c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2170b06_34c6e574",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_mount_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-06-11T14:48:37Z",
+      "side": 1,
+      "message": "Hmmm, this should be a fatal error.",
+      "parentUuid": "4e8d8d19_70b5d5b6",
       "range": {
         "startLine": 220,
         "startChar": 2,
