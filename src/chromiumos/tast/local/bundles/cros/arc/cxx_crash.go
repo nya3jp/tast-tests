@@ -28,10 +28,18 @@ func init() {
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			Name:              "real_consent",
-			ExtraSoftwareDeps: []string{"android_vm", "metrics_consent"},
+			ExtraSoftwareDeps: []string{"android_p", "metrics_consent"},
 			Val:               crash.RealConsent,
 		}, {
 			Name:              "mock_consent",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               crash.MockConsent,
+		}, {
+			Name:              "real_consent_vm",
+			ExtraSoftwareDeps: []string{"android_vm", "metrics_consent"},
+			Val:               crash.RealConsent,
+		}, {
+			Name:              "mock_consent_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val:               crash.MockConsent,
 		}},
@@ -112,25 +120,34 @@ func CxxCrash(ctx context.Context, s *testing.State) {
 	}
 	temporaryCrashDir := filepath.Join(androidDataDir, temporaryCrashDirInAndroid)
 
-	s.Log("Checking that temporary dump files are deleted")
-	// The time to wait for removal of temporary files. Typically they are removed in a few seconds.
-	const pollingTimeout = 10 * time.Second
-	err = testing.Poll(ctx, func(c context.Context) error {
-		files, err := ioutil.ReadDir(temporaryCrashDir)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-
-		if len(files) != 0 {
-			var filePaths []string
-			for _, fi := range files {
-				filePaths = append(filePaths, filepath.Join(temporaryCrashDir, fi.Name()))
-			}
-			return errors.Errorf("temporary files found: %s", strings.Join(filePaths, ", "))
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: pollingTimeout})
+	// On ARC++, the Linux kernel is shared with ARC and Chrome OS. The kernel can directly receive
+	// ARC's C++ binary crashes and no temporary files are created. On ARCVM, some temporary files
+	// are created as part of the crash handling and we want to clean it up.
+	vmEnabled, err := arc.VMEnabled()
 	if err != nil {
-		s.Fatal("Temporary files are not deleted: ", err)
+		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
+	}
+	if vmEnabled {
+		s.Log("Checking that temporary dump files are deleted")
+		// The time to wait for removal of temporary files. Typically they are removed in a few seconds.
+		const pollingTimeout = 10 * time.Second
+		err = testing.Poll(ctx, func(c context.Context) error {
+			files, err := ioutil.ReadDir(temporaryCrashDir)
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+
+			if len(files) != 0 {
+				var filePaths []string
+				for _, fi := range files {
+					filePaths = append(filePaths, filepath.Join(temporaryCrashDir, fi.Name()))
+				}
+				return errors.Errorf("temporary files found: %s", strings.Join(filePaths, ", "))
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: pollingTimeout})
+		if err != nil {
+			s.Fatal("Temporary files are not deleted: ", err)
+		}
 	}
 }
