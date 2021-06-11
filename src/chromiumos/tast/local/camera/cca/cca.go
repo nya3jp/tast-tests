@@ -1194,7 +1194,12 @@ func (a *App) ClickShutter(ctx context.Context) error {
 
 // SwitchCamera switches to next camera device.
 func (a *App) SwitchCamera(ctx context.Context) error {
-	return a.conn.Eval(ctx, "Tast.switchCamera()", nil)
+	if err := a.TriggerConfiguration(ctx, func() error {
+		return a.Click(ctx, SwitchDeviceButton)
+	}); err != nil {
+		return errors.Wrap(err, "failed to switch camera")
+	}
+	return nil
 }
 
 // SwitchMode switches to specified capture mode.
