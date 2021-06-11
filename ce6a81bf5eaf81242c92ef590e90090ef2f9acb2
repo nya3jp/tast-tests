@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72e6108d_5194aa72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2021-06-11T15:40:25Z",
+      "side": 1,
+      "message": "Sorry, I misread. I put them in that order now, but I\u0027m assuming you mean that order after Context, right? Most test seem to put Context first.",
+      "parentUuid": "183ad490_3d9a0f2d",
+      "range": {
+        "startLine": 67,
+        "startChar": 67,
+        "endLine": 67,
+        "endChar": 81
+      },
+      "revId": "ce6a81bf5eaf81242c92ef590e90090ef2f9acb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b36ab5f_b0f1bee0",
