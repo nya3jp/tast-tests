@@ -141,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db22177f_eca4bc14",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-11T16:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81d1d88e_5c596ad3",
+      "range": {
+        "startLine": 101,
+        "startChar": 23,
+        "endLine": 101,
+        "endChar": 38
+      },
+      "revId": "f78d9329663853a6800ed91d501996c412082e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "616324d6_dd512cf4",
