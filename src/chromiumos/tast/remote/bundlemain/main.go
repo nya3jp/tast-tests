@@ -104,7 +104,7 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 		// Ensure that the DUT is connected.
 		dut := s.DUT()
 		if !dut.Connected(ctx) {
-			if err := dut.Connect(ctx); err != nil {
+			if err := dut.WaitConnect(ctx); err != nil {
 				s.Log("Failed to connect to the DUT: ", err)
 				return
 			}
@@ -187,7 +187,7 @@ func beforeReboot(ctx context.Context, d *dut.DUT) error {
 
 // RunRemote is an entry point function for remote bundles.
 func RunRemote() {
-	os.Exit(bundle.RemoteDefault(bundle.RemoteDelegate{
+	os.Exit(bundle.RemoteDefault(bundle.Delegate{
 		TestHook:     testHookRemote,
 		BeforeReboot: beforeReboot,
 	}))
