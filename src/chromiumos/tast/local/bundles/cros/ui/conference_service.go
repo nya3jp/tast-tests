@@ -278,9 +278,20 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 			return nil, errors.Wrap(err, "failed to get DUT default screen mode")
 		}
 	}
+
+	var tsAction cuj.UIActionHandler
+	if tabletMode {
+		if tsAction, err = cuj.NewTabletActionHandler(ctx, tconn); err != nil {
+			return nil, errors.Wrap(err, "failed to create tablet action handler")
+		}
+	} else {
+		if tsAction, err = cuj.NewClamshellActionHandler(ctx, tconn); err != nil {
+			return nil, errors.Wrap(err, "failed to create clamshell action handler")
+		}
+	}
 	// Creates a Zoom conference instance which implements conference.Conference methods.
 	// which provides conference operations.
-	zmcli := conference.NewZoomConference(cr, tconn, tabletMode, int(req.RoomSize), account)
+	zmcli := conference.NewZoomConference(cr, tconn, tsAction, tabletMode, int(req.RoomSize), account)
 	defer zmcli.End(ctx)
 	// Sends a http request that ask for creating a Zoom conferece with
 	// specified participants and also return clean up method for closing
@@ -318,6 +329,11 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
 	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, tabletMode, req.ExtendedDisplay); err != nil {
+		testing.ContextLogf(ctx, "Failed to run conference: %+v", err) // Print error with stack trace.
+
+		// Dump the UI tree to the service/faillog subdirectory. Don't dump directly into outDir because it might be overridden
+		// by the test faillog after pulled back to remote server.
+		faillog.DumpUITreeWithScreenshotOnError(ctx, filepath.Join(outDir, "service"), func() bool { return true }, cr, "ui_dump")
 		return nil, errors.Wrap(err, "failed to run MeetConference")
 	}
 

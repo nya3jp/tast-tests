@@ -24,6 +24,7 @@ import (
 
 func newGoogleSlides(ctx context.Context, cr *chrome.Chrome, newWindow bool) error {
 	const (
+		newSlidesURL = "https://slides.new"
 		title        = "CUJ Testing"
 		subtitle     = "For testing only"
 		slideTitle   = "CUJ_slide_title_page %d"
@@ -48,51 +49,21 @@ func newGoogleSlides(ctx context.Context, cr *chrome.Chrome, newWindow bool) err
 		if newWindow {
 			opts = append(opts, cdputil.WithNewWindow())
 		}
-		conn, err := cr.NewConn(ctx, "https://drive.google.com", opts...)
+		conn, err := cr.NewConn(ctx, newSlidesURL, opts...)
 		if err != nil {
 			return err
 		}
 		defer conn.Close()
-
-		newButton := nodewith.Name("New").First()
-		googleSlides := nodewith.Name("Google Slides").Role(role.MenuItem)
-		filmstripView := nodewith.Name("Filmstrip view").Role(role.TabPanel)
-		titleNode := nodewith.Name("title").First()
-		subtitleNode := nodewith.Name("subtitle").First()
-
-		checkOKButton := func(ctx context.Context) error {
-			okButton := nodewith.Name("OK").Role(role.Button)
-			if err := ui.Exists(okButton); err != nil {
-				// OK button doesn't exist. Just return.
-				return nil
-			}
-			if err := ui.ImmediateLeftClick(okButton)(ctx); err != nil {
-				return errors.Wrap(err, "failed to immediately click OK button")
-			}
-			testing.ContextLog(ctx, "Clicked ok in the first time")
-			return nil
-		}
-
-		if err := uiauto.Combine("create new slide",
-			ui.WaitUntilExists(newButton),
-			checkOKButton,
-			// Use LeftClickUntil to make sure Google Slides menu is launched.
-			ui.LeftClickUntil(newButton, ui.WithTimeout(5*time.Second).WaitUntilExists(googleSlides)),
-			// The "New" menu will expand to its full size with animation. Low end DUTs will see
-			// lagging for this animation. Use a longer interval to wait for the "Google Slides"
-			// option to be stable to accomodate UI lagging. Otherwise it might click in the middle of
-			// the animation on wrong coordinates.
-			ui.WithInterval(animationUIInterval).LeftClick(googleSlides),
-			// Some DUT models with poor performance need to wait a long time.
-			ui.WithTimeout(2*time.Minute).WaitUntilExists(filmstripView),
-		)(ctx); err != nil {
-			return err
-		}
 		if err := webutil.WaitForQuiescence(ctx, conn, time.Minute); err != nil {
 			return errors.Wrap(err, "failed to wait for page to finish loading")
 		}
 
+		filmstripView := nodewith.Name("Filmstrip view").Role(role.TabPanel)
+		titleNode := nodewith.Name("title").First()
+		subtitleNode := nodewith.Name("subtitle").First()
+
 		return uiauto.Combine("edit slide title and subtitle",
+			ui.WithTimeout(time.Minute).WaitUntilExists(filmstripView),
 			ui.WaitUntilExists(titleNode),
 			ui.DoubleClick(titleNode),
 			ui.Sleep(time.Second),
@@ -154,7 +125,7 @@ func presentSlide(ctx context.Context, tconn *chrome.TestConn, kb *input.Keyboar
 	ui := uiauto.New(tconn)
 	presentationOptionsButton := nodewith.Name("Presentation options").First()
 	presentFromBeginningButton := nodewith.Name("Present from beginning").First()
-	if err := uiauto.Combine("Present Slide",
+	if err := uiauto.Combine("present Slide",
 		ui.WaitUntilExists(presentationOptionsButton),
 		ui.LeftClickUntil(presentationOptionsButton, ui.WithTimeout(5*time.Second).WaitUntilExists(presentFromBeginningButton)),
 		ui.LeftClick(presentFromBeginningButton),
@@ -194,10 +165,26 @@ func editSlide(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEv
 	if err != nil {
 		return errors.Wrap(err, "failed to get nodes info")
 	}
-	return uiauto.Combine("Edit slide",
+	return uiauto.Combine("edit slide",
 		mouse.DoubleClick(tconn, nodesInfo[len(nodesInfo)-1].Location.CenterPoint(), 500*time.Millisecond),
 		kb.TypeAction(text),
 		kb.AccelAction("Esc"),
 		kb.AccelAction("Esc"),
+	)(ctx)
+}
+
+func deleteSlide(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+	webArea := nodewith.Name("Untitled presentation - Google Slides").Role(role.RootWebArea)
+	slideWebArea := nodewith.Name("Google Slides").Role(role.RootWebArea)
+	fileButton := nodewith.Name("File").Role(role.MenuItem).Ancestor(webArea)
+	menu := nodewith.Role(role.Menu).Ancestor(webArea)
+	moveToTrash := nodewith.NameContaining("Move to trash t").Role(role.MenuItem)
+	goToSlidesHome := nodewith.Name("Go to Slides home screen").Role(role.Button)
+	return uiauto.Combine("delete slide",
+		ExpandMenu(tconn, fileButton, menu, 526),
+		ui.LeftClick(moveToTrash),
+		ui.LeftClick(goToSlidesHome),
+		ui.WithTimeout(time.Minute).WaitUntilExists(slideWebArea),
 	)(ctx)
 }

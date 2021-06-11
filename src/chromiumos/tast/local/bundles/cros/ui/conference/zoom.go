@@ -12,9 +12,11 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
@@ -26,6 +28,7 @@ import (
 type ZoomConference struct {
 	cr         *chrome.Chrome
 	tconn      *chrome.TestConn
+	tsAction   cuj.UIActionHandler
 	tabletMode bool
 	roomSize   int
 	account    string
@@ -35,7 +38,8 @@ type ZoomConference struct {
 func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 	ui := uiauto.New(conf.tconn)
 	openZoomAndSignIn := func(ctx context.Context) error {
-		conn, err := conf.cr.NewConn(ctx, room)
+		const zoomURL = "https://zoom.us/"
+		conn, err := conf.cr.NewConn(ctx, zoomURL)
 		if err != nil {
 			return errors.Wrap(err, "failed to open the zoom website")
 		}
@@ -45,15 +49,6 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 			return errors.Wrapf(err, "failed to wait for %q to be loaded and achieve quiescence", room)
 		}
 
-		testing.ContextLog(ctx, "Click 'Join from Your Browser' link")
-		joinFromYourBrowser := nodewith.Name("Join from Your Browser").Role(role.Anchor)
-		joinButton := nodewith.Name("Join").Role(role.Button)
-		if err := uiauto.Combine("join from Your Browser",
-			ui.LeftClick(joinFromYourBrowser),
-			ui.WaitUntilExists(joinButton),
-		)(ctx); err != nil {
-			return errors.Wrap(err, `failed to click 'Join from Your Browser'`)
-		}
 		if err := ui.WaitUntilExists(nodewith.Name("SIGN IN").Role(role.Link))(ctx); err == nil {
 			testing.ContextLog(ctx, "Start to sign in")
 			if err := conn.Navigate(ctx, "https://zoom.us/google_oauth_signin"); err != nil {
@@ -70,37 +65,39 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 			)(ctx); err != nil {
 				return err
 			}
-
-			if err := conn.Navigate(ctx, room); err != nil {
-				return err
-			}
-
-			testing.ContextLog(ctx, "Click 'Join from Your Browser' link")
-			if err := ui.LeftClick(joinFromYourBrowser)(ctx); err != nil {
-				return errors.Wrap(err, `failed to click 'Join from Your Browser'`)
-			}
 		} else {
 			testing.ContextLog(ctx, "It has been signed in")
+		}
+		if err := conn.Navigate(ctx, room); err != nil {
+			return err
 		}
 		return nil
 	}
 
-	//  allowPerm allows camera, microphone if browser asks for the permissions.
+	//  allowPerm allows camera, microphone and notification if browser asks for the permissions.
 	allowPerm := func(ctx context.Context) error {
-		stepName := "allow microphone and camera"
-		avPerm := nodewith.NameRegex(regexp.MustCompile(".*Use your (microphone|camera).*")).ClassName("RootView").Role(role.AlertDialog).First()
-		allowButton := nodewith.Name("Allow").Role(role.Button).Ancestor(avPerm)
+		allowButton := nodewith.Name("Allow").Role(role.Button)
+		cameraPerm := nodewith.NameRegex(regexp.MustCompile("Use your camera")).ClassName("RootView").Role(role.AlertDialog).First()
+		microphonePerm := nodewith.NameRegex(regexp.MustCompile("Use your microphone")).ClassName("RootView").Role(role.AlertDialog).First()
+		notiPerm := nodewith.NameContaining("Show notifications").ClassName("RootView").Role(role.AlertDialog)
 
-		if err := ui.WithTimeout(4 * time.Second).WaitUntilExists(avPerm)(ctx); err == nil {
-			// Immediately clicking the allow button sometimes doesn't work. Sleep 2 seconds.
-			if err := uiauto.Combine(stepName,
-				ui.Sleep(2*time.Second),
-				ui.LeftClick(allowButton),
-				ui.WaitUntilGone(avPerm))(ctx); err != nil {
-				return err
+		for _, step := range []struct {
+			name   string
+			finder *nodewith.Finder
+			button *nodewith.Finder
+		}{
+			{"allow notifications", notiPerm, allowButton.Ancestor(notiPerm)},
+			{"allow microphone", microphonePerm, allowButton.Ancestor(microphonePerm)},
+			{"allow camera", cameraPerm, allowButton.Ancestor(cameraPerm)},
+		} {
+			if err := ui.WithTimeout(4 * time.Second).WaitUntilExists(step.finder)(ctx); err == nil {
+				// Immediately clicking the allow button sometimes doesn't work. Sleep 2 seconds.
+				if err := uiauto.Combine(step.name, ui.Sleep(2*time.Second), ui.LeftClick(step.button), ui.WaitUntilGone(step.finder))(ctx); err != nil {
+					return err
+				}
+			} else {
+				testing.ContextLog(ctx, "No action is required to ", step.name)
 			}
-		} else {
-			testing.ContextLog(ctx, "No action is required to ", stepName)
 		}
 		return nil
 	}
@@ -128,33 +125,57 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 
 	startVideo := func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Start video")
+		cameraButton := nodewith.NameRegex(regexp.MustCompile("(stop|start) sending my video")).Role(role.Button)
 		startVideoButton := nodewith.Name("start sending my video").Role(role.Button)
 		stopVideoButton := nodewith.Name("stop sending my video").Role(role.Button)
-		webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
 
 		// Some DUTs start playing video for the first time.
 		// If there is a stop video button, do nothing.
 		return uiauto.Combine("start video",
-			// Click web area in order to make the video button reappear.
-			ui.LeftClick(webArea),
-			ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(startVideoButton),
-				ui.LeftClickUntil(startVideoButton, ui.Gone(startVideoButton))),
+			allowPerm,
+			conf.showInterface,
+			ui.WaitUntilExists(cameraButton),
+			ui.IfSuccessThen(ui.Exists(startVideoButton),
+				ui.LeftClickUntil(startVideoButton, ui.WithTimeout(time.Second).WaitUntilGone(startVideoButton))),
 			ui.WaitUntilExists(stopVideoButton),
 		)(ctx)
 	}
 
 	testing.ContextLog(ctx, "Join conference")
+	joinFromYourBrowser := nodewith.Name("Join from Your Browser").Role(role.StaticText)
 	joinButton := nodewith.Name("Join").Role(role.Button)
 	joinAudioButton := nodewith.Name("Join Audio by Computer").Role(role.Button)
+
+	// One of the zoom version will open a new window.(Currently the latest version doesn't open a new window.)
+	// Launch Meeting page will affect the progress of switching pages, so need to close it.
+	// In order to make these two versions run without any problem, do the processing here.
+	closeLaunchMeetingTab := func(ctx context.Context) error {
+		zoomTab := nodewith.Name("Launch Meeting - Zoom").Role(role.Tab)
+		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(zoomTab)
+		if conf.tabletMode {
+			// If in tablet mode, it should toggle tab strip to show tab list.
+			if err := ui.LeftClick(nodewith.NameContaining("toggle tab strip").Role(role.Button).First())(ctx); err != nil {
+				return err
+			}
+		}
+		if err := ui.LeftClick(closeButton)(ctx); err == nil {
+			testing.ContextLog(ctx, `Close "Launch Meeting - Zoom" tab`)
+		}
+		return nil
+	}
 	return uiauto.Combine("join conference",
 		openZoomAndSignIn,
-		ui.WaitUntilExists(joinButton),
-		allowPerm,
+		ui.LeftClick(joinFromYourBrowser),
+		ui.WithTimeout(time.Minute).WaitUntilExists(joinButton),
 		ui.LeftClick(joinButton),
-		ui.WithTimeout(time.Second*30).WaitUntilExists(joinAudioButton),
+		ui.WithTimeout(30*time.Second).WaitUntilExists(joinAudioButton),
 		checkParticipantsNum,
-		ui.LeftClickUntil(joinAudioButton, ui.Gone(joinAudioButton)),
-		startVideo,
+		ui.LeftClickUntil(joinAudioButton, ui.WithTimeout(time.Second).WaitUntilGone(joinAudioButton)),
+		// Launch Meeting page is useless so close it.
+		closeLaunchMeetingTab,
+		// Start video requires camera permission.
+		// Allow permission doesn't succeed every time. So add retry here.
+		ui.Retry(3, startVideo),
 	)(ctx)
 }
 
@@ -168,13 +189,17 @@ func (conf *ZoomConference) VideoAudioControl(ctx context.Context) error {
 		if err != nil {
 			return errors.Wrap(err, "failed to wait for the meet camera switch button to show")
 		}
+		nowCameraButton := nodewith.Name(info.Name).Role(role.Button)
 		if strings.HasPrefix(info.Name, "start") {
 			testing.ContextLog(ctx, "Turn camera from off to on")
 		} else {
 			testing.ContextLog(ctx, "Turn camera from on to off")
 		}
-		if err := ui.LeftClick(cameraButton)(ctx); err != nil {
-			return errors.Wrap(err, "failed to switch camera")
+		if err := ui.Retry(3, uiauto.Combine("click video button",
+			ui.LeftClick(nowCameraButton),
+			ui.WaitUntilGone(nowCameraButton),
+		))(ctx); err != nil {
+			return errors.Wrap(err, "failed to toggle video")
 		}
 		return nil
 	}
@@ -186,13 +211,17 @@ func (conf *ZoomConference) VideoAudioControl(ctx context.Context) error {
 		if err != nil {
 			return errors.Wrap(err, "failed to wait for the meet microphone switch button to show")
 		}
+		nowMicrophoneButton := nodewith.Name(info.Name).Role(role.Button)
 		if strings.HasPrefix(info.Name, "unmute") {
 			testing.ContextLog(ctx, "Turn microphone from mute to unmute")
 		} else {
 			testing.ContextLog(ctx, "Turn microphone from unmute to mute")
 		}
-		if err := ui.LeftClick(microphoneButton)(ctx); err != nil {
-			return errors.Wrap(err, "failed to switch microphone")
+		if err := ui.Retry(3, uiauto.Combine("click audio button",
+			ui.LeftClick(nowMicrophoneButton),
+			ui.WaitUntilGone(nowMicrophoneButton),
+		))(ctx); err != nil {
+			return errors.Wrap(err, "failed to toggle audio")
 		}
 		return nil
 	}
@@ -222,7 +251,6 @@ func (conf *ZoomConference) SwitchTabs(ctx context.Context) error {
 	}
 	defer wikiConn.Close()
 
-	// switch tab
 	if err := kb.Accel(ctx, "Ctrl+Tab"); err != nil {
 		return errors.Wrap(err, "failed to switch tab")
 	}
@@ -237,17 +265,11 @@ func (conf *ZoomConference) ChangeLayout(ctx context.Context) error {
 		speaker = "Speaker View"
 		gallery = "Gallery View"
 	)
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to initialize keyboard input")
-	}
-	defer kb.Close()
 	ui := uiauto.New(conf.tconn)
 	viewButton := nodewith.Name(view).First()
-	webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
 
 	if err := uiauto.Combine("check view button",
-		ui.LeftClick(webArea),
+		conf.showInterface,
 		ui.WaitUntilExists(viewButton),
 	)(ctx); err != nil {
 		// Some DUTs don't show 'View' button
@@ -257,10 +279,16 @@ func (conf *ZoomConference) ChangeLayout(ctx context.Context) error {
 
 	for _, mode := range []string{speaker, gallery} {
 		modeNode := nodewith.Name(mode).Role(role.MenuItem)
+		selectMode := func(ctx context.Context) error {
+			testing.ContextLog(ctx, "Select layout mode : ", mode)
+			return uiauto.Combine("select layout mode",
+				conf.showInterface,
+				ui.LeftClick(viewButton),
+				ui.LeftClick(modeNode),
+			)(ctx)
+		}
 		if err := uiauto.Combine("change layout to '"+mode+"'",
-			ui.LeftClick(webArea),
-			ui.LeftClick(viewButton),
-			ui.LeftClick(modeNode),
+			ui.Retry(3, selectMode),
 			ui.Sleep(10*time.Second), //After applying new layout, give it 10 seconds for viewing before applying next one.
 		)(ctx); err != nil {
 			return err
@@ -269,11 +297,62 @@ func (conf *ZoomConference) ChangeLayout(ctx context.Context) error {
 	return nil
 }
 
-// BackgroundBlurring blurs the background.
+// BackgroundBlurring change the background to patterned background and reset to none.
+// Zoom doesn't support background blur in web.
 func (conf *ZoomConference) BackgroundBlurring(ctx context.Context) error {
-	// Zoom doesn't support background change in web. The common conference test will call this interface
-	// and return nil to make sure the test logic passes for zoom.
-	// TODO: Add detailed implementation when this feature is available in zoom web.
+	ui := uiauto.New(conf.tconn)
+	changeBackground := func(backgroundNumber int) error {
+		webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
+		settingsButton := nodewith.Name("Settings").Role(role.Button).Ancestor(webArea)
+		settingsWindow := nodewith.Name("settings dialog window").Role(role.Application).Ancestor(webArea)
+		backgroundTab := nodewith.Name("Background").Role(role.Tab).Ancestor(settingsWindow)
+		backgroundItem := nodewith.Role(role.ListItem).Ancestor(settingsWindow)
+		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(settingsWindow)
+		openBackgroundPanel := func(ctx context.Context) error {
+			var actions []action.Action
+			if err := conf.showInterface(ctx); err != nil {
+				return err
+			}
+			if err := ui.Exists(settingsButton)(ctx); err == nil {
+				testing.ContextLog(ctx, "Click settings button")
+				actions = append(actions,
+					ui.LeftClickUntil(settingsButton, ui.WithTimeout(5*time.Second).WaitUntilExists(backgroundTab)))
+			} else {
+				// If the screen width is not enough, the settings button will be moved to more options.
+				testing.ContextLog(ctx, "Click more option and settings menu item")
+				moreOptions := nodewith.Name("More meeting control").Ancestor(webArea)
+				moreSettingsButton := nodewith.Name("Settings").Role(role.MenuItem).Ancestor(webArea)
+				actions = append(actions,
+					ui.LeftClick(moreOptions),
+					ui.LeftClick(moreSettingsButton),
+				)
+			}
+			actions = append(actions, ui.LeftClick(backgroundTab))
+			if err := uiauto.Combine("open background panel", actions...)(ctx); err != nil {
+				return errors.Wrap(err, "failed to background panel")
+			}
+			return nil
+		}
+		testing.ContextLog(ctx, "Change background to listitem ", backgroundNumber)
+		return uiauto.Combine("change background",
+			ui.Retry(3, openBackgroundPanel), // Open "Background" panel.
+			ui.LeftClick(backgroundItem.Nth(backgroundNumber)),
+			ui.LeftClick(closeButton), // Close "Background" panel.
+			ui.Sleep(5*time.Second),   // After applying new background, give it 5 seconds for viewing before applying next one.
+		)(ctx)
+	}
+
+	// Background item didn't has a specific node name but a role name.
+	// We could get the background item from the listitem.
+	// The first background item is none, others are patterned background.
+	// Click backgroundItem.Nth(0) means change background to none.
+	// Click backgroundItem.Nth(1) means change background to first background img.
+	for i := 1; i >= 0; i-- {
+		if err := changeBackground(i); err != nil {
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -285,6 +364,7 @@ func (conf *ZoomConference) ExtendedDisplayPresenting(_ context.Context) error {
 
 // PresentSlide presents the slides to the conference.
 func (conf *ZoomConference) PresentSlide(ctx context.Context) error {
+	const slideTitle = "Untitled presentation - Google Slides"
 	tconn := conf.tconn
 	ui := uiauto.New(tconn)
 
@@ -293,51 +373,67 @@ func (conf *ZoomConference) PresentSlide(ctx context.Context) error {
 		return errors.Wrap(err, "failed to initialize keyboard input")
 	}
 	defer kb.Close()
+	presentSlide := func(ctx context.Context) error {
+		shareScreen := func(ctx context.Context) error {
+			shareScreenButton := nodewith.Name("Share Screen").Role(role.Button)
+			presentWindow := nodewith.ClassName("DesktopMediaSourceView").First()
+			shareButton := nodewith.Name("Share").Role(role.Button)
+			stopShareButton := nodewith.Name("Stop Share").Role(role.Button)
 
-	shareScreen := func(ctx context.Context) error {
-		webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
-		shareScreenButton := nodewith.Name("Share Screen").Role(role.Button)
-		presentWindow := nodewith.ClassName("DesktopMediaSourceView").First()
-		shareButton := nodewith.Name("Share").Role(role.Button)
-		stopShareButton := nodewith.Name("Stop Share").Role(role.Button)
+			return uiauto.Combine("share Screen",
+				conf.showInterface,
+				ui.LeftClickUntil(shareScreenButton, ui.WithTimeout(time.Second).WaitUntilExists(presentWindow)),
+				ui.LeftClick(presentWindow),
+				ui.LeftClick(shareButton),
+				ui.WaitUntilExists(stopShareButton),
+			)(ctx)
+		}
 
-		return uiauto.Combine("share Screen",
-			ui.LeftClick(webArea),
-			ui.LeftClickUntil(shareScreenButton, ui.WithTimeout(time.Second).WaitUntilExists(presentWindow)),
-			ui.LeftClick(presentWindow),
-			ui.LeftClick(shareButton),
-			ui.WaitUntilExists(stopShareButton),
-		)(ctx)
+		testing.ContextLog(ctx, "Create a new Google Slides")
+		if err := newGoogleSlides(ctx, conf.cr, false); err != nil {
+			return err
+		}
+		defer func() error {
+			testing.ContextLog(ctx, "Switch to the slide")
+			if err := conf.switchToChromeTab(ctx, slideTitle); err != nil {
+				return errors.Wrap(err, "failed to switch tab to slide page")
+			}
+			testing.ContextLog(ctx, "Delete slide")
+			if err := deleteSlide(ctx, conf.tconn); err != nil {
+				return errors.Wrap(err, "failed to delete slide")
+			}
+			return nil
+		}()
+
+		testing.ContextLog(ctx, "Switch back to conference page")
+		if err := conf.switchToChromeTab(ctx, "Zoom"); err != nil {
+			return errors.Wrap(err, "failed to switch tab to conference page")
+		}
+
+		testing.ContextLog(ctx, "Start to share screen")
+		if err := shareScreen(ctx); err != nil {
+			return errors.Wrap(err, "failed to share screen")
+		}
+
+		testing.ContextLog(ctx, "Switch to the slide")
+		if err := conf.switchToChromeTab(ctx, slideTitle); err != nil {
+			return errors.Wrap(err, "failed to switch tab to slide page")
+		}
+
+		testing.ContextLog(ctx, "Start present slide")
+		if err := presentSlide(ctx, tconn, kb); err != nil {
+			return err
+		}
+
+		testing.ContextLog(ctx, "Edit slide")
+		if err := editSlide(ctx, tconn, kb); err != nil {
+			return errors.Wrap(err, "failed to edit slide when leave presentation mode")
+		}
+		return nil
 	}
 
-	testing.ContextLog(ctx, "Create a new Google Slides")
-	if err := newGoogleSlides(ctx, conf.cr, false); err != nil {
-		return err
-	}
-
-	testing.ContextLog(ctx, "Switch back to conference page")
-	if err := conf.switchToChromeTab(ctx, "Zoom"); err != nil {
-		return errors.Wrap(err, "failed to switch tab to conference page")
-	}
-
-	testing.ContextLog(ctx, "Start to share screen")
-	if err := shareScreen(ctx); err != nil {
-		return errors.Wrap(err, "failed to share screen")
-	}
-
-	testing.ContextLog(ctx, "Switch to the slide")
-	if err := conf.switchToChromeTab(ctx, "Untitled presentation - Google Slides"); err != nil {
-		return errors.Wrap(err, "failed to switch tab to slide page")
-	}
-
-	testing.ContextLog(ctx, "Start present slide")
-	if err := presentSlide(ctx, tconn, kb); err != nil {
-		return err
-	}
-
-	testing.ContextLog(ctx, "Edit slide")
-	if err := editSlide(ctx, tconn, kb); err != nil {
-		return errors.Wrap(err, "failed to edit slide when leave presentation mode")
+	if err := presentSlide(ctx); err != nil {
+		return errors.Wrap(err, "failed to present slide")
 	}
 
 	testing.ContextLog(ctx, "Switch back to conference page")
@@ -362,6 +458,47 @@ func (conf *ZoomConference) End(ctx context.Context) error {
 
 var _ Conference = (*ZoomConference)(nil)
 
+// showInterface move mouse or tap in web area in order to make the interface reappear.
+func (conf *ZoomConference) showInterface(ctx context.Context) error {
+	ui := uiauto.New(conf.tconn)
+	webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
+	information := nodewith.Name("Meeting information").Role(role.Button).Ancestor(webArea)
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := ui.Exists(information)(ctx); err == nil {
+			return nil
+		}
+
+		if conf.tabletMode {
+			testing.ContextLog(ctx, "Tap web area to show interface")
+			if err := conf.tsAction.Click(webArea)(ctx); err != nil {
+				return errors.Wrap(err, "failed to click the web area")
+			}
+		} else {
+			testing.ContextLog(ctx, "Mouse move to show interface")
+			webAreaInfo, err := ui.Info(ctx, webArea)
+			if err != nil {
+				return err
+			}
+			if err := mouse.Move(conf.tconn, webAreaInfo.Location.TopLeft(), 200*time.Millisecond)(ctx); err != nil {
+				return errors.Wrap(err, "failed to move mouse to top left corner of the web area")
+			}
+			if err := ui.MouseMoveTo(webArea, 200*time.Millisecond)(ctx); err != nil {
+				return errors.Wrap(err, "failed to move mouse to the center of the web area")
+			}
+		}
+
+		if err := ui.WaitUntilExists(information)(ctx); err != nil {
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // switchToChromeTab switch to the given chrome tab.
 //
 // TODO: Merge to cuj.UIActionHandler and introduce UIActionHandler in this test. See
@@ -378,13 +515,41 @@ func (conf *ZoomConference) switchToChromeTab(ctx context.Context, tabName strin
 }
 
 // NewZoomConference creates Zoom conference room instance which implements Conference interface.
-func NewZoomConference(cr *chrome.Chrome, tconn *chrome.TestConn, tabletMode bool,
+func NewZoomConference(cr *chrome.Chrome, tconn *chrome.TestConn, tsAction cuj.UIActionHandler, tabletMode bool,
 	roomSize int, account string) *ZoomConference {
 	return &ZoomConference{
 		cr:         cr,
 		tconn:      tconn,
+		tsAction:   tsAction,
 		tabletMode: tabletMode,
 		roomSize:   roomSize,
 		account:    account,
+	}
+}
+
+// ExpandMenu returns a function that clicks the button and waits for the menu to expand to the given height.
+// This function is useful when the target menu will expand to its full size with animation. On Low end DUTs
+// the expansion animation might stuck for some time. The node might have returned a stable location if
+// checking with a fixed interval before the animiation completes. This function ensures animation completes
+// by checking the menu height.
+func ExpandMenu(tconn *chrome.TestConn, button, menu *nodewith.Finder, height int) action.Action {
+	ui := uiauto.New(tconn)
+	return func(ctx context.Context) error {
+		if err := ui.LeftClick(button)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click button")
+		}
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			menuInfo, err := ui.Info(ctx, menu)
+			if err != nil {
+				return errors.Wrap(err, "failed to get menu info")
+			}
+			if menuInfo.Location.Height < height {
+				return errors.Errorf("got menu height %d, want %d", menuInfo.Location.Height, height)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 15 * time.Second, Interval: time.Second}); err != nil {
+			return err
+		}
+		return nil
 	}
 }
