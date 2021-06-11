@@ -77,6 +77,10 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 		i.initHelper(ctx, s)
 	}
 
+	if err := i.v.Helper.EnsureDUTBooted(ctx); err != nil {
+		s.Fatal("DUT is offline before test start: ", err)
+	}
+
 	if err := i.setupBootMode(ctx); err != nil {
 		s.Fatal("Could not setup BootMode: ", err)
 	}
@@ -96,8 +100,11 @@ func (i *impl) Close(ctx context.Context, s *testing.PreState) {
 		i.origGBBFlags = nil
 	}()
 
-	// Don't reuse the Helper, as the helper's servo RPC connection may be down.
 	i.initHelper(ctx, s)
+
+	if err := i.v.Helper.EnsureDUTBooted(ctx); err != nil {
+		s.Fatal("DUT is offline before test start: ", err)
+	}
 
 	if err := i.restoreGBBFlags(ctx); err != nil {
 		s.Error("Could not restore GBB flags: ", err)
