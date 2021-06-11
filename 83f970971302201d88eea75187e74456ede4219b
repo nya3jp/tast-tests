@@ -534,6 +534,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e6c28a7_8319d655",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-06-11T16:07:39Z",
+      "side": 1,
+      "message": "OK, TODO comment added near the error so it is visible for anyone tracking the error logs.",
+      "parentUuid": "562dd358_7851ee3c",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 9
+      },
+      "revId": "83f970971302201d88eea75187e74456ede4219b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "878bc94c_a8eba8f6",

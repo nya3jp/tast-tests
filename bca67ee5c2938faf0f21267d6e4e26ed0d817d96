@@ -56,6 +56,30 @@
       },
       "revId": "bca67ee5c2938faf0f21267d6e4e26ed0d817d96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a840a5a_116303ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_ping.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-06-11T16:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44371311_1621b191",
+      "range": {
+        "startLine": 139,
+        "startChar": 8,
+        "endLine": 139,
+        "endChar": 26
+      },
+      "revId": "bca67ee5c2938faf0f21267d6e4e26ed0d817d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
