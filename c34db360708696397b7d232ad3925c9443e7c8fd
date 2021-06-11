@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "202a9aab_c8a1e323",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-11T08:50:24Z",
+      "side": 1,
+      "message": "Yes, the license warning to testing_rsa is a false positive... Can you try updating PRESUBMIT.cfg to suppress it?\n\nc.f. https://source.corp.google.com/chromeos_public/src/platform2/PRESUBMIT.cfg;l\u003d19?q\u003dpackage:chromeos%20file:presubmit%5C.cfg%20license_",
+      "parentUuid": "76b12b77_21423ac1",
+      "revId": "c34db360708696397b7d232ad3925c9443e7c8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50729cb2_67f723e4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/utils.go",
         "patchSetId": 1
