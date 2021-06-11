@@ -16,6 +16,23 @@
       "message": "ping? :)",
       "revId": "5670b69c2a3e9ae82b6d47e0315e97c817195a12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9088242_742a7951",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-11T17:13:35Z",
+      "side": 1,
+      "message": "LGTM, though I am guessing that is already taken care of by the fixture?\n\n- arc\u0027s bootedFixture invokes Restore of snapshot: https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/main/src/chromiumos/tast/local/arc/fixture.go#209\n- Snapshot checks the running packages and then force-stop the apps\n\nIf not, maybe it\u0027s worthwhile to check why it can be bypassed.",
+      "revId": "5670b69c2a3e9ae82b6d47e0315e97c817195a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
