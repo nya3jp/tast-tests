@@ -22,6 +22,30 @@
       },
       "revId": "667bee8ea5a1572ba4430c435a925680ffd786c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2de8dea_351c23b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-11T07:27:52Z",
+      "side": 1,
+      "message": "Stupid me. Fixed.",
+      "parentUuid": "f62af803_d7429b40",
+      "range": {
+        "startLine": 89,
+        "startChar": 79,
+        "endLine": 89,
+        "endChar": 83
+      },
+      "revId": "667bee8ea5a1572ba4430c435a925680ffd786c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
