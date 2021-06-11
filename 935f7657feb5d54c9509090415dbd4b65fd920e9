@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a12fb771_c9d1f622",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-11T05:13:32Z",
+      "side": 1,
+      "message": "LGTM % nits\nPlease wait for shik/wei to approve as well before submitting",
+      "revId": "935f7657feb5d54c9509090415dbd4b65fd920e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce071075_072ecba3",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-11T05:13:32Z",
+      "side": 1,
+      "message": "nit/optional: I can\u0027t quite tell if these need to be in lexicographical order or not, please maintain order if so (although others around don\u0027t appear to follow any ordering)",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 18
+      },
+      "revId": "935f7657feb5d54c9509090415dbd4b65fd920e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
