@@ -6,6 +6,7 @@ package servo
 
 import (
 	"context"
+	"strconv"
 	"strings"
 	"time"
 
@@ -321,6 +322,23 @@ func (s *Servo) GetChargerAttached(ctx context.Context) (bool, error) {
 	return s.GetBool(ctx, ChargerAttached)
 }
 
+// parseUint extracts a hex number from `value` at `*index+1` that is exactly `bits` in length.
+// `bits` must be power of 2.
+// `*index` will be moved to the end of the extracted runes.
+func parseUint(value []rune, index *int, bits int) (rune, error) {
+	chars := bits / 4
+	endIndex := *index + chars
+	if endIndex >= len(value) {
+		return 0, errors.Errorf("unparsable escape sequence `\\%s`", string(value[*index:]))
+	}
+	char, err := strconv.ParseUint(string(value[*index+1:endIndex+1]), 16, bits)
+	if err != nil {
+		return 0, errors.Wrapf(err, "unparsable escape sequence `\\%s`", string(value[*index:endIndex+1]))
+	}
+	*index += chars
+	return rune(char), nil
+}
+
 // parseQuotedStringInternal returns a new string with the quotes and escaped chars from `value` removed, moves `*index` to the index of the closing quote rune.
 func parseQuotedStringInternal(value []rune, index *int) (string, error) {
 	if *index >= len(value) {
@@ -339,6 +357,9 @@ func parseQuotedStringInternal(value []rune, index *int) (string, error) {
 			break
 		} else if c == '\\' {
 			(*index)++
+			if *index >= len(value) {
+				return "", errors.New("unparsable escape sequence \\")
+			}
 			switch value[*index] {
 			case '"', '\'', '\\':
 				current.WriteRune(value[*index])
@@ -348,6 +369,24 @@ func parseQuotedStringInternal(value []rune, index *int) (string, error) {
 				current.WriteRune('\n')
 			case 't':
 				current.WriteRune('\t')
+			case 'x':
+				r, err := parseUint(value, index, 8)
+				if err != nil {
+					return "", err
+				}
+				current.WriteRune(r)
+			case 'u':
+				r, err := parseUint(value, index, 16)
+				if err != nil {
+					return "", err
+				}
+				current.WriteRune(r)
+			case 'U':
+				r, err := parseUint(value, index, 32)
+				if err != nil {
+					return "", err
+				}
+				current.WriteRune(r)
 			default:
 				return "", errors.Errorf("unexpected escape sequence \\%c at index %d in %s", value[*index], *index, string(value))
 			}
