@@ -16,6 +16,24 @@
       "message": "can this be actually merged into MemoryStressBasic, like MemoryStressBasic.lacros?\nThe major parts look overlapping between those two, and the diff can be encoded into \"Val\" field, I think.",
       "revId": "dfcfda76db0860c12142f31c8c277b66660803ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6916ce9_87eed7bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_lacros.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-06-11T10:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d348a7a_965f54fa",
+      "revId": "dfcfda76db0860c12142f31c8c277b66660803ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
