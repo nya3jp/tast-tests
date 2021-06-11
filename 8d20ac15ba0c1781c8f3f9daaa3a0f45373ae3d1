@@ -39,6 +39,30 @@
       },
       "revId": "8d20ac15ba0c1781c8f3f9daaa3a0f45373ae3d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06142183_52f1a662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2021-06-11T03:06:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "353b6141_66a066b0",
+      "range": {
+        "startLine": 73,
+        "startChar": 30,
+        "endLine": 73,
+        "endChar": 33
+      },
+      "revId": "8d20ac15ba0c1781c8f3f9daaa3a0f45373ae3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
