@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "442777f8_56afb917",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-11T14:22:49Z",
+      "side": 1,
+      "message": "I just moved this function from crosvm.go, but you\u0027re right. This function looks too redundant. I thought it creates an empty file, but it removed. So, it looks like what we need here is just a new path.\n\nAlso, randomized name is not needed because the temp directory path is already a random string.\nI removed this function and replaced it with filepath.Join.",
+      "parentUuid": "8d206d81_8512874a",
+      "revId": "ff60edc0f0598387d24c77da69da858acb346f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5d57cce_b5d34594",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7114104_0eec076d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-11T14:22:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a5d57cce_b5d34594",
+      "revId": "ff60edc0f0598387d24c77da69da858acb346f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ed10e5a_ea165e88",
@@ -82,6 +118,47 @@
       "writtenOn": "2021-06-08T17:05:26Z",
       "side": 1,
       "message": "This is redundant with L37, since the deferred os.Remove will call when you return at L40.",
+      "revId": "ff60edc0f0598387d24c77da69da858acb346f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8592121f_653ee83b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-11T14:22:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4ed10e5a_ea165e88",
+      "revId": "ff60edc0f0598387d24c77da69da858acb346f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eb98898_27f6d536",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-11T14:22:49Z",
+      "side": 1,
+      "message": "This was wrong as it remove the temp dir shared with all of tests.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 23
+      },
       "revId": "ff60edc0f0598387d24c77da69da858acb346f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
