@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9d79b3b_21a59ca5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_add_account.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-11T15:33:51Z",
+      "side": 1,
+      "message": "Rename this to UnicornCannotAddNonEduAccount. UnicornAddAccount sounds like the unicorn user should successfully add a secondary account.",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "2aad50ca0ddf22ebbdd6f70b20ffbb1f7f218ff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
