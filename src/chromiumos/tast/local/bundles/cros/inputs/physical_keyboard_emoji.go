@@ -25,7 +25,7 @@ func init() {
 		Contacts:     []string{"jopalmer@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          pre.SystemEmojiPicker,
+		Pre:          pre.NonVKClamshell,
 		Params: []testing.Param{{
 			Name:              "stable",
 			ExtraAttr:         []string{"group:input-tools-upstream"},
