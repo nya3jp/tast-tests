@@ -296,12 +296,6 @@ func testPIPMove(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct
 // testPIPResizeToMax verifies that resizing the PIP window to a big size doesn't break its size constraints.
 // It performs a drag-resize from PIP's left-top corner and compares the resized-PIP size with the expected one.
 func testPIPResizeToMax(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
-	// Activate PIP "resize handler", otherwise resize will fail. See:
-	// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/pie-release/services/core/java/com/android/server/policy/PhoneWindowManager.java#6387
-	if err := dev.PressKeyCode(ctx, ui.KEYCODE_WINDOW, 0); err != nil {
-		return errors.Wrap(err, "could not activate PIP menu")
-	}
-
 	window, err := getPIPWindow(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window")

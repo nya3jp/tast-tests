@@ -98,18 +98,13 @@ func (s WindowState) String() string {
 }
 
 const (
-	// borderOffsetForNormal represents the distance in pixels outside the border
-	// at which a "normal" window should be grabbed from.
+	// borderOffset represents the distance in pixels outside the
+	// border from which a window should be grabbed for a resize.
 	// The value, in theory, should be between -1 (kResizeInsideBoundsSize) and
 	// 30 (kResizeOutsideBoundsSize * kResizeOutsideBoundsScaleForTouch).
 	// Internal tests proved that using -1 or 0 is unreliable, and values >= 1 should be used instead.
 	// See: https://cs.chromium.org/chromium/src/ash/public/cpp/ash_constants.h
-	borderOffsetForNormal = 5
-	// borderOffsetForPIP is like borderOffsetForNormal, but for Picture-in-Picture windows.
-	// PiP windows are dragged from the inside, and that's why it has a negative value.
-	// The hitbox size is harcoded to 48dp. See PipDragHandleController.isInDragHandleHitbox().
-	// http://cs/pi-arc-dev/frameworks/base/packages/SystemUI/src/com/android/systemui/pip/phone/PipDragHandleController.java
-	borderOffsetForPIP = -5
+	borderOffset = 5
 	// delayToPreventGesture represents the delay used in swipe() to prevent triggering gestures like "minimize".
 	delayToPreventGesture = 150 * time.Millisecond
 )
@@ -364,7 +359,6 @@ func (ac *Activity) moveWindowR(ctx context.Context, tconn *chrome.TestConn, t t
 // to represents the coordinates for for the new border's position, in pixels.
 // t represents the duration of the resize.
 // ResizeWindow only works with WindowStateNormal and WindowStatePIP windows. Will fail otherwise.
-// For PiP windows, they must have the PiP Menu Activity displayed. Will fail otherwise.
 func (ac *Activity) ResizeWindow(ctx context.Context, tconn *chrome.TestConn, border BorderType, to coords.Point, t time.Duration) error {
 	sdkVer, err := SDKVersion()
 	if err != nil {
@@ -392,7 +386,6 @@ func (ac *Activity) ResizeWindow(ctx context.Context, tconn *chrome.TestConn, bo
 // to represents the coordinates for for the new border's position, in pixels.
 // t represents the duration of the resize.
 // resizeWindowP only works with WindowStateNormal and WindowStatePIP windows. Will fail otherwise.
-// For PiP windows, they must have the PiP Menu Activity displayed. Will fail otherwise.
 // resizeWindowP performs the resizing by injecting Touch events in the kernel.
 // If the device does not have a touchscreen, it will fail.
 func (ac *Activity) resizeWindowP(ctx context.Context, border BorderType, to coords.Point, t time.Duration) error {
@@ -411,11 +404,6 @@ func (ac *Activity) resizeWindowP(ctx context.Context, border BorderType, to coo
 		return errors.Wrap(err, "could not get activity bounds")
 	}
 	src := bounds.CenterPoint()
-
-	borderOffset := borderOffsetForNormal
-	if task.windowState == WindowStatePIP {
-		borderOffset = borderOffsetForPIP
-	}
 
 	// Top & Bottom are exclusive.
 	if border&BorderTop != 0 {
@@ -455,11 +443,7 @@ func (ac *Activity) resizeWindowR(ctx context.Context, tconn *chrome.TestConn, b
 	}
 
 	supportsMove := false
-	hasPIPWindow := false
 	for _, windowState := range windowStates {
-		if windowState == ash.WindowStatePIP {
-			hasPIPWindow = true
-		}
 		if windowState == ash.WindowStatePIP || windowState == ash.WindowStateNormal {
 			supportsMove = true
 			break
@@ -472,11 +456,6 @@ func (ac *Activity) resizeWindowR(ctx context.Context, tconn *chrome.TestConn, b
 	// Default value: center of window.
 	bounds, err := ac.WindowBounds(ctx)
 	src := bounds.CenterPoint()
-
-	borderOffset := borderOffsetForNormal
-	if hasPIPWindow {
-		borderOffset = borderOffsetForPIP
-	}
 
 	// Top & Bottom are exclusive.
 	if border&BorderTop != 0 {
