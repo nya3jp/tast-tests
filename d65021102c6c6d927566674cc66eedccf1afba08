@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7505825_116ccd20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-11T09:18:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccf0a6be_b23c818e",
+      "range": {
+        "startLine": 80,
+        "startChar": 16,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28af7ea6_b07d8687",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-06-10T09:37:01Z",
       "side": 1,
       "message": "The 5 sec duration is not obvious in this function. It\u0027s actually deep in |config|. This comment is confusing.\nAlso, if this service is used by other tests that specify a longer collection duration, this timeout will be too short.\nWe either shorten |ctx| a little for cleanup and let the users of this service to decide what context timeout they want to use, or we need to peek into |config| to know the duration and decide the context timeout in this function accordingly.",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcd1a951_78c3b0a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-11T09:18:37Z",
+      "side": 1,
+      "message": "Discussed offline: remove timeout here.",
+      "parentUuid": "28af7ea6_b07d8687",
       "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -60,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7f43bbc_68303ec1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-11T09:18:37Z",
+      "side": 1,
+      "message": "I see. Please check.",
+      "parentUuid": "eb281c45_a2d81b83",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c986444b_d5249ee5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing_service.go",
         "patchSetId": 4
@@ -71,6 +131,24 @@
       "writtenOn": "2021-06-10T09:37:01Z",
       "side": 1,
       "message": "Clean this up.",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "807d33d1_72aa60d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-11T09:18:37Z",
+      "side": 1,
+      "message": "Sorry :p",
+      "parentUuid": "c986444b_d5249ee5",
       "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +172,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cdc17eba_be736f13",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-11T09:18:37Z",
+      "side": 1,
+      "message": "Renamed the remote one being perfetto_tbm_traced_probes.go\nWDYT?",
+      "parentUuid": "63f03632_4c097244",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8dea5a78_617064f9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
         "patchSetId": 4
@@ -105,6 +201,24 @@
       "writtenOn": "2021-06-10T09:37:01Z",
       "side": 1,
       "message": "Can we use external config pbtxt file as before, or use a separate file for the configs? The config takes a lot of space in the code.",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55161713_83ace492",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-11T09:18:37Z",
+      "side": 1,
+      "message": "Right, thanks! Done.",
+      "parentUuid": "8dea5a78_617064f9",
       "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -128,6 +242,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed3b961b_29382893",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-11T09:18:37Z",
+      "side": 1,
+      "message": "Right, done. Please check.",
+      "parentUuid": "7fb1a458_7f6e4c0f",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5dff1ee4_52d36bdd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
         "patchSetId": 4
@@ -139,6 +271,24 @@
       "writtenOn": "2021-06-10T09:37:01Z",
       "side": 1,
       "message": "Do we really need to use crosbolt for verifying the functionality of trace collection? This sounds like an overkill to me.\n\nIt looks like this test serves 2 purposes:\n1. function test of traced/traced_probes\n2. an example for how to use trace_based_metrics.\n\nI think it\u0027ll be better to separate the above into separate, smaller tests to for clarity. WDYT?",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dbbcd39_d4ae3d58",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-11T09:18:37Z",
+      "side": 1,
+      "message": "Simplified the DUT-side and kept the original local tast test for function test of traced/traced_probes.\n\nRenamed this remote tast test to be PerfettoTBMTracedProbes.\nRemoved crosbolt.",
+      "parentUuid": "5dff1ee4_52d36bdd",
       "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -166,6 +316,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b792889_4092b7f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-11T09:18:37Z",
+      "side": 1,
+      "message": "Thanks! Done.",
+      "parentUuid": "09d8d24e_c3f173d4",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cae52242_35a92310",
@@ -179,6 +353,24 @@
       "writtenOn": "2021-06-10T09:37:01Z",
       "side": 1,
       "message": "Do we need to download trace_processor_shell each time this test runs? I think we can do something similar to tests that has media playback.",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1350462d_e8ce8603",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-11T09:18:37Z",
+      "side": 1,
+      "message": "Will check",
+      "parentUuid": "cae52242_35a92310",
       "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
