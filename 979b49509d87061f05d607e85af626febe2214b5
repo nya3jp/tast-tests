@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b82ca9c9_057bb9a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-11T18:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "444113d1_db9feee6",
+      "range": {
+        "startLine": 293,
+        "startChar": 34,
+        "endLine": 293,
+        "endChar": 72
+      },
+      "revId": "979b49509d87061f05d607e85af626febe2214b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c543a62_6f70a0bf",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-06-11T18:04:20Z",
       "side": 1,
       "message": "style: https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\nx, err :\u003d f()\nif err !\u003d nil {\n\t// error handling\n\treturn\n}\n// use x",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 2
+      },
+      "revId": "979b49509d87061f05d607e85af626febe2214b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcaab86f_abe6abbf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-11T18:18:04Z",
+      "side": 1,
+      "message": "This does not apply here, please see next code, It reports as many errors as possible. This is not fatal error.",
+      "parentUuid": "7c543a62_6f70a0bf",
       "range": {
         "startLine": 251,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b68704d_891c8823",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-11T18:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "812b69e2_210d1299",
+      "range": {
+        "startLine": 311,
+        "startChar": 46,
+        "endLine": 311,
+        "endChar": 47
+      },
+      "revId": "979b49509d87061f05d607e85af626febe2214b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40e5f3b5_7459ff0b",
@@ -121,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb9fe1bb_2a5ea1d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-11T18:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40e5f3b5_7459ff0b",
+      "revId": "979b49509d87061f05d607e85af626febe2214b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab4efdae_9c903c3e",
@@ -134,6 +224,30 @@
       "writtenOn": "2021-06-10T21:11:08Z",
       "side": 1,
       "message": "typo: verifies\n\nCan we also add short comment on what we check and don\u0027t check in this function (odex, minor file size deltas?) vs. a straight diff.",
+      "range": {
+        "startLine": 355,
+        "startChar": 42,
+        "endLine": 355,
+        "endChar": 49
+      },
+      "revId": "979b49509d87061f05d607e85af626febe2214b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7272a3e1_72b5de16",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-06-11T18:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab4efdae_9c903c3e",
       "range": {
         "startLine": 355,
         "startChar": 42,
