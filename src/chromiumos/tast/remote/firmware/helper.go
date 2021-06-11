@@ -120,6 +120,31 @@ func (h *Helper) Close(ctx context.Context) error {
 	return firstErr
 }
 
+// EnsureDUTBooted checks the power state, and attempts to boot the DUT if it is off.
+func (h *Helper) EnsureDUTBooted(ctx context.Context) error {
+	if err := h.RequireServo(ctx); err != nil {
+		return nil
+	}
+	if hasEC, err := h.Servo.HasControl(ctx, string(servo.ECSystemPowerState)); err != nil {
+		testing.ContextLog(ctx, "Error checking for chrome ec: ", err)
+	} else if hasEC {
+		state, err := h.Servo.GetECSystemPowerState(ctx)
+		if err != nil {
+			testing.ContextLog(ctx, "Error getting power state: ", err)
+		}
+		if state != "S0" {
+			testing.ContextLogf(ctx, "DUT is off (power state %s), resetting", state)
+			if err = h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
+				testing.ContextLog(ctx, "Failed to reset DUT: ", err)
+			}
+			if err = h.DisconnectDUT(ctx); err != nil {
+				testing.ContextLog(ctx, "Error closing connections to DUT: ", err)
+			}
+		}
+	}
+	return h.DUT.WaitConnect(ctx)
+}
+
 // RequireRPCClient creates a client connection to the DUT's gRPC server, unless a connection already exists.
 func (h *Helper) RequireRPCClient(ctx context.Context) error {
 	if h.RPCClient != nil {
