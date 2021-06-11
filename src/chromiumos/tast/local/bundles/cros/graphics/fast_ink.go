@@ -17,8 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -41,7 +40,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays(), hwdep.InternalDisplay(), hwdep.TouchScreen()),
-		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:      "chrome_clamshell",
 			ExtraData: []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
@@ -181,6 +179,11 @@ func FastInk(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(cleanupCtx)
 
+	internalInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the internal display info: ", err)
+	}
+
 	if params.arc {
 		a := s.FixtValue().(*arc.PreData).ARC
 		if err := a.Install(ctx, s.DataPath(fastInkAPK)); err != nil {
@@ -198,6 +201,15 @@ func FastInk(ctx context.Context, s *testing.State) {
 		}
 		defer act.Stop(cleanupCtx, tconn)
 	} else {
+		if !params.tablet {
+			// Move the mouse to the center of the work area. Otherwise,
+			// on some devices, when the window is fullscreen, the mouse
+			// position will make the shelf visible, causing test failure.
+			if err := mouse.Move(tconn, internalInfo.WorkArea.CenterPoint(), 0)(ctx); err != nil {
+				s.Fatal("Failed to move mouse: ", err)
+			}
+		}
+
 		srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 		defer srv.Close()
 
@@ -222,17 +234,8 @@ func FastInk(ctx context.Context, s *testing.State) {
 		s.Fatal("Expected 1 window; found ", wsCount)
 	}
 
+	internalDisplayID := internalInfo.ID
 	wID := ws[0].ID
-
-	// The display info would be stale when we rotate the display.
-	// To be safe, we limit the scope of info used to get the ID.
-	var internalDisplayID string
-	if info, err := display.GetInternalInfo(ctx, tconn); err == nil {
-		internalDisplayID = info.ID
-	} else {
-		s.Fatal("Failed to get the internal display info: ", err)
-	}
-
 	defer display.SetDisplayRotationSync(cleanupCtx, tconn, internalDisplayID, display.Rotate0)
 	for _, displayRotation := range params.displayRotations {
 		s.Run(ctx, string(displayRotation), func(ctx context.Context, s *testing.State) {
@@ -270,24 +273,8 @@ func FastInk(ctx context.Context, s *testing.State) {
 						}
 					}
 
-					if !params.tablet {
-						w, err := ash.GetWindow(ctx, tconn, wID)
-						if err != nil {
-							s.Fatal("Failed to get window info: ", err)
-						}
-
-						// Move the mouse to the center of the window, where it will not
-						// bring extraneous UI stuff. Particularly, in full screen, a
-						// mouse near the bottom could make the shelf visible there, or
-						// a mouse near the top could make the browser frame visible
-						// there. Either of those scenarios could make this test fail.
-						if err := mouse.Move(ctx, tconn, w.TargetBounds.CenterPoint(), time.Second); err != nil {
-							s.Fatal("Failed to move mouse: ", err)
-						}
-					}
-
-					if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-						s.Fatal("Failed to wait for location change events to be completed: ", err)
+					if err := testing.Sleep(ctx, time.Second); err != nil {
+						s.Fatal("Failed to wait a second: ", err)
 					}
 
 					hists, err := metrics.Run(ctx, tconn, func(ctx context.Context) error {
