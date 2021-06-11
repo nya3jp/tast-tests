@@ -16,6 +16,24 @@
       "message": "Do we want to keep the uiTimeout only for notification popup so as to be semantically the same as the original code?",
       "revId": "40b55c05075abe354d01687cd5b9e70e5a5d3592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aba7ab1c_ecd38d65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-11T18:44:47Z",
+      "side": 1,
+      "message": "OK sure",
+      "parentUuid": "cbe5c249_0e65fab7",
+      "revId": "40b55c05075abe354d01687cd5b9e70e5a5d3592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
