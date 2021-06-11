@@ -16,6 +16,115 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "09b957f189bd27729ed6a8584b0fd6d248d0170c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5bb8c9a_3e389f0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-11T14:31:42Z",
+      "side": 1,
+      "message": "tast-wise: some nits",
+      "revId": "09b957f189bd27729ed6a8584b0fd6d248d0170c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee16f46d_d93ee556",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_mount_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-11T14:31:42Z",
+      "side": 1,
+      "message": "nit: it looks strange that you have to use a int64 for an iteration.\n\na) you can use strconv.Atoi\nb) and also you can create a function  that returns a value or default.\n\ne.g:\n\n  func valueOrDefaultForVar(s *testing.State, key string, default int) int {\n\tif val, ok :\u003d s.Var(key); ok \n\t\tvar err error\n\t\tconverted, err \u003d strconv.Atoi(val)\n\t\tif err !\u003d nil {\n\t\t\ts.Fatal(...)\n\t\t}\n\t\treturn converted\n\t}\n\treturn default    \n  }",
+      "range": {
+        "startLine": 151,
+        "startChar": 9,
+        "endLine": 151,
+        "endChar": 18
+      },
+      "revId": "09b957f189bd27729ed6a8584b0fd6d248d0170c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb978bca_66fc0874",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_mount_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-11T14:31:42Z",
+      "side": 1,
+      "message": "just double-checking:\n\ndo you want to log the duration even if the it fails?",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 3
+      },
+      "revId": "09b957f189bd27729ed6a8584b0fd6d248d0170c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc36ff90_fba2badc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_mount_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-11T14:31:42Z",
+      "side": 1,
+      "message": "nit: \nfor consistency, remove the \"|\" in docs.\ngodoc doesn\u0027t support them, and although this comment won\u0027t be parsed by godoc, it is for consistency.",
+      "range": {
+        "startLine": 184,
+        "startChar": 30,
+        "endLine": 184,
+        "endChar": 31
+      },
+      "revId": "09b957f189bd27729ed6a8584b0fd6d248d0170c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e8d8d19_70b5d5b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_mount_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-11T14:31:42Z",
+      "side": 1,
+      "message": "ditto above: just double checking that you still want to log the value when there is an error",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 229,
+        "endChar": 38
+      },
+      "revId": "09b957f189bd27729ed6a8584b0fd6d248d0170c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
