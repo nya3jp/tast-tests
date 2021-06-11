@@ -5,7 +5,6 @@
 var scanButton = document.getElementById('scanButton');
 var scannedImage = document.getElementById('scannedImage');
 var waitAnimation = document.getElementById('waitAnimation');
-var scanCompleteText = document.getElementById('scanCompleteText');
 
 function setOnlyChild(parent, child) {
   while (parent.firstChild) {
@@ -27,7 +26,7 @@ var onScanCompleted = function(scan_results) {
               urlData.length + '.');
   console.log('URL is ' + urlData);
   scannedImage.src = urlData;
-  scanCompleteText.value = 'Complete!';
+  scanButton.style.display = 'none';
 };
 
 scanButton.addEventListener('click', function() {
