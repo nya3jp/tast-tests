@@ -6,6 +6,7 @@ package servo
 
 import (
 	"context"
+	"strconv"
 	"strings"
 	"time"
 
@@ -321,6 +322,19 @@ func (s *Servo) GetChargerAttached(ctx context.Context) (bool, error) {
 	return s.GetBool(ctx, ChargerAttached)
 }
 
+func parseUint(value []rune, index *int, bits int) (rune, error) {
+	chars := bits / 4
+	if *index+1+chars > len(value) {
+		return 0, errors.Errorf("unparsable escape sequence %q", string(value[*index-1:]))
+	}
+	char, err := strconv.ParseUint(string(value[*index+1:*index+1+chars]), 16, bits)
+	if err != nil {
+		return 0, errors.Wrapf(err, "unparsable escape sequence %q", value[*index-1:*index+1+chars])
+	}
+	*index += chars
+	return rune(char), nil
+}
+
 // parseQuotedStringInternal returns a new string with the quotes and escaped chars from `value` removed, moves `*index` to the index of the closing quote rune.
 func parseQuotedStringInternal(value []rune, index *int) (string, error) {
 	if *index >= len(value) {
@@ -339,6 +353,9 @@ func parseQuotedStringInternal(value []rune, index *int) (string, error) {
 			break
 		} else if c == '\\' {
 			(*index)++
+			if *index >= len(value) {
+				return "", errors.New("unparsable escape sequence \\")
+			}
 			switch value[*index] {
 			case '"', '\'', '\\':
 				current.WriteRune(value[*index])
@@ -348,6 +365,24 @@ func parseQuotedStringInternal(value []rune, index *int) (string, error) {
 				current.WriteRune('\n')
 			case 't':
 				current.WriteRune('\t')
+			case 'x':
+				if r, err := parseUint(value, index, 8); err == nil {
+					current.WriteRune(r)
+				} else {
+					return "", err
+				}
+			case 'u':
+				if r, err := parseUint(value, index, 16); err == nil {
+					current.WriteRune(r)
+				} else {
+					return "", err
+				}
+			case 'U':
+				if r, err := parseUint(value, index, 32); err == nil {
+					current.WriteRune(r)
+				} else {
+					return "", err
+				}
 			default:
 				return "", errors.Errorf("unexpected escape sequence \\%c at index %d in %s", value[*index], *index, string(value))
 			}
