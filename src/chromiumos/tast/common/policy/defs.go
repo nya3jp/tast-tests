@@ -17009,6 +17009,58 @@ func (p *AttestationExtensionAllowlist) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// 786. DataLeakPreventionRulesList
+///////////////////////////////////////////////////////////////////////////////
+type DataLeakPreventionRulesList struct {
+	Stat Status
+	Val  []*DataLeakPreventionRulesListValue
+}
+
+type DataLeakPreventionRulesListDestinations struct {
+	Urls       []string `json:"urls"`
+	Components []string `json:"components"`
+}
+
+type DataLeakPreventionRulesListRestrictions struct {
+	Class string `json:"class"`
+	Level string `json:"level"`
+}
+
+type DataLeakPreventionRulesListSources struct {
+	Urls []string `json:"urls"`
+}
+
+type DataLeakPreventionRulesListValue struct {
+	Description  string                                     `json:"description"`
+	Destinations *DataLeakPreventionRulesListDestinations   `json:"destinations"`
+	Name         string                                     `json:"name"`
+	Restrictions []*DataLeakPreventionRulesListRestrictions `json:"restrictions"`
+	Sources      *DataLeakPreventionRulesListSources        `json:"sources"`
+}
+
+func (p *DataLeakPreventionRulesList) Name() string {
+	return "DataLeakPreventionRulesList"
+}
+func (p *DataLeakPreventionRulesList) Field() string         { return "DataLeakPreventionRulesList" }
+func (p *DataLeakPreventionRulesList) Scope() Scope          { return ScopeUser }
+func (p *DataLeakPreventionRulesList) Status() Status        { return p.Stat }
+func (p *DataLeakPreventionRulesList) UntypedV() interface{} { return p.Val }
+func (p *DataLeakPreventionRulesList) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []*DataLeakPreventionRulesListValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []*DataLeakPreventionRulesListValue", m)
+	}
+	return v, nil
+}
+func (p *DataLeakPreventionRulesList) Equal(iface interface{}) bool {
+	v, ok := iface.([]*DataLeakPreventionRulesListValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // 787. WebRtcAllowLegacyTLSProtocols
 ///////////////////////////////////////////////////////////////////////////////
 type WebRtcAllowLegacyTLSProtocols struct {
