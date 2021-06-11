@@ -6,10 +6,13 @@ package ui
 
 import (
 	"context"
+	"strconv"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/power"
@@ -21,7 +24,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SystemTrayPerf,
 		Desc:         "Measures animation smoothness of system tray animations",
-		Contacts:     []string{"amehfooz@chromium.org", "tengs@chromium.org", "chromeos-wmp@google.com"},
+		Contacts:     []string{"amehfooz@chromium.org", "leandre@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
@@ -42,10 +45,51 @@ func SystemTrayPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	// Add some notifications so that notification centre shows up when opening Quick Settings.
+	const uiTimeout = 30 * time.Second
+	n := 5
+	for i := 0; i <= n; i++ {
+		if _, err := ash.CreateTestNotification(ctx, tconn, ash.NotificationTypeBasic, "TestBasicNotification"+strconv.Itoa(i), "test message"); err != nil {
+			s.Fatal("Failed to create test basic notification: ", err)
+		}
+		if _, err := ash.CreateTestNotification(ctx, tconn, ash.NotificationTypeImage, "TestImageNotification"+strconv.Itoa(i), "test message"); err != nil {
+			s.Fatal("Failed to create test image notification: ", err)
+		}
+		if _, err := ash.CreateTestNotification(ctx, tconn, ash.NotificationTypeProgress, "TestProgressNotification"+strconv.Itoa(i), "test message"); err != nil {
+			s.Fatal("Failed to create test progress notification: ", err)
+		}
+		if _, err := ash.CreateTestNotification(ctx, tconn, ash.NotificationTypeList, "TestListNotification"+strconv.Itoa(i), "test message"); err != nil {
+			s.Fatal("Failed to create test list notification: ", err)
+		}
+	}
+
+	// Wait for the last notification to finish creating.
+	if _, err := ash.WaitForNotification(ctx, tconn, uiTimeout, ash.WaitTitle("TestListNotification"+strconv.Itoa(n))); err != nil {
+		s.Fatal("Failed waiting for notification: ", err)
+	}
+
 	ac := uiauto.New(tconn)
-	// Find and click the StatusArea via UI. Clicking it opens the Ubertray.
 	statusArea := nodewith.ClassName("ash/StatusAreaWidgetDelegate")
 	collapseButton := nodewith.ClassName("CollapseButton")
+	runner := perfutil.NewRunner(cr)
+
+	// Toggle the Status Area button to record input latency of showing Quick Settings and notification centre.
+	runner.RunMultiple(ctx, s, "open", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+		if err := uiauto.Combine(
+			"open the uber tray, then click again to close it",
+			ac.LeftClick(statusArea),
+			ac.WaitUntilExists(collapseButton),
+			ac.LeftClick(statusArea),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to open the uber tray then close it")
+		}
+		return nil
+	},
+		"Ash.StatusAreaShowBubble.PresentationTime",
+		"Ash.StatusAreaShowBubble.PresentationTime.MaxLatency"),
+		perfutil.StoreLatency)
+
+	// Opens the Ubertray again.
 	if err := uiauto.Combine(
 		"open the uber tray",
 		ac.LeftClick(statusArea),
@@ -55,7 +99,7 @@ func SystemTrayPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Toggle the collapsed state of the system tray.
-	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	runner.RunMultiple(ctx, s, "collapse", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		return uiauto.Combine(
 			"collapse and expand",
 			ac.LeftClick(collapseButton),
@@ -68,7 +112,7 @@ func SystemTrayPerf(ctx context.Context, s *testing.State) {
 		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToExpanded"),
 		perfutil.StoreSmoothness)
 
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
+	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Fatal("Failed saving perf data: ", err)
 	}
 }
