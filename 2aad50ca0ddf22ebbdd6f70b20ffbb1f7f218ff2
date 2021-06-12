@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3876fe0b_69e21663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_add_account.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-12T00:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9d79b3b_21a59ca5",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "2aad50ca0ddf22ebbdd6f70b20ffbb1f7f218ff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82ef9e20_6ddccad3",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-11T18:21:59Z",
       "side": 1,
       "message": "I think this fails because there\u0027s more than one close button (one on the settings page and one on the modal dialog). The attempt on lines 207-209 to close the settings page didn\u0027t work probably because the coexistence flow is system modal (so you can\u0027t click anywhere outside of the dialog).\n\nPerhaps try clicking the second close button, like I did in crrev/c/2904942?\n\nAlso, since the system modal dialog isn\u0027t closed, the next test that uses the same fixture (arc.UnicornPaidAppParentPermission) also fails.",
+      "range": {
+        "startLine": 210,
+        "startChar": 16,
+        "endLine": 210,
+        "endChar": 38
+      },
+      "revId": "2aad50ca0ddf22ebbdd6f70b20ffbb1f7f218ff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3644b6e8_23f79a3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_add_account.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-12T00:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82ef9e20_6ddccad3",
       "range": {
         "startLine": 210,
         "startChar": 16,
