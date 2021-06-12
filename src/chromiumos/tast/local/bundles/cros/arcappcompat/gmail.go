@@ -18,27 +18,14 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForGmail = []testutil.TestCase{
+// clamshellLaunchForGmail launches Gmail in clamshell mode.
+var clamshellLaunchForGmail = []testutil.TestSuite{
 	{Name: "Launch app in Clamshell", Fn: launchAppForGmail},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Clamshell: Touchscreen Scroll", Fn: testutil.TouchScreenScroll},
-	{Name: "Clamshell: Mouse click", Fn: testutil.MouseClick},
-	{Name: "Clamshell: Physical Keyboard", Fn: testutil.TouchAndTextInputs},
-	{Name: "Clamshell: Keyboard Critical Path", Fn: testutil.KeyboardNavigations},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForGmail = []testutil.TestCase{
+// touchviewLaunchForGmail launches Gmail in tablet mode.
+var touchviewLaunchForGmail = []testutil.TestSuite{
 	{Name: "Launch app in Touchview", Fn: launchAppForGmail},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Touchview: Rotate", Fn: testutil.TouchviewRotate},
-	{Name: "Touchview: Touchscreen Scroll", Fn: testutil.TouchScreenScroll},
-	{Name: "Touchview: Virtual Keyboard", Fn: testutil.TouchAndTextInputs},
 }
 
 func init() {
@@ -49,31 +36,44 @@ func init() {
 		Attr:         []string{"group:appcompat", "appcompat_smoke"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForGmail,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:      clamshellLaunchForGmail,
+				CommonTest: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForGmail,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:      touchviewLaunchForGmail,
+				CommonTest: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForGmail,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:      clamshellLaunchForGmail,
+				CommonTest: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForGmail,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:      touchviewLaunchForGmail,
+				CommonTest: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -92,8 +92,9 @@ func Gmail(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.google.android.gm"
 		appActivity = ".ConversationListActivityGmail"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForGmail verifies Gmail is logged in and
