@@ -43,15 +43,51 @@ const (
 // TestFunc represents the "test" function.
 type TestFunc func(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string)
 
-// TestCase represents the  name of test, and the function to call.
+// TestCase represents the name of test, the function to call.
 type TestCase struct {
 	Name    string
 	Fn      TestFunc
 	Timeout time.Duration
 }
 
+// TestParams represents the collection of tests to run in tablet mode or clamshell mode.
+type TestParams struct {
+	LaunchTests      []TestCase
+	CommonTests      []TestCase
+	AppSpecificTests []TestCase
+}
+
+// ClamshellCommonTests is a list of all tests common to all apps in clamshell mode.
+var ClamshellCommonTests = []TestCase{
+	// TODO: Remove the commented testcases once the first batch of testcases are stablized.
+	{Name: "Clamshell: Orientation", Fn: OrientationSize},
+	{Name: "Clamshell: Touchscreen Scroll", Fn: TouchScreenScroll},
+	//{Name: "Clamshell: Mouse click", Fn: MouseClick},
+	//{Name: "Clamshell: Mouse Scroll", Fn: MouseScrollAction},
+	{Name: "Clamshell: Physical Keyboard", Fn: TouchAndTextInputs},
+	//{Name: "Clamshell: Keyboard Critical Path", Fn: KeyboardNavigations},
+	//{Name: "Clamshell: Special keys: ESC key", Fn: EscKey},
+	{Name: "Clamshell: Largescreen Layout", Fn: Largescreenlayout},
+	{Name: "Clamshell: Fullscreen app", Fn: ClamshellFullscreenApp},
+	{Name: "Clamshell: Minimise and Restore", Fn: MinimizeRestoreApp},
+	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow},
+	{Name: "Clamshell: Reopen app", Fn: ReOpenWindow},
+}
+
+// TouchviewCommonTests is a list of all tests common to all apps in touchview mode.
+var TouchviewCommonTests = []TestCase{
+	// TODO: Remove the commented testcases once the first batch of testcases are stablized.
+	{Name: "Touchview: Rotate", Fn: TouchviewRotate},
+	//{Name: "Touchview: Splitscreen", Fn: SplitScreen},
+	//{Name: "Touchview: Touchscreen Scroll", Fn: TouchScreenScroll},
+	//{Name: "Touchview: Virtual Keyboard", Fn: TouchAndTextInputs},
+	{Name: "Touchview: Largescreen Layout", Fn: Largescreenlayout},
+	{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
+	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
+}
+
 // RunTestCases setups the device and runs all app compat test cases.
-func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity string, testCases []TestCase) {
+func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity string, testCases TestParams) {
 	// Step up chrome on Chromebook.
 	cr, tconn, a := setUpDevice(ctx, s, appPkgName, appActivity)
 
@@ -78,8 +114,20 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	}
 	s.Log("Successfully tested launching and closing the app")
 
+	// AllTests will have LaunchTests, CommonTests and AppSpecificTests.
+	var AllTests = []TestCase{}
+	for _, curTest := range testCases.LaunchTests {
+		AllTests = append(AllTests, curTest)
+	}
+	for _, curTest := range testCases.CommonTests {
+		AllTests = append(AllTests, curTest)
+	}
+	for _, curTest := range testCases.AppSpecificTests {
+		AllTests = append(AllTests, curTest)
+	}
+
 	// Run the different test cases.
-	for idx, test := range testCases {
+	for idx, test := range AllTests {
 		// If a timeout is not specified, limited individual test cases to the default.
 		// This makes sure that one test case doesn't use all of the time when it fails.
 		timeout := defaultTestCaseTimeout
