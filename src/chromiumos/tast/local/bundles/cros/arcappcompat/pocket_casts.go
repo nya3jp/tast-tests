@@ -18,20 +18,24 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForPocketCasts = []testutil.TestCase{
+// clamshellLaunchForPocketCasts launches PocketCasts in clamshell mode.
+var clamshellLaunchForPocketCasts = []testutil.TestSuite{
 	{Name: "Launch app in Clamshell", Fn: launchAppForPocketCasts},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForPocketCasts = []testutil.TestCase{
+// touchviewLaunchForPocketCasts launches PocketCasts in tablet mode.
+var touchviewLaunchForPocketCasts = []testutil.TestSuite{
 	{Name: "Launch app in Touchview", Fn: launchAppForPocketCasts},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+}
+
+// clamshellAppSpecificTestsForPocketCasts are placed here.
+var clamshellAppSpecificTestsForPocketCasts = []testutil.TestSuite{
+	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
+}
+
+// touchviewAppSpecificTestsForPocketCasts are placed here.
+var touchviewAppSpecificTestsForPocketCasts = []testutil.TestSuite{
+	{Name: "Touchview: Video Playback", Fn: testutil.TouchAndPlayVideo},
 }
 
 func init() {
@@ -42,31 +46,48 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForPocketCasts,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForPocketCasts,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForPocketCasts,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForPocketCasts,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForPocketCasts,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForPocketCasts,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForPocketCasts,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForPocketCasts,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForPocketCasts,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForPocketCasts,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForPocketCasts,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForPocketCasts,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -85,8 +106,8 @@ func PocketCasts(ctx context.Context, s *testing.State) {
 		appPkgName  = "au.com.shiftyjelly.pocketcasts"
 		appActivity = ".ui.MainActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForPocketCasts verifies PocketCasts reached main activity page of the app.

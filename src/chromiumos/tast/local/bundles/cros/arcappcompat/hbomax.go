@@ -18,20 +18,24 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForHbomax = []testutil.TestCase{
+// clamshellLaunchForHbomax launches Hbomax in clamshell mode.
+var clamshellLaunchForHbomax = []testutil.TestSuite{
 	{Name: "Launch app in Clamshell", Fn: launchAppForHbomax},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForHbomax = []testutil.TestCase{
+// touchviewLaunchForHbomax launches Hbomax in tablet mode.
+var touchviewLaunchForHbomax = []testutil.TestSuite{
 	{Name: "Launch app in Touchview", Fn: launchAppForHbomax},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+}
+
+// clamshellAppSpecificTestsForHbomax are placed here.
+var clamshellAppSpecificTestsForHbomax = []testutil.TestSuite{
+	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
+}
+
+// touchviewAppSpecificTestsForHbomax are placed here.
+var touchviewAppSpecificTestsForHbomax = []testutil.TestSuite{
+	{Name: "Touchview: Video Playback", Fn: testutil.TouchAndPlayVideo},
 }
 
 func init() {
@@ -43,31 +47,48 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("eve")),
 		Params: []testing.Param{{
-			Val:               clamshellTestsForHbomax,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForHbomax,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForHbomax,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForHbomax,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForHbomax,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForHbomax,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForHbomax,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForHbomax,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForHbomax,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForHbomax,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForHbomax,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForHbomax,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -86,8 +107,8 @@ func Hbomax(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.hbo.hbonow"
 		appActivity = "com.hbo.go.LaunchActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForHbomax verifies Hbomax is launched and
