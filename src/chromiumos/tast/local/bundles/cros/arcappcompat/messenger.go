@@ -17,20 +17,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForMessenger = []testutil.TestCase{
+// clamshellLaunchForMessenger launches Messenger in clamshell mode.
+var clamshellLaunchForMessenger = []testutil.TestSuite{
 	{Name: "Launch app in Clamshell", Fn: launchAppForMessenger},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForMessenger = []testutil.TestCase{
+// touchviewLaunchForMessenger launches Messenger in tablet mode.
+var touchviewLaunchForMessenger = []testutil.TestSuite{
 	{Name: "Launch app in Touchview", Fn: launchAppForMessenger},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
 func init() {
@@ -41,22 +35,35 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForMessenger,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:      clamshellLaunchForMessenger,
+				CommonTest: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForMessenger,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:      touchviewLaunchForMessenger,
+				CommonTest: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForMessenger,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:      clamshellLaunchForMessenger,
+				CommonTest: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForMessenger,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:      touchviewLaunchForMessenger,
+				CommonTest: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
@@ -73,8 +80,8 @@ func Messenger(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.facebook.orca"
 		appActivity = ".auth.StartScreenActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForMessenger verifies Messenger is logged in and

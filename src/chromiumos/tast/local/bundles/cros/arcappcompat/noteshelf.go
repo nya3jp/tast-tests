@@ -17,20 +17,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForNoteshelf = []testutil.TestCase{
+// clamshellLaunchForNoteshelf launches Noteshelf in clamshell mode.
+var clamshellLaunchForNoteshelf = []testutil.TestSuite{
 	{Name: "Launch app in Clamshell", Fn: launchAppForNoteshelf},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForNoteshelf = []testutil.TestCase{
+// touchviewLaunchForNoteshelf launches Noteshelf in tablet mode.
+var touchviewLaunchForNoteshelf = []testutil.TestSuite{
 	{Name: "Launch app in Touchview", Fn: launchAppForNoteshelf},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
 func init() {
@@ -41,22 +35,35 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForNoteshelf,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:      clamshellLaunchForNoteshelf,
+				CommonTest: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBootedForNoteshelf,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForNoteshelf,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:      touchviewLaunchForNoteshelf,
+				CommonTest: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletModeForNoteshelf,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForNoteshelf,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:      clamshellLaunchForNoteshelf,
+				CommonTest: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBootedForNoteshelf,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForNoteshelf,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:      touchviewLaunchForNoteshelf,
+				CommonTest: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletModeForNoteshelf,
 		}},
@@ -72,8 +79,8 @@ func Noteshelf(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.fluidtouch.noteshelf2"
 		appActivity = "com.fluidtouch.noteshelf.commons.ui.FTSplashScreenActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForNoteshelf verifies Noteshelf is launched and
