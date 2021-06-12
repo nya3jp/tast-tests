@@ -19,21 +19,25 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForSpotify = []testutil.TestCase{
+// clamshellLaunchForSpotify launches Spotify in clamshell mode.
+var clamshellLaunchForSpotify = []testutil.TestSuite{
 	{Name: "Launch app in Clamshell", Fn: launchAppForSpotify},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+}
+
+// touchviewLaunchForSpotify launches Spotify in tablet mode.
+var touchviewLaunchForSpotify = []testutil.TestSuite{
+	{Name: "Launch app in Touchview", Fn: launchAppForSpotify},
+}
+
+// clamshellAppSpecificTestsForSpotify are placed here.
+var clamshellAppSpecificTestsForSpotify = []testutil.TestSuite{
+	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
 	{Name: "Clamshell: Signout app", Fn: signOutOfSpotify},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForSpotify = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForSpotify},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+// touchviewAppSpecificTestsForSpotify are placed here.
+var touchviewAppSpecificTestsForSpotify = []testutil.TestSuite{
+	{Name: "Touchview: Video Playback", Fn: testutil.TouchAndPlayVideo},
 	{Name: "Touchview: Signout app", Fn: signOutOfSpotify},
 }
 
@@ -45,31 +49,48 @@ func init() {
 		Attr:         []string{"group:appcompat", "appcompat_release"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForSpotify,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForSpotify,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForSpotify,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForSpotify,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForSpotify,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForSpotify,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForSpotify,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForSpotify,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForSpotify,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForSpotify,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForSpotify,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForSpotify,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -88,9 +109,8 @@ func Spotify(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.spotify.music"
 		appActivity = ".MainActivity"
 	)
-
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForSpotify verifies Spotify is logged in and
