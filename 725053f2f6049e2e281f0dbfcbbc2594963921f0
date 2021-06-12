@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5df908_ee8aba7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-12T00:12:53Z",
+      "side": 1,
+      "message": "All nits, lgtm.\n\nJust in case to note that you can\u0027t merge this CL right now. You will have to wait for your chromium CL (https://chromium-review.googlesource.com/c/chromium/src/+/2957193) to be merged, plus extra days for a chromeos-chrome uprev with your CL to be merged.",
+      "revId": "725053f2f6049e2e281f0dbfcbbc2594963921f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f8e1e6_1ece566c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_tray_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-12T00:12:53Z",
+      "side": 1,
+      "message": "nit: const?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "725053f2f6049e2e281f0dbfcbbc2594963921f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d062408b_1bb7e6d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_tray_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-12T00:12:53Z",
+      "side": 1,
+      "message": "nit: I would go with something like fmt.Sprintf(\"TestBasicNotification%d\", i)\n\nmore nit: maybe doing the loop might be a bit simpler:\n  for t, s :\u003d range map[ash.NotificationType]string {\n    ash.NotificationTypeBasic: \"Basic\",\n    ash.NotificationTypeImage: \"Image\",\n    ash.NotificationTypeProgress: \"Progress\",\n    ash.NotificationTypeList: \"List\",\n  } {\n    if _, err :\u003d ash.CreateTestNotification(ctx, tconn, t, fmt.Sprintf(\"Test%sNotification%d\", s, i), \"test image\"); err !\u003d nil {\n      s.Fatalf(\"Failed to create %d-th %s notification: %v\", i, s, err)\n    }\n  }",
+      "range": {
+        "startLine": 52,
+        "startChar": 81,
+        "endLine": 52,
+        "endChar": 120
+      },
+      "revId": "725053f2f6049e2e281f0dbfcbbc2594963921f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db7ae32b_57037261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_tray_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-12T00:12:53Z",
+      "side": 1,
+      "message": "Maybe, rather than creating a new RunMultiple, it might make sense to merge them -- the task would be:\n  uiauto.Combine(\n    \"open the uber tray, collapse and expand it, then close it\",\n    ac.LeftClick(statusArea),\n    ac.WaitUntilExists(collapseButton),\n    ac.LeftClick(collapseButton),\n    ac.WaitForLocation(collapseButton),\n    ac.LeftClick(collapseButton),\n    ac.WaitForLocation(collapseButton),\n    ac.LeftClick(statusArea),\n    ac.WaitUntilGone(collapseButton),\n  )",
+      "revId": "725053f2f6049e2e281f0dbfcbbc2594963921f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fb8e0a9_230629ad",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-12T00:12:53Z",
+      "side": 1,
+      "message": "Just curious, what is the image content in it?  Maybe great to put a comment line for what\u0027s in it (e.g. \"A solid color image for testing\").",
+      "revId": "725053f2f6049e2e281f0dbfcbbc2594963921f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
