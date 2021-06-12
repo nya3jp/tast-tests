@@ -23,6 +23,7 @@ const (
 	dbusName                = "org.chromium.PatchPanel"
 	dbusPath                = "/org/chromium/PatchPanel"
 	connectNamespaceMethod  = "org.chromium.PatchPanel.ConnectNamespace"
+	getDevicesMethod        = "org.chromium.PatchPanel.GetDevices"
 	terminaVMStartupMethod  = "org.chromium.PatchPanel.TerminaVmStartup"
 	terminaVMShutdownMethod = "org.chromium.PatchPanel.TerminaVmShutdown"
 )
@@ -133,4 +134,24 @@ func (c *Client) NotifyTerminaVMShutdown(ctx context.Context, cid uint32) error 
 	}
 
 	return nil
+}
+
+// GetDevices gets all patchpanel managed devices information.
+func (c *Client) GetDevices(ctx context.Context) (*pp.GetDevicesResponse, error) {
+	request := &pp.GetDevicesRequest{}
+	buf, err := proto.Marshal(request)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed marshaling %s request", getDevicesMethod)
+	}
+
+	var result []uint8
+	if err = c.obj.CallWithContext(ctx, getDevicesMethod, 0, buf).Store(&result); err != nil {
+		return nil, errors.Wrapf(err, "failed reading %s response", getDevicesMethod)
+	}
+
+	response := &pp.GetDevicesResponse{}
+	if err = proto.Unmarshal(result, response); err != nil {
+		return nil, errors.Wrapf(err, "failed unmarshaling %s response", getDevicesMethod)
+	}
+	return response, nil
 }
