@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/network"
 	"chromiumos/tast/testing"
 )
 
@@ -73,7 +74,7 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 		mdnsPrefix = "(QM)? "
 	)
 
-	allIfnames, err := physicalInterfaces(ctx)
+	allIfnames, err := network.PhysicalInterfaces(ctx)
 	if err != nil {
 		s.Fatal("Failed to get physical interfaces: ", err)
 	}
@@ -322,14 +323,6 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 	if err := g.Wait(); err != nil {
 		s.Fatal("Failed multicast forwarding check: ", err)
 	}
-}
-
-func physicalInterfaces(ctx context.Context) ([]string, error) {
-	out, err := testexec.CommandContext(ctx, "/usr/bin/find", "/sys/class/net", "-type", "l", "-not", "-lname", "*virtual*", "-printf", "%f\n").Output()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get physical interfaces")
-	}
-	return strings.Split(strings.TrimSpace(string(out)), "\n"), nil
 }
 
 // sendMDNS creates an mDNS question query for hostname with a socket bound to port and ifname.
