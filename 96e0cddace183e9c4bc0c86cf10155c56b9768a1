@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb98fcf9_38b63258",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-12T06:09:08Z",
+      "side": 1,
+      "message": "Hasan@, I have seen this in failure ",
+      "revId": "96e0cddace183e9c4bc0c86cf10155c56b9768a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f2291d8_c4ca73a7",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-12T06:09:08Z",
+      "side": 1,
+      "message": "Ideally this change should be {cantDownloadText, gotItButtonText} as \"Can\u0027t Download\" dialog shows \"Got it\" button and not \"Ok\" button.Thats what I see in the screenshot https://b.corp.google.com/issues/190655569#comment1. I see this failure in https://tastboard.corp.google.com/test/arc.MultipleArcProfile test as well.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 36
+      },
+      "revId": "96e0cddace183e9c4bc0c86cf10155c56b9768a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
