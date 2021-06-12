@@ -20,21 +20,23 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForKahoot = []testutil.TestCase{
+// clamshellLaunchForKahoot launches Kahoot in clamshell mode.
+var clamshellLaunchForKahoot = []testutil.TestSuite{
 	{Name: "Launch app in Clamshell", Fn: launchAppForKahoot},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
+}
+
+// touchviewLaunchForKahoot launches Kahoot in tablet mode.
+var touchviewLaunchForKahoot = []testutil.TestSuite{
+	{Name: "Launch app in Touchview", Fn: launchAppForKahoot},
+}
+
+// clamshellAppSpecificTestsForKahoot are placed here.
+var clamshellAppSpecificTestsForKahoot = []testutil.TestSuite{
 	{Name: "Clamshell: Signout app", Fn: signOutOfKahoot},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForKahoot = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForKahoot},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+// touchviewAppSpecificTestsForKahoot are placed here.
+var touchviewAppSpecificTestsForKahoot = []testutil.TestSuite{
 	{Name: "Touchview: Signout app", Fn: signOutOfKahoot},
 }
 
@@ -46,31 +48,48 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForKahoot,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForKahoot,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForKahoot,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForKahoot,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForKahoot,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForKahoot,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForKahoot,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForKahoot,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForKahoot,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForKahoot,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForKahoot,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForKahoot,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -89,8 +108,8 @@ func Kahoot(ctx context.Context, s *testing.State) {
 		appPkgName  = "no.mobitroll.kahoot.android"
 		appActivity = ".application.SplashActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForKahoot verifies Kahoot is logged in and
