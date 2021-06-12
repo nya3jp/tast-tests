@@ -7,6 +7,7 @@ package network
 import (
 	"context"
 	"regexp"
+	"strings"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -58,4 +59,13 @@ func UnblockShillPortalDetector(ctx context.Context) error {
 		}
 	}
 	return nil
+}
+
+// PhysicalInterfaces returns list of network physical interfaces.
+func PhysicalInterfaces(ctx context.Context) ([]string, error) {
+	out, err := testexec.CommandContext(ctx, "/usr/bin/find", "/sys/class/net", "-type", "l", "-not", "-lname", "*virtual*", "-printf", "%f\n").Output()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get physical interfaces")
+	}
+	return strings.Split(strings.TrimSpace(string(out)), "\n"), nil
 }
