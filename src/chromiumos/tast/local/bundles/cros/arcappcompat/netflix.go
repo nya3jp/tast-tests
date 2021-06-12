@@ -18,21 +18,25 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForNetflix = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForNetflix},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+// clamshellLaunchForNetflix launches Netflix in clamshell mode.
+var clamshellLaunchForNetflix = []testutil.TestSuite{
+	{Name: "Launch app in Clamshell", Fn: launchAppForABCKids},
+}
+
+// touchviewLaunchForNetflix launches Netflix in tablet mode.
+var touchviewLaunchForNetflix = []testutil.TestSuite{
+	{Name: "Launch app in Touchview", Fn: launchAppForABCKids},
+}
+
+// clamshellAppSpecificTestsForNetflix are placed here.
+var clamshellAppSpecificTestsForNetflix = []testutil.TestSuite{
+	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
 	{Name: "Clamshell: Signout app", Fn: signOutOfNetflix},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForNetflix = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForNetflix},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+// touchviewAppSpecificTestsForNetflix are placed here.
+var touchviewAppSpecificTestsForNetflix = []testutil.TestSuite{
+	{Name: "Touchview: Video Playback", Fn: testutil.TouchAndPlayVideo},
 	{Name: "Touchview: Signout app", Fn: signOutOfNetflix},
 }
 
@@ -44,22 +48,39 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForNetflix,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForNetflix,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForNetflix,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForNetflix,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForNetflix,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForNetflix,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForNetflix,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForNetflix,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForNetflix,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForNetflix,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForNetflix,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForNetflix,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
@@ -76,8 +97,8 @@ func Netflix(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.netflix.mediaclient"
 		appActivity = ".ui.launch.UIWebViewActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForNetflix verifies Netflix is logged in and

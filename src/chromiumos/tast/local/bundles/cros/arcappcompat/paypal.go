@@ -20,21 +20,23 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForPaypal = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForPaypal},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
+// clamshellLaunchForPaypal launches Paypal in clamshell mode.
+var clamshellLaunchForPaypal = []testutil.TestSuite{
+	{Name: "Launch app in Clamshell", Fn: launchAppForABCKids},
+}
+
+// touchviewLaunchForPaypal launches Paypal in tablet mode.
+var touchviewLaunchForPaypal = []testutil.TestSuite{
+	{Name: "Launch app in Touchview", Fn: launchAppForABCKids},
+}
+
+// clamshellAppSpecificTestsForPaypal are placed here.
+var clamshellAppSpecificTestsForPaypal = []testutil.TestSuite{
 	{Name: "Clamshell: Signout app", Fn: signOutOfPaypal},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForPaypal = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForPaypal},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+// touchviewAppSpecificTestsForPaypal are placed here.
+var touchviewAppSpecificTestsForPaypal = []testutil.TestSuite{
 	{Name: "Touchview: Signout app", Fn: signOutOfPaypal},
 }
 
@@ -45,24 +47,42 @@ func init() {
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
+		// TODO (b/190409688) : Remove hwdep.SkipOnModel once the solution is found.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel(skipOnNoBackCameraModels...)),
 		Params: []testing.Param{{
-			Val:               clamshellTestsForPaypal,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForPaypal,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForPaypal,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForPaypal,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForPaypal,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForPaypal,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForPaypal,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForPaypal,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForPaypal,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForPaypal,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForPaypal,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForPaypal,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
@@ -99,8 +119,8 @@ func Paypal(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.paypal.android.p2pmobile"
 		appActivity = ".startup.activities.StartupActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForPaypal verifies Paypal is logged in and

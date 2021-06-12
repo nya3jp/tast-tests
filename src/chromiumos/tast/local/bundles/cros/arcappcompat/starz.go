@@ -19,21 +19,25 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForStarz = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForStarz},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
+// clamshellLaunchForStarz launches Starz in clamshell mode.
+var clamshellLaunchForStarz = []testutil.TestSuite{
+	{Name: "Launch app in Clamshell", Fn: launchAppForABCKids},
+}
+
+// touchviewLaunchForStarz launches Starz in tablet mode.
+var touchviewLaunchForStarz = []testutil.TestSuite{
+	{Name: "Launch app in Touchview", Fn: launchAppForABCKids},
+}
+
+// clamshellAppSpecificTestsForStarz are placed here.
+var clamshellAppSpecificTestsForStarz = []testutil.TestSuite{
+	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
 	{Name: "Clamshell: Signout app", Fn: signOutOfStarz},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForStarz = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForStarz},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+// touchviewAppSpecificTestsForStarz are placed here.
+var touchviewAppSpecificTestsForStarz = []testutil.TestSuite{
+	{Name: "Touchview: Video Playback", Fn: testutil.TouchAndPlayVideo},
 	{Name: "Touchview: Signout app", Fn: signOutOfStarz},
 }
 
@@ -45,22 +49,39 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForStarz,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForStarz,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForStarz,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForStarz,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForStarz,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForStarz,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForStarz,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForStarz,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForStarz,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForStarz,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForStarz,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForStarz,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
@@ -76,8 +97,8 @@ func Starz(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.bydeluxe.d3.android.program.starz"
 		appActivity = "com.starz.handheld.SplashActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForStarz verifies Starz is logged in and

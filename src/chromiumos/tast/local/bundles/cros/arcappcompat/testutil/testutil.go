@@ -42,15 +42,52 @@ const (
 // TestFunc represents the "test" function.
 type TestFunc func(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string)
 
-// TestCase represents the  name of test, and the function to call.
-type TestCase struct {
+// TestSuite represents the name of test, and the function to call.
+type TestSuite struct {
 	Name    string
 	Fn      TestFunc
 	Timeout time.Duration
 }
 
+// TestParams represents the collection of tests to run in tablet mode or clamshell mode.
+type TestParams struct {
+	Tests           []TestSuite
+	CommonTest      []TestSuite
+	AppSpecificTest []TestSuite
+}
+
+// FullList will have all testcases.
+var FullList = []TestSuite{}
+
+// ClamshellCommonTests are placed here.
+var ClamshellCommonTests = []TestSuite{
+	{Name: "Clamshell: Orientation", Fn: OrientationSize},
+	{Name: "Clamshell: Largescreen Layout", Fn: Largescreenlayout},
+	{Name: "Clamshell: Fullscreen app", Fn: ClamshellFullscreenApp},
+	{Name: "Clamshell: Minimise and Restore", Fn: MinimizeRestoreApp},
+	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow},
+	{Name: "Clamshell: Reopen app", Fn: ReOpenWindow},
+	{Name: "Clamshell: Touchscreen Scroll", Fn: TouchScreenScroll},
+	{Name: "Clamshell: Mouse click", Fn: MouseClick},
+	{Name: "Clamshell: Mouse Scroll", Fn: MouseScrollAction},
+	{Name: "Clamshell: Physical Keyboard", Fn: TouchAndTextInputs},
+	{Name: "Clamshell: Keyboard Critical Path", Fn: KeyboardNavigations},
+	{Name: "Clamshell: Special keys: ESC key", Fn: EscKey},
+}
+
+// TouchviewCommonTests are placed here.
+var TouchviewCommonTests = []TestSuite{
+	{Name: "Touchview: Largescreen Layout", Fn: Largescreenlayout},
+	{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
+	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
+	{Name: "Touchview: Rotate", Fn: TouchviewRotate},
+	{Name: "Touchview: Splitscreen", Fn: SplitScreen},
+	{Name: "Touchview: Touchscreen Scroll", Fn: TouchScreenScroll},
+	{Name: "Touchview: Virtual Keyboard", Fn: TouchAndTextInputs},
+}
+
 // RunTestCases setups the device and runs all app compat test cases.
-func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity string, testCases []TestCase) {
+func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity string, testCases TestParams) {
 	// Step up chrome on Chromebook.
 	cr, tconn, a := setUpDevice(ctx, s, appPkgName, appActivity)
 
@@ -77,8 +114,16 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	}
 	s.Log("Successfully tested launching and closing the app")
 
+	// Create full list of test cases
+	for _, test1 := range testCases.Tests {
+		FullList = append(FullList, test1)
+	}
+	for _, test2 := range testCases.CommonTest {
+		FullList = append(FullList, test2)
+	}
+
 	// Run the different test cases.
-	for idx, test := range testCases {
+	for idx, test := range FullList {
 		// If a timeout is not specified, limited individual test cases to the default.
 		// This makes sure that one test case doesn't use all of the time when it fails.
 		timeout := defaultTestCaseTimeout
@@ -334,7 +379,7 @@ func TouchAndTextInputs(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Log("Failed to enter KEYCODE_ENTER: ", err)
 	}
 	// To perform touch and text inputs.
-	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "30", "--pct-nav", "10", "--pct-touch", "40", "--pct-nav", "10", "--pct-anyevent", "10", "--throttle", "100", "-v", "2000").Output(testexec.DumpLogOnError)
+	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "30", "--pct-nav", "10", "--pct-touch", "40", "--pct-nav", "10", "--pct-anyevent", "2", "--throttle", "100", "-v", "100").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Error("Failed to perform monkey test touch and text inputs: ", err)
 	}
@@ -362,7 +407,7 @@ func KeyboardNavigations(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Log("Failed to enter KEYCODE_ENTER: ", err)
 	}
 	// To perform keyboard navigations.
-	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "20", "--pct-nav", "20", "--pct-majornav", "20", "--pct-nav", "20", "--pct-majornav", "20", "--throttle", "100", "-v", "2000").Output(testexec.DumpLogOnError)
+	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-nav", "20", "--pct-majornav", "20", "--pct-nav", "20", "--pct-majornav", "20", "--throttle", "100", "-v", "100").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Error("Failed to perform monkey test keyboard navigations: ", err)
 	}
@@ -374,14 +419,6 @@ func KeyboardNavigations(ctx context.Context, s *testing.State, tconn *chrome.Te
 
 // TouchAndPlayVideo func verifies app perform touch and play video successfully without crash or ANR.
 func TouchAndPlayVideo(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get tablet mode: ", err)
-	}
-	if tabletModeEnabled {
-		s.Log("Device is in tablet mode. Skipping test")
-		return
-	}
 	// Press enter key twice.
 	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
 		s.Log("Failed to enter KEYCODE_ENTER: ", err)
@@ -390,7 +427,7 @@ func TouchAndPlayVideo(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Log("Failed to enter KEYCODE_ENTER: ", err)
 	}
 	// To perform touch and play video.
-	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "60", "--throttle", "100", "-v", "2000").Output(testexec.DumpLogOnError)
+	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "60", "--throttle", "100", "-v", "100").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Error("Failed to perform monkey test touch and play video content: ", err)
 	}
@@ -445,7 +482,7 @@ func TouchviewRotate(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 // MouseScrollAction func verifies app perform mouse scroll actions successfully without crash or ANR.
 func MouseScrollAction(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// To perform mouse scroll actions.
-	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--throttle", "100", "--pct-touch", "30", "--pct-trackball", "50", "-v", "1000").Output(testexec.DumpLogOnError)
+	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "30", "--pct-trackball", "50", "--throttle", "100", "-v", "100").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Error("Failed to perform monkey test mouse scroll: ", err)
 	}
@@ -457,6 +494,16 @@ func MouseScrollAction(ctx context.Context, s *testing.State, tconn *chrome.Test
 
 // TouchScreenScroll Test verifies app perform scrollForward successfully without crash or ANR.
 func TouchScreenScroll(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	displayInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the internal display info: ", err)
+	}
+	s.Logf("displayInfo:%+v", displayInfo.HasTouchSupport)
+	if !displayInfo.HasTouchSupport {
+		s.Log("Device doesn't support touchscreen. Skipping test")
+		return
+	}
+
 	checkForScrollLayout := d.Object(ui.Scrollable(true), ui.Focusable(true), ui.Enabled(true))
 	if err := checkForScrollLayout.WaitForExists(ctx, DefaultUITimeout); err != nil {
 		s.Log("ScrollLayout doesn't exist. Page is not scrollable and skipping the test: ", err)
