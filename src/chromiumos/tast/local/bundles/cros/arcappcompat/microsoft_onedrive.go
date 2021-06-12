@@ -19,21 +19,23 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForMicrosoftOnedrive = []testutil.TestCase{
+// clamshellLaunchForMicrosoftOnedrive launches MicrosoftOnedrive in clamshell mode.
+var clamshellLaunchForMicrosoftOnedrive = []testutil.TestSuite{
 	{Name: "Launch app in Clamshell", Fn: launchAppForMicrosoftOnedrive},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
+}
+
+// touchviewLaunchForMicrosoftOnedrive launches MicrosoftOnedrive in tablet mode.
+var touchviewLaunchForMicrosoftOnedrive = []testutil.TestSuite{
+	{Name: "Launch app in Touchview", Fn: launchAppForMicrosoftOnedrive},
+}
+
+// clamshellAppSpecificTestsForMicrosoftOnedrive are placed here.
+var clamshellAppSpecificTestsForMicrosoftOnedrive = []testutil.TestSuite{
 	{Name: "Clamshell: Signout app", Fn: signOutOfMicrosoftOnedrive},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForMicrosoftOnedrive = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForMicrosoftOnedrive},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+// touchviewAppSpecificTestsForMicrosoftOnedrive are placed here.
+var touchviewAppSpecificTestsForMicrosoftOnedrive = []testutil.TestSuite{
 	{Name: "Touchview: Signout app", Fn: signOutOfMicrosoftOnedrive},
 }
 
@@ -45,31 +47,48 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForMicrosoftOnedrive,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForMicrosoftOnedrive,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForMicrosoftOnedrive,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForMicrosoftOnedrive,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForMicrosoftOnedrive,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForMicrosoftOnedrive,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForMicrosoftOnedrive,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForMicrosoftOnedrive,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForMicrosoftOnedrive,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForMicrosoftOnedrive,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForMicrosoftOnedrive,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForMicrosoftOnedrive,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -89,8 +108,8 @@ func MicrosoftOnedrive(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.microsoft.skydrive"
 		appActivity = ".MainActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForMicrosoftOnedrive verifies MicrosoftOnedrive is logged in and
