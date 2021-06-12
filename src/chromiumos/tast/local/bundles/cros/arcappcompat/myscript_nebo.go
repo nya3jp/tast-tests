@@ -18,20 +18,14 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForMyscriptNebo = []testutil.TestCase{
+// clamshellLaunchForMyscriptNebo launches MyscriptNebo in clamshell mode.
+var clamshellLaunchForMyscriptNebo = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForMyscriptNebo},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForMyscriptNebo = []testutil.TestCase{
+// touchviewLaunchForMyscriptNebo launches MyscriptNebo in tablet mode.
+var touchviewLaunchForMyscriptNebo = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForMyscriptNebo},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
 func init() {
@@ -43,31 +37,44 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("careena")),
 		Params: []testing.Param{{
-			Val:               clamshellTestsForMyscriptNebo,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				LaunchTests: clamshellLaunchForMyscriptNebo,
+				CommonTests: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedForMyscriptNebo,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForMyscriptNebo,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				LaunchTests: touchviewLaunchForMyscriptNebo,
+				CommonTests: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeForMyscriptNebo,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForMyscriptNebo,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				LaunchTests: clamshellLaunchForMyscriptNebo,
+				CommonTests: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedForMyscriptNebo,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForMyscriptNebo,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				LaunchTests: touchviewLaunchForMyscriptNebo,
+				CommonTests: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -86,8 +93,8 @@ func MyscriptNebo(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.myscript.nebo"
 		appActivity = ".BootstrapActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForMyscriptNebo verifies MyscriptNebo is logged in and
