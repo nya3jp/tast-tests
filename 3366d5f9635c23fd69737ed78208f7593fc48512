@@ -33,6 +33,24 @@
       "message": "I think 16 in optin test is because it does retries + overhead of setting up. Single optin should be done in 6 minutes max.",
       "revId": "3366d5f9635c23fd69737ed78208f7593fc48512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7326cd6_8d73f56a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_profile_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-12T00:07:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dc253a08_c444c471",
+      "revId": "3366d5f9635c23fd69737ed78208f7593fc48512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
