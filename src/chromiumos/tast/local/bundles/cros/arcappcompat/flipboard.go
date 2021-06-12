@@ -19,22 +19,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForFlipboard = []testutil.TestCase{
+// clamshellLaunchForFlipboard launches Flipboard in clamshell mode.
+var clamshellLaunchForFlipboard = []testutil.TestSuite{
 	{Name: "Launch app in Clamshell", Fn: launchAppForFlipboard},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
-	{Name: "Clamshell: Signout app", Fn: signOutOfFlipboard},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForFlipboard = []testutil.TestCase{
+// touchviewLaunchForFlipboard launches Flipboard in tablet mode.
+var touchviewLaunchForFlipboard = []testutil.TestSuite{
 	{Name: "Launch app in Touchview", Fn: launchAppForFlipboard},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Touchview: Signout app", Fn: signOutOfFlipboard},
 }
 
 func init() {
@@ -45,22 +37,35 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForFlipboard,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:      clamshellLaunchForFlipboard,
+				CommonTest: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForFlipboard,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:      touchviewLaunchForFlipboard,
+				CommonTest: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForFlipboard,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:      clamshellLaunchForFlipboard,
+				CommonTest: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForFlipboard,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:      touchviewLaunchForFlipboard,
+				CommonTest: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
@@ -77,8 +82,8 @@ func Flipboard(ctx context.Context, s *testing.State) {
 		appPkgName  = "flipboard.app"
 		appActivity = "flipboard.activities.LaunchActivityAlias"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForFlipboard verifies Flipboard is logged in and
