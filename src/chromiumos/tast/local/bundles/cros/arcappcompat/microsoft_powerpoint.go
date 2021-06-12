@@ -18,20 +18,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForMicrosoftPowerpoint = []testutil.TestCase{
+// clamshellLaunchForMicrosoftPowerpoint launches MicrosoftPowerpoint in clamshell mode.
+var clamshellLaunchForMicrosoftPowerpoint = []testutil.TestSuite{
 	{Name: "Launch app in Clamshell", Fn: launchAppForMicrosoftPowerpoint},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForMicrosoftPowerpoint = []testutil.TestCase{
+// touchviewLaunchForMicrosoftPowerpoint launches MicrosoftPowerpoint in tablet mode.
+var touchviewLaunchForMicrosoftPowerpoint = []testutil.TestSuite{
 	{Name: "Launch app in Touchview", Fn: launchAppForMicrosoftPowerpoint},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
 func init() {
@@ -42,22 +36,35 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForMicrosoftPowerpoint,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:      clamshellLaunchForMicrosoftPowerpoint,
+				CommonTest: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForMicrosoftPowerpoint,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:      touchviewLaunchForMicrosoftPowerpoint,
+				CommonTest: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForMicrosoftPowerpoint,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:      clamshellLaunchForMicrosoftPowerpoint,
+				CommonTest: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForMicrosoftPowerpoint,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:      touchviewLaunchForMicrosoftPowerpoint,
+				CommonTest: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
@@ -74,8 +81,8 @@ func MicrosoftPowerpoint(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.microsoft.office.powerpoint"
 		appActivity = "com.microsoft.office.apphost.LaunchActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForMicrosoftPowerpoint verifies MicrosoftPowerpoint is logged in and
