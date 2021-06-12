@@ -18,57 +18,76 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForIHeartRadio = []testutil.TestCase{
+// clamshellLaunchForIHeartRadio launches IHeartRadio in clamshell mode.
+var clamshellLaunchForIHeartRadio = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForIHeartRadio},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Clamshell: Touchscreen Scroll", Fn: testutil.TouchScreenScroll},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForIHeartRadio = []testutil.TestCase{
+// touchviewLaunchForIHeartRadio launches IHeartRadio in tablet mode.
+var touchviewLaunchForIHeartRadio = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForIHeartRadio},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Touchview: Touchscreen Scroll", Fn: testutil.TouchScreenScroll},
+}
+
+// clamshellAppSpecificTestsForIHeartRadio are placed here.
+var clamshellAppSpecificTestsForIHeartRadio = []testutil.TestCase{
+	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
+}
+
+// touchviewAppSpecificTestsForIHeartRadio are placed here.
+var touchviewAppSpecificTestsForIHeartRadio = []testutil.TestCase{
+	{Name: "Touchview: Video Playback", Fn: testutil.TouchAndPlayVideo},
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         IHeartRadio,
 		Desc:         "Functional test for IHeartRadio that installs the app also verifies it is logged in and that the main page is open, checks IHeartRadio correctly changes the window state in both clamshell and touchview mode",
-		Contacts:     []string{"archanasing@chromium.org", "cros-appcompat-test-team@google.com"},
+		Contacts:     []string{"cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForIHeartRadio,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				LaunchTests:      clamshellLaunchForIHeartRadio,
+				CommonTests:      testutil.ClamshellCommonTests,
+				AppSpecificTests: clamshellAppSpecificTestsForIHeartRadio,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForIHeartRadio,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				LaunchTests:      touchviewLaunchForIHeartRadio,
+				CommonTests:      testutil.TouchviewCommonTests,
+				AppSpecificTests: touchviewAppSpecificTestsForIHeartRadio,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForIHeartRadio,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				LaunchTests:      clamshellLaunchForIHeartRadio,
+				CommonTests:      testutil.ClamshellCommonTests,
+				AppSpecificTests: clamshellAppSpecificTestsForIHeartRadio,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForIHeartRadio,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				LaunchTests:      touchviewLaunchForIHeartRadio,
+				CommonTests:      testutil.TouchviewCommonTests,
+				AppSpecificTests: touchviewAppSpecificTestsForIHeartRadio,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -88,8 +107,8 @@ func IHeartRadio(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.clearchannel.iheartradio.controller"
 		appActivity = ".activities.NavDrawerActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForIHeartRadio verifies IHeartRadio is logged in and

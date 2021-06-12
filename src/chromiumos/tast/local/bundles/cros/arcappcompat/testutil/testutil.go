@@ -43,15 +43,54 @@ const (
 // TestFunc represents the "test" function.
 type TestFunc func(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string)
 
-// TestCase represents the  name of test, and the function to call.
+// TestCase represents the name of test, the function to call.
 type TestCase struct {
 	Name    string
 	Fn      TestFunc
 	Timeout time.Duration
 }
 
+// TestParams represents the collection of tests to run in tablet mode or clamshell mode.
+type TestParams struct {
+	LaunchTests      []TestCase
+	CommonTests      []TestCase
+	AppSpecificTests []TestCase
+}
+
+// AllTests will have all testcases.
+var AllTests = []TestCase{}
+
+// ClamshellCommonTests is a list of all tests common to all apps in clamshell mode.
+var ClamshellCommonTests = []TestCase{
+	// TODO: Remove the commented testcases once the first batch of testcases are stablized.
+	{Name: "Clamshell: Orientation", Fn: OrientationSize},
+	{Name: "Clamshell: Touchscreen Scroll", Fn: TouchScreenScroll},
+	//{Name: "Clamshell: Mouse click", Fn: MouseClick},
+	//{Name: "Clamshell: Mouse Scroll", Fn: MouseScrollAction},
+	{Name: "Clamshell: Physical Keyboard", Fn: TouchAndTextInputs},
+	//{Name: "Clamshell: Keyboard Critical Path", Fn: KeyboardNavigations},
+	//{Name: "Clamshell: Special keys: ESC key", Fn: EscKey},
+	{Name: "Clamshell: Largescreen Layout", Fn: Largescreenlayout},
+	{Name: "Clamshell: Fullscreen app", Fn: ClamshellFullscreenApp},
+	{Name: "Clamshell: Minimise and Restore", Fn: MinimizeRestoreApp},
+	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow},
+	{Name: "Clamshell: Reopen app", Fn: ReOpenWindow},
+}
+
+// TouchviewCommonTests is a list of all tests common to all apps in touchview mode.
+var TouchviewCommonTests = []TestCase{
+	// TODO: Remove the commented testcases once the first batch of testcases are stablized.
+	{Name: "Touchview: Rotate", Fn: TouchviewRotate},
+	//{Name: "Touchview: Splitscreen", Fn: SplitScreen},
+	//{Name: "Touchview: Touchscreen Scroll", Fn: TouchScreenScroll},
+	//{Name: "Touchview: Virtual Keyboard", Fn: TouchAndTextInputs},
+	{Name: "Touchview: Largescreen Layout", Fn: Largescreenlayout},
+	{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
+	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
+}
+
 // RunTestCases setups the device and runs all app compat test cases.
-func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity string, testCases []TestCase) {
+func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity string, testCases TestParams) {
 	// Step up chrome on Chromebook.
 	cr, tconn, a := setUpDevice(ctx, s, appPkgName, appActivity)
 
@@ -78,8 +117,11 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	}
 	s.Log("Successfully tested launching and closing the app")
 
+	// To create full list of test cases.
+	createFullTestList(ctx, testCases)
+
 	// Run the different test cases.
-	for idx, test := range testCases {
+	for idx, test := range AllTests {
 		// If a timeout is not specified, limited individual test cases to the default.
 		// This makes sure that one test case doesn't use all of the time when it fails.
 		timeout := defaultTestCaseTimeout
@@ -90,7 +132,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 		defer cancel()
 		s.Run(testCaseCtx, test.Name, func(cleanupCtx context.Context, s *testing.State) {
 			// Save time for cleanup and screenshot.
-			ctx, cancel := ctxutil.Shorten(cleanupCtx, 20*time.Second)
+			ctx, cancel := ctxutil.Shorten(cleanupCtx, 30*time.Second)
 			defer cancel()
 			// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
 			if err := power.TurnOnDisplay(ctx); err != nil {
@@ -112,6 +154,11 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 				if err := act.Stop(ctx, tconn); err != nil {
 					s.Fatal("Failed to stop app: ", err)
 				}
+			}(cleanupCtx)
+
+			// Clear fulllist before moving to another app test.
+			defer func(ctx context.Context) {
+				AllTests = nil
 			}(cleanupCtx)
 
 			// Take screenshot and dump ui info on failure.
@@ -167,6 +214,19 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
 		})
 		cancel()
+	}
+}
+
+// createFullTestList func to create full list of test cases.
+func createFullTestList(ctx context.Context, testCases TestParams) {
+	for _, test1 := range testCases.LaunchTests {
+		AllTests = append(AllTests, test1)
+	}
+	for _, test2 := range testCases.CommonTests {
+		AllTests = append(AllTests, test2)
+	}
+	for _, test3 := range testCases.AppSpecificTests {
+		AllTests = append(AllTests, test3)
 	}
 }
 
