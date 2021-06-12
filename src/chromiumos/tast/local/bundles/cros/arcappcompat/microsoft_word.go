@@ -18,20 +18,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForMicrosoftWord = []testutil.TestCase{
+// clamshellLaunchForMicrosoftWord launches MicrosoftWord in clamshell mode.
+var clamshellLaunchForMicrosoftWord = []testutil.TestSuite{
 	{Name: "Launch app in Clamshell", Fn: launchAppForMicrosoftWord},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForMicrosoftWord = []testutil.TestCase{
+// touchviewLaunchForMicrosoftWord launches MicrosoftWord in tablet mode.
+var touchviewLaunchForMicrosoftWord = []testutil.TestSuite{
 	{Name: "Launch app in Touchview", Fn: launchAppForMicrosoftWord},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
 func init() {
@@ -42,22 +36,35 @@ func init() {
 		Attr:         []string{"group:appcompat", "appcompat_release"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForMicrosoftWord,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:      clamshellLaunchForMicrosoftWord,
+				CommonTest: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForMicrosoftWord,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:      touchviewLaunchForMicrosoftWord,
+				CommonTest: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForMicrosoftWord,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:      clamshellLaunchForMicrosoftWord,
+				CommonTest: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForMicrosoftWord,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:      touchviewLaunchForMicrosoftWord,
+				CommonTest: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
@@ -74,8 +81,8 @@ func MicrosoftWord(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.microsoft.office.word"
 		appActivity = "com.microsoft.office.apphost.LaunchActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForMicrosoftWord verifies MicrosoftWord is logged in and

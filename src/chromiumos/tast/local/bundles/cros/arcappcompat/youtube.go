@@ -17,48 +17,67 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForYoutube = []testutil.TestCase{
+// clamshellLaunchForYoutube launches Youtube in clamshell mode.
+var clamshellLaunchForYoutube = []testutil.TestSuite{
 	{Name: "Launch app in Clamshell", Fn: launchAppForYoutube},
-	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForYoutube = []testutil.TestCase{
+// touchviewLaunchForYoutube launches Youtube in tablet mode.
+var touchviewLaunchForYoutube = []testutil.TestSuite{
 	{Name: "Launch app in Touchview", Fn: launchAppForYoutube},
+}
+
+// clamshellAppSpecificTestsForYoutube are placed here.
+var clamshellAppSpecificTestsForYoutube = []testutil.TestSuite{
+	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
+}
+
+// touchviewAppSpecificTestsForYoutube are placed here.
+var touchviewAppSpecificTestsForYoutube = []testutil.TestSuite{
 	{Name: "Touchview: Video Playback", Fn: testutil.TouchAndPlayVideo},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Youtube,
-		Desc:         "Functional test for Youtube  that installs the app also verifies it is logged in and that the main page is open, checks Gmail correctly changes the window state in both clamshell and touchview mode",
+		Desc:         "Functional test for Youtube that installs the app also verifies it is logged in and that the main page is open, checks Gmail correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat", "appcompat_release"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForYoutube,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForYoutube,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForYoutube,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForYoutube,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForYoutube,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForYoutube,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForYoutube,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForYoutube,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForYoutube,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForYoutube,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForYoutube,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForYoutube,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
@@ -74,8 +93,8 @@ func Youtube(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.google.android.youtube"
 		appActivity = "com.google.android.apps.youtube.app.WatchWhileActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForYoutube verifies app is logged in and
