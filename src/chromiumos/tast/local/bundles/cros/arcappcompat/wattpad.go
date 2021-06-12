@@ -18,55 +18,62 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForWattpad = []testutil.TestCase{
+// clamshellLaunchForWattpad launches Wattpad in clamshell mode.
+var clamshellLaunchForWattpad = []testutil.TestSuite{
 	{Name: "Launch app in Clamshell", Fn: launchAppForWattpad},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForWattpad = []testutil.TestCase{
+// touchviewLaunchForWattpad launches Wattpad in tablet mode.
+var touchviewLaunchForWattpad = []testutil.TestSuite{
 	{Name: "Launch app in Touchview", Fn: launchAppForWattpad},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Wattpad,
 		Desc:         "Functional test for Wattpad that installs the app also verifies it is logged in and that the main page is open, checks Wattpad correctly changes the window state in both clamshell and touchview mode",
-		Contacts:     []string{"archanasing@chromium.org", "cros-appcompat-test-team@google.com"},
+		Contacts:     []string{"cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForWattpad,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:      clamshellLaunchForWattpad,
+				CommonTest: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForWattpad,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:      touchviewLaunchForWattpad,
+				CommonTest: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForWattpad,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:      clamshellLaunchForWattpad,
+				CommonTest: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForWattpad,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:      touchviewLaunchForWattpad,
+				CommonTest: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -86,8 +93,8 @@ func Wattpad(ctx context.Context, s *testing.State) {
 		appPkgName  = "wp.wattpad"
 		appActivity = ".ui.activities.LoginActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForWattpad verifies Wattpad is logged in and

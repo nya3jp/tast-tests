@@ -18,20 +18,24 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForPandora = []testutil.TestCase{
+// clamshellLaunchForPandora launches Pandora in clamshell mode.
+var clamshellLaunchForPandora = []testutil.TestSuite{
 	{Name: "Launch app in Clamshell", Fn: launchAppForPandora},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForPandora = []testutil.TestCase{
+// touchviewLaunchForPandora launches Pandora in tablet mode.
+var touchviewLaunchForPandora = []testutil.TestSuite{
 	{Name: "Launch app in Touchview", Fn: launchAppForPandora},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+}
+
+// clamshellAppSpecificTestsForPandora are placed here.
+var clamshellAppSpecificTestsForPandora = []testutil.TestSuite{
+	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
+}
+
+// touchviewAppSpecificTestsForPandora are placed here.
+var touchviewAppSpecificTestsForPandora = []testutil.TestSuite{
+	{Name: "Touchview: Video Playback", Fn: testutil.TouchAndPlayVideo},
 }
 
 func init() {
@@ -42,31 +46,48 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForPandora,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForPandora,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForPandora,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForPandora,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForPandora,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForPandora,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForPandora,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:           clamshellLaunchForPandora,
+				CommonTest:      testutil.ClamshellCommonTests,
+				AppSpecificTest: clamshellAppSpecificTestsForPandora,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForPandora,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:           touchviewLaunchForPandora,
+				CommonTest:      testutil.TouchviewCommonTests,
+				AppSpecificTest: touchviewAppSpecificTestsForPandora,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -86,8 +107,8 @@ func Pandora(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.pandora.android"
 		appActivity = ".LauncherActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForPandora verifies Pandora is logged in and
