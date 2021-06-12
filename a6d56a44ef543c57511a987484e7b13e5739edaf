@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23da407d_666455b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/photolemur.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-12T08:44:16Z",
+      "side": 1,
+      "message": "As this is required to run only on x86 64, Can you try adding “arc_x86_64: “(!amd64 \u0026\u0026 no_arm \u0026\u0026 +cheets_user)\" to src/platform/tast/src/chromiumos/tast/cmd/local_test_runner/main.go and use it in test. Prior to this +cheets_user has to be added as suggested by nya@ in crrev/c/2922878",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 66
+      },
+      "revId": "a6d56a44ef543c57511a987484e7b13e5739edaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
