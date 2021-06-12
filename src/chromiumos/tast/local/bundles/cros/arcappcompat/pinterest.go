@@ -49,7 +49,11 @@ func init() {
 				LaunchTests: touchviewLaunchForPinterest,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
+<<<<<<< HEAD
 			ExtraSoftwareDeps: []string{"android_p"},
+=======
+			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+>>>>>>> cba02c7aa (arcappcompat: Implement test suite in tast.arcappcompat tests.)
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
 			Name: "vm_clamshell_mode",
@@ -65,7 +69,11 @@ func init() {
 				LaunchTests: touchviewLaunchForPinterest,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
+<<<<<<< HEAD
 			ExtraSoftwareDeps: []string{"android_vm"},
+=======
+			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+>>>>>>> cba02c7aa (arcappcompat: Implement test suite in tast.arcappcompat tests.)
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,

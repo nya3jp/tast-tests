@@ -68,7 +68,11 @@ func init() {
 				CommonTests:      testutil.TouchviewCommonTests,
 				AppSpecificTests: touchviewAppSpecificTestsForStarz,
 			},
+<<<<<<< HEAD
 			ExtraSoftwareDeps: []string{"android_p"},
+=======
+			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+>>>>>>> cba02c7aa (arcappcompat: Implement test suite in tast.arcappcompat tests.)
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
@@ -92,7 +96,11 @@ func init() {
 				CommonTests:      testutil.TouchviewCommonTests,
 				AppSpecificTests: touchviewAppSpecificTestsForStarz,
 			},
+<<<<<<< HEAD
 			ExtraSoftwareDeps: []string{"android_vm"},
+=======
+			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+>>>>>>> cba02c7aa (arcappcompat: Implement test suite in tast.arcappcompat tests.)
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
