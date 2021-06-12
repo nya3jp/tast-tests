@@ -19,20 +19,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForHouseparty = []testutil.TestCase{
+// clamshellLaunchForHouseparty launches Houseparty in clamshell mode.
+var clamshellLaunchForHouseparty = []testutil.TestSuite{
 	{Name: "Launch app in Clamshell", Fn: launchAppForHouseparty},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForHouseparty = []testutil.TestCase{
+// touchviewLaunchForHouseparty launches Houseparty in tablet mode.
+var touchviewLaunchForHouseparty = []testutil.TestSuite{
 	{Name: "Launch app in Touchview", Fn: launchAppForHouseparty},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
 func init() {
@@ -44,22 +38,35 @@ func init() {
 		//Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForHouseparty,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:      clamshellLaunchForHouseparty,
+				CommonTest: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForHouseparty,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				Tests:      touchviewLaunchForHouseparty,
+				CommonTest: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForHouseparty,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				Tests:      clamshellLaunchForHouseparty,
+				CommonTest: testutil.ClamshellCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForHouseparty,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				Tests:      touchviewLaunchForHouseparty,
+				CommonTest: testutil.TouchviewCommonTests,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
@@ -76,8 +83,8 @@ func Houseparty(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.herzick.houseparty"
 		appActivity = "com.lifeonair.houseparty.ui.routing.RoutingActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForHouseparty verifies Houseparty is logged in and
