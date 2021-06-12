@@ -51,7 +51,11 @@ func init() {
 				LaunchTests: touchviewLaunchForHouseparty,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
+<<<<<<< HEAD   (510ce8 tast-tests: add retry for gaia login)
 			ExtraSoftwareDeps: []string{"android_p"},
+=======
+			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+>>>>>>> CHANGE (cba02c arcappcompat: Implement test suite in tast.arcappcompat test)
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
 			Name: "vm_clamshell_mode",
@@ -67,7 +71,11 @@ func init() {
 				LaunchTests: touchviewLaunchForHouseparty,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
+<<<<<<< HEAD   (510ce8 tast-tests: add retry for gaia login)
 			ExtraSoftwareDeps: []string{"android_vm"},
+=======
+			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+>>>>>>> CHANGE (cba02c arcappcompat: Implement test suite in tast.arcappcompat test)
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,

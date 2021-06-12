@@ -53,7 +53,11 @@ func init() {
 				LaunchTests: touchviewLaunchForAutocad,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
+<<<<<<< HEAD   (510ce8 tast-tests: add retry for gaia login)
 			ExtraSoftwareDeps: []string{"android_p", "no_arc_x86"},
+=======
+			ExtraSoftwareDeps: []string{"android_p", "tablet_mode", "no_arc_x86"},
+>>>>>>> CHANGE (cba02c arcappcompat: Implement test suite in tast.arcappcompat test)
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
@@ -75,7 +79,11 @@ func init() {
 				LaunchTests: touchviewLaunchForAutocad,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
+<<<<<<< HEAD   (510ce8 tast-tests: add retry for gaia login)
 			ExtraSoftwareDeps: []string{"android_vm", "no_arc_x86"},
+=======
+			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode", "no_arc_x86"},
+>>>>>>> CHANGE (cba02c arcappcompat: Implement test suite in tast.arcappcompat test)
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),

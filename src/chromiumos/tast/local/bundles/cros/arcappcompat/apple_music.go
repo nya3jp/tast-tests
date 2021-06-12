@@ -64,7 +64,11 @@ func init() {
 				CommonTests:      testutil.TouchviewCommonTests,
 				AppSpecificTests: touchviewAppSpecificTestsForAppleMusic,
 			},
+<<<<<<< HEAD   (510ce8 tast-tests: add retry for gaia login)
 			ExtraSoftwareDeps: []string{"android_p"},
+=======
+			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+>>>>>>> CHANGE (cba02c arcappcompat: Implement test suite in tast.arcappcompat test)
 			// TODO(b/189704585): Remove ExtraHardwareDeps once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
@@ -88,7 +92,11 @@ func init() {
 				CommonTests:      testutil.TouchviewCommonTests,
 				AppSpecificTests: touchviewAppSpecificTestsForAppleMusic,
 			},
+<<<<<<< HEAD   (510ce8 tast-tests: add retry for gaia login)
 			ExtraSoftwareDeps: []string{"android_vm"},
+=======
+			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+>>>>>>> CHANGE (cba02c arcappcompat: Implement test suite in tast.arcappcompat test)
 			// TODO(b/189704585): Remove ExtraHardwareDeps once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
