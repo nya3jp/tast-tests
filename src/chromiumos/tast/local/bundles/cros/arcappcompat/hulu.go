@@ -20,21 +20,25 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// ClamshellTests are placed here.
-var clamshellTestsForHulu = []testutil.TestCase{
+// clamshellLaunchForHulu launches Hulu in clamshell mode.
+var clamshellLaunchForHulu = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForHulu},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
-	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+}
+
+// touchviewLaunchForHulu launches Hulu in tablet mode.
+var touchviewLaunchForHulu = []testutil.TestCase{
+	{Name: "Launch app in Touchview", Fn: launchAppForHulu},
+}
+
+// clamshellAppSpecificTestsForHulu are placed here.
+var clamshellAppSpecificTestsForHulu = []testutil.TestCase{
+	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
 	{Name: "Clamshell: Signout app", Fn: signOutOfHulu},
 }
 
-// TouchviewTests are placed here.
-var touchviewTestsForHulu = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForHulu},
-	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+// touchviewAppSpecificTestsForHulu are placed here.
+var touchviewAppSpecificTestsForHulu = []testutil.TestCase{
+	{Name: "Touchview: Video Playback", Fn: testutil.TouchAndPlayVideo},
 	{Name: "Touchview: Signout app", Fn: signOutOfHulu},
 }
 
@@ -46,31 +50,48 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForHulu,
+			Name: "clamshell_mode",
+			Val: testutil.TestParams{
+				LaunchTests:      clamshellLaunchForHulu,
+				CommonTests:      testutil.ClamshellCommonTests,
+				AppSpecificTests: clamshellAppSpecificTestsForHulu,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForHulu,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				LaunchTests:      touchviewLaunchForHulu,
+				CommonTests:      testutil.TouchviewCommonTests,
+				AppSpecificTests: touchviewAppSpecificTestsForHulu,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForHulu,
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				LaunchTests:      clamshellLaunchForHulu,
+				CommonTests:      testutil.ClamshellCommonTests,
+				AppSpecificTests: clamshellAppSpecificTestsForHulu,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForHulu,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				LaunchTests:      touchviewLaunchForHulu,
+				CommonTests:      testutil.TouchviewCommonTests,
+				AppSpecificTests: touchviewAppSpecificTestsForHulu,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -90,8 +111,8 @@ func Hulu(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.hulu.plus"
 		appActivity = "com.hulu.features.splash.SplashActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+	testSet := s.Param().(testutil.TestParams)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }
 
 // launchAppForHulu verifies Hulu is logged in and
