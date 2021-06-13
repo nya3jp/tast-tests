@@ -1031,7 +1031,7 @@ index b6fdde2..e51d23b 100644
 -    print "Testing device " + device_id
 +    print("Testing device " + device_id)
  
-     # Sanity Check for devices
+     # Validity Check for devices
      device_bfp = its.device.get_device_fingerprint(device_id)
 @@ -266,15 +266,15 @@ def main():
          with its.device.ItsSession() as cam:
