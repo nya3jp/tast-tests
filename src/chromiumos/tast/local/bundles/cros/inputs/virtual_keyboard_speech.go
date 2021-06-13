@@ -42,6 +42,7 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name:      "hello_en",
@@ -81,12 +82,6 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	cleanup, err := input.EnableAloopInput(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to enable Aloop: ", err)
-	}
-	defer cleanup(cleanupCtx)
-
 	// Test parameters that are specific to the current test case.
 	audioFile := s.Param().(speechTestParams).audioFile
 	expectedText := s.Param().(speechTestParams).expectedText
@@ -115,18 +110,37 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	inputField := testserver.TextAreaInputField
 	vkbCtx := vkb.NewContext(cr, tconn)
 
-	if err := uiauto.Combine("voice input test",
-		its.ClickFieldUntilVKShown(inputField),
-		uiauto.New(tconn).WithTimeout(time.Minute).Retry(5, uiauto.Combine("verify audio input",
+	// Show VK.
+	if err := its.ClickFieldUntilVKShown(inputField)(ctx); err != nil {
+		s.Fatal("Failed to show VK: ", err)
+	}
+
+	validateAction := func(ctx context.Context) error {
+		cleanup, err := input.EnableAloopInput(ctx, tconn)
+		if err != nil {
+			return err
+		}
+		if err = uiauto.Combine("verify audio input",
 			its.Clear(inputField),
 			vkbCtx.SwitchToVoiceInput(),
 			func(ctx context.Context) error {
 				return input.AudioFromFile(ctx, testFileLocation)
 			},
-			// Verify if the derived text is equal to the expected text.
+			// Wait while playing the audio asynchronically.
+			func(ctx context.Context) error {
+				return testing.Sleep(ctx, 5*time.Second)
+			},
 			its.WaitForFieldValueToBe(inputField, expectedText),
-		)),
-	)(ctx); err != nil {
+		)(ctx); err != nil {
+			// Unload Aloop when an error happens in the validation process.
+			cleanup(cleanupCtx)
+			return err
+		}
+		cleanup(cleanupCtx)
+		return nil
+	}
+
+	if err := uiauto.New(tconn).WithTimeout(5*time.Minute).Retry(20, validateAction)(ctx); err != nil {
 		s.Fatal("Failed to validate voice input: ", err)
 	}
 }
