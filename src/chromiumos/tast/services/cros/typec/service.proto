@@ -17,7 +17,7 @@ service Service {
 }
 
 // The service modifies the device policy while logging in to enable peripheral data access. In order to do
-// this, we need to send the file path of a dummy test service private key which is required by session_manager
+// this, we need to send the file path of a stub test service private key which is required by session_manager
 // to store the modified policy (and which should be copied over to the target device by the test code).
 message KeyPath {
     string path = 1;

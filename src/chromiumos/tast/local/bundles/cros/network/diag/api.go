@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package diag is a library of functionality to utilize the native Chrome
+// Package diag is a library of functionality to utilize the built-in Chrome
 // network diagnostic routines.
 package diag
 
