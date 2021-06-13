@@ -15,8 +15,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// AudioFromFile inputs an audio file via active input node.
-func AudioFromFile(ctx context.Context, audioFilePath string) error {
+// AudioFromFileAndWait inputs an audio file via active input node and waits until it finishes.
+func AudioFromFileAndWait(ctx context.Context, audioFilePath string) error {
 	audioInput := audio.TestRawData{
 		Path:          audioFilePath,
 		BitsPerSample: 16,
@@ -34,7 +34,7 @@ func AudioFromFile(ctx context.Context, audioFilePath string) error {
 		audioInput.Rate)
 	playCmd.Start()
 
-	return nil
+	return playCmd.Wait()
 }
 
 // EnableAloopInput loads and enables Aloop then sets it as active input node.
