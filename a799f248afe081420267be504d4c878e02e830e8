@@ -16,6 +16,24 @@
       "message": "Is this variable used in the future changes or internal code?",
       "revId": "a799f248afe081420267be504d4c878e02e830e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd9a64a4_759df8b7",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-06-14T20:40:03Z",
+      "side": 1,
+      "message": "...it was supposed to be used in this one. I\u0027m not sure how I managed to mess that up.",
+      "parentUuid": "a5da0969_df815795",
+      "revId": "a799f248afe081420267be504d4c878e02e830e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
