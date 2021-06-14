@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "797a9c06_2c29c3c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-14T19:32:12Z",
+      "side": 1,
+      "message": "Hasan@, We see that \"Can\u0027t Download\" dialog has \"Got it\" button and not \"Ok\" button. Hence fixing it here.",
+      "revId": "c4c2aae2a4ca099a061994a090168ce081a0692d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
