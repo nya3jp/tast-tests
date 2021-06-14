@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db7a967b_bf189e68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/image_quick_view.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-06-14T19:21:17Z",
+      "side": 1,
+      "message": "Thanks. Done",
+      "parentUuid": "9275d5b3_ecd12383",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 61
+      },
+      "revId": "5cb2503ae8adaa81c34eb7905b083a610f8c10b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc2f0b1a_b93179f4",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-11T21:50:52Z",
       "side": 1,
       "message": "the current structure looks fine to me, but is there any reason not to put all of this in the uiauto.Combine above? just to better separate distinct test steps and indicate points of failure?",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "5cb2503ae8adaa81c34eb7905b083a610f8c10b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21dd8df4_76c183e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/image_quick_view.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-06-14T19:21:17Z",
+      "side": 1,
+      "message": "Thanks Kyle.Yes, I merge them all to combine block.",
+      "parentUuid": "fc2f0b1a_b93179f4",
       "range": {
         "startLine": 74,
         "startChar": 1,
