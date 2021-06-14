@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba5454b6_b2bcc028",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-06-14T08:29:18Z",
+      "side": 1,
+      "message": "ARC++ Container would be clearer.",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "d0eb5f33453851584e44b21958a3ed9625b518fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec5eee86_3886d87b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cxx_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-06-14T08:29:18Z",
+      "side": 1,
+      "message": "Move this block into \"if vmEnabled { }\" ?",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 79
+      },
+      "revId": "d0eb5f33453851584e44b21958a3ed9625b518fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "609b00b0_3a46cbc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cxx_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-06-14T08:29:18Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 12
+      },
+      "revId": "d0eb5f33453851584e44b21958a3ed9625b518fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
