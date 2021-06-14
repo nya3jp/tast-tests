@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1089a821_6d5f838c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-06-14T04:41:19Z",
+      "side": 1,
+      "message": "Unfortunately I am not sure we are going to be able to send packets from adb shell directly to exercise multinetworking truly.\n\nWe may need to add some options to ArcNetworkDebugTools so that getNetworkFromArgs also accept either a source address, or a network interface. Then we can use $ adb shell dumpsys wifi tools and programmatically make sure we send packets from the right network.",
+      "revId": "2c26b358de4a8591ae672187d6f70a93025f14ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "041b201e_a17cd934",
@@ -101,6 +118,30 @@
       "writtenOn": "2021-06-14T04:41:10Z",
       "side": 1,
       "message": "\u003e So what this actually checks is that the host has inter-connectivity between the static virtual IPv4 subnets we have on the host.\n\nThis makes a lot of sense, thanks for correcting.\n\nIn that case, we\u0027ll need another way of binding to an interface with just shell. I\u0027ll try to find one. In the meantime, do you happen to have anything in mind?",
+      "parentUuid": "7d9f2864_c1d63c1e",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 61
+      },
+      "revId": "2c26b358de4a8591ae672187d6f70a93025f14ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1599edae_b70b9eb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-06-14T04:41:19Z",
+      "side": 1,
+      "message": "I just tested -I with a source address argument of wifi and the behavior is a bit weird:\n  - the egress echo request comes out of arc_eth0 and apparently gets routed through Android default network (ethernet in my case).\n  - the return echo reply packet gets routed \"correctly\" because of the source address by the host and shows up on arc_wlan0.\n  \n I believe this is a bug with the ping command in Android. Damien previously had similar issues with IPv6.",
       "parentUuid": "7d9f2864_c1d63c1e",
       "range": {
         "startLine": 97,
