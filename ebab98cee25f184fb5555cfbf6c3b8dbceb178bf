@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "571c50f1_a054ad24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-14T14:49:33Z",
+      "side": 1,
+      "message": "nit: briefly mention what it does as well. e.g:\n\n  This CL does X, Y and Z, which takes the ideas from [1] and [2]",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "ebab98cee25f184fb5555cfbf6c3b8dbceb178bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efdbbb6b_76267ed5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-14T14:49:33Z",
+      "side": 1,
+      "message": "nit: Although it is nice to give credit, I rather not put them in the commit description. I\u0027d just remove it from here.",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "ebab98cee25f184fb5555cfbf6c3b8dbceb178bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2ba7df42_7bf7d789",
@@ -31,6 +77,30 @@
       "writtenOn": "2021-06-14T04:30:17Z",
       "side": 1,
       "message": "If we are writing the code to do the resize manually via mouse anyway for P, can we just use that code for R as well?\n\nOr, what about changing activity ResizeWindow to support non-touch screens?\n\nIt would be nice if we didn\u0027t have different codepaths here IMO.",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 59
+      },
+      "revId": "ebab98cee25f184fb5555cfbf6c3b8dbceb178bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10c9c791_80cd0707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-14T14:49:33Z",
+      "side": 1,
+      "message": "+1\n\nalso, mouse API (which, IIRC, is based in Ash), is more reliable than then one from Activity which injects real touches at kernel level.",
+      "parentUuid": "6ad8af31_3cadc7f7",
       "range": {
         "startLine": 168,
         "startChar": 2,
