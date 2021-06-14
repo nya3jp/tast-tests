@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7e27262_f597a7cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-14T04:41:10Z",
+      "side": 1,
+      "message": "The gateway command here is the first hop from the physical interface to the Google DNS. I\u0027ll revisit the comment.",
+      "parentUuid": "041b201e_a17cd934",
+      "range": {
+        "startLine": 95,
+        "startChar": 12,
+        "endLine": 95,
+        "endChar": 45
+      },
+      "revId": "2c26b358de4a8591ae672187d6f70a93025f14ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d9f2864_c1d63c1e",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-14T04:32:44Z",
       "side": 1,
       "message": "There is a problem with this command. Without the -I argument the multinetwork routing will actually happen on the host: not inside the ARC environment.\n\nWhen you ping an IPv4 address, because all virtual IPv4 networks configured for Android inside ARC have a default route, the default Android network will always be taken.\n\nSo what this actually checks is that the host has inter-connectivity between the static virtual IPv4 subnets we have on the host.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 61
+      },
+      "revId": "2c26b358de4a8591ae672187d6f70a93025f14ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fff3ac7_9c332d24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-14T04:41:10Z",
+      "side": 1,
+      "message": "\u003e So what this actually checks is that the host has inter-connectivity between the static virtual IPv4 subnets we have on the host.\n\nThis makes a lot of sense, thanks for correcting.\n\nIn that case, we\u0027ll need another way of binding to an interface with just shell. I\u0027ll try to find one. In the meantime, do you happen to have anything in mind?",
+      "parentUuid": "7d9f2864_c1d63c1e",
       "range": {
         "startLine": 97,
         "startChar": 0,
