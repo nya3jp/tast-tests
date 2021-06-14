@@ -89,6 +89,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0432a95_bbdb6c8e",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-14T20:38:46Z",
+      "side": 1,
+      "message": "I had a chat with my team (that own uiauto library) about passing the context from test -\u003e library. We\u0027ve decided against it. \n\nPlease create a uiauto object in the library instead. That way the library can keep track of it\u0027s own timeouts, poll options, etc that make sense for the UI pieces that library is controlling.",
+      "range": {
+        "startLine": 27,
+        "startChar": 105,
+        "endLine": 27,
+        "endChar": 123
+      },
+      "revId": "b341f34493cae7338e2d62dce1af619682cf9dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3375f43c_f3f73a69",
         "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
         "patchSetId": 5
