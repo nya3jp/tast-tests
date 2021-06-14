@@ -87,6 +87,30 @@
       },
       "revId": "29b4911b0f9b0d745f403ab45fd09d1128db5c01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85edd797_ac285181",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-14T17:54:00Z",
+      "side": 1,
+      "message": "Done, I refactored the common code into NavigateEduCoexistenceFlow().",
+      "parentUuid": "e209cfca_bed36105",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "29b4911b0f9b0d745f403ab45fd09d1128db5c01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
