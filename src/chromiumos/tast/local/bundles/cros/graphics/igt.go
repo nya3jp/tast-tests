@@ -168,7 +168,7 @@ func init() {
 			Val: igtTest{
 				exe: "kms_frontbuffer_tracking",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout: 25 * time.Minute,
 		}, {
 			Name: "kms_getfb",
 			Val: igtTest{
