@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f801b95_a79afc7c",
+        "filename": "android/ArcTtsTest/AndroidManifest.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d04cfa40_9f75f0eb",
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05f5b069_fe9a4cd0",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-06-04T07:57:35Z",
       "side": 1,
       "message": "most ARC test app is under org.chromium.arc.testapp package. For consistency, I\u0027d use org.chromium.arc.testapp.tts.",
+      "range": {
+        "startLine": 18,
+        "startChar": 13,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c3cf860_9b0abe04",
+        "filename": "android/ArcTtsTest/AndroidManifest.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05f5b069_fe9a4cd0",
       "range": {
         "startLine": 18,
         "startChar": 13,
@@ -94,6 +136,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0047f30c_908a9895",
+        "filename": "android/ArcTtsTest/res/xml/tts_engine.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "as far as I tested, I think this file is required, otherwise `emerge ...` fails. \n\nref: https://developer.android.com/reference/android/R.styleable#TextToSpeechEngine\n\u003e \"The XML resource must be referenced from its TextToSpeech.Engine.SERVICE_META_DATA meta-data entry\"\nand as far as I tested, without the meta data tag, TTS engine does not work.",
+      "parentUuid": "ae798b63_aac50647",
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65e61366_863a5802",
         "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
         "patchSetId": 4
@@ -105,6 +165,24 @@
       "writtenOn": "2021-06-04T07:57:35Z",
       "side": 1,
       "message": "Please format with a consistent (probably AOSP) style.",
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4523177_097cb420",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65e61366_863a5802",
       "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +204,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "428fbe5c_18681fb9",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c934055_b1f92907",
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c6f3acc_a075b460",
@@ -139,6 +235,30 @@
       "writtenOn": "2021-06-04T07:57:35Z",
       "side": 1,
       "message": "do we need to override them?",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50b0cdfc_edf25dd9",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "Done, removed.",
+      "parentUuid": "6c6f3acc_a075b460",
       "range": {
         "startLine": 27,
         "startChar": 4,
@@ -172,6 +292,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b96c0cf0_d9c4bb0f",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ce7a4f7_961ca9c7",
+      "range": {
+        "startLine": 39,
+        "startChar": 15,
+        "endLine": 39,
+        "endChar": 19
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a643a301_26a447c8",
@@ -189,6 +333,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4fd816f_9fb21099",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a643a301_26a447c8",
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aec9b70f_7268e243",
@@ -202,6 +364,30 @@
       "writtenOn": "2021-06-04T07:57:35Z",
       "side": 1,
       "message": "(optional suggestion) Can we validate callbacks as well?\n\nRegarding TTS, there are tree steps)\n1. Android -\u003e Chrome, sends voice information.\n2. Chrome -\u003e Android, requests speak.\n3. Android -\u003e Chrome, dispatches an event regarding speech\n\nIn the current CL, the first and the second one are tested. It would be great if we could verify the third one too.\n\nWhen Android SynthesisCallback is invoked, eventually an event should be delivered to chrome.tts TtsOptions.onEvent.",
+      "range": {
+        "startLine": 62,
+        "startChar": 12,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "306b2a9d_113fa961",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "i\u0027ll address this in a follow up.",
+      "parentUuid": "aec9b70f_7268e243",
       "range": {
         "startLine": 62,
         "startChar": 12,
@@ -235,6 +421,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae80d19_794aa916",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "79f0d4f9_e0ac0406",
+      "range": {
+        "startLine": 63,
+        "startChar": 43,
+        "endLine": 63,
+        "endChar": 57
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be5cc89b_e89ee0d7",
@@ -248,6 +458,30 @@
       "writtenOn": "2021-06-04T07:57:35Z",
       "side": 1,
       "message": "nit: extract as a constant value",
+      "range": {
+        "startLine": 66,
+        "startChar": 48,
+        "endLine": 66,
+        "endChar": 63
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87b9e578_b1d749de",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be5cc89b_e89ee0d7",
       "range": {
         "startLine": 66,
         "startChar": 48,
@@ -281,6 +515,53 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d29d736e_ab976f6b",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4acc3d6_5a5cce5b",
+      "range": {
+        "startLine": 68,
+        "startChar": 14,
+        "endLine": 68,
+        "endChar": 21
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76369449_d18fde13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "asked sahok@ offline",
+      "range": {
+        "startLine": 24,
+        "startChar": 51,
+        "endLine": 24,
+        "endChar": 57
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b5598ee_1e1a8bb4",
@@ -294,6 +575,30 @@
       "writtenOn": "2021-06-04T07:57:35Z",
       "side": 1,
       "message": "TTS, instead of Tts: https://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nBTW, I wonder \"AccessibilityTts\" is an appropriate test name for this. TTS is not only for accessibility, although a11y is the primary usecase.\nHow about naming it TTS or TextToSpeech?",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b1a897_ccc14b54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b5598ee_1e1a8bb4",
       "range": {
         "startLine": 38,
         "startChar": 5,
@@ -327,6 +632,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "934e8394_5fa8d605",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c313882b_4ac5ed3c",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "287f53cc_254eac12",
@@ -340,6 +669,30 @@
       "writtenOn": "2021-06-04T07:57:35Z",
       "side": 1,
       "message": "how about naming |speakText|?",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 6
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afdc6662_36ad797d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "287f53cc_254eac12",
       "range": {
         "startLine": 42,
         "startChar": 2,
@@ -367,6 +720,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3165f59a_17785695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "nice thanks.",
+      "parentUuid": "539d450d_b9325336",
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1eb8e6ae_0fe40236",
@@ -390,6 +761,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a76e09c3_471a6f17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eb8e6ae_0fe40236",
+      "range": {
+        "startLine": 103,
+        "startChar": 37,
+        "endLine": 103,
+        "endChar": 54
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4e13afc_6a6344a4",
@@ -403,6 +798,24 @@
       "writtenOn": "2021-06-04T07:57:35Z",
       "side": 1,
       "message": "do we need to change this?",
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3514fad_73ac9a61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/data/chrome_extension_manifest.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-14T07:28:50Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "a4e13afc_6a6344a4",
       "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
