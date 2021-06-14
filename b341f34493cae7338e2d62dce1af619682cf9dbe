@@ -16,6 +16,98 @@
       "message": "Refactored the common code to reuse in crrev/c/2948388.",
       "revId": "b341f34493cae7338e2d62dce1af619682cf9dbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d83fb369_5f134c0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/non_educoexistence_insession.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-14T19:47:41Z",
+      "side": 1,
+      "message": "Why not both?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "b341f34493cae7338e2d62dce1af619682cf9dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a91c8cd3_a60ac967",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-14T19:47:41Z",
+      "side": 1,
+      "message": "Is there a way to check for this in the function?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "b341f34493cae7338e2d62dce1af619682cf9dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54bbc47e_30e3dbc5",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-14T19:47:41Z",
+      "side": 1,
+      "message": "Is AddEduSecondaryAccount sufficient since this is in the familylink package?",
+      "range": {
+        "startLine": 27,
+        "startChar": 27,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "b341f34493cae7338e2d62dce1af619682cf9dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3375f43c_f3f73a69",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-14T19:47:41Z",
+      "side": 1,
+      "message": "This looks a bit weird to me. Did you run gofmt on these files?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 33
+      },
+      "revId": "b341f34493cae7338e2d62dce1af619682cf9dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
