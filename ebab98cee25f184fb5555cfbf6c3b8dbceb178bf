@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ba7df42_7bf7d789",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-06-14T04:30:17Z",
+      "side": 1,
+      "message": "Do we have any code left that tests the menu grab handle method of resizing for PIP after this CL?\n\nIt would be nice to make sure we have tests that exercise both resizing methods.",
+      "revId": "ebab98cee25f184fb5555cfbf6c3b8dbceb178bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ad8af31_3cadc7f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-06-14T04:30:17Z",
+      "side": 1,
+      "message": "If we are writing the code to do the resize manually via mouse anyway for P, can we just use that code for R as well?\n\nOr, what about changing activity ResizeWindow to support non-touch screens?\n\nIt would be nice if we didn\u0027t have different codepaths here IMO.",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 59
+      },
+      "revId": "ebab98cee25f184fb5555cfbf6c3b8dbceb178bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "023eaf27_8d0871d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-06-14T04:30:17Z",
+      "side": 1,
+      "message": "Maybe create a constant for these numbers",
+      "range": {
+        "startLine": 181,
+        "startChar": 58,
+        "endLine": 181,
+        "endChar": 64
+      },
+      "revId": "ebab98cee25f184fb5555cfbf6c3b8dbceb178bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55397164_529be7f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-06-14T04:30:17Z",
+      "side": 1,
+      "message": "What is this new wait for?",
+      "range": {
+        "startLine": 203,
+        "startChar": 3,
+        "endLine": 203,
+        "endChar": 47
+      },
+      "revId": "ebab98cee25f184fb5555cfbf6c3b8dbceb178bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
