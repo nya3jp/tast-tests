@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4301729b_d95d1d08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-14T17:17:07Z",
+      "side": 1,
+      "message": "We are expecting the notification to not exist here as part of normal test functioning.\n\nSo the current condition is correct",
+      "parentUuid": "47bb73bb_80284289",
+      "revId": "21bf5dcd9923e88314d4e63353f0631623823265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71087237_fd0e3279",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-06-14T08:16:02Z",
       "side": 1,
       "message": "Is this log useful? Does it make more sense to dump this info in a file?",
+      "revId": "21bf5dcd9923e88314d4e63353f0631623823265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "571557ca_48c062ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/launched_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-14T17:17:07Z",
+      "side": 1,
+      "message": "I think this was added to help debugging in the past. I don\u0027t want to change the functionality as part of the refactor :)",
+      "parentUuid": "71087237_fd0e3279",
       "revId": "21bf5dcd9923e88314d4e63353f0631623823265",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
