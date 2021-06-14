@@ -12,12 +12,12 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
-	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
@@ -129,6 +129,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		cancel()
 	}
 
+	ac := uiauto.New(tconn)
 	var pc pointer.Context
 	var setOverviewModeAndWait func(ctx context.Context) error
 	var openAppList func(ctx context.Context) error
@@ -235,7 +236,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 					return errors.Wrapf(err, "failed to click icon at %d", iconIdx)
 				}
 				if isPopup {
-					ac := uiauto.New(tconn)
 					menus := nodewith.ClassName("MenuItemView")
 					if err := ac.WaitUntilExists(menus.First())(ctx); err != nil {
 						return errors.Wrap(err, "failed to wait for the menu to appear")
@@ -419,35 +419,25 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 				testing.ContextLogf(ctx, "Package %s is already visible, skipping", app.packageName)
 				return nil
 			}
-			if err := openAppList(launchCtx); err != nil {
-				return errors.Wrap(err, "failed to open the app-list")
-			}
-			if err := testing.Sleep(launchCtx, time.Second); err != nil {
-				return errors.Wrap(err, "failed to sleep")
-			}
-			if err := kw.Type(launchCtx, app.query); err != nil {
-				return errors.Wrap(err, "failed to type the query")
-			}
-			// Finds the first search result tile and assume it is the app. Not
-			// searching by name because launcher could append suffix to the app
-			// name. E.g. gmail app has "Gmail, Installed app" as its name. The
-			// suffix is for chromevox and could change.
-			if err := chromeui.StableFindAndClick(ctx, tconn,
-				chromeui.FindParams{
-					ClassName: "SearchResultTileItemView",
+			return uiauto.Combine(
+				"launch-app",
+				openAppList,
+				action.Sleep(time.Second),
+				kw.TypeAction(app.query),
+				// Finds the first search result tile and assume it is the app. Not
+				// searching by name because launcher could append suffix to the app
+				// name. E.g. gmail app has "Gmail, Installed app" as its name. The
+				// suffix is for chromevox and could change.
+				ac.WithTimeout(5*time.Second).LeftClick(nodewith.ClassName("SearchResultTileItemView").First()),
+				func(ctx context.Context) error { return ash.WaitForVisible(ctx, tconn, app.packageName) },
+				func(ctx context.Context) error {
+					s.Log("Skipping the splash screen of ", app.query)
+					return nil
 				},
-				&testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-				return errors.Wrapf(err, "failed to find and click app tile: %s", app.query)
-			}
-			if err := ash.WaitForVisible(launchCtx, tconn, app.packageName); err != nil {
-				return errors.Wrapf(err, "failed to wait for the new window of %s", app.packageName)
-			}
-			s.Log("Skipping the splash screen of ", app.query)
-			if err = app.skipSplash(launchCtx); err != nil {
-				return errors.Wrap(err, "failed to skip the splash screen of the app")
-			}
-			// Waits some time to stabilize the result of launcher animations.
-			return testing.Sleep(launchCtx, timeout)
+				app.skipSplash,
+				// Waits some time to stabilize the result of launcher animations.
+				action.Sleep(timeout),
+			)(launchCtx)
 		}); err != nil {
 			s.Fatalf("Failed to launch %s: %v", app.query, err)
 		}
