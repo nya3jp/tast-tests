@@ -16,6 +16,24 @@
       "message": "Why this change to hiding the button?  Was it more reliable than looking for the text?",
       "revId": "245b47f506abde310b3a50030fde0106df7fe25e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d522dfc3_be3adca1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/data/scan.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-06-14T16:38:47Z",
+      "side": 0,
+      "message": "Originally I added the text as a hack to get the test working (it wasn\u0027t in the original Autotest), but with uiauto it\u0027s far more straightforward to check whether a button is visible rather than what the contents of a text field are. It also allows for slightly simpler code without the additional HTML element :)",
+      "parentUuid": "178f5232_d0ccf29f",
+      "revId": "245b47f506abde310b3a50030fde0106df7fe25e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
