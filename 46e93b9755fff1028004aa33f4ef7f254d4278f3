@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dab64e0_eda2d895",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-14T18:26:31Z",
+      "side": 1,
+      "message": "Wait for crrev/c/2904942 to land and refactor into:\n\n if err :\u003d familylink.NavigateEduCoexistenceFlow(ctx, ui, parentPassword, gellerParentUser, gellerParentPass); err !\u003d nil {\n                return errors.Wrap(err, \"failed to navigate in-session Edu Coexistence flow\")\n}\n\nto avoid code duplication.",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "46e93b9755fff1028004aa33f4ef7f254d4278f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fb99273_de9bae81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-14T18:26:31Z",
+      "side": 1,
+      "message": "This fails to close the system modal Edu Coexistence \"Can\u0027t add account\" dialog on ampton/octopus because the arc settings open in a separate window, so now there\u0027s three close (x) buttons. Therefore, subsequent tests using the same fixture fail as well on ampton/octopus devices.",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 63
+      },
+      "revId": "46e93b9755fff1028004aa33f4ef7f254d4278f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
