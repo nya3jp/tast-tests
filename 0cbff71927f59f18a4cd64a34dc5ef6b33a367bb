@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97b47592_962646c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-06-14T15:21:55Z",
+      "side": 1,
+      "message": "I\u0027ve been hoping to test the changes against a leased dut from the lab(the lab has been down for scheduled maintenance.)",
+      "parentUuid": "637a4c5d_d95261e6",
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28447e27_4eed6886",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/kvmtest.go",
         "patchSetId": 3
