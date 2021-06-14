@@ -8,7 +8,6 @@ import (
 	"bufio"
 	"context"
 	"io"
-	"io/ioutil"
 	"os"
 	"strings"
 	"time"
@@ -213,23 +212,6 @@ func HostapHwsim(fullCtx context.Context, s *testing.State) {
 		s.Fatal("Failed to get stderr: ", err)
 	}
 	if err := cmd.Start(); err != nil {
-		// TODO(b/184102008): we're seeing unexpected failures due to "no such file". Let's
-		// dump some more info.
-		dump := func(dir string) {
-			s.Log("Enumerating path contents: ", dir)
-			files, err := ioutil.ReadDir(dir)
-			if err != nil {
-				s.Errorf("Failed to enumerate directory %q: %v", dir, err)
-			} else {
-				for _, f := range files {
-					s.Logf("Name = %q, Mode = %#o (Perm = %#o, IsDir = %t)", f.Name(), f.Mode(), f.Mode().Perm(), f.Mode().IsDir())
-				}
-			}
-		}
-		dump("./")
-		dump("/usr/local/libexec/")
-		dump("/usr/local/libexec/hostap/tests/hwsim/")
-
 		s.Fatal("Failed to start test wrapper: ", err)
 	}
 
