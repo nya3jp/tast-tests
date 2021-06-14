@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51f73067_c9f7ac4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-14T09:48:57Z",
+      "side": 1,
+      "message": "Kindly have a look at the CL, \nTest contains scenario for printing restriction.\n",
+      "revId": "84443b25b7678778fc32e20fb086a42b0fa22e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
