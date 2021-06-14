@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1266ebb3_a9407c76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-14T22:51:32Z",
+      "side": 1,
+      "message": "You can add defer cleanup(cleanupCtx) here. It will cleanup Aloop regardless of result.",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 3
+      },
+      "revId": "c08da09cc2a52ef359e701ec784f66514dc3b562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f2337d_34a6bd33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-14T22:51:32Z",
+      "side": 1,
+      "message": "Good to know retry will solve the problem. However the root cause is still unknown. It is not encouraged to just add a retry to solve the problem. Otherwise it can be simply done in Tast infra will should mitigate 90%+ flakiness. Can you please continue to investigate why this is required.",
+      "range": {
+        "startLine": 143,
+        "startChar": 56,
+        "endLine": 143,
+        "endChar": 61
+      },
+      "revId": "c08da09cc2a52ef359e701ec784f66514dc3b562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
