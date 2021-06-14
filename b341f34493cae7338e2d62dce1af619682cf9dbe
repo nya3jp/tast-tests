@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5739f9e4_619f0d8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-14T17:54:00Z",
+      "side": 1,
+      "message": "Refactored the common code to reuse in crrev/c/2948388.",
+      "revId": "b341f34493cae7338e2d62dce1af619682cf9dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
