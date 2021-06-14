@@ -123,6 +123,24 @@
       "parentUuid": "fcede185_74ff8d99",
       "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "562c0e54_55c9048b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-06-14T21:52:29Z",
+      "side": 1,
+      "message": "Tried \"cheets_user\" with \"+cheets_user\" in \"tast-use-flags-9999.ebuild\" file. Also added \"no_arc_x86\": `!\"amd64\" \u0026\u0026 !\"+cheets_user\"` in main.go file. Observed that arcappcompat.Autocad is skipping on caroline(Caroline), coral(nasher360) but it is skipping on other devices which are having x86_64 android build (List of other devices: eve(Eve), (dedede)Sasuke, puff(Wyvern), zork(Ezkinil), hatch (Jinlon)). So I think we couldn\u0027t use \"no_arc_x86\": `!\"amd64\" \u0026\u0026 !\"+cheets_user\"` here.",
+      "parentUuid": "fe27cb10_a5b179ac",
+      "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
