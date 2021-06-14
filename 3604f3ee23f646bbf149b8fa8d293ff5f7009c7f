@@ -238,6 +238,30 @@
       },
       "revId": "3604f3ee23f646bbf149b8fa8d293ff5f7009c7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "119f9c2f_278549df",
+        "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-06-14T16:57:01Z",
+      "side": 1,
+      "message": "Got it. SGTM.",
+      "parentUuid": "828e9e5d_11904cb0",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "3604f3ee23f646bbf149b8fa8d293ff5f7009c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
