@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f1f0d65_2e688e76",
+        "filename": "src/chromiumos/tast/local/memory/stress/stress.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-14T18:32:48Z",
+      "side": 1,
+      "message": "This refactoring is no longer needed, because tests are under platform category.\nCan this be moved back?\nOr if you think this kind of refactoring is still better, could you move the file under chromiumos/tast/local/bundles/cros/platform/{subdirectory}/ ?\nI\u0027d appreciate if the work is done in another CL.",
+      "revId": "b2256394cd10a321294f93cd423b95eae69539d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
