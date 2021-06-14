@@ -38,8 +38,11 @@ func SELinuxProcessesARC(ctx context.Context, s *testing.State) {
 		s.Error("Failed to check Android init context: ", err)
 	} else {
 		const expected = "u:r:init:s0\x00"
-		if string(c) != expected {
-			s.Errorf("Android init context must be %q but got %q", expected, string(c))
+		received := string(c)
+		if received == "" {
+			s.Errorf("ARC failed to start, Android init context must be %q but is empty", expected)
+		} else if received != expected {
+			s.Errorf("Android init context must be %q but got %q", expected, received)
 		}
 	}
 
