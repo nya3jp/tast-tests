@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e730287_7c0acd61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-06-14T19:50:29Z",
+      "side": 1,
+      "message": "It should be chromium:1132208\nThe ones starting with b:... are used for another (more internal) bug tracker.",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "9cf4d0720a549fbff93c6ac5c612b0986d290a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "61b3e858_79b5cad4",
@@ -14,6 +37,69 @@
       "writtenOn": "2021-06-11T09:29:01Z",
       "side": 1,
       "message": "Testing it again. Because I can\u0027t open the logs for failed build, so i can\u0027t figure out what went wrong.\nUnrelated to build there are some comment changes in patch 4",
+      "revId": "9cf4d0720a549fbff93c6ac5c612b0986d290a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61d31ed8_61455126",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-06-14T19:50:29Z",
+      "side": 1,
+      "message": "lgtm besides small updates.\nHowever, it should be reviewed by Tast owners too.",
+      "revId": "9cf4d0720a549fbff93c6ac5c612b0986d290a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e61df82_12cbd130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-06-14T19:50:29Z",
+      "side": 1,
+      "message": "Please update to chromeos-dlp@google.com",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "9cf4d0720a549fbff93c6ac5c612b0986d290a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb513136_97a9679a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-06-14T19:50:29Z",
+      "side": 1,
+      "message": "Extract it as another \"const\" string (like captureNotAllowed).",
+      "range": {
+        "startLine": 121,
+        "startChar": 21,
+        "endLine": 121,
+        "endChar": 39
+      },
       "revId": "9cf4d0720a549fbff93c6ac5c612b0986d290a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
