@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c88e4c_cba03e94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-14T20:50:23Z",
+      "side": 1,
+      "message": "I think you can use CL:2912296 to make this into a link :)",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "e1d565d21858ea74b55163d7a222c0128e6997b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce1e46fb_ff78b831",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-14T20:50:23Z",
+      "side": 1,
+      "message": "Is it flaky without LeftClickUntil?",
+      "range": {
+        "startLine": 132,
+        "startChar": 50,
+        "endLine": 132,
+        "endChar": 64
+      },
+      "revId": "e1d565d21858ea74b55163d7a222c0128e6997b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "733d6b5a_eb463cec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-14T20:50:23Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with the context, so just wondering if there\u0027s a reason this is needed in addition to the deferred call on L106? Seems like that one would run here anyways (right after the conn to the scan page is closed).",
+      "revId": "e1d565d21858ea74b55163d7a222c0128e6997b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
