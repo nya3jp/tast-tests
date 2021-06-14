@@ -24,13 +24,10 @@ import (
 )
 
 const (
-	kcovPath             = "/sys/kernel/debug/kcov"
-	kasanInitMsg         = "KernelAddressSanitizer initialized"
 	syzkallerRunDuration = 30 * time.Minute
 )
 
 const startupScriptContents = `
-mount -o remount,rw -o exec /tmp
 sysctl -w kernel.panic_on_warn=1
 dmesg --clear
 `
@@ -69,7 +66,7 @@ type syzkallerConfig struct {
 	EnableSyscalls []string  `json:"enable_syscalls"`
 }
 
-type FuzzEnvConfig struct {
+type fuzzEnvConfig struct {
 	// Driver or subsystem.
 	Driver string `json:"driver"`
 	// If `archs` is not specified, run on all archs.
@@ -103,55 +100,59 @@ func Wrapper(ctx context.Context, s *testing.State) {
 
 	syzArch, err := findSyzkallerArch(ctx, d)
 	if err != nil {
-		s.Fatalf("Unable to find syzkaller arch: %v", err)
+		s.Fatal("Unable to find syzkaller arch: ", err)
 	}
-	s.Logf("syzArch found to be: %v", syzArch)
+	s.Log("syzArch found to be: ", syzArch)
 
 	syzkallerTastDir, err := ioutil.TempDir("", "tast-syzkaller")
 	if err != nil {
-		s.Fatalf("Unable to create tast temporary directory: %v", err)
+		s.Fatal("Unable to create tast temporary directory: ", err)
 	}
 	defer os.RemoveAll(syzkallerTastDir)
 
 	artifactsDir := filepath.Join(syzkallerTastDir, "artifacts")
 	if err := os.Mkdir(artifactsDir, 0755); err != nil {
-		s.Fatalf("Unable to create temp artifacts dir: %v", err)
+		s.Fatal("Unable to create temp artifacts dir: ", err)
 	}
 
 	// Fetch syz-* binaries. Run syzkaller without vmlinux.
 	if err := fetchFuzzArtifacts(ctx, d, artifactsDir, syzArch); err != nil {
-		s.Fatalf("Encountered error fetching fuzz artifacts: %v", err)
+		s.Fatal("Encountered error fetching fuzz artifacts: ", err)
 	}
 
 	// Create a syzkaller working directory.
 	syzkallerWorkdir := filepath.Join(syzkallerTastDir, "workdir")
 	if err := os.Mkdir(syzkallerWorkdir, 0755); err != nil {
-		s.Fatalf("Unable to create temp workdir: %v", err)
+		s.Fatal("Unable to create temp workdir: ", err)
 	}
 	cmd := exec.Command("cp", s.DataPath("corpus.db"), syzkallerWorkdir)
 	if err := cmd.Run(); err != nil {
-		s.Fatalf("Failed to copy seed corpus to workdir: %v", err)
+		s.Fatal("Failed to copy seed corpus to workdir: ", err)
 	}
 
 	// Chmod the keyfile so that ssh connections do not fail due to
 	// open permissions.
-	sshKey := s.DataPath("testing_rsa")
+	cmd = exec.Command("cp", s.DataPath("testing_rsa"), syzkallerTastDir)
+	if err := cmd.Run(); err != nil {
+		s.Fatal("Failed to copy testing_rsa to tast temp dir: ", err)
+	}
+	sshKey := filepath.Join(syzkallerTastDir, "testing_rsa")
 	if err := os.Chmod(sshKey, 0600); err != nil {
-		s.Fatalf("Unable to chmod sshkey to 0600: %v", err)
+		s.Fatal("Unable to chmod sshkey to 0600: ", err)
 	}
 
 	// Read enabled_syscalls.
 	drivers, enabledSyscalls, scriptContents, err := loadEnabledSyscalls(s.DataPath("enabled_syscalls.json"), syzArch)
 	if err != nil {
-		s.Fatalf("Unable to load enabled syscalls: %v", err)
+		s.Fatal("Unable to load enabled syscalls: ", err)
 	}
-	s.Logf("Drivers: %v", drivers)
-	s.Logf("Enabled syscalls: %v", enabledSyscalls)
+	s.Log("Drivers: ", drivers)
+	s.Log("Enabled syscalls: ", enabledSyscalls)
 
 	// Create startup script.
 	startupScript := filepath.Join(syzkallerTastDir, "startup_script")
 	if err := ioutil.WriteFile(startupScript, []byte(scriptContents), 0755); err != nil {
-		s.Fatalf("Unable to create temp configfile: %v", err)
+		s.Fatal("Unable to create temp configfile: ", err)
 	}
 
 	// Create syzkaller configuration file.
@@ -171,7 +172,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		Procs:     1,
 		DUTConfig: dutConfig{
 			Targets:       []string{d.HostName()},
-			TargetDir:     "/tmp",
+			TargetDir:     "/usr/local/tmp",
 			TargetReboot:  true,
 			StartupScript: startupScript,
 			Pstore:        true,
@@ -181,17 +182,17 @@ func Wrapper(ctx context.Context, s *testing.State) {
 
 	configFile, err := os.Create(filepath.Join(syzkallerTastDir, "config"))
 	if err != nil {
-		s.Fatalf("Unable to create syzkaller configfile: %v", err)
+		s.Fatal("Unable to create syzkaller configfile: ", err)
 	}
 	defer configFile.Close()
 
 	if err := json.NewEncoder(configFile).Encode(config); err != nil {
-		s.Fatalf("Invalid syzkaller configuration: %v", err)
+		s.Fatal("Invalid syzkaller configuration: ", err)
 	}
 
 	logFile, err := os.Create(filepath.Join(syzkallerTastDir, "logfile"))
 	if err != nil {
-		s.Fatalf("Unable to create temp logfile: %v", err)
+		s.Fatal("Unable to create temp logfile: ", err)
 	}
 	defer logFile.Close()
 
@@ -199,17 +200,17 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	// are flushed to disk.
 	rcmd := d.Conn().Command("sync")
 	if err := rcmd.Run(ctx); err != nil {
-		s.Fatalf("Unable to flush cached content to disk: %v", err)
+		s.Fatal("Unable to flush cached content to disk: ", err)
 	}
 
-	s.Logf("Starting syzkaller with logfile at %v", logFile.Name())
+	s.Log("Starting syzkaller with logfile at ", logFile.Name())
 	syzManager := filepath.Join(artifactsDir, "syz-manager")
 	managerCmd := testexec.CommandContext(ctx, syzManager, "-config", configFile.Name(), "-vv", "10")
 	managerCmd.Stdout = logFile
 	managerCmd.Stderr = logFile
 
 	if err := managerCmd.Start(); err != nil {
-		s.Fatalf("Running syz-manager failed: %v", err)
+		s.Fatal("Running syz-manager failed: ", err)
 	}
 
 	// Gracefully shut down syzkaller.
@@ -218,7 +219,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 
 		if err := testing.Sleep(ctx, syzkallerRunDuration); err != nil {
 			managerCmd.Kill()
-			s.Fatalf("Failed to wait on syz-manager: %v", err)
+			s.Fatal("Failed to wait on syz-manager: ", err)
 		}
 
 		managerCmd.Process.Signal(os.Interrupt)
@@ -230,15 +231,15 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	s.Log("Copying syzkaller workdir to tast results directory")
 	cmd = exec.Command("cp", "-r", syzkallerWorkdir, tastResultsDir)
 	if err := cmd.Run(); err != nil {
-		s.Fatalf("Failed to copy syzkaller workdir: %v", err)
+		s.Fatal("Failed to copy syzkaller workdir: ", err)
 	}
 	s.Log("Copying syzkaller logfile to tast results directory")
 	cmd = exec.Command("cp", logFile.Name(), tastResultsDir)
 	if err := cmd.Run(); err != nil {
-		s.Fatalf("Failed to copy syzkaller logfile: %v", err)
+		s.Fatal("Failed to copy syzkaller logfile: ", err)
 	}
 
-	s.Log("Done fuzzing, exiting.")
+	s.Log("Done fuzzing, exiting")
 }
 
 func findSyzkallerArch(ctx context.Context, d *dut.DUT) (string, error) {
@@ -289,7 +290,7 @@ func loadEnabledSyscalls(fpath, syzArch string) (drivers, enabledSyscalls []stri
 		return nil, nil, "", err
 	}
 
-	var feconfig []FuzzEnvConfig
+	var feconfig []fuzzEnvConfig
 	err = json.Unmarshal([]byte(contents), &feconfig)
 	if err != nil {
 		return nil, nil, "", err
