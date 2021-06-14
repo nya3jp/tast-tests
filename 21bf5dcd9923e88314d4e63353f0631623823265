@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3c53678_152c8492",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-14T08:16:02Z",
+      "side": 1,
+      "message": "LGTM % questions",
+      "revId": "21bf5dcd9923e88314d4e63353f0631623823265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47bb73bb_80284289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-14T08:16:02Z",
+      "side": 1,
+      "message": "Doesn\u0027t this condition need to be reversed?",
+      "revId": "21bf5dcd9923e88314d4e63353f0631623823265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71087237_fd0e3279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/launched_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-14T08:16:02Z",
+      "side": 1,
+      "message": "Is this log useful? Does it make more sense to dump this info in a file?",
+      "revId": "21bf5dcd9923e88314d4e63353f0631623823265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
