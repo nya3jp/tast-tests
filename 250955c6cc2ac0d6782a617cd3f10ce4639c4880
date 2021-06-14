@@ -407,6 +407,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b61458_33363717",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-06-14T13:04:04Z",
+      "side": 1,
+      "message": "b/190151836 is fixed btw. You should be able to use directly the addr and next hop fields from the response proto.",
+      "parentUuid": "a054dc83_df785273",
+      "range": {
+        "startLine": 130,
+        "startChar": 31,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "792038f6_5321ab0b",
