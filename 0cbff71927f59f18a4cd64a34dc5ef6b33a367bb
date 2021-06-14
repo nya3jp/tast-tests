@@ -747,6 +747,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f0f36e2_d0103342",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-06-14T21:38:24Z",
+      "side": 1,
+      "message": "I\u0027ve changed it to just log the error from RunRepro().",
+      "parentUuid": "2941c652_b4e9516e",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 54
+      },
+      "revId": "0cbff71927f59f18a4cd64a34dc5ef6b33a367bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e20c970_8db3651e",
