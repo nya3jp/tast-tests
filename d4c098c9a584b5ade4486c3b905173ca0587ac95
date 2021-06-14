@@ -24,6 +24,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4a789e7_3dc53e99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-14T23:27:32Z",
+      "side": 1,
+      "message": "Nothing to add beyond the comments Jorge has already made. +2 for Tast Review % existing comments.",
+      "revId": "d4c098c9a584b5ade4486c3b905173ca0587ac95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b49a572_8c2b0b25",
