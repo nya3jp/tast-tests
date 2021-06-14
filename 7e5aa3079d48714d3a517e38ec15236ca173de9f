@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca5ed080_177fc201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 71
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-14T23:32:36Z",
+      "side": 1,
+      "message": "Usualy ctx is only shortened once and all cleanup code use the same cleanupCtx",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 15
+      },
+      "revId": "7e5aa3079d48714d3a517e38ec15236ca173de9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
