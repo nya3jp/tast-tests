@@ -19,6 +19,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// buildPropertiesTestParameters contains all the data needed to run a single test iteration.
+type buildPropertiesTestParameters struct {
+	arcBootType  string
+	hardwareType string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BuildProperties,
@@ -31,11 +37,17 @@ func init() {
 		// Val is the property representing ARC boot type, which is different for container/VM.
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Val:               "ro.vendor.arc_boot_type",
+			Val: buildPropertiesTestParameters{
+				arcBootType:  "ro.vendor.arc_boot_type",
+				hardwareType: "cheets",
+			},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Val:               "vendor.arc.boot_type",
+			Val: buildPropertiesTestParameters{
+				arcBootType:  "vendor.arc.boot_type",
+				hardwareType: "bertha",
+			},
 		}},
 	})
 }
@@ -72,6 +84,7 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 		propertySDKVersion    = "ro.build.version.sdk"
 		propertySerialNo      = "ro.serialno"
 		propertyBootSerialNo  = "ro.boot.serialno"
+		propertyBootHardware  = "ro.boot.hardware"
 	)
 
 	a := s.FixtValue().(*arc.PreData).ARC
@@ -115,7 +128,8 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	// On each ARC boot, ARC detects its boot type (first boot, first boot after
 	// OTA, or regular boot) and sets the results as a property. Check that the
 	// property is actually set.
-	propertyBootType := s.Param().(string)
+	param := s.Param().(buildPropertiesTestParameters)
+	propertyBootType := param.arcBootType
 	bootType := getProperty(propertyBootType)
 	// '3' is from the ArcBootType enum in platform2/arc/setup/arc_setup.h (ARC container) and
 	// device/google/bertha/arc-boot-type-detector/main.cc (ARCVM).
@@ -221,6 +235,15 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 			// Verify that ro.product.X has the same value as ro.product.<partition>.X.
 			propertiesMatcher(property, prefix, "ro.product.%s.")
 		}
+	}
+
+	// Check if propertyBootHardware is properly set. This is important because some of our code
+	// rely on the value. For example, platform2/metrics/process_meter.cc looks for "bertha" to
+	// detect ARCVM's crosvm process
+	hardware := getProperty(propertyBootHardware)
+	hardwareExpected := param.hardwareType
+	if hardware != hardwareExpected {
+		s.Errorf("%v property is %q; should be %q", propertyBootHardware, hardware, hardwareExpected)
 	}
 }
 
