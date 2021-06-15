@@ -359,6 +359,16 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToHandwritingAndCloseInfoDialogue(ct
 	return hwCtx, nil
 }
 
+// SwitchToMultipaste returns an action changing to multipaste layout.
+func (vkbCtx *VirtualKeyboardContext) SwitchToMultipaste() uiauto.Action {
+	return vkbCtx.ui.LeftClick(KeyFinder.Name("Multipaste clipboard"))
+}
+
+// TapMultipasteItem returns an action tapping the item corresponding to itemName in multipaste virtual keyboard.
+func (vkbCtx *VirtualKeyboardContext) TapMultipasteItem(itemName string) uiauto.Action {
+	return vkbCtx.ui.LeftClick(KeyFinder.ClassName("scrim").Name(itemName))
+}
+
 // EnableA11yVirtualKeyboard returns an action enabling or disabling
 // accessibility mode of the virtual keyboard.
 // When disabled, the tablet non-a11y virtual keyboard will be used.
