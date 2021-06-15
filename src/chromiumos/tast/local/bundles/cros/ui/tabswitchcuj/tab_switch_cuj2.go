@@ -355,18 +355,17 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 
 	timeTabsOpenStart := time.Now()
 	// Launch browser and track the elapsed time.
-	timeBrowserLaunchStart, err := tsAction.LaunchChrome(ctx)
+	browserStartTime, err := cuj.GetBrowserStartTime(ctx, cr, tconn, isTablet)
 	if err != nil {
 		s.Fatal("Failed to launch Chrome: ", err)
 	}
-	timeElapsed := time.Since(timeBrowserLaunchStart)
-	s.Log("Browser start ms: ", timeElapsed)
+	s.Log("Browser start ms: ", browserStartTime)
 
 	pv.Set(perf.Metric{
 		Name:      "Browser.StartTime",
 		Unit:      "ms",
 		Direction: perf.SmallerIsBetter,
-	}, float64(timeElapsed.Milliseconds()))
+	}, float64(browserStartTime.Milliseconds()))
 
 	// Open all windows and tabs.
 	if err := openAllWindowsAndTabs(ctx, cr, &windows, tsAction, caseLevel); err != nil {
@@ -374,7 +373,7 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	}
 
 	// Total time used from beginning to load all pages.
-	timeElapsed = time.Since(timeTabsOpenStart)
+	timeElapsed := time.Since(timeTabsOpenStart)
 	s.Log("All tabs opened Elapsed: ", timeElapsed)
 
 	pv.Set(perf.Metric{
@@ -411,19 +410,8 @@ func openAllWindowsAndTabs(ctx context.Context, cr *chrome.Chrome, targets *[]*c
 		for idxTab, tab := range window.tabs {
 			testing.ContextLogf(ctx, "Opening window %d, tab %d", idxWindow+1, idxTab+1)
 
-			if idxWindow == 0 && idxTab == 0 {
-				//Chrome app has already been started and there is a blank chrome tab. Just reuse it.
-				if tab.conn, err = cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/")); err != nil {
-					// If failed to match the very first tab here, no way to close the tab either.
-					return errors.Wrap(err, "failed to find new tab")
-				}
-				if err = tab.conn.Navigate(ctx, tab.url); err != nil {
-					return errors.Wrapf(err, "failed to navigate to %s", tab.url)
-				}
-			} else {
-				if tab.conn, err = tsAction.NewChromeTab(ctx, cr, tab.url, idxTab == 0); err != nil {
-					return errors.Wrap(err, "failed to create new Chrome tab")
-				}
+			if tab.conn, err = tsAction.NewChromeTab(ctx, cr, tab.url, idxTab == 0); err != nil {
+				return errors.Wrap(err, "failed to create new Chrome tab")
 			}
 
 			if err := webutil.WaitForRender(ctx, tab.conn, plTimeout); err != nil {

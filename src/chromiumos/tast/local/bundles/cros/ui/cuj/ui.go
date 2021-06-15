@@ -109,13 +109,21 @@ func GetBrowserStartTime(ctx context.Context, cr *chrome.Chrome, tconn *chrome.T
 	endTime := time.Now()
 	browserStartTime = endTime.Sub(startTime)
 
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/"))
-	if err != nil {
-		return browserStartTime, errors.Wrap(err, "failed to connect to chrome")
+	// Chrome will open all previous opened page automatically,
+	// this causes unexpected UI result, needs to close all of them.
+	if err := CloseBrowserTabs(ctx, tconn); err != nil {
+		return browserStartTime, errors.Wrap(err, "failed to close all Chrome tabs")
 	}
-	conn.CloseTarget(ctx)
 
 	return browserStartTime, nil
+}
+
+// CloseBrowserTabs closes all browser tabs through chrome.tabs API.
+func CloseBrowserTabs(ctx context.Context, tconn *chrome.TestConn) error {
+	return tconn.Eval(ctx, `(async () => {
+		const tabs = await tast.promisify(chrome.tabs.query)({});
+		await tast.promisify(chrome.tabs.remove)(tabs.filter((tab) => tab.id).map((tab) => tab.id));
+	})()`, nil)
 }
 
 // LaunchAppFromShelf opens an app by name which is currently pinned to the shelf.
