@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab690e7e_1eb51e8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-15T09:15:25Z",
+      "side": 1,
+      "message": "Do we need 4min? Please note that this timeout doesn\u0027t need to include fixture setup/teardown time.",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "af2c72988bc9426b2f9d179cc40f52e95c6af0ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e625083_92a344e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-15T09:15:25Z",
+      "side": 1,
+      "message": "tast.promisify is a higher-order function that takes a function and returns a function. I guess this should be:\n\n tast.promisify(chrome.tts.speak)(...)\n\nAlso, it\u0027s nice to avoid fmt.Sprintf to craft a JS code. chrome.Conn provides Call with which you can pass arguments to a function safely:\n\n ttsOptions :\u003d struct {\n   voiceName string\n   rate float64\n   volume float64\n } {speakText, 2.0, 1.0}\n if err :\u003d tconn.Call(ctx, nil, \"tast.promisify(chrome.tts.speak)\", speakText, ttsOptions); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 82,
+        "startChar": 29,
+        "endLine": 82,
+        "endChar": 43
+      },
+      "revId": "af2c72988bc9426b2f9d179cc40f52e95c6af0ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
