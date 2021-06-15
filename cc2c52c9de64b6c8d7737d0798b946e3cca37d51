@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "037f9132_82f5a626",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-06-15T23:52:08Z",
+      "side": 1,
+      "message": "Generally looks good. \nI feel like this tests become more complicated with lots of if/else to build the args. But I am glad to see we log the command on l802.",
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72a8202f_ea24edf1",
@@ -99,6 +116,29 @@
       "writtenOn": "2021-06-15T23:29:22Z",
       "side": 1,
       "message": "vp8 encode is not supported for all mediatek chips. \ngo/cros-video-codecs\n\nDo we want to add check for this?",
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a974518b_88865527",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-06-15T23:52:08Z",
+      "side": 1,
+      "message": "Looks fishy to me.",
+      "range": {
+        "startLine": 695,
+        "startChar": 45,
+        "endLine": 695,
+        "endChar": 62
+      },
       "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
