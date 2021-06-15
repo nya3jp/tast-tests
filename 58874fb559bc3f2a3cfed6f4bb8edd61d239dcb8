@@ -292,6 +292,121 @@
       },
       "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9545094_38c4b405",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T02:11:46Z",
+      "side": 1,
+      "message": "I do not understand why Click and similar user actions are wrapped again in uiHandler. Is it anything special that uiauto lib does not support it?",
+      "range": {
+        "startLine": 166,
+        "startChar": 59,
+        "endLine": 166,
+        "endChar": 64
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb173642_9232713b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T02:11:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 181,
+        "startChar": 5,
+        "endLine": 181,
+        "endChar": 9
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0473d910_26752e02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T02:11:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 195,
+        "startChar": 6,
+        "endLine": 195,
+        "endChar": 10
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "342f8cab_2b760e17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T02:11:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 212,
+        "startChar": 4,
+        "endLine": 212,
+        "endChar": 8
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dcb8566_5d598d47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T02:11:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 213,
+        "startChar": 4,
+        "endLine": 213,
+        "endChar": 8
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
