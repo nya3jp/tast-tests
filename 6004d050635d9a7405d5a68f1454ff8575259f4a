@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "895e96dc_a51d8082",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-15T00:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b1ebeea_2f23ede4",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 12
+      },
+      "revId": "6004d050635d9a7405d5a68f1454ff8575259f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4730533b_e6ac006f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-14T23:52:25Z",
       "side": 1,
       "message": "Do not understand why need this sleep. It is not encouraged to have sleep in test unless a reason. Can you find a better way to do this?",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 133,
+        "endChar": 5
+      },
+      "revId": "6004d050635d9a7405d5a68f1454ff8575259f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f671d10c_fae0be08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-15T00:19:03Z",
+      "side": 1,
+      "message": "As mentioned in the comment, input.AudioFromFile calls a playback asynchronically, the sleep was used to wait until the audio finishes playing. \n\nA better way (done) should be to revise input.AudioFromFile to input.AudioFromFileAndWait that waits until the audio  finishes. It is safe to simply change the name and add a cmd.Wait, since this function is only used by the voice test.",
+      "parentUuid": "4730533b_e6ac006f",
       "range": {
         "startLine": 131,
         "startChar": 3,
