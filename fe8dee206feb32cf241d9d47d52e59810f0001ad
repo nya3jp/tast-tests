@@ -152,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d37c790_9dc5b83c",
+        "filename": "android/ArcTtsTest/res/xml/tts_engine.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-15T00:30:28Z",
+      "side": 1,
+      "message": "Got it, thanks!",
+      "parentUuid": "0047f30c_908a9895",
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65e61366_863a5802",
@@ -388,6 +406,30 @@
       "side": 1,
       "message": "i\u0027ll address this in a follow up.",
       "parentUuid": "aec9b70f_7268e243",
+      "range": {
+        "startLine": 62,
+        "startChar": 12,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "fe8dee206feb32cf241d9d47d52e59810f0001ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14dbae4a_cc6c767a",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-15T00:30:28Z",
+      "side": 1,
+      "message": "Thank you. Please add a TODO somewhere or comment on the bug so that we won\u0027t forget to do it.",
+      "parentUuid": "306b2a9d_113fa961",
       "range": {
         "startLine": 62,
         "startChar": 12,
