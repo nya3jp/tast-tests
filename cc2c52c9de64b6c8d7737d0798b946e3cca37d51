@@ -88,6 +88,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb943a08_36a47a48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-15T23:29:22Z",
+      "side": 1,
+      "message": "vp8 encode is not supported for all mediatek chips. \ngo/cros-video-codecs\n\nDo we want to add check for this?",
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab52a4a3_ca1caa6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
         "patchSetId": 1
