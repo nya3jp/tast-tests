@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9cb606_d615535a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-15T06:51:50Z",
+      "side": 1,
+      "message": "(pre-existing issue, please fix) It seems like these return values are named mostly to avoid defining variables in the function. Please unname these result parameters and define them as variables in the function instead.\nhttps://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "range": {
+        "startLine": 162,
+        "startChar": 57,
+        "endLine": 162,
+        "endChar": 92
+      },
+      "revId": "de4a9c49e8070ce548160731a9aa103e34fc14a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53787864_db168309",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-15T06:51:50Z",
+      "side": 1,
+      "message": "Is this case suitable for a testing.PollBreak() ?",
+      "revId": "de4a9c49e8070ce548160731a9aa103e34fc14a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85f7443c_817f230c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-15T06:51:50Z",
+      "side": 1,
+      "message": "Maybe add a comment saying this could be caused by a race (deletion of last file, with asynchronous UI update), so we should not testing.PollBreak() here?",
+      "revId": "de4a9c49e8070ce548160731a9aa103e34fc14a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
