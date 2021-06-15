@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce9104d_d55512ea",
+        "filename": "src/chromiumos/tast/local/input/audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T03:30:30Z",
+      "side": 1,
+      "message": "Do not need to change the name here. Actually in my personal perception, AudioFromFile should implicit wait the steam to finish. WDYT",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "60161c0620d91a04a74ede9e0d8dc8bf8362c875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
