@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab078637_d2c9f5ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 73
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T05:19:51Z",
+      "side": 1,
+      "message": "Hi Jun, thanks for your review again. Want to discuss how to handle the TODOs in the code. These TODOs are just temporary for review purpose. We broke the code to smaller CLs and CLs are separate based on certain features, with some features will come in the next CL in the review queue. We added TODO for reviewers to know what\u0027s coming next in the following CLs. So do you want to leave them or remove them? ",
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfe0a54c_28cff48e",
@@ -54,6 +71,30 @@
       "writtenOn": "2021-06-11T13:48:37Z",
       "side": 1,
       "message": "Please create a bug for TODO. e.g.\n\n//TODO(chromium:12345) Add plus tier URLs.",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 8
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fad2de6_0ae5d3e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T05:19:51Z",
+      "side": 1,
+      "message": "This is just temporary for review - break the code for smaller CL size. The logic will be provided by next CL in the review queue. (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2939204/)\n\nWe can remove these todo but I think it helps the reviewer to know the overall logic.",
+      "parentUuid": "78d1adbe_700b688b",
       "range": {
         "startLine": 56,
         "startChar": 4,
