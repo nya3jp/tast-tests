@@ -223,6 +223,22 @@ func videoTrackResolution(path string) (*cca.Resolution, error) {
 				// Ignore the 16 low bits of fractional part.
 				intW := int(thkd.Width >> 16)
 				intH := int(thkd.Height >> 16)
+
+				// All possible rotation matrices(values in matrices are 32-bit fixed-point) in mp4 thkd produced from CCA.
+				rotate0 := [9]int32{65536, 0, 0, 0, 65536, 0, 0, 0, 1073741824}
+				rotate90 := [9]int32{0, 65536, 0, -2147418112, 0, 0, 0, 0, 1073741824}
+				rotate180 := [9]int32{-2147418112, 0, 0, 0, -2147418112, 0, 0, 0, 1073741824}
+				rotate270 := [9]int32{0, -2147418112, 0, 65536, 0, 0, 0, 0, 1073741824}
+				switch thkd.Matrix {
+				case rotate0:
+				case rotate180:
+				case rotate90:
+					fallthrough
+				case rotate270:
+					intW, intH = intH, intW
+				default:
+					return nil, errors.Errorf("unknown mp4 thkd matrix %v", thkd.Matrix)
+				}
 				return &cca.Resolution{Width: intW, Height: intH}, nil
 			}
 		}
@@ -262,7 +278,7 @@ func testVideoResolution(ctx context.Context, app *cca.App) error {
 				return err
 			}
 			if vr.Width != or.Width || vr.Height != or.Height {
-				return errors.Wrapf(err, "incorrect captured resolution get %dx%d; want %dx%d", vr.Width, vr.Height, r.Width, r.Height)
+				return errors.Wrapf(err, "incorrect captured resolution get %dx%d; want %dx%d", vr.Width, vr.Height, or.Width, or.Height)
 			}
 			return nil
 		})
