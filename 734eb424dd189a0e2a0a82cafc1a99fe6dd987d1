@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea723f40_d690be8b",
+        "filename": "android/ArcTtsTest/AndroidManifest.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-15T04:35:22Z",
+      "side": 1,
+      "message": "Woudl you fix the indentation of \u003c/application\u003e as well?",
+      "parentUuid": "33be1c07_ab1ffa5d",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "734eb424dd189a0e2a0a82cafc1a99fe6dd987d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c82de0ac_7d877512",
         "filename": "android/ArcTtsTest/res/xml/tts_engine.xml",
         "patchSetId": 7
@@ -161,6 +185,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "4bfc4649_eb3599b0",
+      "range": {
+        "startLine": 24,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "734eb424dd189a0e2a0a82cafc1a99fe6dd987d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d82a20f9_65edf9c1",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-15T04:35:22Z",
+      "side": 1,
+      "message": "Would you make it static as well?",
+      "parentUuid": "dd26348b_c5911436",
       "range": {
         "startLine": 24,
         "startChar": 17,

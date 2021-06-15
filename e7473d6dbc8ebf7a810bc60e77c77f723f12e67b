@@ -16,6 +16,69 @@
       "message": "tast-owners@ PTAL",
       "revId": "e7473d6dbc8ebf7a810bc60e77c77f723f12e67b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1db25e2_00958650",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-15T04:35:22Z",
+      "side": 1,
+      "message": "LGTM with nits. Thanks for adding this test!",
+      "revId": "e7473d6dbc8ebf7a810bc60e77c77f723f12e67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b200c8b3_5771761e",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-15T04:35:22Z",
+      "side": 1,
+      "message": "tiny nit: unnecessary parenthesis?",
+      "range": {
+        "startLine": 54,
+        "startChar": 24,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "e7473d6dbc8ebf7a810bc60e77c77f723f12e67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c27c833b_d033854b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-15T04:35:22Z",
+      "side": 1,
+      "message": "tiny nit: as Go prefers a shorter variable name when the scope is small, how about naming it |voices|?",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "e7473d6dbc8ebf7a810bc60e77c77f723f12e67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
