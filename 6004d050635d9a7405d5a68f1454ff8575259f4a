@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cedf9fe0_68b61dfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T03:30:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1037f417_453d2f55",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 9
+      },
+      "revId": "6004d050635d9a7405d5a68f1454ff8575259f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4730533b_e6ac006f",
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "Have revised it. `playCmd.Wait()` can wait for the completion of playing audio.",
       "parentUuid": "1156117b_f7b4ccd4",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 133,
+        "endChar": 5
+      },
+      "revId": "6004d050635d9a7405d5a68f1454ff8575259f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "417be475_9a9172ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T03:30:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d1f17887_3dcc9274",
       "range": {
         "startLine": 131,
         "startChar": 3,
