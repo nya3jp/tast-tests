@@ -567,7 +567,7 @@ func init() {
 				numFrames:       500,
 				fps:             30,
 				size:            coords.NewSize(320, 180),
-				commandBuilder:  h264argsV4L2,
+				commandBuilder:  v4l2Args,
 				regExpFPS:       regExpFPSV4L2,
 				decoder:         "openh264dec",
 				regExpKeyFrames: regExpKeyFramesH264,
@@ -584,7 +584,7 @@ func init() {
 				numFrames:       500,
 				fps:             30,
 				size:            coords.NewSize(640, 360),
-				commandBuilder:  h264argsV4L2,
+				commandBuilder:  v4l2Args,
 				regExpFPS:       regExpFPSV4L2,
 				decoder:         "openh264dec",
 				regExpKeyFrames: regExpKeyFramesH264,
@@ -601,7 +601,7 @@ func init() {
 				numFrames:       500,
 				fps:             30,
 				size:            coords.NewSize(1280, 720),
-				commandBuilder:  h264argsV4L2,
+				commandBuilder:  v4l2Args,
 				regExpFPS:       regExpFPSV4L2,
 				decoder:         "openh264dec",
 				regExpKeyFrames: regExpKeyFramesH264,
@@ -618,7 +618,7 @@ func init() {
 				numFrames:       846,
 				fps:             50,
 				size:            coords.NewSize(320, 180),
-				commandBuilder:  h264argsV4L2,
+				commandBuilder:  v4l2Args,
 				regExpFPS:       regExpFPSV4L2,
 				decoder:         "openh264dec",
 				regExpKeyFrames: regExpKeyFramesH264,
@@ -635,7 +635,7 @@ func init() {
 				numFrames:       846,
 				fps:             50,
 				size:            coords.NewSize(640, 360),
-				commandBuilder:  h264argsV4L2,
+				commandBuilder:  v4l2Args,
 				regExpFPS:       regExpFPSV4L2,
 				decoder:         "openh264dec",
 				regExpKeyFrames: regExpKeyFramesH264,
@@ -652,10 +652,112 @@ func init() {
 				numFrames:       846,
 				fps:             50,
 				size:            coords.NewSize(1280, 720),
-				commandBuilder:  h264argsV4L2,
+				commandBuilder:  v4l2Args,
 				regExpFPS:       regExpFPSV4L2,
 				decoder:         "openh264dec",
 				regExpKeyFrames: regExpKeyFramesH264,
+			},
+			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
+			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
+			// TODO(b/174103282): Enable on Rockchip devices.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("bob", "gru", "kevin", "veyron_fievel", "veyron_tiger")),
+		}, {
+			Name: "v4l2_vp8_180",
+			Val: testParam{
+				command:         "v4l2_stateful_encoder",
+				filename:        "tulip2-320x180.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(320, 180),
+				commandBuilder:  v4l2Args,
+				regExpFPS:       regExpFPSV4L2,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
+			},
+			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
+			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
+			// TODO(b/174103282): Enable on Rockchip devices.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("bob", "gru", "kevin", "veyron_fievel", "veyron_tiger")),
+		}, {
+			Name: "v4l2_vp8_360",
+			Val: testParam{
+				command:         "v4l2_stateful_encoder",
+				filename:        "tulip2-640x360.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(640, 360),
+				commandBuilder:  v4l2Args,
+				regExpFPS:       regExpFPSV4L2,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
+			},
+			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
+			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
+			// TODO(b/174103282): Enable on Rockchip devices.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("bob", "gru", "kevin", "veyron_fievel", "veyron_tiger")),
+		}, {
+			Name: "v4l2_vp8_720",
+			Val: testParam{
+				command:         "v4l2_stateful_encoder",
+				filename:        "tulip2-1280x720.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(1280, 720),
+				commandBuilder:  v4l2Args,
+				regExpFPS:       regExpFPSV4L2,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
+			},
+			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
+			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
+			// TODO(b/174103282): Enable on Rockchip devices.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("bob", "gru", "kevin", "veyron_fievel", "veyron_tiger")),
+		}, {
+			Name: "v4l2_vp8_180_meet",
+			Val: testParam{
+				command:         "v4l2_stateful_encoder",
+				filename:        "gipsrestat-320x180.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(320, 180),
+				commandBuilder:  v4l2Args,
+				regExpFPS:       regExpFPSV4L2,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
+			},
+			ExtraData:         []string{"gipsrestat-320x180.vp9.webm"},
+			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
+			// TODO(b/174103282): Enable on Rockchip devices.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("bob", "gru", "kevin", "veyron_fievel", "veyron_tiger")),
+		}, {
+			Name: "v4l2_vp8_360_meet",
+			Val: testParam{
+				command:         "v4l2_stateful_encoder",
+				filename:        "gipsrestat-640x360.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(640, 360),
+				commandBuilder:  v4l2Args,
+				regExpFPS:       regExpFPSV4L2,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
+			},
+			ExtraData:         []string{"gipsrestat-640x360.vp9.webm"},
+			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
+			// TODO(b/174103282): Enable on Rockchip devices.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("bob", "gru", "kevin", "veyron_fievel", "veyron_tiger")),
+		}, {
+			Name: "v4l2_vp8_720_meet",
+			Val: testParam{
+				command:         "v4l2_stateful_encoder",
+				filename:        "gipsrestat-1280x720.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(1280, 720),
+				commandBuilder:  v4l2Args,
+				regExpFPS:       regExpFPSV4L2,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
@@ -980,18 +1082,25 @@ func vpxencArgs(ctx context.Context, testName, exe, yuvFile string, size coords.
 	return
 }
 
-// h264argsV4L2 constructs the command line for the v4l2_stateful_encoder and for H.264.
-func h264argsV4L2(ctx context.Context, _, exe, yuvFile string, size coords.Size, fps int) (command []string, h264File string, bitrate int, err error) {
+// v4l2Args constructs the command line for v4l2_stateful_encoder.
+func v4l2Args(ctx context.Context, testName, exe, yuvFile string, size coords.Size, fps int) (command []string, outputFile string, bitrate int, err error) {
 	command = append(command, exe, "--width", strconv.Itoa(size.Width), "--height", strconv.Itoa(size.Height))
 	command = append(command, "--file", yuvFile, "--file_format", "yv12")
 
 	command = append(command, "--fps", strconv.Itoa(fps))
-
-	command = append(command, "--codec", "H264")
-
-	// The output file automatically gets a .h264 suffix added.
 	command = append(command, "--output", yuvFile)
-	h264File = yuvFile + ".h264"
+
+	if strings.Contains(testName, "h264") {
+		command = append(command, "--codec", "H264")
+		// The output file automatically gets a .h264 suffix added.
+		outputFile = yuvFile + ".h264"
+	} else if strings.Contains(testName, "vp8") {
+		command = append(command, "--codec", "VP80")
+		// The output file automatically gets a .ivf suffix added.
+		outputFile = yuvFile + ".ivf"
+	} else {
+		return nil, "", 0, errors.New("This function only supports H.264 and VP8")
+	}
 
 	// WebRTC uses Constant BitRate (CBR) with a very large intra-frame
 	// period and a certain quality parameter target, bitrate and profile.
