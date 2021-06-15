@@ -207,6 +207,30 @@
       },
       "revId": "f8753550c0a67a62b4f676f5510581b311940189",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b8be3e4_f6cbdc96",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-15T04:14:31Z",
+      "side": 1,
+      "message": "If I can sum up the discussion: If you are convinced the deletion race can still occur (I think Judy did not consider the possibility the test deletes the shared folder but this is only relayed to the UI asynchronously - Tim is verifying this exists?), you can:\n\n1. Adopt the polling solution, or\n2. Propose a change to uiauto so that \"node does not exist\" is a separate error to other possible errors (Chrome crashed, criteria not valid, etc.), so this method can be the shorter method you desire.",
+      "parentUuid": "ce38843e_9e5a6899",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 2
+      },
+      "revId": "f8753550c0a67a62b4f676f5510581b311940189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
