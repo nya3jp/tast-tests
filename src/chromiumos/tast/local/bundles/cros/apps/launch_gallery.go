@@ -43,6 +43,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "stable",
+				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 			}, {
 				Name:              "unstable",
