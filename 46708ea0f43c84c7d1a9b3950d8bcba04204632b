@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "803adf53_00e85b0c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-06-15T09:15:16Z",
+      "side": 1,
+      "message": "If we externalize this URL, this can be gs://perfetto/trace_processor_shell-linux-a3ce2cbf4cbe4f86cc10b02957db727cecfafae8 (see my other comment below for using external test data).",
+      "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ea5b99a_76cdb8c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-06-15T09:15:16Z",
+      "side": 1,
+      "message": "trace_processor_shell allows you to run multiple metrics in one shot:\n\n --run-metrics x,y,z                  Runs a comma separated list of metrics and\n                                      prints the result as a TraceMetrics proto\n                                      to stdout. The specified can either be\n                                      in-built metrics or SQL/proto files of\n                                      extension metrics.\n\nThe user can specify \"android_cpu,android_mem\" in |metric|, but this test doesn\u0027t show this capability. If we want to be explicit about this, we should make this []string. WDYT?",
+      "range": {
+        "startLine": 50,
+        "startChar": 153,
+        "endLine": 50,
+        "endChar": 166
+      },
+      "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3081c97b_ff1dac2a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-06-15T09:15:16Z",
+      "side": 1,
+      "message": "Should this be *platform.PerfettoTraceBasedMetricsServiceClient?",
+      "range": {
+        "startLine": 50,
+        "startChar": 53,
+        "endLine": 50,
+        "endChar": 100
+      },
+      "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "280cbefe_0217f108",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-06-15T09:15:16Z",
+      "side": 1,
+      "message": "It\u0027s recommended to do:\n\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\n\nand use ctx for the normal code path and cleanupCtx for cleanup actions.",
+      "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb77f6fe_0ed575bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-06-15T09:15:16Z",
+      "side": 1,
+      "message": "This can be done using external data file https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#external-data-files\n\nso you don\u0027t need to download the file using curl.",
+      "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fdb802e_71256c7a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-06-15T09:15:16Z",
+      "side": 1,
+      "message": "Optional: this runs the 2nd trace collection session. It\u0027s OK that we have 2 tracing sessions, each of which has its own trace config and metrics. Do we want to show that the a test can collect a trace with multiple metrics?",
+      "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
