@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3248476_e3e77d64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-06-15T07:14:32Z",
+      "side": 1,
+      "message": "nit: just declare this as a single const, instead of using the syntax for multiple const declarations.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "03a02c9e49232b15832421fd3d9294644e54cf9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "699539d4_6a3c1e42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-06-15T07:14:32Z",
+      "side": 1,
+      "message": "I don\u0027t think this return is necessary, because of the return on line 37.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 11
+      },
+      "revId": "03a02c9e49232b15832421fd3d9294644e54cf9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91c10eb8_4fd9b93f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-06-15T07:14:32Z",
+      "side": 1,
+      "message": "nit: just declare as a single const",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "03a02c9e49232b15832421fd3d9294644e54cf9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "972f9362_8581dd35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-06-15T07:14:32Z",
+      "side": 1,
+      "message": "This is typically of the pattern:\n\ncleanupCtx \u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, ...)",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 57
+      },
+      "revId": "03a02c9e49232b15832421fd3d9294644e54cf9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
