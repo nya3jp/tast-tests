@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_nec_20210615.ppd",
+  "size": 28178,
+  "sha256sum": "02d7799659a2d505b96dc3904666d9927e845271fba32688e44da8af87d5a7fd"
+}

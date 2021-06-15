@@ -176,6 +176,15 @@ func init() {
 				},
 				ExtraData: []string{"to_print.pdf", "hp_ipp_everywhere.ppd", "printer_add_hp_pwg_raster_monochrome_golden.pwg"},
 			}, {
+				Name: "nec",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_nec.ppd",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_nec_golden.ps",
+				},
+				ExtraData: []string{"to_print.pdf", "printer_nec.ppd", "printer_add_nec_golden.ps"},
+				ExtraAttr: []string{"informational"},
+			}, {
 				Name: "star",
 				Val: &ippprint.Params{
 					PPDFile:      "printer_add_star_printer_rastertostar.ppd.gz",
