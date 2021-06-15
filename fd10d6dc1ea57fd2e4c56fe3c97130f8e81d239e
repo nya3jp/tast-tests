@@ -16,6 +16,253 @@
       "message": "I am not a tast reviewer (yet), if you are looking for a +2 from an owner please add \"tast-owners@google.com\" to the CL (Seewai is OOO for another few days)",
       "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05a1356e_4c346342",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-15T23:38:09Z",
+      "side": 1,
+      "message": "Can these constants be moved into the test function? As it stands the symbol names here wouldn\u0027t be able to be used in the typec package, even though they are unexported.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 1
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b5fdf0b_e8ae251c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-15T23:38:09Z",
+      "side": 1,
+      "message": "Is there a team alias we can add here?",
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3505b3b_1eb7b901",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-15T23:38:09Z",
+      "side": 1,
+      "message": "Is this test designed to be run on the CQ? If not remove this part. If it is, can the hardware topology be satisfied in the device lab?",
+      "range": {
+        "startLine": 42,
+        "startChar": 26,
+        "endLine": 42,
+        "endChar": 40
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f05b99f_9a2297d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-15T23:38:09Z",
+      "side": 1,
+      "message": "Is there a hardware dependency for devices with thunderbolt instead of just listing the model names?",
+      "range": {
+        "startLine": 46,
+        "startChar": 24,
+        "endLine": 46,
+        "endChar": 35
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cf073fc_e381616f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-15T23:38:09Z",
+      "side": 1,
+      "message": "This should be an actual error message, e.g. \"Tbt mount path does not exist\". Then it can be combined with the timeout error on line 141.",
+      "range": {
+        "startLine": 136,
+        "startChar": 22,
+        "endLine": 136,
+        "endChar": 43
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "421180b7_7d87dce6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-15T23:38:09Z",
+      "side": 1,
+      "message": "Does the interval need to be this long? It seems like this call can be repeated pretty quickly. The default Interval is 250ms",
+      "range": {
+        "startLine": 140,
+        "startChar": 52,
+        "endLine": 140,
+        "endChar": 79
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "030147a5_fd3043af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-15T23:38:09Z",
+      "side": 1,
+      "message": "This should be something along the lines of s.Fatal(\"Timeout waiting for TBT device:, err). This way we know what the last error value was on timeout if the function ever expands.",
+      "range": {
+        "startLine": 141,
+        "startChar": 13,
+        "endLine": 141,
+        "endChar": 35
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69470165_d986424f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-15T23:38:09Z",
+      "side": 1,
+      "message": "nit: Capitalize first word for fatal and error calls",
+      "range": {
+        "startLine": 141,
+        "startChar": 12,
+        "endLine": 141,
+        "endChar": 13
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "778090bb_ac1de787",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-15T23:38:09Z",
+      "side": 1,
+      "message": "Does this need to be a separate function if it\u0027s only used once?",
+      "range": {
+        "startLine": 145,
+        "startChar": 11,
+        "endLine": 145,
+        "endChar": 21
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dda97b37_f547daa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-15T23:38:09Z",
+      "side": 1,
+      "message": "we don\u0027t need this error since it is nil.",
+      "range": {
+        "startLine": 167,
+        "startChar": 46,
+        "endLine": 167,
+        "endChar": 54
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "304de40f_3d5045b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-15T23:38:09Z",
+      "side": 1,
+      "message": "this can be of the form:\n\nif err :\u003d cmd.Run(); err !\u003d nil {",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 16
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
