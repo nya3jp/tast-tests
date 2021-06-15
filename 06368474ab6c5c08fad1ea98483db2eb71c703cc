@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c84fa4b4_5f9b79bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-06-15T02:16:00Z",
+      "side": 1,
+      "message": "why is this FindWithTimeout but the one above uses StableFind?",
+      "range": {
+        "startLine": 100,
+        "startChar": 16,
+        "endLine": 100,
+        "endChar": 31
+      },
+      "revId": "06368474ab6c5c08fad1ea98483db2eb71c703cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc4cc027_339b5e8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/doc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-06-15T02:16:00Z",
+      "side": 1,
+      "message": "tests?",
+      "range": {
+        "startLine": 5,
+        "startChar": 42,
+        "endLine": 5,
+        "endChar": 49
+      },
+      "revId": "06368474ab6c5c08fad1ea98483db2eb71c703cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "095f3867_c55a26b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-06-15T02:16:00Z",
+      "side": 1,
+      "message": "confusing comment",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 34
+      },
+      "revId": "06368474ab6c5c08fad1ea98483db2eb71c703cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c310f3_ff6cabbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-06-15T02:16:00Z",
+      "side": 1,
+      "message": "this should be in a separate package too at some point...",
+      "range": {
+        "startLine": 138,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 19
+      },
+      "revId": "06368474ab6c5c08fad1ea98483db2eb71c703cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81a9a58d_52f793ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-06-15T02:16:00Z",
+      "side": 1,
+      "message": "nit: add a little more detail here as why (user v system etc) thanks",
+      "range": {
+        "startLine": 227,
+        "startChar": 5,
+        "endLine": 227,
+        "endChar": 107
+      },
+      "revId": "06368474ab6c5c08fad1ea98483db2eb71c703cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd39a571_6a321868",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-06-15T02:16:00Z",
+      "side": 1,
+      "message": "DoH is disabled when a VPN is running. Are you going to test that?",
+      "range": {
+        "startLine": 268,
+        "startChar": 3,
+        "endLine": 268,
+        "endChar": 81
+      },
+      "revId": "06368474ab6c5c08fad1ea98483db2eb71c703cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
