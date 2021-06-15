@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "14182292_b2d98d2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-15T23:25:52Z",
+      "side": 1,
+      "message": "Should this be \"v4l2_*\" as in the title?",
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dd7a473_a74fcb72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-15T23:25:52Z",
+      "side": 1,
+      "message": "maybe , before \"so the code\"?",
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "39c52aba_761a903f",
@@ -14,6 +48,74 @@
       "writtenOn": "2021-06-15T23:03:54Z",
       "side": 1,
       "message": "stevecho@, tast-owners@ PTAL\n\nOthers FYI",
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72a8202f_ea24edf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-15T23:25:52Z",
+      "side": 1,
+      "message": "Do we want this to be argsV4L2 to be consistent with vaapi?",
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8104334b_e85f7bcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-15T23:25:52Z",
+      "side": 1,
+      "message": "Is caps.HWEncodeH264 intended?",
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab52a4a3_ca1caa6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-15T23:25:52Z",
+      "side": 1,
+      "message": "nit: maybe \"encodedFile\" is more clear?",
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f59f71cf_07143a4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-15T23:25:52Z",
+      "side": 1,
+      "message": "nit: period in the end?",
       "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
