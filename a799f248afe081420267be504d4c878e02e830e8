@@ -34,6 +34,24 @@
       "parentUuid": "a5da0969_df815795",
       "revId": "a799f248afe081420267be504d4c878e02e830e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb021925_a499c087",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-06-15T03:49:51Z",
+      "side": 1,
+      "message": "Should be fixed by CL:2962037",
+      "parentUuid": "fd9a64a4_759df8b7",
+      "revId": "a799f248afe081420267be504d4c878e02e830e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
