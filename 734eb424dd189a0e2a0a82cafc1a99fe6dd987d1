@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b161d0e7_9e32275f",
+        "filename": "android/ArcTtsTest/AndroidManifest.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-15T04:47:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea723f40_d690be8b",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "734eb424dd189a0e2a0a82cafc1a99fe6dd987d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c82de0ac_7d877512",
@@ -209,6 +233,30 @@
       "side": 1,
       "message": "Would you make it static as well?",
       "parentUuid": "dd26348b_c5911436",
+      "range": {
+        "startLine": 24,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "734eb424dd189a0e2a0a82cafc1a99fe6dd987d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a69db81d_0a3ee137",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-15T04:47:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d82a20f9_65edf9c1",
       "range": {
         "startLine": 24,
         "startChar": 17,
