@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fecc2597_d8f1c94f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-15T15:03:33Z",
+      "side": 1,
+      "message": "Can these constants be moved inside DataLeakPreventionRulesListScreenshot? Otherwise these symbols can\u0027t be used again in the policy package.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "214a2b804bd65c3a702168d2a8883603a8a2dfc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "224ff109_471a3a89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-15T15:03:33Z",
+      "side": 1,
+      "message": "Is there any way we can wait for the screenshot event to happen instead of sleeping? Since one second is only the minimal interval, is it possible that it won\u0027t be completed yet?",
+      "revId": "214a2b804bd65c3a702168d2a8883603a8a2dfc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c481ca8_8590b20f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-15T15:03:33Z",
+      "side": 1,
+      "message": "I think both of these %t can be %v since that\u0027s the default value for bool: https://golang.org/pkg/fmt/#hdr-Printing",
+      "range": {
+        "startLine": 165,
+        "startChar": 49,
+        "endLine": 165,
+        "endChar": 51
+      },
+      "revId": "214a2b804bd65c3a702168d2a8883603a8a2dfc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
