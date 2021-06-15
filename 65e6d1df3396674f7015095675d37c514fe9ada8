@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a73cc29b_573e1a58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-15T06:55:59Z",
+      "side": 1,
+      "message": "nit: Could you help add a comment about that these numbers are actually 32-bit fixed-point numbers, so it\u0027s expected to see weird numbers as int32? Thanks.",
+      "revId": "65e6d1df3396674f7015095675d37c514fe9ada8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
