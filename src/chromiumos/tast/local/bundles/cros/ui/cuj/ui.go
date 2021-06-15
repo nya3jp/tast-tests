@@ -71,51 +71,54 @@ func CloseAllWindows(ctx context.Context, tconn *chrome.TestConn) error {
 
 // GetBrowserStartTime opens chrome browser and returns the browser start time.
 func GetBrowserStartTime(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, tabletMode bool) (time.Duration, error) {
-	var browserStartTime time.Duration
-	var startTime time.Time
-	var launchErr error
-
 	// Get the expected browser.
 	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
 	if err != nil {
-		return browserStartTime, errors.Wrap(err, "could not find the Chrome app")
+		return -1, errors.Wrap(err, "could not find the Chrome app")
 	}
 
 	// Make sure the browser hasn't been opened.
 	shown, err := ash.AppShown(ctx, tconn, chromeApp.ID)
 	if err != nil {
-		return 0, errors.Wrap(err, "failed to check if the browser window is shown or not")
+		return -1, errors.Wrap(err, "failed to check if the browser window is shown or not")
 	}
 	if shown {
-		return 0, errors.New("browser is already shown")
+		return -1, errors.New("browser is already shown")
 	}
 
+	msg := "shelf"
+	launchFunc := LaunchAppFromShelf
 	if tabletMode {
-		testing.ContextLog(ctx, "Launch Google Chrome (could be Chrome or Chromium) from hotseat")
-		startTime, launchErr = LaunchAppFromHotseat(ctx, tconn, "Chrome", "Chromium")
-	} else {
-		testing.ContextLog(ctx, "Launch Google Chrome (could be Chrome or Chromium) from shelf")
-		startTime, launchErr = LaunchAppFromShelf(ctx, tconn, "Chrome", "Chromium")
+		msg = "hotseat"
+		launchFunc = LaunchAppFromHotseat
 	}
+	testing.ContextLog(ctx, "Launch Google Chrome (could be Chrome or Chromium) from "+msg)
 
+	startTime, launchErr := launchFunc(ctx, tconn, "Chrome", "Chromium")
 	if launchErr != nil {
-		testing.ContextLog(ctx, "Failed to open Chrome")
-		return browserStartTime, errors.Wrap(launchErr, "failed to open Chrome")
+		return -1, errors.Wrap(launchErr, "failed to open Chrome")
 	}
 	// Make sure app is launched.
 	if err := ash.WaitForApp(ctx, tconn, chromeApp.ID, 30*time.Second); err != nil {
-		return browserStartTime, errors.Wrap(err, "failed to wait for the app to be launched")
+		return -1, errors.Wrap(err, "failed to wait for the app to be launched")
 	}
-	endTime := time.Now()
-	browserStartTime = endTime.Sub(startTime)
+	browserStartTime := time.Since(startTime)
 
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/"))
-	if err != nil {
-		return browserStartTime, errors.Wrap(err, "failed to connect to chrome")
+	// Depending on the settings, Chrome might open all left-off pages automatically from last session.
+	// Close all existing tabs and test can open new pages in the browser.
+	if err := CloseBrowserTabs(ctx, tconn); err != nil {
+		return -1, errors.Wrap(err, "failed to close all Chrome tabs")
 	}
-	conn.CloseTarget(ctx)
 
 	return browserStartTime, nil
+}
+
+// CloseBrowserTabs closes all browser tabs through chrome.tabs API.
+func CloseBrowserTabs(ctx context.Context, tconn *chrome.TestConn) error {
+	return tconn.Eval(ctx, `(async () => {
+		const tabs = await tast.promisify(chrome.tabs.query)({});
+		await tast.promisify(chrome.tabs.remove)(tabs.filter((tab) => tab.id).map((tab) => tab.id));
+	})()`, nil)
 }
 
 // LaunchAppFromShelf opens an app by name which is currently pinned to the shelf.

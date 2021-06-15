@@ -186,7 +186,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 	}
 	defer uiActionHandler.Close()
 
-	var browserStartDuration, totalElapsed time.Duration
+	var browserStartTime, totalElapsed time.Duration
 	// Use a shortened context to run recorder to allow cleanup.
 	runCtx, runCancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer runCancel()
@@ -217,12 +217,11 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		}
 
 		// Launch browser and track the elapsed time.
-		browserStartTime, err := uiActionHandler.LaunchChrome(ctx)
+		browserStartTime, err = cuj.GetBrowserStartTime(ctx, cr, tconn, tabletMode)
 		if err != nil {
 			return errors.Wrap(err, "failed to launch Chrome")
 		}
-		browserStartDuration = time.Since(browserStartTime)
-		s.Log("Browser start ms: ", browserStartDuration.Milliseconds())
+		s.Log("Browser start ms: ", browserStartTime.Milliseconds())
 
 		tabsInfo := []*tabInfo{
 			{url: "https://mail.google.com"},
@@ -232,7 +231,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		}
 
 		// Open tabs.
-		for idx, tab := range tabsInfo {
+		for _, tab := range tabsInfo {
 			defer func() {
 				if tab.conn != nil {
 					tab.conn.CloseTarget(ctx)
@@ -241,18 +240,8 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 				}
 			}()
 
-			// Chrome app has already been started and there is a blank chrome tab. Just reuse it.
-			if idx == 0 {
-				if tab.conn, err = cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/")); err != nil {
-					return errors.Wrap(err, "failed to find new tab")
-				}
-				if err = tab.conn.Navigate(ctx, tab.url); err != nil {
-					return errors.Wrapf(err, "failed navigating to %s", tab.url)
-				}
-			} else {
-				if tab.conn, err = uiActionHandler.NewChromeTab(ctx, cr, tab.url, true); err != nil {
-					return errors.Wrapf(err, "failed to open URL: %s", tab.url)
-				}
+			if tab.conn, err = uiActionHandler.NewChromeTab(ctx, cr, tab.url, true); err != nil {
+				return errors.Wrapf(err, "failed to open URL: %s", tab.url)
 			}
 		}
 
@@ -300,7 +289,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		Name:      "Browser.StartTime",
 		Unit:      "ms",
 		Direction: perf.SmallerIsBetter,
-	}, float64(browserStartDuration.Milliseconds()))
+	}, float64(browserStartTime.Milliseconds()))
 
 	pv.Set(perf.Metric{
 		Name:      "QuickCheckCUJ.ElapsedTime",
