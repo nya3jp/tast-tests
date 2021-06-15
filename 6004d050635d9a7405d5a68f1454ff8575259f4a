@@ -50,6 +50,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52346aa9_59d9ca71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T02:07:40Z",
+      "side": 1,
+      "message": "Similar problem to this cleanup. VM does not have a real input device, so it does not need to set the active device after unload. But on real devices, this step might take time and cause racing issue in next setup (possibly). Add extra safe check here can also be useful.",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 9
+      },
+      "revId": "6004d050635d9a7405d5a68f1454ff8575259f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4730533b_e6ac006f",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
         "patchSetId": 3
