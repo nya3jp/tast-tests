@@ -133,6 +133,24 @@
       "parentUuid": "85f7443c_817f230c",
       "revId": "de4a9c49e8070ce548160731a9aa103e34fc14a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "700c0bdc_c459c035",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-15T23:22:54Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "23241d31_f4ea90c8",
+      "revId": "de4a9c49e8070ce548160731a9aa103e34fc14a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
