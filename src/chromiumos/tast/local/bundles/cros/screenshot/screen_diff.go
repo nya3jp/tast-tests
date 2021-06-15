@@ -26,6 +26,7 @@ func init() {
 		Contacts:     []string{"msta@google.com", "chrome-engprod@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
+		HardwareDeps: screenshot.ScreenshotStable,
 		Vars:         []string{screenshot.GoldServiceAccountKeyVar},
 	})
 }
@@ -104,7 +105,7 @@ func ScreenDiff(ctx context.Context, s *testing.State) {
 			WindowWidthDP:  1000,
 			WindowHeightDP: 632,
 			RemoveElements: []*nodewith.Finder{nodewith.ClassName("date")}},
-		NameSuffix: "V2"}
+		NameSuffix: "V3"}
 
 	// Normally the next line would be "defer d.DieOnFailedDiffs()"
 	// However, in our case, we want to run both this and DiffPerConfig.
