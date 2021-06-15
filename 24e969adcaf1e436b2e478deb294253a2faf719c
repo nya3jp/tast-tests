@@ -251,6 +251,30 @@
       },
       "revId": "24e969adcaf1e436b2e478deb294253a2faf719c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "871b5f85_f7708ca4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T05:24:16Z",
+      "side": 1,
+      "message": "It is up to you. Just some of my experience told me to minimize the test steps to avid flakiness 😊 For example: Between `Ctrl+A` and `Ctrl+C` it might have a racing issue, because `ctrl+C` does not always wait for the text highlight.",
+      "parentUuid": "43911e8e_08ccf942",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "24e969adcaf1e436b2e478deb294253a2faf719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
