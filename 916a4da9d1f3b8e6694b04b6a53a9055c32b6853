@@ -39,6 +39,30 @@
       },
       "revId": "916a4da9d1f3b8e6694b04b6a53a9055c32b6853",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2e2a76b_63c4f980",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-06-15T05:45:27Z",
+      "side": 1,
+      "message": "To move the cursor to the end of the text, before this the cursor is selecting the existing text.",
+      "parentUuid": "54fa1ecc_4e104fbb",
+      "range": {
+        "startLine": 71,
+        "startChar": 24,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "916a4da9d1f3b8e6694b04b6a53a9055c32b6853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
