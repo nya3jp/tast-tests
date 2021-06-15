@@ -10,10 +10,10 @@
 #include <linux/dma-buf.h>
 
 #include <base/check_op.h>
+#include <base/containers/contains.h>
 #include <base/files/scoped_file.h>
 #include <base/posix/eintr_wrapper.h>
 #include <base/scoped_generic.h>
-#include <base/stl_util.h>
 #include <base/strings/stringprintf.h>
 #include <gbm.h>
 #include <gtest/gtest.h>
