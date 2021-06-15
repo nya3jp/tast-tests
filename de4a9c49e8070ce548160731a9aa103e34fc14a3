@@ -24,6 +24,47 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf84a328_0c54e11b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1003044
+      },
+      "writtenOn": "2021-06-15T07:51:54Z",
+      "side": 1,
+      "message": "sure, done",
+      "parentUuid": "fc9cb606_d615535a",
+      "range": {
+        "startLine": 162,
+        "startChar": 57,
+        "endLine": 162,
+        "endChar": 92
+      },
+      "revId": "de4a9c49e8070ce548160731a9aa103e34fc14a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29850ab4_d17750f2",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1003044
+      },
+      "writtenOn": "2021-06-15T07:51:54Z",
+      "side": 1,
+      "message": "I updated this string since it could also occur due to a folder being shared (similar to the next error)",
+      "revId": "de4a9c49e8070ce548160731a9aa103e34fc14a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53787864_db168309",
@@ -41,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebe6cc61_9de3f220",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1003044
+      },
+      "writtenOn": "2021-06-15T07:51:54Z",
+      "side": 1,
+      "message": "This could get reached with the last shared folder being deleted (between textErr and listErr getting evaluated)",
+      "parentUuid": "53787864_db168309",
+      "revId": "de4a9c49e8070ce548160731a9aa103e34fc14a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85f7443c_817f230c",
@@ -54,6 +113,24 @@
       "writtenOn": "2021-06-15T06:51:50Z",
       "side": 1,
       "message": "Maybe add a comment saying this could be caused by a race (deletion of last file, with asynchronous UI update), so we should not testing.PollBreak() here?",
+      "revId": "de4a9c49e8070ce548160731a9aa103e34fc14a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23241d31_f4ea90c8",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1003044
+      },
+      "writtenOn": "2021-06-15T07:51:54Z",
+      "side": 1,
+      "message": "I was hoping the comment at the start of the function would cover this (see consistent use of the word inconsisten{t,cies}) since otherwise I\u0027d have to comment all three error-returning exit points.\n\nI tweaked said above comment. WDYT?",
+      "parentUuid": "85f7443c_817f230c",
       "revId": "de4a9c49e8070ce548160731a9aa103e34fc14a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
