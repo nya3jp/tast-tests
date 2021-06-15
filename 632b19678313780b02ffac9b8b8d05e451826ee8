@@ -34,6 +34,24 @@
       "parentUuid": "9c83fecb_83a75de5",
       "revId": "632b19678313780b02ffac9b8b8d05e451826ee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f06dda_58fe878c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-06-15T01:16:50Z",
+      "side": 1,
+      "message": "Marking as resolved",
+      "parentUuid": "05477624_d1e13dc5",
+      "revId": "632b19678313780b02ffac9b8b8d05e451826ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
