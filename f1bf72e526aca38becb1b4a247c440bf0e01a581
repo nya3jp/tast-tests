@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f60d34d_6e6b4c54",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-15T23:42:06Z",
+      "side": 1,
+      "message": "nit: don\u0027t we usually use something like \"tast-video\" or \"video-tast\" instead of \"video: \"?",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec4f90e_45cb0778",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-15T23:42:06Z",
+      "side": 1,
+      "message": "nit: quite close -\u003e similar",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1fda4a7d_9c0a63e0",
@@ -14,6 +48,91 @@
       "writtenOn": "2021-06-15T22:58:15Z",
       "side": 1,
       "message": "stevecho@, tast-owners@ PTAL\n\nOthers FYI.",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8caa5202_4061b8df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-15T23:42:06Z",
+      "side": 1,
+      "message": "If shared with VP8, then should we rename regExpKeyFramesVP8?",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4d3cf4f_19eb2e51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-15T23:42:06Z",
+      "side": 1,
+      "message": "nit: maybe add usage like for VP8 and VP9?",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d376a313_71b778e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-15T23:42:06Z",
+      "side": 1,
+      "message": "nit: seems to be 2 spaces before \"at the ...\"",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6590f5f1_d64eb6df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-15T23:42:06Z",
+      "side": 1,
+      "message": "Didn\u0027t we have a doc mentioning about these values?\nIf so, should we add the link?",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03850586_6edebeb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-15T23:42:06Z",
+      "side": 1,
+      "message": "nit: period in the end?",
       "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
