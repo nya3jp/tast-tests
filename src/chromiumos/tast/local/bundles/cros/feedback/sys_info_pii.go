@@ -7,11 +7,17 @@ package feedback
 import (
 	"context"
 	"io/ioutil"
+	"os"
 	"path"
 	"strings"
 
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+)
+
+const (
+	testPageFilename = "sys_info_pii_test_page.html"
 )
 
 func init() {
@@ -20,6 +26,7 @@ func init() {
 		Desc:         "Verify that known-sensitive data doesn't show up in feedback reports",
 		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline"},
+		Data:         []string{testPageFilename},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})
@@ -41,13 +48,19 @@ type systemInformation struct {
 // information, such as tab names.
 func SysInfoPII(ctx context.Context, s *testing.State) {
 	const (
-		// Don't use a localhost URL or local file:// url because those
-		// are not as sensitive and redaction pipelines treat them
-		// differently.
-		sensitiveURL    = "https://www.google.com/search?q=qwertyuiopasdfghjkl+sensitive"
-		sensitiveURLEnd = "www.google.com/search?q=qwertyuiopasdfghjkl+sensitive"
-		searchQuery     = "qwertyuiopasdfghjkl sensitive"
+		pageTitle    = "feedback.SysInfoPII test page title"
+		pageContents = "feedback.SysInfoPII test page contents"
 	)
+
+	dataFile := s.DataPath(testPageFilename)
+	targetPath := path.Join("/home/chronos/user/MyFiles", testPageFilename)
+	if err := fsutil.CopyFile(dataFile, targetPath); err != nil {
+		s.Fatal("Failed to put dataFile in home dir: ", err)
+	}
+	if err := os.Chmod(targetPath, 0666); err != nil {
+		s.Fatal("Failed to make dataFile readable: ", err)
+	}
+	sensitiveURL := "file://" + targetPath
 
 	cr := s.PreValue().(*chrome.Chrome)
 	conn, err := cr.NewConn(ctx, sensitiveURL)
@@ -65,9 +78,15 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not call getSystemInformation: ", err)
 	}
 
-	var title string
-	if err := conn.Eval(ctx, "document.title", &title); err != nil {
+	var actualTitle string
+	if err := conn.Eval(ctx, "document.title", &actualTitle); err != nil {
 		s.Fatal("Failed to get the tab title: ", err)
+	}
+	// check that page actually loaded as expected
+	if actualTitle != pageTitle {
+		// Don't log the expected page title so we don't make later
+		// runs of this test fail
+		s.Error("Unexpected title: ", actualTitle)
 	}
 
 	for _, info := range ret {
@@ -79,11 +98,15 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 				content string
 				desc    string
 			}{
-				{title, "tabTitle"},
-				{searchQuery, "searchQuery"},
-				{sensitiveURLEnd, "URL"}}
+				{pageTitle, "tabTitle"},
+				{pageContents, "pageContents"},
+				{sensitiveURL, "URL"},
+				{dataFile, "filePath"},
+			}
 			for _, entry := range badContents {
 				if strings.Contains(info.Value, entry.content) {
+					// Don't log actual contents so that we don't make later runs
+					// of this test fail.
 					s.Errorf("Log %q unexpectedly contained %s", info.Key, entry.desc)
 					if err := saveLog(s.OutDir(), info.Key, info.Value); err != nil {
 						s.Error("Also, failed to save log contents: ", err)
