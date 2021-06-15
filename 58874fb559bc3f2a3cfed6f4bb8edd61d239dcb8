@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaf1294a_f85fa1ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "Sure. Renamed to YoutubeMusicAppName",
+      "parentUuid": "bfe0a54c_28cff48e",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78d1adbe_700b688b",
@@ -129,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e971fa69_2cb804d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "Thanks. Used the same bug for this CUJ test as the TODO bug.",
+      "parentUuid": "f966e024_79950db4",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 8
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4029b5b8_4160b0db",
@@ -142,6 +190,30 @@
       "writtenOn": "2021-06-11T13:48:37Z",
       "side": 1,
       "message": "Name it as switchWindowFunc would make more sense.",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 17
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a8ccce8_cec4fba9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4029b5b8_4160b0db",
       "range": {
         "startLine": 86,
         "startChar": 5,
@@ -175,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d08bea1_7d01388b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "620b514b_8f1746ed",
+      "range": {
+        "startLine": 87,
+        "startChar": 19,
+        "endLine": 87,
+        "endChar": 30
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de89857c_c79601c2",
@@ -188,6 +284,30 @@
       "writtenOn": "2021-06-11T13:48:37Z",
       "side": 1,
       "message": "I would suggest to name this with a suffix switchWindowByOverviewTest.",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec638831_8b3d9a19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de89857c_c79601c2",
       "range": {
         "startLine": 92,
         "startChar": 4,
@@ -221,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7052e370_6f391ed5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56669f0f_0b9a7551",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 2
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1c040a3_91a6b21e",
@@ -234,6 +378,30 @@
       "writtenOn": "2021-06-11T13:48:37Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7140e257_181dd79d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1c040a3_91a6b21e",
       "range": {
         "startLine": 111,
         "startChar": 2,
@@ -267,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91c049f4_1202a269",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "Thanks. This typo is now being fixed with this CL.",
+      "parentUuid": "727a7e16_665b8bbe",
+      "range": {
+        "startLine": 115,
+        "startChar": 43,
+        "endLine": 115,
+        "endChar": 70
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60a1682e_b36af524",
@@ -280,6 +472,30 @@
       "writtenOn": "2021-06-11T13:48:37Z",
       "side": 1,
       "message": "This looks weird. I reckon the logic as below would make it clearer.\n\n// Define switchWindowTests above.\nswitchWindowTests \u003d []subtest{switchWindowByOverview}\n...\n// Append other tests.\nswitchWindowTests \u003d append(switchWindowTests, switchWindowByKeyboard)",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 18
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab68a2f0_1026aa91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "Agree! It\u0027s more readable. Fixed.",
+      "parentUuid": "60a1682e_b36af524",
       "range": {
         "startLine": 118,
         "startChar": 2,
@@ -313,6 +529,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f73a2ff_6b37029e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "Sure. Comments added for battery setup.",
+      "parentUuid": "0c26440a_c348146f",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 17
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b150f79c_157fb964",
@@ -326,6 +566,30 @@
       "writtenOn": "2021-06-11T13:48:37Z",
       "side": 1,
       "message": "This is not a common practice that I have ever seen. Reuse ctx name reduces code readability.\n\nNormally the cleanupCtx is set in the beginning of the function as below:\n////////\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()\n...\ndefer setBatteryNormal(cleanupCtx)\n////////\n\nBesides, a few earlier setups also need cleanup.",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 15
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "933bcac1_9e9efd39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "Changed. Defined the cleanupCtx at the very beginning and use it for the deferred functions.",
+      "parentUuid": "b150f79c_157fb964",
       "range": {
         "startLine": 145,
         "startChar": 1,
@@ -359,6 +623,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "237d3a3e_f610be7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2924727c_9358f595",
+      "range": {
+        "startLine": 154,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 4
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9545094_38c4b405",
@@ -372,6 +660,30 @@
       "writtenOn": "2021-06-15T02:11:46Z",
       "side": 1,
       "message": "I do not understand why Click and similar user actions are wrapped again in uiHandler. Is it anything special that uiauto lib does not support it?",
+      "range": {
+        "startLine": 166,
+        "startChar": 59,
+        "endLine": 166,
+        "endChar": 64
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88c6ec6c_801063b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "UiActionHandler hides the difference of UI operations between tablet and clamshell mode. It provides interfaces such as SwitchTab, SwitchWindows, etc. Click() is provided along with these interfaces so test case can just call uiHdl.Click() without having to create different pointer context again based on screen UI mode.",
+      "parentUuid": "b9545094_38c4b405",
       "range": {
         "startLine": 166,
         "startChar": 59,
@@ -405,6 +717,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b9e0818_002daa35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb173642_9232713b",
+      "range": {
+        "startLine": 181,
+        "startChar": 5,
+        "endLine": 181,
+        "endChar": 9
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0473d910_26752e02",
@@ -418,6 +754,30 @@
       "writtenOn": "2021-06-15T02:11:46Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 195,
+        "startChar": 6,
+        "endLine": 195,
+        "endChar": 10
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "356d6652_0e450d17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0473d910_26752e02",
       "range": {
         "startLine": 195,
         "startChar": 6,
@@ -451,6 +811,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a82e4734_32aec8fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "342f8cab_2b760e17",
+      "range": {
+        "startLine": 212,
+        "startChar": 4,
+        "endLine": 212,
+        "endChar": 8
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dcb8566_5d598d47",
@@ -464,6 +848,30 @@
       "writtenOn": "2021-06-15T02:11:46Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 213,
+        "startChar": 4,
+        "endLine": 213,
+        "endChar": 8
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07b5c405_c9d6fdb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dcb8566_5d598d47",
       "range": {
         "startLine": 213,
         "startChar": 4,
