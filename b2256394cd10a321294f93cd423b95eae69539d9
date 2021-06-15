@@ -52,6 +52,24 @@
       "parentUuid": "d0901b23_96722ec4",
       "revId": "b2256394cd10a321294f93cd423b95eae69539d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e6dc765_864a00f4",
+        "filename": "src/chromiumos/tast/local/memory/stress/stress.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-06-15T17:01:57Z",
+      "side": 1,
+      "message": "Splitted the refactoring CL crrev.com/c/2965012 .",
+      "parentUuid": "e11f69a9_53ad1fdd",
+      "revId": "b2256394cd10a321294f93cd423b95eae69539d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
