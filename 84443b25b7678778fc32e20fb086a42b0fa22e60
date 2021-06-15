@@ -16,6 +16,92 @@
       "message": "Kindly have a look at the CL, \nTest contains scenario for printing restriction.\n",
       "revId": "84443b25b7678778fc32e20fb086a42b0fa22e60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a82d0800_5b1d8213",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-15T11:19:41Z",
+      "side": 1,
+      "message": "Thanks for adding the test.",
+      "revId": "84443b25b7678778fc32e20fb086a42b0fa22e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "757781fb_2c04097b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-15T11:19:41Z",
+      "side": 1,
+      "message": "Checking ui elements can be problematic as we have some old and slow test devices. It\u0027s better to increase the timeout to 15 seconds, which is the default timeout we use in the ui automation package, to prevent flakiness from those devices.",
+      "range": {
+        "startLine": 144,
+        "startChar": 53,
+        "endLine": 144,
+        "endChar": 54
+      },
+      "revId": "84443b25b7678778fc32e20fb086a42b0fa22e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cf259e1_d69d0685",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-15T11:19:41Z",
+      "side": 1,
+      "message": "The ui package is deprecated, please use uiauto instead:\n\nui :\u003d uiauto.New(tconn)\nif err \u003d ui.WaitUntilExists(nodewith.Name(\"Print\").ClassName(\"RootView\").Role(role.RoleTypeWindow))(ctx); err !\u003d nil {\n    printWindowExists \u003d false\n}",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 83
+      },
+      "revId": "84443b25b7678778fc32e20fb086a42b0fa22e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88df04f4_6d6eb5c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-15T11:19:41Z",
+      "side": 1,
+      "message": "For the test it doesn\u0027t matter if it is an actual error or the timeout, in both cases the test cannot find the dialog, so no need to check here again.",
+      "range": {
+        "startLine": 164,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 60
+      },
+      "revId": "84443b25b7678778fc32e20fb086a42b0fa22e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
