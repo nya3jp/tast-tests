@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d682ee8_c39e8180",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-15T01:30:46Z",
+      "side": 1,
+      "message": "May we move faster? Or just set to 0  to move cursor immediately?",
+      "range": {
+        "startLine": 283,
+        "startChar": 64,
+        "endLine": 283,
+        "endChar": 75
+      },
+      "revId": "303440601d5ed79037cb9e6da78e7809bcc48e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6526b7b8_5557918c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-15T01:30:46Z",
+      "side": 1,
+      "message": "If Sleep() is the last resort, we shall make it as short as possible.",
+      "range": {
+        "startLine": 288,
+        "startChar": 33,
+        "endLine": 288,
+        "endChar": 48
+      },
+      "revId": "303440601d5ed79037cb9e6da78e7809bcc48e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
