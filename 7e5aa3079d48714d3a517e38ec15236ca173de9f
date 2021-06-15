@@ -22,6 +22,30 @@
       },
       "revId": "7e5aa3079d48714d3a517e38ec15236ca173de9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec41edbc_d1ca7f05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 71
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-15T00:01:10Z",
+      "side": 1,
+      "message": "Hi Judy， I totally agree with you. Usually we use one shorten context for cleanup. But during our test, we found that the DUTs were not restored charging after testing for possibly two reasons: (1) the main logic times out but we didn\u0027t use a shorten ctx to do cleanup (2) we used a single shorten ctx for all deferred functions, but a later deferred function uses up the remaining cleanup time and setBatteryNormal have no time to run. The setBatteryNormal is so critical so we decided to give it its own time to do the cleanup.\nI added these comments to the code to make it clear.",
+      "parentUuid": "ca5ed080_177fc201",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 15
+      },
+      "revId": "7e5aa3079d48714d3a517e38ec15236ca173de9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
