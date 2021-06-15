@@ -275,6 +275,30 @@
       },
       "revId": "24e969adcaf1e436b2e478deb294253a2faf719c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b38e2694_dc37b2ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T06:32:54Z",
+      "side": 1,
+      "message": "btw, ash.SetClipboard(ctx context.Context, tconn *chrome.TestConn, data string)\n\nThis function is already wrapped and can be used across.",
+      "parentUuid": "871b5f85_f7708ca4",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "24e969adcaf1e436b2e478deb294253a2faf719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

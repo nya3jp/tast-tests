@@ -63,6 +63,29 @@
       },
       "revId": "916a4da9d1f3b8e6694b04b6a53a9055c32b6853",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20242afe_45a614ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T06:32:54Z",
+      "side": 1,
+      "message": "Can you please use uiauto.Combine for this block like above? It should save lots of code.",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "916a4da9d1f3b8e6694b04b6a53a9055c32b6853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
