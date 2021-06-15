@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610aae04_788e838c",
+        "filename": "src/chromiumos/tast/local/screenshot/hwdep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-15T02:19:12Z",
+      "side": 1,
+      "message": "Maybe make a tracking bug and reference it here?",
+      "revId": "4042f02ff6eee2a3782909d6664197bcb46f4dbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
