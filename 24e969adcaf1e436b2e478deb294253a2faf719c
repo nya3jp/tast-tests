@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "257b919b_2eaf3732",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T01:27:46Z",
+      "side": 1,
+      "message": "TEST format should be `tast run \u003cDUT\u003e inputs.VirtualKeyboardMultipaste`",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "24e969adcaf1e436b2e478deb294253a2faf719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4039873b_069865c1",
@@ -14,6 +37,98 @@
       "writtenOn": "2021-06-15T01:10:55Z",
       "side": 1,
       "message": "ptal?",
+      "revId": "24e969adcaf1e436b2e478deb294253a2faf719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6540e52c_29c0debb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T01:27:46Z",
+      "side": 1,
+      "message": "nit: const(\n    initialText \u003d \"Hello world\"\n    expectedText \u003d \"Hello worldHello world\"\n)",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "24e969adcaf1e436b2e478deb294253a2faf719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e50c172b_a95744b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T01:27:46Z",
+      "side": 1,
+      "message": "There is nothing special in this condition. You can reuse the precondition: pre.VKEnabledTablet",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "24e969adcaf1e436b2e478deb294253a2faf719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "432ec611_31bac2e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T01:27:46Z",
+      "side": 1,
+      "message": "Redundant. XKB_US_ENG is the default IME. No need to install.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "24e969adcaf1e436b2e478deb294253a2faf719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db8ff28f_daf65213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T01:27:46Z",
+      "side": 1,
+      "message": "I found this internal api. It might be very helpful if you do not really mind how the clipboard is set.\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go?l\u003d257",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 2
+      },
       "revId": "24e969adcaf1e436b2e478deb294253a2faf719c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
