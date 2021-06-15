@@ -74,7 +74,7 @@ var ym12Detect = regexp.MustCompile(`'YM12'`)
 var nv12Detect = regexp.MustCompile(`'NV12'`)
 
 // commandBuilderFn is the function type to generate the command line with arguments.
-type commandBuilderFn func(ctx context.Context, exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int, err error)
+type commandBuilderFn func(ctx context.Context, testName, exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int, err error)
 
 // testParam is used to describe the config used to run each test.
 type testParam struct {
@@ -391,7 +391,7 @@ func init() {
 				numFrames:       500,
 				fps:             30,
 				size:            coords.NewSize(320, 180),
-				commandBuilder:  vp8argsVpxenc,
+				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
 				decoder:         "vpxdec",
 				regExpKeyFrames: regExpKeyFramesVP8,
@@ -405,7 +405,7 @@ func init() {
 				numFrames:       500,
 				fps:             30,
 				size:            coords.NewSize(640, 360),
-				commandBuilder:  vp8argsVpxenc,
+				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
 				decoder:         "vpxdec",
 				regExpKeyFrames: regExpKeyFramesVP8,
@@ -419,7 +419,7 @@ func init() {
 				numFrames:       500,
 				fps:             30,
 				size:            coords.NewSize(1280, 720),
-				commandBuilder:  vp8argsVpxenc,
+				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
 				decoder:         "vpxdec",
 				regExpKeyFrames: regExpKeyFramesVP8,
@@ -435,7 +435,7 @@ func init() {
 				numFrames:       846,
 				fps:             50,
 				size:            coords.NewSize(320, 180),
-				commandBuilder:  vp8argsVpxenc,
+				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
 				decoder:         "vpxdec",
 				regExpKeyFrames: regExpKeyFramesVP8,
@@ -449,7 +449,7 @@ func init() {
 				numFrames:       846,
 				fps:             50,
 				size:            coords.NewSize(640, 360),
-				commandBuilder:  vp8argsVpxenc,
+				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
 				decoder:         "vpxdec",
 				regExpKeyFrames: regExpKeyFramesVP8,
@@ -463,10 +463,98 @@ func init() {
 				numFrames:       846,
 				fps:             50,
 				size:            coords.NewSize(1280, 720),
-				commandBuilder:  vp8argsVpxenc,
+				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
 				decoder:         "vpxdec",
 				regExpKeyFrames: regExpKeyFramesVP8,
+			},
+			ExtraData: []string{"gipsrestat-1280x720.vp9.webm"},
+			// Devices with small SSDs can't store the files, see b/181165183.
+			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(24)),
+		}, {
+			Name: "vpxenc_vp9_180",
+			Val: testParam{
+				command:         "vpxenc",
+				filename:        "tulip2-320x180.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(320, 180),
+				commandBuilder:  argsVpxenc,
+				regExpFPS:       regExpFPSVpxenc,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP9,
+			},
+			ExtraData: []string{"tulip2-320x180.vp9.webm"},
+		}, {
+			Name: "vpxenc_vp9_360",
+			Val: testParam{
+				command:         "vpxenc",
+				filename:        "tulip2-640x360.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(640, 360),
+				commandBuilder:  argsVpxenc,
+				regExpFPS:       regExpFPSVpxenc,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP9,
+			},
+			ExtraData: []string{"tulip2-640x360.vp9.webm"},
+		}, {
+			Name: "vpxenc_vp9_720",
+			Val: testParam{
+				command:         "vpxenc",
+				filename:        "tulip2-1280x720.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(1280, 720),
+				commandBuilder:  argsVpxenc,
+				regExpFPS:       regExpFPSVpxenc,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP9,
+			},
+			ExtraData: []string{"tulip2-1280x720.vp9.webm"},
+			// Devices with small SSDs can't store the files, see b/181165183.
+			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(24)),
+		}, {
+			Name: "vpxenc_vp9_180_meet",
+			Val: testParam{
+				command:         "vpxenc",
+				filename:        "gipsrestat-320x180.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(320, 180),
+				commandBuilder:  argsVpxenc,
+				regExpFPS:       regExpFPSVpxenc,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP9,
+			},
+			ExtraData: []string{"gipsrestat-320x180.vp9.webm"},
+		}, {
+			Name: "vpxenc_vp9_360_meet",
+			Val: testParam{
+				command:         "vpxenc",
+				filename:        "gipsrestat-640x360.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(640, 360),
+				commandBuilder:  argsVpxenc,
+				regExpFPS:       regExpFPSVpxenc,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP9,
+			},
+			ExtraData: []string{"gipsrestat-640x360.vp9.webm"},
+		}, {
+			Name: "vpxenc_vp9_720_meet",
+			Val: testParam{
+				command:         "vpxenc",
+				filename:        "gipsrestat-1280x720.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(1280, 720),
+				commandBuilder:  argsVpxenc,
+				regExpFPS:       regExpFPSVpxenc,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData: []string{"gipsrestat-1280x720.vp9.webm"},
 			// Devices with small SSDs can't store the files, see b/181165183.
@@ -598,7 +686,7 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 	}
 	defer os.Remove(yuvFile)
 
-	command, encodedFile, targetBitrate, err := testOpt.commandBuilder(ctx, testOpt.command, yuvFile, testOpt.size, int(testOpt.fps))
+	command, encodedFile, targetBitrate, err := testOpt.commandBuilder(ctx, s.TestName(), testOpt.command, yuvFile, testOpt.size, int(testOpt.fps))
 	if err != nil {
 		s.Fatal("Failed to construct the command line: ", err)
 	}
@@ -775,7 +863,7 @@ func compareFiles(ctx context.Context, decoder, yuvFile, encodedFile, outDir str
 }
 
 // vp8argsVAAPI constructs the command line for the VP8 encoding binary exe.
-func vp8argsVAAPI(ctx context.Context, exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int, _ error) {
+func vp8argsVAAPI(ctx context.Context, _, exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int, _ error) {
 	command = append(command, exe, strconv.Itoa(size.Width), strconv.Itoa(size.Height), yuvFile)
 
 	ivfFile = yuvFile + ".ivf"
@@ -797,7 +885,7 @@ func vp8argsVAAPI(ctx context.Context, exe, yuvFile string, size coords.Size, fp
 }
 
 // vp9argsVAAPI constructs the command line for the VP9 encoding binary exe.
-func vp9argsVAAPI(ctx context.Context, exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int, _ error) {
+func vp9argsVAAPI(ctx context.Context, _, exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int, _ error) {
 	command = append(command, exe, strconv.Itoa(size.Width), strconv.Itoa(size.Height), yuvFile)
 
 	ivfFile = yuvFile + ".ivf"
@@ -824,7 +912,7 @@ func vp9argsVAAPI(ctx context.Context, exe, yuvFile string, size coords.Size, fp
 }
 
 // h264argsVAAPI constructs the command line for the H.264 encoding binary exe.
-func h264argsVAAPI(ctx context.Context, exe, yuvFile string, size coords.Size, fps int) (command []string, h264File string, bitrate int, _ error) {
+func h264argsVAAPI(ctx context.Context, _, exe, yuvFile string, size coords.Size, fps int) (command []string, h264File string, bitrate int, _ error) {
 	command = append(command, exe, "-w", strconv.Itoa(size.Width), "-h", strconv.Itoa(size.Height))
 	command = append(command, "--srcyuv", yuvFile, "--fourcc", "YV12")
 	command = append(command, "-n", "0" /* Read number of frames from yuvFile*/)
@@ -846,24 +934,33 @@ func h264argsVAAPI(ctx context.Context, exe, yuvFile string, size coords.Size, f
 	return
 }
 
-// vp8argsVpxenc constructs the command line for vpxenc.
-func vp8argsVpxenc(ctx context.Context, exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int, _ error) {
+// argsVpxenc constructs the command line for vpxenc.
+func argsVpxenc(ctx context.Context, testName, exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int, _ error) {
 	command = append(command, exe, "-w", strconv.Itoa(size.Width), "-h", strconv.Itoa(size.Height))
 
 	command = append(command, "--passes=1" /* 1 encoding pass */)
-	command = append(command, "--codec=vp8")
 
 	// WebRTC uses Constant BitRate (CBR) with a very large intra-frame period and
 	// a certain quality parameter and target bitrate. See WebRTC libvpx wrapper
-	// (LibvpxVP8Encoder at the time of writing) and also
+	// (LibvpxVP8Encoder/LibvpxVP9Encoder at the time of writing) and also
 	// https://www.webmproject.org/docs/encoder-parameters/#3-rate-control.
 	command = append(command, "--kf-min-dist=0", "--kf-max-dist=3000")
 	command = append(command, "--min-q=2", "--max-q=63" /* Quality Parameter */)
 	command = append(command, "--end-usage=cbr" /* Constant BitRate */)
 	command = append(command, "--error-resilient=0" /* Off. */)
-	command = append(command, "--undershoot-pct=100", "--overshoot-pct=15")
 	command = append(command, "--buf-sz=1000", "--buf-initial-sz=500", "--buf-optimal-sz=600")
 	command = append(command, "--cpu-used=-6")
+	// Under/Overshoot are the only differences between VP8 and VP9.
+	if strings.Contains(testName, "vp8") {
+		command = append(command, "--codec=vp8")
+		command = append(command, "--undershoot-pct=100", "--overshoot-pct=15")
+	} else if strings.Contains(testName, "vp9") {
+		command = append(command, "--codec=vp9")
+		command = append(command, "--undershoot-pct=50", "--overshoot-pct=50")
+	} else {
+		return nil, "", 0, errors.New("unrecognized codec name in testname: " + testName)
+	}
+
 	if size.Width*size.Height > 640*480 {
 		// WebRTC uses 2 threads for resolutions above VGA if the CPU has 3 or more
 		// cores. All ChromeOS devices should comply.
@@ -884,7 +981,7 @@ func vp8argsVpxenc(ctx context.Context, exe, yuvFile string, size coords.Size, f
 }
 
 // h264argsV4L2 constructs the command line for the v4l2_stateful_encoder and for H.264.
-func h264argsV4L2(ctx context.Context, exe, yuvFile string, size coords.Size, fps int) (command []string, h264File string, bitrate int, err error) {
+func h264argsV4L2(ctx context.Context, _, exe, yuvFile string, size coords.Size, fps int) (command []string, h264File string, bitrate int, err error) {
 	command = append(command, exe, "--width", strconv.Itoa(size.Width), "--height", strconv.Itoa(size.Height))
 	command = append(command, "--file", yuvFile, "--file_format", "yv12")
 
