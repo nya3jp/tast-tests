@@ -107,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f966e024_79950db4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 73
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-15T05:28:45Z",
+      "side": 1,
+      "message": "You can keep TODOs for review visibility. You do not actually need to create new bugs, but using the same one in this cl. A bug can have multiple cls. A bug can only be closed once all TODOs are fixed.",
+      "parentUuid": "9fad2de6_0ae5d3e4",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 8
+      },
+      "revId": "58874fb559bc3f2a3cfed6f4bb8edd61d239dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4029b5b8_4160b0db",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
         "patchSetId": 73
