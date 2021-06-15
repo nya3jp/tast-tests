@@ -22,6 +22,30 @@
       },
       "revId": "60161c0620d91a04a74ede9e0d8dc8bf8362c875",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76e774d0_368ee52c",
+        "filename": "src/chromiumos/tast/local/input/audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-15T03:53:26Z",
+      "side": 1,
+      "message": "Sounds good to me:) Changed it.",
+      "parentUuid": "dce9104d_d55512ea",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "60161c0620d91a04a74ede9e0d8dc8bf8362c875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
