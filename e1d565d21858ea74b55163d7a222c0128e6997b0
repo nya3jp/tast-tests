@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8900768_952542a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-06-15T13:46:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8c88e4c_cba03e94",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "e1d565d21858ea74b55163d7a222c0128e6997b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce1e46fb_ff78b831",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bc3118b_69063852",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-06-15T13:46:41Z",
+      "side": 1,
+      "message": "Yes, it doesn\u0027t pass without LeftClickUntil.",
+      "parentUuid": "ce1e46fb_ff78b831",
+      "range": {
+        "startLine": 132,
+        "startChar": 50,
+        "endLine": 132,
+        "endChar": 64
+      },
+      "revId": "e1d565d21858ea74b55163d7a222c0128e6997b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "733d6b5a_eb463cec",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-06-14T20:50:23Z",
       "side": 1,
       "message": "I\u0027m not familiar with the context, so just wondering if there\u0027s a reason this is needed in addition to the deferred call on L106? Seems like that one would run here anyways (right after the conn to the scan page is closed).",
+      "revId": "e1d565d21858ea74b55163d7a222c0128e6997b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b93111e5_1788de78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-06-15T13:46:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "733d6b5a_eb463cec",
       "revId": "e1d565d21858ea74b55163d7a222c0128e6997b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
