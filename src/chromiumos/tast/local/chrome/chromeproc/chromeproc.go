@@ -7,6 +7,7 @@ package chromeproc
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strings"
 
@@ -67,6 +68,7 @@ func GetRootPID() (int, error) {
 		return -1, err
 	}
 
+	lastFoundPid := -1
 	for _, pid := range pids {
 		// If we see errors, assume that the process exited.
 		proc, err := process.NewProcess(int32(pid))
@@ -103,9 +105,21 @@ func GetRootPID() (int, error) {
 			continue
 		}
 
+		status := "not retrieved"
+		if status, err = pproc.Status(); err != nil {
+			fmt.Printf("chromeproc: wasn't able to retrieve status for process %d\n", ppid)
+			continue
+		}
+		// It happens that the first found matching process was closing https://crbug.com/1217984
+		// Print out what processes are found and keep the last one for returning.
+		fmt.Printf("chromeproc: found Chrome process: %d status %s\n", pid, status)
 		// It is still possible that proc is not a browser process if the browser
 		// process exited immediately after it forked, but it is fairly unlikely.
-		return pid, nil
+		lastFoundPid = pid
+	}
+	// if found process
+	if lastFoundPid > 0 {
+		return lastFoundPid, nil
 	}
 	return -1, errors.New("root not found")
 }
