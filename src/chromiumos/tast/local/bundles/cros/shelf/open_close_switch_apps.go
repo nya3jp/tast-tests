@@ -12,8 +12,12 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/touch"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -34,7 +38,7 @@ func init() {
 // Basic info about the apps used in this test, used in several verification steps.
 // Grouping these together helps simplify the flow of the test.
 type appInfo struct {
-	ShelfBtn    *ui.Node
+	ShelfBtn    *nodewith.Finder
 	ID          string
 	WindowTitle string
 	Name        string
@@ -53,13 +57,25 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get tablet mode status: ", err)
 	}
-	var tc *pointer.TouchController
+	var tc *pointer.TouchContext
+	var tsew *input.TouchscreenEventWriter
+	var tcc *input.TouchCoordConverter
+	var stw *input.SingleTouchEventWriter
 	if tabletMode {
-		tc, err = pointer.NewTouchController(ctx, tconn)
+		tc, err = pointer.NewTouch(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to create the touch controller: ", err)
 		}
 		defer tc.Close()
+		tsew, tcc, err = touch.NewTouchscreenAndConverter(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to access to the touchscreen: ", err)
+		}
+		defer tsew.Close()
+		stw, err = tsew.NewSingleTouchWriter()
+		if err != nil {
+			s.Fatal("Failed to create the single touch writer: ", err)
+		}
 	}
 
 	// The test account has only Chrome pinned to the shelf, so we'll have to
@@ -85,19 +101,16 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 		chromeApp.Name = "Google Chrome"
 	}
 
-	// Find the shelf icon buttons. StableFind ensures the shelf icons have stopped redistributing after launching the apps.
-	opts := testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 10 * time.Second}
-	chromeBtn, err := ui.StableFind(ctx, tconn, ui.FindParams{ClassName: "ash/ShelfAppButton", Name: chromeApp.Name}, &opts)
-	if err != nil {
+	// Find the shelf icon buttons.
+	ui := uiauto.New(tconn)
+	chromeBtn := nodewith.ClassName("ash/ShelfAppButton").Name(chromeApp.Name)
+	filesBtn := nodewith.ClassName("ash/ShelfAppButton").Name(apps.Files.Name)
+	if err := ui.WaitUntilExists(chromeBtn)(ctx); err != nil {
 		s.Fatal("Failed to find Chrome shelf button: ", err)
 	}
-	defer chromeBtn.Release(ctx)
-
-	filesBtn, err := ui.StableFind(ctx, tconn, ui.FindParams{ClassName: "ash/ShelfAppButton", Name: apps.Files.Name}, &opts)
-	if err != nil {
+	if err := ui.WaitUntilExists(filesBtn)(ctx); err != nil {
 		s.Fatal("Failed to find Files shelf button: ", err)
 	}
-	defer filesBtn.Release(ctx)
 
 	chromeInfo := appInfo{chromeBtn, chromeApp.ID, "New Tab", chromeApp.Name}
 	filesInfo := appInfo{filesBtn, apps.Files.ID, "Files - My files", apps.Files.Name}
@@ -118,11 +131,11 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 	for i := 0; i < 2; i++ {
 		for _, app := range checkApps {
 			if tabletMode {
-				if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, tc.EventWriter(), tc.TouchCoordConverter()); err != nil {
+				if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
 					s.Fatal("Failed to swipe up the hotseat: ", err)
 				}
 			}
-			if err := app.ShelfBtn.LeftClick(ctx); err != nil {
+			if err := ui.LeftClick(app.ShelfBtn)(ctx); err != nil {
 				s.Fatalf("Failed to click %v shelf button: %v", app.Name, err)
 			}
 			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
@@ -140,30 +153,22 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 	// Close the apps via shelf context menu
 	for _, app := range checkApps {
 		if tabletMode {
-			if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, tc.EventWriter(), tc.TouchCoordConverter()); err != nil {
+			if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
 				s.Fatal("Failed to swipe up the hotseat: ", err)
 			}
 		}
-		if err := app.ShelfBtn.RightClick(ctx); err != nil {
+		if err := ui.RightClick(app.ShelfBtn)(ctx); err != nil {
 			s.Fatalf("Failed to right-click %v shelf button: %v", app.Name, err)
 		}
 
-		params := ui.FindParams{Role: ui.RoleTypeMenuItem, Name: "Close"}
-		closeBtn, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-		if err != nil {
+		closeBtn := nodewith.Role(role.MenuItem).Name("Close")
+		if err := ui.WaitUntilExists(closeBtn)(ctx); err != nil {
 			s.Fatalf("Failed to find Close option in %v shelf icon context menu: %v", app.Name, err)
 		}
-		defer closeBtn.Release(ctx)
 
 		// The 'Close' button is not immediately clickable after we context-click,
 		// so keep clicking until it goes away, indicating it has been clicked.
-		condition := func(ctx context.Context) (bool, error) {
-			exists, err := ui.Exists(ctx, tconn, params)
-			return !exists, err
-		}
-		opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond}
-
-		if err := closeBtn.LeftClickUntil(ctx, condition, &opts); err != nil {
+		if err := ui.LeftClickUntil(closeBtn, ui.Gone(closeBtn))(ctx); err != nil {
 			s.Fatalf("Failed to click Close in %v shelf icon context menu: %v", app.Name, err)
 		}
 		if err := ash.WaitForAppClosed(ctx, tconn, app.ID); err != nil {
