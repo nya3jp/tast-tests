@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b15a3e1_16bf0cb3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/kvmrepros.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-06-15T15:30:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dc3888dd_f5195204",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "4b61761222c160a681ad3824ffd5dc3f661dfc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ac61d11_e3f0e401",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-15T09:05:26Z",
       "side": 1,
       "message": "style: Copying",
+      "range": {
+        "startLine": 67,
+        "startChar": 27,
+        "endLine": 67,
+        "endChar": 34
+      },
+      "revId": "4b61761222c160a681ad3824ffd5dc3f661dfc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c6ebc3b_b4d2114a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-06-15T15:30:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3ac61d11_e3f0e401",
       "range": {
         "startLine": 67,
         "startChar": 27,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93d231e9_fb609cad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-06-15T15:30:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "799b843e_96cba73f",
+      "range": {
+        "startLine": 81,
+        "startChar": 26,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "4b61761222c160a681ad3824ffd5dc3f661dfc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0350c29c_536445bd",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-06-15T09:05:26Z",
       "side": 1,
       "message": "unzip can take long time as well, so let us pass ctx to this function and use exec.CommandContext instead.",
+      "range": {
+        "startLine": 96,
+        "startChar": 13,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "4b61761222c160a681ad3824ffd5dc3f661dfc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfe546bb_a7bc85ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-06-15T15:30:38Z",
+      "side": 1,
+      "message": "Changed to CommandContext, thanks",
+      "parentUuid": "0350c29c_536445bd",
       "range": {
         "startLine": 96,
         "startChar": 13,
