@@ -17,16 +17,20 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/memorystress"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 )
+
+type testParams struct {
+	isLacros bool
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     MemoryStressBasic,
 		Desc:     "Create heavy memory pressure and check if oom-killer is invoked",
 		Contacts: []string{"vovoy@chromium.org", "chromeos-memory@google.com"},
-		Attr:     []string{"group:crosbolt", "crosbolt_memory_nightly"},
 		// This test takes 15-30 minutes to run.
 		Timeout: 45 * time.Minute,
 		Data: []string{
@@ -41,10 +45,26 @@ func init() {
 			"platform.MemoryStressBasic.useHugePages",
 		},
 		Params: []testing.Param{{
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_memory_nightly"},
 			ExtraSoftwareDeps: []string{"android_p"},
+			Val: testParams{
+				isLacros: false,
+			},
 		}, {
 			Name:              "vm",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_memory_nightly"},
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: testParams{
+				isLacros: false,
+			},
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraData:         []string{launcher.DataArtifact},
+			Fixture:           "lacrosStartedByData",
+			Val: testParams{
+				isLacros: true,
+			},
 		}},
 	})
 
@@ -102,8 +122,14 @@ func MemoryStressBasic(ctx context.Context, s *testing.State) {
 	perfValues := perf.NewValues()
 
 	const mbPerTab = 800
-	if err := stressMain(ctx, localRand, mbPerTab, minFilelistKB, baseURL, enableARC, useHugePages, perfValues); err != nil {
-		s.Fatal("stressMain failed: ", err)
+	if s.Param().(testParams).isLacros {
+		if err := lacrosMain(ctx, s, localRand, mbPerTab, baseURL, perfValues); err != nil {
+			s.Fatal("lacrosMain failed: ", err)
+		}
+	} else {
+		if err := stressMain(ctx, localRand, mbPerTab, minFilelistKB, baseURL, enableARC, useHugePages, perfValues); err != nil {
+			s.Fatal("stressMain failed: ", err)
+		}
 	}
 
 	if err := perfValues.Save(s.OutDir()); err != nil {
@@ -162,4 +188,29 @@ func stressTestCase(ctx context.Context, localRand *rand.Rand, mbPerTab, switchC
 	}
 
 	return memorystress.TestCase(ctx, cr, localRand, mbPerTab, switchCount, compressRatio, baseURL)
+}
+
+func lacrosMain(ctx context.Context, s *testing.State, localRand *rand.Rand, mbPerTab int, baseURL string, perfValues *perf.Values) error {
+	// TODO(b/191105438): Tune Lacros variation when Lacros tab discarder is mature.
+	lacros, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData), s.DataPath(launcher.DataArtifact))
+	if err != nil {
+		return errors.Wrap(err, "failed to launch lacros-chrome")
+	}
+
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for idle CPU")
+	}
+
+	const switchCount = 10
+	const compressRatio = 0.67
+	result, err := memorystress.TestCase(ctx, lacros, localRand, mbPerTab, switchCount, compressRatio, baseURL)
+	if err != nil {
+		return errors.Wrap(err, "memorystress test case failed")
+	}
+
+	if err := memorystress.ReportTestCaseResult(ctx, perfValues, result, "stress"); err != nil {
+		return errors.Wrap(err, "reporting result failed")
+	}
+
+	return nil
 }
