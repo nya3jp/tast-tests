@@ -231,6 +231,30 @@
       },
       "revId": "f8753550c0a67a62b4f676f5510581b311940189",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32e5290a_cd019e07",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1003044
+      },
+      "writtenOn": "2021-06-15T05:45:20Z",
+      "side": 1,
+      "message": "I couldn\u0027t get this race to repro but I\u0027m pretty sure it is an issue. Anyway the latest Cl uploaded uses polling so I think this should satisfy everyone?",
+      "parentUuid": "6b8be3e4_f6cbdc96",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 2
+      },
+      "revId": "f8753550c0a67a62b4f676f5510581b311940189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
