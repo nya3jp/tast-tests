@@ -7,6 +7,8 @@ package pre
 
 import (
 	"context"
+	"fmt"
+	"path"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -32,6 +34,7 @@ type impl struct {
 	origBootMode *common.BootMode
 	origGBBFlags *pb.GBBFlagsState
 	timeout      time.Duration
+	savedOutDir  string
 }
 
 // NormalMode boots to Normal Mode.
@@ -77,6 +80,16 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 		i.initHelper(ctx, s)
 	}
 
+	// Copy the logs from the previous test, then rotate the log file
+	i.copyServodLog(ctx, s)
+	i.savedOutDir = s.OutDir()
+	if err := i.v.Helper.RequireServo(ctx); err != nil {
+		s.Fatal("Could not require servo: ", err)
+	}
+	if err := i.v.Helper.Servo.RotateLogFiles(ctx); err != nil {
+		s.Fatal("Could not rotate log files: ", err)
+	}
+
 	if err := i.setupBootMode(ctx); err != nil {
 		s.Fatal("Could not setup BootMode: ", err)
 	}
@@ -106,6 +119,8 @@ func (i *impl) Close(ctx context.Context, s *testing.PreState) {
 	if err := i.restoreBootMode(ctx); err != nil {
 		s.Error("Could not restore BootMode: ", err)
 	}
+
+	i.copyServodLog(ctx, s)
 }
 
 // String identifies this Precondition.
@@ -286,4 +301,17 @@ func (i *impl) rebootIfRequired(ctx context.Context, a, b pb.GBBFlagsState) erro
 		}
 	}
 	return nil
+}
+
+// copyServodLog copies /var/log/servod_${SERVO_PORT}/latest.DEBUG on the servo host to outDir/servod.DEBUG
+func (i *impl) copyServodLog(ctx context.Context, s *testing.PreState) {
+	if i.savedOutDir == "" {
+		return
+	}
+
+	servodLogPath := fmt.Sprintf("/var/log/servod_%d/latest.DEBUG", i.v.Helper.ServoProxy.GetPort())
+	s.Log("Copying  ", servodLogPath)
+	if err := i.v.Helper.ServoProxy.GetFile(ctx, false, servodLogPath, path.Join(i.savedOutDir, "servod.DEBUG")); err != nil {
+		s.Log("Failure to copy servod log: ", err)
+	}
 }

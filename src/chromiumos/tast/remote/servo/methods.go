@@ -25,9 +25,10 @@ const (
 	ImageUSBKeyDirection StringControl = "image_usbkey_direction"
 	ImageUSBKeyPwr       StringControl = "image_usbkey_pwr"
 	PowerState           StringControl = "power_state"
+	RotateServodLogs     StringControl = "rotate_servod_logs"
+	UARTCmd              StringControl = "servo_v4_uart_cmd"
 	V4Role               StringControl = "servo_v4_role"
 	V4Type               StringControl = "servo_v4_type"
-	UARTCmd              StringControl = "servo_v4_uart_cmd"
 	WatchdogAdd          StringControl = "watchdog_add"
 	WatchdogRemove       StringControl = "watchdog_remove"
 )
@@ -696,4 +697,9 @@ func (s *Servo) RunUSBCDPConfigCommand(ctx context.Context, args ...string) erro
 func (s *Servo) SetCC(ctx context.Context, val OnOffValue) error {
 	cmd := "cc " + string(val)
 	return s.runUARTCommand(ctx, cmd)
+}
+
+// RotateLogFiles instructs servod to rotate the log files
+func (s *Servo) RotateLogFiles(ctx context.Context) error {
+	return s.SetString(ctx, RotateServodLogs, "yes")
 }

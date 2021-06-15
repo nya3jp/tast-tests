@@ -25,9 +25,10 @@ const proxyTimeout = 10 * time.Second // max time for establishing SSH connectio
 // Proxy wraps a Servo object and forwards connections to the servod instance
 // over SSH if needed.
 type Proxy struct {
-	svo *Servo
-	hst *ssh.Conn      // nil if servod is running locally
-	fwd *ssh.Forwarder // nil if servod is running locally
+	svo  *Servo
+	hst  *ssh.Conn      // nil if servod is running locally
+	fwd  *ssh.Forwarder // nil if servod is running locally
+	port int
 }
 
 func splitHostPort(servoHostPort string) (string, int, int, error) {
@@ -119,6 +120,7 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newPr
 	if err != nil {
 		return nil, err
 	}
+	pxy.port = port
 	// If the servod instance isn't running locally, assume that we need to connect to it via SSH.
 	if (host != "localhost" && host != "127.0.0.1" && host != "::1") || sshPort != 22 {
 		// First, create an SSH connection to the remote system running servod.
@@ -290,3 +292,6 @@ func (p *Proxy) PutFiles(ctx context.Context, asRoot bool, fileMap map[string]st
 	_, err := linuxssh.PutFiles(ctx, p.hst, fileMap, linuxssh.DereferenceSymlinks)
 	return err
 }
+
+// GetPort returns the port where servod is running on the server.
+func (p *Proxy) GetPort() int { return p.port }
