@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c83fecb_83a75de5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-06-15T00:47:57Z",
+      "side": 1,
+      "message": "To clarify, this CL appears to be changing it from 1 minute with 5 retries -\u003e 5 minutes with 20 retries? I\u0027d support submitting this CL as is, except keeping it on the current 1 minute, 5 retries. The rest of the code looks good to me.\n\nIMO, when something requires 20 retries to work, it\u0027s broken as hell. My suspicion would be that it just has to wait for some kind of service to be ready and we need some sort of API to properly wait for it, if it\u0027s failing that many times.\n\nI\u0027d prefer to just submit the rest of the changes, and see if it improves flakiness at all, and that way we hopefully don\u0027t hide any real flakiness issues.",
+      "revId": "632b19678313780b02ffac9b8b8d05e451826ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
