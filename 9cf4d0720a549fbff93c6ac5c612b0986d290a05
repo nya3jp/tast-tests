@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "af20c1ac_2556a746",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-15T08:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e730287_7c0acd61",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "9cf4d0720a549fbff93c6ac5c612b0986d290a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "61b3e858_79b5cad4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -71,6 +95,30 @@
       "writtenOn": "2021-06-14T19:50:29Z",
       "side": 1,
       "message": "Please update to chromeos-dlp@google.com",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "9cf4d0720a549fbff93c6ac5c612b0986d290a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f71b246_44b45648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-15T08:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e61df82_12cbd130",
       "range": {
         "startLine": 28,
         "startChar": 4,
