@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ded8f22_508db664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-15T08:43:04Z",
+      "side": 1,
+      "message": "Thanks for spotting this.\n\nThis is actually accidental... I was unsure why the code wasn\u0027t working, so I tested with stable (thinking that the button might be missing). But, in the end it turned out to be that the button was sometimes not registering click (tested manually).\n\nUpdated the code. Done.",
+      "parentUuid": "c84fa4b4_5f9b79bc",
+      "range": {
+        "startLine": 100,
+        "startChar": 16,
+        "endLine": 100,
+        "endChar": 31
+      },
+      "revId": "06368474ab6c5c08fad1ea98483db2eb71c703cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc4cc027_339b5e8b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-15T02:16:00Z",
       "side": 1,
       "message": "tests?",
+      "range": {
+        "startLine": 5,
+        "startChar": 42,
+        "endLine": 5,
+        "endChar": 49
+      },
+      "revId": "06368474ab6c5c08fad1ea98483db2eb71c703cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "159653ab_b40fada8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/doc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-15T08:43:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc4cc027_339b5e8b",
       "range": {
         "startLine": 5,
         "startChar": 42,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "831c33f0_70012182",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-15T08:43:04Z",
+      "side": 1,
+      "message": "removed the accidental comment",
+      "parentUuid": "095f3867_c55a26b8",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 34
+      },
+      "revId": "06368474ab6c5c08fad1ea98483db2eb71c703cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6c310f3_ff6cabbf",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-15T02:16:00Z",
       "side": 1,
       "message": "this should be in a separate package too at some point...",
+      "range": {
+        "startLine": 138,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 19
+      },
+      "revId": "06368474ab6c5c08fad1ea98483db2eb71c703cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0c6132b_65d11725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-15T08:43:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e6c310f3_ff6cabbf",
       "range": {
         "startLine": 138,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70a8d0b9_cfb61051",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-15T08:43:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81a9a58d_52f793ea",
+      "range": {
+        "startLine": 227,
+        "startChar": 5,
+        "endLine": 227,
+        "endChar": 107
+      },
+      "revId": "06368474ab6c5c08fad1ea98483db2eb71c703cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd39a571_6a321868",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-06-15T02:16:00Z",
       "side": 1,
       "message": "DoH is disabled when a VPN is running. Are you going to test that?",
+      "range": {
+        "startLine": 268,
+        "startChar": 3,
+        "endLine": 268,
+        "endChar": 81
+      },
+      "revId": "06368474ab6c5c08fad1ea98483db2eb71c703cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ca5e128_ab88b703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-15T08:43:04Z",
+      "side": 1,
+      "message": "Added to the end of the test, done.",
+      "parentUuid": "bd39a571_6a321868",
       "range": {
         "startLine": 268,
         "startChar": 3,
