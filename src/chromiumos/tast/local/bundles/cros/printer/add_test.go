@@ -83,6 +83,7 @@ func TestAddParams(t *testing.T) {
 		iTest("hp_ljcolor", "printer_add_hp_ljcolor.ppd.gz", "printer_add_hp_printer_ljcolor_out.pcl"),
 		test("hp_pwg_raster_color", "hp_ipp_everywhere.ppd", "printer_add_hp_ipp_everywhere_golden.pwg"),
 		test("hp_pwg_raster_monochrome", "hp_ipp_everywhere.ppd", "printer_add_hp_pwg_raster_monochrome_golden.pwg", "print-color-mode=monochrome"),
+		iTest("nec", "printer_nec_npdl.ppd", "printer_add_nec_golden.bin"),
 		test("star", "printer_add_star_printer_rastertostar.ppd.gz", "printer_add_star_printer_rastertostar.bin"),
 		test("star_lm", "printer_add_star_printer_rastertostarlm.ppd.gz", "printer_add_star_printer_rastertostarlm.bin"),
 

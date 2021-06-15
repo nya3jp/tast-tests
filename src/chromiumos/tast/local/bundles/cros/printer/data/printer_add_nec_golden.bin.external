@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_nec_golden_20210616.bin",
+  "size": 1437,
+  "sha256sum": "0e970c6e00b1c79b000f372a1448c35dda4db22673fe61c366b13793e64daa42"
+}
