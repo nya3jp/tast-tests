@@ -33,6 +33,23 @@
       "message": "tast-wise: +2\n\nplease wait for Jorge\u0027s or Betul\u0027s review",
       "revId": "b65cc4e54001cf3845b17d38b83e3a1d7ca79431",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "168ccbed_e02ade67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-06-15T18:45:28Z",
+      "side": 1,
+      "message": "Is the owner always tpm2-simulator? The test is not failing 100%, so I suspect there is a race here.",
+      "revId": "b65cc4e54001cf3845b17d38b83e3a1d7ca79431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
