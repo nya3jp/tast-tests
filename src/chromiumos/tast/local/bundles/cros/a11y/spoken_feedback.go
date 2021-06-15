@@ -96,7 +96,7 @@ func SpokenFeedback(ctx context.Context, s *testing.State) {
 	}
 	defer sm.Close()
 
-	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+O", "O"}, []string{"tab created", "ChromeVox Options"}); err != nil {
+	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+O", "O"}, []string{"ChromeVox Options"}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
 
