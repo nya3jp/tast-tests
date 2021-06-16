@@ -22,6 +22,30 @@
       },
       "revId": "72c3511c046216f0d32a3c7cb1e7df7d30a74704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0d7b27_0db419e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-06-16T23:19:55Z",
+      "side": 0,
+      "message": "I am not even sure whether this was working in the first place. If we do not wait long enough, it probably will not cause the test to fail; it just might prevent the test from testing what it is supposed to test.",
+      "parentUuid": "6e974119_9e6722d3",
+      "range": {
+        "startLine": 94,
+        "startChar": 14,
+        "endLine": 94,
+        "endChar": 44
+      },
+      "revId": "72c3511c046216f0d32a3c7cb1e7df7d30a74704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
