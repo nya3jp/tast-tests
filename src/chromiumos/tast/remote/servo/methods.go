@@ -25,11 +25,15 @@ const (
 	ImageUSBKeyDirection StringControl = "image_usbkey_direction"
 	ImageUSBKeyPwr       StringControl = "image_usbkey_pwr"
 	PowerState           StringControl = "power_state"
-	V4Role               StringControl = "servo_v4_role"
-	V4Type               StringControl = "servo_v4_type"
 	UARTCmd              StringControl = "servo_v4_uart_cmd"
 	WatchdogAdd          StringControl = "watchdog_add"
 	WatchdogRemove       StringControl = "watchdog_remove"
+
+	// DUTConnectionType was previously known as V4Type ("servo_v4_type")
+	DUTConnectionType StringControl = "root.dut_connection_type"
+
+	// PDRole was previously known as V4Role ("servo_v4_role")
+	PDRole StringControl = "servo_pd_role"
 )
 
 // An IntControl contains the name of a gettable/settable Control which takes an integer value.
@@ -59,7 +63,7 @@ type OnOffControl string
 const (
 	RecMode        OnOffControl = "rec_mode"
 	CCDKeepaliveEn OnOffControl = "ccd_keepalive_en"
-	DTSMode        OnOffControl = "servo_v4_dts_mode"
+	DTSMode        OnOffControl = "servo_dts_mode"
 )
 
 // An OnOffValue is a string value that would be accepted by an OnOffControl.
@@ -134,28 +138,28 @@ const (
 	USBMuxHost USBMuxState = "servo_sees_usbkey"
 )
 
-// A V4RoleValue is a string that would be accepted by the V4Role control.
-type V4RoleValue string
+// A PDRoleValue is a string that would be accepted by the PDRole control.
+type PDRoleValue string
 
-// These are the string values that can be passed to V4Role.
+// These are the string values that can be passed to PDRole.
 const (
-	V4RoleSnk V4RoleValue = "snk"
-	V4RoleSrc V4RoleValue = "src"
+	PDRoleSnk PDRoleValue = "snk"
+	PDRoleSrc PDRoleValue = "src"
 
-	// V4RoleNA indicates a non-v4 servo.
-	V4RoleNA V4RoleValue = "n/a"
+	// PDRoleNA indicates a non-v4 servo.
+	PDRoleNA PDRoleValue = "n/a"
 )
 
-// A V4TypeValue is a string that would be returned by the V4Type control.
-type V4TypeValue string
+// A DUTConnTypeValue is a string that would be returned by the DUTConnectionType control.
+type DUTConnTypeValue string
 
-// These are the string values that can be returned by V4Type.
+// These are the string values that can be returned by DUTConnectionType
 const (
-	V4TypeA V4TypeValue = "type-a"
-	V4TypeC V4TypeValue = "type-c"
+	DUTConnTypeA DUTConnTypeValue = "type-a"
+	DUTConnTypeC DUTConnTypeValue = "type-c"
 
-	// V4TypeNA indicates a non-v4 servo.
-	V4TypeNA V4TypeValue = "n/a"
+	// DUTConnTypeNA indicates a non-v4 servo.
+	DUTConnTypeNA DUTConnTypeValue = "n/a"
 )
 
 // A WatchdogValue is a string that would be accepted by WatchdogAdd & WatchdogRemove control.
@@ -262,23 +266,24 @@ func (s *Servo) EnableCCD(ctx context.Context) (bool, error) {
 	return false, nil
 }
 
-// GetServoV4Type gets the version of Servo v4 being used, or V4TypeNA if Servo is not v4.
-func (s *Servo) GetServoV4Type(ctx context.Context) (V4TypeValue, error) {
-	if s.v4Type != "" {
-		return s.v4Type, nil
+// GetDUTConnectionType gets the type of connection between the Servo and the DUT.
+// If Servo is not V4, returns DUTConnTypeNA.
+func (s *Servo) GetDUTConnectionType(ctx context.Context) (DUTConnTypeValue, error) {
+	if s.dutConnType != "" {
+		return s.dutConnType, nil
 	}
 	if isV4, err := s.IsServoV4(ctx); err != nil {
 		return "", errors.Wrap(err, "determining whether servo is v4")
 	} else if !isV4 {
-		s.v4Type = V4TypeNA
-		return s.v4Type, nil
+		s.dutConnType = DUTConnTypeNA
+		return s.dutConnType, nil
 	}
-	v4t, err := s.GetString(ctx, V4Type)
+	connType, err := s.GetString(ctx, DUTConnectionType)
 	if err != nil {
 		return "", err
 	}
-	s.v4Type = V4TypeValue(v4t)
-	return s.v4Type, nil
+	s.dutConnType = DUTConnTypeValue(connType)
+	return s.dutConnType, nil
 }
 
 // GetString returns the value of a specified control.
@@ -567,51 +572,51 @@ func (s *Servo) SetFWWPState(ctx context.Context, value FWWPStateValue) error {
 	return s.SetString(shortCtx, FWWPState, string(value))
 }
 
-// GetV4Role returns the servo's current V4Role (SNK or SRC), or V4RoleNA if Servo is not V4.
-func (s *Servo) GetV4Role(ctx context.Context) (V4RoleValue, error) {
+// GetPDRole returns the servo's current PDRole (SNK or SRC), or PDRoleNA if Servo is not V4.
+func (s *Servo) GetPDRole(ctx context.Context) (PDRoleValue, error) {
 	isV4, err := s.IsServoV4(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "determining whether servo is v4")
 	}
 	if !isV4 {
-		return V4RoleNA, nil
+		return PDRoleNA, nil
 	}
-	role, err := s.GetString(ctx, V4Role)
+	role, err := s.GetString(ctx, PDRole)
 	if err != nil {
 		return "", err
 	}
-	return V4RoleValue(role), nil
+	return PDRoleValue(role), nil
 }
 
-// SetV4Role sets the V4Role control for a servo v4.
+// SetPDRole sets the PDRole control for a servo v4.
 // On a Servo version other than v4, this does nothing.
-func (s *Servo) SetV4Role(ctx context.Context, newRole V4RoleValue) error {
-	// Determine the current V4 Role
-	currentRole, err := s.GetV4Role(ctx)
+func (s *Servo) SetPDRole(ctx context.Context, newRole PDRoleValue) error {
+	// Determine the current PD role
+	currentRole, err := s.GetPDRole(ctx)
 	if err != nil {
-		return errors.Wrap(err, "getting current V4 role")
+		return errors.Wrap(err, "getting current PD role")
 	}
 
-	// Save the initial V4 Role so we can restore it during servo.Close()
-	if s.initialV4Role == "" {
-		testing.ContextLogf(ctx, "Saving initial V4Role %q for later", currentRole)
-		s.initialV4Role = currentRole
+	// Save the initial PD role so we can restore it during servo.Close()
+	if s.initialPDRole == "" {
+		testing.ContextLogf(ctx, "Saving initial PDRole %q for later", currentRole)
+		s.initialPDRole = currentRole
 	}
 
-	// If not using a servo V4, then we can't set the V4 Role
-	if currentRole == V4RoleNA {
-		testing.ContextLogf(ctx, "Skipping setting %q to %q on non-v4 servo", V4Role, newRole)
+	// If not using a servo V4, then we can't set the PD Role
+	if currentRole == PDRoleNA {
+		testing.ContextLogf(ctx, "Skipping setting %q to %q on non-v4 servo", PDRole, newRole)
 		return nil
 	}
 
 	// If the current value is already the intended value,
 	// then don't bother resetting.
 	if currentRole == newRole {
-		testing.ContextLogf(ctx, "Skipping setting %q to %q, because that is the current value", V4Role, newRole)
+		testing.ContextLogf(ctx, "Skipping setting %q to %q, because that is the current value", PDRole, newRole)
 		return nil
 	}
 
-	return s.SetString(ctx, V4Role, string(newRole))
+	return s.SetString(ctx, PDRole, string(newRole))
 }
 
 // SetOnOff sets an OnOffControl setting to the specified value.
