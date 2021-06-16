@@ -45,6 +45,29 @@
       },
       "revId": "e274ec1161c5ef2cb5dcd585573c0c6e00d5c520",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e560f592_a9c44d7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T06:54:38Z",
+      "side": 1,
+      "message": "oh, looks like you should run a defer function to revert the change back to default.",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "e274ec1161c5ef2cb5dcd585573c0c6e00d5c520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
