@@ -16,6 +16,24 @@
       "message": "I know we were already using this method before, but... how will this react with DUTs that have no EC, such as veyron_pinky?",
       "revId": "a75b96e8a4bd10c3dda0122ebcec24f6809d7bab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97fa7b3f_5f355ed9",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-16T22:31:49Z",
+      "side": 1,
+      "message": "Oh, so annoying! I don\u0027t know how to check for a cros ec here, but I can ask the servo if that control is valid.\n\nThat is something that should probably be fixed as well, testing.State really should let you access HardwareFeatures.",
+      "parentUuid": "bfaab193_37a2a6fe",
+      "revId": "a75b96e8a4bd10c3dda0122ebcec24f6809d7bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
