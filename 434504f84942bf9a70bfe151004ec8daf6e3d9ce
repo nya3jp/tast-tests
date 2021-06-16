@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d0db969_00a0c01e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2021-06-16T02:21:06Z",
+      "side": 1,
+      "message": "It looks like the CQ failures are legitimate:  \n\n    tast-local-tests-cros-0.0.1-r6507: --- FAIL: TestSoftwareDeps (0.00s)\n    tast-local-tests-cros-0.0.1-r6507:     testcheck.go:70: vm.VhostUserNet: missing software dependency \"vm_host\"\n    tast-local-tests-cros-0.0.1-r6507: FAIL",
+      "revId": "434504f84942bf9a70bfe151004ec8daf6e3d9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
