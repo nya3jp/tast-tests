@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88af9b7f_0b8f6162",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-16T02:41:26Z",
+      "side": 1,
+      "message": "Hmm, ok. I thought that it\u0027ll pass by reference, but it seems that golang only has pass by value. Using the pointer should indeed avoid copying the object.\nDone.",
+      "parentUuid": "3081c97b_ff1dac2a",
+      "range": {
+        "startLine": 50,
+        "startChar": 53,
+        "endLine": 50,
+        "endChar": 100
+      },
+      "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fde53b5b_7940b11f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-16T02:41:26Z",
+      "side": 1,
+      "message": "I think we split it into two traces and processes because we tried to show case the example config of android_cpu and android_mem (the pbtxt).\n\nI\u0027m okay with merging the two configs and run trace_processor_shell only once, and add some comments in the pbtxt to explain which data sources are for which metrics. WDYT?",
+      "parentUuid": "2ea5b99a_76cdb8c5",
+      "range": {
+        "startLine": 50,
+        "startChar": 153,
+        "endLine": 50,
+        "endChar": 166
+      },
+      "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "280cbefe_0217f108",
@@ -77,6 +125,24 @@
       "writtenOn": "2021-06-15T09:15:16Z",
       "side": 1,
       "message": "It\u0027s recommended to do:\n\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\n\nand use ctx for the normal code path and cleanupCtx for cleanup actions.",
+      "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b007d750_0512e0be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-16T02:41:26Z",
+      "side": 1,
+      "message": "Hmm, I don\u0027t quite understand: As there are no further usage of |fullCtx| in this function, do we still need to keep |cleanupCtx|?\nWhat would be the cleanup actions?",
+      "parentUuid": "280cbefe_0217f108",
       "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -100,6 +166,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64bc1dcf_a4f8712d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-16T02:41:26Z",
+      "side": 1,
+      "message": "Thanks!\nAlthough I encountered an 500 failure...",
+      "parentUuid": "bb77f6fe_0ed575bf",
+      "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2fdb802e_71256c7a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
         "patchSetId": 5
@@ -111,6 +195,24 @@
       "writtenOn": "2021-06-15T09:15:16Z",
       "side": 1,
       "message": "Optional: this runs the 2nd trace collection session. It\u0027s OK that we have 2 tracing sessions, each of which has its own trace config and metrics. Do we want to show that the a test can collect a trace with multiple metrics?",
+      "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba071cb0_e38ca204",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-16T02:41:26Z",
+      "side": 1,
+      "message": "ditto in the comment: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2874923/5/src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go#50",
+      "parentUuid": "2fdb802e_71256c7a",
       "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
