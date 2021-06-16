@@ -108,6 +108,30 @@
       },
       "revId": "2dd6b608061b774e5bef8d2039bed0a5cd2a7f53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e67a537_e2341061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T03:04:49Z",
+      "side": 1,
+      "message": "Good point. But this is PK, no shift status affected. 😂 And the outcome is not Latin, so Auto-shift does not apply.",
+      "parentUuid": "4da99ada_4bdde574",
+      "range": {
+        "startLine": 94,
+        "startChar": 106,
+        "endLine": 94,
+        "endChar": 116
+      },
+      "revId": "2dd6b608061b774e5bef8d2039bed0a5cd2a7f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
