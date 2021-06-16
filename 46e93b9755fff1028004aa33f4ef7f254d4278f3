@@ -69,6 +69,30 @@
       },
       "revId": "46e93b9755fff1028004aa33f4ef7f254d4278f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "242a3e76_7ec7c9e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-16T17:25:23Z",
+      "side": 1,
+      "message": "This is not specific to board rather depending on ARC version. I have made changes locally and tested. Just waiting for your CL to be submitted so that I can use your API before sending this CL again.",
+      "parentUuid": "cc5d0d9e_66377773",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 63
+      },
+      "revId": "46e93b9755fff1028004aa33f4ef7f254d4278f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
