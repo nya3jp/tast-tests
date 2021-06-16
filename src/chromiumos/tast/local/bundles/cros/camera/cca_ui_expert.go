@@ -61,6 +61,8 @@ func CCAUIExpert(ctx context.Context, s *testing.State) {
 		{"toggleExpertMode", toggleExpertMode, false},
 		{"toggleExpertMode", toggleExpertMode, true},
 		{"toggleExpertModeOptions", toggleExpertModeOptions, false},
+		{"disableExpertModeOnUI", disableExpertModeOnUI, false},
+		{"enableExpertModeOnUI", enableExpertModeOnUI, false},
 	} {
 		if err := action.Func(ctx, app); err != nil {
 			s.Fatalf("Failed to perform action %v of test %v: %v", action.Name, i, err)
@@ -112,4 +114,41 @@ func toggleExpertModeOptions(ctx context.Context, app *cca.App) error {
 
 func switchSquareMode(ctx context.Context, app *cca.App) error {
 	return app.SwitchMode(ctx, cca.Square)
+}
+
+func disableExpertModeOnUI(ctx context.Context, app *cca.App) error {
+	if err := cca.MainMenu.Open(ctx, app); err != nil {
+		return err
+	}
+	defer cca.MainMenu.Close(ctx, app)
+
+	if err := cca.ExpertMenu.Open(ctx, app); err != nil {
+		return err
+	}
+	defer cca.ExpertMenu.Close(ctx, app)
+
+	if _, err := app.ToggleEnableExpertMode(ctx); err != nil {
+		return err
+	}
+	return nil
+}
+
+func enableExpertModeOnUI(ctx context.Context, app *cca.App) error {
+	if err := cca.MainMenu.Open(ctx, app); err != nil {
+		return err
+	}
+	defer cca.MainMenu.Close(ctx, app)
+
+	// Clicking setting header 5 times should enable expert mode. (b/190696285)
+	for i := 0; i < 5; i++ {
+		if err := app.ClickWithSelector(ctx, "#settings-header"); err != nil {
+			return err
+		}
+	}
+
+	if err := app.WaitForState(ctx, "expert", true); err != nil {
+		return err
+	}
+
+	return nil
 }
