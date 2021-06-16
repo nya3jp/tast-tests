@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
@@ -92,5 +93,14 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		its.WaitForFieldValueToBe(inputField, testCase.correctWord+" "),
 	)(ctx); err != nil {
 		s.Fatal("Failed to validate PK autocorrect: ", err)
+	}
+
+	for i := 0; i < len(testCase.correctWord)/2; i++ {
+		keyboard.AccelAction("Left")(ctx)
+	}
+
+	undoButtonFinder := ui.FindParams{Name: "Undo", Role: ui.RoleTypeButton}
+	if found, err := ui.Exists(ctx, tconn, undoButtonFinder); !found || err != nil {
+		s.Fatal("Cannot find Undo button: ", err)
 	}
 }
