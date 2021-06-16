@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfaab193_37a2a6fe",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-16T22:09:45Z",
+      "side": 1,
+      "message": "I know we were already using this method before, but... how will this react with DUTs that have no EC, such as veyron_pinky?",
+      "revId": "a75b96e8a4bd10c3dda0122ebcec24f6809d7bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
