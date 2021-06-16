@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ff677a2_43b9aea2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T05:06:29Z",
+      "side": 1,
+      "message": "Ye, skip Exists validation, because it is implicitly covered in the next interaction. But this is totally up to you.\n\nIn uiauto, it needs to create a context first, which is returned by ui :\u003d uiauto.New(tconn) in my code example. Then you can do ui.WaitUntilExists(nodeFinder).\n\nThe reason why not use ui.Exists, because it does not wait. If checks immediately and fails if \u0027Undo\u0027 button is shown delayed for milliseconds.",
+      "parentUuid": "6907c112_c95fdd5d",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 73
+      },
+      "revId": "9e275d6317aaf5597c3d87de1369a653740e049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d64f5c71_e7bd7170",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
         "patchSetId": 3
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Thanks. As mentioned in the other comment, I\u0027m gonna do the actual \"undo\" in a separate CL. It does look very similar to what you propose here, but with two kinds of interactions (kb, mouse).",
       "parentUuid": "77f46ba5_95169436",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 1
+      },
+      "revId": "9e275d6317aaf5597c3d87de1369a653740e049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1681f51_5ac7c93f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T05:06:29Z",
+      "side": 1,
+      "message": "It sounds perfect to do it in a separate cl.",
+      "parentUuid": "8dca9984_0f61ade3",
       "range": {
         "startLine": 106,
         "startChar": 0,
