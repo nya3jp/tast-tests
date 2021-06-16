@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15162493_5752bcdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/non_educoexistence_insession.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-16T16:48:08Z",
+      "side": 1,
+      "message": "The fixture Reset() automatically takes care of closing non-system modal dialogs. I added a comment.",
+      "parentUuid": "d83fb369_5f134c0e",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "b341f34493cae7338e2d62dce1af619682cf9dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a91c8cd3_a60ac967",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-14T19:47:41Z",
       "side": 1,
       "message": "Is there a way to check for this in the function?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "b341f34493cae7338e2d62dce1af619682cf9dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6aa5872_f39c4997",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-16T16:48:08Z",
+      "side": 1,
+      "message": "Done. I added a UI way to check for this, which is to look for the kite icon in the bottom-right tray area. I\u0027m not sure if there\u0027s a non-UI way.",
+      "parentUuid": "a91c8cd3_a60ac967",
       "range": {
         "startLine": 25,
         "startChar": 0,
@@ -110,6 +158,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c68929ac_7898a914",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-16T16:48:08Z",
+      "side": 1,
+      "message": "Done. I created a new uiauto object in NavigateEduCoexistenceFlow() as well.",
+      "parentUuid": "b0432a95_bbdb6c8e",
+      "range": {
+        "startLine": 27,
+        "startChar": 105,
+        "endLine": 27,
+        "endChar": 123
+      },
+      "revId": "b341f34493cae7338e2d62dce1af619682cf9dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd2e9971_eee1a549",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-16T16:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54bbc47e_30e3dbc5",
+      "range": {
+        "startLine": 27,
+        "startChar": 27,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "b341f34493cae7338e2d62dce1af619682cf9dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3375f43c_f3f73a69",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-06-14T19:47:41Z",
       "side": 1,
       "message": "This looks a bit weird to me. Did you run gofmt on these files?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 33
+      },
+      "revId": "b341f34493cae7338e2d62dce1af619682cf9dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f57f946_cc410c3f",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-16T16:48:08Z",
+      "side": 1,
+      "message": "Done. I think gofmt runs automatically every time I save the file in emacs.",
+      "parentUuid": "3375f43c_f3f73a69",
       "range": {
         "startLine": 65,
         "startChar": 0,
