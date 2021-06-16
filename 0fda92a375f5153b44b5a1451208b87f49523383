@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6682ad1_113d6808",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-16T18:07:41Z",
+      "side": 1,
+      "message": "I\u0027ve been trying to submit crrev/c/2951029 for some time, but having CQ issues. That cl does mostly the same thing as this one, but yours does slightly more.",
+      "revId": "0fda92a375f5153b44b5a1451208b87f49523383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
