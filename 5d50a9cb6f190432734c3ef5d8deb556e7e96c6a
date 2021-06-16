@@ -33,6 +33,29 @@
       "message": "Hi Jun, this is the fix we need to run CUJ test in moblab. Appreciate if you can review this change first at your convenient time. Thanks a lot!",
       "revId": "5d50a9cb6f190432734c3ef5d8deb556e7e96c6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df2d289b_2ab41990",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T02:22:20Z",
+      "side": 1,
+      "message": "This will not wait for 1s.",
+      "range": {
+        "startLine": 404,
+        "startChar": 7,
+        "endLine": 404,
+        "endChar": 32
+      },
+      "revId": "5d50a9cb6f190432734c3ef5d8deb556e7e96c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
