@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b398be4_2dd16136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T06:15:06Z",
+      "side": 1,
+      "message": "Ack. The sentence is wrapped and I thought framework is the ending word.",
+      "parentUuid": "634d277d_2d29a3ab",
+      "range": {
+        "startLine": 45,
+        "startChar": 55,
+        "endLine": 45,
+        "endChar": 59
+      },
+      "revId": "f732a4c92991a449a00e68fe7c93921a467deb2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23a6643b_05541bf9",
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "I\u0027m aware of it, but intentionally want to DIY this way, as this will need to be customised a bit further in the next steps, in a way specific to Autocorrect. Also, it\u0027s clearer to have checkpoints before and after space, explicitly.",
       "parentUuid": "ce08f0b2_f8a755e7",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "f732a4c92991a449a00e68fe7c93921a467deb2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4eac5e5_031b286c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T06:15:06Z",
+      "side": 1,
+      "message": "nws. Sounds good.",
+      "parentUuid": "9a6e964d_08bb0ee8",
       "range": {
         "startLine": 86,
         "startChar": 1,
