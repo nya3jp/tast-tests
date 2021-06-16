@@ -7,6 +7,9 @@ package ippusbbridge
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
+	"net"
+	"net/http"
 	"os"
 	"syscall"
 	"time"
@@ -38,6 +41,33 @@ func WaitForSocket(ctx context.Context, devInfo usbprinter.DevInfo) error {
 		return err
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to find ippusb_bridge socket")
+	}
+
+	return nil
+}
+
+// ContactPrinterEndpoint sends an HTTP request for url through the ippusb_bridge socket that
+// matches devInfo.  Returns nil if a response is received regardless of the HTTP
+// status code or body contents.
+func ContactPrinterEndpoint(ctx context.Context, devInfo usbprinter.DevInfo, url string) error {
+	socket := SocketPath(devInfo)
+
+	client := http.Client{
+		Transport: &http.Transport{
+			DialContext: func(_ context.Context, _, _ string) (net.Conn, error) {
+				return net.Dial("unix", socket)
+			},
+		},
+	}
+
+	resp, err := client.Get("http://localhost:80" + url)
+	if err != nil {
+		return errors.Wrap(err, "failed to send request to ippusb_bridge socket")
+	}
+	_, err = ioutil.ReadAll(resp.Body)
+	resp.Body.Close()
+	if err != nil {
+		return errors.Wrap(err, "failed to read response from ippusb_bridge")
 	}
 
 	return nil
