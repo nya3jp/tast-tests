@@ -59,8 +59,8 @@ var (
 	settingsHead          = nodewith.Name("Settings").Role(role.Heading)
 	emptySharedFoldersMsg = nodewith.Name("Shared folders will appear here").Role(role.StaticText)
 	sharedFoldersList     = nodewith.Name("Shared folders").Role(role.List)
-	unshareFailDlg        = nodewith.Name("Unshare failed").Role(role.Dialog)
-	okButton              = nodewith.Name("OK").Role(role.Button)
+	unshareFailDlg        = nodewith.Name("Unshare failed").Role(role.StaticText).Ancestor(nodewith.Role(role.Dialog))
+	tryAgainButton        = nodewith.Name("Try again").Role(role.Button)
 	removeLinuxButton     = nodewith.NameRegex(regexp.MustCompile(`Remove.*`)).Role(role.Button)
 	removeLinuxDialog     = nodewith.NameRegex(regexp.MustCompile("Remove|Delete")).Role(role.Dialog).First()
 	resizeButton          = nodewith.Name("Change disk size").Role(role.Button)
@@ -207,9 +207,20 @@ func (s *Settings) GetSharedFolders(ctx context.Context) ([]string, error) {
 func (s *Settings) UnshareFolder(ctx context.Context, folder string) error {
 	folderButton := nodewith.Name(folder).Role(role.Button).Ancestor(sharedFoldersList)
 
+	// Unsharing can fail and show a modal dialog if a file is detected as in use by
+	// the guest. This can happen if a file was recently accessed, so try a couple
+	// of times to unshare and only return an error if that fails.
+	retryUnshare := uiauto.Combine("retry unsharing",
+		s.ui.LeftClick(tryAgainButton),
+		s.ui.WaitUntilGone(unshareFailDlg),
+		s.ui.EnsureGoneFor(unshareFailDlg, 5*time.Second))
+	retryIfFailed := s.ui.IfSuccessThen(
+		s.ui.WithTimeout(5*time.Second).WaitUntilExists(unshareFailDlg),
+		s.ui.WithPollOpts(testing.PollOptions{Interval: 5 * time.Second}).Retry(2, retryUnshare))
+
 	return uiauto.Combine("unshare folder "+folder,
 		s.ui.LeftClick(folderButton),
-		s.ui.IfSuccessThen(s.ui.WithTimeout(5*time.Second).WaitUntilExists(unshareFailDlg), s.ui.LeftClick(okButton)),
+		retryIfFailed,
 		s.ui.IfSuccessThen(s.ui.Exists(sharedFoldersList), s.ui.WaitUntilGone(folderButton)),
 	)(ctx)
 }
