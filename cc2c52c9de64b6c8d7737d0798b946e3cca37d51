@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d313d7f5_8eeeac65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14182292_b2d98d2b",
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dd7a473_a74fcb72",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-15T23:25:52Z",
       "side": 1,
       "message": "maybe , before \"so the code\"?",
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92600a2f_bf0a3229",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dd7a473_a74fcb72",
       "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8fc18f8_6ded1dab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:18:35Z",
+      "side": 1,
+      "message": "Hmm this is my bad, we have:\n (vp8|vp9|h264argsVAAPI)\n vpxencArgs\n v4l2Args\n \nso I should fix the naming in this CL and the predecessor as well.",
+      "parentUuid": "72a8202f_ea24edf1",
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8104334b_e85f7bcf",
@@ -103,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a61a4e1_29d16049",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:18:35Z",
+      "side": 1,
+      "message": "Good catch -- it should be HWEncodeVP8. Done.",
+      "parentUuid": "8104334b_e85f7bcf",
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb943a08_36a47a48",
@@ -116,6 +188,24 @@
       "writtenOn": "2021-06-15T23:29:22Z",
       "side": 1,
       "message": "vp8 encode is not supported for all mediatek chips. \ngo/cros-video-codecs\n\nDo we want to add check for this?",
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b57356c9_23e96a22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:18:35Z",
+      "side": 1,
+      "message": "Well, those devices should not have caps.HWEncodeVP8,\nso they wouldn\u0027t be a problem, but RK3w88 and RK3399\ndo support Hw VP8 encoding, so if we don\u0027t filter them\nby name they\u0027ll run this test and likely fail (actually\nI haven\u0027t tested it).",
+      "parentUuid": "eb943a08_36a47a48",
       "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -143,6 +233,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b5abf4_5d0c477a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:18:35Z",
+      "side": 1,
+      "message": "Yeah my bad, stevecho@ also commented in l.678, fixed.",
+      "parentUuid": "a974518b_88865527",
+      "range": {
+        "startLine": 695,
+        "startChar": 45,
+        "endLine": 695,
+        "endChar": 62
+      },
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab52a4a3_ca1caa6c",
@@ -156,6 +270,24 @@
       "writtenOn": "2021-06-15T23:25:52Z",
       "side": 1,
       "message": "nit: maybe \"encodedFile\" is more clear?",
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee99b3e_50885b3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab52a4a3_ca1caa6c",
       "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -196,6 +328,48 @@
         "endLine": 1102,
         "endChar": 34
       },
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21632775_91380d88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbb65258_a2432243",
+      "range": {
+        "startLine": 1102,
+        "startChar": 33,
+        "endLine": 1102,
+        "endChar": 34
+      },
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f38c7b37_cf235c1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:18:35Z",
+      "side": 1,
+      "message": "Confusingly enough, no:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/afbeec5fce131626eb18f380443299778077d09f/docs/writing_tests.md#formatting\n\n\u003e Error strings should not be capitalized (unless beginning with proper nouns or acronyms) or end with punctuation, since they are usually printed following other context.",
+      "parentUuid": "f59f71cf_07143a4e",
       "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
