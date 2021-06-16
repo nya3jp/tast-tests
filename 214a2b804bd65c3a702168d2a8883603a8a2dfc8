@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12c43d9a_3c9df199",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-06-16T09:13:00Z",
+      "side": 1,
+      "message": "Actually it seems that currently pressing Ctrl+F5 starts already the new \"Capture Mode\" flow that is not affected by kScreenshotMinimumIntervalInMS.\nSee https://source.chromium.org/chromium/chromium/src/+/main:ash/accelerators/accelerator_controller_impl.cc;l\u003d871;drc\u003d8d990c92df3d03ff3d313428f25dd11b7e509bcf",
+      "parentUuid": "9f41b3f9_5c19fd3d",
+      "revId": "214a2b804bd65c3a702168d2a8883603a8a2dfc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c481ca8_8590b20f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
         "patchSetId": 5
