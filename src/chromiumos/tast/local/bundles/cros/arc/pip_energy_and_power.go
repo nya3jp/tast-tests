@@ -12,14 +12,14 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/android/ui"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
-	chromeui "chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -62,8 +62,16 @@ func init() {
 			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
+			Name:              "big_vm",
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: true},
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}, {
 			Name:              "small_blend_vm",
 			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false},
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}, {
+			Name:              "big_blend_vm",
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: true},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
@@ -86,6 +94,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure clamshell mode: ", err)
 	}
 	defer cleanup(cleanupCtx)
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	if err := ash.CloseNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to close notifications: ", err)
@@ -96,20 +105,9 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close(cleanupCtx)
-
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get the primary display info: ", err)
-	}
-
-	displayMode, err := info.GetSelectedMode()
-	if err != nil {
-		s.Fatal("Failed to get the selected display mode of the primary display: ", err)
 	}
 
 	kw, err := input.Keyboard(ctx)
@@ -157,40 +155,24 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 
 	if params.bigPIP {
-		if err := mouse.Move(ctx, tconn, pipWindow.TargetBounds.CenterPoint(), time.Second); err != nil {
-			s.Fatal("Failed to move mouse to PIP window: ", err)
-		}
-
-		// The PIP resize handle is an ImageView with no android:contentDescription.
-		// Here we use the regex (?!.+) to match the empty content description. See:
-		// frameworks/base/packages/SystemUI/res/layout/pip_menu_activity.xml
-		resizeHandleBounds, err := d.Object(
-			ui.ClassName("android.widget.ImageView"),
-			ui.DescriptionMatches("(?!.+)"),
-			ui.PackageName("com.android.systemui"),
-		).GetBounds(ctx)
-		if err != nil {
-			s.Fatal("Failed to get bounds of PIP resize handle: ", err)
-		}
-
-		if err := mouse.Move(ctx, tconn, coords.ConvertBoundsFromPXToDP(resizeHandleBounds, displayMode.DeviceScaleFactor).CenterPoint(), time.Second); err != nil {
-			s.Fatal("Failed to move mouse to PIP resize handle: ", err)
-		}
-		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
-			s.Fatal("Failed to press left mouse button: ", err)
-		}
-		if err := mouse.Move(ctx, tconn, info.WorkArea.TopLeft(), time.Second); err != nil {
-			if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
-				s.Fatal("Failed to move mouse for dragging PIP resize handle, and then failed to release left mouse button: ", err)
+		// To resize the PIP window as reliably as possible,
+		// use uiauto (not activity.ResizeWindow) and drag
+		// from the corner (not the ARC++ PIP resize handle).
+		workAreaTopLeft := info.WorkArea.TopLeft()
+		if err := action.Combine(
+			"resize the PIP window",
+			mouse.Move(tconn, pipWindow.TargetBounds.TopLeft().Sub(coords.NewPoint(5, 5)), 0),
+			mouse.Press(tconn, mouse.LeftButton),
+			mouse.Move(tconn, workAreaTopLeft, time.Second),
+			mouse.Release(tconn, mouse.LeftButton),
+			// Ensure that the PIP window will show no controls or resize shadows.
+			mouse.Move(tconn, workAreaTopLeft.Add(coords.NewPoint(20, 20)), time.Second),
+		)(ctx); err != nil {
+			// Ensure releasing the mouse button.
+			if err := mouse.Release(tconn, mouse.LeftButton)(cleanupCtx); err != nil {
+				s.Error("Failed to release the mouse button: ", err)
 			}
-			s.Fatal("Failed to move mouse for dragging PIP resize handle: ", err)
-		}
-		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
-			s.Fatal("Failed to release left mouse button: ", err)
-		}
-
-		if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for location-change events to be propagated to the automation API: ", err)
+			s.Fatal("Failed to resize the PIP window: ", err)
 		}
 
 		pipWindow, err = ash.GetWindow(ctx, tconn, pipWindow.ID)
