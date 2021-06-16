@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9cc670a2_32cd234c",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17058,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-16T16:33:11Z",
+      "side": 1,
+      "message": "First CL wasn\u0027t merged and after this was reviewed I came to know that CL can have related chains. After the first (i.e CL for Screenshot test) one get merged I will update this.\nAlso, The first cl build failed so didn\u0027t continued the chain",
+      "parentUuid": "9d0c9b75_4f7dc6c1",
+      "range": {
+        "startLine": 17012,
+        "startChar": 0,
+        "endLine": 17058,
+        "endChar": 0
+      },
+      "revId": "c761f3698ce517b463d4f5482ac6631c143f9e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69e03aa7_d97aa14d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_printing.go",
         "patchSetId": 5
