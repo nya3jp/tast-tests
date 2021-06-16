@@ -14,6 +14,8 @@ import (
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -92,5 +94,17 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		its.WaitForFieldValueToBe(inputField, testCase.correctWord+" "),
 	)(ctx); err != nil {
 		s.Fatal("Failed to validate PK autocorrect: ", err)
+	}
+
+	for i := 0; i < len(testCase.correctWord)/2+1; i++ {
+		keyboard.AccelAction("Left")(ctx)
+	}
+
+	ui := uiauto.New(tconn)
+	undoWindowFinder := nodewith.ClassName("UndoWindow").Role(role.Window)
+	undoButtonFinder := nodewith.Name("Undo").Role(role.Button).Ancestor(undoWindowFinder)
+
+	if err := ui.WaitUntilExists(undoButtonFinder)(ctx); err != nil {
+		s.Fatal("Cannot find Undo button: ", err)
 	}
 }
