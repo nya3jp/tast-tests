@@ -7,19 +7,17 @@ package session
 import (
 	"regexp"
 	"strings"
-
-	"chromiumos/tast/errors"
 )
 
 // Matches "user" or "user@domain".
-var emailRegexp = regexp.MustCompile("^([^@]+)(?:@([^@]+))?$")
+var emailRegexp = regexp.MustCompile("^([^@]+)@([^@]+)$")
 
 // NormalizeEmail normalizes the supplied email address as would be done for GAIA login.
 // The address is lowercased, periods in the username are removed, and a gmail.com domain is appended if needed.
 func NormalizeEmail(email string, removeDots bool) (string, error) {
 	matches := emailRegexp.FindStringSubmatch(email)
 	if matches == nil {
-		return "", errors.New("not user or user@domain")
+		return strings.ToLower(email), nil
 	}
 
 	user := strings.ToLower(matches[1])
