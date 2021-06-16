@@ -64,7 +64,9 @@ async function runLoopbackPeerConnectionWithSimulcast(constraints,
     // down to SW video encoding, see b/181320567 or crbug.com/1179020.
     degradationPreference: 'maintain-resolution',
     streams : [ stream ],
-    sendEncodings : rids.map(rid => {rid}),
+    sendEncodings: rids.map(rid => {
+      return {'rid': rid, 'scaleResolutionDownBy': (2 ** rid)};
+    }),
   });
 
   const offer = await localPeerConnection.createOffer();
