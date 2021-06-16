@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c17dd9b_cadac86d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-16T10:39:20Z",
+      "side": 1,
+      "message": "(Rebased, diff is huge but should not contain any real changes)",
+      "revId": "9199598e80fc0ebf708b0f82ccef5fa1bfe421ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

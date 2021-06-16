@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0bde68_cb264fb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-16T10:39:20Z",
+      "side": 1,
+      "message": "Connection is moved into the vpn package, so this capitalization is no longer needed. Marked this as resolved.",
+      "parentUuid": "049586ab_97d79628",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "d976a95ee657f39dd7649438426e9a346e68d763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb19ebbf_d9957ea8",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-26T05:27:55Z",
       "side": 1,
       "message": "what does that name imply here ? Is this hostname needs to be defined for real ?",
+      "range": {
+        "startLine": 424,
+        "startChar": 44,
+        "endLine": 424,
+        "endChar": 88
+      },
+      "revId": "d976a95ee657f39dd7649438426e9a346e68d763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c2b34f4_4ec623bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-16T10:39:20Z",
+      "side": 1,
+      "message": "This is the name used to build the server certificate. I think this don\u0027t need to be real, just that we use it to build TestCert1().",
+      "parentUuid": "bb19ebbf_d9957ea8",
       "range": {
         "startLine": 424,
         "startChar": 44,
