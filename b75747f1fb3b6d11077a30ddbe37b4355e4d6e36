@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee5d86e2_df291272",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-16T17:08:56Z",
+      "side": 1,
+      "message": "Don\u0027t know if you have the hardware for this, but kglund@ has recently made a breakthrough of sorts regarding our wificell setup with netperf, and I suspect these changes may improve some of the numbers you see. If you don\u0027t have the hardware, maybe we can first try pushing some of those config changes to our current wificell setup in the lab and see if some of these numbers are improved. Kevin, have you tested this at all (e.g. not using the pcap as the netperf endpoint)?",
+      "parentUuid": "a28ebc3a_e2738044",
+      "range": {
+        "startLine": 62,
+        "startChar": 77,
+        "endLine": 62,
+        "endChar": 80
+      },
+      "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24382d38_c4d65dcf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
         "patchSetId": 2

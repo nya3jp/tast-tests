@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27615dd7_eb1fe4b0",
+        "filename": "src/chromiumos/tast/remote/network/netperf/continuous_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-16T17:08:56Z",
+      "side": 1,
+      "message": "maybe just return s.runner.warmup(ctx)",
+      "revId": "669389ea0c0fee98ed04bb169d996983c7b2b105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
