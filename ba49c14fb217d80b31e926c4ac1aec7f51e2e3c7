@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e39483d_14131ce4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-16T10:16:29Z",
+      "side": 1,
+      "message": "nit: It looks like we don\u0027t need to toggleExpertModeOptions() again here? How about simply enableExpertModeOnUI() and then disableExpertModeOnUI() here?",
+      "revId": "ba49c14fb217d80b31e926c4ac1aec7f51e2e3c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
