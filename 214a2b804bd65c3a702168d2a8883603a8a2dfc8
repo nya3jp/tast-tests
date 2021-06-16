@@ -155,6 +155,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49bfdebc_020fd1b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-16T13:15:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4f4576d8_c7c14be2",
+      "revId": "214a2b804bd65c3a702168d2a8883603a8a2dfc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c481ca8_8590b20f",
@@ -192,6 +210,30 @@
       "side": 1,
       "message": "I might be wrong but in the link %t is default for boolean. Although I have added the change",
       "parentUuid": "0c481ca8_8590b20f",
+      "range": {
+        "startLine": 165,
+        "startChar": 49,
+        "endLine": 165,
+        "endChar": 51
+      },
+      "revId": "214a2b804bd65c3a702168d2a8883603a8a2dfc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df4a997d_01e1e60f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-16T13:15:37Z",
+      "side": 1,
+      "message": "%v will just default to %t for booleans under the hood.",
+      "parentUuid": "dbc4404d_814983bc",
       "range": {
         "startLine": 165,
         "startChar": 49,
