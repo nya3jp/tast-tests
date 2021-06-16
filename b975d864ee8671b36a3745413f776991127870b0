@@ -39,6 +39,30 @@
       },
       "revId": "b975d864ee8671b36a3745413f776991127870b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "869e1cce_7daf8c95",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1003044
+      },
+      "writtenOn": "2021-06-16T01:32:00Z",
+      "side": 1,
+      "message": "I assume you are referring to https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow. I think the code here doesn\u0027t quite fit that pattern (error case + normal case) and that it is clearer as is. Note the latter two cases are both \u0027normal\u0027 cases, and the first \u0027error\u0027 case will also be hit frequently if this is run immediately after opening the settings page.",
+      "parentUuid": "86187898_ef7815fa",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 8
+      },
+      "revId": "b975d864ee8671b36a3745413f776991127870b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
