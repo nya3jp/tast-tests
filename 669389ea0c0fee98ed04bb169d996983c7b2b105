@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1afc9d9_44da123f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-06-16T23:56:09Z",
+      "side": 1,
+      "message": "I\u0027m going to defer to Matthew (and others as needed) for finishing this one",
+      "revId": "669389ea0c0fee98ed04bb169d996983c7b2b105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27615dd7_eb1fe4b0",
