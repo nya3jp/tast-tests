@@ -46,6 +46,30 @@
       },
       "revId": "9307dc75e5e4b20bfdfd3c310125e2e8dcb5b935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f5c3cda_321358a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-16T21:22:17Z",
+      "side": 1,
+      "message": "Hi Jun, the CL removing netflix.go has been merged.",
+      "parentUuid": "51fcd22c_e949273e",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 12
+      },
+      "revId": "9307dc75e5e4b20bfdfd3c310125e2e8dcb5b935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
