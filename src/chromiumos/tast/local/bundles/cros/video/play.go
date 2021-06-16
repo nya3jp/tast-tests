@@ -169,6 +169,18 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
 			Fixture:           "chromeVideoWithHWAV1Decoding",
 		}, {
+			Name: "av1_hw_odd_dimension",
+			Val: playParams{
+				fileName:   "bear-321x241.av1.mp4",
+				videoType:  play.NormalVideo,
+				verifyMode: play.VerifyHWAcceleratorUsed,
+				chromeType: lacros.ChromeTypeChromeOS,
+			},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "bear-321x241.av1.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
+			Fixture:           "chromeVideoWithHWAV1Decoding",
+		}, {
 			Name: "h264_hw",
 			Val: playParams{
 				fileName:   "bear-320x240.h264.mp4",
@@ -205,6 +217,18 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			Fixture:           "chromeVideo",
 		}, {
+			Name: "vp8_hw_odd_dimension",
+			Val: playParams{
+				fileName:   "bear-321x241.vp8.webm",
+				videoType:  play.NormalVideo,
+				verifyMode: play.VerifyHWAcceleratorUsed,
+				chromeType: lacros.ChromeTypeChromeOS,
+			},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "bear-321x241.vp8.webm"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Fixture:           "chromeVideo",
+		}, {
 			Name: "vp9_hw",
 			Val: playParams{
 				fileName:   "bear-320x240.vp9.webm",
@@ -214,6 +238,18 @@ func init() {
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.vp9.webm"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Fixture:           "chromeVideo",
+		}, {
+			Name: "vp9_hw_odd_dimension",
+			Val: playParams{
+				fileName:   "bear-321x241.vp9.webm",
+				videoType:  play.NormalVideo,
+				verifyMode: play.VerifyHWAcceleratorUsed,
+				chromeType: lacros.ChromeTypeChromeOS,
+			},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "bear-321x241.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Fixture:           "chromeVideo",
 		}, {
