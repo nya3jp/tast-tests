@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c53de8e7_3d5afbf1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-06-16T23:54:07Z",
+      "side": 1,
+      "message": "Isn\u0027t there a Chrome startup flag that disables restoring previous tabs?",
+      "revId": "2aa0104e54d2744357f7959714386208b394b772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
