@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6907c112_c95fdd5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-16T04:59:31Z",
+      "side": 1,
+      "message": "What\u0027s the equivalent of Exists in nodewith? Unless you strongly suggest there\u0027s no point in verifying Exists, and just combine with actual activation of the button. I\u0027m following the manual test cases, and the fact that \"seeing the Undo popup\" is a scenario by itself, without necessarily activating the Undo button.",
+      "parentUuid": "c98786e1_b1b75679",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 73
+      },
+      "revId": "9e275d6317aaf5597c3d87de1369a653740e049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d64f5c71_e7bd7170",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-16T03:50:00Z",
       "side": 1,
       "message": "why not click \"Undo\" button and validate the result?",
+      "range": {
+        "startLine": 103,
+        "startChar": 21,
+        "endLine": 103,
+        "endChar": 27
+      },
+      "revId": "9e275d6317aaf5597c3d87de1369a653740e049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fd82351_dba44838",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-16T04:59:31Z",
+      "side": 1,
+      "message": "I will do the actual \"undo\" in a separate CL. It\u0027s \"complicated\" as there\u0027s two ways to interact with the Undo button (mouse click, arrow \u0026 enter keys). This is just to verify the Undo \"pops up\" (without verifying the look-and-feel, of course).",
+      "parentUuid": "d64f5c71_e7bd7170",
       "range": {
         "startLine": 103,
         "startChar": 21,
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-16T03:50:00Z",
       "side": 1,
       "message": "Suggested test logic:\n\n        const inputField \u003d testserver.TextAreaInputField\n\tif err :\u003d uiauto.Combine(\"validate PK autocorrect\",\n\t\tits.Clear(inputField),\n\t\tits.ClickFieldAndWaitForActive(inputField),\n\t\tkeyboard.TypeAction(testCase.misspeltWord),\n\t\tits.WaitForFieldValueToBe(inputField, testCase.misspeltWord),\n\t\tkeyboard.TypeAction(\" \"),\n\t\tits.WaitForFieldValueToBe(inputField, testCase.correctWord+\" \"),\n\t)(ctx); err !\u003d nil {\n\t\ts.Fatal(\"Failed to validate PK autocorrect: \", err)\n\t}\n\n\tui :\u003d uiauto.New(tconn)\n\tundoWindowFinder :\u003d nodewith.ClassName(\"UndoWindow\").Role(role.Window)\n\tundoButtonFinder :\u003d nodewith.Name(\"Undo\").Role(role.Button).Ancestor(undoWindowFinder)\n\ts.Run(ctx, \"undo\", func(ctx context.Context, s *testing.State) {\n\t\tfor i :\u003d 0; i \u003c len(testCase.correctWord)/2+1; i++ {\n\t\t\tkeyboard.AccelAction(\"Left\")(ctx)\n\t\t}\n\n\t\tif err :\u003d uiauto.Combine(\"click undo to revert\", \n\t\t\tui.LeftClick(undoButtonFinder),\n\t\t\tits.WaitForFieldValueToBe(inputField, testCase.misspeltWord+\" \"),\n\t\t)(ctx); err !\u003d nil{\n\t\t\ts.Fatal(\"Failed to undo autocorrect: \", err)\n\t\t}\n\t})",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 1
+      },
+      "revId": "9e275d6317aaf5597c3d87de1369a653740e049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dca9984_0f61ade3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-16T04:59:31Z",
+      "side": 1,
+      "message": "Thanks. As mentioned in the other comment, I\u0027m gonna do the actual \"undo\" in a separate CL. It does look very similar to what you propose here, but with two kinds of interactions (kb, mouse).",
+      "parentUuid": "77f46ba5_95169436",
       "range": {
         "startLine": 106,
         "startChar": 0,
