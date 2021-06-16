@@ -112,6 +112,9 @@ func Scan(ctx context.Context, s *testing.State) {
 	if err = cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
 		s.Fatal("Failed to wait for printer to be idle: ", err)
 	}
+	if err = ippusbbridge.ContactPrinterEndpoint(ctx, devInfo, "/eSCL/ScannerCapabilities"); err != nil {
+		s.Fatal("Failed to get scanner status over ippusb_bridge socket: ", err)
+	}
 
 	extURL := "chrome-extension://" + scanTargetExtID + "/scan.html"
 	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
