@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daff4eaf_1398d43d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-16T20:56:48Z",
+      "side": 1,
+      "message": "I\u0027m not sure I am comfortable about rotating the log before every test, but it does make things much easier. There are basically 2 ways to do this:\n\n1) before test: rotate the log\n   after test: copy latest.DEBUG (implemented)\n2) before test: stat(latest.DEBUG), capture the inode \u0026 length\n   after test: Find the file in /var/log/servod_9999 with the saved inode (because it might have rotated and not be latest.DEBUG anymore)\n   Copy the bytes from the saved length to the end of file.\n   Capture all files newer than the one with the saved inode also.\n   \nSo you can see why I took the easy way out.",
+      "revId": "b5e5baff9627d724ffa85bc8d3368f0051fa478e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
