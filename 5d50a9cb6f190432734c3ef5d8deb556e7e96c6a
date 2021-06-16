@@ -56,6 +56,30 @@
       },
       "revId": "5d50a9cb6f190432734c3ef5d8deb556e7e96c6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d418318_5af086b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-16T03:53:16Z",
+      "side": 1,
+      "message": "Thanks Jun. Changed to ui.Sleep(). Jane said there is a some kind of animation - without the 1 second wait, it will click on wrong coordinate.",
+      "parentUuid": "df2d289b_2ab41990",
+      "range": {
+        "startLine": 404,
+        "startChar": 7,
+        "endLine": 404,
+        "endChar": 32
+      },
+      "revId": "5d50a9cb6f190432734c3ef5d8deb556e7e96c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
