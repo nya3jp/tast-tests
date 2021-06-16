@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/webrtc/peerconnection"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // rtcTest is used to describe the config used to run each test case.
@@ -101,6 +102,15 @@ func init() {
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9", simulcast: false},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			Fixture:           "chromeVideoWithFakeWebcamAndForceVP9SVC1SL3TL",
+		}, {
+			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
+			// This is k-SVC 3 spatial layers and 2 temporal layers (each).
+			Name:              "vp9_enc_svc_l3t2_key",
+			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9", simulcast: false},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			// TODO(b/191203129): Run on JSL devices as well.
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer")),
+			Fixture:           "chromeVideoWithFakeWebcamAndForceVP9SVC3SL2TL",
 		}, {
 			Name:              "vp8_enc_cam",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP8", simulcast: false},

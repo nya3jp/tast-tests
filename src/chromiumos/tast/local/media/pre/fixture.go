@@ -210,6 +210,22 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name: "chromeVideoWithFakeWebcamAndForceVP9SVC3SL2TL",
+		Desc: "Similar to chromeVideoWithFakeWebcam fixture but forcing WebRTC to use 3 spatial layers and 2 temporal layers for VP9 encoding.",
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ExtraArgs(chromeVideoArgs...),
+				chrome.ExtraArgs(chromeFakeWebcamArgs...),
+				chrome.ExtraArgs("--force-fieldtrials=WebRTC-SupportVP9SVC/EnabledByFlag_2SL3TL/"),
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithFakeWebcamAndSWDecoding",
 		Desc: "Similar to chromeVideoWithFakeWebcam fixture but hardware decoding disabled.",
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
