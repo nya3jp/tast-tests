@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f58af091_2724b2df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-16T10:37:14Z",
+      "side": 1,
+      "message": "This is the relative path to chroot so it should be etc/openvpn.",
+      "parentUuid": "14174553_62821286",
+      "range": {
+        "startLine": 166,
+        "startChar": 36,
+        "endLine": 166,
+        "endChar": 39
+      },
+      "revId": "017713fa558be90ec6ea9061bc3b4f5010388e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "daca3bde_8d49904d",
@@ -118,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63951590_9a0b6fb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-16T10:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4948520_09790ba0",
+      "range": {
+        "startLine": 277,
+        "startChar": 16,
+        "endLine": 277,
+        "endChar": 29
+      },
+      "revId": "017713fa558be90ec6ea9061bc3b4f5010388e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54ac3d04_37e3f2a4",
@@ -141,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "495ba735_c12bccae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-16T10:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54ac3d04_37e3f2a4",
+      "range": {
+        "startLine": 278,
+        "startChar": 16,
+        "endLine": 278,
+        "endChar": 53
+      },
+      "revId": "017713fa558be90ec6ea9061bc3b4f5010388e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3854699b_6a1fdfbb",
@@ -154,6 +226,30 @@
       "writtenOn": "2021-05-26T05:23:52Z",
       "side": 1,
       "message": "just curious: what does this do ?",
+      "range": {
+        "startLine": 302,
+        "startChar": 3,
+        "endLine": 302,
+        "endChar": 46
+      },
+      "revId": "017713fa558be90ec6ea9061bc3b4f5010388e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00d2646f_8de68af7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-16T10:37:14Z",
+      "side": 1,
+      "message": "Just did a quick search in cs and found this was added in https://crbug.com/1041803\nSo it seems to be used for keeping some behavior of OpenSSL unchanged when we did an upgrade.",
+      "parentUuid": "3854699b_6a1fdfbb",
       "range": {
         "startLine": 302,
         "startChar": 3,

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e20c4a6a_a2097829",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-16T10:37:14Z",
+      "side": 1,
+      "message": "Rebased onto the refactor patches. PTAL, thanks!",
+      "revId": "bf7b0fc9c4460fd03abee3b28c8882ea6f2c5e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
