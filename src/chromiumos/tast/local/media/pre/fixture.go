@@ -194,8 +194,8 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name: "chromeVideoWithFakeWebcamAndForceVP9ThreeTemporalLayers",
-		Desc: "Similar to chromeVideoWithFakeWebcam fixture but forcing webrtc vp9 stream to be three temporal layers..",
+		Name: "chromeVideoWithFakeWebcamAndForceVP9SVC1SL3TL",
+		Desc: "Similar to chromeVideoWithFakeWebcam fixture but forcing WebRTC to use 1 spatial layer and 3 temporal layers for VP9 encoding.",
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeVideoArgs...),

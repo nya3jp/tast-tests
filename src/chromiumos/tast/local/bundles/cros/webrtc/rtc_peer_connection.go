@@ -82,19 +82,25 @@ func init() {
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
-			Name:    "vp8_simulcast",
+			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
+			// This is vanilla simulcast.
+			Name:              "vp8_simulcast_s3t1",
 			Val:     rtcTest{verifyMode: peerconnection.NoVerifyHWAcceleratorUsed, profile: "VP8", simulcast: true},
 			Fixture: "chromeVideoWithFakeWebcam",
 		}, {
-			Name:              "vp8_enc_simulcast",
+			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
+			// This is vanilla simulcast.
+			Name:              "vp8_enc_simulcast_s3t1",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP8", simulcast: true},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
-			Name:              "vp9_enc_temporal_layer",
+			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
+			// This is temporal layer encoding.
+			Name:              "vp9_enc_svc_l1t3",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9", simulcast: false},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			Fixture:           "chromeVideoWithFakeWebcamAndForceVP9ThreeTemporalLayers",
+			Fixture:           "chromeVideoWithFakeWebcamAndForceVP9SVC1SL3TL",
 		}, {
 			Name:              "vp8_enc_cam",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP8", simulcast: false},
