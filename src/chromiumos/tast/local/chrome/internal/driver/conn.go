@@ -181,7 +181,7 @@ func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out i
 //   if err := tconn.Call(ctx, &ret, "tast.promisify(chrome.autotestPrivate.isAppShown)", appID); err != nil {
 //     ...
 //
-//   // 3) Serialize structure. Move the moust to (100, 200) immediately.
+//   // 3) Serialize structure. Move the mouse to (100, 200) immediately.
 //   loc := struct {
 //     X double `json:"x"`
 //     Y double `json:"y"`
