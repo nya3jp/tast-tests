@@ -7,8 +7,6 @@ package session
 import (
 	"regexp"
 	"strings"
-
-	"chromiumos/tast/errors"
 )
 
 // Matches "user" or "user@domain".
@@ -19,7 +17,7 @@ var emailRegexp = regexp.MustCompile("^([^@]+)(?:@([^@]+))?$")
 func NormalizeEmail(email string, removeDots bool) (string, error) {
 	matches := emailRegexp.FindStringSubmatch(email)
 	if matches == nil {
-		return "", errors.New("not user or user@domain")
+		return strings.ToLower(email), nil
 	}
 
 	user := strings.ToLower(matches[1])

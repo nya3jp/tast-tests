@@ -22,10 +22,9 @@ func TestNormalizeEmail(t *testing.T) {
 		{"Test.User@Gmail.com", false, "test.user@gmail.com"},
 		{"user@example.com", true, "user@example.com"},
 		{"Test.User@Example.com", true, "test.user@example.com"},
-		{"", true, ""},
-		{"@gmail.com", true, ""},
-		{"@example.com", true, ""},
-		{"bad@user@example.com", true, ""},
+		{"@gmail.com", true, "@gmail.com"},
+		{"@example.com", true, "@example.com"},
+		{"bad@user@example.com", true, "bad@user@example.com"},
 	} {
 		out, err := NormalizeEmail(tc.in, tc.removeDots)
 		if tc.out != "" && err != nil {
