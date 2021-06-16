@@ -16,6 +16,46 @@
       "message": "LGTM",
       "revId": "c761f3698ce517b463d4f5482ac6631c143f9e72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "506a4de9_9234c629",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-16T13:39:11Z",
+      "side": 1,
+      "message": "LGTM: %nit",
+      "revId": "c761f3698ce517b463d4f5482ac6631c143f9e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69e03aa7_d97aa14d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-16T13:39:11Z",
+      "side": 1,
+      "message": "nit: for",
+      "range": {
+        "startLine": 147,
+        "startChar": 29,
+        "endLine": 147,
+        "endChar": 30
+      },
+      "revId": "c761f3698ce517b463d4f5482ac6631c143f9e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
