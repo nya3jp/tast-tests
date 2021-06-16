@@ -16,6 +16,24 @@
       "message": "Just wondering, would you consider checking if minSleepTime \u003e dur at the beginning of the test case?",
       "revId": "0b0f7a83bb5d0515db875adf63f5403fa69d8f5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bba1c3f0_dad02d0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-16T16:26:25Z",
+      "side": 1,
+      "message": "I thought of that, but when I was running the test over and over again while tweaking it, it was helpful to me to still run the test even if the time was too short. While you can\u0027t get a PASS if the time is short, it can give a clear failure if the battery discharges too much even in a short time period.",
+      "parentUuid": "9bf78bf7_26419d56",
+      "revId": "0b0f7a83bb5d0515db875adf63f5403fa69d8f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
