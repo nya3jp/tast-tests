@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abb94108_d73eeb05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T12:49:10Z",
+      "side": 1,
+      "message": "This name is too long to display in test report, such as https://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003dinputs.\u0026dep\u003d\n\nCan it be a shorter name then add a comment on it?",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 57
+      },
+      "revId": "e274ec1161c5ef2cb5dcd585573c0c6e00d5c520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d54888c_f5458697",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
         "patchSetId": 2
