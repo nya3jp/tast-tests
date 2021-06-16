@@ -107,4 +107,12 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	if err := ui.WaitUntilExists(undoButtonFinder)(ctx); err != nil {
 		s.Fatal("Cannot find Undo button: ", err)
 	}
+
+	if err := uiauto.Combine("validate PK autocorrect undo",
+		keyboard.AccelAction("Up"),
+		keyboard.AccelAction("Enter"),
+		its.WaitForFieldValueToBe(inputField, testCase.misspeltWord+" "),
+	)(ctx); err != nil {
+		s.Fatal("Failed to validate PK autocorrect undo using PK: ", err)
+	}
 }
