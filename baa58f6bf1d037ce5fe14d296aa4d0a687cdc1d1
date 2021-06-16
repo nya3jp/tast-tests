@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d03b5a_0cbb8f86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/printer_nec.ppd.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-06-16T00:16:15Z",
+      "side": 1,
+      "message": "My apologies but this looks like it\u0027s a PS PPD.  The openprinting PPD actually uses the npdl device.\n\nhttp://www.openprinting.org/ppd-o-matic.php?driver\u003dnpdl\u0026printer\u003dNEC-MultiWriter\u0026show\u003d1",
+      "revId": "baa58f6bf1d037ce5fe14d296aa4d0a687cdc1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
