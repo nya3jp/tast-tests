@@ -14,6 +14,8 @@ import (
 	"time"
 
 	gossh "golang.org/x/crypto/ssh"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -104,7 +106,16 @@ func (h *Helper) Close(ctx context.Context) error {
 		h.hostFilesTmpDir = ""
 	}
 	if err := h.CloseRPCConnection(ctx); err != nil && firstErr == nil {
-		firstErr = errors.Wrap(err, "closing rpc connection")
+		isIgnorable := false
+		for rootErr := err; rootErr != nil && !isIgnorable; rootErr = errors.Unwrap(rootErr) {
+			// The gRPC Canceled error just means the connection is already closed.
+			if st, ok := status.FromError(rootErr); ok && st.Code() == codes.Canceled {
+				isIgnorable = true
+			}
+		}
+		if !isIgnorable {
+			firstErr = errors.Wrap(err, "closing rpc connection")
+		}
 	}
 	return firstErr
 }
