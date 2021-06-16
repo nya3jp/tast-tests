@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6802226d_2951a45c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-06-16T00:00:09Z",
+      "side": 1,
+      "message": "video should be ok. This repository is called tast-tests so it kind of redundant to repeat tast here.",
+      "parentUuid": "5f60d34d_6e6b4c54",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ec4f90e_45cb0778",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -133,6 +151,24 @@
       "writtenOn": "2021-06-15T23:42:06Z",
       "side": 1,
       "message": "nit: period in the end?",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ccbabe0_68218b33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-06-16T00:00:09Z",
+      "side": 1,
+      "message": "Just fyi, tast doesn\u0027t allow error string to have punctuation at the end of the string.\nBut You should use \u0027this\u0027 instead of \u0027This\u0027\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "parentUuid": "03850586_6edebeb6",
       "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
