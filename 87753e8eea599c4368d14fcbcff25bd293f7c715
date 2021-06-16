@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab55d6b4_a8ba8285",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-06-16T23:19:55Z",
+      "side": 1,
+      "message": "I copied this code from chrome_pip_energy_and_power.go where it was written by Jun Mukai after he wrote the uiauto package with the comment to which you are referring. I trust he knows how his own package should be used and what his own documentation implies.",
+      "parentUuid": "bfdce34d_de38d7e7",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 18
+      },
+      "revId": "87753e8eea599c4368d14fcbcff25bd293f7c715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3584e96e_5365d9d0",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-14T09:56:08Z",
       "side": 1,
       "message": "Why do you need to sleep here? Can\u0027t you wait until some condition will be \"true\"? Please add a comment if you need to keep it.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 58
+      },
+      "revId": "87753e8eea599c4368d14fcbcff25bd293f7c715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ac98f4c_3db4fe95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-06-16T23:19:55Z",
+      "side": 1,
+      "message": "It takes a moment for the PIP video to be promoted to overlay. However we cannot wait for it to be promoted to overlay, because in some cases it might not be promoted to overlay. I have added a code comment.",
+      "parentUuid": "3584e96e_5365d9d0",
       "range": {
         "startLine": 83,
         "startChar": 0,
