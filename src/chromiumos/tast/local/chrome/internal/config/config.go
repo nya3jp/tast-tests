@@ -309,13 +309,9 @@ func NewConfig(opts []Option) (*Config, error) {
 	cfg.m.EnableLoginVerboseLogs = true
 
 	// This works around https://crbug.com/358427.
-	if cfg.m.LoginMode == GAIALogin {
-		var err error
-		if cfg.m.NormalizedUser, err = session.NormalizeEmail(cfg.m.Creds.User, true); err != nil {
-			return nil, errors.Wrapf(err, "failed to normalize email %q", cfg.m.Creds.User)
-		}
-	} else {
-		cfg.m.NormalizedUser = cfg.m.Creds.User
+	var err error
+	if cfg.m.NormalizedUser, err = session.NormalizeEmail(cfg.m.Creds.User, true); err != nil {
+		return nil, errors.Wrapf(err, "failed to normalize email %q", cfg.m.Creds.User)
 	}
 
 	// Logging in with a fake account requires a non-empty unique GAIA ID.
