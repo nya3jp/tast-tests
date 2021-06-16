@@ -173,20 +173,31 @@ func (o *Object) Click(ctx context.Context) error {
 	return o.callSimple(ctx, "click", o.s)
 }
 
-// ScrollForward performs a forward scroll action with n number of scroll steps.
+// ScrollBackward returns true if scrolled, false if can't scroll anymore.
 //
-// This method corresponds to UiScrollable.scrollForward().
-// https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollforward
-func (o *Object) ScrollForward(ctx context.Context, n int) error {
-	return o.callSimple(ctx, "scrollForward", o.s, true, n)
-}
-
-// ScrollBackward performs a backward scroll action with n number of scroll steps.
-//
+// ScrollBackward performs a backward scroll action with n number of scroll steps in vertical direction from top to bottom.
 // This method corresponds to UiScrollable.scrollBackward().
 // https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollbackward
-func (o *Object) ScrollBackward(ctx context.Context, n int) error {
-	return o.callSimple(ctx, "scrollBackward", o.s, true, n)
+func (o *Object) ScrollBackward(ctx context.Context, n int) (bool, error) {
+	return o.callSimpleBool(ctx, "scrollBackward", o.s, true, n)
+}
+
+// ScrollForward returns true if scrolled, false if can't scroll anymore.
+//
+// ScrollForward performs a forward scroll action with n number of scroll steps in vertical direction from bottom to top.
+// This method corresponds to UiScrollable.scrollForward().
+// https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollforward
+func (o *Object) ScrollForward(ctx context.Context, n int) (bool, error) {
+	return o.callSimpleBool(ctx, "scrollForward", o.s, true, n)
+}
+
+// callSimpleBool is a method to call a RPC method that returns boolean as an output.
+func (o *Object) callSimpleBool(ctx context.Context, method string, params ...interface{}) (bool, error) {
+	var output bool
+	if err := o.d.call(ctx, method, &output, params...); err != nil {
+		return output, wrapMethodError(method, o.s, err)
+	}
+	return output, nil
 }
 
 // ScrollTo performs a forward scroll action to move through the scrollable layout element until a view matching the target selector is found.
