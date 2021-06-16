@@ -227,7 +227,9 @@ func physicalKeyboardAllKeycodesTypingTest(ctx context.Context, st pkTestState, 
 		done <- true
 	}()
 	skipKeys := map[input.EventCode]struct{}{
-		// Skip KEY_SYSRQ (0x63) to avoid launching the screenshot tool. The
+		// Skip KEY_CAPSLOCK to avoid affecting the following tests by Capslock.
+		0x3a: struct{}{},
+		// Skip KEY_SYSRQ to avoid launching the screenshot tool. The
 		// screenshot tool can cause subsequent tests to fail by intercepting
 		// mouse clicks.
 		0x63: struct{}{},
