@@ -103,6 +103,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20768ef5_81c7e370",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-16T10:57:45Z",
+      "side": 1,
+      "message": "It does, so that would mean it\u0027s not required to sleep for one second?",
+      "parentUuid": "12c43d9a_3c9df199",
+      "revId": "214a2b804bd65c3a702168d2a8883603a8a2dfc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c481ca8_8590b20f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
         "patchSetId": 5
