@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "91c0b361_dc686373",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-06-16T03:36:49Z",
+      "side": 1,
+      "message": "As mentioned below, this appears to be a bug with the IME, so might not be useful as a common utility function.",
+      "parentUuid": "90ade095_583ce423",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "2dd6b608061b774e5bef8d2039bed0a5cd2a7f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cf400e59_8955ac02",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
         "patchSetId": 2
@@ -129,6 +153,54 @@
         "startChar": 106,
         "endLine": 94,
         "endChar": 116
+      },
+      "revId": "2dd6b608061b774e5bef8d2039bed0a5cd2a7f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e5a877_baa2ba85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-06-16T03:36:49Z",
+      "side": 1,
+      "message": "Yep, it\u0027s PK so shouldn\u0027t be affected by autocap.",
+      "parentUuid": "0e67a537_e2341061",
+      "range": {
+        "startLine": 94,
+        "startChar": 106,
+        "endLine": 94,
+        "endChar": 116
+      },
+      "revId": "2dd6b608061b774e5bef8d2039bed0a5cd2a7f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffe49b35_5fbf0624",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-06-16T03:36:49Z",
+      "side": 1,
+      "message": "I looked at bit more and it\u0027s actually not a decoder readiness problem. \n\nIf you focus and then immediately type \"ni\", it sometimes only gets nい (first character is unconverted). I can reproduce it manually.\n\nI think this is a flaw in the IME itself, so I\u0027ll just add a sleep here with a TODO to fix this problem.\n\nPTAL",
+      "parentUuid": "71606a3b_5cae66f8",
+      "range": {
+        "startLine": 94,
+        "startChar": 78,
+        "endLine": 94,
+        "endChar": 99
       },
       "revId": "2dd6b608061b774e5bef8d2039bed0a5cd2a7f53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
