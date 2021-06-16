@@ -16,6 +16,29 @@
       "message": "+2 for Tast Review and Test Owners",
       "revId": "b975d864ee8671b36a3745413f776991127870b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86187898_ef7815fa",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-16T00:34:54Z",
+      "side": 1,
+      "message": "nit: I think the go style is to omit these three else since the if all return.",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 8
+      },
+      "revId": "b975d864ee8671b36a3745413f776991127870b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
