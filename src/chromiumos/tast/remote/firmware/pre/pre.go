@@ -6,9 +6,13 @@
 package pre
 
 import (
+	"bufio"
 	"context"
 	"fmt"
+	"os"
 	"path"
+	"regexp"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -310,8 +314,83 @@ func (i *impl) copyServodLog(ctx context.Context, s *testing.PreState) {
 	}
 
 	servodLogPath := fmt.Sprintf("/var/log/servod_%d/latest.DEBUG", i.v.Helper.ServoProxy.GetPort())
-	s.Log("Copying  ", servodLogPath)
-	if err := i.v.Helper.ServoProxy.GetFile(ctx, false, servodLogPath, path.Join(i.savedOutDir, "servod.DEBUG")); err != nil {
+	destPath := path.Join(i.savedOutDir, "servod.DEBUG")
+	s.Log("Copying ", servodLogPath)
+	if err := i.v.Helper.ServoProxy.GetFile(ctx, false, servodLogPath, destPath); err != nil {
 		s.Log("Failure to copy servod log: ", err)
+	}
+	debugLog, err := os.Open(destPath)
+	if err != nil {
+		return
+	}
+	defer debugLog.Close()
+
+	// Extract the UART logs out of the servod DEBUG log. This is ugly and fragile, but very useful.
+	// To make it extra complex, sometimes the same UART is logged on 2 pts, so we'll only record the first one we see,
+	// until that pts is closed.
+	outFiles := make(map[string]*os.File)
+	pts := make(map[string]string)
+	uartLogRegexp := regexp.MustCompile(`^[\d\-]+ [\d:,]+ - (\w+) - EC3PO\.Console[\s\-\w\d:.]+LogConsoleOutput - (/dev/pts/\d+) - (.+$)`)
+	uartCloseLog := regexp.MustCompile(`^[\d\-]+ [\d:,]+ - (\w+) - EC3PO Interface[\s\-\w\d:.]+close - Closing EC3PO console at (/dev/pts/\d+)`)
+	scanner := bufio.NewScanner(debugLog)
+	for scanner.Scan() {
+		if parts := uartLogRegexp.FindStringSubmatch(scanner.Text()); parts != nil {
+			outF, ok := outFiles[parts[1]]
+			if !ok {
+				outFileName := path.Join(i.savedOutDir, fmt.Sprintf("%s_uart.txt", strings.ToLower(parts[1])))
+				outF, err = os.Create(outFileName)
+				if err != nil {
+					s.Errorf("Could not create file %s: %v", outFileName, err)
+					return
+				}
+				defer outF.Close()
+				outFiles[parts[1]] = outF
+				pts[parts[1]] = parts[2]
+			}
+			if pts[parts[1]] == parts[2] {
+				line := []rune(parts[3])
+				for i := 0; i < len(line); (i)++ {
+					c := line[i]
+					if c == '\\' {
+						i++
+						switch line[i] {
+						case '"', '\'', '\\':
+							if _, err = outF.WriteString(string(line[i])); err != nil {
+								s.Errorf("Failed to write to %s file: %v", parts[1], err)
+								return
+							}
+						case 'r':
+							if _, err = outF.WriteString("\r"); err != nil {
+								s.Errorf("Failed to write to %s file: %v", parts[1], err)
+								return
+							}
+						case 'n':
+							if _, err = outF.WriteString("\n"); err != nil {
+								s.Errorf("Failed to write to %s file: %v", parts[1], err)
+								return
+							}
+						case 't':
+							if _, err = outF.WriteString("\t"); err != nil {
+								s.Errorf("Failed to write to %s file: %v", parts[1], err)
+								return
+							}
+						default:
+							s.Errorf("Unexpected escape sequence \\%c at index %d in %s", line[i], i, parts[3])
+						}
+					} else {
+						if _, err = outF.WriteString(string(c)); err != nil {
+							s.Errorf("Failed to write to %s file: %v", parts[1], err)
+							return
+						}
+					}
+				}
+			}
+		} else if parts := uartCloseLog.FindStringSubmatch(scanner.Text()); parts != nil {
+			delete(pts, parts[1])
+		}
+	}
+
+	if err := scanner.Err(); err != nil {
+		s.Logf("Failed to read %s: %v", destPath, err)
 	}
 }
