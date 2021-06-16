@@ -39,6 +39,30 @@
       },
       "revId": "231d6a468b6e887b3497c69f29bdd4af15adbf43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f791b77_84b36024",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T16:22:59Z",
+      "side": 1,
+      "message": "Good catch, done.",
+      "parentUuid": "e51d4e11_d19dce36",
+      "range": {
+        "startLine": 961,
+        "startChar": 33,
+        "endLine": 961,
+        "endChar": 72
+      },
+      "revId": "231d6a468b6e887b3497c69f29bdd4af15adbf43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
