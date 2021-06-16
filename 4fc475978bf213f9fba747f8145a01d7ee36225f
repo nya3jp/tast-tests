@@ -123,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afe86a9f_d8ca8c38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-16T16:08:06Z",
+      "side": 1,
+      "message": "Yes, It\u0027s completely fine",
+      "parentUuid": "9115f48a_b7e77118",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "4fc475978bf213f9fba747f8145a01d7ee36225f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "770ab602_1aef255c",
