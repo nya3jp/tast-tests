@@ -142,8 +142,10 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			}
 
 			// Hide virtual keyboard in case it is still on screen.
-			if err := vkb.NewContext(p.cr, p.tconn).HideVirtualKeyboard()(ctx); err != nil {
-				return errors.Wrap(err, "failed to hide virtual keyboard")
+			if p.vkEnabled {
+				if err := vkb.NewContext(p.cr, p.tconn).HideVirtualKeyboard()(ctx); err != nil {
+					return errors.Wrap(err, "failed to hide virtual keyboard")
+				}
 			}
 
 			if err := ResetIMEStatus(ctx, p.tconn); err != nil {
