@@ -6,7 +6,6 @@ package firmware
 
 import (
 	"context"
-	"os"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/testing"
@@ -29,8 +28,7 @@ func init() {
 // can update a device in the system using a remote repository.
 func FwupdInstallRemote(ctx context.Context, s *testing.State) {
 	// b585990a-003e-5270-89d5-3705a17f9a43 is the GUID for a fake device.
-	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdtool", "update", "-v", "b585990a-003e-5270-89d5-3705a17f9a43")
-	cmd.Env = append(os.Environ(), "CACHE_DIRECTORY=/var/cache/fwupd")
+	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "update", "-v", "b585990a-003e-5270-89d5-3705a17f9a43")
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		s.Fatalf("%q failed: %v", cmd.Args, err)
 	}
