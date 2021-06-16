@@ -121,6 +121,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4fec526_28112182",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-06-16T11:01:03Z",
+      "side": 1,
+      "message": "If I understand correctly - yes, it should be not required.\nLet\u0027s see whether test will work this way when being repeated 😊",
+      "parentUuid": "20768ef5_81c7e370",
+      "revId": "214a2b804bd65c3a702168d2a8883603a8a2dfc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c481ca8_8590b20f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
         "patchSetId": 5
