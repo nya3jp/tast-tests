@@ -221,6 +221,7 @@ func (d *Device) call(ctx context.Context, method string, out interface{}, param
 	if err != nil {
 		return errors.Wrapf(err, "%s: failed reading response", method)
 	}
+	//testing.ContextLogf(ctx, "resBody", string(resBody))
 
 	if d.debug {
 		testing.ContextLog(ctx, "<- ", string(resBody))

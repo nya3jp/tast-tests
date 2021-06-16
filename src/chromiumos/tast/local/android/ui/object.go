@@ -162,22 +162,6 @@ func (o *Object) Click(ctx context.Context) error {
 	return o.callSimple(ctx, "click", o.s)
 }
 
-// ScrollForward performs a forward scroll action with n number of scroll steps.
-//
-// This method corresponds to UiScrollable.scrollForward().
-// https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollforward
-func (o *Object) ScrollForward(ctx context.Context, n int) error {
-	return o.callSimple(ctx, "scrollForward", o.s, true, n)
-}
-
-// ScrollBackward performs a backward scroll action with n number of scroll steps.
-//
-// This method corresponds to UiScrollable.scrollBackward().
-// https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollbackward
-func (o *Object) ScrollBackward(ctx context.Context, n int) error {
-	return o.callSimple(ctx, "scrollBackward", o.s, true, n)
-}
-
 // ScrollTo performs a forward scroll action to move through the scrollable layout element until a view matching the target selector is found.
 //
 // This method corresponds to UiScrollable.scrollintoview().
@@ -400,6 +384,33 @@ func (o *Object) IsSelected(ctx context.Context) (bool, error) {
 		return false, errors.Wrap(err, "IsSelected failed")
 	}
 	return info.Selected, nil
+}
+
+// ScrollBackward returns true if scrolled, false if can't scroll anymore.
+//
+// ScrollBackward performs a backward scroll action with n number of scroll steps in vertical direction from top to bottom.
+// This method corresponds to UiScrollable.scrollBackward().
+// https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollbackward
+func (o *Object) ScrollBackward(ctx context.Context, n int) (bool, error) {
+	return o.callSimpleForScroll(ctx, "scrollBackward", o.s, true, n)
+}
+
+// ScrollForward returns true if scrolled, false if can't scroll anymore.
+//
+// ScrollForward performs a forward scroll action with n number of scroll steps in vertical direction from bottom to top.
+// This method corresponds to UiScrollable.scrollForward().
+// https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollforward
+func (o *Object) ScrollForward(ctx context.Context, n int) (bool, error) {
+	return o.callSimpleForScroll(ctx, "scrollForward", o.s, true, n)
+}
+
+// callSimpleForScroll is a method to call a RPC method that returns output as true if scrolled, false if can't scroll anymore.
+func (o *Object) callSimpleForScroll(ctx context.Context, method string, params ...interface{}) (bool, error) {
+	var output bool
+	if err := o.d.call(ctx, method, &output, params...); err != nil {
+		return output, wrapMethodError(method, o.s, err)
+	}
+	return output, nil
 }
 
 // callSimple is a common method to call a RPC method that returns a boolean indicating success.
