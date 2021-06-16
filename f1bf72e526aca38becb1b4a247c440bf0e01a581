@@ -176,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87ccb8ce_9c0b8916",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-16T05:21:54Z",
+      "side": 1,
+      "message": "I meant that this function is intended to be used for VP8 and VP9. \nBut optional.",
+      "parentUuid": "85e8e3d3_5fdcccc6",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d376a313_71b778e5",
@@ -246,6 +264,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee785f3_2f6c8f26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-16T05:21:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d817f593_24e928d6",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03850586_6edebeb6",
@@ -295,6 +331,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "6ccbabe0_68218b33",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4309d03b_c9defc1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-06-16T05:21:54Z",
+      "side": 1,
+      "message": "Thank you Po-Hsien for the info!",
+      "parentUuid": "a37ee416_4da355b0",
       "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
