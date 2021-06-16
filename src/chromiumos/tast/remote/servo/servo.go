@@ -20,8 +20,8 @@ type Servo struct {
 	xmlrpc *xmlrpc.XMLRpc
 
 	// Cache queried attributes that won't change.
-	version string
-	v4Type  V4TypeValue
+	version     string
+	dutConnType DUTConnTypeValue
 
 	// If initialPDRole is set, then upon Servo.Close(), the PDRole control will be set to initialPDRole.
 	initialPDRole PDRoleValue
