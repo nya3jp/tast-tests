@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6ce53f8_4b00c1aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:18:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6802226d_2951a45c",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ec4f90e_45cb0778",
@@ -49,6 +67,24 @@
       "writtenOn": "2021-06-15T23:42:06Z",
       "side": 1,
       "message": "nit: quite close -\u003e similar",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04f31388_85f90e16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ec4f90e_45cb0778",
       "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -87,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df635883_37345f14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:18:23Z",
+      "side": 1,
+      "message": "This is my bad, it should be regExpKeyFramesVP9, done.",
+      "parentUuid": "8caa5202_4061b8df",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4d3cf4f_19eb2e51",
@@ -100,6 +154,24 @@
       "writtenOn": "2021-06-15T23:42:06Z",
       "side": 1,
       "message": "nit: maybe add usage like for VP8 and VP9?",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85e8e3d3_5fdcccc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:18:23Z",
+      "side": 1,
+      "message": "Not sure what you mean, the sibling functions vp9argsVAAPI etc\ndon\u0027t have much more information (partially on purpose since\nthey are internal to this file).",
+      "parentUuid": "e4d3cf4f_19eb2e51",
       "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e635b207_cfaedda3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:18:23Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "d376a313_71b778e5",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6590f5f1_d64eb6df",
@@ -134,6 +224,24 @@
       "writtenOn": "2021-06-15T23:42:06Z",
       "side": 1,
       "message": "Didn\u0027t we have a doc mentioning about these values?\nIf so, should we add the link?",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d817f593_24e928d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:18:23Z",
+      "side": 1,
+      "message": "We mentioned a bit these parameters in less detail in the DD doco\nfor these PlatformEncoding tests, but not at the level of detail\nof the WebRTC wrappers:  All of these values come from the classes \nLibvpxVP8Encoder/LibvpxVP9Encoder mentioned in l.945. I didn\u0027t \nleave a link because they tend to be refactored around constantly \nand the parameters adjusted, so links quickly become obsolete.",
+      "parentUuid": "6590f5f1_d64eb6df",
       "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -169,6 +277,24 @@
       "side": 1,
       "message": "Just fyi, tast doesn\u0027t allow error string to have punctuation at the end of the string.\nBut You should use \u0027this\u0027 instead of \u0027This\u0027\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
       "parentUuid": "03850586_6edebeb6",
+      "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a37ee416_4da355b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ccbabe0_68218b33",
       "revId": "f1bf72e526aca38becb1b4a247c440bf0e01a581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
