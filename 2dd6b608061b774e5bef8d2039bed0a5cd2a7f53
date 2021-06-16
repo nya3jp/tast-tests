@@ -85,6 +85,29 @@
       },
       "revId": "2dd6b608061b774e5bef8d2039bed0a5cd2a7f53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4da99ada_4bdde574",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-06-16T02:59:31Z",
+      "side": 1,
+      "message": "Should this use the new type case insensitive API? (not sure if there is any \"Auto shift\" or similar for JP, but just checking)",
+      "range": {
+        "startLine": 94,
+        "startChar": 106,
+        "endLine": 94,
+        "endChar": 116
+      },
+      "revId": "2dd6b608061b774e5bef8d2039bed0a5cd2a7f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
