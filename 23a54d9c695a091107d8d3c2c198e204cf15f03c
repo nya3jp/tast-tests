@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09dddb06_86533a73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T05:00:04Z",
+      "side": 1,
+      "message": "nit: Nice to mention tablet here and clamshell below in the error message to ease the debugging.",
+      "range": {
+        "startLine": 124,
+        "startChar": 45,
+        "endLine": 124,
+        "endChar": 51
+      },
+      "revId": "23a54d9c695a091107d8d3c2c198e204cf15f03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd91eebf_14b03e3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T05:00:04Z",
+      "side": 1,
+      "message": "There is no context here why setVolume is part of switchTabs function. The function itself is not self explained.",
+      "range": {
+        "startLine": 212,
+        "startChar": 1,
+        "endLine": 212,
+        "endChar": 11
+      },
+      "revId": "23a54d9c695a091107d8d3c2c198e204cf15f03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9db42bd_1cd23364",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T05:00:04Z",
+      "side": 1,
+      "message": "Sleep is not encouraged without a good reason.",
+      "range": {
+        "startLine": 224,
+        "startChar": 3,
+        "endLine": 226,
+        "endChar": 4
+      },
+      "revId": "23a54d9c695a091107d8d3c2c198e204cf15f03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c04cdb5e_55d2c725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T05:00:04Z",
+      "side": 1,
+      "message": "Any reason to use named return?",
+      "range": {
+        "startLine": 327,
+        "startChar": 73,
+        "endLine": 327,
+        "endChar": 82
+      },
+      "revId": "23a54d9c695a091107d8d3c2c198e204cf15f03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a5df853_8319fec5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T05:00:04Z",
+      "side": 1,
+      "message": "nit: javascript",
+      "range": {
+        "startLine": 330,
+        "startChar": 1,
+        "endLine": 330,
+        "endChar": 10
+      },
+      "revId": "23a54d9c695a091107d8d3c2c198e204cf15f03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "395355c4_e413b95d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T05:00:04Z",
+      "side": 1,
+      "message": "EvalPromise is deprecated. Please use Eval instead.",
+      "range": {
+        "startLine": 337,
+        "startChar": 16,
+        "endLine": 337,
+        "endChar": 27
+      },
+      "revId": "23a54d9c695a091107d8d3c2c198e204cf15f03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c5bc7ad_a20b09d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T05:00:04Z",
+      "side": 1,
+      "message": "comment should finish with full stop. Actually this comment is not necessary here. It does not add any value.",
+      "range": {
+        "startLine": 359,
+        "startChar": 1,
+        "endLine": 359,
+        "endChar": 14
+      },
+      "revId": "23a54d9c695a091107d8d3c2c198e204cf15f03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e316c746_79888f88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T05:00:04Z",
+      "side": 1,
+      "message": "comment should finish with full stop.",
+      "range": {
+        "startLine": 364,
+        "startChar": 1,
+        "endLine": 364,
+        "endChar": 16
+      },
+      "revId": "23a54d9c695a091107d8d3c2c198e204cf15f03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66047b02_dd849b61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T05:00:04Z",
+      "side": 1,
+      "message": "nit: the",
+      "range": {
+        "startLine": 382,
+        "startChar": 35,
+        "endLine": 382,
+        "endChar": 36
+      },
+      "revId": "23a54d9c695a091107d8d3c2c198e204cf15f03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
