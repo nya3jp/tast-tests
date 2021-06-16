@@ -1064,7 +1064,6 @@ func ACVP(ctx context.Context, s *testing.State) {
 		// Assume new format.
 		newFormat = true
 		dec := json.NewDecoder(bytes.NewReader(vectorsBytes))
-		var a acv
 		if err := extractACV(dec, &a); err != nil {
 			s.Fatal("Error parsing ACV version from input file: ", err)
 		}
