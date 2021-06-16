@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88065f0b_feab0fea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T23:29:53Z",
+      "side": 1,
+      "message": "LGTM % nit from tast owner perspective.",
+      "revId": "78e5e0aa6a43a4fc50e2e9803f36cd32b59c1f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a0577a1_5e38f5df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T23:29:53Z",
+      "side": 1,
+      "message": "%d?",
+      "range": {
+        "startLine": 225,
+        "startChar": 53,
+        "endLine": 225,
+        "endChar": 55
+      },
+      "revId": "78e5e0aa6a43a4fc50e2e9803f36cd32b59c1f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
