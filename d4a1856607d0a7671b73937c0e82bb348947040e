@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2d2282c_f0024e0f",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-16T21:31:36Z",
+      "side": 1,
+      "message": "I think this would panic if parts[3] had a trailing, unescaped \u0027\\\u0027. Not sure whether that\u0027s realistic.",
+      "revId": "d4a1856607d0a7671b73937c0e82bb348947040e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
