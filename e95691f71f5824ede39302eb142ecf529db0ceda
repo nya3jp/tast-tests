@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "161fdb91_7b69c236",
+        "filename": "src/chromiumos/tast/local/disk/fill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-06-16T06:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03133c29_6fc591ab",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "e95691f71f5824ede39302eb142ecf529db0ceda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d39cc9b_cb4c9fd7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-16T01:46:09Z",
       "side": 1,
       "message": "See below... I\u0027m confused as to whether this is just the last bit of the name of the file, or the path (I believe the latter). My current preference is:\n\n// filePath is the path to the temporary file, or empty is there isn\u0027t one.\nfilePath string\n\nAlso please update to use go-style comments (i.e. // filePath is ...)",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "e95691f71f5824ede39302eb142ecf529db0ceda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52843a9a_762f79ad",
+        "filename": "src/chromiumos/tast/local/disk/fill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-06-16T06:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d39cc9b_cb4c9fd7",
       "range": {
         "startLine": 53,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "371403e8_c20e1ab4",
+        "filename": "src/chromiumos/tast/local/disk/fill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-06-16T06:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d094601c_88ad7cc2",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "e95691f71f5824ede39302eb142ecf529db0ceda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfc583d3_8e875697",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-16T01:46:09Z",
       "side": 1,
       "message": "nit: insert \u0027in\u0027.\ni.e. \"`dir` is the directory to put the temporary file in.\"",
+      "range": {
+        "startLine": 58,
+        "startChar": 17,
+        "endLine": 58,
+        "endChar": 18
+      },
+      "revId": "e95691f71f5824ede39302eb142ecf529db0ceda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a201346_40ec9650",
+        "filename": "src/chromiumos/tast/local/disk/fill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-06-16T06:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfc583d3_8e875697",
       "range": {
         "startLine": 58,
         "startChar": 17,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca7beaf6_433c633a",
+        "filename": "src/chromiumos/tast/local/disk/fill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-06-16T06:14:33Z",
+      "side": 1,
+      "message": "I attened tech writing 101 and the guideline is to prefer active voice over passive voice. https://developers.google.com/tech-writing/one/active-voice",
+      "parentUuid": "5aee14e6_2af7c448",
+      "range": {
+        "startLine": 63,
+        "startChar": 53,
+        "endLine": 63,
+        "endChar": 61
+      },
+      "revId": "e95691f71f5824ede39302eb142ecf529db0ceda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39e132af_f3974163",
         "filename": "src/chromiumos/tast/local/disk/fill.go",
         "patchSetId": 2
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5cd6550a_630bf93d",
+        "filename": "src/chromiumos/tast/local/disk/fill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-06-16T06:14:33Z",
+      "side": 1,
+      "message": "I update the comment a bit to make it clearer why closing it at the end is a good idea. I prefer to not just say \"you have to do this\". About the snippet, I have put one just above the \"ctor\".",
+      "parentUuid": "39e132af_f3974163",
+      "range": {
+        "startLine": 64,
+        "startChar": 30,
+        "endLine": 64,
+        "endChar": 38
+      },
+      "revId": "e95691f71f5824ede39302eb142ecf529db0ceda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b0ad247_3d33bc9c",
         "filename": "src/chromiumos/tast/local/disk/fill.go",
         "patchSetId": 2
@@ -152,6 +296,30 @@
       "writtenOn": "2021-06-16T01:46:09Z",
       "side": 1,
       "message": "I believe r.filename is already the path to the file. So there is no need to prepend r.dir.",
+      "range": {
+        "startLine": 69,
+        "startChar": 65,
+        "endLine": 69,
+        "endChar": 91
+      },
+      "revId": "e95691f71f5824ede39302eb142ecf529db0ceda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13462cf1_1145de1b",
+        "filename": "src/chromiumos/tast/local/disk/fill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-06-16T06:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b0ad247_3d33bc9c",
       "range": {
         "startLine": 69,
         "startChar": 65,
