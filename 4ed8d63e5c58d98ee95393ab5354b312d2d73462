@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "809a1c8f_58602bac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-06-16T01:07:25Z",
+      "side": 1,
+      "message": "Technically, \"We\u0027re no longer treating file:// URLs specially\" \n\nhttps://chromium-review.googlesource.com/c/chromium/src/+/2770527\n\n(Also, you\u0027re welcome)",
+      "range": {
+        "startLine": 9,
+        "startChar": 70,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "4ed8d63e5c58d98ee95393ab5354b312d2d73462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de09c07_411986de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-06-16T01:07:25Z",
+      "side": 1,
+      "message": "I\u0027ll +2 this despite the concern in the comment; we may need to submit this to resolve the flakes and then improve later.",
+      "revId": "4ed8d63e5c58d98ee95393ab5354b312d2d73462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1199442d_d03a0360",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-06-16T01:07:25Z",
+      "side": 1,
+      "message": "Is this the correct fix for the flakiness though? If shill is logging hostnames during network connections, it\u0027s still a bug unless we\u0027re sure it\u0027s always a few well-known locations like google.com which are same for everyone. And I don\u0027t see how the network being down causing the test to fail incorrectly -- it caused it to fail correctly.",
+      "revId": "4ed8d63e5c58d98ee95393ab5354b312d2d73462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
