@@ -1225,6 +1225,11 @@ func (a *App) ToggleSaveMetadata(ctx context.Context) (bool, error) {
 	return a.toggleOption(ctx, "save-metadata", "#expert-save-metadata")
 }
 
+// ToggleEnableExpertMode toggles enable expert mode and returns whether it's enabled after toggling.
+func (a *App) ToggleEnableExpertMode(ctx context.Context) (bool, error) {
+	return a.toggleOption(ctx, "expert", "#expert-enable-expert-mode")
+}
+
 // ToggleCustomVideoParameters customize video parameters options and returns whether it's enabled after toggling.
 func (a *App) ToggleCustomVideoParameters(ctx context.Context) (bool, error) {
 	return a.toggleOption(ctx, "custom-video-parameters", "#custom-video-parameters")
