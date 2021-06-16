@@ -16,6 +16,46 @@
       "message": "tast shadow reviewer LGTM",
       "revId": "4fc475978bf213f9fba747f8145a01d7ee36225f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8037442_d7e6ff37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-16T13:37:44Z",
+      "side": 1,
+      "message": "LGTM: %nit",
+      "revId": "4fc475978bf213f9fba747f8145a01d7ee36225f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "770ab602_1aef255c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-16T13:37:44Z",
+      "side": 1,
+      "message": "nit: for",
+      "range": {
+        "startLine": 147,
+        "startChar": 28,
+        "endLine": 147,
+        "endChar": 29
+      },
+      "revId": "4fc475978bf213f9fba747f8145a01d7ee36225f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
