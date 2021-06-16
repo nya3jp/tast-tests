@@ -16,6 +16,24 @@
       "message": "Oh, it\u0027s implicitly appending \"@gmail.com\" when there\u0027s no domain. I guess that makes sense, but I\u0027m not sure this is happening at the right spot",
       "revId": "8fb88de209a93bcd4d816050b86acb080642ed03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59eb068f_8c17dc5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-06-16T23:42:13Z",
+      "side": 1,
+      "message": "No, chrome does the same thing somewhere, so that\u0027s fine. We just need to handle multiple @-signs right.",
+      "parentUuid": "1fbb0def_ada93fa8",
+      "revId": "8fb88de209a93bcd4d816050b86acb080642ed03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
