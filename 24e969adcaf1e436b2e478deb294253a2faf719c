@@ -299,6 +299,30 @@
       },
       "revId": "24e969adcaf1e436b2e478deb294253a2faf719c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2494ee11_e1d940b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-06-16T00:13:51Z",
+      "side": 1,
+      "message": "ok, using ash.SetClipboard now because you mentioned the old way could introduce flakiness. And now I am adding two pieces of text to the clipboard.",
+      "parentUuid": "b38e2694_dc37b2ba",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "24e969adcaf1e436b2e478deb294253a2faf719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

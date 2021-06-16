@@ -86,6 +86,30 @@
       },
       "revId": "916a4da9d1f3b8e6694b04b6a53a9055c32b6853",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03772d87_33a44bc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-06-16T00:13:51Z",
+      "side": 1,
+      "message": "Done. But in this way, we will also lose a lot of log, right? With the new code, if it fails in one of the combined actions, we cannot know which one is failing.",
+      "parentUuid": "20242afe_45a614ae",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "916a4da9d1f3b8e6694b04b6a53a9055c32b6853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
