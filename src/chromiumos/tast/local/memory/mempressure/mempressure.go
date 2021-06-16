@@ -812,12 +812,14 @@ func NewTestEnv(ctx context.Context, outDir string, enableARC, useHugePages bool
 	var opts []chrome.Option
 	var err error
 
-	te.wpr, err = wpr.New(ctx, wpr.Replay, archive)
-	if err != nil {
-		return nil, errors.Wrap(err, "cannot start WPR")
-	}
+	if archive != "" {
+		te.wpr, err = wpr.New(ctx, wpr.Replay, archive)
+		if err != nil {
+			return nil, errors.Wrap(err, "cannot start WPR")
+		}
 
-	opts = append(opts, te.wpr.ChromeOptions...)
+		opts = append(opts, te.wpr.ChromeOptions...)
+	}
 
 	if enableARC {
 		opts = append(opts, chrome.ARCEnabled())
