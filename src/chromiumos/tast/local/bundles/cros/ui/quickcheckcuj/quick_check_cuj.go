@@ -88,11 +88,20 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		s.Logf("Wi-Fi AP %s is connected", ssid)
 	}
 
+	// Shorten the context to resume battery charging.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	// Set battery to discharge so the power consumption of the CUJ can be measured.
 	setBatteryNormal, err := setup.SetBatteryDischarge(ctx, 50)
 	if err != nil {
 		s.Fatal("Failed to set battery discharge: ", err)
 	}
-	defer setBatteryNormal(ctx)
+	// It is important to call the deferred function setBatteryNormal() in
+	// a separate context to make sure it has time to
+	// run and the battery change can be set back to normal.
+	defer setBatteryNormal(cleanupCtx)
 
 	pv := perf.NewValues()
 
@@ -145,11 +154,16 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		}
 	}
 
+	// Shorten the context to cleanup recorder.
+	cleanupRecorderCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	recorder, err := cuj.NewRecorder(ctx, tconn, cuj.MetricConfigs()...)
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}
-	defer recorder.Close(ctx)
+	defer recorder.Close(cleanupRecorderCtx)
 
 	if pauseMode == Lock {
 		// Lock the screen before recording the test.
@@ -187,16 +201,13 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 	defer uiActionHandler.Close()
 
 	var browserStartTime, totalElapsed time.Duration
-	// Use a shortened context to run recorder to allow cleanup.
-	runCtx, runCancel := ctxutil.Shorten(ctx, 3*time.Second)
-	defer runCancel()
-	if err = recorder.Run(runCtx, func(ctx context.Context) error {
+	if err = recorder.Run(ctx, func(ctx context.Context) error {
 		startTime := time.Now()
 
 		// Execute lock function inside of recorder.
 		if pauseMode == Lock {
 			if err := UnlockScreen(ctx, tconn, password); err != nil {
-				s.Fatal("Failed to lock and unlock screen: ", err)
+				return errors.Wrap(err, "failed to lock and unlock screen")
 			}
 		}
 		if performWifi {
@@ -211,37 +222,48 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 				}
 				return nil
 			}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 1 * time.Second}); err != nil {
-				s.Fatal("Failed to re-connect WiFi after resume: ", err)
+				return errors.Wrap(err, "failed to re-connect WiFi after resume")
 			}
-			s.Log("WiFi AP has been reconnected")
+			testing.ContextLog(ctx, "WiFi AP has been reconnected")
 		}
 
 		// Launch browser and track the elapsed time.
-		browserStartTime, err = cuj.GetBrowserStartTime(ctx, cr, tconn, tabletMode)
-		if err != nil {
+		if browserStartTime, err = cuj.GetBrowserStartTime(ctx, cr, tconn, tabletMode); err != nil {
 			return errors.Wrap(err, "failed to launch Chrome")
 		}
-		s.Log("Browser start ms: ", browserStartTime.Milliseconds())
+		testing.ContextLogf(ctx, "Browser start time %d ms", browserStartTime.Milliseconds())
 
-		tabsInfo := []*tabInfo{
+		// Expecting 3 windows, first 2 windows with one tab and last window with 2 tabs.
+		tabsInfo := [][]*tabInfo{{
 			{url: "https://mail.google.com"},
+		}, {
 			{url: "https://calendar.google.com/calendar/u/0/r/month"},
+		}, {
 			{url: "https://news.google.com"},
 			{url: "https://photos.google.com"},
-		}
+		}}
 
 		// Open tabs.
-		for _, tab := range tabsInfo {
-			defer func() {
-				if tab.conn != nil {
-					tab.conn.CloseTarget(ctx)
-					tab.conn.Close()
-					tab.conn = nil
-				}
-			}()
+		for _, tabs := range tabsInfo {
+			for tabIdx, tab := range tabs {
+				defer func() {
+					if tab.conn != nil {
+						tab.conn.CloseTarget(ctx)
+						tab.conn.Close()
+						tab.conn = nil
+					}
+				}()
 
-			if tab.conn, err = uiActionHandler.NewChromeTab(ctx, cr, tab.url, true); err != nil {
-				return errors.Wrapf(err, "failed to open URL: %s", tab.url)
+				if tab.conn, err = uiActionHandler.NewChromeTab(ctx, cr, tab.url, tabIdx == 0); err != nil {
+					return errors.Wrapf(err, "failed to open URL: %s", tab.url)
+				}
+			}
+
+			// Switch back to the first tab.
+			if len(tabs) > 1 {
+				if err := uiActionHandler.SwitchToChromeTabByIndex(0)(ctx); err != nil {
+					return errors.Wrap(err, "failed to switch back to first tab")
+				}
 			}
 		}
 
@@ -258,23 +280,43 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 			return errors.Wrap(err, "failed to check installed chrome browser")
 		}
 
-		// Switch windows to measure the responsiveness.
-		// Wait each window to finish loading (to see if the network connection works)
-		for idx, tab := range tabsInfo {
-			if err := uiActionHandler.SwitchToAppWindowByIndex(chromeApp.Name, idx)(ctx); err != nil {
-				return errors.Wrap(err, "failed to switch between windows")
-			}
-			if err := webutil.WaitForRender(ctx, tab.conn, 10*time.Second); err != nil {
-				return errors.Wrapf(err, "failed to wait for finish render [%s]", tab.url)
-			}
-			if err := webutil.WaitForQuiescence(ctx, tab.conn, time.Minute); err != nil {
-				return errors.Wrapf(err, "a tab is still loading [%s]", tab.url)
+		scrollActions, err := uiActionHandler.ScrollChromePage(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to generate scroll actions")
+		}
+
+		// Switch windows/tabs and scroll the web page to measure the responsiveness.
+		for idxWindow, tabs := range tabsInfo {
+			switchFunc := uiActionHandler.SwitchToAppWindowByIndex(chromeApp.Name, idxWindow)
+			switchDesc := "windows"
+			for idxTab, tab := range tabs {
+				if idxTab != 0 {
+					switchFunc = uiActionHandler.SwitchToChromeTabByIndex(idxTab)
+					switchDesc = "tabs"
+				}
+
+				if err := switchFunc(ctx); err != nil {
+					return errors.Wrapf(err, "failed to switch between %s", switchDesc)
+				}
+				if err := webutil.WaitForRender(ctx, tab.conn, 10*time.Second); err != nil {
+					return errors.Wrapf(err, "failed to wait for finish render [%s]", tab.url)
+				}
+				// Wait each page to finish loading (to see if the network connection works).
+				if err := webutil.WaitForQuiescence(ctx, tab.conn, time.Minute); err != nil {
+					return errors.Wrapf(err, "a tab is still loading [%s]", tab.url)
+				}
+
+				for _, scroll := range scrollActions {
+					if err := scroll(ctx); err != nil {
+						return errors.Wrap(err, "failed to scroll page")
+					}
+				}
 			}
 		}
 
 		// Total time used from beginning to load all pages.
 		totalElapsed = time.Since(startTime)
-		s.Log("Total Elapsed ms: ", totalElapsed.Milliseconds())
+		testing.ContextLogf(ctx, "All page loaded, %d ms elapsed", totalElapsed.Milliseconds())
 
 		if err := uiActionHandler.MinimizeAllWindow()(ctx); err != nil {
 			return errors.Wrap(err, "failed to minimize all window: ")
