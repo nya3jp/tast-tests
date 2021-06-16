@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23ae249d_56ed9fca",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17059,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-06-16T14:59:35Z",
+      "side": 1,
+      "message": "Please restrict these changed to only one CL; the first to be merged.",
+      "range": {
+        "startLine": 17012,
+        "startChar": 0,
+        "endLine": 17059,
+        "endChar": 79
+      },
+      "revId": "1295a37dd325602cdf54e0d3f321038ea2fd5042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
