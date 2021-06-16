@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86511382_829dec87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-16T14:57:29Z",
+      "side": 1,
+      "message": "We need a Googler or a chromiumos commiter as a contact, but as we also have the chromeos-dlp@google.com as contact here it is ok.\nIt\u0027s just important that we know who we can ping if there are problems with the test.",
+      "parentUuid": "5fa5a5ff_d05e8535",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "4fc475978bf213f9fba747f8145a01d7ee36225f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "770ab602_1aef255c",
