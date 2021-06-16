@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a610bea_ee51acc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-06-16T21:57:36Z",
+      "side": 1,
+      "message": "Hi Yen-lin, do you mind reviewing this as an OWNER?",
+      "revId": "6c26b89630edd72ea7b88cc1cea39d1127227e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
