@@ -20,11 +20,20 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// Enum type for various ways autocorrect can be undone.
+type undoMethod int
+
+const (
+	viaPopupUsingPk = iota
+	viaPopupUsingMouse
+)
+
 // autocorrectTestCase struct encapsulates parameters for each Autocorrect test.
 type autocorrectTestCase struct {
 	inputMethodID string
 	misspeltWord  string
 	correctWord   string
+	undoMethod    undoMethod
 }
 
 func init() {
@@ -37,12 +46,22 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name: "en_us",
+				Name: "en_us_autocorrect_then_undo_via_popup_using_pk",
 				Pre:  pre.NonVKClamshell,
 				Val: autocorrectTestCase{
 					inputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
 					misspeltWord:  "helol",
 					correctWord:   "hello",
+					undoMethod:    viaPopupUsingPk,
+				},
+			}, {
+				Name: "en_us_autocorrect_then_undo_via_popup_using_mouse",
+				Pre:  pre.NonVKClamshell,
+				Val: autocorrectTestCase{
+					inputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
+					misspeltWord:  "wrold",
+					correctWord:   "world",
+					undoMethod:    viaPopupUsingMouse,
 				},
 				// Test cases for other input methods can be added once the framework
 				// supports more than just US-Qwerty layout.
@@ -106,5 +125,23 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 
 	if err := ui.WaitUntilExists(undoButtonFinder)(ctx); err != nil {
 		s.Fatal("Cannot find Undo button: ", err)
+	}
+
+	switch testCase.undoMethod {
+	case viaPopupUsingPk:
+		if err := uiauto.Combine("validate PK autocorrect undo via popup using PK",
+			keyboard.AccelAction("Up"),
+			keyboard.AccelAction("Enter"),
+			its.WaitForFieldValueToBe(inputField, testCase.misspeltWord+" "),
+		)(ctx); err != nil {
+			s.Fatal("Failed to validate PK autocorrect undo via popup using PK: ", err)
+		}
+	case viaPopupUsingMouse:
+		if err := uiauto.Combine("validate PK autocorrect undo",
+			ui.LeftClick(undoButtonFinder),
+			its.WaitForFieldValueToBe(inputField, testCase.misspeltWord+" "),
+		)(ctx); err != nil {
+			s.Fatal("Failed to validate PK autocorrect undo via popup using mouse: ", err)
+		}
 	}
 }
