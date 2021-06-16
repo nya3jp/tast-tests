@@ -16,6 +16,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// Define test types
+const (
+	localFileTest int = iota
+	thirdPartySiteTest
+)
+
 const (
 	testPageFilename = "sys_info_pii_test_page.html"
 )
@@ -26,9 +32,17 @@ func init() {
 		Desc:         "Verify that known-sensitive data doesn't show up in feedback reports",
 		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline"},
-		Data:         []string{testPageFilename},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{{
+			Name:      "",
+			Val:       localFileTest,
+			ExtraData: []string{testPageFilename},
+		}, {
+			Name:      "third_party_site",
+			Val:       thirdPartySiteTest,
+			ExtraAttr: []string{"informational"},
+		}},
 	})
 }
 
@@ -43,24 +57,40 @@ type systemInformation struct {
 	Value string `json:"value"`
 }
 
+type contentsDescriptor struct {
+	content string
+	desc    string
+}
+
 // SysInfoPII loads an external website URL to verify that the logs that the
 // feedback system sends do not contain sensitive and hard-to-redact
 // information, such as tab names.
 func SysInfoPII(ctx context.Context, s *testing.State) {
 	const (
-		pageTitle    = "feedback.SysInfoPII test page title"
-		pageContents = "feedback.SysInfoPII test page contents"
+		localPageTitle    = "feedback.SysInfoPII test page title"
+		localPageContents = "feedback.SysInfoPII test page contents"
 	)
-
-	dataFile := s.DataPath(testPageFilename)
-	targetPath := path.Join("/home/chronos/user/MyFiles", testPageFilename)
-	if err := fsutil.CopyFile(dataFile, targetPath); err != nil {
-		s.Fatal("Failed to put dataFile in home dir: ", err)
+	sensitiveURL := ""
+	sensitiveURLWithoutScheme := ""
+	if s.Param().(int) == localFileTest {
+		dataFile := s.DataPath(testPageFilename)
+		targetPath := path.Join("/home/chronos/user/MyFiles", testPageFilename)
+		if err := fsutil.CopyFile(dataFile, targetPath); err != nil {
+			s.Fatal("Failed to put dataFile in home dir: ", err)
+		}
+		if err := os.Chmod(targetPath, 0666); err != nil {
+			s.Fatal("Failed to make dataFile readable: ", err)
+		}
+		sensitiveURL = "file://" + targetPath
+		sensitiveURLWithoutScheme = dataFile
+	} else {
+		// Arbitrary third-party website, which shouldn't be logged.
+		// We use a third-party website to reduce the risk of false positives:
+		// some utilities hard-code "www.google.com" and log that string,
+		// which is acceptable (as it's not in response to any user actions).
+		sensitiveURL = "https://www.facebook.com"
+		sensitiveURLWithoutScheme = "www.facebook.com"
 	}
-	if err := os.Chmod(targetPath, 0666); err != nil {
-		s.Fatal("Failed to make dataFile readable: ", err)
-	}
-	sensitiveURL := "file://" + targetPath
 
 	cr := s.PreValue().(*chrome.Chrome)
 	conn, err := cr.NewConn(ctx, sensitiveURL)
@@ -73,6 +103,7 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not create test API conn: ", err)
 	}
+	s.Log("Calling getSystemInformation")
 	var ret []*systemInformation
 	if err := tconn.Eval(ctx, "tast.promisify(chrome.feedbackPrivate.getSystemInformation)()", &ret); err != nil {
 		s.Fatal("Could not call getSystemInformation: ", err)
@@ -83,7 +114,7 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the tab title: ", err)
 	}
 	// check that page actually loaded as expected
-	if actualTitle != pageTitle {
+	if s.Param().(int) == localFileTest && actualTitle != localPageTitle {
 		// Don't log the expected page title so we don't make later
 		// runs of this test fail
 		s.Error("Unexpected title: ", actualTitle)
@@ -94,14 +125,16 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 			// mem_usage_with_title is only included if the user
 			// explicitly opts to send tab titles, so it's
 			// acceptable for it to contain titles or possibly URLs.
-			badContents := []struct {
-				content string
-				desc    string
-			}{
-				{pageTitle, "tabTitle"},
-				{pageContents, "pageContents"},
+			badContents := []contentsDescriptor{
+				{actualTitle, "tabTitle"},
 				{sensitiveURL, "URL"},
-				{dataFile, "filePath"},
+				{sensitiveURLWithoutScheme, "URLWithoutScheme"},
+			}
+			if s.Param().(int) == localFileTest {
+				badContents = append(
+					badContents,
+					contentsDescriptor{localPageContents, "pageContents"},
+				)
 			}
 			for _, entry := range badContents {
 				if strings.Contains(info.Value, entry.content) {
