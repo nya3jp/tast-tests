@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9835986b_2704fa00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:24:34Z",
+      "side": 1,
+      "message": "micro-nit: perhaps add here for context that they failed\nbefore crrev/c/2894404, and pass afterwards.",
+      "range": {
+        "startLine": 10,
+        "startChar": 33,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "92dbc642a7386c1aa5972a981b3ba0e5a6664dbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f665f084_57acb732",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-16T02:24:34Z",
+      "side": 1,
+      "message": "LvGTM !",
+      "revId": "92dbc642a7386c1aa5972a981b3ba0e5a6664dbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
