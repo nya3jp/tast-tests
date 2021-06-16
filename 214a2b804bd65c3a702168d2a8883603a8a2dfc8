@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f599888_6905ac36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-16T07:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fecc2597_d8f1c94f",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "214a2b804bd65c3a702168d2a8883603a8a2dfc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "224ff109_471a3a89",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f41b3f9_5c19fd3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-16T07:53:25Z",
+      "side": 1,
+      "message": "If we use capturemode it\u0027s possible to take screenshot without requiring to sleep but the package is inside ui which is deprecated.\n\nHow would test wait for screenshot event to take place because key press event take place instantly (Thus testing poll didn\u0027t work here)\n\nI used this part of the code from DisableScreenshotsHotkey test, It should be completed but If not I can add the capturemode change",
+      "parentUuid": "224ff109_471a3a89",
+      "revId": "214a2b804bd65c3a702168d2a8883603a8a2dfc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c481ca8_8590b20f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
         "patchSetId": 5
@@ -54,6 +96,30 @@
       "writtenOn": "2021-06-15T15:03:33Z",
       "side": 1,
       "message": "I think both of these %t can be %v since that\u0027s the default value for bool: https://golang.org/pkg/fmt/#hdr-Printing",
+      "range": {
+        "startLine": 165,
+        "startChar": 49,
+        "endLine": 165,
+        "endChar": 51
+      },
+      "revId": "214a2b804bd65c3a702168d2a8883603a8a2dfc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbc4404d_814983bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-16T07:53:25Z",
+      "side": 1,
+      "message": "I might be wrong but in the link %t is default for boolean. Although I have added the change",
+      "parentUuid": "0c481ca8_8590b20f",
       "range": {
         "startLine": 165,
         "startChar": 49,
