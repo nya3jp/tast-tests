@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23817b4c_ba4437a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/non_educoexistence_insession.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-16T19:26:45Z",
+      "side": 1,
+      "message": "Ideally we should have the fixture taking care of closing all chrome windows and dialogs which is not happening (b/190680218). Hence the test is required to take care care of this. But here if the test fails, this code path won\u0027t be hit and hence dialog will remain open.",
+      "parentUuid": "15162493_5752bcdf",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "b341f34493cae7338e2d62dce1af619682cf9dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a91c8cd3_a60ac967",
         "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
         "patchSetId": 5
