@@ -175,6 +175,29 @@
       "message": "nit: period in the end?",
       "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb65258_a2432243",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-06-16T00:05:17Z",
+      "side": 1,
+      "message": "this.\n\nHow about rephrase it to (\"Unrecognized codec name in testname: \" + testName)",
+      "range": {
+        "startLine": 1102,
+        "startChar": 33,
+        "endLine": 1102,
+        "endChar": 34
+      },
+      "revId": "cc2c52c9de64b6c8d7737d0798b946e3cca37d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
