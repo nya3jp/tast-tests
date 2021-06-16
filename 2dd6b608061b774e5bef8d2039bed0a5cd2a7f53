@@ -16,6 +16,75 @@
       "message": "Hi PTAL thanks!",
       "revId": "2dd6b608061b774e5bef8d2039bed0a5cd2a7f53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90ade095_583ce423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T02:54:05Z",
+      "side": 1,
+      "message": "Can you move this function into inputs/util? We might have more pk tests need this function.",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "2dd6b608061b774e5bef8d2039bed0a5cd2a7f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf400e59_8955ac02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T02:54:05Z",
+      "side": 1,
+      "message": "Unfortunately this cl has not solved the problem.",
+      "range": {
+        "startLine": 25,
+        "startChar": 73,
+        "endLine": 25,
+        "endChar": 85
+      },
+      "revId": "2dd6b608061b774e5bef8d2039bed0a5cd2a7f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71606a3b_5cae66f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-16T02:54:05Z",
+      "side": 1,
+      "message": "I am not sure if this is still required. AddAndSetInputMethod will sleep 10s in the end.",
+      "range": {
+        "startLine": 94,
+        "startChar": 78,
+        "endLine": 94,
+        "endChar": 99
+      },
+      "revId": "2dd6b608061b774e5bef8d2039bed0a5cd2a7f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
