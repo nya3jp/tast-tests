@@ -462,8 +462,13 @@ func TouchScreenScroll(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Log("ScrollLayout doesn't exist. Page is not scrollable and skipping the test: ", err)
 		return
 	}
-	if err := checkForScrollLayout.ScrollForward(ctx, 50); err != nil {
-		s.Fatal("Failed to scrollForward: ", err)
+
+	scrollForwdInfo, err := checkForScrollLayout.ScrollForward(ctx, 50)
+	if err != nil {
+		s.Fatal("Failed to scroll forward: ", err)
+	}
+	if !scrollForwdInfo {
+		s.Log("App page can not be scrolled forward anymore")
 	}
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
