@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8863bef5_77d671a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-16T23:52:19Z",
+      "side": 1,
+      "message": "Thanks for your review! Fixed the nit.",
+      "revId": "1e72b94f919468ebf177e84c88e0c0250b9b31d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
