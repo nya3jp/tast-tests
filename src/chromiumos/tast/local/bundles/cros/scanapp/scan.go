@@ -142,6 +142,9 @@ func Scan(ctx context.Context, s *testing.State) {
 	if err = cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
 		s.Fatal("Failed to wait for printer to be idle: ", err)
 	}
+	if err = ippusbbridge.CheckDevice(ctx, devInfo, "/eSCL/ScannerCapabilities"); err != nil {
+		s.Fatal("Failed to get scanner status over ippusb_bridge socket: ", err)
+	}
 
 	// Launch the Scan app, configure the settings, and perform scans.
 	app, err := scanapp.Launch(ctx, tconn)
