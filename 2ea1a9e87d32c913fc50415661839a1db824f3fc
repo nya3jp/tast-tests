@@ -34,6 +34,24 @@
       "parentUuid": "313a67f7_1351a9f9",
       "revId": "2ea1a9e87d32c913fc50415661839a1db824f3fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48610af9_7fa45883",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-06-17T10:27:52Z",
+      "side": 1,
+      "message": "How about:\nResourced.baseline tests A only\nResourced tests others.",
+      "parentUuid": "420147b7_85419f49",
+      "revId": "2ea1a9e87d32c913fc50415661839a1db824f3fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
