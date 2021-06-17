@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c43a698b_dc58ea57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-17T01:23:44Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nits",
+      "revId": "5a003cb0fbf7017a30cfe048fabde8819b5961c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "105576b8_3b8df952",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-17T01:23:44Z",
+      "side": 1,
+      "message": "nit: \"... is a data structure ...\" seems redundant (it\u0027s a struct)\nWhat about something like: \"FieldInputEval encapsulates a function to input text into an input field, and its expected output.\"",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 110
+      },
+      "revId": "5a003cb0fbf7017a30cfe048fabde8819b5961c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7eabd7f_6f5d9edf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-17T01:23:44Z",
+      "side": 1,
+      "message": "nit: Generally in golang, method variants just vary the method suffix, see:\nhttps://golang.org/pkg/regexp/#Regexp.FindAllString\nhttps://golang.org/pkg/regexp/#Regexp.FindAllStringIndex\nhttps://golang.org/pkg/regexp/#Regexp.FindAllStringSubmatch\netc.\n\nWhat about: \"WaitForFieldTextToBeIgnoringCase\"?",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "5a003cb0fbf7017a30cfe048fabde8819b5961c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9013e36f_0550f282",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-17T01:23:44Z",
+      "side": 1,
+      "message": "nit: via a touch event?",
+      "range": {
+        "startLine": 147,
+        "startChar": 109,
+        "endLine": 147,
+        "endChar": 110
+      },
+      "revId": "5a003cb0fbf7017a30cfe048fabde8819b5961c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
