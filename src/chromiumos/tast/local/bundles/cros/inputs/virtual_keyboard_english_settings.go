@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
@@ -106,7 +107,7 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 				its.Clear(inputField),
 				its.ClickFieldUntilVKShown(inputField),
 				vkbCtx.TapKeys(subTest.keySeq),
-				its.WaitForFieldValueToBe(inputField, subTest.expectedText),
+				util.WaitForFieldTextToBe(tconn, inputField.Finder(), subTest.expectedText),
 			)(ctx); err != nil {
 				s.Fatal("Failed to verify input: ", err)
 			}
