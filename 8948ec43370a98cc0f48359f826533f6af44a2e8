@@ -70,6 +70,75 @@
       "parentUuid": "569f0a32_f368ab41",
       "revId": "8948ec43370a98cc0f48359f826533f6af44a2e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53cb5c90_57274342",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-17T06:10:45Z",
+      "side": 1,
+      "message": "nit: better to not pass testing.State throughout helper functions, consider returning errors?",
+      "range": {
+        "startLine": 42,
+        "startChar": 18,
+        "endLine": 42,
+        "endChar": 34
+      },
+      "revId": "8948ec43370a98cc0f48359f826533f6af44a2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cc70593_a5b6022d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-17T06:10:45Z",
+      "side": 1,
+      "message": "This is going to be visible on the health.* packages (although not usable) consider a more precise name, validateAudioInfoData?",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "8948ec43370a98cc0f48359f826533f6af44a2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21016c54_56b98764",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-17T06:10:45Z",
+      "side": 1,
+      "message": "nit: Failed to decode audio data %q: %v",
+      "range": {
+        "startLine": 86,
+        "startChar": 12,
+        "endLine": 86,
+        "endChar": 54
+      },
+      "revId": "8948ec43370a98cc0f48359f826533f6af44a2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
