@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3b464f7_fcc2a17e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-06-17T01:05:30Z",
+      "side": 1,
+      "message": "ValidateInputOnField currently requires an \"expectedValue\" as the 3rd parameter. What should I put there?\n\nShould the 3rd parameter be optional or something?",
+      "parentUuid": "ef2ac13e_e56b606d",
+      "range": {
+        "startLine": 100,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 5
+      },
+      "revId": "4421d38ddf7fb178ecab8ed54289d9a34eb6bb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48afa04a_addc82c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
         "patchSetId": 2
