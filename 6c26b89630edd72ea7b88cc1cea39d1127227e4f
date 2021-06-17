@@ -51,6 +51,23 @@
       "message": "CQ failures look un-related to this change. Retry CQ.",
       "revId": "6c26b89630edd72ea7b88cc1cea39d1127227e4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65b9da5d_7ee9c2c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-17T07:37:26Z",
+      "side": 1,
+      "message": "CQ still hit b/191284757. As the CL is reverted and broken version is updated. Retry CQ again.",
+      "revId": "6c26b89630edd72ea7b88cc1cea39d1127227e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
