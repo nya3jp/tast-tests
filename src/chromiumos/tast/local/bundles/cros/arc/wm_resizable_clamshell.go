@@ -17,8 +17,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	crui "chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	uiauto "chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -567,7 +568,7 @@ func wmRC13(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	// Destination point.
 	to := coords.NewPoint(toX, toY)
 
-	if err := mouse.Drag(ctx, tconn, bottomRight, to, 600*time.Millisecond); err != nil {
+	if err := mouse.Drag(tconn, bottomRight, to, 600*time.Millisecond)(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag the mouse")
 	}
 
@@ -1124,11 +1125,13 @@ func checkRestoreActivityToFullscreen(ctx context.Context, tconn *chrome.TestCon
 
 // touchCaptionButton function will simulate touch event on a caption button by button's name.
 func touchCaptionButton(ctx context.Context, tconn *chrome.TestConn, btnName string) error {
-	captionBtn, err := crui.Find(ctx, tconn, crui.FindParams{ClassName: "FrameCaptionButton", Name: btnName})
+	ui := uiauto.New(tconn)
+	finder := nodewith.Name(btnName).ClassName("FrameCaptionButton")
+	captionBtn, err := ui.Info(ctx, finder)
+
 	if err != nil {
 		return errors.Errorf("failed to find \"%q\" caption button", btnName)
 	}
-	defer captionBtn.Release(ctx)
 
 	tsw, err := input.Touchscreen(ctx)
 	if err != nil {
@@ -1166,13 +1169,8 @@ func touchCaptionButton(ctx context.Context, tconn *chrome.TestConn, btnName str
 
 // leftClickCaptionButton function will simulate left click event on a caption button by button's name.
 func leftClickCaptionButton(ctx context.Context, tconn *chrome.TestConn, btnName string) error {
-	captionBtn, err := crui.Find(ctx, tconn, crui.FindParams{ClassName: "FrameCaptionButton", Name: btnName})
-	if err != nil {
-		return errors.Errorf("failed to find \"%q\" caption button", btnName)
-	}
-	defer captionBtn.Release(ctx)
-
-	if err := captionBtn.LeftClick(ctx); err != nil {
+	finder := nodewith.Name(btnName).ClassName("FrameCaptionButton")
+	if err := uiauto.New(tconn).LeftClick(finder)(ctx); err != nil {
 		return errors.Errorf("failed to perform left click on \"%q\" button", btnName)
 	}
 
@@ -1181,7 +1179,10 @@ func leftClickCaptionButton(ctx context.Context, tconn *chrome.TestConn, btnName
 
 // leftClickDragCaptionButton function will simulate left click long press event on a caption button by button's name.
 func leftClickDragCaptionButton(ctx context.Context, tconn *chrome.TestConn, btnName string, toLeft bool) error {
-	captionBtn, err := crui.Find(ctx, tconn, crui.FindParams{ClassName: "FrameCaptionButton", Name: btnName})
+	ui := uiauto.New(tconn)
+	finder := nodewith.Name(btnName).ClassName("FrameCaptionButton")
+	captionBtn, err := ui.Info(ctx, finder)
+
 	if err != nil {
 		return errors.Errorf("failed to find \"%q\" caption button", btnName)
 	}
@@ -1192,7 +1193,7 @@ func leftClickDragCaptionButton(ctx context.Context, tconn *chrome.TestConn, btn
 	}
 
 	dest := coords.NewPoint(captionBtn.Location.CenterPoint().X+d, captionBtn.Location.CenterPoint().Y)
-	return mouse.Drag(ctx, tconn, captionBtn.Location.CenterPoint(), dest, 500*time.Millisecond)
+	return mouse.Drag(tconn, captionBtn.Location.CenterPoint(), dest, 500*time.Millisecond)(ctx)
 }
 
 // leftClickDragSource function will simulate left click on source coordinate and drag to left/right top corner of screen.
@@ -1205,7 +1206,7 @@ func leftClickDragSource(ctx context.Context, tconn *chrome.TestConn, source coo
 	}
 
 	dest := coords.NewPoint(destX, destY)
-	return mouse.Drag(ctx, tconn, source, dest, 750*time.Millisecond)
+	return mouse.Drag(tconn, source, dest, 750*time.Millisecond)(ctx)
 }
 
 // rcMaxRestoreTestHelper performs RC02 test either by left clicking or touching the caption button.
