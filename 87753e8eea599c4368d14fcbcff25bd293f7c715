@@ -117,6 +117,30 @@
       },
       "revId": "87753e8eea599c4368d14fcbcff25bd293f7c715",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a86edbc_4ad8e446",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-17T17:02:53Z",
+      "side": 1,
+      "message": "Can you please clarify in what cases it won\u0027t be promoted to the overlay? It looks like code comment does not cover it.",
+      "parentUuid": "7ac98f4c_3db4fe95",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 58
+      },
+      "revId": "87753e8eea599c4368d14fcbcff25bd293f7c715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

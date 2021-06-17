@@ -46,6 +46,30 @@
       },
       "revId": "72c3511c046216f0d32a3c7cb1e7df7d30a74704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ba323f_736a558f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-17T17:02:53Z",
+      "side": 0,
+      "message": "I am a bit concerned here, because basically now you sleep for 5 seconds instead of 30. Check WaitForLocationChangeCompleted implementation:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/watcher.go;l\u003d188?q\u003dWaitForLocationChangeCompleted\n\nIs there a way to understand when exactly you can continue your test, i.e. stop waiting? If there is a way, we should use it to make this test much more stable and faster compare to the sleep approach.",
+      "parentUuid": "5c0d7b27_0db419e5",
+      "range": {
+        "startLine": 94,
+        "startChar": 14,
+        "endLine": 94,
+        "endChar": 44
+      },
+      "revId": "72c3511c046216f0d32a3c7cb1e7df7d30a74704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
