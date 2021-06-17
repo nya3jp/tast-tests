@@ -33,6 +33,24 @@
       "message": "What is missing from the servod logs already captured by the test run?  For example:\nhttps://stainless.corp.google.com/browse/chromeos-test-logs/test-runner/prod/2021-06-17/10200af0-f175-4a35-a44b-cbe2cfae0b96/",
       "revId": "b5e5baff9627d724ffa85bc8d3368f0051fa478e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de6395f7_e919b1bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-17T20:22:07Z",
+      "side": 1,
+      "message": "I always run tast run, not test_that to run tast tests, and so I didn\u0027t notice that the servo log was being captured by the autotest wrapper.\n\nI suppose there is nothing wrong with the existing servo logs, other than that they are not per-test, but that isn\u0027t so bad.\n\nSomeday when tast is 1st class in the lab, we\u0027ll probably need this, but today we apparently don\u0027t.",
+      "parentUuid": "854398dd_b69fda6f",
+      "revId": "b5e5baff9627d724ffa85bc8d3368f0051fa478e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
