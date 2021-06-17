@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0b2050a_a72ba110",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-17T17:05:36Z",
+      "side": 1,
+      "message": "I didn\u0027t care much about the first parameter of Combine for chrome_pip_energy_and_power.go.\n\nAlso; I just copied the comment for Combine function from https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d93, I didn\u0027t write that actually.\n\nWith that, I\u0027m happy to update chrome_pip_energy_and_power.go if so.",
+      "parentUuid": "58c3395e_1222624c",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 18
+      },
+      "revId": "87753e8eea599c4368d14fcbcff25bd293f7c715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3584e96e_5365d9d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
         "patchSetId": 1
