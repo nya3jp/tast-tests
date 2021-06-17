@@ -8,11 +8,11 @@ import (
 	"context"
 	"fmt"
 	"strings"
-	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/browser"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -38,6 +38,7 @@ func DefaultSearchProviderSearchURL(ctx context.Context, s *testing.State) {
 		fakeURL    = "fakeurl" // fakeURL is the fake search engine.
 		searchTerm = "abc"     // searchTerm is a value for test search.
 	)
+	addressBarNode := nodewith.Role(role.TextField).Name("Address and search bar")
 
 	cr := s.FixtValue().(*fixtures.FixtData).Chrome
 	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
@@ -47,6 +48,8 @@ func DefaultSearchProviderSearchURL(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+
+	uiauto := uiauto.New(tconn)
 
 	// Set up keyboard.
 	kb, err := input.Keyboard(ctx)
@@ -73,11 +76,6 @@ func DefaultSearchProviderSearchURL(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			addressBarParams := ui.FindParams{
-				Role: ui.RoleTypeTextField,
-				Name: "Address and search bar",
-			}
-
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
@@ -103,8 +101,8 @@ func DefaultSearchProviderSearchURL(ctx context.Context, s *testing.State) {
 			defer conn.Close()
 
 			// Click the address and search bar.
-			if err := ui.StableFindAndClick(ctx, tconn, addressBarParams, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-				s.Fatal("Failed to click address bar: ", err)
+			if err := uiauto.LeftClick(addressBarNode)(ctx); err != nil {
+				s.Fatal("Could not find the address bar: ", err)
 			}
 
 			// Type something.
@@ -113,14 +111,15 @@ func DefaultSearchProviderSearchURL(ctx context.Context, s *testing.State) {
 			}
 
 			// Wait for the page to load.
-			if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-				s.Fatal("Failed waiting for animation to finish after entering search form: ", err)
+			if err := uiauto.WaitForLocation(addressBarNode)(ctx); err != nil {
+				s.Fatal("Failed to wait for location change: ", err)
 			}
 
-			location, err := browser.GetAddressBarText(ctx, tconn)
+			nodeInfo, err := uiauto.Info(ctx, addressBarNode)
 			if err != nil {
-				s.Fatal("Failed to get address bar text: ", err)
+				s.Fatal("Could not get new info for the address bar: ", err)
 			}
+			location := nodeInfo.Value;
 			location = strings.TrimPrefix(location, "https://")
 			location = strings.TrimPrefix(location, "www.")
 			if !strings.HasPrefix(location, param.wantURL) {
