@@ -117,6 +117,30 @@
       },
       "revId": "42e9c9f0a5d1d3ec856e808d622728d108e391b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84cffb74_4c55762e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-06-17T04:54:54Z",
+      "side": 1,
+      "message": "\u003e For normal working cases a modprobe shouldn\u0027t be necessary.\n\nYes, we should be able to rely on module autoloading without trouble. Actually to be closer to the real usage pattern, we would rather not do an explicit modprobe to explicitly ensure that autoloading works.",
+      "parentUuid": "c9a5e1db_e5c7360a",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 270,
+        "endChar": 23
+      },
+      "revId": "42e9c9f0a5d1d3ec856e808d622728d108e391b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
