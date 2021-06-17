@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2c61e1b_9b352271",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-06-17T15:53:40Z",
+      "side": 1,
+      "message": "I think that arc.PIP and arc.PIP.vm test the menu grab handle method of resizing for PIP. Unlike [1], this CL does not change that.\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2957553",
+      "parentUuid": "7864eec7_09e73891",
+      "revId": "d3658d98fb75e1f82780c047717915a59cc56756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7816daf7_f4eec4c3",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-17T02:22:54Z",
       "side": 1,
       "message": "Maybe create a constant for these numbers? Same for above.",
+      "range": {
+        "startLine": 169,
+        "startChar": 57,
+        "endLine": 169,
+        "endChar": 63
+      },
+      "revId": "d3658d98fb75e1f82780c047717915a59cc56756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "085b4fcd_a2c16db7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-06-17T15:53:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7816daf7_f4eec4c3",
       "range": {
         "startLine": 169,
         "startChar": 57,
