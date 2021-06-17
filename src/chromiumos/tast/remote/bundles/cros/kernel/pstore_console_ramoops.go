@@ -46,7 +46,7 @@ func PstoreConsoleRamoops(ctx context.Context, s *testing.State) {
 	}
 
 	ramoopsDir := filepath.Join(s.OutDir(), "console-ramoops")
-	if err := linuxssh.GetFile(ctx, d.Conn(), "/sys/fs/pstore/", ramoopsDir); err != nil {
+	if err := linuxssh.GetFile(ctx, d.Conn(), "/sys/fs/pstore/", ramoopsDir, linuxssh.PreserveSymlinks); err != nil {
 		s.Fatal("Failed to copy ramoops dir after reboot on the DUT: ", err)
 	}
 

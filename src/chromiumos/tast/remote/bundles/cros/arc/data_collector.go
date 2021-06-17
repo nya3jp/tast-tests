@@ -275,7 +275,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 
 		for source, targetShort := range filesToGet {
 			target := filepath.Join(targetDir, targetShort)
-			if err = linuxssh.GetFile(shortCtx, d.Conn(), source, target); err != nil {
+			if err = linuxssh.GetFile(shortCtx, d.Conn(), source, target, linuxssh.PreserveSymlinks); err != nil {
 				s.Fatalf("Failed to get %q from the device: %v", source, err)
 			}
 		}
@@ -319,7 +319,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 
 		resources := []string{response.GmsCoreCacheName, response.GmsCoreManifestName, response.GsfCacheName}
 		for _, resource := range resources {
-			if err = linuxssh.GetFile(shortCtx, d.Conn(), filepath.Join(response.TargetDir, resource), filepath.Join(targetDir, resource)); err != nil {
+			if err = linuxssh.GetFile(shortCtx, d.Conn(), filepath.Join(response.TargetDir, resource), filepath.Join(targetDir, resource), linuxssh.PreserveSymlinks); err != nil {
 				s.Fatalf("Failed to get %q from the device: %v", resource, err)
 			}
 		}

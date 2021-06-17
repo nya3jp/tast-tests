@@ -159,7 +159,7 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 		// Get name of target
 		dst := filepath.Join(dir, "faillog")
 		// Transfer the file from DUT to host machine.
-		if err := linuxssh.GetFile(ctx, dut.Conn(), res.Path, dst); err != nil {
+		if err := linuxssh.GetFile(ctx, dut.Conn(), res.Path, dst, linuxssh.PreserveSymlinks); err != nil {
 			s.Logf("Failed to download %v from DUT to %v at local host: %v", res.Path, dst, err)
 			return
 		}

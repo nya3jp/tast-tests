@@ -43,7 +43,7 @@ func saveAllFiles(ctx context.Context, d *dut.DUT, matches []*crash_service.Rege
 	var firstErr error
 	for _, m := range matches {
 		for _, f := range m.Files {
-			if err := linuxssh.GetFile(ctx, d.Conn(), f, filepath.Join(dir, path.Base(f))); err != nil {
+			if err := linuxssh.GetFile(ctx, d.Conn(), f, filepath.Join(dir, path.Base(f)), linuxssh.PreserveSymlinks); err != nil {
 				testing.ContextLogf(ctx, "Failed to save file %s: %s", f, err)
 				if firstErr == nil {
 					firstErr = err
