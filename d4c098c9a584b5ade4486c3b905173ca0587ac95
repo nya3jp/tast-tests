@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a02937de_45323bd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2021-06-17T19:21:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b49a572_8c2b0b25",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 14
+      },
+      "revId": "d4c098c9a584b5ade4486c3b905173ca0587ac95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45583ad9_aca00ba7",
@@ -77,6 +101,30 @@
       "writtenOn": "2021-06-14T20:49:09Z",
       "side": 1,
       "message": "Actually, in this branch of the if we know that the Android init context is empty so maybe we can just say that:\n\nARC failed to start, Android init context must be %q but is empty.",
+      "range": {
+        "startLine": 42,
+        "startChar": 34,
+        "endLine": 42,
+        "endChar": 77
+      },
+      "revId": "d4c098c9a584b5ade4486c3b905173ca0587ac95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5255266c_3dd9e00e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2021-06-17T19:21:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45583ad9_aca00ba7",
       "range": {
         "startLine": 42,
         "startChar": 34,
