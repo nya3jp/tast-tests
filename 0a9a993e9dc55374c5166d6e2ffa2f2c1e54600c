@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5134ccdc_23bef0af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-17T02:45:29Z",
+      "side": 1,
+      "message": "Post-approval change: Move this comment block one line down, to a more correct place.",
+      "revId": "0a9a993e9dc55374c5166d6e2ffa2f2c1e54600c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
