@@ -176,6 +176,30 @@
       },
       "revId": "5d50a9cb6f190432734c3ef5d8deb556e7e96c6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a136d8c8_6d4dfb70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-17T05:25:23Z",
+      "side": 1,
+      "message": "If I understand correctly, LeftClick() calls mouseClick() calls Location(), where testing.Poll() is used to determine the stable location. The set interval is used here to compare the location from two consecutive calls. Enlarge the interval will make the location query slower.",
+      "parentUuid": "e64d9c2d_1fede8f8",
+      "range": {
+        "startLine": 404,
+        "startChar": 7,
+        "endLine": 404,
+        "endChar": 32
+      },
+      "revId": "5d50a9cb6f190432734c3ef5d8deb556e7e96c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
