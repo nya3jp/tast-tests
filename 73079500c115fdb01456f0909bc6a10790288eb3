@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71b17dcf_4073b648",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-06-17T16:43:34Z",
+      "side": 1,
+      "message": "I was using them to make sure go won\u0027t lose reference and clean them up. But right, that\u0027s asking for troubles.",
+      "parentUuid": "11bd8583_675bd11f",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 55
+      },
+      "revId": "73079500c115fdb01456f0909bc6a10790288eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a644021e_943d8b2d",
@@ -99,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b3dc79_c0d79ce4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-06-17T16:43:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a644021e_943d8b2d",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 12
+      },
+      "revId": "73079500c115fdb01456f0909bc6a10790288eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53895780_89a9937f",
@@ -112,6 +160,24 @@
       "writtenOn": "2021-06-17T06:27:30Z",
       "side": 1,
       "message": "not sure if we also want to close(vf.rev) when we stop the worker on error (also one case in line173). This way, Start/Stop don\u0027t need to wait until timeout.\n\nAlso, if we do, one alternative might be simpler: have `defer close(vf.rev)` in the beginning of `worker` function.",
+      "revId": "73079500c115fdb01456f0909bc6a10790288eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "349f073a_7ac0e228",
+        "filename": "src/chromiumos/tast/remote/wificell/verifier/verifier.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-06-17T16:43:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53895780_89a9937f",
       "revId": "73079500c115fdb01456f0909bc6a10790288eb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
