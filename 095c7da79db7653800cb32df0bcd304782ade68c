@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1717427_94f21d76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-17T16:42:53Z",
+      "side": 1,
+      "message": "Please do not add critical tests directly.  Add \"informational\".  After confirmed passes on 20 consecutive runs, we can remove the \"informational\" to promote.\n\nSee also https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md#step-2_add-a-new-tast-test-with-and-attribute\n\nI believe it\u0027s also notified in the style checker of repo upload -- please do not bypass that.",
+      "revId": "095c7da79db7653800cb32df0bcd304782ade68c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84bb13a0_22fc4739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-17T16:42:53Z",
+      "side": 1,
+      "message": "nit: you could use kb.AccelAction(\"Enter\")",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "095c7da79db7653800cb32df0bcd304782ade68c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a4f5125_c4c5d30a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-17T16:42:53Z",
+      "side": 1,
+      "message": "nit: Maybe it is worthwhile to check if a video file is stored in Download folder?",
+      "revId": "095c7da79db7653800cb32df0bcd304782ade68c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
