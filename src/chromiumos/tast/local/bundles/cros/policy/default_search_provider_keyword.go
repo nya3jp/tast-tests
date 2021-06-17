@@ -11,7 +11,9 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -38,10 +40,7 @@ func DefaultSearchProviderKeyword(ctx context.Context, s *testing.State) {
 		testKeyword      = "tranquillity" // testKeyword is used as keyword that triggers the search engine.
 		testSearchTerm   = "abc"          // testSearchTerm is a value for test search.
 	)
-	addressBarParams := ui.FindParams{
-		Role: ui.RoleTypeTextField,
-		Name: "Address and search bar",
-	}
+	addressBarNode := nodewith.Role(role.TextField).Name("Address and search bar")
 
 	cr := s.FixtValue().(*fixtures.FixtData).Chrome
 	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
@@ -51,6 +50,8 @@ func DefaultSearchProviderKeyword(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+
+	uiauto := uiauto.New(tconn).WithTimeout(10 * time.Second)
 
 	// Set up keyboard.
 	kb, err := input.Keyboard(ctx)
@@ -108,8 +109,8 @@ func DefaultSearchProviderKeyword(ctx context.Context, s *testing.State) {
 			defer conn.Close()
 
 			// Click the address and search bar.
-			if err := ui.StableFindAndClick(ctx, tconn, addressBarParams, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-				s.Fatal("Failed to click address bar: ", err)
+			if err := uiauto.LeftClick(addressBarNode)(ctx); err != nil {
+				s.Fatal("Could not find the address bar: ", err)
 			}
 
 			// Type the keyword.
@@ -128,17 +129,16 @@ func DefaultSearchProviderKeyword(ctx context.Context, s *testing.State) {
 			}
 
 			// Wait for the page to load.
-			if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+			if err := uiauto.WaitForLocation(addressBarNode)(ctx); err != nil {
 				s.Fatal("Failed to wait for location change: ", err)
 			}
 
 			// Find the address bar.
-			addressBar, err := ui.FindWithTimeout(ctx, tconn, addressBarParams, 10*time.Second)
+			nodeInfo, err := uiauto.Info(ctx, addressBarNode)
 			if err != nil {
-				s.Fatal("Failed to find the address bar: ", err)
+				s.Fatal("Could not get new info for the address bar: ", err)
 			}
-			defer addressBar.Release(ctx)
-			location := addressBar.Value
+			location := nodeInfo.Value;
 
 			// Check that test search engine was triggered by the keyword and '{searchTerms}' was replaced in the query by the user's search term.
 			keywordPresent := strings.Contains(location, fmt.Sprintf("%s/search?q=%s", testSearchEngine, testSearchTerm))
