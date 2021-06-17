@@ -52,6 +52,24 @@ func TestTryTrimQid(t *testing.T) {
 			input:    "model_category_1234_5678_9012",
 			expected: "model_category_1234_5678_9012",
 		},
+		{ // new category "camera"
+			model:    "model",
+			category: "camera",
+			input:    "model_camera_1234_5678",
+			expected: "model_camera_1234_{Any}",
+		},
+		{ // legacy category "video"
+			model:    "model",
+			category: "camera",
+			input:    "model_video_1234_5678",
+			expected: "model_video_1234_{Any}",
+		},
+		{ // category which has underscore.
+			model:    "model",
+			category: "display_panel",
+			input:    "model_display_panel_1234_5678",
+			expected: "model_display_panel_1234_{Any}",
+		},
 	} {
 		got := tryTrimQid(tc.model, tc.category, tc.input)
 		if got != tc.expected {
