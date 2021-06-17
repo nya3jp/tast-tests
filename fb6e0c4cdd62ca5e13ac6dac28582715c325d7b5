@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69692c7c_58e70df1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1181605
+      },
+      "writtenOn": "2021-06-17T23:07:36Z",
+      "side": 1,
+      "message": "consider using autocorrect as the package name, that way you can do:\nautocorrect.TestCase\nautocorrect.UndoMethod\n...\nsee https://golang.org/doc/effective_go#package-names",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 12
+      },
+      "revId": "fb6e0c4cdd62ca5e13ac6dac28582715c325d7b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
