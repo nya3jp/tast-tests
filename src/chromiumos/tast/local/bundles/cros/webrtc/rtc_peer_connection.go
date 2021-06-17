@@ -25,6 +25,9 @@ type rtcTest struct {
 	// example for video conference services.
 	// See https://www.w3.org/TR/webrtc/#simulcast-functionality
 	simulcast bool
+	// ScalableVideoCodec "scalabilityMode" identifier.
+	// https://www.w3.org/TR/webrtc-svc/#scalabilitymodes
+	svc string
 }
 
 func init() {
@@ -108,6 +111,20 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer")),
 			Fixture:           "chromeVideoWithFakeWebcamAndForceVP9SVC3SL2TL",
 		}, {
+			// This is a 2 temporal layers test, via the (experimental) API.
+			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
+			Name:              "vp9_enc_svc_l1t2",
+			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9", svc: "L1T2"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
+		}, {
+			// This is a 3 temporal layers test, via the (experimental) API.
+			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
+			Name:              "vp9_enc_svc_l1t3_miguelao",
+			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9", svc: "L1T3"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
+		}, {
 			Name:              "vp8_enc_cam",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP8"},
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera, caps.HWEncodeVP8},
@@ -145,7 +162,7 @@ func init() {
 // specified, verifies it uses accelerated encoding / decoding.
 func RTCPeerConnection(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(rtcTest)
-	if err := peerconnection.RunRTCPeerConnection(ctx, s.FixtValue().(*chrome.Chrome), s.DataFileSystem(), testOpt.verifyMode, testOpt.profile, testOpt.simulcast); err != nil {
+	if err := peerconnection.RunRTCPeerConnection(ctx, s.FixtValue().(*chrome.Chrome), s.DataFileSystem(), testOpt.verifyMode, testOpt.profile, testOpt.simulcast, testOpt.svc); err != nil {
 		s.Error("Failed to run RunRTCPeerConnection: ", err)
 	}
 }
