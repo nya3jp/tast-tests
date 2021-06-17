@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7864eec7_09e73891",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-06-17T02:22:54Z",
+      "side": 1,
+      "message": "Similar question to the other CL - Do we have any code left that tests the menu grab handle method of resizing for PIP after this CL?\n\nIt would be nice to make sure we have tests that exercise both resizing methods.",
+      "revId": "d3658d98fb75e1f82780c047717915a59cc56756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7816daf7_f4eec4c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-06-17T02:22:54Z",
+      "side": 1,
+      "message": "Maybe create a constant for these numbers? Same for above.",
+      "range": {
+        "startLine": 169,
+        "startChar": 57,
+        "endLine": 169,
+        "endChar": 63
+      },
+      "revId": "d3658d98fb75e1f82780c047717915a59cc56756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
