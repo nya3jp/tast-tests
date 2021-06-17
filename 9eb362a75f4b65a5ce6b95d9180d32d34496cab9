@@ -16,6 +16,24 @@
       "message": "factor out a parseUint(value []rune, index *int, bits int) function to avoid the repetitive logic for \\x, \\u, and \\U.",
       "revId": "9eb362a75f4b65a5ce6b95d9180d32d34496cab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb1edff_e60e086c",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-17T22:33:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cbfcaa2_cd2c9494",
+      "revId": "9eb362a75f4b65a5ce6b95d9180d32d34496cab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
