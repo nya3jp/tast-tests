@@ -21,7 +21,7 @@ func init() {
 		Contacts:     []string{"cros-fw-engprod@google.com", "aluo@google.com"},
 		Data:         []string{firmware.ConfigFile},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
-		SoftwareDeps: []string{"crossystem"},
+		SoftwareDeps: []string{"crossystem", "flashrom"},
 		Vars:         []string{"servo"},
 		Attr:         []string{"group:firmware"},
 		Params: []testing.Param{{

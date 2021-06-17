@@ -609,7 +609,11 @@ In the test initialization, declare a `Pre` of `pre.NormalMode()`:
 func init() {
 	testing.AddTest(&testing.Test{
 		...
-		Pre: pre.NormalMode(),
+		Data:         []string{firmware.ConfigFile},
+		Pre:          pre.NormalMode(),
+		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
+                SoftwareDeps: []string{"crossystem", "flashrom"},
+		Vars:         []string{"servo"},
 	})
 }
 ```

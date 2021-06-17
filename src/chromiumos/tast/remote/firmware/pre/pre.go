@@ -121,6 +121,22 @@ func (i *impl) Timeout() time.Duration {
 // initHelper ensures that the impl has a working Helper instance.
 func (i *impl) initHelper(ctx context.Context, s *testing.PreState) {
 	if i.v.Helper == nil {
+		// Make sure the test included the right software deps
+		crossystem := false
+		flashrom := false
+		for _, v := range s.SoftwareDeps() {
+			if v == "crossystem" {
+				crossystem = true
+			} else if v == "flashrom" {
+				flashrom = true
+			}
+		}
+		if !crossystem {
+			s.Fatal("SoftwareDeps does not include 'crossystem'")
+		}
+		if !flashrom {
+			s.Fatal("SoftwareDeps does not include 'flashrom'")
+		}
 		servoSpec, _ := s.Var("servo")
 		i.v.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec)
 	}

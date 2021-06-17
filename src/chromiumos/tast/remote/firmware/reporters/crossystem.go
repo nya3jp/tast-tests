@@ -43,6 +43,7 @@ var (
 
 // Crossystem returns crossystem output as a map.
 // Any required params not found in the output will cause an error.
+// You must add `SoftwareDeps: []string{"crossystem"},` to your `testing.Test` to use this.
 func (r *Reporter) Crossystem(ctx context.Context, requiredKeys ...CrossystemParam) (map[CrossystemParam]string, error) {
 	lines, err := r.CommandOutputLines(ctx, "crossystem")
 	if err != nil {
