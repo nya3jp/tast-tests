@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a880829_bfed3dc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-06-17T11:45:16Z",
+      "side": 1,
+      "message": "I have no strong opinion either way. I see a lot of pretty specific constants in that module.",
+      "parentUuid": "861327d4_4f5f236d",
+      "range": {
+        "startLine": 158,
+        "startChar": 6,
+        "endLine": 158,
+        "endChar": 18
+      },
+      "revId": "017713fa558be90ec6ea9061bc3b4f5010388e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14174553_62821286",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
         "patchSetId": 4
