@@ -22,6 +22,30 @@
       },
       "revId": "26ef8d080d8c3e5d9241b694454e05876c45bda9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f4a08e0_eeb5348e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-06-17T17:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69bfcc8b_14a7860a",
+      "range": {
+        "startLine": 64,
+        "startChar": 18,
+        "endLine": 64,
+        "endChar": 30
+      },
+      "revId": "26ef8d080d8c3e5d9241b694454e05876c45bda9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
