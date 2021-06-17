@@ -16,6 +16,24 @@
       "message": "I guess I\u0027ll make my CR+1 a sticky CR+2\n\nYou\u0027ll need tast-owners review. I guess that could either be Yen-lin (who glanced at some piece of this already) or ask tast-owners@ to pick someone via gwsq",
       "revId": "73079500c115fdb01456f0909bc6a10790288eb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "075a9e47_c7a4408e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-17T01:23:51Z",
+      "side": 1,
+      "message": "I think I can take a look.\n\nAlso sorry for the delay. I didn\u0027t have this high priority in my queue as I\u0027m in cc. I\u0027ll move myself to reviewer and try to review this later today.",
+      "parentUuid": "afad4c83_c27f5882",
+      "revId": "73079500c115fdb01456f0909bc6a10790288eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
