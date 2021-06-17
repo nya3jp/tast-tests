@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aa6d919_d2b8ef34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2021-06-17T10:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4162357_a45b05e7",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "348bc9dc132d926da58df49a247e4362bbfd2860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85fd1df7_dc56d199",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33fdb054_2cf6591f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2021-06-17T10:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85fd1df7_dc56d199",
+      "revId": "348bc9dc132d926da58df49a247e4362bbfd2860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5d2b1d2_dffafa1e",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-06-17T09:17:48Z",
       "side": 1,
       "message": "Do you need the compName structure check, or checking for\n\u003e `^([^_]+_[^_]+_\\d+)_\\d+(?:#.*)?$`\nwould be enough?",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 15
+      },
+      "revId": "348bc9dc132d926da58df49a247e4362bbfd2860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1120e166_ca9eefcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2021-06-17T10:10:55Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this check.  What we need is trim the qid if the component name follows our name pattern {model}_{category}_{cid}_{qid}.  The policy is only enforced in some selected categories.  We can only guarantee that the \"{model}_\" prefix of the compName argument but not the rest.",
+      "parentUuid": "a5d2b1d2_dffafa1e",
       "range": {
         "startLine": 113,
         "startChar": 5,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39b1c4eb_5218b6d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2021-06-17T10:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "799855a6_a07df39d",
+      "range": {
+        "startLine": 115,
+        "startChar": 71,
+        "endLine": 115,
+        "endChar": 94
+      },
+      "revId": "348bc9dc132d926da58df49a247e4362bbfd2860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22f8e851_c835d1e1",
@@ -100,6 +190,24 @@
       "writtenOn": "2021-06-17T08:35:11Z",
       "side": 1,
       "message": "Could you also handle video/camera conversion here with `getCategoryAliases` to prevent same logic in cros_runtime_probe_camera.go ?",
+      "revId": "348bc9dc132d926da58df49a247e4362bbfd2860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6be8b00_16ceef64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2021-06-17T10:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22f8e851_c835d1e1",
       "revId": "348bc9dc132d926da58df49a247e4362bbfd2860",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
