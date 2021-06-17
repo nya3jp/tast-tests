@@ -16,6 +16,98 @@
       "message": "Hi Tast Owners, this CL is ready for review.",
       "revId": "a1e62b3eb4cb3e6ac54cd9e0503d9a945f870ec1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad645d4b_3e32af81",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-17T05:10:39Z",
+      "side": 1,
+      "message": "These should be secondUser,secondPass as it can be Edu Users or Non-Edu Users depending on which test is calling it.",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 17
+      },
+      "revId": "a1e62b3eb4cb3e6ac54cd9e0503d9a945f870ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1320e54_da945b60",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-17T05:10:39Z",
+      "side": 1,
+      "message": "Same as above.",
+      "range": {
+        "startLine": 60,
+        "startChar": 62,
+        "endLine": 60,
+        "endChar": 78
+      },
+      "revId": "a1e62b3eb4cb3e6ac54cd9e0503d9a945f870ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50d81471_5395b342",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-17T05:10:39Z",
+      "side": 1,
+      "message": "It just goes through the flow with EDU or Non-EDU user.",
+      "range": {
+        "startLine": 68,
+        "startChar": 28,
+        "endLine": 68,
+        "endChar": 52
+      },
+      "revId": "a1e62b3eb4cb3e6ac54cd9e0503d9a945f870ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e25bf87_6a8566c4",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-17T05:10:39Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "a1e62b3eb4cb3e6ac54cd9e0503d9a945f870ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
