@@ -431,6 +431,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5851ab6e_f0a0e4fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/vhost_user_net.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-06-17T04:46:45Z",
+      "side": 1,
+      "message": "Thanks. I created CL:2964526 for that change.",
+      "parentUuid": "c8b61458_33363717",
+      "range": {
+        "startLine": 130,
+        "startChar": 31,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "250955c6cc2ac0d6782a617cd3f10ce4639c4880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "792038f6_5321ab0b",
