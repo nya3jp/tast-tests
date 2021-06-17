@@ -158,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5184f04_1f973c01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-06-17T12:16:39Z",
+      "side": 1,
+      "message": "yep they would be different assuming you wanted to know if it was set (to empty)",
+      "parentUuid": "da6d76e0_af697978",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 181,
+        "endChar": 2
+      },
+      "revId": "fc3d37c0e65320328592189932c798aa06617e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03596398_abd2c7de",
