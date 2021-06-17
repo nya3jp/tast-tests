@@ -96,14 +96,26 @@ func GetHostInfoLabels(s *testing.State) ([]string, error) {
 	return labels, nil
 }
 
+// getCategoryAliases returns the aliases of given category.  The category
+// "video" is a legacy usage of "camera" category and both follow the
+// {category}_{cid}_{qid} name policy.
+func getCategoryAliases(category string) []string {
+	if category == "camera" || category == "video" {
+		return []string{"camera", "video"}
+	}
+	return []string{category}
+}
+
 // tryTrimQid tries to trim the "_{qid}" suffix in the component name and
 // append a fixed string "_{Any}" because tast tests do not care about the
 // mutable fields (e.g. firmware) which usually differ in qid but just make
 // sure hardware components are probed by probe configs.
 func tryTrimQid(model, category, compName string) string {
-	pattern := regexp.MustCompile("^(" + regexp.QuoteMeta(model) + "_" + regexp.QuoteMeta(category) + `_\d+)_\d+(?:#.*)?$`)
-	if matches := pattern.FindStringSubmatch(compName); len(matches) > 0 {
-		return matches[1] + "_{Any}"
+	for _, alias := range getCategoryAliases(category) {
+		pattern := regexp.MustCompile("^(" + regexp.QuoteMeta(model) + "_" + regexp.QuoteMeta(alias) + `_\d+)_\d+(?:#.*)?$`)
+		if matches := pattern.FindStringSubmatch(compName); len(matches) > 0 {
+			return matches[1] + "_{Any}"
+		}
 	}
 	return compName
 }
