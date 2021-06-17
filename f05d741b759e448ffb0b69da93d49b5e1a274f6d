@@ -33,6 +33,24 @@
       "message": "Thanks Miguel.\nThis should be landed after HW k-SVC encoding is available, right?",
       "revId": "f05d741b759e448ffb0b69da93d49b5e1a274f6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0bd6756_cc1ca56f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-17T22:13:20Z",
+      "side": 1,
+      "message": "Not necessarily, we could land it -- it\u0027ll fail, we\u0027ll suppress\nit and when the code is landed it\u0027ll start passing and we\u0027ll \nget notified. But we could also leave it here waiting.",
+      "parentUuid": "0c3d885c_72b018c8",
+      "revId": "f05d741b759e448ffb0b69da93d49b5e1a274f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
