@@ -34,6 +34,24 @@
       "parentUuid": "3ec14b30_166fa5bc",
       "revId": "8948ec43370a98cc0f48359f826533f6af44a2e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "569f0a32_f368ab41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-06-17T05:27:35Z",
+      "side": 1,
+      "message": "Some on the internet, but no one uses them.\n\nBut anyway, I think decoding to struct is worthy, it makes it easier and clear for other code.",
+      "parentUuid": "6fe2cff4_28b6d111",
+      "revId": "8948ec43370a98cc0f48359f826533f6af44a2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
