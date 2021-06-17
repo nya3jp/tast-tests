@@ -34,6 +34,24 @@
       "parentUuid": "c53de8e7_3d5afbf1",
       "revId": "2aa0104e54d2744357f7959714386208b394b772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aa14608_ebaa9b2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-06-17T23:01:14Z",
+      "side": 1,
+      "message": "Agree. There was a flag, but it has been deprecated in R74.",
+      "parentUuid": "d8e8ea10_234a9162",
+      "revId": "2aa0104e54d2744357f7959714386208b394b772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
