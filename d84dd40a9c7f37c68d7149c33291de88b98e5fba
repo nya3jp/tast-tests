@@ -232,6 +232,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de21aef4_201979b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-06-17T02:39:05Z",
+      "side": 1,
+      "message": "It may introduce other complexity, some setting values are strings. E.g. ExposureMode.",
+      "parentUuid": "8a0b9162_b8dc3f82",
+      "range": {
+        "startLine": 589,
+        "startChar": 10,
+        "endLine": 589,
+        "endChar": 18
+      },
+      "revId": "d84dd40a9c7f37c68d7149c33291de88b98e5fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19de8b0b_ef8ae7e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
         "patchSetId": 26
@@ -243,6 +267,30 @@
       "writtenOn": "2021-06-17T00:50:38Z",
       "side": 1,
       "message": "What\u0027s the |err|\u0027s value if |isValid| is true?\nCan we check if the |err| is also the expected error type in this case?\ni.e. if it\u0027s https://developer.mozilla.org/en-US/docs/Web/API/OverconstrainedError\nCatch this in javascript and tell golang it result in OverconstrainedError and check it also here or somewhere else.",
+      "range": {
+        "startLine": 591,
+        "startChar": 5,
+        "endLine": 591,
+        "endChar": 26
+      },
+      "revId": "d84dd40a9c7f37c68d7149c33291de88b98e5fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb84f8af_411207ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-06-17T02:39:05Z",
+      "side": 1,
+      "message": "If isValid is true, there is no error.",
+      "parentUuid": "19de8b0b_ef8ae7e3",
       "range": {
         "startLine": 591,
         "startChar": 5,
