@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58c3395e_1222624c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-17T16:56:22Z",
+      "side": 1,
+      "message": "There is a great example in the function documentation how first parameter should look like: \"open Downloads and right click a folder\", but it isn\u0027t smth like \"open folder\". It adds some details what exactly you are doing and might help analysing failures without looking into the code.\n\nI think in your case it should be smth like \"click PIP button and wait for PIP window\".\n\nJun WDYT?",
+      "parentUuid": "ab55d6b4_a8ba8285",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 18
+      },
+      "revId": "87753e8eea599c4368d14fcbcff25bd293f7c715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3584e96e_5365d9d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
         "patchSetId": 1
