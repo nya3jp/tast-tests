@@ -59,6 +59,12 @@ func PIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed to initialize UI Automator: ", err)
+	}
+	defer d.Close(cleanupCtx)
+
 	if err := a.Install(ctx, arc.APKPath("ArcPipVideoTest.apk")); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
@@ -86,6 +92,10 @@ func PIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		s.Fatal("Failed to wait for PIP window: ", err)
+	}
+
+	if err := d.WaitForIdle(ctx, 5*time.Second); err != nil {
+		s.Fatal("Failed to wait for app to idle: ", err)
 	}
 
 	hists, err := metrics.Run(ctx, tconn, func(ctx context.Context) error {
