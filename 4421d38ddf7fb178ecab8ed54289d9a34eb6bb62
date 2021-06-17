@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2044799_6218954b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-06-17T04:50:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37ff8e9a_1d1650cd",
+      "range": {
+        "startLine": 100,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 5
+      },
+      "revId": "4421d38ddf7fb178ecab8ed54289d9a34eb6bb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48afa04a_addc82c3",
@@ -102,6 +126,30 @@
       "writtenOn": "2021-06-17T00:54:44Z",
       "side": 1,
       "message": "Do you want to name it as PKCandidateFinder for more accuracy?",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "4421d38ddf7fb178ecab8ed54289d9a34eb6bb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b6e5eff_21b44ef2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-06-17T04:50:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48afa04a_addc82c3",
       "range": {
         "startLine": 19,
         "startChar": 4,
@@ -135,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a02eaa0_0ad46416",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-06-17T04:50:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd6b4b9f_c39370a1",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 122
+      },
+      "revId": "4421d38ddf7fb178ecab8ed54289d9a34eb6bb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d79bbcb_6f4d7584",
@@ -158,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbc5e873_e2b00670",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-06-17T04:50:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d79bbcb_6f4d7584",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "4421d38ddf7fb178ecab8ed54289d9a34eb6bb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "522e2e09_d06117b5",
@@ -171,6 +267,30 @@
       "writtenOn": "2021-06-17T00:54:44Z",
       "side": 1,
       "message": "It would be nice to have an interval for each action. It might introduce flakiness to actions (e.g. tap key) too quick.",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 11
+      },
+      "revId": "4421d38ddf7fb178ecab8ed54289d9a34eb6bb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95b39bb9_07b42428",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-06-17T04:50:24Z",
+      "side": 1,
+      "message": "I wanted this function to be equivalent to calling uiauto.Combine, which doesn\u0027t seem to sleep:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/action/action.go?l\u003d37\u0026rcl\u003d23aa61ab59537c3b315334973638f061697cebea",
+      "parentUuid": "522e2e09_d06117b5",
       "range": {
         "startLine": 105,
         "startChar": 5,
