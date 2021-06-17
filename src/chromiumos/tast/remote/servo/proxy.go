@@ -264,7 +264,7 @@ func (p *Proxy) GetFile(ctx context.Context, asRoot bool, remoteFile, localFile 
 		}
 		return testexec.CommandContext(ctx, "cp", remoteFile, localFile).Run(testexec.DumpLogOnError)
 	}
-	return linuxssh.GetFile(ctx, p.hst, remoteFile, localFile)
+	return linuxssh.GetFile(ctx, p.hst, remoteFile, localFile, linuxssh.DereferenceSymlinks)
 }
 
 // PutFiles copies a local file to a servo host file

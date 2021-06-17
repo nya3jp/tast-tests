@@ -260,14 +260,14 @@ func fetchFuzzArtifacts(ctx context.Context, d *dut.DUT, artifactsDir, syzArch s
 	}
 
 	// Get syz-manager, syz-fuzzer, syz-execprog and syz-executor from the DUT image.
-	if err := linuxssh.GetFile(ctx, d.Conn(), "/usr/local/bin/syz-manager", filepath.Join(artifactsDir, "syz-manager")); err != nil {
+	if err := linuxssh.GetFile(ctx, d.Conn(), "/usr/local/bin/syz-manager", filepath.Join(artifactsDir, "syz-manager"), linuxssh.PreserveSymlinks); err != nil {
 		return err
 	}
 
 	// syz-manager expects (syz-executor,syz-fuzzer,syz-execprog) to be at <artifactsDir>/linux_<arch>/syz-*.
 	artifacts := []string{"syz-fuzzer", "syz-executor", "syz-execprog"}
 	for _, artifact := range artifacts {
-		if err := linuxssh.GetFile(ctx, d.Conn(), filepath.Join("/usr/local/bin", artifact), filepath.Join(artifactsDir, binDir, artifact)); err != nil {
+		if err := linuxssh.GetFile(ctx, d.Conn(), filepath.Join("/usr/local/bin", artifact), filepath.Join(artifactsDir, binDir, artifact), linuxssh.PreserveSymlinks); err != nil {
 			return err
 		}
 	}

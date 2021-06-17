@@ -141,7 +141,7 @@ func ECCrash(ctx context.Context, s *testing.State) {
 	s.Log("Waiting for files to become present")
 	res, err := fs.WaitForCrashFiles(ctx, waitReq)
 	if err != nil {
-		if err := linuxssh.GetFile(cleanupCtx, d.Conn(), "/var/log/messages", filepath.Join(s.OutDir(), "messages")); err != nil {
+		if err := linuxssh.GetFile(cleanupCtx, d.Conn(), "/var/log/messages", filepath.Join(s.OutDir(), "messages"), linuxssh.PreserveSymlinks); err != nil {
 			s.Log("Failed to save messages log")
 		}
 		s.Fatal("Failed to find crash files: " + err.Error())

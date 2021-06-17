@@ -172,7 +172,7 @@ func logTestScene(ctx context.Context, d *dut.DUT, facing pb.Facing, outdir stri
 	}
 
 	// Copy result scene log image.
-	if err := linuxssh.GetFile(ctx, d.Conn(), sceneLog, path.Join(outdir, path.Base(sceneLog))); err != nil {
+	if err := linuxssh.GetFile(ctx, d.Conn(), sceneLog, path.Join(outdir, path.Base(sceneLog)), linuxssh.PreserveSymlinks); err != nil {
 		return errors.Wrap(err, "failed to pull scene log file from DUT")
 	}
 	if err := d.Command("rm", sceneLog).Run(ctx); err != nil {
