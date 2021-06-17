@@ -22,6 +22,30 @@
       },
       "revId": "ce1f393ce107e81fa17ecef3dd4217c80d9300ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df385232_58929eb5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-06-17T00:40:11Z",
+      "side": 1,
+      "message": "The only test that calls it directly is session.OwnershipTaken\n\nI also ran some drivefs tests (arc.Drivefs, filemanager.DrivefsUI, platform.Drivefs), which call it indirectly and aren\u0027t too numerous\n\nThe only other caller is in the chrome config code, but there\u0027s a lot of tests that use that and it should be covered by the CQ",
+      "parentUuid": "0b7bfccd_2d1e62b8",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "ce1f393ce107e81fa17ecef3dd4217c80d9300ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
