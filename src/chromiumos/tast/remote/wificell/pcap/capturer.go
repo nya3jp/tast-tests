@@ -224,7 +224,7 @@ func (c *Capturer) downloadPacket(ctx context.Context) error {
 		return err
 	}
 	src := c.packetPathOnRemote()
-	if err := linuxssh.GetFile(ctx, c.host, src, dst); err != nil {
+	if err := linuxssh.GetFile(ctx, c.host, src, dst, linuxssh.PreserveSymlinks); err != nil {
 		return errors.Wrapf(err, "unable to download packet from %s to %s", src, dst)
 	}
 	c.downloaded = true

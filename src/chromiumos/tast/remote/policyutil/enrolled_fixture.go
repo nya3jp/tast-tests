@@ -92,7 +92,7 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 
 	// Always dump the logs.
 	defer func() {
-		if err := linuxssh.GetFile(ctx, s.DUT().Conn(), fakedms.EnrollmentFakeDMSDir, filepath.Join(s.OutDir(), "EnrollmentFakeDMSDir")); err != nil {
+		if err := linuxssh.GetFile(ctx, s.DUT().Conn(), fakedms.EnrollmentFakeDMSDir, filepath.Join(s.OutDir(), "EnrollmentFakeDMSDir"), linuxssh.PreserveSymlinks); err != nil {
 			s.Log("Failed to dump ")
 		}
 	}()

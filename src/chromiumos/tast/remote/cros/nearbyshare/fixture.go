@@ -45,7 +45,7 @@ func NewNearbyShareFixture(dataUsage nearbysetup.DataUsage, visibility nearbyset
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareRemoteDataUsageOfflineAllContacts",
-		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'All Contacts'.",
+		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'All Contacts'",
 		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts),
 		Vars: []string{
 			"secondaryTarget",
@@ -64,7 +64,7 @@ func init() {
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareRemoteDataUsageOfflineSomeContacts",
-		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'Some Contacts' with the sender selected as a contact on the receiver side.",
+		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'Some Contacts' with the sender selected as a contact on the receiver side",
 		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilitySelectedContacts),
 		Vars: []string{
 			"secondaryTarget",
@@ -83,7 +83,7 @@ func init() {
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareRemoteDataUsageOnlineAllContacts",
-		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'All Contacts'.",
+		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'All Contacts'",
 		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilityAllContacts),
 		Vars: []string{
 			"secondaryTarget",
@@ -102,7 +102,7 @@ func init() {
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareRemoteDataUsageOnlineSomeContacts",
-		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'Some Contacts' with the sender selected as a contact on the receiver side.",
+		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'Some Contacts' with the sender selected as a contact on the receiver side",
 		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilitySelectedContacts),
 		Vars: []string{
 			"secondaryTarget",
@@ -121,7 +121,7 @@ func init() {
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareRemoteDataUsageOnlineNoOne",
-		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'No One'.",
+		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'No One'",
 		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilityNoOne),
 		Vars: []string{
 			"secondaryTarget",
@@ -140,7 +140,7 @@ func init() {
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareRemoteDataUsageOfflineNoOne",
-		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'No One'.",
+		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'No One'",
 		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityNoOne),
 		Vars: []string{
 			"secondaryTarget",
@@ -407,7 +407,7 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 		for _, log := range logsToSave {
 			logPathSrc := filepath.Join(nearbyshare.NearbyLogDir, log)
 			logPathDst := filepath.Join(s.OutDir(), log+"_"+tags[i])
-			if err := linuxssh.GetFile(ctx, dut.Conn(), logPathSrc, logPathDst); err != nil {
+			if err := linuxssh.GetFile(ctx, dut.Conn(), logPathSrc, logPathDst, linuxssh.PreserveSymlinks); err != nil {
 				testing.ContextLogf(ctx, "Failed to save %s to %s. Error: %s", logPathSrc, logPathDst, err)
 			}
 		}

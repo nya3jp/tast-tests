@@ -51,7 +51,7 @@ func cleanup(ctx context.Context, conn *ssh.Conn, dir, pid, outDir string) error
 		}
 		defer func() {
 			// Collect logs.
-			if err := linuxssh.GetFile(ctx, conn, displayOutputLog, filepath.Join(outDir, filepath.Base(displayOutputLog))); err != nil {
+			if err := linuxssh.GetFile(ctx, conn, displayOutputLog, filepath.Join(outDir, filepath.Base(displayOutputLog)), linuxssh.PreserveSymlinks); err != nil {
 				if retErr != nil {
 					testing.ContextLogf(ctx, "Failed to pull chart script logs from %v: %v", displayOutputLog, err)
 				} else {
