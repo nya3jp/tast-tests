@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bd196cd_f1fbb13d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-06-17T02:03:41Z",
+      "side": 1,
+      "message": "It\u0027s R+ feature.",
+      "parentUuid": "1007b75e_545ed770",
+      "range": {
+        "startLine": 32,
+        "startChar": 36,
+        "endLine": 32,
+        "endChar": 46
+      },
+      "revId": "09d80b494f0a2f53cd5fdcc8a3750dc4d022c86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27bebd2e_5888ba1b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-15T02:16:04Z",
       "side": 1,
       "message": "This should be removed.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 51
+      },
+      "revId": "09d80b494f0a2f53cd5fdcc8a3750dc4d022c86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84f32875_9204ddb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-06-17T02:03:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27bebd2e_5888ba1b",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dd103e1_3b557a4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-06-17T02:03:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46685a3b_6c3f4e01",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "09d80b494f0a2f53cd5fdcc8a3750dc4d022c86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d1d1d48_160630ae",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d82b0528_22cab8dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-06-17T02:03:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d1d1d48_160630ae",
+      "range": {
+        "startLine": 41,
+        "startChar": 87,
+        "endLine": 41,
+        "endChar": 102
+      },
+      "revId": "09d80b494f0a2f53cd5fdcc8a3750dc4d022c86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2960d92b_832116e2",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-06-15T02:16:04Z",
       "side": 1,
       "message": "The test timeout is only 5 minutes. I don\u0027t think it\u0027s necessary to use shorter timeouts for parts of the test, since we can just rely on the overall test timeout. However, it\u0027s weird to have a longer timeout here. Maybe just define a const timeout value and use it both for the test and here.",
+      "range": {
+        "startLine": 99,
+        "startChar": 43,
+        "endLine": 99,
+        "endChar": 57
+      },
+      "revId": "09d80b494f0a2f53cd5fdcc8a3750dc4d022c86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b620b59_135b81d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-06-17T02:03:41Z",
+      "side": 1,
+      "message": "Thanks, change to use an overall timeout.",
+      "parentUuid": "2960d92b_832116e2",
       "range": {
         "startLine": 99,
         "startChar": 43,
