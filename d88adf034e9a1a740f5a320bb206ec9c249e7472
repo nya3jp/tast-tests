@@ -50,6 +50,23 @@
       "message": "Thanks Patrick! Adding Hiroki as a test owner, per go/tast-reviews",
       "revId": "d88adf034e9a1a740f5a320bb206ec9c249e7472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7dbfb53_8f4cbe07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-17T17:01:20Z",
+      "side": 1,
+      "message": "Also adding David since it would be nice to get this reviewed and landed before I go OOO. \n\nThanks!",
+      "revId": "d88adf034e9a1a740f5a320bb206ec9c249e7472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
