@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4daeea94_a31e7c8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-17T09:25:38Z",
+      "side": 1,
+      "message": "This CL is same as https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2952964\nBut with no repeated code.",
+      "revId": "0fe40fabd48ab2b3f7c154f58b1ce907a837f973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
