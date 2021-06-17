@@ -16,6 +16,24 @@
       "message": "Isn\u0027t there a Chrome startup flag that disables restoring previous tabs?",
       "revId": "2aa0104e54d2744357f7959714386208b394b772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8e8ea10_234a9162",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-17T22:57:28Z",
+      "side": 1,
+      "message": "Hi Alex, I found a EnableRestoreTabs option from tast which seems to be related (but the comment suggests it might be irrelevant to the issues we are seeing). Anyway by default it is false already and this flag should have been set during our test and it doesn\u0027t resolve our issue.\n\n\tif !cfg.EnableRestoreTabs() {\n\t\targs \u003d append(args, \"--no-startup-window\") // Do not start up chrome://newtab by default to avoid unexpected patterns (doodle etc.)\n\t}\n\t\nCouldn\u0027t find another flag that can be used to disable restored tabs.\n\nI prefer our current fix that close all tabs before start normal testing - this is a more flaky-less approach.",
+      "parentUuid": "c53de8e7_3d5afbf1",
+      "revId": "2aa0104e54d2744357f7959714386208b394b772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
