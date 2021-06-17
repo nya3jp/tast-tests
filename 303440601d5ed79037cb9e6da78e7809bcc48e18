@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "436c128a_dbeeae82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-06-17T16:52:09Z",
+      "side": 1,
+      "message": "Now I have cleaned up the mouse movement quite a bit.",
+      "parentUuid": "6d682ee8_c39e8180",
+      "range": {
+        "startLine": 283,
+        "startChar": 64,
+        "endLine": 283,
+        "endChar": 75
+      },
+      "revId": "303440601d5ed79037cb9e6da78e7809bcc48e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6526b7b8_5557918c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-15T01:30:46Z",
       "side": 1,
       "message": "If Sleep() is the last resort, we shall make it as short as possible.",
+      "range": {
+        "startLine": 288,
+        "startChar": 33,
+        "endLine": 288,
+        "endChar": 48
+      },
+      "revId": "303440601d5ed79037cb9e6da78e7809bcc48e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a444d644_260f6eb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-06-17T16:52:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6526b7b8_5557918c",
       "range": {
         "startLine": 288,
         "startChar": 33,
