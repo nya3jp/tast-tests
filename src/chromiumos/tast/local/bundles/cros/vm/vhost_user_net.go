@@ -122,11 +122,10 @@ func getTap(ctx context.Context, pc *patchpanel.Client, cid uint32) (device tapD
 
 	// Convert BaseAddr into an IP address
 	// Note that we need to explicitly change byte order from "network order" (= big endian) to little endian.
-	// TODO(b/190151836): Use addresses patchpanel provides.
-	base := make(net.IP, 4)
-	binary.LittleEndian.PutUint32(base[0:], resp.Device.Ipv4Subnet.BaseAddr)
-	gateway := net.IPv4(base[0], base[1], base[2], base[3]+1)
-	addr := net.IPv4(base[0], base[1], base[2], base[3]+2)
+	gateway := make(net.IP, 4)
+	binary.LittleEndian.PutUint32(gateway[0:], resp.Device.HostIpv4Addr)
+	addr := make(net.IP, 4)
+	binary.LittleEndian.PutUint32(addr[0:], resp.Device.Ipv4Addr)
 
 	device = tapDevice{
 		fd:      fd,
