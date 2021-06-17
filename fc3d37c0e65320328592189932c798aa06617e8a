@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c50e20a_9d1a8a82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-06-17T11:40:03Z",
+      "side": 1,
+      "message": "rm",
+      "range": {
+        "startLine": 214,
+        "startChar": 99,
+        "endLine": 214,
+        "endChar": 100
+      },
+      "revId": "fc3d37c0e65320328592189932c798aa06617e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1e181f0_542485ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
         "patchSetId": 6
@@ -43,6 +66,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8c88d30_8e0613bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-06-17T11:40:03Z",
+      "side": 1,
+      "message": "curious - do these need to be exported?",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 12
+      },
+      "revId": "fc3d37c0e65320328592189932c798aa06617e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6597794f_635342b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-06-17T11:40:03Z",
+      "side": 1,
+      "message": "this shouldn\u0027t be necessary unless this element was previous set. if so, ignore this comment",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 181,
+        "endChar": 2
+      },
+      "revId": "fc3d37c0e65320328592189932c798aa06617e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03596398_abd2c7de",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
         "patchSetId": 6
@@ -59,6 +128,29 @@
         "startChar": 4,
         "endLine": 204,
         "endChar": 113
+      },
+      "revId": "fc3d37c0e65320328592189932c798aa06617e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bac1c82_8a63887d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-06-17T11:40:03Z",
+      "side": 1,
+      "message": "optional: these functions don\u0027t appear to mutate s, so you dont need the pointer receiver",
+      "range": {
+        "startLine": 212,
+        "startChar": 6,
+        "endLine": 212,
+        "endChar": 15
       },
       "revId": "fc3d37c0e65320328592189932c798aa06617e8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
