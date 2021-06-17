@@ -22,6 +22,16 @@ executable("crash.Seccomp.brk") {
   ]
 }
 
+executable("cryptohome.SequentialConsistency.filewriter") {
+  pkg_deps = [
+    "libbrillo",
+    "libchrome",
+  ]
+  sources = [
+    "cryptohome.SequentialConsistency.filewriter.cc",
+  ]
+}
+
 executable("graphics.GBM.gbmtest") {
   pkg_deps = [
     "gbm",
@@ -173,6 +183,7 @@ executable("security.PtraceThread.thread-prctl") {
 group("all") {
   deps = [
     ":crash.Seccomp.brk",
+    ":cryptohome.SequentialConsistency.filewriter",
     ":graphics.GBM.gbmtest",
     ":hardware.VerifyRemoteSleep.timersignal",
     ":kernel.PerfCallgraph.graph",
