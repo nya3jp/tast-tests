@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0655c6e_15d417fc",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-17T12:52:28Z",
+      "side": 1,
+      "message": "@meiring, this is the major change after you cr+2. I found an issue doing local testing: In nodewith lib, it has to convert golang regex to javascript code. I have to fix it to make the whole cl work.\n\nHave tested it locally, also added unit tests.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "44684ed4f226458200b21887aaf5a9f97f9ee1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
