@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -39,6 +40,22 @@ func init() {
 			},
 		},
 	})
+}
+
+// validateInputFieldFromNthCandidate returns an action that gets the candidate at the specified position and checks if the input field has the same value.
+func validateInputFieldFromNthCandidate(its *testserver.InputsTestServer, tconn *chrome.TestConn, inputField testserver.InputField, n int) uiauto.Action {
+	return func(ctx context.Context) error {
+		expectedValue, err := util.GetNthCandidateText(ctx, tconn, n)
+		if err != nil {
+			return err
+		}
+
+		if err := its.WaitForFieldValueToBe(inputField, expectedValue)(ctx); err != nil {
+			return err
+		}
+
+		return nil
+	}
 }
 
 func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
@@ -87,6 +104,11 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
+	clearAndFocus := uiauto.Combine("clear input field and focus",
+		its.Clear(inputField),
+		its.ClickFieldAndWaitForActive(inputField),
+	)
+
 	subtests := []struct {
 		Name   string
 		Action uiauto.Action
@@ -94,6 +116,50 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		{
 			Name:   "TypeRomajiShowsHiragana",
 			Action: its.ValidateInputOnField(inputField, kb.TypeAction("nihongo"), "にほんご"),
+		},
+		{
+			Name: "TabCyclesThroughCandidates",
+			Action: uiauto.Combine("cycle through candidates with tab",
+				clearAndFocus,
+				kb.TypeAction("nihongo"),
+				uiauto.Repeat(3, kb.AccelAction("Tab")),
+				validateInputFieldFromNthCandidate(its, tconn, inputField, 2),
+				kb.AccelAction("Shift+Tab"),
+				validateInputFieldFromNthCandidate(its, tconn, inputField, 1),
+			),
+		},
+		{
+			Name: "ArrowKeysCycleThroughCandidates",
+			Action: uiauto.Combine("cycle through candidates with arrow keys",
+				clearAndFocus,
+				kb.TypeAction("nihongo"),
+				uiauto.Repeat(3, kb.AccelAction("Down")),
+				validateInputFieldFromNthCandidate(its, tconn, inputField, 2),
+				kb.AccelAction("Up"),
+				validateInputFieldFromNthCandidate(its, tconn, inputField, 1),
+			),
+		},
+		{
+			Name: "TabAndArrowKeysCyclesThroughPages",
+			Action: uiauto.Combine("cycle through pages with tab and arrow keys",
+				clearAndFocus,
+				kb.TypeAction("nihongo"),
+				// The Japanese IME shows a max of 9 candidates per page.
+				uiauto.Repeat(10, kb.AccelAction("Tab")),
+				uiauto.Repeat(5, kb.AccelAction("Down")),
+				validateInputFieldFromNthCandidate(its, tconn, inputField, 5),
+			),
+		},
+		{
+			Name: "NumberKeySelectsCandidate",
+			Action: uiauto.Combine("bring up candidates and select with number key",
+				clearAndFocus,
+				kb.TypeAction("nihongo"),
+				kb.AccelAction("Tab"),
+				uiauto.Repeat(5, kb.AccelAction("Tab")),
+				kb.TypeAction("3"),
+				validateInputFieldFromNthCandidate(its, tconn, inputField, 2),
+			),
 		},
 	}
 
