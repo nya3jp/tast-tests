@@ -9,7 +9,6 @@ import (
 	"strings"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -47,6 +46,8 @@ func DefaultSearchProviderEnabled(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+
+	uiauto := uiauto.New(tconn)
 
 	// Set up keyboard.
 	kb, err := input.Keyboard(ctx)
@@ -100,8 +101,6 @@ func DefaultSearchProviderEnabled(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
-			uiauto := uiauto.New(tconn)
-
 			// Click the address and search bar.
 			if err := uiauto.LeftClick(addressBarNode)(ctx); err != nil {
 				s.Fatal("Could not find the address bar: ", err)
@@ -118,10 +117,11 @@ func DefaultSearchProviderEnabled(ctx context.Context, s *testing.State) {
 			}
 
 			// Find the address bar.
-			location, err := browser.GetAddressBarText(ctx, tconn)
+			nodeInfo, err := uiauto.Info(ctx, addressBarNode)
 			if err != nil {
-				s.Fatal("Failed to get address bar text: ", err)
+				s.Fatal("Could not get new info for the address bar: ", err)
 			}
+			location := nodeInfo.Value;
 
 			defaultSearchEngineUsed := strings.Contains(location, defaultSearchEngine)
 			if param.enabled != defaultSearchEngineUsed {
