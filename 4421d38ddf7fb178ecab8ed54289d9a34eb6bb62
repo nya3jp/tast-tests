@@ -347,6 +347,30 @@
       },
       "revId": "4421d38ddf7fb178ecab8ed54289d9a34eb6bb62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47e39762_16b370e4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-17T23:36:19Z",
+      "side": 1,
+      "message": "btw, if you want to apply interval to repeat function. You can also make it attach to an action context. \n\n(ac *Context) Repeat(n int, fn Action) Action {\n    return func(ctx context.Context) error {\n\tfor i :\u003d 0; i \u003c n; i++ {\n\t    if err :\u003d fn(ctx); err !\u003d nil {\n\t        return err\n\t    }\n\t    if err :\u003d testing.Sleep(ctx, ac.pollOpts.Interval)\n        }\n        return nil\n    }\n}\n\nThe default interval is 100ms, if can be customized:\nuiauto.New(tconn).WithInterval(time.Second).Repeat()",
+      "parentUuid": "3456a144_ab2ada36",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 11
+      },
+      "revId": "4421d38ddf7fb178ecab8ed54289d9a34eb6bb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
