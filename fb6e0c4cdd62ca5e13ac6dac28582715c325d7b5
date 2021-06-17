@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae4261b5_9c6bcb4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-17T23:30:43Z",
+      "side": 1,
+      "message": "FYI, Darren added a method Repeat. You might want to refactor this code in future.\n\nhttps://crrev.com/c/2966822/3/src/chromiumos/tast/local/chrome/uiauto/automation.go",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 53
+      },
+      "revId": "fb6e0c4cdd62ca5e13ac6dac28582715c325d7b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "513911d8_8aac304e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-17T23:30:43Z",
+      "side": 1,
+      "message": "Do you want to throw an error on this if Backspace is accidentally passed in.",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 7
+      },
+      "revId": "fb6e0c4cdd62ca5e13ac6dac28582715c325d7b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69692c7c_58e70df1",
@@ -14,6 +60,30 @@
       "writtenOn": "2021-06-17T23:07:36Z",
       "side": 1,
       "message": "consider using autocorrect as the package name, that way you can do:\nautocorrect.TestCase\nautocorrect.UndoMethod\n...\nsee https://golang.org/doc/effective_go#package-names",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 12
+      },
+      "revId": "fb6e0c4cdd62ca5e13ac6dac28582715c325d7b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf6750c_d493ae5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-17T23:30:43Z",
+      "side": 1,
+      "message": "Agreed. Besides, since autocorrect is a feature, not really belong to util. You can create a separate package named autocorrect in parallel to util.",
+      "parentUuid": "69692c7c_58e70df1",
       "range": {
         "startLine": 5,
         "startChar": 8,
