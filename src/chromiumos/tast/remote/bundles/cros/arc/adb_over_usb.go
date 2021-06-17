@@ -28,7 +28,7 @@ func init() {
 			// Available boards info, please refer to doc https://www.chromium.org/chromium-os/chrome-os-systems-supporting-adb-debugging-over-usb
 			hwdep.Model("eve", "atlas", "nocturne", "soraka"),
 		),
-		SoftwareDeps: []string{"reboot", "chrome", "crossystem"},
+		SoftwareDeps: []string{"reboot", "chrome", "crossystem", "flashrom"},
 		ServiceDeps:  []string{"tast.cros.arc.ADBOverUSBService", "tast.cros.firmware.UtilsService", "tast.cros.firmware.BiosService"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{

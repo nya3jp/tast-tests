@@ -18,7 +18,7 @@ func init() {
 		Func:         BootedDeviceReporter,
 		Desc:         "Verifies that the BootedDevice reporter identifies which device mode the DUT was booted from",
 		Contacts:     []string{"cros-fw-engprod@google.com"},
-		SoftwareDeps: []string{"crossystem"},
+		SoftwareDeps: []string{"crossystem", "flashrom"},
 		Attr:         []string{"group:firmware", "firmware_smoke"},
 		Data:         []string{firmware.ConfigFile},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},

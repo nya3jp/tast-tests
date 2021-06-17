@@ -27,7 +27,32 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Helper tracks several firmware-related objects.
+// Helper tracks several firmware-related objects. The recommended way to initialize the helper is to use firmware.Pre:
+//
+// import (
+//	...
+//	"chromiumos/tast/remote/firmware/pre"
+// )
+//
+// func init() {
+//	testing.AddTest(&testing.Test{
+//		...
+//              Data:         []string{firmware.ConfigFile},
+//              Pre:          pre.NormalMode(),
+//              ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
+//              SoftwareDeps: []string{"crossystem", "flashrom"},
+//              Vars:         []string{"servo"},
+//	})
+// }
+//
+// func MyTest(ctx context.Context, s *testing.State) {
+// 	h := s.PreValue().(*pre.Value).Helper
+//
+// 	if err := h.RequireServo(ctx); err != nil {
+// 		s.Fatal("Failed to init servo: ", err)
+// 	}
+// ...
+// }
 type Helper struct {
 	// BiosServiceClient provides bios related services such as GBBFlags manipulation.
 	BiosServiceClient fwpb.BiosServiceClient
@@ -155,6 +180,7 @@ func (h *Helper) RequireRPCUtils(ctx context.Context) error {
 }
 
 // RequireBiosServiceClient creates a firmware.BiosServiceClient, unless one already exists.
+// You must add `SoftwareDeps: []string{"flashrom"},` to your `testing.Test` to use this.
 func (h *Helper) RequireBiosServiceClient(ctx context.Context) error {
 	if h.BiosServiceClient != nil {
 		return nil
