@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22fa97cb_3ba1d6fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-17T14:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05a1356e_4c346342",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 1
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b5fdf0b_e8ae251c",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9172cdc_9921f6c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-17T14:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b5fdf0b_e8ae251c",
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3505b3b_1eb7b901",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-06-15T23:38:09Z",
       "side": 1,
       "message": "Is this test designed to be run on the CQ? If not remove this part. If it is, can the hardware topology be satisfied in the device lab?",
+      "range": {
+        "startLine": 42,
+        "startChar": 26,
+        "endLine": 42,
+        "endChar": 40
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71df7cba_8770179f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-17T14:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3505b3b_1eb7b901",
       "range": {
         "startLine": 42,
         "startChar": 26,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "887c4005_373c618a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-17T14:46:15Z",
+      "side": 1,
+      "message": "Script execute only on TBT supported devices. As of now Volteer and Voxel.",
+      "parentUuid": "6f05b99f_9a2297d0",
+      "range": {
+        "startLine": 46,
+        "startChar": 24,
+        "endLine": 46,
+        "endChar": 35
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cf073fc_e381616f",
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b367311_03100a3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-17T14:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cf073fc_e381616f",
+      "range": {
+        "startLine": 136,
+        "startChar": 22,
+        "endLine": 136,
+        "endChar": 43
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "421180b7_7d87dce6",
@@ -140,6 +254,30 @@
       "writtenOn": "2021-06-15T23:38:09Z",
       "side": 1,
       "message": "Does the interval need to be this long? It seems like this call can be repeated pretty quickly. The default Interval is 250ms",
+      "range": {
+        "startLine": 140,
+        "startChar": 52,
+        "endLine": 140,
+        "endChar": 79
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25f87a18_8bed3ea5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-17T14:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "421180b7_7d87dce6",
       "range": {
         "startLine": 140,
         "startChar": 52,
@@ -196,6 +334,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3437bb34_fa6533af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-17T14:46:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "69470165_d986424f",
+      "range": {
+        "startLine": 141,
+        "startChar": 12,
+        "endLine": 141,
+        "endChar": 13
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4586d83_a5191a4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-17T14:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "030147a5_fd3043af",
+      "range": {
+        "startLine": 141,
+        "startChar": 13,
+        "endLine": 141,
+        "endChar": 35
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "778090bb_ac1de787",
@@ -209,6 +395,30 @@
       "writtenOn": "2021-06-15T23:38:09Z",
       "side": 1,
       "message": "Does this need to be a separate function if it\u0027s only used once?",
+      "range": {
+        "startLine": 145,
+        "startChar": 11,
+        "endLine": 145,
+        "endChar": 21
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "914f0357_7a0181b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-17T14:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "778090bb_ac1de787",
       "range": {
         "startLine": 145,
         "startChar": 11,
@@ -242,6 +452,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73c3f3b7_a2433f7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-17T14:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dda97b37_f547daa7",
+      "range": {
+        "startLine": 167,
+        "startChar": 46,
+        "endLine": 167,
+        "endChar": 54
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "304de40f_3d5045b6",
@@ -255,6 +489,30 @@
       "writtenOn": "2021-06-15T23:38:09Z",
       "side": 1,
       "message": "this can be of the form:\n\nif err :\u003d cmd.Run(); err !\u003d nil {",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 16
+      },
+      "revId": "fd10d6dc1ea57fd2e4c56fe3c97130f8e81d239e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7093bcf9_04a3edbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-17T14:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "304de40f_3d5045b6",
       "range": {
         "startLine": 178,
         "startChar": 1,
