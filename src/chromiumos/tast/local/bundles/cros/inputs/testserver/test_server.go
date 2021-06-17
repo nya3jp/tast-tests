@@ -243,6 +243,34 @@ func (its *InputsTestServer) ValidateInputOnField(inputField InputField, inputFu
 	)
 }
 
+// ValidateInputOnFieldWithDependentOutput returns an action to test input actions on given input field.
+// It first clears the field, activates it, and then runs `preAction`.
+// It then calls `outputFunc` and saves the returned string.
+// Finally, it runs `postAction` and checks if the field value is equal to the return value from `ouputFnunc`.
+func (its *InputsTestServer) ValidateInputOnFieldWithDependentOutput(inputField InputField, preAction uiauto.Action, outputFunc func() (string, error), postAction uiauto.Action) uiauto.Action {
+	return func(ctx context.Context) error {
+		if err := uiauto.Combine("validate input function on field "+string(inputField),
+			its.Clear(inputField),
+			its.ClickFieldAndWaitForActive(inputField),
+			preAction)(ctx); err != nil {
+			return err
+		}
+
+		expectedValue, err := outputFunc()
+		if err != nil {
+			return err
+		}
+
+		if err := uiauto.Combine("validate input function on field "+string(inputField),
+			postAction,
+			its.WaitForFieldValueToBe(inputField, expectedValue))(ctx); err != nil {
+			return err
+		}
+
+		return nil
+	}
+}
+
 // ValidateVKInputOnField returns an action to test virtual keyboard input on given input field.
 // After input action, it checks whether the outcome equals to expected value.
 func (its *InputsTestServer) ValidateVKInputOnField(inputField InputField, imeCode ime.InputMethodCode) uiauto.Action {
