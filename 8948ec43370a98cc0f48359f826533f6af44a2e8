@@ -118,6 +118,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d32c945_dd7f0c3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-06-17T07:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cc70593_a5b6022d",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "8948ec43370a98cc0f48359f826533f6af44a2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aad535b3_3a79f13d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-06-17T07:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53cb5c90_57274342",
+      "range": {
+        "startLine": 42,
+        "startChar": 18,
+        "endLine": 42,
+        "endChar": 34
+      },
+      "revId": "8948ec43370a98cc0f48359f826533f6af44a2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21016c54_56b98764",
@@ -131,6 +179,30 @@
       "writtenOn": "2021-06-17T06:10:45Z",
       "side": 1,
       "message": "nit: Failed to decode audio data %q: %v",
+      "range": {
+        "startLine": 86,
+        "startChar": 12,
+        "endLine": 86,
+        "endChar": 54
+      },
+      "revId": "8948ec43370a98cc0f48359f826533f6af44a2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8bb0247_7787be38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-06-17T07:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21016c54_56b98764",
       "range": {
         "startLine": 86,
         "startChar": 12,
