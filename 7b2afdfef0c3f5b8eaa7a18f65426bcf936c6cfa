@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70144297_5a5bf3b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-17T03:12:04Z",
+      "side": 1,
+      "message": "it is not good to pass `s` around. It is suggested to do it in an embedded function as below:\n\nsetEnabledPKAutocorrectSettings :\u003d func(isEnabled bool) {\n    ...\n}",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 77
+      },
+      "revId": "7b2afdfef0c3f5b8eaa7a18f65426bcf936c6cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
