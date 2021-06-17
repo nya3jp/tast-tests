@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be0b295b_d1b8e851",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-06-17T16:55:51Z",
+      "side": 1,
+      "message": "nit: We probably could make url an exception of line wrapping. Or create a go link to make it shorter...",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "095c7da79db7653800cb32df0bcd304782ade68c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1717427_94f21d76",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
         "patchSetId": 4
@@ -14,6 +37,23 @@
       "writtenOn": "2021-06-17T16:42:53Z",
       "side": 1,
       "message": "Please do not add critical tests directly.  Add \"informational\".  After confirmed passes on 20 consecutive runs, we can remove the \"informational\" to promote.\n\nSee also https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md#step-2_add-a-new-tast-test-with-and-attribute\n\nI believe it\u0027s also notified in the style checker of repo upload -- please do not bypass that.",
+      "revId": "095c7da79db7653800cb32df0bcd304782ade68c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eed76f8_94c6898f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-06-17T16:55:51Z",
+      "side": 1,
+      "message": "Should we start with \"informational\"?",
       "revId": "095c7da79db7653800cb32df0bcd304782ade68c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
