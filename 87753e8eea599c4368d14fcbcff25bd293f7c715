@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e40a78ee_60a42c9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-17T17:06:42Z",
+      "side": 1,
+      "message": "Or, updating that part in this CL is also fine.",
+      "parentUuid": "f0b2050a_a72ba110",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 18
+      },
+      "revId": "87753e8eea599c4368d14fcbcff25bd293f7c715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3584e96e_5365d9d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
         "patchSetId": 1
