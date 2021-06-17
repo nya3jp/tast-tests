@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4a5281_45608fad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-17T07:53:18Z",
+      "side": 1,
+      "message": "Thanks for writing up. LGTM. Defer to Kramer.",
+      "revId": "d73fbb21813f001ddb1561a3f831e41a3d24be53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
