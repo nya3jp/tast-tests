@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f29c12_576c8931",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359085
+      },
+      "writtenOn": "2021-06-17T03:21:28Z",
+      "side": 1,
+      "message": "LGTM % though I don\u0027t have +1 permission here.",
+      "revId": "dd4336447b6157b9eddaac6f54adfc24774b1fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
