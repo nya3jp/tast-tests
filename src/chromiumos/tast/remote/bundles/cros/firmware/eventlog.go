@@ -33,8 +33,8 @@ func init() {
 		),
 		Pre:          pre.NormalMode(),
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService", "tast.cros.firmware.BiosService"},
-		SoftwareDeps: []string{"crossystem"},
-		VarDeps:      []string{"servo"},
+		SoftwareDeps: []string{"crossystem", "flashrom"},
+		Vars:         []string{"servo"},
 	})
 }
 

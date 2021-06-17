@@ -12,6 +12,7 @@ import (
 )
 
 // CurrentBootMode reports the DUT's active firmware boot mode (normal, dev, rec).
+// You must add `SoftwareDeps: []string{"crossystem"},` to your `testing.Test` to use this.
 func (r *Reporter) CurrentBootMode(ctx context.Context) (fwCommon.BootMode, error) {
 	csMap, err := r.Crossystem(ctx, CrossystemParamDevswBoot, CrossystemParamMainfwType)
 	if err != nil {

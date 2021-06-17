@@ -33,7 +33,7 @@ func init() {
 		Contacts:     []string{"cros-fw-engprod@google.com"},
 		Data:         []string{firmware.ConfigFile},
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService", "tast.cros.firmware.BiosService"},
-		SoftwareDeps: []string{"crossystem"},
+		SoftwareDeps: []string{"crossystem", "flashrom"},
 		Attr:         []string{"group:firmware"},
 		Pre:          pre.NormalMode(),
 		Timeout:      8 * time.Minute,

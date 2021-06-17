@@ -29,6 +29,7 @@ func init() {
 		Attr:         []string{"group:firmware", "firmware_experimental"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
+		SoftwareDeps: []string{"crossystem", "flashrom"},
 		Vars:         []string{"servo"},
 		Pre:          pre.NormalMode(),
 	})
