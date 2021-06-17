@@ -51,6 +51,24 @@
       "parentUuid": "854398dd_b69fda6f",
       "revId": "b5e5baff9627d724ffa85bc8d3368f0051fa478e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7ce73aa_143b2171",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-06-17T21:18:18Z",
+      "side": 1,
+      "message": "yea that seems reasonable.  Also the tast framework or servo module should take care of recording the logs as not all tests that use servo will use firmware pre conditions.",
+      "parentUuid": "de6395f7_e919b1bc",
+      "revId": "b5e5baff9627d724ffa85bc8d3368f0051fa478e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
