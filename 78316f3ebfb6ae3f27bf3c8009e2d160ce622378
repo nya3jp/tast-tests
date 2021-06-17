@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8ad7efe_25dc964c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-17T17:31:56Z",
+      "side": 1,
+      "message": "Tast code style LGTM, but also please get approval from your teammate.",
+      "revId": "78316f3ebfb6ae3f27bf3c8009e2d160ce622378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
