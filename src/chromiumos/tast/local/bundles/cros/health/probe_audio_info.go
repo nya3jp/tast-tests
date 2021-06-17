@@ -6,23 +6,23 @@ package health
 
 import (
 	"context"
-	"reflect"
-	"strconv"
+	"encoding/json"
+	"strings"
 
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
 
-const (
-	audioOutputMute       = "output_mute"
-	audioInputMute        = "input_mute"
-	audioOutputVolume     = "output_volume"
-	audioOutputDeviceName = "output_device_name"
-	audioInputGain        = "input_gain"
-	audioInputDeviceName  = "input_device_name"
-	audioUnderruns        = "underruns"
-	audioSevereUnderruns  = "severe_underruns"
-)
+type audioInfo struct {
+	InputDeviceName  string `json:"input_device_name"`
+	InputGain        int    `json:"input_gain"`
+	InputMute        bool   `json:"input_mute"`
+	OutputDeviceName string `json:"output_device_name"`
+	OutputMute       bool   `json:"output_mute"`
+	OutputVolume     int    `json:"output_volume"`
+	SevereUnderruns  int    `json:"severe_underruns"`
+	Underruns        int    `json:"underruns"`
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -39,95 +39,52 @@ func init() {
 	})
 }
 
+func validateData(s *testing.State, audio audioInfo) {
+	// Check "input_device_name" is not empty.
+	if audio.InputDeviceName == "" {
+		s.Error("Failed. input_device_name field is empty")
+	}
+
+	// Check "input_gain" is integer and between [0, 100].
+	if audio.InputGain < 0 || audio.InputGain > 100 {
+		s.Error("Failed. input_gain is not in a legal range [0, 100]: ", audio.InputGain)
+	}
+
+	// Check "output_device_name" is not empty.
+	if audio.OutputDeviceName == "" {
+		s.Error("Failed. output_device_name field is empty")
+	}
+
+	// Check "output_volume" is integer and between [0, 100].
+	if audio.OutputVolume < 0 || audio.OutputVolume > 100 {
+		s.Error("Failed. output_volume is not in a legal range [0, 100]: ", audio.OutputVolume)
+	}
+
+	// Check "severe_underruns" is positive integer or zero.
+	if audio.SevereUnderruns < 0 {
+		s.Error("Failed. severe_underruns is smaller than zero: ", audio.SevereUnderruns)
+	}
+
+	// Check "underruns" is positive integer or zero.
+	if audio.Underruns < 0 {
+		s.Error("Failed. underruns is smaller than zero: ", audio.Underruns)
+	}
+}
+
 func ProbeAudioInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryAudio}
-	records, err := croshealthd.RunAndParseTelem(ctx, params, s.OutDir())
+	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get audio telemetry info: ", err)
 	}
 
-	if len(records) != 2 {
-		s.Fatalf("Wrong number of records: got %d; want 2", len(records))
+	dec := json.NewDecoder(strings.NewReader(string(rawData)))
+	dec.DisallowUnknownFields()
+
+	var audio audioInfo
+	if err := dec.Decode(&audio); err != nil {
+		s.Fatalf("Failed to decode audio data [%s], err [%s]", rawData, err)
 	}
 
-	// Verify the headers are correct.
-	want := []string{
-		audioOutputMute,
-		audioInputMute,
-		audioOutputDeviceName,
-		audioOutputVolume,
-		audioInputDeviceName,
-		audioInputGain,
-		audioUnderruns,
-		audioSevereUnderruns,
-	}
-	got := records[0]
-	if !reflect.DeepEqual(want, got) {
-		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
-	}
-
-	// Verify the amount of values is correct.
-	vals := records[1]
-	if len(vals) != len(want) {
-		s.Fatalf("Wrong number of values: got %d; want %d", len(vals), len(want))
-	}
-
-	// Using a map, then we don't need to take care of the index change in future.
-	contentsMap := make(map[string]string)
-	for i, elem := range want {
-		contentsMap[elem] = vals[i]
-	}
-
-	// Check "output_mute" and "input_mute" is bool.
-	if _, err := strconv.ParseBool(contentsMap[audioOutputMute]); err != nil {
-		s.Errorf("Failed to convert %q (%s) to bool: %v", contentsMap[audioOutputMute], audioOutputMute, err)
-	}
-	if _, err := strconv.ParseBool(contentsMap[audioInputMute]); err != nil {
-		s.Errorf("Failed to convert %q (%s) to bool: %v", contentsMap[audioInputMute], audioInputMute, err)
-	}
-
-	// Check "output_device_name" is not empty.
-	if contentsMap[audioOutputDeviceName] == "" {
-		s.Errorf("Failed. %s field is empty", audioOutputDeviceName)
-	}
-
-	// Check "output_volume" is integer and between [0, 100].
-	outputVolume, err := strconv.ParseInt(contentsMap[audioOutputVolume], 10, 32)
-	if err != nil {
-		s.Errorf("Failed to convert %q (%s) to int: %v", contentsMap[audioOutputVolume], audioOutputVolume, err)
-	}
-	if outputVolume < 0 || outputVolume > 100 {
-		s.Error("Failed. output_volume is not in a legal range [0, 100]: ", outputVolume)
-	}
-
-	// Check "input_device_name" is not empty.
-	if contentsMap[audioInputDeviceName] == "" {
-		s.Errorf("Failed. %s field is empty", audioInputDeviceName)
-	}
-
-	// Check "input_gain" is integer and between [0, 100].
-	inputGain, err := strconv.ParseInt(contentsMap[audioInputGain], 10, 32)
-	if err != nil {
-		s.Errorf("Failed to convert %q (%s) to int: %v", contentsMap[audioInputGain], audioInputGain, err)
-	}
-	if inputGain < 0 || inputGain > 100 {
-		s.Error("Failed. input_gain is not in a legal range [0, 100]: ", inputGain)
-	}
-
-	// Check "underruns" and "severe_underruns" are positive integer or zero.
-	underruns, err := strconv.ParseInt(contentsMap[audioUnderruns], 10, 32)
-	if err != nil {
-		s.Errorf("Failed to convert %q (%s) to int: %v", contentsMap[audioUnderruns], audioUnderruns, err)
-	}
-	if underruns < 0 {
-		s.Error("Failed. underruns is smaller than zero: ", underruns)
-	}
-
-	severeUnderruns, err := strconv.ParseInt(contentsMap[audioSevereUnderruns], 10, 32)
-	if err != nil {
-		s.Errorf("Failed to convert %q (%s) to int: %v", contentsMap[audioSevereUnderruns], audioSevereUnderruns, err)
-	}
-	if severeUnderruns < 0 {
-		s.Error("Failed. severe_underruns is smaller than zero: ", severeUnderruns)
-	}
+	validateData(s, audio)
 }
