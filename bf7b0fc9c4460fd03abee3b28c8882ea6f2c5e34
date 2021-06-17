@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f887a121_3fa140f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-17T11:24:30Z",
+      "side": 1,
+      "message": "Changed here and below, thanks!",
+      "parentUuid": "f05f8115_b04ea2a9",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 36
+      },
+      "revId": "bf7b0fc9c4460fd03abee3b28c8882ea6f2c5e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8c404d7_98fced45",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-06-17T04:54:54Z",
       "side": 1,
       "message": "naming nit: this is more \"createProperties\" can populating an existing structure.",
+      "range": {
+        "startLine": 216,
+        "startChar": 21,
+        "endLine": 216,
+        "endChar": 29
+      },
+      "revId": "bf7b0fc9c4460fd03abee3b28c8882ea6f2c5e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecca96b9_81f84738",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-17T11:24:30Z",
+      "side": 1,
+      "message": "Done. Didn\u0027t have a good feeling about their difference before... thanks",
+      "parentUuid": "d8c404d7_98fced45",
       "range": {
         "startLine": 216,
         "startChar": 21,
