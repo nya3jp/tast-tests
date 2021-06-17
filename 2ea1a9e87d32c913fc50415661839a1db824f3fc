@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "313a67f7_1351a9f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-06-17T10:02:58Z",
+      "side": 1,
+      "message": "Resourced.baseline: tests A only\nResourced : tests A then B\nIt looks like A is tested duplicatedly. Does B depend on the device status after A?",
+      "revId": "2ea1a9e87d32c913fc50415661839a1db824f3fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
