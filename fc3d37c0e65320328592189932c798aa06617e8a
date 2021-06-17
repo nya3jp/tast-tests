@@ -16,6 +16,52 @@
       "message": "PTAL, thanks!",
       "revId": "fc3d37c0e65320328592189932c798aa06617e8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1e181f0_542485ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-17T03:56:55Z",
+      "side": 1,
+      "message": "Just to check my understanding: if we block the Internet connectivity in the netns (e.g., by dropping all packets in FORWARDING (I don\u0027t know if it works...)), will it work in this case?",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 144
+      },
+      "revId": "fc3d37c0e65320328592189932c798aa06617e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03596398_abd2c7de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-17T03:56:55Z",
+      "side": 1,
+      "message": "Thanks!\n\nWill it work if we change \"-s \u003cvpn subnet\u003e\" to \"! -s \u003cveth addr\u003e\"? I\u0027m thinking since we will have more types of vpn servers so it could be great if we can have a more general rule here. But I think it\u0027s also fine that only L2TP/IPsec vpn has internet connectivity.",
+      "range": {
+        "startLine": 204,
+        "startChar": 4,
+        "endLine": 204,
+        "endChar": 113
+      },
+      "revId": "fc3d37c0e65320328592189932c798aa06617e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
