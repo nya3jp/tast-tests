@@ -5,7 +5,8 @@
 let localPeerConnection = new RTCPeerConnection();
 let remotePeerConnection = new RTCPeerConnection();
 
-async function start(profile, isSimulcast, width = 1280, height = 720) {
+async function start(
+    profile, isSimulcast, svcScalabilityMode, width = 1280, height = 720) {
   const constraints = {audio : false, video : {width : width, height : height}};
 
   localPeerConnection.onicecandidate = e =>
@@ -25,6 +26,9 @@ async function start(profile, isSimulcast, width = 1280, height = 720) {
 
   if (isSimulcast) {
     await runLoopbackPeerConnectionWithSimulcast(constraints, targetBitrate);
+  } else if (svcScalabilityMode !== '') {
+    await runLoopbackPeerConnectionWithSVC(
+        constraints, svcScalabilityMode, profile, targetBitrate);
   } else {
     await runLoopbackPeerConnection(constraints, profile, targetBitrate);
   }
@@ -84,6 +88,32 @@ async function runLoopbackPeerConnectionWithSimulcast(constraints,
     sdp : swapRidAndMidExtensionsInSimulcastAnswer(
         answer, localPeerConnection.localDescription, rids),
   });
+}
+
+async function runLoopbackPeerConnectionWithSVC(
+    constraints, svcScalabilityMode, profile, targetBitrate) {
+  const stream = await navigator.mediaDevices.getUserMedia(constraints);
+  localPeerConnection.addTransceiver(stream.getVideoTracks()[0], {
+    // Prefer resolution even at the cost of visual quality to avoid falling
+    // down to SW video encoding, see b/181320567 or crbug.com/1179020.
+    degradationPreference: 'maintain-resolution',
+    streams : [ stream ],
+    sendEncodings : [{"scalabilityMode": svcScalabilityMode}]
+  });
+
+  const offer = await localPeerConnection.createOffer();
+  if (profile) {
+    offer.sdp = setSdpDefaultVideoCodec(offer.sdp, profile, false, '');
+  }
+  await localPeerConnection.setLocalDescription(offer);
+  await remotePeerConnection.setRemoteDescription(
+      localPeerConnection.localDescription);
+
+  const answer = await remotePeerConnection.createAnswer();
+  answer.sdp = appendStartBitrateToSDP(answer.sdp, profile, targetBitrate);
+  await remotePeerConnection.setLocalDescription(answer);
+  await localPeerConnection.setRemoteDescription(
+      remotePeerConnection.localDescription);
 }
 
 // Returns true if the video frame being displayed is considered "black".
