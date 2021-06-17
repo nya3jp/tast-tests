@@ -13,6 +13,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type resourcedTestParams struct {
+	isBaseline bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Resourced,
@@ -21,6 +25,16 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
+		Params: []testing.Param{{
+			Val: resourcedTestParams{
+				isBaseline: false,
+			},
+		}, {
+			Name: "baseline",
+			Val: resourcedTestParams{
+				isBaseline: true,
+			},
+		}},
 	})
 }
 
@@ -120,9 +134,16 @@ func checkMemoryPressureSignal(ctx context.Context) error {
 }
 
 func Resourced(ctx context.Context, s *testing.State) {
+	// Baseline checks.
 	if err := checkSetGameMode(ctx); err != nil {
 		s.Fatal("Checking SetGameMode failed: ", err)
 	}
+
+	if s.Param().(resourcedTestParams).isBaseline {
+		return
+	}
+
+	// Other checks.
 	if err := checkQueryMemoryStatus(ctx); err != nil {
 		s.Fatal("Querying memory status failed: ", err)
 	}
