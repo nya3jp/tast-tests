@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "750f9d5a_b8aa62c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-17T03:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75be886a_4a907143",
+      "range": {
+        "startLine": 252,
+        "startChar": 10,
+        "endLine": 252,
+        "endChar": 13
+      },
+      "revId": "70853411972c994716fc827ba587883a298c500d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdcf0510_264aebcc",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca69a98d_d0ea4b86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-17T03:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdcf0510_264aebcc",
+      "range": {
+        "startLine": 257,
+        "startChar": 9,
+        "endLine": 257,
+        "endChar": 19
+      },
+      "revId": "70853411972c994716fc827ba587883a298c500d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "349fc054_4be35280",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-06-16T06:55:24Z",
       "side": 1,
       "message": "you don\u0027t use either of these names, recommend removing them",
+      "range": {
+        "startLine": 299,
+        "startChar": 53,
+        "endLine": 299,
+        "endChar": 79
+      },
+      "revId": "70853411972c994716fc827ba587883a298c500d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "898e17e6_e8cc2e71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-17T03:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "349fc054_4be35280",
       "range": {
         "startLine": 299,
         "startChar": 53,
