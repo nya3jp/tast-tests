@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -93,6 +94,52 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		{
 			Name:   "TypeRomajiShowsHiragana",
 			Action: its.ValidateInputOnField(inputField, kb.TypeAction("nihongo"), "にほんご"),
+		},
+		{
+			Name: "TabCyclesThroughCandidates",
+			Action: its.ValidateInputOnFieldWithDependentOutput(inputField,
+				uiauto.Combine("cycle through candidates",
+					kb.TypeAction("nihongo"),
+					uiauto.Repeat(3, kb.AccelAction("Tab")),
+				),
+				util.GetCandidateText(ctx, tconn, 1),
+				kb.AccelAction("Shift+Tab"),
+			),
+		},
+		{
+			Name: "ArrowKeysCycleThroughCandidates",
+			Action: its.ValidateInputOnFieldWithDependentOutput(inputField,
+				uiauto.Combine("show candidates",
+					kb.TypeAction("nihongo"),
+					uiauto.Repeat(3, kb.AccelAction("Down")),
+				),
+				util.GetCandidateText(ctx, tconn, 1),
+				kb.AccelAction("Up"),
+			),
+		},
+		{
+			Name: "TabAndArrowKeysCyclesThroughPages",
+			Action: its.ValidateInputOnFieldWithDependentOutput(inputField,
+				uiauto.Combine("cycle to next page",
+					kb.TypeAction("nihongo"),
+					// The Japanese IME shows a max of 9 candidates per page.
+					uiauto.Repeat(10, kb.AccelAction("Tab")),
+				),
+				util.GetCandidateText(ctx, tconn, 5),
+				uiauto.Repeat(5, kb.AccelAction("Down")),
+			),
+		},
+		{
+			Name: "NumberKeySelectsCandidate",
+			Action: its.ValidateInputOnFieldWithDependentOutput(inputField,
+				uiauto.Combine("bring up at least 5 candidates",
+					kb.TypeAction("nihongo"),
+					kb.AccelAction("Tab"),
+					uiauto.Repeat(5, kb.AccelAction("Tab")),
+				),
+				util.GetCandidateText(ctx, tconn, 2),
+				kb.TypeAction("3"),
+			),
 		},
 	}
 

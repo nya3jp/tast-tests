@@ -12,7 +12,11 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 )
+
+// CandidatesFinder is the finder for candidates in the IME candidates window.
+var CandidatesFinder = nodewith.Role(role.ImeCandidate)
 
 // InputEval is a data structure to define common input function and expected out.
 type InputEval struct {
@@ -40,4 +44,22 @@ func WaitForFieldTextToBe(tconn *chrome.TestConn, finder *nodewith.Finder, expec
 		}
 		return nil
 	})
+}
+
+// GetCandidateText returns a function that returns the candidate text in the specified position in the candidates window.
+func GetCandidateText(ctx context.Context, tconn *chrome.TestConn, index int) func() (string, error) {
+	return func() (string, error) {
+		ui := uiauto.New(tconn)
+
+		if err := ui.WaitUntilExists(CandidatesFinder.First())(ctx); err != nil {
+			return "", err
+		}
+
+		candidates, err := ui.NodesInfo(ctx, CandidatesFinder)
+		if err != nil {
+			return "", err
+		}
+
+		return candidates[index].Name, nil
+	}
 }
