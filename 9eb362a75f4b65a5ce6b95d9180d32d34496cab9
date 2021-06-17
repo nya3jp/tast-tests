@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbfcaa2_cd2c9494",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-06-17T22:17:42Z",
+      "side": 1,
+      "message": "factor out a parseUint(value []rune, index *int, bits int) function to avoid the repetitive logic for \\x, \\u, and \\U.",
+      "revId": "9eb362a75f4b65a5ce6b95d9180d32d34496cab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
