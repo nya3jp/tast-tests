@@ -7,7 +7,6 @@ package platform
 import (
 	"context"
 	"sort"
-	"strings"
 
 	rppb "chromiumos/system_api/runtime_probe_proto"
 	"chromiumos/tast/local/bundles/cros/platform/runtimeprobe"
@@ -35,10 +34,6 @@ func CrosRuntimeProbeCamera(ctx context.Context, s *testing.State) {
 	hostInfoLabels, err := runtimeprobe.GetHostInfoLabels(s)
 	if err != nil {
 		s.Fatal("GetHostInfoLabels failed: ", err)
-	}
-	// Since video is aliasing to camera.
-	for i := range hostInfoLabels {
-		hostInfoLabels[i] = strings.ReplaceAll(hostInfoLabels[i], "video/", "camera/")
 	}
 
 	mapping, model, err := runtimeprobe.GetComponentCount(ctx, hostInfoLabels, []string{category})
