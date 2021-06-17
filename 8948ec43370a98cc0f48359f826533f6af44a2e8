@@ -16,6 +16,24 @@
       "message": "Hi Chung-Sheng,\n\nI\u0027d like to get your input, to see if the new design (using json) meets your expectation.",
       "revId": "8948ec43370a98cc0f48359f826533f6af44a2e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fe2cff4_28b6d111",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-06-17T04:42:14Z",
+      "side": 1,
+      "message": "Do we have any \"json schema validator\" package can be used?",
+      "parentUuid": "3ec14b30_166fa5bc",
+      "revId": "8948ec43370a98cc0f48359f826533f6af44a2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
