@@ -111,10 +111,15 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	done := make(chan struct{})
 	go func() {
 		defer close(done)
-		if stderr, err := ioutil.ReadAll(stderrPipe); err != nil {
+		// We don't use ioutil.ReadAll because it blocks, causing the
+		// test to *always* take 30s.  This means we won't necessarily
+		// get the full stderr, if anything is logged after the sleep
+		// starts.
+		stderr := make([]byte, 4096)
+		if n, err := stderrPipe.Read(stderr); err != nil {
 			t.Errorf("Failed to get stderr: %v", err)
 		} else {
-			t.Logf("stderr: %s\n", stderr)
+			t.Logf("stderr: %s\n", stderr[:n])
 		}
 		err := cmd.Wait()
 		if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
