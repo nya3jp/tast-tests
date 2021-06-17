@@ -48,6 +48,7 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 			chunks: [],
 			recorder: null,
 			streamPromise: null,
+			videoTrack: null,
 			request: function() {
 				this.streamPromise = navigator.mediaDevices.getDisplayMedia({
 					audio: false,
@@ -60,6 +61,7 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 				this.chunks = [];
 				return this.streamPromise.then(
 					stream => {
+						this.videoTrack = stream.getVideoTracks()[0];
 						this.recorder = new MediaRecorder(stream, {mimeType: 'video/webm;codecs=vp9'});
 						this.recorder.ondataavailable = (e) => {
 							this.chunks.push(e.data);
@@ -80,6 +82,21 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 					}.bind(this);
 					this.recorder.stop();
 				})
+			},
+			frameStatus: function() {
+				return new Promise((resolve, reject) => {
+					const imageCapture = new ImageCapture(this.videoTrack)
+
+					imageCapture.grabFrame()
+					.then(function(imageBitmap) {
+						if (imageBitmap.width) {
+							resolve('Success');
+						}
+					})
+					.catch(function(error) {
+						resolve('Fail');
+					});
+				});
 			}
 		})
 	`
@@ -172,6 +189,15 @@ func (r *ScreenRecorder) SaveInString(ctx context.Context, filepath string) erro
 		return errors.Wrapf(err, "failed to dump string to %s", filepath)
 	}
 	return nil
+}
+
+// FrameStatus returns the status of the frame being recorded.
+func (r *ScreenRecorder) FrameStatus(ctx context.Context) (string, error) {
+	var result string
+	if err := r.videoRecorder.Call(ctx, &result, `function() {return this.frameStatus();}`); err != nil {
+		return "", errors.Wrap(err, "failed to get frame status: ")
+	}
+	return result, nil
 }
 
 // Release frees the reference to Javascript for this video recorder.
