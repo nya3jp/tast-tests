@@ -16,6 +16,23 @@
       "message": "+tast-owners for approval, thanks!",
       "revId": "6cd8e8793847c5fffa91eac05ca25f12a4285765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99032485_658d0769",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-17T11:55:28Z",
+      "side": 1,
+      "message": "Thanks for super quick review :)",
+      "revId": "6cd8e8793847c5fffa91eac05ca25f12a4285765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
