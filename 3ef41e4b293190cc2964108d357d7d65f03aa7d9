@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "362cbaa7_4941c1e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-17T18:13:35Z",
+      "side": 1,
+      "message": "I still don\u0027t see a team alias in the contact section.",
+      "revId": "3ef41e4b293190cc2964108d357d7d65f03aa7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "707ed5ef_f4a576a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-17T18:13:35Z",
+      "side": 1,
+      "message": "I still don\u0027t see a team alias here.",
+      "revId": "3ef41e4b293190cc2964108d357d7d65f03aa7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
