@@ -63,6 +63,30 @@
       },
       "revId": "d039f46f495f56667fdc533bb38e3a0c1b86548c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cac295de_900bb395",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-06-17T23:39:13Z",
+      "side": 1,
+      "message": "Ack. Still working on it though because I need to see how much overhead is involved with blanket enabling it on arm64 config. Right now qcom has hardware support so this option isn\u0027t needed there. We\u0027ll need to add it for non-qcom arm platforms though, i.e. mediatek.",
+      "parentUuid": "bdc1a34a_ba776562",
+      "range": {
+        "startLine": 183,
+        "startChar": 5,
+        "endLine": 183,
+        "endChar": 30
+      },
+      "revId": "d039f46f495f56667fdc533bb38e3a0c1b86548c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
