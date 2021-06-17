@@ -16,6 +16,193 @@
       "message": "added device detect parameter in test_config.json file",
       "revId": "1a92181233e294ed1d568f49cdcb452dda804e0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b21bb7f_940590bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-17T18:07:35Z",
+      "side": 1,
+      "message": "Sorry, for the late reply. I just came back from my vacation. I have made additional comments. Please take a look. Also, I am not a tast test owner so you need a tast test owner to approve this code. Thanks.",
+      "revId": "1a92181233e294ed1d568f49cdcb452dda804e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ca0dbfd_0b6f9e94",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-17T18:07:35Z",
+      "side": 1,
+      "message": "Use errors.Errorf",
+      "revId": "1a92181233e294ed1d568f49cdcb452dda804e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc4f628_c0f4f427",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-17T18:07:35Z",
+      "side": 1,
+      "message": "Do you need so much log writing from you library functions?",
+      "revId": "1a92181233e294ed1d568f49cdcb452dda804e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50fa512a_dade9eb7",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-17T18:07:35Z",
+      "side": 1,
+      "message": "Use errors.Errorf",
+      "revId": "1a92181233e294ed1d568f49cdcb452dda804e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8786622_774f512f",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-17T18:07:35Z",
+      "side": 1,
+      "message": "Use errors.Errorf",
+      "revId": "1a92181233e294ed1d568f49cdcb452dda804e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b64222d_30be4eae",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-17T18:07:35Z",
+      "side": 1,
+      "message": "body is already []byte type, right?",
+      "revId": "1a92181233e294ed1d568f49cdcb452dda804e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "571f5722_6639d7ee",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-17T18:07:35Z",
+      "side": 1,
+      "message": "Return if it is not running.",
+      "revId": "1a92181233e294ed1d568f49cdcb452dda804e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "392b2381_a2dffbeb",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-17T18:07:35Z",
+      "side": 1,
+      "message": "Do you really need so much log in your library functions?",
+      "revId": "1a92181233e294ed1d568f49cdcb452dda804e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d2a715_23b2697e",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-17T18:07:35Z",
+      "side": 1,
+      "message": "Use errors.Errorf",
+      "revId": "1a92181233e294ed1d568f49cdcb452dda804e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62f8e698_97488f24",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-17T18:07:35Z",
+      "side": 1,
+      "message": "return nil if result_status \u003d\u003d \"Success\" so that you don\u0027t need so many level of scopes.",
+      "revId": "1a92181233e294ed1d568f49cdcb452dda804e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f7de8b7_9263cd89",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-17T18:07:35Z",
+      "side": 1,
+      "message": "return ExecCommand(ctx, session_id, \"cswitch 0\", domain)",
+      "revId": "1a92181233e294ed1d568f49cdcb452dda804e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
