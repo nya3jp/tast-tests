@@ -137,6 +137,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b522c59_b3113ebd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/non_educoexistence_insession.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-17T15:52:47Z",
+      "side": 1,
+      "message": "Done cleanup with defer statement.",
+      "parentUuid": "45393491_9c7fb1af",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "b341f34493cae7338e2d62dce1af619682cf9dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a91c8cd3_a60ac967",
