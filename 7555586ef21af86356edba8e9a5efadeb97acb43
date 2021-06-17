@@ -70,6 +70,24 @@
       "parentUuid": "38f87f0c_7855b3c7",
       "revId": "7555586ef21af86356edba8e9a5efadeb97acb43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "677dc4d8_f270efcf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-06-17T21:16:27Z",
+      "side": 1,
+      "message": "Ah, maybe rename it to AnyMode() then?  I didn\u0027t realize you had created a precondition called Helper().",
+      "parentUuid": "e3eeb015_a7400285",
+      "revId": "7555586ef21af86356edba8e9a5efadeb97acb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
