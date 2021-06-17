@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85fd1df7_dc56d199",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-06-17T08:35:11Z",
+      "side": 1,
+      "message": "category will not be \"video\"",
+      "revId": "348bc9dc132d926da58df49a247e4362bbfd2860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "799855a6_a07df39d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-06-17T08:35:11Z",
+      "side": 1,
+      "message": "How about \"(\" + strings.Join(alias, \"|\") + \")\" to prevent the for loop?",
+      "range": {
+        "startLine": 115,
+        "startChar": 71,
+        "endLine": 115,
+        "endChar": 94
+      },
+      "revId": "348bc9dc132d926da58df49a247e4362bbfd2860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22f8e851_c835d1e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-06-17T08:35:11Z",
+      "side": 1,
+      "message": "Could you also handle video/camera conversion here with `getCategoryAliases` to prevent same logic in cros_runtime_probe_camera.go ?",
+      "revId": "348bc9dc132d926da58df49a247e4362bbfd2860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
