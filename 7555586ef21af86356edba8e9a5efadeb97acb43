@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cfd6a45_c4e4668d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-06-17T20:27:08Z",
+      "side": 1,
+      "message": "Should use one of the NormalMode(), DevMode(), or RecMode().  For example: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/firmware/boot_mode.go;l\u003d38",
+      "revId": "7555586ef21af86356edba8e9a5efadeb97acb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
