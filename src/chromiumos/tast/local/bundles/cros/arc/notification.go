@@ -21,7 +21,7 @@ func init() {
 		Func: Notification,
 		Desc: "Launches a testing APK to generate notification and verifies its state",
 		Contacts: []string{
-			"edcourtney@chromium.org", // Notification owner.
+			"sarakato@chromium.org", // Notification owner.
 			"arc-framework+tast@google.com",
 			"hidehiko@chromium.org", // Tast port author.
 			"cros-arc-te@google.com",
