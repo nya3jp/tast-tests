@@ -331,6 +331,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6051a2b8_25818150",
+        "filename": "src/chromiumos/tast/local/disk/fill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2021-06-17T02:16:26Z",
+      "side": 1,
+      "message": "sgtm. Done.",
+      "parentUuid": "3204d91d_f67a2b35",
+      "range": {
+        "startLine": 64,
+        "startChar": 30,
+        "endLine": 64,
+        "endChar": 38
+      },
+      "revId": "e95691f71f5824ede39302eb142ecf529db0ceda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b0ad247_3d33bc9c",
