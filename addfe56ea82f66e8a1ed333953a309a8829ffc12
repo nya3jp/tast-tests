@@ -16,6 +16,24 @@
       "message": "nit, maybe a short description that mentions what it does and that bits must be power of 2.",
       "revId": "addfe56ea82f66e8a1ed333953a309a8829ffc12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e1e6da4_b8f04e38",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-17T22:54:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e8d41e5_dd16a195",
+      "revId": "addfe56ea82f66e8a1ed333953a309a8829ffc12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
