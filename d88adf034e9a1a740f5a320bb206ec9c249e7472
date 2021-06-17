@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b27e706_0673d7a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-17T21:57:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7b97084_03dc26c8",
+      "revId": "d88adf034e9a1a740f5a320bb206ec9c249e7472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4733ba2a_a3a0e1ba",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-17T21:49:39Z",
       "side": 1,
       "message": "nit: do any bugs get filed for TAST failures? Just curious, no real need to file one if not.",
+      "revId": "d88adf034e9a1a740f5a320bb206ec9c249e7472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f7d76f_49e5cdc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-17T21:57:38Z",
+      "side": 1,
+      "message": "I don\u0027t think bugs get automatically filed for test failures, so we\u0027d have to do this ourselves. Since this is a quick update, probably no need for a bug. Marking as resolved.",
+      "parentUuid": "4733ba2a_a3a0e1ba",
       "revId": "d88adf034e9a1a740f5a320bb206ec9c249e7472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
