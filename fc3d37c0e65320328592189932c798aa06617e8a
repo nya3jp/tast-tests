@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81f36856_fb96f323",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-17T12:11:24Z",
+      "side": 1,
+      "message": "OverlayIP is needed by VPNConnect tests: we need to ping the vpn server.\nUnderlayIP is no longer needed... I forgot to change this in my refactor patch...\nThis is not introduced in this patch so I can take this later, but if Jason you want to fix this (and above) in your patches please go ahead... Thanks!",
+      "parentUuid": "a8c88d30_8e0613bd",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 12
+      },
+      "revId": "fc3d37c0e65320328592189932c798aa06617e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6597794f_635342b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
         "patchSetId": 6
@@ -100,6 +124,30 @@
       "writtenOn": "2021-06-17T11:40:03Z",
       "side": 1,
       "message": "this shouldn\u0027t be necessary unless this element was previous set. if so, ignore this comment",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 181,
+        "endChar": 2
+      },
+      "revId": "fc3d37c0e65320328592189932c798aa06617e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da6d76e0_af697978",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-17T12:11:24Z",
+      "side": 1,
+      "message": "I haven\u0027t tried this but I suppose \"empty string\" and \"not set\" are different since  we use this map to replace values in a template. I think the default behavior of text/template if a key doesn\u0027t exist is not replacing the key with empty...",
+      "parentUuid": "6597794f_635342b1",
       "range": {
         "startLine": 179,
         "startChar": 3,
