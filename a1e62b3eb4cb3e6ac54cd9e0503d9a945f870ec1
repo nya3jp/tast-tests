@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfaf79c6_2b00d842",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-17T15:52:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad645d4b_3e32af81",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 17
+      },
+      "revId": "a1e62b3eb4cb3e6ac54cd9e0503d9a945f870ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1320e54_da945b60",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-17T05:10:39Z",
       "side": 1,
       "message": "Same as above.",
+      "range": {
+        "startLine": 60,
+        "startChar": 62,
+        "endLine": 60,
+        "endChar": 78
+      },
+      "revId": "a1e62b3eb4cb3e6ac54cd9e0503d9a945f870ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a433fb5e_dabb5f02",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-17T15:52:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1320e54_da945b60",
       "range": {
         "startLine": 60,
         "startChar": 62,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d29672db_d95b5667",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-17T15:52:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50d81471_5395b342",
+      "range": {
+        "startLine": 68,
+        "startChar": 28,
+        "endLine": 68,
+        "endChar": 52
+      },
+      "revId": "a1e62b3eb4cb3e6ac54cd9e0503d9a945f870ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e25bf87_6a8566c4",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-06-17T05:10:39Z",
       "side": 1,
       "message": "Same as above",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "a1e62b3eb4cb3e6ac54cd9e0503d9a945f870ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a84327d_bef894f9",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-17T15:52:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e25bf87_6a8566c4",
       "range": {
         "startLine": 73,
         "startChar": 1,
