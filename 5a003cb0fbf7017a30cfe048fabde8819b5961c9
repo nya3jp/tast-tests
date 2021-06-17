@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5614f33_c4f557a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-17T01:30:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "105576b8_3b8df952",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 110
+      },
+      "revId": "5a003cb0fbf7017a30cfe048fabde8819b5961c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7eabd7f_6f5d9edf",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-17T01:23:44Z",
       "side": 1,
       "message": "nit: Generally in golang, method variants just vary the method suffix, see:\nhttps://golang.org/pkg/regexp/#Regexp.FindAllString\nhttps://golang.org/pkg/regexp/#Regexp.FindAllStringIndex\nhttps://golang.org/pkg/regexp/#Regexp.FindAllStringSubmatch\netc.\n\nWhat about: \"WaitForFieldTextToBeIgnoringCase\"?",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "5a003cb0fbf7017a30cfe048fabde8819b5961c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e7bb35f_e097df8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-17T01:30:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7eabd7f_6f5d9edf",
       "range": {
         "startLine": 33,
         "startChar": 5,
