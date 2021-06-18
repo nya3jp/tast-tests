@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45ae3fa4_254d0296",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-18T09:34:39Z",
+      "side": 1,
+      "message": "The CL being reverted here is not the root cause. I think the \"root cause\" has been reverted: https://crrev.com/c/2972345\n\n",
+      "revId": "c34cd669083104c690b6ac4e8572da52ae5d8fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
