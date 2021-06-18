@@ -16,6 +16,23 @@
       "message": "PTAL~",
       "revId": "3592590ac1d268e08dc5ad55910904410de0caa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25ea7cc9_55b11aab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-18T14:38:28Z",
+      "side": 1,
+      "message": "Let\u0027s submit this after the release.",
+      "revId": "3592590ac1d268e08dc5ad55910904410de0caa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
