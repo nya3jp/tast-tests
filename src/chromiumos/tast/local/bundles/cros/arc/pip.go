@@ -7,6 +7,7 @@ package arc
 import (
 	"context"
 	"fmt"
+	"image/color"
 	"math"
 	"time"
 
@@ -16,11 +17,13 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	chromeui "chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	uiauto "chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -62,7 +65,7 @@ const (
 	enterPip
 )
 
-type pipTestFunc func(context.Context, *chrome.TestConn, *arc.ARC, *arc.Activity, *ui.Device, *display.DisplayMode) error
+type pipTestFunc func(context.Context, *chrome.Chrome, *chrome.TestConn, *arc.ARC, *arc.Activity, *ui.Device, *display.DisplayMode) error
 
 type pipTestParams struct {
 	name       string
@@ -88,6 +91,7 @@ func init() {
 		Desc:         "Checks that ARC++ Picture-in-Picture works as expected",
 		Contacts:     []string{"edcourtney@chromium.org", "arc-framework+tast@google.com", "cros-arc-te@google.com"},
 		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:arc-functional"},
 		Fixture:      "arcBooted",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
@@ -95,10 +99,9 @@ func init() {
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name: "vm",
-			Val:  pipTests,
-			// TODO(b/179503195): Reenable after test is fixed
-			// ExtraAttr:         []string{"group:mainline", "informational"},
+			Name:              "vm",
+			Val:               pipTests,
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
@@ -237,7 +240,7 @@ func PIP(ctx context.Context, s *testing.State) {
 					}
 				}
 
-				if err := test.fn(ctx, tconn, a, pipAct, dev, dispMode); err != nil {
+				if err := test.fn(ctx, cr, tconn, a, pipAct, dev, dispMode); err != nil {
 					path := fmt.Sprintf("%s/screenshot-pip-failed-test-%d.png", s.OutDir(), idx)
 					if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
 						s.Log("Failed to capture screenshot: ", err)
@@ -256,7 +259,7 @@ func PIP(ctx context.Context, s *testing.State) {
 
 // testPIPMove verifies that drag-moving the PIP window works as expected.
 // It does that by drag-moving that PIP window horizontally 3 times and verifying that the position is correct.
-func testPIPMove(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func testPIPMove(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
 	const (
 		movementDuration = 2 * time.Second
 		totalMovements   = 3
@@ -294,7 +297,7 @@ func testPIPMove(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct
 
 // testPIPResizeToMax verifies that resizing the PIP window to a big size doesn't break its size constraints.
 // It performs a drag-resize from PIP's left-top corner and compares the resized-PIP size with the expected one.
-func testPIPResizeToMax(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func testPIPResizeToMax(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
 	// Activate PIP "resize handler", otherwise resize will fail. See:
 	// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/pie-release/services/core/java/com/android/server/policy/PhoneWindowManager.java#6387
 	if err := dev.PressKeyCode(ctx, ui.KEYCODE_WINDOW, 0); err != nil {
@@ -344,7 +347,7 @@ func testPIPResizeToMax(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 }
 
 // testPIPGravityQuickSettings tests that PIP windows moves accordingly when Quick Settings is hidden / displayed.
-func testPIPGravityQuickSettings(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func testPIPGravityQuickSettings(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
 	// testPIPGravityQuickSettings verifies that:
 	// 1) The PIP window moves to the left of the Quick Settings area when it is shown.
 	// 2) The PIP window returns close the right border when the Quick Settings area is dismissed.
@@ -401,7 +404,7 @@ func testPIPGravityQuickSettings(ctx context.Context, tconn *chrome.TestConn, a 
 }
 
 // testPIPToggleTabletMode verifies that the window position is the same after toggling tablet mode.
-func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func testPIPToggleTabletMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
 	window, err := getPIPWindow(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window")
@@ -452,7 +455,7 @@ func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.TestConn, a *arc
 }
 
 // testPIPAutoPIPMinimize verifies that minimizing an auto-PIP window will trigger PIP.
-func testPIPAutoPIPMinimize(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func testPIPAutoPIPMinimize(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
 	// TODO(edcourtney): Test minimize via shelf icon, keyboard shortcut (alt-minus), and caption.
 	if err := minimizePIP(ctx, tconn, pipAct); err != nil {
 		return errors.Wrap(err, "failed to set window state to minimized")
@@ -473,7 +476,7 @@ func minimizePIP(ctx context.Context, tconn *chrome.TestConn, pipAct *arc.Activi
 }
 
 // testPIPExpandViaMenuTouch verifies that PIP window is properly expanded by touching menu.
-func testPIPExpandViaMenuTouch(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func testPIPExpandViaMenuTouch(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
 	isTabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get tablet mode")
@@ -504,7 +507,7 @@ func testPIPExpandViaMenuTouch(ctx context.Context, tconn *chrome.TestConn, a *a
 		return errors.Wrap(err, "did not enter PIP mode")
 	}
 
-	if err := expandPIPViaMenuTouch(ctx, tconn, pipAct, dev, dispMode, initialAshWindowState); err != nil {
+	if err := expandPIPViaMenuTouch(ctx, cr, tconn, pipAct, dev, dispMode, initialAshWindowState); err != nil {
 		return errors.Wrap(err, "could not expand PIP")
 	}
 
@@ -512,7 +515,7 @@ func testPIPExpandViaMenuTouch(ctx context.Context, tconn *chrome.TestConn, a *a
 }
 
 // testPIPExpandViaShelfIcon verifies that PIP window is properly expanded by pressing shelf icon.
-func testPIPExpandViaShelfIcon(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func testPIPExpandViaShelfIcon(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
 	isTabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get tablet mode")
@@ -551,7 +554,7 @@ func testPIPExpandViaShelfIcon(ctx context.Context, tconn *chrome.TestConn, a *a
 }
 
 // testPIPAutoPIPNewAndroidWindow verifies that creating a new Android window that occludes an auto-PIP window will trigger PIP.
-func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func testPIPAutoPIPNewAndroidWindow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
 	const (
 		settingPkgName = "com.android.settings"
 		settingActName = ".Settings"
@@ -599,7 +602,7 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.TestConn,
 }
 
 // testPIPAutoPIPNewChromeWindow verifies that creating a new Chrome window that occludes an auto-PIP window will trigger PIP.
-func testPIPAutoPIPNewChromeWindow(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func testPIPAutoPIPNewChromeWindow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
 	// Open a maximized Chrome window and close at the end of the test.
 	if err := tconn.Eval(ctx, `tast.promisify(chrome.windows.create)({state: "maximized"})`, nil); err != nil {
 		return errors.Wrap(err, "could not open maximized Chrome window")
@@ -619,7 +622,7 @@ func testPIPAutoPIPNewChromeWindow(ctx context.Context, tconn *chrome.TestConn, 
 // helper functions
 
 // expandPIPViaMenuTouch expands PIP.
-func expandPIPViaMenuTouch(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode, restoreWindowState ash.WindowStateType) error {
+func expandPIPViaMenuTouch(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode, restoreWindowState ash.WindowStateType) error {
 	sdkVer, err := arc.SDKVersion()
 	if err != nil {
 		return errors.Wrap(err, "failed to get the SDK version")
@@ -629,7 +632,7 @@ func expandPIPViaMenuTouch(ctx context.Context, tconn *chrome.TestConn, act *arc
 	case arc.SDKP:
 		return expandPIPViaMenuTouchP(ctx, tconn, act, dev, dispMode, restoreWindowState)
 	case arc.SDKR:
-		return expandPIPViaMenuTouchR(ctx, tconn, restoreWindowState)
+		return expandPIPViaMenuTouchR(ctx, cr, tconn, dispMode, restoreWindowState)
 	default:
 		return errors.Errorf("unsupported SDK version: %d", sdkVer)
 	}
@@ -691,9 +694,9 @@ func expandPIPViaMenuTouchP(ctx context.Context, tconn *chrome.TestConn, act *ar
 }
 
 // expandPIPViaMenuTouchR performs a mouse click to the center of PIP window and expands PIP.
-// After moving the mouse to the center of the PIP window it waits for a second so that the pip
-// menu appears and the expand icon can be clicked.
-func expandPIPViaMenuTouchR(ctx context.Context, tconn *chrome.TestConn, restoreWindowState ash.WindowStateType) error {
+// After moving the mouse to the center of the PIP window it waits until the PIP menu is visible
+// before the expand icon is clicked.
+func expandPIPViaMenuTouchR(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, dispMode *display.DisplayMode, restoreWindowState ash.WindowStateType) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		window, err := getPIPWindow(ctx, tconn)
 		if err != nil {
@@ -701,27 +704,34 @@ func expandPIPViaMenuTouchR(ctx context.Context, tconn *chrome.TestConn, restore
 		}
 
 		bounds := window.BoundsInRoot
+		origBounds := coords.ConvertBoundsFromDPToPX(window.BoundsInRoot, dispMode.DeviceScaleFactor)
 
-		if err := mouse.Move(ctx, tconn, coords.NewPoint(bounds.Left+bounds.Width/2, bounds.Top+bounds.Height/2), 0); err != nil {
-			return testing.PollBreak(err)
+		// Move the cursor away from the PIP window and then to the center of the PIP window slowly, otherwise
+		// the PIP menu won't activate.
+		if err := mouse.Move(ctx, tconn, coords.NewPoint(0, 0), time.Second); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to move the mouse to the top-left corner of the screen"))
 		}
-
-		// Need to wait for the menu to appear.
-		if err := testing.Sleep(ctx, time.Second); err != nil {
-			return testing.PollBreak(err)
+		if err := mouse.Move(ctx, tconn, coords.NewPoint(bounds.Left+bounds.Width/2, bounds.Top+bounds.Height/2), time.Second); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to move the mouse to center of the PIP window"))
 		}
+		// Wait for the PIP menu to appear.
+		if err := waitForPIPMenu(ctx, cr, origBounds); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "the PIP menu did not appear"))
+		}
+		// Click on the expand button.
 		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
-			return testing.PollBreak(err)
+			return testing.PollBreak(errors.Wrap(err, "failed to press the left button"))
 		}
 		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
-			return testing.PollBreak(err)
+			return testing.PollBreak(errors.Wrap(err, "failed to release the left button"))
 		}
-
-		if err := ash.WaitForARCAppWindowState(ctx, tconn, pipTestPkgName, restoreWindowState); err != nil {
+		// Check that it restored to the correct window state.
+		if err := ash.WaitForARCAppWindowStateWithPollOptions(ctx, tconn, pipTestPkgName, restoreWindowState,
+			&testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 			return errors.Wrap(err, "did not expand to restore window state")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: 500 * time.Millisecond})
+	}, &testing.PollOptions{Timeout: 40 * time.Second})
 }
 
 // waitForPIPWindow keeps looking for a PIP window until it appears on the Chrome side.
@@ -735,6 +745,26 @@ func waitForPIPWindow(ctx context.Context, tconn *chrome.TestConn) error {
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
+// waitForPIPMenu keeps looking for the PIP menu until it occludes the PIP window.
+func waitForPIPMenu(ctx context.Context, cr *chrome.Chrome, bounds coords.Rect) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		// Grab a screenshot of the PIP window.
+		img, err := screenshot.GrabAndCropScreenshot(ctx, cr, bounds)
+		if err != nil {
+			return errors.Wrap(err, "did not grab PIP window screenshot")
+		}
+		// Count the number of pixels that match the PIP window background.
+		pipBgPixels := imgcmp.CountPixels(img, color.RGBA{241, 241, 241, 255})
+		pipMenuPixels := imgcmp.CountPixels(img, color.RGBA{176, 176, 176, 255})
+
+		if pipBgPixels > pipMenuPixels {
+			// The menu isn't showing, otherwise there would be more menu overlay pixels than bg pixels.
+			return errors.New("the PIP menu isn't showing yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+}
+
 // getPIPWindow returns the PIP window if any.
 func getPIPWindow(ctx context.Context, tconn *chrome.TestConn) (*ash.Window, error) {
 	return ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.State == ash.WindowStatePIP })
@@ -742,22 +772,16 @@ func getPIPWindow(ctx context.Context, tconn *chrome.TestConn) (*ash.Window, err
 
 // pressShelfIcon press the shelf icon of PIP window.
 func pressShelfIcon(ctx context.Context, tconn *chrome.TestConn) error {
-	var icon *chromeui.Node
 	// Make sure that at least one shelf icon exists.
 	// Depending the test order, the status area might not be ready at this point.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		icon, err = chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: "ArcPipTest", ClassName: "ash/ShelfAppButton"}, 15*time.Second)
-		if err != nil {
-			return errors.Wrap(err, "no shelf icon has been created yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	ui := uiauto.New(tconn)
+	finder := nodewith.Name("ArcPipTest").ClassName("ash/ShelfAppButton").First()
+
+	if err := ui.WaitUntilExists(finder)(ctx); err != nil {
 		return errors.Wrap(err, "failed to locate shelf icons")
 	}
-	defer icon.Release(ctx)
 
-	return icon.LeftClick(ctx)
+	return ui.LeftClick(finder)(ctx)
 }
 
 // waitForNewBoundsWithMargin waits until Chrome animation finishes completely and check the position of an edge of the PIP window.
