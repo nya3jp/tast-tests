@@ -42,7 +42,7 @@ func UnicornParentPermission(ctx context.Context, s *testing.State) {
 		askinPersonButtonText  = "Ask in person"
 		installButtonText      = "install"
 		playStoreSearchText    = "Search for apps & games"
-		gamesAppName           = "facebook"
+		appName                = "Instagram"
 	)
 	parentUser := s.RequiredVar("arc.parentUser")
 	cr := s.FixtValue().(*familylink.FixtData).Chrome
@@ -91,7 +91,7 @@ func UnicornParentPermission(ctx context.Context, s *testing.State) {
 	}
 
 	searchTextEdit := d.Object(ui.ClassName("android.widget.EditText"), ui.Text(playStoreSearchText))
-	if err := searchTextEdit.SetText(ctx, gamesAppName); err != nil {
+	if err := searchTextEdit.SetText(ctx, appName); err != nil {
 		s.Fatal("Failed to set text to search: ", err)
 	}
 	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
