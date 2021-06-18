@@ -16,6 +16,46 @@
       "message": "hiroh@ PTAL\n\nOthers FYI",
       "revId": "d77937193c9096a69f10326e075a58ed3004425d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9cc48ed_2aae176f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-06-18T01:35:19Z",
+      "side": 1,
+      "message": "LGTM % one question.",
+      "revId": "d77937193c9096a69f10326e075a58ed3004425d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "317a9bb2_56b974c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-06-18T01:35:19Z",
+      "side": 1,
+      "message": "I wonder if we shall remove this. Not necessarily though.",
+      "range": {
+        "startLine": 107,
+        "startChar": 23,
+        "endLine": 107,
+        "endChar": 45
+      },
+      "revId": "d77937193c9096a69f10326e075a58ed3004425d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
