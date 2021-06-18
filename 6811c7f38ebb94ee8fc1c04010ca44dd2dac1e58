@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9874003b_6dfce8e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-06-18T21:44:08Z",
+      "side": 1,
+      "message": "Hello Sarthak,\n\nThis is a follow-on to my cryptohome.FileStability test from a few weeks ago. This attempts to replicate the circumstances of the ChromeCrashLoggedIn flakes more precisely, by having one process write files while the golang test reads them.\n\nIt\u0027s already showing failures -- if you look at the latest amd64-generic-direct-tast-vm failure (https://ci.chromium.org/ui/p/chromeos/builders/vmtest/amd64-generic-direct-tast-vm/b8844055741070657920/overview) you can see errors like:\n\nLoop failed: file /home/user/59cca754f985e1ea785b73746654315a707b0d3a/SequentialConsistency/SequentialConsistencyTest.2.txt disappeared after creation\n\nwhich is the type of \u0027flickering\u0027 I\u0027ve been worried about.\n\nDo you see something I\u0027m doing wrong here? Should the test succeed or am I misunderstanding? I\u0027m not doing \u0027sync\u0027s but my understanding is that syncs are only needed if you want to be sure the data is written to the physical media; it shouldn\u0027t affect the ability of other processes to see the files.\n",
+      "revId": "6811c7f38ebb94ee8fc1c04010ca44dd2dac1e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
