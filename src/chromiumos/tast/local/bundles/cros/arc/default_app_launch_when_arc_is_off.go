@@ -62,9 +62,9 @@ func DefaultAppLaunchWhenArcIsOff(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	// Launch Play Games App.
-	if err := launcher.SearchAndWaitForAppOpen(tconn, kb, apps.PlayGames)(ctx); err != nil {
-		s.Log("Failed to Launch the Play Games: ", err)
+	// Launch Play Books App.
+	if err := launcher.SearchAndWaitForAppOpen(tconn, kb, apps.PlayBooks)(ctx); err != nil {
+		s.Log("Failed to Launch the Play Books: ", err)
 	}
 
 	ui := uiauto.New(tconn)
