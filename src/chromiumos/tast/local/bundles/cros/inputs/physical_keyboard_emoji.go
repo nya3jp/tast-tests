@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
-	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -67,7 +66,7 @@ func PhysicalKeyboardEmoji(ctx context.Context, s *testing.State) {
 		// Select item from emoji picker.
 		ui.LeftClick(emojiCharFinder),
 		// Wait for input value to test emoji.
-		util.WaitForFieldTextToBe(tconn, inputField.Finder(), emojiChar),
+		its.WaitForFieldValueToBe(inputField, emojiChar),
 	)(ctx); err != nil {
 		s.Fatal("Failed to verify emoji picker: ", err)
 	}

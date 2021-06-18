@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
-	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -75,7 +74,7 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 	accentContainerFinder := nodewith.ClassName("goog-container goog-container-vertical accent-container")
 	accentKeyFinder := nodewith.Ancestor(accentContainerFinder).Name(accentKeyName).Role(role.StaticText)
 	languageLabelFinder := vkb.NodeFinder.Name(languageLabel).First()
-	keyFinder := vkb.KeyByNameIgnoringCase(keyName)
+	keyFinder := vkb.KeyFinder.Name(keyName)
 
 	if err := uiauto.Combine("input accent letter with virtual keyboard",
 		its.ClickFieldUntilVKShown(inputField),
@@ -87,7 +86,7 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 		ui.WithInterval(time.Second).Retry(10, ui.WaitForLocation(accentContainerFinder)),
 		ui.MouseMoveTo(accentKeyFinder, 500*time.Millisecond),
 		mouse.Release(tconn, mouse.LeftButton),
-		util.WaitForFieldTextToBe(tconn, inputField.Finder(), accentKeyName),
+		its.WaitForFieldValueToBe(inputField, accentKeyName),
 	)(ctx); err != nil {
 		s.Fatal("Fail to input accent key on virtual keyboard: ", err)
 	}

@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
-	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -172,14 +171,14 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	// Warm-up steps to check handwriting engine ready.
 	checkEngineReady := uiauto.Combine("Wait for handwriting engine to be ready",
 		hwCtx.DrawStrokesFromFile(s.DataPath(handwritingWarmupFile)),
-		util.WaitForFieldTextToBe(tconn, inputField.Finder(), handwritingWarmupDigit),
+		its.WaitForFieldValueToBe(inputField, handwritingWarmupDigit),
 		hwCtx.ClearHandwritingCanvas(),
 		its.Clear(inputField))
 
 	if err := uiauto.Combine("Test handwriting on virtual keyboard",
 		hwCtx.WaitForHandwritingEngineReady(checkEngineReady),
 		hwCtx.DrawStrokesFromFile(s.DataPath(params.handwritingFile)),
-		util.WaitForFieldTextToBe(tconn, inputField.Finder(), params.expectedText),
+		its.WaitForFieldValueToBe(inputField, params.expectedText),
 	)(ctx); err != nil {
 		s.Fatal("Failed to verify handwriting input: ", err)
 	}

@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
-	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -126,7 +125,7 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 			func(ctx context.Context) error {
 				return input.AudioFromFile(ctx, testFileLocation)
 			},
-			util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), expectedText),
+			its.WaitForFieldValueToBe(inputField, expectedText),
 		)(ctx); err != nil {
 			return err
 		}
