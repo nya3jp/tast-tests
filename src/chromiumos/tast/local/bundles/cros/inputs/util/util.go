@@ -15,8 +15,8 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 )
 
-// PkCandidatesFinder is the finder for candidates in the IME candidates window.
-var PkCandidatesFinder = nodewith.Role(role.ImeCandidate)
+// PKCandidatesFinder is the finder for candidates in the IME candidates window.
+var PKCandidatesFinder = nodewith.Role(role.ImeCandidate)
 
 // InputEval is a data structure to define common input function and expected out.
 type InputEval struct {
@@ -50,7 +50,7 @@ func WaitForFieldTextToBe(tconn *chrome.TestConn, finder *nodewith.Finder, expec
 func GetNthCandidateText(ctx context.Context, tconn *chrome.TestConn, n int) (string, error) {
 	ui := uiauto.New(tconn)
 
-	candidate, err := ui.Info(ctx, PkCandidatesFinder.Nth(n))
+	candidate, err := ui.Info(ctx, PKCandidatesFinder.Nth(n))
 	if err != nil {
 		return "", err
 	}

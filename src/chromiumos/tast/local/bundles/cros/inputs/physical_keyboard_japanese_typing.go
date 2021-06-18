@@ -42,20 +42,30 @@ func init() {
 	})
 }
 
-// validateInputFieldFromNthCandidate returns an action that gets the candidate at the specified position and checks if the input field has the same value.
-func validateInputFieldFromNthCandidate(its *testserver.InputsTestServer, tconn *chrome.TestConn, inputField testserver.InputField, n int) uiauto.Action {
+// getNthCandidateTextAndThen returns an action that performs two steps in sequence:
+// 1) Get the specified candidate.
+// 2) Pass the specified candidate into provided function and runs the returned action.
+// This is used when an action depends on the text of a candidate.
+func getNthCandidateTextAndThen(tconn *chrome.TestConn, n int, fn func(text string) uiauto.Action) uiauto.Action {
 	return func(ctx context.Context) error {
-		expectedValue, err := util.GetNthCandidateText(ctx, tconn, n)
+		text, err := util.GetNthCandidateText(ctx, tconn, n)
 		if err != nil {
 			return err
 		}
 
-		if err := its.WaitForFieldValueToBe(inputField, expectedValue)(ctx); err != nil {
+		if err := fn(text)(ctx); err != nil {
 			return err
 		}
 
 		return nil
 	}
+}
+
+// validateInputFieldFromNthCandidate returns an action that gets the candidate at the specified position and checks if the input field has the same value.
+func validateInputFieldFromNthCandidate(its *testserver.InputsTestServer, tconn *chrome.TestConn, inputField testserver.InputField, n int) uiauto.Action {
+	return getNthCandidateTextAndThen(tconn, n, func(text string) uiauto.Action {
+		return its.WaitForFieldValueToBe(inputField, text)
+	})
 }
 
 func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
@@ -159,6 +169,42 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 				uiauto.Repeat(5, kb.AccelAction("Tab")),
 				kb.TypeAction("3"),
 				validateInputFieldFromNthCandidate(its, tconn, inputField, 2),
+			),
+		},
+		{
+			Name: "SpaceSelectsDefaultCandidate",
+			Action: uiauto.Combine("type some text",
+				clearAndFocus,
+				kb.TypeAction("nihongo"),
+				getNthCandidateTextAndThen(tconn, 0, func(text string) uiauto.Action {
+					return uiauto.Combine("press space and verify text",
+						kb.AccelAction("Space"),
+						its.WaitForFieldValueToBe(inputField, text),
+					)
+				}),
+			),
+		},
+		{
+			Name: "SpaceCyclesThroughConversionCandidates",
+			Action: uiauto.Combine("type some text",
+				clearAndFocus,
+				kb.TypeAction("nihongo"),
+				uiauto.Repeat(5, kb.AccelAction("Space")),
+				validateInputFieldFromNthCandidate(its, tconn, inputField, 4),
+			),
+		},
+		{
+			Name: "EnterSubmitsCandidate",
+			Action: uiauto.Combine("type some text",
+				clearAndFocus,
+				kb.TypeAction("nihongo"),
+				uiauto.Repeat(3, kb.AccelAction("Tab")),
+				getNthCandidateTextAndThen(tconn, 2, func(text string) uiauto.Action {
+					return uiauto.Combine("press enter and verify text",
+						kb.AccelAction("Enter"),
+						its.WaitForFieldValueToBe(inputField, text),
+					)
+				}),
 			),
 		},
 	}
