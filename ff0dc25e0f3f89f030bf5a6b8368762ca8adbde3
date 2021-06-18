@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36a5621a_898c2896",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-18T06:55:06Z",
+      "side": 1,
+      "message": "LGTM. Nice clean patch!",
+      "revId": "ff0dc25e0f3f89f030bf5a6b8368762ca8adbde3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7b49e35_18910dbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_boot_performance_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-18T06:55:06Z",
+      "side": 1,
+      "message": "Prefer to end with colon instead of string interpolation with a single variable\n\n\"When concatenating a string and a value using default formatting, use s.Log(\"Some value: \", val) rather than the more-verbose s.Logf(\"Some value: %v\", val).\"\n\ngo/tast-writing#log_error_fatal-vs_logf_errorf_fatalf",
+      "range": {
+        "startLine": 95,
+        "startChar": 52,
+        "endLine": 95,
+        "endChar": 62
+      },
+      "revId": "ff0dc25e0f3f89f030bf5a6b8368762ca8adbde3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "932158f1_706e69d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_boot_performance_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-18T06:55:06Z",
+      "side": 1,
+      "message": "nit: Fatalf?",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 10
+      },
+      "revId": "ff0dc25e0f3f89f030bf5a6b8368762ca8adbde3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0e6d28a_8b206bb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_boot_performance_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-18T06:55:06Z",
+      "side": 1,
+      "message": "nit: the error message is not very helpful if someone else was debugging, maybe, \"Failed as difference between boot_up_timestamp (%v) and new boot_up_timestamp (%v) is greater than 0.1\"",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 69
+      },
+      "revId": "ff0dc25e0f3f89f030bf5a6b8368762ca8adbde3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
