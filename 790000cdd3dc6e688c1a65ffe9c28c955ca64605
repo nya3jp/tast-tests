@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3861c1d2_a67eab06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-18T08:21:18Z",
+      "side": 1,
+      "message": "Is this guaranteed to have no VK enabled, neither tablet nor a11y? I ran into an issue with my PK tests earlier, and ultimately need to use Pre: NonVKClamshell for a clean PK-only environment. Recall PK typing with VK enabled isn\u0027t a supported scenario and behaviour can be flaky or catastrophic.",
+      "revId": "790000cdd3dc6e688c1a65ffe9c28c955ca64605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
