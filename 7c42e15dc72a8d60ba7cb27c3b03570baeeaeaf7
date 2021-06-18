@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "349c252e_f240fd14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-18T10:24:56Z",
+      "side": 1,
+      "message": "Need to adapt the following as well?src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go\n\nI believe the failure was because https://crrev.com/c/2965085 refactored framework API and landed before https://crrev.com/c/2965083, https://crrev.com/c/2965086, and https://crrev.com/c/2965091 which were using the pre-refactoring API.\n",
+      "revId": "7c42e15dc72a8d60ba7cb27c3b03570baeeaeaf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
