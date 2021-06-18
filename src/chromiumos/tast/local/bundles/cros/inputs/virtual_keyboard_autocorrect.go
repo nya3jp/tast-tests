@@ -14,9 +14,13 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -31,7 +35,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name: "en_us_tablet",
-				Pre:  pre.VKEnabledTablet,
+				Pre:  pre.VKEnabledTabletWithAssistAutocorrect,
 				Val: autocorrect.TestCase{
 					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
 					MisspeltWord:  "helol",
@@ -39,7 +43,7 @@ func init() {
 				},
 			}, {
 				Name: "en_us_a11y",
-				Pre:  pre.VKEnabledClamshell,
+				Pre:  pre.VKEnabledClamshellWithAssistAutocorrect,
 				Val: autocorrect.TestCase{
 					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
 					MisspeltWord:  "helol",
@@ -47,7 +51,7 @@ func init() {
 				},
 			}, {
 				Name: "es_es_tablet",
-				Pre:  pre.VKEnabledTablet,
+				Pre:  pre.VKEnabledTabletWithAssistAutocorrect,
 				Val: autocorrect.TestCase{
 					InputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
 					MisspeltWord:  "espanol",
@@ -55,7 +59,7 @@ func init() {
 				},
 			}, {
 				Name: "es_es_a11y",
-				Pre:  pre.VKEnabledClamshell,
+				Pre:  pre.VKEnabledClamshellWithAssistAutocorrect,
 				Val: autocorrect.TestCase{
 					InputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
 					MisspeltWord:  "espanol",
@@ -63,7 +67,7 @@ func init() {
 				},
 			}, {
 				Name: "fr_fr_tablet",
-				Pre:  pre.VKEnabledTablet,
+				Pre:  pre.VKEnabledTabletWithAssistAutocorrect,
 				Val: autocorrect.TestCase{
 					InputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
 					MisspeltWord:  "francais",
@@ -71,7 +75,7 @@ func init() {
 				},
 			}, {
 				Name: "fr_fr_a11y",
-				Pre:  pre.VKEnabledClamshell,
+				Pre:  pre.VKEnabledClamshellWithAssistAutocorrect,
 				Val: autocorrect.TestCase{
 					InputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
 					MisspeltWord:  "francais",
@@ -157,5 +161,35 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		its.WaitForFieldValueToBe(inputField, testCase.CorrectWord+" "),
 	)(ctx); err != nil {
 		s.Fatal("Failed to validate VK autocorrect: ", err)
+	}
+
+	// AssistAutoCorrect flag's features. Only available for US-English currently.
+	if testCase.InputMethodID == string(ime.INPUTMETHOD_XKB_US_ENG) {
+		ui := uiauto.New(tconn)
+		textFieldFinder := nodewith.Name("textAreaInputField").Role(role.TextField)
+		textContentFinder := nodewith.Role(role.StaticText).Ancestor(textFieldFinder)
+
+		if err := ui.WaitUntilExists(textContentFinder)(ctx); err != nil {
+			s.Fatal("Cannot find text content: ", err)
+		}
+
+		boundingBox, err := ui.Location(ctx, textContentFinder)
+		if err != nil {
+			s.Fatal("Cannot find text content location coords: ", err)
+		}
+
+		// Need to click on the word, but text field has an extra space at the end,
+		// hence centre point shifted slightly leftwards.
+		clickTarget := coords.NewPoint(
+			boundingBox.Left+(boundingBox.Width/3),
+			boundingBox.Top+(boundingBox.Height/2))
+		mouse.Click(ctx, tconn, clickTarget, mouse.LeftButton)
+
+		undoWindowFinder := nodewith.ClassName("UndoWindow").Role(role.Window)
+		undoButtonFinder := nodewith.Name("Undo").Role(role.Button).Ancestor(undoWindowFinder)
+
+		if err := ui.WaitUntilExists(undoButtonFinder)(ctx); err != nil {
+			s.Fatal("Cannot find Undo button: ", err)
+		}
 	}
 }

@@ -74,12 +74,18 @@ var VKEnabledInGuest = inputsPreCondition("virtual_keyboard_enabled_guest_pre", 
 // It boots device in tablet mode and force enabled virtual keyboard via chrome flag --enable-virtual-keyboard.
 var VKEnabledTablet = inputsPreCondition("virtual_keyboard_enabled_tablet_pre", tabletMode, true)
 
+// VKEnabledTabletWithAssistAutocorrect is similar to VKEnabledTablet, but also with AssistAutoCorrect flag enabled.
+var VKEnabledTabletWithAssistAutocorrect = inputsPreCondition("virtual_keyboard_enabled_tablet_assist_autocorrect_pre", tabletMode, true, chrome.ExtraArgs("--enable-features=AssistAutoCorrect"))
+
 // VKEnabledTabletInGuest creates a new precondition the same as VKEnabledTablet in Guest mode.
 var VKEnabledTabletInGuest = inputsPreCondition("virtual_keyboard_enabled_tablet_guest_pre", tabletMode, true, chrome.GuestLogin())
 
 // VKEnabledClamshell creates a new precondition for testing virtual keyboard in clamshell mode.
 // It uses Chrome API settings.a11y.virtual_keyboard to enable a11y vk instead of --enable-virtual-keyboard.
 var VKEnabledClamshell = inputsPreCondition("virtual_keyboard_enabled_clamshell_pre", clamshellMode, true)
+
+// VKEnabledClamshellWithAssistAutocorrect is similar to VKEnabledClamshell, but also with AssistAutoCorrect flag enabled.
+var VKEnabledClamshellWithAssistAutocorrect = inputsPreCondition("virtual_keyboard_enabled_clamshell_assist_autocorrect_pre", clamshellMode, true, chrome.ExtraArgs("--enable-features=AssistAutoCorrect"))
 
 // VKEnabledClamshellInGuest creates a new precondition the same as VKEnabledClamshell in Guest mode.
 var VKEnabledClamshellInGuest = inputsPreCondition("virtual_keyboard_enabled_clamshell_guest_pre", clamshellMode, true, chrome.GuestLogin())
@@ -108,10 +114,10 @@ const (
 	clamshellMode
 )
 
-// preImpl implements testing.Precondition.
+// preImpl implements testing.PreCondition.
 type preImpl struct {
-	name      string          // testing.Precondition.String
-	timeout   time.Duration   // testing.Precondition.Timeout
+	name      string          // testing.PreCondition.String
+	timeout   time.Duration   // testing.PreCondition.Timeout
 	cr        *chrome.Chrome  // underlying Chrome instance
 	dm        deviceMode      // device ui mode to test
 	vkEnabled bool            // Whether virtual keyboard is force enabled
