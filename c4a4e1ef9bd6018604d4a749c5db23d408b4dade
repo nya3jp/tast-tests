@@ -52,6 +52,24 @@
       "parentUuid": "7b6c4502_13d967f3",
       "revId": "c4a4e1ef9bd6018604d4a749c5db23d408b4dade",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15df4328_1d852ebd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-06-18T05:29:43Z",
+      "side": 1,
+      "message": "One of the criteria is API stability. Changing an API in baseline could block CQ.",
+      "parentUuid": "675c3f89_9f78943b",
+      "revId": "c4a4e1ef9bd6018604d4a749c5db23d408b4dade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
