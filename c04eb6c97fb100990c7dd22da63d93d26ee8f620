@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "406b70cd_e5fd1bce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-18T06:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d21ddee9_9c73ccf4",
+      "range": {
+        "startLine": 14,
+        "startChar": 60,
+        "endLine": 14,
+        "endChar": 65
+      },
+      "revId": "c04eb6c97fb100990c7dd22da63d93d26ee8f620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8521033_5ad6c655",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "371edecb_9ae57406",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-18T06:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8521033_5ad6c655",
+      "range": {
+        "startLine": 19,
+        "startChar": 24,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "c04eb6c97fb100990c7dd22da63d93d26ee8f620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce6d5b29_4cda5f48",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-18T05:46:18Z",
       "side": 1,
       "message": "nit: references",
+      "range": {
+        "startLine": 22,
+        "startChar": 39,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "c04eb6c97fb100990c7dd22da63d93d26ee8f620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cadc508_43121cc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-18T06:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce6d5b29_4cda5f48",
       "range": {
         "startLine": 22,
         "startChar": 39,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f7ba944_6b14c60f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/audio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-18T06:36:56Z",
+      "side": 1,
+      "message": "Cannot keep it in the original place (tast/local/input) due to cycle references: quicksettings imports input, tast/local/input.audio imports quicksettings.\n\nLet me know if there is any other place you want me to put it in.",
+      "parentUuid": "c2b9b3a5_65f678b2",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "c04eb6c97fb100990c7dd22da63d93d26ee8f620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2bf1d972_e8cd5914",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/audio.go",
         "patchSetId": 2
@@ -106,6 +202,30 @@
       "writtenOn": "2021-06-18T05:46:18Z",
       "side": 1,
       "message": "cras.SetActiveNode(ctx, aloopInputNode) API is doing exactly same thing to activate a media device in a non-UI way. It is much more reliable.\n\nIf the root cause is output not activated, then can you try to cras.SetActiveNode(ctx, aloopOutputNode)?",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 42
+      },
+      "revId": "c04eb6c97fb100990c7dd22da63d93d26ee8f620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7142624_1891f62a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/audio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-18T06:36:56Z",
+      "side": 1,
+      "message": "As discussed offline. cras.SetActiveNode(...) does not work as intended, it fails to switch active input/output nodes, which is the root cause.",
+      "parentUuid": "2bf1d972_e8cd5914",
       "range": {
         "startLine": 70,
         "startChar": 10,
