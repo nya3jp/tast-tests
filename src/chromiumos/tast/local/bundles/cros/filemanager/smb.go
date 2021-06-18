@@ -10,9 +10,11 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
@@ -65,26 +67,14 @@ func SMB(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
-	defer files.Release(ctx)
 
-	menuItems := []string{"Services", "SMB file share"}
-	if err := files.ClickMoreMenuItem(ctx, menuItems); err != nil {
-		s.Fatal("Failed clicking menu item SMB file share: ", err)
-	}
-
-	// Click the SMB file share input box to enter details
-	params := ui.FindParams{
-		Name: "File share URL",
-		Role: ui.RoleTypeTextField,
-	}
-	fileShareURLTextBox, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		s.Fatal("Failed waiting for file share url text box: ", err)
-	}
-	defer fileShareURLTextBox.Release(ctx)
-
-	if err := fileShareURLTextBox.LeftClick(ctx); err != nil {
-		s.Fatal("Failed clicking on the file share url text box: ", err)
+	ui := uiauto.New(tconn)
+	fileShareURLTextBox := nodewith.Name("File share URL").Role(role.TextField)
+	if err := uiauto.Combine("Click add SMB file share",
+		files.ClickMoreMenuItem("Services", "SMB file share"),
+		ui.WaitForLocation(fileShareURLTextBox),
+		ui.LeftClick(fileShareURLTextBox))(ctx); err != nil {
+		s.Fatal("Failed to click add SMB share: ", err)
 	}
 
 	// Get a handle to the input keyboard
@@ -102,23 +92,10 @@ func SMB(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed pressing enter: ", err)
 	}
 
-	// Click freshly loaded SMB share to open the folder.
-	params = ui.FindParams{
-		Name: "guestshare",
-		Role: ui.RoleTypeTreeItem,
-	}
-	smbshare, err := files.Root.DescendantWithTimeout(ctx, params, 10*time.Second)
-	if err != nil {
-		s.Fatal("Failed finding the SMB file share in the directory tree: ", err)
-	}
-	defer smbshare.Release(ctx)
-	if err := smbshare.LeftClick(ctx); err != nil {
-		s.Fatal("Failed clicking on the SMB File share item: ", err)
-	}
-
-	// Verify the file shows up in list view
-	if err := files.WaitForFile(ctx, "test.txt", 10*time.Second); err != nil {
-		s.Fatal("Failed waiting for test file: ", err)
+	if err := uiauto.Combine("Wait for SMB to mount",
+		files.OpenPath("Files - guestshare", "guestshare"),
+		files.WaitForFile("test.txt"))(ctx); err != nil {
+		s.Fatal("Failed to wait for SMB to mount: ", err)
 	}
 }
 
