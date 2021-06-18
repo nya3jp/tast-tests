@@ -34,6 +34,24 @@
       "parentUuid": "3861c1d2_a67eab06",
       "revId": "790000cdd3dc6e688c1a65ffe9c28c955ca64605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "936c637b_32df5b6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-18T10:28:04Z",
+      "side": 1,
+      "message": "Raising this because I was using Fixture: chromeLoggedInForInputs for my test earlier, and I saw the a11y VK popping up unexpectedly when viewing the VM under test via VNC... After changing to use Pre: NonVKClamshell, VK no longer pops up.",
+      "parentUuid": "1ee491ac_585f4413",
+      "revId": "790000cdd3dc6e688c1a65ffe9c28c955ca64605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
