@@ -123,6 +123,24 @@
       "parentUuid": "1c127c52_b018595a",
       "revId": "c4a4e1ef9bd6018604d4a749c5db23d408b4dade",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09a6a6c8_ac4ea6b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-06-18T07:39:46Z",
+      "side": 1,
+      "message": "I\u0027m sorry, it was my mistake. testing.AddTest only accepts one testing.Test pointer.\nInstead, separating files to have different test names would be an option.",
+      "parentUuid": "d28f8a77_fbc8672a",
+      "revId": "c4a4e1ef9bd6018604d4a749c5db23d408b4dade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
