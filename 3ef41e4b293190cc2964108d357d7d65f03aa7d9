@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e65df195_b5240c25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-18T00:38:59Z",
+      "side": 1,
+      "message": "Thanks for the cl. As a tast owner, we usually start to review after a team member +2.",
+      "revId": "3ef41e4b293190cc2964108d357d7d65f03aa7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "707ed5ef_f4a576a9",
