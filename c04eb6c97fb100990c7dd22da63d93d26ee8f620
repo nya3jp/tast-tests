@@ -215,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38a183b8_9e103edb",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/audio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-18T07:15:09Z",
+      "side": 1,
+      "message": "let\u0027s say A.go and B.go are in the package. C.go imports A.go, but B.go needs to import C.go, where generates the loop. Any suggestion to solve this? How interface can be helpful? Thanks.",
+      "parentUuid": "02d99aed_67d5faea",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "c04eb6c97fb100990c7dd22da63d93d26ee8f620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2bf1d972_e8cd5914",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/audio.go",
         "patchSetId": 2
