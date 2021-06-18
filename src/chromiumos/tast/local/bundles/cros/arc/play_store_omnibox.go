@@ -17,8 +17,10 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -128,18 +130,10 @@ func PlayStoreOmnibox(ctx context.Context, s *testing.State) {
 		}
 
 		// Locate and click on the omnibox install button.
-		params := chromeui.FindParams{
-			ClassName: "PwaInstallView",
-			Role:      chromeui.RoleTypeButton,
-		}
-		install, err := chromeui.FindWithTimeout(ctx, tconn, params, uiTimeout)
-		if err != nil {
-			s.Fatal("Failed to find omnibox install button: ", err)
-		}
-		defer install.Release(ctx)
-
-		if err := install.LeftClick(ctx); err != nil {
-			s.Fatal("Failed to click omnibox install button: ", err)
+		ui := uiauto.New(tconn)
+		installButton := nodewith.ClassName("PwaInstallView").Role(role.Button)
+		if err := ui.LeftClick(installButton)(ctx); err != nil {
+			s.Fatal("Failed to left click omnibox install button: ", err)
 		}
 
 		if err := checkPlayStoreLaunched(ctx, d, tc.title, tc.publisher); err != nil {
