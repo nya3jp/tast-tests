@@ -17,9 +17,10 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	chromeui "chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	uiauto "chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/imgcmp"
@@ -707,10 +708,10 @@ func expandPIPViaMenuTouchR(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 
 		// Move the cursor away from the PIP window and then to the center of the PIP window slowly, otherwise
 		// the PIP menu won't activate.
-		if err := mouse.Move(ctx, tconn, coords.NewPoint(0, 0), time.Second); err != nil {
+		if err := mouse.Move(tconn, coords.NewPoint(0, 0), time.Second)(ctx); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to move the mouse to the top-left corner of the screen"))
 		}
-		if err := mouse.Move(ctx, tconn, coords.NewPoint(bounds.Left+bounds.Width/2, bounds.Top+bounds.Height/2), time.Second); err != nil {
+		if err := mouse.Move(tconn, coords.NewPoint(bounds.Left+bounds.Width/2, bounds.Top+bounds.Height/2), time.Second)(ctx); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to move the mouse to center of the PIP window"))
 		}
 		// Wait for the PIP menu to appear.
@@ -718,10 +719,10 @@ func expandPIPViaMenuTouchR(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 			return testing.PollBreak(errors.Wrap(err, "the PIP menu did not appear"))
 		}
 		// Click on the expand button.
-		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+		if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to press the left button"))
 		}
-		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+		if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to release the left button"))
 		}
 		// Check that it restored to the correct window state.
@@ -771,22 +772,16 @@ func getPIPWindow(ctx context.Context, tconn *chrome.TestConn) (*ash.Window, err
 
 // pressShelfIcon press the shelf icon of PIP window.
 func pressShelfIcon(ctx context.Context, tconn *chrome.TestConn) error {
-	var icon *chromeui.Node
 	// Make sure that at least one shelf icon exists.
 	// Depending the test order, the status area might not be ready at this point.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		icon, err = chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: "ArcPipTest", ClassName: "ash/ShelfAppButton"}, 15*time.Second)
-		if err != nil {
-			return errors.Wrap(err, "no shelf icon has been created yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	ui := uiauto.New(tconn)
+	finder := nodewith.Name("ArcPipTest").ClassName("ash/ShelfAppButton").First()
+
+	if err := ui.WaitUntilExists(finder)(ctx); err != nil {
 		return errors.Wrap(err, "failed to locate shelf icons")
 	}
-	defer icon.Release(ctx)
 
-	return icon.LeftClick(ctx)
+	return ui.LeftClick(finder)(ctx)
 }
 
 // waitForNewBoundsWithMargin waits until Chrome animation finishes completely and check the position of an edge of the PIP window.
