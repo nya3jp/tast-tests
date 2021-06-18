@@ -16,6 +16,24 @@
       "message": "not sure I understand why we don\u0027t want to check pressure signals all the time as well?",
       "revId": "c4a4e1ef9bd6018604d4a749c5db23d408b4dade",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b6c4502_13d967f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-06-18T01:18:29Z",
+      "side": 1,
+      "message": "I will remove the informational attribute of baseline, failing baseline will block CQ. I would like to only include the minimal test in baseline. If the minimal baseline test works well and doesn\u0027t block CQ for a while, we could consider adding more test to baseline.",
+      "parentUuid": "df77ea06_57e08395",
+      "revId": "c4a4e1ef9bd6018604d4a749c5db23d408b4dade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
