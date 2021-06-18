@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73d2c1a8_9bcfaf08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-18T06:33:24Z",
+      "side": 1,
+      "message": "Nit: closeButton1 for consistency.",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 13
+      },
+      "revId": "22fd971814b490ea7b8202eed5ffff085410ff08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a4cccd3_461dc5ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-18T06:33:24Z",
+      "side": 1,
+      "message": "Should you try to click closeButton2 first and then closeButton? We\u0027re trying to close the dialogs from child-most to parent.",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 110
+      },
+      "revId": "22fd971814b490ea7b8202eed5ffff085410ff08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "723ab802_98406690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-18T06:33:24Z",
+      "side": 1,
+      "message": "Are you supposed to pass the testing.State to a helper function? Or should you pass the variable values instead?",
+      "range": {
+        "startLine": 128,
+        "startChar": 97,
+        "endLine": 128,
+        "endChar": 113
+      },
+      "revId": "22fd971814b490ea7b8202eed5ffff085410ff08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce4bb2e8_9b4cf241",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-18T06:33:24Z",
+      "side": 1,
+      "message": "Should return errors.Wrap()",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 84
+      },
+      "revId": "22fd971814b490ea7b8202eed5ffff085410ff08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
