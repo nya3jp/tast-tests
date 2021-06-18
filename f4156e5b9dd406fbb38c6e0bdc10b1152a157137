@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "453bcc0b_72296580",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-18T16:27:41Z",
+      "side": 1,
+      "message": "Nit fixture",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "f4156e5b9dd406fbb38c6e0bdc10b1152a157137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3e9f2fe9_341a4692",
@@ -31,6 +54,24 @@
       "writtenOn": "2021-06-18T16:16:54Z",
       "side": 1,
       "message": "LGTM",
+      "revId": "f4156e5b9dd406fbb38c6e0bdc10b1152a157137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2625eeed_4cacfc42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-18T16:27:41Z",
+      "side": 1,
+      "message": "Thanks for the change, chromePolicyLoggedIn fixture should be used in the test. I will add this in other CL\u0027s also :)",
+      "parentUuid": "3e9f2fe9_341a4692",
       "revId": "f4156e5b9dd406fbb38c6e0bdc10b1152a157137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
