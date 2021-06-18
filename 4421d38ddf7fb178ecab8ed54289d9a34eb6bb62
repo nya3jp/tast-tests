@@ -395,6 +395,30 @@
       },
       "revId": "4421d38ddf7fb178ecab8ed54289d9a34eb6bb62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa183351_76087c86",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-18T00:02:05Z",
+      "side": 1,
+      "message": "Ye. It can do that. Just from my personal experience. No interval between tapping key, mouse click will introduce flakiness.",
+      "parentUuid": "f868bf36_dde523ec",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 11
+      },
+      "revId": "4421d38ddf7fb178ecab8ed54289d9a34eb6bb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
