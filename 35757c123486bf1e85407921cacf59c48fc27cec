@@ -16,6 +16,23 @@
       "message": "tast shadow reviews LGTM",
       "revId": "35757c123486bf1e85407921cacf59c48fc27cec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ebe8c22_acaa6a0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-18T20:57:27Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "35757c123486bf1e85407921cacf59c48fc27cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
