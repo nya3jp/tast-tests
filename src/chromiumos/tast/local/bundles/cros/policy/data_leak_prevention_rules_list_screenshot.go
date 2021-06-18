@@ -10,10 +10,10 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -29,12 +29,13 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "fakeDMS",
+		Fixture:      "chromePolicyLoggedIn",
 	})
 }
 
 func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State) {
-	fakeDMS := s.FixtValue().(*fakedms.FakeDMS)
+	cr := s.FixtValue().(*fixtures.FixtData).Chrome
+	fakeDMS := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
 	// DLP policy with screenshots blocked restriction.
 	policyDLP := []policy.Policy{&policy.DataLeakPreventionRulesList{
@@ -67,15 +68,10 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 		s.Fatal("Failed to write policies to FakeDMS: ", err)
 	}
 
-	// Start a Chrome instance that will fetch policies from the FakeDMS.
-	// Policies are only updated after Chrome startup.
-	cr, err := chrome.New(ctx,
-		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
-		chrome.DMSPolicy(fakeDMS.URL))
-	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
+	// Update policy.
+	if err := policyutil.ServeBlobAndRefresh(ctx, fakeDMS, cr, pb); err != nil {
+		s.Fatal("Failed to serve and refresh: ", err)
 	}
-	defer cr.Close(ctx)
 
 	// Connect to Test API.
 	tconn, err := cr.TestAPIConn(ctx)
