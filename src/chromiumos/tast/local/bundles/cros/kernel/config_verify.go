@@ -180,8 +180,6 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		// Settings that are commented out need to be enabled in the kernel first.
 		// TODO(crbug.com/1061514): Start enabling these.
 
-		// CONFIG_ARM64_SW_TTBR0_PAN=y (aarch64)
-
 		// CONFIG_SHUFFLE_PAGE_ALLOCATOR=y (since v5.2)
 
 		// CONFIG_INIT_ON_ALLOC_DEFAULT_ON=y (since v5.3)
@@ -296,6 +294,11 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 	if arch == "aarch64" && ver.IsOrLater(4, 4) {
 		// Security: unmaps kernel from page tables at EL0 (KPTI)
 		builtin = append(builtin, "UNMAP_KERNEL_AT_EL0")
+	}
+
+	if arch == "aarch64" && ver.IsOrLater(4, 10) {
+		// Security: software emulated Privileged Access Never (PAN)
+		builtin = append(builtin, "ARM64_SW_TTBR0_PAN")
 	}
 
 	// Security; marks data segments as RO/NX, text as RO.
