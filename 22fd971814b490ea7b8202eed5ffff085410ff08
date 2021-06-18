@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02150747_893c21f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-18T07:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73d2c1a8_9bcfaf08",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 13
+      },
+      "revId": "22fd971814b490ea7b8202eed5ffff085410ff08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a4cccd3_461dc5ba",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-18T06:33:24Z",
       "side": 1,
       "message": "Should you try to click closeButton2 first and then closeButton? We\u0027re trying to close the dialogs from child-most to parent.",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 110
+      },
+      "revId": "22fd971814b490ea7b8202eed5ffff085410ff08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cee4c16d_b6ae45b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-18T07:33:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2a4cccd3_461dc5ba",
       "range": {
         "startLine": 92,
         "startChar": 3,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d9ec61_6b718182",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-18T07:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "723ab802_98406690",
+      "range": {
+        "startLine": 128,
+        "startChar": 97,
+        "endLine": 128,
+        "endChar": 113
+      },
+      "revId": "22fd971814b490ea7b8202eed5ffff085410ff08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce4bb2e8_9b4cf241",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-18T06:33:24Z",
       "side": 1,
       "message": "Should return errors.Wrap()",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 84
+      },
+      "revId": "22fd971814b490ea7b8202eed5ffff085410ff08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dcd3cf8_8af52bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-18T07:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce4bb2e8_9b4cf241",
       "range": {
         "startLine": 169,
         "startChar": 2,
