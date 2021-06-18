@@ -91,6 +91,29 @@
       "message": "Thanks for quick review!",
       "revId": "f4156e5b9dd406fbb38c6e0bdc10b1152a157137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c07e203_311364ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-06-18T20:02:05Z",
+      "side": 1,
+      "message": "Does this work for non-dynamically updated policies?\n\nIn this case it in reality works, but we should be careful with it for the future DLP tests.",
+      "range": {
+        "startLine": 72,
+        "startChar": 22,
+        "endLine": 72,
+        "endChar": 41
+      },
+      "revId": "f4156e5b9dd406fbb38c6e0bdc10b1152a157137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
