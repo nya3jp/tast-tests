@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ca4b80f_aef79b51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-18T06:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dab64e0_eda2d895",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "46e93b9755fff1028004aa33f4ef7f254d4278f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fb99273_de9bae81",
