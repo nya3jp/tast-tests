@@ -6,22 +6,23 @@ package health
 
 import (
 	"context"
+	"encoding/json"
 	"math"
-	"reflect"
-	"strconv"
+	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
 
-const (
-	bootPerformanceBootUpSeconds     = "boot_up_seconds"
-	bootPerformanceBootUpTimestamp   = "boot_up_timestamp"
-	bootPerformanceShutdownSeconds   = "shutdown_seconds"
-	bootPerformanceShutdownTimestamp = "shutdown_timestamp"
-	bootPerformanceShutdownReason    = "shutdown_reason"
-)
+type bootPerformanceInfo struct {
+	BootUpSeconds     float64 `json:"boot_up_seconds"`
+	BootUpTimestamp   float64 `json:"boot_up_timestamp"`
+	ShutdownSeconds   float64 `json:"shutdown_seconds"`
+	ShutdownTimestamp float64 `json:"shutdown_timestamp"`
+	ShutdownReason    string  `json:"shutdown_reason"`
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -38,87 +39,63 @@ func init() {
 	})
 }
 
-func getData(ctx context.Context, s *testing.State) map[string]string {
+func getBootPerformanceData(ctx context.Context, outDir string) (bootPerformanceInfo, error) {
+	var bootPerf bootPerformanceInfo
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryBootPerformance}
-	records, err := croshealthd.RunAndParseTelem(ctx, params, s.OutDir())
+	rawData, err := croshealthd.RunTelem(ctx, params, outDir)
 	if err != nil {
-		s.Fatal("Failed to get boot performance telemetry info: ", err)
+		return bootPerf, err
 	}
 
-	if len(records) != 2 {
-		s.Fatalf("Wrong number of records: got %d; want 2", len(records))
+	dec := json.NewDecoder(strings.NewReader(string(rawData)))
+	dec.DisallowUnknownFields()
+	if err := dec.Decode(&bootPerf); err != nil {
+		return bootPerf, errors.Wrapf(err, "failed to decode boot performance data %q", rawData)
 	}
 
-	// Verify the headers are correct.
-	want := []string{
-		bootPerformanceBootUpSeconds,
-		bootPerformanceBootUpTimestamp,
-		bootPerformanceShutdownSeconds,
-		bootPerformanceShutdownTimestamp,
-		bootPerformanceShutdownReason,
+	return bootPerf, nil
+}
+
+func validateBootPerformanceData(bootPerf bootPerformanceInfo) error {
+	if bootPerf.BootUpSeconds < 0.5 {
+		return errors.New("Failed. It is impossible that boot_up_seconds is less than 0.5")
 	}
-	got := records[0]
-	if !reflect.DeepEqual(want, got) {
-		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
+	if bootPerf.BootUpTimestamp < 0.5 {
+		return errors.New("Failed. It is impossible that boot_up_timestamp is less than 0.5")
+	}
+	if len(bootPerf.ShutdownReason) == 0 {
+		return errors.New("Failed. shutdown_reason should not be empty string")
 	}
 
-	// Verify the amount of values is correct.
-	vals := records[1]
-	if len(vals) != len(want) {
-		s.Fatalf("Wrong number of values: got %d; want %d", len(vals), len(want))
-	}
-
-	// Using a map, then we don't need to take care of the index change in future.
-	contentsMap := make(map[string]string)
-	for i, elem := range want {
-		contentsMap[elem] = vals[i]
-	}
-
-	return contentsMap
+	return nil
 }
 
 func ProbeBootPerformanceInfo(ctx context.Context, s *testing.State) {
-	contentsMap := getData(ctx, s)
-
-	// Check "boot_up_seconds" and "boot_up_timestamp" is float.
-	bootUpSeconds, err := strconv.ParseFloat(contentsMap[bootPerformanceBootUpSeconds], 64)
-	if err != nil {
-		s.Errorf("Failed to convert %q (%s) to float: %v", contentsMap[bootPerformanceBootUpSeconds], bootPerformanceBootUpSeconds, err)
-	} else if bootUpSeconds < 0.5 {
-		s.Errorf("Failed. It is impossible that %s is less than 0.5", bootPerformanceBootUpSeconds)
+	var bootPerf bootPerformanceInfo
+	var err error
+	if bootPerf, err = getBootPerformanceData(ctx, s.OutDir()); err != nil {
+		s.Fatal("Failed to get boot performance telemetry info: ", err)
 	}
 
-	bootUpTimestamp, err := strconv.ParseFloat(contentsMap[bootPerformanceBootUpTimestamp], 64)
-	if err != nil {
-		s.Errorf("Failed to convert %q (%s) to float: %v", contentsMap[bootPerformanceBootUpTimestamp], bootPerformanceBootUpTimestamp, err)
-	} else if bootUpTimestamp < 0.5 {
-		s.Errorf("Failed. It is impossible that %s is less than 0.5", bootPerformanceBootUpTimestamp)
-	}
-
-	// Check "shutdown_seconds" and "shutdown_timestamp" is float.
-	// We don't check the value, since in test lab, the shutdown might be not through powerd.
-	if _, err := strconv.ParseFloat(contentsMap[bootPerformanceShutdownSeconds], 64); err != nil {
-		s.Errorf("Failed to convert %q (%s) to float: %v", contentsMap[bootPerformanceShutdownSeconds], bootPerformanceShutdownSeconds, err)
-	}
-	if _, err := strconv.ParseFloat(contentsMap[bootPerformanceShutdownTimestamp], 64); err != nil {
-		s.Errorf("Failed to convert %q (%s) to float: %v", contentsMap[bootPerformanceShutdownTimestamp], bootPerformanceShutdownTimestamp, err)
-	}
-
-	// Check "shutdown_reason" is not an empty string.
-	if len(contentsMap[bootPerformanceShutdownReason]) == 0 {
-		s.Errorf("Failed. %s should not be empty string", bootPerformanceShutdownReason)
+	if err = validateBootPerformanceData(bootPerf); err != nil {
+		s.Fatal("Failed to validate boot performance data: ", err)
 	}
 
 	// Sleep 5 seconds, fetch data again. "boot_up_timestamp" should be the same.
-	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+	if err = testing.Sleep(ctx, 5*time.Second); err != nil {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
-	contentsMapNew := getData(ctx, s)
-	bootUpTimestampNew, err := strconv.ParseFloat(contentsMapNew[bootPerformanceBootUpTimestamp], 64)
-	if err != nil {
-		s.Errorf("Failed to convert %q (%s) to float: %v", contentsMapNew[bootPerformanceBootUpTimestamp], bootPerformanceBootUpTimestamp, err)
-	} else if math.Abs(bootUpTimestamp-bootUpTimestampNew) > 0.1 {
-		s.Errorf("Failed. bootUpTimestamp: %v, bootUpTimestampNew: %v", bootUpTimestamp, bootUpTimestampNew)
+	var bootPerfNew bootPerformanceInfo
+	if bootPerfNew, err = getBootPerformanceData(ctx, s.OutDir()); err != nil {
+		s.Fatal("Failed to get boot performance telemetry info: ", err)
+	}
+
+	if err = validateBootPerformanceData(bootPerfNew); err != nil {
+		s.Fatal("Failed to validate boot performance data: ", err)
+	}
+
+	if math.Abs(bootPerf.BootUpTimestamp-bootPerfNew.BootUpTimestamp) > 0.1 {
+		s.Errorf("Failed as difference between boot_up_timestamp (%v) and new boot_up_timestamp (%v) is greater than 0.1", bootPerf.BootUpTimestamp, bootPerfNew.BootUpTimestamp)
 	}
 }
