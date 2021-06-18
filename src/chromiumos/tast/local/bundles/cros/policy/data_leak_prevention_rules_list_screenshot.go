@@ -6,13 +6,14 @@ package policy
 
 import (
 	"context"
+	"encoding/json"
 	"time"
 
-	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/dlp"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/screenshot"
@@ -32,33 +33,23 @@ func init() {
 		Fixture:      "fakeDMS",
 	})
 }
+func prettyPrint(i interface{}) string {
+	s, _ := json.MarshalIndent(i, "", "\t")
+	return string(s)
+}
 
 func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State) {
 	fakeDMS := s.FixtValue().(*fakedms.FakeDMS)
 
 	// DLP policy with screenshots blocked restriction.
-	policyDLP := []policy.Policy{&policy.DataLeakPreventionRulesList{
-		Val: []*policy.DataLeakPreventionRulesListValue{
-			{
-				Name:        "Disable Screenshot in confidential content",
-				Description: "User should not be able to take screen of confidential content",
-				Sources: &policy.DataLeakPreventionRulesListSources{
-					Urls: []string{
-						"salesforce.com",
-						"google.com",
-						"company.com",
-					},
-				},
-				Restrictions: []*policy.DataLeakPreventionRulesListRestrictions{
-					{
-						Class: "SCREENSHOT",
-						Level: "BLOCK",
-					},
-				},
-			},
+	policyDLP := dlp.NewDLPPolicy("Disable Screenshot in confidential content", "User should not be able to take screen of confidential content",
+		[]string{"SCREENSHOT"},
+		[]string{
+			"salesforce.com",
+			"google.com",
+			"company.com",
 		},
-	},
-	}
+		[]string{})
 
 	// Update the policy blob.
 	pb := fakedms.NewPolicyBlob()
