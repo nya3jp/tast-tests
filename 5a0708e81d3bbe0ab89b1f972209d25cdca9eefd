@@ -16,6 +16,29 @@
       "message": "Friendly ping for kathrelkeld review.",
       "revId": "5a0708e81d3bbe0ab89b1f972209d25cdca9eefd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c51d1ee_641946b9",
+        "filename": "src/chromiumos/tast/local/printing/ippusbbridge/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2021-06-18T18:19:15Z",
+      "side": 1,
+      "message": "CheckDevice is a pretty generic name and I think it makes reading the code which calls it harder - what the device in question is and what \"check\" means is something you\u0027d have come to this code to figure out.  Can you pick a name that makes it more obvious what this function does?  HTTPResponseCheck?  SocketAlive?",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 16
+      },
+      "revId": "5a0708e81d3bbe0ab89b1f972209d25cdca9eefd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
