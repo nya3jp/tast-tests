@@ -8,6 +8,7 @@ package vkb
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"strings"
 	"time"
 
@@ -48,6 +49,11 @@ var NodeFinder = nodewith.Ancestor(vkRootFinder)
 
 // KeyFinder returns a finder of keys on virtual keyboard.
 var KeyFinder = NodeFinder.Role(role.Button)
+
+// KeyByNameIgnoringCase returns a virtual keyboard Key button finder with the name ignoring case.
+func KeyByNameIgnoringCase(keyName string) *nodewith.Finder {
+	return KeyFinder.NameRegex(regexp.MustCompile(`(?i)^` + regexp.QuoteMeta(keyName) + `$`))
+}
 
 // UIConn returns a connection to the virtual keyboard HTML page,
 // where JavaScript can be executed to simulate interactions with the UI.
@@ -137,17 +143,32 @@ func (vkbCtx *VirtualKeyboardContext) WaitUntilHidden() uiauto.Action {
 	return vkbCtx.ui.EnsureGoneFor(vkRootFinder, 3*time.Second)
 }
 
-// TapKey returns an action simulating a mouse click event on the middle of the specified key via touch event.
+// TapKey returns an action simulating a mouse click event on the middle of the specified key via a touch event.
 // The key name is case sensitive. It can be any letter of the alphabet, "space" or "backspace".
 func (vkbCtx *VirtualKeyboardContext) TapKey(keyName string) uiauto.Action {
+	return vkbCtx.tapKeyFunc(keyName, false)
+}
+
+// TapKeyIgnoringCase returns an action simulating a mouse click event on the middle of the specified key via a touch event.
+// The key name can either be case sensitive or not. It can be any letter of the alphabet, "space" or "backspace".
+func (vkbCtx *VirtualKeyboardContext) TapKeyIgnoringCase(keyName string) uiauto.Action {
+	return vkbCtx.tapKeyFunc(keyName, true)
+}
+
+func (vkbCtx *VirtualKeyboardContext) tapKeyFunc(keyName string, ignoreCase bool) uiauto.Action {
 	// Note: Must use mouse Move + Press + Sleep + Release here instead of Click.
 	// Mouse click is simulated by calling Chrome private api `chrome.autotestPrivate.mouseClick`.
 	// It works for most cases except virtual keyboard.
 	// In vkb extension, it listens to keyPress to send vk layout event to decoder
 	// before sending the actual key tap event.
 	// Mouse click is too quick and causes a racing issue that decoder receives tap key without layout info.
+	keyFinder := KeyFinder.Name(keyName)
+	if ignoreCase {
+		keyFinder = KeyByNameIgnoringCase(keyName)
+	}
+
 	return uiauto.Combine("move mouse to key center point and click",
-		vkbCtx.ui.MouseMoveTo(KeyFinder.Name(keyName), 10*time.Millisecond),
+		vkbCtx.ui.MouseMoveTo(keyFinder, 10*time.Millisecond),
 		mouse.Press(vkbCtx.tconn, mouse.LeftButton),
 		vkbCtx.ui.Sleep(50*time.Millisecond),
 		mouse.Release(vkbCtx.tconn, mouse.LeftButton),
@@ -156,15 +177,29 @@ func (vkbCtx *VirtualKeyboardContext) TapKey(keyName string) uiauto.Action {
 
 // TapKeys return an action simulating tap events in the middle of the specified sequence of keys via touch event.
 // Each key can be any letter of the alphabet, "space" or "backspace".
+// Keys are case sensitive.
 func (vkbCtx *VirtualKeyboardContext) TapKeys(keys []string) uiauto.Action {
+	return vkbCtx.tapKeysFunc(keys, false)
+}
+
+// TapKeysIgnoringCase return an action simulating tap events in the middle of the specified sequence of keys via touch event.
+// Each key can be any letter of the alphabet, "space" or "backspace".
+// Keys are case insensitive.
+func (vkbCtx *VirtualKeyboardContext) TapKeysIgnoringCase(keys []string) uiauto.Action {
+	return vkbCtx.tapKeysFunc(keys, true)
+}
+
+func (vkbCtx *VirtualKeyboardContext) tapKeysFunc(keys []string, ignoreCase bool) uiauto.Action {
 	return uiauto.NamedAction(
 		fmt.Sprintf("vkbCtx.TapKeys(keys []string) with keys=%v", keys),
 		func(ctx context.Context) error {
 			for _, key := range keys {
-				if err := vkbCtx.TapKey(key)(ctx); err != nil {
+				if err := vkbCtx.tapKeyFunc(key, ignoreCase)(ctx); err != nil {
 					return err
 				}
-				testing.Sleep(ctx, 100*time.Millisecond)
+				if err := testing.Sleep(ctx, 100*time.Millisecond); err != nil {
+					return errors.New("failed to sleep between taping keys")
+				}
 			}
 			return nil
 		})
