@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "56ff2180_dc60671f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-06-18T10:21:43Z",
+      "side": 1,
+      "message": "adding nya@ for proofread about the usage of parameterized tests and test groups.",
+      "revId": "8650d02786df67755dba675e30cf26321519670d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0a24a121_c15e1a9f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
         "patchSetId": 4
