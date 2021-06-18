@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71a51d12_a33d6afd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_event_logging_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2021-06-18T09:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dd6efd0_f556b499",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 63
+      },
+      "revId": "fb45d09dbc78a77607eb3be073f1b07638feffba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fe63bff_d0a14aea",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fda96c0_6365983b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_event_logging_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2021-06-18T09:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fe63bff_d0a14aea",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 6
+      },
+      "revId": "fb45d09dbc78a77607eb3be073f1b07638feffba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "949b89ce_5c06afd9",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-06-18T08:40:56Z",
       "side": 1,
       "message": "The ui library is deprecated. Use uiauto instead:\n\nui :\u003d uiauto.New(tconn)\n\ninstalledButton :\u003d nodewith.Name(\"Installed\").Role(role.Button)\nif err \u003d ui.WaitUntilExists(installedButton)(ctx); err !\u003d nil {\n\ts.Fatal(\"Finding Installed button failed: \", err)\n}",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 24
+      },
+      "revId": "fb45d09dbc78a77607eb3be073f1b07638feffba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d28d91d_e29330ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_event_logging_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2021-06-18T09:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "949b89ce_5c06afd9",
       "range": {
         "startLine": 85,
         "startChar": 0,
