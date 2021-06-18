@@ -118,6 +118,30 @@
       },
       "revId": "72c3511c046216f0d32a3c7cb1e7df7d30a74704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4edb5ff_7dac8168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-18T22:13:45Z",
+      "side": 0,
+      "message": "The question would be, what is the option to quit the busy loop?\n\n* if it\u0027s just waiting for the location change to finish, uiauto.Context.WaitForLocation might be an option.\n* if there\u0027s some accessibility event, we could use uiauto.Context.WaitForEvent.\n* if it\u0027s about the UMA histogram value (Viz.DisplayCompositor.OverlayStrategy),I believe it could be integrated with the logic below (metrics.Run).\n\nMy gut feeling is to use the third one.  If so, I guess it would be like:\n  // creating this earlier -- before creating the PIP window.\n  r :\u003d metrics.StartRecorder(ctx, tconn, \"Viz.DisplayCompositor.OverlayStrategy\")\n  ...\n  // the flow of creating the PIP window etc.\n  ...\n  if err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n    hists, err :\u003d r.WaitAll(ctx, tconn, time.Second)\n    if err !\u003d nil {\n      return testing.PollBreak(err)\n    }\n    // check if it is in overlay\n    if hasOverlayHist(hists) {\n      return nil\n    } else {\n      return errors.New(\"not yet overlay\")\n    }\n  }, \u0026testing.PollOptions{Timeout: 10*time.Second}); err !\u003d nil {\n    s.Fatal(\"Failed to verify the overlay strategy of the PiP window: \", err)\n  }",
+      "parentUuid": "00a402fe_48653c4b",
+      "range": {
+        "startLine": 94,
+        "startChar": 14,
+        "endLine": 94,
+        "endChar": 44
+      },
+      "revId": "72c3511c046216f0d32a3c7cb1e7df7d30a74704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
