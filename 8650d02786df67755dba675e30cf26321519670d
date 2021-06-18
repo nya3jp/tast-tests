@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70d75f0e_50a0a2e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-06-18T10:20:50Z",
+      "side": 1,
+      "message": "lgtm, but I would like to ask nya@ for opinions about the usage of parameterized tests and test groups.",
+      "revId": "8650d02786df67755dba675e30cf26321519670d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a24a121_c15e1a9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-06-18T10:20:50Z",
+      "side": 1,
+      "message": "I found some existing test uses the bool type as the Param value type\n(e.g. apps.LaunchHelpAppOnManagedDevice)\nhowever I think either way is fine.",
+      "revId": "8650d02786df67755dba675e30cf26321519670d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
