@@ -50,6 +50,24 @@
       "message": "This probably shouldn\u0027t be exported?",
       "revId": "bcd8f2ec182e40145820920d8d519d901e7fcbdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "813cf408_36a68c88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-18T01:35:38Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "765fbde0_46ee2f6a",
+      "revId": "bcd8f2ec182e40145820920d8d519d901e7fcbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
