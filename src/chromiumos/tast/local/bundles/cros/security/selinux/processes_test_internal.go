@@ -148,6 +148,8 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/bin/timberslide", matchRegexp, "cros_timberslide", zeroProcs, ""},
 				{exe, "/usr/bin/tlsdated", matchRegexp, "cros_tlsdated", zeroProcs, ""},
 				{exe, "/usr/bin/tpm2-simulator", matchRegexp, "cros_tpm2_simulator", zeroProcs, ""},
+				{exe, "/usr/bin/traced", matchRegexp, "cros_traced", zeroProcs, ""},
+				{exe, "/usr/bin/traced_probes", matchRegexp, "cros_traced_probes", zeroProcs, ""},
 				{exe, "/usr/bin/u2fd", matchRegexp, "cros_u2fd", zeroProcs, ""},
 				{exe, "/usr/bin/virtual-file-provider", matchRegexp, "cros_virtual_file_provider", zeroProcs, ""},
 				{exe, "/usr/bin/virtual-file-provider-jailed", matchRegexp, "cros_virtual_file_provider_jailed", zeroProcs, ""},
