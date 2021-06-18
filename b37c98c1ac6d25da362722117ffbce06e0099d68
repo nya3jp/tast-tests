@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feb013e1_1b65c15f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-18T23:37:17Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "b37c98c1ac6d25da362722117ffbce06e0099d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a0d6043_6a5c9908",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_autocorrect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-18T23:37:17Z",
+      "side": 1,
+      "message": "vkbCtx.TapKey(\"backspace\")",
+      "range": {
+        "startLine": 194,
+        "startChar": 3,
+        "endLine": 194,
+        "endChar": 41
+      },
+      "revId": "b37c98c1ac6d25da362722117ffbce06e0099d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
