@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68c431b0_ab2d7122",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_omnibox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-18T14:26:23Z",
+      "side": 1,
+      "message": "should this be \u0027click\u0027 or \u0027left click\u0027?",
+      "range": {
+        "startLine": 136,
+        "startChar": 22,
+        "endLine": 136,
+        "endChar": 27
+      },
+      "revId": "948de44fbc20aa3fcdfd575ead6bee9b014e8e2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a36a3fb6_74e49eb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_omnibox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-18T14:26:23Z",
+      "side": 1,
+      "message": "we should still include the error on this call.",
+      "range": {
+        "startLine": 136,
+        "startChar": 49,
+        "endLine": 136,
+        "endChar": 51
+      },
+      "revId": "948de44fbc20aa3fcdfd575ead6bee9b014e8e2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
