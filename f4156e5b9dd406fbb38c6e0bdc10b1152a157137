@@ -138,6 +138,30 @@
       },
       "revId": "f4156e5b9dd406fbb38c6e0bdc10b1152a157137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b7ec39a_63714156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-06-18T22:44:27Z",
+      "side": 1,
+      "message": "Yes, per https://source.chromium.org/chromium/chromium/src/+/main:components/policy/resources/policy_templates.json;l\u003d24850;drc\u003dcc58a920a8865c2b6b3955761f15dd650b22db15 it\u0027s not guaranteed that the new policy value will be correctly applied when updated during a user session. There were some technical complexities to fully support dynamic update, so we decided to mark it \"false\".\nHowever, in the case of this exact scenario tested here it\u0027s being dynamically updated and that\u0027s why it works for you.",
+      "parentUuid": "7764a628_af1cff1c",
+      "range": {
+        "startLine": 72,
+        "startChar": 22,
+        "endLine": 72,
+        "endChar": 41
+      },
+      "revId": "f4156e5b9dd406fbb38c6e0bdc10b1152a157137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
