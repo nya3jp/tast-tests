@@ -64,7 +64,7 @@ func init() {
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeRecovery,
 			},
-			ExtraAttr: []string{"firmware_smoke"},
+			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
 		}, {
 			Name: "rec_warm",
 			Val: bootModeTestParams{
@@ -72,7 +72,7 @@ func init() {
 				resetAfterBoot: true,
 				resetType:      firmware.WarmReset,
 			},
-			ExtraAttr: []string{"firmware_smoke"},
+			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
 		}, {
 			Name: "rec_cold",
 			Val: bootModeTestParams{
@@ -80,7 +80,7 @@ func init() {
 				resetAfterBoot: true,
 				resetType:      firmware.ColdReset,
 			},
-			ExtraAttr: []string{"firmware_smoke"},
+			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
 		}, {
 			Name: "dev",
 			Val: bootModeTestParams{

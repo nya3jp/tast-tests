@@ -29,7 +29,7 @@ func init() {
 		}, {
 			Name:      "rec",
 			Pre:       pre.RecMode(),
-			ExtraAttr: []string{"firmware_smoke"},
+			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
 		}, {
 			Name: "dev",
 			Pre:  pre.DevMode(),
