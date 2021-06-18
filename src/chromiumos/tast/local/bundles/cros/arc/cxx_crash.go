@@ -68,8 +68,8 @@ func CxxCrash(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for crash files to become present")
-	// Wait files like sh.20200420.204845.12345.664107.dmp in crash.UserCrashDir
-	const stem = `sh\.\d{8}\.\d{6}\.\d+\.\d+`
+	// Wait files like _system_bin_sh.20200420.204845.12345.664107.dmp in crash.UserCrashDir
+	const stem = `_system_bin_sh\.\d{8}\.\d{6}\.\d+\.\d+`
 	metaFileName := stem + crash.MetadataExt
 	files, err := crash.WaitForCrashFiles(ctx, []string{crash.UserCrashDir}, []string{
 		stem + crash.MinidumpExt, metaFileName,
