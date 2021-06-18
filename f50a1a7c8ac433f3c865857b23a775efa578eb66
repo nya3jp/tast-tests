@@ -39,6 +39,30 @@
       },
       "revId": "f50a1a7c8ac433f3c865857b23a775efa578eb66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54bb1809_23b90ed5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_timezone_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-06-18T07:19:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00e84e58_36be14b7",
+      "range": {
+        "startLine": 47,
+        "startChar": 47,
+        "endLine": 47,
+        "endChar": 57
+      },
+      "revId": "f50a1a7c8ac433f3c865857b23a775efa578eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
