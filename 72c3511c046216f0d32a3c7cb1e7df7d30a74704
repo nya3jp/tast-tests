@@ -142,6 +142,30 @@
       },
       "revId": "72c3511c046216f0d32a3c7cb1e7df7d30a74704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "defd42fb_80afc13f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-06-18T23:40:28Z",
+      "side": 0,
+      "message": "3rd one sgtm, with some timeout. that\u0027ll also make the execution time short but more reliable?",
+      "parentUuid": "c4edb5ff_7dac8168",
+      "range": {
+        "startLine": 94,
+        "startChar": 14,
+        "endLine": 94,
+        "endChar": 44
+      },
+      "revId": "72c3511c046216f0d32a3c7cb1e7df7d30a74704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
