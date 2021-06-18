@@ -6,11 +6,17 @@ package health
 
 import (
 	"context"
-	"reflect"
+	"encoding/json"
+	"strings"
 
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
+
+type timezoneInfo struct {
+	Posix  string `json:"posix"`
+	Region string `json:"region"`
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -28,29 +34,24 @@ func init() {
 
 func ProbeTimezoneInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryTimezone}
-	records, err := croshealthd.RunAndParseTelem(ctx, params, s.OutDir())
+	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get timezone telemetry info: ", err)
 	}
 
-	if len(records) != 2 {
-		s.Fatalf("Wrong number of output lines: got %d; want 2", len(records))
+	dec := json.NewDecoder(strings.NewReader(string(rawData)))
+	dec.DisallowUnknownFields()
+
+	var timezone timezoneInfo
+	if err := dec.Decode(&timezone); err != nil {
+		s.Fatalf("Failed to decode timezone data %q: %v", rawData, err)
 	}
 
-	// Verify the headers are correct.
-	want := []string{"posix_timezone", "timezone_region"}
-	got := records[0]
-	if !reflect.DeepEqual(want, got) {
-		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
+	if timezone.Posix == "" {
+		s.Error("Missing posix info")
 	}
 
-	// Verify the reported timezone info.
-	vals := records[1]
-	if vals[0] == "" {
-		s.Error("Missing posix_timezone")
-	}
-
-	if vals[1] == "" {
-		s.Error("Missing timezone_region")
+	if timezone.Region == "" {
+		s.Error("Missing region info")
 	}
 }
