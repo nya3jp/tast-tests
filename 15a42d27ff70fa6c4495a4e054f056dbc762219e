@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d3646c_ec8ca786",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-18T08:08:03Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "15a42d27ff70fa6c4495a4e054f056dbc762219e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1638a49_33253ab3",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-18T08:08:03Z",
+      "side": 1,
+      "message": "As the +1 is in the middle, it can be a little confusing when you use it in the interval end value[*index+1:*index+1+chars] (I would expect the +1 at the end).\nIf you use\n\u003e  endIndex \u003d *index + char\nthis check can be\n\u003e  if endIndex \u003e\u003d len(value) {\n(so you use \u003e\u003d which is more consistent with the approach below),\nand the interval will be\n\u003e  value[*index+1:endIndex+1]\n(The endIndex name is just an example.)",
+      "range": {
+        "startLine": 330,
+        "startChar": 4,
+        "endLine": 330,
+        "endChar": 31
+      },
+      "revId": "15a42d27ff70fa6c4495a4e054f056dbc762219e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c278fb_f33f8496",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-18T08:08:03Z",
+      "side": 1,
+      "message": "I know it is not possible with the current usage, but do you think it is worth to guard against *index\u003d0 input? (where *index-1 is negative, and the error msg panics)",
+      "range": {
+        "startLine": 331,
+        "startChar": 72,
+        "endLine": 331,
+        "endChar": 80
+      },
+      "revId": "15a42d27ff70fa6c4495a4e054f056dbc762219e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0e1e428_ddc00453",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-18T08:08:03Z",
+      "side": 1,
+      "message": "nit: the usual patter is to start with the err !\u003d nil branch (return early), and in this case you don\u0027t even need an else branch.",
+      "range": {
+        "startLine": 372,
+        "startChar": 4,
+        "endLine": 376,
+        "endChar": 5
+      },
+      "revId": "15a42d27ff70fa6c4495a4e054f056dbc762219e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
