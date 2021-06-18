@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -68,11 +69,11 @@ func PhysicalKeyboardInputFields(ctx context.Context, s *testing.State) {
 	}
 	defer its.Close()
 
-	var subtests []testserver.FieldInputEval
+	var subtests []util.FieldInputEval
 
 	switch s.Param().(ime.InputMethodCode) {
 	case ime.INPUTMETHOD_XKB_US_ENG:
-		subtests = []testserver.FieldInputEval{
+		subtests = []util.FieldInputEval{
 			{
 				InputField:   testserver.TextAreaInputField,
 				InputFunc:    keyboard.TypeAction(`1234567890-=!@#$%^&*()_+[]{};'\:"|,./<>?~`),

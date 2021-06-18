@@ -68,19 +68,6 @@ func (f *Finder) copy() *Finder {
 	return copy
 }
 
-// convertRegexp converts golang regexp to javascript format.
-// The regular expressions used for looking up node is javascript code.
-// The original regex provided in Golang needs to be converted.
-// This function is not generally working on all situations.
-func convertRegexp(goRegexp *regexp.Regexp) string {
-	jsRegexStr := strings.ReplaceAll(fmt.Sprintf("%v", goRegexp), "/", "\\/")
-	const ignoreCase = `(?i)`
-	if strings.HasPrefix(jsRegexStr, ignoreCase) || strings.HasPrefix(jsRegexStr, "^"+ignoreCase) {
-		return fmt.Sprintf("/%s/i", strings.Replace(jsRegexStr, ignoreCase, "", 1))
-	}
-	return fmt.Sprintf("/%s/", jsRegexStr)
-}
-
 // attributesBytes returns the attributes map converted into json like bytes.
 // json.Marshal can't be used because this is JavaScript code with regular expressions, not JSON.
 func (f *Finder) attributesBytes() ([]byte, error) {
@@ -93,7 +80,7 @@ func (f *Finder) attributesBytes() ([]byte, error) {
 		case int, float32, float64, bool:
 			fmt.Fprintf(&buf, "%q:%v,", k, v)
 		case *regexp.Regexp:
-			fmt.Fprintf(&buf, `%q:%s,`, k, convertRegexp(v))
+			fmt.Fprintf(&buf, `%q:/%s/,`, k, strings.ReplaceAll(fmt.Sprintf("%v", v), "/", "\\/"))
 		default:
 			return nil, errors.Errorf("nodewith.Finder does not support type(%T) for parameter(%s)", v, k)
 		}
@@ -113,7 +100,7 @@ func (f *Finder) attributesBytes() ([]byte, error) {
 			regex := f.name[locale]
 			// We need to escape all "/", to avoid something like the regex "a/b" being translated to /a/b/,
 			// which is invalid syntax in javascript.
-			fmt.Fprintf(&buf, `%q:%s,`, locale, convertRegexp(&regex))
+			fmt.Fprintf(&buf, `%q:/%s/,`, locale, strings.ReplaceAll(fmt.Sprintf("%v", &regex), "/", "\\/"))
 		}
 		fmt.Fprintf(&buf, "})")
 	}

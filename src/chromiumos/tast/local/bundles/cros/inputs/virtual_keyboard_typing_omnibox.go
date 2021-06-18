@@ -67,11 +67,11 @@ func VirtualKeyboardTypingOmnibox(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("verify virtual keyboard input on omnibox",
 		vkbCtx.ClickUntilVKShown(omniboxFinder),
-		vkbCtx.TapKeysIgnoringCase(strings.Split(typingKeys, "")),
+		vkbCtx.TapKeys(strings.Split(typingKeys, "")),
 		// Hide virtual keyboard to submit candidate.
 		vkbCtx.HideVirtualKeyboard(),
 		// Validate text.
-		util.WaitForFieldTextToBeIgnoringCase(tconn, omniboxFinder, typingKeys),
+		util.WaitForFieldTextToBe(tconn, omniboxFinder, typingKeys),
 	)(ctx); err != nil {
 		s.Fatal("Failed to verify virtual keyboard input on omnibox: ", err)
 	}
