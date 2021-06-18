@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a8e5322_4d83c613",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-18T23:39:12Z",
+      "side": 1,
+      "message": "I think it looks pretty good now, but I do think it has log too much messages. I think it should be reduced. Also, I think there are a few situations that we should wrap the error. ",
+      "revId": "4792df7c511cb4e65aa4698658a72c85be3e26af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e5914a0_ef43eb25",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-18T23:39:12Z",
+      "side": 1,
+      "message": "Should wrap with err.",
+      "revId": "4792df7c511cb4e65aa4698658a72c85be3e26af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e31186c_76286724",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-18T23:39:12Z",
+      "side": 1,
+      "message": "Should wrap the err.",
+      "revId": "4792df7c511cb4e65aa4698658a72c85be3e26af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f835a71_6611e54e",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-18T23:39:12Z",
+      "side": 1,
+      "message": "if rxSpeedResult :\u003d strings.TrimSpace(string(rxOut)); rxSpeedResult !\u003d rxSpeed {",
+      "revId": "4792df7c511cb4e65aa4698658a72c85be3e26af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d53eb07_4e761a0d",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-18T23:39:12Z",
+      "side": 1,
+      "message": "How big is this log? Do you really need it?",
+      "revId": "4792df7c511cb4e65aa4698658a72c85be3e26af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70826438_64246fbe",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-18T23:39:12Z",
+      "side": 1,
+      "message": "Do you need this log?",
+      "revId": "4792df7c511cb4e65aa4698658a72c85be3e26af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
