@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
@@ -236,7 +237,7 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 			}
 
-			if err := vkbCtx.TapKeys(subtest.keySeq)(ctx); err != nil {
+			if err := vkbCtx.TapKeysIgnoringCase(subtest.keySeq)(ctx); err != nil {
 				s.Fatalf("Failed to tap keys %v: %v", subtest.keySeq, err)
 			}
 
@@ -250,15 +251,15 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 			// Password input is a special case. The value is presented with placeholder "•".
 			// Using PasswordTextField field to verify the outcome.
 			if inputField == testserver.PasswordInputField {
-				if err := its.WaitForFieldValueToBe(inputField, strings.Repeat("•", len(subtest.keySeq)))(ctx); err != nil {
+				if err := util.WaitForFieldTextToBe(tconn, inputField.Finder(), strings.Repeat("•", len(subtest.keySeq)))(ctx); err != nil {
 					s.Fatal("Failed to verify input: ", err)
 				}
 
-				if err := its.WaitForFieldValueToBe(testserver.PasswordTextField, subtest.expectedText)(ctx); err != nil {
+				if err := util.WaitForFieldTextToBe(tconn, testserver.PasswordTextField.Finder(), subtest.expectedText)(ctx); err != nil {
 					s.Fatal("Failed to verify password input: ", err)
 				}
 			} else {
-				if err := its.WaitForFieldValueToBe(inputField, subtest.expectedText)(ctx); err != nil {
+				if err := util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), subtest.expectedText)(ctx); err != nil {
 					s.Fatal("Failed to verify input: ", err)
 				}
 			}
