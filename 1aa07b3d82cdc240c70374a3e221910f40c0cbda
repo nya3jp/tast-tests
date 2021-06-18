@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea30a9a8_bf5cbb28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-06-18T18:44:05Z",
+      "side": 1,
+      "message": "Looking at https://golang.org/pkg/os/exec/#Cmd.StderrPipe, I think the pipe doesn\u0027t close until you call Wait(). So this seems understandable. But I don\u0027t see a better choice that what you are doing.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "1aa07b3d82cdc240c70374a3e221910f40c0cbda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
