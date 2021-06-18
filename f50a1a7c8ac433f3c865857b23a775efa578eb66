@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f7e2fac_7fd92627",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-18T06:57:38Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "f50a1a7c8ac433f3c865857b23a775efa578eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e84e58_36be14b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_timezone_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-18T06:57:38Z",
+      "side": 1,
+      "message": "nit: Prefer to finish here with a colon and err, i.e.\n\nFailed to decode timezone data %q: %v",
+      "range": {
+        "startLine": 47,
+        "startChar": 47,
+        "endLine": 47,
+        "endChar": 57
+      },
+      "revId": "f50a1a7c8ac433f3c865857b23a775efa578eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
