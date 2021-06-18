@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"path"
 	"strings"
+	"time"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -21,6 +22,7 @@ func init() {
 		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      3 * time.Minute,
 		Pre:          chrome.LoggedIn(),
 	})
 }
