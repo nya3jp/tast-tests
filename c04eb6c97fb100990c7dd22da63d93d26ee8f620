@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d21ddee9_9c73ccf4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-18T05:46:18Z",
+      "side": 1,
+      "message": "nit: output.",
+      "range": {
+        "startLine": 14,
+        "startChar": 60,
+        "endLine": 14,
+        "endChar": 65
+      },
+      "revId": "c04eb6c97fb100990c7dd22da63d93d26ee8f620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8521033_5ad6c655",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-18T05:46:18Z",
+      "side": 1,
+      "message": "nit: Please remove extra space.",
+      "range": {
+        "startLine": 19,
+        "startChar": 24,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "c04eb6c97fb100990c7dd22da63d93d26ee8f620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce6d5b29_4cda5f48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-18T05:46:18Z",
+      "side": 1,
+      "message": "nit: references",
+      "range": {
+        "startLine": 22,
+        "startChar": 39,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "c04eb6c97fb100990c7dd22da63d93d26ee8f620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2b9b3a5_65f678b2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/audio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-18T05:46:18Z",
+      "side": 1,
+      "message": "Cannot agree to move these functions from input to vkb. Audio function is not only used by VKB, but also google assistant, on-device recognition etc. \nCan you keep it in the original place?",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "c04eb6c97fb100990c7dd22da63d93d26ee8f620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bf1d972_e8cd5914",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/audio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-18T05:46:18Z",
+      "side": 1,
+      "message": "cras.SetActiveNode(ctx, aloopInputNode) API is doing exactly same thing to activate a media device in a non-UI way. It is much more reliable.\n\nIf the root cause is output not activated, then can you try to cras.SetActiveNode(ctx, aloopOutputNode)?",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 42
+      },
+      "revId": "c04eb6c97fb100990c7dd22da63d93d26ee8f620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
