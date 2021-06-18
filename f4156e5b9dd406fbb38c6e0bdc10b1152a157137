@@ -114,6 +114,30 @@
       },
       "revId": "f4156e5b9dd406fbb38c6e0bdc10b1152a157137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7764a628_af1cff1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-18T22:25:19Z",
+      "side": 1,
+      "message": "I verified that it works in betty VM.\n\nWhat do you mean by non-dynamically updated policies? ServeBlobAndRefresh updates policy on fake dms and refreshes policy on the device. Did you expect that DLP policy should be updated only after Chrome start?",
+      "parentUuid": "2c07e203_311364ad",
+      "range": {
+        "startLine": 72,
+        "startChar": 22,
+        "endLine": 72,
+        "endChar": 41
+      },
+      "revId": "f4156e5b9dd406fbb38c6e0bdc10b1152a157137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
