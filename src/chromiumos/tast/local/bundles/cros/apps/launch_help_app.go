@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
@@ -176,10 +175,6 @@ func helpAppLaunchAfterLogin(ctx context.Context, s *testing.State, isTabletMode
 func assertHelpAppLaunched(ctx context.Context, s *testing.State, tconn *chrome.TestConn, cr *chrome.Chrome, isLaunched bool) error {
 	helpCtx := helpapp.NewContext(cr, tconn)
 	if isLaunched {
-		if err := helpCtx.WaitForApp()(ctx); err != nil {
-			return errors.Wrap(err, "failed to wait for HelpApp")
-		}
-
 		// Verify perk is shown to default consumer user.
 		isPerkShown, err := helpCtx.IsHTMLElementPresent(ctx, "showoff-offers-page")
 		if err != nil {
