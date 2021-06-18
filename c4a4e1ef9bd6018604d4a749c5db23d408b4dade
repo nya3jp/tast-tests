@@ -34,6 +34,24 @@
       "parentUuid": "df77ea06_57e08395",
       "revId": "c4a4e1ef9bd6018604d4a749c5db23d408b4dade",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "675c3f89_9f78943b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2021-06-18T03:36:37Z",
+      "side": 1,
+      "message": "Understand, but I\u0027m wondering what\u0027s the criteria for promoting the other parts to being baseline? Looks like this has has a 100% passing rate from what I can see",
+      "parentUuid": "7b6c4502_13d967f3",
+      "revId": "c4a4e1ef9bd6018604d4a749c5db23d408b4dade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
