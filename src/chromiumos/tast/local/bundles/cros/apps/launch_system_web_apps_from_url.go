@@ -12,7 +12,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -83,9 +85,6 @@ func verifyAndLaunchSystemWebAppFromURL(ctx context.Context, cr *chrome.Chrome, 
 	ctxWithTimeout, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
 
-	const uiTimeout = 20 * time.Second
-	pollOpts := testing.PollOptions{Interval: 2 * time.Second, Timeout: uiTimeout}
-
 	// Take a screenshot of the display before closing the SWA window (if it exists).
 	var conn *chrome.Conn
 	defer func() {
@@ -101,12 +100,9 @@ func verifyAndLaunchSystemWebAppFromURL(ctx context.Context, cr *chrome.Chrome, 
 		}
 	}()
 
-	params := ui.FindParams{
-		Name: "Address and search bar",
-		Role: ui.RoleTypeTextField,
-	}
-
-	if err := ui.StableFindAndClick(ctxWithTimeout, tconn, params, &pollOpts); err != nil {
+	ui := uiauto.New(tconn)
+	omniboxFinder := nodewith.Name("Address and search bar").Role(role.TextField)
+	if err := ui.LeftClick(omniboxFinder)(ctxWithTimeout); err != nil {
 		return errors.Wrap(err, "failed to click the omnibox")
 	}
 
