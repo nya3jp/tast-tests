@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81d24e94_72e8c592",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-18T18:11:08Z",
+      "side": 1,
+      "message": "As an aside, the flashrom and crossystem software deps are present for all platforms except for emulators. Since these tests aren\u0027t going to run on emulators, I\u0027m not sure those software deps are actually useful.\n\nBut we should either require them or delete them, and this cl makes them more required.",
+      "revId": "8f9b7cccce8f6ee7c725484bfae99382548a012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
