@@ -16,6 +16,23 @@
       "message": "Hi all,\n\nI just found that we can slightly speed up this test.\n\nPTAL :) \n\nThanks!",
       "revId": "f4156e5b9dd406fbb38c6e0bdc10b1152a157137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c994776_255e45bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-18T16:16:54Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "f4156e5b9dd406fbb38c6e0bdc10b1152a157137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
