@@ -40,6 +40,7 @@ func init() {
 					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
 					MisspeltWord:  "helol",
 					CorrectWord:   "hello",
+					UndoMethod:    autocorrect.ViaPopupUsingMouse,
 				},
 			}, {
 				Name: "en_us_a11y",
@@ -48,6 +49,7 @@ func init() {
 					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
 					MisspeltWord:  "helol",
 					CorrectWord:   "hello",
+					UndoMethod:    autocorrect.ViaPopupUsingMouse,
 				},
 			}, {
 				Name: "es_es_tablet",
@@ -56,6 +58,7 @@ func init() {
 					InputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
 					MisspeltWord:  "espanol",
 					CorrectWord:   "español",
+					UndoMethod:    autocorrect.ViaBackspace,
 				},
 			}, {
 				Name: "es_es_a11y",
@@ -64,6 +67,7 @@ func init() {
 					InputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
 					MisspeltWord:  "espanol",
 					CorrectWord:   "español",
+					UndoMethod:    autocorrect.ViaBackspace,
 				},
 			}, {
 				Name: "fr_fr_tablet",
@@ -72,6 +76,7 @@ func init() {
 					InputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
 					MisspeltWord:  "francais",
 					CorrectWord:   "français",
+					UndoMethod:    autocorrect.ViaBackspace,
 				},
 			}, {
 				Name: "fr_fr_a11y",
@@ -80,6 +85,7 @@ func init() {
 					InputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
 					MisspeltWord:  "francais",
 					CorrectWord:   "français",
+					UndoMethod:    autocorrect.ViaBackspace,
 				},
 			},
 		},
@@ -163,8 +169,20 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to validate VK autocorrect: ", err)
 	}
 
-	// AssistAutoCorrect flag's features. Only available for US-English currently.
-	if testCase.InputMethodID == string(ime.INPUTMETHOD_XKB_US_ENG) {
+	switch testCase.UndoMethod {
+	case autocorrect.ViaBackspace:
+		// TODO(b/190790409): Implement this.
+		break
+
+	case autocorrect.ViaPopupUsingPK:
+		s.Fatal("ViaPopupUsingPK undo method is not applicable for VK")
+
+	case autocorrect.ViaPopupUsingMouse:
+		// AssistAutoCorrect flag's features. Only available for US-English.
+		if testCase.InputMethodID != string(ime.INPUTMETHOD_XKB_US_ENG) {
+			s.Fatalf("ViaPopupUsingMouse undo method is not applicable for: %s", testCase.InputMethodID)
+		}
+
 		ui := uiauto.New(tconn)
 		textFieldFinder := nodewith.Name("textAreaInputField").Role(role.TextField)
 		textContentFinder := nodewith.Role(role.StaticText).Ancestor(textFieldFinder)
@@ -190,6 +208,13 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 
 		if err := ui.WaitUntilExists(undoButtonFinder)(ctx); err != nil {
 			s.Fatal("Cannot find Undo button: ", err)
+		}
+
+		if err := uiauto.Combine("validate VK autocorrect undo via popup using mouse",
+			ui.LeftClick(undoButtonFinder),
+			its.WaitForFieldValueToBe(inputField, testCase.MisspeltWord+" "),
+		)(ctx); err != nil {
+			s.Fatal("Failed to validate VK autocorrect undo via popup using mouse: ", err)
 		}
 	}
 }
