@@ -44,7 +44,7 @@ func DevMode() testing.Precondition {
 	return devMode
 }
 
-// RecMode boots to Recover Mode.
+// RecMode boots to Recover Mode. Tests which use RecMode() need to use the Attr `firmware_usb` also.
 func RecMode() testing.Precondition {
 	return recMode
 }

@@ -38,7 +38,7 @@ func init() {
 			Name:      "rec",
 			Val:       common.BootModeRecovery,
 			Pre:       pre.RecMode(),
-			ExtraAttr: []string{"firmware_smoke"},
+			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
 		}},
 	})
 }
