@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98f03e7d_ca2e7ae9",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-18T15:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1638a49_33253ab3",
+      "range": {
+        "startLine": 330,
+        "startChar": 4,
+        "endLine": 330,
+        "endChar": 31
+      },
+      "revId": "15a42d27ff70fa6c4495a4e054f056dbc762219e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5c278fb_f33f8496",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8afc6de_be569fb1",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-18T15:03:09Z",
+      "side": 1,
+      "message": "Sure, this is actually easy, we know the index-1 char is always \\, so I\u0027ll just add that to the format string.",
+      "parentUuid": "d5c278fb_f33f8496",
+      "range": {
+        "startLine": 331,
+        "startChar": 72,
+        "endLine": 331,
+        "endChar": 80
+      },
+      "revId": "15a42d27ff70fa6c4495a4e054f056dbc762219e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0e1e428_ddc00453",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-06-18T08:08:03Z",
       "side": 1,
       "message": "nit: the usual patter is to start with the err !\u003d nil branch (return early), and in this case you don\u0027t even need an else branch.",
+      "range": {
+        "startLine": 372,
+        "startChar": 4,
+        "endLine": 376,
+        "endChar": 5
+      },
+      "revId": "15a42d27ff70fa6c4495a4e054f056dbc762219e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c8f9f4_0a3ed0cc",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-18T15:03:09Z",
+      "side": 1,
+      "message": "Lost the else branch, and also lost assignment in if.",
+      "parentUuid": "a0e1e428_ddc00453",
       "range": {
         "startLine": 372,
         "startChar": 4,
