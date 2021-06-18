@@ -11,10 +11,10 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/data"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -121,6 +121,13 @@ type InputsTestServer struct {
 	ui *uiauto.Context
 }
 
+// FieldInputEval encapsulates a function to input text into an input field, and its expected output.
+type FieldInputEval struct {
+	InputField   InputField
+	InputFunc    uiauto.Action
+	ExpectedText string
+}
+
 // pageRootFinder is the finder of root Node of the test page.
 // All sub node should be located on the page.
 var pageRootFinder = nodewith.Name(pageTitle).Role(role.RootWebArea)
@@ -218,19 +225,6 @@ func (its *InputsTestServer) ClickFieldUntilVKShown(inputField InputField) uiaut
 	)
 }
 
-// WaitForFieldValueToBe returns an action repeatedly checking the input value until it matches the expectation.
-func (its *InputsTestServer) WaitForFieldValueToBe(inputField InputField, expectedValue string) uiauto.Action {
-	return its.ui.WithInterval(time.Second).Retry(5, func(ctx context.Context) error {
-		nodeInfo, err := its.ui.Info(ctx, inputField.Finder())
-		if err != nil {
-			return err
-		} else if nodeInfo.Value != expectedValue {
-			return errors.Errorf("failed to validate input value: got: %s; want: %s", nodeInfo.Value, expectedValue)
-		}
-		return nil
-	})
-}
-
 // ValidateInputOnField returns an action to test an input action on given input field.
 // It clears field first and click to activate input.
 // After input action, it checks whether the outcome equals to expected value.
@@ -239,7 +233,7 @@ func (its *InputsTestServer) ValidateInputOnField(inputField InputField, inputFu
 		its.Clear(inputField),
 		its.ClickFieldAndWaitForActive(inputField),
 		inputFunc,
-		its.WaitForFieldValueToBe(inputField, expectedValue),
+		util.WaitForFieldTextToBeIgnoringCase(its.tconn, inputField.Finder(), expectedValue),
 	)
 }
 
@@ -265,7 +259,7 @@ func (its *InputsTestServer) ValidateVKInputOnField(inputField InputField, imeCo
 		its.Clear(inputField),
 		its.ClickFieldUntilVKShown(inputField),
 		func(ctx context.Context) error {
-			if err := vkbCtx.TapKeys(testData.TapKeySeq)(ctx); err != nil {
+			if err := vkbCtx.TapKeysIgnoringCase(testData.TapKeySeq)(ctx); err != nil {
 				return errors.Wrapf(err, "failed to tap keys: %v", testData.TapKeySeq)
 			}
 			if testData.SubmitFromSuggestion {
@@ -273,6 +267,6 @@ func (its *InputsTestServer) ValidateVKInputOnField(inputField InputField, imeCo
 			}
 			return nil
 		},
-		its.WaitForFieldValueToBe(inputField, testData.ExpectedText),
+		util.WaitForFieldTextToBeIgnoringCase(its.tconn, inputField.Finder(), testData.ExpectedText),
 	)
 }
