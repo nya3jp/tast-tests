@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -81,6 +80,12 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
+	cleanup, err := vkb.EnableAloop(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to load Aloop: ", err)
+	}
+	defer cleanup(cleanupCtx)
+
 	// Test parameters that are specific to the current test case.
 	audioFile := s.Param().(speechTestParams).audioFile
 	expectedText := s.Param().(speechTestParams).expectedText
@@ -109,31 +114,15 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	inputField := testserver.TextAreaInputField
 	vkbCtx := vkb.NewContext(cr, tconn)
 
-	if err := its.ClickFieldUntilVKShown(inputField)(ctx); err != nil {
-		s.Fatal("Failed to show VK: ", err)
-	}
-
-	validateAction := func(ctx context.Context) error {
-		cleanup, err := input.EnableAloopInput(ctx, tconn)
-		if err != nil {
-			return err
-		}
-		defer cleanup(ctx)
-		if err = uiauto.Combine("verify audio input",
-			its.Clear(inputField),
-			vkbCtx.SwitchToVoiceInput(),
-			func(ctx context.Context) error {
-				return input.AudioFromFile(ctx, testFileLocation)
-			},
-			its.WaitForFieldValueToBe(inputField, expectedText),
-		)(ctx); err != nil {
-			return err
-		}
-		return nil
-	}
-
-	// TODO(b/191086453): Investigate the root cause of voice flakiness.
-	if err := uiauto.New(tconn).WithTimeout(time.Minute).Retry(5, validateAction)(ctx); err != nil {
+	if err := uiauto.Combine("verify audio input",
+		its.ClickFieldUntilVKShown(inputField),
+		vkbCtx.SwitchToVoiceInput(),
+		func(ctx context.Context) error {
+			return vkb.AudioFromFile(ctx, testFileLocation)
+		},
+		its.WaitForFieldValueToBe(inputField, expectedText),
+	)(ctx); err != nil {
 		s.Fatal("Failed to validate voice input: ", err)
 	}
+
 }
