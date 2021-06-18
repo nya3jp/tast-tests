@@ -7,13 +7,12 @@ package ambient
 
 import (
 	"context"
-	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/ambient"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -68,7 +67,9 @@ func LockScreenIdle(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := retry(2, func() error { return prepareAmbientMode(ctx, tconn) }); err != nil {
+	ui := uiauto.New(tconn)
+
+	if err := retry(2, func() error { return prepareAmbientMode(ctx, tconn, ui) }); err != nil {
 		s.Fatal("Failed to prepare ambient mode: ", err)
 	}
 	defer func() {
@@ -77,7 +78,7 @@ func LockScreenIdle(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := testLockScreenIdle(ctx, cr, tconn); err != nil {
+	if err := testLockScreenIdle(ctx, cr, tconn, ui); err != nil {
 		s.Fatal("Failed to start ambient mode: ", err)
 	}
 
@@ -108,7 +109,7 @@ func setup(
 	return cr, tconn, nil
 }
 
-func prepareAmbientMode(ctx context.Context, tconn *chrome.TestConn) error {
+func prepareAmbientMode(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context) error {
 	if err := ambient.SetEnabled(ctx, tconn, false); err != nil {
 		return errors.Wrap(err, "failed to set ambient mode pref to false")
 	}
@@ -123,54 +124,20 @@ func prepareAmbientMode(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 	defer settingsPage.Close(ctx)
 
-	if err := ui.StableFindAndClick(
-		ctx,
-		tconn,
-		ui.FindParams{Name: "Screen saver Disabled", Role: ui.RoleTypeLink},
-		defaultOSSettingsPollOptions,
-	); err != nil {
-		return errors.Wrap(err, "opening screen saver menu failed")
+	artAlbumFinder := nodewith.NameStartingWith("Album").Role(role.CheckBox)
+
+	if err := uiauto.Combine("Turns on ambient mode",
+		ui.WithPollOpts(*defaultOSSettingsPollOptions).LeftClick(nodewith.Name("Screen saver Disabled").Role(role.Link)),
+		ui.WithTimeout(5*time.Second).LeftClick(nodewith.Name("Off").Role(role.ToggleButton)),
+		ui.WithPollOpts(*defaultOSSettingsPollOptions).LeftClick(nodewith.Name("Select Art gallery albums").Role(role.Button)),
+		ui.WithTimeout(defaultOSSettingsPollOptions.Timeout).WaitUntilExists(artAlbumFinder.First()),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to navigate to art gallery page")
 	}
 
-	ambientToggle, err := ui.FindWithTimeout(
-		ctx,
-		tconn,
-		ui.FindParams{Role: ui.RoleTypeToggleButton, Name: "Off"},
-		5*time.Second,
-	)
+	artAlbums, err := ui.NodesInfo(ctx, artAlbumFinder)
 	if err != nil {
-		return errors.Wrap(err, "finding ambient mode toggle failed")
-	}
-	defer ambientToggle.Release(ctx)
-
-	if err := ambientToggle.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "toggling ambient mode failed")
-	}
-
-	if err := ui.StableFindAndClick(
-		ctx,
-		tconn,
-		ui.FindParams{
-			Role: ui.RoleTypeButton,
-			Name: "Select Art gallery albums",
-		},
-		defaultOSSettingsPollOptions,
-	); err != nil {
-		return errors.Wrap(err, "clicking on art gallery radio button failed")
-	}
-
-	artAlbumParams := ui.FindParams{
-		Role:       ui.RoleTypeCheckBox,
-		Attributes: map[string]interface{}{"name": regexp.MustCompile("^Album.+")},
-	}
-
-	if err := ui.WaitUntilExists(
-		ctx,
-		tconn,
-		artAlbumParams,
-		defaultOSSettingsPollOptions.Timeout,
-	); err != nil {
-		return errors.Wrap(err, "failed waiting for art gallery albums")
+		return errors.Wrap(err, "finding art gallery albums failed")
 	}
 
 	// Sleep briefly because artAlbum buttons may not be clickable yet.
@@ -178,15 +145,9 @@ func prepareAmbientMode(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to sleep")
 	}
 
-	artAlbums, err := ui.FindAll(ctx, tconn, artAlbumParams)
-	if err != nil {
-		return errors.Wrap(err, "finding art gallery albums failed")
-	}
-	defer artAlbums.Release(ctx)
-
 	// Turn off all but one art gallery albums.
-	for _, artAlbum := range artAlbums[1:] {
-		if err := artAlbum.LeftClick(ctx); err != nil {
+	for i := 1; i < len(artAlbums); i++ {
+		if err := ui.LeftClick(artAlbumFinder.Nth(i))(ctx); err != nil {
 			return errors.Wrap(err, "deselecting art album failed")
 		}
 	}
@@ -244,6 +205,7 @@ func testLockScreenIdle(
 	ctx context.Context,
 	cr *chrome.Chrome,
 	tconn *chrome.TestConn,
+	ui *uiauto.Context,
 ) error {
 	sm, err := session.NewSessionManager(ctx)
 	if err != nil {
@@ -254,23 +216,23 @@ func testLockScreenIdle(
 		return errors.Wrap(err, "failed to lock screen")
 	}
 
-	if err := waitForAmbientStart(ctx, tconn); err != nil {
+	if err := waitForAmbientStart(ctx, tconn, ui); err != nil {
 		return errors.Wrap(err, "failed to start ambient mode")
 	}
 
-	if err := hideAmbientMode(ctx, tconn, sm); err != nil {
+	if err := hideAmbientMode(ctx, tconn, sm, ui); err != nil {
 		return errors.Wrap(err, "failed to hide ambient mode")
 	}
 
 	// Wait for ambient mode to start again.
-	if err := waitForAmbientStart(ctx, tconn); err != nil {
+	if err := waitForAmbientStart(ctx, tconn, ui); err != nil {
 		return errors.Wrap(err, "failed to start ambient mode after mouse move")
 	}
 
 	return nil
 }
 
-func waitForAmbientStart(ctx context.Context, tconn *chrome.TestConn) error {
+func waitForAmbientStart(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context) error {
 	if err := ambient.WaitForPhotoTransitions(
 		ctx,
 		tconn,
@@ -280,26 +242,14 @@ func waitForAmbientStart(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to wait for photo transitions")
 	}
 
-	if exists, err := ui.Exists(
-		ctx,
-		tconn,
-		ui.FindParams{
-			ClassName: "LockScreenAmbientModeContainer",
-			Role:      ui.RoleTypeWindow,
-		},
-	); err != nil {
-		return errors.Wrap(err, "failed to check if ambient container exists")
-	} else if !exists {
-		return errors.New("expected ambient mode to be on")
-	}
-
-	return nil
+	return ui.Exists(nodewith.ClassName("LockScreenAmbientModeContainer").Role(role.Window))(ctx)
 }
 
 func hideAmbientMode(
 	ctx context.Context,
 	tconn *chrome.TestConn,
 	sm *session.SessionManager,
+	ui *uiauto.Context,
 ) error {
 	// Move the mouse a small amount. Ambient mode should turn off. Session
 	// should still be locked.
@@ -313,25 +263,16 @@ func hideAmbientMode(
 		return errors.Wrap(err, "failed to move mouse")
 	}
 
+	// Ambient mode container should not exist.
+	if err := ui.WithTimeout(time.Second).WaitUntilGone(nodewith.ClassName("LockScreenAmbientModeContainer").Role(role.Window))(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait until ambient container dismissed")
+	}
+
 	// Session should be locked.
 	if isLocked, err := sm.IsScreenLocked(ctx); err != nil {
 		return errors.Wrap(err, "failed to get screen lock state")
 	} else if !isLocked {
 		return errors.New("expected screen to be locked")
-	}
-
-	// Ambient mode container should not exist.
-	if exists, err := ui.Exists(
-		ctx,
-		tconn,
-		ui.FindParams{
-			ClassName: "LockScreenAmbientModeContainer",
-			Role:      ui.RoleTypeWindow,
-		},
-	); err != nil {
-		return errors.Wrap(err, "failed to check if ambient container exists")
-	} else if exists {
-		return errors.New("expected ambient mode to be off")
 	}
 
 	return nil

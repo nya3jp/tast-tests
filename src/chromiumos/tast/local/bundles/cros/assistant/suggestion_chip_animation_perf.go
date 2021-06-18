@@ -15,9 +15,10 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
-	chromeUi "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/media/cpu"
-	"chromiumos/tast/local/ui"
+	uiConstants "chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -68,9 +69,11 @@ func SuggestionChipAnimationPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
+	ui := uiauto.New(tconn)
+
 	for nWindows := 0; nWindows < 3; nWindows++ {
 		if nWindows > 0 {
-			if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, 1); err != nil {
+			if err := ash.CreateWindows(ctx, tconn, cr, uiConstants.PerftestURL, 1); err != nil {
 				s.Fatal("Failed to create a new browser window: ", err)
 			}
 		}
@@ -84,7 +87,7 @@ func SuggestionChipAnimationPerf(ctx context.Context, s *testing.State) {
 			tconn,
 			time.Second,
 			func(ctx context.Context) error {
-				return runQueriesAndClickSuggestions(ctx, tconn)
+				return runQueriesAndClickSuggestions(ctx, tconn, ui)
 			},
 			"Ash.Assistant.AnimationSmoothness.SuggestionChip",
 		)
@@ -102,55 +105,28 @@ func SuggestionChipAnimationPerf(ctx context.Context, s *testing.State) {
 	}
 }
 
-func selectAndClickSuggestion(ctx context.Context, tconn *chrome.TestConn) error {
-	if err := chromeUi.StableFindAndClick(
-		ctx,
-		tconn,
-		chromeUi.FindParams{ClassName: "SuggestionChipView"},
-		&uiPollOptions,
-	); err != nil {
-		return errors.Wrap(err, "failed to find and click assistant suggestion chip")
-	}
-
-	return nil
-}
-
-func runQueryAndWaitForCard(ctx context.Context, tconn *chrome.TestConn, query string) error {
+func runQueryAndClickSuggestion(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, query string) error {
 	if _, err := assistant.SendTextQuery(ctx, tconn, query); err != nil {
 		return errors.Wrapf(err, "unable to run query %s", query)
 	}
 
-	if _, err := chromeUi.StableFind(
-		ctx,
-		tconn,
-		chromeUi.FindParams{ClassName: "AssistantCardElementView"},
-		&uiPollOptions,
-	); err != nil {
-		return errors.Wrap(err, "timed out waiting for assistant card")
-	}
-
-	return nil
+	return uiauto.Combine("run query and click suggestion chip",
+		ui.WithPollOpts(uiPollOptions).WaitUntilExists(nodewith.ClassName("AssistantCardElementView")),
+		ui.WithPollOpts(uiPollOptions).LeftClick(nodewith.ClassName("SuggestionChipView").First()),
+	)(ctx)
 }
 
-func runQueriesAndClickSuggestions(ctx context.Context, tconn *chrome.TestConn) error {
+func runQueriesAndClickSuggestions(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context) error {
 	if err := assistant.ToggleUIWithHotkey(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to open the assistant UI")
 	}
 
-	if err := runQueryAndWaitForCard(ctx, tconn, "Mount Kilimanjaro"); err != nil {
+	if err := runQueryAndClickSuggestion(ctx, tconn, ui, "Mount Kilimanjaro"); err != nil {
 		return err
 	}
 
-	if err := selectAndClickSuggestion(ctx, tconn); err != nil {
+	if err := runQueryAndClickSuggestion(ctx, tconn, ui, "Mount Everest"); err != nil {
 		return errors.Wrap(err, "failed to run query and wait")
-	}
-
-	if err := runQueryAndWaitForCard(ctx, tconn, "Mount Everest"); err != nil {
-		return errors.Wrap(err, "failed to run query and wait")
-	}
-
-	if err := selectAndClickSuggestion(ctx, tconn); err != nil {
-		return err
 	}
 
 	if err := assistant.ToggleUIWithHotkey(ctx, tconn); err != nil {
