@@ -16,6 +16,57 @@
       "message": "Hey Hidehiko, looks like the test is passed and it\u0027s infra failure. Can you please have a look of this CL? Thanks.",
       "revId": "041ca75284a89d8849ba341a684f8a83752853c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee281c05_6d25b156",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-18T15:48:34Z",
+      "side": 1,
+      "message": "# Very sorry for delayed reply, and thank you for offline ping.\n\nWith careful check, it turns out that this is a bit risky...\nbut, I couldn\u0027t come up with a better way.\n\nnya-san, do you have some ideas here?\n\nBackground:\n- With Maggie\u0027s work, in very near future, Lacros will start on session login.\n- Lacros may shutdown, e.g. on all browser window closed similar to other platforms, but soon rebooted.\n- We\u0027d like to connect to Lacros via debugging port as we do for chromeos-chrome. We have to check the debugging port in the file is for the current running Lacros, rather than the one which was terminated.\n",
+      "revId": "041ca75284a89d8849ba341a684f8a83752853c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "839021e2_43b5561e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/app_launcher_launch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-18T15:48:34Z",
+      "side": 1,
+      "message": "Could you explicitly document why this waiting works?\nSpecifically, the file containing the debug port is deleted in the fixture, so that the created file is ensured for the one for the current Lacros\u0027s.",
+      "revId": "041ca75284a89d8849ba341a684f8a83752853c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "663684fb_0058b95b",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-18T15:48:34Z",
+      "side": 1,
+      "message": "Could you explicitly document that, after starting to keep Lacros alive during the session, it must not shutdown Lacros.\nOtherwise, the ConnectToLacrosChrome may be confused. The port contained in the file may be the one for a terminated Lacros, but not for the Lacros being bootstrapping.\n\nIn order to make it run properly, the debugging port file must be deleted before terminating the Lacros (regardless of how, e.g. closing all tabs/crashes).",
+      "revId": "041ca75284a89d8849ba341a684f8a83752853c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
