@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/quicksettings"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -25,6 +26,10 @@ func DoSystemProxyAuthentication(ctx context.Context, tconn *chrome.TestConn, us
 		notificationTitle = "Sign in"
 		uiTimeout         = 10 * time.Second
 	)
+
+	if err := quicksettings.Show(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to show system tray")
+	}
 
 	if _, err := ash.WaitForNotification(ctx, tconn, uiTimeout, ash.WaitTitle(notificationTitle)); err != nil {
 		return errors.Wrapf(err, "failed waiting %v for system-proxy notification", uiTimeout)
