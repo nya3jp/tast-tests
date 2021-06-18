@@ -109,6 +109,30 @@
       },
       "revId": "f05d741b759e448ffb0b69da93d49b5e1a274f6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d08371fc_67b09861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1125049
+      },
+      "writtenOn": "2021-06-18T16:50:15Z",
+      "side": 1,
+      "message": "Yes, l3t3_key is what we\u0027re using",
+      "parentUuid": "8fcb335c_b989dcb0",
+      "range": {
+        "startLine": 104,
+        "startChar": 39,
+        "endLine": 104,
+        "endChar": 41
+      },
+      "revId": "f05d741b759e448ffb0b69da93d49b5e1a274f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
