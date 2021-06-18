@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "692a8fb8_dfc5158a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-06-18T20:27:28Z",
+      "side": 1,
+      "message": "Seems that this CL should be abandoned?",
+      "revId": "1295a37dd325602cdf54e0d3f321038ea2fd5042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23ae249d_56ed9fca",
