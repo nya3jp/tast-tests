@@ -33,6 +33,23 @@
       "message": "Let\u0027s submit this after the release.",
       "revId": "3592590ac1d268e08dc5ad55910904410de0caa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f93cd83_60004878",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-18T16:53:01Z",
+      "side": 1,
+      "message": "Now released. Sending this to CQ.",
+      "revId": "3592590ac1d268e08dc5ad55910904410de0caa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
