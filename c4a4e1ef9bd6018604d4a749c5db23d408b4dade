@@ -105,6 +105,24 @@
       "message": "This conditional runtime-check with a Param can be replaced by making separate test functions.\n\ntesting.AddTest(\u0026testing.Test{\n\t\tFunc:         ResourcedSetGameMode,\n\t\t...\n\t\t},\n\t\t\u0026testing.Test{\n\t\tFunc:         ResourcedMemoryTests,\n\t\t...\t\t}\n\nIt might make sense to have conditionals (like PS1) with this parameter if a subset of this test were to run as non-mainline test separated from the mainline tests.",
       "revId": "c4a4e1ef9bd6018604d4a749c5db23d408b4dade",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d28f8a77_fbc8672a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-06-18T07:03:05Z",
+      "side": 1,
+      "message": "Is there some example file in src/tast-tests/ using multiple test functions?",
+      "parentUuid": "1c127c52_b018595a",
+      "revId": "c4a4e1ef9bd6018604d4a749c5db23d408b4dade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
