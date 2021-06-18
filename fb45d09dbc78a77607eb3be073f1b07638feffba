@@ -16,6 +16,92 @@
       "message": "Hey Alexander, could you please review the following? Thanks.",
       "revId": "fb45d09dbc78a77607eb3be073f1b07638feffba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc1ae507_948de678",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-18T08:40:56Z",
+      "side": 1,
+      "message": "LGTM: %nits",
+      "revId": "fb45d09dbc78a77607eb3be073f1b07638feffba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dd6efd0_f556b499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_event_logging_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-18T08:40:56Z",
+      "side": 1,
+      "message": "nit: add more explanation what the test does:\nBehavior of ExtensionInstallEventLoggingEnabled policy, checking if all events from the installation of an extension are logged.",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 63
+      },
+      "revId": "fb45d09dbc78a77607eb3be073f1b07638feffba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fe63bff_d0a14aea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_event_logging_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-18T08:40:56Z",
+      "side": 1,
+      "message": "nit: we want to move to more meaningful variable names.\nMaybe extension_page instead of sconn.",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 6
+      },
+      "revId": "fb45d09dbc78a77607eb3be073f1b07638feffba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "949b89ce_5c06afd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_event_logging_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-18T08:40:56Z",
+      "side": 1,
+      "message": "The ui library is deprecated. Use uiauto instead:\n\nui :\u003d uiauto.New(tconn)\n\ninstalledButton :\u003d nodewith.Name(\"Installed\").Role(role.Button)\nif err \u003d ui.WaitUntilExists(installedButton)(ctx); err !\u003d nil {\n\ts.Fatal(\"Finding Installed button failed: \", err)\n}",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 24
+      },
+      "revId": "fb45d09dbc78a77607eb3be073f1b07638feffba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
