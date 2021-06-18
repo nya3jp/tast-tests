@@ -39,6 +39,30 @@
       },
       "revId": "c1dea27e371e3478c1a9169a8037e573074a7839",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "934b7fd7_77e5cc36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/open_close_switch_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-18T20:00:26Z",
+      "side": 1,
+      "message": "Didn\u0027t realize it was that close to the default. Makes sense to drop altogether then",
+      "parentUuid": "bd81aeb1_d5c8033c",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 24
+      },
+      "revId": "c1dea27e371e3478c1a9169a8037e573074a7839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
