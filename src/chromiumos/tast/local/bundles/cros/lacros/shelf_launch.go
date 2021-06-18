@@ -7,9 +7,13 @@ package lacros
 import (
 	"context"
 	"os"
+	"time"
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -128,15 +132,48 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 	defer l.Close(ctx)
 
-	s.Log("Opening a new tab")
-	tab, err := l.Devsess.CreateTarget(ctx, "about:blank")
-	if err != nil {
-		s.Fatal("Failed to open new tab: ", err)
+	// s.Log("Opening a new tab")
+	// tab, err := l.Devsess.CreateTarget(ctx, "about:blank")
+	// if err != nil {
+	// 	s.Fatal("Failed to open new tab: ", err)
+	// }
+	// defer l.Devsess.CloseTarget(ctx, tab)
+	// if err := launcher.WaitForLacrosWindow(ctx, tconn, "about:blank"); err != nil {
+	// 	s.Fatal("Failed waiting for Lacros to navigate to about:blank page: ", err)
+	// }
+
+	// TODO(b/187795078): DO NOT SUBMIT see if UI element on web content inside Lacros is accessible via uiauto using the test extension from Ash.
+	s.Log("a11y: starting")
+	opts := testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 10 * time.Second}
+	ui := uiauto.New(tconn)
+	restoreBtn := nodewith.ClassName("FrameCaptionButton").Name("Restore")
+	closeBtn := nodewith.ClassName("FrameCaptionButton").Name("Close")
+	testing.Sleep(ctx, 3*time.Second)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	s.Log("a11y: search for a restore button on lacros window frame, then click it")
+	if err := ui.WithPollOpts(opts).WaitUntilExists(restoreBtn)(ctx); err != nil {
+		s.Fatal("Failed to find the button: ", err)
 	}
-	defer l.Devsess.CloseTarget(ctx, tab)
-	if err := launcher.WaitForLacrosWindow(ctx, tconn, "about:blank"); err != nil {
-		s.Fatal("Failed waiting for Lacros to navigate to about:blank page: ", err)
+	if err := ui.LeftClick(restoreBtn)(ctx); err != nil {
+		s.Fatal("Failed to click the button: ", err)
 	}
+	testing.Sleep(ctx, 3*time.Second)
+
+	s.Log("a11y: search for an element ('Web Store' shortcut) on web content page inside lacros, then click it")
+	webstoreBtn := nodewith.Role("staticText").Name("Web Store")
+	if err := ui.LeftClick(webstoreBtn)(ctx); err != nil {
+		s.Fatal("Failed to find the button inside Lacros: ", err)
+	}
+	testing.Sleep(ctx, 3*time.Second)
+
+	s.Log("a11y: close lacros by clicking the close button")
+	if err := ui.LeftClick(closeBtn)(ctx); err != nil {
+		s.Fatal("Failed to click the button: ", err)
+	}
+	s.Log("a11y: lacros should be closed now")
+	testing.Sleep(ctx, 3*time.Second)
+	//~
 
 	s.Log("Closing lacros-chrome browser")
 	if err := l.Close(ctx); err != nil {
