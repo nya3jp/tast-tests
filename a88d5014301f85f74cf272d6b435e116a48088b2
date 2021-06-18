@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2513487a_5ef82693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-18T10:06:00Z",
+      "side": 1,
+      "message": "Tast code style LGTM, but please get approval from Oshima before submitting.",
+      "revId": "a88d5014301f85f74cf272d6b435e116a48088b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
