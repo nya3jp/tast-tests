@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d3a6f4f_49d333dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-18T19:12:42Z",
+      "side": 1,
+      "message": "oka@ PTAL (another test case added to the previous CL in the chain).",
+      "revId": "c2780dc88d0c1d9b0abbd0325f62cc211eba802d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
