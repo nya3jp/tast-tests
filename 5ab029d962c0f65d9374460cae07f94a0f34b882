@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f4652e3_03e61ee8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-18T08:14:22Z",
+      "side": 1,
+      "message": "LGTM: %nits",
+      "revId": "5ab029d962c0f65d9374460cae07f94a0f34b882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c733777_d770cd16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-18T08:14:22Z",
+      "side": 1,
+      "message": "nit: missing .\nCan you please also update the old comments to conform to our guidelines (see below).",
+      "revId": "5ab029d962c0f65d9374460cae07f94a0f34b882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00d36db2_d2627b36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-18T08:14:22Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 72
+      },
+      "revId": "5ab029d962c0f65d9374460cae07f94a0f34b882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f42c80_f8ef5f0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-18T08:14:22Z",
+      "side": 1,
+      "message": "nit: Check that page actually loaded as expected.",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 47
+      },
+      "revId": "5ab029d962c0f65d9374460cae07f94a0f34b882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8848e9e9_36edd51c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-18T08:14:22Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 27
+      },
+      "revId": "5ab029d962c0f65d9374460cae07f94a0f34b882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
