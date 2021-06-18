@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "356a869b_9104dce1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-06-18T00:00:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e40a78ee_60a42c9d",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 18
+      },
+      "revId": "87753e8eea599c4368d14fcbcff25bd293f7c715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3584e96e_5365d9d0",
@@ -181,6 +205,30 @@
       "side": 1,
       "message": "Can you please clarify in what cases it won\u0027t be promoted to the overlay? It looks like code comment does not cover it.",
       "parentUuid": "7ac98f4c_3db4fe95",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 58
+      },
+      "revId": "87753e8eea599c4368d14fcbcff25bd293f7c715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92260bc8_a9d3415d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-06-18T00:00:48Z",
+      "side": 1,
+      "message": "It is not about specific scenarios where I know that the PIP video will not be promoted to overlay. It is just a policy decision in response to [1] which caused graphics.HTMLVideoRoundedCornersUnderlay (called graphics.RoundedCornersUnderlay at the time) to fail unnecessarily. Now that [1] is resolved, these tests probably could assume there will always be an overlay, but that fact could change any time.\n\n[1] https://buganizer.corp.google.com/issues/183426259",
+      "parentUuid": "8a86edbc_4ad8e446",
       "range": {
         "startLine": 83,
         "startChar": 0,
