@@ -51,11 +51,15 @@ func RecMode() testing.Precondition {
 
 // newPrecondition creates an instance of firmware Precondition.
 func newPrecondition(mode common.BootMode) testing.Precondition {
+	flags := pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()}
+	if mode == common.BootModeDev {
+		flags.Set = append(flags.Set, pb.GBBFlag_FORCE_DEV_SWITCH_ON)
+	}
 	return &impl{
 		v: &Value{
 			BootMode: mode,
 			// Default GBBFlagsState for firmware testing.
-			GBBFlags: pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()},
+			GBBFlags: flags,
 		},
 		// The maximum time that the Prepare method should take, adjust as needed.
 		timeout: 5 * time.Minute,
@@ -81,12 +85,13 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 		s.Fatal("DUT is offline before test start: ", err)
 	}
 
-	if err := i.setupBootMode(ctx, s.CloudStorage()); err != nil {
-		s.Fatal("Could not setup BootMode: ", err)
-	}
-
+	// Setup GBB flags before boot mode, because booting to dev mode will affect the GBB flags.
 	if err := i.setupGBBFlags(ctx); err != nil {
 		s.Fatal("Could not setup GBB flags: ", err)
+	}
+
+	if err := i.setupBootMode(ctx, s.CloudStorage()); err != nil {
+		s.Fatal("Could not setup BootMode: ", err)
 	}
 
 	return i.v
@@ -217,7 +222,7 @@ func (i *impl) rebootToMode(ctx context.Context, mode common.BootMode) error {
 	if err != nil {
 		return err
 	}
-	if err := ms.RebootToMode(ctx, mode); err != nil {
+	if err := ms.RebootToMode(ctx, mode, firmware.AllowGBBForce); err != nil {
 		return err
 	}
 	return nil
@@ -307,15 +312,13 @@ func (i *impl) setAndCheckGBBFlags(ctx context.Context, req pb.GBBFlagsState) er
 
 // rebootIfRequired reboots the DUT if any flags that require a reboot have changed.
 func (i *impl) rebootIfRequired(ctx context.Context, a, b pb.GBBFlagsState) error {
-	if common.GBBFlagsChanged(a, b, common.RebootRequiredGBBFlags()) {
-		ms, err := firmware.NewModeSwitcher(ctx, i.v.Helper)
-		if err != nil {
-			return err
-		}
-		testing.ContextLog(ctx, "Resetting DUT due to GBB flag change")
-		if err := ms.ModeAwareReboot(ctx, firmware.WarmReset); err != nil {
-			return err
-		}
+	if !common.GBBFlagsChanged(a, b, common.RebootRequiredGBBFlags()) {
+		return nil
 	}
-	return nil
+	ms, err := firmware.NewModeSwitcher(ctx, i.v.Helper)
+	if err != nil {
+		return err
+	}
+	testing.ContextLog(ctx, "Resetting DUT due to GBB flag change")
+	return ms.ModeAwareReboot(ctx, firmware.WarmReset)
 }
