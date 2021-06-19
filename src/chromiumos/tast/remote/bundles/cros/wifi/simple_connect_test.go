@@ -439,8 +439,9 @@ func simpleConnectNonASCIISSID() simpleConnectParams {
 
 func simpleConnect8021xWEP() simpleConnectParams {
 	return simpleConnectParams{
-		Name: "8021xwep",
-		Doc:  simpleConnectDocPref("a protected network supporting for dynamic WEP encryption."),
+		Name:              "8021xwep",
+		Doc:               simpleConnectDocPref("a protected network supporting for dynamic WEP encryption."),
+		ExtraHardwareDeps: "hwdep.D(hwdep.WifiNotMarvell())",
 		Val: []simpleConnectParamsVal{{
 			APOpts: simpleConnectCommonSecApOpts,
 			SecConfFac: `dynamicwep.NewConfigFactory(

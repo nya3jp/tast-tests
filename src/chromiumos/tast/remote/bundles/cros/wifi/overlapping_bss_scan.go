@@ -36,6 +36,9 @@ func init() {
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
+		// Skip on Marvell on 8997 platforms because of test failure post security fixes b/187853331
+		// Test failure is due to increased RTT time
+		HardwareDeps: hwdep.D(hwdep.WifiNotMarvell8997()),
 	})
 }
 
