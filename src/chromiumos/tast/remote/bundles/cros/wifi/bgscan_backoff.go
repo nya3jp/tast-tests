@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type paramBgscanBackoff struct {
@@ -34,11 +35,12 @@ func init() {
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:        []string{"group:wificell", "wificell_func"},
-		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePreWithCapture(),
-		Vars:        []string{"router", "pcap"},
-		Timeout:     6 * time.Minute, // This test has long ping time, assign a longer timeout.
+		Attr:         []string{"group:wificell", "wificell_func"},
+		ServiceDeps:  []string{wificell.TFServiceName},
+		Pre:          wificell.TestFixturePreWithCapture(),
+		Vars:         []string{"router", "pcap"},
+		Timeout:      6 * time.Minute, // This test has long ping time, assign a longer timeout.
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("bob", "kevin")),
 		Params: []testing.Param{
 			{
 				Val: &paramBgscanBackoff{
