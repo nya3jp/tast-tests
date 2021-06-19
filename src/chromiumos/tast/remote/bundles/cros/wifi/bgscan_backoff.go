@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type paramBgscanBackoff struct {
@@ -39,6 +40,10 @@ func init() {
 		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
 		Timeout:     6 * time.Minute, // This test has long ping time, assign a longer timeout.
+		HardwareDeps: hwdep.D(
+			hwdep.SkipOnPlatform("bob"),
+			hwdep.SkipOnPlatform("kevin"),
+		),
 		Params: []testing.Param{
 			{
 				Val: &paramBgscanBackoff{
