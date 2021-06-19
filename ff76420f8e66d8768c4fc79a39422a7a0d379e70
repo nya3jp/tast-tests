@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6c1c9cc_400d343e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2021-06-19T00:16:58Z",
+      "side": 1,
+      "message": "are these line too long or golang style is ok with it?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 115
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
