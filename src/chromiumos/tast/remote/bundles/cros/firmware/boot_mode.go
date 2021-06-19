@@ -18,10 +18,12 @@ import (
 
 // bootModeTestParams defines the params for a single test-case.
 // bootToMode defines which boot-mode to switch the DUT into.
+// allowGBBForce defines whether to force dev mode via GBB flags.
 // resetAfterBoot defines whether to perform a ModeAwareReboot after switching to bootToMode.
 // resetType defines whether ModeAwareReboot should use a warm or a cold reset.
 type bootModeTestParams struct {
 	bootToMode     fwCommon.BootMode
+	allowGBBForce  bool
 	resetAfterBoot bool
 	resetType      firmware.ResetType
 }
@@ -125,6 +127,36 @@ func init() {
 				bootToMode: fwCommon.BootModeDev,
 			},
 			ExtraAttr: []string{"firmware_experimental", "firmware_usb"},
+		}, {
+			Name: "dev_gbb",
+			Pre:  pre.NormalMode(),
+			Val: bootModeTestParams{
+				bootToMode:    fwCommon.BootModeDev,
+				allowGBBForce: true,
+			},
+			ExtraAttr: []string{"firmware_experimental"},
+		}, {
+			Name: "dev_gbb_to_rec",
+			Pre:  pre.DevModeGBB(),
+			Val: bootModeTestParams{
+				bootToMode: fwCommon.BootModeRecovery,
+			},
+			ExtraAttr: []string{"firmware_experimental", "firmware_usb"},
+		}, {
+			Name: "rec_to_dev_gbb",
+			Pre:  pre.RecMode(),
+			Val: bootModeTestParams{
+				bootToMode:    fwCommon.BootModeDev,
+				allowGBBForce: true,
+			},
+			ExtraAttr: []string{"firmware_experimental", "firmware_usb"},
+		}, {
+			Name: "dev_gbb_to_normal",
+			Pre:  pre.DevModeGBB(),
+			Val: bootModeTestParams{
+				bootToMode: fwCommon.BootModeNormal,
+			},
+			ExtraAttr: []string{"firmware_experimental"},
 		}},
 		Vars: []string{"servo"},
 	})
@@ -187,8 +219,15 @@ func BootMode(ctx context.Context, s *testing.State) {
 
 	// Switch to tc.bootToMode.
 	// RebootToMode ensures that the DUT winds up in the expected boot mode afterward.
-	s.Logf("Transitioning to %s mode", tc.bootToMode)
-	if err = ms.RebootToMode(ctx, tc.bootToMode); err != nil {
+	var opts []firmware.ModeSwitchOption
+	if tc.allowGBBForce {
+		opts = append(opts, firmware.AllowGBBForce)
+	} else if !pv.ForcesDevMode() {
+		// Don't check the dev-force GBB flag if there's no reason for it to have been set.
+		opts = append(opts, firmware.AssumeGBBFlagsCorrect)
+	}
+	s.Logf("Transitioning to %s mode with options %+v", tc.bootToMode, opts)
+	if err = ms.RebootToMode(ctx, tc.bootToMode, opts...); err != nil {
 		s.Fatalf("Error during transition from %s to %s: %+v", fwCommon.BootModeNormal, tc.bootToMode, err)
 	}
 	s.Log("Transition completed successfully")
