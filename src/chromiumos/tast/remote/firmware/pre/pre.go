@@ -40,9 +40,15 @@ func NormalMode() testing.Precondition {
 	return normalMode
 }
 
-// DevMode boots to Developer Mode.
+// DevMode boots to Developer Mode via the keypress workflow.
 func DevMode() testing.Precondition {
 	return devMode
+}
+
+// DevModeGBB boots to Developer Mode via GBB force.
+// This is stabler than the keypress workflow, but is not appropriate for all tests.
+func DevModeGBB() testing.Precondition {
+	return devModeGBB
 }
 
 // RecMode boots to Recover Mode. Tests which use RecMode() need to use the Attr `firmware_usb` also.
@@ -51,12 +57,16 @@ func RecMode() testing.Precondition {
 }
 
 // newPrecondition creates an instance of firmware Precondition.
-func newPrecondition(mode common.BootMode) testing.Precondition {
+func newPrecondition(mode common.BootMode, forceDev bool) testing.Precondition {
+	flags := pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()}
+	if forceDev {
+		flags.Set = append(flags.Set, pb.GBBFlag_FORCE_DEV_SWITCH_ON)
+	}
 	return &impl{
 		v: &Value{
 			BootMode: mode,
 			// Default GBBFlagsState for firmware testing.
-			GBBFlags: pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()},
+			GBBFlags: flags,
 		},
 		// The maximum time that the Prepare method should take, adjust as needed.
 		timeout: 5 * time.Minute,
@@ -65,9 +75,10 @@ func newPrecondition(mode common.BootMode) testing.Precondition {
 
 // Create the preconditions to be shared by tests in the run.
 var (
-	normalMode = newPrecondition(common.BootModeNormal)
-	devMode    = newPrecondition(common.BootModeDev)
-	recMode    = newPrecondition(common.BootModeRecovery)
+	normalMode = newPrecondition(common.BootModeNormal, false)
+	devMode    = newPrecondition(common.BootModeDev, false)
+	devModeGBB = newPrecondition(common.BootModeDev, true)
+	recMode    = newPrecondition(common.BootModeRecovery, false)
 )
 
 // Prepare ensures that the DUT is booted into the specified mode.
@@ -145,7 +156,11 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 			}
 			i.usbKeyVerified = true
 		}
-		if err := i.rebootToMode(ctx, i.v.BootMode); err != nil {
+		opts := []firmware.ModeSwitchOption{firmware.AssumeGBBFlagsCorrect}
+		if i.v.ForcesDevMode() {
+			opts = append(opts, firmware.AllowGBBForce)
+		}
+		if err := i.rebootToMode(ctx, i.v.BootMode, opts...); err != nil {
 			s.Fatalf("Failed to reboot to mode %q: %s", i.v.BootMode, err)
 		}
 	}
@@ -182,7 +197,11 @@ func (i *impl) Close(ctx context.Context, s *testing.PreState) {
 
 // String identifies this Precondition.
 func (i *impl) String() string {
-	return string(i.v.BootMode)
+	name := string(i.v.BootMode)
+	if i.v.ForcesDevMode() {
+		name += "-gbb"
+	}
+	return name
 }
 
 // Timeout is the max time needed to prepare this Precondition.
@@ -248,12 +267,12 @@ func (i *impl) restoreBootMode(ctx context.Context) error {
 }
 
 // rebootToMode reboots to the specified mode using the ModeSwitcher, it assumes the helper is present.
-func (i *impl) rebootToMode(ctx context.Context, mode common.BootMode) error {
+func (i *impl) rebootToMode(ctx context.Context, mode common.BootMode, opts ...firmware.ModeSwitchOption) error {
 	ms, err := firmware.NewModeSwitcher(ctx, i.v.Helper)
 	if err != nil {
 		return err
 	}
-	if err := ms.RebootToMode(ctx, mode); err != nil {
+	if err := ms.RebootToMode(ctx, mode, opts...); err != nil {
 		return err
 	}
 	return nil
@@ -309,15 +328,23 @@ func (i *impl) setAndCheckGBBFlags(ctx context.Context, req pb.GBBFlagsState) er
 
 // rebootIfRequired reboots the DUT if any flags that require a reboot have changed.
 func (i *impl) rebootIfRequired(ctx context.Context, a, b pb.GBBFlagsState) error {
-	if common.GBBFlagsChanged(a, b, common.RebootRequiredGBBFlags()) {
-		ms, err := firmware.NewModeSwitcher(ctx, i.v.Helper)
-		if err != nil {
-			return err
-		}
-		testing.ContextLog(ctx, "Resetting DUT due to GBB flag change")
-		if err := ms.ModeAwareReboot(ctx, firmware.WarmReset); err != nil {
-			return err
+	if !common.GBBFlagsChanged(a, b, common.RebootRequiredGBBFlags()) {
+		return nil
+	}
+	ms, err := firmware.NewModeSwitcher(ctx, i.v.Helper)
+	if err != nil {
+		return err
+	}
+	testing.ContextLog(ctx, "Resetting DUT due to GBB flag change")
+	return ms.ModeAwareReboot(ctx, firmware.WarmReset)
+}
+
+// ForcesDevMode reports whether the Precondition forces dev mode.
+func (v *Value) ForcesDevMode() bool {
+	for _, flag := range v.GBBFlags.Set {
+		if flag == pb.GBBFlag_FORCE_DEV_SWITCH_ON {
+			return true
 		}
 	}
-	return nil
+	return false
 }

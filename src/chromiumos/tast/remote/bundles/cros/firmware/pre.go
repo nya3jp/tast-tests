@@ -36,6 +36,11 @@ func init() {
 			// TODO(aluo): Re-enable when b/169704069 is resolved.
 			ExtraAttr: []string{"firmware_experimental"},
 		}, {
+			Name:      "dev_gbb",
+			Val:       common.BootModeDev,
+			Pre:       pre.DevModeGBB(),
+			ExtraAttr: []string{"firmware_experimental"},
+		}, {
 			Name:      "rec",
 			Val:       common.BootModeRecovery,
 			Pre:       pre.RecMode(),
