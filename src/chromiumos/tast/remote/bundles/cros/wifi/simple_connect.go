@@ -517,6 +517,7 @@ func init() {
 					),
 					pingOps: []ping.Option{ping.Count(15), ping.Interval(1)},
 				}},
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("bob", "kevin", "elm", "hana", "veyron_fievel", "veyron_tiger")),
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for WPA-EAP encryption.
 				Name: "8021xwpa",

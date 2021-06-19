@@ -441,6 +441,7 @@ func simpleConnect8021xWEP() simpleConnectParams {
 	return simpleConnectParams{
 		Name: "8021xwep",
 		Doc:  simpleConnectDocPref("a protected network supporting for dynamic WEP encryption."),
+		ExtraHardwareDeps: `hwdep.D(hwdep.SkipOnPlatform("bob", "kevin", "elm", "hana", "veyron_fievel", "veyron_tiger"))`,
 		Val: []simpleConnectParamsVal{{
 			APOpts: simpleConnectCommonSecApOpts,
 			SecConfFac: `dynamicwep.NewConfigFactory(
