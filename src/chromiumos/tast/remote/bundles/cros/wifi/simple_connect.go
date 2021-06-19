@@ -517,6 +517,8 @@ func init() {
 					),
 					pingOps: []ping.Option{ping.Count(15), ping.Interval(1)},
 				}},
+				// Skip on Marvell because of 8021xwep test failure post security fixes b/187853331, no plans to fix.
+				ExtraHardwareDeps: hwdep.D(hwdep.WifiNotMarvell()),
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for WPA-EAP encryption.
 				Name: "8021xwpa",
