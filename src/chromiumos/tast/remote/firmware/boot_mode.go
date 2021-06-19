@@ -17,6 +17,7 @@ import (
 	fwCommon "chromiumos/tast/common/firmware"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/servo"
+	fwpb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
 )
 
@@ -46,9 +47,27 @@ func NewModeSwitcher(ctx context.Context, h *Helper) (*ModeSwitcher, error) {
 	}, nil
 }
 
+// ModeSwitchOption allows mode-switching methods to exhibit different behaviors.
+type ModeSwitchOption int
+
+const (
+	// AllowGBBForce allows the DUT to force rebooting into dev mode via GBB flags.
+	AllowGBBForce ModeSwitchOption = iota
+)
+
+// msOptsContain determines whether a slice of ModeSwitchOptions contains a specific Option.
+func msOptsContain(opts []ModeSwitchOption, want ModeSwitchOption) bool {
+	for _, o := range opts {
+		if o == want {
+			return true
+		}
+	}
+	return false
+}
+
 // RebootToMode reboots the DUT into the specified boot mode.
 // This has the side-effect of disconnecting the RPC client.
-func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMode) error {
+func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMode, opts ...ModeSwitchOption) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
@@ -57,6 +76,27 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 	fromMode, err := h.Reporter.CurrentBootMode(ctx)
 	if err != nil {
 		return errors.Wrap(err, "determining boot mode at the start of RebootToMode")
+	}
+
+	// If booting to anything but dev mode, ensure that we're not forcing dev mode.
+	if err := h.RequireBiosServiceClient(ctx); err != nil {
+		return errors.Wrap(err, "requiring BIOS service client")
+	}
+	if toMode != fwCommon.BootModeDev {
+		flags := fwpb.GBBFlagsState{
+			Clear: []fwpb.GBBFlag{fwpb.GBBFlag_FORCE_DEV_SWITCH_ON},
+		}
+		if _, err := h.BiosServiceClient.ClearAndSetGBBFlags(ctx, &flags); err != nil {
+			return errors.Wrap(err, "clearing GBB flag to stop forcing dev-mode")
+		}
+	} else if toMode == fwCommon.BootModeDev && msOptsContain(opts, AllowGBBForce) {
+		// Set the dev-force GBB flag prior to closing the RPC server
+		flags := fwpb.GBBFlagsState{
+			Set: []fwpb.GBBFlag{fwpb.GBBFlag_FORCE_DEV_SWITCH_ON},
+		}
+		if _, err := h.BiosServiceClient.ClearAndSetGBBFlags(ctx, &flags); err != nil {
+			return errors.Wrap(err, "clearing GBB flag to stop forcing dev-mode")
+		}
 	}
 
 	// When booting to a different image, such as normal vs. recovery, the new image might
@@ -113,14 +153,23 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			return err
 		}
 	case fwCommon.BootModeDev:
-		// 1. Set power_state to 'rec', but don't show the DUT a USB image to boot from.
-		// 2. From the firmware screen that appears, press keys to transition to dev mode.
-		//    The specific keypresses will depend on the DUT's ModeSwitcherType.
-		if err := ms.enableRecMode(ctx, servo.USBMuxHost); err != nil {
-			return err
-		}
-		if err := ms.fwScreenToDevMode(ctx); err != nil {
-			return errors.Wrap(err, "moving from firmware screen to dev mode")
+		if msOptsContain(opts, AllowGBBForce) {
+			// 1. Set the GBB flag which forces dev mode upon reboot.
+			//    This was handled earlier in this function, prior to terminating the RPC connection.
+			// 2. Reboot the DUT.
+			if err := h.DUT.Reboot(ctx); err != nil {
+				return errors.Wrap(err, "rebooting DUT to force dev mode via GBB")
+			}
+		} else {
+			// 1. Set power_state to 'rec', but don't show the DUT a USB image to boot from.
+			// 2. From the firmware screen that appears, press keys to transition to dev mode.
+			//    The specific keypresses will depend on the DUT's ModeSwitcherType.
+			if err := ms.enableRecMode(ctx, servo.USBMuxHost); err != nil {
+				return err
+			}
+			if err := ms.fwScreenToDevMode(ctx); err != nil {
+				return errors.Wrap(err, "moving from firmware screen to dev mode")
+			}
 		}
 	default:
 		return errors.Errorf("unsupported firmware boot mode: %s", toMode)
