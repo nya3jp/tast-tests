@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2f5e0be_6168b039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-19T06:35:41Z",
+      "side": 1,
+      "message": "Can we check if scrollToEnd or scrollTo will works here?",
+      "range": {
+        "startLine": 466,
+        "startChar": 46,
+        "endLine": 466,
+        "endChar": 59
+      },
+      "revId": "4ab2a5098864dd714dc1196885e07bcdb7608663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13ec8017_743b1aa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-19T06:35:41Z",
+      "side": 1,
+      "message": "But how are we ensuring that it scrolled as there is no verification here. Suppose when scroll doesn\u0027t work and returns false then scrollForwdInfo will be false and the test just logs and passes and doesn\u0027t assert anything.",
+      "range": {
+        "startLine": 470,
+        "startChar": 1,
+        "endLine": 473,
+        "endChar": 0
+      },
+      "revId": "4ab2a5098864dd714dc1196885e07bcdb7608663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
