@@ -19,6 +19,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const resetShillTimeout = 30 * time.Second
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "shillReset",
@@ -28,9 +30,9 @@ func init() {
 			"stevenjb@chromium.org",          // network-health tech lead
 			"cros-network-health@google.com", // network-health team
 		},
-		PreTestTimeout:  30 * time.Second,
+		PreTestTimeout:  resetShillTimeout + 5*time.Second,
 		PostTestTimeout: 5 * time.Second,
-		TearDownTimeout: 30 * time.Second,
+		TearDownTimeout: resetShillTimeout + 5*time.Second,
 		Impl:            &shillFixture{},
 	})
 }
@@ -62,7 +64,7 @@ func resetShill(ctx context.Context) []error {
 	expectProps := map[string]interface{}{
 		shillconst.ServicePropertyIsConnected: true,
 	}
-	if _, err := manager.WaitForServiceProperties(ctx, expectProps, 15*time.Second); err != nil {
+	if _, err := manager.WaitForServiceProperties(ctx, expectProps, resetShillTimeout); err != nil {
 		errs = append(errs, errors.Wrap(err, "failed to wait for connected service"))
 	}
 
