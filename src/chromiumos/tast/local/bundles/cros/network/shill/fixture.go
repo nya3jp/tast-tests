@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
@@ -39,22 +40,22 @@ func init() {
 func resetShill(ctx context.Context) []error {
 	var errs []error
 	if err := upstart.StopJob(ctx, "shill"); err != nil {
-		errs = append(errs, err)
+		errs = append(errs, errors.Wrap(err, "failed to stop shill"))
 	}
 	if err := os.Remove(shillconst.DefaultProfilePath); err != nil && !os.IsNotExist(err) {
-		errs = append(errs, err)
+		errs = append(errs, errors.Wrap(err, "failed to remove default profile"))
 	}
 	if err := upstart.RestartJob(ctx, "shill"); err != nil {
 		// No more can be done if shill doesn't start
-		return append(errs, err)
+		return append(errs, errors.Wrap(err, "failed to restart shill"))
 	}
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		// No more can be done if a manger interface cannot be created
-		return append(errs, err)
+		return append(errs, errors.Wrap(err, "failed to create new shill manager"))
 	}
 	if err = manager.PopAllUserProfiles(ctx); err != nil {
-		errs = append(errs, err)
+		errs = append(errs, errors.Wrap(err, "failed to pop all user profiles"))
 	}
 
 	// Wait until a service is connected.
@@ -62,7 +63,7 @@ func resetShill(ctx context.Context) []error {
 		shillconst.ServicePropertyIsConnected: true,
 	}
 	if _, err := manager.WaitForServiceProperties(ctx, expectProps, 15*time.Second); err != nil {
-		errs = append(errs, err)
+		errs = append(errs, errors.Wrap(err, "failed to wait for connected service"))
 	}
 
 	return errs
@@ -101,7 +102,7 @@ func (f *shillFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 		for _, err := range errs {
 			s.Error("resetShill error: ", err)
 		}
-		s.Fatal("Failed resetting shill")
+		s.Fatal("Failed resetting shill in PreTest")
 	}
 
 	success = true
@@ -117,6 +118,6 @@ func (f *shillFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 		for _, err := range errs {
 			s.Error("resetShill error: ", err)
 		}
-		s.Error("Failed resetting shill")
+		s.Error("Failed resetting shill in TearDown")
 	}
 }
