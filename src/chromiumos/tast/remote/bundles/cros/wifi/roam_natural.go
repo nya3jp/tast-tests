@@ -254,11 +254,11 @@ func executeRoamNaturalTest(ctx context.Context, s *testing.State, apAllParams [
 			}
 
 			for offsetRangeIdx, offsetRange := range offsetRanges {
-				err = tf.ClearBlacklistDUT(ctx)
+				err = tf.ClearBSSIDIgnoreDUT(ctx)
 				if err != nil {
-					s.Fatal("Failed to clear wpa blacklist: ", err)
+					s.Fatal("Failed to clear wpa BSSID_IGNORE: ", err)
 				}
-				rnDebug(s, "Cleared wpa blacklist")
+				rnDebug(s, "Cleared wpa BSSID_IGNORE")
 
 				wpaMonitor.ClearEvents(ctx)
 

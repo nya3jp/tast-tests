@@ -1188,14 +1188,13 @@ func (tf *TestFixture) CurrentClientTime(ctx context.Context) (time.Time, error)
 	return currentTime, nil
 }
 
-// ClearBlacklistDUT runs "wpa_cli blacklist clear" command on DUT
-// TODO(b/161915905): replace "blacklist" with more inclusive term once wpa_supplicant updated.
-func (tf *TestFixture) ClearBlacklistDUT(ctx context.Context) error {
+// ClearBSSIDIgnoreDUT clears the BSSID_IGNORE list on DUT.
+func (tf *TestFixture) ClearBSSIDIgnoreDUT(ctx context.Context) error {
 	wpa := wpacli.NewRunner(&cmd.RemoteCmdRunner{Host: tf.dut.Conn()})
 
-	err := wpa.ClearBlacklist(ctx)
+	err := wpa.ClearBSSIDIgnore(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to clear WPA blacklist")
+		return errors.Wrap(err, "failed to clear WPA BSSID_IGNORE")
 	}
 
 	return nil
