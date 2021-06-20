@@ -58,10 +58,12 @@ func resetShill(ctx context.Context) []error {
 	}
 
 	// Wait until a service is connected.
+	deadline, _ := ctx.Deadline()
+	timeout := deadline.Sub(time.Now())
 	expectProps := map[string]interface{}{
 		shillconst.ServicePropertyIsConnected: true,
 	}
-	if _, err := manager.WaitForServiceProperties(ctx, expectProps, 15*time.Second); err != nil {
+	if _, err := manager.WaitForServiceProperties(ctx, expectProps, timeout); err != nil {
 		errs = append(errs, err)
 	}
 
