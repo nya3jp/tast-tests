@@ -61,7 +61,7 @@ func resetShill(ctx context.Context) []error {
 	expectProps := map[string]interface{}{
 		shillconst.ServicePropertyVisible: true,
 	}
-	if _, err := manager.WaitForServiceProperties(ctx, expectProps, 5*time.Second); err != nil {
+	if _, err := manager.WaitForServiceProperties(ctx, expectProps, 10*time.Second); err != nil {
 		errs = append(errs, err)
 	}
 
