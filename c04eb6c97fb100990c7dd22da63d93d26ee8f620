@@ -239,6 +239,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6e393b5_658114f0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/audio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-20T22:27:22Z",
+      "side": 1,
+      "message": "Moved it to `chromiumos/tast/local/input/voice` instead of placing it in vkb",
+      "parentUuid": "38a183b8_9e103edb",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "c04eb6c97fb100990c7dd22da63d93d26ee8f620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2bf1d972_e8cd5914",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/audio.go",
         "patchSetId": 2
