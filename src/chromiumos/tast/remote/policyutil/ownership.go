@@ -27,3 +27,22 @@ func EnsureTPMAndSystemStateAreReset(ctx context.Context, d *dut.DUT) error {
 
 	return nil
 }
+
+// ClearTPMIfOwned ensures a powerwash only if the tpm is already owned.
+func ClearTPMIfOwned(ctx context.Context, d *dut.DUT) error {
+	r := hwsec.NewCmdRunner(d)
+
+	helper, err := hwsec.NewHelper(r, d)
+	if err != nil {
+		return errors.Wrap(err, "helper creation error")
+	}
+
+	tpmInfo, err := helper.TPMManagerClient().GetNonsensitiveStatus(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to fetch owner information")
+	}
+	if tpmInfo.IsOwned {
+		return helper.EnsureTPMAndSystemStateAreReset(ctx)
+	}
+	return nil
+}

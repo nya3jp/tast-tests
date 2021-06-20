@@ -26,6 +26,7 @@ const (
 	ImageUSBKeyPwr       StringControl = "image_usbkey_pwr"
 	PowerState           StringControl = "power_state"
 	V4Role               StringControl = "servo_v4_role"
+	V4PDRole             StringControl = "servo_pd_role"
 	V4Type               StringControl = "servo_v4_type"
 	UARTCmd              StringControl = "servo_v4_uart_cmd"
 	WatchdogAdd          StringControl = "watchdog_add"
@@ -653,6 +654,55 @@ func (s *Servo) ToggleOffOn(ctx context.Context, ctrl OnOffControl) error {
 		return err
 	}
 	return nil
+}
+
+// GetV4PDRole returns the servo's current V4PDRole (SNK or SRC), or V4RoleNA if Servo is not V4.
+// Similar to GetV4Role, but some servos(SERVOV4P1-S) doesn't have V4Role, instead they have V4PDRole.
+func (s *Servo) GetV4PDRole(ctx context.Context) (V4RoleValue, error) {
+	isV4, err := s.IsServoV4(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "determining whether servo is v4")
+	}
+	if !isV4 {
+		return V4RoleNA, nil
+	}
+	role, err := s.GetString(ctx, V4PDRole)
+	if err != nil {
+		return "", err
+	}
+	return V4RoleValue(role), nil
+}
+
+// SetV4PDRole sets the V4PDRole control for a servo v4.
+// On a Servo version other than v4, this does nothing.
+// Similar to SetV4Role, but some servos(SERVOV4P1-S) doesn't have V4Role, instead they have V4PDRole.
+func (s *Servo) SetV4PDRole(ctx context.Context, newRole V4RoleValue) error {
+	// Determine the current V4 Role
+	currentRole, err := s.GetV4PDRole(ctx)
+	if err != nil {
+		return errors.Wrap(err, "getting current V4 role")
+	}
+
+	// Save the initial V4 Role so we can restore it during servo.Close()
+	if s.initialV4Role == "" {
+		testing.ContextLogf(ctx, "Saving initial V4Role %q for later", currentRole)
+		s.initialV4Role = currentRole
+	}
+
+	// If not using a servo V4, then we can't set the V4 Role
+	if currentRole == V4RoleNA {
+		testing.ContextLogf(ctx, "Skipping setting %q to %q on non-v4 servo", V4Role, newRole)
+		return nil
+	}
+
+	// If the current value is already the intended value,
+	// then don't bother resetting.
+	if currentRole == newRole {
+		testing.ContextLogf(ctx, "Skipping setting %q to %q, because that is the current value", V4Role, newRole)
+		return nil
+	}
+
+	return s.SetString(ctx, V4PDRole, string(newRole))
 }
 
 // ToggleOnOff turns a switch on and off again.
