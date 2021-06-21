@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
-	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -154,10 +153,6 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	if params.bigPIP {
 		if err := act.ResizeWindow(ctx, tconn, arc.BorderTopLeft, coords.NewPoint(0, 0), time.Second); err != nil {
 			s.Fatal("Could not resize the PIP window: ", err)
-		}
-
-		if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for location-change events to be propagated to the automation API: ", err)
 		}
 
 		pipWindow, err = ash.GetWindow(ctx, tconn, pipWindow.ID)
