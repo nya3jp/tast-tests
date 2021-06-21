@@ -16,6 +16,29 @@
       "message": "Hi Alvin, I believe using fast settings might work and solves the problem. Personally I would more prefer to use media apis to set input \u0026 output devices, which is actually called in behind of fast settings.\n\nPlease see the apis version in https://crrev.com/c/2974938. ",
       "revId": "741d30a385b94795248e615cf556f191255dbf8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85cd08ce_2867e6c3",
+        "filename": "src/chromiumos/tast/local/input/voice/audio.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-21T00:58:39Z",
+      "side": 1,
+      "message": "Please shorten 2s here for cleanup. Otherwise if this function fails on timeout, it would not execute Hide().",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 37
+      },
+      "revId": "741d30a385b94795248e615cf556f191255dbf8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
