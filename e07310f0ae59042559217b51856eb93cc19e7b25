@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e742ae9_4fb6f30f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-21T14:27:55Z",
+      "side": 1,
+      "message": "I will build on it (apply it to other tests and add necessary modifications) once we agree this looks good.",
+      "revId": "e07310f0ae59042559217b51856eb93cc19e7b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5233c1c2_4cf2f18c",
