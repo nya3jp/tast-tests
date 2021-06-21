@@ -70,6 +70,24 @@
       "parentUuid": "936c637b_32df5b6d",
       "revId": "790000cdd3dc6e688c1a65ffe9c28c955ca64605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb35de40_74ae43b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-21T00:47:53Z",
+      "side": 1,
+      "message": "Cool. It implies forcing clamshell mode will literally disable VK on tablet devices.",
+      "parentUuid": "2ea947f0_7b1b4e4a",
+      "revId": "790000cdd3dc6e688c1a65ffe9c28c955ca64605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
