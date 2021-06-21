@@ -90,12 +90,12 @@ func KVMRepros(ctx context.Context, s *testing.State) {
 		}
 
 		if out, err := syzutils.RunRepro(ctx, d, remotePath, 5*time.Second); err != nil {
-			s.Logf("RunRepro returned %v: with combined output: %v", err, out)
+			s.Logf("RunRepro returned %v: with combined output: %v", err, string(out))
 		}
 
 		didWarn, err := syzutils.WarningInDmesg(ctx, d)
 		if err != nil {
-			s.Fatal("warningInDmesg failed: ", err)
+			s.Fatalf("warningInDmesg failed after running sample %v: %v", fname, err)
 		} else if didWarn {
 			// TODO: Copy the warning log.
 			s.Fatalf("Warning found at sample %v, resetting DUT", fname)
