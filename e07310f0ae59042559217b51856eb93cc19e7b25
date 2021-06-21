@@ -100,6 +100,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9ac0a86_e0439b4b",
+        "filename": "src/chromiumos/tast/local/kioskmode/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-21T14:37:14Z",
+      "side": 1,
+      "message": "I will add the array as a configuration.\n\nI think we have to still split it like:\nExtraDevicePolicies\nand later:\nPublicAccountPolicies\n\nWhat do you think?",
+      "parentUuid": "52e049a9_adc544e4",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "e07310f0ae59042559217b51856eb93cc19e7b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f43d2811_621ca558",
         "filename": "src/chromiumos/tast/local/kioskmode/config.go",
         "patchSetId": 1
@@ -111,6 +135,23 @@
       "writtenOn": "2021-06-21T14:32:05Z",
       "side": 1,
       "message": "nit: defaults should suffice",
+      "revId": "e07310f0ae59042559217b51856eb93cc19e7b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b2e580e_e40c81e5",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-21T14:37:14Z",
+      "side": 1,
+      "message": "Kamil -\u003e remove.",
       "revId": "e07310f0ae59042559217b51856eb93cc19e7b25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
