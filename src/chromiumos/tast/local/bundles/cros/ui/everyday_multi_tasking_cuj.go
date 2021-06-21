@@ -42,7 +42,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "basic_ytmusic",
-				Timeout: 10 * time.Minute,
+				Timeout: 20 * time.Minute,
 				Val: multiTaskingParam{
 					tier:     cuj.Basic,
 					appName:  et.YoutubeMusicAppName,
@@ -50,7 +50,7 @@ func init() {
 				},
 			}, {
 				Name:    "basic_ytmusic_bluetooth",
-				Timeout: 10 * time.Minute,
+				Timeout: 20 * time.Minute,
 				Val: multiTaskingParam{
 					tier:     cuj.Basic,
 					appName:  et.YoutubeMusicAppName,
@@ -58,7 +58,7 @@ func init() {
 				},
 			}, {
 				Name:    "basic_spotify_bluetooth",
-				Timeout: 10 * time.Minute,
+				Timeout: 20 * time.Minute,
 				Val: multiTaskingParam{
 					tier:     cuj.Basic,
 					appName:  et.SpotifyAppName,
@@ -66,7 +66,7 @@ func init() {
 				},
 			}, {
 				Name:    "plus_ytmusic",
-				Timeout: 15 * time.Minute,
+				Timeout: 30 * time.Minute,
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
 					appName:  et.YoutubeMusicAppName,
@@ -74,7 +74,7 @@ func init() {
 				},
 			}, {
 				Name:    "plus_ytmusic_bluetooth",
-				Timeout: 15 * time.Minute,
+				Timeout: 30 * time.Minute,
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
 					appName:  et.YoutubeMusicAppName,
@@ -82,7 +82,7 @@ func init() {
 				},
 			}, {
 				Name:    "plus_spotify_bluetooth",
-				Timeout: 15 * time.Minute,
+				Timeout: 30 * time.Minute,
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
 					appName:  et.SpotifyAppName,
