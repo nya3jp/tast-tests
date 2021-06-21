@@ -6,8 +6,8 @@ package health
 
 import (
 	"context"
-	"reflect"
-	"strconv"
+	"encoding/json"
+	"strings"
 
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/croshealthd"
@@ -28,17 +28,30 @@ func init() {
 	})
 }
 
-type bluetoothAdapter struct {
-	name    string
-	address string
-	powered bool
+type adapterInfo struct {
+	Address             string `json:"address"`
+	Name                string `json:"name"`
+	NumConnectedDevices int    `json:"num_connected_devices"`
+	Powered             bool   `json:"powered"`
+}
+
+type bluetoothInfo struct {
+	Adapters []adapterInfo `json:"adapters"`
 }
 
 func ProbeBluetoothInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryBluetooth}
-	records, err := croshealthd.RunAndParseTelem(ctx, params, s.OutDir())
+	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get Bluetooth telemetry info: ", err)
+	}
+
+	dec := json.NewDecoder(strings.NewReader(string(rawData)))
+	dec.DisallowUnknownFields()
+
+	var info bluetoothInfo
+	if err := dec.Decode(&info); err != nil {
+		s.Fatalf("Failed to decode bluetooth data [%q], err [%v]", rawData, err)
 	}
 
 	// Get Bluetooth adapter values to compare to the output of cros_healthd.
@@ -49,67 +62,33 @@ func ProbeBluetoothInfo(ctx context.Context, s *testing.State) {
 
 	// If cros_healthd and D-Bus both report no adapters, there is no output to
 	// verify.
-	if len(records) == 1 && len(adapters) == 0 {
+	if len(info.Adapters) == 0 && len(adapters) == 0 {
 		return
-	}
-
-	if len(records) != 2 {
-		s.Fatalf("Wrong number of output lines: got %d; want 2", len(records))
 	}
 
 	if len(adapters) != 1 {
 		s.Fatalf("Unexpected Bluetooth adapters count: got %d; want 1", len(adapters))
 	}
 
-	adapter := adapters[0]
-	var btAdapter bluetoothAdapter
-	if btAdapter.name, err = adapter.Name(ctx); err != nil {
+	if name, err := adapters[0].Name(ctx); err != nil {
 		s.Fatal("Unable to get name property value: ", err)
+	} else if info.Adapters[0].Name != name {
+		s.Errorf("Invalid name: got %s; want %s", info.Adapters[0].Name, name)
 	}
 
-	if btAdapter.address, err = adapter.Address(ctx); err != nil {
+	if address, err := adapters[0].Address(ctx); err != nil {
 		s.Fatal("Unable to get address property value: ", err)
+	} else if info.Adapters[0].Address != address {
+		s.Errorf("Invalid address: got %s; want %s", info.Adapters[0].Address, address)
 	}
 
-	if btAdapter.powered, err = adapter.Powered(ctx); err != nil {
+	if powered, err := adapters[0].Powered(ctx); err != nil {
 		s.Fatal("Unable to get powered property value: ", err)
+	} else if info.Adapters[0].Powered != powered {
+		s.Errorf("Invalid powered value: got %v; want %v", info.Adapters[0].Powered, powered)
 	}
 
-	// Verify the headers are correct.
-	want := []string{"name", "address", "powered", "num_connected_devices"}
-	got := records[0]
-	if !reflect.DeepEqual(want, got) {
-		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
-	}
-
-	// Verify the values are correct.
-	vals := records[1]
-	if len(vals) != 4 {
-		s.Fatalf("Wrong number of values: got %d; want 4", len(vals))
-	}
-
-	if vals[0] != btAdapter.name {
-		s.Errorf("Invalid name: got %s; want %s", vals[0], btAdapter.name)
-	}
-
-	if vals[1] != btAdapter.address {
-		s.Errorf("Invalid address: got %s; want %s", vals[1], btAdapter.address)
-	}
-
-	var powered string
-	if btAdapter.powered {
-		powered = "true"
-	} else {
-		powered = "false"
-	}
-
-	if vals[2] != powered {
-		s.Errorf("Invalid powered value: got %s; want %s", vals[2], powered)
-	}
-
-	if num, err := strconv.Atoi(vals[3]); err != nil {
-		s.Errorf("Failed to convert %q (num_connected_devices) to integer: %v", vals[3], err)
-	} else if num < 0 {
-		s.Errorf("Invalid num_connected_devices: got %v; want 0+", num)
+	if info.Adapters[0].NumConnectedDevices < 0 {
+		s.Errorf("Invalid num_connected_devices: got %v; want 0+", info.Adapters[0].NumConnectedDevices)
 	}
 }
