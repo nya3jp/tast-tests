@@ -133,6 +133,15 @@ func itsUnzip(ctx context.Context, zipPath, outDir string) error {
 	return nil
 }
 
+func binPath(ctx context.Context, binName string) (string, error) {
+	output, err := testexec.CommandContext(ctx, "which", binName).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to get path of binary %v", binName)
+	}
+	// Trailing newline char is trimmed.
+	return strings.TrimSpace(string(output)), nil
+}
+
 func (p *itsPreImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 	if p.prepared {
 		return &ITSHelper{p}
@@ -201,6 +210,22 @@ func (p *itsPreImpl) Prepare(ctx context.Context, s *testing.PreState) interface
 			s.DataPath(patch)).Run(testexec.DumpLogOnError); err != nil {
 			s.Fatal("Failed to patch test scripts: ", err)
 		}
+	}
+
+	// Hijack default python path with a symbolic link to python3.
+	// TODO(b/187788514): Remove hijack hack here after Tauto python2 wrapper removed.
+	py3Path, err := binPath(ctx, "python3")
+	if err != nil {
+		s.Fatal("Failed to get python3 path: ", err)
+	}
+	tempPyPath := path.Join(p.dir, "python")
+	if err := os.Symlink(py3Path, tempPyPath); err != nil {
+		s.Fatalf("Failed to create symlink for python3 path %v: %v", py3Path, err)
+	}
+	if pyPath, err := binPath(ctx, "python"); err != nil {
+		s.Fatal("Failed to get python path: ", err)
+	} else if pyPath != tempPyPath {
+		s.Fatalf("Failed to hijack python path from %v to %v", pyPath, tempPyPath)
 	}
 
 	p.prepared = true
