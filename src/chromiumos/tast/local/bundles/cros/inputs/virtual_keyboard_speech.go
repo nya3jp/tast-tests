@@ -42,24 +42,108 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
+		Data:         []string{audioFileCN},
 		Params: []testing.Param{
-			{
-				Name:      "hello_en",
-				ExtraData: []string{audioFileEN},
-				Val: speechTestParams{
-					audioFile:    audioFileEN,
-					expectedText: "Hello",
-					imeID:        ime.INPUTMETHOD_XKB_US_ENG,
-				},
-			}, {
-				Name:      "hello_cn",
-				ExtraData: []string{audioFileCN},
-				Val: speechTestParams{
-					audioFile:    audioFileCN,
-					expectedText: "你好",
-					imeID:        ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
-				},
-			},
+			{Name: "1"},
+			{Name: "2"},
+			{Name: "3"},
+			{Name: "4"},
+			{Name: "5"},
+			{Name: "6"},
+			{Name: "7"},
+			{Name: "8"},
+			{Name: "9"},
+			{Name: "10"},
+			{Name: "11"},
+			{Name: "12"},
+			{Name: "13"},
+			{Name: "14"},
+			{Name: "15"},
+			{Name: "16"},
+			{Name: "17"},
+			{Name: "18"},
+			{Name: "19"},
+			{Name: "20"},
+			{Name: "21"},
+			{Name: "22"},
+			{Name: "23"},
+			{Name: "24"},
+			{Name: "25"},
+			{Name: "26"},
+			{Name: "27"},
+			{Name: "28"},
+			{Name: "29"},
+			{Name: "30"},
+			{Name: "31"},
+			{Name: "32"},
+			{Name: "33"},
+			{Name: "34"},
+			{Name: "35"},
+			{Name: "36"},
+			{Name: "37"},
+			{Name: "38"},
+			{Name: "39"},
+			{Name: "40"},
+			{Name: "41"},
+			{Name: "42"},
+			{Name: "43"},
+			{Name: "44"},
+			{Name: "45"},
+			{Name: "46"},
+			{Name: "47"},
+			{Name: "48"},
+			{Name: "49"},
+			{Name: "50"},
+			{Name: "51"},
+			{Name: "52"},
+			{Name: "53"},
+			{Name: "54"},
+			{Name: "55"},
+			{Name: "56"},
+			{Name: "57"},
+			{Name: "58"},
+			{Name: "59"},
+			{Name: "60"},
+			{Name: "61"},
+			{Name: "62"},
+			{Name: "63"},
+			{Name: "64"},
+			{Name: "65"},
+			{Name: "66"},
+			{Name: "67"},
+			{Name: "68"},
+			{Name: "69"},
+			{Name: "70"},
+			{Name: "71"},
+			{Name: "72"},
+			{Name: "73"},
+			{Name: "74"},
+			{Name: "75"},
+			{Name: "76"},
+			{Name: "77"},
+			{Name: "78"},
+			{Name: "79"},
+			{Name: "80"},
+			{Name: "81"},
+			{Name: "82"},
+			{Name: "83"},
+			{Name: "84"},
+			{Name: "85"},
+			{Name: "86"},
+			{Name: "87"},
+			{Name: "88"},
+			{Name: "89"},
+			{Name: "90"},
+			{Name: "91"},
+			{Name: "92"},
+			{Name: "93"},
+			{Name: "94"},
+			{Name: "95"},
+			{Name: "96"},
+			{Name: "97"},
+			{Name: "98"},
+			{Name: "99"},
+			{Name: "100"},
 		},
 	})
 }
@@ -82,9 +166,9 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Test parameters that are specific to the current test case.
-	audioFile := s.Param().(speechTestParams).audioFile
-	expectedText := s.Param().(speechTestParams).expectedText
-	testIME := ime.IMEPrefix + string(s.Param().(speechTestParams).imeID)
+	audioFile := audioFileCN
+	expectedText := "你好"
+	testIME := ime.IMEPrefix + string(ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED)
 
 	// Set up the test audio file.
 	testFileLocation := filepath.Join(filesapp.DownloadPath, audioFile)
@@ -113,27 +197,19 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to show VK: ", err)
 	}
 
-	validateAction := func(ctx context.Context) error {
-		cleanup, err := input.EnableAloopInput(ctx, tconn)
-		if err != nil {
-			return err
-		}
-		defer cleanup(ctx)
-		if err = uiauto.Combine("verify audio input",
-			its.Clear(inputField),
-			vkbCtx.SwitchToVoiceInput(),
-			func(ctx context.Context) error {
-				return input.AudioFromFile(ctx, testFileLocation)
-			},
-			its.WaitForFieldValueToBe(inputField, expectedText),
-		)(ctx); err != nil {
-			return err
-		}
-		return nil
+	cleanup, err := input.EnableAloopInput(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to enable Aloop input: ", err)
 	}
-
-	// TODO(b/191086453): Investigate the root cause of voice flakiness.
-	if err := uiauto.New(tconn).WithTimeout(time.Minute).Retry(5, validateAction)(ctx); err != nil {
+	defer cleanup(ctx)
+	if err = uiauto.Combine("verify audio input",
+		its.Clear(inputField),
+		vkbCtx.SwitchToVoiceInput(),
+		func(ctx context.Context) error {
+			return input.AudioFromFile(ctx, testFileLocation)
+		},
+		its.WaitForFieldValueToBe(inputField, expectedText),
+	)(ctx); err != nil {
 		s.Fatal("Failed to validate voice input: ", err)
 	}
 }

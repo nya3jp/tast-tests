@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/testing"
 )
 
@@ -39,69 +40,66 @@ func AudioFromFile(ctx context.Context, audioFilePath string) error {
 
 // EnableAloopInput loads and enables Aloop then sets it as active input node.
 func EnableAloopInput(ctx context.Context, tconn *chrome.TestConn) (func(ctx context.Context), error) {
+	cras, err := audio.NewCras(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to cras")
+	}
+
 	// Load ALSA loopback module.
 	unload, err := audio.LoadAloop(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to load ALSA loopback module")
 	}
 
-	// Activate Aloop input node.
-	if err := func() error {
-		cras, err := audio.NewCras(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to connect to cras")
-		}
-
-		// Wait until the Aloop input node to be available.
-		aloopInputNode, err := findAloopInputNode(ctx, cras)
-		if err != nil {
-			return errors.New("failed to find Aloop input node")
-		}
-
-		if err := cras.SetActiveNode(ctx, aloopInputNode); err != nil {
-			return errors.New("failed to set Aloop input active")
-		}
-
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			aloopInputNode, err := findAloopInputNode(ctx, cras)
-			if err != nil {
-				return errors.New("failed to find Aloop input node")
-			}
-			if !aloopInputNode.Active {
-				return errors.New("Aloop input is not active")
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-			return errors.New("failed to find active Aloop input node")
-		}
-		return nil
-	}(); err != nil {
-		// Unload ALSA loopback if any following setups failed.
+	if err := uiauto.Combine("activate aloop nodes",
+		activateNode(tconn, cras, true),
+		activateNode(tconn, cras, false),
+	)(ctx); err != nil {
 		unload(ctx)
-		return nil, err
+		return nil, errors.New("failed to enable aloop")
 	}
-
-	return func(ctx context.Context) {
-		unload(ctx)
-	}, nil
+	testing.Sleep(ctx, 5*time.Second)
+	return unload, nil
 }
 
-func findAloopInputNode(ctx context.Context, c *audio.Cras) (audio.CrasNode, error) {
+func activateNode(tconn *chrome.TestConn, cras *audio.Cras, isInput bool) uiauto.Action {
+	return func(ctx context.Context) error {
+		node, err := findAloopNode(ctx, cras, isInput)
+		if err != nil {
+			return err
+		}
+		if err := cras.SetActiveNode(ctx, node); err != nil {
+			return errors.New("failed to set Aloop active")
+		}
+
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if node, err := findAloopNode(ctx, cras, isInput); err != nil {
+				return errors.Wrap(err, "failed to find node")
+			} else if !node.Active {
+				return errors.New("node is not activated")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second})
+	}
+}
+
+func findAloopNode(ctx context.Context, cras *audio.Cras, isInput bool) (audio.CrasNode, error) {
 	var aloopInputNode audio.CrasNode
-	err := testing.Poll(ctx, func(ctx context.Context) error {
-		nodes, err := c.GetNodes(ctx)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		nodes, err := cras.GetNodes(ctx)
 		if err != nil {
 			return err
 		}
 
 		for _, n := range nodes {
-			if n.Type == audio.AloopCrasNodeType && n.IsInput {
+			if n.Type == audio.AloopCrasNodeType && n.IsInput == isInput {
 				aloopInputNode = n
 				return nil
 			}
 		}
 		return errors.New("Aloop input node does not exist")
-	}, &testing.PollOptions{Timeout: 5 * time.Second})
-
-	return aloopInputNode, err
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return aloopInputNode, errors.Wrap(err, "failed to find node")
+	}
+	return aloopInputNode, nil
 }
