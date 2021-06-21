@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/printpreview"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -40,6 +39,7 @@ func init() {
 			"paper-io_printing",
 		},
 		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
+		Fixture:      "arcBooted",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Val:               "arc_print_ippusb_golden.pdf",
@@ -130,17 +130,8 @@ func Print(ctx context.Context, s *testing.State) {
 		attributes   = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
 	)
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
-	if err != nil {
-		s.Fatal("Failed to restart and log into Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close(ctx)
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
