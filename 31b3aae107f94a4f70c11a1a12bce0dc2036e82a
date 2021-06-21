@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "730f2818_294e2318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_toggle_advanced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-21T22:42:59Z",
+      "side": 1,
+      "message": "Can you make a settings package while you\u0027re here. It\u0027ll help with the 30% automation effort for settings dev (kyle) to copy",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 30
+      },
+      "revId": "31b3aae107f94a4f70c11a1a12bce0dc2036e82a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
