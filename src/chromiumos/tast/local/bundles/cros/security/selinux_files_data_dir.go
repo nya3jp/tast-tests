@@ -12,6 +12,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -47,6 +48,7 @@ const (
 	androidDataPath       = "/home/.shadow/[a-z0-9]*/mount/root/android-data"
 	dataPrefix            = "/data"
 	matchPathConFileName  = `matchpath_con_output`
+	selinuxRegexCapture   = `(\w:\w*:\w*:\w*)\S*`
 )
 
 func createSELinuxPolicyFile(ctx context.Context) error {
@@ -96,6 +98,39 @@ func verifyDirSELinuxContext(ctx context.Context, directoryPath, outDir string) 
 	// find and matchpathcon command.
 	filesAndDirMissingCount := strings.Count(matchPathConStr, "error: No such file or directory\n")
 
+	// Ruling out False-negative SELinux mismatches due to multicategory part.
+	scanner := bufio.NewScanner(strings.NewReader(matchPathConStr))
+	for scanner.Scan() {
+		line := scanner.Text()
+		// If the matchpathcon output doesn't contain "verified", it means
+		// verification failed. We further need to investigate if it
+		// failed due to SELinux multi-category part not matching.
+		if !strings.Contains(line, "verified") {
+
+			// Build regex for SELinux context.
+			// selinuxRegexp captures SELinux contexts like "u:object_r:shared_relro_file:s0".
+			selinuxRegexp := regexp.MustCompile(selinuxRegexCapture)
+			if matches := selinuxRegexp.FindAllString(line, -1); len(matches) == 2 {
+				// For a mismatch of SELinux context, get the value of
+				// actual and expected context from the output.
+				actualContext := matches[0]
+				expectedContext := matches[1]
+				// We can ignore the multi-category part if the
+				// expected context is a prefix of actual context.
+				// Example:
+				// /home/.shadow/*/libwebviewchromium32.relro has context
+				// u:object_r:shared_relro_file:s0:c13,c260,c512,c768,
+				// should be u:object_r:shared_relro_file:s0
+				if strings.HasPrefix(actualContext, expectedContext) {
+					verifiedCount = verifiedCount + 1
+				}
+			}
+		}
+	}
+	if scanner.Err() != nil {
+		return errors.Wrap(scanner.Err(), "failed to scan lines of matchpathcon output")
+	}
+
 	// Write the output of matchpathcon command.
 	matchPathConFileLocation := filepath.Join(outDir, matchPathConFileName)
 	if err := ioutil.WriteFile(matchPathConFileLocation,
@@ -139,7 +174,6 @@ func SELinuxFilesDataDir(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatalf("Failed to read from directory %v: %v", dataDirPath, err)
 	}
-	//TODO(vraheja): Investigate why SELinux contexts mismatch for few dirs. http://b/162202740
 	skipDirMap := map[string]struct{}{
 		"data":    {},
 		"media":   {},
