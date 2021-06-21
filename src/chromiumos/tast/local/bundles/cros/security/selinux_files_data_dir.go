@@ -12,6 +12,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"reflect"
 	"strings"
 	"time"
 
@@ -89,12 +90,67 @@ func verifyDirSELinuxContext(ctx context.Context, directoryPath, outDir string) 
 	if err != nil {
 		return err
 	}
+
 	matchPathConStr := string(matchPathConOutput)
 	linesCount := strings.Count(matchPathConStr, "\n")
 	verifiedCount := strings.Count(matchPathConStr, "verified.\n")
 	// Counts any files or dirs which are not found during the race between
 	// find and matchpathcon command.
 	filesAndDirMissingCount := strings.Count(matchPathConStr, "error: No such file or directory\n")
+
+	testing.ContextLog(ctx, "Lines Count = ", linesCount)
+	testing.ContextLog(ctx, "Verified Count = ", verifiedCount)
+	testing.ContextLog(ctx, "Files and Missing Count = ", filesAndDirMissingCount)
+
+	// Here ------ Vaibhav Raheja
+	// Vaibhav - starting from here
+	scanner := bufio.NewScanner(strings.NewReader(string(matchPathConOutput)))
+	//testing.ContextLog(ctx, "Vaibhav Raheja - printing the lines")
+	for scanner.Scan() {
+
+		line := scanner.Text()
+		both := strings.Contains(line, "has context") && strings.Contains(line, "should be")
+		if both == true {
+			testing.ContextLog(ctx, "Vaibhav Raheja - ", scanner.Text(), "\n")
+			hasContextIndex := strings.Index(line, "has context")
+			shouldBeIndex := strings.Index(line, "should be")
+			//newLinesIndex := strings.Index(line, "\n")
+			testing.ContextLog(ctx, "Has context Index = ", hasContextIndex, "\n")
+			testing.ContextLog(ctx, "Should Be Index = ", shouldBeIndex, "\n")
+			testing.ContextLog(ctx, "Total Length = ", len(line), "\n")
+
+			actual := string(line[hasContextIndex+12 : shouldBeIndex-2])
+			testing.ContextLog(ctx, "Actual Context = ", actual, "\n")
+
+			expected := string(line[shouldBeIndex+10:])
+			testing.ContextLog(ctx, "Expected Context = ", expected, "\n")
+
+			actualSlice := strings.Split(actual, ":")
+			expectedSlice := strings.Split(expected, ":")
+
+			testing.ContextLog(ctx, "Actual Slice Length = ", len(actualSlice), "\n")
+			testing.ContextLog(ctx, "Expected Slice Length = ", len(expectedSlice), "\n")
+
+			if len(actualSlice) > 0 {
+				actualSlice = actualSlice[:len(actualSlice)-1]
+			}
+
+			firstFourEqual := reflect.DeepEqual(actualSlice, expectedSlice)
+			testing.ContextLog(ctx, "First Four Equal = ", firstFourEqual, "\n")
+
+			if firstFourEqual == true {
+				verifiedCount = verifiedCount + 1
+			}
+
+		}
+
+	}
+	err = scanner.Err()
+
+	testing.ContextLog(ctx, "Lines Count After = ", linesCount)
+	testing.ContextLog(ctx, "Verified Count After= ", verifiedCount)
+	testing.ContextLog(ctx, "Files and Missing Count After= ", filesAndDirMissingCount)
+	// Vaibhav - ends here
 
 	// Write the output of matchpathcon command.
 	matchPathConFileLocation := filepath.Join(outDir, matchPathConFileName)
@@ -144,6 +200,7 @@ func SELinuxFilesDataDir(ctx context.Context, s *testing.State) {
 		"data":    {},
 		"media":   {},
 		"user_de": {},
+		//"misc":    {},
 	}
 
 	for _, dir := range dirList {
