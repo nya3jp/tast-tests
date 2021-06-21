@@ -6,12 +6,21 @@ package health
 
 import (
 	"context"
-	"reflect"
+	"encoding/json"
 	"strconv"
+	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
+
+type memoryInfo struct {
+	AvailableMemoryKib      int    `json:"available_memory_kib"`
+	FreeMemoryKib           int    `json:"free_memory_kib"`
+	PageFaultsSinceLastBoot string `json:"page_faults_since_last_boot"`
+	TotalMemoryKib          int    `json:"total_memory_kib"`
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -27,33 +36,46 @@ func init() {
 	})
 }
 
-func ProbeMemoryInfo(ctx context.Context, s *testing.State) {
-	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryMemory}
-	records, err := croshealthd.RunAndParseTelem(ctx, params, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to get memory telemetry info: ", err)
-	}
-
-	if len(records) != 2 {
-		s.Fatalf("Wrong number of output lines: got %d; want 2", len(records))
-	}
-
-	want := []string{"total_memory_kib", "free_memory_kib", "available_memory_kib",
-		"page_faults_since_last_boot"}
-	got := records[0]
-	if !reflect.DeepEqual(want, got) {
-		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
-	}
-
+func validateMemoryData(memory memoryInfo) error {
 	// Each memory metric should be a positive integer. This assumes that all
 	// machines will always have at least 1 free KiB of memory, and all machines
 	// will have page faulted at least once between boot and the time this test
 	// finishes executing.
-	for i, metric := range records[1] {
-		if val, err := strconv.Atoi(metric); err != nil {
-			s.Errorf("Failed to convert %q to integer: %v", metric, err)
-		} else if val <= 0 {
-			s.Errorf("Invalid %s: %v", want[i], val)
-		}
+	if memory.AvailableMemoryKib <= 0 {
+		return errors.Errorf("Failed. available_memory_kib is not greater than zero: %d", memory.AvailableMemoryKib)
+	}
+	if memory.FreeMemoryKib <= 0 {
+		return errors.Errorf("Failed. free_memory_kib is not greater than zero: %d", memory.FreeMemoryKib)
+	}
+	if memory.TotalMemoryKib <= 0 {
+		return errors.Errorf("Failed. total_memory_kib is not greater than zero: %d", memory.TotalMemoryKib)
+	}
+
+	if val, err := strconv.ParseInt(memory.PageFaultsSinceLastBoot, 10, 64); err != nil {
+		return errors.Wrapf(err, "failed to convert %q to integer", memory.PageFaultsSinceLastBoot)
+	} else if val <= 0 {
+		return errors.Errorf("Failed. page_faults_since_last_boot is not greater than zero: %d", val)
+	}
+
+	return nil
+}
+
+func ProbeMemoryInfo(ctx context.Context, s *testing.State) {
+	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryMemory}
+	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to get memory telemetry info: ", err)
+	}
+
+	dec := json.NewDecoder(strings.NewReader(string(rawData)))
+	dec.DisallowUnknownFields()
+
+	var memory memoryInfo
+	if err := dec.Decode(&memory); err != nil {
+		s.Fatalf("Failed to decode memory data [%q], err [%v]", rawData, err)
+	}
+
+	if err := validateMemoryData(memory); err != nil {
+		s.Fatalf("Failed to validate memory data, err [%v]", err)
 	}
 }
