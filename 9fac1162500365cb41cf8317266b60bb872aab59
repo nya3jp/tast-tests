@@ -22,6 +22,30 @@
       },
       "revId": "9fac1162500365cb41cf8317266b60bb872aab59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7e2f8ff_a781e7de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-06-21T05:43:38Z",
+      "side": 1,
+      "message": "It was added in CL:2963293.\nExpert mode in camera app is sort of like developer mode on android, that\u0027s intended for developer only, and we don\u0027t want normal user to misclick.\nOriginally it\u0027s only exposed via keyboard shortcut ctrl-shift-E, but since there\u0027s requests to use expert mode on tablet devices, we\u0027re also adding a hidden way to enable it without keyboard (click setting header 5 times) similar to how  developer mode is enabled on Android (click version 7 times).\n\nAdded a comment and point back to the bug.",
+      "parentUuid": "8ae92f30_e4afb0d7",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 23
+      },
+      "revId": "9fac1162500365cb41cf8317266b60bb872aab59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
