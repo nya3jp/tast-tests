@@ -96,6 +96,7 @@ var prePackages = []string{
 	"chromiumos/tast/local/chrome/mtp",
 	"chromiumos/tast/local/crostini",
 	"chromiumos/tast/local/drivefs",
+	"chromiumos/tast/local/kioskmode/fixtures",
 	"chromiumos/tast/local/lacros/launcher",
 	"chromiumos/tast/local/multivm",
 	"chromiumos/tast/local/policyutil/fixtures",

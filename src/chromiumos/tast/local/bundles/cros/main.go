@@ -91,6 +91,10 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/webrtc"
 	_ "chromiumos/tast/local/bundles/cros/wifi"
 	_ "chromiumos/tast/local/bundles/cros/wilco"
+
+	// imports kioskLoggedIn fixture. It is not referenced by tests as it
+	// returns FixtData type from policyutil/fixtures.
+	_ "chromiumos/tast/local/kioskmode/fixtures"
 )
 
 func main() {
