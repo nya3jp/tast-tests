@@ -294,6 +294,46 @@ func (ac *Context) WaitForEvent(finder *nodewith.Finder, ev event.Event, act Act
 	}
 }
 
+// Select sets the document selection to include everything between the two nodes at the offsets.
+func (ac *Context) Select(startNodeFinder *nodewith.Finder, startOffset int, endNodeFinder *nodewith.Finder, endOffset int) Action {
+	return func(ctx context.Context) error {
+		qStart, err := startNodeFinder.GenerateQuery()
+		if err != nil {
+			return err
+		}
+
+		qEnd, err := endNodeFinder.GenerateQuery()
+		if err != nil {
+			return err
+		}
+
+		// Use the nodeFinder code generation to get the start and end nodes.
+		// The statements are enclosed in block to avoid naming collision.
+		query := fmt.Sprintf(`
+		(async () => {
+			let startNode;
+			let endNode;
+			{
+				%s
+				startNode = node;
+			}
+			{
+				%s
+				endNode = node;
+			}
+			chrome.automation.setDocumentSelection({
+				anchorObject: startNode,
+				anchorOffset: %d,
+				focusObject: endNode,
+				focusOffset: %d
+			  });
+		})()
+		`, qStart, qEnd, startOffset, endOffset)
+
+		return ac.tconn.Eval(ctx, query, nil)
+	}
+}
+
 // Exists returns a function that returns nil if a node exists.
 // If any node in the chain is not found, it will return an error.
 func (ac *Context) Exists(finder *nodewith.Finder) Action {

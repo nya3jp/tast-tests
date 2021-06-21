@@ -10,7 +10,11 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -53,6 +57,9 @@ func SmartSelectionChrome(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
 
 	// Open page with an address on it.
 	if _, err := cr.NewConn(ctx, "https://google.com/search?q=1600+amphitheatre+parkway"); err != nil {
@@ -60,34 +67,23 @@ func SmartSelectionChrome(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for the address to appear.
-	node, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeStaticText, Name: "1600 amphitheatre parkway"}, 30*time.Second)
-	if err != nil {
+	address := nodewith.Name("1600 amphitheatre parkway").Role(role.StaticText)
+	if err := ui.WaitUntilExists(address)(ctx); err != nil {
 		s.Fatal("Failed to wait for address to load: ", err)
 	}
-	defer node.Release(ctx)
 
-	// Select the address.
-	watcher, err := ui.NewRootWatcher(ctx, tconn, ui.EventTypeTextSelectionChanged)
-	if err != nil {
-		s.Fatal("Failed to create selection watcher: ", err)
-	}
-	defer watcher.Release(ctx)
-	if err := ui.Select(ctx, node, 0, node, 25); err != nil {
+	// Select the address and setup watcher to wait for text selection event
+	if err := ui.WaitForEvent(nodewith.Root(),
+		event.TextSelectionChanged,
+		ui.Select(address, 0, address, 25))(ctx); err != nil {
 		s.Fatal("Failed to select address: ", err)
 	}
-	es, err := watcher.WaitForEvent(ctx, 20*time.Second)
-	if err != nil {
-		s.Fatal("Failed to wait for the address to be selected: ", err)
-	}
-	defer es.Release(ctx)
 
-	// Right click the selected address.
-	if err := node.RightClick(ctx); err != nil {
-		s.Fatal("Failed to right click address: ", err)
-	}
-
-	// Ensure the smart selection map option is available.
-	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{Role: ui.RoleTypeMenuItem, Name: "Map"}, 30*time.Second); err != nil {
+	// Right click the selected address and ensure the smart selection map option is available.
+	mapOption := nodewith.Name("Map").Role(role.MenuItem)
+	if err := uiauto.Combine("Show context menu",
+		ui.RightClick(address),
+		ui.WaitUntilExists(mapOption))(ctx); err != nil {
 		s.Fatal("Failed to show map option: ", err)
 	}
 }
