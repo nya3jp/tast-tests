@@ -22,6 +22,30 @@
       },
       "revId": "195a0b7e405945bc98b9747569401d25a50e62f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "132719a1_13c4efe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-21T15:48:14Z",
+      "side": 1,
+      "message": "Yeah on second thought, I\u0027ll make an explicit timeout const and then add that to the fixture timeouts.",
+      "parentUuid": "13815c0a_0ae4a74c",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 36
+      },
+      "revId": "195a0b7e405945bc98b9747569401d25a50e62f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
