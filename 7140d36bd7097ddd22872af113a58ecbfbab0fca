@@ -22,6 +22,30 @@
       },
       "revId": "7140d36bd7097ddd22872af113a58ecbfbab0fca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf947255_ab545f1c",
+        "filename": "src/chromiumos/tast/local/crash/fixture_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-06-21T17:01:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85bd929d_3f214cb0",
+      "range": {
+        "startLine": 114,
+        "startChar": 86,
+        "endLine": 114,
+        "endChar": 90
+      },
+      "revId": "7140d36bd7097ddd22872af113a58ecbfbab0fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
