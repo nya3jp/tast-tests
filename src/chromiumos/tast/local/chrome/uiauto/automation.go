@@ -646,3 +646,27 @@ func (ac *Context) CheckRestriction(finder *nodewith.Finder, restriction restric
 		return nil
 	}
 }
+
+// DoDefault returns a function that calls doDefault() JS method to trigger the
+// default action on a node regardless of its location, e.g. left click on a button.
+// This function can be used when the a11y tree fails to find the accurate location
+// of a node thus mouse.LeftClick() fails consequently.
+func (ac *Context) DoDefault(finder *nodewith.Finder) Action {
+	return func(ctx context.Context) error {
+		q, err := finder.GenerateQuery()
+		if err != nil {
+			return err
+		}
+		query := fmt.Sprintf(`
+		(async () => {
+			%s
+			node.doDefault();
+		})()
+	`, q)
+
+		if err := ac.tconn.Eval(ctx, query, nil); err != nil {
+			return errors.Wrap(err, "failed to call doDefault() on the node")
+		}
+		return nil
+	}
+}
