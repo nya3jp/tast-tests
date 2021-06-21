@@ -68,6 +68,11 @@ func KVMRepros(ctx context.Context, s *testing.State) {
 		s.Fatalf("Unable to read extracted corpus dir at: %v: %v", binDir, err)
 	}
 
+	// Clear dmesg before starting to test.
+	if err := syzutils.ClearDmesg(ctx, d); err != nil {
+		s.Fatal("Unable to clear dmesg: ", err)
+	}
+
 	cnt := 1
 	for _, f := range files {
 		fname := f.Name()
@@ -88,8 +93,10 @@ func KVMRepros(ctx context.Context, s *testing.State) {
 			s.Logf("RunRepro returned %v: with combined output: %v", err, out)
 		}
 
-		// Running the repro might cause the DUT to reboot unexpectedly at any
-		// point.
+		if err := syzutils.KillRepro(ctx, d, fname); err != nil {
+			s.Log("KillRepro failed: ", err)
+		}
+
 		didWarn, err := syzutils.WarningInDmesg(ctx, d)
 		if err != nil {
 			s.Fatal("warningInDmesg failed: ", err)
@@ -110,10 +117,5 @@ func KVMRepros(ctx context.Context, s *testing.State) {
 	s.Log("Finished running all repros in ", time.Since(start))
 	// TODO: copy pstore logs if the DUT reboots in between testing.
 
-	// Running syzkaller repros will likely put the DUT in an inconsistent state.
-	// Reboot the device so that other tests are not affected.
-	if err := d.Reboot(ctx); err != nil {
-		s.Fatal("Failed to reset DUT: ", err)
-	}
 	s.Log("Done testing, exiting")
 }

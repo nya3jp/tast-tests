@@ -37,6 +37,11 @@ var crashPatterns = []string{
 	"Unable to handle kernel ",
 }
 
+// ProcessNameLength denotes the length of the process name used to match
+// against processes with pkill. This is the length of the process name inside
+// /proc/pid/stat.
+const ProcessNameLength = 15
+
 // FindDUTArch determines the DUT arch.
 func FindDUTArch(ctx context.Context, d *dut.DUT) (string, error) {
 	arch, err := d.Command("uname", "-m").Output(ctx)
@@ -107,6 +112,39 @@ func RunRepro(ctx context.Context, d *dut.DUT, remotePath string, timeout time.D
 		return out, err
 	}
 	return nil, nil
+}
+
+// KillRepro kills the process to ensure it is not running in the background.
+func KillRepro(ctx context.Context, d *dut.DUT, fname string) error {
+	testing.ContextLog(ctx, "Killing process")
+	// Some processes are not killed readily with a single pkill, so continue
+	// retrying the pkill.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Repro process is still running, issue a pkill.
+		if err := d.Conn().Command("pkill", "-9", fname[:ProcessNameLength]).Run(ctx); err != nil {
+			testing.ContextLog(ctx, "pkill failed: ", err)
+		}
+		// If the repro process is not running, return.
+		exists, err := processExists(ctx, d, fname)
+		if err != nil || exists {
+			return errors.Errorf("pkill retry required(exists=%v, err=%v)", exists, err)
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 2 * time.Second}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func processExists(ctx context.Context, d *dut.DUT, fname string) (bool, error) {
+	out, err := d.Conn().Command("ps", "-A").Output(ctx)
+	if err != nil {
+		return false, err
+	}
+	if strings.Contains(string(out), fname[:ProcessNameLength]) {
+		return true, nil
+	}
+	return false, nil
 }
 
 // ExtractCorpus unzips the zip file pointed to by dataPath into tastDir.
