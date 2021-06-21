@@ -100,7 +100,7 @@ func RunRepro(ctx context.Context, d *dut.DUT, remotePath string, timeout time.D
 	ctx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 
-	cmd := d.Conn().Command(filepath.Join(remotePath))
+	cmd := d.Conn().Command("timeout", fmt.Sprintf("%v", timeout.Seconds()), filepath.Join(remotePath))
 	// The repro might exit with a non-zero exit code and this is expected. The repro
 	// might also run indefinitely, and be terminated by the context timeout.
 	if out, err := cmd.CombinedOutput(ctx); err != nil {
