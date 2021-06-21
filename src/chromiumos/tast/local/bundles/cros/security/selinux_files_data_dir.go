@@ -12,6 +12,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -89,12 +90,46 @@ func verifyDirSELinuxContext(ctx context.Context, directoryPath, outDir string) 
 	if err != nil {
 		return err
 	}
+
 	matchPathConStr := string(matchPathConOutput)
 	linesCount := strings.Count(matchPathConStr, "\n")
 	verifiedCount := strings.Count(matchPathConStr, "verified.\n")
 	// Counts any files or dirs which are not found during the race between
 	// find and matchpathcon command.
 	filesAndDirMissingCount := strings.Count(matchPathConStr, "error: No such file or directory\n")
+
+	// Vaibhav - starting from here
+	scanner := bufio.NewScanner(strings.NewReader(matchPathConStr))
+	err = scanner.Err()
+	if err != nil {
+		return errors.Wrap(err, "failed to scan lines of matchpathcon output")
+	}
+	for scanner.Scan() {
+
+		line := scanner.Text()
+		// If the matchpathcon output doesn't contain verified, it means
+		// verification failed. We further need to investigate if it
+		// failed due to SELinux multi-category part not matching.
+		if strings.Contains(line, "verified") == false {
+
+			// Build regex for SELinux context
+			re := regexp.MustCompile(`\w:\w*:\w*:\w*(\S)*`)
+			matches := re.FindAllString(line, -1)
+			// For a mis-match of SELinux context, get the value of
+			// actual and expected context from the output.
+			if len(matches) == 2 {
+				actualContext := matches[0]
+				expectedContext := matches[1]
+				// Multi-category part of SELinux context is added only
+				// in the last part. We can safely say that mismatch
+				// occurred due to multi-category part if expected
+				// context is a prefix of actual context.
+				if strings.HasPrefix(actualContext, expectedContext) {
+					verifiedCount = verifiedCount + 1
+				}
+			}
+		}
+	}
 
 	// Write the output of matchpathcon command.
 	matchPathConFileLocation := filepath.Join(outDir, matchPathConFileName)
@@ -144,6 +179,7 @@ func SELinuxFilesDataDir(ctx context.Context, s *testing.State) {
 		"data":    {},
 		"media":   {},
 		"user_de": {},
+		//"misc":    {},
 	}
 
 	for _, dir := range dirList {
