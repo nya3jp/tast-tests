@@ -70,6 +70,30 @@
       },
       "revId": "e7abc03b913dc40e0079bd30e0da06978a3ad212",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d0adb3_fd5332a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_autocorrect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-21T09:50:22Z",
+      "side": 1,
+      "message": "I see, that\u0027s a good point. Done (also fine tuned the applicability condition, in line with what\u0027s coming next in https://crrev.com/c/2972350).",
+      "parentUuid": "312bd18b_06471266",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 8
+      },
+      "revId": "e7abc03b913dc40e0079bd30e0da06978a3ad212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
