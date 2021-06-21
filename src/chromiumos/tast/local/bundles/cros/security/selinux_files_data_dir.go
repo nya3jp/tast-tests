@@ -12,6 +12,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -89,12 +90,42 @@ func verifyDirSELinuxContext(ctx context.Context, directoryPath, outDir string) 
 	if err != nil {
 		return err
 	}
+
 	matchPathConStr := string(matchPathConOutput)
 	linesCount := strings.Count(matchPathConStr, "\n")
 	verifiedCount := strings.Count(matchPathConStr, "verified.\n")
 	// Counts any files or dirs which are not found during the race between
 	// find and matchpathcon command.
 	filesAndDirMissingCount := strings.Count(matchPathConStr, "error: No such file or directory\n")
+
+	testing.ContextLog(ctx, "Lines Count = ", linesCount)
+	testing.ContextLog(ctx, "Verified Count = ", verifiedCount)
+	testing.ContextLog(ctx, "Files and Missing Count = ", filesAndDirMissingCount)
+
+	// Here ------ Vaibhav Raheja
+	// Vaibhav - starting from here
+	scanner := bufio.NewScanner(strings.NewReader(string(matchPathConOutput)))
+	for scanner.Scan() {
+
+		line := scanner.Text()
+		both := strings.Contains(line, "has context") && strings.Contains(line, "should be")
+		if both == true {
+
+			re := regexp.MustCompile(`\w:\w*:\w*:\w*(\S)*`)
+			matches := re.FindAllString(line, -1)
+			actualContext := matches[0]
+			expectedContext := matches[1]
+			testing.ContextLog(ctx, "Actual Context = ", actualContext, "\n")
+			testing.ContextLog(ctx, "Expected Context = ", expectedContext, "\n")
+
+			if strings.HasPrefix(actualContext, expectedContext) {
+				verifiedCount = verifiedCount + 1
+			}
+
+		}
+
+	}
+	err = scanner.Err()
 
 	// Write the output of matchpathcon command.
 	matchPathConFileLocation := filepath.Join(outDir, matchPathConFileName)
@@ -144,6 +175,7 @@ func SELinuxFilesDataDir(ctx context.Context, s *testing.State) {
 		"data":    {},
 		"media":   {},
 		"user_de": {},
+		//"misc":    {},
 	}
 
 	for _, dir := range dirList {
