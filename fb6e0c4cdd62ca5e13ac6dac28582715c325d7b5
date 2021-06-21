@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8297775_bcd6b2e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-21T06:47:20Z",
+      "side": 1,
+      "message": "Done @ https://crrev.com/c/2975183",
+      "parentUuid": "d2f388eb_e2d4209e",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 53
+      },
+      "revId": "fb6e0c4cdd62ca5e13ac6dac28582715c325d7b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "513911d8_8aac304e",
