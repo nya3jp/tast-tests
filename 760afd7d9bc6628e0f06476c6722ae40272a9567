@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9349cf71_cf15b100",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-21T19:36:28Z",
+      "side": 1,
+      "message": "Hi Renuga, this CL is ready for review.",
+      "revId": "760afd7d9bc6628e0f06476c6722ae40272a9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
