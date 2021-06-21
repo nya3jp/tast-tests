@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90656ced_3cccb934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-21T06:36:16Z",
+      "side": 1,
+      "message": "do you think these consts can be moved to spotify.go as well?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 45
+      },
+      "revId": "d8d9022e69d779110bab39bfe786c82ae42a707b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6590cbb_1043ebbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-21T06:36:16Z",
+      "side": 1,
+      "message": "As mentioned before, please use format// TODO(crbug.com/12345): \n\nThe self bug id can be reused if you do not want to close this bug immediately, or you might create a new bug to track it separately.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "d8d9022e69d779110bab39bfe786c82ae42a707b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a35b980f_0210b2a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-21T06:36:16Z",
+      "side": 1,
+      "message": "Looks like this line is redundant.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "d8d9022e69d779110bab39bfe786c82ae42a707b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb67bde4_a3642dba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-21T06:36:16Z",
+      "side": 1,
+      "message": "Nit: Clearing",
+      "range": {
+        "startLine": 55,
+        "startChar": 26,
+        "endLine": 55,
+        "endChar": 35
+      },
+      "revId": "d8d9022e69d779110bab39bfe786c82ae42a707b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "066b1834_d2d8ff57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-21T06:36:16Z",
+      "side": 1,
+      "message": "These 2 functions look very general and useful to all ARC UI tests. Can you consider another package rather than spotify only?",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 1
+      },
+      "revId": "d8d9022e69d779110bab39bfe786c82ae42a707b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
