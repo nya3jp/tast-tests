@@ -104,6 +104,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Tree("encrypted/var/log/metrics"), chk.Users("root", "chronos", "metrics", "shill"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/log/modemfwd"), chk.Users("modem"), chk.Groups("modem"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/log/power_manager"), chk.Users("power"), chk.Groups("power"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("encrypted/var/log/tcsd"), chk.Users("tss"), chk.Groups("tss"), chk.NotMode(022)),
 		chk.NewPattern(chk.Path("encrypted/var/log/usbmon"), chk.Users("root", "tcpdump"), chk.Groups("root", "tcpdump"), chk.SkipChildren()), // only created by tests
 		chk.NewPattern(chk.Path("encrypted/var/log/vmlog"), chk.Users("metrics"), chk.Groups("metrics"), chk.Mode(0755)),                      // directory itself
 		chk.NewPattern(chk.Tree("encrypted/var/log/vmlog"), chk.Users("metrics"), chk.Groups("metrics"), chk.Mode(0644)),                      // children
