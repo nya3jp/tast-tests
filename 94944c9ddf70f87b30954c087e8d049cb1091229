@@ -20,6 +20,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa68c45e_c542c873",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-21T13:08:16Z",
+      "side": 1,
+      "message": "If this test does nothing, add a TODO for it to be removed once a real test is added.",
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "861353f9_d51fdb81",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-21T13:08:16Z",
+      "side": 1,
+      "message": "Does it make sense to move this together with the other kiosk helpers?",
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba136f2f_7e3ebf31",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-21T13:08:16Z",
+      "side": 1,
+      "message": "Maybe kioskLoggedIn ? It\u0027s more descriptive of the state of the system.",
+      "range": {
+        "startLine": 25,
+        "startChar": 13,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98eecc18_45bebed4",
         "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
         "patchSetId": 1
@@ -37,6 +94,98 @@
         "endLine": 27,
         "endChar": 88
       },
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67c6ada4_091677b0",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-21T13:08:16Z",
+      "side": 1,
+      "message": "alt-modalities fits better. fakeDMSEnrolled is owned by the stability team.",
+      "parentUuid": "98eecc18_45bebed4",
+      "range": {
+        "startLine": 27,
+        "startChar": 48,
+        "endLine": 27,
+        "endChar": 88
+      },
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bf1c5ff_dadcb3e3",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-21T13:08:16Z",
+      "side": 1,
+      "message": "You can leave this out. A nil slice should work well enough.",
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287fcdb2_64602568",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-21T13:08:16Z",
+      "side": 1,
+      "message": "Swap the order, this makes sure that the options required by the fixture are set last.",
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa9c9c76_fb114c20",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-21T13:08:16Z",
+      "side": 1,
+      "message": "This is not true 😊 hopefully.",
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d01c18e5_7c2a963f",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-21T13:08:16Z",
+      "side": 1,
+      "message": "Is there a simple check that can be performed to ensure that kiosk is still running?",
       "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
