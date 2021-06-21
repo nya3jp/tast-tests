@@ -7,13 +7,6 @@ package kiosk
 import (
 	"context"
 
-	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/kioskmode"
-	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
-	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -25,69 +18,13 @@ func init() {
 			"kamilszarek@google.com", // Test author
 			"alt-modalities-stability@google.com",
 		},
-		// Informational attribute can only be removed when
-		// https://crbug.com/1207293 is resolved.
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "fakeDMSEnrolled",
+		Fixture:      "kioskLoggedIn",
 	})
 }
 
+// Autostart TODO: Once a test with more checks will be developed this test can
+// be safely removed.
 func Autostart(ctx context.Context, s *testing.State) {
-	fdms := s.FixtValue().(*fakedms.FakeDMS)
-	cr, err := chrome.New(
-		ctx,
-		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}), // Required as refreshing policies require test API.
-		chrome.DMSPolicy(fdms.URL),
-		chrome.KeepEnrollment(),
-	)
-	if err != nil {
-		s.Error("Failed to start Chrome: ", err)
-	}
-
-	defer func(ctx context.Context) {
-		// This is required for cases when DeviceLocalAccountAutoLoginId policy
-		// is used. If we won't clear policies and refresh then when test
-		// completes and later Chrome is restarted then Kiosk modes starts
-		// again.
-		policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{})
-		// Use cr as a reference to close the last started Chrome instance.
-		if err := cr.Close(ctx); err != nil {
-			s.Error("Failed to close Chrome connection: ", err)
-		}
-	}(ctx)
-
-	// Update policies.
-	if err := kioskmode.SetAutolaunch(ctx, fdms, cr, kioskmode.WebKioskAccountID); err != nil {
-		s.Fatal("Failed to update policies: ", err)
-	}
-
-	// Close the previous Chrome instance.
-	if err := cr.Close(ctx); err != nil {
-		s.Error("Failed to close Chrome connection: ", err)
-	}
-
-	// In this particular case when Kiosk mode starts the entry
-	// '[...] Starting kiosk mode of type 2...'
-	// '[...] Kiosk launch succeeded, wait for app window.'
-	// is logged in /var/log/messages. Code below will search for that entry.
-	reader, err := syslog.NewReader(ctx, syslog.Program(syslog.Chrome))
-	if err != nil {
-		s.Fatal("Failed to start log reader: ", err)
-	}
-	defer reader.Close()
-
-	// Restart Chrome. After that Kiosk auto starts.
-	cr, err = chrome.New(ctx,
-		chrome.NoLogin(),
-		chrome.DMSPolicy(fdms.URL),
-		chrome.KeepEnrollment(),
-	)
-	if err != nil {
-		s.Fatal("Chrome restart failed: ", err)
-	}
-
-	if err := kioskmode.ConfirmKioskStarted(ctx, reader); err != nil {
-		s.Fatal("There was a problem while checking chrome logs for Kiosk related entries: ", err)
-	}
 }
