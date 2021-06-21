@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "857bca2c_48b1e754",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-21T00:09:16Z",
+      "side": 1,
+      "message": "uiauto.Retry() could be a replacement: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d629",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 10
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a167907_2511b739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-21T00:09:16Z",
+      "side": 1,
+      "message": "turn",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 32
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6c1c9cc_400d343e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
         "patchSetId": 1
@@ -19,6 +65,168 @@
         "startChar": 0,
         "endLine": 130,
         "endChar": 115
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52008db0_f5963ede",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-21T00:09:16Z",
+      "side": 1,
+      "message": "Usually we suggest to define all the nodes in advance.\n\nThe default opts for ui is timeout-15s and interval-300ms. They are changed in these actions and not changed ui.LeftClick(artAlbumFinder.Nth(i))(ctx) (line 150). Any specific consideration? If no, suggest to call ui \u003d ui.WithPollOpts(*defaultOSSettingsPollOptions) and call ui.WithTimeout where needed.",
+      "parentUuid": "d6c1c9cc_400d343e",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 115
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aeb6e21_e2640638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-21T00:09:16Z",
+      "side": 1,
+      "message": "This msg is not consistent with \"turn on ambient mode\". Suggest to add the description in uiauto.Combine and just return err here.",
+      "range": {
+        "startLine": 135,
+        "startChar": 27,
+        "endLine": 135,
+        "endChar": 65
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a21c7a2_27d68832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-21T00:09:16Z",
+      "side": 1,
+      "message": "failed to find art gallery albums",
+      "range": {
+        "startLine": 140,
+        "startChar": 27,
+        "endLine": 140,
+        "endChar": 60
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78bfb16c_769c313a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-21T00:09:16Z",
+      "side": 1,
+      "message": "failed to deselect art album",
+      "range": {
+        "startLine": 151,
+        "startChar": 28,
+        "endLine": 151,
+        "endChar": 56
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55d76fac_3c52c2f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-21T00:09:16Z",
+      "side": 1,
+      "message": "If you change the return type of these funcs, you could combine them with uiauto.Combine",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee6900fb_dd15bae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-21T00:09:16Z",
+      "side": 1,
+      "message": "Suggest to return uiauto.Action",
+      "range": {
+        "startLine": 235,
+        "startChar": 90,
+        "endLine": 235,
+        "endChar": 95
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fff51b73_18eb7067",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-21T00:09:16Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 253,
+        "endChar": 7
       },
       "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
