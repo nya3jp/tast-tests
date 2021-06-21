@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="0"
+          android:id="@+id/counter" />
+    <ImageView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:id="@+id/image_view" />
+    <org.chromium.arc.testapp.imagepaste.ImageEditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="0"
+          android:id="@+id/input_field" />
+</LinearLayout>
