@@ -22,6 +22,30 @@
       },
       "revId": "e7abc03b913dc40e0079bd30e0da06978a3ad212",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e6564ce_df5a27b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_autocorrect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-21T04:41:59Z",
+      "side": 1,
+      "message": "Autocorrect is available (see above these lines). Only the new Autocorrect UI is limited to English at the moment.",
+      "parentUuid": "1750fab5_9f58aeed",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 8
+      },
+      "revId": "e7abc03b913dc40e0079bd30e0da06978a3ad212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
