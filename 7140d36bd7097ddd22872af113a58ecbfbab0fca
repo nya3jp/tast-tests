@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85bd929d_3f214cb0",
+        "filename": "src/chromiumos/tast/local/crash/fixture_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-06-21T01:01:55Z",
+      "side": 1,
+      "message": "nit: line length. Golang doesn\u0027t have the same hard line length requirements as other languages, but it is still recommended to wrap comment lines if there isn\u0027t a specific reason not to.\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#comment-line-length",
+      "range": {
+        "startLine": 114,
+        "startChar": 86,
+        "endLine": 114,
+        "endChar": 90
+      },
+      "revId": "7140d36bd7097ddd22872af113a58ecbfbab0fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
