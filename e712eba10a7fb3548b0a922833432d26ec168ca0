@@ -124,6 +124,24 @@
       "parentUuid": "a657647d_121b790d",
       "revId": "e712eba10a7fb3548b0a922833432d26ec168ca0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "683f98eb_06a45aee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-21T22:44:47Z",
+      "side": 1,
+      "message": "All new files created by this CL resides under |p.dir| and will be clear with it accordingly. System path hijack will be clear by:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go;rcl\u003da0c632f6a00f34ade2f83b50b2efda9ee61341e4;l\u003d216\n\nFor whether to patch test scripts explicitly to use python3,\nyinchiayeh@, can you give some comment on this as the patch\u0027s reviewer?",
+      "parentUuid": "eac47f1a_853e5910",
+      "revId": "e712eba10a7fb3548b0a922833432d26ec168ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
