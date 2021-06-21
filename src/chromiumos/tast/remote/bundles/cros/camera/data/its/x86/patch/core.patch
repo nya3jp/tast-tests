@@ -1,5 +1,4 @@
 diff --git a/CameraITS/pymodules/its/caps.py b/CameraITS/pymodules/its/caps.py
-index 87b88e9..4c4eb78 100644
 --- a/CameraITS/pymodules/its/caps.py
 +++ b/CameraITS/pymodules/its/caps.py
 @@ -34,7 +34,7 @@ def skip_unless(cond):
@@ -331,7 +330,6 @@ index 87b88e9..4c4eb78 100644
  
  class __UnitTest(unittest.TestCase):
 diff --git a/CameraITS/pymodules/its/cv2image.py b/CameraITS/pymodules/its/cv2image.py
-index 2004846..5e58f8f 100644
 --- a/CameraITS/pymodules/its/cv2image.py
 +++ b/CameraITS/pymodules/its/cv2image.py
 @@ -76,7 +76,7 @@ class Chart(object):
@@ -414,7 +412,6 @@ index 2004846..5e58f8f 100644
              h, w = chart.shape
              bottom_right_scaled = (top_left_scaled[0] + w,
 diff --git a/CameraITS/pymodules/its/device.py b/CameraITS/pymodules/its/device.py
-index a1de8cf..f38b5cd 100644
 --- a/CameraITS/pymodules/its/device.py
 +++ b/CameraITS/pymodules/its/device.py
 @@ -133,7 +133,7 @@ class ItsSession(object):
@@ -667,7 +664,6 @@ index a1de8cf..f38b5cd 100644
      unittest.main()
 -
 diff --git a/CameraITS/pymodules/its/image.py b/CameraITS/pymodules/its/image.py
-index 3ea6fa3..5c78bcf 100644
 --- a/CameraITS/pymodules/its/image.py
 +++ b/CameraITS/pymodules/its/image.py
 @@ -21,7 +21,7 @@ from PIL import Image
@@ -912,7 +908,6 @@ index 3ea6fa3..5c78bcf 100644
  
      def test_unpack_raw10_image(self):
 diff --git a/CameraITS/pymodules/its/objects.py b/CameraITS/pymodules/its/objects.py
-index a76c7d4..f53e006 100644
 --- a/CameraITS/pymodules/its/objects.py
 +++ b/CameraITS/pymodules/its/objects.py
 @@ -117,7 +117,7 @@ def manual_capture_request(
@@ -958,7 +953,6 @@ index a76c7d4..f53e006 100644
  
      return maxz
 diff --git a/CameraITS/pymodules/its/target.py b/CameraITS/pymodules/its/target.py
-index 01d3c5f..f7bcd1b 100644
 --- a/CameraITS/pymodules/its/target.py
 +++ b/CameraITS/pymodules/its/target.py
 @@ -51,7 +51,7 @@ def __do_target_exposure_measurement(its_session):
@@ -989,7 +983,6 @@ index 01d3c5f..f7bcd1b 100644
      if its_session is None:
          with its.device.ItsSession() as cam:
 diff --git a/CameraITS/tools/run_all_tests.py b/CameraITS/tools/run_all_tests.py
-index b6fdde2..e51d23b 100644
 --- a/CameraITS/tools/run_all_tests.py
 +++ b/CameraITS/tools/run_all_tests.py
 @@ -79,7 +79,7 @@ def calc_camera_fov(camera_id):

@@ -1,5 +1,4 @@
 diff --git a/CameraITS/tests/scene0/test_camera_properties.py b/CameraITS/tests/scene0/test_camera_properties.py
-index dbd528d..b289130 100644
 --- a/CameraITS/tests/scene0/test_camera_properties.py
 +++ b/CameraITS/tests/scene0/test_camera_properties.py
 @@ -27,15 +27,18 @@ def main():
@@ -30,7 +29,6 @@ index dbd528d..b289130 100644
      main()
 -
 diff --git a/CameraITS/tests/scene0/test_gyro_bias.py b/CameraITS/tests/scene0/test_gyro_bias.py
-index 44be95f..47e8910 100644
 --- a/CameraITS/tests/scene0/test_gyro_bias.py
 +++ b/CameraITS/tests/scene0/test_gyro_bias.py
 @@ -42,7 +42,7 @@ def main():
@@ -43,7 +41,6 @@ index 44be95f..47e8910 100644
          time.sleep(5)
          gyro_events = cam.get_sensor_events()["gyro"]
 diff --git a/CameraITS/tests/scene0/test_jitter.py b/CameraITS/tests/scene0/test_jitter.py
-index 6a156dd..cd071e5 100644
 --- a/CameraITS/tests/scene0/test_jitter.py
 +++ b/CameraITS/tests/scene0/test_jitter.py
 @@ -47,9 +47,9 @@ def main():
@@ -60,7 +57,6 @@ index 6a156dd..cd071e5 100644
          # Draw a plot.
          pylab.plot(range(len(deltas_ms)), deltas_ms)
 diff --git a/CameraITS/tests/scene0/test_metadata.py b/CameraITS/tests/scene0/test_metadata.py
-index b8949b1..5a0b2af 100644
 --- a/CameraITS/tests/scene0/test_metadata.py
 +++ b/CameraITS/tests/scene0/test_metadata.py
 @@ -36,18 +36,18 @@ def main():
@@ -173,7 +169,6 @@ index b8949b1..5a0b2af 100644
      main()
 -
 diff --git a/CameraITS/tests/scene0/test_param_sensitivity_burst.py b/CameraITS/tests/scene0/test_param_sensitivity_burst.py
-index b716141..2cf9350 100644
 --- a/CameraITS/tests/scene0/test_param_sensitivity_burst.py
 +++ b/CameraITS/tests/scene0/test_param_sensitivity_burst.py
 @@ -34,7 +34,7 @@ def main():
@@ -186,7 +181,6 @@ index b716141..2cf9350 100644
          e = min(props['android.sensor.info.exposureTimeRange'])
          reqs = [its.objects.manual_capture_request(s, e) for s in sens_list]
 diff --git a/CameraITS/tests/scene0/test_read_write.py b/CameraITS/tests/scene0/test_read_write.py
-index 1b76806..3fdb8ce 100644
 --- a/CameraITS/tests/scene0/test_read_write.py
 +++ b/CameraITS/tests/scene0/test_read_write.py
 @@ -44,8 +44,8 @@ def main():
@@ -233,7 +227,6 @@ index 1b76806..3fdb8ce 100644
          # assert PASS/FAIL
          assert not e_failed+s_failed
 diff --git a/CameraITS/tests/scene0/test_sensor_events.py b/CameraITS/tests/scene0/test_sensor_events.py
-index d3226b3..e398aab 100644
 --- a/CameraITS/tests/scene0/test_sensor_events.py
 +++ b/CameraITS/tests/scene0/test_sensor_events.py
 @@ -32,8 +32,8 @@ def main():
@@ -253,7 +246,6 @@ index d3226b3..e398aab 100644
      main()
 -
 diff --git a/CameraITS/tests/scene0/test_test_patterns.py b/CameraITS/tests/scene0/test_test_patterns.py
-index a1d9cb8..3614a1a 100644
 --- a/CameraITS/tests/scene0/test_test_patterns.py
 +++ b/CameraITS/tests/scene0/test_test_patterns.py
 @@ -40,7 +40,7 @@ def check_solid_color(cap, props):
@@ -339,7 +331,6 @@ index a1d9cb8..3614a1a 100644
          props = cam.get_camera_properties()
          its.caps.skip_unless(its.caps.raw16(props) and
 diff --git a/CameraITS/tests/scene0/test_unified_timestamps.py b/CameraITS/tests/scene0/test_unified_timestamps.py
-index 5a9228e..27bf347 100644
 --- a/CameraITS/tests/scene0/test_unified_timestamps.py
 +++ b/CameraITS/tests/scene0/test_unified_timestamps.py
 @@ -37,7 +37,7 @@ def main():
