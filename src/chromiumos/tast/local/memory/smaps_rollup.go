@@ -271,6 +271,14 @@ func SmapsMetrics(ctx context.Context, p *perf.Values, outdir, suffix string) er
 			},
 			value.pssSwap,
 		)
+		p.Set(
+			perf.Metric{
+				Name:      fmt.Sprintf("%s%s_pss_total", name, suffix),
+				Unit:      "MiB",
+				Direction: perf.SmallerIsBetter,
+			},
+			value.pss+value.pssSwap,
+		)
 	}
 	return nil
 }
