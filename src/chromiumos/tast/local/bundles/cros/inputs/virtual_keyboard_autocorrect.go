@@ -181,7 +181,7 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("validate VK autocorrect",
 		vkbCtx.TapKeys(strings.Split(testCase.MisspeltWord, "")),
 		its.WaitForFieldValueToBe(inputField, testCase.MisspeltWord),
-		vkbCtx.TapKeys([]string{"space"}),
+		vkbCtx.TapKey("space"),
 		its.WaitForFieldValueToBe(inputField, testCase.CorrectWord+" "),
 	)(ctx); err != nil {
 		s.Fatal("Failed to validate VK autocorrect: ", err)
