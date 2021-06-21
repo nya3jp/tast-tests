@@ -158,6 +158,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a006e311_24dda5dc",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-21T15:07:51Z",
+      "side": 1,
+      "message": "Does it work if you put this into an anonymous function, and close chrome in a defer like I suggested in the comment below?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "454c1593_a04fa928",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-21T15:07:51Z",
+      "side": 1,
+      "message": "There is no cleanup if this step fails (no cr.Close()).\nAn example approach for the defer function:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/policy_service.go;l\u003d67-73",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa9c9c76_fb114c20",
         "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
         "patchSetId": 1
