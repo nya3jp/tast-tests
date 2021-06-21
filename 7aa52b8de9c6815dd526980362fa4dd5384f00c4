@@ -16,6 +16,24 @@
       "message": "bob, kevin, scarlet are failing this test (https://tastboard.corp.google.com/test/kernel.ConfigVerify)",
       "revId": "7aa52b8de9c6815dd526980362fa4dd5384f00c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e23e6fe6_699a38dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-06-21T16:22:40Z",
+      "side": 1,
+      "message": "Seems I had a thinko. It was introduced in 4.16, not 4.4. 😞",
+      "parentUuid": "d7c3fb80_a9024235",
+      "revId": "7aa52b8de9c6815dd526980362fa4dd5384f00c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
