@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2348592d_838f7465",
+        "filename": "src/chromiumos/tast/local/input/voice/audio.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2021-06-21T07:07:43Z",
+      "side": 1,
+      "message": "I think quicksettings.SelectAudioOption had done what you implemented here? Or there is something different?\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go;l\u003d554?q\u003dquicksettings%20file:tast\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public",
+      "revId": "196bacbf0b554655a0b50748938e5dcf3f556d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
