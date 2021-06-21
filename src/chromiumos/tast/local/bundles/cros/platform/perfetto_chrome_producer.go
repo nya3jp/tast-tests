@@ -23,7 +23,7 @@ func init() {
 		Desc:         "Tests Chrome connecting to the Perfetto system tracing service",
 		Contacts:     []string{"chinglinyu@chromium.org", "chenghaoyang@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"}, // TODO(b/190474394) remove "informational" after the test is stable.
+		Attr:         []string{"group:mainline"},
 	})
 }
 
