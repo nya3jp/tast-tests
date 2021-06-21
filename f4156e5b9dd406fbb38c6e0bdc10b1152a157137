@@ -162,6 +162,30 @@
       },
       "revId": "f4156e5b9dd406fbb38c6e0bdc10b1152a157137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bc3dcb2_1447bfec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-21T14:32:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0b7ec39a_63714156",
+      "range": {
+        "startLine": 72,
+        "startChar": 22,
+        "endLine": 72,
+        "endChar": 41
+      },
+      "revId": "f4156e5b9dd406fbb38c6e0bdc10b1152a157137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
