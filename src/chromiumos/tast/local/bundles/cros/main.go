@@ -71,6 +71,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/screenshot"
 	_ "chromiumos/tast/local/bundles/cros/security"
 	_ "chromiumos/tast/local/bundles/cros/session"
+	_ "chromiumos/tast/local/bundles/cros/settings"
 	_ "chromiumos/tast/local/bundles/cros/shelf"
 	_ "chromiumos/tast/local/bundles/cros/storage"
 	_ "chromiumos/tast/local/bundles/cros/system"
