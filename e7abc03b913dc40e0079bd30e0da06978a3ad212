@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1750fab5_9f58aeed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_autocorrect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2021-06-21T02:10:41Z",
+      "side": 1,
+      "message": "Could we also add a check here to check that autocorrect is not set for non XKB_US_ENG input methods?\n\nIt would then throw an error if someone accidentally adds an autocorrect test for non-english - which would make sure that future CL authors are aware of this early exit for non-english when we add autocorrect tests for other languages.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 8
+      },
+      "revId": "e7abc03b913dc40e0079bd30e0da06978a3ad212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
