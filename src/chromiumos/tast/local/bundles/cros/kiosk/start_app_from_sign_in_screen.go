@@ -9,12 +9,10 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/kioskmode"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
@@ -38,51 +36,17 @@ func init() {
 
 func StartAppFromSignInScreen(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(*fakedms.FakeDMS)
-	cr, err := chrome.New(
+	cr, err := kioskmode.New(
 		ctx,
-		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
-		chrome.DMSPolicy(fdms.URL),
-		chrome.KeepEnrollment(),
+		fdms,
+		kioskmode.DefaultLocalAccounts(),
+		kioskmode.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
 	)
 	if err != nil {
-		s.Error("Failed to start Chrome: ", err)
+		s.Error("Failed to start Chrome on Signin screen with set Kiosk apps: ", err)
 	}
 
-	defer func(ctx context.Context) {
-		// Use cr as a reference to close the last started Chrome instance.
-		if cr != nil {
-			if err := cr.Close(ctx); err != nil {
-				s.Error("Failed to close Chrome connection: ", err)
-			}
-		}
-	}(ctx)
-
-	// Update policies.
-	if err := kioskmode.SetDefaultAppPolicies(ctx, fdms, cr); err != nil {
-		s.Fatal("Failed to update policies: ", err)
-	}
-
-	// Close the previous Chrome instance.
-	if err := cr.Close(ctx); err != nil {
-		s.Error("Failed to close Chrome connection: ", err)
-	}
-
-	reader, err := syslog.NewReader(ctx, syslog.Program("chrome"))
-	if err != nil {
-		s.Fatal("Failed to start log reader: ", err)
-	}
-	defer reader.Close()
-
-	// Restart Chrome.
-	cr, err = chrome.New(ctx,
-		chrome.DeferLogin(),
-		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
-		chrome.DMSPolicy(fdms.URL),
-		chrome.KeepEnrollment(),
-	)
-	if err != nil {
-		s.Fatal("Chrome restart failed: ", err)
-	}
+	defer cr.Close(ctx)
 
 	testConn, err := cr.SigninProfileTestAPIConn(ctx)
 	if err != nil {
@@ -117,6 +81,12 @@ func StartAppFromSignInScreen(ctx context.Context, s *testing.State) {
 	if len(menuItems) != expectedLocalAccountsCount {
 		s.Fatalf("Expected %d local accounts, but found %v app(s) %+v", expectedLocalAccountsCount, len(menuItems), menuItems)
 	}
+
+	reader, err := syslog.NewReader(ctx, syslog.Program("chrome"))
+	if err != nil {
+		s.Fatal("Failed to start log reader: ", err)
+	}
+	defer reader.Close()
 
 	// When I had here only clicking the menu item that should be visible, the
 	// test failed at interacting the menu item.
