@@ -26,7 +26,6 @@ tests yourself. See the [cros_vm docs] for more thorough VM instructions.
 export BOARD=betty
 ./build_packages --board=${BOARD}
 ./build_image --board=${BOARD} test
-./image_to_vm.sh --test_image --board=${BOARD}
 
 # Start the VM.
 cros_vm --start --board=${BOARD}
