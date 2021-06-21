@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c87a74a1_de434a65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-21T00:31:09Z",
+      "side": 0,
+      "message": "This is removed, and chrome is closed after calling CloseBrowserTabs, then browserStartTime is returned as the start time of chrome. Is it accurate?",
+      "range": {
+        "startLine": 112,
+        "startChar": 17,
+        "endLine": 112,
+        "endChar": 33
+      },
+      "revId": "54e4dcc7e2699b90a2f224b9353bd58dafed1808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
