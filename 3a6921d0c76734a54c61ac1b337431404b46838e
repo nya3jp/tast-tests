@@ -16,6 +16,23 @@
       "message": "+2 for Tast Review",
       "revId": "3a6921d0c76734a54c61ac1b337431404b46838e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be4ad6a5_16f4a122",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-21T05:35:10Z",
+      "side": 1,
+      "message": "Stop landing to unblock racing cls.",
+      "revId": "3a6921d0c76734a54c61ac1b337431404b46838e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
