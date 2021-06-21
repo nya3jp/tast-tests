@@ -17,7 +17,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/syslog"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -63,6 +65,9 @@ var (
 			AppId: &kioskAppID,
 		}}
 
+	// defaultLocalAccountsConfiguration holds default Kiosks accounts
+	// configuration. Each, when setting public account policies can be
+	// referred by id: KioskAppAccountID and WebKioskAccountID
 	defaultLocalAccountsConfiguration = policy.DeviceLocalAccounts{
 		Val: []policy.DeviceLocalAccountInfo{
 			kioskAppPolicy,
@@ -75,6 +80,7 @@ var (
 // configuration for Kiosk accounts and triggers refresh of policies. If you
 // want to see the effect - restart Chrome instance to see Apps button on the
 // Sign-in screen.
+// Deprecated: Use kioskmode.New(...) instead
 func SetDefaultAppPolicies(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome) error {
 	// ServerAndRefresh is used instead of ServerAndVerify since Verify part
 	// uses Autotest private api that returns only Enterprise policies values
@@ -87,6 +93,7 @@ func SetDefaultAppPolicies(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrom
 // SetAutolaunch sets all default congifurations for Kiosk accounts and sets
 // one of them to autolaunch.
 // appID is the Kiosk account ID that will be autolaunched.
+// Deprecated: Use kioskmode.New(...) instead
 func SetAutolaunch(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, appID string) error {
 	return policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{
 		&defaultLocalAccountsConfiguration,
@@ -98,7 +105,7 @@ func SetAutolaunch(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome
 
 // ConfirmKioskStarted uses reader for looking for logs that confirm Kiosk mode
 // starting and also successful launch of Kiosk.
-// reader Reader instance should be processing all logs or filtered for Chrome
+// reader Reader instance should be processing all logs filtered for Chrome
 // only.
 func ConfirmKioskStarted(ctx context.Context, reader *syslog.Reader) error {
 	// Check that Kiosk starts successfully.
@@ -118,4 +125,109 @@ func ConfirmKioskStarted(ctx context.Context, reader *syslog.Reader) error {
 		return errors.Wrap(err, "failed to verify successful launch of Kiosk mode")
 	}
 	return nil
+}
+
+// New starts Chrome, sets passed Kiosk related options to policies and
+// restarts Chrome. When kioskmode.AutoLaunch() is used, then it auto starts
+// given Kiosk application. Alternatively kioskMode.LoadSigninProfileExtension()
+// should be used. In that case Chrome is started on Signin screen with Kiosk
+// accounts loaded.
+// If kioskmode.AutoLaunch() option is used you should defer cleaning and
+// refreshing policies policyutil.ServeAndRefresh(ctx, fdms, cr,
+// []policy.Policy{}).
+func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*chrome.Chrome, error) {
+	cfg, err := NewConfig(opts)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to process options")
+	}
+
+	if cfg.m.DeviceLocalAccounts == nil {
+		return nil, errors.Wrap(err, "local device accounts were not set")
+	}
+
+	err = func(ctx context.Context) error {
+		testing.ContextLog(ctx, "kiosk_mode - starting Chrome to set Kiosk policies")
+		cr, err := chrome.New(
+			ctx,
+			chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}), // Required as refreshing policies require test API.
+			chrome.DMSPolicy(fdms.URL),
+			chrome.KeepEnrollment(),
+		)
+		if err != nil {
+			return errors.Wrap(err, "failed to start Chrome")
+		}
+
+		// Set local accounts policy.
+		policies := []policy.Policy{
+			cfg.m.DeviceLocalAccounts,
+		}
+
+		// Handle the AutoLaunch setup.
+		if cfg.m.AutoLaunch == true {
+			policies = append(policies, &policy.DeviceLocalAccountAutoLoginId{
+				Val: *cfg.m.AutoLaunchKioskAppID,
+			})
+		}
+
+		// Handle setting device policies.
+		if cfg.m.ExtraPolicies != nil {
+			policies = append(policies, cfg.m.ExtraPolicies...)
+		}
+
+		// TODO: handle public account policies
+
+		// Update policies.
+		if err := policyutil.ServeAndRefresh(ctx, fdms, cr, policies); err != nil {
+			return errors.Wrap(err, "failed to serve and refresh policies")
+		}
+
+		// Close the previous Chrome instance.
+		defer cr.Close(ctx)
+		return nil
+	}(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed preparing Chrome to start with given Kiosk configuration")
+	}
+
+	reader, err := syslog.NewReader(ctx, syslog.Program("chrome"))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start log reader")
+	}
+	defer reader.Close()
+
+	var cr *chrome.Chrome
+	if cfg.m.AutoLaunch {
+		testing.ContextLog(ctx, "kiosk_mode - starting Chrome in Kiosk mode")
+		// Restart Chrome. After that Kiosk auto starts.
+		cr, err = chrome.New(ctx,
+			chrome.NoLogin(),
+			chrome.DMSPolicy(fdms.URL),
+			chrome.KeepEnrollment(),
+		)
+		if err != nil {
+			return nil, errors.Wrap(err, "Chrome restart failed")
+		}
+
+		if err := ConfirmKioskStarted(ctx, reader); err != nil {
+			cr.Close(ctx)
+			return nil, errors.Wrap(err, "there was a problem while checking chrome logs for Kiosk related entries")
+		}
+	} else {
+		if cfg.m.SigninExtKey == nil {
+			return nil, errors.Wrap(err, "signin extension key was not provided. Cannot start Chrome")
+		}
+		testing.ContextLog(ctx, "kiosk_mode - starting Chrome on Signin screen with set Kiosk apps")
+		// Restart Chrome. Chrome stays on Sing-in screen
+		cr, err = chrome.New(ctx,
+			chrome.DeferLogin(),
+			chrome.LoadSigninProfileExtension(*cfg.m.SigninExtKey),
+			chrome.DMSPolicy(fdms.URL),
+			chrome.KeepEnrollment(),
+		)
+		if err != nil {
+			return nil, errors.Wrap(err, "Chrome restart failed")
+		}
+	}
+
+	return cr, nil
 }
