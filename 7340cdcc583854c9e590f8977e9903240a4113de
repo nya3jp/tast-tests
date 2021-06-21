@@ -16,6 +16,29 @@
       "message": "@ reviewers: PTAL, thanks.",
       "revId": "7340cdcc583854c9e590f8977e9903240a4113de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "005e4216_adbe26a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-21T07:37:03Z",
+      "side": 1,
+      "message": "This is a separate test. Can you make a different GO file? So it can be executed even upper test failed.\nAlternatively, you can wrap them into s.Run() to treat them as sub tests. Even earlier s.Run failed, it will continue to run the next sub test. And both results will be included in error report.\n\ns.Run(ctx, \"auto_correction\", func(ctx context.Context, s *testing.State) {\n    if err :\u003d uiauto.Combine(\"validate VK autocorrect\",\n\t\tvkbCtx.TapKeys(strings.Split(testCase.MisspeltWord, \"\")),\n\t\tits.WaitForFieldValueToBe(inputField, testCase.MisspeltWord),\n\t\tvkbCtx.TapKeys([]string{\"space\"}),\n\t\tits.WaitForFieldValueToBe(inputField, testCase.CorrectWord+\" \"),\n\t)(ctx); err !\u003d nil {\n\t\ts.Fatal(\"Failed to validate VK autocorrect: \", err)\n\t}\n}\n\nif testCase.InputMethodID \u003d\u003d string(ime.INPUTMETHOD_XKB_US_ENG){\n    s.Run(ctx, \"assist_auto_correction\", func(ctx context.Context, s *testing.State){\n    \n    }\n}",
+      "range": {
+        "startLine": 166,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 21
+      },
+      "revId": "7340cdcc583854c9e590f8977e9903240a4113de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
