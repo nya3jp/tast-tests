@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "075cd49e_758e82c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-21T02:06:32Z",
+      "side": 1,
+      "message": "Hello,\nAdded the Drag and Drop scenario,\nIt was not it in the test cases file but was in files for DLP.\nPTAL",
+      "revId": "bcfceef1b10e82ed6818555ac39ef467e9719ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
