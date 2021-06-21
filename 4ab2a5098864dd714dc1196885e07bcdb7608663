@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f62732f7_c3c47b70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-06-21T18:12:35Z",
+      "side": 1,
+      "message": "yes, I did check it when I added UIAutomator scrollForward (crrev.com/c/2691327) and scrollBackward (crrev.com/c/2704626) methods in tast. Both scrollToEnd and scrollTo methods are app specific. TouchScreenScroll testcase requires UIAutomator scrollForward method as it is a  common method which can be used for all 100 apps. So scrollForward method is needed here.",
+      "parentUuid": "c2f5e0be_6168b039",
+      "range": {
+        "startLine": 466,
+        "startChar": 46,
+        "endLine": 466,
+        "endChar": 59
+      },
+      "revId": "4ab2a5098864dd714dc1196885e07bcdb7608663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13ec8017_743b1aa0",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-19T06:35:41Z",
       "side": 1,
       "message": "But how are we ensuring that it scrolled as there is no verification here. Suppose when scroll doesn\u0027t work and returns false then scrollForwdInfo will be false and the test just logs and passes and doesn\u0027t assert anything.",
+      "range": {
+        "startLine": 470,
+        "startChar": 1,
+        "endLine": 473,
+        "endChar": 0
+      },
+      "revId": "4ab2a5098864dd714dc1196885e07bcdb7608663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5480b62f_56ef446b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-06-21T18:12:35Z",
+      "side": 1,
+      "message": "yes, it does throw an error if it didn\u0027t perform scroll, \nscrollForwdInfo, err :\u003d checkForScrollLayout.ScrollForward(ctx, 50)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to scroll forward: \", err)\n\t}\n\t\nCode snippet for ScrollForward method from object.go,\nfunc (o *Object) ScrollForward(ctx context.Context, n int) (bool, error) {\n\treturn o.callSimpleForScroll(ctx, \"scrollForward\", o.s, true, n)\n}\n\nThe above method returns boolean and error and the same error will be captured here, \nscrollForwdInfo, err :\u003d checkForScrollLayout.ScrollForward(ctx, 50)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to scroll forward: \", err)\n\t\t}\n\t\t\nRegarding scrollForwardInfo returning false,\nLet me give some context, scrollForward and scrollBackward in object.go are wrappers in tast and using scrollForward and scrollBackward method in UIAutomator server (https://github.com/xiaocong/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/AutomatorService.java#L572). \nAs per scrollForward and scrollBackward method in UIAutomator server (https://github.com/xiaocong/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/AutomatorService.java#L572), scrollForward or scrollBackward will return output as true if it is scrolled or false if page is not scrollable any more. \nCurrently tast UI Object doesn\u0027t have support to interpret the the outputs of scrollForward and scrollBackward methods in UIAutomator server. This CL has added a new \"callSimpleForScroll\" method in tast, which will interprets the output of scrollForward and scrollBackward methods correctly. So flaky failures will be fixed.\n// callSimpleForScroll is a method to call a RPC method that returns output as true if scrolled, false if can\u0027t scroll anymore.\nfunc (o *Object) callSimpleForScroll(ctx context.Context, method string, params ...interface{}) (bool, error) {\n\tvar output bool\n\tif err :\u003d o.d.call(ctx, method, \u0026output, params...); err !\u003d nil {\n\t\treturn output, wrapMethodError(method, o.s, err)\n\t}\n\treturn output, nil\n}",
+      "parentUuid": "13ec8017_743b1aa0",
       "range": {
         "startLine": 470,
         "startChar": 1,
