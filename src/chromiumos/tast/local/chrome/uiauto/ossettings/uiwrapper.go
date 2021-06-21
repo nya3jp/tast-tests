@@ -97,3 +97,8 @@ func (s *OSSettings) FocusAndWait(finder *nodewith.Finder) uiauto.Action {
 func (s *OSSettings) MakeVisible(finder *nodewith.Finder) uiauto.Action {
 	return s.ui.MakeVisible(finder.FinalAncestor(WindowFinder))
 }
+
+// NodesInfo calls ui.NodesInfo scoping the finder to the Settings app.
+func (s *OSSettings) NodesInfo(ctx context.Context, finder *nodewith.Finder) ([]uiauto.NodeInfo, error) {
+	return s.ui.NodesInfo(ctx, finder.FinalAncestor(WindowFinder))
+}

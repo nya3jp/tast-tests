@@ -6,14 +6,14 @@ package ui
 
 import (
 	"context"
-	"time"
 
-	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/testing"
 )
 
@@ -26,137 +26,63 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedIn",
 	})
-}
-
-// Params for Advanced Settings sub-headings for verification.
-var advancedSubHeadings = []ui.FindParams{
-	{
-		Role: ui.RoleTypeHeading,
-		Name: "Date and time",
-	},
-	{
-		Role: ui.RoleTypeHeading,
-		Name: "Privacy and security",
-	},
-	{
-		Role: ui.RoleTypeHeading,
-		Name: "Languages and inputs",
-	},
-	{
-		Role: ui.RoleTypeHeading,
-		Name: "Files",
-	},
-	{
-		Role: ui.RoleTypeHeading,
-		Name: "Print and scan",
-	},
-	{
-		Role: ui.RoleTypeHeading,
-		Name: "Accessibility",
-	},
-	{
-		Role: ui.RoleTypeHeading,
-		Name: "Reset settings",
-	},
 }
 
 // SettingsToggleAdvanced tests that we can toggle the Advanced Settings section.
 func SettingsToggleAdvanced(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		capps, err := ash.ChromeApps(ctx, tconn)
-		if err != nil {
-			testing.PollBreak(err)
-		}
-		for _, app := range capps {
-			if app.AppID == apps.Settings.ID {
-				return nil
-			}
-		}
-		return errors.New("Settings app not yet found in available Chrome apps")
-	}, nil); err != nil {
-		s.Fatal("Unable to find the Settings app in the available Chrome apps: ", err)
-	}
-
-	// Launch the Settings app and wait for it to open
-	if err := apps.Launch(ctx, tconn, apps.Settings.ID); err != nil {
-		s.Fatal("Failed to launch the Settings app: ", err)
-	}
-
-	if err := ash.WaitForApp(ctx, tconn, apps.Settings.ID, time.Minute); err != nil {
-		s.Fatal("Settings app did not appear in the shelf: ", err)
-	}
-
-	// Establish a Chrome connection to the Settings app and wait for it to finish loading.
-	settingsConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://os-settings/"))
+	settings, err := ossettings.Launch(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to get Chrome connection to Settings app: ", err)
+		s.Fatal("Failed to launch Settings: ", err)
 	}
-	defer settingsConn.Close()
-
-	if err := settingsConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
-		s.Fatal("Failed waiting for Settings app document state to be ready: ", err)
+	if err := settings.WaitForSearchBox()(ctx); err != nil {
+		s.Fatal("Failed waiting for Settings to load: ", err)
 	}
 
-	// Find the "Advanced" heading and associated button.
-	advHeadingParams := ui.FindParams{
-		Role: ui.RoleTypeHeading,
-		Name: "Advanced",
-	}
-	advHeading, err := ui.FindWithTimeout(ctx, tconn, advHeadingParams, 5*time.Second)
+	// Count the initial number of subsections before expanding the Advanced section.
+	n, err := settings.NodesInfo(ctx, nodewith.Role(role.Heading))
 	if err != nil {
-		s.Fatal("Waiting to find Advanced heading failed: ", err)
+		s.Fatal("Failed to find subsection headings: ", err)
 	}
-	defer advHeading.Release(ctx)
+	initialCount := len(n)
 
-	advBtn, err := advHeading.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeButton}, 5*time.Second)
+	// Expand the Advanced section and count the number of subsections. It should be greater than when it was collapsed.
+	advBtn := nodewith.Role(role.Button).Ancestor(nodewith.Role(role.Heading).Name("Advanced"))
+	if err := uiauto.Combine("Scroll the Advanced button into view by focusing it, click it, and wait for it to be expanded",
+		settings.FocusAndWait(advBtn),
+		settings.LeftClick(advBtn),
+		settings.WaitUntilExists(advBtn.State(state.Expanded, true)),
+	)(ctx); err != nil {
+		s.Fatal("Failed to expand the Advanced section: ", err)
+	}
+	n, err = settings.NodesInfo(ctx, nodewith.Role(role.Heading))
 	if err != nil {
-		s.Fatal("Waiting to find Advanced button failed: ", err)
+		s.Fatal("Failed to find subsection headings: ", err)
 	}
-	defer advBtn.Release(ctx)
-
-	// Verify the initial state of the Settings menu (advanced subsections hidden)
-	for _, heading := range advancedSubHeadings {
-		if exists, err := ui.Exists(ctx, tconn, heading); err != nil {
-			s.Fatal("Error in checking presence of subsection: ", err)
-		} else if exists {
-			s.Error("Subsection found unexpectedly: ", heading.Name)
-		}
+	if !(len(n) > initialCount) {
+		s.Fatalf("Number of subsections did not increase after expanding the Advanced section. Before: %v, After: %v", initialCount, len(n))
 	}
 
-	// Click the Advanced button to expand the section
-	// We need to focus the button first so it will be clickable
-	if err := advBtn.FocusAndWait(ctx, 5*time.Second); err != nil {
-		s.Fatal("Failed to call focus() on the Advanced button: ", err)
+	// Collapse the button and re-count the number of subsections. It should match the initial value when the Advanced section was collapsed.
+	if err := uiauto.Combine("Click the advanced button and wait for it to be collapsed",
+		settings.LeftClick(advBtn),
+		settings.WaitUntilExists(advBtn.State(state.Collapsed, true)),
+	)(ctx); err != nil {
+		s.Fatal("Failed to collapse the Advanced section: ", err)
 	}
-
-	if err := advBtn.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click the Advanced button and open Advanced subsection: ", err)
+	n, err = settings.NodesInfo(ctx, nodewith.Role(role.Heading))
+	if err != nil {
+		s.Fatal("Failed to find subsection headings: ", err)
 	}
-
-	// Check for the subsection headings
-	for _, heading := range advancedSubHeadings {
-		if err := ui.WaitUntilExists(ctx, tconn, heading, 5*time.Second); err != nil {
-			s.Errorf("%v subsection heading not found: %v", heading.Name, err)
-		}
-	}
-
-	// Hide the Advanced section by clicking it again, and verify the subsections are gone
-	if err := advBtn.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click and close the Advanced subsection button: ", err)
-	}
-
-	for _, heading := range advancedSubHeadings {
-		if err := ui.WaitUntilGone(ctx, tconn, heading, 5*time.Second); err != nil {
-			s.Errorf("%v subsection heading found, but it should not be present: %v", heading.Name, err)
-		}
+	if len(n) != initialCount {
+		s.Fatalf("Number of subsections after collapsing the Advanced section did not match the initial value. Expected: %v, Actual: %v", initialCount, len(n))
 	}
 }
