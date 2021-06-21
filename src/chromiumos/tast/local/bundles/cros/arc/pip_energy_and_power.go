@@ -12,12 +12,15 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -92,6 +95,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure clamshell mode: ", err)
 	}
 	defer cleanup(cleanupCtx)
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	if err := ash.CloseNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to close notifications: ", err)
@@ -152,8 +156,33 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 
 	if params.bigPIP {
-		if err := act.ResizeWindow(ctx, tconn, arc.BorderTopLeft, coords.NewPoint(0, 0), time.Second); err != nil {
-			s.Fatal("Could not resize the PIP window: ", err)
+		// To resize the PIP window as reliably as possible,
+		// use uiauto (not activity.ResizeWindow) and drag
+		// from the corner (not the ARC++ PIP resize handle).
+		const (
+			// The resizing drag begins this far from the corner
+			// outward along each dimension. This offset ensures
+			// that we drag the corner and not the resize handle.
+			pipCornerOffset = 5
+			// After the resizing drag, we move the mouse this
+			// far along each dimension, to nix resize shadows.
+			nixResizeShadow = 20
+		)
+		workAreaTopLeft := info.WorkArea.TopLeft()
+		if err := action.Combine(
+			"resize the PIP window",
+			mouse.Move(tconn, pipWindow.TargetBounds.TopLeft().Sub(coords.NewPoint(pipCornerOffset, pipCornerOffset)), 0),
+			mouse.Press(tconn, mouse.LeftButton),
+			mouse.Move(tconn, workAreaTopLeft, time.Second),
+			mouse.Release(tconn, mouse.LeftButton),
+			// Ensure that the PIP window will show no controls or resize shadows.
+			mouse.Move(tconn, workAreaTopLeft.Add(coords.NewPoint(nixResizeShadow, nixResizeShadow)), time.Second),
+		)(ctx); err != nil {
+			// Ensure releasing the mouse button.
+			if err := mouse.Release(tconn, mouse.LeftButton)(cleanupCtx); err != nil {
+				s.Error("Failed to release the mouse button: ", err)
+			}
+			s.Fatal("Failed to resize the PIP window: ", err)
 		}
 
 		if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
