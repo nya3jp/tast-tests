@@ -21,6 +21,7 @@ group("all") {
     "ArcFileReaderTest:ArcFileReaderTest",
     "ArcGamePerformanceTest:ArcGamePerformanceTest",
     "ArcGamepadTest:ArcGamepadTest",
+    "ArcImagePasteTest:ArcImagePasteTest",
     "ArcImeBlockingTest:ArcImeBlockingTest",
     "ArcInputCompatTest:ArcInputCompatDisabledTest",
     "ArcInputCompatTest:ArcInputCompatGameTest",

@@ -1,0 +1,13 @@
+{
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA25nh+Roi5kS5Bm3m9bH7P+0xMP8ZFS0a6mRLf31Bp/NKzV5I8jFWTt0bjBasNazU7To7rZYiSCI4aGB5jGMOkq7VmNkCgfen6IeE4y3PV7GJbrUkSnkyWv0kdcZ6/3yPgHexI+oGs1X3ZdsJY8giqb087WRYOCMbW4J6K9riwUjf+zsFksN+N4dfB7Pc3Bz5aN162y9XBN6jvFMnd89qhj7uxR6hFfMG4FABr2a/+rXGBs09/ApllBV9h5V2XaCVYDrC7X8diURJooEmWa/Ldye9GGHasStZXPTNjAsoIcpYK3KtSq1t5SjXao8q4DE81VebMbVYngTaP7eNWXmajwIDAQAB",
+  "name": "Image Paste Extension",
+  "description": "For testing image pasting from Chrome to Android",
+  "manifest_version": 2,
+  "version": "0.1",
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "permissions": ["clipboardWrite"]
+}
