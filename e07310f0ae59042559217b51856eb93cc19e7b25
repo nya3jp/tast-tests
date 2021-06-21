@@ -56,6 +56,63 @@
       },
       "revId": "e07310f0ae59042559217b51856eb93cc19e7b25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52e049a9_adc544e4",
+        "filename": "src/chromiumos/tast/local/kioskmode/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-21T14:32:05Z",
+      "side": 1,
+      "message": "ExtraPolicies (see below for the option)",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "e07310f0ae59042559217b51856eb93cc19e7b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f43d2811_621ca558",
+        "filename": "src/chromiumos/tast/local/kioskmode/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-21T14:32:05Z",
+      "side": 1,
+      "message": "nit: defaults should suffice",
+      "revId": "e07310f0ae59042559217b51856eb93cc19e7b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a24d8d_97a48144",
+        "filename": "src/chromiumos/tast/local/kioskmode/options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-21T14:32:05Z",
+      "side": 1,
+      "message": "This is not flexible enough. Maybe a generic AddPolicy and AddPolicies?",
+      "revId": "e07310f0ae59042559217b51856eb93cc19e7b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
