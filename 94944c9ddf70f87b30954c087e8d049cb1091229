@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14be87ce_827b7ff6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-21T12:53:36Z",
+      "side": 1,
+      "message": "I based this solution on chromeEnrolledLoggedIn fixture",
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98eecc18_45bebed4",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-21T12:53:36Z",
+      "side": 1,
+      "message": "not sure if we should have ownership over that or alt-modalities.",
+      "range": {
+        "startLine": 27,
+        "startChar": 48,
+        "endLine": 27,
+        "endChar": 88
+      },
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
