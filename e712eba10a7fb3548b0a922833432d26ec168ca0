@@ -106,6 +106,24 @@
       "parentUuid": "ecc78b12_3d24a278",
       "revId": "e712eba10a7fb3548b0a922833432d26ec168ca0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eac47f1a_853e5910",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-06-21T10:19:00Z",
+      "side": 1,
+      "message": "From a quick glance, there are fewer than 10 references, so I don\u0027t think maintenance is that big of an issue.\nhttps://cs.android.com/search?q\u003dpython\u0026ss\u003dandroid%2Fplatform%2Fsuperproject:cts%2Fapps%2FCameraITS%2F\u0026start\u003d1\n\nThis should be easier to do and less error-prone.\nYour CL right here also doesn\u0027t do any cleanup. What happens after CameraITS gets run? Shouldn\u0027t we be cleaning up the system environment? Also if there\u0027s an exception midway, doesn\u0027t this pollute the runtime environment?",
+      "parentUuid": "a657647d_121b790d",
+      "revId": "e712eba10a7fb3548b0a922833432d26ec168ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
