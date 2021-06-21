@@ -16,6 +16,24 @@
       "message": "I think quicksettings.SelectAudioOption had done what you implemented here? Or there is something different?\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go;l\u003d554?q\u003dquicksettings%20file:tast\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public",
       "revId": "196bacbf0b554655a0b50748938e5dcf3f556d88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eafe3133_cb6dd4cd",
+        "filename": "src/chromiumos/tast/local/input/voice/audio.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-21T07:17:23Z",
+      "side": 1,
+      "message": "I tried that first, but it was unstable, as it introduced flakiness due to \u0027empty ui tree\u0027 failures. I guess it has to do with the keyboard interactions. Thus revised to use a different one.\n\nWe are currently working on to combine these two.",
+      "parentUuid": "2348592d_838f7465",
+      "revId": "196bacbf0b554655a0b50748938e5dcf3f556d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
