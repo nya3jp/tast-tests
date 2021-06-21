@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63d66556_2620c8cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-21T11:32:59Z",
+      "side": 1,
+      "message": "LGTM\ntryTrimQid become a little complicated, but I don\u0027t see a way to improve it.\n\nIs there a plan to clean up (remove) the video category?\nIt might be a good idea to create a tracking bug for it, and link it in getCategoryAliases() as reminder on which part should be cleaned after the category removal.",
+      "revId": "535f3e07394418a5cbc8b76fb6800c694382e0dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
