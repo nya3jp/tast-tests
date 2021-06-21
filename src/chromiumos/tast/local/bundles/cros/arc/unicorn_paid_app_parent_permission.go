@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome/familylink"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/testing"
 )
@@ -53,6 +54,7 @@ func UnicornPaidAppParentPermission(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get ARC state: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 	if st.Provisioned {
 		s.Log("ARC is already provisioned. Skipping the Play Store setup")
 		if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
