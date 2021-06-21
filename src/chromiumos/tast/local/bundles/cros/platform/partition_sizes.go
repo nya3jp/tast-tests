@@ -91,6 +91,9 @@ get_fixed_dst_drive`
 		}
 		if valid {
 			s.Logf("%s is %d bytes", partDev, bytes)
+		} else if partNum == 5 && bytes < 10*1024*1024 {
+			// Test images tend to use a stub ROOT-B, so allow very small ones.
+			s.Logf("%s is %d bytes; ignoring stub partition", partDev, bytes)
 		} else {
 			s.Errorf("%s is %d bytes; valid sizes are %v", partDev, bytes, validSizes)
 		}
