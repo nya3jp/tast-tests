@@ -39,6 +39,30 @@
       },
       "revId": "7340cdcc583854c9e590f8977e9903240a4113de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af7c108f_0a1be476",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-21T09:14:39Z",
+      "side": 1,
+      "message": "These will need the steps above as well. And if the above fails (no actual autocorrect takes place), there\u0027s no point proceeding with testing the various Undo methods, as there\u0027s no autocorrect to undo in the first place. I don\u0027t think they\u0027re separate tests.",
+      "parentUuid": "005e4216_adbe26a5",
+      "range": {
+        "startLine": 166,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 21
+      },
+      "revId": "7340cdcc583854c9e590f8977e9903240a4113de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
