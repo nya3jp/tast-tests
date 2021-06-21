@@ -31,6 +31,7 @@ import (
 	"chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/attenuator"
+	"chromiumos/tast/remote/wificell/dutcfg"
 	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
@@ -680,45 +681,11 @@ func (tf *TestFixture) Capturer(ap *APIface) (*pcap.Capturer, bool) {
 	return capturer, ok
 }
 
-type connConfig struct {
-	ssid    string
-	hidden  bool
-	secConf security.Config
-	props   map[string]interface{}
-}
-
-// ConnOption is the function signature used to modify ConnectWifi.
-type ConnOption func(*connConfig)
-
-// ConnHidden returns a ConnOption which sets the hidden property.
-func ConnHidden(h bool) ConnOption {
-	return func(c *connConfig) {
-		c.hidden = h
-	}
-}
-
-// ConnSecurity returns a ConnOption which sets the security configuration.
-func ConnSecurity(s security.Config) ConnOption {
-	return func(c *connConfig) {
-		c.secConf = s
-	}
-}
-
-// ConnProperties returns a ConnOption which sets the service properties.
-func ConnProperties(p map[string]interface{}) ConnOption {
-	return func(c *connConfig) {
-		c.props = make(map[string]interface{})
-		for k, v := range p {
-			c.props[k] = v
-		}
-	}
-}
-
 // ConnectWifi asks the DUT to connect to the specified WiFi.
-func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...ConnOption) (*wifi.ConnectResponse, error) {
-	c := &connConfig{
-		ssid:    ssid,
-		secConf: &base.Config{},
+func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...dutcfg.ConnOption) (*wifi.ConnectResponse, error) {
+	c := &dutcfg.ConnConfig{
+		Ssid:    ssid,
+		SecConf: &base.Config{},
 	}
 	for _, op := range options {
 		op(c)
@@ -727,23 +694,23 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...
 	defer st.End()
 
 	// Setup the NetCertStore only for EAP-related tests.
-	if c.secConf.NeedsNetCertStore() {
+	if c.SecConf.NeedsNetCertStore() {
 		if err := tf.setupNetCertStore(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to set up the NetCertStore")
 		}
 
-		if err := c.secConf.InstallClientCredentials(ctx, tf.netCertStore); err != nil {
+		if err := c.SecConf.InstallClientCredentials(ctx, tf.netCertStore); err != nil {
 			return nil, errors.Wrap(err, "failed to install client credentials")
 		}
 	}
 
-	secProps, err := c.secConf.ShillServiceProperties()
+	secProps, err := c.SecConf.ShillServiceProperties()
 	if err != nil {
 		return nil, err
 	}
 
 	props := make(map[string]interface{})
-	for k, v := range c.props {
+	for k, v := range c.Props {
 		props[k] = v
 	}
 	for k, v := range secProps {
@@ -755,9 +722,9 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...
 		return nil, err
 	}
 	request := &wifi.ConnectRequest{
-		Ssid:       []byte(c.ssid),
-		Hidden:     c.hidden,
-		Security:   c.secConf.Class(),
+		Ssid:       []byte(c.Ssid),
+		Hidden:     c.Hidden,
+		Security:   c.SecConf.Class(),
 		Shillprops: propsEnc,
 	}
 	response, err := tf.wifiClient.Connect(ctx, request)
@@ -817,9 +784,9 @@ func (tf *TestFixture) FlushBSS(ctx context.Context, iface string, age time.Dura
 }
 
 // ConnectWifiAP asks the DUT to connect to the WiFi provided by the given AP.
-func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface, options ...ConnOption) (*wifi.ConnectResponse, error) {
+func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface, options ...dutcfg.ConnOption) (*wifi.ConnectResponse, error) {
 	conf := ap.Config()
-	opts := append([]ConnOption{ConnHidden(conf.Hidden), ConnSecurity(conf.SecurityConfig)}, options...)
+	opts := append([]dutcfg.ConnOption{dutcfg.ConnHidden(conf.Hidden), dutcfg.ConnSecurity(conf.SecurityConfig)}, options...)
 	return tf.ConnectWifi(ctx, conf.SSID, opts...)
 }
 
@@ -1072,6 +1039,16 @@ func (tf *TestFixture) LegacyRouter() (router.Legacy, error) {
 	r, ok := tf.RouterByID(0).(router.Legacy)
 	if !ok {
 		return nil, errors.New("router is not a legacy router")
+	}
+	return r, nil
+
+}
+
+// AxRouter returns Router 0 object in the fixture.
+func (tf *TestFixture) AxRouter() (router.Ax, error) {
+	r, ok := tf.RouterByID(0).(router.Ax)
+	if !ok {
+		return nil, errors.New("router is not an ax router")
 	}
 	return r, nil
 

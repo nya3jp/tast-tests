@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/remote/wificell"
+	"chromiumos/tast/remote/wificell/dutcfg"
 	"chromiumos/tast/remote/wificell/router"
 	"chromiumos/tast/testing"
 )
@@ -76,18 +77,27 @@ func AxPing(ctx context.Context, s *testing.State) {
 			Value: "1",
 		},
 	}
-	if err = tf.SetAxSettings(ctx, routerSettings); err != nil {
+	r, err := tf.AxRouter()
+	if err != nil {
+		s.Fatal("Failed to get ax router: ", err)
+
+	}
+	if err = r.SaveConfiguration(ctx); err != nil {
+		s.Fatal("Failed to save router configuration")
+	}
+	defer r.RestoreConfiguration(ctx)
+
+	if err = r.ApplyRouterSettings(ctx, routerSettings); err != nil {
 		s.Error("Could not set ax settings ", err)
 	}
-	defer tf.DeconfigAxRouter(ctx, router.Wl0)
 
-	ip, err := tf.GetAxRouterIPAddress(ctx)
+	ip, err := r.GetRouterIP(ctx)
 	if err != nil {
 		s.Error("Could not get ip addr ", err)
 	}
 	s.Logf("IP IS %s", ip)
 
-	opts := append([]wificell.ConnOption{wificell.ConnHidden(true)})
+	opts := append([]dutcfg.ConnOption{dutcfg.ConnHidden(true)})
 	_, err = tf.ConnectWifi(ctx, "googTest", opts...)
 	if err != nil {
 		s.Error("Failed to connect to WiFi ", err)
