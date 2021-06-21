@@ -52,6 +52,24 @@
       "parentUuid": "c2f701b5_4f955fb3",
       "revId": "e712eba10a7fb3548b0a922833432d26ec168ca0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e07ec91_5af61514",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-21T03:25:36Z",
+      "side": 1,
+      "message": "Can you give explicit explanation of your \"backward-compatibility\" consideration in context of ITS? IMO, the test here only need to pass on ToT and have no backward compatible issue(no need to pass on older version).",
+      "parentUuid": "747580d2_f64c6157",
+      "revId": "e712eba10a7fb3548b0a922833432d26ec168ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
