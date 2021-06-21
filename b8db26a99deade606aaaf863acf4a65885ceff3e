@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdc0e14a_27183da3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-21T14:19:46Z",
+      "side": 1,
+      "message": "nit: categoryAliases\ngo/go-style/decisions#getters",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "b8db26a99deade606aaaf863acf4a65885ceff3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
