@@ -45,7 +45,7 @@ func init() {
 					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
 					MisspeltWord:  "wrold",
 					CorrectWord:   "world",
-					UndoMethod:    autocorrect.ViaPopupUsingMouse,
+					UndoMethod:    autocorrect.ViaPopupUsingMouseOrTouch,
 				},
 			},
 			// Test cases for other input methods can be added once the framework
@@ -110,9 +110,7 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to validate PK autocorrect: ", err)
 	}
 
-	for i := 0; i < len(testCase.CorrectWord)/2+1; i++ {
-		keyboard.AccelAction("Left")(ctx)
-	}
+	uiauto.Repeat(len(testCase.CorrectWord)/2+1, keyboard.AccelAction("Left"))(ctx)
 
 	ui := uiauto.New(tconn)
 	undoWindowFinder := nodewith.ClassName("UndoWindow").Role(role.Window)
@@ -129,7 +127,7 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 			keyboard.AccelAction("Backspace"),
 			its.WaitForFieldValueToBe(inputField, testCase.CorrectWord),
 		)(ctx); err != nil {
-			s.Fatal("Failed to validate PK autocorrect undo via popup using PK: ", err)
+			s.Fatal("Failed to validate PK autocorrect non-undo via Backspace: ", err)
 		}
 	case autocorrect.ViaPopupUsingPK:
 		if err := uiauto.Combine("validate PK autocorrect undo via popup using PK",
@@ -139,7 +137,7 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		)(ctx); err != nil {
 			s.Fatal("Failed to validate PK autocorrect undo via popup using PK: ", err)
 		}
-	case autocorrect.ViaPopupUsingMouse:
+	case autocorrect.ViaPopupUsingMouseOrTouch:
 		if err := uiauto.Combine("validate PK autocorrect undo",
 			ui.LeftClick(undoButtonFinder),
 			its.WaitForFieldValueToBe(inputField, testCase.MisspeltWord+" "),
