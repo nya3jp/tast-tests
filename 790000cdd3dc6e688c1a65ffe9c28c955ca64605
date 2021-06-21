@@ -52,6 +52,24 @@
       "parentUuid": "1ee491ac_585f4413",
       "revId": "790000cdd3dc6e688c1a65ffe9c28c955ca64605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ea947f0_7b1b4e4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-06-21T00:43:49Z",
+      "side": 1,
+      "message": "That\u0027s a good catch Bao-Duy! I\u0027ll switch to NonVKClamshell mode for this test, in case it runs on a tablet.",
+      "parentUuid": "936c637b_32df5b6d",
+      "revId": "790000cdd3dc6e688c1a65ffe9c28c955ca64605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
