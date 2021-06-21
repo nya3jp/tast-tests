@@ -137,26 +137,8 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 	// and add the test account if it doesn't add in the DUT before.
 	addMeetAccount := func(ctx context.Context) error {
 		useAnotherAccount := nodewith.Name("Use another account").First()
-		myAccounts := nodewith.NameRegex(regexp.MustCompile("(My accounts|Additional accounts)")).Role(role.Heading)
-		viewAccounts := nodewith.Name("View accounts").Role(role.Button)
-
 		if err := ui.LeftClick(useAnotherAccount)(ctx); err != nil {
 			return errors.Wrap(err, `failed to click "Use another account"`)
-		}
-
-		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(viewAccounts)(ctx); err == nil {
-			if err := ui.LeftClick(viewAccounts)(ctx); err != nil {
-				return errors.Wrap(err, `failed to click "View accounts"`)
-			}
-		}
-
-		if err := ui.WaitUntilExists(myAccounts)(ctx); err != nil {
-			return errors.Wrap(err, `failed to wait for "My accounts" or "Additional accounts"`)
-		}
-
-		addAccountButton := nodewith.Role(role.Button).NameRegex(regexp.MustCompile("(Add account|Add Google Account)"))
-		if err := ui.LeftClick(addAccountButton)(ctx); err != nil {
-			return errors.Wrap(err, `failed to click "Add account" button`)
 		}
 
 		addAccPrompt := nodewith.NameStartingWith("Add another Google Account for").Role(role.Heading)

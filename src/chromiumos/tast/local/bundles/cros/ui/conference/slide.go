@@ -78,7 +78,11 @@ func newGoogleSlides(ctx context.Context, cr *chrome.Chrome, newWindow bool) err
 			checkOKButton,
 			// Use LeftClickUntil to make sure Google Slides menu is launched.
 			ui.LeftClickUntil(newButton, ui.WithTimeout(3*time.Second).WaitUntilExists(googleSlides)),
-			ui.LeftClick(googleSlides),
+			// The "New" menu will expand to its full size with animation. Low end DUTs will see
+			// lagging for this animation. Use a longer interval to wait for the "Google Slides"
+			// option to be stable to accomodate UI lagging. Otherwise it might click in the middle of
+			// the animation on wrong coordinates.
+			ui.WithInterval(time.Second).LeftClick(googleSlides),
 			// Some DUT models with poor performance need to wait a long time.
 			ui.WithTimeout(2*time.Minute).WaitUntilExists(filmstripView),
 		)(ctx); err != nil {
