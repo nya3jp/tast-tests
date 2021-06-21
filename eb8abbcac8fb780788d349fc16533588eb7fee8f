@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f387bf74_5e2edb5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-21T08:31:21Z",
+      "side": 1,
+      "message": "Thanks for porting this to uiauto.\nLGTM % nits",
+      "revId": "eb8abbcac8fb780788d349fc16533588eb7fee8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e29ff17_77a7366b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-21T08:31:21Z",
+      "side": 1,
+      "message": "nit: This is actually not necessary as 15 seconds is the default timeout for a uiauto context.",
+      "range": {
+        "startLine": 748,
+        "startChar": 24,
+        "endLine": 748,
+        "endChar": 54
+      },
+      "revId": "eb8abbcac8fb780788d349fc16533588eb7fee8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27db6071_8be62553",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-21T08:31:21Z",
+      "side": 1,
+      "message": "You can replace the Poll with:\n\nif err \u003d ui.WaitUntilExists(finder)(ctx); err !\u003d nil {\n    s.Error(\"Failed to locate shelf icons: \", err)\n}",
+      "range": {
+        "startLine": 751,
+        "startChar": 0,
+        "endLine": 763,
+        "endChar": 2
+      },
+      "revId": "eb8abbcac8fb780788d349fc16533588eb7fee8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
