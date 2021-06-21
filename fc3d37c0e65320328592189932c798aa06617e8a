@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "281249f3_c772fb81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-21T03:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c50e20a_9d1a8a82",
+      "range": {
+        "startLine": 214,
+        "startChar": 99,
+        "endLine": 214,
+        "endChar": 100
+      },
+      "revId": "fc3d37c0e65320328592189932c798aa06617e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1e181f0_542485ca",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-17T03:56:55Z",
       "side": 1,
       "message": "Just to check my understanding: if we block the Internet connectivity in the netns (e.g., by dropping all packets in FORWARDING (I don\u0027t know if it works...)), will it work in this case?",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 144
+      },
+      "revId": "fc3d37c0e65320328592189932c798aa06617e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "467d5752_99db7be4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-21T03:50:18Z",
+      "side": 1,
+      "message": "Yes, it should work",
+      "parentUuid": "f1e181f0_542485ca",
       "range": {
         "startLine": 258,
         "startChar": 0,
@@ -101,6 +149,30 @@
       "side": 1,
       "message": "OverlayIP is needed by VPNConnect tests: we need to ping the vpn server.\nUnderlayIP is no longer needed... I forgot to change this in my refactor patch...\nThis is not introduced in this patch so I can take this later, but if Jason you want to fix this (and above) in your patches please go ahead... Thanks!",
       "parentUuid": "a8c88d30_8e0613bd",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 12
+      },
+      "revId": "fc3d37c0e65320328592189932c798aa06617e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d5768c3_fc5391d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-21T03:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81f36856_fb96f323",
       "range": {
         "startLine": 139,
         "startChar": 1,
@@ -205,6 +277,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4864fab5_e8de8f51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-21T03:50:18Z",
+      "side": 1,
+      "message": "Sure! Done.",
+      "parentUuid": "03596398_abd2c7de",
+      "range": {
+        "startLine": 204,
+        "startChar": 4,
+        "endLine": 204,
+        "endChar": 113
+      },
+      "revId": "fc3d37c0e65320328592189932c798aa06617e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bac1c82_8a63887d",
@@ -218,6 +314,30 @@
       "writtenOn": "2021-06-17T11:40:03Z",
       "side": 1,
       "message": "optional: these functions don\u0027t appear to mutate s, so you dont need the pointer receiver",
+      "range": {
+        "startLine": 212,
+        "startChar": 6,
+        "endLine": 212,
+        "endChar": 15
+      },
+      "revId": "fc3d37c0e65320328592189932c798aa06617e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfc62ae4_bc09d613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-21T03:50:18Z",
+      "side": 1,
+      "message": "this one is a little bigger changes, I\u0027ll leave it as cleanup patch",
+      "parentUuid": "9bac1c82_8a63887d",
       "range": {
         "startLine": 212,
         "startChar": 6,
