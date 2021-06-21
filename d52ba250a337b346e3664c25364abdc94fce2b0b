@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c7bb219_6483fe54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-21T00:38:47Z",
+      "side": 1,
+      "message": "[No summit] This CL is to debug voice input issue, to prove that Aloop APIs work rather than using fast-setting UI interaction. \n\nTest result(100 times): http://go/paste/5012008119304192 looks like the failures are not caused by ALoop.\n\n\nUS-en voice input does not work, I suppose it is not related to Aloop issue.\n",
+      "revId": "d52ba250a337b346e3664c25364abdc94fce2b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
