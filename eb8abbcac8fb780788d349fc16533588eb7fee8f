@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52c0bc3a_1c73a647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-06-21T17:53:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e29ff17_77a7366b",
+      "range": {
+        "startLine": 748,
+        "startChar": 24,
+        "endLine": 748,
+        "endChar": 54
+      },
+      "revId": "eb8abbcac8fb780788d349fc16533588eb7fee8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27db6071_8be62553",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-21T08:31:21Z",
       "side": 1,
       "message": "You can replace the Poll with:\n\nif err \u003d ui.WaitUntilExists(finder)(ctx); err !\u003d nil {\n    s.Error(\"Failed to locate shelf icons: \", err)\n}",
+      "range": {
+        "startLine": 751,
+        "startChar": 0,
+        "endLine": 763,
+        "endChar": 2
+      },
+      "revId": "eb8abbcac8fb780788d349fc16533588eb7fee8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9d6f9d0_a2fab59d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-06-21T17:53:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27db6071_8be62553",
       "range": {
         "startLine": 751,
         "startChar": 0,
