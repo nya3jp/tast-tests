@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
-	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/webutil"
@@ -183,10 +182,6 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 				s.Error("Failed to release the mouse button: ", err)
 			}
 			s.Fatal("Failed to resize the PIP window: ", err)
-		}
-
-		if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for location-change events to be propagated to the automation API: ", err)
 		}
 
 		pipWindow, err = ash.GetWindow(ctx, tconn, pipWindow.ID)
