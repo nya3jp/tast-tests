@@ -16,6 +16,29 @@
       "message": "A different approach to implementing the bio wash test. This test leaves HW and SW write protect off after force flashing to clear entropy. ",
       "revId": "8064ebc27b6a38ce2df5737533094ccf0af8ebea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ce382e_fce86f55",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-06-21T16:06:25Z",
+      "side": 1,
+      "message": "Possibly should re-enable HW WP and SW WP. Use code like this: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/firmware/fp_software_write_protect.go?l\u003d67\u0026rcl\u003d47ca9dc54d4da8925effd2cbf1bbb159ec9da04d",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "8064ebc27b6a38ce2df5737533094ccf0af8ebea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
