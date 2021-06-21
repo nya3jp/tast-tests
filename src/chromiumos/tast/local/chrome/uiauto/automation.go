@@ -101,6 +101,18 @@ func Retry(n int, fn Action) Action {
 	return action.Retry(n, fn, 0)
 }
 
+// Repeat returns a function that runs the specified function repeatedly for the specific number of times.
+func Repeat(n int, fn Action) Action {
+	return func(ctx context.Context) error {
+		for i := 0; i < n; i++ {
+			if err := fn(ctx); err != nil {
+				return err
+			}
+		}
+		return nil
+	}
+}
+
 // NodeInfo is a mapping of chrome.automation API AutomationNode.
 // It is used to get information about a specific node from JS to Go.
 // NodeInfo intentionally leaves out many properties. If they become needed, add them to the Node struct.

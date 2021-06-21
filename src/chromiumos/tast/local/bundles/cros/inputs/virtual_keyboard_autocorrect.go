@@ -40,7 +40,7 @@ func init() {
 					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
 					MisspeltWord:  "helol",
 					CorrectWord:   "hello",
-					UndoMethod:    autocorrect.ViaPopupUsingMouse,
+					UndoMethod:    autocorrect.ViaPopupUsingMouseOrTouch,
 				},
 			}, {
 				Name: "en_us_tablet_2",
@@ -58,7 +58,7 @@ func init() {
 					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
 					MisspeltWord:  "helol",
 					CorrectWord:   "hello",
-					UndoMethod:    autocorrect.ViaPopupUsingMouse,
+					UndoMethod:    autocorrect.ViaPopupUsingMouseOrTouch,
 				},
 			}, {
 				Name: "en_us_a11y_2",
@@ -181,7 +181,7 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("validate VK autocorrect",
 		vkbCtx.TapKeys(strings.Split(testCase.MisspeltWord, "")),
 		its.WaitForFieldValueToBe(inputField, testCase.MisspeltWord),
-		vkbCtx.TapKeys([]string{"space"}),
+		vkbCtx.TapKey("space"),
 		its.WaitForFieldValueToBe(inputField, testCase.CorrectWord+" "),
 	)(ctx); err != nil {
 		s.Fatal("Failed to validate VK autocorrect: ", err)
@@ -199,10 +199,10 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	case autocorrect.ViaPopupUsingPK:
 		s.Fatal("ViaPopupUsingPK undo method is not applicable for VK")
 
-	case autocorrect.ViaPopupUsingMouse:
+	case autocorrect.ViaPopupUsingMouseOrTouch:
 		// AssistAutoCorrect flag's features. Only available for US-English.
 		if testCase.InputMethodID != string(ime.INPUTMETHOD_XKB_US_ENG) {
-			s.Fatalf("ViaPopupUsingMouse undo method is not applicable for: %s", testCase.InputMethodID)
+			s.Fatalf("ViaPopupUsingMouseOrTouch undo method is not applicable for: %s", testCase.InputMethodID)
 		}
 
 		ui := uiauto.New(tconn)

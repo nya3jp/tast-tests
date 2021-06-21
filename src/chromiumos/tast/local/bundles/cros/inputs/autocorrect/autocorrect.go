@@ -12,7 +12,7 @@ type UndoMethod int
 const (
 	ViaBackspace UndoMethod = iota
 	ViaPopupUsingPK
-	ViaPopupUsingMouse
+	ViaPopupUsingMouseOrTouch
 )
 
 // TestCase struct encapsulates parameters for each Autocorrect test.
