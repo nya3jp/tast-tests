@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aaed58d2_129b747e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-21T07:29:25Z",
+      "side": 1,
+      "message": "So instead of\n\u003e  \"(?:\" + strings.Join(aliasPatterns, \"|\") + \")\"\nis\n\u003e  \"[^_]+\"\nenough?\nThis way you can skip all the alias shaping here.",
+      "parentUuid": "1120e166_ca9eefcd",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 15
+      },
+      "revId": "348bc9dc132d926da58df49a247e4362bbfd2860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "799855a6_a07df39d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
         "patchSetId": 2
