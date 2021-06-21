@@ -116,3 +116,84 @@ func ConfirmKioskStarted(ctx context.Context, reader *syslog.Reader) error {
 	}
 	return nil
 }
+
+// Credentials used for authenticating the test user.
+const (
+	Username = "tast-user@managedchrome.com"
+	Password = "test0000"
+)
+
+// New starts Chrome, sets passed Kiosk related options to policies and
+// restarts Chrome. When kioskmode.AutoLaunch() is used, then it auto starts
+// given Kiosk application.
+// If kioskmode.AutoLaunch() option is used you should defer cleaning and
+// refreshing policies policyutil.ServeAndRefresh(ctx, fdms, cr,
+// []policy.Policy{}).
+func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (c *chrome.Chrome, retErr error) {
+	cfg, err := NewConfig(opts)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to process options")
+	}
+
+	if cfg.m.DeviceLocalAccounts == nil {
+		return nil, errors.Wrap(err, "local device accounts were not set")
+	}
+
+	cr, err := chrome.New(
+		ctx,
+		chrome.FakeLogin(chrome.Creds{User: Username, Pass: Password}), // Required as refreshing policies require test API.
+		chrome.DMSPolicy(fdms.URL),
+		chrome.KeepEnrollment(),
+	)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start Chrome")
+	}
+
+	// Set local accounts policy.
+	policies := []policy.Policy{
+		cfg.m.DeviceLocalAccounts,
+	}
+
+	// Handle the AutoLaunch setup.
+	if cfg.m.AutoLaunch == true {
+		policies = append(policies, &policy.DeviceLocalAccountAutoLoginId{
+			Val: *cfg.m.AutoLaunchKioskAppID,
+		})
+	}
+
+	// Handle setting device policies.
+	if cfg.m.ExtraPolicies != nil {
+		policies = append(policies, cfg.m.ExtraPolicies...)
+	}
+
+	// Update policies.
+	if err := policyutil.ServeAndRefresh(ctx, fdms, cr, policies); err != nil {
+		return nil, errors.Wrap(err, "failed to serve and refresh policies")
+	}
+
+	// Close the previous Chrome instance.
+	if err := cr.Close(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to close Chrome connection")
+	}
+
+	reader, err := syslog.NewReader(ctx, syslog.Program("chrome"))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start log reader")
+	}
+	defer reader.Close()
+
+	// Restart Chrome. After that Kiosk auto starts.
+	cr, err = chrome.New(ctx,
+		chrome.NoLogin(),
+		chrome.DMSPolicy(fdms.URL),
+		chrome.KeepEnrollment(),
+	)
+	if err != nil {
+		return nil, errors.Wrap(err, "Chrome restart failed")
+	}
+
+	if err := ConfirmKioskStarted(ctx, reader); err != nil {
+		return nil, errors.Wrap(err, "there was a problem while checking chrome logs for Kiosk related entries")
+	}
+	return cr, nil
+}
