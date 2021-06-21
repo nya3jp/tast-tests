@@ -13,9 +13,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/cuj/volume"
 	"chromiumos/tast/local/camera/cca"
@@ -23,7 +21,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
@@ -37,9 +35,6 @@ const (
 	YoutubeMusicAppName = "ytmusic"
 	// SpotifyAppName indicates to test against Spotify.
 	SpotifyAppName = "Spotify"
-
-	defaultUITimeout = 30 * time.Second
-	waitTime         = 3 * time.Second
 )
 
 // Run runs the EverydayMultitaskingCUJ test.
@@ -47,7 +42,8 @@ const (
 // account is the one used by Spotify APP to do login.
 //
 // TODO(crbug.com/1196849): split this large function.
-func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, tabletMode bool) error {
+func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaScriptPaths []string,
+	outDir, appName, account string, tabletMode bool) (retErr error) {
 	const (
 		gmailURL        = "https://mail.google.com"
 		calendarURL     = "https://calendar.google.com/"
@@ -110,9 +106,6 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 		return errors.Wrap(err, "failed to create the volumeHelper")
 	}
 	originalVolume, err := vh.GetVolume(ctx)
-	cleanupCtx = ctx
-	ctx, cancel = ctxutil.Shorten(ctx, time.Second*5)
-	defer cancel()
 	defer vh.SetVolume(cleanupCtx, originalVolume)
 
 	// uiHandler will be assigned with different instances for clamshell and tablet mode.
@@ -181,15 +174,16 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 	}
 
 	// Install android apps for the everyday works: Spotify.
+	var (
+		appSpotify *Spotify
+		uiTimeout  = 15 * time.Second
+	)
 	if appName == SpotifyAppName {
+		appSpotify = NewSpotify(kb, a, d, account, uiTimeout)
+
 		testing.ContextLog(ctx, "Check and install ", spotifyPackageName)
-		installCtx, cancel := context.WithTimeout(ctx, 3*time.Minute)
-		defer cancel()
-		if err = playstore.InstallApp(installCtx, a, d, spotifyPackageName, -1); err != nil {
-			return errors.Wrapf(err, "failed to install %s", spotifyPackageName)
-		}
-		if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
-			return errors.Wrap(err, "failed to close Play Store")
+		if err := appSpotify.Install(ctx, tconn, 3*time.Minute); err != nil {
+			return errors.Wrap(err, "failed to install Spotify")
 		}
 	}
 
@@ -217,51 +211,47 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 	// So make it the first deferred function to use cleanupCtx.
 	defer setBatteryNormal(cleanupCtx)
 
+	faillogCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+	var ccaApp *cca.App
+	defer func(ctx context.Context) {
+		faillog.SaveScreenshotOnError(ctx, cr, outDir, func() bool { return retErr != nil })
+		faillog.DumpUITreeOnError(ctx, outDir, func() bool { return retErr != nil }, tconn)
+
+		if ccaApp != nil {
+			ccaApp.Close(ctx)
+		}
+		cuj.CloseBrowserTabs(ctx, tconn)
+		appSpotify.Close(ctx, tconn)
+	}(faillogCtx)
+
 	var appStartTime int64
 	// Launch arc apps from the app launcher; first open the app-launcher, type
 	// the query and select the first search result, and wait for the app window
 	// to appear. When the app has the splash screen, skip it.
 	if appName == SpotifyAppName {
 		if err = recorder.Run(ctx, func(ctx context.Context) error {
-			launchCtx, cancel := context.WithTimeout(ctx, 2*time.Minute)
-			defer cancel()
-			if _, err := ash.GetARCAppWindowInfo(ctx, tconn, spotifyPackageName); err == nil {
-				testing.ContextLogf(ctx, "Package %s is already visible, skipping", spotifyPackageName)
-				return nil
+			t, err := appSpotify.Launch(ctx, tconn, time.Minute)
+			if err != nil {
+				return errors.Wrap(err, "failed to Launch Spotify")
 			}
+			appStartTime = t.Milliseconds()
 
-			var startTime time.Time
-			// Sometimes the Spotify App will fail to open, so add retry here.
-			if err := testing.Poll(launchCtx, func(ctx context.Context) error {
-				if err := launcher.SearchAndLaunch(tconn, kb, SpotifyAppName)(ctx); err != nil {
-					return errors.Wrapf(err, "failed to launch %s app", SpotifyAppName)
-				}
-				startTime = time.Now()
-				return ash.WaitForVisible(ctx, tconn, spotifyPackageName)
-			}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
-				return errors.Wrapf(err, "failed to wait for the new window of %s", spotifyPackageName)
-			}
-			if appName == SpotifyAppName {
-				endTime := time.Now()
-				appStartTime = endTime.Sub(startTime).Milliseconds()
-			}
-
-			appSpotify := newSpotify(d, account, waitTime)
 			testing.ContextLog(ctx, "Start to play Spotify")
-			if err = appSpotify.play(launchCtx); err != nil {
+			if err = appSpotify.Play(ctx); err != nil {
 				return errors.Wrap(err, "failed to play Spotify")
 			}
 			// Waits some time to stabilize the result of launcher animations.
-			return testing.Sleep(launchCtx, waitTime)
+			return testing.Sleep(ctx, uiTimeout)
 		}); err != nil {
 			return errors.Wrap(err, "failed to launch Spotify")
 		}
 	}
 
 	openBrowserWithTabs := func(urlList []string) error {
-		var conn *chrome.Conn
 		for idx, url := range urlList {
-			conn, err = uiHandler.NewChromeTab(ctx, cr, url, idx == 0)
+			conn, err := uiHandler.NewChromeTab(ctx, cr, url, idx == 0)
 			if err != nil {
 				return errors.Wrapf(err, "failed to open %s", url)
 			}
@@ -389,7 +379,10 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 		}
 	}
 	testing.ContextLog(ctx, "Take photo and video")
-	if err := recorder.Run(ctx, func(ctx context.Context) error { return takePhotoAndVideo(ctx, cr, ccaScriptPaths, outDir) }); err != nil {
+	if err := recorder.Run(ctx, func(ctx context.Context) error {
+		ccaApp, err = takePhotoAndVideo(ctx, cr, ccaScriptPaths, outDir)
+		return err
+	}); err != nil {
 		return errors.Wrap(err, "failed to run the camera scenario")
 	}
 
@@ -415,50 +408,56 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 	if err := recorder.SaveHistograms(outDir); err != nil {
 		return errors.Wrap(err, "failed to save histogram raw data")
 	}
+
 	return nil
 }
 
-func takePhotoAndVideo(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string) error {
+func takePhotoAndVideo(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string) (*cca.App, error) {
 	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
 	if err != nil {
-		return errors.Wrap(err, "failed to construct test bridge")
+		return nil, errors.Wrap(err, "failed to construct test bridge")
 	}
 	defer tb.TearDown(ctx)
 
 	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
-		return errors.Wrap(err, "failed to clear saved directory")
+		return nil, errors.Wrap(err, "failed to clear saved directory")
 	}
+
 	app, err := cca.New(ctx, cr, scriptPaths, outDir, tb)
 	if err != nil {
-		return errors.Wrap(err, "failed to open CCA")
+		return nil, errors.Wrap(err, "failed to open CCA")
 	}
+
 	_, err = app.TakeSinglePhoto(ctx, cca.TimerOff)
 	if err != nil {
-		return errors.Wrap(err, "failed to take single photo")
+		return app, errors.Wrap(err, "failed to take single photo")
 	}
+
 	testing.ContextLog(ctx, "Switch to video mode")
 	if err := app.SwitchMode(ctx, cca.Video); err != nil {
-		return errors.Wrap(err, "failed to switch to video mode")
+		return app, errors.Wrap(err, "failed to switch to video mode")
 	}
 	if err := app.WaitForVideoActive(ctx); err != nil {
-		return errors.Wrap(err, "preview is inactive after switch to video mode")
+		return app, errors.Wrap(err, "preview is inactive after switch to video mode")
 	}
+
 	testing.ContextLog(ctx, "Click shutter to start video recording")
 	if err := app.ClickShutter(ctx); err != nil {
-		return errors.Wrap(err, "failed to click shutter")
+		return app, errors.Wrap(err, "failed to click shutter")
 	}
 
 	// Keep video recording for some time.
 	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed to sleep")
+		return app, errors.Wrap(err, "failed to sleep")
 	}
 
 	testing.ContextLog(ctx, "Click shutter to stop video recording")
 	if err := app.ClickShutter(ctx); err != nil {
-		return errors.Wrap(err, "failed to click shutter")
+		return app, errors.Wrap(err, "failed to click shutter")
 	}
 	if err := app.WaitForState(ctx, "taking", false); err != nil {
-		return errors.Wrap(err, "shutter is not ended")
+		return app, errors.Wrap(err, "shutter is not ended")
 	}
-	return nil
+
+	return app, nil
 }
