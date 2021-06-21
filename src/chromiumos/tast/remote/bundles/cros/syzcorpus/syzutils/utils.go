@@ -21,6 +21,22 @@ import (
 	"chromiumos/tast/testing"
 )
 
+var crashPatterns = []string{
+	"BUG: ",
+	"INFO: ",
+	"PANIC: ",
+	"WARNING: ",
+	"Kernel panic",
+	"general protection fault",
+	"divide error: ",
+	"Internal error: ",
+	"Unhandled fault:",
+	"Alignment trap:",
+	"invalid opcode:",
+	"stack segment: ",
+	"Unable to handle kernel ",
+}
+
 // FindDUTArch determines the DUT arch.
 func FindDUTArch(ctx context.Context, d *dut.DUT) (string, error) {
 	arch, err := d.Command("uname", "-m").Output(ctx)
@@ -37,9 +53,11 @@ func WarningInDmesg(ctx context.Context, d *dut.DUT) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-	// TODO: Allow for using syzkaller's crashlog parsing to check for crashes.
-	if strings.Contains(contents, "WARNING") || strings.Contains(contents, "segfault") {
-		return true, nil
+	for _, pattern := range crashPatterns {
+		if strings.Contains(contents, pattern) {
+			testing.ContextLogf(ctx, "pattern %q matched", pattern)
+			return true, nil
+		}
 	}
 	return false, nil
 }
