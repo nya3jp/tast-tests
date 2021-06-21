@@ -88,6 +88,24 @@
       "parentUuid": "1e07ec91_5af61514",
       "revId": "e712eba10a7fb3548b0a922833432d26ec168ca0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a657647d_121b790d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-21T08:22:49Z",
+      "side": 1,
+      "message": "One downside of this is that by making the py2 -\u003e py3 patch more larger, it will also increase the difficulty to maintaining the patch(e.g. When updating versions, any new line changes near the patched line may make the current patch failed). Also since those scripts are downloaded from Android\u0027s codebase and thus coexist in another codebase, IMO, maybe we should follow their style guide for minimizing the patch size. Also I believe the patch will be eventaully removed as tauto get fully migrate to python3 as TODO(b/187788514) in the comment.",
+      "parentUuid": "ecc78b12_3d24a278",
+      "revId": "e712eba10a7fb3548b0a922833432d26ec168ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
