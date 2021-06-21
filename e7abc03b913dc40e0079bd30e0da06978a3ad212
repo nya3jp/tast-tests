@@ -46,6 +46,30 @@
       },
       "revId": "e7abc03b913dc40e0079bd30e0da06978a3ad212",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "312bd18b_06471266",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_autocorrect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2021-06-21T07:36:47Z",
+      "side": 1,
+      "message": "Ah , to clarify, I meant leaving the if statement here, but throwing an error if testCase.UndoMethod is set. \n\nsomething like:\n\n```\n\tif testCase.InputMethodID !\u003d string(ime.INPUTMETHOD_XKB_US_ENG) {\n\t\tif(testCase.UndoMethod){\n\t\t\ts.Fatal(fmt.Sprintf(\"Test does not currently support testing undomethod with input method: %s\", testCase.InputMethodID));\n\t\t}\n\t\treturn\n\t}\n```\n\t\nMainly to avoid someone adding an UndoMethod without realizing the test will just early exit instead of actually testing it.\n\nIt\u0027s pretty minor though.",
+      "parentUuid": "5e6564ce_df5a27b1",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 8
+      },
+      "revId": "e7abc03b913dc40e0079bd30e0da06978a3ad212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
