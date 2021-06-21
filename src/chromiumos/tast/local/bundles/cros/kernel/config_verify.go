@@ -293,11 +293,6 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		builtin = append(builtin, "EXT4_USE_FOR_EXT23")
 	}
 
-	if arch == "aarch64" && ver.IsOrLater(4, 4) {
-		// Security: unmaps kernel from page tables at EL0 (KPTI)
-		builtin = append(builtin, "UNMAP_KERNEL_AT_EL0")
-	}
-
 	// Security; marks data segments as RO/NX, text as RO.
 	if ver.IsOrLater(4, 11) {
 		builtin = append(builtin, "STRICT_KERNEL_RWX", "STRICT_MODULE_RWX")
@@ -325,6 +320,11 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 			// Security; virtually map the kernel stack to better defend against overflows.
 			builtin = append(builtin, "VMAP_STACK")
 		}
+	}
+
+    if arch == "aarch64" && ver.IsOrLater(4, 16) {
+		// Security: unmaps kernel from page tables at EL0 (KPTI)
+		builtin = append(builtin, "UNMAP_KERNEL_AT_EL0")
 	}
 
 	if ver.IsOrLater(4, 19) {
