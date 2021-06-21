@@ -285,6 +285,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01be791d_f7086b1c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/audio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-21T01:20:10Z",
+      "side": 1,
+      "message": "Thanks for the reference!",
+      "parentUuid": "cefd1bc2_bc8fdf3e",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "c04eb6c97fb100990c7dd22da63d93d26ee8f620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bf1d972_e8cd5914",
