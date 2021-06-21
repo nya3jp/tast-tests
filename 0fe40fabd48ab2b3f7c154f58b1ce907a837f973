@@ -33,6 +33,24 @@
       "message": "This is the solution i was able to think of for checking if content is pasted or not.\nNotification works but to actually check whether content is pasted, we can use the property of google.com, if there is no content then url won\u0027t change otherwise it will search for it and url will change",
       "revId": "0fe40fabd48ab2b3f7c154f58b1ce907a837f973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f32b9764_3e0213d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-06-21T21:02:43Z",
+      "side": 1,
+      "message": "Isn\u0027t it possible to do something like this? https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/chromeos/policy/dlp/data_transfer_dlp_controller_browsertest.cc;l\u003d597?q\u003ddatatransferd\u0026ss\u003dchromium",
+      "parentUuid": "8bf5f832_6ea4adac",
+      "revId": "0fe40fabd48ab2b3f7c154f58b1ce907a837f973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
