@@ -34,6 +34,24 @@
       "parentUuid": "33b9c0af_97378cc4",
       "revId": "e712eba10a7fb3548b0a922833432d26ec168ca0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "747580d2_f64c6157",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-06-21T03:04:11Z",
+      "side": 1,
+      "message": "I think it needs to be done. How many references are there?\nEven our ARC++ toolchain contains Python2 scripts relying on `/usr/bin/env python` to be Python2.\nFor backward-compatibility reasons, it\u0027s preferred to keep that the same, especially in Chrome OS.",
+      "parentUuid": "c2f701b5_4f955fb3",
+      "revId": "e712eba10a7fb3548b0a922833432d26ec168ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
