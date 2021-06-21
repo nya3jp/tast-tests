@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37808523_71e6055d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_autocorrect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-21T06:07:04Z",
+      "side": 1,
+      "message": "Also expanded coverage of undo-by-Backspace tests to non-US-English. Only undo-via-popup requires AssistAutocorrect flag, hence US-English-only.\n\nPTAL, thanks.",
+      "revId": "b37c98c1ac6d25da362722117ffbce06e0099d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a0d6043_6a5c9908",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-06-18T23:37:17Z",
       "side": 1,
       "message": "vkbCtx.TapKey(\"backspace\")",
+      "range": {
+        "startLine": 194,
+        "startChar": 3,
+        "endLine": 194,
+        "endChar": 41
+      },
+      "revId": "b37c98c1ac6d25da362722117ffbce06e0099d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42c1aafc_b2dfced1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_autocorrect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-21T06:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a0d6043_6a5c9908",
       "range": {
         "startLine": 194,
         "startChar": 3,
