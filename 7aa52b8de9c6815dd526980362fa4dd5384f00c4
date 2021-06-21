@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7c3fb80_a9024235",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-06-21T09:07:06Z",
+      "side": 1,
+      "message": "bob, kevin, scarlet are failing this test (https://tastboard.corp.google.com/test/kernel.ConfigVerify)",
+      "revId": "7aa52b8de9c6815dd526980362fa4dd5384f00c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
