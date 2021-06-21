@@ -124,6 +124,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c37a1feb_30c30449",
+        "filename": "src/chromiumos/tast/local/kioskmode/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-21T14:51:11Z",
+      "side": 1,
+      "message": "ExtraPolicies (it may include user policies)\nPublicAccountPolicies -\u003e should this be an array and only apply to the logged in kiosk session?",
+      "parentUuid": "b9ac0a86_e0439b4b",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "e07310f0ae59042559217b51856eb93cc19e7b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f43d2811_621ca558",
         "filename": "src/chromiumos/tast/local/kioskmode/config.go",
         "patchSetId": 1
