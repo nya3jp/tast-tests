@@ -16,6 +16,24 @@
       "message": "Can you modify ITS to explicitly specify python3?\nThis is very hacky and I don\u0027t think this should be the way to go.\n\nE.g.,\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:chromite/run_tests",
       "revId": "e712eba10a7fb3548b0a922833432d26ec168ca0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2f701b5_4f955fb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-21T02:59:15Z",
+      "side": 1,
+      "message": "From Shebang? There\u0027s too many reference in ITS test code like \n```\ncmd \u003d \u0027python tools/rotation_rig.py...\u0027\n```\nAlso need to be patched. I would prefer to simply force python3 as system python.",
+      "parentUuid": "33b9c0af_97378cc4",
+      "revId": "e712eba10a7fb3548b0a922833432d26ec168ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
