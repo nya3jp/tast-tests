@@ -13,39 +13,6 @@ import (
 	"regexp"
 )
 
-// AxRouterConfigParam contains the information to configure a parameter on the ax router.
-type AxRouterConfigParam struct {
-	Band  string
-	Key   string
-	Value string
-}
-
-const routeriface = "br0"
-const restartWirelessService = "restart_wireless"
-
-// Wireless band selection.
-const (
-	Wl0 = "wl0"
-	Wl1 = "wl1"
-	Wl2 = "wl2"
-)
-
-// Nvram key parameters
-const (
-	// KeyAkm, Authentication and Key Management chooses the authentication method (e.g None (""), psk2, etc)
-	KeyAkm = "akm"
-	// KeyAuthMode Authentication mode (open, psk2)
-	KeyAuthMode = "auth_mode_x"
-	// KeySsid is the router's ssid on the chosen band
-	KeySsid = "ssid"
-	// KeyChanspec is the band's channel (1,2,3, etc)
-	KeyChanspec = "chanspec"
-	// KeyClosed is a boolean (0,1) dictating wheter the network is hidden (1 is hidden, 0 is open)
-	KeyClosed = "closed"
-	// KeyRadio is a boolean (0,1) dictating whether the radio is enabled (1 is enabled, 0 is disabled).
-	KeyRadio = "radio"
-)
-
 // axRouterStruct is used to control the ax wireless router and stores state of the router.
 type axRouterStruct struct {
 	BaseRouterStruct
@@ -70,7 +37,7 @@ func newAxRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (A
 
 // stageRouterParam changes the router configuration file. The actual router configuration isn't actually
 // changed until restartWirelessService is invoked.
-func (r *axRouterStruct) stageRouterParam(ctx context.Context, band, key, value string) error {
+func (r *axRouterStruct) stageRouterParam(ctx context.Context, band BandEnum, key NvramKeyEnum, value string) error {
 	return r.host.Command("/bin/nvram", "set", fmt.Sprintf("%s_%s=%s", band, key, value)).Run(ctx)
 }
 
@@ -116,4 +83,18 @@ func (r *axRouterStruct) GetRouterIP(ctx context.Context) (string, error) {
 		return "", errors.Errorf("got unexpected number of inet addresses. Expected 2, got %d", len(match))
 	}
 	return match[1], nil
+}
+
+func (r *axRouterStruct) SaveConfiguration(ctx context.Context) error {
+	defer r.restartWirelessService(ctx)
+	return r.host.Command("/bin/nvram", "save", savedConfigLocation).Run(ctx)
+}
+
+func (r *axRouterStruct) RestoreConfiguration(ctx context.Context) error {
+	defer r.restartWirelessService(ctx)
+	return r.host.Command("/bin/nvram", "loadfile", savedConfigLocation).Run(ctx)
+}
+
+func (r *axRouterStruct) DeconfigAxRouter(ctx context.Context, band BandEnum) error {
+	return r.ApplyRouterSettings(ctx, []AxRouterConfigParam{{Band: band, Key: KeyRadio, Value: "0"}})
 }

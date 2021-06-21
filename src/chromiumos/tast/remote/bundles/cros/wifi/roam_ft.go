@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
+	"chromiumos/tast/remote/wificell/dutcfg"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
@@ -275,7 +276,7 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		ctx, cancel = ds.ReserveForClose(ctx)
 		defer cancel()
 
-		connResp, err := tf.ConnectWifi(ctx, ap0.Config().SSID, wificell.ConnSecurity(ap0SecConf))
+		connResp, err := tf.ConnectWifi(ctx, ap0.Config().SSID, dutcfg.ConnSecurity(ap0SecConf))
 		if err != nil {
 			if expectedFailure {
 				s.Log("Failed to connect to the AP as expected; Tearing down")

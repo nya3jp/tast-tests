@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	remoteiw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
+	"chromiumos/tast/remote/wificell/dutcfg"
 	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/wifi"
@@ -114,7 +115,7 @@ func FunctionalAfterCSA(ctx context.Context, s *testing.State) {
 		configProps := map[string]interface{}{
 			shillconst.ServicePropertyAutoConnect: false,
 		}
-		resp, err := tf.ConnectWifiAP(ctx, ap, wificell.ConnProperties(configProps))
+		resp, err := tf.ConnectWifiAP(ctx, ap, dutcfg.ConnProperties(configProps))
 		if err != nil {
 			s.Fatal("Failed to connect to WiFi: ", err)
 		}
