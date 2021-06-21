@@ -43,8 +43,6 @@ func AudioFromFile(ctx context.Context, audioFilePath string) error {
 }
 
 // EnableAloop loads and enables Aloop then sets it as active input/output node.
-// TODO(b/191602192): [CRAS] Issues in using CRAS api to activate Aloop nodes.
-// When the above issue is resolved, using CRAS api instead of ui interactions.
 func EnableAloop(ctx context.Context, tconn *chrome.TestConn) (func(ctx context.Context), error) {
 	// Load ALSA loopback module.
 	unload, err := audio.LoadAloop(ctx)
@@ -62,6 +60,11 @@ func EnableAloop(ctx context.Context, tconn *chrome.TestConn) (func(ctx context.
 	return unload, nil
 }
 
+// activateAloopNodes activates Aloop nodes as input/output devices.
+// Switching nodes via UI interactions is the recommended way, instead of using
+// cras.SetActiveNode() method, as UI will always send the preference input/output
+// devices to CRAS. Calling cras.SetActiveNode() changes the active devices for a
+// moment, but they soon are reverted by UI. See (b/191602192) for details.
 func activateAloopNodes(ctx context.Context, tconn *chrome.TestConn) error {
 	cleanupCtx, shortCancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer shortCancel()
@@ -89,10 +92,7 @@ func selectAudioOption(ctx context.Context, tconn *chrome.TestConn, device strin
 	ui := uiauto.New(tconn)
 	option := nodewith.Role(role.CheckBox).Name(device)
 
-	if err := ui.MakeVisible(option)(ctx); err != nil {
-		return errors.Wrapf(err, "failed to focus the %v audio option", device)
-	}
-	if err := ui.LeftClick(option)(ctx); err != nil {
+	if err := ui.DoDefault(option)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to click %v audio option", device)
 	}
 
