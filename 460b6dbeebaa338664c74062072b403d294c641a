@@ -16,6 +16,24 @@
       "message": "nit, only need to mention ec.txt once.",
       "revId": "460b6dbeebaa338664c74062072b403d294c641a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b282ebb6_96614248",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-22T18:30:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44688bd6_77301317",
+      "revId": "460b6dbeebaa338664c74062072b403d294c641a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
