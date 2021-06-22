@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/errors"
@@ -252,6 +253,13 @@ func StartL2TPIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start L2TP/IPsec server")
 	}
+
+	// After calling `ipsec start`, it may need some time for charon to load the
+	// connection configurtions, and incoming requests will be rejected before
+	// it is happens done. Currently there is no easy way to check this status
+	// in program, so we add a sleep here to mitigate this issue.
+	testing.Sleep(ctx, 500*time.Millisecond)
+
 	server.UnderlayIP = underlayIP
 	if underlayIPIsOverlayIP {
 		server.OverlayIP = underlayIP
