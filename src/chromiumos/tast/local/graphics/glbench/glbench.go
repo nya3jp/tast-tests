@@ -65,22 +65,22 @@ func Run(ctx context.Context, outDir string, preValue interface{}, config Config
 	}()
 
 	// Logging the initial machine temperature.
-	if err := reportTemperature(ctx, pv, "temperature_1_start"); err != nil {
+	if err := ReportTemperature(ctx, pv, "temperature_1_start"); err != nil {
 		appendErr(err, "failed to report temperature")
 	}
 
 	// Only setup benchmark mode if we are not in hasty mode.
 	if !config.IsHasty() {
-		if err := reportTemperature(ctx, pv, "temperature_1_start"); err != nil {
+		if err := ReportTemperature(ctx, pv, "temperature_1_start"); err != nil {
 			appendErr(err, "failed to log temperature_1_start")
 		}
 
 		// Make machine behaviour consistent.
 		if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
-			saveFailLog(ctx, filepath.Join(outDir, "before_tests1"))
+			SaveFailLog(ctx, filepath.Join(outDir, "before_tests1"))
 			testing.ContextLog(ctx, "Unable get cool machine by default setting: ", err)
 			if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownConfig{PollTimeout: 1 * time.Minute, PollInterval: 2 * time.Second, CPUTemperatureThreshold: 60000, CoolDownMode: power.CoolDownPreserveUI}); err != nil {
-				saveFailLog(ctx, filepath.Join(outDir, "before_tests2"))
+				SaveFailLog(ctx, filepath.Join(outDir, "before_tests2"))
 				appendErr(err, "unable to get cool machine to reach 60C")
 			}
 		}
@@ -103,7 +103,7 @@ func Run(ctx context.Context, outDir string, preValue interface{}, config Config
 	}
 
 	// Logging the afterward machine temperature.
-	if err := reportTemperature(ctx, pv, "temperature_3_after_test"); err != nil {
+	if err := ReportTemperature(ctx, pv, "temperature_3_after_test"); err != nil {
 		appendErr(err, "failed to report temperature")
 	}
 
@@ -244,7 +244,8 @@ func analyzeSummary(summary, resultPath string, pv *perf.Values) ([]string, erro
 	return failedTests, nil
 }
 
-func reportTemperature(ctx context.Context, pv *perf.Values, name string) error {
+// ReportTemperature set the current temperature to pv. If there's problem reading the value, it sets -1000 as the temperature.
+func ReportTemperature(ctx context.Context, pv *perf.Values, name string) error {
 	temp, err := sysutil.TemperatureInputMax()
 	if err != nil {
 		temp = -1000.0
@@ -281,7 +282,9 @@ func noChecksumTest(name string) bool {
 	}
 	return false
 }
-func saveFailLog(ctx context.Context, dir string) {
+
+// SaveFailLog actively calls faillog.SaveToDir to save information for future debugging.
+func SaveFailLog(ctx context.Context, dir string) {
 	// Create the directory if it is not exist.
 	if _, err := os.Stat(dir); os.IsNotExist(err) {
 		os.Mkdir(dir, 0755)
