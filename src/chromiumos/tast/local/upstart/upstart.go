@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -37,7 +38,9 @@ var allStates map[upstart.State]struct{}
 
 func init() {
 	// Matches a leading line of e.g. "ui start/running, process 3182" or "boot-splash stop/waiting".
-	statusRegexp = regexp.MustCompile(`(?m)^[^ ]+ ([-a-z]+)/([-a-z]+)(?:, process (\d+))?$`)
+	// Also supports job instance, e.g. "ml-service (mojo_service) start/running, process 712".
+
+	statusRegexp = regexp.MustCompile(`(?m)^[^ ]+ (?:\([^ ]+\) )?([-a-z]+)/([-a-z]+)(?:, process (\d+))?$`)
 
 	allGoals = map[upstart.Goal]struct{}{upstart.StartGoal: {}, upstart.StopGoal: {}}
 
@@ -69,20 +72,40 @@ func WithArg(key, value string) Arg {
 	return Arg{key: key, value: value}
 }
 
+// ConvertArgs converts args to "KEY=value" pattern that can be used as command line arguments.
+func ConvertArgs(args ...Arg) []string {
+	var cmdArgs []string
+	for _, arg := range args {
+		cmdArgs = append(cmdArgs, fmt.Sprintf("%s=%s", arg.key, arg.value))
+	}
+	return cmdArgs
+}
+
 // JobStatus returns the current status of job.
 // If the PID is unavailable (i.e. the process is not running), 0 will be returned.
 // An error will be returned if the job is unknown (i.e. it has no config in /etc/init).
-func JobStatus(ctx context.Context, job string) (goal upstart.Goal, state upstart.State, pid int, err error) {
-	c := testexec.CommandContext(ctx, "initctl", "status", job)
-	b, err := c.Output()
+// args is passed to the job as extra parameters, e.g. multiple-instance jobs can use it to specify an instance.
+func JobStatus(ctx context.Context, job string, args ...Arg) (goal upstart.Goal, state upstart.State, pid int, err error) {
+	cmdArgs := append([]string{"status", job}, ConvertArgs(args...)...)
+
+	cmd := testexec.CommandContext(ctx, "initctl", cmdArgs...)
+	stdout, stderr, err := cmd.SeparatedOutput()
+
+	// Tolerates err if stderr starts with "initctl: Unknown instance". It happens when
+	// job is multiple-instance, and the specific instance is treated as stop/waiting.
 	if err != nil {
-		c.DumpLog(ctx)
+		if strings.HasPrefix(string(stderr), "initctl: Unknown instance") {
+			return upstart.StopGoal, upstart.WaitingState, pid, nil
+		}
+		cmd.DumpLog(ctx)
 		return goal, state, pid, err
 	}
-	return parseStatus(job, string(b))
+
+	return parseStatus(job, string(stdout))
 }
 
 // parseStatus parses the output from "initctl status <job>", e.g. "ui start/running, process 28515".
+// Also supports job instance status. e.g. "ml-service (mojo_service) start/running, process 6820".
 // The output may be multiple lines; see the example in Section 10.1.6.19.3,
 // "Single Job Instance Running with Multiple PIDs", in the Upstart Cookbook.
 func parseStatus(job, out string) (goal upstart.Goal, state upstart.State, pid int, err error) {
@@ -115,10 +138,11 @@ func parseStatus(job, out string) (goal upstart.Goal, state upstart.State, pid i
 	return goal, state, pid, nil
 }
 
-// CheckJob checks the named upstart job and returns an error if it isn't running or
-// has a process in the zombie state.
-func CheckJob(ctx context.Context, job string) error {
-	if goal, state, pid, err := JobStatus(ctx, job); err != nil {
+// CheckJob checks the named upstart job (and the specified instance) and
+// returns an error if it isn't running or has a process in the zombie state.
+// args is passed to the job as extra parameters, e.g. multiple-instance jobs can use it to specify an instance.
+func CheckJob(ctx context.Context, job string, args ...Arg) error {
+	if goal, state, pid, err := JobStatus(ctx, job, args...); err != nil {
 		return errors.Wrapf(err, "failed to get %v status", job)
 	} else if goal != upstart.StartGoal || state != upstart.RunningState {
 		return errors.Errorf("%v not running (%v/%v)", job, goal, state)
@@ -133,40 +157,54 @@ func CheckJob(ctx context.Context, job string) error {
 }
 
 // JobExists returns true if the supplied job exists (i.e. it has a config file known by Upstart).
+// For existing single-instance jobs, `initctl status ${job}` runs without error.
+// For existing multiple-instance jobs, it fails with error message:
+//   initctl: Unknown parameter: ...
+// For non-existing jobname, it fails with error message:
+//   initctl: Unknown job: ${jobname}
 func JobExists(ctx context.Context, job string) bool {
-	if err := testexec.CommandContext(ctx, "initctl", "status", job).Run(); err != nil {
+	cmd := testexec.CommandContext(ctx, "initctl", "status", job)
+	_, stderr, err := cmd.SeparatedOutput()
+
+	if err != nil {
+		if strings.HasPrefix(string(stderr), "initctl: Unknown parameter") {
+			return true
+		}
 		return false
 	}
+
 	return true
 }
 
-// RestartJob restarts job. If the job is currently stopped, it will be started.
+// RestartJob restarts the job (single-instance) or the specified instance of
+// the job (multiple-instance). If the job (instance) is currently stopped, it will be started.
 // Note that the job is reloaded if it is already running; this differs from the
 // "initctl restart" behavior as described in Section 10.1.2, "restart", in the Upstart Cookbook.
-// args is passed to the job as extra parameters.
+// args is passed to the job as extra parameters, e.g. multiple-instance jobs can use it to specify an instance.
 func RestartJob(ctx context.Context, job string, args ...Arg) error {
 	ctx, st := timing.Start(ctx, fmt.Sprintf("upstart_restart_%s", job))
 	defer st.End()
 
+	cmdArgs := append([]string{job}, ConvertArgs(args...)...)
 	// Make sure that the job isn't running and then try to start it.
-	if err := StopJob(ctx, job); err != nil {
-		return errors.Wrapf(err, "stopping %q failed", job)
+	if err := StopJob(ctx, job, args...); err != nil {
+		return errors.Wrapf(err, "stopping %s failed", shutil.EscapeSlice(cmdArgs))
 	}
 	if err := StartJob(ctx, job, args...); err != nil {
-		return errors.Wrapf(err, "starting %q failed", job)
+		return errors.Wrapf(err, "starting %s failed", shutil.EscapeSlice(cmdArgs))
 	}
 	return nil
 }
 
-// StopJob stops job. If it is not currently running, this is a no-op.
+// StopJob stops job or the specified job instance. If it is not currently running, this is a no-op.
+// args is passed to the job as extra parameters, e.g. multiple-instance jobs can use it to specify an instance.
 //
 // The ui job receives special behavior since it is restarted out-of-band by the ui-respawn
 // job when session_manager exits. To work around this, when job is "ui", this function first
 // waits for the job to reach a stable state. See https://crbug.com/891594.
-func StopJob(ctx context.Context, job string) error {
+func StopJob(ctx context.Context, job string, args ...Arg) error {
 	ctx, st := timing.Start(ctx, fmt.Sprintf("upstart_stop_%s", job))
 	defer st.End()
-
 	if job == uiJob {
 		// The ui and ui-respawn jobs go through the following sequence of statuses
 		// when the session_manager job exits with a nonzero status:
@@ -188,13 +226,15 @@ func StopJob(ctx context.Context, job string) error {
 		}
 	}
 
+	cmdArgs := append([]string{"stop", job}, ConvertArgs(args...)...)
+
 	// Issue a "stop" request and hope for the best.
-	cmd := testexec.CommandContext(ctx, "initctl", "stop", job)
+	cmd := testexec.CommandContext(ctx, "initctl", cmdArgs...)
 	cmdErr := cmd.Run()
 
 	// If the job was already stopped, the above "initctl stop" would have failed.
 	// Check its actual status now.
-	if err := WaitForJobStatus(ctx, job, upstart.StopGoal, upstart.WaitingState, RejectWrongGoal, 0); err != nil {
+	if err := WaitForJobStatus(ctx, job, upstart.StopGoal, upstart.WaitingState, RejectWrongGoal, 0, args...); err != nil {
 		if cmdErr != nil {
 			cmd.DumpLog(ctx)
 		}
@@ -243,32 +283,28 @@ func DumpJobs(ctx context.Context, path string) error {
 
 // EnsureJobRunning starts job if it isn't currently running.
 // If it is already running, this is a no-op.
-func EnsureJobRunning(ctx context.Context, job string) error {
+// args is passed to the job as extra parameters, e.g. multiple-instance jobs can use it to specify an instance.
+func EnsureJobRunning(ctx context.Context, job string, args ...Arg) error {
 	ctx, st := timing.Start(ctx, fmt.Sprintf("upstart_ensure_%s", job))
 	defer st.End()
-
 	// If the job already has a "start" goal, wait for it to enter the "running" state.
 	// This will return nil immediately if it's already start/running, and will return
 	// an error immediately if the job has a "stop" goal.
-	if err := WaitForJobStatus(ctx, job, upstart.StartGoal, upstart.RunningState, RejectWrongGoal, 0); err == nil {
+	if err := WaitForJobStatus(ctx, job, upstart.StartGoal, upstart.RunningState, RejectWrongGoal, 0, args...); err == nil {
 		return nil
 	}
 
 	// Otherwise, start it. This command blocks until the job enters the "running" state.
-	return StartJob(ctx, job)
+	return StartJob(ctx, job, args...)
 }
 
 // StartJob starts job. If it is already running, this returns an error.
-// args is passed to the job as extra parameters.
+// args is passed to the job as extra parameters, e.g. multiple-instance jobs can use it to specify an instance.
 func StartJob(ctx context.Context, job string, args ...Arg) error {
 	ctx, st := timing.Start(ctx, fmt.Sprintf("upstart_start_%s", job))
 	defer st.End()
 
-	cmdArgs := []string{"start", job}
-	for _, arg := range args {
-		cmdArgs = append(cmdArgs, fmt.Sprintf("%s=%s", arg.key, arg.value))
-	}
-
+	cmdArgs := append([]string{"start", job}, ConvertArgs(args...)...)
 	cmd := testexec.CommandContext(ctx, "initctl", cmdArgs...)
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
@@ -293,13 +329,14 @@ const (
 // WaitForJobStatus waits for job to have the status described by goal/state.
 // gp controls the function's behavior if the job's goal doesn't match the requested one.
 // If timeout is non-zero, it limits the amount of time to wait.
-func WaitForJobStatus(ctx context.Context, job string, goal upstart.Goal, state upstart.State, gp GoalPolicy, timeout time.Duration) error {
+// args is passed to the job as extra parameters, e.g. multiple-instance jobs can use it to specify an instance.
+func WaitForJobStatus(ctx context.Context, job string, goal upstart.Goal, state upstart.State,
+	gp GoalPolicy, timeout time.Duration, args ...Arg) error {
 	ctx, st := timing.Start(ctx, fmt.Sprintf("upstart_wait_%s", job))
 	defer st.End()
-
 	// Used to report an out-of-band error if we fail to get the status or see a different goal.
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		g, s, _, err := JobStatus(ctx, job)
+		g, s, _, err := JobStatus(ctx, job, args...)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
