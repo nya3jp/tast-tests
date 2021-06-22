@@ -1,8 +1,8 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package wallpaper
 
 import (
 	"context"
@@ -18,19 +18,19 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChangeWallpaper,
+		Func: Change,
 		Desc: "Follows the user flow to change the wallpaper",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
-func ChangeWallpaper(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+func Change(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
