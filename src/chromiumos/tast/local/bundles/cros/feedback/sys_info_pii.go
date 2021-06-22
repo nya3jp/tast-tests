@@ -31,7 +31,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SysInfoPII,
 		Desc:         "Verify that known-sensitive data doesn't show up in feedback reports",
-		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
+		Contacts:     []string{"xiangdongkong@google.com", "cros-feedback-app@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
