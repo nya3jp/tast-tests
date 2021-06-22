@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "396dfc83_5875e59e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-22T20:14:52Z",
+      "side": 1,
+      "message": "Jun, sorry for introducing more changes in last patch. Now the changes are minimized and new changes will be submitted by a new CL for review. Thanks for your patience on this. ",
+      "revId": "222cf684dd06a57d67c237d31dad5e8615b8b993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
