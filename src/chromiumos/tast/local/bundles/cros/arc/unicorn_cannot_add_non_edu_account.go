@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -84,15 +85,23 @@ func UnicornCannotAddNonEduAccount(ctx context.Context, s *testing.State) {
 	defer d.Close(ctx)
 	//TODO(b/190680218): Remove once fixed
 	defer func() {
-		s.Log("Cleaning up dialogs")
-		closeButton1 := nodewith.Name("Close").Role(role.Button).Nth(1)
-		closeButton2 := nodewith.Name("Close").Role(role.Button).Nth(2)
+		s.Log("Closing all windows")
 		ui := uiauto.New(tconn)
-		if err := uiauto.Combine("clicking close",
-			ui.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(closeButton2), ui.LeftClick(closeButton2)),
-			ui.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(closeButton1), ui.LeftClick(closeButton1)),
-		)(ctx); err != nil {
-			s.Error("Failed to close the windows in cleanup: ", err)
+		windows, err := ash.FindAllWindows(ctx, tconn, func(window *ash.Window) bool {
+			return window.IsVisible
+		})
+		if err != nil {
+			s.Error("Failed to FindAllWindows : ", err)
+		}
+		for _, window := range windows {
+			if err := window.CloseWindow(ctx, tconn); err != nil {
+				s.Error("Failed to close window: ", err)
+			}
+		}
+		closeButton := nodewith.Name("Close").Role(role.Button)
+		s.Log("Closing system dialog")
+		if err := ui.LeftClickUntil(closeButton, ui.Gone(closeButton))(ctx); err != nil {
+			s.Error("Failed to click close button: ", err)
 		}
 	}()
 
