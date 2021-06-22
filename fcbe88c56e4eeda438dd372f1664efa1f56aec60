@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4932ae0_1f3ffa94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-22T02:17:17Z",
+      "side": 1,
+      "message": "Damm. After I fixed the commit message, I lose the power of owner approval.\n\n@Judy, can you please approve this cl?",
+      "revId": "fcbe88c56e4eeda438dd372f1664efa1f56aec60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
