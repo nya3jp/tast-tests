@@ -70,6 +70,30 @@
       },
       "revId": "31b3aae107f94a4f70c11a1a12bce0dc2036e82a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1249e2a4_57e5df45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_toggle_advanced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-22T22:05:32Z",
+      "side": 1,
+      "message": "No i mean adding a package to the local bundle and add the test to that new package.\n\nso the test name becomes settings.ToggleAdvanced instead of ui.SettingsToggleAdvanced",
+      "parentUuid": "6f02a87b_d577e245",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 30
+      },
+      "revId": "31b3aae107f94a4f70c11a1a12bce0dc2036e82a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
