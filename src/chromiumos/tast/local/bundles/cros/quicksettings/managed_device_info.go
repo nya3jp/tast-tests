@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package quicksettings
 
 import (
 	"context"
@@ -20,7 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: QuickSettingsManagedDeviceInfo,
+		Func: ManagedDeviceInfo,
 		Desc: "Checks that the Quick Settings managed device info is displayed correctly",
 		Contacts: []string{
 			"leandre@chromium.org",
@@ -32,8 +32,8 @@ func init() {
 	})
 }
 
-// QuickSettingsManagedDeviceInfo tests that the Quick Settings managed device info is displayed correctly.
-func QuickSettingsManagedDeviceInfo(ctx context.Context, s *testing.State) {
+// ManagedDeviceInfo tests that the Quick Settings managed device info is displayed correctly.
+func ManagedDeviceInfo(ctx context.Context, s *testing.State) {
 	const uiTimeout = 10 * time.Second
 
 	// Start FakeDMS.
