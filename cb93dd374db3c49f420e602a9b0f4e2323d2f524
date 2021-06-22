@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a24cb68_ae751cd1",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-22T23:41:39Z",
+      "side": 1,
+      "message": "Is this func called anywhere?",
+      "range": {
+        "startLine": 183,
+        "startChar": 17,
+        "endLine": 183,
+        "endChar": 30
+      },
+      "revId": "cb93dd374db3c49f420e602a9b0f4e2323d2f524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
