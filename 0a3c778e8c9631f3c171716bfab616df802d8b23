@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "939eb06e_11d07238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2021-06-22T17:35:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3241895f_7728caa8",
+      "range": {
+        "startLine": 104,
+        "startChar": 48,
+        "endLine": 104,
+        "endChar": 56
+      },
+      "revId": "0a3c778e8c9631f3c171716bfab616df802d8b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e91e1126_127e4d5f",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c029a8e4_94b72f00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2021-06-22T17:35:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e91e1126_127e4d5f",
+      "revId": "0a3c778e8c9631f3c171716bfab616df802d8b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7caa0536_f6f2feba",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-06-22T17:07:21Z",
       "side": 1,
       "message": "I thought it was a little difficult to understand what is being checked here. The example in the bug made it much clearer: https://b.corp.google.com/issues/182508777#comment7\n\nI think it would be nice to add a comment with a similar example, unless this is something very obvious to people familiar with this area.",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 38
+      },
+      "revId": "0a3c778e8c9631f3c171716bfab616df802d8b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f31387d2_1ad4ea71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2021-06-22T17:35:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7caa0536_f6f2feba",
       "range": {
         "startLine": 110,
         "startChar": 3,
