@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60f0bb5a_2100acfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-06-22T08:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e33de69f_7d70e145",
+      "range": {
+        "startLine": 48,
+        "startChar": 34,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "0b6bab081d18cc627c0c05587c1db06b102dbbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "417c4007_f56e6a5b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-21T06:39:47Z",
       "side": 1,
       "message": "Could you put the functions into dragDropTestParams and let the test calls them?",
+      "range": {
+        "startLine": 128,
+        "startChar": 32,
+        "endLine": 129,
+        "endChar": 35
+      },
+      "revId": "0b6bab081d18cc627c0c05587c1db06b102dbbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08897513_32198888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-06-22T08:46:22Z",
+      "side": 1,
+      "message": "Hmm, the inner anonymous function depends on startActivityWithBounds and assertDroppedDataInTargetActivity, which are local to func DragDrop(), and probably we don\u0027t want to expose them to other tests under package arc. WDYT?",
+      "parentUuid": "417c4007_f56e6a5b",
       "range": {
         "startLine": 128,
         "startChar": 32,
