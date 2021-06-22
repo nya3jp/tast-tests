@@ -36,7 +36,7 @@ func init() {
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		Attr:         []string{"group:firmware"},
 		Pre:          pre.NormalMode(),
-		Timeout:      8 * time.Minute,
+		Timeout:      15 * time.Minute, // Enough time to download test image from CloudStorage if necessary
 		Params: []testing.Param{{
 			Name: "normal",
 			Val: bootModeTestParams{
@@ -102,7 +102,7 @@ func init() {
 				resetType:      firmware.ColdReset,
 			},
 		}},
-		VarDeps: []string{"servo"},
+		Vars: []string{"servo"},
 	})
 }
 
@@ -120,6 +120,15 @@ func BootMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Requiring config")
 	}
 	s.Log("Mode switcher type: ", h.Config.ModeSwitcherType)
+
+	if err := h.RequireServo(ctx); err != nil {
+		s.Fatal("Error opening servo: ", err)
+	}
+	if tc.bootToMode == fwCommon.BootModeRecovery {
+		if err := h.SetupUSBKey(ctx, s.CloudStorage()); err != nil {
+			s.Fatal("USBKey not working: ", err)
+		}
+	}
 
 	// Double-check that DUT starts in normal mode.
 	if curr, err := h.Reporter.CurrentBootMode(ctx); err != nil {

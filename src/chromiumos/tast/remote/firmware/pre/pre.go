@@ -81,7 +81,7 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 		s.Fatal("DUT is offline before test start: ", err)
 	}
 
-	if err := i.setupBootMode(ctx); err != nil {
+	if err := i.setupBootMode(ctx, s.CloudStorage()); err != nil {
 		s.Fatal("Could not setup BootMode: ", err)
 	}
 
@@ -161,7 +161,7 @@ func (i *impl) destroyHelper(ctx context.Context, s *testing.PreState) {
 }
 
 // setupBootMode the DUT to the correct mode if it's in a different one, saving the original one.
-func (i *impl) setupBootMode(ctx context.Context) error {
+func (i *impl) setupBootMode(ctx context.Context, cloudStorage *testing.CloudStorage) error {
 	mode, err := i.v.Helper.Reporter.CurrentBootMode(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not get current boot mode")
@@ -174,6 +174,12 @@ func (i *impl) setupBootMode(ctx context.Context) error {
 	}
 
 	if mode != i.v.BootMode {
+		if i.v.BootMode == common.BootModeRecovery {
+			if err := i.v.Helper.SetupUSBKey(ctx, cloudStorage); err != nil {
+				return errors.Wrap(err, "USBKey not working")
+			}
+
+		}
 		testing.ContextLogf(ctx, "Current boot mode is %q, rebooting to %q to satisfy precondition", mode, i.v.BootMode)
 		if err := i.rebootToMode(ctx, i.v.BootMode); err != nil {
 			return errors.Wrapf(err, "failed to reboot to mode %q", i.v.BootMode)
