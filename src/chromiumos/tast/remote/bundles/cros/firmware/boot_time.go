@@ -12,6 +12,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware"
+	"chromiumos/tast/remote/firmware/pre"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -28,7 +30,11 @@ func init() {
 		Desc:         "Measures EC boot time",
 		Contacts:     []string{"jbettis@chromium.org", "cros-fw-engprod@google.com"},
 		Attr:         []string{"group:firmware", "firmware_ec"},
-		VarDeps:      []string{"servo"},
+		Data:         []string{firmware.ConfigFile},
+		Pre:          pre.NormalMode(),
+		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
+		SoftwareDeps: []string{"crossystem", "flashrom"},
+		Vars:         []string{"servo"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Params: []testing.Param{
 			{
@@ -66,31 +72,26 @@ func BootTime(ctx context.Context, s *testing.State) {
 	// See HOST_STRFTIME in src/platform/ec/util/ec3po/console.py
 	uartAbsoluteTime := regexp.MustCompile(`^\d+-\d+-\d+ \d+:(\d+):(\d+)\.(\d+)`)
 
-	dut := s.DUT()
-
-	servoSpec, _ := s.Var("servo")
-	pxy, err := servo.NewProxy(ctx, servoSpec, dut.KeyFile(), dut.KeyDir())
-	if err != nil {
-		s.Fatal("Failed to connect to servo: ", err)
+	h := s.PreValue().(*pre.Value).Helper
+	if err := h.RequireServo(ctx); err != nil {
+		s.Fatal("Failed to init servo: ", err)
 	}
-	defer pxy.Close(ctx)
-	svo := pxy.Servo()
 
 	s.Log("Capturing EC log")
-	if err := svo.SetOnOff(ctx, servo.ECUARTCapture, servo.On); err != nil {
+	if err := h.Servo.SetOnOff(ctx, servo.ECUARTCapture, servo.On); err != nil {
 		s.Fatal("Failed to capture EC UART: ", err)
 	}
 	defer func() {
-		if err := svo.SetOnOff(ctx, servo.ECUARTCapture, servo.Off); err != nil {
+		if err := h.Servo.SetOnOff(ctx, servo.ECUARTCapture, servo.Off); err != nil {
 			s.Fatal("Failed to disable capture EC UART: ", err)
 		}
 	}()
 	// Read the uart stream just to make sure there isn't buffered data.
-	if _, err := svo.GetQuotedString(ctx, servo.ECUARTStream); err != nil {
+	if _, err := h.Servo.GetQuotedString(ctx, servo.ECUARTStream); err != nil {
 		s.Fatal("Failed to read UART: ", err)
 	}
 	s.Log("Rebooting EC")
-	if err := svo.RunECCommand(ctx, "reboot"); err != nil {
+	if err := h.Servo.RunECCommand(ctx, "reboot"); err != nil {
 		s.Fatal("Failed to send reboot command: ", err)
 	}
 	// Set times to invalid values to start.
@@ -105,7 +106,7 @@ func BootTime(ctx context.Context, s *testing.State) {
 		priorMinute    = -1
 	)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if lines, err := svo.GetQuotedString(ctx, servo.ECUARTStream); err != nil {
+		if lines, err := h.Servo.GetQuotedString(ctx, servo.ECUARTStream); err != nil {
 			s.Fatal("Failed to read UART: ", err)
 		} else if lines != "" {
 			// It is possible to read partial lines, so save the part after newline for later
@@ -179,5 +180,8 @@ func BootTime(ctx context.Context, s *testing.State) {
 	}
 	if apBootTime > apBootMax {
 		s.Errorf("Boot time = %s; want <=%s", apBootTime, apBootMax)
+	}
+	if s.HasError() {
+		s.Log("To debug, check the ec.txt log in $LOGDIR/autoserv_test/servod_*/ec.txt")
 	}
 }
