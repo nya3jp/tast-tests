@@ -31,19 +31,14 @@ func init() {
 			"play_store",
 		},
 		Params: []testing.Param{{
-			Val:               2,
-			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
-			Name:              "unstable",
 			Val:               1,
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
 			Val:               1,
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Timeout: 16 * time.Minute,
+		Timeout: 6 * time.Minute,
 	})
 }
 
