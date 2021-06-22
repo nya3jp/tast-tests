@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c9dbc10_d5082db8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-22T10:04:57Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m not sure I understand the problem correctly. IIUC test scenarios need to be aware of lacros-chrome\u0027s behavior that it will exit on all windows closed? Then we might want to ask tests to call a certain function to let the library know that all windows are closed, with which we can deal with restart races. Maybe I\u0027m missing something.",
+      "parentUuid": "ee281c05_6d25b156",
+      "revId": "041ca75284a89d8849ba341a684f8a83752853c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "839021e2_43b5561e",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/app_launcher_launch.go",
         "patchSetId": 5
