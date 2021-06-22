@@ -10,12 +10,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-
-	"chromiumos/tast/dut"
-	"chromiumos/tast/errors"
-	"chromiumos/tast/rpc"
-	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -87,57 +81,8 @@ func (p *testFixturePreImpl) Timeout() time.Duration {
 	return 4 * time.Minute
 }
 
-// companionName facilitates obtaining of the companion device's hostname.
-func companionName(s *testing.PreState, suffix string) string {
-	name, err := s.DUT().CompanionDeviceHostname(suffix)
-	if err != nil {
-		s.Fatal("Unable to synthesize name, err: ", err)
-	}
-	return name
-}
-
-func (p *testFixturePreImpl) dutHealthCheck(ctx context.Context, s *testing.PreState) error {
-	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
-	defer cancel()
-
-	// The reasons why we create a new gRPC session here for checking DUT's health are:
-	// 1. For the very first test of the Precondition, Prepare() does not have a gRPC yet.
-	// 2. For the rest of tests, p.tf might be broken such as DUT unexpected rebooted in
-	//    the previous test. So checking the DUT's health without using the existing gRPC
-	//    session can avoid the problem. Note that the broken p.tf is already handled in
-	//    Prepare().
-	rpcClient, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
-	if err != nil {
-		return errors.Wrap(err, "cannot create gRPC client")
-	}
-	defer rpcClient.Close(ctx)
-
-	wifiClient := wifi.NewShillServiceClient(rpcClient.Conn)
-	if _, err := wifiClient.HealthCheck(ctx, &empty.Empty{}); err != nil {
-		return errors.Wrap(err, "health check failed")
-	}
-	return nil
-}
-
-// recoverUnhealthyDUT checks if the DUT is healthy. If not, try to recover it
-// with reboot.
 func (p *testFixturePreImpl) recoverUnhealthyDUT(ctx context.Context, s *testing.PreState) error {
-	if err := p.dutHealthCheck(ctx, s); err != nil {
-		s.Log("Rebooting the DUT due to health check err: ", err)
-		// As reboot will at least break tf.rpc, no reason to keep
-		// the existing p.tf. Close it before reboot.
-		if p.tf != nil {
-			s.Log("Close TestFixture before reboot")
-			if err := p.tf.Close(ctx); err != nil {
-				s.Log("Failed to close TestFixture before DUT reboot recovery: ", err)
-			}
-			p.tf = nil
-		}
-		if err := s.DUT().Reboot(ctx); err != nil {
-			return errors.Wrap(err, "reboot failed")
-		}
-	}
-	return nil
+	return recoverUnhealthyDUT(ctx, s.DUT(), s.RPCHint(), &p.tf)
 }
 
 // Prepare initializes the shared TestFixture if not yet created and returns it
@@ -167,59 +112,7 @@ func (p *testFixturePreImpl) Prepare(ctx context.Context, s *testing.PreState) i
 		// Fallthrough the creation of TestFixture.
 	}
 
-	// Create TestFixture.
-	var ops []TFOption
-	// Read router/pcap variable. If not available or empty, NewTestFixture
-	// will fall back to Default{Router,Pcap}Host.
-	if p.features&TFFeaturesRouters != 0 {
-		if routers, ok := s.Var("routers"); ok && routers != "" {
-			s.Log("routers: ", routers)
-			slice := strings.Split(routers, ",")
-			if len(slice) < 2 {
-				s.Fatal("You must provide at least two router names")
-			}
-			ops = append(ops, TFRouter(slice...))
-		} else {
-			routers := []string{
-				companionName(s, dut.CompanionSuffixRouter),
-				// Use AP named as packet capturer as the second router
-				// when TFFeaturesRouters is set.
-				companionName(s, dut.CompanionSuffixPcap),
-			}
-			s.Log("companion routers: ", routers)
-			ops = append(ops, TFRouter(routers...))
-		}
-	} else {
-		router, ok := s.Var("router")
-		if ok && router != "" {
-			s.Log("router: ", router)
-			ops = append(ops, TFRouter(router))
-		} // else: let TestFixture resolve the name.
-	}
-	pcap, ok := s.Var("pcap")
-	if ok && pcap != "" {
-		s.Log("pcap: ", pcap)
-		ops = append(ops, TFPcap(pcap))
-	} // else: let TestFixture resolve the name.
-	if p.features&TFFeaturesRouterAsCapture != 0 {
-		s.Log("using router as pcap")
-		ops = append(ops, TFRouterAsCapture())
-	}
-	// Read attenuator variable.
-	if p.features&TFFeaturesAttenuator != 0 {
-		atten, ok := s.Var("attenuator")
-		if !ok || atten == "" {
-			// Attenuator is not typical companion, so we synthesize its name here.
-			atten = companionName(s, "-attenuator")
-		}
-		s.Log("attenuator: ", atten)
-		ops = append(ops, TFAttenuator(atten))
-	}
-	// Enable capturing.
-	if p.features&TFFeaturesCapture != 0 {
-		ops = append(ops, TFCapture(true))
-	}
-	tf, err := NewTestFixture(ctx, s.PreCtx(), s.DUT(), s.RPCHint(), ops...)
+	tf, err := setUpTestFixture(ctx, s.PreCtx(), s.DUT(), s.RPCHint(), p.features, s.Var)
 	if err != nil {
 		s.Fatal("Failed to set up test fixture: ", err)
 	}
