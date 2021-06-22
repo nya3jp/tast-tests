@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52a3530e_9a558ce3",
+        "filename": "src/chromiumos/tast/remote/firmware/codelab/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-06-22T18:32:25Z",
+      "side": 1,
+      "message": "nit, shouldn\u0027t we mention cr50, smoke, slow, ccd here as the other possibilities?",
+      "revId": "267f220c2ec3e6625ad031b377795abc63bf4fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
