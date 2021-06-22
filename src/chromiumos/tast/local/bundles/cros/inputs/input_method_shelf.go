@@ -94,7 +94,7 @@ func InputMethodShelf(ctx context.Context, s *testing.State) {
 		ui.WaitUntilExists(imeMenuTrayButtonFinder),
 
 		// Select JP input method from IME tray.
-		ui.LeftClick(imeMenuTrayButtonFinder),
+		ui.LeftClickUntil(imeMenuTrayButtonFinder, ui.WithTimeout(3*time.Second).WaitUntilExists(jpOptionFinder)),
 		ui.LeftClick(jpOptionFinder),
 		func(ctx context.Context) error {
 			return ime.WaitForInputMethodMatches(ctx, tconn, imeCode, 10*time.Second)
