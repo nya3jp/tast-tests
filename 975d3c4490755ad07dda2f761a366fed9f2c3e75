@@ -16,6 +16,29 @@
       "message": "ihf@, tast-owners@ PTAL.",
       "revId": "975d3c4490755ad07dda2f761a366fed9f2c3e75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aed94b9_c0438e29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-06-22T04:55:48Z",
+      "side": 1,
+      "message": "How about reporting error inside the for loop with s.Errorf()? Then we don\u0027t have to keep track of maxDistance and maxDistancePoint.\nIf you want to return here if error is already seen, you can use the construct\nif s.HasError() {\n  return\n}\n.",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 10
+      },
+      "revId": "975d3c4490755ad07dda2f761a366fed9f2c3e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
