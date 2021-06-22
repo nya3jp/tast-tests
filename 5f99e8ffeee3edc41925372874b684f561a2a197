@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d8132044_f4dca0f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-22T05:33:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab031000_ecad4e1b",
+      "range": {
+        "startLine": 20,
+        "startChar": 15,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "5f99e8ffeee3edc41925372874b684f561a2a197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "54920346_2a745c5f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-22T05:25:38Z",
       "side": 1,
       "message": "As you mentioned offline, both MakeVisible and FocusAndWait work. Is there a reason to still change this?\n\nBesides, by using doDefault which directly dispatch event to the a11y node. It does not matter the node is on screen or not. This step might not be necessary any more.",
+      "range": {
+        "startLine": 95,
+        "startChar": 14,
+        "endLine": 95,
+        "endChar": 26
+      },
+      "revId": "5f99e8ffeee3edc41925372874b684f561a2a197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5e4e5b8_70e658d7",
+        "filename": "src/chromiumos/tast/local/input/voice/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-22T05:33:49Z",
+      "side": 1,
+      "message": "Forget to change it back after testing FocusAndWait.\n\nActually, yes, you are right, we don\u0027t need this anymore, since no need to get the location of the node. Deleted it.",
+      "parentUuid": "8c37c670_6dc21ae3",
       "range": {
         "startLine": 95,
         "startChar": 14,
