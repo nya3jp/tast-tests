@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/autocorrect"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -103,9 +104,9 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		its.Clear(inputField),
 		its.ClickFieldAndWaitForActive(inputField),
 		keyboard.TypeAction(testCase.MisspeltWord),
-		its.WaitForFieldValueToBe(inputField, testCase.MisspeltWord),
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.MisspeltWord),
 		keyboard.TypeAction(" "),
-		its.WaitForFieldValueToBe(inputField, testCase.CorrectWord+" "),
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.CorrectWord+" "),
 	)(ctx); err != nil {
 		s.Fatal("Failed to validate PK autocorrect: ", err)
 	}
@@ -127,7 +128,7 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		// Not applicable for PK. Expect no undo upon Backspace.
 		if err := uiauto.Combine("validate PK autocorrect non-undo via Backspace",
 			keyboard.AccelAction("Backspace"),
-			its.WaitForFieldValueToBe(inputField, testCase.CorrectWord),
+			util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.CorrectWord),
 		)(ctx); err != nil {
 			s.Fatal("Failed to validate PK autocorrect undo via popup using PK: ", err)
 		}
@@ -135,14 +136,13 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		if err := uiauto.Combine("validate PK autocorrect undo via popup using PK",
 			keyboard.AccelAction("Up"),
 			keyboard.AccelAction("Enter"),
-			its.WaitForFieldValueToBe(inputField, testCase.MisspeltWord+" "),
+			util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.MisspeltWord+" "),
 		)(ctx); err != nil {
-			s.Fatal("Failed to validate PK autocorrect undo via popup using PK: ", err)
 		}
 	case autocorrect.ViaPopupUsingMouse:
 		if err := uiauto.Combine("validate PK autocorrect undo",
 			ui.LeftClick(undoButtonFinder),
-			its.WaitForFieldValueToBe(inputField, testCase.MisspeltWord+" "),
+			util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.MisspeltWord+" "),
 		)(ctx); err != nil {
 			s.Fatal("Failed to validate PK autocorrect undo via popup using mouse: ", err)
 		}
