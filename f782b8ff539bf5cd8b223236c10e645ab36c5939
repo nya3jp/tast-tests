@@ -34,6 +34,29 @@
       "parentUuid": "fd55cfa5_4419dba1",
       "revId": "f782b8ff539bf5cd8b223236c10e645ab36c5939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abab8fc6_a0151aa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-22T21:53:57Z",
+      "side": 1,
+      "message": "2021? or is it fine to leave it?",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "f782b8ff539bf5cd8b223236c10e645ab36c5939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
