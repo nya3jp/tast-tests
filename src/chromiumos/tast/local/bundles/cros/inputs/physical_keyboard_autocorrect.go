@@ -29,7 +29,7 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		Pre:          pre.NonVKClamshell,
+		Pre:          pre.NonVKClamshellReset,
 		Params: []testing.Param{
 			{
 				Name: "en_us_1",
