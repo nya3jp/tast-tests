@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa9b4573_c8376f6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_default_username.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-22T03:06:30Z",
+      "side": 1,
+      "message": "Suggest to return error for this func and handle it here.",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 15
+      },
+      "revId": "6f0ef3dcf110a63cc08782a40a5c41c4c74954d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3509ce47_53364914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_default_username.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-22T03:06:30Z",
+      "side": 1,
+      "message": "It is usually not recommended to pass s around.",
+      "range": {
+        "startLine": 111,
+        "startChar": 38,
+        "endLine": 111,
+        "endChar": 54
+      },
+      "revId": "6f0ef3dcf110a63cc08782a40a5c41c4c74954d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5c7a591_ff92ec18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_default_username.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-22T03:06:30Z",
+      "side": 1,
+      "message": "please add defer cr.Close(ctx) after handling the err.",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 3
+      },
+      "revId": "6f0ef3dcf110a63cc08782a40a5c41c4c74954d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "263230c3_a324723f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_default_username.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-22T03:06:30Z",
+      "side": 1,
+      "message": "It seems that this node has been used three times, what about moving it to installer?",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 10
+      },
+      "revId": "6f0ef3dcf110a63cc08782a40a5c41c4c74954d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c47e42_d795ccbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_default_username.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-22T03:06:30Z",
+      "side": 1,
+      "message": "Please define it separately to make it more readable.",
+      "range": {
+        "startLine": 137,
+        "startChar": 37,
+        "endLine": 137,
+        "endChar": 115
+      },
+      "revId": "6f0ef3dcf110a63cc08782a40a5c41c4c74954d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c890559_61ddf389",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_default_username.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-22T03:06:30Z",
+      "side": 1,
+      "message": "Please also install Crostini and check the display name.",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "6f0ef3dcf110a63cc08782a40a5c41c4c74954d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
