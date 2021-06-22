@@ -16,6 +16,24 @@
       "message": "Hi reviewers, \n\nI have not seen any failure in recent chromeos builds. Not sure what happened at the moment of demotion. Do you think we can bring this test back to CQ?",
       "revId": "32b8b1fcec0cdf999c926387ea1f979be6bfdd13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d40b621f_25ececd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-06-22T02:53:22Z",
+      "side": 1,
+      "message": "The flakes were basically all on betty-pi-arc, but there aren\u0027t any runs on that board since the test was marked informational. It failed on ~50% of the betty-pi-arc-snapshot.tast_vm.direct_tast_vm runs between 19024 and 19213. There are very few betty-pi-arc runs on tastboard. 1 which passed while the test was flaking, and none since the test was marked informational. So I don\u0027t think there\u0027s any evidence the test has gotten better.",
+      "parentUuid": "e5369524_c49196ca",
+      "revId": "32b8b1fcec0cdf999c926387ea1f979be6bfdd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
