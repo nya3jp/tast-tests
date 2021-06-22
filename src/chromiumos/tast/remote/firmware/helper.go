@@ -5,10 +5,11 @@
 package firmware
 
 import (
+	"bytes"
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
-	"path"
 	"path/filepath"
 	"strings"
 	"time"
@@ -19,6 +20,7 @@ import (
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
@@ -340,7 +342,7 @@ func (h *Helper) CopyTastFilesFromDUT(ctx context.Context) error {
 				return errors.Wrapf(err, "copying local Tast file %s from DUT", dutSrc)
 			}
 		} else if _, ok := err.(*gossh.ExitError); !ok {
-			return errors.Wrapf(err, "Checking for existence of %s: %T", dutSrc, err)
+			return errors.Wrapf(err, "checking for existence of %s: %T", dutSrc, err)
 		}
 	}
 	return nil
@@ -355,9 +357,9 @@ func (h *Helper) SyncTastFilesToDUT(ctx context.Context) error {
 		return errors.New("must copy Tast files from DUT before syncing back onto DUT")
 	}
 	fileMap := map[string]string{
-		path.Join(h.hostFilesTmpDir, tmpLocalRunner):    dutLocalRunner,
-		path.Join(h.hostFilesTmpDir, tmpLocalBundleDir): dutLocalBundleDir,
-		path.Join(h.hostFilesTmpDir, tmpLocalDataDir):   dutLocalDataDir,
+		filepath.Join(h.hostFilesTmpDir, tmpLocalRunner):    dutLocalRunner,
+		filepath.Join(h.hostFilesTmpDir, tmpLocalBundleDir): dutLocalBundleDir,
+		filepath.Join(h.hostFilesTmpDir, tmpLocalDataDir):   dutLocalDataDir,
 	}
 	for key := range fileMap {
 		if _, err := os.Stat(key); os.IsNotExist(err) {
@@ -369,5 +371,94 @@ func (h *Helper) SyncTastFilesToDUT(ctx context.Context) error {
 	if _, err := linuxssh.PutFiles(ctx, h.DUT.Conn(), fileMap, linuxssh.DereferenceSymlinks); err != nil {
 		return errors.Wrap(err, "failed syncing Tast files from test server onto DUT")
 	}
+	return nil
+}
+
+// SetupUSBKey prepares the USB disk for a test. (Borrowed from Tauto's firmware_test.py)
+// It checks the setup of USB disk and a valid ChromeOS test image inside.
+// Downloads the test image if the image isn't the right version.
+func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudStorage) error {
+	//     self.stage_build_to_usbkey()
+	testing.ContextLog(ctx, "Validating image usbkey on servo")
+	// This call is super slow.
+	usbdev, err := h.Servo.GetStringTimeout(ctx, servo.ImageUSBKeyDev, time.Second*90)
+	if err != nil {
+		return errors.Wrap(err, "servo call image_usbkey_dev failed")
+	}
+	if usbdev == "" {
+		return errors.New("no USB key detected")
+	}
+	// Verify that the device really exists on the servo host
+	if err = h.ServoProxy.RunCommand(ctx, true, "fdisk", "-l", usbdev); err != nil {
+		return errors.Wrapf(err, "validate usb key at %q", usbdev)
+	}
+
+	testing.ContextLog(ctx, "Checking ChromeOS image name on usbkey")
+	mountPath := fmt.Sprintf("/media/servo_usb/%d", h.ServoProxy.GetPort())
+	// Unmount whatever might be mounted
+	h.ServoProxy.RunCommand(ctx, true, "umount", mountPath)
+
+	// ChromeOS root fs is in /dev/sdx3
+	mountSrc := usbdev + "3"
+	if err = h.ServoProxy.RunCommand(ctx, true, "mkdir", "-p", mountPath); err != nil {
+		return errors.Wrapf(err, "mkdir failed at %q", mountPath)
+	}
+	var lsb map[string]string
+	if err = func() error {
+		if err = h.ServoProxy.RunCommand(ctx, true, "mount", "-o", "ro", mountSrc, mountPath); err != nil {
+			return errors.Wrapf(err, "mount of %q failed at %q", mountSrc, mountPath)
+		}
+		defer h.ServoProxy.RunCommand(ctx, true, "umount", mountPath)
+		output, err := h.ServoProxy.OutputCommand(ctx, true, "cat", fmt.Sprintf("%s/etc/lsb-release", mountPath))
+		if err != nil {
+			return errors.Wrap(err, "failed to read lsb-release")
+		}
+		lsb, err = lsbrelease.Parse(bytes.NewReader(output))
+		if err != nil {
+			return errors.Wrap(err, "failed to parse lsb-release")
+		}
+		return nil
+	}(); err != nil {
+		return err
+	}
+	releaseBuilderPath := lsb[lsbrelease.BuilderPath]
+	if !strings.Contains(lsb[lsbrelease.ReleaseTrack], "test") {
+		testing.ContextLog(ctx, "The image on usbkey is not a test image")
+		releaseBuilderPath = ""
+	}
+
+	dutBuilderPath, err := h.Reporter.BuilderPath(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get DUT builder path")
+	}
+	if releaseBuilderPath == dutBuilderPath {
+		return nil
+	}
+	testing.ContextLogf(ctx, "Current build on USB (%s) differs from DUT (%s), proceed with download", releaseBuilderPath, dutBuilderPath)
+	// TODO if needed, recovery images are at .../recovery_image.tar.xz
+	// TODO, change to Config.BuildArtifactsURL if that becomes accessible
+	testImageURL := "gs://chromeos-image-archive/" + dutBuilderPath + "/chromiumos_test_image.tar.xz"
+	reader, err := cloudStorage.Open(ctx, testImageURL)
+	if err != nil {
+		return errors.Wrapf(err, "failed to download test image %s", dutBuilderPath)
+	}
+	defer reader.Close()
+	tempname, err := h.ServoProxy.OutputCommand(ctx, false, "tempfile", "-m", "0644")
+	if err != nil {
+		return errors.Wrap(err, "failed to create tmp file on servo host")
+	}
+	defer h.ServoProxy.RunCommand(ctx, false, "rm", string(tempname))
+	// Copy to the servo host and untar
+	if err = h.ServoProxy.InputCommand(ctx, false, reader, "tar", "-Jxvf", "-",
+		"-C", filepath.Dir(string(tempname)),
+		fmt.Sprintf("--transform=s/chromiumos_test_image.bin/%s/", filepath.Base(string(tempname))),
+		"chromiumos_test_image.bin"); err != nil {
+		return errors.Wrap(err, "failed to copy os image to servo host")
+	}
+	testing.ContextLog(ctx, "Flashing test OS image to USB")
+	if err = h.ServoProxy.RunCommand(ctx, false, "cros", "flash", "usb://"+usbdev, string(tempname)); err != nil {
+		return errors.Wrap(err, "failed to flash os image to usb")
+	}
+
 	return nil
 }
