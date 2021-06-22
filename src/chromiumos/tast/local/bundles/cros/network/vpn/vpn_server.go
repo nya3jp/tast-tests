@@ -9,6 +9,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"strings"
+	"time"
 
 	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/errors"
@@ -24,6 +26,7 @@ const (
 	ipsecCommand          = "/usr/sbin/ipsec"
 	ipsecLogFile          = "var/log/charon.log"
 	ipsecPresharedKey     = "preshared-key"
+	ipsecConnName         = "L2TP-test"
 	pppdPidFile           = "run/ppp0.pid"
 	xauthUser             = "xauth_user"
 	xauthPassword         = "xauth_password"
@@ -92,7 +95,7 @@ var (
 		"psk": {
 			"etc/ipsec.conf": "config setup\n" +
 				"  charondebug=\"{{.charon_debug_flags}}\"\n" +
-				"conn L2TP\n" +
+				"conn {{.conn_name}}\n" +
 				"  keyexchange=ikev1\n" +
 				"  ike=aes128-sha1-modp2048!\n" +
 				"  esp=3des-sha1!\n" +
@@ -110,7 +113,7 @@ var (
 		"cert": {
 			"etc/ipsec.conf": "config setup\n" +
 				"  charondebug=\"{{.charon_debug_flags}}\"\n" +
-				"conn L2TP\n" +
+				"conn {{.conn_name}}\n" +
 				"  keyexchange=ikev1\n" +
 				"  ike=aes128-sha1-modp2048!\n" +
 				"  esp=3des-sha1!\n" +
@@ -225,6 +228,7 @@ func StartL2TPIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 		"charon_debug_flags":       "dmn 2, mgr 2, ike 2, net 2",
 		"charon_logfile":           ipsecLogFile,
 		"preshared_key":            ipsecPresharedKey,
+		"conn_name":                ipsecConnName,
 		"xauth_user":               xauthUser,
 		"xauth_password":           xauthPassword,
 		"xl2tpd_server_ip_address": xl2tpdServerIPAddress,
@@ -252,6 +256,22 @@ func StartL2TPIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start L2TP/IPsec server")
 	}
+
+	// After calling `ipsec start`, it may need some time for charon to load the
+	// connection configurtions, and incoming requests will be rejected before
+	// it is happens done. If charon is ready, `ipsec statusall` will show all
+	// the connections loaded.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Ignores the error here, it could fail if charon has not been started.
+		output, _ := chro.RunChroot(ctx, []string{ipsecCommand, "statusall"})
+		if strings.Contains(output, ipsecConnName) {
+			return nil
+		}
+		return errors.Errorf("current output is: %s", output)
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for charon ready")
+	}
+
 	server.UnderlayIP = underlayIP
 	if underlayIPIsOverlayIP {
 		server.OverlayIP = underlayIP
@@ -311,7 +331,7 @@ func StartOpenVPNServer(ctx context.Context, useUserPassword bool) (*Server, err
 func (s *Server) StopServer(ctx context.Context) error {
 	chro := s.netChroot
 	for _, cmd := range s.stopCommands {
-		if err := chro.RunChroot(ctx, cmd); err != nil {
+		if _, err := chro.RunChroot(ctx, cmd); err != nil {
 			return errors.Wrapf(err, "failed to execute %v", cmd)
 		}
 	}
