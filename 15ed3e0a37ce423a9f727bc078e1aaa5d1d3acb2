@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9374c41_390e9b16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-06-22T01:56:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01bcd873_2c0207c4",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "15ed3e0a37ce423a9f727bc078e1aaa5d1d3acb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cee5d24_990c779d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-22T01:52:33Z",
       "side": 1,
       "message": "I assume you do not wanna promote unstable boards to CQ. Can you add here:\n\nExtraAttr:         []string{\"informational\"},",
+      "range": {
+        "startLine": 34,
+        "startChar": 23,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "15ed3e0a37ce423a9f727bc078e1aaa5d1d3acb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75751022_415410bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-06-22T01:56:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cee5d24_990c779d",
       "range": {
         "startLine": 34,
         "startChar": 23,
