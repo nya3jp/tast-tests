@@ -51,6 +51,24 @@
       "parentUuid": "1d279a28_c6930674",
       "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2112f0b6_d0c68089",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-06-22T05:58:07Z",
+      "side": 1,
+      "message": "If this is not used for actual qualification, I think it doesn\u0027t matter.\n\nWhenever possible, I want to avoid hacks like this one.\nIF you do want to do something like this, at least use virtualenv to do this right.",
+      "parentUuid": "ed610501_39c407e1",
+      "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
