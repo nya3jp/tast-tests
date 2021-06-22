@@ -676,6 +676,17 @@ func (a *AndroidNearbyDevice) CancelSendingFile(ctx context.Context) error {
 	return err
 }
 
+// Sync synchronizes contact information and certificates on the Android device. This should be used before attempting to receive a contacts share.
+func (a *AndroidNearbyDevice) Sync(ctx context.Context) error {
+	id, err := a.clientRPCRequest(ctx, "sync")
+	if err != nil {
+		return err
+	}
+	// Read response.
+	_, err = a.clientRPCResponse(ctx, id, defaultRPCResponseTimeout)
+	return err
+}
+
 // InitUI initializes a UI automator connection to the Android device. Callers should defer CloseUI to free the associated resources.
 func (a *AndroidNearbyDevice) InitUI(ctx context.Context) error {
 	d, err := ui.NewDevice(ctx, a.device)
