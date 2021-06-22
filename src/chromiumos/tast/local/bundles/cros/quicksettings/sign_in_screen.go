@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package quicksettings
 
 import (
 	"context"
@@ -24,7 +24,7 @@ type testParameters struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         QuickSettingsSignInScreen,
+		Func:         SignInScreen,
 		Desc:         "Checks the Quick Settings from SignIn screen",
 		Contacts:     []string{"chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -51,8 +51,8 @@ func init() {
 	})
 }
 
-// QuickSettingsSignInScreen verifies Quick Settings contents from the signin screen.
-func QuickSettingsSignInScreen(ctx context.Context, s *testing.State) {
+// SignInScreen verifies Quick Settings contents from the signin screen.
+func SignInScreen(ctx context.Context, s *testing.State) {
 
 	// NoLogin is used to land in signin screen.
 	cr, err := chrome.New(
