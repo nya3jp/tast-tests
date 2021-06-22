@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "999de25b_ca417386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-06-22T18:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a439ce1_8686d626",
+      "range": {
+        "startLine": 83,
+        "startChar": 38,
+        "endLine": 83,
+        "endChar": 42
+      },
+      "revId": "9832754a95c6c12fcb49664df1792f7c16b80945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f10f1f41_d22618f8",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-22T18:48:21Z",
       "side": 1,
       "message": "Will Chrome actually be willing to open file:///tmp/whatever ? It\u0027s pretty locked down most of the time.\n\nIt will open /var/log and certain subdirectories of /home/chronos/user/ like MyFiles, but it won\u0027t accept most file:// URLs.\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/net/chrome_network_delegate.cc;drc\u003d1ff6437e65b183e673b7b4f25060b74dc2ba5c37;l\u003d49 I think that\u0027s the list.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 39
+      },
+      "revId": "9832754a95c6c12fcb49664df1792f7c16b80945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97b85420_22d83e66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-06-22T18:54:14Z",
+      "side": 1,
+      "message": "Empirically, yes!\n\nI think L81-83 of that file are what do it: https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/net/chrome_network_delegate.cc;l\u003d81-83;drc\u003d1ff6437e65b183e673b7b4f25060b74dc2ba5c37",
+      "parentUuid": "f10f1f41_d22618f8",
       "range": {
         "startLine": 88,
         "startChar": 0,
