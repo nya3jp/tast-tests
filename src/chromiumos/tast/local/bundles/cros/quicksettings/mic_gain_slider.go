@@ -1,8 +1,8 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package quicksettings
 
 import (
 	"context"
@@ -17,7 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: QuickSettingsMicGainSlider,
+		Func: MicGainSlider,
 		Desc: "Checks that the Quick Settings mic gain slider can be adjusted",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -32,8 +32,8 @@ func init() {
 	})
 }
 
-// QuickSettingsMicGainSlider tests that the mic gain slider can be adjusted up and down.
-func QuickSettingsMicGainSlider(ctx context.Context, s *testing.State) {
+// MicGainSlider tests that the mic gain slider can be adjusted up and down.
+func MicGainSlider(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

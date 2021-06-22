@@ -1,8 +1,8 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package quicksettings
 
 import (
 	"context"
@@ -20,7 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: QuickSettingsLockScreen,
+		Func: LockScreen,
 		Desc: "Checks that the screen can be locked from Quick Settings",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -38,9 +38,9 @@ func init() {
 	})
 }
 
-// QuickSettingsLockScreen tests that the screen can be locked from Quick Settings
+// LockScreen tests that the screen can be locked from Quick Settings
 // and verifies its contents when the screen is locked.
-func QuickSettingsLockScreen(ctx context.Context, s *testing.State) {
+func LockScreen(ctx context.Context, s *testing.State) {
 	const (
 		username = "testuser@gmail.com"
 		password = "pass"
