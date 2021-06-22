@@ -16,6 +16,24 @@
       "message": "You\u0027ll also wanna update the UI codelab since it references this test\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_3.md",
       "revId": "f782b8ff539bf5cd8b223236c10e645ab36c5939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccda9fc7_bb6ee1cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-22T21:41:35Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2979761",
+      "parentUuid": "fd55cfa5_4419dba1",
+      "revId": "f782b8ff539bf5cd8b223236c10e645ab36c5939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
