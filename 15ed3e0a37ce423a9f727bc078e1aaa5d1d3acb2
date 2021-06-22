@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d699c53_2bd92b79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-22T02:15:26Z",
+      "side": 1,
+      "message": "This is not done. Fixed it for you.",
+      "parentUuid": "b9374c41_390e9b16",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "15ed3e0a37ce423a9f727bc078e1aaa5d1d3acb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cee5d24_990c779d",
