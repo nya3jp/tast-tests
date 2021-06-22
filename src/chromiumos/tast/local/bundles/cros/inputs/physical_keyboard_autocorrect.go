@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/inputs/autocorrect"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -102,10 +103,10 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("validate PK autocorrect",
 		its.Clear(inputField),
 		its.ClickFieldAndWaitForActive(inputField),
-		keyboard.TypeAction(testCase.MisspeltWord),
-		its.WaitForFieldValueToBe(inputField, testCase.MisspeltWord),
+		keyboard.TypeAction(testCase.misspeltWord),
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.misspeltWord),
 		keyboard.TypeAction(" "),
-		its.WaitForFieldValueToBe(inputField, testCase.CorrectWord+" "),
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.correctWord+" "),
 	)(ctx); err != nil {
 		s.Fatal("Failed to validate PK autocorrect: ", err)
 	}
@@ -135,14 +136,13 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		if err := uiauto.Combine("validate PK autocorrect undo via popup using PK",
 			keyboard.AccelAction("Up"),
 			keyboard.AccelAction("Enter"),
-			its.WaitForFieldValueToBe(inputField, testCase.MisspeltWord+" "),
+			util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.misspeltWord+" "),
 		)(ctx); err != nil {
-			s.Fatal("Failed to validate PK autocorrect undo via popup using PK: ", err)
 		}
 	case autocorrect.ViaPopupUsingMouse:
 		if err := uiauto.Combine("validate PK autocorrect undo",
 			ui.LeftClick(undoButtonFinder),
-			its.WaitForFieldValueToBe(inputField, testCase.MisspeltWord+" "),
+			util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.misspeltWord+" "),
 		)(ctx); err != nil {
 			s.Fatal("Failed to validate PK autocorrect undo via popup using mouse: ", err)
 		}

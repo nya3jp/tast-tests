@@ -6,9 +6,10 @@ package util
 
 import (
 	"context"
+	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -21,23 +22,35 @@ type InputEval struct {
 	ExpectedText string
 }
 
-// FieldInputEval is a data structure to define common input function and expected out on certain input field.
-type FieldInputEval struct {
-	InputField   testserver.InputField
-	InputFunc    uiauto.Action
-	ExpectedText string
+// WaitForFieldTextToBe returns an action checking whether the input field value equals given text.
+// The text is case sensitive.
+func WaitForFieldTextToBe(tconn *chrome.TestConn, finder *nodewith.Finder, expectedText string) uiauto.Action {
+	return waitForFieldTextFunc(tconn, finder, expectedText, false)
 }
 
-// WaitForFieldTextToBe returns an action checking whether the input field value equals given text.
-func WaitForFieldTextToBe(tconn *chrome.TestConn, finder *nodewith.Finder, expectedText string) uiauto.Action {
-	ui := uiauto.New(tconn)
-	return ui.Retry(10, func(ctx context.Context) error {
-		nodeInfo, err := ui.Info(ctx, finder)
-		if err != nil {
-			return err
-		} else if nodeInfo.Value != expectedText {
-			return errors.Errorf("unexpected user name: got %s; want %s", nodeInfo.Value, expectedText)
-		}
-		return nil
-	})
+// WaitForFieldTextToBeIgnoringCase returns an action checking whether the input field value equals given text.
+// The text is case insensitive.
+func WaitForFieldTextToBeIgnoringCase(tconn *chrome.TestConn, finder *nodewith.Finder, expectedText string) uiauto.Action {
+	return waitForFieldTextFunc(tconn, finder, expectedText, true)
+}
+
+// waitForFieldTextFunc returns an action checking whether the input field value equals given text.
+// The text can either be case sensitive or not.
+func waitForFieldTextFunc(tconn *chrome.TestConn, finder *nodewith.Finder, expectedText string, ignoreCase bool) uiauto.Action {
+	ui := uiauto.New(tconn).WithInterval(time.Second)
+	return uiauto.Combine("validate field text",
+		// Sleep 200ms before validating text field.
+		// Without sleep, it almost never pass the first time check due to the input delay.
+		ui.Sleep(200*time.Millisecond),
+		ui.Retry(5, func(ctx context.Context) error {
+			nodeInfo, err := ui.Info(ctx, finder)
+			if err != nil {
+				return err
+			} else if !ignoreCase && nodeInfo.Value != expectedText {
+				return errors.Errorf("failed to validate input value: got: %s; want: %s", nodeInfo.Value, expectedText)
+			} else if ignoreCase && strings.ToLower(nodeInfo.Value) != strings.ToLower(expectedText) {
+				return errors.Errorf("failed to validate input value ignoring case: got: %s; want: %s", nodeInfo.Value, expectedText)
+			}
+			return nil
+		}))
 }
