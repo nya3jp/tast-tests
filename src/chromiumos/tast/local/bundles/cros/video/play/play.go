@@ -639,6 +639,7 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, tconn *chrome.
 	// 2) We don't bother to report a total distance if this threshold is exceeded
 	//    because it would just make email alerts very noisy.
 	if maxDistance > 100 {
+		p.Save(s.OutDir())
 		return errors.Errorf("the color distance for %v = %d exceeds the threshold (100)", maxDistancePoint, maxDistance)
 	}
 
