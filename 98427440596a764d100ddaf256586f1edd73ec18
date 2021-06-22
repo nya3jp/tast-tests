@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "98936c2a_3bbd4b96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-06-22T21:10:10Z",
+      "side": 1,
+      "message": "ui.QuickCheckCUJ2 is the only test case which is affected by the edited file, but we (Google) does not have the environment to run this test, IIRC. I think it\u0027s safe to proceed with Xibin\u0027s CR+1.",
+      "parentUuid": "7f7d3018_ba5d17e8",
+      "revId": "98427440596a764d100ddaf256586f1edd73ec18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8451b517_22ca1d19",
