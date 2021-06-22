@@ -262,16 +262,18 @@ func (n *NetworkChroot) writeConfigs() error {
 	return nil
 }
 
-// RunChroot run a command in a chroot, within a separate network namespace.
-func (n *NetworkChroot) RunChroot(ctx context.Context, args []string) error {
+// RunChroot runs a command in a chroot, within a separate network namespace,
+// and returns the output from stdout.
+func (n *NetworkChroot) RunChroot(ctx context.Context, args []string) (string, error) {
 	cmdArgs := append(n.netJailArgs, args...)
 	minijailArgs := []string{"-e", "-C", n.netTempDir}
 	minijailArgs = append(minijailArgs, cmdArgs...)
-	if err := testexec.CommandContext(ctx, "minijail0", minijailArgs...).Run(); err != nil {
-		return errors.Wrap(err, "failed to run command inside the chroot")
+	output, err := testexec.CommandContext(ctx, "minijail0", minijailArgs...).Output()
+	if err != nil {
+		return "", errors.Wrap(err, "failed to run command inside the chroot")
 	}
 
-	return nil
+	return string(output), nil
 }
 
 // getPidFile returns the integer contents of |pid_file| in the chroot.
