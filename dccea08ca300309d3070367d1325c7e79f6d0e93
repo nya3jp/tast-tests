@@ -33,6 +33,24 @@
       "message": "I\u0027m not involved in the engineering details of ITS\u0027s python3 port, so I can\u0027t really help here.\nYou\u0027ll want to check with portmannc@ and/or ruchamk@ .\n\nBut I assume this is for continuous testing runs, not compliance verification?\n",
       "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed610501_39c407e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-22T02:27:38Z",
+      "side": 1,
+      "message": "Thanks for the pointer, will contact portmannc@ first.\nAs the discussion with previous reviewer hidehiko@ from ARC++ team, we agree that all changes to the python3 patch are required to be reviewed by original ITS owner:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go;rcl\u003da0c632f6a00f34ade2f83b50b2efda9ee61341e4;l\u003d39",
+      "parentUuid": "1d279a28_c6930674",
+      "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
