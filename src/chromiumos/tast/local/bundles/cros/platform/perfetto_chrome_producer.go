@@ -24,6 +24,15 @@ func init() {
 		Contacts:     []string{"chinglinyu@chromium.org", "chenghaoyang@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"}, // TODO(b/190474394) remove "informational" after the test is stable.
+		Params: []testing.Param{{
+			// Explicitly adds the feature flag to ensure system tracing is enabled.
+			Name: "enable_feature",
+			Val:  "--enable-features=EnablePerfettoSystemTracing",
+		}, {
+			// Tests default enablement of the feature flag.
+			Name: "",
+			Val:  "",
+		}},
 	})
 }
 
@@ -79,10 +88,11 @@ func PerfettoChromeProducer(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	extraArgs := s.Param().(string)
 	// Start Chrome with the "EnablePerfettoSystemTracing" feature flag.
 	cr, err := chrome.New(
 		ctx,
-		chrome.ExtraArgs("--enable-features=EnablePerfettoSystemTracing"))
+		chrome.ExtraArgs(extraArgs))
 	if err != nil {
 		s.Fatal("Failed to enable Perfetto system tracing for Chrome: ", err)
 	}
