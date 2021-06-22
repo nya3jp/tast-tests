@@ -16,6 +16,24 @@
       "message": "LGTM\ntryTrimQid become a little complicated, but I don\u0027t see a way to improve it.\n\nIs there a plan to clean up (remove) the video category?\nIt might be a good idea to create a tracking bug for it, and link it in getCategoryAliases() as reminder on which part should be cleaned after the category removal.",
       "revId": "535f3e07394418a5cbc8b76fb6800c694382e0dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc29d022_60030596",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2021-06-22T08:05:17Z",
+      "side": 1,
+      "message": "No for the following reasons:\n\n1. Legacy components of video category might be video codecs instead of camera components.  And they will not be included in camera components.\n2. HWID DB modifications involves factory-test changes in factory branches of factory repo.  That is, updating a category \"video\" to \"camera\" in all HWID DBs will have impact on the manufacturing process for partners.",
+      "parentUuid": "63d66556_2620c8cb",
+      "revId": "535f3e07394418a5cbc8b76fb6800c694382e0dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
