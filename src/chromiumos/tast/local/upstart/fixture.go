@@ -13,6 +13,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// UIRestartTimeout is the maximum amount of time that it takes to restart
+// the ui upstart job.
+// ui-post-stop can sometimes block for an extended period of time
+// waiting for "cryptohome --action=pkcs11_terminate" to finish: https://crbug.com/860519
+const UIRestartTimeout = 60 * time.Second
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "ensureUI",
@@ -22,9 +28,9 @@ func init() {
 			"cros-printing-dev@chromium.org",
 		},
 		Impl:            &ensureUIFixture{running: true},
-		SetUpTimeout:    10 * time.Second,
-		TearDownTimeout: 10 * time.Second,
-		ResetTimeout:    10 * time.Second,
+		SetUpTimeout:    UIRestartTimeout,
+		TearDownTimeout: UIRestartTimeout,
+		ResetTimeout:    UIRestartTimeout,
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -35,8 +41,8 @@ func init() {
 			"cros-network-health@google.com",
 		},
 		Impl:            &ensureUIFixture{running: false},
-		SetUpTimeout:    10 * time.Second,
-		TearDownTimeout: 10 * time.Second,
+		SetUpTimeout:    UIRestartTimeout,
+		TearDownTimeout: UIRestartTimeout,
 		ResetTimeout:    1 * time.Second,
 	})
 }
