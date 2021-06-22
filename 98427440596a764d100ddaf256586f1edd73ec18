@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a2524a_43afd256",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-22T23:49:52Z",
+      "side": 1,
+      "message": "I\u0027ve verified this CL with the ui.QuickCheckCUJ2 and ui.TabSwitchCUJ2, they all works well.",
+      "parentUuid": "98936c2a_3bbd4b96",
+      "revId": "98427440596a764d100ddaf256586f1edd73ec18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8451b517_22ca1d19",
