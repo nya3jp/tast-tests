@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3241895f_7728caa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-22T17:07:21Z",
+      "side": 1,
+      "message": "maybe surround with quotes to make it a bit easier to read",
+      "range": {
+        "startLine": 104,
+        "startChar": 48,
+        "endLine": 104,
+        "endChar": 56
+      },
+      "revId": "0a3c778e8c9631f3c171716bfab616df802d8b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e91e1126_127e4d5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-22T17:07:21Z",
+      "side": 1,
+      "message": "end comment with period",
+      "revId": "0a3c778e8c9631f3c171716bfab616df802d8b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7caa0536_f6f2feba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-22T17:07:21Z",
+      "side": 1,
+      "message": "I thought it was a little difficult to understand what is being checked here. The example in the bug made it much clearer: https://b.corp.google.com/issues/182508777#comment7\n\nI think it would be nice to add a comment with a similar example, unless this is something very obvious to people familiar with this area.",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 38
+      },
+      "revId": "0a3c778e8c9631f3c171716bfab616df802d8b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
