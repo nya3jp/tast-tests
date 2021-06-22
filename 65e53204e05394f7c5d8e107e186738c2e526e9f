@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b8ba0d8_07522343",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/autocorrect/autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-22T07:55:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f38a1db_532b9cd2",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "65e53204e05394f7c5d8e107e186738c2e526e9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28b025ee_6b236230",
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "28b025ee_6b236230",
+      "revId": "65e53204e05394f7c5d8e107e186738c2e526e9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7e4128e_3d760bf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-22T07:55:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "758563f0_6650b9c5",
       "revId": "65e53204e05394f7c5d8e107e186738c2e526e9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
