@@ -7,6 +7,7 @@ package servo
 import (
 	"context"
 	"fmt"
+	"io"
 	"net"
 	"os"
 	"strconv"
@@ -25,9 +26,10 @@ const proxyTimeout = 10 * time.Second // max time for establishing SSH connectio
 // Proxy wraps a Servo object and forwards connections to the servod instance
 // over SSH if needed.
 type Proxy struct {
-	svo *Servo
-	hst *ssh.Conn      // nil if servod is running locally
-	fwd *ssh.Forwarder // nil if servod is running locally
+	svo  *Servo
+	hst  *ssh.Conn      // nil if servod is running locally
+	fwd  *ssh.Forwarder // nil if servod is running locally
+	port int
 }
 
 func splitHostPort(servoHostPort string) (string, int, int, error) {
@@ -119,6 +121,7 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newPr
 	if err != nil {
 		return nil, err
 	}
+	pxy.port = port
 	// If the servod instance isn't running locally, assume that we need to connect to it via SSH.
 	if (host != "localhost" && host != "127.0.0.1" && host != "::1") || sshPort != 22 {
 		// First, create an SSH connection to the remote system running servod.
@@ -242,6 +245,28 @@ func (p *Proxy) OutputCommand(ctx context.Context, asRoot bool, name string, arg
 	return p.hst.Command(name, args...).Output(ctx, ssh.DumpLogOnError)
 }
 
+// InputCommand execs a command and redirects stdin.
+func (p *Proxy) InputCommand(ctx context.Context, asRoot bool, stdin io.Reader, name string, args ...string) error {
+	if p.isClosed() {
+		return errors.New("connection to servo is closed")
+	}
+	if p.isLocal() {
+		if asRoot {
+			sudoargs := append([]string{name}, args...)
+			testing.ContextLog(ctx, "Running sudo ", sudoargs)
+			cmd := testexec.CommandContext(ctx, "sudo", sudoargs...)
+			cmd.Stdin = stdin
+			return cmd.Run(testexec.DumpLogOnError)
+		}
+		cmd := testexec.CommandContext(ctx, name, args...)
+		cmd.Stdin = stdin
+		return cmd.Run(testexec.DumpLogOnError)
+	}
+	cmd := p.hst.Command(name, args...)
+	cmd.Stdin = stdin
+	return cmd.Run(ctx, ssh.DumpLogOnError)
+}
+
 // GetFile copies a servo host file to a local file
 func (p *Proxy) GetFile(ctx context.Context, asRoot bool, remoteFile, localFile string) error {
 	if p.isClosed() {
@@ -290,3 +315,6 @@ func (p *Proxy) PutFiles(ctx context.Context, asRoot bool, fileMap map[string]st
 	_, err := linuxssh.PutFiles(ctx, p.hst, fileMap, linuxssh.DereferenceSymlinks)
 	return err
 }
+
+// GetPort returns the port where servod is running on the server.
+func (p *Proxy) GetPort() int { return p.port }

@@ -20,15 +20,17 @@ type StringControl string
 
 // These are the Servo controls which can be get/set with a string value.
 const (
-	ActiveChgPort        StringControl = "active_chg_port"
-	DUTVoltageMV         StringControl = "dut_voltage_mv"
-	FWWPState            StringControl = "fw_wp_state"
-	ImageUSBKeyDirection StringControl = "image_usbkey_direction"
-	ImageUSBKeyPwr       StringControl = "image_usbkey_pwr"
-	PowerState           StringControl = "power_state"
-	UARTCmd              StringControl = "servo_v4_uart_cmd"
-	WatchdogAdd          StringControl = "watchdog_add"
-	WatchdogRemove       StringControl = "watchdog_remove"
+	ActiveChgPort         StringControl = "active_chg_port"
+	DownloadImageToUsbDev StringControl = "download_image_to_usb_dev"
+	DUTVoltageMV          StringControl = "dut_voltage_mv"
+	FWWPState             StringControl = "fw_wp_state"
+	ImageUSBKeyDirection  StringControl = "image_usbkey_direction"
+	ImageUSBKeyPwr        StringControl = "image_usbkey_pwr"
+	ImageUsbKeyDev        StringControl = "image_usbkey_dev"
+	PowerState            StringControl = "power_state"
+	UARTCmd               StringControl = "servo_v4_uart_cmd"
+	WatchdogAdd           StringControl = "watchdog_add"
+	WatchdogRemove        StringControl = "watchdog_remove"
 
 	// DUTConnectionType was previously known as V4Type ("servo_v4_type")
 	DUTConnectionType StringControl = "root.dut_connection_type"
@@ -299,6 +301,21 @@ func (s *Servo) GetDUTConnectionType(ctx context.Context) (DUTConnTypeValue, err
 func (s *Servo) GetString(ctx context.Context, control StringControl) (string, error) {
 	var value string
 	if err := s.xmlrpc.Run(ctx, xmlrpc.NewCall("get", string(control)), &value); err != nil {
+		return "", errors.Wrapf(err, "getting value for servo control %q", control)
+	}
+	return value, nil
+}
+
+// GetStringTimeout returns the value of a specified control with a custom timeout.
+func (s *Servo) GetStringTimeout(ctx context.Context, control StringControl, timeout time.Duration) (string, error) {
+	var value string
+	if err := s.xmlrpc.Run(
+		ctx,
+		xmlrpc.NewCallTimeout(
+			"get",
+			timeout,
+			string(control)),
+		&value); err != nil {
 		return "", errors.Wrapf(err, "getting value for servo control %q", control)
 	}
 	return value, nil
