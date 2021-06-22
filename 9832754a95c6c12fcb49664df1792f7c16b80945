@@ -93,6 +93,30 @@
       },
       "revId": "9832754a95c6c12fcb49664df1792f7c16b80945",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d43589c2_79b3bdb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-06-22T18:59:15Z",
+      "side": 1,
+      "message": "Weird, wasn\u0027t working for me a minute ago, and now it is. Probably a typo on my end.",
+      "parentUuid": "97b85420_22d83e66",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 39
+      },
+      "revId": "9832754a95c6c12fcb49664df1792f7c16b80945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
