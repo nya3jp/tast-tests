@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34f9a4ec_b005e1bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-22T00:06:34Z",
+      "side": 1,
+      "message": "As yinchiayeh@, the original Android P ITS py3 patch reviewer of CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2454953\nhis account is somehow disabled on gerrit, can you help review the patch instead?\n\nThanks.",
+      "revId": "1749e12416b419527ac8a73767ff75582f3ff2f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
