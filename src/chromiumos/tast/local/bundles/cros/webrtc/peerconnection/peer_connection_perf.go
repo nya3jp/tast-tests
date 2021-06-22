@@ -252,7 +252,7 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 		}
 	}
 
-	if err := conn.Call(ctx, nil, "start", profile, false, streamWidth, streamHeight); err != nil {
+	if err := conn.Call(ctx, nil, "start", profile, false, "", streamWidth, streamHeight); err != nil {
 		return errors.Wrap(err, "establishing connection")
 	}
 

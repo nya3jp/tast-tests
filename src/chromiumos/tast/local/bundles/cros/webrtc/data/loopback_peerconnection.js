@@ -6,7 +6,7 @@ let localPeerConnection = new RTCPeerConnection();
 let remotePeerConnection = new RTCPeerConnection();
 
 async function start(
-    profile, isSimulcast, svcScalabilityMode, width = 1280, height = 720) {
+    profile, isSimulcast, svcScalabilityMode = '', width = 1280, height = 720) {
   const constraints = {audio : false, video : {width : width, height : height}};
 
   localPeerConnection.onicecandidate = e =>
