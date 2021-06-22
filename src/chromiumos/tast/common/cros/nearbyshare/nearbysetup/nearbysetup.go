@@ -217,6 +217,10 @@ func AndroidSetup(ctx context.Context, testDevice *adb.Device, accountUtilZipPat
 		return nil, errors.Wrap(err, "failed to configure Android Nearby Share settings")
 	}
 
+	if err := androidNearby.Sync(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to sync contacts and certificates")
+	}
+
 	return androidNearby, nil
 }
 
