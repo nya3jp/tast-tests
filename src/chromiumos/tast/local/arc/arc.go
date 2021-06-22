@@ -41,7 +41,7 @@ const (
 	intentHelperTimeout = 20 * time.Second
 
 	// Time waiting for packages to install, for example enterprise auto install.
-	waitPackagesTimeout = 5 * time.Minute
+	waitPackagesTimeout = 10 * time.Minute
 
 	logcatName = "logcat.txt"
 
@@ -565,6 +565,8 @@ func (a *ARC) WaitForPackages(ctx context.Context, packages []string) error {
 	for _, p := range packages {
 		notInstalledPackages[p] = true
 	}
+
+	testing.ContextLog(ctx, "Waiting for packages")
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		pkgs, err := a.InstalledPackages(ctx)
