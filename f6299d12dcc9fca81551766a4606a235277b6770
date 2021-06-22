@@ -22,6 +22,30 @@
       },
       "revId": "f6299d12dcc9fca81551766a4606a235277b6770",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd48542_d0b2c4af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-22T23:04:49Z",
+      "side": 1,
+      "message": "Added \"...Reset\" variants to clamshell and Tablet Pres on consumer login as they are common used. \nLeave guest mode and other Pres as it is. Reset variant can be added any time along with new test.",
+      "parentUuid": "f534dec8_fb88f0ab",
+      "range": {
+        "startLine": 32,
+        "startChar": 20,
+        "endLine": 32,
+        "endChar": 39
+      },
+      "revId": "f6299d12dcc9fca81551766a4606a235277b6770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
