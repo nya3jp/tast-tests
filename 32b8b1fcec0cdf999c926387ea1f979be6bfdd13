@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5369524_c49196ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-22T02:29:34Z",
+      "side": 1,
+      "message": "Hi reviewers, \n\nI have not seen any failure in recent chromeos builds. Not sure what happened at the moment of demotion. Do you think we can bring this test back to CQ?",
+      "revId": "32b8b1fcec0cdf999c926387ea1f979be6bfdd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
