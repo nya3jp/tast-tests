@@ -34,6 +34,24 @@
       "parentUuid": "e5369524_c49196ca",
       "revId": "32b8b1fcec0cdf999c926387ea1f979be6bfdd13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61d916cb_aae7a513",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-22T03:20:17Z",
+      "side": 1,
+      "message": "Thanks for the information. I will test it locally to make sure it is stable on betty.",
+      "parentUuid": "d40b621f_25ececd9",
+      "revId": "32b8b1fcec0cdf999c926387ea1f979be6bfdd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
