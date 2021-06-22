@@ -37,6 +37,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eed111e9_dea290df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-22T23:53:15Z",
+      "side": 1,
+      "message": "Will there be more consts? if no, () is not necessary here.",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 48,
+        "endChar": 8
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d5ad980_76a50f8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-22T23:53:15Z",
+      "side": 1,
+      "message": "End comment with .\nPlease check all the following comments as well.",
+      "range": {
+        "startLine": 49,
+        "startChar": 56,
+        "endLine": 49,
+        "endChar": 66
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2e5bf61_3e26f39f",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
         "patchSetId": 1
@@ -48,6 +94,30 @@
       "writtenOn": "2021-06-22T17:36:17Z",
       "side": 1,
       "message": "Add a colon and space after this: \"... data: \"",
+      "range": {
+        "startLine": 62,
+        "startChar": 35,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39cfa962_499c1d45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-22T23:53:15Z",
+      "side": 1,
+      "message": "Also, please attach the file name for easier debugging.",
+      "parentUuid": "f2e5bf61_3e26f39f",
       "range": {
         "startLine": 62,
         "startChar": 35,
@@ -76,6 +146,121 @@
         "startChar": 2,
         "endLine": 78,
         "endChar": 14
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a3454e4_baa2e407",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-22T23:53:15Z",
+      "side": 1,
+      "message": "How long does this take? It is usually suggested to leave some time for cleanup in case the test itself runs timeout. To do so, add the following code to the beginning:\n        // Shorten deadline to leave time for cleanup\n\tcleanupCtx :\u003d ctx\n\tctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\n\tdefer cancel()\n\t\nThen replace ctx with cleanupCtx in the defer func.",
+      "range": {
+        "startLine": 83,
+        "startChar": 20,
+        "endLine": 83,
+        "endChar": 32
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a868f2b7_1f66de0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-22T23:53:15Z",
+      "side": 1,
+      "message": "Should the failure of cleanup fail the test?",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c72daa99_361308d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-22T23:53:15Z",
+      "side": 1,
+      "message": "nit: this msg it kind of not necessary.",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 41
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03f305e9_8645f498",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-22T23:53:15Z",
+      "side": 1,
+      "message": "Please attache the err",
+      "range": {
+        "startLine": 122,
+        "startChar": 40,
+        "endLine": 122,
+        "endChar": 46
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b93dacd8_a5a002aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-22T23:53:15Z",
+      "side": 1,
+      "message": "nit: this msg it kind of not necessary.",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 43
       },
       "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
