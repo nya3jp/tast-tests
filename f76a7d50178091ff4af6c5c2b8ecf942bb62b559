@@ -16,6 +16,69 @@
       "message": "LGTM",
       "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3733f96f_22ec4d09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-22T17:36:17Z",
+      "side": 1,
+      "message": "Next time, please add tast-owners@google.com to the reviewers so they can be auto assigned to spread out the reviewing load. It will auto assign tast reviewers for you.\n\nLGTM % comments",
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2e5bf61_3e26f39f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-22T17:36:17Z",
+      "side": 1,
+      "message": "Add a colon and space after this: \"... data: \"",
+      "range": {
+        "startLine": 62,
+        "startChar": 35,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e825569_d8da220c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-22T17:36:17Z",
+      "side": 1,
+      "message": "Are these error messages descriptive enough to stand on their own without context? If not it might be worth adding a prefix here: s.Fatal(\"Failed to create cswitch session: \", err) and on line 84",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 14
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
