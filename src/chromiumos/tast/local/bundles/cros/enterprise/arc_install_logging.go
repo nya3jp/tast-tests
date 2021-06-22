@@ -33,7 +33,7 @@ func init() {
 		Contacts:     []string{"yixie@chromium.org", "arc-eng-muc@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      8 * time.Minute,
+		Timeout:      13 * time.Minute,
 		Vars:         []string{"enterprise.ARCInstallLogging.user", "enterprise.ARCInstallLogging.password"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -79,12 +79,13 @@ func ARCInstallLogging(ctx context.Context, s *testing.State) {
 
 	// Login to Chrome and allow to launch ARC if allowed by user policy. Flag --install-log-fast-upload-for-tests reduces delay of uploading chrome log.
 	// Flag --arc-install-event-chrome-log-for-tests logs ARC install events to chrome log.
+	args := append(arc.DisableSyncFlags(), "--install-log-fast-upload-for-tests", "--arc-install-event-chrome-log-for-tests")
 	cr, err := chrome.New(
 		ctx,
 		chrome.GAIALogin(chrome.Creds{User: user, Pass: password}),
 		chrome.ARCSupported(),
 		chrome.ProdPolicy(),
-		chrome.ExtraArgs("--install-log-fast-upload-for-tests", "--arc-install-event-chrome-log-for-tests"))
+		chrome.ExtraArgs(args...))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}

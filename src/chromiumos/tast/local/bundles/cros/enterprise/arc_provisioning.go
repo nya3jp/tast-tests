@@ -38,7 +38,7 @@ func init() {
 		Contacts:     []string{"pbond@chromium.org", "arc-eng-muc@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      8 * time.Minute,
+		Timeout:      13 * time.Minute,
 		Vars: []string{
 			"enterprise.ARCProvisioning.user",
 			"enterprise.ARCProvisioning.password",
@@ -127,7 +127,8 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		ctx,
 		chrome.GAIALogin(chrome.Creds{User: user, Pass: password}),
 		chrome.ARCSupported(),
-		chrome.ProdPolicy())
+		chrome.ProdPolicy(),
+		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
