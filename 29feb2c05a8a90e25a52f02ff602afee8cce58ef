@@ -33,6 +33,24 @@
       "message": "comment for the function should start with function name.\n// waitForCommandComplete ...",
       "revId": "29feb2c05a8a90e25a52f02ff602afee8cce58ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01e8cb09_186dc1f1",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-22T05:03:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "07e24744_3e4e9e1a",
+      "revId": "29feb2c05a8a90e25a52f02ff602afee8cce58ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
