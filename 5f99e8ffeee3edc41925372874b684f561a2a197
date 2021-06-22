@@ -110,6 +110,30 @@
       },
       "revId": "5f99e8ffeee3edc41925372874b684f561a2a197",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bee67c3_d46c373b",
+        "filename": "src/chromiumos/tast/local/input/voice/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-22T05:38:08Z",
+      "side": 1,
+      "message": "This is only my assumption it should work even the node is offscreen. Please do your own investigation and submit 😊",
+      "parentUuid": "d5e4e5b8_70e658d7",
+      "range": {
+        "startLine": 95,
+        "startChar": 14,
+        "endLine": 95,
+        "endChar": 26
+      },
+      "revId": "5f99e8ffeee3edc41925372874b684f561a2a197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
