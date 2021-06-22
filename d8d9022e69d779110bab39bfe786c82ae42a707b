@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a9f23a_973effc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-22T20:14:52Z",
+      "side": 1,
+      "message": "Just moved to spotify.go, and no change for spotify.go now.\nStill leave \"SpotifyAppName\" here because it is mainly used by this file",
+      "parentUuid": "5b0fe7f8_090cc901",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 45
+      },
+      "revId": "d8d9022e69d779110bab39bfe786c82ae42a707b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6590cbb_1043ebbb",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b872ea0_57bcfb75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-22T20:14:52Z",
+      "side": 1,
+      "message": "Changed TODO format only without splitting the function. Will do with new CL.",
+      "parentUuid": "3769b314_2bc3e3ec",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "d8d9022e69d779110bab39bfe786c82ae42a707b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a35b980f_0210b2a7",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "Thanks. Removed",
       "parentUuid": "a35b980f_0210b2a7",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "d8d9022e69d779110bab39bfe786c82ae42a707b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d27569_0f740b44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-22T20:14:52Z",
+      "side": 1,
+      "message": "Also changed the typo from fisrtLogin to firstLogin",
+      "parentUuid": "adb8aeb6_56fc2787",
       "range": {
         "startLine": 39,
         "startChar": 1,
@@ -226,6 +298,30 @@
       "side": 1,
       "message": "Actually cuj.FindAndClick() and cuj.ClickIfExist() have been implemented in \"cuj\" package for re-using purpose. Now modified the two functions in \"cuj\" package to return the action function, so it can be used with ui.Combine() etc.\n\nOther references to above two functions in VideoCUJ2 have been modified accordingly.",
       "parentUuid": "066b1834_d2d8ff57",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 1
+      },
+      "revId": "d8d9022e69d779110bab39bfe786c82ae42a707b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b320310_f7559766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-22T20:14:52Z",
+      "side": 1,
+      "message": "Moved to cuj/androidui.go and renamed as FindAndClickAction and ClickIfExistAction, to distinguish with the existing FindAndClick / ClickIfExist.",
+      "parentUuid": "bb621c9c_fa0a0701",
       "range": {
         "startLine": 148,
         "startChar": 0,
