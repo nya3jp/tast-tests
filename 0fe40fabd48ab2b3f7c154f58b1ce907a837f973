@@ -51,6 +51,24 @@
       "parentUuid": "8bf5f832_6ea4adac",
       "revId": "0fe40fabd48ab2b3f7c154f58b1ce907a837f973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b01909a8_4ece4cd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-22T18:45:15Z",
+      "side": 1,
+      "message": "I have tried to add the change\nMentioned function  didn\u0027t work but similar function I found worked.\nWith this using UI tree to check if content is pasted.\n\nI have not removed the previous check, please let me know If I should",
+      "parentUuid": "f32b9764_3e0213d5",
+      "revId": "0fe40fabd48ab2b3f7c154f58b1ce907a837f973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
