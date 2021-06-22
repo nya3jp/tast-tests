@@ -46,6 +46,30 @@
       },
       "revId": "31b3aae107f94a4f70c11a1a12bce0dc2036e82a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f02a87b_d577e245",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_toggle_advanced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-06-22T22:02:55Z",
+      "side": 1,
+      "message": "Hi David, were you suggesting moving the ToggleAdvanced into ossettings lib to reach a wider audience?",
+      "parentUuid": "ad756bd1_d324b152",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 30
+      },
+      "revId": "31b3aae107f94a4f70c11a1a12bce0dc2036e82a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
