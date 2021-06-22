@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0984b448_dfa43e6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-22T00:36:20Z",
+      "side": 1,
+      "message": "I can see a few irrelevant changes in the latest patchset.\n\nCan you please focus on fixing the comments in patchset. If each patchset has 100+ line code changes, I need to review the whole cl from scratch again and we can never submit the cl.",
+      "revId": "773883dcd01bdcb35dc3a858db5b2ea80db94289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
