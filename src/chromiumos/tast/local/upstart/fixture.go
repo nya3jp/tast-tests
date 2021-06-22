@@ -15,8 +15,12 @@ import (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name:            "ensureUI",
-		Desc:            "Ensure the ui service is running.",
+		Name: "ensureUI",
+		Desc: "Ensure the ui service is running",
+		Contacts: []string{
+			"pwang@chromium.org", // fixture author
+			"cros-printing-dev@chromium.org",
+		},
 		Impl:            &ensureUIFixture{running: true},
 		SetUpTimeout:    10 * time.Second,
 		TearDownTimeout: 10 * time.Second,
@@ -24,8 +28,12 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:            "ensureNoUI",
-		Desc:            "Ensure the ui service is not running.",
+		Name: "ensureNoUI",
+		Desc: "Ensure the ui service is not running",
+		Contacts: []string{
+			"tbegin@chromium.org", // fixture author
+			"cros-network-health@google.com",
+		},
 		Impl:            &ensureUIFixture{running: false},
 		SetUpTimeout:    10 * time.Second,
 		TearDownTimeout: 10 * time.Second,
