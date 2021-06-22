@@ -65,6 +65,15 @@ func OSSettingsPage(ctx context.Context, cr *chrome.Chrome, shortLink string) *o
 	return page
 }
 
+// CurrentPage return with an openedPage, which can be used to select a node from the node tree (not just from the page).
+func CurrentPage(cr *chrome.Chrome) *openedPage {
+	page := &openedPage{
+		cr: cr,
+	}
+
+	return page
+}
+
 // SelectNode creates a nodeChecker from the selected node.
 // It can be used to verify different properties of the node.
 func (page *openedPage) SelectNode(ctx context.Context, finder *nodewith.Finder) *nodeChecker {

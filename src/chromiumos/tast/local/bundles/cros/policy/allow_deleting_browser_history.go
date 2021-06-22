@@ -6,11 +6,14 @@ package policy
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -40,29 +43,30 @@ func AllowDeletingBrowserHistory(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+	uia := uiauto.New(tconn)
 
 	for _, param := range []struct {
 		name            string
-		wantRestriction ui.RestrictionState                 // wantRestriction is the wanted restriction state of the checkboxes in Browsing history.
-		wantChecked     ui.CheckedState                     // wantChecked is the wanted checked state of the checkboxes in Browsing history.
+		wantRestriction restriction.Restriction             // wantRestriction is the wanted restriction state of the checkboxes in Browsing history.
+		wantChecked     checked.Checked                     // wantChecked is the wanted checked state of the checkboxes in Browsing history.
 		value           *policy.AllowDeletingBrowserHistory // value is the value of the policy.
 	}{
 		{
 			name:            "unset",
-			wantRestriction: ui.RestrictionNone,
-			wantChecked:     ui.CheckedStateTrue,
+			wantRestriction: restriction.None,
+			wantChecked:     checked.True,
 			value:           &policy.AllowDeletingBrowserHistory{Stat: policy.StatusUnset},
 		},
 		{
 			name:            "allow",
-			wantRestriction: ui.RestrictionNone,
-			wantChecked:     ui.CheckedStateTrue,
+			wantRestriction: restriction.None,
+			wantChecked:     checked.True,
 			value:           &policy.AllowDeletingBrowserHistory{Val: true},
 		},
 		{
 			name:            "deny",
-			wantRestriction: ui.RestrictionDisabled,
-			wantChecked:     ui.CheckedStateFalse,
+			wantRestriction: restriction.Disabled,
+			wantChecked:     checked.False,
 			value:           &policy.AllowDeletingBrowserHistory{Val: false},
 		},
 	} {
@@ -87,65 +91,47 @@ func AllowDeletingBrowserHistory(ctx context.Context, s *testing.State) {
 			defer conn.Close()
 
 			// Loop for different checkboxes.
-			// TODO(https://crbug.com/1158773): Use regex in the node names in the AllowDeletingBrowserHistory policy test.
-			for _, cb := range []struct {
-				ref  string // ref is the shortened name of the checkbox that can be used in logging.
-				name string // name is a unique part of the checkbox name in the UI tree.
-				tab  string // tab is the name of the tab in the UI tree that should be selected to find the checkbox.
+			for _, checkbox := range []struct {
+				ref string // ref is the shortened name of the checkbox that can be used in logging.
+				tab string // tab is the name of the tab in the UI tree that should be selected to find the checkbox.
 			}{
 				{
-					ref:  "Browsing history",
-					name: "Browsing history Clears history and autocompletions in the search box",
-					tab:  "Basic",
+					ref: "Browsing history",
+					tab: "Basic",
 				},
 				{
-					ref:  "Browsing history",
-					name: "Browsing history None",
-					tab:  "Advanced",
+					ref: "Browsing history",
+					tab: "Advanced",
 				},
 				{
-					ref:  "Download history",
-					name: "Download history None",
-					tab:  "Advanced",
+					ref: "Download history",
+					tab: "Advanced",
 				},
 			} {
 				// Select the tab if it is not selected already.
-				tabNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-					Role: ui.RoleTypeTab,
-					Name: cb.tab,
-				}, 15*time.Second)
+				tabNode := nodewith.Name(checkbox.tab).Role(role.Tab)
+				tabInfo, err := uia.Info(ctx, tabNode)
 				if err != nil {
-					s.Fatalf("Finding %s tab failed: %v", cb.tab, err)
+					s.Fatalf("Failed to find the %s tab: %v", checkbox.tab, err)
 				}
-				defer tabNode.Release(ctx)
 
-				if tabNode.ClassName != "tab selected" {
-					if err := tabNode.LeftClick(ctx); err != nil {
-						s.Fatalf("Failed to click on %s tab: %v", cb.tab, err)
-					}
-
-					if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{
-						Role:      ui.RoleTypeTab,
-						Name:      cb.tab,
-						ClassName: "tab selected",
-					}, 15*time.Second); err != nil {
-						s.Fatalf("Waiting for %s tab failed: %v", cb.tab, err)
+				if tabInfo.ClassName != "tab selected" {
+					if err := uiauto.Combine("select tab",
+						uia.LeftClick(tabNode),
+						uia.WaitUntilExists(tabNode.ClassName("tab selected")),
+					)(ctx); err != nil {
+						s.Fatalf("Failed to select %s tab: %v", checkbox.tab, err)
 					}
 				}
 
-				if err := policyutil.VerifySettingsNode(ctx, tconn,
-					ui.FindParams{
-						Role: ui.RoleTypeCheckBox,
-						Name: cb.name,
-					},
-					ui.FindParams{
-						Attributes: map[string]interface{}{
-							"restriction": param.wantRestriction,
-							"checked":     param.wantChecked,
-						},
-					},
-				); err != nil {
-					s.Errorf("Unexpected settings state for %q: %v", cb.name, err)
+				if err := policyutil.CurrentPage(cr).
+					SelectNode(ctx, nodewith.
+						NameStartingWith(checkbox.ref).
+						Role(role.CheckBox)).
+					Restriction(param.wantRestriction).
+					Checked(param.wantChecked).
+					Verify(); err != nil {
+					s.Errorf("Unexpected settings state for %q: %v", checkbox.ref, err)
 				}
 			}
 		})
