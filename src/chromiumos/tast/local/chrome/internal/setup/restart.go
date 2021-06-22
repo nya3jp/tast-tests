@@ -10,7 +10,6 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/config"
@@ -21,12 +20,6 @@ import (
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
-
-// uiRestartTimeout is the maximum amount of time that it takes to restart
-// the ui upstart job.
-// ui-post-stop can sometimes block for an extended period of time
-// waiting for "cryptohome --action=pkcs11_terminate" to finish: https://crbug.com/860519
-const uiRestartTimeout = 60 * time.Second
 
 // RestartChromeForTesting restarts the ui job, asks session_manager to enable Chrome testing,
 // and waits for Chrome to listen on its debugging port.
@@ -179,7 +172,7 @@ func restartSession(ctx context.Context, cfg *config.Config) error {
 	ctx, st := timing.Start(ctx, "restart_ui")
 	defer st.End()
 
-	ctx, cancel := context.WithTimeout(ctx, uiRestartTimeout)
+	ctx, cancel := context.WithTimeout(ctx, upstart.UIRestartTimeout)
 	defer cancel()
 
 	if err := upstart.StopJob(ctx, "ui"); err != nil {
