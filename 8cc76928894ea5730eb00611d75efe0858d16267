@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2c996d5b_64963cec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-22T07:43:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59153f90_7ad3f4f7",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "8cc76928894ea5730eb00611d75efe0858d16267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f30de233_34a40cba",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-22T04:47:31Z",
       "side": 1,
       "message": "s.Fatalf will terminate the function. So `break` is not required.",
+      "range": {
+        "startLine": 184,
+        "startChar": 3,
+        "endLine": 184,
+        "endChar": 8
+      },
+      "revId": "8cc76928894ea5730eb00611d75efe0858d16267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b21579_14c4b897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-22T07:43:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d2f4ccf_34ebd7b9",
       "range": {
         "startLine": 184,
         "startChar": 3,
