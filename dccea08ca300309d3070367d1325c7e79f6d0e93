@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74087a6f_48611162",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-22T00:11:35Z",
+      "side": 1,
+      "message": "etalvala@ please give some comment on \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2974955/2#message-5be2309fbca3b1ad485cc50ac2226e515385af67\n\nThere are two different approach to specify those scripts run in python3 propose by Jasmine and I are in PS2 and PS1.\n\nJasmine: patch all occurence of python -\u003e python3 in the ITS scripts.\nMy: Set python3 as default python.",
+      "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
