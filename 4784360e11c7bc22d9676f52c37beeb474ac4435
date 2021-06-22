@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3705abd4_0c0fa48e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-22T19:30:53Z",
+      "side": 1,
+      "message": "Updated to BUG\u003db:187794441",
+      "parentUuid": "f9dcf43a_4d62263b",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 65
+      },
+      "revId": "4784360e11c7bc22d9676f52c37beeb474ac4435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c010e7b8_3a63528c",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-05-26T21:25:55Z",
       "side": 1,
       "message": "Please test that the other test you changed is still working: ui.QuickSettingsLockScreen",
+      "range": {
+        "startLine": 14,
+        "startChar": 22,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "4784360e11c7bc22d9676f52c37beeb474ac4435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8edb3522_6c15612f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-22T19:30:53Z",
+      "side": 1,
+      "message": "Updated as below:\nTEST\u003dtast run \u003cip\u003e ui.QuickSettingsSignInScreen*\nTEST\u003dtast run \u003cip\u003e ui.QuickSettingsLockScreen",
+      "parentUuid": "c010e7b8_3a63528c",
       "range": {
         "startLine": 14,
         "startChar": 22,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90b72c9e_53dde645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-22T19:30:53Z",
+      "side": 1,
+      "message": "Updated the test name to QuickSettingsSignInScreen.",
+      "parentUuid": "0b657d37_9782da0b",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "4784360e11c7bc22d9676f52c37beeb474ac4435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d512751a_dc426058",
@@ -107,6 +179,30 @@
       "writtenOn": "2021-05-26T21:25:55Z",
       "side": 1,
       "message": "Can this be replaced with \n\nelse {\n\n?",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 20
+      },
+      "revId": "4784360e11c7bc22d9676f52c37beeb474ac4435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e333357c_0088a6b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-22T19:30:53Z",
+      "side": 1,
+      "message": "I verified in all the places where ui.Exists() been used and we have as else if {} in other places.",
+      "parentUuid": "d512751a_dc426058",
       "range": {
         "startLine": 91,
         "startChar": 4,
@@ -140,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1d54472_884fce3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-22T19:30:53Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "11c3c1cd_b43fb9fa",
+      "range": {
+        "startLine": 98,
+        "startChar": 59,
+        "endLine": 98,
+        "endChar": 90
+      },
+      "revId": "4784360e11c7bc22d9676f52c37beeb474ac4435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1a4af5b_2cbcfe7f",
@@ -153,6 +273,30 @@
       "writtenOn": "2021-05-26T21:25:55Z",
       "side": 1,
       "message": "What does this mean?",
+      "range": {
+        "startLine": 711,
+        "startChar": 1,
+        "endLine": 711,
+        "endChar": 28
+      },
+      "revId": "4784360e11c7bc22d9676f52c37beeb474ac4435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b6481c2_940d7002",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-22T19:30:53Z",
+      "side": 1,
+      "message": "Removed the comment.",
+      "parentUuid": "e1a4af5b_2cbcfe7f",
       "range": {
         "startLine": 711,
         "startChar": 1,
@@ -200,6 +344,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "91e50942_cd48b7dc",
+      "range": {
+        "startLine": 543,
+        "startChar": 1,
+        "endLine": 543,
+        "endChar": 96
+      },
+      "revId": "4784360e11c7bc22d9676f52c37beeb474ac4435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "667c7284_8d03d614",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-22T19:30:53Z",
+      "side": 1,
+      "message": "Updated the CommonElementsInQuickSettings and added a new func RestrictedFeaturedPods and moved the restrictedpods related code there.",
+      "parentUuid": "09b72209_b1e300ed",
       "range": {
         "startLine": 543,
         "startChar": 1,
