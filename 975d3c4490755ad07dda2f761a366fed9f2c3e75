@@ -63,6 +63,30 @@
       },
       "revId": "975d3c4490755ad07dda2f761a366fed9f2c3e75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bae03ef7_3d2b470a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-06-22T19:30:03Z",
+      "side": 1,
+      "message": "Ah interesting; I didn\u0027t know about s.Errorf() -- I had assumed that we had to terminate with a fatal error.\n\nI\u0027ve changed it to go with Keigo\u0027s suggestion. I also realized that when exiting early, I had to call p.Save(s.OutDir()) to return the metrics recorded so far.",
+      "parentUuid": "701ffd35_9b2b1059",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 10
+      },
+      "revId": "975d3c4490755ad07dda2f761a366fed9f2c3e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

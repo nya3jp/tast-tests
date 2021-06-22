@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "946465c6_600c14ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-06-22T19:30:03Z",
+      "side": 1,
+      "message": "Thank you Ilja for the review.\n\nKeigo, PTAL.",
+      "revId": "dbca88352917a47b8a9bab194ade4223dfe2d059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
