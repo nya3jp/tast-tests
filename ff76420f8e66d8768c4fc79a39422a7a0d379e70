@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90c72638_4b81ffe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-06-22T15:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "857bca2c_48b1e754",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 10
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a167907_2511b739",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-21T00:09:16Z",
       "side": 1,
       "message": "turn",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 32
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "511fcb19_e021cd89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-06-22T15:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a167907_2511b739",
       "range": {
         "startLine": 129,
         "startChar": 27,
@@ -111,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33227544_85d90cfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-06-22T15:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52008db0_f5963ede",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 115
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7aeb6e21_e2640638",
@@ -124,6 +196,30 @@
       "writtenOn": "2021-06-21T00:09:16Z",
       "side": 1,
       "message": "This msg is not consistent with \"turn on ambient mode\". Suggest to add the description in uiauto.Combine and just return err here.",
+      "range": {
+        "startLine": 135,
+        "startChar": 27,
+        "endLine": 135,
+        "endChar": 65
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b30dcf9d_63241c43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-06-22T15:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aeb6e21_e2640638",
       "range": {
         "startLine": 135,
         "startChar": 27,
@@ -157,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff6abce6_74466e83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-06-22T15:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a21c7a2_27d68832",
+      "range": {
+        "startLine": 140,
+        "startChar": 27,
+        "endLine": 140,
+        "endChar": 60
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78bfb16c_769c313a",
@@ -170,6 +290,30 @@
       "writtenOn": "2021-06-21T00:09:16Z",
       "side": 1,
       "message": "failed to deselect art album",
+      "range": {
+        "startLine": 151,
+        "startChar": 28,
+        "endLine": 151,
+        "endChar": 56
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a733175_dd0afa36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-06-22T15:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78bfb16c_769c313a",
       "range": {
         "startLine": 151,
         "startChar": 28,
@@ -203,6 +347,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "229e2dbc_b6a44ccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-06-22T15:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55d76fac_3c52c2f2",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee6900fb_dd15bae3",
@@ -226,6 +394,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f08db82_7a1e5be5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-06-22T15:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee6900fb_dd15bae3",
+      "range": {
+        "startLine": 235,
+        "startChar": 90,
+        "endLine": 235,
+        "endChar": 95
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fff51b73_18eb7067",
@@ -239,6 +431,30 @@
       "writtenOn": "2021-06-21T00:09:16Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 253,
+        "endChar": 7
+      },
+      "revId": "ff76420f8e66d8768c4fc79a39422a7a0d379e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b8789a_4c6a76b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-06-22T15:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fff51b73_18eb7067",
       "range": {
         "startLine": 253,
         "startChar": 2,
