@@ -16,6 +16,29 @@
       "message": "Thanks! +tast-owners@ for approval",
       "revId": "fdeeb1c02c856c861bc7959bc29611028491ef8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15d69122_95555758",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-22T17:39:53Z",
+      "side": 1,
+      "message": "In general we use sleeps as a last resort. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts\n\nAre you sure there is no way to check the status? Can a request be polled until a valid response is received?",
+      "range": {
+        "startLine": 259,
+        "startChar": 43,
+        "endLine": 260,
+        "endChar": 14
+      },
+      "revId": "fdeeb1c02c856c861bc7959bc29611028491ef8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
