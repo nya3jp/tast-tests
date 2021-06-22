@@ -21,6 +21,7 @@ func TestParseStatus(t *testing.T) {
 		{"powerd", "powerd start/running, process 9398\n", upstart.StartGoal, upstart.RunningState, 9398},
 		{"boot-splash", "boot-splash stop/waiting\n", upstart.StopGoal, upstart.WaitingState, 0},
 		{"ureadahead", "ureadahead stop/pre-stop, process 227\npre-stop process 5579\n", upstart.StopGoal, upstart.PreStopState, 227},
+		{"ml-service", "ml-service (mojo_service) start/running, process 6820\n", upstart.StartGoal, upstart.RunningState, 6820},
 	} {
 		goal, state, pid, err := parseStatus(tc.job, tc.line)
 		sig := fmt.Sprintf("parseStatus(%q, %q)", tc.job, tc.line)
