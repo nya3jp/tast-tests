@@ -178,6 +178,17 @@ func DrawOnCanvas(ctx context.Context, s *testing.State) {
 		expectedColor := refImg.At(v.X, v.Y)
 		actualColor := canvasImg.At(v.X, v.Y)
 		distance := play.ColorDistance(expectedColor, actualColor)
+		// The distance threshold was decided by analyzing the data reported across
+		// many devices. Note that:
+		//
+		// 1) We still report the distances as perf values so we can continue to
+		//    analyze and improve.
+		// 2) We don't bother to report a total distance if this threshold is
+		//    exceeded because it would just make email alerts very noisy.
+		if distance > 25 {
+			s.Errorf("The color distance for %v = %d exceeds the threshold (25)",
+				k, distance)
+		}
 		if distance != 0 {
 			s.Logf("At %v (%d, %d): expected RGBA = %v; got RGBA = %v; distance = %d",
 				k, v.X, v.Y, expectedColor, actualColor, distance)
@@ -187,6 +198,11 @@ func DrawOnCanvas(ctx context.Context, s *testing.State) {
 			Unit:      "None",
 			Direction: perf.SmallerIsBetter,
 		}, float64(distance))
+	}
+
+	if s.HasError() {
+		p.Save(s.OutDir())
+		return
 	}
 
 	// Measurement 2:
