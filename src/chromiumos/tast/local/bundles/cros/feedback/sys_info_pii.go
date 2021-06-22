@@ -78,9 +78,9 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 	sensitiveURLWithoutScheme := ""
 	if testType == localFileTest {
 		dataFile := s.DataPath(testPageFilename)
-		targetPath := path.Join("/home/chronos/user/MyFiles", testPageFilename)
+		targetPath := path.Join("/tmp", testPageFilename)
 		if err := fsutil.CopyFile(dataFile, targetPath); err != nil {
-			s.Fatal("Failed to put dataFile in home dir: ", err)
+			s.Fatal("Failed to put dataFile in tmp dir: ", err)
 		}
 		if err := os.Chmod(targetPath, 0666); err != nil {
 			s.Fatal("Failed to make dataFile readable: ", err)
