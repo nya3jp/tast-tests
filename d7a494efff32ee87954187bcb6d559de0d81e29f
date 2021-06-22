@@ -16,6 +16,23 @@
       "message": "mukai-san: Could you help review? Thanks!",
       "revId": "d7a494efff32ee87954187bcb6d559de0d81e29f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a768340c_1a8dd598",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-06-22T21:10:48Z",
+      "side": 1,
+      "message": "Thanks mukai-san!",
+      "revId": "d7a494efff32ee87954187bcb6d559de0d81e29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
