@@ -16,6 +16,24 @@
       "message": "What\u0027s the benefit updating the function name first? Shall we combine this CL with CL that reflects wpa_supplicant uprev?\n\nAlso, maybe we can use a fallback mechanism so that the change does not tie into wpa_supplicant uprev:\n\nRun \"sudo wpa_cli blacklist clear\";\nif err, run \"sudo wpa_cli bssid_ignore clear\"",
       "revId": "e713eaea7b73ef78bb7cc1dfd9ec4fe2d32bc725",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f68a9d_09742a7d",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-06-23T22:21:31Z",
+      "side": 1,
+      "message": "I think it can wait for the wpa_supplicant uprev. I just thought this change is not dependent on it.\n\nThe change in wpa_supplicant made aliases to support backward compatibility, so IIUC both commands should work.",
+      "parentUuid": "9fb17f4b_6ef93577",
+      "revId": "e713eaea7b73ef78bb7cc1dfd9ec4fe2d32bc725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
