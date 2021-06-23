@@ -90,10 +90,8 @@ func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, d
 
 	// Enable verbose bluetooth logging.
 	levels := bluetooth.LogVerbosity{
-		Dispatcher: true,
-		Newblue:    true,
-		Bluez:      true,
-		Kernel:     true,
+		Bluez:  true,
+		Kernel: true,
 	}
 	if err := bluetooth.SetDebugLogLevels(ctx, levels); err != nil {
 		return errors.Wrap(err, "failed to enable verbose bluetooth logging")
