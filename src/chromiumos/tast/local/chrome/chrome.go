@@ -342,7 +342,8 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 
 	// Try to close all "normal" pages and apps.
 	targetFilter := func(t *Target) bool {
-		return t.Type == "page" || t.Type == "app"
+		// Add "other" for modal dialog. Closing "webview" may cause issues.
+		return t.Type == "page" || t.Type == "app" || t.Type == "other"
 	}
 	targets, err := c.FindTargets(ctx, targetFilter)
 	if err != nil {

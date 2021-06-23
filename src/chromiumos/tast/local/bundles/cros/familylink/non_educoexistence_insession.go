@@ -23,7 +23,7 @@ func init() {
 		Func:         NonEducoexistenceInsession,
 		Desc:         "Checks that Unicorn account trying to add a non-EDU secondary account fails",
 		Contacts:     []string{"tobyhuang@chromium.org", "cros-families-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"}, // Temporary change to test in CQ.
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      chrome.GAIALoginTimeout + 5*time.Minute,
 		Vars:         []string{"unicorn.parentUser", "unicorn.parentPassword", "unicorn.parentFirstName", "unicorn.parentLastName", "geller.parentUser", "geller.parentPassword"},
@@ -43,21 +43,6 @@ func NonEducoexistenceInsession(ctx context.Context, s *testing.State) {
 	gellerParentPass := s.RequiredVar("geller.parentPassword")
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	// TODO(b/190680218): Fixture reset should close all windows.
-	// We shouldn't need this. Remove once fixed.
-	defer func() {
-		s.Log("Cleaning up dialogs")
-		ui := uiauto.New(tconn)
-		// There are two close buttons, one on the settings page
-		// parent window and one on the Edu Coexistence flow system
-		// modal dialog. We want the second button to close the system
-		// modal dialog. The fixture will take care of closing other
-		// windows when it resets.
-		if err := ui.LeftClick(nodewith.Name("Close").Role(role.Button).Nth(1))(ctx); err != nil {
-			s.Fatal("Failed to click close button: ", err)
-		}
-	}()
 
 	ui := uiauto.New(tconn)
 

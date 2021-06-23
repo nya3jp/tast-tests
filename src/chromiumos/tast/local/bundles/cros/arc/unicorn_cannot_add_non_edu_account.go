@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -30,7 +29,7 @@ func init() {
 		Func:         UnicornCannotAddNonEduAccount,
 		Desc:         "Veirfy that unicorn account cannot add a non-EDU secondary android account",
 		Contacts:     []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
-		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
+		Attr:         []string{"group:mainline", "group:arc-functional"}, // Temporary change to test in CQ.
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
@@ -83,27 +82,6 @@ func UnicornCannotAddNonEduAccount(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
 	defer d.Close(ctx)
-	//TODO(b/190680218): Remove once fixed
-	defer func() {
-		s.Log("Closing all windows")
-		ui := uiauto.New(tconn)
-		windows, err := ash.FindAllWindows(ctx, tconn, func(window *ash.Window) bool {
-			return window.IsVisible
-		})
-		if err != nil {
-			s.Error("Failed to FindAllWindows : ", err)
-		}
-		for _, window := range windows {
-			if err := window.CloseWindow(ctx, tconn); err != nil {
-				s.Error("Failed to close window: ", err)
-			}
-		}
-		closeButton := nodewith.Name("Close").Role(role.Button)
-		s.Log("Closing system dialog")
-		if err := ui.LeftClickUntil(closeButton, ui.Gone(closeButton))(ctx); err != nil {
-			s.Error("Failed to click close button: ", err)
-		}
-	}()
 
 	if err := openAndroidSettings(ctx, cr, tconn); err != nil {
 		s.Fatal("Failed to Open ARC Settings: ", err)
