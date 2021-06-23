@@ -16,6 +16,24 @@
       "message": "Before this is reviewed, is there anyway this change can be split into multiple smaller CLs? This is quite a bit to review in one change. ",
       "revId": "47708303d47309af5c8591f76bb562ea9f4f5ae5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69387c0c_cfbf538b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-23T03:26:49Z",
+      "side": 1,
+      "message": "\u003e Before this is reviewed, is there anyway this change can be split into multiple smaller CLs? This is quite a bit to review in one change. \n\nSplitted into multiple CLs and added you as the reviewer. PTAL, thanks!",
+      "parentUuid": "b26f68bb_61634c47",
+      "revId": "47708303d47309af5c8591f76bb562ea9f4f5ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
