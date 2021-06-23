@@ -34,12 +34,13 @@ func init() {
 		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      3 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name:      "",
 			Val:       localFileTest,
 			ExtraData: []string{testPageFilename},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "third_party_site",
 			Val:       thirdPartySiteTest,
