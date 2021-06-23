@@ -40,6 +40,16 @@ func VirtualKeyboardTypingIME(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
 	defer its.Close()
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "VirtualKeyboardTypingIme.webm"))
+
+	if screenRecorder != nil {
+		screenRecorder.Start(ctx, tconn)
+	}
 
 	for imeCode, testData := range data.VKInputMap {
 		if testData.SkipTest {

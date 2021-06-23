@@ -7,6 +7,7 @@ package inputs
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -51,6 +52,16 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "VirtualKeyboardJapaneseInputs.webm"))
+
+	if screenRecorder != nil {
+		screenRecorder.Start(ctx, tconn)
+	}
 
 	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.IMEPrefix+string(ime.INPUTMETHOD_NACL_MOZC_JP)); err != nil {
 		s.Fatal("Failed to set input method: ", err)

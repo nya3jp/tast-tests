@@ -7,6 +7,7 @@ package inputs
 
 import (
 	"context"
+	"path/filepath"
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -42,6 +43,16 @@ func VirtualKeyboardAccessibility(ctx context.Context, s *testing.State) {
 	vkbCtx := vkb.NewContext(cr, tconn)
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "VirtualKeyboardAccessibility.webm"))
+
+	if screenRecorder != nil {
+		screenRecorder.Start(ctx, tconn)
+	}
 
 	// Check that the keyboard has modifier and tab keys.
 	keys := []string{"ctrl", "alt", "caps lock", "tab"}
