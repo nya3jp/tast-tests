@@ -53,46 +53,62 @@ const resetTimeout = 30 * time.Second
 // defaultIMECode is used for new Chrome instance.
 const defaultIMECode = ime.IMEPrefix + string(ime.INPUTMETHOD_XKB_US_ENG)
 
-func inputsPreCondition(name string, dm deviceMode, vkEnabled bool, opts ...chrome.Option) *preImpl {
+func inputsPreCondition(name string, dm deviceMode, vkEnabled, reset bool, opts ...chrome.Option) *preImpl {
 	return &preImpl{
 		name:      name,
 		timeout:   resetTimeout + chrome.LoginTimeout,
-		vkEnabled: vkEnabled,
 		dm:        dm,
+		vkEnabled: vkEnabled,
+		reset:     reset,
 		opts:      append(opts, chrome.EnableFeatures("ImeMojoDecoder")),
 	}
 }
 
 // VKEnabled creates a new precondition can be shared by tests that require an already-started Chromeobject that enables virtual keyboard.
 // It uses --enable-virtual-keyboard to force enable virtual keyboard regardless of device ui mode.
-var VKEnabled = inputsPreCondition("virtual_keyboard_enabled_pre", notForced, true)
+var VKEnabled = inputsPreCondition("virtual_keyboard_enabled_pre", notForced, true, false)
 
 // VKEnabledInGuest creates a new precondition the same as VKEnabled in Guest mode.
-var VKEnabledInGuest = inputsPreCondition("virtual_keyboard_enabled_guest_pre", notForced, true, chrome.GuestLogin())
+var VKEnabledInGuest = inputsPreCondition("virtual_keyboard_enabled_guest_pre", notForced, true, false, chrome.GuestLogin())
 
 // VKEnabledTablet creates a new precondition for testing virtual keyboard in tablet mode.
 // It boots device in tablet mode and force enabled virtual keyboard via chrome flag --enable-virtual-keyboard.
-var VKEnabledTablet = inputsPreCondition("virtual_keyboard_enabled_tablet_pre", tabletMode, true)
+var VKEnabledTablet = inputsPreCondition("virtual_keyboard_enabled_tablet_pre", tabletMode, true, false)
 
-// VKEnabledTabletWithAssistAutocorrect is similar to VKEnabledTablet, but also with AssistAutoCorrect flag enabled.
-var VKEnabledTabletWithAssistAutocorrect = inputsPreCondition("virtual_keyboard_enabled_tablet_assist_autocorrect_pre", tabletMode, true, chrome.ExtraArgs("--enable-features=AssistAutoCorrect"))
+// VKEnabledTabletReset is the same setup as VKEnabledTablet.
+// It restarts Chrome session and logs in as new user for each test.
+var VKEnabledTabletReset = inputsPreCondition("virtual_keyboard_enabled_tablet_reset_pre", tabletMode, true, true)
+
+// VKEnabledTabletWithAssistAutocorrectReset is similar to VKEnabledTablet, but also with AssistAutoCorrect flag enabled.
+// It restarts Chrome session and logs in as new user for each test.
+var VKEnabledTabletWithAssistAutocorrectReset = inputsPreCondition("virtual_keyboard_enabled_tablet_assist_autocorrect_pre", tabletMode, true, true, chrome.ExtraArgs("--enable-features=AssistAutoCorrect"))
 
 // VKEnabledTabletInGuest creates a new precondition the same as VKEnabledTablet in Guest mode.
-var VKEnabledTabletInGuest = inputsPreCondition("virtual_keyboard_enabled_tablet_guest_pre", tabletMode, true, chrome.GuestLogin())
+var VKEnabledTabletInGuest = inputsPreCondition("virtual_keyboard_enabled_tablet_guest_pre", tabletMode, true, false, chrome.GuestLogin())
 
 // VKEnabledClamshell creates a new precondition for testing virtual keyboard in clamshell mode.
 // It uses Chrome API settings.a11y.virtual_keyboard to enable a11y vk instead of --enable-virtual-keyboard.
-var VKEnabledClamshell = inputsPreCondition("virtual_keyboard_enabled_clamshell_pre", clamshellMode, true)
+var VKEnabledClamshell = inputsPreCondition("virtual_keyboard_enabled_clamshell_pre", clamshellMode, true, false)
 
-// VKEnabledClamshellWithAssistAutocorrect is similar to VKEnabledClamshell, but also with AssistAutoCorrect flag enabled.
-var VKEnabledClamshellWithAssistAutocorrect = inputsPreCondition("virtual_keyboard_enabled_clamshell_assist_autocorrect_pre", clamshellMode, true, chrome.ExtraArgs("--enable-features=AssistAutoCorrect"))
+// VKEnabledClamshellReset is the same setup as VKEnabledClamshell.
+// It restarts Chrome session and logs in as new user for each test.
+var VKEnabledClamshellReset = inputsPreCondition("virtual_keyboard_enabled_clamshell_reset_pre", clamshellMode, true, true)
+
+// VKEnabledClamshellWithAssistAutocorrectReset is similar to VKEnabledClamshell, but also with AssistAutoCorrect flag enabled.
+// It restarts Chrome session and logs in as new user for each test.
+var VKEnabledClamshellWithAssistAutocorrectReset = inputsPreCondition("virtual_keyboard_enabled_clamshell_assist_autocorrect_pre", clamshellMode, true, true, chrome.ExtraArgs("--enable-features=AssistAutoCorrect"))
 
 // VKEnabledClamshellInGuest creates a new precondition the same as VKEnabledClamshell in Guest mode.
-var VKEnabledClamshellInGuest = inputsPreCondition("virtual_keyboard_enabled_clamshell_guest_pre", clamshellMode, true, chrome.GuestLogin())
+var VKEnabledClamshellInGuest = inputsPreCondition("virtual_keyboard_enabled_clamshell_guest_pre", clamshellMode, true, false, chrome.GuestLogin())
 
 // NonVKClamshell creates a precondition for testing physical keyboard.
 // It forces device to be clamshell mode and vk disabled.
-var NonVKClamshell = inputsPreCondition("non_vk_clamshell_pre", clamshellMode, false)
+var NonVKClamshell = inputsPreCondition("non_vk_clamshell_pre", clamshellMode, false, false)
+
+// NonVKClamshellReset creates a precondition for testing physical keyboard.
+// It forces device to be clamshell mode and vk disabled.
+// It restarts Chrome session and logs in as new user for each test.
+var NonVKClamshellReset = inputsPreCondition("non_vk_clamshell_reset_pre", clamshellMode, false, true)
 
 // The PreData object is made available to users of this precondition via:
 //
@@ -120,6 +136,7 @@ type preImpl struct {
 	timeout   time.Duration   // testing.PreCondition.Timeout
 	cr        *chrome.Chrome  // underlying Chrome instance
 	dm        deviceMode      // device ui mode to test
+	reset     bool            // Whether clean & restart Chrome before test
 	vkEnabled bool            // Whether virtual keyboard is force enabled
 	opts      []chrome.Option // Options that should be passed to chrome.New
 	tconn     *chrome.TestConn
@@ -135,40 +152,43 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	defer st.End()
 
 	if p.cr != nil {
-		err := func() error {
-			// Dump error if failed to reuse Chrome instance.
-			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, p.tconn)
+		if !p.reset {
+			err := func() error {
+				// Dump error if failed to reuse Chrome instance.
+				defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, p.tconn)
 
-			ctx, cancel := context.WithTimeout(ctx, resetTimeout)
-			defer cancel()
-			ctx, st := timing.Start(ctx, "reset_"+p.name)
-			defer st.End()
-			if err := p.cr.Responded(ctx); err != nil {
-				return errors.Wrap(err, "existing Chrome connection is unusable")
-			}
-
-			// Hide virtual keyboard in case it is still on screen.
-			if p.vkEnabled {
-				if err := vkb.NewContext(p.cr, p.tconn).HideVirtualKeyboard()(ctx); err != nil {
-					return errors.Wrap(err, "failed to hide virtual keyboard")
+				ctx, cancel := context.WithTimeout(ctx, resetTimeout)
+				defer cancel()
+				ctx, st := timing.Start(ctx, "reset_"+p.name)
+				defer st.End()
+				if err := p.cr.Responded(ctx); err != nil {
+					return errors.Wrap(err, "existing Chrome connection is unusable")
 				}
-			}
 
-			if err := ResetIMEStatus(ctx, p.tconn); err != nil {
-				return errors.Wrap(err, "failed resetting ime")
-			}
+				// Hide virtual keyboard in case it is still on screen.
+				if p.vkEnabled {
+					if err := vkb.NewContext(p.cr, p.tconn).HideVirtualKeyboard()(ctx); err != nil {
+						return errors.Wrap(err, "failed to hide virtual keyboard")
+					}
+				}
 
-			if err := p.cr.ResetState(ctx); err != nil {
-				return errors.Wrap(err, "failed resetting existing Chrome session")
-			}
+				if err := ResetIMEStatus(ctx, p.tconn); err != nil {
+					return errors.Wrap(err, "failed resetting ime")
+				}
 
-			return nil
-		}()
-		if err == nil {
-			s.Log("Reusing existing Chrome session")
-			return PreData{p.cr, p.tconn}
+				if err := p.cr.ResetState(ctx); err != nil {
+					return errors.Wrap(err, "failed resetting existing Chrome session")
+				}
+
+				return nil
+			}()
+			if err == nil {
+				s.Log("Reusing existing Chrome session")
+				return PreData{p.cr, p.tconn}
+			}
+			s.Log("Failed to reuse existing Chrome session: ", err)
 		}
-		s.Log("Failed to reuse existing Chrome session: ", err)
+		s.Log("Reset Chrome session...It will take a few seconds")
 		chrome.Unlock()
 		p.closeInternal(ctx, s)
 	}
