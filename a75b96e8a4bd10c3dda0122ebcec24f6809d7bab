@@ -52,6 +52,24 @@
       "parentUuid": "97fa7b3f_5f355ed9",
       "revId": "a75b96e8a4bd10c3dda0122ebcec24f6809d7bab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ccac9db_340945e6",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-23T15:41:11Z",
+      "side": 1,
+      "message": "If the control works on Wilco ECs then Servo.HasControl is what I want.",
+      "parentUuid": "8380437f_b5aa3615",
+      "revId": "a75b96e8a4bd10c3dda0122ebcec24f6809d7bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
