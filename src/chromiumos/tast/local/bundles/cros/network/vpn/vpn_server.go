@@ -54,9 +54,9 @@ var (
 			"}\n",
 
 		"etc/passwd": "root:x:0:0:root:/root:/bin/bash\n" +
-			"ipsec:*:212:212::/dev/null:/bin/false\n",
+			"vpn:*:20174:20174::/dev/null:/bin/false\n",
 
-		"etc/group": "ipsec:x:212:\n",
+		"etc/group": "vpn:x:20174:\n",
 
 		xl2tpdConfigFile: "[global]\n" +
 			"\n" +
