@@ -44,6 +44,7 @@ type NetworkChroot struct {
 	netTempDir             string
 	netJailArgs            []string
 	netnsLifelineFD        *os.File
+	netnsName              string
 	startupCmd             *testexec.Cmd
 	NetEnv                 []string
 }
@@ -87,7 +88,7 @@ func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
 	netnsIP := net.IP(b).String()
 	n.netConfigFileValues["netns_ip"] = netnsIP
 	n.netnsLifelineFD = fd
-	netnsName := resp.NetnsName
+	n.netnsName = resp.NetnsName
 
 	if err := n.makeChroot(ctx); err != nil {
 		return "", errors.Wrap(err, "failed making the chroot")
@@ -98,7 +99,7 @@ func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
 	}
 
 	cmdArgs := append(n.netJailArgs, "/bin/bash", filepath.Join("/", startup), "&")
-	ipArgs := []string{"netns", "exec", netnsName, "/sbin/minijail0", "-C", n.netTempDir}
+	ipArgs := []string{"netns", "exec", n.netnsName, "/sbin/minijail0", "-C", n.netTempDir}
 	ipArgs = append(ipArgs, cmdArgs...)
 	n.startupCmd = testexec.CommandContext(ctx, "ip", ipArgs...)
 	n.startupCmd.Env = append(os.Environ(), n.NetEnv...)
@@ -264,11 +265,16 @@ func (n *NetworkChroot) writeConfigs() error {
 
 // RunChroot run a command in a chroot, within a separate network namespace.
 func (n *NetworkChroot) RunChroot(ctx context.Context, args []string) error {
-	cmdArgs := append(n.netJailArgs, args...)
-	minijailArgs := []string{"-e", "-C", n.netTempDir}
+	cmdArgs := make([]string, len(n.netJailArgs))
+	copy(cmdArgs, n.netJailArgs)
+	cmdArgs = append(cmdArgs, args...)
+	minijailArgs := []string{"/sbin/minijail0", "-C", n.netTempDir}
 	minijailArgs = append(minijailArgs, cmdArgs...)
-	if err := testexec.CommandContext(ctx, "minijail0", minijailArgs...).Run(); err != nil {
-		return errors.Wrap(err, "failed to run command inside the chroot")
+	ipArgs := []string{"netns", "exec", n.netnsName}
+	ipArgs = append(ipArgs, minijailArgs...)
+	cmd := testexec.CommandContext(ctx, "ip", ipArgs...)
+	if o, err := cmd.Output(); err != nil {
+		return errors.Wrapf(err, "failed to run command inside the chroot %s", string(o))
 	}
 
 	return nil
