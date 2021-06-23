@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad930b2b_dcd9f03c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-23T22:35:57Z",
+      "side": 1,
+      "message": "This didn\u0027t take as long as I thought so I\u0027m not gonna split it into 2 CLs.\n\nPTAL ",
+      "revId": "dce65c10f28a95d3ca3a65780e25f64eedd81e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
