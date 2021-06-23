@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fc4ba7d_80df85f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_gallery_button.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-23T11:21:38Z",
+      "side": 1,
+      "message": "thumbnail?",
+      "range": {
+        "startLine": 62,
+        "startChar": 25,
+        "endLine": 62,
+        "endChar": 61
+      },
+      "revId": "4119b709f68a3fa05cb15eccd30bb1952edd4a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66d69091_706d6018",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_gallery_button.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-23T11:21:38Z",
+      "side": 1,
+      "message": "thumbnail?",
+      "range": {
+        "startLine": 74,
+        "startChar": 25,
+        "endLine": 74,
+        "endChar": 61
+      },
+      "revId": "4119b709f68a3fa05cb15eccd30bb1952edd4a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84849ec7_2302393f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_gallery_button.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-23T11:21:38Z",
+      "side": 1,
+      "message": "thumbnail?",
+      "range": {
+        "startLine": 77,
+        "startChar": 11,
+        "endLine": 77,
+        "endChar": 27
+      },
+      "revId": "4119b709f68a3fa05cb15eccd30bb1952edd4a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8069a033_833731ce",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-23T11:21:38Z",
+      "side": 1,
+      "message": "style",
+      "range": {
+        "startLine": 979,
+        "startChar": 5,
+        "endLine": 979,
+        "endChar": 8
+      },
+      "revId": "4119b709f68a3fa05cb15eccd30bb1952edd4a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
