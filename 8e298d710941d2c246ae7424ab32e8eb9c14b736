@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef67097_606a290d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-06-23T10:24:15Z",
+      "side": 1,
+      "message": "the test seems to be flaky and doesn\u0027t really block CQ, I think we can hold this now.",
+      "revId": "8e298d710941d2c246ae7424ab32e8eb9c14b736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
