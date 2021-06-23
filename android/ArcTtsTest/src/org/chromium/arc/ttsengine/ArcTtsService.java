@@ -56,6 +56,8 @@ public class ArcTtsService extends TextToSpeechService {
                                 .getPath(),
                         OUTPUT_FILENAME);
 
+        callback.done();
+
         try {
             Files.createFile(path);
             byte[] bytes = request.getText().getBytes();
