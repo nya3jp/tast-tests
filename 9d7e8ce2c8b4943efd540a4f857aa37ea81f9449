@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb9a2d8c_3dbd4608",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_gallery_button.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-23T10:47:10Z",
+      "side": 1,
+      "message": "nit: I would prefer \"thumbnail\" here.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 14
+      },
+      "revId": "9d7e8ce2c8b4943efd540a4f857aa37ea81f9449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac626283_364b1898",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_gallery_button.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-23T10:47:10Z",
+      "side": 1,
+      "message": "nit: The app should already launched in photo mode? maybe we can remove this",
+      "revId": "9d7e8ce2c8b4943efd540a4f857aa37ea81f9449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "165d7436_51e8a187",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_gallery_button.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-23T10:47:10Z",
+      "side": 1,
+      "message": "Do we need to poll here? Or TakeSinglePhoto() will always return after thumbnail is generated...?",
+      "revId": "9d7e8ce2c8b4943efd540a4f857aa37ea81f9449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc7c271_0dc80377",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_gallery_button.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-23T10:47:10Z",
+      "side": 1,
+      "message": "nit: 3s is a little bit short here (and below) for test. How about 10s?",
+      "range": {
+        "startLine": 82,
+        "startChar": 76,
+        "endLine": 82,
+        "endChar": 85
+      },
+      "revId": "9d7e8ce2c8b4943efd540a4f857aa37ea81f9449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e795c9d_35a4c548",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-23T10:47:10Z",
+      "side": 1,
+      "message": "background-image might not be an URL. Maybe we can expose this as Style() like the JS one, and specify \"background-image\" in cca_ui_gallery_button.go?",
+      "range": {
+        "startLine": 973,
+        "startChar": 3,
+        "endLine": 973,
+        "endChar": 16
+      },
+      "revId": "9d7e8ce2c8b4943efd540a4f857aa37ea81f9449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
