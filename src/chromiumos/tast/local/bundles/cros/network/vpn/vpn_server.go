@@ -373,8 +373,5 @@ func (s *Server) Exit(ctx context.Context) error {
 
 // SetupInternetAccess setup internet connectivity for VPN server.
 func (s *Server) SetupInternetAccess(ctx context.Context) error {
-	if err := s.netChroot.RunChroot(ctx, []string{"iptables", "-t", "nat", "-A", "POSTROUTING", "!", "-s", s.OverlayIP, "-j", "SNAT", "--to", s.underlayIP, "-w"}); err != nil {
-		return errors.Wrap(err, "failed to setup internet connectivity")
-	}
-	return nil
+	return s.netChroot.RunChroot(ctx, []string{"/sbin/iptables", "-t", "nat", "-A", "POSTROUTING", "!", "-s", s.OverlayIP, "-j", "SNAT", "--to", s.underlayIP, "-w"})
 }
