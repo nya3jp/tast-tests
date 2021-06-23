@@ -16,10 +16,8 @@ import (
 
 // LogVerbosity indicates whether or not to enable verbose logging for the different bluetooth modules.
 type LogVerbosity struct {
-	Dispatcher bool
-	Newblue    bool
-	Bluez      bool
-	Kernel     bool
+	Bluez  bool
+	Kernel bool
 }
 
 // SetDebugLogLevels sets the logging level for Bluetooth debug logs.
@@ -29,9 +27,7 @@ func SetDebugLogLevels(ctx context.Context, levels LogVerbosity) error {
 		true:  1,
 	}
 	if err := testexec.CommandContext(ctx, "dbus-send", "--system", "--print-reply",
-		"--dest=org.chromium.Bluetooth", "/org/chromium/Bluetooth", "org.chromium.Bluetooth.Debug.SetLevels",
-		fmt.Sprintf("byte:%v", btoi[levels.Dispatcher]),
-		fmt.Sprintf("byte:%v", btoi[levels.Newblue]),
+		"--dest=org.bluez", "/org/chromium/Bluetooth", "org.chromium.Bluetooth.Debug.SetLevels",
 		fmt.Sprintf("byte:%v", btoi[levels.Bluez]),
 		fmt.Sprintf("byte:%v", btoi[levels.Kernel]),
 	).Run(testexec.DumpLogOnError); err != nil {
