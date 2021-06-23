@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6c4d15c_bbfaee0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-23T08:37:01Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "e5f96f1b0360fdbbd60f63d0231cb83310ba5715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe714b99_dece32bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-06-23T08:37:01Z",
+      "side": 1,
+      "message": "nit: Security; use software emulated Privileged Access Never (PAN).",
+      "range": {
+        "startLine": 295,
+        "startChar": 5,
+        "endLine": 295,
+        "endChar": 62
+      },
+      "revId": "e5f96f1b0360fdbbd60f63d0231cb83310ba5715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
