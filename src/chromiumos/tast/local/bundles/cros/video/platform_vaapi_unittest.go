@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -23,6 +24,8 @@ func init() {
 		},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		SoftwareDeps: []string{"vaapi"},
+		// TODO(pwang): Speculatively disable the test on grunt as it prevents grunt from running video.Play*.
+		ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("grunt")),
 	})
 }
 
