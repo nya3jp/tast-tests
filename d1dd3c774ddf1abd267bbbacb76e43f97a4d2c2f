@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed2b0462_fd5cc65d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-06-23T21:01:12Z",
+      "side": 1,
+      "message": "Can the tests be just disabled until then? At least then I guess they would still be compiled etc so if people change stuff they\u0027ll also adapt the tests?",
+      "revId": "d1dd3c774ddf1abd267bbbacb76e43f97a4d2c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
