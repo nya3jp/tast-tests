@@ -35,7 +35,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name: "en_us_tablet_1",
-				Pre:  pre.VKEnabledTabletWithAssistAutocorrect,
+				Pre:  pre.VKEnabledTabletWithAssistAutocorrectReset,
 				Val: autocorrect.TestCase{
 					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
 					MisspeltWord:  "helol",
@@ -44,7 +44,7 @@ func init() {
 				},
 			}, {
 				Name: "en_us_tablet_2",
-				Pre:  pre.VKEnabledTabletWithAssistAutocorrect,
+				Pre:  pre.VKEnabledTabletWithAssistAutocorrectReset,
 				Val: autocorrect.TestCase{
 					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
 					MisspeltWord:  "wrold",
@@ -53,7 +53,7 @@ func init() {
 				},
 			}, {
 				Name: "en_us_a11y_1",
-				Pre:  pre.VKEnabledClamshellWithAssistAutocorrect,
+				Pre:  pre.VKEnabledClamshellWithAssistAutocorrectReset,
 				Val: autocorrect.TestCase{
 					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
 					MisspeltWord:  "helol",
@@ -62,7 +62,7 @@ func init() {
 				},
 			}, {
 				Name: "en_us_a11y_2",
-				Pre:  pre.VKEnabledClamshellWithAssistAutocorrect,
+				Pre:  pre.VKEnabledClamshellWithAssistAutocorrectReset,
 				Val: autocorrect.TestCase{
 					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
 					MisspeltWord:  "wrold",
@@ -71,7 +71,7 @@ func init() {
 				},
 			}, {
 				Name: "es_es_tablet",
-				Pre:  pre.VKEnabledTabletWithAssistAutocorrect,
+				Pre:  pre.VKEnabledTabletWithAssistAutocorrectReset,
 				Val: autocorrect.TestCase{
 					InputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
 					MisspeltWord:  "espanol",
@@ -80,7 +80,7 @@ func init() {
 				},
 			}, {
 				Name: "es_es_a11y",
-				Pre:  pre.VKEnabledClamshellWithAssistAutocorrect,
+				Pre:  pre.VKEnabledClamshellWithAssistAutocorrectReset,
 				Val: autocorrect.TestCase{
 					InputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
 					MisspeltWord:  "espanol",
@@ -89,7 +89,7 @@ func init() {
 				},
 			}, {
 				Name: "fr_fr_tablet",
-				Pre:  pre.VKEnabledTabletWithAssistAutocorrect,
+				Pre:  pre.VKEnabledTabletWithAssistAutocorrectReset,
 				Val: autocorrect.TestCase{
 					InputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
 					MisspeltWord:  "francais",
@@ -98,7 +98,7 @@ func init() {
 				},
 			}, {
 				Name: "fr_fr_a11y",
-				Pre:  pre.VKEnabledClamshellWithAssistAutocorrect,
+				Pre:  pre.VKEnabledClamshellWithAssistAutocorrectReset,
 				Val: autocorrect.TestCase{
 					InputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
 					MisspeltWord:  "francais",
