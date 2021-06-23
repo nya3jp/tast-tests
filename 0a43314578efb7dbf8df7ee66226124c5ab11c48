@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "add36a6b_7f16eb83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-06-23T03:27:03Z",
+      "side": 1,
+      "message": "There is only one consumer of this lacros/gpucuj. Chances are it will rot away over time. But maybe not.",
+      "range": {
+        "startLine": 801,
+        "startChar": 0,
+        "endLine": 801,
+        "endChar": 42
+      },
+      "revId": "0a43314578efb7dbf8df7ee66226124c5ab11c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
