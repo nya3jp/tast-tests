@@ -401,7 +401,7 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToMultipaste() uiauto.Action {
 
 // TapMultipasteItem returns an action tapping the item corresponding to itemName in multipaste virtual keyboard.
 func (vkbCtx *VirtualKeyboardContext) TapMultipasteItem(itemName string) uiauto.Action {
-	return vkbCtx.ui.LeftClick(KeyFinder.ClassName("scrim").Name(itemName))
+	return vkbCtx.ui.LeftClick(NodeFinder.ClassName("scrim").Name(itemName))
 }
 
 // EnableA11yVirtualKeyboard returns an action enabling or disabling
