@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "984aa514_a1616a15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-23T05:44:06Z",
+      "side": 1,
+      "message": "Could you help explain what\u0027s the \"conflict\" here?",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "1749e12416b419527ac8a73767ff75582f3ff2f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "34f9a4ec_b005e1bf",
