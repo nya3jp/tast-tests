@@ -60,6 +60,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/network/shill"
 	_ "chromiumos/tast/local/bundles/cros/notifications"
 	_ "chromiumos/tast/local/bundles/cros/ocr"
+	_ "chromiumos/tast/local/bundles/cros/oobe"
 	_ "chromiumos/tast/local/bundles/cros/peripherals"
 	_ "chromiumos/tast/local/bundles/cros/platform"
 	_ "chromiumos/tast/local/bundles/cros/policy"
