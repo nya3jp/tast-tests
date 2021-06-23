@@ -92,6 +92,10 @@ func selectAudioOption(ctx context.Context, tconn *chrome.TestConn, device strin
 	ui := uiauto.New(tconn)
 	option := nodewith.Role(role.CheckBox).Name(device)
 
+	if err := ui.WaitUntilExists(option)(ctx); err != nil {
+		return errors.Wrapf(err, "failed to show %v audio option", device)
+	}
+
 	if err := ui.DoDefault(option)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to click %v audio option", device)
 	}
