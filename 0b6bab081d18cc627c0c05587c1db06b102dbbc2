@@ -84,6 +84,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea8b1eea_2247b613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-23T16:20:41Z",
+      "side": 1,
+      "message": "This test still doesn\u0027t have the property:\n\nExtraAttr:         []string{\"informational\"},",
+      "parentUuid": "60f0bb5a_2100acfd",
+      "range": {
+        "startLine": 48,
+        "startChar": 34,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "0b6bab081d18cc627c0c05587c1db06b102dbbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d4d14d6_9e9aa1d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-23T16:20:41Z",
+      "side": 1,
+      "message": "What does stable mean here? Is it \"stable\" enough to run the ChromeToAndroid test? Is the plan to ever run the ChromeToAndroid test on these unstable VMs? \n\nIt seems like in the parameterized tests, we are running both the container and VM version of this test, once with ChromeToAndroid + AndroidToAndroid and once only with AndroidToAndroid. \n\nIf this is the case, then it seems like these should just be separate tests, with the ChromeToAndroid marked as informational. Then shared code can be factored out into library functions as needed.\n\nPlease correct me if I\u0027ve missed something.",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 42
+      },
+      "revId": "0b6bab081d18cc627c0c05587c1db06b102dbbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "417c4007_f56e6a5b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
         "patchSetId": 2
@@ -149,6 +196,70 @@
         "endLine": 129,
         "endChar": 35
       },
+      "revId": "0b6bab081d18cc627c0c05587c1db06b102dbbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43cd4363_1a044a50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-23T16:20:41Z",
+      "side": 1,
+      "message": "+1 to yhanada@\u0027s suggestion",
+      "parentUuid": "489593ab_43d123d3",
+      "range": {
+        "startLine": 128,
+        "startChar": 32,
+        "endLine": 129,
+        "endChar": 35
+      },
+      "revId": "0b6bab081d18cc627c0c05587c1db06b102dbbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5196adf1_681e944f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-23T16:20:41Z",
+      "side": 1,
+      "message": "Can these be constants in the function since they are used multiple times?",
+      "range": {
+        "startLine": 217,
+        "startChar": 54,
+        "endLine": 217,
+        "endChar": 57
+      },
+      "revId": "0b6bab081d18cc627c0c05587c1db06b102dbbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d80819_2cb09fb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-23T16:20:41Z",
+      "side": 1,
+      "message": "If the test times out, these deferred cleanups will not happen. Can you shorten the ctx initially to create a cleanupCtx? Same for every other deferred cleanup.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
       "revId": "0b6bab081d18cc627c0c05587c1db06b102dbbc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
