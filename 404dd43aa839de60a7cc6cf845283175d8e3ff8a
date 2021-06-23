@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef26fbf1_48a3a5d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-06-23T05:18:10Z",
+      "side": 1,
+      "message": "why have this file?",
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c14bf3d_33d0d041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-06-23T05:18:10Z",
+      "side": 1,
+      "message": "updaet? there\u0027s only 1 test?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 144
+      },
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f729cdab_3c176a5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-06-23T05:18:10Z",
+      "side": 1,
+      "message": "nit: don\u0027t need to redeclare the default values",
+      "range": {
+        "startLine": 91,
+        "startChar": 26,
+        "endLine": 91,
+        "endChar": 42
+      },
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
