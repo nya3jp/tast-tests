@@ -16,6 +16,24 @@
       "message": "nit, shouldn\u0027t we mention cr50, smoke, slow, ccd here as the other possibilities?",
       "revId": "267f220c2ec3e6625ad031b377795abc63bf4fed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7db3e57f_7ae39956",
+        "filename": "src/chromiumos/tast/remote/firmware/codelab/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-23T15:39:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52a3530e_9a558ce3",
+      "revId": "267f220c2ec3e6625ad031b377795abc63bf4fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
