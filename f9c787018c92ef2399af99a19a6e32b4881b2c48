@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a0a4c83_95048558",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-23T00:59:28Z",
+      "side": 1,
+      "message": "Again, thank you very much for your contributions to tast for long time!\n",
+      "revId": "f9c787018c92ef2399af99a19a6e32b4881b2c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
