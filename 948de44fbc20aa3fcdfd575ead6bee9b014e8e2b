@@ -45,6 +45,54 @@
       },
       "revId": "948de44fbc20aa3fcdfd575ead6bee9b014e8e2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feb4e22a_7415887d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_omnibox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-23T01:20:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a36a3fb6_74e49eb9",
+      "range": {
+        "startLine": 136,
+        "startChar": 49,
+        "endLine": 136,
+        "endChar": 51
+      },
+      "revId": "948de44fbc20aa3fcdfd575ead6bee9b014e8e2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fbe9379_086fc2a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_omnibox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-23T01:20:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68c431b0_ab2d7122",
+      "range": {
+        "startLine": 136,
+        "startChar": 22,
+        "endLine": 136,
+        "endChar": 27
+      },
+      "revId": "948de44fbc20aa3fcdfd575ead6bee9b014e8e2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
