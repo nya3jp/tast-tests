@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package login
 
 import (
 	"context"
@@ -19,7 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ChromeLogin,
+		Func:         Chrome,
 		Desc:         "Checks that Chrome supports login",
 		Contacts:     []string{"cros-oac@google.com", "rsorokin@google.com"},
 		SoftwareDeps: []string{"chrome"},
@@ -40,7 +40,7 @@ func init() {
 	})
 }
 
-func ChromeLogin(ctx context.Context, s *testing.State) {
+func Chrome(ctx context.Context, s *testing.State) {
 	sm := func() *session.SessionManager {
 		// Set up the test environment. Should be done quickly.
 		const setupTimeout = 30 * time.Second
