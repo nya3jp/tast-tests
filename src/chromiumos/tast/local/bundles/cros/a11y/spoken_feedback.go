@@ -8,10 +8,12 @@ package a11y
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
 )
 
@@ -75,6 +77,12 @@ func SpokenFeedback(ctx context.Context, s *testing.State) {
 	}
 	defer crastestclient.Unmute(ctx)
 
+	c, err := a11y.NewTabWithHTML(ctx, cr, "<p>Start</p><p>This is a ChromeVox test</p><p>End</p>")
+	if err != nil {
+		s.Fatal("Failed to open a new tab with HTML: ", err)
+	}
+	defer c.Close()
+
 	if err := a11y.SetFeatureEnabled(ctx, tconn, a11y.SpokenFeedback, true); err != nil {
 		s.Fatal("Failed to enable spoken feedback: ", err)
 	}
@@ -108,21 +116,40 @@ func SpokenFeedback(ctx context.Context, s *testing.State) {
 	}
 	defer sm.Close()
 
-	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+O", "O"}, []string{"ChromeVox Options"}); err != nil {
+	// Wait for ChromeVox to focus the root web area.
+	// TODO(b:190614781): use uiauto instead of ui.
+	if err = cvconn.WaitForFocusedNode(ctx, tconn, &ui.FindParams{
+		Role: ui.RoleTypeRootWebArea,
+	}, 10*time.Second); err != nil {
+		s.Error("Failed to wait for initial ChromeVox focus: ", err)
+	}
+
+	// Test basic navigation.
+	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+Right"}, []string{"Start"}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
 
+	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+Right"}, []string{"This is a ChromeVox test"}); err != nil {
+		s.Error("Error when pressing keys and expecting speech: ", err)
+	}
+
+	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+Right"}, []string{"End"}); err != nil {
+		s.Error("Error when pressing keys and expecting speech: ", err)
+	}
+
+	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+Left"}, []string{"This is a ChromeVox test"}); err != nil {
+		s.Error("Error when pressing keys and expecting speech: ", err)
+	}
+
+	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+Left"}, []string{"Start"}); err != nil {
+		s.Error("Error when pressing keys and expecting speech: ", err)
+	}
+
+	// Test system-wide shortcuts.
 	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Alt+Shift+L"}, []string{"Launcher", "Button", "Shelf", "Tool bar", "Press Search plus Space to activate"}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
 	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Alt+Shift+S"}, []string{"Quick Settings,", "Press search plus left to access the notification center.,", "window"}); err != nil {
-		s.Error("Error when pressing keys and expecting speech: ", err)
-	}
-	// Restore state by closing the shelf and the ChromeVox options page.
-	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Alt+Shift+S"}, []string{"ChromeVox Options"}); err != nil {
-		s.Error("Error when pressing keys and expecting speech: ", err)
-	}
-	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Ctrl+W"}, []string{}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
 }
