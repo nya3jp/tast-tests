@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c602a34b_9148bbee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-23T06:18:55Z",
+      "side": 1,
+      "message": "Changed the name as per the suggestion.",
+      "parentUuid": "4117f4fa_8680888d",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 10
+      },
+      "revId": "245eafc320bb3c5b35d456975081da1ef569e12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51c54f79_905f6953",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-23T00:36:01Z",
       "side": 1,
       "message": "This dep means the device has a battery, so the Name and testParameters don\u0027t really make sense here.",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 47
+      },
+      "revId": "245eafc320bb3c5b35d456975081da1ef569e12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bd8e551_50ed5b44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-23T06:18:55Z",
+      "side": 1,
+      "message": "Thanks for the catch Kyle. Somehow missed them. Changed the name.",
+      "parentUuid": "51c54f79_905f6953",
       "range": {
         "startLine": 40,
         "startChar": 4,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e95b7fda_3eaa38aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-23T06:18:55Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "a232b9ba_6748bf87",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 48
+      },
+      "revId": "245eafc320bb3c5b35d456975081da1ef569e12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f54d6193_fc9fbdba",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-06-23T00:36:01Z",
       "side": 1,
       "message": "I think you need at least one more subtest where both parameters are false (I think most devices have both a battery and mic). You probably want the opposite as well, in case there are devices that have neither (Chromebox/Chromebase/Chromebit perhaps).",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 5
+      },
+      "revId": "245eafc320bb3c5b35d456975081da1ef569e12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5afda90f_397c16d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-23T06:18:55Z",
+      "side": 1,
+      "message": "Added the one more subtest with both the parameters false.",
+      "parentUuid": "f54d6193_fc9fbdba",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3f4197d_dd88de17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-23T06:18:55Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "7bc036f4_0bceb7cf",
+      "range": {
+        "startLine": 82,
+        "startChar": 9,
+        "endLine": 82,
+        "endChar": 22
+      },
+      "revId": "245eafc320bb3c5b35d456975081da1ef569e12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62f1d46b_a909bf2f",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-06-23T00:36:01Z",
       "side": 1,
       "message": "can also delete this comment",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 27
+      },
+      "revId": "245eafc320bb3c5b35d456975081da1ef569e12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d241611d_29cd1b25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-23T06:18:55Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "62f1d46b_a909bf2f",
       "range": {
         "startLine": 88,
         "startChar": 1,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3c7624c_1a41e6cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-23T06:18:55Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "fd94f21b_09331643",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 18
+      },
+      "revId": "245eafc320bb3c5b35d456975081da1ef569e12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3aaed62_7661435d",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-06-23T00:36:01Z",
       "side": 1,
       "message": "I might change the wording slightly to make this clearer. Something like:\n\"RestrictedFeaturePods returns the setting pods that are restricted when Quick Settings is opened while a user is not signed in.\"",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 116
+      },
+      "revId": "245eafc320bb3c5b35d456975081da1ef569e12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cf95774_ff02172c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-23T06:18:55Z",
+      "side": 1,
+      "message": "Added the same in the comment section.",
+      "parentUuid": "f3aaed62_7661435d",
       "range": {
         "startLine": 581,
         "startChar": 0,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "985924a8_a965af0c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-23T06:18:55Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "3d65d11e_0349ba02",
+      "range": {
+        "startLine": 582,
+        "startChar": 5,
+        "endLine": 582,
+        "endChar": 27
+      },
+      "revId": "245eafc320bb3c5b35d456975081da1ef569e12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ba82436_5acd92bd",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-06-23T00:36:01Z",
       "side": 1,
       "message": "Another wording suggestion to make it clear what this function is doing. Something like:\n\n\"CommonElementsInQuickSettings returns a map that contains ui.FindParams for Quick Settings UI elements that are present in all sign-in states (signed in, signed out, screen locked). The keys of the map are descriptive names for the UI elements.\"",
+      "range": {
+        "startLine": 597,
+        "startChar": 0,
+        "endLine": 598,
+        "endChar": 75
+      },
+      "revId": "245eafc320bb3c5b35d456975081da1ef569e12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "229729c4_3da2389b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-23T06:18:55Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "0ba82436_5acd92bd",
       "range": {
         "startLine": 597,
         "startChar": 0,
