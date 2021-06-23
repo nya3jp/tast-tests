@@ -27,21 +27,13 @@ func init() {
 		Attr:         []string{"group:wificell", "wificell_func"},
 		ServiceDeps:  []string{wificell.TFServiceName},
 		SoftwareDeps: []string{"no_elm_hana_3_18"},
-		Pre:          wificell.TestFixturePreWithCapture(),
-		Vars:         []string{"router", "pcap"},
+		Fixture:      "wificellFixtWithCapture",
 		Timeout:      10 * time.Minute,
 	})
 }
 
 func ChannelHop(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Error("Failed to collect logs: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	ssid := hostapd.RandomSSID("TAST_CHAN_HOP_")
 	randAddr, err := hostapd.RandomMAC()

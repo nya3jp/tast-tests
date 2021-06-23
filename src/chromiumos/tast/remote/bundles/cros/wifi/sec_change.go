@@ -25,20 +25,12 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_cq"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePreWithCapture(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixtWithCapture",
 	})
 }
 
 func SecChange(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	// setUpAndConnect sets up the WiFi AP and verifies the DUT can connect to it.
 	setUpAndConnect := func(ctx context.Context, options []hostapd.Option, fac security.ConfigFactory) (retErr error) {

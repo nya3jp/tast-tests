@@ -40,8 +40,7 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePreWithCapture(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixtWithCapture",
 		Params: []testing.Param{
 			{
 				ExtraAttr: []string{"wificell_cq"},
@@ -84,14 +83,7 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 	// This test associates a device to an AP, and then configures another AP on the same SSID.
 	// It verifies that, after we deconfigure the first AP, the DUT eventually associates to
 	// the second AP."
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	// Configure the initial AP.
 	param := s.Param().(roamTestcase)
@@ -109,7 +101,7 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 			s.Error("Failed to deconfig ap1, err: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap1)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap1)
 	defer cancel()
 	s.Log("AP1 setup done")
 

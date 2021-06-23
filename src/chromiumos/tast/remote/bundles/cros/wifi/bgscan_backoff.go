@@ -37,8 +37,7 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePreWithCapture(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixtWithCapture",
 		Timeout:     6 * time.Minute, // This test has long ping time, assign a longer timeout.
 		// Skip on Marvell on 8997 platforms because of test failure post security fixes b/187853331
 		// Test failure is due to increased RTT time during Background scan backoff transition.
@@ -88,14 +87,7 @@ func init() {
 func BgscanBackoff(ctx context.Context, s *testing.State) {
 	param := s.Param().(*paramBgscanBackoff)
 
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	legacyRouter, err := tf.LegacyRouter()
 	if err != nil {
@@ -125,6 +117,7 @@ func BgscanBackoff(ctx context.Context, s *testing.State) {
 				s.Errorf("Failed to restore powersave mode to %t: %v", psMode, err)
 			}
 		}(ctx)
+		var cancel context.CancelFunc
 		ctx, cancel = ctxutil.Shorten(ctx, time.Second)
 		defer cancel()
 
@@ -169,7 +162,7 @@ func BgscanBackoff(ctx context.Context, s *testing.State) {
 				collectErr(errors.Wrap(err, "failed to deconfig AP1"))
 			}
 		}(ctx)
-		ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap1)
+		ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap1)
 		defer cancel()
 
 		s.Log("Configuring background scan")

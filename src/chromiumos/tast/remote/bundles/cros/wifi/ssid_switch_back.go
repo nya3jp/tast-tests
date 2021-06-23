@@ -26,20 +26,12 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePreWithCapture(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixtWithCapture",
 	})
 }
 
 func SSIDSwitchBack(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Error("Failed to collect logs: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	// We might respawn APs with the same options. Generate BSSIDs
 	// by ourselves so that it won't be re-generated and will be
@@ -138,7 +130,7 @@ func SSIDSwitchBack(ctx context.Context, s *testing.State) {
 			s.Error("Failed to deconfig the respawned AP1: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
 	// We use CHECK_WAIT here instead of spawning watcher before ConfigureAP for

@@ -27,8 +27,7 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePreWithCapture(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixtWithCapture",
 	})
 }
 
@@ -37,14 +36,7 @@ func MalformedProbeResp(ctx context.Context, s *testing.State) {
 	// responses and trigger background scans on the same channel. Then
 	// it verifies that the SSID of the malformed responses are found
 	// and no disconnection during the period.
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	legacyRouter, err := tf.LegacyRouter()
 	if err != nil {
@@ -74,7 +66,7 @@ func MalformedProbeResp(ctx context.Context, s *testing.State) {
 			s.Error("Failed to deconfig AP: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 	// Get frequency for later scan.
 	freq, err := hostapd.ChannelToFrequency(ap.Config().Channel)

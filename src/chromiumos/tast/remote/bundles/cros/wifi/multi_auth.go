@@ -22,20 +22,12 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePreWithCapture(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixtWithCapture",
 	})
 }
 
 func MultiAuth(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	apOpts := []hostapd.Option{hostapd.SSID("an ssid"), hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)}
 	wpaCfg := wpa.NewConfigFactory("chromeos", wpa.Mode(wpa.ModePureWPA), wpa.Ciphers(wpa.CipherCCMP))
@@ -50,7 +42,7 @@ func MultiAuth(ctx context.Context, s *testing.State) {
 			s.Error("Failed to deconfig AP 0: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap0)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap0)
 	defer cancel()
 
 	s.Log("Configuring AP 1 (WPA)")
