@@ -31,21 +31,13 @@ func init() {
 		// See previous investigation in b/185378075.
 		Attr:        []string{"group:wificell"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePreWithCapture(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixtWithCapture",
 	})
 }
 
 func ProbeReqFormat(ctx context.Context, s *testing.State) {
 	// Trigger active scans and verify the format of probe requests in pcap.
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	ctx, restore, err := tf.DisableMACRandomize(ctx)
 	if err != nil {

@@ -28,20 +28,12 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePreWithCapture(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixtWithCapture",
 	})
 }
 
 func Prefer5Ghz(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	// Configure an AP on the specific channel with given SSID.
 	// It returns a shorten ctx, the channel's mapping frequency, a callback to deconfigure the AP run
@@ -104,7 +96,7 @@ func Prefer5Ghz(ctx context.Context, s *testing.State) {
 			s.Error("Failed to disconnect WiFi: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.ReserveForDisconnect(ctx)
+	ctx, cancel := tf.ReserveForDisconnect(ctx)
 	defer cancel()
 
 	freqSignal, err := wifiSignal(ctx, tf, s.DUT(), ssid)
