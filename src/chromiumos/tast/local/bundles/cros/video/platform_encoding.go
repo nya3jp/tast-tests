@@ -797,6 +797,17 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 	if raplErr != nil || energy == nil {
 		s.Log("Energy consumption is not available for this board")
 	}
+
+	thermal := power.NewSysfsThermalMetrics()
+	thermal.Setup(ctx, "") // No prefix, we use our own naming scheme.
+	temps, err := thermal.SnapshotValues(ctx)
+	if err != nil {
+		s.Fatal("Failed to get temperature data: ", err)
+	}
+	for metric, value := range temps {
+		s.Log("metric: ", metric, " -- value: ", value)
+	}
+
 	startTime := time.Now()
 
 	s.Log("Running ", shutil.EscapeSlice(command))
