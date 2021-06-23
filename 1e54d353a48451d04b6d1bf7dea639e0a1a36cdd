@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae5e2df_5ddd0673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-23T08:13:22Z",
+      "side": 0,
+      "message": "Can you link this bug as well in the commit message?",
+      "range": {
+        "startLine": 142,
+        "startChar": 74,
+        "endLine": 142,
+        "endChar": 92
+      },
+      "revId": "1e54d353a48451d04b6d1bf7dea639e0a1a36cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
