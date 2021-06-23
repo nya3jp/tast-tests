@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec9d0a7f_cd3eff63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-23T22:30:06Z",
+      "side": 1,
+      "message": "Hi Katie,\n\nWondering if you could help me with this review, PTAL?",
+      "revId": "f6245884a91858f3914384a96104164e83305750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
