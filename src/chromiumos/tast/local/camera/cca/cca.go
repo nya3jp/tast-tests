@@ -150,6 +150,8 @@ var (
 	VideoSnapshotButton = UIComponent{"video snapshot button", []string{"#video-snapshot"}}
 	// VideoPauseResumeButton is button for pausing or resuming video recording.
 	VideoPauseResumeButton = UIComponent{"video pause/resume button", []string{"#pause-recordvideo"}}
+	// GalleryButton is button for entering the Backlight app as a gallery for captured files.
+	GalleryButton = UIComponent{"gallery button", []string{"#gallery-enter"}}
 
 	// ResolutionSettingButton is button for opening resolution setting menu.
 	ResolutionSettingButton = UIComponent{"resolution setting button", []string{"#settings-resolution"}}
@@ -966,6 +968,19 @@ func (a *App) resolveUISelector(ctx context.Context, ui UIComponent) (string, er
 		}
 	}
 	return "", errors.Errorf("failed to resolved ui %v to its correct selector", ui.Name)
+}
+
+// Style returns the value of an CSS attribute of an UI component.
+func (a *App) Style(ctx context.Context, ui UIComponent, attribute string) (string, error) {
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to get the selector of UI: %v", ui.Name)
+	}
+	var URL string
+	if err := a.conn.Call(ctx, &URL, "Tast.getStyle", selector, attribute); err != nil {
+		return "", errors.Wrapf(err, "failed to get the style of attribute: %v of UI: %v", attribute, ui.Name)
+	}
+	return URL, nil
 }
 
 // Visible returns whether a UI component is visible on the screen.
