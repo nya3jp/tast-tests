@@ -30,6 +30,7 @@ func init() {
 			"chromeos-kernel@google.com",
 		},
 		Timeout: 30 * time.Minute,
+		Attr:    []string{"group:syzcorpus"},
 		Data:    []string{binKVMX64Zip, kvmEnabledRepros},
 	})
 }
