@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02784467_76b7e133",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-23T16:06:53Z",
+      "side": 1,
+      "message": "# visiting from original CL.",
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d0ac1f8_2e5a7685",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-23T16:06:53Z",
+      "side": 1,
+      "message": "chrome/ui is being migrated into uiauto. Could you use new library?",
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef26fbf1_48a3a5d4",
@@ -37,6 +71,23 @@
         "endLine": 50,
         "endChar": 144
       },
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e84e564f_1204e9d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-23T16:06:53Z",
+      "side": 1,
+      "message": "this is always false. COuld you remove now?\n# you can add it back in a later CL.",
       "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
