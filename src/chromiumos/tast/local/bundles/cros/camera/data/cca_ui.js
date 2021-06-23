@@ -104,6 +104,18 @@ window.Tast = class Tast {
   }
 
   /**
+   * @return {string}
+   */
+  static getStyle(selector, attribute) {
+    const element = document.querySelector(selector);
+    if (element === null) {
+      return "";
+    }
+    const style = window.getComputedStyle(element);
+    return style.getPropertyValue(attribute);
+  }
+
+  /**
    * Returns whether the target HTML element is visible.
    * @param {string} selector Selector for the target element.
    * @return {boolean}
