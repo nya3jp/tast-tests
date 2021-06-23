@@ -160,6 +160,24 @@
       "parentUuid": "683f98eb_06a45aee",
       "revId": "e712eba10a7fb3548b0a922833432d26ec168ca0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3d6444a_6b28a0ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-23T05:33:37Z",
+      "side": 1,
+      "message": "If I understand correctly, what we want is to make \"python\" resolves to python3 when running ITS python scripts. Can we simply provide CommandContext.Env around [1] to do so?\n\nOverriding the environment variable of the whole Tast process may have unwanted side effects or hard-to-debug issues in the future, even if it works now.\n\n(Ideally the \"adb\" package in Tast should provide an option to specify the executable path, but that\u0027s another issue).\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go?l\u003d245\u0026rcl\u003da0c632f6a00f34ade2f83b50b2efda9ee61341e4",
+      "parentUuid": "6140434f_2f6719da",
+      "revId": "e712eba10a7fb3548b0a922833432d26ec168ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

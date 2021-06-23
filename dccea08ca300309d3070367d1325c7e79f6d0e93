@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c71decce_a6eeec61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-23T05:33:37Z",
+      "side": 1,
+      "message": "Could you help provide a reference or code pointer for this in the commit message? Do you mean that when running remote Tast test, the \"python\" command will resolve to python2 because Tauto overrides the environment?\n\n(It looks like \"python\" is python3 in chroot normally on my machine when not running Tauto.)",
+      "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6278640_993580e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-23T05:33:37Z",
+      "side": 1,
+      "message": "qq: Can ITS find opencv after this CL?",
+      "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "74087a6f_48611162",
@@ -67,6 +101,23 @@
       "side": 1,
       "message": "If this is not used for actual qualification, I think it doesn\u0027t matter.\n\nWhenever possible, I want to avoid hacks like this one.\nIF you do want to do something like this, at least use virtualenv to do this right.",
       "parentUuid": "ed610501_39c407e1",
+      "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fad998c_7b017959",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/its/x86/patch/core.patch",
+        "patchSetId": 2
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-23T05:33:37Z",
+      "side": 1,
+      "message": "nit: Let\u0027s keep the formatting as is without reformatting like this in the patch files to make it minimal and easier to spot the difference.\n\n(The patches might not needed in this CL though if we can provide extra Env when running ITS script as said in the other comment, but that\u0027s the general preferred guideline imo to minimize the divergence from upstream.)",
       "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
