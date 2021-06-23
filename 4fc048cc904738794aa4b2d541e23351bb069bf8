@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f7d7763_da8ab8af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-06-23T23:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00e25e5e_ede4fa48",
+      "range": {
+        "startLine": 156,
+        "startChar": 36,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "4fc048cc904738794aa4b2d541e23351bb069bf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04a0eb32_7a5a883a",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-23T23:39:37Z",
       "side": 1,
       "message": "not a Go expert, but maybe something more idiomatic in Go is to fuse the copy with the filter:\n\nnames \u003d make([]string)\nfor _, iface :\u003d range ifaces {\n  if strings.HasPrefix(iface.Name, \"arc\") ... { continue }\n  names \u003d append(names, iface.Name)\n}",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "4fc048cc904738794aa4b2d541e23351bb069bf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d61b3f96_d6831b58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-06-23T23:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04a0eb32_7a5a883a",
       "range": {
         "startLine": 166,
         "startChar": 0,
