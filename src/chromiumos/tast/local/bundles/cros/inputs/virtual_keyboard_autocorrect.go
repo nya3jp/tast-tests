@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/autocorrect"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -22,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -32,6 +34,7 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
+		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Params: []testing.Param{
 			{
 				Name: "en_us_tablet_1",
@@ -180,9 +183,9 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("validate VK autocorrect",
 		vkbCtx.TapKeys(strings.Split(testCase.MisspeltWord, "")),
-		its.WaitForFieldValueToBe(inputField, testCase.MisspeltWord),
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.MisspeltWord),
 		vkbCtx.TapKey("space"),
-		its.WaitForFieldValueToBe(inputField, testCase.CorrectWord+" "),
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.CorrectWord+" "),
 	)(ctx); err != nil {
 		s.Fatal("Failed to validate VK autocorrect: ", err)
 	}
@@ -191,7 +194,7 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	case autocorrect.ViaBackspace:
 		if err := uiauto.Combine("validate VK autocorrect undo via Backspace",
 			vkbCtx.TapKey("backspace"),
-			its.WaitForFieldValueToBe(inputField, testCase.MisspeltWord),
+			util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.MisspeltWord),
 		)(ctx); err != nil {
 			s.Fatal("Failed to validate VK autocorrect undo via Backspace: ", err)
 		}
@@ -234,7 +237,7 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 
 		if err := uiauto.Combine("validate VK autocorrect undo via popup using mouse",
 			ui.LeftClick(undoButtonFinder),
-			its.WaitForFieldValueToBe(inputField, testCase.MisspeltWord+" "),
+			util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.MisspeltWord+" "),
 		)(ctx); err != nil {
 			s.Fatal("Failed to validate VK autocorrect undo via popup using mouse: ", err)
 		}

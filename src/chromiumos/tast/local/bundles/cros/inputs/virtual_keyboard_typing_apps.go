@@ -66,11 +66,11 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("test virtual keyboard input in settings app",
 		vkbCtx.ClickUntilVKShown(searchFieldFinder),
 		vkbCtx.WaitForDecoderEnabled(true),
-		vkbCtx.TapKeys(strings.Split(typingKeys, "")),
+		vkbCtx.TapKeysIgnoringCase(strings.Split(typingKeys, "")),
 		// Hide virtual keyboard to submit candidate.
 		vkbCtx.HideVirtualKeyboard(),
 		// Validate text.
-		util.WaitForFieldTextToBe(tconn, searchFieldFinder, typingKeys),
+		util.WaitForFieldTextToBeIgnoringCase(tconn, searchFieldFinder, typingKeys),
 	)(ctx); err != nil {
 		s.Fatal("Failed to verify virtual keyboard input in settings: ", err)
 	}
