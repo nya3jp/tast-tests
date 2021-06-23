@@ -187,6 +187,21 @@ func (a *AndroidNearbyDevice) StopSnippet(ctx context.Context) error {
 	return nil
 }
 
+// ReconnectToSnippet restarts a connection to the Nearby Snippet on Android device.
+func (a *AndroidNearbyDevice) ReconnectToSnippet(ctx context.Context) error {
+	if err := a.ForwardPort(ctx); err != nil {
+		return errors.Wrap(err, "port forwarding failed")
+	}
+	if err := a.TCPConn(ctx); err != nil {
+		return errors.Wrap(err, "failed to make tcp conn to snippet server")
+	}
+	if err := a.Initialize(ctx); err != nil {
+		return errors.Wrap(err, "failed to reinitialize the snippet server")
+	}
+
+	return nil
+}
+
 // ForwardPort forwards the Nearby Snippet's listening port to the host CrOS device.
 // Callers should defer ReleasePort to ensure it is freed on test completion or error.
 func (a *AndroidNearbyDevice) ForwardPort(ctx context.Context) error {

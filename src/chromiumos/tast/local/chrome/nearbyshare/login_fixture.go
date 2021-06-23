@@ -77,6 +77,12 @@ func (f *nearbyShareLoginFixture) SetUp(ctx context.Context, s *testing.FixtStat
 	androidUsername := s.ParentValue().(*FixtData).AndroidUsername
 	loggedIn := s.ParentValue().(*FixtData).AndroidLoggedIn
 
+	// Reset and save logcat so we have Android logs even if fixture setup fails.
+	if err := androidDevice.ClearLogcat(ctx); err != nil {
+		s.Fatal("Failed to clear logcat at start of fixture setup")
+	}
+	defer androidDevice.DumpLogs(ctx, s.OutDir(), "fixture_setup_logcat.txt")
+
 	crosUsername := s.RequiredVar("nearbyshare.cros_username")
 	crosPassword := s.RequiredVar("nearbyshare.cros_password")
 	customUser, userOk := s.Var("cros_username")
@@ -111,6 +117,16 @@ func (f *nearbyShareLoginFixture) SetUp(ctx context.Context, s *testing.FixtStat
 	f.cr = cr
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
 	chrome.Lock()
+
+	// Sometimes during login the tcp connection to the snippet server on Android is lost.
+	// If we cannot do a simple rpc call, reconnect to the snippet server.
+	if _, err := androidDevice.GetNearbySharingVersion(ctx); err != nil {
+		s.Log("Lost connection to the Snippet server. Reconnecting")
+		if err := androidDevice.ReconnectToSnippet(ctx); err != nil {
+			s.Fatal("Failed to reconnect to the snippet server: ", err)
+		}
+	}
+
 	return &FixtData{
 		Chrome:            cr,
 		CrOSUsername:      crosUsername,
