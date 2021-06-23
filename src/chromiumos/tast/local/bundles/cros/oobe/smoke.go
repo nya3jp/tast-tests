@@ -1,8 +1,8 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package oobe
 
 import (
 	"context"
@@ -13,7 +13,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: OOBESmoke,
+		Func: Smoke,
 		Desc: "Smoke test that clicks through OOBE",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -24,7 +24,7 @@ func init() {
 	})
 }
 
-func OOBESmoke(ctx context.Context, s *testing.State) {
+func Smoke(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx, chrome.NoLogin())
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
