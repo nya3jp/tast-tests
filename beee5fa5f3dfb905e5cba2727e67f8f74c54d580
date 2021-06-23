@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4bb06b7_5150c15c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-23T15:40:46Z",
+      "side": 1,
+      "message": "clar: do you plan to add more tests in this new package?\n# if not, better to avoid using a new category only for one test.",
+      "revId": "beee5fa5f3dfb905e5cba2727e67f8f74c54d580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2e4e67_210bab36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-23T15:40:46Z",
+      "side": 1,
+      "message": "LGTM with one clarification.\nI mark CR+2 assuming the answer to my inline question is yes, to avoid cross-timezone iteration.",
+      "revId": "beee5fa5f3dfb905e5cba2727e67f8f74c54d580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
