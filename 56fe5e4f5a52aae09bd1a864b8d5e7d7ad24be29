@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d1a3a01_1652483b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_gallery_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-06-23T10:26:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a7e6831_6a53a108",
+      "revId": "56fe5e4f5a52aae09bd1a864b8d5e7d7ad24be29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61deb460_9faa4551",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dd43978_14700e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_gallery_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-06-23T10:26:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61deb460_9faa4551",
+      "revId": "56fe5e4f5a52aae09bd1a864b8d5e7d7ad24be29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b02e23f9_2092fe27",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-06-23T09:06:58Z",
       "side": 1,
       "message": "Hmm backgroundImage might not be an URL. Can we have a more generic version here such as getStyle(selector, attribute) that will return the value of the specified CSS attr?",
+      "revId": "56fe5e4f5a52aae09bd1a864b8d5e7d7ad24be29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed66c11c_bc3cfd8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-06-23T10:26:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b02e23f9_2092fe27",
       "revId": "56fe5e4f5a52aae09bd1a864b8d5e7d7ad24be29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
