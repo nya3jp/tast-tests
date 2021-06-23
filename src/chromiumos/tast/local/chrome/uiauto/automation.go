@@ -716,9 +716,12 @@ func (ac *Context) DoDefault(finder *nodewith.Finder) Action {
 		})()
 	`, q)
 
-		if err := ac.tconn.Eval(ctx, query, nil); err != nil {
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			return ac.tconn.Eval(ctx, query, nil)
+		}, &ac.pollOpts); err != nil {
 			return errors.Wrap(err, "failed to call doDefault() on the node")
 		}
+
 		return nil
 	}
 }
