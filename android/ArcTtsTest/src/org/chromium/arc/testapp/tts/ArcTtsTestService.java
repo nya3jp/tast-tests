@@ -11,6 +11,7 @@ import android.speech.tts.SynthesisCallback;
 import android.speech.tts.SynthesisRequest;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeechService;
+import android.util.Log;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -23,6 +24,7 @@ import java.nio.file.Paths;
  */
 public class ArcTtsTestService extends TextToSpeechService {
     final static String OUTPUT_FILENAME = "ttsoutput.txt";
+    final static String TAG = "ArcTtsService";
 
     @Override
     protected String[] onGetLanguage() {
@@ -49,20 +51,29 @@ public class ArcTtsTestService extends TextToSpeechService {
     @Override
     protected synchronized void onSynthesizeText(
             SynthesisRequest request, SynthesisCallback callback) {
-        Path path =
-                Paths.get(
-                        Environment.getExternalStoragePublicDirectory(
-                                        Environment.DIRECTORY_DOWNLOADS)
-                                .getPath(),
-                        OUTPUT_FILENAME);
+        String language = request.getLanguage();
+        String country = request.getCountry();
+        String variant = request.getVariant();
+        int load = onLoadLanguage(language, country, variant);
+        if (load == TextToSpeech.LANG_NOT_SUPPORTED) {
+            Log.e(TAG, "Language Not Supported: language='" + language + "', country='" + country +
+                "', variant='" + variant + "'");
+            callback.error();
+            return;
+        }
 
         try {
+            Path path = Paths.get(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOWNLOADS).getPath(), OUTPUT_FILENAME);
             Files.createFile(path);
             byte[] bytes = request.getText().getBytes();
             Files.write(path, bytes, java.nio.file.StandardOpenOption.APPEND);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+              callback.error();
+              throw new RuntimeException(e);
         }
+
+        callback.done();
         return;
     }
 }
