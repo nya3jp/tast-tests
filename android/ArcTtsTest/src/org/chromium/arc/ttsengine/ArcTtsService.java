@@ -49,6 +49,14 @@ public class ArcTtsService extends TextToSpeechService {
     @Override
     protected synchronized void onSynthesizeText(
             SynthesisRequest request, SynthesisCallback callback) {
+        int load = onLoadLanguage(request.getLanguage(), request.getCountry(),
+                request.getVariant());
+
+        if (load == TextToSpeech.LANG_NOT_SUPPORTED) {
+            callback.error();
+            return;
+        }
+
         Path path =
                 Paths.get(
                         Environment.getExternalStoragePublicDirectory(
@@ -61,8 +69,13 @@ public class ArcTtsService extends TextToSpeechService {
             byte[] bytes = request.getText().getBytes();
             Files.write(path, bytes, java.nio.file.StandardOpenOption.APPEND);
         } catch (IOException e) {
+            callback.error();
             throw new RuntimeException(e);
+        } finally {
+          callback.done();
         }
+
+        callback.error();
         return;
     }
 }
