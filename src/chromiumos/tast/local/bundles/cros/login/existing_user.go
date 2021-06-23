@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package login
 
 import (
 	"context"
@@ -19,7 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ExistingUserLogin,
+		Func: ExistingUser,
 		Desc: "Checks that an existing device user can login from the login screen",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -35,8 +35,8 @@ func init() {
 	})
 }
 
-// ExistingUserLogin logs in to an existing user account from the login screen.
-func ExistingUserLogin(ctx context.Context, s *testing.State) {
+// ExistingUser logs in to an existing user account from the login screen.
+func ExistingUser(ctx context.Context, s *testing.State) {
 	var creds chrome.Creds
 
 	// Log in and log out to create a user pod on the login screen.

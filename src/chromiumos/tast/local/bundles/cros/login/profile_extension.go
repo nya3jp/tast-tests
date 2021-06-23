@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package login
 
 import (
 	"context"
@@ -13,7 +13,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SigninProfileExtension,
+		Func:         ProfileExtension,
 		Desc:         "Check private signin profile extension loads",
 		Contacts:     []string{"cros-oac@google.com", "chromeos-sw-engprod@google.com"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
@@ -22,7 +22,7 @@ func init() {
 	})
 }
 
-func SigninProfileExtension(ctx context.Context, s *testing.State) {
+func ProfileExtension(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
 		chrome.NoLogin(),

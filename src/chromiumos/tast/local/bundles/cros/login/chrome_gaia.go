@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package login
 
 import (
 	"context"
@@ -14,7 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromeLoginGAIA,
+		Func: ChromeGAIA,
 		Desc: "Checks that Chrome can make real GAIA logins",
 		Contacts: []string{
 			"chromeos-ui@google.com",
@@ -34,7 +34,7 @@ func init() {
 	})
 }
 
-func ChromeLoginGAIA(ctx context.Context, s *testing.State) {
+func ChromeGAIA(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
