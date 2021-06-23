@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -23,6 +24,8 @@ func init() {
 		},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		SoftwareDeps: []string{"vaapi"},
+		// TODO(b/191801955): Reenable on grunt when it stops hanging forever.
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("grunt")),
 	})
 }
 
