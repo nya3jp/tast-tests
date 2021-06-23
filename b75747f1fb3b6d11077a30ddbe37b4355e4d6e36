@@ -163,6 +163,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fac8aa87_fbd4a996",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-23T22:16:31Z",
+      "side": 1,
+      "message": "\u003e It would require a pretty big change to the testing logic, but would it be possible to adjust this test to use the 3-way setup as well? Or is that not reasonable with the need for roaming?\n\nYep, that\u0027s what Jacek is working on. We\u0027re already only using one physical AP here, so it shouldn\u0027t change the test logic.",
+      "parentUuid": "49175db8_ce60e10f",
+      "range": {
+        "startLine": 62,
+        "startChar": 77,
+        "endLine": 62,
+        "endChar": 80
+      },
+      "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24382d38_c4d65dcf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
         "patchSetId": 2
