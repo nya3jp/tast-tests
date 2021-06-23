@@ -49,7 +49,8 @@ const (
 
 // ProxyTestCase contains test case for DNS proxy tests.
 type ProxyTestCase struct {
-	Client Client
+	Client    Client
+	ExpectErr bool
 }
 
 // GoogleDoHProvider is the Google DNS-over-HTTPS provider.
@@ -188,8 +189,11 @@ func TestQueryDNSProxy(ctx context.Context, tcs []ProxyTestCase, domain string) 
 	var errs []error
 	for _, tc := range tcs {
 		err := QueryDNS(ctx, tc.Client, domain)
-		if err != nil {
+		if err != nil && !tc.ExpectErr {
 			errs = append(errs, errors.Wrapf(err, "DNS query failed for %s", GetClientString(tc.Client)))
+		}
+		if err == nil && tc.ExpectErr {
+			errs = append(errs, errors.Errorf("successful DNS query for %s, but expected failure", GetClientString(tc.Client)))
 		}
 	}
 	return errs
