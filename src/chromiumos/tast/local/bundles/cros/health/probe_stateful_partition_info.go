@@ -7,15 +7,23 @@ package health
 import (
 	"bufio"
 	"context"
+	"encoding/json"
 	"os"
-	"reflect"
 	"strconv"
 	"strings"
 	"syscall"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
+
+type statefulPartitionInfo struct {
+	AvailableSpace string `json:"available_space"`
+	Filesystem     string `json:"filesystem"`
+	MountSource    string `json:"mount_source"`
+	TotalSpace     string `json:"total_space"`
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -38,58 +46,35 @@ func absDiff(a, b uint64) uint64 {
 	return b - a
 }
 
-func ProbeStatefulPartitionInfo(ctx context.Context, s *testing.State) {
-	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryStatefulPartition}
-	records, err := croshealthd.RunAndParseTelem(ctx, params, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to get stateful partition telemetry info: ", err)
-	}
-
-	if len(records) < 2 {
-		s.Fatalf("Wrong number of records: got %d; want 2", len(records))
-	}
-
-	// Verify the headers are correct.
-	want := []string{"available_space", "total_space", "filesystem", "mount_source"}
-	got := records[0]
-	if !reflect.DeepEqual(want, got) {
-		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
-	}
-
-	// Verify the values are correct.
-	vals := records[1]
-	if len(vals) != len(want) {
-		s.Fatalf("Wrong number of values: got %d; want %d", len(vals), len(want))
-	}
-
+func validateStatefulPartitionData(statefulPartition statefulPartitionInfo) error {
 	var stat syscall.Statfs_t
 	if err := syscall.Statfs("/mnt/stateful_partition", &stat); err != nil {
-		s.Fatal("Failed to get disk stats for /mnt/stateful_partition: ", err)
+		return errors.Wrap(err, "failed to get disk stats for /mnt/stateful_partition")
 	}
 
 	realAvailable := stat.Bavail * uint64(stat.Bsize)
 	margin := uint64(100000000) // 100MB
 	realTotal := stat.Blocks * uint64(stat.Bsize)
 
-	if available, err := strconv.ParseUint(vals[0], 10, 64); err != nil {
-		s.Errorf("Failed to convert %q (available_space) to uint64: %v", vals[0], err)
+	if available, err := strconv.ParseUint(statefulPartition.AvailableSpace, 10, 64); err != nil {
+		return errors.Wrapf(err, "failed to convert %q (available_space) to uint64", statefulPartition.AvailableSpace)
 	} else if absDiff(available, realAvailable) > margin {
-		s.Errorf("Invalid available_space: got %v; want %v +- %v", available, realAvailable, margin)
+		return errors.Errorf("invalid available_space: got %v; want %v +- %v", available, realAvailable, margin)
 	}
 
-	if total, err := strconv.ParseUint(vals[1], 10, 64); err != nil {
-		s.Errorf("Failed to convert %q (total_space) to uint64: %v", vals[1], err)
+	if total, err := strconv.ParseUint(statefulPartition.TotalSpace, 10, 64); err != nil {
+		return errors.Wrapf(err, "failed to convert %q (total_space) to uint64", statefulPartition.TotalSpace)
 	} else if total != realTotal {
-		s.Errorf("Invalid total_space: got %v; want %v", total, realTotal)
+		return errors.Errorf("invalid total_space: got %v; want %v", total, realTotal)
 	}
 
 	f, err := os.Open("/etc/mtab")
 	if err != nil {
-		s.Fatal("Failed to open /etc/mtab")
+		return errors.Wrap(err, "failed to open /etc/mtab")
 	}
 	defer f.Close()
 
-	var statefulPartitionInfo []string
+	var realStatefulPartitionInfo []string
 	sc := bufio.NewScanner(f)
 	for sc.Scan() {
 		line := sc.Text()
@@ -98,21 +83,42 @@ func ProbeStatefulPartitionInfo(ctx context.Context, s *testing.State) {
 		}
 		fields := strings.Fields(line)
 		if len(fields) != 6 {
-			s.Errorf("Incorrect format in mtab: %q", sc.Text())
 			continue
 		}
 		if fields[1] == "/mnt/stateful_partition" {
-			statefulPartitionInfo = fields
+			realStatefulPartitionInfo = fields
 		}
 	}
 
-	if statefulPartitionInfo == nil {
-		s.Fatal("Failed to find stateful partition info in mtab")
+	if realStatefulPartitionInfo == nil {
+		return errors.New("failed to find stateful partition info in mtab")
 	}
-	if statefulPartitionInfo[2] != vals[2] {
-		s.Fatalf("Wrong filesystem info: got %s; want %s", vals[2], statefulPartitionInfo[2])
+	if realStatefulPartitionInfo[2] != statefulPartition.Filesystem {
+		return errors.Errorf("Wrong filesystem info: got %s; want %s", statefulPartition.Filesystem, realStatefulPartitionInfo[2])
 	}
-	if statefulPartitionInfo[0] != vals[3] {
-		s.Fatalf("Wrong mount source info: got %s; want %s", vals[3], statefulPartitionInfo[0])
+	if realStatefulPartitionInfo[0] != statefulPartition.MountSource {
+		return errors.Errorf("Wrong mount source info: got %s; want %s", statefulPartition.MountSource, realStatefulPartitionInfo[0])
+	}
+
+	return nil
+}
+
+func ProbeStatefulPartitionInfo(ctx context.Context, s *testing.State) {
+	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryStatefulPartition}
+	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to get stateful partition telemetry info: ", err)
+	}
+
+	dec := json.NewDecoder(strings.NewReader(string(rawData)))
+	dec.DisallowUnknownFields()
+
+	var statefulPartition statefulPartitionInfo
+	if err := dec.Decode(&statefulPartition); err != nil {
+		s.Fatalf("Failed to decode stateful partition data [%q], err [%v]", rawData, err)
+	}
+
+	if err := validateStatefulPartitionData(statefulPartition); err != nil {
+		s.Fatalf("Failed to validate stateful partition data, err [%v]", err)
 	}
 }
