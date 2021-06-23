@@ -51,8 +51,8 @@ func NewHelper(ctx context.Context) (*Helper, error) {
 	return &helper, nil
 }
 
-// waitForEnabled polls for the specified enable state for cellular.
-func (h *Helper) waitForEnabled(ctx context.Context, expected bool) error {
+// WaitForEnabledState polls for the specified enable state for cellular.
+func (h *Helper) WaitForEnabledState(ctx context.Context, expected bool) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		enabled, err := h.Manager.IsEnabled(ctx, shill.TechnologyCellular)
 		if err != nil {
@@ -72,7 +72,7 @@ func (h *Helper) waitForEnabled(ctx context.Context, expected bool) error {
 func (h *Helper) Enable(ctx context.Context) error {
 	h.Manager.EnableTechnology(ctx, shill.TechnologyCellular)
 
-	if err := h.waitForEnabled(ctx, true); err != nil {
+	if err := h.WaitForEnabledState(ctx, true); err != nil {
 		return err
 	}
 	if err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyPowered, true, defaultTimeout); err != nil {
@@ -88,7 +88,7 @@ func (h *Helper) Enable(ctx context.Context) error {
 func (h *Helper) Disable(ctx context.Context) error {
 	h.Manager.DisableTechnology(ctx, shill.TechnologyCellular)
 
-	if err := h.waitForEnabled(ctx, false); err != nil {
+	if err := h.WaitForEnabledState(ctx, false); err != nil {
 		return err
 	}
 	if err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyPowered, false, defaultTimeout); err != nil {
@@ -220,7 +220,7 @@ func (h *Helper) ConnectToServiceWithTimeout(ctx context.Context, service *shill
 // Otherwise an error is returned.
 func (h *Helper) ConnectToService(ctx context.Context, service *shill.Service) error {
 	// Connect requires a longer default timeout than other operations.
-	return h.ConnectToServiceWithTimeout(ctx, service, defaultTimeout*4)
+	return h.ConnectToServiceWithTimeout(ctx, service, defaultTimeout*6)
 }
 
 // Disconnect from the Cellular Service and ensure that the disconnect succeeded, otherwise return an error.
