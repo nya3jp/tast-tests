@@ -77,6 +77,12 @@ func (f *nearbyShareLoginFixture) SetUp(ctx context.Context, s *testing.FixtStat
 	androidUsername := s.ParentValue().(*FixtData).AndroidUsername
 	loggedIn := s.ParentValue().(*FixtData).AndroidLoggedIn
 
+	// Ensure we have Android logs even if setup fails.
+	if err := androidDevice.ClearLogcat(ctx); err != nil {
+		s.Fatal("Failed to clear logcat at start of fixture setup")
+	}
+	defer androidDevice.DumpLogs(ctx, s.OutDir(), "fixture_setup_logcat.txt")
+
 	crosUsername := s.RequiredVar("nearbyshare.cros_username")
 	crosPassword := s.RequiredVar("nearbyshare.cros_password")
 	customUser, userOk := s.Var("cros_username")
