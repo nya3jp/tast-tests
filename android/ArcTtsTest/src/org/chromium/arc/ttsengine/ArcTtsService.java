@@ -63,6 +63,8 @@ public class ArcTtsService extends TextToSpeechService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        callback.done();
         return;
     }
 }
