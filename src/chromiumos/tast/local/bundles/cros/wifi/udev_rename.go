@@ -152,9 +152,14 @@ func interfaceNames() ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
-	names := make([]string, len(ifaces))
-	for i := range ifaces {
-		names[i] = ifaces[i].Name
+	// Sanitize iface names to exclude ARC and Crostini related interfaces.
+	// Context: b/191789332
+	var names []string
+	for _, iface := range ifaces {
+		name := iface.Name
+		if !(strings.HasPrefix(name, "arc") || strings.HasPrefix(name, "vmtap")) {
+			names = append(names, name)
+		}
 	}
 	sort.Strings(names)
 	return names, nil
