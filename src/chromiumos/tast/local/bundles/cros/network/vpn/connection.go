@@ -149,7 +149,7 @@ func (c *Connection) Start(ctx context.Context) (bool, error) {
 	// be "pinned" to the previous default interface. So adds a small timeout here
 	// to mitigate this racing case.
 	testing.Sleep(ctx, 500*time.Millisecond)
-	testing.ContextLogf(ctx, "VPN connected, underlay_ip is %s, overlay_ip is %s", c.Server.UnderlayIP, c.Server.OverlayIP)
+	testing.ContextLogf(ctx, "VPN connected, underlay_ip is %s, overlay_ip is %s", c.Server.underlayIP, c.Server.OverlayIP)
 	return connected, nil
 }
 
@@ -299,7 +299,7 @@ func (c *Connection) createL2TPIPsecProperties() (map[string]interface{}, error)
 	if c.config.UnderlayIPIsOverlayIP {
 		serverAddress = c.Server.OverlayIP
 	} else {
-		serverAddress = c.Server.UnderlayIP
+		serverAddress = c.Server.underlayIP
 	}
 
 	properties := map[string]interface{}{
@@ -339,7 +339,7 @@ func (c *Connection) createL2TPIPsecProperties() (map[string]interface{}, error)
 func (c *Connection) createOpenVPNProperties() (map[string]interface{}, error) {
 	properties := map[string]interface{}{
 		"Name":                  "test-vpn-openvpn",
-		"Provider.Host":         c.Server.UnderlayIP,
+		"Provider.Host":         c.Server.underlayIP,
 		"Provider.Type":         "openvpn",
 		"Type":                  "vpn",
 		"OpenVPN.CACertPEM":     []string{certificate.TestCert1().CACred.Cert},
@@ -392,7 +392,7 @@ func (c *Connection) createWireGuardProperties() map[string]interface{} {
 	if c.Server != nil {
 		peer := map[string]string{
 			"PublicKey":  wgServerPublicKey,
-			"Endpoint":   c.Server.UnderlayIP + ":" + wgServerListenPort,
+			"Endpoint":   c.Server.underlayIP + ":" + wgServerListenPort,
 			"AllowedIPs": "0.0.0.0/0",
 		}
 		if c.config.AuthType == AuthTypePSK {
@@ -408,7 +408,7 @@ func (c *Connection) createWireGuardProperties() map[string]interface{} {
 	if c.SecondServer != nil {
 		peers = append(peers, map[string]string{
 			"PublicKey":    wgSecondServerPublicKey,
-			"Endpoint":     c.SecondServer.UnderlayIP + ":" + wgSecondServerListenPort,
+			"Endpoint":     c.SecondServer.underlayIP + ":" + wgSecondServerListenPort,
 			"AllowedIPs":   wgSecondServerAllowedIPs,
 			"PresharedKey": wgPresharedKey,
 		})
