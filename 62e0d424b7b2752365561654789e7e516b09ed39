@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cfa2ec0_6561d4f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-23T22:58:54Z",
+      "side": 1,
+      "message": "I have check a few experiments. It seems like modal dialog is has the target type \"other\". I will run this in CQ and see if it fixes the issue.",
+      "revId": "62e0d424b7b2752365561654789e7e516b09ed39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
