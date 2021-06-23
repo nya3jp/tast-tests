@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/network/dns"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
 	"chromiumos/tast/local/chrome"
@@ -27,7 +28,7 @@ func init() {
 		Desc:         "Ensure that DNS proxies are working correctly over VPN",
 		Contacts:     []string{"jasongustaman@google.com", "garrick@google.com", "cros-networking@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "arc"},
 		Fixture:      "shillReset",
 		Params: []testing.Param{{
 			Name: "doh_off",
@@ -70,7 +71,7 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(cleanupCtx, 3*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("EnableDnsProxy", "DnsProxyEnableDOH"))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.EnableFeatures("EnableDnsProxy", "DnsProxyEnableDOH"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -80,6 +81,13 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get test API connection: ", err)
 	}
+
+	// Start ARC.
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close(cleanupCtx)
 
 	// Toggle plain-text DNS or secureDNS depending on test parameter.
 	params := s.Param().(dnsProxyOverVPNTestParams)
@@ -113,8 +121,9 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 		dns.ProxyTestCase{Client: dns.System},
 		dns.ProxyTestCase{Client: dns.User},
 		dns.ProxyTestCase{Client: dns.Chrome},
+		dns.ProxyTestCase{Client: dns.ARC},
 	}
-	if errs := dns.TestQueryDNSProxy(ctx, defaultTC, domainDefault); len(errs) != 0 {
+	if errs := dns.TestQueryDNSProxy(ctx, defaultTC, a, domainDefault); len(errs) != 0 {
 		for _, err := range errs {
 			s.Error("Failed DNS query check: ", err)
 		}
@@ -136,8 +145,9 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 	vpnBlockedTC := []dns.ProxyTestCase{
 		dns.ProxyTestCase{Client: dns.System},
 		dns.ProxyTestCase{Client: dns.User, ExpectErr: true},
-		dns.ProxyTestCase{Client: dns.Chrome, ExpectErr: true}}
-	if errs := dns.TestQueryDNSProxy(ctx, vpnBlockedTC, domainVPNBlocked); len(errs) != 0 {
+		dns.ProxyTestCase{Client: dns.Chrome, ExpectErr: true},
+		dns.ProxyTestCase{Client: dns.ARC}}
+	if errs := dns.TestQueryDNSProxy(ctx, vpnBlockedTC, a, domainVPNBlocked); len(errs) != 0 {
 		for _, err := range errs {
 			s.Error("Failed DNS query check: ", err)
 		}
@@ -158,8 +168,9 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 	secureDNSBlockedTC := []dns.ProxyTestCase{
 		dns.ProxyTestCase{Client: dns.System},
 		dns.ProxyTestCase{Client: dns.User},
-		dns.ProxyTestCase{Client: dns.Chrome}}
-	if errs := dns.TestQueryDNSProxy(ctx, secureDNSBlockedTC, domainSecureDNSBlocked); len(errs) != 0 {
+		dns.ProxyTestCase{Client: dns.Chrome},
+		dns.ProxyTestCase{Client: dns.ARC}}
+	if errs := dns.TestQueryDNSProxy(ctx, secureDNSBlockedTC, a, domainSecureDNSBlocked); len(errs) != 0 {
 		for _, err := range errs {
 			s.Error("Failed DNS query check: ", err)
 		}

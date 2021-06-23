@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
@@ -166,7 +167,7 @@ func SetDoHMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 }
 
 // QueryDNS resolves a domain through DNS with a specific client.
-func QueryDNS(ctx context.Context, c Client, domain string) error {
+func QueryDNS(ctx context.Context, c Client, a *arc.ARC, domain string) error {
 	switch c {
 	case System:
 		return testexec.CommandContext(ctx, "dig", domain).Run()
@@ -178,17 +179,16 @@ func QueryDNS(ctx context.Context, c Client, domain string) error {
 		// TODO(jasongustaman): Query DNS from Crostini.
 		return nil
 	case ARC:
-		// TODO(jasongustaman): Query DNS from ARC.
-		return nil
+		return a.Command(ctx, "dumpsys", "wifi", "tools", "dns", domain).Run()
 	}
 	return errors.New("unknown client")
 }
 
 // TestQueryDNSProxy runs a set of test cases for DNS proxy.
-func TestQueryDNSProxy(ctx context.Context, tcs []ProxyTestCase, domain string) []error {
+func TestQueryDNSProxy(ctx context.Context, tcs []ProxyTestCase, a *arc.ARC, domain string) []error {
 	var errs []error
 	for _, tc := range tcs {
-		err := QueryDNS(ctx, tc.Client, domain)
+		err := QueryDNS(ctx, tc.Client, a, domain)
 		if err != nil && !tc.ExpectErr {
 			errs = append(errs, errors.Wrapf(err, "DNS query failed for %s", GetClientString(tc.Client)))
 		}
