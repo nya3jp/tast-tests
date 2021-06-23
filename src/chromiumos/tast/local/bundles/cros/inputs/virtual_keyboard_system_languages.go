@@ -6,10 +6,12 @@ package inputs
 
 import (
 	"context"
+	"path/filepath"
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -101,6 +103,16 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 	}
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "VirtualKeyboardSystemLanguages.webm"))
+
+	if screenRecorder != nil {
+		screenRecorder.Start(ctx, tconn)
+	}
 
 	// Verify default input method
 	currentInputMethodID, err := ime.GetCurrentInputMethod(ctx, tconn)

@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
@@ -224,6 +225,16 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 			defer func() {
 				outDir := filepath.Join(s.OutDir(), string(subtest.inputField))
 				faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, s.HasError, cr, "ui_tree_"+string(subtest.inputField))
+				screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+				if err != nil {
+					s.Log("Failed to create ScreenRecorder: ", err)
+				}
+
+				defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "VirtualKeyboardInputField" + string(subtest.inputField) +".webm"))
+
+				if screenRecorder != nil {
+					screenRecorder.Start(ctx, tconn)
+				}
 
 				if err := vkbCtx.HideVirtualKeyboard()(ctx); err != nil {
 					s.Log("Failed to hide virtual keyboard: ", err)

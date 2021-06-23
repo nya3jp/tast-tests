@@ -7,6 +7,7 @@ package inputs
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -42,6 +43,17 @@ func init() {
 func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "VirtualKeyboardEnglishSettings.webm"))
+
+	if screenRecorder != nil {
+		screenRecorder.Start(ctx, tconn)
+	}
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)

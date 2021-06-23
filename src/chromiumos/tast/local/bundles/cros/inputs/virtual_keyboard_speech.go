@@ -80,6 +80,16 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	}
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "VirtualKeyboardSpeech.webm"))
+
+	if screenRecorder != nil {
+		screenRecorder.Start(ctx, tconn)
+	}
 
 	cleanup, err := voice.EnableAloop(ctx, tconn)
 	if err != nil {
