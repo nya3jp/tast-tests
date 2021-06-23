@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
@@ -211,7 +212,7 @@ func SetDoHMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 }
 
 // QueryDNS resolves a domain through DNS with a specific client.
-func QueryDNS(ctx context.Context, c Client, domain string) error {
+func QueryDNS(ctx context.Context, c Client, a *arc.ARC, domain string) error {
 	switch c {
 	case System:
 		return testexec.CommandContext(ctx, "dig", domain).Run()
@@ -223,8 +224,7 @@ func QueryDNS(ctx context.Context, c Client, domain string) error {
 		// TODO(jasongustaman): Query DNS from Crostini.
 		return nil
 	case ARC:
-		// TODO(jasongustaman): Query DNS from ARC.
-		return nil
+		return a.Command(ctx, "dumpsys", "wifi", "tools", "dns", domain).Run()
 	}
 	return errors.New("unknown client")
 }
