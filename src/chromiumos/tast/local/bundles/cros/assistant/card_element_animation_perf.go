@@ -15,9 +15,10 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
-	chromeUi "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/media/cpu"
-	"chromiumos/tast/local/ui"
+	uiconsts "chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -58,10 +59,12 @@ func CardElementAnimationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to disable better onboarding: ", err)
 	}
 
+	ui := uiauto.New(tconn)
+
 	pv := perf.NewValues()
 	for nWindows := 0; nWindows < 3; nWindows++ {
 		if nWindows > 0 {
-			if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, 1); err != nil {
+			if err := ash.CreateWindows(ctx, tconn, cr, uiconsts.PerftestURL, 1); err != nil {
 				s.Fatal("Failed to create a new browser window: ", err)
 			}
 		}
@@ -79,7 +82,7 @@ func CardElementAnimationPerf(ctx context.Context, s *testing.State) {
 			tconn,
 			time.Second,
 			func(ctx context.Context) error {
-				return runCardQueries(ctx, tconn)
+				return runCardQueries(ctx, tconn, ui)
 			},
 			// Card element opacity fade in / out.
 			"Ash.Assistant.AnimationSmoothness.CardElement",
@@ -99,9 +102,9 @@ func CardElementAnimationPerf(ctx context.Context, s *testing.State) {
 
 // runCardQueries performs two card queries in order to test the animate in
 // and animate out behavior of the first card.
-func runCardQueries(ctx context.Context, tconn *chrome.TestConn) error {
+func runCardQueries(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context) error {
 	for _, q := range []string{"Mount Everest", "Weather"} {
-		if err := runCardQuery(ctx, tconn, q); err != nil {
+		if err := runCardQuery(ctx, tconn, ui, q); err != nil {
 			return err
 		}
 	}
@@ -111,17 +114,12 @@ func runCardQueries(ctx context.Context, tconn *chrome.TestConn) error {
 
 // runCardQuery is a helper function for running an Assistant query and waiting
 // for a card result.
-func runCardQuery(ctx context.Context, tconn *chrome.TestConn, query string) error {
+func runCardQuery(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, query string) error {
 	if _, err := assistant.SendTextQuery(ctx, tconn, query); err != nil {
 		return errors.Wrapf(err, "could not send query: %s", query)
 	}
 
-	if _, err := chromeUi.StableFind(
-		ctx,
-		tconn,
-		chromeUi.FindParams{ClassName: "AssistantCardElementView"},
-		&testing.PollOptions{Timeout: 5 * time.Second},
-	); err != nil {
+	if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(nodewith.ClassName("AssistantCardElementView"))(ctx); err != nil {
 		return errors.Wrapf(err, "query results not shown for query %s within timeout", query)
 	}
 
