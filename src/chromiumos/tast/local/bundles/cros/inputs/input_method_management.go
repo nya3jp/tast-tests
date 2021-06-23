@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
@@ -59,6 +60,16 @@ func InputMethodManagement(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "InputMethodManagement.webm"))
+
+	if screenRecorder != nil {
+		screenRecorder.Start(ctx, tconn)
+	}
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get keyboard: ", err)

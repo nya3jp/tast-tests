@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
@@ -114,6 +115,16 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "VirtualKeyboardDeadKeys.webm"))
+
+	if screenRecorder != nil {
+		screenRecorder.Start(ctx, tconn)
+	}
 
 	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {

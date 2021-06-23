@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"path/filepath"
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
@@ -44,6 +45,16 @@ func VirtualKeyboardMultipaste(ctx context.Context, s *testing.State) {
 	}
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "VirtualKeyboardMultipaste.webm"))
+
+	if screenRecorder != nil {
+		screenRecorder.Start(ctx, tconn)
+	}
 
 	// Launch inputs test web server.
 	its, err := testserver.Launch(ctx, cr, tconn)
