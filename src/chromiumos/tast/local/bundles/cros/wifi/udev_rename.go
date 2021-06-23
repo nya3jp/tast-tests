@@ -152,6 +152,17 @@ func interfaceNames() ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
+	i := 0
+	// Sanitize iface names to exclude arc related interfaces.
+	// Context: b/191789332
+	for _, iface := range ifaces {
+		if !(strings.HasPrefix(iface.Name, "arc") || strings.HasPrefix(iface.Name, "vmtap")) {
+			ifaces[i] = iface
+			i++
+		}
+	}
+	ifaces = ifaces[:i]
+
 	names := make([]string, len(ifaces))
 	for i := range ifaces {
 		names[i] = ifaces[i].Name
