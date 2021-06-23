@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46a8e184_b81fe52c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-23T23:57:41Z",
+      "side": 0,
+      "message": "I\u0027m not sure how to add a \"func\" parameter to ttsOptions struct, so I reverted back to using \"fmt.Sprintf\" notation to specify ttsOptions.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "b8facce384edc638840da9a7c4de90f7e2546673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
