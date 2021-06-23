@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "538e4cb1_06343dd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-23T16:10:11Z",
+      "side": 1,
+      "message": "if err is return unblock should not be called?",
+      "revId": "3bdbe98269507c0a0329584bf3e70b1cf0f36103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0863992e_df97fda3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-23T16:10:11Z",
+      "side": 1,
+      "message": "Looks like the dup of doUnblock? Could you consolidate them?",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 222,
+        "endChar": 3
+      },
+      "revId": "3bdbe98269507c0a0329584bf3e70b1cf0f36103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b841e84f_fc3b4406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-23T16:10:11Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 249,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 3
+      },
+      "revId": "3bdbe98269507c0a0329584bf3e70b1cf0f36103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
