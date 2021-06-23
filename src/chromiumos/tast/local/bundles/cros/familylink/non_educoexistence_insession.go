@@ -44,21 +44,6 @@ func NonEducoexistenceInsession(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// TODO(b/190680218): Fixture reset should close all windows.
-	// We shouldn't need this. Remove once fixed.
-	defer func() {
-		s.Log("Cleaning up dialogs")
-		ui := uiauto.New(tconn)
-		// There are two close buttons, one on the settings page
-		// parent window and one on the Edu Coexistence flow system
-		// modal dialog. We want the second button to close the system
-		// modal dialog. The fixture will take care of closing other
-		// windows when it resets.
-		if err := ui.LeftClick(nodewith.Name("Close").Role(role.Button).Nth(1))(ctx); err != nil {
-			s.Fatal("Failed to click close button: ", err)
-		}
-	}()
-
 	ui := uiauto.New(tconn)
 
 	s.Log("Launching the in-session Edu Coexistence flow")
