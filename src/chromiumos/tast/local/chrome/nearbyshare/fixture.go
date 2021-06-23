@@ -211,6 +211,12 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	androidUsername := s.ParentValue().(*FixtData).AndroidUsername
 	loggedIn := s.ParentValue().(*FixtData).AndroidLoggedIn
 
+	// Ensure we have Android logs even if setup fails.
+	if err := androidDevice.ClearLogcat(ctx); err != nil {
+		s.Fatal("Failed to clear logcat at start of fixture setup")
+	}
+	defer androidDevice.DumpLogs(ctx, s.OutDir(), "fixture_setup_logcat.txt")
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
