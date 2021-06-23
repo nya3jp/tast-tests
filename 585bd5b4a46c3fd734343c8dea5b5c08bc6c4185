@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a75ce8d_a614f3bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-23T03:43:56Z",
+      "side": 1,
+      "message": "How about merging this into RunChroot() in this file? RunChroot() says it runs \" within a separate network namespace\" but it seems to me it\u0027s not... I think it makes sense to run all the command inside the netns.",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 1
+      },
+      "revId": "585bd5b4a46c3fd734343c8dea5b5c08bc6c4185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11ee130f_ad375162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-23T03:43:56Z",
+      "side": 1,
+      "message": "(Continue from the discussion from the last patchset, sorry for raising this topic again)\nI\u0027m feeling it could be better to wrap this as a function (e.g., SetupInternetAccess, xl2tpdServerIPAddress can be replaced with OverlayIP), and call it from connection.go (or in your test), and thus this can be shared by different vpn types. And then we can also expose a BlockInternetAccess(By(Src|Dst)Port) here. Since the openvpn patches have been merged you can test it with that if you want.",
+      "range": {
+        "startLine": 263,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 47
+      },
+      "revId": "585bd5b4a46c3fd734343c8dea5b5c08bc6c4185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
