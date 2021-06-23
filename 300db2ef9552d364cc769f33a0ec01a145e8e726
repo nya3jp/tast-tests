@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "310e70bb_b615c9dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-06-23T04:24:02Z",
+      "side": 1,
+      "message": "looks ok on tastboard with exception of volteer-kernelnext which isn\u0027t critical.",
+      "revId": "300db2ef9552d364cc769f33a0ec01a145e8e726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
