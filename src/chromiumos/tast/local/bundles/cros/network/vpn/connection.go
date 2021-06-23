@@ -136,7 +136,7 @@ func (c *Connection) Start(ctx context.Context) (bool, error) {
 	// be "pinned" to the previous default interface. So adds a small timeout here
 	// to mitigate this racing case.
 	testing.Sleep(ctx, 500*time.Millisecond)
-	testing.ContextLogf(ctx, "VPN connected, underlay_ip is %s, overlay_ip is %s", c.Server.UnderlayIP, c.Server.OverlayIP)
+	testing.ContextLogf(ctx, "VPN connected, underlay_ip is %s, overlay_ip is %s", c.Server.underlayIP, c.Server.OverlayIP)
 	return connected, nil
 }
 
@@ -231,7 +231,7 @@ func (c *Connection) createProperties() (map[string]interface{}, error) {
 	if c.config.UnderlayIPIsOverlayIP {
 		serverAddress = c.Server.OverlayIP
 	} else {
-		serverAddress = c.Server.UnderlayIP
+		serverAddress = c.Server.underlayIP
 	}
 
 	switch c.config.Type {
