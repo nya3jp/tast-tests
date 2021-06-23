@@ -50,6 +50,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/kiosk"
 	_ "chromiumos/tast/local/bundles/cros/lacros"
 	_ "chromiumos/tast/local/bundles/cros/launcher"
+	_ "chromiumos/tast/local/bundles/cros/lockscreen"
 	_ "chromiumos/tast/local/bundles/cros/logs"
 	_ "chromiumos/tast/local/bundles/cros/meta"
 	_ "chromiumos/tast/local/bundles/cros/mlservice"

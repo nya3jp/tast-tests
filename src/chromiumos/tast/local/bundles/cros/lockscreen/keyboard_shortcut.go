@@ -1,8 +1,8 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package lockscreen
 
 import (
 	"context"
@@ -17,8 +17,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ScreenLock,
-		Desc:         "Checks that screen-locking works in Chrome",
+		Func:         KeyboardShortcut,
+		Desc:         "Checks that screen-locking works by keyboard shortcut",
 		Contacts:     []string{"chromeos-ui@google.com", "chromeos-sw-engprod@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
@@ -26,7 +26,7 @@ func init() {
 	})
 }
 
-func ScreenLock(ctx context.Context, s *testing.State) {
+func KeyboardShortcut(ctx context.Context, s *testing.State) {
 	const (
 		username      = "testuser@gmail.com"
 		password      = "good"
