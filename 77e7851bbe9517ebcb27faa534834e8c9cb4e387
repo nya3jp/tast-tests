@@ -16,6 +16,46 @@
       "message": "tast shadow reviewer LGTM",
       "revId": "77e7851bbe9517ebcb27faa534834e8c9cb4e387",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb6c6a6a_e4ecbe57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-23T23:33:00Z",
+      "side": 1,
+      "message": "lgtm with one nit comment from tast owner perpective. I\u0027ll wait for a +2 from a team member.",
+      "revId": "77e7851bbe9517ebcb27faa534834e8c9cb4e387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed74c352_63185f69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-23T23:33:00Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "range": {
+        "startLine": 56,
+        "startChar": 38,
+        "endLine": 56,
+        "endChar": 45
+      },
+      "revId": "77e7851bbe9517ebcb27faa534834e8c9cb4e387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
