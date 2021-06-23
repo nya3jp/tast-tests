@@ -89,7 +89,9 @@ var (
 			"nodefaultroute\n" +
 			"debug\n" +
 			"lock\n" +
-			"proxyarp\n",
+			"proxyarp\n" +
+			"ms-dns 8.8.8.8\n" +
+			"ms-dns 8.8.4.4\n",
 	}
 	ipsecTypedConfigs = map[string]map[string]string{
 		"psk": {
@@ -230,8 +232,8 @@ var (
 
 // Server represents a VPN server that can be used in the test.
 type Server struct {
-	UnderlayIP   string
 	OverlayIP    string
+	underlayIP   string
 	netChroot    *chroot.NetworkChroot
 	stopCommands [][]string
 	pidFiles     []string
@@ -306,7 +308,7 @@ func StartL2TPIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 		return nil, errors.Wrap(err, "failed to wait for charon ready")
 	}
 
-	server.UnderlayIP = underlayIP
+	server.underlayIP = underlayIP
 	if underlayIPIsOverlayIP {
 		server.OverlayIP = underlayIP
 	} else {
@@ -356,7 +358,7 @@ func StartOpenVPNServer(ctx context.Context, useUserPassword bool) (*Server, err
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start OpenVPN server")
 	}
-	server.UnderlayIP = underlayIP
+	server.underlayIP = underlayIP
 	server.OverlayIP = openvpnServerIPAddress
 	return server, nil
 }
@@ -397,7 +399,7 @@ func StartWireGuardServer(ctx context.Context, clientPublicKey string, usePSK, i
 	chro.AddStartupCommand("ip link set dev wg1 up")
 
 	var err error
-	if server.UnderlayIP, err = chro.Startup(ctx); err != nil {
+	if server.underlayIP, err = chro.Startup(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start WireGuard server")
 	}
 	return server, nil
@@ -464,4 +466,12 @@ func (s *Server) Exit(ctx context.Context) error {
 	}
 
 	return lastErr
+}
+
+// SetupInternetAccess setup internet connectivity for VPN server.
+func (s *Server) SetupInternetAccess(ctx context.Context) error {
+	if _, err := s.netChroot.RunChroot(ctx, []string{"/sbin/iptables", "-t", "nat", "-A", "POSTROUTING", "!", "-s", s.OverlayIP, "-j", "SNAT", "--to", s.underlayIP, "-w"}); err != nil {
+		return errors.Wrap(err, "failed to setup internet connectivity")
+	}
+	return nil
 }
