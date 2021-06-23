@@ -349,7 +349,7 @@ func (sm *SpeechMonitor) Consume(ctx context.Context, expected []string) error {
 			}
 
 			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
 			return errors.Errorf("expected utterances: %q, but got: %q", expected, actual)
 		}
 	}
