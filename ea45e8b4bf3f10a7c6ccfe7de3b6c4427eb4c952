@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3840032_fc38937f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-23T21:06:50Z",
+      "side": 1,
+      "message": "While debugging, I can\u0027t find if there is any notification shown to the user when policy enforces the privacy screen using ash\n\nI can see the system log from here\nhttps://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/chromeos/policy/dlp/dlp_content_manager.cc;l\u003d372;drc\u003d192bb4ee007d69ccb6fe30d25c5ea0fbd174d246\n\nlike\n2021-06-23T20:35:41.469370Z INFO chrome[6182:6182]: [dlp_content_manager.cc(385)] DLP enforced privacy screen\n\nAlso nothing on UI dump as well. Is the notification shown?\n\n\nAnd for Privacy Screen itself - autotest api doesn\u0027t provide getPrivacyScreenStatus to check status but I am trying to find ways\n\nThanks\n\nNote - This test is not complete.",
+      "revId": "ea45e8b4bf3f10a7c6ccfe7de3b6c4427eb4c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
