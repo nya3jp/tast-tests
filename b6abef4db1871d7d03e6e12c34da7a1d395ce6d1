@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c5c002f_fa1f141f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-23T16:37:30Z",
+      "side": 1,
+      "message": "nit: can be one line.\ncmdArgs :\u003d append([]string, n.netJailArgs...)",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 29
+      },
+      "revId": "b6abef4db1871d7d03e6e12c34da7a1d395ce6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4482784b_9e80cacb",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
         "patchSetId": 5
@@ -19,6 +42,29 @@
         "startChar": 0,
         "endLine": 52,
         "endChar": 121
+      },
+      "revId": "b6abef4db1871d7d03e6e12c34da7a1d395ce6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7167c1c_faf88f08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-23T16:37:30Z",
+      "side": 1,
+      "message": "launching Chrome takes longer time. Can it be shared with other dns tests?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 27
       },
       "revId": "b6abef4db1871d7d03e6e12c34da7a1d395ce6d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
