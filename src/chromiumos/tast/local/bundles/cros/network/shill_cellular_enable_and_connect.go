@@ -8,8 +8,10 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/network/cellular"
+	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
 
@@ -46,8 +48,8 @@ func ShillCellularEnableAndConnect(ctx context.Context, s *testing.State) {
 
 	// Test Disable / Enable / Connect / Disconnect.
 	// Run the test a second time to test Disable after Connect/Disconnect.
-	// TODO(b:190541087): Run a third time to help test against flakiness.
-	for i := 0; i < 2; i++ {
+	// Run the test a third time to help test against flakiness.
+	for i := 0; i < 3; i++ {
 		s.Logf("Disable %d", i)
 		if err := helper.Disable(ctx); err != nil {
 			s.Fatalf("Disable failed on attempt %d: %s", i, err)
@@ -77,19 +79,27 @@ func ShillCellularEnableAndConnect(ctx context.Context, s *testing.State) {
 	}
 
 	// Test Disable while connected.
-	s.Log("Disable")
-	if err := helper.Disable(ctx); err != nil {
-		s.Fatal("Disable failed while connected: ", err)
+	// TODO(b:190541087): Use helper.Disable instead.
+	// Currently that causes ssh timeouts in the test runner for unknown reasons.
+	// This inlines helper.Disable with logging in between.
+	s.Log("Disable Cellular while Connected")
+	if err := helper.Manager.DisableTechnology(ctx, shill.TechnologyCellular); err != nil {
+		s.Fatal("Disable failed: ", err)
 	}
 
-	s.Log("Connect while disabled")
-	if err := helper.ConnectToDefault(ctx); err == nil {
-		s.Fatal("Connect succeeded while Disabled: ", err)
+	s.Log("Wait for disabled")
+	if err := helper.WaitForEnabledState(ctx, false); err != nil {
+		s.Fatal("Wait for disable failed: ", err)
+	}
+	s.Log("Wait for !powered")
+	if err := helper.Device.WaitForProperty(ctx, shillconst.DevicePropertyPowered, false, shillconst.DefaultTimeout); err != nil {
+		s.Fatal("Wait for !powered failed: ", err)
 	}
 
-	s.Log("Disconnect while disabled")
-	if err := helper.Disconnect(ctx); err == nil {
-		s.Fatal("Disconnect succeeded while Disabled: ", err)
+	s.Log("Ensure no Cellular Service while disabled")
+	const shortTimeout = 3 * time.Second
+	if _, err := helper.FindServiceForDeviceWithTimeout(ctx, shortTimeout); err == nil {
+		s.Fatal("Service found while Disabled")
 	}
 
 	s.Log("Final Enable")
