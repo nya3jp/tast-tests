@@ -16,6 +16,24 @@
       "message": "Just curious, will server fail to start without this change?",
       "revId": "64d0b9bb896b3ab60a134844fadbbbffa6386c6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6fd0d80_23adc513",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-06-23T05:32:47Z",
+      "side": 1,
+      "message": "I don\u0027t see exact log showing that, but connection is failing and charon.log is missing from within the chroot, so I suppose it failed to start.",
+      "parentUuid": "b6c022c5_2480bcf1",
+      "revId": "64d0b9bb896b3ab60a134844fadbbbffa6386c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
