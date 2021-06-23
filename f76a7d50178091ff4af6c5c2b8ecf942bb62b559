@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c284eb9_40c1668d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-23T09:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eed111e9_dea290df",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 48,
+        "endChar": 8
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d5ad980_76a50f8a",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-06-22T23:53:15Z",
       "side": 1,
       "message": "End comment with .\nPlease check all the following comments as well.",
+      "range": {
+        "startLine": 49,
+        "startChar": 56,
+        "endLine": 49,
+        "endChar": 66
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b02bf7_fd4b46bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-23T09:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d5ad980_76a50f8a",
       "range": {
         "startLine": 49,
         "startChar": 56,
@@ -128,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba64bf8_031ba56c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-23T09:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39cfa962_499c1d45",
+      "range": {
+        "startLine": 62,
+        "startChar": 35,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e825569_d8da220c",
@@ -141,6 +213,30 @@
       "writtenOn": "2021-06-22T17:36:17Z",
       "side": 1,
       "message": "Are these error messages descriptive enough to stand on their own without context? If not it might be worth adding a prefix here: s.Fatal(\"Failed to create cswitch session: \", err) and on line 84",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 14
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "317687db_acddd24c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-23T09:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e825569_d8da220c",
       "range": {
         "startLine": 78,
         "startChar": 2,
@@ -174,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50ab1c31_7e3e851b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-23T09:17:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8a3454e4_baa2e407",
+      "range": {
+        "startLine": 83,
+        "startChar": 20,
+        "endLine": 83,
+        "endChar": 32
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a868f2b7_1f66de0a",
@@ -197,6 +317,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26cd2296_fa045c56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-23T09:17:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a868f2b7_1f66de0a",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c72daa99_361308d5",
@@ -210,6 +354,30 @@
       "writtenOn": "2021-06-22T23:53:15Z",
       "side": 1,
       "message": "nit: this msg it kind of not necessary.",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 41
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "829658b6_888f1722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-23T09:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c72daa99_361308d5",
       "range": {
         "startLine": 113,
         "startChar": 1,
@@ -245,6 +413,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3bead74a_49c07b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-23T09:17:30Z",
+      "side": 1,
+      "message": "As error is returning nil so we are not logging.",
+      "parentUuid": "03f305e9_8645f498",
+      "range": {
+        "startLine": 122,
+        "startChar": 40,
+        "endLine": 122,
+        "endChar": 46
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b93dacd8_a5a002aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
         "patchSetId": 1
@@ -256,6 +448,30 @@
       "writtenOn": "2021-06-22T23:53:15Z",
       "side": 1,
       "message": "nit: this msg it kind of not necessary.",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 43
+      },
+      "revId": "f76a7d50178091ff4af6c5c2b8ecf942bb62b559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f4a897c_572c969c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-06-23T09:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b93dacd8_a5a002aa",
       "range": {
         "startLine": 124,
         "startChar": 1,
