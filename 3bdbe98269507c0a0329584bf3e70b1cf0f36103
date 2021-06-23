@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e206fade_a081f1b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-23T16:41:09Z",
+      "side": 1,
+      "message": "Would it make sense to modify this util file and add parameters for your use case? \n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/firewall/util.go;l\u003d42?q\u003dfirewall%2Futil.go",
+      "revId": "3bdbe98269507c0a0329584bf3e70b1cf0f36103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0863992e_df97fda3",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
         "patchSetId": 1
