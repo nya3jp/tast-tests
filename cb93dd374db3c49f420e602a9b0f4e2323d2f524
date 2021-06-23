@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64f496d5_a0693773",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-23T23:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "865a601b_5f137003",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 7
+      },
+      "revId": "cb93dd374db3c49f420e602a9b0f4e2323d2f524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ec23900_08431cef",
@@ -84,6 +108,30 @@
       "writtenOn": "2021-06-23T23:02:23Z",
       "side": 1,
       "message": "Is this error descriptive enough? If no, suggest to wrap some information.",
+      "range": {
+        "startLine": 187,
+        "startChar": 9,
+        "endLine": 187,
+        "endChar": 15
+      },
+      "revId": "cb93dd374db3c49f420e602a9b0f4e2323d2f524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0f4ac01_fa9ed464",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-23T23:22:11Z",
+      "side": 1,
+      "message": "Yes, it should be clear, the dut errors will be ssh errors, and the rpc connection errors will be grpc. Mostly callers will ignore the errors here anyway.",
+      "parentUuid": "7ec23900_08431cef",
       "range": {
         "startLine": 187,
         "startChar": 9,
