@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b61c0096_07ba6666",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-06-23T20:48:48Z",
+      "side": 1,
+      "message": "+2 for timezone difference. ",
+      "revId": "0112b009952701767d9a47bdeb655e87dd890db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b3e3be5_1fd6eabb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_gallery_button.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-06-23T20:48:48Z",
+      "side": 1,
+      "message": "Consider using fixture here.\n\nFixture: \"chromeLoggedIn\"\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/fixture.go?l\u003d17\u0026rcl\u003d5d70f1c7b86633f10058f85fd378e0fc68fbd34c",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "0112b009952701767d9a47bdeb655e87dd890db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86fe3a6d_934fb68a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_gallery_button.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-06-23T20:48:48Z",
+      "side": 1,
+      "message": "FixtValue()",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "0112b009952701767d9a47bdeb655e87dd890db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
