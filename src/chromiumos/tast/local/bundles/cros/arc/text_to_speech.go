@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"time"
@@ -39,8 +40,10 @@ func TextToSpeech(ctx context.Context, s *testing.State) {
 	const (
 		apk           = "ArcTtsTest.apk"
 		enginePackage = "org.chromium.arc.testapp.tts"
+		rate          = 2.0
 		speakText     = "hello world"
 		voiceName     = "Android org.chromium.arc.testapp.tts.ArcTtsService en"
+		volume        = 0.0
 	)
 
 	cr := s.FixtValue().(*arc.PreData).Chrome
@@ -77,14 +80,26 @@ func TextToSpeech(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for TTS engine to load: ", err)
 	}
 
-	ttsOptions := struct {
-		VoiceName string  `json:"voiceName"`
-		Rate      float64 `json:"rate"`
-		Volume    float64 `json:"volume"`
-	}{voiceName, 2.0, 0}
+	speakScript := fmt.Sprintf(`new Promise((resolve, reject) => {
+		chrome.tts.speak(%q, {
+			voiceName: %q,
+			volume: %f,
+			rate: %f,
+			onEvent: function(event) {
+				if (event.type == chrome.tts.EventType.END) {
+					resolve(event.type);
+				}
+			}
+		});
+	})`, speakText, voiceName, volume, rate)
 
-	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.tts.speak)", speakText, ttsOptions); err != nil {
+	var endEvent string
+	if err := tconn.Eval(ctx, speakScript, &endEvent); err != nil {
 		s.Fatal("Failed to speak: ", err)
+	}
+
+	if endEvent != "end" {
+		s.Fatal("Failed to verify end event was dispatched from Android TTS engine")
 	}
 
 	cryptohomeUserPath, err := cryptohome.UserPath(ctx, cr.User())
@@ -93,19 +108,13 @@ func TextToSpeech(ctx context.Context, s *testing.State) {
 	}
 	targetPathInCros := filepath.Join(cryptohomeUserPath, "MyFiles", "Downloads", "ttsoutput.txt")
 
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		actual, err := ioutil.ReadFile(targetPathInCros)
-		if err != nil {
-			return errors.Wrap(err, "failed to read TTS output file")
-		}
-		outputString := string(actual)
-		if outputString != speakText {
-			return errors.Errorf("TTS output was incorrect; got %q, want %q", outputString, speakText)
-		}
-		return nil
-	}, &testing.PollOptions{
-		Timeout: 15 * time.Second,
-	}); err != nil {
-		s.Fatal("Failed waiting for TTS output: ", err)
+	actual, err := ioutil.ReadFile(targetPathInCros)
+	if err != nil {
+		s.Fatal("Failed to read TTS output file: ", err)
+	}
+
+	outputString := string(actual)
+	if outputString != speakText {
+		s.Fatalf("TTS output was incorrect; got %q, want %q", outputString, speakText)
 	}
 }

@@ -60,6 +60,7 @@ public class ArcTtsService extends TextToSpeechService {
             Files.createFile(path);
             byte[] bytes = request.getText().getBytes();
             Files.write(path, bytes, java.nio.file.StandardOpenOption.APPEND);
+            callback.done();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
