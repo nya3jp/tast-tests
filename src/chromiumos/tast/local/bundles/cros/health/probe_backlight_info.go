@@ -6,14 +6,25 @@ package health
 
 import (
 	"context"
-	"reflect"
-	"strconv"
+	"encoding/json"
+	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
+
+type backlightInfo struct {
+	Brightness    int    `json:"brightness"`
+	MaxBrightness int    `json:"max_brightness"`
+	Path          string `json:"path"`
+}
+
+type backlightResult struct {
+	Backlights []backlightInfo `json:"backlights"`
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -31,9 +42,28 @@ func init() {
 	})
 }
 
+func validateBacklightData(result backlightResult) error {
+	for _, backlight := range result.Backlights {
+		if backlight.Path == "" {
+			return errors.New("failed, empty path")
+		}
+		if backlight.MaxBrightness < 0 {
+			return errors.Errorf("invalid max_brightness value: %v", backlight.MaxBrightness)
+		}
+		if backlight.Brightness < 0 {
+			return errors.Errorf("invalid brightness value: %v", backlight.Brightness)
+		}
+		if backlight.Brightness > backlight.MaxBrightness {
+			return errors.Errorf("brightness: %v greater than max_brightness: %v", backlight.Brightness, backlight.MaxBrightness)
+		}
+	}
+
+	return nil
+}
+
 func ProbeBacklightInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryBacklight}
-	records, err := croshealthd.RunAndParseTelem(ctx, params, s.OutDir())
+	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get backlight telemetry info: ", err)
 	}
@@ -44,46 +74,19 @@ func ProbeBacklightInfo(ctx context.Context, s *testing.State) {
 	}
 
 	if err == nil && hasBacklight == "false" {
-		if len(records) != 1 {
-			s.Fatalf("Incorrect number of ouput lines: got %d; want 1", len(records))
-		}
 		// If there is no backlight, there is no output to verify.
 		return
 	}
 
-	if len(records) < 2 {
-		s.Fatal("Could not find any lines of backlight info")
+	dec := json.NewDecoder(strings.NewReader(string(rawData)))
+	dec.DisallowUnknownFields()
+
+	var result backlightResult
+	if err := dec.Decode(&result); err != nil {
+		s.Fatalf("Failed to decode backlight data [%q], err [%v]", rawData, err)
 	}
 
-	// Verify the headers are correct.
-	want := []string{"path", "max_brightness", "brightness"}
-	got := records[0]
-	if !reflect.DeepEqual(want, got) {
-		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
-	}
-
-	// Verify each line of backlight info contains valid values.
-	for _, record := range records[1:] {
-		if record[0] == "" {
-			s.Error("Empty path")
-		}
-
-		maxBrightness, err := strconv.Atoi(record[1])
-		if err != nil {
-			s.Errorf("Failed to convert %q to integer: %v", want[1], err)
-		} else if maxBrightness < 0 {
-			s.Errorf("Invalid %s: %v", want[1], maxBrightness)
-		}
-
-		brightness, err := strconv.Atoi(record[2])
-		if err != nil {
-			s.Errorf("Failed to convert %q to integer: %v", want[2], err)
-		} else if brightness < 0 {
-			s.Errorf("Invalid %s: %v", want[2], brightness)
-		}
-
-		if brightness > maxBrightness {
-			s.Errorf("brightness: %v greater than max_brightness: %v", brightness, maxBrightness)
-		}
+	if err := validateBacklightData(result); err != nil {
+		s.Fatalf("Failed to validate backlight data, err [%v]", err)
 	}
 }
