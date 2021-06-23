@@ -104,6 +104,18 @@ window.Tast = class Tast {
   }
 
   /**
+   * @return {string}
+   */
+  static getBackgroundURL(selector) {
+    const element = document.querySelector(selector);
+    if (element === null) {
+      return "";
+    }
+    const style = window.getComputedStyle(element);
+    return style.backgroundImage;
+  }
+
+  /**
    * Returns whether the target HTML element is visible.
    * @param {string} selector Selector for the target element.
    * @return {boolean}
