@@ -44,6 +44,7 @@ type NetworkChroot struct {
 	netTempDir             string
 	netJailArgs            []string
 	netnsLifelineFD        *os.File
+	netnsName              string
 	startupCmd             *testexec.Cmd
 	NetEnv                 []string
 }
@@ -87,7 +88,7 @@ func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
 	netnsIP := net.IP(b).String()
 	n.netConfigFileValues["netns_ip"] = netnsIP
 	n.netnsLifelineFD = fd
-	netnsName := resp.NetnsName
+	n.netnsName = resp.NetnsName
 
 	if err := n.makeChroot(ctx); err != nil {
 		return "", errors.Wrap(err, "failed making the chroot")
@@ -98,7 +99,7 @@ func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
 	}
 
 	cmdArgs := append(n.netJailArgs, "/bin/bash", filepath.Join("/", startup), "&")
-	ipArgs := []string{"netns", "exec", netnsName, "/sbin/minijail0", "-C", n.netTempDir}
+	ipArgs := []string{"netns", "exec", n.netnsName, "/sbin/minijail0", "-C", n.netTempDir}
 	ipArgs = append(ipArgs, cmdArgs...)
 	n.startupCmd = testexec.CommandContext(ctx, "ip", ipArgs...)
 	n.startupCmd.Env = append(os.Environ(), n.NetEnv...)
@@ -262,18 +263,20 @@ func (n *NetworkChroot) writeConfigs() error {
 	return nil
 }
 
-// RunChroot runs a command in a chroot, within a separate network namespace,
-// and returns the output from stdout.
+// RunChroot runs a command in a chroot, within the network namespace associated
+// with this chroot, and returns the output from stdout.
 func (n *NetworkChroot) RunChroot(ctx context.Context, args []string) (string, error) {
-	cmdArgs := append(n.netJailArgs, args...)
-	minijailArgs := []string{"-e", "-C", n.netTempDir}
-	minijailArgs = append(minijailArgs, cmdArgs...)
-	output, err := testexec.CommandContext(ctx, "minijail0", minijailArgs...).Output()
+	minijailArgs := []string{"/sbin/minijail0", "-C", n.netTempDir}
+	ipArgs := []string{"netns", "exec", n.netnsName}
+	ipArgs = append(ipArgs, minijailArgs...)
+	ipArgs = append(ipArgs, n.netJailArgs...)
+	ipArgs = append(ipArgs, args...)
+	output, err := testexec.CommandContext(ctx, "ip", ipArgs...).Output()
+	o := string(output)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to run command inside the chroot")
+		return o, errors.Wrapf(err, "failed to run command inside the chroot: %s", o)
 	}
-
-	return string(output), nil
+	return o, nil
 }
 
 // getPidFile returns the integer contents of |pid_file| in the chroot.
