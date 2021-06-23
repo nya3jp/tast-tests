@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7258d003_0b2ffe0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-23T04:17:44Z",
+      "side": 1,
+      "message": "Just realized that I already did this in this patch...\nhttps://crrev.com/c/2919206/3/src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go\nThe patch is still WIP but maybe you could try (and clean) it to see if it meets your requirement...\nAnd note that this function will be changed in https://crrev.com/c/2977138",
+      "parentUuid": "5a75ce8d_a614f3bd",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 1
+      },
+      "revId": "585bd5b4a46c3fd734343c8dea5b5c08bc6c4185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11ee130f_ad375162",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
         "patchSetId": 3
