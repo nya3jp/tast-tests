@@ -705,6 +705,9 @@ func (ac *Context) CheckRestriction(finder *nodewith.Finder, restriction restric
 // of a node thus mouse.LeftClick() fails consequently.
 func (ac *Context) DoDefault(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
+		if err := ac.WaitUntilExists(finder)(ctx); err != nil {
+			return errors.Wrapf(err, "failed to show %v", finder)
+		}
 		q, err := finder.GenerateQuery()
 		if err != nil {
 			return err
