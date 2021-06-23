@@ -37,6 +37,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f1a74cc_7eeff07a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-23T16:31:32Z",
+      "side": 1,
+      "message": "Will the UI lag only for the DoHOff case? If not should the other cases be polling as well?",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 84
+      },
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d011de0d_4f77c0ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-23T16:31:32Z",
+      "side": 1,
+      "message": "This seems repeated in a few places. It might make sense to share this between the test cases.",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef26fbf1_48a3a5d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/doc.go",
         "patchSetId": 2
