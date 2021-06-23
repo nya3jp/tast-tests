@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15cd2d0d_6416292a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-23T06:51:57Z",
+      "side": 1,
+      "message": "Thanks John for the effort. As I mentioned offline, this video function is not stable yet and not encouraged to be enabled by default. \n\nAs discussed it is still very useful, test contributors can patch this cl for local debugging purpose.\n",
+      "revId": "afea57fb6d217538646213adbc9dc1e9cd0f87d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
