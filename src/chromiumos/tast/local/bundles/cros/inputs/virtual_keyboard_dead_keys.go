@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -142,7 +143,7 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("tap keys and validate outcome",
 		vkbCtx.TapKeys(testCase.typingKeys),
-		its.WaitForFieldValueToBe(inputField, testCase.expectedTypingResult),
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.expectedTypingResult),
 	)(ctx); err != nil {
 		s.Fatal("Failed to verify input: ", err)
 	}

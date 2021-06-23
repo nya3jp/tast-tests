@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -28,7 +29,8 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.NonVKClamshell,
-		Timeout:      5 * time.Minute,
+		HardwareDeps: hwdep.D(pre.InputsStableModels),
+		Timeout: 5 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "us",
@@ -50,10 +52,9 @@ func validateInputFieldFromNthCandidate(its *testserver.InputsTestServer, tconn 
 			return err
 		}
 
-		if err := its.WaitForFieldValueToBe(inputField, expectedValue)(ctx); err != nil {
+		if err := util.WaitForFieldTextToBe(tconn, inputField.Finder(), expectedValue)(ctx); err != nil {
 			return err
 		}
-
 		return nil
 	}
 }

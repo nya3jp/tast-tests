@@ -9,12 +9,14 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -25,6 +27,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
 		Pre:          pre.VKEnabledTablet,
+		HardwareDeps: hwdep.D(pre.InputsStableModels),
 	})
 }
 
@@ -70,7 +73,8 @@ func VirtualKeyboardMultipaste(ctx context.Context, s *testing.State) {
 		vkbCtx.SwitchToMultipaste(),
 		vkbCtx.TapMultipasteItem(text1),
 		vkbCtx.TapMultipasteItem(text2),
-		its.WaitForFieldValueToBe(inputField, expectedText))(ctx); err != nil {
+		util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), expectedText),
+	)(ctx); err != nil {
 		s.Fatal("Fail to paste text through multipaste virtual keyboard: ", err)
 	}
 }

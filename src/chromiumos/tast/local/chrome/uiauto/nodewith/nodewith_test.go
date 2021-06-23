@@ -56,6 +56,8 @@ func TestAttributeMatcher(t *gotesting.T) {
 			`{"name":selectName({"ar-XB":/^olleh$/,"en":/^hello$/,"en-XA":/^ĥéļļö one$/,})}`},
 		{Name("/blah"), `{"name":selectName({"ar-XB":/^halb\/$/,"en":/^\/blah$/,"en-XA":/^\/bļåĥ one$/,})}`},
 		{NameRegex(regexp.MustCompile("^/blah$")), `{"name":selectName({"en":/^\/blah$/,})}`},
+		{NameRegex(regexp.MustCompile("(?i)^/blah$")), `{"name":selectName({"en":/^\/blah$/i,})}`},
+		{NameRegex(regexp.MustCompile("^(?i)/blah$")), `{"name":selectName({"en":/^\/blah$/i,})}`},
 		{MultilingualName("hello", map[string]string{"de": "hallo"}),
 			`{"name":selectName({"ar-XB":/^olleh$/,"de":/^hallo$/,"en":/^hello$/,"en-XA":/^ĥéļļö one$/,})}`},
 		{MultilingualName("hello", map[string]string{"en-XA": "hello a"}),
