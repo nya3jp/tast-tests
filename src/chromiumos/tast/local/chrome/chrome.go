@@ -340,9 +340,9 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "reset_chrome")
 	defer st.End()
 
-	// Try to close all "normal" pages and apps.
+	// Try to close all "normal" pages, apps and dialog boxes.
 	targetFilter := func(t *Target) bool {
-		return t.Type == "page" || t.Type == "app"
+		return t.Type == "page" || t.Type == "app" || t.Type == "other"
 	}
 	targets, err := c.FindTargets(ctx, targetFilter)
 	if err != nil {
