@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -866,6 +867,21 @@ func init() {
 // is decompressed using testParam.decoder so that it can be compared with the
 // original YUV file.
 func PlatformEncoding(ctx context.Context, s *testing.State) {
+
+	p := perf.NewValues()
+	if err := reportTemperature(ctx, p, "temperature_1_start"); err != nil {
+		s.Fatal("Dailed to report temperature: ", err)
+	}
+
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownStopUI)); err != nil {
+		const Temperature = 60
+		testing.ContextLog(ctx, "Unable get cool machine by default setting: ", err)
+		if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownConfig{PollTimeout: 1 * time.Minute, PollInterval: 2 * time.Second, CPUTemperatureThreshold: Temperature*1000, CoolDownMode: power.CoolDownPreserveUI}); err != nil {
+			s.Fatalf("Unable to get cool machine to reach %dC", Temperature)
+		}
+	}
+
+	// WaitUntilCPUCoolDown() will restart the UI at the end of the cooling period.
 	if err := upstart.StopJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to stop ui job: ", err)
 	}
@@ -888,8 +904,12 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 	if raplErr != nil || energy == nil {
 		s.Log("Energy consumption is not available for this board")
 	}
+
 	startTime := time.Now()
 
+	if err := reportTemperature(ctx, p, "temperature_2_before_test"); err != nil {
+		s.Fatal("Dailed to report temperature: ", err)
+	}
 	s.Log("Running ", shutil.EscapeSlice(command))
 	logFile, err := runTest(ctx, s.OutDir(), command[0], command[1:]...)
 	if err != nil {
@@ -924,7 +944,6 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to extract PSNR: ", err)
 	}
 
-	p := perf.NewValues()
 	p.Set(perf.Metric{
 		Name:      "fps",
 		Unit:      "fps",
@@ -964,6 +983,13 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 		Unit:      "keyframes",
 		Direction: perf.BiggerIsBetter,
 	}, float64(keyFrames))
+
+
+	// Logging the afterward machine temperature.
+	if err := reportTemperature(ctx, p, "temperature_3_after_test"); err != nil {
+		s.Fatal("Failed to report temperature: ", err)
+	}
+
 
 	s.Log(p)
 	if err := p.Save(s.OutDir()); err != nil {
@@ -1278,4 +1304,19 @@ func countHexHits(ctx context.Context, file string, r *regexp.Regexp) (count int
 
 	results := r.FindAllIndex(out, -1)
 	return len(results), nil
+}
+
+
+func reportTemperature(ctx context.Context, pv *perf.Values, name string) error {
+	temp, err := sysutil.TemperatureInputMax()
+	if err != nil {
+		temp = -1000.0
+		testing.ContextLog(ctx, "Can't read maximum temperature: ", err)
+	}
+	pv.Set(perf.Metric{
+		Name:      name,
+		Unit:      "Celsius",
+		Direction: perf.SmallerIsBetter,
+	}, temp)
+	return nil
 }
