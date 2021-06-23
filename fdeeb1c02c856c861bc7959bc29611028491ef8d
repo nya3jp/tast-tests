@@ -39,6 +39,30 @@
       },
       "revId": "fdeeb1c02c856c861bc7959bc29611028491ef8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4990fa7e_19f1ff22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-23T03:00:15Z",
+      "side": 1,
+      "message": "Thanks for the suggestion and the link!\nDid some investigation and found a way to do this.\nWe\u0027re planning to deprecate strongswan-starter and use a new method to start ipsec vpn in the near future, and this poll method will also need to be changed when that happens, that\u0027s why I didn\u0027t spend time on investigating this...",
+      "parentUuid": "15d69122_95555758",
+      "range": {
+        "startLine": 259,
+        "startChar": 43,
+        "endLine": 260,
+        "endChar": 14
+      },
+      "revId": "fdeeb1c02c856c861bc7959bc29611028491ef8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
