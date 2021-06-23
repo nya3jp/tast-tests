@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d531e9f_27bc7c28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-06-23T13:47:09Z",
+      "side": 1,
+      "message": "You should maybe explain in the commit msg why this is needed.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "a8d6e074ffaecdd948400d0f2a78022ed5d67b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1500212d_8913ba88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-06-23T13:47:09Z",
+      "side": 1,
+      "message": "I don\u0027t imagine any test would depend on that error happening with the current semantics, but just for its own sake have you checked ?",
+      "range": {
+        "startLine": 18,
+        "startChar": 24,
+        "endLine": 19,
+        "endChar": 14
+      },
+      "revId": "a8d6e074ffaecdd948400d0f2a78022ed5d67b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da3c26b5_31a17b55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-06-23T13:47:09Z",
+      "side": 1,
+      "message": "LGTM. Since one of the specific features of WG is the possibility of multiple peers, we should maybe have a test that checks that shill can properly handle more than 1 peer. I am not sure how complex this would become with the namespace setup though.",
+      "revId": "a8d6e074ffaecdd948400d0f2a78022ed5d67b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
