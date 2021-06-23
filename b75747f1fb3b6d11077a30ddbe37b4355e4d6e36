@@ -139,6 +139,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49175db8_ce60e10f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-06-23T20:15:12Z",
+      "side": 1,
+      "message": "Mentioned in my design doc, but might as well repeat here: Unfortunately the router configuration improvements that I\u0027ve been working on lately seem to only be impactful when combined with the hardware change to using the pcap as a netperf endpoint. On that note, these tests should be running in the wificell_perf pool, which means that they should be using the adjusted setups once the changes have been made.\n\nIt would require a pretty big change to the testing logic, but would it be possible to adjust this test to use the 3-way setup as well? Or is that not reasonable with the need for roaming?",
+      "parentUuid": "ee5d86e2_df291272",
+      "range": {
+        "startLine": 62,
+        "startChar": 77,
+        "endLine": 62,
+        "endChar": 80
+      },
+      "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24382d38_c4d65dcf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
         "patchSetId": 2
