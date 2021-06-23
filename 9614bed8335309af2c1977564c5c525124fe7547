@@ -16,6 +16,46 @@
       "message": "Thanks for the review! PTAL",
       "revId": "9614bed8335309af2c1977564c5c525124fe7547",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e47b9382_14a194e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-23T04:07:18Z",
+      "side": 1,
+      "message": "LGTM with nits",
+      "revId": "9614bed8335309af2c1977564c5c525124fe7547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0b989e0_a9da9d85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-06-23T04:07:18Z",
+      "side": 1,
+      "message": "nit:fix the spelling and sentence.",
+      "range": {
+        "startLine": 261,
+        "startChar": 15,
+        "endLine": 262,
+        "endChar": 22
+      },
+      "revId": "9614bed8335309af2c1977564c5c525124fe7547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
