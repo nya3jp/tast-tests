@@ -6,12 +6,31 @@ package health
 
 import (
 	"context"
-	"reflect"
+	"encoding/json"
+	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
+
+type batteryInfo struct {
+	ModelName        string  `json:"model_name"`
+	SerialNumber     string  `json:"serial_number"`
+	Status           string  `json:"status"`
+	Technology       string  `json:"technology"`
+	Vendor           string  `json:"vendor"`
+	ManufactureDate  *string `json:"manufacture_date"`
+	ChargeFull       float64 `json:"charge_full"`
+	ChargeFullDesign float64 `json:"charge_full_design"`
+	ChargeNow        float64 `json:"charge_now"`
+	CurrentNow       float64 `json:"current_now"`
+	VoltageMinDesign float64 `json:"voltage_min_design"`
+	VoltageNow       float64 `json:"voltage_now"`
+	CycleCount       int     `json:"cycle_count"`
+	Temperature      *int    `json:"temperature"`
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -28,9 +47,45 @@ func init() {
 	})
 }
 
+func validateBatteryData(ctx context.Context, battery batteryInfo) error {
+	if battery.ModelName == "" {
+		return errors.New("Missing model_name")
+	}
+	if battery.SerialNumber == "" {
+		return errors.New("Missing serial_number")
+	}
+	if battery.Status == "" {
+		return errors.New("Missing status")
+	}
+	if battery.Technology == "" {
+		return errors.New("Missing technology")
+	}
+	if battery.Vendor == "" {
+		return errors.New("Missing vendor")
+	}
+
+	// Validate Smart Battery metrics.
+	val, err := crosconfig.Get(ctx, "/cros-healthd/battery", "has-smart-battery-info")
+	if err != nil && !crosconfig.IsNotFound(err) {
+		return errors.Wrap(err, "failed to get has-smart-battery-info property")
+	}
+
+	hasSmartInfo := err == nil && val == "true"
+	if hasSmartInfo {
+		if battery.ManufactureDate == nil {
+			return errors.New("Missing manufacture_date for smart battery")
+		}
+		if battery.Temperature == nil {
+			return errors.New("Missing temperature for smart battery")
+		}
+	}
+
+	return nil
+}
+
 func ProbeBatteryMetrics(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryBattery}
-	records, err := croshealthd.RunAndParseTelem(ctx, params, s.OutDir())
+	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get battery telemetry info: ", err)
 	}
@@ -42,78 +97,19 @@ func ProbeBatteryMetrics(ctx context.Context, s *testing.State) {
 
 	// If psu-type is not set to "AC_only", assume there is a battery.
 	if err == nil && psuType == "AC_only" {
-		if len(records) != 1 {
-			s.Fatalf("Incorrect number of output lines: got %d; want 1", len(records))
-		}
 		// If there is no battery, there is no output to verify.
 		return
 	}
 
-	if len(records) != 2 {
-		s.Fatalf("Incorrect number of output lines: got %d; want 2", len(records))
+	dec := json.NewDecoder(strings.NewReader(string(rawData)))
+	dec.DisallowUnknownFields()
+
+	var battery batteryInfo
+	if err := dec.Decode(&battery); err != nil {
+		s.Fatalf("Failed to decode battery data [%q], err [%v]", rawData, err)
 	}
 
-	want := []string{"charge_full", "charge_full_design", "cycle_count",
-		"serial_number", "vendor(manufacturer)", "voltage_now",
-		"voltage_min_design", "manufacture_date_smart", "temperature_smart",
-		"model_name", "charge_now", "current_now", "technology", "status"}
-	got := records[0]
-	if !reflect.DeepEqual(want, got) {
-		s.Fatalf("Incorrect headers: got %v, want %v", got, want)
-	}
-
-	// Validate battery metrics.
-	metrics := records[1]
-	contentsMap := make(map[string]string)
-	for i, elem := range got {
-		contentsMap[elem] = metrics[i]
-	}
-	for _, key := range []string{"charge_full", "charge_full_design",
-		"cycle_count", "serial_number", "vendor(manufacturer)", "voltage_now",
-		"voltage_min_design", "model_name", "charge_now", "current_now",
-		"technology", "status"} {
-		value, ok := contentsMap[key]
-		if !ok {
-			s.Errorf("Key %q not found", key)
-			continue
-		}
-
-		s.Logf("Value for %v: %v", key, value)
-		if value == "" {
-			s.Error("Missing ", key)
-		}
-	}
-
-	// Validate Smart Battery metrics.
-	val, err := crosconfig.Get(ctx, "/cros-healthd/battery", "has-smart-battery-info")
-	if err != nil && !crosconfig.IsNotFound(err) {
-		s.Fatal("Failed to get has-smart-battery-info property: ", err)
-	}
-
-	hasSmartInfo := err == nil && val == "true"
-	s.Log("Device has Smart Battery info: ", hasSmartInfo)
-	for _, e := range []struct {
-		key     string
-		zeroFmt string
-	}{
-		{key: "manufacture_date_smart", zeroFmt: "0000-00-00"},
-		{key: "temperature_smart", zeroFmt: "0"},
-	} {
-		value, ok := contentsMap[e.key]
-		if !ok {
-			s.Errorf("Key %q not found", e.key)
-			continue
-		}
-
-		s.Logf("Value for %v: %v", e.key, value)
-		if hasSmartInfo {
-			if value == croshealthd.NotApplicable || value == e.zeroFmt {
-				s.Error("Invalid value for ", e.key)
-			}
-		} else {
-			if value != croshealthd.NotApplicable {
-				s.Errorf("Value for %v should be N/A", e.key)
-			}
-		}
+	if err := validateBatteryData(ctx, battery); err != nil {
+		s.Fatalf("Failed to validate battery data, err [%v]", err)
 	}
 }
