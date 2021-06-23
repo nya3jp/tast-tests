@@ -379,8 +379,3 @@ func (n *NetworkChroot) GetLogContents(ctx context.Context, logFilePath string) 
 func (n *NetworkChroot) BridgeDbusNamespaces() {
 	n.netBindRootDirectories = append(n.netBindRootDirectories, dbusBridgeDirectories...)
 }
-
-// Command returns a command inside the network chroot.
-func (n *NetworkChroot) Command(ctx context.Context, args ...string) *testexec.Cmd {
-	return testexec.CommandContext(ctx, "ip", append([]string{"netns", "exec", n.netnsName}, args...)...)
-}
