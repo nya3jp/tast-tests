@@ -52,6 +52,23 @@
       "parentUuid": "d40b621f_25ececd9",
       "revId": "32b8b1fcec0cdf999c926387ea1f979be6bfdd13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bfd93e6_bb2fcbff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-24T06:27:56Z",
+      "side": 1,
+      "message": "Hi reviewers,\n\nI ran this test 100 times on ToT locally and it is pretty stable. http://go/paste/5818638511636480\nTarget version: betty-release/R93-14047.0.0\n\nAre you comfortable to revert this to CQ?",
+      "revId": "32b8b1fcec0cdf999c926387ea1f979be6bfdd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
