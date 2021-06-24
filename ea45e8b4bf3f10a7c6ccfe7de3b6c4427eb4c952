@@ -34,6 +34,24 @@
       "parentUuid": "c3840032_fc38937f",
       "revId": "ea45e8b4bf3f10a7c6ccfe7de3b6c4427eb4c952",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b1cf884_498dfc97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-24T19:56:25Z",
+      "side": 1,
+      "message": "For notification - As mentioned by the author, Privacy screen won\u0027t be available for non-supporting device thus no notification.\nProbably Privacy screen could show a message if the device is non supporting and it tries to enforce it. But that\u0027s surely a different issue. Let me know If I should open it.\n\nThanks for the email, Really appreciate your help when I am stuck!",
+      "parentUuid": "4cc3b291_b0b7bad5",
+      "revId": "ea45e8b4bf3f10a7c6ccfe7de3b6c4427eb4c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
