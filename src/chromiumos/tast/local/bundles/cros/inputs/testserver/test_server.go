@@ -204,6 +204,15 @@ func (its *InputsTestServer) ClickFieldAndWaitForActive(inputField InputField) u
 	)
 }
 
+// ClearThenClickFieldAndWaitForActive returns an action clearing the input field, clicking it and waiting for it to be active.
+func (its *InputsTestServer) ClearThenClickFieldAndWaitForActive(inputField InputField) uiauto.Action {
+	return uiauto.Combine(
+		"clear input field, click it, and wait for it to be active",
+		its.Clear(inputField),
+		its.ClickFieldAndWaitForActive(inputField),
+	)
+}
+
 // ClickField returns an action clicking the input field.
 func (its *InputsTestServer) ClickField(inputField InputField) uiauto.Action {
 	fieldFinder := inputField.Finder()

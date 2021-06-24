@@ -6,6 +6,7 @@ package util
 
 import (
 	"context"
+	"fmt"
 	"strings"
 	"time"
 
@@ -29,18 +30,21 @@ type InputEval struct {
 // WaitForFieldTextToBe returns an action checking whether the input field value equals given text.
 // The text is case sensitive.
 func WaitForFieldTextToBe(tconn *chrome.TestConn, finder *nodewith.Finder, expectedText string) uiauto.Action {
-	return waitForFieldTextFunc(tconn, finder, expectedText, false)
+	return WaitForFieldTextToSatisfy(tconn, finder, expectedText, func(actualText string) bool {
+		return expectedText == actualText
+	})
 }
 
 // WaitForFieldTextToBeIgnoringCase returns an action checking whether the input field value equals given text.
 // The text is case insensitive.
 func WaitForFieldTextToBeIgnoringCase(tconn *chrome.TestConn, finder *nodewith.Finder, expectedText string) uiauto.Action {
-	return waitForFieldTextFunc(tconn, finder, expectedText, true)
+	return WaitForFieldTextToSatisfy(tconn, finder, fmt.Sprintf("%s (ignoring case)", expectedText), func(actualText string) bool {
+		return strings.ToLower(expectedText) == strings.ToLower(actualText)
+	})
 }
 
-// waitForFieldTextFunc returns an action checking whether the input field value equals given text.
-// The text can either be case sensitive or not.
-func waitForFieldTextFunc(tconn *chrome.TestConn, finder *nodewith.Finder, expectedText string, ignoreCase bool) uiauto.Action {
+// WaitForFieldTextToSatisfy returns an action checking whether the input field value satisfies a predicate.
+func WaitForFieldTextToSatisfy(tconn *chrome.TestConn, finder *nodewith.Finder, description string, predicate func(string) bool) uiauto.Action {
 	ui := uiauto.New(tconn).WithInterval(time.Second)
 	return uiauto.Combine("validate field text",
 		// Sleep 200ms before validating text field.
@@ -50,11 +54,12 @@ func waitForFieldTextFunc(tconn *chrome.TestConn, finder *nodewith.Finder, expec
 			nodeInfo, err := ui.Info(ctx, finder)
 			if err != nil {
 				return err
-			} else if !ignoreCase && nodeInfo.Value != expectedText {
-				return errors.Errorf("failed to validate input value: got: %s; want: %s", nodeInfo.Value, expectedText)
-			} else if ignoreCase && strings.ToLower(nodeInfo.Value) != strings.ToLower(expectedText) {
-				return errors.Errorf("failed to validate input value ignoring case: got: %s; want: %s", nodeInfo.Value, expectedText)
 			}
+
+			if !predicate(nodeInfo.Value) {
+				return errors.Errorf("failed to validate input value: got: %s; want: %s", nodeInfo.Value, description)
+			}
+
 			return nil
 		}))
 }
@@ -69,4 +74,23 @@ func GetNthCandidateText(ctx context.Context, tconn *chrome.TestConn, n int) (st
 	}
 
 	return candidate.Name, nil
+}
+
+// GetNthCandidateTextAndThen returns an action that performs two steps in sequence:
+// 1) Get the specified candidate.
+// 2) Pass the specified candidate into provided function and runs the returned action.
+// This is used when an action depends on the text of a candidate.
+func GetNthCandidateTextAndThen(tconn *chrome.TestConn, n int, fn func(text string) uiauto.Action) uiauto.Action {
+	return func(ctx context.Context) error {
+		text, err := GetNthCandidateText(ctx, tconn, n)
+		if err != nil {
+			return err
+		}
+
+		if err := fn(text)(ctx); err != nil {
+			return err
+		}
+
+		return nil
+	}
 }
