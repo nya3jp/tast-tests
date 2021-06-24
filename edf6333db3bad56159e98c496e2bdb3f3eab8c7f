@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f520a6d9_db097b85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T17:00:07Z",
+      "side": 1,
+      "message": "Oops, thanks for catching! Done.",
+      "parentUuid": "3cf76487_dab53f08",
+      "range": {
+        "startLine": 110,
+        "startChar": 10,
+        "endLine": 110,
+        "endChar": 15
+      },
+      "revId": "edf6333db3bad56159e98c496e2bdb3f3eab8c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df5cf777_2e509657",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "220b9c2e_21f24d06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T17:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df5cf777_2e509657",
+      "range": {
+        "startLine": 142,
+        "startChar": 10,
+        "endLine": 142,
+        "endChar": 15
+      },
+      "revId": "edf6333db3bad56159e98c496e2bdb3f3eab8c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2627963f_5d1efc63",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-06-23T16:39:37Z",
       "side": 1,
       "message": "could you unblock in defer stmt?",
+      "revId": "edf6333db3bad56159e98c496e2bdb3f3eab8c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd9b5f64_2605bd48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T17:00:07Z",
+      "side": 1,
+      "message": "This is necessary to be run now, because the rest of the test expects the traffic to be unblocked.\n\nThis is also safe, because all the created rules are inside the VPN, and the VPN is deferred. So, the rule will disappear anyway.",
+      "parentUuid": "2627963f_5d1efc63",
       "revId": "edf6333db3bad56159e98c496e2bdb3f3eab8c7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
