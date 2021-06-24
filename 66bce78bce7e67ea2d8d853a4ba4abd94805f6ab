@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91589819_5769f11b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-06-24T23:03:17Z",
+      "side": 1,
+      "message": "can we promote this to constant with a name that helps us understand what it is for and also add a comment on top of it showing example text that it tries to capture?",
+      "range": {
+        "startLine": 110,
+        "startChar": 39,
+        "endLine": 110,
+        "endChar": 60
+      },
+      "revId": "66bce78bce7e67ea2d8d853a4ba4abd94805f6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
