@@ -125,31 +125,31 @@ func SpokenFeedback(ctx context.Context, s *testing.State) {
 	}
 
 	// Test basic navigation.
-	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+Right"}, []string{"Start"}); err != nil {
+	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{"Search+Right"}, []a11y.SpeechExpectation{a11y.NewSpeechExpectation("Start", false)}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
 
-	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+Right"}, []string{"This is a ChromeVox test"}); err != nil {
+	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{"Search+Right"}, []a11y.SpeechExpectation{a11y.NewSpeechExpectation("This is a ChromeVox test", false)}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
 
-	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+Right"}, []string{"End"}); err != nil {
+	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{"Search+Right"}, []a11y.SpeechExpectation{a11y.NewSpeechExpectation("End", false)}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
 
-	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+Left"}, []string{"This is a ChromeVox test"}); err != nil {
+	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{"Search+Left"}, []a11y.SpeechExpectation{a11y.NewSpeechExpectation("This is a ChromeVox test", false)}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
 
-	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+Left"}, []string{"Start"}); err != nil {
+	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{"Search+Left"}, []a11y.SpeechExpectation{a11y.NewSpeechExpectation("Start", false)}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
 
 	// Test system-wide shortcuts.
-	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Alt+Shift+L"}, []string{"Launcher", "Button", "Shelf", "Tool bar", "Press Search plus Space to activate"}); err != nil {
+	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{"Alt+Shift+L"}, []a11y.SpeechExpectation{a11y.NewSpeechExpectation("Launcher", false), a11y.NewSpeechExpectation("Button", false), a11y.NewSpeechExpectation("Shelf", false), a11y.NewSpeechExpectation("Tool bar", false), a11y.NewSpeechExpectation("Press Search plus Space to activate", false)}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
-	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Alt+Shift+S"}, []string{"Quick Settings,", "Press search plus left to access the notification center.,", "window"}); err != nil {
+	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{"Alt+Shift+S"}, []a11y.SpeechExpectation{a11y.NewSpeechExpectation("Quick Settings*", true), a11y.NewSpeechExpectation("Press search plus left to access the notification center*", true), a11y.NewSpeechExpectation("window", false)}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
 }

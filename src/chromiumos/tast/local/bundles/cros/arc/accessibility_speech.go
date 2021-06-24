@@ -17,10 +17,10 @@ import (
 )
 
 type expectedSpeechLog struct {
-	CheckBox                     []string
-	CheckBoxWithStateDescription []string
-	SeekBar                      []string
-	Slider                       []string
+	CheckBox                     []a11y.SpeechExpectation
+	CheckBoxWithStateDescription []a11y.SpeechExpectation
+	SeekBar                      []a11y.SpeechExpectation
+	Slider                       []a11y.SpeechExpectation
 }
 
 func init() {
@@ -34,34 +34,60 @@ func init() {
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Val: expectedSpeechLog{
-				CheckBox: []string{
-					"CheckBox", "Check box", "Not checked", "Press Search plus Space to toggle",
+				CheckBox: []a11y.SpeechExpectation{
+					a11y.NewSpeechExpectation("CheckBox", false),
+					a11y.NewSpeechExpectation("Check box", false),
+					a11y.NewSpeechExpectation("Not checked", false),
+					a11y.NewSpeechExpectation("Press Search plus Space to toggle", false),
 				},
-				CheckBoxWithStateDescription: []string{
-					"CheckBoxWithStateDescription", "Check box", "Not checked", "Press Search plus Space to toggle",
+				CheckBoxWithStateDescription: []a11y.SpeechExpectation{
+					a11y.NewSpeechExpectation("CheckBoxWithStateDescription", false),
+					a11y.NewSpeechExpectation("Check box", false),
+					a11y.NewSpeechExpectation("Not checked", false),
+					a11y.NewSpeechExpectation("Press Search plus Space to toggle", false),
 				},
-				SeekBar: []string{
-					"seekBar", "Slider", "25", "Min 0", "Max 100",
+				SeekBar: []a11y.SpeechExpectation{
+					a11y.NewSpeechExpectation("seekBar", false),
+					a11y.NewSpeechExpectation("Slider", false),
+					a11y.NewSpeechExpectation("25", false),
+					a11y.NewSpeechExpectation("Min 0", false),
+					a11y.NewSpeechExpectation("Max 100", false),
 				},
-				Slider: []string{
-					"Slider", "3", "Min 0", "Max 10",
+				Slider: []a11y.SpeechExpectation{
+					a11y.NewSpeechExpectation("Slider", false),
+					a11y.NewSpeechExpectation("3", false),
+					a11y.NewSpeechExpectation("Min 0", false),
+					a11y.NewSpeechExpectation("Max 10", false),
 				},
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name: "vm",
 			Val: expectedSpeechLog{
-				CheckBox: []string{
-					"CheckBox", "Check box", "not checked", "Press Search plus Space to toggle",
+				CheckBox: []a11y.SpeechExpectation{
+					a11y.NewSpeechExpectation("CheckBox", false),
+					a11y.NewSpeechExpectation("Check box", false),
+					a11y.NewSpeechExpectation("not checked", false),
+					a11y.NewSpeechExpectation("Press Search plus Space to toggle", false),
 				},
-				CheckBoxWithStateDescription: []string{
-					"CheckBoxWithStateDescription", "Check box", "state description not checked", "Press Search plus Space to toggle",
+				CheckBoxWithStateDescription: []a11y.SpeechExpectation{
+					a11y.NewSpeechExpectation("CheckBoxWithStateDescription", false),
+					a11y.NewSpeechExpectation("Check box", false),
+					a11y.NewSpeechExpectation("state description not checked", false),
+					a11y.NewSpeechExpectation("Press Search plus Space to toggle", false),
 				},
-				SeekBar: []string{
-					"seekBar", "Slider", "state description 25", "Min 0", "Max 100",
+				SeekBar: []a11y.SpeechExpectation{
+					a11y.NewSpeechExpectation("seekBar", false),
+					a11y.NewSpeechExpectation("Slider", false),
+					a11y.NewSpeechExpectation("state description 25", false),
+					a11y.NewSpeechExpectation("Min 0", false),
+					a11y.NewSpeechExpectation("Max 100", false),
 				},
-				Slider: []string{
-					"Slider", "30 percent", "Min 0", "Max 10",
+				Slider: []a11y.SpeechExpectation{
+					a11y.NewSpeechExpectation("Slider", false),
+					a11y.NewSpeechExpectation("30 percent", false),
+					a11y.NewSpeechExpectation("Min 0", false),
+					a11y.NewSpeechExpectation("Max 10", false),
 				},
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -70,8 +96,8 @@ func init() {
 }
 
 type axSpeechTestStep struct {
-	keys       string
-	utterances []string
+	keys         string
+	expectations []a11y.SpeechExpectation
 }
 
 func AccessibilitySpeech(ctx context.Context, s *testing.State) {
@@ -79,10 +105,10 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 	MainActivityTestSteps := []axSpeechTestStep{
 		{
 			"Search+Right",
-			[]string{"Main Activity"},
+			[]a11y.SpeechExpectation{a11y.NewSpeechExpectation("Main Activity", false)},
 		}, {
 			"Search+Right",
-			[]string{"OFF", "Toggle Button", "Not pressed", "Press Search plus Space to toggle"},
+			[]a11y.SpeechExpectation{a11y.NewSpeechExpectation("OFF", false), a11y.NewSpeechExpectation("Toggle Button", false), a11y.NewSpeechExpectation("Not pressed", false), a11y.NewSpeechExpectation("Press Search plus Space to toggle", false)},
 		}, {
 			"Search+Right",
 			s.Param().(expectedSpeechLog).CheckBox,
@@ -97,16 +123,16 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 			s.Param().(expectedSpeechLog).Slider,
 		}, {
 			"Search+Right",
-			[]string{"ANNOUNCE", "Button", "Press Search plus Space to activate"},
+			[]a11y.SpeechExpectation{a11y.NewSpeechExpectation("ANNOUNCE", false), a11y.NewSpeechExpectation("Button", false), a11y.NewSpeechExpectation("Press Search plus Space to activate", false)},
 		}, {
 			"Search+Space",
-			[]string{"test announcement"},
+			[]a11y.SpeechExpectation{a11y.NewSpeechExpectation("test announcement", false)},
 		}, {
 			"Search+Right",
-			[]string{"CLICK TO SHOW TOAST", "Button", "Press Search plus Space to activate"},
+			[]a11y.SpeechExpectation{a11y.NewSpeechExpectation("CLICK TO SHOW TOAST", false), a11y.NewSpeechExpectation("Button", false), a11y.NewSpeechExpectation("Press Search plus Space to activate", false)},
 		}, {
 			"Search+Space",
-			[]string{"test toast"},
+			[]a11y.SpeechExpectation{a11y.NewSpeechExpectation("test toast", false)},
 		},
 	}
 
@@ -137,7 +163,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 
 		testSteps := speechTestSteps[currentActivity.Name]
 		for _, testStep := range testSteps {
-			if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{testStep.keys}, testStep.utterances); err != nil {
+			if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{testStep.keys}, testStep.expectations); err != nil {
 				return errors.Wrapf(err, "failure on the step %+v", testStep)
 			}
 		}

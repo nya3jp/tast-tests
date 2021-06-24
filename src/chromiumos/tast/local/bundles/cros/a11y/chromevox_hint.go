@@ -94,7 +94,7 @@ func ChromevoxHint(ctx context.Context, s *testing.State) {
 	}
 
 	// Use the speech monitor to ensure that the spoken announcement was given.
-	err = sm.Consume(ctx, []string{"Do you want to activate ChromeVox, the built-in screen reader for Chrome OS? If so, press the space bar."})
+	err = sm.Consume(ctx, []a11y.SpeechExpectation{a11y.NewSpeechExpectation("Do you want to activate ChromeVox, the built-in screen reader for Chrome OS*", true)})
 	if err != nil {
 		s.Fatal("Failed to verify the ChromeVox hint announcement: ", err)
 	}

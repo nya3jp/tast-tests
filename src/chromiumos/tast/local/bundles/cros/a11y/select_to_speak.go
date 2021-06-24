@@ -72,7 +72,7 @@ func SelectToSpeak(ctx context.Context, s *testing.State) {
 	c.Close()
 
 	// Select all and invoke Select-to-Speak.
-	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Ctrl+A", "Search+S"}, []string{"This is a select-to-speak test"}); err != nil {
+	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{"Ctrl+A", "Search+S"}, []a11y.SpeechExpectation{a11y.NewSpeechExpectation("This is a select-to-speak test", false)}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
 }
