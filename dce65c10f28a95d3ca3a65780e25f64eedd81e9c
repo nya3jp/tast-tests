@@ -162,6 +162,24 @@
       "parentUuid": "04c99271_af066e81",
       "revId": "dce65c10f28a95d3ca3a65780e25f64eedd81e9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e309e8d_9767d14d",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-24T04:27:19Z",
+      "side": 1,
+      "message": "Ah okay, as long as the requests are going through and the IDs are incrementing normally then that\u0027s fine. There are also RPCs before the GAIA login fixture anyways, so that covers the case I was worried about anyways (reconnecting after the ID has already been incremented by a few RPCs).",
+      "parentUuid": "147ff54c_5f7fbfc5",
+      "revId": "dce65c10f28a95d3ca3a65780e25f64eedd81e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
