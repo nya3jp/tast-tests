@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01aae55e_64be3c27",
+        "filename": "src/chromiumos/tast/local/input/voice/audio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-24T01:53:04Z",
+      "side": 1,
+      "message": "Can you embed this into DoDefault function? The same as LeftClick and other functions. It does not make sense if the node does not exist.",
+      "range": {
+        "startLine": 95,
+        "startChar": 14,
+        "endLine": 95,
+        "endChar": 29
+      },
+      "revId": "3a892683435687f18680caf689efadc8cecb9975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
