@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41a0ac14_298f8c98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-24T22:17:31Z",
+      "side": 1,
+      "message": "The best way would be to use a fixture: https://groups.google.com/a/chromium.org/g/tast-users/c/-vC6RR8fYlQ/m/JhiULM82BAAJ. \n\nHere are some other examples: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/fixture.go?q\u003dfixture.go",
+      "parentUuid": "07d586ab_de658492",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "b6abef4db1871d7d03e6e12c34da7a1d395ce6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8301bb42_1e2cc122",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
         "patchSetId": 5
