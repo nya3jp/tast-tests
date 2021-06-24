@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d08a7751_f55c1519",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_lacros_downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-24T05:10:50Z",
+      "side": 1,
+      "message": "Could you launch Lacros from Shelf?",
+      "revId": "4bedfd16a1827cb661b403f3099ee3d820d7dcc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
