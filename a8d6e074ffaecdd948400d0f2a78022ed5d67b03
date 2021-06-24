@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4488bcb1_5643ca6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-24T06:56:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d531e9f_27bc7c28",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "a8d6e074ffaecdd948400d0f2a78022ed5d67b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1500212d_8913ba88",
@@ -49,6 +73,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "81a5c585_ccad3d0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-24T06:56:08Z",
+      "side": 1,
+      "message": "vpn_server is the only user of this function :)",
+      "parentUuid": "1500212d_8913ba88",
+      "range": {
+        "startLine": 18,
+        "startChar": 24,
+        "endLine": 19,
+        "endChar": 14
+      },
+      "revId": "a8d6e074ffaecdd948400d0f2a78022ed5d67b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "da3c26b5_31a17b55",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -60,6 +108,24 @@
       "writtenOn": "2021-06-23T13:47:09Z",
       "side": 1,
       "message": "LGTM. Since one of the specific features of WG is the possibility of multiple peers, we should maybe have a test that checks that shill can properly handle more than 1 peer. I am not sure how complex this would become with the namespace setup though.",
+      "revId": "a8d6e074ffaecdd948400d0f2a78022ed5d67b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e432266_d93a8b91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-24T06:56:08Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! That\u0027s in my plan. I\u0027ll also add a test for generating key pair inside shill and a test for crosh-wireguard commands.",
+      "parentUuid": "da3c26b5_31a17b55",
       "revId": "a8d6e074ffaecdd948400d0f2a78022ed5d67b03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
