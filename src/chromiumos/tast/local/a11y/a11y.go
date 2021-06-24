@@ -9,6 +9,7 @@ package a11y
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -264,7 +265,7 @@ func RelevantSpeechMonitor(ctx context.Context, c *chrome.Chrome, tconn *chrome.
 			}
 
 			// Attempt to consume the test utterance.
-			if err := candidateMonitor.Consume(ctx, []string{"Testing"}); err != nil {
+			if err := candidateMonitor.Consume(ctx, []SpeechExpectation{NewSpeechExpectation("Testing", false)}); err != nil {
 				return errors.Wrap(err, "failed to consume the test utterance")
 			}
 
@@ -325,6 +326,19 @@ func ensureTTSEngineLoaded(ctx context.Context, tconn *chrome.TestConn, engineDa
 	return nil
 }
 
+// SpeechExpectation represents data for a speech expectation. isRegex specifies
+// whether |expected| is a regular expression or a string to be matched.
+type SpeechExpectation struct {
+	expected string
+	isRegex  bool
+}
+
+// NewSpeechExpectation is a convenience method for creating a SpeechExpectation
+// object.
+func NewSpeechExpectation(expected string, isRegex bool) SpeechExpectation {
+	return SpeechExpectation{expected, isRegex}
+}
+
 // Consume ensures that the expected utterances were spoken by the
 // TTS engine. It also consumes all utterances accumulated in TTS extension's
 // background page.
@@ -332,10 +346,13 @@ func ensureTTSEngineLoaded(ctx context.Context, tconn *chrome.TestConn, engineDa
 // 1. Shift the next spoken utterance off of testUtterances. This ensures that
 // we never compare against stale utterances; a spoken utterance is either
 // matched or discarded.
-// 2. Check if it matches the expected utterance.
-func (sm *SpeechMonitor) Consume(ctx context.Context, expected []string) error {
+// 2. Check if it matches the expected utterance. If |isRegex| is true, then
+// look for a regex match instead of an exact match.
+func (sm *SpeechMonitor) Consume(ctx context.Context, expectations []SpeechExpectation) error {
 	var actual []string
-	for _, exp := range expected {
+	for _, expectation := range expectations {
+		exp := expectation.expected
+		isRegex := expectation.isRegex
 		// Use a poll to allow time for each utterance to be spoken.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			var utterance string
@@ -344,22 +361,30 @@ func (sm *SpeechMonitor) Consume(ctx context.Context, expected []string) error {
 			}
 
 			actual = append(actual, utterance)
-			if exp != utterance {
-				return errors.Errorf("expected utterance hasn't been spoken yet: %s", exp)
+
+			if isRegex {
+				matched, err := regexp.MatchString(exp, utterance)
+				if !matched || err != nil {
+					return errors.Errorf("expected pattern hasn't been matched yet: %s", exp)
+				}
+			} else {
+				if exp != utterance {
+					return errors.Errorf("expected utterance hasn't been spoken yet: %s", exp)
+				}
 			}
 
 			return nil
 		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			return errors.Errorf("expected utterances: %q, but got: %q", expected, actual)
+			return errors.Errorf("expected: %q, but got: %q", expectations, actual)
 		}
 	}
 
 	return nil
 }
 
-// PressKeysAndConsumeUtterances presses keys and ensures that the utterances
+// PressKeysAndConsumeExpectations presses keys and ensures that the expectations
 // were spoken by the TTS engine.
-func PressKeysAndConsumeUtterances(ctx context.Context, sm *SpeechMonitor, keySequence, utterances []string) error {
+func PressKeysAndConsumeExpectations(ctx context.Context, sm *SpeechMonitor, keySequence []string, expectations []SpeechExpectation) error {
 	// Open a connection to the keyboard.
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
@@ -373,8 +398,8 @@ func PressKeysAndConsumeUtterances(ctx context.Context, sm *SpeechMonitor, keySe
 		}
 	}
 
-	if err := sm.Consume(ctx, utterances); err != nil {
-		return errors.Wrap(err, "error when consuming utterances")
+	if err := sm.Consume(ctx, expectations); err != nil {
+		return errors.Wrap(err, "error when consuming expectations")
 	}
 
 	return nil
