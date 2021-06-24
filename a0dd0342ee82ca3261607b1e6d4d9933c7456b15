@@ -46,6 +46,30 @@
       },
       "revId": "a0dd0342ee82ca3261607b1e6d4d9933c7456b15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18abbf08_e1e02cbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-24T07:23:06Z",
+      "side": 1,
+      "message": "Can you provide an actual output line you want to process?\nWithout it I cannot see why are you processing the line this way. I assume this will be the case for other readers as well.",
+      "parentUuid": "0df5d3fb_ee39217b",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 4
+      },
+      "revId": "a0dd0342ee82ca3261607b1e6d4d9933c7456b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
