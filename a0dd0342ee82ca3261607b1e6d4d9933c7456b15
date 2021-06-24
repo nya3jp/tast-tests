@@ -94,6 +94,30 @@
       },
       "revId": "a0dd0342ee82ca3261607b1e6d4d9933c7456b15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2ac6047_ac963c7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-24T08:54:24Z",
+      "side": 1,
+      "message": "I see. Can you add one of these lines as a comment? Something like\n\u003e  \\\\ ... has context u:object_r:shared_relro_file:s0:c13,c260,c512,c768, should be u:object_r:shared_relro_file:s0\nshould be enough.\n\nAlso, in this case, you don\u0027t need any parenthesis in the Mustcompile(), like\n\u003e  `\\w:\\w*:\\w*:\\w*\\S*`\nIf you want to add some to help the reader, that is fine. I am just writing this, as you changed the regexp after my comment. Use the version you prefer.",
+      "parentUuid": "0bda09fa_07376683",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 4
+      },
+      "revId": "a0dd0342ee82ca3261607b1e6d4d9933c7456b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
