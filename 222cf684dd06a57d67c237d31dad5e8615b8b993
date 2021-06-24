@@ -16,6 +16,75 @@
       "message": "Jun, sorry for introducing more changes in last patch. Now the changes are minimized and new changes will be submitted by a new CL for review. Thanks for your patience on this. ",
       "revId": "222cf684dd06a57d67c237d31dad5e8615b8b993",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "519179c7_92cdfa0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/androidui.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-24T03:25:45Z",
+      "side": 1,
+      "message": "How about deprecate FindAndClick?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 1
+      },
+      "revId": "222cf684dd06a57d67c237d31dad5e8615b8b993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d516e71_0eaee553",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/androidui.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-24T03:25:45Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 23
+      },
+      "revId": "222cf684dd06a57d67c237d31dad5e8615b8b993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce955ac4_4d578fc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-24T03:25:45Z",
+      "side": 1,
+      "message": "keyboard is only used in search, it is weird to make it as part of the struct. It is not a necessary component.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "222cf684dd06a57d67c237d31dad5e8615b8b993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
