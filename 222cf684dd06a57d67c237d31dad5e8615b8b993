@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54c488f6_22848a7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/androidui.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-24T05:06:35Z",
+      "side": 1,
+      "message": "Ack. Thanks.",
+      "parentUuid": "248f3c71_786cf918",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 1
+      },
+      "revId": "222cf684dd06a57d67c237d31dad5e8615b8b993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d516e71_0eaee553",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "Okay, just removed it and created when using it. (But may change it back in future CLs when kb is used multiple times)",
       "parentUuid": "ce955ac4_4d578fc5",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "222cf684dd06a57d67c237d31dad5e8615b8b993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e3a3c11_e8d998e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-24T05:06:35Z",
+      "side": 1,
+      "message": "In future, I would suggest to pass kb into the function, rather than spotify structure. If you have another function using mouse, you do not want to add it to the struct, right?",
+      "parentUuid": "bde6e64b_5dbf53d8",
       "range": {
         "startLine": 25,
         "startChar": 0,
