@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf2b7e3c_ed238c27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T16:59:53Z",
+      "side": 1,
+      "message": "Because the block command might partially ran, unblock is run even if failure is seen to have a clean state.",
+      "parentUuid": "538e4cb1_06343dd2",
+      "revId": "3bdbe98269507c0a0329584bf3e70b1cf0f36103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e206fade_a081f1b9",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-23T16:41:09Z",
       "side": 1,
       "message": "Would it make sense to modify this util file and add parameters for your use case? \n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/firewall/util.go;l\u003d42?q\u003dfirewall%2Futil.go",
+      "revId": "3bdbe98269507c0a0329584bf3e70b1cf0f36103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f1a428c_92ae5a86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T16:59:53Z",
+      "side": 1,
+      "message": "I don\u0027t this case is good candidate to move to util as the use case is very specific to this test (e.g. inside namespaces, multiple interfaces, multiple protocols).\n\nBut, I ended up consolidating them, PTAL if that\u0027s okay, thanks!",
+      "parentUuid": "e206fade_a081f1b9",
       "revId": "3bdbe98269507c0a0329584bf3e70b1cf0f36103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "616a98cf_5a605e03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T16:59:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0863992e_df97fda3",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 222,
+        "endChar": 3
+      },
+      "revId": "3bdbe98269507c0a0329584bf3e70b1cf0f36103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b841e84f_fc3b4406",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-06-23T16:10:11Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 249,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 3
+      },
+      "revId": "3bdbe98269507c0a0329584bf3e70b1cf0f36103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "562666d9_79b6104f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T16:59:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b841e84f_fc3b4406",
       "range": {
         "startLine": 249,
         "startChar": 2,
