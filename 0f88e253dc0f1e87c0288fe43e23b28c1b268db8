@@ -16,6 +16,23 @@
       "message": "Hi PTAL thanks!",
       "revId": "0f88e253dc0f1e87c0288fe43e23b28c1b268db8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3573e55_b82ac9f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-06-24T05:27:32Z",
+      "side": 1,
+      "message": "super-nit: how about also adding a test case with multiple down and up, and a test case with paging candidates?",
+      "revId": "0f88e253dc0f1e87c0288fe43e23b28c1b268db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
