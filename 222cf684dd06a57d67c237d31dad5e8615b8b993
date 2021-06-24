@@ -205,6 +205,30 @@
       },
       "revId": "222cf684dd06a57d67c237d31dad5e8615b8b993",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1be33269_4d75e439",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-24T18:05:54Z",
+      "side": 1,
+      "message": "Hi Jun, thanks for your review and I\u0027m going to merge these CL chain now!\n\nI think the benefit of keeping kb as the member is that the caller just need to initiate it once and then don\u0027t have to prepare kb for further function calls. Otherwise it will have to pass kb around in the caller, also pass it around internally between different functions inside spotify. I guess keep it in struct just need trivial memory but provides convenience for the callers. We can discuss when we submit new CL.",
+      "parentUuid": "3e3a3c11_e8d998e8",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "222cf684dd06a57d67c237d31dad5e8615b8b993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
