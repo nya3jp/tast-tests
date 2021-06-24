@@ -60,12 +60,7 @@ func RefreshChromePolicies(ctx context.Context, cr *chrome.Chrome) error {
 		return errors.Wrap(err, "failed to create Test API connection")
 	}
 
-	// Refresh policies and make sure Chrome is still valid.
-	if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.refreshEnterprisePolicies)()`, nil); err != nil {
-		return errors.Wrap(err, "failed to refresh policies")
-	}
-
-	return nil
+	return Refresh(ctx, tconn)
 }
 
 // ResetChrome resets chrome and removes all policies previously served by the FakeDMS.
