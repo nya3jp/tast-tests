@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b23bcfee_7fc4cffa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-06-24T20:47:10Z",
+      "side": 1,
+      "message": "Do you think we should restrict this test to a few boards? \n\nAny concerns that we may consume a lot of device time for devices that are already under pressure from running other tests? ",
+      "revId": "8ac85dc7c1c485b50fa0025482cde900ed9b8276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5be6ae70_e553de6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-06-24T20:47:10Z",
+      "side": 1,
+      "message": "Should we update the comment to make clear this test is 30 min?",
+      "revId": "8ac85dc7c1c485b50fa0025482cde900ed9b8276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "873e8d6e_17e122b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-06-24T20:47:10Z",
+      "side": 1,
+      "message": "So duration is user-specified, or 1 min for docs/jamboard, 3 min for power, and 30 sec otherwise? Maybe a comment would be helpful here as well?",
+      "revId": "8ac85dc7c1c485b50fa0025482cde900ed9b8276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
