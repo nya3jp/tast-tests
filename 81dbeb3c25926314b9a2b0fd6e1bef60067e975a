@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bb743e5_cfd52118",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-24T05:39:55Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "81dbeb3c25926314b9a2b0fd6e1bef60067e975a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "574b0d77_2f41952a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-24T05:39:55Z",
+      "side": 1,
+      "message": "do you want to add this function in its(testserver)?",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 14
+      },
+      "revId": "81dbeb3c25926314b9a2b0fd6e1bef60067e975a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
