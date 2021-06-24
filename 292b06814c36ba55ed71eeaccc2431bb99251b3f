@@ -16,6 +16,23 @@
       "message": "PTAL (alongside the other patch in the chain), thanks!",
       "revId": "292b06814c36ba55ed71eeaccc2431bb99251b3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad0930d7_067bf159",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-24T22:18:47Z",
+      "side": 1,
+      "message": "tast shadow reviewer LGTM",
+      "revId": "292b06814c36ba55ed71eeaccc2431bb99251b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
