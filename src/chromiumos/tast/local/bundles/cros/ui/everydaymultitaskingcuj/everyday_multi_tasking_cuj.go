@@ -216,6 +216,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 	defer func(ctx context.Context) {
 		faillog.SaveScreenshotOnError(ctx, cr, outDir, func() bool { return retErr != nil })
 		faillog.DumpUITreeOnError(ctx, outDir, func() bool { return retErr != nil }, tconn)
+		cuj.DumpArcUITreeOnError(ctx, outDir, func() bool { return retErr != nil })
 		cuj.CloseBrowserTabs(ctx, tconn)
 		if appSpotify != nil {
 			appSpotify.Close(ctx, tconn)

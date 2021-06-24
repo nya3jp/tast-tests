@@ -6,8 +6,11 @@ package cuj
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/android/ui"
@@ -65,4 +68,33 @@ func ClickIfExistAction(obj *ui.Object, waitTime time.Duration) action.Action {
 	return func(ctx context.Context) error {
 		return ClickIfExist(ctx, obj, waitTime)
 	}
+}
+
+// DumpArcUITreeOnError dumps arc tree to 'arc_uidump.xml', when the test fails.
+func DumpArcUITreeOnError(ctx context.Context, outDir string, hasError func() bool) error {
+	if !hasError() {
+		return nil
+	}
+
+	a, err := arc.New(ctx, outDir)
+	if err != nil {
+		return errors.Wrap(err, "failed to setup arc")
+	}
+	defer a.Close(ctx)
+
+	if err := a.Command(ctx, "uiautomator", "dump").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to dump arc UI")
+	}
+
+	dir := filepath.Join(outDir, "faillog")
+	if err := os.MkdirAll(dir, 0777); err != nil {
+		return errors.Wrapf(err, "failed to create directory %s", dir)
+	}
+
+	file := filepath.Join(dir, "arc_uidump.xml")
+	if err := a.PullFile(ctx, "/sdcard/window_dump.xml", file); err != nil {
+		return errors.Wrap(err, "failed to pull UI dump to outDir")
+	}
+
+	return nil
 }
