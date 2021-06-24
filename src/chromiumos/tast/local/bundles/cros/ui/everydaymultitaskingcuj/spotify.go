@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -99,10 +100,18 @@ func (s *Spotify) Launch(ctx context.Context) (time.Duration, error) {
 }
 
 // Close dumps the ARC UI and closes Soptify app.
-func (s *Spotify) Close(ctx context.Context) error {
+// If dump is true, screenshot will be taken and UI hierarchy will be dumped.
+func (s *Spotify) Close(ctx context.Context, cr *chrome.Chrome, dump bool, dumpDir string) error {
 	if err := s.d.Close(ctx); err != nil {
 		// Just log the error.
 		testing.ContextLog(ctx, "Failed to close ARC UI device: ", err)
+	}
+	if dump {
+		faillog.SaveScreenshotOnError(ctx, cr, dumpDir, func() bool { return true })
+		if err := s.a.DumpUIHierarchyOnError(ctx, dumpDir, func() bool { return true }); err != nil {
+			// Just log the error.
+			testing.ContextLog(ctx, "Failed to dump ARC UI hierarchy: ", err)
+		}
 	}
 	if !s.launched {
 		return nil
