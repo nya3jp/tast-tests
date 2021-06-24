@@ -6,8 +6,8 @@ package health
 
 import (
 	"context"
+	"encoding/json"
 	"os"
-	"reflect"
 	"strconv"
 	"strings"
 
@@ -16,6 +16,14 @@ import (
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
+
+type fanInfo struct {
+	SpeedRpm int `json:"speed_rpm"`
+}
+
+type fanResult struct {
+	Fans []fanInfo `json:"fans"`
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -52,9 +60,23 @@ func getNumFans(ctx context.Context) (int, error) {
 	return numFans, nil
 }
 
+func validateFanData(result fanResult, numFans int) error {
+	if len(result.Fans) != numFans {
+		return errors.Errorf("Incorrect number of fans: got %d; want %d", len(result.Fans), numFans)
+	}
+
+	for _, fan := range result.Fans {
+		if fan.SpeedRpm < 0 {
+			return errors.Errorf("invalid speed_rpm: got %d; want 0+", fan.SpeedRpm)
+		}
+	}
+
+	return nil
+}
+
 func ProbeFanInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryFan}
-	records, err := croshealthd.RunAndParseTelem(ctx, params, s.OutDir())
+	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get fan telemetry info: ", err)
 	}
@@ -65,28 +87,15 @@ func ProbeFanInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get number of fans: ", err)
 	}
 
-	if len(records) != numFans+1 {
-		s.Fatalf("Incorrect number of records: got %d; want %d", len(records), numFans+1)
+	dec := json.NewDecoder(strings.NewReader(string(rawData)))
+	dec.DisallowUnknownFields()
+
+	var result fanResult
+	if err := dec.Decode(&result); err != nil {
+		s.Fatalf("Failed to decode fan data [%q], err [%v]", rawData, err)
 	}
 
-	// Verify the headers are correct.
-	want := []string{"speed_rpm"}
-	got := records[0]
-	if !reflect.DeepEqual(want, got) {
-		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
-	}
-
-	// Verify the records contain valid values.
-	for _, record := range records[1:] {
-		if len(record) != 1 {
-			s.Errorf("Wrong number of values: got %d; want 1", len(record))
-			continue
-		}
-
-		if speed, err := strconv.Atoi(record[0]); err != nil {
-			s.Errorf("Failed to convert %q (speed_rpm) to integer: %v", record[0], err)
-		} else if speed < 0 {
-			s.Errorf("Invalid speed_rpm: got %d; want 0+", speed)
-		}
+	if err := validateFanData(result, numFans); err != nil {
+		s.Fatalf("Failed to validate fan data, err [%v]", err)
 	}
 }
