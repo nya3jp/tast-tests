@@ -14,10 +14,8 @@ import (
 	"path"
 	"path/filepath"
 	"strings"
-	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/crosdisks"
@@ -72,18 +70,18 @@ func formatVFAT(ctx context.Context, devLoop string) error {
 }
 
 func mount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop, name string) (mountPath string, retErr error) {
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
-	defer cancel()
+	// cleanupCtx := ctx
+	// ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	// defer cancel()
 	sysPath := path.Join("/sys/devices/virtual/block", path.Base(devLoop))
 	if err := cd.AddDeviceToAllowlist(ctx, sysPath); err != nil {
 		return "", errors.Wrapf(err, "failed to add device %s to allowlist", sysPath)
 	}
-	defer func() {
-		if err := cd.RemoveDeviceFromAllowlist(cleanupCtx, sysPath); err != nil && retErr != nil {
-			retErr = errors.Wrapf(err, "failed to remove device %s from allowlist", sysPath)
-		}
-	}()
+	// defer func() {
+	// 	if err := cd.RemoveDeviceFromAllowlist(cleanupCtx, sysPath); err != nil && retErr != nil {
+	// 		retErr = errors.Wrapf(err, "failed to remove device %s from allowlist", sysPath)
+	// 	}
+	// }()
 	w, err := cd.WatchMountCompleted(ctx)
 	if err != nil {
 		return "", err
@@ -135,17 +133,17 @@ func RunTest(ctx context.Context, s *testing.State, a *arc.ARC, testFile string)
 	if err != nil {
 		s.Fatal("Failed to create image: ", err)
 	}
-	defer os.Remove(image)
+	//defer os.Remove(image)
 
 	devLoop, err := attachLoopDevice(ctx, image)
 	if err != nil {
 		s.Fatal("Failed to attach loop device: ", err)
 	}
-	defer func() {
-		if err := detachLoopDevice(ctx, devLoop); err != nil {
-			s.Error("Failed to detach from loop device: ", err)
-		}
-	}()
+	// defer func() {
+	// 	if err := detachLoopDevice(ctx, devLoop); err != nil {
+	// 		s.Error("Failed to detach from loop device: ", err)
+	// 	}
+	// }()
 	if err := formatVFAT(ctx, devLoop); err != nil {
 		s.Fatal("Failed to format VFAT file system: ", err)
 	}
@@ -159,11 +157,11 @@ func RunTest(ctx context.Context, s *testing.State, a *arc.ARC, testFile string)
 	if err != nil {
 		s.Fatal("Failed to mount file system: ", err)
 	}
-	defer func() {
-		if err := unmount(ctx, cd, devLoop); err != nil {
-			s.Error("Failed to unmount VFAT image: ", err)
-		}
-	}()
+	// defer func() {
+	// 	if err := unmount(ctx, cd, devLoop); err != nil {
+	// 		s.Error("Failed to unmount VFAT image: ", err)
+	// 	}
+	// }()
 
 	// Create a picture in the removable media.
 	tpath := filepath.Join(mountDir, testFile)
