@@ -14,6 +14,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/ad"
 	_ "chromiumos/tast/local/bundles/cros/ambient"
 	_ "chromiumos/tast/local/bundles/cros/apps"
+	_ "chromiumos/tast/local/bundles/cros/appsplatform"
 	_ "chromiumos/tast/local/bundles/cros/arc"
 	_ "chromiumos/tast/local/bundles/cros/arcappcompat"
 	_ "chromiumos/tast/local/bundles/cros/assistant"
