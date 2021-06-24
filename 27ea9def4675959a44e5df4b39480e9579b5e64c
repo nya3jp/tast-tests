@@ -16,6 +16,46 @@
       "message": "Thanks for the review.\n\nCalling tast-owners...",
       "revId": "27ea9def4675959a44e5df4b39480e9579b5e64c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "409c4f19_1b42dc4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-24T22:41:24Z",
+      "side": 1,
+      "message": "tast shadow reviewer LGTM ",
+      "revId": "27ea9def4675959a44e5df4b39480e9579b5e64c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cdfc500_45e9861d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-24T22:41:24Z",
+      "side": 1,
+      "message": "optional: this might could be a file constant.",
+      "range": {
+        "startLine": 92,
+        "startChar": 12,
+        "endLine": 92,
+        "endChar": 27
+      },
+      "revId": "27ea9def4675959a44e5df4b39480e9579b5e64c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
