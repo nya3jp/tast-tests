@@ -30,7 +30,7 @@ const (
 )
 
 // pwaFiles are data files required to serve the Play Billing PWA.
-// TODO(crbug/1127165): Move this to the fixture once data is supported.
+// TODO(b/187793648): Move this to the fixture once data is supported.
 var pwaFiles = []string{
 	"play_billing_icon.png",
 	"play_billing_index.html",
@@ -40,7 +40,7 @@ var pwaFiles = []string{
 }
 
 // DataFiles are the files required for each Play Billing tests.
-// TODO(crbug/1127165): Move this to the fixture once data is supported.
+// TODO(b/187793648): Move this to the fixture once data is supported.
 var DataFiles = append(pwaFiles, apk)
 
 func init() {
@@ -105,21 +105,25 @@ func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	arcDevice := s.ParentValue().(*arc.PreData).ARC
 	cr := s.ParentValue().(*arc.PreData).Chrome
 
-	// TODO(crbug/1127165): Move this to the fixture once data is supported.
-	const localDataPath = "/usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/arc/data"
+	// TODO(b/187793648): Move this to the fixture once data is supported.
+	const prebuiltLocalDataPath = "/usr/local/share/tast/data/chromiumos/tast/local/bundles/cros/appsplatform/data"
+	const builtLocalDataPath = "/usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/appsplatform/data"
+
+	// TODO(b/187793648): Replace with s.DataPath(apk) when data is supported in Fixtures.
+	// The data path changes based on whether -build=true or -build=false is supplied to `tast run`.
+	// Local test runs on your workstation use -build=true by default, while lab runs use -build=false.
+
+	// Use the built local data path if it exists, and fall back to the prebuilt data path otherwise.
+	localDataPath := builtLocalDataPath
+	if _, err := os.Stat(builtLocalDataPath); os.IsNotExist(err) {
+		localDataPath = prebuiltLocalDataPath
+	} else if err != nil {
+		s.Fatal("Failed to check if built local data path exists: ", err)
+	}
 
 	// Install the test APK.
 	if err := arcDevice.Install(ctx, filepath.Join(localDataPath, apk)); err != nil {
 		s.Fatal("Failed to install the APK: ", err)
-	}
-
-	uiAutomator, err := arcDevice.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed to initialize UI Automator: ", err)
-	}
-
-	if err := arcDevice.WaitIntentHelper(ctx); err != nil {
-		s.Fatal("Failed to wait for intent helper: ", err)
 	}
 
 	pwaDir, err := ioutil.TempDir("", "tast-play-billing-pwa")
@@ -128,9 +132,8 @@ func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	}
 	f.pwaDir = pwaDir
 	for _, name := range pwaFiles {
-		dataFilePath := filepath.Join(localDataPath, name)
 		pwaFilePath := filepath.Join(f.pwaDir, strings.TrimPrefix(name, "play_billing_"))
-		if err := fsutil.CopyFile(dataFilePath, pwaFilePath); err != nil {
+		if err := fsutil.CopyFile(filepath.Join(localDataPath, name), pwaFilePath); err != nil {
 			s.Fatalf("Failed to copy extension file %q: %v", name, err)
 		}
 	}
@@ -158,7 +161,7 @@ func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		}
 	}()
 
-	testApp, err := NewTestApp(ctx, cr, arcDevice, uiAutomator)
+	testApp, err := NewTestApp(ctx, cr, arcDevice)
 	if err != nil {
 		s.Fatal("Failed trying to setup test app: ", err)
 	}
