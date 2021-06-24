@@ -11,7 +11,8 @@
 
 <body>
   <h1>Play Billing Test PWA</h1>
-  <button type="button" onclick="buy('android.test.purchased')" id="android_test_purchased">Buy Test SKU</button>
+  <button type="button" onclick="buy('android.test.purchased')" id="android_test_purchased">Buy Successful Test SKU</button>
+  <button type="button" onclick="buy('android.test.cancel')" id="android_test_purchased">Buy Failure Test SKU</button>
   <script type="text/javascript">
     if (navigator.serviceWorker != null) {
       navigator.serviceWorker.register('/service.js')
