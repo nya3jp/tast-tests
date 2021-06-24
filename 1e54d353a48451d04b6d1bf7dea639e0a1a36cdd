@@ -22,6 +22,30 @@
       },
       "revId": "1e54d353a48451d04b6d1bf7dea639e0a1a36cdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46eb5ae3_ba9c85bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2021-06-24T02:42:47Z",
+      "side": 0,
+      "message": "As the results were already clean, closed this bug",
+      "parentUuid": "5ae5e2df_5ddd0673",
+      "range": {
+        "startLine": 142,
+        "startChar": 74,
+        "endLine": 142,
+        "endChar": 92
+      },
+      "revId": "1e54d353a48451d04b6d1bf7dea639e0a1a36cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
