@@ -44,28 +44,9 @@ func init() {
 	})
 }
 
-// getNthCandidateTextAndThen returns an action that performs two steps in sequence:
-// 1) Get the specified candidate.
-// 2) Pass the specified candidate into provided function and runs the returned action.
-// This is used when an action depends on the text of a candidate.
-func getNthCandidateTextAndThen(tconn *chrome.TestConn, n int, fn func(text string) uiauto.Action) uiauto.Action {
-	return func(ctx context.Context) error {
-		text, err := util.GetNthCandidateText(ctx, tconn, n)
-		if err != nil {
-			return err
-		}
-
-		if err := fn(text)(ctx); err != nil {
-			return err
-		}
-
-		return nil
-	}
-}
-
 // validateInputFieldFromNthCandidate returns an action that gets the candidate at the specified position and checks if the input field has the same value.
 func validateInputFieldFromNthCandidate(its *testserver.InputsTestServer, tconn *chrome.TestConn, inputField testserver.InputField, n int) uiauto.Action {
-	return getNthCandidateTextAndThen(tconn, n, func(text string) uiauto.Action {
+	return util.GetNthCandidateTextAndThen(tconn, n, func(text string) uiauto.Action {
 		return util.WaitForFieldTextToBe(tconn, inputField.Finder(), text)
 	})
 }
@@ -193,7 +174,7 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 				// Pop up the conversion candidates window to find the top conversion candidate.
 				kb.AccelAction("Space"),
 				kb.AccelAction("Space"),
-				getNthCandidateTextAndThen(tconn, 0, func(text string) uiauto.Action {
+				util.GetNthCandidateTextAndThen(tconn, 0, func(text string) uiauto.Action {
 					return uiauto.Combine("retype and press space to select default candidate",
 						clearAndFocus,
 						kb.TypeAction("nihongo"),
@@ -223,7 +204,7 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 				clearAndFocus,
 				kb.TypeAction("nihongo"),
 				uiauto.Repeat(3, kb.AccelAction("Tab")),
-				getNthCandidateTextAndThen(tconn, 2, func(text string) uiauto.Action {
+				util.GetNthCandidateTextAndThen(tconn, 2, func(text string) uiauto.Action {
 					return uiauto.Combine("press enter and verify text",
 						kb.AccelAction("Enter"),
 						ui.WaitUntilGone(util.PKCandidatesFinder),
