@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edcb2edc_a3ce62b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_gallery_button.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-06-24T03:50:24Z",
+      "side": 1,
+      "message": "Thanks for the suggestion.\nWe do have a tracking bug to migrate all the camera Tast tests to use fixture: b/177800595 .\nBut it is currently blocked by b/187793648 .\nTo make it consistent and easier to track, I\u0027ll change it to the fixture along with other tests.",
+      "parentUuid": "5b3e3be5_1fd6eabb",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "0112b009952701767d9a47bdeb655e87dd890db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86fe3a6d_934fb68a",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-23T20:48:48Z",
       "side": 1,
       "message": "FixtValue()",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "0112b009952701767d9a47bdeb655e87dd890db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8abeccc9_6a4d3369",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_gallery_button.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-06-24T03:50:24Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "86fe3a6d_934fb68a",
       "range": {
         "startLine": 36,
         "startChar": 9,
