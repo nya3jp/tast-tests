@@ -15,7 +15,18 @@ import (
 // Available RPC methods are listed at:
 // https://github.com/xiaocong/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/AutomatorService.java
 
-var errTimeout = errors.New("timeout")
+// ErrorTimeout defines an error for the ui timeout.
+type ErrorTimeout struct {
+	*errors.E
+}
+
+// IsTimeout returns true if the given error is of type ErrorTimeout.
+func IsTimeout(err error) bool {
+	_, ok := err.(*ErrorTimeout)
+	return ok
+}
+
+var errTimeout = &ErrorTimeout{E: errors.New("timeout")}
 
 // Object is a representation of an Android view.
 //
@@ -434,5 +445,10 @@ func (o *Object) info(ctx context.Context) (*objectInfo, error) {
 
 // wrapMethodError wraps an error returned from an RPC method.
 func wrapMethodError(method string, s *selector, err error) error {
-	return errors.Wrapf(err, "%s (selector=%v) failed", method, s)
+	newErr := errors.Wrapf(err, "%s (selector=%v) failed", method, s)
+	if IsTimeout(err) {
+		// Still return an ErrorTimeout instance so the caller can check the error type.
+		return &ErrorTimeout{E: newErr}
+	}
+	return newErr
 }
