@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dc7928d_fcd250b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_guest_mode_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-24T14:46:00Z",
+      "side": 1,
+      "message": "Also removed the call to First().",
+      "revId": "aa8c622c530689fab2d7cf434d8c264ee98d3fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
