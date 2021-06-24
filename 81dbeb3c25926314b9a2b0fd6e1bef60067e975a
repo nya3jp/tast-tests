@@ -39,6 +39,30 @@
       },
       "revId": "81dbeb3c25926314b9a2b0fd6e1bef60067e975a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93158291_dfe817af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-06-24T06:53:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "574b0d77_2f41952a",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 14
+      },
+      "revId": "81dbeb3c25926314b9a2b0fd6e1bef60067e975a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
