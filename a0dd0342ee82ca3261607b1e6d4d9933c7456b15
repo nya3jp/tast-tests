@@ -22,6 +22,30 @@
       },
       "revId": "a0dd0342ee82ca3261607b1e6d4d9933c7456b15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0df5d3fb_ee39217b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2021-06-24T02:42:47Z",
+      "side": 1,
+      "message": "Changed the Regex function.\n\nThe example I pasted here is an illustration only. The actual output of the message command is different. I need to find all the strings with regex matches and based on the command output, second one is expected context, while first one is the actual context.",
+      "parentUuid": "95d3708e_81eb3ac0",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 4
+      },
+      "revId": "a0dd0342ee82ca3261607b1e6d4d9933c7456b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
