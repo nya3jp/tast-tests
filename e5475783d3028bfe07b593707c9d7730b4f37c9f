@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0e2706e_430314b3",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-24T22:31:53Z",
+      "side": 1,
+      "message": "style: mkdir",
+      "range": {
+        "startLine": 343,
+        "startChar": 28,
+        "endLine": 343,
+        "endChar": 33
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10b22506_20b5503c",
         "filename": "src/chromiumos/tast/remote/firmware/helper.go",
         "patchSetId": 1
@@ -175,6 +198,29 @@
         "startChar": 62,
         "endLine": 387,
         "endChar": 66
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f537a9_c36bc106",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-06-24T22:31:53Z",
+      "side": 1,
+      "message": "style: \"USB\"",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 9
       },
       "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
