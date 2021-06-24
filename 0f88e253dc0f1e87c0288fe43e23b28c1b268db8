@@ -51,6 +51,29 @@
       "parentUuid": "e3573e55_b82ac9f0",
       "revId": "0f88e253dc0f1e87c0288fe43e23b28c1b268db8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce04628_25a2b967",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-24T05:39:55Z",
+      "side": 1,
+      "message": "Thanks for improving this.",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 30
+      },
+      "revId": "0f88e253dc0f1e87c0288fe43e23b28c1b268db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
