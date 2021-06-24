@@ -160,3 +160,14 @@ func CreateTestNotification(ctx context.Context, tconn *chrome.TestConn, notific
 	}
 	return id, nil
 }
+
+// ClearNotification clear a notification with the given id.
+func ClearNotification(ctx context.Context, tconn *chrome.TestConn, id string) error {
+	if err := tconn.Call(ctx, nil,
+		`async (id) =>
+		tast.promisify(chrome.notifications.clear)(id)`,
+		id); err != nil {
+		return errors.Wrap(err, "failed to clear notification")
+	}
+	return nil
+}
