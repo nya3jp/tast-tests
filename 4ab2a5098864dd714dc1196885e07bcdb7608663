@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8126d66_a2f34053",
+        "filename": "src/chromiumos/tast/local/android/ui/object.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-24T03:20:06Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand this correctly. Let say I passed n\u003d10 to this function, and it could perform 5 scroll steps. What is returned in this case? It\u0027s nice to clarify this in comments.",
+      "range": {
+        "startLine": 165,
+        "startChar": 5,
+        "endLine": 165,
+        "endChar": 74
+      },
+      "revId": "4ab2a5098864dd714dc1196885e07bcdb7608663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd27bcc_baca7d3c",
+        "filename": "src/chromiumos/tast/local/android/ui/object.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-24T03:20:06Z",
+      "side": 1,
+      "message": "I recommend designing this method to either (1) focus on methods returning a bool, or (2) focus on scroll-related methods. The current signature is somewhere between the two.\n\n- In the case of (1), I\u0027d name this method callSimpleBool and don\u0027t mention \"scrolling\" in comments.\n- In the case of (2), I\u0027d change the signature of this method to callScroll(ctx context.Context, method string, n int) (bool, error) (i.e. don\u0027t pass o.s and true from callers).\n\nI don\u0027t have strong opinion on which of the two approaches to take though.",
+      "range": {
+        "startLine": 184,
+        "startChar": 17,
+        "endLine": 184,
+        "endChar": 36
+      },
+      "revId": "4ab2a5098864dd714dc1196885e07bcdb7608663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2f5e0be_6168b039",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 3
