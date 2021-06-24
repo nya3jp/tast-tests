@@ -35,45 +35,14 @@ const (
 	YoutubeMusicAppName = "ytmusic"
 	// SpotifyAppName indicates to test against Spotify.
 	SpotifyAppName = "Spotify"
+
+	initialVolume = 60
 )
 
 // Run runs the EverydayMultitaskingCUJ test.
 // ccaSriptPaths is the scirpt paths used by CCA package to do camera testing.
 // account is the one used by Spotify APP to do login.
-//
-// TODO(crbug.com/1196849): split this large function.
 func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, tabletMode bool) (retErr error) {
-	const (
-		gmailURL        = "https://mail.google.com"
-		calendarURL     = "https://calendar.google.com/"
-		youtubeMusicURL = "https://music.youtube.com/channel/UCPC0L1d253x-KuMNwa05TpA"
-		huluURL         = "https://www.hulu.com/"
-		googleNewsURL   = "https://news.google.com/"
-		cnnNewsURL      = "https://edition.cnn.com/"
-		wikiURL         = "https://www.wikipedia.org/"
-		redditURL       = "https://www.reddit.com/"
-		initialVolume   = 60
-	)
-
-	// Basic tier test scenario: Have 2 browser windows open with 5 tabs each.
-	// 1. The first window URL list including Gmail, Calendar, YouTube Music, Hulu and Google News.
-	// 2. The second window URL list including Google News, CCN news, Wiki.
-	// Plus tier test scenario: Same as basic but click through 20 tabs (4 windows x 5 tabs).
-	// 1. The first and second window URL list are same as basic.
-	// 2. The third window URL list including Google News, CNN news, Wikipedia, Reddit.
-	// 3. The fourth window URL list is same as the third one.
-	firstWindowURLList := []string{gmailURL, calendarURL, youtubeMusicURL, huluURL, googleNewsURL}
-	secondWindowURLList := []string{googleNewsURL, cnnNewsURL, wikiURL, googleNewsURL, cnnNewsURL}
-	thirdWindowURLList := []string{googleNewsURL, cnnNewsURL, wikiURL, redditURL, cnnNewsURL}
-	fourthWindowURLList := thirdWindowURLList
-
-	// Basic tier URL list that will be opened in two browser windows.
-	pageList := [][]string{firstWindowURLList, secondWindowURLList}
-	// Plus tier URL list that will be opened in four browser windows.
-	if tier == cuj.Plus {
-		pageList = append(pageList, thirdWindowURLList, fourthWindowURLList)
-	}
-
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -147,12 +116,12 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 						wIdx++
 					}
 				}
-				appName = "Chrome"
+				winName := "Chrome"
 				if strings.Contains(ws[i].Title, SpotifyAppName) {
-					appName = SpotifyAppName
+					winName = SpotifyAppName
 				}
 				testing.ContextLogf(ctx, "Switching window to %q", ws[i].Title)
-				return uiHandler.SwitchToAppWindowByIndex(appName, wIdx)(ctx)
+				return uiHandler.SwitchToAppWindowByIndex(winName, wIdx)(ctx)
 			},
 		}
 		switchWindowTests = append(switchWindowTests, switchWindowByHotseatTest)
@@ -250,6 +219,105 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 		}); err != nil {
 			return errors.Wrap(err, "failed to launch Spotify")
 		}
+	}
+
+	if err := openAndSwitchTabs(ctx, tier, appName, cr, tconn, kb, topRow, ui, vh, uiHandler, recorder); err != nil {
+		return errors.Wrap(err, "failed to open and switch chrome tabs")
+	}
+
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get window list")
+	}
+
+	for _, subtest := range switchWindowTests {
+		testing.ContextLog(ctx, subtest.desc)
+		if err := recorder.Run(ctx, func(ctx context.Context) error {
+			if err := vh.SetVolume(ctx, initialVolume); err != nil {
+				return errors.Wrapf(err, "failed to set volume to %v percents", initialVolume)
+			}
+			testing.ContextLog(ctx, "Volume up")
+			if err := vh.VerifyVolumeChanged(ctx, func() error {
+				return kb.Accel(ctx, topRow.VolumeUp)
+			}); err != nil {
+				return errors.Wrap(err, `volume not changed after press "VolumeUp"`)
+			}
+
+			for i := range ws {
+				// Switch between windows by calling the switch window function.
+				if err := subtest.switchWindowFunc(ctx, ws, i); err != nil {
+					return errors.Wrap(err, "failed to switch window")
+				}
+			}
+			return nil
+		}); err != nil {
+			return errors.Wrap(err, "failed to run the switch window scenario")
+		}
+	}
+	testing.ContextLog(ctx, "Take photo and video")
+	if err := recorder.Run(ctx, func(ctx context.Context) error {
+		return takePhotoAndVideo(ctx, cr, ccaScriptPaths, outDir)
+	}); err != nil {
+		return errors.Wrap(err, "failed to run the camera scenario")
+	}
+
+	pv := perf.NewValues()
+	pv.Set(perf.Metric{
+		Name:      "Browser.StartTime",
+		Unit:      "ms",
+		Direction: perf.SmallerIsBetter,
+	}, float64(browserStartTime.Milliseconds()))
+	if appStartTime > 0 {
+		pv.Set(perf.Metric{
+			Name:      "Apps.StartTime",
+			Unit:      "ms",
+			Direction: perf.SmallerIsBetter,
+		}, float64(appStartTime))
+	}
+	if err = recorder.Record(ctx, pv); err != nil {
+		return errors.Wrap(err, "failed to report")
+	}
+	if err = pv.Save(outDir); err != nil {
+		return errors.Wrap(err, "failed to store values")
+	}
+	if err := recorder.SaveHistograms(outDir); err != nil {
+		return errors.Wrap(err, "failed to save histogram raw data")
+	}
+
+	return nil
+}
+
+func openAndSwitchTabs(ctx context.Context, tier cuj.Tier, appName string,
+	cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, topRow *input.TopRowLayout,
+	ui *uiauto.Context, vh *volume.Helper, uiHandler cuj.UIActionHandler, recorder *cuj.Recorder) error {
+	const (
+		gmailURL        = "https://mail.google.com"
+		calendarURL     = "https://calendar.google.com/"
+		youtubeMusicURL = "https://music.youtube.com/channel/UCPC0L1d253x-KuMNwa05TpA"
+		huluURL         = "https://www.hulu.com/"
+		googleNewsURL   = "https://news.google.com/"
+		cnnNewsURL      = "https://edition.cnn.com/"
+		wikiURL         = "https://www.wikipedia.org/"
+		redditURL       = "https://www.reddit.com/"
+	)
+
+	// Basic tier test scenario: Have 2 browser windows open with 5 tabs each.
+	// 1. The first window URL list including Gmail, Calendar, YouTube Music, Hulu and Google News.
+	// 2. The second window URL list including Google News, CCN news, Wiki.
+	// Plus tier test scenario: Same as basic but click through 20 tabs (4 windows x 5 tabs).
+	// 1. The first and second window URL list are same as basic.
+	// 2. The third window URL list including Google News, CNN news, Wikipedia, Reddit.
+	// 3. The fourth window URL list is same as the third one.
+	firstWindowURLList := []string{gmailURL, calendarURL, youtubeMusicURL, huluURL, googleNewsURL}
+	secondWindowURLList := []string{googleNewsURL, cnnNewsURL, wikiURL, googleNewsURL, cnnNewsURL}
+	thirdWindowURLList := []string{googleNewsURL, cnnNewsURL, wikiURL, redditURL, cnnNewsURL}
+	fourthWindowURLList := thirdWindowURLList
+
+	// Basic tier URL list that will be opened in two browser windows.
+	pageList := [][]string{firstWindowURLList, secondWindowURLList}
+	// Plus tier URL list that will be opened in four browser windows.
+	if tier == cuj.Plus {
+		pageList = append(pageList, thirdWindowURLList, fourthWindowURLList)
 	}
 
 	openBrowserWithTabs := func(urlList []string) error {
@@ -351,66 +419,6 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 	}); err != nil {
 		return errors.Wrap(err, "failed to run the open tabs and switch tabs scenario")
 	}
-
-	ws, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get window list")
-	}
-
-	for _, subtest := range switchWindowTests {
-		testing.ContextLog(ctx, subtest.desc)
-		if err := recorder.Run(ctx, func(ctx context.Context) error {
-			if err := vh.SetVolume(ctx, initialVolume); err != nil {
-				return errors.Wrapf(err, "failed to set volume to %v percents", initialVolume)
-			}
-			testing.ContextLog(ctx, "Volume up")
-			if err := vh.VerifyVolumeChanged(ctx, func() error {
-				return kb.Accel(ctx, topRow.VolumeUp)
-			}); err != nil {
-				return errors.Wrap(err, `volume not changed after press "VolumeUp"`)
-			}
-
-			for i := range ws {
-				// Switch between windows by calling the switch window function.
-				if err := subtest.switchWindowFunc(ctx, ws, i); err != nil {
-					return errors.Wrap(err, "failed to switch window")
-				}
-			}
-			return nil
-		}); err != nil {
-			return errors.Wrap(err, "failed to run the switch window scenario")
-		}
-	}
-	testing.ContextLog(ctx, "Take photo and video")
-	if err := recorder.Run(ctx, func(ctx context.Context) error {
-		return takePhotoAndVideo(ctx, cr, ccaScriptPaths, outDir)
-	}); err != nil {
-		return errors.Wrap(err, "failed to run the camera scenario")
-	}
-
-	pv := perf.NewValues()
-	pv.Set(perf.Metric{
-		Name:      "Browser.StartTime",
-		Unit:      "ms",
-		Direction: perf.SmallerIsBetter,
-	}, float64(browserStartTime.Milliseconds()))
-	if appStartTime > 0 {
-		pv.Set(perf.Metric{
-			Name:      "Apps.StartTime",
-			Unit:      "ms",
-			Direction: perf.SmallerIsBetter,
-		}, float64(appStartTime))
-	}
-	if err = recorder.Record(ctx, pv); err != nil {
-		return errors.Wrap(err, "failed to report")
-	}
-	if err = pv.Save(outDir); err != nil {
-		return errors.Wrap(err, "failed to store values")
-	}
-	if err := recorder.SaveHistograms(outDir); err != nil {
-		return errors.Wrap(err, "failed to save histogram raw data")
-	}
-
 	return nil
 }
 
