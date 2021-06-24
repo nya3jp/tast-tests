@@ -6,10 +6,31 @@ package health
 
 import (
 	"context"
+	"encoding/json"
+	"strings"
 
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
+
+type blockDeviceInfo struct {
+	BytesReadSinceLastBoot          string  `json:"bytes_read_since_last_boot"`
+	BytesWrittenSinceLastBoot       string  `json:"bytes_written_since_last_boot"`
+	IoTimeSecondsSinceLastBoot      string  `json:"io_time_seconds_since_last_boot"`
+	Name                            string  `json:"name"`
+	Path                            string  `json:"path"`
+	ReadTimeSecondsSinceLastBoot    string  `json:"read_time_seconds_since_last_boot"`
+	Serial                          string  `json:"serial"`
+	Size                            string  `json:"size"`
+	Type                            string  `json:"type"`
+	WriteTimeSecondsSinceLastBoot   string  `json:"write_time_seconds_since_last_boot"`
+	DiscardTimeSecondsSinceLastBoot *string `json:"discard_time_seconds_since_last_boot"`
+	ManufacturerID                  int     `json:"manufacturer_id"`
+}
+
+type blockDeviceResult struct {
+	BlockDevices []blockDeviceInfo `json:"block_devices"`
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -28,13 +49,20 @@ func init() {
 
 func ProbeBlockDevices(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryStorage}
-	records, err := croshealthd.RunAndParseTelem(ctx, params, s.OutDir())
+	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get storage telemetry info: ", err)
 	}
 
-	// Every board should have at least one non-removable block device.
-	if len(records) < 2 {
-		s.Fatalf("Wrong number of output lines: got %d; want 2+", len(records))
+	dec := json.NewDecoder(strings.NewReader(string(rawData)))
+	dec.DisallowUnknownFields()
+
+	var blockDevice blockDeviceResult
+	if err := dec.Decode(&blockDevice); err != nil {
+		s.Fatalf("Failed to decode storage data [%q], err [%v]", rawData, err)
+	}
+
+	if len(blockDevice.BlockDevices) < 1 {
+		s.Fatalf("Wrong number of block device: got %d; want 1+", len(blockDevice.BlockDevices))
 	}
 }
