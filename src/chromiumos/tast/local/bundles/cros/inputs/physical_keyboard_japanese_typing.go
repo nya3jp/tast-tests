@@ -44,28 +44,9 @@ func init() {
 	})
 }
 
-// getNthCandidateTextAndThen returns an action that performs two steps in sequence:
-// 1) Get the specified candidate.
-// 2) Pass the specified candidate into provided function and runs the returned action.
-// This is used when an action depends on the text of a candidate.
-func getNthCandidateTextAndThen(tconn *chrome.TestConn, n int, fn func(text string) uiauto.Action) uiauto.Action {
-	return func(ctx context.Context) error {
-		text, err := util.GetNthCandidateText(ctx, tconn, n)
-		if err != nil {
-			return err
-		}
-
-		if err := fn(text)(ctx); err != nil {
-			return err
-		}
-
-		return nil
-	}
-}
-
 // validateInputFieldFromNthCandidate returns an action that gets the candidate at the specified position and checks if the input field has the same value.
 func validateInputFieldFromNthCandidate(its *testserver.InputsTestServer, tconn *chrome.TestConn, inputField testserver.InputField, n int) uiauto.Action {
-	return getNthCandidateTextAndThen(tconn, n, func(text string) uiauto.Action {
+	return util.GetNthCandidateTextAndThen(tconn, n, func(text string) uiauto.Action {
 		return util.WaitForFieldTextToBe(tconn, inputField.Finder(), text)
 	})
 }
@@ -118,11 +99,6 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	clearAndFocus := uiauto.Combine("clear input field and focus",
-		its.Clear(inputField),
-		its.ClickFieldAndWaitForActive(inputField),
-	)
-
 	subtests := []struct {
 		Name   string
 		Action uiauto.Action
@@ -137,7 +113,7 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		{
 			Name: "TabCyclesThroughCandidates",
 			Action: uiauto.Combine("cycle through candidates with tab",
-				clearAndFocus,
+				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihongo"),
 				uiauto.Repeat(3, kb.AccelAction("Tab")),
 				validateInputFieldFromNthCandidate(its, tconn, inputField, 2),
@@ -150,7 +126,7 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		{
 			Name: "ArrowKeysCycleThroughCandidates",
 			Action: uiauto.Combine("cycle through candidates with arrow keys",
-				clearAndFocus,
+				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihongo"),
 				uiauto.Repeat(3, kb.AccelAction("Down")),
 				validateInputFieldFromNthCandidate(its, tconn, inputField, 2),
@@ -163,7 +139,7 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		{
 			Name: "TabAndArrowKeysCyclesThroughPages",
 			Action: uiauto.Combine("cycle through pages with tab and arrow keys",
-				clearAndFocus,
+				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihongo"),
 				// The Japanese IME shows a max of 9 candidates per page.
 				uiauto.Repeat(10, kb.AccelAction("Tab")),
@@ -176,7 +152,7 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		{
 			Name: "NumberKeySelectsCandidate",
 			Action: uiauto.Combine("bring up candidates and select with number key",
-				clearAndFocus,
+				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihongo"),
 				kb.AccelAction("Tab"),
 				uiauto.Repeat(5, kb.AccelAction("Tab")),
@@ -188,14 +164,14 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		{
 			Name: "SpaceSelectsTopConversionCandidate",
 			Action: uiauto.Combine("bring up the conversion candidates window",
-				clearAndFocus,
+				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihongo"),
 				// Pop up the conversion candidates window to find the top conversion candidate.
 				kb.AccelAction("Space"),
 				kb.AccelAction("Space"),
-				getNthCandidateTextAndThen(tconn, 0, func(text string) uiauto.Action {
+				util.GetNthCandidateTextAndThen(tconn, 0, func(text string) uiauto.Action {
 					return uiauto.Combine("retype and press space to select default candidate",
-						clearAndFocus,
+						its.ClearThenClickFieldAndWaitForActive(inputField),
 						kb.TypeAction("nihongo"),
 						kb.AccelAction("Space"),
 						ui.WaitUntilGone(util.PKCandidatesFinder),
@@ -209,7 +185,7 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		{
 			Name: "SpaceCyclesThroughConversionCandidates",
 			Action: uiauto.Combine("type some text",
-				clearAndFocus,
+				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihongo"),
 				uiauto.Repeat(5, kb.AccelAction("Space")),
 				validateInputFieldFromNthCandidate(its, tconn, inputField, 4),
@@ -220,10 +196,10 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		{
 			Name: "EnterSubmitsCandidate",
 			Action: uiauto.Combine("type some text",
-				clearAndFocus,
+				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihongo"),
 				uiauto.Repeat(3, kb.AccelAction("Tab")),
-				getNthCandidateTextAndThen(tconn, 2, func(text string) uiauto.Action {
+				util.GetNthCandidateTextAndThen(tconn, 2, func(text string) uiauto.Action {
 					return uiauto.Combine("press enter and verify text",
 						kb.AccelAction("Enter"),
 						ui.WaitUntilGone(util.PKCandidatesFinder),
