@@ -50,7 +50,10 @@ function buy(sku) {
                     "Has enrolled instrument." :
                     "No enrolled instrument.");
 
-                request.show().then((response) => response.complete('success'));
+                request.show().then((response) => {
+                    console.log('payment successful');
+                    response.complete('success');
+                });
             })
             .catch(error => console.error(error.message));
     }
