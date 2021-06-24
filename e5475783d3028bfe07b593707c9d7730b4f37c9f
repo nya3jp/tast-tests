@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6c370bf_73774525",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-24T08:35:56Z",
+      "side": 1,
+      "message": "I have minor comments only.\n",
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10b22506_20b5503c",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-24T08:35:56Z",
+      "side": 1,
+      "message": "style: mount\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 346,
+        "startChar": 28,
+        "endLine": 346,
+        "endChar": 33
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0f7fc79_dff2c43c",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-24T08:35:56Z",
+      "side": 1,
+      "message": "In this case the volume is not unmounted. I recommend using deferred statements to always unmount the volume.",
+      "range": {
+        "startLine": 354,
+        "startChar": 9,
+        "endLine": 354,
+        "endChar": 16
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1deedc0_1f46def7",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-24T08:35:56Z",
+      "side": 1,
+      "message": "style: unmount",
+      "range": {
+        "startLine": 358,
+        "startChar": 28,
+        "endLine": 358,
+        "endChar": 35
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee7febf_4b9ba112",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-24T08:35:56Z",
+      "side": 1,
+      "message": "nit\u0026optional: I recommend early returns to reduce nesting.\n\n if releaseBuilderPath \u003d\u003d dutBuilderPath {\n   return nil\n }",
+      "range": {
+        "startLine": 370,
+        "startChar": 1,
+        "endLine": 370,
+        "endChar": 42
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ba5268_36e869c0",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-24T08:35:56Z",
+      "side": 1,
+      "message": "chromeos-image-archive is ACL\u0027ed, so we need to use different URLs when tests are run outside of Chrome OS CI, e.g. moblab. If you don\u0027t have a plan to run this test outside of Chrome OS CI, it\u0027s okay for now, but it\u0027s likely we have to revisit this later.",
+      "range": {
+        "startLine": 373,
+        "startChar": 18,
+        "endLine": 373,
+        "endChar": 50
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d8b110e_fb632545",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-24T08:35:56Z",
+      "side": 1,
+      "message": "Use filepath instead for file paths.\nhttps://pkg.go.dev/path/filepath",
+      "range": {
+        "startLine": 387,
+        "startChar": 62,
+        "endLine": 387,
+        "endChar": 66
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
