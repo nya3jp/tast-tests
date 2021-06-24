@@ -102,6 +102,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f79f4c4a_516bbc64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-24T22:09:00Z",
+      "side": 1,
+      "message": "It might be helpful to add a comment to note this.",
+      "parentUuid": "6f186faf_bb0ba594",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 84
+      },
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d011de0d_4f77c0ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
         "patchSetId": 2

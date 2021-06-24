@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71bd02ff_7dd20a96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-24T22:09:00Z",
+      "side": 1,
+      "message": "tast shadow reviewer LGTM % comment",
+      "revId": "360a0d6ed4bf5fd83b8ec79fcc2d34f2cc299eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
