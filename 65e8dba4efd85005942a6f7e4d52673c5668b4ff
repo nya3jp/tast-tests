@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23947311_bcb93bde",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-24T08:44:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "441a109e_5e6d4c18",
+      "revId": "65e8dba4efd85005942a6f7e4d52673c5668b4ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f975908_f5ee1e98",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-06-24T04:14:25Z",
       "side": 1,
       "message": "instead of manually counting the length, let\u0027s do |charIndex !\u003d len(speakTest)|",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 19
+      },
+      "revId": "65e8dba4efd85005942a6f7e4d52673c5668b4ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54a239d8_ff7f2964",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-24T08:44:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f975908_f5ee1e98",
       "range": {
         "startLine": 102,
         "startChar": 4,
