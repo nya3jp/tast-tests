@@ -16,6 +16,23 @@
       "message": "Thank you Ilja for the review.\n\nKeigo, PTAL.",
       "revId": "dbca88352917a47b8a9bab194ade4223dfe2d059",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a66ede07_67e08992",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-06-24T15:04:33Z",
+      "side": 1,
+      "message": "oka@ Friendly ping.",
+      "revId": "dbca88352917a47b8a9bab194ade4223dfe2d059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
