@@ -46,6 +46,30 @@
       },
       "revId": "1f8cb0804de090603302e09f19043b24cc39517b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c4c758_39980932",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-24T03:19:18Z",
+      "side": 1,
+      "message": "mouseClick does not query node twice. The polling is done in Location, and returns rect used in click. For this function, it can be completely done in one piece of javascript, avoiding communicate twice between golang and js. Also you want to push default action to the node, you do not need to return the node for further action.\n\ndoDefault :\u003d fmt.Sprintf(`\n\t(async () \u003d\u003e {\n\t\t%s\n\t\tnode.doDefault();\n\t})()\n`, q)\n\t\nif err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n\treturn ac.tconn.Eval(ctx, doDefault, nil)\n}, \u0026ac.pollOpts); err !\u003d nil {\n\treturn nil, err\n}",
+      "parentUuid": "c95cd449_87d071d1",
+      "range": {
+        "startLine": 708,
+        "startChar": 2,
+        "endLine": 710,
+        "endChar": 3
+      },
+      "revId": "1f8cb0804de090603302e09f19043b24cc39517b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
