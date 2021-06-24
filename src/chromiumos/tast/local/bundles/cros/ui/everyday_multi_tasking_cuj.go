@@ -196,7 +196,8 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	s.Log("Running test with tablet mode: ", tabletMode)
 
 	ccaScriptPaths := []string{s.DataPath("cca_ui.js")}
-	if err := et.Run(ctx, cr, a, tier, ccaScriptPaths, s.OutDir(), app, account, tabletMode); err != nil {
+	testRunParams := et.NewRunParams(cr, a, tier, ccaScriptPaths, s.OutDir(), app, account, tabletMode)
+	if err := et.Run(ctx, testRunParams); err != nil {
 		s.Fatal("Failed to run everyday multi-tasking cuj test: ", err)
 	}
 }

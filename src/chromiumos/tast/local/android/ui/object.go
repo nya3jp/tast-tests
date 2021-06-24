@@ -15,7 +15,18 @@ import (
 // Available RPC methods are listed at:
 // https://github.com/xiaocong/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/AutomatorService.java
 
-var errTimeout = errors.New("timeout")
+// ErrorTimeout defines an error for the ui timeout.
+type ErrorTimeout struct {
+	*errors.E
+}
+
+// IsTimeout returns true if the given error is of type ErrorTimeout.
+func IsTimeout(err error) bool {
+	_, ok := err.(*ErrorTimeout)
+	return ok
+}
+
+var errTimeout = &ErrorTimeout{E: errors.New("timeout")}
 
 // Object is a representation of an Android view.
 //
