@@ -9,13 +9,15 @@ package a11y
 import (
 	"context"
 	"fmt"
+	"reflect"
 	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -94,30 +96,45 @@ func NewChromeVoxConn(ctx context.Context, c *chrome.Chrome) (*ChromeVoxConn, er
 }
 
 // focusedNode returns the currently focused node of ChromeVox.
-// The returned node should be release by the caller.
-func (cv *ChromeVoxConn) focusedNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
-	obj := &chrome.JSObject{}
-	if err := cv.Eval(ctx, "ChromeVoxState.instance.currentRange.start.node", obj); err != nil {
-		return nil, err
+func (cv *ChromeVoxConn) focusedNode(ctx context.Context, tconn *chrome.TestConn) (*uiauto.NodeInfo, error) {
+	var info uiauto.NodeInfo
+	if err := cv.Eval(ctx, `(() => {
+		const node = ChromeVoxState.instance.currentRange.start.node;
+		// Return an object that matches the shape of NodeInfo.
+		return {
+				checked: node.checked,
+				className: node.className,
+				htmlAttributes: node.htmlAttributes,
+				location: node.location,
+				name: node.name,
+				restriction: node.restriction,
+				role: node.role,
+				state: node.state,
+				value: node.value,
+			};
+	})()`, &info); err != nil {
+		return nil, errors.Wrap(err, "failed to retrieve the currently focused ChromeVox node")
 	}
-	return ui.NewNode(ctx, tconn, obj)
+	return &info, nil
 }
 
-// WaitForFocusedNode polls until the properties of the focused node matches the given params.
+// WaitForFocusedNode polls until the properties of the focused node matches the finder.
 // timeout specifies the timeout to use when polling.
-func (cv *ChromeVoxConn) WaitForFocusedNode(ctx context.Context, tconn *chrome.TestConn, params *ui.FindParams, timeout time.Duration) error {
-	// Wait for focusClassName to receive focus.
+func (cv *ChromeVoxConn) WaitForFocusedNode(ctx context.Context, tconn *chrome.TestConn, finder *nodewith.Finder, timeout time.Duration) error {
+	expectedNode, err := uiauto.New(tconn).Info(ctx, finder)
+	if err != nil {
+		return err
+	}
+
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		focused, err := cv.focusedNode(ctx, tconn)
+		focusedNode, err := cv.focusedNode(ctx, tconn)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
-		defer focused.Release(ctx)
 
-		if match, err := focused.Matches(ctx, *params); err != nil {
-			return testing.PollBreak(err)
-		} else if !match {
-			return errors.Errorf("focused node is incorrect: got %v, want %v", focused, params)
+		match := reflect.DeepEqual(expectedNode, focusedNode)
+		if !match {
+			return errors.Errorf("focused node is incorrect: got %v, want %v", focusedNode, expectedNode)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {

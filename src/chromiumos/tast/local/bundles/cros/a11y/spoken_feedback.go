@@ -13,7 +13,8 @@ import (
 	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -117,10 +118,7 @@ func SpokenFeedback(ctx context.Context, s *testing.State) {
 	defer sm.Close()
 
 	// Wait for ChromeVox to focus the root web area.
-	// TODO(akihiroota): use uiauto instead of ui.
-	if err = cvconn.WaitForFocusedNode(ctx, tconn, &ui.FindParams{
-		Role: ui.RoleTypeRootWebArea,
-	}, 10*time.Second); err != nil {
+	if err = cvconn.WaitForFocusedNode(ctx, tconn, nodewith.Role(role.RootWebArea).First(), 10*time.Second); err != nil {
 		s.Error("Failed to wait for initial ChromeVox focus: ", err)
 	}
 
