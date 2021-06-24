@@ -16,6 +16,23 @@
       "message": "per chat with Jun, they\u0027re leaving google and so no longer a tast owner. re-adding tast-owners so gwsq can find a new reviewer",
       "revId": "cab7a976a1e537da415f34fbc9caa40f33ebb488",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3616dde1_fbf4fb66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-06-24T17:11:06Z",
+      "side": 1,
+      "message": "no, bad gwsq :P",
+      "revId": "cab7a976a1e537da415f34fbc9caa40f33ebb488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
