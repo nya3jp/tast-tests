@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fd289e5_8d029b5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-24T23:06:13Z",
+      "side": 1,
+      "message": "The failures were due to a diff errors. I have put \"informational\" back to those tests. Submit to CQ again to make sure I did break anything.",
+      "revId": "1ff790604ef30622db5e12b7aa60bfb8865482fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
