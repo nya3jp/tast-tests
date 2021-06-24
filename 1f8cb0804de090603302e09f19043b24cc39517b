@@ -22,6 +22,30 @@
       },
       "revId": "1f8cb0804de090603302e09f19043b24cc39517b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c95cd449_87d071d1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-24T02:40:12Z",
+      "side": 1,
+      "message": "why can\u0027t it query it twice? since some of other functions also query the node twice (i.e., mouseClick). I don\u0027t think it is good idea to poll the below query, since it is not intended to make sure the existence of the node. They may do the same thing, but the semantics are different. \n\nAlternatively, I would rather do a polling to DoDefault from outside or check the existence of node before DoDefault like in the previous patch. WDYT?",
+      "parentUuid": "de96f3d6_bb0975cc",
+      "range": {
+        "startLine": 708,
+        "startChar": 2,
+        "endLine": 710,
+        "endChar": 3
+      },
+      "revId": "1f8cb0804de090603302e09f19043b24cc39517b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
