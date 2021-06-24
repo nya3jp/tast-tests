@@ -33,6 +33,64 @@
       "message": "+Hidehiko to reviewers\nHi Hidehiko, PTAL",
       "revId": "03a8c86419293b197f700711f48bc89d036917fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f894a5ff_1e598bcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-24T10:13:58Z",
+      "side": 1,
+      "message": "Thanks for the CL, and welcome to Go and Tast!",
+      "parentUuid": "da2994fd_d59a40b3",
+      "revId": "03a8c86419293b197f700711f48bc89d036917fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "732de39d_00d0a60e",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-24T10:13:58Z",
+      "side": 1,
+      "message": "In the current CL, we assume that there is at most one instance variable, but IIUC an upstart job instances can be parameterized with multiple variables, e.g.\n\n instance ${FOO}-${BAR}\n \nc.f. http://upstart.ubuntu.com/cookbook/#instance\n\nActually, RestartJob and StartJob already support passing extra arguments to initctl. Isn\u0027t it enough to expand the same approach to other functions like JobStatus, e.g.\n\n func JobStatus(ctx context.Context, job string, args ...string) (...)",
+      "revId": "03a8c86419293b197f700711f48bc89d036917fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c36ec6b9_30c2f246",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-24T10:13:58Z",
+      "side": 1,
+      "message": "Do we need to use `initctl list`? I thought `initctl status` works by passing extra arguments, e.g.\n\n initctl status jobname FOO\u003dbar",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 53
+      },
+      "revId": "03a8c86419293b197f700711f48bc89d036917fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
