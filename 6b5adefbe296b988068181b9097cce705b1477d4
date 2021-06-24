@@ -16,6 +16,24 @@
       "message": "Can you add a code owner (or someone who is familiar with the context) as a reviewer as well? ",
       "revId": "6b5adefbe296b988068181b9097cce705b1477d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a7243b_a26f2a77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2021-06-24T08:45:23Z",
+      "side": 1,
+      "message": "Adding nya@ who had reviewed this earlier.",
+      "parentUuid": "56fe36f0_9b296bca",
+      "revId": "6b5adefbe296b988068181b9097cce705b1477d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
