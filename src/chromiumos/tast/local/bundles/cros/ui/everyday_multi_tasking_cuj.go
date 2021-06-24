@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/cuj/bluetooth"
@@ -141,6 +142,29 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to connect bluetooth: ", err)
 			}
 		}(cleanupCtx)
+	}
+
+	// The cras active node will change if the bluetooth has been connected or disconnected.
+	// Wait until cras node change completes before doing output volume testing.
+	condition := func(cn *audio.CrasNode) bool {
+		if !cn.Active {
+			return false
+		}
+
+		// According to src/third_party/adhd/cras/README.dbus-api,
+		// the audio.CrasNode.Type should be "BLUETOOTH" when a BlueTooth device
+		// is used as input or output.
+		if enableBT {
+			return cn.Type == "BLUETOOTH"
+		}
+		return cn.Type != "BLUETOOTH"
+	}
+	cras, err := audio.NewCras(ctx)
+	if err != nil {
+		s.Fatal("Failed to create cras: ", err)
+	}
+	if err := cras.WaitForDeviceUntil(ctx, condition, 40*time.Second); err != nil {
+		s.Fatalf("Failed to wait for cras nodes to be in expected status: %v; please check the DUT log for possible audio device connection issue", err)
 	}
 
 	// Spotify login account.

@@ -64,7 +64,7 @@ func (vh *Helper) GetVolume(ctx context.Context) (int, error) {
 		return 0, errors.Wrap(err, "failed to get active cras node")
 	}
 	if vh.activeNode.ID != node.ID {
-		return 0, errors.Errorf("active node ID changed from %v to %v during the test", vh.activeNode.ID, node.ID)
+		return 0, errors.Errorf("cras active node changed from %+v to %+v during the test", vh.activeNode, node)
 	}
 	vh.activeNode = node
 	return int(vh.activeNode.NodeVolume), nil

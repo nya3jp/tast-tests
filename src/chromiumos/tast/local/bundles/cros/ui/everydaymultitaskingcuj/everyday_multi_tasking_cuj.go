@@ -96,9 +96,16 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to set up ARC and Play Store")
+		return errors.Wrap(err, "failed to create new ARC UI device")
 	}
-	defer d.Close(cleanupCtx)
+	closeArcUIDevice := func(ctx context.Context) {
+		// Determine whether this function has been called already.
+		if d != nil {
+			d.Close(ctx)
+			d = nil
+		}
+	}
+	defer closeArcUIDevice(cleanupCtx)
 
 	vh, err := volume.NewVolumeHelper(ctx)
 	if err != nil {
@@ -216,6 +223,8 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 	defer func(ctx context.Context) {
 		faillog.SaveScreenshotOnError(ctx, cr, outDir, func() bool { return retErr != nil })
 		faillog.DumpUITreeOnError(ctx, outDir, func() bool { return retErr != nil }, tconn)
+		closeArcUIDevice(ctx) // Close UI device first before dumping ARC UI hierarchy.
+		a.DumpUIHierarchyOnError(ctx, outDir, func() bool { return retErr != nil })
 		cuj.CloseBrowserTabs(ctx, tconn)
 		if appSpotify != nil {
 			appSpotify.Close(ctx, tconn)

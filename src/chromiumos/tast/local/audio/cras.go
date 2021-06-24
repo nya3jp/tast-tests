@@ -199,6 +199,25 @@ func (c *Cras) SetOutputNodeVolume(ctx context.Context, node CrasNode, volume in
 	return c.call(ctx, "SetOutputNodeVolume", node.ID, volume).Err
 }
 
+// WaitForDeviceUntil waits until any cras node meets the given condition.
+// condition is a function that takes a cras node as input and returns true if the node status
+// satisfies the criteria.
+func (c *Cras) WaitForDeviceUntil(ctx context.Context, condition func(*CrasNode) bool, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		nodes, err := c.GetNodes(ctx)
+		if err != nil {
+			return err
+		}
+
+		for _, n := range nodes {
+			if condition(&n) {
+				return nil
+			}
+		}
+		return errors.New("cras node(s) not in requested condition")
+	}, &testing.PollOptions{Timeout: timeout, Interval: 1 * time.Second})
+}
+
 // WaitForDevice waits for specified types of stream nodes to be active.
 // You can pass the streamType as a bitmap to wait for both input and output
 // nodes to be active. Ex: WaitForDevice(ctx, InputStream|OutputStream)
@@ -209,35 +228,25 @@ func (c *Cras) SetOutputNodeVolume(ctx context.Context, node CrasNode, volume in
 // too. For this case, we should call power.TurnOnDisplay to turn on a display
 // to re-enable an internal speaker.
 func WaitForDevice(ctx context.Context, streamType StreamType) error {
-	checkActiveNodes := func(ctx context.Context) error {
-		cras, err := NewCras(ctx)
-		if err != nil {
-			return err
-		}
-		crasNodes, err := cras.GetNodes(ctx)
-		if err != nil {
-			return err
-		}
-
-		var active StreamType
-		for _, n := range crasNodes {
-			if n.Active {
-				if n.IsInput {
-					active |= InputStream
-				} else {
-					active |= OutputStream
-				}
-
-				if streamType&active == streamType {
-					return nil
-				}
-			}
-		}
-
-		return errors.Errorf("node(s) %+v not in requested state", crasNodes)
+	cras, err := NewCras(ctx)
+	if err != nil {
+		return err
 	}
 
-	return testing.Poll(ctx, checkActiveNodes, &testing.PollOptions{Timeout: 10 * time.Second})
+	checkActiveNode := func(n *CrasNode) bool {
+		if !n.Active {
+			return false
+		}
+		var active StreamType
+		if n.IsInput {
+			active |= InputStream
+		} else {
+			active |= OutputStream
+		}
+		return streamType&active == streamType
+	}
+
+	return cras.WaitForDeviceUntil(ctx, checkActiveNode, 10*time.Second)
 }
 
 // GetCRASPID finds the PID of cras.
