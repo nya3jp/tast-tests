@@ -70,6 +70,30 @@
       },
       "revId": "a0dd0342ee82ca3261607b1e6d4d9933c7456b15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bda09fa_07376683",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2021-06-24T08:45:23Z",
+      "side": 1,
+      "message": "Sample output:\n\n\n```\n/home/.shadow/9cc39ae8dc060a6c6cb339f3c6d6ec4855a8752e/mount/root/android-data/data/misc/shared_relro/libwebviewchromium32.relro has context u:object_r:shared_relro_file:s0:c13,c260,c512,c768, should be u:object_r:shared_relro_file:s0\n/home/.shadow/9cc39ae8dc060a6c6cb339f3c6d6ec4855a8752e/mount/root/android-data/data/misc/shared_relro/libwebviewchromium64.relro has context u:object_r:shared_relro_file:s0:c13,c260,c512,c768, should be u:object_r:shared_relro_file:s0\n/home/.shadow/9cc39ae8dc060a6c6cb339f3c6d6ec4855a8752e/mount/root/android-data/data/misc/profiles/cur/0 has context u:object_r:user_profile_root_file:s0:c512,c768, should be u:object_r:user_profile_root_file:s0\n```",
+      "parentUuid": "18abbf08_e1e02cbb",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 4
+      },
+      "revId": "a0dd0342ee82ca3261607b1e6d4d9933c7456b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
