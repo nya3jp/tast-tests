@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34320deb_5575162d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-24T05:18:50Z",
+      "side": 1,
+      "message": "changed to cleanupRecorderCtx",
+      "parentUuid": "3ebd6d5c_e28f4638",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 11
+      },
+      "revId": "a2ddf3e040d97e81f09fb79c0f67a841a4559687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec36c3b1_064f1e70",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-23T23:55:06Z",
       "side": 1,
       "message": "nit: the first",
+      "range": {
+        "startLine": 262,
+        "startChar": 21,
+        "endLine": 262,
+        "endChar": 26
+      },
+      "revId": "a2ddf3e040d97e81f09fb79c0f67a841a4559687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bd0005c_b3b5cd94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-24T05:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec36c3b1_064f1e70",
       "range": {
         "startLine": 262,
         "startChar": 21,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddf9e5bd_d1e30c3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-24T05:18:50Z",
+      "side": 1,
+      "message": "Thanks for catching this. Fixed.",
+      "parentUuid": "508ad8d2_e4cc48c1",
+      "range": {
+        "startLine": 297,
+        "startChar": 55,
+        "endLine": 297,
+        "endChar": 59
+      },
+      "revId": "a2ddf3e040d97e81f09fb79c0f67a841a4559687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9e24a66_bad57c09",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-23T23:55:06Z",
       "side": 1,
       "message": "nit: end with .",
+      "range": {
+        "startLine": 302,
+        "startChar": 74,
+        "endLine": 302,
+        "endChar": 79
+      },
+      "revId": "a2ddf3e040d97e81f09fb79c0f67a841a4559687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b2d165f_8a7653fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-24T05:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9e24a66_bad57c09",
       "range": {
         "startLine": 302,
         "startChar": 74,
