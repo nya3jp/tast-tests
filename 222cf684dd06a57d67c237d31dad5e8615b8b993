@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "248f3c71_786cf918",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/androidui.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-24T04:27:56Z",
+      "side": 1,
+      "message": "Yes, we removed in last patch but it introduced too many changes in other CUJs.Add \"Deprecated\" comments. Will remove it in future CL.",
+      "parentUuid": "519179c7_92cdfa0f",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 1
+      },
+      "revId": "222cf684dd06a57d67c237d31dad5e8615b8b993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d516e71_0eaee553",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6f576ce_017f62c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/androidui.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-24T04:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d516e71_0eaee553",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 23
+      },
+      "revId": "222cf684dd06a57d67c237d31dad5e8615b8b993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce955ac4_4d578fc5",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-06-24T03:25:45Z",
       "side": 1,
       "message": "keyboard is only used in search, it is weird to make it as part of the struct. It is not a necessary component.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "222cf684dd06a57d67c237d31dad5e8615b8b993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bde6e64b_5dbf53d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-24T04:27:56Z",
+      "side": 1,
+      "message": "Okay, just removed it and created when using it. (But may change it back in future CLs when kb is used multiple times)",
+      "parentUuid": "ce955ac4_4d578fc5",
       "range": {
         "startLine": 25,
         "startChar": 0,
