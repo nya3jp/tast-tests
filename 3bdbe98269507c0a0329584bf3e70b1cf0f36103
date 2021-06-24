@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b34d754e_ff1320be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-06-24T22:12:37Z",
+      "side": 1,
+      "message": "Ack. Just curious if it made sense.",
+      "parentUuid": "4f1a428c_92ae5a86",
+      "revId": "3bdbe98269507c0a0329584bf3e70b1cf0f36103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0863992e_df97fda3",
