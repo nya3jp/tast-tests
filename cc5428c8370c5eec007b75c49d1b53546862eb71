@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51bf1bbf_deb410c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "ui.QuickSettingsLockScreen do not need the parametrised test.",
+      "parentUuid": "6cbc1a7f_5ccd87a6",
+      "range": {
+        "startLine": 15,
+        "startChar": 19,
+        "endLine": 15,
+        "endChar": 45
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8f5ed29_8c1c3c4a",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d3517aa_bddda88f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "As my CL had a workaround on refactoring the common changes related to QuickSettingsSignInScreen and QuickSettingsLockScreen. This I will take it later. Thanks!",
+      "parentUuid": "a8f5ed29_8c1c3c4a",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5481bb6_df7c7a74",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-06-23T12:33:51Z",
       "side": 1,
       "message": "nit: can you please put it into a separate variable just before line 133, so it will be much clear",
+      "range": {
+        "startLine": 133,
+        "startChar": 76,
+        "endLine": 133,
+        "endChar": 92
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83e527aa_fdfe25e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c5481bb6_df7c7a74",
       "range": {
         "startLine": 133,
         "startChar": 76,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f32be0b_97be04c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f90293f5_b90ccabc",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36f1cdeb_85425ab7",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-06-23T12:33:51Z",
       "side": 1,
       "message": "nit: why do you need this deps?",
+      "range": {
+        "startLine": 31,
+        "startChar": 36,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb0c7b79_3fef4f09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Added the chrome_internal dep to avoid future CQ issues since we\u0027re using a private var (ui.signinProfileTestExtensionManifestKey).",
+      "parentUuid": "36f1cdeb_85425ab7",
       "range": {
         "startLine": 31,
         "startChar": 36,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e012beec_832992fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Removed the dependencies.",
+      "parentUuid": "9974b756_f7e273ef",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 48
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dae19293_9efd3ee0",
@@ -150,6 +288,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41512580_e47c611d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Removed the blank line.",
+      "parentUuid": "dae19293_9efd3ee0",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ca62b31_9eae39a4",
@@ -163,6 +319,24 @@
       "writtenOn": "2021-06-23T12:33:51Z",
       "side": 1,
       "message": "nit: remove blank line",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f014e8f_8265d987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "0ca62b31_9eae39a4",
       "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -186,6 +360,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5403f895_8b702c1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Hi Oleh, the SigninProfileTestAPIConn\u0027s are usually closed explicitly. https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/signin_profile_extension.go\n\nAlso able see in other places where SigninProfileTestAPIConn\u0027s is used. I would like to confirm on this before making the changes. https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go;l\u003d69?q\u003dsignInprofileTestAPIConn",
+      "parentUuid": "3592d645_124f1b36",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d5e67a2_13a41b4d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
         "patchSetId": 12
@@ -203,6 +395,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f1949b4_a532466a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Hi Oleh, the SigninProfileTestAPIConn\u0027s are usually closed explicitly. https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/signin_profile_extension.go",
+      "parentUuid": "1d5e67a2_13a41b4d",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff4d9aa4_1b1afa89",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
         "patchSetId": 12
@@ -214,6 +424,30 @@
       "writtenOn": "2021-06-23T12:33:51Z",
       "side": 1,
       "message": "nit: please move skipping OOBE screen inside if statement:\n\n```\nif err :\u003d cr.SkipToLoginForTesting(ctx); err !\u003d nil {\n  ...\n}\n```",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 18
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5342978f_bde631d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ff4d9aa4_1b1afa89",
       "range": {
         "startLine": 87,
         "startChar": 4,
@@ -247,6 +481,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef6ade4a_7d0ecbe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "3285cef6_f3ac8f7b",
+      "range": {
+        "startLine": 92,
+        "startChar": 40,
+        "endLine": 92,
+        "endChar": 41
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bd30a32_0d7135dd",
@@ -260,6 +518,30 @@
       "writtenOn": "2021-06-23T12:33:51Z",
       "side": 1,
       "message": "nit: this is already a boolean value, no need to use `bool()` here",
+      "range": {
+        "startLine": 108,
+        "startChar": 81,
+        "endLine": 108,
+        "endChar": 94
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd5ced09_1d34e63c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bd30a32_0d7135dd",
       "range": {
         "startLine": 108,
         "startChar": 81,
@@ -293,6 +575,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f909c21_c0dff930",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Fixed it.Thanks.",
+      "parentUuid": "be6991a8_8f493661",
+      "range": {
+        "startLine": 113,
+        "startChar": 25,
+        "endLine": 113,
+        "endChar": 36
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d134e45c_a785173f",
@@ -306,6 +612,30 @@
       "writtenOn": "2021-06-23T12:33:51Z",
       "side": 1,
       "message": "nit: drop \"else\":\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\n\n```\nif err !\u003d nil {\n  s.Fatalf(\"Failed to get params for %v pod icon: %v\", podParams, err)\n}\ncheckNodes[string(settingPod)+\" pod\"] \u003d podParams\n```",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 10
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3c22f12_3c8acb6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Done.Thanks!",
+      "parentUuid": "d134e45c_a785173f",
       "range": {
         "startLine": 118,
         "startChar": 4,
@@ -339,6 +669,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a3225d0_9e0e3a79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Moved the common code to quicksettings package for QuickSettingSignInScreen.\nFor Locked screen we have the verification for the pod icons restricted in the locked which needs to be placed in the Locked screen. So the fucntions RestrictedSettingsPods , CommonElementsInQuickSettings are still placed seperately.Please let me know your thoughts. Thanks.",
+      "parentUuid": "50bba5b5_7d179a76",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b18e06ed_e8bcafe1",
@@ -352,6 +706,30 @@
       "writtenOn": "2021-06-23T12:33:51Z",
       "side": 1,
       "message": "same:\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 11
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "393807ce_df4cbf89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b18e06ed_e8bcafe1",
       "range": {
         "startLine": 127,
         "startChar": 4,
@@ -402,6 +780,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2606ecbd_e570776a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Added the Log as the quicksettings.SliderValue returns the sliderLevel value. In all other places wherever SliderValue is invoked they always log this value. Please let me know your thoughts.",
+      "parentUuid": "55df5fb7_b1023578",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47d712aa_a9f5d135",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "e1af5c63_c058f1ef",
+      "range": {
+        "startLine": 139,
+        "startChar": 71,
+        "endLine": 139,
+        "endChar": 72
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6128aae8_19c0e00c",
@@ -415,6 +835,30 @@
       "writtenOn": "2021-06-23T12:33:51Z",
       "side": 1,
       "message": "nit: login",
+      "range": {
+        "startLine": 701,
+        "startChar": 50,
+        "endLine": 701,
+        "endChar": 55
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6772b2c_ab8bbde9",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6128aae8_19c0e00c",
       "range": {
         "startLine": 701,
         "startChar": 50,
@@ -465,6 +909,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5102b474_3a08f8e2",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Named this after the javascript function that it is calling. Please let me know your thoughts.",
+      "parentUuid": "758a03bb_afb436f8",
+      "range": {
+        "startLine": 702,
+        "startChar": 28,
+        "endLine": 702,
+        "endChar": 38
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e6306c5_1ec10c33",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "I checked we started using this in few places related.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_oobe.go;l\u003d57?q\u003dSKipToLoginF\u0026sq\u003d",
+      "parentUuid": "19490f0f_0c7f1b1f",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a803c3cb_65fd405e",
@@ -478,6 +964,24 @@
       "writtenOn": "2021-06-23T12:33:51Z",
       "side": 1,
       "message": "nit: remove this blank line",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91fafba5_e655f592",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "a803c3cb_65fd405e",
       "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -505,6 +1009,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63b8faef_2618c6e4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "updated the error message.",
+      "parentUuid": "211aa97d_eb61aa9b",
+      "range": {
+        "startLine": 706,
+        "startChar": 27,
+        "endLine": 706,
+        "endChar": 62
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11cadf8d_d13597a2",
@@ -522,6 +1050,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "578f3ca6_217e8cc9",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Removed the blank line.",
+      "parentUuid": "11cadf8d_d13597a2",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "958252d3_926d035d",
@@ -535,6 +1081,30 @@
       "writtenOn": "2021-06-23T12:33:51Z",
       "side": 1,
       "message": "nit: https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 590,
+        "startChar": 3,
+        "endLine": 590,
+        "endChar": 29
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9121d0fb_cb9b5b8d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "958252d3_926d035d",
       "range": {
         "startLine": 590,
         "startChar": 3,
@@ -585,6 +1155,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3de1af7_4b3042ee",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "changed the named to hasBattery.",
+      "parentUuid": "0591a2f9_f4839cdb",
+      "range": {
+        "startLine": 599,
+        "startChar": 80,
+        "endLine": 599,
+        "endChar": 87
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d69cb80b_51843d12",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Moved the common code to quicksettings package for QuickSettingSignInScreen.\nFor Locked screen we have the verification for the pod icons restricted in the locked which needs to be placed in the Locked screen. So the fucntions RestrictedSettingsPods , CommonElementsInQuickSettings are still placed seperately.Please let me know your thoughts. Thanks.",
+      "parentUuid": "a2c6db0f_66c2349a",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "277f67b6_7cabfa4a",
@@ -608,6 +1220,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17c5b78c_82fe9b44",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Thanks, updated the return error to nil.",
+      "parentUuid": "277f67b6_7cabfa4a",
+      "range": {
+        "startLine": 617,
+        "startChar": 9,
+        "endLine": 617,
+        "endChar": 17
+      },
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08faa2d9_f238efa9",
@@ -621,6 +1257,24 @@
       "writtenOn": "2021-06-23T12:33:51Z",
       "side": 1,
       "message": "nit: remove blank line",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd9591fb_2c0bcca6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-24T16:41:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "08faa2d9_f238efa9",
       "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
