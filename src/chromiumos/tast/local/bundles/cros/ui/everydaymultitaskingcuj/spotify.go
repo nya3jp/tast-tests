@@ -134,8 +134,8 @@ func (s *Spotify) Play(ctx context.Context) error {
 	promp := s.d.Object(ui.Text("NO, THANKS"))
 	// TODO(b:192660031): Optimize this logic.
 	if err := uiauto.Combine("clear prompt",
-		cuj.ClickIfExistAction(dismiss, shortUITimeout),
-		cuj.ClickIfExistAction(promp, shortUITimeout),
+		cuj.ClickIfExist(dismiss, shortUITimeout),
+		cuj.ClickIfExist(promp, shortUITimeout),
 	)(ctx); err != nil {
 		return err
 	}
@@ -181,7 +181,7 @@ func (s *Spotify) login(ctx context.Context) error {
 		return errors.Wrap(err, `failed to click "Continue with Google" button`)
 	} else {
 		accountButton := s.d.Object(ui.Text(s.account))
-		if err := cuj.FindAndClick(ctx, accountButton, shortUITimeout); err != nil {
+		if err := cuj.FindAndClick(accountButton, shortUITimeout)(ctx); err != nil {
 			testing.ContextLog(ctx, `The button "account button" not found, sign in directly`)
 		}
 		s.firstLogin = true
@@ -204,7 +204,7 @@ func (s *Spotify) waitUntilHomePageShows(ctx context.Context) error {
 func (s *Spotify) playLastListenedSong(ctx context.Context, playButton *ui.Object) error {
 	testing.ContextLog(ctx, "Try to play last listened song")
 
-	if err := cuj.FindAndClickAction(playButton, shortUITimeout)(ctx); err != nil {
+	if err := cuj.FindAndClick(playButton, shortUITimeout)(ctx); err != nil {
 		testing.ContextLog(ctx, `Failed to play last listened song, try to search a song and play`)
 		return s.searchSongAndPlay(ctx)
 	}
@@ -232,11 +232,11 @@ func (s *Spotify) searchSongAndPlay(ctx context.Context) error {
 	testing.ContextLog(ctx, "Try to search a song and play")
 
 	if err := uiauto.Combine("search song",
-		cuj.FindAndClickAction(searchTab, defaultUITimeout),
-		cuj.FindAndClickAction(searchField, defaultUITimeout),
-		cuj.FindAndClickAction(query, defaultUITimeout),
+		cuj.FindAndClick(searchTab, defaultUITimeout),
+		cuj.FindAndClick(searchField, defaultUITimeout),
+		cuj.FindAndClick(query, defaultUITimeout),
 		s.kb.TypeAction(albumName),
-		cuj.FindAndClickAction(singerButton, defaultUITimeout),
+		cuj.FindAndClick(singerButton, defaultUITimeout),
 	)(ctx); err != nil {
 		return err
 	}
@@ -250,7 +250,7 @@ func (s *Spotify) searchSongAndPlay(ctx context.Context) error {
 
 	// It might automatically start playing after click singerButton,
 	// so skip if shufflePlayButton not found.
-	if err := cuj.ClickIfExist(ctx, shufflePlayButton, defaultUITimeout); err != nil {
+	if err := cuj.ClickIfExist(shufflePlayButton, defaultUITimeout)(ctx); err != nil {
 		return errors.Wrap(err, `failed to click "shuffle play button"`)
 	}
 
