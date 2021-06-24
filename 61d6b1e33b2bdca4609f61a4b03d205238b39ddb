@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a417fbad_a2edfc76",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-24T08:23:40Z",
+      "side": 1,
+      "message": "These are already defined in policyutil. Can you link it from there instead?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session_with_password.go?q\u003d%22.password%22",
+      "range": {
+        "startLine": 144,
+        "startChar": 32,
+        "endLine": 144,
+        "endChar": 62
+      },
+      "revId": "61d6b1e33b2bdca4609f61a4b03d205238b39ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "062b5f23_e087ef5d",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-24T08:23:40Z",
+      "side": 1,
+      "message": "This step is skipped if ServeAndRefresh() fails.",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 0
+      },
+      "revId": "61d6b1e33b2bdca4609f61a4b03d205238b39ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
