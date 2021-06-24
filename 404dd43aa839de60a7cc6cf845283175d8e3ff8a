@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d16cff3_539c3043",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T16:59:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d0ac1f8_2e5a7685",
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f1a74cc_7eeff07a",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-06-23T16:31:32Z",
       "side": 1,
       "message": "Will the UI lag only for the DoHOff case? If not should the other cases be polling as well?",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 84
+      },
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f186faf_bb0ba594",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T16:59:46Z",
+      "side": 1,
+      "message": "Yes, it\u0027s only when turning off.",
+      "parentUuid": "5f1a74cc_7eeff07a",
       "range": {
         "startLine": 76,
         "startChar": 2,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0e57336_bcfdf24f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T16:59:46Z",
+      "side": 1,
+      "message": "Done by migrating to uiauto",
+      "parentUuid": "d011de0d_4f77c0ec",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef26fbf1_48a3a5d4",
@@ -94,6 +160,24 @@
       "writtenOn": "2021-06-23T05:18:10Z",
       "side": 1,
       "message": "why have this file?",
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e95c9af_64103542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T16:59:46Z",
+      "side": 1,
+      "message": "I think just for general documentation of the package, I\u0027m following VPN package. This also resolves repo check.",
+      "parentUuid": "ef26fbf1_48a3a5d4",
       "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed18ac37_3b40d798",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T16:59:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c14bf3d_33d0d041",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 144
+      },
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e84e564f_1204e9d0",
@@ -138,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bce63e0_2d0438a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T16:59:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e84e564f_1204e9d0",
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f729cdab_3c176a5c",
@@ -151,6 +277,54 @@
       "writtenOn": "2021-06-23T05:18:10Z",
       "side": 1,
       "message": "nit: don\u0027t need to redeclare the default values",
+      "range": {
+        "startLine": 91,
+        "startChar": 26,
+        "endLine": 91,
+        "endChar": 42
+      },
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7af8d82_4d0c4369",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T16:59:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f729cdab_3c176a5c",
+      "range": {
+        "startLine": 91,
+        "startChar": 26,
+        "endLine": 91,
+        "endChar": 42
+      },
+      "revId": "404dd43aa839de60a7cc6cf845283175d8e3ff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63ccb20b_731737ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T16:59:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f729cdab_3c176a5c",
       "range": {
         "startLine": 91,
         "startChar": 26,
