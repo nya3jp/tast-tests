@@ -58,7 +58,10 @@ type meetTest struct {
 	split    bool           // Whether it is in split screen mode. It can not be true if docs is false.
 	cam      bool           // Whether the camera is on or not.
 	power    bool           // Whether to collect power metrics.
+	duration time.Duration  // Duration of the meet call. Must be less than test timeout.
 }
+
+const defaultTestTimeout = 7 * time.Minute
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -67,7 +70,6 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc", caps.BuiltinOrVividCamera},
-		Timeout:      7 * time.Minute,
 		Fixture:      "loggedInToCUJUser",
 		Vars: []string{
 			"mute",
@@ -77,16 +79,19 @@ func init() {
 			"ui.MeetCUJ.doc",
 		},
 		Params: []testing.Param{{
-			// Base case.
-			Name: "4p",
+			// Base case. Note this runs a 30 min meet call.
+			Name:    "4p",
+			Timeout: 37 * time.Minute,
 			Val: meetTest{
-				num:    4,
-				layout: meetLayoutTiled,
-				cam:    true,
+				num:      4,
+				layout:   meetLayoutTiled,
+				cam:      true,
+				duration: 30 * time.Minute,
 			},
 		}, {
 			// Small meeting.
-			Name: "4p_present_notes_split",
+			Name:    "4p_present_notes_split",
+			Timeout: defaultTestTimeout,
 			Val: meetTest{
 				num:     4,
 				layout:  meetLayoutTiled,
@@ -97,7 +102,8 @@ func init() {
 			},
 		}, {
 			// Big meeting.
-			Name: "16p",
+			Name:    "16p",
+			Timeout: defaultTestTimeout,
 			Val: meetTest{
 				num:    16,
 				layout: meetLayoutTiled,
@@ -105,7 +111,8 @@ func init() {
 			},
 		}, {
 			// Big meeting with notes.
-			Name: "16p_notes",
+			Name:    "16p_notes",
+			Timeout: defaultTestTimeout,
 			Val: meetTest{
 				num:    16,
 				layout: meetLayoutTiled,
@@ -116,6 +123,7 @@ func init() {
 		}, {
 			// 4p power test.
 			Name:              "power_4p",
+			Timeout:           defaultTestTimeout,
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: meetTest{
 				num:    4,
@@ -126,6 +134,7 @@ func init() {
 		}, {
 			// 16p power test.
 			Name:              "power_16p",
+			Timeout:           defaultTestTimeout,
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: meetTest{
 				num:    16,
@@ -135,7 +144,8 @@ func init() {
 			},
 		}, {
 			// 16p with jamboard test.
-			Name: "16p_jamboard",
+			Name:    "16p_jamboard",
+			Timeout: defaultTestTimeout,
 			Val: meetTest{
 				num:      16,
 				layout:   meetLayoutTiled,
@@ -182,13 +192,25 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	meet := s.Param().(meetTest)
-	meetTimeout := 30 * time.Second
-	if meet.docs || meet.jamboard {
-		meetTimeout = 60 * time.Second
-	}
 	if meet.docs && meet.jamboard {
 		s.Fatal("Tried to open both Google Docs and Jamboard at the same time")
 	}
+
+	// Determines the meet call duration. Use the meet duration specified in
+	// test param if there is one. Otherwise, default to 30 seconds for the base
+	// calls, 1 min for calls with doc or jamboard, or 3 min for power tests.
+	meetTimeout := 30 * time.Second
+	if meet.duration != 0 {
+		meetTimeout = meet.duration
+	} else {
+		if meet.docs || meet.jamboard {
+			meetTimeout = 1 * time.Minute
+		}
+		if meet.power {
+			meetTimeout = 3 * time.Minute
+		}
+	}
+	s.Log("Run meeting for ", meetTimeout)
 
 	// Shorten context to allow for cleanup. Reserve one minute in case of power
 	// test.
@@ -258,7 +280,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	tweakPerfValues := func(pv *perf.Values) error { return nil }
 	if meet.power {
 		s.Log("Preparing for power metrics collection")
-		meetTimeout = 3 * time.Minute
 
 		// Setup needs to happen before power.TestMetrics() to disable wifi first
 		// so that the thermal sensor for wifi is excluded from the metrics.
