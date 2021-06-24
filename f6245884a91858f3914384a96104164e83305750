@@ -16,6 +16,52 @@
       "message": "Hi Katie,\n\nWondering if you could help me with this review, PTAL?",
       "revId": "f6245884a91858f3914384a96104164e83305750",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b052ea2b_e20748b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-06-24T18:25:33Z",
+      "side": 1,
+      "message": "Nit: consider using a bug number instead of your username? You could make a generic one if needed, like \"Clean up spoken feedback tast tests\".",
+      "range": {
+        "startLine": 120,
+        "startChar": 9,
+        "endLine": 120,
+        "endChar": 19
+      },
+      "revId": "f6245884a91858f3914384a96104164e83305750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be6f47b6_ef35b5d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-06-24T18:25:33Z",
+      "side": 1,
+      "message": "I don\u0027t know go well -- can this be refactored into a common method, \"KeysPressedSpeechExpectedError(err)\"? It\u0027s duplicated a lot.",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 65
+      },
+      "revId": "f6245884a91858f3914384a96104164e83305750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
