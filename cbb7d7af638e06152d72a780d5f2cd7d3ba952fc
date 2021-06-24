@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa1ae690_53c3cc75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-24T09:42:39Z",
+      "side": 1,
+      "message": "LGTM % nit\nI think we could leave the default timeout (15 seconds) instead of using shorter 10 seconds one.",
+      "revId": "cbb7d7af638e06152d72a780d5f2cd7d3ba952fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da066a61_e721fc87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-24T09:42:39Z",
+      "side": 1,
+      "message": "nit: default timeout is 15 seconds. Is there a specific reason you shortened it to 10?",
+      "revId": "cbb7d7af638e06152d72a780d5f2cd7d3ba952fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a4bc85_7e8dcb34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_keyword.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-24T09:42:39Z",
+      "side": 1,
+      "message": "nit: default timeout is 15 seconds.",
+      "revId": "cbb7d7af638e06152d72a780d5f2cd7d3ba952fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c472ed2e_33a66738",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-24T09:42:39Z",
+      "side": 1,
+      "message": "nit: default timeout is 15 seconds.",
+      "revId": "cbb7d7af638e06152d72a780d5f2cd7d3ba952fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
