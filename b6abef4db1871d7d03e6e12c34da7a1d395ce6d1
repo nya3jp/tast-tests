@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46fecc9a_5109f848",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T17:00:01Z",
+      "side": 1,
+      "message": "Marking as resolved, this is landed by crrev.com/c/2982051",
+      "parentUuid": "7c5c002f_fa1f141f",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 29
+      },
+      "revId": "b6abef4db1871d7d03e6e12c34da7a1d395ce6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4482784b_9e80cacb",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "facb16ad_f794488a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T17:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4482784b_9e80cacb",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 121
+      },
+      "revId": "b6abef4db1871d7d03e6e12c34da7a1d395ce6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0fa26e6_dcdd61a7",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-23T16:48:41Z",
       "side": 1,
       "message": "Should this be a shared constant since it is also used in network.DNSProxy?",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 46
+      },
+      "revId": "b6abef4db1871d7d03e6e12c34da7a1d395ce6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc6f398e_c1a76294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T17:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0fa26e6_dcdd61a7",
       "range": {
         "startLine": 60,
         "startChar": 2,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07d586ab_de658492",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T17:00:01Z",
+      "side": 1,
+      "message": "The Chrome can be re-used without re-launching. What would be the expected way to share Chrome? Is it by combining the tests?",
+      "parentUuid": "b7167c1c_faf88f08",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "b6abef4db1871d7d03e6e12c34da7a1d395ce6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8301bb42_1e2cc122",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
         "patchSetId": 5
@@ -106,6 +202,30 @@
       "writtenOn": "2021-06-23T16:48:41Z",
       "side": 1,
       "message": "nit: object?",
+      "range": {
+        "startLine": 94,
+        "startChar": 39,
+        "endLine": 94,
+        "endChar": 44
+      },
+      "revId": "b6abef4db1871d7d03e6e12c34da7a1d395ce6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5956576_07616bf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T17:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8301bb42_1e2cc122",
       "range": {
         "startLine": 94,
         "startChar": 39,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "650fbe95_c79a69b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T17:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9a1ff95_3273540d",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 16
+      },
+      "revId": "b6abef4db1871d7d03e6e12c34da7a1d395ce6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84545356_48397eff",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-06-23T16:48:41Z",
       "side": 1,
       "message": "Does it make sense to make this a library function since it is duplicated in network.DNSProxy? Then the testCase struct and logic for running the cases can be shared.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "b6abef4db1871d7d03e6e12c34da7a1d395ce6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3185bbc6_9edd33d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-06-24T17:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84545356_48397eff",
       "range": {
         "startLine": 116,
         "startChar": 0,
