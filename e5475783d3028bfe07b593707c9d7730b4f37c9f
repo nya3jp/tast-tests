@@ -135,6 +135,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5361d8d6_97dc90d4",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-24T15:44:49Z",
+      "side": 1,
+      "message": "The BuildArtifactsURL in chromiumos/tast/cmd/tast/internal/run/config/Config appears to be the same URL as this. Is there a way to get access to that url? Will it be accurate outside of the Chrome OS CI?",
+      "parentUuid": "e0ba5268_36e869c0",
+      "range": {
+        "startLine": 373,
+        "startChar": 18,
+        "endLine": 373,
+        "endChar": 50
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d8b110e_fb632545",
         "filename": "src/chromiumos/tast/remote/firmware/helper.go",
         "patchSetId": 1
