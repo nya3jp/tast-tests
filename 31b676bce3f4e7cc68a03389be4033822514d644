@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1381dc62_d551db4e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-06-24T18:00:02Z",
+      "side": 1,
+      "message": "We don\u0027t have a case where the repro should run after the timeout.\nI just tried running the test with timeout(and without the pkill) as follows:\n```\ncmd :\u003d d.Conn().Command(\"timeout\", \"5\", filepath.Join(remotePath))\n```\nChecking \"ps -A\" manually on the DUT after the test finishes, it looks like there is 1 repro that does not stop even with the timeout; i\u0027ll disable it for now and look into re-enabling it in another CL.",
+      "parentUuid": "52d999bf_24c1c85a",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 13
+      },
+      "revId": "31b676bce3f4e7cc68a03389be4033822514d644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f8ddb4a_92a419c3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-24T03:30:39Z",
       "side": 1,
       "message": "Hmm, yes, I remembered that the remote process may not be terminated even if it hits timeout due to b/187790213.\n\nYou might want to try timeout(1) instead. It\u0027s easier and safer than trying to find the process by pkill and ps later.",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 51
+      },
+      "revId": "31b676bce3f4e7cc68a03389be4033822514d644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8a3481e_7301bf1b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-06-24T18:00:02Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ve modified it to use the timeout",
+      "parentUuid": "2f8ddb4a_92a419c3",
       "range": {
         "startLine": 108,
         "startChar": 1,
