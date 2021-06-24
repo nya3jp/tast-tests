@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c847f65d_ea68ea33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-06-24T07:55:00Z",
+      "side": 1,
+      "message": "I think we should log an error if requested logFilePaths is not empty but none of the files exist. It usually indicates that sth went wrong.",
+      "range": {
+        "startLine": 347,
+        "startChar": 36,
+        "endLine": 347,
+        "endChar": 80
+      },
+      "revId": "80c89bd92070f051a13f4938e21a669ae406127b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
