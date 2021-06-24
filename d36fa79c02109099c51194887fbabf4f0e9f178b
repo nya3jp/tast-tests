@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd62c14_fca51f9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-24T08:14:25Z",
+      "side": 1,
+      "message": "nit: also tests for when user splits all syllables by themselves, correctly and incorrectly, and when they split some syllables but not all?",
+      "revId": "d36fa79c02109099c51194887fbabf4f0e9f178b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d873cb_8220de92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-24T08:14:25Z",
+      "side": 1,
+      "message": "- also verify that the text has a suffix matching a suffix of the raw pinyin? the split location is ML-driven, but we should at least verify that both sides of the split match affix-wise.\n\n- if syllable split is already forced in the raw Pinyin text by ML, can we actually correspond the number of Chinese chars and the number of pinyin syllables precisely? I think it\u0027s a fact that each Chinese char correspond to a Pinyin syllable (space-separated token after Pinyin syllable split by the ML).\n\n(same comment for all test cases with only HasPrefix checks currently)",
+      "revId": "d36fa79c02109099c51194887fbabf4f0e9f178b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
