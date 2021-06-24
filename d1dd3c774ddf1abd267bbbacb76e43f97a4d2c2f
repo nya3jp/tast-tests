@@ -16,6 +16,24 @@
       "message": "Can the tests be just disabled until then? At least then I guess they would still be compiled etc so if people change stuff they\u0027ll also adapt the tests?",
       "revId": "d1dd3c774ddf1abd267bbbacb76e43f97a4d2c2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c572a873_e13957e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-06-24T06:36:14Z",
+      "side": 1,
+      "message": "AFAIK there\u0027s no way to mark tast tests as disabled. We have them marked as \u0027informational\u0027 so they don\u0027t block the CL but in the meantime these tests will always run and appear in the Green Stainless Reports as broken.",
+      "parentUuid": "ed2b0462_fd5cc65d",
+      "revId": "d1dd3c774ddf1abd267bbbacb76e43f97a4d2c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
