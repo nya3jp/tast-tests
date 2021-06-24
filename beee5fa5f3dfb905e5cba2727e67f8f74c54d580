@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5f2550d7_edefba72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-24T00:36:05Z",
+      "side": 1,
+      "message": "Yes, we plan to add more tests. There\u0027s an effort starting next quarter for teams to automate 30% of their areas\u0027 manual tests, and Settings is a major target for that.",
+      "parentUuid": "d4bb06b7_5150c15c",
+      "revId": "beee5fa5f3dfb905e5cba2727e67f8f74c54d580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2d2e4e67_210bab36",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
