@@ -81,6 +81,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e55d07e_bae5e205",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-24T00:46:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2420e349_5a3c6367",
+      "range": {
+        "startLine": 190,
+        "startChar": 50,
+        "endLine": 190,
+        "endChar": 57
+      },
+      "revId": "dce65c10f28a95d3ca3a65780e25f64eedd81e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2c374b_20ed31c7",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-24T00:46:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "531aae54_6e45b4e8",
+      "range": {
+        "startLine": 190,
+        "startChar": 22,
+        "endLine": 190,
+        "endChar": 29
+      },
+      "revId": "dce65c10f28a95d3ca3a65780e25f64eedd81e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04c99271_af066e81",
@@ -94,6 +142,24 @@
       "writtenOn": "2021-06-24T00:34:03Z",
       "side": 1,
       "message": "There\u0027s also a \"continue\" RPC that sounds like it\u0027s for continuing an existing session[1][2]. Perhaps that should be used instead of the \"init\" RPC?\n\nOne concern I have is that re-initializing the server might reset some internal state around the request ID (since it\u0027s expected to increase by 1 with each request). If you call this function between tests, do RPCs in subsequent ones still succeed? You may need to reset a.requestID after this.\n\n[1]https://source.corp.google.com/piper///depot/google3/third_party/py/mobly/controllers/android_device_lib/jsonrpc_client_base.py;l\u003d107?q\u003dcontinue\n[2]https://source.corp.google.com/piper///depot/google3/third_party/java_src/android_libs/mobly_snippet_lib/src/main/java/com/google/android/mobly/snippet/rpc/SimpleServer.java;l\u003d230",
+      "revId": "dce65c10f28a95d3ca3a65780e25f64eedd81e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "147ff54c_5f7fbfc5",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-24T00:46:26Z",
+      "side": 1,
+      "message": "This isn\u0027t called between tests. It is called after the GAIA login which I believe is only done once for all the local runs. And it happens before any tests are run. \n\nCalling initialize does continue incrementing the requestID at the value it was at before the disconnect and continues to work.\n\nI ran all PhoneToCrosInContact.* tests and it worked fine. \n\nI can run all local nearby tests to be sure though.\n\nI can check on the continue RPC too",
+      "parentUuid": "04c99271_af066e81",
       "revId": "dce65c10f28a95d3ca3a65780e25f64eedd81e9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
