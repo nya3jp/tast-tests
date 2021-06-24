@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de96f3d6_bb0975cc",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-24T02:14:53Z",
+      "side": 1,
+      "message": "This does not look nice because it queries the node twice. \n\nYou can probably do a polling for the below query.",
+      "range": {
+        "startLine": 708,
+        "startChar": 2,
+        "endLine": 710,
+        "endChar": 3
+      },
+      "revId": "1f8cb0804de090603302e09f19043b24cc39517b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
