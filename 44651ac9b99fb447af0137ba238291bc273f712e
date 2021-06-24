@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "864a609d_fa21e9ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-24T21:16:09Z",
+      "side": 1,
+      "message": "I have added spelling extension in vs code, Spelling mistakes shouldn\u0027t happen again.\n\nPTAL, Thanks:)",
+      "revId": "44651ac9b99fb447af0137ba238291bc273f712e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
