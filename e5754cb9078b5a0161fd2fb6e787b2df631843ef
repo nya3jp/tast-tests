@@ -16,6 +16,63 @@
       "message": "ptal",
       "revId": "e5754cb9078b5a0161fd2fb6e787b2df631843ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd1f29b_8f5a843b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-24T00:54:31Z",
+      "side": 1,
+      "message": "LGTM after addressing comments. Thanks!",
+      "revId": "e5754cb9078b5a0161fd2fb6e787b2df631843ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cc83305_7282ac8d",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-24T00:54:31Z",
+      "side": 1,
+      "message": "shouldn\u0027t it be out of try-catch block because SynthesisCallback.done() doesn\u0027t throw IOException?",
+      "revId": "e5754cb9078b5a0161fd2fb6e787b2df631843ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05154bd2_97e25b5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-24T00:54:31Z",
+      "side": 1,
+      "message": "This is always chrome.tts.EventType.END (\u003d \"end\"). I don\u0027t think checking this value adds much value.\n\nIf you want to verify some value, how about returning and checking event.charIndex instead?",
+      "range": {
+        "startLine": 90,
+        "startChar": 13,
+        "endLine": 90,
+        "endChar": 23
+      },
+      "revId": "e5754cb9078b5a0161fd2fb6e787b2df631843ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
