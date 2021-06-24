@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6edc6dc9_f9223699",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-24T09:51:32Z",
+      "side": 1,
+      "message": "Yes, I think it\u0027s worth trying.\n",
+      "revId": "83712bc8c354854bda5ed15f0bcec2467a1fa349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
