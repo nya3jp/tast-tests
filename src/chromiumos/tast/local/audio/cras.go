@@ -240,6 +240,32 @@ func WaitForDevice(ctx context.Context, streamType StreamType) error {
 	return testing.Poll(ctx, checkActiveNodes, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
+// WaitForDeviceUntil waits until any cras node meets the given condition.
+// condition is a function that takes a cras node as input and returns true if the node status
+// satisfies the criteria.
+// Different with WaitForDevice, WaitForDeviceUntil gives more flexibility by allowing a customized
+// function to check the condition.
+func WaitForDeviceUntil(ctx context.Context, condition func(*CrasNode) bool) error {
+	cras, err := NewCras(ctx)
+	if err != nil {
+		return err
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		nodes, err := cras.GetNodes(ctx)
+		if err != nil {
+			return err
+		}
+
+		for _, n := range nodes {
+			if condition(&n) {
+				return nil
+			}
+		}
+		return errors.New("condition not satisfied")
+	}, &testing.PollOptions{Timeout: time.Minute, Interval: 5 * time.Second})
+}
+
 // GetCRASPID finds the PID of cras.
 func GetCRASPID() (int, error) {
 	all, err := process.Pids()
