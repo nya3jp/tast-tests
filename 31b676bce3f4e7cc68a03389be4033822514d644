@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13304424_f50ca693",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-06-24T20:53:06Z",
+      "side": 1,
+      "message": "Done, thanks",
+      "parentUuid": "1381dc62_d551db4e",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 13
+      },
+      "revId": "31b676bce3f4e7cc68a03389be4033822514d644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f8ddb4a_92a419c3",
