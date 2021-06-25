@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/servo"
-	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -78,9 +77,9 @@ func FpFlashFpMcuHello(ctx context.Context, s *testing.State) {
 
 	testing.ContextLog(ctx, "Running flash_fp_mcu --hello")
 	cmd := s.DUT().Conn().Command("flash_fp_mcu", "--hello")
-	out, err := cmd.CombinedOutput(ctx, ssh.DumpLogOnError)
+	out, err := cmd.CombinedOutput(ctx)
+	s.Log("flash_fp_mcu output:", "\n", string(out))
 	if err != nil {
 		s.Fatal("Error encountered when running flash_fp_mcu: ", err)
 	}
-	s.Log("flash_fp_mcu output:", "\n", string(out))
 }
