@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e857052e_87b5fa2a",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-25T07:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32943026_f0645e27",
+      "revId": "4edef1260a5f237f37f881f80e39872009e18bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1df57017_425f6a68",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-06-24T07:38:58Z",
       "side": 1,
       "message": "Tast implementation of the Wificell fixture.",
+      "range": {
+        "startLine": 44,
+        "startChar": 26,
+        "endLine": 44,
+        "endChar": 75
+      },
+      "revId": "4edef1260a5f237f37f881f80e39872009e18bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aa0691c_51a56504",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-25T07:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1df57017_425f6a68",
       "range": {
         "startLine": 44,
         "startChar": 26,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c650eb3_8b8573b7",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-25T07:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0b1e754_2e9dd5fc",
+      "range": {
+        "startLine": 45,
+        "startChar": 63,
+        "endLine": 46,
+        "endChar": 45
+      },
+      "revId": "4edef1260a5f237f37f881f80e39872009e18bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48cc0959_99bffd7b",
@@ -111,6 +177,24 @@
       "writtenOn": "2021-06-24T07:38:58Z",
       "side": 1,
       "message": "Move the file comment to line 5.",
+      "revId": "4edef1260a5f237f37f881f80e39872009e18bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a50ca45a_71d77214",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-25T07:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48cc0959_99bffd7b",
       "revId": "4edef1260a5f237f37f881f80e39872009e18bec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -156,6 +240,54 @@
         "startChar": 24,
         "endLine": 22,
         "endChar": 30
+      },
+      "revId": "4edef1260a5f237f37f881f80e39872009e18bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff88bdaa_4a37cd4c",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-25T07:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07ac64e1_11617c9d",
+      "range": {
+        "startLine": 22,
+        "startChar": 24,
+        "endLine": 22,
+        "endChar": 30
+      },
+      "revId": "4edef1260a5f237f37f881f80e39872009e18bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "264fc7ae_aa4b779f",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-25T07:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e8f9f41_d43dd6b0",
+      "range": {
+        "startLine": 22,
+        "startChar": 39,
+        "endLine": 22,
+        "endChar": 49
       },
       "revId": "4edef1260a5f237f37f881f80e39872009e18bec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
