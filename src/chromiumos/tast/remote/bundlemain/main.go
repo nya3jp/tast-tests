@@ -18,6 +18,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/bundle"
+	"chromiumos/tast/common/global"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -188,7 +189,8 @@ func beforeReboot(ctx context.Context, d *dut.DUT) error {
 // RunRemote is an entry point function for remote bundles.
 func RunRemote() {
 	os.Exit(bundle.RemoteDefault(bundle.Delegate{
-		TestHook:     testHookRemote,
-		BeforeReboot: beforeReboot,
+		TestHook:          testHookRemote,
+		BeforeReboot:      beforeReboot,
+		InitialGlobalVars: global.InitializeGlobalVars,
 	}))
 }

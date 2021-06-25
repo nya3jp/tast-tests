@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"chromiumos/tast/bundle"
+	"chromiumos/tast/common/global"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crash"
@@ -210,9 +211,10 @@ func beforeDownload(ctx context.Context) {
 
 // RunLocal is an entry point function for local bundles.
 func RunLocal() {
-	os.Exit(bundle.LocalDefault(bundle.LocalDelegate{
-		Ready:          ready.Wait,
-		TestHook:       testHookLocal,
-		BeforeDownload: beforeDownload,
+	os.Exit(bundle.LocalDefault(bundle.Delegate{
+		Ready:             ready.Wait,
+		TestHook:          testHookLocal,
+		BeforeDownload:    beforeDownload,
+		InitialGlobalVars: global.InitializeGlobalVars,
 	}))
 }
