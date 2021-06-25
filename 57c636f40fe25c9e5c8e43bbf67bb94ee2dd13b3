@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14108b1a_e8df3670",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2021-06-25T13:35:09Z",
+      "side": 1,
+      "message": "The proto lingo is \"clear_xyz\", see for instance out/chromeos-Debug/gen/chrome/browser/chromeos/device_policy_remover.cc\n\nWill use that :-)",
+      "parentUuid": "014fe517_7ebe1b16",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bab57620_a8a96bc7",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-06-25T12:45:04Z",
       "side": 1,
       "message": "nit: remove newline",
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f16cc97_f24ff86c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2021-06-25T13:35:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bab57620_a8a96bc7",
       "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00bb1d4e_eb08b596",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2021-06-25T13:35:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53cab794_8a4857f5",
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e12f0d00_041fa8d5",
@@ -109,6 +169,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c136e3e_5ec9361a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2021-06-25T13:35:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e12f0d00_041fa8d5",
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3d3fb6d_e1bc3bf5",
@@ -122,6 +200,30 @@
       "writtenOn": "2021-06-25T12:45:04Z",
       "side": 1,
       "message": "nit: alwaysOff :\u003d",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 16
+      },
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cce2a72c_bc12480d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2021-06-25T13:35:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3d3fb6d_e1bc3bf5",
       "range": {
         "startLine": 58,
         "startChar": 1,
@@ -155,6 +257,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70774f54_b01ce99e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2021-06-25T13:35:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2b673c7_781bdd6d",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 15
+      },
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6183fb2_ce904cbe",
@@ -172,6 +298,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0db7e959_8b72ff50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2021-06-25T13:35:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6183fb2_ce904cbe",
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce8619d8_8d3489be",
@@ -185,6 +329,24 @@
       "writtenOn": "2021-06-25T12:45:04Z",
       "side": 1,
       "message": "nit: move outside the subtest, it can be shared.",
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "725bfc1d_971b97b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2021-06-25T13:35:09Z",
+      "side": 1,
+      "message": "Thanks so much nicer :-)",
+      "parentUuid": "ce8619d8_8d3489be",
       "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
