@@ -27,8 +27,7 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixt",
 	})
 }
 
@@ -36,14 +35,7 @@ func CSALeaveChannel(ctx context.Context, s *testing.State) {
 	// Note: Not all clients support CSA, but they generally should at least try
 	// to disconnect from the AP which is what the test expects to see.
 
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	legacyRouter, err := tf.LegacyRouter()
 	if err != nil {
@@ -71,6 +63,7 @@ func CSALeaveChannel(ctx context.Context, s *testing.State) {
 				s.Errorf("Failed to restore powersave mode to %t: %v", psMode, err)
 			}
 		}(ctx)
+		var cancel context.CancelFunc
 		ctx, cancel = ctxutil.Shorten(ctx, time.Second)
 		defer cancel()
 
@@ -95,7 +88,7 @@ func CSALeaveChannel(ctx context.Context, s *testing.State) {
 		}
 	}(ctx)
 	s.Log("AP setup done")
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
 	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {

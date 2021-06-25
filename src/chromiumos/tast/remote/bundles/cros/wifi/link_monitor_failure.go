@@ -24,8 +24,7 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixt",
 	})
 }
 
@@ -36,14 +35,7 @@ func LinkMonitorFailure(ctx context.Context, s *testing.State) {
 		reassociateTimeout         = 10 * time.Second
 	)
 
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	ap, err := tf.DefaultOpenNetworkAP(ctx)
 	if err != nil {
@@ -54,7 +46,7 @@ func LinkMonitorFailure(ctx context.Context, s *testing.State) {
 			s.Error("Failed to deconfig the AP: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 	s.Log("Test fixture setup done; connecting the DUT to the AP")
 
