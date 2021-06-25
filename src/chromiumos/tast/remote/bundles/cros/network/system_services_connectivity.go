@@ -18,6 +18,7 @@ import (
 )
 
 func init() {
+	// TODO(acostinas, b/191845062) Re-enable the test when OTA credentials are available in tast tests.
 	testing.AddTest(&testing.Test{
 		Func: SystemServicesConnectivity,
 		Desc: "Test that system services work behind a firewall configured according to our support page",
@@ -25,7 +26,7 @@ func init() {
 			"acostinas@google.com", // Test author
 			"chromeos-commercial-networking@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{},
 		Data:         []string{"allowlist_ssl_inspection.json"},
 		SoftwareDeps: []string{"reboot", "chrome", "chrome_internal"},
 		ServiceDeps:  []string{"tast.cros.network.AllowlistService", "tast.cros.network.ProxyService"},
