@@ -49,6 +49,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "de1672d3_d815db38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-06-25T20:13:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94ba5fca_a5f8b951",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 3
+      },
+      "revId": "88192532fe23bbcf798935a1eb1279a85bbda9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7007c807_e39fd819",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -87,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfee4cb0_ff127bcb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-06-25T20:13:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "086b5990_34272ee6",
+      "range": {
+        "startLine": 44,
+        "startChar": 54,
+        "endLine": 44,
+        "endChar": 62
+      },
+      "revId": "88192532fe23bbcf798935a1eb1279a85bbda9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7557e91_4168f294",
@@ -100,6 +148,30 @@
       "writtenOn": "2021-06-25T19:01:17Z",
       "side": 1,
       "message": "It might be cleaner to add a hardware dependency (e.g. WifiNotMarvell8997 or something)",
+      "range": {
+        "startLine": 45,
+        "startChar": 44,
+        "endLine": 45,
+        "endChar": 60
+      },
+      "revId": "88192532fe23bbcf798935a1eb1279a85bbda9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3684eae1_945ffe33",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-06-25T20:13:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7557e91_4168f294",
       "range": {
         "startLine": 45,
         "startChar": 44,
