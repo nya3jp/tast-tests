@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"chromiumos/tast/bundle"
+	"chromiumos/tast/common/global"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crash"
@@ -228,5 +229,6 @@ func RunLocal() {
 		TestHook:       testHookLocal,
 		RunHook:        runHookLocal,
 		BeforeDownload: beforeDownload,
+		GlobalVars:     global.Vars,
 	}))
 }

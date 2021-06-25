@@ -18,6 +18,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/bundle"
+	"chromiumos/tast/common/global"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -190,5 +191,6 @@ func RunRemote() {
 	os.Exit(bundle.RemoteDefault(bundle.Delegate{
 		TestHook:     testHookRemote,
 		BeforeReboot: beforeReboot,
+		GlobalVars:   global.Vars,
 	}))
 }
