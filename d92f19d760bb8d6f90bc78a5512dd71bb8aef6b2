@@ -16,6 +16,23 @@
       "message": "tast shadow reviewer LGTM",
       "revId": "d92f19d760bb8d6f90bc78a5512dd71bb8aef6b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bde75a4_27a953f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T05:35:42Z",
+      "side": 1,
+      "message": "on error, could you restore the state?\nDitto for below.",
+      "revId": "d92f19d760bb8d6f90bc78a5512dd71bb8aef6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
