@@ -16,6 +16,24 @@
       "message": "Interesting, it still failed locally even after repo sync",
       "revId": "255c7eef047802517bd0a292ba575787ea9c1138",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c90822e_2860a9e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-06-25T17:40:56Z",
+      "side": 1,
+      "message": "Because Chrome OS was still using an older (~week old) version of Chrome. The update happens only from time to time (when Chrome works well on the current Chrome OS and meets some quality bar) - the last one happened around yesterday and should finally include the fix in Chrome.\n\nPlease, update repo and try again!",
+      "parentUuid": "7668fb8b_098d0090",
+      "revId": "255c7eef047802517bd0a292ba575787ea9c1138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
