@@ -39,6 +39,30 @@
       },
       "revId": "b0039cf05ff0adba3a10c7c13c8bc71db9f3f513",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9ce22b4_259c0a3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-06-25T17:18:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ccfac49_068e5c5e",
+      "range": {
+        "startLine": 123,
+        "startChar": 27,
+        "endLine": 123,
+        "endChar": 31
+      },
+      "revId": "b0039cf05ff0adba3a10c7c13c8bc71db9f3f513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
