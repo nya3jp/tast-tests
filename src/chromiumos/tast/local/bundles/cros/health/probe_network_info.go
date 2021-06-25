@@ -6,9 +6,9 @@ package health
 
 import (
 	"context"
+	"encoding/json"
 	"os"
 	"path/filepath"
-	"reflect"
 	"strings"
 	"time"
 
@@ -16,6 +16,22 @@ import (
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
+
+type networkInfo struct {
+	PortalState    string  `json:"portal_state"`
+	State          string  `json:"state"`
+	Type           string  `json:"type"`
+	GUID           *string `json:"guid"`
+	Ipv4Address    *string `json:"ipv4_address"`
+	Ipv6Addresses  *string `json:"ipv6_addresses"`
+	MacAddress     *string `json:"mac_address"`
+	Name           *string `json:"name"`
+	SignalStrength *string `json:"signal_strength"`
+}
+
+type networkResult struct {
+	Networks []networkInfo `json:"networks"`
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -52,40 +68,24 @@ func ProbeNetworkInfo(ctx context.Context, s *testing.State) {
 	// network information is present.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		b, err := croshealthd.RunTelem(ctx, params, s.OutDir())
+		rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
 		if err != nil {
 			s.Fatal("Failed to run telem command: ", err)
 		}
-		appendResultToFile(b)
+		appendResultToFile(rawData)
 
-		lines := strings.Split(strings.TrimRight(string(b), "\n"), "\n")
-		// Every response should have the field headers.
-		if len(lines) < 1 {
-			s.Fatal("Could not find network info header")
-		}
+		dec := json.NewDecoder(strings.NewReader(string(rawData)))
+		dec.DisallowUnknownFields()
 
-		// Verify the header keys are correct.
-		header := []string{
-			"type", "state", "portal_state", "guid", "name", "signal_strength",
-			"mac_address", "ipv4_address", "ipv6_addresses"}
-		got := strings.Split(lines[0], ",")
-		if !reflect.DeepEqual(got, header) {
-			s.Fatalf("Incorrect NetworkInfo keys: got %v; want %v", got, header)
+		var result networkResult
+		if err := dec.Decode(&result); err != nil {
+			s.Fatalf("Failed to decode network data [%q], err [%v]", rawData, err)
 		}
 
 		// Every system should have at least one network device populated. If
 		// not, re-poll the routine.
-		if len(lines) < 2 {
+		if len(result.Networks) < 1 {
 			return errors.New("no network info populated")
-		}
-
-		// Verify that all network devices have the correct number of fields.
-		for _, line := range lines[1:] {
-			vals := strings.Split(line, ",")
-			if len(vals) != len(header) {
-				s.Fatalf("Unexpected number of fields in network structure: got: %v, want: %v, fields: %v",
-					len(vals), len(header), vals)
-			}
 		}
 
 		return nil
