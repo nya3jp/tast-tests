@@ -31,8 +31,7 @@ func init() {
 		ServiceDeps:  []string{wificell.TFServiceName, "tast.cros.network.NetDiagService"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:wificell_roam", "wificell_roam_perf"},
-		Pre:          wificell.TestFixturePreWithFeatures(wificell.TFFeaturesRouters | wificell.TFFeaturesAttenuator),
-		Vars:         []string{"routers", "pcap", "attenuator"},
+		Fixture:      "wificellFixtRoaming",
 		Timeout:      time.Minute * 2,
 	})
 }
@@ -48,7 +47,7 @@ func DiagSignalStrength(ctx context.Context, s *testing.State) {
 		hostapd.SSID(hostapd.RandomSSID("TAST_SIGNAL_STRENGTH_")),
 	}
 
-	tf := s.PreValue().(*wificell.TestFixture)
+	tf := s.FixtValue().(*wificell.TestFixture)
 	ap, err := tf.ConfigureAP(ctx, apOpts, nil)
 	if err != nil {
 		s.Fatal("Failed to configure AP: ", err)
