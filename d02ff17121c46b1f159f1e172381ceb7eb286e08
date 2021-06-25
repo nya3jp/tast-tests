@@ -16,6 +16,29 @@
       "message": "ptal?",
       "revId": "d02ff17121c46b1f159f1e172381ceb7eb286e08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "598cc5b0_0982beec",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-25T05:18:24Z",
+      "side": 1,
+      "message": "This looks weird because the long press is done by touch, but click done by mouse. I think it does not align with a real user scenario. Ideally it should via mouse or touch.",
+      "range": {
+        "startLine": 412,
+        "startChar": 2,
+        "endLine": 413,
+        "endChar": 59
+      },
+      "revId": "d02ff17121c46b1f159f1e172381ceb7eb286e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
