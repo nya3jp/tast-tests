@@ -69,6 +69,24 @@
       "message": "Hi reviewers,\n\nI ran this test 100 times on ToT locally and it is pretty stable. http://go/paste/5818638511636480\nTarget version: betty-release/R93-14047.0.0\n\nAre you comfortable to revert this to CQ?",
       "revId": "32b8b1fcec0cdf999c926387ea1f979be6bfdd13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ccb317d_59a488d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-06-25T02:23:35Z",
+      "side": 1,
+      "message": "If we\u0027re not able to repro issues locally, maybe the flaky issue went away. I guess we can submit this and hope it doesn\u0027t start flaking again.",
+      "parentUuid": "5bfd93e6_bb2fcbff",
+      "revId": "32b8b1fcec0cdf999c926387ea1f979be6bfdd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
