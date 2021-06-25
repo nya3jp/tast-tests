@@ -42,7 +42,8 @@ func CrosRuntimeProbeStorage(ctx context.Context, s *testing.State) {
 	}
 
 	if len(labels) == 0 {
-		s.Fatal("No storage labels")
+		s.Log("No storage labels or known components. Skipped")
+		return
 	}
 
 	request := &rppb.ProbeRequest{
