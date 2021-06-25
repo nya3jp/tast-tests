@@ -16,6 +16,29 @@
       "message": "ptal?",
       "revId": "52b3194dc69a82aaf36ef646f9710bec6077cdb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23cab7ae_9081d89f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-25T05:42:20Z",
+      "side": 1,
+      "message": "Interesting. Looked into the code, it simulates a move event to the location, then sleep for 1s (It mentions Chrome taking 500ms press as longpress). There is no release event inside. Hopefully it works as expected.",
+      "range": {
+        "startLine": 412,
+        "startChar": 11,
+        "endLine": 412,
+        "endChar": 20
+      },
+      "revId": "52b3194dc69a82aaf36ef646f9710bec6077cdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
