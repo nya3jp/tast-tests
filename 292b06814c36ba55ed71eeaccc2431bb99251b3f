@@ -33,6 +33,80 @@
       "message": "tast shadow reviewer LGTM",
       "revId": "292b06814c36ba55ed71eeaccc2431bb99251b3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d77339b7_dcc84491",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T06:01:25Z",
+      "side": 1,
+      "message": "Thank you for splitting a CL into smaller pieces.\nIt helps us a lot to review!",
+      "revId": "292b06814c36ba55ed71eeaccc2431bb99251b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9192e717_aa569699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T06:01:25Z",
+      "side": 1,
+      "message": "optional: maybe crostiniui (CUI may sound like generic Character based User Interface).",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 4
+      },
+      "revId": "292b06814c36ba55ed71eeaccc2431bb99251b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba0384c1_48f8748f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T06:01:25Z",
+      "side": 1,
+      "message": "could you check error?",
+      "revId": "292b06814c36ba55ed71eeaccc2431bb99251b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46378301_2aa26252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T06:01:25Z",
+      "side": 1,
+      "message": "could you check error?",
+      "revId": "292b06814c36ba55ed71eeaccc2431bb99251b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
