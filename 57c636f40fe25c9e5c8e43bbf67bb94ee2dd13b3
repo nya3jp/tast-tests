@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "014fe517_7ebe1b16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-25T12:45:04Z",
+      "side": 1,
+      "message": "disabled maybe?",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab57620_a8a96bc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-25T12:45:04Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1686fd7f_4f106714",
@@ -14,6 +54,137 @@
       "writtenOn": "2021-06-25T12:30:10Z",
       "side": 1,
       "message": "Finally 😊\n\nPTAL",
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b56cf41_64a78520",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-25T12:45:04Z",
+      "side": 1,
+      "message": "LGTM % minor nits",
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53cab794_8a4857f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-25T12:45:04Z",
+      "side": 1,
+      "message": "nit: add newline before",
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e12f0d00_041fa8d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-25T12:45:04Z",
+      "side": 1,
+      "message": "nit: add newline before",
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3d3fb6d_e1bc3bf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-25T12:45:04Z",
+      "side": 1,
+      "message": "nit: alwaysOff :\u003d",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 16
+      },
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2b673c7_781bdd6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-25T12:45:04Z",
+      "side": 1,
+      "message": "nit: neverOff :\u003d",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 15
+      },
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6183fb2_ce904cbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-25T12:45:04Z",
+      "side": 1,
+      "message": "nit: add newline",
+      "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce8619d8_8d3489be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-25T12:45:04Z",
+      "side": 1,
+      "message": "nit: move outside the subtest, it can be shared.",
       "revId": "57c636f40fe25c9e5c8e43bbf67bb94ee2dd13b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
