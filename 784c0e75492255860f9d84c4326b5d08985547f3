@@ -16,6 +16,46 @@
       "message": "lgtm, but do you mind responding to my question",
       "revId": "784c0e75492255860f9d84c4326b5d08985547f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a14233de_7a7d09fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-25T20:21:21Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "784c0e75492255860f9d84c4326b5d08985547f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2515486_e27d9b12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-25T20:21:21Z",
+      "side": 1,
+      "message": "nit:\nis there a bug filed for this?\nIf so, I\u0027d add a reference to the bug. e.g:\n\nTODO(b/xxxx): Skip on ....  Should be removed once the bug is fixed (or something like that).",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "784c0e75492255860f9d84c4326b5d08985547f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
