@@ -30,21 +30,13 @@ func init() {
 		},
 		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		ServiceDeps:  []string{wificell.TFServiceName},
-		Pre:          wificell.TestFixturePre(),
-		Vars:         []string{"router", "pcap"},
+		Fixture:      "wificellFixt",
 		SoftwareDeps: []string{"mbo"},
 	})
 }
 
 func MBOAssocDisallow(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	// Get the MAC address of WiFi interface.
 	iface, err := tf.ClientInterface(ctx)
@@ -70,7 +62,7 @@ func MBOAssocDisallow(ctx context.Context, s *testing.State) {
 			s.Error("Failed to deconfig AP: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
 	freqOpts, err := ap.Config().PcapFreqOptions()

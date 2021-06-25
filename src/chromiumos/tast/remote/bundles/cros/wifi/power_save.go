@@ -27,22 +27,14 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixt",
 	})
 }
 
 func PowerSave(ctx context.Context, s *testing.State) {
 	const dtimPeriod = 5
 
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	ap, err := tf.ConfigureAP(ctx, []hostapd.Option{
 		hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48),
@@ -55,7 +47,7 @@ func PowerSave(ctx context.Context, s *testing.State) {
 			s.Error("Failed to deconfig the AP: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
 	iface, err := tf.ClientInterface(ctx)

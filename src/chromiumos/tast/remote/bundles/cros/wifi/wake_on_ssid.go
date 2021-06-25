@@ -28,24 +28,16 @@ func init() {
 		// TODO(b/187362093): Add a SoftwareDep for wake_on_wifi.
 		Attr:        []string{"group:wificell", "wificell_suspend", "wificell_unstable"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixt",
 	})
 }
 
 func WakeOnSSID(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
-
 	const (
 		netDetectScanPeriod = 15 // In seconds.
 	)
+
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	features := shillconst.WakeOnWiFiFeaturesDarkConnect
 	wakeOnWifiOps := []wificell.SetWakeOnWifiOption{
@@ -84,7 +76,7 @@ func WakeOnSSID(ctx context.Context, s *testing.State) {
 			s.Error("Failed to deconfig AP: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 	s.Log("AP setup done")
 

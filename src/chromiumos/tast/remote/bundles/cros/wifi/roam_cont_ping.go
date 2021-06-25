@@ -39,9 +39,9 @@ func init() {
 		Attr:         []string{"group:wificell", "wificell_perf", "wificell_unstable"},
 		ServiceDeps:  []string{wificell.TFServiceName},
 		HardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
-		Pre:          wificell.TestFixturePre(),
+		Fixture:      "wificellFixt",
 		Timeout:      time.Minute * 5, // The average test time doubled.
-		Vars:         []string{"router", "pcap", "wifi.RoamContPing.rounds"},
+		Vars:         []string{"wifi.RoamContPing.rounds"},
 		Params: []testing.Param{{
 			Name: "none",
 			Val: wifiutil.ContParam{
@@ -122,14 +122,7 @@ func init() {
 }
 
 func RoamContPing(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	param := s.Param().(wifiutil.ContParam)
 
@@ -148,7 +141,7 @@ func RoamContPing(ctx context.Context, s *testing.State) {
 
 	ctx, ct, finish := wifiutil.ContinuityTestInitialSetup(ctx, s, tf)
 	defer finish()
-	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
 	var vf *verifier.Verifier
