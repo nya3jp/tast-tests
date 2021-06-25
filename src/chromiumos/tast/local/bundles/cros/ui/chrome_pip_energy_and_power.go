@@ -26,11 +26,14 @@ import (
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
 type chromePIPEnergyAndPowerTestParams struct {
+	chromeType   lacros.ChromeType
 	bigPIP       bool
 	layerOverPIP bool
 }
@@ -45,17 +48,45 @@ func init() {
 		Data:         []string{"bear-320x240.h264.mp4", "pip_video.html"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
-			Name: "small",
-			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: false, layerOverPIP: false},
+			Name:    "small",
+			Fixture: "chromeLoggedIn",
+			Val:     chromePIPEnergyAndPowerTestParams{chromeType: lacros.ChromeTypeChromeOS, bigPIP: false, layerOverPIP: false},
 		}, {
-			Name: "big",
-			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: true, layerOverPIP: false},
+			Name:    "big",
+			Fixture: "chromeLoggedIn",
+			Val:     chromePIPEnergyAndPowerTestParams{chromeType: lacros.ChromeTypeChromeOS, bigPIP: true, layerOverPIP: false},
 		}, {
-			Name: "small_blend",
-			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: false, layerOverPIP: true},
+			Name:    "small_blend",
+			Fixture: "chromeLoggedIn",
+			Val:     chromePIPEnergyAndPowerTestParams{chromeType: lacros.ChromeTypeChromeOS, bigPIP: false, layerOverPIP: true},
 		}, {
-			Name: "big_blend",
-			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: true, layerOverPIP: true},
+			Name:    "big_blend",
+			Fixture: "chromeLoggedIn",
+			Val:     chromePIPEnergyAndPowerTestParams{chromeType: lacros.ChromeTypeChromeOS, bigPIP: true, layerOverPIP: true},
+		}, {
+			Name:              "small_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraData:         []string{launcher.DataArtifact},
+			Fixture:           "lacrosStartedByData",
+			Val:               chromePIPEnergyAndPowerTestParams{chromeType: lacros.ChromeTypeLacros, bigPIP: false, layerOverPIP: false},
+		}, {
+			Name:              "big_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraData:         []string{launcher.DataArtifact},
+			Fixture:           "lacrosStartedByData",
+			Val:               chromePIPEnergyAndPowerTestParams{chromeType: lacros.ChromeTypeLacros, bigPIP: true, layerOverPIP: false},
+		}, {
+			Name:              "small_blend_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraData:         []string{launcher.DataArtifact},
+			Fixture:           "lacrosStartedByData",
+			Val:               chromePIPEnergyAndPowerTestParams{chromeType: lacros.ChromeTypeLacros, bigPIP: false, layerOverPIP: true},
+		}, {
+			Name:              "big_blend_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraData:         []string{launcher.DataArtifact},
+			Fixture:           "lacrosStartedByData",
+			Val:               chromePIPEnergyAndPowerTestParams{chromeType: lacros.ChromeTypeLacros, bigPIP: true, layerOverPIP: true},
 		}},
 	})
 }
@@ -66,16 +97,17 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	// There have been test failures that the Chrome OS Bisector
-	// cannot reproduce. This suggests to me that the failures are
-	// caused by some kind of state left over from other tests. As
-	// it may be difficult to find the specific root cause, I will
-	// just not use a precondition.
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
+	params := s.Param().(chromePIPEnergyAndPowerTestParams)
+	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+	var artifactPath string
+	if params.chromeType == lacros.ChromeTypeLacros {
+		artifactPath = s.DataPath(launcher.DataArtifact)
 	}
-	defer cr.Close(cleanupCtx)
+	cr, l, _, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, params.chromeType)
+	if err != nil {
+		s.Fatal("Failed to initialize test: ", err)
+	}
+	defer lacros.CloseLacrosChrome(cleanupCtx, l)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -122,6 +154,12 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
+	if params.chromeType == lacros.ChromeTypeLacros {
+		if err := lacros.CloseAboutBlank(ctx, tconn, l.Devsess, 1); err != nil {
+			s.Fatal("Failed to close about:blank: ", err)
+		}
+	}
+
 	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
 		s.Fatal("Failed to wait for pip_video.html to achieve quiescence: ", err)
 	}
@@ -141,7 +179,6 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 
 	resizeHandle := nodewith.Name("Resize").ClassName("ResizeHandleButton")
 
-	params := s.Param().(chromePIPEnergyAndPowerTestParams)
 	workAreaTopLeft := info.WorkArea.TopLeft()
 	var resizeEnd coords.Point
 	if params.bigPIP {
