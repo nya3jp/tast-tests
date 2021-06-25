@@ -43,7 +43,8 @@ func CrosRuntimeProbeCamera(ctx context.Context, s *testing.State) {
 	labels := mapping[category]
 
 	if len(labels) == 0 {
-		s.Fatal("No camera labels")
+		s.Log("No camera labels or known components. Skipped")
+		return
 	}
 
 	request := &rppb.ProbeRequest{

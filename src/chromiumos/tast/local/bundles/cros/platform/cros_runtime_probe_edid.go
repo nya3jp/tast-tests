@@ -42,7 +42,8 @@ func CrosRuntimeProbeEdid(ctx context.Context, s *testing.State) {
 	}
 	labels := mapping[category]
 	if len(labels) == 0 {
-		s.Fatal("No edid labels")
+		s.Log("No edid labels or known components. Skipped")
+		return
 	}
 
 	request := &rppb.ProbeRequest{
