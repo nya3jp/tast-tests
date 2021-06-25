@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32f5a41a_8ec76ab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-06-25T13:47:12Z",
+      "side": 1,
+      "message": "Move this under the defer + newline. If it fails, Chrome will not be closed.",
+      "revId": "4bf17e57e2ef8de6b5c34243a8f1ebbdbfb84cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
