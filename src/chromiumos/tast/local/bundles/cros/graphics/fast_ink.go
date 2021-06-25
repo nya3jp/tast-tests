@@ -19,6 +19,8 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -27,6 +29,7 @@ const fastInkAPK = "LowLatencyStylusDemoGPU_20210423.apk"
 
 type fastInkTestParams struct {
 	arc              bool
+	chromeType       lacros.ChromeType
 	tablet           bool
 	displayRotations []display.RotationAngle
 	wStates          []ash.WindowStateType
@@ -45,8 +48,9 @@ func init() {
 			ExtraData: []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
 			Fixture:   "chromeLoggedIn",
 			Val: fastInkTestParams{
-				arc:    false,
-				tablet: false,
+				arc:        false,
+				chromeType: lacros.ChromeTypeChromeOS,
+				tablet:     false,
 				displayRotations: []display.RotationAngle{
 					display.Rotate0,
 					display.Rotate90,
@@ -64,8 +68,48 @@ func init() {
 			ExtraData:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
 			Fixture:           "chromeLoggedIn",
 			Val: fastInkTestParams{
-				arc:    false,
-				tablet: true,
+				arc:        false,
+				chromeType: lacros.ChromeTypeChromeOS,
+				tablet:     true,
+				displayRotations: []display.RotationAngle{
+					display.Rotate0,
+					display.Rotate90,
+					display.Rotate180,
+					display.Rotate270,
+				},
+				wStates: []ash.WindowStateType{
+					ash.WindowStateMaximized,
+					ash.WindowStateFullscreen,
+				}},
+		}, {
+			Name:              "chrome_clamshell_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraData:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js", launcher.DataArtifact},
+			Fixture:           "lacrosStartedByData",
+			Val: fastInkTestParams{
+				arc:        false,
+				chromeType: lacros.ChromeTypeLacros,
+				tablet:     false,
+				displayRotations: []display.RotationAngle{
+					display.Rotate0,
+					display.Rotate90,
+					display.Rotate180,
+					display.Rotate270,
+				},
+				wStates: []ash.WindowStateType{
+					ash.WindowStateNormal,
+					ash.WindowStateMaximized,
+					ash.WindowStateFullscreen,
+				}},
+		}, {
+			Name:              "chrome_tablet_lacros",
+			ExtraSoftwareDeps: []string{"lacros", "tablet_mode"},
+			ExtraData:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js", launcher.DataArtifact},
+			Fixture:           "lacrosStartedByData",
+			Val: fastInkTestParams{
+				arc:        false,
+				chromeType: lacros.ChromeTypeLacros,
+				tablet:     true,
 				displayRotations: []display.RotationAngle{
 					display.Rotate0,
 					display.Rotate90,
@@ -162,10 +206,21 @@ func FastInk(ctx context.Context, s *testing.State) {
 
 	params := s.Param().(fastInkTestParams)
 	var cr *chrome.Chrome
+	var l *launcher.LacrosChrome
 	if params.arc {
 		cr = s.FixtValue().(*arc.PreData).Chrome
 	} else {
-		cr = s.FixtValue().(*chrome.Chrome)
+		// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+		var artifactPath string
+		if params.chromeType == lacros.ChromeTypeLacros {
+			artifactPath = s.DataPath(launcher.DataArtifact)
+		}
+		var err error
+		cr, l, _, err = lacros.Setup(ctx, s.FixtValue(), artifactPath, params.chromeType)
+		if err != nil {
+			s.Fatal("Failed to initialize test: ", err)
+		}
+		defer lacros.CloseLacrosChrome(cleanupCtx, l)
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -218,6 +273,12 @@ func FastInk(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to load d-canvas/main.html: ", err)
 		}
 		defer conn.Close()
+
+		if params.chromeType == lacros.ChromeTypeLacros {
+			if err := lacros.CloseAboutBlank(ctx, tconn, l.Devsess, 1); err != nil {
+				s.Fatal("Failed to close about:blank: ", err)
+			}
+		}
 
 		if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
 			s.Fatal("Failed to wait for d-canvas/main.html to achieve quiescence: ", err)
