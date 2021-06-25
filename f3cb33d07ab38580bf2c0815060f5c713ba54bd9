@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b82008_40a419ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-25T09:29:55Z",
+      "side": 1,
+      "message": "tast-test: wifi: Use Fixture instead of Precondition.",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "f3cb33d07ab38580bf2c0815060f5c713ba54bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "819ef28e_6f8d2ded",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-25T09:29:55Z",
+      "side": 1,
+      "message": "Replace the Precondition, TestFixturePreWithCapture, with the Fixture, wificellFixtWithCapture.",
+      "revId": "f3cb33d07ab38580bf2c0815060f5c713ba54bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
