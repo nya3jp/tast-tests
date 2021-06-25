@@ -102,8 +102,7 @@ func LaunchManagedGuestSessionWithPassword(ctx context.Context, s *testing.State
 		chrome.NoLogin(),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.KeepState(),
-		chrome.ExtraArgs("--force-devtools-available"),
-		chrome.ExtraArgs("--disable-policy-key-verification"))
+		chrome.ExtraArgs("--force-devtools-available"))
 	if err != nil {
 		s.Fatal("Chrome restart failed: ", err)
 	}
