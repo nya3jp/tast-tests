@@ -24,8 +24,7 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixt",
 	})
 }
 
@@ -36,14 +35,7 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 	// command to shill. After receiving the roam command, shill sends a D-Bus
 	// roam command to wpa_supplicant. The test expects that the DUT
 	// successfully connects to the second AP within a reasonable amount of time.
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	const (
 		ap1Channel = 48
@@ -72,7 +64,7 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 			s.Error("Failed to deconfig the AP: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap1)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap1)
 	defer cancel()
 
 	ap1SSID := ap1.Config().SSID

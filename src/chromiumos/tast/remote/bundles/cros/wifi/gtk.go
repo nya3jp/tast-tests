@@ -28,8 +28,7 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixt",
 	})
 }
 
@@ -42,14 +41,7 @@ func GTK(ctx context.Context, s *testing.State) {
 		totalTestTime  = 45 * time.Second
 	)
 
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	apOps := []hostapd.Option{
 		hostapd.Mode(hostapd.Mode80211g),
@@ -72,7 +64,7 @@ func GTK(ctx context.Context, s *testing.State) {
 			s.Error("Failed to deconfig ap: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
 	s.Log("AP setup done")

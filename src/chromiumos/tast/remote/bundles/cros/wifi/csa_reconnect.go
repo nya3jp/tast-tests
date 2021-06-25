@@ -25,25 +25,17 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixt",
 	})
 }
 
 func CSAReconnect(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
-
 	const (
 		primaryChannel = 64
 		alterChannel   = 36
 	)
+
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	apOps := []hostapd.Option{hostapd.Mode(hostapd.Mode80211nMixed), hostapd.Channel(primaryChannel), hostapd.HTCaps(hostapd.HTCapHT20)}
 	ap, err := tf.ConfigureAP(ctx, apOps, nil)
@@ -56,7 +48,7 @@ func CSAReconnect(ctx context.Context, s *testing.State) {
 		}
 	}(ctx)
 	s.Log("AP setup done")
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
 	// Connect to the AP.

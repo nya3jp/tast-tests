@@ -27,20 +27,12 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_cq"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixt",
 	})
 }
 
 func OptionalDHCPProperties(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	legacyRouter, err := tf.LegacyRouter()
 	if err != nil {
@@ -66,7 +58,7 @@ func OptionalDHCPProperties(ctx context.Context, s *testing.State) {
 			s.Error("Failed to restore DHCP properties: ", err)
 		}
 	}(ctx, resp.Props)
-	ctx, cancel = ctxutil.Shorten(ctx, 2*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
 	// Connect and capture L3 packets on the interface of AP.

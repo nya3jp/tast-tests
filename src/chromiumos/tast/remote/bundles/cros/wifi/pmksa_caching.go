@@ -27,8 +27,7 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixt",
 	})
 }
 
@@ -50,14 +49,7 @@ func PMKSACaching(ctx context.Context, s *testing.State) {
 	ap0BSSID := mac0.String()
 	ap1BSSID := mac1.String()
 
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	cert := certificate.TestCert1()
 	secConfFac := wpaeap.NewConfigFactory(
@@ -94,7 +86,7 @@ func PMKSACaching(ctx context.Context, s *testing.State) {
 			s.Error("Failed to deconfig AP0: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap0)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap0)
 	defer cancel()
 	s.Log("AP0 setup done; connecting")
 
