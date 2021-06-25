@@ -7,7 +7,7 @@ package network
 import (
 	"context"
 	"strings"
-	"time"
+	// "time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/network/allowlist"
@@ -18,23 +18,24 @@ import (
 )
 
 func init() {
-	testing.AddTest(&testing.Test{
-		Func: SystemServicesConnectivity,
-		Desc: "Test that system services work behind a firewall configured according to our support page",
-		Contacts: []string{
-			"acostinas@google.com", // Test author
-			"chromeos-commercial-networking@google.com",
-		},
-		Attr:         []string{"group:mainline", "informational"},
-		Data:         []string{"allowlist_ssl_inspection.json"},
-		SoftwareDeps: []string{"reboot", "chrome", "chrome_internal"},
-		ServiceDeps:  []string{"tast.cros.network.AllowlistService", "tast.cros.network.ProxyService"},
-		VarDeps: []string{
-			"allowlist.username",
-			"allowlist.password",
-		},
-		Timeout: 12 * time.Minute,
-	})
+	// TODO(acostinas, b/191845062) Re-enable the test when OTA credentials are available in tast tests.
+	// testing.AddTest(&testing.Test{
+	// 	Func: SystemServicesConnectivity,
+	// 	Desc: "Test that system services work behind a firewall configured according to our support page",
+	// 	Contacts: []string{
+	// 		"acostinas@google.com", // Test author
+	// 		"chromeos-commercial-networking@google.com",
+	// 	},
+	// 	Attr:         []string{"group:mainline", "informational"},
+	// 	Data:         []string{"allowlist_ssl_inspection.json"},
+	// 	SoftwareDeps: []string{"reboot", "chrome", "chrome_internal"},
+	// 	ServiceDeps:  []string{"tast.cros.network.AllowlistService", "tast.cros.network.ProxyService"},
+	// 	VarDeps: []string{
+	// 		"allowlist.username",
+	// 		"allowlist.password",
+	// 	},
+	// 	Timeout: 12 * time.Minute,
+	// })
 }
 
 // SystemServicesConnectivity calls the AllowlistService to setup a firewall and verifies system services connectivity.
