@@ -52,6 +52,24 @@
       "parentUuid": "4cc3b291_b0b7bad5",
       "revId": "ea45e8b4bf3f10a7c6ccfe7de3b6c4427eb4c952",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90370e93_220f21ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-06-25T10:28:57Z",
+      "side": 1,
+      "message": "Yes, that\u0027s really sad that VM can\u0027t even emulate privacy screen.\nI was thinking to setup a real device with providing remote access to it, but while it should be rather easy to provide ssh access, I\u0027m not sure how to make the screen visible for you - remote desktop is available only inside the user session and when running tast test it always starts a new user session to which you\u0027ll need to connect - this might be tricky.\n\nIt\u0027s totally OK for us (and we greatly appreciate your progress here!) if you\u0027ll leave the CL as is and we\u0027ll just follow up with testing and adjusting it on a real device on our own.",
+      "parentUuid": "3b1cf884_498dfc97",
+      "revId": "ea45e8b4bf3f10a7c6ccfe7de3b6c4427eb4c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
