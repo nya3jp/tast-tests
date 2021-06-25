@@ -16,6 +16,24 @@
       "message": "This deserves a comment. adding comment on this in a new patchset.",
       "revId": "24acc9562b3ffcd72100fe2584ded43a7c00fae1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daececc6_49214223",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-06-25T17:11:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40fad172_890c62ca",
+      "revId": "24acc9562b3ffcd72100fe2584ded43a7c00fae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
