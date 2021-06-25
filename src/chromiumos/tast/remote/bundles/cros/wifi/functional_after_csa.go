@@ -27,8 +27,7 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixt",
 		Params: []testing.Param{
 			{
 				Name: "client",
@@ -42,14 +41,7 @@ func init() {
 }
 
 func FunctionalAfterCSA(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	legacyRouter, err := tf.LegacyRouter()
 	if err != nil {
@@ -84,6 +76,7 @@ func FunctionalAfterCSA(ctx context.Context, s *testing.State) {
 				s.Errorf("Failed to restore powersave mode to %t: %v", psMode, err)
 			}
 		}(ctx)
+		var cancel context.CancelFunc
 		ctx, cancel = ctxutil.Shorten(ctx, time.Second)
 		defer cancel()
 
@@ -106,7 +99,7 @@ func FunctionalAfterCSA(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to deconfig the AP: ", err)
 			}
 		}(ctx)
-		ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+		ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 		defer cancel()
 
 		s.Log("Connecting to AP")

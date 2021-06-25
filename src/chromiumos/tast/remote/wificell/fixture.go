@@ -26,8 +26,22 @@ const (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
+		Name: "wificellFixt",
+		Desc: "Default wificell setup with router and pcap object. Note that pcap and router can point to the same Access Point. Also, unlike wificellFixtWithCapture, the fixture won't spawn Capturer. Users may spawn Capturer with customize configuration when needed",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
+		Impl:            newTastFixture(TFFeaturesNone),
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: tearDownTimeout,
+		ServiceDeps:     []string{TFServiceName},
+		Vars:            []string{"router", "pcap"},
+	})
+	testing.AddFixture(&testing.Fixture{
 		Name: "wificellFixtWithCapture",
-		Desc: "Wificell setup with pcap for each configured AP",
+		Desc: "Wificell setup with Capturer on pcap for each configured AP",
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},

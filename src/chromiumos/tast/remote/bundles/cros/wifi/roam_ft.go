@@ -47,8 +47,7 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixt",
 		Params: []testing.Param{{
 			Name:      "psk",
 			ExtraAttr: []string{"wificell_unstable"},
@@ -113,14 +112,7 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		one peer on either bridge to allow the bridges to forward traffic
 		between managed0 and managed1.
 	*/
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	legacyRouter, err := tf.LegacyRouter()
 	if err != nil {
@@ -146,6 +138,7 @@ func RoamFT(ctx context.Context, s *testing.State) {
 
 	// runOnce sets up the network environment as mentioned above, and verifies the DUT is able to roam between the APs iff expectedFailure is not set.
 	runOnce := func(ctx context.Context, secConfFac security.ConfigFactory, expectedFailure bool) {
+		var cancel context.CancelFunc
 		var err error
 		var br [2]string
 		for i := 0; i < 2; i++ {
@@ -418,7 +411,7 @@ func RoamFT(ctx context.Context, s *testing.State) {
 			s.Errorf("Failed to set global FT property back to %v: %v", ftResp.Enabled, err)
 		}
 	}(ctx)
-	ctx, cancel = ctxutil.Shorten(ctx, time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
 	defer cancel()
 
 	param := s.Param().(roamFTparam)

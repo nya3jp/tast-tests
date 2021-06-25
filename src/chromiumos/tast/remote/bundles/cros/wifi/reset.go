@@ -25,8 +25,7 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_suspend"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixt",
 		// For some Marvell DUT, this test may take more than 25 minutes.
 		// For WCN3990 device, this test may take more than 39 minutes.
 		Timeout: time.Minute * 45,
@@ -51,14 +50,7 @@ func init() {
 }
 
 func Reset(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	apOps := s.Param().([]hostapd.Option)
 	ap, err := tf.ConfigureAP(ctx, apOps, nil)
@@ -70,7 +62,7 @@ func Reset(ctx context.Context, s *testing.State) {
 			s.Error("Failed to deconfigure the AP: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
 	ctxForDisconnectWiFi := ctx

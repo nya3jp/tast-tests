@@ -23,8 +23,7 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixt",
 		Params: []testing.Param{
 			// Two subtests:
 			// 1. MissingBeacons does not perform a scan before taking down the AP.
@@ -43,14 +42,7 @@ func MissingBeacons(ctx context.Context, s *testing.State) {
 	// Connects a DUT to an AP, then kills the AP in such a way that no de-auth
 	// message is sent.  Asserts that the DUT marks itself as disconnected from
 	// the AP within maxDisconnectTime.
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	legacyRouter, err := tf.LegacyRouter()
 	if err != nil {
@@ -66,7 +58,7 @@ func MissingBeacons(ctx context.Context, s *testing.State) {
 			s.Error("Failed to deconfig the AP: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
 	var servicePath string

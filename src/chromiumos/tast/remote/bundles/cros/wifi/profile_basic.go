@@ -24,20 +24,12 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_cq", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixt",
 	})
 }
 
 func ProfileBasic(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	var aps []*wificell.APIface
 	// It is restricted to configure multiple APs on the same phy, so start the APs on the different channels.
@@ -54,6 +46,7 @@ func ProfileBasic(ctx context.Context, s *testing.State) {
 				s.Error("Failed to deconfig ap, err: ", err)
 			}
 		}(ctx, ap)
+		var cancel context.CancelFunc
 		ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
 		defer cancel()
 		aps = append(aps, ap)

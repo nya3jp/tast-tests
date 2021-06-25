@@ -25,20 +25,12 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_cq"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixt",
 	})
 }
 
 func BeaconInterval(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	// The value of beacon interval to be set in hostapd config
 	// and checked from DUT.
@@ -60,7 +52,7 @@ func BeaconInterval(ctx context.Context, s *testing.State) {
 			s.Error("Failed to deconfig ap: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
 	s.Log("Connecting to WiFi")

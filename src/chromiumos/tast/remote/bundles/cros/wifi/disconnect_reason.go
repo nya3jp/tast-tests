@@ -40,8 +40,7 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
-		Vars:        []string{"router", "pcap"},
+		Fixture:     "wificellFixt",
 		Params: []testing.Param{
 			{
 				Name: "ap_gone",
@@ -94,14 +93,7 @@ func init() {
 }
 
 func DisconnectReason(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	trigger := s.Param().(disReasonParam)
 	if trigger.dt == dtAPSendChannelSwitch {
@@ -154,7 +146,7 @@ func DisconnectReason(ctx context.Context, s *testing.State) {
 			}
 		}
 	}()
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap1)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap1)
 	defer cancel()
 
 	// Connect to the initial AP.
