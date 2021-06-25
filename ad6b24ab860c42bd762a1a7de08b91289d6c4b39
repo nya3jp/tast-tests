@@ -69,6 +69,23 @@
       "message": "Ping :) ",
       "revId": "ad6b24ab860c42bd762a1a7de08b91289d6c4b39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc70589e_7aeca0f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-25T03:18:22Z",
+      "side": 1,
+      "message": "+2 for Tast Review",
+      "revId": "ad6b24ab860c42bd762a1a7de08b91289d6c4b39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
