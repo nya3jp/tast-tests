@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff31f857_0faeaf84",
+        "filename": "src/chromiumos/tast/local/playbilling/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-25T07:59:34Z",
+      "side": 1,
+      "message": "\u003e \"memeber\" is a possible misspelling of \"member\".\n\nPlease fix.",
+      "parentUuid": "8bd41d2b_7cc1f4fb",
+      "range": {
+        "startLine": 71,
+        "startChar": 39,
+        "endLine": 71,
+        "endChar": 46
+      },
+      "revId": "cf4a4ba7d3ecd4f8cd0ba89e67a9ffe80177d6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
