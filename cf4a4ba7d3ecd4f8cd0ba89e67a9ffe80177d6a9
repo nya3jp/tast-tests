@@ -23,6 +23,30 @@
       },
       "revId": "cf4a4ba7d3ecd4f8cd0ba89e67a9ffe80177d6a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f71a1ef_1b222bea",
+        "filename": "src/chromiumos/tast/local/playbilling/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1333932
+      },
+      "writtenOn": "2021-06-25T08:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff31f857_0faeaf84",
+      "range": {
+        "startLine": 71,
+        "startChar": 39,
+        "endLine": 71,
+        "endChar": 46
+      },
+      "revId": "cf4a4ba7d3ecd4f8cd0ba89e67a9ffe80177d6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
