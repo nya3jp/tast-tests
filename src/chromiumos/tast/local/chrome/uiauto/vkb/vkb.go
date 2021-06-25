@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -49,6 +50,9 @@ var NodeFinder = nodewith.Ancestor(vkRootFinder)
 
 // KeyFinder returns a finder of keys on virtual keyboard.
 var KeyFinder = NodeFinder.Role(role.Button)
+
+// MultipasteItemFinder returns a finder of multipaste item on virtual keyboard.
+var MultipasteItemFinder = NodeFinder.ClassName("scrim")
 
 // KeyByNameIgnoringCase returns a virtual keyboard Key button finder with the name ignoring case.
 func KeyByNameIgnoringCase(keyName string) *nodewith.Finder {
@@ -401,7 +405,16 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToMultipaste() uiauto.Action {
 
 // TapMultipasteItem returns an action tapping the item corresponding to itemName in multipaste virtual keyboard.
 func (vkbCtx *VirtualKeyboardContext) TapMultipasteItem(itemName string) uiauto.Action {
-	return vkbCtx.ui.LeftClick(NodeFinder.ClassName("scrim").Name(itemName))
+	return vkbCtx.ui.LeftClick(MultipasteItemFinder.Name(itemName))
+}
+
+// DeleteMultipasteItem returns an action selecting a multipaste item via longpress and deleting it.
+func (vkbCtx *VirtualKeyboardContext) DeleteMultipasteItem(touchCtx *touch.Context, itemName string) uiauto.Action {
+	itemFinder := MultipasteItemFinder.Name(itemName)
+	return uiauto.Combine("Delete item in multipaste virtual keyboard",
+		touchCtx.LongPress(itemFinder),
+		touchCtx.Tap(KeyFinder.ClassName("trash-button")),
+		vkbCtx.ui.WithTimeout(3*time.Second).WaitUntilGone(itemFinder))
 }
 
 // EnableA11yVirtualKeyboard returns an action enabling or disabling
