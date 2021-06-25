@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2975d77_866bde8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-06-25T20:35:21Z",
+      "side": 1,
+      "message": "Ah! missed that ... replied on the original comment.",
+      "parentUuid": "1a7a2661_1b4f3c67",
+      "revId": "784c0e75492255860f9d84c4326b5d08985547f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2515486_e27d9b12",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-06-25T20:21:21Z",
       "side": 1,
       "message": "nit:\nis there a bug filed for this?\nIf so, I\u0027d add a reference to the bug. e.g:\n\nTODO(b/xxxx): Skip on ....  Should be removed once the bug is fixed (or something like that).",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "784c0e75492255860f9d84c4326b5d08985547f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7dde1fe_a57cc769",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-06-25T20:35:21Z",
+      "side": 1,
+      "message": "I replied on Matthew\u0027s similar comment. We have ticket for marvell https://b.corp.google.com/issues/189583918 , but with very low to no chance of getting a fix for reason 1. no formal support with Marvell. 2. The impact of the regression is very low.\nTicket is still open to follow up but no POR for actual fix for this.",
+      "parentUuid": "f2515486_e27d9b12",
       "range": {
         "startLine": 39,
         "startChar": 5,
