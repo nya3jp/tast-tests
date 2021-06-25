@@ -32,9 +32,6 @@ func init() {
 		Fixture:      "chromeEnrolledLoggedIn",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
-			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
 }
