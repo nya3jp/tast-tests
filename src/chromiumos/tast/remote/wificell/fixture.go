@@ -26,6 +26,20 @@ const (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
+		Name: "wificellFixt",
+		Desc: "Default wificell setup",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
+		Impl:            newTastFixture(TFFeaturesNone),
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: tearDownTimeout,
+		ServiceDeps:     []string{TFServiceName},
+		Vars:            []string{"router", "pcap"},
+	})
+	testing.AddFixture(&testing.Fixture{
 		Name: "wificellFixtWithCapture",
 		Desc: "Wificell setup with pcap for each configured AP",
 		Contacts: []string{
