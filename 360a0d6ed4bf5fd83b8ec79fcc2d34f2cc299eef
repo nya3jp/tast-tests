@@ -16,6 +16,126 @@
       "message": "tast shadow reviewer LGTM % comment",
       "revId": "360a0d6ed4bf5fd83b8ec79fcc2d34f2cc299eef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdfcdaa8_d0eb5ebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T05:24:59Z",
+      "side": 1,
+      "message": "matching with user visible text is considered as fragile.\nAny alternative do you have? E.g. some ids/classes etc.?\nditto for below.",
+      "range": {
+        "startLine": 89,
+        "startChar": 65,
+        "endLine": 89,
+        "endChar": 81
+      },
+      "revId": "360a0d6ed4bf5fd83b8ec79fcc2d34f2cc299eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24e61647_78830b98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T05:24:59Z",
+      "side": 1,
+      "message": "could you move this to just before L88, and share it with L89?",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 63
+      },
+      "revId": "360a0d6ed4bf5fd83b8ec79fcc2d34f2cc299eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0904def4_27bd10e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T05:24:59Z",
+      "side": 1,
+      "message": "style:\n\ntbInfo, err :\u003d ...\nif err !\u003d nil {\n  return ...\n}\nif ... {\n  ...\n}",
+      "revId": "360a0d6ed4bf5fd83b8ec79fcc2d34f2cc299eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82fd84fe_f6adf17a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T05:24:59Z",
+      "side": 1,
+      "message": "ditto for sharing the code with L105.",
+      "range": {
+        "startLine": 108,
+        "startChar": 9,
+        "endLine": 108,
+        "endChar": 64
+      },
+      "revId": "360a0d6ed4bf5fd83b8ec79fcc2d34f2cc299eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f96c884_3666d92e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T05:24:59Z",
+      "side": 1,
+      "message": "ditto for line breaking style.",
+      "revId": "360a0d6ed4bf5fd83b8ec79fcc2d34f2cc299eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2c6e30a_2b60b2e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T05:24:59Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "360a0d6ed4bf5fd83b8ec79fcc2d34f2cc299eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
