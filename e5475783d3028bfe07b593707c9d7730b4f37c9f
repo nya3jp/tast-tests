@@ -180,6 +180,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bcdb3bf_834b15bb",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-25T02:13:39Z",
+      "side": 1,
+      "message": "You\u0027re right, BuildArtifactsURL contains the correct URL, it can be overridden by -buildartifactsurl flag passed to Tast CLI in non-Chrome OS CI. Î\u0027m considering to expose the value to tests for use cases like this.",
+      "parentUuid": "5361d8d6_97dc90d4",
+      "range": {
+        "startLine": 373,
+        "startChar": 18,
+        "endLine": 373,
+        "endChar": 50
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d8b110e_fb632545",
