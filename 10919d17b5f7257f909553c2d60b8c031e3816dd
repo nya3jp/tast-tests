@@ -33,6 +33,24 @@
       "message": "kyleshima@ let me know if you can code-shadow this review... if you cannot, I\u0027ll go ahead and review it.",
       "revId": "10919d17b5f7257f909553c2d60b8c031e3816dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "674b7e6d_274d2c84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-25T17:57:11Z",
+      "side": 1,
+      "message": "thanks for the ping, I missed this one among the other CLs to split stuff out of the ui package.",
+      "parentUuid": "cf949d6e_59c891ab",
+      "revId": "10919d17b5f7257f909553c2d60b8c031e3816dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
