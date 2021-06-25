@@ -40,9 +40,12 @@ func CrosRuntimeProbeBattery(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Unable to decode autotest_host_info_labels: ", err)
 	}
-
+	// Waived components are defined in |waived_comp_categories| on the HWID
+	// service:
+	// platform/factory-private/config/hwid/service/appengine/configurations.yaml
 	if len(labels) == 0 {
-		s.Fatal("No battery labels")
+		s.Log("No battery labels or known components. Skipped")
+		return
 	}
 
 	request := &rppb.ProbeRequest{
