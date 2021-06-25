@@ -39,6 +39,30 @@
       },
       "revId": "d02ff17121c46b1f159f1e172381ceb7eb286e08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52b7cafe_0c3c4f2b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-06-25T05:22:29Z",
+      "side": 1,
+      "message": "Changed both to touch action now.",
+      "parentUuid": "598cc5b0_0982beec",
+      "range": {
+        "startLine": 412,
+        "startChar": 2,
+        "endLine": 413,
+        "endChar": 59
+      },
+      "revId": "d02ff17121c46b1f159f1e172381ceb7eb286e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
