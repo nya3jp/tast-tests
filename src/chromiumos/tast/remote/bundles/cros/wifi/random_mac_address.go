@@ -34,8 +34,7 @@ func init() {
 		},
 		Attr:         []string{"group:wificell", "wificell_func"},
 		ServiceDeps:  []string{wificell.TFServiceName},
-		Pre:          wificell.TestFixturePre(),
-		Vars:         []string{"router", "pcap"},
+		Fixture:      "wificellFixt",
 		HardwareDeps: hwdep.D(hwdep.WifiMACAddrRandomize()),
 	})
 }
@@ -45,14 +44,7 @@ func RandomMACAddress(ctx context.Context, s *testing.State) {
 	// run in open air environment, it is very probable to fail due to the packets
 	// from other devices. (esp. the mac randomization disabled case)
 
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	// Use 2.4GHz channel 1 as some devices sets no_IR on 5GHz channels. See http://b/173633813.
 	apOps := []hostapd.Option{
@@ -69,7 +61,7 @@ func RandomMACAddress(ctx context.Context, s *testing.State) {
 			s.Error("Failed to deconfig the AP: ", err)
 		}
 	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
 	// Get the MAC address of WiFi interface.
