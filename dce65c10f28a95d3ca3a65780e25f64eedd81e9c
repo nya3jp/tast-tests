@@ -180,6 +180,24 @@
       "parentUuid": "147ff54c_5f7fbfc5",
       "revId": "dce65c10f28a95d3ca3a65780e25f64eedd81e9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3487e667_cfa6f343",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-25T16:35:59Z",
+      "side": 1,
+      "message": "From Eric: After reading b/191276960#comment3 and SimpleServer inside snippet, \nIt\u0027s OK to just call INIT for \"Server thread XX stopped\" case.\nBecause it remove the previous UID from the map when \"server stopped\".\nhttp://google3/third_party/java_src/android_libs/mobly_snippet_lib/src/main/java/com/google/android/mobly/snippet/rpc/SimpleServer.java?l\u003d120\u0026rcl\u003d183395586",
+      "parentUuid": "3e309e8d_9767d14d",
+      "revId": "dce65c10f28a95d3ca3a65780e25f64eedd81e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
