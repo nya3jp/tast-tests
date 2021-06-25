@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c31994a9_77b5602b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-25T23:38:25Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m a little lost - what exactly is a Fixture? $BUG doesn\u0027t give much context here either. Is there a doc somewhere I can read?",
+      "revId": "0ae45dca6f9df4a6bfc1127afaa533542695fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
