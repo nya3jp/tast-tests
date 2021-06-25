@@ -22,6 +22,30 @@
       },
       "revId": "1c6291f1caf367baa2c5c2aa242f34e05f145063",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c1916cf_917c6116",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/extension_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-06-25T07:30:26Z",
+      "side": 0,
+      "message": "You\u0027re right, this works and it\u0027s much better! \n\nThanks a lot for suggesting this, Pavol!",
+      "parentUuid": "8d0e4267_32144775",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 31
+      },
+      "revId": "1c6291f1caf367baa2c5c2aa242f34e05f145063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
