@@ -15,12 +15,12 @@ import (
 
 // ConfigureAP is a helper wrapper on TestFixture.ConfigureAP that additionally
 // handles error, returns deconfig function and provide channel frequency the AP is configured for.
-// Requires s.PreValue() to return *wificell.TextFixture.
+// Requires s.FixtValue() to return *wificell.TextFixture.
 // Calls s.Fatal in case of any error during setup.
 func ConfigureAP(ctx context.Context, s *testing.State, apParams []hostapd.Option, routerIdx int,
 	secConfFac security.ConfigFactory) (ap *wificell.APIface, freq int, deconfig func(context.Context, *wificell.APIface) error) {
 
-	tf := s.PreValue().(*wificell.TestFixture)
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	ap, err := tf.ConfigureAPOnRouterID(ctx, routerIdx, apParams, secConfFac)
 	if err != nil {
@@ -48,10 +48,10 @@ func ConfigureAP(ctx context.Context, s *testing.State, apParams []hostapd.Optio
 
 // ConnectAP is a helper wrapper on TestFixture.ConnectWifiAP that additionally
 // handles errors and returns disconnect function.
-// Requires s.PreValue() to return *wificell.TextFixture.
+// Requires s.FixtValue() to return *wificell.TextFixture.
 // Calls s.Fatal in case of any error during connect.
 func ConnectAP(ctx context.Context, s *testing.State, ap *wificell.APIface, apIdx int) (disconnect func(context.Context)) {
-	tf := s.PreValue().(*wificell.TestFixture)
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
 		s.Fatal("Failed to connect to WiFi, err: ", err)

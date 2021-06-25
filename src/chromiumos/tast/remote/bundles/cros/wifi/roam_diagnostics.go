@@ -78,9 +78,8 @@ func init() {
 		Contacts:    []string{"jakobczyk@google.com"},
 		Attr:        []string{"group:wificell_roam", "wificell_roam_perf"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePreWithFeatures(wificell.TFFeaturesRouters | wificell.TFFeaturesAttenuator),
+		Fixture:     "wificellFixtRoaming",
 		Timeout:     time.Minute * 90,
-		Vars:        []string{"routers", "pcap", "attenuator"},
 		Params: []testing.Param{
 			{
 				Val: []roamDiagnosticsTestcase{
@@ -95,7 +94,7 @@ func init() {
 // requestScans requests network scan and waits for first scan event from wpa_supplicant.
 // Tries roamDiagnosticsScanCount times. Calls s.Fatal if not successful.
 func requestScans(ctx context.Context, s *testing.State, wpaMonitor *wificell.WPAMonitor) {
-	tf := s.PreValue().(*wificell.TestFixture)
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	scanSuccess := false
 retryLoop:
@@ -187,7 +186,7 @@ func setTotalAttenuation(ctx context.Context, s *testing.State, attenuator *atte
 func executeRoamDiagnosticsTest(ctx context.Context, s *testing.State, ap0Params, ap1Params []hostapd.Option, runIdx int,
 	secConfFac security.ConfigFactory, stats *roamDiagnosticsStatsMap) {
 
-	tf := s.PreValue().(*wificell.TestFixture)
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	attenuator := tf.Attenuator()
 	resetAttenuation(ctx, s, attenuator)
@@ -304,15 +303,6 @@ func dumpRoamDiagnosticsStats(ctx context.Context, s *testing.State, stats *roam
 // when it needs to. Therefore, we use RoamNatural in conjunction
 // with this test to ensure that normal roam behavior is not broken.
 func RoamDiagnostics(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
-
 	stats := roamDiagnosticsStatsMap{
 		{2, 2}: {0},
 		{2, 5}: {0},
