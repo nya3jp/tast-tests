@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5653a656_943151c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-25T12:34:07Z",
+      "side": 1,
+      "message": "nit: please add comment what \"true\" means here, e.g.\n\ntrue /* isLocked */",
+      "range": {
+        "startLine": 135,
+        "startChar": 88,
+        "endLine": 135,
+        "endChar": 92
+      },
+      "revId": "0f81b6eb3b4990fcbdb473bb41e386abee3a2f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc947676_3b64cbf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-25T12:34:07Z",
+      "side": 1,
+      "message": "nit: if you decided to remove shown under if statement, then it also makes sense to just drop else here, e.g.:\n\n```\nshown, err :\u003d ui.Exists(ctx, tconn, params)\nif err !\u003d nil {\n\ts.Fatalf(\"Failed to check existence of %v: %v\", node, err)\n}\nif !shown {\n\t...\n}\n\n```",
+      "range": {
+        "startLine": 145,
+        "startChar": 4,
+        "endLine": 145,
+        "endChar": 8
+      },
+      "revId": "0f81b6eb3b4990fcbdb473bb41e386abee3a2f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dce25fe_cd426a57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-25T12:34:07Z",
+      "side": 1,
+      "message": "same: add comment",
+      "range": {
+        "startLine": 94,
+        "startChar": 91,
+        "endLine": 94,
+        "endChar": 96
+      },
+      "revId": "0f81b6eb3b4990fcbdb473bb41e386abee3a2f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f127c38b_d9d3236c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-25T12:34:07Z",
+      "side": 1,
+      "message": "nit: drop else",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 8
+      },
+      "revId": "0f81b6eb3b4990fcbdb473bb41e386abee3a2f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb5968b_ef818237",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-25T12:34:07Z",
+      "side": 1,
+      "message": "same: drop \"else\"",
+      "range": {
+        "startLine": 590,
+        "startChar": 3,
+        "endLine": 590,
+        "endChar": 7
+      },
+      "revId": "0f81b6eb3b4990fcbdb473bb41e386abee3a2f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ecc6a40_b164848f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-25T12:34:07Z",
+      "side": 1,
+      "message": "nit: this suffix looks a bit redundant since we already in QuickSettings package",
+      "range": {
+        "startLine": 599,
+        "startChar": 19,
+        "endLine": 599,
+        "endChar": 34
+      },
+      "revId": "0f81b6eb3b4990fcbdb473bb41e386abee3a2f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

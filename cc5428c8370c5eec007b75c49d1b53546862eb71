@@ -378,6 +378,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "358c1a32_61c7e0d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-25T12:34:07Z",
+      "side": 1,
+      "message": "Yes, there is the same pattern in other cases, but it does not mean it\u0027s correct :)\n\nDut to documentation, SigninProfileTestAPIConn returns shared object and you should not close it. If you close it, next test won\u0027t be able to use it.\n\nAlso documentation confirms by implementation:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/driver/session.go;l\u003d196?q\u003dSigninProfileTestAPIConn\n\nEven though currently these tests don\u0027t affect others because they have their own Chrome object, they are a bad and wrong example for others and actually they might use fixture in the future which will lead to problems because they close shared object. So it makes sense to fix them.\n\nSo basically, in this CL and other test there are 2 issues as I mentioned before:\n1. tconn should not be closed\n2. defer statements are in the wrong order (even though we should remove one of them).",
+      "parentUuid": "5403f895_8b702c1d",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d5e67a2_13a41b4d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
         "patchSetId": 12
@@ -824,6 +842,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18676d05_ca90aede",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-25T12:34:07Z",
+      "side": 1,
+      "message": "Can you please explain why do you need this log message? It\u0027s a bit against official guideline.",
+      "parentUuid": "2606ecbd_e570776a",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6128aae8_19c0e00c",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 12
@@ -947,6 +983,24 @@
       "side": 1,
       "message": "I checked we started using this in few places related.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_oobe.go;l\u003d57?q\u003dSKipToLoginF\u0026sq\u003d",
       "parentUuid": "19490f0f_0c7f1b1f",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09ecd603_0e6c3309",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-25T12:34:07Z",
+      "side": 1,
+      "message": "Right, only one use cases.\n\nChrome package is heavily used in many tests. So each method added to this package should be 1) really related to Chrome, but not to some specific APIs for testing; 2) potentially heavily used in other test.\n\nBased on that I think it makes sense to don\u0027t include SkipToLoginForTesting method to the chrome package.",
+      "parentUuid": "3e6306c5_1ec10c33",
       "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
