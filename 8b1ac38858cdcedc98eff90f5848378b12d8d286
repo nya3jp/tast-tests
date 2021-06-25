@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "993c5753_851faab1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-25T14:52:25Z",
+      "side": 1,
+      "message": "Do we want to remove the test over this? Isn\u0027t this still a useful result?",
+      "revId": "8b1ac38858cdcedc98eff90f5848378b12d8d286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
