@@ -7,6 +7,7 @@
 package syzutils
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io/ioutil"
@@ -46,28 +47,29 @@ func FindDUTArch(ctx context.Context, d *dut.DUT) (string, error) {
 	return strings.TrimSpace(string(arch)), nil
 }
 
-// WarningInDmesg checks for an error or warning in the dmesg log.
-func WarningInDmesg(ctx context.Context, d *dut.DUT) (bool, error) {
+// WarningInDmesg checks for an error or warning in the dmesg log. If an
+// error or warning is found, the contents of the log are returned.
+func WarningInDmesg(ctx context.Context, d *dut.DUT) ([]byte, error) {
 	testing.ContextLog(ctx, "Checking for warning in dmesg")
 	contents, err := readDmesg(ctx, d)
 	if err != nil {
-		return false, err
+		return nil, err
 	}
 	for _, pattern := range crashPatterns {
-		if strings.Contains(contents, pattern) {
+		if bytes.Contains(contents, []byte(pattern)) {
 			testing.ContextLogf(ctx, "pattern %q matched", pattern)
-			return true, nil
+			return contents, nil
 		}
 	}
-	return false, nil
+	return nil, nil
 }
 
-func readDmesg(ctx context.Context, d *dut.DUT) (string, error) {
+func readDmesg(ctx context.Context, d *dut.DUT) ([]byte, error) {
 	contents, err := d.Command("dmesg").Output(ctx)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
-	return string(contents), nil
+	return contents, nil
 }
 
 // ClearDmesg clears the dmesg log.
