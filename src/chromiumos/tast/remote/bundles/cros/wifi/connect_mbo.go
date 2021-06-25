@@ -30,21 +30,13 @@ func init() {
 		},
 		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		ServiceDeps:  []string{wificell.TFServiceName},
-		Pre:          wificell.TestFixturePreWithFeatures(wificell.TFFeaturesCapture | wificell.TFFeaturesRouterAsCapture),
-		Vars:         []string{"router", "pcap"},
+		Fixture:      "wificellFixtRouterAsPcap",
 		SoftwareDeps: []string{"mbo", "rrm_support"},
 	})
 }
 
 func ConnectMBO(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Log("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	ctx, restore, err := tf.DisableMACRandomize(ctx)
 	if err != nil {
