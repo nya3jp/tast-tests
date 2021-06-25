@@ -16,6 +16,97 @@
       "message": "tast shadow reviewer LGTM",
       "revId": "038929596c1905c63ec833c7fa326d0d3303b16c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3b199bb_dc469916",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T05:32:25Z",
+      "side": 1,
+      "message": "R+\u003dmyself (non-shadow tast reviewer) from context.",
+      "revId": "038929596c1905c63ec833c7fa326d0d3303b16c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d533429f_ffd25d22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T05:32:25Z",
+      "side": 1,
+      "message": "unblock is unneeded. Pls find my comment below, too.",
+      "revId": "038929596c1905c63ec833c7fa326d0d3303b16c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c480067_4c9e1327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T05:32:25Z",
+      "side": 1,
+      "message": "style:\n\nif err :\u003d modify...(...) {\n  return ...\n}\ndefer modifyPlaintextDNSDropRule(...)\ndnsBlockedTC \u003d ...\n\nditto for DoHAlwaysOn.",
+      "revId": "038929596c1905c63ec833c7fa326d0d3303b16c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab2a5d75_1dfb560e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T05:32:25Z",
+      "side": 1,
+      "message": "optional: testexec.DumpLogOnError\nfor future debuggability. Ditto for below.",
+      "range": {
+        "startLine": 155,
+        "startChar": 91,
+        "endLine": 155,
+        "endChar": 93
+      },
+      "revId": "038929596c1905c63ec833c7fa326d0d3303b16c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46d9ad9a_5a4e10f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T05:32:25Z",
+      "side": 1,
+      "message": "In case of failure, can (possibly half-baked) state be reverted? Ditto for below.",
+      "revId": "038929596c1905c63ec833c7fa326d0d3303b16c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
