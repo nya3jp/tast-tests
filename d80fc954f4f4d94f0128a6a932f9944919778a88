@@ -16,6 +16,75 @@
       "message": "Hi David, this CL is ready for review.",
       "revId": "d80fc954f4f4d94f0128a6a932f9944919778a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a922c67e_b96b03ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/multiple_sign_in_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-25T21:04:49Z",
+      "side": 1,
+      "message": "Use the library for this one.\n\nquicksettings.Show",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "d80fc954f4f4d94f0128a6a932f9944919778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3e343fc_bc9aeff9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/multiple_sign_in_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-25T21:04:49Z",
+      "side": 1,
+      "message": "If you don\u0027t use the familylink fixture you could create another test user before \nlogging in with the unicorn account",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "d80fc954f4f4d94f0128a6a932f9944919778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57085d72_e68f075c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/multiple_sign_in_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-25T21:04:49Z",
+      "side": 1,
+      "message": "defer quicksettings.Hide",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 1
+      },
+      "revId": "d80fc954f4f4d94f0128a6a932f9944919778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
