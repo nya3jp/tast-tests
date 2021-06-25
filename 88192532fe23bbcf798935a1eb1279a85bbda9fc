@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e213abc4_518d2f6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-25T19:01:17Z",
+      "side": 1,
+      "message": "Just curious, is this something we\u0027re asking Marvell to fix?",
+      "range": {
+        "startLine": 13,
+        "startChar": 65,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "88192532fe23bbcf798935a1eb1279a85bbda9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94ba5fca_a5f8b951",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-25T19:01:17Z",
+      "side": 1,
+      "message": "b/189583918 also belongs here I think",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 3
+      },
+      "revId": "88192532fe23bbcf798935a1eb1279a85bbda9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7007c807_e39fd819",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-25T19:01:17Z",
+      "side": 1,
+      "message": "Mostly lgtm with a few minor comments.",
+      "revId": "88192532fe23bbcf798935a1eb1279a85bbda9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "086b5990_34272ee6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-25T19:01:17Z",
+      "side": 1,
+      "message": "background scan?",
+      "range": {
+        "startLine": 44,
+        "startChar": 54,
+        "endLine": 44,
+        "endChar": 62
+      },
+      "revId": "88192532fe23bbcf798935a1eb1279a85bbda9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7557e91_4168f294",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-25T19:01:17Z",
+      "side": 1,
+      "message": "It might be cleaner to add a hardware dependency (e.g. WifiNotMarvell8997 or something)",
+      "range": {
+        "startLine": 45,
+        "startChar": 44,
+        "endLine": 45,
+        "endChar": 60
+      },
+      "revId": "88192532fe23bbcf798935a1eb1279a85bbda9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
