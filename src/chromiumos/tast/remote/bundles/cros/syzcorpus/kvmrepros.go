@@ -52,6 +52,11 @@ func KVMRepros(ctx context.Context, s *testing.State) {
 	}
 	defer os.RemoveAll(tastDir)
 
+	crashesDir := filepath.Join(s.OutDir(), "crashes")
+	if err := os.Mkdir(crashesDir, 0755); err != nil {
+		s.Fatal("Unable to create temp crashes dir: ", err)
+	}
+
 	// Read enabled repros.
 	enabledRepros, err := syzutils.LoadEnabledRepros(s.DataPath(kvmEnabledRepros))
 	if err != nil {
@@ -94,15 +99,18 @@ func KVMRepros(ctx context.Context, s *testing.State) {
 			s.Logf("RunRepro returned %v: with combined output: %v", err, string(out))
 		}
 
-		didWarn, err := syzutils.WarningInDmesg(ctx, d)
+		warning, err := syzutils.WarningInDmesg(ctx, d)
 		if err != nil {
 			s.Fatalf("warningInDmesg failed after running sample %v: %v", fname, err)
-		} else if didWarn {
-			// TODO: Copy the warning log.
-			s.Fatalf("Warning found at sample %v, resetting DUT", fname)
+		} else if len(warning) > 0 {
+			crashFile := filepath.Join(crashesDir, fname)
+			if err := ioutil.WriteFile(crashFile, warning, 0755); err != nil {
+				s.Logf("Failed to save warning for sample %v: %v", fname, err)
+			}
 			if err := d.Reboot(ctx); err != nil {
 				s.Fatal("Failed to reboot DUT: ", err)
 			}
+			s.Fatalf("Warning found at sample %v, DUT reset", fname)
 		}
 		if err := syzutils.ClearDmesg(ctx, d); err != nil {
 			s.Fatal("Unable to clear dmesg: ", err)
@@ -112,7 +120,4 @@ func KVMRepros(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Finished running all repros in ", time.Since(start))
-	// TODO: copy pstore logs if the DUT reboots in between testing.
-
-	s.Log("Done testing, exiting")
 }
