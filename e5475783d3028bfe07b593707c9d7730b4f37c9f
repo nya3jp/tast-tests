@@ -206,6 +206,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b037d50_c5772728",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-25T02:49:05Z",
+      "side": 1,
+      "message": "Hmm, I might have been misunderstanding... are you going to let partners run FAFT with moblab? Then I\u0027m afraid we need BuildArtifactsURL support soon.",
+      "parentUuid": "2bcdb3bf_834b15bb",
+      "range": {
+        "startLine": 373,
+        "startChar": 18,
+        "endLine": 373,
+        "endChar": 50
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d8b110e_fb632545",
         "filename": "src/chromiumos/tast/remote/firmware/helper.go",
         "patchSetId": 1
