@@ -20,6 +20,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9938cb8d_d0a4f217",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-25T05:43:43Z",
+      "side": 1,
+      "message": "Similar to other MultiPaste functions, do you want to refactor them with Tap rather than mouse as well? It is up to you.",
+      "range": {
+        "startLine": 404,
+        "startChar": 38,
+        "endLine": 404,
+        "endChar": 55
+      },
+      "revId": "52b3194dc69a82aaf36ef646f9710bec6077cdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "23cab7ae_9081d89f",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
         "patchSetId": 3
