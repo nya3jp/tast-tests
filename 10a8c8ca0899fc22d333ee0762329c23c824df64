@@ -33,6 +33,46 @@
       "message": "Adding tast-owners for official approval.",
       "revId": "10a8c8ca0899fc22d333ee0762329c23c824df64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf323523_5decb41e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-25T08:29:36Z",
+      "side": 1,
+      "message": "LGTM for tast style.",
+      "revId": "10a8c8ca0899fc22d333ee0762329c23c824df64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "056a745f_73de6d03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-25T08:29:36Z",
+      "side": 1,
+      "message": "minor nit: as these keys are used multiple times, perhaps worth extracting them into constants?",
+      "range": {
+        "startLine": 128,
+        "startChar": 91,
+        "endLine": 128,
+        "endChar": 96
+      },
+      "revId": "10a8c8ca0899fc22d333ee0762329c23c824df64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
