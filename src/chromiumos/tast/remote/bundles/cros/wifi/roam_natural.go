@@ -82,9 +82,8 @@ func init() {
 		Contacts:    []string{"jakobczyk@google.com"},
 		Attr:        []string{"group:wificell_roam", "wificell_roam_perf"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePreWithFeatures(wificell.TFFeaturesRouters | wificell.TFFeaturesAttenuator),
+		Fixture:     "wificellFixtRoaming",
 		Timeout:     time.Minute * 60,
-		Vars:        []string{"routers", "pcap", "attenuator"},
 		Params: []testing.Param{
 			{
 				Val: []roamNaturalTestcase{
@@ -174,7 +173,7 @@ func collectWPAEvents(ctx context.Context, s *testing.State, wpaMonitor *wificel
 func executeRoamNaturalTest(ctx context.Context, s *testing.State, apAllParams [][]hostapd.Option, runIdx int,
 	secConfFac security.ConfigFactory, roamStats *roamNaturalStatsMap, failureStats *int) {
 
-	tf := s.PreValue().(*wificell.TestFixture)
+	tf := s.FixtValue().(*wificell.TestFixture)
 
 	attenuator := tf.Attenuator()
 	for i := 0; i < 4; i++ {
@@ -398,15 +397,6 @@ func dumpRoamNaturalStats(ctx context.Context, s *testing.State, roamStats *roam
 // acceptable, but any more than that is a good indication that roaming has
 // become too sticky.
 func RoamNatural(ctx context.Context, s *testing.State) {
-	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(ctx context.Context) {
-		if err := tf.CollectLogs(ctx); err != nil {
-			s.Error("Error collecting logs, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForCollectLogs(ctx)
-	defer cancel()
-
 	roamStats := roamNaturalStatsMap{
 		{2, 2}: 0,
 		{2, 5}: 0,
