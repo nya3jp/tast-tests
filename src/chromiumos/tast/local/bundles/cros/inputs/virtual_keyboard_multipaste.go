@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -64,6 +65,11 @@ func VirtualKeyboardMultipaste(ctx context.Context, s *testing.State) {
 	// Select the input field being tested.
 	inputField := testserver.TextAreaInputField
 	vkbCtx := vkb.NewContext(cr, tconn)
+	touchCtx, err := touch.New(ctx, tconn)
+	if err != nil {
+		s.Fatal("Fail to get touch screen: ", err)
+	}
+	defer touchCtx.Close()
 
 	ash.SetClipboard(ctx, tconn, text1)
 	ash.SetClipboard(ctx, tconn, text2)
@@ -76,5 +82,9 @@ func VirtualKeyboardMultipaste(ctx context.Context, s *testing.State) {
 		util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), expectedText),
 	)(ctx); err != nil {
 		s.Fatal("Fail to paste text through multipaste virtual keyboard: ", err)
+	}
+
+	if err := vkbCtx.DeleteMultipasteItem(touchCtx, text1)(ctx); err != nil {
+		s.Fatal("Fail to long press to select and delete item: ", err)
 	}
 }
