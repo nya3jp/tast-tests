@@ -53,6 +53,34 @@ func init() {
 		ServiceDeps:     []string{TFServiceName},
 		Vars:            []string{"router", "pcap"},
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "wificellFixtRouterAsPcap",
+		Desc: "Wificell setup with default capturer on router instead of pcap",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
+		Impl:            newTastFixture(TFFeaturesCapture | TFFeaturesRouterAsCapture),
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: tearDownTimeout,
+		ServiceDeps:     []string{TFServiceName},
+		Vars:            []string{"router", "pcap"},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "wificellFixtRoaming",
+		Desc: "WiFi romaing setup with multiple routers and attenuators",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
+		Impl:            newTastFixture(TFFeaturesRouters | TFFeaturesAttenuator),
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: tearDownTimeout,
+		ServiceDeps:     []string{TFServiceName},
+		Vars:            []string{"routers", "pcap", "attenuator"},
+	})
 }
 
 // tastFixtureImpl is the Tast implementation of the Wificell fixture.

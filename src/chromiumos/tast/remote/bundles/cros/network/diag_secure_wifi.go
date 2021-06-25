@@ -65,8 +65,7 @@ func init() {
 		ServiceDeps:  []string{wificell.TFServiceName, "tast.cros.network.NetDiagService"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
-		Pre:          wificell.TestFixturePreWithFeatures(wificell.TFFeaturesRouters),
-		Vars:         []string{"routers", "pcap"},
+		Fixture:      "wificellFixt",
 		Params: []testing.Param{{
 			Name: "none",
 			Val: secureWiFiParams{
@@ -111,7 +110,7 @@ func DiagSecureWifi(ctx context.Context, s *testing.State) {
 		hostapd.SSID(hostapd.RandomSSID("TAST_SECURE_WIFI_")),
 	}
 
-	tf := s.PreValue().(*wificell.TestFixture)
+	tf := s.FixtValue().(*wificell.TestFixture)
 	ap, err := tf.ConfigureAP(ctx, apOpts, params.SecConf)
 	if err != nil {
 		s.Fatal("Failed to configure AP: ", err)
