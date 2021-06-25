@@ -22,6 +22,30 @@
       },
       "revId": "72768fc1478714e0bed17823a7f22313c157a677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97dab473_eec32a4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/profile_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-06-25T21:30:13Z",
+      "side": 0,
+      "message": "Roman +2\u0027d so I guess it\u0027s fine with them",
+      "parentUuid": "e4dac309_9ebacf89",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "72768fc1478714e0bed17823a7f22313c157a677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
