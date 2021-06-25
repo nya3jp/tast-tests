@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6227d50_0e07bd33",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-25T02:54:21Z",
+      "side": 1,
+      "message": "You may want to try either of these two flags:\n\n  -k, --kill-after\u003dDURATION\n                 also send a KILL signal if COMMAND is still running\n                   this long after the initial signal was sent\n  -s, --signal\u003dSIGNAL\n                 specify the signal to be sent on timeout;\n                   SIGNAL may be a name like \u0027HUP\u0027 or a number;\n                   see \u0027kill -l\u0027 for a list of signals",
+      "parentUuid": "13304424_f50ca693",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 13
+      },
+      "revId": "31b676bce3f4e7cc68a03389be4033822514d644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f8ddb4a_92a419c3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
         "patchSetId": 1
