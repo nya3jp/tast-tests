@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b625dbf_2579b2b1",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-06-25T05:47:08Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! It does make the changes shorter.",
+      "parentUuid": "732de39d_00d0a60e",
+      "revId": "03a8c86419293b197f700711f48bc89d036917fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8206721e_c23a213e",
@@ -83,6 +101,30 @@
       "writtenOn": "2021-06-25T03:25:02Z",
       "side": 1,
       "message": "Looks unused capture...?",
+      "range": {
+        "startLine": 41,
+        "startChar": 52,
+        "endLine": 41,
+        "endChar": 59
+      },
+      "revId": "03a8c86419293b197f700711f48bc89d036917fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec01d831_32c0b742",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-06-25T05:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8206721e_c23a213e",
       "range": {
         "startLine": 41,
         "startChar": 52,
@@ -110,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b00a29f2_8bc9c9d3",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-06-25T05:47:08Z",
+      "side": 1,
+      "message": "Not applicable in the new PS.",
+      "parentUuid": "985baafa_8f780136",
+      "revId": "03a8c86419293b197f700711f48bc89d036917fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c36ec6b9_30c2f246",
@@ -123,6 +183,30 @@
       "writtenOn": "2021-06-24T10:13:58Z",
       "side": 1,
       "message": "Do we need to use `initctl list`? I thought `initctl status` works by passing extra arguments, e.g.\n\n initctl status jobname FOO\u003dbar",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 53
+      },
+      "revId": "03a8c86419293b197f700711f48bc89d036917fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16f1c7ea_9a087379",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-06-25T05:47:08Z",
+      "side": 1,
+      "message": "Done.\nJust `initctl status jobname FOO\u003dbar` may exist with code 1 if instance (bar) is not running. So in the new patchset you\u0027ll see sometimes err is acceptable.",
+      "parentUuid": "c36ec6b9_30c2f246",
       "range": {
         "startLine": 73,
         "startChar": 1,
@@ -156,6 +240,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "758b51e1_ce76773b",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-06-25T05:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26e70c1d_b936d057",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "03a8c86419293b197f700711f48bc89d036917fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e578b19a_8c159760",
@@ -169,6 +277,30 @@
       "writtenOn": "2021-06-25T03:25:02Z",
       "side": 1,
       "message": "missing escape.\nditto for below.",
+      "range": {
+        "startLine": 83,
+        "startChar": 61,
+        "endLine": 83,
+        "endChar": 64
+      },
+      "revId": "03a8c86419293b197f700711f48bc89d036917fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da384ca_079cf39a",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-06-25T05:47:08Z",
+      "side": 1,
+      "message": "Not applicable in new PS.",
+      "parentUuid": "e578b19a_8c159760",
       "range": {
         "startLine": 83,
         "startChar": 61,
@@ -202,6 +334,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bae56601_3ae5e08e",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-06-25T05:47:08Z",
+      "side": 1,
+      "message": "Not applicable in new PS.",
+      "parentUuid": "894b0cdd_da5a097a",
+      "range": {
+        "startLine": 100,
+        "startChar": 17,
+        "endLine": 100,
+        "endChar": 18
+      },
+      "revId": "03a8c86419293b197f700711f48bc89d036917fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b8a3cad_fcd9c9f2",
@@ -225,6 +381,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "543ae903_8af2f3fd",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-06-25T05:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b8a3cad_fcd9c9f2",
+      "range": {
+        "startLine": 135,
+        "startChar": 63,
+        "endLine": 135,
+        "endChar": 64
+      },
+      "revId": "03a8c86419293b197f700711f48bc89d036917fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38298e10_97d7c14d",
@@ -238,6 +418,30 @@
       "writtenOn": "2021-06-25T03:25:02Z",
       "side": 1,
       "message": "so if either is empty, they are ignored?\nCould you clarify it in the docuemnt?\nOr, maybe better to return an error with explicit message?\n\nditto for below.",
+      "range": {
+        "startLine": 207,
+        "startChar": 4,
+        "endLine": 207,
+        "endChar": 45
+      },
+      "revId": "03a8c86419293b197f700711f48bc89d036917fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b27af12_0e8ff126",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-06-25T05:47:08Z",
+      "side": 1,
+      "message": "Not applicable in new PS.",
+      "parentUuid": "38298e10_97d7c14d",
       "range": {
         "startLine": 207,
         "startChar": 4,
