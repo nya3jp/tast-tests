@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7adcaad1_1ae87290",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T14:29:29Z",
+      "side": 1,
+      "message": "If this is expected use, could you pass key-value pairs, instead of arbitrary arguments?\n\nDitto for all other cases below.\nAlso, for each function, could you add document about new parameters?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 91
+      },
+      "revId": "1c4e4c37e48389dd540b2d9ebe1820e382d6b3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de5270f7_a4db13b9",
         "filename": "src/chromiumos/tast/local/upstart/upstart.go",
         "patchSetId": 4
@@ -36,6 +59,29 @@
         "startChar": 125,
         "endLine": 66,
         "endChar": 148
+      },
+      "revId": "1c4e4c37e48389dd540b2d9ebe1820e382d6b3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6d05fb2_460fb3ae",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-25T14:29:29Z",
+      "side": 1,
+      "message": "does initctl always output \"Unknown job\" for any error cases?\nIf not, can it be swap to allow-list style status check?",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 75
       },
       "revId": "1c4e4c37e48389dd540b2d9ebe1820e382d6b3dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
