@@ -37,7 +37,7 @@ func init() {
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Params: []testing.Param{
 			{
-				Name: "en_us_tablet_1",
+				Name: "en_us_tablet",
 				Pre:  pre.VKEnabledTabletWithAssistAutocorrectReset,
 				Val: autocorrect.TestCase{
 					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
@@ -46,31 +46,13 @@ func init() {
 					UndoMethod:    autocorrect.ViaPopupUsingMouse,
 				},
 			}, {
-				Name: "en_us_tablet_2",
-				Pre:  pre.VKEnabledTabletWithAssistAutocorrectReset,
-				Val: autocorrect.TestCase{
-					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
-					MisspeltWord:  "wrold",
-					CorrectWord:   "world",
-					UndoMethod:    autocorrect.ViaBackspace,
-				},
-			}, {
-				Name: "en_us_a11y_1",
+				Name: "en_us_a11y",
 				Pre:  pre.VKEnabledClamshellWithAssistAutocorrectReset,
 				Val: autocorrect.TestCase{
 					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
 					MisspeltWord:  "helol",
 					CorrectWord:   "hello",
 					UndoMethod:    autocorrect.ViaPopupUsingMouse,
-				},
-			}, {
-				Name: "en_us_a11y_2",
-				Pre:  pre.VKEnabledClamshellWithAssistAutocorrectReset,
-				Val: autocorrect.TestCase{
-					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
-					MisspeltWord:  "wrold",
-					CorrectWord:   "world",
-					UndoMethod:    autocorrect.ViaBackspace,
 				},
 			}, {
 				Name: "es_es_tablet",
@@ -79,7 +61,7 @@ func init() {
 					InputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
 					MisspeltWord:  "espanol",
 					CorrectWord:   "español",
-					UndoMethod:    autocorrect.ViaBackspace,
+					UndoMethod:    autocorrect.NotApplicable,
 				},
 			}, {
 				Name: "es_es_a11y",
@@ -88,7 +70,7 @@ func init() {
 					InputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
 					MisspeltWord:  "espanol",
 					CorrectWord:   "español",
-					UndoMethod:    autocorrect.ViaBackspace,
+					UndoMethod:    autocorrect.NotApplicable,
 				},
 			}, {
 				Name: "fr_fr_tablet",
@@ -97,7 +79,7 @@ func init() {
 					InputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
 					MisspeltWord:  "francais",
 					CorrectWord:   "français",
-					UndoMethod:    autocorrect.ViaBackspace,
+					UndoMethod:    autocorrect.NotApplicable,
 				},
 			}, {
 				Name: "fr_fr_a11y",
@@ -106,7 +88,7 @@ func init() {
 					InputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
 					MisspeltWord:  "francais",
 					CorrectWord:   "français",
-					UndoMethod:    autocorrect.ViaBackspace,
+					UndoMethod:    autocorrect.NotApplicable,
 				},
 			},
 		},
@@ -192,12 +174,7 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 
 	switch testCase.UndoMethod {
 	case autocorrect.ViaBackspace:
-		if err := uiauto.Combine("validate VK autocorrect undo via Backspace",
-			vkbCtx.TapKey("backspace"),
-			util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.MisspeltWord),
-		)(ctx); err != nil {
-			s.Fatal("Failed to validate VK autocorrect undo via Backspace: ", err)
-		}
+		s.Fatal("ViaBackspace undo method disappears after unknown timeout so testing not automatable")
 
 	case autocorrect.ViaPopupUsingPK:
 		s.Fatal("ViaPopupUsingPK undo method is not applicable for VK")
