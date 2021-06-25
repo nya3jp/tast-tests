@@ -39,8 +39,7 @@ func LaunchManagedGuestSession(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx,
 		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
 		chrome.DMSPolicy(fdms.URL),
-		chrome.KeepState(),
-		chrome.ExtraArgs("--disable-policy-key-verification"))
+		chrome.KeepState())
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
@@ -102,8 +101,7 @@ func LaunchManagedGuestSession(ctx context.Context, s *testing.State) {
 		chrome.NoLogin(),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.KeepState(),
-		chrome.ExtraArgs("--force-devtools-available"),
-		chrome.ExtraArgs("--disable-policy-key-verification"))
+		chrome.ExtraArgs("--force-devtools-available"))
 	if err != nil {
 		s.Fatal("Chrome restart failed: ", err)
 	}

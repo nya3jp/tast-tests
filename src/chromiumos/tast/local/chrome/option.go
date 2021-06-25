@@ -149,7 +149,6 @@ func GuestLogin() Option {
 func KeepEnrollment() Option {
 	return func(cfg *config.MutableConfig) error {
 		cfg.KeepOwnership = true
-		cfg.DisablePolicyKeyVerification = true
 		return nil
 	}
 }
