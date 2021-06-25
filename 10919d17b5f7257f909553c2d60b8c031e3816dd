@@ -16,6 +16,23 @@
       "message": "Ping :) ",
       "revId": "10919d17b5f7257f909553c2d60b8c031e3816dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf949d6e_59c891ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-06-25T17:23:52Z",
+      "side": 1,
+      "message": "kyleshima@ let me know if you can code-shadow this review... if you cannot, I\u0027ll go ahead and review it.",
+      "revId": "10919d17b5f7257f909553c2d60b8c031e3816dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
