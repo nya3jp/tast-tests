@@ -13,6 +13,7 @@ const (
 	ViaBackspace UndoMethod = iota
 	ViaPopupUsingPK
 	ViaPopupUsingMouse
+	NotApplicable
 )
 
 // TestCase struct encapsulates parameters for each Autocorrect test.
