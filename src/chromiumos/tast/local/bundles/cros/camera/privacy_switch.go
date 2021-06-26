@@ -7,7 +7,6 @@ package camera
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
 	"regexp"
 
 	"chromiumos/tast/common/media/caps"
@@ -15,7 +14,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/crosconfig"
-	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -34,41 +32,10 @@ func init() {
 
 var ctrlBusy = regexp.MustCompile(`(?m)^VIDIOC_G_EXT_CTRLS: failed: Device or resource busy$`)
 
-func logCommand(ctx context.Context, name string, arg ...string) {
-
-	cmd := testexec.CommandContext(ctx, name, arg...)
-	testing.ContextLogf(ctx, "running %s:", shutil.EscapeSlice(cmd.Args))
-	out, err := cmd.CombinedOutput(testexec.DumpLogOnError)
-	if err != nil {
-		testing.ContextLog(ctx, "Error running command: ", err)
-		return
-	}
-	testing.ContextLog(ctx, string(out))
-}
-
-func logFile(ctx context.Context, name string) {
-
-	testing.ContextLogf(ctx, "dumping %s:", name)
-
-	out, err := ioutil.ReadFile(name)
-	if err != nil {
-		testing.ContextLog(ctx, "Error dumping file: ", err)
-		return
-	}
-	testing.ContextLog(ctx, string(out))
-}
-
 func hasPrivacySwitchControl(ctx context.Context) (bool, error) {
 
 	usbCams, err := testutil.GetUSBCamerasFromV4L2Test(ctx)
-
 	if err != nil {
-		// TODO(b/186374611) Remove all the logCommands and logFiles once we figure out why are we getting symbol lookup errors
-		logFile(ctx, "/etc/lsb-release")
-		logCommand(ctx, "which", "media_v4l2_test")
-		logCommand(ctx, "ldd", "/usr/local/bin/media_v4l2_test")
-		logCommand(ctx, "md5sum", "/usr/local/bin/media_v4l2_test")
-		logCommand(ctx, "bash", "-c", "md5sum /usr/lib*/libbase-{core,dbus,dl}.so")
 		return false, errors.Wrap(err, "failed to get USB cameras")
 	}
 	if len(usbCams) == 0 {
