@@ -13,6 +13,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -195,6 +196,32 @@ func (t *crosCameraTestConfig) toArgs() []string {
 	return args
 }
 
+func runBasicCrosCameraTest(ctx context.Context, test *gtest.GTest) error {
+	args, err := test.Args()
+	if err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Running ", shutil.EscapeSlice(args))
+
+	cmd := testexec.CommandContext(ctx, args[0], args[1:]...)
+	out, err := cmd.CombinedOutput()
+	if err == nil {
+		return nil
+	}
+
+	testing.ContextLog(ctx, "Output: ", string(out))
+
+	// Set first ERROR message as error
+	re := regexp.MustCompile("ERROR ([^\n]+)\n")
+	errortxt := re.FindStringSubmatch(string(out))
+	if len(errortxt) < 2 {
+		return errors.Wrap(err, string(out))
+	}
+
+	return errors.Wrap(err, errortxt[1])
+}
+
 // runCrosCameraTest runs cros_camera_test with the arguments generated from the
 // config.  The cros-camera service must be stopped before calling this function.
 func runCrosCameraTest(ctx context.Context, cfg crosCameraTestConfig) error {
@@ -210,12 +237,22 @@ func runCrosCameraTest(ctx context.Context, cfg crosCameraTestConfig) error {
 		return err
 	}
 
+	// Run a initialization test before the complete test
+	t := gtest.New("cros_camera_test",
+		gtest.Filter("Camera3ModuleFixture.NumberOfCameras:Camera3ModuleFixture.OpenDevice"),
+		gtest.ExtraArgs(cfg.toArgs()...),
+		gtest.UID(uid))
+
+	if err := runBasicCrosCameraTest(ctx, t); err != nil {
+		return err
+	}
+
 	outDir, ok := testing.ContextOutDir(ctx)
 	if !ok {
 		return errors.New("missing out dir")
 	}
 
-	t := gtest.New("cros_camera_test",
+	t = gtest.New("cros_camera_test",
 		gtest.TempLogfile(filepath.Join(outDir, "cros_camera_test_*.log")),
 		gtest.Filter(cfg.gtestFilter),
 		gtest.ExtraArgs(cfg.toArgs()...),
