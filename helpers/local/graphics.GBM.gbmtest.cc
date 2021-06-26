@@ -24,6 +24,12 @@ namespace {
 
 constexpr size_t kBytesPerPixel = sizeof(uint32_t);
 
+constexpr size_t kStrideAlignment = 256;
+
+constexpr size_t Align(size_t width, size_t alignment) {
+  return (width + alignment - 1) & ~(alignment - 1);
+}
+
 namespace internal {
 struct ScopedDrmFDCloseTraits {
   static int InvalidValue() { return -1; }
@@ -523,12 +529,13 @@ TEST_F(GraphicsGbmTest, Export) {
 TEST_F(GraphicsGbmTest, ImportVgem) {
   constexpr uint32_t kWidth = 123;
   constexpr uint32_t kHeight = 456;
+  constexpr uint32_t kStride = Align(kWidth, kStrideAlignment);
 
   base::ScopedFD vgem_fd = DrmOpenVgem();
   ASSERT_TRUE(vgem_fd.is_valid());
   struct drm_prime_handle prime_handle;
-  ASSERT_EQ(0, CreateVgemBo(vgem_fd.get(), kWidth * kHeight * kBytesPerPixel,
-                            &prime_handle.handle));
+  ASSERT_EQ(
+      0, CreateVgemBo(vgem_fd.get(), kHeight * kStride, &prime_handle.handle));
   prime_handle.flags = DRM_CLOEXEC;
   ASSERT_EQ(0, drmIoctl(vgem_fd.get(), DRM_IOCTL_PRIME_HANDLE_TO_FD,
                         &prime_handle));
@@ -538,7 +545,7 @@ TEST_F(GraphicsGbmTest, ImportVgem) {
   fd_data.fd = prime_fd.get();
   fd_data.width = kWidth;
   fd_data.height = kHeight;
-  fd_data.stride = kWidth * kBytesPerPixel;
+  fd_data.stride = kStride;
   fd_data.format = GBM_FORMAT_XRGB8888;
 
   ScopedGbmBo bo(gbm_bo_import(
