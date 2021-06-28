@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f82f2ab5_87c70c31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_guest_mode_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-28T12:25:29Z",
+      "side": 1,
+      "message": "Do you need to close it?\nAs I checked some tests close it, some do not. What happens when it is closed? SigninProfileTestAPIConn() opens it again?",
+      "revId": "aa8c622c530689fab2d7cf434d8c264ee98d3fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1dc7928d_fcd250b4",
@@ -14,6 +31,29 @@
       "writtenOn": "2021-06-24T14:46:00Z",
       "side": 1,
       "message": "Also removed the call to First().",
+      "revId": "aa8c622c530689fab2d7cf434d8c264ee98d3fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d7c6e99_feeeb636",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_guest_mode_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-28T12:25:29Z",
+      "side": 1,
+      "message": "nit: uia",
+      "range": {
+        "startLine": 105,
+        "startChar": 36,
+        "endLine": 105,
+        "endChar": 39
+      },
       "revId": "aa8c622c530689fab2d7cf434d8c264ee98d3fca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
