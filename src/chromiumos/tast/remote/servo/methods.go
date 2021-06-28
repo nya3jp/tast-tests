@@ -22,12 +22,15 @@ type StringControl string
 // These are the Servo controls which can be get/set with a string value.
 const (
 	ActiveChgPort        StringControl = "active_chg_port"
+	ActiveDUTController  StringControl = "active_dut_controller"
 	DUTVoltageMV         StringControl = "dut_voltage_mv"
 	FWWPState            StringControl = "fw_wp_state"
 	ImageUSBKeyDirection StringControl = "image_usbkey_direction"
 	ImageUSBKeyPwr       StringControl = "image_usbkey_pwr"
 	PowerState           StringControl = "power_state"
+	Type                 StringControl = "servo_type"
 	UARTCmd              StringControl = "servo_v4_uart_cmd"
+	Watchdog             StringControl = "watchdog"
 	WatchdogAdd          StringControl = "watchdog_add"
 	WatchdogRemove       StringControl = "watchdog_remove"
 
@@ -71,9 +74,10 @@ type OnOffControl string
 
 // These controls accept only "on" and "off" as values.
 const (
-	RecMode        OnOffControl = "rec_mode"
 	CCDKeepaliveEn OnOffControl = "ccd_keepalive_en"
+	CCDState       OnOffControl = "ccd_state"
 	DTSMode        OnOffControl = "servo_dts_mode"
+	RecMode        OnOffControl = "rec_mode"
 )
 
 // An OnOffValue is a string value that would be accepted by an OnOffControl.
@@ -182,7 +186,18 @@ type WatchdogValue string
 
 // These are the string watchdog type values that can be passed to WatchdogAdd & WatchdogRemove.
 const (
-	WatchdogCCD WatchdogValue = "ccd"
+	WatchdogCCD  WatchdogValue = "ccd"
+	WatchdogMain WatchdogValue = "main"
+)
+
+// DUTController is the active controller on a dual mode servo.
+type DUTController string
+
+// Parameters that can be passed to SetActiveDUTController().
+const (
+	DUTControllerC2D2       DUTController = "c2d2"
+	DUTControllerCCD        DUTController = "ccd_cr50"
+	DUTControllerServoMicro DUTController = "servo_micro"
 )
 
 // ServoKeypressDelay comes from hdctools/servo/drv/keyboard_handlers.py.
@@ -246,41 +261,6 @@ func (s *Servo) IsServoV4(ctx context.Context) (bool, error) {
 	return strings.HasPrefix(version, "servo_v4"), nil
 }
 
-// EnableCCD checks if the servo has CCD, and switches to it for dual mode V4.
-// Returns true if the servo was put into CCD mode, false if the servo doesn't support CCD,
-// and err if there was a problem communicating with the servo.
-func (s *Servo) EnableCCD(ctx context.Context) (bool, error) {
-	// Check ccd_state == on (Suzy-Q/Servo v4)
-	if hasCCDState, err := s.HasControl(ctx, "ccd_state"); err != nil {
-		return false, err
-	} else if hasCCDState {
-		if ccdState, err := s.GetString(ctx, "ccd_state"); err != nil {
-			return false, err
-		} else if ccdState == "on" {
-			testing.ContextLog(ctx, "Servo has CCD: ccd_state:on")
-			return true, nil
-		}
-	}
-	// Check active_dut_controller == ccd_cr50
-	// Then try setting active_dut_controller:ccd_cr50
-	if hasADC, err := s.HasControl(ctx, "active_dut_controller"); err != nil {
-		return false, err
-	} else if hasADC {
-		if adc, err := s.GetString(ctx, "active_dut_controller"); err != nil {
-			return false, err
-		} else if adc == "ccd_cr50" {
-			testing.ContextLog(ctx, "Servo has CCD: active_dut_controller:ccd_cr50")
-			return true, nil
-		}
-		if err := s.SetString(ctx, "active_dut_controller", "ccd_cr50"); err != nil {
-			return false, err
-		}
-		testing.ContextLog(ctx, "Servo has CCD: set active_dut_controller to ccd_cr50")
-		return true, nil
-	}
-	return false, nil
-}
-
 // GetDUTConnectionType gets the type of connection between the Servo and the DUT.
 // If Servo is not V4, returns DUTConnTypeNA.
 func (s *Servo) GetDUTConnectionType(ctx context.Context) (DUTConnTypeValue, error) {
@@ -317,6 +297,30 @@ func (s *Servo) GetServoSerials(ctx context.Context) (map[string]string, error) 
 		return map[string]string{}, errors.Wrap(err, "getting servo serials")
 	}
 	return value, nil
+}
+
+// GetCCDSerial returns the serial number of the CCD interface.
+func (s *Servo) GetCCDSerial(ctx context.Context) (string, error) {
+	value, err := s.GetServoSerials(ctx)
+	if err != nil {
+		return "", err
+	}
+	ccdSerial, ok := value["ccd"]
+	if ok {
+		return ccdSerial, nil
+	}
+	servoType, err := s.GetServoType(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get servo type")
+	}
+	// SuzyQ reports as ccd_cr50, and doesn't have an interface named ccd.
+	if servoType == "ccd_cr50" {
+		ccdSerial, ok := value["main"]
+		if ok {
+			return ccdSerial, nil
+		}
+	}
+	return "", errors.Errorf("no ccd serial in %q", value)
 }
 
 // GetBool returns the boolean value of a specified control.
@@ -719,14 +723,34 @@ func (s *Servo) ToggleOnOff(ctx context.Context, ctrl OnOffControl) error {
 	return nil
 }
 
+// GetOnOff gets an OnOffControl as a bool.
+func (s *Servo) GetOnOff(ctx context.Context, ctrl OnOffControl) (bool, error) {
+	str, err := s.GetString(ctx, StringControl(ctrl))
+	if err != nil {
+		return false, err
+	}
+	switch str {
+	case string(On):
+		return true, nil
+	case string(Off):
+		return false, nil
+	}
+	return false, errors.Errorf("cannot convert %q to boolean", str)
+}
+
 // WatchdogAdd adds the specified watchdog to the servod instance.
 func (s *Servo) WatchdogAdd(ctx context.Context, val WatchdogValue) error {
 	return s.SetString(ctx, WatchdogAdd, string(val))
 }
 
 // WatchdogRemove removes the specified watchdog from the servod instance.
+// Servo.Close() will restore the watchdog.
 func (s *Servo) WatchdogRemove(ctx context.Context, val WatchdogValue) error {
-	return s.SetString(ctx, WatchdogRemove, string(val))
+	if err := s.SetString(ctx, WatchdogRemove, string(val)); err != nil {
+		return err
+	}
+	s.removedWatchdogs = append(s.removedWatchdogs, val)
+	return nil
 }
 
 // runUARTCommand runs the given command on the servo console.
@@ -746,4 +770,110 @@ func (s *Servo) RunUSBCDPConfigCommand(ctx context.Context, args ...string) erro
 func (s *Servo) SetCC(ctx context.Context, val OnOffValue) error {
 	cmd := "cc " + string(val)
 	return s.runUARTCommand(ctx, cmd)
+}
+
+// SetActiveDUTController sets the active controller on a dual mode v4 servo
+func (s *Servo) SetActiveDUTController(ctx context.Context, adc DUTController) error {
+	return s.SetString(ctx, ActiveDUTController, string(adc))
+}
+
+// GetServoType gets the type of the servo.
+func (s *Servo) GetServoType(ctx context.Context) (string, error) {
+	if s.servoType != "" {
+		return s.servoType, nil
+	}
+	servoType, err := s.GetString(ctx, Type)
+	if err != nil {
+		return "", err
+	}
+	hasCCD := strings.Contains(servoType, string(DUTControllerCCD))
+	if !hasCCD {
+		if hasCCDState, err := s.HasControl(ctx, string(CCDState)); err != nil {
+			return "", errors.Wrap(err, "failed to check ccd_state control")
+		} else if hasCCDState {
+			ccdState, err := s.GetOnOff(ctx, CCDState)
+			if err != nil {
+				return "", errors.Wrap(err, "failed to get ccd_state")
+			}
+			hasCCD = ccdState
+		}
+	}
+	hasServoMicro := strings.Contains(servoType, string(DUTControllerServoMicro))
+	hasC2D2 := strings.Contains(servoType, string(DUTControllerC2D2))
+	isDualV4 := strings.Contains(servoType, "_and_")
+
+	if !hasCCD && !hasServoMicro && !hasC2D2 {
+		testing.ContextLogf(ctx, "Assuming %s is equivalent to servo_micro", servoType)
+		hasServoMicro = true
+	}
+	s.servoType = servoType
+	s.hasCCD = hasCCD
+	s.hasServoMicro = hasServoMicro
+	s.hasC2D2 = hasC2D2
+	s.isDualV4 = isDualV4
+	return s.servoType, nil
+}
+
+// RequireCCD verifies that the servo has a CCD connection, and switches to it for dual v4 servos.
+func (s *Servo) RequireCCD(ctx context.Context) error {
+	servoType, err := s.GetServoType(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get servo type")
+	}
+
+	if !s.hasCCD {
+		return errors.Wrapf(err, "servo %s is not CCD", servoType)
+	}
+	if s.isDualV4 {
+		if err = s.SetActiveDUTController(ctx, DUTControllerCCD); err != nil {
+			return errors.Wrap(err, "failed to set active dut controller")
+		}
+	}
+	return nil
+}
+
+// PreferDebugHeader switches to the servo_micro or C2D2 for dual v4 servos, but doesn't fail on CCD only servos.
+// Returns true if the servo has a debug header connection, false if it only has CCD.
+func (s *Servo) PreferDebugHeader(ctx context.Context) (bool, error) {
+	_, err := s.GetServoType(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get servo type")
+	}
+	if s.isDualV4 {
+		if s.hasServoMicro {
+			if err = s.SetActiveDUTController(ctx, DUTControllerServoMicro); err != nil {
+				return false, errors.Wrap(err, "failed to set active dut controller")
+			}
+			return true, nil
+		} else if s.hasC2D2 {
+			if err = s.SetActiveDUTController(ctx, DUTControllerC2D2); err != nil {
+				return false, errors.Wrap(err, "failed to set active dut controller")
+			}
+			return true, nil
+		}
+	}
+	return s.hasServoMicro || s.hasC2D2, nil
+}
+
+// RequireDebugHeader verifies that the servo has a servo_micro or C2D2 connection, and switches to it for dual v4 servos.
+func (s *Servo) RequireDebugHeader(ctx context.Context) error {
+	servoType, err := s.GetServoType(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get servo type")
+	}
+	if !s.hasServoMicro && !s.hasC2D2 {
+		return errors.Wrapf(err, "servo %s doesn't have debug header", servoType)
+	}
+	if s.isDualV4 {
+		if s.hasServoMicro {
+			if err = s.SetActiveDUTController(ctx, DUTControllerServoMicro); err != nil {
+				return errors.Wrap(err, "failed to set active dut controller")
+			}
+		} else if s.hasC2D2 {
+			if err = s.SetActiveDUTController(ctx, DUTControllerC2D2); err != nil {
+				return errors.Wrap(err, "failed to set active dut controller")
+			}
+		}
+	}
+	return nil
 }
