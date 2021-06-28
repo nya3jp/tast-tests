@@ -31,6 +31,15 @@ func Capture(ctx context.Context, path string) error {
 	return nil
 }
 
+// CaptureWithStderr returns stderr when taking a screenshot fails.
+func CaptureWithStderr(ctx context.Context, path string) error {
+	_, stderr, err := testexec.CommandContext(ctx, "screenshot", path).SeparatedOutput()
+	if err != nil {
+		return errors.Wrapf(err, "failed running %q", stderr)
+	}
+	return nil
+}
+
 // CaptureChrome takes a screenshot of the primary display and saves it as a PNG
 // image to the specified file path. It will use Chrome to perform the screen capture.
 func CaptureChrome(ctx context.Context, cr *chrome.Chrome, path string) error {

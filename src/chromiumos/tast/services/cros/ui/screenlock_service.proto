@@ -1,0 +1,28 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.ui;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/ui";
+
+// ScreenLockService provides ability to lock the screen.
+service ScreenLockService {
+
+  // ReuseChrome reuses the exisiting Chrome session.
+  rpc ReuseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // NewChrome logs into a Chrome session as a fake user. CloseChrome must be called later
+  // to clean up the associated resources.
+  rpc NewChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // CloseChrome releases the resources obtained by NewChrome.
+  rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Lock performs the operation to lock the screen. 
+  rpc Lock (google.protobuf.Empty) returns (google.protobuf.Empty);
+}
