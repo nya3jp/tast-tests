@@ -67,7 +67,7 @@ func runEnumerationTest(ctx context.Context, s *testing.State, info scannerInfo)
 		s.Fatal("Failed to restart printing system: ", err)
 	}
 
-	printer, err := usbprinter.StartScanner(ctx, devInfo, info.descriptors, info.attributes, info.esclCapabilities, "")
+	printer, err := usbprinter.StartScanner(ctx, devInfo, info.descriptors, info.attributes, info.esclCapabilities, "", "")
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
