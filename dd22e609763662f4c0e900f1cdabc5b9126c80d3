@@ -70,6 +70,30 @@
       },
       "revId": "dd22e609763662f4c0e900f1cdabc5b9126c80d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e27aac2d_fb81a3b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-06-28T08:58:17Z",
+      "side": 1,
+      "message": "I like the ERROR grep idea ;)",
+      "parentUuid": "aa21fc2c_891e118d",
+      "range": {
+        "startLine": 209,
+        "startChar": 26,
+        "endLine": 209,
+        "endChar": 37
+      },
+      "revId": "dd22e609763662f4c0e900f1cdabc5b9126c80d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
