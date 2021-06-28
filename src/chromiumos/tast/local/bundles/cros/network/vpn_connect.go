@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
 	localping "chromiumos/tast/local/network/ping"
 	"chromiumos/tast/testing"
@@ -169,6 +170,15 @@ func init() {
 				},
 			},
 			ExtraSoftwareDeps: []string{"wireguard"},
+		}, {
+			Name: "wireguard_two_peers",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:       vpn.TypeWireGuard,
+					WGTwoPeers: true,
+				},
+			},
+			ExtraSoftwareDeps: []string{"wireguard"},
 		}},
 	})
 }
@@ -204,16 +214,30 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	}
 
 	pr := localping.NewLocalRunner()
-	res, err := pr.Ping(ctx, conn.Server.OverlayIP, ping.Count(3), ping.User("chronos"))
-	if err != nil {
-		s.Fatal("Failed pinging the server IPv4: ", err)
+	if err := expectPingSuccess(ctx, pr, conn.Server.OverlayIP); err != nil {
+		s.Fatalf("Failed to ping %s: %v", conn.Server.OverlayIP, err)
 	}
-	if res.Received == 0 {
-		s.Fatalf("Failed to ping %s: no response received", conn.Server.OverlayIP)
+
+	if conn.SecondServer != nil {
+		if err := expectPingSuccess(ctx, pr, conn.SecondServer.OverlayIP); err != nil {
+			s.Fatalf("Failed to ping %s: %v", conn.SecondServer.OverlayIP, err)
+		}
 	}
 
 	// IPv6 should be blackholed.
 	if res, err := pr.Ping(ctx, "2001:db8::1", ping.Count(1), ping.User("chronos")); err == nil && res.Received != 0 {
 		s.Fatal("IPv6 ping should fail: ", err)
 	}
+}
+
+func expectPingSuccess(ctx context.Context, pr *ping.Runner, addr string) error {
+	testing.ContextLog(ctx, "Start to ping ", addr)
+	res, err := pr.Ping(ctx, addr, ping.Count(3), ping.User("chronos"))
+	if err != nil {
+		return err
+	}
+	if res.Received == 0 {
+		return errors.New("no response received")
+	}
+	return nil
 }
