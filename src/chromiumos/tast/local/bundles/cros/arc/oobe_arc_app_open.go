@@ -33,7 +33,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 10*time.Minute,
+		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 15*time.Minute,
 		VarDeps: []string{"arc.parentUser", "arc.parentPassword"},
 	})
 }
@@ -88,7 +88,7 @@ func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 	defer a.Close(ctx)
 
 	s.Log("Waiting for notification")
-	_, err = ash.WaitForNotification(ctx, tconn, 10*time.Minute, ash.WaitTitle("Setup complete"))
+	_, err = ash.WaitForNotification(ctx, tconn, 15*time.Minute, ash.WaitTitle("Setup complete"))
 	if err != nil {
 		s.Fatal("Failed waiting for Setup complete notification: ", err)
 	}
