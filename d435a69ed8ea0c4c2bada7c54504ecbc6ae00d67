@@ -16,6 +16,29 @@
       "message": "Exciting!",
       "revId": "d435a69ed8ea0c4c2bada7c54504ecbc6ae00d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9022d1b_1150e749",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-28T01:41:46Z",
+      "side": 1,
+      "message": "Does it need one minute to close lacros chrome?",
+      "range": {
+        "startLine": 97,
+        "startChar": 42,
+        "endLine": 97,
+        "endChar": 48
+      },
+      "revId": "d435a69ed8ea0c4c2bada7c54504ecbc6ae00d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
