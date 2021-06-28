@@ -26,5 +26,3 @@ service PowerMenuService {
 message IsPowerMenuPresentResponse {
   bool is_menu_present = 1;
 }
-
-
