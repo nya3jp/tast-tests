@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15cae713_cebd5638",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-28T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "803adf53_00e85b0c",
+      "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ea5b99a_76cdb8c5",
@@ -112,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37087248_43b7313a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-28T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fde53b5b_7940b11f",
+      "range": {
+        "startLine": 50,
+        "startChar": 153,
+        "endLine": 50,
+        "endChar": 166
+      },
+      "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "280cbefe_0217f108",
@@ -143,6 +185,24 @@
       "side": 1,
       "message": "Hmm, I don\u0027t quite understand: As there are no further usage of |fullCtx| in this function, do we still need to keep |cleanupCtx|?\nWhat would be the cleanup actions?",
       "parentUuid": "280cbefe_0217f108",
+      "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79d62a7e_35543331",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-28T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b007d750_0512e0be",
       "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -182,6 +242,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8d9b2df_df2c2732",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-28T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64bc1dcf_a4f8712d",
+      "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fdb802e_71256c7a",
@@ -213,6 +291,24 @@
       "side": 1,
       "message": "ditto in the comment: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2874923/5/src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go#50",
       "parentUuid": "2fdb802e_71256c7a",
+      "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d882387_8345412b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-28T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba071cb0_e38ca204",
       "revId": "46708ea0f43c84c7d1a9b3950d8bcba04204632b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

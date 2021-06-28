@@ -118,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfdde707_65a38fbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-28T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7f43bbc_68303ec1",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c986444b_d5249ee5",
@@ -258,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f820679_8fe8f000",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-28T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed3b961b_29382893",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dff1ee4_52d36bdd",
@@ -289,6 +325,24 @@
       "side": 1,
       "message": "Simplified the DUT-side and kept the original local tast test for function test of traced/traced_probes.\n\nRenamed this remote tast test to be PerfettoTBMTracedProbes.\nRemoved crosbolt.",
       "parentUuid": "5dff1ee4_52d36bdd",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5623f920_ac131b5d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-28T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dbbcd39_d4ae3d58",
       "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -371,6 +425,24 @@
       "side": 1,
       "message": "Will check",
       "parentUuid": "cae52242_35a92310",
+      "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e503f7_1a393817",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_system_tracing_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-06-28T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1350462d_e8ce8603",
       "revId": "d65021102c6c6d927566674cc66eedccf1afba08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
