@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c6015c2_b2e7afc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-28T23:46:22Z",
+      "side": 1,
+      "message": "I figured out how to get the test to pass.",
+      "revId": "daf02ee552633130d68bd58324f206a7b1277f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3c881cf_7aabb92a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_default_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-28T23:46:22Z",
+      "side": 1,
+      "message": "UnicornDefaultAppsNotInstalled",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "daf02ee552633130d68bd58324f206a7b1277f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41375115_193bc20b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_default_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-28T23:46:22Z",
+      "side": 1,
+      "message": "Verifies default arc apps are not installed for Unicorn accounts",
+      "range": {
+        "startLine": 22,
+        "startChar": 17,
+        "endLine": 22,
+        "endChar": 62
+      },
+      "revId": "daf02ee552633130d68bd58324f206a7b1277f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ad521f_ca1a6943",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_default_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-28T23:46:22Z",
+      "side": 1,
+      "message": "You can shorten this timeout.",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "daf02ee552633130d68bd58324f206a7b1277f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d5df56f_be188ceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_default_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-28T23:46:22Z",
+      "side": 1,
+      "message": "Use the familyLinkUnicornLogin fixture instead. I suspect the chrome.ARCSupported() flag tries to install the default apps. Or maybe the default apps are already installed on the arc.childUser test account.",
+      "range": {
+        "startLine": 33,
+        "startChar": 12,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "daf02ee552633130d68bd58324f206a7b1277f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2b2b9ca_08e2d214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_default_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-28T23:46:22Z",
+      "side": 1,
+      "message": "Remove this. Why do you need to provision arc for this test?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "daf02ee552633130d68bd58324f206a7b1277f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab9a6565_1eac3e75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_default_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-28T23:46:22Z",
+      "side": 1,
+      "message": "Remove this.",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "daf02ee552633130d68bd58324f206a7b1277f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28900a47_51a6a7ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_default_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-28T23:46:22Z",
+      "side": 1,
+      "message": "Do what the GuestPlayStore test does to check for installed apps [1]. It runs much faster.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/guest_play_store.go;l\u003d48?q\u003df:guest_play_store.go",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "daf02ee552633130d68bd58324f206a7b1277f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
