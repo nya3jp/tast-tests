@@ -31,6 +31,16 @@ func Capture(ctx context.Context, path string) error {
 	return nil
 }
 
+// CaptureCombinedOutput reports the command stdout+stderr as a single string,
+// Besides taking a screenshot and saving it as a PNG image.
+func CaptureCombinedOutput(ctx context.Context, path string) error {
+	cmd, err := testexec.CommandContext(ctx, "screenshot", path).CombinedOutput()
+	if err != nil {
+		return errors.Errorf("failed running %q", string(cmd))
+	}
+	return nil
+}
+
 // CaptureChrome takes a screenshot of the primary display and saves it as a PNG
 // image to the specified file path. It will use Chrome to perform the screen capture.
 func CaptureChrome(ctx context.Context, cr *chrome.Chrome, path string) error {
