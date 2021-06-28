@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cf2c93b_30052328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-06-28T04:45:33Z",
+      "side": 1,
+      "message": "Hi Shik\n\nThe problem is that there is no gTest to parse if the hw is not availabe:\n\n\nlocalhost ~ # sudo \u0027--user\u003d#603\u0027 cros_camera_test --gtest_filter\u003dCamera3ModuleFixture.NumberOfCameras:Camera3ModuleFixture.OpenDevice --3a_timeout_multiplier\u003d2 --camera_hal_path\u003d/usr/lib64/camera_hal/usb.so --recording_params\u003d0:1280:720:30:1\n2021-06-28T04:41:20.535144Z ERROR cros_camera_test: [camera_hal.cc(431)] (28336) Init(): Expected 1 cameras from Chrome OS config, found 0\n../../../../../../../tmp/portage/media-libs/cros-camera-test-0.0.1-r621/work/cros-camera-test-0.0.1/camera/camera3_test/camera3_module_test.cc:345: Failure\nExpected equality of these values:\n  0\n  cam_module-\u003einit()\n    Which is: -19\n2021-06-28T04:41:20.536206Z INFO cros_camera_test: [camera3_module_test.cc(223)] (28333) ParseRecordingParams(): The parameters will be used for recording test:\n2021-06-28T04:41:20.536243Z INFO cros_camera_test: [camera3_reprocessing_test.cc(656)] Test camera with reprocessing capability:\n2021-06-28T04:41:20.536270Z INFO cros_camera_test: [camera3_reprocessing_test.cc(656)] Test camera with reprocessing capability:\n2021-06-28T04:41:20.536300Z INFO cros_camera_test: [camera3_reprocessing_test.cc(656)] Test camera with reprocessing capability:\n2021-06-28T04:41:20.536328Z INFO cros_camera_test: [camera3_reprocessing_test.cc(656)] Test camera with reprocessing capability:\n\n\n2021-06-28T04:36:23.132174Z [04:36:22.332] Running sudo \u0027--user\u003d#603\u0027 cros_camera_test \u0027--gtest_filter\u003dCamera3RecordingFixture/*\u0027 --3a_timeout_multiplier\u003d2 --camera_hal_path\u003d/usr/lib64/camera_hal/usb.so --recording_params\u003d0:1280:720:30:1\n2021-06-28T04:36:23.183942Z [04:36:22.373] Failed to parse report: : EOF",
+      "parentUuid": "bad8fc42_215fca38",
+      "revId": "162e35b024f89dbd0f9787674db4e40ba3841888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17ab9b2e_19b5dc2c",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-28T03:33:45Z",
       "side": 1,
       "message": "nit: merge this with next line |if err :\u003d ...; err !\u003d nil {|",
+      "revId": "162e35b024f89dbd0f9787674db4e40ba3841888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68fb4737_c4461a0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-06-28T04:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17ab9b2e_19b5dc2c",
       "revId": "162e35b024f89dbd0f9787674db4e40ba3841888",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
