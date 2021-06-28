@@ -75,3 +75,33 @@ func TurnOnDisplay(ctx context.Context) error {
 	}
 	return nil
 }
+
+// UpdateBrightness updates the screen brightness to the specified value and returns a callback to revert it back to the original.
+func (m *PowerManager) UpdateBrightness(ctx context.Context, value float64) (func(context.Context) error, error) {
+	call := m.obj.CallWithContext(ctx, dbusInterface+".GetScreenBrightnessPercent", 0)
+	if call.Err != nil {
+		return nil, errors.Wrap(call.Err, "failed to call dbus method GetScreenBrightnessPercent")
+	}
+
+	var prev float64
+	if err := call.Store(&prev); err != nil {
+		return nil, errors.Wrap(err, "failed to store dbus method call response")
+	}
+
+	if err := dbusutil.CallProtoMethod(ctx, m.obj, dbusInterface+".SetScreenBrightness",
+		&pmpb.SetBacklightBrightnessRequest{
+			Percent: &value,
+		}, nil); err != nil {
+		return nil, errors.Wrapf(err, "unable to alter screen brightness from %f to %f", prev, value)
+	}
+
+	return func(ctx context.Context) error {
+		if err := dbusutil.CallProtoMethod(ctx, m.obj, dbusInterface+".SetScreenBrightness",
+			&pmpb.SetBacklightBrightnessRequest{
+				Percent: &prev,
+			}, nil); err != nil {
+			return errors.Wrapf(err, "failed to reset screen brightness from %f to %f", value, prev)
+		}
+		return nil
+	}, nil
+}
