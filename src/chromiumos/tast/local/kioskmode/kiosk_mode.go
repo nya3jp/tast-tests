@@ -24,7 +24,10 @@ const (
 	kioskStarting        = "Starting kiosk mode"
 	kioskLaunchSucceeded = "Kiosk launch succeeded"
 
-	logScanTimeout = 60 * time.Second
+	// logScanTimeout timeout to wait for messages indicating Kiosk startup
+	// and successful launch. Set to over a minute as Kiosk mode launch varies
+	// depending on a device. crbug.com/1222136
+	logScanTimeout = 90 * time.Second
 )
 
 var (
