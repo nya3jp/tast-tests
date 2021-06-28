@@ -2280,13 +2280,17 @@ func (s *ShillService) FlushBSS(ctx context.Context, req *wifi.FlushBSSRequest) 
 // ResetTest is the main body of the Reset test, which resets/suspends and verifies the connection for several times.
 func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest) (*empty.Empty, error) {
 	const (
-		resetNum           = 15
-		suspendNum         = 5
-		suspendDuration    = time.Second * 10
-		idleConnectTimeout = time.Second * 20
-		pingCount          = 10
-		pingInterval       = 1 // In seconds.
-		pingLossThreshold  = 20.0
+		resetNum        = 15
+		suspendNum      = 5
+		suspendDuration = time.Second * 10
+		// suspend() may fail to wake up after the specific duration. We give suspend() a new
+		// ctx with timeout suspendDuration + suspendToleranceDuration so that for those
+		// DUTs fail to wake up in time, the test can fail early with correct error message.
+		suspendToleranceDuration = time.Second * 5
+		idleConnectTimeout       = time.Second * 20
+		pingCount                = 10
+		pingInterval             = 1 // In seconds.
+		pingLossThreshold        = 20.0
 
 		mwifiexFormat = "/sys/kernel/debug/mwifiex/%s/reset"
 		ath10kFormat  = "/sys/kernel/debug/ieee80211/%s/ath10k/simulate_fw_crash"
@@ -2512,12 +2516,14 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 		testing.ContextLogf(ctx, "Finished %d resetings; Start suspending for %s", resetNum, suspendDuration)
 		// Suspend for suspendDuration; resume; then wait for the service enters Idle state and IsConnected in order.
 		if err := func(ctx context.Context) error {
-			ctx, cancel := context.WithTimeout(ctx, suspendDuration+idleConnectTimeout)
+			ctx, cancel := context.WithTimeout(ctx, suspendDuration+suspendToleranceDuration+idleConnectTimeout)
 			defer cancel()
 
 			return assertIdleAndConnect(ctx, func(ctx context.Context) error {
+				ctx, cancel := context.WithTimeout(ctx, suspendDuration+suspendToleranceDuration)
+				defer cancel()
 				if _, err := suspend(ctx, suspendDuration, true /* checkEarlyWake */); err != nil {
-					return errors.Wrap(err, "failed to suspend")
+					return errors.Wrap(err, "failed to suspend/resume")
 				}
 				return nil
 			})
