@@ -115,6 +115,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"udevadm", "root", "root", 0},
 		{"usb_bouncer", "root", "root", 0},
 		{"brcm_patchram_plus", "root", "root", 0},          // runs on some veyron boards
+		{"os_install_service", "root", "root", 0},          // runs on reven
 		{"rialto_cellular_autoconnect", "root", "root", 0}, // runs on veyron_rialto
 		{"rialto_modem_watchdog", "root", "root", 0},       // runs on veyron_rialto
 		{"netperf", "root", "root", 0},                     // started by Autotest tests
