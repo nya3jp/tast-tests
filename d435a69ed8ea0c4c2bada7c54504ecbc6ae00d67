@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4da8dd37_50fbeb2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-06-28T18:51:40Z",
+      "side": 1,
+      "message": "Judy, a test isn\u0027t going to run faster when a timeout is going to be reduced, it just gets flakier. It makes sense to have timeouts that are generous such that if they are hit one knows that it likely was a hang, not just some temporary slowness.",
+      "revId": "d435a69ed8ea0c4c2bada7c54504ecbc6ae00d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9022d1b_1150e749",
