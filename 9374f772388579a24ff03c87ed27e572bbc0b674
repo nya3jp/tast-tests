@@ -63,6 +63,30 @@
       },
       "revId": "9374f772388579a24ff03c87ed27e572bbc0b674",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a63edbd9_fb552699",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-28T13:13:08Z",
+      "side": 1,
+      "message": "It is not done yet. (Or the next patch set is not uploaded yet.)",
+      "parentUuid": "a835c5a4_1a35c571",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 52
+      },
+      "revId": "9374f772388579a24ff03c87ed27e572bbc0b674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
