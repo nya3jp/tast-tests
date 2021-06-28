@@ -16,6 +16,24 @@
       "message": "Sorry, I\u0027m a little lost - what exactly is a Fixture? $BUG doesn\u0027t give much context here either. Is there a doc somewhere I can read?",
       "revId": "0ae45dca6f9df4a6bfc1127afaa533542695fa90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cd8dd7b_16b51b6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-28T23:26:46Z",
+      "side": 1,
+      "message": "Updated the BUG. \n\nTast Fixture \u003d Precondition v2\nPlease refer to https://docs.google.com/presentation/d/19EXMabCiSwCMfZ5xpmuRSway_wDvjSOCEFyc1M1_tDU/edit?usp\u003dsharing\u0026resourcekey\u003d0-es9kZKHRK5bTHfUSGJNEtQ .\n\nCurrently the Fixture does not have Markdown file in Tast documentation. The presentation seems to be the best document other than code itself.",
+      "parentUuid": "c31994a9_77b5602b",
+      "revId": "0ae45dca6f9df4a6bfc1127afaa533542695fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
