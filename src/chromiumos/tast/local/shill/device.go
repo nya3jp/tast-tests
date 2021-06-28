@@ -6,6 +6,7 @@ package shill
 
 import (
 	"context"
+	"math/rand"
 	"time"
 
 	"github.com/godbus/dbus"
