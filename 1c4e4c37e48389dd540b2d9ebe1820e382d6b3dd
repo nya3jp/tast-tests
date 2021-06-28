@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb197223_6ff99059",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-06-28T00:05:41Z",
+      "side": 1,
+      "message": "Hi Hidehiko and Shuhei, thanks for the comments, PTAL at my replies, and sorry for the newbie golang questions.\n",
+      "revId": "1c4e4c37e48389dd540b2d9ebe1820e382d6b3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7adcaad1_1ae87290",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-06-25T14:29:29Z",
       "side": 1,
       "message": "If this is expected use, could you pass key-value pairs, instead of arbitrary arguments?\n\nDitto for all other cases below.\nAlso, for each function, could you add document about new parameters?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 91
+      },
+      "revId": "1c4e4c37e48389dd540b2d9ebe1820e382d6b3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a0e4213_234cdd21",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-06-28T00:05:41Z",
+      "side": 1,
+      "message": "By \"pass key-value pairs\", I have several understanding (and the question):\n\n1. use `func JobStatus(ctx Context, job, key, value string)`? Golang doesn\u0027t support default value, while key, value are not always applicable, users must pass \"\" for these two parameters, i.e. JobStatus(ctx, job, \"\", \"\"), which is bad.\n  This somewhat points to patchset 1 where I have `JobInstanceStatus` that require extra arguments and `JobStatus` that calls `JobInstanceStatus` and passes empty strings as extra arguments.\n\n2. still use `func JobStatus(ctx Context, job string, args ...string)`, but args should be like [\"key\", \"value\"] rather than [\"key\u003dvalue\"], and I need to check len(args)\u003e\u003d2, and to compose a string \"args[0]\u003dargs[1]\"? It seems to me it doesn\u0027t gain much. Besides, I also need to make sure that key and value don\u0027t contain characters like \"\u003d\".\n\n3. define a `type Pair struct { key, value string }` and use `args ...Pair`? Similar to 2) but better. Also need to check \"\u003d\" character.\n\nWhich one do you suggest? I\u0027m not familiar with golang, if I miss an obvious better understanding of \"key-value pairs\", please let me know :)",
+      "parentUuid": "7adcaad1_1ae87290",
       "range": {
         "startLine": 64,
         "startChar": 3,
@@ -77,6 +118,30 @@
       "writtenOn": "2021-06-25T14:29:29Z",
       "side": 1,
       "message": "does initctl always output \"Unknown job\" for any error cases?\nIf not, can it be swap to allow-list style status check?",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 75
+      },
+      "revId": "1c4e4c37e48389dd540b2d9ebe1820e382d6b3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "494312d3_55f766c7",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-06-28T00:05:41Z",
+      "side": 1,
+      "message": "No, it\u0027s not always \"Unknown job\".\n\nCan you explain a little bit more about allow-list style? An example code would be perfect, thanks!",
+      "parentUuid": "f6d05fb2_460fb3ae",
       "range": {
         "startLine": 137,
         "startChar": 4,
