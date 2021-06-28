@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb1c118e_0cfbfc14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/suggestion_chip_animation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-28T11:37:11Z",
+      "side": 1,
+      "message": "Please do not pass in ui into the function. It looks very weird. What you use inside the function is actually uiauto.New(tconn).withInterval().\n\nIf you want a different interval for different callers, you should explicitly pass in an interval variable which is clearer.",
+      "range": {
+        "startLine": 90,
+        "startChar": 53,
+        "endLine": 90,
+        "endChar": 55
+      },
+      "revId": "791757ba1848217c9de1da73e2b5e5edcef87cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83d2bdf9_8e6ff883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/suggestion_chip_animation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-28T11:37:11Z",
+      "side": 1,
+      "message": "It looks better to return an Action here.",
+      "range": {
+        "startLine": 108,
+        "startChar": 111,
+        "endLine": 108,
+        "endChar": 116
+      },
+      "revId": "791757ba1848217c9de1da73e2b5e5edcef87cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
