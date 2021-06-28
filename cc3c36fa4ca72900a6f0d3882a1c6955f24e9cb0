@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3f458fb_658403d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-28T03:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f33509e2_8cdbf97a",
+      "range": {
+        "startLine": 89,
+        "startChar": 19,
+        "endLine": 89,
+        "endChar": 21
+      },
+      "revId": "cc3c36fa4ca72900a6f0d3882a1c6955f24e9cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9f3b1b9_2a28dd40",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-06-25T05:13:07Z",
       "side": 1,
       "message": "reject should be called in the callback, then?",
+      "revId": "cc3c36fa4ca72900a6f0d3882a1c6955f24e9cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c3a77aa_1b0be0c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-28T03:18:30Z",
+      "side": 1,
+      "message": "Done.\nSince callback is called before speaking is done, I added a check of chrome.runtime.lastError. \n\nref:\nhttps://developer.chrome.com/docs/extensions/reference/tts/#method-speak\n(see callback)",
+      "parentUuid": "f9f3b1b9_2a28dd40",
       "revId": "cc3c36fa4ca72900a6f0d3882a1c6955f24e9cb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
