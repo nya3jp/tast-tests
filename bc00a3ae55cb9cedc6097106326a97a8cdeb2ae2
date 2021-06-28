@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b3318b2_db6c002e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/arc_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-06-28T11:10:19Z",
+      "side": 1,
+      "message": "This is great! Thanks a lot, Kamil!!\n\nBTW is this documented somewhere? I was looking through the tast docs and didn\u0027t find anything.",
+      "parentUuid": "3fd7ecc5_db8d2ad3",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 61
+      },
+      "revId": "bc00a3ae55cb9cedc6097106326a97a8cdeb2ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6019a584_463b22c8",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b81eedbb_15ce264c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/extension_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-06-28T11:10:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6019a584_463b22c8",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 61
+      },
+      "revId": "bc00a3ae55cb9cedc6097106326a97a8cdeb2ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae097e8c_5dbdef94",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-06-28T09:34:36Z",
       "side": 1,
       "message": "same here - simply remove those.",
+      "range": {
+        "startLine": 29,
+        "startChar": 28,
+        "endLine": 29,
+        "endChar": 61
+      },
+      "revId": "bc00a3ae55cb9cedc6097106326a97a8cdeb2ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "648560b8_abbcb22a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_services_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-06-28T11:10:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae097e8c_5dbdef94",
       "range": {
         "startLine": 29,
         "startChar": 28,
