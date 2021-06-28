@@ -16,6 +16,41 @@
       "message": "Do we want to remove the test over this? Isn\u0027t this still a useful result?",
       "revId": "8b1ac38858cdcedc98eff90f5848378b12d8d286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a23a53f_b42fcb60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-06-28T09:48:04Z",
+      "side": 1,
+      "message": "It\u0027s maybe useful for the VM team, but not for this test. I\u0027m not sure why ARC fails to install sometimes. Running the test on `android_p` should be sufficient.\n\nThere\u0027s no difference in how the proxy config is forwarded between the VM and android_p.",
+      "parentUuid": "993c5753_851faab1",
+      "revId": "8b1ac38858cdcedc98eff90f5848378b12d8d286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "974aed93_fd49b07c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-06-28T09:48:04Z",
+      "side": 1,
+      "message": "Thanks a lot, Eric!",
+      "revId": "8b1ac38858cdcedc98eff90f5848378b12d8d286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
