@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18d601a9_5d3f1137",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-28T13:15:02Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "aa8c622c530689fab2d7cf434d8c264ee98d3fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f82f2ab5_87c70c31",
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "I based my code on https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/login/profile_extension.go\n\nI don\u0027t think it matters if the connections is closed, we close the entire Chrome instance at the end of the test.\n\nBased on https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/driver/session.go;l\u003d199\nI\u0027m not sure what will happen if it is used after the close.",
       "parentUuid": "f82f2ab5_87c70c31",
+      "revId": "aa8c622c530689fab2d7cf434d8c264ee98d3fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad4dac4c_9527c131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_guest_mode_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-06-28T13:15:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "17e3fb3e_911a2264",
       "revId": "aa8c622c530689fab2d7cf434d8c264ee98d3fca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
