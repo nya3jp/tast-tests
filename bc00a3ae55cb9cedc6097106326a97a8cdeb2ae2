@@ -16,6 +16,75 @@
       "message": "Thanks, Pavol! PTAL",
       "revId": "bc00a3ae55cb9cedc6097106326a97a8cdeb2ae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fd7ecc5_db8d2ad3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/arc_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-28T09:34:36Z",
+      "side": 1,
+      "message": "Please disable by removing attributes. That will to prevent tests from being run on the infrastructure.",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 61
+      },
+      "revId": "bc00a3ae55cb9cedc6097106326a97a8cdeb2ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6019a584_463b22c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/extension_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-28T09:34:36Z",
+      "side": 1,
+      "message": "same here - simply remove those.",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 61
+      },
+      "revId": "bc00a3ae55cb9cedc6097106326a97a8cdeb2ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae097e8c_5dbdef94",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_services_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-28T09:34:36Z",
+      "side": 1,
+      "message": "same here - simply remove those.",
+      "range": {
+        "startLine": 29,
+        "startChar": 28,
+        "endLine": 29,
+        "endChar": 61
+      },
+      "revId": "bc00a3ae55cb9cedc6097106326a97a8cdeb2ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
