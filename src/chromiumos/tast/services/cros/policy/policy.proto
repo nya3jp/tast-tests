@@ -38,6 +38,17 @@ service PolicyService {
   // Creates a new connection to the Chrome URL in the request and evaluates the expression in the request on it.
   rpc EvalExpressionInChromeURL(EvalExpressionInChromeUrlRequest)
       returns (google.protobuf.Empty) {}
+
+  // Battery power utilities RPCs.
+  // Fetches necessary battery status.
+  rpc BatteryStatus(google.protobuf.Empty)
+      returns (BatteryStatusResponse) {};
+  // Charges the DUT to the specified value.
+  rpc BatteryCharge(BatteryChargeRequest)
+      returns (google.protobuf.Empty) {};
+  // Drains the DUT to the specified value.
+  rpc BatteryDrain(BatteryDrainRequest)
+      returns (google.protobuf.Empty) {};
 }
 
 message EnrollUsingChromeRequest {
@@ -96,4 +107,22 @@ message VerifyVisibleNotificationRequest {
 message EvalExpressionInChromeUrlRequest {
   string url = 1;
   string expression = 2;
+}
+
+message BatteryStatusResponse {
+  double percentage = 1;
+  bool on_ac = 2;
+  bool charging = 3;
+}
+
+message BatteryChargeRequest {
+  double percentage = 1;
+}
+
+message BatteryDrainRequest {
+  double percentage = 1;
+  // Battery Drain depends on policy service chrome instance, i.e. enrollment must be called
+  // beforehand. But in some case that may not be the case, so for that setting force as true
+  // will create a new chrome instance.
+  bool force = 2;
 }

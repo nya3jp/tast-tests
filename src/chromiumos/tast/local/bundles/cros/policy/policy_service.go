@@ -21,6 +21,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/policyutil/externaldata"
+	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/power/battery"
 	ppb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
@@ -420,5 +422,44 @@ func (c *PolicyService) EvalExpressionInChromeURL(ctx context.Context, req *ppb.
 		return nil, errors.Wrapf(err, "failed to evaluate expression on %s", req.Url)
 	}
 
+	return &empty.Empty{}, nil
+}
+
+// BatteryStatus informs about current battery percentage, charging state.
+func (c *PolicyService) BatteryStatus(ctx context.Context, _ *empty.Empty) (*ppb.BatteryStatusResponse, error) {
+	status, err := power.GetStatus(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to acquire DUT power status")
+	}
+
+	return &ppb.BatteryStatusResponse{
+		Percentage: status.BatteryDisplayPercent,
+		OnAc:       status.LinePowerConnected,
+		Charging:   !status.BatteryDischarging,
+	}, nil
+}
+
+func (c *PolicyService) BatteryCharge(ctx context.Context, req *ppb.BatteryChargeRequest) (*empty.Empty, error) {
+	if err := battery.Charge(ctx, req.Percentage); err != nil {
+		return nil, err
+	}
+	return &empty.Empty{}, nil
+}
+
+func (c *PolicyService) BatteryDrain(ctx context.Context, req *ppb.BatteryDrainRequest) (*empty.Empty, error) {
+	cr := c.chrome
+	if cr == nil {
+		if !req.Force {
+			return nil, errors.New("battery drain requires a chrome connection, please perform enrollment first or set force to true")
+		}
+		var err error
+		if cr, err = chrome.New(ctx); err != nil {
+			return nil, err
+		}
+		defer cr.Close(ctx)
+	}
+	if err := battery.Drain(ctx, cr, req.Percentage); err != nil {
+		return nil, err
+	}
 	return &empty.Empty{}, nil
 }
