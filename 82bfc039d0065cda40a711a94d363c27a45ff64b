@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1af01c6_41c7e861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-28T09:20:10Z",
+      "side": 1,
+      "message": "I know this is ugly, while wrapping them into a struct sounds a bit overkill to me... What\u0027s the preferable way in go? Adding a comment?",
+      "range": {
+        "startLine": 219,
+        "startChar": 51,
+        "endLine": 219,
+        "endChar": 61
+      },
+      "revId": "82bfc039d0065cda40a711a94d363c27a45ff64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

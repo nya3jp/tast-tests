@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e23ceafe_b95d3030",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-28T09:20:10Z",
+      "side": 0,
+      "message": "Just a note: this patch actually moved this part into createL2TPIPsecProperties(). The diff may look a little strange. This is safe because this paramter is actually only used by L2TP/IPsec tests. This is required by this patch because we need two server addresses in wg tests, passing server address here does not make sense.",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 2
+      },
+      "revId": "694906b02cdb84b2b734d746e8cf019b9985901d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
