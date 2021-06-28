@@ -47,9 +47,9 @@ func init() {
 }
 
 func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
-	// Reserve one minute for various cleanup.
+	// Reserve ten seconds for various cleanup.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
 	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=PipRoundedCorners"))
