@@ -43,6 +43,7 @@ func OobeArc(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx,
 		chrome.DontSkipOOBEAfterLogin(),
 		chrome.ARCSupported(),
+		chrome.ExtraArgs("--force-launch-browser"),
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
