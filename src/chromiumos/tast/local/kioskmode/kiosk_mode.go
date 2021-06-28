@@ -24,7 +24,9 @@ const (
 	kioskStarting        = "Starting kiosk mode"
 	kioskLaunchSucceeded = "Kiosk launch succeeded"
 
-	logScanTimeout = 60 * time.Second
+	// significant timeout is needed as on some devices successful launch of
+	// Kiosk mode takes over a minute crbug.com/1222136
+	logScanTimeout = 90 * time.Second
 )
 
 var (
