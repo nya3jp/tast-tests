@@ -97,7 +97,7 @@ func Scan(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
 	}
 
-	printer, err := usbprinter.StartScanner(ctx, devInfo, descriptors, attributes, esclCapabilities, s.DataPath("scan_escl_ipp_source.jpg"))
+	printer, err := usbprinter.StartScanner(ctx, devInfo, descriptors, attributes, esclCapabilities, s.DataPath("scan_escl_ipp_source.jpg"), "")
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
