@@ -22,6 +22,30 @@
       },
       "revId": "80c89bd92070f051a13f4938e21a669ae406127b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ac8d33b_4e2b36dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-28T07:05:52Z",
+      "side": 1,
+      "message": "Thanks! Thinking about this again, I\u0027m feeling any of the inexistence of a file should be considered as an error here. Changed here and in vpn_server.go (to always write into the file regardless of the error)",
+      "parentUuid": "c847f65d_ea68ea33",
+      "range": {
+        "startLine": 347,
+        "startChar": 36,
+        "endLine": 347,
+        "endChar": 80
+      },
+      "revId": "80c89bd92070f051a13f4938e21a669ae406127b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
