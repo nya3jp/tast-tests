@@ -17,6 +17,7 @@ const (
 	ModemPropertyPrimarySimSlot = "PrimarySimSlot"
 	ModemPropertyState          = "State"
 	ModemPropertyPowered        = "PowerState"
+	ModemPropertyManufacturer   = "Manufacturer"
 )
 
 // ModemManager1.Modem.Simple properties
@@ -28,6 +29,7 @@ const (
 // ModemManager1.Sim properties
 const (
 	SimPropertySimIdentifier = "SimIdentifier"
+	SimPropertySimEid        = "Eid"
 )
 
 // Wait times for modem at Modemmanager operations
@@ -92,4 +94,16 @@ const (
 	// Modem.Simple interface methods
 	ModemConnect    = "Connect"
 	ModemDisconnect = "Disconnect"
+)
+
+// Modem Manufacturers
+const (
+	ModemQualcomm = "QUALCOMM INCORPORATED"
+	ModemFibocom  = "Fibocom Wireless Inc."
+)
+
+// Default SIM pin
+const (
+	DefaultSimPin = "1234"
+	TempSimPin    = "1600"
 )
