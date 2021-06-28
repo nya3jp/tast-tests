@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9356a64_b17dca9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/suggestion_chip_animation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-06-28T21:27:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb1c118e_0cfbfc14",
+      "range": {
+        "startLine": 90,
+        "startChar": 53,
+        "endLine": 90,
+        "endChar": 55
+      },
+      "revId": "791757ba1848217c9de1da73e2b5e5edcef87cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83d2bdf9_8e6ff883",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-28T11:37:11Z",
       "side": 1,
       "message": "It looks better to return an Action here.",
+      "range": {
+        "startLine": 108,
+        "startChar": 111,
+        "endLine": 108,
+        "endChar": 116
+      },
+      "revId": "791757ba1848217c9de1da73e2b5e5edcef87cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfefd5d1_3ac8f14f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/suggestion_chip_animation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-06-28T21:27:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83d2bdf9_8e6ff883",
       "range": {
         "startLine": 108,
         "startChar": 111,
