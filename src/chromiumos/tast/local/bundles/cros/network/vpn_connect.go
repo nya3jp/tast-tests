@@ -179,6 +179,15 @@ func init() {
 				},
 			},
 			ExtraSoftwareDeps: []string{"wireguard"},
+		}, {
+			Name: "wireguard_generate_key",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:         vpn.TypeWireGuard,
+					WGAutoGenKey: true,
+				},
+			},
+			ExtraSoftwareDeps: []string{"wireguard"},
 		}},
 	})
 }
