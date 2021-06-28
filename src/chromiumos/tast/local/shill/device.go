@@ -91,3 +91,49 @@ func (d *Device) WaitForSelectedService(ctx context.Context, timeout time.Durati
 	}
 	return servicePath, nil
 }
+
+// (Cellular only) Enable or disable PIN protection for
+// a cellular modem's SIM card. If 'require' is true,
+// then a PIN will need to be supplied (by calling
+// EnterPin) before the modem is usable. If 'require'
+// is false, a PIN will not be required.
+
+// RequirePin enables/disables SIM PIN based on require value
+func (d *Device) RequirePin(ctx context.Context, pin string, require bool) error {
+	if err := d.Call(ctx, "RequirePin", pin).Err; err != nil {
+		return errors.Wrapf(err, "failed to enter pin %s", d.String())
+	}
+	return nil
+}
+
+// EnterPin is to lock/unlock a SIM card with given PIN. TODO: can be wrapped in LockSIM & UnlockSIM in cbb
+func (d *Device) EnterPin(ctx context.Context, pin string) error {
+	if err := d.Call(ctx, "EnterPin", pin).Err; err != nil {
+		return errors.Wrapf(err, "failed to enter pin %s", d.String())
+	}
+	return nil
+}
+
+// Provide a PUK code to unblock a PIN.
+// When an incorrect PIN has been entered too many times
+// (three is generally the number of tries allowed), the
+// PIN becomes "blocked", and the SIM card can only be
+// unlocked by providing a PUK code provided by the
+// carrier. At the same time, a new PIN must be specified.
+
+// UnblockPUK used to unblock the locked sim with puk code
+func (d *Device) UnblockPUK(ctx context.Context, pukCode, newPin string) error {
+	if err := d.Call(ctx, "UnblockPin", pukCode, newPin).Err; err != nil {
+		return errors.Wrapf(err, "failed to unblock SIM using PUK code due to error %s", d.String())
+	}
+	return nil
+}
+
+// ChangePin changes the PIN used to unlock a SIM card
+// The existing PIN must be provided along with the new PIN.
+func (d *Device) ChangePin(ctx context.Context, oldPin, newPin string) error {
+	if err := d.Call(ctx, "ChangePin", oldPin, newPin).Err; err != nil {
+		return errors.Wrapf(err, "failed to change pin %s", d.String())
+	}
+	return nil
+}
