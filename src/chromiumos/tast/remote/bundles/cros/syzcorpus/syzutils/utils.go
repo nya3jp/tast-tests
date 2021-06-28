@@ -82,6 +82,22 @@ func ClearDmesg(ctx context.Context, d *dut.DUT) error {
 	return nil
 }
 
+// MkdirRemote creates a directory at path on the DUT.
+func MkdirRemote(ctx context.Context, d *dut.DUT, path string) error {
+	if err := d.Conn().Command("mkdir", "-p", path).Run(ctx); err != nil {
+		return err
+	}
+	return nil
+}
+
+// RmdirRemote recursively removes the directory at path on the DUT.
+func RmdirRemote(ctx context.Context, d *dut.DUT, path string) error {
+	if err := d.Conn().Command("rm", "-rf", path).Run(ctx); err != nil {
+		return err
+	}
+	return nil
+}
+
 // CopyRepro copies a repro file to the DUT.
 func CopyRepro(ctx context.Context, d *dut.DUT, localPath, remotePath string) error {
 	testing.ContextLogf(ctx, "Copying %v to %v", localPath, fmt.Sprintf("root@DUT:%v", remotePath))
