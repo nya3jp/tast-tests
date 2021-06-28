@@ -44,6 +44,19 @@ func (p *PowerMenuService) NewChrome(ctx context.Context, req *empty.Empty) (*em
 	return &empty.Empty{}, nil
 }
 
+func (p *PowerMenuService) NewChromeNoLogIn(ctx context.Context, req *pb.SigninRequest) (*empty.Empty, error) {
+	if p.cr != nil {
+		return nil, errors.New("Chrome already available")
+	}
+
+	cr, err := chrome.New(ctx, chrome.KeepState(), chrome.NoLogin(), chrome.LoadSigninProfileExtension(req.Key))
+	if err != nil {
+		return nil, err
+	}
+	p.cr = cr
+	return &empty.Empty{}, nil
+}
+
 func (p *PowerMenuService) CloseChrome(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	if p.cr == nil {
 		return nil, errors.New("Chrome not available")
@@ -80,4 +93,33 @@ func (p *PowerMenuService) IsPowerMenuPresent(ctx context.Context, req *empty.Em
 	}
 
 	return &pb.IsPowerMenuPresentResponse{IsMenuPresent: exists}, nil
+}
+
+func (p *PowerMenuService) IsPowerMenuPresentNoLogIn(ctx context.Context, req *empty.Empty) (*pb.IsPowerMenuPresentNoLogInResponse, error) {
+	if p.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+
+	tconn, err := p.cr.SigninProfileTestAPIConn(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	root, err := ui.Root(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get root node")
+	}
+	defer root.Release(ctx)
+
+	// Check if the power menu is displayed.
+	params := ui.FindParams{
+		ClassName: "PowerButtonMenuView",
+		Role:      ui.RoleTypeMenu,
+	}
+	exists, err := root.DescendantExists(ctx, params)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find power menu")
+	}
+
+	return &pb.IsPowerMenuPresentNoLogInResponse{IsMenuPresent: exists}, nil
 }

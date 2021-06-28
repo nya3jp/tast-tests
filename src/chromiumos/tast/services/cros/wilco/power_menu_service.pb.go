@@ -25,6 +25,45 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+type SigninRequest struct {
+	Key                  string   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SigninRequest) Reset()         { *m = SigninRequest{} }
+func (m *SigninRequest) String() string { return proto.CompactTextString(m) }
+func (*SigninRequest) ProtoMessage()    {}
+func (*SigninRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6bff766209769325, []int{0}
+}
+
+func (m *SigninRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SigninRequest.Unmarshal(m, b)
+}
+func (m *SigninRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SigninRequest.Marshal(b, m, deterministic)
+}
+func (m *SigninRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SigninRequest.Merge(m, src)
+}
+func (m *SigninRequest) XXX_Size() int {
+	return xxx_messageInfo_SigninRequest.Size(m)
+}
+func (m *SigninRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SigninRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SigninRequest proto.InternalMessageInfo
+
+func (m *SigninRequest) GetKey() string {
+	if m != nil {
+		return m.Key
+	}
+	return ""
+}
+
 type IsPowerMenuPresentResponse struct {
 	IsMenuPresent        bool     `protobuf:"varint,1,opt,name=is_menu_present,json=isMenuPresent,proto3" json:"is_menu_present,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -36,7 +75,7 @@ func (m *IsPowerMenuPresentResponse) Reset()         { *m = IsPowerMenuPresentRe
 func (m *IsPowerMenuPresentResponse) String() string { return proto.CompactTextString(m) }
 func (*IsPowerMenuPresentResponse) ProtoMessage()    {}
 func (*IsPowerMenuPresentResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_6bff766209769325, []int{0}
+	return fileDescriptor_6bff766209769325, []int{1}
 }
 
 func (m *IsPowerMenuPresentResponse) XXX_Unmarshal(b []byte) error {
@@ -64,30 +103,75 @@ func (m *IsPowerMenuPresentResponse) GetIsMenuPresent() bool {
 	return false
 }
 
+type IsPowerMenuPresentNoLogInResponse struct {
+	IsMenuPresent        bool     `protobuf:"varint,1,opt,name=is_menu_present,json=isMenuPresent,proto3" json:"is_menu_present,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *IsPowerMenuPresentNoLogInResponse) Reset()         { *m = IsPowerMenuPresentNoLogInResponse{} }
+func (m *IsPowerMenuPresentNoLogInResponse) String() string { return proto.CompactTextString(m) }
+func (*IsPowerMenuPresentNoLogInResponse) ProtoMessage()    {}
+func (*IsPowerMenuPresentNoLogInResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6bff766209769325, []int{2}
+}
+
+func (m *IsPowerMenuPresentNoLogInResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_IsPowerMenuPresentNoLogInResponse.Unmarshal(m, b)
+}
+func (m *IsPowerMenuPresentNoLogInResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_IsPowerMenuPresentNoLogInResponse.Marshal(b, m, deterministic)
+}
+func (m *IsPowerMenuPresentNoLogInResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_IsPowerMenuPresentNoLogInResponse.Merge(m, src)
+}
+func (m *IsPowerMenuPresentNoLogInResponse) XXX_Size() int {
+	return xxx_messageInfo_IsPowerMenuPresentNoLogInResponse.Size(m)
+}
+func (m *IsPowerMenuPresentNoLogInResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_IsPowerMenuPresentNoLogInResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_IsPowerMenuPresentNoLogInResponse proto.InternalMessageInfo
+
+func (m *IsPowerMenuPresentNoLogInResponse) GetIsMenuPresent() bool {
+	if m != nil {
+		return m.IsMenuPresent
+	}
+	return false
+}
+
 func init() {
+	proto.RegisterType((*SigninRequest)(nil), "tast.cros.wilco.SigninRequest")
 	proto.RegisterType((*IsPowerMenuPresentResponse)(nil), "tast.cros.wilco.IsPowerMenuPresentResponse")
+	proto.RegisterType((*IsPowerMenuPresentNoLogInResponse)(nil), "tast.cros.wilco.IsPowerMenuPresentNoLogInResponse")
 }
 
 func init() { proto.RegisterFile("power_menu_service.proto", fileDescriptor_6bff766209769325) }
 
 var fileDescriptor_6bff766209769325 = []byte{
-	// 241 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x91, 0xb1, 0x4a, 0x04, 0x31,
-	0x10, 0x86, 0x6f, 0x1b, 0xd1, 0x88, 0x9c, 0xa4, 0x90, 0x63, 0x6d, 0x64, 0x45, 0x11, 0x84, 0x09,
-	0x68, 0x2d, 0x82, 0xa7, 0x85, 0x85, 0x72, 0x9c, 0x9d, 0x16, 0x87, 0x17, 0xc6, 0x33, 0xb0, 0xc9,
-	0x84, 0x4c, 0xe2, 0xe2, 0x53, 0xfb, 0x0a, 0x92, 0x8d, 0x8a, 0x28, 0xdb, 0x5c, 0x9b, 0x99, 0x7c,
-	0xff, 0x97, 0x3f, 0x62, 0xe2, 0xa9, 0xc3, 0xb0, 0xb0, 0xe8, 0xd2, 0x82, 0x31, 0xbc, 0x19, 0x8d,
-	0xe0, 0x03, 0x45, 0x92, 0xe3, 0xf8, 0xcc, 0x11, 0x74, 0x20, 0x86, 0xce, 0xb4, 0x9a, 0xea, 0xfd,
-	0x15, 0xd1, 0xaa, 0x45, 0xd5, 0x8f, 0x97, 0xe9, 0x45, 0xa1, 0xf5, 0xf1, 0xbd, 0x6c, 0x37, 0xd7,
-	0xa2, 0xbe, 0xe5, 0x59, 0x66, 0xdd, 0xa1, 0x4b, 0xb3, 0x80, 0x8c, 0x2e, 0xce, 0x91, 0x3d, 0x39,
-	0x46, 0x79, 0x2c, 0xc6, 0x86, 0x4b, 0x88, 0x2f, 0xa3, 0x49, 0x75, 0x50, 0x9d, 0x6c, 0xce, 0x77,
-	0x0c, 0xff, 0xda, 0x3f, 0xfb, 0xa8, 0xc4, 0xee, 0x0f, 0xe4, 0xa1, 0xe8, 0xc8, 0x0b, 0xb1, 0x75,
-	0x8f, 0xdd, 0xf4, 0x35, 0x90, 0x45, 0xb9, 0x07, 0xc5, 0x02, 0xbe, 0x2d, 0xe0, 0x26, 0x5b, 0xd4,
-	0x03, 0xe7, 0xcd, 0x48, 0x5e, 0x8a, 0xed, 0x69, 0x4b, 0x8c, 0x6b, 0x03, 0x9e, 0x84, 0xfc, 0xff,
-	0xb4, 0x41, 0xce, 0x29, 0xfc, 0xe9, 0x0d, 0x86, 0x7b, 0x69, 0x46, 0x57, 0x47, 0x8f, 0x87, 0x3a,
-	0x8b, 0x99, 0x64, 0x89, 0x55, 0xbe, 0xaa, 0xbe, 0xbe, 0x81, 0x55, 0x66, 0xa8, 0x9e, 0xb1, 0xdc,
-	0xe8, 0x53, 0xce, 0x3f, 0x03, 0x00, 0x00, 0xff, 0xff, 0xd9, 0x60, 0x08, 0x15, 0xaf, 0x01, 0x00,
-	0x00,
+	// 311 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x92, 0xcf, 0x4b, 0x02, 0x41,
+	0x14, 0xc7, 0x15, 0x21, 0xf2, 0x85, 0x28, 0x73, 0x08, 0x33, 0x88, 0xdc, 0x28, 0x82, 0x60, 0x16,
+	0xec, 0x1c, 0x41, 0xd6, 0x41, 0x32, 0x91, 0xf5, 0x56, 0x07, 0xc9, 0xe5, 0xb5, 0x0d, 0xb9, 0xf3,
+	0xb6, 0x79, 0xb3, 0x89, 0xff, 0x51, 0x7f, 0x66, 0xcc, 0xae, 0x49, 0xb9, 0x6c, 0x54, 0xb7, 0x65,
+	0x67, 0xde, 0xe7, 0xfb, 0xe3, 0x0d, 0xb4, 0x13, 0x5a, 0xa0, 0x99, 0xc6, 0xa8, 0xd3, 0x29, 0xa3,
+	0x79, 0x53, 0x21, 0xca, 0xc4, 0x90, 0x25, 0xd1, 0xb4, 0x8f, 0x6c, 0x65, 0x68, 0x88, 0xe5, 0x42,
+	0xcd, 0x43, 0xea, 0xec, 0x47, 0x44, 0xd1, 0x1c, 0xfd, 0xec, 0x78, 0x96, 0x3e, 0xf9, 0x18, 0x27,
+	0x76, 0x99, 0xdf, 0xf6, 0xba, 0xd0, 0x98, 0xa8, 0x48, 0x2b, 0x1d, 0xe0, 0x6b, 0x8a, 0x6c, 0x45,
+	0x0b, 0x6a, 0x2f, 0xb8, 0x6c, 0x57, 0x0f, 0xab, 0xa7, 0xf5, 0xc0, 0x7d, 0x7a, 0xd7, 0xd0, 0x19,
+	0xf0, 0xd8, 0xc9, 0xdd, 0xa1, 0x4e, 0xc7, 0x06, 0x19, 0xb5, 0x0d, 0x90, 0x13, 0xd2, 0x8c, 0xe2,
+	0x04, 0x9a, 0x8a, 0x73, 0x1f, 0x49, 0x7e, 0x94, 0xcd, 0x6e, 0x07, 0x0d, 0xc5, 0x5f, 0xee, 0x7b,
+	0xb7, 0xd0, 0x2d, 0x52, 0x46, 0x34, 0xa4, 0x68, 0xa0, 0xff, 0x0a, 0xeb, 0xbd, 0xd7, 0xa0, 0xb5,
+	0x66, 0x4d, 0xf2, 0xf8, 0xe2, 0x02, 0xea, 0x23, 0x5c, 0xf4, 0x9f, 0x0d, 0xc5, 0x28, 0x76, 0x65,
+	0x9e, 0x5a, 0x7e, 0xa6, 0x96, 0x37, 0x2e, 0x75, 0xa7, 0xe4, 0xbf, 0x57, 0x11, 0x43, 0x68, 0xad,
+	0xc7, 0x57, 0xbe, 0xc4, 0x81, 0xdc, 0x28, 0x53, 0x7e, 0x2b, 0xeb, 0x07, 0xda, 0x25, 0xec, 0xf4,
+	0xe7, 0xc4, 0xf8, 0x6f, 0x3b, 0x0f, 0x20, 0x8a, 0x7d, 0x95, 0x72, 0xce, 0x0a, 0x46, 0xcb, 0x57,
+	0xe6, 0x55, 0x84, 0x82, 0xbd, 0xd2, 0x65, 0x94, 0x6a, 0xf4, 0x7e, 0xa1, 0xb1, 0xb1, 0x50, 0xaf,
+	0x72, 0x75, 0x7c, 0x7f, 0x14, 0xba, 0x0e, 0x54, 0x1a, 0x13, 0xfb, 0x8e, 0xe0, 0xaf, 0xde, 0x2b,
+	0xfb, 0x0e, 0xe5, 0x67, 0xa8, 0xd9, 0x56, 0x26, 0x76, 0xfe, 0x11, 0x00, 0x00, 0xff, 0xff, 0x25,
+	0x04, 0xde, 0xd3, 0xd8, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -105,10 +189,16 @@ type PowerMenuServiceClient interface {
 	// New logs into a Chrome session as a fake user. Close must be called later
 	// to clean up the associated resources.
 	NewChrome(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
+	// NewChromeNoLogIn starts a Chrome session without logging in. Close must be
+	// called later to clean up the associated resources.
+	NewChromeNoLogIn(ctx context.Context, in *SigninRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Close releases the resources obtained by New.
 	CloseChrome(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
 	// IsPowerMenuPresent returns a bool indicating the presence of the power menu
 	IsPowerMenuPresent(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*IsPowerMenuPresentResponse, error)
+	// IsPowerMenuPresentNoLogIn returns a bool indicating the presence of the
+	// power menu at sign-in.
+	IsPowerMenuPresentNoLogIn(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*IsPowerMenuPresentNoLogInResponse, error)
 }
 
 type powerMenuServiceClient struct {
@@ -122,6 +212,15 @@ func NewPowerMenuServiceClient(cc *grpc.ClientConn) PowerMenuServiceClient {
 func (c *powerMenuServiceClient) NewChrome(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/tast.cros.wilco.PowerMenuService/NewChrome", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *powerMenuServiceClient) NewChromeNoLogIn(ctx context.Context, in *SigninRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.wilco.PowerMenuService/NewChromeNoLogIn", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -146,15 +245,30 @@ func (c *powerMenuServiceClient) IsPowerMenuPresent(ctx context.Context, in *emp
 	return out, nil
 }
 
+func (c *powerMenuServiceClient) IsPowerMenuPresentNoLogIn(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*IsPowerMenuPresentNoLogInResponse, error) {
+	out := new(IsPowerMenuPresentNoLogInResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.wilco.PowerMenuService/IsPowerMenuPresentNoLogIn", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PowerMenuServiceServer is the server API for PowerMenuService service.
 type PowerMenuServiceServer interface {
 	// New logs into a Chrome session as a fake user. Close must be called later
 	// to clean up the associated resources.
 	NewChrome(context.Context, *empty.Empty) (*empty.Empty, error)
+	// NewChromeNoLogIn starts a Chrome session without logging in. Close must be
+	// called later to clean up the associated resources.
+	NewChromeNoLogIn(context.Context, *SigninRequest) (*empty.Empty, error)
 	// Close releases the resources obtained by New.
 	CloseChrome(context.Context, *empty.Empty) (*empty.Empty, error)
 	// IsPowerMenuPresent returns a bool indicating the presence of the power menu
 	IsPowerMenuPresent(context.Context, *empty.Empty) (*IsPowerMenuPresentResponse, error)
+	// IsPowerMenuPresentNoLogIn returns a bool indicating the presence of the
+	// power menu at sign-in.
+	IsPowerMenuPresentNoLogIn(context.Context, *empty.Empty) (*IsPowerMenuPresentNoLogInResponse, error)
 }
 
 // UnimplementedPowerMenuServiceServer can be embedded to have forward compatible implementations.
@@ -164,11 +278,17 @@ type UnimplementedPowerMenuServiceServer struct {
 func (*UnimplementedPowerMenuServiceServer) NewChrome(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NewChrome not implemented")
 }
+func (*UnimplementedPowerMenuServiceServer) NewChromeNoLogIn(ctx context.Context, req *SigninRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method NewChromeNoLogIn not implemented")
+}
 func (*UnimplementedPowerMenuServiceServer) CloseChrome(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CloseChrome not implemented")
 }
 func (*UnimplementedPowerMenuServiceServer) IsPowerMenuPresent(ctx context.Context, req *empty.Empty) (*IsPowerMenuPresentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method IsPowerMenuPresent not implemented")
+}
+func (*UnimplementedPowerMenuServiceServer) IsPowerMenuPresentNoLogIn(ctx context.Context, req *empty.Empty) (*IsPowerMenuPresentNoLogInResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method IsPowerMenuPresentNoLogIn not implemented")
 }
 
 func RegisterPowerMenuServiceServer(s *grpc.Server, srv PowerMenuServiceServer) {
@@ -189,6 +309,24 @@ func _PowerMenuService_NewChrome_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(PowerMenuServiceServer).NewChrome(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PowerMenuService_NewChromeNoLogIn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SigninRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PowerMenuServiceServer).NewChromeNoLogIn(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.wilco.PowerMenuService/NewChromeNoLogIn",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PowerMenuServiceServer).NewChromeNoLogIn(ctx, req.(*SigninRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -229,6 +367,24 @@ func _PowerMenuService_IsPowerMenuPresent_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PowerMenuService_IsPowerMenuPresentNoLogIn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PowerMenuServiceServer).IsPowerMenuPresentNoLogIn(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.wilco.PowerMenuService/IsPowerMenuPresentNoLogIn",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PowerMenuServiceServer).IsPowerMenuPresentNoLogIn(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _PowerMenuService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.wilco.PowerMenuService",
 	HandlerType: (*PowerMenuServiceServer)(nil),
@@ -238,12 +394,20 @@ var _PowerMenuService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _PowerMenuService_NewChrome_Handler,
 		},
 		{
+			MethodName: "NewChromeNoLogIn",
+			Handler:    _PowerMenuService_NewChromeNoLogIn_Handler,
+		},
+		{
 			MethodName: "CloseChrome",
 			Handler:    _PowerMenuService_CloseChrome_Handler,
 		},
 		{
 			MethodName: "IsPowerMenuPresent",
 			Handler:    _PowerMenuService_IsPowerMenuPresent_Handler,
+		},
+		{
+			MethodName: "IsPowerMenuPresentNoLogIn",
+			Handler:    _PowerMenuService_IsPowerMenuPresentNoLogIn_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

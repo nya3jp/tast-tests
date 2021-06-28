@@ -16,15 +16,29 @@ service PowerMenuService {
   // to clean up the associated resources.
   rpc NewChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
+  // NewChromeNoLogIn starts a Chrome session without logging in. Close must be
+  // called later to clean up the associated resources.
+  rpc NewChromeNoLogIn (SigninRequest) returns (google.protobuf.Empty) {}
+
   // Close releases the resources obtained by New.
   rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
   // IsPowerMenuPresent returns a bool indicating the presence of the power menu
   rpc IsPowerMenuPresent (google.protobuf.Empty) returns (IsPowerMenuPresentResponse) {}
+
+  // IsPowerMenuPresentNoLogIn returns a bool indicating the presence of the
+  // power menu at sign-in.
+  rpc IsPowerMenuPresentNoLogIn (google.protobuf.Empty) returns (IsPowerMenuPresentNoLogInResponse) {}
+}
+
+message SigninRequest {
+  string key =1;
 }
 
 message IsPowerMenuPresentResponse {
   bool is_menu_present = 1;
 }
 
-
+message IsPowerMenuPresentNoLogInResponse {
+  bool is_menu_present = 1;
+}
