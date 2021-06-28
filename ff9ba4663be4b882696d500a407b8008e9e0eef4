@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f25f2b7d_16d409b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-28T11:31:01Z",
+      "side": 1,
+      "message": "Hi Alvin, I have do not done review yet. Can you please kindly split the cl for review?\n\nThere are some good improvements but not really relevant to parameterization.",
+      "revId": "ff9ba4663be4b882696d500a407b8008e9e0eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "444835e5_79b34a33",
+        "filename": "src/chromiumos/tast/local/chrome/ime/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-28T11:31:01Z",
+      "side": 1,
+      "message": "US en and UK en can be different language. I am not quite sure.",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 3
+      },
+      "revId": "ff9ba4663be4b882696d500a407b8008e9e0eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d31a711a_ff0ae250",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-28T11:31:01Z",
+      "side": 1,
+      "message": "Can you add some comments to this function? \nNormally LeftClick implicitly wait for the node to appear.\nI think it worthies to mention that it constantly check the existence of the node, then click if it exists.",
+      "range": {
+        "startLine": 429,
+        "startChar": 38,
+        "endLine": 429,
+        "endChar": 54
+      },
+      "revId": "ff9ba4663be4b882696d500a407b8008e9e0eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "add36b55_9de8531c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-28T11:31:01Z",
+      "side": 1,
+      "message": "If the text is \u0027hello world\u0027, then it takes 2s+ to clear the input field. I still do not think use backspace is not a nice way to clear field. Btw, this function only works on keyboard and handwriting panel.",
+      "range": {
+        "startLine": 457,
+        "startChar": 31,
+        "endLine": 457,
+        "endChar": 34
+      },
+      "revId": "ff9ba4663be4b882696d500a407b8008e9e0eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
