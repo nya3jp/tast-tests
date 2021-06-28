@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cea4dc7_daf34491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2286,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-28T21:56:14Z",
+      "side": 1,
+      "message": "How about:\n\n// suspend() may fail to wake up after the specific duration. We give suspend() a new ctx with timeout suspendDuration + suspendToleranceDuration so that for those DUTs fail to wake up in time, the test can fail early with correct error message.",
+      "revId": "204511bbe61f5a24e01c20ec3a80e84bae95f67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8cd7539_72941726",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2288,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-28T21:56:14Z",
+      "side": 1,
+      "message": "suspendToleranceDuration",
+      "range": {
+        "startLine": 2288,
+        "startChar": 2,
+        "endLine": 2288,
+        "endChar": 22
+      },
+      "revId": "204511bbe61f5a24e01c20ec3a80e84bae95f67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f5f47c9_4cf070f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2525,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-28T21:56:14Z",
+      "side": 1,
+      "message": "suspend/resume",
+      "range": {
+        "startLine": 2525,
+        "startChar": 40,
+        "endLine": 2525,
+        "endChar": 47
+      },
+      "revId": "204511bbe61f5a24e01c20ec3a80e84bae95f67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
