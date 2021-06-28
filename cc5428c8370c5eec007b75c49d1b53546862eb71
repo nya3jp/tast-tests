@@ -394,6 +394,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "affafef0_983351aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-28T06:26:52Z",
+      "side": 1,
+      "message": "As per your suggestion removed the defer tconn.Close().",
+      "parentUuid": "358c1a32_61c7e0d2",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d5e67a2_13a41b4d",
@@ -425,6 +443,24 @@
       "side": 1,
       "message": "Hi Oleh, the SigninProfileTestAPIConn\u0027s are usually closed explicitly. https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/signin_profile_extension.go",
       "parentUuid": "1d5e67a2_13a41b4d",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d71227_c1180c9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-28T06:26:52Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "4f1949b4_a532466a",
       "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -858,6 +894,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d532c89c_bd528439",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-28T06:26:52Z",
+      "side": 1,
+      "message": "quicksettings.SliderValue() returns the slidervalue which is an integer value. I am not using this slidervalue further. So I logged the value.",
+      "parentUuid": "18676d05_ca90aede",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6128aae8_19c0e00c",
@@ -1001,6 +1055,24 @@
       "side": 1,
       "message": "Right, only one use cases.\n\nChrome package is heavily used in many tests. So each method added to this package should be 1) really related to Chrome, but not to some specific APIs for testing; 2) potentially heavily used in other test.\n\nBased on that I think it makes sense to don\u0027t include SkipToLoginForTesting method to the chrome package.",
       "parentUuid": "3e6306c5_1ec10c33",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6878cf4_f26ae2f7",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-28T06:26:52Z",
+      "side": 1,
+      "message": "Removed and moved the code to SignInScreen.go.",
+      "parentUuid": "09ecd603_0e6c3309",
       "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
