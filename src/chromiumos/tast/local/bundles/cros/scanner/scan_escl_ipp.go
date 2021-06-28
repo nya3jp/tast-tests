@@ -11,7 +11,6 @@ import (
 	"net"
 	"net/http"
 	"os"
-	"path/filepath"
 	"strings"
 	"time"
 
@@ -19,7 +18,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/scanner/lorgnette"
+	"chromiumos/tast/local/bundles/cros/scanner/performscan"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/printing/cups"
 	"chromiumos/tast/local/printing/ippusbbridge"
@@ -198,12 +197,6 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 	}
 	defer os.RemoveAll(tmpDir)
 
-	scanPath := filepath.Join(tmpDir, "scanned.png")
-	scanFile, err := os.Create(scanPath)
-	if err != nil {
-		s.Fatal("Failed to open scan output file: ", err)
-	}
-
 	startScanRequest := &lpb.StartScanRequest{
 		DeviceName: deviceName,
 		Settings: &lpb.ScanSettings{
@@ -213,47 +206,7 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 		},
 	}
 
-	l, err := lorgnette.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to lorgnette: ", err)
-	}
-
-	s.Log("Starting scan")
-	startScanResponse, err := l.StartScan(ctx, startScanRequest)
-	if err != nil {
-		s.Fatal("Failed to call StartScan: ", err)
-	}
-	// Lorgnette was started automatically when we called StartScan, make sure to
-	// close it when we exit.
-	defer lorgnette.StopService(cleanupCtx)
-
-	switch startScanResponse.State {
-	case lpb.ScanState_SCAN_STATE_IN_PROGRESS:
-		// Do nothing.
-	case lpb.ScanState_SCAN_STATE_FAILED:
-		s.Fatal("Failed to start scan: ", startScanResponse.FailureReason)
-	default:
-		s.Fatal("Unexpected ScanState: ", startScanResponse.State.String())
-	}
-
-	getNextImageRequest := &lpb.GetNextImageRequest{
-		ScanUuid: startScanResponse.ScanUuid,
-	}
-
-	s.Log("Getting next image")
-	getNextImageResponse, err := l.GetNextImage(ctx, getNextImageRequest, scanFile.Fd())
-	if err != nil {
-		s.Fatal("Failed to call GetNextImage: ", err)
-	}
-
-	if !getNextImageResponse.Success {
-		s.Fatal("Failed to get next image: ", getNextImageResponse.FailureReason)
-	}
-
-	s.Log("Waiting for completion signal")
-	if err = l.WaitForScanCompletion(ctx, startScanResponse.ScanUuid); err != nil {
-		s.Fatal("Failed to wait for scan completion: ", err)
-	}
+	scanPath := performscan.RunScan(ctx, s, startScanRequest, tmpDir)
 
 	s.Log("Comparing scanned file to golden image")
 	diff := testexec.CommandContext(ctx, "perceptualdiff", "-verbose", "-threshold", "1", scanPath, s.DataPath(goldenImage))
