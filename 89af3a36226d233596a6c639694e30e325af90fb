@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a4ea0c3_46ab7c9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-28T19:51:04Z",
+      "side": 1,
+      "message": "Add new patch with some minor changes. And another CL is also created for this test to further fix some issues found during testing. Thanks Jun and Alex in advance for your review!",
+      "revId": "89af3a36226d233596a6c639694e30e325af90fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
