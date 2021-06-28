@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0a01d60_f07bc4ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-28T02:00:41Z",
+      "side": 1,
+      "message": "(optional suggestion)\nIf ChromeVox has two behaviors, I think ideally we should test these two respectively.\n\nYou can use ash.EnsureTabletModeEnabled to ensure and toggle device mode:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/tablet.go?l\u003d39\u0026rcl\u003db212ca8f68f89b75a0ca49abc748d6fed18620fe\n\nPreviously I also struggled to handle table mode correctly in ARC WM tests :)",
+      "revId": "ec54f69bd1f0721db4e8374743643e05b80c3083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f26e88f6_28ba8383",
@@ -14,6 +31,40 @@
       "writtenOn": "2021-06-24T20:30:24Z",
       "side": 1,
       "message": "Hi Hiroki,\n\nWondering if you could help me with this review. Thanks for taking a look when you get the chance!",
+      "revId": "ec54f69bd1f0721db4e8374743643e05b80c3083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6f21d5e_9bdb87ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-28T02:00:41Z",
+      "side": 1,
+      "message": "Thank you! Two general thoughts on this.",
+      "revId": "ec54f69bd1f0721db4e8374743643e05b80c3083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e9f9d48_38382db5",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-28T02:00:41Z",
+      "side": 1,
+      "message": "Giving an ability to use regular expression sounds great to me!\n\nI wonder if we can expect that the all expected string is a regular expression.\nThe code would be much simpler than having a |isRegex| flag.\nI quickly looked current expected utterances and they look to be usable as a regular expression.\n\nIf making all expectations a reg-ex is infeasible, then I would define an interface  and define two concrete structs instead of having a flag in one struct:\n\ne.g.\ntype SpeechExpectation interface {\n   Matches() bool\n}\n\ntype RegexExpectation struct {\n   ...\n}\n\ntype StringExpectation struct {\n   ...\n}",
       "revId": "ec54f69bd1f0721db4e8374743643e05b80c3083",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
