@@ -147,6 +147,9 @@ func (h *Helper) Close(ctx context.Context) error {
 
 // EnsureDUTBooted checks the power state, and attempts to boot the DUT if it is off.
 func (h *Helper) EnsureDUTBooted(ctx context.Context) error {
+	if h.DUT.Connected(ctx) {
+		return nil
+	}
 	if err := h.RequireServo(ctx); err != nil {
 		return nil
 	}
@@ -157,16 +160,24 @@ func (h *Helper) EnsureDUTBooted(ctx context.Context) error {
 		if err != nil {
 			testing.ContextLog(ctx, "Error getting power state: ", err)
 		}
-		if state != "S0" {
-			testing.ContextLogf(ctx, "DUT is off (power state %s), resetting", state)
-			if err = h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
-				testing.ContextLog(ctx, "Failed to reset DUT: ", err)
+		if state == "S0" {
+			testing.ContextLog(ctx, "Waiting for DUT to finish booting")
+			// The machine is up, just wait for it to finish booting
+			h.CloseRPCConnection(ctx)
+			if err = h.DUT.WaitConnect(ctx); err == nil {
+				return nil
 			}
-			if err = h.DisconnectDUT(ctx); err != nil {
-				testing.ContextLog(ctx, "Error closing connections to DUT: ", err)
-			}
+			// If WaitConnect didn't work, let it reset.
 		}
 	}
+	testing.ContextLog(ctx, "Resetting DUT")
+	if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
+		testing.ContextLog(ctx, "Failed to reset DUT: ", err)
+	}
+	if err := h.DisconnectDUT(ctx); err != nil {
+		testing.ContextLog(ctx, "Error closing connections to DUT: ", err)
+	}
+	h.CloseRPCConnection(ctx)
 	return h.DUT.WaitConnect(ctx)
 }
 
@@ -179,6 +190,7 @@ func (h *Helper) RequireRPCClient(ctx context.Context) error {
 	if h.rpcHint == nil {
 		return errors.New("cannot create RPC client connection without rpcHint")
 	}
+	testing.ContextLog(ctx, "Opening RPCClient connection")
 	var cl *rpc.Client
 	const rpcConnectTimeout = 5 * time.Minute
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -223,6 +235,7 @@ func (h *Helper) CloseRPCConnection(ctx context.Context) error {
 		h.RPCClient, h.RPCUtils, h.BiosServiceClient = nil, nil, nil
 	}()
 	if h.RPCClient != nil {
+		testing.ContextLog(ctx, "Closing RPCClient connection")
 		if err := h.RPCClient.Close(ctx); err != nil {
 			return errors.Wrap(err, "closing rpc client")
 		}
