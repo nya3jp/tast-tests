@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91637ebe_f8622d00",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-28T02:46:14Z",
+      "side": 1,
+      "message": "I assume Hidehiko meant 3.\n\nPlease let me remind that we already have `args ...string` style API in RestartJob and StartJob. I believe we all agree that it\u0027s not an option to introduce new key/value pair API (which Xinglong explained as 3) in JobStatus, CheckJob, etc. while keeping `args ...string` API in RestartJob and StartJob.\n\nSo there are two orthogonal tasks we\u0027re discussing here:\n\nA. Introducing extra args to JobStatus, CheckJob, etc.\nB. Replacing `args ...string` API with proper key/value API\n\nCurrent patch does A, but not B. The question to ask is, is B a blocker for A?\n\nMy opinion is no.\n\n- Passing string key/value pairs as ...string is not a very bad API IMHO. In fact standard library has API of the same style at os/exec.Cmd.Env: https://pkg.go.dev/os/exec#Cmd\n- Even if we don\u0027t like ...string style API, it is not this patch that introduces this API (there are existing functions using this style like RestartJob/StartJob), so it sounds not right to make B a blocker for A.\n\nHidehiko, WDYT?",
+      "parentUuid": "2a0e4213_234cdd21",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 91
+      },
+      "revId": "1c4e4c37e48389dd540b2d9ebe1820e382d6b3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de5270f7_a4db13b9",
         "filename": "src/chromiumos/tast/local/upstart/upstart.go",
         "patchSetId": 4
