@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77884ced_ad81fa39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-06-28T10:23:13Z",
+      "side": 1,
+      "message": "Did pin lock needed functions and helpers and tests.\nWork in progress, will merge/embed once building blocks template done.\n",
+      "revId": "2bb77cd477cf2fdf5ed486c84a57ed81c2d9e76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
